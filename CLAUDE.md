@@ -96,6 +96,17 @@ of a clean PE32 at ImageBase `0x400000`.
   keys carry parent-relative bind translations, so mesh-only rest/inverse-bind edits are insufficient.
   Resume from the timestamped Mario section at the end of `docs/HANDOFF.md`; first test animation
   translation retargeting or smooth/overlapping joint geometry on one walk clip.
+- Quest/terrain smoke gotcha (2026-07-22): Wasp Menace (`OBJECT_QUEST_CARD_WASP_MENACE`) rendered
+  correctly through ForgeFSE with 1337 gold, 500 renown, card art, and Guildmaster audio, so the base
+  quest API works when the card asset exists. Custom blank cards are a data/text/definition binding
+  problem. Do not activate a quest during ForgeTest terrain teleports; the engine raises the
+  quest-region abandon/reload modal and can block/confuse manual terrain validation. Evidence:
+  `work/runtime_smoke_quest_terrain_20260722/RESULTS.md`.
+- Wave3 decomp gotcha (2026-07-22): attached
+  `lift/reports/wave3/code/0x0089B330_global_IsHeroNaked_CGameScriptInterface_UBE_NXZ.cpp` names
+  `CGameScriptInterface::IsHeroNaked`, but review before promotion. Its current miss path can
+  dereference the vector-map end sentinel after `LowerBound`; verify the type-key `0x5E` interface
+  method before curating it.
 
 Ghidra **12.1** @ **`D:\Subuwu\tools\ghidra-public`** (verified path; not the stale `D:\ghidra_12.1.2_PUBLIC`)
 + GhidraMCP (port 8089). **No XEXLoaderWV.**

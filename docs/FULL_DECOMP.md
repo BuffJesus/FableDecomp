@@ -34,6 +34,10 @@ leans on automation because the target is large.
   shared declaration/test batch; both virtual/const ABI identities and raw retail bodies match.
 - [ ] Promote the next compile-sized ForgeFSE batch, beginning with `CancelRadialBlurFade @
   0x00890180`, while the unattended lane continues reversing direct-signature bindings.
+- [ ] Review the latest Wave 3 CGSI boolean wrapper snapshot
+  `0x0089B330_global_IsHeroNaked_CGameScriptInterface_UBE_NXZ.cpp` before promotion. It has useful
+  typed overlays but currently dereferences the vector-map end sentinel on the no-entry path; verify
+  the type-key `0x5E` interface and called predicate before adding it to the curated lane.
 - [ ] Tune `LinkToNeighbouringMaps @ 0x00A7A650` toward the retail x87/local schedule; its current
   implementation is behavior-verified but nine bytes longer than retail.
 - [ ] Continue closing corrected ABI identities from decorated retail/donor symbols, treating the
@@ -87,6 +91,14 @@ signatures, 269 expected wrapper adapters, and 26 signature/arity reviews. It pr
 unique, strong-owner, complete-prototype rows. The agent may produce a reconstruction and structural
 PASS, but it cannot set `hookApproved`; compile/behavior proof, target-build identity, ABI/callsite
 review, and a ForgeFSE runtime probe remain separate gates.
+
+Claude Code continuation note: the user is moving the decomp loop there next. Start by reading
+`docs/HANDOFF.md` and this section, then inspect the current Wave 3 outputs under
+`lift/reports/wave3/code/`. The attached target
+`0x0089B330_global_IsHeroNaked_CGameScriptInterface_UBE_NXZ.cpp` is not ready for blind promotion
+because its `LowerBound` miss path can still dereference the map-end entry. Prefer a small reviewed
+ForgeFSE wrapper/API batch over spending time on large render functions while the scheduled RE lane
+continues in the background.
 
 ForgeFSE entry validation is also automated against `ghidra_out/cgsi_slots_aligned.tsv`. The first
 audit compared 443 recommended Quest APIs with 918 existing `pVTable[N]` assignments: 442 already
