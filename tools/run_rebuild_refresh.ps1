@@ -48,6 +48,7 @@ function Get-InputFingerprint {
         Get-Item (Join-Path $tools 'recover_msvc_prototypes.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'gen_fable_engine_header.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'export_fse_native_overlay.py') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $tools 'build_forgefse_binding_queue.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'validate_tooling_sdk.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'build_reconstruction_backlog.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'triage_naming_quality.py') -ErrorAction SilentlyContinue
@@ -173,6 +174,9 @@ try {
     }
     Invoke-Checked 'FSE native binding overlay' {
         & $python (Join-Path $tools 'export_fse_native_overlay.py') --root $root
+    }
+    Invoke-Checked 'ForgeFSE binding verification queue' {
+        & $python (Join-Path $tools 'build_forgefse_binding_queue.py') --root $root
     }
     Invoke-Checked 'tooling SDK validation' {
         & $python (Join-Path $tools 'validate_tooling_sdk.py') --root $root

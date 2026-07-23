@@ -3927,3 +3927,24 @@ build-from-user-copy is the legally-defensible pattern.
   can be considered for binding work. The current 931-function overlay passes.
 - No recommendation is an executable hook. A binding still requires target-build identity,
   owner/vtable or callsite confirmation, calling-convention validation, and a ForgeFSE runtime probe.
+
+### ForgeFSE binding lane added to unattended RE (2026-07-22 19:40 MDT)
+
+- Added `tools/build_forgefse_binding_queue.py`. It validates the overlay safety policy and candidate
+  evidence, deduplicates targets by retail address, classifies verification stage, and writes
+  `rebuild/backlog/forgefse-binding-queue.tsv` plus `FORGEFSE_BINDING_QUEUE.md` deterministically.
+- Current queue: 462 recommendations / 462 unique addresses; 167 direct wrapper-to-retail
+  signatures, 269 expected wrapper adapters, and 26 signature/arity reviews. All remain
+  `needs-reversal`; zero are implementation-verified bindings or approved hooks.
+- `tools/run_rebuild_refresh.ps1` regenerates the queue immediately after refreshing the overlay.
+  Its fingerprint now includes the builder, so ranking changes cannot be skipped as “unchanged.”
+- `lift/scripts/run_re_agent_wave3_queue.ps1` loads this lane after the completed curated seeds and
+  before naming/prototype backlog rows. It uses the existing single PID, refresh wait, timeouts,
+  cross-wave ledgers, and compiled-behavior exclusion gate—there is no competing Ghidra process.
+- Static selection smoke test chose 16 direct-signature targets, beginning with
+  `Entity.MsgIsKicked @ 0x004AAF80`, `Entity.MsgOpenedChest @ 0x004AADA0`, and
+  `Entity.SetAsUsable @ 0x004AB040`. The currently active pre-change batch is allowed to finish;
+  the next scheduled refill automatically uses the ForgeFSE lane.
+- An agent PASS is only structural evidence. Nothing writes ForgeFSE pointer tables or changes
+  `hookApproved`; build identity, owner/callsite, calling convention, focused behavior, and a live
+  ForgeFSE probe are still required.

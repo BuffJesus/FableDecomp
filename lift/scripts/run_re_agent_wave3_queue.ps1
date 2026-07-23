@@ -2,7 +2,8 @@ param(
     [int]$MaxAttemptsPerTarget = 2,
     [int]$MaxTargetsPerRun = 16,
     [int]$TargetTimeoutMinutes = 35,
-    [int]$RefreshWaitMinutes = 5
+    [int]$RefreshWaitMinutes = 5,
+    [switch]$Preview
 )
 
 $ErrorActionPreference = 'Stop'
@@ -83,6 +84,26 @@ $seedTargets = @(
     [pscustomobject]@{ Address = '0x00A793D0'; Slug = 'nav-connectverticaledge-a' },
     [pscustomobject]@{ Address = '0x00A79680'; Slug = 'nav-connectverticaledge-b' }
 )
+
+# ForgeFSE binding-verification lane. The generated rows are retail candidates,
+# never executable hooks. This runner only reconstructs and structurally checks
+# the candidate implementation; explicit hook approval remains a later build-ID,
+# ABI, owner/callsite, and runtime-probe gate.
+$bindingQueuePath = Join-Path $root 'rebuild\backlog\forgefse-binding-queue.tsv'
+if (Test-Path -LiteralPath $bindingQueuePath) {
+    $seedTargets += @(
+        Import-Csv -LiteralPath $bindingQueuePath -Delimiter "`t" |
+            Where-Object { $_.hook_approved -ne '1' } |
+            ForEach-Object {
+                [pscustomobject]@{
+                    Address = $_.address
+                    Slug = "forgefse-binding-$($_.address.ToLowerInvariant().Replace('0x', ''))"
+                    Lane = 'forgefse-binding'
+                    ApiNames = $_.api_names
+                }
+            }
+    )
+}
 
 # The donor resolver has saturated at two unique signatures, but 40 small
 # semantic/accessor bodies still need evidence-backed review. Feed them through
@@ -200,7 +221,11 @@ if ($targets.Count -eq 0) {
 if ($targets.Count -eq 0) {
     $completedAt = Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzz'
     Set-Content -LiteralPath $completePath -Value "backlog-exhausted $completedAt" -Encoding UTF8
-    Write-QueueLog "COMPLETE prototype backlog exhausted at=$completedAt"
+    Write-QueueLog "COMPLETE reconstruction and ForgeFSE binding queues exhausted at=$completedAt"
+    exit 0
+}
+if ($Preview) {
+    $targets | Select-Object Address, Slug, Lane, ApiNames
     exit 0
 }
 Remove-Item -LiteralPath $completePath -Force -ErrorAction SilentlyContinue
@@ -251,7 +276,9 @@ try {
             New-Item -ItemType Directory -Path $runLogRoot -Force | Out-Null
             $stdoutPath = Join-Path $runLogRoot "re-agent-wave3-$($target.Slug)-$stamp.stdout.log"
             $stderrPath = Join-Path $runLogRoot "re-agent-wave3-$($target.Slug)-$stamp.stderr.log"
-            Write-QueueLog "RUN target=$($target.Address) slug=$($target.Slug) attempt=$attempt"
+            $lane = if ($target.Lane) { $target.Lane } else { 'reconstruction' }
+            $apiNames = if ($target.ApiNames) { $target.ApiNames } else { '' }
+            Write-QueueLog "RUN target=$($target.Address) slug=$($target.Slug) lane=$lane api=$apiNames attempt=$attempt"
             $process = Start-Process -FilePath $reAgent -ArgumentList @(
                 '--config', $configPath, 'reverse', '--address', $target.Address, '--max-rounds', '4'
             ) -WorkingDirectory $liftRoot -NoNewWindow -PassThru `

@@ -19,6 +19,8 @@ leans on automation because the target is large.
   and its 143-byte body is an exact relocation-normalized retail match.
 - [x] Promote the dependency-free `Getter_FieldE0_FC @ 0x00662020`; its corrected fastcall prototype
   and 13-byte VC7.1 object are raw byte-identical to retail.
+- [x] Build a 462-address ForgeFSE binding-verification queue and place it ahead of generic naming
+  and prototype backlog work in the existing lock-aware unattended runner.
 - [ ] Ingest and review both completed `ConnectVerticalMapEdge` reconstructions; promote them only
   after their allocation/refcount and connector-vector behavior can be isolated in a safe harness.
 - [ ] Take the next queue-ranked small candidate, currently `entry @ 0x00401067`, through VC7.1
@@ -69,6 +71,14 @@ both compile and focused-behavior PASS is terminal for agent scheduling even whe
 overly conservative; byte-parity and human review remain separate promotion evidence. This prevents
 the unattended loop from repeatedly spending provider time on functions already proven by a
 stronger executable oracle.
+
+The unattended refill order now includes `rebuild/backlog/forgefse-binding-queue.tsv` immediately
+after the completed subsystem seeds and before generic naming/prototype work. The queue contains all
+462 owner-aligned FSE recommendations and classifies the wrapper-to-retail bridge: 167 direct
+signatures, 269 expected wrapper adapters, and 26 signature/arity reviews. It prioritizes direct,
+unique, strong-owner, complete-prototype rows. The agent may produce a reconstruction and structural
+PASS, but it cannot set `hookApproved`; compile/behavior proof, target-build identity, ABI/callsite
+review, and a ForgeFSE runtime probe remain separate gates.
 
 The landscape-paint lane now includes four relocation-masked byte-identical `CWorldMap` dispatch
 methods, four functional `CMap::Set/GetEngineTheme/BlendAt` implementations, and three functional

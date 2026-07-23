@@ -56,7 +56,7 @@ Recommendations remain research evidence; none are approved runtime hooks.
 | Consumer | Applied use | Safety boundary |
 |---|---|---|
 | FableForge | Typed overlay reader and GUI/CLI native-backing inspection | Rejects unsupported schema, unsafe policy, stale counts, and recommendations absent from candidate evidence |
-| ForgeFSE | `scripts/Test-FseNativeOverlay.ps1` validates the runtime project's manifest against the overlay | Requires an explicit `hookApproved` review; current approved count is zero |
+| ForgeFSE | `scripts/Test-FseNativeOverlay.ps1` validates the runtime project's manifest; the decomp runner consumes a 462-address binding-verification queue | Direct signatures run first, but every result still requires explicit build/ABI/probe review; current approved count is zero |
 | FQT | API Reference annotates functions with match, candidate address, qualified engine name, and verification state | Displays verified implementation and hook approval as separate states; never promotes a recommendation into a binding |
 
 The canonical file is `rebuild/sdk/fse_native_overlay.json`; byte-identical mirrors are written to
