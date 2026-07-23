@@ -1,0 +1,1 @@
+void __stdcall CThingGroupDef_Transfer(int) {}

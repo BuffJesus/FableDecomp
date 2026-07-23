@@ -6,6 +6,7 @@ workflow-compatible JSON containing candidates for patterns that are completely
 determined by the retail bytes:
 
   c3                 -> empty void function
+  c2 04 00           -> empty __stdcall void function with one popped arg
   33 c0 c3 / 31 c0 c3 -> return 0
   6a xx 58 c3        -> return signed imm8
   b8 xx xx xx xx c3  -> return imm32
@@ -46,6 +47,8 @@ def const_from_bytes(bs: bytes):
     h = bs.hex()
     if h == "c3":
         return ("void", None)
+    if h == "c20400":
+        return ("void_stdcall_pop4", None)
     if h in ("33c0c3", "31c0c3"):
         return ("int", 0)
     if len(bs) == 4 and bs[0] == 0x6A and bs[2:] == b"\x58\xc3":
@@ -79,6 +82,18 @@ def candidate(row):
             "int main()\n"
             "{\n"
             f"    {fn}();\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "void_stdcall_pop4":
+        source = f"void __stdcall {fn}(int) {{}}\n"
+        test = (
+            "#include <cstdio>\n"
+            f"void __stdcall {fn}(int) {{}}\n"
+            "int main()\n"
+            "{\n"
+            f"    {fn}(123);\n"
             f"    std::printf(\"{pattern}\\n\");\n"
             "    return 0;\n"
             "}\n"

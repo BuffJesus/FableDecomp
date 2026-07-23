@@ -1499,3 +1499,12 @@ address	name	length	bytes
 00459129	CThingObjectDef::GetSizeofClass	6	b89c000000c3
 00459795	CEngineThemeDef::GetSizeofClass	6	b8a4000000c3
 00459e24	CPlayerGuiDef::GetSizeofClass	6	b8b40a0000c3
+00401480	sub_00401480	6	b870c83b01c3
+0041ca1c	sub_0041ca1c	6	b8988a3b01c3
+0041ca22	sub_0041ca22	4	6a1658c3
+0041ca6d	sub_0041ca6d	4	6a1258c3
+0041ccd7	sub_0041ccd7	6	b8f6000000c3
+0041cd6f	sub_0041cd6f	6	b8d0000000c3
+0041cd83	sub_0041cd83	6	b80d010000c3
+0045954d	CThingGroupDef::Transfer	3	c20400
+00459764	CEngineThemeGroupDef::Transfer	3	c20400

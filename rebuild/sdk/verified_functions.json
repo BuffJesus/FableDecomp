@@ -1,5 +1,5 @@
 {
- "count": 1466,
+ "count": 1475,
  "functions": [
   {
    "address": "0x004012bc",
@@ -54,6 +54,15 @@
    "return_type": "_onexit_t",
    "parameter_types": "_onexit_t,_onexit_t **,_onexit_t **",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x00401480",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "MATCH*"
   },
   {
    "address": "0x00401490",
@@ -2000,6 +2009,24 @@
    "parity": "MATCH*"
   },
   {
+   "address": "0x0041ca1c",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0041ca22",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x0041ca31",
    "name": "AddExclusiveObserver",
    "module": "CObservable",
@@ -2024,6 +2051,15 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CObservable *,CObserver *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0041ca6d",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
    "parity": "MATCH*"
   },
   {
@@ -2060,6 +2096,33 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0041ccd7",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0041cd6f",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0041cd83",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
    "parity": "MATCH*"
   },
   {
@@ -10766,6 +10829,15 @@
    "parity": "MATCH*"
   },
   {
+   "address": "0x0045954d",
+   "name": "CThingGroupDef::Transfer",
+   "module": "CThingGroupDef",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CThingGroupDef *,CPersistContext &",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x0045957e",
    "name": "CPlayerDef::GetSizeofClass",
    "module": "CPlayerDef",
@@ -10799,6 +10871,15 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CEngineThemeGroupDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00459764",
+   "name": "CEngineThemeGroupDef::Transfer",
+   "module": "CEngineThemeGroupDef",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CEngineThemeGroupDef *,CPersistContext &",
    "parity": "MATCH*"
   },
   {
