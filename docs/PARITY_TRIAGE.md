@@ -88,3 +88,27 @@ Ran --mutate --random over all remaining DIFFER accessors. Flag/pragma sweep alr
 (005bd404/427 GetAnimationSpeedValue, 00643b3b IsAwareOfThing, 005486b0 PeekConnectedToTrackNode)
 are the register-allocation-artifact class — same wall as Std_Move_Backward. No further byte-parity
 wins are flag/mutation-reachable in this batch; next growth is re-authoring the semantic misses.
+
+## Std_Move_Backward @00405ba0 — CRACKED (2026-07-23), verdict reversed
+The earlier "unmatchable-from-source" closure was WRONG. Root cause of the score-4 residue
+(`sub edx,ecx; mov esi,edx` ours vs `mov esi,edx; sub esi,ecx` retail) was register liveness,
+and liveness is source-controllable. Fix = **liveness-shaping**: write the count `(last-first)`
+as a REPEATED INLINE subexpression at both use sites instead of a named local:
+```cpp
+dest = (char*)memmove(dest, first, (char*)last - (char*)first) + ((char*)last - (char*)first);
+```
+The named-local form (`size_t count = ...; memmove(...,count); dest += count;`) lets MSVC compute
+`last-first` in place (`sub edx,ecx`) then copy to the callee-saved reg (`mov esi,edx`). Duplicating
+the subexpression makes MSVC materialize it directly into esi (`mov esi,edx; sub esi,ecx`) to keep it
+live across the call — retail's exact form. Also `if (last != first)` (not `first != last`) fixes the
+`cmp edx,ecx` operand order. Verified RELOCATION_MATCH + behavior PASS under VC7.1 /O2 /Oy.
+
+Generalizable lever for the "register-allocation / scheduler artifact" class: **liveness-shaping**
+— named-local vs repeated-inline-subexpression vs temp-into-specific-var changes which register holds
+a value and when it is materialized. This is a NEW permuter mutation axis the prior sweep never tried
+(it mutated statement structure/flags, not value liveness). The `/G5/G6/G7/GB` CPU-target flags do
+NOT affect this residue (swept, all identical). Compiler build is 13.10.3077 (VC7.1 RTM).
+
+INTEGRITY NOTE: the mass-loop had landed a named-local Std_Move_Backward that passes behavior but
+DIFFERs from retail (does not byte-match). Replaced with the matching form. Worth a catalog-wide
+recompile-vs-oracle sweep to find other behavior-pass-but-not-byte-match lands.
