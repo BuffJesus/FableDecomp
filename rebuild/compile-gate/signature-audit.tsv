@@ -39,6 +39,8 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 0063aab0	CWorldMap	GetThemeBlendAtBlock	PASS	CWorldMap	GetThemeBlendAtBlock	ulong	unsigned long	3	3		PASS	
 00662020	_global	Getter_FieldE0_FC	PASS	_global	Getter_FieldE0_FC	ulong	std::uint32_t __fastcall	1	1		PASS	
 006b0730	CTCPhysicsBase	CTCPhysicsBase	PASS	TCPhysicsBase	CTCPhysicsBase	undefined	C	1	1	006b0730;007266c0	REVIEW	owner-mismatch;duplicate-linkage-signature
+006e7290	CGameScriptInterface	CGameScriptInterface::EndLetterBox	PASS	CGameScriptInterface	EndLetterBox	void	void __thiscall	0	0		PASS	
+006e7340	CGameScriptInterface	CGameScriptInterface::GetGameAngleXY	PASS	CGameScriptInterface	GetGameAngleXY	float	float __thiscall	0	0		PASS	
 00713140	CActionDoCreatureAction	CActionDoCreatureAction	PASS	ActionDoCreatureAction	CActionDoCreatureAction	undefined	C	1	1		REVIEW	owner-mismatch
 007266c0	CTCPhysicsBase	CTCPhysicsBase	PASS	TCPhysicsBase	CTCPhysicsBase	undefined	C	1	1	006b0730;007266c0	REVIEW	owner-mismatch;duplicate-linkage-signature
 007602f0	_global	Math_PolygonAngleSumClosureCheck	PASS	_global	Math_PolygonAngleSumClosureCheck_InvSqrtOrdered	undefined	[[nodiscard]] static float	0	1		REVIEW	method-name-mismatch;explicit-parameter-count-mismatch
@@ -53,16 +55,78 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	PASS	_global	CPersistInfo_InsertionSortStep_0086c5c0	undefined	void __fastcall	0	6		REVIEW	explicit-parameter-count-mismatch
 0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	PASS	_global	CPersistInfo_InsertionSortStep_0086fa00	undefined	void __fastcall	0	6		REVIEW	explicit-parameter-count-mismatch
 008702d0	_global	Handle_InitInvalid_008702d0	PASS	_global	Handle_InitInvalid_008702d0	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
+0088e210	CGameScriptInterface	CGameScriptInterface::DisplayTime	PASS	CGameScriptInterface	DisplayTime	void	void __thiscall	1	1		PASS	
+0088e4c0	CGameScriptInterface	CGameScriptInterface::FadeScreenIn	PASS	CGameScriptInterface	FadeScreenIn	void	void __thiscall	0	0		PASS	
+0088e500	CGameScriptInterface	CGameScriptInterface::FixMovieSequenceCamera	PASS	CGameScriptInterface	FixMovieSequenceCamera	void	void __thiscall	1	1		PASS	
 0088ec90	CGameScriptInterface	CGameScriptInterface::CameraSetCameraPreloadFlag	PASS	CGameScriptInterface	CameraSetCameraPreloadFlag	void	void __thiscall	1	1		PASS	
+0088ecc0	CGameScriptInterface	CGameScriptInterface::IsCameraInScriptedMode	PASS	CGameScriptInterface	IsCameraInScriptedMode	bool	bool __thiscall	0	0		PASS	
 0088ece0	CGameScriptInterface	CGameScriptInterface::CameraShake	PASS	CGameScriptInterface	CameraShake	void	void __thiscall	2	2		PASS	
 0088eda0	CGameScriptInterface	CGameScriptInterface::CameraUseScreenEffect	PASS	CGameScriptInterface	CameraUseScreenEffect	void	void __thiscall	3	3		PASS	
 0088edb0	CGameScriptInterface	CGameScriptInterface::CameraCancelScreenEffect	PASS	CGameScriptInterface	CameraCancelScreenEffect	void	void __thiscall	0	0		PASS	
+0088f450	CGameScriptInterface	CGameScriptInterface::IsHeroSleepingEnabled	PASS	CGameScriptInterface	IsHeroSleepingEnabled	bool	std::uint32_t __thiscall	0	0		PASS	
+0088f4a0	CGameScriptInterface	CGameScriptInterface::EnableDecals	PASS	CGameScriptInterface	EnableDecals	void	void __thiscall	1	1		PASS	
+0088f620	CGameScriptInterface	CGameScriptInterface::EnableSounds	PASS	CGameScriptInterface	EnableSounds	void	void __thiscall	1	1		PASS	
+0088f900	CGameScriptInterface	CGameScriptInterface::GetCountdownTimer	PASS	CGameScriptInterface	GetCountdownTimer	float	float __thiscall	0	0		PASS	
+0088f9e0	CGameScriptInterface	CGameScriptInterface::GetGuildSealRecallAngleXY	PASS	CGameScriptInterface	GetGuildSealRecallAngleXY	float	float __thiscall	0	0		PASS	
+0088fa90	CGameScriptInterface	CGameScriptInterface::GetPlayerUsingMeleeDummies	PASS	CGameScriptInterface	GetPlayerUsingMeleeDummies	bool	bool __thiscall	0	0		PASS	
+0088fab0	CGameScriptInterface	CGameScriptInterface::GetPlayerUsingRangedDummies	PASS	CGameScriptInterface	GetPlayerUsingRangedDummies	bool	bool __thiscall	0	0		PASS	
+0088fad0	CGameScriptInterface	CGameScriptInterface::GetPlayerUsingWillDummies	PASS	CGameScriptInterface	GetPlayerUsingWillDummies	bool	bool __thiscall	0	0		PASS	
+0088faf0	CGameScriptInterface	CGameScriptInterface::GetCheapHeadLooking	PASS	CGameScriptInterface	GetCheapHeadLooking	bool	std::uint8_t __thiscall	0	0		PASS	
+0088fb10	CGameScriptInterface	CGameScriptInterface::GetQuitTavernGame	PASS	CGameScriptInterface	GetQuitTavernGame	bool	bool __thiscall	0	0		PASS	
+0088fb30	CGameScriptInterface	CGameScriptInterface::GetPrizeTavernTable	PASS	CGameScriptInterface	GetPrizeTavernTable	bool	bool __thiscall	0	0		PASS	
+0088fb50	CGameScriptInterface	CGameScriptInterface::GetBettingActive	PASS	CGameScriptInterface	GetBettingActive	bool	std::uint8_t __thiscall	0	0		PASS	
+0088fb70	CGameScriptInterface	CGameScriptInterface::GetBettingAccept	PASS	CGameScriptInterface	GetBettingAccept	bool	std::uint8_t __thiscall	0	0		PASS	
+0088fbb0	CGameScriptInterface	CGameScriptInterface::GetCountBetMoneyDown	PASS	CGameScriptInterface	GetCountBetMoneyDown	bool	bool __thiscall	0	0		PASS	
+0088fbd0	CGameScriptInterface	CGameScriptInterface::GetSpotTheAdditionBeaten	PASS	CGameScriptInterface	GetSpotTheAdditionBeaten	bool	bool __thiscall	0	0		PASS	
+0088fbf0	CGameScriptInterface	CGameScriptInterface::GetGlobalTargetingDistanceOffset	PASS	CGameScriptInterface	GetGlobalTargetingDistanceOffset	float	float __thiscall	0	0		PASS	
+0088fc10	CGameScriptInterface	CGameScriptInterface::GetTradingPriceMult	PASS	CGameScriptInterface	GetTradingPriceMult	float	float __thiscall	0	0		PASS	
+0088fc30	CGameScriptInterface	CGameScriptInterface::GetBoastingEnabled	PASS	CGameScriptInterface	GetBoastingEnabled	bool	std::uint8_t __thiscall	0	0		PASS	
 00890180	CGameScriptInterface	CGameScriptInterface::CancelRadialBlurFade	PASS	CGameScriptInterface	CancelRadialBlurFade	void	void __thiscall	0	0		PASS	
+008901e0	CGameScriptInterface	CGameScriptInterface::DisplacementMonochromeEffectColourFadeOut	PASS	CGameScriptInterface	DisplacementMonochromeEffectColourFadeOut	void	void __thiscall	2	2		PASS	
+008902b0	CGameScriptInterface	CGameScriptInterface::IsHeroChild	PASS	CGameScriptInterface	IsHeroChild	bool	bool __thiscall	0	0		PASS	
+00890370	CGameScriptInterface	CGameScriptInterface::GetHeroHealth	PASS	CGameScriptInterface	GetHeroHealth	float	float __thiscall	0	0		PASS	
+008903a0	CGameScriptInterface	CGameScriptInterface::GetHeroHealthMax	PASS	CGameScriptInterface	GetHeroHealthMax	float	float __thiscall	0	0		PASS	
+008903d0	CGameScriptInterface	CGameScriptInterface::GetHeroHealthPercentage	PASS	CGameScriptInterface	GetHeroHealthPercentage	float	float __thiscall	0	0		PASS	
+008907e0	CGameScriptInterface	CGameScriptInterface::FadeScreenOutUntilNextCallToFadeScreenIn	PASS	CGameScriptInterface	FadeScreenOutUntilNextCallToFadeScreenIn	void	void __thiscall	2	2		PASS	
 00890fc0	CGameScriptInterface	CGameScriptInterface::CameraResetToViewBehindHero	PASS	CGameScriptInterface	CameraResetToViewBehindHero	void	void __thiscall	1	1		PASS	
 00890ff0	CGameScriptInterface	CGameScriptInterface::CameraDefault	PASS	CGameScriptInterface	CameraDefault	void	void __thiscall	0	0		PASS	
+00891320	CGameScriptInterface	CGameScriptInterface::EnableDangerMusic	PASS	CGameScriptInterface	EnableDangerMusic	void	void __thiscall	1	1		PASS	
+008913c0	CGameScriptInterface	CGameScriptInterface::IsHeroInTavernGame	PASS	CGameScriptInterface	IsHeroInTavernGame	bool	bool __thiscall	0	0		PASS	
+00891520	CGameScriptInterface	CGameScriptInterface::FailAllActiveQuests	PASS	CGameScriptInterface	FailAllActiveQuests	void	void __thiscall	0	0		PASS	
 00891720	CGameScriptInterface	CGameScriptInterface::ChangeHeroHealthBy	PASS	CGameScriptInterface	ChangeHeroHealthBy	void	void __thiscall	3	3		PASS	
+00891870	CGameScriptInterface	CGameScriptInterface::IsHeroOnQuest	PASS	CGameScriptInterface	IsHeroOnQuest	bool	bool __thiscall	0	0		PASS	
+00891c40	CGameScriptInterface	CGameScriptInterface::DisplayMoneyBag	PASS	CGameScriptInterface	DisplayMoneyBag	void	void __thiscall	1	1		PASS	
+00891ea0	CGameScriptInterface	CGameScriptInterface::IsHeroAllowedHenchmenInCurrentRegion	PASS	CGameScriptInterface	IsHeroAllowedHenchmenInCurrentRegion	bool	bool __thiscall	0	0		PASS	
+00893040	CGameScriptInterface	CGameScriptInterface::GetActiveGossipCategoriesSize	PASS	CGameScriptInterface	GetActiveGossipCategoriesSize	int	int __thiscall	0	0		PASS	
+00893050	CGameScriptInterface	CGameScriptInterface::GetIsGossipForPlayerSize	PASS	CGameScriptInterface	GetIsGossipForPlayerSize	int	int __thiscall	0	0		PASS	
 008977f0	CGameScriptInterface	CGameScriptInterface::ApplyHeroPenaltyForDeath	PASS	CGameScriptInterface	ApplyHeroPenaltyForDeath	void	void __thiscall	0	0		PASS	
+00897aa0	CGameScriptInterface	CGameScriptInterface::GetHeroHasMarried	PASS	CGameScriptInterface	GetHeroHasMarried	bool	bool __thiscall	0	0		PASS	
+00897b10	CGameScriptInterface	CGameScriptInterface::GetHeroHasCurrentMarriage	PASS	CGameScriptInterface	GetHeroHasCurrentMarriage	bool	bool __thiscall	0	0		PASS	
+00897b70	CGameScriptInterface	CGameScriptInterface::GetHeroHasDivorcedMarriage	PASS	CGameScriptInterface	GetHeroHasDivorcedMarriage	bool	bool __thiscall	0	0		PASS	
+00897bd0	CGameScriptInterface	CGameScriptInterface::GetHeroHasChildren	PASS	CGameScriptInterface	GetHeroHasChildren	bool	bool __thiscall	0	0		PASS	
+00897c30	CGameScriptInterface	CGameScriptInterface::GetHeroHasMurderedWife	PASS	CGameScriptInterface	GetHeroHasMurderedWife	bool	bool __thiscall	0	0		PASS	
+008986d0	CGameScriptInterface	CGameScriptInterface::ConfiscateAllHeroItems	PASS	CGameScriptInterface	ConfiscateAllHeroItems	void	void __thiscall	0	0		PASS	
+008987e0	CGameScriptInterface	CGameScriptInterface::ConfiscateAllHeroWeapons	PASS	CGameScriptInterface	ConfiscateAllHeroWeapons	void	void __thiscall	0	0		PASS	
+00898e60	CGameScriptInterface	CGameScriptInterface::IsHeroHandLampLit	PASS	CGameScriptInterface	IsHeroHandLampLit	bool	bool __thiscall	0	0		PASS	
+008991a0	CGameScriptInterface	CGameScriptInterface::IsHeroRenownLevelFull	PASS	CGameScriptInterface	IsHeroRenownLevelFull	bool	bool __thiscall	0	0		PASS	
+00899220	CGameScriptInterface	CGameScriptInterface::IncreaseHeroRenownLevel	PASS	CGameScriptInterface	IncreaseHeroRenownLevel	void	void __thiscall	0	0		PASS	
+00899560	CGameScriptInterface	CGameScriptInterface::GetHeroAge	PASS	CGameScriptInterface	GetHeroAge	float	float __thiscall	0	0		PASS	
+00899700	CGameScriptInterface	CGameScriptInterface::GetDistanceHeroCanBeHeardFrom	PASS	CGameScriptInterface	GetDistanceHeroCanBeHeardFrom	float	float __thiscall	0	0		PASS	
+00899850	CGameScriptInterface	CGameScriptInterface::GetHeroFatness	PASS	CGameScriptInterface	GetHeroFatness	float	float __thiscall	0	0		PASS	
+008998c0	CGameScriptInterface	CGameScriptInterface::GetHeroScariness	PASS	CGameScriptInterface	GetHeroScariness	float	float __thiscall	0	0		PASS	
+00899930	CGameScriptInterface	CGameScriptInterface::GetHeroAttractiveness	PASS	CGameScriptInterface	GetHeroAttractiveness	float	float __thiscall	0	0		PASS	
+008999a0	CGameScriptInterface	CGameScriptInterface::GetHeroWillEnergyLevel	PASS	CGameScriptInterface	GetHeroWillEnergyLevel	float	float __thiscall	0	0		PASS	
+00899ef0	CGameScriptInterface	CGameScriptInterface::GiveHeroMorality	PASS	CGameScriptInterface	GiveHeroMorality	void	void __thiscall	1	1		PASS	
+00899f90	CGameScriptInterface	CGameScriptInterface::GetHeroMorality	PASS	CGameScriptInterface	GetHeroMorality	float	float __thiscall	0	0		PASS	
+0089a070	CGameScriptInterface	CGameScriptInterface::ChangeHeroMoralityDueToTheft	PASS	CGameScriptInterface	ChangeHeroMoralityDueToTheft	void	void __thiscall	0	0		PASS	
+0089a0e0	CGameScriptInterface	CGameScriptInterface::ChangeHeroMoralityDueToPicklock	PASS	CGameScriptInterface	ChangeHeroMoralityDueToPicklock	void	void __thiscall	0	0		PASS	
+0089b330	CGameScriptInterface	CGameScriptInterface::IsHeroNaked	PASS	CGameScriptInterface	IsHeroNaked	bool	bool __thiscall	0	0		PASS	
 008a0820	CGameScriptInterface	CGameScriptInterface::CancelHeroTeleportEffects	PASS	CGameScriptInterface	CancelHeroTeleportEffects	void	void __thiscall	0	0		PASS	
+008a1590	CGameScriptInterface	CGameScriptInterface::GetBestTimePairs	PASS	CGameScriptInterface	GetBestTimePairs	float	float __thiscall	0	0		PASS	
+008a15f0	CGameScriptInterface	CGameScriptInterface::GetBestTimeSorting	PASS	CGameScriptInterface	GetBestTimeSorting	float	float __thiscall	0	0		PASS	
+008a17d0	CGameScriptInterface	CGameScriptInterface::GetBestTimeGuessTheAddition	PASS	CGameScriptInterface	GetBestTimeGuessTheAddition	float	float __thiscall	0	0		PASS	
+008a78e0	CGameScriptInterface	CGameScriptInterface::ClearActiveGossipCategories	PASS	CGameScriptInterface	ClearActiveGossipCategories	void	void __thiscall	0	0		PASS	
+008a7930	CGameScriptInterface	CGameScriptInterface::ClearIsGossipForPlayer	PASS	CGameScriptInterface	ClearIsGossipForPlayer	void	void __thiscall	0	0		PASS	
 008ed590	CObjectFamilyDef	GetRandomObject	PASS	CObjectFamilyDef	GetRandomObject	long	long	0	0		PASS	
 00a65d30	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::ConsolidateFreeAreas	PASS	CMemoryAllocatorFixedSize	ConsolidateFreeAreas	void	void	0	0		PASS	
 00a65d40	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::GetAllocationSize	PASS	CMemoryAllocatorFixedSize	GetAllocationSize	ulong	unsigned long	1	1		PASS	

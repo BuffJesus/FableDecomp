@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-07-22T20:26:41-06:00`
+Generated: `2026-07-22T22:12:02-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 
@@ -8,10 +8,10 @@ The order favors generated candidate clusters first, then extension of proven mo
 
 | Rank | Track | Module | Functions | Prototype gaps | Agent candidates | Verified lifts |
 |---:|---|---|---:|---:|---:|---:|
-| 1 | candidate-cluster | `_global` | 11370 | 9376 | 43 | 0 |
-| 2 | candidate-cluster | `CMouseDX` | 24 | 0 | 14 | 10 |
-| 3 | candidate-cluster | `CMemoryAllocatorFixedSize` | 21 | 0 | 11 | 7 |
-| 4 | candidate-cluster | `CGameScriptInterface` | 954 | 6 | 10 | 0 |
+| 1 | candidate-cluster | `CGameScriptInterface` | 954 | 6 | 74 | 0 |
+| 2 | candidate-cluster | `_global` | 11370 | 9376 | 43 | 0 |
+| 3 | candidate-cluster | `CMouseDX` | 24 | 0 | 14 | 10 |
+| 4 | candidate-cluster | `CMemoryAllocatorFixedSize` | 21 | 0 | 11 | 7 |
 | 5 | candidate-cluster | `CNavQuadTree` | 22 | 1 | 9 | 0 |
 | 6 | candidate-cluster | `CEngineLandscapePatch` | 29 | 2 | 9 | 0 |
 | 7 | candidate-cluster | `CEngineLandscapeRenderer` | 33 | 0 | 8 | 0 |
@@ -40,21 +40,21 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 
 | Rank | Address | Module | Retail bytes | Candidate bytes | Blocker |
 |---:|---|---|---:|---:|---|
-| 1 | `00c19f90` | `_global` | 0 | 338 |  |
-| 2 | `00c2d7b0` | `_global` | 0 | 493 |  |
-| 3 | `00c20ef0` | `_global` | 0 | 582 |  |
-| 4 | `008702d0` | `_global` | 0 | 728 |  |
-| 5 | `004aada0` | `CScriptThing` | 0 | 811 | invalid use of incomplete type 'class CScriptThing' |
-| 6 | `004aacc0` | `CScriptThing` | 0 | 940 | invalid use of incomplete type 'class CScriptThing' |
-| 7 | `00890fc0` | `CGameScriptInterface` | 0 | 1066 | expected '(' before '{' token |
-| 8 | `004aaf80` | `CScriptThing` | 0 | 1075 | invalid use of incomplete type 'class CScriptThing' |
-| 9 | `004ab040` | `CScriptThing` | 0 | 1094 | invalid use of incomplete type 'class CScriptThing' |
-| 10 | `004aace0` | `CScriptThing` | 0 | 1382 | invalid use of incomplete type 'class CScriptThing' |
-| 11 | `007266c0` | `CTCPhysicsBase` | 0 | 1401 | static assertion failed |
-| 12 | `008368f0` | `_global` | 0 | 1421 |  |
-| 13 | `004aad00` | `CScriptThing` | 0 | 1425 | invalid use of incomplete type 'class CScriptThing' |
-| 14 | `00c37000` | `_global` | 0 | 1482 |  |
-| 15 | `00c36e00` | `_global` | 0 | 1495 |  |
+| 1 | `0088e210` | `CGameScriptInterface` | 0 | 212 |  |
+| 2 | `0088fbb0` | `CGameScriptInterface` | 0 | 212 |  |
+| 3 | `0088fb10` | `CGameScriptInterface` | 0 | 228 |  |
+| 4 | `0088fb30` | `CGameScriptInterface` | 0 | 232 |  |
+| 5 | `0088fc10` | `CGameScriptInterface` | 0 | 235 |  |
+| 6 | `0088fbd0` | `CGameScriptInterface` | 0 | 242 |  |
+| 7 | `0088fad0` | `CGameScriptInterface` | 0 | 244 |  |
+| 8 | `0088fa90` | `CGameScriptInterface` | 0 | 246 |  |
+| 9 | `0088fab0` | `CGameScriptInterface` | 0 | 248 |  |
+| 10 | `00893050` | `CGameScriptInterface` | 0 | 248 |  |
+| 11 | `0088fb50` | `CGameScriptInterface` | 0 | 262 |  |
+| 12 | `0088fb70` | `CGameScriptInterface` | 0 | 262 |  |
+| 13 | `0088fc30` | `CGameScriptInterface` | 0 | 266 |  |
+| 14 | `0088faf0` | `CGameScriptInterface` | 0 | 268 |  |
+| 15 | `0088fbf0` | `CGameScriptInterface` | 0 | 299 |  |
 
 ## First function queue
 

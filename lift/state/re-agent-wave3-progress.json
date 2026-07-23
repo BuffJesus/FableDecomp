@@ -1029,6 +1029,666 @@
       "verdict": "PASS",
       "parity_status": "red",
       "timestamp": "2026-07-22T20:13:09"
+    },
+    "0089a0e0": {
+      "address": "0x0089A0E0",
+      "class_name": "",
+      "function_name": "?ChangeHeroMoralityDueToPicklock@CGameScriptInterface@@UBEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:28:35"
+    },
+    "0089a070": {
+      "address": "0x0089A070",
+      "class_name": "",
+      "function_name": "?ChangeHeroMoralityDueToTheft@CGameScriptInterface@@UBEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:30:01"
+    },
+    "008a78e0": {
+      "address": "0x008A78E0",
+      "class_name": "",
+      "function_name": "?ClearActiveGossipCategories@CGameScriptInterface@@UAEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:30:48"
+    },
+    "008a7930": {
+      "address": "0x008A7930",
+      "class_name": "",
+      "function_name": "?ClearIsGossipForPlayer@CGameScriptInterface@@UAEXXZ",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:32:59"
+    },
+    "008986d0": {
+      "address": "0x008986D0",
+      "class_name": "",
+      "function_name": "?ConfiscateAllHeroItems@CGameScriptInterface@@UBEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:34:41"
+    },
+    "008987e0": {
+      "address": "0x008987E0",
+      "class_name": "",
+      "function_name": "?ConfiscateAllHeroWeapons@CGameScriptInterface@@UBEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:35:48"
+    },
+    "008901e0": {
+      "address": "0x008901E0",
+      "class_name": "",
+      "function_name": "?DisplacementMonochromeEffectColourFadeOut@CGameScriptInterface@@UBEXMPAX@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:37:37"
+    },
+    "00891c40": {
+      "address": "0x00891C40",
+      "class_name": "",
+      "function_name": "?DisplayMoneyBag@CGameScriptInterface@@UBEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:38:36"
+    },
+    "0088e210": {
+      "address": "0x0088E210",
+      "class_name": "",
+      "function_name": "?DisplayTime@CGameScriptInterface@@UBEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:39:01"
+    },
+    "00891320": {
+      "address": "0x00891320",
+      "class_name": "",
+      "function_name": "?EnableDangerMusic@CGameScriptInterface@@UBEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:39:28"
+    },
+    "0088f4a0": {
+      "address": "0x0088F4A0",
+      "class_name": "",
+      "function_name": "?EnableDecals@CGameScriptInterface@@UBEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:40:02"
+    },
+    "0088f620": {
+      "address": "0x0088F620",
+      "class_name": "",
+      "function_name": "?EnableSounds@CGameScriptInterface@@UBEX_N@Z",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:41:26"
+    },
+    "006e7290": {
+      "address": "0x006E7290",
+      "class_name": "",
+      "function_name": "?EndLetterBox@CGameScriptInterface@@MAEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:42:04"
+    },
+    "0088e4c0": {
+      "address": "0x0088E4C0",
+      "class_name": "",
+      "function_name": "?FadeScreenIn@CGameScriptInterface@@UAEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:43:08"
+    },
+    "008907e0": {
+      "address": "0x008907E0",
+      "class_name": "",
+      "function_name": "?FadeScreenOutUntilNextCallToFadeScreenIn@CGameScriptInterface@@UAEXMM@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:44:24"
+    },
+    "00891520": {
+      "address": "0x00891520",
+      "class_name": "",
+      "function_name": "?FailAllActiveQuests@CGameScriptInterface@@UBEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:45:23"
+    },
+    "0088e500": {
+      "address": "0x0088E500",
+      "class_name": "",
+      "function_name": "?FixMovieSequenceCamera@CGameScriptInterface@@UBEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:57:13"
+    },
+    "00893040": {
+      "address": "0x00893040",
+      "class_name": "",
+      "function_name": "?GetActiveGossipCategoriesSize@CGameScriptInterface@@UAEHXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:57:39"
+    },
+    "008a17d0": {
+      "address": "0x008A17D0",
+      "class_name": "",
+      "function_name": "?GetBestTimeGuessTheAddition@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:59:07"
+    },
+    "008a1590": {
+      "address": "0x008A1590",
+      "class_name": "",
+      "function_name": "?GetBestTimePairs@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:00:04"
+    },
+    "008a15f0": {
+      "address": "0x008A15F0",
+      "class_name": "",
+      "function_name": "?GetBestTimeSorting@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:01:00"
+    },
+    "0088fb70": {
+      "address": "0x0088FB70",
+      "class_name": "",
+      "function_name": "?GetBettingAccept@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:01:44"
+    },
+    "0088fb50": {
+      "address": "0x0088FB50",
+      "class_name": "",
+      "function_name": "?GetBettingActive@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:02:06"
+    },
+    "0088fc30": {
+      "address": "0x0088FC30",
+      "class_name": "",
+      "function_name": "?GetBoastingEnabled@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:02:28"
+    },
+    "0088faf0": {
+      "address": "0x0088FAF0",
+      "class_name": "",
+      "function_name": "?GetCheapHeadLooking@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:02:53"
+    },
+    "0088fbb0": {
+      "address": "0x0088FBB0",
+      "class_name": "",
+      "function_name": "?GetCountBetMoneyDown@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:03:36"
+    },
+    "0088f900": {
+      "address": "0x0088F900",
+      "class_name": "",
+      "function_name": "?GetCountdownTimer@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:04:10"
+    },
+    "00899700": {
+      "address": "0x00899700",
+      "class_name": "",
+      "function_name": "?GetDistanceHeroCanBeHeardFrom@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:06:19"
+    },
+    "006e7340": {
+      "address": "0x006E7340",
+      "class_name": "",
+      "function_name": "?GetGameAngleXY@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:07:13"
+    },
+    "0088fbf0": {
+      "address": "0x0088FBF0",
+      "class_name": "",
+      "function_name": "?GetGlobalTargetingDistanceOffset@CGameScriptInterface@@UAEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:07:38"
+    },
+    "0088f9e0": {
+      "address": "0x0088F9E0",
+      "class_name": "",
+      "function_name": "?GetGuildSealRecallAngleXY@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:08:05"
+    },
+    "00899560": {
+      "address": "0x00899560",
+      "class_name": "",
+      "function_name": "?GetHeroAge@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:09:31"
+    },
+    "00899930": {
+      "address": "0x00899930",
+      "class_name": "",
+      "function_name": "?GetHeroAttractiveness@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:13:47"
+    },
+    "00899850": {
+      "address": "0x00899850",
+      "class_name": "",
+      "function_name": "?GetHeroFatness@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:15:00"
+    },
+    "00897bd0": {
+      "address": "0x00897BD0",
+      "class_name": "",
+      "function_name": "?GetHeroHasChildren@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:16:29"
+    },
+    "00897b10": {
+      "address": "0x00897B10",
+      "class_name": "",
+      "function_name": "?GetHeroHasCurrentMarriage@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:17:25"
+    },
+    "00897b70": {
+      "address": "0x00897B70",
+      "class_name": "",
+      "function_name": "?GetHeroHasDivorcedMarriage@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:18:19"
+    },
+    "00897aa0": {
+      "address": "0x00897AA0",
+      "class_name": "",
+      "function_name": "?GetHeroHasMarried@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:19:46"
+    },
+    "00897c30": {
+      "address": "0x00897C30",
+      "class_name": "",
+      "function_name": "?GetHeroHasMurderedWife@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:20:48"
+    },
+    "00890370": {
+      "address": "0x00890370",
+      "class_name": "",
+      "function_name": "?GetHeroHealth@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:21:38"
+    },
+    "008903a0": {
+      "address": "0x008903A0",
+      "class_name": "",
+      "function_name": "?GetHeroHealthMax@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:22:50"
+    },
+    "008903d0": {
+      "address": "0x008903D0",
+      "class_name": "",
+      "function_name": "?GetHeroHealthPercentage@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:24:13"
+    },
+    "00899f90": {
+      "address": "0x00899F90",
+      "class_name": "",
+      "function_name": "?GetHeroMorality@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:26:00"
+    },
+    "008998c0": {
+      "address": "0x008998C0",
+      "class_name": "",
+      "function_name": "?GetHeroScariness@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:27:36"
+    },
+    "008999a0": {
+      "address": "0x008999A0",
+      "class_name": "",
+      "function_name": "?GetHeroWillEnergyLevel@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:29:10"
+    },
+    "00893050": {
+      "address": "0x00893050",
+      "class_name": "",
+      "function_name": "?GetIsGossipForPlayerSize@CGameScriptInterface@@UAEHXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:29:35"
+    },
+    "0088fa90": {
+      "address": "0x0088FA90",
+      "class_name": "",
+      "function_name": "?GetPlayerUsingMeleeDummies@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:30:00"
+    },
+    "0088fab0": {
+      "address": "0x0088FAB0",
+      "class_name": "",
+      "function_name": "?GetPlayerUsingRangedDummies@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:30:22"
+    },
+    "0088fad0": {
+      "address": "0x0088FAD0",
+      "class_name": "",
+      "function_name": "?GetPlayerUsingWillDummies@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:42:39"
+    },
+    "0088fb30": {
+      "address": "0x0088FB30",
+      "class_name": "",
+      "function_name": "?GetPrizeTavernTable@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:43:01"
+    },
+    "0088fb10": {
+      "address": "0x0088FB10",
+      "class_name": "",
+      "function_name": "?GetQuitTavernGame@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:43:25"
+    },
+    "0088fbd0": {
+      "address": "0x0088FBD0",
+      "class_name": "",
+      "function_name": "?GetSpotTheAdditionBeaten@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:43:52"
+    },
+    "0088fc10": {
+      "address": "0x0088FC10",
+      "class_name": "",
+      "function_name": "?GetTradingPriceMult@CGameScriptInterface@@UAEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:44:15"
+    },
+    "00899ef0": {
+      "address": "0x00899EF0",
+      "class_name": "",
+      "function_name": "?GiveHeroMorality@CGameScriptInterface@@UBEXM@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:52:22"
+    },
+    "00899220": {
+      "address": "0x00899220",
+      "class_name": "",
+      "function_name": "?IncreaseHeroRenownLevel@CGameScriptInterface@@UBEXXZ",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:55:23"
+    },
+    "0088ecc0": {
+      "address": "0x0088ECC0",
+      "class_name": "",
+      "function_name": "?IsCameraInScriptedMode@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:56:23"
+    },
+    "00891ea0": {
+      "address": "0x00891EA0",
+      "class_name": "",
+      "function_name": "?IsHeroAllowedHenchmenInCurrentRegion@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:58:30"
+    },
+    "008902b0": {
+      "address": "0x008902B0",
+      "class_name": "",
+      "function_name": "?IsHeroChild@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:59:39"
+    },
+    "00898e60": {
+      "address": "0x00898E60",
+      "class_name": "",
+      "function_name": "?IsHeroHandLampLit@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:01:13"
+    },
+    "008913c0": {
+      "address": "0x008913C0",
+      "class_name": "",
+      "function_name": "?IsHeroInTavernGame@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:02:20"
+    },
+    "0089b330": {
+      "address": "0x0089B330",
+      "class_name": "",
+      "function_name": "?IsHeroNaked@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:03:47"
+    },
+    "00891870": {
+      "address": "0x00891870",
+      "class_name": "",
+      "function_name": "?IsHeroOnQuest@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:04:30"
+    },
+    "008991a0": {
+      "address": "0x008991A0",
+      "class_name": "",
+      "function_name": "?IsHeroRenownLevelFull@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:06:25"
+    },
+    "0088f450": {
+      "address": "0x0088F450",
+      "class_name": "",
+      "function_name": "?IsHeroSleepingEnabled@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:08:04"
+    },
+    "00892270": {
+      "address": "0x00892270",
+      "class_name": "",
+      "function_name": "?IsInCutscene@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:13:10"
+    },
+    "00899ba0": {
+      "address": "0x00899BA0",
+      "class_name": "",
+      "function_name": "?IsPlayerCreatureBlocking@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:14:32"
     }
   },
   "runs": [
@@ -2181,6 +2841,676 @@
       "verdict": "PASS",
       "parity_status": "red",
       "timestamp": "2026-07-22T20:13:09"
+    },
+    {
+      "address": "0x0089A0E0",
+      "class_name": "",
+      "function_name": "?ChangeHeroMoralityDueToPicklock@CGameScriptInterface@@UBEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:28:35"
+    },
+    {
+      "address": "0x0089A070",
+      "class_name": "",
+      "function_name": "?ChangeHeroMoralityDueToTheft@CGameScriptInterface@@UBEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:30:01"
+    },
+    {
+      "address": "0x008A78E0",
+      "class_name": "",
+      "function_name": "?ClearActiveGossipCategories@CGameScriptInterface@@UAEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:30:48"
+    },
+    {
+      "address": "0x008A7930",
+      "class_name": "",
+      "function_name": "?ClearIsGossipForPlayer@CGameScriptInterface@@UAEXXZ",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:32:59"
+    },
+    {
+      "address": "0x008986D0",
+      "class_name": "",
+      "function_name": "?ConfiscateAllHeroItems@CGameScriptInterface@@UBEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:34:41"
+    },
+    {
+      "address": "0x008987E0",
+      "class_name": "",
+      "function_name": "?ConfiscateAllHeroWeapons@CGameScriptInterface@@UBEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:35:48"
+    },
+    {
+      "address": "0x008901E0",
+      "class_name": "",
+      "function_name": "?DisplacementMonochromeEffectColourFadeOut@CGameScriptInterface@@UBEXMPAX@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:37:37"
+    },
+    {
+      "address": "0x00891C40",
+      "class_name": "",
+      "function_name": "?DisplayMoneyBag@CGameScriptInterface@@UBEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:38:36"
+    },
+    {
+      "address": "0x0088E210",
+      "class_name": "",
+      "function_name": "?DisplayTime@CGameScriptInterface@@UBEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:39:01"
+    },
+    {
+      "address": "0x00891320",
+      "class_name": "",
+      "function_name": "?EnableDangerMusic@CGameScriptInterface@@UBEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:39:28"
+    },
+    {
+      "address": "0x0088F4A0",
+      "class_name": "",
+      "function_name": "?EnableDecals@CGameScriptInterface@@UBEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:40:02"
+    },
+    {
+      "address": "0x0088F620",
+      "class_name": "",
+      "function_name": "?EnableSounds@CGameScriptInterface@@UBEX_N@Z",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:41:26"
+    },
+    {
+      "address": "0x006E7290",
+      "class_name": "",
+      "function_name": "?EndLetterBox@CGameScriptInterface@@MAEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:42:04"
+    },
+    {
+      "address": "0x0088E4C0",
+      "class_name": "",
+      "function_name": "?FadeScreenIn@CGameScriptInterface@@UAEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:43:08"
+    },
+    {
+      "address": "0x008907E0",
+      "class_name": "",
+      "function_name": "?FadeScreenOutUntilNextCallToFadeScreenIn@CGameScriptInterface@@UAEXMM@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:44:24"
+    },
+    {
+      "address": "0x00891520",
+      "class_name": "",
+      "function_name": "?FailAllActiveQuests@CGameScriptInterface@@UBEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:45:23"
+    },
+    {
+      "address": "0x0088E500",
+      "class_name": "",
+      "function_name": "?FixMovieSequenceCamera@CGameScriptInterface@@UBEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:57:13"
+    },
+    {
+      "address": "0x00893040",
+      "class_name": "",
+      "function_name": "?GetActiveGossipCategoriesSize@CGameScriptInterface@@UAEHXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:57:39"
+    },
+    {
+      "address": "0x008A17D0",
+      "class_name": "",
+      "function_name": "?GetBestTimeGuessTheAddition@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T20:59:07"
+    },
+    {
+      "address": "0x008A1590",
+      "class_name": "",
+      "function_name": "?GetBestTimePairs@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:00:04"
+    },
+    {
+      "address": "0x008A15F0",
+      "class_name": "",
+      "function_name": "?GetBestTimeSorting@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:01:00"
+    },
+    {
+      "address": "0x0088FB70",
+      "class_name": "",
+      "function_name": "?GetBettingAccept@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:01:44"
+    },
+    {
+      "address": "0x0088FB50",
+      "class_name": "",
+      "function_name": "?GetBettingActive@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:02:06"
+    },
+    {
+      "address": "0x0088FC30",
+      "class_name": "",
+      "function_name": "?GetBoastingEnabled@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:02:28"
+    },
+    {
+      "address": "0x0088FAF0",
+      "class_name": "",
+      "function_name": "?GetCheapHeadLooking@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:02:53"
+    },
+    {
+      "address": "0x0088FBB0",
+      "class_name": "",
+      "function_name": "?GetCountBetMoneyDown@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:03:36"
+    },
+    {
+      "address": "0x0088F900",
+      "class_name": "",
+      "function_name": "?GetCountdownTimer@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:04:10"
+    },
+    {
+      "address": "0x00899700",
+      "class_name": "",
+      "function_name": "?GetDistanceHeroCanBeHeardFrom@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:06:19"
+    },
+    {
+      "address": "0x006E7340",
+      "class_name": "",
+      "function_name": "?GetGameAngleXY@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:07:13"
+    },
+    {
+      "address": "0x0088FBF0",
+      "class_name": "",
+      "function_name": "?GetGlobalTargetingDistanceOffset@CGameScriptInterface@@UAEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:07:38"
+    },
+    {
+      "address": "0x0088F9E0",
+      "class_name": "",
+      "function_name": "?GetGuildSealRecallAngleXY@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:08:05"
+    },
+    {
+      "address": "0x00899560",
+      "class_name": "",
+      "function_name": "?GetHeroAge@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:09:31"
+    },
+    {
+      "address": "0x00899930",
+      "class_name": "",
+      "function_name": "?GetHeroAttractiveness@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:13:47"
+    },
+    {
+      "address": "0x00899850",
+      "class_name": "",
+      "function_name": "?GetHeroFatness@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:15:00"
+    },
+    {
+      "address": "0x00897BD0",
+      "class_name": "",
+      "function_name": "?GetHeroHasChildren@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:16:29"
+    },
+    {
+      "address": "0x00897B10",
+      "class_name": "",
+      "function_name": "?GetHeroHasCurrentMarriage@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:17:25"
+    },
+    {
+      "address": "0x00897B70",
+      "class_name": "",
+      "function_name": "?GetHeroHasDivorcedMarriage@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:18:19"
+    },
+    {
+      "address": "0x00897AA0",
+      "class_name": "",
+      "function_name": "?GetHeroHasMarried@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:19:46"
+    },
+    {
+      "address": "0x00897C30",
+      "class_name": "",
+      "function_name": "?GetHeroHasMurderedWife@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:20:48"
+    },
+    {
+      "address": "0x00890370",
+      "class_name": "",
+      "function_name": "?GetHeroHealth@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:21:38"
+    },
+    {
+      "address": "0x008903A0",
+      "class_name": "",
+      "function_name": "?GetHeroHealthMax@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:22:50"
+    },
+    {
+      "address": "0x008903D0",
+      "class_name": "",
+      "function_name": "?GetHeroHealthPercentage@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:24:13"
+    },
+    {
+      "address": "0x00899F90",
+      "class_name": "",
+      "function_name": "?GetHeroMorality@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:26:00"
+    },
+    {
+      "address": "0x008998C0",
+      "class_name": "",
+      "function_name": "?GetHeroScariness@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:27:36"
+    },
+    {
+      "address": "0x008999A0",
+      "class_name": "",
+      "function_name": "?GetHeroWillEnergyLevel@CGameScriptInterface@@UBEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:29:10"
+    },
+    {
+      "address": "0x00893050",
+      "class_name": "",
+      "function_name": "?GetIsGossipForPlayerSize@CGameScriptInterface@@UAEHXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:29:35"
+    },
+    {
+      "address": "0x0088FA90",
+      "class_name": "",
+      "function_name": "?GetPlayerUsingMeleeDummies@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:30:00"
+    },
+    {
+      "address": "0x0088FAB0",
+      "class_name": "",
+      "function_name": "?GetPlayerUsingRangedDummies@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:30:22"
+    },
+    {
+      "address": "0x0088FAD0",
+      "class_name": "",
+      "function_name": "?GetPlayerUsingWillDummies@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:42:39"
+    },
+    {
+      "address": "0x0088FB30",
+      "class_name": "",
+      "function_name": "?GetPrizeTavernTable@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:43:01"
+    },
+    {
+      "address": "0x0088FB10",
+      "class_name": "",
+      "function_name": "?GetQuitTavernGame@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:43:25"
+    },
+    {
+      "address": "0x0088FBD0",
+      "class_name": "",
+      "function_name": "?GetSpotTheAdditionBeaten@CGameScriptInterface@@UAE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:43:52"
+    },
+    {
+      "address": "0x0088FC10",
+      "class_name": "",
+      "function_name": "?GetTradingPriceMult@CGameScriptInterface@@UAEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:44:15"
+    },
+    {
+      "address": "0x00899EF0",
+      "class_name": "",
+      "function_name": "?GiveHeroMorality@CGameScriptInterface@@UBEXM@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:50:14"
+    },
+    {
+      "address": "0x00899EF0",
+      "class_name": "",
+      "function_name": "?GiveHeroMorality@CGameScriptInterface@@UBEXM@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:52:22"
+    },
+    {
+      "address": "0x00899220",
+      "class_name": "",
+      "function_name": "?IncreaseHeroRenownLevel@CGameScriptInterface@@UBEXXZ",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:55:23"
+    },
+    {
+      "address": "0x0088ECC0",
+      "class_name": "",
+      "function_name": "?IsCameraInScriptedMode@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:56:23"
+    },
+    {
+      "address": "0x00891EA0",
+      "class_name": "",
+      "function_name": "?IsHeroAllowedHenchmenInCurrentRegion@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:58:30"
+    },
+    {
+      "address": "0x008902B0",
+      "class_name": "",
+      "function_name": "?IsHeroChild@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T21:59:39"
+    },
+    {
+      "address": "0x00898E60",
+      "class_name": "",
+      "function_name": "?IsHeroHandLampLit@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:01:13"
+    },
+    {
+      "address": "0x008913C0",
+      "class_name": "",
+      "function_name": "?IsHeroInTavernGame@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:02:20"
+    },
+    {
+      "address": "0x0089B330",
+      "class_name": "",
+      "function_name": "?IsHeroNaked@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:03:47"
+    },
+    {
+      "address": "0x00891870",
+      "class_name": "",
+      "function_name": "?IsHeroOnQuest@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:04:30"
+    },
+    {
+      "address": "0x008991A0",
+      "class_name": "",
+      "function_name": "?IsHeroRenownLevelFull@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:06:25"
+    },
+    {
+      "address": "0x0088F450",
+      "class_name": "",
+      "function_name": "?IsHeroSleepingEnabled@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:08:04"
+    },
+    {
+      "address": "0x00892270",
+      "class_name": "",
+      "function_name": "?IsInCutscene@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:13:10"
+    },
+    {
+      "address": "0x00899BA0",
+      "class_name": "",
+      "function_name": "?IsPlayerCreatureBlocking@CGameScriptInterface@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T22:14:32"
     }
   ]
 }
