@@ -1,5 +1,5 @@
 rank	track	module	score	catalog_functions	prototype_complete	prototype_gaps	calling_convention_unknown	naming_review	agent_candidates	verified_lifts
-1	candidate-cluster	_global	454623	11370	1993	9377	9324	391	32	0
+1	candidate-cluster	_global	454624	11370	1994	9376	9323	391	32	0
 2	candidate-cluster	CMouseDX	433000	24	24	0	0	0	14	10
 3	candidate-cluster	CMemoryAllocatorFixedSize	425500	21	21	0	0	0	11	7
 4	candidate-cluster	CNavQuadTree	417999	22	21	1	1	0	9	0

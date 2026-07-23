@@ -58,6 +58,12 @@ rebuild refresh ingests Wave 3 reports, compiles the curated catalog, exports re
 compiled row, rebuilds the manifest/backlog, and updates `rebuild/COVERAGE.md` after the RE queue
 releases Ghidra.
 
+The scheduled refresh and RE triggers intentionally share a 15-minute cadence. The queue runner now
+waits up to five minutes when it sees a live refresh PID, polling every 15 seconds and resuming as
+soon as Ghidra is released. Previously their roughly 30-second trigger offset made every new RE run
+exit immediately behind the refresh task. A live scheduled smoke run now proceeds into its target
+instead of silently losing the entire cadence.
+
 The queue's cross-wave exclusion set also imports the curated VC7.1 compile gate. A candidate with
 both compile and focused-behavior PASS is terminal for agent scheduling even when the LLM checker was
 overly conservative; byte-parity and human review remain separate promotion evidence. This prevents
