@@ -9,9 +9,8 @@ unsigned long CMemoryAllocatorFixedSize::GetHeaderOverhead()
         unsigned long headerSize = HeaderSize;
         do
         {
-            long areaCount = current->AreaCount;
+            total += headerSize + (unsigned long)current->AreaCount * 4;
             current = current->Next;
-            total += headerSize + areaCount * 4;
         } while (current != 0);
     }
     return total;

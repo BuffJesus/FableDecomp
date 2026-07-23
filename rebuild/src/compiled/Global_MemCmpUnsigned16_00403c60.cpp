@@ -1,17 +1,11 @@
 int __cdecl MemCmp_Unsigned16(
     const unsigned short* lhs, const unsigned short* rhs, unsigned long count)
 {
-    unsigned long index = 0;
-    if (count != 0)
+    unsigned long index;
+    for (index = 0; index < count; ++index)
     {
-        const unsigned short* current = rhs;
-        do
-        {
-            if (lhs[index] != *current)
-                return (-(static_cast<unsigned long>(lhs[index] < rhs[index])) & 0xFFFFFFFEUL) + 1;
-            ++index;
-            ++current;
-        } while (index < count);
+        if (lhs[index] != rhs[index])
+            return lhs[index] < rhs[index] ? -1 : 1;
     }
     return 0;
 }
