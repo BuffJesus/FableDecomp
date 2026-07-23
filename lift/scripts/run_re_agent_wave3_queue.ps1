@@ -271,6 +271,10 @@ try {
             continue
         }
         for ($attempt = 1; $attempt -le $MaxAttemptsPerTarget; ++$attempt) {
+            if (Test-Path -LiteralPath $stopPath) {
+                Write-QueueLog "STOP marker found before target=$($target.Address) attempt=$attempt"
+                exit 0
+            }
             $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
             $runLogRoot = Join-Path $liftRoot "logs\wave3\$(Get-Date -Format 'yyyy-MM-dd')"
             New-Item -ItemType Directory -Path $runLogRoot -Force | Out-Null
