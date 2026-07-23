@@ -37,3 +37,21 @@ These five compile, byte/relocation-match retail, and pass their existing behavi
 ## Research tier (large 0%-match loaders)
 
 The ~16 large `DIFFER` loaders (Render 2654B, RenderForeground 4431B, LoadHeader 1929B, texture preloaders, …) are **behavioural reimplementations**, not instruction-faithful ports — they call named helper stubs and pass behaviour tests but cannot byte-match without a full rewrite pinning/inlining every engine call. Correctly deprioritised vs the small structural wins; they remain legitimately at the behaviour-tested tier.
+
+## Update — 6th promotion + confirmed dead-ends (2026-07-22, solo pass)
+
+- **`CMemoryAllocatorFixedSize::GetTotalMemoryAllocated` @00a65da0 → exact MATCH** (52/52, behaviour PASS).
+  Rewritten in the sibling `while`-loop style: `total += current->AreaCount *
+  AllocationSizeIncludingHeader + HeaderSize`. Both member reads hoist as loop-invariants (esi/ecx),
+  matching retail's two-callee-saved-register shape (the prior form spilled to ebx).
+- **`WideString_EqualsLen` @00404280 — unwinnable metric artifact, left DIFFER.** Retail is 64 bytes
+  ending at `ret`; its two `return 0` branches `jne 0x40` jump *past* the counted body to an
+  MSVC-folded **shared `xor eax,eax; ret` epilogue** that lives outside this function. A standalone TU
+  must emit its own 3-byte tail (→67 bytes), so byte-count can never equal retail's 64. Not a source
+  defect; the comparison is apples-to-oranges for functions with folded shared epilogues.
+- **CMap theme accessors (`GetEngineThemeAt` @0081f090 et al.) — non-source-controllable scheduler
+  artifact, left DIFFER.** The signed `/4` idiom is already corrected (`cdq` form). The residual is
+  pure register allocation / evaluation order: retail keeps `quarterGrid` in `ecx` and arranges each
+  divided operand in `eax` for a 1-byte `cdq`; VC7.1 on every source form tried holds them in `ecx`
+  and emits the 5-byte `mov edx,reg; sar edx,0x1f`. Commutative-reorder attempts are canonicalized
+  away. Confirmed class-2 (see failure classes above); proximity (74/147) ≠ winnability.
