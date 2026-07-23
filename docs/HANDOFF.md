@@ -1,6 +1,47 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-22 22:45 MDT (runtime smoke preserved, install restored, Claude continuation ready).*
+*Last updated: 2026-07-23 08:xx MDT (self-sustaining byte-match promotion loop online).*
+
+## Current authoritative resume point (2026-07-23) — self-sustaining byte-match loop
+
+The buildable-decomp promotion lane is now a self-refilling cycle. Candidate supply is
+effectively unlimited (32,687 untried high-yield functions in the manifest); the bottleneck is
+authoring throughput, not candidates.
+
+**This session landed 142 byte-identical promotions** (12 pilot + 130 batch3-rest), taking
+`rebuild/src/compiled/` from 131 → 261 files (roughly tripling the prior byte-identical count of
+55). batch4 (123 promotion-queue accessors) and batch5 (130 manifest-sweep accessors) are
+authoring in parallel at handoff; land them on completion.
+
+**The loop (one round):**
+1. `python tools/decomp_pipeline/next_batch.py batchN <count> [max_len=96]` — selects the next N
+   untried high-yield accessors (complete proto, known CC, accessor-ish return), mints their retail
+   oracle **straight from Fable.exe (Ghidra-free**, next-address length heuristic + ends-in-ret
+   confidence filter), writes `rebuild/oracles/pending/batchN_oracle.tsv` + `_targets.json`, prints
+   the address list. **No Ghidra window / no lock contention** — safe to run anytime.
+2. `python tools/decomp_pipeline/gen_bundles.py <oracle> <targets> <bundles_dir> <manifest.json> 96`
+   — disasm bundles for the authoring fleet.
+3. Launch the authoring workflow (scratchpad `author_wf.js`): ultracode `Workflow`, one agent per
+   candidate, each authors `source_cpp`/`test_cpp`/`pass_pattern` and self-verifies with
+   `check_one.py` (iterates to a byte-match). Args: `{"batch":"batchN","addrs":[...]}`.
+4. `python tools/decomp_pipeline/verify_and_land.py <wf_output.json> <oracle> --land` — re-verifies
+   every candidate independently under VC7.1 (agent self-reports cannot cause a false land), writes
+   `src/compiled` + `tests` + catalog + oracle for exact/relocation MATCH + behavior PASS wins.
+   Wrap the workflow return as `{"result":{"authored":[...]}}` before feeding it.
+5. `git add rebuild/src/compiled rebuild/tests rebuild/build_candidates.ps1
+   rebuild/oracles/auto-re-candidates.tsv && git commit`. Keep ~2 lanes in flight; each workflow
+   completion is the trigger to land+commit+refill+relaunch.
+
+**Durable tooling added this session:** `tools/decomp_pipeline/next_batch.py` (selector+oracle
+minter), `tools/decomp_pipeline/check_one.py` (per-agent single-candidate scorer, isolated workdir
+so parallel `cl.exe` don't collide). `pe_oracle.py` self-validates 103/130 (79%) exact vs known
+rows; every miss is *over*-long (shared epilogue / SEH tail), never wrong content — so a stray row
+can only waste authoring effort, never mis-land.
+
+**Yield notes:** 3–48 byte accessors/stubs win at ~76–100%; larger bodies with engine calls are
+behavioral reimplementations that byte-match rarely (correctly deprioritized). `pe_oracle` over-long
+rows and equal-length register-allocation/scheduler artifacts (see `docs/PARITY_TRIAGE.md`) are the
+two non-winnable classes — not source-reachable, do not regrind.
 
 ## Current authoritative resume point (2026-07-22)
 
