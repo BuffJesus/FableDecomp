@@ -64,13 +64,31 @@ def cl(args,e): return subprocess.run([str(VC/"bin"/"cl.exe")]+args,capture_outp
 
 def sanitize(s): return re.sub(r"[^A-Za-z0-9]","",s)
 
+def make_base(module, leaf, addr):
+    """Generate a Windows-safe, address-unique candidate basename.
+
+    Some STL/template module names are hundreds of characters after
+    sanitization. NTFS path components are capped at 255 chars, so cap the
+    descriptive portion and rely on the address suffix for uniqueness.
+    """
+    m = sanitize(module or "_global")
+    l = sanitize(leaf or "function")
+    base = f"{m[:80]}_{l[:48]}_{addr}"
+    return base[:180]
+
+def cataloged_addresses(catp):
+    if not catp.exists():
+        return set()
+    return {m.group(1).lower() for m in re.finditer(r"Address\s*=\s*'([0-9a-fA-F]{8})'", catp.read_text(encoding="utf-8"))}
+
 def main():
     outf=Path(sys.argv[1]); oraclef=Path(sys.argv[2]); land="--land" in sys.argv
     data=json.loads(outf.read_text(encoding="utf-8"))["result"]["authored"]
     orc={r["address"].lower():r for r in csv.DictReader(open(oraclef,encoding="utf-8-sig"),delimiter="\t")}
     e=env(); wins=[]
     PRAGMAS=["", '#pragma optimize("s",on)', '#pragma optimize("t",on)', '#pragma optimize("g",on)']
-    landed_addrs={p.stem.split("_")[-1].lower() for p in (ROOT/"rebuild"/"src"/"compiled").glob("*.cpp")}
+    catp = ROOT/"rebuild"/"build_candidates.ps1"
+    landed_addrs = cataloged_addresses(catp)
     def parity_of(srctext, addr, leaf, retail):
         sp=WORK/f"{addr}.cpp"; sp.write_text(srctext,encoding="utf-8")
         obj=WORK/f"{addr}.obj"; obj.unlink(missing_ok=True)
@@ -111,7 +129,7 @@ def main():
             else: beh="LINK_FAIL"
         print(f"{addr:10} {st:16} {beh:6} {name}")
         if st.startswith(("MATCH","RELOCATION_MATCH")) and beh=="PASS":
-            base=f"{sanitize(mod)}_{sanitize(leaf)[:36]}_{addr}"
+            base=make_base(mod, leaf, addr)
             wins.append({"addr":addr,"name":name,"leaf":leaf,"module":mod,"status":st,"pass":patt,"base":base,
                          "src":src,"test":tst,"oracle_row":o})
     print(f"\nWINS: {len(wins)}")
@@ -127,7 +145,7 @@ def main():
                 f"        Source = '{w['base']}.cpp'\n        TestSource = '{w['base']}_test.cpp'\n"
                 f"        PassPattern = '{w['pass']}'\n    }}")
         # insert into catalog before closing ')'
-        catp=ROOT/"rebuild"/"build_candidates.ps1"; text=catp.read_text(encoding="utf-8")
+        text=catp.read_text(encoding="utf-8")
         marker="$oldPath = $env:PATH"; idx=text.index(marker); close=text.rindex("\n)",0,idx)
         text=text[:close]+"\n"+"\n".join(entries)+text[close:]
         catp.write_text(text,encoding="utf-8")
