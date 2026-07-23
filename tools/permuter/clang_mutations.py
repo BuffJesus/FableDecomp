@@ -187,6 +187,43 @@ def reassoc_variants(path: Path, leaf: str, limit: int = 40):
     return out
 
 
+def stmt_split_variants(path: Path, leaf: str, limit: int = 20):
+    """Split `T x = a OP b;` declarations into `T x = a; x OP= b;` (OP in + - * & | ^).
+    Shifts when the RHS operands are materialized -- a distinct regalloc lever from
+    temp-introduction. Semantics-preserving for scalar types."""
+    tu, src = _parse(path)
+    func = _find_func(tu, leaf)
+    if func is None:
+        return []
+    body = _body(func)
+    if body is None:
+        return []
+    out = []
+    decl_re = None
+    import re as _re
+    decl_re = _re.compile(
+        r"(?P<indent>[ \t]*)(?P<ty>[A-Za-z_][\w:<>\* ]*?)\s+(?P<var>\w+)\s*=\s*"
+        r"(?P<a>[^;=]+?)\s*(?P<op>[-+*&|^])\s*(?P<b>[^;=]+?);")
+    for m in decl_re.finditer(src):
+        a, b, op = m.group("a").strip(), m.group("b").strip(), m.group("op")
+        if any(t in a + b for t in ("++", "--", "?")):
+            continue
+        indent, ty, var = m.group("indent"), m.group("ty").strip(), m.group("var")
+        repl = f"{indent}{ty} {var} = {a};\n{indent}{var} {op}= {b};"
+        mutated = src[:m.start()] + repl + src[m.end():]
+        out.append((f"split[{var} = {a[:20]} {op} {b[:20]}]", mutated))
+        if len(out) >= limit:
+            break
+    return out
+
+
+def all_variants(path: Path, leaf: str):
+    """Every single-step mutation this module knows."""
+    return (temp_intro_variants(path, leaf)
+            + reassoc_variants(path, leaf)
+            + stmt_split_variants(path, leaf))
+
+
 if __name__ == "__main__":
     import sys
     p = Path(sys.argv[1]); leaf = sys.argv[2]
