@@ -1,0 +1,1 @@
+void __stdcall sub_004367f0(int) {}

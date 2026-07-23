@@ -1,5 +1,5 @@
 {
- "count": 1514,
+ "count": 1583,
  "functions": [
   {
    "address": "0x004012bc",
@@ -647,6 +647,123 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0040d8f0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0040d900",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0040d910",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0040db30",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0040db40",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0040db50",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0040dbf0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0040dc00",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0040dc10",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0040dc20",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0040dc60",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0040dc70",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0040dc90",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
    "parity": "EXACT"
   },
   {
@@ -1910,6 +2027,15 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x0041c640",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
    "address": "0x0041c700",
    "name": "UnInitialise",
    "module": "CGraphicFrame",
@@ -2393,6 +2519,24 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00428eb2",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00428eb7",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
    "parity": "EXACT"
   },
   {
@@ -3764,6 +3908,33 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x0042f939",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0042f93e",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0042f943",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
    "address": "0x0042f948",
    "name": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>",
    "module": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals",
@@ -4403,6 +4574,15 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x00434830",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
    "address": "0x00434840",
    "name": "StartNewScene",
    "module": "CEngine",
@@ -4463,6 +4643,15 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CWorld *,CGameEvent *",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00434b00",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
    "parity": "EXACT"
   },
   {
@@ -4572,6 +4761,24 @@
    "return_type": "void",
    "parameter_types": "allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *",
    "parity": "RELOC"
+  },
+  {
+   "address": "0x004367f0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00436800",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
   },
   {
    "address": "0x00436830",
@@ -5150,6 +5357,87 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x0043cd20",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043cd30",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043cd40",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043cf50",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043cf60",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043cf70",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043cf80",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043cf90",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043cff0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
    "address": "0x0043d200",
    "name": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>",
    "module": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals",
@@ -5516,6 +5804,24 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "ENavigatorType *,ENavigatorType *,ENavigatorType *",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043dff0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043e000",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
    "parity": "EXACT"
   },
   {
@@ -5924,6 +6230,150 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x0043f0b0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f0c0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f0d0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f0e0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f0f0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f100",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f190",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f1a0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f1b0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f1c0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f1d0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f1e0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f1f0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f200",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f210",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f220",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
    "address": "0x0043f230",
    "name": "SortTreeRecursively",
    "module": "CGuiControlTreePane",
@@ -6011,6 +6461,15 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0043f880",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
    "parity": "EXACT"
   },
   {
@@ -7271,6 +7730,33 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCHeroExperience *,bool",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044aab0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044aaf0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044ab00",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
    "parity": "EXACT"
   },
   {
@@ -8658,6 +9144,141 @@
    "return_type": "void",
    "parameter_types": "LTextTreeWalkThrough *,LTextBinNode *",
    "parity": "RELOC"
+  },
+  {
+   "address": "0x00451bc4",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451bc5",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451bc6",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451bfc",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451c25",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451c26",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451c27",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451c28",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451c29",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451c2a",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451c39",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451c3a",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451c3b",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451c3c",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00451c3d",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
   },
   {
    "address": "0x00451c83",
