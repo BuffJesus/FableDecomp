@@ -633,6 +633,132 @@ $catalog = @(
         TestSource = 'Global_CTCInventoryCheckSlotTypeNegative_00c2d7b0_test.cpp'
         PassPattern = 'CTCINVENTORY_CHECKSLOTTYPENEGATIVE_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0042da70'
+        Module = 'CDefClassBase'
+        Source = 'CDefClassBase_IsParentDefCDefClassBaseUBENXZ_0042da70.cpp'
+        TestSource = 'CDefClassBase_IsParentDefCDefClassBaseUBENXZ_0042da70_test.cpp'
+        PassPattern = 'CDEFCLASSBASE_0042da70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042daa0'
+        Module = 'CDefClassBase'
+        Source = 'CDefClassBase_GetPSubDefInfoMapCDefClassBaseUAEPAV_0042daa0.cpp'
+        TestSource = 'CDefClassBase_GetPSubDefInfoMapCDefClassBaseUAEPAV_0042daa0_test.cpp'
+        PassPattern = 'CDEFCLASSBASE_0042daa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041cf2c'
+        Module = 'CTCInventoryBase'
+        Source = 'CTCInventoryBase_GetCanItemBeQuickAssigned_0041cf2c.cpp'
+        TestSource = 'CTCInventoryBase_GetCanItemBeQuickAssigned_0041cf2c_test.cpp'
+        PassPattern = 'CTCINVENTORYBASE_0041cf2c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba7fe0'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = 'CEngineInternalPrimitiveMeshBase_GetMorphInfoCEngineInternalPrimitive_00ba7fe0.cpp'
+        TestSource = 'CEngineInternalPrimitiveMeshBase_GetMorphInfoCEngineInternalPrimitive_00ba7fe0_test.cpp'
+        PassPattern = 'CENGINEINTERNALPRIMITIVEMESHBASE_00ba7fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692460'
+        Module = 'CCreatureActionBase'
+        Source = 'CCreatureActionBase_GetAnimDelayTimeCCreatureActionBaseU_00692460.cpp'
+        TestSource = 'CCreatureActionBase_GetAnimDelayTimeCCreatureActionBaseU_00692460_test.cpp'
+        PassPattern = 'CCREATUREACTIONBASE_00692460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00661ec0'
+        Module = 'CThingCreatureBase'
+        Source = 'CThingCreatureBase_GetCombatManager_00661ec0.cpp'
+        TestSource = 'CThingCreatureBase_GetCombatManager_00661ec0_test.cpp'
+        PassPattern = 'CTHINGCREATUREBASE_00661ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00661ed0'
+        Module = 'CThingCreatureBase'
+        Source = 'CThingCreatureBase_GetCombatManager_00661ed0.cpp'
+        TestSource = 'CThingCreatureBase_GetCombatManager_00661ed0_test.cpp'
+        PassPattern = 'CTHINGCREATUREBASE_00661ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00697700'
+        Module = 'CGameCameraManager'
+        Source = 'CGameCameraManager_GetControlAngleXYCGameCameraManagerU_00697700.cpp'
+        TestSource = 'CGameCameraManager_GetControlAngleXYCGameCameraManagerU_00697700_test.cpp'
+        PassPattern = 'CGAMECAMERAMANAGER_00697700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00697710'
+        Module = 'CGameCameraManager'
+        Source = 'CGameCameraManager_GetNoControlMovementTime_00697710.cpp'
+        TestSource = 'CGameCameraManager_GetNoControlMovementTime_00697710_test.cpp'
+        PassPattern = 'CGAMECAMERAMANAGER_00697710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057a67e'
+        Module = 'CTCHeroStats'
+        Source = 'CTCHeroStats_GetMoralityMax_0057a67e.cpp'
+        TestSource = 'CTCHeroStats_GetMoralityMax_0057a67e_test.cpp'
+        PassPattern = 'CTCHEROSTATS_0057a67e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004bc180'
+        Module = 'CTCGraphicAppearance'
+        Source = 'CTCGraphicAppearance_GetFadeDistance_004bc180.cpp'
+        TestSource = 'CTCGraphicAppearance_GetFadeDistance_004bc180_test.cpp'
+        PassPattern = 'CTCGRAPHICAPPEARANCE_004bc180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c7990'
+        Module = 'CViewBase'
+        Source = 'CViewBase_GetDisplayEngine_004c7990.cpp'
+        TestSource = 'CViewBase_GetDisplayEngine_004c7990_test.cpp'
+        PassPattern = 'CVIEWBASE_004c7990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c79d0'
+        Module = 'CViewBase'
+        Source = 'CViewBase_GetDisplayEngine_004c79d0.cpp'
+        TestSource = 'CViewBase_GetDisplayEngine_004c79d0_test.cpp'
+        PassPattern = 'CVIEWBASE_004c79d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cff10'
+        Module = 'CGameScriptThing'
+        Source = 'CGameScriptThing_GetAngleXYCGameScriptThingUBEMXZ_008cff10.cpp'
+        TestSource = 'CGameScriptThing_GetAngleXYCGameScriptThingUBEMXZ_008cff10_test.cpp'
+        PassPattern = 'CGAMESCRIPTTHING_008cff10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548670'
+        Module = 'CEditControlCentre'
+        Source = 'CEditControlCentre_PeekConnectedToTrackNode_00548670.cpp'
+        TestSource = 'CEditControlCentre_PeekConnectedToTrackNode_00548670_test.cpp'
+        PassPattern = 'CEDITCONTROLCENTRE_00548670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007443f0'
+        Module = 'CTCPerceiveThing'
+        Source = 'CTCPerceiveThing_IsUpdatingThisFrame_007443f0.cpp'
+        TestSource = 'CTCPerceiveThing_IsUpdatingThisFrame_007443f0_test.cpp'
+        PassPattern = 'CTCPERCEIVETHING_007443f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b23360'
+        Module = 'CIEngine'
+        Source = 'CIEngine_GetPrimitiveDrawDistanceFactorCIEngi_00b23360.cpp'
+        TestSource = 'CIEngine_GetPrimitiveDrawDistanceFactorCIEngi_00b23360_test.cpp'
+        PassPattern = 'CIENGINE_00b23360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b23470'
+        Module = 'CIEngine'
+        Source = 'CIEngine_GetStaticMapUpdatePassCountCIEngineU_00b23470.cpp'
+        TestSource = 'CIEngine_GetStaticMapUpdatePassCountCIEngineU_00b23470_test.cpp'
+        PassPattern = 'CIENGINE_00b23470_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
