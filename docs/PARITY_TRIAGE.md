@@ -55,3 +55,19 @@ The ~16 large `DIFFER` loaders (Render 2654B, RenderForeground 4431B, LoadHeader
   divided operand in `eax` for a 1-byte `cdq`; VC7.1 on every source form tried holds them in `ecx`
   and emits the 5-byte `mov edx,reg; sar edx,0x1f`. Commutative-reorder attempts are canonicalized
   away. Confirmed class-2 (see failure classes above); proximity (74/147) ≠ winnability.
+
+## Remaining DIFFER — do-not-regrind list
+- `Std_Move_Backward` @00405ba0 (9/30): only divergence is `mov esi,edx; sub esi,ecx` (retail) vs
+  `sub edx,ecx; mov esi,edx` (ours) — a register-allocation ordering nuance; size_t-cast + reorder
+  attempts do not move it. Class-2 scheduler artifact.
+- `__onexit` @00401296, `__RTC_Initialize` @004012ce: CRT-internal; depend on absolute CRT global
+  addresses/layout a standalone TU cannot reproduce (indirect jmp/pushes through fixed globals).
+  Not byte-matchable in isolation.
+- `CObjectFamilyDef::GetRandomObject` @008ed590 (1/166), `CMouseDX::SetPos` @00ab4700 (4/174):
+  low structural match — need a fresh Ghidra decompile pass, not a codegen tweak.
+
+**Parity lane outcome (this session): 6 DIFFER→MATCH promotions landed** (MemCmp_Unsigned16,
+GetHeaderOverhead, GetNoFreeAreas, GetTotalMemoryAllocated exact; __setdefaultprecision,
+OnReleaseDefaultPoolResources relocation). Remaining DIFFERs are metric/scheduler artifacts or
+research-tier reimplementations; next byte-parity growth needs fresh oracle bytes (Ghidra window)
+for new promotion-queue functions, sequenced around the auto-RE loop's Ghidra ownership.
