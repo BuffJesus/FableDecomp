@@ -80,3 +80,11 @@ from `D:\Tools\vc71\include\memory`) all produce `sub edx,ecx; mov esi,edx` wher
 `mov esi,edx; sub esi,ecx` (score 4, same length/semantics). Since even the original's own source
 form doesn't reproduce it under our cl 13.10, the residue is a compiler build/SP middle-end ordering
 difference — not source-controllable. Do not regrind.
+
+## Accessor batch — permuter harvest exhausted (2026-07-23)
+Ran --mutate --random over all remaining DIFFER accessors. Flag/pragma sweep already banked the
+5 reachable wins (optimize("s")). Residue splits: (a) length-mismatched candidates
+(prefix N/large) are SEMANTIC gaps needing re-authoring, not permutable; (b) equal-length score 3-8
+(005bd404/427 GetAnimationSpeedValue, 00643b3b IsAwareOfThing, 005486b0 PeekConnectedToTrackNode)
+are the register-allocation-artifact class — same wall as Std_Move_Backward. No further byte-parity
+wins are flag/mutation-reachable in this batch; next growth is re-authoring the semantic misses.
