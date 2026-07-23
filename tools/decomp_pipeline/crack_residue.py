@@ -152,7 +152,7 @@ def show_diff(retail, built, wd):
         print(f"  {mark}{rs:<40}  {bs:<40}")
 
 def main():
-    addr = sys.argv[1].lower().replace("0x", ""); land = "--land" in sys.argv
+    addr = sys.argv[1].strip().lower().replace("0x", ""); land = "--land" in sys.argv
     SP.mkdir(parents=True, exist_ok=True); wd = SP / addr; wd.mkdir(exist_ok=True)
     oracle = {r["address"].lower(): r for r in csv.DictReader(open(ROOT/"rebuild/oracles/auto-re-candidates.tsv", encoding="utf-8-sig"), delimiter="\t")}
     o = oracle.get(addr)
