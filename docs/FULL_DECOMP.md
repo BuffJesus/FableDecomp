@@ -80,6 +80,15 @@ unique, strong-owner, complete-prototype rows. The agent may produce a reconstru
 PASS, but it cannot set `hookApproved`; compile/behavior proof, target-build identity, ABI/callsite
 review, and a ForgeFSE runtime probe remain separate gates.
 
+ForgeFSE entry validation is also automated against `ghidra_out/cgsi_slots_aligned.tsv`. The first
+audit compared 443 recommended Quest APIs with 918 existing `pVTable[N]` assignments: 442 already
+resolved to the exact recommended retail address, including the four overloaded
+`CameraUseCameraPoint` entries. The sole mismatch identified a decomp naming gap rather than a bad
+ForgeFSE slot: CGSI slot 15 is `CGameScriptInterface::GetRegionName @ 0x0088E340`, while exact-leaf
+matching had selected `CTCQuestCard::GetRegionName @ 0x007025A0`. A decorated-symbol/vtable-backed
+override corrects the manifest on the next refresh, after which the scheduled audit requires
+443/443 matches.
+
 The landscape-paint lane now includes four relocation-masked byte-identical `CWorldMap` dispatch
 methods, four functional `CMap::Set/GetEngineTheme/BlendAt` implementations, and three functional
 `CScriptedMapBrush` cell accessors. The latter expose the authored brush layout directly: five
