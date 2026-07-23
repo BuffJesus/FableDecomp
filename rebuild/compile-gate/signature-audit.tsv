@@ -46,6 +46,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 008368f0	_global	ConditionalVirtualDispatch_OnLevelUnload	PASS	_global	ConditionalVirtualDispatch_OnLevelUnload	undefined	void __thiscall	0	2		REVIEW	explicit-parameter-count-mismatch
 0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	PASS	_global	CPersistInfo_InsertionSortStep_0086c5c0	undefined	void __fastcall	0	6		REVIEW	explicit-parameter-count-mismatch
 0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	PASS	_global	CPersistInfo_InsertionSortStep_0086fa00	undefined	void __fastcall	0	6		REVIEW	explicit-parameter-count-mismatch
+008702d0	_global	Handle_InitInvalid_008702d0	PASS	_global	Handle_InitInvalid_008702d0	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
 008ed590	CObjectFamilyDef	GetRandomObject	PASS	CObjectFamilyDef	GetRandomObject	long	long	0	0		PASS	
 00a65d30	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::ConsolidateFreeAreas	PASS	CMemoryAllocatorFixedSize	ConsolidateFreeAreas	void	void	0	0		PASS	
 00a65d40	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::GetAllocationSize	PASS	CMemoryAllocatorFixedSize	GetAllocationSize	ulong	unsigned long	1	1		PASS	
@@ -67,7 +68,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00a79b30	CNavQuadTreeNode	Initialise	PASS	CNavQuadTreeNode	Initialise	void	void	3	3		PASS	
 00a7a5e0	CNavQuadTree	InitialiseLines	PASS	CNavQuadTree	InitialiseLines	void	void	2	2		PASS	
 00a7a650	CNavQuadTree	LinkToNeighbouringMaps	PASS	CNavQuadTree	LinkToNeighbouringMaps	void	void	1	1		PASS	
-00a7a8d0	CNavQuadTree	Initialise	FAIL	CNavQuadTree	Initialise	void	void	1	1		PASS	
+00a7a8d0	CNavQuadTree	Initialise	PASS	CNavQuadTree	Initialise	void	void	1	1		PASS	
 00ab46e0	CMouseDX	CMouseDX::GetPos	PASS	CMouseDX	GetPos	void	void	1	1		PASS	
 00ab4700	CMouseDX	CMouseDX::SetPos	PASS	CMouseDX	SetPos	void	void	1	1		PASS	
 00ab5390	CMouseDX	CMouseDX::SetMouseCursor	FAIL	CMouseDX	SetMouseCursor	void	void	1	1		PASS	
@@ -117,6 +118,16 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00bfd420	CLandscapeLayerMesh	CLandscapeLayerMesh	PASS	LandscapeLayerMesh	CLandscapeLayerMesh	undefined	C	1	1	00bfd420;00bfddd0;00c3b900	REVIEW	owner-mismatch;duplicate-linkage-signature
 00bfddd0	CLandscapeLayerMesh	CLandscapeLayerMesh	PASS	LandscapeLayerMesh	CLandscapeLayerMesh	undefined	C	1	1	00bfd420;00bfddd0;00c3b900	REVIEW	owner-mismatch;duplicate-linkage-signature
 00bfe050	CLandscapeLayerMesh	LoadForeground	PASS	CLandscapeLayerMesh	LoadForeground	bool	bool	2	2		PASS	
+00c19f90	_global	Getter_Field84	PASS	_global	Getter_Field84	undefined	std::uint32_t __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
+00c20ef0	_global	IsStateStreaming_2to4	PASS	_global	IsStateStreaming_2to4	undefined	std::uint32_t __thiscall	0	1		REVIEW	explicit-parameter-count-mismatch
+00c2d7b0	_global	CTCInventory_CheckSlotTypeNegative	PASS	_global	CTCInventory_CheckSlotTypeNegative	undefined	std::int32_t __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
+00c336f0	_global	Constraint_NotifyGlobalManager	PASS	_global	Constraint_NotifyGlobalManager	undefined	void __cdecl	0	1		REVIEW	explicit-parameter-count-mismatch
+00c362f0	_global	CSBAgents_BuildAndDispatch_A	PASS	_global	CSBAgents_BuildAndDispatch_A	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
+00c36e00	_global	CSBAgents_BuildAndDispatch_SummonerLightning	PASS	_global	CSBAgents_BuildAndDispatch_SummonerLightning	undefined	void __fastcall	0	2		REVIEW	explicit-parameter-count-mismatch
+00c36fb0	_global	CSBAgents_BuildAndDispatch_TavernGame	PASS	_global	CSBAgents_BuildAndDispatch_TavernGame_Impl	undefined	static void __fastcall	0	3		REVIEW	method-name-mismatch;explicit-parameter-count-mismatch
+00c37000	_global	IntelligentPointer_BuildAndDispatchFloat	PASS	_global	IntelligentPointer_BuildAndDispatchFloat	undefined	float __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
 00c3b900	CLandscapeLayerMesh	CLandscapeLayerMesh	PASS			undefined		1	-1	00bfd420;00bfddd0;00c3b900	REVIEW	definition-not-parsed;duplicate-linkage-signature
+00c43de0	_global	DrawAutoPickups_SelectAndDrawPrimitive	PASS	_global	DrawAutoPickups_SelectAndDrawPrimitive	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
+00c43f80	_global	Weapon_ProcessAnimFrameIfReady	PASS	_global	Weapon_ProcessAnimFrameIfReady	undefined	std::uint32_t __thiscall	0	4		REVIEW	explicit-parameter-count-mismatch
 00caf580	CEngineLandscapePatch	CEngineLandscapePatch::Destructor	PASS			undefined		0	-1		REVIEW	definition-not-parsed
 00caf680	CEngineLandscapePatch	CEngineLandscapePatch::AllocateTask	PASS	CEngineLandscapePatch	AllocateTask	undefined	std::uint32_t __thiscall	0	11		REVIEW	explicit-parameter-count-mismatch

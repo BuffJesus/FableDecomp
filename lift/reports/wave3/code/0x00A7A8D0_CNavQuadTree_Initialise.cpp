@@ -26,12 +26,12 @@ namespace
 
     struct ListNodeOverlay
     {
-        ListNodeOverlay* Next;
-        ListNodeOverlay* Prev;
-        std::uint32_t Value0;
-        std::uint32_t Value1;
-        std::uint32_t Value2;
-        std::uint32_t Value3;
+        ListNodeOverlay* Next;  // +0x00
+        ListNodeOverlay* Prev;  // +0x04
+        std::uint32_t Value0;   // +0x08
+        std::uint32_t Value1;   // +0x0C
+        std::uint32_t Value2;   // +0x10
+        std::uint32_t Value3;   // +0x14
     };
     static_assert(sizeof(ListNodeOverlay) == 0x18);
     static_assert(offsetof(ListNodeOverlay, Next) == 0x0);
@@ -39,10 +39,10 @@ namespace
 
     struct CNavigationAreaInitLayerEntryOverlay
     {
-        std::uint32_t Field0;
-        std::uint32_t Field4;
-        void* ListObject;
-        std::uint32_t Field0C;
+        std::uint32_t Field0;   // +0x00
+        std::uint32_t Field4;   // +0x04
+        void* ListObject;       // +0x08
+        std::uint32_t Field0C;  // +0x0C
     };
     static_assert(sizeof(CNavigationAreaInitLayerEntryOverlay) == 0x10);
     static_assert(offsetof(CNavigationAreaInitLayerEntryOverlay, Field0) == 0x0);
@@ -67,10 +67,10 @@ namespace
 
     struct CNavigationLayerEntryOverlay
     {
-        std::uint32_t Field0;
-        std::uint32_t Field4;
-        void* ListObject;
-        std::uint32_t Field0C;
+        std::uint32_t Field0;   // +0x00
+        std::uint32_t Field4;   // +0x04
+        void* ListObject;       // +0x08
+        std::uint32_t Field0C;  // +0x0C
     };
     static_assert(sizeof(CNavigationLayerEntryOverlay) == 0x10);
     static_assert(offsetof(CNavigationLayerEntryOverlay, Field0) == 0x0);
@@ -94,26 +94,63 @@ namespace
     static_assert(offsetof(CNavigationLayerOverlay, ReserveLog2) == 0x24);
     static_assert(offsetof(CNavigationLayerOverlay, Dirty) == 0x25);
 
+    struct CANavQuadTreeNodeInitOverlay
+    {
+        void** Vftable;          // +0x00
+        float PosX;              // +0x04
+        float PosY;              // +0x08
+        std::uint8_t Flag0C;     // +0x0C
+        std::uint8_t LayerIndex; // +0x0D
+        std::uint8_t Flag0E;     // +0x0E
+        std::uint8_t Flag0F;     // +0x0F
+        std::uint32_t Field10;   // +0x10
+        std::uint32_t Field14;   // +0x14
+        union
+        {
+            std::uint32_t Field18; // +0x18
+            std::uint8_t Byte18;   // +0x18
+        };
+        union
+        {
+            std::uint32_t Field1C; // +0x1C
+            std::uint8_t Byte1C;   // +0x1C
+        };
+    };
+    static_assert(sizeof(CANavQuadTreeNodeInitOverlay) == 0x20);
+    static_assert(offsetof(CANavQuadTreeNodeInitOverlay, Vftable) == 0x00);
+    static_assert(offsetof(CANavQuadTreeNodeInitOverlay, PosX) == 0x04);
+    static_assert(offsetof(CANavQuadTreeNodeInitOverlay, PosY) == 0x08);
+    static_assert(offsetof(CANavQuadTreeNodeInitOverlay, Flag0C) == 0x0C);
+    static_assert(offsetof(CANavQuadTreeNodeInitOverlay, LayerIndex) == 0x0D);
+    static_assert(offsetof(CANavQuadTreeNodeInitOverlay, Flag0E) == 0x0E);
+    static_assert(offsetof(CANavQuadTreeNodeInitOverlay, Flag0F) == 0x0F);
+    static_assert(offsetof(CANavQuadTreeNodeInitOverlay, Field10) == 0x10);
+    static_assert(offsetof(CANavQuadTreeNodeInitOverlay, Field14) == 0x14);
+    static_assert(offsetof(CANavQuadTreeNodeInitOverlay, Field18) == 0x18);
+    static_assert(offsetof(CANavQuadTreeNodeInitOverlay, Byte18) == 0x18);
+    static_assert(offsetof(CANavQuadTreeNodeInitOverlay, Field1C) == 0x1C);
+    static_assert(offsetof(CANavQuadTreeNodeInitOverlay, Byte1C) == 0x1C);
+
     struct CNavQuadTreeInitialiseOverlay
     {
         std::byte Pad00[0x04];
-        bool Initialised;                        // +0x04
-        bool Activated;                          // +0x05
-        bool Initialising;                       // +0x06
-        C2DVector MapPos;                        // +0x07
-        float MapWidth;                          // +0x10
-        float MapHeight;                         // +0x14
-        long MapIndex;                           // +0x18
-        std::byte* NavigationLayersFirst;        // +0x1C
-        std::byte* NavigationLayersLast;         // +0x20
-        std::byte* NavigationLayersEnd;          // +0x24
+        bool Initialised;                       // +0x04
+        bool Activated;                         // +0x05
+        bool Initialising;                      // +0x06
+        C2DVector MapPos;                       // +0x07
+        float MapWidth;                         // +0x10
+        float MapHeight;                        // +0x14
+        long MapIndex;                          // +0x18
+        std::byte* NavigationLayersFirst;       // +0x1C
+        std::byte* NavigationLayersLast;        // +0x20
+        std::byte* NavigationLayersEnd;         // +0x24
         std::byte Pad28[0x28];
-        CNavigationPosition* ActionPointsFirst;  // +0x50
-        CNavigationPosition* ActionPointsLast;   // +0x54
-        CNavigationPosition* ActionPointsEnd;    // +0x58
+        CNavigationPosition* ActionPointsFirst; // +0x50
+        CNavigationPosition* ActionPointsLast;  // +0x54
+        CNavigationPosition* ActionPointsEnd;   // +0x58
         std::byte Pad5C[0x0C];
-        void* Guard68;                           // +0x68
-        void* Guard6C;                           // +0x6C
+        void* Guard68;                          // +0x68
+        void* Guard6C;                          // +0x6C
     };
     static_assert(offsetof(CNavQuadTreeInitialiseOverlay, Initialising) == 0x06);
     static_assert(offsetof(CNavQuadTreeInitialiseOverlay, MapPos) == 0x07);
@@ -130,7 +167,7 @@ namespace
 
     [[nodiscard]] static CNavigationLayerOverlay* GetLayer(
         const CNavQuadTreeInitialiseOverlay* self,
-        const int byteOffset)
+        int byteOffset)
     {
         return reinterpret_cast<CNavigationLayerOverlay*>(self->NavigationLayersFirst + byteOffset);
     }
@@ -187,7 +224,7 @@ namespace
         VectorRaw<CANavQuadTreeNode*>* nodes);
 
     void __thiscall JoinNavigationLayers(CNavQuadTree* self);
-    void __thiscall CNavQuadTree_InitializeWithEvents(long mapIndex);
+    void __thiscall CNavQuadTree_InitializeWithEvents(CNavQuadTree* self, long mapIndex);
     bool __thiscall IsActionPointReachable(CNavQuadTree* self, CNavigationPosition* point);
     int __thiscall GetPreferabilityCostForNode(CNavQuadTree* self, CANavQuadTreeNode* node);
     void __thiscall GetMemoryUsage(
@@ -350,8 +387,7 @@ void CNavQuadTree::Initialise(const CNavigationAreaInit& navigationAreaInit)
                         tempListHead->Prev = tempListHead;
                         local_4c = tempListHead;
 
-                        auto* puVar2 = *reinterpret_cast<void***>(
-                            const_cast<void*>(srcEntry->ListObject));
+                        auto* puVar2 = *reinterpret_cast<void***>(const_cast<void*>(srcEntry->ListObject));
                         Std_List_Construct_From_Iterator_Range(
                             tempListHead,
                             *puVar2,
@@ -479,21 +515,21 @@ void CNavQuadTree::Initialise(const CNavigationAreaInit& navigationAreaInit)
                     local_1c.Last = nullptr;
                     local_1c.End = nullptr;
 
-                    CBase* createdNode = static_cast<CBase*>(::operator new(0x20));
+                    auto* createdNode = static_cast<CANavQuadTreeNodeInitOverlay*>(::operator new(0x20));
                     if (createdNode != nullptr)
                     {
-                        NHeroInformationScreens::CBase::CBase(createdNode);
-                        *reinterpret_cast<float*>(reinterpret_cast<std::uint8_t*>(createdNode) + 0x04) = local_70;
-                        *reinterpret_cast<float*>(reinterpret_cast<std::uint8_t*>(createdNode) + 0x08) = local_6c;
-                        *reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(createdNode) + 0x10) = 0;
-                        *reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(createdNode) + 0x14) = 0;
-                        *reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(createdNode) + 0x18) = 0;
-                        *reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(createdNode) + 0x1C) = 0;
-                        createdNode[0x0C] = static_cast<CBase>(0);
-                        createdNode[0x0D] = static_cast<CBase>(local_80);
-                        createdNode[0x0E] = static_cast<CBase>(1);
-                        createdNode[0x0F] = static_cast<CBase>(0);
-                        *reinterpret_cast<void***>(createdNode) = PTR__vector_deleting_destructor__0129dcd4;
+                        NHeroInformationScreens::CBase::CBase(reinterpret_cast<CBase*>(createdNode));
+                        createdNode->PosX = local_70;
+                        createdNode->PosY = local_6c;
+                        createdNode->Field10 = 0;
+                        createdNode->Field14 = 0;
+                        createdNode->Field18 = 0;
+                        createdNode->Field1C = 0;
+                        createdNode->Flag0C = 0;
+                        createdNode->LayerIndex = static_cast<std::uint8_t>(local_80);
+                        createdNode->Flag0E = 1;
+                        createdNode->Flag0F = 0;
+                        createdNode->Vftable = PTR__vector_deleting_destructor__0129dcd4;
 
                         reinterpret_cast<CNavQuadTreeNode*>(createdNode)->CNavQuadTreeNode::Initialise(
                             this,
@@ -522,21 +558,21 @@ void CNavQuadTree::Initialise(const CNavigationAreaInit& navigationAreaInit)
                             reinterpret_cast<RawDeletingDestructor>((**reinterpret_cast<void***>(oldNode)))(oldNode, 1);
                         }
 
-                        createdNode = static_cast<CBase*>(::operator new(0x20));
+                        createdNode = static_cast<CANavQuadTreeNodeInitOverlay*>(::operator new(0x20));
                         if (createdNode != nullptr)
                         {
-                            NHeroInformationScreens::CBase::CBase(createdNode);
-                            *reinterpret_cast<float*>(reinterpret_cast<std::uint8_t*>(createdNode) + 0x04) = local_70;
-                            *reinterpret_cast<float*>(reinterpret_cast<std::uint8_t*>(createdNode) + 0x08) = local_6c;
-                            createdNode[0x0D] = static_cast<CBase>(local_80);
-                            createdNode[0x0C] = static_cast<CBase>(0);
-                            createdNode[0x0E] = static_cast<CBase>(1);
-                            createdNode[0x0F] = static_cast<CBase>(0);
-                            *reinterpret_cast<void***>(createdNode) = PTR__vector_deleting_destructor__0129dda4;
-                            *reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(createdNode) + 0x10) = 0;
-                            *reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::uint8_t*>(createdNode) + 0x14) = 0;
-                            createdNode[0x18] = static_cast<CBase>(0);
-                            createdNode[0x1C] = local_85;
+                            NHeroInformationScreens::CBase::CBase(reinterpret_cast<CBase*>(createdNode));
+                            createdNode->PosX = local_70;
+                            createdNode->PosY = local_6c;
+                            createdNode->LayerIndex = static_cast<std::uint8_t>(local_80);
+                            createdNode->Flag0C = 0;
+                            createdNode->Flag0E = 1;
+                            createdNode->Flag0F = 0;
+                            createdNode->Vftable = PTR__vector_deleting_destructor__0129dda4;
+                            createdNode->Field10 = 0;
+                            createdNode->Field14 = 0;
+                            createdNode->Byte18 = 0;
+                            createdNode->Byte1C = static_cast<std::uint8_t>(local_85);
                         }
 
                         layer->Nodes.First[nodeIndex] = reinterpret_cast<CANavQuadTreeNode*>(createdNode);
@@ -566,7 +602,7 @@ void CNavQuadTree::Initialise(const CNavigationAreaInit& navigationAreaInit)
         }
 
         JoinNavigationLayers(this);
-        CNavQuadTree_InitializeWithEvents(self->MapIndex);
+        CNavQuadTree_InitializeWithEvents(this, self->MapIndex);
 
         CNavigationPosition* point = self->ActionPointsFirst;
         if (point != self->ActionPointsLast)

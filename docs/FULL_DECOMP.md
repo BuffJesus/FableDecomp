@@ -86,8 +86,8 @@ resolved to the exact recommended retail address, including the four overloaded
 `CameraUseCameraPoint` entries. The sole mismatch identified a decomp naming gap rather than a bad
 ForgeFSE slot: CGSI slot 15 is `CGameScriptInterface::GetRegionName @ 0x0088E340`, while exact-leaf
 matching had selected `CTCQuestCard::GetRegionName @ 0x007025A0`. A decorated-symbol/vtable-backed
-override corrects the manifest on the next refresh, after which the scheduled audit requires
-443/443 matches.
+override corrects the manifest. The forced post-batch refresh applied it and the scheduled audit
+passed 443/443 entries with zero mismatches or missing assignment families.
 
 The landscape-paint lane now includes four relocation-masked byte-identical `CWorldMap` dispatch
 methods, four functional `CMap::Set/GetEngineTheme/BlendAt` implementations, and three functional

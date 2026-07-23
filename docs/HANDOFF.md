@@ -3952,7 +3952,13 @@ build-from-user-copy is the legally-defensible pattern.
   assignments with the aligned retail slot map and current overlay. Initial result: 442/443 exact
   Quest slot/address matches, zero missing assignment families. It correctly groups the four
   `CameraUseCameraPoint_*` overload entries.
-- The only mismatch exposed a bad exact-name recommendation: `CTCQuestCard::GetRegionName @
-  0x007025A0` versus ForgeFSE slot 15 / decorated CGSI method `CGameScriptInterface::GetRegionName @
-  0x0088E340`. Added a vtable/decorated-symbol-backed override. The next post-agent refresh applies
-  it and the audit is configured to fail unless the result becomes 443/443.
+- The only mismatch exposed a bad exact-name recommendation:
+  `CTCQuestCard::GetRegionName @ 0x007025A0` versus ForgeFSE slot 15 / decorated CGSI method
+  `CGameScriptInterface::GetRegionName @ 0x0088E340`. Added a vtable/decorated-symbol-backed
+  override; the post-agent refresh applied it and the audit now requires 443/443.
+- The forced refresh completed successfully: 132 integrity-clean agent candidates, 124 checker
+  passes, 91 curated compile+behavior passes, and a **443/443 PASS** for ForgeFSE Quest vtable
+  slot/address entries. No assignment family is missing.
+- Cleanly stopped the old batch after its in-flight retry (no process kill), refreshed, removed the
+  stop marker, and manually started the scheduled task. The live 16-target ForgeFSE batch began at
+  19:48:25 with `Entity.MsgIsKicked -> CScriptThing::MsgIsKicked @ 0x004AAF80`.

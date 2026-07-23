@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.1.0",
-  "generatedAt": "2026-07-22T19:11:16-06:00",
-  "sourceDigest": "963518bcb989bfb5255915122ffdbfca0320ee15353f927d86636d3a69707a0c",
+  "generatedAt": "2026-07-22T19:48:15-06:00",
+  "sourceDigest": "b8b8710b966a1e5743f7d5f15ad8e1191020bbf0e6d50f9b745cfcc8abd2b259",
   "target": {
     "executable": "Fable.exe",
     "imageBase": "0x00400000",
@@ -13,8 +13,8 @@
   },
   "summary": {
     "fseFunctions": 931,
-    "uniqueExactNameMatches": 442,
-    "ambiguousExactNameMatches": 76,
+    "uniqueExactNameMatches": 441,
+    "ambiguousExactNameMatches": 77,
     "unmatched": 413,
     "ownerAlignedRecommendations": 462,
     "verifiedRecommendedBindings": 0,
@@ -33711,11 +33711,36 @@
       "scope": "Quest",
       "returnType": "std::string",
       "parameters": [],
-      "matchStatus": "unique",
-      "recommendedAddress": "0x007025A0",
+      "matchStatus": "ambiguous",
+      "recommendedAddress": "0x0088E340",
       "recommendationConfidence": "owner-aligned-candidate",
       "hookApproved": false,
       "candidates": [
+        {
+          "address": "0x0088E340",
+          "rva": "0x0048E340",
+          "qualifiedName": "CGameScriptInterface::GetRegionName",
+          "module": "CGameScriptInterface",
+          "callingConvention": "__thiscall",
+          "returnType": "CCharString const &",
+          "parameterCount": 1,
+          "parameterTypesText": "CGameScriptInterface const *",
+          "prototypeComplete": true,
+          "cleanDecompile": "yes",
+          "agentVerdict": "",
+          "compiledStatus": "",
+          "behaviorTest": "",
+          "retailParity": "",
+          "liftGrade": "",
+          "ownerRelevance": "strong",
+          "engineImplementationVerified": false,
+          "score": 100,
+          "evidence": [
+            "exact-leaf-name",
+            "complete-prototype",
+            "quest-interface-owner"
+          ]
+        },
         {
           "address": "0x007025A0",
           "rva": "0x003025A0",

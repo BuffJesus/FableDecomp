@@ -1,31 +1,42 @@
 rank	address	module	name	retail_bytes	candidate_source_bytes	checker_verdict	first_blocker
-1	00a7a5e0	CNavQuadTree	InitialiseLines	0	1309	PASS	'C2DLineF' was not declared in this scope
-2	007266c0	CTCPhysicsBase	CTCPhysicsBase	0	1401	PASS	static assertion failed
-3	008368f0	_global	ConditionalVirtualDispatch_OnLevelUnload	0	1421	PASS	
-4	0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	0	1753	PASS	
-5	0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	0	1754	PASS	
-6	00403480	_global	_WinMain@16	0	1865	PASS	
-7	006b0730	CTCPhysicsBase	CTCPhysicsBase	0	1971	PASS	'C3DVector' does not name a type
-8	00c3b900	CLandscapeLayerMesh	CLandscapeLayerMesh	0	1978	PASS	'CEngineLandscapeMap' does not name a type
-9	00409090	_global	Engine_FindPrimitiveInArray	0	2191	PASS	
-10	00caf680	CEngineLandscapePatch	CEngineLandscapePatch::AllocateTask	0	2195	PASS	'CEngineLandscapePatch' has not been declared
-11	00713140	CActionDoCreatureAction	CActionDoCreatureAction	0	2734	PASS	invalid use of incomplete type 'class NTCScriptedControl::CActionDoCreatureAction'
-12	00a65ff0	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::CMemoryAllocatorFixedSize	0	2986	PASS	'CMemoryAllocatorFixedSize' does not name a type
-13	00ab5d00	CMouseDX	CMouseDX::CMouseDX	0	4084	PASS	
-14	00bfd420	CLandscapeLayerMesh	CLandscapeLayerMesh	0	4210	PASS	'CLandscapeLayerMesh' does not name a type
-15	00caf580	CEngineLandscapePatch	CEngineLandscapePatch::Destructor	0	4306	PASS	invalid use of incomplete type 'class CCharString'
-16	00bfddd0	CLandscapeLayerMesh	CLandscapeLayerMesh	0	4322	PASS	'CGraphicInfoFrame' does not name a type
-17	004022b0	_global	GFInitialise	0	4991	PASS	invalid use of incomplete type 'struct CDisplayManager'
-18	007602f0	_global	Math_PolygonAngleSumClosureCheck	0	5367	PASS	expected '(' before '{' token
-19	00402130	_global	MyDocuments_CheckWritePermissions	0	6575	PASS	
-20	00a76f30	CNavQuadTree	IsAreaBlockedByLines	0	6581	PASS	'list' in namespace 'std' does not name a template type
-21	00401067	_global	entry	0	6600	PASS	static assertion failed
-22	00401c00	_global	GFHandleSystemInitError	0	9788	PASS	
-23	004fe7f0	_global	CollectSoundThemeSwitchDefs	0	10371	PASS	static assertion failed
-24	00a793d0	CNavQuadTree	ConnectVerticalMapEdge	0	12933	PASS	'CNavConnectorNode' does not name a type
-25	00a79680	CNavQuadTree	ConnectVerticalMapEdge	0	13026	PASS	'CNavConnectorNode' does not name a type
-26	0040cec0	_global	CUserProfileManager_Constructor	0	14968	FAIL	
-27	00a79b30	CNavQuadTreeNode	Initialise	0	16120	PASS	'CANavQuadTreeNode' does not name a type
-28	00a781a0	CNavQuadTree	UpdateLines	0	16425	PASS	'C2DVector' does not name a type
-29	0050a650	CWorldMap	GetMapNavigationAreaInit	0	26227	PASS	use of enum 'EHeroMorphType' without previous declaration
-30	00a7a8d0	CNavQuadTree	Initialise	0	26232	FAIL	'C2DLineF' was not declared in this scope
+1	00c19f90	_global	Getter_Field84	0	338		
+2	00c2d7b0	_global	CTCInventory_CheckSlotTypeNegative	0	493		
+3	00c20ef0	_global	IsStateStreaming_2to4	0	582		
+4	008702d0	_global	Handle_InitInvalid_008702d0	0	728		
+5	00a7a5e0	CNavQuadTree	InitialiseLines	0	1309	PASS	'C2DLineF' was not declared in this scope
+6	007266c0	CTCPhysicsBase	CTCPhysicsBase	0	1401	PASS	static assertion failed
+7	008368f0	_global	ConditionalVirtualDispatch_OnLevelUnload	0	1421	PASS	
+8	00c37000	_global	IntelligentPointer_BuildAndDispatchFloat	0	1482		
+9	00c36e00	_global	CSBAgents_BuildAndDispatch_SummonerLightning	0	1495		
+10	00c36fb0	_global	CSBAgents_BuildAndDispatch_TavernGame	0	1687		expected '(' before '{' token
+11	00c362f0	_global	CSBAgents_BuildAndDispatch_A	0	1706		
+12	0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	0	1753	PASS	
+13	0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	0	1754	PASS	
+14	00c336f0	_global	Constraint_NotifyGlobalManager	0	1818		
+15	00c43f80	_global	Weapon_ProcessAnimFrameIfReady	0	1845		expected '(' before '{' token
+16	00403480	_global	_WinMain@16	0	1865	PASS	
+17	006b0730	CTCPhysicsBase	CTCPhysicsBase	0	1971	PASS	'C3DVector' does not name a type
+18	00c3b900	CLandscapeLayerMesh	CLandscapeLayerMesh	0	1978	PASS	'CEngineLandscapeMap' does not name a type
+19	00c43de0	_global	DrawAutoPickups_SelectAndDrawPrimitive	0	2098		
+20	00409090	_global	Engine_FindPrimitiveInArray	0	2191	PASS	
+21	00caf680	CEngineLandscapePatch	CEngineLandscapePatch::AllocateTask	0	2195	PASS	'CEngineLandscapePatch' has not been declared
+22	00713140	CActionDoCreatureAction	CActionDoCreatureAction	0	2734	PASS	invalid use of incomplete type 'class NTCScriptedControl::CActionDoCreatureAction'
+23	00a65ff0	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::CMemoryAllocatorFixedSize	0	2986	PASS	'CMemoryAllocatorFixedSize' does not name a type
+24	00ab5d00	CMouseDX	CMouseDX::CMouseDX	0	4084	PASS	
+25	00bfd420	CLandscapeLayerMesh	CLandscapeLayerMesh	0	4210	PASS	'CLandscapeLayerMesh' does not name a type
+26	00caf580	CEngineLandscapePatch	CEngineLandscapePatch::Destructor	0	4306	PASS	invalid use of incomplete type 'class CCharString'
+27	00bfddd0	CLandscapeLayerMesh	CLandscapeLayerMesh	0	4322	PASS	'CGraphicInfoFrame' does not name a type
+28	004022b0	_global	GFInitialise	0	4991	PASS	invalid use of incomplete type 'struct CDisplayManager'
+29	007602f0	_global	Math_PolygonAngleSumClosureCheck	0	5367	PASS	expected '(' before '{' token
+30	00402130	_global	MyDocuments_CheckWritePermissions	0	6575	PASS	
+31	00a76f30	CNavQuadTree	IsAreaBlockedByLines	0	6581	PASS	'list' in namespace 'std' does not name a template type
+32	00401067	_global	entry	0	6600	PASS	static assertion failed
+33	00401c00	_global	GFHandleSystemInitError	0	9788	PASS	
+34	004fe7f0	_global	CollectSoundThemeSwitchDefs	0	10371	PASS	static assertion failed
+35	00a793d0	CNavQuadTree	ConnectVerticalMapEdge	0	12933	PASS	'CNavConnectorNode' does not name a type
+36	00a79680	CNavQuadTree	ConnectVerticalMapEdge	0	13026	PASS	'CNavConnectorNode' does not name a type
+37	0040cec0	_global	CUserProfileManager_Constructor	0	14968	FAIL	
+38	00a79b30	CNavQuadTreeNode	Initialise	0	16120	PASS	'CANavQuadTreeNode' does not name a type
+39	00a781a0	CNavQuadTree	UpdateLines	0	16425	PASS	'C2DVector' does not name a type
+40	0050a650	CWorldMap	GetMapNavigationAreaInit	0	26227	PASS	use of enum 'EHeroMorphType' without previous declaration
+41	00a7a8d0	CNavQuadTree	Initialise	0	27473	FAIL	'C2DLineF' was not declared in this scope
