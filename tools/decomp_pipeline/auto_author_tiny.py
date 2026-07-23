@@ -10,6 +10,10 @@ determined by the retail bytes:
   33 c0 c3 / 31 c0 c3 -> return 0
   6a xx 58 c3        -> return signed imm8
   b8 xx xx xx xx c3  -> return imm32
+  8b c1 c2 04 00     -> return first fastcall arg, pop one stack arg
+  8b c1 83 e0 xx c3  -> return first fastcall arg & imm8
+  8b c1 83 e0 xx c2 04 00 -> same, pop one stack arg
+  c7 01 xx xx xx xx c3 -> *first fastcall arg = imm32
 
 The normal verify_and_land.py gate still recompiles and byte-compares every
 candidate, so a bad inference can waste a compile but cannot mis-land.
@@ -58,6 +62,14 @@ def const_from_bytes(bs: bytes):
         return ("int", v)
     if len(bs) == 6 and bs[0] == 0xB8 and bs[-1] == 0xC3:
         return ("int", int.from_bytes(bs[1:5], "little", signed=False))
+    if h == "8bc1c20400":
+        return ("return_self_pop4", None)
+    if len(bs) == 6 and bs[:4] == b"\x8b\xc1\x83\xe0" and bs[-1] == 0xC3:
+        return ("and_self", bs[4])
+    if len(bs) == 8 and bs[:4] == b"\x8b\xc1\x83\xe0" and bs[-3:] == b"\xc2\x04\x00":
+        return ("and_self_pop4", bs[4])
+    if len(bs) == 7 and bs[:2] == b"\xc7\x01" and bs[-1] == 0xC3:
+        return ("store_imm32", int.from_bytes(bs[2:6], "little", signed=False))
     return None
 
 
@@ -96,6 +108,57 @@ def candidate(row):
             f"    {fn}(123);\n"
             f"    std::printf(\"{pattern}\\n\");\n"
             "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "return_self_pop4":
+        source = f"void* __fastcall {fn}(void* self, int, int)\n{{\n    return self;\n}}\n"
+        test = (
+            "#include <cstdio>\n"
+            f"void* __fastcall {fn}(void* self, int, int)\n{{\n    return self;\n}}\n"
+            "int main()\n"
+            "{\n"
+            "    int x = 0;\n"
+            f"    if ({fn}(&x, 1, 2) == &x) {{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "and_self":
+        source = f"int __fastcall {fn}(int self)\n{{\n    return self & {value};\n}}\n"
+        test = (
+            "#include <cstdio>\n"
+            f"int __fastcall {fn}(int self)\n{{\n    return self & {value};\n}}\n"
+            "int main()\n"
+            "{\n"
+            f"    if ({fn}(0x7f) == (0x7f & {value})) {{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "and_self_pop4":
+        source = f"int __fastcall {fn}(int self, int, int)\n{{\n    return self & {value};\n}}\n"
+        test = (
+            "#include <cstdio>\n"
+            f"int __fastcall {fn}(int self, int, int)\n{{\n    return self & {value};\n}}\n"
+            "int main()\n"
+            "{\n"
+            f"    if ({fn}(0x7f, 1, 2) == (0x7f & {value})) {{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "store_imm32":
+        source = f"void __fastcall {fn}(unsigned int* self)\n{{\n    *self = 0x{value:08x};\n}}\n"
+        test = (
+            "#include <cstdio>\n"
+            f"void __fastcall {fn}(unsigned int* self)\n{{\n    *self = 0x{value:08x};\n}}\n"
+            "int main()\n"
+            "{\n"
+            "    unsigned int x = 0;\n"
+            f"    {fn}(&x);\n"
+            f"    if (x == 0x{value:08x}) {{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
             "}\n"
         )
     else:

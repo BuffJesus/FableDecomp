@@ -1,5 +1,5 @@
 {
- "count": 1475,
+ "count": 1514,
  "functions": [
   {
    "address": "0x004012bc",
@@ -161,6 +161,15 @@
    "calling_convention": "__stdcall",
    "return_type": "void",
    "parameter_types": "void *,uint,int,_func_void_ptr_void_ptr *",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x004039f0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
    "parity": "EXACT"
   },
   {
@@ -1739,6 +1748,15 @@
    "parity": "RELOC"
   },
   {
+   "address": "0x004197f0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
    "address": "0x0041a810",
    "name": "Move",
    "module": "C2DBoxF",
@@ -2108,6 +2126,15 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x0041cd23",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
    "address": "0x0041cd6f",
    "name": "",
    "module": "_global",
@@ -2456,6 +2483,69 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CMemoryAllocatorVariableSize *",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x004292ec",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x004292f1",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x004292f6",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x004292fb",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00429317",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0042931c",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00429321",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
    "parity": "EXACT"
   },
   {
@@ -7571,6 +7661,123 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x0044eebd",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044eec2",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044eec7",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044eecc",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044eed1",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044eed6",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044eedb",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044eee0",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f03c",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f08e",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f1bb",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f24f",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f254",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
    "address": "0x0044f3b2",
    "name": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>",
    "module": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals",
@@ -7578,6 +7785,150 @@
    "return_type": "void",
    "parameter_types": "allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *",
    "parity": "RELOC"
+  },
+  {
+   "address": "0x0044f40b",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f410",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f415",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f41a",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f41f",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f424",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f429",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f42e",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f433",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f438",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f43d",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f442",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f447",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f44c",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f451",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0044f456",
+   "name": "",
+   "module": "_global",
+   "calling_convention": "",
+   "return_type": "",
+   "parameter_types": "",
+   "parity": "EXACT"
   },
   {
    "address": "0x0044f619",

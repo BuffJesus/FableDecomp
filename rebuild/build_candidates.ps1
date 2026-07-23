@@ -10524,6 +10524,279 @@ $catalog = @(
         TestSource = 'CEngineThemeGroupDef_Transfer_00459764_test.cpp'
         PassPattern = 'AUTO_TINY_00459764_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004039f0'
+        Module = '_global'
+        Source = 'global_sub004039f0_004039f0.cpp'
+        TestSource = 'global_sub004039f0_004039f0_test.cpp'
+        PassPattern = 'AUTO_TINY_004039f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004197f0'
+        Module = '_global'
+        Source = 'global_sub004197f0_004197f0.cpp'
+        TestSource = 'global_sub004197f0_004197f0_test.cpp'
+        PassPattern = 'AUTO_TINY_004197f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041cd23'
+        Module = '_global'
+        Source = 'global_sub0041cd23_0041cd23.cpp'
+        TestSource = 'global_sub0041cd23_0041cd23_test.cpp'
+        PassPattern = 'AUTO_TINY_0041cd23_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004292ec'
+        Module = '_global'
+        Source = 'global_sub004292ec_004292ec.cpp'
+        TestSource = 'global_sub004292ec_004292ec_test.cpp'
+        PassPattern = 'AUTO_TINY_004292ec_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004292f1'
+        Module = '_global'
+        Source = 'global_sub004292f1_004292f1.cpp'
+        TestSource = 'global_sub004292f1_004292f1_test.cpp'
+        PassPattern = 'AUTO_TINY_004292f1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004292f6'
+        Module = '_global'
+        Source = 'global_sub004292f6_004292f6.cpp'
+        TestSource = 'global_sub004292f6_004292f6_test.cpp'
+        PassPattern = 'AUTO_TINY_004292f6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004292fb'
+        Module = '_global'
+        Source = 'global_sub004292fb_004292fb.cpp'
+        TestSource = 'global_sub004292fb_004292fb_test.cpp'
+        PassPattern = 'AUTO_TINY_004292fb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00429317'
+        Module = '_global'
+        Source = 'global_sub00429317_00429317.cpp'
+        TestSource = 'global_sub00429317_00429317_test.cpp'
+        PassPattern = 'AUTO_TINY_00429317_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042931c'
+        Module = '_global'
+        Source = 'global_sub0042931c_0042931c.cpp'
+        TestSource = 'global_sub0042931c_0042931c_test.cpp'
+        PassPattern = 'AUTO_TINY_0042931c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00429321'
+        Module = '_global'
+        Source = 'global_sub00429321_00429321.cpp'
+        TestSource = 'global_sub00429321_00429321_test.cpp'
+        PassPattern = 'AUTO_TINY_00429321_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044eebd'
+        Module = '_global'
+        Source = 'global_sub0044eebd_0044eebd.cpp'
+        TestSource = 'global_sub0044eebd_0044eebd_test.cpp'
+        PassPattern = 'AUTO_TINY_0044eebd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044eec2'
+        Module = '_global'
+        Source = 'global_sub0044eec2_0044eec2.cpp'
+        TestSource = 'global_sub0044eec2_0044eec2_test.cpp'
+        PassPattern = 'AUTO_TINY_0044eec2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044eec7'
+        Module = '_global'
+        Source = 'global_sub0044eec7_0044eec7.cpp'
+        TestSource = 'global_sub0044eec7_0044eec7_test.cpp'
+        PassPattern = 'AUTO_TINY_0044eec7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044eecc'
+        Module = '_global'
+        Source = 'global_sub0044eecc_0044eecc.cpp'
+        TestSource = 'global_sub0044eecc_0044eecc_test.cpp'
+        PassPattern = 'AUTO_TINY_0044eecc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044eed1'
+        Module = '_global'
+        Source = 'global_sub0044eed1_0044eed1.cpp'
+        TestSource = 'global_sub0044eed1_0044eed1_test.cpp'
+        PassPattern = 'AUTO_TINY_0044eed1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044eed6'
+        Module = '_global'
+        Source = 'global_sub0044eed6_0044eed6.cpp'
+        TestSource = 'global_sub0044eed6_0044eed6_test.cpp'
+        PassPattern = 'AUTO_TINY_0044eed6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044eedb'
+        Module = '_global'
+        Source = 'global_sub0044eedb_0044eedb.cpp'
+        TestSource = 'global_sub0044eedb_0044eedb_test.cpp'
+        PassPattern = 'AUTO_TINY_0044eedb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044eee0'
+        Module = '_global'
+        Source = 'global_sub0044eee0_0044eee0.cpp'
+        TestSource = 'global_sub0044eee0_0044eee0_test.cpp'
+        PassPattern = 'AUTO_TINY_0044eee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f03c'
+        Module = '_global'
+        Source = 'global_sub0044f03c_0044f03c.cpp'
+        TestSource = 'global_sub0044f03c_0044f03c_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f03c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f08e'
+        Module = '_global'
+        Source = 'global_sub0044f08e_0044f08e.cpp'
+        TestSource = 'global_sub0044f08e_0044f08e_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f08e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f1bb'
+        Module = '_global'
+        Source = 'global_sub0044f1bb_0044f1bb.cpp'
+        TestSource = 'global_sub0044f1bb_0044f1bb_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f1bb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f24f'
+        Module = '_global'
+        Source = 'global_sub0044f24f_0044f24f.cpp'
+        TestSource = 'global_sub0044f24f_0044f24f_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f24f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f254'
+        Module = '_global'
+        Source = 'global_sub0044f254_0044f254.cpp'
+        TestSource = 'global_sub0044f254_0044f254_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f254_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f40b'
+        Module = '_global'
+        Source = 'global_sub0044f40b_0044f40b.cpp'
+        TestSource = 'global_sub0044f40b_0044f40b_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f40b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f410'
+        Module = '_global'
+        Source = 'global_sub0044f410_0044f410.cpp'
+        TestSource = 'global_sub0044f410_0044f410_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f415'
+        Module = '_global'
+        Source = 'global_sub0044f415_0044f415.cpp'
+        TestSource = 'global_sub0044f415_0044f415_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f415_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f41a'
+        Module = '_global'
+        Source = 'global_sub0044f41a_0044f41a.cpp'
+        TestSource = 'global_sub0044f41a_0044f41a_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f41a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f41f'
+        Module = '_global'
+        Source = 'global_sub0044f41f_0044f41f.cpp'
+        TestSource = 'global_sub0044f41f_0044f41f_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f41f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f424'
+        Module = '_global'
+        Source = 'global_sub0044f424_0044f424.cpp'
+        TestSource = 'global_sub0044f424_0044f424_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f424_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f429'
+        Module = '_global'
+        Source = 'global_sub0044f429_0044f429.cpp'
+        TestSource = 'global_sub0044f429_0044f429_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f429_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f42e'
+        Module = '_global'
+        Source = 'global_sub0044f42e_0044f42e.cpp'
+        TestSource = 'global_sub0044f42e_0044f42e_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f42e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f433'
+        Module = '_global'
+        Source = 'global_sub0044f433_0044f433.cpp'
+        TestSource = 'global_sub0044f433_0044f433_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f433_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f438'
+        Module = '_global'
+        Source = 'global_sub0044f438_0044f438.cpp'
+        TestSource = 'global_sub0044f438_0044f438_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f438_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f43d'
+        Module = '_global'
+        Source = 'global_sub0044f43d_0044f43d.cpp'
+        TestSource = 'global_sub0044f43d_0044f43d_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f43d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f442'
+        Module = '_global'
+        Source = 'global_sub0044f442_0044f442.cpp'
+        TestSource = 'global_sub0044f442_0044f442_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f442_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f447'
+        Module = '_global'
+        Source = 'global_sub0044f447_0044f447.cpp'
+        TestSource = 'global_sub0044f447_0044f447_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f447_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f44c'
+        Module = '_global'
+        Source = 'global_sub0044f44c_0044f44c.cpp'
+        TestSource = 'global_sub0044f44c_0044f44c_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f44c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f451'
+        Module = '_global'
+        Source = 'global_sub0044f451_0044f451.cpp'
+        TestSource = 'global_sub0044f451_0044f451_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f451_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f456'
+        Module = '_global'
+        Source = 'global_sub0044f456_0044f456.cpp'
+        TestSource = 'global_sub0044f456_0044f456_test.cpp'
+        PassPattern = 'AUTO_TINY_0044f456_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
