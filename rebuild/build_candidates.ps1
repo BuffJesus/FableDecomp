@@ -7654,6 +7654,328 @@ $catalog = @(
         TestSource = 'vectorCIntelligentPointerCThingconst_Destroy_00450a3c_test.cpp'
         PassPattern = 'vecdestroy_00450a3c_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0045266b'
+        Module = 'CHitLocationsDef'
+        Source = 'CHitLocationsDef_GetSizeofClass_0045266b.cpp'
+        TestSource = 'CHitLocationsDef_GetSizeofClass_0045266b_test.cpp'
+        PassPattern = 'CHitLocationsDef_0045266b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453884'
+        Module = 'CDegradableDef'
+        Source = 'CDegradableDef_GetSizeofClass_00453884.cpp'
+        TestSource = 'CDegradableDef_GetSizeofClass_00453884_test.cpp'
+        PassPattern = 'CDegradableDef_00453884_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453e80'
+        Module = 'CCombatAbilityBlockUnarmedAttackDef'
+        Source = 'CCombatAbilityBlockUnarmedAttackDef_GetSizeofClass_00453e80.cpp'
+        TestSource = 'CCombatAbilityBlockUnarmedAttackDef_GetSizeofClass_00453e80_test.cpp'
+        PassPattern = 'CCombatAbilityBlockUnarmedAttackDef_00453e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453e9a'
+        Module = 'CCombatAbilityBlockLightWeaponAttackDef'
+        Source = 'CCombatAbilityBlockLightWeaponAttackDef_GetSizeofClass_00453e9a.cpp'
+        TestSource = 'CCombatAbilityBlockLightWeaponAttackDef_GetSizeofClass_00453e9a_test.cpp'
+        PassPattern = 'CCombatAbilityBlockLightWeaponAttackDef_00453e9a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453eb4'
+        Module = 'CCombatAbilityBlockHeavyWeaponAttackDef'
+        Source = 'CCombatAbilityBlockHeavyWeaponAttackDef_GetSizeofClass_00453eb4.cpp'
+        TestSource = 'CCombatAbilityBlockHeavyWeaponAttackDef_GetSizeofClass_00453eb4_test.cpp'
+        PassPattern = 'CCombatAbilityBlockHeavyWeaponAttackDef_00453eb4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453ece'
+        Module = 'CCombatAbilityBlockProjectileWeaponAttackDef'
+        Source = 'CCombatAbilityBlockProjectileWeaponAttackDef_GetSizeofClass_00453ece.cpp'
+        TestSource = 'CCombatAbilityBlockProjectileWeaponAttackDef_GetSizeofClass_00453ece_test.cpp'
+        PassPattern = 'CCombatAbilityBlockProjectileWeaponAttackDef_00453ece_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454643'
+        Module = 'CSpecialEffectsDef'
+        Source = 'CSpecialEffectsDef_GetSizeofClass_00454643.cpp'
+        TestSource = 'CSpecialEffectsDef_GetSizeofClass_00454643_test.cpp'
+        PassPattern = 'CSpecialEffectsDef_00454643_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004536a9'
+        Module = 'CThingMultiArrowShotDef'
+        Source = 'CThingMultiArrowShotDef_Copy_004536a9.cpp'
+        TestSource = 'CThingMultiArrowShotDef_Copy_004536a9_test.cpp'
+        PassPattern = 'CThingMultiArrowShotDef_004536a9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453705'
+        Module = 'CInventoryItemDef'
+        Source = 'CInventoryItemDef_Copy_00453705.cpp'
+        TestSource = 'CInventoryItemDef_Copy_00453705_test.cpp'
+        PassPattern = 'CInventoryItemDef_00453705_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004537a0'
+        Module = 'CPhysicsDef'
+        Source = 'CPhysicsDef_Copy_004537a0.cpp'
+        TestSource = 'CPhysicsDef_Copy_004537a0_test.cpp'
+        PassPattern = 'CPhysicsDef_004537a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004537e4'
+        Module = 'CTCNoiseDef'
+        Source = 'CTCNoiseDef_CopyCTCNoiseDefUAEXPBVCDefClassBaseZ_004537e4.cpp'
+        TestSource = 'CTCNoiseDef_CopyCTCNoiseDefUAEXPBVCDefClassBaseZ_004537e4_test.cpp'
+        PassPattern = 'CTCNoiseDef_004537e4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453810'
+        Module = 'CCarrySlotDef'
+        Source = 'CCarrySlotDef_Copy_00453810.cpp'
+        TestSource = 'CCarrySlotDef_Copy_00453810_test.cpp'
+        PassPattern = 'CCarrySlotDef_00453810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453899'
+        Module = 'CActionUseDef'
+        Source = 'CActionUseDef_Copy_00453899.cpp'
+        TestSource = 'CActionUseDef_Copy_00453899_test.cpp'
+        PassPattern = 'CActionUseDef_00453899_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045390c'
+        Module = 'CHeroMarriageDef'
+        Source = 'CHeroMarriageDef_Copy_0045390c.cpp'
+        TestSource = 'CHeroMarriageDef_Copy_0045390c_test.cpp'
+        PassPattern = 'CHeroMarriageDef_0045390c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453b48'
+        Module = 'CCreatureStatsDef'
+        Source = 'CCreatureStatsDef_Copy_00453b48.cpp'
+        TestSource = 'CCreatureStatsDef_Copy_00453b48_test.cpp'
+        PassPattern = 'CCreatureStatsDef_00453b48_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453be3'
+        Module = 'CCoopSpiritDef'
+        Source = 'CCoopSpiritDef_Copy_00453be3.cpp'
+        TestSource = 'CCoopSpiritDef_Copy_00453be3_test.cpp'
+        PassPattern = 'CCoopSpiritDef_00453be3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453c1b'
+        Module = 'CContextSensitiveItemDef'
+        Source = 'CContextSensitiveItemDef_Copy_00453c1b.cpp'
+        TestSource = 'CContextSensitiveItemDef_Copy_00453c1b_test.cpp'
+        PassPattern = 'CContextSensitiveItemDef_00453c1b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453c53'
+        Module = 'CBonusItemDef'
+        Source = 'CBonusItemDef_Copy_00453c53.cpp'
+        TestSource = 'CBonusItemDef_Copy_00453c53_test.cpp'
+        PassPattern = 'CBonusItemDef_00453c53_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453ce5'
+        Module = 'CHeroTitleDef'
+        Source = 'CHeroTitleDef_Copy_00453ce5.cpp'
+        TestSource = 'CHeroTitleDef_Copy_00453ce5_test.cpp'
+        PassPattern = 'CHeroTitleDef_00453ce5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453d41'
+        Module = 'CTattooDef'
+        Source = 'CTattooDef_Copy_00453d41.cpp'
+        TestSource = 'CTattooDef_Copy_00453d41_test.cpp'
+        PassPattern = 'CTattooDef_00453d41_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453f5e'
+        Module = 'CCombatAbilityStrafeDef'
+        Source = 'CCombatAbilityStrafeDef_Copy_00453f5e.cpp'
+        TestSource = 'CCombatAbilityStrafeDef_Copy_00453f5e_test.cpp'
+        PassPattern = 'CCombatAbilityStrafeDef_00453f5e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453f8e'
+        Module = 'CCombatAbilityUseProjectileWeaponDef'
+        Source = 'CCombatAbilityUseProjectileWeaponDef_Copy_00453f8e.cpp'
+        TestSource = 'CCombatAbilityUseProjectileWeaponDef_Copy_00453f8e_test.cpp'
+        PassPattern = 'CCombatAbilityUseProjectileWeaponDef_00453f8e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453fc4'
+        Module = 'CDragonActionSwoopDef'
+        Source = 'CDragonActionSwoopDef_Copy_00453fc4.cpp'
+        TestSource = 'CDragonActionSwoopDef_Copy_00453fc4_test.cpp'
+        PassPattern = 'CDragonActionSwoopDef_00453fc4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454038'
+        Module = 'CDragonActionNapalmDef'
+        Source = 'CDragonActionNapalmDef_Copy_00454038.cpp'
+        TestSource = 'CDragonActionNapalmDef_Copy_00454038_test.cpp'
+        PassPattern = 'CDragonActionNapalmDef_00454038_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454083'
+        Module = 'CAugmentationDef'
+        Source = 'CAugmentationDef_Copy_00454083.cpp'
+        TestSource = 'CAugmentationDef_Copy_00454083_test.cpp'
+        PassPattern = 'CAugmentationDef_00454083_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004540ec'
+        Module = 'CJackDragonDef'
+        Source = 'CJackDragonDef_Copy_004540ec.cpp'
+        TestSource = 'CJackDragonDef_Copy_004540ec_test.cpp'
+        PassPattern = 'CJackDragonDef_004540ec_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045417e'
+        Module = 'CBriarRoseDef'
+        Source = 'CBriarRoseDef_Copy_0045417e.cpp'
+        TestSource = 'CBriarRoseDef_Copy_0045417e_test.cpp'
+        PassPattern = 'CBriarRoseDef_0045417e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004541da'
+        Module = 'CSnowTrollDef'
+        Source = 'CSnowTrollDef_Copy_004541da.cpp'
+        TestSource = 'CSnowTrollDef_Copy_004541da_test.cpp'
+        PassPattern = 'CSnowTrollDef_004541da_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454267'
+        Module = 'CSummonerDef'
+        Source = 'CSummonerDef_Copy_00454267.cpp'
+        TestSource = 'CSummonerDef_Copy_00454267_test.cpp'
+        PassPattern = 'CSummonerDef_00454267_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004542cf'
+        Module = 'CExplosiveTrailDef'
+        Source = 'CExplosiveTrailDef_Copy_004542cf.cpp'
+        TestSource = 'CExplosiveTrailDef_Copy_004542cf_test.cpp'
+        PassPattern = 'CExplosiveTrailDef_004542cf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045442f'
+        Module = 'CDegradableDef'
+        Source = 'CDegradableDef_Copy_0045442f.cpp'
+        TestSource = 'CDegradableDef_Copy_0045442f_test.cpp'
+        PassPattern = 'CDegradableDef_0045442f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045473a'
+        Module = 'CVillagePeopleDef'
+        Source = 'CVillagePeopleDef_Copy_0045473a.cpp'
+        TestSource = 'CVillagePeopleDef_Copy_0045473a_test.cpp'
+        PassPattern = 'CVillagePeopleDef_0045473a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004525e3'
+        Module = 'CVillagePeopleDef'
+        Source = 'CVillagePeopleDef_GetSizeofClass_004525e3.cpp'
+        TestSource = 'CVillagePeopleDef_GetSizeofClass_004525e3_test.cpp'
+        PassPattern = 'CVillagePeopleDef_004525e3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004538e5'
+        Module = 'CTargetingDef'
+        Source = 'CTargetingDef_GetSizeofClass_004538e5.cpp'
+        TestSource = 'CTargetingDef_GetSizeofClass_004538e5_test.cpp'
+        PassPattern = 'CTargetingDef_004538e5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452593'
+        Module = 'CSpecialAbilitiesDrainLifeDataDef'
+        Source = 'CSpecialAbilitiesDrainLifeDataDef_Transfer_00452593.cpp'
+        TestSource = 'CSpecialAbilitiesDrainLifeDataDef_Transfer_00452593_test.cpp'
+        PassPattern = 'CSpecialAbilitiesDrainLifeDataDef_00452593_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452b04'
+        Module = 'CHairCardDef'
+        Source = 'CHairCardDef_Transfer_00452b04.cpp'
+        TestSource = 'CHairCardDef_Transfer_00452b04_test.cpp'
+        PassPattern = 'CHairCardDef_00452b04_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452ccd'
+        Module = 'CDragonActionHoverDef'
+        Source = 'CDragonActionHoverDef_Transfer_00452ccd.cpp'
+        TestSource = 'CDragonActionHoverDef_Transfer_00452ccd_test.cpp'
+        PassPattern = 'CDragonActionHoverDef_00452ccd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452df1'
+        Module = 'CAbilityDef'
+        Source = 'CAbilityDef_Transfer_00452df1.cpp'
+        TestSource = 'CAbilityDef_Transfer_00452df1_test.cpp'
+        PassPattern = 'CAbilityDef_00452df1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045185f'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_0045185f.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_0045185f_test.cpp'
+        PassPattern = 'CActiveFile_0045185f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451940'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_00451940.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_00451940_test.cpp'
+        PassPattern = 'CActiveFile_00451940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451981'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_00451981.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_00451981_test.cpp'
+        PassPattern = 'CActiveFile_00451981_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004519c2'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_004519c2.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_004519c2_test.cpp'
+        PassPattern = 'CActiveFile_004519c2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451a03'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_00451a03.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_00451a03_test.cpp'
+        PassPattern = 'CActiveFile_00451a03_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451a85'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_00451a85.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_00451a85_test.cpp'
+        PassPattern = 'CActiveFile_00451a85_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451b4b'
+        Module = 'LTextTreeWalkThrough'
+        Source = 'LTextTreeWalkThrough_BuildTreeArray_00451b4b.cpp'
+        TestSource = 'LTextTreeWalkThrough_BuildTreeArray_00451b4b_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_00451b4b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452d4d'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00452d4d.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00452d4d_test.cpp'
+        PassPattern = 'CEngineLightingManager_00452d4d_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
