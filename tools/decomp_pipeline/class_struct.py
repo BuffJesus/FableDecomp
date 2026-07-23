@@ -86,8 +86,9 @@ def facts_for(cls):
         for off, typ, name, sz in fields:
             if off not in off_map or off_map[off][0] in ("int", "unsigned", "unsigned long", "long"):
                 off_map[off] = (typ, name)
-        if size is None and not fields and total:
-            size = max(size or 0, total)  # all-pad sizeof model
+        # NOTE: do NOT infer class size from an all-pad struct total -- agents use
+        # `char pad[N]` as a placeholder for the `this` param, not the real class size.
+        # Only GetSizeofClass returns (above) are trusted for size.
     return off_map, size, len(files)
 
 def render(cls):

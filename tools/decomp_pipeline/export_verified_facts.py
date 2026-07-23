@@ -72,5 +72,22 @@ def main():
     print(f"forgefse_verified_bindings: {len(fverified)} / {len(bq)} queue targets")
     print(f"-> {sdk}")
 
+    # Mirror consumable facts into the downstream project repos (like export_fse_native_overlay.py).
+    if "--no-mirror" not in sys.argv:
+        import shutil
+        mirrors = {
+            "struct_schema.json": [Path(r"D:\Code\FableForge\docs\re_reference"), Path(r"D:\Code\FQT\FQT\FSE_Source\docs")],
+            "verified_functions.json": [Path(r"D:\Code\FableForge\docs\re_reference"), Path(r"D:\Code\ForgeFSE\docs"), Path(r"D:\Code\FQT\FQT\FSE_Source\docs")],
+            "forgefse_verified_bindings.json": [Path(r"D:\Code\ForgeFSE\docs")],
+        }
+        n = 0
+        for fname, dests in mirrors.items():
+            for d in dests:
+                if d.is_dir():
+                    shutil.copy2(sdk / fname, d / fname); n += 1
+                else:
+                    print(f"  (skip missing dir {d})")
+        print(f"mirrored {n} files into FableForge / ForgeFSE / FQT doc dirs")
+
 if __name__ == "__main__":
     main()
