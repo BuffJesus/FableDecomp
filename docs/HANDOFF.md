@@ -1,6 +1,6 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-22 20:22 MDT (curated lane 92; unattended ForgeFSE lane active).*
+*Last updated: 2026-07-22 22:45 MDT (runtime smoke preserved, install restored, Claude continuation ready).*
 
 ## Current authoritative resume point (2026-07-22)
 
@@ -24,6 +24,29 @@
   wrapper target: `CancelRadialBlurFade @ 0x00890180`. Next deeper nav batch:
   `IsAreaBlockedByLines @ 0x00A76F30`, then shared declarations for `UpdateLines`, `Initialise`, and
   `CNavQuadTreeNode::Initialise`.
+- Focused quest-card/terrain smoke artifacts are under
+  `work/runtime_smoke_quest_terrain_20260722/`. The game install has been restored: original
+  `FableScriptExtender.dll`, `game.bin`, `names.bin`, and `FSE_Master.lua` are back, and
+  `FSE/map_resource_alias.ini` is absent.
+- Runtime control now proves ForgeFSE can register/run a quest card when the card asset exists:
+  `OBJECT_QUEST_CARD_WASP_MENACE` displayed as Wasp Menace with 1337 gold, 500 renown, card art,
+  and Guildmaster "new quest available" audio. The failure is the custom/repurposed card asset or
+  text/definition binding, not the base quest API.
+- Do not combine active quest-card tests with terrain teleport tests. The active quest triggered the
+  engine's "leave a Quest region" abandon/reload modal during the ForgeTest teleport flow, which can
+  block or confuse manual teleport validation even when `GoToMapSlot` returns `ok=true`.
+- Terrain status: whole-LEV aliasing is disproven as a fix. Run 3 replaced black ground with a
+  white/empty donor-space hole because donor bounds/bank state came across. Run 4 opened native
+  `Data\Levels\FinalAlbion\ForgeTest.lev` at bank entry 426 and captured stronger foreground
+  render/layer telemetry, but it was contaminated by the active quest flow. Next terrain run should
+  disable quest activation and compare native ForgeTest foreground layer material/texture handles to
+  a healthy retail patch.
+- Current Claude Code decomp pointer: review
+  `lift/reports/wave3/code/0x0089B330_global_IsHeroNaked_CGameScriptInterface_UBE_NXZ.cpp`.
+  It names `CGameScriptInterface::IsHeroNaked`, but its current reconstruction dereferences
+  `pEntry->m_pInterface` even after assigning the map end sentinel on a failed `LowerBound`. Treat
+  that as a correctness hazard before promotion; likely target lane is a small ForgeFSE wrapper/API
+  batch after `CancelRadialBlurFade`.
 
 ## Status
 Active reverse-engineering pipeline completed the **Phase 1 FableWin donor expansion**. After
@@ -4000,3 +4023,51 @@ build-from-user-copy is the legally-defensible pattern.
   the three new curated promotions. At 20:25 the next RE task correctly waited for that refresh,
   resumed automatically at 20:26:44, and started a new 16-target batch with
   `Quest.ChangeHeroMoralityDueToPicklock @ 0x0089A0E0`.
+
+### Quest-card and ForgeTest smoke handoff (2026-07-22 22:45 MDT)
+
+- Focused runtime folder:
+  `work/runtime_smoke_quest_terrain_20260722/`. Stable user screenshots were copied to
+  `captures_native_run4/user_wasp_card_1337.png` and
+  `captures_native_run4/user_quest_region_block.png`; do not rely on the original temp attachment
+  paths.
+- Install state is restored. `revert_alias_probe.ps1` restored the prelaunch extender DLL
+  (`C3C88AD94AFB...`) and removed `FSE/map_resource_alias.ini`; `revert.ps1` restored
+  `data\CompiledDefs\game.bin` (`E3C7E368B515...`), `names.bin` (`AC6288FA493E...`), and
+  `FSE\Master\FSE_Master.lua` (`8857D08DA987...`). No live `Fable.exe` process remained when the
+  handoff was written.
+- Run 1 proved native ForgeTest streams and is playable but its terrain renders black. Evidence:
+  `results/FableScriptExtender_20260722_211516.log`,
+  `captures/fable_20260722_211430_575.png`, and
+  `captures/fable_20260722_211526_518.png`.
+- Run 2 proved Lua-time map aliasing is too late for static-map bootstrap. Static maps have already
+  opened before `FSE_Master.Main()` arms the alias.
+- Run 3 proved early whole-file aliasing works technically but is the wrong fix. The exact source
+  `Data\Levels\FinalAlbion\ForgeTest.lev` was replaced with donor
+  `Darkwood9_Leadout_01.lev`, but the donor registered its own bank/bounds
+  `(2816,2368)..(2848,2400)` instead of ForgeTest's native
+  `(2784,2560)..(2816,2592)`, producing a white/empty terrain hole rather than valid ForgeTest
+  terrain. Preserve ForgeTest's LEV/heightfield and isolate only its landscape material/bank
+  dependency.
+- Run 4 used the known-good `OBJECT_QUEST_CARD_WASP_MENACE` asset. The user confirmed the Wasp
+  Menace card appeared with 1337 gold and Guildmaster "new quest available" audio. Local source also
+  confirms ForgeFSE `Quest:GiveQuestCardDirectly()` takes a quest-card object name first; the
+  pasted `textDBEntry` interpretation is wrong for this build.
+- Run 4 also showed the active quest can block terrain validation. The user screenshot shows the
+  engine modal: "You are attempting to leave a Quest region..." with Reload/Stay options while the
+  ForgeTest teleport banner is active. That is a quest-region transition guard, not a map-streaming
+  failure. Future terrain smokes should not activate a quest, or should clear/deactivate the card
+  before calling `GoToMapSlot`.
+- Run 4 produced useful native telemetry anyway. `results/FableScriptExtender_20260722_223533.log`
+  and `focused_markers_20260722_223533.txt` show native `ForgeTest.lev` opened at bank entry 426
+  with bounds `(2784,2560,37.8359)..(2816,2592,83)`, and the script later called
+  `GoToMapSlot(399, 2800, 2576, 74)` with `ok=true`. The collector also saved
+  `results/Fable.exe.16316.dmp`; keep it with this run.
+- Attached decomp pointer:
+  `lift/reports/wave3/code/0x0089B330_global_IsHeroNaked_CGameScriptInterface_UBE_NXZ.cpp`.
+  It is a named `CGameScriptInterface::IsHeroNaked` reconstruction with useful overlays at
+  `this+0x14`, target `+0x28`, interface map storage `+0x44`, map end `+0x48`, and flag byte
+  `+0x91`. Before promotion, fix/review the end-sentinel path: the current code can set `pEntry`
+  to `m_pTCInterfaceMapEnd` and still call `reinterpret_cast<CTCShop*>(pEntry->m_pInterface)`.
+  Also verify whether `CTCShop::GetName()` is really the nakedness predicate or just a bad donor
+  name for the interface method at type key `0x5E`.
