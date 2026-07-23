@@ -25,6 +25,12 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 0040cec0	_global	CUserProfileManager_Constructor	FAIL	_global	CUserProfileManager_Constructor	undefined	CUserProfileManager* __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
 0040e130	_global	Vector_FreeElements	PASS	_global	Vector_FreeElements	void	void __stdcall	2	2		PASS	
 0040e170	_global	Array_LinearSearchInt	PASS	_global	Array_LinearSearchInt	int *	int* __fastcall	3	3		PASS	
+004aacc0	CScriptThing	CScriptThing::MsgPerformedAnySpecialAbility	PASS	CScriptThing	MsgPerformedAnySpecialAbility	bool	bool __thiscall	0	0		PASS	
+004aace0	CScriptThing	CScriptThing::MsgPerformedAnyAggressiveSpecialAbility	PASS	CScriptThing	MsgPerformedAnyAggressiveSpecialAbility	bool	bool __thiscall	0	0		PASS	
+004aad00	CScriptThing	CScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility	PASS	CScriptThing	MsgPerformedAnyNonAggressiveSpecialAbility	bool	bool __thiscall	0	0		PASS	
+004aada0	CScriptThing	CScriptThing::MsgOpenedChest	PASS	CScriptThing	MsgOpenedChest	bool	std::uint32_t __thiscall	0	0		PASS	
+004aaf80	CScriptThing	CScriptThing::MsgIsKicked	PASS	CScriptThing	MsgIsKicked	bool	bool __thiscall	0	0		PASS	
+004ab040	CScriptThing	CScriptThing::SetAsUsable	PASS	CScriptThing	SetAsUsable	void	void __thiscall	1	1		PASS	
 004fe7f0	_global	CollectSoundThemeSwitchDefs	PASS	_global	CollectSoundThemeSwitchDefs	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
 0050a650	CWorldMap	GetMapNavigationAreaInit	PASS	CWorldMap	GetMapNavigationAreaInit	void	void	4	4		PASS	
 0063a970	CWorldMap	SetThemeAtBlock	PASS	CWorldMap	SetThemeAtBlock	void	void	4	4		PASS	
@@ -47,6 +53,16 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	PASS	_global	CPersistInfo_InsertionSortStep_0086c5c0	undefined	void __fastcall	0	6		REVIEW	explicit-parameter-count-mismatch
 0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	PASS	_global	CPersistInfo_InsertionSortStep_0086fa00	undefined	void __fastcall	0	6		REVIEW	explicit-parameter-count-mismatch
 008702d0	_global	Handle_InitInvalid_008702d0	PASS	_global	Handle_InitInvalid_008702d0	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
+0088ec90	CGameScriptInterface	CGameScriptInterface::CameraSetCameraPreloadFlag	PASS	CGameScriptInterface	CameraSetCameraPreloadFlag	void	void __thiscall	1	1		PASS	
+0088ece0	CGameScriptInterface	CGameScriptInterface::CameraShake	PASS	CGameScriptInterface	CameraShake	void	void __thiscall	2	2		PASS	
+0088eda0	CGameScriptInterface	CGameScriptInterface::CameraUseScreenEffect	PASS	CGameScriptInterface	CameraUseScreenEffect	void	void __thiscall	3	3		PASS	
+0088edb0	CGameScriptInterface	CGameScriptInterface::CameraCancelScreenEffect	PASS	CGameScriptInterface	CameraCancelScreenEffect	void	void __thiscall	0	0		PASS	
+00890180	CGameScriptInterface	CGameScriptInterface::CancelRadialBlurFade	PASS	CGameScriptInterface	CancelRadialBlurFade	void	void __thiscall	0	0		PASS	
+00890fc0	CGameScriptInterface	CGameScriptInterface::CameraResetToViewBehindHero	PASS	CGameScriptInterface	CameraResetToViewBehindHero	void	void __thiscall	1	1		PASS	
+00890ff0	CGameScriptInterface	CGameScriptInterface::CameraDefault	PASS	CGameScriptInterface	CameraDefault	void	void __thiscall	0	0		PASS	
+00891720	CGameScriptInterface	CGameScriptInterface::ChangeHeroHealthBy	PASS	CGameScriptInterface	ChangeHeroHealthBy	void	void __thiscall	3	3		PASS	
+008977f0	CGameScriptInterface	CGameScriptInterface::ApplyHeroPenaltyForDeath	PASS	CGameScriptInterface	ApplyHeroPenaltyForDeath	void	void __thiscall	0	0		PASS	
+008a0820	CGameScriptInterface	CGameScriptInterface::CancelHeroTeleportEffects	PASS	CGameScriptInterface	CancelHeroTeleportEffects	void	void __thiscall	0	0		PASS	
 008ed590	CObjectFamilyDef	GetRandomObject	PASS	CObjectFamilyDef	GetRandomObject	long	long	0	0		PASS	
 00a65d30	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::ConsolidateFreeAreas	PASS	CMemoryAllocatorFixedSize	ConsolidateFreeAreas	void	void	0	0		PASS	
 00a65d40	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::GetAllocationSize	PASS	CMemoryAllocatorFixedSize	GetAllocationSize	ulong	unsigned long	1	1		PASS	

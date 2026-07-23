@@ -1,13 +1,13 @@
 # Auto-RE candidate compile gate
 
-Generated: `2026-07-22T19:47:48-06:00`
+Generated: `2026-07-22T20:26:07-06:00`
 
 | Gate | Passing | Total |
 |---|---:|---:|
-| Source integrity | 132 | 132 |
-| 32-bit host C++20 syntax | 37 | 132 |
-| No detected VC7.1 language blockers | 16 | 132 |
-| Ready for VC7.1 module compilation | 4 | 132 |
+| Source integrity | 148 | 148 |
+| 32-bit host C++20 syntax | 44 | 148 |
+| No detected VC7.1 language blockers | 18 | 148 |
+| Ready for VC7.1 module compilation | 6 | 148 |
 
 A checker PASS is not a compiler PASS. The host syntax gate supplies only standard-library and calling-convention compatibility; missing engine declarations must be resolved through real module headers.
 
@@ -22,6 +22,7 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 | `EThemePaintType` | 8 |
 | `CEngineLandscapeMap` | 7 |
 | `CGraphicInfoFrame` | 7 |
+| `class CScriptThing` | 6 |
 | `CANavQuadTreeNode` | 6 |
 | `CEngineLandscapePatch` | 6 |
 | `CWorldMap` | 5 |
@@ -42,8 +43,7 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 | `pResource` | 4 |
 | `CLandscapeLayerMesh` | 4 |
 | `jmp` | 3 |
+| `mov` | 3 |
 | `self` | 3 |
-| `CScriptedMapBrush` | 3 |
-| `C2DBoxF` | 3 |
 
 Full per-candidate results are in `candidates.tsv`.

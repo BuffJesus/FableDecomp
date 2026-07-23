@@ -1,6 +1,29 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-18 (FableWin donor pipeline complete; retail `Fable.exe` 80.13% named).*
+*Last updated: 2026-07-22 20:22 MDT (curated lane 92; unattended ForgeFSE lane active).*
+
+## Current authoritative resume point (2026-07-22)
+
+- Read `docs/FULL_DECOMP.md` and generated `rebuild/COVERAGE.md` before the older session history
+  below. The current catalog is 49,553 functions: 100% mechanically named, 99.913% usable
+  reconstruction/navigation names, 77.656% known calling conventions, and 69.023% complete
+  prototypes. These database metrics are not buildable-source coverage.
+- Buildable reconstruction remains below 1%: 94 VC7.1-compiled and behavior-tested candidates
+  (0.190%), 71 verified functional-or-matching functions (0.143%), and 51 raw byte-identical
+  functions (0.103%). The first 1% compile+behavior milestone is 496, leaving 402 promotions.
+- `CNavQuadTree::InitialiseLines @ 0x00A7A5E0` is the newest curated promotion. Its focused
+  grow/shrink/zero oracle passes and all 102 instruction bytes match retail after masking the six
+  expected COFF relocation fields.
+- The first ForgeFSE binding batch completed 16/16 structural PASS. The generated binding queue is
+  462 unique target addresses: 16 agent-reviewed, 446 still needing reversal, 167 direct-signature,
+  269 adapter, and 26 signature/arity-review rows. Binding approval intentionally remains zero.
+- The recurring task `FableTLC Auto RE Wave 2` actually launches the Wave 3 runner every 15 minutes;
+  its next refill is automatic, uses `IgnoreNew`, and writes durable state under `lift/state/`.
+  `FableTLC Rebuild Refresh` runs on the same cadence and defers while the queue owns Ghidra.
+- The ForgeFSE wrappers at `0x0088EDB0` and `0x0088EDA0` are now raw retail matches. Next manual
+  wrapper target: `CancelRadialBlurFade @ 0x00890180`. Next deeper nav batch:
+  `IsAreaBlockedByLines @ 0x00A76F30`, then shared declarations for `UpdateLines`, `Initialise`, and
+  `CNavQuadTreeNode::Initialise`.
 
 ## Status
 Active reverse-engineering pipeline completed the **Phase 1 FableWin donor expansion**. After
@@ -3962,3 +3985,18 @@ build-from-user-copy is the legally-defensible pattern.
 - Cleanly stopped the old batch after its in-flight retry (no process kill), refreshed, removed the
   stop marker, and manually started the scheduled task. The live 16-target ForgeFSE batch began at
   19:48:25 with `Entity.MsgIsKicked -> CScriptThing::MsgIsKicked @ 0x004AAF80`.
+
+### Navigation + ForgeFSE wrapper promotions (2026-07-22 20:27 MDT)
+
+- Promoted `CNavQuadTree::InitialiseLines @ 0x00A7A5E0`: VC7.1 compile and grow/shrink/zero behavior
+  tests pass, the decorated nested-STL signature matches the donor, and its 102-byte body is a
+  relocation-normalized retail match.
+- Promoted `CGameScriptInterface::CameraCancelScreenEffect @ 0x0088EDB0` and
+  `CameraUseScreenEffect @ 0x0088EDA0`. Their exact public-virtual-const symbols match donor/retail,
+  and their complete bodies are raw matches (`c3` and `c2 0c 00`).
+- Fresh dashboard: 94/94 compile+behavior PASS (0.190%), 71 verified functional-or-matching
+  functions (0.143%), 51 raw byte-identical functions, and 402 promotions left to the first 1% lane.
+- The first ForgeFSE batch completed 16/16 structural PASS. The scheduled refresh ingested it and
+  the three new curated promotions. At 20:25 the next RE task correctly waited for that refresh,
+  resumed automatically at 20:26:44, and started a new 16-target batch with
+  `Quest.ChangeHeroMoralityDueToPicklock @ 0x0089A0E0`.

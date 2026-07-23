@@ -21,11 +21,19 @@ leans on automation because the target is large.
   and 13-byte VC7.1 object are raw byte-identical to retail.
 - [x] Build a 462-address ForgeFSE binding-verification queue and place it ahead of generic naming
   and prototype backlog work in the existing lock-aware unattended runner.
+- [x] Promote `CNavQuadTree::InitialiseLines @ 0x00A7A5E0`; its grow/shrink/zero behavior oracle
+  passes and its complete 102-byte VC7.1 instruction stream is a relocation-normalized retail match.
+- [x] Complete the first bounded ForgeFSE reversal batch: 16/16 bindings reached structural PASS
+  and were ingested into the generated candidate/signature/promotion reports.
 - [ ] Ingest and review both completed `ConnectVerticalMapEdge` reconstructions; promote them only
   after their allocation/refcount and connector-vector behavior can be isolated in a safe harness.
 - [ ] Take the next queue-ranked small candidate, currently `entry @ 0x00401067`, through VC7.1
-  compile, behavior, and retail comparison, or skip to the smaller `InitialiseLines @ 0x00A7A5E0`
+  compile, behavior, and retail comparison; skip to `CNavQuadTree::IsAreaBlockedByLines @ 0x00A76F30`
   if CRT startup dependencies make the entry-point harness disproportionately expensive.
+- [x] Promote the dependency-free ForgeFSE wrapper pair at `0x0088EDB0` and `0x0088EDA0` as one
+  shared declaration/test batch; both virtual/const ABI identities and raw retail bodies match.
+- [ ] Promote the next compile-sized ForgeFSE batch, beginning with `CancelRadialBlurFade @
+  0x00890180`, while the unattended lane continues reversing direct-signature bindings.
 - [ ] Tune `LinkToNeighbouringMaps @ 0x00A7A650` toward the retail x87/local schedule; its current
   implementation is behavior-verified but nine bytes longer than retail.
 - [ ] Continue closing corrected ABI identities from decorated retail/donor symbols, treating the
@@ -93,13 +101,14 @@ The landscape-paint lane now includes four relocation-masked byte-identical `CWo
 methods, four functional `CMap::Set/GetEngineTheme/BlendAt` implementations, and three functional
 `CScriptedMapBrush` cell accessors. The latter expose the authored brush layout directly: five
 32-bit theme slots per cell and byte-addressed blend values at cell offset `0x10 + layer`, with a
-`0x14`-byte cell stride. The curated suite is 91/91 for VC7.1 compile and focused behavior; the
+`0x14`-byte cell stride. The curated suite is 94/94 for VC7.1 compile and focused behavior; the
 map/brush bodies remain honestly non-matching until their compiler code shape is tuned against
 retail.
 
 For milestone accounting, 1% of the 49,553-function catalog is approximately 496 verified
-functions. The compile+behavior lane is currently 91 functions (0.184%); reaching 1% therefore
-requires roughly 405 additional promotions. Clean pseudo-C, naming, and prototype coverage are
+functions. The compile+behavior lane is currently 94 functions (0.190%); reaching 1% therefore
+requires 402 additional promotions. The stricter functional-or-matching count is 71 (0.143%).
+Clean pseudo-C, naming, and prototype coverage are
 tracked separately and must not be presented as completed buildable source.
 
 ### Downstream native-evidence consumers (2026-07-22 19:25 MDT)
@@ -109,7 +118,7 @@ The FSE-to-engine overlay is now an actively validated interface rather than a p
 backing inspection (6/6 CTests pass); FQT annotates its API Reference while keeping verified engine
 implementation separate from binding approval (190/190 tests pass); and ForgeFSE validates every
 manifest key, count, candidate address, and safety-policy flag before runtime binding work. Current
-evidence provides 462 owner-aligned recommendations and 53 verified engine functions, but
+evidence provides 462 owner-aligned recommendations and 54 verified engine functions, but
 `verifiedRecommendedBindings` and `hookApprovedBindings` both remain zero. This intentionally
 prevents exact-name correlation from being mistaken for a safe callable address.
 
@@ -145,10 +154,16 @@ direct-call COFF relocations are masked.
 `Getter_FieldE0_FC @ 0x00662020` adds a raw 13-byte match for the opaque
 `*(*(self + 0xE0) + 0xFC)` accessor. The curated override records the observed ECX fastcall input and
 unsigned 32-bit return, closing one calling-convention/prototype gap without inventing a class name.
+`CNavQuadTree::InitialiseLines @ 0x00A7A5E0` adds a 102-byte relocation-normalized match. Its oracle
+proves grid-vector growth, shrink, and zero-size behavior, integer cell bounds, input forwarding,
+and the final `UpdateLines` dispatch; donor decoration also fixes the nested STL/reference ABI.
+The ForgeFSE-facing `CameraCancelScreenEffect @ 0x0088EDB0` and `CameraUseScreenEffect @ 0x0088EDA0`
+stubs add raw one-byte (`ret`) and three-byte (`ret 0x0C`) matches. Their exact decorated symbols
+prove public virtual const methods and the latter's three-float stack ABI.
 
 The signature audit supports both qualified member definitions and `_global` definitions with C
 linkage/calling-convention qualifiers. This removed seven false-negative parse reviews and raised
-the clean audited candidate set to 86/121; 35 snapshots remain in signature review, including two
+the clean audited candidate set to 102/148; 46 snapshots remain in signature review, including two
 genuinely noncanonical constructor/destructor definitions that still cannot be parsed.
 
 The toolchain now also queries the private donor PDB directly through Visual Studio's installed
