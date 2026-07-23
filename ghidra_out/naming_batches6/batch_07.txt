@@ -1,0 +1,4843 @@
+@@@FUNC 00c29eb0 7 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c29eb0(undefined4 *param_1)
+
+{
+  *param_1 = &PTR_LAB_012b40a4;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c29f50 23 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c29f50(undefined4 *param_1)
+
+{
+  *param_1 = &PTR_LAB_012b40a4;
+  param_1[1] = 0xffffffff;
+  param_1[2] = 0;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c3b440 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c3b440(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c452f0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c452f0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c45440 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c45440(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c46bb0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c46bb0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c479a0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c479a0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c47af0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c47af0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c52aa0 47 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+bool FUN_00c52aa0(void)
+
+{
+  uint uVar1;
+  byte in_CF;
+  byte in_PF;
+  byte in_AF;
+  byte in_ZF;
+  byte in_SF;
+  byte in_TF;
+  byte in_IF;
+  byte in_OF;
+  byte in_NT;
+  byte in_AC;
+  byte in_VIF;
+  byte in_VIP;
+  byte in_ID;
+  uint uVar2;
+  
+  uVar2 = (uint)(in_NT & 1) * 0x4000 | (uint)(in_OF & 1) * 0x800 | (uint)(in_IF & 1) * 0x200 |
+          (uint)(in_TF & 1) * 0x100 | (uint)(in_SF & 1) * 0x80 | (uint)(in_ZF & 1) * 0x40 |
+          (uint)(in_AF & 1) * 0x10 | (uint)(in_PF & 1) * 4 | (uint)(in_CF & 1) |
+          (uint)(in_ID & 1) * 0x200000 | (uint)(in_VIP & 1) * 0x100000 |
+          (uint)(in_VIF & 1) * 0x80000 | (uint)(in_AC & 1) * 0x40000;
+  uVar1 = uVar2 ^ 0x200000;
+  return ((uint)((uVar1 & 0x4000) != 0) * 0x4000 | (uint)((uVar1 & 0x800) != 0) * 0x800 |
+          (uint)((uVar1 & 0x200) != 0) * 0x200 | (uint)((uVar1 & 0x100) != 0) * 0x100 |
+          (uint)((uVar1 & 0x80) != 0) * 0x80 | (uint)((uVar1 & 0x40) != 0) * 0x40 |
+          (uint)((uVar1 & 0x10) != 0) * 0x10 | (uint)((uVar1 & 4) != 0) * 4 |
+          (uint)((uVar1 & 1) != 0) | (uint)((uVar1 & 0x200000) != 0) * 0x200000 |
+         (uint)((uVar1 & 0x40000) != 0) * 0x40000) != uVar2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c57070 86 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+uint __fastcall FUN_00c57070(int param_1)
+
+{
+  undefined1 *puVar1;
+  uint uVar2;
+  undefined1 *puVar3;
+  undefined1 local_8 [4];
+  undefined1 local_4 [4];
+  
+  puVar3 = local_8;
+  uVar2 = (**(code **)(**(int **)(param_1 + 4) + 0x10))(*(int **)(param_1 + 4),puVar3,local_4);
+  if (uVar2 != 0) {
+    return uVar2 & 0xffffff00;
+  }
+  puVar1 = *(undefined1 **)(param_1 + 0xc);
+  if (puVar1 <= puVar3) {
+    return CONCAT31((int3)((uint)((int)puVar3 - (int)puVar1) >> 8),
+                    '\x01' - ((uint)((int)puVar3 - (int)puVar1) < *(uint *)(param_1 + 0x14)));
+  }
+  return CONCAT31((int3)((uint)(puVar3 + (*(int *)(param_1 + 0x10) - (int)puVar1)) >> 8),
+                  '\x01' - (puVar3 + (*(int *)(param_1 + 0x10) - (int)puVar1) <
+                           *(undefined1 **)(param_1 + 0x14)));
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c58270 126 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c58270(int *param_1,int param_2)
+
+{
+  if (param_1[8] == 1) {
+    (**(code **)(*param_1 + 0x18))(param_2,param_1[1],0x3f000000);
+    (**(code **)(*param_1 + 0x18))(param_2 + 0x200,param_1[1],0x3f000000);
+    return;
+  }
+  (**(code **)(*param_1 + 0x20))(param_2,param_1[1]);
+  (**(code **)(*param_1 + 0x20))(param_2 + 0x200,param_1[2]);
+  if (3 < (uint)param_1[8]) {
+    (**(code **)(*param_1 + 0x20))(param_2,param_1[3]);
+    (**(code **)(*param_1 + 0x20))(param_2 + 0x200,param_1[4]);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c582f0 126 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c582f0(int *param_1,int param_2)
+
+{
+  if (param_1[8] == 1) {
+    (**(code **)(*param_1 + 0x10))(param_2,param_1[1],0x4000);
+    (**(code **)(*param_1 + 0x10))(param_2 + 0x200,param_1[1],0x4000);
+    return;
+  }
+  (**(code **)(*param_1 + 0x14))(param_2,param_1[1]);
+  (**(code **)(*param_1 + 0x14))(param_2 + 0x200,param_1[2]);
+  if (3 < (uint)param_1[8]) {
+    (**(code **)(*param_1 + 0x14))(param_2,param_1[3]);
+    (**(code **)(*param_1 + 0x14))(param_2 + 0x200,param_1[4]);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c58630 267 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c58630(int *param_1,int param_2)
+
+{
+  if (param_1[8] == 1) {
+    (**(code **)(*param_1 + 0x10))(param_2,param_1[1],0x2000);
+    (**(code **)(*param_1 + 0x10))(param_2 + 0x200,param_1[1],0x2000);
+    (**(code **)(*param_1 + 0x10))(param_2 + 0x400,param_1[1],0x2000);
+    (**(code **)(*param_1 + 0x10))(param_2 + 0x600,param_1[1],0x2000);
+    return;
+  }
+  if (param_1[8] == 2) {
+    (**(code **)(*param_1 + 0x10))(param_2,param_1[1],0x4000);
+    (**(code **)(*param_1 + 0x10))(param_2 + 0x200,param_1[2],0x4000);
+    (**(code **)(*param_1 + 0x10))(param_2 + 0x400,param_1[1],0x4000);
+    (**(code **)(*param_1 + 0x10))(param_2 + 0x600,param_1[2],0x4000);
+    return;
+  }
+  (**(code **)(*param_1 + 0x14))(param_2,param_1[1]);
+  (**(code **)(*param_1 + 0x14))(param_2 + 0x200,param_1[2]);
+  (**(code **)(*param_1 + 0x14))(param_2 + 0x400,param_1[3]);
+  (**(code **)(*param_1 + 0x14))(param_2 + 0x600,param_1[4]);
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c592c0 7 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c592c0(undefined4 *param_1)
+
+{
+  *param_1 = &PTR_LAB_012b8f64;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c59570 37 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00c59570(undefined4 *param_1)
+
+{
+  int iVar1;
+  undefined4 *puVar2;
+  
+  *param_1 = &PTR_LAB_012b8f64;
+  puVar2 = param_1;
+  for (iVar1 = 0x58; puVar2 = puVar2 + 1, iVar1 != 0; iVar1 = iVar1 + -1) {
+    *puVar2 = 0;
+  }
+  param_1[0x59] = 0;
+  param_1[0x5d] = 0;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c5d370 84 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void FUN_00c5d370(int *param_1,int *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  int iVar8;
+  int iVar9;
+  int iVar10;
+  int iVar11;
+  int iVar12;
+  int iVar13;
+  int iVar14;
+  int iVar15;
+  int iVar16;
+  
+  iVar16 = 8;
+  do {
+    iVar1 = param_1[1];
+    iVar2 = param_1[2];
+    iVar3 = param_1[3];
+    iVar4 = param_1[4];
+    iVar5 = param_1[5];
+    iVar6 = param_1[6];
+    iVar7 = param_1[7];
+    iVar8 = param_1[8];
+    iVar9 = param_1[9];
+    iVar10 = param_1[10];
+    iVar11 = param_1[0xb];
+    iVar12 = param_1[0xc];
+    iVar13 = param_1[0xd];
+    iVar14 = param_1[0xe];
+    iVar15 = param_1[0xf];
+    *param_2 = *param_1 + *param_2;
+    param_2[1] = iVar1 + param_2[1];
+    param_2[2] = iVar2 + param_2[2];
+    param_2[3] = iVar3 + param_2[3];
+    param_2[4] = iVar4 + param_2[4];
+    param_2[5] = iVar5 + param_2[5];
+    param_2[6] = iVar6 + param_2[6];
+    param_2[7] = iVar7 + param_2[7];
+    param_2[8] = iVar8 + param_2[8];
+    param_2[9] = iVar9 + param_2[9];
+    param_2[10] = iVar10 + param_2[10];
+    param_2[0xb] = iVar11 + param_2[0xb];
+    param_2[0xc] = iVar12 + param_2[0xc];
+    param_2[0xd] = iVar13 + param_2[0xd];
+    param_2[0xe] = iVar14 + param_2[0xe];
+    param_2[0xf] = iVar15 + param_2[0xf];
+    param_1 = param_1 + 0x10;
+    param_2 = param_2 + 0x10;
+    iVar16 = iVar16 + -1;
+  } while (iVar16 != 0);
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c5d3f0 86 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void FUN_00c5d3f0(int *param_1,int *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  int iVar8;
+  int iVar9;
+  int iVar10;
+  int iVar11;
+  int iVar12;
+  int iVar13;
+  int iVar14;
+  int iVar15;
+  int iVar16;
+  
+  iVar16 = 8;
+  do {
+    iVar1 = param_1[1];
+    iVar2 = param_1[2];
+    iVar3 = param_1[3];
+    iVar4 = param_1[4];
+    iVar5 = param_1[5];
+    iVar6 = param_1[6];
+    iVar7 = param_1[7];
+    iVar8 = param_1[8];
+    iVar9 = param_1[9];
+    iVar10 = param_1[10];
+    iVar11 = param_1[0xb];
+    iVar12 = param_1[0xc];
+    iVar13 = param_1[0xd];
+    iVar14 = param_1[0xe];
+    iVar15 = param_1[0xf];
+    *param_2 = *param_1 + *param_2;
+    param_2[1] = iVar1 + param_2[1];
+    param_2[2] = iVar2 + param_2[2];
+    param_2[3] = iVar3 + param_2[3];
+    param_2[4] = iVar4 + param_2[4];
+    param_2[5] = iVar5 + param_2[5];
+    param_2[6] = iVar6 + param_2[6];
+    param_2[7] = iVar7 + param_2[7];
+    param_2[8] = iVar8 + param_2[8];
+    param_2[9] = iVar9 + param_2[9];
+    param_2[10] = iVar10 + param_2[10];
+    param_2[0xb] = iVar11 + param_2[0xb];
+    param_2[0xc] = iVar12 + param_2[0xc];
+    param_2[0xd] = iVar13 + param_2[0xd];
+    param_2[0xe] = iVar14 + param_2[0xe];
+    param_2[0xf] = iVar15 + param_2[0xf];
+    param_1 = param_1 + 0x10;
+    param_2 = param_2 + 0x10;
+    iVar16 = iVar16 + -1;
+  } while (iVar16 != 0);
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c5d4b0 86 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void FUN_00c5d4b0(int *param_1,int *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  int iVar8;
+  int iVar9;
+  int iVar10;
+  int iVar11;
+  int iVar12;
+  int iVar13;
+  int iVar14;
+  int iVar15;
+  int iVar16;
+  
+  iVar16 = 8;
+  do {
+    iVar1 = param_1[1];
+    iVar2 = param_1[2];
+    iVar3 = param_1[3];
+    iVar4 = param_1[4];
+    iVar5 = param_1[5];
+    iVar6 = param_1[6];
+    iVar7 = param_1[7];
+    iVar8 = param_1[8];
+    iVar9 = param_1[9];
+    iVar10 = param_1[10];
+    iVar11 = param_1[0xb];
+    iVar12 = param_1[0xc];
+    iVar13 = param_1[0xd];
+    iVar14 = param_1[0xe];
+    iVar15 = param_1[0xf];
+    *param_2 = *param_1 + *param_2;
+    param_2[1] = iVar1 + param_2[1];
+    param_2[2] = iVar2 + param_2[2];
+    param_2[3] = iVar3 + param_2[3];
+    param_2[4] = iVar4 + param_2[4];
+    param_2[5] = iVar5 + param_2[5];
+    param_2[6] = iVar6 + param_2[6];
+    param_2[7] = iVar7 + param_2[7];
+    param_2[8] = iVar8 + param_2[8];
+    param_2[9] = iVar9 + param_2[9];
+    param_2[10] = iVar10 + param_2[10];
+    param_2[0xb] = iVar11 + param_2[0xb];
+    param_2[0xc] = iVar12 + param_2[0xc];
+    param_2[0xd] = iVar13 + param_2[0xd];
+    param_2[0xe] = iVar14 + param_2[0xe];
+    param_2[0xf] = iVar15 + param_2[0xf];
+    param_1 = param_1 + 0x10;
+    param_2 = param_2 + 0x10;
+    iVar16 = iVar16 + -1;
+  } while (iVar16 != 0);
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c62ff0 224 0
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+undefined4 __thiscall FUN_00c62ff0(int param_1)
+
+{
+  undefined4 uVar1;
+  int iVar2;
+  int *piVar3;
+  int *piVar4;
+  bool bVar5;
+  uint in_stack_00000014;
+  int local_14 [4];
+  undefined4 local_4;
+  
+  local_4 = DAT_0139c8a8;
+  uVar1 = 0;
+  iVar2 = 4;
+  bVar5 = true;
+  piVar4 = &DAT_012b9468;
+  piVar3 = (int *)register0x00000010;
+  do {
+    piVar3 = piVar3 + 1;
+    if (iVar2 == 0) break;
+    iVar2 = iVar2 + -1;
+    bVar5 = *piVar3 == *piVar4;
+    piVar4 = piVar4 + 1;
+  } while (bVar5);
+  if (bVar5) {
+    piVar3 = (int *)(param_1 + 0x84);
+  }
+  else {
+    iVar2 = 4;
+    bVar5 = true;
+    piVar4 = &DAT_012b9478;
+    piVar3 = (int *)register0x00000010;
+    do {
+      piVar3 = piVar3 + 1;
+      if (iVar2 == 0) break;
+      iVar2 = iVar2 + -1;
+      bVar5 = *piVar3 == *piVar4;
+      piVar4 = piVar4 + 1;
+    } while (bVar5);
+    if (bVar5) {
+      piVar3 = (int *)(param_1 + 0xa0);
+    }
+    else {
+      iVar2 = 4;
+      bVar5 = true;
+      piVar4 = &DAT_012b9488;
+      piVar3 = (int *)register0x00000010;
+      do {
+        piVar3 = piVar3 + 1;
+        if (iVar2 == 0) break;
+        iVar2 = iVar2 + -1;
+        bVar5 = *piVar3 == *piVar4;
+        piVar4 = piVar4 + 1;
+      } while (bVar5);
+      if (bVar5) {
+        piVar3 = (int *)(param_1 + 0xbc);
+      }
+      else {
+        iVar2 = 4;
+        bVar5 = true;
+        piVar4 = &DAT_012b9498;
+        piVar3 = (int *)register0x00000010;
+        do {
+          piVar3 = piVar3 + 1;
+          if (iVar2 == 0) break;
+          iVar2 = iVar2 + -1;
+          bVar5 = *piVar3 == *piVar4;
+          piVar4 = piVar4 + 1;
+        } while (bVar5);
+        if (!bVar5) goto LAB_00c6308c;
+        piVar3 = (int *)(param_1 + 0xd8);
+      }
+    }
+  }
+  local_14[0] = *piVar3;
+  local_14[1] = piVar3[1];
+  local_14[2] = piVar3[2];
+  local_14[3] = piVar3[3];
+LAB_00c6308c:
+  iVar2 = 4;
+  bVar5 = true;
+  piVar3 = local_14;
+  piVar4 = &DAT_012b94b8;
+  do {
+    if (iVar2 == 0) break;
+    iVar2 = iVar2 + -1;
+    bVar5 = *piVar3 == *piVar4;
+    piVar3 = piVar3 + 1;
+    piVar4 = piVar4 + 1;
+  } while (bVar5);
+  if (((bVar5) && (in_stack_00000014 < 0x8000001a)) &&
+     ((0x7fffffff < in_stack_00000014 || (in_stack_00000014 < 0x1a)))) {
+    uVar1 = 3;
+  }
+  return uVar1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c73340 62 0
+@@CALLERS 
+@@CALLEES CAudioSoundBuffer_TransferPCMData
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_00c73340(int param_1,undefined4 *param_2)
+
+{
+  undefined4 uVar1;
+  
+  uVar1 = 0;
+  if (*(int *)(*(int *)(param_1 + 0x3c) + 4) == 2) {
+    *param_2 = *(undefined4 *)(param_1 + 0x30);
+    return uVar1;
+  }
+  if ((*(byte *)(param_1 + 0x38) & 2) == 0) {
+    uVar1 = CAudioSoundBuffer_TransferPCMData();
+  }
+  *param_2 = *(undefined4 *)(param_1 + 0x34);
+  return uVar1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c74f60 17 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c74f60(undefined4 *param_1)
+
+{
+  *param_1 = &PTR_LAB_012bf074;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c75400 15 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c75400(undefined4 *param_1)
+
+{
+  *param_1 = &PTR_LAB_012bf074;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c786e0 52 0
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void FUN_00c786e0(undefined8 *param_1,undefined8 *param_2,undefined8 *param_3)
+
+{
+  *param_1 = CONCAT44((int)*param_3,(int)*param_2);
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c78720 52 0
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+undefined8 FUN_00c78720(undefined8 *param_1,undefined8 *param_2,undefined8 *param_3)
+
+{
+  undefined8 uVar1;
+  
+  uVar1 = *param_3;
+  *param_1 = CONCAT44((int)((ulonglong)uVar1 >> 0x20),(int)((ulonglong)*param_2 >> 0x20));
+  return uVar1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c787d0 52 0
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void FUN_00c787d0(undefined8 *param_1,undefined8 *param_2,undefined8 *param_3)
+
+{
+  undefined8 uVar1;
+  
+  uVar1 = paddsw(*param_2,*param_3);
+  *param_1 = uVar1;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c78810 52 0
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void FUN_00c78810(undefined8 *param_1,undefined8 *param_2,undefined8 *param_3)
+
+{
+  undefined8 uVar1;
+  
+  uVar1 = pmulhw(*param_2,*param_3);
+  *param_1 = uVar1;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c78850 52 0
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void FUN_00c78850(undefined8 *param_1,undefined8 *param_2,undefined8 *param_3)
+
+{
+  undefined8 uVar1;
+  
+  uVar1 = pmaddwd(*param_2,*param_3);
+  *param_1 = uVar1;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c78890 52 0
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void FUN_00c78890(undefined8 *param_1,undefined8 *param_2,undefined8 *param_3)
+
+{
+  undefined8 uVar1;
+  
+  uVar1 = packssdw(*param_2,*param_3);
+  *param_1 = uVar1;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c788d0 52 0
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void FUN_00c788d0(undefined8 *param_1,undefined8 *param_2,undefined8 *param_3)
+
+{
+  *param_1 = CONCAT44((int)((ulonglong)*param_2 >> 0x20) + (int)((ulonglong)*param_3 >> 0x20),
+                      (int)*param_2 + (int)*param_3);
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c8c730 326 0
+@@CALLERS 
+@@CALLEES VertexBuffer_WaitAndAllocate, Buffer_SwapElements, GetEntryDataSize, __chkstk, VertexBuffer_FillData, DrawGetWorldMap, Audio_ConvolveChannels, CreatureHitNotification_WaitForCompletion, Indexed_GetElementOffsetSafe, GetNextRegionOnRouteTo
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __chkstk replaced with injection: alloca_probe */
+/* WARNING: Unable to track spacebase fully for stack */
+
+int FUN_00c8c730(undefined4 param_1,undefined4 param_2,code *param_3)
+
+{
+  CBankFile *this;
+  int iVar1;
+  undefined4 uVar2;
+  int iVar3;
+  int iVar4;
+  int in_EAX;
+  int iVar5;
+  CEditWorld *pCVar6;
+  long lVar7;
+  CIDrawWorldMap *pCVar8;
+  ulong uVar9;
+  CWorldMap *this_00;
+  undefined1 *puVar10;
+  undefined1 *puVar11;
+  ulong *puVar12;
+  long unaff_ESI;
+  ulong unaff_EDI;
+  undefined4 local_1c;
+  int local_10;
+  
+  if (1 < *(int *)(in_EAX + 0x58)) {
+    iVar5 = CreatureHitNotification_WaitForCompletion();
+    if (iVar5 == 0) {
+      pCVar6 = (CEditWorld *)Indexed_GetElementOffsetSafe();
+      lVar7 = CWorldMap::GetNextRegionOnRouteTo(this_00,unaff_EDI,unaff_ESI);
+      iVar1 = *(int *)(pCVar6 + 4);
+      pCVar8 = CEditWorld::DrawGetWorldMap(pCVar6);
+      iVar5 = (int)pCVar8 >> ((char)lVar7 + 1U & 0x1f);
+      this = (CBankFile *)(in_EAX + 0x1e0);
+      CBankFile::GetEntryDataSize(this,unaff_EDI);
+      iVar3 = iVar1 * -4;
+      puVar11 = &stack0xffffffd4 + iVar3;
+      puVar10 = &stack0xffffffd4 + iVar3;
+      local_10 = 0;
+      if (0 < iVar1) {
+        do {
+          *(undefined4 *)(puVar10 + -4) = 0xc8c7d2;
+          iVar4 = iVar5 * -4;
+          puVar11 = puVar10 + iVar4;
+          *(undefined1 **)(&stack0xffffffd4 + local_10 * 4 + iVar3) = puVar10 + iVar4;
+          local_10 = local_10 + 1;
+          puVar10 = puVar10 + iVar4;
+        } while (local_10 < iVar1);
+      }
+      *(int *)(puVar11 + -4) = iVar5;
+      *(undefined1 **)(puVar11 + -8) = &stack0xffffffd4 + iVar3;
+      *(CBankFile **)(puVar11 + -0xc) = this;
+      *(CEditWorld **)(puVar11 + -0x10) = pCVar6;
+      *(int *)(puVar11 + -0x14) = in_EAX;
+      *(undefined4 *)(puVar11 + -0x18) = 0xc8c7f8;
+      VertexBuffer_FillData();
+      *(ulonglong *)(puVar11 + -8) = CONCAT44(param_2,param_1);
+      puVar12 = (ulong *)(puVar11 + -0xc);
+      *(undefined4 *)(puVar11 + -0xc) = 0xc8c806;
+      iVar5 = (*param_3)();
+      if (iVar5 == 0) {
+        puVar12[-1] = 0xc8c80f;
+        iVar5 = VertexBuffer_WaitAndAllocate();
+        if (iVar5 == 0) {
+          puVar12[-1] = 0xc8c81d;
+          pCVar6 = (CEditWorld *)Indexed_GetElementOffsetSafe();
+          uVar2 = *(undefined4 *)(pCVar6 + 4);
+          puVar12[-1] = 0xc8c82c;
+          CEditWorld::DrawGetWorldMap(pCVar6);
+          puVar12[-1] = 0xc8c83d;
+          uVar9 = CBankFile::GetEntryDataSize(this,*puVar12);
+          puVar12[-1] = 0xc8c84b;
+          Buffer_SwapElements();
+          puVar12[-1] = uVar9;
+          puVar12[-2] = uVar2;
+          puVar12[-3] = iVar1;
+          puVar12[-4] = (ulong)(&stack0xffffffd4 + iVar3);
+          puVar12[-5] = local_1c;
+          puVar12[-6] = 0xc8c868;
+          Audio_ConvolveChannels();
+          iVar5 = 0;
+        }
+      }
+    }
+    return iVar5;
+  }
+  return -0x83;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c9f8c0 1274 0
+@@CALLERS 
+@@CALLEES __chkstk, Mesh_ComputeDetailLOD
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __chkstk replaced with injection: alloca_probe */
+/* WARNING: Unable to track spacebase fully for stack */
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+undefined4 __fastcall FUN_00c9f8c0(int *param_1,int *param_2)
+
+{
+  float fVar1;
+  float fVar2;
+  int iVar3;
+  uint uVar4;
+  int iVar5;
+  code *pcVar6;
+  undefined *puVar7;
+  int iVar8;
+  uint uVar9;
+  int *piVar10;
+  uint *puVar11;
+  uint *puVar12;
+  int iVar13;
+  float *pfVar14;
+  float *pfVar15;
+  int iVar16;
+  int iVar17;
+  undefined1 *puVar18;
+  undefined4 *puVar20;
+  undefined4 *puVar21;
+  int iVar22;
+  int iVar23;
+  int iVar24;
+  undefined4 *puVar25;
+  undefined4 uStack_4c;
+  int local_30;
+  int *local_20;
+  int *local_1c;
+  int *local_c;
+  undefined4 *puVar19;
+  
+  iVar3 = *(int *)(param_1[0x10] + 4);
+  iVar24 = *(int *)(iVar3 + 0x1c);
+  uVar4 = *(uint *)(iVar24 + param_1[7] * 4);
+  param_1[9] = uVar4;
+  iVar5 = *(int *)(iVar3 + 4);
+  uStack_4c = 0xc9f909;
+  puVar18 = &stack0xffffffb8 + iVar5 * -0x10;
+  (&uStack_4c)[-iVar5] = 0xc9f919;
+  (&uStack_4c)[iVar5 * -2] = 0xc9f929;
+  (&uStack_4c)[iVar5 * -3] = 0xc9f939;
+  iVar22 = 0;
+  if (0 < iVar5) {
+    puVar11 = (uint *)(&stack0xffffffb8 + iVar5 * -0xc);
+    puVar18 = &stack0xffffffb8 + iVar5 * -0x10;
+    local_c = param_2;
+    do {
+      local_c = local_c + 1;
+      pcVar6 = *(code **)((&PTR_DAT_013a3dc8)
+                          [*(int *)(iVar24 + 800 + param_2[*local_c + 0x101] * 4)] + 0x14);
+      puVar19 = (undefined4 *)(puVar18 + -4);
+      puVar18 = puVar18 + -4;
+      *puVar19 = 0xc9f994;
+      uVar9 = (*pcVar6)();
+      puVar11[-iVar5] = uVar9;
+      *puVar11 = (uint)(uVar9 != 0);
+      puVar25 = *(undefined4 **)(*param_1 + iVar22 * 4);
+      for (uVar9 = (uVar4 & 0x3fffffff) >> 1; uVar9 != 0; uVar9 = uVar9 - 1) {
+        *puVar25 = 0;
+        puVar25 = puVar25 + 1;
+      }
+      for (iVar13 = (uVar4 & 1) << 1; iVar13 != 0; iVar13 = iVar13 + -1) {
+        *(undefined1 *)puVar25 = 0;
+        puVar25 = (undefined4 *)((int)puVar25 + 1);
+      }
+      iVar22 = iVar22 + 1;
+      puVar11 = puVar11 + 1;
+    } while (iVar22 < *(int *)(iVar3 + 4));
+  }
+  local_c = (int *)0x0;
+  if (0 < param_2[0x121]) {
+    piVar10 = param_2 + 0x222;
+    do {
+      if ((*(int *)(&stack0xffffffb8 + piVar10[-0x100] * 4 + iVar5 * -0xc) != 0) ||
+         (*(int *)(&stack0xffffffb8 + *piVar10 * 4 + iVar5 * -0xc) != 0)) {
+        *(undefined4 *)(&stack0xffffffb8 + piVar10[-0x100] * 4 + iVar5 * -0xc) = 1;
+        *(undefined4 *)(&stack0xffffffb8 + *piVar10 * 4 + iVar5 * -0xc) = 1;
+      }
+      local_c = (int *)((int)local_c + 1);
+      piVar10 = piVar10 + 1;
+    } while ((int)local_c < param_2[0x121]);
+  }
+  local_c = (int *)0x0;
+  if (0 < *param_2) {
+    local_20 = param_2 + 0x111;
+    do {
+      iVar13 = 0;
+      iVar22 = 0;
+      puVar11 = (uint *)(&stack0xffffffb8 + iVar5 * -8);
+      local_1c = param_2;
+      if (0 < *(int *)(iVar3 + 4)) {
+        do {
+          local_1c = local_1c + 1;
+          puVar12 = puVar11;
+          if ((int *)*local_1c == local_c) {
+            iVar13 = iVar13 + 1;
+            puVar12 = puVar11 + 1;
+            *puVar11 = (uint)(*(int *)(&stack0xffffffb8 + iVar22 * 4 + iVar5 * -0xc) != 0);
+            puVar12[iVar5 + -1] = *(uint *)(*param_1 + iVar22 * 4);
+          }
+          iVar22 = iVar22 + 1;
+          puVar11 = puVar12;
+        } while (iVar22 < *(int *)(iVar3 + 4));
+      }
+      puVar7 = (&PTR_DAT_013a3dd0)[*(int *)(iVar24 + 0x520 + *local_20 * 4)];
+      *(int *)(puVar18 + -4) = iVar13;
+      *(undefined1 **)(puVar18 + -8) = &stack0xffffffb8 + iVar5 * -8;
+      *(undefined1 **)(puVar18 + -0xc) = &stack0xffffffb8 + iVar5 * -4;
+      pcVar6 = *(code **)(puVar7 + 0x1c);
+      puVar20 = (undefined4 *)(puVar18 + -0x10);
+      puVar18 = puVar18 + -0x10;
+      *puVar20 = 0xc9facf;
+      (*pcVar6)();
+      local_c = (int *)((int)local_c + 1);
+      local_20 = local_20 + 1;
+    } while ((int)local_c < *param_2);
+  }
+  local_30 = param_2[0x121];
+  if (-1 < local_30 + -1) {
+    iVar22 = (int)uVar4 / 2;
+    piVar10 = param_2 + local_30 + 0x221;
+    do {
+      iVar8 = *(int *)(*param_1 + piVar10[-0x100] * 4);
+      iVar16 = *(int *)(*param_1 + *piVar10 * 4);
+      iVar13 = 0;
+      if (3 < iVar22) {
+        pfVar14 = (float *)(iVar8 + 4);
+        iVar17 = iVar16 - iVar8;
+        iVar23 = (iVar22 - 4U >> 2) + 1;
+        pfVar15 = (float *)(iVar16 + 0xc);
+        iVar13 = iVar23 * 4;
+        do {
+          fVar1 = pfVar14[-1];
+          fVar2 = pfVar15[-3];
+          if (fVar1 <= _DAT_0122dedc) {
+            if (fVar2 <= _DAT_0122dedc) {
+              pfVar15[-3] = fVar1;
+              fVar1 = fVar1 - fVar2;
+              goto LAB_00c9fba9;
+            }
+            pfVar15[-3] = fVar2 + fVar1;
+          }
+          else if (fVar2 <= _DAT_0122dedc) {
+            pfVar15[-3] = fVar1;
+            fVar1 = fVar2 + fVar1;
+LAB_00c9fba9:
+            pfVar14[-1] = fVar1;
+          }
+          else {
+            pfVar15[-3] = fVar1 - fVar2;
+          }
+          fVar1 = *pfVar14;
+          fVar2 = *(float *)(iVar17 + (int)pfVar14);
+          if (fVar1 <= _DAT_0122dedc) {
+            if (fVar2 <= _DAT_0122dedc) {
+              *(float *)(iVar17 + (int)pfVar14) = fVar1;
+              fVar1 = fVar1 - fVar2;
+              goto LAB_00c9fbf6;
+            }
+            *(float *)(iVar17 + (int)pfVar14) = fVar2 + fVar1;
+          }
+          else if (fVar2 <= _DAT_0122dedc) {
+            *(float *)(iVar17 + (int)pfVar14) = fVar1;
+            fVar1 = fVar2 + fVar1;
+LAB_00c9fbf6:
+            *pfVar14 = fVar1;
+          }
+          else {
+            *(float *)(iVar17 + (int)pfVar14) = fVar1 - fVar2;
+          }
+          fVar1 = pfVar14[1];
+          fVar2 = pfVar15[-1];
+          if (fVar1 <= _DAT_0122dedc) {
+            if (fVar2 <= _DAT_0122dedc) {
+              pfVar15[-1] = fVar1;
+              fVar1 = fVar1 - fVar2;
+              goto LAB_00c9fc43;
+            }
+            pfVar15[-1] = fVar2 + fVar1;
+          }
+          else if (fVar2 <= _DAT_0122dedc) {
+            pfVar15[-1] = fVar1;
+            fVar1 = fVar2 + fVar1;
+LAB_00c9fc43:
+            pfVar14[1] = fVar1;
+          }
+          else {
+            pfVar15[-1] = fVar1 - fVar2;
+          }
+          fVar1 = pfVar14[2];
+          fVar2 = *pfVar15;
+          if (fVar1 <= _DAT_0122dedc) {
+            if (fVar2 <= _DAT_0122dedc) {
+              *pfVar15 = fVar1;
+              fVar1 = fVar1 - fVar2;
+              goto LAB_00c9fc8c;
+            }
+            *pfVar15 = fVar2 + fVar1;
+          }
+          else if (fVar2 <= _DAT_0122dedc) {
+            *pfVar15 = fVar1;
+            fVar1 = fVar2 + fVar1;
+LAB_00c9fc8c:
+            pfVar14[2] = fVar1;
+          }
+          else {
+            *pfVar15 = fVar1 - fVar2;
+          }
+          pfVar14 = pfVar14 + 4;
+          pfVar15 = pfVar15 + 4;
+          iVar23 = iVar23 + -1;
+        } while (iVar23 != 0);
+      }
+      if (iVar13 < iVar22) {
+        pfVar14 = (float *)(iVar8 + iVar13 * 4);
+        iVar16 = iVar16 - iVar8;
+        iVar13 = iVar22 - iVar13;
+        do {
+          fVar1 = *pfVar14;
+          fVar2 = *(float *)((int)pfVar14 + iVar16);
+          if (fVar1 <= _DAT_0122dedc) {
+            if (fVar2 <= _DAT_0122dedc) {
+              *(float *)((int)pfVar14 + iVar16) = fVar1;
+              fVar1 = fVar1 - fVar2;
+              goto LAB_00c9fd08;
+            }
+            *(float *)((int)pfVar14 + iVar16) = fVar2 + fVar1;
+          }
+          else if (fVar2 <= _DAT_0122dedc) {
+            *(float *)((int)pfVar14 + iVar16) = fVar1;
+            fVar1 = fVar2 + fVar1;
+LAB_00c9fd08:
+            *pfVar14 = fVar1;
+          }
+          else {
+            *(float *)((int)pfVar14 + iVar16) = fVar1 - fVar2;
+          }
+          pfVar14 = pfVar14 + 1;
+          iVar13 = iVar13 + -1;
+        } while (iVar13 != 0);
+      }
+      piVar10 = piVar10 + -1;
+      local_30 = local_30 + -1;
+    } while (local_30 != 0);
+  }
+  iVar22 = 0;
+  piVar10 = param_2;
+  if (0 < *(int *)(iVar3 + 4)) {
+    do {
+      puVar7 = (&PTR_DAT_013a3dc8)[*(int *)(iVar24 + 800 + param_2[piVar10[1] + 0x101] * 4)];
+      *(undefined4 *)(puVar18 + -4) = *(undefined4 *)(*param_1 + iVar22 * 4);
+      *(undefined4 *)(puVar18 + -8) = *(undefined4 *)(&stack0xffffffb8 + iVar22 * 4 + iVar5 * -0x10)
+      ;
+      pcVar6 = *(code **)(puVar7 + 0x18);
+      puVar21 = (undefined4 *)(puVar18 + -0xc);
+      puVar18 = puVar18 + -0xc;
+      *puVar21 = 0xc9fd7a;
+      (*pcVar6)();
+      iVar22 = iVar22 + 1;
+      piVar10 = piVar10 + 1;
+    } while (iVar22 < *(int *)(iVar3 + 4));
+  }
+  iVar24 = 0;
+  if (0 < *(int *)(iVar3 + 4)) {
+    do {
+      *(undefined4 *)(puVar18 + -4) = *(undefined4 *)(*param_1 + iVar24 * 4);
+      *(undefined4 *)(puVar18 + -8) = 0xc9fdab;
+      Mesh_ComputeDetailLOD();
+      iVar24 = iVar24 + 1;
+    } while (iVar24 < *(int *)(iVar3 + 4));
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ca5da0 54 0
+@@CALLERS 
+@@CALLEES LeaveCriticalSection, EnterCriticalSection
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_00ca5da0(int param_1,undefined4 *param_2)
+
+{
+  if (param_2 == (undefined4 *)0x0) {
+    return 0x80004003;
+  }
+  EnterCriticalSection((LPCRITICAL_SECTION)(param_1 + -100));
+  *param_2 = *(undefined4 *)(param_1 + 0x44);
+  LeaveCriticalSection((LPCRITICAL_SECTION)(param_1 + -100));
+  return 0;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ca5e70 107 0
+@@CALLERS 
+@@CALLEES LeaveCriticalSection, EnterCriticalSection, __alldiv
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_00ca5e70(int param_1,undefined4 *param_2)
+
+{
+  LPCRITICAL_SECTION lpCriticalSection;
+  int iVar1;
+  undefined4 uVar2;
+  
+  if (param_2 == (undefined4 *)0x0) {
+    return 0x80004003;
+  }
+  lpCriticalSection = (LPCRITICAL_SECTION)(param_1 + -100);
+  EnterCriticalSection(lpCriticalSection);
+  if ((*(int *)(param_1 + -200) != 0) && (1 < *(int *)(param_1 + 0x44))) {
+    iVar1 = *(int *)(param_1 + 0x44) + -1;
+    uVar2 = __alldiv(*(undefined4 *)(param_1 + 0x48),*(undefined4 *)(param_1 + 0x4c),iVar1,
+                     iVar1 >> 0x1f);
+    *param_2 = uVar2;
+    LeaveCriticalSection(lpCriticalSection);
+    return 0;
+  }
+  *param_2 = 0;
+  LeaveCriticalSection(lpCriticalSection);
+  return 0;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ca65b0 99 0
+@@CALLERS 
+@@CALLEES WaitForMultipleObjects
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_00ca65b0(int *param_1)
+
+{
+  DWORD DVar1;
+  HANDLE local_8;
+  int local_4;
+  
+  local_4 = param_1[0x15];
+  local_8 = (HANDLE)param_1[0x16];
+  (**(code **)(*param_1 + 0x48))();
+  do {
+    DVar1 = WaitForMultipleObjects(2,&local_8,0,10000);
+  } while (DVar1 == 0x102);
+  (**(code **)(*param_1 + 0x4c))();
+  if (DVar1 == 0) {
+    return 0x80040223;
+  }
+  param_1[0x1a] = 0;
+  return 0;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ca6620 77 0
+@@CALLERS 
+@@CALLEES OS_WaitForMultipleObjectsWithMessages
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_00ca6620(int param_1,undefined4 param_2,undefined4 *param_3)
+
+{
+  int iVar1;
+  
+  if (param_3 == (undefined4 *)0x0) {
+    return 0x80004003;
+  }
+  iVar1 = OS_WaitForMultipleObjectsWithMessages(*(undefined4 *)(param_1 + 0x50),param_2,0,0,0);
+  if (iVar1 == 0x102) {
+    *param_3 = *(undefined4 *)(param_1 + 8);
+    return 0x40237;
+  }
+  *param_3 = *(undefined4 *)(param_1 + 8);
+  return 0;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ca67b0 312 0
+@@CALLERS 
+@@CALLEES timeKillEvent, LeaveCriticalSection, CAudioBank_ResumeAllSounds, EnterCriticalSection
+@@STRINGS 
+@@DECOMP
+
+int FUN_00ca67b0(int param_1)
+
+{
+  LPCRITICAL_SECTION lpCriticalSection;
+  int *piVar1;
+  int *piVar2;
+  int iVar3;
+  int unaff_retaddr;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01216a98;
+  pvStack_c = ExceptionList;
+  lpCriticalSection = (LPCRITICAL_SECTION)(param_1 + 0x70);
+  ExceptionList = &pvStack_c;
+  EnterCriticalSection(lpCriticalSection);
+  local_4 = 0;
+  if (*(int *)(param_1 + 8) == 1) {
+    iVar3 = (**(code **)(*(int *)(param_1 + -0xc) + 0x30))(1);
+    LeaveCriticalSection(lpCriticalSection);
+  }
+  else {
+    if (*(int *)(*(int *)(param_1 + 0x6c) + 0x18) == 0) {
+      *(undefined4 *)(param_1 + 8) = 1;
+      iVar3 = (**(code **)(*(int *)(param_1 + -0xc) + 0x30))(1);
+    }
+    else {
+      iVar3 = CAudioBank_ResumeAllSounds(param_1);
+      if (-1 < iVar3) {
+        piVar1 = (int *)(param_1 + -0xc);
+        EnterCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x88));
+        *(undefined4 *)(param_1 + 0xa4) = 1;
+        LeaveCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x88));
+        (**(code **)(*piVar1 + 0x80))();
+        (**(code **)(*piVar1 + 0x28))(1);
+        (**(code **)(*piVar1 + 0x6c))();
+        if (*(UINT *)(param_1 + 0xb4) != 0) {
+          timeKillEvent(*(UINT *)(param_1 + 0xb4));
+          *(undefined4 *)(param_1 + 0xb4) = 0;
+        }
+        piVar2 = *(int **)(*(int *)(param_1 + 0x6c) + 0x9c);
+        if (piVar2 != (int *)0x0) {
+          (**(code **)(*piVar2 + 0x14))(piVar2);
+        }
+        if (unaff_retaddr == 0) {
+          *(undefined4 *)(param_1 + 0x54) = 0;
+          (**(code **)(*piVar1 + 0x70))();
+        }
+        iVar3 = (**(code **)(*piVar1 + 0x30))(unaff_retaddr);
+        LeaveCriticalSection(lpCriticalSection);
+        ExceptionList = pvStack_c;
+        return iVar3;
+      }
+    }
+    LeaveCriticalSection(lpCriticalSection);
+  }
+  ExceptionList = pvStack_c;
+  return iVar3;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ca68f0 313 0
+@@CALLERS 
+@@CALLEES LeaveCriticalSection, CAudioBank_SetAudioFormat, EnterCriticalSection, SetEvent, GetRefCount
+@@STRINGS 
+@@DECOMP
+
+int FUN_00ca68f0(int param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  LPCRITICAL_SECTION lpCriticalSection;
+  int *piVar1;
+  int iVar2;
+  int unaff_retaddr;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01216ab8;
+  local_c = ExceptionList;
+  lpCriticalSection = (LPCRITICAL_SECTION)(param_1 + 0x70);
+  ExceptionList = &local_c;
+  EnterCriticalSection(lpCriticalSection);
+  local_4 = 0;
+  if (*(int *)(param_1 + 8) != 2) {
+    if (*(int *)(*(int *)(param_1 + 0x6c) + 0x18) != 0) {
+      SetEvent(*(HANDLE *)(param_1 + 0x50));
+      iVar2 = CAudioBank_SetAudioFormat(param_1,param_2,param_3);
+      if (iVar2 < 0) {
+        LeaveCriticalSection(lpCriticalSection);
+        ExceptionList = local_c;
+        return iVar2;
+      }
+      (**(code **)(*(int *)(param_1 + -0xc) + 0x28))(1);
+      EnterCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x88));
+      *(undefined4 *)(param_1 + 0xa4) = 0;
+      LeaveCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x88));
+      piVar1 = *(int **)(*(int *)(param_1 + 0x6c) + 0x9c);
+      if (piVar1 != (int *)0x0) {
+        (**(code **)(*piVar1 + 0x14))(piVar1);
+      }
+      if (unaff_retaddr == 0) {
+        *(undefined4 *)(param_1 + 0x54) = 0;
+        (**(code **)(*(int *)(param_1 + -0xc) + 0x70))();
+      }
+      iVar2 = (**(code **)(*(int *)(param_1 + -0xc) + 0x7c))();
+      LeaveCriticalSection(lpCriticalSection);
+      ExceptionList = lpCriticalSection;
+      return iVar2;
+    }
+    CSurface::GetRefCount((CSurface *)(param_1 + -0xc));
+    *(undefined4 *)(param_1 + 8) = 2;
+  }
+  LeaveCriticalSection(lpCriticalSection);
+  ExceptionList = local_c;
+  return 0;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ca6b00 52 0
+@@CALLERS 
+@@CALLEES SetEvent
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_00ca6b00(int *param_1)
+
+{
+  if ((param_1[5] != 0) && (param_1[0x1c] = 1, param_1[0x1b] == 0)) {
+    SetEvent((HANDLE)param_1[0x17]);
+    if (param_1[0x19] != 0) {
+      (**(code **)(*param_1 + 0x60))();
+    }
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ca6b40 53 0
+@@CALLERS 
+@@CALLEES ResetEvent, ThreadMsg_PumpAndWaitForCompletion
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_00ca6b40(int *param_1)
+
+{
+  if (param_1[5] == 1) {
+    ResetEvent((HANDLE)param_1[0x17]);
+  }
+  (**(code **)(*param_1 + 0x28))(0);
+  (**(code **)(*param_1 + 0x6c))();
+  (**(code **)(*param_1 + 0x70))();
+  ThreadMsg_PumpAndWaitForCompletion();
+  return 0;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ca8610 70 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00ca8610(int param_1,int *param_2)
+
+{
+  int *piVar1;
+  uint uVar2;
+  int unaff_ESI;
+  
+  piVar1 = param_2;
+  (**(code **)(*param_2 + 0x24))(param_2,&param_2);
+  if (unaff_ESI == *(int *)(param_1 + 0x1c)) {
+    return 0x80040208;
+  }
+  uVar2 = (**(code **)*piVar1)(piVar1,&DAT_012a9a24,param_1 + 0x9c);
+  return uVar2 & (-1 < (int)uVar2) - 1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ca86d0 240 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_00ca86d0(int *param_1,int *param_2,int *param_3)
+
+{
+  int *piVar1;
+  int iVar2;
+  int *piStack_24;
+  int *piStack_20;
+  int local_10 [4];
+  
+  local_10[0] = 0;
+  piStack_20 = local_10;
+  local_10[1] = 0;
+  *param_3 = 0;
+  local_10[2] = 0;
+  piStack_24 = param_2;
+  local_10[3] = 0;
+  (**(code **)(*param_2 + 0x14))();
+  if (local_10[0] == 0) {
+    local_10[0] = 1;
+  }
+  iVar2 = (**(code **)(*param_2 + 0xc))(param_2,param_3);
+  if (-1 < iVar2) {
+    iVar2 = (**(code **)(*param_1 + 0x3c))(*param_3,&piStack_20);
+    if (-1 < iVar2) {
+      iVar2 = (**(code **)(*param_2 + 0x10))(param_2,*param_3,0);
+      if (-1 < iVar2) {
+        return 0;
+      }
+    }
+  }
+  piVar1 = (int *)*param_3;
+  if (piVar1 != (int *)0x0) {
+    (**(code **)(*piVar1 + 8))(piVar1);
+    *param_3 = 0;
+  }
+  iVar2 = (**(code **)(*param_1 + 0x48))(param_3);
+  if (-1 < iVar2) {
+    iVar2 = (**(code **)(*param_1 + 0x3c))(*param_3,&piStack_24);
+    if (-1 < iVar2) {
+      iVar2 = (**(code **)(*param_2 + 0x10))(param_2,*param_3,0);
+      if (-1 < iVar2) {
+        return 0;
+      }
+    }
+  }
+  piVar1 = (int *)*param_3;
+  if (piVar1 != (int *)0x0) {
+    (**(code **)(*piVar1 + 8))(piVar1);
+    *param_3 = 0;
+  }
+  return iVar2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ca8d50 182 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+uint FUN_00ca8d50(undefined4 *param_1)
+
+{
+  undefined4 *puVar1;
+  int iVar2;
+  uint uVar3;
+  int iVar4;
+  int *unaff_EDI;
+  int iVar5;
+  int *piVar6;
+  int iStack_c;
+  int *piStack_8;
+  int iStack_4;
+  
+  puVar1 = param_1;
+  iStack_4 = (**(code **)(*(int *)param_1[-0x1c] + 0x18))();
+  iVar4 = 0;
+  iVar5 = 0;
+  if (0 < iStack_4) {
+    do {
+      iVar2 = (**(code **)(*(int *)puVar1[-0x1c] + 0x1c))(iVar5);
+      piVar6 = (int *)(iVar2 + 0xc);
+      uVar3 = (**(code **)(*piVar6 + 0x24))(piVar6,&iStack_c);
+      if ((int)uVar3 < 0) {
+        return uVar3;
+      }
+      if ((piStack_8 == (int *)0x1) &&
+         (iVar2 = (**(code **)(*piVar6 + 0x18))(piVar6,&param_1), -1 < iVar2)) {
+        piVar6 = &iStack_c;
+        iVar4 = iVar4 + 1;
+        iVar2 = (**(code **)*param_1)(param_1,&DAT_012a9a24);
+        (**(code **)(*piStack_8 + 8))(piStack_8);
+        if (iVar2 < 0) {
+          return 0;
+        }
+        iVar2 = (**(code **)(*unaff_EDI + 0x20))(unaff_EDI);
+        (**(code **)(*piVar6 + 8))(piVar6);
+        if (iVar2 != 1) {
+          return 0;
+        }
+      }
+      iVar5 = iVar5 + 1;
+    } while (iVar5 < iStack_4);
+  }
+  return (uint)(iVar4 != 0);
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ca9c80 58 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00ca9c80(int *param_1)
+
+{
+  int *piVar1;
+  int iVar2;
+  
+  iVar2 = (**(code **)(*param_1 + 0x38))(param_1[0x27],param_1 + 0x26);
+  if (((-1 < iVar2) && (*(int *)(param_1[10] + 0x14) != 0)) &&
+     (piVar1 = (int *)param_1[0x26], piVar1 != (int *)0x0)) {
+    (**(code **)(*piVar1 + 0x14))(piVar1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ca9ec0 83 0
+@@CALLERS 
+@@CALLEES LeaveCriticalSection, EnterCriticalSection
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_00ca9ec0(int param_1,undefined4 *param_2)
+
+{
+  LPCRITICAL_SECTION lpCriticalSection;
+  
+  if (param_2 == (undefined4 *)0x0) {
+    return 0x80004003;
+  }
+  if (param_1 == 0xc) {
+    lpCriticalSection = (LPCRITICAL_SECTION)0x0;
+  }
+  else {
+    lpCriticalSection = (LPCRITICAL_SECTION)(param_1 + 4);
+  }
+  EnterCriticalSection(lpCriticalSection);
+  param_2[1] = *(undefined4 *)(param_1 + 0x34);
+  *param_2 = *(undefined4 *)(param_1 + 0x2c);
+  param_2[2] = *(undefined4 *)(param_1 + 0x38);
+  param_2[3] = *(undefined4 *)(param_1 + 0x3c);
+  LeaveCriticalSection(lpCriticalSection);
+  return 0;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00caa040 60 0
+@@CALLERS 
+@@CALLEES LeaveCriticalSection, EnterCriticalSection
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_00caa040(int param_1,int *param_2)
+
+{
+  LPCRITICAL_SECTION lpCriticalSection;
+  
+  if (param_1 == 0xc) {
+    lpCriticalSection = (LPCRITICAL_SECTION)0x0;
+  }
+  else {
+    lpCriticalSection = (LPCRITICAL_SECTION)(param_1 + 4);
+  }
+  EnterCriticalSection(lpCriticalSection);
+  *param_2 = (*(int *)(param_1 + 0x2c) - *(int *)(param_1 + 0x30)) + *(int *)(param_1 + 0x20);
+  LeaveCriticalSection(lpCriticalSection);
+  return 0;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00caf090 75 0
+@@CALLERS 
+@@CALLEES COM_QueryInterface_Wrapper, operator()
+@@STRINGS 
+@@DECOMP
+
+uint FUN_00caf090(int *param_1,undefined4 param_2)
+
+{
+  bool bVar1;
+  int iVar2;
+  uint uVar3;
+  CThingFilter_IsValid *this;
+  CThing *unaff_ESI;
+  
+  iVar2 = (**(code **)(*param_1 + 0x50))(param_2,0);
+  if (-1 < iVar2) {
+    return 0;
+  }
+  uVar3 = COM_QueryInterface_Wrapper(&stack0xfffffffc);
+  if (-1 < (int)uVar3) {
+    bVar1 = CThingFilter_IsValid::operator()(this,unaff_ESI);
+    uVar3 = (uint)bVar1;
+    (**(code **)(*(int *)unaff_ESI + 8))(unaff_ESI,param_2);
+  }
+  return uVar3;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00cdb550 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00cdb550(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x24);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00cdb710 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00cdb710(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x14);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00cdb750 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00cdb750(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x24);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00cdbeb0 66 0
+@@CALLERS 
+@@CALLEES StdMap_DestroyNode, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00cdbeb0(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    StdMap_DestroyNode(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00d9d930 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00d9d930(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012d6c44;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012d6c44;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00d9ffd0 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00d9ffd0(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012d6e5c;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012d6e5c;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00da8320 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00da8320(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012d7844;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012d7844;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00db8520 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00db8520(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012d95b0;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012d95b0;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00dc0170 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00dc0170(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012d9f9c;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012d9f9c;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00dc8700 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00dc8700(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012daa38;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012daa38;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00dcf790 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00dcf790(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012db50c;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012db50c;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00dd9300 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00dd9300(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012dc584;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012dc584;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ddc7d0 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00ddc7d0(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012dca80;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012dca80;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ddeee0 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00ddeee0(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012dcd2c;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012dcd2c;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00dec5b0 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00dec5b0(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012ddc04;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012ddc04;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00def220 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00def220(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012ddf08;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012ddf08;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00df3550 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00df3550(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012de350;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012de350;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00df4a50 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CFileInstaller::CFileInfo_const_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00df4a50(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012de5e4;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012de5e4;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00df99f0 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, CCountedPointer<CFileInstaller::CFileInfo_const_>, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00df99f0(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012deaac;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012deaac;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00dfc100 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, CCountedPointer<CFileInstaller::CFileInfo_const_>, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00dfc100(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012dee4c;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012dee4c;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00e05170 272 0
+@@CALLERS 
+@@CALLEES CActiveEntityScriptBase, ShareData, CCountedPointer<CFileInstaller::CFileInfo_const_>, _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, operator_new
+@@STRINGS 
+@@DECOMP
+
+CCountedPointer<CFileInstaller::CFileInfo_const_> * __thiscall
+FUN_00e05170(int param_1,CCountedPointer<CFileInstaller::CFileInfo_const_> *param_2,
+            CScriptThing *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  CCPPointerInfo *pCVar1;
+  CScriptThing *pCVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  CActiveEntityScriptBase *pCVar5;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  ulong unaff_EDI;
+  undefined8 uVar6;
+  CScriptThing *unaff_retaddr;
+  ulong uVar7;
+  CScriptThing *local_10;
+  CCPPointerInfo *pCStack_c;
+  CCountedPointer<CFileInstaller::CFileInfo_const_> *pCStack_4;
+  
+  if (*(char *)(param_1 + 0x14) != '\0') {
+    uVar7 = *(ulong *)(*(int *)(param_1 + 8) + 0x44);
+    uVar6 = (**(code **)(param_1 + 0x10))(uVar7,param_3);
+    pCVar1 = (CCPPointerInfo *)((undefined4 *)uVar6)[1];
+    pCVar2 = (CScriptThing *)*(undefined4 *)uVar6;
+    if (pCVar1 != (CCPPointerInfo *)0x0) {
+      *(int *)pCVar1 = *(int *)pCVar1 + 1;
+    }
+    local_10 = pCVar2;
+    pCStack_c = pCVar1;
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &stack0xffffffe8,
+               (CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *)
+               ((ulonglong)uVar6 >> 0x20));
+    (**(code **)(*(int *)pCVar2 + 8))();
+    pCVar5 = operator_new(0x60);
+    if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+      pCVar5 = (CActiveEntityScriptBase *)0x0;
+    }
+    else {
+      uVar3 = *(undefined4 *)(param_1 + 8);
+      CActiveEntityScriptBase::CActiveEntityScriptBase
+                (pCVar5,unaff_retaddr,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_3),uVar7);
+      *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012df7d4;
+      *(undefined4 *)(pCVar5 + 0x5c) = uVar3;
+      CCountedPointer<CScriptThing>::ShareData
+                ((CCountedPointer<CScriptThing> *)(pCVar5 + 0x34),pCVar2,pCVar1);
+    }
+    CCountedPointer<CFileInstaller::CFileInfo_const_>::
+    CCountedPointer<CFileInstaller::CFileInfo_const_>(pCStack_4,(CFileInfo *)pCVar5);
+    std::
+    _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+              ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+               &local_10,extraout_EDX);
+    return pCStack_4;
+  }
+  pCVar5 = operator_new(0x60);
+  if (pCVar5 == (CActiveEntityScriptBase *)0x0) {
+    pCVar5 = (CActiveEntityScriptBase *)0x0;
+  }
+  else {
+    uVar3 = *(undefined4 *)(param_1 + 0xc);
+    uVar4 = *(undefined4 *)(param_1 + 8);
+    CActiveEntityScriptBase::CActiveEntityScriptBase
+              (pCVar5,param_3,CONCAT44(*(undefined4 *)(param_1 + 0x18),param_5),unaff_EDI);
+    *(undefined ***)pCVar5 = &PTR__vector_deleting_destructor__012df7d4;
+    *(undefined4 *)(pCVar5 + 0x58) = uVar3;
+    *(undefined4 *)(pCVar5 + 0x5c) = uVar4;
+  }
+  CCountedPointer<CFileInstaller::CFileInfo_const_>::
+  CCountedPointer<CFileInstaller::CFileInfo_const_>(param_2,(CFileInfo *)pCVar5);
+  return param_2;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ee3140 1366 0
+@@CALLERS 
+@@CALLEES Initialise, HasPhysicsMesh, PlayCutscene, GFIntToCharString_API, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, AllocateMapThingUID, CCharString_OperatorPlus_API, IsDistanceBetweenThingsOver, IsDistanceBetweenThingsUnder, ~CIsThingAlive, CCharString, rand, CScriptThing, Clear
+@@STRINGS TravHero Whisper	SCRIPT_NAME_HERO	CS_TRAVHERO_WHISPERLEAVE	CS_TRAVHERO_WHISPERPUB	TEXT_QST_B14_WHISPERPUB_
+@@DECOMP
+
+void __fastcall FUN_00ee3140(CWorldMap *param_1)
+
+{
+  CScriptThing *pCVar1;
+  uint uVar2;
+  char extraout_AL;
+  char extraout_AL_00;
+  bool bVar3;
+  char cVar4;
+  char extraout_AL_01;
+  char extraout_AL_02;
+  char extraout_AL_03;
+  char extraout_AL_04;
+  char extraout_AL_05;
+  char extraout_AL_06;
+  char extraout_AL_07;
+  char extraout_AL_08;
+  char extraout_AL_09;
+  char extraout_AL_10;
+  char extraout_AL_11;
+  char extraout_AL_12;
+  undefined4 uVar5;
+  CScriptThing *pCVar6;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_02;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_03;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_04;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar7;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_05;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_06;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_07;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_08;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_09;
+  int iVar8;
+  int iVar9;
+  float fVar10;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *ppVar11;
+  uint uStack_88;
+  uint uStack_84;
+  undefined **ppuStack_7c;
+  undefined4 uStack_78;
+  int *piStack_74;
+  undefined4 uStack_70;
+  CScriptThing *pCStack_6c;
+  int iStack_68;
+  CScriptThing *pCStack_64;
+  undefined4 uStack_60;
+  CCharString *pCVar12;
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> aaStack_3c [4];
+  CCharString aCStack_38 [40];
+  undefined **local_10;
+  CScriptThing local_c [12];
+  
+  pCVar1 = (CScriptThing *)(param_1 + 8);
+  iVar9 = 0;
+  local_10 = &PTR_LAB_012c32f0;
+  CScriptThing::CScriptThing(local_c,pCVar1);
+  CWorldMap::AllocateMapThingUID(param_1,(long)&local_10);
+  NScript::CIsThingAlive::~CIsThingAlive((CIsThingAlive *)&local_10);
+  (**(code **)(**(int **)(param_1 + 4) + 0x1c))();
+  CCreatureAction_TrollWhackGroundBase::Initialise((CCreatureAction_TrollWhackGroundBase *)param_1);
+  if (extraout_AL == '\0') {
+    pCStack_64 = pCVar1;
+    if (*(int *)(*(int *)(param_1 + 0x18) + 4) < 0x835) {
+      uStack_60 = 0;
+      iStack_68 = 0xee31fd;
+      (**(code **)(**(int **)(param_1 + 4) + 0x5a0))();
+      iStack_68 = 1;
+      uStack_70 = 0xee320b;
+      pCStack_6c = pCVar1;
+      (**(code **)(**(int **)(param_1 + 4) + 0x774))();
+      uStack_70 = 0;
+      ppuStack_7c = &PTR__scalar_deleting_destructor__01238c8c;
+      uStack_78 = *(undefined4 *)(param_1 + 0xc);
+      piStack_74 = *(int **)(param_1 + 0x10);
+      if (piStack_74 != (int *)0x0) {
+        *piStack_74 = *piStack_74 + 1;
+      }
+      (**(code **)(**(int **)(param_1 + 4) + 0xd30))();
+      (**(code **)(**(int **)(param_1 + 4) + 0x7e8))();
+      uStack_88 = 1;
+      (**(code **)(**(int **)(param_1 + 4) + 0x77c))();
+      iVar8 = *(int *)(param_1 + 0x14);
+      bVar3 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)(iVar8 + 0x48));
+      if (bVar3) {
+        CMemoryDataOutputStream::Clear((CMemoryDataOutputStream *)(iVar8 + 0x48));
+      }
+      cVar4 = (**(code **)(**(int **)(param_1 + 4) + 0x20))();
+      while (cVar4 == '\0') {
+        (**(code **)(**(int **)(param_1 + 4) + 0x1c))();
+        CCreatureAction_TrollWhackGroundBase::Initialise
+                  ((CCreatureAction_TrollWhackGroundBase *)param_1);
+        if (extraout_AL_01 != '\0') {
+          return;
+        }
+        cVar4 = (**(code **)(**(int **)(param_1 + 4) + 0x20))();
+      }
+      CCreatureAction_TrollWhackGroundBase::Initialise
+                ((CCreatureAction_TrollWhackGroundBase *)param_1);
+      if (extraout_AL_02 == '\0') {
+        iVar8 = -1;
+        ppuStack_7c = (undefined **)0x0;
+        uStack_60 = 0xffffffff;
+        CCreatureAction_TrollWhackGroundBase::Initialise
+                  ((CCreatureAction_TrollWhackGroundBase *)param_1);
+        pCVar6 = pCVar1;
+        cVar4 = extraout_AL_03;
+        while (cVar4 == '\0') {
+          CCharString::CCharString((CCharString *)&uStack_70,"SCRIPT_NAME_HERO",-1);
+          uStack_84 = (uint)pCVar6 | 1;
+          ppVar11 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&uStack_70;
+          cVar4 = (**(code **)(*(int *)pCVar1 + 0x54))();
+          ppVar7 = extraout_EDX_00;
+          if (cVar4 == '\0') {
+            CCharString::CCharString((CCharString *)&uStack_78,"SCRIPT_NAME_HERO",-1);
+            cVar4 = (**(code **)(*(int *)pCVar1 + 0xa8))();
+            ppVar7 = extraout_EDX_01;
+            uVar2 = uStack_88 | 2;
+            if (cVar4 != '\0') {
+              CCharString::CCharString((CCharString *)&ppuStack_7c,"SCRIPT_NAME_HERO",-1);
+              uStack_88 = uStack_88 | 6;
+              cVar4 = (**(code **)(*(int *)pCVar1 + 0xa4))();
+              ppVar7 = extraout_EDX_02;
+              uVar2 = uStack_88;
+              if (cVar4 == '\0') goto LAB_00ee3370;
+            }
+            uStack_88 = uVar2;
+            bVar3 = false;
+          }
+          else {
+LAB_00ee3370:
+            bVar3 = true;
+          }
+          if ((uStack_88 & 4) != 0) {
+            uStack_88 = uStack_88 & 0xfffffffb;
+            std::
+            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                      ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&ppuStack_7c
+                       ,ppVar7,ppVar11);
+            ppVar7 = extraout_EDX_03;
+          }
+          if ((uStack_88 & 2) != 0) {
+            uStack_88 = uStack_88 & 0xfffffffd;
+            std::
+            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                      ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_78,
+                       ppVar7,ppVar11);
+            ppVar7 = extraout_EDX_04;
+          }
+          if ((uStack_88 & 1) != 0) {
+            uStack_88 = uStack_88 & 0xfffffffe;
+            std::
+            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                      ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&piStack_74,
+                       ppVar7,ppVar11);
+          }
+          if (bVar3) {
+            CCreatureAction_TrollWhackGroundBase::Initialise
+                      ((CCreatureAction_TrollWhackGroundBase *)param_1);
+            if (extraout_AL_04 != '\0') {
+              return;
+            }
+            if (iVar8 != -1) {
+              CCreatureAction_TrollWhackGroundBase::Initialise
+                        ((CCreatureAction_TrollWhackGroundBase *)param_1);
+              if (extraout_AL_05 != '\0') {
+                return;
+              }
+              (**(code **)(**(int **)(param_1 + 4) + 0x5bc))();
+            }
+            CCharString::CCharString((CCharString *)&uStack_70,"TravHero Whisper",-1);
+            ppVar11 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&uStack_70;
+            (**(code **)(**(int **)(param_1 + 4) + 0xb3c))();
+            std::
+            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                      ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&piStack_74,
+                       extraout_EDX_05,ppVar11);
+            *(undefined1 *)(*(int *)(param_1 + 0x14) + 0x7c) = 1;
+            CCharString::CCharString((CCharString *)&stack0xffffff5c,"CS_TRAVHERO_WHISPERLEAVE",-1);
+            NScript::CV_ExposeMayorScript::PlayCutscene(*(CV_ExposeMayorScript **)(param_1 + 0x14));
+          }
+          else {
+            CCharString::CCharString((CCharString *)&pCStack_6c,"SCRIPT_NAME_HERO",-1);
+            ppVar11 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&pCStack_6c;
+            cVar4 = (**(code **)(*(int *)pCVar1 + 0x6c))();
+            std::
+            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                      ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_70,
+                       extraout_EDX_06,ppVar11);
+            if (cVar4 == '\0') {
+              fVar10 = 5.0;
+              pCVar6 = (CScriptThing *)(**(code **)(**(int **)(param_1 + 4) + 0x118))();
+              bVar3 = IsDistanceBetweenThingsUnder(pCVar1,pCVar6,fVar10);
+              if (bVar3) {
+                fVar10 = 1.0;
+                pCVar6 = (CScriptThing *)(**(code **)(**(int **)(param_1 + 4) + 0x118))();
+                bVar3 = IsDistanceBetweenThingsOver(pCVar1,pCVar6,fVar10);
+                if (bVar3) {
+                  CCreatureAction_TrollWhackGroundBase::Initialise
+                            ((CCreatureAction_TrollWhackGroundBase *)param_1);
+                  if (extraout_AL_08 != '\0') {
+                    return;
+                  }
+                  if (iVar9 < 1) {
+                    CCreatureAction_TrollWhackGroundBase::Initialise
+                              ((CCreatureAction_TrollWhackGroundBase *)param_1);
+                    if (extraout_AL_09 != '\0') {
+                      return;
+                    }
+                    if (3 < (int)uStack_88) {
+                      CCreatureAction_TrollWhackGroundBase::Initialise
+                                ((CCreatureAction_TrollWhackGroundBase *)param_1);
+                      if (extraout_AL_10 != '\0') {
+                        return;
+                      }
+                      uStack_88 = 1;
+                    }
+                    iVar9 = **(int **)(param_1 + 4);
+                    uVar5 = (**(code **)(**(int **)(param_1 + 4) + 0x118))();
+                    (**(code **)(iVar9 + 0x76c))(pCVar1,uVar5);
+                    iVar8 = (**(code **)(**(int **)(param_1 + 4) + 0x5b0))(pCVar1,0,0);
+                    iVar9 = **(int **)(param_1 + 4);
+                    uVar5 = (**(code **)(**(int **)(param_1 + 4) + 0x118))();
+                    (**(code **)(iVar9 + 0x5b4))(iVar8,uVar5);
+                    iVar9 = **(int **)(param_1 + 4);
+                    uVar5 = (**(code **)(**(int **)(param_1 + 4) + 0x118))();
+                    uVar5 = GFIntToCharString_API(0,pCVar1,uVar5);
+                    uVar5 = CCharString_OperatorPlus_API(uVar5);
+                    (**(code **)(iVar9 + 0x5b8))(iVar8,uVar5);
+                    std::
+                    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)
+                               &pCStack_64,extraout_EDX_08,ppVar11);
+                    std::
+                    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)
+                               &uStack_60,extraout_EDX_09,ppVar11);
+                    uStack_88 = uStack_88 + 1;
+                    iVar9 = rand();
+                    iVar9 = (iVar9 % 0x1e + 0x1e) * 0xf;
+                  }
+                  else {
+                    if (0 < (int)uStack_84) goto LAB_00ee366d;
+                    CCreatureAction_TrollWhackGroundBase::Initialise
+                              ((CCreatureAction_TrollWhackGroundBase *)param_1);
+                    if (extraout_AL_11 != '\0') {
+                      return;
+                    }
+                    iVar8 = **(int **)(param_1 + 4);
+                    uVar5 = (**(code **)(**(int **)(param_1 + 4) + 0x118))();
+                    (**(code **)(iVar8 + 0x76c))(pCVar1,uVar5);
+                    iVar8 = iStack_68;
+                  }
+                  uStack_84 = 0xf;
+                }
+              }
+            }
+            else {
+              CCreatureAction_TrollWhackGroundBase::Initialise
+                        ((CCreatureAction_TrollWhackGroundBase *)param_1);
+              if (extraout_AL_06 != '\0') {
+                return;
+              }
+              if (iVar8 != -1) {
+                CCreatureAction_TrollWhackGroundBase::Initialise
+                          ((CCreatureAction_TrollWhackGroundBase *)param_1);
+                if (extraout_AL_07 != '\0') {
+                  return;
+                }
+                (**(code **)(**(int **)(param_1 + 4) + 0x5bc))(iVar8);
+              }
+              CCharString::CCharString((CCharString *)&pCStack_6c,"TravHero Whisper",-1);
+              (**(code **)(**(int **)(param_1 + 4) + 0xb3c))();
+              std::
+              _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                        ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)
+                         &pCStack_6c,extraout_EDX_07,ppVar11);
+              *(undefined1 *)(*(int *)(param_1 + 0x14) + 0x7c) = 1;
+              CCharString::CCharString((CCharString *)&stack0xffffff5c,"CS_TRAVHERO_WHISPERPUB",-1);
+              NScript::CV_ExposeMayorScript::PlayCutscene
+                        (*(CV_ExposeMayorScript **)(param_1 + 0x14));
+            }
+          }
+LAB_00ee366d:
+          pCVar6 = (CScriptThing *)(uStack_84 - 1);
+          iVar9 = iVar9 + -1;
+          (**(code **)(**(int **)(param_1 + 4) + 0x1c))();
+          CCreatureAction_TrollWhackGroundBase::Initialise
+                    ((CCreatureAction_TrollWhackGroundBase *)param_1);
+          cVar4 = extraout_AL_12;
+        }
+      }
+    }
+    else {
+      CCreatureAction_TrollWhackGroundBase::Initialise
+                ((CCreatureAction_TrollWhackGroundBase *)param_1);
+      if (extraout_AL_00 == '\0') {
+        uStack_60 = 0xee31bb;
+        CCharString::CCharString(aCStack_38,"TravHero Whisper",-1);
+        pCVar12 = aCStack_38;
+        (**(code **)(**(int **)(param_1 + 4) + 0xb3c))();
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  (aaStack_3c,extraout_EDX,
+                   (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar12);
+        uStack_60 = 0;
+        iStack_68 = 0xee31e5;
+        (**(code **)(**(int **)(param_1 + 4) + 0x1b0))();
+        return;
+      }
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ee4dd0 1943 0
+@@CALLERS 
+@@CALLEES IsDistanceFromThingToPositionOver, ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ, ~C3DClothPrimitive, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CBaseIntelligentPointer, ?IsAlive@CScriptThing@@UBE_NXZ, ~CScriptGameResourceObjectMovieBase, rand, CCharString, Clear, FadeOutAndKillEntity, operator=, ?FollowThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@M_N@Z, ?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEntityMoveType@@_N2@Z, ~CTimer, Initialise, HasPhysicsMesh, ~CPhysicsMeshInfo, ?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ, CBase, operator_delete, ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+@@STRINGS TourGuideGuide	SCRIPT_NAME_HERO	M_TG_ClosingTimeExit
+@@DECOMP
+
+void __fastcall FUN_00ee4dd0(CCreatureAction_TrollWhackGroundBase *param_1)
+
+{
+  CScriptThing *pCVar1;
+  bool bVar2;
+  char cVar3;
+  char extraout_AL;
+  char extraout_AL_00;
+  char extraout_AL_01;
+  char extraout_AL_02;
+  char extraout_AL_03;
+  char extraout_AL_04;
+  char extraout_AL_05;
+  char extraout_AL_06;
+  char extraout_AL_07;
+  char extraout_AL_08;
+  char extraout_AL_09;
+  char extraout_AL_10;
+  char extraout_AL_11;
+  char extraout_AL_12;
+  char extraout_AL_13;
+  char extraout_AL_14;
+  char extraout_AL_15;
+  char extraout_AL_16;
+  char extraout_AL_17;
+  char extraout_AL_18;
+  char extraout_AL_19;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *ppVar4;
+  undefined4 uVar5;
+  int iVar6;
+  int iVar7;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *ppVar8;
+  CScriptThing *pCVar9;
+  undefined4 *puVar10;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_02;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_03;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_04;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_05;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar11;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_06;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_07;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_08;
+  undefined4 extraout_EDX_09;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_10;
+  uint unaff_ESI;
+  undefined4 unaff_EDI;
+  undefined8 uVar12;
+  CCharString *pCVar13;
+  float fVar14;
+  CScriptThing *pCVar15;
+  CCharString *pCVar16;
+  CCharString *pCVar17;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *ppVar18;
+  CCharString *pCVar19;
+  undefined **local_54;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *ppStack_50;
+  int *local_4c;
+  undefined **ppuStack_48;
+  undefined4 uStack_44;
+  int *piStack_40;
+  undefined4 uStack_3c;
+  undefined4 uStack_38;
+  undefined4 uStack_34;
+  C3DClothPrimitive aCStack_30 [8];
+  C3DMeshInfo aCStack_28 [4];
+  undefined **appuStack_24 [2];
+  undefined4 uStack_1c;
+  undefined **appuStack_18 [2];
+  undefined4 uStack_10;
+  undefined4 uStack_c;
+  
+  local_4c = (int *)0x0;
+  CCharString::CCharString((CCharString *)&local_54);
+  ppVar4 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)
+           (**(code **)(*DAT_0143e8f8 + 0x15c))();
+  pCVar19 = (CCharString *)0x0;
+  ppVar18 = ppVar4;
+  ppStack_50 = ppVar4;
+  (**(code **)(*DAT_0143e8f8 + 0x164))();
+  CBaseIntelligentPointer::CBaseIntelligentPointer((CBaseIntelligentPointer *)appuStack_18);
+  appuStack_18[0] = &PTR__scalar_deleting_destructor__0127094c;
+  uStack_10 = 0;
+  uStack_c = 0;
+  bVar2 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)appuStack_18);
+  if (bVar2) {
+    CMemoryDataOutputStream::Clear((CMemoryDataOutputStream *)appuStack_18);
+  }
+  pCVar17 = (CCharString *)0x2;
+  pCVar16 = (CCharString *)appuStack_18;
+  pCVar1 = (CScriptThing *)(param_1 + 8);
+  pCVar15 = pCVar1;
+  cVar3 = (**(code **)(**(int **)(param_1 + 4) + 0x20))();
+  while (cVar3 == '\0') {
+    (**(code **)(**(int **)(param_1 + 4) + 0x1c))();
+    CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+    if (extraout_AL != '\0') {
+      if ((appuStack_18[0] != (undefined **)0x0) &&
+         (*appuStack_18[0] = *appuStack_18[0] + -1, *appuStack_18[0] == (undefined *)0x0)) {
+        (*(code *)appuStack_18[0][1])();
+        operator_delete(appuStack_18[0]);
+      }
+      uStack_1c = 0;
+      appuStack_18[0] = (undefined **)0x0;
+      appuStack_24[0] = &PTR__vector_deleting_destructor__0126008c;
+      CPhysicsMeshInfo::~CPhysicsMeshInfo((CPhysicsMeshInfo *)appuStack_24);
+      (**(code **)(*DAT_0143e8f8 + 0x160))();
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffff94,
+                 extraout_EDX_01,ppVar4);
+      return;
+    }
+    cVar3 = (**(code **)(**(int **)(param_1 + 4) + 0x20))(pCVar1,appuStack_24);
+  }
+  CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+  if (extraout_AL_00 == '\0') {
+    CCharString::CCharString((CCharString *)&stack0xffffffa4,"TourGuideGuide",-1);
+    (**(code **)(**(int **)(param_1 + 4) + 0x120))(&ppuStack_48);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffffa4,
+               extraout_EDX,(pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar15);
+    NHeroInformationScreens::CBase::CBase((CBase *)&local_54);
+    local_54 = &PTR__scalar_deleting_destructor__01238c8c;
+    ppStack_50 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)0x0;
+    local_4c = (int *)0x0;
+    if (*(char *)(*(int *)(param_1 + 0x14) + 0x120) == '\0') {
+      CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+      if (extraout_AL_01 != '\0') {
+LAB_00ee52f3:
+        C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&local_54);
+        C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&ppuStack_48);
+        CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase
+                  ((CScriptGameResourceObjectMovieBase *)appuStack_24);
+        (**(code **)(*DAT_0143e8f8 + 0x160))();
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffff94
+                   ,extraout_EDX_07,ppVar4);
+        return;
+      }
+      CScriptGameResourceObjectScriptedThingBase::
+      _FollowThing_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__M_N_Z
+                ((CScriptGameResourceObjectScriptedThingBase *)appuStack_24,
+                 (CScriptThing *)&ppuStack_48,*(char **)(DAT_0143e90c + 0x8d0),(CCharString *)0x1,
+                 (CCharString *)pCVar15,pCVar16,SUB41(pCVar17,0),(bool)SUB41(ppVar18,0));
+    }
+    CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+    cVar3 = extraout_AL_02;
+    while( true ) {
+      if (cVar3 != '\0') {
+        local_54 = &PTR__scalar_deleting_destructor__01238c8c;
+        if ((local_4c != (int *)0x0) && (*local_4c = *local_4c + -1, *local_4c == 0)) {
+          (*(code *)local_4c[1])();
+          operator_delete(local_4c);
+        }
+        ppStack_50 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)0x0;
+        local_4c = (int *)0x0;
+        NHeroInformationScreens::CBase::CBase((CBase *)&local_54);
+        ppuStack_48 = &PTR__scalar_deleting_destructor__01238c8c;
+        if ((piStack_40 != (int *)0x0) && (*piStack_40 = *piStack_40 + -1, *piStack_40 == 0)) {
+          (*(code *)piStack_40[1])();
+          operator_delete(piStack_40);
+        }
+        uStack_44 = 0;
+        piStack_40 = (int *)0x0;
+        NHeroInformationScreens::CBase::CBase((CBase *)&ppuStack_48);
+        if ((appuStack_18[0] != (undefined **)0x0) &&
+           (*appuStack_18[0] = *appuStack_18[0] + -1, *appuStack_18[0] == (undefined *)0x0)) {
+          (*(code *)appuStack_18[0][1])();
+          operator_delete(appuStack_18[0]);
+        }
+        uStack_1c = 0;
+        appuStack_18[0] = (undefined **)0x0;
+        appuStack_24[0] = &PTR__vector_deleting_destructor__0126008c;
+        CPhysicsMeshInfo::~CPhysicsMeshInfo((CPhysicsMeshInfo *)appuStack_24);
+        (**(code **)(*DAT_0143e8f8 + 0x160))();
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffff94
+                   ,extraout_EDX_05,ppVar4);
+        return;
+      }
+      if ((*(char *)(*(int *)(param_1 + 0x14) + 0x120) != '\0') ||
+         (*(char *)(*(int *)(param_1 + 0x14) + 0x123) != '\0')) break;
+      CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+      if (extraout_AL_03 != '\0') goto LAB_00ee52f3;
+      CCharString::CCharString((CCharString *)&stack0xffffffa8,"SCRIPT_NAME_HERO",-1);
+      unaff_ESI = unaff_ESI | 1;
+      cVar3 = (**(code **)(*(int *)pCVar1 + 0x6c))();
+      ppVar11 = extraout_EDX_00;
+      if (cVar3 == '\0') {
+LAB_00ee4fee:
+        bVar2 = false;
+      }
+      else {
+        uVar12 = (**(code **)(*DAT_0143e8f8 + 0x168))();
+        ppVar11 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar12 >> 0x20);
+        if ((int)uVar12 != 0) goto LAB_00ee4fee;
+        bVar2 = true;
+      }
+      if ((unaff_ESI & 1) != 0) {
+        unaff_ESI = unaff_ESI & 0xfffffffe;
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffffa8
+                   ,ppVar11,(pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar15);
+      }
+      if (bVar2) {
+        CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+        if (extraout_AL_04 != '\0') goto LAB_00ee5535;
+        CScriptGameResourceObjectScriptedThingBase::
+        _ClearCommands_CScriptGameResourceObjectScriptedThingBase__UAEXXZ
+                  ((CScriptGameResourceObjectScriptedThingBase *)appuStack_24,pCVar15,
+                   (char *)pCVar16,pCVar17,(CCharString *)ppVar18,pCVar19,(bool)SUB41(unaff_EDI,0),
+                   SUB41(unaff_ESI,0));
+        iVar6 = **(int **)(param_1 + 4);
+        uVar5 = (**(code **)(**(int **)(param_1 + 4) + 0x118))();
+        (**(code **)(iVar6 + 0x76c))(pCVar1,uVar5);
+        CCharString::CCharString((CCharString *)&stack0xffffff98);
+        iVar6 = rand();
+        iVar7 = (**(code **)(**(int **)(param_1 + 4) + 0x804))(pCVar1);
+        if (iVar7 == 1) {
+          CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+          ppVar11 = extraout_EDX_02;
+          if (extraout_AL_05 != '\0') {
+LAB_00ee5237:
+            std::
+            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                      ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)
+                       &stack0xffffffa4,ppVar11,
+                       (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar15);
+            goto LAB_00ee5535;
+          }
+          pCVar13 = (CCharString *)(*(int *)(param_1 + 0x14) + 0x13c + (iVar6 % 5) * 4);
+LAB_00ee50ab:
+          CCharString::operator=((CCharString *)&stack0xffffff98,pCVar13);
+        }
+        else if (iVar7 == 2) {
+          CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+          ppVar11 = extraout_EDX_03;
+          if (extraout_AL_06 != '\0') goto LAB_00ee5237;
+          pCVar13 = (CCharString *)(*(int *)(param_1 + 0x14) + 0x150 + (iVar6 % 5) * 4);
+          goto LAB_00ee50ab;
+        }
+        ppVar8 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)
+                 (**(code **)(**(int **)(param_1 + 4) + 0x5b0))(pCVar1,0);
+        iVar6 = **(int **)(param_1 + 4);
+        uVar5 = (**(code **)(**(int **)(param_1 + 4) + 0x118))();
+        ppVar4 = ppVar8;
+        (**(code **)(iVar6 + 0x5b4))(ppVar8,uVar5);
+        iVar6 = **(int **)(param_1 + 4);
+        uVar5 = (**(code **)(**(int **)(param_1 + 4) + 0x118))();
+        (**(code **)(iVar6 + 0x5b8))(ppVar8,&stack0xffffff84,0,pCVar1,uVar5);
+        (**(code **)(*DAT_0143e8f8 + 0x164))(ppVar4,*(undefined4 *)(DAT_0143e90c + 0x8e4));
+        CScriptGameResourceObjectScriptedThingBase::
+        _FollowThing_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__M_N_Z
+                  ((CScriptGameResourceObjectScriptedThingBase *)appuStack_24,
+                   (CScriptThing *)&ppuStack_48,*(char **)(DAT_0143e90c + 0x8d0),(CCharString *)0x1,
+                   (CCharString *)pCVar15,pCVar16,SUB41(pCVar17,0),(bool)SUB41(ppVar18,0));
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffffa4
+                   ,extraout_EDX_04,
+                   (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar15);
+      }
+      (**(code **)(**(int **)(param_1 + 4) + 0x1c))();
+      CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+      cVar3 = extraout_AL_07;
+    }
+    CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+    if (extraout_AL_08 == '\0') {
+      (**(code **)(**(int **)(param_1 + 4) + 0x5a4))();
+      bVar2 = C3DMeshInfo::HasPhysicsMesh(aCStack_28);
+      if (bVar2) {
+        CMemoryDataOutputStream::Clear((CMemoryDataOutputStream *)aCStack_28);
+      }
+      cVar3 = (**(code **)(**(int **)(param_1 + 4) + 0x20))(pCVar1,aCStack_28,4);
+      while (cVar3 == '\0') {
+        (**(code **)(**(int **)(param_1 + 4) + 0x1c))();
+        CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+        if (extraout_AL_09 != '\0') goto LAB_00ee52f3;
+        cVar3 = (**(code **)(**(int **)(param_1 + 4) + 0x20))(pCVar1,appuStack_24);
+      }
+      CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+      if (extraout_AL_10 == '\0') {
+        bVar2 = CScriptThing::
+                _IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ
+                          ((CScriptThing *)appuStack_24);
+        if (bVar2) {
+          do {
+            (**(code **)(**(int **)(param_1 + 4) + 0x1c))();
+            CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+            if (extraout_AL_11 != '\0') goto LAB_00ee5535;
+            bVar2 = CScriptThing::
+                    _IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ
+                              ((CScriptThing *)appuStack_24);
+          } while (bVar2);
+        }
+        CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+        if (extraout_AL_12 == '\0') {
+          CCharString::CCharString((CCharString *)&stack0xffffffa8,"M_TG_ClosingTimeExit",-1);
+          pCVar9 = (CScriptThing *)(**(code **)(**(int **)(param_1 + 4) + 0x120))(aCStack_30);
+          CScriptThing::operator=((CScriptThing *)&local_54,pCVar9);
+          C3DClothPrimitive::~C3DClothPrimitive(aCStack_30);
+          std::
+          _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                    ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)
+                     &stack0xffffffa8,extraout_EDX_08,
+                     (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar15);
+          bVar2 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)appuStack_24);
+          if ((bVar2) &&
+             (bVar2 = CScriptThing::_IsAlive_CScriptThing__UBE_NXZ((CScriptThing *)&local_54), bVar2
+             )) {
+            CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+            if (extraout_AL_13 == '\0') {
+              if (ppStack_50 == (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)0x0) {
+                puVar10 = &DAT_0143e8e0;
+              }
+              else {
+                puVar10 = (undefined4 *)(**(code **)(*(int *)ppStack_50 + 0x18))();
+              }
+              uStack_3c = *puVar10;
+              uStack_38 = puVar10[1];
+              fVar14 = 3.0;
+              uStack_34 = puVar10[2];
+              pCVar9 = (CScriptThing *)
+                       CScriptGameResourceObjectScriptedThingBase::
+                       _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ
+                                 ((CScriptGameResourceObjectScriptedThingBase *)appuStack_24);
+              bVar2 = IsDistanceFromThingToPositionOver(pCVar9,(C3DVector *)&uStack_3c,fVar14);
+              C3DClothPrimitive::~C3DClothPrimitive(aCStack_30);
+              if (bVar2) {
+                do {
+                  (**(code **)(**(int **)(param_1 + 4) + 0x1c))();
+                  CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+                  if (extraout_AL_14 != '\0') goto LAB_00ee5535;
+                  CScriptGameResourceObjectScriptedThingBase::
+                  _MoveToPosition_CScriptGameResourceObjectScriptedThingBase__UAEXABVC3DVector__MW4EScriptEntityMoveType___N2_Z
+                            ((CScriptGameResourceObjectScriptedThingBase *)appuStack_24,
+                             (CScriptThing *)&uStack_3c,&DAT_3f800000,(CCharString *)0x0,
+                             (CCharString *)0x0,(CCharString *)0x1,SUB41(pCVar15,0),SUB41(pCVar16,0)
+                            );
+                  bVar2 = CScriptThing::
+                          _IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ
+                                    ((CScriptThing *)appuStack_24);
+                  if (bVar2) {
+                    do {
+                      (**(code **)(**(int **)(param_1 + 4) + 0x1c))();
+                      CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+                      if (extraout_AL_15 != '\0') goto LAB_00ee5535;
+                      bVar2 = CScriptThing::
+                              _IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ
+                                        ((CScriptThing *)appuStack_24);
+                    } while (bVar2);
+                  }
+                  CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+                  if (extraout_AL_16 != '\0') goto LAB_00ee5535;
+                  fVar14 = 3.0;
+                  pCVar9 = (CScriptThing *)
+                           CScriptGameResourceObjectScriptedThingBase::
+                           _GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ
+                                     ((CScriptGameResourceObjectScriptedThingBase *)appuStack_24);
+                  bVar2 = IsDistanceFromThingToPositionOver(pCVar9,(C3DVector *)&uStack_3c,fVar14);
+                  C3DClothPrimitive::~C3DClothPrimitive(aCStack_30);
+                } while (bVar2);
+              }
+              CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+              if (extraout_AL_17 == '\0') {
+                FadeOutAndKillEntity
+                          (pCVar1,(float)CONCAT31((int3)((uint)extraout_EDX_09 >> 8),1),false,true);
+              }
+            }
+          }
+          else {
+            CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+            if (extraout_AL_18 == '\0') {
+              bVar2 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)appuStack_24);
+              if (bVar2) {
+                CMemoryDataOutputStream::Clear((CMemoryDataOutputStream *)appuStack_24);
+              }
+              do {
+                (**(code **)(**(int **)(param_1 + 4) + 0x1c))();
+                CCreatureAction_TrollWhackGroundBase::Initialise(param_1);
+              } while (extraout_AL_19 == '\0');
+            }
+          }
+        }
+LAB_00ee5535:
+        C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&local_54);
+        C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&ppuStack_48);
+        CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase
+                  ((CScriptGameResourceObjectMovieBase *)appuStack_24);
+        CTimer::~CTimer((CTimer *)&stack0xffffff9c);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffff98
+                   ,extraout_EDX_10,
+                   (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)pCVar15);
+        return;
+      }
+    }
+    C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&local_54);
+    C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&ppuStack_48);
+  }
+  CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase
+            ((CScriptGameResourceObjectMovieBase *)appuStack_24);
+  (**(code **)(*DAT_0143e8f8 + 0x160))();
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffff94,
+             extraout_EDX_06,ppVar4);
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ee91e0 613 0
+@@CALLERS 
+@@CALLEES ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@KW4ETextGroupSelectionMethod@@_N22@Z, OnReadFinished, OnKill, ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ, List_Node_Initialize, ~C3DClothPrimitive, LTextTreeWalkThrough_Cleanup, GFIntToCharString_API, GetNoAllocatedAreas, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CBaseIntelligentPointer, IsActiveThreadTerminating, ~CScriptGameResourceObjectMovieBase, CBase, LTextTreeWalkThrough_dtor, operator_delete
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00ee91e0(CScriptBase *param_1)
+
+{
+  char cVar1;
+  bool bVar2;
+  int iVar3;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *ppVar4;
+  CScriptThing *pCVar5;
+  ulong uVar6;
+  CMemoryAllocatorVariableSize *this;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  undefined4 unaff_EDI;
+  char *pcVar7;
+  CCharString *pCVar8;
+  CCharString *pCVar9;
+  undefined1 uVar10;
+  undefined4 uStack_30;
+  int *piStack_2c;
+  undefined **ppuStack_28;
+  int *piStack_24;
+  int *piStack_20;
+  ulong uStack_1c;
+  int iStack_18;
+  undefined **ppuStack_14;
+  CScriptGameResourceObjectScriptedThingBase aCStack_10 [4];
+  undefined4 uStack_c;
+  undefined4 uStack_8;
+  
+  iVar3 = (**(code **)(**(int **)(param_1 + 0x40) + 0x118))();
+  ppuStack_28 = &PTR__scalar_deleting_destructor__01238c8c;
+  piStack_24 = *(int **)(iVar3 + 4);
+  piStack_20 = *(int **)(iVar3 + 8);
+  if (piStack_20 != (int *)0x0) {
+    *piStack_20 = *piStack_20 + 1;
+  }
+  if ((piStack_24 != (int *)0x0) && (cVar1 = (**(code **)(*piStack_24 + 300))(), cVar1 != '\0')) {
+    bVar2 = CScriptBase::IsActiveThreadTerminating(param_1);
+    if (bVar2) {
+LAB_00ee93a8:
+      C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&ppuStack_28);
+      return;
+    }
+    List_Node_Initialize((int)&uStack_30 + 3,(int)&uStack_30 + 2);
+    (**(code **)(**(int **)(param_1 + 0x40) + 0x950))(&uStack_1c);
+    if (iStack_18 != 0) {
+      bVar2 = CScriptBase::IsActiveThreadTerminating(param_1);
+      if (bVar2) {
+        LTextTreeWalkThrough_dtor();
+        C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&ppuStack_28);
+        return;
+      }
+      (**(code **)(**(int **)(param_1 + 0x40) + 0x5cc))(1);
+      CBaseIntelligentPointer::CBaseIntelligentPointer((CBaseIntelligentPointer *)&ppuStack_14);
+      ppuStack_14 = &PTR__scalar_deleting_destructor__0127094c;
+      uStack_c = 0;
+      uStack_8 = 0;
+      (**(code **)(**(int **)(param_1 + 0x40) + 0x20))(&piStack_2c,&ppuStack_14,4);
+      uVar6 = *(ulong *)(uStack_1c + 8);
+      if (uVar6 != uStack_1c) {
+        do {
+          bVar2 = CScriptBase::IsActiveThreadTerminating(param_1);
+          if (bVar2) goto LAB_00ee9391;
+          iVar3 = **(int **)(param_1 + 0x40);
+          uVar10 = 1;
+          pCVar9 = (CCharString *)0x0;
+          ppVar4 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)
+                   GFIntToCharString_API();
+          (**(code **)(iVar3 + 0x1c4))();
+          std::
+          _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                    ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)
+                     &stack0xffffffc8,extraout_EDX,ppVar4);
+          pCVar8 = (CCharString *)0x0;
+          pcVar7 = (char *)0x1;
+          pCVar5 = (CScriptThing *)
+                   (**(code **)(**(int **)(param_1 + 0x40) + 0x118))
+                             (*(undefined4 *)(uVar6 + 0x10),0,0);
+          CScriptGameResourceObjectScriptedThingBase::
+          _Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z
+                    (aCStack_10,pCVar5,pcVar7,pCVar8,(CCharString *)ppVar4,pCVar9,(bool)uVar10,
+                     SUB41(unaff_EDI,0));
+          bVar2 = CScriptThing::
+                  _IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ
+                            ((CScriptThing *)aCStack_10);
+          if (bVar2) {
+            do {
+              (**(code **)(**(int **)(param_1 + 0x40) + 0x1c))();
+              bVar2 = CScriptBase::IsActiveThreadTerminating(param_1);
+              if (bVar2) goto LAB_00ee9391;
+              bVar2 = CScriptThing::
+                      _IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ
+                                ((CScriptThing *)aCStack_10);
+            } while (bVar2);
+          }
+          bVar2 = CScriptBase::IsActiveThreadTerminating(param_1);
+          if (bVar2) goto LAB_00ee9391;
+          uVar6 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+        } while (uVar6 != uStack_1c);
+      }
+      bVar2 = CScriptBase::IsActiveThreadTerminating(param_1);
+      if (bVar2) {
+LAB_00ee9391:
+        CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase
+                  ((CScriptGameResourceObjectMovieBase *)aCStack_10);
+        CTCCarryable::OnKill((CTCCarryable *)&uStack_1c);
+        CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&uStack_1c);
+        goto LAB_00ee93a8;
+      }
+      (**(code **)(**(int **)(param_1 + 0x40) + 0x5cc))(0);
+      CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase
+                ((CScriptGameResourceObjectMovieBase *)aCStack_10);
+    }
+    LTextTreeWalkThrough_Cleanup();
+  }
+  iVar3 = **(int **)(param_1 + 0x40);
+  ppVar4 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)
+           (**(code **)(**(int **)(param_1 + 0x40) + 0xa3c))(&piStack_2c,0);
+  (**(code **)(iVar3 + 0x464))();
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffffc8,
+             extraout_EDX_00,ppVar4);
+  if ((piStack_2c != (int *)0x0) && (*piStack_2c = *piStack_2c + -1, *piStack_2c == 0)) {
+    (*(code *)piStack_2c[1])();
+    operator_delete(piStack_2c);
+  }
+  uStack_30 = 0;
+  piStack_2c = (int *)0x0;
+  NHeroInformationScreens::CBase::CBase((CBase *)&stack0xffffffcc);
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00eeaef0 1906 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, ~C3DClothPrimitive, ~CScriptGameResourceObjectMovieBase, CBaseIntelligentPointer, __ftol2, ?IsAlive@CScriptThing@@UBE_NXZ, IsActiveThreadTerminating, CCharString, CBase, rand, CScriptThing, operator_delete
+@@STRINGS EXPRESSION_PICKPOCKET
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __fastcall FUN_00eeaef0(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *param_1)
+
+{
+  int *piVar1;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *ppVar2;
+  bool bVar3;
+  bool bVar4;
+  char cVar5;
+  bool bVar6;
+  bool bVar7;
+  CScriptThing *pCVar8;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *ppVar9;
+  int iVar10;
+  int *piVar11;
+  int iVar12;
+  undefined4 uVar13;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_02;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_03;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_04;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_05;
+  float unaff_EBP;
+  int *unaff_EDI;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *ppVar14;
+  float fVar15;
+  int iStack_78;
+  float fVar16;
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *paVar17;
+  int iVar18;
+  undefined1 *puStack_64;
+  int *piStack_5c;
+  undefined **ppuStack_58;
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> aaStack_40 [4];
+  C3DClothPrimitive aCStack_3c [4];
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> aaStack_38 [4];
+  undefined1 auStack_34 [8];
+  int aiStack_2c [2];
+  undefined **appuStack_24 [2];
+  undefined4 uStack_1c;
+  undefined4 uStack_18;
+  undefined **ppuStack_10;
+  CScriptThing aCStack_c [12];
+  
+  pCVar8 = (CScriptThing *)(**(code **)(**(int **)(param_1 + 0x40) + 0x118))();
+  ppuStack_10 = &PTR_LAB_012c2fe8;
+  ppuStack_58 = (undefined **)0xeeaf15;
+  CScriptThing::CScriptThing(aCStack_c,pCVar8);
+  ppuStack_58 = (undefined **)0xeeaf21;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            (param_1,extraout_EDX,
+             (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&ppuStack_10);
+  ppuStack_10 = &PTR_LAB_012c2fe8;
+  C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)aCStack_c);
+  (**(code **)(**(int **)(param_1 + 0x40) + 0x1c))();
+  bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+  if (bVar4) {
+    return;
+  }
+  iVar10 = **(int **)(param_1 + 0x40);
+  ppuStack_58 = (undefined **)0x0;
+  piStack_5c = aiStack_2c;
+  ppVar9 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)
+           (**(code **)(**(int **)(param_1 + 0x40) + 0xa3c))();
+  puStack_64 = (undefined1 *)0xeeaf67;
+  (**(code **)(iVar10 + 0x488))();
+  puStack_64 = (undefined1 *)0xeeaf70;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            (aaStack_38,extraout_EDX_00,ppVar9);
+  puStack_64 = auStack_34;
+  (**(code **)(**(int **)(param_1 + 0x40) + 0x11c))();
+  paVar17 = aaStack_38;
+  cVar5 = (**(code **)(**(int **)(param_1 + 0x40) + 0x560))();
+  if (cVar5 == '\0') {
+    bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+    if (bVar4) goto LAB_00eeafc7;
+  }
+  else {
+    cVar5 = (**(code **)(**(int **)(param_1 + 0x40) + 0x62c))();
+    if (cVar5 == '\0') {
+      CBaseIntelligentPointer::CBaseIntelligentPointer((CBaseIntelligentPointer *)appuStack_24);
+      appuStack_24[0] = &PTR__scalar_deleting_destructor__01260ef4;
+      uStack_1c = 0;
+      uStack_18 = 0;
+      iStack_78 = 0xeeb02b;
+      CCharString::CCharString((CCharString *)&stack0xffffffb4,"",-1);
+      ppVar14 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&stack0xffffffb4;
+      iStack_78 = 0xeeb040;
+      (**(code **)(**(int **)(param_1 + 0x40) + 0x5c8))();
+      iStack_78 = 0xeeb049;
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffffac,
+                 extraout_EDX_02,ppVar14);
+      piVar1 = *(int **)(param_1 + 0x40);
+      iStack_78 = 1;
+      (**(code **)(*piVar1 + 0x5ec))();
+      fVar15 = 1.4013e-45;
+      (**(code **)(**(int **)(param_1 + 0x40) + 0x558))(1,3);
+      bVar3 = false;
+      bVar4 = false;
+      bVar7 = false;
+      (**(code **)(**(int **)(param_1 + 0x40) + 0x800))(&stack0xffffffb0);
+      (**(code **)(**(int **)(param_1 + 0x40) + 0x5ec))(1);
+      iStack_78 = *(int *)(DAT_0143e90c + 0x1010);
+      piVar11 = *(int **)(param_1 + 0x40);
+      puStack_64 = (undefined1 *)(**(code **)(*piVar11 + 0x2a0))(5);
+      ppVar14 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&DAT_00000005;
+      iVar10 = (**(code **)(*piVar11 + 0x2a4))();
+      fVar15 = fVar15 / (unaff_EBP / ((float)iVar10 + _DAT_0122ded8));
+      iVar10 = (**(code **)(**(int **)(param_1 + 0x40) + 0xa38))();
+      fVar15 = (float)iVar10 * fVar15;
+      iVar10 = __ftol2();
+      iVar18 = iVar10;
+      do {
+        (**(code **)(**(int **)(param_1 + 0x40) + 0x1c))();
+        bVar6 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+        if (bVar6) {
+LAB_00eeb4fa:
+          (**(code **)(*piVar1 + 0x5ec))(0);
+          CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase
+                    ((CScriptGameResourceObjectMovieBase *)&stack0xffffffb0);
+          C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&stack0xffffff98);
+          return;
+        }
+        CCharString::CCharString((CCharString *)&stack0xffffff90,"EXPRESSION_PICKPOCKET",-1);
+        cVar5 = (**(code **)(**(int **)(param_1 + 0x40) + 0x390))(&stack0xffffff90);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffff90
+                   ,extraout_EDX_03,ppVar14);
+        if (cVar5 == '\0') {
+          bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+          if (bVar4) goto LAB_00eeb5dd;
+          if (bVar7) {
+            bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+            if (bVar4) goto LAB_00eeb4fa;
+            if (0 < iStack_78) {
+              bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+              if (bVar4) goto LAB_00eeb5dd;
+              bVar7 = false;
+            }
+          }
+          bVar4 = true;
+        }
+        CCharString::CCharString((CCharString *)&stack0xffffff94,"",-1);
+        piVar11 = (int *)(**(code **)(**(int **)(param_1 + 0x40) + 0x118))();
+        cVar5 = (**(code **)(*piVar11 + 0x54))(&stack0xffffff94);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffff94
+                   ,extraout_EDX_04,ppVar14);
+        if (cVar5 != '\0') {
+          bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+          if (bVar4) goto LAB_00eeb4fa;
+          bVar4 = true;
+          bVar3 = true;
+        }
+        if (bVar7) {
+          bVar6 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+          if (bVar6) goto LAB_00eeb5dd;
+          if (iStack_78 == 0) {
+            bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+            if (bVar4) goto LAB_00eeb4fa;
+            bVar4 = true;
+          }
+        }
+        fVar16 = _DAT_0122ded8 - (float)iVar10 / fVar15;
+        if (_DAT_0122ded8 < fVar16) {
+          bVar6 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+          if (bVar6) goto LAB_00eeb5dd;
+          fVar16 = 1.0;
+        }
+        (**(code **)(**(int **)(param_1 + 0x40) + 0x55c))(fVar16);
+        iVar12 = (**(code **)(**(int **)(param_1 + 0x40) + 0x11c))(&piStack_5c);
+        piVar11 = *(int **)(iVar12 + 8);
+        ppVar2 = *(pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> **)(iVar12 + 4);
+        if (piStack_5c != piVar11) {
+          if ((piStack_5c != (int *)0x0) && (*piStack_5c = *piStack_5c + -1, *piStack_5c == 0)) {
+            (*(code *)piStack_5c[1])();
+            operator_delete(piStack_5c);
+          }
+          ppVar9 = ppVar2;
+          piStack_5c = piVar11;
+          if (piVar11 != (int *)0x0) {
+            *piVar11 = *piVar11 + 1;
+          }
+        }
+        ppuStack_58 = &PTR__scalar_deleting_destructor__01238c8c;
+        if ((unaff_EDI != (int *)0x0) && (*unaff_EDI = *unaff_EDI + -1, *unaff_EDI == 0)) {
+          (*(code *)unaff_EDI[1])();
+          operator_delete(unaff_EDI);
+        }
+        unaff_EDI = (int *)0x0;
+        NHeroInformationScreens::CBase::CBase((CBase *)&ppuStack_58);
+        if ((ppVar9 == (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)0x0) ||
+           (cVar5 = (**(code **)(*(int *)ppVar9 + 300))(), cVar5 == '\0')) {
+LAB_00eeb3f9:
+          bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+          if (bVar4) goto LAB_00eeb5dd;
+          bVar4 = true;
+        }
+        else {
+          bVar6 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+          if (bVar6) goto LAB_00eeb521;
+          if (_DAT_0122ded8 <= fVar16) goto LAB_00eeb3f9;
+          bVar6 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+          if (bVar6) goto LAB_00eeb521;
+          if (iVar10 < iVar18) {
+            bVar6 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+            if (bVar6) goto LAB_00eeb5dd;
+            iVar12 = rand();
+            iVar18 = iVar10;
+            if (iVar12 % 100 < *(int *)(DAT_0143e90c + 0x1018)) {
+              bVar7 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+              if (bVar7) goto LAB_00eeb521;
+              bVar7 = true;
+              (**(code **)(**(int **)(param_1 + 0x40) + 0xa38))();
+              iStack_78 = __ftol2();
+              iVar18 = **(int **)(param_1 + 0x40);
+              uVar13 = (**(code **)(**(int **)(param_1 + 0x40) + 0x118))(1);
+              (**(code **)(iVar18 + 0x76c))(&puStack_64,uVar13);
+              iVar18 = iVar10;
+            }
+          }
+        }
+        if (0 < iVar10) {
+          bVar6 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+          if (bVar6) {
+LAB_00eeb521:
+            (**(code **)(*piVar1 + 0x5ec))(0);
+            CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase
+                      ((CScriptGameResourceObjectMovieBase *)&stack0xffffffb0);
+            C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&stack0xffffff98);
+            return;
+          }
+          iVar10 = iVar10 + -1;
+        }
+        if (0 < iStack_78) {
+          bVar6 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+          if (bVar6) goto LAB_00eeb5dd;
+          iStack_78 = iStack_78 + -1;
+        }
+      } while (!bVar4);
+      bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+      if (bVar4) goto LAB_00eeb583;
+      (**(code **)(**(int **)(param_1 + 0x40) + 0x5ec))(0);
+      (**(code **)(**(int **)(param_1 + 0x40) + 0x800))(&stack0xffffff98,0);
+      (**(code **)(**(int **)(param_1 + 0x40) + 0x558))(0,3);
+      if (!bVar3) {
+        bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+        if (bVar4) {
+LAB_00eeb5dd:
+          (**(code **)(*piVar1 + 0x5ec))(0);
+          CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase
+                    ((CScriptGameResourceObjectMovieBase *)&stack0xffffffb0);
+          C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&stack0xffffff98);
+          return;
+        }
+        bVar4 = CScriptThing::_IsAlive_CScriptThing__UBE_NXZ((CScriptThing *)&puStack_64);
+        if (bVar4) {
+          bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+          if (bVar4) {
+LAB_00eeb583:
+            (**(code **)(*piVar1 + 0x5ec))(0);
+            CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase
+                      ((CScriptGameResourceObjectMovieBase *)&stack0xffffffb0);
+            C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&stack0xffffff98);
+            return;
+          }
+          (**(code **)(**(int **)(param_1 + 0x40) + 0x800))(&puStack_64,0);
+          if (bVar7) {
+            bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+            if (bVar4) goto LAB_00eeb5dd;
+            if (ppVar9 == (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)0x0) {
+              uVar13 = 0;
+            }
+            else {
+              uVar13 = (**(code **)(*(int *)ppVar9 + 0x2c))();
+            }
+            iVar10 = **(int **)(param_1 + 0x40);
+            uVar13 = (**(code **)(**(int **)(param_1 + 0x40) + 0x118))(&puStack_64,uVar13);
+            (**(code **)(iVar10 + 0x3c4))(0x13,uVar13);
+          }
+          else {
+            bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+            if (bVar4) goto LAB_00eeb583;
+            iVar10 = rand();
+            if ((float)(iVar10 % 100) < fVar16 * _DAT_01230a08) {
+              bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+              if (bVar4) goto LAB_00eeb5dd;
+              (**(code **)(**(int **)(param_1 + 0x40) + 0x56c))(&puStack_64);
+            }
+          }
+        }
+      }
+      (**(code **)(*piVar1 + 0x5ec))(0);
+      CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase
+                ((CScriptGameResourceObjectMovieBase *)&stack0xffffffb0);
+      iVar10 = **(int **)(param_1 + 0x40);
+      ppVar9 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)
+               (**(code **)(**(int **)(param_1 + 0x40) + 0xa3c))(&stack0xffffff94,0);
+      (**(code **)(iVar10 + 0x464))();
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&iStack_78,
+                 extraout_EDX_05,ppVar9);
+      C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&stack0xffffff8c);
+      return;
+    }
+    bVar4 = CScriptBase::IsActiveThreadTerminating((CScriptBase *)param_1);
+    if (bVar4) {
+      C3DClothPrimitive::~C3DClothPrimitive(aCStack_3c);
+      return;
+    }
+  }
+  iVar10 = **(int **)(param_1 + 0x40);
+  (**(code **)(**(int **)(param_1 + 0x40) + 0xa3c))();
+  iStack_78 = 0xeeafbe;
+  (**(code **)(iVar10 + 0x464))();
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            (aaStack_40,extraout_EDX_01,
+             (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)paVar17);
+LAB_00eeafc7:
+  C3DClothPrimitive::~C3DClothPrimitive(aCStack_3c);
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ef54a0 463 0
+@@CALLERS 
+@@CALLEES CConsoleCommandParameters, IsDistanceBetweenThingsUnder, CCharString, ~CIsThingAlive, ~C3DClothPrimitive, CBase, Initialise, CScriptThing, operator_delete, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, AllocateMapThingUID
+@@STRINGS CrateDeathMarker	THING_EXPLOSION_BLASTBOX
+@@DECOMP
+
+void __fastcall FUN_00ef54a0(CWorldMap *param_1)
+
+{
+  CScriptThing *pCVar1;
+  int iVar2;
+  char extraout_AL;
+  bool bVar3;
+  char extraout_AL_00;
+  char extraout_AL_01;
+  undefined4 uVar4;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *ppVar5;
+  undefined4 local_54;
+  int *local_50;
+  undefined **ppuStack_4c;
+  CScriptThing aCStack_48 [12];
+  undefined **ppuStack_3c;
+  CScriptThing aCStack_38 [12];
+  undefined **ppuStack_2c;
+  CIsThingAlive aCStack_28 [16];
+  CIsThingAlive aCStack_18 [24];
+  
+  CCharString::CCharString((CCharString *)&local_54,"CrateDeathMarker",-1);
+  ppVar5 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&local_50;
+  (**(code **)(**(int **)(param_1 + 4) + 0x120))();
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffffa4,
+             extraout_EDX,ppVar5);
+  ppuStack_3c = &PTR_LAB_012c32f0;
+  CScriptThing::CScriptThing(aCStack_38,(CScriptThing *)&stack0xffffffa8);
+  ppuStack_4c = &PTR_LAB_012c32f0;
+  pCVar1 = (CScriptThing *)(param_1 + 8);
+  CScriptThing::CScriptThing(aCStack_48,pCVar1);
+  CConsoleCommandParameters::CConsoleCommandParameters
+            ((CConsoleCommandParameters *)&ppuStack_2c,(EGenericVarType)&ppuStack_4c,
+             (EGenericVarType)&ppuStack_3c);
+  CWorldMap::AllocateMapThingUID(param_1,(long)&ppuStack_2c);
+  ppuStack_2c = &PTR_operator___012e1b70;
+  NScript::CIsThingAlive::~CIsThingAlive(aCStack_18);
+  NScript::CIsThingAlive::~CIsThingAlive(aCStack_28);
+  ppuStack_2c = &PTR_LAB_012c2ff4;
+  NScript::CIsThingAlive::~CIsThingAlive((CIsThingAlive *)&ppuStack_4c);
+  NScript::CIsThingAlive::~CIsThingAlive((CIsThingAlive *)&ppuStack_3c);
+  (**(code **)(**(int **)(param_1 + 4) + 0x1c))();
+  CCreatureAction_TrollWhackGroundBase::Initialise((CCreatureAction_TrollWhackGroundBase *)param_1);
+  if (extraout_AL != '\0') {
+    if ((local_50 != (int *)0x0) && (*local_50 = *local_50 + -1, *local_50 == 0)) {
+      (*(code *)local_50[1])();
+      operator_delete(local_50);
+    }
+    local_54 = 0;
+    local_50 = (int *)0x0;
+    NHeroInformationScreens::CBase::CBase((CBase *)&stack0xffffffa8);
+    return;
+  }
+  bVar3 = IsDistanceBetweenThingsUnder(pCVar1,(CScriptThing *)&stack0xffffffa8,2.0);
+  while (!bVar3) {
+    (**(code **)(**(int **)(param_1 + 4) + 0x1c))();
+    CCreatureAction_TrollWhackGroundBase::Initialise
+              ((CCreatureAction_TrollWhackGroundBase *)param_1);
+    if (extraout_AL_00 != '\0') goto LAB_00ef565f;
+    bVar3 = IsDistanceBetweenThingsUnder(pCVar1,(CScriptThing *)&stack0xffffffa8,2.0);
+  }
+  CCreatureAction_TrollWhackGroundBase::Initialise((CCreatureAction_TrollWhackGroundBase *)param_1);
+  if (extraout_AL_01 == '\0') {
+    CCharString::CCharString((CCharString *)&stack0xffffffa4,"THING_EXPLOSION_BLASTBOX",-1);
+    iVar2 = **(int **)(param_1 + 4);
+    CCharString::CCharString((CCharString *)&stack0xffffff94,"",-1);
+    uVar4 = (**(code **)(*(int *)pCVar1 + 0x18))();
+    ppVar5 = (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)&ppuStack_4c;
+    (**(code **)(iVar2 + 0x1a0))(ppVar5,&stack0xffffffa4,uVar4);
+    C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&stack0xffffffa0);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&stack0xffffff90,
+               extraout_EDX_00,ppVar5);
+    (**(code **)(**(int **)(param_1 + 4) + 0x1b0))(pCVar1,0,1);
+  }
+LAB_00ef565f:
+  C3DClothPrimitive::~C3DClothPrimitive((C3DClothPrimitive *)&stack0xffffffa8);
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 01229370 17 0
+@@CALLERS 
+@@CALLEES free
+@@STRINGS 
+@@DECOMP
+
+void FUN_01229370(void)
+
+{
+  if (DAT_013ba8ec != (void *)0x0) {
+    free(DAT_013ba8ec);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 01229630 17 0
+@@CALLERS 
+@@CALLEES free
+@@STRINGS 
+@@DECOMP
+
+void FUN_01229630(void)
+
+{
+  if (DAT_013bac20 != (void *)0x0) {
+    free(DAT_013bac20);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 0122a2f0 10 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_0122a2f0(undefined4 param_1,pair<EHeroMorphType,CParticleMorphs::CEntry> *param_2,
+            pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *param_3)
+
+{
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&DAT_013bb6a4,param_2,
+             param_3);
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 0122a940 20 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_0122a940(undefined4 param_1,pair<EHeroMorphType,CParticleMorphs::CEntry> *param_2,
+            pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *param_3)
+
+{
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_retaddr;
+  
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&DAT_013caa58,param_2,
+             unaff_retaddr);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&DAT_013caa54,
+             extraout_EDX,param_3);
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 0122ad60 17 0
+@@CALLERS 
+@@CALLEES free
+@@STRINGS 
+@@DECOMP
+
+void FUN_0122ad60(void)
+
+{
+  if (DAT_014377f0 != (void *)0x0) {
+    free(DAT_014377f0);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 0122adb0 17 0
+@@CALLERS 
+@@CALLEES free
+@@STRINGS 
+@@DECOMP
+
+void FUN_0122adb0(void)
+
+{
+  if (DAT_0143b978 != (void *)0x0) {
+    free(DAT_0143b978);
+  }
+  return;
+}
+
+
+@@ENDFUNC

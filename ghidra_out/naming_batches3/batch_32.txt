@@ -1,0 +1,2182 @@
+@@@FUNC 004e9f87 53 1
+@@CALLERS push_back
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_004e9f87(int param_1,undefined4 *param_2,int param_3)
+
+{
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  int iVar3;
+  undefined4 *puVar4;
+  
+  iVar3 = *(int *)(param_1 + 4) - param_3 >> 4;
+  puVar4 = param_2;
+  if (0 < iVar3) {
+    do {
+      puVar1 = (undefined4 *)((param_3 - (int)param_2) + (int)puVar4);
+      *puVar4 = *puVar1;
+      puVar4[1] = puVar1[1];
+      puVar2 = puVar4 + 3;
+      puVar4[2] = puVar1[2];
+      puVar4 = puVar4 + 4;
+      iVar3 = iVar3 + -1;
+      *puVar2 = puVar1[3];
+    } while (iVar3 != 0);
+  }
+  *(undefined4 **)(param_1 + 4) = puVar4;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e9fbc 295 1
+@@CALLERS push_back
+@@CALLEES fill<C3DClothQuad*,C3DClothQuad>, FUN_004ea104
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004e9fbc(int param_1,C3DClothQuad *param_2,C3DClothQuad *param_3,C3DClothQuad *param_4)
+
+{
+  uint uVar1;
+  C3DClothQuad *pCVar2;
+  int iVar3;
+  undefined4 *puVar4;
+  C3DClothQuad *pCVar5;
+  C3DClothQuad *pCVar6;
+  undefined4 local_14;
+  undefined4 uStack_10;
+  undefined4 uStack_c;
+  undefined4 uStack_8;
+  
+  uVar1 = (uint)param_3;
+  if (param_3 != (C3DClothQuad *)0x0) {
+    if ((uint)(*(int *)(param_1 + 8) - *(int *)(param_1 + 4) >> 4) < param_3) {
+      param_3 = (C3DClothQuad *)((uint)param_3 & 0xffffff);
+      FUN_004ea104(param_2,param_4,(int)&param_3 + 3,uVar1,0);
+    }
+    else {
+      local_14 = *(undefined4 *)param_4;
+      uStack_10 = *(undefined4 *)((int)param_4 + 4);
+      puVar4 = (undefined4 *)((int)param_4 + 0xc);
+      uStack_c = *(undefined4 *)((int)param_4 + 8);
+      param_4 = (C3DClothQuad *)(*(int *)(param_1 + 4) - (int)param_2 >> 4);
+      uStack_8 = *puVar4;
+      pCVar5 = *(C3DClothQuad **)(param_1 + 4);
+      if (param_3 < param_4) {
+        pCVar6 = pCVar5 + (int)param_3 * -0x10;
+        param_4 = pCVar5;
+        for (pCVar2 = pCVar6; pCVar2 != pCVar5; pCVar2 = pCVar2 + 0x10) {
+          if (param_4 != (C3DClothQuad *)0x0) {
+            *(undefined4 *)param_4 = *(undefined4 *)pCVar2;
+            *(undefined4 *)(param_4 + 4) = *(undefined4 *)(pCVar2 + 4);
+            *(undefined4 *)(param_4 + 8) = *(undefined4 *)(pCVar2 + 8);
+            *(undefined4 *)(param_4 + 0xc) = *(undefined4 *)(pCVar2 + 0xc);
+          }
+          param_4 = param_4 + 0x10;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)param_3 * 0x10;
+        iVar3 = (int)pCVar6 - (int)param_2 >> 4;
+        if (0 < iVar3) {
+          do {
+            iVar3 = iVar3 + -1;
+            *(undefined4 *)(pCVar5 + -0x10) = *(undefined4 *)(pCVar6 + -0x10);
+            *(undefined4 *)(pCVar5 + -0xc) = *(undefined4 *)(pCVar6 + -0xc);
+            *(undefined4 *)(pCVar5 + -8) = *(undefined4 *)(pCVar6 + -8);
+            *(undefined4 *)(pCVar5 + -4) = *(undefined4 *)(pCVar6 + -4);
+            pCVar6 = pCVar6 + -0x10;
+            pCVar5 = pCVar5 + -0x10;
+          } while (iVar3 != 0);
+        }
+        pCVar5 = param_2 + (int)param_3 * 0x10;
+        for (; param_2 != pCVar5; param_2 = param_2 + 0x10) {
+          *(undefined4 *)param_2 = local_14;
+          *(undefined4 *)(param_2 + 4) = uStack_10;
+          *(undefined4 *)(param_2 + 8) = uStack_c;
+          *(undefined4 *)(param_2 + 0xc) = uStack_8;
+        }
+      }
+      else {
+        pCVar2 = (C3DClothQuad *)((int)param_3 - (int)param_4);
+        param_3 = pCVar5;
+        std::fill<C3DClothQuad*,C3DClothQuad>(pCVar5,pCVar2,(C3DClothQuad *)&local_14);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)pCVar2 * 0x10;
+        puVar4 = *(undefined4 **)(param_1 + 4);
+        for (pCVar2 = param_2; pCVar2 != pCVar5; pCVar2 = pCVar2 + 0x10) {
+          if (puVar4 != (undefined4 *)0x0) {
+            *puVar4 = *(undefined4 *)pCVar2;
+            puVar4[1] = *(undefined4 *)(pCVar2 + 4);
+            puVar4[2] = *(undefined4 *)(pCVar2 + 8);
+            puVar4[3] = *(undefined4 *)(pCVar2 + 0xc);
+            pCVar5 = param_3;
+          }
+          puVar4 = puVar4 + 4;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)param_4 * 0x10;
+        if (param_2 != pCVar5) {
+          do {
+            *(undefined4 *)param_2 = local_14;
+            *(undefined4 *)(param_2 + 4) = uStack_10;
+            pCVar5 = param_2 + 0xc;
+            *(undefined4 *)(param_2 + 8) = uStack_c;
+            param_2 = param_2 + 0x10;
+            *(undefined4 *)pCVar5 = uStack_8;
+          } while (param_2 != param_3);
+        }
+      }
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ea104 236 1
+@@CALLERS 
+@@CALLEES free, malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004ea104(int *param_1,undefined4 *param_2,undefined4 *param_3,undefined4 param_4,
+            undefined4 *param_5,char param_6)
+
+{
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  undefined4 *puVar3;
+  undefined4 **ppuVar4;
+  int iVar5;
+  int *piVar6;
+  undefined4 *local_c;
+  int *local_8;
+  
+  local_8 = param_1;
+  local_c = (undefined4 *)(param_1[1] - *param_1 >> 4);
+  ppuVar4 = &param_5;
+  if (param_5 <= local_c) {
+    ppuVar4 = &local_c;
+  }
+  piVar6 = (int *)((int)*ppuVar4 + (int)local_c);
+  local_8 = piVar6;
+  if (piVar6 == (int *)0x0) {
+    local_c = (undefined4 *)0x0;
+  }
+  else {
+    local_c = malloc((int)piVar6 * 0x10);
+  }
+  puVar3 = local_c;
+  for (puVar2 = (undefined4 *)*param_1; puVar2 != param_2; puVar2 = puVar2 + 4) {
+    if (puVar3 != (undefined4 *)0x0) {
+      *puVar3 = *puVar2;
+      puVar3[1] = puVar2[1];
+      puVar3[2] = puVar2[2];
+      puVar3[3] = puVar2[3];
+      piVar6 = local_8;
+    }
+    puVar3 = puVar3 + 4;
+  }
+  puVar2 = param_5;
+  if (param_5 == (undefined4 *)0x1) {
+    if (puVar3 != (undefined4 *)0x0) {
+      *puVar3 = *param_3;
+      puVar3[1] = param_3[1];
+      puVar3[2] = param_3[2];
+      puVar3[3] = param_3[3];
+      piVar6 = local_8;
+    }
+    puVar3 = puVar3 + 4;
+  }
+  else {
+    for (; puVar2 != (undefined4 *)0x0; puVar2 = (undefined4 *)((int)puVar2 - 1)) {
+      if (puVar3 != (undefined4 *)0x0) {
+        *puVar3 = *param_3;
+        puVar3[1] = param_3[1];
+        puVar3[2] = param_3[2];
+        puVar3[3] = param_3[3];
+        piVar6 = local_8;
+      }
+      puVar3 = puVar3 + 4;
+    }
+  }
+  if ((param_6 == '\0') && (puVar2 = (undefined4 *)param_1[1], param_2 != puVar2)) {
+    iVar5 = (int)param_2 - (int)puVar3;
+    do {
+      if (puVar3 != (undefined4 *)0x0) {
+        puVar1 = (undefined4 *)(iVar5 + (int)puVar3);
+        *puVar3 = *puVar1;
+        puVar3[1] = puVar1[1];
+        puVar3[2] = puVar1[2];
+        puVar3[3] = puVar1[3];
+        piVar6 = local_8;
+      }
+      puVar3 = puVar3 + 4;
+    } while ((undefined4 *)(iVar5 + (int)puVar3) != puVar2);
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  param_1[2] = (int)(local_c + (int)piVar6 * 4);
+  param_1[1] = (int)puVar3;
+  *param_1 = (int)local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ea21e 77 1
+@@CALLERS ?Transfer@CReplaceableMeshDef@@UAEXAAVCPersistContext@@@Z
+@@CALLEES TransferBinaryIn, OnReadFinished, CIndexBuffer, CheckCRC, TransferBinaryOut
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004ea21e(CPersistContext *param_1,CReplaceableMeshes *param_2)
+
+{
+  CIndexBuffer local_10 [12];
+  
+  CPersistContext::CheckCRC(param_1,"");
+  CIndexBuffer::CIndexBuffer(local_10);
+  if (*(int *)(param_1 + 0x18) == 2) {
+    CPersistTraits<NGraphicAppearance::CReplaceableMeshes>::TransferBinaryIn
+              ((CPersistTraits<NGraphicAppearance::CReplaceableMeshes> *)local_10,
+               *(CMemoryDataInputStream **)(param_1 + 0x24),param_2);
+  }
+  else if (*(int *)(param_1 + 0x18) == 3) {
+    CPersistTraits<NGraphicAppearance::CReplaceableMeshes>::TransferBinaryOut
+              ((CPersistTraits<NGraphicAppearance::CReplaceableMeshes> *)local_10,
+               *(CDataOutputStream **)(param_1 + 0x28),param_2);
+  }
+  CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)local_10);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ea40b 59 1
+@@CALLERS push_back
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_004ea40b(int param_1,undefined4 *param_2,int param_3)
+
+{
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  int iVar3;
+  undefined4 *puVar4;
+  
+  iVar3 = (*(int *)(param_1 + 4) - param_3) / 0xe;
+  puVar4 = param_2;
+  if (0 < iVar3) {
+    do {
+      puVar1 = (undefined4 *)((param_3 - (int)param_2) + (int)puVar4);
+      *puVar4 = *puVar1;
+      puVar4[1] = puVar1[1];
+      puVar2 = puVar4 + 3;
+      puVar4[2] = puVar1[2];
+      puVar4 = (undefined4 *)((int)puVar4 + 0xe);
+      iVar3 = iVar3 + -1;
+      *(undefined2 *)puVar2 = *(undefined2 *)(puVar1 + 3);
+    } while (iVar3 != 0);
+  }
+  *(undefined4 **)(param_1 + 4) = puVar4;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ea446 313 1
+@@CALLERS push_back
+@@CALLEES _Fill<CEngineGraphic*,CEngineGraphic>, FUN_004ea5a1
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004ea446(int param_1,CEngineGraphic *param_2,uint param_3,CEngineGraphic *param_4)
+
+{
+  uint uVar1;
+  CEngineGraphic *pCVar2;
+  CEngineGraphic *pCVar3;
+  int iVar4;
+  undefined4 *puVar5;
+  CEngineGraphic *pCVar6;
+  CEngineGraphic *pCVar7;
+  undefined4 local_14;
+  undefined4 uStack_10;
+  undefined4 uStack_c;
+  undefined2 uStack_8;
+  
+  uVar1 = param_3;
+  if (param_3 != 0) {
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)(param_1 + 4)) / 0xe) < param_3) {
+      param_3 = param_3 & 0xffffff;
+      FUN_004ea5a1(param_2,param_4,(int)&param_3 + 3,uVar1,0);
+    }
+    else {
+      local_14 = *(undefined4 *)param_4;
+      uStack_10 = *(undefined4 *)((int)param_4 + 4);
+      uStack_c = *(undefined4 *)((int)param_4 + 8);
+      uStack_8 = *(undefined2 *)((int)param_4 + 0xc);
+      uVar1 = (*(int *)(param_1 + 4) - (int)param_2) / 0xe;
+      pCVar6 = *(CEngineGraphic **)(param_1 + 4);
+      if (param_3 < uVar1) {
+        pCVar2 = pCVar6 + param_3 * -0xe;
+        pCVar7 = pCVar6;
+        for (pCVar3 = pCVar2; pCVar3 != pCVar6; pCVar3 = pCVar3 + 0xe) {
+          if (pCVar7 != (CEngineGraphic *)0x0) {
+            *(undefined4 *)pCVar7 = *(undefined4 *)pCVar3;
+            *(undefined4 *)(pCVar7 + 4) = *(undefined4 *)(pCVar3 + 4);
+            *(undefined4 *)(pCVar7 + 8) = *(undefined4 *)(pCVar3 + 8);
+            *(undefined2 *)(pCVar7 + 0xc) = *(undefined2 *)(pCVar3 + 0xc);
+          }
+          pCVar7 = pCVar7 + 0xe;
+        }
+        iVar4 = ((int)pCVar2 - (int)param_2) / 0xe;
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + param_3 * 0xe;
+        if (0 < iVar4) {
+          do {
+            iVar4 = iVar4 + -1;
+            *(undefined4 *)(pCVar6 + -0xe) = *(undefined4 *)(pCVar2 + -0xe);
+            *(undefined4 *)(pCVar6 + -10) = *(undefined4 *)(pCVar2 + -10);
+            *(undefined4 *)(pCVar6 + -6) = *(undefined4 *)(pCVar2 + -6);
+            *(undefined2 *)(pCVar6 + -2) = *(undefined2 *)(pCVar2 + -2);
+            pCVar2 = pCVar2 + -0xe;
+            pCVar6 = pCVar6 + -0xe;
+          } while (iVar4 != 0);
+        }
+        pCVar6 = param_2 + param_3 * 0xe;
+        for (; param_2 != pCVar6; param_2 = param_2 + 0xe) {
+          *(undefined4 *)param_2 = local_14;
+          *(undefined4 *)(param_2 + 4) = uStack_10;
+          *(undefined4 *)(param_2 + 8) = uStack_c;
+          *(undefined2 *)(param_2 + 0xc) = uStack_8;
+        }
+      }
+      else {
+        pCVar3 = (CEngineGraphic *)(param_3 - uVar1);
+        param_3 = uVar1;
+        param_4 = pCVar6;
+        std::_Fill<CEngineGraphic*,CEngineGraphic>(pCVar6,pCVar3,(CEngineGraphic *)&local_14);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)pCVar3 * 0xe;
+        puVar5 = *(undefined4 **)(param_1 + 4);
+        for (pCVar3 = param_2; pCVar3 != pCVar6; pCVar3 = pCVar3 + 0xe) {
+          if (puVar5 != (undefined4 *)0x0) {
+            *puVar5 = *(undefined4 *)pCVar3;
+            puVar5[1] = *(undefined4 *)(pCVar3 + 4);
+            puVar5[2] = *(undefined4 *)(pCVar3 + 8);
+            *(undefined2 *)(puVar5 + 3) = *(undefined2 *)(pCVar3 + 0xc);
+            pCVar6 = param_4;
+          }
+          puVar5 = (undefined4 *)((int)puVar5 + 0xe);
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + param_3 * 0xe;
+        if (param_2 != pCVar6) {
+          do {
+            *(undefined4 *)param_2 = local_14;
+            *(undefined4 *)(param_2 + 4) = uStack_10;
+            pCVar6 = param_2 + 0xc;
+            *(undefined4 *)(param_2 + 8) = uStack_c;
+            param_2 = param_2 + 0xe;
+            *(undefined2 *)pCVar6 = uStack_8;
+          } while (param_2 != param_4);
+        }
+      }
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ea5a1 244 1
+@@CALLERS 
+@@CALLEES free, malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004ea5a1(int *param_1,undefined4 *param_2,undefined4 *param_3,undefined4 param_4,
+            undefined4 *param_5,char param_6)
+
+{
+  undefined4 *puVar1;
+  undefined4 **ppuVar2;
+  undefined4 *puVar3;
+  undefined4 *puVar4;
+  int iVar5;
+  int *piVar6;
+  undefined4 *local_c;
+  int *local_8;
+  
+  local_8 = param_1;
+  local_c = (undefined4 *)((param_1[1] - *param_1) / 0xe);
+  ppuVar2 = &param_5;
+  if (param_5 <= local_c) {
+    ppuVar2 = &local_c;
+  }
+  piVar6 = (int *)((int)*ppuVar2 + (int)local_c);
+  local_8 = piVar6;
+  if (piVar6 == (int *)0x0) {
+    local_c = (undefined4 *)0x0;
+  }
+  else {
+    local_c = malloc((int)piVar6 * 0xe);
+  }
+  puVar4 = local_c;
+  for (puVar3 = (undefined4 *)*param_1; puVar3 != param_2;
+      puVar3 = (undefined4 *)((int)puVar3 + 0xe)) {
+    if (puVar4 != (undefined4 *)0x0) {
+      *puVar4 = *puVar3;
+      puVar4[1] = puVar3[1];
+      puVar4[2] = puVar3[2];
+      *(undefined2 *)(puVar4 + 3) = *(undefined2 *)(puVar3 + 3);
+      piVar6 = local_8;
+    }
+    puVar4 = (undefined4 *)((int)puVar4 + 0xe);
+  }
+  puVar3 = param_5;
+  if (param_5 == (undefined4 *)0x1) {
+    if (puVar4 != (undefined4 *)0x0) {
+      *puVar4 = *param_3;
+      puVar4[1] = param_3[1];
+      puVar4[2] = param_3[2];
+      *(undefined2 *)(puVar4 + 3) = *(undefined2 *)(param_3 + 3);
+      piVar6 = local_8;
+    }
+    puVar4 = (undefined4 *)((int)puVar4 + 0xe);
+  }
+  else {
+    for (; puVar3 != (undefined4 *)0x0; puVar3 = (undefined4 *)((int)puVar3 - 1)) {
+      if (puVar4 != (undefined4 *)0x0) {
+        *puVar4 = *param_3;
+        puVar4[1] = param_3[1];
+        puVar4[2] = param_3[2];
+        *(undefined2 *)(puVar4 + 3) = *(undefined2 *)(param_3 + 3);
+        piVar6 = local_8;
+      }
+      puVar4 = (undefined4 *)((int)puVar4 + 0xe);
+    }
+  }
+  if ((param_6 == '\0') && (puVar3 = (undefined4 *)param_1[1], param_2 != puVar3)) {
+    iVar5 = (int)param_2 - (int)puVar4;
+    do {
+      if (puVar4 != (undefined4 *)0x0) {
+        puVar1 = (undefined4 *)(iVar5 + (int)puVar4);
+        *puVar4 = *puVar1;
+        puVar4[1] = puVar1[1];
+        puVar4[2] = puVar1[2];
+        *(undefined2 *)(puVar4 + 3) = *(undefined2 *)(puVar1 + 3);
+        piVar6 = local_8;
+      }
+      puVar4 = (undefined4 *)((int)puVar4 + 0xe);
+    } while ((undefined4 *)(iVar5 + (int)puVar4) != puVar3);
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  param_1[2] = (int)piVar6 * 0xe + (int)local_c;
+  param_1[1] = (int)puVar4;
+  *param_1 = (int)local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004eaad0 242 1
+@@CALLERS operator=
+@@CALLEES _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>, FUN_004eacbb, _Destroy, OnReadFinished, VectorReallocateCopyConstruct
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_004eaad0(CActiveFile *param_1,CShoveHaPennyRegionDef *param_2)
+
+{
+  CActiveFile *pCVar1;
+  uint uVar2;
+  int iVar3;
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+  *this;
+  allocator<CShoveHaPennyRegionDef> *paVar4;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  CShoveHaPennyRegionDef *pCVar5;
+  
+  pCVar1 = (CActiveFile *)param_2;
+  if (param_2 != (CShoveHaPennyRegionDef *)param_1) {
+    uVar2 = (*(int *)(param_2 + 4) - *(int *)param_2) / 0x30;
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)param_1) / 0x30) < uVar2) {
+      iVar3 = FUN_004eacbb(uVar2,*(int *)param_2,*(int *)(param_2 + 4));
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar3;
+      *(uint *)(param_1 + 8) = uVar2 * 0x30 + iVar3;
+    }
+    else {
+      param_2 = (CShoveHaPennyRegionDef *)((uint)param_2 & 0xffffff);
+      if ((uint)((*(int *)(param_1 + 4) - *(int *)param_1) / 0x30) < uVar2) {
+        VectorReallocateCopyConstruct(*(undefined4 *)param_1,(int)&param_2 + 3);
+        param_2 = *(CShoveHaPennyRegionDef **)(pCVar1 + 4);
+        paVar4 = *(allocator<CShoveHaPennyRegionDef> **)(param_1 + 4);
+        for (pCVar5 = (CShoveHaPennyRegionDef *)
+                      ((((int)paVar4 - *(int *)param_1) / 0x30) * 0x30 + *(int *)pCVar1);
+            pCVar5 != param_2; pCVar5 = pCVar5 + 0x30) {
+          std::
+          _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>
+                    (paVar4,pCVar5,(CShoveHaPennyRegionDef *)unaff_EDI);
+          paVar4 = paVar4 + 0x30;
+        }
+      }
+      else {
+        this = (vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+                *)VectorReallocateCopyConstruct(*(undefined4 *)param_1,(int)&param_2 + 3);
+        std::
+        vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+        ::_Destroy(this,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+      }
+    }
+    *(uint *)(param_1 + 4) = uVar2 * 0x30 + *(int *)param_1;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004eacbb 71 1
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>, malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_004eacbb(int param_1,CShoveHaPennyRegionDef *param_2,CShoveHaPennyRegionDef *param_3)
+
+{
+  void *pvVar1;
+  CShoveHaPennyRegionDef *unaff_EDI;
+  int iVar2;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x30);
+  }
+  if (param_2 != param_3) {
+    iVar2 = (int)pvVar1 - (int)param_2;
+    do {
+      std::
+      _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>
+                ((allocator<CShoveHaPennyRegionDef> *)(param_2 + iVar2),param_2,unaff_EDI);
+      param_2 = param_2 + 0x30;
+    } while (param_2 != param_3);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004eae1e 242 1
+@@CALLERS 
+@@CALLEES VectorReallocateCopyConstruct, OnReadFinished, _Destroy, _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>, FUN_004eafe8
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_004eae1e(CActiveFile *param_1,CShoveHaPennyRegionDef *param_2)
+
+{
+  CActiveFile *pCVar1;
+  uint uVar2;
+  int iVar3;
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+  *this;
+  allocator<CShoveHaPennyRegionDef> *paVar4;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  CShoveHaPennyRegionDef *pCVar5;
+  
+  pCVar1 = (CActiveFile *)param_2;
+  if (param_2 != (CShoveHaPennyRegionDef *)param_1) {
+    uVar2 = (*(int *)(param_2 + 4) - *(int *)param_2) / 0x30;
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)param_1) / 0x30) < uVar2) {
+      iVar3 = FUN_004eafe8(uVar2,*(int *)param_2,*(int *)(param_2 + 4));
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar3;
+      *(uint *)(param_1 + 8) = uVar2 * 0x30 + iVar3;
+    }
+    else {
+      param_2 = (CShoveHaPennyRegionDef *)((uint)param_2 & 0xffffff);
+      if ((uint)((*(int *)(param_1 + 4) - *(int *)param_1) / 0x30) < uVar2) {
+        VectorReallocateCopyConstruct(*(undefined4 *)param_1,(int)&param_2 + 3);
+        param_2 = *(CShoveHaPennyRegionDef **)(pCVar1 + 4);
+        paVar4 = *(allocator<CShoveHaPennyRegionDef> **)(param_1 + 4);
+        for (pCVar5 = (CShoveHaPennyRegionDef *)
+                      ((((int)paVar4 - *(int *)param_1) / 0x30) * 0x30 + *(int *)pCVar1);
+            pCVar5 != param_2; pCVar5 = pCVar5 + 0x30) {
+          std::
+          _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>
+                    (paVar4,pCVar5,(CShoveHaPennyRegionDef *)unaff_EDI);
+          paVar4 = paVar4 + 0x30;
+        }
+      }
+      else {
+        this = (vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+                *)VectorReallocateCopyConstruct(*(undefined4 *)param_1,(int)&param_2 + 3);
+        std::
+        vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+        ::_Destroy(this,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+      }
+    }
+    *(uint *)(param_1 + 4) = uVar2 * 0x30 + *(int *)param_1;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004eafe8 71 1
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>, malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_004eafe8(int param_1,CShoveHaPennyRegionDef *param_2,CShoveHaPennyRegionDef *param_3)
+
+{
+  void *pvVar1;
+  CShoveHaPennyRegionDef *unaff_EDI;
+  int iVar2;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x30);
+  }
+  if (param_2 != param_3) {
+    iVar2 = (int)pvVar1 - (int)param_2;
+    do {
+      std::
+      _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>
+                ((allocator<CShoveHaPennyRegionDef> *)(param_2 + iVar2),param_2,unaff_EDI);
+      param_2 = param_2 + 0x30;
+    } while (param_2 != param_3);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004eb45f 53 1
+@@CALLERS push_back
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_004eb45f(int param_1,undefined4 *param_2,int param_3)
+
+{
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  int iVar3;
+  undefined4 *puVar4;
+  
+  iVar3 = *(int *)(param_1 + 4) - param_3 >> 4;
+  puVar4 = param_2;
+  if (0 < iVar3) {
+    do {
+      puVar1 = (undefined4 *)((param_3 - (int)param_2) + (int)puVar4);
+      *puVar4 = *puVar1;
+      puVar4[1] = puVar1[1];
+      puVar2 = puVar4 + 3;
+      puVar4[2] = puVar1[2];
+      puVar4 = puVar4 + 4;
+      iVar3 = iVar3 + -1;
+      *puVar2 = puVar1[3];
+    } while (iVar3 != 0);
+  }
+  *(undefined4 **)(param_1 + 4) = puVar4;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004eb494 295 1
+@@CALLERS push_back
+@@CALLEES fill<C3DClothQuad*,C3DClothQuad>, FUN_004eb5dc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004eb494(int param_1,C3DClothQuad *param_2,C3DClothQuad *param_3,C3DClothQuad *param_4)
+
+{
+  uint uVar1;
+  C3DClothQuad *pCVar2;
+  int iVar3;
+  undefined4 *puVar4;
+  C3DClothQuad *pCVar5;
+  C3DClothQuad *pCVar6;
+  undefined4 local_14;
+  undefined4 uStack_10;
+  undefined4 uStack_c;
+  undefined4 uStack_8;
+  
+  uVar1 = (uint)param_3;
+  if (param_3 != (C3DClothQuad *)0x0) {
+    if ((uint)(*(int *)(param_1 + 8) - *(int *)(param_1 + 4) >> 4) < param_3) {
+      param_3 = (C3DClothQuad *)((uint)param_3 & 0xffffff);
+      FUN_004eb5dc(param_2,param_4,(int)&param_3 + 3,uVar1,0);
+    }
+    else {
+      local_14 = *(undefined4 *)param_4;
+      uStack_10 = *(undefined4 *)((int)param_4 + 4);
+      puVar4 = (undefined4 *)((int)param_4 + 0xc);
+      uStack_c = *(undefined4 *)((int)param_4 + 8);
+      param_4 = (C3DClothQuad *)(*(int *)(param_1 + 4) - (int)param_2 >> 4);
+      uStack_8 = *puVar4;
+      pCVar5 = *(C3DClothQuad **)(param_1 + 4);
+      if (param_3 < param_4) {
+        pCVar6 = pCVar5 + (int)param_3 * -0x10;
+        param_4 = pCVar5;
+        for (pCVar2 = pCVar6; pCVar2 != pCVar5; pCVar2 = pCVar2 + 0x10) {
+          if (param_4 != (C3DClothQuad *)0x0) {
+            *(undefined4 *)param_4 = *(undefined4 *)pCVar2;
+            *(undefined4 *)(param_4 + 4) = *(undefined4 *)(pCVar2 + 4);
+            *(undefined4 *)(param_4 + 8) = *(undefined4 *)(pCVar2 + 8);
+            *(undefined4 *)(param_4 + 0xc) = *(undefined4 *)(pCVar2 + 0xc);
+          }
+          param_4 = param_4 + 0x10;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)param_3 * 0x10;
+        iVar3 = (int)pCVar6 - (int)param_2 >> 4;
+        if (0 < iVar3) {
+          do {
+            iVar3 = iVar3 + -1;
+            *(undefined4 *)(pCVar5 + -0x10) = *(undefined4 *)(pCVar6 + -0x10);
+            *(undefined4 *)(pCVar5 + -0xc) = *(undefined4 *)(pCVar6 + -0xc);
+            *(undefined4 *)(pCVar5 + -8) = *(undefined4 *)(pCVar6 + -8);
+            *(undefined4 *)(pCVar5 + -4) = *(undefined4 *)(pCVar6 + -4);
+            pCVar6 = pCVar6 + -0x10;
+            pCVar5 = pCVar5 + -0x10;
+          } while (iVar3 != 0);
+        }
+        pCVar5 = param_2 + (int)param_3 * 0x10;
+        for (; param_2 != pCVar5; param_2 = param_2 + 0x10) {
+          *(undefined4 *)param_2 = local_14;
+          *(undefined4 *)(param_2 + 4) = uStack_10;
+          *(undefined4 *)(param_2 + 8) = uStack_c;
+          *(undefined4 *)(param_2 + 0xc) = uStack_8;
+        }
+      }
+      else {
+        pCVar2 = (C3DClothQuad *)((int)param_3 - (int)param_4);
+        param_3 = pCVar5;
+        std::fill<C3DClothQuad*,C3DClothQuad>(pCVar5,pCVar2,(C3DClothQuad *)&local_14);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)pCVar2 * 0x10;
+        puVar4 = *(undefined4 **)(param_1 + 4);
+        for (pCVar2 = param_2; pCVar2 != pCVar5; pCVar2 = pCVar2 + 0x10) {
+          if (puVar4 != (undefined4 *)0x0) {
+            *puVar4 = *(undefined4 *)pCVar2;
+            puVar4[1] = *(undefined4 *)(pCVar2 + 4);
+            puVar4[2] = *(undefined4 *)(pCVar2 + 8);
+            puVar4[3] = *(undefined4 *)(pCVar2 + 0xc);
+            pCVar5 = param_3;
+          }
+          puVar4 = puVar4 + 4;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)param_4 * 0x10;
+        if (param_2 != pCVar5) {
+          do {
+            *(undefined4 *)param_2 = local_14;
+            *(undefined4 *)(param_2 + 4) = uStack_10;
+            pCVar5 = param_2 + 0xc;
+            *(undefined4 *)(param_2 + 8) = uStack_c;
+            param_2 = param_2 + 0x10;
+            *(undefined4 *)pCVar5 = uStack_8;
+          } while (param_2 != param_3);
+        }
+      }
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004eb5dc 236 1
+@@CALLERS 
+@@CALLEES free, malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004eb5dc(int *param_1,undefined4 *param_2,undefined4 *param_3,undefined4 param_4,
+            undefined4 *param_5,char param_6)
+
+{
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  undefined4 *puVar3;
+  undefined4 **ppuVar4;
+  int iVar5;
+  int *piVar6;
+  undefined4 *local_c;
+  int *local_8;
+  
+  local_8 = param_1;
+  local_c = (undefined4 *)(param_1[1] - *param_1 >> 4);
+  ppuVar4 = &param_5;
+  if (param_5 <= local_c) {
+    ppuVar4 = &local_c;
+  }
+  piVar6 = (int *)((int)*ppuVar4 + (int)local_c);
+  local_8 = piVar6;
+  if (piVar6 == (int *)0x0) {
+    local_c = (undefined4 *)0x0;
+  }
+  else {
+    local_c = malloc((int)piVar6 * 0x10);
+  }
+  puVar3 = local_c;
+  for (puVar2 = (undefined4 *)*param_1; puVar2 != param_2; puVar2 = puVar2 + 4) {
+    if (puVar3 != (undefined4 *)0x0) {
+      *puVar3 = *puVar2;
+      puVar3[1] = puVar2[1];
+      puVar3[2] = puVar2[2];
+      puVar3[3] = puVar2[3];
+      piVar6 = local_8;
+    }
+    puVar3 = puVar3 + 4;
+  }
+  puVar2 = param_5;
+  if (param_5 == (undefined4 *)0x1) {
+    if (puVar3 != (undefined4 *)0x0) {
+      *puVar3 = *param_3;
+      puVar3[1] = param_3[1];
+      puVar3[2] = param_3[2];
+      puVar3[3] = param_3[3];
+      piVar6 = local_8;
+    }
+    puVar3 = puVar3 + 4;
+  }
+  else {
+    for (; puVar2 != (undefined4 *)0x0; puVar2 = (undefined4 *)((int)puVar2 - 1)) {
+      if (puVar3 != (undefined4 *)0x0) {
+        *puVar3 = *param_3;
+        puVar3[1] = param_3[1];
+        puVar3[2] = param_3[2];
+        puVar3[3] = param_3[3];
+        piVar6 = local_8;
+      }
+      puVar3 = puVar3 + 4;
+    }
+  }
+  if ((param_6 == '\0') && (puVar2 = (undefined4 *)param_1[1], param_2 != puVar2)) {
+    iVar5 = (int)param_2 - (int)puVar3;
+    do {
+      if (puVar3 != (undefined4 *)0x0) {
+        puVar1 = (undefined4 *)(iVar5 + (int)puVar3);
+        *puVar3 = *puVar1;
+        puVar3[1] = puVar1[1];
+        puVar3[2] = puVar1[2];
+        puVar3[3] = puVar1[3];
+        piVar6 = local_8;
+      }
+      puVar3 = puVar3 + 4;
+    } while ((undefined4 *)(iVar5 + (int)puVar3) != puVar2);
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  param_1[2] = (int)(local_c + (int)piVar6 * 4);
+  param_1[1] = (int)puVar3;
+  *param_1 = (int)local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004eb6e7 295 1
+@@CALLERS ?Copy@CMultiStaticMeshDef@@UAEXPBVCDefClassBase@@@Z
+@@CALLEES operator=, CMultiStaticMeshEntryDef, OnReadFinished, FUN_004eb90c, _Destroy
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_004eb6e7(CActiveFile *param_1,CMultiStaticMeshEntryDef *param_2)
+
+{
+  CActiveFile *pCVar1;
+  uint uVar2;
+  int iVar3;
+  uint uVar4;
+  CMultiStaticMeshEntryDef *pCVar5;
+  CMultiStaticMeshEntryDef *this;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  CMultiStaticMeshEntryDef *pCVar6;
+  int local_c;
+  CMultiStaticMeshEntryDef *local_8;
+  
+  pCVar1 = (CActiveFile *)param_2;
+  if (param_2 != (CMultiStaticMeshEntryDef *)param_1) {
+    iVar3 = *(int *)(param_2 + 4);
+    pCVar5 = *(CMultiStaticMeshEntryDef **)param_2;
+    uVar2 = (iVar3 - (int)pCVar5) / 0x38;
+    param_2 = (CMultiStaticMeshEntryDef *)uVar2;
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)param_1) / 0x38) < uVar2) {
+      iVar3 = FUN_004eb90c(uVar2,pCVar5,iVar3);
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar3;
+      *(uint *)(param_1 + 8) = uVar2 * 0x38 + iVar3;
+      param_2 = (CMultiStaticMeshEntryDef *)uVar2;
+    }
+    else {
+      uVar4 = (*(int *)(param_1 + 4) - *(int *)param_1) / 0x38;
+      if (uVar4 < uVar2) {
+        local_8 = *(CMultiStaticMeshEntryDef **)param_1;
+        local_c = (int)(uVar4 * 0x38) / 0x38;
+        if (0 < local_c) {
+          do {
+            CMultiStaticMeshEntryDef::operator=(local_8,pCVar5);
+            local_8 = local_8 + 0x38;
+            pCVar5 = pCVar5 + 0x38;
+            local_c = local_c + -1;
+          } while (local_c != 0);
+        }
+        pCVar5 = *(CMultiStaticMeshEntryDef **)(pCVar1 + 4);
+        this = *(CMultiStaticMeshEntryDef **)(param_1 + 4);
+        for (pCVar6 = (CMultiStaticMeshEntryDef *)
+                      ((((int)this - *(int *)param_1) / 0x38) * 0x38 + *(int *)pCVar1);
+            pCVar6 != pCVar5; pCVar6 = pCVar6 + 0x38) {
+          if (this != (CMultiStaticMeshEntryDef *)0x0) {
+            CMultiStaticMeshEntryDef::CMultiStaticMeshEntryDef(this,pCVar6);
+          }
+          this = this + 0x38;
+        }
+      }
+      else {
+        param_2 = *(CMultiStaticMeshEntryDef **)param_1;
+        local_8 = (CMultiStaticMeshEntryDef *)((iVar3 - (int)pCVar5) / 0x38);
+        if (0 < (int)local_8) {
+          do {
+            CMultiStaticMeshEntryDef::operator=(param_2,pCVar5);
+            param_2 = param_2 + 0x38;
+            pCVar5 = pCVar5 + 0x38;
+            local_8 = (CMultiStaticMeshEntryDef *)((int)local_8 + -1);
+          } while (local_8 != (CMultiStaticMeshEntryDef *)0x0);
+        }
+        std::
+        vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+        ::_Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+                    *)param_2,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+        param_2 = (CMultiStaticMeshEntryDef *)uVar2;
+      }
+    }
+    *(int *)(param_1 + 4) = (int)param_2 * 0x38 + *(int *)param_1;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004eb90c 71 1
+@@CALLERS 
+@@CALLEES CMultiStaticMeshEntryDef, malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_004eb90c(int param_1,CMultiStaticMeshEntryDef *param_2,CMultiStaticMeshEntryDef *param_3)
+
+{
+  void *pvVar1;
+  int iVar2;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x38);
+  }
+  if (param_2 != param_3) {
+    iVar2 = (int)pvVar1 - (int)param_2;
+    do {
+      if (param_2 + iVar2 != (CMultiStaticMeshEntryDef *)0x0) {
+        CMultiStaticMeshEntryDef::CMultiStaticMeshEntryDef(param_2 + iVar2,param_2);
+      }
+      param_2 = param_2 + 0x38;
+    } while (param_2 != param_3);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004eb9a6 66 1
+@@CALLERS TransferToGui
+@@CALLEES make_heap<CThing**,CThingCompare_BestForTargeting2>, Partition_WithMedianOfThree
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004eb9a6(int param_1,int param_2,undefined4 param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  if (param_1 != param_2) {
+    iVar2 = 0;
+    for (iVar1 = param_2 - param_1 >> 4; iVar1 != 1; iVar1 = iVar1 >> 1) {
+      iVar2 = iVar2 + 1;
+    }
+    Partition_WithMedianOfThree(0,iVar2 * 2,param_3);
+    std::make_heap<CThing**,CThingCompare_BestForTargeting2>(param_1,param_2,param_3);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ebca9 228 1
+@@CALLERS 
+@@CALLEES FUN_004ebedb, _Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>, OnReadFinished, VectorReallocateCopyConstruct, _Destroy
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall
+FUN_004ebca9(CActiveFile *param_1,pair<CCharString_const_,CArray<unsigned_long>_> *param_2)
+
+{
+  CActiveFile *pCVar1;
+  uint uVar2;
+  int iVar3;
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+  *this;
+  pair<CCharString_const_,CArray<unsigned_long>_> *ppVar4;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_> *paVar5;
+  
+  pCVar1 = (CActiveFile *)param_2;
+  if (param_2 != (pair<CCharString_const_,CArray<unsigned_long>_> *)param_1) {
+    uVar2 = (*(int *)(param_2 + 4) - *(int *)param_2) / 0x48;
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)param_1) / 0x48) < uVar2) {
+      iVar3 = FUN_004ebedb(uVar2,*(int *)param_2,*(int *)(param_2 + 4));
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar3;
+      *(uint *)(param_1 + 8) = iVar3 + uVar2 * 0x48;
+    }
+    else {
+      param_2 = (pair<CCharString_const_,CArray<unsigned_long>_> *)((uint)param_2 & 0xffffff);
+      if ((uint)((*(int *)(param_1 + 4) - *(int *)param_1) / 0x48) < uVar2) {
+        VectorReallocateCopyConstruct(*(undefined4 *)param_1,(int)&param_2 + 3);
+        param_2 = *(pair<CCharString_const_,CArray<unsigned_long>_> **)(pCVar1 + 4);
+        paVar5 = *(allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_> **)(param_1 + 4)
+        ;
+        for (ppVar4 = (pair<CCharString_const_,CArray<unsigned_long>_> *)
+                      (*(int *)pCVar1 + (((int)paVar5 - *(int *)param_1) / 0x48) * 0x48);
+            ppVar4 != param_2; ppVar4 = ppVar4 + 0x48) {
+          std::
+          _Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>
+                    (paVar5,ppVar4,
+                     (pair<class_CCharString_const_,class_CArray<unsigned_long>_> *)unaff_EDI);
+          paVar5 = paVar5 + 0x48;
+        }
+      }
+      else {
+        this = (vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+                *)VectorReallocateCopyConstruct(*(undefined4 *)param_1,(int)&param_2 + 3);
+        std::
+        vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+        ::_Destroy(this,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+      }
+    }
+    *(uint *)(param_1 + 4) = *(int *)param_1 + uVar2 * 0x48;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ebe62 52 1
+@@CALLERS VectorAppendRange
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_004ebe62(undefined4 *param_1,int param_2)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = (void *)0x0;
+  *param_1 = 0;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  if (param_2 != 0) {
+    pvVar1 = malloc(param_2 << 3);
+  }
+  *param_1 = pvVar1;
+  param_1[1] = pvVar1;
+  param_1[2] = (void *)((int)pvVar1 + param_2 * 8);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ebedb 71 1
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>, malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_004ebedb(int param_1,pair<CCharString_const_,CArray<unsigned_long>_> *param_2,
+                   pair<CCharString_const_,CArray<unsigned_long>_> *param_3)
+
+{
+  void *pvVar1;
+  pair<class_CCharString_const_,class_CArray<unsigned_long>_> *unaff_EDI;
+  int iVar2;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x48);
+  }
+  if (param_2 != param_3) {
+    iVar2 = (int)pvVar1 - (int)param_2;
+    do {
+      std::
+      _Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>
+                ((allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_> *)
+                 (param_2 + iVar2),param_2,unaff_EDI);
+      param_2 = param_2 + 0x48;
+    } while (param_2 != param_3);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ebf32 234 1
+@@CALLERS 
+@@CALLEES _Destroy, _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>, OnReadFinished, VectorReallocateCopyConstruct, FUN_004ec10f
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_004ebf32(CActiveFile *param_1,CShoveHaPennyRegionDef *param_2)
+
+{
+  CActiveFile *pCVar1;
+  uint uVar2;
+  int iVar3;
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+  *this;
+  allocator<CShoveHaPennyRegionDef> *paVar4;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  CShoveHaPennyRegionDef *pCVar5;
+  
+  pCVar1 = (CActiveFile *)param_2;
+  if (param_2 != (CShoveHaPennyRegionDef *)param_1) {
+    uVar2 = (*(int *)(param_2 + 4) - *(int *)param_2) / 0x44;
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)param_1) / 0x44) < uVar2) {
+      iVar3 = FUN_004ec10f(uVar2,*(int *)param_2,*(int *)(param_2 + 4));
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar3;
+      *(uint *)(param_1 + 8) = uVar2 * 0x44 + iVar3;
+    }
+    else {
+      param_2 = (CShoveHaPennyRegionDef *)((uint)param_2 & 0xffffff);
+      if ((uint)((*(int *)(param_1 + 4) - *(int *)param_1) / 0x44) < uVar2) {
+        VectorReallocateCopyConstruct(*(undefined4 *)param_1,(int)&param_2 + 3);
+        param_2 = *(CShoveHaPennyRegionDef **)(pCVar1 + 4);
+        paVar4 = *(allocator<CShoveHaPennyRegionDef> **)(param_1 + 4);
+        for (pCVar5 = (CShoveHaPennyRegionDef *)
+                      ((((int)paVar4 - *(int *)param_1) / 0x44) * 0x44 + *(int *)pCVar1);
+            pCVar5 != param_2; pCVar5 = pCVar5 + 0x44) {
+          std::
+          _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>
+                    (paVar4,pCVar5,(CShoveHaPennyRegionDef *)unaff_EDI);
+          paVar4 = paVar4 + 0x44;
+        }
+      }
+      else {
+        this = (vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+                *)VectorReallocateCopyConstruct(*(undefined4 *)param_1,(int)&param_2 + 3);
+        std::
+        vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+        ::_Destroy(this,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+      }
+    }
+    *(uint *)(param_1 + 4) = uVar2 * 0x44 + *(int *)param_1;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ec10f 68 1
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>, malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_004ec10f(int param_1,CShoveHaPennyRegionDef *param_2,CShoveHaPennyRegionDef *param_3)
+
+{
+  void *pvVar1;
+  CShoveHaPennyRegionDef *unaff_EDI;
+  int iVar2;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x44);
+  }
+  if (param_2 != param_3) {
+    iVar2 = (int)pvVar1 - (int)param_2;
+    do {
+      std::
+      _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>
+                ((allocator<CShoveHaPennyRegionDef> *)(param_2 + iVar2),param_2,unaff_EDI);
+      param_2 = param_2 + 0x44;
+    } while (param_2 != param_3);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ec33e 115 1
+@@CALLERS 
+@@CALLEES Tree_CloneRecursive, OnKill
+@@STRINGS 
+@@DECOMP
+
+CTCCarryable * __thiscall FUN_004ec33e(CTCCarryable *param_1,CTCCarryable *param_2)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  int iVar3;
+  
+  if (param_1 != param_2) {
+    CTCCarryable::OnKill(param_1);
+    *(undefined4 *)(param_1 + 4) = 0;
+    if (*(int *)(*(int *)param_2 + 4) == 0) {
+      *(undefined4 *)(*(int *)param_1 + 4) = 0;
+      *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+      *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    }
+    else {
+      iVar1 = *(int *)param_1;
+      uVar2 = Tree_CloneRecursive(*(int *)(*(int *)param_2 + 4),iVar1);
+      *(undefined4 *)(iVar1 + 4) = uVar2;
+      iVar1 = *(int *)(*(int *)param_1 + 4);
+      do {
+        iVar3 = iVar1;
+        iVar1 = *(int *)(iVar3 + 8);
+      } while (iVar1 != 0);
+      *(int *)(*(int *)param_1 + 8) = iVar3;
+      iVar1 = *(int *)(*(int *)param_1 + 4);
+      do {
+        iVar3 = iVar1;
+        iVar1 = *(int *)(iVar3 + 0xc);
+      } while (iVar1 != 0);
+      *(int *)(*(int *)param_1 + 0xc) = iVar3;
+      *(int *)(param_1 + 4) = *(int *)(param_2 + 4);
+    }
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ec4f2 52 1
+@@CALLERS VectorAppendRange
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_004ec4f2(undefined4 *param_1,int param_2)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = (void *)0x0;
+  *param_1 = 0;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  if (param_2 != 0) {
+    pvVar1 = malloc(param_2 << 2);
+  }
+  *param_1 = pvVar1;
+  param_1[1] = pvVar1;
+  param_1[2] = (void *)((int)pvVar1 + param_2 * 4);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ec62f 61 1
+@@CALLERS UpdateShadowScene
+@@CALLEES GetNoAllocatedAreas, WriteCBYTE
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004ec62f(CDataOutputStream *param_1,ulong *param_2)
+
+{
+  ulong uVar1;
+  CMemoryAllocatorVariableSize *this;
+  
+  CDataOutputStream::WriteCBYTE(param_1,(char)param_2[1]);
+  uVar1 = *(ulong *)(*param_2 + 8);
+  if (uVar1 != *param_2) {
+    do {
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x10));
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x14));
+      uVar1 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    } while (uVar1 != *param_2);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ec717 134 1
+@@CALLERS GFSerialiseMapBinaryIn<CDefString,EObjectAugmentationType,std::less<EObjectAugmentationType>_>
+@@CALLEES RBTree::GetMaxNode, FUN_004ec79d
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_004ec717(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  bool bVar2;
+  int iVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  iVar5 = *(int *)(iVar1 + 4);
+  bVar2 = true;
+  iVar6 = iVar1;
+  if (iVar5 != 0) {
+    do {
+      iVar6 = iVar5;
+      bVar2 = *param_3 < *(int *)(iVar6 + 0x10);
+      if (bVar2) {
+        iVar5 = *(int *)(iVar6 + 8);
+      }
+      else {
+        iVar5 = *(int *)(iVar6 + 0xc);
+      }
+    } while (iVar5 != 0);
+  }
+  iVar3 = iVar6;
+  if (bVar2) {
+    iVar7 = iVar6;
+    if (iVar6 == *(int *)(iVar1 + 8)) goto LAB_004ec773;
+    iVar3 = RBTree__GetMaxNode(iVar6);
+  }
+  iVar7 = iVar5;
+  if (*param_3 <= *(int *)(iVar3 + 0x10)) {
+    *param_2 = iVar3;
+    *(undefined1 *)(param_2 + 1) = 0;
+    return param_2;
+  }
+LAB_004ec773:
+  piVar4 = (int *)FUN_004ec79d(&param_3,iVar7,iVar6,param_3,0);
+  *param_2 = *piVar4;
+  *(undefined1 *)(param_2 + 1) = 1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ec79d 136 1
+@@CALLERS 
+@@CALLEES CMemoryAllocatorVariableSize::BalanceTree, FUN_004ec31c
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004ec79d(int *param_1,int *param_2,int param_3,int param_4,int *param_5,int param_6)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  if ((param_4 == *param_1) ||
+     ((param_6 == 0 && ((param_3 != 0 || (*param_5 < *(int *)(param_4 + 0x10))))))) {
+    iVar1 = FUN_004ec31c(param_5);
+    *(int *)(param_4 + 8) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != iVar2) {
+      if (param_4 == *(int *)(iVar2 + 8)) {
+        *(int *)(iVar2 + 8) = iVar1;
+      }
+      goto LAB_004ec7fd;
+    }
+    *(int *)(iVar2 + 4) = iVar1;
+    iVar2 = *param_1;
+  }
+  else {
+    iVar1 = FUN_004ec31c(param_5);
+    *(int *)(param_4 + 0xc) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != *(int *)(iVar2 + 0xc)) goto LAB_004ec7fd;
+  }
+  *(int *)(iVar2 + 0xc) = iVar1;
+LAB_004ec7fd:
+  *(undefined4 *)(iVar1 + 8) = 0;
+  *(undefined4 *)(iVar1 + 0xc) = 0;
+  *(int *)(iVar1 + 4) = param_4;
+  CMemoryAllocatorVariableSize__BalanceTree(iVar1,*param_1 + 4);
+  param_1[1] = param_1[1] + 1;
+  *param_2 = iVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ec85a 104 1
+@@CALLERS UpdateShadowScene
+@@CALLEES GetNoAllocatedAreas, WriteCBYTE, TransferBinaryOut, FinishWithDynamicTextures
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004ec85a(CDataOutputStream *param_1,ulong *param_2)
+
+{
+  ulong uVar1;
+  CMemoryAllocatorVariableSize *this;
+  undefined4 local_30 [5];
+  undefined4 local_1c;
+  undefined4 local_18;
+  undefined4 local_14;
+  undefined4 local_10;
+  undefined4 local_c;
+  undefined4 local_8;
+  
+  local_30[0] = 0;
+  local_1c = 0;
+  local_18 = 0;
+  local_14 = 0;
+  local_10 = 0;
+  local_c = 0;
+  local_8 = 0;
+  CDataOutputStream::WriteCBYTE(param_1,(char)param_2[1]);
+  uVar1 = *(ulong *)(*param_2 + 8);
+  if (uVar1 != *param_2) {
+    do {
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x10));
+      CPersistTraits<CObjectAugmentationParticleSet>::TransferBinaryOut
+                ((CPersistTraits<CObjectAugmentationParticleSet> *)local_30,param_1,
+                 (CObjectAugmentationParticleSet *)(uVar1 + 0x14));
+      uVar1 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    } while (uVar1 != *param_2);
+  }
+  CEngineScreenEffectDisplacementRenderer::FinishWithDynamicTextures
+            ((CEngineScreenEffectDisplacementRenderer *)local_30);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ec9d3 134 1
+@@CALLERS GFSerialiseMapBinaryIn<CCharString,long,std::less<long>_>
+@@CALLEES RBTree::GetMaxNode, FUN_004eca59
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_004ec9d3(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  bool bVar2;
+  int iVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  iVar5 = *(int *)(iVar1 + 4);
+  bVar2 = true;
+  iVar6 = iVar1;
+  if (iVar5 != 0) {
+    do {
+      iVar6 = iVar5;
+      bVar2 = *param_3 < *(int *)(iVar6 + 0x10);
+      if (bVar2) {
+        iVar5 = *(int *)(iVar6 + 8);
+      }
+      else {
+        iVar5 = *(int *)(iVar6 + 0xc);
+      }
+    } while (iVar5 != 0);
+  }
+  iVar3 = iVar6;
+  if (bVar2) {
+    iVar7 = iVar6;
+    if (iVar6 == *(int *)(iVar1 + 8)) goto LAB_004eca2f;
+    iVar3 = RBTree__GetMaxNode(iVar6);
+  }
+  iVar7 = iVar5;
+  if (*param_3 <= *(int *)(iVar3 + 0x10)) {
+    *param_2 = iVar3;
+    *(undefined1 *)(param_2 + 1) = 0;
+    return param_2;
+  }
+LAB_004eca2f:
+  piVar4 = (int *)FUN_004eca59(&param_3,iVar7,iVar6,param_3,0);
+  *param_2 = *piVar4;
+  *(undefined1 *)(param_2 + 1) = 1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004eca59 136 1
+@@CALLERS 
+@@CALLEES CObjectAugmentationParticleSet::Create, CMemoryAllocatorVariableSize::BalanceTree
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004eca59(int *param_1,int *param_2,int param_3,int param_4,int *param_5,int param_6)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  if ((param_4 == *param_1) ||
+     ((param_6 == 0 && ((param_3 != 0 || (*param_5 < *(int *)(param_4 + 0x10))))))) {
+    iVar1 = CObjectAugmentationParticleSet__Create(param_5);
+    *(int *)(param_4 + 8) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != iVar2) {
+      if (param_4 == *(int *)(iVar2 + 8)) {
+        *(int *)(iVar2 + 8) = iVar1;
+      }
+      goto LAB_004ecab9;
+    }
+    *(int *)(iVar2 + 4) = iVar1;
+    iVar2 = *param_1;
+  }
+  else {
+    iVar1 = CObjectAugmentationParticleSet__Create(param_5);
+    *(int *)(param_4 + 0xc) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != *(int *)(iVar2 + 0xc)) goto LAB_004ecab9;
+  }
+  *(int *)(iVar2 + 0xc) = iVar1;
+LAB_004ecab9:
+  *(undefined4 *)(iVar1 + 8) = 0;
+  *(undefined4 *)(iVar1 + 0xc) = 0;
+  *(int *)(iVar1 + 4) = param_4;
+  CMemoryAllocatorVariableSize__BalanceTree(iVar1,*param_1 + 4);
+  param_1[1] = param_1[1] + 1;
+  *param_2 = iVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ece60 134 1
+@@CALLERS TransferBinaryIn
+@@CALLEES FUN_004ecee6, RBTree::GetMaxNode
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_004ece60(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  bool bVar2;
+  int iVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  iVar5 = *(int *)(iVar1 + 4);
+  bVar2 = true;
+  iVar6 = iVar1;
+  if (iVar5 != 0) {
+    do {
+      iVar6 = iVar5;
+      bVar2 = *param_3 < *(int *)(iVar6 + 0x10);
+      if (bVar2) {
+        iVar5 = *(int *)(iVar6 + 8);
+      }
+      else {
+        iVar5 = *(int *)(iVar6 + 0xc);
+      }
+    } while (iVar5 != 0);
+  }
+  iVar3 = iVar6;
+  if (bVar2) {
+    iVar7 = iVar6;
+    if (iVar6 == *(int *)(iVar1 + 8)) goto LAB_004ecebc;
+    iVar3 = RBTree__GetMaxNode(iVar6);
+  }
+  iVar7 = iVar5;
+  if (*param_3 <= *(int *)(iVar3 + 0x10)) {
+    *param_2 = iVar3;
+    *(undefined1 *)(param_2 + 1) = 0;
+    return param_2;
+  }
+LAB_004ecebc:
+  piVar4 = (int *)FUN_004ecee6(&param_3,iVar7,iVar6,param_3,0);
+  *param_2 = *piVar4;
+  *(undefined1 *)(param_2 + 1) = 1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ecee6 136 1
+@@CALLERS 
+@@CALLEES FUN_004e9ab1, CMemoryAllocatorVariableSize::BalanceTree
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004ecee6(int *param_1,int *param_2,int param_3,int param_4,int *param_5,int param_6)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  if ((param_4 == *param_1) ||
+     ((param_6 == 0 && ((param_3 != 0 || (*param_5 < *(int *)(param_4 + 0x10))))))) {
+    iVar1 = FUN_004e9ab1(param_5);
+    *(int *)(param_4 + 8) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != iVar2) {
+      if (param_4 == *(int *)(iVar2 + 8)) {
+        *(int *)(iVar2 + 8) = iVar1;
+      }
+      goto LAB_004ecf46;
+    }
+    *(int *)(iVar2 + 4) = iVar1;
+    iVar2 = *param_1;
+  }
+  else {
+    iVar1 = FUN_004e9ab1(param_5);
+    *(int *)(param_4 + 0xc) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != *(int *)(iVar2 + 0xc)) goto LAB_004ecf46;
+  }
+  *(int *)(iVar2 + 0xc) = iVar1;
+LAB_004ecf46:
+  *(undefined4 *)(iVar1 + 8) = 0;
+  *(undefined4 *)(iVar1 + 0xc) = 0;
+  *(int *)(iVar1 + 4) = param_4;
+  CMemoryAllocatorVariableSize__BalanceTree(iVar1,*param_1 + 4);
+  param_1[1] = param_1[1] + 1;
+  *param_2 = iVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ed0c6 60 1
+@@CALLERS push_back
+@@CALLEES _Copy_impl<std::pair<unsigned_long,C3DDummyObject>*,std::pair<unsigned_long,class_C3DDummyObject>*>, _Destroy
+@@STRINGS 
+@@DECOMP
+
+pair<unsigned_long,class_C3DDummyObject> * __thiscall
+FUN_004ed0c6(int param_1,pair<unsigned_long,class_C3DDummyObject> *param_2,
+            pair<unsigned_long,class_C3DDummyObject> *param_3)
+
+{
+  pair<unsigned_long,C3DDummyObject> *this;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  
+  this = std::
+         _Copy_impl<std::pair<unsigned_long,C3DDummyObject>*,std::pair<unsigned_long,class_C3DDummyObject>*>
+                   (param_3,*(pair<unsigned_long,class_C3DDummyObject> **)(param_1 + 4),param_2);
+  std::
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>::
+  _Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+            *)this,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+  *(pair<unsigned_long,C3DDummyObject> **)(param_1 + 4) = this;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ed161 400 1
+@@CALLERS push_back
+@@CALLEES operator=, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, _Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_>,std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>,std::pair<class_CCharString_const_,struct_std::pair<long,class_CDateAndTime>_>_>, _Copy_backward<std::pair<unsigned_long,C3DDummyObject>*,std::pair<unsigned_long,class_C3DDummyObject>*>, ~CMemoryBlock, CDefClassBase, FUN_004ed353
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004ed161(int param_1,pair<unsigned_long,class_C3DDummyObject> *param_2,
+            pair<CCharString_const_,std::pair<long,CDateAndTime>_> *param_3,
+            allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> *param_4)
+
+{
+  pair<CCharString_const_,std::pair<long,CDateAndTime>_> *ppVar1;
+  allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> *paVar2;
+  uint uVar3;
+  int iVar4;
+  CThingBuildingDef *pCVar5;
+  pair<CCharString_const_,std::pair<long,CDateAndTime>_> *ppVar6;
+  pair<class_CCharString_const_,struct_std::pair<long,class_CDateAndTime>_> *unaff_ESI;
+  CDefClassBase *pCVar7;
+  int iVar8;
+  undefined4 *puVar9;
+  CThingBuildingDef *pCVar10;
+  CThingBuildingDef *pCVar11;
+  undefined **local_58 [10];
+  undefined4 local_30;
+  undefined4 local_2c [7];
+  pair<unsigned_long,class_C3DDummyObject> *local_10;
+  pair<unsigned_long,class_C3DDummyObject> *local_c;
+  undefined1 local_5;
+  
+  if (param_3 != (pair<CCharString_const_,std::pair<long,CDateAndTime>_> *)0x0) {
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)(param_1 + 4)) / 0x48) < param_3) {
+      local_5 = 0;
+      FUN_004ed353(param_2,param_4,&local_5,param_3,0);
+    }
+    else {
+      CDefClassBase::CDefClassBase((CDefClassBase *)local_58,(CDefClassBase *)param_4);
+      local_30 = *(undefined4 *)(param_4 + 0x28);
+      iVar8 = *(int *)(param_1 + 4);
+      local_58[0] = &PTR__vector_deleting_destructor__0123b644;
+      pCVar7 = (CDefClassBase *)(param_4 + 0x2c);
+      puVar9 = local_2c;
+      for (iVar4 = 7; iVar4 != 0; iVar4 = iVar4 + -1) {
+        *puVar9 = *(undefined4 *)pCVar7;
+        pCVar7 = pCVar7 + 4;
+        puVar9 = puVar9 + 1;
+      }
+      uVar3 = (iVar8 - (int)param_2) / 0x48;
+      ppVar6 = *(pair<CCharString_const_,std::pair<long,CDateAndTime>_> **)(param_1 + 4);
+      local_c = (pair<unsigned_long,class_C3DDummyObject> *)ppVar6;
+      if (param_3 < uVar3) {
+        iVar8 = (int)param_3 * 0x48;
+        param_3 = ppVar6 + (int)param_3 * -0x48;
+        param_4 = (allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> *)ppVar6;
+        local_10 = (pair<unsigned_long,class_C3DDummyObject> *)param_3;
+        for (; param_3 != ppVar6; param_3 = param_3 + 0x48) {
+          std::
+          _Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_>,std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>,std::pair<class_CCharString_const_,struct_std::pair<long,class_CDateAndTime>_>_>
+                    (param_4,param_3,unaff_ESI);
+          param_4 = param_4 + 0x48;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + iVar8;
+        std::
+        _Copy_backward<std::pair<unsigned_long,C3DDummyObject>*,std::pair<unsigned_long,class_C3DDummyObject>*>
+                  (param_2,local_10,local_c);
+        pCVar11 = (CThingBuildingDef *)param_2;
+        while (pCVar11 != (CThingBuildingDef *)(param_2 + iVar8)) {
+          CThingBuildingDef::operator=(pCVar11,(CThingBuildingDef *)local_58);
+          pCVar5 = pCVar11 + 0x48;
+          *(undefined4 *)(pCVar11 + 0x28) = local_30;
+          puVar9 = local_2c;
+          pCVar10 = pCVar11 + 0x2c;
+          for (iVar4 = 7; pCVar11 = pCVar5, iVar4 != 0; iVar4 = iVar4 + -1) {
+            *(undefined4 *)pCVar10 = *puVar9;
+            puVar9 = puVar9 + 1;
+            pCVar10 = pCVar10 + 4;
+          }
+        }
+      }
+      else {
+        std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+                  ((ulong *)ppVar6,(int)param_3 - uVar3,(ulong *)local_58);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + ((int)param_3 - uVar3) * 0x48;
+        paVar2 = *(allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> **)
+                  (param_1 + 4);
+        for (ppVar1 = (pair<CCharString_const_,std::pair<long,CDateAndTime>_> *)param_2;
+            ppVar1 != ppVar6; ppVar1 = ppVar1 + 0x48) {
+          std::
+          _Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_>,std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>,std::pair<class_CCharString_const_,struct_std::pair<long,class_CDateAndTime>_>_>
+                    (paVar2,ppVar1,unaff_ESI);
+          paVar2 = paVar2 + 0x48;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar3 * 0x48;
+        if (param_2 != (pair<unsigned_long,class_C3DDummyObject> *)ppVar6) {
+          do {
+            CThingBuildingDef::operator=((CThingBuildingDef *)param_2,(CThingBuildingDef *)local_58)
+            ;
+            ppVar6 = (pair<CCharString_const_,std::pair<long,CDateAndTime>_> *)(param_2 + 0x48);
+            *(undefined4 *)(param_2 + 0x28) = local_30;
+            puVar9 = local_2c;
+            pCVar11 = (CThingBuildingDef *)(param_2 + 0x2c);
+            for (iVar8 = 7; iVar8 != 0; iVar8 = iVar8 + -1) {
+              *(undefined4 *)pCVar11 = *puVar9;
+              puVar9 = puVar9 + 1;
+              pCVar11 = pCVar11 + 4;
+            }
+            param_2 = (pair<unsigned_long,class_C3DDummyObject> *)ppVar6;
+          } while (ppVar6 != (pair<CCharString_const_,std::pair<long,CDateAndTime>_> *)local_c);
+        }
+      }
+      local_58[0] = &PTR__vector_deleting_destructor__01230ba0;
+      CSimpleMemoryPool::CMemoryBlock::~CMemoryBlock((CMemoryBlock *)local_58);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ed353 228 1
+@@CALLERS 
+@@CALLEES OnReadFinished, _Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_>,std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>,std::pair<class_CCharString_const_,struct_std::pair<long,class_CDateAndTime>_>_>, malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004ed353(CActiveFile *param_1,pair<CCharString_const_,std::pair<long,CDateAndTime>_> *param_2,
+            pair<CCharString_const_,std::pair<long,CDateAndTime>_> *param_3,undefined4 param_4,
+            pair<CCharString_const_,std::pair<long,CDateAndTime>_> *param_5,
+            allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> *param_6)
+
+{
+  allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> **ppaVar1;
+  pair<CCharString_const_,std::pair<long,CDateAndTime>_> *ppVar2;
+  pair<class_CCharString_const_,struct_std::pair<long,class_CDateAndTime>_> *unaff_EDI;
+  pair<CCharString_const_,std::pair<long,CDateAndTime>_> *ppVar3;
+  allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> *paVar4;
+  bool bVar5;
+  allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> *local_c;
+  CActiveFile *local_8;
+  
+  local_8 = param_1;
+  local_c = (allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> *)
+            ((*(int *)(param_1 + 4) - *(int *)param_1) / 0x48);
+  ppaVar1 = (allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> **)&param_5;
+  if (param_5 <= local_c) {
+    ppaVar1 = &local_c;
+  }
+  ppVar2 = (pair<CCharString_const_,std::pair<long,CDateAndTime>_> *)(local_c + (int)*ppaVar1);
+  if (ppVar2 == (pair<CCharString_const_,std::pair<long,CDateAndTime>_> *)0x0) {
+    local_c = (allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> *)0x0;
+  }
+  else {
+    local_c = malloc((int)ppVar2 * 0x48);
+  }
+  ppVar3 = *(pair<CCharString_const_,std::pair<long,CDateAndTime>_> **)param_1;
+  local_8 = (CActiveFile *)local_c;
+  for (; ppVar3 != param_2; ppVar3 = ppVar3 + 0x48) {
+    std::
+    _Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_>,std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>,std::pair<class_CCharString_const_,struct_std::pair<long,class_CDateAndTime>_>_>
+              ((allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> *)local_8,
+               ppVar3,unaff_EDI);
+    local_8 = local_8 + 0x48;
+  }
+  paVar4 = (allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> *)local_8;
+  if (param_5 == (pair<CCharString_const_,std::pair<long,CDateAndTime>_> *)0x1) {
+    std::
+    _Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_>,std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>,std::pair<class_CCharString_const_,struct_std::pair<long,class_CDateAndTime>_>_>
+              ((allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> *)local_8,
+               param_3,unaff_EDI);
+    paVar4 = (allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> *)
+             (local_8 + 0x48);
+  }
+  else {
+    for (; param_5 != (pair<CCharString_const_,std::pair<long,CDateAndTime>_> *)0x0;
+        param_5 = param_5 + -1) {
+      std::
+      _Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_>,std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>,std::pair<class_CCharString_const_,struct_std::pair<long,class_CDateAndTime>_>_>
+                (paVar4,param_3,unaff_EDI);
+      paVar4 = paVar4 + 0x48;
+    }
+  }
+  bVar5 = (char)param_6 == '\0';
+  if ((bVar5) &&
+     (param_5 = *(pair<CCharString_const_,std::pair<long,CDateAndTime>_> **)(param_1 + 4),
+     param_6 = paVar4, param_2 != param_5)) {
+    do {
+      std::
+      _Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_>,std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>,std::pair<class_CCharString_const_,struct_std::pair<long,class_CDateAndTime>_>_>
+                (param_6,param_2,unaff_EDI);
+      paVar4 = param_6 + 0x48;
+      param_2 = param_2 + 0x48;
+      param_6 = paVar4;
+    } while (param_2 != param_5);
+  }
+  CFileInstaller::CActiveFile::OnReadFinished(param_1);
+  *(allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> **)param_1 = local_c;
+  *(allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> **)(param_1 + 4) =
+       paVar4;
+  *(allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> **)(param_1 + 8) =
+       local_c + (int)ppVar2 * 0x48;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004edab7 60 1
+@@CALLERS push_back
+@@CALLEES FUN_004edaf3, _Destroy
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_004edab7(uint param_1,undefined4 param_2)
+
+{
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+  *this;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  undefined4 uStack_8;
+  
+  uStack_8 = param_1 & 0xffffff;
+  this = (vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+          *)FUN_004edaf3(param_2,(int)&uStack_8 + 3);
+  std::
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>::
+  _Destroy(this,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+  *(vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+    **)(param_1 + 4) = this;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004edaf3 75 1
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __fastcall FUN_004edaf3(int param_1,int param_2,CThingBuildingDef *param_3)
+
+{
+  int iVar1;
+  CThingBuildingDef *this;
+  undefined4 *puVar2;
+  
+  iVar1 = (param_2 - param_1) / 0x30;
+  this = param_3;
+  if (0 < iVar1) {
+    puVar2 = (undefined4 *)(param_1 + 0x2c);
+    param_1 = (int)param_3 - param_1;
+    param_3 = (CThingBuildingDef *)iVar1;
+    do {
+      CThingBuildingDef::operator=(this,(CThingBuildingDef *)(puVar2 + -0xb));
+      *(undefined4 *)(this + 0x28) = puVar2[-1];
+      *(undefined4 *)(param_1 + (int)puVar2) = *puVar2;
+      this = this + 0x30;
+      puVar2 = puVar2 + 0xc;
+      param_3 = (CThingBuildingDef *)((int)param_3 + -1);
+    } while (param_3 != (CThingBuildingDef *)0x0);
+  }
+  return this;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004edb3e 349 1
+@@CALLERS push_back
+@@CALLEES CCardDef, _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>, operator=, ~CMemoryBlock, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, FUN_004edcc2, FUN_004edd13
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004edb3e(int param_1,CThingBuildingDef *param_2,allocator<CShoveHaPennyRegionDef> *param_3,
+            CShoveHaPennyRegionDef *param_4)
+
+{
+  CShoveHaPennyRegionDef *pCVar1;
+  allocator<CShoveHaPennyRegionDef> *paVar2;
+  CShoveHaPennyRegionDef *pCVar3;
+  uint uVar4;
+  CShoveHaPennyRegionDef *unaff_EDI;
+  undefined **local_3c [10];
+  undefined4 local_14;
+  undefined4 local_10;
+  CShoveHaPennyRegionDef *local_c;
+  CShoveHaPennyRegionDef *local_8;
+  
+  paVar2 = param_3;
+  if (param_3 != (allocator<CShoveHaPennyRegionDef> *)0x0) {
+    if ((allocator<CShoveHaPennyRegionDef> *)
+        ((*(int *)(param_1 + 8) - *(int *)(param_1 + 4)) / 0x30) < param_3) {
+      param_3 = (allocator<CShoveHaPennyRegionDef> *)((uint)param_3 & 0xffffff);
+      FUN_004edd13(param_2,param_4,(int)&param_3 + 3,paVar2,0);
+    }
+    else {
+      CCardDef::CCardDef((CCardDef *)local_3c,(CCardDef *)param_4);
+      param_3 = (allocator<CShoveHaPennyRegionDef> *)((*(int *)(param_1 + 4) - (int)param_2) / 0x30)
+      ;
+      pCVar3 = *(CShoveHaPennyRegionDef **)(param_1 + 4);
+      local_8 = pCVar3;
+      if (paVar2 < param_3) {
+        param_4 = pCVar3 + (int)paVar2 * -0x30;
+        param_3 = (allocator<CShoveHaPennyRegionDef> *)pCVar3;
+        local_c = param_4;
+        for (; param_4 != pCVar3; param_4 = param_4 + 0x30) {
+          std::
+          _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>
+                    (param_3,param_4,unaff_EDI);
+          param_3 = param_3 + 0x30;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)paVar2 * 0x30;
+        param_4 = (CShoveHaPennyRegionDef *)((uint)param_4 & 0xffffff);
+        FUN_004edcc2(local_8,(int)&param_4 + 3);
+        pCVar3 = (CShoveHaPennyRegionDef *)(param_2 + (int)paVar2 * 0x30);
+        for (; param_2 != (CThingBuildingDef *)pCVar3; param_2 = param_2 + 0x30) {
+          CThingBuildingDef::operator=(param_2,(CThingBuildingDef *)local_3c);
+          *(undefined4 *)(param_2 + 0x28) = local_14;
+          *(undefined4 *)(param_2 + 0x2c) = local_10;
+        }
+      }
+      else {
+        uVar4 = (int)paVar2 - (int)param_3;
+        std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+                  ((ulong *)pCVar3,uVar4,(ulong *)local_3c);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar4 * 0x30;
+        param_4 = *(CShoveHaPennyRegionDef **)(param_1 + 4);
+        for (pCVar1 = (CShoveHaPennyRegionDef *)param_2; pCVar1 != pCVar3; pCVar1 = pCVar1 + 0x30) {
+          std::
+          _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>
+                    ((allocator<CShoveHaPennyRegionDef> *)param_4,pCVar1,unaff_EDI);
+          param_4 = param_4 + 0x30;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)param_3 * 0x30;
+        for (; param_2 != (CThingBuildingDef *)pCVar3; param_2 = param_2 + 0x30) {
+          CThingBuildingDef::operator=(param_2,(CThingBuildingDef *)local_3c);
+          *(undefined4 *)(param_2 + 0x28) = local_14;
+          *(undefined4 *)(param_2 + 0x2c) = local_10;
+        }
+      }
+      local_3c[0] = &PTR__vector_deleting_destructor__01230ba0;
+      CSimpleMemoryPool::CMemoryBlock::~CMemoryBlock((CMemoryBlock *)local_3c);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004edcc2 81 1
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __fastcall FUN_004edcc2(int param_1,int param_2,CThingBuildingDef *param_3)
+
+{
+  CThingBuildingDef *this;
+  int iVar1;
+  int iVar2;
+  undefined4 *puVar3;
+  undefined4 *puVar4;
+  
+  iVar1 = (param_2 - param_1) / 0x30;
+  if (0 < iVar1) {
+    iVar2 = (int)param_3 - param_2;
+    puVar3 = (undefined4 *)(param_2 + 0x2c);
+    do {
+      this = param_3 + -0x30;
+      puVar4 = puVar3 + -0xc;
+      CThingBuildingDef::operator=(this,(CThingBuildingDef *)(puVar3 + -0x17));
+      iVar1 = iVar1 + -1;
+      *(undefined4 *)(param_3 + -8) = puVar3[-0xd];
+      *(undefined4 *)(iVar2 + (int)puVar4) = *puVar4;
+      puVar3 = puVar4;
+      param_3 = this;
+    } while (iVar1 != 0);
+  }
+  return param_3;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004edd13 230 1
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>, OnReadFinished, malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004edd13(CActiveFile *param_1,CShoveHaPennyRegionDef *param_2,CShoveHaPennyRegionDef *param_3,
+            undefined4 param_4,CShoveHaPennyRegionDef *param_5,
+            allocator<CShoveHaPennyRegionDef> *param_6)
+
+{
+  allocator<CShoveHaPennyRegionDef> **ppaVar1;
+  CShoveHaPennyRegionDef *pCVar2;
+  CShoveHaPennyRegionDef *unaff_EDI;
+  CShoveHaPennyRegionDef *pCVar3;
+  allocator<CShoveHaPennyRegionDef> *paVar4;
+  bool bVar5;
+  allocator<CShoveHaPennyRegionDef> *local_c;
+  CActiveFile *local_8;
+  
+  local_8 = param_1;
+  local_c = (allocator<CShoveHaPennyRegionDef> *)((*(int *)(param_1 + 4) - *(int *)param_1) / 0x30);
+  ppaVar1 = (allocator<CShoveHaPennyRegionDef> **)&param_5;
+  if (param_5 <= local_c) {
+    ppaVar1 = &local_c;
+  }
+  pCVar2 = (CShoveHaPennyRegionDef *)(local_c + (int)*ppaVar1);
+  if (pCVar2 == (CShoveHaPennyRegionDef *)0x0) {
+    local_c = (allocator<CShoveHaPennyRegionDef> *)0x0;
+  }
+  else {
+    local_c = malloc((int)pCVar2 * 0x30);
+  }
+  pCVar3 = *(CShoveHaPennyRegionDef **)param_1;
+  local_8 = (CActiveFile *)local_c;
+  for (; pCVar3 != param_2; pCVar3 = pCVar3 + 0x30) {
+    std::
+    _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>
+              ((allocator<CShoveHaPennyRegionDef> *)local_8,pCVar3,unaff_EDI);
+    local_8 = local_8 + 0x30;
+  }
+  paVar4 = (allocator<CShoveHaPennyRegionDef> *)local_8;
+  if (param_5 == (CShoveHaPennyRegionDef *)0x1) {
+    std::
+    _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>
+              ((allocator<CShoveHaPennyRegionDef> *)local_8,param_3,unaff_EDI);
+    paVar4 = (allocator<CShoveHaPennyRegionDef> *)(local_8 + 0x30);
+  }
+  else {
+    for (; param_5 != (CShoveHaPennyRegionDef *)0x0; param_5 = param_5 + -1) {
+      std::
+      _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>
+                (paVar4,param_3,unaff_EDI);
+      paVar4 = paVar4 + 0x30;
+    }
+  }
+  bVar5 = (char)param_6 == '\0';
+  if ((bVar5) &&
+     (param_5 = *(CShoveHaPennyRegionDef **)(param_1 + 4), param_6 = paVar4, param_2 != param_5)) {
+    do {
+      std::
+      _Cons_val<std::allocator<CShoveHaPennyRegionDef>,CShoveHaPennyRegionDef,CShoveHaPennyRegionDef>
+                (param_6,param_2,unaff_EDI);
+      paVar4 = param_6 + 0x30;
+      param_2 = param_2 + 0x30;
+      param_6 = paVar4;
+    } while (param_2 != param_5);
+  }
+  CFileInstaller::CActiveFile::OnReadFinished(param_1);
+  *(allocator<CShoveHaPennyRegionDef> **)(param_1 + 4) = paVar4;
+  *(allocator<CShoveHaPennyRegionDef> **)param_1 = local_c;
+  *(allocator<CShoveHaPennyRegionDef> **)(param_1 + 8) = local_c + (int)pCVar2 * 0x30;
+  return;
+}
+
+
+@@ENDFUNC

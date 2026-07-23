@@ -1,0 +1,1626 @@
+{
+  "functions": {
+    "00a66550": {
+      "address": "0x00A66550",
+      "class_name": "",
+      "function_name": "?GetFragmentation@CMemoryAllocatorFixedSize@@UAEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:51:08"
+    },
+    "00bdc130": {
+      "address": "0x00BDC130",
+      "class_name": "",
+      "function_name": "?RelocateData@CEngineLandscapeMap@@EAEXJPAX0J@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:51:33"
+    },
+    "00b6ca10": {
+      "address": "0x00B6CA10",
+      "class_name": "",
+      "function_name": "?PeekSceneFilterFlags@CEngineLandscapeRenderer@@UBEKXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:51:56"
+    },
+    "00a65de0": {
+      "address": "0x00A65DE0",
+      "class_name": "",
+      "function_name": "?GetAllocationSizeIncludingHeader@CMemoryAllocatorFixedSize@@UAEKPAX@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:52:34"
+    },
+    "00bf3840": {
+      "address": "0x00BF3840",
+      "class_name": "",
+      "function_name": "?CanRelocateData@CEngineLandscapePatch@@EBE_NJ@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:53:10"
+    },
+    "00a65e50": {
+      "address": "0x00A65E50",
+      "class_name": "",
+      "function_name": "?GetNoAllocatedAreas@CMemoryAllocatorFixedSize@@UAEKXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:53:51"
+    },
+    "00a65d70": {
+      "address": "0x00A65D70",
+      "class_name": "",
+      "function_name": "?GetHeaderOverhead@CMemoryAllocatorFixedSize@@UAEKXZ",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:55:13"
+    },
+    "00a65e20": {
+      "address": "0x00A65E20",
+      "class_name": "",
+      "function_name": "?GetNoFreeAreas@CMemoryAllocatorFixedSize@@UAEKXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:55:48"
+    },
+    "00a65df0": {
+      "address": "0x00A65DF0",
+      "class_name": "",
+      "function_name": "?GetLargestFreeAreaSize@CMemoryAllocatorFixedSize@@UAEKXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:06:44"
+    },
+    "00a65da0": {
+      "address": "0x00A65DA0",
+      "class_name": "",
+      "function_name": "?GetTotalMemoryAllocated@CMemoryAllocatorFixedSize@@UAEKXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:07:32"
+    },
+    "00b676a0": {
+      "address": "0x00B676A0",
+      "class_name": "",
+      "function_name": "?OnReleaseDefaultPoolResources@CEngineLandscapeRenderer@@UAEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:08:35"
+    },
+    "00bf3980": {
+      "address": "0x00BF3980",
+      "class_name": "",
+      "function_name": "?RelocateData@CEngineLandscapePatch@@EAEXJPAX0J@Z",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:35:54"
+    },
+    "00a65ff0": {
+      "address": "0x00A65FF0",
+      "class_name": "CMemoryAllocatorFixedSize",
+      "function_name": "CMemoryAllocatorFixedSize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T14:15:00"
+    },
+    "00ab5d00": {
+      "address": "0x00AB5D00",
+      "class_name": "CMouseDX",
+      "function_name": "CMouseDX",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T14:19:40"
+    },
+    "00caf680": {
+      "address": "0x00CAF680",
+      "class_name": "CEngineLandscapePatch",
+      "function_name": "AllocateTask",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T14:23:29"
+    },
+    "00caf580": {
+      "address": "0x00CAF580",
+      "class_name": "CEngineLandscapePatch",
+      "function_name": "Destructor",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:39:26"
+    },
+    "00bfd420": {
+      "address": "0x00BFD420",
+      "class_name": "CLandscapeLayerMesh",
+      "function_name": "CLandscapeLayerMesh",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T14:42:23"
+    },
+    "00bfddd0": {
+      "address": "0x00BFDDD0",
+      "class_name": "CLandscapeLayerMesh",
+      "function_name": "CLandscapeLayerMesh",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T14:43:44"
+    },
+    "00c3b900": {
+      "address": "0x00C3B900",
+      "class_name": "CLandscapeLayerMesh",
+      "function_name": "CLandscapeLayerMesh",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T14:44:23"
+    },
+    "006b0730": {
+      "address": "0x006B0730",
+      "class_name": "CTCPhysicsBase",
+      "function_name": "CTCPhysicsBase",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T14:46:17"
+    },
+    "007266c0": {
+      "address": "0x007266C0",
+      "class_name": "CTCPhysicsBase",
+      "function_name": "CTCPhysicsBase",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T14:47:24"
+    },
+    "00713140": {
+      "address": "0x00713140",
+      "class_name": "NTCScriptedControl::CActionDoCreatureAction",
+      "function_name": "CActionDoCreatureAction",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:50:16"
+    },
+    "00401067": {
+      "address": "0x00401067",
+      "class_name": "",
+      "function_name": "entry",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:01:56"
+    },
+    "00401296": {
+      "address": "0x00401296",
+      "class_name": "",
+      "function_name": "__onexit",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:03:57"
+    },
+    "004012ce": {
+      "address": "0x004012CE",
+      "class_name": "",
+      "function_name": "__RTC_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T15:04:27"
+    },
+    "00401356": {
+      "address": "0x00401356",
+      "class_name": "MSVCR71.DLL",
+      "function_name": "initterm",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:05:10"
+    },
+    "0040135c": {
+      "address": "0x0040135C",
+      "class_name": "",
+      "function_name": "__setdefaultprecision",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T15:05:30"
+    },
+    "0040138c": {
+      "address": "0x0040138C",
+      "class_name": "",
+      "function_name": "__SEH_prolog",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T15:06:03"
+    },
+    "004013c7": {
+      "address": "0x004013C7",
+      "class_name": "",
+      "function_name": "__SEH_epilog",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T15:06:31"
+    },
+    "004013de": {
+      "address": "0x004013DE",
+      "class_name": "MSVCR71.DLL",
+      "function_name": "__dllonexit",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:06:57"
+    },
+    "00401c00": {
+      "address": "0x00401C00",
+      "class_name": "",
+      "function_name": "GFHandleSystemInitError",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:14:30"
+    },
+    "00401f30": {
+      "address": "0x00401F30",
+      "class_name": "",
+      "function_name": "GFGetBuildNumber2",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:18:41"
+    },
+    "00402130": {
+      "address": "0x00402130",
+      "class_name": "",
+      "function_name": "MyDocuments_CheckWritePermissions",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:34:03"
+    },
+    "004022b0": {
+      "address": "0x004022B0",
+      "class_name": "",
+      "function_name": "GFInitialise",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:35:53"
+    },
+    "00403480": {
+      "address": "0x00403480",
+      "class_name": "",
+      "function_name": "_WinMain@16",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T15:37:47"
+    },
+    "00403c60": {
+      "address": "0x00403C60",
+      "class_name": "",
+      "function_name": "MemCmp_Unsigned16",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T15:38:21"
+    },
+    "00404280": {
+      "address": "0x00404280",
+      "class_name": "",
+      "function_name": "WideString_EqualsLen",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T15:39:16"
+    },
+    "00404310": {
+      "address": "0x00404310",
+      "class_name": "",
+      "function_name": "CCharString_ComputeCRC32",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:39:52"
+    },
+    "00404690": {
+      "address": "0x00404690",
+      "class_name": "",
+      "function_name": "std_list_node_Init",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T15:40:20"
+    },
+    "004046f0": {
+      "address": "0x004046F0",
+      "class_name": "",
+      "function_name": "ListNode_Create_Circular",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T15:40:46"
+    },
+    "00404a90": {
+      "address": "0x00404A90",
+      "class_name": "",
+      "function_name": "$E2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T15:41:21"
+    },
+    "00405ba0": {
+      "address": "0x00405BA0",
+      "class_name": "",
+      "function_name": "Std_Move_Backward",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T15:42:23"
+    },
+    "00406770": {
+      "address": "0x00406770",
+      "class_name": "",
+      "function_name": "$E2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T15:42:51"
+    },
+    "00409090": {
+      "address": "0x00409090",
+      "class_name": "",
+      "function_name": "Engine_FindPrimitiveInArray",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:43:58"
+    },
+    "0040bb90": {
+      "address": "0x0040BB90",
+      "class_name": "",
+      "function_name": "CUserProfileManager_SaveAndCleanup",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:45:38"
+    },
+    "0040cec0": {
+      "address": "0x0040CEC0",
+      "class_name": "",
+      "function_name": "CUserProfileManager_Constructor",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:07:51"
+    },
+    "0040e130": {
+      "address": "0x0040E130",
+      "class_name": "",
+      "function_name": "Vector_FreeElements",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T16:08:14"
+    },
+    "0040e170": {
+      "address": "0x0040E170",
+      "class_name": "",
+      "function_name": "Array_LinearSearchInt",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T16:09:10"
+    },
+    "0063a970": {
+      "address": "0x0063A970",
+      "class_name": "CWorldMap",
+      "function_name": "SetThemeAtBlock",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:22:11"
+    },
+    "0063a9e0": {
+      "address": "0x0063A9E0",
+      "class_name": "CWorldMap",
+      "function_name": "SetThemeAtBlock",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:26:40"
+    },
+    "0063aa50": {
+      "address": "0x0063AA50",
+      "class_name": "CWorldMap",
+      "function_name": "GetThemeAtBlock",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:28:50"
+    },
+    "0063aab0": {
+      "address": "0x0063AAB0",
+      "class_name": "CWorldMap",
+      "function_name": "GetThemeBlendAtBlock",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:33:46"
+    },
+    "0081ee60": {
+      "address": "0x0081EE60",
+      "class_name": "CMap",
+      "function_name": "SetEngineThemeAt",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:36:08"
+    },
+    "0081efc0": {
+      "address": "0x0081EFC0",
+      "class_name": "CMap",
+      "function_name": "SetEngineBlendAt",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:37:21"
+    },
+    "0081f090": {
+      "address": "0x0081F090",
+      "class_name": "CMap",
+      "function_name": "GetEngineThemeAt",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:38:30"
+    },
+    "0081f170": {
+      "address": "0x0081F170",
+      "class_name": "CMap",
+      "function_name": "GetEngineBlendAt",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:39:34"
+    },
+    "0082e330": {
+      "address": "0x0082E330",
+      "class_name": "CScriptedMapBrush",
+      "function_name": "GetTheme",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:40:47"
+    },
+    "0082e3d0": {
+      "address": "0x0082E3D0",
+      "class_name": "CScriptedMapBrush",
+      "function_name": "GetThemeBlend",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:41:23"
+    },
+    "0082e420": {
+      "address": "0x0082E420",
+      "class_name": "CScriptedMapBrush",
+      "function_name": "SetThemeBlend",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:41:52"
+    },
+    "0050a650": {
+      "address": "0x0050A650",
+      "class_name": "CWorldMap",
+      "function_name": "GetMapNavigationAreaInit",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T17:00:41"
+    },
+    "00a76f30": {
+      "address": "0x00A76F30",
+      "class_name": "CNavQuadTree",
+      "function_name": "IsAreaBlockedByLines",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T17:04:56"
+    },
+    "00a781a0": {
+      "address": "0x00A781A0",
+      "class_name": "CNavQuadTree",
+      "function_name": "UpdateLines",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T17:13:22"
+    },
+    "00a79b30": {
+      "address": "0x00A79B30",
+      "class_name": "CNavQuadTreeNode",
+      "function_name": "Initialise",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T17:32:25"
+    },
+    "00a7a5e0": {
+      "address": "0x00A7A5E0",
+      "class_name": "CNavQuadTree",
+      "function_name": "InitialiseLines",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T17:33:32"
+    },
+    "00a7a8d0": {
+      "address": "0x00A7A8D0",
+      "class_name": "CNavQuadTree",
+      "function_name": "Initialise",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:03:19"
+    },
+    "00a77480": {
+      "address": "0x00A77480",
+      "class_name": "CNavQuadTree",
+      "function_name": "JoinNavigationLayers",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:05:39"
+    },
+    "00a77500": {
+      "address": "0x00A77500",
+      "class_name": "CNavQuadTree",
+      "function_name": "VerifyTransitionPoints",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:06:29"
+    },
+    "00a7a650": {
+      "address": "0x00A7A650",
+      "class_name": "CNavQuadTree",
+      "function_name": "LinkToNeighbouringMaps",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:09:24"
+    },
+    "00a793d0": {
+      "address": "0x00A793D0",
+      "class_name": "CNavQuadTree",
+      "function_name": "ConnectVerticalMapEdge",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:16:00"
+    },
+    "00a79680": {
+      "address": "0x00A79680",
+      "class_name": "CNavQuadTree",
+      "function_name": "ConnectVerticalMapEdge",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:18:52"
+    },
+    "004fe7f0": {
+      "address": "0x004FE7F0",
+      "class_name": "",
+      "function_name": "CollectSoundThemeSwitchDefs",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:33:44"
+    },
+    "00662020": {
+      "address": "0x00662020",
+      "class_name": "",
+      "function_name": "Getter_FieldE0_FC",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:34:14"
+    },
+    "007602f0": {
+      "address": "0x007602F0",
+      "class_name": "",
+      "function_name": "Math_PolygonAngleSumClosureCheck",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:44:57"
+    },
+    "008368f0": {
+      "address": "0x008368F0",
+      "class_name": "",
+      "function_name": "ConditionalVirtualDispatch_OnLevelUnload",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T18:47:23"
+    },
+    "0086c5c0": {
+      "address": "0x0086C5C0",
+      "class_name": "",
+      "function_name": "CPersistInfo_InsertionSortStep_0086c5c0",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:50:52"
+    },
+    "0086fa00": {
+      "address": "0x0086FA00",
+      "class_name": "",
+      "function_name": "CPersistInfo_InsertionSortStep_0086fa00",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:52:31"
+    }
+  },
+  "runs": [
+    {
+      "address": "0x00A66550",
+      "class_name": "",
+      "function_name": "?GetFragmentation@CMemoryAllocatorFixedSize@@UAEMXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:51:08"
+    },
+    {
+      "address": "0x00BDC130",
+      "class_name": "",
+      "function_name": "?RelocateData@CEngineLandscapeMap@@EAEXJPAX0J@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:51:33"
+    },
+    {
+      "address": "0x00B6CA10",
+      "class_name": "",
+      "function_name": "?PeekSceneFilterFlags@CEngineLandscapeRenderer@@UBEKXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:51:56"
+    },
+    {
+      "address": "0x00A65DE0",
+      "class_name": "",
+      "function_name": "?GetAllocationSizeIncludingHeader@CMemoryAllocatorFixedSize@@UAEKPAX@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:52:34"
+    },
+    {
+      "address": "0x00BF3840",
+      "class_name": "",
+      "function_name": "?CanRelocateData@CEngineLandscapePatch@@EBE_NJ@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:53:10"
+    },
+    {
+      "address": "0x00A65E50",
+      "class_name": "",
+      "function_name": "?GetNoAllocatedAreas@CMemoryAllocatorFixedSize@@UAEKXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:53:51"
+    },
+    {
+      "address": "0x00A65D70",
+      "class_name": "",
+      "function_name": "?GetHeaderOverhead@CMemoryAllocatorFixedSize@@UAEKXZ",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:55:13"
+    },
+    {
+      "address": "0x00A65E20",
+      "class_name": "",
+      "function_name": "?GetNoFreeAreas@CMemoryAllocatorFixedSize@@UAEKXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T13:55:48"
+    },
+    {
+      "address": "0x00A65DF0",
+      "class_name": "",
+      "function_name": "?GetLargestFreeAreaSize@CMemoryAllocatorFixedSize@@UAEKXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:06:44"
+    },
+    {
+      "address": "0x00A65DA0",
+      "class_name": "",
+      "function_name": "?GetTotalMemoryAllocated@CMemoryAllocatorFixedSize@@UAEKXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:07:32"
+    },
+    {
+      "address": "0x00B676A0",
+      "class_name": "",
+      "function_name": "?OnReleaseDefaultPoolResources@CEngineLandscapeRenderer@@UAEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:08:35"
+    },
+    {
+      "address": "0x00BF3980",
+      "class_name": "",
+      "function_name": "?RelocateData@CEngineLandscapePatch@@EAEXJPAX0J@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:14:05"
+    },
+    {
+      "address": "0x00A65FF0",
+      "class_name": "CMemoryAllocatorFixedSize",
+      "function_name": "CMemoryAllocatorFixedSize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T14:15:00"
+    },
+    {
+      "address": "0x00AB5D00",
+      "class_name": "CMouseDX",
+      "function_name": "CMouseDX",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T14:19:40"
+    },
+    {
+      "address": "0x00CAF680",
+      "class_name": "CEngineLandscapePatch",
+      "function_name": "AllocateTask",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T14:23:29"
+    },
+    {
+      "address": "0x00CAF580",
+      "class_name": "CEngineLandscapePatch",
+      "function_name": "Destructor",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:31:01"
+    },
+    {
+      "address": "0x00BF3980",
+      "class_name": "",
+      "function_name": "?RelocateData@CEngineLandscapePatch@@EAEXJPAX0J@Z",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:35:54"
+    },
+    {
+      "address": "0x00CAF580",
+      "class_name": "CEngineLandscapePatch",
+      "function_name": "Destructor",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:39:26"
+    },
+    {
+      "address": "0x00BFD420",
+      "class_name": "CLandscapeLayerMesh",
+      "function_name": "CLandscapeLayerMesh",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T14:42:23"
+    },
+    {
+      "address": "0x00BFDDD0",
+      "class_name": "CLandscapeLayerMesh",
+      "function_name": "CLandscapeLayerMesh",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T14:43:44"
+    },
+    {
+      "address": "0x00C3B900",
+      "class_name": "CLandscapeLayerMesh",
+      "function_name": "CLandscapeLayerMesh",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T14:44:23"
+    },
+    {
+      "address": "0x006B0730",
+      "class_name": "CTCPhysicsBase",
+      "function_name": "CTCPhysicsBase",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T14:46:17"
+    },
+    {
+      "address": "0x007266C0",
+      "class_name": "CTCPhysicsBase",
+      "function_name": "CTCPhysicsBase",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T14:47:24"
+    },
+    {
+      "address": "0x00713140",
+      "class_name": "NTCScriptedControl::CActionDoCreatureAction",
+      "function_name": "CActionDoCreatureAction",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T14:50:16"
+    },
+    {
+      "address": "0x00401067",
+      "class_name": "",
+      "function_name": "entry",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T14:56:06"
+    },
+    {
+      "address": "0x00401067",
+      "class_name": "",
+      "function_name": "entry",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:01:56"
+    },
+    {
+      "address": "0x00401296",
+      "class_name": "",
+      "function_name": "__onexit",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:03:57"
+    },
+    {
+      "address": "0x004012CE",
+      "class_name": "",
+      "function_name": "__RTC_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T15:04:27"
+    },
+    {
+      "address": "0x00401356",
+      "class_name": "MSVCR71.DLL",
+      "function_name": "initterm",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:05:10"
+    },
+    {
+      "address": "0x0040135C",
+      "class_name": "",
+      "function_name": "__setdefaultprecision",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T15:05:30"
+    },
+    {
+      "address": "0x0040138C",
+      "class_name": "",
+      "function_name": "__SEH_prolog",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T15:06:03"
+    },
+    {
+      "address": "0x004013C7",
+      "class_name": "",
+      "function_name": "__SEH_epilog",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T15:06:31"
+    },
+    {
+      "address": "0x004013DE",
+      "class_name": "MSVCR71.DLL",
+      "function_name": "__dllonexit",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:06:57"
+    },
+    {
+      "address": "0x00401C00",
+      "class_name": "",
+      "function_name": "GFHandleSystemInitError",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:14:30"
+    },
+    {
+      "address": "0x00401F30",
+      "class_name": "",
+      "function_name": "GFGetBuildNumber2",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:18:41"
+    },
+    {
+      "address": "0x00402130",
+      "class_name": "",
+      "function_name": "MyDocuments_CheckWritePermissions",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:34:03"
+    },
+    {
+      "address": "0x004022B0",
+      "class_name": "",
+      "function_name": "GFInitialise",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:35:53"
+    },
+    {
+      "address": "0x00403480",
+      "class_name": "",
+      "function_name": "_WinMain@16",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T15:37:47"
+    },
+    {
+      "address": "0x00403C60",
+      "class_name": "",
+      "function_name": "MemCmp_Unsigned16",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T15:38:21"
+    },
+    {
+      "address": "0x00404280",
+      "class_name": "",
+      "function_name": "WideString_EqualsLen",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T15:39:16"
+    },
+    {
+      "address": "0x00404310",
+      "class_name": "",
+      "function_name": "CCharString_ComputeCRC32",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:39:52"
+    },
+    {
+      "address": "0x00404690",
+      "class_name": "",
+      "function_name": "std_list_node_Init",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T15:40:20"
+    },
+    {
+      "address": "0x004046F0",
+      "class_name": "",
+      "function_name": "ListNode_Create_Circular",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T15:40:46"
+    },
+    {
+      "address": "0x00404A90",
+      "class_name": "",
+      "function_name": "$E2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T15:41:21"
+    },
+    {
+      "address": "0x00405BA0",
+      "class_name": "",
+      "function_name": "Std_Move_Backward",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T15:42:23"
+    },
+    {
+      "address": "0x00406770",
+      "class_name": "",
+      "function_name": "$E2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T15:42:51"
+    },
+    {
+      "address": "0x00409090",
+      "class_name": "",
+      "function_name": "Engine_FindPrimitiveInArray",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:43:58"
+    },
+    {
+      "address": "0x0040BB90",
+      "class_name": "",
+      "function_name": "CUserProfileManager_SaveAndCleanup",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:45:38"
+    },
+    {
+      "address": "0x0040CEC0",
+      "class_name": "",
+      "function_name": "CUserProfileManager_Constructor",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T15:57:39"
+    },
+    {
+      "address": "0x0040CEC0",
+      "class_name": "",
+      "function_name": "CUserProfileManager_Constructor",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:07:51"
+    },
+    {
+      "address": "0x0040E130",
+      "class_name": "",
+      "function_name": "Vector_FreeElements",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T16:08:14"
+    },
+    {
+      "address": "0x0040E170",
+      "class_name": "",
+      "function_name": "Array_LinearSearchInt",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T16:09:10"
+    },
+    {
+      "address": "0x0063A970",
+      "class_name": "CWorldMap",
+      "function_name": "SetThemeAtBlock",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:18:30"
+    },
+    {
+      "address": "0x0063A970",
+      "class_name": "CWorldMap",
+      "function_name": "SetThemeAtBlock",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:22:11"
+    },
+    {
+      "address": "0x0063A9E0",
+      "class_name": "CWorldMap",
+      "function_name": "SetThemeAtBlock",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:26:40"
+    },
+    {
+      "address": "0x0063AA50",
+      "class_name": "CWorldMap",
+      "function_name": "GetThemeAtBlock",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:28:50"
+    },
+    {
+      "address": "0x0063AAB0",
+      "class_name": "CWorldMap",
+      "function_name": "GetThemeBlendAtBlock",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:33:46"
+    },
+    {
+      "address": "0x0081EE60",
+      "class_name": "CMap",
+      "function_name": "SetEngineThemeAt",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:36:08"
+    },
+    {
+      "address": "0x0081EFC0",
+      "class_name": "CMap",
+      "function_name": "SetEngineBlendAt",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:37:21"
+    },
+    {
+      "address": "0x0081F090",
+      "class_name": "CMap",
+      "function_name": "GetEngineThemeAt",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:38:30"
+    },
+    {
+      "address": "0x0081F170",
+      "class_name": "CMap",
+      "function_name": "GetEngineBlendAt",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:39:34"
+    },
+    {
+      "address": "0x0082E330",
+      "class_name": "CScriptedMapBrush",
+      "function_name": "GetTheme",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:40:47"
+    },
+    {
+      "address": "0x0082E3D0",
+      "class_name": "CScriptedMapBrush",
+      "function_name": "GetThemeBlend",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:41:23"
+    },
+    {
+      "address": "0x0082E420",
+      "class_name": "CScriptedMapBrush",
+      "function_name": "SetThemeBlend",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:41:52"
+    },
+    {
+      "address": "0x0050A650",
+      "class_name": "CWorldMap",
+      "function_name": "GetMapNavigationAreaInit",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T16:54:55"
+    },
+    {
+      "address": "0x0050A650",
+      "class_name": "CWorldMap",
+      "function_name": "GetMapNavigationAreaInit",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T17:00:41"
+    },
+    {
+      "address": "0x00A76F30",
+      "class_name": "CNavQuadTree",
+      "function_name": "IsAreaBlockedByLines",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T17:04:56"
+    },
+    {
+      "address": "0x00A781A0",
+      "class_name": "CNavQuadTree",
+      "function_name": "UpdateLines",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T17:13:22"
+    },
+    {
+      "address": "0x00A79B30",
+      "class_name": "CNavQuadTreeNode",
+      "function_name": "Initialise",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T17:23:59"
+    },
+    {
+      "address": "0x00A79B30",
+      "class_name": "CNavQuadTreeNode",
+      "function_name": "Initialise",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T17:32:25"
+    },
+    {
+      "address": "0x00A7A5E0",
+      "class_name": "CNavQuadTree",
+      "function_name": "InitialiseLines",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T17:33:32"
+    },
+    {
+      "address": "0x00A7A8D0",
+      "class_name": "CNavQuadTree",
+      "function_name": "Initialise",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T17:49:38"
+    },
+    {
+      "address": "0x00A7A8D0",
+      "class_name": "CNavQuadTree",
+      "function_name": "Initialise",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:03:19"
+    },
+    {
+      "address": "0x00A77480",
+      "class_name": "CNavQuadTree",
+      "function_name": "JoinNavigationLayers",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:05:39"
+    },
+    {
+      "address": "0x00A77500",
+      "class_name": "CNavQuadTree",
+      "function_name": "VerifyTransitionPoints",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:06:29"
+    },
+    {
+      "address": "0x00A7A650",
+      "class_name": "CNavQuadTree",
+      "function_name": "LinkToNeighbouringMaps",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:09:24"
+    },
+    {
+      "address": "0x00A793D0",
+      "class_name": "CNavQuadTree",
+      "function_name": "ConnectVerticalMapEdge",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:16:00"
+    },
+    {
+      "address": "0x00A79680",
+      "class_name": "CNavQuadTree",
+      "function_name": "ConnectVerticalMapEdge",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:18:52"
+    },
+    {
+      "address": "0x004FE7F0",
+      "class_name": "",
+      "function_name": "CollectSoundThemeSwitchDefs",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:30:53"
+    },
+    {
+      "address": "0x004FE7F0",
+      "class_name": "",
+      "function_name": "CollectSoundThemeSwitchDefs",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:33:44"
+    },
+    {
+      "address": "0x00662020",
+      "class_name": "",
+      "function_name": "Getter_FieldE0_FC",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:34:14"
+    },
+    {
+      "address": "0x007602F0",
+      "class_name": "",
+      "function_name": "Math_PolygonAngleSumClosureCheck",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:41:45"
+    },
+    {
+      "address": "0x007602F0",
+      "class_name": "",
+      "function_name": "Math_PolygonAngleSumClosureCheck",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:44:57"
+    },
+    {
+      "address": "0x008368F0",
+      "class_name": "",
+      "function_name": "ConditionalVirtualDispatch_OnLevelUnload",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-22T18:47:23"
+    },
+    {
+      "address": "0x0086C5C0",
+      "class_name": "",
+      "function_name": "CPersistInfo_InsertionSortStep_0086c5c0",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:50:52"
+    },
+    {
+      "address": "0x0086FA00",
+      "class_name": "",
+      "function_name": "CPersistInfo_InsertionSortStep_0086fa00",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T18:52:31"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+005f8f6f	Lua_PushCClosure_005f8f6f	medium	Thin wrapper forwarding self/args to luaV_Cclosure (Lua C-closure push)
+006152c0	StdList_InitEmpty_006152c0	medium	malloc(0x10) then node->next=node->prev=node, store at *param_1: std::list empty-sentinel ctor
+00615340	StdList_InitEmpty_00615340	medium	malloc(0xc) circular self-linked sentinel node stored at *param_1: std::list ctor
+006153a0	StdList_InitEmpty_006153a0	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+00615400	StdList_InitEmpty_00615400	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+00615460	StdList_InitEmpty_00615460	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+006154c0	StdList_InitEmpty_006154c0	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+00615580	Ptr_AllocStore_00615580	low	malloc(0x18) stored at *param_1, no linking: opaque block allocation
+006155b0	Ptr_AllocStore_006155b0	low	malloc(0x6c) stored at *param_1, no linking: opaque block allocation
+00615650	Ptr_AllocStore_00615650	low	malloc(0x1c) stored at *param_1, no linking: opaque block allocation
+00616790	StdList_InitEmpty_00616790	medium	malloc(0x10) self-linked sentinel node: std::list empty ctor
+006167f0	StdList_InitEmpty_006167f0	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+00616820	StdList_InitEmpty_00616820	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+00616850	StdList_InitEmpty_00616850	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+00616880	StdList_InitEmpty_00616880	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+006168b0	StdList_InitEmpty_006168b0	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+006168e0	StdList_InitEmpty_006168e0	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+00616930	StdList_CtorWithCount_00616930	medium	int* {head,count}; malloc(0x18) sentinel zeroed and self-linked, count=0: std::list ctor
+006169c0	StdList_CtorWithCount_006169c0	medium	{head,count}; malloc(0x6c) sentinel zeroed+self-linked, count=0: std::list ctor
+00616a40	StdList_CtorWithCount_00616a40	medium	{head,count}; malloc(0x1c) sentinel zeroed+self-linked, count=0: std::list ctor
+00617140	StdList_CtorWithCount_00617140	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+00617270	StdList_CtorWithCount_00617270	medium	{head,count}; malloc(0x1c) sentinel zeroed+self-linked, count=0: std::list ctor
+00619e30	StdList_CtorWithCount_00619e30	medium	{head,count}; malloc(0x6c) sentinel zeroed+self-linked, count=0: std::list ctor
+00623a80	Ptr_AllocStore_00623a80	low	malloc(0x18) stored at *param_1, no linking: opaque block allocation
+00624160	StdList_CtorWithCount_00624160	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+00624520	StdList_CtorWithCount_00624520	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+00630b60	Ptr_AllocStore_00630b60	low	malloc(0x18) stored at *param_1, no linking: opaque block allocation
+00630b90	Ptr_AllocStore_00630b90	low	malloc(0x18) stored at *param_1, no linking: opaque block allocation
+00630cc0	StdList_CtorWithCount_00630cc0	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+00630d50	StdList_CtorWithCount_00630d50	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+00630f50	StdList_CtorWithCount_00630f50	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006313e0	StdList_CtorWithCount_006313e0	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+0063ec80	Return_Identity_0063ec80	low	Returns its single argument unchanged (identity/stub)
+0063f340	StdList_InitEmpty_0063f340	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+0063f450	StdList_InitEmpty_0063f450	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+006579e0	Vector_PushBackInts_1_2_neg1_006579e0	medium	Three push_back sequences via InsertMultipleAndGrow inserting 1,2,-1 into std::vector<int>
+00657ac0	Vector_PushBackInts_2_3_1_00657ac0	medium	Three push_back sequences via InsertMultipleAndGrow inserting 2,3,1 into std::vector<int>
+00669510	StdList_InitEmpty_00669510	medium	malloc(0x10) self-linked sentinel node: std::list empty ctor
+0066a1a0	StdList_InitEmpty_0066a1a0	medium	malloc(0x10) self-linked sentinel node: std::list empty ctor
+00674e50	Object_FreeInnerAndDelete_00674e50	high	Frees *param_1 buffer then operator_delete(param_1): destructor/deallocator
+00674e80	Object_FreeInnerAndDelete_00674e80	high	Frees *param_1 buffer then operator_delete(param_1): destructor/deallocator
+0067aeb0	StdList_InitEmpty_0067aeb0	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+0067af60	Ptr_AllocStore_0067af60	low	malloc(0x18) stored at *param_1, no linking: opaque block allocation
+0067afd0	Ptr_AllocStore_0067afd0	low	malloc(0x18) stored at *param_1, no linking: opaque block allocation
+0067b040	Ptr_AllocStore_0067b040	low	malloc(0x18) stored at *param_1, no linking: opaque block allocation
+0067b570	StdList_InitEmpty_0067b570	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+0067b5f0	StdList_CtorWithCount_0067b5f0	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+0067b680	StdList_CtorWithCount_0067b680	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+0067b710	StdList_CtorWithCount_0067b710	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+0067bc70	StdList_InitEmpty_0067bc70	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+0067bd30	StdList_CtorWithCount_0067bd30	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+0067bdc0	StdList_CtorWithCount_0067bdc0	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+0067be50	StdList_CtorWithCount_0067be50	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+00685ba0	StdList_InitEmpty_00685ba0	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor
+006864c0	StdList_InitEmpty_006864c0	medium	malloc(0xc) self-linked sentinel node stored at *param_1 (void ret): std::list empty ctor
+00687480	StdList_InitEmpty_00687480	medium	malloc(0x60) self-linked sentinel node: std::list empty ctor
+00687910	StdList_InitEmpty_00687910	medium	malloc(0x60) self-linked sentinel node: std::list empty ctor
+006960a0	Ptr_AllocStore_006960a0	low	malloc(0x1c) stored at *param_1, no linking: opaque block allocation
+006960d0	Ptr_AllocStore_006960d0	low	malloc(0x1c) stored at *param_1, no linking: opaque block allocation
+00696590	StdList_CtorWithCount_00696590	medium	{head,count}; malloc(0x1c) sentinel zeroed+self-linked, count=0: std::list ctor
+006965d0	StdList_CtorWithCount_006965d0	medium	{head,count}; malloc(0x1c) sentinel zeroed+self-linked, count=0: std::list ctor
+00696de0	StdList_CtorWithCount_00696de0	medium	{head,count}; malloc(0x1c) sentinel zeroed+self-linked, count=0: std::list ctor
+00696e70	StdList_CtorWithCount_00696e70	medium	{head,count}; malloc(0x1c) sentinel zeroed+self-linked, count=0: std::list ctor
+006db170	StdList_InitEmpty_006db170	medium	malloc(0x10) self-linked sentinel node: std::list empty ctor
+006db230	StdList_CtorWithCount_006db230	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006db5a0	StdList_CtorWithCount_006db5a0	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006db730	StdList_CtorWithCount_006db730	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006db770	StdList_CtorWithCount_006db770	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006dbc00	StdList_CtorHeadAtField1_006dbc00	medium	head stored at param_1[1], param_1[2]=0, malloc(0x18) sentinel self-linked: std::list ctor variant
+006dbc50	StdList_CtorHeadAtField1_006dbc50	medium	head stored at param_1[1], param_1[2]=0, malloc(0x18) sentinel self-linked: std::list ctor variant
+006dbfe0	StdList_CtorWithCount_006dbfe0	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006dc1b0	StdList_CtorWithCount_006dc1b0	medium	{head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006e4b30	StdList_InitEmpty_006e4b30	medium	malloc(0x20) self-linked sentinel node: std::list empty ctor
+006e4e10	StdList_InitEmpty_006e4e10	medium	malloc(0x20) self-linked sentinel node: std::list empty ctor
+006e6930	Ptr_AllocStore_006e6930	low	malloc(0x40) stored at *param_1, no linking: opaque block allocation
+006e6ae0	StdList_CtorWithCount_006e6ae0	medium	{head,count}; malloc(0x40) sentinel zeroed+self-linked, count=0: std::list ctor
+006e7030	StdList_CtorWithCount_006e7030	medium	{head,count}; malloc(0x40) sentinel zeroed+self-linked, count=0: std::list ctor
+006f09b0	StdList_InitEmpty_006f09b0	medium	malloc(0xc) self-linked sentinel node: std::list empty ctor

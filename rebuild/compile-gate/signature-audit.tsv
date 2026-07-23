@@ -1,0 +1,116 @@
+address	module	manifest_name	checker_verdict	generated_owner	generated_method	manifest_return	generated_return	expected_explicit_parameters	generated_explicit_parameters	duplicate_addresses	status	issues
+00401067	_global	entry	PASS	_global	entry	undefined	int	0	0		PASS	
+00401296	_global	__onexit	PASS	_global	__onexit	void	"extern ""C"" void __cdecl"	1	1		PASS	
+004012ce	_global	__RTC_Initialize	PASS	_global	__RTC_Initialize	void	"extern ""C"" void __cdecl"	0	0		PASS	
+00401356	_global	initterm	PASS	_global	initterm	void	"extern ""C"" void __cdecl"	2	0		REVIEW	explicit-parameter-count-mismatch
+0040135c	_global	__setdefaultprecision	PASS	_global	__setdefaultprecision	void	"extern ""C"" void __cdecl"	0	0		PASS	
+0040138c	_global	__SEH_prolog	PASS	_global	__SEH_prolog	void	"extern ""C"" void __cdecl"	2	2		PASS	
+004013c7	_global	__SEH_epilog	PASS	_global	__SEH_epilog	void	"extern ""C"" void __cdecl"	0	0		PASS	
+004013de	_global	__dllonexit	PASS	_global	__dllonexit	_onexit_t	"extern ""C"" void __cdecl"	3	0		REVIEW	explicit-parameter-count-mismatch
+00401c00	_global	GFHandleSystemInitError	PASS	_global	GFHandleSystemInitError	undefined	"extern ""C"" void __stdcall"	0	1		REVIEW	explicit-parameter-count-mismatch
+00401f30	_global	GFGetBuildNumber2	PASS	_global	GFGetBuildNumber2	void	"extern ""C"" void __cdecl"	0	0		PASS	
+00402130	_global	MyDocuments_CheckWritePermissions	PASS	_global	MyDocuments_CheckWritePermissions	undefined	"extern ""C"" std::uint32_t __thiscall"	0	1		REVIEW	explicit-parameter-count-mismatch
+004022b0	_global	GFInitialise	PASS	_global	GFInitialise	undefined	std::uint32_t __thiscall	0	2		REVIEW	explicit-parameter-count-mismatch
+00403480	_global	_WinMain@16	PASS	_global	_WinMain_16	undefined	"extern ""C"" std::int32_t __stdcall"	0	4		REVIEW	method-name-mismatch;explicit-parameter-count-mismatch
+00403c60	_global	MemCmp_Unsigned16	PASS	_global	MemCmp_Unsigned16	int	int __cdecl	3	3		PASS	
+00404280	_global	WideString_EqualsLen	PASS	_global	WideString_EqualsLen	int	int __cdecl	2	2		PASS	
+00404310	_global	CCharString_ComputeCRC32	PASS	_global	CCharString_ComputeCRC32	ulong	void __fastcall	1	1		PASS	
+00404690	_global	std_list_node_Init	PASS	_global	std_list_node_Init	void **	void** __fastcall	3	1		REVIEW	explicit-parameter-count-mismatch
+004046f0	_global	ListNode_Create_Circular	PASS	_global	ListNode_Create_Circular	void **	void** __fastcall	3	1		REVIEW	explicit-parameter-count-mismatch
+00404a90	_global	$E2	PASS	_global	GlobalAt	void	static inline T&	0	1		REVIEW	method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch
+00405ba0	_global	Std_Move_Backward	PASS	_global	Std_Move_Backward	void *	void* __fastcall	3	3		PASS	
+00406770	_global	$E2	PASS	_global	$E2	void	void __stdcall	1	1		PASS	
+00409090	_global	Engine_FindPrimitiveInArray	PASS	_global	Engine_FindPrimitiveInArray	undefined	int __fastcall	0	3		REVIEW	explicit-parameter-count-mismatch
+0040bb90	_global	CUserProfileManager_SaveAndCleanup	PASS	_global	CUserProfileManager_SaveAndCleanup	void	void __fastcall	1	1		PASS	
+0040cec0	_global	CUserProfileManager_Constructor	FAIL	_global	CUserProfileManager_Constructor	undefined	CUserProfileManager* __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
+0040e130	_global	Vector_FreeElements	PASS	_global	Vector_FreeElements	void	void __stdcall	2	2		PASS	
+0040e170	_global	Array_LinearSearchInt	PASS	_global	Array_LinearSearchInt	int *	int* __fastcall	3	3		PASS	
+0050a650	CWorldMap	GetMapNavigationAreaInit	PASS	CWorldMap	GetMapNavigationAreaInit	void	void	4	4		PASS	
+0063a970	CWorldMap	SetThemeAtBlock	PASS	CWorldMap	SetThemeAtBlock	void	void	4	4		PASS	
+0063a9e0	CWorldMap	CWorldMap::SetThemeBlendAtBlock	PASS	CWorldMap	SetThemeBlendAtBlock	void	void	4	4		PASS	
+0063aa50	CWorldMap	GetThemeAtBlock	PASS	CWorldMap	GetThemeAtBlock	ulong	unsigned long	3	3		PASS	
+0063aab0	CWorldMap	GetThemeBlendAtBlock	PASS	CWorldMap	GetThemeBlendAtBlock	ulong	unsigned long	3	3		PASS	
+006b0730	CTCPhysicsBase	CTCPhysicsBase	PASS	TCPhysicsBase	CTCPhysicsBase	undefined	C	1	1	006b0730;007266c0	REVIEW	owner-mismatch;duplicate-linkage-signature
+00713140	CActionDoCreatureAction	CActionDoCreatureAction	PASS	ActionDoCreatureAction	CActionDoCreatureAction	undefined	C	1	1		REVIEW	owner-mismatch
+007266c0	CTCPhysicsBase	CTCPhysicsBase	PASS	TCPhysicsBase	CTCPhysicsBase	undefined	C	1	1	006b0730;007266c0	REVIEW	owner-mismatch;duplicate-linkage-signature
+0081ee60	CMap	SetEngineThemeAt	PASS	CMap	SetEngineThemeAt	void	void	5	5		PASS	
+0081efc0	CMap	SetEngineBlendAt	PASS	CMap	SetEngineBlendAt	void	void	5	5		PASS	
+0081f090	CMap	GetEngineThemeAt	PASS	CMap	GetEngineThemeAt	ulong	unsigned long	4	4		PASS	
+0081f170	CMap	GetEngineBlendAt	PASS	CMap	GetEngineBlendAt	uchar	unsigned char	4	4		PASS	
+0082e330	CScriptedMapBrush	GetTheme	PASS	CScriptedMapBrush	GetTheme	ulong	unsigned long	3	3		PASS	
+0082e3d0	CScriptedMapBrush	GetThemeBlend	PASS	CScriptedMapBrush	GetThemeBlend	uchar	unsigned char	3	3		PASS	
+0082e420	CScriptedMapBrush	SetThemeBlend	PASS	CScriptedMapBrush	SetThemeBlend	void	void	4	4		PASS	
+008ed590	CObjectFamilyDef	GetRandomObject	PASS	CObjectFamilyDef	GetRandomObject	long	long	0	0		PASS	
+00a65d30	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::ConsolidateFreeAreas	PASS	CMemoryAllocatorFixedSize	ConsolidateFreeAreas	void	void	0	0		PASS	
+00a65d40	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::GetAllocationSize	PASS	CMemoryAllocatorFixedSize	GetAllocationSize	ulong	unsigned long	1	1		PASS	
+00a65d50	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::GetTotalMemoryControlledByAllocator	PASS	CMemoryAllocatorFixedSize	GetTotalMemoryControlledByAllocator	ulong	unsigned long	0	0		PASS	
+00a65d70	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::GetHeaderOverhead	PASS	CMemoryAllocatorFixedSize	GetHeaderOverhead	ulong	unsigned long	0	0		PASS	
+00a65da0	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::GetTotalMemoryAllocated	PASS	CMemoryAllocatorFixedSize	GetTotalMemoryAllocated	ulong	unsigned long	0	0		PASS	
+00a65de0	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::GetAllocationSizeIncludingHeader	PASS	CMemoryAllocatorFixedSize	GetAllocationSizeIncludingHeader	ulong	unsigned long	1	1		PASS	
+00a65df0	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::GetLargestFreeAreaSize	PASS	CMemoryAllocatorFixedSize	GetLargestFreeAreaSize	ulong	unsigned long	0	0		PASS	
+00a65e20	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::GetNoFreeAreas	PASS	CMemoryAllocatorFixedSize	GetNoFreeAreas	ulong	unsigned long	0	0		PASS	
+00a65e50	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::GetNoAllocatedAreas	PASS	CMemoryAllocatorFixedSize	GetNoAllocatedAreas	ulong	unsigned long	0	0		PASS	
+00a65ff0	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::CMemoryAllocatorFixedSize	PASS	MemoryAllocatorFixedSize	CMemoryAllocatorFixedSize	void	C	6	6		REVIEW	owner-mismatch
+00a66550	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::GetFragmentation	PASS	CMemoryAllocatorFixedSize	GetFragmentation	float	float	0	0		PASS	
+00a76f30	CNavQuadTree	IsAreaBlockedByLines	PASS	CNavQuadTree	IsAreaBlockedByLines	bool	bool	2	2		PASS	
+00a77480	CNavQuadTree	JoinNavigationLayers	PASS	CNavQuadTree	JoinNavigationLayers	void	void	0	0		PASS	
+00a77500	CNavQuadTree	VerifyTransitionPoints	PASS	CNavQuadTree	VerifyTransitionPoints	void	void	0	0		PASS	
+00a781a0	CNavQuadTree	UpdateLines	PASS	CNavQuadTree	UpdateLines	void	void	3	3		PASS	
+00a793d0	CNavQuadTree	ConnectVerticalMapEdge	PASS	CNavQuadTree	ConnectVerticalMapEdge	void	void __thiscall	3	3	00a793d0;00a79680	REVIEW	duplicate-linkage-signature
+00a79680	CNavQuadTree	ConnectVerticalMapEdge	PASS	CNavQuadTree	ConnectVerticalMapEdge	void	void __thiscall	3	3	00a793d0;00a79680	REVIEW	duplicate-linkage-signature
+00a79b30	CNavQuadTreeNode	Initialise	PASS	CNavQuadTreeNode	Initialise	void	void	3	3		PASS	
+00a7a5e0	CNavQuadTree	InitialiseLines	PASS	CNavQuadTree	InitialiseLines	void	void	2	2		PASS	
+00a7a650	CNavQuadTree	LinkToNeighbouringMaps	PASS	CNavQuadTree	LinkToNeighbouringMaps	void	void	1	1		PASS	
+00a7a8d0	CNavQuadTree	Initialise	FAIL	CNavQuadTree	Initialise	void	void	1	1		PASS	
+00ab46e0	CMouseDX	CMouseDX::GetPos	PASS	CMouseDX	GetPos	void	void	1	1		PASS	
+00ab4700	CMouseDX	CMouseDX::SetPos	PASS	CMouseDX	SetPos	void	void	1	1		PASS	
+00ab5390	CMouseDX	CMouseDX::SetMouseCursor	FAIL	CMouseDX	SetMouseCursor	void	void	1	1		PASS	
+00ab5d00	CMouseDX	CMouseDX::CMouseDX	PASS	MouseDX	CMouseDX	void	C	2	2		REVIEW	owner-mismatch
+00ab5f00	CMouseDX	CMouseDX::PeekPos	PASS	CMouseDX	PeekPos	C2DVector const &	const C2DVector&	0	0		PASS	
+00ab5f10	CMouseDX	CMouseDX::SetInputOn	PASS	CMouseDX	SetInputOn	void	void	1	1		PASS	
+00ab5f20	CMouseDX	CMouseDX::SetRecentringOn	PASS	CMouseDX	SetRecentringOn	void	void	1	1		PASS	
+00ab5f30	CMouseDX	CMouseDX::IsRecentringOn	PASS	CMouseDX	IsRecentringOn	bool	bool	0	0		PASS	
+00ab5f40	CMouseDX	CMouseDX::SetDrawCursor	PASS	CMouseDX	SetDrawCursor	void	void	1	1		PASS	
+00ab5f50	CMouseDX	CMouseDX::IsDrawingCursor	PASS	CMouseDX	IsDrawingCursor	bool	bool	0	0		PASS	
+00ab5f60	CMouseDX	CMouseDX::SetMouseFiltering	PASS	CMouseDX	SetMouseFiltering	void	void	1	1		PASS	
+00ab5f70	CMouseDX	CMouseDX::IsLMBDown	PASS	CMouseDX	IsLMBDown	bool	bool	0	0		PASS	
+00ab5f80	CMouseDX	CMouseDX::IsMMBDown	PASS	CMouseDX	IsMMBDown	bool	bool	0	0		PASS	
+00ab5f90	CMouseDX	CMouseDX::IsRMBDown	PASS	CMouseDX	IsRMBDown	bool	bool	0	0		PASS	
+00b676a0	CEngineLandscapeRenderer	CEngineLandscapeRenderer::OnReleaseDefaultPoolResources	PASS	CEngineLandscapeRenderer	OnReleaseDefaultPoolResources	void	void	0	0		PASS	
+00b687d0	CEngineLandscapeRenderer	BuildThemes	PASS	CEngineLandscapeRenderer	BuildThemes	void	void	0	0		PASS	
+00b6ca10	CEngineLandscapeRenderer	CEngineLandscapeRenderer::PeekSceneFilterFlags	PASS	CEngineLandscapeRenderer	PeekSceneFilterFlags	ulong	unsigned long	0	0		PASS	
+00bdc130	CEngineLandscapeMap	CEngineLandscapeMap::RelocateData	PASS	CEngineLandscapeMap	RelocateData	void	void	4	4		PASS	
+00bdc180	CEngineLandscapeMap	UpdateBackgroundLOD		CEngineLandscapeMap	UpdateBackgroundLOD	LS_LOADING_STATUS	LS_LOADING_STATUS	3	3		PASS	
+00bdc510	CEngineLandscapeMap	UpdateForeground	FAIL	CEngineLandscapeMap	UpdateForeground	LS_LOADING_STATUS	LS_LOADING_STATUS	0	0		PASS	
+00bdd0e0	CEngineLandscapeMap	OpenStaticMap	PASS	CEngineLandscapeMap	OpenStaticMap	void	void	2	2		PASS	
+00bdf010	CLocalDetailCacheMap	OpenStaticMap	PASS	CLocalDetailCacheMap	OpenStaticMap	void	void	2	2		PASS	
+00be6f70	CLandscapeBackgroundPatch	Render	PASS	CLandscapeBackgroundPatch	Render	bool	bool __thiscall	1	1		PASS	
+00be7d70	CLandscapeBackgroundPatch	Load	FAIL	CLandscapeBackgroundPatch	Load	bool	bool	3	3		PASS	
+00be8920	CLandscapeBackgroundPatch	LoadCompressed	PASS	CLandscapeBackgroundPatch	LoadCompressed	bool	bool	3	3		PASS	
+00beaaa0	CEngineScreenEffectOutlineGlow	CEngineScreenEffectOutlineGlow::~CEngineScreenEffectOutlineGlow	PASS	CEngineScreenEffectOutlineGlow	FinishWithDynamicTextures	void	void	0	0		REVIEW	method-name-mismatch
+00beb4d0	CEngineScreenEffectOutlineGlow	CEngineScreenEffectOutlineGlow::ScalarDeletingDestructor	PASS	CEngineScreenEffectOutlineGlow	FinishWithDynamicTextures	CEngineScreenEffectOutlineGlow *	void	1	1		REVIEW	method-name-mismatch;return-shape-mismatch
+00bebed0	CEnginePrimitiveManagerMeshBase	CEnginePrimitiveManagerMeshBase::GetComposedTexture	PASS	CEnginePrimitiveManagerMeshBase	GetComposedTexture	CTexture *	const CTexture* __fastcall	5	5		PASS	
+00bec000	CEnginePrimitiveManagerMeshBase	CEnginePrimitiveManagerMeshBase::PreloadDiffuseTexture	PASS	CEnginePrimitiveManagerMeshBase	PreloadDiffuseTexture	void	void __fastcall	5	5		PASS	
+00bec470	CEnginePrimitiveManagerMeshBase	CEnginePrimitiveManagerMeshBase::PreloadBumpTexture	PASS	CEnginePrimitiveManagerMeshBase	PreloadBumpTexture	void	void __fastcall	5	5		PASS	
+00bec950	CEnginePrimitiveManagerMeshBase	CEnginePrimitiveManagerMeshBase::GetOverlaidTextures	PASS	CEnginePrimitiveManagerMeshBase	GetOverlaidTextures	bool	bool __fastcall	4	4		PASS	
+00bf3840	CEngineLandscapePatch	CEngineLandscapePatch::CanRelocateData	PASS	CEngineLandscapePatch	CanRelocateData	bool	bool	1	1		PASS	
+00bf3980	CEngineLandscapePatch	CEngineLandscapePatch::RelocateData	PASS	CEngineLandscapePatch	RelocateData	void	void	4	4		PASS	
+00bf3a90	CEngineLandscapePatch	LoadHeader	PASS	CEngineLandscapePatch	LoadHeader	void	void	1	1		PASS	
+00bf3b60	CEngineLandscapePatch	LoadForegroundPatch	FAIL	CEngineLandscapePatch	LoadForegroundPatch	LS_LOADING_STATUS	LS_LOADING_STATUS __thiscall	1	2		REVIEW	explicit-parameter-count-mismatch
+00bf4130	CEngineLandscapePatch	LoadTextures	PASS	CEngineLandscapePatch	LoadTextures	bool	bool __thiscall	1	1		PASS	
+00bf4220	CEngineLandscapePatch	UpdateForeground	FAIL	CEngineLandscapePatch	UpdateForeground	LS_LOADING_STATUS	LS_LOADING_STATUS __thiscall	1	2		REVIEW	explicit-parameter-count-mismatch
+00bf4570	CEngineLandscapePatch	RenderForeground	FAIL	CEngineLandscapePatch	RenderForeground	void	void	0	0		PASS	
+00bf5c20	CEngineLandscapeRenderer	CEngineLandscapeRenderer::GetForegroundVertexShader	PASS	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	CVertexShader &	CVertexShader&	1	1		REVIEW	method-name-mismatch
+00bf5c60	CEngineLandscapeRenderer	CEngineLandscapeRenderer::GetForegroundSpotLightVertexShader	PASS	CEngineLandscapeRenderer	GetForegroundSpotLightVertexShader	CVertexShader &	class CVertexShader& __thiscall	1	1		PASS	
+00bf5ca0	CEngineLandscapeRenderer	CEngineLandscapeRenderer::GetForegroundShadowedVertexShader	PASS	CEngineLandscapeRenderer	GetForegroundBumpShadowedVertexShader	CVertexShader &	CVertexShader* __thiscall	1	1		REVIEW	method-name-mismatch;return-shape-mismatch
+00bf5cd0	CEngineLandscapeRenderer	CEngineLandscapeRenderer::GetForegroundBumpShadowedVertexShader	PASS	CEngineLandscapeRenderer	GetForegroundBumpShadowedVertexShader	CVertexShader &	class CVertexShader& __thiscall	1	1		PASS	
+00bf5d00	CEngineLandscapeRenderer	CEngineLandscapeRenderer::GetForegroundSpotShadowedVertexShader	PASS	CEngineLandscapeRenderer	GetForegroundBumpShadowedVertexShader	CVertexShader &	CVertexShader& __thiscall	1	1		REVIEW	method-name-mismatch
+00bf6720	CLandscapeBackgroundTreeNode	UpdateTesselation	PASS	CLandscapeBackgroundTreeNode	UpdateTesselation	void	void	0	0		PASS	
+00bf7400	CLandscapeBackgroundTreeNode	LoadHeader	PASS	CLandscapeBackgroundTreeNode	LoadHeader	void	void	1	1		PASS	
+00bf8810	CLandscapeBackgroundTreeNode	UpdateStaticLOD	PASS	CLandscapeBackgroundTreeNode	UpdateStaticLOD	LS_LOADING_STATUS	LS_LOADING_STATUS	3	3		PASS	
+00bfd420	CLandscapeLayerMesh	CLandscapeLayerMesh	PASS	LandscapeLayerMesh	CLandscapeLayerMesh	undefined	C	1	1	00bfd420;00bfddd0;00c3b900	REVIEW	owner-mismatch;duplicate-linkage-signature
+00bfddd0	CLandscapeLayerMesh	CLandscapeLayerMesh	PASS	LandscapeLayerMesh	CLandscapeLayerMesh	undefined	C	1	1	00bfd420;00bfddd0;00c3b900	REVIEW	owner-mismatch;duplicate-linkage-signature
+00bfe050	CLandscapeLayerMesh	LoadForeground	PASS	CLandscapeLayerMesh	LoadForeground	bool	bool	2	2		PASS	
+00c3b900	CLandscapeLayerMesh	CLandscapeLayerMesh	PASS			undefined		1	-1	00bfd420;00bfddd0;00c3b900	REVIEW	definition-not-parsed;duplicate-linkage-signature
+00caf580	CEngineLandscapePatch	CEngineLandscapePatch::Destructor	PASS			undefined		0	-1		REVIEW	definition-not-parsed
+00caf680	CEngineLandscapePatch	CEngineLandscapePatch::AllocateTask	PASS	CEngineLandscapePatch	AllocateTask	undefined	std::uint32_t __thiscall	0	11		REVIEW	explicit-parameter-count-mismatch

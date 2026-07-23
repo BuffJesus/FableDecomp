@@ -1,0 +1,1552 @@
+﻿
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* [ported from ego_r via strfp] */
+
+undefined4 __fastcall _GetSeat_CAIStateGroup_EatAtTable__IAE_NXZ(int *param_1)
+
+{
+  int *piVar1;
+  char cVar2;
+  int iVar3;
+  int *piVar4;
+  int iVar5;
+  undefined4 uVar6;
+  uint *puVar7;
+  float10 fVar8;
+  uint *puStack_14;
+  int *piStack_10;
+  int *piStack_c;
+  int iStack_8;
+  
+  iVar3 = (**(code **)(*param_1 + 0x38))();
+  if (((iVar3 == 0) || ((*(byte *)(iVar3 + 0xa1) & 1) != 0)) || ((*(uint *)(iVar3 + 0x24) & 2) == 0)
+     ) {
+    return 0;
+  }
+  puStack_14 = (uint *)&DAT_00000021;
+  _LowerBound___CVectorMap_W4ETCInterfaceType__PAVCTCBase__V__CKeyPairCompareLess_W4ETCInterfaceType__PAVCTCBase______QAE_AV___Vector_iterator_V__
+_Vector_val_U__pair_W4ETCInterfaceType__PAVCTCBase___std__V__allocator_U__pair_W4ETCInterfaceType__PAVCTCBase___std___2__std___std__ABW4ETCInterfa
+ceType___Z
+            (&piStack_10,&puStack_14);
+  if ((piStack_10 == *(int **)(iVar3 + 0x4c)) || (piVar4 = piStack_10, 0x21 < *piStack_10)) {
+    piVar4 = *(int **)(iVar3 + 0x4c);
+  }
+  iVar3 = piVar4[1];
+  iStack_8 = iVar3;
+  if ((*(uint *)(*(int *)(param_1[1] + 0x18) + 0x24) & 8) != 0) {
+    piStack_10 = (int *)&DAT_00000023;
+    _LowerBound___CVectorMap_W4ETCInterfaceType__PAVCTCBase__V__CKeyPairCompareLess_W4ETCInterfaceType__PAVCTCBase______QAE_AV___Vector_iterator_V
+___Vector_val_U__pair_W4ETCInterfaceType__PAVCTCBase___std__V__allocator_U__pair_W4ETCInterfaceType__PAVCTCBase___std___2__std___std__ABW4ETCInter
+faceType___Z
+              (&puStack_14,&piStack_10);
+    iVar5 = _GetPVillage_CTCVillageMember__QBEPAVCTCVillage__XZ();
+    if (iVar5 != 0) {
+      iVar5 = _GetPVillage_CTCVillageMember__QBEPAVCTCVillage__XZ();
+      piVar4 = *(int **)(iVar5 + 0x120);
+      if (piVar4 != (int *)0x0) {
+        piVar4[1] = piVar4[1] + 1;
+      }
+      param_1[0x12] = (int)(float)piVar4[0x2a];
+      piVar1 = piVar4 + 1;
+      *piVar1 = *piVar1 + -1;
+      if (*piVar1 == 0) {
+        (**(code **)(*piVar4 + 4))();
+      }
+      _GetPWorldSeed_CAIStateGroupBase__IBEPAKXZ();
+      param_1[0x12] = (int)(float)(fVar8 + (float10)(float)param_1[0x12]);
+    }
+  }
+  puVar7 = (uint *)**(uint **)(iVar3 + 0xc);
+  if (puVar7 != *(uint **)(iVar3 + 0xc)) {
+    do {
+      puStack_14 = puVar7;
+      iVar5 = _GetPItem_CBaseIntelligentPointer__QBEPAVCBaseObject__XZ();
+      if (((iVar5 != 0) &&
+          (iVar5 = _GetPItem_CBaseIntelligentPointer__QBEPAVCBaseObject__XZ(),
+          (*(byte *)(iVar5 + 0xa1) & 1) == 0)) &&
+         ((iVar5 = _GetPItem_CBaseIntelligentPointer__QBEPAVCBaseObject__XZ(),
+          (*(byte *)(iVar5 + 0xa1) & 0x20) == 0 &&
+          (iVar5 = _GetPItem_CBaseIntelligentPointer__QBEPAVCBaseObject__XZ(),
+          (*(uint *)(iVar5 + 0x34) & 0x1000000) != 0)))) {
+        piStack_10 = (int *)&DAT_000000b8;
+        _LowerBound___CVectorMap_W4ETCInterfaceType__PAVCTCBase__V__CKeyPairCompareLess_W4ETCInterfaceType__PAVCTCBase______QAE_AV___Vector_iterat
+or_V___Vector_val_U__pair_W4ETCInterfaceType__PAVCTCBase___std__V__allocator_U__pair_W4ETCInterfaceType__PAVCTCBase___std___2__std___std__ABW4ETCI
+nterfaceType___Z
+                  (&piStack_c,&piStack_10);
+        cVar2 = _GetEatingPoint_CTCTavernTable__QAE_NAAVCThing__AAVC3DVector__AAVCRightHandedSet__AAJ3_Z
+                          (*(undefined4 *)(param_1[1] + 0x18),param_1 + 9,param_1 + 0xc,param_1 + 8,
+                           param_1 + 7);
+        if ((cVar2 != '\0') ||
+           (cVar2 = _GetSeat_CTCTavernTable__QAE_NAAVCThing__AAVC3DVector__AAVCRightHandedSet__AAJ3PBVCCharString___Z
+                              (*(undefined4 *)(param_1[1] + 0x18),param_1 + 9,param_1 + 0xc,
+                               param_1 + 8,param_1 + 7,0), puVar7 = puStack_14, iVar3 = iStack_8,
+           cVar2 != '\0')) {
+          uVar6 = _GetPItem_CBaseIntelligentPointer__QBEPAVCBaseObject__XZ();
+          __0__CIntelligentPointer_VCThing____QAE_PAVCThing___Z(uVar6);
+          uVar6 = _GetPItem_CBaseIntelligentPointer__QBEPAVCBaseObject__XZ();
+          _SetPItem_CBaseIntelligentPointer__QAEXPAVCBaseObject___Z(uVar6);
+          __1CBaseIntelligentPointer__UAE_XZ();
+          return 1;
+        }
+      }
+      puVar7 = (uint *)*puVar7;
+      if (puVar7 == *(uint **)(iVar3 + 0xc)) {
+        return 0;
+      }
+    } while( true );
+  }
+  return 0;
+}
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* [ported from ego_r via strfp] */
+
+void __fastcall _Update_CAIStateGroup_EatAtTable__MAEXXZ(int param_1)
+
+{
+  int *piVar1;
+  char cVar2;
+  int iVar3;
+  int *piVar4;
+  undefined4 uVar5;
+  void *pvVar6;
+  undefined4 uVar7;
+  float10 fVar8;
+  int *local_c8;
+  int *local_c4;
+  int *piStack_c0;
+  
+  cVar2 = _GetSeat_CAIStateGroup_EatAtTable__IAE_NXZ();
+  if (cVar2 == '\0') {
+    _Terminate_CAIStateGroupBase__QAEXXZ();
+    return;
+  }
+  if ((*(uint *)(*(int *)(*(int *)(param_1 + 4) + 0x18) + 0x24) & 8) != 0) {
+    local_c8 = (int *)&DAT_00000023;
+    _LowerBound___CVectorMap_W4ETCInterfaceType__PAVCTCBase__V__CKeyPairCompareLess_W4ETCInterfaceType__PAVCTCBase______QAE_AV___Vector_iterator_V
+___Vector_val_U__pair_W4ETCInterfaceType__PAVCTCBase___std__V__allocator_U__pair_W4ETCInterfaceType__PAVCTCBase___std___2__std___std__ABW4ETCInter
+faceType___Z
+              (&local_c4,&local_c8);
+    iVar3 = _GetPVillage_CTCVillageMember__QBEPAVCTCVillage__XZ();
+    if (iVar3 != 0) {
+      iVar3 = _GetPVillage_CTCVillageMember__QBEPAVCTCVillage__XZ();
+      piVar4 = *(int **)(iVar3 + 0x120);
+      if (piVar4 != (int *)0x0) {
+        piVar4[1] = piVar4[1] + 1;
+      }
+      *(float *)(param_1 + 0x48) = (float)piVar4[0x2a];
+      piVar1 = piVar4 + 1;
+      *piVar1 = *piVar1 + -1;
+      if (*piVar1 == 0) {
+        (**(code **)(*piVar4 + 4))();
+      }
+      _GetPWorldSeed_CAIStateGroupBase__IBEPAKXZ();
+      *(float *)(param_1 + 0x48) = (float)(fVar8 + (float10)*(float *)(param_1 + 0x48));
+    }
+  }
+  iVar3 = _GetPItem_CBaseIntelligentPointer__QBEPAVCBaseObject__XZ();
+  piVar4 = local_c4;
+  if ((*(uint *)(iVar3 + 0x34) & 0x1000000) != 0) {
+    local_c4 = (int *)&DAT_000000b8;
+    _LowerBound___CVectorMap_W4ETCInterfaceType__PAVCTCBase__V__CKeyPairCompareLess_W4ETCInterfaceType__PAVCTCBase______QAE_AV___Vector_iterator_V
+___Vector_val_U__pair_W4ETCInterfaceType__PAVCTCBase___std__V__allocator_U__pair_W4ETCInterfaceType__PAVCTCBase___std___2__std___std__ABW4ETCInter
+faceType___Z
+              (&local_c8,&local_c4);
+    if ((local_c8 == *(int **)(iVar3 + 0x4c)) || (piVar4 = local_c8, 0xb8 < *local_c8)) {
+      piVar4 = *(int **)(iVar3 + 0x4c);
+    }
+    piVar4 = (int *)piVar4[1];
+  }
+  uVar5 = *(undefined4 *)(param_1 + 0x30);
+  *(undefined4 *)(piVar4[4] + *(int *)(param_1 + 0x1c) * 4) =
+       *(undefined4 *)(*(int *)(param_1 + 4) + 0x18);
+  cVar2 = _WalkTo_CAIStateGroup_EatAtTable__IAE_NVC3DVector__VCRightHandedSet___Z
+                    (*(undefined4 *)(param_1 + 0x24),*(undefined4 *)(param_1 + 0x28),
+                     *(undefined4 *)(param_1 + 0x2c),uVar5,*(undefined4 *)(param_1 + 0x34),
+                     *(undefined4 *)(param_1 + 0x38),*(undefined4 *)(param_1 + 0x3c),
+                     *(undefined4 *)(param_1 + 0x40),*(undefined4 *)(param_1 + 0x44));
+  if (cVar2 == '\0') {
+    _Terminate_CAIStateGroupBase__QAEXXZ();
+    return;
+  }
+  __0CCharString__QAE_PBDJ_Z("SIT_AT_TABLE_INTO",0xffffffff);
+  uVar5 = _GetAnimFromName_CThingCreatureBase__QBEABVCAnimationEntry__ABVCCharString__J_Z
+                    (&local_c8,0);
+  __1CCharString__QAE_XZ();
+  pvVar6 = operator_new(0x38);
+  if (pvVar6 == (void *)0x0) {
+    uVar7 = 0;
+  }
+  else {
+    uVar7 = __0CModeSitTavernStool_NCreatureMode__QAE_AAVCThing___Z
+                      (*(undefined4 *)(*(int *)(param_1 + 4) + 0x18));
+  }
+  __0__CCountedPointer_VCBase_NCameraModes____QAE_PAVCBase_NCameraModes___Z(uVar7);
+  if (piStack_c0 != (int *)0x0) {
+    *piStack_c0 = *piStack_c0 + 1;
+  }
+  uVar5 = __0CCreatureAction_SitDown__QAE_AAVCThingCreatureBase__ABVCAnimationEntry__V__CCountedPointer_VCModeSitBase_NCreatureMode_____Z
+                    (*(undefined4 *)(*(int *)(param_1 + 4) + 0x18),uVar5,local_c4,piStack_c0);
+  iVar3 = _AIAction_PerformAction_CAIStateGroupBase__IAE_AW4EAIActionReturn__ABVCCreatureActionBase___Z
+                    (uVar5);
+  __1CCreatureAction_SheatheItemToInventory__UAE_XZ();
+  if (iVar3 == 2) {
+    _SetSeatState_CTCTavernTable__QAEXJ_N_Z(*(undefined4 *)(param_1 + 0x1c),1);
+    do {
+      while (iVar3 = _GetFood_CTCTavernTable__QAEPAVCThingObject__J_Z
+                               (*(undefined4 *)(param_1 + 0x1c)), iVar3 != 0) {
+        cVar2 = _Eat_CAIStateGroup_EatAtTable__IAE_NPAVCThing___Z(iVar3);
+        if (cVar2 == '\0') goto LAB_00991c58;
+      }
+      iVar3 = _AIAction_DoNothing_CAIStateGroupBase__IAE_AW4EAIActionReturn__XZ();
+    } while (iVar3 == 4);
+  }
+LAB_00991c58:
+  _Terminate_CAIStateGroupBase__QAEXXZ();
+  __1__CCountedPointer_VCOptimisedPrimitive_QuadricOptimiserInternals____QAE_XZ();
+  return;
+}
+
+/* [ported from ego_r via strfp] */
+
+undefined4 * __thiscall
+_GetIconsDef_CManager_NUISystem__UAE_AV__CDefPointer_VCUIIconsDef_NUISystem____XZ
+          (int param_1,undefined4 *param_2)
+
+{
+  undefined4 uVar1;
+  int *piVar2;
+  int **ppiVar3;
+  int local_c;
+  int *local_8;
+  
+  local_8 = (int *)0x0;
+  local_c = param_1;
+  if (*(int *)(param_1 + 0x88) == 0) {
+    __0CCharString__QAE_PBDJ_Z("UI_ICONS_DEF",0xffffffff);
+    uVar1 = 1;
+    piVar2 = &local_c;
+    _Get_CGameDefinitionManager__SIAAV1_XZ(piVar2,1);
+    __1CCharString__QAE_XZ();
+    ppiVar3 = &local_8;
+    _Get_CGameDefinitionManager__SIAAV1_XZ(uVar1,ppiVar3);
+    ___GetDef_VCSpecialAbilitiesDrunkennessDef___CDefinitionManager__QBE_NJPAV__CDefPointer___CBVCSpecialAbilitiesDrunkennessDef_____Z
+              (uVar1,ppiVar3);
+  }
+  else {
+    __0CCharString__QAE_PBDJ_Z("UI_ICONS_DEF",0xffffffff);
+    __1CCharString__QAE_XZ();
+    ___GetDef_VCSpecialAbilitiesDrunkennessDef___CDefinitionManager__QBE_NJPAV__CDefPointer___CBVCSpecialAbilitiesDrunkennessDef_____Z
+              (uVar1,&local_8);
+  }
+  *param_2 = local_8;
+  if (local_8 != (int *)0x0) {
+    local_8[1] = local_8[1] + 1;
+    piVar2 = local_8 + 1;
+    *piVar2 = *piVar2 + -1;
+    if (*piVar2 == 0) {
+      (**(code **)(*local_8 + 4))();
+    }
+  }
+  return param_2;
+}
+
+/* [ported from ego_r via strfp] */
+
+void _MergeSubMeshes_C3DMeshUtil__QAEXAAVC3DMeshFile___Z(int param_1)
+
+{
+  int *piVar1;
+  void *pvVar2;
+  char cVar3;
+  undefined4 uVar4;
+  char *pcVar5;
+  char *pcVar6;
+  char **ppcVar7;
+  int *piVar8;
+  undefined4 *puVar9;
+  int iVar10;
+  int iVar11;
+  uint uVar12;
+  void *pvVar13;
+  _Container_base0 *this;
+  char *local_120;
+  int *local_11c;
+  char *local_118;
+  int *local_114;
+  char *local_110;
+  int *local_10c;
+  char *local_108;
+  int *local_104;
+  int *local_100;
+  char *local_fc;
+  int *local_f8;
+  char *local_f4;
+  int *local_f0;
+  int local_ec;
+  int *local_e8;
+  int local_e4;
+  int *local_e0;
+  undefined4 local_dc;
+  int *local_d8;
+  int local_d4;
+  int local_d0;
+  int local_cc;
+  undefined1 local_c8 [4];
+  undefined1 local_c4 [4];
+  int local_c0;
+  int local_bc;
+  int local_b8;
+  undefined1 local_b4 [4];
+  void *local_b0;
+  int local_ac;
+  int local_a8;
+  undefined1 local_a4 [4];
+  void *local_a0;
+  void *local_9c;
+  int local_98;
+  undefined1 local_94 [4];
+  void *local_90;
+  int local_8c;
+  int local_88;
+  undefined1 local_84 [8];
+  char *local_7c;
+  undefined4 local_78;
+  _Container_base0 *local_70;
+  _Container_base0 *local_6c;
+  undefined4 local_68;
+  int local_60;
+  int *local_5c;
+  char *local_58;
+  int *local_54;
+  int local_50;
+  int *local_4c;
+  undefined4 local_48;
+  int *local_44;
+  exception local_40;
+  undefined4 local_34;
+  int *local_30;
+  undefined4 local_2c;
+  int *local_28;
+  undefined4 local_24;
+  int *local_20;
+  char *local_1c;
+  char *local_10;
+  char *local_c [2];
+  
+  uVar4 = *(undefined4 *)(param_1 + 4);
+  piVar1 = *(int **)(param_1 + 8);
+  local_48 = 0;
+  local_44 = (int *)0x0;
+  if (piVar1 != (int *)0x0) {
+    *piVar1 = *piVar1 + 1;
+    *piVar1 = *piVar1 + 1;
+    *piVar1 = *piVar1 + -1;
+    local_48 = uVar4;
+    local_44 = piVar1;
+    if (*piVar1 == 0) {
+      (*(code *)piVar1[1])();
+                    /* WARNING: Subroutine does not return */
+      operator_delete(piVar1);
+    }
+  }
+  uVar4 = _CountSubChunksOfType_CChunkedFileSuperChunk__QBEKPBD_Z(&DAT_010c29bc);
+  local_c0 = 0;
+  local_bc = 0;
+  local_b8 = 0;
+  local_d4 = 0;
+  local_d0 = 0;
+  local_cc = 0;
+  local_78 = 0;
+  local_7c = operator_new(0x18);
+  if (local_7c == (char *)0x0) {
+    local_108 = (char *)0x0;
+    std::exception::exception(&local_40,&local_108);
+    local_40._padding_ = (int)std::bad_alloc::vftable;
+                    /* WARNING: Subroutine does not return */
+    _CxxThrowException(&local_40,(ThrowInfo *)&DAT_0118ef34);
+  }
+  *(char **)local_7c = local_7c;
+  *(char **)(local_7c + 4) = local_7c;
+  *(char **)(local_7c + 8) = local_7c;
+  local_7c[0x14] = '\x01';
+  local_7c[0x15] = '\x01';
+  local_70 = (_Container_base0 *)0x0;
+  local_6c = (_Container_base0 *)0x0;
+  local_68 = 0;
+  _reserve___vector_V__CArray_K__V__allocator_V__CArray_K___std___std__QAEXI_Z(uVar4);
+  _FindFirstSubMesh_C3DMeshFileRootChunk__QAE_AV__CCountedPointer_VC3DMeshFileSubMeshChunk____XZ
+            (&local_110);
+  do {
+    if (local_110 == (char *)0x0) {
+      cVar3 = _HasHelpers_C3DMeshFileRootChunk__QBE_NXZ();
+      if (cVar3 != '\0') {
+        _GetHelpers_C3DMeshFileRootChunk__QAE_AV__CCountedPointer_VC3DMeshFileHelpersChunk____XZ
+                  (&local_dc);
+        _FindFirstPoint_C3DMeshFileHelpersChunk__QAE_AV__CCountedPointer_VC3DMeshFileHelperPointChunk____XZ
+                  (&local_108);
+        while (local_108 != (char *)0x0) {
+          if (*(int *)(local_108 + 0x44) != -1) {
+            _SetBoneIndex_C3DMeshFileHelperPointChunk__QAEXJ_Z
+                      (*(undefined4 *)
+                        (*(int *)(local_70 + *(int *)(local_108 + 0x40) * 0x10) +
+                        *(int *)(local_108 + 0x44) * 4));
+            _SetSubMeshIndex_C3DMeshFileHelperPointChunk__QAEXJ_Z(0);
+          }
+          local_118 = local_108;
+          if (local_104 != (int *)0x0) {
+            *local_104 = *local_104 + 1;
+          }
+          local_114 = local_104;
+          puVar9 = (undefined4 *)
+                   _FindNextPoint_C3DMeshFileHelpersChunk__QAE_AV__CCountedPointer_VC3DMeshFileHelperPointChunk____ABV__CCountedPointer___CBVC3DMe
+shFileHelperPointChunk_____Z
+                             (&local_fc,&local_118);
+          piVar1 = (int *)puVar9[1];
+          pcVar6 = (char *)*puVar9;
+          if (local_104 != piVar1) {
+            if ((local_104 != (int *)0x0) && (*local_104 = *local_104 + -1, *local_104 == 0)) {
+              (*(code *)local_104[1])();
+                    /* WARNING: Subroutine does not return */
+              operator_delete(local_104);
+            }
+            local_108 = pcVar6;
+            local_104 = piVar1;
+            if (piVar1 != (int *)0x0) {
+              *piVar1 = *piVar1 + 1;
+            }
+          }
+          if ((local_f8 != (int *)0x0) && (*local_f8 = *local_f8 + -1, *local_f8 == 0)) {
+            (*(code *)local_f8[1])();
+                    /* WARNING: Subroutine does not return */
+            operator_delete(local_f8);
+          }
+          local_fc = (char *)0x0;
+          local_f8 = (int *)0x0;
+          if ((local_114 != (int *)0x0) && (*local_114 = *local_114 + -1, *local_114 == 0)) {
+            (*(code *)local_114[1])();
+                    /* WARNING: Subroutine does not return */
+            operator_delete(local_114);
+          }
+          local_118 = (char *)0x0;
+          local_114 = (int *)0x0;
+        }
+        _FindFirstDummy_C3DMeshFileHelpersChunk__QAE_AV__CCountedPointer_VC3DMeshFileDummyObjectChunk____XZ
+                  (&local_120);
+        while (local_120 != (char *)0x0) {
+          if (*(int *)(local_120 + 0x44) != -1) {
+            _SetBoneIndex_C3DMeshFileHelperPointChunk__QAEXJ_Z
+                      (*(undefined4 *)
+                        (*(int *)(local_70 + *(int *)(local_120 + 0x40) * 0x10) +
+                        *(int *)(local_120 + 0x44) * 4));
+            _SetSubMeshIndex_C3DMeshFileHelperPointChunk__QAEXJ_Z(0);
+          }
+          local_118 = local_120;
+          if (local_11c != (int *)0x0) {
+            *local_11c = *local_11c + 1;
+          }
+          local_114 = local_11c;
+          piVar8 = (int *)_FindNextDummy_C3DMeshFileHelpersChunk__QAE_AV__CCountedPointer_VC3DMeshFileDummyObjectChunk____ABV__CCountedPointer___C
+BVC3DMeshFileDummyObjectChunk_____Z
+                                    (&local_fc,&local_118);
+          piVar1 = (int *)piVar8[1];
+          pcVar6 = (char *)*piVar8;
+          if (local_11c != piVar1) {
+            if ((local_11c != (int *)0x0) && (*local_11c = *local_11c + -1, *local_11c == 0)) {
+              (*(code *)local_11c[1])();
+                    /* WARNING: Subroutine does not return */
+              operator_delete(local_11c);
+            }
+            local_120 = pcVar6;
+            local_11c = piVar1;
+            if (piVar1 != (int *)0x0) {
+              *piVar1 = *piVar1 + 1;
+            }
+          }
+          if ((local_f8 != (int *)0x0) && (*local_f8 = *local_f8 + -1, *local_f8 == 0)) {
+            (*(code *)local_f8[1])();
+                    /* WARNING: Subroutine does not return */
+            operator_delete(local_f8);
+          }
+          local_fc = (char *)0x0;
+          local_f8 = (int *)0x0;
+          if ((local_114 != (int *)0x0) && (*local_114 = *local_114 + -1, *local_114 == 0)) {
+            (*(code *)local_114[1])();
+                    /* WARNING: Subroutine does not return */
+            operator_delete(local_114);
+          }
+          local_118 = (char *)0x0;
+          local_114 = (int *)0x0;
+        }
+        if ((local_11c != (int *)0x0) && (*local_11c = *local_11c + -1, *local_11c == 0)) {
+          (*(code *)local_11c[1])();
+                    /* WARNING: Subroutine does not return */
+          operator_delete(local_11c);
+        }
+        local_120 = (char *)0x0;
+        local_11c = (int *)0x0;
+        if ((local_104 != (int *)0x0) && (*local_104 = *local_104 + -1, *local_104 == 0)) {
+          (*(code *)local_104[1])();
+                    /* WARNING: Subroutine does not return */
+          operator_delete(local_104);
+        }
+        local_108 = (char *)0x0;
+        local_104 = (int *)0x0;
+        if ((local_d8 != (int *)0x0) && (*local_d8 = *local_d8 + -1, *local_d8 == 0)) {
+          (*(code *)local_d8[1])();
+                    /* WARNING: Subroutine does not return */
+          operator_delete(local_d8);
+        }
+      }
+      piVar1 = *(int **)(param_1 + 8);
+      piVar8 = (int *)0x0;
+      if (piVar1 != (int *)0x0) {
+        *piVar1 = *piVar1 + 1;
+        *piVar1 = *piVar1 + 1;
+        *piVar1 = *piVar1 + -1;
+        piVar8 = piVar1;
+        if (*piVar1 == 0) {
+          (*(code *)piVar1[1])();
+                    /* WARNING: Subroutine does not return */
+          operator_delete(piVar1);
+        }
+      }
+      _RemoveSubChunksOfType_CChunkedFileSuperChunk__QAEXPBD_Z(&DAT_010c29bc);
+      if ((piVar8 != (int *)0x0) && (*piVar8 = *piVar8 + -1, *piVar8 == 0)) {
+        (*(code *)piVar8[1])();
+                    /* WARNING: Subroutine does not return */
+        operator_delete(piVar8);
+      }
+      pvVar13 = operator_new(0x48);
+      if (pvVar13 == (void *)0x0) {
+        pcVar6 = (char *)0x0;
+      }
+      else {
+        pcVar6 = (char *)__0C3DMeshFileSubMeshChunk__QAE_XZ();
+      }
+      if ((local_10c != (int *)0x0) && (*local_10c = *local_10c + -1, *local_10c == 0)) {
+        (*(code *)local_10c[1])();
+                    /* WARNING: Subroutine does not return */
+        operator_delete(local_10c);
+      }
+      local_10c = (int *)0x0;
+      local_110 = pcVar6;
+      if (pcVar6 != (char *)0x0) {
+        local_10c = operator_new(0xc);
+        if (local_10c == (int *)0x0) {
+          local_10c = (int *)0x0;
+        }
+        else {
+          *local_10c = 1;
+          local_10c[1] = (int)_DeleteData___CCountedPointer_VCEditTransactionBase____SIXPAX_Z;
+          local_10c[2] = (int)local_110;
+        }
+      }
+      __0CCharString__QAE_PBDJ_Z("Merged",0xffffffff);
+      _SetName_C3DMeshFileSubMeshChunk__QAEXABVCCharString___Z(local_c4);
+      __1CCharString__QAE_XZ();
+      _SetSubMeshIndex_C3DMeshFileSubMeshChunk__QAEXJ_Z(0);
+      local_fc = local_110;
+      local_f8 = local_10c;
+      if (local_10c != (int *)0x0) {
+        *local_10c = *local_10c + 1;
+      }
+      piVar1 = *(int **)(param_1 + 8);
+      iVar11 = *(int *)(param_1 + 4);
+      local_40._padding_ = 0;
+      piVar8 = (int *)0x0;
+      if (piVar1 != (int *)0x0) {
+        *piVar1 = *piVar1 + 1;
+        *piVar1 = *piVar1 + 1;
+        *piVar1 = *piVar1 + -1;
+        piVar8 = piVar1;
+        local_40._padding_ = iVar11;
+        if (*piVar1 == 0) {
+          (*(code *)piVar1[1])();
+                    /* WARNING: Subroutine does not return */
+          operator_delete(piVar1);
+        }
+      }
+      _AddSubChunk_CChunkedFileSuperChunk__QAEXABV__CCountedPointer_VCChunkedFileChunk_____Z
+                (&local_fc);
+      if ((piVar8 != (int *)0x0) && (*piVar8 = *piVar8 + -1, *piVar8 == 0)) {
+        (*(code *)piVar8[1])();
+                    /* WARNING: Subroutine does not return */
+        operator_delete(piVar8);
+      }
+      if ((local_f8 != (int *)0x0) && (*local_f8 = *local_f8 + -1, *local_f8 == 0)) {
+        (*(code *)local_f8[1])();
+                    /* WARNING: Subroutine does not return */
+        operator_delete(local_f8);
+      }
+      uVar12 = 0;
+      if (local_bc - local_c0 >> 3 != 0) {
+        do {
+          local_118 = *(char **)(local_c0 + uVar12 * 8);
+          local_114 = *(int **)(local_c0 + 4 + uVar12 * 8);
+          if (local_114 != (int *)0x0) {
+            *local_114 = *local_114 + 1;
+          }
+          _AddSubChunk_CChunkedFileSuperChunk__QAEXABV__CCountedPointer_VCChunkedFileChunk_____Z
+                    (&local_118);
+          if ((local_114 != (int *)0x0) && (*local_114 = *local_114 + -1, *local_114 == 0)) {
+            (*(code *)local_114[1])();
+                    /* WARNING: Subroutine does not return */
+            operator_delete(local_114);
+          }
+          uVar12 = uVar12 + 1;
+          local_118 = (char *)0x0;
+          local_114 = (int *)0x0;
+        } while (uVar12 < (uint)(local_bc - local_c0 >> 3));
+      }
+      uVar12 = 0;
+      if (local_d0 - local_d4 >> 3 != 0) {
+        do {
+          local_118 = *(char **)(local_d4 + uVar12 * 8);
+          local_114 = *(int **)(local_d4 + 4 + uVar12 * 8);
+          if (local_114 != (int *)0x0) {
+            *local_114 = *local_114 + 1;
+          }
+          _AddSubChunk_CChunkedFileSuperChunk__QAEXABV__CCountedPointer_VCChunkedFileChunk_____Z
+                    (&local_118);
+          if ((local_114 != (int *)0x0) && (*local_114 = *local_114 + -1, *local_114 == 0)) {
+            (*(code *)local_114[1])();
+                    /* WARNING: Subroutine does not return */
+            operator_delete(local_114);
+          }
+          uVar12 = uVar12 + 1;
+          local_118 = (char *)0x0;
+          local_114 = (int *)0x0;
+        } while (uVar12 < (uint)(local_d0 - local_d4 >> 3));
+      }
+      if ((local_10c != (int *)0x0) && (*local_10c = *local_10c + -1, *local_10c == 0)) {
+        (*(code *)local_10c[1])();
+                    /* WARNING: Subroutine does not return */
+        operator_delete(local_10c);
+      }
+      local_110 = (char *)0x0;
+      local_10c = (int *)0x0;
+      if (local_70 == (_Container_base0 *)0x0) {
+        local_70 = (_Container_base0 *)0x0;
+        local_6c = (_Container_base0 *)0x0;
+        local_68 = 0;
+        _erase____Tree_V___Tmap_traits_VCCharString__W4EGameAction__U__less_VCCharString___std__V__allocator_U__pair___CBVCCharString__W4EGameActi
+on___std___4__0A__std___std__QAE_AV___Tree_iterator_V___Tree_val_V___Tmap_traits_VCCharString__W4EGameAction__U__less_VCCharString___std__V__alloc
+ator_U__pair___CBVCCharString__W4EGameAction___std___4__0A__std___std___2_V___Tree_const_iterator_V___Tree_val_V___Tmap_traits_VCCharString__W4EGa
+meAction__U__less_VCCharString___std__V__allocator_U__pair___CBVCCharString__W4EGameAction___std___4__0A__std___std___2_0_Z
+                  (&local_108,*(undefined4 *)local_7c,local_7c);
+                    /* WARNING: Subroutine does not return */
+        operator_delete(local_7c);
+      }
+      std::_Container_base0::_Orphan_all((_Container_base0 *)&local_70);
+      this = local_70;
+      while( true ) {
+        if (this == local_6c) {
+                    /* WARNING: Subroutine does not return */
+          operator_delete(local_70);
+        }
+        if (*(int *)this != 0) break;
+        *(undefined4 *)this = 0;
+        *(undefined4 *)(this + 4) = 0;
+        *(undefined4 *)(this + 8) = 0;
+        this = this + 0x10;
+      }
+      std::_Container_base0::_Orphan_all(this);
+                    /* WARNING: Subroutine does not return */
+      operator_delete(*(void **)this);
+    }
+    uVar4 = _CountSubChunksOfType_CChunkedFileSuperChunk__QBEKPBD_Z(&DAT_010c2540);
+    _push_back___CArray_V__CArray_K____QAEXXZ();
+    _reserve___vector_KV__allocator_K_std___std__QAEXI_Z(uVar4);
+    local_90 = (void *)0x0;
+    local_8c = 0;
+    local_88 = 0;
+    local_a0 = (void *)0x0;
+    local_9c = (void *)0x0;
+    local_98 = 0;
+    _reserve___vector_VCCombatAction__V__allocator_VCCombatAction___std___std__QAEXI_Z(uVar4);
+    _reserve___vector_VCCharString__V__allocator_VCCharString___std___std__QAEXI_Z(uVar4);
+    _FindFirstBone_C3DMeshFileSubMeshChunk__QAE_AV__CCountedPointer_VC3DMeshFileBoneChunk____XZ
+              (&local_120);
+    while (local_120 != (char *)0x0) {
+      iVar11 = *(int *)(local_120 + 0x38);
+      if (iVar11 != -1) {
+        local_f4 = local_7c;
+        if ((*(char **)(local_7c + 4))[0x15] == '\0') {
+          local_f0 = *(int **)((int)local_a0 + iVar11 * 4);
+          pcVar6 = *(char **)(local_7c + 4);
+          do {
+            piVar1 = *(int **)(pcVar6 + 0xc);
+            if (local_f0 == piVar1) {
+LAB_00c2dcb4:
+              pcVar5 = *(char **)pcVar6;
+              local_f4 = pcVar6;
+            }
+            else {
+              if (piVar1 != (int *)0x0) {
+                if (local_f0 != (int *)0x0) {
+                  pcVar5 = (char *)*local_f0;
+                  iVar10 = *piVar1 - (int)pcVar5;
+                  while( true ) {
+                    cVar3 = pcVar5[iVar10];
+                    if ((cVar3 == '\0') && (*pcVar5 == '\0')) {
+                      iVar10 = 0;
+                      goto LAB_00c2dca6;
+                    }
+                    if (cVar3 < *pcVar5) {
+                      iVar10 = -1;
+                      goto LAB_00c2dca6;
+                    }
+                    if (*pcVar5 < cVar3) break;
+                    pcVar5 = pcVar5 + 1;
+                  }
+                  iVar10 = 1;
+LAB_00c2dca6:
+                  if (iVar10 < 0) goto LAB_00c2dcaf;
+                }
+                goto LAB_00c2dcb4;
+              }
+LAB_00c2dcaf:
+              pcVar5 = *(char **)(pcVar6 + 8);
+            }
+            pcVar6 = pcVar5;
+          } while (pcVar5[0x15] == '\0');
+        }
+        if (local_f4 == local_7c) {
+LAB_00c2dd03:
+          local_c[0] = local_7c;
+          ppcVar7 = local_c;
+        }
+        else {
+          iVar11 = *(int *)((int)local_a0 + iVar11 * 4);
+          iVar10 = *(int *)(local_f4 + 0xc);
+          if ((iVar10 != iVar11) &&
+             ((iVar11 == 0 ||
+              ((iVar10 != 0 && (cVar3 = __M__CBasicString_D__QBE_NABV0__Z(iVar10), cVar3 != '\0'))))
+             )) goto LAB_00c2dd03;
+          ppcVar7 = &local_f4;
+        }
+        iVar11 = *(int *)(*ppcVar7 + 0x10);
+      }
+      _SetParentIndex_C3DMeshFileBoneChunk__QAEXJ_Z(iVar11);
+      __0CCharString__QAE_ABV0__Z(local_120 + 0x74);
+      uVar4 = _GFIntToCharString__YI_AVCCharString__J_Z();
+      __H_YI_AVCCharString__ABV0_PBD_Z(&DAT_010272d8);
+      __H_YI_AVCCharString__ABV0_0_Z(uVar4);
+      __1CCharString__QAE_XZ();
+      __1CCharString__QAE_XZ();
+      __1CCharString__QAE_XZ();
+      piVar1 = local_100;
+      local_1c = *(char **)(local_7c + 4);
+      cVar3 = local_1c[0x15];
+      pcVar6 = local_1c;
+      local_f4 = local_7c;
+      while (pcVar5 = pcVar6, cVar3 == '\0') {
+        piVar8 = *(int **)(pcVar5 + 0xc);
+        if (local_100 == piVar8) {
+LAB_00c2ddf2:
+          pcVar6 = *(char **)pcVar5;
+        }
+        else {
+          if (piVar8 != (int *)0x0) {
+            if (local_100 != (int *)0x0) {
+              pcVar6 = (char *)*local_100;
+              iVar11 = *piVar8 - (int)pcVar6;
+              while( true ) {
+                cVar3 = pcVar6[iVar11];
+                if ((cVar3 == '\0') && (*pcVar6 == '\0')) {
+                  iVar11 = 0;
+                  goto LAB_00c2dde4;
+                }
+                if (cVar3 < *pcVar6) {
+                  iVar11 = -1;
+                  goto LAB_00c2dde4;
+                }
+                if (*pcVar6 < cVar3) break;
+                pcVar6 = pcVar6 + 1;
+              }
+              iVar11 = 1;
+LAB_00c2dde4:
+              if (iVar11 < 0) goto LAB_00c2dded;
+            }
+            goto LAB_00c2ddf2;
+          }
+LAB_00c2dded:
+          pcVar6 = *(char **)(pcVar5 + 8);
+          pcVar5 = local_f4;
+        }
+        cVar3 = pcVar6[0x15];
+        local_f4 = pcVar5;
+      }
+      if ((local_f4 == local_7c) ||
+         ((piVar8 = *(int **)(local_f4 + 0xc), piVar8 != local_100 &&
+          ((local_100 == (int *)0x0 ||
+           ((piVar8 != (int *)0x0 &&
+            (cVar3 = __M__CBasicString_D__QBE_NABV0__Z(piVar8), cVar3 != '\0')))))))) {
+        local_10 = local_7c;
+        ppcVar7 = &local_10;
+      }
+      else {
+        ppcVar7 = &local_f4;
+      }
+      if (*ppcVar7 == local_7c) {
+        local_f0 = (int *)(local_d0 - local_d4 >> 3);
+        cVar3 = local_1c[0x15];
+        pcVar6 = local_7c;
+        local_f4 = local_1c;
+        while (cVar3 == '\0') {
+          piVar8 = *(int **)(local_f4 + 0xc);
+          if (piVar1 == piVar8) {
+LAB_00c2ded2:
+            pcVar5 = *(char **)local_f4;
+          }
+          else {
+            if (piVar8 != (int *)0x0) {
+              if (local_100 != (int *)0x0) {
+                pcVar5 = (char *)*local_100;
+                iVar11 = *piVar8 - (int)pcVar5;
+                while( true ) {
+                  cVar3 = pcVar5[iVar11];
+                  if ((cVar3 == '\0') && (*pcVar5 == '\0')) {
+                    iVar11 = 0;
+                    goto LAB_00c2dec4;
+                  }
+                  if (cVar3 < *pcVar5) {
+                    iVar11 = -1;
+                    goto LAB_00c2dec4;
+                  }
+                  if (*pcVar5 < cVar3) break;
+                  pcVar5 = pcVar5 + 1;
+                }
+                iVar11 = 1;
+LAB_00c2dec4:
+                if (iVar11 < 0) goto LAB_00c2decd;
+              }
+              goto LAB_00c2ded2;
+            }
+LAB_00c2decd:
+            pcVar5 = *(char **)(local_f4 + 8);
+            local_f4 = pcVar6;
+          }
+          piVar1 = local_100;
+          pcVar6 = local_f4;
+          local_f4 = pcVar5;
+          cVar3 = pcVar5[0x15];
+        }
+        local_f4 = pcVar6;
+        if ((pcVar6 == local_7c) ||
+           ((piVar1 = *(int **)(pcVar6 + 0xc), piVar1 != local_100 &&
+            ((local_100 == (int *)0x0 ||
+             ((piVar1 != (int *)0x0 &&
+              (cVar3 = __M__CBasicString_D__QBE_NABV0__Z(piVar1), cVar3 != '\0')))))))) {
+          __0CCharString__QAE_ABV0__Z(&local_100);
+          local_40._Mywhat = (char *)0x0;
+          uVar4 = ____Buynode_AAU__pair___CBVCCharString__J_std______Tree_val_V___Tmap_traits_VCCharString__JU__less_VCCharString___std__V__alloca
+tor_U__pair___CBVCCharString__J_std___3__00_std___std__QAEPAU_Node____Tree_nod_V___Tmap_traits_VCCharString__JU__less_VCCharString___std__V__alloc
+ator_U__pair___CBVCCharString__J_std___3__00_std___1_AAU__pair___CBVCCharString__J_1__Z
+                            (&local_40);
+          __Insert____Tree_V___Tmap_traits_VCCharString__W4EScriptActiveStatus__U__less_VCCharString___std__V__allocator_U__pair___CBVCCharString_
+_W4EScriptActiveStatus___std___4__0A__std___std__QAE_AV___Tree_iterator_V___Tree_val_V___Tmap_traits_VCCharString__W4EScriptActiveStatus__U__less_
+VCCharString___std__V__allocator_U__pair___CBVCCharString__W4EScriptActiveStatus___std___4__0A__std___std___2_V___Tree_const_iterator_V___Tree_val
+_V___Tmap_traits_VCCharString__W4EScriptActiveStatus__U__less_VCCharString___std__V__allocator_U__pair___CBVCCharString__W4EScriptActiveStatus___s
+td___4__0A__std___std___2_PAU_Node____Tree_nod_V___Tmap_traits_VCCharString__W4EScriptActiveStatus__U__less_VCCharString___std__V__allocator_U__pa
+ir___CBVCCharString__W4EScriptActiveStatus___std___4__0A__std___2__Z
+                    (&local_108,pcVar6,uVar4);
+          pcVar6 = local_108;
+          __1CCharString__QAE_XZ();
+        }
+        iVar11 = local_d0;
+        *(int **)(pcVar6 + 0x10) = local_f0;
+        if ((uint)(local_d0 - local_d4 >> 3) < (uint)(local_cc - local_d4 >> 3)) {
+          ____Uninit_fill_n_PAV__CCountedPointer_VCBoneInfo_N3DAnimationUtil____IV1_V__allocator_V__CCountedPointer_VCBoneInfo_N3DAnimationUtil___
+__std__V1__std__YIXPAV__CCountedPointer_VCBoneInfo_N3DAnimationUtil____IPBV1_AAV__allocator_V__CCountedPointer_VCBoneInfo_N3DAnimationUtil_____0_0
+U_Nonscalar_ptr_iterator_tag_0__Z
+                    (&local_120,local_c8,0,local_108);
+          local_d0 = iVar11 + 8;
+        }
+        else {
+          __Insert_n___vector_V__CCountedPointer_VC3DGroup2____V__allocator_V__CCountedPointer_VC3DGroup2_____std___std__IAEXV___Vector_const_iter
+ator_V___Vector_val_V__CCountedPointer_VC3DGroup2____V__allocator_V__CCountedPointer_VC3DGroup2_____std___std___2_IABV__CCountedPointer_VC3DGroup2
+_____Z
+                    (local_d0,1,&local_120);
+        }
+      }
+      else {
+        local_f0 = *(int **)(*ppcVar7 + 0x10);
+      }
+      local_58 = local_120;
+      local_54 = local_11c;
+      if (local_11c != (int *)0x0) {
+        *local_11c = *local_11c + 1;
+      }
+      piVar8 = (int 
+*)_FindNextBone_C3DMeshFileSubMeshChunk__QAE_AV__CCountedPointer_VC3DMeshFileBoneChunk____ABV__CCountedPointer___CBVC3DMeshFileBoneChunk_____Z
+                                (&local_2c,&local_58);
+      iVar11 = local_8c;
+      piVar1 = (int *)piVar8[1];
+      pcVar6 = (char *)*piVar8;
+      if (local_11c != piVar1) {
+        if ((local_11c != (int *)0x0) && (*local_11c = *local_11c + -1, *local_11c == 0)) {
+          (*(code *)local_11c[1])();
+                    /* WARNING: Subroutine does not return */
+          operator_delete(local_11c);
+        }
+        local_120 = pcVar6;
+        local_11c = piVar1;
+        if (piVar1 != (int *)0x0) {
+          *piVar1 = *piVar1 + 1;
+        }
+      }
+      if ((local_28 != (int *)0x0) && (*local_28 = *local_28 + -1, *local_28 == 0)) {
+        (*(code *)local_28[1])();
+                    /* WARNING: Subroutine does not return */
+        operator_delete(local_28);
+      }
+      local_2c = 0;
+      local_28 = (int *)0x0;
+      if ((local_54 != (int *)0x0) && (*local_54 = *local_54 + -1, *local_54 == 0)) {
+        (*(code *)local_54[1])();
+                    /* WARNING: Subroutine does not return */
+        operator_delete(local_54);
+      }
+      local_58 = (char *)0x0;
+      local_54 = (int *)0x0;
+      if ((uint)(local_8c - (int)local_90 >> 3) < (uint)(local_88 - (int)local_90 >> 3)) {
+        ____Uninit_fill_n_PAV__CCountedPointer_VCBoneInfo_N3DAnimationUtil____IV1_V__allocator_V__CCountedPointer_VCBoneInfo_N3DAnimationUtil_____
+std__V1__std__YIXPAV__CCountedPointer_VCBoneInfo_N3DAnimationUtil____IPBV1_AAV__allocator_V__CCountedPointer_VCBoneInfo_N3DAnimationUtil_____0_0U_
+Nonscalar_ptr_iterator_tag_0__Z
+                  (&local_120,local_84,0,local_108);
+        local_8c = iVar11 + 8;
+      }
+      else {
+        __Insert_n___vector_V__CCountedPointer_VC3DGroup2____V__allocator_V__CCountedPointer_VC3DGroup2_____std___std__IAEXV___Vector_const_iterat
+or_V___Vector_val_V__CCountedPointer_VC3DGroup2____V__allocator_V__CCountedPointer_VC3DGroup2_____std___std___2_IABV__CCountedPointer_VC3DGroup2__
+___Z
+                  (local_8c,1,&local_120);
+      }
+      pvVar13 = local_9c;
+      if ((uint)((int)local_9c - (int)local_a0 >> 2) < (uint)(local_98 - (int)local_a0 >> 2)) {
+        ____Uninit_fill_n_PAVCCharString__IV1_V__allocator_VCCharString___std__V1__std__YIXPAVCCharString__IPBV1_AAV__allocator_VCCharString___0_0
+U_Nonscalar_ptr_iterator_tag_0__Z
+                  (&local_100,local_94,0,local_108);
+        local_9c = (void *)((int)pvVar13 + 4);
+      }
+      else {
+        __Insert_n___vector_VCCharString__V__allocator_VCCharString___std___std__IAEXV___Vector_const_iterator_V___Vector_val_VCCharString__V__all
+ocator_VCCharString___std___std___2_IABVCCharString___Z
+                  (local_9c,1,&local_100);
+      }
+      puVar9 = *(undefined4 **)(local_6c + -0xc);
+      if ((uint)((int)puVar9 - *(int *)(local_6c + -0x10) >> 2) <
+          (uint)(*(int *)(local_6c + -8) - *(int *)(local_6c + -0x10) >> 2)) {
+        *puVar9 = local_f0;
+        *(undefined4 **)(local_6c + -0xc) = puVar9 + 1;
+      }
+      else {
+        __Insert_n___vector_PAVCHeader_CHandleBasedMemoryPool__V__allocator_PAVCHeader_CHandleBasedMemoryPool___std___std__IAEXV___Vector_const_it
+erator_V___Vector_val_PAVCHeader_CHandleBasedMemoryPool__V__allocator_PAVCHeader_CHandleBasedMemoryPool___std___std___2_IABQAVCHeader_CHandleBased
+MemoryPool___Z
+                  (puVar9,1,&local_f0);
+      }
+      __1CCharString__QAE_XZ();
+    }
+    _FindFirstPrimitive_C3DMeshFileSubMeshChunk__QAE_AV__CCountedPointer_VC3DMeshFilePrimitiveChunk____XZ
+              (&local_e4);
+    iVar11 = local_bc;
+    while (local_bc = iVar11, local_e4 != 0) {
+      if ((uint)(iVar11 - local_c0 >> 3) < (uint)(local_b8 - local_c0 >> 3)) {
+        ____Uninit_fill_n_PAV__CCountedPointer_VCBoneInfo_N3DAnimationUtil____IV1_V__allocator_V__CCountedPointer_VCBoneInfo_N3DAnimationUtil_____
+std__V1__std__YIXPAV__CCountedPointer_VCBoneInfo_N3DAnimationUtil____IPBV1_AAV__allocator_V__CCountedPointer_VCBoneInfo_N3DAnimationUtil_____0_0U_
+Nonscalar_ptr_iterator_tag_0__Z
+                  (&local_e4,local_b4,0,local_108);
+        local_bc = iVar11 + 8;
+      }
+      else {
+        __Insert_n___vector_V__CCountedPointer_VC3DGroup2____V__allocator_V__CCountedPointer_VC3DGroup2_____std___std__IAEXV___Vector_const_iterat
+or_V___Vector_val_V__CCountedPointer_VC3DGroup2____V__allocator_V__CCountedPointer_VC3DGroup2_____std___std___2_IABV__CCountedPointer_VC3DGroup2__
+___Z
+                  (iVar11,1,&local_e4);
+      }
+      _UpdateGroupBoneIndices_C3DMeshUtil__CIXABV__CArray_K__AAVCChunkedFileSuperChunk___Z();
+      local_60 = local_e4;
+      local_5c = local_e0;
+      if (local_e0 != (int *)0x0) {
+        *local_e0 = *local_e0 + 1;
+      }
+      piVar8 = (int *)_FindNextPrimitive_C3DMeshFileSubMeshChunk__QAE_AV__CCountedPointer_VC3DMeshFilePrimitiveChunk____ABV__CCountedPointer___CBV
+C3DMeshFilePrimitiveChunk_____Z
+                                (&local_24,&local_60);
+      piVar1 = (int *)piVar8[1];
+      iVar11 = *piVar8;
+      if (local_e0 != piVar1) {
+        if ((local_e0 != (int *)0x0) && (*local_e0 = *local_e0 + -1, *local_e0 == 0)) {
+          (*(code *)local_e0[1])();
+                    /* WARNING: Subroutine does not return */
+          operator_delete(local_e0);
+        }
+        local_e4 = iVar11;
+        local_e0 = piVar1;
+        if (piVar1 != (int *)0x0) {
+          *piVar1 = *piVar1 + 1;
+        }
+      }
+      if ((local_20 != (int *)0x0) && (*local_20 = *local_20 + -1, *local_20 == 0)) {
+        (*(code *)local_20[1])();
+                    /* WARNING: Subroutine does not return */
+        operator_delete(local_20);
+      }
+      local_24 = 0;
+      local_20 = (int *)0x0;
+      if ((local_5c != (int *)0x0) && (*local_5c = *local_5c + -1, *local_5c == 0)) {
+        (*(code *)local_5c[1])();
+                    /* WARNING: Subroutine does not return */
+        operator_delete(local_5c);
+      }
+      local_60 = 0;
+      local_5c = (int *)0x0;
+      iVar11 = local_bc;
+    }
+    local_b0 = (void *)0x0;
+    local_ac = 0;
+    local_a8 = 0;
+    _FindFirstCloth_C3DMeshFileSubMeshChunk__QAE_AV__CCountedPointer_VC3DMeshFileClothChunk____XZ
+              (&local_ec);
+    iVar11 = local_ac;
+    while (local_ac = iVar11, local_ec != 0) {
+      if ((uint)(iVar11 - (int)local_b0 >> 3) < (uint)(local_a8 - (int)local_b0 >> 3)) {
+        ____Uninit_fill_n_PAV__CCountedPointer_VCBoneInfo_N3DAnimationUtil____IV1_V__allocator_V__CCountedPointer_VCBoneInfo_N3DAnimationUtil_____
+std__V1__std__YIXPAV__CCountedPointer_VCBoneInfo_N3DAnimationUtil____IPBV1_AAV__allocator_V__CCountedPointer_VCBoneInfo_N3DAnimationUtil_____0_0U_
+Nonscalar_ptr_iterator_tag_0__Z
+                  (&local_ec,local_a4,0,local_108);
+        local_ac = iVar11 + 8;
+      }
+      else {
+        __Insert_n___vector_V__CCountedPointer_VC3DGroup2____V__allocator_V__CCountedPointer_VC3DGroup2_____std___std__IAEXV___Vector_const_iterat
+or_V___Vector_val_V__CCountedPointer_VC3DGroup2____V__allocator_V__CCountedPointer_VC3DGroup2_____std___std___2_IABV__CCountedPointer_VC3DGroup2__
+___Z
+                  (iVar11,1,&local_ec);
+      }
+      _UpdateGroupBoneIndices_C3DMeshUtil__CIXABV__CArray_K__AAVCChunkedFileSuperChunk___Z();
+      local_50 = local_ec;
+      local_4c = local_e8;
+      if (local_e8 != (int *)0x0) {
+        *local_e8 = *local_e8 + 1;
+      }
+      piVar8 = (int 
+*)_FindNextCloth_C3DMeshFileSubMeshChunk__QAE_AV__CCountedPointer_VC3DMeshFileClothChunk____ABV__CCountedPointer___CBVC3DMeshFileClothChunk_____Z
+                                (&local_34,&local_50);
+      piVar1 = (int *)piVar8[1];
+      iVar11 = *piVar8;
+      if (local_e8 != piVar1) {
+        if ((local_e8 != (int *)0x0) && (*local_e8 = *local_e8 + -1, *local_e8 == 0)) {
+          (*(code *)local_e8[1])();
+                    /* WARNING: Subroutine does not return */
+          operator_delete(local_e8);
+        }
+        local_ec = iVar11;
+        local_e8 = piVar1;
+        if (piVar1 != (int *)0x0) {
+          *piVar1 = *piVar1 + 1;
+        }
+      }
+      if ((local_30 != (int *)0x0) && (*local_30 = *local_30 + -1, *local_30 == 0)) {
+        (*(code *)local_30[1])();
+                    /* WARNING: Subroutine does not return */
+        operator_delete(local_30);
+      }
+      local_34 = 0;
+      local_30 = (int *)0x0;
+      if ((local_4c != (int *)0x0) && (*local_4c = *local_4c + -1, *local_4c == 0)) {
+        (*(code *)local_4c[1])();
+                    /* WARNING: Subroutine does not return */
+        operator_delete(local_4c);
+      }
+      local_50 = 0;
+      local_4c = (int *)0x0;
+      iVar11 = local_ac;
+    }
+    _RemoveSubChunksOfType_CChunkedFileSuperChunk__QAEXPBD_Z(&DAT_010c2548);
+    _RemoveSubChunksOfType_CChunkedFileSuperChunk__QAEXPBD_Z(&DAT_010c2540);
+    _RemoveSubChunksOfType_CChunkedFileSuperChunk__QAEXPBD_Z(&DAT_010c1d00);
+    uVar12 = 0;
+    if (local_ac - (int)local_b0 >> 3 != 0) {
+      do {
+        local_dc = *(undefined4 *)((int)local_b0 + uVar12 * 8);
+        local_d8 = *(int **)((int)local_b0 + uVar12 * 8 + 4);
+        if (local_d8 != (int *)0x0) {
+          *local_d8 = *local_d8 + 1;
+        }
+        _AddSubChunk_CChunkedFileSuperChunk__QAEXABV__CCountedPointer_VCChunkedFileChunk_____Z
+                  (&local_dc);
+        if ((local_d8 != (int *)0x0) && (*local_d8 = *local_d8 + -1, *local_d8 == 0)) {
+          (*(code *)local_d8[1])();
+                    /* WARNING: Subroutine does not return */
+          operator_delete(local_d8);
+        }
+        uVar12 = uVar12 + 1;
+        local_dc = 0;
+        local_d8 = (int *)0x0;
+      } while (uVar12 < (uint)(local_ac - (int)local_b0 >> 3));
+    }
+    local_118 = local_110;
+    local_114 = local_10c;
+    if (local_10c != (int *)0x0) {
+      *local_10c = *local_10c + 1;
+    }
+    piVar8 = (int *)_FindNextSubMesh_C3DMeshFileRootChunk__QAE_AV__CCountedPointer_VC3DMeshFileSubMeshChunk____ABV__CCountedPointer___CBVC3DMeshFi
+leSubMeshChunk_____Z
+                              (&local_fc,&local_118);
+    piVar1 = (int *)piVar8[1];
+    pcVar6 = (char *)*piVar8;
+    if (local_10c != piVar1) {
+      if ((local_10c != (int *)0x0) && (*local_10c = *local_10c + -1, *local_10c == 0)) {
+        (*(code *)local_10c[1])();
+                    /* WARNING: Subroutine does not return */
+        operator_delete(local_10c);
+      }
+      local_110 = pcVar6;
+      local_10c = piVar1;
+      if (piVar1 != (int *)0x0) {
+        *piVar1 = *piVar1 + 1;
+      }
+    }
+    if ((local_f8 != (int *)0x0) && (*local_f8 = *local_f8 + -1, *local_f8 == 0)) {
+      (*(code *)local_f8[1])();
+                    /* WARNING: Subroutine does not return */
+      operator_delete(local_f8);
+    }
+    local_fc = (char *)0x0;
+    local_f8 = (int *)0x0;
+    if ((local_114 != (int *)0x0) && (*local_114 = *local_114 + -1, *local_114 == 0)) {
+      (*(code *)local_114[1])();
+                    /* WARNING: Subroutine does not return */
+      operator_delete(local_114);
+    }
+    local_118 = (char *)0x0;
+    local_114 = (int *)0x0;
+    if ((local_e8 != (int *)0x0) && (*local_e8 = *local_e8 + -1, *local_e8 == 0)) {
+      (*(code *)local_e8[1])();
+                    /* WARNING: Subroutine does not return */
+      operator_delete(local_e8);
+    }
+    local_ec = 0;
+    local_e8 = (int *)0x0;
+    if (local_b0 != (void *)0x0) {
+      std::_Container_base0::_Orphan_all((_Container_base0 *)&local_b0);
+      ____Destroy_range_V__allocator_V__CCountedPointer_VCSubdivisionTriangle_NShape_____std___std__YIXPAV__CCountedPointer_VCSubdivisionTriangle_
+NShape____0AAV__allocator_V__CCountedPointer_VCSubdivisionTriangle_NShape_____0_U_Nonscalar_ptr_iterator_tag_0__Z
+                (local_a4,local_108);
+                    /* WARNING: Subroutine does not return */
+      operator_delete(local_b0);
+    }
+    local_b0 = (void *)0x0;
+    local_ac = 0;
+    local_a8 = 0;
+    if ((local_e0 != (int *)0x0) && (*local_e0 = *local_e0 + -1, *local_e0 == 0)) {
+      (*(code *)local_e0[1])();
+                    /* WARNING: Subroutine does not return */
+      operator_delete(local_e0);
+    }
+    local_e4 = 0;
+    local_e0 = (int *)0x0;
+    if ((local_11c != (int *)0x0) && (*local_11c = *local_11c + -1, *local_11c == 0)) {
+      (*(code *)local_11c[1])();
+                    /* WARNING: Subroutine does not return */
+      operator_delete(local_11c);
+    }
+    local_120 = (char *)0x0;
+    local_11c = (int *)0x0;
+    if (local_a0 != (void *)0x0) {
+      std::_Container_base0::_Orphan_all((_Container_base0 *)&local_a0);
+      pvVar2 = local_9c;
+      for (pvVar13 = local_a0; pvVar13 != pvVar2; pvVar13 = (void *)((int)pvVar13 + 4)) {
+        __1CCharString__QAE_XZ();
+      }
+                    /* WARNING: Subroutine does not return */
+      operator_delete(local_a0);
+    }
+    local_a0 = (void *)0x0;
+    local_9c = (void *)0x0;
+    local_98 = 0;
+    if (local_90 != (void *)0x0) {
+      std::_Container_base0::_Orphan_all((_Container_base0 *)&local_90);
+      ____Destroy_range_V__allocator_V__CCountedPointer_VCSubdivisionTriangle_NShape_____std___std__YIXPAV__CCountedPointer_VCSubdivisionTriangle_
+NShape____0AAV__allocator_V__CCountedPointer_VCSubdivisionTriangle_NShape_____0_U_Nonscalar_ptr_iterator_tag_0__Z
+                (local_84,local_108);
+                    /* WARNING: Subroutine does not return */
+      operator_delete(local_90);
+    }
+    local_90 = (void *)0x0;
+    local_8c = 0;
+    local_88 = 0;
+  } while( true );
+}
+
+void __thiscall
+FUN_009919c0(int *param_1,undefined4 param_2,undefined4 param_3,CWideString *param_4,
+            CCharString *param_5)
+
+{
+  int iVar1;
+  undefined4 *puVar2;
+  CWideString *pCVar3;
+  char cVar4;
+  CASoundBank *this;
+  CCharString *pCVar5;
+  CTCSkeletalMorph *this_00;
+  CIPhysicsFacesSegmentBase *pCVar6;
+  uint extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  uint extraout_EDX_01;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_02;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_03;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_04;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_05;
+  undefined4 unaff_retaddr;
+  CWideString *pCVar7;
+  undefined4 local_48;
+  undefined4 uStack_44;
+  CFrontEndScreen *pCStack_40;
+  int *piStack_3c;
+  CCharString aCStack_38 [4];
+  CCharString aCStack_34 [4];
+  CCharString aCStack_30 [4];
+  CCharString aCStack_2c [4];
+  undefined4 uStack_28;
+  CIsThingAlive aCStack_24 [36];
+  
+  CCharString::CCharString((CCharString *)&local_48,"Register Sound Bank 1",-1);
+  NProgressDisplay::DisplayProgress
+            ((CCharString *)&local_48,(float)(extraout_EDX & 0xffffff00),false,false);
+  std::
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_48,
+             extraout_EDX_00,unaff_EDI);
+  pCVar7 = param_4;
+  this = (CASoundBank *)(**(code **)(*param_1 + 4))();
+  CCharString::CCharString((CCharString *)&param_3,"Register Sound Bank 2",-1);
+  NProgressDisplay::DisplayProgress
+            ((CCharString *)&param_3,(float)(extraout_EDX_01 & 0xffffff00),false,false);
+  std::
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_3,
+  pCVar3 = param_4;
+  cVar4 = FUN_0099b150(&DAT_0122d70c);
+  if (cVar4 != '\0') {
+    CASoundBank::InitSymbols(this,pCVar3);
+  }
+  local_48 = 0;
+  uStack_44 = 0;
+  pCStack_40 = (CFrontEndScreen *)0x0;
+  piStack_3c = (int *)0x0;
+  CCharString::CCharString(aCStack_38);
+  CCharString::CCharString(aCStack_34);
+  CCharString::CCharString(aCStack_30);
+  CCharString::CCharString(aCStack_2c);
+  pCVar5 = (CCharString *)FUN_0099b2c0(&param_3);
+  CCharString::operator=(aCStack_38,pCVar5);
+  std::
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_3,
+  pCVar5 = (CCharString *)FUN_0099b2c0(&param_3);
+  CCharString::operator=(aCStack_34,pCVar5);
+  std::
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_3,
+  pCVar5 = (CCharString *)FUN_0099b2c0(&param_3);
+  CCharString::operator=(aCStack_30,pCVar5);
+  std::
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_3,
+  pCVar5 = param_5;
+  CCharString::operator=(aCStack_2c,param_5);
+  CCountedPointer<std::vector<CCharString,std::allocator<CCharString>_>_>::Reset
+            ((CCountedPointer<std::vector<CCharString,std::allocator<CCharString>_>_> *)&local_48,
+             (vector<CCharString,std::allocator<CCharString>_> *)this);
+  iVar1 = *(int *)pCVar5;
+  if ((iVar1 != 0) && (*(int *)(iVar1 + 4) != 0)) {
+    this_00 = operator_new(0x180);
+    if (this_00 == (CTCSkeletalMorph *)0x0) {
+      pCVar6 = (CIPhysicsFacesSegmentBase *)0x0;
+    }
+    else {
+      pCVar6 = (CIPhysicsFacesSegmentBase *)
+               CTCSkeletalMorph::CTCSkeletalMorph(this_00,(CThing *)pCVar7);
+    }
+    CCountedPointer<CIPhysicsFacesSegmentBase_const_>::Reset
+              ((CCountedPointer<CIPhysicsFacesSegmentBase_const_> *)&pCStack_40,pCVar6);
+    NUISystem::CFrontEndScreen::AddActionOnLeftClicked
+              (pCStack_40,(CCountedPointer<NUISystem::CAction> *)(param_1 + 10));
+    cVar4 = (**(code **)(*(int *)pCStack_40 + 4))(pCVar5,2);
+    if (cVar4 != '\0') goto LAB_00991b74;
+  }
+  if (piStack_3c != (int *)0x0) {
+    *piStack_3c = *piStack_3c + -1;
+    if (*piStack_3c == 0) {
+      (*(code *)piStack_3c[1])();
+      operator_delete(piStack_3c);
+    }
+  }
+  piStack_3c = (int *)0x0;
+  pCStack_40 = (CFrontEndScreen *)0x0;
+LAB_00991b74:
+  uStack_28 = unaff_retaddr;
+  NScript::GFPredicateAnd<NScript::CIsThingAlive,NScript::CIsThingAlive>
+            (aCStack_24,(CIsThingAlive *)&local_48);
+  puVar2 = (undefined4 *)param_1[0xd];
+  if (puVar2 == (undefined4 *)param_1[0xe]) {
+    FUN_00993310(puVar2,&uStack_28,&param_3,1,1);
+  }
+  else {
+    if (puVar2 != (undefined4 *)0x0) {
+      *puVar2 = uStack_28;
+      NScript::GFPredicateAnd<NScript::CIsThingAlive,NScript::CIsThingAlive>
+                ((CIsThingAlive *)(puVar2 + 1),aCStack_24);
+    }
+    param_1[0xd] = param_1[0xd] + 0x24;
+  }
+  CEditFractal::~CEditFractal((CEditFractal *)aCStack_24);
+  *(undefined1 *)((int)param_1 + 0x3d) = 1;
+  if (*(char *)((int)param_1 + 0x3d) != '\0') {
+    FUN_009939b0((char)param_1[0xf]);
+    *(undefined1 *)((int)param_1 + 0x3d) = 0;
+  }
+  CEditFractal::~CEditFractal((CEditFractal *)&local_48);
+  return;
+}
+
+void __thiscall
+FUN_00991c10(int *param_1,undefined4 param_2,undefined4 param_3,
+
+{
+  undefined4 *puVar1;
+  vector<CCharString,std::allocator<CCharString>_> *pvVar2;
+  CCharString *pCVar3;
+  uint extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_02;
+  CIsThingAlive *unaff_retaddr;
+  CCharString aCStack_38 [4];
+  CCharString aCStack_34 [4];
+  CCharString aCStack_30 [4];
+  CCharString aCStack_2c [4];
+  CIsThingAlive *pCStack_28;
+  CIsThingAlive aCStack_24 [36];
+  
+  ppVar4 = param_4;
+  pvVar2 = (vector<CCharString,std::allocator<CCharString>_> *)(**(code **)(*param_1 + 4))();
+  (**(code **)(*(int *)pvVar2 + 0x20))();
+  CCharString::CCharString((CCharString *)&param_3,"Register Atmos Sound Bank",-1);
+  NProgressDisplay::DisplayProgress
+            ((CCharString *)&param_3,(float)(extraout_EDX & 0xffffff00),false,false);
+  std::
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_3,
+             extraout_EDX_00,ppVar4);
+  CCharString::CCharString(aCStack_38);
+  CCharString::CCharString(aCStack_34);
+  CCharString::CCharString(aCStack_30);
+  CCharString::CCharString(aCStack_2c);
+  pCVar3 = (CCharString *)FUN_0099b2c0(&param_3);
+  CCharString::operator=(aCStack_38,pCVar3);
+  std::
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_3,
+             extraout_EDX_01,ppVar4);
+  pCVar3 = (CCharString *)FUN_0099b2c0(&param_3);
+  CCharString::operator=(aCStack_34,pCVar3);
+  std::
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_3,
+             extraout_EDX_02,ppVar4);
+  CCountedPointer<std::vector<CCharString,std::allocator<CCharString>_>_>::Reset
+            ((CCountedPointer<std::vector<CCharString,std::allocator<CCharString>_>_> *)
+             &stack0xffffffb8,pvVar2);
+  pCStack_28 = unaff_retaddr;
+  NScript::GFPredicateAnd<NScript::CIsThingAlive,NScript::CIsThingAlive>(aCStack_24,unaff_retaddr);
+  puVar1 = (undefined4 *)param_1[0xd];
+  if (puVar1 == (undefined4 *)param_1[0xe]) {
+    FUN_00993310(puVar1,&pCStack_28,&param_3,1,1);
+  }
+  else {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = pCStack_28;
+      NScript::GFPredicateAnd<NScript::CIsThingAlive,NScript::CIsThingAlive>
+                ((CIsThingAlive *)(puVar1 + 1),aCStack_24);
+    }
+    param_1[0xd] = param_1[0xd] + 0x24;
+  }
+  CEditFractal::~CEditFractal((CEditFractal *)aCStack_24);
+  *(undefined1 *)((int)param_1 + 0x3d) = 1;
+  if (*(char *)((int)param_1 + 0x3d) != '\0') {
+    FUN_009939b0((char)param_1[0xf]);
+    *(undefined1 *)((int)param_1 + 0x3d) = 0;
+  }
+  CEditFractal::~CEditFractal((CEditFractal *)&stack0xffffffb8);
+  return;
+}
+
+void __fastcall FUN_0042e17c(int param_1)
+
+{
+  CEntityScriptInfo *this;
+  vector<CCharString,std::allocator<CCharString>_> *pvVar1;
+  int local_8;
+  
+  if (DAT_013b8394 != (CWorld *)0x0) {
+    local_8 = param_1;
+    this = operator_new(0x20);
+    if (this == (CEntityScriptInfo *)0x0) {
+      pvVar1 = (vector<CCharString,std::allocator<CCharString>_> *)0x0;
+    }
+    else {
+      pvVar1 = (vector<CCharString,std::allocator<CCharString>_> *)
+               NThingManager::CEntityRuntimePersistence::CEntityScriptInfo::CEntityScriptInfo(this);
+    }
+    CCountedPointer<std::vector<CCharString,std::allocator<CCharString>_>_>::Reset
+              ((CCountedPointer<std::vector<CCharString,std::allocator<CCharString>_>_> *)
+               (param_1 + 0x50),pvVar1);
+    FUN_0099b6b0(L"data\\sound\\frontend.lug");
+    (**(code **)(**(int **)(param_1 + 0x50) + 4))(&local_8);
+    CCharString::~CCharString((CCharString *)&local_8);
+    (**(code **)(*(int *)DAT_013b8394 + 0xb8))(0x8000,0x3f800000,0);
+    CWorld::SetMiniMapEnabled(DAT_013b8394,true);
+  }
+  return;
+}
+
+void __thiscall FUN_00c2e7a0(int param_1,CAnimationSet *param_2,char param_3)
+
+{
+  CIsThingAlive *pCVar1;
+  int iVar2;
+  CIsThingAlive *extraout_EAX;
+  CChunkedFileChunk *pCVar3;
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::C
+IsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar4;
+  undefined4 *puVar5;
+  uint uVar6;
+  CAnimationEntry *unaff_EDI;
+  CMap local_8 [8];
+  
+  if (*(int *)(param_1 + 0x6c) != 0) {
+    if ((param_3 == '\0') && (iVar2 = FUN_00c101d0(), iVar2 != 0)) {
+      CAnimationSet::BeginLoading(param_2,unaff_EDI);
+      pCVar3 = C3DAnimFileXSequenceChunk::CreateNewInstance
+                         (*(C3DAnimFileXSequenceChunk **)(param_1 + 8));
+      pCVar4 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAli
+ve>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                *)NScript::
+                  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAliv
+e,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScrip
+t::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                              *)pCVar3,
+                             (CIsThingAlive *)"Duplicate event trigger for criteria string \'");
+      pCVar4 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAli
+ve>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                *)NScript::
+                  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAliv
+e,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            (pCVar4,(CIsThingAlive *)param_2);
+      pCVar4 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAli
+ve>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                *)NScript::
+                  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAliv
+e,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            (pCVar4,(CIsThingAlive *)"\', hash code ");
+      NScript::
+      operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::C
+IsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                (pCVar4,extraout_EAX);
+      return;
+    }
+    FUN_00c0bfe0(*(undefined4 *)param_2);
+    FUN_00c1eee0(*(undefined4 *)(param_1 + 0x6c));
+    CMap::GetWorldMapNumber(local_8);
+    uVar6 = 0;
+    if (*(int *)(param_2 + 8) != 0) {
+      do {
+        puVar5 = (undefined4 *)FUN_00c2ebc0();
+        pCVar1 = (CIsThingAlive *)*puVar5;
+        iVar2 = FUN_00c3abd0();
+        if (iVar2 == 0) {
+          pCVar3 = C3DAnimFileXSequenceChunk::CreateNewInstance
+                             (*(C3DAnimFileXSequenceChunk **)(param_1 + 8));
+          pCVar4 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThin
+gAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                    *)NScript::
+                      operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThing
+Alive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                                ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NS
+cript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                                  *)pCVar3,(CIsThingAlive *)"Could not find driver ");
+          pCVar4 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThin
+gAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                    *)NScript::
+                      operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThing
+Alive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                                (pCVar4,pCVar1);
+          pCVar4 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThin
+gAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                    *)NScript::
+                      operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThing
+Alive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                                (pCVar4,(CIsThingAlive *)" attach to criteria string \'");
+          pCVar4 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThin
+gAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                    *)NScript::
+                      operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThing
+Alive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                                (pCVar4,(CIsThingAlive *)param_2);
+          NScript::
+          operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScrip
+t::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                    (pCVar4,(CIsThingAlive *)&DAT_0124c630);
+        }
+        else {
+          FUN_00c1f4e0();
+        }
+        uVar6 = uVar6 + 1;
+      } while (uVar6 < *(uint *)(param_2 + 8));
+    }
+  }
+  return;
+}
+
+WARN  Decompiling 009919c0, pcode error at 009919c0: Disassembly not permitted within uninitialized memory block (DecompileCallback)  
+/* WARNING: Control flow encountered bad instruction data */
+
+void FUN_009919c0(void)
+
+{
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+WARN  Decompiling 00991c10, pcode error at 00991c10: Disassembly not permitted within uninitialized memory block (DecompileCallback)  
+/* WARNING: Control flow encountered bad instruction data */
+
+void FUN_00991c10(void)
+
+{
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+WARN  Decompiling 0042e17c, pcode error at 0042e17c: Disassembly not permitted within uninitialized memory block (DecompileCallback)  
+/* WARNING: Control flow encountered bad instruction data */
+
+void FUN_0042e17c(void)
+
+{
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+WARN  Decompiling 00c2e7a0, pcode error at 00c2e7a0: Disassembly not permitted within uninitialized memory block (DecompileCallback)  
+/* WARNING: Control flow encountered bad instruction data */
+
+void FUN_00c2e7a0(void)
+
+{
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+
+

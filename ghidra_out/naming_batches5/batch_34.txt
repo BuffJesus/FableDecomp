@@ -1,0 +1,884 @@
+@@@FUNC 004dc42e 29 0
+@@CALLERS 
+@@CALLEES operator_new, CEnginePrimitiveGroupManager
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc42e(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc467 29 0
+@@CALLERS 
+@@CALLEES operator_new, CEnginePrimitiveGroupManager
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc467(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc4a0 29 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveGroupManager, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc4a0(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc4d9 29 0
+@@CALLERS 
+@@CALLEES operator_new, CEnginePrimitiveGroupManager
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc4d9(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc512 29 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveGroupManager, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc512(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc54b 29 0
+@@CALLERS 
+@@CALLEES operator_new, CConsoleCommandBase
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc54b(CCharString *param_1)
+
+{
+  CConsoleCommandBase *this;
+  undefined4 uVar1;
+  CConsoleCommandParameters *unaff_ESI;
+  
+  this = operator_new(0x28);
+  if (this != (CConsoleCommandBase *)0x0) {
+    uVar1 = CConsoleCommandBase::CConsoleCommandBase(this,param_1,unaff_ESI);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc58e 29 0
+@@CALLERS 
+@@CALLEES operator_new, CEnginePrimitiveGroupManager
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc58e(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc5c7 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCInventoryItem
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc5c7(CThing *param_1)
+
+{
+  CTCInventoryItem *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x28);
+  if (this != (CTCInventoryItem *)0x0) {
+    uVar1 = CTCInventoryItem::CTCInventoryItem(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc620 29 0
+@@CALLERS 
+@@CALLEES CTCVillageMember, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc620(CThing *param_1)
+
+{
+  CTCVillageMember *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x20);
+  if (this != (CTCVillageMember *)0x0) {
+    uVar1 = CTCVillageMember::CTCVillageMember(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc681 29 0
+@@CALLERS 
+@@CALLEES operator_new, CEnginePrimitiveGroupManager
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc681(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc6fe 29 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveGroupManager, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc6fe(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x18);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc78f 29 0
+@@CALLERS 
+@@CALLEES CTCCameraCollision, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc78f(CThing *param_1)
+
+{
+  CTCCameraCollision *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x10);
+  if (this != (CTCCameraCollision *)0x0) {
+    uVar1 = CTCCameraCollision::CTCCameraCollision(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc7e8 29 0
+@@CALLERS 
+@@CALLEES operator_new, CEnginePrimitiveGroupManager
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc7e8(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc821 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCCameraCollision
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc821(CThing *param_1)
+
+{
+  CTCCameraCollision *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x10);
+  if (this != (CTCCameraCollision *)0x0) {
+    uVar1 = CTCCameraCollision::CTCCameraCollision(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dc936 29 0
+@@CALLERS 
+@@CALLEES operator_new, CEnginePrimitiveGroupManager
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dc936(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dcb3c 32 0
+@@CALLERS 
+@@CALLEES CTCDiceGame, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dcb3c(CThing *param_1)
+
+{
+  CTCDiceGame *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0xb4);
+  if (this != (CTCDiceGame *)0x0) {
+    uVar1 = CTCDiceGame::CTCDiceGame(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dcb5c 29 0
+@@CALLERS 
+@@CALLEES operator_new, CEnginePrimitiveGroupManager
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dcb5c(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dcb95 29 0
+@@CALLERS 
+@@CALLEES CCombatAbilityProjectileAttackData, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dcb95(ECombatAbilityInterfaceType param_1)
+
+{
+  CCombatAbilityProjectileAttackData *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CCombatAbilityProjectileAttackData *)0x0) {
+    uVar1 = CCombatAbilityProjectileAttackData::CCombatAbilityProjectileAttackData(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dcbee 29 0
+@@CALLERS 
+@@CALLEES operator_new, CEnginePrimitiveGroupManager
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dcbee(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dcc27 29 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveGroupManager, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dcc27(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dcc60 29 0
+@@CALLERS 
+@@CALLEES operator_new, CEnginePrimitiveGroupManager
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dcc60(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dcc99 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCCameraCollision
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dcc99(CThing *param_1)
+
+{
+  CTCCameraCollision *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x10);
+  if (this != (CTCCameraCollision *)0x0) {
+    uVar1 = CTCCameraCollision::CTCCameraCollision(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dccf2 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCKrakenTentacle
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dccf2(CThing *param_1)
+
+{
+  CTCKrakenTentacle *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x50);
+  if (this != (CTCKrakenTentacle *)0x0) {
+    uVar1 = CTCKrakenTentacle::CTCKrakenTentacle(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dcd6b 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCActionUseBase
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dcd6b(CThing *param_1)
+
+{
+  CTCActionUseBase *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x1c);
+  if (this != (CTCActionUseBase *)0x0) {
+    uVar1 = CTCActionUseBase::CTCActionUseBase(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dcdc4 29 0
+@@CALLERS 
+@@CALLEES CTCCameraCollision, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dcdc4(CThing *param_1)
+
+{
+  CTCCameraCollision *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x20);
+  if (this != (CTCCameraCollision *)0x0) {
+    uVar1 = CTCCameraCollision::CTCCameraCollision(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dce1d 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCDiceGame
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dce1d(CThing *param_1)
+
+{
+  CTCDiceGame *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x18);
+  if (this != (CTCDiceGame *)0x0) {
+    uVar1 = CTCDiceGame::CTCDiceGame(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dce3a 29 0
+@@CALLERS 
+@@CALLEES operator_new, CEnginePrimitiveGroupManager
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dce3a(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x18);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dcea4 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCLightningOrb
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dcea4(CThing *param_1)
+
+{
+  CTCLightningOrb *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x34);
+  if (this != (CTCLightningOrb *)0x0) {
+    uVar1 = CTCLightningOrb::CTCLightningOrb(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dcf15 29 0
+@@CALLERS 
+@@CALLEES CTCCameraCollision, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dcf15(CThing *param_1)
+
+{
+  CTCCameraCollision *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x10);
+  if (this != (CTCCameraCollision *)0x0) {
+    uVar1 = CTCCameraCollision::CTCCameraCollision(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dcf6e 29 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveGroupManager, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dcf6e(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004de34e 29 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveGroupManager, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004de34e(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x18);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004de414 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCStockItem
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004de414(CThing *param_1)
+
+{
+  CTCStockItem *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x1c);
+  if (this != (CTCStockItem *)0x0) {
+    uVar1 = CTCStockItem::CTCStockItem(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dea57 32 0
+@@CALLERS 
+@@CALLEES CTCShotDefinitionProjectile, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dea57(CThing *param_1)
+
+{
+  CTCShotDefinitionProjectile *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0xa4);
+  if (this != (CTCShotDefinitionProjectile *)0x0) {
+    uVar1 = NThingShot::CTCShotDefinitionProjectile::CTCShotDefinitionProjectile(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dea93 32 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveGroupManager, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004dea93(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0xa4);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004deacf 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCShotDefinitionNymphFun
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004deacf(CThing *param_1)
+
+{
+  CTCShotDefinitionNymphFun *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0xa8);
+  if (this != (CTCShotDefinitionNymphFun *)0x0) {
+    uVar1 = NThingShot::CTCShotDefinitionNymphFun::CTCShotDefinitionNymphFun(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004deb0b 32 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveGroupManager, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004deb0b(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0xa4);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004deb47 32 0
+@@CALLERS 
+@@CALLEES CCrimeStatBar, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004deb47(CPlayerGuiDef *param_1)
+
+{
+  CCrimeStatBar *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0xa8);
+  if (this != (CCrimeStatBar *)0x0) {
+    uVar1 = NPlayerGui::CCrimeStatBar::CCrimeStatBar(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004deb83 32 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveGroupManager, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004deb83(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0xa4);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004df1cc 29 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveGroupManager, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004df1cc(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x1c);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dfeb8 76 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004dfeb8(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x38) = *(undefined4 *)(param_2 + 0x38);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  param_1[0x4c] = param_2[0x4c];
+  return param_1;
+}
+
+
+@@ENDFUNC

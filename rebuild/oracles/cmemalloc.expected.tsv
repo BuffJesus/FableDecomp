@@ -1,0 +1,7 @@
+GetAllocationSize	8b 81 28 0c 00 00 c2 04 00
+GetAllocationSizeIncludingHeader	8b 81 2c 0c 00 00 c2 04 00
+GetNoAllocatedAreas	8b 89 1c 0c 00 00 33 c0 85 c9 74 10 8d 64 24 00 8b 51 04 8b 49 08 03 c2 85 c9 75 f4 c3
+GetNoFreeAreas	8b 91 1c 0c 00 00 33 c0 85 d2 74 1a 8b 89 34 0c 00 00 56 57 8b 7a 04 8b 52 08 8b f1 2b f7 03 c6 85 d2 75 f0 5f 5e c3
+GetTotalMemoryControlledByAllocator	8b 91 1c 0c 00 00 85 d2 8b 81 44 0c 00 00 74 0f 8b 89 38 0c 00 00 8b 52 08 03 c1 85 d2 75 f7 c3
+GetHeaderOverhead	8b 91 1c 0c 00 00 33 c0 85 d2 74 17 8b 89 30 0c 00 00 56 8b 72 04 8b 52 08 8d 34 b1 03 c6 85 d2 75 f1 5e c3
+GetLargestFreeAreaSize	8b 81 1c 0c 00 00 85 c0 56 57 74 16 8b 91 34 0c 00 00 8b 78 04 8b f2 2b f7 75 0c 8b 40 08 85 c0 75 f0 5f 33 c0 5e c3 8b 81 28 0c 00 00 5f 5e c3

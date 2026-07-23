@@ -1,0 +1,78 @@
+009d7e10	StdTree_DefaultCtor_9d7e10	medium	malloc(0x14) then head-node init (*node=0,+4=0,+8/+0xc=self, size param_1[1]=0) = std::_Tree default ctor
+009d80c0	StdList_DefaultCtor_9d80c0	medium	malloc(0x10), node->next=node->prev=node (circular sentinel) = std::list default ctor
+009d83b0	Container_AllocAndStorePtr_9d83b0	low	*param_1=0; malloc(0x28); *param_1=block - allocate-and-store proxy, no visible init
+009d8410	StdTree_DefaultCtor_9d8410	medium	malloc(0x28) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009d8530	StdTree_DefaultCtor_9d8530	medium	malloc(0x28) + tree head-node self-ref init identical to 9d8410 = std::_Tree default ctor
+009e4810	StdList_DefaultCtor_9e4810	medium	malloc(0x40), node self-linked next/prev = std::list default ctor
+009e48d0	StdList_DefaultCtor_9e48d0	medium	malloc(0x40), node self-linked next/prev = std::list default ctor
+009e6a70	ParticleMorphs_FindEntryByKey	medium	unrolled-by-4 search over pair<EHeroMorphType,CParticleMorphs::CEntry>, compares string keys via CBasicString::Compare, calls _Cons_val
+009e98c0	Vector_PushBackByte	medium	push_back of 1-byte element (copies *param_2 single byte), falls back to vector_reallocate_with_padding on full
+009ebcb0	Vector_InitAndAppendFour	medium	zero-inits vector then appends four u32 (param_2..param_5) via VectorInsertElementRange growth
+009eeb90	StdList_DefaultCtor_9eeb90	medium	malloc(0x18), node self-linked next/prev = std::list default ctor
+009eebe0	Container_AllocAndStorePtr_9eebe0	low	*param_1=0; malloc(0x18); *param_1=block - allocate-and-store, no visible init
+009eec60	Container_AllocAndStorePtr_9eec60	low	*param_1=0; malloc(0x1c); *param_1=block - allocate-and-store, no visible init
+009eee90	StdList_DefaultCtor_9eee90	medium	malloc(0x18), node self-linked next/prev = std::list default ctor
+009eef50	StdTree_DefaultCtor_9eef50	medium	malloc(0x18) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009eefd0	StdTree_DefaultCtor_9eefd0	medium	malloc(0x1c) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009ef870	StdTree_DefaultCtor_9ef870	medium	malloc(0x18) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009efdf0	Vector_PushBackPolymorphicEntry	medium	push_back of 0x1c-byte record with vtable PTR__vector_deleting_destructor + embedded CCharString copy; grows via std::vector_insert_fill_range
+009eff60	StdTree_DefaultCtor_9eff60	medium	malloc(0x1c) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009f0ce0	Container_AllocAndStorePtr_9f0ce0	low	*param_1=0; malloc(0x24); *param_1=block - allocate-and-store, no visible init
+009f0ef0	StdTree_DefaultCtor_9f0ef0	medium	malloc(0x24) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009f13c0	StdTree_DefaultCtor_9f13c0	medium	malloc(0x24) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009f5600	CInputEventVector_PushBackAt0x14	high	push_back of CInputEvent (elem 0x34) at vector base +0x14, bumps count at +0x1c; CInputEvent::CInputEvent + std__vector_CInputEvent_insert
+009f6d50	CInputEventVector_PushBackAt0x04	high	push_back of CInputEvent (elem 0x34) at vector base +0x04; CInputEvent::CInputEvent + std__vector_CInputEvent_insert
+009f76f0	AllocArray_0x18Elements	medium	returns malloc(count*0x18) or NULL when count==0 = array allocator for 0x18-byte elements
+009f79d0	StdList_EraseNode	medium	unlinks node (prev->next=next,next->prev=prev) then free(node) = list node erase; uses EH_epilog3 frame
+009f7a30	StdList_DefaultCtor_9f7a30	medium	malloc(0x18), node self-linked next/prev = std::list default ctor
+009f7b60	MapIterator_CountDistance	low	loops while iterator != end (Tree_const_iterator::operator!=) incrementing counter = std::distance over CCharString->long map
+009f7bb0	StdList_DefaultCtor_9f7bb0	medium	malloc(0x18), node self-linked next/prev = std::list default ctor
+009f7d70	MapIterator_CountDistance_9f7d70	low	loops while iterator != end incrementing counter = std::distance over CCharString->long map (variant of 9f7b60)
+009f8740	StdList_DefaultCtor_9f8740	medium	malloc(0x40), node self-linked next/prev = std::list default ctor
+009f8ab0	StdList_DefaultCtor_9f8ab0	medium	malloc(0x40), node self-linked next/prev = std::list default ctor
+00a215a0	Container_AllocAndStorePtr_a215a0	low	*param_1=0; malloc(0x28); *param_1=block - allocate-and-store, no visible init
+00a21610	Container_AllocAndStorePtr_a21610	low	*param_1=0; malloc(0x18); *param_1=block - allocate-and-store, no visible init
+00a220a0	StdTree_DefaultCtor_a220a0	medium	malloc(0x18) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a22360	StdTree_DefaultCtor_a22360	medium	malloc(0x28) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a2abd0	Container_AllocAndStorePtr_a2abd0	low	*param_1=0; malloc(0x20); *param_1=block - allocate-and-store, no visible init
+00a2ac00	Container_AllocAndStorePtr_a2ac00	low	*param_1=0; malloc(0x1c); *param_1=block - allocate-and-store, no visible init
+00a2b890	StdTree_DefaultCtor_a2b890	medium	malloc(0x20) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a2b8d0	StdTree_DefaultCtor_a2b8d0	medium	malloc(0x1c) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a2cfa0	StdTree_DefaultCtor_ExtraFields_a2cfa0	medium	tree head-node init (malloc 0x18) plus two extra owner fields param_1[3]=param_1[4]=0 = map/set wrapper default ctor
+00a2d050	StdTree_DefaultCtor_a2d050	medium	malloc(0x14) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a2d250	StdTree_DefaultCtor_a2d250	medium	malloc(0x1c) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a2e200	StdTree_DefaultCtor_a2e200	medium	malloc(0x20) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a39440	Container_AllocAndStorePtr_a39440	low	*param_1=0; malloc(0x14); *param_1=block - allocate-and-store, no visible init
+00a39510	StdTree_DefaultCtor_a39510	medium	malloc(0x14) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a3ff40	StdList_DefaultCtor_a3ff40	medium	malloc(0xc), node self-linked next/prev = std::list default ctor
+00a40150	StdList_DefaultCtor_a40150	medium	malloc(0xc), node self-linked next/prev = std::list default ctor
+00a47ed0	StdList_DefaultCtor_a47ed0	medium	malloc(0xc), node self-linked next/prev = std::list default ctor
+00a47f30	StdList_DefaultCtor_a47f30	medium	malloc(0xc), node self-linked next/prev = std::list default ctor
+00a54110	StdList_DefaultCtor_a54110	medium	malloc(0x10), node self-linked next/prev = std::list default ctor
+00a54160	Container_AllocAndStorePtr_a54160	low	*param_1=0; malloc(0x18); *param_1=block - allocate-and-store, no visible init
+00a544a0	StdList_DefaultCtor_a544a0	medium	malloc(0x10), node self-linked next/prev = std::list default ctor
+00a544e0	StdTree_DefaultCtor_a544e0	medium	malloc(0x18) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a54e10	StdTree_DefaultCtor_a54e10	medium	malloc(0x18) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a60990	Container_AllocAndStorePtr_a60990	low	*param_1=0; malloc(0x34); *param_1=block - allocate-and-store, no visible init
+00a611d0	StdTree_DefaultCtor_a611d0	medium	malloc(0x34) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a61730	StdTree_DefaultCtor_a61730	medium	malloc(0x34) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a68910	CVolumeTexture_ExtractSlicesToTextures	medium	locks CVolumeTexture, reads CPixelFormat depth, loops slices copying rows into per-slice CTexture::Initialise/Lock/Unlock
+00a78680	PackedKeyList_Construct	medium	__thiscall builds list header (malloc 0x10 self-linked) with packed key *param_1=param_2<<0x10 ^ param_3&0xffff, param_1[2]=0
+00a7f450	StdList_DefaultCtor_a7f450	medium	malloc(0x14), node self-linked next/prev = std::list default ctor
+00a7f4b0	StdList_DefaultCtor_a7f4b0	medium	malloc(0xc), node self-linked next/prev = std::list default ctor
+00a7f550	StdList_DefaultCtor_a7f550	medium	malloc(0xc), node self-linked next/prev = std::list default ctor
+00a7f680	Container_AllocAndStorePtr_a7f680	low	*param_1=0; malloc(0x18); *param_1=block - allocate-and-store, no visible init
+00a7f6f0	Container_AllocAndStorePtr_a7f6f0	low	*param_1=0; malloc(0x18); *param_1=block - allocate-and-store, no visible init
+00a80480	StdList_DefaultCtor_a80480	medium	malloc(0xc), node self-linked next/prev = std::list default ctor
+00a80520	StdList_DefaultCtor_a80520	medium	malloc(0xc), node self-linked next/prev = std::list default ctor
+00a84b80	StdList_DefaultCtor_a84b80	medium	malloc(0x14), node self-linked next/prev = std::list default ctor
+00aaca40	StdList_DefaultCtor_aaca40	medium	malloc(0x10), node self-linked next/prev = std::list default ctor
+00aacd60	StdList_DefaultCtor_aacd60	medium	malloc(0x10), node self-linked next/prev = std::list default ctor
+00ac3a10	Object_FreeBufferAndDelete	medium	frees held pointer *param_1 then operator_delete(param_1) = deleting destructor releasing owned buffer
+00ad2330	Container_AllocAndStorePtr_ad2330	low	*param_1=0; malloc(0x18); *param_1=block - allocate-and-store, no visible init
+00ad2360	Container_AllocAndStorePtr_ad2360	low	*param_1=0; malloc(0x20); *param_1=block - allocate-and-store, no visible init
+00ad23a0	Container_AllocAndStorePtr_ad23a0	low	*param_1=0; malloc(0x1c); *param_1=block - allocate-and-store, no visible init
+00ad2450	Container_AllocAndStorePtr_ad2450	low	*param_1=0; malloc(0x20); *param_1=block - allocate-and-store, no visible init
+00ad2f20	StdTree_DefaultCtor_ad2f20	medium	malloc(0x18) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00ad2f60	LTextTreeWalkThrough_Destruct	high	calls LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray, resets tree head links, frees buffer = LTextTreeWalkThrough destructor
+00ad2fb0	StdTree_DefaultCtor_ad2fb0	medium	malloc(0x20) + tree head-node self-ref init (size=0) = std::_Tree default ctor

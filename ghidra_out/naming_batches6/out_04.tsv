@@ -1,0 +1,78 @@
+008697f0	PtrHolder_Alloc_sz18_008697f0	low	Zeroes *param_1, malloc(0x18), stores ptr; opaque allocate-and-store ctor, no field init reveals role
+0086c5c0	CPersistInfo_InsertionSortStep_0086c5c0	medium	Calls _Move_backward<pair<u64,CRuntimeScriptedEntityPersist::CPersistInfo>> and std__pair_insertion_sort_shift; insertion-sort shift step for pair sequence
+0086f600	PriorityQueue_PushSift_0086f600	medium	Appends 0xc-byte element via Vector_Reallocate at (this+4), then toggles flag +0xd and calls std__make_heap_Sift_3 = heap/priority_queue push
+0086fa00	CPersistInfo_InsertionSortStep_0086fa00	medium	Identical to 0086c5c0: _Move_backward<pair<u64,CPersistInfo>> + pair_insertion_sort_shift insertion-sort shift step
+008702d0	Handle_InitInvalid_008702d0	low	Sets *p=0xffffffff, p[1]=0, byte=0; initializes a handle/id struct to invalid sentinel
+008709c0	CWorldDriver_FindClosestMeshVolume_DefaultCall_008709c0	medium	Thin wrapper zeroing a local then calling CWorldDriver_FindClosestMeshVolume(local,&out)
+00874ca0	ListSentinel_Ctor_sz10_00874ca0	medium	malloc(0x10); node.next=node.prev=node (self-ref +0/+4) = empty circular doubly-linked list sentinel
+00874d30	ListSentinel_Ctor_sz10_00874d30	medium	malloc(0x10) with self-referential next/prev = empty circular list sentinel ctor
+00876e10	Vector_ComputePotentialGradient_00876e10	medium	Walks linked list of point nodes, sums 1/(dist-param5) over sample offsets (DAT_01385d2c table), outputs finite-difference gradient vector to param_1[0..2]
+00883280	ListSentinel_Ctor_sz68_00883280	medium	malloc(0x68); self-referential next/prev = empty circular list sentinel ctor
+00883300	ListSentinel_Ctor_sz28_00883300	medium	malloc(0x28); self-referential next/prev = empty circular list sentinel ctor
+00883340	ListSentinel_Ctor_sz44_00883340	medium	malloc(0x44); self-referential next/prev = empty circular list sentinel ctor
+008833c0	PtrHolder_Alloc_sz20_008833c0	low	Zeroes *param_1, malloc(0x20), stores ptr; opaque allocate-and-store ctor
+008833f0	PtrHolder_Alloc_sz14_008833f0	low	Zeroes *param_1, malloc(0x14), stores ptr; opaque allocate-and-store ctor
+00883be0	ListSentinel_Ctor_sz68_00883be0	medium	malloc(0x68); self-referential next/prev = empty circular list sentinel ctor
+00883c60	ListSentinel_Ctor_sz28_00883c60	medium	malloc(0x28); self-referential next/prev = empty circular list sentinel ctor
+00883ca0	ListSentinel_Ctor_sz44_00883ca0	medium	malloc(0x44); self-referential next/prev = empty circular list sentinel ctor
+00884180	ListSentinel_Ctor_sz68_00884180	medium	malloc(0x68); self-referential next/prev = empty circular list sentinel ctor (void return)
+008841a0	ListSentinel_Ctor_sz28_008841a0	medium	malloc(0x28); self-referential next/prev = empty circular list sentinel ctor (void return)
+008841c0	ListSentinel_Ctor_sz44_008841c0	medium	malloc(0x44); self-referential next/prev = empty circular list sentinel ctor (void return)
+008841e0	StdList_Ctor_sz14_008841e0	medium	malloc(0x14) proxy node, count=0, node[8]/node[c]=self (next/prev sentinel), node[0]/node[4]=0 = std::list default ctor
+00884620	StdList_Ctor_sz20_00884620	medium	malloc(0x20) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008aee40	PtrHolder_Alloc_sz18_008aee40	low	Zeroes *param_1, malloc(0x18), stores ptr; opaque allocate-and-store ctor
+008aefe0	StdList_Ctor_sz18_008aefe0	medium	malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008afcc0	StdList_Ctor_sz18_008afcc0	medium	malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008b22d0	PtrHolder_Alloc_sz18_008b22d0	low	Zeroes *param_1, malloc(0x18), stores ptr; opaque allocate-and-store ctor
+008b2340	PtrHolder_Alloc_sz18_008b2340	low	Zeroes *param_1, malloc(0x18), stores ptr; opaque allocate-and-store ctor
+008b23b0	PtrHolder_Alloc_sz18_008b23b0	low	Zeroes *param_1, malloc(0x18), stores ptr; opaque allocate-and-store ctor
+008b2790	StdList_Ctor_sz18_008b2790	medium	malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008b2820	StdList_Ctor_sz18_008b2820	medium	malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008b28b0	StdList_Ctor_sz18_008b28b0	medium	malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008b2c20	StdList_Ctor_sz18_008b2c20	medium	malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008b2cb0	StdList_Ctor_sz18_008b2cb0	medium	malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008b2d40	StdList_Ctor_sz18_008b2d40	medium	malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008ebdb0	ListSentinel_Ctor_sz10_008ebdb0	medium	malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+008ebff0	ListSentinel_Ctor_sz10_008ebff0	medium	malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+008f9f30	ListSentinel_Ctor_szc_008f9f30	medium	malloc(0xc); self-referential next/prev = empty circular list sentinel ctor
+008fa040	ListSentinel_Ctor_szc_008fa040	medium	malloc(0xc); self-referential next/prev = empty circular list sentinel ctor
+008fbd20	ListSentinel_Ctor_sz10_008fbd20	medium	malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+0090aec0	Manager_ConstructAndRegister_0090aec0	low	Allocates three 0xc list heads + an 8-byte vector, calls Vector_Insert, sets flags (p[1]=0x800), links self into global intrusive list at DAT_013bb664
+0094b730	ReturnTrue_0094b730	high	Body is just return 1 (constant true stub)
+00987670	ReturnParam_Identity_00987670	high	Returns param_1 unchanged (identity/pass-through stub)
+00987700	ReturnParam_Identity_00987700	high	Returns param_1 unchanged (identity/pass-through stub)
+00999f90	PtrHolder_Alloc_sz14_00999f90	low	Zeroes *param_1, malloc(0x14), stores ptr; opaque allocate-and-store ctor
+009aa690	ListSentinel_Ctor_sz10_009aa690	medium	malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+009aa6c0	PtrHolder_Alloc_sz28_009aa6c0	low	Zeroes *param_1, malloc(0x28), stores ptr; opaque allocate-and-store ctor
+009aa6f0	PtrHolder_Alloc_sz28_009aa6f0	low	Zeroes *param_1, malloc(0x28), stores ptr; opaque allocate-and-store ctor
+009aa720	PtrHolder_Alloc_sz18_009aa720	low	Zeroes *param_1, malloc(0x18), stores ptr; opaque allocate-and-store ctor
+009aa750	PtrHolder_Alloc_sz14_009aa750	low	Zeroes *param_1, malloc(0x14), stores ptr; opaque allocate-and-store ctor
+009ac290	ListSentinel_Ctor_sz10_009ac290	medium	malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+009b3430	PtrHolder_Alloc_sz18_009b3430	low	Zeroes *param_1, malloc(0x18), stores ptr; opaque allocate-and-store ctor
+009b3f00	StdList_Ctor_sz18_009b3f00	medium	malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009b6f40	StdList_Ctor_sz18_009b6f40	medium	malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009bdec0	ListSentinel_Ctor_sz24_009bdec0	medium	malloc(0x24); self-referential next/prev = empty circular list sentinel ctor
+009be170	ListSentinel_Ctor_sz24_009be170	medium	malloc(0x24); self-referential next/prev = empty circular list sentinel ctor
+009c2200	ListSentinel_Ctor_szc_009c2200	medium	malloc(0xc); self-referential next/prev = empty circular list sentinel ctor
+009c22b0	PtrHolder_Alloc_sz20_009c22b0	low	Zeroes *param_1, malloc(0x20), stores ptr; opaque allocate-and-store ctor
+009c2320	PtrHolder_Alloc_sz14_009c2320	low	Zeroes *param_1, malloc(0x14), stores ptr; opaque allocate-and-store ctor
+009c2540	ListSentinel_Ctor_szc_009c2540	medium	malloc(0xc); self-referential next/prev = empty circular list sentinel ctor
+009c25f0	StdList_Ctor_sz20_009c25f0	medium	malloc(0x20) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009c26e0	StdList_Ctor_sz14_009c26e0	medium	malloc(0x14) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009c2b00	StdList_Ctor_sz20_009c2b00	medium	malloc(0x20) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009c2bd0	StdList_Ctor_sz14_009c2bd0	medium	malloc(0x14) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009c6710	ListSentinel_Ctor_sz14_009c6710	medium	malloc(0x14); self-referential next/prev = empty circular list sentinel ctor
+009c67b0	ListSentinel_Ctor_szc_009c67b0	medium	malloc(0xc); self-referential next/prev = empty circular list sentinel ctor
+009c68d0	ListSentinel_Ctor_sz10_009c68d0	medium	malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+009c6910	ListSentinel_Ctor_szb8_009c6910	medium	malloc(0xb8); self-referential next/prev = empty circular list sentinel ctor
+009c6ac0	ListSentinel_Ctor_sz14_009c6ac0	medium	malloc(0x14); self-referential next/prev = empty circular list sentinel ctor
+009c6b60	ListSentinel_Ctor_szc_009c6b60	medium	malloc(0xc); self-referential next/prev = empty circular list sentinel ctor
+009c7000	ListSentinel_Ctor_sz10_009c7000	medium	malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+009c7730	ListSentinel_Ctor_szb8_009c7730	medium	malloc(0xb8); self-referential next/prev = empty circular list sentinel ctor
+009d2840	PtrHolder_Alloc_sz20_009d2840	low	Zeroes *param_1, malloc(0x20), stores ptr; opaque allocate-and-store ctor
+009d2ab0	StdList_Ctor_sz20_009d2ab0	medium	malloc(0x20) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009d3890	StdList_Ctor_sz18_009d3890	medium	malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009d46d0	StdList_Ctor_sz20_009d46d0	medium	malloc(0x20) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009d7740	ListSentinel_Ctor_sz10_009d7740	medium	malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+009d7850	PtrHolder_Alloc_sz14_009d7850	low	Zeroes *param_1, malloc(0x14), stores ptr; opaque allocate-and-store ctor
+009d7b40	StdList_Ctor_sz14_009d7b40	medium	malloc(0x14) proxy node, count=0, sentinel next/prev self = std::list default ctor

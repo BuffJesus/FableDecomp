@@ -1,0 +1,2079 @@
+@@@FUNC 00c3b440 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c3b440(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c3c7a0 109 0
+@@CALLERS 
+@@CALLEES Audio_DeleteBuffers, CTCHeroStats::ProcessEventNotification, FUN_00c3c4e0, FUN_00c4e1b0
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_00c3c7a0(int param_1,int param_2)
+
+{
+  int iVar1;
+  
+  iVar1 = FUN_00c3c4e0(param_2);
+  if (iVar1 < 0) {
+    return iVar1;
+  }
+  if ((DAT_0143bc2c != 0) && (*(int *)(DAT_0143bc2c + 0x1d4) != 0)) {
+    if (((*(byte *)(param_1 + 0x38) & 1) != 0) && (2 < *(uint *)(param_2 + 4))) {
+      Audio_DeleteBuffers();
+      return iVar1;
+    }
+    iVar1 = FUN_00c4e1b0(param_1 + 0x10);
+    if (iVar1 < 0) {
+      CTCHeroStats__ProcessEventNotification();
+      return iVar1;
+    }
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c3ca50 32 0
+@@CALLERS 
+@@CALLEES FinishWithDynamicTextures
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c3ca50(int param_1,CEngineScreenEffectDisplacementRenderer *param_2)
+
+{
+  if (*(CEngineScreenEffectDisplacementRenderer **)(param_1 + 8) == param_2) {
+    *(undefined4 *)(param_1 + 8) =
+         *(undefined4 *)(*(CEngineScreenEffectDisplacementRenderer **)(param_1 + 8) + 8);
+  }
+  CEngineScreenEffectDisplacementRenderer::FinishWithDynamicTextures(param_2);
+  *(int *)(param_1 + 0xc) = *(int *)(param_1 + 0xc) + -1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c3cfe0 46 0
+@@CALLERS 
+@@CALLEES QueryPerformanceCounter
+@@STRINGS 
+@@DECOMP
+
+undefined8 __fastcall FUN_00c3cfe0(int param_1)
+
+{
+  LARGE_INTEGER local_8;
+  
+  QueryPerformanceCounter(&local_8);
+  return CONCAT44((local_8.s.HighPart - *(int *)(param_1 + 0x194)) -
+                  (uint)(local_8.s.LowPart < *(uint *)(param_1 + 400)),
+                  local_8.s.LowPart - *(uint *)(param_1 + 400));
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c3ebb0 89 0
+@@CALLERS 
+@@CALLEES ~CBossDef, InformOfEvent
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_00c3ebb0(CTCHeroStats *param_1)
+
+{
+  CBossDef *this;
+  undefined4 extraout_EAX;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_0121512b;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroStats::InformOfEvent(param_1,(CBase *)0x248);
+  local_4 = 0;
+  if (this != (CBossDef *)0x0) {
+    CBossDef::~CBossDef(this);
+    ExceptionList = local_c;
+    return extraout_EAX;
+  }
+  ExceptionList = local_c;
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c3f970 89 0
+@@CALLERS 
+@@CALLEES CAIStateGroupBase, InformOfEvent
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_00c3f970(CTCHeroStats *param_1)
+
+{
+  CAIStateGroupBase *this;
+  undefined4 uVar1;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_0121526b;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroStats::InformOfEvent(param_1,(CBase *)0x250);
+  local_4 = 0;
+  if (this != (CAIStateGroupBase *)0x0) {
+    uVar1 = CAIStateGroupBase::CAIStateGroupBase(this);
+    ExceptionList = local_c;
+    return uVar1;
+  }
+  ExceptionList = local_c;
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c40e60 75 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+float10 FUN_00c40e60(float param_1)
+
+{
+  float10 fVar1;
+  float10 fVar2;
+  
+  fVar1 = (float10)fscale((float10)1,ROUND((float10)3.321928 * (float10)param_1));
+  fVar2 = (float10)f2xm1((float10)3.321928 * (float10)param_1 -
+                         (float10)(float)ROUND((float10)3.321928 * (float10)param_1));
+  return (float10)(float)((fVar2 + (float10)1.0) * fVar1);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c41c40 498 0
+@@CALLERS 
+@@CALLEES SetCameraPos
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c41c40(CShaderRenderManager *param_1,undefined4 *param_2)
+
+{
+  CShaderRenderManager *this;
+  CShaderRenderManager *this_00;
+  int extraout_ECX;
+  undefined4 local_c;
+  undefined4 local_8;
+  undefined4 local_4;
+  
+  local_8 = param_2[1];
+  local_c = *param_2;
+  local_4 = param_2[2];
+  CShaderRenderManager::SetCameraPos(param_1,(C3DVector *)&local_c);
+  local_8 = param_2[4];
+  local_c = param_2[3];
+  local_4 = param_2[5];
+  CShaderRenderManager::SetCameraPos(this,(C3DVector *)&local_c);
+  local_8 = param_2[7];
+  local_c = param_2[6];
+  local_4 = param_2[8];
+  CShaderRenderManager::SetCameraPos(this_00,(C3DVector *)&local_c);
+  if (*(float *)(extraout_ECX + 0x17c) != (float)param_2[0xe]) {
+    *(undefined4 *)(extraout_ECX + 0x17c) = param_2[0xe];
+    *(uint *)(extraout_ECX + 0x1d8) = *(uint *)(extraout_ECX + 0x1d8) | 0x40000;
+  }
+  if (*(float *)(extraout_ECX + 0x180) != (float)param_2[0xc]) {
+    *(undefined4 *)(extraout_ECX + 0x180) = param_2[0xc];
+    *(uint *)(extraout_ECX + 0x1d8) = *(uint *)(extraout_ECX + 0x1d8) | 0x40000;
+  }
+  if (*(float *)(extraout_ECX + 0x184) != (float)param_2[0xd]) {
+    *(undefined4 *)(extraout_ECX + 0x184) = param_2[0xd];
+    *(uint *)(extraout_ECX + 0x1d8) = *(uint *)(extraout_ECX + 0x1d8) | 0x40000;
+  }
+  if (*(int *)(extraout_ECX + 400) != param_2[9]) {
+    *(undefined4 *)(extraout_ECX + 400) = param_2[9];
+    *(uint *)(extraout_ECX + 0x1d8) = *(uint *)(extraout_ECX + 0x1d8) | 0x100000;
+  }
+  if (*(int *)(extraout_ECX + 0x194) != param_2[10]) {
+    *(undefined4 *)(extraout_ECX + 0x194) = param_2[10];
+    *(uint *)(extraout_ECX + 0x1d8) = *(uint *)(extraout_ECX + 0x1d8) | 0x100000;
+  }
+  if (*(float *)(extraout_ECX + 0x198) != (float)param_2[0xb]) {
+    *(undefined4 *)(extraout_ECX + 0x198) = param_2[0xb];
+    *(uint *)(extraout_ECX + 0x1d8) = *(uint *)(extraout_ECX + 0x1d8) | 0x200000;
+  }
+  if (*(float *)(extraout_ECX + 0x188) != (float)param_2[0xf]) {
+    *(undefined4 *)(extraout_ECX + 0x188) = param_2[0xf];
+    *(uint *)(extraout_ECX + 0x1d8) = *(uint *)(extraout_ECX + 0x1d8) | 0x40000;
+  }
+  if (*(float *)(extraout_ECX + 0x18c) != (float)param_2[0x10]) {
+    *(undefined4 *)(extraout_ECX + 0x18c) = param_2[0x10];
+    *(uint *)(extraout_ECX + 0x1d8) = *(uint *)(extraout_ECX + 0x1d8) | 0x10000;
+  }
+  if (*(int *)(extraout_ECX + 0x19c) != param_2[0x11]) {
+    *(undefined4 *)(extraout_ECX + 0x19c) = param_2[0x11];
+    *(uint *)(extraout_ECX + 0x1d8) = *(uint *)(extraout_ECX + 0x1d8) | 0x400000;
+  }
+  if (*(int *)(extraout_ECX + 0x1a0) != param_2[0x12]) {
+    *(undefined4 *)(extraout_ECX + 0x1a0) = param_2[0x12];
+    *(uint *)(extraout_ECX + 0x1d8) = *(uint *)(extraout_ECX + 0x1d8) | 0x400000;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c42c30 75 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+float10 FUN_00c42c30(float param_1)
+
+{
+  float10 fVar1;
+  float10 fVar2;
+  
+  fVar1 = (float10)fscale((float10)1,ROUND((float10)3.321928 * (float10)param_1));
+  fVar2 = (float10)f2xm1((float10)3.321928 * (float10)param_1 -
+                         (float10)(float)ROUND((float10)3.321928 * (float10)param_1));
+  return (float10)(float)((fVar2 + (float10)1.0) * fVar1);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c43530 61 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+uint __fastcall FUN_00c43530(int *param_1)
+
+{
+  char cVar1;
+  uint uVar2;
+  
+  if ((int *)param_1[0x14] != (int *)0x0) {
+    uVar2 = (**(code **)(*(int *)param_1[0x14] + 0x10))();
+    if ((char)uVar2 != '\0') {
+      return uVar2 & 0xffffff00;
+    }
+  }
+  cVar1 = (**(code **)(*param_1 + 4))();
+  uVar2 = DAT_0139c9a8;
+  if (cVar1 == '\0') {
+    uVar2 = DAT_0139c990;
+  }
+  return CONCAT31((int3)(-(~uVar2 & param_1[3]) >> 8),'\x01' - ((~uVar2 & param_1[3]) != 0));
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c43910 110 0
+@@CALLERS 
+@@CALLEES FUN_00c43390
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_00c43910(int *param_1)
+
+{
+  char cVar1;
+  undefined4 *puVar2;
+  undefined4 uVar3;
+  undefined4 *puVar4;
+  int iVar5;
+  
+  if (param_1[0x14] != 0) {
+    return CONCAT31((int3)((uint)param_1[0x14] >> 8),1);
+  }
+  iVar5 = param_1[0x1e];
+  if (iVar5 == 0) {
+    if ((param_1[0x17] == 0) || (param_1[0x17] == 0)) {
+      iVar5 = 0;
+    }
+    else {
+      iVar5 = *(int *)(param_1[0x15] + param_1[0x19] * 4);
+    }
+  }
+  cVar1 = (**(code **)(*param_1 + 4))();
+  puVar4 = &DAT_0139c9d0;
+  if (cVar1 == '\0') {
+    puVar4 = &DAT_0139c9b8;
+  }
+  cVar1 = (**(code **)(*param_1 + 4))();
+  puVar2 = &DAT_0139c9a0;
+  if (cVar1 == '\0') {
+    puVar2 = &DAT_0139c988;
+  }
+  uVar3 = FUN_00c43390(iVar5,DAT_0139c9fc,puVar2,puVar4);
+  return uVar3;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c449c0 178 0
+@@CALLERS 
+@@CALLEES FUN_00c448d0, CTCHeroStats_InitializeShadowRenderer, ClearPrimitivesIfNecessary, CombatSequence_ProcessActionRound
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00c449c0(int *param_1,uint param_2)
+
+{
+  uint uVar1;
+  int iVar2;
+  
+  uVar1 = CTCHeroStats_InitializeShadowRenderer(param_2);
+  if ((char)uVar1 == '\0') {
+LAB_00c44a58:
+    return uVar1 & 0xffffff00;
+  }
+  param_1[0x3f] = 0;
+  param_1[0x40] = 0;
+  param_1[0x41] = 0;
+  param_1[0x42] = 0;
+  param_1[0x43] = 0;
+  param_1[0x44] = 0;
+  param_1[0x45] = 0;
+  param_1[0x3f] = 0;
+  param_1[0x40] = 0;
+  param_1[0x41] = (-(uint)((param_2 & 0x80) != 0) & 10000) - 10000;
+  if (((DAT_0139c98c == 0) || ((param_2 & ~DAT_0139c990) != 0)) && (DAT_0139c9bc == -1)) {
+    iVar2 = CombatSequence_ProcessActionRound(param_1,param_1 + 0x14);
+    if (iVar2 != 0) {
+      NPlayerGui::CDrawAutoPickups::ClearPrimitivesIfNecessary((CDrawAutoPickups *)&DAT_0143bb58);
+      uVar1 = (**(code **)(*param_1 + 0x10))();
+      goto LAB_00c44a58;
+    }
+    param_1[4] = param_1[4] | 0x20000;
+  }
+  uVar1 = FUN_00c448d0();
+  return uVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c452f0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c452f0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c45440 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c45440(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c454e0 175 0
+@@CALLERS 
+@@CALLEES CCharStringData::Release, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+@@STRINGS d:\dev\audio\ver_fable_1.5_b\libpk\PKCTRList.h	Error: Cannot resolve access to a key object in a list!
+@@DECOMP
+
+undefined4 FUN_00c454e0(void)
+
+{
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar1;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lStack_11;
+  undefined *local_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  puStack_8 = &LAB_01215428;
+  pvStack_c = ExceptionList;
+  local_10 = PTR_DAT_0139c900;
+  local_4 = 0;
+  ExceptionList = &pvStack_c;
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          *)&local_10,
+                         (CIsThingAlive *)"d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCTRList.h");
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_0122e028);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_00000027);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_012b1ae4);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)
+                                "Error: Cannot resolve access to a key object in a list!");
+  NScript::
+  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            (pCVar1,(CIsThingAlive *)&DAT_0129b208);
+  if (DAT_0143bb2c != (code *)0x0) {
+    (*DAT_0143bb2c)();
+  }
+  local_4 = 0xffffffff;
+  CCharStringData__Release();
+  std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&lStack_11);
+  ExceptionList = pvStack_c;
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c45590 175 0
+@@CALLERS 
+@@CALLEES CCharStringData::Release, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+@@STRINGS d:\dev\audio\ver_fable_1.5_b\libpk\PKCTRList.h	Error: Cannot resolve access to a key object in a list!
+@@DECOMP
+
+undefined4 FUN_00c45590(void)
+
+{
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar1;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lStack_11;
+  undefined *local_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  puStack_8 = &LAB_01215448;
+  pvStack_c = ExceptionList;
+  local_10 = PTR_DAT_0139c900;
+  local_4 = 0;
+  ExceptionList = &pvStack_c;
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          *)&local_10,
+                         (CIsThingAlive *)"d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCTRList.h");
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_0122e028);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)0x2c);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_012b1ae4);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)
+                                "Error: Cannot resolve access to a key object in a list!");
+  NScript::
+  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            (pCVar1,(CIsThingAlive *)&DAT_0129b208);
+  if (DAT_0143bb2c != (code *)0x0) {
+    (*DAT_0143bb2c)();
+  }
+  local_4 = 0xffffffff;
+  CCharStringData__Release();
+  std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&lStack_11);
+  ExceptionList = pvStack_c;
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c45990 1440 0
+@@CALLERS 
+@@CALLEES CCharStringData::Release, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+@@STRINGS Ambient cube:-	   Apex (
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __fastcall FUN_00c45990(int param_1)
+
+{
+  bool bVar1;
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar2;
+  int iVar3;
+  float *pfVar4;
+  undefined8 uVar5;
+  undefined *local_20;
+  undefined *apuStack_1c [2];
+  void *local_14;
+  undefined1 *puStack_10;
+  undefined4 local_c;
+  
+  puStack_10 = &LAB_01215528;
+  local_14 = ExceptionList;
+  pfVar4 = (float *)(param_1 + 0x18);
+  bVar1 = false;
+  iVar3 = 0;
+  do {
+    if (bVar1) goto LAB_00c459ef;
+    bVar1 = *pfVar4 != _DAT_0122dedc;
+    iVar3 = iVar3 + 1;
+    pfVar4 = pfVar4 + 7;
+  } while (iVar3 < 8);
+  if (bVar1) {
+LAB_00c459ef:
+    local_20 = PTR_DAT_0139c900;
+    local_c = 0;
+    ExceptionList = &local_14;
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_20,(CIsThingAlive *)"Ambient cube:-");
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar2,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_c = 0xffffffff;
+    CCharStringData__Release();
+    local_20 = PTR_DAT_0139c900;
+    local_c = 1;
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_20,(CIsThingAlive *)"   Apex (");
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x0);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x0);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x0);
+    uVar5 = NScript::
+            operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                      (pCVar2,(CIsThingAlive *)&DAT_012b7d2c);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)uVar5,(CIsThingAlive *)((ulonglong)uVar5 >> 0x20));
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar2,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_c = 0xffffffff;
+    CCharStringData__Release();
+    local_20 = PTR_DAT_0139c900;
+    local_c = 2;
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_20,(CIsThingAlive *)"   Apex (");
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x0);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x0);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x1);
+    uVar5 = NScript::
+            operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                      (pCVar2,(CIsThingAlive *)&DAT_012b7d2c);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)uVar5,(CIsThingAlive *)((ulonglong)uVar5 >> 0x20));
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar2,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_c = 0xffffffff;
+    CCharStringData__Release();
+    local_20 = PTR_DAT_0139c900;
+    local_c = 3;
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_20,(CIsThingAlive *)"   Apex (");
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x0);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x1);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x0);
+    uVar5 = NScript::
+            operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                      (pCVar2,(CIsThingAlive *)&DAT_012b7d2c);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)uVar5,(CIsThingAlive *)((ulonglong)uVar5 >> 0x20));
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar2,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_c = 0xffffffff;
+    CCharStringData__Release();
+    local_20 = PTR_DAT_0139c900;
+    local_c = 4;
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_20,(CIsThingAlive *)"   Apex (");
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x0);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x1);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x1);
+    uVar5 = NScript::
+            operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                      (pCVar2,(CIsThingAlive *)&DAT_012b7d2c);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)uVar5,(CIsThingAlive *)((ulonglong)uVar5 >> 0x20));
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar2,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_c = 0xffffffff;
+    CCharStringData__Release();
+    local_20 = PTR_DAT_0139c900;
+    local_c = 5;
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_20,(CIsThingAlive *)"   Apex (");
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x1);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x0);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x0);
+    uVar5 = NScript::
+            operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                      (pCVar2,(CIsThingAlive *)&DAT_012b7d2c);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)uVar5,(CIsThingAlive *)((ulonglong)uVar5 >> 0x20));
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar2,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_c = 0xffffffff;
+    CCharStringData__Release();
+    local_20 = PTR_DAT_0139c900;
+    local_c = 6;
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_20,(CIsThingAlive *)"   Apex (");
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x1);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x0);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x1);
+    uVar5 = NScript::
+            operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                      (pCVar2,(CIsThingAlive *)&DAT_012b7d2c);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)uVar5,(CIsThingAlive *)((ulonglong)uVar5 >> 0x20));
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar2,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_c = 0xffffffff;
+    CCharStringData__Release();
+    local_20 = PTR_DAT_0139c900;
+    local_c = 7;
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_20,(CIsThingAlive *)"   Apex (");
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x1);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x1);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x0);
+    uVar5 = NScript::
+            operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                      (pCVar2,(CIsThingAlive *)&DAT_012b7d2c);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)uVar5,(CIsThingAlive *)((ulonglong)uVar5 >> 0x20));
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar2,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_c = 0xffffffff;
+    CCharStringData__Release();
+    apuStack_1c[0] = PTR_DAT_0139c900;
+    local_c = 8;
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)apuStack_1c,(CIsThingAlive *)"   Apex (");
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x1);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x1);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e024);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)0x1);
+    uVar5 = NScript::
+            operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                      (pCVar2,(CIsThingAlive *)&DAT_012b7d2c);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)uVar5,(CIsThingAlive *)((ulonglong)uVar5 >> 0x20));
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar2,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_c = 0xffffffff;
+    CCharStringData__Release();
+  }
+  ExceptionList = local_14;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c46bb0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c46bb0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c479a0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c479a0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c47af0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c47af0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c47b90 175 0
+@@CALLERS 
+@@CALLEES CCharStringData::Release, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+@@STRINGS d:\dev\audio\ver_fable_1.5_b\libpk\PKCTRList.h	Error: Cannot resolve access to a key object in a list!
+@@DECOMP
+
+undefined4 FUN_00c47b90(void)
+
+{
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar1;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lStack_11;
+  undefined *local_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  puStack_8 = &LAB_01215718;
+  pvStack_c = ExceptionList;
+  local_10 = PTR_DAT_0139c900;
+  local_4 = 0;
+  ExceptionList = &pvStack_c;
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          *)&local_10,
+                         (CIsThingAlive *)"d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCTRList.h");
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_0122e028);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_00000027);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_012b1ae4);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)
+                                "Error: Cannot resolve access to a key object in a list!");
+  NScript::
+  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            (pCVar1,(CIsThingAlive *)&DAT_0129b208);
+  if (DAT_0143bb2c != (code *)0x0) {
+    (*DAT_0143bb2c)();
+  }
+  local_4 = 0xffffffff;
+  CCharStringData__Release();
+  std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&lStack_11);
+  ExceptionList = pvStack_c;
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c47c40 175 0
+@@CALLERS 
+@@CALLEES CCharStringData::Release, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+@@STRINGS d:\dev\audio\ver_fable_1.5_b\libpk\PKCTRList.h	Error: Cannot resolve access to a key object in a list!
+@@DECOMP
+
+undefined4 FUN_00c47c40(void)
+
+{
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar1;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lStack_11;
+  undefined *local_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  puStack_8 = &LAB_01215738;
+  pvStack_c = ExceptionList;
+  local_10 = PTR_DAT_0139c900;
+  local_4 = 0;
+  ExceptionList = &pvStack_c;
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          *)&local_10,
+                         (CIsThingAlive *)"d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCTRList.h");
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_0122e028);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)0x2c);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_012b1ae4);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)
+                                "Error: Cannot resolve access to a key object in a list!");
+  NScript::
+  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            (pCVar1,(CIsThingAlive *)&DAT_0129b208);
+  if (DAT_0143bb2c != (code *)0x0) {
+    (*DAT_0143bb2c)();
+  }
+  local_4 = 0xffffffff;
+  CCharStringData__Release();
+  std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&lStack_11);
+  ExceptionList = pvStack_c;
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c47f10 761 0
+@@CALLERS 
+@@CALLEES GetAnimFilter, FUN_00c626a0, DrawGetWorldMap, GetCurrentStateGroupDebugText, FUN_00c48a00, OnReadFinished, FUN_00c48be0, FUN_00c48b40, DrawGetEnvironment, CTCHeroExperience_ProcessSuccessfulBlock, GetNextRegionOnRouteTo, FUN_00c62790, FUN_00c48c80, operator_new, IUnknown_Release, FUN_00c62920, operator_delete, FUN_00c48860, FUN_00c62a50, $E2, operator=
+@@STRINGS 
+@@DECOMP
+
+/* WARNING (jumptable): Unable to track spacebase fully for stack */
+
+void __fastcall FUN_00c47f10(int param_1)
+
+{
+  CIDrawWorldMap *pCVar1;
+  CIDrawEnvironment *pCVar2;
+  long lVar3;
+  CCharString *pCVar4;
+  CCharString *pCVar5;
+  CCharString *pCVar6;
+  CAnimFilterBase *pCVar7;
+  uint uVar8;
+  CAIBrain *this;
+  long unaff_EDI;
+  undefined4 uVar9;
+  undefined4 *puVar10;
+  int local_b4;
+  void *local_b0;
+  int local_ac;
+  undefined1 local_a8 [4];
+  CIDrawWorldMap *local_a4;
+  CIDrawWorldMap *local_a0;
+  undefined4 local_9c;
+  undefined4 local_98;
+  undefined4 local_94;
+  undefined4 local_90;
+  CIntelligentPointer<CThingCreatureBase> local_8c [8];
+  undefined4 local_84;
+  undefined1 local_80 [8];
+  undefined1 local_78 [4];
+  CCharString *local_74;
+  CCharString *local_70;
+  CCharString *local_6c;
+  undefined4 local_68;
+  uint local_64;
+  CIDrawWorldMap *local_60;
+  undefined1 local_5c [4];
+  undefined4 local_58 [5];
+  CActiveFile local_44 [48];
+  void *local_14;
+  undefined1 *puStack_10;
+  uint local_c;
+  
+  local_c = 0xffffffff;
+  puStack_10 = &LAB_01215939;
+  local_14 = ExceptionList;
+  this = (CAIBrain *)0x0;
+  local_ac = param_1 + 0x18;
+  local_b4 = 0;
+  ExceptionList = &local_14;
+  do {
+    FUN_00c48860(local_58);
+    local_c = 0;
+    switch(local_58[0]) {
+    case 1:
+      pCVar7 = NCreatureMode::CModeBlock::GetAnimFilter((CModeBlock *)local_58);
+      local_9c = *(undefined4 *)pCVar7;
+      local_98 = *(undefined4 *)(pCVar7 + 4);
+      local_94 = *(undefined4 *)(pCVar7 + 8);
+      local_90 = *(undefined4 *)(pCVar7 + 0xc);
+      CIntelligentPointer<CThingCreatureBase>::operator=
+                (local_8c,(CIntelligentPointer<class_CThingCreatureBase> *)(pCVar7 + 0x10));
+      local_84 = *(undefined4 *)(pCVar7 + 0x18);
+      local_c._0_1_ = 2;
+      local_b0 = operator_new(0x14);
+      local_c._0_1_ = 3;
+      if (local_b0 == (void *)0x0) {
+        this = (CAIBrain *)0x0;
+      }
+      else {
+        puVar10 = &local_98;
+        lVar3 = CWorldMap::GetNextRegionOnRouteTo((CWorldMap *)local_8c,(long)puVar10,unaff_EDI);
+        this = (CAIBrain *)FUN_00c62920(local_9c,lVar3,puVar10);
+      }
+      local_c = CONCAT31(local_c._1_3_,2);
+      pCVar4 = CAIBrain::GetCurrentStateGroupDebugText(this);
+      pCVar5 = CAIBrain::GetCurrentStateGroupDebugText(this);
+      pCVar6 = CAIBrain::GetCurrentStateGroupDebugText(this);
+      if ((((int)pCVar4 < 1) || ((int)pCVar5 < 1)) || ((int)pCVar6 < 0)) {
+        local_78[0] = 0;
+        if (this != (CAIBrain *)0x0) {
+          IUnknown_Release();
+          operator_delete(this);
+        }
+        this = (CAIBrain *)0x0;
+      }
+      else {
+        local_78[0] = 1;
+        local_74 = pCVar4;
+        local_70 = pCVar5;
+        local_6c = pCVar6;
+      }
+      FUN_00c48be0(local_78);
+      local_c = local_c & 0xffffff00;
+      CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)local_8c);
+      break;
+    case 2:
+      NCreatureMode::CModeBlock::GetAnimFilter((CModeBlock *)local_58);
+      if (this != (CAIBrain *)0x0) {
+        IUnknown_Release();
+        operator_delete(this);
+      }
+      this = (CAIBrain *)0x0;
+      FUN_00c48a00(local_5c);
+      break;
+    case 3:
+      pCVar7 = NCreatureMode::CModeBlock::GetAnimFilter((CModeBlock *)local_58);
+      if (this != (CAIBrain *)0x0) {
+        FUN_00c626a0(*(undefined4 *)pCVar7,*(undefined4 *)(pCVar7 + 4),*(undefined4 *)(pCVar7 + 8));
+        pCVar1 = CEditWorld::DrawGetWorldMap((CEditWorld *)this);
+        if (-1 < (int)pCVar1) {
+          local_a8[0] = 1;
+          local_a4 = pCVar1;
+          local_a0 = CEditWorld::DrawGetWorldMap((CEditWorld *)this);
+          CTCHeroExperience_ProcessSuccessfulBlock(local_a8);
+          break;
+        }
+      }
+      local_a8[0] = 0;
+      CTCHeroExperience_ProcessSuccessfulBlock(local_a8);
+      break;
+    case 4:
+      pCVar7 = NCreatureMode::CModeBlock::GetAnimFilter((CModeBlock *)local_58);
+      pCVar1 = CEditWorld::DrawGetWorldMap((CEditWorld *)this);
+      uVar8 = 0xffffffff;
+      if (-1 < (int)pCVar1) {
+        uVar9 = *(undefined4 *)*(CWorld **)pCVar7;
+        pCVar2 = CWorld::DrawGetEnvironment(*(CWorld **)pCVar7);
+        FUN_00c62a50(pCVar2,uVar9);
+        local_c = CONCAT31(local_c._1_3_,1);
+        uVar8 = FUN_00c62790(local_80,*(undefined4 *)(*(int *)pCVar7 + 4));
+        if (-1 < (int)uVar8) {
+          pCVar1 = CEditWorld::DrawGetWorldMap((CEditWorld *)this);
+        }
+        local_c = local_c & 0xffffff00;
+        _E2();
+      }
+      *(uint *)(*(int *)pCVar7 + 8) = ((int)uVar8 < 0) - 1 & uVar8;
+      local_64 = ((int)pCVar1 < 0) - 1 & (uint)pCVar1;
+      local_68 = *(undefined4 *)pCVar7;
+      local_60 = CEditWorld::DrawGetWorldMap((CEditWorld *)this);
+      FUN_00c48b40(&local_68);
+      break;
+    case 5:
+      pCVar7 = NCreatureMode::CModeBlock::GetAnimFilter((CModeBlock *)local_58);
+      local_b4 = *(int *)pCVar7;
+    }
+    local_c = 0xffffffff;
+    CFileInstaller::CActiveFile::OnReadFinished(local_44);
+    if (local_b4 != 0) {
+      FUN_00c48c80(&local_b0);
+      ExceptionList = local_14;
+      return;
+    }
+  } while( true );
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c48e00 288 0
+@@CALLERS 
+@@CALLEES CCharStringData::Release, operator=, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, GetNextCirclePoint, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+@@STRINGS d:\dev\audio\ver_fable_1.5_b\libpk\PKCStaticQueue.h	Nothing in this queue - you should have checked first!
+@@DECOMP
+
+undefined4 * __thiscall FUN_00c48e00(CAIStateGroup_HoverHornetQueen *param_1,undefined4 *param_2)
+
+{
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar1;
+  long lVar2;
+  undefined4 *puVar3;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lStack_11;
+  undefined *local_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01215a18;
+  pvStack_c = ExceptionList;
+  local_10 = (undefined *)0x0;
+  ExceptionList = &pvStack_c;
+  if (*(int *)(param_1 + 0xc) == 0) {
+    local_10 = PTR_DAT_0139c900;
+    local_4 = 0;
+    ExceptionList = &pvStack_c;
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_10,
+                           (CIsThingAlive *)
+                           "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCStaticQueue.h");
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar1,(CIsThingAlive *)&DAT_0122e028);
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar1,(CIsThingAlive *)0x43);
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar1,(CIsThingAlive *)&DAT_012b1ae4);
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar1,(CIsThingAlive *)
+                                  "Nothing in this queue - you should have checked first!");
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar1,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_4 = 0xffffffff;
+    CCharStringData__Release();
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&lStack_11);
+  }
+  lVar2 = CAIStateGroup_HoverHornetQueen::GetNextCirclePoint(param_1);
+  *(int *)(param_1 + 0xc) = *(int *)(param_1 + 0xc) + -1;
+  puVar3 = (undefined4 *)(lVar2 * 0x40 + *(int *)(param_1 + 8));
+  *param_2 = *puVar3;
+  CEnginePrimitive2DText::operator=
+            ((CEnginePrimitive2DText *)(param_2 + 1),(CEnginePrimitive2DText *)(puVar3 + 1));
+  param_2[8] = puVar3[8];
+  param_2[9] = puVar3[9];
+  param_2[10] = puVar3[10];
+  param_2[0xb] = puVar3[0xb];
+  param_2[0xc] = puVar3[0xc];
+  param_2[0xd] = puVar3[0xd];
+  param_2[0xe] = puVar3[0xe];
+  param_2[0xf] = puVar3[0xf];
+  ExceptionList = pvStack_c;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c48f30 28 0
+@@CALLERS 
+@@CALLEES CBaseIntelligentPointer
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00c48f30(undefined4 *param_1)
+
+{
+  *param_1 = 0;
+  param_1[2] = 0;
+  param_1[3] = 0;
+  param_1[4] = 0;
+  CBaseIntelligentPointer::CBaseIntelligentPointer((CBaseIntelligentPointer *)(param_1 + 5));
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c4c7a0 257 0
+@@CALLERS 
+@@CALLEES CCharStringData::Release, PKRACMasterObject_VerifyAndNotify, AddSuccessfulBlockParry, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, EventQueue_ProcessWithTimeout, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+@@STRINGS .\PKRACMasterObject.cpp	No room for this received object... sniff sniff
+@@DECOMP
+
+void __thiscall FUN_00c4c7a0(uint *param_1,char param_2)
+
+{
+  uint uVar1;
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar2;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lStack_19;
+  undefined *local_18;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  uint local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01215fb9;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  if (*param_1 <= param_1[1]) {
+    local_18 = PTR_DAT_0139c900;
+    local_4 = 1;
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_18,(CIsThingAlive *)".\\PKRACMasterObject.cpp");
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e028);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0000004f);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_012b1ae4);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)"No room for this received object... sniff sniff"
+                          );
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar2,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_4 = local_4 & 0xffffff00;
+    CCharStringData__Release();
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&lStack_19);
+  }
+  if (param_2 == '\0') {
+    param_1[2] = param_1[2] + 1;
+  }
+  uVar1 = param_1[1];
+  param_1[1] = uVar1 + 1;
+  if ((*param_1 == uVar1 + 1) && ((char)param_1[10] != '\0')) {
+    PKRACMasterObject_VerifyAndNotify();
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c51f50 113 0
+@@CALLERS 
+@@CALLEES CDrawGuildSeal_SetProperty, PropertySerializer_WriteProperty
+@@STRINGS 
+@@DECOMP
+
+int FUN_00c51f50(uint param_1,int param_2,undefined4 param_3,undefined4 param_4)
+
+{
+  int iVar1;
+  
+  if ((param_1 & 0x7fffffff) < 0x1c) {
+                    /* WARNING: Could not recover jumptable at 0x00c51f75. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+    iVar1 = (*(code *)(&PTR_LAB_00c527d0)[param_1])();
+    return iVar1;
+  }
+  iVar1 = -4;
+  if (param_2 != 0) {
+    iVar1 = CDrawGuildSeal_SetProperty(param_1,param_3,param_4,&param_4);
+    if (iVar1 == 0) {
+      PropertySerializer_WriteProperty(param_4,param_2);
+    }
+  }
+  return iVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c52980 134 0
+@@CALLERS 
+@@CALLEES NormalizeVectorPair, CDrawGuildSeal_SetPropertyEx, SetProjectionTransform, GetCurrentScriptPriority, FUN_00c3dde0, PropertySerializer_WriteProperty
+@@STRINGS 
+@@DECOMP
+
+EScriptAIPriority __thiscall
+FUN_00c52980(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4,undefined4 param_5
+            )
+
+{
+  EScriptAIPriority EVar1;
+  CShaderRenderManager *this;
+  
+  EVar1 = 0;
+  if (*(int *)(param_1 + 0xe8) == 0) {
+    if (*(int *)(param_1 + 4) == 0) {
+      this = (CShaderRenderManager *)FUN_00c3dde0();
+      *(CShaderRenderManager **)(param_1 + 4) = this;
+      CShaderRenderManager::SetProjectionTransform(this,(CMatrix4x4 *)(param_1 + 8));
+      NormalizeVectorPair();
+    }
+    param_2 = 0;
+    EVar1 = CDrawGuildSeal_SetPropertyEx(0,param_3,param_4,param_5,&param_2);
+    PropertySerializer_WriteProperty(param_2,0);
+  }
+  else if (*(int *)(param_1 + 0xe8) == 1) {
+    EVar1 = CScriptThing::GetCurrentScriptPriority(DAT_0143bb5c);
+    return EVar1;
+  }
+  return EVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c52aa0 47 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+bool FUN_00c52aa0(void)
+
+{
+  uint uVar1;
+  byte in_CF;
+  byte in_PF;
+  byte in_AF;
+  byte in_ZF;
+  byte in_SF;
+  byte in_TF;
+  byte in_IF;
+  byte in_OF;
+  byte in_NT;
+  byte in_AC;
+  byte in_VIF;
+  byte in_VIP;
+  byte in_ID;
+  uint uVar2;
+  
+  uVar2 = (uint)(in_NT & 1) * 0x4000 | (uint)(in_OF & 1) * 0x800 | (uint)(in_IF & 1) * 0x200 |
+          (uint)(in_TF & 1) * 0x100 | (uint)(in_SF & 1) * 0x80 | (uint)(in_ZF & 1) * 0x40 |
+          (uint)(in_AF & 1) * 0x10 | (uint)(in_PF & 1) * 4 | (uint)(in_CF & 1) |
+          (uint)(in_ID & 1) * 0x200000 | (uint)(in_VIP & 1) * 0x100000 |
+          (uint)(in_VIF & 1) * 0x80000 | (uint)(in_AC & 1) * 0x40000;
+  uVar1 = uVar2 ^ 0x200000;
+  return ((uint)((uVar1 & 0x4000) != 0) * 0x4000 | (uint)((uVar1 & 0x800) != 0) * 0x800 |
+          (uint)((uVar1 & 0x200) != 0) * 0x200 | (uint)((uVar1 & 0x100) != 0) * 0x100 |
+          (uint)((uVar1 & 0x80) != 0) * 0x80 | (uint)((uVar1 & 0x40) != 0) * 0x40 |
+          (uint)((uVar1 & 0x10) != 0) * 0x10 | (uint)((uVar1 & 4) != 0) * 4 |
+          (uint)((uVar1 & 1) != 0) | (uint)((uVar1 & 0x200000) != 0) * 0x200000 |
+         (uint)((uVar1 & 0x40000) != 0) * 0x40000) != uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c53b10 75 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+float10 FUN_00c53b10(float param_1)
+
+{
+  float10 fVar1;
+  float10 fVar2;
+  
+  fVar1 = (float10)fscale((float10)1,ROUND((float10)3.321928 * (float10)param_1));
+  fVar2 = (float10)f2xm1((float10)3.321928 * (float10)param_1 -
+                         (float10)(float)ROUND((float10)3.321928 * (float10)param_1));
+  return (float10)(float)((fVar2 + (float10)1.0) * fVar1);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c54190 889 0
+@@CALLERS 
+@@CALLEES Attribute_SetClamped_Index16, Attribute_SetClamped_Index4, Attribute_SetClamped_Index5, Attribute_SetClamped_Index25, Attribute_SetClamped_Index7, Audio_ConfigureChannel_Scaling, Attribute_SetClamped_Index15, Attribute_SetClamped_Index11, Attribute_SetClamped_Index12, Attribute_SetClamped_Index17, Attribute_SetClamped_Index14, Audio_DecibelsToAmplitude, Attribute_SetClamped_Index9, Attribute_SetClamped_Index6, Attribute_SetClamped_Index13, Attribute_SetClamped_Index18, SetVWindowsForDeprecatedDrawInterface, Attribute_SetClamped_Index10, Attribute_SetClamped_Index8
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __thiscall FUN_00c54190(CSubtitleRenderer *param_1,int param_2)
+
+{
+  int iVar1;
+  float fVar2;
+  C2DBoxF *unaff_EDI;
+  float10 fVar3;
+  
+  param_1[4] = (CSubtitleRenderer)(-10000 < *(int *)(param_2 + 0x24));
+  CSubtitleRenderer::SetVWindowsForDeprecatedDrawInterface
+            (param_1,(C2DBoxF *)(param_2 + 0xc),unaff_EDI);
+  CSubtitleRenderer::SetVWindowsForDeprecatedDrawInterface
+            (param_1,(C2DBoxF *)(param_2 + 0x18),unaff_EDI);
+  iVar1 = *(int *)(param_2 + 0x24);
+  if (*(int *)(param_1 + 0x23c) != iVar1) {
+    *(int *)(param_1 + 0x23c) = iVar1;
+    *(int *)(param_1 + 0x294) = iVar1;
+    *(uint *)(param_1 + 0x290) = *(uint *)(param_1 + 0x290) | 0x20;
+  }
+  iVar1 = *(int *)(param_2 + 0x28);
+  if (*(int *)(param_1 + 0x240) != iVar1) {
+    *(int *)(param_1 + 0x240) = iVar1;
+    *(int *)(param_1 + 0x29c) = iVar1;
+    *(uint *)(param_1 + 0x290) = *(uint *)(param_1 + 0x290) | 0x80;
+  }
+  iVar1 = *(int *)(param_2 + 0x2c);
+  if (*(int *)(param_1 + 0x244) != iVar1) {
+    *(int *)(param_1 + 0x244) = iVar1;
+    *(int *)(param_1 + 0x298) = iVar1;
+    *(uint *)(param_1 + 0x290) = *(uint *)(param_1 + 0x290) | 0x40;
+  }
+  fVar2 = *(float *)(param_2 + 0x30);
+  if (*(float *)(param_1 + 0x248) != fVar2) {
+    *(float *)(param_1 + 0x248) = fVar2;
+    Attribute_SetClamped_Index4(fVar2);
+  }
+  fVar2 = *(float *)(param_2 + 0x34);
+  if (*(float *)(param_1 + 0x24c) != fVar2) {
+    *(float *)(param_1 + 0x24c) = fVar2;
+    Attribute_SetClamped_Index6(fVar2);
+  }
+  fVar2 = *(float *)(param_2 + 0x38);
+  if (*(float *)(param_1 + 0x250) != fVar2) {
+    *(float *)(param_1 + 0x250) = fVar2;
+    Attribute_SetClamped_Index5(fVar2);
+  }
+  iVar1 = *(int *)(param_2 + 0x3c);
+  if (*(int *)(param_1 + 0x254) != iVar1) {
+    *(int *)(param_1 + 0x254) = iVar1;
+    fVar3 = (float10)Audio_DecibelsToAmplitude(iVar1);
+    Attribute_SetClamped_Index9((float)fVar3);
+  }
+  fVar2 = *(float *)(param_2 + 0x40);
+  if (*(float *)(param_1 + 600) != fVar2) {
+    *(float *)(param_1 + 600) = fVar2;
+    Attribute_SetClamped_Index10(fVar2);
+  }
+  iVar1 = *(int *)(param_2 + 0x44);
+  if (*(int *)(param_1 + 0x25c) != iVar1) {
+    *(int *)(param_1 + 0x25c) = iVar1;
+    fVar3 = (float10)Audio_DecibelsToAmplitude(iVar1);
+    Attribute_SetClamped_Index11((float)fVar3);
+  }
+  fVar2 = *(float *)(param_2 + 0x48);
+  if (*(float *)(param_1 + 0x260) != fVar2) {
+    *(float *)(param_1 + 0x260) = fVar2;
+    Attribute_SetClamped_Index12(fVar2);
+  }
+  fVar2 = *(float *)(param_2 + 0x4c);
+  if (*(float *)(param_1 + 0x264) != fVar2) {
+    *(float *)(param_1 + 0x264) = fVar2;
+    Attribute_SetClamped_Index25(fVar2);
+  }
+  fVar2 = *(float *)(param_2 + 0x50);
+  if (*(float *)(param_1 + 0x268) != fVar2) {
+    *(float *)(param_1 + 0x268) = fVar2;
+    Attribute_SetClamped_Index13(fVar2);
+  }
+  fVar2 = *(float *)(param_2 + 0x54);
+  if (*(float *)(param_1 + 0x26c) != fVar2) {
+    *(float *)(param_1 + 0x26c) = fVar2;
+    Attribute_SetClamped_Index14(fVar2);
+  }
+  fVar2 = *(float *)(param_2 + 0x58);
+  if (*(float *)(param_1 + 0x270) != fVar2) {
+    *(float *)(param_1 + 0x270) = fVar2;
+    Attribute_SetClamped_Index15(fVar2);
+  }
+  fVar2 = *(float *)(param_2 + 0x5c);
+  if (*(float *)(param_1 + 0x274) != fVar2) {
+    *(float *)(param_1 + 0x274) = fVar2;
+    Attribute_SetClamped_Index16(fVar2);
+  }
+  fVar2 = *(float *)(param_2 + 0x60);
+  if (*(float *)(param_1 + 0x278) != fVar2) {
+    *(float *)(param_1 + 0x278) = fVar2;
+    Attribute_SetClamped_Index17(fVar2);
+  }
+  fVar2 = *(float *)(param_2 + 100);
+  if (*(float *)(param_1 + 0x27c) != fVar2) {
+    *(float *)(param_1 + 0x27c) = fVar2;
+    Attribute_SetClamped_Index18(fVar2);
+  }
+  iVar1 = *(int *)(param_2 + 0x6c);
+  if (*(int *)(param_1 + 0x284) != iVar1) {
+    fVar2 = (float)iVar1;
+    *(int *)(param_1 + 0x284) = iVar1;
+    if (iVar1 < 0) {
+      fVar2 = fVar2 + _DAT_0122dcb4;
+    }
+    Attribute_SetClamped_Index7(fVar2);
+  }
+  fVar2 = (float)*(int *)(param_2 + 0x68);
+  if (*(int *)(param_2 + 0x68) < 0) {
+    fVar2 = fVar2 + _DAT_0122dcb4;
+  }
+  Attribute_SetClamped_Index8(fVar2);
+  Audio_ConfigureChannel_Scaling(param_1 + 0x290,0);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c546e0 152 0
+@@CALLERS 
+@@CALLEES FUN_00c58520, FUN_00c6af50, FUN_00c6b5d0
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c546e0(int param_1)
+
+{
+  char cVar1;
+  int iVar2;
+  undefined4 *puVar3;
+  undefined4 *local_820;
+  undefined1 *local_81c;
+  undefined1 *local_818;
+  undefined1 *local_814;
+  undefined4 local_810 [128];
+  undefined1 local_610 [512];
+  undefined1 local_410 [512];
+  undefined1 local_210 [524];
+  
+  local_820 = local_810;
+  local_814 = local_210;
+  local_81c = local_610;
+  local_818 = local_410;
+  if (*(char *)(param_1 + 8) != '\0') {
+    FUN_00c6b5d0(*(undefined4 *)(param_1 + 0x21c));
+  }
+  puVar3 = local_810;
+  for (iVar2 = 0x200; iVar2 != 0; iVar2 = iVar2 + -1) {
+    *puVar3 = 0;
+    puVar3 = puVar3 + 1;
+  }
+  cVar1 = FUN_00c6af50(*(undefined4 *)(param_1 + 0x21c),*(undefined1 *)(param_1 + 8),&local_820,0x80
+                      );
+  if (cVar1 != '\0') {
+    FUN_00c58520(local_810);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c54a80 75 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+float10 FUN_00c54a80(float param_1)
+
+{
+  float10 fVar1;
+  float10 fVar2;
+  
+  fVar1 = (float10)fscale((float10)1,ROUND((float10)3.321928 * (float10)param_1));
+  fVar2 = (float10)f2xm1((float10)3.321928 * (float10)param_1 -
+                         (float10)(float)ROUND((float10)3.321928 * (float10)param_1));
+  return (float10)(float)((fVar2 + (float10)1.0) * fVar1);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c54f30 245 0
+@@CALLERS 
+@@CALLEES FUN_00c54ea0, Audio_ApplyGainFilter_SIMD, __security_check_cookie, FUN_00c6c0f0, AudioBuffer_AdjustPlaybackPosition
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void __thiscall FUN_00c54f30(int param_1,int param_2,undefined4 param_3,char param_4)
+
+{
+  int iVar1;
+  undefined4 *puVar2;
+  undefined4 *puVar3;
+  undefined4 local_220 [64];
+  undefined1 local_120 [268];
+  undefined4 local_14;
+  
+  local_14 = DAT_0139c8a8;
+  puVar2 = (undefined4 *)
+           (*(int *)(param_2 + 0x14) * *(int *)(param_2 + 0xc) + *(int *)(param_2 + 4));
+  puVar3 = local_220;
+  for (iVar1 = 0x40; iVar1 != 0; iVar1 = iVar1 + -1) {
+    *puVar3 = *puVar2;
+    puVar2 = puVar2 + 1;
+    puVar3 = puVar3 + 1;
+  }
+  if (param_4 != '\0') {
+    iVar1 = *(int *)(DAT_0143bc2c + 0x17c);
+    if (iVar1 == 0) {
+      if ((DAT_0143bb70 == 0) || (*(int *)(DAT_0143bb70 + 0xe8) != 1)) goto LAB_00c54fd7;
+      Audio_ApplyGainFilter_SIMD(local_120,local_220);
+    }
+    else {
+      Audio_ApplyGainFilter_SIMD(local_120,local_220);
+      if (*(char *)(iVar1 + 4) == '\0') goto LAB_00c54fd7;
+    }
+    FUN_00c54ea0(local_120);
+  }
+LAB_00c54fd7:
+  FUN_00c6c0f0(local_220);
+  (**(code **)(**(int **)(param_1 + 0x220) + 8))(local_220,*(int *)(DAT_0143bc2c + 0x58) + 4);
+  AudioBuffer_AdjustPlaybackPosition(0x80);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c551d0 153 0
+@@CALLERS 
+@@CALLEES GetFacingVector, CTCTavernGameCoinGolf_PrepareRender
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00c551d0(int param_1,int *param_2,int param_3)
+
+{
+  uint uVar1;
+  
+  (**(code **)(*param_2 + 4))();
+  uVar1 = CTCTavernGameCoinGolf_PrepareRender(param_2,param_3);
+  uVar1 = uVar1 | 0x1bf8000;
+  if ((param_2[3] & 0x800000U) == 0) {
+    *(undefined4 *)(param_1 + 0x218) = 0x3f800000;
+    *(undefined4 *)(param_1 + 0x21c) = 0x3f800000;
+    uVar1 = uVar1 & 0xff7fffff;
+  }
+  if (*(int *)(param_3 + 0x10) == 0) {
+    if (*(int *)(param_3 + 0x14) != 0) {
+      uVar1 = uVar1 | 0x100;
+    }
+  }
+  else {
+    uVar1 = uVar1 | 0x80;
+  }
+  (**(code **)(**(int **)(param_1 + 0x220) + 4))();
+  CTCPhysicsRigidBody::GetFacingVector((CTCPhysicsRigidBody *)(param_1 + 0xdc));
+  CTCPhysicsRigidBody::GetFacingVector((CTCPhysicsRigidBody *)(param_1 + 0x100));
+  *(undefined4 *)(param_1 + 0x22c) = 0;
+  *(undefined4 *)(param_1 + 0x238) = 0;
+  return uVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c55a10 67 0
+@@CALLERS 
+@@CALLEES GetProcAddress
+@@STRINGS alcIsExtensionPresent
+@@DECOMP
+
+bool __thiscall FUN_00c55a10(int param_1,undefined4 param_2)
+
+{
+  char cVar1;
+  FARPROC pFVar2;
+  
+  if (*(int *)(param_1 + 0x24) == 0) {
+    pFVar2 = GetProcAddress(*(HMODULE *)(param_1 + 4),"alcIsExtensionPresent");
+    *(FARPROC *)(param_1 + 0x24) = pFVar2;
+    if (pFVar2 == (FARPROC)0x0) {
+      return false;
+    }
+  }
+  cVar1 = (**(code **)(param_1 + 0x24))(*(undefined4 *)(param_1 + 0xfc),param_2);
+  return cVar1 == '\x01';
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c55a60 50 0
+@@CALLERS 
+@@CALLEES GetProcAddress
+@@STRINGS alcGetString
+@@DECOMP
+
+void __thiscall FUN_00c55a60(int param_1,undefined4 param_2)
+
+{
+  FARPROC pFVar1;
+  
+  if (*(int *)(param_1 + 0x28) == 0) {
+    pFVar1 = GetProcAddress(*(HMODULE *)(param_1 + 4),"alcGetString");
+    *(FARPROC *)(param_1 + 0x28) = pFVar1;
+  }
+  (**(code **)(param_1 + 0x28))(*(undefined4 *)(param_1 + 0xfc),param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c55f00 89 0
+@@CALLERS 
+@@CALLEES InformOfEvent, C3DAnimationUtil
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_00c55f00(CTCHeroStats *param_1)
+
+{
+  C3DAnimationUtil *this;
+  undefined4 uVar1;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_0121623b;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroStats::InformOfEvent(param_1,(CBase *)0x220);
+  local_4 = 0;
+  if (this != (C3DAnimationUtil *)0x0) {
+    uVar1 = C3DAnimationUtil::C3DAnimationUtil(this);
+    ExceptionList = local_c;
+    return uVar1;
+  }
+  ExceptionList = local_c;
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c55f60 127 0
+@@CALLERS 
+@@CALLEES CAudioContext::GetProcAddress
+@@STRINGS EAXGet
+@@DECOMP
+
+int __thiscall
+FUN_00c55f60(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4,undefined4 param_5
+            )
+
+{
+  undefined4 uVar1;
+  int iVar2;
+  bool bVar3;
+  
+  if (*(int *)(param_1 + 0xf4) == 0) {
+    uVar1 = CAudioContext__GetProcAddress("EAXGet");
+    *(undefined4 *)(param_1 + 0xf4) = uVar1;
+  }
+  iVar2 = (**(code **)(param_1 + 0xf4))(param_2,param_3,0,param_4,param_5);
+  if (iVar2 < 0xa004) {
+    if (iVar2 == 0xa003) {
+      return -3;
+    }
+    if (iVar2 == 0) {
+      return 0;
+    }
+    bVar3 = iVar2 == 0xa001;
+  }
+  else {
+    bVar3 = iVar2 == 0xa004;
+  }
+  if (bVar3) {
+    return -3;
+  }
+  if (iVar2 == 0) {
+    return 0;
+  }
+  return (uint)(iVar2 == 0xa005) * 4 + -9;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c55fe0 50 0
+@@CALLERS 
+@@CALLEES GetProcAddress
+@@STRINGS alcSuspendContext
+@@DECOMP
+
+void __fastcall FUN_00c55fe0(int param_1)
+
+{
+  FARPROC pFVar1;
+  
+  if (*(int *)(param_1 + 0x1c) == 0) {
+    pFVar1 = GetProcAddress(*(HMODULE *)(param_1 + 4),"alcSuspendContext");
+    *(FARPROC *)(param_1 + 0x1c) = pFVar1;
+  }
+  (**(code **)(param_1 + 0x1c))(*(undefined4 *)(param_1 + 0x100));
+  *(undefined1 *)(param_1 + 0x1b0) = 1;
+  return;
+}
+
+
+@@ENDFUNC

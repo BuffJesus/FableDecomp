@@ -1,0 +1,642 @@
+﻿{
+    "generated_on":  "2026-07-18T14:11:27-06:00",
+    "game_root":  "C:\\Programs\\Steam\\steamapps\\common\\Fable The Lost Chapters",
+    "inputs":  {
+                   "big_entries":  "ghidra_out/installed_game/big_entries.csv",
+                   "big_banks":  "ghidra_out/installed_game/big_banks.csv",
+                   "big_entry_types":  "ghidra_out/installed_game/big_entry_types.csv",
+                   "finalalbion_wad_entries":  "ghidra_out/installed_game/finalalbion_wad_entries.csv",
+                   "finalalbion_stb_entries":  "ghidra_out/installed_game/finalalbion_stb_entries.csv",
+                   "loose_tng_summary":  "ghidra_out/installed_game/loose_tng_summary.csv",
+                   "wld_maps":  "ghidra_out/installed_game/wld_maps.csv",
+                   "wld_regions":  "ghidra_out/installed_game/wld_regions.csv",
+                   "chest_key_reward_entities":  "ghidra_out/installed_game/chest_key_reward_entities.csv",
+                   "level_container_consistency":  "ghidra_out/installed_game/level_container_consistency.csv",
+                   "header_enums":  "ghidra_out/installed_game/header_enums.csv",
+                   "header_enum_counts":  "ghidra_out/installed_game/header_enum_counts.csv",
+                   "compiled_game_entries":  "ghidra_out/installed_game/compiled_game_entries.csv",
+                   "compiled_script_entries":  "ghidra_out/installed_game/compiled_script_entries.csv",
+                   "compiled_frontend_entries":  "ghidra_out/installed_game/compiled_frontend_entries.csv",
+                   "gameplay_entity_definition_validation":  "ghidra_out/installed_game/gameplay_entity_definition_validation.csv",
+                   "fablewin_editor_targets":  "ghidra_out/fablewin_fqt_editor_targets.tsv",
+                   "native_gameplay_targets":  "ghidra_out/native_gameplay_targets.tsv"
+               },
+    "counts":  {
+                   "big_banks":  8,
+                   "big_entries":  57128,
+                   "wad_entries":  796,
+                   "stb_entries":  424,
+                   "loose_tng_files":  397,
+                   "wld_maps":  398,
+                   "wld_regions":  141,
+                   "chest_key_reward_entities":  391,
+                   "level_container_consistency_rows":  398,
+                   "header_enum_constants":  63540,
+                   "compiled_game_entries":  14761,
+                   "compiled_script_entries":  611,
+                   "compiled_frontend_entries":  810,
+                   "gameplay_entity_definition_validation_rows":  391,
+                   "native_gameplay_targets":  31541
+               },
+    "top":  {
+                "big_banks":  [
+                                  {
+                                      "bank":  "data\\graphics\\pc\\textures.big",
+                                      "entries":  "6290",
+                                      "bytes":  "525271140"
+                                  },
+                                  {
+                                      "bank":  "data\\graphics\\graphics.big",
+                                      "entries":  "8112",
+                                      "bytes":  "233474128"
+                                  },
+                                  {
+                                      "bank":  "data\\graphics\\pc\\frontend.big",
+                                      "entries":  "394",
+                                      "bytes":  "13287366"
+                                  },
+                                  {
+                                      "bank":  "data\\lang\\English\\dialogue.big",
+                                      "entries":  "12134",
+                                      "bytes":  "6247716"
+                                  },
+                                  {
+                                      "bank":  "data\\lang\\English\\text.big",
+                                      "entries":  "28913",
+                                      "bytes":  "4224305"
+                                  },
+                                  {
+                                      "bank":  "data\\Misc\\pc\\effects.big",
+                                      "entries":  "1165",
+                                      "bytes":  "2262411"
+                                  },
+                                  {
+                                      "bank":  "data\\lang\\English\\fonts.big",
+                                      "entries":  "8",
+                                      "bytes":  "1393834"
+                                  },
+                                  {
+                                      "bank":  "data\\shaders\\pc\\shaders.big",
+                                      "entries":  "112",
+                                      "bytes":  "13357"
+                                  }
+                              ],
+                "big_entry_types":  [
+                                        {
+                                            "type":  "0",
+                                            "entries":  "34253",
+                                            "bytes":  "497433095"
+                                        },
+                                        {
+                                            "type":  "1",
+                                            "entries":  "16939",
+                                            "bytes":  "110690992"
+                                        },
+                                        {
+                                            "type":  "6",
+                                            "entries":  "3272",
+                                            "bytes":  "85700599"
+                                        },
+                                        {
+                                            "type":  "3",
+                                            "entries":  "1383",
+                                            "bytes":  "6297506"
+                                        },
+                                        {
+                                            "type":  "5",
+                                            "entries":  "534",
+                                            "bytes":  "33611346"
+                                        },
+                                        {
+                                            "type":  "2",
+                                            "entries":  "428",
+                                            "bytes":  "47563900"
+                                        },
+                                        {
+                                            "type":  "4",
+                                            "entries":  "156",
+                                            "bytes":  "3415137"
+                                        },
+                                        {
+                                            "type":  "9",
+                                            "entries":  "107",
+                                            "bytes":  "831234"
+                                        },
+                                        {
+                                            "type":  "7",
+                                            "entries":  "56",
+                                            "bytes":  "630448"
+                                        }
+                                    ],
+                "densest_tngs":  [
+                                     {
+                                         "file":  "HeroGuildComplexInside.tng",
+                                         "new_things":  "1110",
+                                         "script_names":  "1142",
+                                         "size":  "787564"
+                                     },
+                                     {
+                                         "file":  "BowerstoneSlums_v2.tng",
+                                         "new_things":  "1058",
+                                         "script_names":  "1098",
+                                         "size":  "772043"
+                                     },
+                                     {
+                                         "file":  "StartOakValeWest.tng",
+                                         "new_things":  "874",
+                                         "script_names":  "892",
+                                         "size":  "576997"
+                                     },
+                                     {
+                                         "file":  "OakValeWest_v2.tng",
+                                         "new_things":  "836",
+                                         "script_names":  "859",
+                                         "size":  "554296"
+                                     },
+                                     {
+                                         "file":  "HookCoast.tng",
+                                         "new_things":  "821",
+                                         "script_names":  "875",
+                                         "size":  "628461"
+                                     },
+                                     {
+                                         "file":  "SnowspireVillage.tng",
+                                         "new_things":  "735",
+                                         "script_names":  "753",
+                                         "size":  "480592"
+                                     },
+                                     {
+                                         "file":  "KnotholeGladeMainTown.tng",
+                                         "new_things":  "728",
+                                         "script_names":  "775",
+                                         "size":  "539777"
+                                     },
+                                     {
+                                         "file":  "Graveyard_1.tng",
+                                         "new_things":  "592",
+                                         "script_names":  "592",
+                                         "size":  "438712"
+                                     },
+                                     {
+                                         "file":  "NorthernWastes2.tng",
+                                         "new_things":  "557",
+                                         "script_names":  "557",
+                                         "size":  "321433"
+                                     },
+                                     {
+                                         "file":  "OakValeEast_v2.tng",
+                                         "new_things":  "495",
+                                         "script_names":  "496",
+                                         "size":  "319745"
+                                     },
+                                     {
+                                         "file":  "BowerstonePosh.tng",
+                                         "new_things":  "476",
+                                         "script_names":  "496",
+                                         "size":  "318086"
+                                     },
+                                     {
+                                         "file":  "OrchardFarm.tng",
+                                         "new_things":  "473",
+                                         "script_names":  "473",
+                                         "size":  "349266"
+                                     },
+                                     {
+                                         "file":  "FrescoDome.tng",
+                                         "new_things":  "413",
+                                         "script_names":  "413",
+                                         "size":  "339283"
+                                     },
+                                     {
+                                         "file":  "Arena.tng",
+                                         "new_things":  "355",
+                                         "script_names":  "355",
+                                         "size":  "269693"
+                                     },
+                                     {
+                                         "file":  "NorthernWastes3.tng",
+                                         "new_things":  "340",
+                                         "script_names":  "340",
+                                         "size":  "241013"
+                                     },
+                                     {
+                                         "file":  "HauntedHouse.tng",
+                                         "new_things":  "337",
+                                         "script_names":  "337",
+                                         "size":  "208032"
+                                     },
+                                     {
+                                         "file":  "Greatwood_1.tng",
+                                         "new_things":  "313",
+                                         "script_names":  "313",
+                                         "size":  "195539"
+                                     },
+                                     {
+                                         "file":  "BanditCampResidential.tng",
+                                         "new_things":  "301",
+                                         "script_names":  "301",
+                                         "size":  "205802"
+                                     },
+                                     {
+                                         "file":  "Greatwood_3.tng",
+                                         "new_things":  "290",
+                                         "script_names":  "290",
+                                         "size":  "177373"
+                                     },
+                                     {
+                                         "file":  "LookoutPoint.tng",
+                                         "new_things":  "288",
+                                         "script_names":  "288",
+                                         "size":  "197526"
+                                     }
+                                 ],
+                "entity_categories":  [
+                                          {
+                                              "name":  "shop_trader",
+                                              "count":  211
+                                          },
+                                          {
+                                              "name":  "chest",
+                                              "count":  148
+                                          },
+                                          {
+                                              "name":  "silver_key",
+                                              "count":  16
+                                          },
+                                          {
+                                              "name":  "key",
+                                              "count":  16
+                                          }
+                                      ],
+                "entity_definition_types":  [
+                                                {
+                                                    "name":  "OBJECT_CHEST_OPENABLE",
+                                                    "count":  93
+                                                },
+                                                {
+                                                    "name":  "MARKER_BASIC",
+                                                    "count":  61
+                                                },
+                                                {
+                                                    "name":  "CREATURE_TRADER_01",
+                                                    "count":  22
+                                                },
+                                                {
+                                                    "name":  "OBJECT_KHG_CHEST_01",
+                                                    "count":  14
+                                                },
+                                                {
+                                                    "name":  "CAMERA_POINT_SCRIPTED",
+                                                    "count":  9
+                                                },
+                                                {
+                                                    "name":  "OBJECT_NW_CHEST_OPENABLE",
+                                                    "count":  9
+                                                },
+                                                {
+                                                    "name":  "OBJECT_KHG_CHEST_03",
+                                                    "count":  9
+                                                },
+                                                {
+                                                    "name":  "OBJECT_BW_SHOP_TABLE_03",
+                                                    "count":  7
+                                                },
+                                                {
+                                                    "name":  "OBJECT_KHG_CHEST_02",
+                                                    "count":  6
+                                                },
+                                                {
+                                                    "name":  "OBJECT_BW_SHOP_TABLE_01_TO_02",
+                                                    "count":  6
+                                                },
+                                                {
+                                                    "name":  "OBJECT_OAKVALE_SHIP_TRADER_01",
+                                                    "count":  6
+                                                },
+                                                {
+                                                    "name":  "CAMERA_POINT_SCRIPTED_SPLINE",
+                                                    "count":  6
+                                                },
+                                                {
+                                                    "name":  "OBJECT_TRADER_BANNER_02",
+                                                    "count":  5
+                                                },
+                                                {
+                                                    "name":  "OBJECT_BW_SHOP_COUNTER_GENERIC_07",
+                                                    "count":  5
+                                                },
+                                                {
+                                                    "name":  "OBJECT_BW_SHOP_COUNTER_GENERIC_08",
+                                                    "count":  5
+                                                },
+                                                {
+                                                    "name":  "OBJECT_SS_CHEST_01",
+                                                    "count":  5
+                                                },
+                                                {
+                                                    "name":  "OBJECT_SILVERKEY_CHEST_25",
+                                                    "count":  5
+                                                },
+                                                {
+                                                    "name":  "OBJECT_BW_SHOP_COUNTER_GENERIC_01_TO_06",
+                                                    "count":  4
+                                                },
+                                                {
+                                                    "name":  "OBJECT_SS_CHEST_02",
+                                                    "count":  4
+                                                },
+                                                {
+                                                    "name":  "OBJECT_CHEST_PLAIN",
+                                                    "count":  4
+                                                },
+                                                {
+                                                    "name":  "OBJECT_SHOP_SIGN_GENERALSTORE",
+                                                    "count":  3
+                                                },
+                                                {
+                                                    "name":  "CREATURE_NEW_CHICKEN_01",
+                                                    "count":  3
+                                                },
+                                                {
+                                                    "name":  "OBJECT_SILVER_KEY",
+                                                    "count":  3
+                                                },
+                                                {
+                                                    "name":  "OBJECT_PRISON_CELL_DOOR_01",
+                                                    "count":  3
+                                                },
+                                                {
+                                                    "name":  "OBJECT_PRISON_KEYRACK_01",
+                                                    "count":  3
+                                                },
+                                                {
+                                                    "name":  "OBJECT_SHOP_SIGN_ARMOURY",
+                                                    "count":  3
+                                                },
+                                                {
+                                                    "name":  "OBJECT_BW_SHOP_TABLE_04",
+                                                    "count":  3
+                                                },
+                                                {
+                                                    "name":  "OBJECT_GUILD_SHOP_COUNTER_06",
+                                                    "count":  2
+                                                },
+                                                {
+                                                    "name":  "OBJECT_GUILD_SHOP_COUNTER_05",
+                                                    "count":  2
+                                                },
+                                                {
+                                                    "name":  "BUILDING_OV_SHOP_GENERIC_01",
+                                                    "count":  2
+                                                },
+                                                {
+                                                    "name":  "BUILDING_TOWN_TRADERBRIDGE_01",
+                                                    "count":  2
+                                                },
+                                                {
+                                                    "name":  "OBJECT_SHOP_SIGN_TAVERN",
+                                                    "count":  2
+                                                },
+                                                {
+                                                    "name":  "BUILDING_OV_SHOP_GIFTSHOP_01",
+                                                    "count":  2
+                                                },
+                                                {
+                                                    "name":  "OBJECT_BW_SHOP_TABLE_07_TO_09",
+                                                    "count":  2
+                                                },
+                                                {
+                                                    "name":  "OBJECT_SILVERKEY_CHEST_10",
+                                                    "count":  2
+                                                },
+                                                {
+                                                    "name":  "OBJECT_SILVERKEY_CHEST_5",
+                                                    "count":  2
+                                                },
+                                                {
+                                                    "name":  "OBJECT_TRADER_CAULDRON_LIT",
+                                                    "count":  2
+                                                },
+                                                {
+                                                    "name":  "OBJECT_TRADER_BANNER_01",
+                                                    "count":  2
+                                                },
+                                                {
+                                                    "name":  "HOLY_SITE_PLAYER_START",
+                                                    "count":  2
+                                                },
+                                                {
+                                                    "name":  "BUILDING_TRADER_TENT_02",
+                                                    "count":  2
+                                                }
+                                            ],
+                "densest_regions":  [
+                                        {
+                                            "id":  "122",
+                                            "region_name":  "StartOakvale_Filler",
+                                            "display_name":  "StartOakvale_Filler",
+                                            "contains_count":  "9",
+                                            "sees_count":  "2"
+                                        },
+                                        {
+                                            "id":  "137",
+                                            "region_name":  "Filler_NorthernWastes_03",
+                                            "display_name":  "Region144",
+                                            "contains_count":  "9",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "85",
+                                            "region_name":  "Filler_Witchwood_02",
+                                            "display_name":  "Filler_Witchwood_02",
+                                            "contains_count":  "9",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "86",
+                                            "region_name":  "Filler_Witchwood_03",
+                                            "display_name":  "Filler_Witchwood_03",
+                                            "contains_count":  "9",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "94",
+                                            "region_name":  "Filler_Darkwood_02",
+                                            "display_name":  "Filler_Darkwood_02",
+                                            "contains_count":  "8",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "99",
+                                            "region_name":  "Filler_Greatwood_01",
+                                            "display_name":  "Filler_Greatwood_01",
+                                            "contains_count":  "7",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "79",
+                                            "region_name":  "Sea_OakVale_01",
+                                            "display_name":  "Sea_OakVale_01",
+                                            "contains_count":  "7",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "93",
+                                            "region_name":  "Filler_Darkwood_01",
+                                            "display_name":  "Filler_Darkwood_01",
+                                            "contains_count":  "7",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "95",
+                                            "region_name":  "Filler_Darkwood_03",
+                                            "display_name":  "Filler_Darkwood_03",
+                                            "contains_count":  "7",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "135",
+                                            "region_name":  "Filler_LostBay_01",
+                                            "display_name":  "Filler_LostBay_01",
+                                            "contains_count":  "7",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "103",
+                                            "region_name":  "Filler_LookoutPoint_01",
+                                            "display_name":  "Filler_LookoutPoint_01",
+                                            "contains_count":  "7",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "47",
+                                            "region_name":  "Witchwood4",
+                                            "display_name":  "TXT_REGION_WITCHWOOD_4",
+                                            "contains_count":  "6",
+                                            "sees_count":  "12"
+                                        },
+                                        {
+                                            "id":  "92",
+                                            "region_name":  "Filler_BanditCampPath_03",
+                                            "display_name":  "Filler_BanditCampPath_03",
+                                            "contains_count":  "6",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "119",
+                                            "region_name":  "Filler_HeroGuild_01",
+                                            "display_name":  "Filler_HeroGuild_01",
+                                            "contains_count":  "6",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "83",
+                                            "region_name":  "Filler_BarrowFields_01",
+                                            "display_name":  "Filler_BarrowFields_01",
+                                            "contains_count":  "6",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "136",
+                                            "region_name":  "Filler_NorthernWastes_01",
+                                            "display_name":  "Filler_NorthernWastes_01",
+                                            "contains_count":  "6",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "82",
+                                            "region_name":  "Filler_BanditCamp_01",
+                                            "display_name":  "Filler_BanditCamp_01",
+                                            "contains_count":  "6",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "102",
+                                            "region_name":  "Filler_Hookcoast_01",
+                                            "display_name":  "Filler_Hookcoast_01",
+                                            "contains_count":  "5",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "111",
+                                            "region_name":  "DemonDoor_HauntedHouse",
+                                            "display_name":  "TXT_REGION_DD_HAUNTEDHOUSE",
+                                            "contains_count":  "5",
+                                            "sees_count":  "0"
+                                        },
+                                        {
+                                            "id":  "110",
+                                            "region_name":  "DemonDoor_BanditCampPath",
+                                            "display_name":  "TXT_REGION_DD_BANDITCAMPPATH",
+                                            "contains_count":  "5",
+                                            "sees_count":  "0"
+                                        }
+                                    ]
+            },
+    "editor_modules":  [
+                           {
+                               "id":  "world_browser",
+                               "sources":  [
+                                               "wld_maps",
+                                               "wld_regions",
+                                               "FinalAlbion.wad"
+                                           ],
+                               "first_tasks":  [
+                                                   "map grid",
+                                                   "region visibility",
+                                                   "level open routing"
+                                               ]
+                           },
+                           {
+                               "id":  "level_scene",
+                               "sources":  [
+                                               "LEV from WAD",
+                                               "loose TNG",
+                                               "SilverChest.LevBridge",
+                                               "SilverChest.TngBridge"
+                                           ],
+                               "first_tasks":  [
+                                                   "terrain theme grid",
+                                                   "entity list",
+                                                   "placement editing"
+                                               ]
+                           },
+                           {
+                               "id":  "asset_browser",
+                               "sources":  [
+                                               "EgoCore BIG indexes",
+                                               "SilverChest.Modern"
+                                           ],
+                               "first_tasks":  [
+                                                   "mesh/texture/text/dialogue filters",
+                                                   "preview extraction",
+                                                   "mod package staging"
+                                               ]
+                           },
+                           {
+                               "id":  "chest_reward_editor",
+                               "sources":  [
+                                               "chest_key_reward_entities",
+                                               "FableWin CScriptThing/opened-chest symbols"
+                                           ],
+                               "first_tasks":  [
+                                                   "chest list",
+                                                   "reward properties",
+                                                   "runtime validation"
+                                               ]
+                           },
+                           {
+                               "id":  "decompilation_oracle",
+                               "sources":  [
+                                               "FableWin PDB",
+                                               "ego_r PDB",
+                                               "FSE hooks"
+                                           ],
+                               "first_tasks":  [
+                                                   "name porting",
+                                                   "format behavior validation",
+                                                   "script/native API reconciliation"
+                                               ]
+                           }
+                       ]
+}

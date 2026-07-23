@@ -1,0 +1,3 @@
+stb_path=C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\data\Levels\FinalAlbion_RT.stb
+entry_count=424
+entry_bytes=597340672

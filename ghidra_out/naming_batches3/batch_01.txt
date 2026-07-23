@@ -1,0 +1,1192 @@
+@@@FUNC 00c89cb0 187 13
+@@CALLERS CreatureHitNotification_Initialize, AsyncBankFile_Process, BankFile_BinarySearch, CreatureHitNotification_StateProcess
+@@CALLEES FUN_00c89c10, FUN_00c8d510
+@@STRINGS 
+@@DECOMP
+
+undefined8 FUN_00c89cb0(undefined4 param_1,uint param_2,int param_3)
+
+{
+  uint uVar1;
+  undefined8 uVar2;
+  int in_EAX;
+  uint uVar3;
+  int iVar4;
+  bool bVar5;
+  
+  if (param_3 < 0) goto LAB_00c89cf0;
+  if ((0 < param_3) || (param_2 != 0)) {
+    bVar5 = CARRY4(param_2,*(uint *)(in_EAX + 8));
+    param_2 = param_2 + *(uint *)(in_EAX + 8);
+    param_3 = param_3 + *(int *)(in_EAX + 0xc) + (uint)bVar5;
+  }
+  while( true ) {
+    while( true ) {
+      if (((-1 < param_3) && ((0 < param_3 || (param_2 != 0)))) &&
+         ((param_3 < *(int *)(in_EAX + 0xc) ||
+          ((param_3 <= *(int *)(in_EAX + 0xc) && (param_2 <= *(uint *)(in_EAX + 8))))))) {
+        return 0xffffffffffffffff;
+      }
+LAB_00c89cf0:
+      uVar3 = FUN_00c8d510();
+      if (-1 < (int)uVar3) break;
+      uVar1 = *(uint *)(in_EAX + 8);
+      *(uint *)(in_EAX + 8) = uVar1 - uVar3;
+      *(uint *)(in_EAX + 0xc) =
+           (*(int *)(in_EAX + 0xc) - ((int)uVar3 >> 0x1f)) - (uint)(uVar1 < uVar3);
+    }
+    if (uVar3 != 0) {
+      uVar1 = *(uint *)(in_EAX + 8);
+      uVar2 = *(undefined8 *)(in_EAX + 8);
+      *(uint *)(in_EAX + 0xc) =
+           ((int)uVar3 >> 0x1f) + *(int *)(in_EAX + 0xc) + (uint)CARRY4(uVar3,uVar1);
+      *(uint *)(in_EAX + 8) = uVar3 + uVar1;
+      return uVar2;
+    }
+    if (param_2 == 0 && param_3 == 0) break;
+    iVar4 = FUN_00c89c10();
+    if (iVar4 == 0) {
+      return 0xfffffffffffffffe;
+    }
+    if (iVar4 < 0) {
+      return 0xffffffffffffff80;
+    }
+  }
+  return 0xffffffffffffffff;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c767e0 148 9
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00c767e0(int *param_1,undefined4 param_2,int *param_3,int param_4,undefined4 param_5,
+            undefined4 param_6,int param_7)
+
+{
+  int iVar1;
+  int unaff_EBX;
+  float unaff_EBP;
+  int unaff_EDI;
+  float unaff_retaddr;
+  
+  if ((uint)(param_4 + param_7) <= (uint)param_3[1]) {
+    (**(code **)(*param_1 + 0x18))(param_2,*param_3 + param_4 * 4,param_5,param_6,param_7);
+    return;
+  }
+  iVar1 = param_3[1] - param_4;
+  (**(code **)(*param_1 + 0x18))(param_2,*param_3 + param_4 * 4,param_5,param_6,iVar1);
+  (**(code **)(*param_1 + 0x18))
+            (unaff_EBX + iVar1 * 4,*param_3,(float)unaff_EDI * unaff_retaddr + unaff_EBP,
+             unaff_retaddr,param_7 - iVar1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c6ed70 227 8
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void __thiscall
+FUN_00c6ed70(short param_1,undefined1 (*param_2) [16],int param_3,int *param_4,short param_5)
+
+{
+  uint6 uVar1;
+  undefined1 auVar2 [16];
+  undefined1 auVar3 [16];
+  short sVar4;
+  undefined1 auVar5 [16];
+  undefined1 auVar6 [16];
+  undefined1 auVar9 [12];
+  undefined1 auVar11 [16];
+  undefined1 auVar7 [16];
+  undefined1 auVar8 [16];
+  undefined1 auVar10 [16];
+  
+  sVar4 = param_5 << 3;
+  auVar11._2_2_ = param_1 + param_5;
+  auVar11._0_2_ = param_1;
+  auVar11._4_2_ = param_1 + param_5 * 2;
+  auVar11._6_2_ = param_1 + param_5 * 3;
+  auVar11._8_2_ = param_1 + param_5 * 4;
+  auVar11._10_2_ = param_1 + param_5 * 5;
+  auVar11._12_2_ = param_1 + param_5 * 6;
+  auVar11._14_2_ = param_5 * 7 + param_1;
+  auVar3._2_2_ = sVar4;
+  auVar3._0_2_ = sVar4;
+  auVar3._4_2_ = sVar4;
+  auVar3._6_2_ = sVar4;
+  auVar3._8_2_ = sVar4;
+  auVar3._10_2_ = sVar4;
+  auVar3._12_2_ = sVar4;
+  auVar3._14_2_ = sVar4;
+  do {
+    auVar5 = pmulhw(*param_2,auVar11);
+    auVar11 = paddsw(auVar11,auVar3);
+    auVar8._0_12_ = SUB1612((undefined1  [16])0x0,0);
+    auVar8._12_2_ = 0;
+    auVar8._14_2_ = auVar5._6_2_;
+    auVar7._12_4_ = auVar8._12_4_;
+    auVar7._0_10_ = SUB1610((undefined1  [16])0x0,0);
+    auVar7._10_2_ = auVar5._4_2_;
+    auVar6._10_6_ = auVar7._10_6_;
+    auVar6._0_10_ = (unkuint10)0;
+    auVar2._2_8_ = auVar6._8_8_;
+    auVar2._0_2_ = auVar5._2_2_;
+    auVar2._10_6_ = 0;
+    uVar1 = CONCAT24(auVar5._10_2_,(uint)auVar5._8_2_);
+    auVar9._0_10_ = (unkuint10)uVar1 << 0x10;
+    auVar9._10_2_ = auVar5._12_2_;
+    auVar10._12_2_ = 0;
+    auVar10._0_12_ = auVar9;
+    auVar10._14_2_ = auVar5._14_2_;
+    *param_4 = ((int)((uint)auVar5._0_2_ << 0x10) >> 0xf) + *param_4;
+    param_4[1] = (SUB164(auVar2 << 0x30,4) >> 0xf) + param_4[1];
+    param_4[2] = (auVar6._8_4_ >> 0xf) + param_4[2];
+    param_4[3] = (auVar7._12_4_ >> 0xf) + param_4[3];
+    param_4[4] = ((int)auVar9._0_10_ >> 0xf) + param_4[4];
+    param_4[5] = (int)((int6)uVar1 >> 0x1f) + param_4[5];
+    param_4[6] = (auVar9._8_4_ >> 0xf) + param_4[6];
+    param_4[7] = (auVar10._12_4_ >> 0xf) + param_4[7];
+    param_2 = param_2 + 1;
+    param_4 = param_4 + 8;
+    param_3 = param_3 + -1;
+  } while (param_3 != 0);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c6fc80 211 8
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void __thiscall
+FUN_00c6fc80(short param_1,undefined8 *param_2,int param_3,undefined8 *param_4,short param_5)
+
+{
+  uint uVar1;
+  undefined8 uVar2;
+  short sVar3;
+  ulonglong uVar4;
+  undefined8 uVar5;
+  
+  sVar3 = param_5 << 2;
+  uVar5 = CONCAT26(param_1 + param_5 * 3,
+                   CONCAT24(param_1 + param_5 * 2,CONCAT22(param_1 + param_5,param_1)));
+  uVar2 = CONCAT26(sVar3,CONCAT24(sVar3,CONCAT22(sVar3,sVar3)));
+  do {
+    uVar4 = pmulhw(*param_2,uVar5);
+    uVar5 = paddsw(uVar5,uVar2);
+    uVar1 = (uint)(ushort)(uVar4 >> 0x20);
+    *param_4 = CONCAT44((int)((longlong)((uVar4 >> 0x10) << 0x30) >> 0x2f) +
+                        (int)((ulonglong)*param_4 >> 0x20),
+                        ((int)((uint)(ushort)uVar4 << 0x10) >> 0xf) + (int)*param_4);
+    param_4[1] = CONCAT44((int)((int6)CONCAT24((short)(uVar4 >> 0x30),uVar1) >> 0x1f) +
+                          (int)((ulonglong)param_4[1] >> 0x20),
+                          ((int)(uVar1 << 0x10) >> 0xf) + (int)param_4[1]);
+    uVar4 = pmulhw(param_2[1],uVar5);
+    uVar5 = paddsw(uVar5,uVar2);
+    uVar1 = (uint)(ushort)(uVar4 >> 0x20);
+    param_4[2] = CONCAT44((int)((longlong)((uVar4 >> 0x10) << 0x30) >> 0x2f) +
+                          (int)((ulonglong)param_4[2] >> 0x20),
+                          ((int)((uint)(ushort)uVar4 << 0x10) >> 0xf) + (int)param_4[2]);
+    param_2 = param_2 + 2;
+    param_4[3] = CONCAT44((int)((int6)CONCAT24((short)(uVar4 >> 0x30),uVar1) >> 0x1f) +
+                          (int)((ulonglong)param_4[3] >> 0x20),
+                          ((int)(uVar1 << 0x10) >> 0xf) + (int)param_4[3]);
+    param_4 = param_4 + 4;
+    param_3 = param_3 + -1;
+  } while (param_3 != 0);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c9cb60 24 8
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int __fastcall FUN_00c9cb60(int param_1)
+
+{
+  return param_1 / 0xff + 1 + param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 009f7dc0 115 7
+@@CALLERS OnPostSwapScreens
+@@CALLEES operator!=, begin, __EH_epilog3
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __EH_epilog3 replaced with injection: EH_epilog3 */
+/* WARNING: Unable to track spacebase fully for stack */
+
+undefined4 FUN_009f7dc0(void)
+
+{
+  bool bVar1;
+  int *unaff_EBP;
+  int iVar2;
+  
+  unaff_EBP[-5] = **(int **)unaff_EBP[-9];
+  iVar2 = *unaff_EBP;
+  *(undefined4 *)(iVar2 + -0x20) = 0;
+  *(undefined4 *)(iVar2 + -0x1c) = *(undefined4 *)(iVar2 + -0xc);
+  while( true ) {
+    *unaff_EBP = iVar2 + -8;
+    unaff_EBP[-1] = 0x9f7e0c;
+    bVar1 = std::
+            _Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>,0>_>_>
+            ::operator!=((_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>,0>_>_>
+                          *)(iVar2 + -0x1c),
+                         (_Tree_const_iterator<class_std::_Tree_val<class_std::_Tmap_traits<class_CCharString,long,struct_std::less<class_CCharString>,class_std::allocator<struct_std::pair<class_CCharString_const_,long>_>,0>_>_>
+                          *)*unaff_EBP);
+    if (!bVar1) break;
+    *unaff_EBP = 0x9f7e1b;
+    std::list<NUISystem::CList*,std::allocator<NUISystem::CList*>_>::begin
+              ((list<NUISystem::CList*,std::allocator<NUISystem::CList*>_> *)(iVar2 + -0x1c));
+    *(int *)(iVar2 + -0x20) = *(int *)(iVar2 + -0x20) + 1;
+  }
+  *(undefined4 *)(iVar2 + -4) = *(undefined4 *)(iVar2 + -0x20);
+  return *(undefined4 *)(iVar2 + -4);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c5cf20 52 6
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c5cf20(int param_1,int param_2)
+
+{
+  uint uVar1;
+  
+  uVar1 = *(int *)(param_1 + 0x14) + param_2;
+  param_2 = *(int *)(param_1 + 0x1c) - param_2;
+  *(uint *)(param_1 + 0x14) = uVar1;
+  *(int *)(param_1 + 0x1c) = param_2;
+  if (param_2 == 0) {
+    *(undefined4 *)(param_1 + 0x14) = 0;
+    *(undefined4 *)(param_1 + 0x18) = 0;
+    return;
+  }
+  if (*(uint *)(param_1 + 8) <= uVar1) {
+    *(uint *)(param_1 + 0x14) = uVar1 - *(uint *)(param_1 + 8);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c1ba70 13 5
+@@CALLERS 
+@@CALLEES FUN_00c1ba40
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c1ba70(int param_1)
+
+{
+  FUN_00c1ba40(*(undefined2 *)(param_1 + 0x12));
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00431471 34 4
+@@CALLERS std_set_insert_uint_via_FUN, CTCCarryable_CloneTree
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_00431471(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045c4d2 34 4
+@@CALLERS TreeNode_CloneDeep
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045c4d2(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045c8a1 34 4
+@@CALLERS CTCCarryable_Clone_Tree, BinarySearchTree_InsertNode
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045c8a1(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045d901 34 4
+@@CALLERS TreeNode_CloneDeep
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045d901(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045de2f 34 4
+@@CALLERS CTCCarryable_CloneDeep
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045de2f(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined1 *)((int)pvVar1 + 0x14) = *(undefined1 *)(param_1 + 1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045e2b1 34 4
+@@CALLERS TreeNode_CloneDeep
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045e2b1(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined1 *)((int)pvVar1 + 0x14) = *(undefined1 *)(param_1 + 1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045e797 34 4
+@@CALLERS TreeNode_CloneDeep
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045e797(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined1 *)((int)pvVar1 + 0x14) = *(undefined1 *)(param_1 + 1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045f13d 34 4
+@@CALLERS TreeNode_CloneDeep
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045f13d(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0046149e 34 4
+@@CALLERS TreeNode_CloneDeep
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0046149e(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004615c3 34 4
+@@CALLERS Tree_Clone_Recursive
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004615c3(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004622ec 34 4
+@@CALLERS TreeNode_CloneDeep
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004622ec(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00462411 34 4
+@@CALLERS CTCCarryable_CloneDeep
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_00462411(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004630e7 34 4
+@@CALLERS TreeNode_CloneDeep
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004630e7(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e4d19 34 4
+@@CALLERS Tree_CloneRecursive
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e4d19(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e4eca 34 4
+@@CALLERS TreeNode_Clone, CMemoryAllocatorVariableSize::InsertNode
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e4eca(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e4fef 34 4
+@@CALLERS Tree_CloneRecursive
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e4fef(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e55cf 34 4
+@@CALLERS Tree_CloneRecursive, CMemoryAllocatorVariableSize::InsertNode
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e55cf(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e597b 34 4
+@@CALLERS Tree_CloneRecursive
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e597b(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6210 34 4
+@@CALLERS Tree_CloneRecursive, std_set_insert_via_FUN
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e6210(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6623 34 4
+@@CALLERS Tree_CloneRecursive
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e6623(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6748 34 4
+@@CALLERS Tree_CloneRecursive
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e6748(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e9ab1 34 4
+@@CALLERS Tree_CloneRecursive
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e9ab1(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ec31c 34 4
+@@CALLERS Tree_CloneRecursive
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004ec31c(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c6e1f0 156 4
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void FUN_00c6e1f0(undefined1 (*param_1) [16],int param_2,int *param_3,undefined2 param_4)
+
+{
+  uint6 uVar1;
+  undefined1 auVar2 [16];
+  undefined1 auVar3 [16];
+  undefined1 auVar4 [16];
+  undefined1 auVar5 [16];
+  undefined1 auVar8 [12];
+  undefined1 auVar6 [16];
+  undefined1 auVar7 [16];
+  undefined1 auVar9 [16];
+  
+  auVar3._2_2_ = param_4;
+  auVar3._0_2_ = param_4;
+  auVar3._4_2_ = param_4;
+  auVar3._6_2_ = param_4;
+  auVar3._8_2_ = param_4;
+  auVar3._10_2_ = param_4;
+  auVar3._12_2_ = param_4;
+  auVar3._14_2_ = param_4;
+  do {
+    auVar4 = pmulhw(*param_1,auVar3);
+    auVar7._0_12_ = SUB1612((undefined1  [16])0x0,0);
+    auVar7._12_2_ = 0;
+    auVar7._14_2_ = auVar4._6_2_;
+    auVar6._12_4_ = auVar7._12_4_;
+    auVar6._0_10_ = SUB1610((undefined1  [16])0x0,0);
+    auVar6._10_2_ = auVar4._4_2_;
+    auVar5._10_6_ = auVar6._10_6_;
+    auVar5._0_10_ = (unkuint10)0;
+    auVar2._2_8_ = auVar5._8_8_;
+    auVar2._0_2_ = auVar4._2_2_;
+    auVar2._10_6_ = 0;
+    uVar1 = CONCAT24(auVar4._10_2_,(uint)auVar4._8_2_);
+    auVar8._0_10_ = (unkuint10)uVar1 << 0x10;
+    auVar8._10_2_ = auVar4._12_2_;
+    auVar9._12_2_ = 0;
+    auVar9._0_12_ = auVar8;
+    auVar9._14_2_ = auVar4._14_2_;
+    *param_3 = ((int)((uint)auVar4._0_2_ << 0x10) >> 0xf) + *param_3;
+    param_3[1] = (SUB164(auVar2 << 0x30,4) >> 0xf) + param_3[1];
+    param_3[2] = (auVar5._8_4_ >> 0xf) + param_3[2];
+    param_3[3] = (auVar6._12_4_ >> 0xf) + param_3[3];
+    param_3[4] = ((int)auVar8._0_10_ >> 0xf) + param_3[4];
+    param_3[5] = (int)((int6)uVar1 >> 0x1f) + param_3[5];
+    param_3[6] = (auVar8._8_4_ >> 0xf) + param_3[6];
+    param_3[7] = (auVar9._12_4_ >> 0xf) + param_3[7];
+    param_1 = param_1 + 1;
+    param_3 = param_3 + 8;
+    param_2 = param_2 + -1;
+  } while (param_2 != 0);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c6e790 139 4
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void FUN_00c6e790(int param_1,int param_2,int param_3)
+
+{
+  int *piVar1;
+  int iVar2;
+  short *psVar3;
+  int iVar4;
+  int iVar5;
+  
+  if (*(short *)(param_2 + 2) != 0) {
+    iVar4 = (int)*(short *)(param_2 + 2);
+    iVar2 = 0;
+    piVar1 = (int *)(param_3 + 8);
+    psVar3 = (short *)(param_1 + 4);
+    iVar5 = 0x20;
+    do {
+      piVar1[-2] = piVar1[-2] + (psVar3[-2] * iVar2 >> 0xf);
+      piVar1[-1] = piVar1[-1] + ((int)psVar3[-1] * (iVar2 + iVar4) >> 0xf);
+      iVar2 = iVar2 + iVar4 + iVar4;
+      *piVar1 = *piVar1 + (*psVar3 * iVar2 >> 0xf);
+      iVar2 = iVar2 + iVar4;
+      piVar1[1] = piVar1[1] + (psVar3[1] * iVar2 >> 0xf);
+      iVar2 = iVar2 + iVar4;
+      piVar1 = piVar1 + 4;
+      psVar3 = psVar3 + 4;
+      iVar5 = iVar5 + -1;
+    } while (iVar5 != 0);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c6e820 139 4
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void FUN_00c6e820(int param_1,ushort *param_2,int param_3)
+
+{
+  int *piVar1;
+  uint uVar2;
+  int iVar3;
+  short *psVar4;
+  int iVar5;
+  int iVar6;
+  
+  if (*param_2 != 0) {
+    iVar5 = (int)(short)-param_2[1];
+    piVar1 = (int *)(param_3 + 8);
+    uVar2 = (uint)*param_2;
+    psVar4 = (short *)(param_1 + 4);
+    iVar6 = 0x20;
+    do {
+      piVar1[-2] = piVar1[-2] + ((int)((int)psVar4[-2] * uVar2) >> 0xf);
+      piVar1[-1] = piVar1[-1] + ((int)((int)psVar4[-1] * (uVar2 + iVar5)) >> 0xf);
+      iVar3 = uVar2 + iVar5 + iVar5;
+      *piVar1 = *piVar1 + (*psVar4 * iVar3 >> 0xf);
+      iVar3 = iVar3 + iVar5;
+      piVar1[1] = piVar1[1] + (psVar4[1] * iVar3 >> 0xf);
+      uVar2 = iVar3 + iVar5;
+      piVar1 = piVar1 + 4;
+      psVar4 = psVar4 + 4;
+      iVar6 = iVar6 + -1;
+    } while (iVar6 != 0);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c6ecd0 156 4
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void FUN_00c6ecd0(undefined1 (*param_1) [16],int param_2,int *param_3,undefined2 param_4)
+
+{
+  uint6 uVar1;
+  undefined1 auVar2 [16];
+  undefined1 auVar3 [16];
+  undefined1 auVar4 [16];
+  undefined1 auVar5 [16];
+  undefined1 auVar8 [12];
+  undefined1 auVar6 [16];
+  undefined1 auVar7 [16];
+  undefined1 auVar9 [16];
+  
+  auVar3._2_2_ = param_4;
+  auVar3._0_2_ = param_4;
+  auVar3._4_2_ = param_4;
+  auVar3._6_2_ = param_4;
+  auVar3._8_2_ = param_4;
+  auVar3._10_2_ = param_4;
+  auVar3._12_2_ = param_4;
+  auVar3._14_2_ = param_4;
+  do {
+    auVar4 = pmulhw(*param_1,auVar3);
+    auVar7._0_12_ = SUB1612((undefined1  [16])0x0,0);
+    auVar7._12_2_ = 0;
+    auVar7._14_2_ = auVar4._6_2_;
+    auVar6._12_4_ = auVar7._12_4_;
+    auVar6._0_10_ = SUB1610((undefined1  [16])0x0,0);
+    auVar6._10_2_ = auVar4._4_2_;
+    auVar5._10_6_ = auVar6._10_6_;
+    auVar5._0_10_ = (unkuint10)0;
+    auVar2._2_8_ = auVar5._8_8_;
+    auVar2._0_2_ = auVar4._2_2_;
+    auVar2._10_6_ = 0;
+    uVar1 = CONCAT24(auVar4._10_2_,(uint)auVar4._8_2_);
+    auVar8._0_10_ = (unkuint10)uVar1 << 0x10;
+    auVar8._10_2_ = auVar4._12_2_;
+    auVar9._12_2_ = 0;
+    auVar9._0_12_ = auVar8;
+    auVar9._14_2_ = auVar4._14_2_;
+    *param_3 = ((int)((uint)auVar4._0_2_ << 0x10) >> 0xf) + *param_3;
+    param_3[1] = (SUB164(auVar2 << 0x30,4) >> 0xf) + param_3[1];
+    param_3[2] = (auVar5._8_4_ >> 0xf) + param_3[2];
+    param_3[3] = (auVar6._12_4_ >> 0xf) + param_3[3];
+    param_3[4] = ((int)auVar8._0_10_ >> 0xf) + param_3[4];
+    param_3[5] = (int)((int6)uVar1 >> 0x1f) + param_3[5];
+    param_3[6] = (auVar8._8_4_ >> 0xf) + param_3[6];
+    param_3[7] = (auVar9._12_4_ >> 0xf) + param_3[7];
+    param_1 = param_1 + 1;
+    param_3 = param_3 + 8;
+    param_2 = param_2 + -1;
+  } while (param_2 != 0);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c6f730 173 4
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void FUN_00c6f730(undefined8 *param_1,int param_2,undefined8 *param_3,undefined2 param_4)
+
+{
+  uint uVar1;
+  undefined8 uVar2;
+  ulonglong uVar3;
+  
+  uVar2 = CONCAT26(param_4,CONCAT24(param_4,CONCAT22(param_4,param_4)));
+  do {
+    uVar3 = pmulhw(*param_1,uVar2);
+    uVar1 = (uint)(ushort)(uVar3 >> 0x20);
+    *param_3 = CONCAT44((int)((longlong)((uVar3 >> 0x10) << 0x30) >> 0x2f) +
+                        (int)((ulonglong)*param_3 >> 0x20),
+                        ((int)((uint)(ushort)uVar3 << 0x10) >> 0xf) + (int)*param_3);
+    param_3[1] = CONCAT44((int)((int6)CONCAT24((short)(uVar3 >> 0x30),uVar1) >> 0x1f) +
+                          (int)((ulonglong)param_3[1] >> 0x20),
+                          ((int)(uVar1 << 0x10) >> 0xf) + (int)param_3[1]);
+    uVar3 = pmulhw(param_1[1],uVar2);
+    uVar1 = (uint)(ushort)(uVar3 >> 0x20);
+    param_3[2] = CONCAT44((int)((longlong)((uVar3 >> 0x10) << 0x30) >> 0x2f) +
+                          (int)((ulonglong)param_3[2] >> 0x20),
+                          ((int)((uint)(ushort)uVar3 << 0x10) >> 0xf) + (int)param_3[2]);
+    param_1 = param_1 + 2;
+    param_3[3] = CONCAT44((int)((int6)CONCAT24((short)(uVar3 >> 0x30),uVar1) >> 0x1f) +
+                          (int)((ulonglong)param_3[3] >> 0x20),
+                          ((int)(uVar1 << 0x10) >> 0xf) + (int)param_3[3]);
+    param_3 = param_3 + 4;
+    param_2 = param_2 + -1;
+  } while (param_2 != 0);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c6fbb0 173 4
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void FUN_00c6fbb0(undefined8 *param_1,int param_2,undefined8 *param_3,undefined2 param_4)
+
+{
+  uint uVar1;
+  undefined8 uVar2;
+  ulonglong uVar3;
+  
+  uVar2 = CONCAT26(param_4,CONCAT24(param_4,CONCAT22(param_4,param_4)));
+  do {
+    uVar3 = pmulhw(*param_1,uVar2);
+    uVar1 = (uint)(ushort)(uVar3 >> 0x20);
+    *param_3 = CONCAT44((int)((longlong)((uVar3 >> 0x10) << 0x30) >> 0x2f) +
+                        (int)((ulonglong)*param_3 >> 0x20),
+                        ((int)((uint)(ushort)uVar3 << 0x10) >> 0xf) + (int)*param_3);
+    param_3[1] = CONCAT44((int)((int6)CONCAT24((short)(uVar3 >> 0x30),uVar1) >> 0x1f) +
+                          (int)((ulonglong)param_3[1] >> 0x20),
+                          ((int)(uVar1 << 0x10) >> 0xf) + (int)param_3[1]);
+    uVar3 = pmulhw(param_1[1],uVar2);
+    uVar1 = (uint)(ushort)(uVar3 >> 0x20);
+    param_3[2] = CONCAT44((int)((longlong)((uVar3 >> 0x10) << 0x30) >> 0x2f) +
+                          (int)((ulonglong)param_3[2] >> 0x20),
+                          ((int)((uint)(ushort)uVar3 << 0x10) >> 0xf) + (int)param_3[2]);
+    param_1 = param_1 + 2;
+    param_3[3] = CONCAT44((int)((int6)CONCAT24((short)(uVar3 >> 0x30),uVar1) >> 0x1f) +
+                          (int)((ulonglong)param_3[3] >> 0x20),
+                          ((int)(uVar1 << 0x10) >> 0xf) + (int)param_3[3]);
+    param_3 = param_3 + 4;
+    param_2 = param_2 + -1;
+  } while (param_2 != 0);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c9ef70 29 4
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 FUN_00c9ef70(void)
+
+{
+  uint *in_EAX;
+  
+  return (float10)(*in_EAX & 0x7fffffff) * (float10)_DAT_012bf264 - (float10)_DAT_012bf260;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00cb26b0 83 4
+@@CALLERS ImeUi_ProcessComposition
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void FUN_00cb26b0(void)
+
+{
+  int in_EAX;
+  
+  if (in_EAX != 0) {
+    do {
+      DAT_0143e8ad = 1;
+      (*DAT_0143e8c4)(DAT_0143cf0c,0x100);
+      in_EAX = in_EAX + -1;
+    } while (in_EAX != 0);
+    DAT_0143e8ad = 1;
+    (*DAT_0143e8c4)(DAT_0143cf0c,0x101);
+    DAT_0143e8ad = 0;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00569c50 218 3
+@@CALLERS UpdateTransaction
+@@CALLEES Vector_Insert, malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00569c50(undefined4 *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  param_1[1] = 0;
+  param_1[2] = 0;
+  param_1[3] = 0;
+  param_1[4] = 0;
+  param_1[5] = 0;
+  param_1[6] = 0;
+  puVar1 = malloc(8);
+  param_1[4] = puVar1;
+  param_1[5] = puVar1;
+  param_1[6] = puVar1 + 8;
+  *puVar1 = 0;
+  param_1[7] = 0;
+  param_1[8] = 0;
+  param_1[9] = 0;
+  puVar1 = malloc(8);
+  param_1[7] = puVar1;
+  param_1[8] = puVar1;
+  param_1[9] = puVar1 + 8;
+  *puVar1 = 0;
+  param_1[0xb] = 0;
+  param_1[0xc] = 0;
+  param_1[0xd] = 0;
+  puVar1 = malloc(8);
+  param_1[0xb] = puVar1;
+  param_1[0xc] = puVar1;
+  param_1[0xd] = puVar1 + 8;
+  *puVar1 = 0;
+  param_1[0xe] = 0;
+  param_1[0xf] = 0;
+  param_1[0x10] = 0;
+  puVar1 = malloc(8);
+  param_1[0xe] = puVar1;
+  param_1[0xf] = puVar1;
+  param_1[0x10] = puVar1 + 8;
+  *puVar1 = 0;
+  *param_1 = 0xffffffff;
+  Vector_Insert(&DAT_0122d70e,&DAT_0122d70e);
+  Vector_Insert(&DAT_0122d70e,&DAT_0122d70e);
+  Vector_Insert(&DAT_0122d70e,&DAT_0122d70e);
+  *(undefined2 *)(param_1 + 0x11) = 0;
+  return param_1;
+}
+
+
+@@ENDFUNC

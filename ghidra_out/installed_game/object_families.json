@@ -1,0 +1,2251 @@
+﻿{
+    "generated_on":  "2026-07-18T23:03:12.2550629-06:00",
+    "source":  "game.bin via tools/bin_dump hex mode",
+    "object_families":  [
+                            {
+                                "family_index":  160,
+                                "family_name":  "NULLDEF_OBJECT_FAMILY",
+                                "member_count":  0,
+                                "weight_total":  0,
+                                "members":  [
+
+                                            ]
+                            },
+                            {
+                                "family_index":  2816,
+                                "family_name":  "GOLD_FAMILY_01",
+                                "member_count":  2,
+                                "weight_total":  500,
+                                "members":  [
+                                                {
+                                                    "object_index":  4642,
+                                                    "object_name":  "OBJECT_GOLDBAG_MEDIUM_WITH_COINS",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2817,
+                                "family_name":  "REWARD_GUARD_01",
+                                "member_count":  7,
+                                "weight_total":  1000,
+                                "members":  [
+                                                {
+                                                    "object_index":  4646,
+                                                    "object_name":  "OBJECT_GOLD_5",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4647,
+                                                    "object_name":  "OBJECT_GOLD_10",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4274,
+                                                    "object_name":  "OBJECT_APPLE_GREEN_01",
+                                                    "weight":  140
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  60
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2818,
+                                "family_name":  "REWARD_GUARD_02",
+                                "member_count":  7,
+                                "weight_total":  995,
+                                "members":  [
+                                                {
+                                                    "object_index":  4648,
+                                                    "object_name":  "OBJECT_GOLD_20",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4649,
+                                                    "object_name":  "OBJECT_GOLD_50",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4276,
+                                                    "object_name":  "OBJECT_PIE_APPLE_01",
+                                                    "weight":  135
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  60
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2819,
+                                "family_name":  "REWARD_GUARD_03",
+                                "member_count":  7,
+                                "weight_total":  990,
+                                "members":  [
+                                                {
+                                                    "object_index":  4649,
+                                                    "object_name":  "OBJECT_GOLD_50",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4650,
+                                                    "object_name":  "OBJECT_GOLD_100",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4276,
+                                                    "object_name":  "OBJECT_PIE_APPLE_01",
+                                                    "weight":  130
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  60
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2820,
+                                "family_name":  "REWARD_VILLAGER_01",
+                                "member_count":  5,
+                                "weight_total":  800,
+                                "members":  [
+                                                {
+                                                    "object_index":  4646,
+                                                    "object_name":  "OBJECT_GOLD_5",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4274,
+                                                    "object_name":  "OBJECT_APPLE_GREEN_01",
+                                                    "weight":  60
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  40
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  200
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2821,
+                                "family_name":  "REWARD_VILLAGER_02",
+                                "member_count":  6,
+                                "weight_total":  750,
+                                "members":  [
+                                                {
+                                                    "object_index":  4646,
+                                                    "object_name":  "OBJECT_GOLD_5",
+                                                    "weight":  60
+                                                },
+                                                {
+                                                    "object_index":  4647,
+                                                    "object_name":  "OBJECT_GOLD_10",
+                                                    "weight":  40
+                                                },
+                                                {
+                                                    "object_index":  4284,
+                                                    "object_name":  "OBJECT_RED_MEAT_01",
+                                                    "weight":  60
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  40
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2822,
+                                "family_name":  "REWARD_VILLAGER_03",
+                                "member_count":  6,
+                                "weight_total":  750,
+                                "members":  [
+                                                {
+                                                    "object_index":  4646,
+                                                    "object_name":  "OBJECT_GOLD_5",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4647,
+                                                    "object_name":  "OBJECT_GOLD_10",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4276,
+                                                    "object_name":  "OBJECT_PIE_APPLE_01",
+                                                    "weight":  60
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  40
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2823,
+                                "family_name":  "REWARD_TRADER_01",
+                                "member_count":  26,
+                                "weight_total":  825,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  10
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  10
+                                                },
+                                                {
+                                                    "object_index":  4274,
+                                                    "object_name":  "OBJECT_APPLE_GREEN_01",
+                                                    "weight":  40
+                                                },
+                                                {
+                                                    "object_index":  4276,
+                                                    "object_name":  "OBJECT_PIE_APPLE_01",
+                                                    "weight":  40
+                                                },
+                                                {
+                                                    "object_index":  4279,
+                                                    "object_name":  "OBJECT_FISH_CARP_MEDIUM_01",
+                                                    "weight":  30
+                                                },
+                                                {
+                                                    "object_index":  4283,
+                                                    "object_name":  "OBJECT_CARROT",
+                                                    "weight":  30
+                                                },
+                                                {
+                                                    "object_index":  4284,
+                                                    "object_name":  "OBJECT_RED_MEAT_01",
+                                                    "weight":  30
+                                                },
+                                                {
+                                                    "object_index":  4288,
+                                                    "object_name":  "OBJECT_TOFU",
+                                                    "weight":  5
+                                                },
+                                                {
+                                                    "object_index":  4289,
+                                                    "object_name":  "OBJECT_CRUNCHY_CHICK",
+                                                    "weight":  5
+                                                },
+                                                {
+                                                    "object_index":  4292,
+                                                    "object_name":  "OBJECT_HEALTH_POTION",
+                                                    "weight":  20
+                                                },
+                                                {
+                                                    "object_index":  4293,
+                                                    "object_name":  "OBJECT_MANA_POTION",
+                                                    "weight":  20
+                                                },
+                                                {
+                                                    "object_index":  4314,
+                                                    "object_name":  "OBJECT_PERFUME",
+                                                    "weight":  10
+                                                },
+                                                {
+                                                    "object_index":  4315,
+                                                    "object_name":  "OBJECT_ROSE_RED_01",
+                                                    "weight":  20
+                                                },
+                                                {
+                                                    "object_index":  4317,
+                                                    "object_name":  "OBJECT_CHOCOLATE_BOX_01",
+                                                    "weight":  20
+                                                },
+                                                {
+                                                    "object_index":  4318,
+                                                    "object_name":  "OBJECT_WEDDING_RING",
+                                                    "weight":  1
+                                                },
+                                                {
+                                                    "object_index":  4319,
+                                                    "object_name":  "OBJECT_FAKE_WEDDING_RING",
+                                                    "weight":  5
+                                                },
+                                                {
+                                                    "object_index":  4441,
+                                                    "object_name":  "OBJECT_GEMSTONE_DIAMOND",
+                                                    "weight":  1
+                                                },
+                                                {
+                                                    "object_index":  4442,
+                                                    "object_name":  "OBJECT_GEMSTONE_EMERALD",
+                                                    "weight":  2
+                                                },
+                                                {
+                                                    "object_index":  4443,
+                                                    "object_name":  "OBJECT_GEMSTONE_RUBY",
+                                                    "weight":  2
+                                                },
+                                                {
+                                                    "object_index":  4444,
+                                                    "object_name":  "OBJECT_GEMSTONE_SAPPHIRE",
+                                                    "weight":  2
+                                                },
+                                                {
+                                                    "object_index":  4445,
+                                                    "object_name":  "OBJECT_GEMSTONE_JET",
+                                                    "weight":  2
+                                                },
+                                                {
+                                                    "object_index":  4446,
+                                                    "object_name":  "OBJECT_GRAIN_SACK",
+                                                    "weight":  30
+                                                },
+                                                {
+                                                    "object_index":  4447,
+                                                    "object_name":  "OBJECT_FLOUR_SACK",
+                                                    "weight":  30
+                                                },
+                                                {
+                                                    "object_index":  4448,
+                                                    "object_name":  "OBJECT_BEER_KEG",
+                                                    "weight":  30
+                                                },
+                                                {
+                                                    "object_index":  4450,
+                                                    "object_name":  "OBJECT_LIQUOR_CRATE",
+                                                    "weight":  30
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2824,
+                                "family_name":  "REWARD_TRADER_02",
+                                "member_count":  10,
+                                "weight_total":  695,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  10
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  10
+                                                },
+                                                {
+                                                    "object_index":  4274,
+                                                    "object_name":  "OBJECT_APPLE_GREEN_01",
+                                                    "weight":  40
+                                                },
+                                                {
+                                                    "object_index":  4276,
+                                                    "object_name":  "OBJECT_PIE_APPLE_01",
+                                                    "weight":  40
+                                                },
+                                                {
+                                                    "object_index":  4279,
+                                                    "object_name":  "OBJECT_FISH_CARP_MEDIUM_01",
+                                                    "weight":  30
+                                                },
+                                                {
+                                                    "object_index":  4283,
+                                                    "object_name":  "OBJECT_CARROT",
+                                                    "weight":  30
+                                                },
+                                                {
+                                                    "object_index":  4284,
+                                                    "object_name":  "OBJECT_RED_MEAT_01",
+                                                    "weight":  30
+                                                },
+                                                {
+                                                    "object_index":  4288,
+                                                    "object_name":  "OBJECT_TOFU",
+                                                    "weight":  5
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2825,
+                                "family_name":  "REWARD_TRADER_03",
+                                "member_count":  3,
+                                "weight_total":  100,
+                                "members":  [
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  10
+                                                },
+                                                {
+                                                    "object_index":  4650,
+                                                    "object_name":  "OBJECT_GOLD_100",
+                                                    "weight":  80
+                                                },
+                                                {
+                                                    "object_index":  4651,
+                                                    "object_name":  "OBJECT_GOLD_250",
+                                                    "weight":  10
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2826,
+                                "family_name":  "REWARD_BANDIT_01",
+                                "member_count":  8,
+                                "weight_total":  1050,
+                                "members":  [
+                                                {
+                                                    "object_index":  4646,
+                                                    "object_name":  "OBJECT_GOLD_5",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4647,
+                                                    "object_name":  "OBJECT_GOLD_10",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4284,
+                                                    "object_name":  "OBJECT_RED_MEAT_01",
+                                                    "weight":  75
+                                                },
+                                                {
+                                                    "object_index":  4276,
+                                                    "object_name":  "OBJECT_PIE_APPLE_01",
+                                                    "weight":  75
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2827,
+                                "family_name":  "REWARD_BANDIT_02",
+                                "member_count":  8,
+                                "weight_total":  1000,
+                                "members":  [
+                                                {
+                                                    "object_index":  4647,
+                                                    "object_name":  "OBJECT_GOLD_10",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4648,
+                                                    "object_name":  "OBJECT_GOLD_20",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  60
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4284,
+                                                    "object_name":  "OBJECT_RED_MEAT_01",
+                                                    "weight":  120
+                                                },
+                                                {
+                                                    "object_index":  4289,
+                                                    "object_name":  "OBJECT_CRUNCHY_CHICK",
+                                                    "weight":  20
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2828,
+                                "family_name":  "REWARD_BANDIT_03",
+                                "member_count":  8,
+                                "weight_total":  950,
+                                "members":  [
+                                                {
+                                                    "object_index":  4648,
+                                                    "object_name":  "OBJECT_GOLD_20",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4649,
+                                                    "object_name":  "OBJECT_GOLD_50",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  60
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4284,
+                                                    "object_name":  "OBJECT_RED_MEAT_01",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4289,
+                                                    "object_name":  "OBJECT_CRUNCHY_CHICK",
+                                                    "weight":  40
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2829,
+                                "family_name":  "REWARD_BANDIT_LEADER_01",
+                                "member_count":  6,
+                                "weight_total":  1000,
+                                "members":  [
+                                                {
+                                                    "object_index":  4648,
+                                                    "object_name":  "OBJECT_GOLD_20",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4649,
+                                                    "object_name":  "OBJECT_GOLD_50",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2830,
+                                "family_name":  "REWARD_BANDIT_LEADER_02",
+                                "member_count":  6,
+                                "weight_total":  1000,
+                                "members":  [
+                                                {
+                                                    "object_index":  4649,
+                                                    "object_name":  "OBJECT_GOLD_50",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4650,
+                                                    "object_name":  "OBJECT_GOLD_100",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  200
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2831,
+                                "family_name":  "REWARD_BANDIT_LEADER_03",
+                                "member_count":  6,
+                                "weight_total":  1000,
+                                "members":  [
+                                                {
+                                                    "object_index":  4650,
+                                                    "object_name":  "OBJECT_GOLD_100",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4651,
+                                                    "object_name":  "OBJECT_GOLD_250",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  250
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2832,
+                                "family_name":  "REWARD_WASP_01",
+                                "member_count":  3,
+                                "weight_total":  800,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  350
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2833,
+                                "family_name":  "REWARD_WASP_02",
+                                "member_count":  3,
+                                "weight_total":  800,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  350
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2834,
+                                "family_name":  "REWARD_WASP_03",
+                                "member_count":  3,
+                                "weight_total":  800,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  350
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2835,
+                                "family_name":  "REWARD_BEETLE_01",
+                                "member_count":  3,
+                                "weight_total":  800,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  350
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2836,
+                                "family_name":  "REWARD_BEETLE_02",
+                                "member_count":  3,
+                                "weight_total":  800,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  350
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2837,
+                                "family_name":  "REWARD_BALVERINE_01",
+                                "member_count":  5,
+                                "weight_total":  800,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  40
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4284,
+                                                    "object_name":  "OBJECT_RED_MEAT_01",
+                                                    "weight":  160
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2838,
+                                "family_name":  "REWARD_BALVERINE_02",
+                                "member_count":  4,
+                                "weight_total":  900,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4284,
+                                                    "object_name":  "OBJECT_RED_MEAT_01",
+                                                    "weight":  350
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2839,
+                                "family_name":  "REWARD_NYMPH_01",
+                                "member_count":  4,
+                                "weight_total":  900,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  380
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4442,
+                                                    "object_name":  "OBJECT_GEMSTONE_EMERALD",
+                                                    "weight":  20
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2840,
+                                "family_name":  "REWARD_NYMPH_02",
+                                "member_count":  4,
+                                "weight_total":  900,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  360
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4444,
+                                                    "object_name":  "OBJECT_GEMSTONE_SAPPHIRE",
+                                                    "weight":  40
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2841,
+                                "family_name":  "REWARD_NYMPH_03",
+                                "member_count":  4,
+                                "weight_total":  900,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  350
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4445,
+                                                    "object_name":  "OBJECT_GEMSTONE_JET",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2842,
+                                "family_name":  "REWARD_TROLL_01",
+                                "member_count":  2,
+                                "weight_total":  300,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4443,
+                                                    "object_name":  "OBJECT_GEMSTONE_RUBY",
+                                                    "weight":  200
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2843,
+                                "family_name":  "REWARD_TROLL_02",
+                                "member_count":  3,
+                                "weight_total":  350,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4443,
+                                                    "object_name":  "OBJECT_GEMSTONE_RUBY",
+                                                    "weight":  200
+                                                },
+                                                {
+                                                    "object_index":  4445,
+                                                    "object_name":  "OBJECT_GEMSTONE_JET",
+                                                    "weight":  50
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2844,
+                                "family_name":  "REWARD_TROLL_03",
+                                "member_count":  2,
+                                "weight_total":  300,
+                                "members":  [
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4441,
+                                                    "object_name":  "OBJECT_GEMSTONE_DIAMOND",
+                                                    "weight":  200
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2845,
+                                "family_name":  "REWARD_HOBBE_01",
+                                "member_count":  7,
+                                "weight_total":  1050,
+                                "members":  [
+                                                {
+                                                    "object_index":  4646,
+                                                    "object_name":  "OBJECT_GOLD_5",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4647,
+                                                    "object_name":  "OBJECT_GOLD_10",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4284,
+                                                    "object_name":  "OBJECT_RED_MEAT_01",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2846,
+                                "family_name":  "REWARD_HOBBE_02",
+                                "member_count":  8,
+                                "weight_total":  1050,
+                                "members":  [
+                                                {
+                                                    "object_index":  4646,
+                                                    "object_name":  "OBJECT_GOLD_5",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4647,
+                                                    "object_name":  "OBJECT_GOLD_10",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4293,
+                                                    "object_name":  "OBJECT_MANA_POTION",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4279,
+                                                    "object_name":  "OBJECT_FISH_CARP_MEDIUM_01",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2847,
+                                "family_name":  "REWARD_HOBBE_03",
+                                "member_count":  7,
+                                "weight_total":  1000,
+                                "members":  [
+                                                {
+                                                    "object_index":  4647,
+                                                    "object_name":  "OBJECT_GOLD_10",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4648,
+                                                    "object_name":  "OBJECT_GOLD_20",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4284,
+                                                    "object_name":  "OBJECT_RED_MEAT_01",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2848,
+                                "family_name":  "REWARD_HOBBE_04",
+                                "member_count":  8,
+                                "weight_total":  1000,
+                                "members":  [
+                                                {
+                                                    "object_index":  4647,
+                                                    "object_name":  "OBJECT_GOLD_10",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4648,
+                                                    "object_name":  "OBJECT_GOLD_20",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4293,
+                                                    "object_name":  "OBJECT_MANA_POTION",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4279,
+                                                    "object_name":  "OBJECT_FISH_CARP_MEDIUM_01",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2849,
+                                "family_name":  "REWARD_HOBBE_05",
+                                "member_count":  7,
+                                "weight_total":  1000,
+                                "members":  [
+                                                {
+                                                    "object_index":  4648,
+                                                    "object_name":  "OBJECT_GOLD_20",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4649,
+                                                    "object_name":  "OBJECT_GOLD_50",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  60
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4284,
+                                                    "object_name":  "OBJECT_RED_MEAT_01",
+                                                    "weight":  140
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2850,
+                                "family_name":  "REWARD_UNDEAD_01",
+                                "member_count":  6,
+                                "weight_total":  1000,
+                                "members":  [
+                                                {
+                                                    "object_index":  4647,
+                                                    "object_name":  "OBJECT_GOLD_10",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4648,
+                                                    "object_name":  "OBJECT_GOLD_20",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  250
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2851,
+                                "family_name":  "REWARD_UNDEAD_02",
+                                "member_count":  6,
+                                "weight_total":  975,
+                                "members":  [
+                                                {
+                                                    "object_index":  4648,
+                                                    "object_name":  "OBJECT_GOLD_20",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4649,
+                                                    "object_name":  "OBJECT_GOLD_50",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  60
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  75
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  240
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2852,
+                                "family_name":  "REWARD_UNDEAD_03",
+                                "member_count":  6,
+                                "weight_total":  950,
+                                "members":  [
+                                                {
+                                                    "object_index":  4649,
+                                                    "object_name":  "OBJECT_GOLD_50",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4650,
+                                                    "object_name":  "OBJECT_GOLD_100",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  200
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2853,
+                                "family_name":  "REWARD_MINION_01",
+                                "member_count":  5,
+                                "weight_total":  850,
+                                "members":  [
+                                                {
+                                                    "object_index":  4649,
+                                                    "object_name":  "OBJECT_GOLD_50",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4650,
+                                                    "object_name":  "OBJECT_GOLD_100",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2854,
+                                "family_name":  "REWARD_MINION_02",
+                                "member_count":  6,
+                                "weight_total":  900,
+                                "members":  [
+                                                {
+                                                    "object_index":  4649,
+                                                    "object_name":  "OBJECT_GOLD_50",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4650,
+                                                    "object_name":  "OBJECT_GOLD_100",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4290,
+                                                    "object_name":  "OBJECT_DYNAMIC_POTION_DUMMY",
+                                                    "weight":  150
+                                                },
+                                                {
+                                                    "object_index":  4293,
+                                                    "object_name":  "OBJECT_MANA_POTION",
+                                                    "weight":  50
+                                                },
+                                                {
+                                                    "object_index":  4291,
+                                                    "object_name":  "OBJECT_DYNAMIC_RESURRECTION_DUMMY",
+                                                    "weight":  100
+                                                },
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  400
+                                                }
+                                            ]
+                            },
+                            {
+                                "family_index":  2855,
+                                "family_name":  "REWARD_SCORPION_01",
+                                "member_count":  1,
+                                "weight_total":  1,
+                                "members":  [
+                                                {
+                                                    "object_index":  0,
+                                                    "object_name":  "",
+                                                    "weight":  1
+                                                }
+                                            ]
+                            }
+                        ],
+    "container_reward_defs":  [
+                                  {
+                                      "entry_index":  26,
+                                      "family_count":  0,
+                                      "families":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  8915,
+                                      "family_count":  0,
+                                      "families":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  8931,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2820,
+                                                           "family_name":  "REWARD_VILLAGER_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  8963,
+                                      "family_count":  0,
+                                      "families":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9001,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2817,
+                                                           "family_name":  "REWARD_GUARD_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9921,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2826,
+                                                           "family_name":  "REWARD_BANDIT_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9922,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2826,
+                                                           "family_name":  "REWARD_BANDIT_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9923,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2826,
+                                                           "family_name":  "REWARD_BANDIT_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9924,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2826,
+                                                           "family_name":  "REWARD_BANDIT_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9930,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2827,
+                                                           "family_name":  "REWARD_BANDIT_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9931,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2827,
+                                                           "family_name":  "REWARD_BANDIT_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9932,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2827,
+                                                           "family_name":  "REWARD_BANDIT_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9933,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2827,
+                                                           "family_name":  "REWARD_BANDIT_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9940,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2828,
+                                                           "family_name":  "REWARD_BANDIT_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9941,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2828,
+                                                           "family_name":  "REWARD_BANDIT_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9942,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2828,
+                                                           "family_name":  "REWARD_BANDIT_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9943,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2828,
+                                                           "family_name":  "REWARD_BANDIT_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9947,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2826,
+                                                           "family_name":  "REWARD_BANDIT_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9952,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2827,
+                                                           "family_name":  "REWARD_BANDIT_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9958,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2828,
+                                                           "family_name":  "REWARD_BANDIT_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9971,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2826,
+                                                           "family_name":  "REWARD_BANDIT_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9974,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2827,
+                                                           "family_name":  "REWARD_BANDIT_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9980,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2828,
+                                                           "family_name":  "REWARD_BANDIT_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9986,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2829,
+                                                           "family_name":  "REWARD_BANDIT_LEADER_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9991,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2830,
+                                                           "family_name":  "REWARD_BANDIT_LEADER_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  9996,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2831,
+                                                           "family_name":  "REWARD_BANDIT_LEADER_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10003,
+                                      "family_count":  2,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2829,
+                                                           "family_name":  "REWARD_BANDIT_LEADER_01"
+                                                       },
+                                                       {
+                                                           "family_index":  2826,
+                                                           "family_name":  "REWARD_BANDIT_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10007,
+                                      "family_count":  2,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2830,
+                                                           "family_name":  "REWARD_BANDIT_LEADER_02"
+                                                       },
+                                                       {
+                                                           "family_index":  2827,
+                                                           "family_name":  "REWARD_BANDIT_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10011,
+                                      "family_count":  2,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2831,
+                                                           "family_name":  "REWARD_BANDIT_LEADER_03"
+                                                       },
+                                                       {
+                                                           "family_index":  2828,
+                                                           "family_name":  "REWARD_BANDIT_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10097,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2842,
+                                                           "family_name":  "REWARD_TROLL_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10142,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2843,
+                                                           "family_name":  "REWARD_TROLL_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10144,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2843,
+                                                           "family_name":  "REWARD_TROLL_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10163,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2844,
+                                                           "family_name":  "REWARD_TROLL_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10165,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2844,
+                                                           "family_name":  "REWARD_TROLL_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10175,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2854,
+                                                           "family_name":  "REWARD_MINION_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10182,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2853,
+                                                           "family_name":  "REWARD_MINION_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10187,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2853,
+                                                           "family_name":  "REWARD_MINION_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10192,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2853,
+                                                           "family_name":  "REWARD_MINION_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10239,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2837,
+                                                           "family_name":  "REWARD_BALVERINE_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10251,
+                                      "family_count":  2,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2837,
+                                                           "family_name":  "REWARD_BALVERINE_01"
+                                                       },
+                                                       {
+                                                           "family_index":  2838,
+                                                           "family_name":  "REWARD_BALVERINE_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10264,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2837,
+                                                           "family_name":  "REWARD_BALVERINE_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10271,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2847,
+                                                           "family_name":  "REWARD_HOBBE_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10277,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2849,
+                                                           "family_name":  "REWARD_HOBBE_05"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10284,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2848,
+                                                           "family_name":  "REWARD_HOBBE_04"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10288,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2845,
+                                                           "family_name":  "REWARD_HOBBE_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10289,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2846,
+                                                           "family_name":  "REWARD_HOBBE_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10296,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2839,
+                                                           "family_name":  "REWARD_NYMPH_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10303,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2840,
+                                                           "family_name":  "REWARD_NYMPH_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10312,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2841,
+                                                           "family_name":  "REWARD_NYMPH_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10323,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2841,
+                                                           "family_name":  "REWARD_NYMPH_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10348,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2850,
+                                                           "family_name":  "REWARD_UNDEAD_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10355,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2851,
+                                                           "family_name":  "REWARD_UNDEAD_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10364,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2852,
+                                                           "family_name":  "REWARD_UNDEAD_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10387,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2852,
+                                                           "family_name":  "REWARD_UNDEAD_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10395,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2852,
+                                                           "family_name":  "REWARD_UNDEAD_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10406,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2852,
+                                                           "family_name":  "REWARD_UNDEAD_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10413,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2832,
+                                                           "family_name":  "REWARD_WASP_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10418,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2832,
+                                                           "family_name":  "REWARD_WASP_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10425,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2832,
+                                                           "family_name":  "REWARD_WASP_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10430,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2833,
+                                                           "family_name":  "REWARD_WASP_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10434,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2834,
+                                                           "family_name":  "REWARD_WASP_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10453,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2855,
+                                                           "family_name":  "REWARD_SCORPION_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10485,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2835,
+                                                           "family_name":  "REWARD_BEETLE_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10487,
+                                      "family_count":  1,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2836,
+                                                           "family_name":  "REWARD_BEETLE_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10750,
+                                      "family_count":  2,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2820,
+                                                           "family_name":  "REWARD_VILLAGER_01"
+                                                       },
+                                                       {
+                                                           "family_index":  2825,
+                                                           "family_name":  "REWARD_TRADER_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10754,
+                                      "family_count":  2,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2820,
+                                                           "family_name":  "REWARD_VILLAGER_01"
+                                                       },
+                                                       {
+                                                           "family_index":  2825,
+                                                           "family_name":  "REWARD_TRADER_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10756,
+                                      "family_count":  2,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2820,
+                                                           "family_name":  "REWARD_VILLAGER_01"
+                                                       },
+                                                       {
+                                                           "family_index":  2825,
+                                                           "family_name":  "REWARD_TRADER_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10765,
+                                      "family_count":  2,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2820,
+                                                           "family_name":  "REWARD_VILLAGER_01"
+                                                       },
+                                                       {
+                                                           "family_index":  2823,
+                                                           "family_name":  "REWARD_TRADER_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10930,
+                                      "family_count":  2,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2817,
+                                                           "family_name":  "REWARD_GUARD_01"
+                                                       },
+                                                       {
+                                                           "family_index":  2817,
+                                                           "family_name":  "REWARD_GUARD_01"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10934,
+                                      "family_count":  2,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2817,
+                                                           "family_name":  "REWARD_GUARD_01"
+                                                       },
+                                                       {
+                                                           "family_index":  2818,
+                                                           "family_name":  "REWARD_GUARD_02"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  10937,
+                                      "family_count":  2,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2817,
+                                                           "family_name":  "REWARD_GUARD_01"
+                                                       },
+                                                       {
+                                                           "family_index":  2819,
+                                                           "family_name":  "REWARD_GUARD_03"
+                                                       }
+                                                   ]
+                                  },
+                                  {
+                                      "entry_index":  11149,
+                                      "family_count":  2,
+                                      "families":  [
+                                                       {
+                                                           "family_index":  2817,
+                                                           "family_name":  "REWARD_GUARD_01"
+                                                       },
+                                                       {
+                                                           "family_index":  2819,
+                                                           "family_name":  "REWARD_GUARD_03"
+                                                       }
+                                                   ]
+                                  }
+                              ]
+}

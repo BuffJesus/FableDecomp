@@ -1,0 +1,1194 @@
+@@@FUNC 00656e0c 50 1
+@@CALLERS AddMessage
+@@CALLEES CComboMultiplierData, FUN_006569da
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00656e0c(int param_1,CComboMultiplierData *param_2)
+
+{
+  CComboMultiplierData *this;
+  
+  this = *(CComboMultiplierData **)(param_1 + 0x10);
+  if (this == (CComboMultiplierData *)(*(int *)(param_1 + 0x18) + -8)) {
+    FUN_006569da(param_2);
+  }
+  else {
+    if (this != (CComboMultiplierData *)0x0) {
+      CComboMultiplierData::CComboMultiplierData(this,param_2);
+    }
+    *(int *)(param_1 + 0x10) = *(int *)(param_1 + 0x10) + 8;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00657ba0 209 1
+@@CALLERS DrawExpressionList
+@@CALLEES memmove, std::vector::InsertMultipleAndGrow
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Removing unreachable block (ram,0x00657baf) */
+
+void FUN_00657ba0(undefined4 *param_1)
+
+{
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  undefined4 *puVar3;
+  
+  puVar3 = param_1;
+  puVar1 = (undefined4 *)*param_1;
+  puVar2 = param_1 + 2;
+  param_1[1] = puVar1;
+  param_1 = (undefined4 *)0x0;
+  if (puVar1 == (undefined4 *)*puVar2) {
+    std__vector__InsertMultipleAndGrow(puVar1,&param_1,&param_1,1,1);
+  }
+  else {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = 0;
+    }
+    puVar3[1] = puVar3[1] + 4;
+  }
+  puVar2 = (undefined4 *)puVar3[1];
+  param_1 = (undefined4 *)0x1;
+  if (puVar2 == (undefined4 *)puVar3[2]) {
+    std__vector__InsertMultipleAndGrow(puVar2,&param_1,&param_1,1,1);
+  }
+  else {
+    if (puVar2 != (undefined4 *)0x0) {
+      *puVar2 = 1;
+    }
+    puVar3[1] = puVar3[1] + 4;
+  }
+  puVar2 = (undefined4 *)puVar3[1];
+  param_1 = (undefined4 *)0xffffffff;
+  if (puVar2 == (undefined4 *)puVar3[2]) {
+    std__vector__InsertMultipleAndGrow(puVar2,&param_1,&param_1,1,1);
+    return;
+  }
+  if (puVar2 != (undefined4 *)0x0) {
+    *puVar2 = 0xffffffff;
+  }
+  puVar3[1] = puVar3[1] + 4;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00657c80 209 1
+@@CALLERS DrawExpressionButton
+@@CALLEES memmove, std::vector::InsertMultipleAndGrow
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Removing unreachable block (ram,0x00657c8f) */
+
+void FUN_00657c80(undefined4 *param_1)
+
+{
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  undefined4 *puVar3;
+  
+  puVar3 = param_1;
+  puVar1 = (undefined4 *)*param_1;
+  puVar2 = param_1 + 2;
+  param_1[1] = puVar1;
+  param_1 = (undefined4 *)0x2;
+  if (puVar1 == (undefined4 *)*puVar2) {
+    std__vector__InsertMultipleAndGrow(puVar1,&param_1,&param_1,1,1);
+  }
+  else {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = 2;
+    }
+    puVar3[1] = puVar3[1] + 4;
+  }
+  puVar2 = (undefined4 *)puVar3[1];
+  param_1 = (undefined4 *)0x3;
+  if (puVar2 == (undefined4 *)puVar3[2]) {
+    std__vector__InsertMultipleAndGrow(puVar2,&param_1,&param_1,1,1);
+  }
+  else {
+    if (puVar2 != (undefined4 *)0x0) {
+      *puVar2 = 3;
+    }
+    puVar3[1] = puVar3[1] + 4;
+  }
+  puVar2 = (undefined4 *)puVar3[1];
+  param_1 = (undefined4 *)0x1;
+  if (puVar2 == (undefined4 *)puVar3[2]) {
+    std__vector__InsertMultipleAndGrow(puVar2,&param_1,&param_1,1,1);
+    return;
+  }
+  if (puVar2 != (undefined4 *)0x0) {
+    *puVar2 = 1;
+  }
+  puVar3[1] = puVar3[1] + 4;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065e8b8 41 1
+@@CALLERS GetCellBoundingBox
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void FUN_0065e8b8(int *param_1,int param_2)
+
+{
+  if (param_2 < 1) {
+    if (param_2 != 0) {
+      param_2 = -param_2;
+      do {
+        param_2 = param_2 + -1;
+        *param_1 = *(int *)(*param_1 + 4);
+      } while (param_2 != 0);
+    }
+    return;
+  }
+  do {
+    param_2 = param_2 + -1;
+    *param_1 = *(int *)*param_1;
+  } while (param_2 != 0);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065ea75 97 1
+@@CALLERS TransferIn
+@@CALLEES _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CBankFileAsyncEntry>
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall
+FUN_0065ea75(undefined4 *param_1,
+            CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *param_2,
+            undefined4 *param_3,undefined4 *param_4,undefined4 param_5)
+
+{
+  bool bVar1;
+  char cVar2;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX_00;
+  int *local_10 [2];
+  uint local_8;
+  
+  local_8 = 0;
+  do {
+    if (param_3 == param_4) {
+LAB_0065eaaf:
+      bVar1 = false;
+    }
+    else {
+      CCountedPointer<CBankFileAsyncEntry>::CCountedPointer<CBankFileAsyncEntry>
+                ((CCountedPointer<CBankFileAsyncEntry> *)local_10,
+                 (CCountedPointer<class_CBankFileAsyncEntry> *)(param_3 + 2));
+      local_8 = local_8 | 1;
+      cVar2 = (**(code **)(*local_10[0] + 0x14))(param_5);
+      param_2 = extraout_EDX;
+      if (cVar2 != '\0') goto LAB_0065eaaf;
+      bVar1 = true;
+    }
+    if ((local_8 & 1) != 0) {
+      local_8 = local_8 & 0xfffffffe;
+      std::
+      _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+                ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+                 local_10,param_2);
+      param_2 = extraout_EDX_00;
+    }
+    if (!bVar1) {
+      *param_1 = param_3;
+      return param_1;
+    }
+    param_3 = (undefined4 *)*param_3;
+  } while( true );
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065ead6 90 1
+@@CALLERS TransferIn
+@@CALLEES _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CBankFileAsyncEntry>
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall
+FUN_0065ead6(undefined4 *param_1,
+            CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *param_2,
+            undefined4 *param_3,undefined4 *param_4,int param_5)
+
+{
+  bool bVar1;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX_00;
+  int local_10 [2];
+  uint local_8;
+  
+  local_8 = 0;
+  do {
+    if (param_3 == param_4) {
+LAB_0065eb09:
+      bVar1 = false;
+    }
+    else {
+      CCountedPointer<CBankFileAsyncEntry>::CCountedPointer<CBankFileAsyncEntry>
+                ((CCountedPointer<CBankFileAsyncEntry> *)local_10,
+                 (CCountedPointer<class_CBankFileAsyncEntry> *)(param_3 + 2));
+      local_8 = local_8 | 1;
+      param_2 = extraout_EDX;
+      if (local_10[0] == param_5) goto LAB_0065eb09;
+      bVar1 = true;
+    }
+    if ((local_8 & 1) != 0) {
+      local_8 = local_8 & 0xfffffffe;
+      std::
+      _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+                ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+                 local_10,param_2);
+      param_2 = extraout_EDX_00;
+    }
+    if (!bVar1) {
+      *param_1 = param_3;
+      return param_1;
+    }
+    param_3 = (undefined4 *)*param_3;
+  } while( true );
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065eb30 90 1
+@@CALLERS TransferIn
+@@CALLEES _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CBankFileAsyncEntry>
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall
+FUN_0065eb30(undefined4 *param_1,
+            CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *param_2,
+            undefined4 *param_3,undefined4 *param_4,int param_5)
+
+{
+  bool bVar1;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX_00;
+  int local_10 [2];
+  uint local_8;
+  
+  local_8 = 0;
+  do {
+    if (param_3 == param_4) {
+LAB_0065eb63:
+      bVar1 = false;
+    }
+    else {
+      CCountedPointer<CBankFileAsyncEntry>::CCountedPointer<CBankFileAsyncEntry>
+                ((CCountedPointer<CBankFileAsyncEntry> *)local_10,
+                 (CCountedPointer<class_CBankFileAsyncEntry> *)(param_3 + 2));
+      local_8 = local_8 | 1;
+      param_2 = extraout_EDX;
+      if (local_10[0] == param_5) goto LAB_0065eb63;
+      bVar1 = true;
+    }
+    if ((local_8 & 1) != 0) {
+      local_8 = local_8 & 0xfffffffe;
+      std::
+      _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+                ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+                 local_10,param_2);
+      param_2 = extraout_EDX_00;
+    }
+    if (!bVar1) {
+      *param_1 = param_3;
+      return param_1;
+    }
+    param_3 = (undefined4 *)*param_3;
+  } while( true );
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065eb8a 90 1
+@@CALLERS TransferIn
+@@CALLEES _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CBankFileAsyncEntry>
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall
+FUN_0065eb8a(undefined4 *param_1,
+            CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *param_2,
+            undefined4 *param_3,undefined4 *param_4,int param_5)
+
+{
+  bool bVar1;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX_00;
+  int local_10 [2];
+  uint local_8;
+  
+  local_8 = 0;
+  do {
+    if (param_3 == param_4) {
+LAB_0065ebbd:
+      bVar1 = false;
+    }
+    else {
+      CCountedPointer<CBankFileAsyncEntry>::CCountedPointer<CBankFileAsyncEntry>
+                ((CCountedPointer<CBankFileAsyncEntry> *)local_10,
+                 (CCountedPointer<class_CBankFileAsyncEntry> *)(param_3 + 2));
+      local_8 = local_8 | 1;
+      param_2 = extraout_EDX;
+      if (local_10[0] == param_5) goto LAB_0065ebbd;
+      bVar1 = true;
+    }
+    if ((local_8 & 1) != 0) {
+      local_8 = local_8 & 0xfffffffe;
+      std::
+      _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+                ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+                 local_10,param_2);
+      param_2 = extraout_EDX_00;
+    }
+    if (!bVar1) {
+      *param_1 = param_3;
+      return param_1;
+    }
+    param_3 = (undefined4 *)*param_3;
+  } while( true );
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065ebe4 90 1
+@@CALLERS TransferIn
+@@CALLEES _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CBankFileAsyncEntry>
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall
+FUN_0065ebe4(undefined4 *param_1,
+            CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *param_2,
+            undefined4 *param_3,undefined4 *param_4,int param_5)
+
+{
+  bool bVar1;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX_00;
+  int local_10 [2];
+  uint local_8;
+  
+  local_8 = 0;
+  do {
+    if (param_3 == param_4) {
+LAB_0065ec17:
+      bVar1 = false;
+    }
+    else {
+      CCountedPointer<CBankFileAsyncEntry>::CCountedPointer<CBankFileAsyncEntry>
+                ((CCountedPointer<CBankFileAsyncEntry> *)local_10,
+                 (CCountedPointer<class_CBankFileAsyncEntry> *)(param_3 + 2));
+      local_8 = local_8 | 1;
+      param_2 = extraout_EDX;
+      if (local_10[0] == param_5) goto LAB_0065ec17;
+      bVar1 = true;
+    }
+    if ((local_8 & 1) != 0) {
+      local_8 = local_8 & 0xfffffffe;
+      std::
+      _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+                ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+                 local_10,param_2);
+      param_2 = extraout_EDX_00;
+    }
+    if (!bVar1) {
+      *param_1 = param_3;
+      return param_1;
+    }
+    param_3 = (undefined4 *)*param_3;
+  } while( true );
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065ec3e 90 1
+@@CALLERS TransferIn
+@@CALLEES _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CBankFileAsyncEntry>
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall
+FUN_0065ec3e(undefined4 *param_1,
+            CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *param_2,
+            undefined4 *param_3,undefined4 *param_4,int param_5)
+
+{
+  bool bVar1;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX_00;
+  int local_10 [2];
+  uint local_8;
+  
+  local_8 = 0;
+  do {
+    if (param_3 == param_4) {
+LAB_0065ec71:
+      bVar1 = false;
+    }
+    else {
+      CCountedPointer<CBankFileAsyncEntry>::CCountedPointer<CBankFileAsyncEntry>
+                ((CCountedPointer<CBankFileAsyncEntry> *)local_10,
+                 (CCountedPointer<class_CBankFileAsyncEntry> *)(param_3 + 2));
+      local_8 = local_8 | 1;
+      param_2 = extraout_EDX;
+      if (local_10[0] == param_5) goto LAB_0065ec71;
+      bVar1 = true;
+    }
+    if ((local_8 & 1) != 0) {
+      local_8 = local_8 & 0xfffffffe;
+      std::
+      _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+                ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+                 local_10,param_2);
+      param_2 = extraout_EDX_00;
+    }
+    if (!bVar1) {
+      *param_1 = param_3;
+      return param_1;
+    }
+    param_3 = (undefined4 *)*param_3;
+  } while( true );
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065ec98 90 1
+@@CALLERS TransferIn
+@@CALLEES _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>, CCountedPointer<CBankFileAsyncEntry>
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall
+FUN_0065ec98(undefined4 *param_1,
+            CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *param_2,
+            undefined4 *param_3,undefined4 *param_4,int param_5)
+
+{
+  bool bVar1;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX;
+  CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *extraout_EDX_00;
+  int local_10 [2];
+  uint local_8;
+  
+  local_8 = 0;
+  do {
+    if (param_3 == param_4) {
+LAB_0065eccb:
+      bVar1 = false;
+    }
+    else {
+      CCountedPointer<CBankFileAsyncEntry>::CCountedPointer<CBankFileAsyncEntry>
+                ((CCountedPointer<CBankFileAsyncEntry> *)local_10,
+                 (CCountedPointer<class_CBankFileAsyncEntry> *)(param_3 + 2));
+      local_8 = local_8 | 1;
+      param_2 = extraout_EDX;
+      if (local_10[0] == param_5) goto LAB_0065eccb;
+      bVar1 = true;
+    }
+    if ((local_8 & 1) != 0) {
+      local_8 = local_8 & 0xfffffffe;
+      std::
+      _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>
+                ((allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *)
+                 local_10,param_2);
+      param_2 = extraout_EDX_00;
+    }
+    if (!bVar1) {
+      *param_1 = param_3;
+      return param_1;
+    }
+    param_3 = (undefined4 *)*param_3;
+  } while( true );
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065f1ad 27 1
+@@CALLERS CTCVillage
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0065f1ad(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065f1df 27 1
+@@CALLERS CTCVillage
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0065f1df(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065f211 27 1
+@@CALLERS CTCVillage
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0065f211(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065f243 27 1
+@@CALLERS CTCVillage
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0065f243(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065f25e 27 1
+@@CALLERS CTCVillage
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0065f25e(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065f279 27 1
+@@CALLERS CTCVillage
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0065f279(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065f294 27 1
+@@CALLERS CTCVillage
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0065f294(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065f2af 27 1
+@@CALLERS CTCVillage
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0065f2af(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065f2ca 27 1
+@@CALLERS CTCVillage
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0065f2ca(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065f2e5 27 1
+@@CALLERS CTCVillage
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0065f2e5(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065f856 46 1
+@@CALLERS _Umove<EWeaponClass*>
+@@CALLEES _For_each<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>_>,CGetBestTaskForThing<CVillageTaskCarryCrate>_>
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_0065f856(undefined4 param_1,undefined4 *param_2)
+
+{
+  int iVar1;
+  undefined1 local_c [8];
+  
+  iVar1 = std::
+          _For_each<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>_>,CGetBestTaskForThing<CVillageTaskCarryCrate>_>
+                    (local_c,*param_2,*(undefined4 *)*param_2);
+  return *(undefined4 *)(iVar1 + 4);
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065f884 46 1
+@@CALLERS GetBestCrateTaskForThing
+@@CALLEES _For_each<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>_>,CGetBestTaskForThing<CVillageTaskCarryCrate>_>
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_0065f884(undefined4 param_1,undefined4 *param_2)
+
+{
+  int iVar1;
+  undefined1 local_c [8];
+  
+  iVar1 = std::
+          _For_each<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>_>,CGetBestTaskForThing<CVillageTaskCarryCrate>_>
+                    (local_c,*param_2,*(undefined4 *)*param_2);
+  return *(undefined4 *)(iVar1 + 4);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660034 46 1
+@@CALLERS _Umove<EWeaponClass*>
+@@CALLEES _For_each<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>_>,CGetBestTaskForThing<CVillageTaskCarryCrate>_>
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_00660034(undefined4 param_1,undefined4 *param_2)
+
+{
+  int iVar1;
+  undefined1 local_c [8];
+  
+  iVar1 = std::
+          _For_each<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>_>,CGetBestTaskForThing<CVillageTaskCarryCrate>_>
+                    (local_c,*param_2,*(undefined4 *)*param_2);
+  return *(undefined4 *)(iVar1 + 4);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660062 46 1
+@@CALLERS _Umove<EWeaponClass*>
+@@CALLEES _For_each<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>_>,CGetBestTaskForThing<CVillageTaskCarryCrate>_>
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_00660062(undefined4 param_1,undefined4 *param_2)
+
+{
+  int iVar1;
+  undefined1 local_c [8];
+  
+  iVar1 = std::
+          _For_each<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>_>,CGetBestTaskForThing<CVillageTaskCarryCrate>_>
+                    (local_c,*param_2,*(undefined4 *)*param_2);
+  return *(undefined4 *)(iVar1 + 4);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660090 46 1
+@@CALLERS _Umove<EWeaponClass*>
+@@CALLEES _For_each<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>_>,CGetBestTaskForThing<CVillageTaskCarryCrate>_>
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_00660090(undefined4 param_1,undefined4 *param_2)
+
+{
+  int iVar1;
+  undefined1 local_c [8];
+  
+  iVar1 = std::
+          _For_each<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>_>,CGetBestTaskForThing<CVillageTaskCarryCrate>_>
+                    (local_c,*param_2,*(undefined4 *)*param_2);
+  return *(undefined4 *)(iVar1 + 4);
+}
+
+
+@@ENDFUNC
+@@@FUNC 006600be 46 1
+@@CALLERS _Umove<EWeaponClass*>
+@@CALLEES _For_each<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>_>,CGetBestTaskForThing<CVillageTaskCarryCrate>_>
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_006600be(undefined4 param_1,undefined4 *param_2)
+
+{
+  int iVar1;
+  undefined1 local_c [8];
+  
+  iVar1 = std::
+          _For_each<std::_List_unchecked_iterator<std::_List_val<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>_>,CGetBestTaskForThing<CVillageTaskCarryCrate>_>
+                    (local_c,*param_2,*(undefined4 *)*param_2);
+  return *(undefined4 *)(iVar1 + 4);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660213 45 1
+@@CALLERS CVector_Reserve
+@@CALLEES malloc, Std_Move_Backward
+@@STRINGS 
+@@DECOMP
+
+void * FUN_00660213(int param_1)
+
+{
+  void *pvVar1;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 << 2);
+  }
+  Std_Move_Backward(pvVar1);
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006604d1 26 1
+@@CALLERS AddThingToVillage
+@@CALLEES luaV_Cclosure
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_006604d1(undefined4 *param_1,undefined4 param_2)
+
+{
+  luaV_Cclosure(param_1,*param_1,&param_2,*param_1,param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660505 26 1
+@@CALLERS AddThingToVillage
+@@CALLEES luaV_Cclosure
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00660505(undefined4 *param_1,undefined4 param_2)
+
+{
+  luaV_Cclosure(param_1,*param_1,&param_2,*param_1,param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0066051f 26 1
+@@CALLERS UpdateTorchTasks
+@@CALLEES luaV_Cclosure
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_0066051f(undefined4 *param_1,undefined4 param_2)
+
+{
+  luaV_Cclosure(param_1,*param_1,&param_2,*param_1,param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660539 26 1
+@@CALLERS UpdateHornTasks
+@@CALLEES luaV_Cclosure
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00660539(undefined4 *param_1,undefined4 param_2)
+
+{
+  luaV_Cclosure(param_1,*param_1,&param_2,*param_1,param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660553 26 1
+@@CALLERS AddThingToVillage
+@@CALLEES luaV_Cclosure
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00660553(undefined4 *param_1,undefined4 param_2)
+
+{
+  luaV_Cclosure(param_1,*param_1,&param_2,*param_1,param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0066056d 26 1
+@@CALLERS AddThingToVillage
+@@CALLEES luaV_Cclosure
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_0066056d(undefined4 *param_1,undefined4 param_2)
+
+{
+  luaV_Cclosure(param_1,*param_1,&param_2,*param_1,param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660587 26 1
+@@CALLERS CalculateSecuritySweepTasks
+@@CALLEES luaV_Cclosure
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00660587(undefined4 *param_1,undefined4 param_2)
+
+{
+  luaV_Cclosure(param_1,*param_1,&param_2,*param_1,param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006605bb 26 1
+@@CALLERS AddThingToVillage
+@@CALLEES luaV_Cclosure
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_006605bb(undefined4 *param_1,undefined4 param_2)
+
+{
+  luaV_Cclosure(param_1,*param_1,&param_2,*param_1,param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660fc9 26 1
+@@CALLERS AddThingToVillage
+@@CALLEES luaV_Cclosure
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00660fc9(undefined4 *param_1,undefined4 param_2)
+
+{
+  luaV_Cclosure(param_1,*param_1,&param_2,*param_1,param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006611f7 51 1
+@@CALLERS ConstructString
+@@CALLEES Vector_PushBack, GetNoAllocatedAreas
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall
+FUN_006611f7(undefined4 *param_1,ulong param_2,ulong param_3,undefined4 param_4)
+
+{
+  CMemoryAllocatorVariableSize *this;
+  
+  while (param_2 != param_3) {
+    Vector_PushBack(param_2 + 0x10);
+    param_2 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+  }
+  *param_1 = param_4;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00664e50 641 1
+@@CALLERS IsThingInFOV
+@@CALLEES LowerBound, DoSizeof, _CIfmod, DrawGetSeaLevel
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+uint __thiscall FUN_00664e50(CVertexBufferWin32 *param_1,CVertexBufferWin32 *param_2,char param_3)
+
+{
+  uint in_EAX;
+  float *pfVar1;
+  float *pfVar2;
+  int *piVar3;
+  undefined2 extraout_var;
+  CMap *this;
+  ushort extraout_var_00;
+  undefined2 uVar4;
+  undefined2 extraout_var_01;
+  undefined2 extraout_var_02;
+  undefined2 extraout_var_03;
+  float unaff_EDI;
+  float10 fVar5;
+  float10 fVar6;
+  float fVar7;
+  CMap *pCVar8;
+  ETCInterfaceType EStack_20;
+  float fStack_1c;
+  float local_18;
+  float local_14;
+  float fStack_10;
+  float local_c [3];
+  
+  if (((byte)param_2[0x91] & 1) == 0) {
+    pfVar1 = (float *)CVertexBufferWin32::DoSizeof(param_1);
+    pfVar2 = (float *)CVertexBufferWin32::DoSizeof(param_2);
+    local_18 = *pfVar2 - *pfVar1;
+    local_14 = pfVar2[1] - pfVar1[1];
+    (**(code **)(**(int **)(param_1 + 0x60) + 0x118))(local_c);
+    fVar6 = (float10)fpatan((float10)fStack_10,(float10)local_c[0]);
+    pCVar8 = (CMap *)(float)(fVar6 * (float10)_DAT_01237f08);
+    if ((fVar6 * (float10)_DAT_01237f08 < (float10)_DAT_0122dedc) ||
+       (_DAT_0122ded8 <= (float)pCVar8)) {
+      fVar6 = (float10)_CIfmod();
+      pCVar8 = (CMap *)(float)fVar6;
+      if (fVar6 < (float10)_DAT_0122dedc) {
+        pCVar8 = (CMap *)((float)pCVar8 + _DAT_0122ded8);
+      }
+    }
+    this = pCVar8;
+    if (((byte)param_1[0x28] & 8) != 0) {
+      EStack_20 = 0x43;
+      piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                      ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                    *)(param_1 + 0x44),&EStack_20);
+      if ((piVar3 == *(int **)(param_1 + 0x48)) || (0x43 < *piVar3)) {
+        piVar3 = *(int **)(param_1 + 0x48);
+      }
+      this = (CMap *)piVar3[1];
+      if (param_3 != '\0') {
+        fVar7 = CMap::DrawGetSeaLevel(this,unaff_EDI);
+        fVar6 = (float10)fVar7 + (float10)(float)pCVar8;
+        if ((fVar6 < (float10)_DAT_0122dedc) ||
+           (this = (CMap *)((uint)CONCAT21(extraout_var,fVar6 < (float10)_DAT_0122ded8) << 8),
+           fVar6 >= (float10)_DAT_0122ded8)) {
+          fVar6 = (float10)_CIfmod();
+          this = (CMap *)((uint)extraout_var_00 << 0x10);
+          if (fVar6 < (float10)_DAT_0122dedc) {
+            fVar6 = fVar6 + (float10)_DAT_0122ded8;
+          }
+        }
+        pCVar8 = (CMap *)(float)fVar6;
+      }
+    }
+    fVar6 = (float10)fpatan((float10)fStack_1c,(float10)local_18);
+    _param_3 = (float)(fVar6 * (float10)_DAT_01237f08);
+    uVar4 = (undefined2)((uint)this >> 0x10);
+    if ((fVar6 * (float10)_DAT_01237f08 < (float10)_DAT_0122dedc) || (_DAT_0122ded8 <= _param_3)) {
+      fVar6 = (float10)_CIfmod();
+      _param_3 = (float)fVar6;
+      uVar4 = extraout_var_01;
+      if (fVar6 < (float10)_DAT_0122dedc) {
+        _param_3 = _param_3 + _DAT_0122ded8;
+      }
+    }
+    if ((_param_3 < _DAT_0122dedc) || (_DAT_0122ded8 <= _param_3)) {
+      fVar6 = (float10)_CIfmod();
+      _param_3 = (float)fVar6;
+      uVar4 = extraout_var_02;
+      if (fVar6 < (float10)_DAT_0122dedc) {
+        _param_3 = _param_3 + _DAT_0122ded8;
+      }
+    }
+    fVar6 = (float10)(float)pCVar8;
+    if (((float)pCVar8 < _DAT_0122dedc) || (_DAT_0122ded8 <= (float)pCVar8)) {
+      fVar6 = (float10)_CIfmod();
+      uVar4 = extraout_var_03;
+      if (fVar6 < (float10)_DAT_0122dedc) {
+        fVar6 = fVar6 + (float10)_DAT_0122ded8;
+      }
+    }
+    fVar6 = ABS((float10)_param_3 - fVar6);
+    if ((float10)_DAT_0122f59c < fVar6) {
+      fVar6 = (float10)_DAT_0122ded8 - fVar6;
+    }
+    fVar5 = (float10)(float)param_2 * (float10)_DAT_0122f59c;
+    in_EAX = CONCAT22(uVar4,(ushort)(fVar6 < fVar5) << 8 | (ushort)(NAN(fVar6) || NAN(fVar5)) << 10
+                            | (ushort)(fVar6 == fVar5) << 0xe);
+    if (fVar6 < fVar5 != (fVar6 == fVar5)) {
+      return CONCAT31((int3)(in_EAX >> 8),1);
+    }
+  }
+  return in_EAX & 0xffffff00;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00669850 113 1
+@@CALLERS AutoPlaceNearBuilding
+@@CALLEES GFROR13
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00669850(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3)
+
+{
+  uint *puVar1;
+  undefined4 uVar2;
+  uint uVar3;
+  ulong uVar4;
+  uint uVar5;
+  undefined4 *puVar6;
+  int iVar7;
+  uint uVar8;
+  
+  if ((param_1 != param_2) && (puVar6 = param_1 + 1, puVar6 != param_2)) {
+    iVar7 = (int)puVar6 - (int)param_1;
+    do {
+      puVar1 = (uint *)*param_3;
+      uVar4 = *puVar1 * 0x24a1 + 0x24df;
+      uVar8 = (iVar7 >> 2) + 1;
+      *puVar1 = uVar4;
+      uVar3 = GFROR13(uVar4);
+      uVar5 = 0;
+      *puVar1 = uVar3;
+      if (uVar8 != 0) {
+        uVar5 = uVar3 % uVar8;
+      }
+      uVar2 = *puVar6;
+      *puVar6 = param_1[uVar5];
+      param_1[uVar5] = uVar2;
+      puVar6 = puVar6 + 1;
+      iVar7 = iVar7 + 4;
+    } while (puVar6 != param_2);
+  }
+  return;
+}
+
+
+@@ENDFUNC

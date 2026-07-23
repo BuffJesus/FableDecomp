@@ -1,0 +1,1936 @@
+@@@FUNC 0099be70 177 980
+@@CALLERS ExpandPath, GetRecoveryFilePath, GFMain, GetPathNameFromFileName, CreateSaveGame, InitAndCompilePlatformSpecific, OpenIniFile, CDefinitionManager, CheckDependencies, CRenderManager2D, GetManualSaveFileName, GetManualSaveDisplayName, GetAutoSaveCheckPointPathName, ?PostInit@CMainGameComponent@@MAEXXZ, ConvertWorldToISMThingyPath, ProcessEmbeddedHighlightTags, ProcessEmbeddedGraphicTags, FormatTextWithGameActionNames, GetDefaultVal<CFireEffectCreationSet>, LoadGameState, LoadGameStateInternal, BeginUpdateEntries, InitSymbols, ResetToDefaultValueWithPrefix, UpdateMoney, InitAndCompile, DrawButtonText, LoadAnimationEvents, Load, AddCharacter, KeyPressed, TakeQuickScreenshot, GetCachedImage, GetXString, Update, IsInvalidCustomTattoo, HasScreenshots, Action, DeleteProfile, GetTimeSpentInGame, RefreshNameAndTitle, RefreshBuyPossibilityNumbers, ConstructBuyActionsList, ConstructSellActionsList, ConstructNormalShopListPC, RefreshBuyPossibilityNumbersPC, ConstructNormalShopList, ConstructTradeDescriptionWeapon, ConstructWeaponDescriptionNoDamageNorWeight, ConstructWeaponDescriptionWeight, ConstructWeaponDescriptionDamage, ConstructTradeDescriptionClothing, ConstructActualSellInventoryPC, ConstructActualWantedInventoryPC, ConstructTradeDescription, ConstructActualBuyInventoryPC, BuyItem, SellItemPC, GetItemDescription, GetPrerequisitesString, ConstructAugmentationsLeftDescription, ConstructWeaponDescription, ConstructWeaponDescriptionContainer, RefreshWeaponDescriptions, GetQuestDescription, GetBet, GetPlayersMoney, ConstructQuestList, ConstructQuestListPC, InitialiseMiniMapFileLoading_Region, AutoLoadRegionLeaving, DrawDebugInfo, RegisterMusic, GetMorphTarget, SaveAnimationEvents, CopyCustomTattooToUserDir, UpdateTattoos, GlobalUpdate, GetCurrentScore, GetRequiredScore, GetAdditionalInfo, GetBestScore, IsOfType, GetNPCNameAndFullTitle, ConstructMinimapFilename, ConvertDirectoryAndFilenameToPath, GetMarkerFileName, IsCompressedFilename, GetFilenameFromPathname, ?Update@CBankFile@@UAEXXZ, GetDevHeaderFilePath, CEngineResourceManager, FrameUpdate, Output, ?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z, ?InitialiseTextures@CProgressDisplay@@UAEX_N0@Z, ?LoadFromFile@CWorldMap@@UAEXAAVCAFile@@J@Z, LoadRegionGraph, ConstructCategoryStrength, AddStatToList, ConstructCategoryStrengthPC, AddStatToListPC, ConstructPCMagicList, OnCaptionEntered, UpdateSaveGameLoad, OpenPCOptionsMenu, OpenInGameMenuPC, OpenPCPhotojournal
+@@CALLEES free, operator_delete, operator+=, UnassignString
+@@STRINGS 
+@@DECOMP
+
+CCharString * __fastcall FUN_0099be70(CCharString *param_1,int *param_2,CCharString *param_3)
+
+{
+  undefined4 *puVar1;
+  int iVar2;
+  undefined4 *local_4;
+  
+  DAT_013bca20 = DAT_013bca20 + 1;
+  local_4 = (undefined4 *)0x0;
+  if (((undefined4 **)param_2 != &local_4) &&
+     (puVar1 = (undefined4 *)*param_2, puVar1 != (undefined4 *)0x0)) {
+    puVar1[3] = puVar1[3] + 1;
+    local_4 = puVar1;
+  }
+  CCharString::operator+=((CCharString *)&local_4,param_3);
+  puVar1 = local_4;
+  *(undefined4 *)param_1 = 0;
+  DAT_013bca20 = DAT_013bca20 + 1;
+  if (((CCharString *)&local_4 != param_1) && (local_4 != *(undefined4 **)param_1)) {
+    if (*(undefined4 **)param_1 != (undefined4 *)0x0) {
+      CCharString::UnassignString(param_1);
+    }
+    if (puVar1 == (undefined4 *)0x0) goto LAB_0099bf13;
+    *(undefined4 **)param_1 = puVar1;
+    puVar1[3] = puVar1[3] + 1;
+  }
+  if ((puVar1 != (undefined4 *)0x0) && (iVar2 = puVar1[3], puVar1[3] = iVar2 + -1, iVar2 + -1 < 1))
+  {
+    if ((void *)*puVar1 != (void *)0x0) {
+      free((void *)*puVar1);
+    }
+    operator_delete(puVar1);
+  }
+LAB_0099bf13:
+  DAT_013bca20 = DAT_013bca20 + -1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00410de0 63 749
+@@CALLERS RenderHeroDrunkenness, Clear, IsInInteractiveState, GetNormalisedTimeLeftOnFines, GetFineAmountForCurrentCrimes, VideoOptionsChangedConfirmed, ConfirmedVideoOptionsNotAccepted, SavedConfirmed, PCLoad, GlobalUpdate, IsAllowedToSetText, AddMoney, AddRenown, CheckForNewExpressions, SetThingAsQuickAccessItem, AddMessage, AddThingToVillage, AddCrateTasksFromAndTo, OpenInventory, YesCloseInventory, GetExperienceStatDescription, GetExperienceAbilityDescription, GetTCHeroExperience, EnsureUndoAbility, SaveExperienceValuesForCountDown, GetExperienceCostToUpgradeAbility, SetAge, ModifyStaminaBy, UpdateWillMorph, UpgradeAbility, GetFavouriteWeapon, BuildRenownString, UpdateItemStats, SetFatness, ForceStaminaTo, GetNumberOfAvailableAbilities, AddNewMarriage, SetMarriageState, GetTradeSkill, SetMorality, ApplyBonusItemEffects, ProcessDrunkenness, Vomit, CalculateSecuritySweepTasks, ReportCrime, RemoveCrime, FrameUpdate, UpdateOutstandingCrimes, GetOutstandingFineAndFramesLeft, GetCrimeReport, UseContextSensitiveItem, OpenQuickAccessMenu, RemoveItemFromInventory, OnItemSelected, CreateInventoryObject, OnItemSelectedInHand, UseQuickAccessItem, IsQuickAccessItemUsable, AddCloseInventoryEvent, ClosePCScoreboard, ClosePCInventoryMenu, ClosePCMapMenu, OnItemAdded, ClosePCInventory, DeleteMenuComponents, OpenPCScoreboard, CloseInventory, OpenPCSkillsMenu, OpenInventoryShortcut, ConstructItemCategoryList, OpenPCInventory, ConstructPCExpressionCategoryList, InitialiseSellableItems, ApplyHairCard, IsItemAffordable, ShowWarningIfNeeded, CloseInventoryPC, SetThingAsActiveWeapon, SetupActiveWeaponsOnCarrier, RefreshSheathedWeapons, PutWeaponsInSheathes, PutSheatheObjectInCarrySlot, AddSellItemToList, AlreadyHaveSpecial, AddBuyItemToList, ConstructSpecialShopList, InitialiseBuyableItems, SellHighlightedItem, SetNumberOfSelectedItemOwned, BuyHighlightedItem, RefreshBuyPossibilityNumbers, ConstructBuyActionsList, ConstructSellActionsList, ConstructNormalShopListPC, AddBuyItemToListPC, RefreshBuyPossibilityNumbersPC, ConstructSpecialShopListPC, ConstructActualSpecialInventoryPC, ConstructNormalShopList, ConstructTradeDescriptionWeapon, GetItemDescription, GetItemDescriptionDamage, ConstructTradeDescriptionClothing, CalculateArmorValues, ConstructActualSellInventoryPC, ConstructActualWantedInventoryPC, ApplyTattooCard, ConstructTradeDescription, ConstructActualBuyInventoryPC, BuyItem, SellItemPC, OnCreate, InitialiseMannequin, OnInitialActivate, SetThingAsWearingClothingSuit, SetThingAsWearingSelectedClothes, AddClothingToThing, GetName, GetCurrentTotalArmorValue, GetInventoryShoppingValidity, GetPrerequisitesString, AddItemToInventory, GetResurrectionItemInInventory, OnSerialise, FinalConstructWeaponItemEntries, AugmentWeapon, GetFreeAugmentationSlotForWeapon, GetActiveMeleeWeaponDamage, ConstructWeaponDescription, FinalConstructWeaponItemEntriesPC, ConstructWeaponDescriptionContainer, RefreshWeaponDescriptions, BuildHeroClass, CreateExperienceSliders, AddHeroAbility, GetAbilityMaximumLevelWithRenown, ConstructExperienceList, ConstructExperienceListPC, IsAbleToUseAbility, IsAbilityQuickAccessEventInQueue, OnSpecialAbilityUsed, ContructItemLists, ConstructPCItemLists, GetExpressionsListUIComponent, ToggleCharge, ClearSoundEffects, Draw, Update, DisplayNextMessage, DrawAbilityButton, UpdateWeaponAbilities, GetActivationTimeForButton, DrawAbilityList, AddMiniGameBar, InitialiseToggleTorchTypes, AddTorchToVillage, OnHeroSlept, UpdateCrowds, UpdateTorchTasks, GetWarningStringForCurrentCrimes, IsHeroMurderer, GetRegionLeavingDurationForCurrentCrimes, PlayerCanApologiseForCurrentCrimes, RemoveTimedoutCrimes, SetEnemyToHeroStatus, IsTimeToGoToSchool, IsTimeToGoToTavern, BuildingContainsPlayer, HomeUsersAreAsleep, UpdateCurfew, OnKill, EnableVillagerDefTypes, DetachFromDummyVillager, TryToRespawnDefNamed, ~CTCVillage, IsReportedOrUnreportedCrimeKnown, FindMostRecentDeed<COpinionDeedFilter_IsCrimeToRunAndFindAGuard>, RemoveCrimeIfApologisable, SetVillageLimbo, EnableGuards, UpdateMirroredCrimeData, OnHit, UpdateTrap, InitialiseAnimation, GetTCDriver<CTCDPhysicalObstruction>, UpdateAnimation, PerformPossibleTrapDamage, ProcessPossibleStrike, operator(), IsVillagerPerformingVillageTask, OnCollision, GetShotDamage, RunCutsceneMacro_Func, OpenPCInventoryMenu, OpenPCMapMenu, UpdateRegionLoad, AddStatToList, AddStatToListPC, ConstructScreenPC, ConstructPCExpressionsList, ConstructPCMagicList, ConstructSaveGameFileDescription, OpenPCOptionsMenu, OpenInGameMenuPC
+@@CALLEES abort, puts
+@@STRINGS bitset
+@@DECOMP
+
+bool __thiscall FUN_00410de0(int param_1,uint param_2)
+
+{
+  if (0x111 < param_2) {
+    puts("bitset");
+                    /* WARNING: Subroutine does not return */
+    abort();
+  }
+  return (1 << ((byte)param_2 & 0x1f) & *(uint *)(param_1 + (param_2 >> 5) * 4)) != 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0099b6b0 104 589
+@@CALLERS AddManualCameraEvent, GFMain, GFGetBuildNumber2, GetWindowTitle, SetDefaultValues, GetPathNameFromFileName, CreateSaveGame, GetValidProfileName, GetDirectoryNameFromProfileName, LoadGameState, InitialiseConsoleVariables, GetAutoSaveFileName, GetMyDocumentsDir, CNewFrontendGameComponent, InitAndCompilePlatformSpecific, FillInListBox, GetProfileNames, GetProjectPath, InitApplicationName, CRenderManager2D, GFGetLastWindowsError, CreateDirectoryForFile, MakePath, DrawTextW, GetManualSaveFileName, GetSaveDisplayNameFromFileName, GetAutoSaveDisplayName, GetAutoSaveCheckPointPathName, InitEventPackageLoading, InitEventPackageSaving, DoRender, DrawFreeCamDebug, Clear, SetButton1OverrideText, SetButton2OverrideText, FormatTextWithGameActionNames, Load, GetPathNameForFileName, GetThingFilenameFromLevelFilename, ?ReadNullTerminatedWString@CMemoryDataInputStream@@UAE?AVCWideString@@XZ, ReadAsStringUntilCharacter, ConstructStringInternal, ?Init@CMainGameComponent@@UAEXXZ, CGameDefinitionManager, GetEmptySlotName, Initialize, IsRoomForFile, GenerateAboutMessage, GetString, GetWriteableEngineCacheDir, FormatStringForArea, InitAndCompile, GetAutoSavePathName, SetText, ConstructString, GetAutoSaveCheckPointFileName, BuildThemes, PreloadBoneConfigs, LoadAnimationEvents, SetQuestAsCompleted, GenerateRegionConnectivityGraph, AddCharacter, FitInWindow, InitIcons, ParseSubtitles, UpdateKeyText, TakeQuickScreenshot, ChooseAClan, GetCachedImage, GetCachedClanLogosAsString, DisplayScoreboardGUI, GetExperienceAbilityMovieName, GetXString, GetExperienceStatCategoryName, ConstructStyleEntry, ConstructStyleEntryPC, ContructItemLists, ConstructItemEntry, ConstructItemEntryPC, DeleteProfile, ConstructFileDescription, GetTimeSpentInGame, AddWantedItemToList, AddSellItemToList, AddBuyItemToList, ConstructSellActionsList, AddBuyItemToListPC, GetItemDescriptionNoArmourRating, GetItemDescriptionArmourRating, GetItemDescription, ConstructTitleString, ConstructClothingListPC, GetPrerequisitesString, EndMinigame, StartDialogBox, FinalConstructWeaponItemEntries, FinalConstructWeaponItemEntriesPC, GetFatnessAsString, CreateTickSlider, ActivateReal, GetQuestDescription, CallFuncAfterYesNo, CallFuncAfterOK, GetText, SetStateAfterYesNoAlt, SetStateAfterOK, SetStateAfterInstructions, GetTextWithNarrator, ConstructQuestList, ConstructQuestListPC, InitialiseMiniMapFileLoading_Region, ConstructRegionDescription, DrawActiveTestQuests, CQuestInfoElementTick, DrawAt, DelayedQuit, PreOnKill, RegisterMusic, GFPlayFullScreenXBoxMovie, OnShowTrophyPerformAction, FrameUpdate, SaveAnimationEvents, C3DSkeletalMorphTarget, DisplayText, OnHeroEnterBoastArea, IsOfType, GetPlayersMoney, OnActionUse, GetNPCNameAndFullTitle, ?DisplayGameInfoText@CGameScriptInterface@@UBEXABVCWideString@@@Z, ?KickOffDeathScreen@CGameScriptInterface@@UBEXXZ, StopSpeaking, GetMarkerFileName, GetDevHeaderFilePath, CEngineResourceManager, WatchForTermination, Main, DoMission, WatchForHeroEnteringCave, BanditYells, OnPredicateFail, WatchForQuestFailureState, EndMission, TestOrDoInteraction, OnCreate, Output, ?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z, ?InitialiseTextures@CProgressDisplay@@UAEX_N0@Z, CScriptDefinitionManager, ConstructCategoryStrength, AddStatToList, ConstructCategoryStrengthPC, AddStatToListPC, ConstructClothingList, TerminateMinigame, ?FinishAction@CCreatureAction_PerformExpression@@UAEXXZ, ?FinishAction@CCreatureAction_PerformExpressionExtended@@UAEXXZ, ?KickOffQuestStartScreen@CGameScriptInterface@@UBEXABVCCharString@@_N1@Z, ConstructPCMagicList, ConstructSaveGameFileDescription, OnTrophyUseAction, UpdateFrame, OpenInGameMenuPC, OpenPCPhotojournal
+@@CALLEES free, operator_delete, AllocStringData
+@@STRINGS 
+@@DECOMP
+
+CCharString * __thiscall FUN_0099b6b0(CCharString *param_1,short *param_2)
+
+{
+  int iVar1;
+  undefined4 *puVar2;
+  CCharStringData *pCVar3;
+  int iVar4;
+  
+  *(undefined4 *)param_1 = 0;
+  DAT_013bca20 = DAT_013bca20 + 1;
+  iVar1 = *(int *)param_1;
+  if (iVar1 != 0) {
+    iVar4 = *(int *)(iVar1 + 0xc) + -1;
+    *(int *)(iVar1 + 0xc) = iVar4;
+    if ((iVar4 < 1) && (puVar2 = *(undefined4 **)param_1, puVar2 != (undefined4 *)0x0)) {
+      if ((void *)*puVar2 != (void *)0x0) {
+        free((void *)*puVar2);
+      }
+      operator_delete(puVar2);
+    }
+    *(undefined4 *)param_1 = 0;
+  }
+  if ((param_2 != (short *)0x0) && (*param_2 != 0)) {
+    pCVar3 = CCharString::AllocStringData(param_1,(char *)param_2,-1);
+    *(CCharStringData **)param_1 = pCVar3;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0099f570 130 571
+@@CALLERS Error, ParseEnumForSymbols, CompileDefinition, ?Open@CMemoryFile@@UAEXABVCWideString@@W4FileAccessType@@K@Z, ?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z, LoadResourcesForQuests, DeactivateQuest, GetLevelFilesFromWorldFile, ClearPersistenceDataForSectionInEntityScript, ReadFileInformation, GetClassNumberFromName, GFLogMemoryUse, TransferOut, SaveGameState, UpdateScoreForActivity, SaveMapsToString, SaveRegionsToString, PopulateRegionWithVillagers, DeregisterAttackingCombatant, CreateStringFromMyScores, DownloadListOfMyClans, DownloadLogosForThisClansMembers, DownloadScoreboardForSelectedClan, TransferVectorSaveText, GetFatnessAsString, GetCreatureGroupAsString, GetHeroSexualityAsString, RegisterCombatant, PlayCollisionSound, CreateShot, Save, CreatePositions, OnSerialise, StatOnSerialise, ?GetValidTextEntryNameWithAttitude@CGameScriptInterface@@UBE?AVCCharString@@ABVCScriptThing@@ABV2@@Z, GetCopyFilename, ?Update@CBankFile@@UAEXXZ, ?ProcessCommandLine@CConsoleCommandBase@@MAE_NABVCCharString@@AAVCConsole@@@Z, ?ProcessCommandLine@CConsoleVariable@@EAE_NABVCCharString@@AAVCConsole@@@Z, ToString, ?Open@CCachedFile@@UAEXABVCWideString@@W4FileAccessType@@K@Z, ?GetChunkInfo@C3DMeshFileHelperPointChunk@@UBE?BVCCharString@@XZ, ?GetChunkInfo@C3DMeshFileDummyObjectChunk@@UBE?BVCCharString@@XZ, ?GetChunkInfo@C3DMeshFileMapChunk@@UBE?BVCCharString@@XZ, GenerateHeaderFile, DumpInfo, DatabaseSerialise, FindIndexInCompletedBank, UpdateDiskCacheTexture, ProcessSeaLoading, SetText, Main, RunCutsceneMacro_Func, Init, GuardComment, MakeTeamMemberComment, MakeNPCComment, MakeTraderComment, OnPredicateFail, AskForBook, MakeHenchmanComment, AskForFish, GetQuestText, DoAskingHeroToKillAssassin, DoAskingHeroToSpeakToBoss, DoAskingHeroToSpeakToBossAgain, DoSayingThankYouToHero, ProcessAlbionPopulationSim, ChooseRandomBanditGruntString, ?LoadFromFile@CWorldMap@@UAEXAAVCAFile@@J@Z, DrawGetEditDrawInfo, ?GetFormattedName@CConsoleCommandBase@@MBE?AVCCharString@@XZ, ?GetChunkInfo@C3DMeshFileConvexVolumeChunk@@UBE?BVCCharString@@XZ, ?GetChunkInfo@C3DAnimFileTimingEventChunk@@UBE?BVCCharString@@XZ, ?GetChunkInfo@C3DMeshFileMaterialExtChunk@@UBE?BVCCharString@@XZ, GetLHTSTag, GetFullSectionNameForThing, GetSectionNameSuffix
+@@CALLEES operator+=, UnassignString
+@@STRINGS 
+@@DECOMP
+
+CCharString * __fastcall FUN_0099f570(CCharString *param_1,int *param_2,CCharString *param_3)
+
+{
+  int iVar1;
+  int local_4;
+  
+  DAT_013bd800 = DAT_013bd800 + 1;
+  local_4 = 0;
+  if ((param_2 != &local_4) && (iVar1 = *param_2, iVar1 != 0)) {
+    *(int *)(iVar1 + 0xd) = *(int *)(iVar1 + 0xd) + 1;
+    local_4 = iVar1;
+  }
+  CCharString::operator+=((CCharString *)&local_4,param_3);
+  *(undefined4 *)param_1 = 0;
+  DAT_013bd800 = DAT_013bd800 + 1;
+  if ((CCharString *)&local_4 != param_1) {
+    if (*(int *)param_1 != 0) {
+      CCharString::UnassignString(param_1);
+    }
+    if (local_4 != 0) {
+      *(int *)param_1 = local_4;
+      *(int *)(local_4 + 0xd) = *(int *)(local_4 + 0xd) + 1;
+    }
+  }
+  CCharString::UnassignString((CCharString *)&local_4);
+  DAT_013bd800 = DAT_013bd800 + -1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0099f600 130 526
+@@CALLERS TransferIMEColour, Error, ParseEnumForSymbols, CompileDefinition, CheckUnknownSymbols, ?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z, GFHandleSystemInitError, SetAllTutorialsAsGiven, TransferIn, AddMode, RemoveMode, LoadResourcesForQuests, DeactivateQuest, ReadFileInformation, GetClassNumberFromName, GFLogMemoryUse, TransferOut, SaveGameState, SaveToGameStateScript, StartSection, EndSection, CalculateNextTextTag, DrawRetailDisplay, GiveTutorialForCategory, SaveSerialiseCreatableTCs, SaveMapsToString, SaveRegionsToString, ?SetPosition@CCachedFile@@UAEXJ@Z, ?Read@CCachedFile@@UAEXPAXJPAVCASuspendableProcess@@@Z, GenerateRegionConnectivityGraph, CThingScriptUIDReplacer, SaveToScript, DeregisterAttackingCombatant, CreateStringFromMyScores, DownloadListOfMyClans, DownloadLogosForThisClansMembers, DownloadScoreboardForSelectedClan, GetTextEntryFromGroup, TransferVectorSaveText, ConstructPCExpressionCategoryList, InitialiseMiniMapFileLoading_Region, OnDie, RegisterCombatant, PlayCollisionSound, EndSerialising, BeginSerialising, CreateShot, Save, IsDefenderDueForAttack, OnSerialise, StatOnSerialise, GFSaveSkeletalMorphTargetToFile, ?GetValidTextEntryNameWithAttitude@CGameScriptInterface@@UBE?AVCCharString@@ABVCScriptThing@@ABV2@@Z, OnActivate, InitialiseMovementSpeeds, ?GetHelp@CConsoleVariable@@EAE?AVCCharString@@XZ, ?GetHelp@CConsoleCommandBase@@MAE?AVCCharString@@XZ, ?ProcessCommandLine@CConsoleCommandBase@@MAE_NABVCCharString@@AAVCConsole@@@Z, ?ProcessCommandLine@CConsoleVariable@@EAE_NABVCCharString@@AAVCConsole@@@Z, ToString, ?Write@CCachedFile@@UAEXPBXJPAVCASuspendableProcess@@@Z, ?GetChunkInfo@C3DMeshFileHelperPointChunk@@UBE?BVCCharString@@XZ, ?GetChunkInfo@C3DMeshFileDummyObjectChunk@@UBE?BVCCharString@@XZ, ?GetChunkInfo@C3DMeshFileMapChunk@@UBE?BVCCharString@@XZ, GenerateHeaderFile, DumpInfo, GetActiveEmitterNames, GetVisibleEmitterNames, FindIndexInCompletedBank, UpdateDiskCacheTexture, SetText, Main, RunCutsceneMacro_Func, MakeRoundStartComment, GuardChatter, GuardComment, MakeTeamMemberComment, MakeNPCComment, MakeTraderComment, MakeHenchmanComment, GetQuestText, CheckForHeroActions, ?InitialiseTextures@CProgressDisplay@@UAEX_N0@Z, CompileLoadableGlobalThingsToSingleFile, DrawGetEditDrawInfo, ?RemoveDeadCreature@CGameScriptInterface@@UBEXABVCCharString@@@Z, ?DebugGetAllTextEntriesForTargetedThing@CGameScriptInterface@@UBEXAAV?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@Z, ?Update@CAIStateGroup_MinionSleep@@UAEXXZ, ?SetPosition@CMemoryFile@@UAEXJ@Z, ?MovePosition@CMemoryFile@@UAEXJ@Z, ?Read@CMemoryFile@@UAEXPAXJPAVCASuspendableProcess@@@Z, ?Write@CMemoryFile@@UAEXPBXJPAVCASuspendableProcess@@@Z, ?GetFormattedName@CConsoleVariable@@EBE?AVCCharString@@XZ, ?MovePosition@CCachedFile@@UAEXJ@Z, ?SetLength@CCachedFile@@UAEXJ@Z, ?GetChunkInfo@C3DAnimFileTimingEventChunk@@UBE?BVCCharString@@XZ, GetLHTSTag
+@@CALLEES operator+=, UnassignString
+@@STRINGS 
+@@DECOMP
+
+CCharString * __fastcall FUN_0099f600(CCharString *param_1,int *param_2,char *param_3)
+
+{
+  int iVar1;
+  int local_4;
+  
+  DAT_013bd800 = DAT_013bd800 + 1;
+  local_4 = 0;
+  if ((param_2 != &local_4) && (iVar1 = *param_2, iVar1 != 0)) {
+    *(int *)(iVar1 + 0xd) = *(int *)(iVar1 + 0xd) + 1;
+    local_4 = iVar1;
+  }
+  CCharString::operator+=((CCharString *)&local_4,param_3);
+  *(undefined4 *)param_1 = 0;
+  DAT_013bd800 = DAT_013bd800 + 1;
+  if ((CCharString *)&local_4 != param_1) {
+    if (*(int *)param_1 != 0) {
+      CCharString::UnassignString(param_1);
+    }
+    if (local_4 != 0) {
+      *(int *)param_1 = local_4;
+      *(int *)(local_4 + 0xd) = *(int *)(local_4 + 0xd) + 1;
+    }
+  }
+  CCharString::UnassignString((CCharString *)&local_4);
+  DAT_013bd800 = DAT_013bd800 + -1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0ba40 137 520
+@@CALLERS Stack<unsigned_long,64>::~Stack<unsigned_long,64>, OnDie, Unwind@01210ab8, Unwind@01210ac3, Unwind@01210ace, Unwind@01210af0, Unwind@01210c40, Unwind@01210c60, Unwind@01210d00, Unwind@01210d20, Unwind@01210e1a, Unwind@01210e58, Unwind@01210e72, Unwind@01210e6a, Unwind@01210ee9, Unwind@01210ef1, Unwind@01210f20, Unwind@01210f39, Unwind@01210f4b, Unwind@01210f64, Unwind@01210f76, Unwind@01210f8f, Unwind@01210fb1, Unwind@01210fa1, Unwind@01210fa9, Unwind@01211300, Unwind@01211320, Unwind@0121174b, Unwind@01211840, Unwind@01211860, Unwind@01211b30, Unwind@01211b50, Unwind@01211d00, Unwind@01211d20, Unwind@01211d70, Unwind@01211d89, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, Unwind@01211dd3, Unwind@01211df3, Unwind@01211dfe, Unwind@01211e62, Unwind@01211e6d, Unwind@01211ea0, Unwind@01211ec0, Unwind@01211efb, Unwind@01211f22, Unwind@01211f35, Unwind@01211f47, Unwind@01211f59, Unwind@01211f6b, Unwind@01211f7d, Unwind@01211f8f, Unwind@01211fa1, Unwind@01211fb3, Unwind@01211fc5, Unwind@01211fd7, Unwind@01211fe9, Unwind@01212019, Unwind@0121202b, Unwind@0121203d, Unwind@0121204f, Unwind@01212062, Unwind@01212080, Unwind@01212088, Unwind@0121209a, Unwind@012120b4, Unwind@012120c6, Unwind@012120e0, Unwind@01212100, Unwind@01212200, Unwind@01212248, Unwind@01212280, Unwind@012122df, Unwind@012122f9, Unwind@01212301, Unwind@0121231b, Unwind@01212323, Unwind@0121232b, Unwind@01212333, Unwind@0121234d, Unwind@0121235f, Unwind@01212367, Unwind@012123bf, Unwind@01212400, Unwind@012124f8, Unwind@01212510, Unwind@01212570, Unwind@01212590, Unwind@01212915, Unwind@01212a20, Unwind@01212a10, Unwind@01212a18, Unwind@01212a70, Unwind@01212a90, Unwind@01212ab0, Unwind@01212ad0, Unwind@01212ea0, Unwind@01212ec0, Unwind@01212eeb, Unwind@01212ef3, Unwind@01212f10, Unwind@01212f18, Unwind@01212f3b, Unwind@01212f43, Unwind@01212f6b, Unwind@01212f73, Unwind@01213250, Unwind@0121326d, Unwind@01213406, Unwind@012133fe, Unwind@012134b9, Unwind@01213500, Unwind@01213512, Unwind@01213524, Unwind@01213a40, Unwind@01213a60, Unwind@01213b22, Unwind@01213c1a, Unwind@01213c60, Unwind@01213c80, Unwind@01213ca0, Unwind@01213cc0, Unwind@01214030, Unwind@01214049, Unwind@01214077, Unwind@0121409b, Unwind@012140bb, Unwind@012140d0, Unwind@012140fb, Unwind@01214110, Unwind@01214130, Unwind@01214142, Unwind@01214154, Unwind@01214170, Unwind@012141e0, Unwind@012141e8, Unwind@012141fa, Unwind@0121420c, Unwind@0121421e, Unwind@01214230, Unwind@01214242, Unwind@01214254, Unwind@0121425c, Unwind@01214264, Unwind@01214290, Unwind@012142a2, Unwind@012142aa, Unwind@012142b2, Unwind@012143d5, Unwind@012143f2, Unwind@01214600, Unwind@01214620, Unwind@01214878, Unwind@012148d8, Unwind@01214938, Unwind@01214998, Unwind@012149f8, Unwind@01214a30, Unwind@01214a38, Unwind@01214ab5, Unwind@01214abd, Unwind@01214bd0, Unwind@01214bf0, Unwind@01214c10, Unwind@01214c30, Unwind@01214c50, Unwind@01214c70, Unwind@01214c90, Unwind@01214cb0, Unwind@01214cd0, Unwind@01214cf0, Unwind@01214e30, Unwind@01214e42, Unwind@01214e60, Unwind@01214e75, Unwind@01214e98, Unwind@01214ea0, Unwind@01214ea8, Unwind@01215420, Unwind@01215440, Unwind@012154e0, Unwind@012154e8, Unwind@012154f0, Unwind@012154f8, Unwind@01215500, Unwind@01215508, Unwind@01215510, Unwind@01215518, Unwind@01215520, Unwind@01215710, Unwind@01215730, Unwind@01215818, Unwind@012159f4, Unwind@01215a10, Unwind@01215a50, Unwind@01215a70, Unwind@01215a78, Unwind@01215a80, Unwind@01215b80, Unwind@01215bc3, Unwind@01215c06, Unwind@01215c19, Unwind@01215c30, Unwind@01215c50, Unwind@01215c78, Unwind@01215cd0, Unwind@01215cd8, Unwind@01215ce0, Unwind@01215cf2, Unwind@01215cfa, Unwind@01215d02, Unwind@01215d0a, Unwind@01215d12, Unwind@01215d1a, Unwind@01215d22, Unwind@01215d34, Unwind@01215d46, Unwind@01215d58, Unwind@01215d60, Unwind@01215d68, Unwind@01215d7a, Unwind@01215d8c, Unwind@01215d9e, Unwind@01215dee, Unwind@01215df6, Unwind@01215dfe, Unwind@01215e06, Unwind@01215e18, Unwind@01215e20, Unwind@01215e32, Unwind@01215e3a, Unwind@01215e50, Unwind@01215e98, Unwind@01215ef0, Unwind@01215f10, Unwind@01215f22, Unwind@01215f4b, Unwind@01215f65, Unwind@01215f6d, Unwind@01215f75, Unwind@01215f7d, Unwind@01215f97, Unwind@01215fb1, Unwind@01215fcb, Unwind@01215fde, Unwind@01215ff8, Unwind@0121600b, Unwind@01216028, Unwind@01216042, Unwind@01216460, Unwind@01216468, Unwind@0121649a, Unwind@012164a2, Unwind@012164c0, Unwind@01216750, Unwind@01216762, Unwind@0121677b, Unwind@01216794, Unwind@012167b7, _Dest_val<std::allocator<std::pair<CCharString,CScriptInfo>_>,std::pair<CCharString,CScriptInfo>_>, CTargetPoint
+@@CALLEES InterlockedDecrement, operator_new, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+@@STRINGS m_pchData != NULL 
+@@DECOMP
+
+void __fastcall FUN_00c0ba40(int *param_1)
+
+{
+  LONG LVar1;
+  undefined4 uStack_4;
+  
+  uStack_4 = param_1;
+  if (*param_1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)
+               ((int)&uStack_4 + 3));
+  }
+  if (*param_1 + -0xc != DAT_0139c8fc) {
+    if (*param_1 == 0) {
+      if (DAT_0143bb2c != (code *)0x0) {
+        (*DAT_0143bb2c)();
+      }
+      std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+      list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+                ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)
+                 ((int)&uStack_4 + 3));
+    }
+    LVar1 = InterlockedDecrement((LONG *)(*param_1 + -0xc));
+    if (LVar1 < 1) {
+      if (*param_1 == 0) {
+        if (DAT_0143bb2c != (code *)0x0) {
+          (*DAT_0143bb2c)();
+        }
+        std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+        list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+                  ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)
+                   ((int)&uStack_4 + 3));
+      }
+      CEngineSubPrimitiveBase::operator_new(*param_1 - 0xc);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0042d5b1 83 475
+@@CALLERS CreateLevelSlider, CreateStaticSlider, CreateStaticSliderBidirectional, CreateMenuEntryComponent, Initialise, GetSize, ScrollUp, ScrollDown, ChangeState, AddScrollingChildAndSetOffsets, ComputeScrollBarPosition, AddScrollingChildDynamicallyAndSetOffsets, DoRecomputeOffsets, UpdateDisplayText, ResetPositions, Update, GetValueFromProfile, ConstructVerticalLine, UnhideComponent, HideComponent, CreateFrontEndButtonComponent, ConstructTradeDescriptionWeapon, ConstructTradeDescriptionClothing, ConstructTradeDescription, ConstructWeaponDescriptionContainer, AddHeroAbility, CreateTickSlider, GetQuestDescription, CreateMiniMapMarkers, ConstructRegionExitMarkers, CreateMapMarkers, ConstructRegionDescriptionBuyableBuildings, ConstructRegionDescriptionShops, OpenPCPhotojournal
+@@CALLEES CUIState, _Pair_base<NUISystem::CComponent*_const,std::pair<CWideString,long>_>, FUN_0042ad6c, TransferIn
+@@STRINGS 
+@@DECOMP
+
+CStringParser * __thiscall FUN_0042d5b1(CPersistTraits<C2DVector> *param_1,CComponent **param_2)
+
+{
+  CComponent **ppCVar1;
+  CStringParser *pCVar2;
+  undefined4 *puVar3;
+  _Pair_base<NUISystem::CComponent*_const,std::pair<CWideString,long>_> local_50 [40];
+  CUIState local_28 [36];
+  
+  ppCVar1 = param_2;
+  pCVar2 = (CStringParser *)FUN_0042ad6c(param_2);
+  if ((pCVar2 == *(CStringParser **)param_1) || (*ppCVar1 < *(CComponent **)(pCVar2 + 0x10))) {
+    NUISystem::CUIState::CUIState(local_28);
+    std::_Pair_base<NUISystem::CComponent*_const,std::pair<CWideString,long>_>::
+    _Pair_base<NUISystem::CComponent*_const,std::pair<CWideString,long>_>
+              (local_50,ppCVar1,(pair<CWideString,long> *)local_28);
+    puVar3 = (undefined4 *)
+             CPersistTraits<C2DVector>::TransferIn(param_1,(CPersistContext *)&param_2,pCVar2);
+    pCVar2 = (CStringParser *)*puVar3;
+  }
+  return pCVar2 + 0x14;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0ffe0 253 443
+@@CALLERS GetAngleBasedOnTimeOfDay, insert<std::_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>, OnCreate, Unwind@01210a00, Unwind@01210a12, Unwind@01210a24, Unwind@01210a36, Unwind@01210a48, Unwind@01210a5a, Unwind@01210a77, Unwind@01210a94, Unwind@01210b1c, Unwind@01210b48, Unwind@01210b5a, Unwind@01210b6c, Unwind@01210bd4, Unwind@01210e12, Unwind@01210e2c, Unwind@01210e3e, Unwind@01210e50, Unwind@01210e95, Unwind@01210ea7, Unwind@01210f03, Unwind@01210fe0, Unwind@0121105b, Unwind@0121107f, Unwind@01211440, Unwind@01211452, Unwind@01211464, Unwind@01211476, Unwind@01211488, Unwind@0121149a, Unwind@012114ac, Unwind@012114be, Unwind@012114d0, Unwind@012114e2, Unwind@01211506, Unwind@01211518, Unwind@0121152a, Unwind@0121153c, Unwind@0121154e, Unwind@01211560, Unwind@01211572, Unwind@01211584, Unwind@01211596, Unwind@012115a8, Unwind@012115ba, Unwind@012115cc, Unwind@012115de, Unwind@012115f0, Unwind@0121160a, Unwind@0121161c, Unwind@0121167d, Unwind@0121168f, Unwind@012116a1, Unwind@012116b3, Unwind@012116c5, Unwind@012116d7, Unwind@012116e9, Unwind@012116fb, Unwind@0121170d, Unwind@0121171f, Unwind@01211731, Unwind@01211743, Unwind@0121175d, Unwind@0121176f, Unwind@01211781, Unwind@01211793, Unwind@012117a5, Unwind@012117c2, Unwind@012117d4, Unwind@012117e6, Unwind@012117f8, Unwind@01211823, Unwind@012118fe, Unwind@0121192e, Unwind@01211940, Unwind@01211952, Unwind@01211964, Unwind@01211976, Unwind@01211988, Unwind@012119af, Unwind@012119c1, Unwind@012119e5, Unwind@01211bd0, Unwind@01211be2, Unwind@01211bf4, Unwind@01211c06, Unwind@01211c18, Unwind@01211c2a, Unwind@01211c3c, Unwind@01211c4e, Unwind@01211c60, Unwind@01211ca1, Unwind@01211cc0, Unwind@01211cd2, Unwind@01212112, Unwind@01212124, Unwind@01212136, Unwind@01212148, Unwind@0121215a, Unwind@0121216c, Unwind@0121217e, Unwind@01212190, Unwind@012121a2, Unwind@012121b4, Unwind@01212240, Unwind@01212260, Unwind@01212292, Unwind@012122a4, Unwind@012122f1, Unwind@01212313, Unwind@01212345, Unwind@01212460, Unwind@01212472, Unwind@01212487, Unwind@01212499, Unwind@012124f0, Unwind@01212530, Unwind@01212600, Unwind@01212612, Unwind@01212624, Unwind@01213280, Unwind@012132a0, Unwind@01213300, Unwind@01213320, Unwind@01213340, Unwind@012133a0, Unwind@012133c0, Unwind@012133d2, Unwind@012133e4, Unwind@012133f6, Unwind@01213429, Unwind@0121343b, Unwind@01213910, Unwind@01213922, Unwind@01213940, Unwind@01213952, Unwind@0121396f, Unwind@01213981, Unwind@01213993, Unwind@012139a5, Unwind@012139b7, Unwind@01214750, Unwind@0121479c, Unwind@01214870, Unwind@01214890, Unwind@012148d0, Unwind@012148f0, Unwind@01214930, Unwind@01214950, Unwind@01214990, Unwind@012149b0, Unwind@012149f0, Unwind@01214a10, Unwind@01215810, Unwind@01215850, Unwind@01215870, Unwind@01215890, Unwind@012158b0, Unwind@012158d0, Unwind@012158f0, Unwind@01215ae0, Unwind@01215b00, Unwind@01215b60, Unwind@01215b88, Unwind@01215c70, Unwind@01215c90, Unwind@01215e90, Unwind@01215eb0, Unwind@01215ed0, Unwind@01215f5d, Unwind@01215f8f, Unwind@01215fa9, Unwind@01215fc3, Unwind@01215ff0, Unwind@0121603a, ~CInputManagerDX, FrameUpdate, AddActionOnInactive, AddString, ~CPixelShader, OpenInventory, ProcessButtonBReleased, ~C3DMesh2, OnInitialActivate, TransferIn, OnPredicateFail, OnDie, AddConstraintRepeat, SetSoundsShowSelectedMode, GetDefaultVal<CAnimationSet>, reverse_iterator<std::_List_const_iterator<std::_List_val<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>_>_>, SetAsPaused, SetLightingParameters, swap<NScript::CRuntimeScriptedEntityPersist::CPersistInfo>, C3DMeshFileTransformationChunk, GetTexturesInUse, SetAtmosEditingMode, HasContainmentVolume, OnFileReadCompletion, SetRotationAngle, SetMaterialIndex, ~CAIStateGroup_JackOfBladesBase, CreateAndSaveNewLevel, GetSoundsCurrentLayer, ClearPrimitivesIfNecessary, AddGossip, ProcessInventoryInputLeft, GetLeafDataFromWindow, GetMeshesUsed, SelectNextEntryByName
+@@CALLEES FUN_00c0ba40, GetTickCount, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, operator_new
+@@STRINGS .\PKCProtectionInstance.cpp	Event time (	 ms) over maximum (
+@@DECOMP
+
+void __fastcall FUN_00c0ffe0(uint *param_1)
+
+{
+  uint uVar1;
+  DWORD DVar2;
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar3;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lStack_11;
+  undefined *local_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211308;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  DVar2 = GetTickCount();
+  uVar1 = param_1[1];
+  if (DAT_0139c904 < (CIsThingAlive *)(DVar2 - uVar1)) {
+    local_10 = PTR_DAT_0139c900;
+    local_4 = 0;
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_10,(CIsThingAlive *)".\\PKCProtectionInstance.cpp");
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,(CIsThingAlive *)&DAT_0122e028);
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,(CIsThingAlive *)&DAT_00000013);
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,(CIsThingAlive *)&DAT_012b1ae4);
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,(CIsThingAlive *)"Event time (");
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,(CIsThingAlive *)(DVar2 - uVar1));
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,(CIsThingAlive *)" ms) over maximum (");
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,DAT_0139c904);
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,(CIsThingAlive *)&DAT_012b25c4);
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar3,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_4 = 0xffffffff;
+    FUN_00c0ba40();
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&lStack_11);
+  }
+  CEngineSubPrimitiveBase::operator_new(*param_1);
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00693ef0 289 396
+@@CALLERS `vector_deleting_destructor', `scalar_deleting_destructor', UpdateScreenRestrictingForces, Update, CleanupAbility, ?FinishAction@CCombatAction_GenericStrikeResponseBase@@UAEXXZ, ?Update@CAIStateGroup_MinionGossip@@MAEXXZ, AIAction_InteractWith, AIAction_MinionIdle, ?Update@CAIStateGroup_MinionGuardReactToBodyFoundMessage@@UAEXXZ, FetchGoods, ?Update@CAIStateGroup_Clean@@MAEXXZ, RunToPerceivedThingPosition, ?Update@CAIStateGroup_BalverineWander@@UAEXXZ, ?Update@CAIStateGroup_Drunk@@UAEXXZ, ?Act@CAIStateGroup_BanditPlayDice@@MAE?AW4EAIActionReturn@@XZ, ?Act@CAIStateGroup_BanditPlot@@MAE?AW4EAIActionReturn@@XZ, GetUpFromSleeping, ?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ, GoToWell, PutOutFire, PlayLoop, PlaceGoods, ?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ, ?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ, GetFoodFromCookingPot, StandAroundAndEat, PlayAnims, SitIdle, Laugh, Drink, ThankBarmaid, PayMoney, OfferPlayerAGame, UpdateEmote, PickUpJug, PutDownJug, FillTankard, LeanOnBar, FillJug, ReceivePayment, ?Update@CAIStateGroup_CreatureTakeCover@@UAEXXZ, AttackTargetThing, AIAction_ProjectileAttackAndStrafeToPos, _Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>, ~CTCLightningOrb, _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>, _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>, ~CCreatureAction_FireMissileWeapon, ~CCreatureAction_PerformExpressionExtended, _Dest_val<std::allocator<CMacro>,CMacro>, ?FinishAction@CCreatureAction_PlayAnimationWithLookTurning@@UAEXXZ, ?FinishAction@CCreatureAction_PlayAnimation@@UAEXXZ, ?FinishAction@CCreatureAction_PlayIntoLoopOutOfAnimation@@UAEXXZ, ?FinishAction@CCreatureAction_PerformExpression@@UAEXXZ, ?FinishAction@CCreatureAction_PerformExpressionExtended@@UAEXXZ, ?FinishAction@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ, ?FinishAction@CCombatAction_GenericResponseToExplosion@@UAEXXZ, ?PerformAction@CCombatAction_StabThing@@UAEXXZ, ?ChangeHeroHealthBy@CGameScriptInterface@@UBEXM_N0@Z, ?OpenChest@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z, CleanBench, ?Update@CAIStateGroup_Wander@@UAEXXZ, ?Update@CAIStateGroup_ChickenWander@@UAEXXZ, ?Update@CAIStateGroup_BirdGroundWander@@UAEXXZ, ?Update@CAIStateGroup_KidHurtSelfRunToMother@@UAEXXZ, PerformRandomLengthCrying, ?OnReplace@CAIStateGroup_Clean@@UAEXXZ, ?Update@CAIStateGroup_HandyMan@@UAEXXZ, ?Update@CAIStateGroup_SeekPerceivedThing@@UAEXXZ, ?Update@CAIStateGroup_MinionMotherConsoleChild@@UAEXXZ, ?Update@CAIStateGroup_ServeFood@@MAEXXZ, ?Update@CAIStateGroup_SetupWares@@UAEXXZ, ?OnReplace@CAIStateGroup_BanditPlayDice@@MAEXXZ, ?PracticeSkills@CAIStateGroup_ApprenticeHero@@MAE_NXZ, ?PracticeSkills@CAIStateGroup_SkillPractice@@MAE_NXZ, ?Update@CAIStateGroup_OnHeroPush@@UAEXXZ, ?Update@CAIStateGroup_GoToBed@@UAEXXZ, ?Update@CAIStateGroup_MinionSleep@@UAEXXZ, ?Update@CAIStateGroup_MinionMotherProtectFamily@@UAEXXZ, ?Update@CAIStateGroup_MinionKidAnnoy@@UAEXXZ, TagTarget, EvadeTarget, ?Update@CAIStateGroup_MinionWatchFires@@UAEXXZ, ?Update@CAIStateGroup_MinionReactToCorpse@@UAEXXZ, AIAction_FindAGuardAndGiveMessage, ?Update@CAIStateGroup_MinionReactToUnconsciousPerson@@UAEXXZ, Eat, Singsong, ?Update@CAIStateGroup_SeekEnemy@@UAEXXZ, SetWhatsThatAnimation, ?Update@CAIStateGroup_ButterflyWander@@UAEXXZ, ?Update@CAIStateGroup_VillageTaskHorn@@UAEXXZ, ?Update@CAIStateGroup_KidPlayHopscotch@@MAEXXZ, ?Update@CAIStateGroup_KidReactToBlockage@@UAEXXZ, StandAndAct, ?Update@CAIStateGroup_MinionBehaviourGreetCreature@@UAEXXZ, ?Update@CAIStateGroup_MinionReactToBurglary@@UAEXXZ, ?Update@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@MAEXXZ, AIAction_ProjectileAttackAndStrafeToThingProximity, ?Update@CAIStateGroup_DeedReactionRoot@@UAEXXZ, ?Update@CAIStateGroup_BanditKingThrowWeapons@@MAEXXZ, ?Update@CAIStateGroup_RecoverStealableItem@@UAEXXZ, ?OnReplace@CAIStateGroup_SleepOnFloor@@UAEXXZ, ?Update@CAIStateGroup_SleepOnFloor@@UAEXXZ, ?Update@CAIStateGroup_MinionBehaviourSad@@UAEXXZ, ?UpdateLeaf@CAIStateGroup_MinionBehaviourPodiumEmoteNeutral@@UAEXXZ, KeepOutOfWay, BoastTaken, OnBoastAccepted, ?FinishAction@CCreatureAction_UnsheatheToShowToSheatheTrophy@@UAEXXZ, ?FinishAction@CCreatureAction_ShowToSheatheTrophy@@UAEXXZ, ?Update@CAIStateGroup_MinionSitAtSchool@@MAEXXZ
+@@CALLEES free, operator_delete, ~CPhysicsMeshInfo, BuildTreeArray, ~CBaseIntelligentPointer, _Destroy_range<std::allocator<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>_>_>
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00693ef0(CPhysicsMeshInfo *param_1)
+
+{
+  LTextTreeWalkThrough *this;
+  undefined4 *puVar1;
+  int *piVar2;
+  undefined4 *puVar3;
+  undefined4 uStack_4;
+  
+  *(undefined ***)param_1 = &PTR__vector_deleting_destructor__01259d24;
+  puVar1 = *(undefined4 **)(param_1 + 0xa0);
+  uStack_4 = param_1;
+  for (puVar3 = *(undefined4 **)(param_1 + 0x9c); puVar3 != puVar1; puVar3 = puVar3 + 2) {
+    (**(code **)*puVar3)(0);
+  }
+  if (*(void **)(param_1 + 0x9c) != (void *)0x0) {
+    free(*(void **)(param_1 + 0x9c));
+  }
+  this = (LTextTreeWalkThrough *)(param_1 + 0x90);
+  if (*(int *)(param_1 + 0x94) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (this,*(LTextBinNode **)(*(int *)this + 4));
+    *(int *)(*(int *)this + 8) = *(int *)this;
+    *(undefined4 *)(*(int *)this + 4) = 0;
+    *(int *)(*(int *)this + 0xc) = *(int *)this;
+    *(undefined4 *)(param_1 + 0x94) = 0;
+  }
+  if (*(void **)this != (void *)0x0) {
+    free(*(void **)this);
+  }
+  std::
+  _Destroy_range<std::allocator<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>_>_>
+            (*(undefined4 *)(param_1 + 0x84),*(undefined4 *)(param_1 + 0x88),(int)&uStack_4 + 3);
+  if (*(void **)(param_1 + 0x84) != (void *)0x0) {
+    free(*(void **)(param_1 + 0x84));
+  }
+  piVar2 = *(int **)(param_1 + 0x80);
+  if (piVar2 != (int *)0x0) {
+    *piVar2 = *piVar2 + -1;
+    if (**(int **)(param_1 + 0x80) == 0) {
+      (*(code *)(*(int **)(param_1 + 0x80))[1])();
+      operator_delete(*(void **)(param_1 + 0x80));
+    }
+  }
+  *(undefined4 *)(param_1 + 0x7c) = 0;
+  *(undefined4 *)(param_1 + 0x80) = 0;
+  piVar2 = *(int **)(param_1 + 0x78);
+  if (piVar2 != (int *)0x0) {
+    *piVar2 = *piVar2 + -1;
+    if (**(int **)(param_1 + 0x78) == 0) {
+      (*(code *)(*(int **)(param_1 + 0x78))[1])();
+      operator_delete(*(void **)(param_1 + 0x78));
+    }
+  }
+  *(undefined4 *)(param_1 + 0x74) = 0;
+  *(undefined4 *)(param_1 + 0x78) = 0;
+  CBaseIntelligentPointer::~CBaseIntelligentPointer((CBaseIntelligentPointer *)(param_1 + 0x2c));
+  CBaseIntelligentPointer::~CBaseIntelligentPointer((CBaseIntelligentPointer *)(param_1 + 8));
+  CPhysicsMeshInfo::~CPhysicsMeshInfo(param_1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e40c3 56 341
+@@CALLERS OutputText
+@@CALLEES FUN_004e3526, pair<CCharString,CCharString><CCharString,CCharString>
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004e40c3(int param_1,pair<class_CCharString,class_CCharString> *param_2)
+
+{
+  pair<CCharString,CCharString> *this;
+  
+  this = *(pair<CCharString,CCharString> **)(param_1 + 4);
+  if (this == *(pair<CCharString,CCharString> **)(param_1 + 8)) {
+    FUN_004e3526(this,param_2,(int)&param_2 + 3,1,1);
+  }
+  else {
+    if (this != (pair<CCharString,CCharString> *)0x0) {
+      std::pair<CCharString,CCharString>::pair<CCharString,CCharString><CCharString,CCharString>
+                (this,param_2);
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 0x10;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0042b646 26 311
+@@CALLERS VideoOptionsChanged, VideoOptionsNotAccepted, AddActionsListenIgnoreOnList, SaveGame, DisplayScoreboardGUI, ConstructStyleEntry, CreateEditBoxActions, ConstructStyleEntryPC, AssignThingPC, OpenPCSkillsMenu, ConstructItemEntry, ConstructItemEntryPC, GetItemsListUIComponentPC, RefreshAvailableProfiles, RefreshAvailableProfilesForDelete, RefreshAvailableSavedGamesForProfile, AddWantedItemToList, AddSellItemToList, AddBuyItemToList, ConstructBuyActionsList, ConstructSellActionsList, AddBuyItemToListPC, ConstructClothingListPC, FinalConstructWeaponItemEntries, FinalConstructWeaponItemEntriesPC, ConstructScreen, ConstructExperienceList, ConstructExperienceListPC, AssignAbilityPC, ConstructPCItemLists, OpenPCInventoryMenu, ProcessEvent, ConstructClothingList, ConstructAugEntry, ConstructAugEntryPC, ConstructScreenPC, ConstructPCExpressionsList, ConstructPCMagicList, OpenPCOptionsMenu, OpenInGameMenuPC, OpenPCPhotojournal
+@@CALLEES FUN_0042aadc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_0042b646(undefined4 *param_1,undefined4 param_2)
+
+{
+  FUN_0042aadc(&param_2,*param_1,param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0099bf30 177 292
+@@CALLERS ExpandPath, GetRecoveryFilePath, GFMain, GetWindowTitle, CreateSaveGame, GetDVDDialogueDir, GetAutoSaveCheckPointFileName, GetSaveDir, InitAndCompilePlatformSpecific, FillInListBox, GetProfileNames, CheckDependencies, CRenderManager2D, GetManualSaveDisplayName, GetAutoSaveCheckPointPathName, ?PostInit@CMainGameComponent@@MAEXXZ, ConvertWorldToISMThingyPath, ProcessEmbeddedHighlightTags, WordWrapText, FormatTextWithGameActionNames, GetDefaultVal<CFireEffectCreationSet>, IsHeroStateFileValid, GetPathNameForFileName, LoadGameStateInternal, LoadHeroStateInternal, BeginUpdateEntries, InitSymbols, DeleteCheckPointSave, Initialise, AddProfileNameToScreens, AddRegionAndTimeInfo, GetWriteableEngineCacheDir, FormatStringForArea, InitAndCompile, SaveHeroStateInternal, DrawButtonText, ChooseWorldNumber, Output, PreloadBoneConfigs, InitialiseManagers, Load, FitInWindow, TakeQuickScreenshot, GetCachedImage, DownloadLogosForThisClansMembers, GetCachedClanLogosAsString, GetCrimeReport, IsInvalidCustomTattoo, HasScreenshots, Action, DeleteProfile, RefreshAvailableSavedGamesForProfile, ConstructFileDescription, ConstructBuyActionsList, GetPrerequisitesString, ConstructQuestList, ConstructQuestListPC, InitialiseMiniMapFileLoading_Region, ConstructRegionDescription, DrawDebugInfo, Save, CopyCustomTattooToUserDir, InitialiseCustomTattoos, UpdateTattoos, GetDoorTypeSymbolMap, GlobalUpdate, GetAdditionalInfo, GetRequiredScore, Show, GetNPCNameAndFullTitle, ConvertDirectoryAndFilenameToPath, GetMarkerFileName, ?Update@CBankFile@@UAEXXZ, CEngineSurfaceCompositionManager, CEngineResourceManager, SetupAlphaStippleTexture, InitializeMusicTypes, AutoLoadRegionLeaving, ?Run@CNewFrontendGameComponent@@UAE_NPAPAVCGameComponent@@@Z, ?InitialiseTextures@CProgressDisplay@@UAEX_N0@Z, ?LoadFromFile@CWorldMap@@UAEXAAVCAFile@@J@Z, ConstructSaveGameFileDescription, OnCaptionEntered, OpenPCOptionsMenu, OpenInGameMenuPC, OpenPCPhotojournal
+@@CALLEES free, operator_delete, FUN_0099b940, UnassignString
+@@STRINGS 
+@@DECOMP
+
+CCharString * __fastcall FUN_0099bf30(CCharString *param_1,int *param_2,undefined4 param_3)
+
+{
+  undefined4 *puVar1;
+  int iVar2;
+  undefined4 *local_4;
+  
+  DAT_013bca20 = DAT_013bca20 + 1;
+  local_4 = (undefined4 *)0x0;
+  if (((undefined4 **)param_2 != &local_4) &&
+     (puVar1 = (undefined4 *)*param_2, puVar1 != (undefined4 *)0x0)) {
+    puVar1[3] = puVar1[3] + 1;
+    local_4 = puVar1;
+  }
+  FUN_0099b940(param_3);
+  puVar1 = local_4;
+  *(undefined4 *)param_1 = 0;
+  DAT_013bca20 = DAT_013bca20 + 1;
+  if (((CCharString *)&local_4 != param_1) && (local_4 != *(undefined4 **)param_1)) {
+    if (*(undefined4 **)param_1 != (undefined4 *)0x0) {
+      CCharString::UnassignString(param_1);
+    }
+    if (puVar1 == (undefined4 *)0x0) goto LAB_0099bfd3;
+    *(undefined4 **)param_1 = puVar1;
+    puVar1[3] = puVar1[3] + 1;
+  }
+  if ((puVar1 != (undefined4 *)0x0) && (iVar2 = puVar1[3], puVar1[3] = iVar2 + -1, iVar2 + -1 < 1))
+  {
+    if ((void *)*puVar1 != (void *)0x0) {
+      free((void *)*puVar1);
+    }
+    operator_delete(puVar1);
+  }
+LAB_0099bfd3:
+  DAT_013bca20 = DAT_013bca20 + -1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0053fde0 71 287
+@@CALLERS AddActionsListenIgnoreOnList, ConstructStyleEntry, ConstructStyleEntryPC, ContructItemLists, AssignThingPC, ConstructItemEntry, ConstructItemEntryPC, GetItemsListUIComponentPC, AddWantedItemToList, AddSellItemToList, AddBuyItemToList, AddBuyItemToListPC, ConstructClothingListPC, FinalConstructWeaponItemEntries, FinalConstructWeaponItemEntriesPC, ConstructExperienceListPC, AssignAbilityPC, ConstructPCItemLists, ConstructCategoryStrength, AddStatToList, ConstructCategoryStrengthPC, AddStatToListPC, ConstructClothingList, ConstructAugEntryPC, ConstructPCExpressionsList, ConstructPCMagicList, OpenPCOptionsMenu, OpenInGameMenuPC
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_0053fde0(int param_1,int param_2,undefined4 param_3)
+
+{
+  int iVar1;
+  undefined4 *puVar2;
+  int *piVar3;
+  
+  if (*(int *)(param_2 + 4) == 1) {
+    (**(code **)(*(int *)(param_2 + -0x18) + 0x180))(param_3);
+  }
+  iVar1 = *(int *)(param_1 + 4);
+  piVar3 = malloc(0xc);
+  if (piVar3 + 2 != (int *)0x0) {
+    piVar3[2] = param_2;
+  }
+  puVar2 = *(undefined4 **)(iVar1 + 4);
+  *piVar3 = iVar1;
+  piVar3[1] = (int)puVar2;
+  *puVar2 = piVar3;
+  *(int **)(iVar1 + 4) = piVar3;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0099e960 65 200
+@@CALLERS LoadGameState, SetAllTutorialsAsGiven, TransferIn, ?PostInit@CMainGameComponent@@MAEXXZ, GetActionName, GetBoast, RemoveBoast, LoadSingleThing, OnActivateEntity, IsLevelPersistent, OnDeactivateEntity, AttachToThing, InitialiseRegionExitMarkers, ConstructFromParams, SaveEntityScript, ParseEnum, GetDisplayName, GetTextFromEmbeddedTagGraphic, CalculateNextTextTag, DrawRetailDisplay, IsBoastTaken, SetBoastAsCompleted, IsActiveQuestStartedInRegion, IsActiveQuestBetweenQuestStartAndFinishScreensInRegion, GiveTutorialForCategory, GetQuestName, operator(), AddMasterShotCameraTagFromText, AddCameraTagFromText, SaveRegionsToString, GenerateRegionConnectivityGraph, CThingScriptUIDReplacer, OnHeroAttackCrowdMember, ConstructItemCategoryList, ConstructPCExpressionCategoryList, TransferBinaryIn, ConstructFileDescription, OnSerialise, ConstructRegionExitMarkers, GlobalUpdate, GetRegionsToDisplay, DeactivateSelectedTestQuest, ActivateSelectedTestQuest, SetCurrentAreaName, FrameUpdate, GetGreetDialogueGroupIndex, ?ProcessInput@CInputProcessSpecialAbilities@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, OnActionUse, OnActivate, EnterCrowdState, OnHeroLeaveBoastingArea, OnWallMountUseAction, ?Initialise@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UAEXXZ, ?Initialise@CCombatAction_GenericStrikeResponseKnockdown@@UAEXXZ, ?IsCreatureGenerationEnabledForRegion@CGameScriptInterface@@UBE_NABVCCharString@@@Z, ?GetPreviouslyWieldedMeleeWeaponName@CGameScriptInterface@@UBE_NAAVCCharString@@@Z, ?GetPreviouslyWieldedRangedWeaponName@CGameScriptInterface@@UBE_NAAVCCharString@@@Z, UpdateIdleAnim, ?Update@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ, ?InitCreaturePosition@CAIStateGroup_GoToPub@@MAE_NXZ, ?IsRunnable@CAIStateGroup_GoToPub@@MAE_NXZ, ?Update@CAIStateGroup_GoToPub@@MAEXXZ, LoadWaveFile, RunCutsceneMacro_Func, Main, WatchForRoundsInArena, AttackPeople, MakeTraderComment, DoConversation, Init, UpdateRegionLoad, ?LoadFromFile@CWorldMap@@UAEXAAVCAFile@@J@Z, ?Initialise@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ, ?RemoveQuestCardFromGuild@CGameScriptInterface@@UBEXABVCCharString@@@Z, IsOfType, SetQuestCardObjective, ?DebugGetAllTextEntriesForTargetedThing@CGameScriptInterface@@UBEXAAV?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@Z, ?PracticeSkills@CAIStateGroup_ApprenticeHero@@MAE_NXZ, ?PracticeSkills@CAIStateGroup_SkillPractice@@MAE_NXZ, ?Update@CAIStateGroup_DeedReactionRoot@@UAEXXZ
+@@CALLEES operator==
+@@STRINGS 
+@@DECOMP
+
+bool __thiscall FUN_0099e960(undefined4 *param_1,char *param_2)
+
+{
+  int iVar1;
+  char *pcVar2;
+  bool bVar3;
+  
+  if ((CBasicString<char> *)*param_1 != (CBasicString<char> *)0x0) {
+    bVar3 = CBasicString<char>::operator==((CBasicString<char> *)*param_1,param_2);
+    return !bVar3;
+  }
+  bVar3 = true;
+  iVar1 = 1;
+  pcVar2 = "";
+  do {
+    if (iVar1 == 0) break;
+    iVar1 = iVar1 + -1;
+    bVar3 = *param_2 == *pcVar2;
+    param_2 = param_2 + 1;
+    pcVar2 = pcVar2 + 1;
+  } while (bVar3);
+  return !bVar3;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00669d30 100 177
+@@CALLERS PlayEffect, ApplyEffectOnWeapon, CreateWeaponHitTargetEffect, OnDie, ReactToGenericStrike, StartMultiHit, Reset, Enable, PlayHitEffectAtPos, CreateStartingEffect, CancelMove, InitAbility, CleanupAbility, CTCDivineWrath, FrameUpdate, StopFlyingAround, CTCUnholyPower, CreateMinion, ResetMinionPos, CTCBulletTime, UnPause, OnHitAtPos, CreateStartUpEffect, CreateTrailingEffect, KillHelpers, GetActionSpeedParameter, DoDrain, StartHealingEffect, AddSword, StartTurncoatingEffects, ProcessLevellingUpFX, CreateAmmoEffect, Init, UpdateSwoop, OnInitialActivate, CreateHeadEffect, StartBeamEffect, KillBeamEffect, UpdateBeamExplosion, StartFlyingAround, ?Initialise@CCreatureAction_ShowTrophy@@UAEXXZ, ?PerformAction@CCreatureAction_ShowTrophy@@UAEXXZ, CreateAttackEffect, Dispatch, ?Initialise@CCreatureAction_ScreamerDie@@UAEXXZ, ?Initialise@CCreatureAction_TeleportOut@@UAEXXZ, ?Initialise@CCreatureAction_TeleportIn@@UAEXXZ, ?Initialise@CCreatureAction_JackDeathInto@@UAEXXZ, ?PerformAction@CCreatureAction_JackFloatUp@@UAEXXZ, ?Initialise@CCreatureAction_BriarRoseConcentrateInto@@UAEXXZ, ?Initialise@CCreatureAction_BriarRoseInvulnerableTeleport@@UAEXXZ, ?Initialise@CCreatureAction_ScorpionKingDeath@@UAEXXZ, ?Initialise@CCombatAction_StrikeResponseScorpionKing@@UAEXXZ, ?Initialise@CCreatureAction_WaspQueenDeath@@UAEXXZ, WhackGround, ?PerformAction@CCreatureAction_BanditKingLunge@@UAEXXZ, ?Initialise@CCreatureAction_BanditKingStuck@@UAEXXZ, ?Initialise@CCreatureAction_BanditKingUnstuck@@UAEXXZ, ?Initialise@CCreatureAction_BanditKingStuckGetHit@@UAEXXZ, AttachEffectToStaff, DoEffect, ?PerformAction@CCreatureAction_NymphGetHit@@UAEXXZ, ?Initialise@CCreatureAction_SummonerDead@@UAEXXZ, CCreatureAction_CastSkillMultiArrow, OnActivate, Spike, CreateHandGlow, CreateLightningBeams, ?OnAnimationLoaded@CCreatureAction_UndeadRiseUp@@UAEXXZ, ?Initialise@CCreatureAction_UndeadReturnToEarth@@UAEXXZ, ?PerformAction@CCreatureAction_DragonRearUpFull@@UAEXXZ, PowerUpSword, CreateHitEffect, CTCWillLightning, CTCMultiStrike, ?Initialise@CCreatureAction_OnGenerate@@UAEXXZ, ?FinishAction@CCombatAction_WillHealInto@@UAEXXZ, Initialise, SummonPillarsOld, CreateSkyBeam
+@@CALLEES FUN_006699c0, Calc
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00669d30(uint param_1,undefined4 *param_2,undefined4 *param_3)
+
+{
+  undefined4 *puVar1;
+  undefined4 uVar2;
+  undefined1 *puVar3;
+  ulong uVar4;
+  uint local_4;
+  
+  puVar1 = (undefined4 *)*param_2;
+  if (puVar1 == (undefined4 *)0x0) {
+    uVar4 = 0;
+    puVar3 = &DAT_0129aaf4;
+  }
+  else {
+    uVar4 = puVar1[1];
+    puVar3 = (undefined1 *)*puVar1;
+  }
+  local_4 = param_1;
+  param_2 = (undefined4 *)CCRC::Calc(0,puVar3,uVar4);
+  FUN_006699c0(&local_4,&param_2);
+  if (local_4 == *(uint *)(param_1 + 0x28)) {
+    return local_4 & 0xffffff00;
+  }
+  uVar2 = *(undefined4 *)(local_4 + 0x14);
+  *param_3 = uVar2;
+  return CONCAT31((int3)((uint)uVar2 >> 8),1);
+}
+
+
+@@ENDFUNC
+@@@FUNC 009f1760 51 173
+@@CALLERS ActivateWorld, Clear, Pause, ToggleLiveGui, GetLocalGameEventPackageSet, ?Update@CMainGameComponent@@MAEXXZ, CloseInGameMenu, GlobalUpdate, AddCloseInventoryEvent, Deactivate, ActivateReal, CallFuncAfterYesNo, CallFuncAfterOK, SetStateAfterYesNoAlt, DrawPreparePrimitivesForRendering, TeleportHeroToBoastingArea, TeleportHero, OpenTrainingScreen, Update, AddManualCameraEvent, ?ProcessInput@CInputProcessControlCreature@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, ?ProcessInput@CInputProcessStrafe@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, ?ProcessInput@CInputProcessInventory@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, ?ProcessInput@CInputProcessBButtonExitMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, ?ProcessInput@CInputProcessYesNoQuestion@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, ?ProcessInput@CInputProcessUseEnvironment@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, CancelQuickAccessCharge, ?ProcessInput@CInputProcessQuickAccessItems@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, ProcessUnarmedInput, ProcessArmedMeleeInput, ProcessRangedAttackInput, ProcessCombatInput, ?ProcessInput@CInputProcessInGameMenu@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, ?ProcessInput@CInputProcessFishing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, ?ProcessInput@CInputProcessDigging@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, ?ProcessInput@CInputProcessOracleMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, ?ProcessInput@CInputProcessFireheartMinigame@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, DelayedQuit, Answer, ?ProcessInput@CInputProcessCreatureMovement@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, ProcessRolling, SendPauseEvent, InitiateDivorce, ~CTCWife, HaveSex, Marry, OpenShoppingInterface, MoveHeroThroughExit, FrameUpdate, OpenQuestSelectInterface, KickHeroToMostRecentSafeRegion, StartTeleporting, UpdateTints, OnActionUse, ?RespawnHero@CGameScriptInterface@@UBEX_N@Z, ?EntityUnsheatheMeleeWeapon@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z, ?EntityUnsheatheRangedWeapon@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z, ?EntityTeleportToPosition@CGameScriptInterface@@UBEXABVCScriptThing@@ABVC3DVector@@M_N2@Z, TeleportHeroToGuildSealRecallLocation, AddUBYTE
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_009f1760(int param_1,uint param_2,undefined4 *param_3)
+
+{
+  uint uVar1;
+  undefined4 *puVar2;
+  
+  puVar2 = (undefined4 *)(*(byte *)(param_1 + 0x25) + 5 + param_1);
+  for (uVar1 = param_2 >> 2; uVar1 != 0; uVar1 = uVar1 - 1) {
+    *puVar2 = *param_3;
+    param_3 = param_3 + 1;
+    puVar2 = puVar2 + 1;
+  }
+  for (uVar1 = param_2 & 3; uVar1 != 0; uVar1 = uVar1 - 1) {
+    *(undefined1 *)puVar2 = *(undefined1 *)param_3;
+    param_3 = (undefined4 *)((int)param_3 + 1);
+    puVar2 = (undefined4 *)((int)puVar2 + 1);
+  }
+  *(char *)(param_1 + 0x25) = *(char *)(param_1 + 0x25) + (char)param_2;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0042971d 190 166
+@@CALLERS 
+@@CALLEES RotateLeft
+@@STRINGS 
+@@DECOMP
+
+void FUN_0042971d(CMemoryArea *param_1,CMemoryAllocatorVariableSize *param_2)
+
+{
+  CMemoryArea *pCVar1;
+  CMemoryAllocatorVariableSize *this;
+  
+  *param_1 = (CMemoryArea)0x0;
+  do {
+    while( true ) {
+      if ((param_1 == *(CMemoryArea **)param_2) ||
+         (pCVar1 = *(CMemoryArea **)(param_1 + 4), *pCVar1 != (CMemoryArea)0x0)) {
+        **(undefined1 **)param_2 = 1;
+        return;
+      }
+      this = *(CMemoryAllocatorVariableSize **)(*(int *)(pCVar1 + 4) + 8);
+      if (pCVar1 == (CMemoryArea *)this) break;
+      if ((this == (CMemoryAllocatorVariableSize *)0x0) ||
+         (*this != (CMemoryAllocatorVariableSize)0x0)) {
+        if (param_1 == *(CMemoryArea **)(pCVar1 + 8)) {
+          CMemoryAllocatorVariableSize::RotateLeft(this,pCVar1);
+          this = param_2;
+          param_1 = pCVar1;
+        }
+        **(undefined1 **)(param_1 + 4) = 1;
+        **(undefined1 **)(*(int *)(param_1 + 4) + 4) = 0;
+        CMemoryAllocatorVariableSize::RotateLeft(this,*(CMemoryArea **)(*(int *)(param_1 + 4) + 4));
+      }
+      else {
+LAB_00429785:
+        **(undefined1 **)(param_1 + 4) = 1;
+        *this = (CMemoryAllocatorVariableSize)0x1;
+        **(undefined1 **)(*(int *)(param_1 + 4) + 4) = 0;
+        param_1 = *(CMemoryArea **)(*(int *)(param_1 + 4) + 4);
+      }
+    }
+    this = *(CMemoryAllocatorVariableSize **)(*(int *)(pCVar1 + 4) + 0xc);
+    if ((this != (CMemoryAllocatorVariableSize *)0x0) &&
+       (*this == (CMemoryAllocatorVariableSize)0x0)) goto LAB_00429785;
+    if (param_1 == *(CMemoryArea **)(pCVar1 + 0xc)) {
+      CMemoryAllocatorVariableSize::RotateLeft(this,pCVar1);
+      this = param_2;
+      param_1 = pCVar1;
+    }
+    **(undefined1 **)(param_1 + 4) = 1;
+    **(undefined1 **)(*(int *)(param_1 + 4) + 4) = 0;
+    CMemoryAllocatorVariableSize::RotateLeft(this,*(CMemoryArea **)(*(int *)(param_1 + 4) + 4));
+  } while( true );
+}
+
+
+@@ENDFUNC
+@@@FUNC 0099b2c0 177 156
+@@CALLERS ?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z, GetAbsoluteFilePath, Save, DoEULAThings, SaveGameState, GetProfileNames, InitApplicationName, OpenRetailBank, Open, CreateSymbolsFromPathList, DoCompilePathList, CheckDependencies, ?Open@CMemoryFile@@UAEXABVCWideString@@W4FileAccessType@@K@Z, GFGetLastWindowsError, ValidatePathnameIsOnWriteableDrive, GetSaveDisplayNameFromFileName, LocateCharacterStartHolySite, GetTextFromTextTag, ProcessEmbeddedHighlightTags, ProcessEmbeddedGraphicTags, GetActionNameFromEmbeddedTag, Load, GetLevelFilesFromWorldFile, ReadFileInformation, ConvertPathToFilename, Error, GetSavedGameNames, GetText, IsHardCoded, CScreenMessage, GetVisibleText, DrawTextPrimitives, PreloadBoneConfigs, GFLoadSkeletalMorphTargetFromFile, SaveMapsToString, SaveRegionsToString, CreateStringFromMyScores, DownloadListOfMyClans, DownloadLogosForThisClansMembers, GetCachedClanLogosAsString, DownloadScoreboardForSelectedClan, GetXString, ExtractParenthesis, DeactivateAllEditBoxes, ShowScoreboard, GetScoreboardOptionsToProfile, RefreshAvailableSavedGamesForProfile, ConstructTradeDescriptionWeapon, ConstructTradeDescriptionClothing, ConstructTradeDescription, DisplayNextMessage, GetMorphTarget, ?PerformAction@CCreatureAction_Read@@UAEXXZ, IsFilePathSyntaxValid, ConvertPathToFullPath, IsFileCopyNecessary, IsCompressedFilename, ProcessAlways, ProcessReads, ?Open@CCachedFile@@UAEXABVCWideString@@W4FileAccessType@@K@Z, CloseRetailBank, ?LoadFromFile@CWorldMap@@UAEXAAVCAFile@@J@Z, ConstructScreenPC, TransferOut, GetFileNameList
+@@CALLEES malloc, CCharString, free
+@@STRINGS 
+@@DECOMP
+
+CCharString * __thiscall FUN_0099b2c0(int *param_1,CCharString *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  char *_Memory;
+  int iVar3;
+  uint uVar4;
+  uint uVar5;
+  char *pcVar6;
+  
+  piVar1 = (int *)*param_1;
+  if (piVar1 == (int *)0x0) {
+    iVar2 = 0;
+  }
+  else {
+    iVar2 = piVar1[1] - *piVar1 >> 1;
+  }
+  uVar5 = iVar2 + 1;
+  if (uVar5 == 0) {
+    _Memory = (char *)0x0;
+  }
+  else {
+    _Memory = malloc(uVar5);
+  }
+  pcVar6 = _Memory;
+  for (uVar4 = uVar5 >> 2; uVar4 != 0; uVar4 = uVar4 - 1) {
+    pcVar6[0] = '\0';
+    pcVar6[1] = '\0';
+    pcVar6[2] = '\0';
+    pcVar6[3] = '\0';
+    pcVar6 = pcVar6 + 4;
+  }
+  for (uVar5 = uVar5 & 3; uVar5 != 0; uVar5 = uVar5 - 1) {
+    *pcVar6 = '\0';
+    pcVar6 = pcVar6 + 1;
+  }
+  iVar2 = 0;
+  while( true ) {
+    piVar1 = (int *)*param_1;
+    if (piVar1 == (int *)0x0) {
+      iVar3 = 0;
+    }
+    else {
+      iVar3 = piVar1[1] - *piVar1 >> 1;
+    }
+    if (iVar3 <= iVar2) break;
+    if (piVar1 == (int *)0x0) {
+      _Memory[iVar2] = *(char *)(&DAT_0129a8e0 + iVar2);
+      iVar2 = iVar2 + 1;
+    }
+    else {
+      _Memory[iVar2] = *(char *)(*piVar1 + iVar2 * 2);
+      iVar2 = iVar2 + 1;
+    }
+  }
+  param_1 = (int *)*param_1;
+  if (param_1 == (int *)0x0) {
+    iVar2 = 0;
+  }
+  else {
+    iVar2 = param_1[1] - *param_1 >> 1;
+  }
+  _Memory[iVar2] = '\0';
+  CCharString::CCharString(param_2,_Memory,-1);
+  if (_Memory != (char *)0x0) {
+    free(_Memory);
+  }
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0044bff0 59 141
+@@CALLERS GetSavedGameNames, AddRegionAndTimeInfo, GetHelperPointNamesFromStrikeEventName, OnSerialise, AddAbilityToCorrectList, InitialiseTrails, GetVisibleEmitterNames, CSExtractParameterList, MonitorRegionPresence, ProcessSongsQuestComplete, ProcessSongsClothes, ProcessSongsAge, ProcessSongsMarriage, ProcessSongsMorality, ProcessSongsRenown, ChooseRandomBanditFromDefs, IsTutorialPlayed, OpenPCOptionsMenu, GetFileNameList
+@@CALLEES CCharString, FUN_00433530
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_0044bff0(int param_1,CCharString *param_2)
+
+{
+  CCharString *this;
+  
+  this = *(CCharString **)(param_1 + 4);
+  if (this != *(CCharString **)(param_1 + 8)) {
+    if (this != (CCharString *)0x0) {
+      CCharString::CCharString(this,param_2);
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 4;
+    return;
+  }
+  FUN_00433530(this,param_2,&param_2,1,1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0042a34e 572 139
+@@CALLERS ClearPersistenceDataForSection, AssignAttackersToRing, ScreenFilterSetFlags, ActivateReal, FrameUpdate, ?FrameUpdate@CCreatureActionBase@@MAEXXZ, CalculateNavigableWidthOfLine, ?DeregisterTimer@CGameScriptInterface@@UAEXJ@Z, TakeQuest, BoastTaken
+@@CALLEES RotateLeft, GetNoAllocatedAreas
+@@STRINGS 
+@@DECOMP
+
+CMemoryArea *
+FUN_0042a34e(CMemoryAllocatorVariableSize *param_1,int *param_2,
+            CMemoryAllocatorVariableSize *param_3,ulong *param_4)
+
+{
+  CMemoryArea CVar1;
+  CMemoryAllocatorVariableSize *pCVar2;
+  int iVar3;
+  ulong uVar4;
+  CMemoryArea *pCVar5;
+  CMemoryAllocatorVariableSize *pCVar6;
+  int *piVar7;
+  CMemoryArea *pCVar8;
+  CMemoryArea *pCVar9;
+  
+  pCVar9 = (CMemoryArea *)param_1;
+  pCVar6 = *(CMemoryAllocatorVariableSize **)(param_1 + 8);
+  pCVar5 = *(CMemoryArea **)(param_1 + 0xc);
+  pCVar8 = (CMemoryArea *)param_1;
+  pCVar2 = (CMemoryAllocatorVariableSize *)pCVar5;
+  if ((pCVar6 != (CMemoryAllocatorVariableSize *)0x0) &&
+     (pCVar2 = pCVar6, pCVar5 != (CMemoryArea *)0x0)) {
+    do {
+      pCVar8 = pCVar5;
+      pCVar5 = *(CMemoryArea **)(pCVar8 + 8);
+    } while (*(CMemoryArea **)(pCVar8 + 8) != (CMemoryArea *)0x0);
+    pCVar2 = *(CMemoryAllocatorVariableSize **)(pCVar8 + 0xc);
+    if (pCVar8 != (CMemoryArea *)param_1) {
+      *(CMemoryArea **)(pCVar6 + 4) = pCVar8;
+      *(undefined4 *)(pCVar8 + 8) = *(undefined4 *)(param_1 + 8);
+      pCVar5 = pCVar8;
+      if (pCVar8 != *(CMemoryArea **)(param_1 + 0xc)) {
+        pCVar5 = *(CMemoryArea **)(pCVar8 + 4);
+        if (pCVar2 != (CMemoryAllocatorVariableSize *)0x0) {
+          *(CMemoryArea **)(pCVar2 + 4) = pCVar5;
+        }
+        *(CMemoryAllocatorVariableSize **)(*(int *)(pCVar8 + 4) + 8) = pCVar2;
+        *(undefined4 *)(pCVar8 + 0xc) = *(undefined4 *)(param_1 + 0xc);
+        *(CMemoryArea **)(*(int *)(param_1 + 0xc) + 4) = pCVar8;
+      }
+      if ((CMemoryArea *)*param_2 == (CMemoryArea *)param_1) {
+        *param_2 = (int)pCVar8;
+      }
+      else {
+        iVar3 = *(int *)(param_1 + 4);
+        if (*(CMemoryArea **)(iVar3 + 8) == (CMemoryArea *)param_1) {
+          *(CMemoryArea **)(iVar3 + 8) = pCVar8;
+        }
+        else {
+          *(CMemoryArea **)(iVar3 + 0xc) = pCVar8;
+        }
+      }
+      *(undefined4 *)(pCVar8 + 4) = *(undefined4 *)(param_1 + 4);
+      CVar1 = *pCVar8;
+      *pCVar8 = *(CMemoryArea *)param_1;
+      *param_1 = (CMemoryAllocatorVariableSize)CVar1;
+      pCVar8 = (CMemoryArea *)param_1;
+      param_1 = pCVar2;
+      goto LAB_0042a451;
+    }
+  }
+  param_1 = pCVar2;
+  pCVar5 = *(CMemoryArea **)(pCVar8 + 4);
+  if (param_1 != (CMemoryAllocatorVariableSize *)0x0) {
+    *(CMemoryArea **)(param_1 + 4) = pCVar5;
+  }
+  if ((CMemoryArea *)*param_2 == pCVar9) {
+    *param_2 = (int)param_1;
+  }
+  else {
+    iVar3 = *(int *)(pCVar9 + 4);
+    if (*(CMemoryArea **)(iVar3 + 8) == pCVar9) {
+      *(CMemoryAllocatorVariableSize **)(iVar3 + 8) = param_1;
+    }
+    else {
+      *(CMemoryAllocatorVariableSize **)(iVar3 + 0xc) = param_1;
+    }
+  }
+  pCVar6 = param_1;
+  if (*(CMemoryArea **)param_3 == pCVar9) {
+    if (*(int *)(pCVar9 + 0xc) == 0) {
+      pCVar6 = *(CMemoryAllocatorVariableSize **)(pCVar9 + 4);
+      *(CMemoryAllocatorVariableSize **)param_3 = pCVar6;
+    }
+    else {
+      uVar4 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(param_1);
+      *(ulong *)param_3 = uVar4;
+      pCVar6 = param_3;
+    }
+  }
+  if ((CMemoryArea *)*param_4 == pCVar9) {
+    if (*(int *)(pCVar9 + 8) == 0) {
+      *param_4 = *(ulong *)(pCVar9 + 4);
+    }
+    else {
+      uVar4 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(pCVar6);
+      *param_4 = uVar4;
+    }
+  }
+LAB_0042a451:
+  if (*pCVar8 == (CMemoryArea)0x0) {
+    return pCVar8;
+  }
+  do {
+    pCVar9 = pCVar5;
+    if ((param_1 == (CMemoryAllocatorVariableSize *)*param_2) ||
+       ((param_1 != (CMemoryAllocatorVariableSize *)0x0 &&
+        (*param_1 != (CMemoryAllocatorVariableSize)0x1)))) goto LAB_0042a579;
+    pCVar5 = *(CMemoryArea **)(pCVar9 + 8);
+    if (param_1 == (CMemoryAllocatorVariableSize *)pCVar5) {
+      pCVar5 = *(CMemoryArea **)(pCVar9 + 0xc);
+      if (*pCVar5 == (CMemoryArea)0x0) {
+        *pCVar5 = (CMemoryArea)0x1;
+        *pCVar9 = (CMemoryArea)0x0;
+        CMemoryAllocatorVariableSize::RotateLeft(param_1,pCVar9);
+        pCVar5 = *(CMemoryArea **)(pCVar9 + 0xc);
+      }
+      if (((*(char **)(pCVar5 + 8) != (char *)0x0) && (**(char **)(pCVar5 + 8) != '\x01')) ||
+         ((*(char **)(pCVar5 + 0xc) != (char *)0x0 && (**(char **)(pCVar5 + 0xc) != '\x01')))) {
+        piVar7 = *(int **)(pCVar5 + 0xc);
+        if ((piVar7 == (int *)0x0) || ((char)*piVar7 == '\x01')) {
+          pCVar6 = *(CMemoryAllocatorVariableSize **)(pCVar5 + 8);
+          if (pCVar6 != (CMemoryAllocatorVariableSize *)0x0) {
+            *pCVar6 = (CMemoryAllocatorVariableSize)0x1;
+          }
+          *pCVar5 = (CMemoryArea)0x0;
+          CMemoryAllocatorVariableSize::RotateLeft(pCVar6,pCVar5);
+          pCVar5 = *(CMemoryArea **)(pCVar9 + 0xc);
+          piVar7 = param_2;
+        }
+        CVar1 = *pCVar9;
+        *pCVar5 = CVar1;
+        *pCVar9 = (CMemoryArea)0x1;
+        if (*(undefined1 **)(pCVar5 + 0xc) != (undefined1 *)0x0) {
+          **(undefined1 **)(pCVar5 + 0xc) = 1;
+        }
+        CMemoryAllocatorVariableSize::RotateLeft
+                  ((CMemoryAllocatorVariableSize *)CONCAT31((int3)((uint)piVar7 >> 8),CVar1),pCVar9)
+        ;
+        goto LAB_0042a579;
+      }
+    }
+    else {
+      if (*pCVar5 == (CMemoryArea)0x0) {
+        *pCVar5 = (CMemoryArea)0x1;
+        *pCVar9 = (CMemoryArea)0x0;
+        CMemoryAllocatorVariableSize::RotateLeft(param_1,pCVar9);
+        pCVar5 = *(CMemoryArea **)(pCVar9 + 8);
+      }
+      if (((*(char **)(pCVar5 + 0xc) != (char *)0x0) && (**(char **)(pCVar5 + 0xc) != '\x01')) ||
+         ((*(char **)(pCVar5 + 8) != (char *)0x0 && (**(char **)(pCVar5 + 8) != '\x01')))) {
+        piVar7 = *(int **)(pCVar5 + 8);
+        if ((piVar7 == (int *)0x0) || ((char)*piVar7 == '\x01')) {
+          pCVar6 = *(CMemoryAllocatorVariableSize **)(pCVar5 + 0xc);
+          if (pCVar6 != (CMemoryAllocatorVariableSize *)0x0) {
+            *pCVar6 = (CMemoryAllocatorVariableSize)0x1;
+          }
+          *pCVar5 = (CMemoryArea)0x0;
+          CMemoryAllocatorVariableSize::RotateLeft(pCVar6,pCVar5);
+          pCVar5 = *(CMemoryArea **)(pCVar9 + 8);
+          piVar7 = param_2;
+        }
+        CVar1 = *pCVar9;
+        *pCVar5 = CVar1;
+        *pCVar9 = (CMemoryArea)0x1;
+        if (*(undefined1 **)(pCVar5 + 8) != (undefined1 *)0x0) {
+          **(undefined1 **)(pCVar5 + 8) = 1;
+        }
+        CMemoryAllocatorVariableSize::RotateLeft
+                  ((CMemoryAllocatorVariableSize *)CONCAT31((int3)((uint)piVar7 >> 8),CVar1),pCVar9)
+        ;
+LAB_0042a579:
+        if (param_1 == (CMemoryAllocatorVariableSize *)0x0) {
+          return pCVar8;
+        }
+        *param_1 = (CMemoryAllocatorVariableSize)0x1;
+        return pCVar8;
+      }
+    }
+    *pCVar5 = (CMemoryArea)0x0;
+    pCVar5 = *(CMemoryArea **)(pCVar9 + 4);
+    param_1 = (CMemoryAllocatorVariableSize *)pCVar9;
+  } while( true );
+}
+
+
+@@ENDFUNC
+@@@FUNC 00454886 184 122
+@@CALLERS RenderUpdate, Update, operator=, _Copy_impl<std::pair<CCharString,CCharString>*,std::pair<class_CCharString,class_CCharString>*>, Copy, CUIDef, UpdateBlockedActionPoints, _Copy_backward<CStaticMapGenerationVisibiilityInfo::CSeaBodyDesc*,CStaticMapGenerationVisibiilityInfo::CSeaBodyDesc*>, fill<CArray<unsigned_short>*,CArray<unsigned_short>_>, AllocteMemoryPage, ?Copy@CHitLocationsDef@@UAEXPBVCDefClassBase@@@Z, ?Copy@CAttackPatternDef@@UAEXPBVCDefClassBase@@@Z, ?Copy@CCarryingDef@@UAEXPBVCDefClassBase@@@Z
+@@CALLEES memmove, FUN_00454961, OnReadFinished, FUN_0045493e
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_00454886(CActiveFile *param_1,CActiveFile *param_2)
+
+{
+  void *pvVar1;
+  void *_Src;
+  void *_Dst;
+  int iVar2;
+  uint uVar3;
+  uint uVar4;
+  undefined4 uStack_8;
+  
+  if (param_2 != param_1) {
+    pvVar1 = *(void **)(param_2 + 4);
+    _Src = *(void **)param_2;
+    _Dst = *(void **)param_1;
+    uVar4 = (int)pvVar1 - (int)_Src >> 2;
+    uStack_8 = param_1;
+    if ((uint)(*(int *)(param_1 + 8) - (int)_Dst >> 2) < uVar4) {
+      iVar2 = FUN_00454961(uVar4,_Src,pvVar1);
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar2;
+      *(uint *)(param_1 + 8) = iVar2 + uVar4 * 4;
+    }
+    else {
+      uVar3 = *(int *)(param_1 + 4) - (int)_Dst >> 2;
+      if (uVar3 < uVar4) {
+        pvVar1 = (void *)((int)_Src + uVar3 * 4);
+        if (pvVar1 != _Src) {
+          memmove(_Dst,_Src,(int)pvVar1 - (int)_Src);
+        }
+        uStack_8 = (CActiveFile *)((uint)uStack_8 & 0xffffff);
+        FUN_0045493e(*(undefined4 *)(param_1 + 4),(int)&uStack_8 + 3);
+      }
+      else if (pvVar1 != _Src) {
+        memmove(_Dst,_Src,(int)pvVar1 - (int)_Src);
+      }
+    }
+    *(uint *)(param_1 + 4) = *(int *)param_1 + uVar4 * 4;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004294e2 57 118
+@@CALLERS OpenPCPhotojournal
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+char * FUN_004294e2(char *param_1)
+
+{
+  char *pcVar1;
+  char *pcVar2;
+  
+  if ((*param_1 == '\0') && (*(char **)(*(int *)(param_1 + 4) + 4) == param_1)) {
+    return *(char **)(param_1 + 0xc);
+  }
+  pcVar1 = *(char **)(param_1 + 8);
+  if (*(char **)(param_1 + 8) == (char *)0x0) {
+    for (pcVar2 = *(char **)(param_1 + 4); param_1 == *(char **)(pcVar2 + 8);
+        pcVar2 = *(char **)(pcVar2 + 4)) {
+      param_1 = pcVar2;
+    }
+  }
+  else {
+    do {
+      pcVar2 = pcVar1;
+      pcVar1 = *(char **)(pcVar2 + 0xc);
+    } while (*(char **)(pcVar2 + 0xc) != (char *)0x0);
+  }
+  return pcVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c4d740 78 118
+@@CALLERS GetWaterGenerator
+@@CALLEES GetProcAddress
+@@STRINGS alGetProcAddress
+@@DECOMP
+
+void __thiscall FUN_00c4d740(int param_1,undefined4 param_2)
+
+{
+  FARPROC pFVar1;
+  int iVar2;
+  
+  if (*(int *)(param_1 + 0xe8) == 0) {
+    pFVar1 = GetProcAddress(*(HMODULE *)(param_1 + 4),"alGetProcAddress");
+    *(FARPROC *)(param_1 + 0xe8) = pFVar1;
+    if (*(char *)(param_1 + 0x104) != '\0') {
+      iVar2 = (*pFVar1)("alGetProcAddress");
+      *(int *)(param_1 + 0xe8) = iVar2;
+    }
+  }
+  (**(code **)(param_1 + 0xe8))(param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00433530 313 116
+@@CALLERS LoadQuestsFromFile, LoadGameState, GetAllActiveQuestInfo, UnpackNames, _Move<std::_List_const_iterator<std::_List_val<CAnimSet,std::allocator<CAnimSet>_>_>*,std::_Temp_iterator<std::_List_const_iterator<std::_List_val<CAnimSet,std::allocator<CAnimSet>_>_>_>_>, GetHelperPointNamesFromStrikeEventName, _For_each<CThingCreatureBase**,CApplyAdditionalImpulseIfInCombatAndTooClose>, InitialiseTrails, GetActiveEmitterNames, MonitorRegionPresence, ProcessSongsAge, ProcessSongsMarriage, ChooseRandomBanditFromDefs, AddScript, ?GetItemDefNamesFromContainer@CGameScriptInterface@@UBEXABVCScriptThing@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z, CShaderBankEntry
+@@CALLEES malloc, free, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_00433530(int *param_1,pair<EHeroMorphType,CParticleMorphs::CEntry> *param_2,CCharString *param_3
+            ,CCharString *param_4,undefined4 param_5,CCharString *param_6,char param_7)
+
+{
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *paVar1;
+  CCharString **ppCVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_02;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_03;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_04;
+  CCharString *this;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  CCharString *pCVar3;
+  int iVar4;
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *paVar5;
+  CCharString *local_8;
+  CCharString *local_4;
+  
+  local_8 = (CCharString *)(param_1[1] - *param_1 >> 2);
+  ppCVar2 = &param_6;
+  if (param_6 <= local_8) {
+    ppCVar2 = &local_8;
+  }
+  local_4 = *ppCVar2 + (int)local_8;
+  if (local_4 == (CCharString *)0x0) {
+    local_8 = (CCharString *)0x0;
+  }
+  else {
+    local_8 = malloc((int)local_4 * 4);
+    param_2 = extraout_EDX;
+  }
+  this = local_8;
+  for (pCVar3 = (CCharString *)*param_1; pCVar3 != param_3; pCVar3 = pCVar3 + 4) {
+    if (this != (CCharString *)0x0) {
+      CCharString::CCharString(this,pCVar3);
+      param_2 = extraout_EDX_00;
+    }
+    this = this + 4;
+  }
+  pCVar3 = param_6;
+  if (param_6 == (CCharString *)0x1) {
+    if (this != (CCharString *)0x0) {
+      CCharString::CCharString(this,param_4);
+      param_2 = extraout_EDX_01;
+    }
+    this = this + 4;
+  }
+  else {
+    for (; pCVar3 != (CCharString *)0x0; pCVar3 = pCVar3 + -1) {
+      if (this != (CCharString *)0x0) {
+        CCharString::CCharString(this,param_4);
+        param_2 = extraout_EDX_02;
+      }
+      this = this + 4;
+    }
+  }
+  if ((param_7 == '\0') && (pCVar3 = (CCharString *)param_1[1], param_3 != pCVar3)) {
+    iVar4 = (int)param_3 - (int)this;
+    do {
+      if (this != (CCharString *)0x0) {
+        CCharString::CCharString(this,this + iVar4);
+        param_2 = extraout_EDX_03;
+      }
+      this = this + 4;
+    } while (this + iVar4 != pCVar3);
+  }
+  paVar1 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)param_1[1];
+  for (paVar5 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)*param_1;
+      paVar5 != paVar1; paVar5 = paVar5 + 4) {
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              (paVar5,param_2,unaff_EDI);
+    param_2 = extraout_EDX_04;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  param_1[1] = (int)this;
+  *param_1 = (int)local_8;
+  param_1[2] = (int)(local_8 + (int)local_4 * 4);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045ef2d 184 116
+@@CALLERS RenderUpdate, Update, operator=, GetOpinions, pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>, SetupFromDef, CUIDef
+@@CALLEES OnReadFinished, memmove, FUN_0045f008, FUN_0045efe5
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_0045ef2d(CActiveFile *param_1,CActiveFile *param_2)
+
+{
+  void *pvVar1;
+  void *_Src;
+  void *_Dst;
+  int iVar2;
+  uint uVar3;
+  uint uVar4;
+  undefined4 uStack_8;
+  
+  if (param_2 != param_1) {
+    pvVar1 = *(void **)(param_2 + 4);
+    _Src = *(void **)param_2;
+    _Dst = *(void **)param_1;
+    uVar4 = (int)pvVar1 - (int)_Src >> 2;
+    uStack_8 = param_1;
+    if ((uint)(*(int *)(param_1 + 8) - (int)_Dst >> 2) < uVar4) {
+      iVar2 = FUN_0045f008(uVar4,_Src,pvVar1);
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar2;
+      *(uint *)(param_1 + 8) = iVar2 + uVar4 * 4;
+    }
+    else {
+      uVar3 = *(int *)(param_1 + 4) - (int)_Dst >> 2;
+      if (uVar3 < uVar4) {
+        pvVar1 = (void *)((int)_Src + uVar3 * 4);
+        if (pvVar1 != _Src) {
+          memmove(_Dst,_Src,(int)pvVar1 - (int)_Src);
+        }
+        uStack_8 = (CActiveFile *)((uint)uStack_8 & 0xffffff);
+        FUN_0045efe5(*(undefined4 *)(param_1 + 4),(int)&uStack_8 + 3);
+      }
+      else if (pvVar1 != _Src) {
+        memmove(_Dst,_Src,(int)pvVar1 - (int)_Src);
+      }
+    }
+    *(uint *)(param_1 + 4) = *(int *)param_1 + uVar4 * 4;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0066bd00 225 116
+@@CALLERS AttachToThing, UpdateMoney, PlayCameraSoundThroughObservedThing, PlaySoundW, SendCreationCriteriaSound, SendDestructionCriteriaSound, ApplyBonusItemEffects, SetMeleeFlourishValid, OnSpecialAbilityUsed, ToggleCharge, DisplayNextMessage, PlayCreatureContinuousSounds, PlayCombatMultiplierSound, ?ProcessInput@CInputProcessUseEnvironment@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z, OnCollisionWithObject, FrameUpdate, StartMinigame, OnShowTrophyPerformAction, GlobalUpdate, InitAbility, CreateMinion, ResetMinionPos, SetSummonCreatureGlobalDefNum, Deactivate, CancelForCutscene, CreateHitEffect, RushForwards, OnCollision, AddSword, StartTurncoatingEffects, ModifyTurncoatedness, ProcessLevellingUpFX, Init, UpdateSound, UpdateCoins, ?PerformAction@CCreatureAction_GiveItemToThing@@UAEXXZ, ?Initialise@CCreatureAction_PerformExpression@@UAEXXZ, CCreatureAction_CastWillLightningSpell, CCreatureAction_ReleaseWillLightningSpell, CCreatureAction_CastSkillMultiArrow, ?Initialise@CCreatureAction_CastStrengthMultiStrikeProper@@UAEXXZ, ?Update@CAIStateGroup_MinionHasInformation@@UAEXXZ, ?Update@CAIStateGroup_MinionGuardBribed@@UAEXXZ, InteractionFailed, CleanupAbility, StartHealingEffect, CastFireball, PlayCastSound, CTCWillLightning, CTCFireballSpell, CTCMultiStrike, TerminateMinigame, ?FrameUpdate@CCreatureAction_PerformExpression@@UAEXXZ, ?SetQuestCardObjective@CGameScriptInterface@@UBEXABVCCharString@@000@Z, ?PlayCriteriaSoundOnThing@CGameScriptInterface@@UBEKABVCScriptThing@@ABVCCharString@@@Z
+@@CALLEES free, FUN_0066b120, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, FUN_0066bc10, GetMeshBank, ResetRings
+@@STRINGS 
+@@DECOMP
+
+int __thiscall
+FUN_0066bd00(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4,undefined4 param_5
+            ,undefined4 param_6)
+
+{
+  CMeshDataBank *pCVar1;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *paVar3;
+  undefined8 uVar4;
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *local_c;
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *local_8;
+  undefined4 local_4;
+  
+  if ((DAT_0137e974 != '\0') && (DAT_013b8394 != 0)) {
+    pCVar1 = CAnimateThing::GetMeshBank(*(CAnimateThing **)(param_1 + 4));
+    local_c = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)0x0;
+    local_8 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)0x0;
+    local_4 = 0;
+    FUN_0066bc10(param_2,&local_c);
+    paVar3 = local_c;
+    if (local_c != local_8) {
+      do {
+        uVar4 = FUN_0066b120(pCVar1,paVar3,param_3,param_4,param_5,param_6);
+        ppVar2 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar4 >> 0x20);
+        if ((int)uVar4 != DAT_0129d25c) {
+          CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)&local_c);
+          return (int)uVar4;
+        }
+        paVar3 = paVar3 + 4;
+      } while (paVar3 != local_8);
+      paVar3 = local_c;
+      if (local_c != local_8) {
+        do {
+          std::
+          _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                    (paVar3,ppVar2,unaff_EDI);
+          paVar3 = paVar3 + 4;
+          ppVar2 = extraout_EDX;
+        } while (paVar3 != local_8);
+      }
+    }
+    if (local_c != (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)0x0) {
+      free(local_c);
+    }
+  }
+  return DAT_0129d25c;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00440990 216 114
+@@CALLERS BuildFromSource, ?LoadTopologyFromFile@CWorldMap@@UAEXJV?$CCountedPointer@VCAFile@@@@AAVCASuspendableProcess@@@Z, LoadFromFile, ?PostRegionLoad@CWorldMap@@UAEXJ@Z, DeactivateMember, GetWantedItemsList, FindTeleports, UpdateVisitedRegions, ConstructLogbookList, GetAppropriateCombatAnimationFromList, GetBestSequenceIndexAttackerOnDefender, GetFreeActionPoint, UpdateBlockedActionPoints, EditCyclePreviousKeyCamera, GetKeyList, CreateFish, AddSword, DealCards, CreatePixelShader, GetActiveEmitterNames, GetVisibleEmitterNames, FreeMemoryPage, AllocResourceEntry, ?GetPossibleCollisionSet@CPhysicsFacesSegmentLeaf@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z, ?GetSupportedTypes@CEngineLightingManager@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerRepeatedStaticMeshes@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerStaticMeshesBase@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManager2DStaticMeshes@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerRepeatedZSprites@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveOcclusionGroupManager@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerSprites@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManager2DSprites@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerWeatherMask@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerParticleDecalGroup@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerDecal@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerParticleGroup@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerParticleSpriteTrailGroup@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerParticleSpriteGroup@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerParticleMeshGroup@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerParticleLineGroup@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveChangerManager@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveGroupManager@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerText@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerLines@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerSpriteTrails@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerWeaponTrails@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerFlareSprites@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManagerAnimatedMeshesBase@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManager2DAnimatedMeshes@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitiveManager2DParticleGroup@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?GetSupportedTypes@CEnginePrimitive2DViewportManager@@UBEXAAVCEnginePrimitiveTypeList@@@Z, ?PerformAction@CCreatureAction_CastWillRaiseDeadSpell@@UAEXXZ
+@@CALLEES malloc, memmove, free
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00440990(int *param_1,void *param_2,undefined4 *param_3,undefined4 param_4,undefined4 *param_5,
+            char param_6)
+
+{
+  void *pvVar1;
+  void *pvVar2;
+  uint *puVar3;
+  uint uVar4;
+  size_t _Size;
+  undefined4 *_Dst;
+  uint local_4;
+  
+  uVar4 = (uint)param_5;
+  local_4 = param_1[1] - *param_1 >> 2;
+  puVar3 = (uint *)&param_5;
+  if (param_5 <= local_4) {
+    puVar3 = &local_4;
+  }
+  local_4 = *puVar3 + local_4;
+  if (local_4 == 0) {
+    param_5 = (undefined4 *)0x0;
+  }
+  else {
+    param_5 = malloc(local_4 * 4);
+  }
+  pvVar2 = (void *)*param_1;
+  _Dst = param_5;
+  if (param_2 != pvVar2) {
+    pvVar1 = memmove(param_5,pvVar2,(int)param_2 - (int)pvVar2);
+    _Dst = (undefined4 *)((int)pvVar1 + ((int)param_2 - (int)pvVar2));
+  }
+  for (; uVar4 != 0; uVar4 = uVar4 - 1) {
+    *_Dst = *param_3;
+    _Dst = _Dst + 1;
+  }
+  if ((param_6 == '\0') && ((void *)param_1[1] != param_2)) {
+    _Size = param_1[1] - (int)param_2;
+    pvVar2 = memmove(_Dst,param_2,_Size);
+    _Dst = (undefined4 *)((int)pvVar2 + _Size);
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  param_1[1] = (int)_Dst;
+  *param_1 = (int)param_5;
+  param_1[2] = (int)(param_5 + local_4);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c9840 213 109
+@@CALLERS SetPOwner, CancelMove, ClearOpinionSource, AddSaleItem, OnHit, OnCollisionProper, ImmediateCancel, OnCollision, SetAsSneaking, FrameUpdate, CancelForCutscene, CreateMinion, OnInitialActivate, OnTakenOffMount, ~CLightningBranch, EndCutFade, ?FinishAction@CCombatActionBase@@MAEXXZ, ?OnAnimationLoaded@CCombatActionBase@@MAEXXZ, ?PerformAction@CCreatureAction_LeapLong@@UAEXXZ, ?FinishAction@CCreatureAction_LeapLong@@UAEXXZ, ?Initialise@CCreatureAction_CastWillLightningSpell@@UAEXXZ, ?FinishAction@CCreatureAction_WhisperSommersaultForward@@UAEXXZ, ?PerformAction@CCreatureAction_WhisperSommersaultForward@@UAEXXZ, ?FinishAction@CCreatureAction_WaspQueenPrimaryAttack@@UAEXXZ, ?FinishAction@CCreatureAction_WaspQueenLashOutAttack@@UAEXXZ, ?FinishAction@CCreatureAction_BalverineLungeAttack@@UAEXXZ, SetThingAsNotBloodyWillableAtAll, ?Initialise@CCreatureAction_CastAssassinRush@@UAEXXZ, SetThingIsAbleToBeLifted, OnDeactivate, ExtinguishFlames, FinishAction, ?FinishAction@CCreatureAction_DragonHoverOutOf@@UAEXXZ, ?FinishAction@CCreatureAction_DragonTakeOffIntoFlying@@UAEXXZ, ?Update@CAIStateGroup_BanditGossip@@MAEXXZ, ?Update@CAIStateGroup_LookAtInterestingThings@@MAEXXZ, CreateIBC, SetThingIsForcePushable, _Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>, UpdateRegionLoad, FinishBeingForcePushed, ?FinishAction@CCreatureAction_PerformExpression@@UAEXXZ, ?FinishAction@CCreatureAction_PerformExpressionExtended@@UAEXXZ, ?EntitySetAsReceivingEvents@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z, ?CancelHeroTeleportEffects@CGameScriptInterface@@UBEXXZ, ?Initialise@CCreatureAction_WaspQueenPrimaryAttack@@UAEXXZ, ?Initialise@CCreatureAction_WaspQueenLashOutAttack@@UAEXXZ, ?FinishAction@CCreatureAction_WaspQueenDiveAttack@@UAEXXZ, ?FinishAction@CCreatureAction_ScorpionCharge@@UAEXXZ, Flash, ?FinishAction@CCreatureAction_CastStrengthMultiStrike@@UAEXXZ, ?Update@CAIStateGroup_OnHeroPush@@UAEXXZ
+@@CALLEES SetPItem, ~CBaseIntelligentPointer, LowerBound, CBaseIntelligentPointer, FUN_004ccc80, FUN_004cc0d0, GetPItem
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004c9840(CBaseObject *param_1,ETCInterfaceType param_2)
+
+{
+  int *piVar1;
+  undefined4 uVar2;
+  CBaseObject *pCVar3;
+  undefined **appuStack_14 [2];
+  undefined **appuStack_c [2];
+  int *piStack_4;
+  
+  piVar1 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                  ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                *)(param_1 + 0x44),&param_2);
+  if ((piVar1 == *(int **)(param_1 + 0x48)) || ((int)param_2 < *piVar1)) {
+    piVar1 = *(int **)(param_1 + 0x48);
+  }
+  if ((piVar1 != *(int **)(param_1 + 0x48)) && (piVar1 = (int *)piVar1[1], (char)piVar1[2] == '\0'))
+  {
+    *(undefined1 *)(piVar1 + 2) = 1;
+    uVar2 = (**(code **)(*piVar1 + 0x54))();
+    FUN_004cc0d0(uVar2);
+    CBaseIntelligentPointer::CBaseIntelligentPointer((CBaseIntelligentPointer *)appuStack_14);
+    appuStack_14[0] = &PTR__vector_deleting_destructor__01238c6c;
+    CBaseIntelligentPointer::SetPItem((CBaseIntelligentPointer *)appuStack_14,param_1);
+    CBaseIntelligentPointer::CBaseIntelligentPointer((CBaseIntelligentPointer *)appuStack_c);
+    appuStack_c[0] = &PTR__vector_deleting_destructor__01238c6c;
+    pCVar3 = CBaseIntelligentPointer::GetPItem((CBaseIntelligentPointer *)appuStack_14);
+    CBaseIntelligentPointer::SetPItem((CBaseIntelligentPointer *)appuStack_c,pCVar3);
+    piStack_4 = piVar1;
+    FUN_004ccc80(&param_2,DAT_013b8a24,appuStack_c);
+    CBaseIntelligentPointer::~CBaseIntelligentPointer((CBaseIntelligentPointer *)appuStack_c);
+    CBaseIntelligentPointer::~CBaseIntelligentPointer((CBaseIntelligentPointer *)appuStack_14);
+    (**(code **)(*piVar1 + 8))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 008b0b10 80 102
+@@CALLERS ?OnCreate@CCombatSequence_GenericRangedAttack@@UAEXXZ, ?OnCreate@CCombatSequence_GenericLeader@@UAEXXZ, ?OnCreate@CCombatSequence_BanditAdvanceFar@@UAEXXZ, ?OnCreate@CCombatSequence_BanditAttackSide@@UAEXXZ, ?OnCreate@CCombatSequence_BanditUnblockableAttack@@UAEXXZ, ?OnCreate@CCombatSequence_NonInterruptableBoxStrafe@@UAEXXZ, ?OnCreate@CCombatSequence_BanditAttackFar@@UAEXXZ, ?OnCreate@CCombatSequence_BanditAttackMiddle@@UAEXXZ, ?OnCreate@CCombatSequence_BanditAttackNear@@UAEXXZ, ?OnCreate@CCombatSequence_BanditIdleNear@@UAEXXZ, ?OnCreate@CCombatSequence_BanditIdleMiddle@@UAEXXZ, ?OnCreate@CCombatSequence_BanditBoast@@UAEXXZ, ?OnCreate@CCombatSequence_BanditKingAttack@@UAEXXZ, ?OnCreate@CCombatSequence_BanditKingBackOff@@UAEXXZ, ?OnCreate@CCombatSequence_BanditKingAdvance@@UAEXXZ, ?OnCreate@CCombatSequence_BanditKingSpinAround@@UAEXXZ, ?OnCreate@CCombatSequence_FodderMainAttack@@UAEXXZ, ?OnCreate@CCombatSequence_FodderUnblockableMainAttack@@UAEXXZ, ?OnCreate@CCombatSequence_FodderSecondaryAttack@@UAEXXZ, ?OnCreate@CCombatSequence_FodderCombatIdle@@UAEXXZ, ?OnCreate@CCombatSequence_TrollRockShuffleBack@@UAEXXZ, ?OnCreate@CCombatSequence_TrollDoubleSwipe@@UAEXXZ, ?OnCreate@CCombatSequence_TrollDoubleSwipeNonMelee@@UAEXXZ, ?OnCreate@CCombatSequence_TrollOpeningGroundPound@@UAEXXZ, ?OnCreate@CCombatSequence_TrollProjectileAttack@@UAEXXZ, ?OnCreate@CCombatSequence_TrollBurrowPursue@@UAEXXZ, ?OnCreate@CCombatSequence_TrollBurrowPursueNoZone@@UAEXXZ, ?OnCreate@CCombatSequence_TrollRockPursue@@UAEXXZ, ?OnCreate@CCombatSequence_TrollRockPursueNoZone@@UAEXXZ, ?OnCreate@CCombatSequence_TrollRockAdvance@@UAEXXZ, ?OnCreate@CCombatSequence_TrollRockThrowRock@@UAEXXZ, ?OnCreate@CCombatSequence_TrollRockIdle@@UAEXXZ, ?OnCreate@CCombatSequence_VillagerBackOff@@UAEXXZ, ?OnCreate@CCombatSequence_VillagerStepIn@@UAEXXZ, ?OnCreate@CCombatSequence_VillagerAdvance@@UAEXXZ, ?OnCreate@CCombatSequence_VillagerCombo@@UAEXXZ, ?OnCreate@CCombatSequence_VillagerComboUnblockable@@UAEXXZ, ?OnCreate@CCombatSequence_VillagerNearAttack@@UAEXXZ, ?OnCreate@CCombatSequenceWhisperLunge@@UAEXXZ, ?OnCreate@CCombatSequenceWhisperTooCloseLeapBack@@UAEXXZ, ?OnCreate@CCombatSequenceWhisperStrafeAround@@UAEXXZ, ?OnCreate@CCombatSequenceWhisperSortYourselfOut@@UAEXXZ, ?OnCreate@CCombatSequence_BattleCharge@@UAEXXZ, ?OnCreate@CCombatSequence_WillLightning@@UAEXXZ, ?OnCreate@CCombatSequence_WillEnflame@@UAEXXZ, ?OnCreate@CCombatSequence_WillPhysicalShield@@UAEXXZ, ?OnCreate@CCombatSequence_WillPhysicalShieldNonMelee@@UAEXXZ, ?OnCreate@CCombatSequence_WillForcePushLongRange@@UAEXXZ, ?OnCreate@CCombatSequenceWhisperAdvance@@UAEXXZ, ?OnCreate@CCombatSequenceWhisperAttackCombo@@UAEXXZ, ?OnCreate@CCombatSequenceWhisperAttack360@@UAEXXZ, ?OnCreate@CCombatSequenceWhisperAttackBigCombo@@UAEXXZ, ?OnCreate@CCombatSequenceWhisperStrikeStrafeBack@@UAEXXZ, ?OnCreate@CCombatSequenceWhisperBoast@@UAEXXZ, ?OnCreate@CCombatSequenceWhisperIdles@@UAEXXZ, ?OnCreate@CCombatSequenceJacksCombo@@UAEXXZ, ?OnCreate@CCombatSequenceNonInterruptable2StrikeCombo@@UAEXXZ, ?OnCreate@CCombatSequence2StrikeCombo@@UAEXXZ, ?OnCreate@CCombatSequenceUnblockableFacing@@UAEXXZ, ?OnCreate@CCombatSequence_WillForcePush@@UAEXXZ, ?OnCreate@CCombatSequence_ScorpionLungeAttack@@UAEXXZ, ?OnCreate@CCombatSequence_VillagerAttack@@UAEXXZ
+@@CALLEES FUN_008b3350
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_008b0b10(int param_1,undefined4 *param_2)
+
+{
+  undefined4 *puVar1;
+  int *piVar2;
+  
+  puVar1 = *(undefined4 **)(param_1 + 0x14);
+  if (puVar1 != *(undefined4 **)(param_1 + 0x18)) {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = *param_2;
+      piVar2 = (int *)param_2[1];
+      puVar1[1] = piVar2;
+      if (piVar2 != (int *)0x0) {
+        *piVar2 = *piVar2 + 1;
+      }
+    }
+    *(int *)(param_1 + 0x14) = *(int *)(param_1 + 0x14) + 8;
+    *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + 1;
+    return;
+  }
+  FUN_008b3350(puVar1,param_2,&param_2,1,1);
+  *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + 1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c915a0 188 97
+@@CALLERS _Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+uint __fastcall FUN_00c915a0(int *param_1,int param_2)
+
+{
+  byte *pbVar1;
+  char cVar2;
+  int iVar3;
+  uint uVar4;
+  uint uVar5;
+  
+  iVar3 = param_1[1];
+  uVar4 = param_2 + iVar3;
+  if ((*param_1 + 4 < param_1[4]) ||
+     (uVar5 = 0xffffffff, (int)(uVar4 + *param_1 * 8) <= param_1[4] * 8)) {
+    pbVar1 = (byte *)param_1[3];
+    uVar5 = (uint)(*pbVar1 >> (*(byte *)(param_1 + 1) & 0x1f));
+    if (8 < (int)uVar4) {
+      cVar2 = (char)iVar3;
+      uVar5 = uVar5 | (uint)pbVar1[1] << (8U - cVar2 & 0x1f);
+      if ((((0x10 < (int)uVar4) &&
+           (uVar5 = uVar5 | (uint)pbVar1[2] << (0x10U - cVar2 & 0x1f), 0x18 < (int)uVar4)) &&
+          (uVar5 = uVar5 | (uint)pbVar1[3] << (0x18U - cVar2 & 0x1f), 0x20 < (int)uVar4)) &&
+         (iVar3 != 0)) {
+        uVar5 = uVar5 | (uint)pbVar1[4] << (0x20U - cVar2 & 0x1f);
+      }
+    }
+    uVar5 = uVar5 & *(uint *)(&DAT_0139ddb8 + param_2 * 4);
+  }
+  iVar3 = (int)(uVar4 + ((int)uVar4 >> 0x1f & 7U)) >> 3;
+  param_1[3] = param_1[3] + iVar3;
+  *param_1 = iVar3 + *param_1;
+  param_1[1] = uVar4 & 7;
+  return uVar5;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0099b800 92 95
+@@CALLERS SplitPath, GFMain, CSystemManagerInit, CNewFrontendGameComponent, CompileDefsPlatformSpecific, FillInListBox, OpenIniFile, ScanNextFile, CreateDirectoryForFile, CreateDirectoryW, Clear, WordWrapText, GetActionName, LoadGameState, WorldUpdate, IsRoomForFile, UpdateMoney, DrawRetailDisplay, AddCharacter, KeyPressed, UpdateDisplayText, FitInWindow, SetEmoteText, ConstructTradeDescriptionWeapon, ConstructTradeDescriptionClothing, AutoLoadRegionLeaving, SetCurrentAreaName, Draw, GetDiskSectorSize, GetFilenameFromPathname, Open, CEngineSkyRenderer, WatchForTermination, Init, SetMode, ?GetKeyName@CKeyboardDX@@UBE_NW4EInputKey@@AAVCWideString@@@Z, OpenPCOptionsMenu, OpenPCPhotojournal
+@@CALLEES free, operator_delete, AllocStringData
+@@STRINGS 
+@@DECOMP
+
+CCharString * __thiscall FUN_0099b800(CCharString *param_1,short *param_2)
+
+{
+  int iVar1;
+  undefined4 *puVar2;
+  CCharStringData *pCVar3;
+  int iVar4;
+  
+  iVar1 = *(int *)param_1;
+  if (iVar1 != 0) {
+    iVar4 = *(int *)(iVar1 + 0xc) + -1;
+    *(int *)(iVar1 + 0xc) = iVar4;
+    if ((iVar4 < 1) && (puVar2 = *(undefined4 **)param_1, puVar2 != (undefined4 *)0x0)) {
+      if ((void *)*puVar2 != (void *)0x0) {
+        free((void *)*puVar2);
+      }
+      operator_delete(puVar2);
+    }
+    *(undefined4 *)param_1 = 0;
+  }
+  if ((param_2 != (short *)0x0) && (*param_2 != 0)) {
+    pCVar3 = CCharString::AllocStringData(param_1,(char *)param_2,-1);
+    *(CCharStringData **)param_1 = pCVar3;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00833a10 91 89
+@@CALLERS SetSuspendAllAI, SetUpForcePush, FrameUpdate, OnInitialActivate, ?Initialise@CCombatAction_KickThingOnGround@@UAEXXZ, ?Initialise@CCreatureAction_GoUnderground@@UAEXXZ, ?FinishAction@CCreatureAction_GoUnderground@@UAEXXZ, ?Initialise@CCreatureAction_RiseUp@@UAEXXZ, ?FinishAction@CCreatureAction_RiseUp@@UAEXXZ, ?FinishAction@CCreatureAction_JackFlash@@UAEXXZ, OnActivate, OnDeactivate, Recover, ?Initialise@CCreatureAction_UndeadRiseUp@@UAEXXZ, ?Initialise@CCreatureAction_UndeadReturnToEarth@@UAEXXZ, ?Initialise@CCreatureAction_Die@@UAEXXZ, ?Initialise@CCreatureAction_DragonLand@@UAEXXZ, CTCForcePushed, FinishBeingForcePushed, ?Initialise@CCombatAction_RecoverFromStunned@@UAEXXZ, ?FinishAction@CCreatureAction_ScorpionTailWithdraw@@UAEXXZ, ?Initialise@CCreatureAction_ScorpionSummon@@UAEXXZ, ?FinishAction@CCreatureAction_ScorpionRecover@@UAEXXZ, ?Initialise@CCreatureAction_RockTrollFallToDeath@@UAEXXZ, ?FinishAction@CCreatureAction_UndeadRiseUp@@UAEXXZ, ?Initialise@CCombatAction_RecoverFromDazed@@UAEXXZ, ?FinishAction@CCreatureAction_DragonLand@@UAEXXZ
+@@CALLEES FUN_00835960, FUN_00835560
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00833a10(int param_1,char param_2)
+
+{
+  undefined1 local_8 [8];
+  
+  if (param_2 == '\0') {
+    FUN_00835960(&stack0x00000008);
+  }
+  else {
+    FUN_00835560(local_8,&stack0x00000008);
+  }
+  *(byte *)(param_1 + 0x1c8) =
+       *(byte *)(param_1 + 0x1c8) ^
+       ((*(int *)(param_1 + 0x1d0) != 0) << 1 ^ *(byte *)(param_1 + 0x1c8)) & 2;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0099b150 121 85
+@@CALLERS GFMain, SetDefaultValues, Save, Load, LoadGameState, GFParseCommandLine, GlobalDraw, ProcessEmbeddedHighlightTags, FormatTextForVWindow, ProcessEmbeddedGraphicTags, FormatTextWithGameActionNames, GetActionName, GetSavedGameNames, SaveGame, SaveHeroStateInternal, DrawTextEmbeddedGraphics, DrawButtonText, DrawTextPrimitives, DrawButtonGraphics, ClickPast, DisplayCenteredText, DrawRetailDisplay, GetQuestName, SetEmoteText, StartDialogBox, GetQuestDescription, AutoLoadRegionLeaving, _Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>, SetCurrentAreaName, GetFullHeroTitle, OnActionUseRent, OnActionUseMain, RunCutsceneMacro_Func, Draw, IsDrawing, ?GetFormattedString@CGameScriptInterface@@UBE?AVCWideString@@ABVCCharString@@ABV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z, ?AddScreenMessage@CGameScriptInterface@@UBEXABVCCharString@@W4ETextGroupSelectionMethod@@@Z, DrawPreparePrimitivesForRendering, GetFileNameList
+@@CALLEES wcscmp, FUN_00403c60
+@@STRINGS 
+@@DECOMP
+
+bool __thiscall FUN_0099b150(int *param_1,wchar_t *param_2)
+
+{
+  wchar_t wVar1;
+  int iVar2;
+  
+  param_1 = (int *)*param_1;
+  if (param_1 == (int *)0x0) {
+    iVar2 = wcscmp(param_2,L"");
+    return iVar2 != 0;
+  }
+  iVar2 = 0;
+  wVar1 = *param_2;
+  while (wVar1 != L'\0') {
+    iVar2 = iVar2 + 1;
+    wVar1 = param_2[iVar2];
+  }
+  if ((param_1[1] - *param_1 >> 1 == iVar2) &&
+     (iVar2 = FUN_00403c60(*param_1,param_2,iVar2), iVar2 == 0)) {
+    return false;
+  }
+  return true;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c90fc0 243 82
+@@CALLERS _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, GetLocalEnvironmentThemeIndexFromGlobal, RemoveMap
+@@CALLEES realloc
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c90fc0(int *param_1,uint param_2,int param_3)
+
+{
+  void *pvVar1;
+  int iVar2;
+  uint uVar3;
+  
+  if (param_1[4] <= *param_1 + 4) {
+    pvVar1 = realloc((void *)param_1[2],param_1[4] + 0x100);
+    param_1[2] = (int)pvVar1;
+    param_1[4] = param_1[4] + 0x100;
+    param_1[3] = *param_1 + (int)pvVar1;
+  }
+  param_2 = param_2 & *(uint *)(&DAT_0139ddb8 + param_3 * 4);
+  uVar3 = param_3 + param_1[1];
+  *(byte *)param_1[3] = *(byte *)param_1[3] | (char)param_2 << ((byte)param_1[1] & 0x1f);
+  if ((((7 < (int)uVar3) &&
+       (*(char *)(param_1[3] + 1) = (char)(param_2 >> (8U - (char)param_1[1] & 0x1f)),
+       0xf < (int)uVar3)) &&
+      (*(char *)(param_1[3] + 2) = (char)(param_2 >> (0x10U - (char)param_1[1] & 0x1f)),
+      0x17 < (int)uVar3)) &&
+     (*(char *)(param_1[3] + 3) = (char)(param_2 >> (0x18U - (char)param_1[1] & 0x1f)),
+     0x1f < (int)uVar3)) {
+    if (param_1[1] == 0) {
+      *(undefined1 *)(param_1[3] + 4) = 0;
+    }
+    else {
+      *(char *)(param_1[3] + 4) = (char)(param_2 >> (0x20U - (char)param_1[1] & 0x1f));
+    }
+  }
+  iVar2 = (int)(uVar3 + ((int)uVar3 >> 0x1f & 7U)) >> 3;
+  param_1[1] = uVar3 & 7;
+  *param_1 = *param_1 + iVar2;
+  param_1[3] = param_1[3] + iVar2;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c7b8f0 52 77
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void __thiscall FUN_00c7b8f0(int *param_1,uint param_2)
+
+{
+  undefined1 auVar1 [16];
+  
+  auVar1 = ZEXT416(param_2);
+  *param_1 = *param_1 >> auVar1;
+  param_1[1] = param_1[1] >> auVar1;
+  param_1[2] = param_1[2] >> auVar1;
+  param_1[3] = param_1[3] >> auVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00431143 91 73
+@@CALLERS InitialiseDefaultCameraTags, ?Transfer@CHeroMarriageDef@@UAEXAAVCPersistContext@@@Z, ?Transfer@CTattooDef@@UAEXAAVCPersistContext@@@Z, ?Transfer@CEnvironmentDef@@UAEXAAVCPersistContext@@@Z, ?Transfer@CSpecialAbilitiesSummonSpellDef@@UAEXAAVCPersistContext@@@Z, ?Transfer@CEntitySoundDef@@UAEXAAVCPersistContext@@@Z, ?Transfer@CGlobalDef@@UAEXAAVCPersistContext@@@Z, ?Transfer@CPlayerGuiDef@@UAEXAAVCPersistContext@@@Z, SaveGameState, ?Transfer@CTrophyDef@@UAEXAAVCPersistContext@@@Z, CChestDef::Transfer, ?Transfer@CFireheartMinigameDef@@UAEXAAVCPersistContext@@@Z, ?Transfer@CVillageDef@@UAEXAAVCPersistContext@@@Z, ?Transfer@CWeaponDef@@UAEXAAVCPersistContext@@@Z, ?Transfer@CObjectAugmentationsDef@@UAEXAAVCPersistContext@@@Z, ?Transfer@CShopDef@@UAEXAAVCPersistContext@@@Z
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, CheckCRC, operator=, WriteNullTerminatedString
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00431143(CPersistContext *param_1,CCharString *param_2)
+
+{
+  CCharString *pCVar1;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_02;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar2;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_ESI;
+  CPersistContext *local_c;
+  CPersistContext *local_8;
+  
+  local_c = param_1;
+  local_8 = param_1;
+  CPersistContext::CheckCRC(param_1,"");
+  CCharString::CCharString((CCharString *)&local_8);
+  if (*(int *)(param_1 + 0x18) == 2) {
+    pCVar1 = (CCharString *)(**(code **)(**(int **)(param_1 + 0x24) + 0x18))(&local_c);
+    CCharString::operator=(param_2,pCVar1);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_c,
+               extraout_EDX_01,unaff_ESI);
+    ppVar2 = extraout_EDX_02;
+  }
+  else {
+    ppVar2 = extraout_EDX;
+    if (*(int *)(param_1 + 0x18) == 3) {
+      CDataOutputStream::WriteNullTerminatedString(*(CDataOutputStream **)(param_1 + 0x28),param_2);
+      ppVar2 = extraout_EDX_00;
+    }
+  }
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_8,ppVar2,
+             unaff_ESI);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004310a7 91 72
+@@CALLERS InitialiseDefaultCameraTags
+@@CALLEES WriteNullTerminatedWString, CCharString, ~CCharString, CheckCRC, operator=
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004310a7(CPersistContext *param_1,CWideString *param_2)
+
+{
+  CWideString *pCVar1;
+  CPersistContext *local_c;
+  CPersistContext *local_8;
+  
+  local_c = param_1;
+  local_8 = param_1;
+  CPersistContext::CheckCRC(param_1,"");
+  CCharString::CCharString((CCharString *)&local_8);
+  if (*(int *)(param_1 + 0x18) == 2) {
+    pCVar1 = (CWideString *)(**(code **)(**(int **)(param_1 + 0x24) + 0x1c))(&local_c);
+    CWideString::operator=(param_2,pCVar1);
+    CCharString::~CCharString((CCharString *)&local_c);
+  }
+  else if (*(int *)(param_1 + 0x18) == 3) {
+    CDataOutputStream::WriteNullTerminatedWString(*(CDataOutputStream **)(param_1 + 0x28),param_2);
+  }
+  CCharString::~CCharString((CCharString *)&local_8);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00743270 256 72
+@@CALLERS 
+@@CALLEES malloc, free
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00743270(int *param_1,undefined4 *param_2,undefined4 *param_3,undefined4 param_4,uint param_5,
+            char param_6)
+
+{
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  uint *puVar3;
+  undefined4 *puVar4;
+  uint uVar5;
+  int iVar6;
+  uint local_4;
+  
+  uVar5 = param_5;
+  local_4 = param_1[1] - *param_1 >> 3;
+  puVar3 = &param_5;
+  if (param_5 <= local_4) {
+    puVar3 = &local_4;
+  }
+  param_5 = *puVar3 + local_4;
+  if (param_5 == 0) {
+    puVar1 = (undefined4 *)0x0;
+  }
+  else {
+    puVar1 = malloc(param_5 * 8);
+  }
+  puVar2 = puVar1;
+  for (puVar4 = (undefined4 *)*param_1; puVar4 != param_2; puVar4 = puVar4 + 2) {
+    if (puVar2 != (undefined4 *)0x0) {
+      *puVar2 = *puVar4;
+      puVar2[1] = puVar4[1];
+    }
+    puVar2 = puVar2 + 2;
+  }
+  if (uVar5 == 1) {
+    if (puVar2 != (undefined4 *)0x0) {
+      *puVar2 = *param_3;
+      puVar2[1] = param_3[1];
+    }
+    puVar2 = puVar2 + 2;
+  }
+  else {
+    for (; uVar5 != 0; uVar5 = uVar5 - 1) {
+      if (puVar2 != (undefined4 *)0x0) {
+        *puVar2 = *param_3;
+        puVar2[1] = param_3[1];
+      }
+      puVar2 = puVar2 + 2;
+    }
+  }
+  if ((param_6 == '\0') && (puVar4 = (undefined4 *)param_1[1], param_2 != puVar4)) {
+    iVar6 = (int)param_2 - (int)puVar2;
+    do {
+      if (puVar2 != (undefined4 *)0x0) {
+        *puVar2 = *(undefined4 *)(iVar6 + (int)puVar2);
+        puVar2[1] = *(undefined4 *)(iVar6 + 4 + (int)puVar2);
+      }
+      puVar2 = puVar2 + 2;
+    } while ((undefined4 *)(iVar6 + (int)puVar2) != puVar4);
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  param_1[1] = (int)puVar2;
+  *param_1 = (int)puVar1;
+  param_1[2] = (int)(puVar1 + param_5 * 2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c7b8b0 53 71
+@@CALLERS 
+@@CALLEES __security_check_cookie
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void __thiscall FUN_00c7b8b0(int *param_1,int *param_2,uint param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  undefined1 auVar4 [16];
+  
+  iVar1 = param_1[1];
+  iVar2 = param_1[2];
+  iVar3 = param_1[3];
+  auVar4 = ZEXT416(param_3);
+  *param_2 = *param_1 >> auVar4;
+  param_2[1] = iVar1 >> auVar4;
+  param_2[2] = iVar2 >> auVar4;
+  param_2[3] = iVar3 >> auVar4;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 009a08b0 488 70
+@@CALLERS TransferOut, GFLogMemoryUse, SaveRegionsToString, CreateStringFromMyScores, Save, GetCurrentScore, GetBestScore, GetRequiredScore, GFSaveSkeletalMorphTargetToFile, ToString, ?GetChunkInfo@C3DMeshFileHelperPointChunk@@UBE?BVCCharString@@XZ, ?GetChunkInfo@C3DMeshFileDummyObjectChunk@@UBE?BVCCharString@@XZ, DumpInfo, ConvertToString, ?GetChunkInfo@C3DAnimFileTimingEventChunk@@UBE?BVCCharString@@XZ
+@@CALLEES FUN_009a0460, operator_delete, FUN_0099f1f0, Truncate, _isnan, operator_delete[], UnassignString, operator_new, MakeOwnCopyOfData, FUN_009a0590
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+CCharString * __fastcall FUN_009a08b0(CCharString *param_1,undefined4 param_2,double param_3)
+
+{
+  uint uVar1;
+  char cVar2;
+  uint uVar3;
+  int iVar4;
+  int iVar5;
+  undefined1 *puVar6;
+  CBasicString<char> *this;
+  CBasicString<char> *local_8;
+  CCharString *local_4;
+  
+  DAT_013bd800 = DAT_013bd800 + 1;
+  local_8 = (CBasicString<char> *)0x0;
+  local_4 = param_1;
+  iVar4 = _isnan(param_3);
+  if (iVar4 != 0) {
+    param_3 = _DAT_0122ed70;
+  }
+  FUN_0099f1f0(&local_8,&DAT_0129aaf8,param_2,param_3);
+  iVar4 = 0;
+  while( true ) {
+    if (local_8 == (CBasicString<char> *)0x0) {
+      iVar5 = 0;
+    }
+    else {
+      iVar5 = *(int *)(local_8 + 4);
+    }
+    this = local_8;
+    if (iVar5 <= iVar4) goto LAB_009a0a1f;
+    puVar6 = &DAT_0129aaf4;
+    if (local_8 != (CBasicString<char> *)0x0) {
+      puVar6 = *(undefined1 **)local_8;
+    }
+    if (puVar6[iVar4] == '.') break;
+    iVar4 = iVar4 + 1;
+  }
+  while( true ) {
+    if ((this == (CBasicString<char> *)0x0) || (uVar3 = *(uint *)(this + 4), (int)uVar3 < 1))
+    goto LAB_009a0a1f;
+    cVar2 = *(char *)((uVar3 - 1) + *(int *)this);
+    if (cVar2 == '.') break;
+    if (cVar2 != '0') goto LAB_009a0a1f;
+    uVar1 = uVar3 - 1;
+    param_1 = local_4;
+    if (uVar1 < uVar3) {
+      if (uVar1 == 0) {
+        iVar4 = *(int *)(this + 0xd);
+        *(int *)(this + 0xd) = iVar4 + -1;
+        if (iVar4 + -1 < 1) {
+          if (*(void **)this != (void *)0x0) {
+            operator_delete__(*(void **)this);
+            *(int *)this = 0;
+          }
+          *(int *)(this + 4) = 0;
+          *(uint *)(this + 8) = *(uint *)(this + 8) & 0x80000000;
+          operator_delete(this);
+        }
+        this = (CBasicString<char> *)0x0;
+        local_8 = (CBasicString<char> *)0x0;
+        param_1 = local_4;
+      }
+      else {
+        if (1 < *(int *)(this + 0xd)) {
+          this = operator_new(0x11);
+          if (this == (CBasicString<char> *)0x0) {
+            this = (CBasicString<char> *)0x0;
+          }
+          else {
+            FUN_009a0590();
+            *(undefined4 *)(this + 0xd) = 1;
+          }
+          CCharString::UnassignString((CCharString *)&local_8);
+          local_8 = this;
+        }
+        CBasicString<char>::Truncate(this,uVar1);
+        param_1 = local_4;
+      }
+    }
+  }
+  CCharString::MakeOwnCopyOfData((CCharString *)&local_8);
+  this = local_8;
+  FUN_009a0460(0x30,1);
+LAB_009a0a1f:
+  *(undefined4 *)param_1 = 0;
+  DAT_013bd800 = DAT_013bd800 + 1;
+  if ((CCharString *)&local_8 != param_1) {
+    if (*(int *)param_1 != 0) {
+      CCharString::UnassignString(param_1);
+    }
+    if (this == (CBasicString<char> *)0x0) goto LAB_009a0a84;
+    *(CBasicString<char> **)param_1 = this;
+    *(int *)(this + 0xd) = *(int *)(this + 0xd) + 1;
+  }
+  if ((this != (CBasicString<char> *)0x0) &&
+     (iVar4 = *(int *)(this + 0xd), *(int *)(this + 0xd) = iVar4 + -1, iVar4 + -1 < 1)) {
+    if (*(void **)this != (void *)0x0) {
+      operator_delete__(*(void **)this);
+      *(int *)this = 0;
+    }
+    *(int *)(this + 4) = 0;
+    *(uint *)(this + 8) = *(uint *)(this + 8) & 0x80000000;
+    operator_delete(this);
+  }
+LAB_009a0a84:
+  DAT_013bd800 = DAT_013bd800 + -1;
+  return param_1;
+}
+
+
+@@ENDFUNC

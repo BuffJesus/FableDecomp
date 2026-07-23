@@ -1,0 +1,185 @@
+verb	order	argcount	signature
+.SummonerAttack	1	1	arg1:str
+.DoBossFight	2	2	arg1:int arg2:str
+.WaitTask	3	0	
+.WalkTo	4	0	
+.RunTo	5	0	
+.SneakTo	6	6	arg1:str arg2:str arg3:bool arg4:bool arg5:bool arg6:bool
+.SetFree	7	0	
+.SetAttackable	8	0	
+.SetDamageable	9	0	
+.SetPushable	10	1	arg1:bool
+.SetBound	11	1	arg1:bool
+.SetScared	12	1	arg1:bool
+.SetDrunk	13	1	arg1:bool
+.PreloadAnim	14	1	arg1:str
+.PlayAnimation	15	0	
+.PlayCombatAnim	16	6	arg1:str arg2:bool arg3:bool arg4:bool arg5:bool arg6:bool
+.PlayLoopingAnim	17	6	arg1:str arg2:int arg3:bool arg4:bool arg5:bool arg6:bool
+.WaitPlayAnimation	18	5	arg1:str arg2:bool arg3:bool arg4:bool arg5:bool
+.FollowThing	19	0	
+.StopFollowingThing	20	0	
+.Killable	21	0	
+.FightWith	22	0	
+.FightStop	23	0	
+.HoldInHand	24	0	
+.ModifyHealth	25	0	
+.WalkUpToThing	26	4	arg1:str arg2:str arg3:opt arg4:str
+.Speak	27	0	
+.DataSpeak	28	4	arg1:str arg2:str arg3:str arg4:str
+.InteractiveSpeakGroup	29	3	arg1:str arg2:str arg3:str
+.InteractiveSpeak	30	6	arg1:str arg2:str arg3:bool arg4:str arg5:str arg6:str
+.DialogSpeak	31	0	
+.DialogadSpeak	32	0	
+.EntitySetMaxWalkingSpeed	33	0	
+.EntitySetMaxRunningSpeed	34	0	
+.Sheathe	35	2	arg1:str arg2:bool
+.Collide	36	0	
+.LookToThing	37	0	
+.LookToCamera	38	1	arg1:bool
+.LookAtNothing	39	2	arg1:bool arg2:bool
+.LookAt	40	3	arg1:str arg2:bool arg3:bool
+.LookInDirection	41	2	arg1:str arg2:bool
+.WaitForUnderRadius	42	2	arg1:str arg2:str
+.WaitForAnimationEvent	43	1	arg1:str
+.FollowNavRoute	44	3	arg1:str arg2:str arg3:bool
+.AILevel	45	1	arg1:str
+.Release	46	0	
+.Teleport	47	2	arg1:str arg2:bool
+.TeleportInFrontOf	48	2	arg1:str arg2:str
+.ResetPos	49	0	
+.SetAppearanceSeed	50	1	arg1:int
+.FadeIn	51	3	arg1:str arg2:str arg3:str
+.AddScriptedMode	52	1	arg1:str
+.RemoveScriptedMode	53	0	
+.Drawable	54	1	arg1:bool
+.SetAlpha	55	1	arg1:str
+.FadeOut	56	4	arg1:str arg2:bool arg3:str arg4:str
+.FadeCross	57	2	arg1:str arg2:str
+.ClearCommands	58	2	arg1:bool arg2:bool
+.Decapitate	59	0	
+.TurnInto	60	1	arg1:str
+.SlideTeleport	61	5	arg1:str arg2:str arg3:int arg4:bool arg5:bool
+SlideTeleport	62	5	arg1:str arg2:str arg3:str arg4:int arg5:bool
+Collide	63	3	arg1:str arg2:bool arg3:bool
+AToSkip	64	1	arg1:bool
+KeepEntityMap	65	0	
+EnableBlackScreenSubtitles	66	0	
+HideBodies	67	1	arg1:bool
+AskQuestion	68	0	
+GiveHeroExpression	69	3	arg1:str arg2:bool arg3:int
+GiveHeroMorality	70	1	arg1:str
+GiveHeroHealth	71	1	arg1:str
+GiveHero	72	6	arg1:str arg2:str arg3:str arg4:bool arg5:bool arg6:bool
+WaitActiveDialog	73	0	
+RegisterActor	74	1	arg1:str
+RemoveAllThings	75	1	arg1:str
+RemoveAll	76	1	arg1:bool
+ReturnFollowers	77	1	arg1:bool
+TeleportFollowers	78	1	arg1:bool
+RemoveExtras	79	6	arg1:bool arg2:bool arg3:bool arg4:bool arg5:bool arg6:bool
+DoScriptFrame	80	1	arg1:int
+ScriptFrame	81	1	arg1:bool
+AnimationPause	82	1	arg1:bool
+CameraPause	83	1	arg1:bool
+MuteSounds	84	1	arg1:bool
+DebugCamera	85	1	arg1:bool
+NoDialogCam	86	1	arg1:bool
+LookAtNothing	87	3	arg1:str arg2:bool arg3:bool
+PlayObjectAnim	88	3	arg1:str arg2:str arg3:bool
+DoOneFrame	89	0	
+FadeThingOut	90	4	arg1:str arg2:str arg3:str arg4:str
+FadeThingIn	91	0	
+CameraPreload	92	1	arg1:str
+PauseThing	93	0	
+SetGravityOnThing	94	2	arg1:str arg2:bool
+SetHomePosThing	95	1	arg1:str
+TeleportThing	96	0	
+SetThingConscious	97	3	arg1:str arg2:bool arg3:str
+LiftRock	98	2	arg1:str arg2:str
+GiveGold	99	4	arg1:int arg2:bool arg3:bool arg4:str
+WaitBossFight	100	2	arg1:str arg2:int
+DoCharacterPreload	101	1	arg1:str
+DoCameraPreloading	102	2	arg1:bool arg2:str
+StartProgressSpinner	103	0	
+StopProgressSpinner	104	0	
+TakeObjectFromHero	105	1	arg1:str
+GamePause	106	2	arg1:str arg2:str
+SetDoorOpen	107	2	arg1:str arg2:bool
+SetChestOpen	108	2	arg1:str arg2:bool
+EnableSounds	109	1	arg1:bool
+CacheMusic	110	1	arg1:str
+PlayMusic	111	2	arg1:str arg2:bool
+PlaySound	112	3	arg1:bool arg2:str arg3:str
+RemoveHeroWeapons	113	1	arg1:bool
+HeroHair	114	1	arg1:str
+HeroTattoo	115	1	arg1:str
+HeroWear	116	1	arg1:str
+RemoveHeroClothes	117	0	
+PutUpYourSwords	118	1	arg1:bool
+CameraRig	119	0	
+UseCameraFOVMarkerList	120	6	arg1:str arg2:str arg3:str arg4:str arg5:str arg6:str
+DrawThing	121	2	arg1:str arg2:bool
+ResetCamera	122	0	
+NoLoadUseCamera	123	3	arg1:str arg2:str arg3:str
+UseCamera	124	5	arg1:bool arg2:str arg3:bool arg4:str arg5:str
+PlayAVI	125	1	arg1:str
+TeleportToHSP	126	1	arg1:str
+WaitForCamera	127	0	
+SetFlag	128	3	arg1:str arg2:bool arg3:bool
+CameraRotateThing	129	5	arg1:str arg2:str arg3:str arg4:str arg5:str
+CameraLookAt	130	6	arg1:str arg2:str arg3:str arg4:str arg5:str arg6:str
+CameraLookBetween	131	6	arg1:str arg2:str arg3:str arg4:str arg5:str arg6:str
+CameraPath	132	5	arg1:str arg2:str arg3:str arg4:str arg5:str
+CameraFOVLookBetweenPos	133	6	arg1:str arg2:str arg3:str arg4:str arg5:str arg6:str
+CameraFOVLookBetween	134	6	arg1:str arg2:str arg3:str arg4:str arg5:str arg6:str
+WaitFlag	135	2	arg1:str arg2:bool
+CreateLight	136	6	arg1:str arg2:str arg3:str arg4:str arg5:str arg6:str
+CreateEffect	137	5	arg1:str arg2:str arg3:str arg4:str arg5:bool
+DummyEffect	138	5	arg1:str arg2:str arg3:str arg4:str arg5:bool
+CreateNear	139	4	arg1:str arg2:str arg3:str arg4:bool
+RegisterScript	140	1	arg1:str
+SmashWindows	141	2	arg1:str arg2:str
+Create	142	0	
+ObjectCreate	143	3	arg1:str arg2:str arg3:str
+CrowdCreateMixed	144	5	arg1:str arg2:str arg3:str arg4:str arg5:bool
+CrowdCreate	145	0	
+CreditScreen	146	2	arg1:str arg2:str
+CrowdAcquire	147	5	arg1:str arg2:str arg3:bool arg4:str arg5:bool
+FallbackAcquire	148	2	arg1:str arg2:str
+CrowdRipplePosition	149	2	arg1:str arg2:str
+CrowdTeleportRipple	150	5	arg1:str arg2:str arg3:str arg4:str arg5:bool
+CrowdTeleport	151	3	arg1:str arg2:str arg3:bool
+CrowdMove	152	4	arg1:str arg2:str arg3:str arg4:str
+CrowdClearActions	153	1	arg1:str
+CrowdAnimate	154	6	arg1:str arg2:str arg3:str arg4:str arg5:str arg6:bool
+CrowdCombatAnimate	155	6	arg1:str arg2:str arg3:str arg4:str arg5:str arg6:bool
+CrowdCollide	156	2	arg1:str arg2:bool
+CrowdLookTo	157	3	arg1:str arg2:str arg3:str
+CrowdLookAt	158	2	arg1:str arg2:str
+CrowdKill	159	4	arg1:str arg2:str arg3:bool arg4:bool
+ScriptEntity	160	3	arg1:str arg2:str arg3:str
+UseTheme	161	3	arg1:bool arg2:str arg3:bool
+TakeFromHero	162	1	arg1:str
+PutInHeroHands	163	0	
+SetHeroWeapon	164	1	arg1:str
+Get	165	0	
+WaitForMessageCamera	166	1	arg1:str
+RemoveEffect	167	1	arg1:str
+Remove	168	2	arg1:str arg2:bool
+ExitGame	169	0	
+PutInFrontOf	170	3	arg1:str arg2:str arg3:str
+Print	171	2	arg1:str arg2:str
+HUD	172	1	arg1:bool
+Fullscreen	173	0	
+GameInfo	174	1	arg1:str
+SetTime	175	3	arg1:str arg2:bool arg3:str
+StayFadedOut	176	0	
+FadeIn	177	0	
+FadeOut	178	4	arg1:str arg2:str arg3:str arg4:str
+TintScreenTo	179	6	arg1:str arg2:str arg3:str arg4:str arg5:str arg6:str
+TintScreenOut	180	1	arg1:str
+CameraEffect	181	3	arg1:str arg2:str arg3:str
+CameraShake	182	2	arg1:str arg2:str
+StartTimeCode	183	0	
+SetLightScene	184	6	arg1:int arg2:str arg3:str arg4:bool arg5:str arg6:bool

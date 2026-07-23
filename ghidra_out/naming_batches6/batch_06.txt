@@ -1,0 +1,1971 @@
+@@@FUNC 00ad3010 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00ad3010(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ad3150 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00ad3150(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x20);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ad3960 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00ad3960(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x18);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ad39a0 66 0
+@@CALLERS 
+@@CALLEES BuildTreeArray, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00ad39a0(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ad49c0 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00ad49c0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x14);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ad4f30 66 0
+@@CALLERS 
+@@CALLEES Utility_DestroyRefcountedTreeNode, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00ad4f30(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    Utility_DestroyRefcountedTreeNode(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ad5dc0 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00ad5dc0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x20);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ad5e00 66 0
+@@CALLERS 
+@@CALLEES Utility_DestroyRefcountedTreeNode, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00ad5e00(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    Utility_DestroyRefcountedTreeNode(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ad5f00 66 0
+@@CALLERS 
+@@CALLEES Utility_DestroyRefcountedTreeNode, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00ad5f00(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    Utility_DestroyRefcountedTreeNode(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ad6610 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00ad6610(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ad6650 66 0
+@@CALLERS 
+@@CALLEES Utility_DestroyRefcountedTreeNode, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00ad6650(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    Utility_DestroyRefcountedTreeNode(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ad6810 66 0
+@@CALLERS 
+@@CALLEES TreeNode_DestructWithRefcount, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00ad6810(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    TreeNode_DestructWithRefcount(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ad72c0 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00ad72c0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x20);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00ad7300 66 0
+@@CALLERS 
+@@CALLEES TreeNode_DestructWithRefcount, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00ad7300(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    TreeNode_DestructWithRefcount(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00adb180 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00adb180(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x20);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00adb240 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00adb240(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x1c);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00adb5a0 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00adb5a0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00adb890 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00adb890(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00adc930 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00adc930(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x20);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00add130 36 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00add130(undefined4 *param_1,char param_2)
+
+{
+  (*(code *)**(undefined4 **)param_1[1])
+            (CONCAT31((int3)((uint)param_1[2] >> 8),param_2 != '\0'),param_1[2]);
+  (**(code **)*param_1)(1);
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00aeb940 39 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_00aeb940(undefined4 *param_1,undefined4 param_2)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  param_1[1] = param_2;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00aec610 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00aec610(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00aec960 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00aec960(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00af66f0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00af66f0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00af6750 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00af6750(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00af6bf0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00af6bf0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00af6c40 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00af6c40(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b09e20 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00b09e20(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b09ed0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00b09ed0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b0f770 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00b0f770(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b0f7f0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00b0f7f0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b2e7b0 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00b2e7b0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x2c);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b3e790 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00b3e790(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x1c);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b43bf0 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00b43bf0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x24);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b84b20 225 0
+@@CALLERS 
+@@CALLEES __chkstk
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __chkstk replaced with injection: alloca_probe */
+
+void FUN_00b84b20(uint *param_1,int param_2,uint param_3,char param_4)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  uint local_200c [1024];
+  int aiStack_100c [1024];
+  undefined4 uStack_c;
+  
+  uStack_c = 0xb84b30;
+  piVar3 = aiStack_100c;
+  for (iVar1 = 0x400; piVar3 = piVar3 + 1, iVar1 != 0; iVar1 = iVar1 + -1) {
+    *piVar3 = 0;
+  }
+  uVar2 = 0;
+  if (param_3 != 0) {
+    do {
+      aiStack_100c[(param_1[uVar2 * 2] >> (param_4 * '\n' & 0x1fU) & 0x3ff) + 1] =
+           aiStack_100c[(param_1[uVar2 * 2] >> (param_4 * '\n' & 0x1fU) & 0x3ff) + 1] + 1;
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < param_3);
+  }
+  local_200c[1] = 0;
+  uVar2 = 4;
+  do {
+    iVar1 = *(int *)((int)local_200c + uVar2) + *(int *)((int)aiStack_100c + uVar2);
+    *(int *)((int)local_200c + uVar2 + 4) = iVar1;
+    iVar1 = iVar1 + *(int *)((int)aiStack_100c + uVar2 + 4);
+    *(int *)((int)local_200c + uVar2 + 8) = iVar1;
+    *(int *)((int)local_200c + uVar2 + 0xc) = *(int *)((int)aiStack_100c + uVar2 + 8) + iVar1;
+    uVar2 = uVar2 + 0xc;
+  } while (uVar2 < 0x1000);
+  if (param_3 != 0) {
+    local_200c[0] = param_3;
+    do {
+      uVar2 = local_200c[(*param_1 >> (param_4 * '\n' & 0x1fU) & 0x3ff) + 1];
+      local_200c[(*param_1 >> (param_4 * '\n' & 0x1fU) & 0x3ff) + 1] = uVar2 + 1;
+      *(uint *)(param_2 + uVar2 * 8) = *param_1;
+      *(uint *)(param_2 + 4 + uVar2 * 8) = param_1[1];
+      local_200c[0] = local_200c[0] - 1;
+      param_1 = param_1 + 2;
+    } while (local_200c[0] != 0);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b96540 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00b96540(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x20);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b96570 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00b96570(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x30);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b96640 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00b96640(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x1c);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b968e0 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00b968e0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b96ae0 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00b96ae0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x20);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b96b20 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00b96b20(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x30);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b97130 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00b97130(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x30);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b97fc0 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00b97fc0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b980c0 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00b980c0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b981f0 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00b981f0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00b98850 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00b98850(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x20);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bce370 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00bce370(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x1c);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bce3e0 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00bce3e0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bce5a0 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00bce5a0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bd84f0 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00bd84f0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x20);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bd86f0 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00bd86f0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x20);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bd9080 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00bd9080(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x20);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bdaaa0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00bdaaa0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bdab30 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00bdab30(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bdac50 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00bdac50(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bdacc0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00bdacc0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bdad30 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00bdad30(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bdae60 28 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00bdae60(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bdae80 28 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00bdae80(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00bdaea0 28 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00bdaea0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c08880 11 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c08880(undefined4 *param_1)
+
+{
+  *param_1 = PTR_DAT_0139c900;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c09c90 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c09c90(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c09f80 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c09f80(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c0a1b0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c0a1b0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c0f5d0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c0f5d0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c0f7d0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c0f7d0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c0f9d0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c0f9d0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c0fc00 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c0fc00(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c115d0 114 0
+@@CALLERS 
+@@CALLEES ProcessButtonAReleased, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c115d0(int param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  int *extraout_EAX;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211568;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  NInventory::CTCInventoryBase::ProcessButtonAReleased((CTCInventoryBase *)(param_1 + 0x2c));
+  if (extraout_EAX != (int *)0x0) {
+    (**(code **)(*extraout_EAX + 0x1c))(param_1,param_3);
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c127c0 186 0
+@@CALLERS 
+@@CALLEES Playback_LogStatus, CCharStringData::Release, AddSuccessfulBlockParry, TextureIndex_GetByProperties, EventQueue_ProcessWithTimeout, CTCInventory_ProcessKeyPress, Thiscall_CombatActionDebugFormat
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c127c0(int param_1)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined1 local_1c [4];
+  undefined1 local_18 [4];
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  int local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211753;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar2 = 0;
+  local_4 = 0;
+  CTCInventory_ProcessKeyPress();
+  if (*(int *)(param_1 + 0x228) != 0) {
+    do {
+      iVar1 = TextureIndex_GetByProperties(uVar2);
+      if (*(int *)(iVar1 + 4) != 0) {
+        Thiscall_CombatActionDebugFormat(local_18,param_1);
+        local_4._0_1_ = 1;
+        Playback_LogStatus(local_1c);
+        CCharStringData__Release();
+        local_4 = (uint)local_4._1_3_ << 8;
+        CCharStringData__Release();
+      }
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < *(uint *)(param_1 + 0x228));
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c15540 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c15540(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c156a0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c156a0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c19cb0 109 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EClothingSuitPart_const_,long>_>,std::pair<EClothingSuitPart_const_,long>,std::pair<EClothingSuitPart,long>&>, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall
+FUN_00c19cb0(allocator<std::pair<EClothingSuitPart_const_,long>_> *param_1,
+            pair<EClothingSuitPart,long> *param_2)
+
+{
+  int extraout_EAX;
+  undefined4 uVar1;
+  pair<EClothingSuitPart_const_,long> *extraout_EDX;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01212198;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  std::
+  _Cons_val<std::allocator<std::pair<EClothingSuitPart_const_,long>_>,std::pair<EClothingSuitPart_const_,long>,std::pair<EClothingSuitPart,long>&>
+            (param_1,extraout_EDX,param_2);
+  uVar1 = (**(code **)(*(int *)(extraout_EAX + 0x10) + 0x3c))();
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return uVar1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c19d20 107 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EClothingSuitPart_const_,long>_>,std::pair<EClothingSuitPart_const_,long>,std::pair<EClothingSuitPart,long>&>, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall
+FUN_00c19d20(allocator<std::pair<EClothingSuitPart_const_,long>_> *param_1,
+            pair<EClothingSuitPart,long> *param_2)
+
+{
+  int *extraout_EAX;
+  undefined4 uVar1;
+  pair<EClothingSuitPart_const_,long> *extraout_EDX;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012121aa;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  std::
+  _Cons_val<std::allocator<std::pair<EClothingSuitPart_const_,long>_>,std::pair<EClothingSuitPart_const_,long>,std::pair<EClothingSuitPart,long>&>
+            (param_1,extraout_EDX,param_2);
+  uVar1 = (**(code **)(*extraout_EAX + 0x3c))();
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return uVar1;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c19d90 172 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EClothingSuitPart_const_,long>_>,std::pair<EClothingSuitPart_const_,long>,std::pair<EClothingSuitPart,long>&>, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall
+FUN_00c19d90(allocator<std::pair<EClothingSuitPart_const_,long>_> *param_1,
+            pair<EClothingSuitPart,long> *param_2,undefined4 param_3)
+
+{
+  int *extraout_EAX;
+  pair<EClothingSuitPart_const_,long> *extraout_EDX;
+  undefined1 *puVar1;
+  undefined **local_1c;
+  undefined4 local_18;
+  void *local_14 [2];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012121cc;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry((CTCHeroExperience *)local_14);
+  local_4 = 0;
+  std::
+  _Cons_val<std::allocator<std::pair<EClothingSuitPart_const_,long>_>,std::pair<EClothingSuitPart_const_,long>,std::pair<EClothingSuitPart,long>&>
+            (param_1,extraout_EDX,param_2);
+  local_1c = &PTR_LAB_012b2f88;
+  local_18 = param_3;
+  local_4 = CONCAT31(local_4._1_3_,2);
+  (**(code **)(extraout_EAX[4] + 0x28))(&local_1c);
+  puVar1 = &stack0xffffffd8;
+  (**(code **)(*extraout_EAX + 0x28))(puVar1);
+  pvStack_c = (void *)0xffffffff;
+  EventQueue_ProcessWithTimeout(puVar1,&PTR_LAB_012b260c);
+  ExceptionList = local_14[0];
+  return 0;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c207f0 21 0
+@@CALLERS 
+@@CALLEES $E2, EmptyStub
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c207f0(undefined4 *param_1)
+
+{
+  *param_1 = &PTR_LAB_012b3674;
+  EmptyStub(0);
+  _E2();
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c271d0 7 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c271d0(undefined4 *param_1)
+
+{
+  *param_1 = &PTR_GetSoundsCurrentLayer_012b4034;
+  return;
+}
+
+
+@@ENDFUNC
+
+@@@FUNC 00c27af0 20 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c27af0(undefined4 *param_1)
+
+{
+  *param_1 = &PTR_GetSoundsCurrentLayer_012b4034;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  param_1[3] = 0;
+  return;
+}
+
+
+@@ENDFUNC

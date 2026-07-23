@@ -1,0 +1,1789 @@
+﻿INFO  Using log config file: jar:file:/D:/Subuwu/tools/ghidra-public/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (1000 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (2314 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\GnuDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BytePatterns\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\JVM\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SystemEmulation\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\8051\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FileFormats\ghidra_scripts
+    D:\Documents\FableTLC\tools\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BSim\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\VersionTracking\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PDB\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\PIC\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Base\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Extensions\XEXLoaderWV\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\Cornelio\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\DATA\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Decompiler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\Atmel\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PyGhidra\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FunctionID\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessAnalyzer)  
+INFO  Opening project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessProject)  
+INFO  REPORT: Processing project file: /FableWin.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: DecompFuncs.java '0x0327f5c0' '0x032841e0' '0x03280b60' '0x03283270' '0x032889a0' '0x032834d0' '0x0327fed0' '0x032823a0' '0x03283620' '0x03280860' '0x0328a5f0' '0x01c90330'  (HeadlessAnalyzer)  
+INFO  SCRIPT: D:\Documents\FableTLC\tools\ghidra_scripts\DecompFuncs.java (HeadlessAnalyzer)  
+INFO  DecompFuncs.java> ==================== ?SaveToFile@CANavQuadTreeNode@@MBEXAAVCAFile@@ABV?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@V?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@_NABVC2DVector@@@Z @ 0327f5c0 ==================== (GhidraScript)  
+INFO  DecompFuncs.java> 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* [ported from ego_r via strfp] */
+
+void __thiscall
+_SaveToFile_CANavQuadTreeNode__MBEXAAVCAFile__ABV__map_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__std___NABVC2DVector___Z
+          (int *param_1)
+
+{
+  code *pcVar1;
+  bool bVar2;
+  bool bVar3;
+  bool bVar4;
+  char cVar5;
+  BOOL BVar6;
+  undefined4 uVar7;
+  int iVar8;
+  undefined4 in_stack_00000010;
+  char local_ac;
+  char local_a0;
+  char local_9c;
+  undefined1 local_90 [8];
+  undefined1 local_88 [8];
+  undefined1 local_80 [11];
+  char local_75;
+  undefined1 local_74 [15];
+  char local_65;
+  int *local_64;
+  undefined1 local_60 [8];
+  undefined1 local_58 [8];
+  undefined1 local_50 [10];
+  char local_46;
+  undefined1 local_45;
+  undefined1 local_44 [8];
+  undefined1 local_3c [8];
+  undefined1 local_34 [11];
+  char local_29;
+  float local_28;
+  float local_24;
+  undefined1 local_20 [12];
+  undefined4 local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03efbc67;
+  local_10 = ExceptionList;
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  ExceptionList = &local_10;
+  if (*(char *)((int)param_1 + 0xf) != '\0') {
+    ExceptionList = &local_10;
+    cVar5 = (**(code **)(*param_1 + 0x24))();
+    if (cVar5 == '\0') {
+      if (DAT_04bac270 == 0) {
+LAB_0327f6ca:
+        local_9c = '\x01';
+      }
+      else {
+        __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+        local_8 = 0;
+        __0CCharString__QAE_PBDJ_Z(&DAT_044f3567,0xffffffff);
+        local_8 = 1;
+        __0CCharString__QAE_PBDJ_Z("(NOT Blocked) || IsSwitchable()",0xffffffff);
+        local_8 = 2;
+        bVar4 = true;
+        bVar3 = true;
+        bVar2 = true;
+        cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                          (local_44,local_3c,local_34,0xe2,1);
+        if (cVar5 == '\x01') goto LAB_0327f6ca;
+        local_9c = '\0';
+      }
+      local_29 = local_9c;
+      local_8 = 1;
+      if (bVar3) {
+        __1CCharString__QAE_XZ();
+      }
+      local_8 = 0;
+      if (bVar4) {
+        __1CCharString__QAE_XZ();
+      }
+      local_8 = 0xffffffff;
+      if (bVar2) {
+        __1CWideString__QAE_XZ();
+      }
+      if (local_29 != '\0') {
+        BVar6 = IsDebuggerPresent();
+        if (BVar6 != 0) {
+          pcVar1 = (code *)swi(3);
+          (*pcVar1)();
+          return;
+        }
+      }
+    }
+  }
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  local_45 = (**(code **)(*param_1 + 0x24))();
+  ___WriteVar__N_CAFile__QAEXAB_N_Z(&local_45);
+  ___WriteVar__N_CAFile__QAEXAB_N_Z(&stack0x0000000c);
+  ___WriteVar__N_CAFile__QAEXAB_N_Z((int)param_1 + 0xf);
+  ___WriteVar__N_CAFile__QAEXAB_N_Z((int)param_1 + 0xe);
+  ___WriteVar_E_CAFile__QAEXABE_Z(param_1 + 3);
+  ___WriteVar_E_CAFile__QAEXABE_Z((int)param_1 + 0xd);
+  __GC2DVector__QBE_AV0_ABV0__Z(&local_28,in_stack_00000010);
+  if ((local_28 <= (float)_DAT_0401df40) || (local_24 <= (float)_DAT_0401df40)) {
+    if (DAT_04bac270 == 0) {
+LAB_0327f8af:
+      local_a0 = '\x01';
+    }
+    else {
+      __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+      local_8 = 3;
+      __0CCharString__QAE_PBDJ_Z(&DAT_044f3582,0xffffffff);
+      local_8 = 4;
+      __0CCharString__QAE_PBDJ_Z("local_pos.X > 0.0f && local_pos.Y > 0.0f",0xffffffff);
+      local_8 = 5;
+      bVar4 = true;
+      bVar3 = true;
+      bVar2 = true;
+      cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (local_60,local_58,local_50,0xea,1);
+      if (cVar5 == '\x01') goto LAB_0327f8af;
+      local_a0 = '\0';
+    }
+    local_46 = local_a0;
+    local_8 = 4;
+    if (bVar2) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 3;
+    if (bVar3) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 0xffffffff;
+    if (bVar4) {
+      __1CWideString__QAE_XZ();
+    }
+    if (local_46 != '\0') {
+      BVar6 = IsDebuggerPresent();
+      if (BVar6 != 0) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+  }
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  ___WriteVar_VC2DVector___CAFile__QAEXABVC2DVector___Z(&local_28);
+  local_64 = param_1;
+  _find____Tree_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___2_ABQBVCANavQuadTreeNode___Z
+            (local_20,&local_64);
+  local_8 = 6;
+  uVar7 = _end____Tree_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___2_XZ
+                    (local_74);
+  local_8._0_1_ = 7;
+  cVar5 = __9___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QBE_NABV01__Z
+                    (uVar7);
+  local_65 = '\x01' - (cVar5 != '\0');
+  local_8._0_1_ = 6;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAE_XZ
+            ();
+  if (local_65 == '\0') goto LAB_0327fb0f;
+  if (DAT_04bac270 == 0) {
+LAB_0327fa75:
+    local_ac = '\x01';
+  }
+  else {
+    __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+    local_8 = CONCAT31(local_8._1_3_,8);
+    __0CCharString__QAE_PBDJ_Z(&DAT_044f3583,0xffffffff);
+    local_8 = 9;
+    __0CCharString__QAE_PBDJ_Z("index_it!=table.end()",0xffffffff);
+    local_8 = 10;
+    bVar4 = true;
+    bVar3 = true;
+    bVar2 = true;
+    cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (local_90,local_88,local_80,0xed,1);
+    if (cVar5 == '\x01') goto LAB_0327fa75;
+    local_ac = '\0';
+  }
+  local_75 = local_ac;
+  local_8 = 9;
+  if (bVar2) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8 = 8;
+  if (bVar3) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8._0_1_ = 6;
+  local_8._1_3_ = 0;
+  if (bVar4) {
+    __1CWideString__QAE_XZ();
+  }
+  if (local_75 != '\0') {
+    BVar6 = IsDebuggerPresent();
+    if (BVar6 != 0) {
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+  }
+LAB_0327fb0f:
+  iVar8 = __C___Tree_unchecked_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__U_Iterator_base12_2__std__QBEPBU__pair_QBVCANavQuadTreeNode__J_1_XZ
+                    ();
+  local_14 = *(undefined4 *)(iVar8 + 4);
+  ___WriteVar_J_CAFile__QAEXABJ_Z(&local_14);
+  local_8 = 0xffffffff;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAE_XZ
+            ();
+  ExceptionList = local_10;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompFuncs.java> ==================== ?SaveToFile@CNavQuadTreeNode@@MBEXAAVCAFile@@ABV?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@V?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@_NABVC2DVector@@@Z @ 032841e0 ==================== (GhidraScript)  
+INFO  DecompFuncs.java> 
+/* [ported from ego_r via strfp] */
+
+void __thiscall
+_SaveToFile_CNavQuadTreeNode__MBEXAAVCAFile__ABV__map_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__std___NABVC2DVector___Z
+          (int param_1,undefined4 param_2,undefined4 param_3,undefined1 param_4,undefined4 param_5)
+
+{
+  code *pcVar1;
+  bool bVar2;
+  bool bVar3;
+  bool bVar4;
+  char cVar5;
+  BOOL BVar6;
+  undefined4 uVar7;
+  int iVar8;
+  char local_164;
+  char local_150;
+  char local_13c;
+  char local_128;
+  char local_11c;
+  undefined1 local_110 [8];
+  undefined1 local_108 [8];
+  undefined1 local_100 [11];
+  char local_f5;
+  undefined1 local_f4 [15];
+  char local_e5;
+  undefined1 local_e4 [12];
+  undefined1 local_d8 [8];
+  undefined1 local_d0 [8];
+  undefined1 local_c8 [11];
+  char local_bd;
+  undefined1 local_bc [15];
+  char local_ad;
+  undefined1 local_ac [12];
+  undefined1 local_a0 [8];
+  undefined1 local_98 [8];
+  undefined1 local_90 [11];
+  char local_85;
+  undefined1 local_84 [15];
+  char local_75;
+  undefined1 local_74 [12];
+  undefined1 local_68 [8];
+  undefined1 local_60 [8];
+  undefined1 local_58 [11];
+  char local_4d;
+  undefined1 local_4c [15];
+  char local_3d;
+  undefined1 local_3c [8];
+  undefined1 local_34 [8];
+  undefined1 local_2c [11];
+  char local_21;
+  undefined1 local_20 [12];
+  undefined4 local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03efcae0;
+  local_10 = ExceptionList;
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  ExceptionList = &local_10;
+  if (*(char *)(param_1 + 0xe) != '\0') {
+    ExceptionList = &local_10;
+    if (DAT_04bac270 == 0) {
+LAB_032842cc:
+      local_11c = '\x01';
+    }
+    else {
+      ExceptionList = &local_10;
+      __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+      local_8 = 0;
+      __0CCharString__QAE_PBDJ_Z(&DAT_044f39ba,0xffffffff);
+      local_8 = 1;
+      __0CCharString__QAE_PBDJ_Z("NOT LeafNode",0xffffffff);
+      local_8 = 2;
+      bVar4 = true;
+      bVar3 = true;
+      bVar2 = true;
+      cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (local_3c,local_34,local_2c,0x31b,1);
+      if (cVar5 == '\x01') goto LAB_032842cc;
+      local_11c = '\0';
+    }
+    local_21 = local_11c;
+    local_8 = 1;
+    if (bVar3) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 0;
+    if (bVar4) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 0xffffffff;
+    if (bVar2) {
+      __1CWideString__QAE_XZ();
+    }
+    if (local_21 != '\0') {
+      BVar6 = IsDebuggerPresent();
+      if (BVar6 != 0) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+  }
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  _SaveToFile_CANavQuadTreeNode__MBEXAAVCAFile__ABV__map_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__std___NABVC2DVector___Z
+            (param_2,param_3,param_4,param_5);
+  _find____Tree_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___2_ABQBVCANavQuadTreeNode___Z
+            (local_20,param_1 + 0x10);
+  local_8 = 3;
+  uVar7 = _end____Tree_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___2_XZ
+                    (local_4c);
+  local_8._0_1_ = 4;
+  cVar5 = __9___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QBE_NABV01__Z
+                    (uVar7);
+  local_3d = '\x01' - (cVar5 != '\0');
+  local_8._0_1_ = 3;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAE_XZ
+            ();
+  if (local_3d != '\0') {
+    if (DAT_04bac270 == 0) {
+LAB_0328448d:
+      local_128 = '\x01';
+    }
+    else {
+      __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+      local_8 = CONCAT31(local_8._1_3_,5);
+      __0CCharString__QAE_PBDJ_Z(&DAT_044f39bb,0xffffffff);
+      local_8 = 6;
+      __0CCharString__QAE_PBDJ_Z("index_it!=table.end()",0xffffffff);
+      local_8 = 7;
+      bVar4 = true;
+      bVar3 = true;
+      bVar2 = true;
+      cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (local_68,local_60,local_58,799,1);
+      if (cVar5 == '\x01') goto LAB_0328448d;
+      local_128 = '\0';
+    }
+    local_4d = local_128;
+    local_8 = 6;
+    if (bVar2) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 5;
+    if (bVar3) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8._0_1_ = 3;
+    local_8._1_3_ = 0;
+    if (bVar4) {
+      __1CWideString__QAE_XZ();
+    }
+    if (local_4d != '\0') {
+      BVar6 = IsDebuggerPresent();
+      if (BVar6 != 0) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+  }
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  iVar8 = __C___Tree_unchecked_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__U_Iterator_base12_2__std__QBEPBU__pair_QBVCANavQuadTreeNode__J_1_XZ
+                    ();
+  local_14 = *(undefined4 *)(iVar8 + 4);
+  ___WriteVar_J_CAFile__QAEXABJ_Z(&local_14);
+  uVar7 = _find____Tree_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___2_ABQBVCANavQuadTreeNode___Z
+                    (local_74,param_1 + 0x14);
+  local_8._0_1_ = 8;
+  __4___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAEAAV01_ABV01__Z
+            (uVar7);
+  local_8._0_1_ = 3;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAE_XZ
+            ();
+  uVar7 = _end____Tree_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___2_XZ
+                    (local_84);
+  local_8._0_1_ = 9;
+  cVar5 = __9___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QBE_NABV01__Z
+                    (uVar7);
+  local_75 = '\x01' - (cVar5 != '\0');
+  local_8._0_1_ = 3;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAE_XZ
+            ();
+  if (local_75 != '\0') {
+    if (DAT_04bac270 == 0) {
+LAB_0328468e:
+      local_13c = '\x01';
+    }
+    else {
+      __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+      local_8 = CONCAT31(local_8._1_3_,10);
+      __0CCharString__QAE_PBDJ_Z(&DAT_044f3a16,0xffffffff);
+      local_8 = 0xb;
+      __0CCharString__QAE_PBDJ_Z("index_it!=table.end()",0xffffffff);
+      local_8 = 0xc;
+      bVar4 = true;
+      bVar3 = true;
+      bVar2 = true;
+      cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (local_a0,local_98,local_90,0x324,1);
+      if (cVar5 == '\x01') goto LAB_0328468e;
+      local_13c = '\0';
+    }
+    local_85 = local_13c;
+    local_8 = 0xb;
+    if (bVar2) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 10;
+    if (bVar3) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8._0_1_ = 3;
+    local_8._1_3_ = 0;
+    if (bVar4) {
+      __1CWideString__QAE_XZ();
+    }
+    if (local_85 != '\0') {
+      BVar6 = IsDebuggerPresent();
+      if (BVar6 != 0) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+  }
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  iVar8 = __C___Tree_unchecked_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__U_Iterator_base12_2__std__QBEPBU__pair_QBVCANavQuadTreeNode__J_1_XZ
+                    ();
+  local_14 = *(undefined4 *)(iVar8 + 4);
+  ___WriteVar_J_CAFile__QAEXABJ_Z(&local_14);
+  uVar7 = _find____Tree_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___2_ABQBVCANavQuadTreeNode___Z
+                    (local_ac,param_1 + 0x18);
+  local_8._0_1_ = 0xd;
+  __4___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAEAAV01_ABV01__Z
+            (uVar7);
+  local_8._0_1_ = 3;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAE_XZ
+            ();
+  uVar7 = _end____Tree_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___2_XZ
+                    (local_bc);
+  local_8._0_1_ = 0xe;
+  cVar5 = __9___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QBE_NABV01__Z
+                    (uVar7);
+  local_ad = '\x01' - (cVar5 != '\0');
+  local_8._0_1_ = 3;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAE_XZ
+            ();
+  if (local_ad != '\0') {
+    if (DAT_04bac270 == 0) {
+LAB_032848bd:
+      local_150 = '\x01';
+    }
+    else {
+      __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+      local_8 = CONCAT31(local_8._1_3_,0xf);
+      __0CCharString__QAE_PBDJ_Z(&DAT_044f3a17,0xffffffff);
+      local_8 = 0x10;
+      __0CCharString__QAE_PBDJ_Z("index_it!=table.end()",0xffffffff);
+      local_8 = 0x11;
+      bVar4 = true;
+      bVar3 = true;
+      bVar2 = true;
+      cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (local_d8,local_d0,local_c8,0x329,1);
+      if (cVar5 == '\x01') goto LAB_032848bd;
+      local_150 = '\0';
+    }
+    local_bd = local_150;
+    local_8 = 0x10;
+    if (bVar2) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 0xf;
+    if (bVar3) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8._0_1_ = 3;
+    local_8._1_3_ = 0;
+    if (bVar4) {
+      __1CWideString__QAE_XZ();
+    }
+    if (local_bd != '\0') {
+      BVar6 = IsDebuggerPresent();
+      if (BVar6 != 0) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+  }
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  iVar8 = __C___Tree_unchecked_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__U_Iterator_base12_2__std__QBEPBU__pair_QBVCANavQuadTreeNode__J_1_XZ
+                    ();
+  local_14 = *(undefined4 *)(iVar8 + 4);
+  ___WriteVar_J_CAFile__QAEXABJ_Z(&local_14);
+  uVar7 = _find____Tree_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___2_ABQBVCANavQuadTreeNode___Z
+                    (local_e4,param_1 + 0x1c);
+  local_8._0_1_ = 0x12;
+  __4___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAEAAV01_ABV01__Z
+            (uVar7);
+  local_8._0_1_ = 3;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAE_XZ
+            ();
+  uVar7 = _end____Tree_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___2_XZ
+                    (local_f4);
+  local_8._0_1_ = 0x13;
+  cVar5 = __9___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QBE_NABV01__Z
+                    (uVar7);
+  local_e5 = '\x01' - (cVar5 != '\0');
+  local_8._0_1_ = 3;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAE_XZ
+            ();
+  if (local_e5 == '\0') goto LAB_03284b9b;
+  if (DAT_04bac270 == 0) {
+LAB_03284af2:
+    local_164 = '\x01';
+  }
+  else {
+    __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+    local_8 = CONCAT31(local_8._1_3_,0x14);
+    __0CCharString__QAE_PBDJ_Z(&DAT_044f3a5a,0xffffffff);
+    local_8 = 0x15;
+    __0CCharString__QAE_PBDJ_Z("index_it!=table.end()",0xffffffff);
+    local_8 = 0x16;
+    bVar4 = true;
+    bVar3 = true;
+    bVar2 = true;
+    cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (local_110,local_108,local_100,0x32e,1);
+    if (cVar5 == '\x01') goto LAB_03284af2;
+    local_164 = '\0';
+  }
+  local_f5 = local_164;
+  local_8 = 0x15;
+  if (bVar2) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8 = 0x14;
+  if (bVar3) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8._0_1_ = 3;
+  local_8._1_3_ = 0;
+  if (bVar4) {
+    __1CWideString__QAE_XZ();
+  }
+  if (local_f5 != '\0') {
+    BVar6 = IsDebuggerPresent();
+    if (BVar6 != 0) {
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+  }
+LAB_03284b9b:
+  iVar8 = __C___Tree_unchecked_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__U_Iterator_base12_2__std__QBEPBU__pair_QBVCANavQuadTreeNode__J_1_XZ
+                    ();
+  local_14 = *(undefined4 *)(iVar8 + 4);
+  ___WriteVar_J_CAFile__QAEXABJ_Z(&local_14);
+  (**(code **)(**(int **)(param_1 + 0x10) + 0x54))(param_2,param_3,0,param_5);
+  (**(code **)(**(int **)(param_1 + 0x14) + 0x54))(param_2,param_3,0,param_5);
+  (**(code **)(**(int **)(param_1 + 0x18) + 0x54))(param_2,param_3,0,param_5);
+  (**(code **)(**(int **)(param_1 + 0x1c) + 0x54))(param_2,param_3,0,param_5);
+  local_8 = 0xffffffff;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAE_XZ
+            ();
+  ExceptionList = local_10;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompFuncs.java> ==================== ?SaveToFile@CNavNavigableLeafNode@@MBEXAAVCAFile@@ABV?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@V?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@_NABVC2DVector@@@Z @ 03280b60 ==================== (GhidraScript)  
+INFO  DecompFuncs.java> 
+/* WARNING: Removing unreachable block (ram,0x03280d43) */
+/* [ported from ego_r via strfp] */
+
+void __thiscall
+_SaveToFile_CNavNavigableLeafNode__MBEXAAVCAFile__ABV__map_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__std___NABVC2DVector___Z
+          (int *param_1,undefined4 param_2,undefined4 param_3,undefined1 param_4,undefined4 param_5)
+
+{
+  code *pcVar1;
+  bool bVar2;
+  bool bVar3;
+  bool bVar4;
+  char cVar5;
+  BOOL BVar6;
+  undefined4 *puVar7;
+  undefined4 uVar8;
+  int iVar9;
+  char local_94;
+  undefined4 local_88;
+  char local_84;
+  undefined1 local_78 [8];
+  undefined1 local_70 [8];
+  undefined1 local_68 [11];
+  char local_5d;
+  undefined1 local_5c [15];
+  char local_4d;
+  undefined4 local_4c;
+  undefined1 local_48 [8];
+  undefined1 local_40 [8];
+  undefined1 local_38 [11];
+  char local_2d;
+  undefined4 local_2c;
+  undefined1 local_28 [12];
+  undefined4 local_1c;
+  undefined4 *local_18;
+  undefined4 local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03efc066;
+  local_10 = ExceptionList;
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  ExceptionList = &local_10;
+  if ((*(char *)((int)param_1 + 0xe) != '\0') &&
+     ((ExceptionList = &local_10, *(char *)((int)param_1 + 0xf) == '\0' ||
+      (ExceptionList = &local_10, cVar5 = (**(code **)(*param_1 + 0x24))(), cVar5 != '\0'))))
+  goto LAB_03280cc2;
+  if (DAT_04bac270 == 0) {
+LAB_03280c51:
+    local_84 = '\x01';
+  }
+  else {
+    __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+    local_8 = 0;
+    __0CCharString__QAE_PBDJ_Z(&DAT_044f3613,0xffffffff);
+    local_8 = 1;
+    __0CCharString__QAE_PBDJ_Z("LeafNode && ((NOT Blocked) || IsSwitchable())",0xffffffff);
+    local_8 = 2;
+    bVar4 = true;
+    bVar3 = true;
+    bVar2 = true;
+    cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (local_48,local_40,local_38,0x132,1);
+    if (cVar5 == '\x01') goto LAB_03280c51;
+    local_84 = '\0';
+  }
+  local_2d = local_84;
+  local_8 = 1;
+  if (bVar3) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8 = 0;
+  if (bVar4) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8 = 0xffffffff;
+  if (bVar2) {
+    __1CWideString__QAE_XZ();
+  }
+  if ((local_2d != '\0') && (BVar6 = IsDebuggerPresent(), BVar6 != 0)) {
+    pcVar1 = (code *)swi(3);
+    (*pcVar1)();
+    return;
+  }
+LAB_03280cc2:
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  _SaveToFile_CANavQuadTreeNode__MBEXAAVCAFile__ABV__map_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__std___NABVC2DVector___Z
+            (param_2,param_3,param_4,param_5);
+  if (param_1[4] == 0) {
+    local_88 = 0;
+  }
+  else {
+    local_88 = _GetInternalIndex_CNavRegion__QBEJXZ();
+  }
+  local_14 = local_88;
+  ___WriteVar_J_CAFile__QAEXABJ_Z(&local_14);
+  ___WriteVar_E_CAFile__QAEXABE_Z(param_1 + 7);
+  local_4c = _size___CSmallVector_PBVCANavQuadTreeNode___07__QBEJXZ();
+  ___WriteVar_J_CAFile__QAEXABJ_Z(&local_4c);
+  local_18 = (undefined4 *)
+             _begin___CSmallVector_PBVCANavQuadTreeNode___07__QBEPBQBVCANavQuadTreeNode__XZ();
+  do {
+    puVar7 = (undefined4 *)
+             _end___CSmallVector_PBVCANavQuadTreeNode___07__QBEPBQBVCANavQuadTreeNode__XZ();
+    if (local_18 == puVar7) {
+      ExceptionList = local_10;
+      return;
+    }
+    local_2c = *local_18;
+    _find____Tree_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___2_ABQBVCANavQuadTreeNode___Z
+              (local_28,&local_2c);
+    local_8 = 3;
+    uVar8 = _end____Tree_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___2_XZ
+                      (local_5c);
+    local_8._0_1_ = 4;
+    cVar5 = __9___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QBE_NABV01__Z
+                      (uVar8);
+    local_4d = '\x01' - (cVar5 != '\0');
+    local_8._0_1_ = 3;
+    __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAE_XZ
+              ();
+    if (local_4d != '\0') {
+      if (DAT_04bac270 == 0) {
+LAB_03280e81:
+        local_94 = '\x01';
+      }
+      else {
+        __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+        local_8 = CONCAT31(local_8._1_3_,5);
+        __0CCharString__QAE_PBDJ_Z(&DAT_044f3682,0xffffffff);
+        local_8 = 6;
+        __0CCharString__QAE_PBDJ_Z("index_it!=table.end()",0xffffffff);
+        local_8 = 7;
+        bVar4 = true;
+        bVar3 = true;
+        bVar2 = true;
+        cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                          (local_78,local_70,local_68,0x13c,1);
+        if (cVar5 == '\x01') goto LAB_03280e81;
+        local_94 = '\0';
+      }
+      local_5d = local_94;
+      local_8 = 6;
+      if (bVar2) {
+        bVar2 = false;
+        __1CCharString__QAE_XZ();
+      }
+      local_8 = 5;
+      if (bVar3) {
+        bVar3 = false;
+        __1CCharString__QAE_XZ();
+      }
+      local_8._0_1_ = 3;
+      local_8._1_3_ = 0;
+      if (bVar4) {
+        bVar4 = false;
+        __1CWideString__QAE_XZ();
+      }
+      if ((local_5d != '\0') && (BVar6 = IsDebuggerPresent(), BVar6 != 0)) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+    iVar9 = __C___Tree_unchecked_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std__U_Iterator_base12_2__std__QBEPBU__pair_QBVCANavQuadTreeNode__J_1_XZ
+                      ();
+    local_1c = *(undefined4 *)(iVar9 + 4);
+    ___WriteVar_J_CAFile__QAEXABJ_Z(&local_1c);
+    local_8 = 0xffffffff;
+    __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__0A__std___std___std__QAE_XZ
+              ();
+    local_18 = local_18 + 1;
+  } while( true );
+}
+
+ (GhidraScript)  
+INFO  DecompFuncs.java> ==================== ?SaveToFile@CNavSwitchableLeafNode@@MBEXAAVCAFile@@ABV?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@V?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@_NABVC2DVector@@@Z @ 03283270 ==================== (GhidraScript)  
+INFO  DecompFuncs.java> 
+/* WARNING: Removing unreachable block (ram,0x032832c5) */
+/* [ported from ego_r via strfp] */
+
+void _SaveToFile_CNavSwitchableLeafNode__MBEXAAVCAFile__ABV__map_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__std___NABVC2DVector___Z
+               (undefined4 param_1,undefined4 param_2,undefined1 param_3,undefined4 param_4)
+
+{
+  undefined4 uVar1;
+  undefined1 local_30 [15];
+  char local_21;
+  undefined4 local_20;
+  undefined1 local_1c [12];
+  void *local_10;
+  undefined1 *puStack_c;
+  int local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03efc5b0;
+  local_10 = ExceptionList;
+  ExceptionList = &local_10;
+  _SaveToFile_CNavNavigableLeafNode__MBEXAAVCAFile__ABV__map_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__std___NABVC2DVector___Z
+            (param_1,param_2,param_3,param_4);
+  local_20 = _size___vector_U__pair__K_N_std__V__allocator_U__pair__K_N_std___2__std__QBEIXZ();
+  ___WriteVar_I_CAFile__QAEXABI_Z(&local_20);
+  _begin___vector_U__pair__K_N_std__V__allocator_U__pair__K_N_std___2__std__QBE_AV___Vector_const_iterator_V___Vector_val_U__pair__K_N_std__V__allocator_U__pair__K_N_std___2__std___2_XZ
+            (local_1c);
+  local_8 = 0;
+  while( true ) {
+    uVar1 = _end___vector_U__pair__K_N_std__V__allocator_U__pair__K_N_std___2__std__QBE_AV___Vector_const_iterator_V___Vector_val_U__pair__K_N_std__V__allocator_U__pair__K_N_std___2__std___2_XZ
+                      (local_30);
+    local_8._0_1_ = 1;
+    local_21 = FID_conflict_operator__(uVar1);
+    local_8 = (uint)local_8._1_3_ << 8;
+    __1___Vector_const_iterator_V___Vector_val_U__pair__K_N_std__V__allocator_U__pair__K_N_std___2__std___std__QAE_XZ
+              ();
+    if (local_21 == '\0') break;
+    uVar1 = __C___Vector_const_iterator_V___Vector_val_U__pair__K_N_std__V__allocator_U__pair__K_N_std___2__std___std__QBEPBU__pair__K_N_1_XZ
+                      ();
+    ___WriteVar__K_CAFile__QAEXAB_K_Z(uVar1);
+    __E___Vector_const_iterator_V___Vector_val_U__pair__K_N_std__V__allocator_U__pair__K_N_std___2__std___std__QAEAAV01_XZ
+              ();
+  }
+  local_8 = 0xffffffff;
+  __1___Vector_const_iterator_V___Vector_val_U__pair__K_N_std__V__allocator_U__pair__K_N_std___2__std___std__QAE_XZ
+            ();
+  ExceptionList = local_10;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompFuncs.java> ==================== ?SaveToFile@CNavBlockedQuadTreeNode@@MBEXAAVCAFile@@ABV?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@V?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@_NABVC2DVector@@@Z @ 032889a0 ==================== (GhidraScript)  
+INFO  DecompFuncs.java> 
+/* [ported from ego_r via strfp] */
+
+void __thiscall
+_SaveToFile_CNavBlockedQuadTreeNode__MBEXAAVCAFile__ABV__map_PBVCANavQuadTreeNode__JU__less_PBVCANavQuadTreeNode___std__V__allocator_U__pair_QBVCANavQuadTreeNode__J_std___3__std___NABVC2DVector___Z
+          (int *param_1,undefined4 param_2,undefined4 param_3,char param_4)
+
+{
+  code *pcVar1;
+  char cVar2;
+  BOOL BVar3;
+  undefined4 uVar4;
+  uint uVar5;
+  undefined1 local_2d;
+  undefined1 local_2c [8];
+  undefined1 local_24 [8];
+  undefined1 local_1c [11];
+  char local_11;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03efd33b;
+  local_10 = ExceptionList;
+  uVar5 = 0;
+  ExceptionList = &local_10;
+  if (*(char *)((int)param_1 + 0xf) != '\0') goto LAB_03288adc;
+  ExceptionList = &local_10;
+  if (DAT_04bac270 == 0) {
+LAB_03288a6b:
+    uVar4 = 1;
+  }
+  else {
+    ExceptionList = &local_10;
+    __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+    local_8 = 0;
+    uVar5 = uVar5 | 1;
+    __0CCharString__QAE_PBDJ_Z(&DAT_044f3c86,0xffffffff);
+    local_8 = 1;
+    uVar5 = uVar5 | 2;
+    __0CCharString__QAE_PBDJ_Z("Blocked",0xffffffff);
+    local_8 = 2;
+    uVar5 = uVar5 | 4;
+    cVar2 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (local_2c,local_24,local_1c,0x53a,1);
+    if (cVar2 == '\x01') goto LAB_03288a6b;
+    uVar4 = 0;
+  }
+  local_11 = (char)uVar4;
+  local_8 = 1;
+  if ((uVar5 & 4) != 0) {
+    uVar5 = uVar5 & 0xfffffffb;
+    __1CCharString__QAE_XZ();
+  }
+  local_8 = 0;
+  if ((uVar5 & 2) != 0) {
+    uVar5 = uVar5 & 0xfffffffd;
+    __1CCharString__QAE_XZ();
+  }
+  local_8 = 0xffffffff;
+  if ((uVar5 & 1) != 0) {
+    __1CWideString__QAE_XZ(uVar4,param_1,uVar5 & 0xfffffffe);
+  }
+  if (local_11 != '\0') {
+    BVar3 = IsDebuggerPresent();
+    if (BVar3 != 0) {
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+  }
+LAB_03288adc:
+  if (param_4 != '\0') {
+    local_2d = (**(code **)(*param_1 + 0x24))();
+    ___WriteVar__N_CAFile__QAEXAB_N_Z(&local_2d);
+    ___WriteVar__N_CAFile__QAEXAB_N_Z(&param_4);
+    ___WriteVar__N_CAFile__QAEXAB_N_Z((int)param_1 + 0xf);
+  }
+  ExceptionList = local_10;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompFuncs.java> ==================== ??0CNavQuadTreeNode@@QAE@ABVC2DVector@@EEAAVCAFile@@@Z @ 032834d0 ==================== (GhidraScript)  
+INFO  DecompFuncs.java> 
+/* [ported from ego_r via strfp] */
+
+undefined4 * __thiscall
+__0CNavQuadTreeNode__QAE_ABVC2DVector__EEAAVCAFile___Z
+          (undefined4 *param_1,undefined4 param_2,undefined1 param_3,undefined1 param_4,int *param_5
+          )
+
+{
+  undefined4 local_20;
+  undefined4 local_1c;
+  undefined4 local_18;
+  undefined4 local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03efc5e8;
+  local_10 = ExceptionList;
+  ExceptionList = &local_10;
+  __0CANavQuadTreeNode__QAE_ABVC2DVector__EE_Z(param_2,param_3,param_4);
+  local_8 = 0;
+  *param_1 = CNavQuadTreeNode::vftable;
+  param_1[4] = 0;
+  param_1[5] = 0;
+  param_1[6] = 0;
+  param_1[7] = 0;
+  *(undefined1 *)((int)param_1 + 0xe) = 0;
+  (**(code **)(*param_5 + 0xc))(&local_1c,4,0);
+  param_1[4] = local_1c;
+  (**(code **)(*param_5 + 0xc))(&local_14,4,0);
+  param_1[5] = local_14;
+  (**(code **)(*param_5 + 0xc))(&local_20,4,0);
+  param_1[6] = local_20;
+  (**(code **)(*param_5 + 0xc))(&local_18,4,0);
+  param_1[7] = local_18;
+  ExceptionList = local_10;
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompFuncs.java> ==================== ??0CNavNavigableLeafNode@@QAE@ABVC2DVector@@EEAAVCAFile@@ABV?$list@VCNavRegion@@V?$allocator@VCNavRegion@@@std@@@std@@_N@Z @ 0327fed0 ==================== (GhidraScript)  
+INFO  DecompFuncs.java> 
+/* WARNING: Removing unreachable block (ram,0x03280485) */
+/* WARNING: Removing unreachable block (ram,0x03280492) */
+/* WARNING: Removing unreachable block (ram,0x03280548) */
+/* WARNING: Removing unreachable block (ram,0x0328053c) */
+/* WARNING: Removing unreachable block (ram,0x03280552) */
+/* WARNING: Removing unreachable block (ram,0x03280573) */
+/* WARNING: Removing unreachable block (ram,0x03280588) */
+/* WARNING: Removing unreachable block (ram,0x0328059d) */
+/* WARNING: Removing unreachable block (ram,0x032805b2) */
+/* WARNING: Removing unreachable block (ram,0x032805c6) */
+/* WARNING: Removing unreachable block (ram,0x032805db) */
+/* WARNING: Removing unreachable block (ram,0x032805e6) */
+/* WARNING: Removing unreachable block (ram,0x032805f0) */
+/* WARNING: Removing unreachable block (ram,0x03280445) */
+/* [ported from ego_r via strfp] */
+
+undefined4 * __thiscall
+__0CNavNavigableLeafNode__QAE_ABVC2DVector__EEAAVCAFile__ABV__list_VCNavRegion__V__allocator_VCNavRegion___std___std___N_Z
+          (undefined4 *param_1,undefined4 param_2,undefined1 param_3,undefined1 param_4,int *param_5
+          ,undefined4 param_6,char param_7)
+
+{
+  code *pcVar1;
+  bool bVar2;
+  bool bVar3;
+  bool bVar4;
+  char cVar5;
+  uint uVar6;
+  BOOL BVar7;
+  undefined4 *puVar8;
+  undefined4 uVar9;
+  char local_cc;
+  char local_c8;
+  char local_bc;
+  undefined4 local_94;
+  undefined1 local_90 [8];
+  undefined1 local_88 [8];
+  undefined1 local_80 [11];
+  char local_75;
+  undefined1 local_74 [8];
+  undefined1 local_6c [8];
+  undefined1 local_64 [11];
+  char local_59;
+  undefined1 local_58 [15];
+  char local_49;
+  undefined1 local_48 [8];
+  undefined1 local_40 [8];
+  undefined1 local_38 [11];
+  char local_2d;
+  undefined4 local_2c;
+  uint local_28;
+  undefined1 local_24 [12];
+  uint local_18;
+  uint local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03efbeb5;
+  local_10 = ExceptionList;
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  ExceptionList = &local_10;
+  __0CANavQuadTreeNode__QAE_ABVC2DVector__EE_Z(param_2,param_3,param_4);
+  local_8 = 0;
+  *param_1 = CNavNavigableLeafNode::vftable;
+  param_1[4] = 0;
+  std::_Yarn<char>::_Yarn<char>((_Yarn<char> *)(param_1 + 5));
+  local_8._0_1_ = 1;
+  (**(code **)(*param_5 + 0xc))(&local_14,4,0);
+  uVar6 = _size___list_VCNavRegion__V__allocator_VCNavRegion___std___std__QBEIXZ();
+  if (uVar6 < local_14) {
+    if (DAT_04bac270 == 0) {
+LAB_03280018:
+      local_bc = '\x01';
+    }
+    else {
+      __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+      local_8 = CONCAT31(local_8._1_3_,2);
+      __0CCharString__QAE_PBDJ_Z(&DAT_044f35db,0xffffffff);
+      local_8 = 3;
+      __0CCharString__QAE_PBDJ_Z("region<=regions.size()",0xffffffff);
+      local_8 = 4;
+      bVar4 = true;
+      bVar3 = true;
+      bVar2 = true;
+      cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (local_48,local_40,local_38,0x101,1);
+      if (cVar5 == '\x01') goto LAB_03280018;
+      local_bc = '\0';
+    }
+    local_2d = local_bc;
+    local_8 = 3;
+    if (bVar3) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 2;
+    if (bVar4) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8._0_1_ = 1;
+    local_8._1_3_ = 0;
+    if (bVar2) {
+      __1CWideString__QAE_XZ();
+    }
+    if ((local_2d != '\0') && (BVar7 = IsDebuggerPresent(), BVar7 != 0)) {
+      pcVar1 = (code *)swi(3);
+      puVar8 = (undefined4 *)(*pcVar1)();
+      return puVar8;
+    }
+  }
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  if ((int)local_14 < 1) goto LAB_032803da;
+  _begin___list_VCNavRegion__V__allocator_VCNavRegion___std___std__QBE_AV___List_const_iterator_V___List_val_VCNavRegion__V__allocator_VCNavRegion___std___std___2_XZ
+            (local_24);
+  local_8._0_1_ = 5;
+  ___advance_V___List_const_iterator_V___List_val_VCNavRegion__V__allocator_VCNavRegion___std___std___std__J_std__YIXAAV___List_const_iterator_V___List_val_VCNavRegion__V__allocator_VCNavRegion___std___std___0_J_Z
+            ();
+  uVar9 = _end___list_VCNavRegion__V__allocator_VCNavRegion___std___std__QBE_AV___List_const_iterator_V___List_val_VCNavRegion__V__allocator_VCNavRegion___std___std___2_XZ
+                    (local_58);
+  local_8._0_1_ = 6;
+  cVar5 = __9___List_const_iterator_V___List_val_VCNavRegion__V__allocator_VCNavRegion___std___std___std__QBE_NABV01__Z
+                    (uVar9);
+  local_49 = '\x01' - (cVar5 != '\0');
+  local_8._0_1_ = 5;
+  __1___List_const_iterator_V___List_val_VCNavRegion__V__allocator_VCNavRegion___std___std___std__QAE_XZ
+            ();
+  if (local_49 != '\0') {
+    if (DAT_04bac270 == 0) {
+LAB_032801c8:
+      local_c8 = '\x01';
+    }
+    else {
+      __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+      local_8 = CONCAT31(local_8._1_3_,7);
+      __0CCharString__QAE_PBDJ_Z(&DAT_044f35e9,0xffffffff);
+      local_8 = 8;
+      __0CCharString__QAE_PBDJ_Z("region_it!=regions.end()",0xffffffff);
+      local_8 = 9;
+      bVar4 = true;
+      bVar3 = true;
+      bVar2 = true;
+      cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (local_74,local_6c,local_64,0x106,1);
+      if (cVar5 == '\x01') goto LAB_032801c8;
+      local_c8 = '\0';
+    }
+    local_59 = local_c8;
+    local_8 = 8;
+    if (bVar2) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 7;
+    if (bVar3) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8._0_1_ = 5;
+    local_8._1_3_ = 0;
+    if (bVar4) {
+      __1CWideString__QAE_XZ();
+    }
+    if ((local_59 != '\0') && (BVar7 = IsDebuggerPresent(), BVar7 != 0)) {
+      pcVar1 = (code *)swi(3);
+      puVar8 = (undefined4 *)(*pcVar1)();
+      return puVar8;
+    }
+  }
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  uVar9 = __D___List_const_iterator_V___List_val_VCNavRegion__V__allocator_VCNavRegion___std___std___std__QBEABVCNavRegion__XZ
+                    ();
+  param_1[4] = uVar9;
+  uVar6 = _GetInternalIndex_CNavRegion__QBEJXZ();
+  if (uVar6 != local_14) {
+    if (DAT_04bac270 == 0) {
+LAB_03280334:
+      local_cc = '\x01';
+    }
+    else {
+      __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+      local_8 = CONCAT31(local_8._1_3_,10);
+      __0CCharString__QAE_PBDJ_Z(&DAT_044f35ea,0xffffffff);
+      local_8 = 0xb;
+      __0CCharString__QAE_PBDJ_Z("PRegion->GetInternalIndex()==region",0xffffffff);
+      local_8 = 0xc;
+      bVar4 = true;
+      bVar3 = true;
+      bVar2 = true;
+      cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (local_90,local_88,local_80,0x108,1);
+      if (cVar5 == '\x01') goto LAB_03280334;
+      local_cc = '\0';
+    }
+    local_75 = local_cc;
+    local_8 = 0xb;
+    if (bVar2) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 10;
+    if (bVar3) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8._0_1_ = 5;
+    local_8._1_3_ = 0;
+    if (bVar4) {
+      __1CWideString__QAE_XZ();
+    }
+    if ((local_75 != '\0') && (BVar7 = IsDebuggerPresent(), BVar7 != 0)) {
+      pcVar1 = (code *)swi(3);
+      puVar8 = (undefined4 *)(*pcVar1)();
+      return puVar8;
+    }
+  }
+  local_8._0_1_ = 1;
+  __1___List_const_iterator_V___List_val_VCNavRegion__V__allocator_VCNavRegion___std___std___std__QAE_XZ
+            ();
+LAB_032803da:
+  if (param_7 == '\0') {
+    *(undefined1 *)(param_1 + 7) = 0x40;
+  }
+  else {
+    (**(code **)(*param_5 + 0xc))(param_1 + 7,1,0);
+  }
+  (**(code **)(*param_5 + 0xc))(&local_18,4,0);
+  local_94 = 0;
+  _resize___CSmallVector_PBVCANavQuadTreeNode___07__QAEXJABQBVCANavQuadTreeNode___Z
+            (local_18,&local_94);
+  for (local_28 = 0; local_28 < local_18; local_28 = local_28 + 1) {
+    (**(code **)(*param_5 + 0xc))(&local_2c,4,0);
+    puVar8 = (undefined4 *)
+             __A__CSmallVector_PBVCANavQuadTreeNode___07__QAEAAPBVCANavQuadTreeNode__K_Z(local_28);
+    *puVar8 = local_2c;
+  }
+  ExceptionList = local_10;
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompFuncs.java> ==================== ??0CNavSwitchableLeafNode@@QAE@ABVC2DVector@@EEAAVCAFile@@ABV?$list@VCNavRegion@@V?$allocator@VCNavRegion@@@std@@@std@@_N@Z @ 032823a0 ==================== (GhidraScript)  
+INFO  DecompFuncs.java> 
+/* WARNING: Removing unreachable block (ram,0x03282420) */
+/* [ported from ego_r via strfp] */
+
+undefined4 * __thiscall
+__0CNavSwitchableLeafNode__QAE_ABVC2DVector__EEAAVCAFile__ABV__list_VCNavRegion__V__allocator_VCNavRegion___std___std___N_Z
+          (undefined4 *param_1,undefined4 param_2,undefined1 param_3,undefined1 param_4,int *param_5
+          ,undefined4 param_6,undefined1 param_7)
+
+{
+  undefined1 local_21;
+  undefined1 local_20 [8];
+  uint local_18;
+  uint local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03efc3e3;
+  local_10 = ExceptionList;
+  ExceptionList = &local_10;
+  __0CNavNavigableLeafNode__QAE_ABVC2DVector__EEAAVCAFile__ABV__list_VCNavRegion__V__allocator_VCNavRegion___std___std___N_Z
+            (param_2,param_3,param_4,param_5,param_6,param_7);
+  local_8 = 0;
+  *param_1 = CNavSwitchableLeafNode::vftable;
+  __0__CVectorMap__K_NV__CKeyPairCompareLess__K_N____QAE_XZ();
+  local_8 = CONCAT31(local_8._1_3_,1);
+  *(undefined1 *)((int)param_1 + 0xf) = 1;
+  (**(code **)(*param_5 + 0xc))(&local_14,4,0);
+  for (local_18 = 0; local_18 < local_14; local_18 = local_18 + 1) {
+    (**(code **)(*param_5 + 0xc))(local_20,8,0);
+    local_21 = 0;
+    _Insert___CVectorMap__K_NV__CKeyPairCompareLess__K_N____QAEXAB_KAB_N_Z(local_20,&local_21);
+  }
+  _ForceRegionTo_CNavNavigableLeafNode__IAEXPBVCNavRegion___Z(0);
+  _Update___CVectorMap__K_NV__CKeyPairCompareLess__K_N____QAEXXZ();
+  ExceptionList = local_10;
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompFuncs.java> ==================== ?ConvertIndexesToPointers@CNavQuadTreeNode@@MAEXABV?$map@JPAVCANavQuadTreeNode@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCANavQuadTreeNode@@@std@@@3@@std@@@Z @ 03283620 ==================== (GhidraScript)  
+INFO  DecompFuncs.java> 
+/* [ported from ego_r via strfp] */
+
+void __thiscall
+_ConvertIndexesToPointers_CNavQuadTreeNode__MAEXABV__map_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__std___Z
+          (int param_1,undefined4 param_2)
+
+{
+  code *pcVar1;
+  bool bVar2;
+  bool bVar3;
+  bool bVar4;
+  char cVar5;
+  undefined4 uVar6;
+  BOOL BVar7;
+  int iVar8;
+  char local_150;
+  char local_13c;
+  char local_128;
+  char local_114;
+  undefined1 local_100 [8];
+  undefined1 local_f8 [8];
+  undefined1 local_f0 [11];
+  char local_e5;
+  undefined1 local_e4 [15];
+  char local_d5;
+  undefined1 local_d4 [12];
+  undefined1 local_c8 [8];
+  undefined1 local_c0 [8];
+  undefined1 local_b8 [11];
+  char local_ad;
+  undefined1 local_ac [15];
+  char local_9d;
+  undefined1 local_9c [12];
+  undefined1 local_90 [8];
+  undefined1 local_88 [8];
+  undefined1 local_80 [11];
+  char local_75;
+  undefined1 local_74 [15];
+  char local_65;
+  undefined1 local_64 [12];
+  undefined1 local_58 [8];
+  undefined1 local_50 [8];
+  undefined1 local_48 [11];
+  char local_3d;
+  undefined1 local_3c [15];
+  char local_2d;
+  undefined4 local_2c;
+  undefined1 local_28 [12];
+  undefined4 local_1c;
+  undefined4 local_18;
+  undefined4 local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03efc7f1;
+  local_10 = ExceptionList;
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  local_2c = *(undefined4 *)(param_1 + 0x10);
+  ExceptionList = &local_10;
+  _find____Tree_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___2_ABJ_Z
+            (local_28,&local_2c);
+  local_8 = 0;
+  uVar6 = _end____Tree_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___2_XZ
+                    (local_3c);
+  local_8._0_1_ = 1;
+  cVar5 = __9___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QBE_NABV01__Z
+                    (uVar6);
+  local_2d = '\x01' - (cVar5 != '\0');
+  local_8._0_1_ = 0;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QAE_XZ
+            ();
+  if (local_2d != '\0') {
+    if (DAT_04bac270 == 0) {
+LAB_03283770:
+      local_114 = '\x01';
+    }
+    else {
+      __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+      local_8 = CONCAT31(local_8._1_3_,2);
+      __0CCharString__QAE_PBDJ_Z(&DAT_044f3883,0xffffffff);
+      local_8 = 3;
+      __0CCharString__QAE_PBDJ_Z("index_it!=table.end()",0xffffffff);
+      local_8 = 4;
+      bVar4 = true;
+      bVar3 = true;
+      bVar2 = true;
+      cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (local_58,local_50,local_48,0x2ff,1);
+      if (cVar5 == '\x01') goto LAB_03283770;
+      local_114 = '\0';
+    }
+    local_3d = local_114;
+    local_8 = 3;
+    if (bVar3) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 2;
+    if (bVar4) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8._0_1_ = 0;
+    local_8._1_3_ = 0;
+    if (bVar2) {
+      __1CWideString__QAE_XZ();
+    }
+    if (local_3d != '\0') {
+      BVar7 = IsDebuggerPresent();
+      if (BVar7 != 0) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+  }
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  iVar8 = __C___Tree_unchecked_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__U_Iterator_base12_2__std__QBEPBU__pair___CBJPAVCANavQuadTreeNode___1_XZ
+                    ();
+  *(undefined4 *)(param_1 + 0x10) = *(undefined4 *)(iVar8 + 4);
+  local_18 = *(undefined4 *)(param_1 + 0x14);
+  uVar6 = _find____Tree_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___2_ABJ_Z
+                    (local_64,&local_18);
+  local_8._0_1_ = 5;
+  __4___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QAEAAV01_ABV01__Z
+            (uVar6);
+  local_8._0_1_ = 0;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QAE_XZ
+            ();
+  uVar6 = _end____Tree_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___2_XZ
+                    (local_74);
+  local_8._0_1_ = 6;
+  cVar5 = __9___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QBE_NABV01__Z
+                    (uVar6);
+  local_65 = '\x01' - (cVar5 != '\0');
+  local_8._0_1_ = 0;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QAE_XZ
+            ();
+  if (local_65 != '\0') {
+    if (DAT_04bac270 == 0) {
+LAB_03283965:
+      local_128 = '\x01';
+    }
+    else {
+      __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+      local_8 = CONCAT31(local_8._1_3_,7);
+      __0CCharString__QAE_PBDJ_Z(&DAT_044f38c9,0xffffffff);
+      local_8 = 8;
+      __0CCharString__QAE_PBDJ_Z("index_it!=table.end()",0xffffffff);
+      local_8 = 9;
+      bVar4 = true;
+      bVar3 = true;
+      bVar2 = true;
+      cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (local_90,local_88,local_80,0x304,1);
+      if (cVar5 == '\x01') goto LAB_03283965;
+      local_128 = '\0';
+    }
+    local_75 = local_128;
+    local_8 = 8;
+    if (bVar2) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 7;
+    if (bVar3) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8._0_1_ = 0;
+    local_8._1_3_ = 0;
+    if (bVar4) {
+      __1CWideString__QAE_XZ();
+    }
+    if (local_75 != '\0') {
+      BVar7 = IsDebuggerPresent();
+      if (BVar7 != 0) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+  }
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  iVar8 = __C___Tree_unchecked_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__U_Iterator_base12_2__std__QBEPBU__pair___CBJPAVCANavQuadTreeNode___1_XZ
+                    ();
+  *(undefined4 *)(param_1 + 0x14) = *(undefined4 *)(iVar8 + 4);
+  local_1c = *(undefined4 *)(param_1 + 0x18);
+  uVar6 = _find____Tree_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___2_ABJ_Z
+                    (local_9c,&local_1c);
+  local_8._0_1_ = 10;
+  __4___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QAEAAV01_ABV01__Z
+            (uVar6);
+  local_8._0_1_ = 0;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QAE_XZ
+            ();
+  uVar6 = _end____Tree_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___2_XZ
+                    (local_ac);
+  local_8._0_1_ = 0xb;
+  cVar5 = __9___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QBE_NABV01__Z
+                    (uVar6);
+  local_9d = '\x01' - (cVar5 != '\0');
+  local_8._0_1_ = 0;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QAE_XZ
+            ();
+  if (local_9d != '\0') {
+    if (DAT_04bac270 == 0) {
+LAB_03283b7e:
+      local_13c = '\x01';
+    }
+    else {
+      __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+      local_8 = CONCAT31(local_8._1_3_,0xc);
+      __0CCharString__QAE_PBDJ_Z(&DAT_044f38ca,0xffffffff);
+      local_8 = 0xd;
+      __0CCharString__QAE_PBDJ_Z("index_it!=table.end()",0xffffffff);
+      local_8 = 0xe;
+      bVar4 = true;
+      bVar3 = true;
+      bVar2 = true;
+      cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                        (local_c8,local_c0,local_b8,0x309,1);
+      if (cVar5 == '\x01') goto LAB_03283b7e;
+      local_13c = '\0';
+    }
+    local_ad = local_13c;
+    local_8 = 0xd;
+    if (bVar2) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8 = 0xc;
+    if (bVar3) {
+      __1CCharString__QAE_XZ();
+    }
+    local_8._0_1_ = 0;
+    local_8._1_3_ = 0;
+    if (bVar4) {
+      __1CWideString__QAE_XZ();
+    }
+    if (local_ad != '\0') {
+      BVar7 = IsDebuggerPresent();
+      if (BVar7 != 0) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+  }
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  iVar8 = __C___Tree_unchecked_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__U_Iterator_base12_2__std__QBEPBU__pair___CBJPAVCANavQuadTreeNode___1_XZ
+                    ();
+  *(undefined4 *)(param_1 + 0x18) = *(undefined4 *)(iVar8 + 4);
+  local_14 = *(undefined4 *)(param_1 + 0x1c);
+  uVar6 = _find____Tree_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___2_ABJ_Z
+                    (local_d4,&local_14);
+  local_8._0_1_ = 0xf;
+  __4___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QAEAAV01_ABV01__Z
+            (uVar6);
+  local_8._0_1_ = 0;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QAE_XZ
+            ();
+  uVar6 = _end____Tree_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___2_XZ
+                    (local_e4);
+  local_8._0_1_ = 0x10;
+  cVar5 = __9___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QBE_NABV01__Z
+                    (uVar6);
+  local_d5 = '\x01' - (cVar5 != '\0');
+  local_8._0_1_ = 0;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QAE_XZ
+            ();
+  if (local_d5 == '\0') goto LAB_03283e56;
+  if (DAT_04bac270 == 0) {
+LAB_03283dad:
+    local_150 = '\x01';
+  }
+  else {
+    __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+    local_8 = CONCAT31(local_8._1_3_,0x11);
+    __0CCharString__QAE_PBDJ_Z(&DAT_044f38cb,0xffffffff);
+    local_8 = 0x12;
+    __0CCharString__QAE_PBDJ_Z("index_it!=table.end()",0xffffffff);
+    local_8 = 0x13;
+    bVar4 = true;
+    bVar3 = true;
+    bVar2 = true;
+    cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                      (local_100,local_f8,local_f0,0x30e,1);
+    if (cVar5 == '\x01') goto LAB_03283dad;
+    local_150 = '\0';
+  }
+  local_e5 = local_150;
+  local_8 = 0x12;
+  if (bVar2) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8 = 0x11;
+  if (bVar3) {
+    __1CCharString__QAE_XZ();
+  }
+  local_8._0_1_ = 0;
+  local_8._1_3_ = 0;
+  if (bVar4) {
+    __1CWideString__QAE_XZ();
+  }
+  if (local_e5 != '\0') {
+    BVar7 = IsDebuggerPresent();
+    if (BVar7 != 0) {
+      pcVar1 = (code *)swi(3);
+      (*pcVar1)();
+      return;
+    }
+  }
+LAB_03283e56:
+  iVar8 = __C___Tree_unchecked_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__U_Iterator_base12_2__std__QBEPBU__pair___CBJPAVCANavQuadTreeNode___1_XZ
+                    ();
+  *(undefined4 *)(param_1 + 0x1c) = *(undefined4 *)(iVar8 + 4);
+  (**(code **)(**(int **)(param_1 + 0x10) + 0x58))(param_2);
+  (**(code **)(**(int **)(param_1 + 0x14) + 0x58))(param_2);
+  (**(code **)(**(int **)(param_1 + 0x18) + 0x58))(param_2);
+  (**(code **)(**(int **)(param_1 + 0x1c) + 0x58))(param_2);
+  local_8 = 0xffffffff;
+  __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QAE_XZ
+            ();
+  ExceptionList = local_10;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DecompFuncs.java> ==================== ?ConvertIndexesToPointers@CNavNavigableLeafNode@@MAEXABV?$map@JPAVCANavQuadTreeNode@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCANavQuadTreeNode@@@std@@@3@@std@@@Z @ 03280860 ==================== (GhidraScript)  
+INFO  DecompFuncs.java> 
+/* WARNING: Removing unreachable block (ram,0x0328088a) */
+/* [ported from ego_r via strfp] */
+
+void _ConvertIndexesToPointers_CNavNavigableLeafNode__MAEXABV__map_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__std___Z
+               (void)
+
+{
+  code *pcVar1;
+  bool bVar2;
+  bool bVar3;
+  bool bVar4;
+  char cVar5;
+  int iVar6;
+  undefined4 *puVar7;
+  undefined4 uVar8;
+  BOOL BVar9;
+  char local_64;
+  undefined1 local_50 [8];
+  undefined1 local_48 [8];
+  undefined1 local_40 [11];
+  char local_35;
+  undefined1 local_34 [15];
+  char local_25;
+  undefined1 local_24 [12];
+  undefined4 local_18;
+  int local_14;
+  void *local_10;
+  undefined1 *puStack_c;
+  undefined4 local_8;
+  
+  local_8 = 0xffffffff;
+  puStack_c = &LAB_03efbf9b;
+  local_10 = ExceptionList;
+  bVar4 = false;
+  bVar3 = false;
+  bVar2 = false;
+  local_14 = 0;
+  ExceptionList = &local_10;
+  do {
+    iVar6 = _size___CSmallVector_PBVCANavQuadTreeNode___07__QBEJXZ();
+    if (iVar6 <= local_14) {
+      ExceptionList = local_10;
+      return;
+    }
+    puVar7 = (undefined4 *)
+             __A__CSmallVector_PBVCANavQuadTreeNode___07__QAEAAPBVCANavQuadTreeNode__K_Z(local_14);
+    local_18 = *puVar7;
+    _find____Tree_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___2_ABJ_Z
+              (local_24,&local_18);
+    local_8 = 0;
+    uVar8 = _end____Tree_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__QBE_AV___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___2_XZ
+                      (local_34);
+    local_8._0_1_ = 1;
+    cVar5 = __9___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QBE_NABV01__Z
+                      (uVar8);
+    local_25 = '\x01' - (cVar5 != '\0');
+    local_8._0_1_ = 0;
+    __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QAE_XZ
+              ();
+    if (local_25 != '\0') {
+      if (DAT_04bac270 == 0) {
+LAB_032809be:
+        local_64 = '\x01';
+      }
+      else {
+        __0CWideString__QAE_PB_W_Z(L"lib_nav_quad_tree.cpp");
+        local_8 = CONCAT31(local_8._1_3_,2);
+        __0CCharString__QAE_PBDJ_Z(&DAT_044f3612,0xffffffff);
+        local_8 = 3;
+        __0CCharString__QAE_PBDJ_Z("index_it!=table.end()",0xffffffff);
+        local_8 = 4;
+        bVar4 = true;
+        bVar3 = true;
+        bVar2 = true;
+        cVar5 = _DoErrorMessage_CDebugManager__QAE_NABVCCharString__0ABVCWideString__KW4EErrorType_NDebugManager___Z
+                          (local_50,local_48,local_40,0x12a,1);
+        if (cVar5 == '\x01') goto LAB_032809be;
+        local_64 = '\0';
+      }
+      local_35 = local_64;
+      local_8 = 3;
+      if (bVar3) {
+        bVar3 = false;
+        __1CCharString__QAE_XZ();
+      }
+      local_8 = 2;
+      if (bVar4) {
+        bVar4 = false;
+        __1CCharString__QAE_XZ();
+      }
+      local_8._0_1_ = 0;
+      local_8._1_3_ = 0;
+      if (bVar2) {
+        bVar2 = false;
+        __1CWideString__QAE_XZ();
+      }
+      if ((local_35 != '\0') && (BVar9 = IsDebuggerPresent(), BVar9 != 0)) {
+        pcVar1 = (code *)swi(3);
+        (*pcVar1)();
+        return;
+      }
+    }
+    iVar6 = __C___Tree_unchecked_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std__U_Iterator_base12_2__std__QBEPBU__pair___CBJPAVCANavQuadTreeNode___1_XZ
+                      ();
+    puVar7 = (undefined4 *)
+             __A__CSmallVector_PBVCANavQuadTreeNode___07__QAEAAPBVCANavQuadTreeNode__K_Z(local_14);
+    *puVar7 = *(undefined4 *)(iVar6 + 4);
+    local_8 = 0xffffffff;
+    __1___Tree_const_iterator_V___Tree_val_V___Tmap_traits_JPAVCANavQuadTreeNode__U__less_J_std__V__allocator_U__pair___CBJPAVCANavQuadTreeNode___std___3__0A__std___std___std__QAE_XZ
+              ();
+    local_14 = local_14 + 1;
+  } while( true );
+}
+
+ (GhidraScript)  
+INFO  DecompFuncs.java> ==================== ??0CSaveNavigationPositionToFile@@QAE@AAVCAFile@@ABVC2DVector@@@Z @ 0328a5f0 ==================== (GhidraScript)  
+INFO  DecompFuncs.java> 
+/* [ported from ego_r via strfp] */
+
+undefined4 * __thiscall
+__0CSaveNavigationPositionToFile__QAE_AAVCAFile__ABVC2DVector___Z
+          (undefined4 *param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  *param_1 = param_2;
+  __0C2DVector__QAE_ABV0__Z(param_3);
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  DecompFuncs.java> ==================== ??0CNavigationPosition@@QAE@ABVC2DVector@@J@Z @ 01c90330 ==================== (GhidraScript)  
+INFO  DecompFuncs.java> 
+/* [ported from ego_r via strfp] */
+
+int __thiscall
+__0CNavigationPosition__QAE_ABVC2DVector__J_Z(int param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  __0C2DVector__QAE_ABV0__Z(param_2);
+  *(undefined4 *)(param_1 + 8) = param_3;
+  return param_1;
+}
+
+ (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /FableWin.exe (HeadlessAnalyzer)  

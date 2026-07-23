@@ -1,0 +1,78 @@
+006f0af0	ObjHolder_AllocStore_0x20_006f0af0	low	Zeroes holder then stores malloc(0x20) pointer; opaque object-holder ctor, no callers/type context
+006f0b60	ObjHolder_AllocStore_0x88_006f0b60	low	Zeroes holder then stores malloc(0x88) pointer; opaque object-holder ctor
+006f0b90	ObjHolder_AllocStore_0x18_006f0b90	low	Zeroes holder then stores malloc(0x18) pointer; opaque object-holder ctor
+006f0c00	ObjHolder_AllocStore_0x18_006f0c00	low	Zeroes holder then stores malloc(0x18) pointer; opaque object-holder ctor
+006f18f0	ListHead_InitCircular_0xc_006f18f0	medium	malloc(0xc) node with next/prev self-linked = empty circular-list head init
+006f1a50	TreeHeader_InitSentinel_0x20_006f1a50	medium	malloc(0x20), size=0 (param_1[1]), node [0]=[4]=0, [8]=[c]=self: RB-tree/list header sentinel init
+006f1ae0	TreeHeader_InitSentinel_0x88_006f1ae0	medium	malloc(0x88) header-sentinel init (size=0, left/right self-linked)
+006f1b20	TreeHeader_InitSentinel_0x18_006f1b20	medium	malloc(0x18) header-sentinel init (size=0, left/right self-linked)
+006f1b60	TreeHeader_InitSentinel_0x18_006f1b60	medium	malloc(0x18) header-sentinel init (size=0, left/right self-linked)
+006f23a0	TreeHeader_InitSentinel_0x20_006f23a0	medium	malloc(0x20) header-sentinel init (size=0, left/right self-linked)
+006f8aa0	Func_IdentityReturnArg	medium	3-byte function returns its single argument unchanged (identity/getter thunk)
+00718e80	ListHead_InitCircular_0x10_00718e80	medium	malloc(0x10) node with next/prev self-linked = empty circular-list head init
+00718ea0	ListHead_InitCircular_0x10_00718ea0	medium	malloc(0x10) node with next/prev self-linked = empty circular-list head init
+00719180	ListHead_InitCircular_0x10_00719180	medium	malloc(0x10) node with next/prev self-linked = empty circular-list head init
+00719690	ListHead_InitCircular_0x10_00719690	medium	malloc(0x10) node with next/prev self-linked = empty circular-list head init
+0071f860	ObjHolder_AllocStore_0x34_0071f860	low	Zeroes holder then stores malloc(0x34) pointer; opaque object-holder ctor
+007298e0	ListHead_InitCircular_0x1c_007298e0	medium	malloc(0x1c) node with next/prev self-linked = empty circular-list head init
+00729940	ListHead_InitCircular_0x1c_00729940	medium	malloc(0x1c) node with next/prev self-linked = empty circular-list head init
+0072d480	ListHead_InitCircular_0x1c_0072d480	medium	malloc(0x1c) node with next/prev self-linked = empty circular-list head init
+0072d8f0	ListHead_InitCircular_0x1c_0072d8f0	medium	malloc(0x1c) node with next/prev self-linked = empty circular-list head init
+00737f50	ObjHolder_AllocStore_0x24_00737f50	low	Zeroes holder then stores malloc(0x24) pointer; opaque object-holder ctor
+0073db00	ListHead_InitCircular_0x10_0073db00	medium	malloc(0x10) node with next/prev self-linked = empty circular-list head init
+00743200	ListHead_InitCircular_0x10_00743200	medium	malloc(0x10) node with next/prev self-linked = empty circular-list head init
+00755e50	ObjHolder_AllocStore_0x1c_00755e50	low	Zeroes holder then stores malloc(0x1c) pointer; opaque object-holder ctor
+00758ae0	ListHead_InitCircular_0x4c_00758ae0	medium	malloc(0x4c) node with next/prev self-linked = empty circular-list head init
+00758d90	ListHead_InitCircular_0x4c_00758d90	medium	malloc(0x4c) node with next/prev self-linked = empty circular-list head init
+0075f780	ListHead_InitCircular_0xc_0075f780	medium	malloc(0xc) node with next/prev self-linked = empty circular-list head init
+0075f830	ObjHolder_FreeAndDelete_0075f830	high	Null-checks then free(*param_1) and operator_delete(param_1): holder destructor
+007602f0	Math_PolygonAngleSumClosureCheck	low	Loops a 0xc-stride array summing _CIacos results * const, compares squared deviation to epsilon; angle-sum/closure geometry test
+007695f0	ObjHolder_AllocStore_0x20_007695f0	low	Zeroes holder then stores malloc(0x20) pointer; opaque object-holder ctor
+00769f30	TreeHeader_InitSentinel_0x20_00769f30	medium	malloc(0x20) header-sentinel init (size=0, left/right self-linked)
+0076acf0	TreeHeader_InitSentinel_0x20_0076acf0	medium	malloc(0x20) header-sentinel init (size=0, left/right self-linked)
+0076c710	Vector_PushBack_Elem0xc	medium	Vector push_back: if end!=cap advance by 0xc via Array_MoveBackwardCopy else Vector_InsertRange_Mixed grow; 12-byte element
+0076f9e0	ListHead_InitCircular_0x24_0076f9e0	medium	malloc(0x24) node with next/prev self-linked = empty circular-list head init
+0076fbf0	ListHead_InitCircular_0x24_0076fbf0	medium	malloc(0x24) node with next/prev self-linked = empty circular-list head init
+00771b30	ObjHolder_FreeAndDelete_00771b30	high	Null-checks then free(*param_1) and operator_delete(param_1): holder destructor
+00776f30	ObjHolder_AllocStore_0x30_00776f30	low	Zeroes holder then stores malloc(0x30) pointer; opaque object-holder ctor
+00777520	TreeHeader_InitSentinel_0x30_00777520	medium	malloc(0x30) header-sentinel init (size=0, left/right self-linked)
+00777a00	TreeHeader_InitSentinel_0x30_00777a00	medium	malloc(0x30) header-sentinel init (size=0, left/right self-linked)
+0077ffe0	ListHead_InitCircular_0x14_0077ffe0	medium	malloc(0x14) node with next/prev self-linked = empty circular-list head init
+00780040	ListHead_InitCircular_0x14_00780040	medium	malloc(0x14) node with next/prev self-linked = empty circular-list head init
+00782fb0	ObjHolder_AllocStore_0x20_00782fb0	low	Zeroes holder then stores malloc(0x20) pointer; opaque object-holder ctor
+00783d50	TreeHeader_InitSentinel_0x20_00783d50	medium	malloc(0x20) header-sentinel init (size=0, left/right self-linked)
+00783fb0	TreeHeader_InitSentinel_0x20_00783fb0	medium	malloc(0x20) header-sentinel init (size=0, left/right self-linked)
+00784fb0	ListHead_InitCircular_0xc_00784fb0	medium	malloc(0xc) node with next/prev self-linked = empty circular-list head init
+00785d00	ListHead_InitCircular_0xc_00785d00	medium	malloc(0xc) node with next/prev self-linked = empty circular-list head init
+00792220	ListHead_InitCircular_0xc_00792220	medium	malloc(0xc) node with next/prev self-linked = empty circular-list head init
+007922a0	ObjHolder_AllocStore_0x2c_007922a0	low	Zeroes holder then stores malloc(0x2c) pointer; opaque object-holder ctor
+007926f0	TreeHeader_InitSentinel_0x2c_007926f0	medium	malloc(0x2c) header-sentinel init (size=0, left/right self-linked)
+00792b30	TreeHeader_InitSentinel_0x2c_00792b30	medium	malloc(0x2c) header-sentinel init (size=0, left/right self-linked)
+007977e0	ObjHolder_AllocStore_0x2c_007977e0	low	Zeroes holder then stores malloc(0x2c) pointer; opaque object-holder ctor
+00797ae0	TreeHeader_InitSentinel_0x2c_00797ae0	medium	malloc(0x2c) header-sentinel init (size=0, left/right self-linked)
+00797e30	TreeHeader_InitSentinel_0x2c_00797e30	medium	malloc(0x2c) header-sentinel init (size=0, left/right self-linked)
+0079f0b0	ObjHolder_AllocStore_0x14_0079f0b0	low	Zeroes holder then stores malloc(0x14) pointer; opaque object-holder ctor
+0079f2a0	TreeHeader_InitSentinel_0x14_0079f2a0	medium	malloc(0x14) header-sentinel init (size=0, left/right self-linked)
+0079f410	TreeHeader_InitSentinel_0x14_0079f410	medium	malloc(0x14) header-sentinel init (size=0, left/right self-linked)
+007a35b0	ListHead_InitCircular_0x10_007a35b0	medium	malloc(0x10) node with next/prev self-linked = empty circular-list head init
+007a3c60	ListHead_InitCircular_0x10_007a3c60	medium	malloc(0x10) node with next/prev self-linked = empty circular-list head init
+007a6170	ListHead_InitCircular_0xc_007a6170	medium	malloc(0xc) node with next/prev self-linked = empty circular-list head init
+007a6320	ListHead_InitCircular_0xc_007a6320	medium	malloc(0xc) node with next/prev self-linked = empty circular-list head init
+007acb50	ObjHolder_AllocStore_0x18_007acb50	low	Zeroes holder then stores malloc(0x18) pointer; opaque object-holder ctor
+007acb80	ObjHolder_AllocStore_0x20_007acb80	low	Zeroes holder then stores malloc(0x20) pointer; opaque object-holder ctor
+007acde0	TreeHeader_InitSentinel_0x18_007acde0	medium	malloc(0x18) header-sentinel init (size=0, left/right self-linked)
+007b7c30	List_AppendNode_IfFlag25	medium	If flag at *(this+0x18)+0x25 set, allocs 0x10 node {ftol2(val),param_2} and links into list at this+0xc
+007b7c80	List_AppendNode_IfFlag26	medium	If flag at *(this+0x18)+0x26 set, allocs 0x10 node {ftol2(val),param_2} and links into list at this+0x10
+0080eb40	Vector_PushBack_U32	medium	Vector push_back of 4-byte element: if end!=cap write and advance 4 else Vector_InsertN grow
+00817710	ObjHolder_AllocStore_0x18_00817710	low	Zeroes holder then stores malloc(0x18) pointer; opaque object-holder ctor
+00824b40	ListHead_InitCircular_0x5c_00824b40	medium	malloc(0x5c) node with next/prev self-linked = empty circular-list head init
+00824bc0	ListHead_InitCircular_0x10_00824bc0	medium	malloc(0x10) node with next/prev self-linked = empty circular-list head init
+00824e80	ObjHolder_AllocStore_0x18_00824e80	low	Zeroes holder then stores malloc(0x18) pointer; opaque object-holder ctor
+00824ef0	ObjHolder_AllocStore_0x30_00824ef0	low	Zeroes holder then stores malloc(0x30) pointer; opaque object-holder ctor
+008254a0	ListHead_InitCircular_0x5c_008254a0	medium	malloc(0x5c) node with next/prev self-linked = empty circular-list head init
+00825540	ListHead_InitCircular_0x10_00825540	medium	malloc(0x10) node with next/prev self-linked = empty circular-list head init
+00827e20	ListHead_InitCircular_0xc_00827e20	medium	malloc(0xc) node with next/prev self-linked = empty circular-list head init
+00828c20	ListHead_InitCircular_0xc_00828c20	medium	malloc(0xc) node with next/prev self-linked = empty circular-list head init
+0082c570	ListHead_InitCircular_0x18_0082c570	medium	malloc(0x18) node with next/prev self-linked = empty circular-list head init
+0082c900	ListHead_InitCircular_0x18_0082c900	medium	malloc(0x18) node with next/prev self-linked = empty circular-list head init
+00835180	ObjHolder_AllocStore_0x14_00835180	low	Zeroes holder then stores malloc(0x14) pointer; opaque object-holder ctor

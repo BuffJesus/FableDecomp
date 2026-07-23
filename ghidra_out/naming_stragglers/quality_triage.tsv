@@ -1,0 +1,392 @@
+address	current_name	category	disposition	proposed_name	rationale
+004159a0	InitFlags_Field4_26	initializer-destructor	donor-proposal-review	??0CGameEvent@@QAE@XZ	unique strict donor signature; proposal not yet applied
+0042a5d1	RBTree_Iterator_SetToMaxNode_0042a5d1	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0042a5e2	RBTree_Iterator_SetToMaxNode_0042a5e2	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0042d9d0	Field_SetToMinusOne	field-accessor	donor-proposal-review	??0CDefString@@QAE@XZ	unique strict donor signature; proposal not yet applied
+0043368c	Stub_ReturnVoid_0043368c	thunk-stub-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+004368e0	StdList_Construct_004368e0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+004369e0	StdList_Construct_004369e0	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0043fc20	StdList_Construct_0043fc20	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0043fc40	StdList_Construct_0043fc40	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00440c90	StdList_Construct_00440c90	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00440cd0	StdList_Construct_00440cd0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0044b950	StdList_Construct_0044b950	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0044b9f0	StdList_Construct_0044b9f0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0044c6af	Stub_ReturnVoid_0044c6af	thunk-stub-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+004c5c40	StdList_Construct_004c5c40	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+004c6680	Object_AllocAndStorePtr_004c6680	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+004c67d0	StdTree_Construct_004c67d0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+004c6af0	StdTree_Construct_004c6af0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+004c72a0	Stub_ReturnVoid_004c72a0	thunk-stub-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+004cc200	StdList_Construct_004cc200	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+004cc260	StdList_Construct_004cc260	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+004cc800	StdList_Construct_004cc800	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+004ccc10	StdList_Construct_004ccc10	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+004fe7f0	CollectSoundThemeSwitchDefs	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+00507070	RebuildStringPairTableFromTree	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005159a0	StdTree_Construct_005159a0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00516e80	StdList_Construct_00516e80	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00517810	StdTree_Construct_00517810	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0051a040	StdTree_Construct_0051a040	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005283a0	StdList_Construct_005283a0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00528410	Object_AllocAndStorePtr_00528410	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00528480	Object_AllocAndStorePtr_00528480	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005284b0	Object_AllocAndStorePtr_005284b0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00528520	Object_AllocAndStorePtr_00528520	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00528590	Object_AllocAndStorePtr_00528590	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00528c20	StdList_Construct_00528c20	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00528c60	StdTree_Construct_00528c60	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00528cf0	StdTree_Construct_00528cf0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00528d80	StdTree_Construct_00528d80	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00528dc0	StdTree_Construct_00528dc0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00528e50	StdTree_Construct_00528e50	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005297a0	Stub_ReturnZero	thunk-stub-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00553490	Object_AllocAndStorePtr_00553490	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00566b70	Object_AllocAndStorePtr_00566b70	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00566be0	Object_AllocAndStorePtr_00566be0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00566ca0	Object_AllocAndStorePtr_00566ca0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0056a580	StdTree_Construct_0056a580	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0056cf70	Object_AllocAndStorePtr_0056cf70	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0056cfa0	Object_AllocAndStorePtr_0056cfa0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0056d010	Object_AllocAndStorePtr_0056d010	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0056d2c0	StdTree_Construct_0056d2c0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0056d350	StdTree_Construct_0056d350	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0056d390	StdTree_Construct_0056d390	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0056ddc0	StdTree_Construct_0056ddc0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0059adcd	RBTree_Iterator_SetToMaxNode_0059adcd	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005b198d	RBTree_Iterator_SetToMaxNode_005b198d	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005b199e	RBTree_Iterator_SetToMaxNode_005b199e	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005b19af	RBTree_Iterator_SetToMaxNode_005b19af	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005b19c0	RBTree_Iterator_SetToMaxNode_005b19c0	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005ba88b	RBTree_Iterator_SetToMaxNode_005ba88b	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005ba89c	RBTree_Iterator_SetToMaxNode_005ba89c	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005ba8ad	RBTree_Iterator_SetToMaxNode_005ba8ad	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005ba8be	RBTree_Iterator_SetToMaxNode_005ba8be	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005cbfe9	RBTree_Iterator_SetToMaxNode_005cbfe9	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005d839d	RBTree_Iterator_SetToMaxNode_005d839d	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005e0200	Object_AllocAndStorePtr_005e0200	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005e0b00	StdTree_Construct_005e0b00	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005e3080	StdTree_Construct_005e3080	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005e8e50	Object_AllocAndStorePtr_005e8e50	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005e8ff0	StdTree_Construct_005e8ff0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005e9320	StdTree_Construct_005e9320	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005f82d9	RBTree_Iterator_SetToMaxNode_005f82d9	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005f82ea	RBTree_Iterator_SetToMaxNode_005f82ea	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005f8944	StdList_Construct_005f8944	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+005f8f6f	Lua_PushCClosure_005f8f6f	thunk-stub-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006152c0	StdList_InitEmpty_006152c0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00615340	StdList_InitEmpty_00615340	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006153a0	StdList_InitEmpty_006153a0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00615400	StdList_InitEmpty_00615400	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00615460	StdList_InitEmpty_00615460	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006154c0	StdList_InitEmpty_006154c0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00615580	Ptr_AllocStore_00615580	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006155b0	Ptr_AllocStore_006155b0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00615650	Ptr_AllocStore_00615650	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00616790	StdList_InitEmpty_00616790	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006167f0	StdList_InitEmpty_006167f0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00616820	StdList_InitEmpty_00616820	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00616850	StdList_InitEmpty_00616850	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00616880	StdList_InitEmpty_00616880	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006168b0	StdList_InitEmpty_006168b0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006168e0	StdList_InitEmpty_006168e0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00616930	StdList_CtorWithCount_00616930	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006169c0	StdList_CtorWithCount_006169c0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00616a40	StdList_CtorWithCount_00616a40	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00617140	StdList_CtorWithCount_00617140	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00617270	StdList_CtorWithCount_00617270	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00619e30	StdList_CtorWithCount_00619e30	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00623a80	Ptr_AllocStore_00623a80	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00624160	StdList_CtorWithCount_00624160	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00624520	StdList_CtorWithCount_00624520	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00630b60	Ptr_AllocStore_00630b60	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00630b90	Ptr_AllocStore_00630b90	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00630cc0	StdList_CtorWithCount_00630cc0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00630d50	StdList_CtorWithCount_00630d50	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00630f50	StdList_CtorWithCount_00630f50	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006313e0	StdList_CtorWithCount_006313e0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0063ec80	Return_Identity_0063ec80	thunk-stub-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0063f340	StdList_InitEmpty_0063f340	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0063f450	StdList_InitEmpty_0063f450	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006579e0	Vector_PushBackInts_1_2_neg1_006579e0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00657ac0	Vector_PushBackInts_2_3_1_00657ac0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00662020	Getter_FieldE0_FC	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+00669510	StdList_InitEmpty_00669510	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0066a1a0	StdList_InitEmpty_0066a1a0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00674e50	Object_FreeInnerAndDelete_00674e50	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00674e80	Object_FreeInnerAndDelete_00674e80	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0067aeb0	StdList_InitEmpty_0067aeb0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0067af60	Ptr_AllocStore_0067af60	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0067afd0	Ptr_AllocStore_0067afd0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0067b040	Ptr_AllocStore_0067b040	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0067b570	StdList_InitEmpty_0067b570	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0067b5f0	StdList_CtorWithCount_0067b5f0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0067b680	StdList_CtorWithCount_0067b680	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0067b710	StdList_CtorWithCount_0067b710	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0067bc70	StdList_InitEmpty_0067bc70	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0067bd30	StdList_CtorWithCount_0067bd30	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0067bdc0	StdList_CtorWithCount_0067bdc0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0067be50	StdList_CtorWithCount_0067be50	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00685ba0	StdList_InitEmpty_00685ba0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006864c0	StdList_InitEmpty_006864c0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00687480	StdList_InitEmpty_00687480	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00687910	StdList_InitEmpty_00687910	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006960a0	Ptr_AllocStore_006960a0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006960d0	Ptr_AllocStore_006960d0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00696590	StdList_CtorWithCount_00696590	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006965d0	StdList_CtorWithCount_006965d0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00696de0	StdList_CtorWithCount_00696de0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00696e70	StdList_CtorWithCount_00696e70	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006db170	StdList_InitEmpty_006db170	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006db230	StdList_CtorWithCount_006db230	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006db5a0	StdList_CtorWithCount_006db5a0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006db730	StdList_CtorWithCount_006db730	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006db770	StdList_CtorWithCount_006db770	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006dbc00	StdList_CtorHeadAtField1_006dbc00	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006dbc50	StdList_CtorHeadAtField1_006dbc50	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006dbfe0	StdList_CtorWithCount_006dbfe0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006dc1b0	StdList_CtorWithCount_006dc1b0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006e4b30	StdList_InitEmpty_006e4b30	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006e4e10	StdList_InitEmpty_006e4e10	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006e6930	Ptr_AllocStore_006e6930	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006e6ae0	StdList_CtorWithCount_006e6ae0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006e7030	StdList_CtorWithCount_006e7030	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006f09b0	StdList_InitEmpty_006f09b0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006f0af0	ObjHolder_AllocStore_0x20_006f0af0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006f0b60	ObjHolder_AllocStore_0x88_006f0b60	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006f0b90	ObjHolder_AllocStore_0x18_006f0b90	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006f0c00	ObjHolder_AllocStore_0x18_006f0c00	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006f18f0	ListHead_InitCircular_0xc_006f18f0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006f1a50	TreeHeader_InitSentinel_0x20_006f1a50	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006f1ae0	TreeHeader_InitSentinel_0x88_006f1ae0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006f1b20	TreeHeader_InitSentinel_0x18_006f1b20	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006f1b60	TreeHeader_InitSentinel_0x18_006f1b60	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+006f23a0	TreeHeader_InitSentinel_0x20_006f23a0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00718e80	ListHead_InitCircular_0x10_00718e80	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00718ea0	ListHead_InitCircular_0x10_00718ea0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00719180	ListHead_InitCircular_0x10_00719180	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00719690	ListHead_InitCircular_0x10_00719690	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0071f860	ObjHolder_AllocStore_0x34_0071f860	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+007298e0	ListHead_InitCircular_0x1c_007298e0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00729940	ListHead_InitCircular_0x1c_00729940	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0072d480	ListHead_InitCircular_0x1c_0072d480	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0072d8f0	ListHead_InitCircular_0x1c_0072d8f0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00737f50	ObjHolder_AllocStore_0x24_00737f50	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0073db00	ListHead_InitCircular_0x10_0073db00	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00743200	ListHead_InitCircular_0x10_00743200	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00755e50	ObjHolder_AllocStore_0x1c_00755e50	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00758ae0	ListHead_InitCircular_0x4c_00758ae0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00758d90	ListHead_InitCircular_0x4c_00758d90	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0075f780	ListHead_InitCircular_0xc_0075f780	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0075f830	ObjHolder_FreeAndDelete_0075f830	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+007602f0	Math_PolygonAngleSumClosureCheck	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+007695f0	ObjHolder_AllocStore_0x20_007695f0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00769f30	TreeHeader_InitSentinel_0x20_00769f30	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0076acf0	TreeHeader_InitSentinel_0x20_0076acf0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0076f9e0	ListHead_InitCircular_0x24_0076f9e0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0076fbf0	ListHead_InitCircular_0x24_0076fbf0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00771b30	ObjHolder_FreeAndDelete_00771b30	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00776f30	ObjHolder_AllocStore_0x30_00776f30	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00777520	TreeHeader_InitSentinel_0x30_00777520	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00777a00	TreeHeader_InitSentinel_0x30_00777a00	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0077ffe0	ListHead_InitCircular_0x14_0077ffe0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00780040	ListHead_InitCircular_0x14_00780040	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00782fb0	ObjHolder_AllocStore_0x20_00782fb0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00783d50	TreeHeader_InitSentinel_0x20_00783d50	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00783fb0	TreeHeader_InitSentinel_0x20_00783fb0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00784fb0	ListHead_InitCircular_0xc_00784fb0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00785d00	ListHead_InitCircular_0xc_00785d00	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00792220	ListHead_InitCircular_0xc_00792220	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+007922a0	ObjHolder_AllocStore_0x2c_007922a0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+007926f0	TreeHeader_InitSentinel_0x2c_007926f0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00792b30	TreeHeader_InitSentinel_0x2c_00792b30	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+007977e0	ObjHolder_AllocStore_0x2c_007977e0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00797ae0	TreeHeader_InitSentinel_0x2c_00797ae0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00797e30	TreeHeader_InitSentinel_0x2c_00797e30	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0079f0b0	ObjHolder_AllocStore_0x14_0079f0b0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0079f2a0	TreeHeader_InitSentinel_0x14_0079f2a0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0079f410	TreeHeader_InitSentinel_0x14_0079f410	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+007a35b0	ListHead_InitCircular_0x10_007a35b0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+007a3c60	ListHead_InitCircular_0x10_007a3c60	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+007a6170	ListHead_InitCircular_0xc_007a6170	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+007a6320	ListHead_InitCircular_0xc_007a6320	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+007acb50	ObjHolder_AllocStore_0x18_007acb50	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+007acb80	ObjHolder_AllocStore_0x20_007acb80	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+007acde0	TreeHeader_InitSentinel_0x18_007acde0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00817710	ObjHolder_AllocStore_0x18_00817710	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00824b40	ListHead_InitCircular_0x5c_00824b40	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00824bc0	ListHead_InitCircular_0x10_00824bc0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00824e80	ObjHolder_AllocStore_0x18_00824e80	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00824ef0	ObjHolder_AllocStore_0x30_00824ef0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008254a0	ListHead_InitCircular_0x5c_008254a0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00825540	ListHead_InitCircular_0x10_00825540	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00827e20	ListHead_InitCircular_0xc_00827e20	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00828c20	ListHead_InitCircular_0xc_00828c20	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0082c570	ListHead_InitCircular_0x18_0082c570	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0082c900	ListHead_InitCircular_0x18_0082c900	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00835180	ObjHolder_AllocStore_0x14_00835180	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008368f0	ConditionalVirtualDispatch_OnLevelUnload	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+008697f0	PtrHolder_Alloc_sz18_008697f0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0086c5c0	CPersistInfo_InsertionSortStep_0086c5c0	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+0086f600	PriorityQueue_PushSift_0086f600	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0086fa00	CPersistInfo_InsertionSortStep_0086fa00	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+008702d0	Handle_InitInvalid_008702d0	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+008709c0	CWorldDriver_FindClosestMeshVolume_DefaultCall_008709c0	thunk-stub-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00874ca0	ListSentinel_Ctor_sz10_00874ca0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00874d30	ListSentinel_Ctor_sz10_00874d30	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00876e10	Vector_ComputePotentialGradient_00876e10	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00883280	ListSentinel_Ctor_sz68_00883280	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00883300	ListSentinel_Ctor_sz28_00883300	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00883340	ListSentinel_Ctor_sz44_00883340	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008833c0	PtrHolder_Alloc_sz20_008833c0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008833f0	PtrHolder_Alloc_sz14_008833f0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00883be0	ListSentinel_Ctor_sz68_00883be0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00883c60	ListSentinel_Ctor_sz28_00883c60	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00883ca0	ListSentinel_Ctor_sz44_00883ca0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00884180	ListSentinel_Ctor_sz68_00884180	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008841a0	ListSentinel_Ctor_sz28_008841a0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008841c0	ListSentinel_Ctor_sz44_008841c0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008841e0	StdList_Ctor_sz14_008841e0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00884620	StdList_Ctor_sz20_00884620	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008aee40	PtrHolder_Alloc_sz18_008aee40	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008aefe0	StdList_Ctor_sz18_008aefe0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008afcc0	StdList_Ctor_sz18_008afcc0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008b22d0	PtrHolder_Alloc_sz18_008b22d0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008b2340	PtrHolder_Alloc_sz18_008b2340	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008b23b0	PtrHolder_Alloc_sz18_008b23b0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008b2790	StdList_Ctor_sz18_008b2790	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008b2820	StdList_Ctor_sz18_008b2820	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008b28b0	StdList_Ctor_sz18_008b28b0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008b2c20	StdList_Ctor_sz18_008b2c20	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008b2cb0	StdList_Ctor_sz18_008b2cb0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008b2d40	StdList_Ctor_sz18_008b2d40	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008ebdb0	ListSentinel_Ctor_sz10_008ebdb0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008ebff0	ListSentinel_Ctor_sz10_008ebff0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008f9f30	ListSentinel_Ctor_szc_008f9f30	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008fa040	ListSentinel_Ctor_szc_008fa040	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+008fbd20	ListSentinel_Ctor_sz10_008fbd20	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0090aec0	Manager_ConstructAndRegister_0090aec0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0094b730	ReturnTrue_0094b730	thunk-stub-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00987670	ReturnParam_Identity_00987670	thunk-stub-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00987700	ReturnParam_Identity_00987700	thunk-stub-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00999f90	PtrHolder_Alloc_sz14_00999f90	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009aa690	ListSentinel_Ctor_sz10_009aa690	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009aa6c0	PtrHolder_Alloc_sz28_009aa6c0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009aa6f0	PtrHolder_Alloc_sz28_009aa6f0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009aa720	PtrHolder_Alloc_sz18_009aa720	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009aa750	PtrHolder_Alloc_sz14_009aa750	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009ac290	ListSentinel_Ctor_sz10_009ac290	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009b3430	PtrHolder_Alloc_sz18_009b3430	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009b3f00	StdList_Ctor_sz18_009b3f00	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009b6f40	StdList_Ctor_sz18_009b6f40	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009bdec0	ListSentinel_Ctor_sz24_009bdec0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009be170	ListSentinel_Ctor_sz24_009be170	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c2200	ListSentinel_Ctor_szc_009c2200	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c22b0	PtrHolder_Alloc_sz20_009c22b0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c2320	PtrHolder_Alloc_sz14_009c2320	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c2540	ListSentinel_Ctor_szc_009c2540	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c25f0	StdList_Ctor_sz20_009c25f0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c26e0	StdList_Ctor_sz14_009c26e0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c2b00	StdList_Ctor_sz20_009c2b00	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c2bd0	StdList_Ctor_sz14_009c2bd0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c6710	ListSentinel_Ctor_sz14_009c6710	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c67b0	ListSentinel_Ctor_szc_009c67b0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c68d0	ListSentinel_Ctor_sz10_009c68d0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c6910	ListSentinel_Ctor_szb8_009c6910	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c6ac0	ListSentinel_Ctor_sz14_009c6ac0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c6b60	ListSentinel_Ctor_szc_009c6b60	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c7000	ListSentinel_Ctor_sz10_009c7000	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009c7730	ListSentinel_Ctor_szb8_009c7730	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009d2840	PtrHolder_Alloc_sz20_009d2840	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009d2ab0	StdList_Ctor_sz20_009d2ab0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009d3890	StdList_Ctor_sz18_009d3890	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009d46d0	StdList_Ctor_sz20_009d46d0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009d7740	ListSentinel_Ctor_sz10_009d7740	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009d7850	PtrHolder_Alloc_sz14_009d7850	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009d7b40	StdList_Ctor_sz14_009d7b40	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009d83b0	Container_AllocAndStorePtr_9d83b0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009eebe0	Container_AllocAndStorePtr_9eebe0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009eec60	Container_AllocAndStorePtr_9eec60	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009f0ce0	Container_AllocAndStorePtr_9f0ce0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009f7b60	MapIterator_CountDistance	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+009f7d70	MapIterator_CountDistance_9f7d70	container-template	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00a215a0	Container_AllocAndStorePtr_a215a0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00a21610	Container_AllocAndStorePtr_a21610	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00a2abd0	Container_AllocAndStorePtr_a2abd0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00a2ac00	Container_AllocAndStorePtr_a2ac00	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00a39440	Container_AllocAndStorePtr_a39440	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00a54160	Container_AllocAndStorePtr_a54160	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00a60990	Container_AllocAndStorePtr_a60990	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00a7f680	Container_AllocAndStorePtr_a7f680	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00a7f6f0	Container_AllocAndStorePtr_a7f6f0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00ad2330	Container_AllocAndStorePtr_ad2330	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00ad2360	Container_AllocAndStorePtr_ad2360	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00ad23a0	Container_AllocAndStorePtr_ad23a0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00ad2450	Container_AllocAndStorePtr_ad2450	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00adb240	Object_AllocateBuffer_adb240	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00add130	Callback_InvokePair_add130	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00b2e7b0	Object_AllocateBuffer_b2e7b0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00b3e790	Object_AllocateBuffer_b3e790	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00b43bf0	Object_AllocateBuffer_b43bf0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00b96540	Object_AllocateBuffer_b96540	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00b96570	Object_AllocateBuffer_b96570	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00b96640	Object_AllocateBuffer_b96640	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00bce370	Object_AllocateBuffer_bce370	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00bd84f0	Object_AllocateBuffer_bd84f0	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c08880	Object_SetVtable_c08880	thunk-stub-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c19f90	Getter_Field84	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+00c207f0	Object_Destruct_c207f0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c20ef0	IsStateStreaming_2to4	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+00c29eb0	Ctor_SetVtable_012b40a4	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c29f50	Ctor_Init_012b40a4	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c2d7b0	CTCInventory_CheckSlotTypeNegative	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c334d0	CTCHeroStats_GetVectorArraysIfInitialized	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c336f0	Constraint_NotifyGlobalManager	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c359e0	CExclusiveAssert_OnQuestItemUsed_Bool	thunk-stub-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c362f0	CSBAgents_BuildAndDispatch_A	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c36e00	CSBAgents_BuildAndDispatch_SummonerLightning	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+00c36fb0	CSBAgents_BuildAndDispatch_TavernGame	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c37000	IntelligentPointer_BuildAndDispatchFloat	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c37c40	CSBAgents_BuildAndDispatch_CreatureOpinion	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c3abf0	SubPrimitiveList_ConstructNodeA	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c3b180	SubPrimitiveList_ConstructNodeB	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c43de0	DrawAutoPickups_SelectAndDrawPrimitive	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c43f80	Weapon_ProcessAnimFrameIfReady	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c44b50	InputEvent_CheckKeyAndGetFrames	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+00c44dc0	FireballSpell_DispatchScaledDamage	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+00c592c0	Ctor_SetVtable_012b8f64	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c59570	Ctor_ZeroInit_012b8f64	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c61ce0	Getter_TripleDeref	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+00c62a30	StreamBuffer_AdvancePosition	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c74f60	Ctor_Init_012bf074	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c75400	Ctor_Init_012bf074_b	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00c88e60	Audio_ProcessFilter4Channel	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c8bae0	Script_GetEntryPointer	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+00c8c730	Batch_InvokeWithStackArgs_c8c730	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c92f10	DSP_ComputeRunningMinEnvelope	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c93080	FFT_ComputeWaveformEnvelope	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c93b30	Audio_ApplyGainTableToBuffer	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c94190	Audio_ComputeClampedPosition	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c942b0	Audio_ComputeLog2WeightedCoeff	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c9cb60	Math_ComputeByteChunkCount	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c9e4a0	Audio_CheckBufferRegionActive	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00c9f8c0	Mesh_BlendMorphStreams	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00ca5e70	CritSec_GetDividedValue_Locked	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+00ca8610	COM_QueryInterface_012a9a24	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00ca86d0	Com_CreateWithFallback	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00ca8d50	Enumerate_QueryInterface_012a9a24	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+00ca9c80	Object_AcquireField26	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+00ca9ec0	GetVectorFields_Locked	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00caa040	GetBufferOffset_Locked	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+00cdb550	Alloc_Struct0x24_cdb550	allocator-wrapper	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00e245e0	StringList_FindDuplicateEntry	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00e7f7d0	GetFloatTableEntryByIndex	field-accessor	semantic-review		semantic owner or behavior still needs stronger evidence
+00e83920	ScriptThingContext_Construct_A	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00ed7d50	ScriptThingContext_Construct_B	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+00ee91e0	Script_MakeThingsSpeakNumbered	semantic-logic	semantic-review		semantic owner or behavior still needs stronger evidence
+01229370	GlobalDtor_Free_013ba8ec	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+01229630	GlobalDtor_Free_013bac20	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0122a2f0	DynamicInit_013bb6a4	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0122ad60	GlobalDtor_Free_014377f0	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0122adb0	GlobalDtor_Free_0143b978	initializer-destructor	accepted-reconstruction-family		stable descriptive family label; original template/deleting-helper identity remains unknown
+0132d470	InvalidDecode_HaltStub	invalid-boundary	invalid-boundary-review		verify or remove the function boundary before naming

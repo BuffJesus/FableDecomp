@@ -1,0 +1,8692 @@
+{
+ "CUIDef": {
+  "addr": "01fd82b0",
+  "retail_offsets": false,
+  "note": "recovered 2026-07-19 schema-gap sweep; validated ALL_MATCH",
+  "fields": [
+   {
+    "name": "Type",
+    "type": "enum EType_NUISystem",
+    "donor_off": 68
+   },
+   {
+    "name": "Children",
+    "type": "Vector_int32",
+    "donor_off": 140
+   },
+   {
+    "name": "MeshIndex",
+    "type": "uint32",
+    "donor_off": 92
+   },
+   {
+    "name": "TextValue",
+    "type": "CWideString",
+    "donor_off": 100
+   },
+   {
+    "name": "Font",
+    "type": "CDefString",
+    "donor_off": 96
+   },
+   {
+    "name": "Height",
+    "type": "float",
+    "donor_off": 108
+   },
+   {
+    "name": "Width",
+    "type": "float",
+    "donor_off": 112
+   },
+   {
+    "name": "ExpansionType",
+    "type": "enum ETableExpansionTypes_NUISystem",
+    "donor_off": 116
+   },
+   {
+    "name": "Sprites",
+    "type": "Map_JW4ETableSprites_NUISystem__",
+    "donor_off": 120
+   },
+   {
+    "name": "HorizontalSeparations",
+    "type": "Vector_uint32",
+    "donor_off": 160
+   },
+   {
+    "name": "VerticalSeparations",
+    "type": "Vector_uint32",
+    "donor_off": 180
+   },
+   {
+    "name": "States",
+    "type": "Vector_CUIStateDef_NUISystem",
+    "donor_off": 72
+   },
+   {
+    "name": "TextLineBreak",
+    "type": "bool",
+    "donor_off": 249
+   },
+   {
+    "name": "ScaleText",
+    "type": "bool",
+    "donor_off": 250
+   },
+   {
+    "name": "Independant",
+    "type": "bool",
+    "donor_off": 251
+   },
+   {
+    "name": "MeshType",
+    "type": "enum EEngineGraphicType",
+    "donor_off": 220
+   },
+   {
+    "name": "NonScrollingChildren",
+    "type": "Vector_uint32",
+    "donor_off": 200
+   },
+   {
+    "name": "TextWindowTLX",
+    "type": "float",
+    "donor_off": 224
+   },
+   {
+    "name": "TextWindowTLY",
+    "type": "float",
+    "donor_off": 228
+   },
+   {
+    "name": "TextWindowBRX",
+    "type": "float",
+    "donor_off": 232
+   },
+   {
+    "name": "TextWindowBRY",
+    "type": "float",
+    "donor_off": 236
+   },
+   {
+    "name": "Layer",
+    "type": "int32",
+    "donor_off": 240
+   },
+   {
+    "name": "Angle",
+    "type": "float",
+    "donor_off": 244
+   },
+   {
+    "name": "PositionIsCenter",
+    "type": "bool",
+    "donor_off": 248
+   },
+   {
+    "name": "ScrollingSpeed",
+    "type": "float",
+    "donor_off": 252
+   },
+   {
+    "name": "Wrapping",
+    "type": "bool",
+    "donor_off": 380
+   },
+   {
+    "name": "Inverted",
+    "type": "bool",
+    "donor_off": 381
+   },
+   {
+    "name": "PositionOffsetX",
+    "type": "float",
+    "donor_off": 382
+   },
+   {
+    "name": "PositionOffsetY",
+    "type": "float",
+    "donor_off": 386
+   },
+   {
+    "name": "AlphaOffset",
+    "type": "uint8",
+    "donor_off": 390
+   },
+   {
+    "name": "UpX",
+    "type": "float",
+    "donor_off": 320
+   },
+   {
+    "name": "UpY",
+    "type": "float",
+    "donor_off": 324
+   },
+   {
+    "name": "UpZ",
+    "type": "float",
+    "donor_off": 328
+   },
+   {
+    "name": "ForwardX",
+    "type": "float",
+    "donor_off": 332
+   },
+   {
+    "name": "ForwardY",
+    "type": "float",
+    "donor_off": 336
+   },
+   {
+    "name": "ForwardZ",
+    "type": "float",
+    "donor_off": 340
+   },
+   {
+    "name": "RotationAxisX",
+    "type": "float",
+    "donor_off": 344
+   },
+   {
+    "name": "RotationAxisY",
+    "type": "float",
+    "donor_off": 348
+   },
+   {
+    "name": "RotationAxisZ",
+    "type": "float",
+    "donor_off": 352
+   },
+   {
+    "name": "RotationSpeed",
+    "type": "float",
+    "donor_off": 356
+   },
+   {
+    "name": "AnimationIndex",
+    "type": "uint32",
+    "donor_off": 360
+   },
+   {
+    "name": "DownArrow",
+    "type": "int32",
+    "donor_off": 364
+   },
+   {
+    "name": "UpArrow",
+    "type": "int32",
+    "donor_off": 368
+   },
+   {
+    "name": "UpLimit",
+    "type": "int32",
+    "donor_off": 372
+   },
+   {
+    "name": "DownLimit",
+    "type": "int32",
+    "donor_off": 376
+   },
+   {
+    "name": "Scrolling",
+    "type": "bool",
+    "donor_off": 391
+   },
+   {
+    "name": "ComputeOffsetsOnActivate",
+    "type": "bool",
+    "donor_off": 408
+   },
+   {
+    "name": "MinX",
+    "type": "float",
+    "donor_off": 424
+   },
+   {
+    "name": "MinY",
+    "type": "float",
+    "donor_off": 428
+   },
+   {
+    "name": "MaxX",
+    "type": "float",
+    "donor_off": 432
+   },
+   {
+    "name": "MaxY",
+    "type": "float",
+    "donor_off": 436
+   },
+   {
+    "name": "StepX",
+    "type": "float",
+    "donor_off": 440
+   },
+   {
+    "name": "StepY",
+    "type": "float",
+    "donor_off": 444
+   },
+   {
+    "name": "DimensionsX",
+    "type": "float",
+    "donor_off": 416
+   },
+   {
+    "name": "DimensionsY",
+    "type": "float",
+    "donor_off": 420
+   },
+   {
+    "name": "SliderLeft",
+    "type": "int32",
+    "donor_off": 456
+   },
+   {
+    "name": "SliderRight",
+    "type": "int32",
+    "donor_off": 460
+   },
+   {
+    "name": "Action",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 256
+   },
+   {
+    "name": "ActionOnBack",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 260
+   },
+   {
+    "name": "ActionOnSelected",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 264
+   },
+   {
+    "name": "ActionOnUnselected",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 268
+   },
+   {
+    "name": "ActionOnDestruction",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 272
+   },
+   {
+    "name": "ActionOnLeftClicked",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 284
+   },
+   {
+    "name": "ActionOnLeftUnclicked",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 288
+   },
+   {
+    "name": "ActionOnLeftHeld",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 292
+   },
+   {
+    "name": "ActionOnRightClicked",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 296
+   },
+   {
+    "name": "ActionOnDropped",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 300
+   },
+   {
+    "name": "ActionOnDroppedNowhere",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 280
+   },
+   {
+    "name": "PreAction",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 276
+   },
+   {
+    "name": "ActionOnDraggedUp",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 304
+   },
+   {
+    "name": "ActionOnDraggedDown",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 308
+   },
+   {
+    "name": "ActionOnLeftClickedAbove",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 316
+   },
+   {
+    "name": "ActionOnLeftClickedUnder",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 312
+   },
+   {
+    "name": "InputDelay",
+    "type": "float",
+    "donor_off": 448
+   },
+   {
+    "name": "DrawFromViewport",
+    "type": "bool",
+    "donor_off": 452
+   },
+   {
+    "name": "TextBankIndex",
+    "type": "uint32",
+    "donor_off": 464
+   },
+   {
+    "name": "ActionText",
+    "type": "int32",
+    "donor_off": 468
+   },
+   {
+    "name": "KeyText",
+    "type": "int32",
+    "donor_off": 472
+   },
+   {
+    "name": "Redefiner",
+    "type": "int32",
+    "donor_off": 480
+   },
+   {
+    "name": "UndefinedWarning",
+    "type": "int32",
+    "donor_off": 476
+   },
+   {
+    "name": "ActionMap",
+    "type": "Map_VCCharString__K",
+    "donor_off": 484
+   },
+   {
+    "name": "ActionMapAliases",
+    "type": "Map_KK",
+    "donor_off": 504
+   },
+   {
+    "name": "ActionOrder",
+    "type": "Vector_uint32",
+    "donor_off": 524
+   },
+   {
+    "name": "EditBoxParentIsButton",
+    "type": "bool",
+    "donor_off": 544
+   },
+   {
+    "name": "PasswordBox",
+    "type": "bool",
+    "donor_off": 545
+   },
+   {
+    "name": "EditBoxCharLimit",
+    "type": "int32",
+    "donor_off": 548
+   },
+   {
+    "name": "EditBoxUsesIME",
+    "type": "bool",
+    "donor_off": 552
+   },
+   {
+    "name": "MovieFilename",
+    "type": "CWideString",
+    "donor_off": 556
+   },
+   {
+    "name": "DisallowSpaceAsFirstChar",
+    "type": "bool",
+    "donor_off": 553
+   },
+   {
+    "name": "LayerIndependant",
+    "type": "bool",
+    "donor_off": 564
+   },
+   {
+    "name": "SwappingStates",
+    "type": "Vector_uint32",
+    "donor_off": 568
+   },
+   {
+    "name": "SwappingTimes",
+    "type": "Vector_float",
+    "donor_off": 588
+   },
+   {
+    "name": "BastardChild",
+    "type": "bool",
+    "donor_off": 608
+   },
+   {
+    "name": "Alignement",
+    "type": "enum ETextAlignement_NUISystem",
+    "donor_off": 612
+   },
+   {
+    "name": "RandomSwap",
+    "type": "bool",
+    "donor_off": 616
+   },
+   {
+    "name": "UseRelativeZoom",
+    "type": "bool",
+    "donor_off": 624
+   },
+   {
+    "name": "UseRelativePosition",
+    "type": "bool",
+    "donor_off": 625
+   },
+   {
+    "name": "HoveredState",
+    "type": "int32",
+    "donor_off": 620
+   },
+   {
+    "name": "LeftClickedState",
+    "type": "int32",
+    "donor_off": 628
+   },
+   {
+    "name": "RightClickedState",
+    "type": "int32",
+    "donor_off": 632
+   },
+   {
+    "name": "ShapeChildren",
+    "type": "Vector_uint32",
+    "donor_off": 636
+   },
+   {
+    "name": "ViewAreaTLX",
+    "type": "int32",
+    "donor_off": 392
+   },
+   {
+    "name": "ViewAreaTLY",
+    "type": "int32",
+    "donor_off": 396
+   },
+   {
+    "name": "ViewAreaBRX",
+    "type": "int32",
+    "donor_off": 400
+   },
+   {
+    "name": "ViewAreaBRY",
+    "type": "int32",
+    "donor_off": 404
+   },
+   {
+    "name": "UseViewArea",
+    "type": "bool",
+    "donor_off": 656
+   },
+   {
+    "name": "PartOfListTree",
+    "type": "bool",
+    "donor_off": 626
+   },
+   {
+    "name": "PCStyle",
+    "type": "bool",
+    "donor_off": 657
+   },
+   {
+    "name": "Sprite2DFlag",
+    "type": "enum EEngineSprite2DFlag",
+    "donor_off": 660
+   }
+  ]
+ },
+ "CUILocaleGraphicsDef": {
+  "addr": "01926cc0",
+  "retail_offsets": false,
+  "note": "recovered 2026-07-19 schema-gap sweep; validated ALL_MATCH",
+  "fields": [
+   {
+    "name": "WorldMapRegionName",
+    "type": "Map_KW4EWorldMapNameGraphic__",
+    "donor_off": 68
+   },
+   {
+    "name": "HelpScreenGraphics",
+    "type": "Vector_uint32",
+    "donor_off": 88
+   },
+   {
+    "name": "HelpRingPic",
+    "type": "uint32",
+    "donor_off": 108
+   }
+  ]
+ },
+ "CUIMiscThingsDef": {
+  "addr": "0192771b",
+  "retail_offsets": false,
+  "note": "recovered 2026-07-19 schema-gap sweep; validated ALL_MATCH",
+  "fields": [
+   {
+    "name": "SpaceSeparator",
+    "type": "CWideString",
+    "donor_off": 68
+   },
+   {
+    "name": "CommaSeparator",
+    "type": "CWideString",
+    "donor_off": 76
+   },
+   {
+    "name": "NewLineSeparator",
+    "type": "CWideString",
+    "donor_off": 92
+   },
+   {
+    "name": "OpenBracket",
+    "type": "CWideString",
+    "donor_off": 100
+   },
+   {
+    "name": "CloseBracket",
+    "type": "CWideString",
+    "donor_off": 108
+   },
+   {
+    "name": "Positive",
+    "type": "CWideString",
+    "donor_off": 116
+   },
+   {
+    "name": "WeaponValueString",
+    "type": "CWideString",
+    "donor_off": 124
+   },
+   {
+    "name": "WeaponAugString",
+    "type": "CWideString",
+    "donor_off": 132
+   },
+   {
+    "name": "WeaponAugNone",
+    "type": "CWideString",
+    "donor_off": 140
+   },
+   {
+    "name": "WeaponWeightString",
+    "type": "CWideString",
+    "donor_off": 148
+   },
+   {
+    "name": "WeaponLightString",
+    "type": "CWideString",
+    "donor_off": 156
+   },
+   {
+    "name": "WeaponHeavyString",
+    "type": "CWideString",
+    "donor_off": 164
+   },
+   {
+    "name": "WeaponKillsString",
+    "type": "CWideString",
+    "donor_off": 172
+   },
+   {
+    "name": "WeaponCatMeleeString",
+    "type": "CWideString",
+    "donor_off": 180
+   },
+   {
+    "name": "WeaponCatRangedString",
+    "type": "CWideString",
+    "donor_off": 188
+   },
+   {
+    "name": "WeaponDamageString",
+    "type": "CWideString",
+    "donor_off": 196
+   },
+   {
+    "name": "TradeCostString",
+    "type": "CWideString",
+    "donor_off": 204
+   },
+   {
+    "name": "ColonSeparator",
+    "type": "CWideString",
+    "donor_off": 84
+   },
+   {
+    "name": "TradeProfitString",
+    "type": "CWideString",
+    "donor_off": 212
+   },
+   {
+    "name": "TradeLossString",
+    "type": "CWideString",
+    "donor_off": 220
+   },
+   {
+    "name": "TradeAlreadyOwnsString",
+    "type": "CWideString",
+    "donor_off": 228
+   },
+   {
+    "name": "TradeNumberInStockString",
+    "type": "CWideString",
+    "donor_off": 236
+   },
+   {
+    "name": "TradeDeliveryString",
+    "type": "CWideString",
+    "donor_off": 244
+   },
+   {
+    "name": "TradeNoDeliveryString",
+    "type": "CWideString",
+    "donor_off": 252
+   },
+   {
+    "name": "TradeDaysString",
+    "type": "CWideString",
+    "donor_off": 260
+   },
+   {
+    "name": "TradeBuyString",
+    "type": "CWideString",
+    "donor_off": 268
+   },
+   {
+    "name": "TradeSellString",
+    "type": "CWideString",
+    "donor_off": 276
+   },
+   {
+    "name": "TradeWantedString",
+    "type": "CWideString",
+    "donor_off": 284
+   },
+   {
+    "name": "QuestFailedString",
+    "type": "CWideString",
+    "donor_off": 292
+   },
+   {
+    "name": "FailedString",
+    "type": "CWideString",
+    "donor_off": 300
+   },
+   {
+    "name": "SucceededString",
+    "type": "CWideString",
+    "donor_off": 308
+   },
+   {
+    "name": "Plus",
+    "type": "CWideString",
+    "donor_off": 316
+   },
+   {
+    "name": "Minus",
+    "type": "CWideString",
+    "donor_off": 324
+   },
+   {
+    "name": "CoreGraphic",
+    "type": "uint32",
+    "donor_off": 332
+   },
+   {
+    "name": "VignetteGraphic",
+    "type": "uint32",
+    "donor_off": 336
+   },
+   {
+    "name": "OptionalGraphic",
+    "type": "uint32",
+    "donor_off": 340
+   },
+   {
+    "name": "FeatGraphic",
+    "type": "uint32",
+    "donor_off": 344
+   },
+   {
+    "name": "ObjectsRewardString",
+    "type": "CWideString",
+    "donor_off": 348
+   },
+   {
+    "name": "NoneString",
+    "type": "CWideString",
+    "donor_off": 356
+   },
+   {
+    "name": "CheckGuildString",
+    "type": "CWideString",
+    "donor_off": 364
+   },
+   {
+    "name": "QuestStartingString",
+    "type": "CWideString",
+    "donor_off": 372
+   },
+   {
+    "name": "RingCenterX",
+    "type": "float",
+    "donor_off": 380
+   },
+   {
+    "name": "RingCenterY",
+    "type": "float",
+    "donor_off": 384
+   },
+   {
+    "name": "PCRingCenterX",
+    "type": "float",
+    "donor_off": 388
+   },
+   {
+    "name": "PCRingCenterY",
+    "type": "float",
+    "donor_off": 392
+   },
+   {
+    "name": "WorldMapOffsetX",
+    "type": "float",
+    "donor_off": 396
+   },
+   {
+    "name": "WorldMapOffsetY",
+    "type": "float",
+    "donor_off": 400
+   },
+   {
+    "name": "WorldMapWidth",
+    "type": "float",
+    "donor_off": 404
+   },
+   {
+    "name": "WorldMapHeight",
+    "type": "float",
+    "donor_off": 408
+   },
+   {
+    "name": "YouString",
+    "type": "CWideString",
+    "donor_off": 412
+   },
+   {
+    "name": "OwnString",
+    "type": "CWideString",
+    "donor_off": 420
+   },
+   {
+    "name": "NoString",
+    "type": "CWideString",
+    "donor_off": 428
+   },
+   {
+    "name": "HousesString",
+    "type": "CWideString",
+    "donor_off": 436
+   },
+   {
+    "name": "HouseString",
+    "type": "CWideString",
+    "donor_off": 444
+   },
+   {
+    "name": "InString",
+    "type": "CWideString",
+    "donor_off": 452
+   },
+   {
+    "name": "ShopsString",
+    "type": "CWideString",
+    "donor_off": 460
+   },
+   {
+    "name": "ShopString",
+    "type": "CWideString",
+    "donor_off": 468
+   },
+   {
+    "name": "ThereString",
+    "type": "CWideString",
+    "donor_off": 476
+   },
+   {
+    "name": "AreString",
+    "type": "CWideString",
+    "donor_off": 484
+   },
+   {
+    "name": "IsString",
+    "type": "CWideString",
+    "donor_off": 492
+   },
+   {
+    "name": "ForString",
+    "type": "CWideString",
+    "donor_off": 500
+   },
+   {
+    "name": "SaleString",
+    "type": "CWideString",
+    "donor_off": 508
+   },
+   {
+    "name": "GeneralString",
+    "type": "CWideString",
+    "donor_off": 516
+   },
+   {
+    "name": "TatooString",
+    "type": "CWideString",
+    "donor_off": 540
+   },
+   {
+    "name": "BarberString",
+    "type": "CWideString",
+    "donor_off": 532
+   },
+   {
+    "name": "TitleString",
+    "type": "CWideString",
+    "donor_off": 524
+   },
+   {
+    "name": "LevelString",
+    "type": "CWideString",
+    "donor_off": 548
+   },
+   {
+    "name": "TotalSpellsInPalettes",
+    "type": "uint32",
+    "donor_off": 556
+   },
+   {
+    "name": "TotalSpellsInContainer",
+    "type": "uint32",
+    "donor_off": 560
+   },
+   {
+    "name": "TotalAssignableThings",
+    "type": "uint32",
+    "donor_off": 920
+   },
+   {
+    "name": "LogBookBasicsCategoryString",
+    "type": "CWideString",
+    "donor_off": 564
+   },
+   {
+    "name": "LogBookObjectsCategoryString",
+    "type": "CWideString",
+    "donor_off": 572
+   },
+   {
+    "name": "LogBookTownsCategoryString",
+    "type": "CWideString",
+    "donor_off": 580
+   },
+   {
+    "name": "LogBookHeroCategoryString",
+    "type": "CWideString",
+    "donor_off": 588
+   },
+   {
+    "name": "LogBookCombatCategoryString",
+    "type": "CWideString",
+    "donor_off": 596
+   },
+   {
+    "name": "LogBookQuestCategoryString",
+    "type": "CWideString",
+    "donor_off": 604
+   },
+   {
+    "name": "LogBookStoryCategoryString",
+    "type": "CWideString",
+    "donor_off": 612
+   },
+   {
+    "name": "LogBookBasicsCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 620
+   },
+   {
+    "name": "LogBookObjectsCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 628
+   },
+   {
+    "name": "LogBookTownsCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 636
+   },
+   {
+    "name": "LogBookHeroCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 644
+   },
+   {
+    "name": "LogBookCombatCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 652
+   },
+   {
+    "name": "LogBookQuestCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 660
+   },
+   {
+    "name": "LogBookStoryCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 668
+   },
+   {
+    "name": "MapPaths",
+    "type": "Map_KK",
+    "donor_off": 676
+   },
+   {
+    "name": "SoundUpDown",
+    "type": "CCharString",
+    "donor_off": 696
+   },
+   {
+    "name": "SoundSlider",
+    "type": "CCharString",
+    "donor_off": 704
+   },
+   {
+    "name": "SoundBack",
+    "type": "CCharString",
+    "donor_off": 712
+   },
+   {
+    "name": "SoundForward",
+    "type": "CCharString",
+    "donor_off": 720
+   },
+   {
+    "name": "SoundError",
+    "type": "CCharString",
+    "donor_off": 728
+   },
+   {
+    "name": "SoundExit",
+    "type": "CCharString",
+    "donor_off": 736
+   },
+   {
+    "name": "HeroDollTLX",
+    "type": "float",
+    "donor_off": 816
+   },
+   {
+    "name": "HeroDollTLY",
+    "type": "float",
+    "donor_off": 820
+   },
+   {
+    "name": "HeroDollBRX",
+    "type": "float",
+    "donor_off": 824
+   },
+   {
+    "name": "HeroDollBRY",
+    "type": "float",
+    "donor_off": 828
+   },
+   {
+    "name": "HeroDollSphereRadius",
+    "type": "float",
+    "donor_off": 832
+   },
+   {
+    "name": "HeroDollTLX_PC",
+    "type": "float",
+    "donor_off": 836
+   },
+   {
+    "name": "HeroDollTLY_PC",
+    "type": "float",
+    "donor_off": 840
+   },
+   {
+    "name": "HeroDollBRX_PC",
+    "type": "float",
+    "donor_off": 844
+   },
+   {
+    "name": "HeroDollBRY_PC",
+    "type": "float",
+    "donor_off": 848
+   },
+   {
+    "name": "HeroDollSphereRadius_PC",
+    "type": "float",
+    "donor_off": 852
+   },
+   {
+    "name": "HeroDollFrameTLX_PC",
+    "type": "float",
+    "donor_off": 856
+   },
+   {
+    "name": "HeroDollFrameTLY_PC",
+    "type": "float",
+    "donor_off": 860
+   },
+   {
+    "name": "HeroDollFrameEmulateListOffset",
+    "type": "float",
+    "donor_off": 864
+   },
+   {
+    "name": "QuestStartScreenMusic",
+    "type": "enum EMusicSetType",
+    "donor_off": 868
+   },
+   {
+    "name": "QuestCompleteScreenMusic",
+    "type": "enum EMusicSetType",
+    "donor_off": 872
+   },
+   {
+    "name": "QuestFailureScreenMusic",
+    "type": "enum EMusicSetType",
+    "donor_off": 876
+   },
+   {
+    "name": "DeathScreenMusic",
+    "type": "enum EMusicSetType",
+    "donor_off": 880
+   },
+   {
+    "name": "CountUpSound",
+    "type": "CCharString",
+    "donor_off": 744
+   },
+   {
+    "name": "DigitCountTime",
+    "type": "float",
+    "donor_off": 884
+   },
+   {
+    "name": "SaveHeroGraphicIndex",
+    "type": "uint32",
+    "donor_off": 888
+   },
+   {
+    "name": "MiniMapGraphics",
+    "type": "Map_JVCCharString__",
+    "donor_off": 892
+   },
+   {
+    "name": "SoundKeyboardUp",
+    "type": "CCharString",
+    "donor_off": 752
+   },
+   {
+    "name": "SoundKeyboardDown",
+    "type": "CCharString",
+    "donor_off": 760
+   },
+   {
+    "name": "SoundKeyboardLeft",
+    "type": "CCharString",
+    "donor_off": 768
+   },
+   {
+    "name": "SoundKeyboardRight",
+    "type": "CCharString",
+    "donor_off": 776
+   },
+   {
+    "name": "SoundKeyboardEnterCharacter",
+    "type": "CCharString",
+    "donor_off": 784
+   },
+   {
+    "name": "SoundKeyboardDeleteCharacter",
+    "type": "CCharString",
+    "donor_off": 792
+   },
+   {
+    "name": "SoundKeyboardDone",
+    "type": "CCharString",
+    "donor_off": 800
+   },
+   {
+    "name": "FrontEndMusic",
+    "type": "CWideString",
+    "donor_off": 808
+   },
+   {
+    "name": "KeyboardSmallKeyGraphic",
+    "type": "int32",
+    "donor_off": 912
+   },
+   {
+    "name": "KeyboardLargeKeyGraphic",
+    "type": "int32",
+    "donor_off": 916
+   },
+   {
+    "name": "TimeInSecsForFade",
+    "type": "float",
+    "donor_off": 924
+   },
+   {
+    "name": "BackBufferFilterSaturation",
+    "type": "float",
+    "donor_off": 928
+   },
+   {
+    "name": "BackBufferFilterContrast",
+    "type": "float",
+    "donor_off": 932
+   },
+   {
+    "name": "BackBufferFilterBrightness",
+    "type": "float",
+    "donor_off": 936
+   },
+   {
+    "name": "BackBufferFilterTintR",
+    "type": "float",
+    "donor_off": 940
+   },
+   {
+    "name": "BackBufferFilterTintG",
+    "type": "float",
+    "donor_off": 944
+   },
+   {
+    "name": "BackBufferFilterTintB",
+    "type": "float",
+    "donor_off": 948
+   },
+   {
+    "name": "BackBufferFilterTintScale",
+    "type": "float",
+    "donor_off": 952
+   },
+   {
+    "name": "BackBufferDiffuseScale",
+    "type": "float",
+    "donor_off": 956
+   },
+   {
+    "name": "BackBufferAmbientScale",
+    "type": "float",
+    "donor_off": 960
+   },
+   {
+    "name": "MinimumFilterColor",
+    "type": "float",
+    "donor_off": 964
+   }
+  ]
+ },
+ "CUIIconsDef": {
+  "addr": "01929cb6",
+  "retail_offsets": false,
+  "note": "recovered 2026-07-19 schema-gap sweep; validated ALL_MATCH",
+  "fields": [
+   {
+    "name": "IconFriendRequestReceived",
+    "type": "uint32",
+    "donor_off": 68
+   },
+   {
+    "name": "IconFriendRequestReceivedOn",
+    "type": "uint32",
+    "donor_off": 72
+   },
+   {
+    "name": "IconFriendRequestSent",
+    "type": "uint32",
+    "donor_off": 76
+   },
+   {
+    "name": "IconFriendRequestSentOn",
+    "type": "uint32",
+    "donor_off": 80
+   },
+   {
+    "name": "IconGameInviteReceived",
+    "type": "uint32",
+    "donor_off": 84
+   },
+   {
+    "name": "IconGameInviteReceivedOn",
+    "type": "uint32",
+    "donor_off": 88
+   },
+   {
+    "name": "IconGameInviteSent",
+    "type": "uint32",
+    "donor_off": 92
+   },
+   {
+    "name": "IconGameInviteSentOn",
+    "type": "uint32",
+    "donor_off": 96
+   },
+   {
+    "name": "IconMute",
+    "type": "uint32",
+    "donor_off": 100
+   },
+   {
+    "name": "IconMuteOn",
+    "type": "uint32",
+    "donor_off": 104
+   },
+   {
+    "name": "IconOnline",
+    "type": "uint32",
+    "donor_off": 108
+   },
+   {
+    "name": "IconOnlineOn",
+    "type": "uint32",
+    "donor_off": 112
+   },
+   {
+    "name": "IconPasscodeBlank",
+    "type": "uint32",
+    "donor_off": 116
+   },
+   {
+    "name": "IconPasscodeFilled",
+    "type": "uint32",
+    "donor_off": 120
+   },
+   {
+    "name": "IconTV",
+    "type": "uint32",
+    "donor_off": 124
+   },
+   {
+    "name": "IconTVOn",
+    "type": "uint32",
+    "donor_off": 128
+   },
+   {
+    "name": "IconVoice",
+    "type": "uint32",
+    "donor_off": 132
+   },
+   {
+    "name": "IconVoiceOn",
+    "type": "uint32",
+    "donor_off": 136
+   },
+   {
+    "name": "IconWait1",
+    "type": "uint32",
+    "donor_off": 140
+   },
+   {
+    "name": "IconWait2",
+    "type": "uint32",
+    "donor_off": 144
+   },
+   {
+    "name": "IconWait3",
+    "type": "uint32",
+    "donor_off": 148
+   },
+   {
+    "name": "IconWait4",
+    "type": "uint32",
+    "donor_off": 152
+   },
+   {
+    "name": "IconProgress",
+    "type": "uint32",
+    "donor_off": 156
+   },
+   {
+    "name": "IconProgressOn",
+    "type": "uint32",
+    "donor_off": 160
+   },
+   {
+    "name": "IconA",
+    "type": "uint32",
+    "donor_off": 164
+   },
+   {
+    "name": "IconB",
+    "type": "uint32",
+    "donor_off": 168
+   },
+   {
+    "name": "IconX",
+    "type": "uint32",
+    "donor_off": 172
+   },
+   {
+    "name": "IconY",
+    "type": "uint32",
+    "donor_off": 176
+   },
+   {
+    "name": "IconBlank",
+    "type": "uint32",
+    "donor_off": 180
+   },
+   {
+    "name": "IconUpArrow",
+    "type": "uint32",
+    "donor_off": 184
+   },
+   {
+    "name": "IconDownArrow",
+    "type": "uint32",
+    "donor_off": 188
+   },
+   {
+    "name": "IconListHighlight",
+    "type": "uint32",
+    "donor_off": 192
+   }
+  ]
+ },
+ "CUIStateDef": {
+  "addr": "01f8df50",
+  "retail_offsets": false,
+  "note": "recovered 2026-07-19 schema-gap sweep; validated ALL_MATCH",
+  "fields": [
+   {
+    "name": "GraphicIndex",
+    "type": "uint32",
+    "donor_off": 68
+   },
+   {
+    "name": "PositionX",
+    "type": "float",
+    "donor_off": 80
+   },
+   {
+    "name": "PositionY",
+    "type": "float",
+    "donor_off": 84
+   },
+   {
+    "name": "ZoomX",
+    "type": "float",
+    "donor_off": 88
+   },
+   {
+    "name": "ZoomY",
+    "type": "float",
+    "donor_off": 92
+   },
+   {
+    "name": "ColourR",
+    "type": "float",
+    "donor_off": 96
+   },
+   {
+    "name": "ColourG",
+    "type": "float",
+    "donor_off": 100
+   },
+   {
+    "name": "ColourB",
+    "type": "float",
+    "donor_off": 104
+   },
+   {
+    "name": "ColourA",
+    "type": "float",
+    "donor_off": 108
+   },
+   {
+    "name": "UpdateTime",
+    "type": "float",
+    "donor_off": 112
+   },
+   {
+    "name": "StateChangeType",
+    "type": "enum EStateChangeType_NUISystem",
+    "donor_off": 76
+   },
+   {
+    "name": "LinearChange",
+    "type": "bool",
+    "donor_off": 136
+   },
+   {
+    "name": "StateChangeFlag",
+    "type": "uint32",
+    "donor_off": 72
+   },
+   {
+    "name": "ChildrenNotAffected",
+    "type": "Vector_uint32",
+    "donor_off": 116
+   }
+  ]
+ },
+ "CCombatAbilityBlockDefBase": {
+  "addr": "0194c731",
+  "retail_offsets": false,
+  "note": "recovered 2026-07-19 schema-gap sweep; validated ALL_MATCH",
+  "fields": [
+   {
+    "name": "BlockAngle",
+    "type": "float",
+    "donor_off": 64
+   },
+   {
+    "name": "BlockCanBeBroken",
+    "type": "bool",
+    "donor_off": 68
+   },
+   {
+    "name": "ForceRecoilWhenBlocking",
+    "type": "bool",
+    "donor_off": 69
+   },
+   {
+    "name": "CombatAbility",
+    "type": "CCombatAbilityData",
+    "donor_off": 40
+   },
+   {
+    "name": "ValidBlockWeaponTypes",
+    "type": "Vector_enum",
+    "donor_off": 48
+   }
+  ]
+ },
+ "OBJECT": {
+  "addr": "0191c3df",
+  "retail_offsets": false,
+  "alias_of": "CThingObjectDef",
+  "inherits": "CThingBaseDef",
+  "fields_include_base": true,
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Components",
+    "type": "CThingComponentSet",
+    "donor_off": 65
+   },
+   {
+    "name": "GroupDef",
+    "type": "int32",
+    "donor_off": 19
+   },
+   {
+    "name": "RenderFadeDistance",
+    "type": "float",
+    "donor_off": 20
+   },
+   {
+    "name": "PersistenceFlags",
+    "type": "int32",
+    "donor_off": 21
+   },
+   {
+    "name": "Health",
+    "type": "float",
+    "donor_off": 22
+   },
+   {
+    "name": "MinHealth",
+    "type": "float",
+    "donor_off": 23
+   },
+   {
+    "name": "MeshHeightOffset",
+    "type": "float",
+    "donor_off": 24
+   },
+   {
+    "name": "MeshHeight",
+    "type": "float",
+    "donor_off": 25
+   },
+   {
+    "name": "MeshRadius",
+    "type": "float",
+    "donor_off": 26
+   },
+   {
+    "name": "ApproxMaxMeshHeight",
+    "type": "float",
+    "donor_off": 27
+   },
+   {
+    "name": "DefaultScriptName",
+    "type": "CDefString",
+    "donor_off": 28
+   },
+   {
+    "name": "DefaultScriptData",
+    "type": "CDefString",
+    "donor_off": 29
+   },
+   {
+    "name": "Graphic",
+    "type": "CEngineGraphic",
+    "donor_off": 120
+   },
+   {
+    "name": "RotationTime",
+    "type": "float",
+    "donor_off": 136
+   },
+   {
+    "name": "Material",
+    "type": "int32",
+    "donor_off": 140
+   },
+   {
+    "name": "FloorMaterial",
+    "type": "int32",
+    "donor_off": 144
+   },
+   {
+    "name": "OnDeathObject",
+    "type": "int32",
+    "donor_off": 148
+   },
+   {
+    "name": "Property",
+    "type": "uint32",
+    "donor_off": 152
+   },
+   {
+    "name": "DieOffTimer",
+    "type": "int32",
+    "donor_off": 156
+   }
+  ]
+ },
+ "BUILDING": {
+  "addr": "0191ca19",
+  "retail_offsets": false,
+  "alias_of": "CThingBuildingDef",
+  "inherits": "CThingBaseDef",
+  "fields_include_base": true,
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Components",
+    "type": "CThingComponentSet",
+    "donor_off": 65
+   },
+   {
+    "name": "GroupDef",
+    "type": "int32",
+    "donor_off": 19
+   },
+   {
+    "name": "RenderFadeDistance",
+    "type": "float",
+    "donor_off": 20
+   },
+   {
+    "name": "PersistenceFlags",
+    "type": "int32",
+    "donor_off": 21
+   },
+   {
+    "name": "Health",
+    "type": "float",
+    "donor_off": 22
+   },
+   {
+    "name": "MinHealth",
+    "type": "float",
+    "donor_off": 23
+   },
+   {
+    "name": "MeshHeightOffset",
+    "type": "float",
+    "donor_off": 24
+   },
+   {
+    "name": "MeshHeight",
+    "type": "float",
+    "donor_off": 25
+   },
+   {
+    "name": "MeshRadius",
+    "type": "float",
+    "donor_off": 26
+   },
+   {
+    "name": "ApproxMaxMeshHeight",
+    "type": "float",
+    "donor_off": 27
+   },
+   {
+    "name": "DefaultScriptName",
+    "type": "CDefString",
+    "donor_off": 28
+   },
+   {
+    "name": "DefaultScriptData",
+    "type": "CDefString",
+    "donor_off": 29
+   },
+   {
+    "name": "DieOffTimer",
+    "type": "int32",
+    "donor_off": 120
+   },
+   {
+    "name": "SimBuildingDef",
+    "type": "uint32",
+    "donor_off": 124
+   },
+   {
+    "name": "Graphic",
+    "type": "CEngineGraphic",
+    "donor_off": 128
+   },
+   {
+    "name": "WallMaterial",
+    "type": "int32",
+    "donor_off": 144
+   },
+   {
+    "name": "FloorMaterial",
+    "type": "int32",
+    "donor_off": 148
+   },
+   {
+    "name": "CameraManagerSetIndex",
+    "type": "int32",
+    "donor_off": 164
+   },
+   {
+    "name": "ReverbEnvironmentType",
+    "type": "enum EReverbEnvironmentType",
+    "donor_off": 152
+   },
+   {
+    "name": "ReverbEnvironmentLevel",
+    "type": "float",
+    "donor_off": 156
+   },
+   {
+    "name": "OutsideOcclusionLevel",
+    "type": "float",
+    "donor_off": 160
+   }
+  ]
+ },
+ "THING": {
+  "addr": "01fd5340",
+  "retail_offsets": false,
+  "alias_of": "CThingBaseDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Components",
+    "type": "CThingComponentSet",
+    "donor_off": 65
+   },
+   {
+    "name": "GroupDef",
+    "type": "int32",
+    "donor_off": 19
+   },
+   {
+    "name": "RenderFadeDistance",
+    "type": "float",
+    "donor_off": 20
+   },
+   {
+    "name": "PersistenceFlags",
+    "type": "int32",
+    "donor_off": 21
+   },
+   {
+    "name": "Health",
+    "type": "float",
+    "donor_off": 22
+   },
+   {
+    "name": "MinHealth",
+    "type": "float",
+    "donor_off": 23
+   },
+   {
+    "name": "MeshHeightOffset",
+    "type": "float",
+    "donor_off": 24
+   },
+   {
+    "name": "MeshHeight",
+    "type": "float",
+    "donor_off": 25
+   },
+   {
+    "name": "MeshRadius",
+    "type": "float",
+    "donor_off": 26
+   },
+   {
+    "name": "ApproxMaxMeshHeight",
+    "type": "float",
+    "donor_off": 27
+   },
+   {
+    "name": "DefaultScriptName",
+    "type": "CDefString",
+    "donor_off": 28
+   },
+   {
+    "name": "DefaultScriptData",
+    "type": "CDefString",
+    "donor_off": 29
+   }
+  ]
+ },
+ "LOCAL_DETAIL_GENERATOR": {
+  "addr": "01932953",
+  "retail_offsets": false,
+  "alias_of": "CEngineLocalDetailGeneratorDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Layers",
+    "type": "vector<CEngineLocalDetailLayerDef>",
+    "donor_off": 68
+   }
+  ]
+ },
+ "SHOT": {
+  "addr": "0191b858",
+  "retail_offsets": false,
+  "alias_of": "CThingShotDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Speed",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "PrimaryEffect",
+    "type": "int32",
+    "donor_off": 72
+   },
+   {
+    "name": "PrimaryEffectSound",
+    "type": "int32",
+    "donor_off": 76
+   },
+   {
+    "name": "AttachedContinuousEffect",
+    "type": "int32",
+    "donor_off": 80
+   },
+   {
+    "name": "AttachedContinuousSound",
+    "type": "int32",
+    "donor_off": 84
+   },
+   {
+    "name": "UseEndTimeLineOnContinousEffect",
+    "type": "bool",
+    "donor_off": 88
+   },
+   {
+    "name": "HitThingDamage",
+    "type": "float",
+    "donor_off": 92
+   },
+   {
+    "name": "HitThingShieldDamage",
+    "type": "float",
+    "donor_off": 96
+   },
+   {
+    "name": "CauseDamage",
+    "type": "bool",
+    "donor_off": 100
+   },
+   {
+    "name": "ShotDefinitionClassName",
+    "type": "CDefString",
+    "donor_off": 104
+   },
+   {
+    "name": "ShotOffsetAngleRange",
+    "type": "CFloatRange",
+    "donor_off": 108
+   },
+   {
+    "name": "ShotOffsetRadiusRange",
+    "type": "CFloatRange",
+    "donor_off": 116
+   },
+   {
+    "name": "ExplosionDef",
+    "type": "int32",
+    "donor_off": 124
+   },
+   {
+    "name": "GroundExplosionDef",
+    "type": "int32",
+    "donor_off": 128
+   },
+   {
+    "name": "ObjectDef",
+    "type": "int32",
+    "donor_off": 132
+   },
+   {
+    "name": "LeavesObjectBehind",
+    "type": "bool",
+    "donor_off": 136
+   },
+   {
+    "name": "IsHittableByMelee",
+    "type": "bool",
+    "donor_off": 137
+   },
+   {
+    "name": "IsDeflectedOnHitByMelee",
+    "type": "bool",
+    "donor_off": 138
+   },
+   {
+    "name": "MeleeHitDeflectionDamageMultiplier",
+    "type": "float",
+    "donor_off": 140
+   },
+   {
+    "name": "FaceMovementDirection",
+    "type": "bool",
+    "donor_off": 144
+   },
+   {
+    "name": "AllowDeflections",
+    "type": "bool",
+    "donor_off": 145
+   },
+   {
+    "name": "BounceOnGround",
+    "type": "bool",
+    "donor_off": 146
+   },
+   {
+    "name": "Bounciness",
+    "type": "float",
+    "donor_off": 148
+   },
+   {
+    "name": "RotateOnDeflection",
+    "type": "bool",
+    "donor_off": 152
+   },
+   {
+    "name": "IsBlockable",
+    "type": "bool",
+    "donor_off": 153
+   },
+   {
+    "name": "DamageType",
+    "type": "enum EDamageAttribute",
+    "donor_off": 156
+   },
+   {
+    "name": "NumSubShots",
+    "type": "int32",
+    "donor_off": 160
+   },
+   {
+    "name": "SubShotType",
+    "type": "int32",
+    "donor_off": 164
+   },
+   {
+    "name": "SubShotCreationTime",
+    "type": "float",
+    "donor_off": 168
+   },
+   {
+    "name": "SubShotMaxAngle",
+    "type": "float",
+    "donor_off": 172
+   },
+   {
+    "name": "RemoveMainShotOnSubShotCreation",
+    "type": "bool",
+    "donor_off": 176
+   },
+   {
+    "name": "DoesExplosionDamageCaster",
+    "type": "bool",
+    "donor_off": 177
+   },
+   {
+    "name": "CanHitRollingTargets",
+    "type": "bool",
+    "donor_off": 178
+   },
+   {
+    "name": "PreventSlidingOnCollision",
+    "type": "bool",
+    "donor_off": 179
+   }
+  ]
+ },
+ "MARKER": {
+  "addr": "0191d2e0",
+  "retail_offsets": false,
+  "alias_of": "CThingMarkerDef",
+  "inherits": "CThingBaseDef",
+  "fields_include_base": true,
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Components",
+    "type": "CThingComponentSet",
+    "donor_off": 65
+   },
+   {
+    "name": "GroupDef",
+    "type": "int32",
+    "donor_off": 19
+   },
+   {
+    "name": "RenderFadeDistance",
+    "type": "float",
+    "donor_off": 20
+   },
+   {
+    "name": "PersistenceFlags",
+    "type": "int32",
+    "donor_off": 21
+   },
+   {
+    "name": "Health",
+    "type": "float",
+    "donor_off": 22
+   },
+   {
+    "name": "MinHealth",
+    "type": "float",
+    "donor_off": 23
+   },
+   {
+    "name": "MeshHeightOffset",
+    "type": "float",
+    "donor_off": 24
+   },
+   {
+    "name": "MeshHeight",
+    "type": "float",
+    "donor_off": 25
+   },
+   {
+    "name": "MeshRadius",
+    "type": "float",
+    "donor_off": 26
+   },
+   {
+    "name": "ApproxMaxMeshHeight",
+    "type": "float",
+    "donor_off": 27
+   },
+   {
+    "name": "DefaultScriptName",
+    "type": "CDefString",
+    "donor_off": 28
+   },
+   {
+    "name": "DefaultScriptData",
+    "type": "CDefString",
+    "donor_off": 29
+   },
+   {
+    "name": "Graphic",
+    "type": "CEngineGraphic",
+    "donor_off": 120
+   },
+   {
+    "name": "TriggerType",
+    "type": "enum ESwitchTriggerType",
+    "donor_off": 136
+   },
+   {
+    "name": "Properties",
+    "type": "uint32",
+    "donor_off": 140
+   }
+  ]
+ },
+ "ENVIRONMENT_THEME_DAY": {
+  "addr": "019325e5",
+  "retail_offsets": false,
+  "alias_of": "CEnvironmentThemeDaySetDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Time",
+    "type": "Vector_CEnvironmentThemeDef",
+    "donor_off": 68
+   },
+   {
+    "name": "SunTilt",
+    "type": "float",
+    "donor_off": 88
+   },
+   {
+    "name": "SunRotate",
+    "type": "float",
+    "donor_off": 92
+   },
+   {
+    "name": "SunHeight",
+    "type": "float",
+    "donor_off": 96
+   },
+   {
+    "name": "MoonTilt",
+    "type": "float",
+    "donor_off": 100
+   },
+   {
+    "name": "MoonRotate",
+    "type": "float",
+    "donor_off": 104
+   },
+   {
+    "name": "MoonHeight",
+    "type": "float",
+    "donor_off": 108
+   },
+   {
+    "name": "ColourLookupColumn",
+    "type": "int32",
+    "donor_off": 112
+   },
+   {
+    "name": "EditorColour",
+    "type": "CRGBColour",
+    "donor_off": 116
+   },
+   {
+    "name": "FishWeightMult",
+    "type": "float",
+    "donor_off": 120
+   }
+  ]
+ },
+ "INVENTORY_TYPE": {
+  "addr": "0192b0ca",
+  "retail_offsets": false,
+  "alias_of": "CInventoryDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "InitialCategoryMovementRepeatDelay",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "ContinuedCategoryMovementRepeatDelay",
+    "type": "float",
+    "donor_off": 72
+   },
+   {
+    "name": "InitialItemMovementRepeatDelay",
+    "type": "float",
+    "donor_off": 76
+   },
+   {
+    "name": "ContinuedItemMovementRepeatDelay",
+    "type": "float",
+    "donor_off": 80
+   },
+   {
+    "name": "MovementSound",
+    "type": "int32",
+    "donor_off": 84
+   },
+   {
+    "name": "NoMovementSound",
+    "type": "int32",
+    "donor_off": 88
+   },
+   {
+    "name": "InventoryOpenSound",
+    "type": "int32",
+    "donor_off": 92
+   },
+   {
+    "name": "TrackSelectedItems",
+    "type": "bool",
+    "donor_off": 96
+   },
+   {
+    "name": "CategoriesTLPos",
+    "type": "C2DVector",
+    "donor_off": 196
+   },
+   {
+    "name": "MeshAreaTLPos",
+    "type": "C2DVector",
+    "donor_off": 204
+   },
+   {
+    "name": "MeshAreaBRPos",
+    "type": "C2DVector",
+    "donor_off": 212
+   },
+   {
+    "name": "NextCategoryOffset",
+    "type": "C2DVector",
+    "donor_off": 220
+   },
+   {
+    "name": "FirstItemOffsetFromCategory",
+    "type": "C2DVector",
+    "donor_off": 228
+   },
+   {
+    "name": "NextItemOffset",
+    "type": "C2DVector",
+    "donor_off": 236
+   },
+   {
+    "name": "GenericFont",
+    "type": "CDefString",
+    "donor_off": 244
+   },
+   {
+    "name": "BackGroundColour",
+    "type": "CRGBColour",
+    "donor_off": 248
+   },
+   {
+    "name": "ClothingDoll",
+    "type": "int32",
+    "donor_off": 252
+   },
+   {
+    "name": "DollCentreOffset",
+    "type": "C3DVector",
+    "donor_off": 256
+   },
+   {
+    "name": "DollBoundingSphereRadius",
+    "type": "float",
+    "donor_off": 268
+   },
+   {
+    "name": "TotalExperienceTextPos",
+    "type": "C2DVector",
+    "donor_off": 272
+   },
+   {
+    "name": "TotalExperienceText",
+    "type": "uint32",
+    "donor_off": 280
+   },
+   {
+    "name": "SpendingExperienceTextPos",
+    "type": "C2DVector",
+    "donor_off": 284
+   },
+   {
+    "name": "SpendingExperienceText",
+    "type": "uint32",
+    "donor_off": 292
+   },
+   {
+    "name": "StrengthLevelTextPos",
+    "type": "C2DVector",
+    "donor_off": 296
+   },
+   {
+    "name": "StrengthLevelColour",
+    "type": "CRGBColour",
+    "donor_off": 304
+   },
+   {
+    "name": "SkillLevelTextPos",
+    "type": "C2DVector",
+    "donor_off": 308
+   },
+   {
+    "name": "SkillLevelColour",
+    "type": "CRGBColour",
+    "donor_off": 316
+   },
+   {
+    "name": "WillLevelTextPos",
+    "type": "C2DVector",
+    "donor_off": 320
+   },
+   {
+    "name": "WillLevelColour",
+    "type": "CRGBColour",
+    "donor_off": 328
+   },
+   {
+    "name": "RenownLevelTextPos",
+    "type": "C2DVector",
+    "donor_off": 332
+   },
+   {
+    "name": "HeroLevelTextPos",
+    "type": "C2DVector",
+    "donor_off": 340
+   },
+   {
+    "name": "StatLevelsFirstLineTextPos",
+    "type": "C2DVector",
+    "donor_off": 348
+   },
+   {
+    "name": "StatLevelsNextLineTextOffset",
+    "type": "C2DVector",
+    "donor_off": 356
+   },
+   {
+    "name": "ButtonAssignmentTextPos",
+    "type": "C2DVector",
+    "donor_off": 364
+   },
+   {
+    "name": "ButtonAssignmentTextOffset",
+    "type": "C2DVector",
+    "donor_off": 372
+   },
+   {
+    "name": "StatLevelsTexts",
+    "type": "Vector_K",
+    "donor_off": 380
+   },
+   {
+    "name": "StatLevelsColours",
+    "type": "Vector_VCRGBColour__",
+    "donor_off": 400
+   },
+   {
+    "name": "WeaponsTextNumberOfSlots",
+    "type": "int32",
+    "donor_off": 424
+   },
+   {
+    "name": "WeaponsTextSeparator",
+    "type": "int32",
+    "donor_off": 420
+   },
+   {
+    "name": "WeaponsTextSlot",
+    "type": "int32",
+    "donor_off": 428
+   },
+   {
+    "name": "WeaponsTextSuccessfulAugmentation",
+    "type": "int32",
+    "donor_off": 432
+   },
+   {
+    "name": "WeaponsTextNoFreeSlots",
+    "type": "int32",
+    "donor_off": 436
+   },
+   {
+    "name": "WeaponsTextReadyToAugment",
+    "type": "int32",
+    "donor_off": 440
+   },
+   {
+    "name": "WeaponsTextNotReadyToAugment",
+    "type": "int32",
+    "donor_off": 444
+   },
+   {
+    "name": "WeaponsDescriptionBoxTLPos",
+    "type": "C2DVector",
+    "donor_off": 448
+   },
+   {
+    "name": "WeaponsDescriptionBoxExtents",
+    "type": "C2DVector",
+    "donor_off": 456
+   },
+   {
+    "name": "WeaponsActiveMeleeIconPos",
+    "type": "C2DVector",
+    "donor_off": 464
+   },
+   {
+    "name": "WeaponsActiveRangeIconPos",
+    "type": "C2DVector",
+    "donor_off": 472
+   },
+   {
+    "name": "WeaponAugmentationTextStartPos",
+    "type": "C2DVector",
+    "donor_off": 480
+   },
+   {
+    "name": "WeaponAugmentationTextNewLineOffset",
+    "type": "C2DVector",
+    "donor_off": 488
+   },
+   {
+    "name": "AugmentationStatusTextAreaTLPos",
+    "type": "C2DVector",
+    "donor_off": 496
+   },
+   {
+    "name": "AugmentationStatusTextAreaBRPos",
+    "type": "C2DVector",
+    "donor_off": 504
+   },
+   {
+    "name": "TimeToDisplayWarningMessageInSeconds",
+    "type": "float",
+    "donor_off": 512
+   },
+   {
+    "name": "NumberOfSecondsForObjectRotation",
+    "type": "float",
+    "donor_off": 532
+   },
+   {
+    "name": "MaxNumberOfItemsToDisplayPerCategory",
+    "type": "int32",
+    "donor_off": 536
+   },
+   {
+    "name": "MaxNumberOfCategoriesToDisplay",
+    "type": "int32",
+    "donor_off": 540
+   },
+   {
+    "name": "MaxNumberOfScreenNamesToDisplay",
+    "type": "int32",
+    "donor_off": 544
+   },
+   {
+    "name": "WeaponsShadedCircleTLPos",
+    "type": "C2DVector",
+    "donor_off": 516
+   },
+   {
+    "name": "WeaponsShadedCircleExtents",
+    "type": "C2DVector",
+    "donor_off": 524
+   },
+   {
+    "name": "InventoryName",
+    "type": "uint32",
+    "donor_off": 548
+   },
+   {
+    "name": "InventoryIdentifier",
+    "type": "enum EInventoryIdentifier_NInventory",
+    "donor_off": 552
+   },
+   {
+    "name": "MapScreenMapDisplayBoxTLPos",
+    "type": "C2DVector",
+    "donor_off": 556
+   },
+   {
+    "name": "MapScreenMapDisplayBoxBRPos",
+    "type": "C2DVector",
+    "donor_off": 564
+   },
+   {
+    "name": "MapScreenRegionNamePos",
+    "type": "C2DVector",
+    "donor_off": 572
+   },
+   {
+    "name": "MapScreenWorldMapGraphic",
+    "type": "int32",
+    "donor_off": 580
+   },
+   {
+    "name": "MapScreenWorldMapPos",
+    "type": "C2DVector",
+    "donor_off": 584
+   },
+   {
+    "name": "MapScreenRegionUnknownGraphic",
+    "type": "int32",
+    "donor_off": 592
+   },
+   {
+    "name": "MapScreenRegionUnknownHighlightGraphic",
+    "type": "int32",
+    "donor_off": 596
+   },
+   {
+    "name": "MapScreenRegionHeroGraphic",
+    "type": "int32",
+    "donor_off": 600
+   },
+   {
+    "name": "MapScreenRegionQuestGraphic",
+    "type": "int32",
+    "donor_off": 604
+   },
+   {
+    "name": "MapScreenRegionTeleportGraphic",
+    "type": "int32",
+    "donor_off": 608
+   },
+   {
+    "name": "MapScreenRegionHouseGraphic",
+    "type": "int32",
+    "donor_off": 612
+   },
+   {
+    "name": "StatsTitleTLPos",
+    "type": "C2DVector",
+    "donor_off": 616
+   },
+   {
+    "name": "StatsShadedCircleTLPos",
+    "type": "C2DVector",
+    "donor_off": 624
+   },
+   {
+    "name": "StatsShadedCircleExtents",
+    "type": "C2DVector",
+    "donor_off": 632
+   },
+   {
+    "name": "StatsProgBarL",
+    "type": "CEngineGraphic",
+    "donor_off": 640
+   },
+   {
+    "name": "StatsProgBarC",
+    "type": "CEngineGraphic",
+    "donor_off": 654
+   },
+   {
+    "name": "StatsProgBarR",
+    "type": "CEngineGraphic",
+    "donor_off": 668
+   },
+   {
+    "name": "StatsProgBarValue",
+    "type": "CEngineGraphic",
+    "donor_off": 682
+   },
+   {
+    "name": "StatsProgBarValueOffset",
+    "type": "C2DVector",
+    "donor_off": 696
+   },
+   {
+    "name": "StatsPersonalityHeadingTLPos",
+    "type": "C2DVector",
+    "donor_off": 704
+   },
+   {
+    "name": "StatsPersonalityHeadingBRPos",
+    "type": "C2DVector",
+    "donor_off": 712
+   },
+   {
+    "name": "StatsPersonalityRenownLowerLabel",
+    "type": "uint32",
+    "donor_off": 720
+   },
+   {
+    "name": "StatsPersonalityRenownUpperLabel",
+    "type": "uint32",
+    "donor_off": 724
+   },
+   {
+    "name": "StatsPersonalityGoodnessLowerLabel",
+    "type": "uint32",
+    "donor_off": 728
+   },
+   {
+    "name": "StatsPersonalityGoodnessUpperLabel",
+    "type": "uint32",
+    "donor_off": 732
+   },
+   {
+    "name": "StatsPersonalityAttractivenessLowerLabel",
+    "type": "uint32",
+    "donor_off": 736
+   },
+   {
+    "name": "StatsPersonalityAttractivenessUpperLabel",
+    "type": "uint32",
+    "donor_off": 740
+   },
+   {
+    "name": "StatsPersonalityScarinessLowerLabel",
+    "type": "uint32",
+    "donor_off": 744
+   },
+   {
+    "name": "StatsPersonalityScarinessUpperLabel",
+    "type": "uint32",
+    "donor_off": 748
+   },
+   {
+    "name": "StatsPersonalityNicenessLowerLabel",
+    "type": "uint32",
+    "donor_off": 752
+   },
+   {
+    "name": "StatsPersonalityNicenessUpperLabel",
+    "type": "uint32",
+    "donor_off": 756
+   },
+   {
+    "name": "StatsPersonalityLabelTextOffset",
+    "type": "C2DVector",
+    "donor_off": 760
+   },
+   {
+    "name": "StatsPersonalityLowerLabelTLPos",
+    "type": "C2DVector",
+    "donor_off": 768
+   },
+   {
+    "name": "StatsPersonalityLowerLabelWidth",
+    "type": "float",
+    "donor_off": 776
+   },
+   {
+    "name": "StatsPersonalityLowerLabelHeight",
+    "type": "float",
+    "donor_off": 780
+   },
+   {
+    "name": "StatsPersonalitySliderWidth",
+    "type": "float",
+    "donor_off": 784
+   },
+   {
+    "name": "StatsPersonalityUpperLabelWidth",
+    "type": "float",
+    "donor_off": 788
+   },
+   {
+    "name": "StatsPersonalityDoll",
+    "type": "int32",
+    "donor_off": 792
+   },
+   {
+    "name": "StatsPersonalityDollCentreOffset",
+    "type": "C3DVector",
+    "donor_off": 796
+   },
+   {
+    "name": "StatsPersonalityDollBoundingSphereRadius",
+    "type": "float",
+    "donor_off": 808
+   },
+   {
+    "name": "StatsStatisticsLabelTLPos",
+    "type": "C2DVector",
+    "donor_off": 812
+   },
+   {
+    "name": "StatsStatisticsLabelWidth",
+    "type": "float",
+    "donor_off": 820
+   },
+   {
+    "name": "StatsStatisticsLabelHeight",
+    "type": "float",
+    "donor_off": 824
+   },
+   {
+    "name": "StatsStatisticsLabelTextOffset",
+    "type": "C2DVector",
+    "donor_off": 828
+   },
+   {
+    "name": "StatsStatisticsDataTextOffset",
+    "type": "C2DVector",
+    "donor_off": 836
+   },
+   {
+    "name": "StatsStatisticsHeadingTLPos",
+    "type": "C2DVector",
+    "donor_off": 844
+   },
+   {
+    "name": "StatsStatisticsHeadingBRPos",
+    "type": "C2DVector",
+    "donor_off": 852
+   },
+   {
+    "name": "StatsStatisticsPeopleKilledLabel",
+    "type": "uint32",
+    "donor_off": 860
+   },
+   {
+    "name": "StatsStatisticsMonstersKilledLabel",
+    "type": "uint32",
+    "donor_off": 864
+   },
+   {
+    "name": "StatsStatisticsMaxMultiplierLabel",
+    "type": "uint32",
+    "donor_off": 868
+   },
+   {
+    "name": "StatsStatisticsPreferredFoodLabel",
+    "type": "uint32",
+    "donor_off": 872
+   },
+   {
+    "name": "StatsStatisticsDietaryTypeLabel",
+    "type": "uint32",
+    "donor_off": 876
+   },
+   {
+    "name": "StatsStatisticsGameTimeElapsedLabel",
+    "type": "uint32",
+    "donor_off": 880
+   },
+   {
+    "name": "StatsStatisticsNumberOfWivesLabel",
+    "type": "uint32",
+    "donor_off": 884
+   },
+   {
+    "name": "StatsStatisticsQuestsActiveLabel",
+    "type": "uint32",
+    "donor_off": 888
+   },
+   {
+    "name": "StatsStatisticsQuestsFinishedLabel",
+    "type": "uint32",
+    "donor_off": 892
+   },
+   {
+    "name": "StatsStatisticsBoastsAchievedLabel",
+    "type": "uint32",
+    "donor_off": 896
+   },
+   {
+    "name": "InitialInventoryStatsItems",
+    "type": "Vector_J",
+    "donor_off": 140
+   },
+   {
+    "name": "InitialInventoryStandardItems",
+    "type": "Vector_J",
+    "donor_off": 160
+   },
+   {
+    "name": "InitialInventoryWeaponsItems",
+    "type": "Vector_J",
+    "donor_off": 120
+   },
+   {
+    "name": "InitialInventoryClothingItems",
+    "type": "Vector_J",
+    "donor_off": 100
+   },
+   {
+    "name": "ClothingShadedCircleTLPos",
+    "type": "C2DVector",
+    "donor_off": 180
+   },
+   {
+    "name": "ClothingShadedCircleExtents",
+    "type": "C2DVector",
+    "donor_off": 188
+   },
+   {
+    "name": "StatsExperienceStrengthTextOffset",
+    "type": "C2DVector",
+    "donor_off": 900
+   },
+   {
+    "name": "StatsExperienceWillTextOffset",
+    "type": "C2DVector",
+    "donor_off": 908
+   },
+   {
+    "name": "StatsExperienceSkillTextOffset",
+    "type": "C2DVector",
+    "donor_off": 916
+   },
+   {
+    "name": "StatsExperienceStrengthText",
+    "type": "uint32",
+    "donor_off": 924
+   },
+   {
+    "name": "StatsExperienceWillText",
+    "type": "uint32",
+    "donor_off": 928
+   },
+   {
+    "name": "StatsExperienceSkillText",
+    "type": "uint32",
+    "donor_off": 932
+   },
+   {
+    "name": "StatsExperiencePoolGeneralTLPos",
+    "type": "C2DVector",
+    "donor_off": 936
+   },
+   {
+    "name": "StatsExperiencePoolGeneralTextOffset",
+    "type": "C2DVector",
+    "donor_off": 944
+   },
+   {
+    "name": "StatsExperiencePoolStrengthGroupTLPos",
+    "type": "C2DVector",
+    "donor_off": 952
+   },
+   {
+    "name": "StatsExperiencePoolSkillGroupTLPos",
+    "type": "C2DVector",
+    "donor_off": 960
+   },
+   {
+    "name": "StatsExperiencePoolWillGroupTLPos",
+    "type": "C2DVector",
+    "donor_off": 968
+   },
+   {
+    "name": "StatsExperiencePoolLabelTLPos",
+    "type": "C2DVector",
+    "donor_off": 976
+   },
+   {
+    "name": "StatsExperiencePoolLabelTextOffset",
+    "type": "C2DVector",
+    "donor_off": 984
+   },
+   {
+    "name": "StatsExperiencePoolLabelWidth",
+    "type": "float",
+    "donor_off": 992
+   },
+   {
+    "name": "StatsExperiencePoolLabelHeight",
+    "type": "float",
+    "donor_off": 996
+   },
+   {
+    "name": "StatsExperiencePoolSliderWidth",
+    "type": "float",
+    "donor_off": 1000
+   },
+   {
+    "name": "StatsExperiencePoolStrengthLabel",
+    "type": "uint32",
+    "donor_off": 1004
+   },
+   {
+    "name": "StatsExperiencePoolSkillLabel",
+    "type": "uint32",
+    "donor_off": 1008
+   },
+   {
+    "name": "StatsExperiencePoolWillLabel",
+    "type": "uint32",
+    "donor_off": 1012
+   },
+   {
+    "name": "StatsExperiencePoolPhysiqueLabel",
+    "type": "uint32",
+    "donor_off": 1016
+   },
+   {
+    "name": "StatsExperiencePoolHealthLabel",
+    "type": "uint32",
+    "donor_off": 1020
+   },
+   {
+    "name": "StatsExperiencePoolToughnessLabel",
+    "type": "uint32",
+    "donor_off": 1024
+   },
+   {
+    "name": "StatsExperiencePoolSpeedLabel",
+    "type": "uint32",
+    "donor_off": 1028
+   },
+   {
+    "name": "StatsExperiencePoolAccuracyLabel",
+    "type": "uint32",
+    "donor_off": 1032
+   },
+   {
+    "name": "StatsExperiencePoolStealthLabel",
+    "type": "uint32",
+    "donor_off": 1036
+   },
+   {
+    "name": "StatsExperiencePoolWeaponMagicLabel",
+    "type": "uint32",
+    "donor_off": 1040
+   },
+   {
+    "name": "StatsExperiencePoolAbilityMagicLabel",
+    "type": "uint32",
+    "donor_off": 1044
+   },
+   {
+    "name": "StatsExperiencePoolPureMagicLabel",
+    "type": "uint32",
+    "donor_off": 1048
+   },
+   {
+    "name": "StatsExperienceStrengthBarValue",
+    "type": "float",
+    "donor_off": 1052
+   },
+   {
+    "name": "StatsExperienceSkillBarValue",
+    "type": "float",
+    "donor_off": 1056
+   },
+   {
+    "name": "StatsExperienceWillBarValue",
+    "type": "float",
+    "donor_off": 1060
+   },
+   {
+    "name": "ExperienceGeneralPoolLabelTLPos",
+    "type": "C2DVector",
+    "donor_off": 1064
+   },
+   {
+    "name": "ExperienceGeneralPoolLabelTextOffset",
+    "type": "C2DVector",
+    "donor_off": 1072
+   },
+   {
+    "name": "ExperienceGeneralPoolWidth",
+    "type": "float",
+    "donor_off": 1080
+   },
+   {
+    "name": "ExperienceGeneralPoolSliderWidth",
+    "type": "float",
+    "donor_off": 1084
+   },
+   {
+    "name": "ExperienceGeneralPoolLabel",
+    "type": "uint32",
+    "donor_off": 1092
+   },
+   {
+    "name": "ExperienceGeneralPoolBarValue",
+    "type": "uint32",
+    "donor_off": 1088
+   },
+   {
+    "name": "ExperienceGeneralPoolSpendTextOffset",
+    "type": "C2DVector",
+    "donor_off": 1096
+   },
+   {
+    "name": "ExperienceStrengthPoolTLPos",
+    "type": "C2DVector",
+    "donor_off": 1104
+   },
+   {
+    "name": "ExperienceSkillPoolTLPos",
+    "type": "C2DVector",
+    "donor_off": 1112
+   },
+   {
+    "name": "ExperienceWillPoolTLPos",
+    "type": "C2DVector",
+    "donor_off": 1120
+   },
+   {
+    "name": "ExperiencePoolWidth",
+    "type": "float",
+    "donor_off": 1128
+   },
+   {
+    "name": "ExperiencePoolHeight",
+    "type": "float",
+    "donor_off": 1132
+   },
+   {
+    "name": "ExperienceTypeTLPos",
+    "type": "C2DVector",
+    "donor_off": 1160
+   },
+   {
+    "name": "ExperienceTypeTLPosOffset",
+    "type": "C2DVector",
+    "donor_off": 1168
+   },
+   {
+    "name": "ExperienceTypeTextOffset",
+    "type": "C2DVector",
+    "donor_off": 1176
+   },
+   {
+    "name": "ExperienceTypeSpendTextOffset",
+    "type": "C2DVector",
+    "donor_off": 1184
+   },
+   {
+    "name": "ExperienceTypeLabelWidth",
+    "type": "float",
+    "donor_off": 1192
+   },
+   {
+    "name": "ExperienceTypeLabelHeight",
+    "type": "float",
+    "donor_off": 1196
+   },
+   {
+    "name": "ExperienceTypeSliderWidth",
+    "type": "float",
+    "donor_off": 1200
+   },
+   {
+    "name": "ExperienceTypeStrengthLabel",
+    "type": "uint32",
+    "donor_off": 1136
+   },
+   {
+    "name": "ExperienceTypeSkillLabel",
+    "type": "uint32",
+    "donor_off": 1140
+   },
+   {
+    "name": "ExperienceTypeWillLabel",
+    "type": "uint32",
+    "donor_off": 1144
+   },
+   {
+    "name": "ExperienceTypePureMagicLabel",
+    "type": "uint32",
+    "donor_off": 1148
+   },
+   {
+    "name": "ExperienceTypeAbilityMagicLabel",
+    "type": "uint32",
+    "donor_off": 1152
+   },
+   {
+    "name": "ExperienceTypeWeaponMagicLabel",
+    "type": "uint32",
+    "donor_off": 1156
+   },
+   {
+    "name": "ExperienceStrengthPhysiqueLabel",
+    "type": "uint32",
+    "donor_off": 1204
+   },
+   {
+    "name": "ExperienceStrengthHealthLabel",
+    "type": "uint32",
+    "donor_off": 1208
+   },
+   {
+    "name": "ExperienceStrengthToughnessLabel",
+    "type": "uint32",
+    "donor_off": 1212
+   },
+   {
+    "name": "ExperienceSkillSpeedLabel",
+    "type": "uint32",
+    "donor_off": 1216
+   },
+   {
+    "name": "ExperienceSkillAccuracyLabel",
+    "type": "uint32",
+    "donor_off": 1220
+   },
+   {
+    "name": "ExperienceSkillStealthLabel",
+    "type": "uint32",
+    "donor_off": 1224
+   },
+   {
+    "name": "ExperienceWeaponMagicBerserkLabel",
+    "type": "uint32",
+    "donor_off": 1228
+   },
+   {
+    "name": "ExperienceWeaponMagicFlamingBladeLabel",
+    "type": "uint32",
+    "donor_off": 1232
+   },
+   {
+    "name": "ExperienceWeaponMagicDoubleStrikeLabel",
+    "type": "uint32",
+    "donor_off": 1236
+   },
+   {
+    "name": "ExperienceWeaponMagicLightningBladeLabel",
+    "type": "uint32",
+    "donor_off": 1240
+   },
+   {
+    "name": "ExperienceAbilityMagicBattleChargeLabel",
+    "type": "uint32",
+    "donor_off": 1244
+   },
+   {
+    "name": "ExperienceAbilityMagicAssassinRushLabel",
+    "type": "uint32",
+    "donor_off": 1248
+   },
+   {
+    "name": "ExperienceAbilityMagicTimeSpellLabel",
+    "type": "uint32",
+    "donor_off": 1252
+   },
+   {
+    "name": "ExperiencePureMagicBurningHandsLabel",
+    "type": "uint32",
+    "donor_off": 1256
+   },
+   {
+    "name": "ExperiencePureMagicPhysicalShieldLabel",
+    "type": "uint32",
+    "donor_off": 1260
+   },
+   {
+    "name": "ExperiencePureMagicForcePushLabel",
+    "type": "uint32",
+    "donor_off": 1264
+   },
+   {
+    "name": "ExperiencePureMagicEnflameSpellLabel",
+    "type": "uint32",
+    "donor_off": 1268
+   },
+   {
+    "name": "ExperiencePureMagicDrainLifeLabel",
+    "type": "uint32",
+    "donor_off": 1272
+   },
+   {
+    "name": "ExperiencePureMagicHealLifeLabel",
+    "type": "uint32",
+    "donor_off": 1276
+   },
+   {
+    "name": "ExperiencePureMagicGhostSwordLabel",
+    "type": "uint32",
+    "donor_off": 1280
+   },
+   {
+    "name": "ExperienceStrengthBarValue",
+    "type": "float",
+    "donor_off": 1284
+   },
+   {
+    "name": "ExperienceSkillBarValue",
+    "type": "float",
+    "donor_off": 1288
+   },
+   {
+    "name": "ExperienceWillBarValue",
+    "type": "float",
+    "donor_off": 1292
+   },
+   {
+    "name": "ExperienceStrengthPhysiqueBarValue",
+    "type": "float",
+    "donor_off": 1296
+   },
+   {
+    "name": "ExperienceStrengthHealthBarValue",
+    "type": "float",
+    "donor_off": 1300
+   },
+   {
+    "name": "ExperienceStrengthToughnessBarValue",
+    "type": "float",
+    "donor_off": 1304
+   },
+   {
+    "name": "ExperienceSkillSpeedBarValue",
+    "type": "float",
+    "donor_off": 1308
+   },
+   {
+    "name": "ExperienceSkillAccuracyBarValue",
+    "type": "float",
+    "donor_off": 1312
+   },
+   {
+    "name": "ExperienceSkillHealthBarValue",
+    "type": "float",
+    "donor_off": 1316
+   },
+   {
+    "name": "ExperienceWeaponMagicBerserkBarValue",
+    "type": "float",
+    "donor_off": 1320
+   },
+   {
+    "name": "ExperienceWeaponMagicFlamingBladeBarValue",
+    "type": "float",
+    "donor_off": 1324
+   },
+   {
+    "name": "ExperienceWeaponMagicDoubleStrikeBarValue",
+    "type": "float",
+    "donor_off": 1328
+   },
+   {
+    "name": "ExperienceAbilityMagicBattleChargeBarValue",
+    "type": "float",
+    "donor_off": 1332
+   },
+   {
+    "name": "ExperienceAbilityMagicAssassinRushBarValue",
+    "type": "float",
+    "donor_off": 1336
+   },
+   {
+    "name": "ExperienceAbilityMagicTimeSpellBarValue",
+    "type": "float",
+    "donor_off": 1340
+   },
+   {
+    "name": "ExperiencePureMagicBurningHandsBarValue",
+    "type": "float",
+    "donor_off": 1344
+   },
+   {
+    "name": "ExperiencePureMagicPhysicalShieldBarValue",
+    "type": "float",
+    "donor_off": 1348
+   },
+   {
+    "name": "ExperiencePureMagicForcePushBarValue",
+    "type": "float",
+    "donor_off": 1352
+   },
+   {
+    "name": "ExperienceProgBarL",
+    "type": "CEngineGraphic",
+    "donor_off": 1356
+   },
+   {
+    "name": "ExperienceProgBarC",
+    "type": "CEngineGraphic",
+    "donor_off": 1370
+   },
+   {
+    "name": "ExperienceProgBarR",
+    "type": "CEngineGraphic",
+    "donor_off": 1384
+   },
+   {
+    "name": "ExperienceProgBarValue",
+    "type": "CEngineGraphic",
+    "donor_off": 1398
+   },
+   {
+    "name": "ExperienceProgBarValueOffset",
+    "type": "C2DVector",
+    "donor_off": 1412
+   },
+   {
+    "name": "ExperienceSpendTimeOffset",
+    "type": "int32",
+    "donor_off": 1420
+   },
+   {
+    "name": "ExperienceSpendRate",
+    "type": "int32",
+    "donor_off": 1424
+   },
+   {
+    "name": "ExperienceItemLabelStat",
+    "type": "Vector_J",
+    "donor_off": 1428
+   },
+   {
+    "name": "ExperienceItemLabelAbility",
+    "type": "Vector_J",
+    "donor_off": 1448
+   },
+   {
+    "name": "ExperienceSpendGreen",
+    "type": "CEngineGraphic",
+    "donor_off": 1468
+   },
+   {
+    "name": "ExperienceSpendGreenOutline",
+    "type": "CEngineGraphic",
+    "donor_off": 1482
+   },
+   {
+    "name": "ExperienceSpendGreenEnd",
+    "type": "CEngineGraphic",
+    "donor_off": 1496
+   },
+   {
+    "name": "ExperienceSpendRed",
+    "type": "CEngineGraphic",
+    "donor_off": 1510
+   },
+   {
+    "name": "ExperienceSpendRedOutline",
+    "type": "CEngineGraphic",
+    "donor_off": 1524
+   },
+   {
+    "name": "ExperienceSpendRedEnd",
+    "type": "CEngineGraphic",
+    "donor_off": 1538
+   },
+   {
+    "name": "ExperienceDescriptionTextTLPos",
+    "type": "C2DVector",
+    "donor_off": 1552
+   },
+   {
+    "name": "ExperienceDescriptionTextOffset",
+    "type": "C2DVector",
+    "donor_off": 1560
+   },
+   {
+    "name": "QuestCardFeatColour",
+    "type": "CRGBColour",
+    "donor_off": 2012
+   },
+   {
+    "name": "QuestCardCoreColour",
+    "type": "CRGBColour",
+    "donor_off": 2016
+   },
+   {
+    "name": "QuestCardExclusiveColour",
+    "type": "CRGBColour",
+    "donor_off": 2020
+   },
+   {
+    "name": "QuestCardInfoTLPos",
+    "type": "C2DVector",
+    "donor_off": 2024
+   },
+   {
+    "name": "QuestCardInfo2TLPos",
+    "type": "C2DVector",
+    "donor_off": 2032
+   },
+   {
+    "name": "QuestCardNoQuestsTLPos",
+    "type": "C2DVector",
+    "donor_off": 2040
+   },
+   {
+    "name": "QuestCardNoQuestsText",
+    "type": "uint32",
+    "donor_off": 2048
+   },
+   {
+    "name": "QuestCardEdgedButtonTitleTLPos",
+    "type": "C2DVector",
+    "donor_off": 2060
+   },
+   {
+    "name": "QuestCardEdgedButtonExtents",
+    "type": "C2DVector",
+    "donor_off": 2068
+   },
+   {
+    "name": "QuestCardInfoTextOffset",
+    "type": "C2DVector",
+    "donor_off": 2052
+   },
+   {
+    "name": "QuestCardInfoQuestNameLabel",
+    "type": "uint32",
+    "donor_off": 1568
+   },
+   {
+    "name": "QuestCardInfoMoralityLabel",
+    "type": "uint32",
+    "donor_off": 1572
+   },
+   {
+    "name": "QuestCardInfoCoreLabel",
+    "type": "uint32",
+    "donor_off": 1576
+   },
+   {
+    "name": "QuestCardInfoDetailsLabel",
+    "type": "uint32",
+    "donor_off": 1580
+   },
+   {
+    "name": "QuestCardInfoRegionLabel",
+    "type": "uint32",
+    "donor_off": 1584
+   },
+   {
+    "name": "QuestCardInfoOriginatorLabel",
+    "type": "uint32",
+    "donor_off": 1588
+   },
+   {
+    "name": "QuestCardInfoDescriptionLabel",
+    "type": "uint32",
+    "donor_off": 1592
+   },
+   {
+    "name": "QuestCardInfoSuccessLabel",
+    "type": "uint32",
+    "donor_off": 1596
+   },
+   {
+    "name": "QuestCardInfoFailureLabel",
+    "type": "uint32",
+    "donor_off": 1600
+   },
+   {
+    "name": "QuestCardInfoRewardsLabel",
+    "type": "uint32",
+    "donor_off": 1604
+   },
+   {
+    "name": "QuestCardInfoRenownLabel",
+    "type": "uint32",
+    "donor_off": 1608
+   },
+   {
+    "name": "QuestCardInfoTrophyLabel",
+    "type": "uint32",
+    "donor_off": 1612
+   },
+   {
+    "name": "QuestCardInfoBoastsLabel",
+    "type": "uint32",
+    "donor_off": 1616
+   },
+   {
+    "name": "QuestCardInfoStatusLabel",
+    "type": "uint32",
+    "donor_off": 1620
+   },
+   {
+    "name": "QuestCardInfoQuestNameText",
+    "type": "uint32",
+    "donor_off": 1624
+   },
+   {
+    "name": "QuestCardInfoMoralityText",
+    "type": "uint32",
+    "donor_off": 1628
+   },
+   {
+    "name": "QuestCardInfoCoreText",
+    "type": "uint32",
+    "donor_off": 1632
+   },
+   {
+    "name": "QuestCardInfoDetailsText",
+    "type": "uint32",
+    "donor_off": 1636
+   },
+   {
+    "name": "QuestCardInfoRegionText",
+    "type": "uint32",
+    "donor_off": 1640
+   },
+   {
+    "name": "QuestCardInfoOriginatorText",
+    "type": "uint32",
+    "donor_off": 1644
+   },
+   {
+    "name": "QuestCardInfoDescriptionText",
+    "type": "uint32",
+    "donor_off": 1648
+   },
+   {
+    "name": "QuestCardInfoSuccessText",
+    "type": "uint32",
+    "donor_off": 1652
+   },
+   {
+    "name": "QuestCardInfoFailureText",
+    "type": "uint32",
+    "donor_off": 1656
+   },
+   {
+    "name": "QuestCardInfoRewardsText",
+    "type": "uint32",
+    "donor_off": 1660
+   },
+   {
+    "name": "QuestCardInfoRenownText",
+    "type": "uint32",
+    "donor_off": 1664
+   },
+   {
+    "name": "QuestCardInfoTrophyText",
+    "type": "uint32",
+    "donor_off": 1668
+   },
+   {
+    "name": "QuestCardInfoBoastsText",
+    "type": "uint32",
+    "donor_off": 1672
+   },
+   {
+    "name": "QuestCardInfoStatusText",
+    "type": "uint32",
+    "donor_off": 1676
+   },
+   {
+    "name": "TradeEdgedButtonCostTLPos",
+    "type": "C2DVector",
+    "donor_off": 1680
+   },
+   {
+    "name": "TradeEdgedButtonOwnedTLPos",
+    "type": "C2DVector",
+    "donor_off": 1688
+   },
+   {
+    "name": "TradeEdgedButtonProfitTLPos",
+    "type": "C2DVector",
+    "donor_off": 1696
+   },
+   {
+    "name": "TradeEdgedButtonCashTLPos",
+    "type": "C2DVector",
+    "donor_off": 1712
+   },
+   {
+    "name": "TradeEdgedButtonTitleTLPos",
+    "type": "C2DVector",
+    "donor_off": 1704
+   },
+   {
+    "name": "TradeEdgedButtonExtents",
+    "type": "C2DVector",
+    "donor_off": 1720
+   },
+   {
+    "name": "TradeAnimImageBoxTLPos",
+    "type": "C2DVector",
+    "donor_off": 1728
+   },
+   {
+    "name": "TradeAnimImageBoxExtents",
+    "type": "C2DVector",
+    "donor_off": 1736
+   },
+   {
+    "name": "TradeAnimImageXRotationTime",
+    "type": "float",
+    "donor_off": 1744
+   },
+   {
+    "name": "TradeAnimImageYRotationTime",
+    "type": "float",
+    "donor_off": 1748
+   },
+   {
+    "name": "TradeAnimImageZRotationTime",
+    "type": "float",
+    "donor_off": 1752
+   },
+   {
+    "name": "TradeEquippedItemTLPos",
+    "type": "C2DVector",
+    "donor_off": 1756
+   },
+   {
+    "name": "TradeEquippedItemExtents",
+    "type": "C2DVector",
+    "donor_off": 1764
+   },
+   {
+    "name": "TradeEquippedItemGraphic",
+    "type": "CEngineGraphic",
+    "donor_off": 1772
+   },
+   {
+    "name": "TradeDescriptionBoxTLPos",
+    "type": "C2DVector",
+    "donor_off": 1786
+   },
+   {
+    "name": "TradeDescriptionBoxExtents",
+    "type": "C2DVector",
+    "donor_off": 1794
+   },
+   {
+    "name": "TradeTextOwned",
+    "type": "uint32",
+    "donor_off": 1804
+   },
+   {
+    "name": "TradeTextDivider",
+    "type": "uint32",
+    "donor_off": 1808
+   },
+   {
+    "name": "TradeTextCost",
+    "type": "uint32",
+    "donor_off": 1812
+   },
+   {
+    "name": "TradeTextGold",
+    "type": "uint32",
+    "donor_off": 1816
+   },
+   {
+    "name": "TradeTextProfit",
+    "type": "uint32",
+    "donor_off": 1820
+   },
+   {
+    "name": "TradeShadedCircleTLPos",
+    "type": "C2DVector",
+    "donor_off": 1824
+   },
+   {
+    "name": "TradeShadedCircleExtents",
+    "type": "C2DVector",
+    "donor_off": 1824
+   },
+   {
+    "name": "ExpSpendItemLabelStat",
+    "type": "Vector_J",
+    "donor_off": 2076
+   },
+   {
+    "name": "ExpSpendItemLabelAbility",
+    "type": "Vector_J",
+    "donor_off": 2096
+   },
+   {
+    "name": "ExpSpendMaxItemsToDisplay",
+    "type": "int32",
+    "donor_off": 2116
+   },
+   {
+    "name": "ExpSpendButtonTLPos",
+    "type": "C2DVector",
+    "donor_off": 2120
+   },
+   {
+    "name": "ExpSpendButtonTLPosOffset",
+    "type": "C2DVector",
+    "donor_off": 2128
+   },
+   {
+    "name": "ExpSpendButtonTextOffset",
+    "type": "C2DVector",
+    "donor_off": 2136
+   },
+   {
+    "name": "ExpSpendButtonSelL",
+    "type": "CEngineGraphic",
+    "donor_off": 2144
+   },
+   {
+    "name": "ExpSpendButtonSelC",
+    "type": "CEngineGraphic",
+    "donor_off": 2158
+   },
+   {
+    "name": "ExpSpendButtonSelR",
+    "type": "CEngineGraphic",
+    "donor_off": 2172
+   },
+   {
+    "name": "ExpSpendButtonL",
+    "type": "CEngineGraphic",
+    "donor_off": 2186
+   },
+   {
+    "name": "ExpSpendButtonC",
+    "type": "CEngineGraphic",
+    "donor_off": 2200
+   },
+   {
+    "name": "ExpSpendButtonR",
+    "type": "CEngineGraphic",
+    "donor_off": 2214
+   },
+   {
+    "name": "ExpSpendDescriptionBoxTLPos",
+    "type": "C2DVector",
+    "donor_off": 2228
+   },
+   {
+    "name": "ExpSpendDescriptionBoxExtents",
+    "type": "C2DVector",
+    "donor_off": 2236
+   },
+   {
+    "name": "ExpSpendArrowUpTLPos",
+    "type": "C2DVector",
+    "donor_off": 2244
+   },
+   {
+    "name": "ExpSpendArrowDnTLPos",
+    "type": "C2DVector",
+    "donor_off": 2252
+   },
+   {
+    "name": "ExpSpendGeneralPoolLabelTLPos",
+    "type": "C2DVector",
+    "donor_off": 2260
+   },
+   {
+    "name": "ExpSpendGeneralPoolLabelTextOffset",
+    "type": "C2DVector",
+    "donor_off": 2268
+   },
+   {
+    "name": "ExpSpendGeneralPoolSpendTextOffset",
+    "type": "C2DVector",
+    "donor_off": 2276
+   },
+   {
+    "name": "ExpSpendGeneralPoolWidth",
+    "type": "float",
+    "donor_off": 2284
+   },
+   {
+    "name": "ExpSpendGeneralPoolSliderWidth",
+    "type": "float",
+    "donor_off": 2288
+   },
+   {
+    "name": "ExpSpendStrengthPoolTLPos",
+    "type": "C2DVector",
+    "donor_off": 2292
+   },
+   {
+    "name": "ExpSpendSkillPoolTLPos",
+    "type": "C2DVector",
+    "donor_off": 2300
+   },
+   {
+    "name": "ExpSpendWillPoolTLPos",
+    "type": "C2DVector",
+    "donor_off": 2308
+   },
+   {
+    "name": "ExpSpendPoolWidth",
+    "type": "float",
+    "donor_off": 2316
+   },
+   {
+    "name": "ExpSpendPoolHeight",
+    "type": "float",
+    "donor_off": 2320
+   },
+   {
+    "name": "ExpSpendProgBarL",
+    "type": "CEngineGraphic",
+    "donor_off": 2324
+   },
+   {
+    "name": "ExpSpendProgBarC",
+    "type": "CEngineGraphic",
+    "donor_off": 2338
+   },
+   {
+    "name": "ExpSpendProgBarR",
+    "type": "CEngineGraphic",
+    "donor_off": 2352
+   },
+   {
+    "name": "ExpSpendProgBarValue",
+    "type": "CEngineGraphic",
+    "donor_off": 2366
+   },
+   {
+    "name": "ExpSpendProgBarValueOffset",
+    "type": "C2DVector",
+    "donor_off": 2380
+   },
+   {
+    "name": "ExpSpendTypeTextOffset",
+    "type": "C2DVector",
+    "donor_off": 2388
+   },
+   {
+    "name": "ExpSpendGeneralPoolBarValue",
+    "type": "int32",
+    "donor_off": 2396
+   },
+   {
+    "name": "ExpSpendGeneralPoolLabel",
+    "type": "int32",
+    "donor_off": 2400
+   },
+   {
+    "name": "ExpSpendTypeStrengthLabel",
+    "type": "int32",
+    "donor_off": 2404
+   },
+   {
+    "name": "ExpSpendTypeSkillLabel",
+    "type": "int32",
+    "donor_off": 2408
+   },
+   {
+    "name": "ExpSpendTypeWillLabel",
+    "type": "int32",
+    "donor_off": 2412
+   },
+   {
+    "name": "ExpSpendStrengthBarValue",
+    "type": "float",
+    "donor_off": 2416
+   },
+   {
+    "name": "ExpSpendSkillBarValue",
+    "type": "float",
+    "donor_off": 2420
+   },
+   {
+    "name": "ExpSpendWillBarValue",
+    "type": "float",
+    "donor_off": 2424
+   },
+   {
+    "name": "ExpSpendRate",
+    "type": "int32",
+    "donor_off": 2428
+   },
+   {
+    "name": "ExpSpendTimeOffset",
+    "type": "int32",
+    "donor_off": 2432
+   },
+   {
+    "name": "ExpSpendGreen",
+    "type": "CEngineGraphic",
+    "donor_off": 2436
+   },
+   {
+    "name": "ExpSpendGreenOutline",
+    "type": "CEngineGraphic",
+    "donor_off": 2450
+   },
+   {
+    "name": "ExpSpendGreenEnd",
+    "type": "CEngineGraphic",
+    "donor_off": 2464
+   },
+   {
+    "name": "ExpSpendRed",
+    "type": "CEngineGraphic",
+    "donor_off": 2478
+   },
+   {
+    "name": "ExpSpendRedOutline",
+    "type": "CEngineGraphic",
+    "donor_off": 2492
+   },
+   {
+    "name": "ExpSpendRedEnd",
+    "type": "CEngineGraphic",
+    "donor_off": 2506
+   },
+   {
+    "name": "ExpSpendDescriptionTextTLPos",
+    "type": "C2DVector",
+    "donor_off": 2520
+   },
+   {
+    "name": "ExpSpendDescriptionTextOffset",
+    "type": "C2DVector",
+    "donor_off": 2528
+   },
+   {
+    "name": "InventoryAnimImageXRotationTime",
+    "type": "float",
+    "donor_off": 2000
+   },
+   {
+    "name": "InventoryAnimImageYRotationTime",
+    "type": "float",
+    "donor_off": 2004
+   },
+   {
+    "name": "InventoryAnimImageZRotationTime",
+    "type": "float",
+    "donor_off": 2008
+   },
+   {
+    "name": "AugmentationMeshAreaTLPos",
+    "type": "C2DVector",
+    "donor_off": 1840
+   },
+   {
+    "name": "AugmentationMeshAreaBRPos",
+    "type": "C2DVector",
+    "donor_off": 1848
+   },
+   {
+    "name": "AugmentDescriptionBoxTLPos",
+    "type": "C2DVector",
+    "donor_off": 1856
+   },
+   {
+    "name": "AugmentDescriptionBoxExtents",
+    "type": "C2DVector",
+    "donor_off": 1864
+   },
+   {
+    "name": "AugmentAugmentationInfoTLPos",
+    "type": "C2DVector",
+    "donor_off": 1872
+   },
+   {
+    "name": "AugmentAugmentationLabelTLPos",
+    "type": "C2DVector",
+    "donor_off": 1880
+   },
+   {
+    "name": "AugmentAugmentationInfoTextOffset",
+    "type": "C2DVector",
+    "donor_off": 1888
+   },
+   {
+    "name": "AugmentAugmentationSlotTLPos",
+    "type": "C2DVector",
+    "donor_off": 1896
+   },
+   {
+    "name": "AugmentAugmentationSlotTextOffset",
+    "type": "C2DVector",
+    "donor_off": 1904
+   },
+   {
+    "name": "AugmentAugmentationWeaponTLPos",
+    "type": "C2DVector",
+    "donor_off": 1912
+   },
+   {
+    "name": "AugmentAugmentationWeaponTextOffset",
+    "type": "C2DVector",
+    "donor_off": 1920
+   },
+   {
+    "name": "AugmentTextMaxSlots",
+    "type": "uint32",
+    "donor_off": 1944
+   },
+   {
+    "name": "AugmentTextNumSlots",
+    "type": "uint32",
+    "donor_off": 1948
+   },
+   {
+    "name": "AugmentTextUpgradeCost",
+    "type": "uint32",
+    "donor_off": 1952
+   },
+   {
+    "name": "AugmentTextGold",
+    "type": "uint32",
+    "donor_off": 1956
+   },
+   {
+    "name": "AugmentTextDamageMultiplier",
+    "type": "uint32",
+    "donor_off": 1960
+   },
+   {
+    "name": "AugmentTextFireStrength",
+    "type": "uint32",
+    "donor_off": 1964
+   },
+   {
+    "name": "AugmentTextSlot",
+    "type": "uint32",
+    "donor_off": 1968
+   },
+   {
+    "name": "AugmentTextWeapons",
+    "type": "uint32",
+    "donor_off": 1976
+   },
+   {
+    "name": "AugmentTextAugmentations",
+    "type": "uint32",
+    "donor_off": 1972
+   },
+   {
+    "name": "AugmentTextDivider",
+    "type": "uint32",
+    "donor_off": 1980
+   },
+   {
+    "name": "AugmentShadedCircleTLPos",
+    "type": "C2DVector",
+    "donor_off": 1984
+   },
+   {
+    "name": "AugmentShadedCircleExtents",
+    "type": "C2DVector",
+    "donor_off": 1992
+   },
+   {
+    "name": "MainEdgedButtonTitleTLPos",
+    "type": "C2DVector",
+    "donor_off": 2536
+   },
+   {
+    "name": "MainEdgedButtonOwnedTLPos",
+    "type": "C2DVector",
+    "donor_off": 2544
+   },
+   {
+    "name": "MainEdgedButtonPriceTLPos",
+    "type": "C2DVector",
+    "donor_off": 2552
+   },
+   {
+    "name": "MainEdgedButtonCostTLPos",
+    "type": "C2DVector",
+    "donor_off": 2560
+   },
+   {
+    "name": "MainEdgedButtonExtents",
+    "type": "C2DVector",
+    "donor_off": 2568
+   },
+   {
+    "name": "MainDescriptionBoxC",
+    "type": "CEngineGraphic",
+    "donor_off": 2576
+   },
+   {
+    "name": "MainDescriptionBoxTL",
+    "type": "CEngineGraphic",
+    "donor_off": 2590
+   },
+   {
+    "name": "MainDescriptionBoxTR",
+    "type": "CEngineGraphic",
+    "donor_off": 2604
+   },
+   {
+    "name": "MainDescriptionBoxBL",
+    "type": "CEngineGraphic",
+    "donor_off": 2618
+   },
+   {
+    "name": "MainDescriptionBoxBR",
+    "type": "CEngineGraphic",
+    "donor_off": 2632
+   },
+   {
+    "name": "MainDescriptionBoxTLPos",
+    "type": "C2DVector",
+    "donor_off": 2646
+   },
+   {
+    "name": "MainDescriptionBoxExtents",
+    "type": "C2DVector",
+    "donor_off": 2654
+   },
+   {
+    "name": "MainShadedCircleTLPos",
+    "type": "C2DVector",
+    "donor_off": 2662
+   },
+   {
+    "name": "MainShadedCircleExtents",
+    "type": "C2DVector",
+    "donor_off": 2670
+   },
+   {
+    "name": "MainAnimBoxTLPos",
+    "type": "C2DVector",
+    "donor_off": 2678
+   },
+   {
+    "name": "MainAnimBoxExtents",
+    "type": "C2DVector",
+    "donor_off": 2686
+   },
+   {
+    "name": "MainQuickAccessItemFlashTime",
+    "type": "float",
+    "donor_off": 2696
+   }
+  ]
+ },
+ "VILLAGER_INTERACTION": {
+  "addr": "0193dec8",
+  "retail_offsets": false,
+  "alias_of": "CVillagerInteractionsDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Animation1",
+    "type": "CDefString",
+    "donor_off": 68
+   },
+   {
+    "name": "Animation2",
+    "type": "CDefString",
+    "donor_off": 72
+   },
+   {
+    "name": "Distance",
+    "type": "float",
+    "donor_off": 76
+   }
+  ]
+ },
+ "HERO_MELEE_COMBAT_ABILITY": {
+  "addr": "0191b08d",
+  "retail_offsets": false,
+  "alias_of": "CMeleeCombatAbilityDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "FlourishAnimName",
+    "type": "CDefString",
+    "donor_off": 68
+   },
+   {
+    "name": "FlourishResponseAnimName",
+    "type": "CDefString",
+    "donor_off": 72
+   },
+   {
+    "name": "DamageMultiplier",
+    "type": "float",
+    "donor_off": 76
+   },
+   {
+    "name": "Flourish",
+    "type": "bool",
+    "donor_off": 80
+   },
+   {
+    "name": "BlockCounter",
+    "type": "bool",
+    "donor_off": 81
+   },
+   {
+    "name": "AbilityButtonGraphicOverride",
+    "type": "int32",
+    "donor_off": 84
+   },
+   {
+    "name": "ValidWeaponClasses",
+    "type": "Vector_W4EWeaponClass__",
+    "donor_off": 88
+   },
+   {
+    "name": "Decapitate",
+    "type": "bool",
+    "donor_off": 108
+   },
+   {
+    "name": "KnockDownEffects",
+    "type": "int32",
+    "donor_off": 112
+   },
+   {
+    "name": "EvadeAllHits",
+    "type": "bool",
+    "donor_off": 116
+   },
+   {
+    "name": "CauseRecoil",
+    "type": "bool",
+    "donor_off": 117
+   },
+   {
+    "name": "StatsNeeded",
+    "type": "Map_JW4EHeroTrainableStatType__",
+    "donor_off": 120
+   },
+   {
+    "name": "ComboMultiplierLowerBound",
+    "type": "int32",
+    "donor_off": 140
+   },
+   {
+    "name": "ComboMultiplierUpperBound",
+    "type": "int32",
+    "donor_off": 144
+   }
+  ]
+ },
+ "CONTROL_SCHEME": {
+  "addr": "01939be8",
+  "retail_offsets": false,
+  "alias_of": "CControlsDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Controls",
+    "type": "Vector_VCActionInputControl__",
+    "donor_off": 68
+   },
+   {
+    "name": "ToggleZTarget",
+    "type": "bool",
+    "donor_off": 88
+   },
+   {
+    "name": "ToggleSpells",
+    "type": "bool",
+    "donor_off": 89
+   },
+   {
+    "name": "ToggleSneak",
+    "type": "bool",
+    "donor_off": 90
+   },
+   {
+    "name": "ToggleExpressionMenu",
+    "type": "bool",
+    "donor_off": 91
+   },
+   {
+    "name": "ToggleExpressionShift",
+    "type": "bool",
+    "donor_off": 92
+   },
+   {
+    "name": "FlourishNeedsAttackButtonHeld",
+    "type": "bool",
+    "donor_off": 93
+   }
+  ]
+ },
+ "SWITCH": {
+  "addr": "0191d4b4",
+  "retail_offsets": false,
+  "alias_of": "CThingSwitchDef",
+  "inherits": "CThingBaseDef",
+  "fields_include_base": true,
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Components",
+    "type": "CThingComponentSet",
+    "donor_off": 65
+   },
+   {
+    "name": "GroupDef",
+    "type": "int32",
+    "donor_off": 19
+   },
+   {
+    "name": "RenderFadeDistance",
+    "type": "float",
+    "donor_off": 20
+   },
+   {
+    "name": "PersistenceFlags",
+    "type": "int32",
+    "donor_off": 21
+   },
+   {
+    "name": "Health",
+    "type": "float",
+    "donor_off": 22
+   },
+   {
+    "name": "MinHealth",
+    "type": "float",
+    "donor_off": 23
+   },
+   {
+    "name": "MeshHeightOffset",
+    "type": "float",
+    "donor_off": 24
+   },
+   {
+    "name": "MeshHeight",
+    "type": "float",
+    "donor_off": 25
+   },
+   {
+    "name": "MeshRadius",
+    "type": "float",
+    "donor_off": 26
+   },
+   {
+    "name": "ApproxMaxMeshHeight",
+    "type": "float",
+    "donor_off": 27
+   },
+   {
+    "name": "DefaultScriptName",
+    "type": "CDefString",
+    "donor_off": 28
+   },
+   {
+    "name": "DefaultScriptData",
+    "type": "CDefString",
+    "donor_off": 29
+   },
+   {
+    "name": "TriggerType",
+    "type": "enum ESwitchTriggerType",
+    "donor_off": 120
+   }
+  ]
+ },
+ "SOUND_SETUP": {
+  "addr": "0194966f",
+  "retail_offsets": false,
+  "alias_of": "CSoundDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "SoundBankEntries",
+    "type": "Vector_VCSoundBankEntry__",
+    "donor_off": 68
+   },
+   {
+    "name": "AtmosBankEntries",
+    "type": "Vector_VCAtmosBankEntry__",
+    "donor_off": 88
+   },
+   {
+    "name": "MusicEntries",
+    "type": "Vector_VCMusicEntry__",
+    "donor_off": 108
+   },
+   {
+    "name": "MusicSetEntries",
+    "type": "Vector_VCMusicSetEntry__",
+    "donor_off": 128
+   },
+   {
+    "name": "ReverbEnvironmentEntries",
+    "type": "Vector_VCReverbEnvironmentEntry__",
+    "donor_off": 148
+   },
+   {
+    "name": "AtmosListenerDampingMin",
+    "type": "float",
+    "donor_off": 168
+   },
+   {
+    "name": "AtmosListenerDampingRange",
+    "type": "float",
+    "donor_off": 172
+   },
+   {
+    "name": "DistanceModelCurve",
+    "type": "float",
+    "donor_off": 176
+   }
+  ]
+ },
+ "MELEE_COMBAT_KNOCKDOWN_EFFECTS": {
+  "addr": "0191b49a",
+  "retail_offsets": false,
+  "alias_of": "CMeleeCombatKnockdownEffects",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "BlendInFrames",
+    "type": "int32",
+    "donor_off": 68
+   },
+   {
+    "name": "BlendOutFrames",
+    "type": "int32",
+    "donor_off": 72
+   },
+   {
+    "name": "AttackerLightingChannel",
+    "type": "int32",
+    "donor_off": 76
+   },
+   {
+    "name": "TargetLightingChannel",
+    "type": "int32",
+    "donor_off": 80
+   },
+   {
+    "name": "EnvironmentTheme",
+    "type": "int32",
+    "donor_off": 84
+   },
+   {
+    "name": "CameraFOVChange",
+    "type": "bool",
+    "donor_off": 88
+   },
+   {
+    "name": "CameraPan",
+    "type": "bool",
+    "donor_off": 89
+   },
+   {
+    "name": "AttackerAndTargetSpeedMultiplier",
+    "type": "float",
+    "donor_off": 92
+   },
+   {
+    "name": "PauseEntities",
+    "type": "bool",
+    "donor_off": 96
+   },
+   {
+    "name": "NonAttackingEntities",
+    "type": "bool",
+    "donor_off": 97
+   },
+   {
+    "name": "AttackerInvulnerable",
+    "type": "bool",
+    "donor_off": 98
+   }
+  ]
+ },
+ "PHYSICAL_SWITCH": {
+  "addr": "0191d823",
+  "retail_offsets": false,
+  "alias_of": "CThingPhysicalSwitchDef",
+  "inherits": "CThingBaseDef",
+  "fields_include_base": true,
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Components",
+    "type": "CThingComponentSet",
+    "donor_off": 65
+   },
+   {
+    "name": "GroupDef",
+    "type": "int32",
+    "donor_off": 19
+   },
+   {
+    "name": "RenderFadeDistance",
+    "type": "float",
+    "donor_off": 20
+   },
+   {
+    "name": "PersistenceFlags",
+    "type": "int32",
+    "donor_off": 21
+   },
+   {
+    "name": "Health",
+    "type": "float",
+    "donor_off": 22
+   },
+   {
+    "name": "MinHealth",
+    "type": "float",
+    "donor_off": 23
+   },
+   {
+    "name": "MeshHeightOffset",
+    "type": "float",
+    "donor_off": 24
+   },
+   {
+    "name": "MeshHeight",
+    "type": "float",
+    "donor_off": 25
+   },
+   {
+    "name": "MeshRadius",
+    "type": "float",
+    "donor_off": 26
+   },
+   {
+    "name": "ApproxMaxMeshHeight",
+    "type": "float",
+    "donor_off": 27
+   },
+   {
+    "name": "DefaultScriptName",
+    "type": "CDefString",
+    "donor_off": 28
+   },
+   {
+    "name": "DefaultScriptData",
+    "type": "CDefString",
+    "donor_off": 29
+   },
+   {
+    "name": "TriggerType",
+    "type": "enum EPSwitchTriggerType",
+    "donor_off": 120
+   },
+   {
+    "name": "UntriggeredGraphic",
+    "type": "CEngineGraphic",
+    "donor_off": 124
+   },
+   {
+    "name": "TriggeredGraphic",
+    "type": "CEngineGraphic",
+    "donor_off": 138
+   },
+   {
+    "name": "TriggerSound",
+    "type": "int32",
+    "donor_off": 152
+   }
+  ]
+ },
+ "NOISE": {
+  "addr": "019347c8",
+  "retail_offsets": false,
+  "alias_of": "CThingNoiseDef",
+  "inherits": "CThingBaseDef",
+  "fields_include_base": true,
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Components",
+    "type": "CThingComponentSet",
+    "donor_off": 65
+   },
+   {
+    "name": "GroupDef",
+    "type": "int32",
+    "donor_off": 19
+   },
+   {
+    "name": "RenderFadeDistance",
+    "type": "float",
+    "donor_off": 20
+   },
+   {
+    "name": "PersistenceFlags",
+    "type": "int32",
+    "donor_off": 21
+   },
+   {
+    "name": "Health",
+    "type": "float",
+    "donor_off": 22
+   },
+   {
+    "name": "MinHealth",
+    "type": "float",
+    "donor_off": 23
+   },
+   {
+    "name": "MeshHeightOffset",
+    "type": "float",
+    "donor_off": 24
+   },
+   {
+    "name": "MeshHeight",
+    "type": "float",
+    "donor_off": 25
+   },
+   {
+    "name": "MeshRadius",
+    "type": "float",
+    "donor_off": 26
+   },
+   {
+    "name": "ApproxMaxMeshHeight",
+    "type": "float",
+    "donor_off": 27
+   },
+   {
+    "name": "DefaultScriptName",
+    "type": "CDefString",
+    "donor_off": 28
+   },
+   {
+    "name": "DefaultScriptData",
+    "type": "CDefString",
+    "donor_off": 29
+   },
+   {
+    "name": "Noise",
+    "type": "SubComponent_VCTCNoiseDef__",
+    "donor_off": 120
+   }
+  ]
+ },
+ "HOLY_SITE": {
+  "addr": "0191d0f9",
+  "retail_offsets": false,
+  "alias_of": "CThingHolySiteDef",
+  "inherits": "CThingBaseDef",
+  "fields_include_base": true,
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Components",
+    "type": "CThingComponentSet",
+    "donor_off": 65
+   },
+   {
+    "name": "GroupDef",
+    "type": "int32",
+    "donor_off": 19
+   },
+   {
+    "name": "RenderFadeDistance",
+    "type": "float",
+    "donor_off": 20
+   },
+   {
+    "name": "PersistenceFlags",
+    "type": "int32",
+    "donor_off": 21
+   },
+   {
+    "name": "Health",
+    "type": "float",
+    "donor_off": 22
+   },
+   {
+    "name": "MinHealth",
+    "type": "float",
+    "donor_off": 23
+   },
+   {
+    "name": "MeshHeightOffset",
+    "type": "float",
+    "donor_off": 24
+   },
+   {
+    "name": "MeshHeight",
+    "type": "float",
+    "donor_off": 25
+   },
+   {
+    "name": "MeshRadius",
+    "type": "float",
+    "donor_off": 26
+   },
+   {
+    "name": "ApproxMaxMeshHeight",
+    "type": "float",
+    "donor_off": 27
+   },
+   {
+    "name": "DefaultScriptName",
+    "type": "CDefString",
+    "donor_off": 28
+   },
+   {
+    "name": "DefaultScriptData",
+    "type": "CDefString",
+    "donor_off": 29
+   },
+   {
+    "name": "Graphic",
+    "type": "CEngineGraphic",
+    "donor_off": 120
+   },
+   {
+    "name": "PlayerStart",
+    "type": "bool",
+    "donor_off": 134
+   }
+  ]
+ },
+ "CONFIG_OPTIONS_DEFAULTS_DEF": {
+  "addr": "0194b9f9",
+  "retail_offsets": false,
+  "alias_of": "CConfigOptionsDefaultsDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Antialiasing",
+    "type": "uint32",
+    "donor_off": 68
+   },
+   {
+    "name": "ResolutionWidth",
+    "type": "int32",
+    "donor_off": 72
+   },
+   {
+    "name": "ResolutionHeight",
+    "type": "int32",
+    "donor_off": 76
+   },
+   {
+    "name": "BitDepth",
+    "type": "int32",
+    "donor_off": 80
+   },
+   {
+    "name": "TextureDetail",
+    "type": "float",
+    "donor_off": 92
+   },
+   {
+    "name": "MaxTextureDetail",
+    "type": "float",
+    "donor_off": 96
+   },
+   {
+    "name": "ShadowDetail",
+    "type": "float",
+    "donor_off": 100
+   },
+   {
+    "name": "MaxShadowDetail",
+    "type": "float",
+    "donor_off": 104
+   },
+   {
+    "name": "MeshDetail",
+    "type": "float",
+    "donor_off": 108
+   },
+   {
+    "name": "MaxMeshDetail",
+    "type": "float",
+    "donor_off": 112
+   },
+   {
+    "name": "EffectsDetail",
+    "type": "float",
+    "donor_off": 116
+   },
+   {
+    "name": "MaxEffectsDetail",
+    "type": "float",
+    "donor_off": 120
+   },
+   {
+    "name": "MinResolutionWidth",
+    "type": "int32",
+    "donor_off": 84
+   },
+   {
+    "name": "MinResolutionHeight",
+    "type": "int32",
+    "donor_off": 88
+   }
+  ]
+ },
+ "COMBAT_DIALOGUE_DEF": {
+  "addr": "0193d9fb",
+  "retail_offsets": false,
+  "alias_of": "CCombatDialogueDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "MinTimeBetweenSpeech",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "MinTimeBetweenSpeechRepeat",
+    "type": "float",
+    "donor_off": 72
+   },
+   {
+    "name": "MinDelayAfterBattleCry",
+    "type": "float",
+    "donor_off": 76
+   },
+   {
+    "name": "EnemySighted",
+    "type": "int32",
+    "donor_off": 80
+   },
+   {
+    "name": "RunForCover",
+    "type": "int32",
+    "donor_off": 84
+   },
+   {
+    "name": "Hiding",
+    "type": "int32",
+    "donor_off": 88
+   },
+   {
+    "name": "Ambushing",
+    "type": "int32",
+    "donor_off": 92
+   },
+   {
+    "name": "WillSeenUsed",
+    "type": "int32",
+    "donor_off": 96
+   },
+   {
+    "name": "Threat",
+    "type": "int32",
+    "donor_off": 100
+   },
+   {
+    "name": "Encourage",
+    "type": "int32",
+    "donor_off": 104
+   },
+   {
+    "name": "FoeKnockedDownByColleague",
+    "type": "int32",
+    "donor_off": 108
+   },
+   {
+    "name": "MenLosing",
+    "type": "int32",
+    "donor_off": 112
+   },
+   {
+    "name": "EnemyKnockedDown",
+    "type": "int32",
+    "donor_off": 116
+   },
+   {
+    "name": "RangedCombatAiming",
+    "type": "int32",
+    "donor_off": 120
+   },
+   {
+    "name": "RangedCombatAimingBlocked",
+    "type": "int32",
+    "donor_off": 124
+   },
+   {
+    "name": "Injured",
+    "type": "int32",
+    "donor_off": 128
+   },
+   {
+    "name": "ReactionToDecapitation",
+    "type": "int32",
+    "donor_off": 132
+   },
+   {
+    "name": "ColleagueInjured",
+    "type": "int32",
+    "donor_off": 136
+   },
+   {
+    "name": "Scared",
+    "type": "int32",
+    "donor_off": 140
+   },
+   {
+    "name": "Flee",
+    "type": "int32",
+    "donor_off": 144
+   }
+  ]
+ },
+ "UI": {
+  "addr": "01fd82b0",
+  "retail_offsets": false,
+  "alias_of": "CUIDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Type",
+    "type": "enum EType_NUISystem",
+    "donor_off": 68
+   },
+   {
+    "name": "Children",
+    "type": "Vector_int32",
+    "donor_off": 140
+   },
+   {
+    "name": "MeshIndex",
+    "type": "uint32",
+    "donor_off": 92
+   },
+   {
+    "name": "TextValue",
+    "type": "CWideString",
+    "donor_off": 100
+   },
+   {
+    "name": "Font",
+    "type": "CDefString",
+    "donor_off": 96
+   },
+   {
+    "name": "Height",
+    "type": "float",
+    "donor_off": 108
+   },
+   {
+    "name": "Width",
+    "type": "float",
+    "donor_off": 112
+   },
+   {
+    "name": "ExpansionType",
+    "type": "enum ETableExpansionTypes_NUISystem",
+    "donor_off": 116
+   },
+   {
+    "name": "Sprites",
+    "type": "Map_JW4ETableSprites_NUISystem__",
+    "donor_off": 120
+   },
+   {
+    "name": "HorizontalSeparations",
+    "type": "Vector_uint32",
+    "donor_off": 160
+   },
+   {
+    "name": "VerticalSeparations",
+    "type": "Vector_uint32",
+    "donor_off": 180
+   },
+   {
+    "name": "States",
+    "type": "Vector_CUIStateDef_NUISystem",
+    "donor_off": 72
+   },
+   {
+    "name": "TextLineBreak",
+    "type": "bool",
+    "donor_off": 249
+   },
+   {
+    "name": "ScaleText",
+    "type": "bool",
+    "donor_off": 250
+   },
+   {
+    "name": "Independant",
+    "type": "bool",
+    "donor_off": 251
+   },
+   {
+    "name": "MeshType",
+    "type": "enum EEngineGraphicType",
+    "donor_off": 220
+   },
+   {
+    "name": "NonScrollingChildren",
+    "type": "Vector_uint32",
+    "donor_off": 200
+   },
+   {
+    "name": "TextWindowTLX",
+    "type": "float",
+    "donor_off": 224
+   },
+   {
+    "name": "TextWindowTLY",
+    "type": "float",
+    "donor_off": 228
+   },
+   {
+    "name": "TextWindowBRX",
+    "type": "float",
+    "donor_off": 232
+   },
+   {
+    "name": "TextWindowBRY",
+    "type": "float",
+    "donor_off": 236
+   },
+   {
+    "name": "Layer",
+    "type": "int32",
+    "donor_off": 240
+   },
+   {
+    "name": "Angle",
+    "type": "float",
+    "donor_off": 244
+   },
+   {
+    "name": "PositionIsCenter",
+    "type": "bool",
+    "donor_off": 248
+   },
+   {
+    "name": "ScrollingSpeed",
+    "type": "float",
+    "donor_off": 252
+   },
+   {
+    "name": "Wrapping",
+    "type": "bool",
+    "donor_off": 380
+   },
+   {
+    "name": "Inverted",
+    "type": "bool",
+    "donor_off": 381
+   },
+   {
+    "name": "PositionOffsetX",
+    "type": "float",
+    "donor_off": 382
+   },
+   {
+    "name": "PositionOffsetY",
+    "type": "float",
+    "donor_off": 386
+   },
+   {
+    "name": "AlphaOffset",
+    "type": "uint8",
+    "donor_off": 390
+   },
+   {
+    "name": "UpX",
+    "type": "float",
+    "donor_off": 320
+   },
+   {
+    "name": "UpY",
+    "type": "float",
+    "donor_off": 324
+   },
+   {
+    "name": "UpZ",
+    "type": "float",
+    "donor_off": 328
+   },
+   {
+    "name": "ForwardX",
+    "type": "float",
+    "donor_off": 332
+   },
+   {
+    "name": "ForwardY",
+    "type": "float",
+    "donor_off": 336
+   },
+   {
+    "name": "ForwardZ",
+    "type": "float",
+    "donor_off": 340
+   },
+   {
+    "name": "RotationAxisX",
+    "type": "float",
+    "donor_off": 344
+   },
+   {
+    "name": "RotationAxisY",
+    "type": "float",
+    "donor_off": 348
+   },
+   {
+    "name": "RotationAxisZ",
+    "type": "float",
+    "donor_off": 352
+   },
+   {
+    "name": "RotationSpeed",
+    "type": "float",
+    "donor_off": 356
+   },
+   {
+    "name": "AnimationIndex",
+    "type": "uint32",
+    "donor_off": 360
+   },
+   {
+    "name": "DownArrow",
+    "type": "int32",
+    "donor_off": 364
+   },
+   {
+    "name": "UpArrow",
+    "type": "int32",
+    "donor_off": 368
+   },
+   {
+    "name": "UpLimit",
+    "type": "int32",
+    "donor_off": 372
+   },
+   {
+    "name": "DownLimit",
+    "type": "int32",
+    "donor_off": 376
+   },
+   {
+    "name": "Scrolling",
+    "type": "bool",
+    "donor_off": 391
+   },
+   {
+    "name": "ComputeOffsetsOnActivate",
+    "type": "bool",
+    "donor_off": 408
+   },
+   {
+    "name": "MinX",
+    "type": "float",
+    "donor_off": 424
+   },
+   {
+    "name": "MinY",
+    "type": "float",
+    "donor_off": 428
+   },
+   {
+    "name": "MaxX",
+    "type": "float",
+    "donor_off": 432
+   },
+   {
+    "name": "MaxY",
+    "type": "float",
+    "donor_off": 436
+   },
+   {
+    "name": "StepX",
+    "type": "float",
+    "donor_off": 440
+   },
+   {
+    "name": "StepY",
+    "type": "float",
+    "donor_off": 444
+   },
+   {
+    "name": "DimensionsX",
+    "type": "float",
+    "donor_off": 416
+   },
+   {
+    "name": "DimensionsY",
+    "type": "float",
+    "donor_off": 420
+   },
+   {
+    "name": "SliderLeft",
+    "type": "int32",
+    "donor_off": 456
+   },
+   {
+    "name": "SliderRight",
+    "type": "int32",
+    "donor_off": 460
+   },
+   {
+    "name": "Action",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 256
+   },
+   {
+    "name": "ActionOnBack",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 260
+   },
+   {
+    "name": "ActionOnSelected",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 264
+   },
+   {
+    "name": "ActionOnUnselected",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 268
+   },
+   {
+    "name": "ActionOnDestruction",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 272
+   },
+   {
+    "name": "ActionOnLeftClicked",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 284
+   },
+   {
+    "name": "ActionOnLeftUnclicked",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 288
+   },
+   {
+    "name": "ActionOnLeftHeld",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 292
+   },
+   {
+    "name": "ActionOnRightClicked",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 296
+   },
+   {
+    "name": "ActionOnDropped",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 300
+   },
+   {
+    "name": "ActionOnDroppedNowhere",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 280
+   },
+   {
+    "name": "PreAction",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 276
+   },
+   {
+    "name": "ActionOnDraggedUp",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 304
+   },
+   {
+    "name": "ActionOnDraggedDown",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 308
+   },
+   {
+    "name": "ActionOnLeftClickedAbove",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 316
+   },
+   {
+    "name": "ActionOnLeftClickedUnder",
+    "type": "enum EActionType_NUISystem",
+    "donor_off": 312
+   },
+   {
+    "name": "InputDelay",
+    "type": "float",
+    "donor_off": 448
+   },
+   {
+    "name": "DrawFromViewport",
+    "type": "bool",
+    "donor_off": 452
+   },
+   {
+    "name": "TextBankIndex",
+    "type": "uint32",
+    "donor_off": 464
+   },
+   {
+    "name": "ActionText",
+    "type": "int32",
+    "donor_off": 468
+   },
+   {
+    "name": "KeyText",
+    "type": "int32",
+    "donor_off": 472
+   },
+   {
+    "name": "Redefiner",
+    "type": "int32",
+    "donor_off": 480
+   },
+   {
+    "name": "UndefinedWarning",
+    "type": "int32",
+    "donor_off": 476
+   },
+   {
+    "name": "ActionMap",
+    "type": "Map_VCCharString__K",
+    "donor_off": 484
+   },
+   {
+    "name": "ActionMapAliases",
+    "type": "Map_KK",
+    "donor_off": 504
+   },
+   {
+    "name": "ActionOrder",
+    "type": "Vector_uint32",
+    "donor_off": 524
+   },
+   {
+    "name": "EditBoxParentIsButton",
+    "type": "bool",
+    "donor_off": 544
+   },
+   {
+    "name": "PasswordBox",
+    "type": "bool",
+    "donor_off": 545
+   },
+   {
+    "name": "EditBoxCharLimit",
+    "type": "int32",
+    "donor_off": 548
+   },
+   {
+    "name": "EditBoxUsesIME",
+    "type": "bool",
+    "donor_off": 552
+   },
+   {
+    "name": "MovieFilename",
+    "type": "CWideString",
+    "donor_off": 556
+   },
+   {
+    "name": "DisallowSpaceAsFirstChar",
+    "type": "bool",
+    "donor_off": 553
+   },
+   {
+    "name": "LayerIndependant",
+    "type": "bool",
+    "donor_off": 564
+   },
+   {
+    "name": "SwappingStates",
+    "type": "Vector_uint32",
+    "donor_off": 568
+   },
+   {
+    "name": "SwappingTimes",
+    "type": "Vector_float",
+    "donor_off": 588
+   },
+   {
+    "name": "BastardChild",
+    "type": "bool",
+    "donor_off": 608
+   },
+   {
+    "name": "Alignement",
+    "type": "enum ETextAlignement_NUISystem",
+    "donor_off": 612
+   },
+   {
+    "name": "RandomSwap",
+    "type": "bool",
+    "donor_off": 616
+   },
+   {
+    "name": "UseRelativeZoom",
+    "type": "bool",
+    "donor_off": 624
+   },
+   {
+    "name": "UseRelativePosition",
+    "type": "bool",
+    "donor_off": 625
+   },
+   {
+    "name": "HoveredState",
+    "type": "int32",
+    "donor_off": 620
+   },
+   {
+    "name": "LeftClickedState",
+    "type": "int32",
+    "donor_off": 628
+   },
+   {
+    "name": "RightClickedState",
+    "type": "int32",
+    "donor_off": 632
+   },
+   {
+    "name": "ShapeChildren",
+    "type": "Vector_uint32",
+    "donor_off": 636
+   },
+   {
+    "name": "ViewAreaTLX",
+    "type": "int32",
+    "donor_off": 392
+   },
+   {
+    "name": "ViewAreaTLY",
+    "type": "int32",
+    "donor_off": 396
+   },
+   {
+    "name": "ViewAreaBRX",
+    "type": "int32",
+    "donor_off": 400
+   },
+   {
+    "name": "ViewAreaBRY",
+    "type": "int32",
+    "donor_off": 404
+   },
+   {
+    "name": "UseViewArea",
+    "type": "bool",
+    "donor_off": 656
+   },
+   {
+    "name": "PartOfListTree",
+    "type": "bool",
+    "donor_off": 626
+   },
+   {
+    "name": "PCStyle",
+    "type": "bool",
+    "donor_off": 657
+   },
+   {
+    "name": "Sprite2DFlag",
+    "type": "enum EEngineSprite2DFlag",
+    "donor_off": 660
+   }
+  ]
+ },
+ "UI_LOCALE_GRAPHICS_DEF": {
+  "addr": "01926cc0",
+  "retail_offsets": false,
+  "alias_of": "CUILocaleGraphicsDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "WorldMapRegionName",
+    "type": "Map_KW4EWorldMapNameGraphic__",
+    "donor_off": 68
+   },
+   {
+    "name": "HelpScreenGraphics",
+    "type": "Vector_uint32",
+    "donor_off": 88
+   },
+   {
+    "name": "HelpRingPic",
+    "type": "uint32",
+    "donor_off": 108
+   }
+  ]
+ },
+ "UI_MISC_THINGS_DEF": {
+  "addr": "0192771b",
+  "retail_offsets": false,
+  "alias_of": "CUIMiscThingsDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "SpaceSeparator",
+    "type": "CWideString",
+    "donor_off": 68
+   },
+   {
+    "name": "CommaSeparator",
+    "type": "CWideString",
+    "donor_off": 76
+   },
+   {
+    "name": "NewLineSeparator",
+    "type": "CWideString",
+    "donor_off": 92
+   },
+   {
+    "name": "OpenBracket",
+    "type": "CWideString",
+    "donor_off": 100
+   },
+   {
+    "name": "CloseBracket",
+    "type": "CWideString",
+    "donor_off": 108
+   },
+   {
+    "name": "Positive",
+    "type": "CWideString",
+    "donor_off": 116
+   },
+   {
+    "name": "WeaponValueString",
+    "type": "CWideString",
+    "donor_off": 124
+   },
+   {
+    "name": "WeaponAugString",
+    "type": "CWideString",
+    "donor_off": 132
+   },
+   {
+    "name": "WeaponAugNone",
+    "type": "CWideString",
+    "donor_off": 140
+   },
+   {
+    "name": "WeaponWeightString",
+    "type": "CWideString",
+    "donor_off": 148
+   },
+   {
+    "name": "WeaponLightString",
+    "type": "CWideString",
+    "donor_off": 156
+   },
+   {
+    "name": "WeaponHeavyString",
+    "type": "CWideString",
+    "donor_off": 164
+   },
+   {
+    "name": "WeaponKillsString",
+    "type": "CWideString",
+    "donor_off": 172
+   },
+   {
+    "name": "WeaponCatMeleeString",
+    "type": "CWideString",
+    "donor_off": 180
+   },
+   {
+    "name": "WeaponCatRangedString",
+    "type": "CWideString",
+    "donor_off": 188
+   },
+   {
+    "name": "WeaponDamageString",
+    "type": "CWideString",
+    "donor_off": 196
+   },
+   {
+    "name": "TradeCostString",
+    "type": "CWideString",
+    "donor_off": 204
+   },
+   {
+    "name": "ColonSeparator",
+    "type": "CWideString",
+    "donor_off": 84
+   },
+   {
+    "name": "TradeProfitString",
+    "type": "CWideString",
+    "donor_off": 212
+   },
+   {
+    "name": "TradeLossString",
+    "type": "CWideString",
+    "donor_off": 220
+   },
+   {
+    "name": "TradeAlreadyOwnsString",
+    "type": "CWideString",
+    "donor_off": 228
+   },
+   {
+    "name": "TradeNumberInStockString",
+    "type": "CWideString",
+    "donor_off": 236
+   },
+   {
+    "name": "TradeDeliveryString",
+    "type": "CWideString",
+    "donor_off": 244
+   },
+   {
+    "name": "TradeNoDeliveryString",
+    "type": "CWideString",
+    "donor_off": 252
+   },
+   {
+    "name": "TradeDaysString",
+    "type": "CWideString",
+    "donor_off": 260
+   },
+   {
+    "name": "TradeBuyString",
+    "type": "CWideString",
+    "donor_off": 268
+   },
+   {
+    "name": "TradeSellString",
+    "type": "CWideString",
+    "donor_off": 276
+   },
+   {
+    "name": "TradeWantedString",
+    "type": "CWideString",
+    "donor_off": 284
+   },
+   {
+    "name": "QuestFailedString",
+    "type": "CWideString",
+    "donor_off": 292
+   },
+   {
+    "name": "FailedString",
+    "type": "CWideString",
+    "donor_off": 300
+   },
+   {
+    "name": "SucceededString",
+    "type": "CWideString",
+    "donor_off": 308
+   },
+   {
+    "name": "Plus",
+    "type": "CWideString",
+    "donor_off": 316
+   },
+   {
+    "name": "Minus",
+    "type": "CWideString",
+    "donor_off": 324
+   },
+   {
+    "name": "CoreGraphic",
+    "type": "uint32",
+    "donor_off": 332
+   },
+   {
+    "name": "VignetteGraphic",
+    "type": "uint32",
+    "donor_off": 336
+   },
+   {
+    "name": "OptionalGraphic",
+    "type": "uint32",
+    "donor_off": 340
+   },
+   {
+    "name": "FeatGraphic",
+    "type": "uint32",
+    "donor_off": 344
+   },
+   {
+    "name": "ObjectsRewardString",
+    "type": "CWideString",
+    "donor_off": 348
+   },
+   {
+    "name": "NoneString",
+    "type": "CWideString",
+    "donor_off": 356
+   },
+   {
+    "name": "CheckGuildString",
+    "type": "CWideString",
+    "donor_off": 364
+   },
+   {
+    "name": "QuestStartingString",
+    "type": "CWideString",
+    "donor_off": 372
+   },
+   {
+    "name": "RingCenterX",
+    "type": "float",
+    "donor_off": 380
+   },
+   {
+    "name": "RingCenterY",
+    "type": "float",
+    "donor_off": 384
+   },
+   {
+    "name": "PCRingCenterX",
+    "type": "float",
+    "donor_off": 388
+   },
+   {
+    "name": "PCRingCenterY",
+    "type": "float",
+    "donor_off": 392
+   },
+   {
+    "name": "WorldMapOffsetX",
+    "type": "float",
+    "donor_off": 396
+   },
+   {
+    "name": "WorldMapOffsetY",
+    "type": "float",
+    "donor_off": 400
+   },
+   {
+    "name": "WorldMapWidth",
+    "type": "float",
+    "donor_off": 404
+   },
+   {
+    "name": "WorldMapHeight",
+    "type": "float",
+    "donor_off": 408
+   },
+   {
+    "name": "YouString",
+    "type": "CWideString",
+    "donor_off": 412
+   },
+   {
+    "name": "OwnString",
+    "type": "CWideString",
+    "donor_off": 420
+   },
+   {
+    "name": "NoString",
+    "type": "CWideString",
+    "donor_off": 428
+   },
+   {
+    "name": "HousesString",
+    "type": "CWideString",
+    "donor_off": 436
+   },
+   {
+    "name": "HouseString",
+    "type": "CWideString",
+    "donor_off": 444
+   },
+   {
+    "name": "InString",
+    "type": "CWideString",
+    "donor_off": 452
+   },
+   {
+    "name": "ShopsString",
+    "type": "CWideString",
+    "donor_off": 460
+   },
+   {
+    "name": "ShopString",
+    "type": "CWideString",
+    "donor_off": 468
+   },
+   {
+    "name": "ThereString",
+    "type": "CWideString",
+    "donor_off": 476
+   },
+   {
+    "name": "AreString",
+    "type": "CWideString",
+    "donor_off": 484
+   },
+   {
+    "name": "IsString",
+    "type": "CWideString",
+    "donor_off": 492
+   },
+   {
+    "name": "ForString",
+    "type": "CWideString",
+    "donor_off": 500
+   },
+   {
+    "name": "SaleString",
+    "type": "CWideString",
+    "donor_off": 508
+   },
+   {
+    "name": "GeneralString",
+    "type": "CWideString",
+    "donor_off": 516
+   },
+   {
+    "name": "TatooString",
+    "type": "CWideString",
+    "donor_off": 540
+   },
+   {
+    "name": "BarberString",
+    "type": "CWideString",
+    "donor_off": 532
+   },
+   {
+    "name": "TitleString",
+    "type": "CWideString",
+    "donor_off": 524
+   },
+   {
+    "name": "LevelString",
+    "type": "CWideString",
+    "donor_off": 548
+   },
+   {
+    "name": "TotalSpellsInPalettes",
+    "type": "uint32",
+    "donor_off": 556
+   },
+   {
+    "name": "TotalSpellsInContainer",
+    "type": "uint32",
+    "donor_off": 560
+   },
+   {
+    "name": "TotalAssignableThings",
+    "type": "uint32",
+    "donor_off": 920
+   },
+   {
+    "name": "LogBookBasicsCategoryString",
+    "type": "CWideString",
+    "donor_off": 564
+   },
+   {
+    "name": "LogBookObjectsCategoryString",
+    "type": "CWideString",
+    "donor_off": 572
+   },
+   {
+    "name": "LogBookTownsCategoryString",
+    "type": "CWideString",
+    "donor_off": 580
+   },
+   {
+    "name": "LogBookHeroCategoryString",
+    "type": "CWideString",
+    "donor_off": 588
+   },
+   {
+    "name": "LogBookCombatCategoryString",
+    "type": "CWideString",
+    "donor_off": 596
+   },
+   {
+    "name": "LogBookQuestCategoryString",
+    "type": "CWideString",
+    "donor_off": 604
+   },
+   {
+    "name": "LogBookStoryCategoryString",
+    "type": "CWideString",
+    "donor_off": 612
+   },
+   {
+    "name": "LogBookBasicsCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 620
+   },
+   {
+    "name": "LogBookObjectsCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 628
+   },
+   {
+    "name": "LogBookTownsCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 636
+   },
+   {
+    "name": "LogBookHeroCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 644
+   },
+   {
+    "name": "LogBookCombatCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 652
+   },
+   {
+    "name": "LogBookQuestCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 660
+   },
+   {
+    "name": "LogBookStoryCategoryNameString",
+    "type": "CWideString",
+    "donor_off": 668
+   },
+   {
+    "name": "MapPaths",
+    "type": "Map_KK",
+    "donor_off": 676
+   },
+   {
+    "name": "SoundUpDown",
+    "type": "CCharString",
+    "donor_off": 696
+   },
+   {
+    "name": "SoundSlider",
+    "type": "CCharString",
+    "donor_off": 704
+   },
+   {
+    "name": "SoundBack",
+    "type": "CCharString",
+    "donor_off": 712
+   },
+   {
+    "name": "SoundForward",
+    "type": "CCharString",
+    "donor_off": 720
+   },
+   {
+    "name": "SoundError",
+    "type": "CCharString",
+    "donor_off": 728
+   },
+   {
+    "name": "SoundExit",
+    "type": "CCharString",
+    "donor_off": 736
+   },
+   {
+    "name": "HeroDollTLX",
+    "type": "float",
+    "donor_off": 816
+   },
+   {
+    "name": "HeroDollTLY",
+    "type": "float",
+    "donor_off": 820
+   },
+   {
+    "name": "HeroDollBRX",
+    "type": "float",
+    "donor_off": 824
+   },
+   {
+    "name": "HeroDollBRY",
+    "type": "float",
+    "donor_off": 828
+   },
+   {
+    "name": "HeroDollSphereRadius",
+    "type": "float",
+    "donor_off": 832
+   },
+   {
+    "name": "HeroDollTLX_PC",
+    "type": "float",
+    "donor_off": 836
+   },
+   {
+    "name": "HeroDollTLY_PC",
+    "type": "float",
+    "donor_off": 840
+   },
+   {
+    "name": "HeroDollBRX_PC",
+    "type": "float",
+    "donor_off": 844
+   },
+   {
+    "name": "HeroDollBRY_PC",
+    "type": "float",
+    "donor_off": 848
+   },
+   {
+    "name": "HeroDollSphereRadius_PC",
+    "type": "float",
+    "donor_off": 852
+   },
+   {
+    "name": "HeroDollFrameTLX_PC",
+    "type": "float",
+    "donor_off": 856
+   },
+   {
+    "name": "HeroDollFrameTLY_PC",
+    "type": "float",
+    "donor_off": 860
+   },
+   {
+    "name": "HeroDollFrameEmulateListOffset",
+    "type": "float",
+    "donor_off": 864
+   },
+   {
+    "name": "QuestStartScreenMusic",
+    "type": "enum EMusicSetType",
+    "donor_off": 868
+   },
+   {
+    "name": "QuestCompleteScreenMusic",
+    "type": "enum EMusicSetType",
+    "donor_off": 872
+   },
+   {
+    "name": "QuestFailureScreenMusic",
+    "type": "enum EMusicSetType",
+    "donor_off": 876
+   },
+   {
+    "name": "DeathScreenMusic",
+    "type": "enum EMusicSetType",
+    "donor_off": 880
+   },
+   {
+    "name": "CountUpSound",
+    "type": "CCharString",
+    "donor_off": 744
+   },
+   {
+    "name": "DigitCountTime",
+    "type": "float",
+    "donor_off": 884
+   },
+   {
+    "name": "SaveHeroGraphicIndex",
+    "type": "uint32",
+    "donor_off": 888
+   },
+   {
+    "name": "MiniMapGraphics",
+    "type": "Map_JVCCharString__",
+    "donor_off": 892
+   },
+   {
+    "name": "SoundKeyboardUp",
+    "type": "CCharString",
+    "donor_off": 752
+   },
+   {
+    "name": "SoundKeyboardDown",
+    "type": "CCharString",
+    "donor_off": 760
+   },
+   {
+    "name": "SoundKeyboardLeft",
+    "type": "CCharString",
+    "donor_off": 768
+   },
+   {
+    "name": "SoundKeyboardRight",
+    "type": "CCharString",
+    "donor_off": 776
+   },
+   {
+    "name": "SoundKeyboardEnterCharacter",
+    "type": "CCharString",
+    "donor_off": 784
+   },
+   {
+    "name": "SoundKeyboardDeleteCharacter",
+    "type": "CCharString",
+    "donor_off": 792
+   },
+   {
+    "name": "SoundKeyboardDone",
+    "type": "CCharString",
+    "donor_off": 800
+   },
+   {
+    "name": "FrontEndMusic",
+    "type": "CWideString",
+    "donor_off": 808
+   },
+   {
+    "name": "KeyboardSmallKeyGraphic",
+    "type": "int32",
+    "donor_off": 912
+   },
+   {
+    "name": "KeyboardLargeKeyGraphic",
+    "type": "int32",
+    "donor_off": 916
+   },
+   {
+    "name": "TimeInSecsForFade",
+    "type": "float",
+    "donor_off": 924
+   },
+   {
+    "name": "BackBufferFilterSaturation",
+    "type": "float",
+    "donor_off": 928
+   },
+   {
+    "name": "BackBufferFilterContrast",
+    "type": "float",
+    "donor_off": 932
+   },
+   {
+    "name": "BackBufferFilterBrightness",
+    "type": "float",
+    "donor_off": 936
+   },
+   {
+    "name": "BackBufferFilterTintR",
+    "type": "float",
+    "donor_off": 940
+   },
+   {
+    "name": "BackBufferFilterTintG",
+    "type": "float",
+    "donor_off": 944
+   },
+   {
+    "name": "BackBufferFilterTintB",
+    "type": "float",
+    "donor_off": 948
+   },
+   {
+    "name": "BackBufferFilterTintScale",
+    "type": "float",
+    "donor_off": 952
+   },
+   {
+    "name": "BackBufferDiffuseScale",
+    "type": "float",
+    "donor_off": 956
+   },
+   {
+    "name": "BackBufferAmbientScale",
+    "type": "float",
+    "donor_off": 960
+   },
+   {
+    "name": "MinimumFilterColor",
+    "type": "float",
+    "donor_off": 964
+   }
+  ]
+ },
+ "UI_ICONS_DEF": {
+  "addr": "01929cb6",
+  "retail_offsets": false,
+  "alias_of": "CUIIconsDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "IconFriendRequestReceived",
+    "type": "uint32",
+    "donor_off": 68
+   },
+   {
+    "name": "IconFriendRequestReceivedOn",
+    "type": "uint32",
+    "donor_off": 72
+   },
+   {
+    "name": "IconFriendRequestSent",
+    "type": "uint32",
+    "donor_off": 76
+   },
+   {
+    "name": "IconFriendRequestSentOn",
+    "type": "uint32",
+    "donor_off": 80
+   },
+   {
+    "name": "IconGameInviteReceived",
+    "type": "uint32",
+    "donor_off": 84
+   },
+   {
+    "name": "IconGameInviteReceivedOn",
+    "type": "uint32",
+    "donor_off": 88
+   },
+   {
+    "name": "IconGameInviteSent",
+    "type": "uint32",
+    "donor_off": 92
+   },
+   {
+    "name": "IconGameInviteSentOn",
+    "type": "uint32",
+    "donor_off": 96
+   },
+   {
+    "name": "IconMute",
+    "type": "uint32",
+    "donor_off": 100
+   },
+   {
+    "name": "IconMuteOn",
+    "type": "uint32",
+    "donor_off": 104
+   },
+   {
+    "name": "IconOnline",
+    "type": "uint32",
+    "donor_off": 108
+   },
+   {
+    "name": "IconOnlineOn",
+    "type": "uint32",
+    "donor_off": 112
+   },
+   {
+    "name": "IconPasscodeBlank",
+    "type": "uint32",
+    "donor_off": 116
+   },
+   {
+    "name": "IconPasscodeFilled",
+    "type": "uint32",
+    "donor_off": 120
+   },
+   {
+    "name": "IconTV",
+    "type": "uint32",
+    "donor_off": 124
+   },
+   {
+    "name": "IconTVOn",
+    "type": "uint32",
+    "donor_off": 128
+   },
+   {
+    "name": "IconVoice",
+    "type": "uint32",
+    "donor_off": 132
+   },
+   {
+    "name": "IconVoiceOn",
+    "type": "uint32",
+    "donor_off": 136
+   },
+   {
+    "name": "IconWait1",
+    "type": "uint32",
+    "donor_off": 140
+   },
+   {
+    "name": "IconWait2",
+    "type": "uint32",
+    "donor_off": 144
+   },
+   {
+    "name": "IconWait3",
+    "type": "uint32",
+    "donor_off": 148
+   },
+   {
+    "name": "IconWait4",
+    "type": "uint32",
+    "donor_off": 152
+   },
+   {
+    "name": "IconProgress",
+    "type": "uint32",
+    "donor_off": 156
+   },
+   {
+    "name": "IconProgressOn",
+    "type": "uint32",
+    "donor_off": 160
+   },
+   {
+    "name": "IconA",
+    "type": "uint32",
+    "donor_off": 164
+   },
+   {
+    "name": "IconB",
+    "type": "uint32",
+    "donor_off": 168
+   },
+   {
+    "name": "IconX",
+    "type": "uint32",
+    "donor_off": 172
+   },
+   {
+    "name": "IconY",
+    "type": "uint32",
+    "donor_off": 176
+   },
+   {
+    "name": "IconBlank",
+    "type": "uint32",
+    "donor_off": 180
+   },
+   {
+    "name": "IconUpArrow",
+    "type": "uint32",
+    "donor_off": 184
+   },
+   {
+    "name": "IconDownArrow",
+    "type": "uint32",
+    "donor_off": 188
+   },
+   {
+    "name": "IconListHighlight",
+    "type": "uint32",
+    "donor_off": 192
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_DRAIN_LIFE_DEF": {
+  "addr": "01944c21",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesDrainLifeDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "AmountOfHealthSucked",
+    "type": "Vector_M",
+    "donor_off": 68
+   },
+   {
+    "name": "NumEffects",
+    "type": "Vector_J",
+    "donor_off": 88
+   },
+   {
+    "name": "SpellRange",
+    "type": "Vector_M",
+    "donor_off": 108
+   },
+   {
+    "name": "ShotName",
+    "type": "Vector_VCCharString__",
+    "donor_off": 128
+   },
+   {
+    "name": "SpellDelaySecs",
+    "type": "float",
+    "donor_off": 148
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_UNHOLY_POWER_DEF": {
+  "addr": "01947ea5",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesUnholyPowerDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "StartPowerupSound",
+    "type": "Vector_VCDefString__",
+    "donor_off": 68
+   },
+   {
+    "name": "LoopingPowerupSound",
+    "type": "Vector_VCDefString__",
+    "donor_off": 88
+   },
+   {
+    "name": "ReleaseSound",
+    "type": "Vector_VCDefString__",
+    "donor_off": 108
+   },
+   {
+    "name": "ReleaseLoopSound",
+    "type": "Vector_VCDefString__",
+    "donor_off": 128
+   },
+   {
+    "name": "FinishSound",
+    "type": "Vector_VCDefString__",
+    "donor_off": 148
+   },
+   {
+    "name": "CancelSound",
+    "type": "Vector_VCDefString__",
+    "donor_off": 168
+   },
+   {
+    "name": "RandomFactorForNumSecsBetweenDamageHit",
+    "type": "float",
+    "donor_off": 188
+   },
+   {
+    "name": "NumSecsBetweenDamageHit",
+    "type": "Vector_M",
+    "donor_off": 192
+   },
+   {
+    "name": "DamagePerHit",
+    "type": "Vector_M",
+    "donor_off": 212
+   },
+   {
+    "name": "DurationOfSpellSecs",
+    "type": "Vector_M",
+    "donor_off": 232
+   },
+   {
+    "name": "RadiusOfEffect",
+    "type": "Vector_M",
+    "donor_off": 252
+   },
+   {
+    "name": "EnvChangeSecs",
+    "type": "Vector_M",
+    "donor_off": 272
+   },
+   {
+    "name": "EnvReturnSecs",
+    "type": "Vector_M",
+    "donor_off": 292
+   },
+   {
+    "name": "DoLifting",
+    "type": "bool",
+    "donor_off": 312
+   },
+   {
+    "name": "VelocityOfLift",
+    "type": "float",
+    "donor_off": 316
+   },
+   {
+    "name": "DistanceToLift",
+    "type": "float",
+    "donor_off": 320
+   },
+   {
+    "name": "StaminaCostPerSec",
+    "type": "Vector_M",
+    "donor_off": 324
+   },
+   {
+    "name": "DamageTakenMultiplier",
+    "type": "Vector_M",
+    "donor_off": 344
+   },
+   {
+    "name": "SmallRingRadius",
+    "type": "float",
+    "donor_off": 364
+   },
+   {
+    "name": "LargeRingRadius",
+    "type": "float",
+    "donor_off": 368
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_TURNCOAT_SPELL_DEF": {
+  "addr": "0194542f",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesTurncoatSpellDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "StaminaCostPerSec",
+    "type": "Vector_M",
+    "donor_off": 68
+   },
+   {
+    "name": "ResistanceDamagePerSec",
+    "type": "Vector_M",
+    "donor_off": 88
+   },
+   {
+    "name": "TurncoatTime",
+    "type": "Vector_M",
+    "donor_off": 108
+   },
+   {
+    "name": "TurncoatRange",
+    "type": "Vector_M",
+    "donor_off": 128
+   },
+   {
+    "name": "TurncoatXPUpEveryNSecs",
+    "type": "Vector_M",
+    "donor_off": 148
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_THUNDER_LIGHTNING_STORM_DEF": {
+  "addr": "01946fe5",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesThunderLightningStormDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "NumBeams",
+    "type": "int32",
+    "donor_off": 68
+   },
+   {
+    "name": "StartRadius",
+    "type": "float",
+    "donor_off": 72
+   },
+   {
+    "name": "EndRadius",
+    "type": "float",
+    "donor_off": 76
+   },
+   {
+    "name": "SkyBeamStartTime",
+    "type": "float",
+    "donor_off": 80
+   },
+   {
+    "name": "MainBeamsStartTime",
+    "type": "float",
+    "donor_off": 84
+   },
+   {
+    "name": "BeamRotationStartSpeed",
+    "type": "float",
+    "donor_off": 88
+   },
+   {
+    "name": "BeamRotationEndSpeed",
+    "type": "float",
+    "donor_off": 92
+   },
+   {
+    "name": "TotalLifetime",
+    "type": "float",
+    "donor_off": 96
+   },
+   {
+    "name": "Damage",
+    "type": "float",
+    "donor_off": 100
+   },
+   {
+    "name": "InitSound",
+    "type": "CDefString",
+    "donor_off": 104
+   },
+   {
+    "name": "LoopingSound",
+    "type": "CDefString",
+    "donor_off": 108
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_SUMMON_SPELL_DEF": {
+  "addr": "01946408",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesSummonSpellDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "TimeOfSummon",
+    "type": "Vector_M",
+    "donor_off": 68
+   },
+   {
+    "name": "BaseSummonCreatureName",
+    "type": "CDefString",
+    "donor_off": 88
+   },
+   {
+    "name": "FadeInTime",
+    "type": "float",
+    "donor_off": 92
+   },
+   {
+    "name": "FadeOutTime",
+    "type": "float",
+    "donor_off": 96
+   },
+   {
+    "name": "ResetCreatureManaCost",
+    "type": "int32",
+    "donor_off": 100
+   },
+   {
+    "name": "SummonTintColour",
+    "type": "Vector_J",
+    "donor_off": 104
+   },
+   {
+    "name": "EyeLeftDummyPointName",
+    "type": "CCharString",
+    "donor_off": 124
+   },
+   {
+    "name": "EyeRightDummyPointName",
+    "type": "CCharString",
+    "donor_off": 132
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_PHYSICAL_SHIELD_DEF": {
+  "addr": "01943ef1",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesPhysicalShieldDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "InitSound",
+    "type": "CDefString",
+    "donor_off": 68
+   },
+   {
+    "name": "PowerUp1Sound",
+    "type": "CDefString",
+    "donor_off": 72
+   },
+   {
+    "name": "PowerUp2Sound",
+    "type": "CDefString",
+    "donor_off": 76
+   },
+   {
+    "name": "PowerUp3Sound",
+    "type": "CDefString",
+    "donor_off": 80
+   },
+   {
+    "name": "CastSound",
+    "type": "CDefString",
+    "donor_off": 84
+   },
+   {
+    "name": "LoopingSoundLevel0",
+    "type": "CDefString",
+    "donor_off": 88
+   },
+   {
+    "name": "LoopingSoundLevel1",
+    "type": "CDefString",
+    "donor_off": 92
+   },
+   {
+    "name": "LoopingSoundLevel2",
+    "type": "CDefString",
+    "donor_off": 96
+   },
+   {
+    "name": "LoopingSoundLevel3",
+    "type": "CDefString",
+    "donor_off": 100
+   },
+   {
+    "name": "EndSound",
+    "type": "CDefString",
+    "donor_off": 104
+   },
+   {
+    "name": "Level0CamDist",
+    "type": "float",
+    "donor_off": 136
+   },
+   {
+    "name": "Level1CamDist",
+    "type": "float",
+    "donor_off": 140
+   },
+   {
+    "name": "Level2CamDist",
+    "type": "float",
+    "donor_off": 144
+   },
+   {
+    "name": "Level3CamDist",
+    "type": "float",
+    "donor_off": 148
+   },
+   {
+    "name": "Level0CamHeight",
+    "type": "float",
+    "donor_off": 152
+   },
+   {
+    "name": "Level1CamHeight",
+    "type": "float",
+    "donor_off": 156
+   },
+   {
+    "name": "Level2CamHeight",
+    "type": "float",
+    "donor_off": 160
+   },
+   {
+    "name": "Level3CamHeight",
+    "type": "float",
+    "donor_off": 164
+   },
+   {
+    "name": "Level0CamFOV",
+    "type": "float",
+    "donor_off": 168
+   },
+   {
+    "name": "Level1CamFOV",
+    "type": "float",
+    "donor_off": 172
+   },
+   {
+    "name": "Level2CamFOV",
+    "type": "float",
+    "donor_off": 176
+   },
+   {
+    "name": "Level3CamFOV",
+    "type": "float",
+    "donor_off": 180
+   },
+   {
+    "name": "Level0CamSwitchTime",
+    "type": "float",
+    "donor_off": 184
+   },
+   {
+    "name": "Level1CamSwitchTime",
+    "type": "float",
+    "donor_off": 188
+   },
+   {
+    "name": "Level2CamSwitchTime",
+    "type": "float",
+    "donor_off": 192
+   },
+   {
+    "name": "Level3CamSwitchTime",
+    "type": "float",
+    "donor_off": 196
+   },
+   {
+    "name": "Level0Health",
+    "type": "float",
+    "donor_off": 108
+   },
+   {
+    "name": "Level1Health",
+    "type": "float",
+    "donor_off": 112
+   },
+   {
+    "name": "Level2Health",
+    "type": "float",
+    "donor_off": 116
+   },
+   {
+    "name": "Level3Health",
+    "type": "float",
+    "donor_off": 120
+   },
+   {
+    "name": "LevelUpTimings0",
+    "type": "float",
+    "donor_off": 124
+   },
+   {
+    "name": "LevelUpTimings1",
+    "type": "float",
+    "donor_off": 128
+   },
+   {
+    "name": "LevelUpTimings2",
+    "type": "float",
+    "donor_off": 132
+   },
+   {
+    "name": "CastCamDist",
+    "type": "float",
+    "donor_off": 200
+   },
+   {
+    "name": "CastCamHeight",
+    "type": "float",
+    "donor_off": 204
+   },
+   {
+    "name": "CastCamFOV",
+    "type": "float",
+    "donor_off": 208
+   },
+   {
+    "name": "CastCamSwitchTime",
+    "type": "float",
+    "donor_off": 212
+   },
+   {
+    "name": "MinWidth",
+    "type": "float",
+    "donor_off": 216
+   },
+   {
+    "name": "MaxWidth",
+    "type": "Vector_M",
+    "donor_off": 220
+   },
+   {
+    "name": "ColorStartLevel1",
+    "type": "Vector_M",
+    "donor_off": 252
+   },
+   {
+    "name": "ColorStartLevel2",
+    "type": "Vector_M",
+    "donor_off": 272
+   },
+   {
+    "name": "ColorStartLevel3",
+    "type": "Vector_M",
+    "donor_off": 292
+   },
+   {
+    "name": "ColorStartLevel4",
+    "type": "Vector_M",
+    "donor_off": 312
+   },
+   {
+    "name": "ColorEnd",
+    "type": "Vector_M",
+    "donor_off": 332
+   },
+   {
+    "name": "ColorHit",
+    "type": "Vector_M",
+    "donor_off": 352
+   },
+   {
+    "name": "WobbleRate",
+    "type": "float",
+    "donor_off": 248
+   },
+   {
+    "name": "FadeOutPhysicalShieldTimeSecs",
+    "type": "float",
+    "donor_off": 372
+   },
+   {
+    "name": "BeenHitExtraWidth",
+    "type": "float",
+    "donor_off": 240
+   },
+   {
+    "name": "BeenHitFadeOffTimeSecs",
+    "type": "float",
+    "donor_off": 244
+   },
+   {
+    "name": "ManaDamage",
+    "type": "Vector_M",
+    "donor_off": 376
+   },
+   {
+    "name": "ShieldCoversCarriedItems",
+    "type": "bool",
+    "donor_off": 396
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_MULTI_STRIKE_DEF": {
+  "addr": "0194092f",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesMultiStrikeDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "SoundLevel0",
+    "type": "CDefString",
+    "donor_off": 68
+   },
+   {
+    "name": "SoundLevel1",
+    "type": "CDefString",
+    "donor_off": 72
+   },
+   {
+    "name": "SoundLevel2",
+    "type": "CDefString",
+    "donor_off": 76
+   },
+   {
+    "name": "SoundLevel3",
+    "type": "CDefString",
+    "donor_off": 80
+   },
+   {
+    "name": "AnimationLevel0",
+    "type": "CDefString",
+    "donor_off": 84
+   },
+   {
+    "name": "AnimationLevel1",
+    "type": "CDefString",
+    "donor_off": 88
+   },
+   {
+    "name": "AnimationLevel2",
+    "type": "CDefString",
+    "donor_off": 92
+   },
+   {
+    "name": "AnimationLevel3",
+    "type": "CDefString",
+    "donor_off": 96
+   },
+   {
+    "name": "HighlightWidth",
+    "type": "float",
+    "donor_off": 100
+   },
+   {
+    "name": "HighlightColor",
+    "type": "Vector_J",
+    "donor_off": 104
+   },
+   {
+    "name": "DelayTimeSecs",
+    "type": "Vector_M",
+    "donor_off": 124
+   },
+   {
+    "name": "NumHits",
+    "type": "Vector_J",
+    "donor_off": 144
+   },
+   {
+    "name": "PerHitDamagerMultiplier",
+    "type": "Vector_M",
+    "donor_off": 164
+   },
+   {
+    "name": "AttachmentPoint",
+    "type": "Vector_VCCharString__",
+    "donor_off": 184
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_MULTI_ARROW_DEF": {
+  "addr": "01940dc0",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesMultiArrowDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "NumberOfShotsLevel0",
+    "type": "int32",
+    "donor_off": 68
+   },
+   {
+    "name": "NumberOfShotsLevel1",
+    "type": "int32",
+    "donor_off": 72
+   },
+   {
+    "name": "NumberOfShotsLevel2",
+    "type": "int32",
+    "donor_off": 76
+   },
+   {
+    "name": "NumberOfShotsLevel3",
+    "type": "int32",
+    "donor_off": 80
+   },
+   {
+    "name": "NumberInVolleyLevel0",
+    "type": "int32",
+    "donor_off": 84
+   },
+   {
+    "name": "NumberInVolleyLevel1",
+    "type": "int32",
+    "donor_off": 88
+   },
+   {
+    "name": "NumberInVolleyLevel2",
+    "type": "int32",
+    "donor_off": 92
+   },
+   {
+    "name": "NumberInVolleyLevel3",
+    "type": "int32",
+    "donor_off": 96
+   },
+   {
+    "name": "AmmoEffectCreationDelaySecs",
+    "type": "float",
+    "donor_off": 100
+   },
+   {
+    "name": "BowHighlightWidth",
+    "type": "float",
+    "donor_off": 108
+   },
+   {
+    "name": "BowHighlightColor",
+    "type": "Vector_J",
+    "donor_off": 112
+   },
+   {
+    "name": "MultiArrowPerArrowDamageMultiplier",
+    "type": "Vector_M",
+    "donor_off": 132
+   },
+   {
+    "name": "CastSound",
+    "type": "CDefString",
+    "donor_off": 104
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_LIGHTNING_SPELL_DEF": {
+  "addr": "01945b2f",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesLightningSpellDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "InitSound",
+    "type": "CDefString",
+    "donor_off": 408
+   },
+   {
+    "name": "LoopingSound",
+    "type": "CDefString",
+    "donor_off": 412
+   },
+   {
+    "name": "EndHeroSound",
+    "type": "CDefString",
+    "donor_off": 416
+   },
+   {
+    "name": "EndAttackeeSound",
+    "type": "CDefString",
+    "donor_off": 420
+   },
+   {
+    "name": "RandomBeamMinAngleX",
+    "type": "float",
+    "donor_off": 308
+   },
+   {
+    "name": "RandomBeamMaxAngleX",
+    "type": "float",
+    "donor_off": 312
+   },
+   {
+    "name": "RandomBeamMinAngleZ",
+    "type": "float",
+    "donor_off": 316
+   },
+   {
+    "name": "RandomBeamMaxAngleZ",
+    "type": "float",
+    "donor_off": 320
+   },
+   {
+    "name": "AreaEffect",
+    "type": "Vector_M",
+    "donor_off": 68
+   },
+   {
+    "name": "DamagePerHit",
+    "type": "Vector_M",
+    "donor_off": 88
+   },
+   {
+    "name": "SubBeamDamagePerHit",
+    "type": "Vector_M",
+    "donor_off": 108
+   },
+   {
+    "name": "ActivationTime",
+    "type": "Vector_M",
+    "donor_off": 128
+   },
+   {
+    "name": "DeActivationTime",
+    "type": "Vector_M",
+    "donor_off": 148
+   },
+   {
+    "name": "MinMainBeams",
+    "type": "Vector_J",
+    "donor_off": 168
+   },
+   {
+    "name": "MaxMainBeams",
+    "type": "Vector_J",
+    "donor_off": 188
+   },
+   {
+    "name": "MinSubBeams",
+    "type": "Vector_J",
+    "donor_off": 208
+   },
+   {
+    "name": "MaxSubBeams",
+    "type": "Vector_J",
+    "donor_off": 228
+   },
+   {
+    "name": "TemporaryBeamLife",
+    "type": "Vector_M",
+    "donor_off": 248
+   },
+   {
+    "name": "TargettingFOV",
+    "type": "Vector_M",
+    "donor_off": 268
+   },
+   {
+    "name": "StaminaPerSecond",
+    "type": "Vector_M",
+    "donor_off": 288
+   },
+   {
+    "name": "MainBeamDecapitationTime",
+    "type": "Vector_M",
+    "donor_off": 324
+   },
+   {
+    "name": "SubBeamDecapitationTime",
+    "type": "Vector_M",
+    "donor_off": 344
+   },
+   {
+    "name": "SubBeamDelay",
+    "type": "Vector_M",
+    "donor_off": 364
+   },
+   {
+    "name": "OnhitEveryNSecs",
+    "type": "Vector_M",
+    "donor_off": 384
+   },
+   {
+    "name": "CombatMultiplierIncreaseTime",
+    "type": "float",
+    "donor_off": 404
+   },
+   {
+    "name": "LightningThemeTransitionInSecs",
+    "type": "float",
+    "donor_off": 424
+   },
+   {
+    "name": "LightningThemeTransitionOutSecs",
+    "type": "float",
+    "donor_off": 428
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_HEAL_LIFE_DEF": {
+  "addr": "01944f31",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesHealLifeDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "HealthIncreasePerFrame",
+    "type": "Vector_M",
+    "donor_off": 68
+   },
+   {
+    "name": "TotalHealthIncrease",
+    "type": "Vector_M",
+    "donor_off": 88
+   },
+   {
+    "name": "RadiusOfEffect",
+    "type": "Vector_M",
+    "donor_off": 108
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_GHOST_SWORD_DEF": {
+  "addr": "01945156",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesGhostSwordDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "TimeOfSummonLevel0",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "TimeOfSummonLevel1",
+    "type": "float",
+    "donor_off": 72
+   },
+   {
+    "name": "TimeOfSummonLevel2",
+    "type": "float",
+    "donor_off": 76
+   },
+   {
+    "name": "TimeOfSummonLevel3",
+    "type": "float",
+    "donor_off": 80
+   },
+   {
+    "name": "FadeInTime",
+    "type": "float",
+    "donor_off": 84
+   },
+   {
+    "name": "FadeOutTime",
+    "type": "float",
+    "donor_off": 88
+   },
+   {
+    "name": "CreationDistance",
+    "type": "float",
+    "donor_off": 92
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_FORCE_PUSH_DEF": {
+  "addr": "01943235",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesForcePushDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "MaxDistanceToPush",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "MinDistanceToPush",
+    "type": "float",
+    "donor_off": 72
+   },
+   {
+    "name": "DustBoxWidth",
+    "type": "float",
+    "donor_off": 76
+   },
+   {
+    "name": "MaxNumOfExtraEffects",
+    "type": "int32",
+    "donor_off": 80
+   },
+   {
+    "name": "MinNumOfExtraEffects",
+    "type": "int32",
+    "donor_off": 84
+   },
+   {
+    "name": "LevelUpTimings0",
+    "type": "float",
+    "donor_off": 88
+   },
+   {
+    "name": "LevelUpTimings1",
+    "type": "float",
+    "donor_off": 92
+   },
+   {
+    "name": "LevelUpTimings2",
+    "type": "float",
+    "donor_off": 96
+   },
+   {
+    "name": "ReleaseLevel1Delay",
+    "type": "float",
+    "donor_off": 100
+   },
+   {
+    "name": "ReleaseLevel2Delay",
+    "type": "float",
+    "donor_off": 104
+   },
+   {
+    "name": "ReleaseLevel3DelayA",
+    "type": "float",
+    "donor_off": 108
+   },
+   {
+    "name": "ReleaseLevel3DelayB",
+    "type": "float",
+    "donor_off": 112
+   },
+   {
+    "name": "ReleaseLevel4Delay",
+    "type": "float",
+    "donor_off": 116
+   },
+   {
+    "name": "HeightOffGround",
+    "type": "float",
+    "donor_off": 120
+   },
+   {
+    "name": "Level4OffsetMagnitude",
+    "type": "float",
+    "donor_off": 124
+   },
+   {
+    "name": "RadiusOfEffect",
+    "type": "Vector_M",
+    "donor_off": 128
+   },
+   {
+    "name": "ExtraPush",
+    "type": "float",
+    "donor_off": 148
+   },
+   {
+    "name": "PushSpeed",
+    "type": "float",
+    "donor_off": 152
+   },
+   {
+    "name": "ObjectDamage",
+    "type": "Vector_M",
+    "donor_off": 156
+   },
+   {
+    "name": "TimeDelayBetweenCastsSec",
+    "type": "Vector_M",
+    "donor_off": 176
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_FIREBALL_SPELL_DEF": {
+  "addr": "01945730",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesFireballSpellDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Inclination",
+    "type": "float",
+    "donor_off": 72
+   },
+   {
+    "name": "ReleaseDelay",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "StaminaCost",
+    "type": "Vector_M",
+    "donor_off": 76
+   },
+   {
+    "name": "TargettingArcAngle",
+    "type": "float",
+    "donor_off": 96
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_ENFLAME_DEF": {
+  "addr": "019437ed",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesEnflameDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "LevelUpTimings0",
+    "type": "float",
+    "donor_off": 132
+   },
+   {
+    "name": "LevelUpTimings1",
+    "type": "float",
+    "donor_off": 136
+   },
+   {
+    "name": "LevelUpTimings2",
+    "type": "float",
+    "donor_off": 140
+   },
+   {
+    "name": "Level0Damage",
+    "type": "float",
+    "donor_off": 144
+   },
+   {
+    "name": "Level1Damage",
+    "type": "float",
+    "donor_off": 148
+   },
+   {
+    "name": "Level2Damage",
+    "type": "float",
+    "donor_off": 152
+   },
+   {
+    "name": "Level3Damage",
+    "type": "float",
+    "donor_off": 156
+   },
+   {
+    "name": "RadiusOfEffect",
+    "type": "Vector_M",
+    "donor_off": 160
+   },
+   {
+    "name": "Level0CamDist",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "Level1CamDist",
+    "type": "float",
+    "donor_off": 72
+   },
+   {
+    "name": "Level2CamDist",
+    "type": "float",
+    "donor_off": 76
+   },
+   {
+    "name": "Level3CamDist",
+    "type": "float",
+    "donor_off": 80
+   },
+   {
+    "name": "Level0CamHeight",
+    "type": "float",
+    "donor_off": 84
+   },
+   {
+    "name": "Level1CamHeight",
+    "type": "float",
+    "donor_off": 88
+   },
+   {
+    "name": "Level2CamHeight",
+    "type": "float",
+    "donor_off": 92
+   },
+   {
+    "name": "Level3CamHeight",
+    "type": "float",
+    "donor_off": 96
+   },
+   {
+    "name": "Level0CamFOV",
+    "type": "float",
+    "donor_off": 100
+   },
+   {
+    "name": "Level1CamFOV",
+    "type": "float",
+    "donor_off": 104
+   },
+   {
+    "name": "Level2CamFOV",
+    "type": "float",
+    "donor_off": 108
+   },
+   {
+    "name": "Level3CamFOV",
+    "type": "float",
+    "donor_off": 112
+   },
+   {
+    "name": "Level0CamSwitchTime",
+    "type": "float",
+    "donor_off": 116
+   },
+   {
+    "name": "Level1CamSwitchTime",
+    "type": "float",
+    "donor_off": 120
+   },
+   {
+    "name": "Level2CamSwitchTime",
+    "type": "float",
+    "donor_off": 124
+   },
+   {
+    "name": "Level3CamSwitchTime",
+    "type": "float",
+    "donor_off": 128
+   },
+   {
+    "name": "EnflameCombatMultiplierFactor",
+    "type": "float",
+    "donor_off": 180
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_ELECTROCUTED_EFFECT_DEF": {
+  "addr": "019469c5",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesElectrocutedEffectDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "FadeInTimeSecs",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "FadeOutTimeStartSecs",
+    "type": "float",
+    "donor_off": 72
+   },
+   {
+    "name": "FadeOutTimeSecs",
+    "type": "float",
+    "donor_off": 76
+   },
+   {
+    "name": "Color",
+    "type": "Vector_J",
+    "donor_off": 80
+   },
+   {
+    "name": "HighlightColor",
+    "type": "Vector_J",
+    "donor_off": 100
+   },
+   {
+    "name": "HighlightWidth",
+    "type": "float",
+    "donor_off": 120
+   },
+   {
+    "name": "HeightSmall",
+    "type": "float",
+    "donor_off": 124
+   },
+   {
+    "name": "HeightMedium",
+    "type": "float",
+    "donor_off": 128
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_DRUNKENNESS_DEF": {
+  "addr": "01946cef",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesDrunkennessDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "DrunkenGraphic",
+    "type": "int32",
+    "donor_off": 68
+   },
+   {
+    "name": "MaxAlpha",
+    "type": "int32",
+    "donor_off": 72
+   },
+   {
+    "name": "USpeed",
+    "type": "float",
+    "donor_off": 76
+   },
+   {
+    "name": "VSpeed",
+    "type": "float",
+    "donor_off": 80
+   },
+   {
+    "name": "RotSpeed",
+    "type": "float",
+    "donor_off": 84
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_DIVINE_WRATH_DEF": {
+  "addr": "019474fc",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesDivineWrathDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "StartPowerupSound",
+    "type": "Vector_VCDefString__",
+    "donor_off": 68
+   },
+   {
+    "name": "LoopingPowerupSound",
+    "type": "Vector_VCDefString__",
+    "donor_off": 88
+   },
+   {
+    "name": "ReleaseSound",
+    "type": "Vector_VCDefString__",
+    "donor_off": 108
+   },
+   {
+    "name": "ReleaseLoopSound",
+    "type": "Vector_VCDefString__",
+    "donor_off": 128
+   },
+   {
+    "name": "FinishSound",
+    "type": "Vector_VCDefString__",
+    "donor_off": 148
+   },
+   {
+    "name": "CancelSound",
+    "type": "Vector_VCDefString__",
+    "donor_off": 168
+   },
+   {
+    "name": "RandomFactorForNumSecsBetweenDamageHit",
+    "type": "float",
+    "donor_off": 188
+   },
+   {
+    "name": "NumSecsBetweenDamageHit",
+    "type": "Vector_M",
+    "donor_off": 192
+   },
+   {
+    "name": "DamagePerHit",
+    "type": "Vector_M",
+    "donor_off": 212
+   },
+   {
+    "name": "DurationOfSpellSecs",
+    "type": "Vector_M",
+    "donor_off": 232
+   },
+   {
+    "name": "RadiusOfEffect",
+    "type": "Vector_M",
+    "donor_off": 252
+   },
+   {
+    "name": "EnvChangeSecs",
+    "type": "Vector_M",
+    "donor_off": 272
+   },
+   {
+    "name": "EnvReturnSecs",
+    "type": "Vector_M",
+    "donor_off": 292
+   },
+   {
+    "name": "DoLifting",
+    "type": "bool",
+    "donor_off": 312
+   },
+   {
+    "name": "VelocityOfLift",
+    "type": "float",
+    "donor_off": 316
+   },
+   {
+    "name": "DistanceToLift",
+    "type": "float",
+    "donor_off": 320
+   },
+   {
+    "name": "StaminaCostPerSec",
+    "type": "Vector_M",
+    "donor_off": 324
+   },
+   {
+    "name": "DamageTakenMultiplier",
+    "type": "Vector_M",
+    "donor_off": 344
+   },
+   {
+    "name": "SmallRingRadius",
+    "type": "float",
+    "donor_off": 364
+   },
+   {
+    "name": "LargeRingRadius",
+    "type": "float",
+    "donor_off": 368
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_CREATURE_TINT_DEF": {
+  "addr": "019485ca",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesCreatureTintDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "FadeInTimeSecs",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "FadeOutTimeSecs",
+    "type": "float",
+    "donor_off": 72
+   },
+   {
+    "name": "Color",
+    "type": "Vector_J",
+    "donor_off": 76
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_BURNT_EFFECT_DEF": {
+  "addr": "0194675a",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesBurntEffectDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "FadeInTimeSecs",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "FadeOutTimeStartSecs",
+    "type": "float",
+    "donor_off": 72
+   },
+   {
+    "name": "FadeOutTimeSecs",
+    "type": "float",
+    "donor_off": 76
+   },
+   {
+    "name": "Color",
+    "type": "Vector_J",
+    "donor_off": 80
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_BULLET_TIME_DEF": {
+  "addr": "01942391",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesBulletTimeDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Level0CamDist",
+    "type": "float",
+    "donor_off": 112
+   },
+   {
+    "name": "Level1CamDist",
+    "type": "float",
+    "donor_off": 116
+   },
+   {
+    "name": "Level2CamDist",
+    "type": "float",
+    "donor_off": 120
+   },
+   {
+    "name": "Level3CamDist",
+    "type": "float",
+    "donor_off": 124
+   },
+   {
+    "name": "Level0CamHeight",
+    "type": "float",
+    "donor_off": 128
+   },
+   {
+    "name": "Level1CamHeight",
+    "type": "float",
+    "donor_off": 132
+   },
+   {
+    "name": "Level2CamHeight",
+    "type": "float",
+    "donor_off": 136
+   },
+   {
+    "name": "Level3CamHeight",
+    "type": "float",
+    "donor_off": 140
+   },
+   {
+    "name": "Level0CamFOV",
+    "type": "float",
+    "donor_off": 144
+   },
+   {
+    "name": "Level1CamFOV",
+    "type": "float",
+    "donor_off": 148
+   },
+   {
+    "name": "Level2CamFOV",
+    "type": "float",
+    "donor_off": 152
+   },
+   {
+    "name": "Level3CamFOV",
+    "type": "float",
+    "donor_off": 156
+   },
+   {
+    "name": "Level0CamSwitchTime",
+    "type": "float",
+    "donor_off": 160
+   },
+   {
+    "name": "Level1CamSwitchTime",
+    "type": "float",
+    "donor_off": 164
+   },
+   {
+    "name": "Level2CamSwitchTime",
+    "type": "float",
+    "donor_off": 168
+   },
+   {
+    "name": "Level3CamSwitchTime",
+    "type": "float",
+    "donor_off": 172
+   },
+   {
+    "name": "SlowTimeDurationLevel0",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "SlowTimeDurationLevel1",
+    "type": "float",
+    "donor_off": 72
+   },
+   {
+    "name": "SlowTimeDurationLevel2",
+    "type": "float",
+    "donor_off": 76
+   },
+   {
+    "name": "SlowTimeDurationLevel3",
+    "type": "float",
+    "donor_off": 80
+   },
+   {
+    "name": "BulletTimeSlowdownMultiplierLevel0",
+    "type": "int32",
+    "donor_off": 84
+   },
+   {
+    "name": "BulletTimeSlowdownMultiplierLevel1",
+    "type": "int32",
+    "donor_off": 88
+   },
+   {
+    "name": "BulletTimeSlowdownMultiplierLevel2",
+    "type": "int32",
+    "donor_off": 92
+   },
+   {
+    "name": "BulletTimeSlowdownMultiplierLevel3",
+    "type": "int32",
+    "donor_off": 96
+   },
+   {
+    "name": "LevelUpTimings0",
+    "type": "float",
+    "donor_off": 100
+   },
+   {
+    "name": "LevelUpTimings1",
+    "type": "float",
+    "donor_off": 104
+   },
+   {
+    "name": "LevelUpTimings2",
+    "type": "float",
+    "donor_off": 108
+   },
+   {
+    "name": "CastCamDist",
+    "type": "float",
+    "donor_off": 176
+   },
+   {
+    "name": "CastCamHeight",
+    "type": "float",
+    "donor_off": 180
+   },
+   {
+    "name": "CastCamFOV",
+    "type": "float",
+    "donor_off": 184
+   },
+   {
+    "name": "CastCamSwitchTime",
+    "type": "float",
+    "donor_off": 188
+   },
+   {
+    "name": "ChargeSound",
+    "type": "CDefString",
+    "donor_off": 192
+   },
+   {
+    "name": "PowerUp1Sound",
+    "type": "CDefString",
+    "donor_off": 196
+   },
+   {
+    "name": "PowerUp2Sound",
+    "type": "CDefString",
+    "donor_off": 200
+   },
+   {
+    "name": "PowerUp3Sound",
+    "type": "CDefString",
+    "donor_off": 204
+   },
+   {
+    "name": "InitSound",
+    "type": "CDefString",
+    "donor_off": 208
+   },
+   {
+    "name": "LoopSound",
+    "type": "CDefString",
+    "donor_off": 212
+   },
+   {
+    "name": "EndSound",
+    "type": "CDefString",
+    "donor_off": 216
+   },
+   {
+    "name": "RadialBlurThresholdColR",
+    "type": "float",
+    "donor_off": 220
+   },
+   {
+    "name": "RadialBlurThresholdColG",
+    "type": "float",
+    "donor_off": 224
+   },
+   {
+    "name": "RadialBlurThresholdColB",
+    "type": "float",
+    "donor_off": 228
+   },
+   {
+    "name": "RadialBlurLength",
+    "type": "float",
+    "donor_off": 232
+   },
+   {
+    "name": "RadialBlurIntensityColR",
+    "type": "float",
+    "donor_off": 236
+   },
+   {
+    "name": "RadialBlurIntensityColG",
+    "type": "float",
+    "donor_off": 240
+   },
+   {
+    "name": "RadialBlurIntensityColB",
+    "type": "float",
+    "donor_off": 244
+   },
+   {
+    "name": "RadialBlurFade",
+    "type": "float",
+    "donor_off": 248
+   },
+   {
+    "name": "RadialBlurRange",
+    "type": "float",
+    "donor_off": 252
+   },
+   {
+    "name": "RadialBlurTwist",
+    "type": "float",
+    "donor_off": 256
+   },
+   {
+    "name": "RadialBlurFadeTimeSecs",
+    "type": "float",
+    "donor_off": 260
+   },
+   {
+    "name": "DamageRadialBlurThresholdColR",
+    "type": "float",
+    "donor_off": 264
+   },
+   {
+    "name": "DamageRadialBlurThresholdColG",
+    "type": "float",
+    "donor_off": 268
+   },
+   {
+    "name": "DamageRadialBlurThresholdColB",
+    "type": "float",
+    "donor_off": 272
+   },
+   {
+    "name": "DamageRadialBlurLength",
+    "type": "float",
+    "donor_off": 276
+   },
+   {
+    "name": "DamageRadialBlurIntensityColR",
+    "type": "float",
+    "donor_off": 280
+   },
+   {
+    "name": "DamageRadialBlurIntensityColG",
+    "type": "float",
+    "donor_off": 284
+   },
+   {
+    "name": "DamageRadialBlurIntensityColB",
+    "type": "float",
+    "donor_off": 288
+   },
+   {
+    "name": "DamageRadialBlurFade",
+    "type": "float",
+    "donor_off": 292
+   },
+   {
+    "name": "DamageRadialBlurRange",
+    "type": "float",
+    "donor_off": 296
+   },
+   {
+    "name": "DamageRadialBlurTwist",
+    "type": "float",
+    "donor_off": 300
+   },
+   {
+    "name": "DamageRadialBlurFadeTimeSecs",
+    "type": "float",
+    "donor_off": 304
+   },
+   {
+    "name": "HeroCombatSlowness",
+    "type": "float",
+    "donor_off": 308
+   },
+   {
+    "name": "ScreenFilterAlpha",
+    "type": "Vector_M",
+    "donor_off": 312
+   },
+   {
+    "name": "ScreenFilterSaturation",
+    "type": "Vector_M",
+    "donor_off": 332
+   },
+   {
+    "name": "ScreenFilterContrast",
+    "type": "Vector_M",
+    "donor_off": 352
+   },
+   {
+    "name": "ScreenFilterBrightness",
+    "type": "Vector_M",
+    "donor_off": 372
+   },
+   {
+    "name": "ScreenFilterTintR",
+    "type": "Vector_M",
+    "donor_off": 392
+   },
+   {
+    "name": "ScreenFilterTintG",
+    "type": "Vector_M",
+    "donor_off": 412
+   },
+   {
+    "name": "ScreenFilterTintB",
+    "type": "Vector_M",
+    "donor_off": 432
+   },
+   {
+    "name": "ScreenFilterFadeOutSecs",
+    "type": "float",
+    "donor_off": 456
+   },
+   {
+    "name": "ScreenFilterFadeInSecs",
+    "type": "float",
+    "donor_off": 452
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_BERSERK_DEF": {
+  "addr": "01941323",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesBerserkDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "SpeedMultiplier",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "FramesToFadeOut",
+    "type": "int32",
+    "donor_off": 72
+   },
+   {
+    "name": "LowerBerserkPercent",
+    "type": "float",
+    "donor_off": 76
+   },
+   {
+    "name": "TimeForThemeTransition",
+    "type": "float",
+    "donor_off": 80
+   },
+   {
+    "name": "BlurCenterFromFloor",
+    "type": "float",
+    "donor_off": 84
+   },
+   {
+    "name": "BerserkThreshold",
+    "type": "float",
+    "donor_off": 88
+   },
+   {
+    "name": "BerserkLength",
+    "type": "float",
+    "donor_off": 92
+   },
+   {
+    "name": "BerserkIntensity",
+    "type": "float",
+    "donor_off": 96
+   },
+   {
+    "name": "BerserkFade",
+    "type": "float",
+    "donor_off": 100
+   },
+   {
+    "name": "BerserkRange",
+    "type": "float",
+    "donor_off": 104
+   },
+   {
+    "name": "BerserkTwist",
+    "type": "float",
+    "donor_off": 108
+   },
+   {
+    "name": "TimeForRadialBlurToFadeOut",
+    "type": "float",
+    "donor_off": 112
+   },
+   {
+    "name": "CameraStartDist",
+    "type": "float",
+    "donor_off": 116
+   },
+   {
+    "name": "CameraEndDist",
+    "type": "float",
+    "donor_off": 120
+   },
+   {
+    "name": "CameraStartDeltaHeight",
+    "type": "float",
+    "donor_off": 124
+   },
+   {
+    "name": "CameraEndDeltaHeight",
+    "type": "float",
+    "donor_off": 128
+   },
+   {
+    "name": "LevelUpTimings",
+    "type": "Vector_M",
+    "donor_off": 456
+   },
+   {
+    "name": "BerserkDamageToEnemyMultiplier",
+    "type": "Vector_M",
+    "donor_off": 152
+   },
+   {
+    "name": "BerserkDamageToEnemyMultiplierAdditionPerHit",
+    "type": "float",
+    "donor_off": 172
+   },
+   {
+    "name": "BerserkDamageToMeMultiplier",
+    "type": "Vector_M",
+    "donor_off": 176
+   },
+   {
+    "name": "BerserkDuration",
+    "type": "Vector_M",
+    "donor_off": 132
+   },
+   {
+    "name": "MaxIncreaseInStrength",
+    "type": "Vector_M",
+    "donor_off": 196
+   },
+   {
+    "name": "BerserkScale",
+    "type": "Vector_M",
+    "donor_off": 216
+   },
+   {
+    "name": "BerserkBlastRadius",
+    "type": "float",
+    "donor_off": 236
+   },
+   {
+    "name": "CamDist",
+    "type": "Vector_M",
+    "donor_off": 240
+   },
+   {
+    "name": "CamHeight",
+    "type": "Vector_M",
+    "donor_off": 260
+   },
+   {
+    "name": "CamFOV",
+    "type": "Vector_M",
+    "donor_off": 280
+   },
+   {
+    "name": "CamSwitchTime",
+    "type": "Vector_M",
+    "donor_off": 300
+   },
+   {
+    "name": "RumbleLevel",
+    "type": "Vector_M",
+    "donor_off": 320
+   },
+   {
+    "name": "RumbleSmoothness",
+    "type": "Vector_M",
+    "donor_off": 340
+   },
+   {
+    "name": "RumbleAttack",
+    "type": "Vector_M",
+    "donor_off": 360
+   },
+   {
+    "name": "RumbleDecay",
+    "type": "Vector_M",
+    "donor_off": 380
+   },
+   {
+    "name": "RumbleReleaseLevelDelta",
+    "type": "float",
+    "donor_off": 400
+   },
+   {
+    "name": "RumbleReleaseSmoothnessDelta",
+    "type": "float",
+    "donor_off": 404
+   },
+   {
+    "name": "RumbleReleaseAttackDelta",
+    "type": "float",
+    "donor_off": 408
+   },
+   {
+    "name": "RumbleReleaseDecayDelta",
+    "type": "float",
+    "donor_off": 412
+   },
+   {
+    "name": "DecapitateMaxProb",
+    "type": "Vector_M",
+    "donor_off": 424
+   },
+   {
+    "name": "CrazyActionRadius",
+    "type": "float",
+    "donor_off": 416
+   },
+   {
+    "name": "CrazyActionDamage",
+    "type": "float",
+    "donor_off": 420
+   },
+   {
+    "name": "TargetNearestEnemyDistance",
+    "type": "float",
+    "donor_off": 444
+   },
+   {
+    "name": "WeaponTrailAttack",
+    "type": "int32",
+    "donor_off": 448
+   },
+   {
+    "name": "WeaponTrailKnockDown",
+    "type": "int32",
+    "donor_off": 452
+   },
+   {
+    "name": "TintColorR",
+    "type": "Vector_J",
+    "donor_off": 476
+   },
+   {
+    "name": "TintColorG",
+    "type": "Vector_J",
+    "donor_off": 496
+   },
+   {
+    "name": "TintColorB",
+    "type": "Vector_J",
+    "donor_off": 516
+   },
+   {
+    "name": "CanBlockWhileBerserked",
+    "type": "bool",
+    "donor_off": 536
+   },
+   {
+    "name": "CrazyIdleIntervalSecs",
+    "type": "float",
+    "donor_off": 540
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_BATTLE_CHARGE_DEF": {
+  "addr": "0194033a",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesBattleChargeDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "RunSpeed",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "DashDistance",
+    "type": "Vector_M",
+    "donor_off": 72
+   },
+   {
+    "name": "RadiusOfEffect",
+    "type": "Vector_M",
+    "donor_off": 92
+   },
+   {
+    "name": "BattleChargeDamage",
+    "type": "Vector_M",
+    "donor_off": 112
+   },
+   {
+    "name": "BattleChargeCombatMultiplierFactor",
+    "type": "float",
+    "donor_off": 132
+   },
+   {
+    "name": "BattleChargeRadialStartSeconds",
+    "type": "float",
+    "donor_off": 136
+   },
+   {
+    "name": "BattleChargeRadialEndSeconds",
+    "type": "float",
+    "donor_off": 140
+   },
+   {
+    "name": "BattleChargeRadialThreshold",
+    "type": "float",
+    "donor_off": 144
+   },
+   {
+    "name": "BattleChargeRadialLength",
+    "type": "float",
+    "donor_off": 148
+   },
+   {
+    "name": "BattleChargeRadialIntensity",
+    "type": "float",
+    "donor_off": 152
+   },
+   {
+    "name": "BattleChargeRadialFade",
+    "type": "float",
+    "donor_off": 156
+   },
+   {
+    "name": "BattleChargeRadialRange",
+    "type": "float",
+    "donor_off": 160
+   },
+   {
+    "name": "BattleChargeRadialTwist",
+    "type": "float",
+    "donor_off": 164
+   },
+   {
+    "name": "PoseDelaySecs",
+    "type": "float",
+    "donor_off": 168
+   },
+   {
+    "name": "ChargeDelay",
+    "type": "float",
+    "donor_off": 172
+   },
+   {
+    "name": "NumPeopleHit",
+    "type": "Vector_J",
+    "donor_off": 176
+   },
+   {
+    "name": "DragonExtraGumphRadiusMultiplier",
+    "type": "float",
+    "donor_off": 196
+   },
+   {
+    "name": "DragonExtraGumphRadius",
+    "type": "float",
+    "donor_off": 200
+   }
+  ]
+ },
+ "SPECIAL_ABILITIES_ASSASSIN_RUSH_DEF": {
+  "addr": "0193fbb8",
+  "retail_offsets": false,
+  "alias_of": "CSpecialAbilitiesAssassinRushDef",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "DistanceAwayFromtargetToAssassinRushTo",
+    "type": "float",
+    "donor_off": 68
+   },
+   {
+    "name": "SafeCollideRadiusPercentage",
+    "type": "float",
+    "donor_off": 72
+   },
+   {
+    "name": "DistFromFloor",
+    "type": "float",
+    "donor_off": 76
+   },
+   {
+    "name": "AssassinStartSeconds",
+    "type": "float",
+    "donor_off": 80
+   },
+   {
+    "name": "AssassinEndSeconds",
+    "type": "float",
+    "donor_off": 84
+   },
+   {
+    "name": "AssassinThreshold",
+    "type": "float",
+    "donor_off": 88
+   },
+   {
+    "name": "AssassinLength",
+    "type": "float",
+    "donor_off": 92
+   },
+   {
+    "name": "AssassinIntensity",
+    "type": "float",
+    "donor_off": 96
+   },
+   {
+    "name": "AssassinFade",
+    "type": "float",
+    "donor_off": 100
+   },
+   {
+    "name": "AssassinRange",
+    "type": "float",
+    "donor_off": 104
+   },
+   {
+    "name": "AssassinTwist",
+    "type": "float",
+    "donor_off": 108
+   },
+   {
+    "name": "RunSpeed",
+    "type": "float",
+    "donor_off": 112
+   },
+   {
+    "name": "TrailDelaySecs",
+    "type": "float",
+    "donor_off": 116
+   },
+   {
+    "name": "SlowTimeLength",
+    "type": "float",
+    "donor_off": 120
+   },
+   {
+    "name": "AssassinAlpha",
+    "type": "int32",
+    "donor_off": 124
+   },
+   {
+    "name": "SlowTimeMultiplier",
+    "type": "int32",
+    "donor_off": 128
+   },
+   {
+    "name": "RushDelay",
+    "type": "float",
+    "donor_off": 132
+   },
+   {
+    "name": "DashDistance",
+    "type": "Vector_M",
+    "donor_off": 136
+   }
+  ]
+ },
+ "CCombatAbilityBlockUnarmedAttackDef": {
+  "addr": "0194c731",
+  "retail_offsets": false,
+  "alias_of": "CCombatAbilityBlockDefBase",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "BlockAngle",
+    "type": "float",
+    "donor_off": 64
+   },
+   {
+    "name": "BlockCanBeBroken",
+    "type": "bool",
+    "donor_off": 68
+   },
+   {
+    "name": "ForceRecoilWhenBlocking",
+    "type": "bool",
+    "donor_off": 69
+   },
+   {
+    "name": "CombatAbility",
+    "type": "CCombatAbilityData",
+    "donor_off": 40
+   },
+   {
+    "name": "ValidBlockWeaponTypes",
+    "type": "Vector_enum",
+    "donor_off": 48
+   }
+  ]
+ },
+ "CCombatAbilityBlockLightWeaponAttackDef": {
+  "addr": "0194c731",
+  "retail_offsets": false,
+  "alias_of": "CCombatAbilityBlockDefBase",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "BlockAngle",
+    "type": "float",
+    "donor_off": 64
+   },
+   {
+    "name": "BlockCanBeBroken",
+    "type": "bool",
+    "donor_off": 68
+   },
+   {
+    "name": "ForceRecoilWhenBlocking",
+    "type": "bool",
+    "donor_off": 69
+   },
+   {
+    "name": "CombatAbility",
+    "type": "CCombatAbilityData",
+    "donor_off": 40
+   },
+   {
+    "name": "ValidBlockWeaponTypes",
+    "type": "Vector_enum",
+    "donor_off": 48
+   }
+  ]
+ },
+ "CCombatAbilityBlockHeavyWeaponAttackDef": {
+  "addr": "0194c731",
+  "retail_offsets": false,
+  "alias_of": "CCombatAbilityBlockDefBase",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "BlockAngle",
+    "type": "float",
+    "donor_off": 64
+   },
+   {
+    "name": "BlockCanBeBroken",
+    "type": "bool",
+    "donor_off": 68
+   },
+   {
+    "name": "ForceRecoilWhenBlocking",
+    "type": "bool",
+    "donor_off": 69
+   },
+   {
+    "name": "CombatAbility",
+    "type": "CCombatAbilityData",
+    "donor_off": 40
+   },
+   {
+    "name": "ValidBlockWeaponTypes",
+    "type": "Vector_enum",
+    "donor_off": 48
+   }
+  ]
+ },
+ "CCombatAbilityBlockProjectileWeaponAttackDef": {
+  "addr": "0194c731",
+  "retail_offsets": false,
+  "alias_of": "CCombatAbilityBlockDefBase",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "BlockAngle",
+    "type": "float",
+    "donor_off": 64
+   },
+   {
+    "name": "BlockCanBeBroken",
+    "type": "bool",
+    "donor_off": 68
+   },
+   {
+    "name": "ForceRecoilWhenBlocking",
+    "type": "bool",
+    "donor_off": 69
+   },
+   {
+    "name": "CombatAbility",
+    "type": "CCombatAbilityData",
+    "donor_off": 40
+   },
+   {
+    "name": "ValidBlockWeaponTypes",
+    "type": "Vector_enum",
+    "donor_off": 48
+   }
+  ]
+ },
+ "CCombatAbilityGetHitCounterAttackDef": {
+  "addr": "0194d0df",
+  "retail_offsets": false,
+  "alias_of": "CCombatAbilityAttackBase",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Blockable",
+    "type": "bool",
+    "donor_off": 64
+   },
+   {
+    "name": "Knockdown",
+    "type": "bool",
+    "donor_off": 65
+   },
+   {
+    "name": "Damage",
+    "type": "float",
+    "donor_off": 68
+   }
+  ]
+ },
+ "CCombatAbilityBlockCounterAttackDef": {
+  "addr": "0194d0df",
+  "retail_offsets": false,
+  "alias_of": "CCombatAbilityAttackBase",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Blockable",
+    "type": "bool",
+    "donor_off": 64
+   },
+   {
+    "name": "Knockdown",
+    "type": "bool",
+    "donor_off": 65
+   },
+   {
+    "name": "Damage",
+    "type": "float",
+    "donor_off": 68
+   }
+  ]
+ },
+ "CCombatAbilityFlourishCounterAttackDef": {
+  "addr": "0194d0df",
+  "retail_offsets": false,
+  "alias_of": "CCombatAbilityAttackBase",
+  "note": "resolver Candidate-1 alias: game.bin definition string -> donor class; validated ALL_MATCH 2026-07-19",
+  "fields": [
+   {
+    "name": "Blockable",
+    "type": "bool",
+    "donor_off": 64
+   },
+   {
+    "name": "Knockdown",
+    "type": "bool",
+    "donor_off": 65
+   },
+   {
+    "name": "Damage",
+    "type": "float",
+    "donor_off": 68
+   }
+  ]
+ }
+}

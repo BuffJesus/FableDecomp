@@ -1,0 +1,2830 @@
+@@@FUNC 0081dd90 242 2
+@@CALLERS 
+@@CALLEES FUN_0081b880, FUN_0081dd90, FUN_0081d580
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_0081dd90(uint *param_1,int param_2,undefined4 param_3,int param_4,undefined4 param_5)
+
+{
+  uint uVar1;
+  uint uVar2;
+  uint uVar3;
+  uint uVar4;
+  uint *puVar5;
+  int iVar6;
+  uint *puVar7;
+  
+  if (0x10 < (param_2 - (int)param_1) / 0xc) {
+    while (param_4 != 0) {
+      iVar6 = (param_2 - (int)param_1) / 0x18;
+      uVar1 = *param_1;
+      uVar2 = param_1[iVar6 * 3];
+      param_4 = param_4 + -1;
+      uVar3 = *(uint *)(param_2 + -0xc);
+      uVar4 = uVar2;
+      puVar5 = param_1 + iVar6 * 3;
+      puVar7 = param_1;
+      if (uVar1 < uVar2) {
+        uVar4 = uVar1;
+        puVar5 = param_1;
+        puVar7 = param_1 + iVar6 * 3;
+        uVar1 = uVar2;
+      }
+      if ((uVar3 <= uVar1) && (puVar7 = puVar5, uVar4 < uVar3)) {
+        puVar7 = (uint *)(param_2 + -0xc);
+      }
+      param_2 = FUN_0081b880(*puVar7,puVar7[1],puVar7[2],param_5);
+      FUN_0081dd90(0,param_4,param_5);
+      if ((param_2 - (int)param_1) / 0xc < 0x11) {
+        return;
+      }
+    }
+    FUN_0081d580(param_2,0,param_5);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 008251b0 186 2
+@@CALLERS _Copy_impl<CNavigationPosition*,CNavigationPosition*>
+@@CALLEES operator_delete
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_008251b0(int *param_1,int param_2,int param_3,int *param_4)
+
+{
+  int iVar1;
+  int *piVar2;
+  int *piVar3;
+  
+  iVar1 = param_1[-3];
+  while (param_2 < iVar1) {
+    *param_1 = iVar1;
+    piVar2 = (int *)param_1[-1];
+    piVar3 = (int *)param_1[2];
+    iVar1 = param_1[-2];
+    if (piVar3 != piVar2) {
+      if (piVar3 != (int *)0x0) {
+        *piVar3 = *piVar3 + -1;
+        if (*(int *)param_1[2] == 0) {
+          (*(code *)((int *)param_1[2])[1])();
+          operator_delete((void *)param_1[2]);
+        }
+      }
+      param_1[1] = iVar1;
+      param_1[2] = (int)piVar2;
+      if (piVar2 != (int *)0x0) {
+        *piVar2 = *piVar2 + 1;
+      }
+    }
+    iVar1 = param_1[-6];
+    param_1 = param_1 + -3;
+  }
+  *param_1 = param_2;
+  piVar2 = (int *)param_1[2];
+  if (piVar2 != param_4) {
+    if (piVar2 != (int *)0x0) {
+      *piVar2 = *piVar2 + -1;
+      if (*(int *)param_1[2] == 0) {
+        (*(code *)((int *)param_1[2])[1])();
+        operator_delete((void *)param_1[2]);
+      }
+    }
+    param_1[1] = param_3;
+    param_1[2] = (int)param_4;
+    if (param_4 == (int *)0x0) {
+      return;
+    }
+    *param_4 = *param_4 + 1;
+  }
+  if ((param_4 != (int *)0x0) && (*param_4 = *param_4 + -1, *param_4 == 0)) {
+    (*(code *)param_4[1])();
+    operator_delete(param_4);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00825cf0 77 2
+@@CALLERS CMap
+@@CALLEES _Copy_impl<CTCSkeletalMorph::CSkeletalMorph*,CTCSkeletalMorph::CSkeletalMorph*>, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_00825cf0(int param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  CSkeletalMorph *pCVar1;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar2;
+  CSkeletalMorph *pCVar3;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  CSkeletalMorph *pCVar4;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  pCVar3 = std::_Copy_impl<CTCSkeletalMorph::CSkeletalMorph*,CTCSkeletalMorph::CSkeletalMorph*>
+                     (param_3,*(undefined4 *)(param_1 + 4),param_2,&param_2,0);
+  pCVar1 = *(CSkeletalMorph **)(param_1 + 4);
+  ppVar2 = extraout_EDX;
+  for (pCVar4 = pCVar3; pCVar4 != pCVar1; pCVar4 = pCVar4 + 8) {
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)(pCVar4 + 4),ppVar2,
+               unaff_EDI);
+    ppVar2 = extraout_EDX_00;
+  }
+  *(CSkeletalMorph **)(param_1 + 4) = pCVar3;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00826000 161 2
+@@CALLERS CScriptedMapBrush
+@@CALLEES malloc, FUN_008259c0
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_00826000(int *param_1,int *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  undefined1 *puVar3;
+  undefined4 uVar4;
+  
+  *param_1 = 0;
+  puVar3 = malloc(0x18);
+  *param_1 = (int)puVar3;
+  param_1[1] = 0;
+  iVar1 = *(int *)(*param_2 + 4);
+  *puVar3 = 0;
+  if (iVar1 != 0) {
+    iVar1 = *param_1;
+    uVar4 = FUN_008259c0(*(undefined4 *)(*param_2 + 4),iVar1);
+    *(undefined4 *)(iVar1 + 4) = uVar4;
+    iVar1 = *(int *)(*param_1 + 4);
+    for (iVar2 = *(int *)(iVar1 + 8); iVar2 != 0; iVar2 = *(int *)(iVar2 + 8)) {
+      iVar1 = iVar2;
+    }
+    *(int *)(*param_1 + 8) = iVar1;
+    iVar1 = *(int *)(*param_1 + 4);
+    for (iVar2 = *(int *)(iVar1 + 0xc); iVar2 != 0; iVar2 = *(int *)(iVar2 + 0xc)) {
+      iVar1 = iVar2;
+    }
+    *(int *)(*param_1 + 0xc) = iVar1;
+    param_1[1] = param_2[1];
+    return param_1;
+  }
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  param_1[1] = param_2[1];
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00826450 249 2
+@@CALLERS ApplyScriptedMapBrush
+@@CALLEES free, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>, malloc, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00826450(int *param_1,undefined4 param_2,ulong *param_3,undefined4 param_4,void *param_5,
+            char param_6)
+
+{
+  int iVar1;
+  uint uVar2;
+  uint *puVar3;
+  uint *extraout_EAX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar4;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_02;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_03;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  int iVar5;
+  uint local_4;
+  
+  uVar2 = (uint)param_5;
+  local_4 = param_1[1] - *param_1 >> 3;
+  puVar3 = (uint *)&param_5;
+  if (param_5 <= local_4) {
+    puVar3 = &local_4;
+  }
+  local_4 = *puVar3 + local_4;
+  if (local_4 == 0) {
+    param_5 = (void *)0x0;
+  }
+  else {
+    param_5 = malloc(local_4 * 8);
+  }
+  puVar3 = std::
+           _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                     (*param_1,param_2,param_5,&param_6);
+  if (uVar2 == 1) {
+    ppVar4 = extraout_EDX;
+    if (puVar3 != (uint *)0x0) {
+      *puVar3 = *param_3;
+      CCharString::CCharString((CCharString *)(puVar3 + 1),(CCharString *)(param_3 + 1));
+      ppVar4 = extraout_EDX_00;
+    }
+    puVar3 = puVar3 + 2;
+  }
+  else {
+    std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>(puVar3,uVar2,param_3);
+    ppVar4 = extraout_EDX_01;
+    puVar3 = extraout_EAX;
+  }
+  if (param_6 == '\0') {
+    puVar3 = std::
+             _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                       (param_2,param_1[1],puVar3,&param_6);
+    ppVar4 = extraout_EDX_02;
+  }
+  iVar1 = param_1[1];
+  for (iVar5 = *param_1; iVar5 != iVar1; iVar5 = iVar5 + 8) {
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)(iVar5 + 4),ppVar4,
+               unaff_EDI);
+    ppVar4 = extraout_EDX_03;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  *param_1 = (int)param_5;
+  param_1[1] = (int)puVar3;
+  param_1[2] = (int)((int)param_5 + local_4 * 8);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 008280a0 186 2
+@@CALLERS _Copy_impl<CNavigationPosition*,CNavigationPosition*>
+@@CALLEES operator_delete
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_008280a0(int *param_1,int param_2,int param_3,int *param_4)
+
+{
+  int iVar1;
+  int *piVar2;
+  int *piVar3;
+  
+  iVar1 = param_1[-3];
+  while (param_2 < iVar1) {
+    *param_1 = iVar1;
+    piVar2 = (int *)param_1[-1];
+    piVar3 = (int *)param_1[2];
+    iVar1 = param_1[-2];
+    if (piVar3 != piVar2) {
+      if (piVar3 != (int *)0x0) {
+        *piVar3 = *piVar3 + -1;
+        if (*(int *)param_1[2] == 0) {
+          (*(code *)((int *)param_1[2])[1])();
+          operator_delete((void *)param_1[2]);
+        }
+      }
+      param_1[1] = iVar1;
+      param_1[2] = (int)piVar2;
+      if (piVar2 != (int *)0x0) {
+        *piVar2 = *piVar2 + 1;
+      }
+    }
+    iVar1 = param_1[-6];
+    param_1 = param_1 + -3;
+  }
+  *param_1 = param_2;
+  piVar2 = (int *)param_1[2];
+  if (piVar2 != param_4) {
+    if (piVar2 != (int *)0x0) {
+      *piVar2 = *piVar2 + -1;
+      if (*(int *)param_1[2] == 0) {
+        (*(code *)((int *)param_1[2])[1])();
+        operator_delete((void *)param_1[2]);
+      }
+    }
+    param_1[1] = param_3;
+    param_1[2] = (int)param_4;
+    if (param_4 == (int *)0x0) {
+      return;
+    }
+    *param_4 = *param_4 + 1;
+  }
+  if ((param_4 != (int *)0x0) && (*param_4 = *param_4 + -1, *param_4 == 0)) {
+    (*(code *)param_4[1])();
+    operator_delete(param_4);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 008285d0 195 2
+@@CALLERS 
+@@CALLEES std::find_Linear, std::vector::InsertMultipleAndGrow, memmove
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_008285d0(int param_1,int param_2,char param_3)
+
+{
+  int iVar1;
+  int *piVar2;
+  int *piVar3;
+  int iVar4;
+  int *_Dst;
+  void *pvVar5;
+  size_t _Size;
+  
+  if (param_3 == '\0') {
+    piVar2 = *(int **)(param_1 + 8);
+    _Dst = (int *)std__find_Linear(&param_2,&param_3);
+    piVar3 = _Dst;
+    if (_Dst != piVar2) {
+      while (piVar3 = piVar3 + 1, piVar3 != piVar2) {
+        if (*piVar3 != param_2) {
+          *_Dst = *piVar3;
+          _Dst = _Dst + 1;
+        }
+      }
+    }
+    if (*(int **)(param_1 + 8) != piVar2) {
+      _Size = (int)*(int **)(param_1 + 8) - (int)piVar2;
+      pvVar5 = memmove(_Dst,piVar2,_Size);
+      _Dst = (int *)((int)pvVar5 + _Size);
+    }
+    *(int **)(param_1 + 8) = _Dst;
+  }
+  else {
+    iVar1 = *(int *)(param_1 + 8);
+    iVar4 = std__find_Linear(&param_2,&param_3);
+    if (iVar4 == iVar1) {
+      piVar2 = *(int **)(param_1 + 8);
+      if (piVar2 == *(int **)(param_1 + 0xc)) {
+        std__vector__InsertMultipleAndGrow(piVar2,&param_2,&param_3,1,1);
+        return;
+      }
+      if (piVar2 != (int *)0x0) {
+        *piVar2 = param_2;
+      }
+      *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + 4;
+      return;
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 008294f0 240 2
+@@CALLERS 
+@@CALLEES _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>_>, free, _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>, malloc, _Destroy_range<std::allocator<std::pair<long,CCountedPointer<CRegionConnectionNode>_>_>_>
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_008294f0(int *param_1,undefined4 param_2,undefined4 *param_3,undefined4 param_4,uint param_5,
+            char param_6)
+
+{
+  int *piVar1;
+  void *pvVar2;
+  pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *ppVar3;
+  pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *extraout_EAX;
+  uint *puVar4;
+  int iVar5;
+  uint local_4;
+  
+  local_4 = (param_1[1] - *param_1) / 0xc;
+  puVar4 = &param_5;
+  if (param_5 <= local_4) {
+    puVar4 = &local_4;
+  }
+  iVar5 = *puVar4 + local_4;
+  if (iVar5 == 0) {
+    pvVar2 = (void *)0x0;
+  }
+  else {
+    pvVar2 = malloc(iVar5 * 0xc);
+  }
+  ppVar3 = std::
+           _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>
+                     (*param_1,param_2,pvVar2,&param_6);
+  if (param_5 == 1) {
+    if (ppVar3 != (pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *)0x0) {
+      *(undefined4 *)ppVar3 = *param_3;
+      *(undefined4 *)(ppVar3 + 4) = param_3[1];
+      piVar1 = (int *)param_3[2];
+      *(int **)(ppVar3 + 8) = piVar1;
+      if (piVar1 != (int *)0x0) {
+        *piVar1 = *piVar1 + 1;
+      }
+    }
+    ppVar3 = ppVar3 + 0xc;
+  }
+  else {
+    std::
+    _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>_>
+              (ppVar3,param_5,param_3,&param_6);
+    ppVar3 = extraout_EAX;
+  }
+  if (param_6 == '\0') {
+    ppVar3 = std::
+             _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>
+                       (param_2,param_1[1],ppVar3,&param_6);
+  }
+  std::_Destroy_range<std::allocator<std::pair<long,CCountedPointer<CRegionConnectionNode>_>_>_>
+            (*param_1,param_1[1],&param_6);
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  param_1[1] = (int)ppVar3;
+  *param_1 = (int)pvVar2;
+  param_1[2] = (int)((int)pvVar2 + iVar5 * 0xc);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 008295e0 74 2
+@@CALLERS make_heap<std::pair<unsigned_long,CSoundPair>*,CKeyPairCompareLess<unsigned_long,CSoundPair>_>
+@@CALLEES FUN_008293b0
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_008295e0(undefined4 *param_1,undefined4 *param_2,undefined4 param_3)
+
+{
+  undefined4 uVar1;
+  undefined4 uVar2;
+  int *piVar3;
+  
+  if (param_1 != param_2) {
+    while (param_1 = param_1 + 3, param_1 != param_2) {
+      uVar1 = *param_1;
+      uVar2 = param_1[1];
+      piVar3 = (int *)param_1[2];
+      if (piVar3 != (int *)0x0) {
+        *piVar3 = *piVar3 + 1;
+      }
+      FUN_008293b0(uVar1,uVar2,piVar3,param_3);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 008297f0 250 2
+@@CALLERS 
+@@CALLEES FUN_008297f0, FUN_00829630, FUN_00828f60
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_008297f0(int *param_1,int param_2,undefined4 param_3,int param_4,undefined4 param_5)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  int *piVar7;
+  
+  if (0x10 < (param_2 - (int)param_1) / 0xc) {
+    while (param_4 != 0) {
+      iVar6 = (param_2 - (int)param_1) / 0x18;
+      iVar1 = param_1[iVar6 * 3];
+      iVar2 = *param_1;
+      param_4 = param_4 + -1;
+      iVar3 = *(int *)(param_2 + -0xc);
+      iVar5 = iVar1;
+      piVar4 = param_1 + iVar6 * 3;
+      piVar7 = param_1;
+      if (iVar2 < iVar1) {
+        iVar5 = iVar2;
+        piVar4 = param_1;
+        piVar7 = param_1 + iVar6 * 3;
+        iVar2 = iVar1;
+      }
+      if ((iVar3 <= iVar2) && (piVar7 = piVar4, iVar5 < iVar3)) {
+        piVar7 = (int *)(param_2 + -0xc);
+      }
+      iVar1 = *piVar7;
+      iVar3 = piVar7[1];
+      piVar4 = (int *)piVar7[2];
+      if (piVar4 != (int *)0x0) {
+        *piVar4 = *piVar4 + 1;
+      }
+      param_2 = FUN_00828f60(iVar1,iVar3,piVar4,param_5);
+      FUN_008297f0(0,param_4,param_5);
+      if ((param_2 - (int)param_1) / 0xc < 0x11) {
+        return;
+      }
+    }
+    FUN_00829630(param_2,0,param_5);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0082c920 95 2
+@@CALLERS Map_InsertMarker, InitialiseRegionExitMarkers
+@@CALLEES GetPItem, malloc, CBaseIntelligentPointer, SetPItem
+@@STRINGS 
+@@DECOMP
+
+void FUN_0082c920(undefined4 *param_1,int param_2,CBaseIntelligentPointer *param_3)
+
+{
+  CBaseIntelligentPointer *this;
+  undefined4 *puVar1;
+  int *piVar2;
+  CBaseObject *pCVar3;
+  
+  piVar2 = malloc(0x18);
+  this = (CBaseIntelligentPointer *)(piVar2 + 2);
+  if (this != (CBaseIntelligentPointer *)0x0) {
+    CBaseIntelligentPointer::CBaseIntelligentPointer(this);
+    *(undefined ***)this = &PTR__vector_deleting_destructor__01237f1c;
+    pCVar3 = CBaseIntelligentPointer::GetPItem(param_3);
+    CBaseIntelligentPointer::SetPItem(this,pCVar3);
+    piVar2[4] = *(int *)(param_3 + 8);
+    *(CBaseIntelligentPointer *)(piVar2 + 5) = param_3[0xc];
+  }
+  puVar1 = *(undefined4 **)(param_2 + 4);
+  *piVar2 = param_2;
+  piVar2[1] = (int)puVar1;
+  *puVar1 = piVar2;
+  *(int **)(param_2 + 4) = piVar2;
+  *param_1 = piVar2;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0082cb70 203 2
+@@CALLERS 
+@@CALLEES CTexture, malloc, _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>, FUN_0082c620, CSurface
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0082cb70(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3)
+
+{
+  void *pvVar1;
+  uint *puVar2;
+  int iVar3;
+  undefined4 *puVar4;
+  int *piVar5;
+  
+  if (param_1 != param_2) {
+    puVar4 = param_3 + 0xd;
+    piVar5 = param_1 + 0xd;
+    do {
+      if (param_3 != (undefined4 *)0x0) {
+        *param_3 = *param_1;
+        puVar4[-0xc] = piVar5[-0xc];
+        FUN_0082c620(piVar5 + -0xb);
+        CSurface::CSurface((CSurface *)(puVar4 + -8),(CSurface *)(piVar5 + -8));
+        CTexture::CTexture((CTexture *)(puVar4 + -4),(CTexture *)(piVar5 + -4));
+        puVar4[-2] = piVar5[-2];
+        pvVar1 = (void *)0x0;
+        iVar3 = *piVar5 - piVar5[-1] >> 2;
+        puVar4[-1] = 0;
+        *puVar4 = 0;
+        puVar4[1] = 0;
+        if (iVar3 != 0) {
+          pvVar1 = malloc(iVar3 * 4);
+        }
+        puVar4[-1] = pvVar1;
+        *puVar4 = pvVar1;
+        puVar4[1] = (void *)((int)pvVar1 + iVar3 * 4);
+        puVar2 = std::
+                 _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                           (piVar5[-1],*piVar5,pvVar1,&param_3);
+        *puVar4 = puVar2;
+      }
+      param_1 = param_1 + 0xf;
+      param_3 = param_3 + 0xf;
+      piVar5 = piVar5 + 0xf;
+      puVar4 = puVar4 + 0xf;
+    } while (param_1 != param_2);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0082ebe0 62 2
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0082ebe0(int *param_1)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  iVar1 = *param_1;
+  iVar2 = *(int *)(iVar1 + 0xc);
+  if (iVar2 != 0) {
+    for (iVar1 = *(int *)(iVar2 + 8); iVar1 != 0; iVar1 = *(int *)(iVar1 + 8)) {
+      iVar2 = iVar1;
+    }
+    *param_1 = iVar2;
+    return;
+  }
+  iVar2 = *(int *)(iVar1 + 4);
+  if (iVar1 == *(int *)(iVar2 + 0xc)) {
+    do {
+      iVar1 = iVar2;
+      iVar2 = *(int *)(iVar1 + 4);
+    } while (iVar1 == *(int *)(iVar2 + 0xc));
+  }
+  if (*(int *)(iVar1 + 0xc) == iVar2) {
+    *param_1 = iVar1;
+    return;
+  }
+  *param_1 = iVar2;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0082ee10 79 2
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0082ee10(int *param_1)
+
+{
+  char *pcVar1;
+  int iVar2;
+  int iVar3;
+  bool bVar4;
+  
+  pcVar1 = (char *)*param_1;
+  if ((*pcVar1 == '\0') && (*(char **)(*(int *)(pcVar1 + 4) + 4) == pcVar1)) {
+    *param_1 = *(int *)(pcVar1 + 0xc);
+    return;
+  }
+  iVar3 = *(int *)(pcVar1 + 8);
+  if (iVar3 != 0) {
+    for (iVar2 = *(int *)(iVar3 + 0xc); iVar2 != 0; iVar2 = *(int *)(iVar2 + 0xc)) {
+      iVar3 = iVar2;
+    }
+    *param_1 = iVar3;
+    return;
+  }
+  iVar3 = *(int *)(pcVar1 + 4);
+  iVar2 = iVar3;
+  if (pcVar1 == *(char **)(iVar3 + 8)) {
+    do {
+      iVar3 = *(int *)(iVar2 + 4);
+      bVar4 = iVar2 == *(int *)(iVar3 + 8);
+      iVar2 = iVar3;
+    } while (bVar4);
+  }
+  *param_1 = iVar3;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0082eeb0 84 2
+@@CALLERS GetHeight
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_0082eeb0(int *param_1,uint *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  iVar1 = *param_1;
+  iVar2 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar3 = *(int *)(iVar1 + 4);
+    do {
+      if ((*(uint *)(iVar3 + 0x14) < param_2[1]) ||
+         ((*(uint *)(iVar3 + 0x14) == param_2[1] && (*(uint *)(iVar3 + 0x10) < *param_2)))) {
+        iVar4 = *(int *)(iVar3 + 0xc);
+      }
+      else {
+        iVar4 = *(int *)(iVar3 + 8);
+        iVar2 = iVar3;
+      }
+      iVar3 = iVar4;
+    } while (iVar4 != 0);
+  }
+  if ((iVar2 == iVar1) ||
+     ((param_2[1] <= *(uint *)(iVar2 + 0x14) &&
+      ((param_2[1] < *(uint *)(iVar2 + 0x14) || (*param_2 < *(uint *)(iVar2 + 0x10))))))) {
+    iVar2 = iVar1;
+  }
+  return iVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0082ef20 84 2
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_0082ef20(int *param_1,uint *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  iVar1 = *param_1;
+  iVar2 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar3 = *(int *)(iVar1 + 4);
+    do {
+      if ((*(uint *)(iVar3 + 0x14) < param_2[1]) ||
+         ((*(uint *)(iVar3 + 0x14) == param_2[1] && (*(uint *)(iVar3 + 0x10) < *param_2)))) {
+        iVar4 = *(int *)(iVar3 + 0xc);
+      }
+      else {
+        iVar4 = *(int *)(iVar3 + 8);
+        iVar2 = iVar3;
+      }
+      iVar3 = iVar4;
+    } while (iVar4 != 0);
+  }
+  if ((iVar2 == iVar1) ||
+     ((param_2[1] <= *(uint *)(iVar2 + 0x14) &&
+      ((param_2[1] < *(uint *)(iVar2 + 0x14) || (*param_2 < *(uint *)(iVar2 + 0x10))))))) {
+    iVar2 = iVar1;
+  }
+  return iVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0082f150 203 2
+@@CALLERS 
+@@CALLEES malloc, CMemoryAllocatorVariableSize::BalanceTree
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_0082f150(int *param_1,undefined4 *param_2,int param_3,int param_4,uint *param_5,int param_6)
+
+{
+  int iVar1;
+  void *pvVar2;
+  
+  if (param_4 != *param_1) {
+    if (param_6 != 0) {
+LAB_0082f184:
+      pvVar2 = malloc(0x18);
+      if ((uint *)((int)pvVar2 + 0x10) != (uint *)0x0) {
+        *(uint *)((int)pvVar2 + 0x10) = *param_5;
+        *(uint *)((int)pvVar2 + 0x14) = param_5[1];
+      }
+      *(void **)(param_4 + 0xc) = pvVar2;
+      if (param_4 == *(int *)(*param_1 + 0xc)) {
+        *(void **)(*param_1 + 0xc) = pvVar2;
+      }
+      goto LAB_0082f1e8;
+    }
+    if (param_3 == 0) {
+      if ((*(uint *)(param_4 + 0x14) <= param_5[1]) &&
+         ((param_5[1] != *(uint *)(param_4 + 0x14) || (*(uint *)(param_4 + 0x10) <= *param_5))))
+      goto LAB_0082f184;
+    }
+  }
+  pvVar2 = malloc(0x18);
+  if ((uint *)((int)pvVar2 + 0x10) != (uint *)0x0) {
+    *(uint *)((int)pvVar2 + 0x10) = *param_5;
+    *(uint *)((int)pvVar2 + 0x14) = param_5[1];
+  }
+  *(void **)(param_4 + 8) = pvVar2;
+  iVar1 = *param_1;
+  if (param_4 == iVar1) {
+    *(void **)(iVar1 + 4) = pvVar2;
+    *(void **)(*param_1 + 0xc) = pvVar2;
+  }
+  else if (param_4 == *(int *)(iVar1 + 8)) {
+    *(void **)(iVar1 + 8) = pvVar2;
+  }
+LAB_0082f1e8:
+  *(int *)((int)pvVar2 + 4) = param_4;
+  *(undefined4 *)((int)pvVar2 + 8) = 0;
+  *(undefined4 *)((int)pvVar2 + 0xc) = 0;
+  CMemoryAllocatorVariableSize__BalanceTree(pvVar2,*param_1 + 4);
+  param_1[1] = param_1[1] + 1;
+  *param_2 = pvVar2;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0082f4b0 195 2
+@@CALLERS IsTurningBody
+@@CALLEES FUN_0082f150, FUN_0082ee60
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_0082f4b0(int *param_1,int *param_2,uint *param_3)
+
+{
+  int iVar1;
+  bool bVar2;
+  uint *puVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  
+  puVar3 = param_3;
+  iVar1 = *param_1;
+  bVar2 = true;
+  iVar6 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar5 = *(int *)(iVar1 + 4);
+    do {
+      iVar6 = iVar5;
+      if ((*(uint *)(iVar6 + 0x14) < param_3[1]) ||
+         ((*(uint *)(iVar6 + 0x14) <= param_3[1] && (*(uint *)(iVar6 + 0x10) <= *param_3)))) {
+        iVar5 = *(int *)(iVar6 + 0xc);
+        bVar2 = false;
+      }
+      else {
+        iVar5 = *(int *)(iVar6 + 8);
+        bVar2 = true;
+      }
+    } while (iVar5 != 0);
+  }
+  param_3 = (uint *)iVar6;
+  if (bVar2) {
+    if (iVar6 == *(int *)(iVar1 + 8)) {
+      piVar4 = (int *)FUN_0082f150(&param_3,iVar6,iVar6,puVar3,0);
+      iVar1 = *piVar4;
+      *(undefined1 *)(param_2 + 1) = 1;
+      *param_2 = iVar1;
+      return;
+    }
+    FUN_0082ee60();
+  }
+  if ((*(uint *)((int)param_3 + 0x14) <= puVar3[1]) &&
+     ((*(uint *)((int)param_3 + 0x14) < puVar3[1] || (*(uint *)((int)param_3 + 0x10) < *puVar3)))) {
+    piVar4 = (int *)FUN_0082f150(&param_3,0,iVar6,puVar3,0);
+    *param_2 = *piVar4;
+    *(undefined1 *)(param_2 + 1) = 1;
+    return;
+  }
+  *(undefined1 *)(param_2 + 1) = 0;
+  *param_2 = (int)param_3;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0082f860 195 2
+@@CALLERS 
+@@CALLEES RBTree_Insert, FUN_0082ee10
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_0082f860(int *param_1,int *param_2,uint *param_3)
+
+{
+  int iVar1;
+  bool bVar2;
+  uint *puVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  
+  puVar3 = param_3;
+  iVar1 = *param_1;
+  bVar2 = true;
+  iVar6 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar5 = *(int *)(iVar1 + 4);
+    do {
+      iVar6 = iVar5;
+      if ((*(uint *)(iVar6 + 0x14) < param_3[1]) ||
+         ((*(uint *)(iVar6 + 0x14) <= param_3[1] && (*(uint *)(iVar6 + 0x10) <= *param_3)))) {
+        iVar5 = *(int *)(iVar6 + 0xc);
+        bVar2 = false;
+      }
+      else {
+        iVar5 = *(int *)(iVar6 + 8);
+        bVar2 = true;
+      }
+    } while (iVar5 != 0);
+  }
+  param_3 = (uint *)iVar6;
+  if (bVar2) {
+    if (iVar6 == *(int *)(iVar1 + 8)) {
+      piVar4 = (int *)RBTree_Insert(&param_3,iVar6,iVar6,puVar3,0);
+      iVar1 = *piVar4;
+      *(undefined1 *)(param_2 + 1) = 1;
+      *param_2 = iVar1;
+      return;
+    }
+    FUN_0082ee10();
+  }
+  if ((*(uint *)((int)param_3 + 0x14) <= puVar3[1]) &&
+     ((*(uint *)((int)param_3 + 0x14) < puVar3[1] || (*(uint *)((int)param_3 + 0x10) < *puVar3)))) {
+    piVar4 = (int *)RBTree_Insert(&param_3,0,iVar6,puVar3,0);
+    *param_2 = *piVar4;
+    *(undefined1 *)(param_2 + 1) = 1;
+    return;
+  }
+  *(undefined1 *)(param_2 + 1) = 0;
+  *param_2 = (int)param_3;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0082fb90 192 2
+@@CALLERS SetThingToMove
+@@CALLEES FUN_0082f0d0, FUN_0082f930, CDateAndTime
+@@STRINGS 
+@@DECOMP
+
+uint * __thiscall FUN_0082fb90(int *param_1,uint *param_2)
+
+{
+  uint *puVar1;
+  int iVar2;
+  undefined4 *puVar3;
+  ulong unaff_EBX;
+  ulong unaff_EBP;
+  ulong unaff_ESI;
+  ulong unaff_EDI;
+  ulong in_stack_ffffffb0;
+  ulong in_stack_ffffffb4;
+  undefined1 local_38 [24];
+  uint local_20;
+  uint local_1c;
+  undefined4 local_18;
+  undefined4 local_14;
+  undefined4 local_10;
+  undefined4 local_c;
+  undefined4 local_8;
+  undefined4 local_4;
+  
+  puVar1 = param_2;
+  iVar2 = FUN_0082f0d0(param_2);
+  if ((iVar2 != *param_1) &&
+     ((*(uint *)(iVar2 + 0x14) < puVar1[1] ||
+      ((*(uint *)(iVar2 + 0x14) <= puVar1[1] && (*(uint *)(iVar2 + 0x10) <= *puVar1)))))) {
+    return (uint *)(iVar2 + 0x18);
+  }
+  puVar3 = (undefined4 *)
+           CDateAndTime::CDateAndTime
+                     ((CDateAndTime *)0x0,(long)local_38,unaff_EDI,unaff_ESI,unaff_EBP,unaff_EBX,
+                      in_stack_ffffffb0,in_stack_ffffffb4);
+  local_14 = puVar3[1];
+  local_18 = *puVar3;
+  local_20 = *puVar1;
+  local_1c = puVar1[1];
+  local_8 = puVar3[4];
+  local_10 = puVar3[2];
+  local_c = puVar3[3];
+  local_4 = puVar3[5];
+  FUN_0082f930(&param_2,iVar2,&local_20);
+  return param_2 + 6;
+}
+
+
+@@ENDFUNC
+@@@FUNC 008332e0 176 2
+@@CALLERS operator(), _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+@@CALLEES DoSizeof, DrawGetSeaLevel, LowerBound
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_008332e0(CVertexBufferWin32 *param_1,int param_2)
+
+{
+  float fVar1;
+  float fVar2;
+  float fVar3;
+  float fVar4;
+  uint in_EAX;
+  int *piVar5;
+  float *pfVar6;
+  float unaff_ESI;
+  float local_4;
+  
+  if ((*(uint *)(param_1 + 0x24) & 0x100000) != 0) {
+    local_4 = 7.28675e-44;
+    piVar5 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),(ETCInterfaceType *)&local_4);
+    if ((piVar5 == *(int **)(param_1 + 0x48)) || (0x34 < *piVar5)) {
+      piVar5 = *(int **)(param_1 + 0x48);
+    }
+    local_4 = CMap::DrawGetSeaLevel((CMap *)piVar5[1],unaff_ESI);
+    pfVar6 = (float *)(param_2 + 0x1c);
+    if (local_4 <= *(float *)(param_2 + 0x1c)) {
+      pfVar6 = &local_4;
+    }
+    fVar1 = *pfVar6;
+    pfVar6 = (float *)CVertexBufferWin32::DoSizeof(param_1);
+    fVar2 = *pfVar6 - *(float *)(param_2 + 0xc);
+    fVar4 = pfVar6[1] - *(float *)(param_2 + 0x10);
+    fVar3 = pfVar6[2] - *(float *)(param_2 + 0x14);
+    fVar2 = fVar2 * fVar2 + fVar4 * fVar4 + fVar3 * fVar3;
+    fVar1 = fVar1 * fVar1;
+    in_EAX = CONCAT22((short)((uint)pfVar6 >> 0x10),
+                      (ushort)(fVar1 < fVar2) << 8 | (ushort)(NAN(fVar1) || NAN(fVar2)) << 10 |
+                      (ushort)(fVar1 == fVar2) << 0xe);
+    if (fVar1 >= fVar2 && (fVar1 == fVar2) == 0) {
+      return CONCAT31((int3)(in_EAX >> 8),1);
+    }
+  }
+  return in_EAX & 0xffffff00;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00835270 179 2
+@@CALLERS BinaryTree_Insert_uint
+@@CALLEES malloc, CMemoryAllocatorVariableSize::BalanceTree
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00835270(int *param_1,undefined4 *param_2,int param_3,int param_4,uint *param_5,int param_6)
+
+{
+  int iVar1;
+  void *pvVar2;
+  
+  if ((param_4 == *param_1) ||
+     ((param_6 == 0 && ((param_3 != 0 || (*param_5 < *(uint *)(param_4 + 0x10))))))) {
+    pvVar2 = malloc(0x14);
+    if ((uint *)((int)pvVar2 + 0x10) != (uint *)0x0) {
+      *(uint *)((int)pvVar2 + 0x10) = *param_5;
+    }
+    *(void **)(param_4 + 8) = pvVar2;
+    iVar1 = *param_1;
+    if (param_4 == iVar1) {
+      *(void **)(iVar1 + 4) = pvVar2;
+      *(void **)(*param_1 + 0xc) = pvVar2;
+    }
+    else if (param_4 == *(int *)(iVar1 + 8)) {
+      *(void **)(iVar1 + 8) = pvVar2;
+    }
+  }
+  else {
+    pvVar2 = malloc(0x14);
+    if ((uint *)((int)pvVar2 + 0x10) != (uint *)0x0) {
+      *(uint *)((int)pvVar2 + 0x10) = *param_5;
+    }
+    *(void **)(param_4 + 0xc) = pvVar2;
+    if (param_4 == *(int *)(*param_1 + 0xc)) {
+      *(void **)(*param_1 + 0xc) = pvVar2;
+    }
+  }
+  *(int *)((int)pvVar2 + 4) = param_4;
+  *(undefined4 *)((int)pvVar2 + 8) = 0;
+  *(undefined4 *)((int)pvVar2 + 0xc) = 0;
+  CMemoryAllocatorVariableSize__BalanceTree(pvVar2,*param_1 + 4);
+  param_1[1] = param_1[1] + 1;
+  *param_2 = pvVar2;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0083ebd0 281 2
+@@CALLERS HTTP_CompareStrings
+@@CALLEES tolower, free, CString_Reserve, malloc, OnInitialActivate, memmove
+@@STRINGS 
+@@DECOMP
+
+CTCElectrocutedEffect * __fastcall FUN_0083ebd0(undefined4 param_1,int *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  CTCElectrocutedEffect *this;
+  CTCElectrocutedEffect *pCVar3;
+  undefined1 *puVar4;
+  int iVar5;
+  int *piVar6;
+  undefined1 *puVar7;
+  void *pvVar8;
+  int iVar9;
+  size_t sVar10;
+  size_t _Size;
+  undefined1 *_Src;
+  int local_18;
+  int local_14;
+  CTCElectrocutedEffect *local_10;
+  undefined1 *local_c;
+  undefined1 *local_8;
+  undefined1 *local_4;
+  
+  puVar4 = malloc(8);
+  *puVar4 = 0;
+  iVar1 = param_2[1];
+  iVar2 = *param_2;
+  local_4 = puVar4 + 8;
+  iVar9 = 0;
+  _Src = puVar4;
+  local_c = puVar4;
+  if (0 < iVar1 - iVar2) {
+    do {
+      local_8 = puVar4;
+      iVar5 = tolower((int)*(char *)(*param_2 + iVar9));
+      puVar7 = puVar4;
+      if (puVar4 + 1 == local_4) {
+        local_14 = (int)puVar4 - (int)_Src;
+        local_18 = 1;
+        piVar6 = &local_18;
+        if ((int)puVar4 - (int)_Src != 0) {
+          piVar6 = &local_14;
+        }
+        CString_Reserve(puVar4 + (*piVar6 - (int)_Src));
+        puVar7 = local_8;
+        _Src = local_c;
+      }
+      puVar7[1] = 0;
+      puVar4 = puVar7 + 1;
+      *puVar7 = (char)iVar5;
+      iVar9 = iVar9 + 1;
+    } while (iVar9 < iVar1 - iVar2);
+  }
+  this = local_10;
+  sVar10 = (int)puVar4 - (int)_Src;
+  _Size = sVar10 + 1;
+  *(undefined4 *)local_10 = 0;
+  *(undefined4 *)(local_10 + 4) = 0;
+  *(undefined4 *)(local_10 + 8) = 0;
+  local_10 = (CTCElectrocutedEffect *)sVar10;
+  local_8 = puVar4;
+  if (_Size != 0) {
+    puVar7 = malloc(_Size);
+    pCVar3 = local_10;
+    *(undefined1 **)this = puVar7;
+    *(undefined1 **)(this + 4) = puVar7;
+    *(undefined1 **)(this + 8) = puVar7 + _Size;
+    if (puVar4 != _Src) {
+      pvVar8 = memmove(puVar7,_Src,(size_t)local_10);
+      puVar7 = (undefined1 *)((int)pvVar8 + (int)pCVar3);
+    }
+    *(undefined1 **)(this + 4) = puVar7;
+    *puVar7 = 0;
+    if (_Src != (undefined1 *)0x0) {
+      free(_Src);
+    }
+    return this;
+  }
+                    /* WARNING: Subroutine does not return */
+  CTCElectrocutedEffect::OnInitialActivate(this);
+}
+
+
+@@ENDFUNC
+@@@FUNC 0083fb20 51 2
+@@CALLERS LHNetworkLib_RequestLoginWithCredentials
+@@CALLEES FUN_0083f9b0, std::string_InsertRange
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_0083fb20(int param_1,undefined4 *param_2,undefined2 param_3)
+
+{
+  if (param_2 != (undefined4 *)(param_1 + 4)) {
+    std__string_InsertRange(*param_2,param_2[1],&param_3);
+  }
+  *(undefined2 *)(param_1 + 0x10) = param_3;
+  FUN_0083f9b0();
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0083fb60 86 2
+@@CALLERS ~CPatchTesselationEdgeStrip
+@@CALLEES Vector_Insert, std::vector_move_and_cleanup
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0083fb60(undefined4 *param_1)
+
+{
+  *param_1 = 0xffffffff;
+  std__vector_move_and_cleanup(param_1[1],param_1[2]);
+  Vector_Insert(&DAT_0122d70e,&DAT_0122d70e);
+  Vector_Insert(&DAT_0122d70e,&DAT_0122d70e);
+  Vector_Insert(&DAT_0122d70e,&DAT_0122d70e);
+  *(undefined2 *)(param_1 + 0x11) = 0;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0083fce0 660 2
+@@CALLERS 
+@@CALLEES CTCElectrocutedEffect::InitFromStringRange, malloc, Vector_ReallocateStructArray, OnInitialActivate, ProcessTextWithRegex, FUN_00841b70, Vector_Insert, free, abort, puts, CTCElectrocutedEffect::InsertStringRange, memmove, std::string::string
+@@STRINGS User-Agent	User-Agent: Lionhead Studios HTTP Library Version 1.0	basic_string
+@@DECOMP
+
+CTCElectrocutedEffect * __thiscall FUN_0083fce0(int *param_1,CTCElectrocutedEffect *param_2)
+
+{
+  size_t sVar1;
+  void *_Src;
+  CTCElectrocutedEffect *this;
+  char *pcVar2;
+  undefined1 *puVar3;
+  void *pvVar4;
+  undefined4 *puVar5;
+  int iVar6;
+  char *pcVar7;
+  undefined4 *puVar8;
+  int iVar9;
+  size_t sVar10;
+  byte *pbVar11;
+  byte *pbVar12;
+  bool bVar13;
+  bool bVar14;
+  undefined1 *local_18;
+  undefined1 *local_14;
+  undefined1 *local_10;
+  void *local_c [3];
+  
+  Vector_Insert(&DAT_0122d70e,&DAT_0122d70e);
+  puVar3 = malloc(0xb);
+  local_10 = puVar3 + 0xb;
+  local_18 = puVar3;
+  pvVar4 = memmove(puVar3,"User-Agent",10);
+  local_14 = (undefined1 *)((int)pvVar4 + 10);
+  *local_14 = 0;
+  puVar5 = (undefined4 *)ProcessTextWithRegex(local_c,&local_18);
+  if ((byte *)puVar5[1] == (byte *)*puVar5) {
+    iVar9 = 0;
+    bVar13 = false;
+    iVar6 = 0;
+    bVar14 = true;
+    pbVar11 = (byte *)*puVar5;
+    pbVar12 = &DAT_0122d70e;
+    do {
+      if (iVar9 == 0) break;
+      iVar9 = iVar9 + -1;
+      bVar13 = *pbVar11 < *pbVar12;
+      bVar14 = *pbVar11 == *pbVar12;
+      pbVar11 = pbVar11 + 1;
+      pbVar12 = pbVar12 + 1;
+    } while (bVar14);
+    if (!bVar14) {
+      iVar6 = (1 - (uint)bVar13) - (uint)(bVar13 != 0);
+    }
+    if (iVar6 == 0) {
+      bVar13 = true;
+      goto LAB_0083fd71;
+    }
+  }
+  bVar13 = false;
+LAB_0083fd71:
+  if (local_c[0] != (void *)0x0) {
+    free(local_c[0]);
+  }
+  if (puVar3 != (undefined1 *)0x0) {
+    free(puVar3);
+  }
+  if (bVar13) {
+    local_18 = (undefined1 *)0x0;
+    local_14 = (undefined1 *)0x0;
+    local_10 = (undefined1 *)0x0;
+    pcVar2 = PTR_s_User_Agent__Lionhead_Studios_HTT_0138490c;
+    do {
+      pcVar7 = pcVar2;
+      pcVar2 = pcVar7 + 1;
+    } while (*pcVar7 != '\0');
+    std__string__string(PTR_s_User_Agent__Lionhead_Studios_HTT_0138490c,pcVar7,&param_2);
+    puVar3 = local_18;
+    puVar5 = (undefined4 *)param_1[1];
+    if (puVar5 == (undefined4 *)param_1[2]) {
+      Vector_ReallocateStructArray(puVar5,&local_18,&param_2,1,1);
+    }
+    else {
+      if (puVar5 != (undefined4 *)0x0) {
+        *puVar5 = 0;
+        puVar5[1] = 0;
+        puVar5[2] = 0;
+        CTCElectrocutedEffect__InitFromStringRange(local_18,local_14,&param_2);
+      }
+      param_1[1] = param_1[1] + 0xc;
+    }
+    if (puVar3 != (undefined1 *)0x0) {
+      free(puVar3);
+    }
+  }
+  puVar5 = (undefined4 *)*param_1;
+  if (puVar5 != (undefined4 *)param_1[1]) {
+    do {
+      pvVar4 = (void *)puVar5[1];
+      _Src = (void *)*puVar5;
+      sVar10 = (int)pvVar4 - (int)_Src;
+      local_18 = (undefined1 *)0x0;
+      local_14 = (undefined1 *)0x0;
+      local_10 = (undefined1 *)0x0;
+      sVar1 = sVar10 + 1;
+      if (sVar1 == 0) {
+        puts("basic_string");
+                    /* WARNING: Subroutine does not return */
+        abort();
+      }
+      puVar3 = malloc(sVar1);
+      local_10 = puVar3 + sVar1;
+      local_18 = puVar3;
+      if (pvVar4 != _Src) {
+        pvVar4 = memmove(puVar3,_Src,sVar10);
+        puVar3 = (undefined1 *)((int)pvVar4 + sVar10);
+      }
+      *puVar3 = 0;
+      local_14 = puVar3;
+      puVar8 = (undefined4 *)FUN_00841b70(local_c,&local_18,&DAT_012397f8);
+      CTCElectrocutedEffect__InsertStringRange(*puVar8,puVar8[1],&param_2);
+      if (local_c[0] != (void *)0x0) {
+        free(local_c[0]);
+      }
+      if (local_18 != (undefined1 *)0x0) {
+        free(local_18);
+      }
+      puVar5 = puVar5 + 3;
+    } while (puVar5 != (undefined4 *)param_1[1]);
+  }
+  this = param_2;
+  *(undefined4 *)param_2 = 0;
+  *(undefined4 *)(param_2 + 4) = 0;
+  *(undefined4 *)(param_2 + 8) = 0;
+  param_2 = (CTCElectrocutedEffect *)param_1[4];
+  pvVar4 = (void *)param_1[3];
+  sVar10 = (int)param_2 - (int)pvVar4;
+  sVar1 = sVar10 + 1;
+  if (sVar1 != 0) {
+    puVar3 = malloc(sVar1);
+    *(undefined1 **)this = puVar3;
+    *(undefined1 **)(this + 4) = puVar3;
+    *(undefined1 **)(this + 8) = puVar3 + sVar1;
+    if (param_2 != pvVar4) {
+      pvVar4 = memmove(puVar3,pvVar4,sVar10);
+      puVar3 = (undefined1 *)((int)pvVar4 + sVar10);
+    }
+    *(undefined1 **)(this + 4) = puVar3;
+    *puVar3 = 0;
+    return this;
+  }
+                    /* WARNING: Subroutine does not return */
+  CTCElectrocutedEffect::OnInitialActivate(this);
+}
+
+
+@@ENDFUNC
+@@@FUNC 008400b0 1334 2
+@@CALLERS LHNetworkLib_RequestLoginWithCredentials
+@@CALLEES CTCElectrocutedEffect::ReplaceString, __security_check_cookie, CTCElectrocutedEffect::InitFromStringRange, malloc, Vector_ReallocateStructArray, FUN_0083fce0, std::string_InsertRange, Vector_Insert, free, FUN_00841c50, CTCElectrocutedEffect::InsertStringRange, memmove, HTTP_Request_BuildPath, _itoa
+@@STRINGS POST 	HTTP://	Connection: close	Content-Length: 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+undefined4 __thiscall
+FUN_008400b0(int param_1,undefined4 param_2,undefined4 param_3,int param_4,int *param_5,int param_6)
+
+{
+  char cVar1;
+  undefined4 *puVar2;
+  int iVar3;
+  void **ppvVar4;
+  byte **ppbVar5;
+  void *pvVar6;
+  void *pvVar7;
+  char *pcVar8;
+  undefined1 **ppuVar9;
+  int iVar10;
+  byte *pbVar11;
+  byte *pbVar12;
+  bool bVar13;
+  bool bVar14;
+  undefined1 *local_50;
+  undefined1 *local_4c;
+  undefined1 *local_48;
+  byte *local_44;
+  byte *local_40;
+  byte *local_3c;
+  undefined1 *local_38;
+  undefined1 *local_34;
+  undefined1 *local_30;
+  void *local_2c;
+  undefined1 *local_28;
+  int local_24;
+  char local_18 [20];
+  undefined4 local_4;
+  
+  local_4 = DAT_0139c8a8;
+  local_50 = malloc(8);
+  local_48 = local_50 + 8;
+  *local_50 = 0;
+  local_4c = local_50;
+  local_44 = malloc(1);
+  local_3c = local_44 + 1;
+  *local_44 = 0;
+  local_40 = local_44;
+  local_38 = malloc(1);
+  local_30 = local_38 + 1;
+  *local_38 = 0;
+  local_34 = local_38;
+  Vector_Insert();
+  *(undefined4 *)(param_1 + 0x20) = 0;
+  Vector_Insert();
+  if (*(byte **)(param_1 + 0x878) == *(byte **)(param_1 + 0x874)) {
+    iVar10 = 0;
+    bVar13 = false;
+    iVar3 = 0;
+    bVar14 = true;
+    pbVar11 = *(byte **)(param_1 + 0x874);
+    pbVar12 = &DAT_0122d70e;
+    do {
+      if (iVar10 == 0) break;
+      iVar10 = iVar10 + -1;
+      bVar13 = *pbVar11 < *pbVar12;
+      bVar14 = *pbVar11 == *pbVar12;
+      pbVar11 = pbVar11 + 1;
+      pbVar12 = pbVar12 + 1;
+    } while (bVar14);
+    if (!bVar14) {
+      iVar3 = (1 - (uint)bVar13) - (uint)(bVar13 != 0);
+    }
+    if (iVar3 != 0) goto LAB_0084018d;
+  }
+  else {
+LAB_0084018d:
+    FUN_00841c50();
+    CTCElectrocutedEffect__InsertStringRange();
+    if (local_2c != (void *)0x0) {
+      free(local_2c);
+    }
+    if (*(short *)(param_1 + 0x10) != 0x50) {
+      CTCElectrocutedEffect__ReplaceString();
+      _itoa((uint)*(ushort *)(param_1 + 0x10),(char *)&local_2c,10);
+      ppvVar4 = &local_2c;
+      do {
+        cVar1 = *(char *)ppvVar4;
+        ppvVar4 = (void **)((int)ppvVar4 + 1);
+      } while (cVar1 != '\0');
+      CTCElectrocutedEffect__ReplaceString();
+    }
+    CTCElectrocutedEffect__ReplaceString();
+  }
+  CTCElectrocutedEffect__InsertStringRange();
+  CTCElectrocutedEffect__ReplaceString();
+  if (param_4 != 0) {
+    ppbVar5 = (byte **)FUN_0083fce0();
+    if (ppbVar5 != &local_44) {
+      std__string_InsertRange();
+    }
+    if (local_2c != (void *)0x0) {
+      free(local_2c);
+    }
+  }
+  pvVar6 = malloc(5);
+  local_24 = (int)pvVar6 + 5;
+  local_2c = pvVar6;
+  pvVar7 = memmove(pvVar6,&DAT_01273160,4);
+  local_28 = (undefined1 *)((int)pvVar7 + 4);
+  *local_28 = 0;
+  HTTP_Request_BuildPath();
+  if (pvVar6 != (void *)0x0) {
+    free(pvVar6);
+  }
+  pvVar6 = malloc(0x12);
+  local_24 = (int)pvVar6 + 0x12;
+  local_2c = pvVar6;
+  pvVar7 = memmove(pvVar6,"Connection: close",0x11);
+  local_28 = (undefined1 *)((int)pvVar7 + 0x11);
+  *local_28 = 0;
+  puVar2 = *(undefined4 **)(param_1 + 0x2c);
+  if (puVar2 == *(undefined4 **)(param_1 + 0x30)) {
+    Vector_ReallocateStructArray(puVar2);
+  }
+  else {
+    if (puVar2 != (undefined4 *)0x0) {
+      *puVar2 = 0;
+      puVar2[1] = 0;
+      puVar2[2] = 0;
+      CTCElectrocutedEffect__InitFromStringRange();
+    }
+    *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + 0xc;
+  }
+  if (pvVar6 != (void *)0x0) {
+    free(pvVar6);
+  }
+  if ((byte *)param_5[1] == (byte *)*param_5) {
+    iVar10 = 0;
+    bVar13 = false;
+    iVar3 = 0;
+    bVar14 = true;
+    pbVar11 = (byte *)*param_5;
+    pbVar12 = &DAT_0122d70e;
+    do {
+      if (iVar10 == 0) break;
+      iVar10 = iVar10 + -1;
+      bVar13 = *pbVar11 < *pbVar12;
+      bVar14 = *pbVar11 == *pbVar12;
+      pbVar11 = pbVar11 + 1;
+      pbVar12 = pbVar12 + 1;
+    } while (bVar14);
+    if (!bVar14) {
+      iVar3 = (1 - (uint)bVar13) - (uint)(bVar13 != 0);
+    }
+    if (iVar3 != 0) goto LAB_0084039d;
+  }
+  else {
+LAB_0084039d:
+    local_2c = malloc(0x11);
+    local_24 = (int)local_2c + 0x11;
+    pvVar6 = memmove(local_2c,"Content-Length: ",0x10);
+    local_28 = (undefined1 *)((int)pvVar6 + 0x10);
+    *local_28 = 0;
+    _itoa(param_6,local_18,10);
+    pcVar8 = local_18;
+    do {
+      cVar1 = *pcVar8;
+      pcVar8 = pcVar8 + 1;
+    } while (cVar1 != '\0');
+    CTCElectrocutedEffect__ReplaceString();
+    pvVar6 = local_2c;
+    puVar2 = *(undefined4 **)(param_1 + 0x2c);
+    if (puVar2 == *(undefined4 **)(param_1 + 0x30)) {
+      Vector_ReallocateStructArray(puVar2);
+    }
+    else {
+      if (puVar2 != (undefined4 *)0x0) {
+        *puVar2 = 0;
+        puVar2[1] = 0;
+        puVar2[2] = 0;
+        CTCElectrocutedEffect__InitFromStringRange();
+      }
+      *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + 0xc;
+    }
+    if (pvVar6 != (void *)0x0) {
+      free(pvVar6);
+    }
+  }
+  ppuVar9 = (undefined1 **)FUN_0083fce0();
+  if (ppuVar9 != &local_38) {
+    std__string_InsertRange();
+  }
+  if (local_2c != (void *)0x0) {
+    free(local_2c);
+  }
+  if (&local_50 != (undefined1 **)(param_1 + 0x14)) {
+    std__string_InsertRange();
+  }
+  if (local_40 == local_44) {
+    iVar10 = 0;
+    bVar13 = false;
+    iVar3 = 0;
+    bVar14 = true;
+    pbVar11 = local_44;
+    pbVar12 = &DAT_0122d70e;
+    do {
+      if (iVar10 == 0) break;
+      iVar10 = iVar10 + -1;
+      bVar13 = *pbVar11 < *pbVar12;
+      bVar14 = *pbVar11 == *pbVar12;
+      pbVar11 = pbVar11 + 1;
+      pbVar12 = pbVar12 + 1;
+    } while (bVar14);
+    if (!bVar14) {
+      iVar3 = (1 - (uint)bVar13) - (uint)(bVar13 != 0);
+    }
+    if (iVar3 != 0) goto LAB_008404d7;
+  }
+  else {
+LAB_008404d7:
+    CTCElectrocutedEffect__InsertStringRange();
+  }
+  CTCElectrocutedEffect__InsertStringRange();
+  CTCElectrocutedEffect__ReplaceString();
+  *(int *)(param_1 + 0x24) = *(int *)(param_1 + 0x18) - (int)*(undefined1 **)(param_1 + 0x14);
+  if ((byte *)param_5[1] == (byte *)*param_5) {
+    iVar3 = 0;
+    bVar13 = false;
+    iVar10 = 0;
+    bVar14 = true;
+    pbVar11 = (byte *)*param_5;
+    pbVar12 = &DAT_0122d70e;
+    do {
+      if (iVar3 == 0) break;
+      iVar3 = iVar3 + -1;
+      bVar13 = *pbVar11 < *pbVar12;
+      bVar14 = *pbVar11 == *pbVar12;
+      pbVar11 = pbVar11 + 1;
+      pbVar12 = pbVar12 + 1;
+    } while (bVar14);
+    if (!bVar14) {
+      iVar10 = (1 - (uint)bVar13) - (uint)(bVar13 != 0);
+    }
+    if (iVar10 == 0) goto LAB_00840570;
+  }
+  CTCElectrocutedEffect__InsertStringRange();
+  *(int *)(param_1 + 0x24) = *(int *)(param_1 + 0x24) + (param_5[1] - *param_5);
+LAB_00840570:
+  Vector_Insert();
+  if (param_4 != 0) {
+    Vector_Insert();
+  }
+  if (local_38 != (undefined1 *)0x0) {
+    free(local_38);
+  }
+  if (local_44 != (byte *)0x0) {
+    free(local_44);
+  }
+  if (local_50 != (undefined1 *)0x0) {
+    free(local_50);
+  }
+  return 8;
+}
+
+
+@@ENDFUNC
+@@@FUNC 008405f0 322 2
+@@CALLERS UpdateTransaction
+@@CALLEES Vector_Insert, FUN_0083f8b0, ResetRequest, time, std::vector_move_and_cleanup
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_008405f0(LHHttp2 *param_1)
+
+{
+  uint uVar1;
+  int iVar2;
+  uint uVar3;
+  int iVar4;
+  byte *pbVar5;
+  byte *pbVar6;
+  LHHttp2 *pLVar7;
+  bool bVar8;
+  bool bVar9;
+  time_t tVar10;
+  LHHttp2 *local_4;
+  
+  pbVar5 = *(byte **)(param_1 + 0x14);
+  if (*(byte **)(param_1 + 0x18) == pbVar5) {
+    iVar2 = 0;
+    bVar8 = false;
+    iVar4 = 0;
+    bVar9 = true;
+    pbVar6 = &DAT_0122d70e;
+    do {
+      if (iVar2 == 0) break;
+      iVar2 = iVar2 + -1;
+      bVar8 = *pbVar5 < *pbVar6;
+      bVar9 = *pbVar5 == *pbVar6;
+      pbVar5 = pbVar5 + 1;
+      pbVar6 = pbVar6 + 1;
+    } while (bVar9);
+    if (!bVar9) {
+      iVar4 = (1 - (uint)bVar8) - (uint)(bVar8 != 0);
+    }
+    if (iVar4 == 0) {
+      return 0xffffff98;
+    }
+  }
+  uVar1 = *(uint *)(param_1 + 0x20);
+  if (*(uint *)(param_1 + 0x24) <= uVar1) {
+    local_4 = param_1;
+    Vector_Insert(&DAT_0122d70e,&DAT_0122d70e);
+    *(undefined4 *)(param_1 + 0x20) = 0;
+    *(undefined4 *)(param_1 + 0x24) = 0;
+    *(undefined4 *)(param_1 + 0x894) = 0;
+    *(undefined4 *)(param_1 + 0x898) = 0;
+    Vector_Insert(&DAT_0122d70e,&DAT_0122d70e);
+    std__vector_move_and_cleanup(*(undefined4 *)(param_1 + 0x40),*(undefined4 *)(param_1 + 0x44));
+    param_1[0x60] = (LHHttp2)0x0;
+    *(undefined2 *)(param_1 + 0x62) = 1;
+    return 2;
+  }
+  uVar3 = *(uint *)(param_1 + 0x24) - uVar1;
+  if (0x3ff < uVar3) {
+    uVar3 = 0x400;
+  }
+  local_4 = (LHHttp2 *)0x0;
+  iVar2 = FUN_0083f8b0(*(int *)(param_1 + 0x14) + uVar1,uVar3,&local_4,1);
+  pLVar7 = local_4;
+  if (iVar2 == 2) {
+    LHNetworkLib::LHHttp2::ResetRequest(param_1);
+    pLVar7 = param_1 + 0x70;
+    for (iVar2 = 0x200; iVar2 != 0; iVar2 = iVar2 + -1) {
+      *(undefined4 *)pLVar7 = 0;
+      pLVar7 = pLVar7 + 4;
+    }
+    *(undefined4 *)(param_1 + 0x870) = 0;
+    return 0xffffff9c;
+  }
+  if ((local_4 == (LHHttp2 *)0x0) && (param_1[0x60] != (LHHttp2)0x0)) {
+    tVar10 = time((time_t *)0x0);
+    if ((uint)(*(int *)(param_1 + 0x5c) + *(int *)(param_1 + 0x58)) < (uint)tVar10) {
+      LHNetworkLib::LHHttp2::ResetRequest(param_1);
+      return 0xffffff9a;
+    }
+  }
+  else {
+    time((time_t *)(param_1 + 0x5c));
+    param_1[0x60] = (LHHttp2)0x1;
+  }
+  *(LHHttp2 **)(param_1 + 0x20) = pLVar7 + *(int *)(param_1 + 0x20);
+  return 1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00840740 1047 2
+@@CALLERS UpdateTransaction
+@@CALLEES CString_FillRange, CTCElectrocutedEffect::InitFromStringRange, operator_delete[], time, Vector_ReallocateStructArray, SetStaticCast<NUISystem::CComponent>, operator_delete, free, Vector_Insert, IsReadable, HTTP_CompareStrings, std::vector_move_and_cleanup, HTTP_Request_BuildPath, LSocket_ReceiveWithTimeout, basic_string<char,std::char_traits<char>,std::allocator<char>_>
+@@STRINGS http/1.	ServerCode
+@@DECOMP
+
+undefined4 __fastcall FUN_00840740(int *param_1)
+
+{
+  bool bVar1;
+  void *_Memory;
+  bool bVar2;
+  char cVar3;
+  uint uVar4;
+  int iVar5;
+  int iVar6;
+  undefined4 *puVar7;
+  int *piVar8;
+  CCountedPointer<NUISystem::CComponent> *unaff_EDI;
+  undefined4 *puVar9;
+  char *pcVar10;
+  int *piVar11;
+  time_t tVar12;
+  char local_55;
+  int local_54;
+  undefined4 local_50;
+  uint local_4c;
+  undefined4 *local_48;
+  undefined1 *local_44;
+  undefined4 local_40;
+  void *local_3c;
+  undefined4 local_38;
+  void *local_30 [3];
+  void *local_24 [3];
+  void *local_18 [3];
+  void *local_c [3];
+  
+  bVar1 = false;
+  local_50 = 4;
+  if (*(short *)((int)param_1 + 0x62) != 1) {
+    return 0xffffff97;
+  }
+  if (((param_1[0x21c] == 0) && (param_1[0x10] == param_1[0x11])) && ((char)param_1[0x18] == '\0'))
+  {
+    *(undefined1 *)(param_1 + 0x18) = 1;
+    time((time_t *)(param_1 + 0x17));
+  }
+  if (((LSocket *)*param_1 == (LSocket *)0x0) ||
+     (bVar2 = LHNetworkLib::LSocket::IsReadable((LSocket *)*param_1,0), !bVar2)) {
+    tVar12 = time((time_t *)0x0);
+    if ((uint)(param_1[0x17] + param_1[0x16]) < (uint)tVar12) {
+      Vector_Insert(&DAT_0122d70e,&DAT_0122d70e);
+      std__vector_move_and_cleanup(param_1[0x10],param_1[0x11]);
+      param_1[0x21c] = 0;
+      piVar11 = param_1 + 0x1c;
+      for (iVar6 = 0x200; iVar6 != 0; iVar6 = iVar6 + -1) {
+        *piVar11 = 0;
+        piVar11 = piVar11 + 1;
+      }
+      local_50 = 0xffffff9a;
+    }
+  }
+  else {
+    local_48 = (undefined4 *)0x0;
+    local_44 = (undefined1 *)0x0;
+    local_40 = 0;
+    local_54 = 0;
+    uVar4 = 1;
+    do {
+      if (uVar4 == 0) break;
+      local_55 = '\0';
+      if (uVar4 < (uint)((int)local_44 - (int)local_48)) {
+        local_44 = (undefined1 *)((int)local_48 + uVar4);
+      }
+      else {
+        CString_FillRange(local_44,(undefined1 *)((int)local_48 + (uVar4 - (int)local_44)),&local_55
+                         );
+      }
+      cVar3 = LSocket_ReceiveWithTimeout(&local_48);
+      if (cVar3 == '\0') {
+        if (local_48 != (undefined4 *)0x0) {
+          free(local_48);
+        }
+        return 0xffffff9a;
+      }
+      local_4c = *(uint *)(*param_1 + 0x94);
+      puVar7 = local_48;
+      puVar9 = (undefined4 *)(param_1[0x21c] + 0x70 + (int)param_1);
+      for (uVar4 = local_4c >> 2; uVar4 != 0; uVar4 = uVar4 - 1) {
+        *puVar9 = *puVar7;
+        puVar7 = puVar7 + 1;
+        puVar9 = puVar9 + 1;
+      }
+      for (uVar4 = local_4c & 3; uVar4 != 0; uVar4 = uVar4 - 1) {
+        *(undefined1 *)puVar9 = *(undefined1 *)puVar7;
+        puVar7 = (undefined4 *)((int)puVar7 + 1);
+        puVar9 = (undefined4 *)((int)puVar9 + 1);
+      }
+      if (local_4c == 0) {
+        tVar12 = time((time_t *)0x0);
+        if ((uint)(param_1[0x17] + param_1[0x16]) < (uint)tVar12) {
+          CCountedPointer<NUISystem::CList>::SetStaticCast<NUISystem::CComponent>
+                    ((CCountedPointer<NUISystem::CList> *)(param_1 + 0x10),unaff_EDI);
+          param_1[0x21c] = 0;
+          param_1[0x225] = 0;
+          param_1[0x226] = 0;
+          param_1[0x427] = 0;
+          piVar11 = param_1 + 0x1c;
+          for (iVar6 = 0x200; iVar6 != 0; iVar6 = iVar6 + -1) {
+            *piVar11 = 0;
+            piVar11 = piVar11 + 1;
+          }
+          *(undefined1 *)(param_1 + 0x428) = 0;
+          local_50 = 0xffffff9a;
+        }
+      }
+      else {
+        iVar6 = param_1[0x21c];
+        cVar3 = *(char *)(iVar6 + 0x70 + (int)param_1);
+        if (cVar3 == '\r') {
+          bVar1 = true;
+        }
+        if ((cVar3 == '\n') && (bVar1)) {
+          piVar11 = param_1 + 0x1c;
+          iVar5 = 1;
+          bVar2 = true;
+          *(undefined1 *)(iVar6 + 0x6f + (int)param_1) = 0;
+          piVar8 = piVar11;
+          pcVar10 = "";
+          do {
+            if (iVar5 == 0) break;
+            iVar5 = iVar5 + -1;
+            bVar2 = (char)*piVar8 == *pcVar10;
+            piVar8 = (int *)((int)piVar8 + 1);
+            pcVar10 = pcVar10 + 1;
+          } while (bVar2);
+          if (bVar2) {
+            *(undefined2 *)((int)param_1 + 0x62) = 2;
+            *(undefined1 *)(param_1 + 0x18) = 0;
+            param_1[0x225] = 0;
+            param_1[0x226] = 0;
+            piVar11 = param_1 + 0x227;
+            for (iVar6 = 0x200; iVar6 != 0; iVar6 = iVar6 + -1) {
+              *piVar11 = 0;
+              piVar11 = piVar11 + 1;
+            }
+            puVar7 = (undefined4 *)param_1[0x429];
+            param_1[0x427] = 0;
+            *(undefined1 *)(param_1 + 0x428) = 0;
+            if (puVar7 != (undefined4 *)0x0) {
+              if ((void *)*puVar7 != (void *)0x0) {
+                operator_delete__((void *)*puVar7);
+                *puVar7 = 0;
+              }
+              puVar7[1] = 0;
+              operator_delete(puVar7);
+              param_1[0x429] = 0;
+            }
+            if (local_48 != (undefined4 *)0x0) {
+              free(local_48);
+            }
+            return 5;
+          }
+          std::basic_string<char,std::char_traits<char>,std::allocator<char>_>::
+          basic_string<char,std::char_traits<char>,std::allocator<char>_>
+                    ((basic_string<char,std::char_traits<char>,std::allocator<char>_> *)local_24,
+                     "http/1.");
+          std::basic_string<char,std::char_traits<char>,std::allocator<char>_>::
+          basic_string<char,std::char_traits<char>,std::allocator<char>_>
+                    ((basic_string<char,std::char_traits<char>,std::allocator<char>_> *)local_30,
+                     (char *)piVar11);
+          local_55 = HTTP_CompareStrings();
+          if (local_30[0] != (void *)0x0) {
+            free(local_30[0]);
+          }
+          if (local_24[0] != (void *)0x0) {
+            free(local_24[0]);
+          }
+          if (local_55 == '\0') {
+            std::basic_string<char,std::char_traits<char>,std::allocator<char>_>::
+            basic_string<char,std::char_traits<char>,std::allocator<char>_>
+                      ((basic_string<char,std::char_traits<char>,std::allocator<char>_> *)&local_3c,
+                       (char *)piVar11);
+            _Memory = local_3c;
+            puVar7 = (undefined4 *)param_1[0x11];
+            if (puVar7 == (undefined4 *)param_1[0x12]) {
+              Vector_ReallocateStructArray(puVar7,&local_3c,&local_55,1,1);
+            }
+            else {
+              if (puVar7 != (undefined4 *)0x0) {
+                *puVar7 = 0;
+                puVar7[1] = 0;
+                puVar7[2] = 0;
+                CTCElectrocutedEffect__InitFromStringRange(local_3c,local_38,&local_55);
+              }
+              param_1[0x11] = param_1[0x11] + 0xc;
+            }
+          }
+          else {
+            std::basic_string<char,std::char_traits<char>,std::allocator<char>_>::
+            basic_string<char,std::char_traits<char>,std::allocator<char>_>
+                      ((basic_string<char,std::char_traits<char>,std::allocator<char>_> *)local_c,
+                       (char *)piVar11);
+            std::basic_string<char,std::char_traits<char>,std::allocator<char>_>::
+            basic_string<char,std::char_traits<char>,std::allocator<char>_>
+                      ((basic_string<char,std::char_traits<char>,std::allocator<char>_> *)local_18,
+                       "ServerCode");
+            HTTP_Request_BuildPath(local_18,local_c);
+            _Memory = local_c[0];
+            if (local_18[0] != (void *)0x0) {
+              free(local_18[0]);
+              _Memory = local_c[0];
+            }
+          }
+          if (_Memory != (void *)0x0) {
+            free(_Memory);
+          }
+          param_1[0x21c] = 0;
+          for (iVar6 = 0x200; iVar6 != 0; iVar6 = iVar6 + -1) {
+            *piVar11 = 0;
+            piVar11 = piVar11 + 1;
+          }
+        }
+        else {
+          param_1[0x21c] = iVar6 + local_4c;
+        }
+      }
+      local_54 = local_54 + 1;
+      uVar4 = local_4c;
+    } while ((ushort)local_54 < 0x400);
+    if ((short)local_54 != 0) {
+      time((time_t *)(param_1 + 0x17));
+    }
+    if (local_48 != (undefined4 *)0x0) {
+      free(local_48);
+      return local_50;
+    }
+  }
+  return local_50;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00840b60 1000 2
+@@CALLERS UpdateTransaction
+@@CALLEES CTCElectrocutedEffect::InitFromStringRange, malloc, Vector_ReallocateStructArray, atoi, atol, ProcessTextWithRegex, std::string_InsertRange, free, abort, puts, StringSearch_FindPattern, HTTP_CompareStrings, memmove
+@@STRINGS ServerCode	basic_string	Location:	Content-Length	Transfer-Encoding	chunked
+@@DECOMP
+
+undefined4 __thiscall FUN_00840b60(int param_1,int *param_2)
+
+{
+  undefined4 *puVar1;
+  int *piVar2;
+  char cVar3;
+  byte *pbVar4;
+  void *pvVar5;
+  int iVar6;
+  byte *pbVar7;
+  uint uVar8;
+  void *pvVar9;
+  long lVar10;
+  int iVar11;
+  byte **ppbVar12;
+  uint uVar13;
+  undefined4 *puVar14;
+  byte *pbVar15;
+  bool bVar16;
+  bool bVar17;
+  byte *local_44;
+  byte *local_40;
+  byte *local_3c;
+  byte *local_38;
+  byte *local_30;
+  byte *local_2c;
+  byte *local_28;
+  void *local_24;
+  undefined1 *local_20;
+  int local_1c;
+  byte *local_18;
+  byte *local_14;
+  byte *local_c;
+  byte *local_8;
+  
+  piVar2 = param_2;
+  puVar14 = *(undefined4 **)(param_1 + 0x40);
+  if (puVar14 == *(undefined4 **)(param_1 + 0x44)) {
+    return 1000;
+  }
+  if (puVar14 != *(undefined4 **)(param_1 + 0x44)) {
+    do {
+      puVar1 = (undefined4 *)piVar2[2];
+      if (puVar1 == (undefined4 *)piVar2[3]) {
+        Vector_ReallocateStructArray(puVar1,puVar14,&param_2,1,1);
+      }
+      else {
+        if (puVar1 != (undefined4 *)0x0) {
+          *puVar1 = 0;
+          puVar1[1] = 0;
+          puVar1[2] = 0;
+          CTCElectrocutedEffect__InitFromStringRange(*puVar14,puVar14[1],&param_2);
+        }
+        piVar2[2] = piVar2[2] + 0xc;
+      }
+      puVar14 = puVar14 + 3;
+    } while (puVar14 != *(undefined4 **)(param_1 + 0x44));
+  }
+  pbVar4 = malloc(0xb);
+  local_28 = pbVar4 + 0xb;
+  local_30 = pbVar4;
+  pvVar5 = memmove(pbVar4,"ServerCode",10);
+  local_2c = (byte *)((int)pvVar5 + 10);
+  *local_2c = 0;
+  ProcessTextWithRegex(&local_3c,&local_30);
+  if (pbVar4 != (byte *)0x0) {
+    free(pbVar4);
+  }
+  pbVar4 = local_3c;
+  uVar13 = (int)local_38 - (int)local_3c;
+  if (local_38 == local_3c) {
+    iVar11 = 0;
+    bVar16 = false;
+    iVar6 = 0;
+    bVar17 = true;
+    pbVar7 = local_3c;
+    pbVar15 = &DAT_0122d70e;
+    do {
+      if (iVar11 == 0) break;
+      iVar11 = iVar11 + -1;
+      bVar16 = *pbVar7 < *pbVar15;
+      bVar17 = *pbVar7 == *pbVar15;
+      pbVar7 = pbVar7 + 1;
+      pbVar15 = pbVar15 + 1;
+    } while (bVar17);
+    if (!bVar17) {
+      iVar6 = (1 - (uint)bVar16) - (uint)(bVar16 != 0);
+    }
+    if (iVar6 != 0) goto LAB_00840c56;
+  }
+  else {
+LAB_00840c56:
+    if ((local_38 == local_3c) ||
+       (pbVar7 = (byte *)StringSearch_FindPattern(&DAT_01258c1c,&DAT_01258c1d,param_2),
+       pbVar7 == local_38)) {
+      iVar6 = -1;
+    }
+    else {
+      iVar6 = (int)pbVar7 - (int)pbVar4;
+    }
+    uVar8 = iVar6 + 1;
+    local_40 = (byte *)0xffffffff;
+    if (uVar13 < uVar8) {
+      puts("basic_string");
+                    /* WARNING: Subroutine does not return */
+      abort();
+    }
+    local_44 = local_38 + (-(int)pbVar4 - uVar8);
+    ppbVar12 = &local_44;
+    if (local_38 + (-(int)pbVar4 - uVar8) == (byte *)0xffffffff) {
+      ppbVar12 = &local_40;
+    }
+    local_30 = (byte *)0x0;
+    local_2c = (byte *)0x0;
+    local_28 = (byte *)0x0;
+    CTCElectrocutedEffect__InitFromStringRange
+              (pbVar4 + uVar8,pbVar4 + (int)(*ppbVar12 + uVar8),&param_2);
+    pbVar4 = local_30;
+    iVar6 = atoi((char *)local_30);
+    if (pbVar4 != (byte *)0x0) {
+      free(pbVar4);
+    }
+    *param_2 = iVar6;
+  }
+  pvVar5 = malloc(10);
+  local_1c = (int)pvVar5 + 10;
+  local_24 = pvVar5;
+  pvVar9 = memmove(pvVar5,"Location:",9);
+  local_20 = (undefined1 *)((int)pvVar9 + 9);
+  *local_20 = 0;
+  ProcessTextWithRegex(&local_30,&local_24);
+  if (pvVar5 != (void *)0x0) {
+    free(pvVar5);
+  }
+  if (local_2c == local_30) {
+    iVar11 = 0;
+    bVar16 = false;
+    iVar6 = 0;
+    bVar17 = true;
+    pbVar4 = local_30;
+    pbVar7 = &DAT_0122d70e;
+    do {
+      if (iVar11 == 0) break;
+      iVar11 = iVar11 + -1;
+      bVar16 = *pbVar4 < *pbVar7;
+      bVar17 = *pbVar4 == *pbVar7;
+      pbVar4 = pbVar4 + 1;
+      pbVar7 = pbVar7 + 1;
+    } while (bVar17);
+    if (!bVar17) {
+      iVar6 = (1 - (uint)bVar16) - (uint)(bVar16 != 0);
+    }
+    if (iVar6 != 0) goto LAB_00840d77;
+  }
+  else {
+LAB_00840d77:
+    if (&local_30 != (byte **)(param_2 + 7)) {
+      std__string_InsertRange(local_30,local_2c,&param_2);
+    }
+  }
+  *(undefined4 *)(param_1 + 0x890) = 0;
+  pvVar5 = malloc(0xf);
+  local_1c = (int)pvVar5 + 0xf;
+  local_24 = pvVar5;
+  pvVar9 = memmove(pvVar5,"Content-Length",0xe);
+  local_20 = (undefined1 *)((int)pvVar9 + 0xe);
+  *local_20 = 0;
+  ProcessTextWithRegex(&local_c,&local_24);
+  if (pvVar5 != (void *)0x0) {
+    free(pvVar5);
+  }
+  if (local_8 == local_c) {
+    iVar11 = 0;
+    bVar16 = false;
+    iVar6 = 0;
+    bVar17 = true;
+    pbVar4 = local_c;
+    pbVar7 = &DAT_0122d70e;
+    do {
+      if (iVar11 == 0) break;
+      iVar11 = iVar11 + -1;
+      bVar16 = *pbVar4 < *pbVar7;
+      bVar17 = *pbVar4 == *pbVar7;
+      pbVar4 = pbVar4 + 1;
+      pbVar7 = pbVar7 + 1;
+    } while (bVar17);
+    if (!bVar17) {
+      iVar6 = (1 - (uint)bVar16) - (uint)(bVar16 != 0);
+    }
+    if (iVar6 != 0) goto LAB_00840e10;
+    param_2[10] = -1;
+  }
+  else {
+LAB_00840e10:
+    lVar10 = atol((char *)local_c);
+    param_2[10] = lVar10;
+  }
+  pvVar5 = malloc(0x12);
+  local_1c = (int)pvVar5 + 0x12;
+  local_24 = pvVar5;
+  pvVar9 = memmove(pvVar5,"Transfer-Encoding",0x11);
+  local_20 = (undefined1 *)((int)pvVar9 + 0x11);
+  *local_20 = 0;
+  ProcessTextWithRegex(&local_18,&local_24);
+  if (pvVar5 != (void *)0x0) {
+    free(pvVar5);
+  }
+  if (local_14 == local_18) {
+    iVar11 = 0;
+    bVar16 = false;
+    iVar6 = 0;
+    bVar17 = true;
+    pbVar4 = local_18;
+    pbVar7 = &DAT_0122d70e;
+    do {
+      if (iVar11 == 0) break;
+      iVar11 = iVar11 + -1;
+      bVar16 = *pbVar4 < *pbVar7;
+      bVar17 = *pbVar4 == *pbVar7;
+      pbVar4 = pbVar4 + 1;
+      pbVar7 = pbVar7 + 1;
+    } while (bVar17);
+    if (!bVar17) {
+      iVar6 = (1 - (uint)bVar16) - (uint)(bVar16 != 0);
+    }
+    if (iVar6 == 0) goto LAB_00840ef9;
+  }
+  pvVar5 = malloc(8);
+  local_1c = (int)pvVar5 + 8;
+  local_24 = pvVar5;
+  pvVar9 = memmove(pvVar5,"chunked",7);
+  local_20 = (undefined1 *)((int)pvVar9 + 7);
+  *local_20 = 0;
+  cVar3 = HTTP_CompareStrings();
+  if (pvVar5 != (void *)0x0) {
+    free(pvVar5);
+  }
+  if (cVar3 != '\0') {
+    *(undefined4 *)(param_1 + 0x890) = 1;
+  }
+LAB_00840ef9:
+  if (local_18 != (byte *)0x0) {
+    free(local_18);
+  }
+  if (local_c != (byte *)0x0) {
+    free(local_c);
+  }
+  if (local_30 != (byte *)0x0) {
+    free(local_30);
+  }
+  if (local_3c != (byte *)0x0) {
+    free(local_3c);
+  }
+  return 1000;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00841790 86 2
+@@CALLERS LHHttp2_ParseURL
+@@CALLEES StringSearch_FindPattern
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_00841790(int *param_1,char *param_2,int param_3)
+
+{
+  char cVar1;
+  int iVar2;
+  int iVar3;
+  char *pcVar4;
+  int iVar5;
+  
+  pcVar4 = param_2;
+  do {
+    cVar1 = *pcVar4;
+    pcVar4 = pcVar4 + 1;
+  } while (cVar1 != '\0');
+  iVar2 = *param_1;
+  iVar3 = param_1[1];
+  if ((uint)(((int)pcVar4 - (int)(param_2 + 1)) + param_3) <= (uint)(iVar3 - iVar2)) {
+    iVar5 = StringSearch_FindPattern(param_2,param_2 + ((int)pcVar4 - (int)(param_2 + 1)),param_2);
+    if (iVar5 != iVar3) {
+      return iVar5 - iVar2;
+    }
+  }
+  return -1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00841a70 50 2
+@@CALLERS ReceiveDocumentAsync
+@@CALLEES FUN_00841820
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00841a70(int param_1,undefined4 *param_2)
+
+{
+  undefined4 *puVar1;
+  
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  if (puVar1 != *(undefined4 **)(param_1 + 8)) {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = *param_2;
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 4;
+    return;
+  }
+  FUN_00841820(puVar1,param_2,&param_2,1,1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00841ee0 126 2
+@@CALLERS 
+@@CALLEES Vector_Insert, malloc, std::string_InsertRange
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_00841ee0(undefined4 *param_1,undefined4 *param_2,undefined2 param_3)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  puVar1 = malloc(8);
+  param_1[2] = puVar1 + 8;
+  *param_1 = puVar1;
+  param_1[1] = puVar1;
+  *puVar1 = 0;
+  Vector_Insert(&DAT_0122d70e,&DAT_0122d70e);
+  *(undefined2 *)(param_1 + 4) = 0;
+  param_1[3] = 0;
+  param_1[5] = 0;
+  param_1[6] = 0;
+  if (param_2 != param_1) {
+    std__string_InsertRange(*param_2,param_2[1],&param_3);
+    *(undefined2 *)(param_1 + 4) = param_3;
+    return param_1;
+  }
+  *(undefined2 *)(param_1 + 4) = param_3;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00842df0 77 2
+@@CALLERS ?FinishAction@CCreatureAction_PlayAnimationWithLookTurning@@UAEXXZ
+@@CALLEES CCreatureAction_PlayAnimation
+@@STRINGS 
+@@DECOMP
+
+CCreatureAction_PlayAnimation * __thiscall
+FUN_00842df0(CCreatureAction_PlayAnimation *param_1,CThingCreatureBase *param_2,
+            CAnimationEntry *param_3,bool param_4,bool param_5,long param_6,CSoundPair *param_7,
+            bool param_8,bool param_9,bool param_10,long param_11,long param_12)
+
+{
+  CCreatureAction_PlayAnimation::CCreatureAction_PlayAnimation
+            (param_1,param_2,param_3,param_4,param_5,param_6,param_7,param_8,param_9,param_10,
+             param_11,param_12);
+  *(undefined ***)param_1 = &PTR__vector_deleting_destructor__012740f4;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0084d0e0 393 2
+@@CALLERS UpdateTrackMeleeOpponents
+@@CALLEES __ftol2
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __fastcall FUN_0084d0e0(float *param_1)
+
+{
+  float fVar1;
+  float *pfVar2;
+  float *pfVar3;
+  float *pfVar4;
+  float10 fVar5;
+  float10 fVar6;
+  float10 extraout_ST0;
+  float10 fVar7;
+  float10 extraout_ST1;
+  float10 fVar8;
+  int local_28;
+  float local_4;
+  
+  fVar5 = (float10)_DAT_0122dedc;
+  fVar6 = (float10)_DAT_0122dedc;
+  local_4 = _DAT_0122dedc;
+  pfVar3 = (float *)param_1[6];
+  pfVar2 = (float *)param_1[7];
+  local_28 = 0;
+  pfVar4 = pfVar3;
+  if (pfVar3 != pfVar2) {
+    do {
+      fVar5 = (float10)(pfVar4[3] * pfVar4[1]) + fVar6;
+      local_28 = __ftol2();
+      pfVar4 = pfVar4 + 4;
+      fVar6 = extraout_ST1;
+    } while (pfVar4 != (float *)param_1[7]);
+    local_4 = (float)extraout_ST0;
+  }
+  fVar1 = (float)((float10)_DAT_0122ded8 / (float10)local_28);
+  param_1[10] = (float)(((float10)_DAT_0122ded8 / (float10)local_28) * fVar5);
+  param_1[0xb] = (float)(fVar6 * (float10)fVar1);
+  param_1[0xc] = local_4 * fVar1;
+  fVar6 = (float10)param_1[10] - (float10)*param_1;
+  fVar5 = (float10)param_1[0xb] - (float10)param_1[1];
+  fVar1 = param_1[0xc] - param_1[2];
+  fVar7 = (float10)_DAT_0122dedc;
+  if (pfVar3 != pfVar2) {
+    do {
+      fVar8 = ((float10)*pfVar3 - (float10)*param_1) *
+              (float10)(float)(fVar5 * (float10)param_1[5] - (float10)fVar1 * (float10)param_1[4]) +
+              ((float10)pfVar3[1] - (float10)param_1[1]) *
+              (float10)(float)((float10)fVar1 * (float10)param_1[3] - fVar6 * (float10)param_1[5]) +
+              ((float10)pfVar3[2] - (float10)param_1[2]) *
+              (float10)(float)(fVar6 * (float10)param_1[4] - fVar5 * (float10)param_1[3]);
+      fVar8 = fVar8 * fVar8;
+      if (fVar7 < fVar8) {
+        fVar7 = (float10)(float)fVar8;
+      }
+      pfVar3 = pfVar3 + 4;
+    } while (pfVar3 != (float *)param_1[7]);
+  }
+  fVar6 = (float10)fpatan(SQRT(fVar7 / (fVar6 * fVar6 +
+                                       fVar5 * fVar5 + (float10)fVar1 * (float10)fVar1)),(float10)1)
+  ;
+  param_1[9] = (float)(fVar6 * (float10)_DAT_01237f08);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0084e390 111 2
+@@CALLERS UpdateTrackMeleeOpponents
+@@CALLEES FUN_0084f5e0
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_0084e390(int param_1,undefined4 *param_2,undefined4 param_3)
+
+{
+  undefined4 *puVar1;
+  undefined4 local_10;
+  undefined4 local_c;
+  undefined4 local_8;
+  undefined4 local_4;
+  
+  local_10 = *param_2;
+  local_c = param_2[1];
+  local_8 = param_2[2];
+  puVar1 = *(undefined4 **)(param_1 + 0x1c);
+  local_4 = param_3;
+  if (puVar1 != *(undefined4 **)(param_1 + 0x20)) {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = local_10;
+      puVar1[1] = local_c;
+      puVar1[2] = local_8;
+      puVar1[3] = param_3;
+    }
+    *(int *)(param_1 + 0x1c) = *(int *)(param_1 + 0x1c) + 0x10;
+    return;
+  }
+  FUN_0084f5e0(puVar1,&local_10,&param_3,1,1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0084f010 162 2
+@@CALLERS ScriptEventList::InsertEvent
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0084f010(undefined4 *param_1,undefined4 *param_2,int param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  iVar2 = (int)param_2 - (int)param_1 >> 5;
+  while( true ) {
+    if (iVar2 < 1) {
+      iVar2 = (int)param_2 - (int)param_1 >> 3;
+      if (iVar2 != 1) {
+        if (iVar2 != 2) {
+          if (iVar2 != 3) {
+            return param_2;
+          }
+          iVar2 = (**(code **)(*(int *)*param_1 + 8))();
+          if (iVar2 == param_3) {
+            return param_1;
+          }
+          param_1 = param_1 + 2;
+        }
+        iVar2 = (**(code **)(*(int *)*param_1 + 8))();
+        if (iVar2 == param_3) {
+          return param_1;
+        }
+        param_1 = param_1 + 2;
+      }
+      iVar2 = (**(code **)(*(int *)*param_1 + 8))();
+      if (iVar2 != param_3) {
+        return param_2;
+      }
+      return param_1;
+    }
+    iVar1 = (**(code **)(*(int *)*param_1 + 8))();
+    if (iVar1 == param_3) {
+      return param_1;
+    }
+    iVar1 = (**(code **)(*(int *)param_1[2] + 8))();
+    if (iVar1 == param_3) {
+      return param_1 + 2;
+    }
+    iVar1 = (**(code **)(*(int *)param_1[4] + 8))();
+    if (iVar1 == param_3) {
+      return param_1 + 4;
+    }
+    iVar1 = (**(code **)(*(int *)param_1[6] + 8))();
+    if (iVar1 == param_3) break;
+    param_1 = param_1 + 8;
+    iVar2 = iVar2 + -1;
+  }
+  return param_1 + 6;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00851b50 121 2
+@@CALLERS IsAbilityValid, IsUsableBy
+@@CALLEES GetAbilityLevel
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00851b50(int *param_1,CTCInventoryAbilities *param_2)
+
+{
+  uint uVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  iVar3 = *param_1;
+  iVar2 = *(int *)(iVar3 + 8);
+  if (iVar2 != iVar3) {
+    do {
+      iVar3 = *(int *)(iVar2 + 0x14);
+      uVar1 = CTCInventoryAbilities::GetAbilityLevel(param_2,*(EHeroAbility *)(iVar2 + 0x10));
+      if ((int)uVar1 < iVar3) {
+        return uVar1 & 0xffffff00;
+      }
+      iVar3 = *(int *)(iVar2 + 0xc);
+      if (iVar3 == 0) {
+        iVar4 = *(int *)(iVar2 + 4);
+        if (iVar2 == *(int *)(iVar4 + 0xc)) {
+          do {
+            iVar2 = iVar4;
+            iVar4 = *(int *)(iVar2 + 4);
+          } while (iVar2 == *(int *)(iVar4 + 0xc));
+        }
+        iVar3 = iVar2;
+        if (*(int *)(iVar2 + 0xc) != iVar4) {
+          iVar3 = iVar4;
+        }
+      }
+      else {
+        for (iVar2 = *(int *)(iVar3 + 8); iVar2 != 0; iVar2 = *(int *)(iVar2 + 8)) {
+          iVar3 = iVar2;
+        }
+      }
+      iVar2 = iVar3;
+    } while (iVar3 != *param_1);
+  }
+  return CONCAT31((int3)((uint)iVar3 >> 8),1);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00856780 553 2
+@@CALLERS SetupCombatStrikeEvents
+@@CALLEES Compare, strncmp
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall
+FUN_00856780(int *param_1,char *param_2,undefined1 *param_3,undefined1 *param_4,undefined1 *param_5)
+
+{
+  undefined4 *puVar1;
+  char cVar2;
+  char *pcVar3;
+  int iVar4;
+  long lVar5;
+  char *pcVar6;
+  size_t sVar7;
+  char cVar8;
+  
+  *param_3 = 0;
+  if (DAT_013bac64 == (undefined4 *)0x0) {
+    sVar7 = 0;
+    pcVar6 = "";
+  }
+  else {
+    sVar7 = DAT_013bac64[1];
+    pcVar6 = (char *)*DAT_013bac64;
+  }
+  if ((undefined4 *)*param_1 == (undefined4 *)0x0) {
+    pcVar3 = "";
+  }
+  else {
+    pcVar3 = *(char **)*param_1;
+  }
+  iVar4 = strncmp(pcVar3,pcVar6,sVar7);
+  cVar8 = '\x01' - (iVar4 != 0);
+  if (DAT_013bac68 == (undefined4 *)0x0) {
+    sVar7 = 0;
+    pcVar6 = "";
+  }
+  else {
+    sVar7 = DAT_013bac68[1];
+    pcVar6 = (char *)*DAT_013bac68;
+  }
+  if ((undefined4 *)*param_1 == (undefined4 *)0x0) {
+    pcVar3 = "";
+  }
+  else {
+    pcVar3 = *(char **)*param_1;
+  }
+  iVar4 = strncmp(pcVar3,pcVar6,sVar7);
+  cVar2 = '\x01' - (iVar4 != 0);
+  if ((cVar8 == '\0') && (cVar2 == '\0')) {
+    if (DAT_013bac6c == (undefined4 *)0x0) {
+      sVar7 = 0;
+      pcVar6 = "";
+    }
+    else {
+      sVar7 = DAT_013bac6c[1];
+      pcVar6 = (char *)*DAT_013bac6c;
+    }
+    if ((undefined4 *)*param_1 == (undefined4 *)0x0) {
+      pcVar3 = "";
+    }
+    else {
+      pcVar3 = *(char **)*param_1;
+    }
+    iVar4 = strncmp(pcVar3,pcVar6,sVar7);
+    cVar8 = '\x01' - (iVar4 != 0);
+    if (DAT_013bac70 == (undefined4 *)0x0) {
+      sVar7 = 0;
+      pcVar6 = "";
+    }
+    else {
+      sVar7 = DAT_013bac70[1];
+      pcVar6 = (char *)*DAT_013bac70;
+    }
+    if ((undefined4 *)*param_1 == (undefined4 *)0x0) {
+      pcVar3 = "";
+    }
+    else {
+      pcVar3 = *(char **)*param_1;
+    }
+    iVar4 = strncmp(pcVar3,pcVar6,sVar7);
+    cVar2 = '\x01' - (iVar4 != 0);
+  }
+  else {
+    *param_3 = 1;
+  }
+  if ((cVar8 != '\0') || (cVar2 != '\0')) {
+    *param_4 = 0;
+    *param_2 = cVar8;
+    return 1;
+  }
+  *param_4 = 1;
+  puVar1 = (undefined4 *)*param_1;
+  if (puVar1 == DAT_013bac78) {
+LAB_008568bf:
+    *param_2 = '\x01';
+    *param_5 = 1;
+    return 1;
+  }
+  if (((puVar1 != (undefined4 *)0x0) && (DAT_013bac78 != (undefined4 *)0x0)) &&
+     (puVar1[1] == DAT_013bac78[1])) {
+    lVar5 = CBasicString<char>::Compare((char *)*puVar1,(char *)*DAT_013bac78);
+    if (lVar5 == 0) goto LAB_008568bf;
+  }
+  if (puVar1 == DAT_013bac80) {
+LAB_008568fd:
+    *param_2 = '\x01';
+    *param_5 = 0;
+    return 1;
+  }
+  if (((puVar1 != (undefined4 *)0x0) && (DAT_013bac80 != (undefined4 *)0x0)) &&
+     (puVar1[1] == DAT_013bac80[1])) {
+    lVar5 = CBasicString<char>::Compare((char *)*puVar1,(char *)*DAT_013bac80);
+    if (lVar5 == 0) goto LAB_008568fd;
+  }
+  if (puVar1 == DAT_013bac7c) {
+LAB_0085693b:
+    *param_2 = '\0';
+    *param_5 = 1;
+    return 1;
+  }
+  if (((puVar1 != (undefined4 *)0x0) && (DAT_013bac7c != (undefined4 *)0x0)) &&
+     (puVar1[1] == DAT_013bac7c[1])) {
+    lVar5 = CBasicString<char>::Compare((char *)*puVar1,(char *)*DAT_013bac7c);
+    if (lVar5 == 0) goto LAB_0085693b;
+  }
+  if (puVar1 != DAT_013bac84) {
+    if (((puVar1 != (undefined4 *)0x0) && (DAT_013bac84 != (undefined4 *)0x0)) &&
+       (puVar1[1] == DAT_013bac84[1])) {
+      lVar5 = CBasicString<char>::Compare((char *)*puVar1,(char *)*DAT_013bac84);
+      if (lVar5 == 0) goto LAB_00856979;
+    }
+    return 0;
+  }
+LAB_00856979:
+  *param_2 = '\0';
+  *param_5 = 0;
+  return 1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0085b720 278 2
+@@CALLERS SetupCombatStrikeEvents, _For_each<NPlayerTargeting::CTargetPoint*,_anon_58ED6966::CGetBestTargetInDirection>
+@@CALLEES __ftol2, Compare, GetHelperPointNamesFromStrikeEventName, ResetRings, FUN_00856780
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_0085b720(int *param_1,CCharString *param_2)
+
+{
+  float fVar1;
+  char *pcVar2;
+  undefined4 *puVar3;
+  undefined4 *puVar4;
+  float fVar5;
+  CCharString *pCVar6;
+  char cVar7;
+  long lVar8;
+  int iVar9;
+  bool local_18 [4];
+  bool local_14 [4];
+  bool local_10 [4];
+  int *local_c;
+  undefined4 local_8;
+  undefined4 local_4;
+  
+  pCVar6 = param_2;
+  fVar5 = (float)DAT_01375550;
+  fVar1 = *(float *)(param_2 + 4);
+  cVar7 = FUN_00856780(local_10,local_14,local_18);
+  if ((cVar7 != '\0') && ((char)param_2 == '\0')) {
+    pcVar2 = (char *)*param_1;
+    param_2._0_1_ = '\0';
+    if ((*pcVar2 == '\0') || (local_14[0] == false)) {
+      if (local_10[0] != (bool)pcVar2[2]) {
+        return;
+      }
+      local_c = (int *)0x0;
+      local_8 = 0;
+      local_4 = 0;
+      _anon_AD05D24C::GetHelperPointNamesFromStrikeEventName
+                (pCVar6,(vector<CCharString,std::allocator<CCharString>_> *)&local_c,local_10[0],
+                 local_14[0],local_18[0]);
+      puVar3 = (undefined4 *)*local_c;
+      puVar4 = *(undefined4 **)(*param_1 + 4);
+      if ((puVar3 == puVar4) ||
+         ((((puVar3 != (undefined4 *)0x0 && (puVar4 != (undefined4 *)0x0)) &&
+           (puVar3[1] == puVar4[1])) &&
+          (lVar8 = CBasicString<char>::Compare((char *)*puVar3,(char *)*puVar4), lVar8 == 0)))) {
+        param_2._0_1_ = '\x01';
+      }
+      CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)&local_c);
+    }
+    else {
+      param_2._0_1_ = local_18[0];
+      if (pcVar2[1] == '\0') {
+        return;
+      }
+    }
+    if ((((char)param_2 != '\0') && ((float)*(int *)(*param_1 + 0xc) < fVar5 * fVar1)) &&
+       (fVar5 * fVar1 < (float)param_1[1])) {
+      iVar9 = __ftol2();
+      param_1[1] = iVar9;
+      *(undefined1 *)(param_1 + 2) = 1;
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC

@@ -1,0 +1,2259 @@
+@@@FUNC 00677970 2272 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, ReadAsString, CSBAgents, TransferIn, ReadAsStringUntilString, operator==, ConsoleSetViewPort, CCharString, operator_new, SkipWhitespace, SkipPastNextItemIfIs, Error, CReactionFrequencyTraits_ControlledCount
+@@STRINGS Linear	PeriodicFrequency	ControlledCount	Unknown command for TOpinionTransientOffsetList
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_00677970(CPersistContext *param_1,CStringParser *param_2,EInputKey param_3)
+
+{
+  char cVar1;
+  char cVar2;
+  float fVar3;
+  EInputKey EVar4;
+  CPersistContext *pCVar5;
+  CStringParser *this;
+  EInputKey EVar6;
+  bool bVar7;
+  undefined4 *puVar8;
+  CSBAgents *pCVar9;
+  CEngineCamera *pCVar10;
+  undefined4 extraout_EAX;
+  undefined4 extraout_EAX_00;
+  int *piVar11;
+  CReactionFrequencyTraits_ControlledCount *pCVar12;
+  undefined4 uVar13;
+  int iVar14;
+  CBasicString<char> *this_00;
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *paVar15;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar16;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_02;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_03;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_04;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_05;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_06;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_07;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_08;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_09;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_10;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_11;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_12;
+  vector<CGenericVar,std::allocator<CGenericVar>_> *extraout_EDX_13;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_14;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_15;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_16;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_17;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_18;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_19;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_20;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_21;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_22;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_23;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_24;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_25;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_26;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EBP;
+  char *pcVar17;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  char *pcVar18;
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> aVar19;
+  undefined8 uVar20;
+  CBasicString<char> *local_18;
+  int local_14;
+  vector<CGenericVar,std::allocator<CGenericVar>_> *local_10;
+  int local_c;
+  CBasicString<char> *local_8;
+  EInputKey local_4;
+  
+  CCharString::CCharString((CCharString *)&local_8,".Set",-1);
+  this = param_2;
+  bVar7 = CStringParser::SkipPastNextItemIfIs(param_2,(CCharString *)&local_8);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_8,extraout_EDX,
+             unaff_EBP);
+  if (!bVar7) {
+    CCharString::CCharString
+              ((CCharString *)&param_3,"Unknown command for TOpinionTransientOffsetList",-1);
+    CDefinitionManager::Error((CDefinitionManager *)param_1,this,(CCharString *)&param_3);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_3,
+               extraout_EDX_26,unaff_EBP);
+    return;
+  }
+  puVar8 = (undefined4 *)CStringParser::ReadAsString(this);
+  if ((CBasicString<char> *)*puVar8 == (CBasicString<char> *)0x0) {
+    iVar14 = 2;
+    ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)0x0;
+    bVar7 = true;
+    pcVar17 = "(";
+    pcVar18 = "";
+    do {
+      if (iVar14 == 0) break;
+      iVar14 = iVar14 + -1;
+      bVar7 = *pcVar17 == *pcVar18;
+      pcVar17 = pcVar17 + 1;
+      pcVar18 = pcVar18 + 1;
+    } while (bVar7);
+  }
+  else {
+    bVar7 = CBasicString<char>::operator==((CBasicString<char> *)*puVar8,"(");
+    ppVar16 = extraout_EDX_00;
+  }
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,ppVar16,
+             unaff_EDI);
+  pCVar5 = param_1;
+  if (bVar7 == false) {
+    return;
+  }
+  CPersistTraitsSLONG::TransferIn(param_1,this,&local_14);
+  local_c = local_14;
+  uVar20 = CStringParser::ReadAsString(this);
+  ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar20 >> 0x20);
+  if ((CBasicString<char> *)*(undefined4 *)uVar20 == (CBasicString<char> *)0x0) {
+    iVar14 = 2;
+    aVar19 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>)0x1;
+    pcVar17 = ",";
+    pcVar18 = "";
+    do {
+      if (iVar14 == 0) break;
+      iVar14 = iVar14 + -1;
+      aVar19 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>)(*pcVar17 == *pcVar18)
+      ;
+      pcVar17 = pcVar17 + 1;
+      pcVar18 = pcVar18 + 1;
+    } while ((bool)aVar19);
+    param_2._0_1_ = aVar19;
+  }
+  else {
+    aVar19 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>)
+             CBasicString<char>::operator==((CBasicString<char> *)*(undefined4 *)uVar20,",");
+    ppVar16 = extraout_EDX_01;
+    param_2._0_1_ = aVar19;
+  }
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_4,ppVar16,
+             unaff_EDI);
+  if (param_2._0_1_ == (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>)0x0) {
+    return;
+  }
+  CStringParser::SkipWhitespace(this);
+  CCharString::CCharString((CCharString *)&param_2,"(",-1);
+  CStringParser::ReadAsStringUntilString(this,(CCharString *)&local_18);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,
+             extraout_EDX_02,unaff_EDI);
+  puVar8 = (undefined4 *)CStringParser::ReadAsString(this);
+  if ((CBasicString<char> *)*puVar8 == (CBasicString<char> *)0x0) {
+    iVar14 = 2;
+    ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)0x0;
+    bVar7 = true;
+    pcVar17 = "(";
+    pcVar18 = "";
+    do {
+      if (iVar14 == 0) break;
+      iVar14 = iVar14 + -1;
+      bVar7 = *pcVar17 == *pcVar18;
+      pcVar17 = pcVar17 + 1;
+      pcVar18 = pcVar18 + 1;
+    } while (bVar7);
+    param_2 = (CStringParser *)CONCAT31(param_2._1_3_,bVar7);
+  }
+  else {
+    bVar7 = CBasicString<char>::operator==((CBasicString<char> *)*puVar8,"(");
+    param_2 = (CStringParser *)CONCAT31(param_2._1_3_,bVar7);
+    ppVar16 = extraout_EDX_03;
+  }
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_4,ppVar16,
+             unaff_EDI);
+  ppVar16 = extraout_EDX_04;
+  if (param_2._0_1_ == (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>)0x0)
+  goto LAB_006781fb;
+  if (local_18 == (CBasicString<char> *)0x0) {
+    iVar14 = 7;
+    bVar7 = true;
+    pcVar17 = "Linear";
+    pcVar18 = "";
+    do {
+      if (iVar14 == 0) break;
+      iVar14 = iVar14 + -1;
+      bVar7 = *pcVar17 == *pcVar18;
+      pcVar17 = pcVar17 + 1;
+      pcVar18 = pcVar18 + 1;
+    } while (bVar7);
+    if (bVar7) {
+LAB_00677b42:
+      CStringParser::SkipWhitespace(this);
+      CPersistTraits<float>::TransferIn
+                ((CPersistTraits<float> *)&param_3,pCVar5,this,(float *)&param_2);
+      uVar20 = CStringParser::ReadAsString(this);
+      ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar20 >> 0x20);
+      if ((CBasicString<char> *)*(undefined4 *)uVar20 == (CBasicString<char> *)0x0) {
+        iVar14 = 2;
+        bVar7 = true;
+        pcVar17 = ",";
+        pcVar18 = "";
+        do {
+          if (iVar14 == 0) break;
+          iVar14 = iVar14 + -1;
+          bVar7 = *pcVar17 == *pcVar18;
+          pcVar17 = pcVar17 + 1;
+          pcVar18 = pcVar18 + 1;
+        } while (bVar7);
+        param_1 = (CPersistContext *)CONCAT31(param_1._1_3_,bVar7);
+      }
+      else {
+        bVar7 = CBasicString<char>::operator==((CBasicString<char> *)*(undefined4 *)uVar20,",");
+        param_1 = (CPersistContext *)CONCAT31(param_1._1_3_,bVar7);
+        ppVar16 = extraout_EDX_05;
+      }
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_4,ppVar16,
+                 unaff_EDI);
+      ppVar16 = extraout_EDX_06;
+      if (param_1._0_1_ == false) goto LAB_006781fb;
+      CStringParser::SkipWhitespace(this);
+      CPersistTraits<float>::TransferIn
+                ((CPersistTraits<float> *)&param_3,pCVar5,this,(float *)&param_1);
+      EVar4 = DAT_01375550;
+      pCVar9 = operator_new(0x10);
+      if (pCVar9 == (CSBAgents *)0x0) {
+        uVar13 = 0;
+      }
+      else {
+        local_4 = EVar4;
+        fVar3 = (float)(int)EVar4;
+        if ((int)EVar4 < 0) {
+          fVar3 = fVar3 + _DAT_0122dcb4;
+        }
+        uVar13 = CSBAgents::CSBAgents
+                           (pCVar9,(vector<CSteeringAgent_const*,std::allocator<CSteeringAgent_const*>_>
+                                    *)(fVar3 * (float)param_2),
+                            (CSteeringAgent *)((float)param_1 * fVar3));
+      }
+      EVar6 = param_3;
+      *(undefined4 *)(param_3 + local_14 * 4) = uVar13;
+      pCVar9 = operator_new(0x10);
+      if (pCVar9 == (CSBAgents *)0x0) {
+        uVar13 = 0;
+      }
+      else {
+        param_3 = EVar4;
+        fVar3 = (float)(int)EVar4;
+        if ((int)EVar4 < 0) {
+          fVar3 = fVar3 + _DAT_0122dcb4;
+        }
+        uVar13 = CSBAgents::CSBAgents
+                           (pCVar9,(vector<CSteeringAgent_const*,std::allocator<CSteeringAgent_const*>_>
+                                    *)(fVar3 * (float)param_2 * _DAT_0125b6c8),
+                            (CSteeringAgent *)((float)param_1 * fVar3 * _DAT_0125b6c8));
+      }
+      *(undefined4 *)(EVar6 + 0x13c + local_c * 4) = uVar13;
+      uVar20 = CStringParser::ReadAsString(this);
+      ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar20 >> 0x20);
+      this_00 = (CBasicString<char> *)*(int *)uVar20;
+      if (this_00 == (CBasicString<char> *)0x0) {
+        iVar14 = 2;
+        bVar7 = true;
+        pcVar17 = ")";
+        pcVar18 = "";
+        do {
+          if (iVar14 == 0) break;
+          iVar14 = iVar14 + -1;
+          bVar7 = *pcVar17 == *pcVar18;
+          pcVar17 = pcVar17 + 1;
+          pcVar18 = pcVar18 + 1;
+        } while (bVar7);
+      }
+      else {
+LAB_00677eaf:
+        bVar7 = CBasicString<char>::operator==(this_00,")");
+        ppVar16 = extraout_EDX_14;
+      }
+LAB_00677ebb:
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_3,ppVar16,
+                 unaff_EDI);
+      if (bVar7 == false) {
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_18,
+                   extraout_EDX_15,unaff_EDI);
+        return;
+      }
+      goto LAB_0067801d;
+    }
+    iVar14 = 0x12;
+    bVar7 = true;
+    pcVar17 = "PeriodicFrequency";
+    pcVar18 = "";
+    do {
+      if (iVar14 == 0) break;
+      iVar14 = iVar14 + -1;
+      bVar7 = *pcVar17 == *pcVar18;
+      pcVar17 = pcVar17 + 1;
+      pcVar18 = pcVar18 + 1;
+    } while (bVar7);
+    if (bVar7) {
+LAB_00677caa:
+      CStringParser::SkipWhitespace(this);
+      CPersistTraits<float>::TransferIn
+                ((CPersistTraits<float> *)&param_3,pCVar5,this,(float *)&local_10);
+      puVar8 = (undefined4 *)CStringParser::ReadAsString(this);
+      if ((CBasicString<char> *)*puVar8 == (CBasicString<char> *)0x0) {
+        iVar14 = 2;
+        ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)0x0;
+        bVar7 = true;
+        pcVar17 = ",";
+        pcVar18 = "";
+        do {
+          if (iVar14 == 0) break;
+          iVar14 = iVar14 + -1;
+          bVar7 = *pcVar17 == *pcVar18;
+          pcVar17 = pcVar17 + 1;
+          pcVar18 = pcVar18 + 1;
+        } while (bVar7);
+        param_1 = (CPersistContext *)CONCAT31(param_1._1_3_,bVar7);
+      }
+      else {
+        bVar7 = CBasicString<char>::operator==((CBasicString<char> *)*puVar8,",");
+        param_1 = (CPersistContext *)CONCAT31(param_1._1_3_,bVar7);
+        ppVar16 = extraout_EDX_07;
+      }
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,ppVar16,
+                 unaff_EDI);
+      ppVar16 = extraout_EDX_08;
+      if (param_1._0_1_ == false) goto LAB_006781fb;
+      CStringParser::SkipWhitespace(this);
+      CPersistTraits<float>::TransferIn
+                ((CPersistTraits<float> *)&param_3,pCVar5,this,(float *)&local_8);
+      puVar8 = (undefined4 *)CStringParser::ReadAsString(this);
+      if ((CBasicString<char> *)*puVar8 == (CBasicString<char> *)0x0) {
+        iVar14 = 2;
+        ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)0x0;
+        bVar7 = true;
+        pcVar17 = ",";
+        pcVar18 = "";
+        do {
+          if (iVar14 == 0) break;
+          iVar14 = iVar14 + -1;
+          bVar7 = *pcVar17 == *pcVar18;
+          pcVar17 = pcVar17 + 1;
+          pcVar18 = pcVar18 + 1;
+        } while (bVar7);
+        param_1 = (CPersistContext *)CONCAT31(param_1._1_3_,bVar7);
+      }
+      else {
+        bVar7 = CBasicString<char>::operator==((CBasicString<char> *)*puVar8,",");
+        param_1 = (CPersistContext *)CONCAT31(param_1._1_3_,bVar7);
+        ppVar16 = extraout_EDX_09;
+      }
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,ppVar16,
+                 unaff_EDI);
+      ppVar16 = extraout_EDX_10;
+      if (param_1._0_1_ == false) goto LAB_006781fb;
+      CStringParser::SkipWhitespace(this);
+      CPersistTraits<float>::TransferIn
+                ((CPersistTraits<float> *)&param_3,pCVar5,this,(float *)&param_2);
+      puVar8 = (undefined4 *)CStringParser::ReadAsString(this);
+      if ((CBasicString<char> *)*puVar8 == (CBasicString<char> *)0x0) {
+        iVar14 = 2;
+        ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)0x0;
+        bVar7 = true;
+        pcVar17 = ",";
+        pcVar18 = "";
+        do {
+          if (iVar14 == 0) break;
+          iVar14 = iVar14 + -1;
+          bVar7 = *pcVar17 == *pcVar18;
+          pcVar17 = pcVar17 + 1;
+          pcVar18 = pcVar18 + 1;
+        } while (bVar7);
+        param_1 = (CPersistContext *)CONCAT31(param_1._1_3_,bVar7);
+      }
+      else {
+        bVar7 = CBasicString<char>::operator==((CBasicString<char> *)*puVar8,",");
+        param_1 = (CPersistContext *)CONCAT31(param_1._1_3_,bVar7);
+        ppVar16 = extraout_EDX_11;
+      }
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_4,ppVar16,
+                 unaff_EDI);
+      ppVar16 = extraout_EDX_12;
+      if (param_1._0_1_ == false) goto LAB_006781fb;
+      CStringParser::SkipWhitespace(this);
+      CPersistTraits<float>::TransferIn
+                ((CPersistTraits<float> *)&param_3,pCVar5,this,(float *)&param_1);
+      pCVar10 = operator_new(0x20);
+      if (pCVar10 == (CEngineCamera *)0x0) {
+        uVar13 = 0;
+      }
+      else {
+        CEngineCamera::ConsoleSetViewPort(pCVar10,local_10);
+        uVar13 = extraout_EAX;
+      }
+      EVar4 = param_3;
+      *(undefined4 *)(param_3 + local_14 * 4) = uVar13;
+      pCVar10 = operator_new(0x20);
+      if (pCVar10 == (CEngineCamera *)0x0) {
+        uVar13 = 0;
+      }
+      else {
+        CEngineCamera::ConsoleSetViewPort(pCVar10,extraout_EDX_13);
+        uVar13 = extraout_EAX_00;
+      }
+      *(undefined4 *)(EVar4 + 0x13c + local_c * 4) = uVar13;
+      piVar11 = (int *)CStringParser::ReadAsString(this);
+      this_00 = (CBasicString<char> *)*piVar11;
+      if (this_00 != (CBasicString<char> *)0x0) goto LAB_00677eaf;
+      iVar14 = 2;
+      ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)0x0;
+      bVar7 = true;
+      pcVar17 = ")";
+      pcVar18 = "";
+      do {
+        if (iVar14 == 0) break;
+        iVar14 = iVar14 + -1;
+        bVar7 = *pcVar17 == *pcVar18;
+        pcVar17 = pcVar17 + 1;
+        pcVar18 = pcVar18 + 1;
+      } while (bVar7);
+      goto LAB_00677ebb;
+    }
+    iVar14 = 0x10;
+    bVar7 = true;
+    pcVar17 = "ControlledCount";
+    pcVar18 = "";
+    do {
+      if (iVar14 == 0) break;
+      iVar14 = iVar14 + -1;
+      bVar7 = *pcVar17 == *pcVar18;
+      pcVar17 = pcVar17 + 1;
+      pcVar18 = pcVar18 + 1;
+    } while (bVar7);
+    if (!bVar7) goto LAB_0067801d;
+LAB_00677ef3:
+    CStringParser::SkipWhitespace(this);
+    CPersistTraits<EInputKey>::TransferIn
+              ((CPersistTraits<EInputKey> *)&param_3,pCVar5,this,&local_4);
+    uVar20 = CStringParser::ReadAsString(this);
+    ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar20 >> 0x20);
+    if ((CBasicString<char> *)*(undefined4 *)uVar20 == (CBasicString<char> *)0x0) {
+      iVar14 = 2;
+      bVar7 = true;
+      pcVar17 = ",";
+      pcVar18 = "";
+      do {
+        if (iVar14 == 0) break;
+        iVar14 = iVar14 + -1;
+        bVar7 = *pcVar17 == *pcVar18;
+        pcVar17 = pcVar17 + 1;
+        pcVar18 = pcVar18 + 1;
+      } while (bVar7);
+      param_2 = (CStringParser *)CONCAT31(param_2._1_3_,bVar7);
+    }
+    else {
+      bVar7 = CBasicString<char>::operator==((CBasicString<char> *)*(undefined4 *)uVar20,",");
+      param_2 = (CStringParser *)CONCAT31(param_2._1_3_,bVar7);
+      ppVar16 = extraout_EDX_16;
+    }
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_10,ppVar16,
+               unaff_EDI);
+    ppVar16 = extraout_EDX_17;
+    if (param_2._0_1_ == (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>)0x0)
+    goto LAB_006781fb;
+    CStringParser::SkipWhitespace(this);
+    CPersistTraits<float>::TransferIn
+              ((CPersistTraits<float> *)&param_3,pCVar5,this,(float *)&local_10);
+    uVar20 = CStringParser::ReadAsString(this);
+    ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar20 >> 0x20);
+    if ((CBasicString<char> *)*(undefined4 *)uVar20 == (CBasicString<char> *)0x0) {
+      iVar14 = 2;
+      bVar7 = true;
+      pcVar17 = ",";
+      pcVar18 = "";
+      do {
+        if (iVar14 == 0) break;
+        iVar14 = iVar14 + -1;
+        bVar7 = *pcVar17 == *pcVar18;
+        pcVar17 = pcVar17 + 1;
+        pcVar18 = pcVar18 + 1;
+      } while (bVar7);
+    }
+    else {
+      bVar7 = CBasicString<char>::operator==((CBasicString<char> *)*(undefined4 *)uVar20,",");
+      ppVar16 = extraout_EDX_18;
+    }
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,ppVar16,
+               unaff_EDI);
+    ppVar16 = extraout_EDX_19;
+    if (bVar7 == false) goto LAB_006781fb;
+    CStringParser::SkipWhitespace(this);
+    CPersistTraits<float>::TransferIn
+              ((CPersistTraits<float> *)&param_3,param_1,this,(float *)&param_2);
+    CStringParser::ReadAsString(this);
+    if (local_8 != (CBasicString<char> *)0x0) {
+      bVar7 = CBasicString<char>::operator==(local_8,")");
+      if (!bVar7) {
+        bVar7 = CBasicString<char>::operator==(local_8,",");
+        ppVar16 = extraout_EDX_21;
+        if (bVar7) goto LAB_00678111;
+        goto LAB_00678014;
+      }
+LAB_0067806d:
+      pCVar12 = operator_new(0x2c);
+      EVar4 = local_4;
+      if (pCVar12 == (CReactionFrequencyTraits_ControlledCount *)0x0) {
+        uVar13 = 0;
+      }
+      else {
+        uVar13 = CReactionFrequencyTraits_ControlledCount::CReactionFrequencyTraits_ControlledCount
+                           (pCVar12,local_4,(float)local_10,(float)param_2,true);
+      }
+      EVar6 = param_3;
+      *(undefined4 *)(param_3 + local_14 * 4) = uVar13;
+      pCVar12 = operator_new(0x2c);
+      if (pCVar12 == (CReactionFrequencyTraits_ControlledCount *)0x0) {
+        *(undefined4 *)(EVar6 + 0x13c + local_c * 4) = 0;
+        ppVar16 = extraout_EDX_20;
+      }
+      else {
+        uVar20 = CReactionFrequencyTraits_ControlledCount::CReactionFrequencyTraits_ControlledCount
+                           (pCVar12,EVar4 * 5,(float)local_10 * _DAT_0125b6c8,
+                            (float)param_2 * _DAT_0125b6c8,true);
+        ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar20 >> 0x20);
+        *(int *)(EVar6 + 0x13c + local_c * 4) = (int)uVar20;
+      }
+LAB_00678014:
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_8,ppVar16,
+                 unaff_EDI);
+      goto LAB_0067801d;
+    }
+    iVar14 = 2;
+    bVar7 = true;
+    pcVar17 = ")";
+    pcVar18 = "";
+    do {
+      if (iVar14 == 0) break;
+      iVar14 = iVar14 + -1;
+      bVar7 = *pcVar17 == *pcVar18;
+      pcVar17 = pcVar17 + 1;
+      pcVar18 = pcVar18 + 1;
+    } while (bVar7);
+    if (bVar7) goto LAB_0067806d;
+    iVar14 = 2;
+    ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)0x0;
+    bVar7 = true;
+    pcVar17 = ",";
+    pcVar18 = "";
+    do {
+      if (iVar14 == 0) break;
+      iVar14 = iVar14 + -1;
+      bVar7 = *pcVar17 == *pcVar18;
+      pcVar17 = pcVar17 + 1;
+      pcVar18 = pcVar18 + 1;
+    } while (bVar7);
+    if (!bVar7) goto LAB_00678014;
+LAB_00678111:
+    CStringParser::SkipWhitespace(this);
+    CPersistTraits<bool>::TransferIn((CPersistTraits<bool> *)&param_3,param_1,this,(bool *)&param_1)
+    ;
+    pCVar12 = operator_new(0x2c);
+    EVar4 = local_4;
+    bVar7 = SUB41(param_1,0);
+    if (pCVar12 == (CReactionFrequencyTraits_ControlledCount *)0x0) {
+      uVar13 = 0;
+    }
+    else {
+      uVar13 = CReactionFrequencyTraits_ControlledCount::CReactionFrequencyTraits_ControlledCount
+                         (pCVar12,local_4,(float)local_10,(float)param_2,bVar7);
+    }
+    EVar6 = param_3;
+    *(undefined4 *)(param_3 + local_14 * 4) = uVar13;
+    pCVar12 = operator_new(0x2c);
+    if (pCVar12 == (CReactionFrequencyTraits_ControlledCount *)0x0) {
+      uVar13 = 0;
+    }
+    else {
+      uVar13 = CReactionFrequencyTraits_ControlledCount::CReactionFrequencyTraits_ControlledCount
+                         (pCVar12,EVar4 * 5,(float)local_10 * _DAT_0125b6c8,
+                          (float)param_2 * _DAT_0125b6c8,bVar7);
+    }
+    *(undefined4 *)(EVar6 + 0x13c + local_c * 4) = uVar13;
+    puVar8 = (undefined4 *)CStringParser::ReadAsString(this);
+    if ((CBasicString<char> *)*puVar8 == (CBasicString<char> *)0x0) {
+      iVar14 = 2;
+      ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)0x0;
+      bVar7 = true;
+      pcVar17 = ")";
+      pcVar18 = "";
+      do {
+        if (iVar14 == 0) break;
+        iVar14 = iVar14 + -1;
+        bVar7 = *pcVar17 == *pcVar18;
+        pcVar17 = pcVar17 + 1;
+        pcVar18 = pcVar18 + 1;
+      } while (bVar7);
+    }
+    else {
+      bVar7 = CBasicString<char>::operator==((CBasicString<char> *)*puVar8,")");
+      ppVar16 = extraout_EDX_22;
+    }
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_3,ppVar16,
+               unaff_EDI);
+    ppVar16 = extraout_EDX_23;
+    if (bVar7 != false) goto LAB_00678014;
+    paVar15 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_8;
+  }
+  else {
+    bVar7 = CBasicString<char>::operator==(local_18,"Linear");
+    if (bVar7) goto LAB_00677b42;
+    bVar7 = CBasicString<char>::operator==(local_18,"PeriodicFrequency");
+    if (bVar7) goto LAB_00677caa;
+    bVar7 = CBasicString<char>::operator==(local_18,"ControlledCount");
+    if (bVar7) goto LAB_00677ef3;
+LAB_0067801d:
+    CStringParser::SkipWhitespace(this);
+    puVar8 = (undefined4 *)CStringParser::ReadAsString(this);
+    if ((CBasicString<char> *)*puVar8 == (CBasicString<char> *)0x0) {
+      iVar14 = 2;
+      ppVar16 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)0x0;
+      pcVar17 = ")";
+      pcVar18 = "";
+      do {
+        if (iVar14 == 0) break;
+        iVar14 = iVar14 + -1;
+        cVar2 = *pcVar18;
+        cVar1 = *pcVar17;
+        pcVar17 = pcVar17 + 1;
+        pcVar18 = pcVar18 + 1;
+      } while (cVar1 == cVar2);
+      paVar15 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_3;
+    }
+    else {
+      CBasicString<char>::operator==((CBasicString<char> *)*puVar8,")");
+      paVar15 = (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_3;
+      ppVar16 = extraout_EDX_25;
+    }
+  }
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            (paVar15,ppVar16,unaff_EDI);
+  ppVar16 = extraout_EDX_24;
+LAB_006781fb:
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_18,ppVar16,
+             unaff_EDI);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067aeb0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0067aeb0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067af60 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0067af60(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067afd0 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0067afd0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067b040 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0067b040(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067b570 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0067b570(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067b5f0 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_0067b5f0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x18);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067b630 66 0
+@@CALLERS 
+@@CALLEES free, BuildTreeArray
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0067b630(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067b680 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_0067b680(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x18);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067b6c0 66 0
+@@CALLERS 
+@@CALLEES free, BuildTreeArray
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0067b6c0(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067b710 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_0067b710(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x18);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067b750 66 0
+@@CALLERS 
+@@CALLEES free, BuildTreeArray
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0067b750(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067bc70 30 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0067bc70(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067bd30 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_0067bd30(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x18);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067bd70 66 0
+@@CALLERS 
+@@CALLEES free, BuildTreeArray
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0067bd70(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067bdc0 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_0067bdc0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x18);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067be00 66 0
+@@CALLERS 
+@@CALLEES free, BuildTreeArray
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0067be00(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067be50 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_0067be50(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x18);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067be90 66 0
+@@CALLERS 
+@@CALLEES free, BuildTreeArray
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0067be90(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0067ce50 238 0
+@@CALLERS 
+@@CALLEES std::vector<CConversation>::operator_assign, CTCCarryable_CopyAssign, operator=, LTextBinTree::operator_assign_alt, std::vector::operator=, CTCCarryable::operator_assign, LTextBinTree::operator_assign_clone, LTextBinTree::operator_assign, std::list::merge
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_0067ce50(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  int iVar1;
+  CThingBuildingDef *pCVar2;
+  CThingBuildingDef *pCVar3;
+  
+  CThingBuildingDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x25) = *(undefined4 *)(param_2 + 0x25);
+  std__vector__operator_(param_2 + 0x29);
+  param_1[0x36] = param_2[0x36];
+  std__vector<CConversation>__operator_assign(param_2 + 0x3c);
+  LTextBinTree__operator_assign(param_2 + 0x48);
+  LTextBinTree__operator_assign_clone(param_2 + 0x54);
+  LTextBinTree__operator_assign_alt(param_2 + 0x60);
+  CTCCarryable__operator_assign(param_2 + 0x6c);
+  CTCCarryable_CopyAssign(param_2 + 0x78);
+  CTCCarryable_CopyAssign(param_2 + 0x84);
+  CTCCarryable_CopyAssign(param_2 + 0x90);
+  CTCCarryable_CopyAssign(param_2 + 0x9c);
+  std__list__merge(param_2 + 0xa8);
+  pCVar2 = param_2 + 0xac;
+  pCVar3 = param_1 + 0xac;
+  for (iVar1 = 0x9e; iVar1 != 0; iVar1 = iVar1 + -1) {
+    *(undefined4 *)pCVar3 = *(undefined4 *)pCVar2;
+    pCVar2 = pCVar2 + 4;
+    pCVar3 = pCVar3 + 4;
+  }
+  *(undefined4 *)(param_1 + 0x324) = *(undefined4 *)(param_2 + 0x324);
+  *(undefined4 *)(param_1 + 0x328) = *(undefined4 *)(param_2 + 0x328);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006811c0 96 0
+@@CALLERS 
+@@CALLEES std::vector_insert_pairs
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_006811c0(int param_1,undefined4 *param_2,undefined4 *param_3)
+
+{
+  undefined4 *puVar1;
+  undefined4 local_8;
+  undefined4 local_4;
+  
+  local_4 = *param_3;
+  local_8 = *param_2;
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  if (puVar1 != *(undefined4 **)(param_1 + 8)) {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = local_8;
+      puVar1[1] = local_4;
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 8;
+    *(undefined1 *)(param_1 + 0xd) = 1;
+    return;
+  }
+  std__vector_insert_pairs(puVar1,&local_8,&param_2,1,1);
+  *(undefined1 *)(param_1 + 0xd) = 1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00681980 65 0
+@@CALLERS 
+@@CALLEES GetDisplayEngine, GetToleranceToBeingHit
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 __fastcall FUN_00681980(CViewBase *param_1)
+
+{
+  CThing *pCVar1;
+  CDisplayEngine *pCVar2;
+  float10 fVar3;
+  float fVar4;
+  
+  if (_DAT_0122dedc <= *(float *)(param_1 + 0x14)) {
+    return (float10)*(float *)(param_1 + 0x14) - (float10)*(float *)(param_1 + 0x10);
+  }
+  pCVar1 = *(CThing **)(param_1 + 4);
+  pCVar2 = NDisplayView::CViewBase::GetDisplayEngine(param_1);
+  fVar4 = COpinionReactionManager::GetToleranceToBeingHit
+                    (*(COpinionReactionManager **)(pCVar2 + 0x74),pCVar1);
+  fVar3 = (float10)fVar4;
+  if (*(int *)(param_1 + 0x20) != 0) {
+    fVar3 = fVar3 + (float10)*(float *)(*(int *)(param_1 + 0x20) + 0x50);
+  }
+  return fVar3 - (float10)*(float *)(param_1 + 0x10);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00684610 2802 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, ReadAsString, CCharString_OperatorPlus_API, operator_char_const*, Transfer<signed_char>, CCharString, CBase, CParticleMorphs_TransferEntry, CCharString::AppendData, operator+=, GFIntToCharString_API, Transfer<CIntelligentPointer<CThing>_>, SortTreeRecursively, Transfer<CCharString>, CStringParser, malloc, operator==, free, ReadAsInteger, CCharString::AppendCString
+@@STRINGS InteractedFlag	GreetedFlag	LastOpinionReactionFrame	NumberOfTimesHit	ToleranceToBeingHitOverride	FrameToDecayNumberOfTimesHit	ForcedAttitude	HeroOpinionEnemy	OpinionValues	PendingDeedsList	LastFrameAppliedDeedEffect[	KnownDeedsLists	TransientOffsets	AttitudeMask	ReactionMask	DeedMask
+@@DECOMP
+
+void __thiscall
+FUN_00684610(int param_1,CPersistContext *param_2,CPersistContext *param_3,undefined4 *param_4)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined4 uVar3;
+  CCharString *pCVar4;
+  char *pcVar5;
+  undefined4 *puVar6;
+  int *piVar7;
+  long lVar8;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_02;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_03;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_04;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_05;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_06;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_07;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_08;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_09;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_10;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_11;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_12;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_13;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_14;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_15;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_16;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_17;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_18;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_19;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_20;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_21;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_22;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_23;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_24;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_25;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_26;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_27;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_28;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_29;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_30;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_31;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_32;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_33;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_34;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar9;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_35;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_36;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_37;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_38;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_39;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_40;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_41;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_42;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_43;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_44;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_45;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_46;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_47;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_48;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_49;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_50;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_51;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_52;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_53;
+  CPersistContext *this;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_ESI;
+  int iVar10;
+  int *piVar11;
+  char *unaff_EDI;
+  char *pcVar12;
+  bool bVar13;
+  undefined8 uVar14;
+  undefined1 *puVar15;
+  long lVar16;
+  char local_69;
+  undefined4 local_68;
+  uint uStack_64;
+  int iStack_60;
+  int iStack_5c;
+  int iStack_58;
+  undefined4 *puStack_54;
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> aaStack_50 [4];
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> aaStack_4c [4];
+  undefined4 uStack_48;
+  undefined4 uStack_44;
+  int iStack_40;
+  int iStack_3c;
+  int iStack_38;
+  int iStack_34;
+  int iStack_30;
+  int iStack_2c;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppStack_28;
+  undefined4 uStack_24;
+  int iStack_20;
+  undefined4 uStack_1c;
+  undefined4 uStack_18;
+  undefined4 uStack_14;
+  int *apiStack_10 [3];
+  int iStack_4;
+  
+  local_68 = 0;
+  local_69 = '\0';
+  CPersistContext::Transfer<signed_char>
+            (param_2,"InteractedFlag",(char *)(param_1 + 0x340),&local_69);
+  local_69 = '\0';
+  CPersistContext::Transfer<signed_char>(param_2,"GreetedFlag",(char *)(param_1 + 0x341),&local_69);
+  puStack_54 = (undefined4 *)0x0;
+  CPersistContext::Transfer<signed_char>
+            (param_2,"LastOpinionReactionFrame",(char *)(param_1 + 0xc),(char *)&puStack_54);
+  puStack_54 = (undefined4 *)0x0;
+  CPersistContext::Transfer<signed_char>
+            (param_2,"NumberOfTimesHit",(char *)(param_1 + 0x10),(char *)&puStack_54);
+  puStack_54 = (undefined4 *)0xbf800000;
+  CPersistContext::Transfer<signed_char>
+            (param_2,"ToleranceToBeingHitOverride",(char *)(param_1 + 0x14),(char *)&puStack_54);
+  puStack_54 = (undefined4 *)0x7fffffff;
+  CPersistContext::Transfer<signed_char>
+            (param_2,"FrameToDecayNumberOfTimesHit",(char *)(param_1 + 0x18),(char *)&puStack_54);
+  puStack_54 = (undefined4 *)&DAT_00000012;
+  CPersistContext::Transfer<signed_char>
+            (param_2,"ForcedAttitude",(char *)(param_1 + 0x33c),(char *)&puStack_54);
+  local_69 = '\0';
+  CPersistContext::Transfer<signed_char>
+            (param_2,"HeroOpinionEnemy",(char *)(param_1 + 0x342),&local_69);
+  if (param_3._0_1_ != (allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>)0x0) {
+    CPersistContext::Transfer<signed_char>
+              (param_2,"OpinionValues",(char *)(param_1 + 0x48),unaff_EDI);
+  }
+  if ((*(int *)(param_2 + 0x18) == 1) || (*(int *)(param_2 + 0x18) == 3)) {
+    if (param_4._0_1_ == (CCharString)0x0) {
+      return;
+    }
+    for (puVar6 = (undefined4 *)**(undefined4 **)(param_1 + 0x54);
+        puVar6 != *(undefined4 **)(param_1 + 0x54); puVar6 = (undefined4 *)*puVar6) {
+    }
+    GFIntToCharString_API();
+    piVar7 = (int *)**(int **)(param_1 + 0x54);
+    if (piVar7 != *(int **)(param_1 + 0x54)) {
+      do {
+        uVar3 = GFIntToCharString_API();
+        pCVar4 = (CCharString *)CCharString_OperatorPlus_API(uVar3);
+        CCharString::operator+=((CCharString *)&iStack_60,pCVar4);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  (aaStack_50,extraout_EDX,unaff_ESI);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&puStack_54,
+                   extraout_EDX_00,unaff_ESI);
+        piVar7 = (int *)*piVar7;
+      } while (piVar7 != (int *)*(int *)(param_1 + 0x54));
+    }
+    CCharString::CCharString((CCharString *)&puStack_54);
+    CCharString::CCharString((CCharString *)&iStack_58,(CCharString *)&puStack_54);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&puStack_54,
+               extraout_EDX_01,unaff_ESI);
+    CPersistContext::Transfer<CIntelligentPointer<CThing>_>
+              (param_2,"PendingDeedsList",(CIntelligentPointer<CThing> *)&iStack_60,
+               (CIntelligentPointer<class_CThing> *)&iStack_58);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&iStack_58,
+               extraout_EDX_02,unaff_ESI);
+    iVar10 = 0;
+    uStack_64 = 0;
+    pcVar12 = (char *)(param_1 + 0x58);
+    do {
+      puVar15 = &DAT_01235430;
+      uVar3 = GFIntToCharString_API(&DAT_01235430);
+      CCharString_OperatorPlus_API(uVar3);
+      CCharString__AppendCString(puVar15);
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                (aaStack_50,extraout_EDX_03,unaff_ESI);
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&iStack_58,
+                 extraout_EDX_04,unaff_ESI);
+      if (puStack_54 == (undefined4 *)0x0) {
+        pcVar5 = "";
+      }
+      else {
+        pcVar5 = (char *)*puStack_54;
+      }
+      CPersistContext::Transfer<signed_char>(param_2,pcVar5,pcVar12,(char *)&uStack_64);
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&puStack_54,
+                 extraout_EDX_05,unaff_ESI);
+      iVar10 = iVar10 + 1;
+      pcVar12 = pcVar12 + 4;
+    } while (iVar10 < 0x5c);
+    CCharString::CCharString((CCharString *)&param_4,"",-1);
+    iVar10 = 0;
+    piVar7 = (int *)(param_1 + 0x1c8);
+    do {
+      if (*(int **)*piVar7 != (int *)*piVar7) {
+        puVar15 = &DAT_0124c528;
+        uVar3 = GFIntToCharString_API(&DAT_0124c528);
+        CCharString_OperatorPlus_API(uVar3);
+        pCVar4 = (CCharString *)CCharString__AppendCString(puVar15);
+        CCharString::operator+=((CCharString *)&param_4,pCVar4);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  (aaStack_50,extraout_EDX_06,unaff_ESI);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&puStack_54,
+                   extraout_EDX_07,unaff_ESI);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&iStack_58,
+                   extraout_EDX_08,unaff_ESI);
+        for (puVar6 = *(undefined4 **)*piVar7; puVar6 != (undefined4 *)*piVar7;
+            puVar6 = (undefined4 *)*puVar6) {
+        }
+        puVar15 = &DAT_0124c528;
+        GFIntToCharString_API(&DAT_0124c528);
+        pCVar4 = (CCharString *)CCharString__AppendCString(puVar15);
+        CCharString::operator+=((CCharString *)&param_4,pCVar4);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_64,
+                   extraout_EDX_09,unaff_ESI);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  (aaStack_4c,extraout_EDX_10,unaff_ESI);
+        piVar11 = *(int **)*piVar7;
+        if (piVar11 != (int *)*piVar7) {
+          do {
+            uVar3 = GFIntToCharString_API();
+            pCVar4 = (CCharString *)CCharString_OperatorPlus_API(uVar3);
+            CCharString::operator+=((CCharString *)&param_4,pCVar4);
+            std::
+            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                      ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_48,
+                       extraout_EDX_11,unaff_ESI);
+            std::
+            _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                      ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_44,
+                       extraout_EDX_12,unaff_ESI);
+            piVar11 = (int *)*piVar11;
+          } while (piVar11 != (int *)*piVar7);
+        }
+        CCharString::operator+=((CCharString *)&param_4,")");
+      }
+      iVar10 = iVar10 + 1;
+      piVar7 = piVar7 + 1;
+    } while (iVar10 < 0x5c);
+    CCharString::CCharString((CCharString *)&puStack_54);
+    CCharString::CCharString((CCharString *)&iStack_58,(CCharString *)&puStack_54);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&puStack_54,
+               extraout_EDX_13,unaff_ESI);
+    CPersistContext::Transfer<CIntelligentPointer<CThing>_>
+              (param_3,"KnownDeedsLists",(CIntelligentPointer<CThing> *)&param_4,
+               (CIntelligentPointer<class_CThing> *)&iStack_58);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&iStack_58,
+               extraout_EDX_14,unaff_ESI);
+    CCharString::CCharString((CCharString *)&iStack_5c,"TransientOffsets",-1);
+    iStack_40 = 0;
+    for (puVar6 = (undefined4 *)**(undefined4 **)(param_1 + 0x338);
+        puVar6 != *(undefined4 **)(param_1 + 0x338); puVar6 = (undefined4 *)*puVar6) {
+      iStack_40 = iStack_40 + 1;
+    }
+    pcVar12 = CCharString::operator_char_const_((CCharString *)&iStack_5c);
+    this = param_3;
+    uStack_44 = 0;
+    CPersistContext::Transfer<signed_char>(param_3,pcVar12,(char *)&iStack_40,(char *)&uStack_44);
+    piVar7 = (int *)**(int **)(param_1 + 0x338);
+    ppVar9 = extraout_EDX_15;
+    if (piVar7 != *(int **)(param_1 + 0x338)) {
+      iStack_3c = 0;
+      iStack_38 = 0;
+      iStack_34 = 0;
+      iStack_30 = 0;
+      iStack_2c = 0;
+      ppStack_28 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)0x0;
+      do {
+        puVar15 = &DAT_0122d70e;
+        uVar3 = GFIntToCharString_API(&DAT_0122d70e);
+        CCharString__AppendCString(&DAT_0122d70e);
+        CCharString__AppendData(uVar3);
+        CCharString__AppendCString(puVar15);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_44,
+                   extraout_EDX_16,unaff_ESI);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_48,
+                   extraout_EDX_17,unaff_ESI);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  (aaStack_4c,extraout_EDX_18,unaff_ESI);
+        if (param_3 == (CPersistContext *)0x0) {
+          pcVar12 = "";
+        }
+        else {
+          pcVar12 = *(char **)param_3;
+        }
+        CPersistContext::Transfer<signed_char>(this,pcVar12,(char *)(piVar7 + 2),(char *)&iStack_3c)
+        ;
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_3,
+                   extraout_EDX_19,unaff_ESI);
+        piVar7 = (int *)*piVar7;
+        ppVar9 = extraout_EDX_20;
+      } while (piVar7 != (int *)*(int *)(param_1 + 0x338));
+    }
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&iStack_5c,ppVar9,
+               unaff_ESI);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_4,
+               extraout_EDX_21,unaff_ESI);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&iStack_60,
+               extraout_EDX_22,unaff_ESI);
+    goto LAB_00685074;
+  }
+  if (param_4._0_1_ == (CCharString)0x0) {
+    return;
+  }
+  CCharString::CCharString((CCharString *)&iStack_5c,"",-1);
+  CPersistContext::Transfer<CCharString>(param_2,"PendingDeedsList",(CCharString *)&iStack_5c);
+  if ((iStack_5c != 0) && (*(int *)(iStack_5c + 4) != 0)) {
+    lVar16 = 0;
+    pCVar4 = (CCharString *)CCharString::CCharString((CCharString *)&param_4,"",-1);
+    CStringParser::CStringParser
+              ((CStringParser *)&uStack_24,(CCharString *)&iStack_5c,
+               (_func_void_CCharString_ptr *)0x0,pCVar4,lVar16);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_4,
+               extraout_EDX_23,unaff_ESI);
+    puVar6 = (undefined4 *)CStringParser::ReadAsInteger((CStringParser *)&uStack_24);
+    if (0 < (int)puVar6) {
+      do {
+        param_4 = puVar6;
+        CStringParser::ReadAsString((CStringParser *)&uStack_24);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&iStack_40,
+                   extraout_EDX_24,unaff_ESI);
+        lVar16 = CStringParser::ReadAsInteger((CStringParser *)&uStack_24);
+        iVar10 = *(int *)(param_1 + 0x54);
+        piVar7 = malloc(0xc);
+        if (piVar7 + 2 != (int *)0x0) {
+          piVar7[2] = lVar16;
+        }
+        puVar6 = *(undefined4 **)(iVar10 + 4);
+        *piVar7 = iVar10;
+        piVar7[1] = (int)puVar6;
+        *puVar6 = piVar7;
+        *(int **)(iVar10 + 4) = piVar7;
+        param_4 = (undefined4 *)((int)param_4 + -1);
+        puVar6 = param_4;
+      } while (param_4 != (undefined4 *)0x0);
+    }
+    CGuiControlTreePane::SortTreeRecursively
+              ((CGuiControlTreePane *)apiStack_10,
+               (list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *)unaff_ESI);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_14,
+               extraout_EDX_25,unaff_ESI);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_18,
+               extraout_EDX_26,unaff_ESI);
+    NHeroInformationScreens::CBase::CBase((CBase *)&uStack_24);
+  }
+  iVar10 = 0;
+  uStack_48 = 0;
+  pcVar12 = (char *)(param_1 + 0x58);
+  do {
+    puVar15 = &DAT_01235430;
+    uVar3 = GFIntToCharString_API(&DAT_01235430);
+    CCharString_OperatorPlus_API(uVar3);
+    CCharString__AppendCString(puVar15);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&iStack_40,
+               extraout_EDX_27,unaff_ESI);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_44,
+               extraout_EDX_28,unaff_ESI);
+    if (param_4 == (undefined4 *)0x0) {
+      pcVar5 = "";
+    }
+    else {
+      pcVar5 = (char *)*param_4;
+    }
+    CPersistContext::Transfer<signed_char>(param_2,pcVar5,pcVar12,(char *)&uStack_48);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_4,
+               extraout_EDX_29,unaff_ESI);
+    iVar10 = iVar10 + 1;
+    pcVar12 = pcVar12 + 4;
+  } while (iVar10 < 0x5c);
+  CCharString::CCharString((CCharString *)&iStack_60,"",-1);
+  CCharString::CCharString((CCharString *)&param_4);
+  CCharString::CCharString((CCharString *)aaStack_50,(CCharString *)&param_4);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_4,
+             extraout_EDX_30,unaff_ESI);
+  CPersistContext::Transfer<CIntelligentPointer<CThing>_>
+            (param_2,"KnownDeedsLists",(CIntelligentPointer<CThing> *)&iStack_60,
+             (CIntelligentPointer<class_CThing> *)aaStack_50);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            (aaStack_50,extraout_EDX_31,unaff_ESI);
+  ppVar9 = extraout_EDX_32;
+  if ((iStack_60 != 0) && (*(int *)(iStack_60 + 4) != 0)) {
+    lVar16 = 0;
+    pCVar4 = (CCharString *)CCharString::CCharString((CCharString *)&param_4,"",-1);
+    CStringParser::CStringParser
+              ((CStringParser *)&uStack_24,(CCharString *)&iStack_60,
+               (_func_void_CCharString_ptr *)0x0,pCVar4,lVar16);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_4,
+               extraout_EDX_33,unaff_ESI);
+    ppVar9 = extraout_EDX_34;
+    do {
+      if (*(char *)(iStack_4 + iStack_20) == '\0') {
+LAB_00684d84:
+        param_4 = (undefined4 *)((uint)param_4 & 0xffffff00);
+      }
+      else {
+        uStack_64 = uStack_64 | 1;
+        uVar14 = CStringParser::ReadAsString((CStringParser *)&uStack_24);
+        ppVar9 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar14 >> 0x20);
+        if ((CBasicString<char> *)*(undefined4 *)uVar14 == (CBasicString<char> *)0x0) {
+          iVar10 = 2;
+          bVar13 = true;
+          pcVar12 = "(";
+          pcVar5 = "";
+          do {
+            if (iVar10 == 0) break;
+            iVar10 = iVar10 + -1;
+            bVar13 = *pcVar12 == *pcVar5;
+            pcVar12 = pcVar12 + 1;
+            pcVar5 = pcVar5 + 1;
+          } while (bVar13);
+        }
+        else {
+          bVar13 = CBasicString<char>::operator==((CBasicString<char> *)*(undefined4 *)uVar14,"(");
+          ppVar9 = extraout_EDX_40;
+        }
+        if (!bVar13) goto LAB_00684d84;
+        uVar2 = (uint)param_4 >> 8;
+        param_4 = (undefined4 *)CONCAT31((int3)uVar2,1);
+      }
+      if ((uStack_64 & 1) != 0) {
+        uStack_64 = uStack_64 & 0xfffffffe;
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&iStack_40,
+                   ppVar9,unaff_ESI);
+      }
+      if (param_4._0_1_ == (CCharString)0x0) goto LAB_00684e99;
+      lVar16 = CStringParser::ReadAsInteger((CStringParser *)&uStack_24);
+      CStringParser::ReadAsString((CStringParser *)&uStack_24);
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_44,
+                 extraout_EDX_35,unaff_ESI);
+      puVar6 = (undefined4 *)CStringParser::ReadAsInteger((CStringParser *)&uStack_24);
+      CStringParser::ReadAsString((CStringParser *)&uStack_24);
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_48,
+                 extraout_EDX_36,unaff_ESI);
+      if (0 < (int)puVar6) {
+        do {
+          param_4 = puVar6;
+          CStringParser::ReadAsString((CStringParser *)&uStack_24);
+          std::
+          _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                    (aaStack_4c,extraout_EDX_37,unaff_ESI);
+          lVar8 = CStringParser::ReadAsInteger((CStringParser *)&uStack_24);
+          iVar10 = *(int *)(param_1 + 0x1c8 + lVar16 * 4);
+          piVar7 = malloc(0xc);
+          if (piVar7 + 2 != (int *)0x0) {
+            piVar7[2] = lVar8;
+          }
+          puVar6 = *(undefined4 **)(iVar10 + 4);
+          *piVar7 = iVar10;
+          piVar7[1] = (int)puVar6;
+          *puVar6 = piVar7;
+          *(int **)(iVar10 + 4) = piVar7;
+          param_4 = (undefined4 *)((int)param_4 + -1);
+          puVar6 = param_4;
+        } while (param_4 != (undefined4 *)0x0);
+      }
+      CStringParser::ReadAsString((CStringParser *)&uStack_24);
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                (aaStack_50,extraout_EDX_38,unaff_ESI);
+      ppVar9 = extraout_EDX_39;
+      param_2 = param_3;
+    } while( true );
+  }
+  goto LAB_00684ee9;
+LAB_00684e99:
+  piVar7 = (int *)*apiStack_10[0];
+  if ((int *)*apiStack_10[0] != apiStack_10[0]) {
+    do {
+      piVar11 = (int *)*piVar7;
+      free(piVar7);
+      piVar7 = piVar11;
+    } while (piVar11 != apiStack_10[0]);
+  }
+  *apiStack_10[0] = (int)apiStack_10[0];
+  apiStack_10[0][1] = (int)apiStack_10[0];
+  free(apiStack_10[0]);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_14,
+             extraout_EDX_41,unaff_ESI);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_18,
+             extraout_EDX_42,unaff_ESI);
+  NHeroInformationScreens::CBase::CBase((CBase *)&uStack_24);
+  ppVar9 = extraout_EDX_43;
+LAB_00684ee9:
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&iStack_60,ppVar9,
+             unaff_ESI);
+  CCharString::CCharString((CCharString *)&puStack_54,"TransientOffsets",-1);
+  iVar10 = 0;
+  iStack_58 = 0;
+  pcVar12 = CCharString::operator_char_const_((CCharString *)&puStack_54);
+  param_4 = (undefined4 *)0x0;
+  CPersistContext::Transfer<signed_char>(param_2,pcVar12,(char *)&iStack_58,(char *)&param_4);
+  ppVar9 = extraout_EDX_44;
+  if (0 < iStack_58) {
+    uStack_24 = 0;
+    iStack_20 = 0;
+    uStack_1c = 0;
+    uStack_18 = 0;
+    uStack_14 = 0;
+    apiStack_10[0] = (int *)0x0;
+    do {
+      puVar15 = &DAT_0122d70e;
+      iStack_3c = 0;
+      iStack_38 = 0;
+      iStack_34 = 0;
+      iStack_2c = 0;
+      ppStack_28 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)0x0;
+      iStack_30 = 0;
+      uVar3 = GFIntToCharString_API(&DAT_0122d70e);
+      CCharString__AppendCString(&DAT_0122d70e);
+      CCharString__AppendData(uVar3);
+      CCharString__AppendCString(puVar15);
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&iStack_40,
+                 extraout_EDX_45,unaff_ESI);
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_44,
+                 extraout_EDX_46,unaff_ESI);
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&uStack_48,
+                 extraout_EDX_47,unaff_ESI);
+      if (param_4 == (undefined4 *)0x0) {
+        pcVar12 = "";
+      }
+      else {
+        pcVar12 = (char *)*param_4;
+      }
+      CPersistContext::Transfer<signed_char>(param_3,pcVar12,(char *)&iStack_3c,(char *)&uStack_24);
+      iVar1 = *(int *)(param_1 + 0x338);
+      piVar7 = malloc(0x20);
+      ppVar9 = extraout_EDX_48;
+      if (piVar7 + 2 != (int *)0x0) {
+        piVar7[2] = iStack_3c;
+        piVar7[3] = iStack_38;
+        piVar7[4] = iStack_34;
+        piVar7[5] = iStack_30;
+        piVar7[6] = iStack_2c;
+        piVar7[7] = (int)ppStack_28;
+        ppVar9 = ppStack_28;
+      }
+      puVar6 = *(undefined4 **)(iVar1 + 4);
+      piVar7[1] = (int)puVar6;
+      *piVar7 = iVar1;
+      *puVar6 = piVar7;
+      *(int **)(iVar1 + 4) = piVar7;
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_4,ppVar9,
+                 unaff_ESI);
+      iVar10 = iVar10 + 1;
+      ppVar9 = extraout_EDX_49;
+    } while (iVar10 < iStack_58);
+  }
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&puStack_54,ppVar9,
+             unaff_ESI);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&iStack_5c,
+             extraout_EDX_50,unaff_ESI);
+  this = param_3;
+LAB_00685074:
+  CCharString::CCharString((CCharString *)&param_4,"AttitudeMask",-1);
+  CParticleMorphs_TransferEntry(this,&param_4,param_1 + 0x24);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_4,
+             extraout_EDX_51,unaff_ESI);
+  CCharString::CCharString((CCharString *)&param_4,"ReactionMask",-1);
+  CParticleMorphs_TransferEntry(this,&param_4,param_1 + 0x30);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_4,
+             extraout_EDX_52,unaff_ESI);
+  CCharString::CCharString((CCharString *)&param_4,"DeedMask",-1);
+  CParticleMorphs_TransferEntry(this,&param_4,param_1 + 0x3c);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_4,
+             extraout_EDX_53,unaff_ESI);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00685ba0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00685ba0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006864c0 28 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_006864c0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00687480 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00687480(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x60);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00687910 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00687910(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x60);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00696010 66 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, free, CMemoryAllocatorVariableSize::Erase
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00696010(int *param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  void *_Memory;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  undefined8 uVar2;
+  
+  iVar1 = *param_1;
+  uVar2 = CMemoryAllocatorVariableSize__Erase(param_2,iVar1 + 4,iVar1 + 8,iVar1 + 0xc);
+  _Memory = (void *)uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)((int)_Memory + 0x14),
+             (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar2 >> 0x20),unaff_EDI);
+  if (_Memory != (void *)0x0) {
+    free(_Memory);
+  }
+  param_1[1] = param_1[1] + -1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006960a0 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_006960a0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x1c);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006960d0 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_006960d0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x1c);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00696510 66 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, free, CMemoryAllocatorVariableSize::Erase
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00696510(int *param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  void *_Memory;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  undefined8 uVar2;
+  
+  iVar1 = *param_1;
+  uVar2 = CMemoryAllocatorVariableSize__Erase(param_2,iVar1 + 4,iVar1 + 8,iVar1 + 0xc);
+  _Memory = (void *)uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)((int)_Memory + 0x14),
+             (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar2 >> 0x20),unaff_EDI);
+  if (_Memory != (void *)0x0) {
+    free(_Memory);
+  }
+  param_1[1] = param_1[1] + -1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00696590 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00696590(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006965d0 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_006965d0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00696d10 66 0
+@@CALLERS 
+@@CALLEES free, CParticleMorphs_DeleteTree
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00696d10(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    CParticleMorphs_DeleteTree(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00696d60 66 0
+@@CALLERS 
+@@CALLEES free, CSoundPair_DeleteTree
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00696d60(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    CSoundPair_DeleteTree(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00696de0 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00696de0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00696e20 66 0
+@@CALLERS 
+@@CALLEES free, CParticleMorphs_DeleteTree
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00696e20(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    CParticleMorphs_DeleteTree(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00696e70 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00696e70(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00696eb0 66 0
+@@CALLERS 
+@@CALLEES free, CSoundPair_DeleteTree
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00696eb0(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    CSoundPair_DeleteTree(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006977f0 106 0
+@@CALLERS 
+@@CALLEES DrawGetSeaLevel
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 __thiscall FUN_006977f0(int param_1,float *param_2)
+
+{
+  float fVar1;
+  float unaff_ESI;
+  float10 fVar2;
+  float10 fVar3;
+  float10 fVar4;
+  float fVar5;
+  
+  fVar5 = CMap::DrawGetSeaLevel((CMap *)(param_1 + 4),unaff_ESI);
+  fVar1 = *param_2 - *(float *)(param_1 + 4);
+  fVar2 = (float10)param_2[1] - (float10)*(float *)(param_1 + 8);
+  fVar3 = (float10)param_2[2] - (float10)*(float *)(param_1 + 0xc);
+  fVar4 = (float10)fptan((float10)fVar5 * (float10)_DAT_0122f59c * (float10)_DAT_0124f2b8);
+  fVar4 = fVar4 * SQRT((float10)fVar1 * (float10)fVar1 + fVar2 * fVar2 + fVar3 * fVar3);
+  return fVar4 + fVar4;
+}
+
+
+@@ENDFUNC

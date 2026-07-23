@@ -1,0 +1,61 @@
+# IDE and local configuration
+.idea/
+.vscode/
+imgui.ini
+*.user
+*.suo
+
+# Proprietary/local binary inputs and analysis databases
+/debug_build/
+/symbols/
+/ghidra_proj/
+/bsim/
+/unified_build/
+/work/
+/tmp/
+/snapshots/
+/FableTLC_RE_docs.zip
+/refs/*.pdf
+/refs/*.log
+
+# Multi-gigabyte generated PDB XML. Compact symbol/name/layout exports remain tracked.
+/ghidra_out/*_pdb.xml
+/ghidra_out/**/*.log
+/ghidra_out/**/*.pkl
+
+# Generated build products and caches
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.cache/
+**/bin/Debug/
+**/bin/Release/
+**/obj/Debug/
+**/obj/Release/
+**/*.obj
+**/*.exe
+**/*.dll
+**/*.pdb
+**/*.ilk
+**/*.idb
+**/*.dmp
+**/*.tmp
+**/*.pid
+
+# Curated rebuild outputs are reproducible from source.
+/rebuild/build/
+/rebuild/refresh.log
+/rebuild/refresh.state.json
+
+# RE-agent transcripts/state are local and continuously changing; keep source/config/results.
+/lift/logs/
+/lift/reports/*/logs/
+/lift/state/*.log
+/lift/state/*.pid
+/lift/state/*.tmp
+/lift/proofs/build/
+
+# Blender proof products generated from game assets.
+/tools/blender_addon/tests/**/*.blend
+/tools/blender_addon/tests/**/*.blend1
+/tools/blender_addon/tests/proof/*.png

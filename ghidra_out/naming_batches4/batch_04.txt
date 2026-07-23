@@ -1,0 +1,903 @@
+@@@FUNC 004db60e 27 1
+@@CALLERS CCardPositionsDef
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004db60e(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004db674 27 1
+@@CALLERS CTCGraphicAppearanceAnimatedMesh
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004db674(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x34);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004db72d 27 1
+@@CALLERS CTCLightningOrb
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004db72d(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x14);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004db771 22 1
+@@CALLERS CopyBackBufferToTexture_InitSurface1
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004db771(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004db7be 22 1
+@@CALLERS CopyBackBufferToTexture_InitSurface2
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004db7be(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004db7e2 22 1
+@@CALLERS TextureFormat_Handler_01
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004db7e2(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x1c);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004db82f 22 1
+@@CALLERS TextureFormat_Handler_02
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004db82f(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004db8b3 22 1
+@@CALLERS TextureFormat_Handler_03
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004db8b3(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004db8d7 22 1
+@@CALLERS TextureFormat_Handler_04
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004db8d7(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x28);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004db8fb 22 1
+@@CALLERS TextureFormat_Handler_05
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004db8fb(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x20);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004db948 22 1
+@@CALLERS TextureFormat_Handler_06
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004db948(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004db97b 22 1
+@@CALLERS TextureFormat_Handler_07
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004db97b(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x40);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004db9c8 22 1
+@@CALLERS TextureFormat_Handler_08
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004db9c8(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dba15 22 1
+@@CALLERS TextureFormat_Handler_09
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004dba15(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x1c);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dba62 22 1
+@@CALLERS TextureFormat_Handler_10
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004dba62(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dbaaf 22 1
+@@CALLERS TextureFormat_Handler_11
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004dbaaf(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dbafc 22 1
+@@CALLERS TextureFormat_Handler_12
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004dbafc(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dbb49 22 1
+@@CALLERS TextureFormat_Handler_13
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004dbb49(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dbb6d 22 1
+@@CALLERS TextureFormat_Handler_14
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004dbb6d(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x30);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dbbba 22 1
+@@CALLERS TextureFormat_Handler_15
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004dbbba(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dbc16 22 1
+@@CALLERS TextureFormat_Handler_16
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004dbc16(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dbc63 22 1
+@@CALLERS TextureFormat_Handler_17
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004dbc63(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dbcb0 22 1
+@@CALLERS TextureFormat_Handler_18
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004dbcb0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004dbcfd 22 1
+@@CALLERS TextureFormat_Handler_19
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004dbcfd(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e2f56 241 1
+@@CALLERS 
+@@CALLEES FUN_004e3047, OnReadFinished
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_004e2f56(CActiveFile *param_1,CActiveFile *param_2)
+
+{
+  undefined4 *puVar1;
+  int iVar2;
+  uint uVar3;
+  undefined4 *puVar4;
+  undefined4 *puVar5;
+  uint uVar6;
+  undefined4 *local_8;
+  
+  if (param_2 != param_1) {
+    iVar2 = *(int *)(param_2 + 4);
+    puVar4 = *(undefined4 **)param_2;
+    local_8 = *(undefined4 **)param_1;
+    uVar6 = iVar2 - (int)puVar4 >> 4;
+    if ((uint)(*(int *)(param_1 + 8) - (int)local_8 >> 4) < uVar6) {
+      iVar2 = FUN_004e3047(uVar6,puVar4,iVar2);
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar2;
+      *(uint *)(param_1 + 8) = uVar6 * 0x10 + iVar2;
+    }
+    else {
+      uVar3 = *(int *)(param_1 + 4) - (int)local_8 >> 4;
+      if (uVar3 < uVar6) {
+        iVar2 = (int)(uVar3 << 4) >> 4;
+        if (0 < iVar2) {
+          do {
+            *local_8 = *puVar4;
+            local_8[1] = puVar4[1];
+            puVar1 = puVar4 + 3;
+            local_8[2] = puVar4[2];
+            puVar4 = puVar4 + 4;
+            iVar2 = iVar2 + -1;
+            local_8[3] = *puVar1;
+            local_8 = local_8 + 4;
+          } while (iVar2 != 0);
+        }
+        puVar4 = *(undefined4 **)(param_1 + 4);
+        puVar1 = *(undefined4 **)(param_2 + 4);
+        for (puVar5 = (undefined4 *)(((int)puVar4 - *(int *)param_1 >> 4) * 0x10 + *(int *)param_2);
+            puVar5 != puVar1; puVar5 = puVar5 + 4) {
+          if (puVar4 != (undefined4 *)0x0) {
+            *puVar4 = *puVar5;
+            puVar4[1] = puVar5[1];
+            puVar4[2] = puVar5[2];
+            puVar4[3] = puVar5[3];
+          }
+          puVar4 = puVar4 + 4;
+        }
+      }
+      else {
+        iVar2 = iVar2 - (int)puVar4 >> 4;
+        if (0 < iVar2) {
+          do {
+            *local_8 = *puVar4;
+            local_8[1] = puVar4[1];
+            puVar5 = local_8 + 3;
+            puVar1 = puVar4 + 3;
+            local_8[2] = puVar4[2];
+            puVar4 = puVar4 + 4;
+            local_8 = local_8 + 4;
+            iVar2 = iVar2 + -1;
+            *puVar5 = *puVar1;
+          } while (iVar2 != 0);
+        }
+      }
+    }
+    *(uint *)(param_1 + 4) = uVar6 * 0x10 + *(int *)param_1;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e3047 65 1
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e3047(int param_1,undefined4 *param_2,undefined4 *param_3)
+
+{
+  undefined4 *puVar1;
+  void *pvVar2;
+  int iVar3;
+  
+  if (param_1 == 0) {
+    pvVar2 = (void *)0x0;
+  }
+  else {
+    pvVar2 = malloc(param_1 << 4);
+  }
+  if (param_2 != param_3) {
+    iVar3 = (int)pvVar2 - (int)param_2;
+    do {
+      puVar1 = (undefined4 *)(iVar3 + (int)param_2);
+      if (puVar1 != (undefined4 *)0x0) {
+        *puVar1 = *param_2;
+        puVar1[1] = param_2[1];
+        puVar1[2] = param_2[2];
+        puVar1[3] = param_2[3];
+      }
+      param_2 = param_2 + 4;
+    } while (param_2 != param_3);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004f9450 52 1
+@@CALLERS std_vector_copy_pairs
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_004f9450(undefined4 *param_1,int param_2)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = (void *)0x0;
+  *param_1 = 0;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  if (param_2 != 0) {
+    pvVar1 = malloc(param_2 << 3);
+  }
+  *param_1 = pvVar1;
+  param_1[1] = pvVar1;
+  param_1[2] = (void *)((int)pvVar1 + param_2 * 8);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004fa22c 75 1
+@@CALLERS Vector_Insert_ElementWithDestroy
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __fastcall FUN_004fa22c(int param_1,int param_2,CParentDefClassBase *param_3)
+
+{
+  int iVar1;
+  CParentDefClassBase *this;
+  undefined4 *puVar2;
+  
+  iVar1 = (param_2 - param_1) / 0x44;
+  this = param_3;
+  if (0 < iVar1) {
+    puVar2 = (undefined4 *)(param_1 + 0x40);
+    param_1 = (int)param_3 - param_1;
+    param_3 = (CParentDefClassBase *)iVar1;
+    do {
+      CParentDefClassBase::operator=(this,(CParentDefClassBase *)(puVar2 + -0x10));
+      *(undefined4 *)(this + 0x3c) = puVar2[-1];
+      *(undefined4 *)(param_1 + (int)puVar2) = *puVar2;
+      this = this + 0x44;
+      puVar2 = puVar2 + 0x11;
+      param_3 = (CParentDefClassBase *)((int)param_3 + -1);
+    } while (param_3 != (CParentDefClassBase *)0x0);
+  }
+  return this;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0050fa40 56 1
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_0050fa40(undefined4 *param_1,int param_2)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = (void *)0x0;
+  *param_1 = 0;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  if (param_2 != 0) {
+    pvVar1 = malloc(param_2 * 4);
+  }
+  *param_1 = pvVar1;
+  param_1[1] = pvVar1;
+  param_1[2] = (void *)((int)pvVar1 + param_2 * 4);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0055e7f0 94 1
+@@CALLERS DisplayScoreboardGUI
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+uint __fastcall FUN_0055e7f0(int param_1)
+
+{
+  uint uVar1;
+  uint uVar2;
+  uint uVar3;
+  
+  uVar2 = *(uint *)(*(uint *)(param_1 + 0x44) + 8);
+  while( true ) {
+    if (uVar2 == *(uint *)(param_1 + 0x44)) {
+      return CONCAT31((int3)(uVar2 >> 8),1);
+    }
+    if ((*(int *)(uVar2 + 0x18) - *(int *)(uVar2 + 0x14) & 0xfffffff8U) != 0) break;
+    uVar3 = *(uint *)(uVar2 + 0xc);
+    if (uVar3 == 0) {
+      uVar3 = *(uint *)(uVar2 + 4);
+      if (uVar2 == *(uint *)(uVar3 + 0xc)) {
+        do {
+          uVar2 = uVar3;
+          uVar3 = *(uint *)(uVar2 + 4);
+        } while (uVar2 == *(uint *)(uVar3 + 0xc));
+      }
+      if (*(uint *)(uVar2 + 0xc) != uVar3) {
+        uVar2 = uVar3;
+      }
+    }
+    else {
+      for (uVar1 = *(uint *)(uVar3 + 8); uVar2 = uVar3, uVar1 != 0; uVar1 = *(uint *)(uVar1 + 8)) {
+        uVar3 = uVar1;
+      }
+    }
+  }
+  return uVar2 & 0xffffff00;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00578bde 28 1
+@@CALLERS Vector_InsertAndRealloc
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_00578bde(int param_1)
+
+{
+  void *pvVar1;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0xc);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0057932f 22 1
+@@CALLERS Container_InitSmall1
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0057932f(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0057937c 22 1
+@@CALLERS Container_InitSmall2
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0057937c(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005793a0 22 1
+@@CALLERS Container_InitMedium1
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_005793a0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x48);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005793c4 22 1
+@@CALLERS Container_InitMedium2
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_005793c4(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x48);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00579411 22 1
+@@CALLERS Container_InitSmall3
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00579411(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0057fe26 22 1
+@@CALLERS Container_InitLarge
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0057fe26(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x58);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005932ea 22 1
+@@CALLERS Queue_Init
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_005932ea(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0059332f 34 1
+@@CALLERS ListNode_Create
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0059332f(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x10);
+  if ((undefined4 *)((int)pvVar1 + 8) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 8) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0xc) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00593351 22 1
+@@CALLERS HashBucket_Init
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00593351(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x30);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC

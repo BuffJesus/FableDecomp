@@ -1,0 +1,78 @@
+0042a5d1	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores result back to *param_1 — rightmost-node iterator step
+0042a5e2	RBTree_Iterator_SetToMaxNode	medium	identical: uVar1=RBTree__GetMaxNode(*param_1); *param_1=uVar1 — RBTree iterator to max node
+0042d9d0	Field_SetToMinusOne	low	single store *param_1 = 0xffffffff, no other context
+0043368c	Stub_ReturnVoid	low	1-byte function, empty body, just returns
+004368e0	StdList_Construct	medium	malloc(0xc) then node->next=node->prev=node (circular sentinel), stored to *param_1 — std::list default ctor
+004369e0	StdList_Construct	medium	identical malloc(0xc) circular self-linked sentinel node init
+0043fc20	StdList_Construct	medium	malloc(0x20) self-linked next/prev sentinel node — std::list ctor variant
+0043fc40	StdList_Construct	medium	malloc(0x18) self-linked next/prev sentinel node — std::list ctor variant
+00440c90	StdList_Construct	medium	malloc(0x20) self-linked next/prev sentinel node — std::list ctor variant
+00440cd0	StdList_Construct	medium	malloc(0x18) self-linked next/prev sentinel node — std::list ctor variant
+0044b950	StdList_Construct	medium	malloc(0xc) self-linked next/prev sentinel node — std::list ctor
+0044b9f0	StdList_Construct	medium	malloc(0xc) self-linked next/prev sentinel node — std::list ctor
+0044c6af	Stub_ReturnVoid	low	1-byte function, empty body, just returns
+004c5c40	StdList_Construct	medium	malloc(0x18) self-linked next/prev sentinel node — std::list ctor
+004c6680	Object_AllocAndStorePtr	low	malloc(0x1c) stored to *param_1 with no field init
+004c67d0	StdTree_Construct	medium	malloc(0x1c) header node: size=0, parent=0, left=right=head — std::_Tree (map/set) ctor
+004c6af0	StdTree_Construct	medium	malloc(0x1c) header node with size=0, left=right=head — std::_Tree ctor
+004c72a0	Stub_ReturnVoid	low	empty body, just returns
+004cc200	StdList_Construct	medium	malloc(0xc) self-linked sentinel node — std::list ctor
+004cc260	StdList_Construct	medium	malloc(0x14) self-linked sentinel node — std::list ctor
+004cc800	StdList_Construct	medium	malloc(0xc) self-linked sentinel node — std::list ctor
+004ccc10	StdList_Construct	medium	malloc(0x14) self-linked sentinel node — std::list ctor
+004fe7f0	CollectSoundThemeSwitchDefs	low	iterates entity list, builds a set, uses CCharString "SOUND_THEME" + CDefinitionManager::GetDef<CThingPhysicalSwitchDef> and tree walk — gathers sound-theme switch defs
+00507070	RebuildStringPairTableFromTree	low	thiscall rebuilds a vector<pair<CCharString,CCharString>> via _Copy_impl/InsertMultipleAndGrow and tree-traversal reconstruction
+005155f0	StdList_ConstructMember	medium	malloc(0x18) self-linked sentinel node stored at param_1+8 — embedded std::list member ctor
+005159a0	StdTree_Construct	medium	malloc(0x14) header node: size=0, left=right=head — std::_Tree ctor
+00516e80	StdList_Construct	medium	malloc(0xc) self-linked sentinel node — std::list ctor
+00517810	StdTree_Construct	medium	malloc(0x14) header node: size=0, left=right=head — std::_Tree ctor
+0051a040	StdTree_Construct	medium	malloc(0x14) header node (size=0, left=right=head) plus extra fields [3..6]=0 — std::_Tree ctor with owner fields
+005283a0	StdList_Construct	medium	malloc(0x10) self-linked sentinel node — std::list ctor
+00528410	Object_AllocAndStorePtr	low	malloc(0x28) stored to *param_1, no field init
+00528480	Object_AllocAndStorePtr	low	malloc(0x20) stored to *param_1, no field init
+005284b0	Object_AllocAndStorePtr	low	malloc(0x20) stored to *param_1, no field init
+00528520	Object_AllocAndStorePtr	low	malloc(0x24) stored to *param_1, no field init
+00528590	Object_AllocAndStorePtr	low	malloc(0x20) stored to *param_1, no field init
+00528c20	StdList_Construct	medium	malloc(0x10) self-linked sentinel node — std::list ctor
+00528c60	StdTree_Construct	medium	malloc(0x28) header node: size=0, left=right=head — std::_Tree ctor
+00528cf0	StdTree_Construct	medium	malloc(0x20) header node: size=0, left=right=head — std::_Tree ctor
+00528d80	StdTree_Construct	medium	malloc(0x20) header node: size=0, left=right=head — std::_Tree ctor
+00528dc0	StdTree_Construct	medium	malloc(0x24) header node: size=0, left=right=head — std::_Tree ctor
+00528e50	StdTree_Construct	medium	malloc(0x20) header node: size=0, left=right=head — std::_Tree ctor
+005297a0	Stub_ReturnZero	low	3-byte function returning constant 0
+00553490	Object_AllocAndStorePtr	low	malloc(0x1c) stored to *param_1, no field init
+00566b70	Object_AllocAndStorePtr	low	malloc(0x1c) stored to *param_1, no field init
+00566be0	Object_AllocAndStorePtr	low	malloc(0x18) stored to *param_1, no field init
+00566ca0	Object_AllocAndStorePtr	low	malloc(0x20) stored to *param_1, no field init
+00567ea0	StdVector_Construct	medium	zeroes three consecutive pointer fields (begin/end/cap) — std::vector default ctor
+0056a580	StdTree_Construct	medium	malloc(0x20) header node: size=0, left=right=head — std::_Tree ctor
+0056a5c0	StdTree_Destruct	medium	if size!=0 calls TreeNode_DestructWithCCharString to free nodes then free(head) — std::_Tree (map<CCharString,..>) dtor
+0056cf70	Object_AllocAndStorePtr	low	malloc(0x34) stored to *param_1, no field init
+0056cfa0	Object_AllocAndStorePtr	low	malloc(0x20) stored to *param_1, no field init
+0056d010	Object_AllocAndStorePtr	low	malloc(0x18) stored to *param_1, no field init
+0056d2c0	StdTree_Construct	medium	malloc(0x34) header node: size=0, left=right=head — std::_Tree ctor
+0056d350	StdTree_Construct	medium	malloc(0x20) header node: size=0, left=right=head — std::_Tree ctor
+0056d390	StdTree_Construct	medium	malloc(0x18) header node: size=0, left=right=head — std::_Tree ctor
+0056ddc0	StdTree_Construct	medium	malloc(0x34) header node: size=0, left=right=head — std::_Tree ctor
+0059adcd	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005b198d	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005b199e	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005b19af	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005b19c0	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005ba88b	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005ba89c	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005ba8ad	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005ba8be	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005cbfe9	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005cc530	Math_RoundToDecimalPlaces	medium	builds 10^param_1 by repeated multiply of a constant, then ROUND(x*10^n)/10^n — decimal-place rounding
+005d839d	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005e0200	Object_AllocAndStorePtr	low	malloc(0x18) stored to *param_1, no field init
+005e0b00	StdTree_Construct	medium	malloc(0x18) header node: size=0, left=right=head — std::_Tree ctor
+005e3080	StdTree_Construct	medium	malloc(0x18) header node: size=0, left=right=head — std::_Tree ctor
+005e8e50	Object_AllocAndStorePtr	low	malloc(0x18) stored to *param_1, no field init
+005e8ff0	StdTree_Construct	medium	malloc(0x18) header node: size=0, left=right=head — std::_Tree ctor
+005e9320	StdTree_Construct	medium	malloc(0x18) header node: size=0, left=right=head — std::_Tree ctor
+005f82d9	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005f82ea	RBTree_Iterator_SetToMaxNode	medium	calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005f8944	StdList_Construct	medium	malloc(0xc) self-linked next/prev sentinel node — std::list ctor
+005f8f50	LinkedList_PushBack	medium	thiscall calling LinkedList_InsertNodeBefore(&param_2,*param_1,param_2) — insert before head = append

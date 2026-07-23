@@ -1,0 +1,98 @@
+// libs/forgecore/include/forge/stbinfo.hpp  (STEP 1)
+namespace forge::stb {
+struct StaticMapInfoBlock {              // CStaticMapInfoBlock, 0x5C on disk
+  int32_t versionID=0, bankFileIndex=0, edgeHeightFileSize=0;
+  int32_t mapWidth=0, mapHeight=0, worldX=0, worldY=0;
+  int32_t edgeHeightFilePtr=0, landscapeMapPtr=0, localDetailMapPtr=0;
+  int32_t quality=0, shorePointArraySize=0, shorePointArrayStart=0;
+  uint32_t levelChecksum=0;             // the sole ULONG
+  int32_t checksumBlockFilePtr=0, checksumBlockFileSize=0;
+  float   cameraMapBounds[6]={0,0,0,0,0,0}; // minx,miny,minz,maxx,maxy,maxz
+  int32_t headerEndPtr=0;
+};
+StaticMapInfoBlock readInfoBlock(const std::vector<uint8_t>& d, size_t off);
+std::vector<uint8_t> writeInfoBlock(const StaticMapInfoBlock& ib); // 0x5C bytes
+} // namespace forge::stb
+
+// libs/forgecore/src/stbinfo.cpp  (WriteMapInfoBlock @02d67ea0 exact order)
+std::vector<uint8_t> forge::stb::writeInfoBlock(const StaticMapInfoBlock& b){
+  std::vector<uint8_t> o; o.reserve(0x5C);
+  auto s=[&](int32_t v){ o.push_back(v); o.push_back(v>>8); o.push_back(v>>16); o.push_back(v>>24); };
+  auto u=[&](uint32_t v){ o.push_back(v); o.push_back(v>>8); o.push_back(v>>16); o.push_back(v>>24); };
+  s(b.versionID); s(b.bankFileIndex); s(b.edgeHeightFileSize);
+  s(b.mapWidth); s(b.mapHeight); s(b.worldX); s(b.worldY);
+  s(b.edgeHeightFilePtr); s(b.landscapeMapPtr); s(b.localDetailMapPtr);
+  s(b.quality); s(b.shorePointArraySize); s(b.shorePointArrayStart);
+  u(b.levelChecksum);                     // ULONG
+  s(b.checksumBlockFilePtr); s(b.checksumBlockFileSize);
+  for(int i=0;i<6;i++){ uint32_t bits; std::memcpy(&bits,&b.cameraMapBounds[i],4); u(bits); } // 0x18 raw box
+  s(b.headerEndPtr);
+  // assert(o.size()==0x5C);
+  return o;
+}
+
+// libs/forgecore/src/stbbake.cpp  (STEP 2 helper)
+static inline size_t alignUp(size_t p, size_t a){ return (p+a-1)&~(a-1); }
+
+// STEP 3 — CRangeCompressor flags==0 RAW inner block. FLAGS_LAYOUT pinned in STEP 0.
+static std::vector<uint8_t> writeRangeRaw(const uint8_t* elems, size_t count, size_t stride){
+  std::vector<uint8_t> body;
+  body.push_back(0);                       // flags==0 => stored/RAW path (confirm width/pos in decomp)
+  // [if decomp shows an uncompressed-length dword here, emit count*stride as u32 LE]
+  body.insert(body.end(), elems, elems + count*stride);
+  std::vector<uint8_t> out;
+  uint32_t n=(uint32_t)body.size();
+  out.push_back(n); out.push_back(n>>8); out.push_back(n>>16); out.push_back(n>>24); // WriteSLONG(len)
+  out.insert(out.end(), body.begin(), body.end());
+  return out;
+}
+
+// STEP 4 — §3 Save-body writer (inverse of parsePatchHeader). Minimal path copies
+// the donor's inline texture + edge strips verbatim; only height+normal are authored.
+struct PatchAuthoring {
+  PatchHeader hdr;                         // pw/ph/coords/detailMode/isDXT/texExt* from donor
+  std::vector<uint8_t> inlineTexture;      // copied verbatim from decoded donor body
+  std::vector<uint8_t> vb;                 // vertexCount * 16B, height(+4)+normal authored
+  std::vector<uint8_t> ib;                 // indexCount*3 u16 (copied unless topology changes)
+  std::vector<uint8_t> edgeStripsAndWater; // trailing bytes copied verbatim from donor body
+  bool ibShared=false;                     // patch bit +0x119
+};
+static std::vector<uint8_t> writePatchBody(const PatchAuthoring& p){
+  std::vector<uint8_t> b;
+  auto w16=[&](uint16_t v){ b.push_back(v); b.push_back(v>>8); };
+  w16(p.hdr.pw); w16(p.hdr.ph); w16(p.hdr.coord0); w16(p.hdr.coord1);
+  b.push_back(p.hdr.isWaterOnly?1:0); b.push_back(p.hdr.detailMode);
+  if(!p.hdr.isWaterOnly){
+    w16(p.hdr.indexCount); w16(p.hdr.vertexCount);
+    b.push_back(p.hdr.texExtX); b.push_back(p.hdr.texExtY);
+    b.push_back(p.hdr.isDXT?1:0);
+    b.insert(b.end(), p.inlineTexture.begin(), p.inlineTexture.end());        // 19B hdr + raw DXT, verbatim
+    auto vbBlk=writeRangeRaw(p.vb.data(), p.hdr.vertexCount, 0x10);
+    b.insert(b.end(), vbBlk.begin(), vbBlk.end());
+    if(!p.ibShared){
+      auto ibBlk=writeRangeRaw(p.ib.data(), size_t(p.hdr.indexCount)*3, 2);
+      b.insert(b.end(), ibBlk.begin(), ibBlk.end());
+    }
+  }
+  b.insert(b.end(), p.edgeStripsAndWater.begin(), p.edgeStripsAndWater.end()); // verbatim
+  return b;                                 // caller: forge::lzo::compressFramed(b)
+}
+
+// STEP 5 — quad-dir generator (0x24 stride, minX,minY,minZ,maxX,maxY,maxZ order).
+struct FrameLaid { uint32_t offset; uint32_t span; float aabb[6]; uint32_t flags; };
+static std::vector<uint8_t> generateQuadDir(const std::vector<FrameLaid>& f){
+  std::vector<uint8_t> d;
+  auto u=[&](uint32_t v){ d.push_back(v); d.push_back(v>>8); d.push_back(v>>16); d.push_back(v>>24); };
+  auto fl=[&](float v){ uint32_t x; std::memcpy(&x,&v,4); u(x); };
+  for(const auto& e: f){ u(e.flags); u(e.offset); u(e.span); for(int k=0;k<6;k++) fl(e.aabb[k]); }
+  for(int k=0;k<9;k++) u(0);                // all-zero terminator record (0x24)
+  return d;
+}
+
+// STEP 7 — container splice entry point (forgecore style, in stb.cpp).
+namespace forge::stb {
+struct StaticMapAppend { std::string fullPath; std::vector<uint8_t> chunk; StaticMapInfoBlock ib; };
+// Re-serialize with one appended static-map chunk + patched common header.
+// Byte-exact for every untouched entry; rebases only the shifted-chunk abs dwords.
+void saveArchive(const Archive& src, const std::filesystem::path& out, const StaticMapAppend& add);
+} // namespace forge::stb

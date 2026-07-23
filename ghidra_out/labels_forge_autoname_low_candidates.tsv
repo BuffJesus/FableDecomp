@@ -1,0 +1,60 @@
+# LOW-confidence candidates — NOT applied, for review
+00533b50	Vector_Append	Capacity check (+0xb4/+0xb8), 8-byte increment - generic vector append pattern
+00568850	Vector_PushBack	Capacity check (+4/+8), 4-byte increment - generic vector push pattern
+005f9bcd	Vector_PushBack	Identical to 00568850: capacity check (+4/+8), 4-byte increment
+00c2d9c0	GetItemByVtable	Calls virtual function at *(int*)(param_1+0x80)+0x44, very generic pattern
+00c2dbe0	Container_Cleanup	Generic container destructor iterating via virtual methods at +0x2c/+0x20
+00c8bab0	Array_GetElementByIndex	Array indexing with bounds check: index * 0x20 + base at +0x48
+00440590	Vector_UpdateEnd	Updates vector end pointer (+4) via memmove - generic vector operation
+00513940	ListNode_InsertSimple	Allocates 0x14-byte nodes, copies single uint at +0x10 - simple pattern
+00c767e0	VirtualArray_RangeProxy	Bounds checking at param_3[1], vtable+0x18 calls, implements split-range logic; low confidence due to sparse detail
+00798330	BinarySearchTree_InsertNewNode_Variant	Identical structure to 007934f0 but calls FUN_00797f40; BST insertion variant with different helper
+00c6e290	SIMD_AccumulateWeightedSamples_16bit_v2	Identical SIMD loop to 00c6d410; variant for different animation blend context
+00c6ed70	SIMD_AccumulateWeightedSamples_16bit_v3	Identical SIMD loop to 00c6d410; third variant for animation blend
+00c6f800	SIMD_AccumulateWeightedSamples_64bit_v2	Identical structure to 00c6f1a0; 64-bit SIMD blend variant
+00c6fc80	SIMD_AccumulateWeightedSamples_64bit_v3	Identical structure to 00c6f1a0; third 64-bit SIMD blend variant
+0056a680	Scoreboard_ProcessScores	Callers download/display scoreboard; calls FUN_00566cd0, FUN_0056a370; evidence doesn't clearly show parsing/display together - rename to generic processing
+006e8850	Vector_SumScaledElements	Sums float values at offset 0xc from 0x1c-sized vector elements; 4 elements at a time in loop - rename to be more descriptive of scaling
+0075fe30	Geometry_IsPointInPolygon	Calls GetScaled; performs point-in-polygon test with cross products; generic 'GetScaledElements' is misleading - evidence shows geometry computation
+008894a0	Array_CopyWithMemmove	Calls malloc, memmove; allocates buffer and copies data; generic array copying operation with memmove
+008ac060	VectorFilter_Apply	No CAIStateGroupBase evidence. fastcall, calls generic FUN_008aac50 and _Find_if; generic filter operation only, not creature-specific.
+009d2dd0	BST_Find	Binary tree search with operator<; no concrete class evidence. Generic BST search, not std::set specific.
+009ebb30	Deque_PushBack	Generic deque-like push_back, calls FUN_009ef900 for allocation. Low confidence on container type; no strong class evidence.
+009f7dc0	MapIterator_Count	Iterates std::map via _Tree_const_iterator and operator!=. Purpose unclear—counts or sums but not named class/method level.
+00a537f0	SharedPtr_Assignment	Manages refcount but no true class evidence. Assignment-like refcount operations, generic shared pointer pattern.
+00a5e0a0	Vector_InitializeFromRange	No class evidence. Generic vector initialization from range, mallocs and copies 64-bit pairs.
+00ab3300	Vector_Insert	Vector reallocation with insert, but no class evidence. Generic container insert with uninit_copy/fill_n.
+00af7910	Vector_Erase	Erases vector range but no class evidence. Generic vector erase with _Copy_impl and free.
+00b0f9f0	Vector_Insert	Mallocs vector of CAnimatedBlock but no class evidence. Generic insert with _Uninit_copy/GFExplicitNew.
+0040f0a0	Vector_EqualLength	Compares vector lengths and calls FUN_00403c60 if equal. No class evidence; generic vector length comparison.
+00411910	Vector_AllocateAndZero	thiscall mallocs buffer, zeroes all dwords and remaining bytes, sets vector range. Generic vector allocation, not class-specific.
+004bbb40	Heap_MakeHeap	fastcall calls FUN_004bba40 (step calculation) then make_heap. Generic heap construction, no class evidence.
+00c30940	ExceptionCleanup_Iterate	fastcall exception cleanup iterating collection with vtable destruction; too sparse without more context
+00c59de0	MathPower_Wrapper	thiscall calls FUN_00c59b00 then _CIpow; thin wrapper around power function
+00c5cf20	UpdateTimingCounters	thiscall adds/subtracts at param+0x14/+0x1c with bounds checks; timing arithmetic
+00c16760	WideCharToMultiByte_Wrapper	Direct wrapper around WideCharToMultiByte CRT function with minimal processing
+00c2ebc0	Container_RangeCheck	Array bounds check exception handler building error message on out-of-range index with file path formatting
+0045c4d2	Allocator_Alloc_Struct_24byte	Generic malloc(0x18) with dword writes at 0x10/0x14; not a 'pair' allocator - too generic
+0045c8a1	Allocator_Alloc_Struct_24byte	Identical malloc(0x18) pattern to others; generic allocator, not 'pair' specific
+0045d901	Allocator_Alloc_Struct_24byte	Identical malloc(0x18) pattern; no callers, generic stub
+0045de2f	Allocator_Alloc_Struct_24byte_With_Flag	malloc(0x18), writes BYTE at 0x14 (flag), not dword; 'With_Byte' label more accurate than 'With_Data'
+0045e2b1	Allocator_Alloc_Struct_24byte_With_Flag	Identical to 0045de2f: malloc(0x18), byte at 0x14
+0045e797	Allocator_Alloc_Struct_24byte_With_Flag	Identical to 0045de2f, 0045e2b1; same byte-flag allocator pattern
+0045f13d	Allocator_Alloc_Struct_24byte	Identical malloc(0x18) dword pattern; generic allocator
+0046149e	Allocator_Alloc_Struct_24byte	Identical malloc(0x18) pattern; generic allocator
+004615c3	Allocator_Alloc_Struct_24byte	Identical malloc(0x18) pattern; called by tree clone functions
+004622ec	Allocator_Alloc_Struct_24byte	Identical malloc(0x18) pattern; generic allocator
+00462411	Allocator_Alloc_Struct_24byte	Identical malloc(0x18) pattern; generic allocator
+004630e7	Allocator_Alloc_Struct_24byte	Identical malloc(0x18) pattern; generic allocator
+006561c8	Lua_ClosureWrap	Single-callee luaV_Cclosure; thin wrapper. Name is reasonable but confidence is genuinely low due to minimal code and single caller.
+009d2a40	Container_Fill	Allocates buffer and fills with repeated byte value via memcpy-like loop; generic container fill operation confirmed
+00a0e700	Container_CopyRangeBuffered	Copies range with dynamic buffer wrapping (param_5), but generic thiscall makes class context unclear; 'Range' is more precise than specifics claimed
+00c6da40	Audio_ResampleAndAccumulate_v2	Identical pattern to 00c6caf0 with phase interpolation; variant detection uncertain without deeper analysis
+00c6dad0	Audio_ResampleDecayAndAccumulate_v2	Identical decay resampling pattern to 00c6cb80; variant detection uncertain
+00c6de60	Audio_SetFilterCoefficients_v2	Identical to 00c6cef0; sets ushort from float with scale; variant detection uncertain
+00c6e1f0	Audio_ProcessSSEMultiply_v2	Identical SSE pmulhw pattern as 00c6d370; audio DSP variant detection uncertain
+00c6e790	Audio_ResampleAndAccumulate_v3	Identical to previous resample patterns; third variant; uncertain if genuine distinct variant
+00c6e820	Audio_ResampleDecayAndAccumulate_v3	Identical decay resampling as previous; third variant; uncertain if truly distinct
+00c6ecd0	Audio_ProcessSSEMultiply_v3	Identical SSE pattern; third variant; uncertain if truly distinct
+00c6f730	Audio_ProcessSSE64BitMultiply_v2	Identical to 00c6f0f0 pattern; 64-bit audio processing variant; uncertain if truly distinct
+00c6fbb0	Audio_ProcessSSE64BitMultiply_v3	Identical 64-bit SSE pattern; third variant; uncertain if truly distinct

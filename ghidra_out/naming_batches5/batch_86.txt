@@ -1,0 +1,290 @@
+@@@FUNC 01229e10 10 0
+@@CALLERS 
+@@CALLEES ~CCharString
+@@STRINGS 
+@@DECOMP
+
+void FUN_01229e10(void)
+
+{
+  CCharString::~CCharString((CCharString *)&DAT_013baea4);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 01229e80 84 0
+@@CALLERS 
+@@CALLEES BuildTreeArray, free
+@@STRINGS 
+@@DECOMP
+
+void FUN_01229e80(void)
+
+{
+  if (DAT_013baf04 != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              ((LTextTreeWalkThrough *)&DAT_013baf00,*(LTextBinNode **)((int)DAT_013baf00 + 4));
+    *(void **)((int)DAT_013baf00 + 8) = DAT_013baf00;
+    *(undefined4 *)((int)DAT_013baf00 + 4) = 0;
+    *(void **)((int)DAT_013baf00 + 0xc) = DAT_013baf00;
+    DAT_013baf04 = 0;
+  }
+  if (DAT_013baf00 != (void *)0x0) {
+    free(DAT_013baf00);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 01229f30 84 0
+@@CALLERS 
+@@CALLEES BuildTreeArray, free
+@@STRINGS 
+@@DECOMP
+
+void FUN_01229f30(void)
+
+{
+  if (DAT_013baf30 != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              ((LTextTreeWalkThrough *)&DAT_013baf2c,*(LTextBinNode **)((int)DAT_013baf2c + 4));
+    *(void **)((int)DAT_013baf2c + 8) = DAT_013baf2c;
+    *(undefined4 *)((int)DAT_013baf2c + 4) = 0;
+    *(void **)((int)DAT_013baf2c + 0xc) = DAT_013baf2c;
+    DAT_013baf30 = 0;
+  }
+  if (DAT_013baf2c != (void *)0x0) {
+    free(DAT_013baf2c);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0122a0a0 84 0
+@@CALLERS 
+@@CALLEES BuildTreeArray, free
+@@STRINGS 
+@@DECOMP
+
+void FUN_0122a0a0(void)
+
+{
+  if (DAT_013bafac != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              ((LTextTreeWalkThrough *)&DAT_013bafa8,*(LTextBinNode **)((int)DAT_013bafa8 + 4));
+    *(void **)((int)DAT_013bafa8 + 8) = DAT_013bafa8;
+    *(undefined4 *)((int)DAT_013bafa8 + 4) = 0;
+    *(void **)((int)DAT_013bafa8 + 0xc) = DAT_013bafa8;
+    DAT_013bafac = 0;
+  }
+  if (DAT_013bafa8 != (void *)0x0) {
+    free(DAT_013bafa8);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0122a100 84 0
+@@CALLERS 
+@@CALLEES BuildTreeArray, free
+@@STRINGS 
+@@DECOMP
+
+void FUN_0122a100(void)
+
+{
+  if (DAT_013bafb8 != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              ((LTextTreeWalkThrough *)&DAT_013bafb4,*(LTextBinNode **)((int)DAT_013bafb4 + 4));
+    *(void **)((int)DAT_013bafb4 + 8) = DAT_013bafb4;
+    *(undefined4 *)((int)DAT_013bafb4 + 4) = 0;
+    *(void **)((int)DAT_013bafb4 + 0xc) = DAT_013bafb4;
+    DAT_013bafb8 = 0;
+  }
+  if (DAT_013bafb4 != (void *)0x0) {
+    free(DAT_013bafb4);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0122a160 84 0
+@@CALLERS 
+@@CALLEES BuildTreeArray, free
+@@STRINGS 
+@@DECOMP
+
+void FUN_0122a160(void)
+
+{
+  if (DAT_013bafc4 != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              ((LTextTreeWalkThrough *)&DAT_013bafc0,*(LTextBinNode **)((int)DAT_013bafc0 + 4));
+    *(void **)((int)DAT_013bafc0 + 8) = DAT_013bafc0;
+    *(undefined4 *)((int)DAT_013bafc0 + 4) = 0;
+    *(void **)((int)DAT_013bafc0 + 0xc) = DAT_013bafc0;
+    DAT_013bafc4 = 0;
+  }
+  if (DAT_013bafc0 != (void *)0x0) {
+    free(DAT_013bafc0);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0122a20a 23 0
+@@CALLERS 
+@@CALLEES `vector_constructor_iterator'
+@@STRINGS 
+@@DECOMP
+
+void FUN_0122a20a(void)
+
+{
+  _vector_constructor_iterator_
+            (&DAT_013bb008,8,0xcb,
+             std::
+             _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            );
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0122a2f0 10 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_0122a2f0(undefined4 param_1,pair<EHeroMorphType,CParticleMorphs::CEntry> *param_2,
+            pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *param_3)
+
+{
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&DAT_013bb6a4,param_2,
+             param_3);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0122a4f0 84 0
+@@CALLERS 
+@@CALLEES BuildTreeArray, free
+@@STRINGS 
+@@DECOMP
+
+void FUN_0122a4f0(void)
+
+{
+  if (DAT_013bca08 != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              ((LTextTreeWalkThrough *)&DAT_013bca04,*(LTextBinNode **)((int)DAT_013bca04 + 4));
+    *(void **)((int)DAT_013bca04 + 8) = DAT_013bca04;
+    *(undefined4 *)((int)DAT_013bca04 + 4) = 0;
+    *(void **)((int)DAT_013bca04 + 0xc) = DAT_013bca04;
+    DAT_013bca08 = 0;
+  }
+  if (DAT_013bca04 != (void *)0x0) {
+    free(DAT_013bca04);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0122a7c0 84 0
+@@CALLERS 
+@@CALLEES BuildTreeArray, free
+@@STRINGS 
+@@DECOMP
+
+void FUN_0122a7c0(void)
+
+{
+  if (DAT_013ca870 != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              ((LTextTreeWalkThrough *)&DAT_013ca86c,*(LTextBinNode **)((int)DAT_013ca86c + 4));
+    *(void **)((int)DAT_013ca86c + 8) = DAT_013ca86c;
+    *(undefined4 *)((int)DAT_013ca86c + 4) = 0;
+    *(void **)((int)DAT_013ca86c + 0xc) = DAT_013ca86c;
+    DAT_013ca870 = 0;
+  }
+  if (DAT_013ca86c != (void *)0x0) {
+    free(DAT_013ca86c);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0122a940 20 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_0122a940(undefined4 param_1,pair<EHeroMorphType,CParticleMorphs::CEntry> *param_2,
+            pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *param_3)
+
+{
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_retaddr;
+  
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&DAT_013caa58,param_2,
+             unaff_retaddr);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&DAT_013caa54,
+             extraout_EDX,param_3);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0122ad60 17 0
+@@CALLERS 
+@@CALLEES free
+@@STRINGS 
+@@DECOMP
+
+void FUN_0122ad60(void)
+
+{
+  if (DAT_014377f0 != (void *)0x0) {
+    free(DAT_014377f0);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0122adb0 17 0
+@@CALLERS 
+@@CALLEES free
+@@STRINGS 
+@@DECOMP
+
+void FUN_0122adb0(void)
+
+{
+  if (DAT_0143b978 != (void *)0x0) {
+    free(DAT_0143b978);
+  }
+  return;
+}
+
+
+@@ENDFUNC

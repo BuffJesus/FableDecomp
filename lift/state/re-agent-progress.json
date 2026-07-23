@@ -1,0 +1,566 @@
+{
+    "functions":  {
+                      "008ed590":  {
+                                       "address":  "0x008ED590",
+                                       "class_name":  "",
+                                       "function_name":  "====",
+                                       "success":  true,
+                                       "rounds_used":  2,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-21T23:08:53"
+                                   },
+                      "00bf7400":  {
+                                       "address":  "0x00BF7400",
+                                       "class_name":  "",
+                                       "function_name":  "====",
+                                       "success":  true,
+                                       "rounds_used":  2,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-21T23:39:15"
+                                   },
+                      "00bf6720":  {
+                                       "address":  "0x00BF6720",
+                                       "class_name":  "",
+                                       "function_name":  "====",
+                                       "success":  true,
+                                       "rounds_used":  1,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-21T23:44:15"
+                                   },
+                      "00bf8810":  {
+                                       "address":  "0x00BF8810",
+                                       "class_name":  "",
+                                       "function_name":  "====",
+                                       "success":  true,
+                                       "rounds_used":  4,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-21T23:56:48"
+                                   },
+                      "00bdf010":  {
+                                       "address":  "0x00BDF010",
+                                       "class_name":  "",
+                                       "function_name":  "====",
+                                       "success":  true,
+                                       "rounds_used":  1,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-22T00:27:57"
+                                   },
+                      "00bdd0e0":  {
+                                       "address":  "0x00BDD0E0",
+                                       "class_name":  "",
+                                       "function_name":  "====",
+                                       "success":  true,
+                                       "rounds_used":  2,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-22T00:32:22"
+                                   },
+                      "00b687d0":  {
+                                       "address":  "0x00B687D0",
+                                       "class_name":  "",
+                                       "function_name":  "====",
+                                       "success":  true,
+                                       "rounds_used":  1,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-22T00:41:30"
+                                   },
+                      "00bdc510":  {
+                                       "address":  "0x00BDC510",
+                                       "class_name":  "",
+                                       "function_name":  "====",
+                                       "success":  false,
+                                       "rounds_used":  4,
+                                       "verdict":  "FAIL",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-22T01:28:17"
+                                   },
+                      "00bf4220":  {
+                                       "address":  "0x00BF4220",
+                                       "class_name":  "",
+                                       "function_name":  "====",
+                                       "success":  false,
+                                       "rounds_used":  4,
+                                       "verdict":  "FAIL",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-22T01:36:41"
+                                   },
+                      "00bf4130":  {
+                                       "address":  "0x00BF4130",
+                                       "class_name":  "",
+                                       "function_name":  "====",
+                                       "success":  true,
+                                       "rounds_used":  2,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-22T01:47:49"
+                                   },
+                      "00be6f70":  {
+                                       "address":  "0x00BE6F70",
+                                       "class_name":  "",
+                                       "function_name":  "====",
+                                       "success":  true,
+                                       "rounds_used":  3,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-22T02:11:14"
+                                   },
+                      "00bf4570":  {
+                                       "address":  "0x00BF4570",
+                                       "class_name":  "",
+                                       "function_name":  "====",
+                                       "success":  false,
+                                       "rounds_used":  4,
+                                       "verdict":  "FAIL",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-22T02:43:18"
+                                   },
+                      "00bfe050":  {
+                                       "address":  "0x00BFE050",
+                                       "class_name":  "CLandscapeLayerMesh",
+                                       "function_name":  "LoadForeground",
+                                       "success":  false,
+                                       "rounds_used":  4,
+                                       "verdict":  "FAIL",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-22T09:12:44"
+                                   },
+                      "00bf3b60":  {
+                                       "address":  "0x00BF3B60",
+                                       "class_name":  "CEngineLandscapePatch",
+                                       "function_name":  "LoadForegroundPatch",
+                                       "success":  false,
+                                       "rounds_used":  4,
+                                       "verdict":  "FAIL",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-22T09:22:55"
+                                   },
+                      "00be7d70":  {
+                                       "address":  "0x00BE7D70",
+                                       "class_name":  "CLandscapeBackgroundPatch",
+                                       "function_name":  "Load",
+                                       "success":  false,
+                                       "rounds_used":  4,
+                                       "verdict":  "FAIL",
+                                       "parity_status":  "red",
+                                       "timestamp":  "2026-07-22T09:34:01"
+                                   },
+                      "00be8920":  {
+                                       "address":  "0x00BE8920",
+                                       "class_name":  "CLandscapeBackgroundPatch",
+                                       "function_name":  "LoadCompressed",
+                                       "success":  false,
+                                       "rounds_used":  4,
+                                       "verdict":  "FAIL",
+                                       "parity_status":  "yellow",
+                                       "timestamp":  "2026-07-22T09:39:47"
+                                   },
+                      "00bf3a90":  {
+                                       "address":  "0x00BF3A90",
+                                       "class_name":  "CEngineLandscapePatch",
+                                       "function_name":  "LoadHeader",
+                                       "success":  true,
+                                       "rounds_used":  4,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "yellow",
+                                       "timestamp":  "2026-07-22T09:44:28"
+                                   },
+                      "00bebed0":  {
+                                       "address":  "0x00BEBED0",
+                                       "class_name":  "CEnginePrimitiveManagerMeshBase",
+                                       "function_name":  "GetComposedTexture",
+                                       "success":  true,
+                                       "rounds_used":  1,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "yellow",
+                                       "timestamp":  "2026-07-22T09:47:03"
+                                   },
+                      "00bec000":  {
+                                       "address":  "0x00BEC000",
+                                       "class_name":  "CEnginePrimitiveManagerMeshBase",
+                                       "function_name":  "PreloadDiffuseTexture",
+                                       "success":  true,
+                                       "rounds_used":  1,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "yellow",
+                                       "timestamp":  "2026-07-22T09:49:43"
+                                   },
+                      "00bec470":  {
+                                       "address":  "0x00BEC470",
+                                       "class_name":  "CEnginePrimitiveManagerMeshBase",
+                                       "function_name":  "PreloadBumpTexture",
+                                       "success":  true,
+                                       "rounds_used":  4,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "yellow",
+                                       "timestamp":  "2026-07-22T09:55:34"
+                                   },
+                      "00bec950":  {
+                                       "address":  "0x00BEC950",
+                                       "class_name":  "CEnginePrimitiveManagerMeshBase",
+                                       "function_name":  "GetOverlaidTextures",
+                                       "success":  true,
+                                       "rounds_used":  3,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "yellow",
+                                       "timestamp":  "2026-07-22T10:01:35"
+                                   },
+                      "00beaaa0":  {
+                                       "address":  "0x00BEAAA0",
+                                       "class_name":  "CEngineScreenEffectOutlineGlow",
+                                       "function_name":  "FinishWithDynamicTextures",
+                                       "success":  true,
+                                       "rounds_used":  2,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "yellow",
+                                       "timestamp":  "2026-07-22T10:02:35"
+                                   },
+                      "00beb4d0":  {
+                                       "address":  "0x00BEB4D0",
+                                       "class_name":  "CEngineScreenEffectOutlineGlow",
+                                       "function_name":  "FinishWithDynamicTextures",
+                                       "success":  true,
+                                       "rounds_used":  1,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "yellow",
+                                       "timestamp":  "2026-07-22T10:03:25"
+                                   },
+                      "00bf5c20":  {
+                                       "address":  "0x00BF5C20",
+                                       "class_name":  "CEngineLandscapeRenderer",
+                                       "function_name":  "GetForegroundSpotLightVertexShader",
+                                       "success":  true,
+                                       "rounds_used":  1,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "yellow",
+                                       "timestamp":  "2026-07-22T10:03:56"
+                                   },
+                      "00bf5c60":  {
+                                       "address":  "0x00BF5C60",
+                                       "class_name":  "CEngineLandscapeRenderer",
+                                       "function_name":  "GetForegroundSpotLightVertexShader",
+                                       "success":  true,
+                                       "rounds_used":  2,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "yellow",
+                                       "timestamp":  "2026-07-22T10:04:49"
+                                   },
+                      "00bf5ca0":  {
+                                       "address":  "0x00BF5CA0",
+                                       "class_name":  "CEngineLandscapeRenderer",
+                                       "function_name":  "GetForegroundBumpShadowedVertexShader",
+                                       "success":  true,
+                                       "rounds_used":  2,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "yellow",
+                                       "timestamp":  "2026-07-22T10:06:02"
+                                   },
+                      "00bf5cd0":  {
+                                       "address":  "0x00BF5CD0",
+                                       "class_name":  "CEngineLandscapeRenderer",
+                                       "function_name":  "GetForegroundBumpShadowedVertexShader",
+                                       "success":  true,
+                                       "rounds_used":  1,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "yellow",
+                                       "timestamp":  "2026-07-22T10:06:35"
+                                   },
+                      "00bf5d00":  {
+                                       "address":  "0x00BF5D00",
+                                       "class_name":  "CEngineLandscapeRenderer",
+                                       "function_name":  "GetForegroundBumpShadowedVertexShader",
+                                       "success":  true,
+                                       "rounds_used":  2,
+                                       "verdict":  "PASS",
+                                       "parity_status":  "yellow",
+                                       "timestamp":  "2026-07-22T10:07:37"
+                                   }
+                  },
+    "runs":  [
+                 {
+                     "address":  "0x008ED590",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  true,
+                     "rounds_used":  2,
+                     "verdict":  "PASS",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-21T23:08:53"
+                 },
+                 {
+                     "address":  "0x00BF7400",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  true,
+                     "rounds_used":  2,
+                     "verdict":  "PASS",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-21T23:39:15"
+                 },
+                 {
+                     "address":  "0x00BF6720",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  true,
+                     "rounds_used":  1,
+                     "verdict":  "PASS",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-21T23:44:15"
+                 },
+                 {
+                     "address":  "0x00BF8810",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  true,
+                     "rounds_used":  4,
+                     "verdict":  "PASS",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-21T23:56:48"
+                 },
+                 {
+                     "address":  "0x00BDF010",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  true,
+                     "rounds_used":  1,
+                     "verdict":  "PASS",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-22T00:27:57"
+                 },
+                 {
+                     "address":  "0x00BDD0E0",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  true,
+                     "rounds_used":  2,
+                     "verdict":  "PASS",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-22T00:32:22"
+                 },
+                 {
+                     "address":  "0x00B687D0",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  true,
+                     "rounds_used":  1,
+                     "verdict":  "PASS",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-22T00:41:30"
+                 },
+                 {
+                     "address":  "0x00BDC510",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  false,
+                     "rounds_used":  4,
+                     "verdict":  "FAIL",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-22T01:28:17"
+                 },
+                 {
+                     "address":  "0x00BF4220",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  false,
+                     "rounds_used":  4,
+                     "verdict":  "FAIL",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-22T01:36:41"
+                 },
+                 {
+                     "address":  "0x00BF4130",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  true,
+                     "rounds_used":  2,
+                     "verdict":  "PASS",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-22T01:47:49"
+                 },
+                 {
+                     "address":  "0x00BE6F70",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  true,
+                     "rounds_used":  3,
+                     "verdict":  "PASS",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-22T02:11:14"
+                 },
+                 {
+                     "address":  "0x00BF4570",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  false,
+                     "rounds_used":  4,
+                     "verdict":  "FAIL",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-22T02:43:18"
+                 },
+                 {
+                     "address":  "0x00BFE050",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  false,
+                     "rounds_used":  4,
+                     "verdict":  "FAIL",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-22T09:12:44"
+                 },
+                 {
+                     "address":  "0x00BF3B60",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  false,
+                     "rounds_used":  4,
+                     "verdict":  "FAIL",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-22T09:22:55"
+                 },
+                 {
+                     "address":  "0x00BE7D70",
+                     "class_name":  "",
+                     "function_name":  "====",
+                     "success":  false,
+                     "rounds_used":  4,
+                     "verdict":  "FAIL",
+                     "parity_status":  "red",
+                     "timestamp":  "2026-07-22T09:34:01"
+                 },
+                 {
+                     "address":  "0x00BE8920",
+                     "class_name":  "CLandscapeBackgroundPatch",
+                     "function_name":  "LoadCompressed",
+                     "success":  false,
+                     "rounds_used":  4,
+                     "verdict":  "FAIL",
+                     "parity_status":  "yellow",
+                     "timestamp":  "2026-07-22T09:39:47"
+                 },
+                 {
+                     "address":  "0x00BF3A90",
+                     "class_name":  "CEngineLandscapePatch",
+                     "function_name":  "LoadHeader",
+                     "success":  true,
+                     "rounds_used":  4,
+                     "verdict":  "PASS",
+                     "parity_status":  "yellow",
+                     "timestamp":  "2026-07-22T09:44:28"
+                 },
+                 {
+                     "address":  "0x00BEBED0",
+                     "class_name":  "CEnginePrimitiveManagerMeshBase",
+                     "function_name":  "GetComposedTexture",
+                     "success":  true,
+                     "rounds_used":  1,
+                     "verdict":  "PASS",
+                     "parity_status":  "yellow",
+                     "timestamp":  "2026-07-22T09:47:03"
+                 },
+                 {
+                     "address":  "0x00BEC000",
+                     "class_name":  "CEnginePrimitiveManagerMeshBase",
+                     "function_name":  "PreloadDiffuseTexture",
+                     "success":  true,
+                     "rounds_used":  1,
+                     "verdict":  "PASS",
+                     "parity_status":  "yellow",
+                     "timestamp":  "2026-07-22T09:49:43"
+                 },
+                 {
+                     "address":  "0x00BEC470",
+                     "class_name":  "CEnginePrimitiveManagerMeshBase",
+                     "function_name":  "PreloadBumpTexture",
+                     "success":  true,
+                     "rounds_used":  4,
+                     "verdict":  "PASS",
+                     "parity_status":  "yellow",
+                     "timestamp":  "2026-07-22T09:55:34"
+                 },
+                 {
+                     "address":  "0x00BEC950",
+                     "class_name":  "CEnginePrimitiveManagerMeshBase",
+                     "function_name":  "GetOverlaidTextures",
+                     "success":  true,
+                     "rounds_used":  3,
+                     "verdict":  "PASS",
+                     "parity_status":  "yellow",
+                     "timestamp":  "2026-07-22T10:01:35"
+                 },
+                 {
+                     "address":  "0x00BEAAA0",
+                     "class_name":  "CEngineScreenEffectOutlineGlow",
+                     "function_name":  "FinishWithDynamicTextures",
+                     "success":  true,
+                     "rounds_used":  2,
+                     "verdict":  "PASS",
+                     "parity_status":  "yellow",
+                     "timestamp":  "2026-07-22T10:02:35"
+                 },
+                 {
+                     "address":  "0x00BEB4D0",
+                     "class_name":  "CEngineScreenEffectOutlineGlow",
+                     "function_name":  "FinishWithDynamicTextures",
+                     "success":  true,
+                     "rounds_used":  1,
+                     "verdict":  "PASS",
+                     "parity_status":  "yellow",
+                     "timestamp":  "2026-07-22T10:03:25"
+                 },
+                 {
+                     "address":  "0x00BF5C20",
+                     "class_name":  "CEngineLandscapeRenderer",
+                     "function_name":  "GetForegroundSpotLightVertexShader",
+                     "success":  true,
+                     "rounds_used":  1,
+                     "verdict":  "PASS",
+                     "parity_status":  "yellow",
+                     "timestamp":  "2026-07-22T10:03:56"
+                 },
+                 {
+                     "address":  "0x00BF5C60",
+                     "class_name":  "CEngineLandscapeRenderer",
+                     "function_name":  "GetForegroundSpotLightVertexShader",
+                     "success":  true,
+                     "rounds_used":  2,
+                     "verdict":  "PASS",
+                     "parity_status":  "yellow",
+                     "timestamp":  "2026-07-22T10:04:49"
+                 },
+                 {
+                     "address":  "0x00BF5CA0",
+                     "class_name":  "CEngineLandscapeRenderer",
+                     "function_name":  "GetForegroundBumpShadowedVertexShader",
+                     "success":  true,
+                     "rounds_used":  2,
+                     "verdict":  "PASS",
+                     "parity_status":  "yellow",
+                     "timestamp":  "2026-07-22T10:06:02"
+                 },
+                 {
+                     "address":  "0x00BF5CD0",
+                     "class_name":  "CEngineLandscapeRenderer",
+                     "function_name":  "GetForegroundBumpShadowedVertexShader",
+                     "success":  true,
+                     "rounds_used":  1,
+                     "verdict":  "PASS",
+                     "parity_status":  "yellow",
+                     "timestamp":  "2026-07-22T10:06:35"
+                 },
+                 {
+                     "address":  "0x00BF5D00",
+                     "class_name":  "CEngineLandscapeRenderer",
+                     "function_name":  "GetForegroundBumpShadowedVertexShader",
+                     "success":  true,
+                     "rounds_used":  2,
+                     "verdict":  "PASS",
+                     "parity_status":  "yellow",
+                     "timestamp":  "2026-07-22T10:07:37"
+                 }
+             ]
+}

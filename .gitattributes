@@ -1,0 +1,31 @@
+* text=auto
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.sh text eol=lf
+*.py text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+*.hpp text eol=lf
+*.md text eol=lf
+*.tsv text eol=lf
+*.csv text eol=lf
+*.json text eol=lf
+
+# Generated evidence often preserves empty terminal columns and source formatting.
+*.tsv whitespace=-trailing-space,-blank-at-eof
+docs/re_reference/** whitespace=-trailing-space,-blank-at-eof
+ghidra_out/** whitespace=-trailing-space,-blank-at-eof
+ghidra_out/installed_game/compiled_game_entries.csv binary
+lift/reports/** whitespace=-trailing-space,-blank-at-eof
+lift/state/** whitespace=-trailing-space,-blank-at-eof
+rebuild/backlog/** whitespace=-trailing-space,-blank-at-eof
+rebuild/candidates/snapshots/** whitespace=-trailing-space,-blank-at-eof
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.zip binary
+*.gz binary
+*.pdf binary

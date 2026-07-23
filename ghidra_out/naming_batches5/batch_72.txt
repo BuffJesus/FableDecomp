@@ -1,0 +1,1960 @@
+@@@FUNC 00c0f7d0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c0f7d0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0f9d0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c0f9d0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0fc00 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c0fc00(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c10150 55 0
+@@CALLERS 
+@@CALLEES Container_IterateAndCount
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c10150(int param_1,int *param_2)
+
+{
+  int iVar1;
+  int *piVar2;
+  
+  iVar1 = Container_IterateAndCount(*(undefined4 *)(param_1 + 8));
+  if (iVar1 != 0) {
+    piVar2 = (int *)(**(code **)(*param_2 + 0x14))();
+    iVar1 = (**(code **)(*piVar2 + 0x14))();
+    if (iVar1 == 0) {
+      (**(code **)(**(int **)(param_1 + 4) + 0x24))(param_2);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c10190 55 0
+@@CALLERS 
+@@CALLEES Container_IterateAndCount
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c10190(int param_1,int *param_2)
+
+{
+  int iVar1;
+  int *piVar2;
+  
+  iVar1 = Container_IterateAndCount(*(undefined4 *)(param_1 + 8));
+  if (iVar1 != 0) {
+    piVar2 = (int *)(**(code **)(*param_2 + 0x14))();
+    iVar1 = (**(code **)(*piVar2 + 0x14))();
+    if (iVar1 == 0) {
+      (**(code **)(**(int **)(param_1 + 4) + 0x24))(param_2);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c10400 228 0
+@@CALLERS 
+@@CALLEES CDateAndTime, ActionHandler_ReplaceWithUnsheatheWeapons, CCombatAbilityStrafeDef::Initialize, ~CPixelShaderData
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c10400(int param_1)
+
+{
+  ulong uVar1;
+  ulong unaff_ESI;
+  ulong unaff_EDI;
+  undefined ***pppuVar2;
+  ulong uVar3;
+  undefined ***pppuVar4;
+  undefined **local_38;
+  undefined ***local_34;
+  int *piStack_30;
+  undefined **ppuStack_2c;
+  undefined **local_28;
+  undefined1 *local_24;
+  undefined1 local_20 [8];
+  void *pvStack_18;
+  void *pvStack_14;
+  undefined1 *puStack_10;
+  undefined4 local_c;
+  
+  puStack_10 = &LAB_012113aa;
+  pvStack_14 = ExceptionList;
+  local_24 = local_20;
+  local_c = 0;
+  local_28 = &PTR_LAB_012b1b78;
+  ExceptionList = &pvStack_14;
+  CCombatAbilityStrafeDef__Initialize(1);
+  local_34 = &local_28;
+  local_38 = &PTR_LAB_012b2624;
+  pppuVar4 = &local_38;
+  local_c = 2;
+  (**(code **)(*(int *)(param_1 + 0x10) + 0x28))();
+  uVar1 = (**(code **)(*local_28 + 0x2c))();
+  while (uVar1 != 0) {
+    pppuVar2 = &ppuStack_2c;
+    uVar3 = uVar1;
+    (**(code **)(*local_28 + 0x18))();
+    CDateAndTime::CDateAndTime
+              ((CDateAndTime *)&stack0xffffffc4,param_1,uVar1,(ulong)pppuVar2,uVar3,(ulong)pppuVar4,
+               unaff_EDI,unaff_ESI);
+    ActionHandler_ReplaceWithUnsheatheWeapons();
+    uVar1 = (**(code **)(*piStack_30 + 0x2c))();
+  }
+  ppuStack_2c = &PTR_LAB_012b1b78;
+  puStack_10 = (undefined1 *)0x3;
+  CPixelShaderData::~CPixelShaderData((CPixelShaderData *)&local_24);
+  ExceptionList = pvStack_18;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c10c10 104 0
+@@CALLERS 
+@@CALLEES AddSuccessfulBlockParry, AddChildPrimitive, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+ulong __thiscall FUN_00c10c10(int param_1,CEnginePrimitive *param_2)
+
+{
+  ulong uVar1;
+  ulong unaff_ESI;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_0121147e;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  uVar1 = CEngineInternalPrimitiveBase::AddChildPrimitive
+                    (*(CEngineInternalPrimitiveBase **)(param_1 + 0x7bc),param_2,unaff_ESI);
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return uVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c10dd0 119 0
+@@CALLERS 
+@@CALLEES NCreatureAI::`dynamic_initializer_for_'COS_OF_THE_ANGLE_NEEDED_TO_FACE_GUARD'', AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_00c10dd0(int param_1,undefined4 param_2)
+
+{
+  undefined4 *puVar1;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012114a2;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  NCreatureAI___dynamic_initializer_for__COS_OF_THE_ANGLE_NEEDED_TO_FACE_GUARD__(param_2);
+  *(uint *)(param_1 + 0x7c8) = *(uint *)(param_1 + 0x7c8) | 6;
+  puVar1 = *(undefined4 **)(*(int *)(param_1 + 4) + 100);
+  if (puVar1 != (undefined4 *)0x0) {
+    (**(code **)*puVar1)();
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c11330 116 0
+@@CALLERS 
+@@CALLEES ProcessButtonAReleased, NUISystem_CSpellContainerList_PopulateSpells, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c11330(int param_1)
+
+{
+  int *extraout_EAX;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_0121150e;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  NInventory::CTCInventoryBase::ProcessButtonAReleased((CTCInventoryBase *)(param_1 + 0x2c));
+  if (extraout_EAX != (int *)0x0) {
+    (**(code **)(*extraout_EAX + 4))(param_1);
+    NUISystem_CSpellContainerList_PopulateSpells();
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c113b0 114 0
+@@CALLERS 
+@@CALLEES ProcessButtonAReleased, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c113b0(int param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  int *extraout_EAX;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211520;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  NInventory::CTCInventoryBase::ProcessButtonAReleased((CTCInventoryBase *)(param_1 + 0x2c));
+  if (extraout_EAX != (int *)0x0) {
+    (**(code **)(*extraout_EAX + 8))(param_1,param_3);
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c11430 114 0
+@@CALLERS 
+@@CALLEES ProcessButtonAReleased, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c11430(int param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  int *extraout_EAX;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211532;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  NInventory::CTCInventoryBase::ProcessButtonAReleased((CTCInventoryBase *)(param_1 + 0x2c));
+  if (extraout_EAX != (int *)0x0) {
+    (**(code **)(*extraout_EAX + 0xc))(param_1,param_3);
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c114b0 109 0
+@@CALLERS 
+@@CALLEES ProcessButtonAReleased, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c114b0(int param_1)
+
+{
+  int *extraout_EAX;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211544;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  NInventory::CTCInventoryBase::ProcessButtonAReleased((CTCInventoryBase *)(param_1 + 0x2c));
+  if (extraout_EAX != (int *)0x0) {
+    (**(code **)(*extraout_EAX + 0x10))(param_1);
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c11520 163 0
+@@CALLERS 
+@@CALLEES ProcessButtonAReleased, AddSuccessfulBlockParry, CNavigationLayer, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c11520(int param_1,undefined4 *param_2)
+
+{
+  int *extraout_EAX;
+  CTCHeroExperience local_24 [4];
+  undefined4 uStack_20;
+  undefined4 local_1c;
+  undefined4 uStack_18;
+  undefined1 uStack_14;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211556;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_24);
+  local_4 = 0;
+  NInventory::CTCInventoryBase::ProcessButtonAReleased((CTCInventoryBase *)(param_1 + 0x2c));
+  if (extraout_EAX != (int *)0x0) {
+    CNavQuadTree::CNavigationLayer::CNavigationLayer((CNavigationLayer *)&local_1c);
+    uStack_14 = (**(code **)(*extraout_EAX + 0x20))(param_1);
+    uStack_20 = *param_2;
+    local_1c = param_2[1];
+    uStack_18 = param_2[2];
+    (**(code **)(*extraout_EAX + 0x14))(param_1,&uStack_20);
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c115d0 114 0
+@@CALLERS 
+@@CALLEES ProcessButtonAReleased, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c115d0(int param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  int *extraout_EAX;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211568;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  NInventory::CTCInventoryBase::ProcessButtonAReleased((CTCInventoryBase *)(param_1 + 0x2c));
+  if (extraout_EAX != (int *)0x0) {
+    (**(code **)(*extraout_EAX + 0x1c))(param_1,param_3);
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c11650 165 0
+@@CALLERS 
+@@CALLEES ProcessButtonAReleased, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 __thiscall FUN_00c11650(int param_1,undefined4 param_2,undefined4 *param_3)
+
+{
+  int *extraout_EAX;
+  float10 fVar1;
+  void *local_14 [2];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_0121157a;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry((CTCHeroExperience *)local_14);
+  local_4 = 0;
+  NInventory::CTCInventoryBase::ProcessButtonAReleased((CTCInventoryBase *)(param_1 + 0x2c));
+  if (extraout_EAX == (int *)0x0) {
+    *param_3 = 0;
+    local_4 = 0xffffffff;
+    EventQueue_ProcessWithTimeout();
+    ExceptionList = local_c;
+    return (float10)_DAT_0122ded8;
+  }
+  fVar1 = (float10)(**(code **)(*extraout_EAX + 0x24))(param_1,param_3);
+  local_c = (void *)0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_14[0];
+  return (float10)(float)fVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c119d0 238 0
+@@CALLERS 
+@@CALLEES C3DGroup2, GetPMeshAnims, GetKeyPressed, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout, OnCreate, $E2
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_00c119d0(int param_1,undefined4 param_2,C3DAnimationBlendState **param_3)
+
+{
+  undefined4 uVar1;
+  int iVar2;
+  CTCHeroExperience local_24 [8];
+  C3DGroup2 local_1c [16];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  int local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211600;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_24);
+  local_4 = 0;
+  if (param_3 != (C3DAnimationBlendState **)0x0) {
+    C3DGroup2::C3DGroup2(local_1c);
+    local_4._0_1_ = 1;
+    NUISystem::CManager::GetKeyPressed((CManager *)(param_3 + 2));
+    CAnimateThing::GetPMeshAnims
+              ((CAnimateThing *)local_1c,(C3DAnimationBlendState **)param_3[1],param_3);
+    iVar2 = (**(code **)(*(int *)(param_1 + 500) + 0x44))(local_1c);
+    CTCStealth::OnCreate((CTCStealth *)local_1c);
+    local_4 = (uint)local_4._1_3_ << 8;
+    if (iVar2 != 0) {
+      uVar1 = *(undefined4 *)(iVar2 + 0xc);
+      _E2();
+      local_4 = 0xffffffff;
+      EventQueue_ProcessWithTimeout();
+      ExceptionList = pvStack_c;
+      return uVar1;
+    }
+    _E2();
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return 0xffffffff;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c11ac0 317 0
+@@CALLERS 
+@@CALLEES TemplateConstruct_AndFindAnimation, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_00c11ac0(int *param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  int *piVar1;
+  int *piVar2;
+  int iVar3;
+  undefined4 uVar4;
+  uint uVar5;
+  int *unaff_EBX;
+  uint uVar6;
+  void *unaff_EBP;
+  uint uVar7;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211612;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar6 = 0;
+  local_4 = 0;
+  piVar1 = (int *)TemplateConstruct_AndFindAnimation(param_3);
+  if (piVar1 == (int *)0x0) {
+    local_4 = 0xffffffff;
+    EventQueue_ProcessWithTimeout();
+    ExceptionList = local_c;
+    return -1;
+  }
+  piVar2 = (int *)(**(code **)(*piVar1 + 0x14))();
+  iVar3 = (**(code **)(*piVar2 + 0x14))();
+  if (iVar3 != 0) {
+    do {
+      uVar7 = 0;
+      piVar2 = (int *)(**(code **)(*piVar1 + 0x14))();
+      iVar3 = (**(code **)(*piVar2 + 0x10))(uVar6);
+      if (iVar3 != 0) {
+        do {
+          piVar2 = (int *)(**(code **)(*piVar1 + 0x14))();
+          uVar4 = (**(code **)(*piVar2 + 0x18))(uVar6,uVar7);
+          iVar3 = (**(code **)(*param_1 + 0x48))(puStack_8,uVar4);
+          if (-1 < iVar3) {
+            EventQueue_ProcessWithTimeout();
+            ExceptionList = unaff_EBP;
+            return iVar3;
+          }
+          uVar7 = uVar7 + 1;
+          piVar2 = (int *)(**(code **)(*piVar1 + 0x14))();
+          uVar5 = (**(code **)(*piVar2 + 0x10))(uVar6);
+          param_1 = unaff_EBX;
+        } while (uVar7 < uVar5);
+      }
+      uVar6 = uVar6 + 1;
+      piVar2 = (int *)(**(code **)(*piVar1 + 0x14))();
+      uVar7 = (**(code **)(*piVar2 + 0x14))();
+    } while (uVar6 < uVar7);
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return -1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c11c00 173 0
+@@CALLERS 
+@@CALLEES ProcessButtonAReleased, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_00c11c00(int param_1)
+
+{
+  char cVar1;
+  int *extraout_EAX;
+  undefined4 uVar2;
+  void *local_14 [2];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211624;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry((CTCHeroExperience *)local_14);
+  local_4 = 0;
+  NInventory::CTCInventoryBase::ProcessButtonAReleased((CTCInventoryBase *)(param_1 + 0x2c));
+  if (extraout_EAX != (int *)0x0) {
+    cVar1 = (**(code **)(*extraout_EAX + 0x2c))(param_1);
+    if (cVar1 != '\0') {
+      uVar2 = (**(code **)(*extraout_EAX + 0x28))(param_1);
+      pvStack_c = (void *)0xffffffff;
+      EventQueue_ProcessWithTimeout();
+      ExceptionList = local_14[0];
+      return uVar2;
+    }
+    (**(code **)(*extraout_EAX + 4))();
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return 0xffffffff;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c120a0 148 0
+@@CALLERS 
+@@CALLEES VectorBoundsCheckOrThrow, GetKeyPressed, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout, CTCInventory::OnCreate
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c120a0(int param_1,int param_2)
+
+{
+  wchar_t wVar1;
+  CManager *this;
+  undefined2 extraout_var;
+  uint uVar2;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211697;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar2 = 0;
+  local_4 = 0;
+  if (*(int *)(param_1 + 0x60) != 0) {
+    do {
+      this = (CManager *)VectorBoundsCheckOrThrow(uVar2);
+      wVar1 = NUISystem::CManager::GetKeyPressed(this);
+      if ((CONCAT22(extraout_var,wVar1) != 0) && (*(int *)(this + 0x18) == param_2)) {
+        CTCInventory__OnCreate(param_1);
+      }
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < *(uint *)(param_1 + 0x60));
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c12300 165 0
+@@CALLERS 
+@@CALLEES VectorBoundsCheckOrThrow, GetKeyPressed, AddSuccessfulBlockParry, FUN_00c20f60, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c12300(int param_1,undefined4 *param_2)
+
+{
+  wchar_t wVar1;
+  CManager *this;
+  undefined2 extraout_var;
+  uint uVar2;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012116cd;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar2 = 0;
+  param_2[3] = 0;
+  param_2[4] = 0;
+  param_2[1] = 0;
+  param_2[2] = 0;
+  *param_2 = 0;
+  local_4 = 0;
+  if (*(int *)(param_1 + 0x60) != 0) {
+    do {
+      this = (CManager *)VectorBoundsCheckOrThrow(uVar2);
+      wVar1 = NUISystem::CManager::GetKeyPressed(this);
+      if (CONCAT22(extraout_var,wVar1) != 0) {
+        FUN_00c20f60(param_2);
+      }
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < *(uint *)(param_1 + 0x60));
+  }
+  param_2[5] = *(undefined4 *)(param_1 + 0x370);
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c12460 186 0
+@@CALLERS 
+@@CALLEES WriteToFile, VectorBoundsCheckOrThrow, GetKeyPressed, operator(), AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout, CTCInventory::OnCreate
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c12460(CChunkedFileSaver *param_1,CDataOutputStream *param_2)
+
+{
+  CIsThingAlive *this;
+  wchar_t wVar1;
+  CManager *this_00;
+  undefined2 extraout_var;
+  CIsThingAlive *extraout_EAX;
+  CIsThingAlive *extraout_EAX_00;
+  uint uVar2;
+  CChunkedFileSaver *unaff_EDI;
+  CChunkedFileSaver *pCVar3;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012116f1;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar2 = 0;
+  local_4 = 0;
+  if (*(int *)(param_1 + 0x60) != 0) {
+    do {
+      this_00 = (CManager *)VectorBoundsCheckOrThrow(uVar2);
+      wVar1 = NUISystem::CManager::GetKeyPressed(this_00);
+      if ((CONCAT22(extraout_var,wVar1) != 0) &&
+         (*(CDataOutputStream **)(this_00 + 0x10) == param_2)) {
+        CTCInventory__OnCreate(param_1);
+      }
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < *(uint *)(param_1 + 0x60));
+  }
+  CChunkedFileRawDataChunk::WriteToFile
+            ((CChunkedFileRawDataChunk *)(param_1 + 0x2c),param_2,unaff_EDI);
+  this = extraout_EAX;
+  while (this != (CIsThingAlive *)0x0) {
+    pCVar3 = param_1;
+    NScript::CIsThingAlive::operator()(this);
+    CChunkedFileRawDataChunk::WriteToFile
+              ((CChunkedFileRawDataChunk *)(param_1 + 0x2c),param_2,pCVar3);
+    this = extraout_EAX_00;
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c12520 186 0
+@@CALLERS 
+@@CALLEES VectorBoundsCheckOrThrow, GetKeyPressed, operator(), WriteToFile, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout, CTCInventory::OnCreate
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c12520(CChunkedFileSaver *param_1,CDataOutputStream *param_2)
+
+{
+  CIsThingAlive *this;
+  wchar_t wVar1;
+  CManager *this_00;
+  undefined2 extraout_var;
+  CIsThingAlive *extraout_EAX;
+  CIsThingAlive *extraout_EAX_00;
+  uint uVar2;
+  CChunkedFileSaver *unaff_EDI;
+  CChunkedFileSaver *pCVar3;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211703;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar2 = 0;
+  local_4 = 0;
+  if (*(int *)(param_1 + 0x60) != 0) {
+    do {
+      this_00 = (CManager *)VectorBoundsCheckOrThrow(uVar2);
+      wVar1 = NUISystem::CManager::GetKeyPressed(this_00);
+      if ((CONCAT22(extraout_var,wVar1) != 0) &&
+         (*(CDataOutputStream **)(this_00 + 0x24) == param_2)) {
+        CTCInventory__OnCreate(param_1);
+      }
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < *(uint *)(param_1 + 0x60));
+  }
+  CChunkedFileRawDataChunk::WriteToFile
+            ((CChunkedFileRawDataChunk *)(param_1 + 0x2c),param_2,unaff_EDI);
+  this = extraout_EAX;
+  while (this != (CIsThingAlive *)0x0) {
+    pCVar3 = param_1;
+    NScript::CIsThingAlive::operator()(this);
+    CChunkedFileRawDataChunk::WriteToFile
+              ((CChunkedFileRawDataChunk *)(param_1 + 0x2c),param_2,pCVar3);
+    this = extraout_EAX_00;
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c12680 159 0
+@@CALLERS 
+@@CALLEES VectorBoundsCheckOrThrow, GetKeyPressed, FUN_00c20f40, FUN_00c20f20, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+int __fastcall FUN_00c12680(int param_1)
+
+{
+  wchar_t wVar1;
+  CManager *this;
+  undefined2 extraout_var;
+  int iVar2;
+  uint uVar3;
+  int local_18;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211727;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar3 = 0;
+  local_4 = 0;
+  local_18 = 0;
+  if (*(int *)(param_1 + 0x60) != 0) {
+    do {
+      this = (CManager *)VectorBoundsCheckOrThrow(uVar3);
+      wVar1 = NUISystem::CManager::GetKeyPressed(this);
+      if ((CONCAT22(extraout_var,wVar1) != 0) &&
+         ((iVar2 = FUN_00c20f20(), iVar2 != 0 || (iVar2 = FUN_00c20f40(), iVar2 != 0)))) {
+        local_18 = local_18 + 1;
+      }
+      uVar3 = uVar3 + 1;
+    } while (uVar3 < *(uint *)(param_1 + 0x60));
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return local_18;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c12720 152 0
+@@CALLERS 
+@@CALLEES CCharStringData::Release, CTCInventory_ProcessKeyPress, VectorBoundsCheckOrThrow, GetKeyPressed, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout, Thiscall_CombatActionDebugFormat
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c12720(int param_1)
+
+{
+  wchar_t wVar1;
+  CManager *this;
+  undefined2 extraout_var;
+  uint uVar2;
+  undefined1 local_18 [4];
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211739;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar2 = 0;
+  local_4 = 0;
+  CTCInventory_ProcessKeyPress();
+  if (*(int *)(param_1 + 0x60) != 0) {
+    do {
+      this = (CManager *)VectorBoundsCheckOrThrow(uVar2);
+      wVar1 = NUISystem::CManager::GetKeyPressed(this);
+      if (CONCAT22(extraout_var,wVar1) != 0) {
+        Thiscall_CombatActionDebugFormat(local_18,param_1);
+        CCharStringData__Release();
+      }
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < *(uint *)(param_1 + 0x60));
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c127c0 186 0
+@@CALLERS 
+@@CALLEES CCharStringData::Release, CTCInventory_ProcessKeyPress, AddSuccessfulBlockParry, Playback_LogStatus, TextureIndex_GetByProperties, EventQueue_ProcessWithTimeout, Thiscall_CombatActionDebugFormat
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c127c0(int param_1)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined1 local_1c [4];
+  undefined1 local_18 [4];
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  int local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211753;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar2 = 0;
+  local_4 = 0;
+  CTCInventory_ProcessKeyPress();
+  if (*(int *)(param_1 + 0x228) != 0) {
+    do {
+      iVar1 = TextureIndex_GetByProperties(uVar2);
+      if (*(int *)(iVar1 + 4) != 0) {
+        Thiscall_CombatActionDebugFormat(local_18,param_1);
+        local_4._0_1_ = 1;
+        Playback_LogStatus(local_1c);
+        CCharStringData__Release();
+        local_4 = (uint)local_4._1_3_ << 8;
+        CCharStringData__Release();
+      }
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < *(uint *)(param_1 + 0x228));
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c12d50 256 0
+@@CALLERS 
+@@CALLEES CBrainOutput_LoadSerialized, AddSuccessfulBlockParry, CAtmosProcess, CNavigationLayer, EventQueue_ProcessWithTimeout, CombatBlockReward_ProcessWithExceptionHandler
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_00c12d50(int param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  CTCHeroExperience local_64 [8];
+  CAtmosProcess local_5c [28];
+  undefined4 local_40;
+  undefined4 local_3c;
+  undefined4 local_38;
+  undefined4 local_34;
+  undefined4 local_30;
+  CNavigationLayer local_2c [16];
+  undefined4 local_1c;
+  undefined2 local_18;
+  undefined4 local_14;
+  undefined4 local_10;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_0121179b;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_64);
+  local_4 = 0;
+  if (param_1 == 0) {
+    local_4 = 0xffffffff;
+    EventQueue_ProcessWithTimeout();
+    ExceptionList = local_c;
+    return 0xffffffff;
+  }
+  CAtmosProcess::CAtmosProcess(local_5c);
+  local_40 = 0;
+  local_3c = 0;
+  local_38 = 0x3f800000;
+  local_34 = 0x3f800000;
+  local_30 = 0;
+  CNavQuadTree::CNavigationLayer::CNavigationLayer(local_2c);
+  local_1c = 0;
+  local_18 = 0;
+  local_14 = 0;
+  local_10 = 0;
+  CBrainOutput_LoadSerialized(param_3);
+  iVar1 = CombatBlockReward_ProcessWithExceptionHandler(param_1,param_2,local_5c,0);
+  if (iVar1 == 0) {
+    uVar2 = 0xffffffff;
+  }
+  else {
+    uVar2 = *(undefined4 *)(iVar1 + 0xc);
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c12e50 741 0
+@@CALLERS 
+@@CALLEES operator_new, CBase, GetPointerFromHandle, operator_delete, operator(), EventQueue_ProcessWithTimeout, CBrainOutput_LoadSerialized, CScriptModuleBase, SetDebugCameraType, Unlock, NUISystem_CSteeringAgent_FindAgentInList, ReturnAllConfiscatedItems, IsBoastSequence, AddSuccessfulBlockParry, SetShadowFadeTransform, CombatSequence_AlignDuration, CombatBlockReward_ProcessWithExceptionHandler, Lock
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_00c12e50(int param_1,int param_2,int param_3,undefined4 param_4)
+
+{
+  int iVar1;
+  bool bVar2;
+  char cVar3;
+  int iVar4;
+  undefined3 extraout_var;
+  int iVar5;
+  CScriptModuleBase *this;
+  CIsThingAlive *this_00;
+  void *pvVar6;
+  long extraout_EAX;
+  undefined4 extraout_EAX_00;
+  C4DVector *pCVar7;
+  long lVar8;
+  CIsThingAlive *pCVar9;
+  undefined4 uVar10;
+  CTCHeroExperience local_64 [4];
+  CScriptModuleBase aCStack_60 [80];
+  void *pvStack_10;
+  void *local_c;
+  undefined1 *puStack_8;
+  int local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012117b8;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_64);
+  local_4 = 0;
+  if (*(int *)(param_2 + 4) == 0) {
+    local_4 = 0xffffffff;
+    EventQueue_ProcessWithTimeout();
+    ExceptionList = local_c;
+    return -1;
+  }
+  iVar4 = (**(code **)(*(int *)(param_2 + 0x38) + 0x44))(&param_3);
+  if (iVar4 != 0) {
+    iVar4 = (**(code **)(*(int *)(param_2 + 0x50) + 0x44))(&stack0xffffff84);
+    if (iVar4 != 0) {
+      NCameraModes::CScriptModuleBase::CScriptModuleBase(aCStack_60);
+      CBrainOutput_LoadSerialized(param_4);
+      iVar4 = CombatBlockReward_ProcessWithExceptionHandler(iVar4,0,aCStack_60,0);
+      puStack_8 = (undefined1 *)0xffffffff;
+      if (iVar4 != 0) {
+        iVar4 = *(int *)(iVar4 + 0xc);
+        EventQueue_ProcessWithTimeout();
+        ExceptionList = pvStack_10;
+        return iVar4;
+      }
+      EventQueue_ProcessWithTimeout();
+      ExceptionList = pvStack_10;
+      return -1;
+    }
+  }
+  uVar10 = *(undefined4 *)(param_2 + 0x4c);
+  bVar2 = CCombatSequenceBase::IsBoastSequence(*(CCombatSequenceBase **)(param_2 + 4));
+  iVar4 = CombatSequence_AlignDuration(param_3);
+  iVar5 = NUISystem_CSteeringAgent_FindAgentInList
+                    (param_1,iVar4 + CONCAT31(extraout_var,bVar2) + param_3,uVar10);
+  if (-1 < iVar5) {
+    CHandleBasedMemoryPool::Lock((CHandleBasedMemoryPool *)(param_1 + 0x360),iVar5);
+    this = operator_new(0x78);
+    puStack_8._0_1_ = 1;
+    if (this == (CScriptModuleBase *)0x0) {
+      this_00 = (CIsThingAlive *)0x0;
+    }
+    else {
+      this_00 = (CIsThingAlive *)NCameraModes::CScriptModuleBase::CScriptModuleBase(this);
+    }
+    iVar1 = *(int *)(param_1 + 0x88c);
+    *(int *)(param_1 + 0x88c) = iVar1 + 1;
+    *(int *)(this_00 + 8) = iVar1;
+    *(int *)(this_00 + 0x10) = param_3;
+    *(int *)(this_00 + 0x18) = iVar4;
+    *(int *)(this_00 + 4) = iVar5;
+    *(undefined2 *)(this_00 + 0x76) = 0;
+    *(int *)(this_00 + 0x20) = param_2;
+    *(int *)(this_00 + 0x14) = CONCAT31(extraout_var,bVar2);
+    puStack_8 = (undefined1 *)((uint)puStack_8._1_3_ << 8);
+    *(int *)(this_00 + 0x1c) = param_2;
+    *(undefined4 *)(this_00 + 0xc) = uVar10;
+    CBrainOutput_LoadSerialized(param_4);
+    iVar4 = param_1;
+    NScript::CIsThingAlive::operator()(this_00);
+    uVar10 = *(undefined4 *)(param_1 + 0x7b8);
+    param_3 = **(int **)(param_2 + 4);
+    pCVar9 = this_00;
+    pvVar6 = CHandleBasedMemoryPool::GetPointerFromHandle
+                       ((CHandleBasedMemoryPool *)(param_1 + 0x360),iVar5);
+    pCVar7 = (C4DVector *)(local_4 + param_2);
+    CShaderRenderManager::SetShadowFadeTransform((CShaderRenderManager *)this_00,pCVar7);
+    lVar8 = extraout_EAX;
+    CGameScriptInterface::SetDebugCameraType((CGameScriptInterface *)this_00,extraout_EAX);
+    cVar3 = (**(code **)(param_3 + 4))(extraout_EAX_00,lVar8,pCVar7,pvVar6,pCVar9,uVar10,iVar4);
+    if (cVar3 != '\0') {
+      puStack_8 = (undefined1 *)0xffffffff;
+      EventQueue_ProcessWithTimeout();
+      ExceptionList = pvStack_10;
+      return iVar1;
+    }
+    CHandleBasedMemoryPool::Unlock((CHandleBasedMemoryPool *)(param_1 + 0x360),iVar5);
+    CTCInventoryWeapons::ReturnAllConfiscatedItems((CTCInventoryWeapons *)this_00);
+    NHeroInformationScreens::CBase::CBase((CBase *)this_00);
+    operator_delete(this_00);
+  }
+  puStack_8 = (undefined1 *)0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_10;
+  return -1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c133d0 159 0
+@@CALLERS 
+@@CALLEES CNavigationLayer_LoadAndInitialize, TemplateConstruct_AndFindAnimation, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_00c133d0(undefined4 param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211800;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  iVar1 = TemplateConstruct_AndFindAnimation(param_1);
+  if (iVar1 == 0) {
+    local_4 = 0xffffffff;
+    EventQueue_ProcessWithTimeout();
+    ExceptionList = local_c;
+    return 0xffffffff;
+  }
+  uVar2 = CNavigationLayer_LoadAndInitialize(iVar1,param_2);
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c15540 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c15540(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c156a0 100 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c156a0(int *param_1,int *param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  piVar1 = (int *)param_1[1];
+  iVar4 = *piVar1;
+  iVar2 = (**(code **)(*param_2 + 0x3c))();
+  iVar3 = (**(code **)(*piVar1 + 0x28))();
+  (**(code **)(iVar4 + 0x10))(iVar2 + iVar3);
+  iVar4 = (**(code **)(*param_2 + 0x2c))();
+  while (iVar4 != 0) {
+    (**(code **)(*param_2 + 0x20))(iVar4);
+    (**(code **)(*param_1 + 0x24))(iVar4);
+    iVar4 = (**(code **)(*param_2 + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c15740 175 0
+@@CALLERS 
+@@CALLEES CCharStringData::Release, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+@@STRINGS d:\dev\audio\ver_fable_1.5_b\libpk\PKCTRList.h	Error: Cannot resolve access to a key object in a list!
+@@DECOMP
+
+undefined4 FUN_00c15740(void)
+
+{
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar1;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lStack_11;
+  undefined *local_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  puStack_8 = &LAB_01211b38;
+  pvStack_c = ExceptionList;
+  local_10 = PTR_DAT_0139c900;
+  local_4 = 0;
+  ExceptionList = &pvStack_c;
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          *)&local_10,
+                         (CIsThingAlive *)"d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCTRList.h");
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_0122e028);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_00000027);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_012b1ae4);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)
+                                "Error: Cannot resolve access to a key object in a list!");
+  NScript::
+  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            (pCVar1,(CIsThingAlive *)&DAT_0129b208);
+  if (DAT_0143bb2c != (code *)0x0) {
+    (*DAT_0143bb2c)();
+  }
+  local_4 = 0xffffffff;
+  CCharStringData__Release();
+  std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&lStack_11);
+  ExceptionList = pvStack_c;
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c157f0 175 0
+@@CALLERS 
+@@CALLEES CCharStringData::Release, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+@@STRINGS d:\dev\audio\ver_fable_1.5_b\libpk\PKCTRList.h	Error: Cannot resolve access to a key object in a list!
+@@DECOMP
+
+undefined4 FUN_00c157f0(void)
+
+{
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar1;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lStack_11;
+  undefined *local_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  puStack_8 = &LAB_01211b58;
+  pvStack_c = ExceptionList;
+  local_10 = PTR_DAT_0139c900;
+  local_4 = 0;
+  ExceptionList = &pvStack_c;
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          *)&local_10,
+                         (CIsThingAlive *)"d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCTRList.h");
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_0122e028);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)0x2c);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_012b1ae4);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)
+                                "Error: Cannot resolve access to a key object in a list!");
+  NScript::
+  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            (pCVar1,(CIsThingAlive *)&DAT_0129b208);
+  if (DAT_0143bb2c != (code *)0x0) {
+    (*DAT_0143bb2c)();
+  }
+  local_4 = 0xffffffff;
+  CCharStringData__Release();
+  std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&lStack_11);
+  ExceptionList = pvStack_c;
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c15cd0 114 0
+@@CALLERS 
+@@CALLEES CTCCreature_InitializeAnimationNames, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_00c15cd0(int param_1)
+
+{
+  float fVar1;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211c32;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  fVar1 = (float)param_1;
+  local_4 = 0;
+  if (param_1 < 0) {
+    fVar1 = fVar1 + _DAT_0122dcb4;
+  }
+  CTCCreature_InitializeAnimationNames(fVar1);
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c15d50 219 0
+@@CALLERS 
+@@CALLEES AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout, FUN_00c2d420
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_00c15d50(float *param_1)
+
+{
+  char cVar1;
+  int local_20;
+  int local_1c;
+  undefined1 local_18 [4];
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211c44;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  cVar1 = FUN_00c2d420(&local_20,local_18,&local_1c);
+  if (cVar1 == '\0') {
+    local_4 = 0xffffffff;
+    EventQueue_ProcessWithTimeout();
+    ExceptionList = local_c;
+    return 0;
+  }
+  if ((-1 < local_20) && (-1 < local_1c)) {
+    local_4 = 0xffffffff;
+    *param_1 = (float)local_20 / (float)local_1c;
+    EventQueue_ProcessWithTimeout();
+    ExceptionList = local_c;
+    return 2;
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return 1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c161a0 212 0
+@@CALLERS 
+@@CALLEES operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, OnReadFinished, AddSuccessfulBlockParry, FUN_00c2d5e0, pair<unsigned_long,C3DMeshVolume>, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_00c161a0(undefined4 param_1,undefined4 *param_2)
+
+{
+  float fVar1;
+  CIsThingAlive *extraout_EDX;
+  CTCHeroExperience local_30 [8];
+  float local_28;
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  local_24 [8];
+  undefined4 local_1c;
+  undefined4 local_18;
+  undefined4 local_14;
+  undefined4 local_10;
+  void *local_c;
+  undefined1 *puStack_8;
+  int local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211cb1;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_30);
+  local_4 = 0;
+  std::pair<unsigned_long,C3DMeshVolume>::pair<unsigned_long,C3DMeshVolume>
+            ((pair<unsigned_long,C3DMeshVolume> *)&local_28);
+  local_28 = (float)(int)param_2[4];
+  local_4._0_1_ = 1;
+  if ((int)param_2[4] < 0) {
+    local_28 = local_28 + _DAT_0122dcb4;
+  }
+  NScript::
+  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            (local_24,extraout_EDX);
+  fVar1 = (float)(int)param_2[5];
+  local_14 = param_2[3];
+  local_1c = param_2[1];
+  local_18 = *param_2;
+  local_10 = param_2[2];
+  if ((int)param_2[5] < 0) {
+    fVar1 = fVar1 + _DAT_0122dcb4;
+  }
+  FUN_00c2d5e0(fVar1,&local_28);
+  local_4 = (uint)local_4._1_3_ << 8;
+  CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)local_24);
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c16310 408 0
+@@CALLERS 
+@@CALLEES SetCurrentMapNumber, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, SetupIdentityFlag, Alloc, InitialiseFromFileData, IsRunnable, AddSuccessfulBlockParry, _Insert<std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std::allocator<CCharString>,0>_>_>_>, EventQueue_ProcessWithTimeout, ResetCrier, EnableNavigator
+@@STRINGS 
+@@DECOMP
+
+CScriptBase * __thiscall
+FUN_00c16310(int param_1,undefined4 param_2,undefined2 *param_3,int param_4)
+
+{
+  uint extraout_EAX;
+  uint extraout_EAX_00;
+  CScriptBase *pCVar1;
+  CSimpleMemoryPool *unaff_ESI;
+  C3DAnimationSequenceData *unaff_EDI;
+  CTCHeroExperience local_3c [8];
+  uint local_34;
+  uint local_30;
+  uint local_2c;
+  undefined2 local_28;
+  undefined2 local_26;
+  undefined4 local_24;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> local_20 [20];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211cc8;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_3c);
+  local_34 = *(uint *)(param_3 + 2);
+  local_28 = *param_3;
+  local_24 = *(undefined4 *)(param_3 + 6);
+  local_4 = 0;
+  local_30 = 0;
+  local_2c = 0;
+  local_26 = 0;
+  CTCHeroExperience::AddSuccessfulBlockParry((CTCHeroExperience *)&local_34);
+  local_30 = extraout_EAX;
+  CTCHeroExperience::AddSuccessfulBlockParry((CTCHeroExperience *)&local_34);
+  if (((local_34 <= local_30) || (local_34 <= extraout_EAX_00)) ||
+     (local_2c = extraout_EAX_00, extraout_EAX_00 < local_30)) {
+    local_2c = 0;
+    local_30 = 0;
+  }
+  NScript::CCS_OakValeRevisitedScript::Alloc
+            (*(CScriptDataBase **)(param_1 + 8),*(CGameScriptInterfaceBase **)(param_3 + 4));
+  std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(local_20);
+  CAIStateGroup_CreatureGoUnderground::IsRunnable((CAIStateGroup_CreatureGoUnderground *)local_20);
+  C3DAnimationSequence::InitialiseFromFileData
+            ((C3DAnimationSequence *)local_20,*(C3DAnimFileSequenceChunk **)(param_4 + 4),unaff_EDI,
+             unaff_ESI);
+  CTCVillage::ResetCrier((CTCVillage *)local_20);
+  std::vector<CCharString,std::allocator<CCharString>_>::
+  _Insert<std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std::allocator<CCharString>,0>_>_>_>
+            ((vector<CCharString,std::allocator<CCharString>_> *)local_20,
+             *(undefined4 *)(param_4 + 0xc));
+  std::vector<CCharString,std::allocator<CCharString>_>::
+  _Insert<std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std::allocator<CCharString>,0>_>_>_>
+            ((vector<CCharString,std::allocator<CCharString>_> *)local_20,
+             *(undefined4 *)(param_4 + 0x10));
+  CThing::SetCurrentMapNumber((CThing *)local_20,*(long *)(param_4 + 0x14));
+  CThing::SetCurrentMapNumber((CThing *)local_20,*(long *)(param_4 + 0x18));
+  CThing::SetCurrentMapNumber((CThing *)local_20,(uint)*(ushort *)(param_4 + 0x1c));
+  CTCPhysicsNavigator::EnableNavigator
+            ((CTCPhysicsNavigator *)local_20,SUB21(*(undefined2 *)(param_4 + 0x1e),0));
+  CThing::SetCurrentMapNumber((CThing *)local_20,*(long *)(param_4 + 0x20));
+  C3DAnimationSequenceData::SetupIdentityFlag((C3DAnimationSequenceData *)local_20);
+  C3DAnimationSequence::InitialiseFromFileData
+            ((C3DAnimationSequence *)local_20,*(C3DAnimFileSequenceChunk **)(param_4 + 0x28),
+             unaff_EDI,unaff_ESI);
+  pCVar1 = NScript::CCS_OakValeRevisitedScript::Alloc
+                     (*(CScriptDataBase **)(param_1 + 8),(CGameScriptInterfaceBase *)local_20);
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return pCVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c164b0 199 0
+@@CALLERS 
+@@CALLEES CTCMapwho_ClearMessageQueue, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout, OnDie
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_00c164b0(int param_1,int param_2)
+
+{
+  int iVar1;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211cda;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  if (param_2 == 0) {
+    local_4 = 0xffffffff;
+    EventQueue_ProcessWithTimeout();
+    ExceptionList = local_c;
+    return 0xffffffff;
+  }
+  iVar1 = *(int *)(param_2 + 4);
+  if (*(CTCMapwho **)(iVar1 + 4) != *(CTCMapwho **)(param_1 + 8)) {
+    local_4 = 0xffffffff;
+    EventQueue_ProcessWithTimeout();
+    ExceptionList = local_c;
+    return 0xffffffff;
+  }
+  CTCMapwho::OnDie(*(CTCMapwho **)(param_1 + 8));
+  CTCMapwho_ClearMessageQueue(iVar1);
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c191b0 158 0
+@@CALLERS 
+@@CALLEES CCharStringData::Release, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+@@STRINGS .\PKCTRRedblackTree.cpp	Warning: This object is not morphable
+@@DECOMP
+
+void FUN_00c191b0(void)
+
+{
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar1;
+  undefined *local_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  puStack_8 = &LAB_012120a2;
+  pvStack_c = ExceptionList;
+  local_10 = PTR_DAT_0139c900;
+  local_4 = 0;
+  ExceptionList = &pvStack_c;
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          *)&local_10,(CIsThingAlive *)".\\PKCTRRedblackTree.cpp");
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_0122e028);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_00000012);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)&DAT_012b1ae4);
+  pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            *)NScript::
+              operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                        (pCVar1,(CIsThingAlive *)"Warning: This object is not morphable");
+  NScript::
+  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+            (pCVar1,(CIsThingAlive *)&DAT_0129b208);
+  if (DAT_0143bb2c != (code *)0x0) {
+    (*DAT_0143bb2c)();
+  }
+  local_4 = 0xffffffff;
+  CCharStringData__Release();
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c19340 419 0
+@@CALLERS 
+@@CALLEES GetNoLevels, CCharStringData::Release, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, RedBlackTree_RemoveNode
+@@STRINGS .\PKCTRRedblackTree.cpp	Error: Key not found
+@@DECOMP
+
+void __thiscall FUN_00c19340(int param_1,int *param_2,undefined4 param_3)
+
+{
+  int *piVar1;
+  undefined4 *puVar2;
+  undefined4 uVar3;
+  int iVar4;
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar5;
+  undefined4 *puVar6;
+  undefined4 *puVar7;
+  undefined4 *puVar8;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 uStack_4;
+  
+  uVar3 = param_3;
+  piVar1 = param_2;
+  uStack_4 = 0xffffffff;
+  puStack_8 = &LAB_012120ce;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  if ((*(int *)(param_1 + 0x24) == 0) ||
+     (ExceptionList = &pvStack_c,
+     iVar4 = (**(code **)*param_2)(param_3,*(undefined4 *)(*(int *)(param_1 + 0x24) + 0x10)),
+     iVar4 == 0)) {
+    puVar8 = *(undefined4 **)(param_1 + 0x20);
+    puVar7 = (undefined4 *)(param_1 + 0xc);
+    if (puVar8 != puVar7) {
+      do {
+        iVar4 = (**(code **)*piVar1)(uVar3,puVar8[4]);
+        if (iVar4 != 0) break;
+        iVar4 = (**(code **)(*piVar1 + 4))(uVar3,puVar8[4]);
+        if (iVar4 == 0) {
+          puVar8 = (undefined4 *)puVar8[1];
+        }
+        else {
+          puVar8 = (undefined4 *)*puVar8;
+        }
+      } while (puVar8 != puVar7);
+      if (puVar8 != puVar7) goto LAB_00c1944b;
+    }
+    param_2 = (int *)PTR_DAT_0139c900;
+    uStack_4 = 0;
+    pCVar5 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&param_2,(CIsThingAlive *)".\\PKCTRRedblackTree.cpp");
+    pCVar5 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar5,(CIsThingAlive *)&DAT_0122e028);
+    pCVar5 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar5,(CIsThingAlive *)0x170);
+    pCVar5 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar5,(CIsThingAlive *)&DAT_012b1ae4);
+    pCVar5 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar5,(CIsThingAlive *)"Error: Key not found");
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar5,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    uStack_4 = 0xffffffff;
+    CCharStringData__Release();
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_3);
+  }
+  else {
+    puVar8 = *(undefined4 **)(param_1 + 0x24);
+  }
+LAB_00c1944b:
+  puVar7 = (undefined4 *)(param_1 + 0xc);
+  param_2 = puVar8;
+  if (((undefined4 *)*puVar8 != puVar7) && (puVar6 = (undefined4 *)puVar8[1], puVar6 != puVar7)) {
+    for (puVar2 = (undefined4 *)*puVar6; param_2 = puVar6, puVar2 != puVar7;
+        puVar2 = (undefined4 *)*puVar2) {
+      puVar6 = puVar2;
+    }
+  }
+  puVar6 = (undefined4 *)*param_2;
+  if (puVar6 == puVar7) {
+    puVar6 = (undefined4 *)param_2[1];
+  }
+  puVar6[2] = param_2[2];
+  piVar1 = (int *)param_2[2];
+  if (piVar1 == (int *)0x0) {
+    *(undefined4 **)(param_1 + 0x20) = puVar6;
+  }
+  else if (param_2 == (undefined4 *)*piVar1) {
+    *piVar1 = (int)puVar6;
+  }
+  else {
+    piVar1[1] = (int)puVar6;
+  }
+  if (param_2 != puVar8) {
+    puVar8[4] = param_2[4];
+  }
+  if (param_2[3] == 0) {
+    RedBlackTree_RemoveNode(puVar6);
+  }
+  CTexture::GetNoLevels(*(CTexture **)(param_1 + 4));
+  *(undefined4 *)(param_1 + 0x24) = 0;
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c199a0 289 0
+@@CALLERS 
+@@CALLEES TemplateConstruct_AndFindAnimation, Weapon_ExtractClassAndScale, AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 FUN_00c199a0(undefined4 param_1)
+
+{
+  int *piVar1;
+  int *piVar2;
+  int iVar3;
+  uint uVar4;
+  uint uVar5;
+  uint uVar6;
+  float10 fVar7;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01212150;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar6 = 0;
+  local_4 = 0;
+  piVar1 = (int *)TemplateConstruct_AndFindAnimation(param_1);
+  if (piVar1 != (int *)0x0) {
+    piVar2 = (int *)(**(code **)(*piVar1 + 0x14))();
+    iVar3 = (**(code **)(*piVar2 + 0x14))();
+    if (iVar3 != 0) {
+      do {
+        uVar5 = 0;
+        piVar2 = (int *)(**(code **)(*piVar1 + 0x14))();
+        iVar3 = (**(code **)(*piVar2 + 0x10))(uVar6);
+        if (iVar3 != 0) {
+          do {
+            piVar2 = (int *)(**(code **)(*piVar1 + 0x14))();
+            (**(code **)(*piVar2 + 0x18))(uVar6,uVar5);
+            fVar7 = (float10)Weapon_ExtractClassAndScale();
+            if ((float10)(float)puStack_8 < fVar7) {
+              fVar7 = (float10)Weapon_ExtractClassAndScale();
+              puStack_8 = (undefined1 *)(float)fVar7;
+            }
+            uVar5 = uVar5 + 1;
+            piVar2 = (int *)(**(code **)(*piVar1 + 0x14))();
+            uVar4 = (**(code **)(*piVar2 + 0x10))(uVar6);
+          } while (uVar5 < uVar4);
+        }
+        uVar6 = uVar6 + 1;
+        piVar2 = (int *)(**(code **)(*piVar1 + 0x14))();
+        uVar5 = (**(code **)(*piVar2 + 0x14))();
+      } while (uVar6 < uVar5);
+    }
+    local_4 = 0xffffffff;
+    EventQueue_ProcessWithTimeout();
+    ExceptionList = local_c;
+    return (float10)0.0;
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return (float10)_DAT_0122dee0;
+}
+
+
+@@ENDFUNC

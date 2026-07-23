@@ -1,0 +1,9 @@
+﻿game_root=C:\Programs\Steam\steamapps\common\Fable The Lost Chapters
+fable_exe=True
+fse_dll=True
+fse_folder=True
+finalalbion_wad=True
+finalalbion_folder=True
+loose_tng_count=397
+loose_lev_count=0
+generated=2026-07-18T13:45:29

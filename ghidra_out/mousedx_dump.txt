@@ -1,0 +1,170 @@
+INFO  Using log config file: jar:file:/D:/Subuwu/tools/ghidra-public/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (915 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (2207 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\GnuDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BytePatterns\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\JVM\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SystemEmulation\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\8051\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FileFormats\ghidra_scripts
+    D:\Documents\FableTLC\tools\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BSim\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\VersionTracking\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PDB\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\PIC\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Base\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Extensions\XEXLoaderWV\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\Cornelio\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\DATA\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Decompiler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\Atmel\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PyGhidra\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FunctionID\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessAnalyzer)  
+INFO  Opening project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessProject)  
+INFO  REPORT: Processing project file: /Fable.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: DumpFuncBytesAndC.java '0x00ab5f00' '0x00ab5f10' '0x00ab5f20' '0x00ab5f30' '0x00ab5f40' '0x00ab5f50' '0x00ab5f70' '0x00ab5f80' '0x00ab5f90' '0x00ab46e0'  (HeadlessAnalyzer)  
+INFO  SCRIPT: D:\Documents\FableTLC\tools\ghidra_scripts\DumpFuncBytesAndC.java (HeadlessAnalyzer)  
+INFO  DumpFuncBytesAndC.java> ==== ?PeekPos@CMouseDX@@UBEABVC2DVector@@XZ @ 00ab5f00 len=7 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+int __fastcall _PeekPos_CMouseDX__UBEABVC2DVector__XZ(int param_1)
+
+{
+  return param_1 + 0x3414;
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8d 81 14 34 00 00 c3  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?SetInputOn@CMouseDX@@UAEX_N@Z @ 00ab5f10 len=13 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+void __thiscall _SetInputOn_CMouseDX__UAEX_N_Z(int param_1,undefined1 param_2)
+
+{
+  *(undefined1 *)(param_1 + 0x343d) = param_2;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8a 44 24 04 88 81 3d 34 00 00 c2 04 00  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?SetRecentringOn@CMouseDX@@UAEX_N@Z @ 00ab5f20 len=13 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+void __thiscall _SetRecentringOn_CMouseDX__UAEX_N_Z(int param_1,undefined1 param_2)
+
+{
+  *(undefined1 *)(param_1 + 0x343e) = param_2;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8a 44 24 04 88 81 3e 34 00 00 c2 04 00  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?IsRecentringOn@CMouseDX@@UBE_NXZ @ 00ab5f30 len=7 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+undefined1 __fastcall _IsRecentringOn_CMouseDX__UBE_NXZ(int param_1)
+
+{
+  return *(undefined1 *)(param_1 + 0x343e);
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8a 81 3e 34 00 00 c3  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?SetDrawCursor@CMouseDX@@UAEX_N@Z @ 00ab5f40 len=13 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+void __thiscall _SetDrawCursor_CMouseDX__UAEX_N_Z(int param_1,undefined1 param_2)
+
+{
+  *(undefined1 *)(param_1 + 0x343f) = param_2;
+  return;
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8a 44 24 04 88 81 3f 34 00 00 c2 04 00  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?IsDrawingCursor@CMouseDX@@UBE_NXZ @ 00ab5f50 len=7 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+undefined1 __fastcall _IsDrawingCursor_CMouseDX__UBE_NXZ(int param_1)
+
+{
+  return *(undefined1 *)(param_1 + 0x343f);
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8a 81 3f 34 00 00 c3  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?IsLMBDown@CMouseDX@@UBE_NXZ @ 00ab5f70 len=7 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+undefined1 __fastcall _IsLMBDown_CMouseDX__UBE_NXZ(int param_1)
+
+{
+  return *(undefined1 *)(param_1 + 0x4848);
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8a 81 48 48 00 00 c3  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?IsMMBDown@CMouseDX@@UBE_NXZ @ 00ab5f80 len=7 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+undefined1 __fastcall _IsMMBDown_CMouseDX__UBE_NXZ(int param_1)
+
+{
+  return *(undefined1 *)(param_1 + 0x4849);
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8a 81 49 48 00 00 c3  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?IsRMBDown@CMouseDX@@UBE_NXZ @ 00ab5f90 len=7 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+undefined1 __fastcall _IsRMBDown_CMouseDX__UBE_NXZ(int param_1)
+
+{
+  return *(undefined1 *)(param_1 + 0x484a);
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8a 81 4a 48 00 00 c3  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?GetPos@CMouseDX@@UBEXPAVC2DVector@@@Z @ 00ab46e0 len=24 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+void __thiscall _GetPos_CMouseDX__UBEXPAVC2DVector___Z(int param_1,undefined4 *param_2)
+
+{
+  *param_2 = *(undefined4 *)(param_1 + 0x3414);
+  param_2[1] = *(undefined4 *)(param_1 + 0x3418);
+  return;
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8b 91 14 34 00 00 8b 44 24 04 89 10 8b 89 18 34
+00 00 89 48 04 c2 04 00  (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /Fable.exe (HeadlessAnalyzer)  

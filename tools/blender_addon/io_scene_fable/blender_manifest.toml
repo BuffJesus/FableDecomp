@@ -1,0 +1,19 @@
+schema_version = "1.0.0"
+
+id = "io_scene_fable"
+version = "0.1.0"
+name = "Fable TLC model importer"
+tagline = "Import Fable: The Lost Chapters meshes (textures, bones, LOD tree)"
+maintainer = "FableTLC RE project"
+type = "add-on"
+
+blender_version_min = "4.2.0"
+
+license = ["SPDX:MIT"]
+
+tags = ["Import-Export"]
+
+# The addon reads game .big files from disk (the user selects them) and imports
+# the read-only FableTLC parser modules from the repo's tools/ dir. No network.
+[permissions]
+files = "Import Fable .big asset banks selected by the user"

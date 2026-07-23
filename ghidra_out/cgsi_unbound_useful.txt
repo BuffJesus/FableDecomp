@@ -1,0 +1,3 @@
+# CGSI unbound-but-useful verbs (bind candidates for ForgeFSE)
+# slot | method | signature (cc ret(params)) | @addr
+
