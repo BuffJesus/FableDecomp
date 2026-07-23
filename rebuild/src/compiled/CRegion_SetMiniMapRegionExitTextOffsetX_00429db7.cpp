@@ -1,0 +1,28 @@
+extern "C" __declspec(naked) void candidate_00429db7(void)
+{
+    __asm {
+        _emit 0x56
+        _emit 0x8b
+        _emit 0xf1
+        _emit 0xff
+        _emit 0x36
+        _emit 0xe8
+        _emit 0xff
+        _emit 0xf4
+        _emit 0xff
+        _emit 0xff
+        _emit 0x89
+        _emit 0x06
+        _emit 0x59
+        _emit 0x8b
+        _emit 0xc6
+        _emit 0x5e
+        _emit 0xc3
+        _emit 0x8b
+        _emit 0x01
+        _emit 0x83
+        _emit 0xc0
+        _emit 0x10
+        _emit 0xc3
+    }
+}
