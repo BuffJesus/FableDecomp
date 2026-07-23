@@ -787,6 +787,90 @@ $catalog = @(
         TestSource = 'CTCVillage_GetIsHeroEnemyOfGuards_00658604_test.cpp'
         PassPattern = 'CTCVILLAGE_00658604_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b8fde0'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = 'CEngineInternalPrimitiveBase_ClearAllChildPrimitivesCEngineIntern_00b8fde0.cpp'
+        TestSource = 'CEngineInternalPrimitiveBase_ClearAllChildPrimitivesCEngineIntern_00b8fde0_test.cpp'
+        PassPattern = 'CEngineInternalPrimitiveBase_00b8fde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3aa80'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = 'CEngineInternalPrimitiveBase_GetAsOcclusionPrimitiveCEngineIntern_00b3aa80.cpp'
+        TestSource = 'CEngineInternalPrimitiveBase_GetAsOcclusionPrimitiveCEngineIntern_00b3aa80_test.cpp'
+        PassPattern = 'CEngineInternalPrimitiveBase_00b3aa80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006924d0'
+        Module = 'CCreatureActionBase'
+        Source = 'CCreatureActionBase_GetAnimExtraFlagsCCreatureActionBase_006924d0.cpp'
+        TestSource = 'CCreatureActionBase_GetAnimExtraFlagsCCreatureActionBase_006924d0_test.cpp'
+        PassPattern = 'CCreatureActionBase_006924d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006924f0'
+        Module = 'CCreatureActionBase'
+        Source = 'CCreatureActionBase_IsStrikeEventActiveCCreatureActionBa_006924f0.cpp'
+        TestSource = 'CCreatureActionBase_IsStrikeEventActiveCCreatureActionBa_006924f0_test.cpp'
+        PassPattern = 'CCreatureActionBase_006924f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692500'
+        Module = 'CCreatureActionBase'
+        Source = 'CCreatureActionBase_IsStrikeActionCCreatureActionBaseUBE_00692500.cpp'
+        TestSource = 'CCreatureActionBase_IsStrikeActionCCreatureActionBaseUBE_00692500_test.cpp'
+        PassPattern = 'CCreatureActionBase_00692500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062ea00'
+        Module = 'CCombatActionBase'
+        Source = 'CCombatActionBase_GetAnimDelayTimeCCombatActionBaseUBE_0062ea00.cpp'
+        TestSource = 'CCombatActionBase_GetAnimDelayTimeCCombatActionBaseUBE_0062ea00_test.cpp'
+        PassPattern = 'CCombatActionBase_0062ea00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b235d0'
+        Module = 'CIEngine'
+        Source = 'CIEngine_IsPreloadedCIEngineUBENXZ_00b235d0.cpp'
+        TestSource = 'CIEngine_IsPreloadedCIEngineUBENXZ_00b235d0_test.cpp'
+        PassPattern = 'CIEngine_00b235d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b23690'
+        Module = 'CIEngine'
+        Source = 'CIEngine_GetLoadingMemoryPoolCIEngineUAEPAVCM_00b23690.cpp'
+        TestSource = 'CIEngine_GetLoadingMemoryPoolCIEngineUAEPAVCM_00b23690_test.cpp'
+        PassPattern = 'CIEngine_00b23690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b236a0'
+        Module = 'CIEngine'
+        Source = 'CIEngine_GetAnimationMemoryPoolCIEngineUAEPAV_00b236a0.cpp'
+        TestSource = 'CIEngine_GetAnimationMemoryPoolCIEngineUAEPAV_00b236a0_test.cpp'
+        PassPattern = 'CIEngine_00b236a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be8dc0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_IsPatchCLandscapeBackgroundPatchEAEN_00be8dc0.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_IsPatchCLandscapeBackgroundPatchEAEN_00be8dc0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00be8dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cff30'
+        Module = 'CGameScriptThing'
+        Source = 'CGameScriptThing_IsUnconsciousCGameScriptThingUBENXZ_008cff30.cpp'
+        TestSource = 'CGameScriptThing_IsUnconsciousCGameScriptThingUBENXZ_008cff30_test.cpp'
+        PassPattern = 'CGameScriptThing_008cff30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008fcfe0'
+        Module = 'CAIStateGroupBase'
+        Source = 'CAIStateGroupBase_GetDebugTextCAIStateGroupBaseUBEPBVC_008fcfe0.cpp'
+        TestSource = 'CAIStateGroupBase_GetDebugTextCAIStateGroupBaseUBEPBVC_008fcfe0_test.cpp'
+        PassPattern = 'CAIStateGroupBase_008fcfe0_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH

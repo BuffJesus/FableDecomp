@@ -117,3 +117,15 @@ address	name	length	bytes
 00419603	CEngineInternalPrimitiveMeshBase::GetMeshEffect	47	568bf18b0e578b7c240c3b0f741c85c9740dff490475058b01ff50048326008b0785c089067403ff40045f5ec20400
 0041cc14	CTCLook::GetHeadAngularVelocityMaxXY	23	803d68873b01007407d9056c873b01c3d905d45c3701c3
 00658604	CTCVillage::GetIsHeroEnemyOfGuards	28	568bf1e864e40200e85f52e4ff33c93b86d40000005e0f9cc18ac1c3
+00b8fde0	?ClearAllChildPrimitives@CEngineInternalPrimitiveBase@@UAEXXZ	1	c3
+00b3aa80	?GetAsOcclusionPrimitive@CEngineInternalPrimitiveBase@@UAEPAVCEngineInternalPrimitiveOcclusionBase@@XZ	3	33c0c3
+006924d0	?GetAnimExtraFlags@CCreatureActionBase@@UBEKXZ	3	33c0c3
+006924f0	?IsStrikeEventActive@CCreatureActionBase@@UBE_NXZ	3	32c0c3
+00692500	?IsStrikeAction@CCreatureActionBase@@UBE_NXZ	3	32c0c3
+0062ea00	?GetAnimDelayTime@CCombatActionBase@@UBEJXZ	3	33c0c3
+00b235d0	?IsPreloaded@CIEngine@@UBE_NXZ	3	b001c3
+00b23690	?GetLoadingMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ	3	33c0c3
+00b236a0	?GetAnimationMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ	3	33c0c3
+00be8dc0	?IsPatch@CLandscapeBackgroundPatch@@EAE_NXZ	3	b001c3
+008cff30	?IsUnconscious@CGameScriptThing@@UBE_NXZ	3	32c0c3
+008fcfe0	?GetDebugText@CAIStateGroupBase@@UBEPBVCCharString@@XZ	3	33c0c3
