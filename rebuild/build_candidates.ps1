@@ -7367,6 +7367,293 @@ $catalog = @(
         TestSource = 'CGamePlayerInterface_IsOtherQuickAccessItemButtonHeld_00446060_test.cpp'
         PassPattern = 'batch10_part4_00446060_pass'
     }
+    [pscustomobject]@{
+        Address = '0044c158'
+        Module = 'CPhysicsDef'
+        Source = 'CPhysicsDef_GetSizeofClass_0044c158.cpp'
+        TestSource = 'CPhysicsDef_GetSizeofClass_0044c158_test.cpp'
+        PassPattern = 'CPhysicsDef_0044c158_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c269'
+        Module = 'CActionUseDef'
+        Source = 'CActionUseDef_GetSizeofClass_0044c269.cpp'
+        TestSource = 'CActionUseDef_GetSizeofClass_0044c269_test.cpp'
+        PassPattern = 'CActionUseDef_0044c269_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c313'
+        Module = 'CSpecialAbilitiesDrainLifeDataDef'
+        Source = 'CSpecialAbilitiesDrainLifeDataDef_GetSizeofClass_0044c313.cpp'
+        TestSource = 'CSpecialAbilitiesDrainLifeDataDef_GetSizeofClass_0044c313_test.cpp'
+        PassPattern = 'CSpecialAbilitiesDrainLifeDataDef_0044c313_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c329'
+        Module = 'CSpecialAbilitiesForcePushDataDef'
+        Source = 'CSpecialAbilitiesForcePushDataDef_GetSizeofClass_0044c329.cpp'
+        TestSource = 'CSpecialAbilitiesForcePushDataDef_GetSizeofClass_0044c329_test.cpp'
+        PassPattern = 'CSpecialAbilitiesForcePushDataDef_0044c329_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c33f'
+        Module = 'CCreatureStatsDef'
+        Source = 'CCreatureStatsDef_GetSizeofClass_0044c33f.cpp'
+        TestSource = 'CCreatureStatsDef_GetSizeofClass_0044c33f_test.cpp'
+        PassPattern = 'CCreatureStatsDef_0044c33f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c364'
+        Module = 'CCoopSpiritDef'
+        Source = 'CCoopSpiritDef_GetSizeofClass_0044c364.cpp'
+        TestSource = 'CCoopSpiritDef_GetSizeofClass_0044c364_test.cpp'
+        PassPattern = 'CCoopSpiritDef_0044c364_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c37a'
+        Module = 'CContextSensitiveItemDef'
+        Source = 'CContextSensitiveItemDef_GetSizeofClass_0044c37a.cpp'
+        TestSource = 'CContextSensitiveItemDef_GetSizeofClass_0044c37a_test.cpp'
+        PassPattern = 'CContextSensitiveItemDef_0044c37a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c390'
+        Module = 'CBonusItemDef'
+        Source = 'CBonusItemDef_GetSizeofClass_0044c390.cpp'
+        TestSource = 'CBonusItemDef_GetSizeofClass_0044c390_test.cpp'
+        PassPattern = 'CBonusItemDef_0044c390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c3a6'
+        Module = 'CHeroTitleDef'
+        Source = 'CHeroTitleDef_GetSizeofClass_0044c3a6.cpp'
+        TestSource = 'CHeroTitleDef_GetSizeofClass_0044c3a6_test.cpp'
+        PassPattern = 'CHeroTitleDef_0044c3a6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c3d4'
+        Module = 'CTattooDef'
+        Source = 'CTattooDef_GetSizeofClass_0044c3d4.cpp'
+        TestSource = 'CTattooDef_GetSizeofClass_0044c3d4_test.cpp'
+        PassPattern = 'CTattooDef_0044c3d4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c3ea'
+        Module = 'CHairCardDef'
+        Source = 'CHairCardDef_GetSizeofClass_0044c3ea.cpp'
+        TestSource = 'CHairCardDef_GetSizeofClass_0044c3ea_test.cpp'
+        PassPattern = 'CHairCardDef_0044c3ea_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c549'
+        Module = 'CCombatAbilityBlockCounterAttackDef'
+        Source = 'CCombatAbilityBlockCounterAttackDef_GetSizeofClass_0044c549.cpp'
+        TestSource = 'CCombatAbilityBlockCounterAttackDef_GetSizeofClass_0044c549_test.cpp'
+        PassPattern = 'CCombatAbilityBlockCounterAttackDef_0044c549_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c561'
+        Module = 'CCombatAbilityFlourishCounterAttackDef'
+        Source = 'CCombatAbilityFlourishCounterAttackDef_GetSizeofClass_0044c561.cpp'
+        TestSource = 'CCombatAbilityFlourishCounterAttackDef_GetSizeofClass_0044c561_test.cpp'
+        PassPattern = 'CCombatAbilityFlourishCounterAttackDef_0044c561_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c579'
+        Module = 'CCombatAbilityGetHitCounterAttackDef'
+        Source = 'CCombatAbilityGetHitCounterAttackDef_GetSizeofClass_0044c579.cpp'
+        TestSource = 'CCombatAbilityGetHitCounterAttackDef_GetSizeofClass_0044c579_test.cpp'
+        PassPattern = 'CCombatAbilityGetHitCounterAttackDef_0044c579_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c599'
+        Module = 'CCombatAbilityStrafeDef'
+        Source = 'CCombatAbilityStrafeDef_GetSizeofClass_0044c599.cpp'
+        TestSource = 'CCombatAbilityStrafeDef_GetSizeofClass_0044c599_test.cpp'
+        PassPattern = 'CCombatAbilityStrafeDef_0044c599_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c5b9'
+        Module = 'CCombatAbilityUseProjectileWeaponDef'
+        Source = 'CCombatAbilityUseProjectileWeaponDef_GetSizeofClass_0044c5b9.cpp'
+        TestSource = 'CCombatAbilityUseProjectileWeaponDef_GetSizeofClass_0044c5b9_test.cpp'
+        PassPattern = 'CCombatAbilityUseProjectileWeaponDef_0044c5b9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c5cf'
+        Module = 'CDragonActionSwoopDef'
+        Source = 'CDragonActionSwoopDef_GetSizeofClass_0044c5cf.cpp'
+        TestSource = 'CDragonActionSwoopDef_GetSizeofClass_0044c5cf_test.cpp'
+        PassPattern = 'CDragonActionSwoopDef_0044c5cf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c5e5'
+        Module = 'CDragonActionNapalmDef'
+        Source = 'CDragonActionNapalmDef_GetSizeofClass_0044c5e5.cpp'
+        TestSource = 'CDragonActionNapalmDef_GetSizeofClass_0044c5e5_test.cpp'
+        PassPattern = 'CDragonActionNapalmDef_0044c5e5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c5fb'
+        Module = 'CDragonActionHoverDef'
+        Source = 'CDragonActionHoverDef_GetSizeofClass_0044c5fb.cpp'
+        TestSource = 'CDragonActionHoverDef_GetSizeofClass_0044c5fb_test.cpp'
+        PassPattern = 'CDragonActionHoverDef_0044c5fb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c611'
+        Module = 'CAugmentationDef'
+        Source = 'CAugmentationDef_GetSizeofClass_0044c611.cpp'
+        TestSource = 'CAugmentationDef_GetSizeofClass_0044c611_test.cpp'
+        PassPattern = 'CAugmentationDef_0044c611_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c627'
+        Module = 'CAbilityDef'
+        Source = 'CAbilityDef_GetSizeofClass_0044c627.cpp'
+        TestSource = 'CAbilityDef_GetSizeofClass_0044c627_test.cpp'
+        PassPattern = 'CAbilityDef_0044c627_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c63d'
+        Module = 'CJackDragonDef'
+        Source = 'CJackDragonDef_GetSizeofClass_0044c63d.cpp'
+        TestSource = 'CJackDragonDef_GetSizeofClass_0044c63d_test.cpp'
+        PassPattern = 'CJackDragonDef_0044c63d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c653'
+        Module = 'CBriarRoseDef'
+        Source = 'CBriarRoseDef_GetSizeofClass_0044c653.cpp'
+        TestSource = 'CBriarRoseDef_GetSizeofClass_0044c653_test.cpp'
+        PassPattern = 'CBriarRoseDef_0044c653_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c669'
+        Module = 'CSnowTrollDef'
+        Source = 'CSnowTrollDef_GetSizeofClass_0044c669.cpp'
+        TestSource = 'CSnowTrollDef_GetSizeofClass_0044c669_test.cpp'
+        PassPattern = 'CSnowTrollDef_0044c669_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c67f'
+        Module = 'CGuildMasterDef'
+        Source = 'CGuildMasterDef_GetSizeofClass_0044c67f.cpp'
+        TestSource = 'CGuildMasterDef_GetSizeofClass_0044c67f_test.cpp'
+        PassPattern = 'CGuildMasterDef_0044c67f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c695'
+        Module = 'CSummonerDef'
+        Source = 'CSummonerDef_GetSizeofClass_0044c695.cpp'
+        TestSource = 'CSummonerDef_GetSizeofClass_0044c695_test.cpp'
+        PassPattern = 'CSummonerDef_0044c695_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c6ab'
+        Module = 'CExplosiveTrailDef'
+        Source = 'CExplosiveTrailDef_GetSizeofClass_0044c6ab.cpp'
+        TestSource = 'CExplosiveTrailDef_GetSizeofClass_0044c6ab_test.cpp'
+        PassPattern = 'CExplosiveTrailDef_0044c6ab_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f619'
+        Module = 'CThingMultiArrowShotDef'
+        Source = 'CThingMultiArrowShotDef_GetSizeofClass_0044f619.cpp'
+        TestSource = 'CThingMultiArrowShotDef_GetSizeofClass_0044f619_test.cpp'
+        PassPattern = 'CThingMultiArrowShotDef_0044f619_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c6b0'
+        Module = '_global'
+        Source = 'global_GFGetPreMainMemoryUsed_0044c6b0.cpp'
+        TestSource = 'global_GFGetPreMainMemoryUsed_0044c6b0_test.cpp'
+        PassPattern = '_global_0044c6b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c71f'
+        Module = '_global'
+        Source = 'global_operatornew_0044c71f.cpp'
+        TestSource = 'global_operatornew_0044c71f_test.cpp'
+        PassPattern = '_global_0044c71f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451763'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_00451763.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_00451763_test.cpp'
+        PassPattern = 'CActiveFile_00451763_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004517a4'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_004517a4.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_004517a4_test.cpp'
+        PassPattern = 'CActiveFile_004517a4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c160'
+        Module = 'CThingComponentSet'
+        Source = 'CThingComponentSet_CThingComponentSet_0044c160.cpp'
+        TestSource = 'CThingComponentSet_CThingComponentSet_0044c160_test.cpp'
+        PassPattern = 'CThingComponentSet_0044c160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f6a0'
+        Module = 'CThingComponentSet'
+        Source = 'CThingComponentSet_CThingComponentSet_0044f6a0.cpp'
+        TestSource = 'CThingComponentSet_CThingComponentSet_0044f6a0_test.cpp'
+        PassPattern = 'CThingComponentSet_0044f6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450ba0'
+        Module = 'CThingComponentSet'
+        Source = 'CThingComponentSet_CThingComponentSet_00450ba0.cpp'
+        TestSource = 'CThingComponentSet_CThingComponentSet_00450ba0_test.cpp'
+        PassPattern = 'CThingComponentSet_00450ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c180'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044c180.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044c180_test.cpp'
+        PassPattern = 'Dest_val_0044c180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c1a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044c1a0.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044c1a0_test.cpp'
+        PassPattern = '_Dest_val_0044c1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f6e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044f6e0.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044f6e0_test.cpp'
+        PassPattern = 'DestVal_0044f6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f7fe'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f7fe.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f7fe_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044f7fe_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044fa51'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fa51.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fa51_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044fa51_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450a3c'
+        Module = 'vector<CIntelligentPointer<CThing_const_> '
+        Source = 'vectorCIntelligentPointerCThingconst_Destroy_00450a3c.cpp'
+        TestSource = 'vectorCIntelligentPointerCThingconst_Destroy_00450a3c_test.cpp'
+        PassPattern = 'vecdestroy_00450a3c_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
