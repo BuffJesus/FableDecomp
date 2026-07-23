@@ -64,6 +64,7 @@ def _is_prologue(b, p):
     if p >= len(b): return False
     x = b[p]
     if x in (0x55, 0x56, 0x57, 0x53): return True          # push ebp/esi/edi/ebx
+    if x in (0xC3, 0xC2): return True                      # adjacent empty/retN tiny function
     if x == 0x6A: return True                               # push imm8 (e.g. push -1 SEH, or push size)
     if x == 0xB8: return True                               # mov eax,imm32 (const-return fn)
     if p + 1 < len(b):
