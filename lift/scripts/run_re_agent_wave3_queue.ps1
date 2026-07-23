@@ -1,7 +1,8 @@
 param(
     [int]$MaxAttemptsPerTarget = 2,
     [int]$MaxTargetsPerRun = 16,
-    [int]$TargetTimeoutMinutes = 35
+    [int]$TargetTimeoutMinutes = 35,
+    [int]$RefreshWaitMinutes = 5
 )
 
 $ErrorActionPreference = 'Stop'
@@ -216,8 +217,17 @@ if (Test-Path -LiteralPath $refreshPidPath) {
     try {
         $refreshPid = [int](Get-Content -LiteralPath $refreshPidPath -Raw)
         if (Test-ProcessCommand $refreshPid 'run_rebuild_refresh.ps1') {
-            Write-QueueLog "DEFER rebuild refresh owns Ghidra pid=$refreshPid"
-            exit 0
+            $refreshDeadline = (Get-Date).AddMinutes($RefreshWaitMinutes)
+            Write-QueueLog "WAIT rebuild refresh owns Ghidra pid=$refreshPid deadline=$($refreshDeadline.ToString('HH:mm:ss'))"
+            do {
+                Start-Sleep -Seconds 15
+            } while ((Get-Date) -lt $refreshDeadline -and
+                (Test-ProcessCommand $refreshPid 'run_rebuild_refresh.ps1'))
+            if (Test-ProcessCommand $refreshPid 'run_rebuild_refresh.ps1') {
+                Write-QueueLog "DEFER rebuild refresh still active pid=$refreshPid after=${RefreshWaitMinutes}m"
+                exit 0
+            }
+            Write-QueueLog "RESUME rebuild refresh released Ghidra pid=$refreshPid"
         }
     } catch {}
 }

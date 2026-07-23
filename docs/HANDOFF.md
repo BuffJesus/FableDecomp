@@ -3903,3 +3903,8 @@ build-from-user-copy is the legally-defensible pattern.
 - Curated status is now **91/91** compile+behavior PASS (**0.184%**), with 33 raw retail matches,
   17 relocation-normalized matches, 68 verified lifts overall, and about **405** promotions left to
   the first 1% milestone. The remaining uncompiled agent queue fell from 31 to 30.
+- Fixed a deterministic scheduled-task collision: `FableTLC Rebuild Refresh` starts roughly 30
+  seconds before `FableTLC Auto RE Wave 2`, so the latter had begun deferring every cycle. Wave 3
+  now waits up to five minutes for a verified live refresh PID and resumes immediately after Ghidra
+  is released. A manual scheduled-task smoke run entered `CNavQuadTree::Initialise @ 0x00A7A8D0`
+  at 19:11:30, proving the unattended loop is active again.

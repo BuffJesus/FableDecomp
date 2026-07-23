@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.1.0",
-  "generatedAt": "2026-07-22T19:01:33-06:00",
-  "sourceDigest": "8e15ab67145d8a880a397d3af61137c4357001d0812240c825dd7d1fe233dd33",
+  "generatedAt": "2026-07-22T19:11:16-06:00",
+  "sourceDigest": "963518bcb989bfb5255915122ffdbfca0320ee15353f927d86636d3a69707a0c",
   "target": {
     "executable": "Fable.exe",
     "imageBase": "0x00400000",
@@ -17,7 +17,7 @@
     "ambiguousExactNameMatches": 76,
     "unmatched": 413,
     "ownerAlignedRecommendations": 462,
-    "verifiedEngineFunctions": 51,
+    "verifiedEngineFunctions": 53,
     "hookApprovedBindings": 0
   },
   "policy": {
@@ -34291,6 +34291,31 @@
       ]
     },
     {
+      "address": "0x00662020",
+      "rva": "0x00262020",
+      "qualifiedName": "Getter_FieldE0_FC",
+      "module": "_global",
+      "callingConvention": "__fastcall",
+      "returnType": "ulong",
+      "parameterCount": 1,
+      "parameterTypesText": "Getter_FieldE0_FC_OuterOverlay const *",
+      "prototypeComplete": true,
+      "cleanDecompile": "unmeasured",
+      "agentVerdict": "PASS",
+      "compiledStatus": "PASS",
+      "behaviorTest": "PASS",
+      "retailParity": "MATCH",
+      "liftGrade": "",
+      "ownerRelevance": "none",
+      "engineImplementationVerified": true,
+      "score": 140,
+      "evidence": [
+        "exact-leaf-name",
+        "complete-prototype",
+        "retail-byte-match"
+      ]
+    },
+    {
       "address": "0x00662030",
       "rva": "0x00262030",
       "qualifiedName": "GetAirResistance",
@@ -35055,6 +35080,31 @@
         "exact-leaf-name",
         "complete-prototype",
         "retail-byte-match"
+      ]
+    },
+    {
+      "address": "0x00BF3980",
+      "rva": "0x007F3980",
+      "qualifiedName": "CEngineLandscapePatch::RelocateData",
+      "module": "CEngineLandscapePatch",
+      "callingConvention": "__thiscall",
+      "returnType": "void",
+      "parameterCount": 5,
+      "parameterTypesText": "CEngineLandscapePatch *,long,void *,void *,long",
+      "prototypeComplete": true,
+      "cleanDecompile": "yes",
+      "agentVerdict": "PASS",
+      "compiledStatus": "PASS",
+      "behaviorTest": "PASS",
+      "retailParity": "RELOCATION_MATCH",
+      "liftGrade": "",
+      "ownerRelevance": "none",
+      "engineImplementationVerified": true,
+      "score": 135,
+      "evidence": [
+        "exact-leaf-name",
+        "complete-prototype",
+        "retail-relocation-match"
       ]
     },
     {
