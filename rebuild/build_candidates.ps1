@@ -619,6 +619,20 @@ $catalog = @(
         TestSource = 'CEngineLandscapePatch_RenderForeground_00bf4570_test.cpp'
         PassPattern = 'LANDSCAPE_PATCH_RENDER_FOREGROUND_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c19f90'
+        Module = '_global'
+        Source = 'Global_GetterField84_00c19f90.cpp'
+        TestSource = 'Global_GetterField84_00c19f90_test.cpp'
+        PassPattern = 'GETTER_FIELD84_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d7b0'
+        Module = '_global'
+        Source = 'Global_CTCInventoryCheckSlotTypeNegative_00c2d7b0.cpp'
+        TestSource = 'Global_CTCInventoryCheckSlotTypeNegative_00c2d7b0_test.cpp'
+        PassPattern = 'CTCINVENTORY_CHECKSLOTTYPENEGATIVE_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
