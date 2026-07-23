@@ -62,7 +62,7 @@
    "calling_convention": "",
    "return_type": "",
    "parameter_types": "",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00401490",
@@ -161,7 +161,7 @@
    "calling_convention": "__stdcall",
    "return_type": "void",
    "parameter_types": "void *,uint,int,_func_void_ptr_void_ptr *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00403a00",
@@ -233,7 +233,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00404a80",
@@ -287,7 +287,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CIME *,bool",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00405ba0",
@@ -728,7 +728,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0040f470",
@@ -791,7 +791,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CComponent *,CRGBColour *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00412020",
@@ -836,7 +836,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CThingTrackNode *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00412130",
@@ -971,7 +971,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00413480",
@@ -980,7 +980,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00414c90",
@@ -1736,7 +1736,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0041a810",
@@ -1799,7 +1799,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0041bc90",
@@ -2006,7 +2006,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0041ca1c",
@@ -2015,7 +2015,7 @@
    "calling_convention": "",
    "return_type": "",
    "parameter_types": "",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0041ca22",
@@ -2024,7 +2024,7 @@
    "calling_convention": "",
    "return_type": "",
    "parameter_types": "",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0041ca31",
@@ -2051,7 +2051,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CObservable *,CObserver *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0041ca6d",
@@ -2060,7 +2060,7 @@
    "calling_convention": "",
    "return_type": "",
    "parameter_types": "",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0041cc14",
@@ -2096,7 +2096,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0041ccd7",
@@ -2105,7 +2105,7 @@
    "calling_convention": "",
    "return_type": "",
    "parameter_types": "",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0041cd6f",
@@ -2114,7 +2114,7 @@
    "calling_convention": "",
    "return_type": "",
    "parameter_types": "",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0041cd83",
@@ -2123,7 +2123,7 @@
    "calling_convention": "",
    "return_type": "",
    "parameter_types": "",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0041cd89",
@@ -2339,7 +2339,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00428c8f",
@@ -2366,7 +2366,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0042913a",
@@ -2456,7 +2456,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CMemoryAllocatorVariableSize *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004293db",
@@ -2816,7 +2816,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CRegion *,CCharString *,float",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0042a141",
@@ -4454,7 +4454,7 @@
    "calling_convention": "__fastcall",
    "return_type": "bool",
    "parameter_types": "CThingBuilding * *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004364c0",
@@ -4481,7 +4481,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00436830",
@@ -4490,7 +4490,7 @@
    "calling_convention": "__thiscall",
    "return_type": "float *",
    "parameter_types": "CTopologySizeGrid *,long,long",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004368a0",
@@ -5417,7 +5417,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0043df80",
@@ -6065,7 +6065,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00440650",
@@ -6119,7 +6119,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00440a70",
@@ -6137,7 +6137,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00440ba0",
@@ -6245,7 +6245,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004422f0",
@@ -6317,7 +6317,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00442cc0",
@@ -6326,7 +6326,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00442d30",
@@ -6344,7 +6344,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00442f00",
@@ -6353,7 +6353,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00443010",
@@ -6362,7 +6362,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00443080",
@@ -6371,7 +6371,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00443140",
@@ -6524,7 +6524,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCMapwho *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00444e90",
@@ -6731,7 +6731,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CShaderPreParser *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00445ae0",
@@ -6956,7 +6956,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_> *,pair<unsigned_long,CCountedPointer<CFaction>_> *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00448080",
@@ -7226,7 +7226,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044c030",
@@ -7235,7 +7235,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044c158",
@@ -7280,7 +7280,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CCarrySlotDef *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044c269",
@@ -7298,7 +7298,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CHeroMarriageDef *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044c313",
@@ -7388,7 +7388,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CCombatAbilityData *,CDataOutputStream &,CCombatAbilityData const &",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044c549",
@@ -7568,7 +7568,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0044f3b2",
@@ -7577,7 +7577,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044f619",
@@ -7595,7 +7595,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044f6a0",
@@ -7613,7 +7613,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044f6e0",
@@ -7631,7 +7631,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0044f71b",
@@ -7640,7 +7640,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044f753",
@@ -7649,7 +7649,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044f7c3",
@@ -7658,7 +7658,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044f7fe",
@@ -7676,7 +7676,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044fa19",
@@ -7685,7 +7685,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044fa51",
@@ -7703,7 +7703,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044fd16",
@@ -7712,7 +7712,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044fd55",
@@ -7721,7 +7721,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044fd94",
@@ -7730,7 +7730,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044fe12",
@@ -7739,7 +7739,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044fe5f",
@@ -7748,7 +7748,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044fea5",
@@ -7757,7 +7757,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044feeb",
@@ -7766,7 +7766,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044ff31",
@@ -7775,7 +7775,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0044ff77",
@@ -7784,7 +7784,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0044ffbd",
@@ -7793,7 +7793,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450142",
@@ -7802,7 +7802,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CCountedPointer<std::vector<CCharString,std::allocator<CCharString>_>_> *,vector<CCharString,std::allocator<CCharString>_> *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004506c0",
@@ -7811,7 +7811,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "LTextTreeWalkThrough *,LTextBinNode *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004506ed",
@@ -7820,7 +7820,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "LTextTreeWalkThrough *,LTextBinNode *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045071a",
@@ -7829,7 +7829,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "LTextTreeWalkThrough *,LTextBinNode *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450747",
@@ -7838,7 +7838,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "LTextTreeWalkThrough *,LTextBinNode *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450774",
@@ -7847,7 +7847,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "LTextTreeWalkThrough *,LTextBinNode *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004507a1",
@@ -7856,7 +7856,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "LTextTreeWalkThrough *,LTextBinNode *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004507ce",
@@ -7865,7 +7865,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "LTextTreeWalkThrough *,LTextBinNode *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004507fb",
@@ -7874,7 +7874,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "LTextTreeWalkThrough *,LTextBinNode *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450828",
@@ -7883,7 +7883,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "LTextTreeWalkThrough *,LTextBinNode *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450855",
@@ -7892,7 +7892,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045087c",
@@ -7901,7 +7901,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "LTextTreeWalkThrough *,LTextBinNode *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450903",
@@ -7910,7 +7910,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "LTextTreeWalkThrough *,LTextBinNode *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450930",
@@ -7919,7 +7919,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "LTextTreeWalkThrough *,LTextBinNode *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045095d",
@@ -7928,7 +7928,7 @@
    "calling_convention": "__thiscall",
    "return_type": "bool",
    "parameter_types": "CEngineInternalPrimitiveMeshBase *,CIVCountedPointer<CEngineMeshEffect> *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004509d9",
@@ -7937,7 +7937,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004509f8",
@@ -7946,7 +7946,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450a3c",
@@ -7964,7 +7964,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_> *,CIntelligentPointer<CThing_const_> *,CIntelligentPointer<CThing_const_> *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00450a74",
@@ -7973,7 +7973,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_> *,CIntelligentPointer<CThing_const_> *,CIntelligentPointer<CThing_const_> *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00450ab2",
@@ -7982,7 +7982,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_> *,CIntelligentPointer<CThing_const_> *,CIntelligentPointer<CThing_const_> *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00450ace",
@@ -7991,7 +7991,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_> *,CIntelligentPointer<CThing_const_> *,CIntelligentPointer<CThing_const_> *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00450b79",
@@ -8000,7 +8000,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450ba0",
@@ -8018,7 +8018,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_> *,pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_> *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450be3",
@@ -8027,7 +8027,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450dab",
@@ -8036,7 +8036,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450e92",
@@ -8045,7 +8045,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450edf",
@@ -8054,7 +8054,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450f50",
@@ -8063,7 +8063,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450fac",
@@ -8072,7 +8072,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00450ff9",
@@ -8081,7 +8081,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00451046",
@@ -8090,7 +8090,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004510bf",
@@ -8099,7 +8099,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045110c",
@@ -8108,7 +8108,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00451159",
@@ -8117,7 +8117,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004511a6",
@@ -8126,7 +8126,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004511f3",
@@ -8135,7 +8135,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00451240",
@@ -8144,7 +8144,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045128d",
@@ -8153,7 +8153,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004512da",
@@ -8162,7 +8162,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045151c",
@@ -8171,7 +8171,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004516e7",
@@ -8180,7 +8180,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCEnemy *,CCharString *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00451763",
@@ -8216,7 +8216,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004518e1",
@@ -8225,7 +8225,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00451940",
@@ -8270,7 +8270,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00451a85",
@@ -8288,7 +8288,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00451b07",
@@ -8297,7 +8297,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00451b4b",
@@ -8315,7 +8315,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00451e11",
@@ -8324,7 +8324,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00451e59",
@@ -8333,7 +8333,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00451efd",
@@ -8342,7 +8342,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00451fa1",
@@ -8351,7 +8351,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00452045",
@@ -8360,7 +8360,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00452086",
@@ -8369,7 +8369,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045212a",
@@ -8378,7 +8378,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00452184",
@@ -8387,7 +8387,7 @@
    "calling_convention": "__thiscall",
    "return_type": "bool",
    "parameter_types": "CEngine *,C3DBoundingBox *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004521b2",
@@ -8396,7 +8396,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00452256",
@@ -8405,7 +8405,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045228f",
@@ -8414,7 +8414,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004522c6",
@@ -8423,7 +8423,7 @@
    "calling_convention": "__thiscall",
    "return_type": "bool",
    "parameter_types": "CEngine *,C3DBoundingBox *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004522f4",
@@ -8432,7 +8432,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00452593",
@@ -8450,7 +8450,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CSpecialAbilitiesForcePushDataDef *,CPersistContext &",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004525e3",
@@ -8477,7 +8477,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CGuiControlComboBox *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004526b3",
@@ -8486,7 +8486,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CGuiControlComboBox *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004526f7",
@@ -8495,7 +8495,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045290a",
@@ -8504,7 +8504,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00452a60",
@@ -8513,7 +8513,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00452b04",
@@ -8531,7 +8531,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00452b4d",
@@ -8540,7 +8540,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CScrollingComponent *,ulong",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00452b93",
@@ -8549,7 +8549,7 @@
    "calling_convention": "__thiscall",
    "return_type": "bool",
    "parameter_types": "CEngine *,C3DBoundingBox *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00452bb4",
@@ -8558,7 +8558,7 @@
    "calling_convention": "__thiscall",
    "return_type": "bool",
    "parameter_types": "CEngine *,C3DBoundingBox *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00452c94",
@@ -8567,7 +8567,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00452ccd",
@@ -8603,7 +8603,7 @@
    "calling_convention": "__thiscall",
    "return_type": "bool",
    "parameter_types": "CEngine *,C3DBoundingBox *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045322c",
@@ -8612,7 +8612,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004532c3",
@@ -8621,7 +8621,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004532e6",
@@ -8630,7 +8630,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453327",
@@ -8639,7 +8639,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045334a",
@@ -8648,7 +8648,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004533e3",
@@ -8657,7 +8657,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453406",
@@ -8666,7 +8666,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453483",
@@ -8675,7 +8675,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004534a6",
@@ -8684,7 +8684,7 @@
    "calling_convention": "__thiscall",
    "return_type": "CTexture *",
    "parameter_types": "CDisplayManager *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453536",
@@ -8693,7 +8693,7 @@
    "calling_convention": "__thiscall",
    "return_type": "CTexture *",
    "parameter_types": "CDisplayManager *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00453607",
@@ -8702,7 +8702,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453630",
@@ -8711,7 +8711,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004536a9",
@@ -8756,7 +8756,7 @@
    "calling_convention": "__thiscall",
    "return_type": "CBalverineBattleDef *",
    "parameter_types": "CBalverineBattleDef *,CBalverineBattleDef *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453810",
@@ -8774,7 +8774,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CSmashableDef *,CDefClassBase const *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453884",
@@ -8810,7 +8810,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CApprenticeSpeedTest *,CPersistContext *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045390c",
@@ -8828,7 +8828,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CSpecialAbilitiesDrainLifeDataDef *,CDefClassBase const *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453af9",
@@ -8837,7 +8837,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453b15",
@@ -8846,7 +8846,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CCompressedMemoryDataInputStream *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453b48",
@@ -8864,7 +8864,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453bc4",
@@ -8873,7 +8873,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCInventoryItem *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453be3",
@@ -8927,7 +8927,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CHairCardDef *,CDefClassBase const *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453e51",
@@ -8936,7 +8936,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CAIStateGroup_HoverWanderAroundThing *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453e80",
@@ -8981,7 +8981,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CCombatAbilityFlourishCounterAttackDef *,CDefClassBase const *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453ef1",
@@ -8990,7 +8990,7 @@
    "calling_convention": "__thiscall",
    "return_type": "CCombatAbilityMeleeAttackData *",
    "parameter_types": "CCombatAbilityMeleeAttackData *,CCombatAbilityMeleeAttackData *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453f18",
@@ -8999,7 +8999,7 @@
    "calling_convention": "__thiscall",
    "return_type": "CCombatAbilityData *",
    "parameter_types": "CCombatAbilityData *,CCombatAbilityData *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00453f3f",
@@ -9008,7 +9008,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CCombatAbilityGetHitCounterAttackDef *,CDefClassBase const *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00453f5e",
@@ -9053,7 +9053,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CDragonActionHoverDef *,CDefClassBase const *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454083",
@@ -9071,7 +9071,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CAbilityDef *,CDefClassBase const *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004540ec",
@@ -9107,7 +9107,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CGuildMasterDef *,CDefClassBase const *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454267",
@@ -9134,7 +9134,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004543c6",
@@ -9143,7 +9143,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045442f",
@@ -9161,7 +9161,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CActiveFile *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004545ee",
@@ -9170,7 +9170,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045460a",
@@ -9179,7 +9179,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCInventoryItem *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454643",
@@ -9197,7 +9197,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454690",
@@ -9206,7 +9206,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CTextureReplacementDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045470e",
@@ -9215,7 +9215,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045473a",
@@ -9233,7 +9233,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CHitLocationsDef *,CDefClassBase const *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004549b2",
@@ -9242,7 +9242,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454a00",
@@ -9251,7 +9251,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454a32",
@@ -9260,7 +9260,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454a64",
@@ -9269,7 +9269,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454a96",
@@ -9278,7 +9278,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454ab2",
@@ -9287,7 +9287,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CCombatAbilityBlockCounterAttackDef *,CDefClassBase const *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454ad1",
@@ -9296,7 +9296,7 @@
    "calling_convention": "__thiscall",
    "return_type": "CTexture *",
    "parameter_types": "CDisplayManager *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454b4c",
@@ -9305,7 +9305,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454b88",
@@ -9314,7 +9314,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CThingBuildingDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00454cfa",
@@ -9323,7 +9323,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454dc5",
@@ -9332,7 +9332,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CThingHolySiteDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00454dcb",
@@ -9341,7 +9341,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CThingHolySiteDef *,CPersistContext &",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454e1b",
@@ -9350,7 +9350,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CThingMarkerDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00454e21",
@@ -9359,7 +9359,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CThingMarkerDef *,CPersistContext &",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454e5b",
@@ -9368,7 +9368,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454f11",
@@ -9377,7 +9377,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CThingSwitchDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00454f15",
@@ -9386,7 +9386,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CThingSwitchDef *,CPersistContext &",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454f59",
@@ -9395,7 +9395,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CThingVillageDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00454f5f",
@@ -9404,7 +9404,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CThingVillageDef *,CPersistContext &",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00454fbd",
@@ -9413,7 +9413,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CThingPhysicalSwitchDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00454fc3",
@@ -9422,7 +9422,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CThingPhysicalSwitchDef *,CPersistContext &",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004554a4",
@@ -9431,7 +9431,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CInventoryDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004554aa",
@@ -9440,7 +9440,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455584",
@@ -9449,7 +9449,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CInventoryCategoryDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004555f8",
@@ -9458,7 +9458,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045569c",
@@ -9467,7 +9467,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004556ca",
@@ -9476,7 +9476,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CMessageEventDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004556ce",
@@ -9485,7 +9485,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CGuiControlComboBox *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455712",
@@ -9494,7 +9494,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004557b6",
@@ -9503,7 +9503,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045585a",
@@ -9512,7 +9512,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455893",
@@ -9521,7 +9521,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSkyDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00455899",
@@ -9530,7 +9530,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CEngineSubPrimitiveText *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004558d9",
@@ -9539,7 +9539,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CEnvironmentDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00455c1d",
@@ -9548,7 +9548,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CEngineSubPrimitiveText *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455c60",
@@ -9557,7 +9557,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CEnvironmentThemeDaySetDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00455c64",
@@ -9566,7 +9566,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CEngineSubPrimitiveText *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455ca7",
@@ -9575,7 +9575,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CEngineLocalDetailGeneratorDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00455cab",
@@ -9584,7 +9584,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CEngineSubPrimitiveText *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455d22",
@@ -9593,7 +9593,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CMaterialDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00455d28",
@@ -9602,7 +9602,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455d44",
@@ -9611,7 +9611,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CPatchTesselationEdgeStrip *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455ddd",
@@ -9620,7 +9620,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CCombatTypeDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00455de3",
@@ -9629,7 +9629,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455dff",
@@ -9638,7 +9638,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCAssassinRush *,CThingCreatureBase *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455e59",
@@ -9647,7 +9647,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCInventoryItem *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455e8c",
@@ -9656,7 +9656,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSimVoicesDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00455e90",
@@ -9665,7 +9665,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455ec6",
@@ -9674,7 +9674,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSoundThemeDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00455eca",
@@ -9683,7 +9683,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CEngineSubPrimitiveText *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455f14",
@@ -9692,7 +9692,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CThingNoiseDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00455f1a",
@@ -9701,7 +9701,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CThingNoiseDef *,CPersistContext &",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00455ff0",
@@ -9710,7 +9710,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CCreatureGenerationFamilyDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00455ff4",
@@ -9719,7 +9719,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456087",
@@ -9728,7 +9728,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CHeroAbilityDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045608d",
@@ -9737,7 +9737,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004560a9",
@@ -9746,7 +9746,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CPatchTesselationEdgeStrip *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045617c",
@@ -9755,7 +9755,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CHeroStatsDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00456182",
@@ -9764,7 +9764,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456244",
@@ -9773,7 +9773,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTextureReplacementDef *,CDefClassBase const *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004563ad",
@@ -9782,7 +9782,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004563c9",
@@ -9791,7 +9791,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCInventoryItem *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004563fe",
@@ -9800,7 +9800,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045645d",
@@ -9809,7 +9809,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CSystemRegistry *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004564b1",
@@ -9818,7 +9818,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CEntitySoundDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004564e5",
@@ -9827,7 +9827,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CRegionDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00456511",
@@ -9836,7 +9836,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CFactionDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00456515",
@@ -9845,7 +9845,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456531",
@@ -9854,7 +9854,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045655e",
@@ -9863,7 +9863,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CCameraModeDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00456779",
@@ -9872,7 +9872,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004567bb",
@@ -9881,7 +9881,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CCameraManagerDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004567bf",
@@ -9890,7 +9890,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004567db",
@@ -9899,7 +9899,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CPatchTesselationEdgeStrip *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456814",
@@ -9908,7 +9908,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CCameraManagerSetDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00456818",
@@ -9917,7 +9917,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456851",
@@ -9926,7 +9926,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045687f",
@@ -9935,7 +9935,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CHeroPostcardGeneratorDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00456883",
@@ -9944,7 +9944,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004568bc",
@@ -9953,7 +9953,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456903",
@@ -9962,7 +9962,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456948",
@@ -9971,7 +9971,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004569a1",
@@ -9980,7 +9980,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CExpressionDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00456ad9",
@@ -9989,7 +9989,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456b7d",
@@ -9998,7 +9998,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456c21",
@@ -10007,7 +10007,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineLightingManager *,CEngineCamera *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456cc5",
@@ -10016,7 +10016,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456cfb",
@@ -10025,7 +10025,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "COpinionReactionMaskDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00456cff",
@@ -10034,7 +10034,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CEngineSubPrimitiveText *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456d3f",
@@ -10043,7 +10043,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "COpinionDeedMaskDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00456d43",
@@ -10052,7 +10052,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CEngineSubPrimitiveText *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456d9e",
@@ -10061,7 +10061,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "COpinionDeedEffectsDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00456da4",
@@ -10070,7 +10070,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456dc0",
@@ -10079,7 +10079,7 @@
    "calling_convention": "__fastcall",
    "return_type": "void",
    "parameter_types": "allocator<CMacro> *,CMacro *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456df5",
@@ -10088,7 +10088,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CCombatDialogueDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00456eed",
@@ -10097,7 +10097,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456f23",
@@ -10106,7 +10106,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CVillagerInteractionsDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00456f27",
@@ -10115,7 +10115,7 @@
    "calling_convention": "__thiscall",
    "return_type": "bool",
    "parameter_types": "CEngine *,C3DBoundingBox *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456f55",
@@ -10124,7 +10124,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456fb8",
@@ -10133,7 +10133,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "COpinionPersonalityDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00456fbc",
@@ -10142,7 +10142,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00456fd8",
@@ -10151,7 +10151,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "COpinionPersonalityDef *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457028",
@@ -10160,7 +10160,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "COpinionSourceDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045702e",
@@ -10169,7 +10169,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045704a",
@@ -10178,7 +10178,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCInventoryItem *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457095",
@@ -10187,7 +10187,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesAssassinRushDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045709b",
@@ -10196,7 +10196,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004570b7",
@@ -10205,7 +10205,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCInventoryItem *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457110",
@@ -10214,7 +10214,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesBattleChargeDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00457116",
@@ -10223,7 +10223,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457132",
@@ -10232,7 +10232,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CPatchTesselationEdgeStrip *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004571e8",
@@ -10241,7 +10241,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesMultiStrikeDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004571ee",
@@ -10250,7 +10250,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045720a",
@@ -10259,7 +10259,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CPatchTesselationEdgeStrip *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457285",
@@ -10268,7 +10268,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesMultiArrowDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045728b",
@@ -10277,7 +10277,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004572a7",
@@ -10286,7 +10286,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CPatchTesselationEdgeStrip *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004573db",
@@ -10295,7 +10295,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesBerserkDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004573e1",
@@ -10304,7 +10304,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004575da",
@@ -10313,7 +10313,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesBulletTimeDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004575e0",
@@ -10322,7 +10322,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004576b9",
@@ -10331,7 +10331,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesForcePushDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004576bf",
@@ -10340,7 +10340,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004576db",
@@ -10349,7 +10349,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CPatchTesselationEdgeStrip *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457738",
@@ -10358,7 +10358,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesEnflameDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045773e",
@@ -10367,7 +10367,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x0045775a",
@@ -10376,7 +10376,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCInventoryItem *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457829",
@@ -10385,7 +10385,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesPhysicalShieldDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045782f",
@@ -10394,7 +10394,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457916",
@@ -10403,7 +10403,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesDrainLifeDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045791a",
@@ -10412,7 +10412,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457936",
@@ -10421,7 +10421,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CPatchTesselationEdgeStrip *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004579a2",
@@ -10430,7 +10430,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesHealLifeDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004579a6",
@@ -10439,7 +10439,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004579c2",
@@ -10448,7 +10448,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CPatchTesselationEdgeStrip *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457a09",
@@ -10457,7 +10457,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesGhostSwordDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00457a67",
@@ -10466,7 +10466,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457ac4",
@@ -10475,7 +10475,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesTurncoatSpellDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00457ac8",
@@ -10484,7 +10484,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457b52",
@@ -10493,7 +10493,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesFireballSpellDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00457b56",
@@ -10502,7 +10502,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457b72",
@@ -10511,7 +10511,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCInventoryItem *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457c7e",
@@ -10520,7 +10520,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesLightningSpellDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00457c84",
@@ -10529,7 +10529,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457de3",
@@ -10538,7 +10538,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesSummonSpellDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00457de7",
@@ -10547,7 +10547,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457e03",
@@ -10556,7 +10556,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CPatchTesselationEdgeStrip *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457e57",
@@ -10565,7 +10565,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesBurntEffectDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00457e5b",
@@ -10574,7 +10574,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457e77",
@@ -10583,7 +10583,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCInventoryItem *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457eb6",
@@ -10592,7 +10592,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesElectrocutedEffectDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00457eba",
@@ -10601,7 +10601,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457ed6",
@@ -10610,7 +10610,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CPatchTesselationEdgeStrip *",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457f0f",
@@ -10619,7 +10619,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesDrunkennessDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00457f57",
@@ -10628,7 +10628,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x00457f8d",
@@ -10637,7 +10637,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesThunderLightningStormDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00458017",
@@ -10646,7 +10646,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004580ef",
@@ -10655,7 +10655,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesDivineWrathDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004580f5",
@@ -10664,7 +10664,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004582b4",
@@ -10673,7 +10673,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesUnholyPowerDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004582ba",
@@ -10682,7 +10682,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
-   "parity": "MATCH*"
+   "parity": "RELOC"
   },
   {
    "address": "0x004583da",
@@ -10691,7 +10691,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSpecialAbilitiesCreatureTintDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00458454",
@@ -10700,7 +10700,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSoundDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004584e4",
@@ -10709,7 +10709,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CAttackPatternDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045853a",
@@ -10718,7 +10718,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CObjectFamilyDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045859d",
@@ -10727,7 +10727,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CArmourDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004585fa",
@@ -10736,7 +10736,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CHitLocationDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x004588c2",
@@ -10745,7 +10745,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CCombatSequenceDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045890d",
@@ -10754,7 +10754,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CLightningDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00458a2d",
@@ -10763,7 +10763,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CGlobalDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00458b7b",
@@ -10772,7 +10772,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CHeroCombatDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00458c46",
@@ -10781,7 +10781,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CMeleeCombatAbilityDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00458c99",
@@ -10790,7 +10790,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CMeleeCombatKnockdownEffects *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00458d69",
@@ -10799,7 +10799,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CThingShotDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00459129",
@@ -10808,7 +10808,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CThingObjectDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045934f",
@@ -10817,7 +10817,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CCreatureAbilityDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00459549",
@@ -10826,7 +10826,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CThingGroupDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045954d",
@@ -10835,7 +10835,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CThingGroupDef *,CPersistContext &",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0045957e",
@@ -10844,7 +10844,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CPlayerDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00459611",
@@ -10853,7 +10853,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CPlayerMovementDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00459700",
@@ -10862,7 +10862,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CSimBuildingDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00459760",
@@ -10871,7 +10871,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CEngineThemeGroupDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00459764",
@@ -10880,7 +10880,7 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CEngineThemeGroupDef *,CPersistContext &",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00459795",
@@ -10889,7 +10889,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CEngineThemeDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00459a9e",
@@ -10898,7 +10898,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CBrainDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00459b53",
@@ -10907,7 +10907,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CPlayerInventoryDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x00459e24",
@@ -10916,7 +10916,7 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CPlayerGuiDef *",
-   "parity": "MATCH*"
+   "parity": "EXACT"
   },
   {
    "address": "0x0049bb50",
