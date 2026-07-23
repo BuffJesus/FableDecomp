@@ -66,8 +66,7 @@ unsigned long CMap::GetEngineThemeAt(
     {
         const QuarterThemeGrid* grid = storage->quarterGrid;
         return grid->data[
-            (((grid->height - ((y + ((y >> 31) & 3)) >> 2)) - 1) * grid->width +
-             ((x + ((x >> 31) & 3)) >> 2)) * 7 + themeValue];
+            ((grid->height - y / 4 - 1) * grid->width + x / 4) * 7 + themeValue];
     }
     return 0;
 }
