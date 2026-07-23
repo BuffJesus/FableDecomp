@@ -1,0 +1,10 @@
+PeekPos	8d 81 14 34 00 00 c3
+SetInputOn	8a 44 24 04 88 81 3d 34 00 00 c2 04 00
+SetRecentringOn	8a 44 24 04 88 81 3e 34 00 00 c2 04 00
+IsRecentringOn	8a 81 3e 34 00 00 c3
+SetDrawCursor	8a 44 24 04 88 81 3f 34 00 00 c2 04 00
+IsDrawingCursor	8a 81 3f 34 00 00 c3
+IsLMBDown	8a 81 48 48 00 00 c3
+IsMMBDown	8a 81 49 48 00 00 c3
+IsRMBDown	8a 81 4a 48 00 00 c3
+GetPos	8b 91 14 34 00 00 8b 44 24 04 89 10 8b 89 18 34 00 00 89 48 04 c2 04 00

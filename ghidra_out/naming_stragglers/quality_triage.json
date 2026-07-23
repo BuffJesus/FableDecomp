@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-07-22T18:12:37-06:00",
+  "catalog_functions": 49553,
+  "evidence_accepted": 49162,
+  "accepted_reconstruction_family": 348,
+  "usable_navigation_names": 49510,
+  "remaining_semantic_review": 40,
+  "donor_proposal_review": 2,
+  "invalid_boundary_review": 1,
+  "dispositions": {
+    "donor-proposal-review": 2,
+    "accepted-reconstruction-family": 348,
+    "semantic-review": 40,
+    "invalid-boundary-review": 1
+  }
+}

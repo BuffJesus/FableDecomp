@@ -1,0 +1,20 @@
+{
+  "catalog_functions": 49553,
+  "modules": 3433,
+  "calling_convention_known": 38480,
+  "prototype_complete": 34202,
+  "naming_quality_review": 391,
+  "agent_candidates": 115,
+  "agent_pass": 106,
+  "agent_fail": 8,
+  "compiled_candidates": 89,
+  "behavior_tested_candidates": 89,
+  "candidate_retail_matches": 27,
+  "candidate_relocation_matches": 4,
+  "lift_matching": 16,
+  "lift_functional": 2,
+  "lift_modules": 3,
+  "clean_decompile_measured": 49082,
+  "clean_decompile_pass": 49081,
+  "vc71_sdk_probe_pass": true
+}

@@ -1,0 +1,78 @@
+00c9cb60	Math_ComputeByteChunkCount	low	arithmetic n + n/255 + 1 (255-byte chunk count); called by CLandscapeBackgroundDynamicBuildTemplate::UpdateTerrainGrid, no other context
+00662020	Getter_FieldE0_FC	low	single deref *(*(this+0xe0)+0xfc), no callers/callees; opaque accessor
+008368f0	ConditionalVirtualDispatch_OnLevelUnload	low	checks global DAT_013b8394 and flag bit at this+0x91 then virtual-calls *(this+0x98)+0x34; caller SetToKillOnLevelUnload
+009b8c00	Vector_InsertOrReallocPair_DefClassInfo	medium	caller std::make_heap_pair_fixup; callees _Move_backward on pair<ulong,CDefClassInfo>, CCharString::operator=, insertion-sort shift: vector insert-with-realloc
+00a2c960	Vector_ReallocInsert_CScriptThing	medium	caller vector_push_back_generic; mallocs cap*0x10, _Uninit_copy of CScriptThing, frees old buffer, updates begin/end/cap (this[0..2])
+00a46530	Vector_InsertConditionalShift_Decal	medium	caller _Copy_impl; callees _Move_backward on pair<pair<long,long>,CEngineTextureDecal>, CCharString::operator=, Vector_Insert_ConditionalShift
+00c19f90	Getter_Field84	low	returns *(this+0x84); no callers/callees, opaque accessor
+00c20ef0	IsStateStreaming_2to4	low	returns 1 if short at obj+0xac in {2,3,4} else 0; caller GetTexturesInUse (likely texture-state check)
+00c2d7b0	CTCInventory_CheckSlotTypeNegative	low	caller CTCInventory_EquipItem; returns -1 if short at this+0xe is 1 or 2, else 0
+00c2e480	ProcessResourceChunksUntilQuickAssignFails	medium	iterates collection at (*this+0x10) via vtable count/get, calls C3DAnimationSequence_ProcessResourceChunk then stops if !GetCanItemBeQuickAssigned
+00c2ea30	ProcessAllAnimationEvents	medium	iterates collection at (*this+0x20) via vtable count(+0x3c)/get(+0x34), calls AnimationEvent_Process on each
+00c2ea70	ProcessAllAnimationEventMappings	medium	iterates collection at (*this+0x20), calls AnimationEvent_ProcessMapping on each element
+00c2eab0	ProcessAllEventTriggerDrivers	medium	iterates collection at (*this+0x10), calls EventTrigger_ProcessSingleDriver(*elem, elem+3) on each
+00c2f070	PKCAutoDelete_AssertCheckedAndClear_Vsync	medium	PKCAutoDelete.h "Shouls have checked first..." assert via NScript operator&& chain; clears *param_1 and returns old; caller ProcessLoadingFrame_Vsync
+00c2f190	PKCAutoDelete_AssertCheckedAndClear_Water	medium	identical PKCAutoDelete assert-and-clear pattern; caller CMessageEvent_ProcessLoadingFrame_Water
+00c2f2b0	PKCAutoDelete_AssertCheckedAndClear_Graphics	medium	identical PKCAutoDelete assert-and-clear pattern; caller CMessageEvent_ProcessLoadingFrame_Graphics
+00c334d0	CTCHeroStats_GetVectorArraysIfInitialized	low	caller SaveToFile; returns global 0x143bb58 masked by CTCHeroStats::InitializeVectorArrays result
+00c336f0	Constraint_NotifyGlobalManager	low	caller AddConstraintRepeat; via global DAT_0143bb5c virtual-calls handler(+0x1d4/+0x1c) and object at +0x58
+00c359e0	CExclusiveAssert_OnQuestItemUsed_Bool	low	thin bool wrapper over CExclusiveAssert::OnQuestItemUsed; caller CCodaFrameStreamer_Initialize
+00c362f0	CSBAgents_BuildAndDispatch_A	low	SEH frame constructs CSBAgents temp then virtual-calls +0x28 with it; no named caller
+00c364a0	PropertyContainerObject_Construct	medium	__thiscall ctor: sets vtable PTR_LAB_012b5180, RedblackTree_NodeCtor, CDateAndTime ctor, CCamera_InitializeOcclusionGrid; caller CTCPropertyContainer_InitializeObject
+00c36e00	CSBAgents_BuildAndDispatch_SummonerLightning	low	constructs CSBAgents temp and virtual-calls +0x28; caller CActionSummonerLightningAttackTarget::ExecuteAttackSequence
+00c36fb0	CSBAgents_BuildAndDispatch_TavernGame	low	constructs CSBAgents temp and virtual-calls +0x28; caller CTCTavernGame_OnStateUpdate
+00c37000	IntelligentPointer_BuildAndDispatchFloat	low	constructs CBaseIntelligentPointer temp, virtual-calls +0x28, returns float; caller Script_UpdateFloatVariable
+00c372c0	PropertyContainerNode_Construct	medium	__thiscall ctor: sets vtable PTR_LAB_012b51f0, RedblackTree_NodeCtor, invokes vtable+0x24; caller CTCPropertyContainer_InitializeObject
+00c37c40	CSBAgents_BuildAndDispatch_CreatureOpinion	low	constructs CSBAgents temp and virtual-calls +0x28; caller CreatureOpinion_State::Constructor
+00c3abf0	SubPrimitiveList_ConstructNodeA	low	ctor sets vtable PTR_LAB_012b5578, self-ref this[1]=this+2, RedblackTree_NodeCtor; caller CSubPrimitiveList
+00c3b180	SubPrimitiveList_ConstructNodeB	low	ctor sets vtable PTR_LAB_012b5650, self-ref this[1]=this+2, RedblackTree_NodeCtor; caller CSubPrimitiveList
+00c43de0	DrawAutoPickups_SelectAndDrawPrimitive	low	caller CDrawAutoPickups::OnVisibilityChange; picks element at this[0x15]+this[0x19]*4 or this[0x1e] then virtual-calls +0x20
+00c43f80	Weapon_ProcessAnimFrameIfReady	low	caller Inventory_OnItemEquipped_ValidateWeaponExtended; if ShouldClearPrimitives and CreateAudioBuffer ok calls CCreatureAction_FireMissileWeapon::ProcessAnimFrame else ClearPrimitivesIfNecessary
+00c44b50	InputEvent_CheckKeyAndGetFrames	low	CInputEvent::GetKey at this+0x80; if param<key calls CCreatureActionBase::GetFramesRemaining
+00c44ce0	World_RegisterResourceStrings	medium	caller CWorld::OnResourceAllocate; loops array at (*(this+4)+8), CWStringParser_FindOrCreate each, virtual-calls +0x24 on obj at this+0x50
+00c44dc0	FireballSpell_DispatchScaledDamage	low	caller ~CTCShotDefinitionFireballSpell; CTCWeapon_GetDamageValue * CMouseCursor::Initialize, builds CSBAgents, virtual-calls +0x28 on this+0x50
+00c48960	SyncQueue_TryEnqueueLocked_A	medium	RAII lock via CTCHeroExperience::AddSuccessfulBlockParry ctor; checks vtable+0xc, PKCSemaphore_Release, pushes via vtable+4; caller _Cons_val
+00c48a00	SyncQueue_TryEnqueueLocked_B	medium	identical locked try-enqueue pattern; caller CTCHeroStats_ProcessStateTransition
+00c48b40	SyncQueue_TryEnqueueLocked_C	medium	identical locked try-enqueue pattern; caller CTCHeroStats_ProcessStateTransition
+00c48be0	SyncQueue_TryEnqueueLocked_D	medium	identical locked try-enqueue pattern; caller CTCHeroStats_ProcessStateTransition
+00c48c80	SyncQueue_TryEnqueueLocked_E	medium	identical locked try-enqueue pattern; caller CTCHeroStats_ProcessStateTransition
+00c49d50	RingBuffer_PushLocked	medium	RAII lock; if not full writes at (this+0x1c)+(this+0x24)*4, increments count(+0x20), wraps head(+0x24) mod capacity(+0x18)
+00c49dd0	RingBuffer_GetCountLocked	medium	RAII lock; returns (this+0x24)-(this+0x20) wrapped by capacity(+0x18); caller EntranceManager_SetAsLocked
+00c4bd70	SyncQueue_TryEnqueueLocked_F	medium	identical locked try-enqueue pattern (AddSuccessfulBlockParry/PKCSemaphore_Release); no named caller
+00c4e380	ScriptEvent_DispatchIfActive	medium	caller AddToRenderList; returns -4 unless param_4 valid and *(param_4+0x1f0)!=0 then ScriptEvent_DispatchByID
+00c5d150	SIMD_FixedPointMulAccumulate	medium	pmulhw of 16-bit vector by scalar param_4, accumulates 8 sign-extended lanes into int output; SSE fixed-point MAC loop
+00c5d1f0	SIMD_FixedPointRampMulAccumulate	medium	pmulhw with per-lane ramp (param_1+param_5*k) advanced by paddsw each iter, accumulates into int output
+00c61ce0	Getter_TripleDeref	low	returns *(*(*param_1)); caller SetMiniMapRegionExitTextOffsetY, opaque chained accessor
+00c62a30	StreamBuffer_AdvancePosition	low	*this += this[1]*param*2; caller CStreamBuffer_WriteData (advance by stride*count)
+00c6a180	Audio_ProcessTriggersForFrame	medium	caller GetCurrentMask; if frame index(+0x18) in range [+0x13c,+0x140) calls Audio_ProcessMultipleTriggerEvents else Audio_ProcessTriggerActivations
+00c6a200	Graphics_ProcessTerrainStreamForFrame	medium	caller GetCurrentMask; if index(+0x18) in range [+0x1d8,+0x1dc) calls Graphics_ProcessTerrainStreamingChunks else Graphics_LoadTerrainChunksAndStream
+00c88e60	Audio_ProcessFilter4Channel	low	caller Audio_ProcessTriggerActivations; unrolled 4-channel float filter/resampler loop over param_5 samples with per-channel coeffs
+00c89110	GuildTrainingSkillScript_AllocSkillSlots	medium	caller CQ_GuildTrainingSkillScript_InitializeSkillSlots; bump-allocates aligned zeroed block, sets this+4/8, calls CQ_GuildTrainingSkillScript::Init(this+0x10)
+00c896c0	GuildTrainingSkillScript_AllocEffectArray	medium	caller CQ_GuildTrainingSkillScript_InitializeEffectArray; bump-allocates zeroed block into this+0x18, calls CQ_GuildTrainingSkillScript::Init(this+4)
+00c8bae0	Script_GetEntryPointer	low	caller Script_LoadAndInitialize; index/bounds check then returns base(+0x4c)+index*0x10 or fallback pointers
+00c91980	BoundingBox_AccumulateMax	medium	caller BoundingBox_ComputeTransform; 7-iteration loop taking component-wise max of two float arrays (stride 8)
+00c92f10	DSP_ComputeRunningMinEnvelope	low	__chkstk stack scratch; running min/max envelope over param_3 floats; called by FFT_InitializeWaveform path
+00c93080	FFT_ComputeWaveformEnvelope	low	caller FFT_InitializeWaveform; calls DSP running-envelope helper FUN_00c92f10 then clamps segment maxima
+00c93b30	Audio_ApplyGainTableToBuffer	low	caller CPlayer::ProcessAudioFrame; multiplies samples by gain from table DAT_013a3948 indexed per-sample, zero-fills tail
+00c94190	Audio_ComputeClampedPosition	low	caller Audio_FlushBuffer; float position from sample counts clamped to floor _DAT_012bf314
+00c942b0	Audio_ComputeLog2WeightedCoeff	low	caller Audio_ProcessWeightedCoefficients; bit-length(log2) of index range picks table entries DAT_013a3d48/DAT_013a3948 scaled by param_1
+00c9a230	Audio_FFT_MixedRadixTransform	medium	caller Audio_TransformFFTCoefficients; uses fcos/fsin twiddles, butterfly stages with radix param_3/param_4 over work buffers
+00c9e4a0	Audio_CheckBufferRegionActive	low	caller Audio_FlushBuffer; computes sample region and returns 1 if overlaps active grid cell (+0xac / grid at +0xa0)
+00cb1ae0	AudioBank_MatchesSignature	medium	caller AudioBank_LoadAsyncWithRetry; compares two 16-byte fields against signature DAT_012c0694, returns match bool
+00cb1b20	AudioBank_CompareTransactionKeys	medium	caller AudioBank_ExecuteAsyncTransaction; multiple 16-byte block compares against signature/other and final string(len+ptr) compare
+00cd2d37	CList_InitSentinelNode	medium	caller CopyBackBufferToTexture; CList_AllocateNode then wires circular sentinel (next/prev point to self)
+00cd2d61	CTree_InitSentinelNode	medium	caller CopyBackBufferToTexture; CTree_AllocateNode then wires circular sentinel node (next/prev self)
+00e245e0	StringList_FindDuplicateEntry	low	iterates two node lists comparing CBasicString::Compare, toggles flag at this+0x5f, uses vector_pop_back_shift; dedup/scan logic
+00e7f7d0	GetFloatTableEntryByIndex	low	caller GenerateCompetitionEntry; returns float from *(DAT_0143e90c+0x5d0) table at index (this+100)+1 (wraps -1 to 1)
+00e83920	ScriptThingContext_Construct_A	low	__thiscall ctor: vtable PTR_vector_deleting_destructor_012eb0f8, CScriptThing ctor, 2x CCharString, virtual-call +0x15c on global
+00ed7d50	ScriptThingContext_Construct_B	low	__thiscall ctor: vtable PTR_vector_deleting_destructor_012f3494, CScriptThing ctor, 3x CCharString
+00ee41f0	HeroMorphDefScreen_Construct	medium	__thiscall ctor over CHeroMorphDef: vtable 012f46b8, 18x3 + 3x5 CCharString arrays, NHeroInformationScreens::CBase ctor
+00f35510	Vector_CopyAssign_CThingBuildingDef	medium	caller Vector_Resize_Wrapper; forward loop stride 0x38 CThingBuildingDef::operator= + vector_assign_CClanMember
+00f35910	Vector_CopyAssignBackward_CThingBuildingDef	medium	caller Vector_Resize_CThingBuildingDef; backward loop stride 0x38 CThingBuildingDef::operator= + vector_assign_CClanMember
+0132d470	InvalidDecode_HaltStub	low	caller ConstructPCMagicList; decoder hit bad instruction data, ends in halt_baddata (misdisassembled/garbage)
+004048e0	Identity_ReturnArg	medium	returns param_1 unchanged; trivial identity/passthrough function
+004159a0	InitFlags_Field4_26	low	sets byte this+4=0xff and this+0x26=0; small field initializer, no context
+0042a58d	RBTreeIterator_MoveToMax_A	medium	*param_1 = RBTree::GetMaxNode(*param_1); tree iterator advance-to-max thunk
+0042a59e	RBTreeIterator_MoveToMax_B	medium	*param_1 = RBTree::GetMaxNode(*param_1); identical iterator advance-to-max thunk
+0042a5af	RBTreeIterator_MoveToMax_C	medium	*param_1 = RBTree::GetMaxNode(*param_1); identical iterator advance-to-max thunk
+0042a5c0	RBTreeIterator_MoveToMax_D	medium	*param_1 = RBTree::GetMaxNode(*param_1); identical iterator advance-to-max thunk

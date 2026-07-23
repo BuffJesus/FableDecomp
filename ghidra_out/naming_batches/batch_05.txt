@@ -1,0 +1,2081 @@
+@@@FUNC 006a11f0 59 16
+@@CALLERS GetThingDoingDamageFromCreatureAndEventName, SetupActiveWeaponsOnCarrier, PutSheatheObjectInCarrySlot, DropWeapon, CreateWeaponForThingFromDef, ReleaseMissile, ?PerformAction@CCreatureAction_PickupGameObject@@UAEXXZ, ?PerformAction@CCreatureAction_ReloadMissileWeapon@@UAEXXZ, DestroyItem, ?OnReplace@CAIStateGroup_StealStealableItem@@UAEXXZ, ?OnReplace@CAIStateGroup_RecoverStealableItem@@UAEXXZ, ?OnReplace@CAIStateGroup_CarryCrateAndFollow@@UAEXXZ, ?OnReplace@CAIStateGroup_TavernServer@@MAEXXZ, ?OnReplace@CAIStateGroup_TavernKeeper@@MAEXXZ, ?GiveThingItemInSlot@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@1@Z
+@@CALLEES GetPItem, LowerBound
+@@STRINGS 
+@@DECOMP
+
+CBaseObject * __thiscall FUN_006a11f0(int param_1,int param_2)
+
+{
+  int *piVar1;
+  CBaseObject *pCVar2;
+  
+  piVar1 = (int *)CVectorMap<long,CIntelligentPointer<CThing>,CKeyPairCompareLess<long,CIntelligentPointer<CThing>_>_>
+                  ::LowerBound((CVectorMap<long,CIntelligentPointer<CThing>,CKeyPairCompareLess<long,CIntelligentPointer<CThing>_>_>
+                                *)(param_1 + 0xc),&param_2);
+  if ((piVar1 == *(int **)(param_1 + 0x10)) || (param_2 < *piVar1)) {
+    piVar1 = *(int **)(param_1 + 0x10);
+  }
+  if (piVar1 != *(int **)(param_1 + 0x10)) {
+    pCVar2 = CBaseIntelligentPointer::GetPItem((CBaseIntelligentPointer *)(piVar1 + 1));
+    return pCVar2;
+  }
+  return (CBaseObject *)0x0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006a1270 190 16
+@@CALLERS HasPrecedingAction, ?PerformAction@CCreatureAction_UnsheatheItemFromInventory@@UAEXXZ, RemoveThingFromPrimarySlot, InitModeZTarget, InitModeLightning, UnsheatheWeapon, ?FinishAction@CCreatureAction_CastWillEnflameSpell@@UAEXXZ
+@@CALLEES GetDef<CThingPhysicalSwitchDef>, GetPItem, GFGetPreMainMemoryUsed
+@@STRINGS 
+@@DECOMP
+
+uint __fastcall FUN_006a1270(int param_1)
+
+{
+  int *piVar1;
+  int *piVar2;
+  CDefinitionManager *this;
+  CBaseObject *pCVar3;
+  int iVar4;
+  int iVar5;
+  uint uVar6;
+  int iVar7;
+  long lVar8;
+  CDefPointer<CThingPhysicalSwitchDef_const_> *pCVar9;
+  undefined1 local_5;
+  int *local_4;
+  
+  uVar6 = 0;
+  local_5 = 0;
+  iVar4 = 0;
+  if ((*(int *)(param_1 + 0x10) - *(int *)(param_1 + 0xc)) / 0xc != 0) {
+    iVar7 = 0;
+    do {
+      lVar8 = *(long *)(iVar7 + *(int *)(param_1 + 0xc));
+      pCVar9 = (CDefPointer<CThingPhysicalSwitchDef_const_> *)&local_4;
+      local_4 = (int *)0x0;
+      this = (CDefinitionManager *)GFGetPreMainMemoryUsed();
+      CDefinitionManager::GetDef<CThingPhysicalSwitchDef>(this,lVar8,pCVar9);
+      piVar2 = local_4;
+      if ((char)local_4[0xc] != '\0') {
+        pCVar3 = CBaseIntelligentPointer::GetPItem
+                           ((CBaseIntelligentPointer *)(iVar7 + 4 + *(int *)(param_1 + 0xc)));
+        if (pCVar3 != (CBaseObject *)0x0) {
+          piVar1 = piVar2 + 1;
+          *piVar1 = *piVar1 + -1;
+          if (*piVar1 == 0) {
+            pCVar3 = (CBaseObject *)(**(code **)(*piVar2 + 4))();
+          }
+          return (uint)pCVar3 & 0xffffff00;
+        }
+        local_5 = 1;
+      }
+      piVar1 = piVar2 + 1;
+      *piVar1 = *piVar1 + -1;
+      if (*piVar1 == 0) {
+        (**(code **)(*piVar2 + 4))();
+      }
+      iVar5 = *(int *)(param_1 + 0x10) - *(int *)(param_1 + 0xc);
+      iVar4 = iVar5 * 0x2aaaaaab;
+      uVar6 = uVar6 + 1;
+      iVar7 = iVar7 + 0xc;
+    } while (uVar6 < (uint)(iVar5 / 0xc));
+  }
+  return CONCAT31((int3)((uint)iVar4 >> 8),local_5);
+}
+
+
+@@ENDFUNC
+@@@FUNC 006bb390 265 16
+@@CALLERS AddThingToVillage, IsCurfewTime, UpdateHornTasks, AIAction_MinionIdle, FindFreeGazePos, IsInSleepTime, ?InitCreaturePosition@CAIStateGroup_GoToBed@@UAE_NXZ, ?IsRunnable@CAIStateGroup_MinionReactToBurglary@@UAE_NXZ, ?IsStillValid@CAIStateGroup_GoToBed@@UBE_NXZ, ?Update@CAIStateGroup_MinionSleep@@UAEXXZ, ?ShouldBeLit@CAIStateGroup_LightHomeCandle@@MBE_NXZ, ?IsTimeOfDayBetween@CGameScriptInterface@@UBE_NJJ@Z
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+int __thiscall FUN_006bb390(int param_1,int param_2,int param_3)
+
+{
+  float fVar1;
+  float fVar2;
+  int iVar3;
+  ushort uVar4;
+  
+  if (param_2 < param_3) {
+    fVar2 = (float)(param_2 / 100) * _DAT_0122dc88 +
+            (float)(param_2 % 100) * _DAT_0125bb08 * _DAT_0122dc88;
+    fVar1 = *(float *)(param_1 + 8);
+    if (fVar2 < fVar1 == (fVar2 == fVar1)) {
+      return CONCAT22((short)((uint)(param_2 / 100) >> 0x10),
+                      (ushort)(fVar2 < fVar1) << 8 | (ushort)(NAN(fVar2) || NAN(fVar1)) << 10 |
+                      (ushort)(fVar2 == fVar1) << 0xe);
+    }
+    fVar1 = (float)(param_3 % 100) * _DAT_0125bb08;
+    fVar2 = (float)(param_3 / 100);
+  }
+  else {
+    fVar1 = (float)(param_2 / 100) * _DAT_0122dc88 +
+            (float)(param_2 % 100) * _DAT_0125bb08 * _DAT_0122dc88;
+    uVar4 = (ushort)((uint)(param_2 / 100) >> 0x10);
+    iVar3 = (uint)uVar4 << 0x10;
+    if (fVar1 < *(float *)(param_1 + 8) != (fVar1 == *(float *)(param_1 + 8))) {
+      fVar1 = *(float *)(param_1 + 8);
+      iVar3 = CONCAT22(uVar4,(ushort)(fVar1 < _DAT_0122ded8) << 8 |
+                             (ushort)(NAN(fVar1) || NAN(_DAT_0122ded8)) << 10 |
+                             (ushort)(fVar1 == _DAT_0122ded8) << 0xe);
+      if (fVar1 < _DAT_0122ded8) goto LAB_006bb48b;
+    }
+    fVar1 = *(float *)(param_1 + 8);
+    if (fVar1 < _DAT_0122dedc) {
+      return CONCAT22((short)((uint)iVar3 >> 0x10),
+                      (ushort)(fVar1 < _DAT_0122dedc) << 8 |
+                      (ushort)(NAN(fVar1) || NAN(_DAT_0122dedc)) << 10 |
+                      (ushort)(fVar1 == _DAT_0122dedc) << 0xe);
+    }
+    fVar1 = (float)(param_3 / 100);
+    fVar2 = (float)(param_3 % 100) * _DAT_0125bb08;
+  }
+  fVar2 = fVar2 * _DAT_0122dc88 + fVar1 * _DAT_0122dc88;
+  fVar1 = *(float *)(param_1 + 8);
+  iVar3 = CONCAT22((short)((uint)(param_3 / 100) >> 0x10),
+                   (ushort)(fVar2 < fVar1) << 8 | (ushort)(NAN(fVar2) || NAN(fVar1)) << 10 |
+                   (ushort)(fVar2 == fVar1) << 0xe);
+  if (fVar2 < fVar1 || (fVar2 == fVar1) != 0) {
+    return iVar3;
+  }
+LAB_006bb48b:
+  return CONCAT31((int3)((uint)iVar3 >> 8),1);
+}
+
+
+@@ENDFUNC
+@@@FUNC 006d6fa0 220 16
+@@CALLERS ConstructExperienceList, ConstructExperienceListPC, AddStatToList, AddStatToListPC
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_006d6fa0(int param_1,int param_2,float *param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  int iVar5;
+  
+  iVar5 = *(int *)(param_1 + 0x14);
+  *param_3 = 0.0;
+  iVar4 = param_2 * 0x50 + *(int *)(*(int *)(param_1 + 0x5c) + 0xfc);
+  iVar5 = *(int *)(*(int *)(param_1 + 0x18) + *(int *)(iVar4 + 0x3c) * 4) + iVar5;
+  iVar1 = *(int *)(param_1 + 0x24);
+  iVar3 = 1;
+  while( true ) {
+    iVar2 = (*(int *)(iVar4 + 0x44) - *(int *)(iVar4 + 0x40)) / 0x48 + -1;
+    if (iVar2 < 0) {
+      iVar2 = 0;
+    }
+    if (iVar2 < *(int *)(iVar1 + param_2 * 4) + iVar3) break;
+    iVar2 = *(int *)(*(int *)(iVar4 + 0x40) + 0x3c + (*(int *)(iVar1 + param_2 * 4) + iVar3) * 0x48)
+    ;
+    if (iVar5 < iVar2) {
+      *param_3 = (float)iVar5 / (float)iVar2;
+      return iVar3 + -1;
+    }
+    iVar5 = iVar5 - iVar2;
+    iVar3 = iVar3 + 1;
+  }
+  iVar5 = (*(int *)(iVar4 + 0x44) - *(int *)(iVar4 + 0x40)) / 0x48 + -1;
+  if (iVar5 < 0) {
+    iVar5 = 0;
+  }
+  return iVar5 - *(int *)(iVar1 + param_2 * 4);
+}
+
+
+@@ENDFUNC
+@@@FUNC 007d5d60 216 16
+@@CALLERS EnterGame, NewRound, ShuffleCards, DealCard
+@@CALLEES malloc, memmove, free
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_007d5d60(int *param_1,void *param_2,undefined4 *param_3,undefined4 param_4,undefined4 *param_5,
+            char param_6)
+
+{
+  void *pvVar1;
+  void *pvVar2;
+  uint *puVar3;
+  uint uVar4;
+  size_t _Size;
+  undefined4 *_Dst;
+  uint local_4;
+  
+  uVar4 = (uint)param_5;
+  local_4 = param_1[1] - *param_1 >> 2;
+  puVar3 = (uint *)&param_5;
+  if (param_5 <= local_4) {
+    puVar3 = &local_4;
+  }
+  local_4 = *puVar3 + local_4;
+  if (local_4 == 0) {
+    param_5 = (undefined4 *)0x0;
+  }
+  else {
+    param_5 = malloc(local_4 * 4);
+  }
+  pvVar2 = (void *)*param_1;
+  _Dst = param_5;
+  if (param_2 != pvVar2) {
+    pvVar1 = memmove(param_5,pvVar2,(int)param_2 - (int)pvVar2);
+    _Dst = (undefined4 *)((int)pvVar1 + ((int)param_2 - (int)pvVar2));
+  }
+  for (; uVar4 != 0; uVar4 = uVar4 - 1) {
+    *_Dst = *param_3;
+    _Dst = _Dst + 1;
+  }
+  if ((param_6 == '\0') && ((void *)param_1[1] != param_2)) {
+    _Size = param_1[1] - (int)param_2;
+    pvVar2 = memmove(_Dst,param_2,_Size);
+    _Dst = (undefined4 *)((int)pvVar2 + _Size);
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  param_1[1] = (int)_Dst;
+  *param_1 = (int)param_5;
+  param_1[2] = (int)(param_5 + local_4);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 009c2ca0 227 16
+@@CALLERS 
+@@CALLEES malloc, free
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_009c2ca0(int *param_1,undefined4 *param_2,undefined4 *param_3,undefined4 param_4,uint param_5,
+            char param_6)
+
+{
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  uint *puVar3;
+  undefined4 *puVar4;
+  uint uVar5;
+  int iVar6;
+  uint local_4;
+  
+  uVar5 = param_5;
+  local_4 = param_1[1] - *param_1 >> 2;
+  puVar3 = &param_5;
+  if (param_5 <= local_4) {
+    puVar3 = &local_4;
+  }
+  param_5 = *puVar3 + local_4;
+  if (param_5 == 0) {
+    puVar1 = (undefined4 *)0x0;
+  }
+  else {
+    puVar1 = malloc(param_5 * 4);
+  }
+  puVar2 = puVar1;
+  for (puVar4 = (undefined4 *)*param_1; puVar4 != param_2; puVar4 = puVar4 + 1) {
+    if (puVar2 != (undefined4 *)0x0) {
+      *puVar2 = *puVar4;
+    }
+    puVar2 = puVar2 + 1;
+  }
+  if (uVar5 == 1) {
+    if (puVar2 != (undefined4 *)0x0) {
+      *puVar2 = *param_3;
+    }
+    puVar2 = puVar2 + 1;
+  }
+  else {
+    for (; uVar5 != 0; uVar5 = uVar5 - 1) {
+      if (puVar2 != (undefined4 *)0x0) {
+        *puVar2 = *param_3;
+      }
+      puVar2 = puVar2 + 1;
+    }
+  }
+  if ((param_6 == '\0') && (puVar4 = (undefined4 *)param_1[1], param_2 != puVar4)) {
+    iVar6 = (int)param_2 - (int)puVar2;
+    do {
+      if (puVar2 != (undefined4 *)0x0) {
+        *puVar2 = *(undefined4 *)(iVar6 + (int)puVar2);
+      }
+      puVar2 = puVar2 + 1;
+    } while ((undefined4 *)(iVar6 + (int)puVar2) != puVar4);
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  param_1[1] = (int)puVar2;
+  *param_1 = (int)puVar1;
+  param_1[2] = (int)(puVar1 + param_5);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a96e40 161 16
+@@CALLERS InitialiseFromMeshFileData, RemoveAllSubsets, _Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>
+@@CALLEES malloc, FUN_0045c811
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_00a96e40(int *param_1,int *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  undefined1 *puVar3;
+  undefined4 uVar4;
+  
+  *param_1 = 0;
+  puVar3 = malloc(0x18);
+  *param_1 = (int)puVar3;
+  param_1[1] = 0;
+  iVar1 = *(int *)(*param_2 + 4);
+  *puVar3 = 0;
+  if (iVar1 != 0) {
+    iVar1 = *param_1;
+    uVar4 = FUN_0045c811(*(undefined4 *)(*param_2 + 4),iVar1);
+    *(undefined4 *)(iVar1 + 4) = uVar4;
+    iVar1 = *(int *)(*param_1 + 4);
+    for (iVar2 = *(int *)(iVar1 + 8); iVar2 != 0; iVar2 = *(int *)(iVar2 + 8)) {
+      iVar1 = iVar2;
+    }
+    *(int *)(*param_1 + 8) = iVar1;
+    iVar1 = *(int *)(*param_1 + 4);
+    for (iVar2 = *(int *)(iVar1 + 0xc); iVar2 != 0; iVar2 = *(int *)(iVar2 + 0xc)) {
+      iVar1 = iVar2;
+    }
+    *(int *)(*param_1 + 0xc) = iVar1;
+    param_1[1] = param_2[1];
+    return param_1;
+  }
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  param_1[1] = param_2[1];
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c2a150 189 16
+@@CALLERS CreateAndSaveNewLevel
+@@CALLEES FUN_00c0ba40, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, ReleaseSemaphore
+@@STRINGS .\PKCSemaphore.cpp	Could not put unit on semaphore
+@@DECOMP
+
+void __fastcall FUN_00c2a150(undefined4 *param_1)
+
+{
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar1;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lStack_11;
+  undefined *local_10;
+  void *local_c;
+  undefined1 *puStack_8;
+  BOOL local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_0121352c;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  local_4 = ReleaseSemaphore((HANDLE)*param_1,1,(LPLONG)0x0);
+  if (local_4 == 0) {
+    local_10 = PTR_DAT_0139c900;
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_10,(CIsThingAlive *)".\\PKCSemaphore.cpp");
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar1,(CIsThingAlive *)&DAT_0122e028);
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar1,(CIsThingAlive *)0x1b);
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar1,(CIsThingAlive *)&DAT_012b1ae4);
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar1,(CIsThingAlive *)"Could not put unit on semaphore");
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar1,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_4 = 0xffffffff;
+    FUN_00c0ba40();
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&lStack_11);
+  }
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004b9370 112 15
+@@CALLERS IsActionPoint, LoadEntitiesFromScript, LoadEntitiesBinary, SetMiniMapRegionExitTextOffsetX
+@@CALLEES operator<
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_004b9370(int *param_1,undefined4 *param_2)
+
+{
+  int iVar1;
+  CBasicString<char> *pCVar2;
+  CBasicString<char> *pCVar3;
+  bool bVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  iVar5 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    pCVar2 = (CBasicString<char> *)*param_2;
+    iVar6 = *(int *)(iVar1 + 4);
+    do {
+      pCVar3 = *(CBasicString<char> **)(iVar6 + 0x10);
+      if ((pCVar2 == pCVar3) ||
+         ((pCVar3 != (CBasicString<char> *)0x0 &&
+          ((pCVar2 == (CBasicString<char> *)0x0 ||
+           (bVar4 = CBasicString<char>::operator<(pCVar3,pCVar2), !bVar4)))))) {
+        iVar7 = *(int *)(iVar6 + 8);
+        iVar5 = iVar6;
+      }
+      else {
+        iVar7 = *(int *)(iVar6 + 0xc);
+      }
+      iVar6 = iVar7;
+    } while (iVar7 != 0);
+  }
+  if (iVar5 != iVar1) {
+    pCVar2 = *(CBasicString<char> **)(iVar5 + 0x10);
+    pCVar3 = (CBasicString<char> *)*param_2;
+    if ((pCVar2 == pCVar3) ||
+       ((pCVar3 != (CBasicString<char> *)0x0 &&
+        ((pCVar2 == (CBasicString<char> *)0x0 ||
+         (bVar4 = CBasicString<char>::operator<(pCVar3,pCVar2), !bVar4)))))) {
+      return iVar5;
+    }
+  }
+  return iVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00743b30 58 15
+@@CALLERS 
+@@CALLEES FUN_00743270
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00743b30(int param_1,undefined4 *param_2)
+
+{
+  undefined4 *puVar1;
+  
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  if (puVar1 != *(undefined4 **)(param_1 + 8)) {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = *param_2;
+      puVar1[1] = param_2[1];
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 8;
+    return;
+  }
+  FUN_00743270(puVar1,param_2,&param_2,1,1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00800020 90 15
+@@CALLERS GetBlockData, OnCreate, ?FinishAction@CCreatureActionBase@@UAEXXZ, ?FinishAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ, ?Initialise@CCreatureAction_HeroLoadRangedWeapon@@UAEXXZ, InitAbility, CleanupAbility, ?FrameUpdate@CCreatureActionBase@@MAEXXZ, ?Initialise@CCreatureAction_TrollGroundPound@@UAEXXZ, ?Initialise@CCreatureAction_CastStrengthMultiStrike@@UAEXXZ, ?FinishAction@CCreatureAction_HeroLoadRangedWeapon@@UAEXXZ, ?FinishAction@CCreatureAction_TrollGroundPound@@UAEXXZ, ?FinishAction@CCreatureAction_ReleaseTimeSpell@@UAEXXZ
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00800020(int param_1)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  
+  *(undefined4 *)(param_1 + 0xc) = 0x3f800000;
+  iVar2 = *(int *)(*(int *)(param_1 + 0x18) + 8);
+  if (iVar2 != *(int *)(param_1 + 0x18)) {
+    do {
+      *(float *)(param_1 + 0xc) = *(float *)(iVar2 + 0x14) * *(float *)(param_1 + 0xc);
+      iVar3 = *(int *)(iVar2 + 0xc);
+      if (iVar3 == 0) {
+        iVar3 = *(int *)(iVar2 + 4);
+        if (iVar2 == *(int *)(iVar3 + 0xc)) {
+          do {
+            iVar2 = iVar3;
+            iVar3 = *(int *)(iVar2 + 4);
+          } while (iVar2 == *(int *)(iVar3 + 0xc));
+        }
+        if (*(int *)(iVar2 + 0xc) != iVar3) {
+          iVar2 = iVar3;
+        }
+      }
+      else {
+        for (iVar1 = *(int *)(iVar3 + 8); iVar2 = iVar3, iVar1 != 0; iVar1 = *(int *)(iVar1 + 8)) {
+          iVar3 = iVar1;
+        }
+      }
+    } while (iVar2 != *(int *)(param_1 + 0x18));
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0084e420 357 15
+@@CALLERS CSnapToPoint, CStringAndCage, CActionParamCCountedPointer<NUISystem::CComponent>, CProjectileWeapon, InitModeViewHero, PushLookAround, CLookAtFront
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_0084e420(undefined4 *param_1,undefined4 param_2,int *param_3)
+
+{
+  int iVar1;
+  void *pvVar2;
+  
+  *param_1 = &PTR__vector_deleting_destructor__0124dd74;
+  param_1[1] = 0x3e4ccccd;
+  param_1[2] = 0;
+  param_1[3] = 0;
+  param_1[0xd] = 0;
+  pvVar2 = malloc(0x18);
+  *(void **)pvVar2 = pvVar2;
+  *(void **)((int)pvVar2 + 4) = pvVar2;
+  param_1[0xd] = pvVar2;
+  param_1[0xe] = 0;
+  pvVar2 = malloc(0x18);
+  *(void **)pvVar2 = pvVar2;
+  *(void **)((int)pvVar2 + 4) = pvVar2;
+  param_1[0xe] = pvVar2;
+  *(undefined1 *)(param_1 + 0xf) = 0;
+  param_1[0x10] = param_2;
+  iVar1 = *param_3;
+  param_1[0x11] = iVar1;
+  if (iVar1 != 0) {
+    *(int *)(iVar1 + 4) = *(int *)(iVar1 + 4) + 1;
+  }
+  param_1[0x12] = 0;
+  param_1[0x13] = 0;
+  param_1[0x14] = 0;
+  param_1[0x1e] = 0;
+  pvVar2 = malloc(0x18);
+  *(void **)pvVar2 = pvVar2;
+  *(void **)((int)pvVar2 + 4) = pvVar2;
+  param_1[0x1e] = pvVar2;
+  param_1[0x1f] = 0;
+  pvVar2 = malloc(0x18);
+  *(void **)pvVar2 = pvVar2;
+  *(void **)((int)pvVar2 + 4) = pvVar2;
+  param_1[0x1f] = pvVar2;
+  *(undefined1 *)(param_1 + 0x20) = 0;
+  param_1[0x21] = 0x3e4ccccd;
+  param_1[0x22] = 0;
+  param_1[0x23] = 0;
+  param_1[0x24] = 0;
+  param_1[0x25] = 0;
+  param_1[0x26] = 0;
+  param_1[0x27] = 0;
+  param_1[7] = 0;
+  param_1[8] = 0;
+  param_1[9] = 0;
+  param_1[10] = 0;
+  param_1[0xb] = 0;
+  param_1[4] = 0;
+  param_1[0xc] = 0;
+  param_1[5] = 0;
+  param_1[0x18] = 0;
+  param_1[0x19] = 0;
+  param_1[6] = 0;
+  param_1[0x1a] = 0;
+  param_1[0x1b] = 0;
+  *(undefined1 *)(param_1 + 0x28) = 0;
+  param_1[0x15] = 0;
+  param_1[0x1c] = 0;
+  param_1[0x16] = 0;
+  param_1[0x1d] = 0;
+  *(undefined1 *)(param_1 + 0xf) = 1;
+  *(undefined1 *)(param_1 + 0x20) = 1;
+  param_1[0x17] = 0;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 008ad5f0 272 15
+@@CALLERS ?GetAllThingsWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z, ?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z, ?GetAllThingsWithDefName@CGameScriptInterface@@UBEJABVCCharString@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z, ?GetAllCreaturesExcludingHero@CGameScriptInterface@@UBEJAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z, ?GetAllThingsInLevel@CGameScriptInterface@@UBEJABVCCharString@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z, ?GetAllThingsWithDefNameByDistanceFrom@CGameScriptInterface@@UBEJABVCScriptThing@@ABVCCharString@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+@@CALLEES _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>_>, _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<CScriptThing,std::allocator<CScriptThing>_>_>,CScriptThing*,std::allocator<CScriptThing>_>, malloc, free
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_008ad5f0(int *param_1,undefined4 param_2,int param_3,undefined4 param_4,void *param_5,
+            char param_6)
+
+{
+  int *piVar1;
+  undefined4 *puVar2;
+  uint uVar3;
+  CScriptThing *pCVar4;
+  CScriptThing *extraout_EAX;
+  uint *puVar5;
+  undefined4 *puVar6;
+  uint local_4;
+  
+  uVar3 = (uint)param_5;
+  local_4 = (param_1[1] - *param_1) / 0xc;
+  puVar5 = (uint *)&param_5;
+  if (param_5 <= local_4) {
+    puVar5 = &local_4;
+  }
+  local_4 = *puVar5 + local_4;
+  if (local_4 == 0) {
+    param_5 = (void *)0x0;
+  }
+  else {
+    param_5 = malloc(local_4 * 0xc);
+  }
+  pCVar4 = std::
+           _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<CScriptThing,std::allocator<CScriptThing>_>_>,CScriptThing*,std::allocator<CScriptThing>_>
+                     (*param_1,param_2,param_5,&param_6);
+  if (uVar3 == 1) {
+    if (pCVar4 != (CScriptThing *)0x0) {
+      *(undefined ***)pCVar4 = &PTR__scalar_deleting_destructor__01238c8c;
+      *(undefined4 *)(pCVar4 + 4) = *(undefined4 *)(param_3 + 4);
+      piVar1 = *(int **)(param_3 + 8);
+      *(int **)(pCVar4 + 8) = piVar1;
+      if (piVar1 != (int *)0x0) {
+        *piVar1 = *piVar1 + 1;
+      }
+    }
+    pCVar4 = pCVar4 + 0xc;
+  }
+  else {
+    std::
+    _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>_>
+              (pCVar4,uVar3,param_3,&param_6);
+    pCVar4 = extraout_EAX;
+  }
+  if (param_6 == '\0') {
+    pCVar4 = std::
+             _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<CScriptThing,std::allocator<CScriptThing>_>_>,CScriptThing*,std::allocator<CScriptThing>_>
+                       (param_2,param_1[1],pCVar4,&param_6);
+  }
+  puVar2 = (undefined4 *)param_1[1];
+  for (puVar6 = (undefined4 *)*param_1; puVar6 != puVar2; puVar6 = puVar6 + 3) {
+    (**(code **)*puVar6)(0);
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  param_1[1] = (int)pCVar4;
+  *param_1 = (int)param_5;
+  param_1[2] = (int)((int)param_5 + local_4 * 0xc);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a14260 467 15
+@@CALLERS UpdateWind, GetCamera, UpdateFacingDirection, Decapitate, ?Update@CAIStateGroup_IdleAtHome@@MAEXXZ, ?Update@CAIStateGroup_Clean@@MAEXXZ, FindFreeBed, ?GetRandomNavigablePos@CNavigatorFlyer@@UBE?AVC3DVector@@ABV2@M_N@Z, ?CameraDoConversation@CGameScriptInterface@@UBEXABVCScriptThing@@0W4ECameraOp@@_N@Z, Initialise, ?Update@CAIStateGroup_MinionWorkInInn@@UAEXXZ, ?GetRandomNavigablePos@CNavigatorAStar@@UBE?AVC3DVector@@ABV2@M_N@Z
+@@CALLEES _CIfmod
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __thiscall FUN_00a14260(float *param_1,float param_2,float param_3)
+
+{
+  float fVar1;
+  float10 fVar2;
+  float fVar3;
+  float fVar4;
+  float10 fVar5;
+  float10 fVar6;
+  float10 fVar7;
+  float10 fVar8;
+  
+  fVar8 = (float10)fpatan((float10)*param_1,(float10)param_1[1]);
+  fVar8 = fVar8 * (float10)_DAT_01237f08;
+  if ((fVar8 < (float10)_DAT_0122dedc) || ((float10)_DAT_0122ded8 <= fVar8)) {
+    fVar8 = (float10)_CIfmod();
+    if (fVar8 < (float10)_DAT_0122dedc) {
+      fVar8 = fVar8 + (float10)_DAT_0122ded8;
+    }
+  }
+  param_2 = (float)(fVar8 + (float10)param_2);
+  fVar3 = param_1[1] * param_1[1];
+  fVar4 = *param_1 * *param_1;
+  fVar8 = (float10)fpatan((float10)param_1[2],SQRT((float10)fVar4 + (float10)fVar3));
+  fVar8 = fVar8 * (float10)_DAT_01237f08;
+  if ((fVar8 < (float10)_DAT_0122dedc) || ((float10)_DAT_0122ded8 <= fVar8)) {
+    fVar8 = (float10)_CIfmod();
+    if (fVar8 < (float10)_DAT_0122dedc) {
+      fVar8 = fVar8 + (float10)_DAT_0122ded8;
+    }
+  }
+  fVar1 = (float)(fVar8 + (float10)param_3);
+  if ((param_2 < _DAT_0122dedc) || (_DAT_0122ded8 <= param_2)) {
+    fVar8 = (float10)_CIfmod();
+    param_2 = (float)fVar8;
+    if (fVar8 < (float10)_DAT_0122dedc) {
+      param_2 = param_2 + _DAT_0122ded8;
+    }
+  }
+  fVar8 = (float10)fVar1;
+  if ((fVar1 < _DAT_0122dedc) || (_DAT_0122ded8 <= fVar1)) {
+    fVar8 = (float10)_CIfmod();
+    if (fVar8 < (float10)_DAT_0122dedc) {
+      fVar8 = fVar8 + (float10)_DAT_0122ded8;
+    }
+  }
+  fVar3 = SQRT(param_1[2] * param_1[2] + fVar4 + fVar3);
+  fVar2 = (float10)_DAT_0124f2b8;
+  fVar5 = (float10)fcos(fVar8 * fVar2);
+  fVar7 = (float10)_DAT_0124f2b8;
+  fVar5 = (float10)(float)fVar5 * (float10)fVar3;
+  fVar6 = (float10)fsin((float10)param_2 * fVar7);
+  *param_1 = (float)(fVar5 * fVar6);
+  fVar7 = (float10)fcos((float10)param_2 * fVar7);
+  param_1[1] = (float)(fVar7 * fVar5);
+  fVar8 = (float10)fsin(fVar8 * fVar2);
+  param_1[2] = (float)(fVar8 * (float10)fVar3);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c74420 37 15
+@@CALLERS CTCKraken, ~CArenaRoundDef, WaypointData, CGameJoystickManager, C3DAnimationUtil, CAIStateGroupBehaviourBase
+@@CALLEES FUN_00c74360
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00c74420(undefined4 *param_1)
+
+{
+  *param_1 = &PTR_FUN_012bf050;
+  if (DAT_0143ccdc == 0) {
+    FUN_00c74360();
+    return param_1;
+  }
+  DAT_0143cce0 = DAT_0143cce0 + 1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004110d0 289 14
+@@CALLERS resize, GetUntilCRLF, ReceiveDocumentAsync, ReadTextFileIntoArray, OpenDevelopmentStaticMap
+@@CALLEES FUN_0040f6b0, memmove
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004110d0(int param_1,byte *param_2,uint param_3,byte *param_4)
+
+{
+  byte bVar1;
+  byte *_Dst;
+  uint uVar2;
+  byte *pbVar3;
+  uint uVar4;
+  void *_Dst_00;
+  byte *_Src;
+  
+  uVar4 = param_3;
+  _Src = param_2;
+  if (param_3 != 0) {
+    if ((uint)(*(int *)(param_1 + 8) - *(int *)(param_1 + 4)) < param_3) {
+      FUN_0040f6b0(param_2,param_4,&param_2,param_3,0);
+      return;
+    }
+    bVar1 = *param_4;
+    uVar2 = *(int *)(param_1 + 4) - (int)param_2;
+    _Dst = *(byte **)(param_1 + 4);
+    param_4 = (byte *)CONCAT31(param_4._1_3_,bVar1);
+    if (param_3 < uVar2) {
+      pbVar3 = _Dst + -param_3;
+      param_3 = uVar2;
+      if (_Dst != pbVar3) {
+        memmove(_Dst,pbVar3,(int)_Dst - (int)pbVar3);
+      }
+      *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar4;
+      pbVar3 = _Dst + (-uVar4 - (int)_Src);
+      if (0 < (int)pbVar3) {
+        memmove(_Dst + -(int)pbVar3,_Src,(size_t)pbVar3);
+      }
+    }
+    else {
+      param_4 = (byte *)(uint)bVar1;
+      pbVar3 = _Dst;
+      for (uVar4 = param_3 - uVar2 >> 2; uVar4 != 0; uVar4 = uVar4 - 1) {
+        *(uint *)pbVar3 = CONCAT22(CONCAT11(bVar1,bVar1),CONCAT11(bVar1,bVar1));
+        pbVar3 = pbVar3 + 4;
+      }
+      for (uVar4 = param_3 - uVar2 & 3; uVar4 != 0; uVar4 = uVar4 - 1) {
+        *pbVar3 = bVar1;
+        pbVar3 = pbVar3 + 1;
+      }
+      _Dst_00 = (void *)(*(int *)(param_1 + 4) + (param_3 - uVar2));
+      *(void **)(param_1 + 4) = _Dst_00;
+      if (_Dst != param_2) {
+        param_3 = uVar2;
+        memmove(_Dst_00,param_2,(int)_Dst - (int)param_2);
+      }
+      *(uint *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar2;
+      uVar4 = (int)_Dst - (int)_Src;
+    }
+    for (uVar2 = uVar4 >> 2; uVar2 != 0; uVar2 = uVar2 - 1) {
+      *(uint *)_Src =
+           CONCAT22(CONCAT11((byte)param_4,(byte)param_4),CONCAT11((byte)param_4,(byte)param_4));
+      _Src = _Src + 4;
+    }
+    for (uVar4 = uVar4 & 3; uVar4 != 0; uVar4 = uVar4 - 1) {
+      *_Src = (byte)param_4;
+      _Src = _Src + 1;
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00569140 104 14
+@@CALLERS operator=, _Move<CStaticMapGenerationVisibiilityInfo::CMapDesc*,CStaticMapGenerationVisibiilityInfo::CMapDesc*>, Listen, GetClientInformation
+@@CALLEES FUN_00567400, memmove
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_00569140(undefined4 *param_1,undefined1 *param_2,undefined1 *param_3)
+
+{
+  undefined1 uVar1;
+  undefined1 *puVar2;
+  undefined1 *_Dst;
+  
+  _Dst = (undefined1 *)*param_1;
+  puVar2 = param_2;
+  do {
+    if (puVar2 == param_3) {
+LAB_00569167:
+      puVar2 = (undefined1 *)param_1[1];
+      if (_Dst != puVar2) {
+        memmove(_Dst,puVar2,1);
+        param_1[1] = _Dst + (param_1[1] - (int)puVar2);
+      }
+      return param_1;
+    }
+    if (_Dst == (undefined1 *)param_1[1]) {
+      if (puVar2 != param_3) {
+        FUN_00567400(puVar2,param_3,&param_2);
+        return param_1;
+      }
+      goto LAB_00569167;
+    }
+    uVar1 = *puVar2;
+    puVar2 = puVar2 + 1;
+    *_Dst = uVar1;
+    _Dst = _Dst + 1;
+  } while( true );
+}
+
+
+@@ENDFUNC
+@@@FUNC 005812df 111 14
+@@CALLERS SetHeroKickPositionForCurrentRegion, UpdateOutstandingCrimes, GetOutstandingFineAndFramesLeft, GetCrimeReport, PrepareToKickHeroToMostRecentSafeRegion, OnSerialise, UpdateMirroredCrimeData
+@@CALLEES operator(), _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, TransferIn, pair<CCharString_const_,CTCHeroStats::MirroredCriminalStatus><CCharString_const_,CTCHeroStats::MirroredCriminalStatus>, MirroredCriminalStatus, FUN_0057fe4a
+@@STRINGS 
+@@DECOMP
+
+CStringParser * __thiscall FUN_005812df(CPersistTraits<C2DVector> *param_1,CCharString *param_2)
+
+{
+  bool bVar1;
+  CStringParser *pCVar2;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  undefined8 uVar3;
+  pair<CCharString_const_,CTCHeroStats::MirroredCriminalStatus> local_90 [72];
+  MirroredCriminalStatus local_48 [68];
+  
+  pCVar2 = (CStringParser *)FUN_0057fe4a(param_2);
+  if (pCVar2 != *(CStringParser **)param_1) {
+    bVar1 = std::less<CCharString>::operator()
+                      ((less<CCharString> *)((int)&param_2 + 3),param_2,
+                       (CCharString *)(pCVar2 + 0x10));
+    if (!bVar1) goto LAB_00581345;
+  }
+  CTCHeroStats::MirroredCriminalStatus::MirroredCriminalStatus(local_48);
+  std::pair<CCharString_const_,CTCHeroStats::MirroredCriminalStatus>::
+  pair<CCharString_const_,CTCHeroStats::MirroredCriminalStatus><CCharString_const_,CTCHeroStats::MirroredCriminalStatus>
+            (local_90,(pair<class_CCharString_const_,struct_CTCHeroStats::MirroredCriminalStatus> *)
+                      param_2);
+  uVar3 = CPersistTraits<C2DVector>::TransferIn(param_1,(CPersistContext *)&param_2,pCVar2);
+  pCVar2 = (CStringParser *)*(undefined4 *)uVar3;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)local_90,
+             (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar3 >> 0x20),unaff_EDI);
+LAB_00581345:
+  return pCVar2 + 0x14;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006a7c60 157 14
+@@CALLERS GetAllThings<CThingPhysical,std::list<CThingPhysical_const*,std::allocator<CThingPhysical_const*>_>,CFilter_Bind3<CThingFilter_OverlappingArea,CThingFilter_HasNavigationInformation,CThingFilter_IsInQuestOrNullQuest>_>, GetAllLeafThings<CThingAICreature,std::list<CThingPhysical_const*,std::allocator<CThingPhysical_const*>_>,CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest,CThingFilter_OverlappingArea>_>, GetAllTCsInRoughArea<CTCPerceiveThing,CFilter_Bind2<CThingFilter_IsPerceivingThing,CThingFilter_IsNot>,std::list<CTCPerceiveThing*,std::allocator<CTCPerceiveThing*>_>_>, GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>, GetAllThings<CThingCreatureBase,std::vector<CThingCreatureBase*,std::allocator<CThingCreatureBase*>_>,CFilter_Bind3<CThingFilter_IsHuman,CThingFilter_IsNot,CThingFilter_In2DRange>_>, operator()
+@@CALLEES operator==, Compare
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_006a7c60(int *param_1,int param_2)
+
+{
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  long lVar3;
+  int iVar4;
+  char *pcVar5;
+  char *pcVar6;
+  bool bVar7;
+  
+  puVar1 = (undefined4 *)*param_1;
+  puVar2 = *(undefined4 **)(param_2 + 0x58);
+  if (puVar2 != puVar1) {
+    if ((((puVar2 != (undefined4 *)0x0) && (puVar1 != (undefined4 *)0x0)) &&
+        (puVar2[1] == puVar1[1])) &&
+       (lVar3 = CBasicString<char>::Compare((char *)*puVar2,(char *)*puVar1), lVar3 == 0)) {
+      return 1;
+    }
+    if (*(CBasicString<char> **)(param_2 + 0x58) == (CBasicString<char> *)0x0) {
+      iVar4 = 5;
+      bVar7 = true;
+      pcVar5 = "NULL";
+      pcVar6 = "";
+      do {
+        if (iVar4 == 0) break;
+        iVar4 = iVar4 + -1;
+        bVar7 = *pcVar5 == *pcVar6;
+        pcVar5 = pcVar5 + 1;
+        pcVar6 = pcVar6 + 1;
+      } while (bVar7);
+      if (bVar7) {
+        return 1;
+      }
+    }
+    else {
+      bVar7 = CBasicString<char>::operator==(*(CBasicString<char> **)(param_2 + 0x58),"NULL");
+      if (bVar7) {
+        return 1;
+      }
+    }
+    if (*(CBasicString<char> **)(param_2 + 0x58) == (CBasicString<char> *)0x0) {
+      iVar4 = 1;
+      bVar7 = true;
+      pcVar5 = "";
+      pcVar6 = "";
+      do {
+        if (iVar4 == 0) break;
+        iVar4 = iVar4 + -1;
+        bVar7 = *pcVar5 == *pcVar6;
+        pcVar5 = pcVar5 + 1;
+        pcVar6 = pcVar6 + 1;
+      } while (bVar7);
+      if (!bVar7) {
+        return 0;
+      }
+    }
+    else {
+      bVar7 = CBasicString<char>::operator==(*(CBasicString<char> **)(param_2 + 0x58),"");
+      if (!bVar7) {
+        return 0;
+      }
+    }
+  }
+  return 1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00706800 86 14
+@@CALLERS CalculateArmorValues, AddClothingToThing, GetName, GetCurrentTotalArmorValue, GetArmourWeightsFromThing, CheckAppearanceChanges, PerformAction, ConstructScreenPC
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00706800(int param_1,int *param_2,int param_3)
+
+{
+  int *piVar1;
+  int iVar2;
+  undefined4 *puVar3;
+  int *piVar4;
+  int *piVar5;
+  
+  piVar1 = (int *)(*(int *)(param_1 + 0x30) + param_3 * 0xc);
+  piVar5 = (int *)*piVar1;
+  if (piVar5 != (int *)piVar1[1]) {
+    do {
+      iVar2 = *param_2;
+      piVar4 = malloc(0xc);
+      if (piVar4 + 2 != (int *)0x0) {
+        piVar4[2] = *piVar5;
+      }
+      puVar3 = *(undefined4 **)(iVar2 + 4);
+      *piVar4 = iVar2;
+      piVar4[1] = (int)puVar3;
+      *puVar3 = piVar4;
+      *(int **)(iVar2 + 4) = piVar4;
+      piVar5 = piVar5 + 2;
+    } while (piVar5 != (int *)piVar1[1]);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 008ea3f0 230 14
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+ushort __thiscall FUN_008ea3f0(float *param_1,float *param_2,char param_3)
+
+{
+  float fVar1;
+  float fVar2;
+  float fVar3;
+  float fVar4;
+  ushort uVar5;
+  float10 fVar6;
+  float10 fVar7;
+  float10 fVar8;
+  float10 fVar9;
+  
+  fVar2 = SQRT(param_2[1] * param_2[1] + *param_2 * *param_2);
+  if (fVar2 < DAT_0129ba3c) {
+    return CONCAT11(fVar2 < DAT_0129ba3c |
+                    (byte)((ushort)((ushort)(NAN(fVar2) || NAN(DAT_0129ba3c)) << 10) >> 8) |
+                    (byte)((ushort)((ushort)(fVar2 == DAT_0129ba3c) << 0xe) >> 8),1);
+  }
+  fVar6 = (float10)fsin((float10)*param_1 * (float10)_DAT_0124f2b8);
+  fVar7 = (float10)fcos((float10)*param_1 * (float10)_DAT_0124f2b8);
+  fVar8 = (float10)fsin((float10)param_1[1] * (float10)_DAT_0124f2b8);
+  fVar9 = (float10)fcos((float10)param_1[1] * (float10)_DAT_0124f2b8);
+  fVar3 = (_DAT_0122ded8 / fVar2) * *param_2;
+  fVar4 = (_DAT_0122ded8 / fVar2) * param_2[1];
+  if (param_3 != '\0') {
+    fVar1 = param_1[2];
+    if (fVar2 >= fVar1) {
+      return (ushort)(fVar2 < fVar1) << 8 | (ushort)(NAN(fVar2) || NAN(fVar1)) << 10 |
+             (ushort)(fVar2 == fVar1) << 0xe;
+    }
+  }
+  fVar2 = (float)fVar8 * (float)fVar6 + (float)fVar9 * (float)fVar7;
+  fVar1 = fVar3 * (float)fVar6 + fVar4 * (float)fVar7;
+  uVar5 = (ushort)(fVar1 < fVar2) << 8 | (ushort)(NAN(fVar1) || NAN(fVar2)) << 10 |
+          (ushort)(fVar1 == fVar2) << 0xe;
+  if (fVar1 >= fVar2) {
+    fVar3 = fVar3 * (float)fVar8 + fVar4 * (float)fVar9;
+    uVar5 = (ushort)(fVar3 < fVar2) << 8 | (ushort)(NAN(fVar3) || NAN(fVar2)) << 10 |
+            (ushort)(fVar3 == fVar2) << 0xe;
+    if (fVar3 >= fVar2) {
+      return CONCAT11((char)(uVar5 >> 8),1);
+    }
+  }
+  return uVar5;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00996610 449 14
+@@CALLERS SaveGameState, TransferBinaryOut, SaveBinary
+@@CALLEES malloc, FUN_00514e20, lzo1x_999_compress, free, lzo1x_decompress
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00996610(int *param_1,undefined1 *param_2,undefined1 *param_3)
+
+{
+  undefined4 ***pppuVar1;
+  int iVar2;
+  undefined4 ***pppuVar3;
+  undefined1 *unaff_EBX;
+  void *unaff_ESI;
+  undefined4 ***unaff_retaddr;
+  undefined1 *puVar4;
+  undefined1 *puVar5;
+  void *_Memory;
+  undefined1 *local_1c;
+  undefined4 **local_18;
+  undefined4 **local_14;
+  undefined4 **local_c;
+  undefined4 **local_8;
+  undefined4 **local_4;
+  
+  puVar5 = param_3;
+  if (0 < (int)param_3) {
+    if ((int)param_3 < 4) {
+      param_3 = (undefined1 *)0x0;
+      (**(code **)(*param_1 + 0x10))(&param_3,2);
+      (**(code **)(*param_1 + 0x10))(local_4,puVar5);
+    }
+    else {
+      param_3 = (undefined1 *)
+                (((int)((int)param_3 * 0x41 + ((int)param_3 * 0x41 >> 0x1f & 0x3fU)) >> 6) + 0x80);
+      FUN_00514e20(param_3);
+      local_c = (undefined4 **)0x0;
+      local_8 = (undefined4 **)0x0;
+      local_4 = (undefined4 **)0x0;
+      local_c = malloc(0x70000);
+      puVar4 = param_2;
+      local_4 = local_c + 0x1c000;
+      pppuVar3 = (undefined4 ***)local_c;
+      for (iVar2 = 0x1c000; iVar2 != 0; iVar2 = iVar2 + -1) {
+        *pppuVar3 = (undefined4 **)0x0;
+        pppuVar3 = pppuVar3 + 1;
+      }
+      local_8 = local_c + 0x1c000;
+      pppuVar3 = (undefined4 ***)local_c;
+      if (local_8 == local_c) {
+        pppuVar3 = &local_c;
+      }
+      pppuVar1 = (undefined4 ***)local_18;
+      if (local_14 == local_18) {
+        pppuVar1 = &local_18;
+      }
+      lzo1x_999_compress(param_2,puVar5 + -3,pppuVar1,&param_3,pppuVar3);
+      local_1c = puVar5;
+      if (local_14 == local_18) {
+        local_18 = &local_18;
+      }
+      lzo1x_decompress(local_18,param_3,puVar4,&local_1c,0);
+      _Memory = (void *)0x2;
+      if (param_3 < puVar5 + -3) {
+        if (param_3 < (undefined1 *)0x8000) {
+          param_2 = param_3;
+          (**(code **)(*param_1 + 0x10))(&param_2);
+        }
+        else {
+          param_2 = (undefined1 *)0xffffffff;
+          (**(code **)(*param_1 + 0x10))(&param_2);
+          local_4 = unaff_retaddr;
+          (**(code **)(*param_1 + 0x10))(&local_4,4);
+        }
+        if (local_1c == unaff_EBX) {
+          unaff_EBX = &stack0xffffffe0;
+        }
+        (**(code **)(*param_1 + 0x10))(unaff_EBX,unaff_retaddr);
+        puVar4 = puVar5 + -3 + (int)puVar4;
+        puVar5 = (undefined1 *)0x3;
+      }
+      else {
+        param_2 = (undefined1 *)0x0;
+        (**(code **)(*param_1 + 0x10))(&param_2);
+      }
+      (**(code **)(*param_1 + 0x10))(puVar4,puVar5);
+      if (unaff_ESI != (void *)0x0) {
+        free(unaff_ESI);
+      }
+      if (_Memory != (void *)0x0) {
+        free(_Memory);
+        return;
+      }
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0099b770 93 14
+@@CALLERS WordWrapText, ReadAsStringUntilCharacter, ReadAsStringUntilWhitespace, ReadAsStringUntilNonWhitespace, FitInWindow, Update, ConvertDirectoryAndFilenameToPath, ReadNextString, ReadNextSymbol, ReadNextItem
+@@CALLEES operator_delete, free, AllocStringData
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_0099b770(CCharString *param_1,short *param_2,long param_3)
+
+{
+  int iVar1;
+  undefined4 *puVar2;
+  CCharStringData *pCVar3;
+  int iVar4;
+  
+  iVar1 = *(int *)param_1;
+  if (iVar1 != 0) {
+    iVar4 = *(int *)(iVar1 + 0xc) + -1;
+    *(int *)(iVar1 + 0xc) = iVar4;
+    if ((iVar4 < 1) && (puVar2 = *(undefined4 **)param_1, puVar2 != (undefined4 *)0x0)) {
+      if ((void *)*puVar2 != (void *)0x0) {
+        free((void *)*puVar2);
+      }
+      operator_delete(puVar2);
+    }
+    *(undefined4 *)param_1 = 0;
+  }
+  if ((param_2 != (short *)0x0) && (*param_2 != 0)) {
+    pCVar3 = CCharString::AllocStringData(param_1,(char *)param_2,param_3);
+    *(CCharStringData **)param_1 = pCVar3;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 009a0590 72 14
+@@CALLERS AllocStringData, operator=, MakeOwnCopyOfData, operator+=, CCharString_OperatorPlus_API, MakeOwnCopyOfDataOrEmptyString, GFBoolToCharString
+@@CALLEES FUN_009a0300
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_009a0590(undefined4 *param_1,char *param_2)
+
+{
+  int iVar1;
+  char cVar2;
+  int iVar3;
+  
+  param_1[2] = param_1[2] & 0x80000000;
+  *(byte *)(param_1 + 3) = *(byte *)(param_1 + 3) | 1;
+  *param_1 = 0;
+  param_1[1] = 0;
+  iVar3 = 0;
+  cVar2 = *param_2;
+  while (cVar2 != '\0') {
+    iVar1 = iVar3 + 1;
+    iVar3 = iVar3 + 1;
+    cVar2 = param_2[iVar1];
+  }
+  FUN_009a0300(param_2,iVar3);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c29fc0 203 14
+@@CALLERS _Dest_val<std::allocator<std::pair<CCharString,CScriptInfo>_>,std::pair<CCharString,CScriptInfo>_>
+@@CALLEES FUN_00c0ba40, CreateSemaphoreA, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+@@STRINGS .\PKCSemaphore.cpp	Could not create semaphore
+@@DECOMP
+
+undefined4 * __thiscall FUN_00c29fc0(undefined4 *param_1,undefined *param_2,LONG param_3)
+
+{
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar1;
+  void *local_c;
+  undefined1 *puStack_8;
+  HANDLE local_4;
+  
+  local_4 = (HANDLE)0xffffffff;
+  puStack_8 = &LAB_01213508;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  local_4 = CreateSemaphoreA((LPSECURITY_ATTRIBUTES)0x0,(LONG)param_2,param_3,(LPCSTR)0x0);
+  *param_1 = local_4;
+  if (local_4 == (HANDLE)0x0) {
+    param_2 = PTR_DAT_0139c900;
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&param_2,(CIsThingAlive *)".\\PKCSemaphore.cpp");
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar1,(CIsThingAlive *)&DAT_0122e028);
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar1,(CIsThingAlive *)&DAT_00000009);
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar1,(CIsThingAlive *)&DAT_012b1ae4);
+    pCVar1 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar1,(CIsThingAlive *)"Could not create semaphore");
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar1,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_4 = (HANDLE)0xffffffff;
+    FUN_00c0ba40();
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_3);
+  }
+  ExceptionList = local_c;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c2a090 192 14
+@@CALLERS ChooseRandomGuardFromDefs
+@@CALLEES FUN_00c0ba40, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, WaitForSingleObject
+@@STRINGS .\PKCSemaphore.cpp	Waiting for semaphore unit failed
+@@DECOMP
+
+void __fastcall FUN_00c2a090(undefined4 *param_1)
+
+{
+  DWORD DVar1;
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar2;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lStack_11;
+  undefined *local_10;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_0121351a;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  DVar1 = WaitForSingleObject((HANDLE)*param_1,0xffffffff);
+  if (DVar1 == 0xffffffff) {
+    local_10 = PTR_DAT_0139c900;
+    local_4 = 0;
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_10,(CIsThingAlive *)".\\PKCSemaphore.cpp");
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_0122e028);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_00000014);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)&DAT_012b1ae4);
+    pCVar2 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar2,(CIsThingAlive *)"Waiting for semaphore unit failed");
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar2,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_4 = 0xffffffff;
+    FUN_00c0ba40();
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&lStack_11);
+  }
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004af610 85 13
+@@CALLERS DeactivateQuest, IsCreatureGenerationEnabled, DetectFoldOver, GetTestQuestsToDisplay, DrawActiveTestQuests, FrameUpdate, ?FrameUpdate@CCreatureAction_ActivateQuest@@UAEXXZ, ?SetQuestCardObjective@CGameScriptInterface@@UBEXABVCCharString@@000@Z, ?IsQuestActive@CGameScriptInterface@@UBE_NABVCCharString@@@Z, Update
+@@CALLEES Compare
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_004af610(int param_1,int *param_2)
+
+{
+  int *piVar1;
+  undefined4 *puVar2;
+  char cVar3;
+  undefined4 *in_EAX;
+  long lVar4;
+  int *piVar5;
+  
+  piVar1 = *(int **)(param_1 + 0x38);
+  piVar5 = (int *)*piVar1;
+  if (piVar5 != piVar1) {
+    puVar2 = (undefined4 *)*param_2;
+    do {
+      in_EAX = *(undefined4 **)(piVar5[2] + 0x30);
+      if (in_EAX == puVar2) {
+LAB_004af65d:
+        return CONCAT31((int3)((uint)in_EAX >> 8),1);
+      }
+      if (((in_EAX != (undefined4 *)0x0) && (puVar2 != (undefined4 *)0x0)) &&
+         (in_EAX[1] == puVar2[1])) {
+        lVar4 = CBasicString<char>::Compare((char *)*in_EAX,(char *)*puVar2);
+        cVar3 = '\x01' - (lVar4 != 0);
+        in_EAX = (undefined4 *)CONCAT31((int3)((uint)-lVar4 >> 8),cVar3);
+        if (cVar3 != '\0') goto LAB_004af65d;
+      }
+      piVar5 = (int *)*piVar5;
+    } while (piVar5 != piVar1);
+  }
+  return (uint)in_EAX & 0xffffff00;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004b8920 32 13
+@@CALLERS CTCAvoidRegionExit, CCardPositionsDef, CTCDPhysicalObstruction, CTCFishingRod, CTCGraphicAppearanceReplaceableMesh, CTCVillage
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004b8920(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c0050 87 13
+@@CALLERS DrawLight, DrawFlare, ?OnAppearanceDraw@CTCSpotLight@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z, ?OnAppearanceDraw@CTCHeroAttachableAppearanceModifiers@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z, ?OnAppearanceDraw@CTCRandomAppearanceMorph@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z, ?OnAppearanceDraw@CTCLook@@UAE_NAAVCTCGraphicAppearance@NGraphicAppearance@@ABVCGraphicAppearanceDrawInfo@3@@Z
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_004c0050(int param_1,int *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  undefined4 *puVar3;
+  int *piVar4;
+  
+  iVar1 = *(int *)(param_1 + 0x38);
+  piVar4 = malloc(0x18);
+  if (piVar4 + 2 != (int *)0x0) {
+    piVar4[2] = *param_2;
+    piVar4[3] = (int)&PTR__scalar_deleting_destructor__0122f598;
+    iVar2 = param_2[2];
+    piVar4[4] = iVar2;
+    if (iVar2 != 0) {
+      *(int *)(iVar2 + 4) = *(int *)(iVar2 + 4) + 1;
+    }
+    piVar4[5] = param_2[3];
+  }
+  puVar3 = *(undefined4 **)(iVar1 + 4);
+  *piVar4 = iVar1;
+  piVar4[1] = (int)puVar3;
+  *puVar3 = piVar4;
+  *(int **)(iVar1 + 4) = piVar4;
+  return *(int *)(*(int *)(param_1 + 0x38) + 4) + 8;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c5fa0 99 13
+@@CALLERS ConvertInterpolateToBulletTimeInterpolate, GetPositionInterpolator, GetOrientationInterpolator, IsTimeForFullUpdate, GetAnimationSpeedMultiplier, GetTimeToBlendIn, UpdateAnimation, GetUpdateTimeForThing, GetNoFramesBeforePlayingCombinationIdleAnims
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 __fastcall FUN_004c5fa0(int *param_1)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  float10 fVar5;
+  
+  if ((*(char *)((int)param_1 + 0xd) == '\0') && (param_1[1] != 0)) {
+    iVar1 = *param_1;
+    fVar5 = (float10)_DAT_0122dedc;
+    iVar3 = *(int *)(iVar1 + 8);
+    if (iVar3 != iVar1) {
+      do {
+        iVar4 = *(int *)(iVar3 + 0xc);
+        fVar5 = fVar5 + (float10)*(float *)(iVar3 + 0x14);
+        if (iVar4 == 0) {
+          iVar4 = *(int *)(iVar3 + 4);
+          if (iVar3 == *(int *)(iVar4 + 0xc)) {
+            do {
+              iVar3 = iVar4;
+              iVar4 = *(int *)(iVar3 + 4);
+            } while (iVar3 == *(int *)(iVar4 + 0xc));
+          }
+          if (*(int *)(iVar3 + 0xc) != iVar4) {
+            iVar3 = iVar4;
+          }
+        }
+        else {
+          for (iVar2 = *(int *)(iVar4 + 8); iVar3 = iVar4, iVar2 != 0; iVar2 = *(int *)(iVar2 + 8))
+          {
+            iVar4 = iVar2;
+          }
+        }
+      } while (iVar3 != iVar1);
+      return fVar5;
+    }
+  }
+  else {
+    fVar5 = (float10)_DAT_01378d00;
+  }
+  return fVar5;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005029a0 331 13
+@@CALLERS PopulateRegionWithVillagers
+@@CALLEES PeekPMaterial, FUN_0051bf90
+@@STRINGS 
+@@DECOMP
+
+int __fastcall FUN_005029a0(int *param_1,uint param_2,char param_3,char param_4)
+
+{
+  undefined4 *puVar1;
+  int iVar2;
+  int *piVar3;
+  int *piVar4;
+  int iVar5;
+  uint uVar6;
+  uint uVar7;
+  int iVar8;
+  int *local_14;
+  int local_10;
+  int *local_c;
+  uint local_8;
+  int local_4;
+  
+  local_4 = *param_1;
+  iVar5 = *(int *)(local_4 + 8);
+  local_10 = 0;
+  iVar8 = 0;
+  local_c = param_1;
+  local_8 = param_2;
+  if (iVar5 != local_4) {
+    do {
+      CThingBuilding::PeekPMaterial(*(CThingBuilding **)(iVar5 + 0x10));
+      if (local_14 != (int *)0x0) {
+        if ((local_14[0xf] & local_8) != 0) {
+          if (param_3 == '\0') {
+            if (param_4 != '\0') {
+              uVar7 = local_14[0x11];
+              goto LAB_00502a0c;
+            }
+          }
+          else {
+            uVar7 = local_14[0x10];
+LAB_00502a0c:
+            uVar6 = 0;
+            for (puVar1 = (undefined4 *)**(undefined4 **)(iVar5 + 0x14);
+                puVar1 != *(undefined4 **)(iVar5 + 0x14); puVar1 = (undefined4 *)*puVar1) {
+              uVar6 = uVar6 + 1;
+            }
+            if (uVar7 <= uVar6) goto LAB_00502a80;
+          }
+          if (local_10 == 0) {
+LAB_00502a6f:
+            local_10 = *(int *)(iVar5 + 0x10);
+          }
+          else {
+            piVar3 = (int *)FUN_0051bf90((int *)(iVar5 + 0x10));
+            uVar7 = 0;
+            for (puVar1 = *(undefined4 **)*piVar3; puVar1 != (undefined4 *)*piVar3;
+                puVar1 = (undefined4 *)*puVar1) {
+              uVar7 = uVar7 + 1;
+            }
+            piVar3 = (int *)FUN_0051bf90(&local_10);
+            piVar3 = (int *)*piVar3;
+            piVar4 = (int *)*piVar3;
+            uVar6 = 0;
+            if (piVar4 != piVar3) {
+              do {
+                piVar4 = (int *)*piVar4;
+                uVar6 = uVar6 + 1;
+              } while (piVar4 != piVar3);
+              if (uVar7 < uVar6) goto LAB_00502a6f;
+            }
+          }
+        }
+LAB_00502a80:
+        if (local_14 != (int *)0x0) {
+          iVar8 = local_14[1] + -1;
+          local_14[1] = iVar8;
+          if (iVar8 == 0) {
+            (**(code **)(*local_14 + 4))();
+          }
+          local_14 = (int *)0x0;
+        }
+      }
+      iVar8 = *(int *)(iVar5 + 0xc);
+      if (iVar8 == 0) {
+        iVar8 = *(int *)(iVar5 + 4);
+        if (iVar5 == *(int *)(iVar8 + 0xc)) {
+          do {
+            iVar5 = iVar8;
+            iVar8 = *(int *)(iVar5 + 4);
+          } while (iVar5 == *(int *)(iVar8 + 0xc));
+        }
+        if (*(int *)(iVar5 + 0xc) != iVar8) {
+          iVar5 = iVar8;
+        }
+      }
+      else {
+        for (iVar2 = *(int *)(iVar8 + 8); iVar5 = iVar8, iVar2 != 0; iVar2 = *(int *)(iVar2 + 8)) {
+          iVar8 = iVar2;
+        }
+      }
+      iVar8 = local_10;
+    } while (iVar5 != local_4);
+  }
+  return iVar8;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0050e540 112 13
+@@CALLERS UnloadRegion, UnloadLevel, ConstructRegionDescription, UpdateVisitedRegions, GetFreeActionPoint, GetFullNamedActionPoint, GetFreeNamedActionPoint, IsDivineWrathStrike
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_0050e540(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  iVar2 = (int)param_2 - (int)param_1 >> 4;
+  if (0 < iVar2) {
+    iVar1 = *param_3;
+    do {
+      if (*param_1 == iVar1) {
+        return param_1;
+      }
+      if (param_1[1] == iVar1) {
+        return param_1 + 1;
+      }
+      if (param_1[2] == iVar1) {
+        return param_1 + 2;
+      }
+      if (param_1[3] == iVar1) {
+        return param_1 + 3;
+      }
+      param_1 = param_1 + 4;
+      iVar2 = iVar2 + -1;
+    } while (0 < iVar2);
+  }
+  iVar2 = (int)param_2 - (int)param_1 >> 2;
+  if (iVar2 != 1) {
+    if (iVar2 != 2) {
+      if (iVar2 != 3) {
+        return param_2;
+      }
+      if (*param_1 == *param_3) {
+        return param_1;
+      }
+      param_1 = param_1 + 1;
+    }
+    if (*param_1 == *param_3) {
+      return param_1;
+    }
+    param_1 = param_1 + 1;
+  }
+  if (*param_1 != *param_3) {
+    return param_2;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005b1a43 56 13
+@@CALLERS RecurseRefreshEntriesAmountsAndAvailabilitiesPC, RefreshEntriesAmountsAndAvailabilitiesPC, ConstructNormalShopList, ConstructActualSellInventoryPC, ConstructActualWantedInventoryPC, ConstructActualBuyInventoryPC, BuyItem
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_005b1a43(int *param_1,uint *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  iVar1 = *param_1;
+  iVar2 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar3 = *(int *)(iVar1 + 4);
+    do {
+      if (*(uint *)(iVar3 + 0x10) < *param_2) {
+        iVar4 = *(int *)(iVar3 + 0xc);
+      }
+      else {
+        iVar4 = *(int *)(iVar3 + 8);
+        iVar2 = iVar3;
+      }
+      iVar3 = iVar4;
+    } while (iVar4 != 0);
+  }
+  if ((iVar2 == iVar1) || (*param_2 < *(uint *)(iVar2 + 0x10))) {
+    iVar2 = iVar1;
+  }
+  return iVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005b1a8d 56 13
+@@CALLERS FinalConstructSubtitles, FinalRefreshSubtitles, FinalConstructSubtitlesPC, RefreshBuyPossibilityNumbers, RefreshBuyPossibilityNumbersPC, ConstructNormalShopList, ConstructActualSellInventoryPC, ConstructActualWantedInventoryPC, ConstructActualBuyInventoryPC, BuyItem
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_005b1a8d(int *param_1,uint *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  iVar1 = *param_1;
+  iVar2 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar3 = *(int *)(iVar1 + 4);
+    do {
+      if (*(uint *)(iVar3 + 0x10) < *param_2) {
+        iVar4 = *(int *)(iVar3 + 0xc);
+      }
+      else {
+        iVar4 = *(int *)(iVar3 + 8);
+        iVar2 = iVar3;
+      }
+      iVar3 = iVar4;
+    } while (iVar4 != 0);
+  }
+  if ((iVar2 == iVar1) || (*param_2 < *(uint *)(iVar2 + 0x10))) {
+    iVar2 = iVar1;
+  }
+  return iVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bba94 49 13
+@@CALLERS AddClothingToThing, ConstructScreenPC
+@@CALLEES FUN_005bb4e6
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_005bba94(int param_1,undefined4 *param_2)
+
+{
+  undefined4 *puVar1;
+  
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  if (puVar1 == *(undefined4 **)(param_1 + 8)) {
+    FUN_005bb4e6(puVar1,param_2,(int)&param_2 + 3,1,1);
+  }
+  else {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = *param_2;
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 4;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005e2580 254 13
+@@CALLERS StatRegisterClass
+@@CALLEES FUN_005dfce0, operator<, FUN_005e1fc0
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_005e2580(int *param_1,int *param_2,undefined4 *param_3)
+
+{
+  int iVar1;
+  CBasicString<char> *pCVar2;
+  CBasicString<char> *pCVar3;
+  bool bVar4;
+  int *piVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  bVar4 = true;
+  iVar7 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    pCVar2 = (CBasicString<char> *)*param_3;
+    iVar6 = *(int *)(iVar1 + 4);
+    do {
+      iVar7 = iVar6;
+      pCVar3 = *(CBasicString<char> **)(iVar7 + 0x10);
+      if (pCVar3 == pCVar2) {
+        bVar4 = false;
+      }
+      else if (pCVar2 == (CBasicString<char> *)0x0) {
+        bVar4 = true;
+      }
+      else if (pCVar3 == (CBasicString<char> *)0x0) {
+        bVar4 = false;
+      }
+      else {
+        bVar4 = CBasicString<char>::operator<(pCVar2,pCVar3);
+      }
+      if (bVar4 == false) {
+        iVar6 = *(int *)(iVar7 + 0xc);
+      }
+      else {
+        iVar6 = *(int *)(iVar7 + 8);
+      }
+    } while (iVar6 != 0);
+  }
+  if (bVar4 != false) {
+    if (iVar7 == *(int *)(iVar1 + 8)) {
+      piVar5 = (int *)FUN_005e1fc0(&param_3,iVar7,iVar7,param_3,0);
+      *param_2 = *piVar5;
+      *(undefined1 *)(param_2 + 1) = 1;
+      return;
+    }
+    FUN_005dfce0();
+  }
+  pCVar2 = (CBasicString<char> *)*param_3;
+  pCVar3 = *(CBasicString<char> **)(iVar7 + 0x10);
+  if ((pCVar2 != pCVar3) &&
+     ((pCVar3 == (CBasicString<char> *)0x0 ||
+      ((pCVar2 != (CBasicString<char> *)0x0 &&
+       (bVar4 = CBasicString<char>::operator<(pCVar3,pCVar2), bVar4)))))) {
+    piVar5 = (int *)FUN_005e1fc0(&param_3,0,iVar7,param_3,0);
+    *param_2 = *piVar5;
+    *(undefined1 *)(param_2 + 1) = 1;
+    return;
+  }
+  *param_2 = iVar7;
+  *(undefined1 *)(param_2 + 1) = 0;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00673e10 142 13
+@@CALLERS _Cons_val<std::allocator<std::pair<CCharString_const_,bool>_>,std::pair<CCharString_const_,bool>,std::pair<class_CCharString_const_,bool>_>, _Uninit_copy<CFeatDef*,CFeatDef*,std::allocator<CFeatDef>_>, _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, _Ufill
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_00673e10(undefined4 *param_1,int *param_2)
+
+{
+  undefined4 *puVar1;
+  int iVar2;
+  undefined4 *puVar3;
+  undefined4 *puVar4;
+  undefined4 *puVar5;
+  undefined4 *puVar6;
+  
+  iVar2 = (param_2[1] - *param_2) / 0xc;
+  puVar3 = (undefined4 *)0x0;
+  *param_1 = 0;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  if (iVar2 != 0) {
+    puVar3 = malloc(iVar2 * 0xc);
+  }
+  *param_1 = puVar3;
+  param_1[1] = puVar3;
+  param_1[2] = puVar3 + iVar2 * 3;
+  puVar1 = (undefined4 *)param_2[1];
+  puVar4 = (undefined4 *)*param_2;
+  if (puVar4 != puVar1) {
+    puVar6 = puVar3 + 1;
+    puVar5 = puVar4 + 1;
+    do {
+      if (puVar3 != (undefined4 *)0x0) {
+        *puVar3 = *puVar4;
+        *puVar6 = *puVar5;
+        puVar6[1] = puVar5[1];
+      }
+      puVar4 = puVar4 + 3;
+      puVar5 = puVar5 + 3;
+      puVar3 = puVar3 + 3;
+      puVar6 = puVar6 + 3;
+    } while (puVar4 != puVar1);
+  }
+  param_1[1] = puVar3;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007122c0 15 13
+@@CALLERS IsUnderScriptControl, IsActive, IsOverridingFactionEnemyOnTarget, UpdatePlayerControl, FrameUpdate, IsWillingToAttackTarget, UpdateMovement, TargetCreatureLikelyToReactToDeed, operator(), ?WaitWhilePerformingTasks@CScriptGameResourceObjectScriptedThing@@UAEXXZ, ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThing@@UBE_NXZ
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_007122c0(int param_1)
+
+{
+  int *piVar1;
+  
+  piVar1 = *(int **)(param_1 + 0x14);
+  return CONCAT31((int3)((uint)piVar1 >> 8),(int *)*piVar1 == piVar1);
+}
+
+
+@@ENDFUNC
+@@@FUNC 007a3bc0 154 13
+@@CALLERS OnCollisionProper, OnCollision, StartHealingEffect, FrameUpdate, ProcessPossibleCreatureStrikeEvent, ProcessPossibleShotStrikeEvent, ProcessPossibleObjectStrikeEvent, OnDeactivate
+@@CALLEES malloc, CBaseIntelligentPointer
+@@STRINGS 
+@@DECOMP
+
+undefined1 * __fastcall FUN_007a3bc0(undefined1 *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  param_1[1] = 0;
+  param_1[0x1a] = 0;
+  param_1[0x1b] = 0;
+  param_1[0x1c] = 1;
+  param_1[0x1d] = 0;
+  param_1[0x1e] = 0;
+  param_1[0x1f] = 0;
+  param_1[0x20] = 1;
+  param_1[0x21] = 0;
+  param_1[0x22] = 1;
+  param_1[0x23] = 1;
+  param_1[0x24] = 1;
+  param_1[0x25] = 0;
+  param_1[0x26] = 0;
+  param_1[0x27] = 0;
+  param_1[0x28] = 0;
+  *(undefined4 *)(param_1 + 0x2c) = 0;
+  *(undefined4 *)(param_1 + 0x30) = 0;
+  puVar1 = malloc(0x18);
+  *(undefined1 **)(param_1 + 0x30) = puVar1;
+  *(undefined4 *)(param_1 + 0x34) = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*(int *)(param_1 + 0x30) + 4) = 0;
+  *(int *)(*(int *)(param_1 + 0x30) + 8) = *(int *)(param_1 + 0x30);
+  *(int *)(*(int *)(param_1 + 0x30) + 0xc) = *(int *)(param_1 + 0x30);
+  *(undefined4 *)(param_1 + 0x3c) = 0;
+  *(undefined4 *)(param_1 + 0x40) = 0;
+  *(undefined4 *)(param_1 + 0x44) = 0;
+  *(undefined4 *)(param_1 + 0x48) = 0;
+  *(undefined4 *)(param_1 + 0x4c) = 0;
+  CBaseIntelligentPointer::CBaseIntelligentPointer((CBaseIntelligentPointer *)(param_1 + 0x50));
+  *(undefined ***)(param_1 + 0x50) = &PTR__vector_deleting_destructor__01238c6c;
+  CBaseIntelligentPointer::CBaseIntelligentPointer((CBaseIntelligentPointer *)(param_1 + 0x58));
+  *(undefined ***)(param_1 + 0x58) = &PTR__vector_deleting_destructor__01238c6c;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 008410d0 250 13
+@@CALLERS UploadPlayerScores, DownloadListOfMyClans, DownloadLogosForThisClansMembers, ~CParticleEffect, DownloadScoreboardForSelectedClan, `vector_deleting_destructor', OnDie, ~CPatchTesselationEdgeStrip, ShowScoreboard
+@@CALLEES FUN_00841fc0, FUN_005693b0, FUN_00569940, Close, operator_delete, free, Kill, FUN_0083ff80
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_008410d0(undefined4 *param_1)
+
+{
+  CWound *this;
+  CTCTextureDecal *unaff_EDI;
+  
+  if ((LSocket *)*param_1 != (LSocket *)0x0) {
+    LHNetworkLib::LSocket::Close((LSocket *)*param_1);
+    this = (CWound *)*param_1;
+    if (this != (CWound *)0x0) {
+      CTCWound::CWound::Kill(this,unaff_EDI);
+      operator_delete(this);
+    }
+    *param_1 = 0;
+  }
+  FUN_0083ff80();
+  FUN_0083ff80();
+  if ((void *)param_1[0x221] != (void *)0x0) {
+    free((void *)param_1[0x221]);
+  }
+  if ((void *)param_1[0x21d] != (void *)0x0) {
+    free((void *)param_1[0x21d]);
+  }
+  FUN_005693b0(&DAT_0122d70e,&DAT_0122d70e);
+  FUN_00841fc0(param_1[0x10],param_1[0x11]);
+  if ((void *)param_1[0x13] != (void *)0x0) {
+    free((void *)param_1[0x13]);
+  }
+  FUN_00569940();
+  FUN_005693b0(&DAT_0122d70e,&DAT_0122d70e);
+  FUN_00841fc0(param_1[10],param_1[0xb]);
+  if ((void *)param_1[0xd] != (void *)0x0) {
+    free((void *)param_1[0xd]);
+  }
+  FUN_00569940();
+  if ((void *)param_1[5] != (void *)0x0) {
+    free((void *)param_1[5]);
+  }
+  if ((void *)param_1[1] != (void *)0x0) {
+    free((void *)param_1[1]);
+  }
+  return;
+}
+
+
+@@ENDFUNC

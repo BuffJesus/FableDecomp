@@ -1,0 +1,1889 @@
+@@@FUNC 00783f00 163 2
+@@CALLERS 
+@@CALLEES Clone, CMemoryAllocatorVariableSize::BalanceTree
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00783f00(CCreatureAction_ScorpionChargeInto *param_1,undefined4 *param_2,int param_3,int param_4
+            ,uint *param_5,int param_6)
+
+{
+  int iVar1;
+  CCreatureActionBase *pCVar2;
+  
+  if (param_4 != *(int *)param_1) {
+    if (param_6 != 0) {
+LAB_00783f32:
+      pCVar2 = CCreatureAction_ScorpionChargeInto::Clone(param_1);
+      *(CCreatureActionBase **)(param_4 + 0xc) = pCVar2;
+      if (param_4 == *(int *)(*(int *)param_1 + 0xc)) {
+        *(CCreatureActionBase **)(*(int *)param_1 + 0xc) = pCVar2;
+      }
+      goto LAB_00783f70;
+    }
+    if (param_3 == 0) {
+      if ((*(uint *)(param_4 + 0x14) <= param_5[1]) &&
+         ((param_5[1] != *(uint *)(param_4 + 0x14) || (*(uint *)(param_4 + 0x10) <= *param_5))))
+      goto LAB_00783f32;
+    }
+  }
+  pCVar2 = CCreatureAction_ScorpionChargeInto::Clone(param_1);
+  *(CCreatureActionBase **)(param_4 + 8) = pCVar2;
+  iVar1 = *(int *)param_1;
+  if (param_4 == iVar1) {
+    *(CCreatureActionBase **)(iVar1 + 4) = pCVar2;
+    *(CCreatureActionBase **)(*(int *)param_1 + 0xc) = pCVar2;
+  }
+  else if (param_4 == *(int *)(iVar1 + 8)) {
+    *(CCreatureActionBase **)(iVar1 + 8) = pCVar2;
+  }
+LAB_00783f70:
+  *(int *)(pCVar2 + 4) = param_4;
+  *(undefined4 *)(pCVar2 + 8) = 0;
+  *(undefined4 *)(pCVar2 + 0xc) = 0;
+  CMemoryAllocatorVariableSize__BalanceTree(pCVar2,*(int *)param_1 + 4);
+  *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 1;
+  *param_2 = pCVar2;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00786020 280 2
+@@CALLERS resize
+@@CALLEES _Copy_impl<std::pair<float,EConversationAttitude>*,std::pair<float,enum_EConversationAttitude>*>, std::vector_insert_with_alloc, _Fill<CObjectFamilyEntry*,CObjectFamilyEntry>, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00786020(int param_1,pair<float,enum_EConversationAttitude> *param_2,uint param_3,
+            CObjectFamilyEntry *param_4)
+
+{
+  CObjectFamilyEntry *pCVar1;
+  int iVar2;
+  ulong local_8;
+  ulong local_4;
+  
+  if (param_3 != 0) {
+    if ((uint)(*(int *)(param_1 + 8) - *(int *)(param_1 + 4) >> 3) < param_3) {
+      std__vector_insert_with_alloc(param_2,param_4,&param_4,param_3,0);
+      return;
+    }
+    local_8 = *(ulong *)param_4;
+    local_4 = *(ulong *)((int)param_4 + 4);
+    param_4 = (CObjectFamilyEntry *)(*(int *)(param_1 + 4) - (int)param_2 >> 3);
+    pCVar1 = *(CObjectFamilyEntry **)(param_1 + 4);
+    if (param_4 <= param_3) {
+      param_3 = param_3 - (int)param_4;
+      std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>((ulong *)pCVar1,param_3,&local_8);
+      iVar2 = *(int *)(param_1 + 4) + param_3 * 8;
+      *(int *)(param_1 + 4) = iVar2;
+      std::
+      _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                (param_2,pCVar1,iVar2,&param_4);
+      *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)param_4 * 8;
+      std::_Fill<CObjectFamilyEntry*,CObjectFamilyEntry>
+                ((CObjectFamilyEntry *)param_2,pCVar1,(CObjectFamilyEntry *)&local_8);
+      return;
+    }
+    param_4 = pCVar1 + param_3 * -8;
+    std::
+    _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+              (param_4,pCVar1,pCVar1,&param_4);
+    *(uint *)(param_1 + 4) = *(int *)(param_1 + 4) + param_3 * 8;
+    std::
+    _Copy_impl<std::pair<float,EConversationAttitude>*,std::pair<float,enum_EConversationAttitude>*>
+              (param_2,(pair<float,enum_EConversationAttitude> *)param_4,
+               (pair<float,enum_EConversationAttitude> *)pCVar1);
+    std::_Fill<CObjectFamilyEntry*,CObjectFamilyEntry>
+              ((CObjectFamilyEntry *)param_2,(CObjectFamilyEntry *)(param_2 + param_3 * 8),
+               (CObjectFamilyEntry *)&local_8);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00787380 270 2
+@@CALLERS 
+@@CALLEES free, malloc, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, CCharString
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00787380(int *param_1,undefined4 param_2,ulong *param_3,undefined4 param_4,void *param_5,
+            char param_6)
+
+{
+  int iVar1;
+  uint uVar2;
+  uint *puVar3;
+  uint *extraout_EAX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar4;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_02;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  int iVar5;
+  uint local_4;
+  
+  uVar2 = (uint)param_5;
+  local_4 = (param_1[1] - *param_1) / 0xc;
+  puVar3 = (uint *)&param_5;
+  if (param_5 <= local_4) {
+    puVar3 = &local_4;
+  }
+  local_4 = *puVar3 + local_4;
+  if (local_4 == 0) {
+    param_5 = (void *)0x0;
+  }
+  else {
+    param_5 = malloc(local_4 * 0xc);
+  }
+  puVar3 = std::
+           _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                     (*param_1,param_2,param_5,&param_6);
+  if (uVar2 == 1) {
+    ppVar4 = extraout_EDX;
+    if (puVar3 != (uint *)0x0) {
+      *puVar3 = *param_3;
+      CCharString::CCharString((CCharString *)(puVar3 + 1),(CCharString *)(param_3 + 1));
+      ppVar4 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)param_3[2];
+      puVar3[2] = (uint)ppVar4;
+    }
+    puVar3 = puVar3 + 3;
+  }
+  else {
+    std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>(puVar3,uVar2,param_3);
+    ppVar4 = extraout_EDX_00;
+    puVar3 = extraout_EAX;
+  }
+  if (param_6 == '\0') {
+    puVar3 = std::
+             _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                       (param_2,param_1[1],puVar3,&param_6);
+    ppVar4 = extraout_EDX_01;
+  }
+  iVar1 = param_1[1];
+  for (iVar5 = *param_1; iVar5 != iVar1; iVar5 = iVar5 + 0xc) {
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)(iVar5 + 4),ppVar4,
+               unaff_EDI);
+    ppVar4 = extraout_EDX_02;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  param_1[1] = (int)puVar3;
+  *param_1 = (int)param_5;
+  param_1[2] = (int)((int)param_5 + local_4 * 0xc);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0078915c 49 2
+@@CALLERS GetAllThingsInRoughArea<CThingGameObject,std::vector<CThingGameObject*,std::allocator<CThingGameObject*>_>,CFilter_Bind4<CThingFilter_IsNotList,_anon_EDF0DD2A::CThingFilter_IsAbleToBeAttacked,std::unary_negate<CThingFilter_HasTC>,_anon_EDF0DD2A::CThingFilter_IsAffectedByTraps>_>, OnCollision
+@@CALLEES Vector_Assign
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_0078915c(int param_1,undefined4 *param_2)
+
+{
+  undefined4 *puVar1;
+  
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  if (puVar1 == *(undefined4 **)(param_1 + 8)) {
+    Vector_Assign(puVar1,param_2,(int)&param_2 + 3,1,1);
+  }
+  else {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = *param_2;
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 4;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00789515 56 2
+@@CALLERS ProcessPossibleStrike, CreateStaticExplosion
+@@CALLEES FUN_007893ae, CComboMultiplierData
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00789515(int param_1,CComboMultiplierData *param_2)
+
+{
+  CComboMultiplierData *this;
+  
+  this = *(CComboMultiplierData **)(param_1 + 4);
+  if (this == *(CComboMultiplierData **)(param_1 + 8)) {
+    FUN_007893ae(this,param_2,(int)&param_2 + 3,1,1);
+  }
+  else {
+    if (this != (CComboMultiplierData *)0x0) {
+      CComboMultiplierData::CComboMultiplierData(this,param_2);
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 0xc;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0078e650 79 2
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0078e650(int *param_1)
+
+{
+  char *pcVar1;
+  int iVar2;
+  int iVar3;
+  bool bVar4;
+  
+  pcVar1 = (char *)*param_1;
+  if ((*pcVar1 == '\0') && (*(char **)(*(int *)(pcVar1 + 4) + 4) == pcVar1)) {
+    *param_1 = *(int *)(pcVar1 + 0xc);
+    return;
+  }
+  iVar3 = *(int *)(pcVar1 + 8);
+  if (iVar3 != 0) {
+    for (iVar2 = *(int *)(iVar3 + 0xc); iVar2 != 0; iVar2 = *(int *)(iVar2 + 0xc)) {
+      iVar3 = iVar2;
+    }
+    *param_1 = iVar3;
+    return;
+  }
+  iVar3 = *(int *)(pcVar1 + 4);
+  iVar2 = iVar3;
+  if (pcVar1 == *(char **)(iVar3 + 8)) {
+    do {
+      iVar3 = *(int *)(iVar2 + 4);
+      bVar4 = iVar2 == *(int *)(iVar3 + 8);
+      iVar2 = iVar3;
+    } while (bVar4);
+  }
+  *param_1 = iVar3;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00792460 71 2
+@@CALLERS FrameUpdate
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00792460(int *param_1,int *param_2,uint *param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  iVar1 = *param_1;
+  iVar4 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar2 = *(int *)(iVar1 + 4);
+    do {
+      if (*(uint *)(iVar2 + 0x10) < *param_3) {
+        iVar3 = *(int *)(iVar2 + 0xc);
+      }
+      else {
+        iVar3 = *(int *)(iVar2 + 8);
+        iVar4 = iVar2;
+      }
+      iVar2 = iVar3;
+    } while (iVar3 != 0);
+  }
+  if ((iVar4 != iVar1) && (*(uint *)(iVar4 + 0x10) <= *param_3)) {
+    *param_2 = iVar4;
+    return;
+  }
+  *param_2 = iVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007926c0 32 2
+@@CALLERS FrameUpdate
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_007926c0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00792a70 180 2
+@@CALLERS 
+@@CALLEES FUN_0078e650, RBTree_Insert
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00792a70(int *param_1,int *param_2,uint *param_3)
+
+{
+  int iVar1;
+  uint *puVar2;
+  int *piVar3;
+  int iVar4;
+  int iVar5;
+  bool bVar6;
+  
+  puVar2 = param_3;
+  iVar1 = *param_1;
+  bVar6 = true;
+  iVar5 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar4 = *(int *)(iVar1 + 4);
+    do {
+      iVar5 = iVar4;
+      bVar6 = *param_3 < *(uint *)(iVar5 + 0x10);
+      if (bVar6) {
+        iVar4 = *(int *)(iVar5 + 8);
+      }
+      else {
+        iVar4 = *(int *)(iVar5 + 0xc);
+      }
+    } while (iVar4 != 0);
+  }
+  param_3 = (uint *)iVar5;
+  if (bVar6) {
+    if (iVar5 == *(int *)(iVar1 + 8)) {
+      piVar3 = (int *)RBTree_Insert(&param_3,iVar5,iVar5,puVar2,0);
+      *param_2 = *piVar3;
+      *(undefined1 *)(param_2 + 1) = 1;
+      return;
+    }
+    FUN_0078e650();
+  }
+  if (*(uint *)((int)param_3 + 0x10) < *puVar2) {
+    piVar3 = (int *)RBTree_Insert(&param_3,0,iVar5,puVar2,0);
+    iVar1 = *piVar3;
+    *(undefined1 *)(param_2 + 1) = 1;
+    *param_2 = iVar1;
+    return;
+  }
+  *(undefined1 *)(param_2 + 1) = 0;
+  *param_2 = (int)param_3;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007935d0 105 2
+@@CALLERS FrameUpdate
+@@CALLEES GetPItem, CBaseIntelligentPointer, SetPItem, FUN_00793370
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_007935d0(int param_1,undefined4 *param_2)
+
+{
+  CBaseIntelligentPointer *this;
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  CBaseObject *pCVar3;
+  
+  puVar2 = param_2;
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  if (puVar1 != *(undefined4 **)(param_1 + 8)) {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = *param_2;
+      puVar1[1] = param_2[1];
+      this = (CBaseIntelligentPointer *)(puVar1 + 3);
+      puVar1[2] = param_2[2];
+      CBaseIntelligentPointer::CBaseIntelligentPointer(this);
+      *(undefined ***)this = &PTR__vector_deleting_destructor__01238c6c;
+      pCVar3 = CBaseIntelligentPointer::GetPItem((CBaseIntelligentPointer *)(puVar2 + 3));
+      CBaseIntelligentPointer::SetPItem(this,pCVar3);
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 0x14;
+    return;
+  }
+  FUN_00793370(puVar1,param_2,&param_2,1,1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00793bb0 79 2
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00793bb0(int *param_1)
+
+{
+  char *pcVar1;
+  int iVar2;
+  int iVar3;
+  bool bVar4;
+  
+  pcVar1 = (char *)*param_1;
+  if ((*pcVar1 == '\0') && (*(char **)(*(int *)(pcVar1 + 4) + 4) == pcVar1)) {
+    *param_1 = *(int *)(pcVar1 + 0xc);
+    return;
+  }
+  iVar3 = *(int *)(pcVar1 + 8);
+  if (iVar3 != 0) {
+    for (iVar2 = *(int *)(iVar3 + 0xc); iVar2 != 0; iVar2 = *(int *)(iVar2 + 0xc)) {
+      iVar3 = iVar2;
+    }
+    *param_1 = iVar3;
+    return;
+  }
+  iVar3 = *(int *)(pcVar1 + 4);
+  iVar2 = iVar3;
+  if (pcVar1 == *(char **)(iVar3 + 8)) {
+    do {
+      iVar3 = *(int *)(iVar2 + 4);
+      bVar4 = iVar2 == *(int *)(iVar3 + 8);
+      iVar2 = iVar3;
+    } while (bVar4);
+  }
+  *param_1 = iVar3;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007978c0 71 2
+@@CALLERS FrameUpdate
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_007978c0(int *param_1,int *param_2,uint *param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  iVar1 = *param_1;
+  iVar4 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar2 = *(int *)(iVar1 + 4);
+    do {
+      if (*(uint *)(iVar2 + 0x10) < *param_3) {
+        iVar3 = *(int *)(iVar2 + 0xc);
+      }
+      else {
+        iVar3 = *(int *)(iVar2 + 8);
+        iVar4 = iVar2;
+      }
+      iVar2 = iVar3;
+    } while (iVar3 != 0);
+  }
+  if ((iVar4 != iVar1) && (*(uint *)(iVar4 + 0x10) <= *param_3)) {
+    *param_2 = iVar4;
+    return;
+  }
+  *param_2 = iVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00797d70 180 2
+@@CALLERS 
+@@CALLEES FUN_00793bb0, RBTree_Insert
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00797d70(int *param_1,int *param_2,uint *param_3)
+
+{
+  int iVar1;
+  uint *puVar2;
+  int *piVar3;
+  int iVar4;
+  int iVar5;
+  bool bVar6;
+  
+  puVar2 = param_3;
+  iVar1 = *param_1;
+  bVar6 = true;
+  iVar5 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar4 = *(int *)(iVar1 + 4);
+    do {
+      iVar5 = iVar4;
+      bVar6 = *param_3 < *(uint *)(iVar5 + 0x10);
+      if (bVar6) {
+        iVar4 = *(int *)(iVar5 + 8);
+      }
+      else {
+        iVar4 = *(int *)(iVar5 + 0xc);
+      }
+    } while (iVar4 != 0);
+  }
+  param_3 = (uint *)iVar5;
+  if (bVar6) {
+    if (iVar5 == *(int *)(iVar1 + 8)) {
+      piVar3 = (int *)RBTree_Insert(&param_3,iVar5,iVar5,puVar2,0);
+      *param_2 = *piVar3;
+      *(undefined1 *)(param_2 + 1) = 1;
+      return;
+    }
+    FUN_00793bb0();
+  }
+  if (*(uint *)((int)param_3 + 0x10) < *puVar2) {
+    piVar3 = (int *)RBTree_Insert(&param_3,0,iVar5,puVar2,0);
+    iVar1 = *piVar3;
+    *(undefined1 *)(param_2 + 1) = 1;
+    *param_2 = iVar1;
+    return;
+  }
+  *(undefined1 *)(param_2 + 1) = 0;
+  *param_2 = (int)param_3;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00798410 105 2
+@@CALLERS FrameUpdate
+@@CALLEES FUN_007981b0, GetPItem, CBaseIntelligentPointer, SetPItem
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00798410(int param_1,undefined4 *param_2)
+
+{
+  CBaseIntelligentPointer *this;
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  CBaseObject *pCVar3;
+  
+  puVar2 = param_2;
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  if (puVar1 != *(undefined4 **)(param_1 + 8)) {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = *param_2;
+      puVar1[1] = param_2[1];
+      this = (CBaseIntelligentPointer *)(puVar1 + 3);
+      puVar1[2] = param_2[2];
+      CBaseIntelligentPointer::CBaseIntelligentPointer(this);
+      *(undefined ***)this = &PTR__vector_deleting_destructor__01238c6c;
+      pCVar3 = CBaseIntelligentPointer::GetPItem((CBaseIntelligentPointer *)(puVar2 + 3));
+      CBaseIntelligentPointer::SetPItem(this,pCVar3);
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 0x14;
+    return;
+  }
+  FUN_007981b0(puVar1,param_2,&param_2,1,1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0079aa90 548 2
+@@CALLERS CreateMinion, ResetMinionPos
+@@CALLEES DoSizeof, Math_CartesianToSpherical, GetDisplayEngine, IsValidTeleportPos
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __thiscall FUN_0079aa90(CViewBase *param_1,float *param_2,CVertexBufferWin32 *param_3)
+
+{
+  float fVar1;
+  float fVar2;
+  CVertexBufferWin32 *pCVar3;
+  bool bVar4;
+  float *pfVar5;
+  float *pfVar6;
+  CDisplayEngine *pCVar7;
+  CWorldMap *pCVar8;
+  int iVar9;
+  float local_44;
+  float fStack_3c;
+  float fStack_38;
+  float fStack_34;
+  float local_30;
+  float local_2c;
+  float local_28;
+  float fStack_24;
+  float fStack_20;
+  float fStack_1c;
+  float fStack_18;
+  float fStack_14;
+  float fStack_10;
+  float fStack_c;
+  float fStack_8;
+  float fStack_4;
+  
+  pCVar3 = param_3;
+  pfVar5 = (float *)CVertexBufferWin32::DoSizeof(*(CVertexBufferWin32 **)(param_1 + 4));
+  pfVar6 = (float *)CVertexBufferWin32::DoSizeof(param_3);
+  local_30 = *pfVar6 - *pfVar5;
+  local_44 = 0.0;
+  local_2c = pfVar6[1] - pfVar5[1];
+  local_28 = pfVar6[2] - pfVar5[2];
+  fVar2 = SQRT(local_30 * local_30 + local_2c * local_2c + local_28 * local_28);
+  fVar1 = _DAT_0122ded8 / fVar2;
+  local_30 = fVar1 * local_30;
+  local_2c = local_2c * fVar1;
+  local_28 = local_28 * fVar1;
+  pCVar7 = NDisplayView::CViewBase::GetDisplayEngine(param_1);
+  pCVar8 = (CWorldMap *)(**(code **)(*(int *)pCVar7 + 0x34))();
+  pfVar5 = (float *)CVertexBufferWin32::DoSizeof(param_3);
+  fStack_3c = *pfVar5;
+  fStack_38 = pfVar5[1];
+  fStack_34 = pfVar5[2];
+  iVar9 = 0;
+  bVar4 = CTCSummonSpell::IsValidTeleportPos
+                    ((CTCSummonSpell *)param_1,(C3DVector *)&fStack_3c,pCVar8,(CThing *)param_3);
+  param_3 = (CVertexBufferWin32 *)fVar2;
+  do {
+    if (bVar4) {
+LAB_0079ac9b:
+      *param_2 = fStack_3c;
+      param_2[1] = fStack_38;
+      param_2[2] = fStack_34;
+      return;
+    }
+    local_44 = local_44 + _DAT_0126c324;
+    if (_DAT_0122ded8 <= local_44) {
+      local_44 = 0.0;
+      param_3 = (CVertexBufferWin32 *)(fVar2 + (float)param_3);
+    }
+    fStack_24 = local_30;
+    fStack_20 = local_2c;
+    fStack_1c = local_28;
+    Math_CartesianToSpherical(local_44);
+    fStack_18 = fStack_24 * (float)param_3;
+    fStack_14 = fStack_20 * (float)param_3;
+    fStack_10 = fStack_1c * (float)param_3;
+    pfVar5 = (float *)CVertexBufferWin32::DoSizeof(*(CVertexBufferWin32 **)(param_1 + 4));
+    iVar9 = iVar9 + 1;
+    fStack_3c = fStack_18 + *pfVar5;
+    fStack_38 = fStack_14 + pfVar5[1];
+    fStack_34 = fStack_10 + pfVar5[2];
+    if (10 < iVar9) {
+      fStack_c = fStack_24 * fVar2;
+      fStack_8 = fStack_20 * fVar2;
+      fStack_4 = fStack_1c * fVar2;
+      pfVar5 = (float *)CVertexBufferWin32::DoSizeof(*(CVertexBufferWin32 **)(param_1 + 4));
+      fStack_3c = fStack_c + *pfVar5;
+      fStack_38 = fStack_8 + pfVar5[1];
+      fStack_34 = fStack_4 + pfVar5[2];
+      goto LAB_0079ac9b;
+    }
+    fStack_c = fStack_3c;
+    fStack_8 = fStack_38;
+    fStack_4 = fStack_34;
+    bVar4 = CTCSummonSpell::IsValidTeleportPos
+                      ((CTCSummonSpell *)param_1,(C3DVector *)&fStack_3c,pCVar8,(CThing *)pCVar3);
+  } while( true );
+}
+
+
+@@ENDFUNC
+@@@FUNC 0079d2d0 144 2
+@@CALLERS 
+@@CALLEES LowerBound, CBankFile::CompareDataOffset::operator(), CAnimation_RecalculateScale
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0079d2d0(ETCInterfaceType param_1)
+
+{
+  int iVar1;
+  int *piVar2;
+  ETCInterfaceType local_4;
+  
+  *(undefined1 *)(param_1 + 0x54) = 0;
+  if ((*(uint *)(*(int *)(param_1 + 4) + 0x30) & 0x1000) != 0) {
+    local_4 = 0x8c;
+    CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>::
+    LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                *)(*(int *)(param_1 + 4) + 0x44),&local_4);
+    local_4 = param_1;
+    CBankFile__CompareDataOffset__operator__(&local_4);
+    CAnimation_RecalculateScale();
+  }
+  iVar1 = *(int *)(param_1 + 4);
+  if ((*(byte *)(iVar1 + 0x28) & 0x40) != 0) {
+    local_4 = 0x46;
+    piVar2 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(iVar1 + 0x44),&local_4);
+    if ((piVar2 == *(int **)(iVar1 + 0x48)) || (0x46 < *piVar2)) {
+      piVar2 = *(int **)(iVar1 + 0x48);
+    }
+    *(undefined1 *)(piVar2[1] + 0x1c) = 0;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0079eaa0 138 2
+@@CALLERS 
+@@CALLEES LowerBound, ClearMeshEffect, SetToKillOnLevelUnload
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0079eaa0(void *param_1)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  int *piVar3;
+  ETCInterfaceType local_4;
+  
+  iVar1 = *(int *)((int)param_1 + 4);
+  if ((*(uint *)(iVar1 + 0x28) & 0x8000000) != 0) {
+    local_4 = 0x5b;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(iVar1 + 0x44),&local_4);
+    if ((piVar3 == *(int **)(iVar1 + 0x48)) || (0x5b < *piVar3)) {
+      piVar3 = *(int **)(iVar1 + 0x48);
+    }
+    NGraphicAppearance::CTCGraphicAppearance::ClearMeshEffect
+              ((CTCGraphicAppearance *)piVar3[1],param_1);
+  }
+  iVar1 = *(int *)((int)param_1 + 4);
+  uVar2 = *(undefined4 *)((int)param_1 + 0x40);
+  *(undefined1 *)((int)param_1 + 0x44) = 0;
+  if ((*(uint *)(iVar1 + 0x20) & 0x10000) != 0) {
+    local_4 = 0x10;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(iVar1 + 0x44),&local_4);
+    if ((piVar3 == *(int **)(iVar1 + 0x48)) || (0x10 < *piVar3)) {
+      piVar3 = *(int **)(iVar1 + 0x48);
+    }
+    CGameScriptThing::SetToKillOnLevelUnload((CGameScriptThing *)piVar3[1],SUB41(uVar2,0));
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0079f150 179 2
+@@CALLERS 
+@@CALLEES malloc, CMemoryAllocatorVariableSize::BalanceTree
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_0079f150(int *param_1,undefined4 *param_2,int param_3,int param_4,uint *param_5,int param_6)
+
+{
+  int iVar1;
+  void *pvVar2;
+  
+  if ((param_4 == *param_1) ||
+     ((param_6 == 0 && ((param_3 != 0 || (*param_5 < *(uint *)(param_4 + 0x10))))))) {
+    pvVar2 = malloc(0x14);
+    if ((uint *)((int)pvVar2 + 0x10) != (uint *)0x0) {
+      *(uint *)((int)pvVar2 + 0x10) = *param_5;
+    }
+    *(void **)(param_4 + 8) = pvVar2;
+    iVar1 = *param_1;
+    if (param_4 == iVar1) {
+      *(void **)(iVar1 + 4) = pvVar2;
+      *(void **)(*param_1 + 0xc) = pvVar2;
+    }
+    else if (param_4 == *(int *)(iVar1 + 8)) {
+      *(void **)(iVar1 + 8) = pvVar2;
+    }
+  }
+  else {
+    pvVar2 = malloc(0x14);
+    if ((uint *)((int)pvVar2 + 0x10) != (uint *)0x0) {
+      *(uint *)((int)pvVar2 + 0x10) = *param_5;
+    }
+    *(void **)(param_4 + 0xc) = pvVar2;
+    if (param_4 == *(int *)(*param_1 + 0xc)) {
+      *(void **)(*param_1 + 0xc) = pvVar2;
+    }
+  }
+  *(int *)((int)pvVar2 + 4) = param_4;
+  *(undefined4 *)((int)pvVar2 + 8) = 0;
+  *(undefined4 *)((int)pvVar2 + 0xc) = 0;
+  CMemoryAllocatorVariableSize__BalanceTree(pvVar2,*param_1 + 4);
+  param_1[1] = param_1[1] + 1;
+  *param_2 = pvVar2;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0079f210 71 2
+@@CALLERS CopyBackBufferToTexture, CCreatureAction_SetDirection
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_0079f210(int *param_1,int *param_2,uint *param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  iVar1 = *param_1;
+  iVar4 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar2 = *(int *)(iVar1 + 4);
+    do {
+      if (*(uint *)(iVar2 + 0x10) < *param_3) {
+        iVar3 = *(int *)(iVar2 + 0xc);
+      }
+      else {
+        iVar3 = *(int *)(iVar2 + 8);
+        iVar4 = iVar2;
+      }
+      iVar2 = iVar3;
+    } while (iVar3 != 0);
+  }
+  if ((iVar4 != iVar1) && (*(uint *)(iVar4 + 0x10) <= *param_3)) {
+    *param_2 = iVar4;
+    return;
+  }
+  *param_2 = iVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007a0490 96 2
+@@CALLERS 
+@@CALLEES LowerBound, SetToKillOnLevelUnload
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_007a0490(int param_1)
+
+{
+  int iVar1;
+  int iVar2;
+  int *piVar3;
+  ETCInterfaceType local_4;
+  
+  iVar1 = *(int *)(param_1 + 0x98);
+  if (iVar1 != DAT_0129d25c) {
+    iVar2 = *(int *)(param_1 + 4);
+    if ((*(uint *)(iVar2 + 0x20) & 0x10000) != 0) {
+      local_4 = 0x10;
+      piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                      ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                    *)(iVar2 + 0x44),&local_4);
+      if ((piVar3 == *(int **)(iVar2 + 0x48)) || (0x10 < *piVar3)) {
+        piVar3 = *(int **)(iVar2 + 0x48);
+      }
+      CGameScriptThing::SetToKillOnLevelUnload((CGameScriptThing *)piVar3[1],SUB41(iVar1,0));
+    }
+    *(int *)(param_1 + 0x98) = DAT_0129d25c;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007a3ac0 159 2
+@@CALLERS make_heap<CThing**,CThingCompare_BestForTargeting2>
+@@CALLEES FUN_007a3040, memmove, operator()<CThingAICreature>
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_007a3ac0(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,undefined4 param_4,
+            undefined4 param_5)
+
+{
+  CThingAICreature *pCVar1;
+  CThingAICreature *pCVar2;
+  undefined4 *puVar3;
+  size_t _Size;
+  undefined4 local_c;
+  undefined4 local_8;
+  undefined4 local_4;
+  
+  if ((param_1 != param_2) && (puVar3 = param_1 + 1, puVar3 != param_2)) {
+    local_c = param_3;
+    local_8 = param_4;
+    local_4 = param_5;
+    _Size = (int)puVar3 - (int)param_1;
+    do {
+      pCVar1 = (CThingAICreature *)*puVar3;
+      pCVar2 = CThingCompare_Nearest::operator()<CThingAICreature>
+                         ((CThingCompare_Nearest *)&local_c,pCVar1,(CThingAICreature *)*param_1);
+      if ((char)pCVar2 == '\0') {
+        FUN_007a3040(param_3,param_4,param_5);
+      }
+      else {
+        if (0 < (int)_Size) {
+          memmove((void *)((int)puVar3 + (4 - _Size)),param_1,_Size);
+        }
+        *param_1 = pCVar1;
+      }
+      puVar3 = puVar3 + 1;
+      _Size = _Size + 4;
+    } while (puVar3 != param_2);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007a4140 206 2
+@@CALLERS 
+@@CALLEES FUN_007a3fa0, FUN_007a3380, FUN_007a4140, FUN_007a36a0
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_007a4140(int param_1,int param_2,undefined4 param_3,int param_4,undefined4 param_5,
+            undefined4 param_6,undefined4 param_7)
+
+{
+  undefined4 *puVar1;
+  undefined4 uVar2;
+  undefined4 uVar3;
+  undefined4 uVar4;
+  
+  if (0x40 < (int)(param_2 - param_1 & 0xfffffffcU)) {
+    while (param_4 != 0) {
+      param_4 = param_4 + -1;
+      uVar2 = param_5;
+      uVar3 = param_6;
+      uVar4 = param_7;
+      puVar1 = (undefined4 *)FUN_007a3380(param_2 + -4,param_5,param_6,param_7);
+      param_2 = FUN_007a36a0(*puVar1,uVar2,uVar3,uVar4);
+      FUN_007a4140(0,param_4,param_5,param_6,param_7);
+      if ((int)(param_2 - param_1 & 0xfffffffcU) < 0x41) {
+        return;
+      }
+    }
+    FUN_007a3fa0(param_2,0,param_5,param_6,param_7);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007a4260 111 2
+@@CALLERS GetTargets, ?GetAllThingsWithDefNameByDistanceFrom@CGameScriptInterface@@UBEJABVCScriptThing@@ABVCCharString@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+@@CALLEES make_heap<CThing**,CThingCompare_BestForTargeting2>, FUN_007a4140
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_007a4260(int param_1,int param_2,undefined4 param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  if (param_1 != param_2) {
+    iVar2 = 0;
+    for (iVar1 = param_2 - param_1 >> 2; iVar1 != 1; iVar1 = iVar1 >> 1) {
+      iVar2 = iVar2 + 1;
+    }
+    FUN_007a4140(0,iVar2 * 2,param_3,param_4,param_5);
+    std::make_heap<CThing**,CThingCompare_BestForTargeting2>
+              (param_1,param_2,param_3,param_4,param_5);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007aa4d0 231 2
+@@CALLERS 
+@@CALLEES CThingAnimatable::SetSuspendAnimation, LowerBound, GetPItem, ProcessButtonBReleased, Kill, GetDisplayEngine
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_007aa4d0(CViewBase *param_1)
+
+{
+  CBaseIntelligentPointer *pCVar1;
+  int iVar2;
+  int *piVar3;
+  CDisplayEngine *pCVar4;
+  CBaseObject *pCVar5;
+  bool bVar6;
+  CViewBase *local_4;
+  
+  iVar2 = *(int *)(param_1 + 4);
+  local_4 = param_1;
+  if ((iVar2 != 0) && ((*(byte *)(iVar2 + 0x91) & 1) == 0)) {
+    if (*(char *)(iVar2 + 0x34) < '\0') {
+      local_4 = (CViewBase *)0xa7;
+      piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                      ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                    *)(iVar2 + 0x44),(ETCInterfaceType *)&local_4);
+      if ((piVar3 == *(int **)(iVar2 + 0x48)) || (0xa7 < *piVar3)) {
+        piVar3 = *(int **)(iVar2 + 0x48);
+      }
+      iVar2 = piVar3[1];
+      if (*(int *)(iVar2 + 0x10) == 0xd) {
+        *(undefined1 *)(iVar2 + 0xc) = 0;
+        *(undefined4 *)(iVar2 + 0x10) = 0;
+      }
+    }
+    if (param_1[0xa4] == (CViewBase)0x0) {
+      if (*(char *)(*(int *)(param_1 + 4) + 0x10) == '\x01') {
+        CThingAnimatable__SetSuspendAnimation(0,0);
+      }
+      else {
+        pCVar4 = NDisplayView::CViewBase::GetDisplayEngine(param_1);
+        CTCInventoryExperience::ProcessButtonBReleased(*(CTCInventoryExperience **)(pCVar4 + 0x68));
+      }
+    }
+  }
+  pCVar1 = (CBaseIntelligentPointer *)(param_1 + 0x18);
+  pCVar5 = CBaseIntelligentPointer::GetPItem(pCVar1);
+  if (pCVar5 != (CBaseObject *)0x0) {
+    pCVar5 = CBaseIntelligentPointer::GetPItem(pCVar1);
+    if (((byte)pCVar5[0x91] & 1) == 0) {
+      bVar6 = true;
+      pCVar5 = CBaseIntelligentPointer::GetPItem(pCVar1);
+      CThing::Kill((CThing *)pCVar5,bVar6);
+    }
+  }
+  pCVar1 = (CBaseIntelligentPointer *)(param_1 + 0x20);
+  pCVar5 = CBaseIntelligentPointer::GetPItem(pCVar1);
+  if (pCVar5 != (CBaseObject *)0x0) {
+    pCVar5 = CBaseIntelligentPointer::GetPItem(pCVar1);
+    if (((byte)pCVar5[0x91] & 1) == 0) {
+      bVar6 = true;
+      pCVar5 = CBaseIntelligentPointer::GetPItem(pCVar1);
+      CThing::Kill((CThing *)pCVar5,bVar6);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007aa880 346 2
+@@CALLERS GetValidTeleportPos
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, __ftol2, SortTreeRecursively, GetPBestThingInRoughArea<CThingFilter_HasDefName,CThingCompare_Nearest,CThing>, malloc, IsPosPassable, LowerBound
+@@STRINGS 
+@@DECOMP
+
+bool __thiscall
+FUN_007aa880(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *param_1,
+            CThingFilter_HasDefName param_2,int *param_3,CWorldMap *param_4)
+
+{
+  undefined4 *puVar1;
+  int iVar2;
+  int *piVar3;
+  CWorldMap *this;
+  char cVar4;
+  bool bVar5;
+  undefined4 uVar6;
+  undefined4 *puVar7;
+  CThingSearchTools *this_00;
+  int *piVar8;
+  list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *unaff_EDI;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar9;
+  CThingFilter_HasDefName *pCVar10;
+  CThingCompare_Nearest *pCVar11;
+  undefined1 auStack_24 [24];
+  undefined4 uStack_c;
+  undefined4 uStack_4;
+  
+  this = param_4;
+  piVar3 = param_3;
+  uVar6 = (**(code **)(*(int *)param_4 + 0x40))(param_3);
+  cVar4 = (**(code **)(*(int *)this + 0x28))(uVar6);
+  if (cVar4 != '\0') {
+    __ftol2();
+    __ftol2();
+    bVar5 = CWorldMap::IsPosPassable(this,(C2DCoordI *)&stack0xffffffcc);
+    if (bVar5) {
+      param_2 = (CThingFilter_HasDefName)0x0;
+      __ftol2();
+      __ftol2();
+      __ftol2();
+      puVar7 = malloc(0xc);
+      pCVar10 = &param_2;
+      ppVar9 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)&stack0xffffffcc;
+      *puVar7 = puVar7;
+      puVar7[1] = puVar7;
+      pCVar11 = (CThingCompare_Nearest *)register0x00000010;
+      std::
+      _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                (param_1,ppVar9,(pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)ppVar9);
+      CThingSearchTools::
+      GetPBestThingInRoughArea<CThingFilter_HasDefName,CThingCompare_Nearest,CThing>
+                (this_00,(C2DBoxI *)ppVar9,pCVar10,pCVar11,(CThing **)unaff_EDI);
+      puVar1 = (undefined4 *)*puVar7;
+      do {
+        if (puVar1 == puVar7) {
+LAB_007aa9b3:
+          CGuiControlTreePane::SortTreeRecursively
+                    ((CGuiControlTreePane *)&stack0x00000000,unaff_EDI);
+          return param_2 == (CThingFilter_HasDefName)0x0;
+        }
+        iVar2 = puVar1[2];
+        if ((*(byte *)(iVar2 + 0x20) & 4) != 0) {
+          param_4 = (CWorldMap *)0x2;
+          piVar8 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                          ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                        *)(iVar2 + 0x44),(ETCInterfaceType *)&param_4);
+          if ((piVar8 == *(int **)(iVar2 + 0x48)) || (2 < *piVar8)) {
+            piVar8 = *(int **)(iVar2 + 0x48);
+          }
+          uStack_c = 0x3f800000;
+          cVar4 = (**(code **)(*param_3 + 0x168))(piVar8[1],uStack_4,piVar3,auStack_24);
+          if (cVar4 != '\0') {
+            param_2 = (CThingFilter_HasDefName)0x1;
+            goto LAB_007aa9b3;
+          }
+        }
+        puVar1 = (undefined4 *)*puVar1;
+      } while( true );
+    }
+  }
+  return false;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007ac720 62 2
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_007ac720(int *param_1)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  iVar1 = *param_1;
+  iVar2 = *(int *)(iVar1 + 0xc);
+  if (iVar2 != 0) {
+    for (iVar1 = *(int *)(iVar2 + 8); iVar1 != 0; iVar1 = *(int *)(iVar1 + 8)) {
+      iVar2 = iVar1;
+    }
+    *param_1 = iVar2;
+    return;
+  }
+  iVar2 = *(int *)(iVar1 + 4);
+  if (iVar1 == *(int *)(iVar2 + 0xc)) {
+    do {
+      iVar1 = iVar2;
+      iVar2 = *(int *)(iVar1 + 4);
+    } while (iVar1 == *(int *)(iVar2 + 0xc));
+  }
+  if (*(int *)(iVar1 + 0xc) == iVar2) {
+    *param_1 = iVar1;
+    return;
+  }
+  *param_1 = iVar2;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007ac920 79 2
+@@CALLERS std::map_Tree_Insert_Node
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_007ac920(int *param_1)
+
+{
+  char *pcVar1;
+  int iVar2;
+  int iVar3;
+  bool bVar4;
+  
+  pcVar1 = (char *)*param_1;
+  if ((*pcVar1 == '\0') && (*(char **)(*(int *)(pcVar1 + 4) + 4) == pcVar1)) {
+    *param_1 = *(int *)(pcVar1 + 0xc);
+    return;
+  }
+  iVar3 = *(int *)(pcVar1 + 8);
+  if (iVar3 != 0) {
+    for (iVar2 = *(int *)(iVar3 + 0xc); iVar2 != 0; iVar2 = *(int *)(iVar2 + 0xc)) {
+      iVar3 = iVar2;
+    }
+    *param_1 = iVar3;
+    return;
+  }
+  iVar3 = *(int *)(pcVar1 + 4);
+  iVar2 = iVar3;
+  if (pcVar1 == *(char **)(iVar3 + 8)) {
+    do {
+      iVar3 = *(int *)(iVar2 + 4);
+      bVar4 = iVar2 == *(int *)(iVar3 + 8);
+      iVar2 = iVar3;
+    } while (bVar4);
+  }
+  *param_1 = iVar3;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007ac970 79 2
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_007ac970(int *param_1)
+
+{
+  char *pcVar1;
+  int iVar2;
+  int iVar3;
+  bool bVar4;
+  
+  pcVar1 = (char *)*param_1;
+  if ((*pcVar1 == '\0') && (*(char **)(*(int *)(pcVar1 + 4) + 4) == pcVar1)) {
+    *param_1 = *(int *)(pcVar1 + 0xc);
+    return;
+  }
+  iVar3 = *(int *)(pcVar1 + 8);
+  if (iVar3 != 0) {
+    for (iVar2 = *(int *)(iVar3 + 0xc); iVar2 != 0; iVar2 = *(int *)(iVar2 + 0xc)) {
+      iVar3 = iVar2;
+    }
+    *param_1 = iVar3;
+    return;
+  }
+  iVar3 = *(int *)(pcVar1 + 4);
+  iVar2 = iVar3;
+  if (pcVar1 == *(char **)(iVar3 + 8)) {
+    do {
+      iVar3 = *(int *)(iVar2 + 4);
+      bVar4 = iVar2 == *(int *)(iVar3 + 8);
+      iVar2 = iVar3;
+    } while (bVar4);
+  }
+  *param_1 = iVar3;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007add50 66 2
+@@CALLERS `scalar_deleting_destructor', `vector_deleting_destructor'
+@@CALLEES free, BuildTreeArray
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_007add50(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007ae2d0 254 2
+@@CALLERS 
+@@CALLEES operator<, FUN_007ac970, RBTree_Insert
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_007ae2d0(int *param_1,int *param_2,undefined4 *param_3)
+
+{
+  int iVar1;
+  CBasicString<char> *pCVar2;
+  CBasicString<char> *pCVar3;
+  bool bVar4;
+  int *piVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  bVar4 = true;
+  iVar7 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    pCVar2 = (CBasicString<char> *)*param_3;
+    iVar6 = *(int *)(iVar1 + 4);
+    do {
+      iVar7 = iVar6;
+      pCVar3 = *(CBasicString<char> **)(iVar7 + 0x10);
+      if (pCVar3 == pCVar2) {
+        bVar4 = false;
+      }
+      else if (pCVar2 == (CBasicString<char> *)0x0) {
+        bVar4 = true;
+      }
+      else if (pCVar3 == (CBasicString<char> *)0x0) {
+        bVar4 = false;
+      }
+      else {
+        bVar4 = CBasicString<char>::operator<(pCVar2,pCVar3);
+      }
+      if (bVar4 == false) {
+        iVar6 = *(int *)(iVar7 + 0xc);
+      }
+      else {
+        iVar6 = *(int *)(iVar7 + 8);
+      }
+    } while (iVar6 != 0);
+  }
+  if (bVar4 != false) {
+    if (iVar7 == *(int *)(iVar1 + 8)) {
+      piVar5 = (int *)RBTree_Insert(&param_3,iVar7,iVar7,param_3,0);
+      *param_2 = *piVar5;
+      *(undefined1 *)(param_2 + 1) = 1;
+      return;
+    }
+    FUN_007ac970();
+  }
+  pCVar2 = (CBasicString<char> *)*param_3;
+  pCVar3 = *(CBasicString<char> **)(iVar7 + 0x10);
+  if ((pCVar2 != pCVar3) &&
+     ((pCVar3 == (CBasicString<char> *)0x0 ||
+      ((pCVar2 != (CBasicString<char> *)0x0 &&
+       (bVar4 = CBasicString<char>::operator<(pCVar3,pCVar2), bVar4)))))) {
+    piVar5 = (int *)RBTree_Insert(&param_3,0,iVar7,param_3,0);
+    *param_2 = *piVar5;
+    *(undefined1 *)(param_2 + 1) = 1;
+    return;
+  }
+  *param_2 = iVar7;
+  *(undefined1 *)(param_2 + 1) = 0;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007b2e20 427 2
+@@CALLERS FrameUpdate, ?Update@CAIStateGroup_MinionGuardReactToBribe@@UAEXXZ
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, LowerBound, KnowsOfDeed, ReportCrime, FUN_007b4b00, GetFloorMaterial, InformOfDeed, CTCVillage::RecalculateSecuritySweep
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_007b2e20(int *param_1,pair<EHeroMorphType,CParticleMorphs::CEntry> *param_2,CTCVillage *param_3,
+            CTCVillage *param_4)
+
+{
+  long lVar1;
+  EOpinionDeedType EVar2;
+  int iVar3;
+  CTCCreatureOpinionOfHero *this;
+  bool bVar4;
+  bool bVar5;
+  allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *extraout_EAX;
+  int extraout_EAX_00;
+  int *piVar6;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_ESI;
+  long *plVar7;
+  CThingBuilding *pCStack_2c;
+  int *local_28 [2];
+  ETCInterfaceType aEStack_20 [2];
+  int iStack_18;
+  long *plStack_14;
+  int iStack_10;
+  long *plStack_c;
+  int iStack_8;
+  int iStack_4;
+  
+  local_28[0] = param_1;
+  if (param_3 != (CTCVillage *)0x0) {
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              (*(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> **)
+                (DAT_013b86a0 + 0x24),param_2,unaff_ESI);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              (extraout_EAX,extraout_EDX,unaff_ESI);
+    pCStack_2c = (CThingBuilding *)0x0;
+    if ((extraout_EAX_00 != 0) && ((*(uint *)(extraout_EAX_00 + 0x28) & 0x20000) != 0)) {
+      local_28[0] = (int *)&DAT_00000051;
+      piVar6 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                      ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                    *)(extraout_EAX_00 + 0x44),(ETCInterfaceType *)local_28);
+      if ((piVar6 == *(int **)(extraout_EAX_00 + 0x48)) || (0x51 < *piVar6)) {
+        piVar6 = *(int **)(extraout_EAX_00 + 0x48);
+      }
+      pCStack_2c = (CThingBuilding *)piVar6[1];
+    }
+    plVar7 = (long *)param_1[5];
+    iStack_18 = param_1[6];
+    plStack_14 = (long *)param_1[7];
+    iStack_10 = param_1[8];
+    plStack_c = (long *)param_1[9];
+    iStack_8 = param_1[10];
+    iStack_4 = param_1[0xb];
+    bVar4 = false;
+    if (plVar7 != plStack_c) {
+      do {
+        lVar1 = *plVar7;
+        EVar2 = plVar7[1];
+        CTCVillage::ReportCrime(param_3,lVar1);
+        iVar3 = *(int *)(param_3 + 4);
+        if ((char)((uint)*(undefined4 *)(iVar3 + 0x28) >> 8) < '\0') {
+          aEStack_20[0] = 0x4f;
+          piVar6 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                          ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                        *)(iVar3 + 0x44),aEStack_20);
+          if ((piVar6 == *(int **)(iVar3 + 0x48)) || (0x4f < *piVar6)) {
+            piVar6 = *(int **)(iVar3 + 0x48);
+          }
+          this = (CTCCreatureOpinionOfHero *)piVar6[1];
+          bVar5 = CTCCreatureOpinionOfHero::KnowsOfDeed(this,lVar1,EVar2,true);
+          param_3 = param_4;
+          if (!bVar5) {
+            CTCCreatureOpinionOfHero::InformOfDeed(this,lVar1,false);
+          }
+        }
+        if (pCStack_2c != (CThingBuilding *)0x0) {
+          CThingBuilding::GetFloorMaterial(pCStack_2c);
+          if ((local_28[0][0x1c] == 2) || (local_28[0][0x1c] == 3)) {
+            bVar4 = true;
+          }
+          iVar3 = local_28[0][1];
+          local_28[0][1] = iVar3 + -1;
+          if (iVar3 + -1 == 0) {
+            (**(code **)(*local_28[0] + 4))();
+          }
+          local_28[0] = (int *)0x0;
+        }
+        plVar7 = plVar7 + 2;
+        if (plVar7 == plStack_14) {
+          plVar7 = *(long **)(iStack_10 + 4);
+          iStack_10 = iStack_10 + 4;
+          plStack_14 = plVar7 + 0x20;
+        }
+      } while (plVar7 != plStack_c);
+      if (bVar4) {
+        CTCVillage__RecalculateSecuritySweep(0);
+      }
+    }
+  }
+  FUN_007b4b00();
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007b3b50 43 2
+@@CALLERS FreeBuffer
+@@CALLEES free
+@@STRINGS 
+@@DECOMP
+
+void FUN_007b3b50(undefined4 *param_1,undefined4 *param_2)
+
+{
+  for (; param_1 < param_2; param_1 = param_1 + 1) {
+    if ((void *)*param_1 != (void *)0x0) {
+      free((void *)*param_1);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007b48e0 56 2
+@@CALLERS resize, Resize
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_007b48e0(int param_1,undefined4 *param_2,int param_3)
+
+{
+  int iVar1;
+  
+  iVar1 = *(int *)(param_1 + 4) - param_3 >> 3;
+  if (0 < iVar1) {
+    param_3 = param_3 - (int)param_2;
+    do {
+      *param_2 = *(undefined4 *)(param_3 + (int)param_2);
+      param_2[1] = *(undefined4 *)(param_3 + 4 + (int)param_2);
+      param_2 = param_2 + 2;
+      iVar1 = iVar1 + -1;
+    } while (iVar1 != 0);
+  }
+  *(undefined4 **)(param_1 + 4) = param_2;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007b4e00 280 2
+@@CALLERS resize, Resize
+@@CALLEES _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, FUN_007b4be0, _Copy_impl<std::pair<float,EConversationAttitude>*,std::pair<float,enum_EConversationAttitude>*>, _Fill<CObjectFamilyEntry*,CObjectFamilyEntry>, _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_007b4e00(int param_1,pair<float,enum_EConversationAttitude> *param_2,uint param_3,
+            CObjectFamilyEntry *param_4)
+
+{
+  CObjectFamilyEntry *pCVar1;
+  int iVar2;
+  ulong local_8;
+  ulong local_4;
+  
+  if (param_3 != 0) {
+    if ((uint)(*(int *)(param_1 + 8) - *(int *)(param_1 + 4) >> 3) < param_3) {
+      FUN_007b4be0(param_2,param_4,&param_4,param_3,0);
+      return;
+    }
+    local_8 = *(ulong *)param_4;
+    local_4 = *(ulong *)((int)param_4 + 4);
+    param_4 = (CObjectFamilyEntry *)(*(int *)(param_1 + 4) - (int)param_2 >> 3);
+    pCVar1 = *(CObjectFamilyEntry **)(param_1 + 4);
+    if (param_4 <= param_3) {
+      param_3 = param_3 - (int)param_4;
+      std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>((ulong *)pCVar1,param_3,&local_8);
+      iVar2 = *(int *)(param_1 + 4) + param_3 * 8;
+      *(int *)(param_1 + 4) = iVar2;
+      std::
+      _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                (param_2,pCVar1,iVar2,&param_4);
+      *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)param_4 * 8;
+      std::_Fill<CObjectFamilyEntry*,CObjectFamilyEntry>
+                ((CObjectFamilyEntry *)param_2,pCVar1,(CObjectFamilyEntry *)&local_8);
+      return;
+    }
+    param_4 = pCVar1 + param_3 * -8;
+    std::
+    _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+              (param_4,pCVar1,pCVar1,&param_4);
+    *(uint *)(param_1 + 4) = *(int *)(param_1 + 4) + param_3 * 8;
+    std::
+    _Copy_impl<std::pair<float,EConversationAttitude>*,std::pair<float,enum_EConversationAttitude>*>
+              (param_2,(pair<float,enum_EConversationAttitude> *)param_4,
+               (pair<float,enum_EConversationAttitude> *)pCVar1);
+    std::_Fill<CObjectFamilyEntry*,CObjectFamilyEntry>
+              ((CObjectFamilyEntry *)param_2,(CObjectFamilyEntry *)(param_2 + param_3 * 8),
+               (CObjectFamilyEntry *)&local_8);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007b4f70 111 2
+@@CALLERS 
+@@CALLEES FUN_007b4980, malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_007b4f70(int param_1,undefined4 *param_2)
+
+{
+  undefined4 uVar1;
+  undefined4 uVar2;
+  undefined4 *puVar3;
+  int iVar4;
+  void *pvVar5;
+  int *piVar6;
+  
+  uVar1 = param_2[1];
+  uVar2 = *param_2;
+  if ((uint)(*(int *)(param_1 + 0x24) - (*(int *)(param_1 + 0x1c) - *(int *)(param_1 + 0x20) >> 2))
+      < 2) {
+    FUN_007b4980(1,0);
+  }
+  pvVar5 = malloc(0x80);
+  *(void **)(*(int *)(param_1 + 0x1c) + 4) = pvVar5;
+  puVar3 = *(undefined4 **)(param_1 + 0x10);
+  if (puVar3 != (undefined4 *)0x0) {
+    *puVar3 = uVar2;
+    puVar3[1] = uVar1;
+  }
+  piVar6 = (int *)(*(int *)(param_1 + 0x1c) + 4);
+  *(int **)(param_1 + 0x1c) = piVar6;
+  iVar4 = *piVar6;
+  *(int *)(param_1 + 0x14) = iVar4;
+  *(int *)(param_1 + 0x18) = iVar4 + 0x80;
+  *(undefined4 *)(param_1 + 0x10) = *(undefined4 *)(param_1 + 0x14);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007b6ef0 265 2
+@@CALLERS _Copy_if<std::_List_unchecked_const_iterator<std::_List_val<CIntelligentPointer<CThingMarker>,std::allocator<CIntelligentPointer<CThingMarker>_>_>,std::_Iterator_base0>,std::back_insert_iterator<std::vector<CIntelligentPointer<CThingMarker>,std::allocator<CIntelligentPointer<CThingMarker>_>_>_>,IsCrateStackOfType>
+@@CALLEES free, GetPItem, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>, malloc, CBaseIntelligentPointer, SetPItem
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_007b6ef0(int *param_1,undefined4 param_2,CBaseIntelligentPointer *param_3,undefined4 param_4,
+            void *param_5,char param_6)
+
+{
+  undefined4 *puVar1;
+  uint uVar2;
+  CBaseIntelligentPointer *pCVar3;
+  CBaseObject *pCVar4;
+  CBaseIntelligentPointer *extraout_EAX;
+  uint *puVar5;
+  undefined4 *puVar6;
+  uint local_4;
+  
+  uVar2 = (uint)param_5;
+  local_4 = param_1[1] - *param_1 >> 3;
+  puVar5 = (uint *)&param_5;
+  if (param_5 <= local_4) {
+    puVar5 = &local_4;
+  }
+  local_4 = *puVar5 + local_4;
+  if (local_4 == 0) {
+    param_5 = (void *)0x0;
+  }
+  else {
+    param_5 = malloc(local_4 * 8);
+  }
+  pCVar3 = (CBaseIntelligentPointer *)
+           std::
+           _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                     (*param_1,param_2,param_5,&param_6);
+  if (uVar2 == 1) {
+    if (pCVar3 != (CBaseIntelligentPointer *)0x0) {
+      CBaseIntelligentPointer::CBaseIntelligentPointer(pCVar3);
+      *(undefined ***)pCVar3 = &PTR__vector_deleting_destructor__0125a860;
+      pCVar4 = CBaseIntelligentPointer::GetPItem(param_3);
+      CBaseIntelligentPointer::SetPItem(pCVar3,pCVar4);
+    }
+    pCVar3 = pCVar3 + 8;
+  }
+  else {
+    std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>((ulong *)pCVar3,uVar2,(ulong *)param_3);
+    pCVar3 = extraout_EAX;
+  }
+  if (param_6 == '\0') {
+    pCVar3 = (CBaseIntelligentPointer *)
+             std::
+             _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                       (param_2,param_1[1],pCVar3,&param_6);
+  }
+  puVar1 = (undefined4 *)param_1[1];
+  for (puVar6 = (undefined4 *)*param_1; puVar6 != puVar1; puVar6 = puVar6 + 2) {
+    (**(code **)*puVar6)(0);
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  param_1[1] = (int)pCVar3;
+  *param_1 = (int)param_5;
+  param_1[2] = (int)((int)param_5 + local_4 * 8);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007b9870 77 2
+@@CALLERS OnInitialActivate, resize
+@@CALLEES FUN_007b8460
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_007b9870(int param_1,undefined4 param_2)
+
+{
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  undefined4 *puVar3;
+  
+  puVar2 = (undefined4 *)FUN_007b8460(param_2,&param_2,0);
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  for (puVar3 = puVar2; puVar3 != puVar1; puVar3 = puVar3 + 2) {
+    (**(code **)*puVar3)(0);
+  }
+  *(undefined4 **)(param_1 + 4) = puVar2;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007c2980 249 2
+@@CALLERS UpdateCollision, OnCollision
+@@CALLEES GetPItem
+@@STRINGS 
+@@DECOMP
+
+CBaseIntelligentPointer * __fastcall
+FUN_007c2980(CBaseIntelligentPointer *param_1,CBaseIntelligentPointer *param_2,
+            CBaseIntelligentPointer *param_3)
+
+{
+  CBaseObject *pCVar1;
+  CBaseObject *pCVar2;
+  int iVar3;
+  
+  iVar3 = (int)param_2 - (int)param_1 >> 5;
+  while( true ) {
+    if (iVar3 < 1) {
+      iVar3 = (int)param_2 - (int)param_1 >> 3;
+      if (iVar3 != 1) {
+        if (iVar3 != 2) {
+          if (iVar3 != 3) {
+            return param_2;
+          }
+          pCVar1 = CBaseIntelligentPointer::GetPItem(param_1);
+          pCVar2 = CBaseIntelligentPointer::GetPItem(param_3);
+          if (pCVar1 == pCVar2) {
+            return param_1;
+          }
+          param_1 = param_1 + 8;
+        }
+        pCVar1 = CBaseIntelligentPointer::GetPItem(param_1);
+        pCVar2 = CBaseIntelligentPointer::GetPItem(param_3);
+        if (pCVar1 == pCVar2) {
+          return param_1;
+        }
+        param_1 = param_1 + 8;
+      }
+      pCVar1 = CBaseIntelligentPointer::GetPItem(param_1);
+      pCVar2 = CBaseIntelligentPointer::GetPItem(param_3);
+      if (pCVar1 != pCVar2) {
+        return param_2;
+      }
+      return param_1;
+    }
+    pCVar1 = CBaseIntelligentPointer::GetPItem(param_1);
+    pCVar2 = CBaseIntelligentPointer::GetPItem(param_3);
+    if (pCVar1 == pCVar2) {
+      return param_1;
+    }
+    pCVar1 = CBaseIntelligentPointer::GetPItem(param_1 + 8);
+    pCVar2 = CBaseIntelligentPointer::GetPItem(param_3);
+    if (pCVar1 == pCVar2) {
+      return param_1 + 8;
+    }
+    pCVar1 = CBaseIntelligentPointer::GetPItem(param_1 + 0x10);
+    pCVar2 = CBaseIntelligentPointer::GetPItem(param_3);
+    if (pCVar1 == pCVar2) {
+      return param_1 + 0x10;
+    }
+    pCVar1 = CBaseIntelligentPointer::GetPItem(param_1 + 0x18);
+    pCVar2 = CBaseIntelligentPointer::GetPItem(param_3);
+    if (pCVar1 == pCVar2) break;
+    param_1 = param_1 + 0x20;
+    iVar3 = iVar3 + -1;
+  }
+  return param_1 + 0x18;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007c3eb0 92 2
+@@CALLERS FrameUpdate, StartHealingEffect
+@@CALLEES operator=, CCharString, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+@@STRINGS HEALING_EFFECT_LEVEL1	HEALING_EFFECT_LEVEL4	HEALING_EFFECT_LEVEL3	HEALING_EFFECT_LEVEL2
+@@DECOMP
+
+CCharString * __thiscall FUN_007c3eb0(int param_1,CCharString *param_2)
+
+{
+  int iVar1;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_ESI;
+  char *pcVar2;
+  int local_4;
+  
+  local_4 = param_1;
+  CCharString::CCharString((CCharString *)&local_4,"HEALING_EFFECT_LEVEL1",-1);
+  iVar1 = *(int *)(param_1 + 0x18);
+  if (iVar1 == 1) {
+    pcVar2 = "HEALING_EFFECT_LEVEL2";
+  }
+  else if (iVar1 == 2) {
+    pcVar2 = "HEALING_EFFECT_LEVEL3";
+  }
+  else {
+    if (iVar1 != 3) goto LAB_007c3eec;
+    pcVar2 = "HEALING_EFFECT_LEVEL4";
+  }
+  CCharString::operator=((CCharString *)&local_4,pcVar2);
+LAB_007c3eec:
+  CCharString::CCharString(param_2,(CCharString *)&local_4);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&local_4,extraout_EDX,
+             unaff_ESI);
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007ca160 50 2
+@@CALLERS FrameUpdate, ?CreatureGeneratorSetFamily@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+@@CALLEES FUN_004e8c1a
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_007ca160(int param_1,undefined4 *param_2)
+
+{
+  undefined4 *puVar1;
+  
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  if (puVar1 != *(undefined4 **)(param_1 + 8)) {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = *param_2;
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 4;
+    return;
+  }
+  FUN_004e8c1a(puVar1,param_2,&param_2,1,1);
+  return;
+}
+
+
+@@ENDFUNC

@@ -1,0 +1,1102 @@
+@@@FUNC 00a21520 50 0
+@@CALLERS 
+@@CALLEES free, CMemoryAllocatorVariableSize::Erase
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00a21520(int *param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  void *_Memory;
+  
+  iVar1 = *param_1;
+  _Memory = (void *)CMemoryAllocatorVariableSize__Erase(param_2,iVar1 + 4,iVar1 + 8,iVar1 + 0xc);
+  if (_Memory != (void *)0x0) {
+    free(_Memory);
+  }
+  param_1[1] = param_1[1] + -1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a215a0 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00a215a0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x28);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a21610 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00a21610(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a21830 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00a21830(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x20);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a21860 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00a21860(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a218c0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00a218c0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a21920 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00a21920(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a21980 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00a21980(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x14);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a219a0 54 0
+@@CALLERS 
+@@CALLEES free
+@@STRINGS 
+@@DECOMP
+
+void FUN_00a219a0(undefined4 *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  int *piVar2;
+  int *piVar3;
+  
+  while (param_2 != param_3) {
+    iVar1 = *param_2;
+    piVar2 = (int *)param_2[1];
+    piVar3 = (int *)*param_2;
+    *piVar2 = iVar1;
+    *(int **)(iVar1 + 4) = piVar2;
+    free(param_2);
+    param_2 = piVar3;
+  }
+  *param_1 = param_3;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a21a50 50 0
+@@CALLERS 
+@@CALLEES free, CMemoryAllocatorVariableSize::Erase
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00a21a50(int *param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  void *_Memory;
+  
+  iVar1 = *param_1;
+  _Memory = (void *)CMemoryAllocatorVariableSize__Erase(param_2,iVar1 + 4,iVar1 + 8,iVar1 + 0xc);
+  if (_Memory != (void *)0x0) {
+    free(_Memory);
+  }
+  param_1[1] = param_1[1] + -1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a21ae0 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00a21ae0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x28);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a21b60 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00a21b60(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x18);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a21ba0 66 0
+@@CALLERS 
+@@CALLEES free, BuildTreeArray
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00a21ba0(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a220a0 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00a220a0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x18);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a22130 66 0
+@@CALLERS 
+@@CALLEES free, TreeNode_RecursiveDelete
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00a22130(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    TreeNode_RecursiveDelete(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a22360 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00a22360(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x28);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a223a0 66 0
+@@CALLERS 
+@@CALLEES free, TreeNode_RecursiveDelete
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00a223a0(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    TreeNode_RecursiveDelete(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a22530 88 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 FUN_00a22530(float param_1)
+
+{
+  int iVar1;
+  float fVar2;
+  float10 fVar3;
+  
+  fVar2 = (param_1 + _DAT_0122ded8) * _DAT_0129cd1c;
+  iVar1 = (int)ROUND(fVar2 - _DAT_0122f59c);
+  fVar3 = (float10)fVar2 - (float10)iVar1;
+  return (fVar3 * (float10)*(float *)(&DAT_013cb534 + iVar1 * 4) +
+         ((float10)_DAT_0122ded8 - fVar3) * (float10)(float)(&DAT_013cb530)[iVar1]) *
+         (float10)_DAT_01237f08;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a26410 164 0
+@@CALLERS 
+@@CALLEES BuildTreeArray, StdSet_Insert
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00a26410(int *param_1,LTextTreeWalkThrough *param_2,int param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  undefined1 local_8 [8];
+  
+  if (*(int *)(param_2 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_2,*(LTextBinNode **)(*(int *)param_2 + 4));
+    *(int *)(*(int *)param_2 + 8) = *(int *)param_2;
+    *(undefined4 *)(*(int *)param_2 + 4) = 0;
+    *(int *)(*(int *)param_2 + 0xc) = *(int *)param_2;
+    *(undefined4 *)(param_2 + 4) = 0;
+  }
+  iVar2 = *(int *)(*param_1 + 8);
+  if (iVar2 != *param_1) {
+    do {
+      if (*(int *)(iVar2 + 0x14) == param_3) {
+        StdSet_Insert(local_8,iVar2 + 0x10);
+      }
+      iVar3 = *(int *)(iVar2 + 0xc);
+      if (iVar3 == 0) {
+        iVar3 = *(int *)(iVar2 + 4);
+        if (iVar2 == *(int *)(iVar3 + 0xc)) {
+          do {
+            iVar2 = iVar3;
+            iVar3 = *(int *)(iVar2 + 4);
+          } while (iVar2 == *(int *)(iVar3 + 0xc));
+        }
+        if (*(int *)(iVar2 + 0xc) != iVar3) {
+          iVar2 = iVar3;
+        }
+      }
+      else {
+        for (iVar1 = *(int *)(iVar3 + 8); iVar2 = iVar3, iVar1 != 0; iVar1 = *(int *)(iVar1 + 8)) {
+          iVar3 = iVar1;
+        }
+      }
+    } while (iVar2 != *param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2abd0 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00a2abd0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x20);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2ac00 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00a2ac00(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x1c);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2b780 66 0
+@@CALLERS 
+@@CALLEES free, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CMemoryAllocatorVariableSize::Erase
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00a2b780(int *param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  void *_Memory;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  undefined8 uVar2;
+  
+  iVar1 = *param_1;
+  uVar2 = CMemoryAllocatorVariableSize__Erase(param_2,iVar1 + 4,iVar1 + 8,iVar1 + 0xc);
+  _Memory = (void *)uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)((int)_Memory + 0x10),
+             (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar2 >> 0x20),unaff_EDI);
+  if (_Memory != (void *)0x0) {
+    free(_Memory);
+  }
+  param_1[1] = param_1[1] + -1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2b890 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00a2b890(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x20);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2b8d0 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00a2b8d0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2cc20 66 0
+@@CALLERS 
+@@CALLEES free, Utility_DestroyRefcountedTreeNode
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00a2cc20(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    Utility_DestroyRefcountedTreeNode(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2cfa0 51 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00a2cfa0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x18);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  param_1[3] = 0;
+  param_1[4] = 0;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2d050 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00a2d050(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x14);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2d090 66 0
+@@CALLERS 
+@@CALLEES BuildTreeArray, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00a2d090(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2d140 59 0
+@@CALLERS 
+@@CALLEES C3DMeshInfo, std_vector_expand_96bytes
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00a2d140(int param_1,C3DMeshInfo *param_2)
+
+{
+  C3DMeshInfo *this;
+  
+  this = *(C3DMeshInfo **)(param_1 + 4);
+  if (this != *(C3DMeshInfo **)(param_1 + 8)) {
+    if (this != (C3DMeshInfo *)0x0) {
+      C3DMeshInfo::C3DMeshInfo(this,param_2);
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 0x60;
+    return;
+  }
+  std_vector_expand_96bytes(this,param_2,&param_2,1,1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2d250 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00a2d250(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2d290 66 0
+@@CALLERS 
+@@CALLEES free, Utility_DestroyRefcountedTreeNode
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00a2d290(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    Utility_DestroyRefcountedTreeNode(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2e1b0 66 0
+@@CALLERS 
+@@CALLEES free, Utility_DestroyMapNodeWithAllocator
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00a2e1b0(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    Utility_DestroyMapNodeWithAllocator(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2e200 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_00a2e200(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x20);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2e240 66 0
+@@CALLERS 
+@@CALLEES free, Utility_DestroyMapNodeWithAllocator
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00a2e240(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    Utility_DestroyMapNodeWithAllocator(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a2eef0 502 0
+@@CALLERS 
+@@CALLEES ?GetPosition@CMemoryDataOutputStream@@UBEKXZ, memmove, ?SetPosition@CMemoryDataOutputStream@@UAEXK@Z, WriteNullTerminatedString, CCharString, ~CCompressedMemoryDataInputStream, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, PeekData, CMemoryDataOutputStream, GetFramesRemaining, CString_FillRange, WriteCBYTE
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Removing unreachable block (ram,0x00a2f086) */
+
+void FUN_00a2eef0(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  CIDrawEnvironment *pCVar2;
+  int iVar3;
+  uint uVar4;
+  int *piVar5;
+  int iVar6;
+  uint uVar7;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_ESI;
+  int *piVar8;
+  CMemoryDataOutputStream local_18 [24];
+  
+  piVar5 = param_3;
+  piVar8 = param_2;
+  if ((param_2[1] != 0) || (param_3[1] != 0)) {
+    CMemoryDataOutputStream::CMemoryDataOutputStream(local_18);
+    CDataOutputStream::WriteCBYTE((CDataOutputStream *)local_18,'\0');
+    iVar6 = *piVar8;
+    iVar3 = *(int *)(iVar6 + 8);
+    if (iVar3 != iVar6) {
+      do {
+        if ((*(int *)(iVar3 + 0x10) != 0) && (*(int *)(*(int *)(iVar3 + 0x10) + 4) != 0)) {
+          CDataOutputStream::WriteNullTerminatedString
+                    ((CDataOutputStream *)local_18,(CCharString *)(iVar3 + 0x10));
+        }
+        iVar6 = *(int *)(iVar3 + 0xc);
+        if (iVar6 == 0) {
+          iVar6 = *(int *)(iVar3 + 4);
+          if (iVar3 == *(int *)(iVar6 + 0xc)) {
+            do {
+              iVar3 = iVar6;
+              iVar6 = *(int *)(iVar3 + 4);
+            } while (iVar3 == *(int *)(iVar6 + 0xc));
+          }
+          if (*(int *)(iVar3 + 0xc) != iVar6) {
+            iVar3 = iVar6;
+          }
+        }
+        else {
+          for (iVar1 = *(int *)(iVar6 + 8); iVar3 = iVar6, iVar1 != 0; iVar1 = *(int *)(iVar1 + 8))
+          {
+            iVar6 = iVar1;
+          }
+        }
+      } while (iVar3 != *piVar8);
+    }
+    CCharString::CCharString((CCharString *)&param_2,"",-1);
+    CDataOutputStream::WriteNullTerminatedString
+              ((CDataOutputStream *)local_18,(CCharString *)&param_2);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,
+               extraout_EDX,unaff_ESI);
+    pCVar2 = CWorld::_GetPosition_CMemoryDataOutputStream__UBEKXZ((CWorld *)local_18);
+    iVar6 = *piVar5;
+    iVar3 = *(int *)(iVar6 + 8);
+    if (iVar3 != iVar6) {
+      do {
+        if ((*(int *)(iVar3 + 0x10) != 0) && (*(int *)(*(int *)(iVar3 + 0x10) + 4) != 0)) {
+          CDataOutputStream::WriteNullTerminatedString
+                    ((CDataOutputStream *)local_18,(CCharString *)(iVar3 + 0x10));
+        }
+        iVar6 = *(int *)(iVar3 + 0xc);
+        if (iVar6 == 0) {
+          iVar6 = *(int *)(iVar3 + 4);
+          if (iVar3 == *(int *)(iVar6 + 0xc)) {
+            do {
+              iVar3 = iVar6;
+              iVar6 = *(int *)(iVar3 + 4);
+            } while (iVar3 == *(int *)(iVar6 + 0xc));
+          }
+          if (*(int *)(iVar3 + 0xc) != iVar6) {
+            iVar3 = iVar6;
+          }
+        }
+        else {
+          for (iVar1 = *(int *)(iVar6 + 8); iVar3 = iVar6, iVar1 != 0; iVar1 = *(int *)(iVar1 + 8))
+          {
+            iVar6 = iVar1;
+          }
+        }
+      } while (iVar3 != *piVar5);
+    }
+    CCharString::CCharString((CCharString *)&param_2,"",-1);
+    CDataOutputStream::WriteNullTerminatedString
+              ((CDataOutputStream *)local_18,(CCharString *)&param_2);
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,
+               extraout_EDX_00,unaff_ESI);
+    CMemoryDataOutputStream::_SetPosition_CMemoryDataOutputStream__UAEXK_Z(local_18,0);
+    CDataOutputStream::WriteCBYTE((CDataOutputStream *)local_18,(char)pCVar2);
+    uVar4 = CCreatureActionBase::GetFramesRemaining((CCreatureActionBase *)local_18);
+    iVar6 = *param_1;
+    iVar3 = param_1[1];
+    param_2 = (int *)((uint)param_2 & 0xffffff00);
+    if (uVar4 < (uint)(iVar3 - iVar6)) {
+      param_1[1] = iVar6 + uVar4;
+    }
+    else {
+      CString_FillRange(iVar3,(iVar6 - iVar3) + uVar4,&param_2);
+    }
+    piVar8 = (int *)*param_1;
+    if ((int *)param_1[1] == (int *)*param_1) {
+      piVar8 = param_1;
+    }
+    piVar5 = CMemoryDataOutputStream::PeekData(local_18);
+    for (uVar7 = uVar4 >> 2; uVar7 != 0; uVar7 = uVar7 - 1) {
+      *piVar8 = *piVar5;
+      piVar5 = piVar5 + 1;
+      piVar8 = piVar8 + 1;
+    }
+    for (uVar4 = uVar4 & 3; uVar4 != 0; uVar4 = uVar4 - 1) {
+      *(char *)piVar8 = (char)*piVar5;
+      piVar5 = (int *)((int)piVar5 + 1);
+      piVar8 = (int *)((int)piVar8 + 1);
+    }
+    CCompressedMemoryDataInputStream::~CCompressedMemoryDataInputStream
+              ((CCompressedMemoryDataInputStream *)local_18);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a34950 89 0
+@@CALLERS 
+@@CALLEES FUN_00a33d90
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00a34950(int param_1,undefined4 *param_2)
+
+{
+  undefined4 *puVar1;
+  
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  if (puVar1 != *(undefined4 **)(param_1 + 8)) {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = *param_2;
+      puVar1[1] = param_2[1];
+      puVar1[2] = param_2[2];
+      puVar1[3] = param_2[3];
+      puVar1[4] = param_2[4];
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 0x14;
+    *(undefined1 *)(param_1 + 0xd) = 1;
+    return;
+  }
+  FUN_00a33d90(puVar1,param_2,&param_2,1,1);
+  *(undefined1 *)(param_1 + 0xd) = 1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a349b0 82 0
+@@CALLERS 
+@@CALLEES FUN_00a33e80
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00a349b0(int param_1,undefined4 *param_2)
+
+{
+  int iVar1;
+  undefined4 *puVar2;
+  
+  puVar2 = *(undefined4 **)(param_1 + 4);
+  if (puVar2 == *(undefined4 **)(param_1 + 8)) {
+    FUN_00a33e80(puVar2,param_2,&param_2,1,1);
+    *(undefined1 *)(param_1 + 0xd) = 1;
+    return;
+  }
+  if (puVar2 != (undefined4 *)0x0) {
+    iVar1 = 0xd;
+    *puVar2 = *param_2;
+    while( true ) {
+      puVar2 = puVar2 + 1;
+      param_2 = param_2 + 1;
+      if (iVar1 == 0) break;
+      iVar1 = iVar1 + -1;
+      *puVar2 = *param_2;
+    }
+  }
+  *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 0x38;
+  *(undefined1 *)(param_1 + 0xd) = 1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a36090 112 0
+@@CALLERS 
+@@CALLEES operator_delete, GetMesh
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_00a36090(int param_1,undefined4 *param_2,ulong param_3,uint param_4)
+
+{
+  undefined4 local_8;
+  int *local_4;
+  
+  local_8 = 0;
+  local_4 = (int *)0x0;
+  C3DMeshInfo::GetMesh
+            (*(C3DMeshInfo **)(param_1 + 4),(CCountedPointer<C3DMesh2_const_> *)&local_8,param_3,
+             param_4 | 1);
+  *param_2 = local_8;
+  param_2[1] = local_4;
+  if (local_4 != (int *)0x0) {
+    *local_4 = *local_4 + 1;
+    *local_4 = *local_4 + -1;
+    if (*local_4 == 0) {
+      (*(code *)local_4[1])();
+      operator_delete(local_4);
+    }
+  }
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a37680 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00a37680(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a37760 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00a37760(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC

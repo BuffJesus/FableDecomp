@@ -1,0 +1,989 @@
+@@@FUNC 004e15d3 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCDPhysicalObstruction
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e15d3(CThing *param_1)
+
+{
+  CTCDPhysicalObstruction *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x50);
+  if (this != (CTCDPhysicalObstruction *)0x0) {
+    uVar1 = CTCDPhysicalObstruction::CTCDPhysicalObstruction(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e176e 81 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e176e(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x38) = *(undefined4 *)(param_2 + 0x38);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e17d2 75 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e17d2(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x38) = *(undefined4 *)(param_2 + 0x38);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e181d 29 0
+@@CALLERS 
+@@CALLEES CTCFishingRod, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e181d(CThing *param_1)
+
+{
+  CTCFishingRod *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x18);
+  if (this != (CTCFishingRod *)0x0) {
+    uVar1 = CTCFishingRod::CTCFishingRod(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e189c 45 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e189c(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  param_1[0x25] = param_2[0x25];
+  param_1[0x26] = param_2[0x26];
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e18ce 69 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e18ce(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  param_1[0x25] = param_2[0x25];
+  param_1[0x26] = param_2[0x26];
+  param_1[0x27] = param_2[0x27];
+  param_1[0x28] = param_2[0x28];
+  param_1[0x29] = param_2[0x29];
+  param_1[0x2a] = param_2[0x2a];
+  param_1[0x2b] = param_2[0x2b];
+  param_1[0x2c] = param_2[0x2c];
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e1918 93 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e1918(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x38) = *(undefined4 *)(param_2 + 0x38);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e197a 99 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e197a(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x38) = *(undefined4 *)(param_2 + 0x38);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e19e2 63 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e19e2(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  CCharString::operator=((CCharString *)(param_1 + 0x28),(CCharString *)(param_2 + 0x28));
+  CCharString::operator=((CCharString *)(param_1 + 0x2c),(CCharString *)(param_2 + 0x2c));
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x38) = *(undefined4 *)(param_2 + 0x38);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e1a26 51 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e1a26(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x38) = *(undefined4 *)(param_2 + 0x38);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e1a5e 39 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e1a5e(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e1e06 537 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=, CActiveFile::operator_assign
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e1e06(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  CActiveFile__operator_assign(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x38) = *(undefined4 *)(param_2 + 0x38);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  CActiveFile__operator_(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  CActiveFile__operator_(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  CActiveFile__operator_(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  CActiveFile__operator_(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x80) = *(undefined4 *)(param_2 + 0x80);
+  CActiveFile__operator_(param_2 + 0x84);
+  *(undefined4 *)(param_1 + 0x90) = *(undefined4 *)(param_2 + 0x90);
+  CActiveFile__operator_(param_2 + 0x94);
+  *(undefined4 *)(param_1 + 0xa0) = *(undefined4 *)(param_2 + 0xa0);
+  CActiveFile__operator_(param_2 + 0xa4);
+  *(undefined4 *)(param_1 + 0xb0) = *(undefined4 *)(param_2 + 0xb0);
+  *(undefined4 *)(param_1 + 0xb4) = *(undefined4 *)(param_2 + 0xb4);
+  *(undefined4 *)(param_1 + 0xb8) = *(undefined4 *)(param_2 + 0xb8);
+  *(undefined4 *)(param_1 + 0xbc) = *(undefined4 *)(param_2 + 0xbc);
+  *(undefined4 *)(param_1 + 0xc0) = *(undefined4 *)(param_2 + 0xc0);
+  *(undefined4 *)(param_1 + 0xc4) = *(undefined4 *)(param_2 + 0xc4);
+  *(undefined4 *)(param_1 + 200) = *(undefined4 *)(param_2 + 200);
+  *(undefined4 *)(param_1 + 0xcc) = *(undefined4 *)(param_2 + 0xcc);
+  *(undefined4 *)(param_1 + 0xd0) = *(undefined4 *)(param_2 + 0xd0);
+  *(undefined4 *)(param_1 + 0xd4) = *(undefined4 *)(param_2 + 0xd4);
+  *(undefined4 *)(param_1 + 0xd8) = *(undefined4 *)(param_2 + 0xd8);
+  *(undefined4 *)(param_1 + 0xdc) = *(undefined4 *)(param_2 + 0xdc);
+  *(undefined4 *)(param_1 + 0xe0) = *(undefined4 *)(param_2 + 0xe0);
+  param_1[0xe4] = param_2[0xe4];
+  param_1[0xe5] = param_2[0xe5];
+  param_1[0xe6] = param_2[0xe6];
+  CCharString::operator=((CCharString *)(param_1 + 0xe8),(CCharString *)(param_2 + 0xe8));
+  CCharString::operator=((CCharString *)(param_1 + 0xec),(CCharString *)(param_2 + 0xec));
+  CCharString::operator=((CCharString *)(param_1 + 0xf0),(CCharString *)(param_2 + 0xf0));
+  CCharString::operator=((CCharString *)(param_1 + 0xf4),(CCharString *)(param_2 + 0xf4));
+  *(undefined4 *)(param_1 + 0xf8) = *(undefined4 *)(param_2 + 0xf8);
+  *(undefined4 *)(param_1 + 0xfc) = *(undefined4 *)(param_2 + 0xfc);
+  *(undefined4 *)(param_1 + 0x100) = *(undefined4 *)(param_2 + 0x100);
+  *(undefined4 *)(param_1 + 0x104) = *(undefined4 *)(param_2 + 0x104);
+  *(undefined4 *)(param_1 + 0x108) = *(undefined4 *)(param_2 + 0x108);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e2391 81 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e2391(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  param_1[0x25] = param_2[0x25];
+  param_1[0x26] = param_2[0x26];
+  CActiveFile__operator_(param_2 + 0x28);
+  CActiveFile__operator_(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  param_1[0x48] = param_2[0x48];
+  param_1[0x49] = param_2[0x49];
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e23e2 29 0
+@@CALLERS 
+@@CALLEES operator_new, CEnginePrimitiveGroupManager
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e23e2(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x34);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e23ff 29 0
+@@CALLERS 
+@@CALLEES CTCBed, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e23ff(CThing *param_1)
+
+{
+  CTCBed *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x40);
+  if (this != (CTCBed *)0x0) {
+    uVar1 = CTCBed::CTCBed(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e2447 51 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e2447(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  CActiveFile__operator_(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x38) = *(undefined4 *)(param_2 + 0x38);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e272a 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCDHeroSuit
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e272a(CThing *param_1)
+
+{
+  CTCDHeroSuit *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x1c);
+  if (this != (CTCDHeroSuit *)0x0) {
+    uVar1 = CTCDHeroSuit::CTCDHeroSuit(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e2791 29 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveGroupManager, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e2791(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x2c);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e28f1 29 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveGroupManager, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e28f1(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x20);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e292a 29 0
+@@CALLERS 
+@@CALLEES operator_new, CEnginePrimitiveGroupManager
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e292a(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x20);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e2968 51 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e2968(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  CActiveFile__operator_(param_2 + 0x34);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e2b4b 29 0
+@@CALLERS 
+@@CALLEES operator_new, CScrollingViewport
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e2b4b(long param_1)
+
+{
+  CScrollingViewport *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x24);
+  if (this != (CScrollingViewport *)0x0) {
+    uVar1 = NUISystem::CScrollingViewport::CScrollingViewport(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e2b8e 29 0
+@@CALLERS 
+@@CALLEES CTCPreCalculatedNavigationRoute, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e2b8e(CThing *param_1)
+
+{
+  CTCPreCalculatedNavigationRoute *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x30);
+  if (this != (CTCPreCalculatedNavigationRoute *)0x0) {
+    uVar1 = CTCPreCalculatedNavigationRoute::CTCPreCalculatedNavigationRoute(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e2c08 69 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e2c08(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  CActiveFile__operator_(param_2 + 0x28);
+  CActiveFile__operator_(param_2 + 0x34);
+  CActiveFile__operator_(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e2c52 141 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e2c52(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  CActiveFile__operator_(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x38) = *(undefined4 *)(param_2 + 0x38);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e2ce4 87 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e2ce4(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  param_1[0x25] = param_2[0x25];
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x38) = *(undefined4 *)(param_2 + 0x38);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  CActiveFile__operator_(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e2e0d 189 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e2e0d(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  CActiveFile__operator_(param_2 + 0x38);
+  CActiveFile__operator_(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  *(undefined4 *)(param_1 + 0x7c) = *(undefined4 *)(param_2 + 0x7c);
+  *(undefined4 *)(param_1 + 0x80) = *(undefined4 *)(param_2 + 0x80);
+  *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_2 + 0x84);
+  *(undefined4 *)(param_1 + 0x88) = *(undefined4 *)(param_2 + 0x88);
+  *(undefined4 *)(param_1 + 0x8c) = *(undefined4 *)(param_2 + 0x8c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e2ecf 135 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e2ecf(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  param_1[0x38] = param_2[0x38];
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  CActiveFile__operator_(param_2 + 0x58);
+  param_1[100] = param_2[100];
+  param_1[0x65] = param_2[0x65];
+  param_1[0x66] = param_2[0x66];
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e316d 141 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e316d(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x38) = *(undefined4 *)(param_2 + 0x38);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  CActiveFile__operator_(param_2 + 0x6c);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e323c 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTattooDef
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_004e323c(void)
+
+{
+  CTattooDef *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x2c);
+  if (this != (CTattooDef *)0x0) {
+    uVar1 = CTattooDef::CTattooDef(this);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e3783 32 0
+@@CALLERS 
+@@CALLEES CTCTargetingPlayer, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e3783(CThing *param_1)
+
+{
+  CTCTargetingPlayer *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0xf8);
+  if (this != (CTCTargetingPlayer *)0x0) {
+    uVar1 = CTCTargetingPlayer::CTCTargetingPlayer(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e3ea8 29 0
+@@CALLERS 
+@@CALLEES CTCHeroRangedAttacks, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e3ea8(CThing *param_1)
+
+{
+  CTCHeroRangedAttacks *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x78);
+  if (this != (CTCHeroRangedAttacks *)0x0) {
+    uVar1 = CTCHeroRangedAttacks::CTCHeroRangedAttacks(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e3fef 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCNymph
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e3fef(CThing *param_1)
+
+{
+  CTCNymph *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x70);
+  if (this != (CTCNymph *)0x0) {
+    uVar1 = CTCNymph::CTCNymph(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e400c 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCLightningOrb
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004e400c(CThing *param_1)
+
+{
+  CTCLightningOrb *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x30);
+  if (this != (CTCLightningOrb *)0x0) {
+    uVar1 = CTCLightningOrb::CTCLightningOrb(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e4299 141 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=, CTCCarryable::operator_assign_1
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e4299(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x28) = *(undefined4 *)(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_2 + 0x2c);
+  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(param_2 + 0x30);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  *(undefined4 *)(param_1 + 0x38) = *(undefined4 *)(param_2 + 0x38);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  CActiveFile__operator_(param_2 + 0x4c);
+  param_1[0x58] = param_2[0x58];
+  param_1[0x59] = param_2[0x59];
+  param_1[0x5a] = param_2[0x5a];
+  param_1[0x5b] = param_2[0x5b];
+  CTCCarryable__operator_assign_1(param_2 + 0x5c);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  param_1[0x6c] = param_2[0x6c];
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e4450 39 0
+@@CALLERS 
+@@CALLEES operator=, CTCCarryable_assign
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_004e4450(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  CTCCarryable_assign(param_2 + 0x28);
+  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_2 + 0x34);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e4583 75 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_004e4583(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e45f7 45 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_004e45f7(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e46cd 123 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_004e46cd(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  *(undefined4 *)(param_1 + 0x7c) = *(undefined4 *)(param_2 + 0x7c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e4774 75 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_004e4774(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  return param_1;
+}
+
+
+@@ENDFUNC

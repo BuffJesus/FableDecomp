@@ -1,0 +1,208 @@
+INFO  Using log config file: jar:file:/D:/Subuwu/tools/ghidra-public/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Cornelio\AppData\Roaming\ghidra\ghidra_12.1_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (938 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (2248 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\GnuDemangler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BytePatterns\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\JVM\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\SystemEmulation\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\8051\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FileFormats\ghidra_scripts
+    D:\Documents\FableTLC\tools\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\BSim\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\VersionTracking\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PDB\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\PIC\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Base\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Extensions\XEXLoaderWV\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\Cornelio\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\DATA\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\Decompiler\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Processors\Atmel\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\PyGhidra\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Debug\Debugger\ghidra_scripts
+    D:\Subuwu\tools\ghidra-public\Ghidra\Features\FunctionID\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessAnalyzer)  
+INFO  Opening project: D:\Documents\FableTLC\ghidra_proj\FableTLC (HeadlessProject)  
+INFO  REPORT: Processing project file: /Fable.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: DumpFuncBytesAndC.java '0x00a65d40' '0x00a65de0' '0x00a66550' '0x00a65e50' '0x00a65e20' '0x00a65d50' '0x00a65d70' '0x00a65df0'  (HeadlessAnalyzer)  
+INFO  SCRIPT: D:\Documents\FableTLC\tools\ghidra_scripts\DumpFuncBytesAndC.java (HeadlessAnalyzer)  
+INFO  DumpFuncBytesAndC.java> ==== ?GetAllocationSize@CMemoryAllocatorFixedSize@@UAEKPAX@Z @ 00a65d40 len=9 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+undefined4 __fastcall _GetAllocationSize_CMemoryAllocatorFixedSize__UAEKPAX_Z(int param_1)
+
+{
+  return *(undefined4 *)(param_1 + 0xc28);
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8b 81 28 0c 00 00 c2 04 00  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?GetAllocationSizeIncludingHeader@CMemoryAllocatorFixedSize@@UAEKPAX@Z @ 00a65de0 len=9 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+undefined4 __fastcall
+_GetAllocationSizeIncludingHeader_CMemoryAllocatorFixedSize__UAEKPAX_Z(int param_1)
+
+{
+  return *(undefined4 *)(param_1 + 0xc2c);
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8b 81 2c 0c 00 00 c2 04 00  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?GetFragmentation@CMemoryAllocatorFixedSize@@UAEMXZ @ 00a66550 len=7 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 _GetFragmentation_CMemoryAllocatorFixedSize__UAEMXZ(void)
+
+{
+  return (float10)_DAT_0122dedc;
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+d9 05 dc de 22 01 c3  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?GetNoAllocatedAreas@CMemoryAllocatorFixedSize@@UAEKXZ @ 00a65e50 len=29 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+int __fastcall _GetNoAllocatedAreas_CMemoryAllocatorFixedSize__UAEKXZ(int param_1)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  iVar2 = 0;
+  for (iVar1 = *(int *)(param_1 + 0xc1c); iVar1 != 0; iVar1 = *(int *)(iVar1 + 8)) {
+    iVar2 = iVar2 + *(int *)(iVar1 + 4);
+  }
+  return iVar2;
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8b 89 1c 0c 00 00 33 c0 85 c9 74 10 8d 64 24 00
+8b 51 04 8b 49 08 03 c2 85 c9 75 f4 c3  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?GetNoFreeAreas@CMemoryAllocatorFixedSize@@UAEKXZ @ 00a65e20 len=39 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+int __fastcall _GetNoFreeAreas_CMemoryAllocatorFixedSize__UAEKXZ(int param_1)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  
+  iVar3 = *(int *)(param_1 + 0xc1c);
+  iVar2 = 0;
+  if (iVar3 != 0) {
+    do {
+      piVar1 = (int *)(iVar3 + 4);
+      iVar3 = *(int *)(iVar3 + 8);
+      iVar2 = iVar2 + (*(int *)(param_1 + 0xc34) - *piVar1);
+    } while (iVar3 != 0);
+  }
+  return iVar2;
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8b 91 1c 0c 00 00 33 c0 85 d2 74 1a 8b 89 34 0c
+00 00 56 57 8b 7a 04 8b 52 08 8b f1 2b f7 03 c6
+85 d2 75 f0 5f 5e c3  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?GetTotalMemoryControlledByAllocator@CMemoryAllocatorFixedSize@@UAEKXZ @ 00a65d50 len=32 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+int __fastcall _GetTotalMemoryControlledByAllocator_CMemoryAllocatorFixedSize__UAEKXZ(int param_1)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  iVar2 = *(int *)(param_1 + 0xc1c);
+  iVar1 = *(int *)(param_1 + 0xc44);
+  if (iVar2 != 0) {
+    do {
+      iVar2 = *(int *)(iVar2 + 8);
+      iVar1 = iVar1 + *(int *)(param_1 + 0xc38);
+    } while (iVar2 != 0);
+  }
+  return iVar1;
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8b 91 1c 0c 00 00 85 d2 8b 81 44 0c 00 00 74 0f
+8b 89 38 0c 00 00 8b 52 08 03 c1 85 d2 75 f7 c3
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?GetHeaderOverhead@CMemoryAllocatorFixedSize@@UAEKXZ @ 00a65d70 len=36 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+int __fastcall _GetHeaderOverhead_CMemoryAllocatorFixedSize__UAEKXZ(int param_1)
+
+{
+  int *piVar1;
+  int iVar2;
+  int iVar3;
+  
+  iVar3 = *(int *)(param_1 + 0xc1c);
+  iVar2 = 0;
+  if (iVar3 != 0) {
+    do {
+      piVar1 = (int *)(iVar3 + 4);
+      iVar3 = *(int *)(iVar3 + 8);
+      iVar2 = iVar2 + *(int *)(param_1 + 0xc30) + *piVar1 * 4;
+    } while (iVar3 != 0);
+  }
+  return iVar2;
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8b 91 1c 0c 00 00 33 c0 85 d2 74 17 8b 89 30 0c
+00 00 56 8b 72 04 8b 52 08 8d 34 b1 03 c6 85 d2
+75 f1 5e c3  (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ==== ?GetLargestFreeAreaSize@CMemoryAllocatorFixedSize@@UAEKXZ @ 00a65df0 len=48 ==== (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---C---
+
+undefined4 __fastcall _GetLargestFreeAreaSize_CMemoryAllocatorFixedSize__UAEKXZ(int param_1)
+
+{
+  int iVar1;
+  
+  iVar1 = *(int *)(param_1 + 0xc1c);
+  if (iVar1 != 0) {
+    do {
+      if (*(int *)(param_1 + 0xc34) != *(int *)(iVar1 + 4)) {
+        return *(undefined4 *)(param_1 + 0xc28);
+      }
+      iVar1 = *(int *)(iVar1 + 8);
+    } while (iVar1 != 0);
+  }
+  return 0;
+}
+
+ (GhidraScript)  
+INFO  DumpFuncBytesAndC.java> ---BYTES---
+8b 81 1c 0c 00 00 85 c0 56 57 74 16 8b 91 34 0c
+00 00 8b 78 04 8b f2 2b f7 75 0c 8b 40 08 85 c0
+75 f0 5f 33 c0 5e c3 8b 81 28 0c 00 00 5f 5e c3
+ (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /Fable.exe (HeadlessAnalyzer)  

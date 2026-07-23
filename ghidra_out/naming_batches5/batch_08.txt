@@ -1,0 +1,1643 @@
+@@@FUNC 00c42850 454 1
+@@CALLERS Fastcall_WADSegmentDecompress
+@@CALLEES SetStreamInput, __alldiv, StreamReader_SearchByteInRange
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_00c42850(CCompressorZlib *param_1,void *param_2,uint param_3)
+
+{
+  short sVar1;
+  char cVar2;
+  uint uVar3;
+  undefined4 uVar4;
+  int unaff_EBX;
+  uint unaff_ESI;
+  int iStack_60;
+  uint uVar5;
+  int iStack_38;
+  int iStack_34;
+  int local_30;
+  uint uStack_20;
+  
+  CCompressorZlib::SetStreamInput(param_1,param_2,param_3);
+  uVar5 = 0xc;
+  *(undefined4 *)(param_1 + 0xc) = 0xc;
+  cVar2 = (**(code **)(*(int *)param_1 + 0xc))();
+  if ((cVar2 == '\0') || (iStack_38 != 0x46464952)) {
+    return 0;
+  }
+  uVar3 = iStack_34 + 8;
+  if (param_3 == 0) {
+    *(uint *)(param_1 + 0xc) = uVar3;
+  }
+  else {
+    if (param_3 < uVar3) {
+      return 0;
+    }
+    if (uVar3 < param_3) {
+      *(uint *)(param_1 + 0xc) = uVar3;
+    }
+    else {
+      *(uint *)(param_1 + 0xc) = param_3;
+    }
+  }
+  if (local_30 != 0x45564157) {
+    return 0;
+  }
+  iStack_60 = 1;
+  cVar2 = StreamReader_SearchByteInRange(&stack0xffffffb0);
+  if (cVar2 == '\0') {
+    return 0;
+  }
+  if (unaff_ESI < 0x10) {
+    return 0;
+  }
+  iStack_60 = 0x10;
+  cVar2 = (**(code **)(*(int *)param_1 + 0xc))(param_1 + 0x10);
+  if (cVar2 == '\0') {
+    return 0;
+  }
+  sVar1 = *(short *)(param_1 + 0x1e);
+  *(undefined2 *)(param_1 + 0x20) = 0;
+  if (((sVar1 != 8) && (sVar1 != 4)) && (sVar1 != 0x10)) {
+    return 0;
+  }
+  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_1 + 0x14);
+  *(uint *)(param_1 + 0x28) = (uint)*(ushort *)(param_1 + 0x12);
+  cVar2 = StreamReader_SearchByteInRange(&stack0xffffffa8,1);
+  if (cVar2 == '\0') {
+    return 0;
+  }
+  *(undefined4 *)(param_1 + 0x40) = 0x20746d66;
+  *(uint *)(param_1 + 0x30) = uVar5;
+  *(int *)(param_1 + 0x3c) = *(int *)(param_1 + 4) + 0x20746d66;
+  uVar4 = __alldiv((ulonglong)uVar5 * 1000,*(undefined4 *)(param_1 + 0x18),0);
+  *(undefined4 *)(param_1 + 0x44) = uVar4;
+  cVar2 = StreamReader_SearchByteInRange(&stack0xffffffa8,1);
+  if (cVar2 != '\0') {
+    if (uVar5 < 0x24) {
+      return 0;
+    }
+    cVar2 = (**(code **)(*(int *)param_1 + 0xc))(&iStack_34,0x24);
+    if (cVar2 == '\0') {
+      return 0;
+    }
+    if (uStack_20 != 0) {
+      if (1 < uStack_20) {
+        return 0;
+      }
+      if (uVar5 < 0x3c) {
+        return 0;
+      }
+      cVar2 = (**(code **)(*(int *)param_1 + 0xc))(&iStack_60,0x18);
+      if (cVar2 == '\0') {
+        return 0;
+      }
+      uVar5 = (uint)*(ushort *)(param_1 + 0x1c) * unaff_EBX;
+      uVar3 = (uint)*(ushort *)(param_1 + 0x1c) * iStack_60;
+      *(uint *)(param_1 + 0x34) = uVar3;
+      *(uint *)(param_1 + 0x38) = uVar5;
+      if (uVar5 <= uVar3 && uVar3 - uVar5 != 0) {
+        return 0;
+      }
+      if (*(uint *)(param_1 + 0x30) <= uVar5) {
+        return 0;
+      }
+      goto LAB_00c42a05;
+    }
+  }
+  *(undefined4 *)(param_1 + 0x34) = 0;
+  *(undefined4 *)(param_1 + 0x38) = 0;
+LAB_00c42a05:
+  *(undefined4 *)(param_1 + 8) = *(undefined4 *)(param_1 + 0x40);
+  return 1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c42f50 96 1
+@@CALLERS operator_new
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __thiscall FUN_00c42f50(int param_1,float param_2)
+
+{
+  float fVar1;
+  int iVar2;
+  
+  fVar1 = _DAT_0122dedc;
+  if (*(float *)(param_1 + 0x18) != param_2) {
+    *(float *)(param_1 + 0x18) = param_2;
+    if ((param_2 == fVar1) ||
+       (iVar2 = (int)ROUND(param_2 * 0.30103 * _DAT_012a2ad4), iVar2 < -10000)) {
+      iVar2 = -10000;
+    }
+    *(int *)(param_1 + 0x1c) = iVar2;
+    *(uint *)(param_1 + 0x14) = *(uint *)(param_1 + 0x14) | 2;
+    return;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c43000 218 1
+@@CALLERS operator_new
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c43000(int param_1,float *param_2)
+
+{
+  float *pfVar1;
+  
+  if (param_2 == (float *)0x0) {
+    if (*(int *)(param_1 + 0x2c) != 0) {
+      *(undefined4 *)(param_1 + 0x2c) = 0;
+      *(uint *)(param_1 + 0x14) = *(uint *)(param_1 + 0x14) | 8;
+      return;
+    }
+  }
+  else {
+    pfVar1 = *(float **)(param_1 + 0x2c);
+    if (pfVar1 == (float *)0x0) {
+      *(float **)(param_1 + 0x2c) = (float *)(param_1 + 0x7c);
+      *(float *)(param_1 + 0x7c) = *param_2;
+      *(float *)(param_1 + 0x80) = param_2[1];
+      *(float *)(param_1 + 0x84) = param_2[2];
+      *(float *)(param_1 + 0x88) = param_2[3];
+      *(float *)(param_1 + 0x8c) = param_2[4];
+      *(float *)(param_1 + 0x90) = param_2[5];
+      *(uint *)(param_1 + 0x14) = *(uint *)(param_1 + 0x14) | 8;
+      return;
+    }
+    if ((((*pfVar1 != *param_2) || (pfVar1[1] != param_2[1])) || (pfVar1[2] != param_2[2])) ||
+       (((*pfVar1 != *param_2 || (pfVar1[4] != param_2[4])) || (pfVar1[5] != param_2[5])))) {
+      *pfVar1 = *param_2;
+      pfVar1[1] = param_2[1];
+      pfVar1[2] = param_2[2];
+      pfVar1[3] = param_2[3];
+      pfVar1[4] = param_2[4];
+      pfVar1[5] = param_2[5];
+      *(uint *)(param_1 + 0x14) = *(uint *)(param_1 + 0x14) | 8;
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c43390 144 1
+@@CALLERS 
+@@CALLEES GetAnimFilter, ClearPrimitivesIfNecessary
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00c43390(int param_1,CModeBlock *param_2,byte param_3,int param_4,int param_5)
+
+{
+  bool bVar1;
+  uint uVar2;
+  uint extraout_EAX;
+  CAnimFilterBase *pCVar3;
+  
+  uVar2 = ~*(uint *)(param_4 + 8) & *(uint *)(param_1 + 0xc);
+  if ((param_2 == (CModeBlock *)0x0) || ((*(uint *)(param_2 + 0x2c) >> 2 & 1) == 0)) {
+    bVar1 = false;
+    if (uVar2 != 0) goto LAB_00c4340f;
+  }
+  else {
+    bVar1 = true;
+    if (uVar2 != 0) {
+      NPlayerGui::CDrawAutoPickups::ClearPrimitivesIfNecessary((CDrawAutoPickups *)&DAT_0143bb58);
+      uVar2 = extraout_EAX;
+      goto LAB_00c433c5;
+    }
+  }
+  if (param_2 != (CModeBlock *)0x0) {
+    if ((((param_3 & 8) != 0) && ((*(uint *)(param_2 + 0x2c) >> 2 & 1) == 0)) &&
+       ((param_3 & 0x10) == 0)) goto LAB_00c4340f;
+    pCVar3 = NCreatureMode::CModeBlock::GetAnimFilter(param_2);
+    if ((*(uint *)pCVar3 & ~*(uint *)(param_4 + 0xc)) != 0) goto LAB_00c4340f;
+  }
+  if (*(int *)(param_4 + 4) != 0) {
+    return CONCAT31((int3)((uint)*(int *)(param_4 + 4) >> 8),1);
+  }
+  uVar2 = 0;
+  if (bVar1) {
+LAB_00c433c5:
+    return uVar2 & 0xffffff00;
+  }
+LAB_00c4340f:
+  return CONCAT31((int3)((uint)*(int *)(param_5 + 4) >> 8),*(int *)(param_5 + 4) != 0);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c43420 116 1
+@@CALLERS CMusicManager_SetLoop
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c43420(int param_1,int *param_2,int *param_3,int *param_4)
+
+{
+  if (param_4 == (int *)0x0) {
+    if (*param_2 != 0) {
+      *param_2 = 0;
+      *(uint *)(param_1 + 0x14) = *(uint *)(param_1 + 0x14) | 0x80;
+      return;
+    }
+  }
+  else {
+    if (*param_2 == 0) {
+      *param_2 = (int)param_3;
+      *param_3 = *param_4;
+      param_3[1] = param_4[1];
+      *(uint *)(param_1 + 0x14) = *(uint *)(param_1 + 0x14) | 0x80;
+      return;
+    }
+    if ((*param_3 != *param_4) || ((float)param_3[1] != (float)param_4[1])) {
+      *param_3 = *param_4;
+      param_3[1] = param_4[1];
+      *(uint *)(param_1 + 0x14) = *(uint *)(param_1 + 0x14) | 0x80;
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c434a0 143 1
+@@CALLERS CMusicManager_SetVolume
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c434a0(int param_1,int *param_2,int *param_3,int *param_4)
+
+{
+  if (param_4 == (int *)0x0) {
+    if (*param_2 != 0) {
+      *param_2 = 0;
+      *(uint *)(param_1 + 0x14) = *(uint *)(param_1 + 0x14) | 0x100;
+      return;
+    }
+  }
+  else {
+    if (*param_2 == 0) {
+      *param_2 = (int)param_3;
+      *param_3 = *param_4;
+      param_3[1] = param_4[1];
+      param_3[2] = param_4[2];
+      *(uint *)(param_1 + 0x14) = *(uint *)(param_1 + 0x14) | 0x100;
+      return;
+    }
+    if (((*param_3 != *param_4) || ((float)param_3[1] != (float)param_4[1])) ||
+       ((float)param_3[2] != (float)param_4[2])) {
+      *param_3 = *param_4;
+      param_3[1] = param_4[1];
+      param_3[2] = param_4[2];
+      *(uint *)(param_1 + 0x14) = *(uint *)(param_1 + 0x14) | 0x100;
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c43de0 55 1
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c43de0(int *param_1)
+
+{
+  int iVar1;
+  
+  iVar1 = param_1[0x1e];
+  if (iVar1 == 0) {
+    if ((param_1[0x17] != 0) && (param_1[0x17] != 0)) {
+      (**(code **)(*param_1 + 0x20))
+                (*(undefined4 *)(param_1[0x15] + param_1[0x19] * 4),param_1 + 0x14);
+      return;
+    }
+    iVar1 = 0;
+  }
+  (**(code **)(*param_1 + 0x20))(iVar1,param_1 + 0x14);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c43ec0 179 1
+@@CALLERS 
+@@CALLEES SetQuestPersistentFlag, Thing_Cleanup, ClearPrimitivesIfNecessary, ~CExclusiveAssert, WorldFrameUpdate, FUN_00c44360, CCombatSequenceManager_ProcessAction
+@@STRINGS 
+@@DECOMP
+
+undefined1 __thiscall
+FUN_00c43ec0(CExclusiveAssert *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
+
+{
+  char cVar1;
+  int iVar2;
+  undefined1 unaff_SI;
+  undefined1 unaff_DI;
+  
+  if (*(int *)(param_1 + 0x5c) != 0) {
+    CExclusiveAssert::~CExclusiveAssert(param_1);
+  }
+  Thing_Cleanup();
+  if (*(CItem **)(param_1 + 0x78) != (CItem *)0x0) {
+    NInventory::CItem::SetQuestPersistentFlag(*(CItem **)(param_1 + 0x78),(bool)unaff_SI);
+    *(undefined4 *)(param_1 + 0x78) = 0;
+    if (*(int **)(param_1 + 0x50) != (int *)0x0) {
+      iVar2 = (**(code **)(**(int **)(param_1 + 0x50) + 0xc))(param_1);
+      if (iVar2 != 0) {
+        CCombatSequenceManager_ProcessAction(*(undefined4 *)(param_1 + 0x50));
+        *(undefined4 *)(param_1 + 0x50) = 0;
+      }
+    }
+  }
+  cVar1 = FUN_00c44360(param_2);
+  if (cVar1 == '\0') {
+    return 0;
+  }
+  if (*(int **)(param_1 + 0x50) != (int *)0x0) {
+    iVar2 = (**(code **)(**(int **)(param_1 + 0x50) + 0xc))(param_1);
+    if (iVar2 != 0) {
+      CEngineResourceManager::WorldFrameUpdate
+                ((CEngineResourceManager *)(param_1 + 0x54),(bool)unaff_DI);
+      NPlayerGui::CDrawAutoPickups::ClearPrimitivesIfNecessary((CDrawAutoPickups *)&DAT_0143bb58);
+      return 0;
+    }
+  }
+  *(undefined4 *)(param_1 + 0xd4) = param_3;
+  *(undefined4 *)(param_1 + 0xd8) = param_4;
+  return 1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c43f80 71 1
+@@CALLERS 
+@@CALLEES CShaderConstantRange_ShouldClearPrimitives, FUN_00c44460, ClearPrimitivesIfNecessary, CModeBlock_CreateAudioBuffer
+@@STRINGS 
+@@DECOMP
+
+uint FUN_00c43f80(undefined4 param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  uint uVar1;
+  int iVar2;
+  uint extraout_EAX;
+  
+  uVar1 = CShaderConstantRange_ShouldClearPrimitives(param_1);
+  if ((char)uVar1 != '\0') {
+    iVar2 = CModeBlock_CreateAudioBuffer();
+    if (-1 < iVar2) {
+      uVar1 = FUN_00c44460(param_1,param_2,param_3);
+      return uVar1;
+    }
+    NPlayerGui::CDrawAutoPickups::ClearPrimitivesIfNecessary((CDrawAutoPickups *)&DAT_0143bb58);
+    uVar1 = extraout_EAX;
+  }
+  return uVar1 & 0xffffff00;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c43fd0 181 1
+@@CALLERS CDrawAutoPickups_ShouldRender
+@@CALLEES FUN_00c43de0
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_00c43fd0(int param_1,byte param_2)
+
+{
+  uint uVar1;
+  int iVar2;
+  uint uVar3;
+  
+  uVar3 = *(uint *)(param_1 + 0x10) & 0x7f;
+  if (uVar3 == 0) {
+    if ((*(int *)(param_1 + 0x50) == 0) && (iVar2 = FUN_00c43de0(), iVar2 != 0)) {
+      return iVar2;
+    }
+    if ((*(uint *)(param_1 + 0x10) & 0x7f) == 1) goto LAB_00c44032;
+    uVar1 = *(uint *)(param_1 + 0x10) & 0xffffff81 | 1;
+  }
+  else {
+    if (uVar3 != 8) goto LAB_00c44032;
+    uVar1 = *(uint *)(param_1 + 0x10) & 0xffffff90 | 0x10;
+  }
+  *(uint *)(param_1 + 0x10) = uVar1;
+  if (*(code **)(param_1 + 0xdc) != (code *)0x0) {
+    (**(code **)(param_1 + 0xdc))(param_1,uVar1 & 0xffff,*(undefined4 *)(param_1 + 0xe0));
+  }
+LAB_00c44032:
+  uVar1 = *(uint *)(param_1 + 0x10);
+  if (param_2 != ((byte)(uVar1 >> 8) & 1)) {
+    if (param_2 == 0) {
+      uVar1 = uVar1 & 0xfffffeff;
+    }
+    else {
+      uVar1 = uVar1 | 0x100;
+    }
+    *(uint *)(param_1 + 0x10) = uVar1;
+    if (uVar3 != 0) {
+      *(uint *)(param_1 + 0x14) = *(uint *)(param_1 + 0x14) | 1;
+    }
+    if (*(code **)(param_1 + 0xdc) != (code *)0x0) {
+      (**(code **)(param_1 + 0xdc))
+                (param_1,*(uint *)(param_1 + 0x10) & 0xffff,*(undefined4 *)(param_1 + 0xe0));
+    }
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44170 182 1
+@@CALLERS ~CAIStateGroup_CreatureUseCoverBase
+@@CALLEES SetQuestPersistentFlag, Thing_Cleanup, ~CExclusiveAssert, CConsoleVariable_Unregister, InformOfEvent, CCombatSequenceManager_ProcessAction
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c44170(CExclusiveAssert *param_1)
+
+{
+  char cVar1;
+  int iVar2;
+  CTCHeroStats *extraout_ECX;
+  CTCHeroStats *extraout_ECX_00;
+  CTCHeroStats *extraout_ECX_01;
+  CTCHeroStats *this;
+  CTCHeroStats *extraout_ECX_02;
+  CTCHeroStats *extraout_ECX_03;
+  undefined1 unaff_DI;
+  
+  cVar1 = (**(code **)(*(int *)param_1 + 8))();
+  this = extraout_ECX;
+  if (cVar1 != '\0') {
+    *(undefined4 *)(param_1 + 0xdc) = 0;
+    if (*(int *)(param_1 + 0x5c) != 0) {
+      CExclusiveAssert::~CExclusiveAssert(param_1);
+    }
+    Thing_Cleanup();
+    this = (CTCHeroStats *)0x0;
+    if (*(CItem **)(param_1 + 0x78) != (CItem *)0x0) {
+      NInventory::CItem::SetQuestPersistentFlag(*(CItem **)(param_1 + 0x78),(bool)unaff_DI);
+      *(undefined4 *)(param_1 + 0x78) = 0;
+      this = (CTCHeroStats *)0x0;
+      if (*(int **)(param_1 + 0x50) != (int *)0x0) {
+        iVar2 = (**(code **)(**(int **)(param_1 + 0x50) + 0xc))(param_1);
+        this = extraout_ECX_00;
+        if (iVar2 != 0) {
+          CCombatSequenceManager_ProcessAction(*(undefined4 *)(param_1 + 0x50));
+          *(undefined4 *)(param_1 + 0x50) = 0;
+          this = extraout_ECX_01;
+        }
+      }
+    }
+    if (*(int *)(param_1 + 0x50) != 0) {
+      CCombatSequenceManager_ProcessAction(*(int *)(param_1 + 0x50));
+      *(undefined4 *)(param_1 + 0x50) = 0;
+      this = extraout_ECX_02;
+    }
+    *(undefined4 *)(param_1 + 0xc) = 0xffffffff;
+  }
+  if ((*(uint *)(param_1 + 0xc) & 0x2000) != 0) {
+    if (DAT_0143bb70 != 0) {
+      CConsoleVariable_Unregister(*(undefined4 *)(param_1 + 0xf8));
+      this = extraout_ECX_03;
+    }
+    if (*(CBase **)(param_1 + 0xf4) != (CBase *)0x0) {
+      CTCHeroStats::InformOfEvent(this,*(CBase **)(param_1 + 0xf4));
+      *(undefined4 *)(param_1 + 0xf4) = 0;
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44270 73 1
+@@CALLERS CircularQueue_DequeueNext
+@@CALLEES SetQuestPersistentFlag
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00c44270(int *param_1,int param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  bool unaff_DI;
+  
+  piVar1 = (int *)(*param_1 + param_2 * 4);
+  if (*(int *)(*param_1 + param_2 * 4) == 0) {
+    return (uint)piVar1 & 0xffffff00;
+  }
+  param_1[5] = *piVar1;
+  NInventory::CItem::SetQuestPersistentFlag((CItem *)*piVar1,unaff_DI);
+  *(undefined4 *)(*param_1 + param_2 * 4) = 0;
+  iVar2 = param_1[1];
+  *(undefined4 *)(iVar2 + param_2 * 8) = 0;
+  *(undefined4 *)(iVar2 + 4 + param_2 * 8) = 0;
+  return CONCAT31((int3)((uint)iVar2 >> 8),1);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44360 100 1
+@@CALLERS 
+@@CALLEES InformOfEvent, ClearPrimitivesIfNecessary
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00c44360(CTCHeroStats *param_1,int param_2)
+
+{
+  undefined4 *extraout_EAX;
+  uint extraout_EAX_00;
+  uint uVar1;
+  int iVar2;
+  undefined4 *puVar3;
+  
+  CTCHeroStats::InformOfEvent(param_1,(CBase *)(param_2 * 0xc));
+  *(undefined4 **)param_1 = extraout_EAX;
+  if (extraout_EAX == (undefined4 *)0x0) {
+    NPlayerGui::CDrawAutoPickups::ClearPrimitivesIfNecessary((CDrawAutoPickups *)&DAT_0143bb58);
+    return extraout_EAX_00 & 0xffffff00;
+  }
+  *(undefined4 **)(param_1 + 4) = extraout_EAX + param_2;
+  puVar3 = extraout_EAX;
+  for (uVar1 = param_2 * 3 & 0x3fffffff; uVar1 != 0; uVar1 = uVar1 - 1) {
+    *puVar3 = 0;
+    puVar3 = puVar3 + 1;
+  }
+  for (iVar2 = 0; iVar2 != 0; iVar2 = iVar2 + -1) {
+    *(undefined1 *)puVar3 = 0;
+    puVar3 = (undefined4 *)((int)puVar3 + 1);
+  }
+  *(int *)(param_1 + 8) = param_2;
+  *(undefined4 *)(param_1 + 0xc) = 0;
+  *(undefined4 *)(param_1 + 0x10) = 0;
+  *(undefined4 *)(param_1 + 0x14) = 0;
+  return 1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44430 39 1
+@@CALLERS Audio_ProcessQueue_NavNode
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00c44430(int *param_1,uint param_2)
+
+{
+  uint uVar1;
+  
+  uVar1 = param_1[2];
+  if ((uVar1 != 0) && (param_2 < uVar1)) {
+    return CONCAT31((int3)((uint)*param_1 >> 8),*(int *)(*param_1 + param_2 * 4) != 0);
+  }
+  return uVar1 & 0xffffff00;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44460 228 1
+@@CALLERS 
+@@CALLEES GetAnimFilter, FrameUpdate, ClearPrimitivesIfNecessary
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00c44460(int *param_1,CModeBlock *param_2,undefined4 param_3,undefined4 param_4)
+
+{
+  int iVar1;
+  CAnimFilterBase *pCVar2;
+  uint extraout_EAX;
+  uint uVar3;
+  uint extraout_EAX_00;
+  uint extraout_EAX_01;
+  int iVar4;
+  int *piVar5;
+  int local_1c [7];
+  
+  pCVar2 = NCreatureMode::CModeBlock::GetAnimFilter(param_2);
+  piVar5 = local_1c;
+  for (iVar4 = 7; iVar4 != 0; iVar4 = iVar4 + -1) {
+    *piVar5 = *(int *)pCVar2;
+    pCVar2 = pCVar2 + 4;
+    piVar5 = piVar5 + 1;
+  }
+  if ((param_1[2] == 0) || (param_1[6] != 0)) {
+    if ((param_1[7] != local_1c[1]) || (param_1[6] != local_1c[0])) {
+      NPlayerGui::CDrawAutoPickups::ClearPrimitivesIfNecessary((CDrawAutoPickups *)&DAT_0143bb58);
+      return extraout_EAX_00 & 0xffffff00;
+    }
+  }
+  else {
+    param_1[6] = local_1c[0];
+    param_1[7] = local_1c[1];
+    param_1[8] = local_1c[2];
+  }
+  if (*(int *)(*param_1 + param_1[3] * 4) == 0) {
+    CCreatureAction_FireMissileWeapon::FrameUpdate((CCreatureAction_FireMissileWeapon *)param_2);
+    uVar3 = extraout_EAX_01;
+    if ((char)extraout_EAX_01 != '\0') {
+      *(CModeBlock **)(*param_1 + param_1[3] * 4) = param_2;
+      iVar4 = param_1[3];
+      iVar1 = param_1[1];
+      *(undefined4 *)(iVar1 + iVar4 * 8) = param_3;
+      *(undefined4 *)(iVar1 + 4 + iVar4 * 8) = param_4;
+      iVar4 = param_1[3] + 1;
+      param_1[3] = iVar4;
+      if (param_1[2] == iVar4) {
+        param_1[3] = 0;
+      }
+      return CONCAT31((int3)((uint)iVar4 >> 8),1);
+    }
+  }
+  else {
+    NPlayerGui::CDrawAutoPickups::ClearPrimitivesIfNecessary((CDrawAutoPickups *)&DAT_0143bb58);
+    uVar3 = extraout_EAX;
+  }
+  return uVar3 & 0xffffff00;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44580 42 1
+@@CALLERS 
+@@CALLEES CIcicleData
+@@STRINGS 
+@@DECOMP
+
+CIcicleData * __fastcall FUN_00c44580(CIcicleData *param_1)
+
+{
+  NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::CIcicleData::CIcicleData(param_1);
+  *(CIcicleData **)(param_1 + 0x11c) = param_1 + 0x128;
+  *(undefined ***)param_1 = &PTR_LAB_012b7b88;
+  *(CIcicleData **)(param_1 + 0x124) = param_1 + 0x168;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c448d0 198 1
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_00c448d0(int param_1)
+
+{
+  uint uVar1;
+  undefined4 *puVar2;
+  int iVar3;
+  
+  if ((*(uint *)(param_1 + 0xc) & 0x40000) != 0) {
+    *(int **)(param_1 + 0x108) = (int *)(param_1 + 0x118);
+    iVar3 = 0;
+    uVar1 = 1;
+    if (0 < DAT_0139ca04) {
+      puVar2 = (undefined4 *)(param_1 + 300);
+      do {
+        for (; (uVar1 & DAT_0139ca08) == 0; uVar1 = uVar1 << 1) {
+        }
+        puVar2[-1] = uVar1;
+        *puVar2 = 0x3f800000;
+        uVar1 = uVar1 << 1;
+        iVar3 = iVar3 + 1;
+        puVar2 = puVar2 + 2;
+      } while (iVar3 < DAT_0139ca04);
+    }
+    *(int *)(param_1 + 0x118) = DAT_0139ca04;
+  }
+  if ((*(uint *)(param_1 + 0xc) & 0x20000) != 0) {
+    *(int **)(param_1 + 0x10c) = (int *)(param_1 + 0x120);
+    iVar3 = 0;
+    uVar1 = 1;
+    if (0 < DAT_0139ca04) {
+      puVar2 = (undefined4 *)(param_1 + 0x16c);
+      do {
+        for (; (uVar1 & DAT_0139ca08) == 0; uVar1 = uVar1 << 1) {
+        }
+        puVar2[-1] = uVar1;
+        *puVar2 = 0;
+        uVar1 = uVar1 << 1;
+        iVar3 = iVar3 + 1;
+        puVar2 = puVar2 + 2;
+      } while (iVar3 < DAT_0139ca04);
+    }
+    *(int *)(param_1 + 0x120) = DAT_0139ca04;
+  }
+  return 1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44ab0 134 1
+@@CALLERS 
+@@CALLEES InputState_GetPressedBitwise, CTCInventoryClothing_AddClothing, TurnToPointer, CAtmosProcess, Render_ClampAlphaValue, CNavigationLayer
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c44ab0(CMouseCursor *param_1)
+
+{
+  undefined4 uVar1;
+  float10 extraout_ST0;
+  CAtmosProcess local_50 [28];
+  undefined4 local_34;
+  undefined4 local_30;
+  undefined4 local_2c;
+  undefined4 local_28;
+  undefined4 local_24;
+  CNavigationLayer local_20 [16];
+  undefined4 local_10;
+  undefined2 local_c;
+  undefined4 local_8;
+  undefined4 local_4;
+  
+  CAtmosProcess::CAtmosProcess(local_50);
+  local_34 = 0;
+  local_30 = 0;
+  local_2c = 0x3f800000;
+  local_28 = 0x3f800000;
+  local_24 = 0;
+  CNavQuadTree::CNavigationLayer::CNavigationLayer(local_20);
+  local_10 = 0;
+  local_c = 0;
+  local_8 = 0;
+  local_4 = 0;
+  CTCInventoryClothing_AddClothing(local_50,0,0);
+  uVar1 = InputState_GetPressedBitwise(0);
+  NUISystem::CMouseCursor::TurnToPointer(param_1);
+  Render_ClampAlphaValue((float)extraout_ST0,uVar1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44b50 34 1
+@@CALLERS 
+@@CALLEES GetKey, GetFramesRemaining
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c44b50(int param_1,EInputKey param_2)
+
+{
+  EInputKey EVar1;
+  
+  EVar1 = CInputEvent::GetKey((CInputEvent *)(param_1 + 0x80));
+  if (param_2 < EVar1) {
+    CCreatureActionBase::GetFramesRemaining((CCreatureActionBase *)(param_1 + 0x80));
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44b80 59 1
+@@CALLERS ~_Pair_base<CCharString_const_,CScriptGameResourceObjectScriptedThingBase>
+@@CALLEES Render
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c44b80(undefined4 *param_1)
+
+{
+  CEngineComponentRenderParams *pCVar1;
+  
+  pCVar1 = (CEngineComponentRenderParams *)(**(code **)(param_1[0x14] + 0x2c))();
+  while (pCVar1 != (CEngineComponentRenderParams *)0x0) {
+    (**(code **)(param_1[0x14] + 0x20))(pCVar1);
+    CEngineResourceManager::Render((CEngineResourceManager *)**(undefined4 **)*param_1,pCVar1);
+    pCVar1 = (CEngineComponentRenderParams *)(**(code **)(param_1[0x14] + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44bd0 100 1
+@@CALLERS ~CTCShotDefinitionFireballSpell
+@@CALLEES GetKey, FUN_00c61d10, ResolveMovementBandType
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c44bd0(undefined4 *param_1)
+
+{
+  CThingPlayerCreature *this;
+  EInputKey EVar1;
+  
+  this = (CThingPlayerCreature *)(**(code **)(param_1[8] + 0x2c))();
+  while ((this != (CThingPlayerCreature *)0x0 &&
+         (EVar1 = CInputEvent::GetKey((CInputEvent *)(*(int *)**(undefined4 **)*param_1 + 0x70)),
+         *(EInputKey *)(this + 4) <= EVar1))) {
+    (**(code **)(param_1[8] + 0x20))(this);
+    if (*(char *)(**(int **)*param_1 + 0xcd) == '\0') {
+      FUN_00c61d10(param_1);
+    }
+    CThingPlayerCreature::ResolveMovementBandType(this);
+    this = (CThingPlayerCreature *)(**(code **)(param_1[8] + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44c50 135 1
+@@CALLERS 
+@@CALLEES CThingFilter_SolidToThing, operator_new, ResolveMovementBandType
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c44c50(int param_1)
+
+{
+  int iVar1;
+  CThingFilter_SolidToThing *this;
+  CThingPlayerCreature *this_00;
+  uint uVar2;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_0121533b;
+  local_c = ExceptionList;
+  iVar1 = *(int *)(*(int *)(param_1 + 4) + 8);
+  uVar2 = 0;
+  ExceptionList = &local_c;
+  if (*(int *)(iVar1 + 0x1c) != 0) {
+    do {
+      this = operator_new(0x10);
+      local_4 = 0;
+      if (this == (CThingFilter_SolidToThing *)0x0) {
+        this_00 = (CThingPlayerCreature *)0x0;
+      }
+      else {
+        this_00 = (CThingPlayerCreature *)
+                  CThingFilter_SolidToThing::CThingFilter_SolidToThing
+                            (this,*(CThing **)(*(int *)(iVar1 + 0x14) + uVar2 * 4));
+      }
+      local_4 = 0xffffffff;
+      CThingPlayerCreature::ResolveMovementBandType(this_00);
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < *(uint *)(iVar1 + 0x1c));
+  }
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44ce0 68 1
+@@CALLERS 
+@@CALLEES FUN_00c2a3d0
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c44ce0(int param_1)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  uint uVar3;
+  
+  iVar1 = *(int *)(*(int *)(param_1 + 4) + 8);
+  uVar3 = 0;
+  if (*(int *)(iVar1 + 0x10) != 0) {
+    do {
+      uVar2 = FUN_00c2a3d0(*(undefined4 *)(*(int *)(iVar1 + 8) + uVar3 * 4));
+      (**(code **)(*(int *)(param_1 + 0x50) + 0x24))(uVar2);
+      uVar3 = uVar3 + 1;
+    } while (uVar3 < *(uint *)(iVar1 + 0x10));
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44d30 75 1
+@@CALLERS ~_Pair_base<CCharString_const_,CScriptGameResourceObjectScriptedThingBase>
+@@CALLEES GetItemThings, operator_delete, $E2
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_00c44d30(vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *param_1)
+
+{
+  CItem *this;
+  
+  this = (CItem *)(**(code **)(*(int *)(param_1 + 0x20) + 0x2c))();
+  while (this != (CItem *)0x0) {
+    (**(code **)(*(int *)(param_1 + 0x20) + 0x20))(this);
+    NInventory::CItem::GetItemThings(this,param_1);
+    if (this != (CItem *)0x0) {
+      _E2();
+      operator_delete(this);
+    }
+    this = (CItem *)(**(code **)(*(int *)(param_1 + 0x20) + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44dc0 103 1
+@@CALLERS ~CTCShotDefinitionFireballSpell
+@@CALLEES CSBAgents, FUN_00c44ab0, CTCWeapon_GetDamageValue
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c44dc0(int param_1)
+
+{
+  CSteeringAgent *unaff_ESI;
+  float10 fVar1;
+  float10 fVar2;
+  CSBAgents local_14 [4];
+  void *pvStack_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_0121534d;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  fVar1 = (float10)CTCWeapon_GetDamageValue();
+  fVar2 = (float10)FUN_00c44ab0();
+  CSBAgents::CSBAgents
+            (local_14,(vector<CSteeringAgent_const*,std::allocator<CSteeringAgent_const*>_> *)
+                      (float)(fVar2 * (float10)(float)fVar1),unaff_ESI);
+  local_4 = 0;
+  (**(code **)(*(int *)(param_1 + 0x50) + 0x28))(local_14);
+  ExceptionList = pvStack_10;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44e30 72 1
+@@CALLERS ~CTCShotDefinitionFireballSpell
+@@CALLEES CSBAgents
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_00c44e30(vector<CSteeringAgent_const*,std::allocator<CSteeringAgent_const*>_> *param_1)
+
+{
+  int extraout_EDX;
+  CSteeringAgent *in_stack_ffffffec;
+  void *pvStack_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_0121535f;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CSBAgents::CSBAgents((CSBAgents *)&stack0xffffffec,param_1,in_stack_ffffffec);
+  local_4 = 0;
+  (**(code **)(*(int *)(extraout_EDX + 0x20) + 0x28))(&stack0xffffffec);
+  ExceptionList = pvStack_10;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c44eb0 195 1
+@@CALLERS Alloc
+@@CALLEES FUN_00c44c50, CActionParamString, RedblackTree_NodeCtor, FUN_00c36cf0, NScript_InitializeEventSubscription, FUN_00c61b90, DrawGetEnvironment, FUN_00c44ce0
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_00c44eb0(int *param_1,int param_2,int param_3)
+
+{
+  CIDrawEnvironment *pCVar1;
+  undefined4 uVar2;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012153a0;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  *param_1 = param_2;
+  param_1[1] = param_3;
+  pCVar1 = CWorld::DrawGetEnvironment(*(CWorld **)(param_3 + 8));
+  NScript_InitializeEventSubscription(pCVar1);
+  local_4 = 0;
+  NUISystem::CActionParamString::CActionParamString
+            ((CActionParamString *)(param_1 + 8),(CWideString *)(param_1 + 2));
+  param_1[0x15] = (int)(param_1 + 0x16);
+  local_4._0_1_ = 2;
+  param_1[0x14] = (int)&PTR_LAB_012b7ce8;
+  RedblackTree_NodeCtor(0);
+  local_4._0_1_ = 3;
+  uVar2 = FUN_00c36cf0(*(undefined4 *)(*param_1 + 0x164));
+  FUN_00c61b90(uVar2);
+  local_4 = CONCAT31(local_4._1_3_,4);
+  (**(code **)(*(int *)(*param_1 + 0x14) + 0x24))(param_1);
+  FUN_00c44c50();
+  FUN_00c44ce0();
+  ExceptionList = param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c45810 142 1
+@@CALLERS _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+@@CALLEES Math_Vector3Length, OnBeginDrag
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c45810(int param_1)
+
+{
+  int iVar1;
+  float10 fVar2;
+  CGuiWindow local_c [12];
+  
+  param_1 = param_1 + 0x14;
+  iVar1 = 8;
+  do {
+    CGuiWindow::OnBeginDrag(local_c,(C2DVector *)(param_1 + -8));
+    fVar2 = (float10)Math_Vector3Length();
+    if (fVar2 < (float10)*(float *)(param_1 + 4)) {
+      *(float *)(param_1 + 4) = (float)fVar2;
+    }
+    param_1 = param_1 + 0x1c;
+    iVar1 = iVar1 + -1;
+  } while (iVar1 != 0);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c45f30 682 1
+@@CALLERS 
+@@CALLEES GetNewCameraPosFromOcclusionParams, Matrix_SetIdentityRotation, CQuadric_AccumulateAll
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_00c45f30(undefined4 *param_1,float param_2)
+
+{
+  undefined4 *puVar1;
+  C3DVector *unaff_EDI;
+  undefined4 local_18;
+  undefined4 local_14;
+  undefined4 local_10;
+  C3DVector local_c [12];
+  
+  *param_1 = 0;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  param_1[3] = 0;
+  param_1[4] = 0;
+  param_1[5] = 0;
+  param_1[7] = 0;
+  param_1[8] = 0;
+  param_1[9] = 0;
+  param_1[10] = 0;
+  param_1[0xb] = 0;
+  param_1[0xc] = 0;
+  param_1[0xe] = 0;
+  param_1[0xf] = 0;
+  param_1[0x10] = 0;
+  param_1[0x11] = 0;
+  param_1[0x12] = 0;
+  param_1[0x13] = 0;
+  param_1[0x15] = 0;
+  param_1[0x16] = 0;
+  param_1[0x17] = 0;
+  param_1[0x18] = 0;
+  param_1[0x19] = 0;
+  param_1[0x1a] = 0;
+  param_1[0x1c] = 0;
+  param_1[0x1d] = 0;
+  param_1[0x1e] = 0;
+  param_1[0x1f] = 0;
+  param_1[0x20] = 0;
+  param_1[0x21] = 0;
+  param_1[0x23] = 0;
+  param_1[0x24] = 0;
+  param_1[0x25] = 0;
+  param_1[0x26] = 0;
+  param_1[0x27] = 0;
+  param_1[0x28] = 0;
+  param_1[0x2a] = 0;
+  param_1[0x2b] = 0;
+  param_1[0x2c] = 0;
+  param_1[0x2d] = 0;
+  param_1[0x2e] = 0;
+  param_1[0x2f] = 0;
+  param_1[0x31] = 0;
+  param_1[0x32] = 0;
+  param_1[0x33] = 0;
+  param_1[0x34] = 0;
+  param_1[0x35] = 0;
+  param_1[0x36] = 0;
+  *(undefined1 *)(param_1 + 0x44) = 0;
+  Matrix_SetIdentityRotation(0);
+  param_1[6] = 0;
+  param_1[0xd] = 0;
+  param_1[0x14] = 0;
+  param_1[0x1b] = 0;
+  param_1[0x22] = 0;
+  param_1[0x29] = 0;
+  param_1[0x30] = 0;
+  param_1[0x37] = 0;
+  local_18 = 0;
+  local_14 = 0;
+  local_10 = 0;
+  puVar1 = (undefined4 *)
+           _anon_49B2E1A3::GetNewCameraPosFromOcclusionParams
+                     (local_c,(C3DVector *)&local_18,param_2,unaff_EDI);
+  *param_1 = *puVar1;
+  param_1[1] = puVar1[1];
+  param_1[2] = puVar1[2];
+  local_18 = 0;
+  local_14 = 0;
+  local_10 = 0x3f800000;
+  puVar1 = (undefined4 *)
+           _anon_49B2E1A3::GetNewCameraPosFromOcclusionParams
+                     (local_c,(C3DVector *)&local_18,param_2,unaff_EDI);
+  param_1[7] = *puVar1;
+  param_1[8] = puVar1[1];
+  param_1[9] = puVar1[2];
+  local_18 = 0;
+  local_14 = 0x3f800000;
+  local_10 = 0;
+  puVar1 = (undefined4 *)
+           _anon_49B2E1A3::GetNewCameraPosFromOcclusionParams
+                     (local_c,(C3DVector *)&local_18,param_2,unaff_EDI);
+  param_1[0xe] = *puVar1;
+  param_1[0xf] = puVar1[1];
+  param_1[0x10] = puVar1[2];
+  local_18 = 0;
+  local_14 = 0x3f800000;
+  local_10 = 0x3f800000;
+  puVar1 = (undefined4 *)
+           _anon_49B2E1A3::GetNewCameraPosFromOcclusionParams
+                     (local_c,(C3DVector *)&local_18,param_2,unaff_EDI);
+  param_1[0x15] = *puVar1;
+  param_1[0x16] = puVar1[1];
+  param_1[0x17] = puVar1[2];
+  local_18 = 0x3f800000;
+  local_14 = 0;
+  local_10 = 0;
+  puVar1 = (undefined4 *)
+           _anon_49B2E1A3::GetNewCameraPosFromOcclusionParams
+                     (local_c,(C3DVector *)&local_18,param_2,unaff_EDI);
+  param_1[0x1c] = *puVar1;
+  param_1[0x1d] = puVar1[1];
+  param_1[0x1e] = puVar1[2];
+  local_18 = 0x3f800000;
+  local_14 = 0;
+  local_10 = 0x3f800000;
+  puVar1 = (undefined4 *)
+           _anon_49B2E1A3::GetNewCameraPosFromOcclusionParams
+                     (local_c,(C3DVector *)&local_18,param_2,unaff_EDI);
+  param_1[0x23] = *puVar1;
+  param_1[0x24] = puVar1[1];
+  param_1[0x25] = puVar1[2];
+  local_18 = 0x3f800000;
+  local_14 = 0x3f800000;
+  local_10 = 0;
+  puVar1 = (undefined4 *)
+           _anon_49B2E1A3::GetNewCameraPosFromOcclusionParams
+                     (local_c,(C3DVector *)&local_18,param_2,unaff_EDI);
+  param_1[0x2a] = *puVar1;
+  param_1[0x2b] = puVar1[1];
+  param_1[0x2c] = puVar1[2];
+  local_18 = 0x3f800000;
+  local_14 = 0x3f800000;
+  local_10 = 0x3f800000;
+  puVar1 = (undefined4 *)
+           _anon_49B2E1A3::GetNewCameraPosFromOcclusionParams
+                     (local_c,(C3DVector *)&local_18,param_2,unaff_EDI);
+  param_1[0x31] = *puVar1;
+  param_1[0x32] = puVar1[1];
+  param_1[0x33] = puVar1[2];
+  local_18 = 0;
+  local_14 = 0;
+  local_10 = 0;
+  CQuadric_AccumulateAll(&local_18);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c461e0 163 1
+@@CALLERS 
+@@CALLEES CMatrix::UpdateInversePerspective
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c461e0(int param_1,float *param_2,undefined4 param_3)
+
+{
+  float fVar1;
+  float fVar2;
+  float fVar3;
+  
+  fVar1 = *param_2;
+  fVar2 = (*(float *)(param_1 + 0x88) - *(float *)(param_1 + 0x18)) * fVar1 +
+          *(float *)(param_1 + 0x18);
+  fVar3 = (*(float *)(param_1 + 0xa4) - *(float *)(param_1 + 0x34)) * fVar1 +
+          *(float *)(param_1 + 0x34);
+  fVar2 = (((*(float *)(param_1 + 0xc0) - *(float *)(param_1 + 0x50)) * fVar1 +
+           *(float *)(param_1 + 0x50)) - fVar2) * param_2[1] + fVar2;
+  CMatrix__UpdateInversePerspective
+            ((((((*(float *)(param_1 + 0xdc) - *(float *)(param_1 + 0x6c)) * fVar1 +
+                *(float *)(param_1 + 0x6c)) - fVar3) * param_2[1] + fVar3) - fVar2) * param_2[2] +
+             fVar2,0,param_3);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c46400 176 1
+@@CALLERS 
+@@CALLEES operator_new[], operator(), DrawGetSeaLevel
+@@STRINGS 
+@@DECOMP
+
+float * __thiscall FUN_00c46400(float *param_1,CMap *param_2)
+
+{
+  void *pvVar1;
+  bool bVar2;
+  undefined3 extraout_var;
+  void *pvVar3;
+  undefined4 *puVar4;
+  float unaff_EDI;
+  float fVar5;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01215548;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  fVar5 = CMap::DrawGetSeaLevel(param_2,unaff_EDI);
+  *param_1 = fVar5;
+  bVar2 = NScript::CIsThingAlive::operator()((CIsThingAlive *)param_2);
+  fVar5 = (float)CONCAT31(extraout_var,bVar2);
+  param_1[1] = fVar5;
+  param_1[2] = 0.0;
+  pvVar3 = operator_new__((int)fVar5 * 0xc);
+  if (pvVar3 == (void *)0x0) {
+    pvVar3 = (void *)0x0;
+  }
+  else if (-1 < (int)fVar5 + -1) {
+    puVar4 = (undefined4 *)((int)pvVar3 + 4);
+    do {
+      *puVar4 = 0;
+      puVar4[1] = 0;
+      puVar4 = puVar4 + 3;
+      fVar5 = (float)((int)fVar5 + -1);
+    } while (fVar5 != 0.0);
+  }
+  pvVar1 = (void *)param_1[1];
+  param_1[2] = (float)pvVar3;
+  local_4 = 0;
+  NScript::CIsThingAlive::operator()((CIsThingAlive *)param_2);
+  ExceptionList = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c46900 149 1
+@@CALLERS CGuiVarTransferFloat
+@@CALLEES ceil, __ftol2, FUN_00c62090
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+undefined4 __thiscall FUN_00c46900(undefined4 param_1,float param_2,undefined4 *param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  float10 fVar5;
+  
+  ceil((double)(param_2 * _DAT_0125b254));
+  iVar2 = __ftol2();
+  iVar3 = -iVar2;
+  iVar1 = iVar3;
+  iVar4 = iVar3;
+  if (-iVar2 != iVar2 && SBORROW4(iVar3,iVar2) == iVar2 * -2 < 0) {
+    return param_1;
+  }
+  do {
+    for (; iVar1 <= iVar2; iVar1 = iVar1 + 1) {
+      fVar5 = (float10)FUN_00c62090();
+      if (fVar5 < (float10)param_2 != (fVar5 == (float10)param_2)) {
+        (**(code **)*param_3)();
+      }
+    }
+    iVar4 = iVar4 + 1;
+    iVar1 = iVar3;
+  } while (iVar4 <= iVar2);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c46e20 41 1
+@@CALLERS ComparisonSort_FloatCompare
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_00c46e20(float *param_1,float *param_2)
+
+{
+  byte bVar1;
+  
+  if (*param_1 == *param_2) {
+    bVar1 = param_1[1] < param_2[1] |
+            (byte)((ushort)((ushort)(NAN(param_1[1]) || NAN(param_2[1])) << 10) >> 8);
+  }
+  else {
+    bVar1 = *param_1 < *param_2 |
+            (byte)((ushort)((ushort)(NAN(*param_1) || NAN(*param_2)) << 10) >> 8);
+  }
+  if ((POPCOUNT(bVar1) & 1U) != 0) {
+    return 1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c46f90 83 1
+@@CALLERS 
+@@CALLEES FUN_00c62530, GetKey, ResolveMovementBandType
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c46f90(int *param_1)
+
+{
+  CThingPlayerCreature *this;
+  EInputKey EVar1;
+  
+  this = (CThingPlayerCreature *)(**(code **)(param_1[2] + 0x2c))();
+  while ((this != (CThingPlayerCreature *)0x0 &&
+         (EVar1 = CInputEvent::GetKey((CInputEvent *)(**(int **)(*param_1 + 4) + 0x70)),
+         *(EInputKey *)(this + 4) <= EVar1))) {
+    (**(code **)(param_1[2] + 0x20))(this);
+    FUN_00c62530(param_1);
+    CThingPlayerCreature::ResolveMovementBandType(this);
+    this = (CThingPlayerCreature *)(**(code **)(param_1[2] + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c47050 133 1
+@@CALLERS 
+@@CALLEES Close, ResolveMovementBandType, operator_new
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c47050(int param_1)
+
+{
+  int iVar1;
+  CDataInputStream *this;
+  CThingPlayerCreature *extraout_EAX;
+  CThingPlayerCreature *this_00;
+  uint uVar2;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_0121561b;
+  local_c = ExceptionList;
+  iVar1 = *(int *)(*(int *)(param_1 + 4) + 8);
+  uVar2 = 0;
+  ExceptionList = &local_c;
+  if (*(int *)(iVar1 + 0x1c) != 0) {
+    do {
+      this = operator_new(0x18);
+      local_4 = 0;
+      if (this == (CDataInputStream *)0x0) {
+        this_00 = (CThingPlayerCreature *)0x0;
+      }
+      else {
+        CDataInputStream::Close(this);
+        this_00 = extraout_EAX;
+      }
+      local_4 = 0xffffffff;
+      CThingPlayerCreature::ResolveMovementBandType(this_00);
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < *(uint *)(iVar1 + 0x1c));
+  }
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c470e0 133 1
+@@CALLERS 
+@@CALLEES operator_new, CThingFilter_SolidToThing
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c470e0(int param_1)
+
+{
+  int iVar1;
+  CThingFilter_SolidToThing *this;
+  undefined4 uVar2;
+  uint uVar3;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01215630;
+  local_c = ExceptionList;
+  iVar1 = *(int *)(*(int *)(param_1 + 4) + 8);
+  if (*(int *)(iVar1 + 0x10) != 0) {
+    uVar3 = 0;
+    ExceptionList = &local_c;
+    do {
+      this = operator_new(8);
+      local_4 = 0;
+      if (this == (CThingFilter_SolidToThing *)0x0) {
+        uVar2 = 0;
+      }
+      else {
+        uVar2 = CThingFilter_SolidToThing::CThingFilter_SolidToThing
+                          (this,*(CThing **)(*(int *)(iVar1 + 8) + uVar3 * 4));
+      }
+      local_4 = 0xffffffff;
+      (**(code **)(*(int *)(param_1 + 0x38) + 0x24))(uVar2);
+      uVar3 = uVar3 + 1;
+    } while (uVar3 < *(uint *)(iVar1 + 0x10));
+  }
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c47170 75 1
+@@CALLERS ~CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+@@CALLEES operator_delete, GetItemThings, $E2
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_00c47170(vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *param_1)
+
+{
+  CItem *this;
+  
+  this = (CItem *)(**(code **)(*(int *)(param_1 + 8) + 0x2c))();
+  while (this != (CItem *)0x0) {
+    (**(code **)(*(int *)(param_1 + 8) + 0x20))(this);
+    NInventory::CItem::GetItemThings(this,param_1);
+    if (this != (CItem *)0x0) {
+      _E2();
+      operator_delete(this);
+    }
+    this = (CItem *)(**(code **)(*(int *)(param_1 + 8) + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c471c0 75 1
+@@CALLERS ~CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+@@CALLEES operator_delete, $E2, GetItemThings
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_00c471c0(vector<std::pair<long,long>,std::allocator<std::pair<long,long>_>_> *param_1)
+
+{
+  CItem *this;
+  
+  this = (CItem *)(**(code **)(*(int *)(param_1 + 0x38) + 0x2c))();
+  while (this != (CItem *)0x0) {
+    (**(code **)(*(int *)(param_1 + 0x38) + 0x20))(this);
+    NInventory::CItem::GetItemThings(this,param_1);
+    if (this != (CItem *)0x0) {
+      _E2();
+      operator_delete(this);
+    }
+    this = (CItem *)(**(code **)(*(int *)(param_1 + 0x38) + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c47210 72 1
+@@CALLERS 
+@@CALLEES CSBAgents
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_00c47210(vector<CSteeringAgent_const*,std::allocator<CSteeringAgent_const*>_> *param_1)
+
+{
+  int extraout_EDX;
+  CSteeringAgent *in_stack_ffffffec;
+  void *pvStack_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01215642;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CSBAgents::CSBAgents((CSBAgents *)&stack0xffffffec,param_1,in_stack_ffffffec);
+  local_4 = 0;
+  (**(code **)(*(int *)(extraout_EDX + 0x38) + 0x28))(&stack0xffffffec);
+  ExceptionList = pvStack_10;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c47260 72 1
+@@CALLERS 
+@@CALLEES CSBAgents
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_00c47260(vector<CSteeringAgent_const*,std::allocator<CSteeringAgent_const*>_> *param_1)
+
+{
+  int extraout_EDX;
+  CSteeringAgent *in_stack_ffffffec;
+  void *pvStack_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01215654;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CSBAgents::CSBAgents((CSBAgents *)&stack0xffffffec,param_1,in_stack_ffffffec);
+  local_4 = 0;
+  (**(code **)(*(int *)(extraout_EDX + 8) + 0x28))(&stack0xffffffec);
+  ExceptionList = pvStack_10;
+  return;
+}
+
+
+@@ENDFUNC

@@ -1,0 +1,3 @@
+rows=63540
+enum_count=63
+source=C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\data\Defs

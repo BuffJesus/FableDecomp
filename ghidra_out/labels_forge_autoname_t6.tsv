@@ -1,0 +1,468 @@
+004048e0	Identity_ReturnArg	autoname-t6 [medium]: returns param_1 unchanged; trivial identity/passthrough function
+0042a58d	RBTreeIterator_MoveToMax_A	autoname-t6 [medium]: *param_1 = RBTree::GetMaxNode(*param_1); tree iterator advance-to-max thunk
+0042a59e	RBTreeIterator_MoveToMax_B	autoname-t6 [medium]: *param_1 = RBTree::GetMaxNode(*param_1); identical iterator advance-to-max thunk
+0042a5af	RBTreeIterator_MoveToMax_C	autoname-t6 [medium]: *param_1 = RBTree::GetMaxNode(*param_1); identical iterator advance-to-max thunk
+0042a5c0	RBTreeIterator_MoveToMax_D	autoname-t6 [medium]: *param_1 = RBTree::GetMaxNode(*param_1); identical iterator advance-to-max thunk
+0042a5d1	RBTree_Iterator_SetToMaxNode_0042a5d1	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores result back to *param_1 — rightmost-node iterator step
+0042a5e2	RBTree_Iterator_SetToMaxNode_0042a5e2	autoname-t6 [medium]: identical: uVar1=RBTree__GetMaxNode(*param_1); *param_1=uVar1 — RBTree iterator to max node
+004368e0	StdList_Construct_004368e0	autoname-t6 [medium]: malloc(0xc) then node->next=node->prev=node (circular sentinel), stored to *param_1 — std::list default ctor
+004369e0	StdList_Construct_004369e0	autoname-t6 [medium]: identical malloc(0xc) circular self-linked sentinel node init
+0043fc20	StdList_Construct_0043fc20	autoname-t6 [medium]: malloc(0x20) self-linked next/prev sentinel node — std::list ctor variant
+0043fc40	StdList_Construct_0043fc40	autoname-t6 [medium]: malloc(0x18) self-linked next/prev sentinel node — std::list ctor variant
+00440c90	StdList_Construct_00440c90	autoname-t6 [medium]: malloc(0x20) self-linked next/prev sentinel node — std::list ctor variant
+00440cd0	StdList_Construct_00440cd0	autoname-t6 [medium]: malloc(0x18) self-linked next/prev sentinel node — std::list ctor variant
+0044b950	StdList_Construct_0044b950	autoname-t6 [medium]: malloc(0xc) self-linked next/prev sentinel node — std::list ctor
+0044b9f0	StdList_Construct_0044b9f0	autoname-t6 [medium]: malloc(0xc) self-linked next/prev sentinel node — std::list ctor
+004c5c40	StdList_Construct_004c5c40	autoname-t6 [medium]: malloc(0x18) self-linked next/prev sentinel node — std::list ctor
+004c67d0	StdTree_Construct_004c67d0	autoname-t6 [medium]: malloc(0x1c) header node: size=0, parent=0, left=right=head — std::_Tree (map/set) ctor
+004c6af0	StdTree_Construct_004c6af0	autoname-t6 [medium]: malloc(0x1c) header node with size=0, left=right=head — std::_Tree ctor
+004cc200	StdList_Construct_004cc200	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node — std::list ctor
+004cc260	StdList_Construct_004cc260	autoname-t6 [medium]: malloc(0x14) self-linked sentinel node — std::list ctor
+004cc800	StdList_Construct_004cc800	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node — std::list ctor
+004ccc10	StdList_Construct_004ccc10	autoname-t6 [medium]: malloc(0x14) self-linked sentinel node — std::list ctor
+005155f0	StdList_ConstructMember	autoname-t6 [medium]: malloc(0x18) self-linked sentinel node stored at param_1+8 — embedded std::list member ctor
+005159a0	StdTree_Construct_005159a0	autoname-t6 [medium]: malloc(0x14) header node: size=0, left=right=head — std::_Tree ctor
+00516e80	StdList_Construct_00516e80	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node — std::list ctor
+00517810	StdTree_Construct_00517810	autoname-t6 [medium]: malloc(0x14) header node: size=0, left=right=head — std::_Tree ctor
+0051a040	StdTree_Construct_0051a040	autoname-t6 [medium]: malloc(0x14) header node (size=0, left=right=head) plus extra fields [3..6]=0 — std::_Tree ctor with owner fields
+005283a0	StdList_Construct_005283a0	autoname-t6 [medium]: malloc(0x10) self-linked sentinel node — std::list ctor
+00528c20	StdList_Construct_00528c20	autoname-t6 [medium]: malloc(0x10) self-linked sentinel node — std::list ctor
+00528c60	StdTree_Construct_00528c60	autoname-t6 [medium]: malloc(0x28) header node: size=0, left=right=head — std::_Tree ctor
+00528cf0	StdTree_Construct_00528cf0	autoname-t6 [medium]: malloc(0x20) header node: size=0, left=right=head — std::_Tree ctor
+00528d80	StdTree_Construct_00528d80	autoname-t6 [medium]: malloc(0x20) header node: size=0, left=right=head — std::_Tree ctor
+00528dc0	StdTree_Construct_00528dc0	autoname-t6 [medium]: malloc(0x24) header node: size=0, left=right=head — std::_Tree ctor
+00528e50	StdTree_Construct_00528e50	autoname-t6 [medium]: malloc(0x20) header node: size=0, left=right=head — std::_Tree ctor
+00567ea0	StdVector_Construct	autoname-t6 [medium]: zeroes three consecutive pointer fields (begin/end/cap) — std::vector default ctor
+0056a580	StdTree_Construct_0056a580	autoname-t6 [medium]: malloc(0x20) header node: size=0, left=right=head — std::_Tree ctor
+0056a5c0	StdTree_Destruct	autoname-t6 [medium]: if size!=0 calls TreeNode_DestructWithCCharString to free nodes then free(head) — std::_Tree (map<CCharString,..>) dtor
+0056d2c0	StdTree_Construct_0056d2c0	autoname-t6 [medium]: malloc(0x34) header node: size=0, left=right=head — std::_Tree ctor
+0056d350	StdTree_Construct_0056d350	autoname-t6 [medium]: malloc(0x20) header node: size=0, left=right=head — std::_Tree ctor
+0056d390	StdTree_Construct_0056d390	autoname-t6 [medium]: malloc(0x18) header node: size=0, left=right=head — std::_Tree ctor
+0056ddc0	StdTree_Construct_0056ddc0	autoname-t6 [medium]: malloc(0x34) header node: size=0, left=right=head — std::_Tree ctor
+0059adcd	RBTree_Iterator_SetToMaxNode_0059adcd	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005b198d	RBTree_Iterator_SetToMaxNode_005b198d	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005b199e	RBTree_Iterator_SetToMaxNode_005b199e	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005b19af	RBTree_Iterator_SetToMaxNode_005b19af	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005b19c0	RBTree_Iterator_SetToMaxNode_005b19c0	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005ba88b	RBTree_Iterator_SetToMaxNode_005ba88b	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005ba89c	RBTree_Iterator_SetToMaxNode_005ba89c	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005ba8ad	RBTree_Iterator_SetToMaxNode_005ba8ad	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005ba8be	RBTree_Iterator_SetToMaxNode_005ba8be	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005cbfe9	RBTree_Iterator_SetToMaxNode_005cbfe9	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005cc530	Math_RoundToDecimalPlaces	autoname-t6 [medium]: builds 10^param_1 by repeated multiply of a constant, then ROUND(x*10^n)/10^n — decimal-place rounding
+005d839d	RBTree_Iterator_SetToMaxNode_005d839d	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005e0b00	StdTree_Construct_005e0b00	autoname-t6 [medium]: malloc(0x18) header node: size=0, left=right=head — std::_Tree ctor
+005e3080	StdTree_Construct_005e3080	autoname-t6 [medium]: malloc(0x18) header node: size=0, left=right=head — std::_Tree ctor
+005e8ff0	StdTree_Construct_005e8ff0	autoname-t6 [medium]: malloc(0x18) header node: size=0, left=right=head — std::_Tree ctor
+005e9320	StdTree_Construct_005e9320	autoname-t6 [medium]: malloc(0x18) header node: size=0, left=right=head — std::_Tree ctor
+005f82d9	RBTree_Iterator_SetToMaxNode_005f82d9	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005f82ea	RBTree_Iterator_SetToMaxNode_005f82ea	autoname-t6 [medium]: calls RBTree::GetMaxNode(*param_1) and stores back — rightmost-node iterator step
+005f8944	StdList_Construct_005f8944	autoname-t6 [medium]: malloc(0xc) self-linked next/prev sentinel node — std::list ctor
+005f8f50	LinkedList_PushBack	autoname-t6 [medium]: thiscall calling LinkedList_InsertNodeBefore(&param_2,*param_1,param_2) — insert before head = append
+005f8f6f	Lua_PushCClosure_005f8f6f	autoname-t6 [medium]: Thin wrapper forwarding self/args to luaV_Cclosure (Lua C-closure push)
+006152c0	StdList_InitEmpty_006152c0	autoname-t6 [medium]: malloc(0x10) then node->next=node->prev=node, store at *param_1: std::list empty-sentinel ctor
+00615340	StdList_InitEmpty_00615340	autoname-t6 [medium]: malloc(0xc) circular self-linked sentinel node stored at *param_1: std::list ctor
+006153a0	StdList_InitEmpty_006153a0	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+00615400	StdList_InitEmpty_00615400	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+00615460	StdList_InitEmpty_00615460	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+006154c0	StdList_InitEmpty_006154c0	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+00616790	StdList_InitEmpty_00616790	autoname-t6 [medium]: malloc(0x10) self-linked sentinel node: std::list empty ctor
+006167f0	StdList_InitEmpty_006167f0	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+00616820	StdList_InitEmpty_00616820	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+00616850	StdList_InitEmpty_00616850	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+00616880	StdList_InitEmpty_00616880	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+006168b0	StdList_InitEmpty_006168b0	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+006168e0	StdList_InitEmpty_006168e0	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+00616930	StdList_CtorWithCount_00616930	autoname-t6 [medium]: int* {head,count}; malloc(0x18) sentinel zeroed and self-linked, count=0: std::list ctor
+006169c0	StdList_CtorWithCount_006169c0	autoname-t6 [medium]: {head,count}; malloc(0x6c) sentinel zeroed+self-linked, count=0: std::list ctor
+00616a40	StdList_CtorWithCount_00616a40	autoname-t6 [medium]: {head,count}; malloc(0x1c) sentinel zeroed+self-linked, count=0: std::list ctor
+00617140	StdList_CtorWithCount_00617140	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+00617270	StdList_CtorWithCount_00617270	autoname-t6 [medium]: {head,count}; malloc(0x1c) sentinel zeroed+self-linked, count=0: std::list ctor
+00619e30	StdList_CtorWithCount_00619e30	autoname-t6 [medium]: {head,count}; malloc(0x6c) sentinel zeroed+self-linked, count=0: std::list ctor
+00624160	StdList_CtorWithCount_00624160	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+00624520	StdList_CtorWithCount_00624520	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+00630cc0	StdList_CtorWithCount_00630cc0	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+00630d50	StdList_CtorWithCount_00630d50	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+00630f50	StdList_CtorWithCount_00630f50	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006313e0	StdList_CtorWithCount_006313e0	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+0063f340	StdList_InitEmpty_0063f340	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+0063f450	StdList_InitEmpty_0063f450	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+006579e0	Vector_PushBackInts_1_2_neg1_006579e0	autoname-t6 [medium]: Three push_back sequences via InsertMultipleAndGrow inserting 1,2,-1 into std::vector<int>
+00657ac0	Vector_PushBackInts_2_3_1_00657ac0	autoname-t6 [medium]: Three push_back sequences via InsertMultipleAndGrow inserting 2,3,1 into std::vector<int>
+00669510	StdList_InitEmpty_00669510	autoname-t6 [medium]: malloc(0x10) self-linked sentinel node: std::list empty ctor
+0066a1a0	StdList_InitEmpty_0066a1a0	autoname-t6 [medium]: malloc(0x10) self-linked sentinel node: std::list empty ctor
+00674e50	Object_FreeInnerAndDelete_00674e50	autoname-t6 [high]: Frees *param_1 buffer then operator_delete(param_1): destructor/deallocator
+00674e80	Object_FreeInnerAndDelete_00674e80	autoname-t6 [high]: Frees *param_1 buffer then operator_delete(param_1): destructor/deallocator
+0067aeb0	StdList_InitEmpty_0067aeb0	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+0067b570	StdList_InitEmpty_0067b570	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+0067b5f0	StdList_CtorWithCount_0067b5f0	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+0067b680	StdList_CtorWithCount_0067b680	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+0067b710	StdList_CtorWithCount_0067b710	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+0067bc70	StdList_InitEmpty_0067bc70	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+0067bd30	StdList_CtorWithCount_0067bd30	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+0067bdc0	StdList_CtorWithCount_0067bdc0	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+0067be50	StdList_CtorWithCount_0067be50	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+00685ba0	StdList_InitEmpty_00685ba0	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+006864c0	StdList_InitEmpty_006864c0	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node stored at *param_1 (void ret): std::list empty ctor
+00687480	StdList_InitEmpty_00687480	autoname-t6 [medium]: malloc(0x60) self-linked sentinel node: std::list empty ctor
+00687910	StdList_InitEmpty_00687910	autoname-t6 [medium]: malloc(0x60) self-linked sentinel node: std::list empty ctor
+00696590	StdList_CtorWithCount_00696590	autoname-t6 [medium]: {head,count}; malloc(0x1c) sentinel zeroed+self-linked, count=0: std::list ctor
+006965d0	StdList_CtorWithCount_006965d0	autoname-t6 [medium]: {head,count}; malloc(0x1c) sentinel zeroed+self-linked, count=0: std::list ctor
+00696de0	StdList_CtorWithCount_00696de0	autoname-t6 [medium]: {head,count}; malloc(0x1c) sentinel zeroed+self-linked, count=0: std::list ctor
+00696e70	StdList_CtorWithCount_00696e70	autoname-t6 [medium]: {head,count}; malloc(0x1c) sentinel zeroed+self-linked, count=0: std::list ctor
+006db170	StdList_InitEmpty_006db170	autoname-t6 [medium]: malloc(0x10) self-linked sentinel node: std::list empty ctor
+006db230	StdList_CtorWithCount_006db230	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006db5a0	StdList_CtorWithCount_006db5a0	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006db730	StdList_CtorWithCount_006db730	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006db770	StdList_CtorWithCount_006db770	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006dbc00	StdList_CtorHeadAtField1_006dbc00	autoname-t6 [medium]: head stored at param_1[1], param_1[2]=0, malloc(0x18) sentinel self-linked: std::list ctor variant
+006dbc50	StdList_CtorHeadAtField1_006dbc50	autoname-t6 [medium]: head stored at param_1[1], param_1[2]=0, malloc(0x18) sentinel self-linked: std::list ctor variant
+006dbfe0	StdList_CtorWithCount_006dbfe0	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006dc1b0	StdList_CtorWithCount_006dc1b0	autoname-t6 [medium]: {head,count}; malloc(0x18) sentinel zeroed+self-linked, count=0: std::list ctor
+006e4b30	StdList_InitEmpty_006e4b30	autoname-t6 [medium]: malloc(0x20) self-linked sentinel node: std::list empty ctor
+006e4e10	StdList_InitEmpty_006e4e10	autoname-t6 [medium]: malloc(0x20) self-linked sentinel node: std::list empty ctor
+006e6ae0	StdList_CtorWithCount_006e6ae0	autoname-t6 [medium]: {head,count}; malloc(0x40) sentinel zeroed+self-linked, count=0: std::list ctor
+006e7030	StdList_CtorWithCount_006e7030	autoname-t6 [medium]: {head,count}; malloc(0x40) sentinel zeroed+self-linked, count=0: std::list ctor
+006f09b0	StdList_InitEmpty_006f09b0	autoname-t6 [medium]: malloc(0xc) self-linked sentinel node: std::list empty ctor
+006f18f0	ListHead_InitCircular_0xc_006f18f0	autoname-t6 [medium]: malloc(0xc) node with next/prev self-linked = empty circular-list head init
+006f1a50	TreeHeader_InitSentinel_0x20_006f1a50	autoname-t6 [medium]: malloc(0x20), size=0 (param_1[1]), node [0]=[4]=0, [8]=[c]=self: RB-tree/list header sentinel init
+006f1ae0	TreeHeader_InitSentinel_0x88_006f1ae0	autoname-t6 [medium]: malloc(0x88) header-sentinel init (size=0, left/right self-linked)
+006f1b20	TreeHeader_InitSentinel_0x18_006f1b20	autoname-t6 [medium]: malloc(0x18) header-sentinel init (size=0, left/right self-linked)
+006f1b60	TreeHeader_InitSentinel_0x18_006f1b60	autoname-t6 [medium]: malloc(0x18) header-sentinel init (size=0, left/right self-linked)
+006f23a0	TreeHeader_InitSentinel_0x20_006f23a0	autoname-t6 [medium]: malloc(0x20) header-sentinel init (size=0, left/right self-linked)
+006f8aa0	Func_IdentityReturnArg	autoname-t6 [medium]: 3-byte function returns its single argument unchanged (identity/getter thunk)
+00718e80	ListHead_InitCircular_0x10_00718e80	autoname-t6 [medium]: malloc(0x10) node with next/prev self-linked = empty circular-list head init
+00718ea0	ListHead_InitCircular_0x10_00718ea0	autoname-t6 [medium]: malloc(0x10) node with next/prev self-linked = empty circular-list head init
+00719180	ListHead_InitCircular_0x10_00719180	autoname-t6 [medium]: malloc(0x10) node with next/prev self-linked = empty circular-list head init
+00719690	ListHead_InitCircular_0x10_00719690	autoname-t6 [medium]: malloc(0x10) node with next/prev self-linked = empty circular-list head init
+007298e0	ListHead_InitCircular_0x1c_007298e0	autoname-t6 [medium]: malloc(0x1c) node with next/prev self-linked = empty circular-list head init
+00729940	ListHead_InitCircular_0x1c_00729940	autoname-t6 [medium]: malloc(0x1c) node with next/prev self-linked = empty circular-list head init
+0072d480	ListHead_InitCircular_0x1c_0072d480	autoname-t6 [medium]: malloc(0x1c) node with next/prev self-linked = empty circular-list head init
+0072d8f0	ListHead_InitCircular_0x1c_0072d8f0	autoname-t6 [medium]: malloc(0x1c) node with next/prev self-linked = empty circular-list head init
+0073db00	ListHead_InitCircular_0x10_0073db00	autoname-t6 [medium]: malloc(0x10) node with next/prev self-linked = empty circular-list head init
+00743200	ListHead_InitCircular_0x10_00743200	autoname-t6 [medium]: malloc(0x10) node with next/prev self-linked = empty circular-list head init
+00758ae0	ListHead_InitCircular_0x4c_00758ae0	autoname-t6 [medium]: malloc(0x4c) node with next/prev self-linked = empty circular-list head init
+00758d90	ListHead_InitCircular_0x4c_00758d90	autoname-t6 [medium]: malloc(0x4c) node with next/prev self-linked = empty circular-list head init
+0075f780	ListHead_InitCircular_0xc_0075f780	autoname-t6 [medium]: malloc(0xc) node with next/prev self-linked = empty circular-list head init
+0075f830	ObjHolder_FreeAndDelete_0075f830	autoname-t6 [high]: Null-checks then free(*param_1) and operator_delete(param_1): holder destructor
+00769f30	TreeHeader_InitSentinel_0x20_00769f30	autoname-t6 [medium]: malloc(0x20) header-sentinel init (size=0, left/right self-linked)
+0076acf0	TreeHeader_InitSentinel_0x20_0076acf0	autoname-t6 [medium]: malloc(0x20) header-sentinel init (size=0, left/right self-linked)
+0076c710	Vector_PushBack_Elem0xc	autoname-t6 [medium]: Vector push_back: if end!=cap advance by 0xc via Array_MoveBackwardCopy else Vector_InsertRange_Mixed grow; 12-byte element
+0076f9e0	ListHead_InitCircular_0x24_0076f9e0	autoname-t6 [medium]: malloc(0x24) node with next/prev self-linked = empty circular-list head init
+0076fbf0	ListHead_InitCircular_0x24_0076fbf0	autoname-t6 [medium]: malloc(0x24) node with next/prev self-linked = empty circular-list head init
+00771b30	ObjHolder_FreeAndDelete_00771b30	autoname-t6 [high]: Null-checks then free(*param_1) and operator_delete(param_1): holder destructor
+00777520	TreeHeader_InitSentinel_0x30_00777520	autoname-t6 [medium]: malloc(0x30) header-sentinel init (size=0, left/right self-linked)
+00777a00	TreeHeader_InitSentinel_0x30_00777a00	autoname-t6 [medium]: malloc(0x30) header-sentinel init (size=0, left/right self-linked)
+0077ffe0	ListHead_InitCircular_0x14_0077ffe0	autoname-t6 [medium]: malloc(0x14) node with next/prev self-linked = empty circular-list head init
+00780040	ListHead_InitCircular_0x14_00780040	autoname-t6 [medium]: malloc(0x14) node with next/prev self-linked = empty circular-list head init
+00783d50	TreeHeader_InitSentinel_0x20_00783d50	autoname-t6 [medium]: malloc(0x20) header-sentinel init (size=0, left/right self-linked)
+00783fb0	TreeHeader_InitSentinel_0x20_00783fb0	autoname-t6 [medium]: malloc(0x20) header-sentinel init (size=0, left/right self-linked)
+00784fb0	ListHead_InitCircular_0xc_00784fb0	autoname-t6 [medium]: malloc(0xc) node with next/prev self-linked = empty circular-list head init
+00785d00	ListHead_InitCircular_0xc_00785d00	autoname-t6 [medium]: malloc(0xc) node with next/prev self-linked = empty circular-list head init
+00792220	ListHead_InitCircular_0xc_00792220	autoname-t6 [medium]: malloc(0xc) node with next/prev self-linked = empty circular-list head init
+007926f0	TreeHeader_InitSentinel_0x2c_007926f0	autoname-t6 [medium]: malloc(0x2c) header-sentinel init (size=0, left/right self-linked)
+00792b30	TreeHeader_InitSentinel_0x2c_00792b30	autoname-t6 [medium]: malloc(0x2c) header-sentinel init (size=0, left/right self-linked)
+00797ae0	TreeHeader_InitSentinel_0x2c_00797ae0	autoname-t6 [medium]: malloc(0x2c) header-sentinel init (size=0, left/right self-linked)
+00797e30	TreeHeader_InitSentinel_0x2c_00797e30	autoname-t6 [medium]: malloc(0x2c) header-sentinel init (size=0, left/right self-linked)
+0079f2a0	TreeHeader_InitSentinel_0x14_0079f2a0	autoname-t6 [medium]: malloc(0x14) header-sentinel init (size=0, left/right self-linked)
+0079f410	TreeHeader_InitSentinel_0x14_0079f410	autoname-t6 [medium]: malloc(0x14) header-sentinel init (size=0, left/right self-linked)
+007a35b0	ListHead_InitCircular_0x10_007a35b0	autoname-t6 [medium]: malloc(0x10) node with next/prev self-linked = empty circular-list head init
+007a3c60	ListHead_InitCircular_0x10_007a3c60	autoname-t6 [medium]: malloc(0x10) node with next/prev self-linked = empty circular-list head init
+007a6170	ListHead_InitCircular_0xc_007a6170	autoname-t6 [medium]: malloc(0xc) node with next/prev self-linked = empty circular-list head init
+007a6320	ListHead_InitCircular_0xc_007a6320	autoname-t6 [medium]: malloc(0xc) node with next/prev self-linked = empty circular-list head init
+007acde0	TreeHeader_InitSentinel_0x18_007acde0	autoname-t6 [medium]: malloc(0x18) header-sentinel init (size=0, left/right self-linked)
+007b7c30	List_AppendNode_IfFlag25	autoname-t6 [medium]: If flag at *(this+0x18)+0x25 set, allocs 0x10 node {ftol2(val),param_2} and links into list at this+0xc
+007b7c80	List_AppendNode_IfFlag26	autoname-t6 [medium]: If flag at *(this+0x18)+0x26 set, allocs 0x10 node {ftol2(val),param_2} and links into list at this+0x10
+0080eb40	Vector_PushBack_U32	autoname-t6 [medium]: Vector push_back of 4-byte element: if end!=cap write and advance 4 else Vector_InsertN grow
+00824b40	ListHead_InitCircular_0x5c_00824b40	autoname-t6 [medium]: malloc(0x5c) node with next/prev self-linked = empty circular-list head init
+00824bc0	ListHead_InitCircular_0x10_00824bc0	autoname-t6 [medium]: malloc(0x10) node with next/prev self-linked = empty circular-list head init
+008254a0	ListHead_InitCircular_0x5c_008254a0	autoname-t6 [medium]: malloc(0x5c) node with next/prev self-linked = empty circular-list head init
+00825540	ListHead_InitCircular_0x10_00825540	autoname-t6 [medium]: malloc(0x10) node with next/prev self-linked = empty circular-list head init
+00827e20	ListHead_InitCircular_0xc_00827e20	autoname-t6 [medium]: malloc(0xc) node with next/prev self-linked = empty circular-list head init
+00828c20	ListHead_InitCircular_0xc_00828c20	autoname-t6 [medium]: malloc(0xc) node with next/prev self-linked = empty circular-list head init
+0082c570	ListHead_InitCircular_0x18_0082c570	autoname-t6 [medium]: malloc(0x18) node with next/prev self-linked = empty circular-list head init
+0082c900	ListHead_InitCircular_0x18_0082c900	autoname-t6 [medium]: malloc(0x18) node with next/prev self-linked = empty circular-list head init
+0086c5c0	CPersistInfo_InsertionSortStep_0086c5c0	autoname-t6 [medium]: Calls _Move_backward<pair<u64,CRuntimeScriptedEntityPersist::CPersistInfo>> and std__pair_insertion_sort_shift; insertion-sort shift step for pair sequence
+0086f600	PriorityQueue_PushSift_0086f600	autoname-t6 [medium]: Appends 0xc-byte element via Vector_Reallocate at (this+4), then toggles flag +0xd and calls std__make_heap_Sift_3 = heap/priority_queue push
+0086fa00	CPersistInfo_InsertionSortStep_0086fa00	autoname-t6 [medium]: Identical to 0086c5c0: _Move_backward<pair<u64,CPersistInfo>> + pair_insertion_sort_shift insertion-sort shift step
+008709c0	CWorldDriver_FindClosestMeshVolume_DefaultCall_008709c0	autoname-t6 [medium]: Thin wrapper zeroing a local then calling CWorldDriver_FindClosestMeshVolume(local,&out)
+00874ca0	ListSentinel_Ctor_sz10_00874ca0	autoname-t6 [medium]: malloc(0x10); node.next=node.prev=node (self-ref +0/+4) = empty circular doubly-linked list sentinel
+00874d30	ListSentinel_Ctor_sz10_00874d30	autoname-t6 [medium]: malloc(0x10) with self-referential next/prev = empty circular list sentinel ctor
+00876e10	Vector_ComputePotentialGradient_00876e10	autoname-t6 [medium]: Walks linked list of point nodes, sums 1/(dist-param5) over sample offsets (DAT_01385d2c table), outputs finite-difference gradient vector to param_1[0..2]
+00883280	ListSentinel_Ctor_sz68_00883280	autoname-t6 [medium]: malloc(0x68); self-referential next/prev = empty circular list sentinel ctor
+00883300	ListSentinel_Ctor_sz28_00883300	autoname-t6 [medium]: malloc(0x28); self-referential next/prev = empty circular list sentinel ctor
+00883340	ListSentinel_Ctor_sz44_00883340	autoname-t6 [medium]: malloc(0x44); self-referential next/prev = empty circular list sentinel ctor
+00883be0	ListSentinel_Ctor_sz68_00883be0	autoname-t6 [medium]: malloc(0x68); self-referential next/prev = empty circular list sentinel ctor
+00883c60	ListSentinel_Ctor_sz28_00883c60	autoname-t6 [medium]: malloc(0x28); self-referential next/prev = empty circular list sentinel ctor
+00883ca0	ListSentinel_Ctor_sz44_00883ca0	autoname-t6 [medium]: malloc(0x44); self-referential next/prev = empty circular list sentinel ctor
+00884180	ListSentinel_Ctor_sz68_00884180	autoname-t6 [medium]: malloc(0x68); self-referential next/prev = empty circular list sentinel ctor (void return)
+008841a0	ListSentinel_Ctor_sz28_008841a0	autoname-t6 [medium]: malloc(0x28); self-referential next/prev = empty circular list sentinel ctor (void return)
+008841c0	ListSentinel_Ctor_sz44_008841c0	autoname-t6 [medium]: malloc(0x44); self-referential next/prev = empty circular list sentinel ctor (void return)
+008841e0	StdList_Ctor_sz14_008841e0	autoname-t6 [medium]: malloc(0x14) proxy node, count=0, node[8]/node[c]=self (next/prev sentinel), node[0]/node[4]=0 = std::list default ctor
+00884620	StdList_Ctor_sz20_00884620	autoname-t6 [medium]: malloc(0x20) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008aefe0	StdList_Ctor_sz18_008aefe0	autoname-t6 [medium]: malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008afcc0	StdList_Ctor_sz18_008afcc0	autoname-t6 [medium]: malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008b2790	StdList_Ctor_sz18_008b2790	autoname-t6 [medium]: malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008b2820	StdList_Ctor_sz18_008b2820	autoname-t6 [medium]: malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008b28b0	StdList_Ctor_sz18_008b28b0	autoname-t6 [medium]: malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008b2c20	StdList_Ctor_sz18_008b2c20	autoname-t6 [medium]: malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008b2cb0	StdList_Ctor_sz18_008b2cb0	autoname-t6 [medium]: malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008b2d40	StdList_Ctor_sz18_008b2d40	autoname-t6 [medium]: malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+008ebdb0	ListSentinel_Ctor_sz10_008ebdb0	autoname-t6 [medium]: malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+008ebff0	ListSentinel_Ctor_sz10_008ebff0	autoname-t6 [medium]: malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+008f9f30	ListSentinel_Ctor_szc_008f9f30	autoname-t6 [medium]: malloc(0xc); self-referential next/prev = empty circular list sentinel ctor
+008fa040	ListSentinel_Ctor_szc_008fa040	autoname-t6 [medium]: malloc(0xc); self-referential next/prev = empty circular list sentinel ctor
+008fbd20	ListSentinel_Ctor_sz10_008fbd20	autoname-t6 [medium]: malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+0094b730	ReturnTrue_0094b730	autoname-t6 [high]: Body is just return 1 (constant true stub)
+00987670	ReturnParam_Identity_00987670	autoname-t6 [high]: Returns param_1 unchanged (identity/pass-through stub)
+00987700	ReturnParam_Identity_00987700	autoname-t6 [high]: Returns param_1 unchanged (identity/pass-through stub)
+009aa690	ListSentinel_Ctor_sz10_009aa690	autoname-t6 [medium]: malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+009ac290	ListSentinel_Ctor_sz10_009ac290	autoname-t6 [medium]: malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+009b3f00	StdList_Ctor_sz18_009b3f00	autoname-t6 [medium]: malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009b6f40	StdList_Ctor_sz18_009b6f40	autoname-t6 [medium]: malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009b8c00	Vector_InsertOrReallocPair_DefClassInfo	autoname-t6 [medium]: caller std::make_heap_pair_fixup; callees _Move_backward on pair<ulong,CDefClassInfo>, CCharString::operator=, insertion-sort shift: vector insert-with-realloc
+009bdec0	ListSentinel_Ctor_sz24_009bdec0	autoname-t6 [medium]: malloc(0x24); self-referential next/prev = empty circular list sentinel ctor
+009be170	ListSentinel_Ctor_sz24_009be170	autoname-t6 [medium]: malloc(0x24); self-referential next/prev = empty circular list sentinel ctor
+009c2200	ListSentinel_Ctor_szc_009c2200	autoname-t6 [medium]: malloc(0xc); self-referential next/prev = empty circular list sentinel ctor
+009c2540	ListSentinel_Ctor_szc_009c2540	autoname-t6 [medium]: malloc(0xc); self-referential next/prev = empty circular list sentinel ctor
+009c25f0	StdList_Ctor_sz20_009c25f0	autoname-t6 [medium]: malloc(0x20) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009c26e0	StdList_Ctor_sz14_009c26e0	autoname-t6 [medium]: malloc(0x14) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009c2b00	StdList_Ctor_sz20_009c2b00	autoname-t6 [medium]: malloc(0x20) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009c2bd0	StdList_Ctor_sz14_009c2bd0	autoname-t6 [medium]: malloc(0x14) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009c6710	ListSentinel_Ctor_sz14_009c6710	autoname-t6 [medium]: malloc(0x14); self-referential next/prev = empty circular list sentinel ctor
+009c67b0	ListSentinel_Ctor_szc_009c67b0	autoname-t6 [medium]: malloc(0xc); self-referential next/prev = empty circular list sentinel ctor
+009c68d0	ListSentinel_Ctor_sz10_009c68d0	autoname-t6 [medium]: malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+009c6910	ListSentinel_Ctor_szb8_009c6910	autoname-t6 [medium]: malloc(0xb8); self-referential next/prev = empty circular list sentinel ctor
+009c6ac0	ListSentinel_Ctor_sz14_009c6ac0	autoname-t6 [medium]: malloc(0x14); self-referential next/prev = empty circular list sentinel ctor
+009c6b60	ListSentinel_Ctor_szc_009c6b60	autoname-t6 [medium]: malloc(0xc); self-referential next/prev = empty circular list sentinel ctor
+009c7000	ListSentinel_Ctor_sz10_009c7000	autoname-t6 [medium]: malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+009c7730	ListSentinel_Ctor_szb8_009c7730	autoname-t6 [medium]: malloc(0xb8); self-referential next/prev = empty circular list sentinel ctor
+009d2ab0	StdList_Ctor_sz20_009d2ab0	autoname-t6 [medium]: malloc(0x20) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009d3890	StdList_Ctor_sz18_009d3890	autoname-t6 [medium]: malloc(0x18) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009d46d0	StdList_Ctor_sz20_009d46d0	autoname-t6 [medium]: malloc(0x20) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009d7740	ListSentinel_Ctor_sz10_009d7740	autoname-t6 [medium]: malloc(0x10); self-referential next/prev = empty circular list sentinel ctor
+009d7b40	StdList_Ctor_sz14_009d7b40	autoname-t6 [medium]: malloc(0x14) proxy node, count=0, sentinel next/prev self = std::list default ctor
+009d7e10	StdTree_DefaultCtor_9d7e10	autoname-t6 [medium]: malloc(0x14) then head-node init (*node=0,+4=0,+8/+0xc=self, size param_1[1]=0) = std::_Tree default ctor
+009d80c0	StdList_DefaultCtor_9d80c0	autoname-t6 [medium]: malloc(0x10), node->next=node->prev=node (circular sentinel) = std::list default ctor
+009d8410	StdTree_DefaultCtor_9d8410	autoname-t6 [medium]: malloc(0x28) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009d8530	StdTree_DefaultCtor_9d8530	autoname-t6 [medium]: malloc(0x28) + tree head-node self-ref init identical to 9d8410 = std::_Tree default ctor
+009e4810	StdList_DefaultCtor_9e4810	autoname-t6 [medium]: malloc(0x40), node self-linked next/prev = std::list default ctor
+009e48d0	StdList_DefaultCtor_9e48d0	autoname-t6 [medium]: malloc(0x40), node self-linked next/prev = std::list default ctor
+009e6a70	ParticleMorphs_FindEntryByKey	autoname-t6 [medium]: unrolled-by-4 search over pair<EHeroMorphType,CParticleMorphs::CEntry>, compares string keys via CBasicString::Compare, calls _Cons_val
+009e98c0	Vector_PushBackByte	autoname-t6 [medium]: push_back of 1-byte element (copies *param_2 single byte), falls back to vector_reallocate_with_padding on full
+009ebcb0	Vector_InitAndAppendFour	autoname-t6 [medium]: zero-inits vector then appends four u32 (param_2..param_5) via VectorInsertElementRange growth
+009eeb90	StdList_DefaultCtor_9eeb90	autoname-t6 [medium]: malloc(0x18), node self-linked next/prev = std::list default ctor
+009eee90	StdList_DefaultCtor_9eee90	autoname-t6 [medium]: malloc(0x18), node self-linked next/prev = std::list default ctor
+009eef50	StdTree_DefaultCtor_9eef50	autoname-t6 [medium]: malloc(0x18) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009eefd0	StdTree_DefaultCtor_9eefd0	autoname-t6 [medium]: malloc(0x1c) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009ef870	StdTree_DefaultCtor_9ef870	autoname-t6 [medium]: malloc(0x18) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009efdf0	Vector_PushBackPolymorphicEntry	autoname-t6 [medium]: push_back of 0x1c-byte record with vtable PTR__vector_deleting_destructor + embedded CCharString copy; grows via std::vector_insert_fill_range
+009eff60	StdTree_DefaultCtor_9eff60	autoname-t6 [medium]: malloc(0x1c) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009f0ef0	StdTree_DefaultCtor_9f0ef0	autoname-t6 [medium]: malloc(0x24) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009f13c0	StdTree_DefaultCtor_9f13c0	autoname-t6 [medium]: malloc(0x24) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+009f5600	CInputEventVector_PushBackAt0x14	autoname-t6 [high]: push_back of CInputEvent (elem 0x34) at vector base +0x14, bumps count at +0x1c; CInputEvent::CInputEvent + std__vector_CInputEvent_insert
+009f6d50	CInputEventVector_PushBackAt0x04	autoname-t6 [high]: push_back of CInputEvent (elem 0x34) at vector base +0x04; CInputEvent::CInputEvent + std__vector_CInputEvent_insert
+009f76f0	AllocArray_0x18Elements	autoname-t6 [medium]: returns malloc(count*0x18) or NULL when count==0 = array allocator for 0x18-byte elements
+009f79d0	StdList_EraseNode	autoname-t6 [medium]: unlinks node (prev->next=next,next->prev=prev) then free(node) = list node erase; uses EH_epilog3 frame
+009f7a30	StdList_DefaultCtor_9f7a30	autoname-t6 [medium]: malloc(0x18), node self-linked next/prev = std::list default ctor
+009f7bb0	StdList_DefaultCtor_9f7bb0	autoname-t6 [medium]: malloc(0x18), node self-linked next/prev = std::list default ctor
+009f8740	StdList_DefaultCtor_9f8740	autoname-t6 [medium]: malloc(0x40), node self-linked next/prev = std::list default ctor
+009f8ab0	StdList_DefaultCtor_9f8ab0	autoname-t6 [medium]: malloc(0x40), node self-linked next/prev = std::list default ctor
+00a220a0	StdTree_DefaultCtor_a220a0	autoname-t6 [medium]: malloc(0x18) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a22360	StdTree_DefaultCtor_a22360	autoname-t6 [medium]: malloc(0x28) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a2b890	StdTree_DefaultCtor_a2b890	autoname-t6 [medium]: malloc(0x20) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a2b8d0	StdTree_DefaultCtor_a2b8d0	autoname-t6 [medium]: malloc(0x1c) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a2c960	Vector_ReallocInsert_CScriptThing	autoname-t6 [medium]: caller vector_push_back_generic; mallocs cap*0x10, _Uninit_copy of CScriptThing, frees old buffer, updates begin/end/cap (this[0..2])
+00a2cfa0	StdTree_DefaultCtor_ExtraFields_a2cfa0	autoname-t6 [medium]: tree head-node init (malloc 0x18) plus two extra owner fields param_1[3]=param_1[4]=0 = map/set wrapper default ctor
+00a2d050	StdTree_DefaultCtor_a2d050	autoname-t6 [medium]: malloc(0x14) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a2d250	StdTree_DefaultCtor_a2d250	autoname-t6 [medium]: malloc(0x1c) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a2e200	StdTree_DefaultCtor_a2e200	autoname-t6 [medium]: malloc(0x20) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a39510	StdTree_DefaultCtor_a39510	autoname-t6 [medium]: malloc(0x14) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a3ff40	StdList_DefaultCtor_a3ff40	autoname-t6 [medium]: malloc(0xc), node self-linked next/prev = std::list default ctor
+00a40150	StdList_DefaultCtor_a40150	autoname-t6 [medium]: malloc(0xc), node self-linked next/prev = std::list default ctor
+00a46530	Vector_InsertConditionalShift_Decal	autoname-t6 [medium]: caller _Copy_impl; callees _Move_backward on pair<pair<long,long>,CEngineTextureDecal>, CCharString::operator=, Vector_Insert_ConditionalShift
+00a47ed0	StdList_DefaultCtor_a47ed0	autoname-t6 [medium]: malloc(0xc), node self-linked next/prev = std::list default ctor
+00a47f30	StdList_DefaultCtor_a47f30	autoname-t6 [medium]: malloc(0xc), node self-linked next/prev = std::list default ctor
+00a54110	StdList_DefaultCtor_a54110	autoname-t6 [medium]: malloc(0x10), node self-linked next/prev = std::list default ctor
+00a544a0	StdList_DefaultCtor_a544a0	autoname-t6 [medium]: malloc(0x10), node self-linked next/prev = std::list default ctor
+00a544e0	StdTree_DefaultCtor_a544e0	autoname-t6 [medium]: malloc(0x18) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a54e10	StdTree_DefaultCtor_a54e10	autoname-t6 [medium]: malloc(0x18) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a611d0	StdTree_DefaultCtor_a611d0	autoname-t6 [medium]: malloc(0x34) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a61730	StdTree_DefaultCtor_a61730	autoname-t6 [medium]: malloc(0x34) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00a68910	CVolumeTexture_ExtractSlicesToTextures	autoname-t6 [medium]: locks CVolumeTexture, reads CPixelFormat depth, loops slices copying rows into per-slice CTexture::Initialise/Lock/Unlock
+00a78680	PackedKeyList_Construct	autoname-t6 [medium]: __thiscall builds list header (malloc 0x10 self-linked) with packed key *param_1=param_2<<0x10 ^ param_3&0xffff, param_1[2]=0
+00a7f450	StdList_DefaultCtor_a7f450	autoname-t6 [medium]: malloc(0x14), node self-linked next/prev = std::list default ctor
+00a7f4b0	StdList_DefaultCtor_a7f4b0	autoname-t6 [medium]: malloc(0xc), node self-linked next/prev = std::list default ctor
+00a7f550	StdList_DefaultCtor_a7f550	autoname-t6 [medium]: malloc(0xc), node self-linked next/prev = std::list default ctor
+00a80480	StdList_DefaultCtor_a80480	autoname-t6 [medium]: malloc(0xc), node self-linked next/prev = std::list default ctor
+00a80520	StdList_DefaultCtor_a80520	autoname-t6 [medium]: malloc(0xc), node self-linked next/prev = std::list default ctor
+00a84b80	StdList_DefaultCtor_a84b80	autoname-t6 [medium]: malloc(0x14), node self-linked next/prev = std::list default ctor
+00aaca40	StdList_DefaultCtor_aaca40	autoname-t6 [medium]: malloc(0x10), node self-linked next/prev = std::list default ctor
+00aacd60	StdList_DefaultCtor_aacd60	autoname-t6 [medium]: malloc(0x10), node self-linked next/prev = std::list default ctor
+00ac3a10	Object_FreeBufferAndDelete	autoname-t6 [medium]: frees held pointer *param_1 then operator_delete(param_1) = deleting destructor releasing owned buffer
+00ad2f20	StdTree_DefaultCtor_ad2f20	autoname-t6 [medium]: malloc(0x18) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00ad2f60	LTextTreeWalkThrough_Destruct	autoname-t6 [high]: calls LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray, resets tree head links, frees buffer = LTextTreeWalkThrough destructor
+00ad2fb0	StdTree_DefaultCtor_ad2fb0	autoname-t6 [medium]: malloc(0x20) + tree head-node self-ref init (size=0) = std::_Tree default ctor
+00ad3010	StdTreeMap_Construct_ad3010	autoname-t6 [medium]: malloc + node[+8]/[+0xc]=self head-node with size field param_1[1]=0 = std::_Tree ctor (0x1c node)
+00ad3150	StdTreeMap_Construct_ad3150	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x20
+00ad3960	StdTreeMap_Construct_ad3960	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x18
+00ad39a0	LTextBinTree_Destroy_ad39a0	autoname-t6 [high]: typed LTextTreeWalkThrough; calls LTextBinTree<LTextGroup*>::BuildTreeArray then resets head and frees = tree clear/destruct
+00ad49c0	StdTreeMap_Construct_ad49c0	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x14
+00ad4f30	StdTreeMap_Destruct_ad4f30	autoname-t6 [medium]: calls Utility_DestroyRefcountedTreeNode on root then frees head = std::_Tree destructor
+00ad5dc0	StdTreeMap_Construct_ad5dc0	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x20
+00ad5e00	StdTreeMap_Destruct_ad5e00	autoname-t6 [medium]: calls Utility_DestroyRefcountedTreeNode then free = _Tree destructor
+00ad5f00	StdTreeMap_Destruct_ad5f00	autoname-t6 [medium]: calls Utility_DestroyRefcountedTreeNode then free = _Tree destructor
+00ad6610	StdTreeMap_Construct_ad6610	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x1c
+00ad6650	StdTreeMap_Destruct_ad6650	autoname-t6 [medium]: calls Utility_DestroyRefcountedTreeNode then free = _Tree destructor
+00ad6810	StdTreeMap_Destruct_ad6810	autoname-t6 [medium]: calls TreeNode_DestructWithRefcount on root then free = _Tree destructor
+00ad72c0	StdTreeMap_Construct_ad72c0	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x20
+00ad7300	StdTreeMap_Destruct_ad7300	autoname-t6 [medium]: calls TreeNode_DestructWithRefcount then free = _Tree destructor
+00adb180	StdList_Construct_adb180	autoname-t6 [medium]: malloc 0x20; node->next=node, node->prev=node = std::list head-node ctor
+00adb5a0	StdTreeMap_Construct_adb5a0	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x1c
+00adb890	StdTreeMap_Construct_adb890	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x1c
+00adc930	StdList_Construct_adc930	autoname-t6 [medium]: malloc 0x20; self-referential next/prev = std::list head-node ctor
+00aeb940	StdList_ConstructWithArg_aeb940	autoname-t6 [medium]: list head-node ctor (malloc 0x10, self-ref) then stores param_2 at param_1[1]
+00aec610	StdList_Construct_aec610	autoname-t6 [medium]: malloc 0x10; self-referential next/prev = std::list head-node ctor
+00aec960	StdList_Construct_aec960	autoname-t6 [medium]: malloc 0x10; self-referential next/prev = std::list head-node ctor
+00af66f0	StdList_Construct_af66f0	autoname-t6 [medium]: malloc 0xc; self-referential next/prev = std::list head-node ctor
+00af6750	StdList_Construct_af6750	autoname-t6 [medium]: malloc 0xc; self-referential next/prev = std::list head-node ctor
+00af6bf0	StdList_Construct_af6bf0	autoname-t6 [medium]: malloc 0xc; self-referential next/prev = std::list head-node ctor
+00af6c40	StdList_Construct_af6c40	autoname-t6 [medium]: malloc 0xc; self-referential next/prev = std::list head-node ctor
+00b09e20	StdList_Construct_b09e20	autoname-t6 [medium]: malloc 0x18; self-referential next/prev = std::list head-node ctor
+00b09ed0	StdList_Construct_b09ed0	autoname-t6 [medium]: malloc 0x18; self-referential next/prev = std::list head-node ctor
+00b0f770	StdList_Construct_b0f770	autoname-t6 [medium]: malloc 0x10; self-referential next/prev = std::list head-node ctor
+00b0f7f0	StdList_Construct_b0f7f0	autoname-t6 [medium]: malloc 0x10; self-referential next/prev = std::list head-node ctor
+00b84b20	RadixSort_CountingPass_b84b20	autoname-t6 [high]: 1024-bucket histogram over 8-byte (key,value) pairs, 10-bit digit (shift param_4*10 & 0x3ff), prefix sum, scatter into param_2 = radix/counting sort pass
+00b968e0	StdTreeMap_Construct_b968e0	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x1c
+00b96ae0	StdTreeMap_Construct_b96ae0	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x20
+00b96b20	StdTreeMap_Construct_b96b20	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x30
+00b97130	StdTreeMap_Construct_b97130	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x30
+00b97fc0	StdTreeMap_Construct_b97fc0	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x1c
+00b980c0	StdTreeMap_Construct_b980c0	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x1c
+00b981f0	StdTreeMap_Construct_b981f0	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x1c
+00b98850	StdTreeMap_Construct_b98850	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x20
+00bce3e0	StdTreeMap_Construct_bce3e0	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x1c
+00bce5a0	StdTreeMap_Construct_bce5a0	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x1c
+00bd86f0	StdTreeMap_Construct_bd86f0	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x20
+00bd9080	StdTreeMap_Construct_bd9080	autoname-t6 [medium]: same _Tree head-node ctor pattern, malloc 0x20
+00bdaaa0	StdList_Construct_bdaaa0	autoname-t6 [medium]: malloc 0xc; self-referential next/prev = std::list head-node ctor
+00bdab30	StdList_Construct_bdab30	autoname-t6 [medium]: malloc 0xc; self-referential next/prev = std::list head-node ctor
+00bdac50	StdList_Construct_bdac50	autoname-t6 [medium]: malloc 0xc; self-referential next/prev = std::list head-node ctor
+00bdacc0	StdList_Construct_bdacc0	autoname-t6 [medium]: malloc 0xc; self-referential next/prev = std::list head-node ctor
+00bdad30	StdList_Construct_bdad30	autoname-t6 [medium]: malloc 0xc; self-referential next/prev = std::list head-node ctor
+00bdae60	StdList_Construct_bdae60	autoname-t6 [medium]: malloc 0xc; self-referential next/prev = std::list head-node ctor (void return)
+00bdae80	StdList_Construct_bdae80	autoname-t6 [medium]: malloc 0xc; self-referential next/prev = std::list head-node ctor (void return)
+00bdaea0	StdList_Construct_bdaea0	autoname-t6 [medium]: malloc 0xc; self-referential next/prev = std::list head-node ctor (void return)
+00c09c90	Collection_TransferAllFrom_c09c90	autoname-t6 [medium]: same reserve-then-drain-and-append template clone
+00c09f80	Collection_TransferAllFrom_c09f80	autoname-t6 [medium]: same reserve-then-drain-and-append template clone
+00c0a1b0	Collection_TransferAllFrom_c0a1b0	autoname-t6 [medium]: same reserve-then-drain-and-append template clone
+00c0f5d0	Collection_TransferAllFrom_c0f5d0	autoname-t6 [medium]: reserves this+src combined size (vtbl 0x3c/0x28/0x10) then drains src (vtbl 0x2c/0x20) adding each to this (0x24) = move-append all elements
+00c0f7d0	Collection_TransferAllFrom_c0f7d0	autoname-t6 [medium]: same reserve-then-drain-and-append template clone
+00c0f9d0	Collection_TransferAllFrom_c0f9d0	autoname-t6 [medium]: same reserve-then-drain-and-append template clone
+00c0fc00	Collection_TransferAllFrom_c0fc00	autoname-t6 [medium]: same reserve-then-drain-and-append template clone
+00c115d0	CTCInventory_ProcessButtonARelease_c115d0	autoname-t6 [medium]: SEH-wrapped; calls NInventory::CTCInventoryBase::ProcessButtonAReleased on this+0x2c then virtual 0x1c
+00c127c0	CTCInventory_DumpCombatActionDebug_c127c0	autoname-t6 [medium]: loops count at this+0x228, TextureIndex_GetByProperties per entry, Thiscall_CombatActionDebugFormat + Playback_LogStatus = debug dump loop
+00c15540	Collection_TransferAllFrom_c15540	autoname-t6 [medium]: same reserve-then-drain-and-append template clone
+00c156a0	Collection_TransferAllFrom_c156a0	autoname-t6 [medium]: same reserve-then-drain-and-append template clone
+00c19cb0	ClothingSuitPartMap_InsertNode_c19cb0	autoname-t6 [medium]: SEH-wrapped std::_Cons_val for pair<EClothingSuitPart,long> then virtual 0x3c = map node insert
+00c19d20	ClothingSuitPartMap_InsertNode_c19d20	autoname-t6 [medium]: SEH-wrapped std::_Cons_val for pair<EClothingSuitPart,long> then virtual 0x3c = map node insert
+00c19d90	ClothingSuitPartMap_InsertNode_c19d90	autoname-t6 [medium]: SEH-wrapped _Cons_val pair<EClothingSuitPart,long> then two vtable-0x28 dispatches with PTR_LAB tables = map insert variant
+00c271d0	SoundObject_SetVtable_c271d0	autoname-t6 [medium]: single store *param_1=&PTR_GetSoundsCurrentLayer_012b4034 = ctor setting sound-layer vtable
+00c27af0	SoundObject_Construct_c27af0	autoname-t6 [medium]: sets &PTR_GetSoundsCurrentLayer_012b4034 vtable and zeros three fields = sound-layer object ctor
+00c2e480	ProcessResourceChunksUntilQuickAssignFails	autoname-t6 [medium]: iterates collection at (*this+0x10) via vtable count/get, calls C3DAnimationSequence_ProcessResourceChunk then stops if !GetCanItemBeQuickAssigned
+00c2ea30	ProcessAllAnimationEvents	autoname-t6 [medium]: iterates collection at (*this+0x20) via vtable count(+0x3c)/get(+0x34), calls AnimationEvent_Process on each
+00c2ea70	ProcessAllAnimationEventMappings	autoname-t6 [medium]: iterates collection at (*this+0x20), calls AnimationEvent_ProcessMapping on each element
+00c2eab0	ProcessAllEventTriggerDrivers	autoname-t6 [medium]: iterates collection at (*this+0x10), calls EventTrigger_ProcessSingleDriver(*elem, elem+3) on each
+00c2f070	PKCAutoDelete_AssertCheckedAndClear_Vsync	autoname-t6 [medium]: PKCAutoDelete.h "Shouls have checked first..." assert via NScript operator&& chain; clears *param_1 and returns old; caller ProcessLoadingFrame_Vsync
+00c2f190	PKCAutoDelete_AssertCheckedAndClear_Water	autoname-t6 [medium]: identical PKCAutoDelete assert-and-clear pattern; caller CMessageEvent_ProcessLoadingFrame_Water
+00c2f2b0	PKCAutoDelete_AssertCheckedAndClear_Graphics	autoname-t6 [medium]: identical PKCAutoDelete assert-and-clear pattern; caller CMessageEvent_ProcessLoadingFrame_Graphics
+00c364a0	PropertyContainerObject_Construct	autoname-t6 [medium]: __thiscall ctor: sets vtable PTR_LAB_012b5180, RedblackTree_NodeCtor, CDateAndTime ctor, CCamera_InitializeOcclusionGrid; caller CTCPropertyContainer_InitializeObject
+00c372c0	PropertyContainerNode_Construct	autoname-t6 [medium]: __thiscall ctor: sets vtable PTR_LAB_012b51f0, RedblackTree_NodeCtor, invokes vtable+0x24; caller CTCPropertyContainer_InitializeObject
+00c3b440	NodeList_TransferAll_c3b440	autoname-t6 [medium]: Reserves via this[1]->vf10(param2->vf3c()+node->vf28()) then loops param2->vf2c/vf20 moving each into this->vf24; splice/transfer of all elements
+00c44ce0	World_RegisterResourceStrings	autoname-t6 [medium]: caller CWorld::OnResourceAllocate; loops array at (*(this+4)+8), CWStringParser_FindOrCreate each, virtual-calls +0x24 on obj at this+0x50
+00c452f0	NodeList_TransferAll_c452f0	autoname-t6 [medium]: Byte-identical to c3b440: element transfer loop (param2->vf2c/vf20 -> this->vf24) with pre-reserve
+00c45440	NodeList_TransferAll_c45440	autoname-t6 [medium]: Byte-identical container element-transfer loop (template instantiation)
+00c46bb0	NodeList_TransferAll_c46bb0	autoname-t6 [medium]: Byte-identical container element-transfer loop (template instantiation)
+00c479a0	NodeList_TransferAll_c479a0	autoname-t6 [medium]: Byte-identical container element-transfer loop (template instantiation)
+00c47af0	NodeList_TransferAll_c47af0	autoname-t6 [medium]: Byte-identical container element-transfer loop (template instantiation)
+00c48960	SyncQueue_TryEnqueueLocked_A	autoname-t6 [medium]: RAII lock via CTCHeroExperience::AddSuccessfulBlockParry ctor; checks vtable+0xc, PKCSemaphore_Release, pushes via vtable+4; caller _Cons_val
+00c48a00	SyncQueue_TryEnqueueLocked_B	autoname-t6 [medium]: identical locked try-enqueue pattern; caller CTCHeroStats_ProcessStateTransition
+00c48b40	SyncQueue_TryEnqueueLocked_C	autoname-t6 [medium]: identical locked try-enqueue pattern; caller CTCHeroStats_ProcessStateTransition
+00c48be0	SyncQueue_TryEnqueueLocked_D	autoname-t6 [medium]: identical locked try-enqueue pattern; caller CTCHeroStats_ProcessStateTransition
+00c48c80	SyncQueue_TryEnqueueLocked_E	autoname-t6 [medium]: identical locked try-enqueue pattern; caller CTCHeroStats_ProcessStateTransition
+00c49d50	RingBuffer_PushLocked	autoname-t6 [medium]: RAII lock; if not full writes at (this+0x1c)+(this+0x24)*4, increments count(+0x20), wraps head(+0x24) mod capacity(+0x18)
+00c49dd0	RingBuffer_GetCountLocked	autoname-t6 [medium]: RAII lock; returns (this+0x24)-(this+0x20) wrapped by capacity(+0x18); caller EntranceManager_SetAsLocked
+00c4bd70	SyncQueue_TryEnqueueLocked_F	autoname-t6 [medium]: identical locked try-enqueue pattern (AddSuccessfulBlockParry/PKCSemaphore_Release); no named caller
+00c4e380	ScriptEvent_DispatchIfActive	autoname-t6 [medium]: caller AddToRenderList; returns -4 unless param_4 valid and *(param_4+0x1f0)!=0 then ScriptEvent_DispatchByID
+00c52aa0	CPU_IsCpuidSupported	autoname-t6 [high]: Classic EFLAGS ID-flag (bit 0x200000) toggle test: XOR 0x200000 and compare - detects CPUID support
+00c57070	Stream_CheckBytesAvailable	autoname-t6 [medium]: Calls source->vf10(peek), then compares current pos (param+0xc/0x10) against required count (param+0x14); returns bool "enough bytes"
+00c58270	Audio_RouteChannels2_c58270	autoname-t6 [medium]: Channel-count at this[8]; routes source this[1..4] to dest param2 and param2+0x200 via vf0x18(...,0x3f000000=0.5f)/vf0x20; stereo channel setup
+00c582f0	Audio_RouteChannels2_c582f0	autoname-t6 [medium]: Sibling of c58270: routes this[1..4] to param2/+0x200 via vf0x10(...,0x4000)/vf0x14; two-channel routing
+00c58630	Audio_RouteChannels4_c58630	autoname-t6 [medium]: Handles 1/2/4 channels writing param2,+0x200,+0x400,+0x600 from this[1..4] via vf0x10/vf0x14; four-channel routing
+00c59570	Ctor_ZeroInit_012b8f64	autoname-t6 [medium]: Sets vtable 012b8f64 then zero-fills 0x58 dwords and clears [0x59]/[0x5d]; constructor
+00c5d150	SIMD_FixedPointMulAccumulate	autoname-t6 [medium]: pmulhw of 16-bit vector by scalar param_4, accumulates 8 sign-extended lanes into int output; SSE fixed-point MAC loop
+00c5d1f0	SIMD_FixedPointRampMulAccumulate	autoname-t6 [medium]: pmulhw with per-lane ramp (param_1+param_5*k) advanced by paddsw each iter, accumulates into int output
+00c5d370	IntBlock128_AddInPlace_c5d370	autoname-t6 [medium]: 8-iteration loop each adding 16 ints (param1[i]+param2[i]->param2[i]), advancing 0x10; element-wise add of 128 ints (param2 += param1)
+00c5d3f0	IntBlock128_AddInPlace_c5d3f0	autoname-t6 [medium]: Byte-identical 128-int element-wise accumulate (param2 += param1)
+00c5d4b0	IntBlock128_AddInPlace_c5d4b0	autoname-t6 [medium]: Byte-identical 128-int element-wise accumulate (param2 += param1)
+00c62ff0	Audio_MatchFormatGuid	autoname-t6 [medium]: Compares incoming 16-byte key against several format GUIDs (DAT_012b9468/78/88/98), selects a this+offset block, re-matches against DAT_012b94b8 and a range check; format/subtype r
+00c6a180	Audio_ProcessTriggersForFrame	autoname-t6 [medium]: caller GetCurrentMask; if frame index(+0x18) in range [+0x13c,+0x140) calls Audio_ProcessMultipleTriggerEvents else Audio_ProcessTriggerActivations
+00c6a200	Graphics_ProcessTerrainStreamForFrame	autoname-t6 [medium]: caller GetCurrentMask; if index(+0x18) in range [+0x1d8,+0x1dc) calls Graphics_ProcessTerrainStreamingChunks else Graphics_LoadTerrainChunksAndStream
+00c73340	CAudioSoundBuffer_GetPosition	autoname-t6 [medium]: Calls CAudioSoundBuffer_TransferPCMData; returns this+0x30 or this+0x34 into *param2 depending on format field ==2; a buffer position/state getter
+00c786e0	Simd_PackLowDwords	autoname-t6 [medium]: Packs low dword of *param2 (low) and *param3 (high) into *param1 (MMX punpckldq-style build)
+00c78720	Simd_PackHighDwords	autoname-t6 [medium]: Packs high dwords of *param2 and *param3 into *param1 (MMX punpckhdq-style), returns *param3
+00c787d0	Simd_PackedAddSaturateWords	autoname-t6 [high]: Decomp is paddsw(*param2,*param3) stored to *param1; MMX PADDSW wrapper
+00c78810	Simd_PackedMulHighWords	autoname-t6 [high]: Decomp is pmulhw(*param2,*param3); MMX PMULHW wrapper
+00c78850	Simd_PackedMultiplyAddWords	autoname-t6 [high]: Decomp is pmaddwd(*param2,*param3); MMX PMADDWD wrapper
+00c78890	Simd_PackSignedDwordsToWords	autoname-t6 [high]: Decomp is packssdw(*param2,*param3); MMX PACKSSDW wrapper
+00c788d0	Simd_PackedAddDwords	autoname-t6 [high]: Adds low and high dwords of *param2/*param3 separately into *param1; MMX PADDD (unsaturated dword add)
+00c89110	GuildTrainingSkillScript_AllocSkillSlots	autoname-t6 [medium]: caller CQ_GuildTrainingSkillScript_InitializeSkillSlots; bump-allocates aligned zeroed block, sets this+4/8, calls CQ_GuildTrainingSkillScript::Init(this+0x10)
+00c896c0	GuildTrainingSkillScript_AllocEffectArray	autoname-t6 [medium]: caller CQ_GuildTrainingSkillScript_InitializeEffectArray; bump-allocates zeroed block into this+0x18, calls CQ_GuildTrainingSkillScript::Init(this+4)
+00c91980	BoundingBox_AccumulateMax	autoname-t6 [medium]: caller BoundingBox_ComputeTransform; 7-iteration loop taking component-wise max of two float arrays (stride 8)
+00c9a230	Audio_FFT_MixedRadixTransform	autoname-t6 [medium]: caller Audio_TransformFFTCoefficients; uses fcos/fsin twiddles, butterfly stages with radix param_3/param_4 over work buffers
+00ca5da0	CritSec_GetField44_Locked	autoname-t6 [medium]: Null-check returns E_POINTER(0x80004003), then Enter/LeaveCriticalSection(this-100) around copying *(this+0x44) to *param2; locked getter
+00ca65b0	Audio_WaitForBufferEvent	autoname-t6 [medium]: Calls vf0x48, loops WaitForMultipleObjects(2 handles,10000) while WAIT_TIMEOUT(0x102), vf0x4c; returns 0x80040223 on index0 else clears this[0x1a]; waits on 2 events
+00ca6620	Thread_WaitAndGetStatus	autoname-t6 [medium]: OS_WaitForMultipleObjectsWithMessages(this+0x50); on WAIT_TIMEOUT returns 0x40237 else 0; copies this+8 status to *param3
+00ca67b0	CAudioBank_Stop	autoname-t6 [medium]: SEH+CritSec(this+0x70); if state(this+8)==1 vf0x30(1); else resumes, sets flag 0xa4=1, timeKillEvent(0xb4), releases; stop/deactivate path
+00ca68f0	CAudioBank_Start	autoname-t6 [medium]: SEH+CritSec(this+0x70); SetEvent(this+0x50), CAudioBank_SetAudioFormat, clears flag 0xa4=0, sets state(this+8)=2; start/activate path
+00ca6b00	AudioThread_RequestStop	autoname-t6 [medium]: If this[5]!=0 sets flag this[0x1c]=1 and (if this[0x1b]==0) SetEvent(this[0x17]) plus vf0x60; signals a stop-request event
+00ca6b40	AudioThread_StopAndWait	autoname-t6 [medium]: ResetEvent(this[0x17]) if state[5]==1, vf0x28(0)/vf0x6c/vf0x70, then ThreadMsg_PumpAndWaitForCompletion; stops and waits for worker
+00ca8610	COM_QueryInterface_012a9a24	autoname-t6 [medium]: Calls param2->vf0x24 then param2->vf0(QueryInterface for IID DAT_012a9a24) into this+0x9c; returns 0x80040208 on id mismatch
+00caf090	CThingFilter_CheckThing	autoname-t6 [medium]: Calls vf0x50, COM_QueryInterface_Wrapper, then CThingFilter_IsValid::operator()(this,thing) and releases; evaluates a thing filter predicate
+00cb1ae0	AudioBank_MatchesSignature	autoname-t6 [medium]: caller AudioBank_LoadAsyncWithRetry; compares two 16-byte fields against signature DAT_012c0694, returns match bool
+00cb1b20	AudioBank_CompareTransactionKeys	autoname-t6 [medium]: caller AudioBank_ExecuteAsyncTransaction; multiple 16-byte block compares against signature/other and final string(len+ptr) compare
+00cd2d37	CList_InitSentinelNode	autoname-t6 [medium]: caller CopyBackBufferToTexture; CList_AllocateNode then wires circular sentinel (next/prev point to self)
+00cd2d61	CTree_InitSentinelNode	autoname-t6 [medium]: caller CopyBackBufferToTexture; CTree_AllocateNode then wires circular sentinel node (next/prev self)
+00cdb710	List_AllocSelfLinkedNode	autoname-t6 [medium]: malloc(0x14) then node->[0]=node, node->[4]=node (self-referential head sentinel of a circular list)
+00cdb750	StdMap_AllocHead	autoname-t6 [medium]: malloc(0x24), sets count[1]=0, node->0/+4=0, +8=self, +0xc=self; std::map/tree head-node init (matches StdMap_DestroyNode family)
+00cdbeb0	StdMap_DestroyAll	autoname-t6 [medium]: Calls StdMap_DestroyNode on root, resets head links and count, then free(*this); container clear+free
+00d9d930	CActiveEntityScriptBase_Create_d9d930	autoname-t6 [medium]: operator_new(0x60)+CActiveEntityScriptBase ctor, sets vtable 012d6c44, wraps in CCountedPointer<CFileInfo>; quest-script allocator (name->allocator table)
+00d9ffd0	CActiveEntityScriptBase_Create_d9ffd0	autoname-t6 [medium]: Identical allocator pattern; vtable 012d6e5c; CActiveEntityScriptBase factory
+00da8320	CActiveEntityScriptBase_Create_da8320	autoname-t6 [medium]: Identical allocator pattern; vtable 012d7844; CActiveEntityScriptBase factory
+00db8520	CActiveEntityScriptBase_Create_db8520	autoname-t6 [medium]: Identical allocator pattern; vtable 012d95b0; CActiveEntityScriptBase factory
+00dc0170	CActiveEntityScriptBase_Create_dc0170	autoname-t6 [medium]: Identical allocator pattern; vtable 012d9f9c; CActiveEntityScriptBase factory
+00dc8700	CActiveEntityScriptBase_Create_dc8700	autoname-t6 [medium]: Identical allocator pattern; vtable 012daa38; CActiveEntityScriptBase factory
+00dcf790	CActiveEntityScriptBase_Create_dcf790	autoname-t6 [medium]: Identical allocator pattern; vtable 012db50c; CActiveEntityScriptBase factory
+00dd9300	CActiveEntityScriptBase_Create_dd9300	autoname-t6 [medium]: Identical allocator pattern; vtable 012dc584; CActiveEntityScriptBase factory
+00ddc7d0	CActiveEntityScriptBase_Create_ddc7d0	autoname-t6 [medium]: Identical allocator pattern; vtable 012dca80; CActiveEntityScriptBase factory
+00ddeee0	CActiveEntityScriptBase_Create_ddeee0	autoname-t6 [medium]: Identical allocator pattern; vtable 012dcd2c; CActiveEntityScriptBase factory
+00dec5b0	CActiveEntityScriptBase_Create_dec5b0	autoname-t6 [medium]: Identical allocator pattern; vtable 012ddc04; CActiveEntityScriptBase factory
+00def220	CActiveEntityScriptBase_Create_def220	autoname-t6 [medium]: Identical allocator pattern; vtable 012ddf08; CActiveEntityScriptBase factory
+00df3550	CActiveEntityScriptBase_Create_df3550	autoname-t6 [medium]: Identical operator_new(0x60)+CActiveEntityScriptBase ctor+CCountedPointer wrap; quest-script allocator
+00df4a50	CActiveEntityScriptBase_Create_df4a50	autoname-t6 [medium]: Identical CActiveEntityScriptBase allocator pattern (272-byte factory)
+00df99f0	CActiveEntityScriptBase_Create_df99f0	autoname-t6 [medium]: Identical CActiveEntityScriptBase allocator pattern (272-byte factory)
+00dfc100	CActiveEntityScriptBase_Create_dfc100	autoname-t6 [medium]: Identical CActiveEntityScriptBase allocator pattern (272-byte factory)
+00e05170	CActiveEntityScriptBase_Create_e05170	autoname-t6 [medium]: Identical CActiveEntityScriptBase allocator pattern (272-byte factory)
+00ee3140	Script_TravHeroWhisper_Main	autoname-t6 [high]: Strings "TravHero Whisper"/"CS_TRAVHERO_WHISPERLEAVE"/"CS_TRAVHERO_WHISPERPUB"/"TEXT_QST_B14_WHISPERPUB"; calls PlayCutscene, AllocateMapThingUID; B14 Whisper quest script body
+00ee41f0	HeroMorphDefScreen_Construct	autoname-t6 [medium]: __thiscall ctor over CHeroMorphDef: vtable 012f46b8, 18x3 + 3x5 CCharString arrays, NHeroInformationScreens::CBase ctor
+00ee4dd0	Script_TourGuide_Main	autoname-t6 [high]: Strings "TourGuideGuide"/"M_TG_ClosingTimeExit"; uses FollowThing/MoveToPosition/Speak on scripted thing; Tour Guide quest script body
+00eeaef0	Script_PickpocketExpression	autoname-t6 [medium]: String "EXPRESSION_PICKPOCKET"; rand/IsAlive checks driving pickpocket expression and steal chance; pickpocket script body
+00ef54a0	Script_CrateBlastBoxTrap	autoname-t6 [medium]: Strings "CrateDeathMarker"/"THING_EXPLOSION_BLASTBOX"; spawns marker, waits until hero within 2.0, then creates explosion; crate blast-box trap script
+00f35510	Vector_CopyAssign_CThingBuildingDef	autoname-t6 [medium]: caller Vector_Resize_Wrapper; forward loop stride 0x38 CThingBuildingDef::operator= + vector_assign_CClanMember
+00f35910	Vector_CopyAssignBackward_CThingBuildingDef	autoname-t6 [medium]: caller Vector_Resize_CThingBuildingDef; backward loop stride 0x38 CThingBuildingDef::operator= + vector_assign_CClanMember
+01229370	GlobalDtor_Free_013ba8ec	autoname-t6 [medium]: atexit-style: if DAT_013ba8ec!=0 free it; global cleanup destructor
+01229630	GlobalDtor_Free_013bac20	autoname-t6 [medium]: atexit-style: if DAT_013bac20!=0 free it; global cleanup destructor
+0122a2f0	DynamicInit_013bb6a4	autoname-t6 [medium]: Dynamic initializer copying a value into global DAT_013bb6a4 via _Cons_val
+0122a940	DynamicInit_013caa54_58	autoname-t6 [medium]: Dynamic initializer populating globals DAT_013caa58 and DAT_013caa54 via _Cons_val
+0122ad60	GlobalDtor_Free_014377f0	autoname-t6 [medium]: atexit-style: if DAT_014377f0!=0 free it; global cleanup destructor
+0122adb0	GlobalDtor_Free_0143b978	autoname-t6 [medium]: atexit-style: if DAT_0143b978!=0 free it; global cleanup destructor

@@ -1,0 +1,4 @@
+004de204	CChestDef::Transfer
+004e0564	CChestDef::Copy
+004d3840	CChestDef::GetSizeofClass
+004d8072	CChestDef::__vecDelDtor

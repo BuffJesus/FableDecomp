@@ -1,0 +1,5 @@
+# Cutscene macro interpreter helpers — evidence: ghidra_out/decomp_cutscene_helpers.log,
+# ghidra_out/cutscene_verb_slices.md (2026-07-19 verb-slice pass)
+0x0099e690	GFCharStringToFloat	Parses a float (sign/int/frac digits) from a CCharString{ptr,len}; used by cutscene verb handlers (GamePause seconds arg etc.)
+0x00cbf9de	GetCutsceneActorScriptThing	Resolve cutscene actor name -> CScriptThing: empty/"HERO" => mgr vtbl+0x118 hero; else registered-actor map via FindRegisteredCutsceneActor; fallback mgr vtbl+0x120 find-by-name
+0x00cd2b86	FindRegisteredCutsceneActor	Lookup in the cutscene registered-actor map (RegisterActor verb populates it); returns entry/iterator compared against end

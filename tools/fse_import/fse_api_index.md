@@ -1,0 +1,942 @@
+# FSE-reversed API surface (RE roadmap)
+
+Source: `fse_api_manifest.json` — **931 functions** across **2 categories**, referencing **1 engine types**.
+
+Each row is a function FableScriptExtender already reverse-engineered well enough to call. For decompilation, each is a *named target*: find its address in Ghidra (via strings/xrefs or the FSE DLL's call sites), apply the name + signature, then decompile outward from it.
+
+## Entity API  (88)
+
+- `void AcquireControl(...)` — Entity [blocking]: Acquires scripted control of this entity.
+- `void ClearAllActionsIncludingLoopingAnimations_NonBlocking(...)` — Entity: Clears all actions including looping animations. Starts asynchronously and returns immediately.
+- `void ClearAllActions_NonBlocking(...)` — Entity: Clears all actions. Starts asynchronously and returns immediately.
+- `void ClearCommands(...)` — Entity [blocking]: Clears commands.
+- `void ClearCommands_NonBlocking(...)` — Entity: Clears commands. Starts asynchronously and returns immediately.
+- `void Converse_NonBlocking(...)` — Entity: Invokes converse. Starts asynchronously and returns immediately.
+- `void DropGenericBox(...)` — Entity [blocking]: Drops generic box.
+- `void DropGenericBox_NonBlocking(...)` — Entity: Drops generic box. Starts asynchronously and returns immediately.
+- `void FireProjectileWeaponAtTarget_NonBlocking(...)` — Entity: Invokes fire projectile weapon at target. Starts asynchronously and returns immediately.
+- `void FollowPreCalculatedRoute_NonBlocking(...)` — Entity: Follows pre calculated route. Starts asynchronously and returns immediately.
+- `void FollowThing(...)` — Entity [blocking]: Follows thing.
+- `void FollowThing_NonBlocking(...)` — Entity: Follows thing. Starts asynchronously and returns immediately.
+- `void GainControlAndSpeak(...)` — Entity [blocking]: Invokes gain control and speak.
+- `std::string GetCurrentMapName(...)` — Entity [blocking]: Gets current map name for an entity.
+- `std::string GetDataString(...)` — Entity [blocking]: Gets data string for an entity.
+- `std::string GetDefName(...)` — Entity [blocking]: Gets def name for an entity.
+- `std::string GetHomeMapName(...)` — Entity [blocking]: Gets home map name for an entity.
+- `sol::table GetHomePos(...)` — Entity [blocking]: Gets home pos for an entity.
+- `sol::table GetPos(...)` — Entity [blocking]: Gets pos for an entity.
+- `bool IsAlive(...)` — Entity [blocking]: Returns whether alive for an entity.
+- `bool IsAwareOfHero(...)` — Entity [blocking]: Returns whether aware of hero for an entity.
+- `bool IsDead(...)` — Entity [blocking]: Returns whether dead for an entity.
+- `bool IsFollowActionRunning(...)` — Entity [blocking]: Returns whether follow action running for an entity.
+- `bool IsFollowActionRunning_NonBlocking(...)` — Entity: Returns whether follow action running for an entity. Starts asynchronously and returns immediately.
+- `bool IsFollowingThing(...)` — Entity [blocking]: Returns whether following thing for an entity.
+- `bool IsKilledByHero(...)` — Entity [blocking]: Returns whether killed by hero for an entity.
+- `bool IsNull(...)` — Entity [blocking]: Returns whether null for an entity.
+- `bool IsOpenDoor(...)` — Entity [blocking]: Returns whether open door for an entity.
+- `bool IsPerformingScriptTask(...)` — Entity [blocking]: Returns whether performing script task for an entity.
+- `bool IsSneaking(...)` — Entity [blocking]: Returns whether sneaking for an entity.
+- `bool IsTalkedToByHero(...)` — Entity [blocking]: Returns whether talked to by hero for an entity.
+- `bool IsUnconscious(...)` — Entity [blocking]: Returns whether unconscious for an entity.
+- `void MakeBehavioral(...)` — Entity [blocking]: Invokes make behavioral.
+- `void MoveToAndPickUpGenericBox(...)` — Entity [blocking]: Moves to and pick up generic box.
+- `void MoveToAndPickUpGenericBox_NonBlocking(...)` — Entity: Moves to and pick up generic box. Starts asynchronously and returns immediately.
+- `void MoveToPosition(...)` — Entity [blocking]: Moves to position.
+- `void MoveToPosition_NonBlocking(...)` — Entity: Starts movement toward a position and returns immediately.
+- `void MoveToThing(...)` — Entity [blocking]: Moves to thing.
+- `void MoveToThing_NonBlocking(...)` — Entity: Moves to thing. Starts asynchronously and returns immediately.
+- `sol::object MsgExpressionPerformedTo(...)` — Entity [blocking]: Returns whether message condition 'expression performed to' is met.
+- `int MsgHowLongWasExpressionPerformed(...)` — Entity [blocking]: Returns whether message condition 'how long was expression performed' is met.
+- `bool MsgIsHitByAnySpecialAbilityFromHero(...)` — Entity [blocking]: Returns whether message condition 'is hit by any special ability from hero' is met.
+- `bool MsgIsHitByHealLifeFromHero(...)` — Entity [blocking]: Returns whether message condition 'is hit by heal life from hero' is met.
+- `bool MsgIsHitByHero(...)` — Entity [blocking]: Returns whether message condition 'is hit by hero' is met.
+- `bool MsgIsHitByHeroSpecialAbility(...)` — Entity [blocking]: Returns whether message condition 'is hit by hero special ability' is met.
+- `bool MsgIsHitByHeroWithDecapitate(...)` — Entity [blocking]: Returns whether message condition 'is hit by hero with decapitate' is met.
+- `bool MsgIsHitByHeroWithFlourish(...)` — Entity [blocking]: Returns whether message condition 'is hit by hero with flourish' is met.
+- `sol::object MsgIsHitByHeroWithProjectileWeapon(...)` — Entity [blocking]: Returns whether message condition 'is hit by hero with projectile weapon' is met.
+- `bool MsgIsHitByHeroWithWeapon(...)` — Entity [blocking]: Returns whether message condition 'is hit by hero with weapon' is met.
+- `bool MsgIsKicked(...)` — Entity [blocking]: Returns whether message condition 'is kicked' is met.
+- `bool MsgIsKilledBy(...)` — Entity [blocking]: Returns whether message condition 'is killed by' is met.
+- `bool MsgIsKnockedOutByHero(...)` — Entity [blocking]: Returns whether message condition 'is knocked out by hero' is met.
+- `bool MsgIsPresentedWithItem(...)` — Entity [blocking]: Returns whether message condition 'is presented with item' is met.
+- `bool MsgIsTriggeredByHero(...)` — Entity [blocking]: Returns whether message condition 'is triggered by hero' is met.
+- `bool MsgIsUsedByHero(...)` — Entity [blocking]: Returns whether message condition 'is used by hero' is met.
+- `bool MsgOpenedChest(...)` — Entity [blocking]: Returns whether message condition 'opened chest' is met.
+- `bool MsgPerformedAnyAggressiveSpecialAbility(...)` — Entity [blocking]: Returns whether message condition 'performed any aggressive special ability' is met.
+- `bool MsgPerformedAnyNonAggressiveSpecialAbility(...)` — Entity [blocking]: Returns whether message condition 'performed any non aggressive special ability' is met.
+- `bool MsgPerformedAnySpecialAbility(...)` — Entity [blocking]: Returns whether message condition 'performed any special ability' is met.
+- `bool MsgPerformedSpecialAbility(...)` — Entity [blocking]: Returns whether message condition 'performed special ability' is met.
+- `bool MsgReceivedInventoryItem(...)` — Entity [blocking]: Returns whether message condition 'received inventory item' is met.
+- `sol::object MsgReceivedMoney(...)` — Entity [blocking]: Returns whether message condition 'received money' is met.
+- `std::shared_ptr<CScriptThing> MsgWhoHitMe(...)` — Entity [blocking]: Returns whether message condition 'who hit me' is met.
+- `std::shared_ptr<CScriptThing> MsgWhoKilledMe(...)` — Entity [blocking]: Returns whether message condition 'who killed me' is met.
+- `void PerformExpression(...)` — Entity [blocking]: Invokes perform expression.
+- `void PlayAnimation(...)` — Entity [blocking]: Plays animation.
+- `void PlayAnimation_NonBlocking(...)` — Entity: Plays animation. Starts asynchronously and returns immediately.
+- `void PlayCombatAnimation(...)` — Entity [blocking]: Plays combat animation.
+- `void PlayCombatAnimation_NonBlocking(...)` — Entity: Plays combat animation. Starts asynchronously and returns immediately.
+- `void PlayLoopingAnimation(...)` — Entity [blocking]: Plays looping animation.
+- `void PlayLoopingAnimation_NonBlocking(...)` — Entity: Plays looping animation. Starts asynchronously and returns immediately.
+- `void ReleaseControl(...)` — Entity [blocking]: Releases scripted control of this entity.
+- `void SetActivationTriggerStatus(...)` — Entity [blocking]: Sets activation trigger status for an entity.
+- `void SetAsUsable(...)` — Entity [blocking]: Sets as usable for an entity.
+- `void SetFriendsWithEverythingFlag(...)` — Entity [blocking]: Sets friends with everything flag for an entity.
+- `void SetReadableText(...)` — Entity [blocking]: Sets readable text for an entity.
+- `void SetToKillOnLevelUnload(...)` — Entity [blocking]: Sets to kill on level unload for an entity.
+- `void SpeakAndWait(...)` — Entity [blocking]: Speaks and waits until dialogue completes or is interrupted.
+- `void Speak_Blocking(...)` — Entity [blocking]: Invokes speak blocking.
+- `void StopFollowingThing(...)` — Entity [blocking]: Stops following thing.
+- `void StopFollowingThing_NonBlocking(...)` — Entity: Stops following thing. Starts asynchronously and returns immediately.
+- `void SummonerLightningOrbAttackTarget_NonBlocking(...)` — Entity: Invokes summoner lightning orb attack target. Starts asynchronously and returns immediately.
+- `void TakeExclusiveControl(...)` — Entity [blocking]: Takes exclusive control.
+- `void UnsheatheWeapons(...)` — Entity [blocking]: Invokes unsheathe weapons.
+- `void UnsheatheWeapons_NonBlocking(...)` — Entity: Invokes unsheathe weapons. Starts asynchronously and returns immediately.
+- `void Wait(...)` — Entity [blocking]: Waits for the specified duration.
+- `void WaitForEntityToFinishPerformingTasks_NonBlocking(...)` — Entity: Waits for entity to finish performing tasks. Starts asynchronously and returns immediately.
+- `void Wait_NonBlocking(...)` — Entity: Waits for the specified duration. Starts asynchronously and returns immediately.
+
+## Quest API  (843)
+
+- `void ActivateQuest(...)` — Quest [blocking]: Activates quest.
+- `void AddBoast(...)` — Quest [blocking]: Adds boast.
+- `void AddCreatureScriptedMode(...)` — Quest [blocking]: Adds creature scripted mode.
+- `void AddCrimeCommitted(...)` — Quest [blocking]: Adds crime committed.
+- `void AddEntityBinding(...)` — Quest [blocking]: Registers an entity script binding.
+- `void AddFeatCard(...)` — Quest [blocking]: Adds feat card.
+- `void AddGossip(...)` — Quest [blocking]: Adds gossip.
+- `void AddGossipFactionToCategory(...)` — Quest [blocking]: Adds gossip faction to category.
+- `void AddGossipFactions(...)` — Quest [blocking]: Adds gossip factions.
+- `void AddGossipVillage(...)` — Quest [blocking]: Adds gossip village.
+- `void AddGossipVillages(...)` — Quest [blocking]: Adds gossip villages.
+- `void AddItemToContainer(...)` — Quest [blocking]: Adds item to container.
+- `void AddNewRumourToCategory(...)` — Quest [blocking]: Adds new rumour to category.
+- `void AddQuestCard(...)` — Quest [blocking]: Adds quest card.
+- `int AddQuestInfoBar(...)` — Quest [blocking]: Adds quest info bar.
+- `int AddQuestInfoBarHealth(...)` — Quest [blocking]: Adds quest info bar health.
+- `int AddQuestInfoCounter(...)` — Quest [blocking]: Adds quest info counter.
+- `int AddQuestInfoCounterList(...)` — Quest [blocking]: Adds quest info counter list.
+- `int AddQuestInfoTickByAction(...)` — Quest [blocking]: Adds quest info tick by action.
+- `int AddQuestInfoTickByText(...)` — Quest [blocking]: Adds quest info tick by text.
+- `int AddQuestInfoTimer(...)` — Quest [blocking]: Adds quest info timer.
+- `void AddQuestRegion(...)` — Quest [blocking]: Adds quest region.
+- `void AddRumourCategory(...)` — Quest [blocking]: Adds rumour category.
+- `void AddScreenMessage(...)` — Quest [blocking]: Adds screen message.
+- `void AddScreenTitleMessage(...)` — Quest [blocking]: Adds screen title message.
+- `void AddTattooToHero(...)` — Quest [blocking]: Adds tattoo to hero.
+- `void ApplyHeroPenaltyForDeath(...)` — Quest [blocking]: Invokes apply hero penalty for death.
+- `void ApplyScriptBrush(...)` — Quest [blocking]: Invokes apply script brush.
+- `bool AreEntitiesEnemies(...)` — Quest [blocking]: Returns whether are entities enemies.
+- `void AutoSave(...)` — Quest [blocking]: Invokes auto save.
+- `void AutoSaveCheckPoint(...)` — Quest [blocking]: Invokes auto save check point.
+- `void AutoSaveQuestStart(...)` — Quest [blocking]: Invokes auto save quest start.
+- `void BeginLoadingMesh(...)` — Quest [blocking]: Invokes begin loading mesh.
+- `void CacheMusicSet(...)` — Quest [blocking]: Invokes cache music set.
+- `void CameraCancelScreenEffect(...)` — Quest [blocking]: Invokes camera cancel screen effect.
+- `void CameraCircleAroundPos(...)` — Quest [blocking]: Invokes camera circle around pos.
+- `void CameraCircleAroundThing(...)` — Quest [blocking]: Invokes camera circle around thing.
+- `void CameraDefault(...)` — Quest [blocking]: Invokes camera default.
+- `void CameraDoConversation(...)` — Quest [blocking]: Invokes camera do conversation.
+- `void CameraEarthquakeIntensityAtPos(...)` — Quest [blocking]: Invokes camera earthquake intensity at pos.
+- `void CameraMoveBetweenLookFromAndLookTo(...)` — Quest [blocking]: Invokes camera move between look from and look to.
+- `void CameraMoveBetweenLookingAt(...)` — Quest [blocking]: Invokes camera move between looking at.
+- `void CameraMoveToPosAndLookAtPos(...)` — Quest [blocking]: Invokes camera move to pos and look at pos.
+- `void CameraMoveToPosAndLookAtThing(...)` — Quest [blocking]: Invokes camera move to pos and look at thing.
+- `void CameraResetToViewBehindHero(...)` — Quest [blocking]: Invokes camera reset to view behind hero.
+- `void CameraSetCameraPreloadFlag(...)` — Quest [blocking]: Invokes camera set camera preload flag.
+- `void CameraShake(...)` — Quest [blocking]: Invokes camera shake.
+- `void CameraUseCameraPoint(...)` — Quest [blocking]: Invokes camera use camera point.
+- `void CameraUseScreenEffect(...)` — Quest [blocking]: Invokes camera use screen effect.
+- `bool CanThingBe_Heard_ByOtherThing(...)` — Quest [blocking]: Returns whether it can thing be heard by other thing.
+- `bool CanThingBe_NearlySeen_ByOtherThing(...)` — Quest [blocking]: Returns whether it can thing be nearly seen by other thing.
+- `bool CanThingBe_Seen_ByOtherThing(...)` — Quest [blocking]: Returns whether it can thing be seen by other thing.
+- `bool CanThingBe_Smelled_ByOtherThing(...)` — Quest [blocking]: Returns whether it can thing be smelled by other thing.
+- `void CancelHeroTeleportEffects(...)` — Quest [blocking]: Returns whether it can cel hero teleport effects.
+- `void CancelRadialBlurFade(...)` — Quest [blocking]: Returns whether it can cel radial blur fade.
+- `void ChangeHeroHairstyle(...)` — Quest [blocking]: Invokes change hero hairstyle.
+- `void ChangeHeroHealthBy(...)` — Quest [blocking]: Invokes change hero health by.
+- `void ChangeHeroMoralityDueToPicklock(...)` — Quest [blocking]: Invokes change hero morality due to picklock.
+- `void ChangeHeroMoralityDueToTheft(...)` — Quest [blocking]: Invokes change hero morality due to theft.
+- `void ChangeQuestInfoBarColour(...)` — Quest [blocking]: Invokes change quest info bar colour.
+- `bool CheckForCameraMessage(...)` — Quest [blocking]: Returns whether check for camera message.
+- `void ClearActiveGossipCategories(...)` — Quest [blocking]: Clears active gossip categories.
+- `void ClearAllRumbles(...)` — Quest [blocking]: Clears all rumbles.
+- `void ClearGossip(...)` — Quest [blocking]: Clears gossip.
+- `void ClearGossipFactions(...)` — Quest [blocking]: Clears gossip factions.
+- `void ClearGossipVillages(...)` — Quest [blocking]: Clears gossip villages.
+- `void ClearHeroEnemyOfGuards(...)` — Quest [blocking]: Clears hero enemy of guards.
+- `void ClearIsGossipForPlayer(...)` — Quest [blocking]: Clears is gossip for player.
+- `void ClearThingBestEnemyTarget(...)` — Quest [blocking]: Clears thing best enemy target.
+- `void ClearThingHasInformation(...)` — Quest [blocking]: Clears thing has information.
+- `void CloseChest(...)` — Quest [blocking]: Closes chest.
+- `void ConfiscateAllHeroItems(...)` — Quest [blocking]: Invokes confiscate all hero items.
+- `void ConfiscateAllHeroWeapons(...)` — Quest [blocking]: Invokes confiscate all hero weapons.
+- `void ConfiscateItemsOfTypeFromHero(...)` — Quest [blocking]: Invokes confiscate items of type from hero.
+- `std::shared_ptr<CScriptThing> CreateCreature(...)` — Quest [blocking]: Creates creature.
+- `std::shared_ptr<CScriptThing> CreateCreatureNearby(...)` — Quest [blocking]: Creates creature nearby.
+- `std::shared_ptr<CScriptThing> CreateCreatureOnEntity(...)` — Quest [blocking]: Creates creature on entity.
+- `std::shared_ptr<CScriptThing> CreateEffectAtPos(...)` — Quest [blocking]: Creates effect at pos.
+- `std::shared_ptr<CScriptThing> CreateEffectOnThing(...)` — Quest [blocking]: Creates effect on thing.
+- `std::shared_ptr<CScriptThing> CreateExperienceOrb(...)` — Quest [blocking]: Creates experience orb.
+- `std::shared_ptr<CScriptThing> CreateExplosion(...)` — Quest [blocking]: Creates explosion.
+- `std::shared_ptr<CScriptThing> CreateLight(...)` — Quest [blocking]: Creates light.
+- `std::shared_ptr<CScriptThing> CreateObject(...)` — Quest [blocking]: Creates object.
+- `std::shared_ptr<CScriptThing> CreateObjectOnEntity(...)` — Quest [blocking]: Creates object on entity.
+- `std::shared_ptr<CScriptThing> CreateObjectWithRotation(...)` — Quest [blocking]: Creates object with rotation.
+- `std::shared_ptr<CScriptThing> CreatePhysicalBarrier(...)` — Quest [blocking]: Creates physical barrier.
+- `std::shared_ptr<CScriptThing> CreateRumble(...)` — Quest [blocking]: Creates rumble.
+- `void CreateThread(...)` — Quest: Creates a region-scoped Lua thread.
+- `void CreatureGeneratorAddTriggerer(...)` — Quest [blocking]: Invokes creature generator add triggerer.
+- `bool CreatureGeneratorAreAllCreaturesAlive(...)` — Quest [blocking]: Returns whether creature generator are all creatures alive.
+- `int CreatureGeneratorGetNumGeneratedCreatures(...)` — Quest [blocking]: Invokes creature generator get num generated creatures.
+- `bool CreatureGeneratorIsDepleted(...)` — Quest [blocking]: Returns whether creature generator is depleted.
+- `bool CreatureGeneratorIsDestroyed(...)` — Quest [blocking]: Returns whether creature generator is destroyed.
+- `void CreatureGeneratorRemoveTriggerer(...)` — Quest [blocking]: Invokes creature generator remove triggerer.
+- `void CreatureGeneratorSetAlwaysCreateCreaturesOnTrigger(...)` — Quest [blocking]: Invokes creature generator set always create creatures on trigger.
+- `void CreatureGeneratorSetFamily(...)` — Quest [blocking]: Invokes creature generator set family.
+- `void CreatureGeneratorSetGeneratedCreatureScriptName(...)` — Quest [blocking]: Invokes creature generator set generated creature script name.
+- `void CreatureGeneratorSetNumTriggers(...)` — Quest [blocking]: Invokes creature generator set num triggers.
+- `void CreatureGeneratorTrigger(...)` — Quest [blocking]: Invokes creature generator trigger.
+- `void DeactivateQuest(...)` — Quest [blocking]: Deactivates quest.
+- `void DeactivateQuestLater(...)` — Quest [blocking]: Deactivates quest later.
+- `sol::table DebugGetAllTextEntriesForTargetedThing(...)` — Quest [blocking]: Invokes debug get all text entries for targeted thing.
+- `void DeregisterTimer(...)` — Quest [blocking]: Invokes deregister timer.
+- `void DisplacementMonochromeEffectColourFadeOut(...)` — Quest [blocking]: Invokes displacement monochrome effect colour fade out.
+- `void* DisplacementMonochromeEffectColourFadeTo(...)` — Quest [blocking]: Invokes displacement monochrome effect colour fade to.
+- `void DisplayGameInfo(...)` — Quest [blocking]: Invokes display game info.
+- `void DisplayGameInfoText(...)` — Quest [blocking]: Invokes display game info text.
+- `void DisplayLockedChestMessage(...)` — Quest [blocking]: Invokes display locked chest message.
+- `void DisplayMiniGameInfo(...)` — Quest [blocking]: Invokes display mini game info.
+- `void DisplayMoneyBag(...)` — Quest [blocking]: Invokes display money bag.
+- `void DisplayQuestInfo(...)` — Quest [blocking]: Invokes display quest info.
+- `void DisplayTime(...)` — Quest [blocking]: Invokes display time.
+- `bool DisplayTutorial(...)` — Quest [blocking]: Returns whether display tutorial.
+- `void DontPopulateNextLoadedRegion(...)` — Quest [blocking]: Invokes dont populate next loaded region.
+- `void EnableDangerMusic(...)` — Quest [blocking]: Enables danger music.
+- `void EnableDecals(...)` — Quest [blocking]: Enables decals.
+- `void EnableGuards(...)` — Quest [blocking]: Enables guards.
+- `void EnableSounds(...)` — Quest [blocking]: Enables sounds.
+- `void EnableVillagerDefTypes(...)` — Quest [blocking]: Enables villager def types.
+- `void EndCutFade(...)` — Quest [blocking]: Invokes end cut fade.
+- `void EndLetterBox(...)` — Quest [blocking]: Invokes end letter box.
+- `void EndMovieSequence(...)` — Quest [blocking]: Invokes end movie sequence.
+- `void EntityAttachToScript(...)` — Quest [blocking]: Invokes entity attach to script.
+- `void EntityAttachToVillage(...)` — Quest [blocking]: Invokes entity attach to village.
+- `void EntityBeginLoadingAnimation(...)` — Quest [blocking]: Invokes entity begin loading animation.
+- `void EntityBeginLoadingBasicAnimations(...)` — Quest [blocking]: Invokes entity begin loading basic animations.
+- `bool EntityCastForcePush(...)` — Quest [blocking]: Returns whether entity cast force push.
+- `void EntityCastLightningAtTarget(...)` — Quest [blocking]: Invokes entity cast lightning at target.
+- `void EntityClearMaxNumberOfAttackers(...)` — Quest [blocking]: Invokes entity clear max number of attackers.
+- `void EntityClearPersonalityOverride(...)` — Quest [blocking]: Invokes entity clear personality override.
+- `void EntityClearRangedTarget(...)` — Quest [blocking]: Invokes entity clear ranged target.
+- `void EntityDecapitate(...)` — Quest [blocking]: Invokes entity decapitate.
+- `void EntityDropGenericBox(...)` — Quest [blocking]: Invokes entity drop generic box.
+- `void EntityEnableGravity(...)` — Quest [blocking]: Invokes entity enable gravity.
+- `void EntityEndScreamerSuperAttackThing(...)` — Quest [blocking]: Invokes entity end screamer super attack thing.
+- `void EntityFadeIn(...)` — Quest [blocking]: Invokes entity fade in.
+- `void EntityFadeOut(...)` — Quest [blocking]: Invokes entity fade out.
+- `void EntityFollowThing(...)` — Quest [blocking]: Invokes entity follow thing.
+- `void EntityForceMarriageToHero(...)` — Quest [blocking]: Invokes entity force marriage to hero.
+- `void EntityForceToLookAtCamera(...)` — Quest [blocking]: Invokes entity force to look at camera.
+- `void EntityForceToLookAtNothing(...)` — Quest [blocking]: Invokes entity force to look at nothing.
+- `void EntityForceToLookAtThing(...)` — Quest [blocking]: Invokes entity force to look at thing.
+- `unsigned int EntityGetAppearanceSeed(...)` — Quest [blocking]: Invokes entity get appearance seed.
+- `int EntityGetBossPhase(...)` — Quest [blocking]: Invokes entity get boss phase.
+- `float EntityGetHearingRadius(...)` — Quest [blocking]: Invokes entity get hearing radius.
+- `int EntityGetOpinionAttitudeToPlayer(...)` — Quest [blocking]: Invokes entity get opinion attitude to player.
+- `std::string EntityGetOpinionAttitudeToPlayerAsString(...)` — Quest [blocking]: Invokes entity get opinion attitude to player as string.
+- `float EntityGetOpinionOfPlayer(...)` — Quest [blocking]: Invokes entity get opinion of player.
+- `int EntityGetSex(...)` — Quest [blocking]: Invokes entity get sex.
+- `sol::object EntityGetShotStrikePos(...)` — Quest [blocking]: Invokes entity get shot strike pos.
+- `std::shared_ptr<CScriptThing> EntityGetStandingInsideBuilding(...)` — Quest [blocking]: Invokes entity get standing inside building.
+- `std::shared_ptr<CScriptThing> EntityGetStandingOnThing(...)` — Quest [blocking]: Invokes entity get standing on thing.
+- `int EntityGetStockItemPrice(...)` — Quest [blocking]: Invokes entity get stock item price.
+- `std::shared_ptr<CScriptThing> EntityGetThingInPrimarySlot(...)` — Quest [blocking]: Invokes entity get thing in primary slot.
+- `void EntityGiveGold(...)` — Quest [blocking]: Invokes entity give gold.
+- `void EntityLeaveCombatStance(...)` — Quest [blocking]: Invokes entity leave combat stance.
+- `void EntityPlayObjectAnimation(...)` — Quest [blocking]: Invokes entity play object animation.
+- `int EntityPostOpinionDeedKeepSearchingForWitnesses(...)` — Quest [blocking]: Invokes entity post opinion deed keep searching for witnesses.
+- `void EntityPostOpinionDeedToAll(...)` — Quest [blocking]: Invokes entity post opinion deed to all.
+- `void EntityPostOpinionDeedToRecipient(...)` — Quest [blocking]: Invokes entity post opinion deed to recipient.
+- `void EntityPostOpinionDeedToRecipientVillage(...)` — Quest [blocking]: Invokes entity post opinion deed to recipient village.
+- `void EntityResetAsPureAINarrator(...)` — Quest [blocking]: Invokes entity reset as pure ai narrator.
+- `void EntityResetCombatTypeToDefault(...)` — Quest [blocking]: Invokes entity reset combat type to default.
+- `void EntityResetCreatureMode(...)` — Quest [blocking]: Invokes entity reset creature mode.
+- `void EntityResetForceToLookAt(...)` — Quest [blocking]: Invokes entity reset force to look at.
+- `void EntityResetMaxRunningSpeed(...)` — Quest [blocking]: Invokes entity reset max running speed.
+- `void EntityResetMaxWalkingSpeed(...)` — Quest [blocking]: Invokes entity reset max walking speed.
+- `void EntitySetAbleToBeEngagedInCombat(...)` — Quest [blocking]: Invokes entity set able to be engaged in combat.
+- `void EntitySetAllStategroupsEnabled(...)` — Quest [blocking]: Invokes entity set all stategroups enabled.
+- `void EntitySetAllowBossPhaseChanges(...)` — Quest [blocking]: Invokes entity set allow boss phase changes.
+- `void EntitySetAlpha(...)` — Quest [blocking]: Invokes entity set alpha.
+- `void EntitySetAlwaysBlockAttacksFromThing(...)` — Quest [blocking]: Invokes entity set always block attacks from thing.
+- `void EntitySetAppearanceMorphSeed(...)` — Quest [blocking]: Invokes entity set appearance morph seed.
+- `void EntitySetAppearanceSeed(...)` — Quest [blocking]: Invokes entity set appearance seed.
+- `void EntitySetAsAbleToRegionFollowWhenMarried(...)` — Quest [blocking]: Invokes entity set as able to region follow when married.
+- `void EntitySetAsAbleToWalkThroughSolidObjects(...)` — Quest [blocking]: Invokes entity set as able to walk through solid objects.
+- `void EntitySetAsAllowedToChangeRegionFollowingState(...)` — Quest [blocking]: Invokes entity set as allowed to change region following state.
+- `void EntitySetAsAllowedToFollowHero(...)` — Quest [blocking]: Invokes entity set as allowed to follow hero.
+- `void EntitySetAsAwareOfThing(...)` — Quest [blocking]: Invokes entity set as aware of thing.
+- `void EntitySetAsCollidableToThings(...)` — Quest [blocking]: Invokes entity set as collidable to things.
+- `void EntitySetAsDamageable(...)` — Quest [blocking]: Invokes entity set as damageable.
+- `void EntitySetAsDisplayingEmoteIcon(...)` — Quest [blocking]: Invokes entity set as displaying emote icon.
+- `void EntitySetAsDrawable(...)` — Quest [blocking]: Invokes entity set as drawable.
+- `void EntitySetAsDrunk(...)` — Quest [blocking]: Invokes entity set as drunk.
+- `void EntitySetAsForSale(...)` — Quest [blocking]: Invokes entity set as for sale.
+- `void EntitySetAsHavingBoundHands(...)` — Quest [blocking]: Invokes entity set as having bound hands.
+- `void EntitySetAsHiddenOnMiniMap(...)` — Quest [blocking]: Invokes entity set as hidden on mini map.
+- `void EntitySetAsKillable(...)` — Quest [blocking]: Invokes entity set as killable.
+- `void EntitySetAsLocked(...)` — Quest [blocking]: Invokes entity set as locked.
+- `void EntitySetAsMarryable(...)` — Quest [blocking]: Invokes entity set as marryable.
+- `void EntitySetAsMirroringHeroEnemyRelationsWhileFollowing(...)` — Quest [blocking]: Invokes entity set as mirroring hero enemy relations while following.
+- `void EntitySetAsOpinionSourceByInt(...)` — Quest [blocking]: Invokes entity set as opinion source by int.
+- `void EntitySetAsOpinionSourceByString(...)` — Quest [blocking]: Invokes entity set as opinion source by string.
+- `void EntitySetAsPickLocked(...)` — Quest [blocking]: Invokes entity set as pick locked.
+- `void EntitySetAsPickPocketed(...)` — Quest [blocking]: Invokes entity set as pick pocketed.
+- `void EntitySetAsReceivingEvents(...)` — Quest [blocking]: Invokes entity set as receiving events.
+- `void EntitySetAsRemoveAllMovementBlockingModes(...)` — Quest [blocking]: Invokes entity set as remove all movement blocking modes.
+- `void EntitySetAsRespondToHit(...)` — Quest [blocking]: Invokes entity set as respond to hit.
+- `void EntitySetAsRespondingToFollowAndWaitExpressions(...)` — Quest [blocking]: Invokes entity set as responding to follow and wait expressions.
+- `void EntitySetAsScared(...)` — Quest [blocking]: Invokes entity set as scared.
+- `void EntitySetAsSittingOnFloor(...)` — Quest [blocking]: Invokes entity set as sitting on floor.
+- `void EntitySetAsStolen(...)` — Quest [blocking]: Invokes entity set as stolen.
+- `void EntitySetAsToAddToComboMultiplierWhenHit(...)` — Quest [blocking]: Invokes entity set as to add to combo multiplier when hit.
+- `void EntitySetAsToAddToStatChangesWhenHit(...)` — Quest [blocking]: Invokes entity set as to add to stat changes when hit.
+- `void EntitySetAsUseMovementInActions(...)` — Quest [blocking]: Invokes entity set as use movement in actions.
+- `void EntitySetAttackThingImmediately(...)` — Quest [blocking]: Invokes entity set attack thing immediately.
+- `void EntitySetBossPhase(...)` — Quest [blocking]: Invokes entity set boss phase.
+- `void EntitySetCombatAbility(...)` — Quest [blocking]: Invokes entity set combat ability.
+- `void EntitySetCombatEnabled(...)` — Quest [blocking]: Invokes entity set combat enabled.
+- `void EntitySetCombatType(...)` — Quest [blocking]: Invokes entity set combat type.
+- `void EntitySetCutsceneBehaviour(...)` — Quest [blocking]: Invokes entity set cutscene behaviour.
+- `void EntitySetDeathContainerAsEnabled(...)` — Quest [blocking]: Invokes entity set death container as enabled.
+- `void EntitySetDeedReactionsEnabled(...)` — Quest [blocking]: Invokes entity set deed reactions enabled.
+- `void EntitySetEvadeAllHits(...)` — Quest [blocking]: Invokes entity set evade all hits.
+- `void EntitySetExtendedSightRadius(...)` — Quest [blocking]: Invokes entity set extended sight radius.
+- `void EntitySetFacingAngle(...)` — Quest [blocking]: Invokes entity set facing angle.
+- `void EntitySetFacingAngleTowardsThing(...)` — Quest [blocking]: Invokes entity set facing angle towards thing.
+- `void EntitySetGiveUpChaseRadius(...)` — Quest [blocking]: Invokes entity set give up chase radius.
+- `void EntitySetInFaction(...)` — Quest [blocking]: Invokes entity set in faction.
+- `void EntitySetInLimbo(...)` — Quest [blocking]: Invokes entity set in limbo.
+- `void EntitySetLightAsOn(...)` — Quest [blocking]: Invokes entity set light as on.
+- `void EntitySetMaxHealth(...)` — Quest [blocking]: Invokes entity set max health.
+- `void EntitySetMaxNumberOfAttackers(...)` — Quest [blocking]: Invokes entity set max number of attackers.
+- `void EntitySetMaxRunningSpeed(...)` — Quest [blocking]: Invokes entity set max running speed.
+- `void EntitySetMaxWalkingSpeed(...)` — Quest [blocking]: Invokes entity set max walking speed.
+- `void EntitySetNegateAllHits(...)` — Quest [blocking]: Invokes entity set negate all hits.
+- `void EntitySetOpinionAttitudeEnabled(...)` — Quest [blocking]: Invokes entity set opinion attitude enabled.
+- `void EntitySetOpinionDeedMaskByInt(...)` — Quest [blocking]: Invokes entity set opinion deed mask by int.
+- `void EntitySetOpinionDeedMaskByString(...)` — Quest [blocking]: Invokes entity set opinion deed mask by string.
+- `void EntitySetOpinionDeedTypeEnabled(...)` — Quest [blocking]: Invokes entity set opinion deed type enabled.
+- `void EntitySetOpinionReactionEnabled(...)` — Quest [blocking]: Invokes entity set opinion reaction enabled.
+- `void EntitySetOpinionReactionMask(...)` — Quest [blocking]: Invokes entity set opinion reaction mask.
+- `void EntitySetOpinionReactionMaskByInt(...)` — Quest [blocking]: Invokes entity set opinion reaction mask by int.
+- `void EntitySetOpinionReactionsEnabled(...)` — Quest [blocking]: Invokes entity set opinion reactions enabled.
+- `void EntitySetPerceptionVariables(...)` — Quest [blocking]: Invokes entity set perception variables.
+- `void EntitySetPersonalityOverrideByInt(...)` — Quest [blocking]: Invokes entity set personality override by int.
+- `void EntitySetPersonalityOverrideByString(...)` — Quest [blocking]: Invokes entity set personality override by string.
+- `void EntitySetRangedTarget(...)` — Quest [blocking]: Invokes entity set ranged target.
+- `void EntitySetShotAccuracyPercentage(...)` — Quest [blocking]: Invokes entity set shot accuracy percentage.
+- `void EntitySetSightRadius(...)` — Quest [blocking]: Invokes entity set sight radius.
+- `void EntitySetSleepEnabled(...)` — Quest [blocking]: Invokes entity set sleep enabled.
+- `void EntitySetSmellRadius(...)` — Quest [blocking]: Invokes entity set smell radius.
+- `void EntitySetSoundRadius(...)` — Quest [blocking]: Invokes entity set sound radius.
+- `void EntitySetStategroupEnabled(...)` — Quest [blocking]: Invokes entity set stategroup enabled.
+- `void EntitySetStockItemPrice(...)` — Quest [blocking]: Invokes entity set stock item price.
+- `void EntitySetTargetable(...)` — Quest [blocking]: Invokes entity set targetable.
+- `void EntitySetTargetingType(...)` — Quest [blocking]: Invokes entity set targeting type.
+- `void EntitySetTargetingValidTargetWithoutLOS(...)` — Quest [blocking]: Invokes entity set targeting valid target without los.
+- `void EntitySetThingAsAllyOfThing(...)` — Quest [blocking]: Invokes entity set thing as ally of thing.
+- `void EntitySetThingAsEnemyOfThing(...)` — Quest [blocking]: Invokes entity set thing as enemy of thing.
+- `void EntitySetThingAsWantingMoney(...)` — Quest [blocking]: Invokes entity set thing as wanting money.
+- `void EntitySetWillBeUsingNarrator(...)` — Quest [blocking]: Invokes entity set will be using narrator.
+- `void EntitySheatheWeapons(...)` — Quest [blocking]: Invokes entity sheathe weapons.
+- `void EntityStartScreamerSuperAttackThing(...)` — Quest [blocking]: Invokes entity start screamer super attack thing.
+- `void EntityStopFollowing(...)` — Quest [blocking]: Invokes entity stop following.
+- `void EntityTeleportToHeroPosition(...)` — Quest [blocking]: Invokes entity teleport to hero position.
+- `void EntityTeleportToPosition(...)` — Quest [blocking]: Invokes entity teleport to position.
+- `void EntityTeleportToThing(...)` — Quest [blocking]: Invokes entity teleport to thing.
+- `void EntityUnsetAsOpinionSource(...)` — Quest [blocking]: Invokes entity unset as opinion source.
+- `void EntityUnsetThingAsAllyOfThing(...)` — Quest [blocking]: Invokes entity unset thing as ally of thing.
+- `void EntityUnsetThingAsEnemyOfThing(...)` — Quest [blocking]: Invokes entity unset thing as enemy of thing.
+- `void EntityUnsheatheMeleeWeapon(...)` — Quest [blocking]: Invokes entity unsheathe melee weapon.
+- `void EntityUnsheatheRangedWeapon(...)` — Quest [blocking]: Invokes entity unsheathe ranged weapon.
+- `void EntityUnsheatheWeapons(...)` — Quest [blocking]: Invokes entity unsheathe weapons.
+- `bool EntityWillTeleportToArea(...)` — Quest [blocking]: Returns whether entity will teleport to area.
+- `void ExtinguishFiresOnThing(...)` — Quest [blocking]: Invokes extinguish fires on thing.
+- `void FadeScreenIn(...)` — Quest [blocking]: Invokes fade screen in.
+- `void FadeScreenOut(...)` — Quest [blocking]: Invokes fade screen out.
+- `void FadeScreenOutUntilNextCallToFadeScreenIn(...)` — Quest [blocking]: Invokes fade screen out until next call to fade screen in.
+- `void FailAllActiveQuests(...)` — Quest [blocking]: Invokes fail all active quests.
+- `void FastForwardTimeTo(...)` — Quest [blocking]: Invokes fast forward time to.
+- `void FinalizeEntityBindings(...)` — Quest [blocking]: Finalizes pending entity bindings for the quest.
+- `void FixMovieSequenceCamera(...)` — Quest [blocking]: Invokes fix movie sequence camera.
+- `void ForceShipsVisible(...)` — Quest [blocking]: Invokes force ships visible.
+- `std::string GetAction(...)` — Quest [blocking]: Gets action.
+- `int GetActionFrequency(...)` — Quest [blocking]: Gets action frequency.
+- `float GetActionFrequencyVariation(...)` — Quest [blocking]: Gets action frequency variation.
+- `sol::object GetActiveGossipCategories(...)` — Quest [blocking]: Gets active gossip categories.
+- `int GetActiveGossipCategoriesSize(...)` — Quest [blocking]: Gets active gossip categories size.
+- `std::string GetActiveQuestName(...)` — Quest [blocking]: Gets active quest name.
+- `sol::table GetAllActiveQuestInfo(...)` — Quest [blocking]: Gets all active quest info.
+- `sol::table GetAllCreaturesExcludingHero(...)` — Quest [blocking]: Gets all creatures excluding hero.
+- `sol::table GetAllCreaturesInAreaWithScriptName(...)` — Quest [blocking]: Gets all creatures in area with script name.
+- `sol::table GetAllThingsWithDefName(...)` — Quest [blocking]: Gets all things with def name.
+- `sol::table GetAllThingsWithDefNameByDistanceFrom(...)` — Quest [blocking]: Gets all things with def name by distance from.
+- `sol::table GetAllThingsWithScriptName(...)` — Quest [blocking]: Gets all things with script name.
+- `bool GetAllowedToFollow(...)` — Quest [blocking]: Returns whether get allowed to follow.
+- `bool GetAttackHeroOnSight(...)` — Quest [blocking]: Returns whether get attack hero on sight.
+- `bool GetAvoidRegionExits(...)` — Quest [blocking]: Returns whether get avoid region exits.
+- `unsigned int GetBeerRequestPhrase(...)` — Quest [blocking]: Gets beer request phrase.
+- `int GetBestScoreBlackjack(...)` — Quest [blocking]: Gets best score blackjack.
+- `int GetBestScoreCoinGolfOakVale(...)` — Quest [blocking]: Gets best score coin golf oak vale.
+- `int GetBestScoreCoinGolfSnowSpire(...)` — Quest [blocking]: Gets best score coin golf snow spire.
+- `int GetBestScoreShoveHaPenny(...)` — Quest [blocking]: Gets best score shove ha penny.
+- `float GetBestTimeGuessTheAddition(...)` — Quest [blocking]: Gets best time guess the addition.
+- `float GetBestTimePairs(...)` — Quest [blocking]: Gets best time pairs.
+- `float GetBestTimeSorting(...)` — Quest [blocking]: Gets best time sorting.
+- `bool GetBettingAccept(...)` — Quest [blocking]: Returns whether get betting accept.
+- `bool GetBettingActive(...)` — Quest [blocking]: Returns whether get betting active.
+- `int GetBettingAmount(...)` — Quest [blocking]: Gets betting amount.
+- `bool GetBoastingEnabled(...)` — Quest [blocking]: Returns whether get boasting enabled.
+- `bool GetCheapHeadLooking(...)` — Quest [blocking]: Returns whether get cheap head looking.
+- `float GetCombatNearbyBreakOffRange(...)` — Quest [blocking]: Gets combat nearby break off range.
+- `float GetCombatNearbyEnemyFleeingBreakOffRange(...)` — Quest [blocking]: Gets combat nearby enemy fleeing break off range.
+- `int GetConstantFPS(...)` — Quest [blocking]: Gets constant fps.
+- `bool GetCountBetMoneyDown(...)` — Quest [blocking]: Returns whether get count bet money down.
+- `float GetCountdownTimer(...)` — Quest [blocking]: Gets countdown timer.
+- `int GetDayCount(...)` — Quest [blocking]: Gets day count.
+- `int GetDayOfWeek(...)` — Quest [blocking]: Gets day of week.
+- `std::string GetDeathRecoveryMarkerName(...)` — Quest [blocking]: Gets death recovery marker name.
+- `bool GetDisableHeadLooking(...)` — Quest [blocking]: Returns whether get disable head looking.
+- `float GetDistanceHeroCanBeHeardFrom(...)` — Quest [blocking]: Gets distance hero can be heard from.
+- `std::string GetExclusiveQuestScriptName(...)` — Quest [blocking]: Gets exclusive quest script name.
+- `bool GetFaceHeroForAction(...)` — Quest [blocking]: Returns whether get face hero for action.
+- `float GetFollowDistance(...)` — Quest [blocking]: Gets follow distance.
+- `sol::table GetFollowingEntityList(...)` — Quest [blocking]: Gets following entity list.
+- `std::shared_ptr<CScriptThing> GetFurthestWithDefName(...)` — Quest [blocking]: Gets furthest with def name.
+- `std::shared_ptr<CScriptThing> GetFurthestWithScriptName(...)` — Quest [blocking]: Gets furthest with script name.
+- `float GetGameAngleXY(...)` — Quest [blocking]: Gets game angle xy.
+- `bool GetGlobalBool(...)` — Quest [blocking]: Returns whether get global bool.
+- `int GetGlobalInt(...)` — Quest [blocking]: Gets global int.
+- `std::string GetGlobalString(...)` — Quest [blocking]: Gets global string.
+- `float GetGlobalTargetingDistanceOffset(...)` — Quest [blocking]: Gets global targeting distance offset.
+- `sol::object GetGossip(...)` — Quest [blocking]: Gets gossip.
+- `int GetGossipCounter(...)` — Quest [blocking]: Gets gossip counter.
+- `sol::object GetGossipFactions(...)` — Quest [blocking]: Gets gossip factions.
+- `int GetGossipFactionsSize(...)` — Quest [blocking]: Gets gossip factions size.
+- `int GetGossipSize(...)` — Quest [blocking]: Gets gossip size.
+- `sol::object GetGossipVillages(...)` — Quest [blocking]: Gets gossip villages.
+- `int GetGossipVillagesSize(...)` — Quest [blocking]: Gets gossip villages size.
+- `float GetGuildSealRecallAngleXY(...)` — Quest [blocking]: Gets guild seal recall angle xy.
+- `sol::table GetGuildSealRecallPos(...)` — Quest [blocking]: Gets guild seal recall pos.
+- `float GetHealth(...)` — Quest [blocking]: Gets health.
+- `std::shared_ptr<CScriptThing> GetHero(...)` — Quest [blocking]: Gets hero.
+- `float GetHeroAge(...)` — Quest [blocking]: Gets hero age.
+- `float GetHeroAttractiveness(...)` — Quest [blocking]: Gets hero attractiveness.
+- `int GetHeroExperienceAvailableToSpend(...)` — Quest [blocking]: Gets hero experience available to spend.
+- `float GetHeroFatness(...)` — Quest [blocking]: Gets hero fatness.
+- `int GetHeroGold(...)` — Quest [blocking]: Gets hero gold.
+- `bool GetHeroHasChildren(...)` — Quest [blocking]: Returns whether get hero has children.
+- `bool GetHeroHasCurrentMarriage(...)` — Quest [blocking]: Returns whether get hero has current marriage.
+- `bool GetHeroHasDivorcedMarriage(...)` — Quest [blocking]: Returns whether get hero has divorced marriage.
+- `bool GetHeroHasMarried(...)` — Quest [blocking]: Returns whether get hero has married.
+- `bool GetHeroHasMurderedWife(...)` — Quest [blocking]: Returns whether get hero has murdered wife.
+- `float GetHeroHealth(...)` — Quest [blocking]: Gets hero health.
+- `float GetHeroHealthMax(...)` — Quest [blocking]: Gets hero health max.
+- `float GetHeroHealthPercentage(...)` — Quest [blocking]: Gets hero health percentage.
+- `float GetHeroMorality(...)` — Quest [blocking]: Gets hero morality.
+- `int GetHeroMoralityCategory(...)` — Quest [blocking]: Gets hero morality category.
+- `int GetHeroRenownLevel(...)` — Quest [blocking]: Gets hero renown level.
+- `int GetHeroRoughExperienceLevel(...)` — Quest [blocking]: Gets hero rough experience level.
+- `float GetHeroScariness(...)` — Quest [blocking]: Gets hero scariness.
+- `int GetHeroSkillLevel(...)` — Quest [blocking]: Gets hero skill level.
+- `int GetHeroStatLevel(...)` — Quest [blocking]: Gets hero stat level.
+- `int GetHeroStatMax(...)` — Quest [blocking]: Gets hero stat max.
+- `int GetHeroStrengthLevel(...)` — Quest [blocking]: Gets hero strength level.
+- `sol::table GetHeroSummonedCreaturesList(...)` — Quest [blocking]: Gets hero summoned creatures list.
+- `std::shared_ptr<CScriptThing> GetHeroTargetedThing(...)` — Quest [blocking]: Gets hero targeted thing.
+- `int GetHeroTitle(...)` — Quest [blocking]: Gets hero title.
+- `int GetHeroWillEnergy(...)` — Quest [blocking]: Gets hero will energy.
+- `float GetHeroWillEnergyLevel(...)` — Quest [blocking]: Gets hero will energy level.
+- `int GetHeroWillEnergyMax(...)` — Quest [blocking]: Gets hero will energy max.
+- `int GetHeroWillEnergyPercentage(...)` — Quest [blocking]: Gets hero will energy percentage.
+- `int GetHeroWillLevel(...)` — Quest [blocking]: Gets hero will level.
+- `unsigned int GetIgnoringPhrase(...)` — Quest [blocking]: Gets ignoring phrase.
+- `sol::object GetIsGossipForPlayer(...)` — Quest [blocking]: Gets is gossip for player.
+- `int GetIsGossipForPlayerSize(...)` — Quest [blocking]: Gets is gossip for player size.
+- `bool GetIsPushableByHero(...)` — Quest [blocking]: Returns whether get is pushable by hero.
+- `sol::table GetItemDefNamesFromContainer(...)` — Quest [blocking]: Gets item def names from container.
+- `bool GetKillSelfAndStealableItemAfterReachingDestination(...)` — Quest [blocking]: Returns whether get kill self and stealable item after reaching destination.
+- `bool GetLookForFiniteTime(...)` — Quest [blocking]: Returns whether get look for finite time.
+- `sol::object GetMasterGameState(...)` — Quest [blocking]: Gets master game state.
+- `int GetMaxGossipPhrase(...)` — Quest [blocking]: Gets max gossip phrase.
+- `float GetMaxHeroReactionDistance(...)` — Quest [blocking]: Gets max hero reaction distance.
+- `std::shared_ptr<CScriptThing> GetMostRecentValidUsedTarget(...)` — Quest [blocking]: Gets most recent valid used target.
+- `std::string GetMostRecentValidUsedTargetName(...)` — Quest [blocking]: Gets most recent valid used target name.
+- `std::shared_ptr<CScriptThing> GetNearestEnabledDiggingSpot(...)` — Quest [blocking]: Gets nearest enabled digging spot.
+- `std::shared_ptr<CScriptThing> GetNearestWithDefName(...)` — Quest [blocking]: Gets nearest with def name.
+- `std::shared_ptr<CScriptThing> GetNearestWithScriptName(...)` — Quest [blocking]: Gets nearest with script name.
+- `int GetNextInOpinionAttitudeGraph(...)` — Quest [blocking]: Gets next in opinion attitude graph.
+- `int GetNumHousesOwned(...)` — Quest [blocking]: Gets num houses owned.
+- `int GetNumberOfItemsOfTypeInInventory(...)` — Quest [blocking]: Gets number of items of type in inventory.
+- `sol::object GetNumberOfKeysNeededToUnlockChest(...)` — Quest [blocking]: Gets number of keys needed to unlock chest.
+- `int GetNumberOfTimesHeroHasHadSex(...)` — Quest [blocking]: Gets number of times hero has had sex.
+- `std::string GetOpinionAttitudeAsString(...)` — Quest [blocking]: Gets opinion attitude as string.
+- `sol::table GetPerceivingHeroEntityList(...)` — Quest [blocking]: Gets perceiving hero entity list.
+- `int GetPlayerCreatureCombatMultiplier(...)` — Quest [blocking]: Gets player creature combat multiplier.
+- `int GetPlayerCreatureCombatMultiplierRunningNumHits(...)` — Quest [blocking]: Gets player creature combat multiplier running num hits.
+- `bool GetPlayerUsingMeleeDummies(...)` — Quest [blocking]: Returns whether get player using melee dummies.
+- `bool GetPlayerUsingRangedDummies(...)` — Quest [blocking]: Returns whether get player using ranged dummies.
+- `bool GetPlayerUsingWillDummies(...)` — Quest [blocking]: Returns whether get player using will dummies.
+- `sol::object GetPreviouslyWieldedMeleeWeaponName(...)` — Quest [blocking]: Gets previously wielded melee weapon name.
+- `sol::object GetPreviouslyWieldedRangedWeaponName(...)` — Quest [blocking]: Gets previously wielded ranged weapon name.
+- `bool GetPrizeTavernTable(...)` — Quest [blocking]: Returns whether get prize tavern table.
+- `bool GetQuitTavernGame(...)` — Quest [blocking]: Returns whether get quit tavern game.
+- `std::shared_ptr<CScriptThing> GetRandomThingWithScriptName(...)` — Quest [blocking]: Gets random thing with script name.
+- `bool GetRecoverStealableItems(...)` — Quest [blocking]: Returns whether get recover stealable items.
+- `std::string GetRegionName(...)` — Quest [blocking]: Gets region name.
+- `int GetScriptingStateGroup(...)` — Quest [blocking]: Gets scripting state group.
+- `std::string GetSeatName(...)` — Quest [blocking]: Gets seat name.
+- `sol::table GetSleepingPositionAndOrientationFromBed(...)` — Quest [blocking]: Gets sleeping position and orientation from bed.
+- `bool GetSpotTheAdditionBeaten(...)` — Quest [blocking]: Returns whether get spot the addition beaten.
+- `bool GetStateBool(...)` — Quest [blocking]: Gets a quest-local boolean state value.
+- `int GetStateInt(...)` — Quest [blocking]: Gets a quest-local integer state value.
+- `std::string GetStateString(...)` — Quest [blocking]: Gets a quest-local string state value.
+- `int GetStealDuration(...)` — Quest [blocking]: Gets steal duration.
+- `bool GetStealStealableItems(...)` — Quest [blocking]: Returns whether get steal stealable items.
+- `std::string GetTableName(...)` — Quest [blocking]: Gets table name.
+- `bool GetTakeStealableItemToRandomDestination(...)` — Quest [blocking]: Returns whether get take stealable item to random destination.
+- `std::string GetTargetName(...)` — Quest [blocking]: Gets target name.
+- `float GetTargetingDistanceOffset(...)` — Quest [blocking]: Gets targeting distance offset.
+- `unsigned int GetThankingPhrase(...)` — Quest [blocking]: Gets thanking phrase.
+- `sol::table GetThingDebugInfo(...)` — Quest [blocking]: Gets thing debug info.
+- `std::shared_ptr<CScriptThing> GetThingWithScriptName(...)` — Quest [blocking]: Gets thing with script name.
+- `std::shared_ptr<CScriptThing> GetThingWithScriptNameAtRegion(...)` — Quest [blocking]: Gets thing with script name at region.
+- `std::shared_ptr<CScriptThing> GetThingWithUID(...)` — Quest [blocking]: Gets thing with uid.
+- `int GetTimeOfDay(...)` — Quest [blocking]: Gets time of day.
+- `int GetTimeToSpendHarassingHero(...)` — Quest [blocking]: Gets time to spend harassing hero.
+- `int GetTimer(...)` — Quest [blocking]: Gets timer.
+- `float GetTradingPriceMult(...)` — Quest [blocking]: Gets trading price mult.
+- `sol::table GetWanderCentrePoint(...)` — Quest [blocking]: Gets wander centre point.
+- `float GetWanderMaxDistance(...)` — Quest [blocking]: Gets wander max distance.
+- `float GetWanderMinDistance(...)` — Quest [blocking]: Gets wander min distance.
+- `unsigned int GetWarningPhrase(...)` — Quest [blocking]: Gets warning phrase.
+- `float GetWaterHeightAtPosition(...)` — Quest [blocking]: Gets water height at position.
+- `int GetWorldFrame(...)` — Quest [blocking]: Gets world frame.
+- `void GiveHeroAbility(...)` — Quest [blocking]: Gives hero ability.
+- `void GiveHeroExperience(...)` — Quest [blocking]: Gives hero experience.
+- `void GiveHeroExpression(...)` — Quest [blocking]: Gives hero expression.
+- `void GiveHeroGold(...)` — Quest [blocking]: Gives the hero gold.
+- `void GiveHeroItem(...)` — Quest [blocking]: Gives hero item.
+- `bool GiveHeroItemsFromContainer(...)` — Quest [blocking]: Returns whether give hero items from container.
+- `void GiveHeroMorality(...)` — Quest [blocking]: Gives hero morality.
+- `void GiveHeroNewQuestObjective(...)` — Quest [blocking]: Gives hero new quest objective.
+- `void GiveHeroObject(...)` — Quest [blocking]: Gives a specific object to the hero.
+- `void GiveHeroRenownPoints(...)` — Quest [blocking]: Gives hero renown points.
+- `void GiveHeroTitle(...)` — Quest [blocking]: Gives hero title.
+- `bool GiveHeroTutorial(...)` — Quest [blocking]: Returns whether give hero tutorial.
+- `void GiveHeroWeapon(...)` — Quest [blocking]: Gives hero weapon.
+- `int GiveHeroYesNoQuestion(...)` — Quest [blocking]: Gives hero yes no question.
+- `void GiveQuestCardDirectly(...)` — Quest [blocking]: Gives quest card directly.
+- `void GiveThingBestEnemyTarget(...)` — Quest [blocking]: Gives thing best enemy target.
+- `void GiveThingHeroRewardItem(...)` — Quest [blocking]: Gives thing hero reward item.
+- `void GiveThingItemInHand(...)` — Quest [blocking]: Gives thing item in hand.
+- `void GiveThingItemInSlot(...)` — Quest [blocking]: Gives thing item in slot.
+- `bool HeroHasExpression(...)` — Quest [blocking]: Returns whether hero has expression.
+- `void HeroReceiveMessageFromGuildMaster(...)` — Quest [blocking]: Invokes hero receive message from guild master.
+- `void IncreaseHeroRenownLevel(...)` — Quest [blocking]: Invokes increase hero renown level.
+- `bool IsBoastTaken(...)` — Quest [blocking]: Returns whether boast taken.
+- `bool IsCameraInScriptedMode(...)` — Quest [blocking]: Returns whether camera in scripted mode.
+- `bool IsCameraPosOnScreen(...)` — Quest [blocking]: Returns whether camera pos on screen.
+- `bool IsChestOpen(...)` — Quest [blocking]: Returns whether chest open.
+- `bool IsConversationActive(...)` — Quest [blocking]: Returns whether conversation active.
+- `bool IsCreatureFlying(...)` — Quest [blocking]: Returns whether creature flying.
+- `bool IsCreatureGenerationEnabledForRegion(...)` — Quest [blocking]: Returns whether creature generation enabled for region.
+- `bool IsDangerMusicEnabled(...)` — Quest [blocking]: Returns whether danger music enabled.
+- `bool IsDeedWitnessed(...)` — Quest [blocking]: Returns whether deed witnessed.
+- `bool IsDiggingSpotEnabled(...)` — Quest [blocking]: Returns whether digging spot enabled.
+- `bool IsDiggingSpotHidden(...)` — Quest [blocking]: Returns whether digging spot hidden.
+- `bool IsDistanceBetweenThingsUnder(...)` — Quest [blocking]: Returns whether distance between things under.
+- `bool IsEntityAbleToAttack(...)` — Quest [blocking]: Returns whether entity able to attack.
+- `bool IsEntityFollowingHero(...)` — Quest [blocking]: Returns whether entity following hero.
+- `bool IsEntityInLimbo(...)` — Quest [blocking]: Returns whether entity in limbo.
+- `bool IsEntityMarriable(...)` — Quest [blocking]: Returns whether entity marriable.
+- `bool IsEntityMarriedToHero(...)` — Quest [blocking]: Returns whether entity married to hero.
+- `bool IsEntityPickLockable(...)` — Quest [blocking]: Returns whether entity pick lockable.
+- `bool IsEntityPickPocketable(...)` — Quest [blocking]: Returns whether entity pick pocketable.
+- `bool IsEntityStealable(...)` — Quest [blocking]: Returns whether entity stealable.
+- `bool IsEntityWieldingMeleeWeapon(...)` — Quest [blocking]: Returns whether entity wielding melee weapon.
+- `bool IsEntityWieldingRangedWeapon(...)` — Quest [blocking]: Returns whether entity wielding ranged weapon.
+- `bool IsEntityWieldingWeapon(...)` — Quest [blocking]: Returns whether entity wielding weapon.
+- `bool IsGiftFriendly(...)` — Quest [blocking]: Returns whether gift friendly.
+- `bool IsGiftOffensive(...)` — Quest [blocking]: Returns whether gift offensive.
+- `bool IsGiftRomantic(...)` — Quest [blocking]: Returns whether gift romantic.
+- `bool IsHeroAllowedHenchmenInCurrentRegion(...)` — Quest [blocking]: Returns whether hero allowed henchmen in current region.
+- `bool IsHeroAllowedHenchmenInRegion(...)` — Quest [blocking]: Returns whether hero allowed henchmen in region.
+- `bool IsHeroChild(...)` — Quest [blocking]: Returns whether hero child.
+- `bool IsHeroHandLampLit(...)` — Quest [blocking]: Returns whether hero hand lamp lit.
+- `bool IsHeroInTavernGame(...)` — Quest [blocking]: Returns whether hero in tavern game.
+- `bool IsHeroNaked(...)` — Quest [blocking]: Returns whether hero naked.
+- `bool IsHeroOnQuest(...)` — Quest [blocking]: Returns whether hero on quest.
+- `bool IsHeroPerformingExpression(...)` — Quest [blocking]: Returns whether hero performing expression.
+- `bool IsHeroRenownLevelFull(...)` — Quest [blocking]: Returns whether hero renown level full.
+- `bool IsHeroSleepingEnabled(...)` — Quest [blocking]: Returns whether hero sleeping enabled.
+- `bool IsInCutscene(...)` — Quest [blocking]: Returns whether in cutscene.
+- `bool IsLevelLoaded(...)` — Quest [blocking]: Returns whether level loaded.
+- `bool IsObjectInHeroPossession(...)` — Quest [blocking]: Returns whether object in hero possession.
+- `bool IsPlayerCarryingItemOfType(...)` — Quest [blocking]: Returns whether player carrying item of type.
+- `bool IsPlayerCreatureBlocking(...)` — Quest [blocking]: Returns whether player creature blocking.
+- `bool IsPlayerCreatureFlourishEnabled(...)` — Quest [blocking]: Returns whether player creature flourish enabled.
+- `sol::object IsPlayerCreatureReadyToFireProjectileWeapon(...)` — Quest [blocking]: Returns whether player creature ready to fire projectile weapon.
+- `bool IsPlayerWieldingWeapon(...)` — Quest [blocking]: Returns whether player wielding weapon.
+- `bool IsPlayerZTargetingThing(...)` — Quest [blocking]: Returns whether player z targeting thing.
+- `bool IsQuestActive(...)` — Quest [blocking]: Returns whether quest active.
+- `bool IsQuestCompleted(...)` — Quest [blocking]: Returns whether quest completed.
+- `bool IsQuestFailed(...)` — Quest [blocking]: Returns whether quest failed.
+- `bool IsQuestRegistered(...)` — Quest [blocking]: Returns whether quest registered.
+- `sol::object IsQuestStartScreenActive(...)` — Quest [blocking]: Returns whether quest start screen active.
+- `bool IsRadialBlurFadeActive(...)` — Quest [blocking]: Returns whether radial blur fade active.
+- `bool IsRegionLoaded(...)` — Quest [blocking]: Returns whether region loaded.
+- `bool IsReportedOrUnreportedCrimeKnown(...)` — Quest [blocking]: Returns whether reported or unreported crime known.
+- `bool IsSafeToDisplayGameInfo(...)` — Quest [blocking]: Returns whether safe to display game info.
+- `bool IsSavingEnabled(...)` — Quest [blocking]: Returns whether saving enabled.
+- `bool IsScreenFadingOut(...)` — Quest [blocking]: Returns whether screen fading out.
+- `bool IsSleepingTime(...)` — Quest [blocking]: Returns whether sleeping time.
+- `bool IsSoundPlaying(...)` — Quest [blocking]: Returns whether sound playing.
+- `bool IsTeleporterActive(...)` — Quest [blocking]: Returns whether teleporter active.
+- `bool IsTeleportingActive(...)` — Quest [blocking]: Returns whether teleporting active.
+- `bool IsThingABed(...)` — Quest [blocking]: Returns whether thing a bed.
+- `bool IsThingAChest(...)` — Quest [blocking]: Returns whether thing a chest.
+- `bool IsThingADoor(...)` — Quest [blocking]: Returns whether thing a door.
+- `bool IsThingAwareOfOtherThingInAnyWay(...)` — Quest [blocking]: Returns whether thing aware of other thing in any way.
+- `bool IsThingOnFire(...)` — Quest [blocking]: Returns whether thing on fire.
+- `bool IsThingSearchable(...)` — Quest [blocking]: Returns whether thing searchable.
+- `bool IsThingSmashable(...)` — Quest [blocking]: Returns whether thing smashable.
+- `bool IsThingTurncoated(...)` — Quest [blocking]: Returns whether thing turncoated.
+- `bool IsTimeOfDayBetween(...)` — Quest [blocking]: Returns whether time of day between.
+- `bool IsToFailQuestOnDeath(...)` — Quest [blocking]: Returns whether to fail quest on death.
+- `bool IsTutorialSystemEnabled(...)` — Quest [blocking]: Returns whether tutorial system enabled.
+- `bool IsWearingClothingItem(...)` — Quest [blocking]: Returns whether wearing clothing item.
+- `bool IsWearingHairstyle(...)` — Quest [blocking]: Returns whether wearing hairstyle.
+- `void KickOffCreditsScreen(...)` — Quest [blocking]: Invokes kick off credits screen.
+- `void KickOffDeathScreen(...)` — Quest [blocking]: Invokes kick off death screen.
+- `void KickOffQuestStartScreen(...)` — Quest [blocking]: Invokes kick off quest start screen.
+- `void Log(...)` — Quest: Writes a quest-scoped line to the FSE log.
+- `void LogReceivedPointer(...)` — Quest [blocking]: Invokes log received pointer.
+- `void MakeHeroCarryItemInHand(...)` — Quest [blocking]: Invokes make hero carry item in hand.
+- `bool ManuallyResetTrap(...)` — Quest [blocking]: Returns whether manually reset trap.
+- `bool ManuallyTriggerTrap(...)` — Quest [blocking]: Returns whether manually trigger trap.
+- `void MiniMapAddMarker(...)` — Quest [blocking]: Invokes mini map add marker.
+- `void MiniMapAllowRouteBetweenRegions(...)` — Quest [blocking]: Invokes mini map allow route between regions.
+- `void MiniMapRemoveAllMarkers(...)` — Quest [blocking]: Invokes mini map remove all markers.
+- `void MiniMapRemoveMarker(...)` — Quest [blocking]: Invokes mini map remove marker.
+- `void MiniMapSetAsEnabled(...)` — Quest [blocking]: Invokes mini map set as enabled.
+- `void MiniMapSetMarkerGraphic(...)` — Quest [blocking]: Invokes mini map set marker graphic.
+- `void ModifyThingHealth(...)` — Quest [blocking]: Invokes modify thing health.
+- `bool MsgIsActionModeButtonPressed(...)` — Quest [blocking]: Returns whether message condition 'is action mode button pressed' is met.
+- `bool MsgIsBoastMade(...)` — Quest [blocking]: Returns whether message condition 'is boast made' is met.
+- `bool MsgIsCutSceneSkipped(...)` — Quest [blocking]: Returns whether message condition 'is cut scene skipped' is met.
+- `bool MsgIsGameInfoClickedPast(...)` — Quest [blocking]: Returns whether message condition 'is game info clicked past' is met.
+- `bool MsgIsLevelLoaded(...)` — Quest [blocking]: Returns whether message condition 'is level loaded' is met.
+- `bool MsgIsLevelUnloaded(...)` — Quest [blocking]: Returns whether message condition 'is level unloaded' is met.
+- `int MsgIsQuestionAnsweredYesOrNo(...)` — Quest [blocking]: Returns whether message condition 'is question answered yes or no' is met.
+- `bool MsgIsTutorialClickedPast(...)` — Quest [blocking]: Returns whether message condition 'is tutorial clicked past' is met.
+- `sol::table MsgOnBoastsMade(...)` — Quest [blocking]: Returns whether message condition 'on boasts made' is met.
+- `bool MsgOnChestOpeningCancelled(...)` — Quest [blocking]: Returns whether message condition 'on chest opening cancelled' is met.
+- `sol::object MsgOnExpressionPerformed(...)` — Quest [blocking]: Returns whether message condition 'on expression performed' is met.
+- `sol::object MsgOnFeatAccepted(...)` — Quest [blocking]: Returns whether message condition 'on feat accepted' is met.
+- `sol::object MsgOnFishingGameFinished(...)` — Quest [blocking]: Returns whether message condition 'on fishing game finished' is met.
+- `bool MsgOnGameSavedManually(...)` — Quest [blocking]: Returns whether message condition 'on game saved manually' is met.
+- `sol::object MsgOnHeroCastSpell(...)` — Quest [blocking]: Returns whether message condition 'on hero cast spell' is met.
+- `bool MsgOnHeroFiredRangedWeapon(...)` — Quest [blocking]: Returns whether message condition 'on hero fired ranged weapon' is met.
+- `sol::object MsgOnHeroHairTypeChanged(...)` — Quest [blocking]: Returns whether message condition 'on hero hair type changed' is met.
+- `sol::object MsgOnHeroPickedLock(...)` — Quest [blocking]: Returns whether message condition 'on hero picked lock' is met.
+- `sol::object MsgOnHeroPickedPocket(...)` — Quest [blocking]: Returns whether message condition 'on hero picked pocket' is met.
+- `sol::object MsgOnHeroRewardedWithItemsFrom(...)` — Quest [blocking]: Returns whether message condition 'on hero rewarded with items from' is met.
+- `sol::object MsgOnHeroSlept(...)` — Quest [blocking]: Returns whether message condition 'on hero slept' is met.
+- `bool MsgOnHeroUsedGuildSeal(...)` — Quest [blocking]: Returns whether message condition 'on hero used guild seal' is met.
+- `sol::object MsgOnHeroUsedTeleporter(...)` — Quest [blocking]: Returns whether message condition 'on hero used teleporter' is met.
+- `bool MsgOnLeavingExperienceSpendingScreen(...)` — Quest [blocking]: Returns whether message condition 'on leaving experience spending screen' is met.
+- `sol::object MsgOnLeavingQuestStartScreen(...)` — Quest [blocking]: Returns whether message condition 'on leaving quest start screen' is met.
+- `sol::object MsgOnQuestAccepted(...)` — Quest [blocking]: Returns whether message condition 'on quest accepted' is met.
+- `bool MsgOnQuestCompleted(...)` — Quest [blocking]: Returns whether message condition 'on quest completed' is met.
+- `bool MsgOnQuestFailed(...)` — Quest [blocking]: Returns whether message condition 'on quest failed' is met.
+- `sol::object MsgOnTavernGameFinished(...)` — Quest [blocking]: Returns whether message condition 'on tavern game finished' is met.
+- `bool NewScriptFrame(...)` — Quest [blocking]: Yields one script frame and returns continuation status.
+- `bool OpenChest(...)` — Quest [blocking]: Returns whether open chest.
+- `void OpenDoor(...)` — Quest [blocking]: Opens door.
+- `void OpinionSourceSetAsAttentionGrabbing(...)` — Quest [blocking]: Invokes opinion source set as attention grabbing.
+- `void OpinionSourceSetAsExclusive(...)` — Quest [blocking]: Invokes opinion source set as exclusive.
+- `void OverrideMusic(...)` — Quest [blocking]: Invokes override music.
+- `void Pause(...)` — Quest [blocking]: Pauses execution while yielding to the game loop.
+- `void PauseAllEntities(...)` — Quest [blocking]: Pauses all entities.
+- `void PauseAllNonScriptedEntities(...)` — Quest [blocking]: Pauses all non scripted entities.
+- `bool PersistTransferBool(...)` — Quest [blocking]: Returns whether persist transfer bool.
+- `float PersistTransferFloat(...)` — Quest [blocking]: Invokes persist transfer float.
+- `int PersistTransferInt(...)` — Quest [blocking]: Invokes persist transfer int.
+- `std::string PersistTransferString(...)` — Quest [blocking]: Invokes persist transfer string.
+- `unsigned int PersistTransferUInt(...)` — Quest [blocking]: Invokes persist transfer u int.
+- `unsigned int Play2DSound(...)` — Quest [blocking]: Plays 2 d sound.
+- `void PlayAVIMovie(...)` — Quest [blocking]: Plays avi movie.
+- `unsigned int PlayCriteriaSoundOnThing(...)` — Quest [blocking]: Plays criteria sound on thing.
+- `void PlayCutscene(...)` — Quest [blocking]: Plays cutscene.
+- `unsigned int PlaySoundAtPos(...)` — Quest [blocking]: Plays sound at pos.
+- `unsigned int PlaySoundOnThing(...)` — Quest [blocking]: Plays sound on thing.
+- `void RadialBlurFadeOut(...)` — Quest [blocking]: Invokes radial blur fade out.
+- `void* RadialBlurFadeTo_NoPos(...)` — Quest [blocking]: Invokes radial blur fade to no pos.
+- `void* RadialBlurFadeTo_WithPos(...)` — Quest [blocking]: Invokes radial blur fade to with pos.
+- `void RadialBlurSetCenterWorldPos(...)` — Quest [blocking]: Invokes radial blur set center world pos.
+- `int RegisterTimer(...)` — Quest [blocking]: Invokes register timer.
+- `void ReleaseThing(...)` — Quest [blocking]: Releases thing.
+- `void RemoveAllAvailableQuestCardsFromGuild(...)` — Quest [blocking]: Removes all available quest cards from guild.
+- `void RemoveAllCutSceneSkippedMessages(...)` — Quest [blocking]: Removes all cut scene skipped messages.
+- `void RemoveAllHeroWeapons(...)` — Quest [blocking]: Removes all hero weapons.
+- `void RemoveAllQuestInfoElements(...)` — Quest [blocking]: Removes all quest info elements.
+- `void RemoveBoast(...)` — Quest [blocking]: Removes boast.
+- `void RemoveBoastMessage(...)` — Quest [blocking]: Removes boast message.
+- `void RemoveConversation(...)` — Quest [blocking]: Removes conversation.
+- `void RemoveCreatureScriptedMode(...)` — Quest [blocking]: Removes creature scripted mode.
+- `void RemoveDeadCreature(...)` — Quest [blocking]: Removes dead creature.
+- `void RemoveGossip(...)` — Quest [blocking]: Removes gossip.
+- `void RemoveGossipFactions(...)` — Quest [blocking]: Removes gossip factions.
+- `void RemoveGossipVillages(...)` — Quest [blocking]: Removes gossip villages.
+- `void RemoveHeroClothing(...)` — Quest [blocking]: Removes hero clothing.
+- `void RemoveHeroHairstyle(...)` — Quest [blocking]: Removes hero hairstyle.
+- `void RemoveItemFromContainer(...)` — Quest [blocking]: Removes item from container.
+- `void RemoveOpinionDeedStillSearchingForWitnesses(...)` — Quest [blocking]: Removes opinion deed still searching for witnesses.
+- `void RemoveQuestCardFromGuild(...)` — Quest [blocking]: Removes quest card from guild.
+- `void RemoveQuestCardFromHero(...)` — Quest [blocking]: Removes quest card from hero.
+- `void RemoveQuestInfoElement(...)` — Quest [blocking]: Removes quest info element.
+- `void RemoveRumourCategory(...)` — Quest [blocking]: Removes rumour category.
+- `void RemoveThing(...)` — Quest [blocking]: Removes thing.
+- `void RepopulateVillage(...)` — Quest [blocking]: Invokes repopulate village.
+- `void ResetAction(...)` — Quest [blocking]: Resets action.
+- `void ResetActionFrequency(...)` — Quest [blocking]: Resets action frequency.
+- `void ResetActionFrequencyVariation(...)` — Quest [blocking]: Resets action frequency variation.
+- `void ResetAllowedToFollow(...)` — Quest [blocking]: Resets allowed to follow.
+- `void ResetAttackHeroOnSight(...)` — Quest [blocking]: Resets attack hero on sight.
+- `void ResetAvoidRegionExits(...)` — Quest [blocking]: Resets avoid region exits.
+- `void ResetBeerRequestPhrase(...)` — Quest [blocking]: Resets beer request phrase.
+- `void ResetCombatNearbyBreakOffRange(...)` — Quest [blocking]: Resets combat nearby break off range.
+- `void ResetCombatNearbyEnemyFleeingBreakOffRange(...)` — Quest [blocking]: Resets combat nearby enemy fleeing break off range.
+- `void ResetCreatureCreationDelayFrames(...)` — Quest [blocking]: Resets creature creation delay frames.
+- `void ResetDeathRecoveryMarkerNameToDefault(...)` — Quest [blocking]: Resets death recovery marker name to default.
+- `void ResetDisableHeadLooking(...)` — Quest [blocking]: Resets disable head looking.
+- `void ResetFaceHeroForAction(...)` — Quest [blocking]: Resets face hero for action.
+- `void ResetFollowDistance(...)` — Quest [blocking]: Resets follow distance.
+- `void ResetGossipCounter(...)` — Quest [blocking]: Resets gossip counter.
+- `void ResetIgnoringPhrase(...)` — Quest [blocking]: Resets ignoring phrase.
+- `void ResetIsPushableByHero(...)` — Quest [blocking]: Resets is pushable by hero.
+- `void ResetKillSelfAndStealableItemAfterReachingDestination(...)` — Quest [blocking]: Resets kill self and stealable item after reaching destination.
+- `void ResetLookForFiniteTime(...)` — Quest [blocking]: Resets look for finite time.
+- `void ResetMaxGossipPhrase(...)` — Quest [blocking]: Resets max gossip phrase.
+- `void ResetMaxHeroReactionDistance(...)` — Quest [blocking]: Resets max hero reaction distance.
+- `void ResetPlayerCreatureCombatMultiplier(...)` — Quest [blocking]: Resets player creature combat multiplier.
+- `void ResetPlayerCreatureOnlyTarget(...)` — Quest [blocking]: Resets player creature only target.
+- `void ResetRecoverStealableItems(...)` — Quest [blocking]: Resets recover stealable items.
+- `void ResetScriptingStateGroup(...)` — Quest [blocking]: Resets scripting state group.
+- `void ResetSeatName(...)` — Quest [blocking]: Resets seat name.
+- `void ResetStealStealableItems(...)` — Quest [blocking]: Resets steal stealable items.
+- `void ResetTableName(...)` — Quest [blocking]: Resets table name.
+- `void ResetTakeStealableItemToRandomDestination(...)` — Quest [blocking]: Resets take stealable item to random destination.
+- `void ResetTargetName(...)` — Quest [blocking]: Resets target name.
+- `void ResetTargetingDistanceOffset(...)` — Quest [blocking]: Resets targeting distance offset.
+- `void ResetThankingPhrase(...)` — Quest [blocking]: Resets thanking phrase.
+- `void ResetTimeToSpendHarassingHero(...)` — Quest [blocking]: Resets time to spend harassing hero.
+- `void ResetToDefaultTheme(...)` — Quest [blocking]: Resets to default theme.
+- `void ResetToDefaultThemeAllInternals(...)` — Quest [blocking]: Resets to default theme all internals.
+- `void ResetToDefaultThemeExternals(...)` — Quest [blocking]: Resets to default theme externals.
+- `void ResetToFrontEnd(...)` — Quest [blocking]: Resets to front end.
+- `void ResetWanderCentrePoint(...)` — Quest [blocking]: Resets wander centre point.
+- `void ResetWanderMaxDistance(...)` — Quest [blocking]: Resets wander max distance.
+- `void ResetWanderMinDistance(...)` — Quest [blocking]: Resets wander min distance.
+- `void ResetWarningPhrase(...)` — Quest [blocking]: Resets warning phrase.
+- `void ResetWhetherToFailQuestOnDeathToDefault(...)` — Quest [blocking]: Resets whether to fail quest on death to default.
+- `void RespawnHero(...)` — Quest [blocking]: Invokes respawn hero.
+- `void ReturnAllConfiscatedItemsToHero(...)` — Quest [blocking]: Invokes return all confiscated items to hero.
+- `void ScreenFilterFadeOut(...)` — Quest [blocking]: Invokes screen filter fade out.
+- `void* ScreenFilterFadeTo(...)` — Quest [blocking]: Invokes screen filter fade to.
+- `void SendEntityEvent(...)` — Quest [blocking]: Invokes send entity event.
+- `void SetAbilityAvailability(...)` — Quest [blocking]: Sets ability availability.
+- `void SetAction(...)` — Quest [blocking]: Sets action.
+- `void SetActionFrequency(...)` — Quest [blocking]: Sets action frequency.
+- `void SetActionFrequencyVariation(...)` — Quest [blocking]: Sets action frequency variation.
+- `void SetActiveGossipCategories(...)` — Quest [blocking]: Sets active gossip categories.
+- `void SetAllSoundsAsMuted(...)` — Quest [blocking]: Sets all sounds as muted.
+- `void SetAllowScreenFadingIfAlreadyFaded(...)` — Quest [blocking]: Sets allow screen fading if already faded.
+- `void SetAllowScreenFadingOnNextRegionChange(...)` — Quest [blocking]: Sets allow screen fading on next region change.
+- `void SetAllowedToFollow(...)` — Quest [blocking]: Sets allowed to follow.
+- `void SetAttackHeroOnSight(...)` — Quest [blocking]: Sets attack hero on sight.
+- `void SetAvoidRegionExits(...)` — Quest [blocking]: Sets avoid region exits.
+- `void SetBedAvailability(...)` — Quest [blocking]: Sets bed availability.
+- `void SetBeerRequestPhrase(...)` — Quest [blocking]: Sets beer request phrase.
+- `void SetBettingAccept(...)` — Quest [blocking]: Sets betting accept.
+- `void SetBettingActive(...)` — Quest [blocking]: Sets betting active.
+- `void SetBettingAmount(...)` — Quest [blocking]: Sets betting amount.
+- `void SetBoastAsCompleted(...)` — Quest [blocking]: Sets boast as completed.
+- `void SetBoastAsFailed(...)` — Quest [blocking]: Sets boast as failed.
+- `void SetBoastingEnabled(...)` — Quest [blocking]: Sets boasting enabled.
+- `void SetCategoryActivity(...)` — Quest [blocking]: Sets category activity.
+- `void SetCheapHeadLooking(...)` — Quest [blocking]: Sets cheap head looking.
+- `void SetCombatNearbyBreakOffRange(...)` — Quest [blocking]: Sets combat nearby break off range.
+- `void SetCombatNearbyEnemyFleeingBreakOffRange(...)` — Quest [blocking]: Sets combat nearby enemy fleeing break off range.
+- `void SetCountBetMoneyDown(...)` — Quest [blocking]: Sets count bet money down.
+- `void SetCreatureBrain(...)` — Quest [blocking]: Sets creature brain.
+- `void SetCreatureCreationDelayFrames(...)` — Quest [blocking]: Sets creature creation delay frames.
+- `void SetCreatureGeneratorEnabled(...)` — Quest [blocking]: Sets creature generator enabled.
+- `void SetCreatureGeneratorsCreatureGroupAsEnabled(...)` — Quest [blocking]: Sets creature generators creature group as enabled.
+- `void SetCreatureGeneratorsEnabled(...)` — Quest [blocking]: Sets creature generators enabled.
+- `void SetCreatureGeneratorsEnabledDuringScript(...)` — Quest [blocking]: Sets creature generators enabled during script.
+- `void SetCreatureNotReload(...)` — Quest [blocking]: Sets creature not reload.
+- `void SetDeadCreaturesAndExperienceOrbsAndDropBagsAsHidden(...)` — Quest [blocking]: Sets dead creatures and experience orbs and drop bags as hidden.
+- `void SetDeathRecoveryMarkerName(...)` — Quest [blocking]: Sets death recovery marker name.
+- `void SetDiggingSpotAsHidden(...)` — Quest [blocking]: Sets digging spot as hidden.
+- `void SetDisableHeadLooking(...)` — Quest [blocking]: Sets disable head looking.
+- `void SetEntityAsFollowingHeroThroughTeleporters(...)` — Quest [blocking]: Sets entity as following hero through teleporters.
+- `void SetEntityAsRegionFollowing(...)` — Quest [blocking]: Sets entity as region following.
+- `void SetEnvironmentThemeWeightAllChannels(...)` — Quest [blocking]: Sets environment theme weight all channels.
+- `void SetEnvironmentThemeWeightAllInternals(...)` — Quest [blocking]: Sets environment theme weight all internals.
+- `void SetEnvironmentThemeWeightExternals(...)` — Quest [blocking]: Sets environment theme weight externals.
+- `void SetEnvironmentalEffectsAlwaysUpdate(...)` — Quest [blocking]: Sets environmental effects always update.
+- `void SetExperienceSpendingAsEnabled(...)` — Quest [blocking]: Sets experience spending as enabled.
+- `void SetFaceHeroForAction(...)` — Quest [blocking]: Sets face hero for action.
+- `void SetFactionAsAlliedToFaction(...)` — Quest [blocking]: Sets faction as allied to faction.
+- `void SetFactionAsEnemyToFaction(...)` — Quest [blocking]: Sets faction as enemy to faction.
+- `void SetFactionAsNeutralToFaction(...)` — Quest [blocking]: Sets faction as neutral to faction.
+- `void SetFireToThing(...)` — Quest [blocking]: Sets fire to thing.
+- `void SetFollowDistance(...)` — Quest [blocking]: Sets follow distance.
+- `void SetGlobalBool(...)` — Quest [blocking]: Sets global bool.
+- `void SetGlobalInt(...)` — Quest [blocking]: Sets global int.
+- `void SetGlobalString(...)` — Quest [blocking]: Sets global string.
+- `void SetGlobalTargetingDistanceOffset(...)` — Quest [blocking]: Sets global targeting distance offset.
+- `void SetGossip(...)` — Quest [blocking]: Sets gossip.
+- `void SetGossipCounter(...)` — Quest [blocking]: Sets gossip counter.
+- `void SetGossipFactions(...)` — Quest [blocking]: Sets gossip factions.
+- `void SetGossipVillages(...)` — Quest [blocking]: Sets gossip villages.
+- `void SetGuardsIgnoreCrimes(...)` — Quest [blocking]: Sets guards ignore crimes.
+- `void SetGuildMasterMessages(...)` — Quest [blocking]: Sets guild master messages.
+- `void SetGuildSealRecallLocation(...)` — Quest [blocking]: Sets guild seal recall location.
+- `void SetHUDEnabled(...)` — Quest [blocking]: Sets hud enabled.
+- `void SetHeroAbleToGainExperience(...)` — Quest [blocking]: Sets hero able to gain experience.
+- `void SetHeroAge(...)` — Quest [blocking]: Sets hero age.
+- `void SetHeroAsApprentice(...)` — Quest [blocking]: Sets hero as apprentice.
+- `void SetHeroAsHavingHadGaySex(...)` — Quest [blocking]: Sets hero as having had gay sex.
+- `void SetHeroAsHavingHadSex(...)` — Quest [blocking]: Sets hero as having had sex.
+- `void SetHeroAsTeenager(...)` — Quest [blocking]: Sets hero as teenager.
+- `void SetHeroAsWearing(...)` — Quest [blocking]: Sets hero as wearing.
+- `void SetHeroGuideShowsQuestCards(...)` — Quest [blocking]: Sets hero guide shows quest cards.
+- `void SetHeroHandLampAsLit(...)` — Quest [blocking]: Sets hero hand lamp as lit.
+- `void SetHeroSleepingAsEnabled(...)` — Quest [blocking]: Sets hero sleeping as enabled.
+- `void SetHeroWeaponsAsUsable(...)` — Quest [blocking]: Sets hero weapons as usable.
+- `void SetHeroWillAsUsable(...)` — Quest [blocking]: Sets hero will as usable.
+- `void SetHeroWillEnergyAsAbleToRefill(...)` — Quest [blocking]: Sets hero will energy as able to refill.
+- `void SetHeroWillEnergyLevel(...)` — Quest [blocking]: Sets hero will energy level.
+- `void SetIgnoringPhrase(...)` — Quest [blocking]: Sets ignoring phrase.
+- `void SetIsGossipForPlayer_ByName(...)` — Quest [blocking]: Sets is gossip for player by name.
+- `void SetIsGossipForPlayer_ByObject(...)` — Quest [blocking]: Sets is gossip for player by object.
+- `void SetIsPushableByHero(...)` — Quest [blocking]: Sets is pushable by hero.
+- `void SetIsThingEpicSpellable(...)` — Quest [blocking]: Sets is thing epic spellable.
+- `void SetIsThingForcePushable(...)` — Quest [blocking]: Sets is thing force pushable.
+- `void SetIsThingLightningable(...)` — Quest [blocking]: Sets is thing lightningable.
+- `void SetIsThingTurncoatable(...)` — Quest [blocking]: Sets is thing turncoatable.
+- `void SetKillSelfAndStealableItemAfterReachingDestination(...)` — Quest [blocking]: Sets kill self and stealable item after reaching destination.
+- `void SetLightColour(...)` — Quest [blocking]: Sets light colour.
+- `void SetLookForFiniteTime(...)` — Quest [blocking]: Sets look for finite time.
+- `void SetMaxGossipPhrase(...)` — Quest [blocking]: Sets max gossip phrase.
+- `void SetMaxHeroReactionDistance(...)` — Quest [blocking]: Sets max hero reaction distance.
+- `void SetMoralityChangingAsEnabled(...)` — Quest [blocking]: Sets morality changing as enabled.
+- `void SetNumberOfTimesHeroHasHadSex(...)` — Quest [blocking]: Sets number of times hero has had sex.
+- `void SetOwnedByHero(...)` — Quest [blocking]: Sets owned by hero.
+- `void SetPlayerCreatureOnlyTarget(...)` — Quest [blocking]: Sets player creature only target.
+- `void SetPlayerUsingMeleeDummies(...)` — Quest [blocking]: Sets player using melee dummies.
+- `void SetPlayerUsingRangedDummies(...)` — Quest [blocking]: Sets player using ranged dummies.
+- `void SetPlayerUsingWillDummies(...)` — Quest [blocking]: Sets player using will dummies.
+- `void SetPreferredQuickAccessItem(...)` — Quest [blocking]: Sets preferred quick access item.
+- `void SetPrizeTavernTable(...)` — Quest [blocking]: Sets prize tavern table.
+- `void SetQuestAsCompleted(...)` — Quest [blocking]: Sets quest as completed.
+- `void SetQuestAsFailed(...)` — Quest [blocking]: Sets quest as failed.
+- `void SetQuestAsPersistent(...)` — Quest [blocking]: Sets quest as persistent.
+- `void SetQuestCardObjective(...)` — Quest [blocking]: Sets quest card objective.
+- `void SetQuestGoldReward(...)` — Quest [blocking]: Sets quest gold reward.
+- `void SetQuestInfoName(...)` — Quest [blocking]: Sets quest info name.
+- `void SetQuestInfoText(...)` — Quest [blocking]: Sets quest info text.
+- `void SetQuestRenownReward(...)` — Quest [blocking]: Sets quest renown reward.
+- `void SetQuestWorldMapOffset(...)` — Quest [blocking]: Sets quest world map offset.
+- `void SetQuitTavernGame(...)` — Quest [blocking]: Sets quit tavern game.
+- `void SetReadableObjectText(...)` — Quest [blocking]: Sets readable object text.
+- `void SetReadableObjectTextTag(...)` — Quest [blocking]: Sets readable object text tag.
+- `void SetRecoverStealableItems(...)` — Quest [blocking]: Sets recover stealable items.
+- `void SetRegionEntranceAsActive(...)` — Quest [blocking]: Sets region entrance as active.
+- `void SetRegionExitAsActive(...)` — Quest [blocking]: Sets region exit as active.
+- `void SetRegionTextDisplayAsActive(...)` — Quest [blocking]: Sets region text display as active.
+- `std::shared_ptr<CScriptThing> SetResidency(...)` — Quest [blocking]: Sets residency.
+- `void SetSaveGameMarkerPos(...)` — Quest [blocking]: Sets save game marker pos.
+- `void SetSavingAsEnabled(...)` — Quest [blocking]: Sets saving as enabled.
+- `void SetScriptingStateGroup(...)` — Quest [blocking]: Sets scripting state group.
+- `void SetSeatName(...)` — Quest [blocking]: Sets seat name.
+- `void SetSoundThemesAsEnabledForRegion(...)` — Quest [blocking]: Sets sound themes as enabled for region.
+- `void SetSpotTheAdditionBeaten(...)` — Quest [blocking]: Sets spot the addition beaten.
+- `void SetStateBool(...)` — Quest [blocking]: Sets a persisted quest-local boolean state value.
+- `void SetStateInt(...)` — Quest [blocking]: Sets a persisted quest-local integer state value.
+- `void SetStateString(...)` — Quest [blocking]: Sets a persisted quest-local string state value.
+- `void SetStealStealableItems(...)` — Quest [blocking]: Sets steal stealable items.
+- `void SetSummonerDeathExplosionAffectsHero(...)` — Quest [blocking]: Sets summoner death explosion affects hero.
+- `void SetTableName(...)` — Quest [blocking]: Sets table name.
+- `void SetTakeStealableItemToRandomDestination(...)` — Quest [blocking]: Sets take stealable item to random destination.
+- `void SetTargetName(...)` — Quest [blocking]: Sets target name.
+- `void SetTargetingDistanceOffset(...)` — Quest [blocking]: Sets targeting distance offset.
+- `void SetTavernTableAvailableForUse(...)` — Quest [blocking]: Sets tavern table available for use.
+- `void SetTeleporterAsActive(...)` — Quest [blocking]: Sets teleporter as active.
+- `void SetTeleportingAsActive(...)` — Quest [blocking]: Sets teleporting as active.
+- `void SetThankingPhrase(...)` — Quest [blocking]: Sets thanking phrase.
+- `void SetThingAndCarriedItemsNotAffectedByScreenFilter(...)` — Quest [blocking]: Sets thing and carried items not affected by screen filter.
+- `void SetThingAsConscious(...)` — Quest [blocking]: Sets thing as conscious.
+- `void SetThingAsKilled(...)` — Quest [blocking]: Sets thing as killed.
+- `void SetThingAsUsable(...)` — Quest [blocking]: Sets thing as usable.
+- `void SetThingHasInformation(...)` — Quest [blocking]: Sets thing has information.
+- `void SetThingHomeBuilding(...)` — Quest [blocking]: Sets thing home building.
+- `void SetThingPersistent(...)` — Quest [blocking]: Sets thing persistent.
+- `void SetTimeAsStopped(...)` — Quest [blocking]: Sets time as stopped.
+- `void SetTimeOfDay(...)` — Quest [blocking]: Sets time of day.
+- `void SetTimeToSpendHarassingHero(...)` — Quest [blocking]: Sets time to spend harassing hero.
+- `void SetTimer(...)` — Quest [blocking]: Sets timer.
+- `void SetTradingPriceMult(...)` — Quest [blocking]: Sets trading price mult.
+- `void SetTrapAsActive(...)` — Quest [blocking]: Sets trap as active.
+- `void SetTrophyAsMountable(...)` — Quest [blocking]: Sets trophy as mountable.
+- `void SetUseableByHero(...)` — Quest [blocking]: Sets useable by hero.
+- `void SetVillageAttitude(...)` — Quest [blocking]: Sets village attitude.
+- `void SetVillageLimbo(...)` — Quest [blocking]: Sets village limbo.
+- `void SetWanderCentrePoint(...)` — Quest [blocking]: Sets wander centre point.
+- `void SetWanderMaxDistance(...)` — Quest [blocking]: Sets wander max distance.
+- `void SetWanderMinDistance(...)` — Quest [blocking]: Sets wander min distance.
+- `void SetWarningPhrase(...)` — Quest [blocking]: Sets warning phrase.
+- `void SetWeaponAsHerosActiveWeapon(...)` — Quest [blocking]: Sets weapon as heros active weapon.
+- `void SetWeaponOutCrimeEnabled(...)` — Quest [blocking]: Sets weapon out crime enabled.
+- `void SetWhetherToFailQuestOnDeath(...)` — Quest [blocking]: Sets whether to fail quest on death.
+- `void SheatheHeroWeapons(...)` — Quest [blocking]: Invokes sheathe hero weapons.
+- `void ShowMessage(...)` — Quest [blocking]: Shows an on-screen message for a duration.
+- `void ShowMessageWithButtons(...)` — Quest [blocking]: Shows message with buttons.
+- `void ShowOnScreenMessageWithFont(...)` — Quest [blocking]: Shows on screen message with font.
+- `void SmashAllWindowsWithinRadiusOfPoint(...)` — Quest [blocking]: Invokes smash all windows within radius of point.
+- `void StartCountdownTimer(...)` — Quest [blocking]: Invokes start countdown timer.
+- `void StartMovieSequence(...)` — Quest [blocking]: Invokes start movie sequence.
+- `void StartSneaking(...)` — Quest [blocking]: Invokes start sneaking.
+- `void StopOverrideMusic(...)` — Quest [blocking]: Stops override music.
+- `void StopSound(...)` — Quest [blocking]: Stops sound.
+- `void TakeObjectFromHero(...)` — Quest [blocking]: Takes object from hero.
+- `void TeleportAllFollowersToHeroPosition(...)` — Quest [blocking]: Teleports all followers to hero position.
+- `void TellHeroQuestObjectiveCompleted(...)` — Quest [blocking]: Invokes tell hero quest objective completed.
+- `void TellHeroQuestObjectiveFailed(...)` — Quest [blocking]: Invokes tell hero quest objective failed.
+- `void TransitionToTheme(...)` — Quest [blocking]: Invokes transition to theme.
+- `void TransitionToThemeAllInternals(...)` — Quest [blocking]: Invokes transition to theme all internals.
+- `void TransitionToThemeExternals(...)` — Quest [blocking]: Invokes transition to theme externals.
+- `std::shared_ptr<CScriptThing> TryToRespawnDefNamed(...)` — Quest [blocking]: Invokes try to respawn def named.
+- `std::shared_ptr<CScriptThing> TurnCreatureInto(...)` — Quest [blocking]: Invokes turn creature into.
+- `void UnSetThingAndCarriedItemsNotAffectedByScreenFilter(...)` — Quest [blocking]: Invokes un set thing and carried items not affected by screen filter.
+- `void UpdateMiniGameInfoBar(...)` — Quest [blocking]: Invokes update mini game info bar.
+- `void UpdateQuestInfoBar(...)` — Quest [blocking]: Invokes update quest info bar.
+- `void UpdateQuestInfoCounter(...)` — Quest [blocking]: Invokes update quest info counter.
+- `void UpdateQuestInfoCounterList(...)` — Quest [blocking]: Invokes update quest info counter list.
+- `void UpdateQuestInfoTick(...)` — Quest [blocking]: Invokes update quest info tick.
+- `void UpdateQuestInfoTimer(...)` — Quest [blocking]: Invokes update quest info timer.
+- `void WaitForCameraMessage(...)` — Quest [blocking]: Waits for camera message.

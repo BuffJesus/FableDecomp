@@ -1,0 +1,1109 @@
+@@@FUNC 00c30940 136 6
+@@CALLERS Unwind@01211e30, Unwind@01211e82
+@@CALLEES CCharStringData::Release, operator_delete, Map_CheckEmpty
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c30940(int *param_1)
+
+{
+  void *pvVar1;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  puStack_8 = &LAB_01213fc4;
+  pvStack_c = ExceptionList;
+  local_4 = 0;
+  ExceptionList = &pvStack_c;
+  pvVar1 = (void *)(**(code **)(*param_1 + 0x2c))();
+  while (pvVar1 != (void *)0x0) {
+    (**(code **)(*param_1 + 0x20))(pvVar1);
+    if (pvVar1 != (void *)0x0) {
+      CCharStringData__Release();
+      operator_delete(pvVar1);
+    }
+    pvVar1 = (void *)(**(code **)(*param_1 + 0x2c))();
+  }
+  *param_1 = (int)&PTR_LAB_012b4cc0;
+  local_4 = 1;
+  Map_CheckEmpty();
+  *param_1 = (int)&PTR_LAB_012b1ab0;
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c59de0 64 6
+@@CALLERS 
+@@CALLEES _CIpow, Graphics_ConvertTimeToPixels
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00c59de0(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
+
+{
+  int iVar1;
+  
+  iVar1 = Graphics_ConvertTimeToPixels(param_4,param_1);
+  if (iVar1 != 0) {
+    _CIpow(iVar1);
+    return;
+  }
+  _CIpow(0);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c5cf20 52 6
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c5cf20(int param_1,int param_2)
+
+{
+  uint uVar1;
+  
+  uVar1 = *(int *)(param_1 + 0x14) + param_2;
+  param_2 = *(int *)(param_1 + 0x1c) - param_2;
+  *(uint *)(param_1 + 0x14) = uVar1;
+  *(int *)(param_1 + 0x1c) = param_2;
+  if (param_2 == 0) {
+    *(undefined4 *)(param_1 + 0x14) = 0;
+    *(undefined4 *)(param_1 + 0x18) = 0;
+    return;
+  }
+  if (*(uint *)(param_1 + 8) <= uVar1) {
+    *(uint *)(param_1 + 0x14) = uVar1 - *(uint *)(param_1 + 8);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 008f86f0 162 5
+@@CALLERS Open, CreateSocket, ConvertLAddress2Sockaddr, Listen
+@@CALLEES memmove, FUN_008f86a0, malloc, free
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_008f86f0(undefined4 *param_1,int *param_2)
+
+{
+  bool bVar1;
+  char *_Dst;
+  void *pvVar2;
+  int iVar3;
+  char *pcVar4;
+  char *pcVar5;
+  bool bVar6;
+  
+  iVar3 = param_1[3];
+  if (iVar3 != 0) goto LAB_008f8788;
+  _Dst = malloc(4);
+  pvVar2 = memmove(_Dst,&DAT_01273128,3);
+  *(undefined1 *)((int)pvVar2 + 3) = 0;
+  iVar3 = param_1[1] - (int)*param_1;
+  if (iVar3 == ((int)pvVar2 + 3) - (int)_Dst) {
+    bVar6 = true;
+    pcVar4 = (char *)*param_1;
+    pcVar5 = _Dst;
+    do {
+      if (iVar3 == 0) break;
+      iVar3 = iVar3 + -1;
+      bVar6 = *pcVar4 == *pcVar5;
+      pcVar4 = pcVar4 + 1;
+      pcVar5 = pcVar5 + 1;
+    } while (bVar6);
+    bVar1 = true;
+    if (!bVar6) goto LAB_008f8747;
+  }
+  else {
+LAB_008f8747:
+    bVar1 = false;
+  }
+  if (_Dst != (char *)0x0) {
+    free(_Dst);
+  }
+  if (bVar1) {
+    *param_2 = 0;
+    return 1;
+  }
+  iVar3 = FUN_008f86a0();
+  param_1[3] = iVar3;
+  if (*param_2 == -1) {
+    return 0;
+  }
+LAB_008f8788:
+  *param_2 = iVar3;
+  return 1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c16760 73 5
+@@CALLERS 
+@@CALLEES WideCharToMultiByte, wcslen
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c16760(wchar_t *param_1,LPSTR param_2,int param_3)
+
+{
+  int iVar1;
+  size_t cchWideChar;
+  LPSTR lpMultiByteStr;
+  LPCSTR lpDefaultChar;
+  LPBOOL lpUsedDefaultChar;
+  
+  if (param_3 != 0) {
+    lpUsedDefaultChar = &param_3;
+    lpDefaultChar = " ";
+    iVar1 = param_3 + -1;
+    lpMultiByteStr = param_2;
+    cchWideChar = wcslen(param_1);
+    iVar1 = WideCharToMultiByte(0,0x400,param_1,cchWideChar,lpMultiByteStr,iVar1,lpDefaultChar,
+                                lpUsedDefaultChar);
+    if (iVar1 < 0) {
+      *param_2 = '\0';
+      return;
+    }
+    param_2[iVar1] = '\0';
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c1ba70 13 5
+@@CALLERS 
+@@CALLEES FUN_00c1ba40
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c1ba70(int param_1)
+
+{
+  FUN_00c1ba40(*(undefined2 *)(param_1 + 0x12));
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c2ebc0 241 5
+@@CALLERS 
+@@CALLEES operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, CCharStringData::Release, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+@@STRINGS d:\dev\audio\ver_fable_1.5_b\libpk\PKCAutoDeleteArray.h	Index 	 is out of range (
+@@DECOMP
+
+int __thiscall FUN_00c2ebc0(int *param_1,CIsThingAlive *param_2)
+
+{
+  CIsThingAlive *pCVar1;
+  CIsThingAlive *pCVar2;
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar3;
+  undefined *local_10;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  pCVar2 = param_2;
+  puStack_8 = &LAB_01213c68;
+  local_c = ExceptionList;
+  pCVar1 = (CIsThingAlive *)param_1[1];
+  if (pCVar1 <= param_2) {
+    local_10 = PTR_DAT_0139c900;
+    local_4 = 0;
+    ExceptionList = &local_c;
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            *)&local_10,
+                           (CIsThingAlive *)
+                           "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCAutoDeleteArray.h");
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,(CIsThingAlive *)&DAT_0122e028);
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,(CIsThingAlive *)0x4d);
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,(CIsThingAlive *)&DAT_012b1ae4);
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,(CIsThingAlive *)"Index ");
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,pCVar2);
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,(CIsThingAlive *)" is out of range (");
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,pCVar1);
+    pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              *)NScript::
+                operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                          (pCVar3,(CIsThingAlive *)&DAT_0122e020);
+    NScript::
+    operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+              (pCVar3,(CIsThingAlive *)&DAT_0129b208);
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    local_4 = 0xffffffff;
+    CCharStringData__Release();
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+  }
+  ExceptionList = local_c;
+  return *param_1 + (int)pCVar2 * 4;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c34410 40 5
+@@CALLERS 
+@@CALLEES FUN_00c0b130
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c34410(int param_1)
+
+{
+  FUN_00c0b130(*(float *)(param_1 + 0x38) * *(float *)(param_1 + 0x34),
+               *(undefined2 *)(param_1 + 0x3e));
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00431471 34 4
+@@CALLERS std_set_insert_uint_via_FUN
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_00431471(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045c4d2 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045c4d2(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045c8a1 34 4
+@@CALLERS CTCCarryable_Clone_Tree
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045c8a1(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045d901 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045d901(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045de2f 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045de2f(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined1 *)((int)pvVar1 + 0x14) = *(undefined1 *)(param_1 + 1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045e2b1 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045e2b1(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined1 *)((int)pvVar1 + 0x14) = *(undefined1 *)(param_1 + 1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045e797 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045e797(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined1 *)((int)pvVar1 + 0x14) = *(undefined1 *)(param_1 + 1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045f13d 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0045f13d(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0046149e 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_0046149e(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004615c3 34 4
+@@CALLERS Tree_Clone_Recursive
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004615c3(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004622ec 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004622ec(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00462411 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_00462411(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004630e7 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004630e7(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e4d19 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e4d19(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e4eca 34 4
+@@CALLERS TreeNode_Clone
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e4eca(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e4fef 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e4fef(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e55cf 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e55cf(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e597b 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e597b(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6210 34 4
+@@CALLERS std_set_insert_via_FUN
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e6210(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6623 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e6623(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6748 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e6748(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e9ab1 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e9ab1(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ec31c 34 4
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004ec31c(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = malloc(0x18);
+  if ((undefined4 *)((int)pvVar1 + 0x10) != (undefined4 *)0x0) {
+    *(undefined4 *)((int)pvVar1 + 0x10) = *param_1;
+    *(undefined4 *)((int)pvVar1 + 0x14) = param_1[1];
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006561c8 26 4
+@@CALLERS AddText
+@@CALLEES luaV_Cclosure
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_006561c8(undefined4 *param_1,undefined4 param_2)
+
+{
+  luaV_Cclosure(param_1,*param_1,&param_2,*param_1,param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 009d2a40 101 4
+@@CALLERS MakeWritable, C3DMeshObject, CollapseSegments
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_009d2a40(undefined4 *param_1,uint param_2,undefined1 *param_3)
+
+{
+  undefined1 uVar1;
+  uint uVar2;
+  undefined4 *puVar3;
+  undefined4 *puVar4;
+  
+  puVar3 = (undefined4 *)0x0;
+  *param_1 = 0;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  if (param_2 != 0) {
+    puVar3 = malloc(param_2);
+  }
+  param_1[2] = (undefined1 *)(param_2 + (int)puVar3);
+  param_1[1] = puVar3;
+  *param_1 = puVar3;
+  uVar1 = *param_3;
+  puVar4 = puVar3;
+  for (uVar2 = param_2 >> 2; uVar2 != 0; uVar2 = uVar2 - 1) {
+    *puVar4 = CONCAT22(CONCAT11(uVar1,uVar1),CONCAT11(uVar1,uVar1));
+    puVar4 = puVar4 + 1;
+  }
+  for (uVar2 = param_2 & 3; uVar2 != 0; uVar2 = uVar2 - 1) {
+    *(undefined1 *)puVar4 = uVar1;
+    puVar4 = (undefined4 *)((int)puVar4 + 1);
+  }
+  param_1[1] = (undefined1 *)((int)puVar3 + param_2);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 009f7c50 129 4
+@@CALLERS OnPostSwapScreens
+@@CALLEES operator--, __EH_epilog3, free
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __EH_epilog3 replaced with injection: EH_epilog3 */
+/* WARNING: Unable to track spacebase fully for stack */
+
+void FUN_009f7c50(void)
+
+{
+  int *unaff_EBP;
+  int iVar1;
+  
+  std::
+  _List_const_iterator<std::_List_val<CVsyncCallbackTimer::CPendingQuery,std::allocator<CVsyncCallbackTimer::CPendingQuery>_>_>
+  ::operator--((_List_const_iterator<std::_List_val<CVsyncCallbackTimer::CPendingQuery,std::allocator<CVsyncCallbackTimer::CPendingQuery>_>_>
+                *)(unaff_EBP + -1));
+  unaff_EBP[-5] = (int)(unaff_EBP + -9);
+  iVar1 = *unaff_EBP;
+  *(undefined4 *)(iVar1 + -0x18) = **(undefined4 **)(iVar1 + -0x24);
+  *(undefined4 *)(iVar1 + -0x1c) = *(undefined4 *)(*(int *)(iVar1 + -0x24) + 4);
+  *(undefined4 *)(iVar1 + -0x20) = *(undefined4 *)(iVar1 + -0x24);
+  **(undefined4 **)(iVar1 + -0x1c) = *(undefined4 *)(iVar1 + -0x18);
+  *(undefined4 *)(*(int *)(iVar1 + -0x18) + 4) = *(undefined4 *)(iVar1 + -0x1c);
+  if (*(int *)(iVar1 + -0x20) != 0) {
+    *unaff_EBP = *(int *)(iVar1 + -0x20);
+    unaff_EBP[-1] = 0x9f7cbe;
+    free((void *)*unaff_EBP);
+  }
+  *unaff_EBP = *(int *)(iVar1 + -0x18);
+  unaff_EBP[-1] = 0x9f7ccd;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00a0e700 62 4
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00a0e700(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,undefined4 *param_4,
+            int param_5,undefined4 *param_6)
+
+{
+  while (param_2 != param_6) {
+    *param_2 = *param_1;
+    param_2[1] = param_1[1];
+    param_2 = param_2 + 2;
+    if (param_2 == param_4) {
+      param_2 = *(undefined4 **)(param_5 + 4);
+      param_5 = param_5 + 4;
+      param_4 = param_2 + 0x20;
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0b8c0 42 4
+@@CALLERS 
+@@CALLEES list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+@@STRINGS m_pchData != NULL 
+@@DECOMP
+
+int __fastcall FUN_00c0b8c0(int *param_1)
+
+{
+  undefined4 uStack_4;
+  
+  if (*param_1 == 0) {
+    uStack_4 = param_1;
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)
+               ((int)&uStack_4 + 3));
+  }
+  return *param_1 + -0xc;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0b9f0 66 4
+@@CALLERS 
+@@CALLEES InterlockedDecrement, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, operator_new
+@@STRINGS pData->nRefs != 0 
+@@DECOMP
+
+void FUN_00c0b9f0(LONG *param_1)
+
+{
+  LONG *lpAddend;
+  LONG LVar1;
+  
+  lpAddend = param_1;
+  if (param_1 != DAT_0139c8fc) {
+    if (*param_1 == 0) {
+      if (DAT_0143bb2c != (code *)0x0) {
+        (*DAT_0143bb2c)();
+      }
+      std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+      list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+                ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_1);
+    }
+    LVar1 = InterlockedDecrement(lpAddend);
+    if (LVar1 < 1) {
+      CEngineSubPrimitiveBase::operator_new((uint)lpAddend);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0e0f0 245 4
+@@CALLERS 
+@@CALLEES CShaderResource::Assign, CCharStringData::Release, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, FUN_00c0bf90
+@@STRINGS m_pchData != NULL 
+@@DECOMP
+
+void * __thiscall FUN_00c0e0f0(int *param_1,void *param_2,int param_3)
+
+{
+  void *pvVar1;
+  void *unaff_EDI;
+  int iVar2;
+  int iStack_24;
+  int *piStack_20;
+  undefined *puStack_14;
+  undefined4 local_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 uStack_4;
+  
+  uStack_4 = 0xffffffff;
+  puStack_8 = &LAB_01210f6c;
+  pvStack_c = ExceptionList;
+  local_10 = 0;
+  iVar2 = param_3;
+  if (param_3 < 0) {
+    iVar2 = 0;
+  }
+  ExceptionList = &pvStack_c;
+  if (*param_1 == 0) {
+    ExceptionList = &pvStack_c;
+    if (DAT_0143bb2c != (code *)0x0) {
+      piStack_20 = (int *)0xc0e133;
+      ExceptionList = &pvStack_c;
+      (*DAT_0143bb2c)();
+    }
+    piStack_20 = (int *)0xc0e13c;
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_3);
+  }
+  if (*(int *)(*param_1 + -8) <= iVar2) {
+    iStack_24 = 0xc0e14f;
+    piStack_20 = param_1;
+    CShaderResource__Assign();
+    ExceptionList = pvStack_c;
+    return param_2;
+  }
+  puStack_14 = PTR_DAT_0139c900;
+  uStack_4 = 1;
+  if (*param_1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      piStack_20 = (int *)0xc0e18a;
+      (*DAT_0143bb2c)();
+    }
+    piStack_20 = (int *)0xc0e193;
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_3);
+  }
+  piStack_20 = (int *)0x0;
+  iStack_24 = *(int *)(*param_1 + -8) - iVar2;
+  FUN_00c0bf90(&puStack_14,iVar2);
+  pvVar1 = pvStack_c;
+  CShaderResource__Assign(&iStack_24);
+  piStack_20 = (int *)0x1;
+  puStack_14 = (undefined *)((uint)puStack_14 & 0xffffff00);
+  CCharStringData__Release();
+  ExceptionList = unaff_EDI;
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c6da40 139 4
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void FUN_00c6da40(int param_1,int param_2,int param_3)
+
+{
+  int *piVar1;
+  int iVar2;
+  short *psVar3;
+  int iVar4;
+  int iVar5;
+  
+  if (*(short *)(param_2 + 2) != 0) {
+    iVar4 = (int)*(short *)(param_2 + 2);
+    iVar2 = 0;
+    piVar1 = (int *)(param_3 + 8);
+    psVar3 = (short *)(param_1 + 4);
+    iVar5 = 0x20;
+    do {
+      piVar1[-2] = piVar1[-2] + (psVar3[-2] * iVar2 >> 0xf);
+      piVar1[-1] = piVar1[-1] + ((int)psVar3[-1] * (iVar2 + iVar4) >> 0xf);
+      iVar2 = iVar2 + iVar4 + iVar4;
+      *piVar1 = *piVar1 + (*psVar3 * iVar2 >> 0xf);
+      iVar2 = iVar2 + iVar4;
+      piVar1[1] = piVar1[1] + (psVar3[1] * iVar2 >> 0xf);
+      iVar2 = iVar2 + iVar4;
+      piVar1 = piVar1 + 4;
+      psVar3 = psVar3 + 4;
+      iVar5 = iVar5 + -1;
+    } while (iVar5 != 0);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c6dad0 139 4
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void FUN_00c6dad0(int param_1,ushort *param_2,int param_3)
+
+{
+  int *piVar1;
+  uint uVar2;
+  int iVar3;
+  short *psVar4;
+  int iVar5;
+  int iVar6;
+  
+  if (*param_2 != 0) {
+    iVar5 = (int)(short)-param_2[1];
+    piVar1 = (int *)(param_3 + 8);
+    uVar2 = (uint)*param_2;
+    psVar4 = (short *)(param_1 + 4);
+    iVar6 = 0x20;
+    do {
+      piVar1[-2] = piVar1[-2] + ((int)((int)psVar4[-2] * uVar2) >> 0xf);
+      piVar1[-1] = piVar1[-1] + ((int)((int)psVar4[-1] * (uVar2 + iVar5)) >> 0xf);
+      iVar3 = uVar2 + iVar5 + iVar5;
+      *piVar1 = *piVar1 + (*psVar4 * iVar3 >> 0xf);
+      iVar3 = iVar3 + iVar5;
+      piVar1[1] = piVar1[1] + (psVar4[1] * iVar3 >> 0xf);
+      uVar2 = iVar3 + iVar5;
+      piVar1 = piVar1 + 4;
+      psVar4 = psVar4 + 4;
+      iVar6 = iVar6 + -1;
+    } while (iVar6 != 0);
+  }
+  return;
+}
+
+
+@@ENDFUNC

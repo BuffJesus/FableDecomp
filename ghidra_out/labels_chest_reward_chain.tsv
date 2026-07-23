@@ -1,0 +1,7 @@
+# Chest key/reward chain — evidence-based renames from 2026-07-18 late session.
+# Sources: CGlobal_OpenChestScript::Main decomp (vtable math base 0x1260f0c),
+# disasm of Transfer thunks (add ecx,+0x3c / +0x28 then shared persist-vector helper),
+# CPersistContext::CheckCRC(ctx,"") call at helper head.
+# The two helpers below carried stale BSim names (CCreatureAction_FireMissileWeapon::FrameUpdate).
+46c2a4	GFTransferVectorField_CObjectFamilyDef_Objects	persist helper: binary vector<pair<long defIdx,int weight>> at CObjectFamilyDef+0x3c; CheckCRC("")
+4e8997	GFTransferVectorField_CContainerRewardHeroDef_ObjectFamilies	persist helper: binary vector<long familyDefIdx> at CContainerRewardHeroDef+0x28; CheckCRC("")

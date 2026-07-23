@@ -1,0 +1,1900 @@
+{
+ "CREATURE": {
+  "addr": "01fb3ed0",
+  "retail_offsets": false,
+  "alias_of": "CThingCreatureDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 113, 651B, prefix 5B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "Components",
+    "type": "?"
+   },
+   {
+    "name": "AvailableInEditor",
+    "type": "?"
+   },
+   {
+    "name": "GameStatePersisted",
+    "type": "?"
+   },
+   {
+    "name": "LevelLess",
+    "type": "?"
+   },
+   {
+    "name": "IsDrawable",
+    "type": "?"
+   },
+   {
+    "name": "AlwaysFrameUpdate",
+    "type": "?"
+   },
+   {
+    "name": "InMapSearches",
+    "type": "?"
+   },
+   {
+    "name": "StartKillLocked",
+    "type": "?"
+   },
+   {
+    "name": "IsLoadableGlobal",
+    "type": "?"
+   },
+   {
+    "name": "CanComeBetweenCameraAndObservedThing",
+    "type": "?"
+   },
+   {
+    "name": "IsVulnerableToMelee",
+    "type": "?"
+   },
+   {
+    "name": "Damageable",
+    "type": "?"
+   },
+   {
+    "name": "ForceNoSerialise",
+    "type": "?"
+   },
+   {
+    "name": "DrawWeaponTrails",
+    "type": "?"
+   },
+   {
+    "name": "DrawProjectileWeaponTrails",
+    "type": "?"
+   },
+   {
+    "name": "AlwaysIncludeInObjectStrikeScans",
+    "type": "?"
+   },
+   {
+    "name": "DisableOcclusionTesting",
+    "type": "?"
+   },
+   {
+    "name": "DrawAfterWater",
+    "type": "?"
+   },
+   {
+    "name": "ForceRenderedLastFrameOverride",
+    "type": "?"
+   },
+   {
+    "name": "AddToComboMultiplierOnHit",
+    "type": "?"
+   },
+   {
+    "name": "GiveHeroStatChangesOnBeingHit",
+    "type": "?"
+   },
+   {
+    "name": "GroupDef",
+    "type": "?"
+   },
+   {
+    "name": "RenderFadeDistance",
+    "type": "?"
+   },
+   {
+    "name": "PersistenceFlags",
+    "type": "?"
+   },
+   {
+    "name": "Health",
+    "type": "?"
+   },
+   {
+    "name": "MinHealth",
+    "type": "?"
+   },
+   {
+    "name": "MeshHeightOffset",
+    "type": "?"
+   },
+   {
+    "name": "MeshHeight",
+    "type": "?"
+   },
+   {
+    "name": "MeshRadius",
+    "type": "?"
+   },
+   {
+    "name": "ApproxMaxMeshHeight",
+    "type": "?"
+   },
+   {
+    "name": "DefaultScriptName",
+    "type": "?"
+   },
+   {
+    "name": "DefaultScriptData",
+    "type": "?"
+   },
+   {
+    "name": "NumSecondsToPersistOnDeath",
+    "type": "?"
+   },
+   {
+    "name": "CreatureType",
+    "type": "?"
+   },
+   {
+    "name": "InitialWeaponDef",
+    "type": "?"
+   },
+   {
+    "name": "RangedWeaponDef",
+    "type": "?"
+   },
+   {
+    "name": "Property",
+    "type": "?"
+   },
+   {
+    "name": "Damage",
+    "type": "?"
+   },
+   {
+    "name": "Graphic",
+    "type": "?"
+   },
+   {
+    "name": "ResetCombatTypeOnUnsheatheDefaultWeapons",
+    "type": "?"
+   },
+   {
+    "name": "DeferHitsIfBehindHitter",
+    "type": "?"
+   },
+   {
+    "name": "RecoverEvadeHitsPercent",
+    "type": "?"
+   },
+   {
+    "name": "LeaveDeadCreature",
+    "type": "?"
+   },
+   {
+    "name": "AbleToStrafe",
+    "type": "?"
+   },
+   {
+    "name": "CreateDummyOnDeath",
+    "type": "?"
+   },
+   {
+    "name": "ImmuneToAttack",
+    "type": "?"
+   },
+   {
+    "name": "UseMeleeWeaponAsDefault",
+    "type": "?"
+   },
+   {
+    "name": "UnsheatheWeaponsAutomatically",
+    "type": "?"
+   },
+   {
+    "name": "IsWillable",
+    "type": "?"
+   },
+   {
+    "name": "IsIndestructible",
+    "type": "?"
+   },
+   {
+    "name": "IsInvulnerableDuringGenericResponse",
+    "type": "?"
+   },
+   {
+    "name": "IsPushedByExplosions",
+    "type": "?"
+   }
+  ]
+ },
+ "CPhysicsDef": {
+  "addr": "01930fa6",
+  "retail_offsets": false,
+  "alias_of": "CPhysicsDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 115, 56B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "Diameter",
+    "type": "?"
+   },
+   {
+    "name": "Friction",
+    "type": "?"
+   },
+   {
+    "name": "Elasticity",
+    "type": "?"
+   },
+   {
+    "name": "InteractionFlags",
+    "type": "?"
+   },
+   {
+    "name": "AirResistance",
+    "type": "?"
+   },
+   {
+    "name": "Mass",
+    "type": "?"
+   },
+   {
+    "name": "PushableByHero",
+    "type": "?"
+   }
+  ]
+ },
+ "CTargetingDef": {
+  "addr": "0193b28d",
+  "retail_offsets": false,
+  "alias_of": "CTargetingDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 120, 201B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "Type",
+    "type": "?"
+   },
+   {
+    "name": "UseGlowTargeting",
+    "type": "?"
+   },
+   {
+    "name": "TargetArc",
+    "type": "?"
+   },
+   {
+    "name": "TargetArcPCThirdPersonAimingMode",
+    "type": "?"
+   },
+   {
+    "name": "TargetingBasePosFromCamera",
+    "type": "?"
+   },
+   {
+    "name": "TargetingFacingDirFromCamera",
+    "type": "?"
+   },
+   {
+    "name": "TargetingPCFacingDirFromCamera",
+    "type": "?"
+   },
+   {
+    "name": "RejectTargetsBehindIfRunning",
+    "type": "?"
+   },
+   {
+    "name": "AcceptOnlyEnemiesBehind",
+    "type": "?"
+   },
+   {
+    "name": "EnemyBehindTargetingRange",
+    "type": "?"
+   },
+   {
+    "name": "FirstPersonTargetingAngleFalloff",
+    "type": "?"
+   },
+   {
+    "name": "FirstPersonTargetingDistanceFalloff",
+    "type": "?"
+   },
+   {
+    "name": "ThirdPersonTargetingAngleFalloff",
+    "type": "?"
+   },
+   {
+    "name": "ThirdPersonTargetingDistanceFalloff",
+    "type": "?"
+   },
+   {
+    "name": "ZLockTargetSelectAngleFalloff",
+    "type": "?"
+   },
+   {
+    "name": "ZLockTargetSelectDistanceFalloff",
+    "type": "?"
+   },
+   {
+    "name": "FirstPersonTargetingOverrideShortRangeFactor",
+    "type": "?"
+   },
+   {
+    "name": "FirstPersonTargetingOverrideShortRangeFalloff",
+    "type": "?"
+   },
+   {
+    "name": "ThirdPersonTargetingOverrideShortRangeFactor",
+    "type": "?"
+   },
+   {
+    "name": "ThirdPersonTargetingOverrideShortRangeFalloff",
+    "type": "?"
+   },
+   {
+    "name": "FirstPersonTargetingEnemyPreferenceFactor",
+    "type": "?"
+   },
+   {
+    "name": "ThirdPersonTargetingEnemyPreferenceFactor",
+    "type": "?"
+   },
+   {
+    "name": "TargetingRanges",
+    "type": "?"
+   },
+   {
+    "name": "PreferPlayerWeight",
+    "type": "?"
+   },
+   {
+    "name": "PreferNonCombatantsWeight",
+    "type": "?"
+   },
+   {
+    "name": "PreferLastAttackerWeight",
+    "type": "?"
+   },
+   {
+    "name": "PreferCurrentBestEnemyWeight",
+    "type": "?"
+   }
+  ]
+ },
+ "CWeaponDef": {
+  "addr": "01ba53c5",
+  "retail_offsets": false,
+  "alias_of": "CWeaponDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 27, 289B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "Type",
+    "type": "?"
+   },
+   {
+    "name": "Class",
+    "type": "?"
+   },
+   {
+    "name": "Property",
+    "type": "?"
+   },
+   {
+    "name": "AnimationGroup",
+    "type": "?"
+   },
+   {
+    "name": "SheatheObject",
+    "type": "?"
+   },
+   {
+    "name": "SheatheObjectAlwaysVisible",
+    "type": "?"
+   },
+   {
+    "name": "AnimationSpeedVal",
+    "type": "?"
+   },
+   {
+    "name": "Damage",
+    "type": "?"
+   },
+   {
+    "name": "DamageType",
+    "type": "?"
+   },
+   {
+    "name": "Explosion",
+    "type": "?"
+   },
+   {
+    "name": "FlourishParticles",
+    "type": "?"
+   },
+   {
+    "name": "FlourishSpecialWeaponTrail",
+    "type": "?"
+   },
+   {
+    "name": "WeaponTrails",
+    "type": "?"
+   },
+   {
+    "name": "UseAnalogueLoading",
+    "type": "?"
+   },
+   {
+    "name": "MissileLoadCarrySlot",
+    "type": "?"
+   },
+   {
+    "name": "ProjectileWeaponHelperNameTip",
+    "type": "?"
+   },
+   {
+    "name": "ProjectileWeaponHelperNameBase",
+    "type": "?"
+   },
+   {
+    "name": "TargetingRange",
+    "type": "?"
+   },
+   {
+    "name": "TargetingFOV",
+    "type": "?"
+   },
+   {
+    "name": "ArrowTrails",
+    "type": "?"
+   },
+   {
+    "name": "ReloadSpeedRange",
+    "type": "?"
+   },
+   {
+    "name": "ProjectileWeaponAutoReload",
+    "type": "?"
+   },
+   {
+    "name": "ProjectileWeaponStartLoaded",
+    "type": "?"
+   },
+   {
+    "name": "UseExtendedProjectileTrails",
+    "type": "?"
+   },
+   {
+    "name": "NextWeaponForBoss",
+    "type": "?"
+   },
+   {
+    "name": "MeleeTargetingArc",
+    "type": "?"
+   },
+   {
+    "name": "NeedsLoading",
+    "type": "?"
+   },
+   {
+    "name": "UnsheatheToCombatAnim",
+    "type": "?"
+   },
+   {
+    "name": "UnsheatheToNormalAnim",
+    "type": "?"
+   },
+   {
+    "name": "SheatheFromCombatAnim",
+    "type": "?"
+   },
+   {
+    "name": "SheatheFromNormalAnim",
+    "type": "?"
+   }
+  ]
+ },
+ "THING_GROUP": {
+  "addr": "0191da25",
+  "retail_offsets": false,
+  "alias_of": "CThingGroupDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 136, 5B, prefix 0B) + gap2 donor decompile",
+  "fields": []
+ },
+ "CContextSensitiveItemDef": {
+  "addr": "0194b0a7",
+  "retail_offsets": false,
+  "alias_of": "CContextSensitiveItemDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 213, 43B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "Type",
+    "type": "?"
+   },
+   {
+    "name": "Priority",
+    "type": "?"
+   },
+   {
+    "name": "SlotIndex",
+    "type": "?"
+   },
+   {
+    "name": "ExtraData1",
+    "type": "?"
+   },
+   {
+    "name": "ExtraData2",
+    "type": "?"
+   }
+  ]
+ },
+ "COMBAT_SEQUENCE": {
+  "addr": "0194dc17",
+  "retail_offsets": false,
+  "alias_of": "CCombatSequenceDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 231, 74B, prefix 5B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "ValidCombatZones",
+    "type": "?"
+   },
+   {
+    "name": "Type",
+    "type": "?"
+   },
+   {
+    "name": "InterruptionType",
+    "type": "?"
+   },
+   {
+    "name": "IsValidType",
+    "type": "?"
+   },
+   {
+    "name": "OnStartType",
+    "type": "?"
+   },
+   {
+    "name": "OnStopType",
+    "type": "?"
+   },
+   {
+    "name": "ActionList",
+    "type": "?"
+   },
+   {
+    "name": "SecondsToPredictTargetPosition",
+    "type": "?"
+   },
+   {
+    "name": "PreferIfValid",
+    "type": "?"
+   }
+  ]
+ },
+ "CHasNameDef": {
+  "addr": "01bc19e6",
+  "retail_offsets": false,
+  "alias_of": "CHasNameDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 110, 27B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "DefaultNameTag",
+    "type": "?"
+   },
+   {
+    "name": "Occupation",
+    "type": "?"
+   }
+  ]
+ },
+ "CBuyableHouseDef": {
+  "addr": "01b9d4f0",
+  "retail_offsets": false,
+  "alias_of": "CBuyableHouseDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 10, 55B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "IsBuyable",
+    "type": "?"
+   },
+   {
+    "name": "InitiallyEmpty",
+    "type": "?"
+   },
+   {
+    "name": "Price",
+    "type": "?"
+   },
+   {
+    "name": "DaysBetweenRentPayments",
+    "type": "?"
+   },
+   {
+    "name": "IsScripted",
+    "type": "?"
+   },
+   {
+    "name": "MaxRentBags",
+    "type": "?"
+   },
+   {
+    "name": "IsBuyableWithoutSignpost",
+    "type": "?"
+   }
+  ]
+ },
+ "SOUND_THEME": {
+  "addr": "0193430c",
+  "retail_offsets": false,
+  "alias_of": "CSoundThemeDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 156, 81B, prefix 5B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "AtmosIndex",
+    "type": "?"
+   },
+   {
+    "name": "MusicSet",
+    "type": "?"
+   },
+   {
+    "name": "EditColour",
+    "type": "?"
+   },
+   {
+    "name": "Range",
+    "type": "?"
+   },
+   {
+    "name": "Granularity",
+    "type": "?"
+   },
+   {
+    "name": "AtmosGroupMap",
+    "type": "?"
+   },
+   {
+    "name": "PlayOnlyWhenInside",
+    "type": "?"
+   },
+   {
+    "name": "PlayOnlyWhenOutside",
+    "type": "?"
+   },
+   {
+    "name": "PlayQuietlyWhenInside",
+    "type": "?"
+   },
+   {
+    "name": "PlayQuietlyWhenOutside",
+    "type": "?"
+   }
+  ]
+ },
+ "CShopDef": {
+  "addr": "01ba75db",
+  "retail_offsets": false,
+  "alias_of": "CShopDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 32, 281B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "Name",
+    "type": "?"
+   },
+   {
+    "name": "InitialHawkingPhrase",
+    "type": "?"
+   },
+   {
+    "name": "ReplyToRequestPhrase",
+    "type": "?"
+   },
+   {
+    "name": "CustomerFollowPhrase",
+    "type": "?"
+   },
+   {
+    "name": "ThankingPhrase",
+    "type": "?"
+   },
+   {
+    "name": "ShopkeeperMeshType",
+    "type": "?"
+   },
+   {
+    "name": "DefaultStock",
+    "type": "?"
+   },
+   {
+    "name": "StockCategoryDefaults",
+    "type": "?"
+   },
+   {
+    "name": "BuyPriceMultiplier",
+    "type": "?"
+   },
+   {
+    "name": "SellPriceMultiplier",
+    "type": "?"
+   },
+   {
+    "name": "AttitudeBuyPriceMultiplierDefault",
+    "type": "?"
+   },
+   {
+    "name": "AttitudeBuyPriceMultiplier",
+    "type": "?"
+   },
+   {
+    "name": "AttitudeSellPriceMultiplierDefault",
+    "type": "?"
+   },
+   {
+    "name": "AttitudeSellPriceMultiplier",
+    "type": "?"
+   },
+   {
+    "name": "MaxStockChangePerSell",
+    "type": "?"
+   },
+   {
+    "name": "MaxStockChangePerBuy",
+    "type": "?"
+   },
+   {
+    "name": "MaxStockRevertPerDay",
+    "type": "?"
+   },
+   {
+    "name": "PriceReductionFractionPerItem",
+    "type": "?"
+   },
+   {
+    "name": "MaxPriceReductionFractionDueToStockCount",
+    "type": "?"
+   },
+   {
+    "name": "IsStockDisplayPermanent",
+    "type": "?"
+   },
+   {
+    "name": "PreferredShopkeeper",
+    "type": "?"
+   },
+   {
+    "name": "IsTattooShop",
+    "type": "?"
+   },
+   {
+    "name": "IsBarberShop",
+    "type": "?"
+   },
+   {
+    "name": "IsTitleShop",
+    "type": "?"
+   },
+   {
+    "name": "MinPriceMultiplierForItemToBeWanted",
+    "type": "?"
+   },
+   {
+    "name": "AlwaysOpen",
+    "type": "?"
+   },
+   {
+    "name": "MaxPriceToDisplay",
+    "type": "?"
+   },
+   {
+    "name": "MinTimeToSteal",
+    "type": "?"
+   },
+   {
+    "name": "MaxTimeToSteal",
+    "type": "?"
+   },
+   {
+    "name": "MinGoldForDonation",
+    "type": "?"
+   },
+   {
+    "name": "MaxGoldForDonation",
+    "type": "?"
+   },
+   {
+    "name": "MaxMoralityForDonation",
+    "type": "?"
+   },
+   {
+    "name": "LogarithmicPower",
+    "type": "?"
+   },
+   {
+    "name": "NumDaysToKeepSpecialItem",
+    "type": "?"
+   },
+   {
+    "name": "MinAmountBeforeSpecialItem",
+    "type": "?"
+   },
+   {
+    "name": "ProbabilityOfSpecialItemPerDay",
+    "type": "?"
+   },
+   {
+    "name": "SpecialItemPriceMult",
+    "type": "?"
+   }
+  ]
+ },
+ "CPerceivedThingDef": {
+  "addr": "01b9fdea",
+  "retail_offsets": false,
+  "alias_of": "CPerceivedThingDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 19, 83B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "FieldOfView",
+    "type": "?"
+   },
+   {
+    "name": "ExtendedSightRadius",
+    "type": "?"
+   },
+   {
+    "name": "SightRadius",
+    "type": "?"
+   },
+   {
+    "name": "SoundRadius",
+    "type": "?"
+   },
+   {
+    "name": "SmellRadius",
+    "type": "?"
+   },
+   {
+    "name": "Type",
+    "type": "?"
+   },
+   {
+    "name": "AwarenessTimer",
+    "type": "?"
+   },
+   {
+    "name": "GiveUpChaseRadius",
+    "type": "?"
+   },
+   {
+    "name": "DayTimeVisibilityMultiplier",
+    "type": "?"
+   },
+   {
+    "name": "NightTimeVisibilityMultiplier",
+    "type": "?"
+   }
+  ]
+ },
+ "VILLAGE": {
+  "addr": "0191d65d",
+  "retail_offsets": false,
+  "alias_of": "CThingVillageDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 127, 226B, prefix 5B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "Components",
+    "type": "?"
+   },
+   {
+    "name": "AvailableInEditor",
+    "type": "?"
+   },
+   {
+    "name": "GameStatePersisted",
+    "type": "?"
+   },
+   {
+    "name": "LevelLess",
+    "type": "?"
+   },
+   {
+    "name": "IsDrawable",
+    "type": "?"
+   },
+   {
+    "name": "AlwaysFrameUpdate",
+    "type": "?"
+   },
+   {
+    "name": "InMapSearches",
+    "type": "?"
+   },
+   {
+    "name": "StartKillLocked",
+    "type": "?"
+   },
+   {
+    "name": "IsLoadableGlobal",
+    "type": "?"
+   },
+   {
+    "name": "CanComeBetweenCameraAndObservedThing",
+    "type": "?"
+   },
+   {
+    "name": "IsVulnerableToMelee",
+    "type": "?"
+   },
+   {
+    "name": "Damageable",
+    "type": "?"
+   },
+   {
+    "name": "ForceNoSerialise",
+    "type": "?"
+   },
+   {
+    "name": "DrawWeaponTrails",
+    "type": "?"
+   },
+   {
+    "name": "DrawProjectileWeaponTrails",
+    "type": "?"
+   },
+   {
+    "name": "AlwaysIncludeInObjectStrikeScans",
+    "type": "?"
+   },
+   {
+    "name": "DisableOcclusionTesting",
+    "type": "?"
+   },
+   {
+    "name": "DrawAfterWater",
+    "type": "?"
+   },
+   {
+    "name": "ForceRenderedLastFrameOverride",
+    "type": "?"
+   },
+   {
+    "name": "AddToComboMultiplierOnHit",
+    "type": "?"
+   },
+   {
+    "name": "GiveHeroStatChangesOnBeingHit",
+    "type": "?"
+   },
+   {
+    "name": "GroupDef",
+    "type": "?"
+   },
+   {
+    "name": "RenderFadeDistance",
+    "type": "?"
+   },
+   {
+    "name": "PersistenceFlags",
+    "type": "?"
+   },
+   {
+    "name": "Health",
+    "type": "?"
+   },
+   {
+    "name": "MinHealth",
+    "type": "?"
+   },
+   {
+    "name": "MeshHeightOffset",
+    "type": "?"
+   },
+   {
+    "name": "MeshHeight",
+    "type": "?"
+   },
+   {
+    "name": "MeshRadius",
+    "type": "?"
+   },
+   {
+    "name": "ApproxMaxMeshHeight",
+    "type": "?"
+   },
+   {
+    "name": "DefaultScriptName",
+    "type": "?"
+   },
+   {
+    "name": "DefaultScriptData",
+    "type": "?"
+   },
+   {
+    "name": "Graphic",
+    "type": "?"
+   }
+  ]
+ },
+ "CAMERA_MODE": {
+  "addr": "01938cb5",
+  "retail_offsets": false,
+  "alias_of": "CCameraModeDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 168, 318B, prefix 5B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "CameraMode",
+    "type": "?"
+   },
+   {
+    "name": "StringLengthXY",
+    "type": "?"
+   },
+   {
+    "name": "CageRadius",
+    "type": "?"
+   },
+   {
+    "name": "HeightOffsetZ",
+    "type": "?"
+   },
+   {
+    "name": "LookOffsetZ",
+    "type": "?"
+   },
+   {
+    "name": "RollAngle",
+    "type": "?"
+   },
+   {
+    "name": "TransitionInFrames",
+    "type": "?"
+   },
+   {
+    "name": "LazyLookAtPosWeight",
+    "type": "?"
+   },
+   {
+    "name": "RaiseUpWhenClose",
+    "type": "?"
+   },
+   {
+    "name": "StretchAroundHero",
+    "type": "?"
+   },
+   {
+    "name": "ZTargetBaseOffset",
+    "type": "?"
+   },
+   {
+    "name": "ZTargetLookAtTargetOffset",
+    "type": "?"
+   },
+   {
+    "name": "ZTargetStringLengthToObservedThing",
+    "type": "?"
+   },
+   {
+    "name": "ZTargetStringLengthPerpendicularToObservedThing",
+    "type": "?"
+   },
+   {
+    "name": "PerformExtendedOcclusionTests",
+    "type": "?"
+   },
+   {
+    "name": "XAxisDisplacementCoupling",
+    "type": "?"
+   },
+   {
+    "name": "XAxisVelocityDamping",
+    "type": "?"
+   },
+   {
+    "name": "XAxisAttractorCoupling",
+    "type": "?"
+   },
+   {
+    "name": "XAxisAttractorFallOff",
+    "type": "?"
+   },
+   {
+    "name": "YAxisDisplacementCoupling",
+    "type": "?"
+   },
+   {
+    "name": "YAxisVelocityDamping",
+    "type": "?"
+   },
+   {
+    "name": "YAxisAttractorCoupling",
+    "type": "?"
+   },
+   {
+    "name": "YAxisAttractorFallOff",
+    "type": "?"
+   },
+   {
+    "name": "ProjectileCameraFOVZoom",
+    "type": "?"
+   },
+   {
+    "name": "ProjectileCameraZoomToggle",
+    "type": "?"
+   },
+   {
+    "name": "ProjectileCameraDefaultTranslationalZoomOffset",
+    "type": "?"
+   },
+   {
+    "name": "ProjectileCameraInitialPhiOffsetForCamera",
+    "type": "?"
+   },
+   {
+    "name": "ProjectileCameraInitialHeightParamForCamera",
+    "type": "?"
+   },
+   {
+    "name": "PhiRotationCouple",
+    "type": "?"
+   },
+   {
+    "name": "ThetaRotationCouple",
+    "type": "?"
+   },
+   {
+    "name": "DollyLength",
+    "type": "?"
+   },
+   {
+    "name": "NumberOfFramesToAverageInputsOver",
+    "type": "?"
+   },
+   {
+    "name": "DollyLengthBlendResistance",
+    "type": "?"
+   },
+   {
+    "name": "ThetaAngleLimitUp",
+    "type": "?"
+   },
+   {
+    "name": "ThetaAngleLimitDown",
+    "type": "?"
+   },
+   {
+    "name": "SecondsToReset",
+    "type": "?"
+   },
+   {
+    "name": "ViewHeroXYRotationMaxVelocity",
+    "type": "?"
+   },
+   {
+    "name": "ViewHeroHeightParamMaxVelocity",
+    "type": "?"
+   },
+   {
+    "name": "ViewHeroXYOffsetMultiplier",
+    "type": "?"
+   },
+   {
+    "name": "ViewHeroGroundHeightOffset",
+    "type": "?"
+   }
+  ]
+ },
+ "CSummonableCreatureDef": {
+  "addr": "01baeb46",
+  "retail_offsets": false,
+  "alias_of": "CSummonableCreatureDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 54, 19B, prefix 11B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "SummonedBrain",
+    "type": "?"
+   }
+  ]
+ },
+ "HERO_ABILITY": {
+  "addr": "019356a2",
+  "retail_offsets": false,
+  "alias_of": "CHeroAbilityDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 161, 142B, prefix 5B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "Ability",
+    "type": "?"
+   },
+   {
+    "name": "IconGraphicIndex",
+    "type": "?"
+   },
+   {
+    "name": "IconEffectIndex",
+    "type": "?"
+   },
+   {
+    "name": "IconActiveEffectIndex",
+    "type": "?"
+   },
+   {
+    "name": "IconEffectOffset",
+    "type": "?"
+   },
+   {
+    "name": "Name",
+    "type": "?"
+   },
+   {
+    "name": "Description",
+    "type": "?"
+   },
+   {
+    "name": "StaminaCost",
+    "type": "?"
+   },
+   {
+    "name": "StatExperienceGainedOnUse",
+    "type": "?"
+   },
+   {
+    "name": "ExperienceCostsToUpgrade",
+    "type": "?"
+   },
+   {
+    "name": "LevDescription",
+    "type": "?"
+   },
+   {
+    "name": "ABXYPriority",
+    "type": "?"
+   },
+   {
+    "name": "MoralityCostFactor",
+    "type": "?"
+   },
+   {
+    "name": "Aggressive",
+    "type": "?"
+   },
+   {
+    "name": "MaxedOutDescription",
+    "type": "?"
+   },
+   {
+    "name": "DummyObject",
+    "type": "?"
+   }
+  ]
+ },
+ "ENGINE_THEME_GROUP": {
+  "addr": "0191e286",
+  "retail_offsets": false,
+  "alias_of": "CEngineThemeGroupDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 137, 5B, prefix 0B) + gap2 donor decompile",
+  "fields": []
+ },
+ "MESSAGE_EVENT": {
+  "addr": "01931245",
+  "retail_offsets": false,
+  "alias_of": "CMessageEventDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 145, 45B, prefix 5B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "MaxSeenRadius",
+    "type": "?"
+   },
+   {
+    "name": "MaxHeardRadius",
+    "type": "?"
+   },
+   {
+    "name": "Lifespan",
+    "type": "?"
+   },
+   {
+    "name": "Type",
+    "type": "?"
+   },
+   {
+    "name": "ReactionSpeechType",
+    "type": "?"
+   }
+  ]
+ },
+ "OPINION_REACTION_MASK": {
+  "addr": "0193b908",
+  "retail_offsets": false,
+  "alias_of": "COpinionReactionMaskDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 175, 18B, prefix 5B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "ReactionEnabledDefault",
+    "type": "?"
+   },
+   {
+    "name": "ReactionEnabled",
+    "type": "?"
+   }
+  ]
+ },
+ "CAugmentationDef": {
+  "addr": "0194e7ff",
+  "retail_offsets": false,
+  "alias_of": "CAugmentationDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 239, 75B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "Name",
+    "type": "?"
+   },
+   {
+    "name": "Type",
+    "type": "?"
+   },
+   {
+    "name": "InventoryGraphic",
+    "type": "?"
+   },
+   {
+    "name": "DamageMultiplier",
+    "type": "?"
+   },
+   {
+    "name": "ExperienceMultiplier",
+    "type": "?"
+   },
+   {
+    "name": "FrequencyToAddHealthInSeconds",
+    "type": "?"
+   },
+   {
+    "name": "HealthToAddPerIncrease",
+    "type": "?"
+   },
+   {
+    "name": "FrequencyToAddStaminaInSeconds",
+    "type": "?"
+   },
+   {
+    "name": "StaminaToAddPerIncrease",
+    "type": "?"
+   }
+  ]
+ },
+ "CTavernGameDef": {
+  "addr": "01bb53d1",
+  "retail_offsets": false,
+  "alias_of": "CTavernGameDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 71, 741B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "Banter",
+    "type": "?"
+   },
+   {
+    "name": "Greeting",
+    "type": "?"
+   },
+   {
+    "name": "OptionsInitial",
+    "type": "?"
+   },
+   {
+    "name": "OptionsSubsequent",
+    "type": "?"
+   },
+   {
+    "name": "Instructions",
+    "type": "?"
+   },
+   {
+    "name": "InstructionsPC",
+    "type": "?"
+   },
+   {
+    "name": "Betting",
+    "type": "?"
+   },
+   {
+    "name": "ReactionWin",
+    "type": "?"
+   },
+   {
+    "name": "ReactionLose",
+    "type": "?"
+   },
+   {
+    "name": "ReactionDraw",
+    "type": "?"
+   },
+   {
+    "name": "ReactionWinNewBestScore",
+    "type": "?"
+   },
+   {
+    "name": "FarewellInitial",
+    "type": "?"
+   },
+   {
+    "name": "FarewellSubsequent",
+    "type": "?"
+   },
+   {
+    "name": "WinRoundPhrase",
+    "type": "?"
+   },
+   {
+    "name": "OutOfTimePhrase",
+    "type": "?"
+   },
+   {
+    "name": "NoMoney",
+    "type": "?"
+   },
+   {
+    "name": "GreetingForward",
+    "type": "?"
+   },
+   {
+    "name": "OptionsForward",
+    "type": "?"
+   },
+   {
+    "name": "OptionsBack",
+    "type": "?"
+   },
+   {
+    "name": "OptionsAlternative",
+    "type": "?"
+   },
+   {
+    "name": "InstructionsBack",
+    "type": "?"
+   },
+   {
+    "name": "BettingForward",
+    "type": "?"
+   },
+   {
+    "name": "BettingBack",
+    "type": "?"
+   },
+   {
+    "name": "ReactionForward",
+    "type": "?"
+   },
+   {
+    "name": "FarewellForward",
+    "type": "?"
+   },
+   {
+    "name": "CameraName",
+    "type": "?"
+   },
+   {
+    "name": "BoxGraphicL",
+    "type": "?"
+   },
+   {
+    "name": "BoxGraphicC",
+    "type": "?"
+   },
+   {
+    "name": "BoxGraphicR",
+    "type": "?"
+   },
+   {
+    "name": "ClickToContinue",
+    "type": "?"
+   },
+   {
+    "name": "WinPhrase",
+    "type": "?"
+   },
+   {
+    "name": "LosePhrase",
+    "type": "?"
+   },
+   {
+    "name": "DrawPhrase",
+    "type": "?"
+   },
+   {
+    "name": "NewGame",
+    "type": "?"
+   },
+   {
+    "name": "BestScore",
+    "type": "?"
+   },
+   {
+    "name": "CurrentScore",
+    "type": "?"
+   },
+   {
+    "name": "RequiredScore",
+    "type": "?"
+   },
+   {
+    "name": "AdditionalInfo",
+    "type": "?"
+   },
+   {
+    "name": "BlackjackBusted",
+    "type": "?"
+   },
+   {
+    "name": "BlackjackSplit",
+    "type": "?"
+   },
+   {
+    "name": "BlackjackDouble",
+    "type": "?"
+   },
+   {
+    "name": "BlackjackHit",
+    "type": "?"
+   },
+   {
+    "name": "BlackjackStand",
+    "type": "?"
+   },
+   {
+    "name": "BlackjackDealerTakesCard",
+    "type": "?"
+   },
+   {
+    "name": "BlackjackSplitGUI",
+    "type": "?"
+   },
+   {
+    "name": "BlackjackDoubleGUI",
+    "type": "?"
+   },
+   {
+    "name": "BlackjackHitGUI",
+    "type": "?"
+   },
+   {
+    "name": "BlackjackStandGUI",
+    "type": "?"
+   },
+   {
+    "name": "PlayersMoney",
+    "type": "?"
+   },
+   {
+    "name": "TotalWinnings",
+    "type": "?"
+   },
+   {
+    "name": "Continue",
+    "type": "?"
+   },
+   {
+    "name": "PrizeGiven",
+    "type": "?"
+   },
+   {
+    "name": "MoneyBagGraphic",
+    "type": "?"
+   },
+   {
+    "name": "MinBet",
+    "type": "?"
+   },
+   {
+    "name": "MaxBet",
+    "type": "?"
+   },
+   {
+    "name": "BetIncrement",
+    "type": "?"
+   },
+   {
+    "name": "ScoreFont",
+    "type": "?"
+   },
+   {
+    "name": "TargetFont",
+    "type": "?"
+   },
+   {
+    "name": "StatsFont",
+    "type": "?"
+   },
+   {
+    "name": "ScoreX",
+    "type": "?"
+   },
+   {
+    "name": "ScoreY",
+    "type": "?"
+   },
+   {
+    "name": "TargetX",
+    "type": "?"
+   },
+   {
+    "name": "TargetY",
+    "type": "?"
+   },
+   {
+    "name": "BestX",
+    "type": "?"
+   },
+   {
+    "name": "BestY",
+    "type": "?"
+   },
+   {
+    "name": "AdditionalX",
+    "type": "?"
+   },
+   {
+    "name": "AdditionalY",
+    "type": "?"
+   },
+   {
+    "name": "MoneyX",
+    "type": "?"
+   },
+   {
+    "name": "MoneyY",
+    "type": "?"
+   },
+   {
+    "name": "WinningsX",
+    "type": "?"
+   },
+   {
+    "name": "WinningsY",
+    "type": "?"
+   },
+   {
+    "name": "MainBetX",
+    "type": "?"
+   },
+   {
+    "name": "MainBetY",
+    "type": "?"
+   },
+   {
+    "name": "MainMoneyX",
+    "type": "?"
+   },
+   {
+    "name": "MainMoneyY",
+    "type": "?"
+   },
+   {
+    "name": "BestScoreHigh",
+    "type": "?"
+   },
+   {
+    "name": "PrizeScores",
+    "type": "?"
+   },
+   {
+    "name": "Prize",
+    "type": "?"
+   },
+   {
+    "name": "PrizeRenown",
+    "type": "?"
+   },
+   {
+    "name": "MainGameScoreBoxX",
+    "type": "?"
+   },
+   {
+    "name": "MainGameScoreBoxY",
+    "type": "?"
+   },
+   {
+    "name": "MainGameScoreBoxWidthXbox",
+    "type": "?"
+   },
+   {
+    "name": "MainGameScoreBoxWidthPC",
+    "type": "?"
+   },
+   {
+    "name": "MainGameScoreBoxHeight",
+    "type": "?"
+   },
+   {
+    "name": "DisplayErrata",
+    "type": "?"
+   },
+   {
+    "name": "PointerPhaseSpeed",
+    "type": "?"
+   }
+  ]
+ },
+ "CDecapitationDef": {
+  "addr": "01bb83a2",
+  "retail_offsets": false,
+  "alias_of": "CDecapitationDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 77, 19B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "BodyParticleEffect",
+    "type": "?"
+   }
+  ]
+ },
+ "CShipDef": {
+  "addr": "01bac1fc",
+  "retail_offsets": false,
+  "alias_of": "CShipDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 100, 59B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "SightingFrequency",
+    "type": "?"
+   },
+   {
+    "name": "SightingOffset",
+    "type": "?"
+   },
+   {
+    "name": "DaysVisible",
+    "type": "?"
+   },
+   {
+    "name": "Swell",
+    "type": "?"
+   },
+   {
+    "name": "Pitch",
+    "type": "?"
+   },
+   {
+    "name": "WaveLength",
+    "type": "?"
+   }
+  ]
+ },
+ "CShopItemDef": {
+  "addr": "01ba72ce",
+  "retail_offsets": false,
+  "alias_of": "CShopItemDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 101, 67B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "Type",
+    "type": "?"
+   },
+   {
+    "name": "Quantity",
+    "type": "?"
+   },
+   {
+    "name": "PriceMultiplier",
+    "type": "?"
+   },
+   {
+    "name": "MaxStock",
+    "type": "?"
+   },
+   {
+    "name": "RestockPeriod",
+    "type": "?"
+   },
+   {
+    "name": "RestockPeriodRandomness",
+    "type": "?"
+   },
+   {
+    "name": "SalesPerDay",
+    "type": "?"
+   },
+   {
+    "name": "SalesPerDayRandomness",
+    "type": "?"
+   }
+  ]
+ },
+ "CDegradableDef": {
+  "addr": "01fea8a0",
+  "retail_offsets": false,
+  "alias_of": "CDegradableDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 117, 29B, prefix 3B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "Degradable",
+    "type": "?"
+   },
+   {
+    "name": "GraphicType",
+    "type": "?"
+   },
+   {
+    "name": "InitiallyBlocksNavigation",
+    "type": "?"
+   },
+   {
+    "name": "Degradations",
+    "type": "?"
+   }
+  ]
+ },
+ "CBettingDef": {
+  "addr": "01bc0388",
+  "retail_offsets": false,
+  "alias_of": "CBettingDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 106, 99B, prefix 19B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "MoneyX",
+    "type": "?"
+   },
+   {
+    "name": "MoneyY",
+    "type": "?"
+   },
+   {
+    "name": "MinBet",
+    "type": "?"
+   },
+   {
+    "name": "MaxBet",
+    "type": "?"
+   },
+   {
+    "name": "BetIncrement",
+    "type": "?"
+   },
+   {
+    "name": "PlayersMoney",
+    "type": "?"
+   },
+   {
+    "name": "Question",
+    "type": "?"
+   },
+   {
+    "name": "Continue",
+    "type": "?"
+   },
+   {
+    "name": "Cancel",
+    "type": "?"
+   }
+  ]
+ },
+ "PLAYER_INVENTORY": {
+  "addr": "0191f2c8",
+  "retail_offsets": false,
+  "alias_of": "CPlayerInventoryDef",
+  "note": "schema-gap2 2026-07-19: derived-chain field set reconstructed from real payload (idx 140, 45B, prefix 13B) + gap2 donor decompile",
+  "fields": [
+   {
+    "name": "MaxInSlot",
+    "type": "?"
+   },
+   {
+    "name": "InitialAmount",
+    "type": "?"
+   },
+   {
+    "name": "IsUsable",
+    "type": "?"
+   },
+   {
+    "name": "InitialSelectedSlot",
+    "type": "?"
+   }
+  ]
+ }
+}

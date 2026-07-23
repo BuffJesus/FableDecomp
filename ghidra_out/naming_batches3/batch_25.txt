@@ -1,0 +1,2347 @@
+@@@FUNC 00476b67 340 1
+@@CALLERS push_back
+@@CALLEES operator=, OnDie, FUN_00476cbb, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, CLensFlareElementDef
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00476b67(int param_1,CAreaOfEffectAttackDef *param_2,CLensFlareElementDef *param_3,
+            CLensFlareElementDef *param_4)
+
+{
+  CLensFlareElementDef *pCVar1;
+  CLensFlareElementDef *this;
+  uint uVar2;
+  CAreaOfEffectAttackDef *pCVar3;
+  int iVar4;
+  int iVar5;
+  CLensFlareElementDef local_58 [76];
+  CAreaOfEffectAttackDef *local_c;
+  undefined1 local_5;
+  
+  if (param_3 != (CLensFlareElementDef *)0x0) {
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)(param_1 + 4)) / 0x4c) < param_3) {
+      local_5 = 0;
+      FUN_00476cbb(param_2,param_4,&local_5,param_3,0);
+    }
+    else {
+      CLensFlareElementDef::CLensFlareElementDef(local_58,param_4);
+      uVar2 = (*(int *)(param_1 + 4) - (int)param_2) / 0x4c;
+      pCVar3 = *(CAreaOfEffectAttackDef **)(param_1 + 4);
+      if (param_3 < uVar2) {
+        iVar5 = (int)param_3 * 0x4c;
+        param_3 = (CLensFlareElementDef *)(pCVar3 + (int)param_3 * -0x4c);
+        param_4 = (CLensFlareElementDef *)pCVar3;
+        local_c = (CAreaOfEffectAttackDef *)param_3;
+        for (; param_3 != (CLensFlareElementDef *)pCVar3; param_3 = param_3 + 0x4c) {
+          if (param_4 != (CLensFlareElementDef *)0x0) {
+            CLensFlareElementDef::CLensFlareElementDef(param_4,param_3);
+          }
+          param_4 = param_4 + 0x4c;
+        }
+        param_3 = (CLensFlareElementDef *)(((int)local_c - (int)param_2) / 0x4c);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + iVar5;
+        if (0 < (int)param_3) {
+          iVar4 = (int)local_c - (int)pCVar3;
+          do {
+            pCVar3 = pCVar3 + -0x4c;
+            CAreaOfEffectAttackDef::operator=(pCVar3,pCVar3 + iVar4);
+            param_3 = (CLensFlareElementDef *)((int)param_3 + -1);
+          } while (param_3 != (CLensFlareElementDef *)0x0);
+        }
+        pCVar3 = param_2 + iVar5;
+        for (; param_2 != pCVar3; param_2 = param_2 + 0x4c) {
+          CAreaOfEffectAttackDef::operator=(param_2,(CAreaOfEffectAttackDef *)local_58);
+        }
+      }
+      else {
+        std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+                  ((ulong *)pCVar3,(int)param_3 - uVar2,(ulong *)local_58);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + ((int)param_3 - uVar2) * 0x4c;
+        this = *(CLensFlareElementDef **)(param_1 + 4);
+        for (pCVar1 = (CLensFlareElementDef *)param_2; pCVar1 != (CLensFlareElementDef *)pCVar3;
+            pCVar1 = pCVar1 + 0x4c) {
+          if (this != (CLensFlareElementDef *)0x0) {
+            CLensFlareElementDef::CLensFlareElementDef(this,pCVar1);
+          }
+          this = this + 0x4c;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar2 * 0x4c;
+        for (; param_2 != pCVar3; param_2 = param_2 + 0x4c) {
+          CAreaOfEffectAttackDef::operator=(param_2,(CAreaOfEffectAttackDef *)local_58);
+        }
+      }
+      CTCInventoryItem::OnDie((CTCInventoryItem *)local_58);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00476cbb 226 1
+@@CALLERS 
+@@CALLEES OnReadFinished, malloc, CLensFlareElementDef
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00476cbb(CActiveFile *param_1,CLensFlareElementDef *param_2,CLensFlareElementDef *param_3,
+            undefined4 param_4,CLensFlareElementDef *param_5,CLensFlareElementDef *param_6)
+
+{
+  CLensFlareElementDef **ppCVar1;
+  CLensFlareElementDef *pCVar2;
+  int iVar3;
+  CLensFlareElementDef *pCVar4;
+  CLensFlareElementDef *this;
+  CLensFlareElementDef *local_8;
+  
+  local_8 = (CLensFlareElementDef *)((*(int *)(param_1 + 4) - *(int *)param_1) / 0x4c);
+  ppCVar1 = &param_5;
+  if (param_5 <= local_8) {
+    ppCVar1 = &local_8;
+  }
+  pCVar2 = *ppCVar1 + (int)local_8;
+  if (pCVar2 == (CLensFlareElementDef *)0x0) {
+    local_8 = (CLensFlareElementDef *)0x0;
+  }
+  else {
+    local_8 = malloc((int)pCVar2 * 0x4c);
+  }
+  this = local_8;
+  for (pCVar4 = *(CLensFlareElementDef **)param_1; pCVar4 != param_2; pCVar4 = pCVar4 + 0x4c) {
+    if (this != (CLensFlareElementDef *)0x0) {
+      CLensFlareElementDef::CLensFlareElementDef(this,pCVar4);
+    }
+    this = this + 0x4c;
+  }
+  pCVar4 = param_5;
+  if (param_5 == (CLensFlareElementDef *)0x1) {
+    if (this != (CLensFlareElementDef *)0x0) {
+      CLensFlareElementDef::CLensFlareElementDef(this,param_3);
+    }
+    this = this + 0x4c;
+  }
+  else {
+    for (; pCVar4 != (CLensFlareElementDef *)0x0; pCVar4 = pCVar4 + -1) {
+      if (this != (CLensFlareElementDef *)0x0) {
+        CLensFlareElementDef::CLensFlareElementDef(this,param_3);
+      }
+      this = this + 0x4c;
+    }
+  }
+  if (((char)param_6 == '\0') &&
+     (param_6 = *(CLensFlareElementDef **)(param_1 + 4), param_2 != param_6)) {
+    iVar3 = (int)param_2 - (int)this;
+    do {
+      if (this != (CLensFlareElementDef *)0x0) {
+        CLensFlareElementDef::CLensFlareElementDef(this,this + iVar3);
+      }
+      this = this + 0x4c;
+    } while (this + iVar3 != param_6);
+  }
+  CFileInstaller::CActiveFile::OnReadFinished(param_1);
+  *(CLensFlareElementDef **)(param_1 + 4) = this;
+  *(CLensFlareElementDef **)param_1 = local_8;
+  *(CLensFlareElementDef **)(param_1 + 8) = local_8 + (int)pCVar2 * 0x4c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00476f9b 92 1
+@@CALLERS push_back
+@@CALLEES _Destroy, operator=
+@@STRINGS 
+@@DECOMP
+
+CEnvironmentThemeDef * __thiscall
+FUN_00476f9b(int param_1,CEnvironmentThemeDef *param_2,int param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  CEnvironmentThemeDef *this;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  
+  iVar1 = (*(int *)(param_1 + 4) - param_3) / 0xc4;
+  this = param_2;
+  if (0 < iVar1) {
+    iVar2 = param_3 - (int)param_2;
+    param_3 = iVar1;
+    do {
+      CEnvironmentThemeDef::operator=(this,this + iVar2);
+      this = this + 0xc4;
+      param_3 = param_3 + -1;
+    } while (param_3 != 0);
+  }
+  std::
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>::
+  _Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+            *)this,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+  *(CEnvironmentThemeDef **)(param_1 + 4) = this;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00476ff7 370 1
+@@CALLERS push_back
+@@CALLEES CEnvironmentThemeDef, OnDie, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, FUN_00477169, operator=
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00476ff7(int param_1,CEnvironmentThemeDef *param_2,CEnvironmentThemeDef *param_3,
+            CEnvironmentThemeDef *param_4)
+
+{
+  CEnvironmentThemeDef *pCVar1;
+  CEnvironmentThemeDef *pCVar2;
+  CEnvironmentThemeDef *pCVar3;
+  uint uVar4;
+  int iVar5;
+  bool bVar6;
+  CEnvironmentThemeDef local_d0 [196];
+  CEnvironmentThemeDef *local_c;
+  CEnvironmentThemeDef *local_8;
+  
+  pCVar1 = param_3;
+  pCVar2 = param_2;
+  if (param_3 != (CEnvironmentThemeDef *)0x0) {
+    if ((CEnvironmentThemeDef *)((*(int *)(param_1 + 8) - *(int *)(param_1 + 4)) / 0xc4) < param_3)
+    {
+      param_3 = (CEnvironmentThemeDef *)((uint)param_3 & 0xffffff);
+      FUN_00477169(param_2,param_4,(int)&param_3 + 3,pCVar1,0);
+    }
+    else {
+      CEnvironmentThemeDef::CEnvironmentThemeDef(local_d0,param_4);
+      local_8 = (CEnvironmentThemeDef *)((*(int *)(param_1 + 4) - (int)param_2) / 0xc4);
+      pCVar3 = *(CEnvironmentThemeDef **)(param_1 + 4);
+      param_3 = pCVar3;
+      if (pCVar1 < local_8) {
+        param_4 = pCVar3 + (int)pCVar1 * -0xc4;
+        local_c = pCVar3;
+        local_8 = param_4;
+        for (; param_4 != pCVar3; param_4 = param_4 + 0xc4) {
+          if (local_c != (CEnvironmentThemeDef *)0x0) {
+            CEnvironmentThemeDef::CEnvironmentThemeDef(local_c,param_4);
+            pCVar3 = param_3;
+          }
+          local_c = local_c + 0xc4;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)pCVar1 * 0xc4;
+        pCVar2 = (CEnvironmentThemeDef *)(((int)local_8 - (int)param_2) / 0xc4);
+        param_4 = pCVar3;
+        if (0 < (int)pCVar2) {
+          iVar5 = (int)local_8 - (int)pCVar3;
+          param_3 = pCVar2;
+          do {
+            param_4 = param_4 + -0xc4;
+            CEnvironmentThemeDef::operator=(param_4,param_4 + iVar5);
+            param_3 = param_3 + -1;
+          } while (param_3 != (CEnvironmentThemeDef *)0x0);
+        }
+        pCVar2 = param_2 + (int)pCVar1 * 0xc4;
+        for (; param_2 != pCVar2; param_2 = param_2 + 0xc4) {
+          CEnvironmentThemeDef::operator=(param_2,local_d0);
+        }
+      }
+      else {
+        uVar4 = (int)pCVar1 - (int)local_8;
+        std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+                  ((ulong *)pCVar3,uVar4,(ulong *)local_d0);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar4 * 0xc4;
+        bVar6 = param_2 != param_3;
+        param_4 = param_2;
+        param_2 = *(CEnvironmentThemeDef **)(param_1 + 4);
+        if (bVar6) {
+          do {
+            if (param_2 != (CEnvironmentThemeDef *)0x0) {
+              CEnvironmentThemeDef::CEnvironmentThemeDef(param_2,param_4);
+            }
+            param_4 = param_4 + 0xc4;
+            param_2 = param_2 + 0xc4;
+          } while (param_4 != param_3);
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)local_8 * 0xc4;
+        for (; pCVar2 != param_3; pCVar2 = pCVar2 + 0xc4) {
+          CEnvironmentThemeDef::operator=(pCVar2,local_d0);
+        }
+      }
+      CTCInventoryItem::OnDie((CTCInventoryItem *)local_d0);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00477169 246 1
+@@CALLERS 
+@@CALLEES CEnvironmentThemeDef, OnReadFinished, malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00477169(CActiveFile *param_1,CEnvironmentThemeDef *param_2,CEnvironmentThemeDef *param_3,
+            undefined4 param_4,CEnvironmentThemeDef *param_5,CEnvironmentThemeDef *param_6)
+
+{
+  CEnvironmentThemeDef **ppCVar1;
+  CEnvironmentThemeDef *pCVar2;
+  int iVar3;
+  CEnvironmentThemeDef *pCVar4;
+  CEnvironmentThemeDef *this;
+  CEnvironmentThemeDef *local_8;
+  
+  local_8 = (CEnvironmentThemeDef *)((*(int *)(param_1 + 4) - *(int *)param_1) / 0xc4);
+  ppCVar1 = &param_5;
+  if (param_5 <= local_8) {
+    ppCVar1 = &local_8;
+  }
+  pCVar2 = *ppCVar1 + (int)local_8;
+  if (pCVar2 == (CEnvironmentThemeDef *)0x0) {
+    local_8 = (CEnvironmentThemeDef *)0x0;
+  }
+  else {
+    local_8 = malloc((int)pCVar2 * 0xc4);
+  }
+  this = local_8;
+  for (pCVar4 = *(CEnvironmentThemeDef **)param_1; pCVar4 != param_2; pCVar4 = pCVar4 + 0xc4) {
+    if (this != (CEnvironmentThemeDef *)0x0) {
+      CEnvironmentThemeDef::CEnvironmentThemeDef(this,pCVar4);
+    }
+    this = this + 0xc4;
+  }
+  pCVar4 = param_5;
+  if (param_5 == (CEnvironmentThemeDef *)0x1) {
+    if (this != (CEnvironmentThemeDef *)0x0) {
+      CEnvironmentThemeDef::CEnvironmentThemeDef(this,param_3);
+    }
+    this = this + 0xc4;
+  }
+  else {
+    for (; pCVar4 != (CEnvironmentThemeDef *)0x0; pCVar4 = pCVar4 + -1) {
+      if (this != (CEnvironmentThemeDef *)0x0) {
+        CEnvironmentThemeDef::CEnvironmentThemeDef(this,param_3);
+      }
+      this = this + 0xc4;
+    }
+  }
+  if (((char)param_6 == '\0') &&
+     (param_6 = *(CEnvironmentThemeDef **)(param_1 + 4), param_2 != param_6)) {
+    iVar3 = (int)param_2 - (int)this;
+    do {
+      if (this != (CEnvironmentThemeDef *)0x0) {
+        CEnvironmentThemeDef::CEnvironmentThemeDef(this,this + iVar3);
+      }
+      this = this + 0xc4;
+    } while (this + iVar3 != param_6);
+  }
+  CFileInstaller::CActiveFile::OnReadFinished(param_1);
+  *(CEnvironmentThemeDef **)(param_1 + 4) = this;
+  *(CEnvironmentThemeDef **)param_1 = local_8;
+  *(CEnvironmentThemeDef **)(param_1 + 8) = local_8 + (int)pCVar2 * 0xc4;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004772a7 295 1
+@@CALLERS ?Copy@CEngineLocalDetailGeneratorDef@@UAEXPBVCDefClassBase@@@Z
+@@CALLEES OnReadFinished, _Destroy, FUN_00477c6a, pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>, CEngineLocalDetailLayerDef
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall
+FUN_004772a7(CActiveFile *param_1,
+            pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *param_2)
+
+{
+  CEngineLocalDetailLayerDef *pCVar1;
+  CActiveFile *pCVar2;
+  uint uVar3;
+  int iVar4;
+  uint uVar5;
+  pair<class_CCharString,class_NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *ppVar6;
+  CEngineLocalDetailLayerDef *this;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  CEngineLocalDetailLayerDef *pCVar7;
+  int local_c;
+  pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *local_8;
+  
+  pCVar2 = (CActiveFile *)param_2;
+  if (param_2 != (pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *)param_1)
+  {
+    iVar4 = *(int *)(param_2 + 4);
+    ppVar6 = *(pair<class_CCharString,class_NQuestManager::CRuntimeQuestPersistence::CPersistInfo>
+               **)param_2;
+    uVar3 = (iVar4 - (int)ppVar6) / 0x54;
+    param_2 = (pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *)uVar3;
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)param_1) / 0x54) < uVar3) {
+      iVar4 = FUN_00477c6a(uVar3,ppVar6,iVar4);
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar4;
+      *(uint *)(param_1 + 8) = uVar3 * 0x54 + iVar4;
+      param_2 = (pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *)uVar3;
+    }
+    else {
+      uVar5 = (*(int *)(param_1 + 4) - *(int *)param_1) / 0x54;
+      if (uVar5 < uVar3) {
+        local_8 = *(pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> **)
+                   param_1;
+        local_c = (int)(uVar5 * 0x54) / 0x54;
+        if (0 < local_c) {
+          do {
+            std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>::
+            pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>(local_8,ppVar6);
+            local_8 = local_8 + 0x54;
+            ppVar6 = ppVar6 + 0x54;
+            local_c = local_c + -1;
+          } while (local_c != 0);
+        }
+        pCVar1 = *(CEngineLocalDetailLayerDef **)(pCVar2 + 4);
+        this = *(CEngineLocalDetailLayerDef **)(param_1 + 4);
+        for (pCVar7 = (CEngineLocalDetailLayerDef *)
+                      ((((int)this - *(int *)param_1) / 0x54) * 0x54 + *(int *)pCVar2);
+            pCVar7 != pCVar1; pCVar7 = pCVar7 + 0x54) {
+          if (this != (CEngineLocalDetailLayerDef *)0x0) {
+            CEngineLocalDetailLayerDef::CEngineLocalDetailLayerDef(this,pCVar7);
+          }
+          this = this + 0x54;
+        }
+      }
+      else {
+        param_2 = *(pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> **)
+                   param_1;
+        local_8 = (pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *)
+                  ((iVar4 - (int)ppVar6) / 0x54);
+        if (0 < (int)local_8) {
+          do {
+            std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>::
+            pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>(param_2,ppVar6);
+            param_2 = param_2 + 0x54;
+            ppVar6 = ppVar6 + 0x54;
+            local_8 = (pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *)
+                      ((int)local_8 + -1);
+          } while (local_8 !=
+                   (pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *)0x0);
+        }
+        std::
+        vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+        ::_Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+                    *)param_2,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+        param_2 = (pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *)uVar3;
+      }
+    }
+    *(int *)(param_1 + 4) = (int)param_2 * 0x54 + *(int *)param_1;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004774d6 90 1
+@@CALLERS CEngineLocalDetailLayerDef
+@@CALLEES FUN_00477530, CEngineLocalDetailObjectDef
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004774d6(undefined4 *param_1,CEngineLocalDetailObjectDef *param_2)
+
+{
+  int *piVar1;
+  CEngineLocalDetailObjectDef *this;
+  CEngineLocalDetailObjectDef *pCVar2;
+  
+  piVar1 = (int *)param_2;
+  FUN_00477530((*(int *)((int)param_2 + 4) - *(int *)param_2) / 0x88,(int)&param_2 + 3);
+  param_2 = (CEngineLocalDetailObjectDef *)piVar1[1];
+  pCVar2 = (CEngineLocalDetailObjectDef *)*piVar1;
+  this = (CEngineLocalDetailObjectDef *)*param_1;
+  if (pCVar2 != param_2) {
+    do {
+      if (this != (CEngineLocalDetailObjectDef *)0x0) {
+        CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef(this,pCVar2);
+      }
+      pCVar2 = pCVar2 + 0x88;
+      this = this + 0x88;
+    } while (pCVar2 != param_2);
+  }
+  param_1[1] = this;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00477530 60 1
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_00477530(undefined4 *param_1,int param_2)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = (void *)0x0;
+  *param_1 = 0;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  if (param_2 != 0) {
+    pvVar1 = malloc(param_2 * 0x88);
+  }
+  param_1[2] = (void *)(param_2 * 0x88 + (int)pvVar1);
+  *param_1 = pvVar1;
+  param_1[1] = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00477ab7 325 1
+@@CALLERS pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>
+@@CALLEES _Destroy, operator=, OnReadFinished, CEngineLocalDetailObjectDef, FUN_00477c18
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_00477ab7(CActiveFile *param_1,CEngineLocalDetailObjectDef *param_2)
+
+{
+  CEngineLocalDetailObjectDef *pCVar1;
+  uint uVar2;
+  int iVar3;
+  uint uVar4;
+  CIntelligentPointer<CThing_const_> *unaff_EBX;
+  CEngineLocalDetailObjectDef *pCVar5;
+  CIntelligentPointer<CThing_const_> *unaff_ESI;
+  CEngineLocalDetailObjectDef *local_14;
+  CEngineLocalDetailObjectDef *local_10;
+  CEngineLocalDetailObjectDef *local_c;
+  
+  if (param_2 != (CEngineLocalDetailObjectDef *)param_1) {
+    iVar3 = *(int *)(param_2 + 4);
+    local_10 = *(CEngineLocalDetailObjectDef **)param_2;
+    uVar2 = (iVar3 - (int)local_10) / 0x88;
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)param_1) / 0x88) < uVar2) {
+      iVar3 = FUN_00477c18(uVar2,local_10,iVar3);
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar3;
+      *(uint *)(param_1 + 8) = uVar2 * 0x88 + iVar3;
+    }
+    else {
+      uVar4 = (*(int *)(param_1 + 4) - *(int *)param_1) / 0x88;
+      if (uVar4 < uVar2) {
+        local_14 = *(CEngineLocalDetailObjectDef **)param_1;
+        iVar3 = (int)(uVar4 * 0x88) / 0x88;
+        if (0 < iVar3) {
+          do {
+            CEngineLocalDetailObjectDef::operator=(local_14,local_10);
+            local_10 = local_10 + 0x88;
+            local_14 = local_14 + 0x88;
+            iVar3 = iVar3 + -1;
+          } while (iVar3 != 0);
+        }
+        pCVar1 = *(CEngineLocalDetailObjectDef **)(param_2 + 4);
+        pCVar5 = (CEngineLocalDetailObjectDef *)
+                 (((*(int *)(param_1 + 4) - *(int *)param_1) / 0x88) * 0x88 + *(int *)param_2);
+        param_2 = *(CEngineLocalDetailObjectDef **)(param_1 + 4);
+        for (; pCVar5 != pCVar1; pCVar5 = pCVar5 + 0x88) {
+          if (param_2 != (CEngineLocalDetailObjectDef *)0x0) {
+            CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef(param_2,pCVar5);
+          }
+          param_2 = param_2 + 0x88;
+        }
+      }
+      else {
+        param_2 = *(CEngineLocalDetailObjectDef **)param_1;
+        local_14 = (CEngineLocalDetailObjectDef *)((iVar3 - (int)local_10) / 0x88);
+        local_c = local_10;
+        if (0 < (int)local_14) {
+          do {
+            CEngineLocalDetailObjectDef::operator=(param_2,local_c);
+            local_c = local_c + 0x88;
+            param_2 = param_2 + 0x88;
+            local_14 = (CEngineLocalDetailObjectDef *)((int)local_14 + -1);
+          } while (local_14 != (CEngineLocalDetailObjectDef *)0x0);
+        }
+        std::
+        vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+        ::_Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+                    *)param_2,unaff_ESI,unaff_EBX);
+      }
+    }
+    *(uint *)(param_1 + 4) = uVar2 * 0x88 + *(int *)param_1;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00477c18 77 1
+@@CALLERS 
+@@CALLEES CEngineLocalDetailObjectDef, malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_00477c18(int param_1,CEngineLocalDetailObjectDef *param_2,
+                   CEngineLocalDetailObjectDef *param_3)
+
+{
+  void *pvVar1;
+  int iVar2;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x88);
+  }
+  if (param_2 != param_3) {
+    iVar2 = (int)pvVar1 - (int)param_2;
+    do {
+      if (param_2 + iVar2 != (CEngineLocalDetailObjectDef *)0x0) {
+        CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef(param_2 + iVar2,param_2);
+      }
+      param_2 = param_2 + 0x88;
+    } while (param_2 != param_3);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00477c6a 71 1
+@@CALLERS 
+@@CALLEES CEngineLocalDetailLayerDef, malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_00477c6a(int param_1,CEngineLocalDetailLayerDef *param_2,
+                   CEngineLocalDetailLayerDef *param_3)
+
+{
+  void *pvVar1;
+  int iVar2;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x54);
+  }
+  if (param_2 != param_3) {
+    iVar2 = (int)pvVar1 - (int)param_2;
+    do {
+      if (param_2 + iVar2 != (CEngineLocalDetailLayerDef *)0x0) {
+        CEngineLocalDetailLayerDef::CEngineLocalDetailLayerDef(param_2 + iVar2,param_2);
+      }
+      param_2 = param_2 + 0x54;
+    } while (param_2 != param_3);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00477e36 88 1
+@@CALLERS push_back
+@@CALLEES _Destroy, operator=
+@@STRINGS 
+@@DECOMP
+
+CEngineLocalDetailObjectDef * __thiscall
+FUN_00477e36(int param_1,CEngineLocalDetailObjectDef *param_2,int param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  CIntelligentPointer<CThing_const_> *unaff_ESI;
+  CEngineLocalDetailObjectDef *this;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  
+  iVar1 = (*(int *)(param_1 + 4) - param_3) / 0x88;
+  this = param_2;
+  if (0 < iVar1) {
+    iVar2 = param_3 - (int)param_2;
+    param_3 = iVar1;
+    do {
+      CEngineLocalDetailObjectDef::operator=(this,this + iVar2);
+      this = this + 0x88;
+      param_3 = param_3 + -1;
+    } while (param_3 != 0);
+  }
+  std::
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>::
+  _Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+            *)this,unaff_EDI,unaff_ESI);
+  *(CEngineLocalDetailObjectDef **)(param_1 + 4) = this;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00477e8e 384 1
+@@CALLERS push_back
+@@CALLEES operator=, OnDie, FUN_0047800e, CEngineLocalDetailObjectDef, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00477e8e(int param_1,CEngineLocalDetailObjectDef *param_2,CEngineLocalDetailObjectDef *param_3,
+            CEngineLocalDetailObjectDef *param_4)
+
+{
+  CEngineLocalDetailObjectDef *pCVar1;
+  CEngineLocalDetailObjectDef *pCVar2;
+  CEngineLocalDetailObjectDef *pCVar3;
+  uint uVar4;
+  int iVar5;
+  bool bVar6;
+  CEngineLocalDetailObjectDef local_94 [136];
+  CEngineLocalDetailObjectDef *local_c;
+  CEngineLocalDetailObjectDef *local_8;
+  
+  pCVar1 = param_3;
+  pCVar2 = param_2;
+  if (param_3 != (CEngineLocalDetailObjectDef *)0x0) {
+    if ((CEngineLocalDetailObjectDef *)((*(int *)(param_1 + 8) - *(int *)(param_1 + 4)) / 0x88) <
+        param_3) {
+      param_3 = (CEngineLocalDetailObjectDef *)((uint)param_3 & 0xffffff);
+      FUN_0047800e(param_2,param_4,(int)&param_3 + 3,pCVar1,0);
+    }
+    else {
+      CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef(local_94,param_4);
+      local_8 = (CEngineLocalDetailObjectDef *)((*(int *)(param_1 + 4) - (int)param_2) / 0x88);
+      pCVar3 = *(CEngineLocalDetailObjectDef **)(param_1 + 4);
+      param_3 = pCVar3;
+      if (pCVar1 < local_8) {
+        param_4 = pCVar3 + (int)pCVar1 * -0x88;
+        local_c = pCVar3;
+        local_8 = param_4;
+        for (; param_4 != pCVar3; param_4 = param_4 + 0x88) {
+          if (local_c != (CEngineLocalDetailObjectDef *)0x0) {
+            CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef(local_c,param_4);
+            pCVar3 = param_3;
+          }
+          local_c = local_c + 0x88;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)pCVar1 * 0x88;
+        pCVar2 = (CEngineLocalDetailObjectDef *)(((int)local_8 - (int)param_2) / 0x88);
+        param_4 = pCVar3;
+        if (0 < (int)pCVar2) {
+          iVar5 = (int)local_8 - (int)pCVar3;
+          param_3 = pCVar2;
+          do {
+            param_4 = param_4 + -0x88;
+            CEngineLocalDetailObjectDef::operator=(param_4,param_4 + iVar5);
+            param_3 = param_3 + -1;
+          } while (param_3 != (CEngineLocalDetailObjectDef *)0x0);
+        }
+        pCVar2 = param_2 + (int)pCVar1 * 0x88;
+        for (; param_2 != pCVar2; param_2 = param_2 + 0x88) {
+          CEngineLocalDetailObjectDef::operator=(param_2,local_94);
+        }
+      }
+      else {
+        uVar4 = (int)pCVar1 - (int)local_8;
+        std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+                  ((ulong *)pCVar3,uVar4,(ulong *)local_94);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar4 * 0x88;
+        bVar6 = param_2 != param_3;
+        param_4 = param_2;
+        param_2 = *(CEngineLocalDetailObjectDef **)(param_1 + 4);
+        if (bVar6) {
+          do {
+            if (param_2 != (CEngineLocalDetailObjectDef *)0x0) {
+              CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef(param_2,param_4);
+            }
+            param_4 = param_4 + 0x88;
+            param_2 = param_2 + 0x88;
+          } while (param_4 != param_3);
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + (int)local_8 * 0x88;
+        for (; pCVar2 != param_3; pCVar2 = pCVar2 + 0x88) {
+          CEngineLocalDetailObjectDef::operator=(pCVar2,local_94);
+        }
+      }
+      CTCInventoryItem::OnDie((CTCInventoryItem *)local_94);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0047800e 246 1
+@@CALLERS 
+@@CALLEES OnReadFinished, CEngineLocalDetailObjectDef, malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_0047800e(CActiveFile *param_1,CEngineLocalDetailObjectDef *param_2,
+            CEngineLocalDetailObjectDef *param_3,undefined4 param_4,
+            CEngineLocalDetailObjectDef *param_5,CEngineLocalDetailObjectDef *param_6)
+
+{
+  CEngineLocalDetailObjectDef **ppCVar1;
+  CEngineLocalDetailObjectDef *pCVar2;
+  int iVar3;
+  CEngineLocalDetailObjectDef *pCVar4;
+  CEngineLocalDetailObjectDef *this;
+  CEngineLocalDetailObjectDef *local_8;
+  
+  local_8 = (CEngineLocalDetailObjectDef *)((*(int *)(param_1 + 4) - *(int *)param_1) / 0x88);
+  ppCVar1 = &param_5;
+  if (param_5 <= local_8) {
+    ppCVar1 = &local_8;
+  }
+  pCVar2 = *ppCVar1 + (int)local_8;
+  if (pCVar2 == (CEngineLocalDetailObjectDef *)0x0) {
+    local_8 = (CEngineLocalDetailObjectDef *)0x0;
+  }
+  else {
+    local_8 = malloc((int)pCVar2 * 0x88);
+  }
+  this = local_8;
+  for (pCVar4 = *(CEngineLocalDetailObjectDef **)param_1; pCVar4 != param_2; pCVar4 = pCVar4 + 0x88)
+  {
+    if (this != (CEngineLocalDetailObjectDef *)0x0) {
+      CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef(this,pCVar4);
+    }
+    this = this + 0x88;
+  }
+  pCVar4 = param_5;
+  if (param_5 == (CEngineLocalDetailObjectDef *)0x1) {
+    if (this != (CEngineLocalDetailObjectDef *)0x0) {
+      CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef(this,param_3);
+    }
+    this = this + 0x88;
+  }
+  else {
+    for (; pCVar4 != (CEngineLocalDetailObjectDef *)0x0; pCVar4 = pCVar4 + -1) {
+      if (this != (CEngineLocalDetailObjectDef *)0x0) {
+        CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef(this,param_3);
+      }
+      this = this + 0x88;
+    }
+  }
+  if (((char)param_6 == '\0') &&
+     (param_6 = *(CEngineLocalDetailObjectDef **)(param_1 + 4), param_2 != param_6)) {
+    iVar3 = (int)param_2 - (int)this;
+    do {
+      if (this != (CEngineLocalDetailObjectDef *)0x0) {
+        CEngineLocalDetailObjectDef::CEngineLocalDetailObjectDef(this,this + iVar3);
+      }
+      this = this + 0x88;
+    } while (this + iVar3 != param_6);
+  }
+  CFileInstaller::CActiveFile::OnReadFinished(param_1);
+  *(CEngineLocalDetailObjectDef **)(param_1 + 4) = this;
+  *(CEngineLocalDetailObjectDef **)param_1 = local_8;
+  *(CEngineLocalDetailObjectDef **)(param_1 + 8) = local_8 + (int)pCVar2 * 0x88;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0047832d 316 1
+@@CALLERS 
+@@CALLEES OnReadFinished, CAbilityTrackLevelDef, _Destroy, operator=, FUN_00478533
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_0047832d(CActiveFile *param_1,CActiveFile *param_2)
+
+{
+  CAbilityTrackLevelDef *pCVar1;
+  CActiveFile *pCVar2;
+  int iVar3;
+  uint uVar4;
+  CIntelligentPointer<CThing_const_> *unaff_EBX;
+  CBalverineBattleDef *pCVar5;
+  CAbilityTrackLevelDef *pCVar6;
+  CBalverineBattleDef *local_10;
+  CAbilityTrackLevelDef *local_c;
+  CBalverineBattleDef *local_8;
+  
+  pCVar2 = param_2;
+  if (param_2 != param_1) {
+    iVar3 = *(int *)(param_2 + 4);
+    pCVar5 = *(CBalverineBattleDef **)param_2;
+    param_2 = (CActiveFile *)((iVar3 - (int)pCVar5) / 0x48);
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)param_1) / 0x48) < param_2) {
+      iVar3 = FUN_00478533(param_2,pCVar5,iVar3);
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar3;
+      *(int *)(param_1 + 8) = iVar3 + (int)param_2 * 0x48;
+    }
+    else {
+      uVar4 = (*(int *)(param_1 + 4) - *(int *)param_1) / 0x48;
+      if (uVar4 < param_2) {
+        local_10 = *(CBalverineBattleDef **)param_1;
+        local_c = (CAbilityTrackLevelDef *)((int)(uVar4 * 0x48) / 0x48);
+        local_8 = pCVar5;
+        if (0 < (int)local_c) {
+          do {
+            CBalverineBattleDef::operator=(local_10,local_8);
+            local_10 = local_10 + 0x48;
+            local_c = (CAbilityTrackLevelDef *)((int)local_c + -1);
+            local_8 = local_8 + 0x48;
+          } while (local_c != (CAbilityTrackLevelDef *)0x0);
+        }
+        pCVar1 = *(CAbilityTrackLevelDef **)(pCVar2 + 4);
+        local_c = *(CAbilityTrackLevelDef **)(param_1 + 4);
+        for (pCVar6 = (CAbilityTrackLevelDef *)
+                      (*(int *)pCVar2 + ((*(int *)(param_1 + 4) - *(int *)param_1) / 0x48) * 0x48);
+            pCVar6 != pCVar1; pCVar6 = pCVar6 + 0x48) {
+          if (local_c != (CAbilityTrackLevelDef *)0x0) {
+            CAbilityTrackLevelDef::CAbilityTrackLevelDef(local_c,pCVar6);
+          }
+          local_c = local_c + 0x48;
+        }
+      }
+      else {
+        local_8 = *(CBalverineBattleDef **)param_1;
+        local_10 = (CBalverineBattleDef *)((iVar3 - (int)pCVar5) / 0x48);
+        if (0 < (int)local_10) {
+          do {
+            CBalverineBattleDef::operator=(local_8,pCVar5);
+            local_8 = local_8 + 0x48;
+            pCVar5 = pCVar5 + 0x48;
+            local_10 = (CBalverineBattleDef *)((int)local_10 + -1);
+          } while (local_10 != (CBalverineBattleDef *)0x0);
+        }
+        std::
+        vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+        ::_Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+                    *)local_8,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EBX);
+      }
+    }
+    *(int *)(param_1 + 4) = *(int *)param_1 + (int)param_2 * 0x48;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00478533 74 1
+@@CALLERS 
+@@CALLEES CAbilityTrackLevelDef, malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_00478533(int param_1,CAbilityTrackLevelDef *param_2,CAbilityTrackLevelDef *param_3)
+
+{
+  void *pvVar1;
+  int iVar2;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x48);
+  }
+  if (param_2 != param_3) {
+    iVar2 = (int)pvVar1 - (int)param_2;
+    do {
+      if (param_2 + iVar2 != (CAbilityTrackLevelDef *)0x0) {
+        CAbilityTrackLevelDef::CAbilityTrackLevelDef(param_2 + iVar2,param_2);
+      }
+      param_2 = param_2 + 0x48;
+    } while (param_2 != param_3);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0047857d 303 1
+@@CALLERS 
+@@CALLEES FUN_00478a6d, OnReadFinished, CAbilityTrackDef, operator=, _Destroy
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_0047857d(CActiveFile *param_1,CAbilityTrackDef *param_2)
+
+{
+  CActiveFile *pCVar1;
+  uint uVar2;
+  int iVar3;
+  uint uVar4;
+  CAbilityTrackDef *pCVar5;
+  CAbilityTrackDef *this;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  CAbilityTrackDef *pCVar6;
+  int local_c;
+  CAbilityTrackDef *local_8;
+  
+  pCVar1 = (CActiveFile *)param_2;
+  if (param_2 != (CAbilityTrackDef *)param_1) {
+    iVar3 = *(int *)(param_2 + 4);
+    pCVar5 = *(CAbilityTrackDef **)param_2;
+    uVar2 = (iVar3 - (int)pCVar5) / 0x50;
+    param_2 = (CAbilityTrackDef *)uVar2;
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)param_1) / 0x50) < uVar2) {
+      iVar3 = FUN_00478a6d(uVar2,pCVar5,iVar3);
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar3;
+      *(uint *)(param_1 + 8) = uVar2 * 0x50 + iVar3;
+      param_2 = (CAbilityTrackDef *)uVar2;
+    }
+    else {
+      uVar4 = (*(int *)(param_1 + 4) - *(int *)param_1) / 0x50;
+      if (uVar4 < uVar2) {
+        local_8 = *(CAbilityTrackDef **)param_1;
+        local_c = (int)(uVar4 * 0x50) / 0x50;
+        if (0 < local_c) {
+          do {
+            CAbilityTrackDef::operator=(local_8,pCVar5);
+            local_8 = local_8 + 0x50;
+            pCVar5 = pCVar5 + 0x50;
+            local_c = local_c + -1;
+          } while (local_c != 0);
+        }
+        pCVar5 = *(CAbilityTrackDef **)(pCVar1 + 4);
+        this = *(CAbilityTrackDef **)(param_1 + 4);
+        for (pCVar6 = (CAbilityTrackDef *)
+                      ((((int)this - *(int *)param_1) / 0x50) * 0x50 + *(int *)pCVar1);
+            pCVar6 != pCVar5; pCVar6 = pCVar6 + 0x50) {
+          if (this != (CAbilityTrackDef *)0x0) {
+            CAbilityTrackDef::CAbilityTrackDef(this,pCVar6);
+          }
+          this = this + 0x50;
+        }
+      }
+      else {
+        param_2 = *(CAbilityTrackDef **)param_1;
+        local_8 = (CAbilityTrackDef *)((iVar3 - (int)pCVar5) / 0x50);
+        if (0 < (int)local_8) {
+          do {
+            CAbilityTrackDef::operator=(param_2,pCVar5);
+            param_2 = param_2 + 0x50;
+            pCVar5 = pCVar5 + 0x50;
+            local_8 = (CAbilityTrackDef *)((int)local_8 + -1);
+          } while (local_8 != (CAbilityTrackDef *)0x0);
+        }
+        std::
+        vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+        ::_Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+                    *)param_2,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+        param_2 = (CAbilityTrackDef *)uVar2;
+      }
+    }
+    *(int *)(param_1 + 4) = (int)param_2 * 0x50 + *(int *)param_1;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0047876b 83 1
+@@CALLERS CAbilityTrackDef
+@@CALLEES CAbilityTrackLevelDef, FUN_004787be
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_0047876b(undefined4 *param_1,CAbilityTrackLevelDef *param_2)
+
+{
+  int *piVar1;
+  CAbilityTrackLevelDef *pCVar2;
+  CAbilityTrackLevelDef *this;
+  
+  piVar1 = (int *)param_2;
+  FUN_004787be((*(int *)((int)param_2 + 4) - *(int *)param_2) / 0x48,(int)&param_2 + 3);
+  param_2 = (CAbilityTrackLevelDef *)piVar1[1];
+  pCVar2 = (CAbilityTrackLevelDef *)*piVar1;
+  this = (CAbilityTrackLevelDef *)*param_1;
+  if (pCVar2 != param_2) {
+    do {
+      if (this != (CAbilityTrackLevelDef *)0x0) {
+        CAbilityTrackLevelDef::CAbilityTrackLevelDef(this,pCVar2);
+      }
+      pCVar2 = pCVar2 + 0x48;
+      this = this + 0x48;
+    } while (pCVar2 != param_2);
+  }
+  param_1[1] = this;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004787be 56 1
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_004787be(undefined4 *param_1,int param_2)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = (void *)0x0;
+  *param_1 = 0;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  if (param_2 != 0) {
+    pvVar1 = malloc(param_2 * 0x48);
+  }
+  *param_1 = pvVar1;
+  param_1[1] = pvVar1;
+  param_1[2] = (void *)((int)pvVar1 + param_2 * 0x48);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004788ca 312 1
+@@CALLERS operator=
+@@CALLEES operator=, CAbilityTrackLevelDef, OnReadFinished, FUN_00478a1e, _Destroy
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_004788ca(CActiveFile *param_1,CActiveFile *param_2)
+
+{
+  CAbilityTrackLevelDef *pCVar1;
+  uint uVar2;
+  int iVar3;
+  uint uVar4;
+  CIntelligentPointer<CThing_const_> *unaff_EBX;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  CBalverineBattleDef *pCVar5;
+  CAbilityTrackLevelDef *pCVar6;
+  CBalverineBattleDef *local_10;
+  CAbilityTrackLevelDef *local_c;
+  CBalverineBattleDef *local_8;
+  
+  if (param_2 != param_1) {
+    iVar3 = *(int *)(param_2 + 4);
+    pCVar5 = *(CBalverineBattleDef **)param_2;
+    uVar2 = (iVar3 - (int)pCVar5) / 0x48;
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)param_1) / 0x48) < uVar2) {
+      iVar3 = FUN_00478a1e(uVar2,pCVar5,iVar3);
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar3;
+      *(uint *)(param_1 + 8) = iVar3 + uVar2 * 0x48;
+    }
+    else {
+      uVar4 = (*(int *)(param_1 + 4) - *(int *)param_1) / 0x48;
+      if (uVar4 < uVar2) {
+        local_10 = *(CBalverineBattleDef **)param_1;
+        local_c = (CAbilityTrackLevelDef *)((int)(uVar4 * 0x48) / 0x48);
+        local_8 = pCVar5;
+        if (0 < (int)local_c) {
+          do {
+            CBalverineBattleDef::operator=(local_10,local_8);
+            local_10 = local_10 + 0x48;
+            local_c = (CAbilityTrackLevelDef *)((int)local_c + -1);
+            local_8 = local_8 + 0x48;
+          } while (local_c != (CAbilityTrackLevelDef *)0x0);
+        }
+        pCVar1 = *(CAbilityTrackLevelDef **)(param_2 + 4);
+        local_c = *(CAbilityTrackLevelDef **)(param_1 + 4);
+        for (pCVar6 = (CAbilityTrackLevelDef *)
+                      (*(int *)param_2 + ((*(int *)(param_1 + 4) - *(int *)param_1) / 0x48) * 0x48);
+            pCVar6 != pCVar1; pCVar6 = pCVar6 + 0x48) {
+          if (local_c != (CAbilityTrackLevelDef *)0x0) {
+            CAbilityTrackLevelDef::CAbilityTrackLevelDef(local_c,pCVar6);
+          }
+          local_c = local_c + 0x48;
+        }
+      }
+      else {
+        local_8 = *(CBalverineBattleDef **)param_1;
+        local_10 = (CBalverineBattleDef *)((iVar3 - (int)pCVar5) / 0x48);
+        if (0 < (int)local_10) {
+          do {
+            CBalverineBattleDef::operator=(local_8,pCVar5);
+            local_8 = local_8 + 0x48;
+            pCVar5 = pCVar5 + 0x48;
+            local_10 = (CBalverineBattleDef *)((int)local_10 + -1);
+          } while (local_10 != (CBalverineBattleDef *)0x0);
+        }
+        std::
+        vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+        ::_Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+                    *)local_8,unaff_EBX,unaff_EDI);
+      }
+    }
+    *(uint *)(param_1 + 4) = *(int *)param_1 + uVar2 * 0x48;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00478a1e 74 1
+@@CALLERS 
+@@CALLEES CAbilityTrackLevelDef, malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_00478a1e(int param_1,CAbilityTrackLevelDef *param_2,CAbilityTrackLevelDef *param_3)
+
+{
+  void *pvVar1;
+  int iVar2;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x48);
+  }
+  if (param_2 != param_3) {
+    iVar2 = (int)pvVar1 - (int)param_2;
+    do {
+      if (param_2 + iVar2 != (CAbilityTrackLevelDef *)0x0) {
+        CAbilityTrackLevelDef::CAbilityTrackLevelDef(param_2 + iVar2,param_2);
+      }
+      param_2 = param_2 + 0x48;
+    } while (param_2 != param_3);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00478a6d 74 1
+@@CALLERS 
+@@CALLEES CAbilityTrackDef, malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_00478a6d(int param_1,CAbilityTrackDef *param_2,CAbilityTrackDef *param_3)
+
+{
+  void *pvVar1;
+  int iVar2;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x50);
+  }
+  if (param_2 != param_3) {
+    iVar2 = (int)pvVar1 - (int)param_2;
+    do {
+      if (param_2 + iVar2 != (CAbilityTrackDef *)0x0) {
+        CAbilityTrackDef::CAbilityTrackDef(param_2 + iVar2,param_2);
+      }
+      param_2 = param_2 + 0x50;
+    } while (param_2 != param_3);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00478c2d 76 1
+@@CALLERS push_back
+@@CALLEES operator=, _Destroy
+@@STRINGS 
+@@DECOMP
+
+CBalverineBattleDef * __thiscall FUN_00478c2d(int param_1,CBalverineBattleDef *param_2,int param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  CIntelligentPointer<CThing_const_> *unaff_ESI;
+  CBalverineBattleDef *this;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  
+  iVar1 = (*(int *)(param_1 + 4) - param_3) / 0x48;
+  this = param_2;
+  if (0 < iVar1) {
+    iVar2 = param_3 - (int)param_2;
+    param_3 = iVar1;
+    do {
+      CBalverineBattleDef::operator=(this,this + iVar2);
+      this = this + 0x48;
+      param_3 = param_3 + -1;
+    } while (param_3 != 0);
+  }
+  std::
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>::
+  _Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+            *)this,unaff_EDI,unaff_ESI);
+  *(CBalverineBattleDef **)(param_1 + 4) = this;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00478c79 349 1
+@@CALLERS push_back
+@@CALLEES OnDie, CAbilityTrackLevelDef, operator=, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, FUN_00478dd6
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00478c79(int param_1,CBalverineBattleDef *param_2,CAbilityTrackLevelDef *param_3,
+            CAbilityTrackLevelDef *param_4)
+
+{
+  CAbilityTrackLevelDef *pCVar1;
+  CAbilityTrackLevelDef *this;
+  uint uVar2;
+  CBalverineBattleDef *pCVar3;
+  int iVar4;
+  int iVar5;
+  CAbilityTrackLevelDef local_54 [72];
+  CBalverineBattleDef *local_c;
+  undefined1 local_5;
+  
+  if (param_3 != (CAbilityTrackLevelDef *)0x0) {
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)(param_1 + 4)) / 0x48) < param_3) {
+      local_5 = 0;
+      FUN_00478dd6(param_2,param_4,&local_5,param_3,0);
+    }
+    else {
+      CAbilityTrackLevelDef::CAbilityTrackLevelDef(local_54,param_4);
+      uVar2 = (*(int *)(param_1 + 4) - (int)param_2) / 0x48;
+      pCVar3 = *(CBalverineBattleDef **)(param_1 + 4);
+      if (param_3 < uVar2) {
+        iVar5 = (int)param_3 * 0x48;
+        param_3 = (CAbilityTrackLevelDef *)(pCVar3 + (int)param_3 * -0x48);
+        param_4 = (CAbilityTrackLevelDef *)pCVar3;
+        local_c = (CBalverineBattleDef *)param_3;
+        for (; param_3 != (CAbilityTrackLevelDef *)pCVar3; param_3 = param_3 + 0x48) {
+          if (param_4 != (CAbilityTrackLevelDef *)0x0) {
+            CAbilityTrackLevelDef::CAbilityTrackLevelDef(param_4,param_3);
+          }
+          param_4 = param_4 + 0x48;
+        }
+        param_3 = (CAbilityTrackLevelDef *)(((int)local_c - (int)param_2) / 0x48);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + iVar5;
+        if (0 < (int)param_3) {
+          iVar4 = (int)local_c - (int)pCVar3;
+          do {
+            pCVar3 = pCVar3 + -0x48;
+            CBalverineBattleDef::operator=(pCVar3,pCVar3 + iVar4);
+            param_3 = (CAbilityTrackLevelDef *)((int)param_3 + -1);
+          } while (param_3 != (CAbilityTrackLevelDef *)0x0);
+        }
+        pCVar3 = param_2 + iVar5;
+        for (; param_2 != pCVar3; param_2 = param_2 + 0x48) {
+          CBalverineBattleDef::operator=(param_2,(CBalverineBattleDef *)local_54);
+        }
+      }
+      else {
+        std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+                  ((ulong *)pCVar3,(int)param_3 - uVar2,(ulong *)local_54);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + ((int)param_3 - uVar2) * 0x48;
+        this = *(CAbilityTrackLevelDef **)(param_1 + 4);
+        for (pCVar1 = (CAbilityTrackLevelDef *)param_2; pCVar1 != (CAbilityTrackLevelDef *)pCVar3;
+            pCVar1 = pCVar1 + 0x48) {
+          if (this != (CAbilityTrackLevelDef *)0x0) {
+            CAbilityTrackLevelDef::CAbilityTrackLevelDef(this,pCVar1);
+          }
+          this = this + 0x48;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar2 * 0x48;
+        for (; param_2 != pCVar3; param_2 = param_2 + 0x48) {
+          CBalverineBattleDef::operator=(param_2,(CBalverineBattleDef *)local_54);
+        }
+      }
+      CTCInventoryItem::OnDie((CTCInventoryItem *)local_54);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00478dd6 230 1
+@@CALLERS 
+@@CALLEES CAbilityTrackLevelDef, OnReadFinished, malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00478dd6(CActiveFile *param_1,CAbilityTrackLevelDef *param_2,CAbilityTrackLevelDef *param_3,
+            undefined4 param_4,CAbilityTrackLevelDef *param_5,CAbilityTrackLevelDef *param_6)
+
+{
+  CAbilityTrackLevelDef **ppCVar1;
+  CAbilityTrackLevelDef *pCVar2;
+  int iVar3;
+  CAbilityTrackLevelDef *pCVar4;
+  CAbilityTrackLevelDef *this;
+  CAbilityTrackLevelDef *local_8;
+  
+  local_8 = (CAbilityTrackLevelDef *)((*(int *)(param_1 + 4) - *(int *)param_1) / 0x48);
+  ppCVar1 = &param_5;
+  if (param_5 <= local_8) {
+    ppCVar1 = &local_8;
+  }
+  pCVar2 = *ppCVar1 + (int)local_8;
+  if (pCVar2 == (CAbilityTrackLevelDef *)0x0) {
+    local_8 = (CAbilityTrackLevelDef *)0x0;
+  }
+  else {
+    local_8 = malloc((int)pCVar2 * 0x48);
+  }
+  this = local_8;
+  for (pCVar4 = *(CAbilityTrackLevelDef **)param_1; pCVar4 != param_2; pCVar4 = pCVar4 + 0x48) {
+    if (this != (CAbilityTrackLevelDef *)0x0) {
+      CAbilityTrackLevelDef::CAbilityTrackLevelDef(this,pCVar4);
+    }
+    this = this + 0x48;
+  }
+  pCVar4 = param_5;
+  if (param_5 == (CAbilityTrackLevelDef *)0x1) {
+    if (this != (CAbilityTrackLevelDef *)0x0) {
+      CAbilityTrackLevelDef::CAbilityTrackLevelDef(this,param_3);
+    }
+    this = this + 0x48;
+  }
+  else {
+    for (; pCVar4 != (CAbilityTrackLevelDef *)0x0; pCVar4 = pCVar4 + -1) {
+      if (this != (CAbilityTrackLevelDef *)0x0) {
+        CAbilityTrackLevelDef::CAbilityTrackLevelDef(this,param_3);
+      }
+      this = this + 0x48;
+    }
+  }
+  if (((char)param_6 == '\0') &&
+     (param_6 = *(CAbilityTrackLevelDef **)(param_1 + 4), param_2 != param_6)) {
+    iVar3 = (int)param_2 - (int)this;
+    do {
+      if (this != (CAbilityTrackLevelDef *)0x0) {
+        CAbilityTrackLevelDef::CAbilityTrackLevelDef(this,this + iVar3);
+      }
+      this = this + 0x48;
+    } while (this + iVar3 != param_6);
+  }
+  CFileInstaller::CActiveFile::OnReadFinished(param_1);
+  *(CAbilityTrackLevelDef **)param_1 = local_8;
+  *(CAbilityTrackLevelDef **)(param_1 + 4) = this;
+  *(CAbilityTrackLevelDef **)(param_1 + 8) = local_8 + (int)pCVar2 * 0x48;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004792cf 79 1
+@@CALLERS ?Transfer@COpinionDeedEffectsDef@@UAEXAAVCPersistContext@@@Z
+@@CALLEES CheckCRC, OnReadFinished, TransferBinaryOut, TransferBinaryIn, LinkedList_Initialize
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004792cf(CPersistContext *param_1,
+            list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_> *param_2)
+
+{
+  CPersistContext *local_8;
+  
+  local_8 = param_1;
+  CPersistContext::CheckCRC(param_1,"");
+  LinkedList_Initialize((int)&param_2 + 3);
+  if (*(int *)(param_1 + 0x18) == 2) {
+    CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_>::
+    TransferBinaryIn((CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_>
+                      *)&local_8,*(CMemoryDataInputStream **)(param_1 + 0x24),param_2);
+  }
+  else if (*(int *)(param_1 + 0x18) == 3) {
+    CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_>::
+    TransferBinaryOut((CPersistTraits<std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset>_>_>
+                       *)&local_8,*(CDataOutputStream **)(param_1 + 0x28),param_2);
+  }
+  CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&local_8);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004795e0 80 1
+@@CALLERS push_back
+@@CALLEES _Destroy, operator=
+@@STRINGS 
+@@DECOMP
+
+COpinionDeedReactionDef * __thiscall
+FUN_004795e0(int param_1,COpinionDeedReactionDef *param_2,int param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  COpinionDeedReactionDef *this;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  
+  iVar1 = (*(int *)(param_1 + 4) - param_3) / 0x50;
+  this = param_2;
+  if (0 < iVar1) {
+    iVar2 = param_3 - (int)param_2;
+    param_3 = iVar1;
+    do {
+      COpinionDeedReactionDef::operator=(this,this + iVar2);
+      this = this + 0x50;
+      param_3 = param_3 + -1;
+    } while (param_3 != 0);
+  }
+  std::
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>::
+  _Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+            *)this,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+  *(COpinionDeedReactionDef **)(param_1 + 4) = this;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00479630 349 1
+@@CALLERS push_back
+@@CALLEES OnDie, COpinionDeedReactionDef, operator=, FUN_0047978d, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00479630(int param_1,COpinionDeedReactionDef *param_2,COpinionDeedReactionDef *param_3,
+            COpinionDeedReactionDef *param_4)
+
+{
+  COpinionDeedReactionDef *pCVar1;
+  COpinionDeedReactionDef *this;
+  uint uVar2;
+  COpinionDeedReactionDef *pCVar3;
+  int iVar4;
+  int iVar5;
+  COpinionDeedReactionDef local_5c [80];
+  COpinionDeedReactionDef *local_c;
+  undefined1 local_5;
+  
+  if (param_3 != (COpinionDeedReactionDef *)0x0) {
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)(param_1 + 4)) / 0x50) < param_3) {
+      local_5 = 0;
+      FUN_0047978d(param_2,param_4,&local_5,param_3,0);
+    }
+    else {
+      COpinionDeedReactionDef::COpinionDeedReactionDef(local_5c,param_4);
+      uVar2 = (*(int *)(param_1 + 4) - (int)param_2) / 0x50;
+      pCVar3 = *(COpinionDeedReactionDef **)(param_1 + 4);
+      if (param_3 < uVar2) {
+        iVar5 = (int)param_3 * 0x50;
+        param_3 = pCVar3 + (int)param_3 * -0x50;
+        param_4 = pCVar3;
+        local_c = param_3;
+        for (; param_3 != pCVar3; param_3 = param_3 + 0x50) {
+          if (param_4 != (COpinionDeedReactionDef *)0x0) {
+            COpinionDeedReactionDef::COpinionDeedReactionDef(param_4,param_3);
+          }
+          param_4 = param_4 + 0x50;
+        }
+        param_3 = (COpinionDeedReactionDef *)(((int)local_c - (int)param_2) / 0x50);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + iVar5;
+        if (0 < (int)param_3) {
+          iVar4 = (int)local_c - (int)pCVar3;
+          do {
+            pCVar3 = pCVar3 + -0x50;
+            COpinionDeedReactionDef::operator=(pCVar3,pCVar3 + iVar4);
+            param_3 = (COpinionDeedReactionDef *)((int)param_3 + -1);
+          } while (param_3 != (COpinionDeedReactionDef *)0x0);
+        }
+        pCVar3 = param_2 + iVar5;
+        for (; param_2 != pCVar3; param_2 = param_2 + 0x50) {
+          COpinionDeedReactionDef::operator=(param_2,local_5c);
+        }
+      }
+      else {
+        std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+                  ((ulong *)pCVar3,(int)param_3 - uVar2,(ulong *)local_5c);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + ((int)param_3 - uVar2) * 0x50;
+        this = *(COpinionDeedReactionDef **)(param_1 + 4);
+        for (pCVar1 = param_2; pCVar1 != pCVar3; pCVar1 = pCVar1 + 0x50) {
+          if (this != (COpinionDeedReactionDef *)0x0) {
+            COpinionDeedReactionDef::COpinionDeedReactionDef(this,pCVar1);
+          }
+          this = this + 0x50;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar2 * 0x50;
+        for (; param_2 != pCVar3; param_2 = param_2 + 0x50) {
+          COpinionDeedReactionDef::operator=(param_2,local_5c);
+        }
+      }
+      CTCInventoryItem::OnDie((CTCInventoryItem *)local_5c);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0047978d 232 1
+@@CALLERS 
+@@CALLEES COpinionDeedReactionDef, OnReadFinished, malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_0047978d(CActiveFile *param_1,COpinionDeedReactionDef *param_2,COpinionDeedReactionDef *param_3,
+            undefined4 param_4,COpinionDeedReactionDef *param_5,COpinionDeedReactionDef *param_6)
+
+{
+  COpinionDeedReactionDef **ppCVar1;
+  COpinionDeedReactionDef *pCVar2;
+  int iVar3;
+  COpinionDeedReactionDef *pCVar4;
+  COpinionDeedReactionDef *this;
+  COpinionDeedReactionDef *local_8;
+  
+  local_8 = (COpinionDeedReactionDef *)((*(int *)(param_1 + 4) - *(int *)param_1) / 0x50);
+  ppCVar1 = &param_5;
+  if (param_5 <= local_8) {
+    ppCVar1 = &local_8;
+  }
+  pCVar2 = *ppCVar1 + (int)local_8;
+  if (pCVar2 == (COpinionDeedReactionDef *)0x0) {
+    local_8 = (COpinionDeedReactionDef *)0x0;
+  }
+  else {
+    local_8 = malloc((int)pCVar2 * 0x50);
+  }
+  this = local_8;
+  for (pCVar4 = *(COpinionDeedReactionDef **)param_1; pCVar4 != param_2; pCVar4 = pCVar4 + 0x50) {
+    if (this != (COpinionDeedReactionDef *)0x0) {
+      COpinionDeedReactionDef::COpinionDeedReactionDef(this,pCVar4);
+    }
+    this = this + 0x50;
+  }
+  pCVar4 = param_5;
+  if (param_5 == (COpinionDeedReactionDef *)0x1) {
+    if (this != (COpinionDeedReactionDef *)0x0) {
+      COpinionDeedReactionDef::COpinionDeedReactionDef(this,param_3);
+    }
+    this = this + 0x50;
+  }
+  else {
+    for (; pCVar4 != (COpinionDeedReactionDef *)0x0; pCVar4 = pCVar4 + -1) {
+      if (this != (COpinionDeedReactionDef *)0x0) {
+        COpinionDeedReactionDef::COpinionDeedReactionDef(this,param_3);
+      }
+      this = this + 0x50;
+    }
+  }
+  if (((char)param_6 == '\0') &&
+     (param_6 = *(COpinionDeedReactionDef **)(param_1 + 4), param_2 != param_6)) {
+    iVar3 = (int)param_2 - (int)this;
+    do {
+      if (this != (COpinionDeedReactionDef *)0x0) {
+        COpinionDeedReactionDef::COpinionDeedReactionDef(this,this + iVar3);
+      }
+      this = this + 0x50;
+    } while (this + iVar3 != param_6);
+  }
+  CFileInstaller::CActiveFile::OnReadFinished(param_1);
+  *(COpinionDeedReactionDef **)(param_1 + 4) = this;
+  *(COpinionDeedReactionDef **)param_1 = local_8;
+  *(COpinionDeedReactionDef **)(param_1 + 8) = local_8 + (int)pCVar2 * 0x50;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00479a0e 80 1
+@@CALLERS push_back
+@@CALLEES pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>, _Destroy
+@@STRINGS 
+@@DECOMP
+
+pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> * __thiscall
+FUN_00479a0e(int param_1,
+            pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *param_2,
+            int param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *this;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  
+  iVar1 = (*(int *)(param_1 + 4) - param_3) / 0x54;
+  this = param_2;
+  if (0 < iVar1) {
+    iVar2 = param_3 - (int)param_2;
+    param_3 = iVar1;
+    do {
+      std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>::
+      pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>
+                (this,(pair<class_CCharString,class_NQuestManager::CRuntimeQuestPersistence::CPersistInfo>
+                       *)(this + iVar2));
+      this = this + 0x54;
+      param_3 = param_3 + -1;
+    } while (param_3 != 0);
+  }
+  std::
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>::
+  _Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+            *)this,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+  *(pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> **)(param_1 + 4) = this;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00479a5e 340 1
+@@CALLERS push_back
+@@CALLEES FinishMove, pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, FUN_00479bb2, CEngineLocalDetailLayerDef
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00479a5e(int param_1,
+            pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *param_2,
+            CEngineLocalDetailLayerDef *param_3,CEngineLocalDetailLayerDef *param_4)
+
+{
+  CEngineLocalDetailLayerDef *pCVar1;
+  CEngineLocalDetailLayerDef *this;
+  uint uVar2;
+  CThingCreatureBase *unaff_EBX;
+  pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *ppVar3;
+  int iVar4;
+  int iVar5;
+  CEngineLocalDetailLayerDef local_60 [84];
+  pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *local_c;
+  undefined1 local_5;
+  
+  if (param_3 != (CEngineLocalDetailLayerDef *)0x0) {
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)(param_1 + 4)) / 0x54) < param_3) {
+      local_5 = 0;
+      FUN_00479bb2(param_2,param_4,&local_5,param_3,0);
+    }
+    else {
+      CEngineLocalDetailLayerDef::CEngineLocalDetailLayerDef(local_60,param_4);
+      uVar2 = (*(int *)(param_1 + 4) - (int)param_2) / 0x54;
+      ppVar3 = *(pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> **)
+                (param_1 + 4);
+      if (param_3 < uVar2) {
+        iVar5 = (int)param_3 * 0x54;
+        param_3 = (CEngineLocalDetailLayerDef *)(ppVar3 + (int)param_3 * -0x54);
+        param_4 = (CEngineLocalDetailLayerDef *)ppVar3;
+        local_c = (pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *)param_3
+        ;
+        for (; param_3 != (CEngineLocalDetailLayerDef *)ppVar3; param_3 = param_3 + 0x54) {
+          if (param_4 != (CEngineLocalDetailLayerDef *)0x0) {
+            CEngineLocalDetailLayerDef::CEngineLocalDetailLayerDef(param_4,param_3);
+          }
+          param_4 = param_4 + 0x54;
+        }
+        param_3 = (CEngineLocalDetailLayerDef *)(((int)local_c - (int)param_2) / 0x54);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + iVar5;
+        if (0 < (int)param_3) {
+          iVar4 = (int)local_c - (int)ppVar3;
+          do {
+            ppVar3 = ppVar3 + -0x54;
+            std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>::
+            pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>
+                      (ppVar3,(pair<class_CCharString,class_NQuestManager::CRuntimeQuestPersistence::CPersistInfo>
+                               *)(ppVar3 + iVar4));
+            param_3 = (CEngineLocalDetailLayerDef *)((int)param_3 + -1);
+          } while (param_3 != (CEngineLocalDetailLayerDef *)0x0);
+        }
+        ppVar3 = param_2 + iVar5;
+        for (; param_2 != ppVar3; param_2 = param_2 + 0x54) {
+          std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>::
+          pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>
+                    (param_2,(pair<class_CCharString,class_NQuestManager::CRuntimeQuestPersistence::CPersistInfo>
+                              *)local_60);
+        }
+      }
+      else {
+        std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+                  ((ulong *)ppVar3,(int)param_3 - uVar2,(ulong *)local_60);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + ((int)param_3 - uVar2) * 0x54;
+        this = *(CEngineLocalDetailLayerDef **)(param_1 + 4);
+        for (pCVar1 = (CEngineLocalDetailLayerDef *)param_2;
+            pCVar1 != (CEngineLocalDetailLayerDef *)ppVar3; pCVar1 = pCVar1 + 0x54) {
+          if (this != (CEngineLocalDetailLayerDef *)0x0) {
+            CEngineLocalDetailLayerDef::CEngineLocalDetailLayerDef(this,pCVar1);
+          }
+          this = this + 0x54;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar2 * 0x54;
+        for (; param_2 != ppVar3; param_2 = param_2 + 0x54) {
+          std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>::
+          pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>
+                    (param_2,(pair<class_CCharString,class_NQuestManager::CRuntimeQuestPersistence::CPersistInfo>
+                              *)local_60);
+        }
+      }
+      CTCAssassinRush::FinishMove((CTCAssassinRush *)local_60,unaff_EBX);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00479bb2 226 1
+@@CALLERS 
+@@CALLEES CEngineLocalDetailLayerDef, OnReadFinished, malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00479bb2(CActiveFile *param_1,CEngineLocalDetailLayerDef *param_2,
+            CEngineLocalDetailLayerDef *param_3,undefined4 param_4,
+            CEngineLocalDetailLayerDef *param_5,CEngineLocalDetailLayerDef *param_6)
+
+{
+  CEngineLocalDetailLayerDef **ppCVar1;
+  CEngineLocalDetailLayerDef *pCVar2;
+  int iVar3;
+  CEngineLocalDetailLayerDef *pCVar4;
+  CEngineLocalDetailLayerDef *this;
+  CEngineLocalDetailLayerDef *local_8;
+  
+  local_8 = (CEngineLocalDetailLayerDef *)((*(int *)(param_1 + 4) - *(int *)param_1) / 0x54);
+  ppCVar1 = &param_5;
+  if (param_5 <= local_8) {
+    ppCVar1 = &local_8;
+  }
+  pCVar2 = *ppCVar1 + (int)local_8;
+  if (pCVar2 == (CEngineLocalDetailLayerDef *)0x0) {
+    local_8 = (CEngineLocalDetailLayerDef *)0x0;
+  }
+  else {
+    local_8 = malloc((int)pCVar2 * 0x54);
+  }
+  this = local_8;
+  for (pCVar4 = *(CEngineLocalDetailLayerDef **)param_1; pCVar4 != param_2; pCVar4 = pCVar4 + 0x54)
+  {
+    if (this != (CEngineLocalDetailLayerDef *)0x0) {
+      CEngineLocalDetailLayerDef::CEngineLocalDetailLayerDef(this,pCVar4);
+    }
+    this = this + 0x54;
+  }
+  pCVar4 = param_5;
+  if (param_5 == (CEngineLocalDetailLayerDef *)0x1) {
+    if (this != (CEngineLocalDetailLayerDef *)0x0) {
+      CEngineLocalDetailLayerDef::CEngineLocalDetailLayerDef(this,param_3);
+    }
+    this = this + 0x54;
+  }
+  else {
+    for (; pCVar4 != (CEngineLocalDetailLayerDef *)0x0; pCVar4 = pCVar4 + -1) {
+      if (this != (CEngineLocalDetailLayerDef *)0x0) {
+        CEngineLocalDetailLayerDef::CEngineLocalDetailLayerDef(this,param_3);
+      }
+      this = this + 0x54;
+    }
+  }
+  if (((char)param_6 == '\0') &&
+     (param_6 = *(CEngineLocalDetailLayerDef **)(param_1 + 4), param_2 != param_6)) {
+    iVar3 = (int)param_2 - (int)this;
+    do {
+      if (this != (CEngineLocalDetailLayerDef *)0x0) {
+        CEngineLocalDetailLayerDef::CEngineLocalDetailLayerDef(this,this + iVar3);
+      }
+      this = this + 0x54;
+    } while (this + iVar3 != param_6);
+  }
+  CFileInstaller::CActiveFile::OnReadFinished(param_1);
+  *(CEngineLocalDetailLayerDef **)(param_1 + 4) = this;
+  *(CEngineLocalDetailLayerDef **)param_1 = local_8;
+  *(CEngineLocalDetailLayerDef **)(param_1 + 8) = local_8 + (int)pCVar2 * 0x54;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0047a03c 80 1
+@@CALLERS push_back
+@@CALLEES _Destroy, operator=
+@@STRINGS 
+@@DECOMP
+
+CBalverineBattleDef * __thiscall FUN_0047a03c(int param_1,CBalverineBattleDef *param_2,int param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  CBalverineBattleDef *this;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  
+  iVar1 = (*(int *)(param_1 + 4) - param_3) / 0x48;
+  this = param_2;
+  if (0 < iVar1) {
+    iVar2 = param_3 - (int)param_2;
+    param_3 = iVar1;
+    do {
+      CBalverineBattleDef::operator=(this,this + iVar2);
+      this = this + 0x48;
+      param_3 = param_3 + -1;
+    } while (param_3 != 0);
+  }
+  std::
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>::
+  _Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+            *)this,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+  *(CBalverineBattleDef **)(param_1 + 4) = this;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0047a08c 349 1
+@@CALLERS push_back
+@@CALLEES CAbilityTrackLevelDef, FUN_0047a1e9, operator=, OnDie, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_0047a08c(int param_1,CBalverineBattleDef *param_2,CAbilityTrackLevelDef *param_3,
+            CAbilityTrackLevelDef *param_4)
+
+{
+  CAbilityTrackLevelDef *pCVar1;
+  CAbilityTrackLevelDef *this;
+  uint uVar2;
+  CBalverineBattleDef *pCVar3;
+  int iVar4;
+  int iVar5;
+  CAbilityTrackLevelDef local_54 [72];
+  CBalverineBattleDef *local_c;
+  undefined1 local_5;
+  
+  if (param_3 != (CAbilityTrackLevelDef *)0x0) {
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)(param_1 + 4)) / 0x48) < param_3) {
+      local_5 = 0;
+      FUN_0047a1e9(param_2,param_4,&local_5,param_3,0);
+    }
+    else {
+      CAbilityTrackLevelDef::CAbilityTrackLevelDef(local_54,param_4);
+      uVar2 = (*(int *)(param_1 + 4) - (int)param_2) / 0x48;
+      pCVar3 = *(CBalverineBattleDef **)(param_1 + 4);
+      if (param_3 < uVar2) {
+        iVar5 = (int)param_3 * 0x48;
+        param_3 = (CAbilityTrackLevelDef *)(pCVar3 + (int)param_3 * -0x48);
+        param_4 = (CAbilityTrackLevelDef *)pCVar3;
+        local_c = (CBalverineBattleDef *)param_3;
+        for (; param_3 != (CAbilityTrackLevelDef *)pCVar3; param_3 = param_3 + 0x48) {
+          if (param_4 != (CAbilityTrackLevelDef *)0x0) {
+            CAbilityTrackLevelDef::CAbilityTrackLevelDef(param_4,param_3);
+          }
+          param_4 = param_4 + 0x48;
+        }
+        param_3 = (CAbilityTrackLevelDef *)(((int)local_c - (int)param_2) / 0x48);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + iVar5;
+        if (0 < (int)param_3) {
+          iVar4 = (int)local_c - (int)pCVar3;
+          do {
+            pCVar3 = pCVar3 + -0x48;
+            CBalverineBattleDef::operator=(pCVar3,pCVar3 + iVar4);
+            param_3 = (CAbilityTrackLevelDef *)((int)param_3 + -1);
+          } while (param_3 != (CAbilityTrackLevelDef *)0x0);
+        }
+        pCVar3 = param_2 + iVar5;
+        for (; param_2 != pCVar3; param_2 = param_2 + 0x48) {
+          CBalverineBattleDef::operator=(param_2,(CBalverineBattleDef *)local_54);
+        }
+      }
+      else {
+        std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+                  ((ulong *)pCVar3,(int)param_3 - uVar2,(ulong *)local_54);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + ((int)param_3 - uVar2) * 0x48;
+        this = *(CAbilityTrackLevelDef **)(param_1 + 4);
+        for (pCVar1 = (CAbilityTrackLevelDef *)param_2; pCVar1 != (CAbilityTrackLevelDef *)pCVar3;
+            pCVar1 = pCVar1 + 0x48) {
+          if (this != (CAbilityTrackLevelDef *)0x0) {
+            CAbilityTrackLevelDef::CAbilityTrackLevelDef(this,pCVar1);
+          }
+          this = this + 0x48;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar2 * 0x48;
+        for (; param_2 != pCVar3; param_2 = param_2 + 0x48) {
+          CBalverineBattleDef::operator=(param_2,(CBalverineBattleDef *)local_54);
+        }
+      }
+      CTCInventoryItem::OnDie((CTCInventoryItem *)local_54);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0047a1e9 230 1
+@@CALLERS 
+@@CALLEES CAbilityTrackLevelDef, malloc, OnReadFinished
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_0047a1e9(CActiveFile *param_1,CAbilityTrackLevelDef *param_2,CAbilityTrackLevelDef *param_3,
+            undefined4 param_4,CAbilityTrackLevelDef *param_5,CAbilityTrackLevelDef *param_6)
+
+{
+  CAbilityTrackLevelDef **ppCVar1;
+  CAbilityTrackLevelDef *pCVar2;
+  int iVar3;
+  CAbilityTrackLevelDef *pCVar4;
+  CAbilityTrackLevelDef *this;
+  CAbilityTrackLevelDef *local_8;
+  
+  local_8 = (CAbilityTrackLevelDef *)((*(int *)(param_1 + 4) - *(int *)param_1) / 0x48);
+  ppCVar1 = &param_5;
+  if (param_5 <= local_8) {
+    ppCVar1 = &local_8;
+  }
+  pCVar2 = *ppCVar1 + (int)local_8;
+  if (pCVar2 == (CAbilityTrackLevelDef *)0x0) {
+    local_8 = (CAbilityTrackLevelDef *)0x0;
+  }
+  else {
+    local_8 = malloc((int)pCVar2 * 0x48);
+  }
+  this = local_8;
+  for (pCVar4 = *(CAbilityTrackLevelDef **)param_1; pCVar4 != param_2; pCVar4 = pCVar4 + 0x48) {
+    if (this != (CAbilityTrackLevelDef *)0x0) {
+      CAbilityTrackLevelDef::CAbilityTrackLevelDef(this,pCVar4);
+    }
+    this = this + 0x48;
+  }
+  pCVar4 = param_5;
+  if (param_5 == (CAbilityTrackLevelDef *)0x1) {
+    if (this != (CAbilityTrackLevelDef *)0x0) {
+      CAbilityTrackLevelDef::CAbilityTrackLevelDef(this,param_3);
+    }
+    this = this + 0x48;
+  }
+  else {
+    for (; pCVar4 != (CAbilityTrackLevelDef *)0x0; pCVar4 = pCVar4 + -1) {
+      if (this != (CAbilityTrackLevelDef *)0x0) {
+        CAbilityTrackLevelDef::CAbilityTrackLevelDef(this,param_3);
+      }
+      this = this + 0x48;
+    }
+  }
+  if (((char)param_6 == '\0') &&
+     (param_6 = *(CAbilityTrackLevelDef **)(param_1 + 4), param_2 != param_6)) {
+    iVar3 = (int)param_2 - (int)this;
+    do {
+      if (this != (CAbilityTrackLevelDef *)0x0) {
+        CAbilityTrackLevelDef::CAbilityTrackLevelDef(this,this + iVar3);
+      }
+      this = this + 0x48;
+    } while (this + iVar3 != param_6);
+  }
+  CFileInstaller::CActiveFile::OnReadFinished(param_1);
+  *(CAbilityTrackLevelDef **)param_1 = local_8;
+  *(CAbilityTrackLevelDef **)(param_1 + 4) = this;
+  *(CAbilityTrackLevelDef **)(param_1 + 8) = local_8 + (int)pCVar2 * 0x48;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0047a452 80 1
+@@CALLERS push_back
+@@CALLEES _Destroy, operator=
+@@STRINGS 
+@@DECOMP
+
+CAbilityTrackDef * __thiscall FUN_0047a452(int param_1,CAbilityTrackDef *param_2,int param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  CAbilityTrackDef *this;
+  CIntelligentPointer<CThing_const_> *unaff_EDI;
+  
+  iVar1 = (*(int *)(param_1 + 4) - param_3) / 0x50;
+  this = param_2;
+  if (0 < iVar1) {
+    iVar2 = param_3 - (int)param_2;
+    param_3 = iVar1;
+    do {
+      CAbilityTrackDef::operator=(this,this + iVar2);
+      this = this + 0x50;
+      param_3 = param_3 + -1;
+    } while (param_3 != 0);
+  }
+  std::
+  vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>::
+  _Destroy((vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>
+            *)this,(CIntelligentPointer<CThing_const_> *)((int)&param_2 + 3),unaff_EDI);
+  *(CAbilityTrackDef **)(param_1 + 4) = this;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0047a4a2 349 1
+@@CALLERS push_back
+@@CALLEES _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, CAbilityTrackDef, operator=, _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>, FUN_0047a5ff
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_0047a4a2(int param_1,CAbilityTrackDef *param_2,CAbilityTrackDef *param_3,
+            CAbilityTrackDef *param_4)
+
+{
+  CAbilityTrackDef *pCVar1;
+  CAbilityTrackDef *this;
+  uint uVar2;
+  pair<CCharString,CSymbolMap::CSymbolInfo> *ppVar3;
+  pair<CCharString,CSymbolMap::CSymbolInfo> *extraout_EDX;
+  pair<CCharString,CSymbolMap::CSymbolInfo> *extraout_EDX_00;
+  pair<CCharString,CSymbolMap::CSymbolInfo> *extraout_EDX_01;
+  pair<CCharString,CSymbolMap::CSymbolInfo> *extraout_EDX_02;
+  pair<CCharString,CSymbolMap::CSymbolInfo> *extraout_EDX_03;
+  CAbilityTrackDef *pCVar4;
+  int iVar5;
+  int iVar6;
+  CAbilityTrackDef local_5c [80];
+  CAbilityTrackDef *local_c;
+  undefined1 local_5;
+  
+  if (param_3 != (CAbilityTrackDef *)0x0) {
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)(param_1 + 4)) / 0x50) < param_3) {
+      local_5 = 0;
+      FUN_0047a5ff(param_2,param_4,&local_5,param_3,0);
+    }
+    else {
+      CAbilityTrackDef::CAbilityTrackDef(local_5c,param_4);
+      uVar2 = (*(int *)(param_1 + 4) - (int)param_2) / 0x50;
+      pCVar4 = *(CAbilityTrackDef **)(param_1 + 4);
+      if (param_3 < uVar2) {
+        iVar6 = (int)param_3 * 0x50;
+        param_3 = pCVar4 + (int)param_3 * -0x50;
+        param_4 = pCVar4;
+        local_c = param_3;
+        for (; param_3 != pCVar4; param_3 = param_3 + 0x50) {
+          if (param_4 != (CAbilityTrackDef *)0x0) {
+            CAbilityTrackDef::CAbilityTrackDef(param_4,param_3);
+          }
+          param_4 = param_4 + 0x50;
+        }
+        param_3 = (CAbilityTrackDef *)(((int)local_c - (int)param_2) / 0x50);
+        ppVar3 = (pair<CCharString,CSymbolMap::CSymbolInfo> *)(((int)local_c - (int)param_2) % 0x50)
+        ;
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + iVar6;
+        if (0 < (int)param_3) {
+          iVar5 = (int)local_c - (int)pCVar4;
+          do {
+            pCVar4 = pCVar4 + -0x50;
+            CAbilityTrackDef::operator=(pCVar4,pCVar4 + iVar5);
+            param_3 = (CAbilityTrackDef *)((int)param_3 + -1);
+            ppVar3 = extraout_EDX;
+          } while (param_3 != (CAbilityTrackDef *)0x0);
+        }
+        pCVar4 = param_2 + iVar6;
+        for (; param_2 != pCVar4; param_2 = param_2 + 0x50) {
+          CAbilityTrackDef::operator=(param_2,local_5c);
+          ppVar3 = extraout_EDX_00;
+        }
+      }
+      else {
+        std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+                  ((ulong *)pCVar4,(int)param_3 - uVar2,(ulong *)local_5c);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + ((int)param_3 - uVar2) * 0x50;
+        this = *(CAbilityTrackDef **)(param_1 + 4);
+        ppVar3 = extraout_EDX_01;
+        for (pCVar1 = param_2; pCVar1 != pCVar4; pCVar1 = pCVar1 + 0x50) {
+          if (this != (CAbilityTrackDef *)0x0) {
+            CAbilityTrackDef::CAbilityTrackDef(this,pCVar1);
+            ppVar3 = extraout_EDX_02;
+          }
+          this = this + 0x50;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar2 * 0x50;
+        for (; param_2 != pCVar4; param_2 = param_2 + 0x50) {
+          CAbilityTrackDef::operator=(param_2,local_5c);
+          ppVar3 = extraout_EDX_03;
+        }
+      }
+      std::
+      _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>
+                ((allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *)local_5c,ppVar3);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0047a5ff 232 1
+@@CALLERS 
+@@CALLEES OnReadFinished, CAbilityTrackDef, malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_0047a5ff(CActiveFile *param_1,CAbilityTrackDef *param_2,CAbilityTrackDef *param_3,
+            undefined4 param_4,CAbilityTrackDef *param_5,CAbilityTrackDef *param_6)
+
+{
+  CAbilityTrackDef **ppCVar1;
+  CAbilityTrackDef *pCVar2;
+  int iVar3;
+  CAbilityTrackDef *pCVar4;
+  CAbilityTrackDef *this;
+  CAbilityTrackDef *local_8;
+  
+  local_8 = (CAbilityTrackDef *)((*(int *)(param_1 + 4) - *(int *)param_1) / 0x50);
+  ppCVar1 = &param_5;
+  if (param_5 <= local_8) {
+    ppCVar1 = &local_8;
+  }
+  pCVar2 = *ppCVar1 + (int)local_8;
+  if (pCVar2 == (CAbilityTrackDef *)0x0) {
+    local_8 = (CAbilityTrackDef *)0x0;
+  }
+  else {
+    local_8 = malloc((int)pCVar2 * 0x50);
+  }
+  this = local_8;
+  for (pCVar4 = *(CAbilityTrackDef **)param_1; pCVar4 != param_2; pCVar4 = pCVar4 + 0x50) {
+    if (this != (CAbilityTrackDef *)0x0) {
+      CAbilityTrackDef::CAbilityTrackDef(this,pCVar4);
+    }
+    this = this + 0x50;
+  }
+  pCVar4 = param_5;
+  if (param_5 == (CAbilityTrackDef *)0x1) {
+    if (this != (CAbilityTrackDef *)0x0) {
+      CAbilityTrackDef::CAbilityTrackDef(this,param_3);
+    }
+    this = this + 0x50;
+  }
+  else {
+    for (; pCVar4 != (CAbilityTrackDef *)0x0; pCVar4 = pCVar4 + -1) {
+      if (this != (CAbilityTrackDef *)0x0) {
+        CAbilityTrackDef::CAbilityTrackDef(this,param_3);
+      }
+      this = this + 0x50;
+    }
+  }
+  if (((char)param_6 == '\0') && (param_6 = *(CAbilityTrackDef **)(param_1 + 4), param_2 != param_6)
+     ) {
+    iVar3 = (int)param_2 - (int)this;
+    do {
+      if (this != (CAbilityTrackDef *)0x0) {
+        CAbilityTrackDef::CAbilityTrackDef(this,this + iVar3);
+      }
+      this = this + 0x50;
+    } while (this + iVar3 != param_6);
+  }
+  CFileInstaller::CActiveFile::OnReadFinished(param_1);
+  *(CAbilityTrackDef **)(param_1 + 4) = this;
+  *(CAbilityTrackDef **)param_1 = local_8;
+  *(CAbilityTrackDef **)(param_1 + 8) = local_8 + (int)pCVar2 * 0x50;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0047ae50 96 1
+@@CALLERS _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>
+@@CALLEES TreeNode_RecursiveDelete, _Copy_impl<CTCSkeletalMorph::CSkeletalMorph*,CTCSkeletalMorph::CSkeletalMorph*>, _Move_backward<std::pair<unsigned_long,CDefString>*,std::pair<unsigned_long,class_CDefString>*>
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_0047ae50(undefined4 *param_1)
+
+{
+  int *piVar1;
+  CSkeletalMorph *pCVar2;
+  undefined4 uStack_4;
+  
+  uStack_4 = param_1;
+  pCVar2 = std::_Copy_impl<CTCSkeletalMorph::CSkeletalMorph*,CTCSkeletalMorph::CSkeletalMorph*>
+                     (param_1[1],param_1[1],*param_1,(int)&uStack_4 + 3,0);
+  std::
+  _Move_backward<std::pair<unsigned_long,CDefString>*,std::pair<unsigned_long,class_CDefString>*>
+            (pCVar2,param_1[1],(int)&uStack_4 + 3);
+  param_1[1] = pCVar2;
+  piVar1 = param_1 + 4;
+  if (param_1[5] != 0) {
+    TreeNode_RecursiveDelete(*(undefined4 *)(*piVar1 + 4));
+    *(int *)(*piVar1 + 8) = *piVar1;
+    *(undefined4 *)(*piVar1 + 4) = 0;
+    *(int *)(*piVar1 + 0xc) = *piVar1;
+    param_1[5] = 0;
+  }
+  param_1[3] = 0;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0047be50 307 1
+@@CALLERS _Copy_impl<CTCSkeletalMorph::CSkeletalMorph*,CTCSkeletalMorph::CSkeletalMorph*>
+@@CALLEES _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>, ResetRings, _Destroy_range<std::allocator<CSpeechFrame>_>, _Move<CHeroLogBook::CQuestObjectiveDesc*,CHeroLogBook::CQuestObjectiveDesc*>, malloc
+@@STRINGS 
+@@DECOMP
+
+CCombatWheel * __thiscall FUN_0047be50(CCombatWheel *param_1,CCombatWheel *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  uint uVar4;
+  uint uVar5;
+  CCombatWheel *pCVar6;
+  void *pvVar7;
+  CQuestObjectiveDesc *pCVar8;
+  
+  pCVar6 = param_2;
+  if (param_2 != param_1) {
+    iVar1 = *(int *)(param_2 + 4);
+    iVar2 = *(int *)param_2;
+    iVar3 = *(int *)param_1;
+    uVar4 = (iVar1 - iVar2) / 0xc;
+    param_2 = (CCombatWheel *)iVar1;
+    if ((uint)((*(int *)(param_1 + 8) - iVar3) / 0xc) < uVar4) {
+      if (uVar4 == 0) {
+        pvVar7 = (void *)0x0;
+      }
+      else {
+        pvVar7 = malloc(uVar4 * 0xc);
+      }
+      std::
+      _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                (iVar2,param_2,pvVar7,&param_2);
+      CDefendingCombatantInfo::CCombatWheel::ResetRings(param_1);
+      *(void **)(param_1 + 8) = (void *)((int)pvVar7 + uVar4 * 0xc);
+      *(void **)(param_1 + 4) = (void *)((int)pvVar7 + uVar4 * 0xc);
+      *(void **)param_1 = pvVar7;
+      return param_1;
+    }
+    uVar5 = (*(int *)(param_1 + 4) - iVar3) / 0xc;
+    if (uVar4 <= uVar5) {
+      pCVar8 = std::_Move<CHeroLogBook::CQuestObjectiveDesc*,CHeroLogBook::CQuestObjectiveDesc*>
+                         (iVar2,iVar1,iVar3,&param_2,0);
+      std::_Destroy_range<std::allocator<CSpeechFrame>_>(pCVar8,*(undefined4 *)(param_1 + 4));
+      *(uint *)(param_1 + 4) = *(int *)param_1 + uVar4 * 0xc;
+      return param_1;
+    }
+    std::_Move<CHeroLogBook::CQuestObjectiveDesc*,CHeroLogBook::CQuestObjectiveDesc*>
+              (iVar2,iVar2 + uVar5 * 0xc,iVar3,&param_2,0);
+    std::
+    _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+              (*(int *)pCVar6 + ((*(int *)(param_1 + 4) - *(int *)param_1) / 0xc) * 0xc,
+               *(int *)(pCVar6 + 4),*(int *)(param_1 + 4),&param_2);
+    *(uint *)(param_1 + 4) = *(int *)param_1 + uVar4 * 0xc;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC

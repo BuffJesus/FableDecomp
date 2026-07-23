@@ -1,0 +1,44 @@
+project_profile:
+  hook_patterns: []
+  stub_patterns: []
+  stub_markers: ["TODO_LIFT", "NOT_IMPLEMENTED"]
+  stub_call_prefix: ""
+  class_macro: ""
+  source_root: "D:/Documents/FableTLC/lift"
+  source_extensions: [".cpp", ".h", ".hpp"]
+  hooks_csv: null
+  type_layouts_path: "D:/Documents/FableTLC/ghidra_out/struct_layouts_egor.tsv"
+  pdb_path: "D:/Documents/FableTLC/debug_build/Ego_r.pdb"
+  pdbutil_path: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/bin/llvm-pdbutil.exe"
+  pdb_dia_dir: "C:/Program Files/Microsoft Visual Studio/2022/Community/DIA SDK/bin/amd64"
+
+llm:
+  provider: "codex"
+  model: "gpt-5.4"
+  max_tokens: 8192
+  temperature: 0.0
+  timeout_s: 1800
+
+backend:
+  type: "ghidra-bridge"
+  cli_path: "D:/Documents/FableTLC/lift/bin/ghidra_cli.cmd"
+  timeout_s: 180
+
+parity:
+  enabled: true
+  call_count_warn_diff: 3
+  inline_wrapper_autoskip: false
+  cache_dir: "D:/Documents/FableTLC/lift/.cache/re-agent-parity"
+
+orchestrator:
+  max_review_rounds: 4
+  max_functions_per_class: 6
+  objective_verifier_enabled: true
+  objective_call_count_tolerance: 3
+  objective_control_flow_tolerance: 2
+
+output:
+  report_dir: "D:/Documents/FableTLC/lift/reports/wave2"
+  log_dir: "D:/Documents/FableTLC/lift/reports/wave2/logs"
+  session_file: "D:/Documents/FableTLC/lift/state/re-agent-wave2-progress.json"
+  format: "json"

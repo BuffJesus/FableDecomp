@@ -1,0 +1,1790 @@
+@@@FUNC 004e5636 61 1
+@@CALLERS UpdateShadowScene
+@@CALLEES GetNoAllocatedAreas, WriteCBYTE
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004e5636(CDataOutputStream *param_1,ulong *param_2)
+
+{
+  ulong uVar1;
+  CMemoryAllocatorVariableSize *this;
+  
+  CDataOutputStream::WriteCBYTE(param_1,(char)param_2[1]);
+  uVar1 = *(ulong *)(*param_2 + 8);
+  if (uVar1 != *param_2) {
+    do {
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x10));
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x14));
+      uVar1 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    } while (uVar1 != *param_2);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e5878 115 1
+@@CALLERS 
+@@CALLEES OnKill, Tree_CloneRecursive
+@@STRINGS 
+@@DECOMP
+
+CTCCarryable * __thiscall FUN_004e5878(CTCCarryable *param_1,CTCCarryable *param_2)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  int iVar3;
+  
+  if (param_1 != param_2) {
+    CTCCarryable::OnKill(param_1);
+    *(undefined4 *)(param_1 + 4) = 0;
+    if (*(int *)(*(int *)param_2 + 4) == 0) {
+      *(undefined4 *)(*(int *)param_1 + 4) = 0;
+      *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+      *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    }
+    else {
+      iVar1 = *(int *)param_1;
+      uVar2 = Tree_CloneRecursive(*(int *)(*(int *)param_2 + 4),iVar1);
+      *(undefined4 *)(iVar1 + 4) = uVar2;
+      iVar1 = *(int *)(*(int *)param_1 + 4);
+      do {
+        iVar3 = iVar1;
+        iVar1 = *(int *)(iVar3 + 8);
+      } while (iVar1 != 0);
+      *(int *)(*(int *)param_1 + 8) = iVar3;
+      iVar1 = *(int *)(*(int *)param_1 + 4);
+      do {
+        iVar3 = iVar1;
+        iVar1 = *(int *)(iVar3 + 0xc);
+      } while (iVar1 != 0);
+      *(int *)(*(int *)param_1 + 0xc) = iVar3;
+      *(int *)(param_1 + 4) = *(int *)(param_2 + 4);
+    }
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e59e1 88 1
+@@CALLERS ?Transfer@CFlammableDef@@UAEXAAVCPersistContext@@@Z
+@@CALLEES GFSerialiseMapBinaryIn<long,CDefString,CCompareDefString<long>_>, ~CInitBaseClass, CAIStateGroupBase, FUN_004e5a39, OnReadFinished, CheckCRC
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004e59e1(CPersistContext *param_1,int param_2)
+
+{
+  CAIStateGroupBase local_18 [8];
+  CActiveFile local_10 [12];
+  
+  CPersistContext::CheckCRC(param_1,"");
+  CAIStateGroupBase::CAIStateGroupBase(local_18);
+  if (*(int *)(param_1 + 0x18) == 2) {
+    GFSerialiseMapBinaryIn<long,CDefString,CCompareDefString<long>_>
+              (*(CMemoryDataInputStream **)(param_1 + 0x24),
+               (map<CDefString,long,CCompareDefString<long>,std::allocator<std::pair<CDefString_const_,long>_>_>
+                *)(param_2 + 8));
+  }
+  else if (*(int *)(param_1 + 0x18) == 3) {
+    FUN_004e5a39();
+  }
+  CFileInstaller::CActiveFile::OnReadFinished(local_10);
+  CInitBaseClass::~CInitBaseClass((CInitBaseClass *)local_18);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e5a39 61 1
+@@CALLERS 
+@@CALLEES GetNoAllocatedAreas, WriteCBYTE
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004e5a39(CDataOutputStream *param_1,ulong *param_2)
+
+{
+  ulong uVar1;
+  CMemoryAllocatorVariableSize *this;
+  
+  CDataOutputStream::WriteCBYTE(param_1,(char)param_2[1]);
+  uVar1 = *(ulong *)(*param_2 + 8);
+  if (uVar1 != *param_2) {
+    do {
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x10));
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x14));
+      uVar1 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    } while (uVar1 != *param_2);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e5b21 134 1
+@@CALLERS GFSerialiseMapBinaryIn<long,CDefString,CCompareDefString<long>_>
+@@CALLEES RBTree::GetMaxNode, FUN_004e5ba7
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_004e5b21(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  bool bVar2;
+  int iVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  iVar5 = *(int *)(iVar1 + 4);
+  bVar2 = true;
+  iVar6 = iVar1;
+  if (iVar5 != 0) {
+    do {
+      iVar6 = iVar5;
+      bVar2 = *param_3 < *(int *)(iVar6 + 0x10);
+      if (bVar2) {
+        iVar5 = *(int *)(iVar6 + 8);
+      }
+      else {
+        iVar5 = *(int *)(iVar6 + 0xc);
+      }
+    } while (iVar5 != 0);
+  }
+  iVar3 = iVar6;
+  if (bVar2) {
+    iVar7 = iVar6;
+    if (iVar6 == *(int *)(iVar1 + 8)) goto LAB_004e5b7d;
+    iVar3 = RBTree__GetMaxNode(iVar6);
+  }
+  iVar7 = iVar5;
+  if (*param_3 <= *(int *)(iVar3 + 0x10)) {
+    *param_2 = iVar3;
+    *(undefined1 *)(param_2 + 1) = 0;
+    return param_2;
+  }
+LAB_004e5b7d:
+  piVar4 = (int *)FUN_004e5ba7(&param_3,iVar7,iVar6,param_3,0);
+  *param_2 = *piVar4;
+  *(undefined1 *)(param_2 + 1) = 1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e5ba7 136 1
+@@CALLERS 
+@@CALLEES FUN_004e597b, CMemoryAllocatorVariableSize::BalanceTree
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004e5ba7(int *param_1,int *param_2,int param_3,int param_4,int *param_5,int param_6)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  if ((param_4 == *param_1) ||
+     ((param_6 == 0 && ((param_3 != 0 || (*param_5 < *(int *)(param_4 + 0x10))))))) {
+    iVar1 = FUN_004e597b(param_5);
+    *(int *)(param_4 + 8) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != iVar2) {
+      if (param_4 == *(int *)(iVar2 + 8)) {
+        *(int *)(iVar2 + 8) = iVar1;
+      }
+      goto LAB_004e5c07;
+    }
+    *(int *)(iVar2 + 4) = iVar1;
+    iVar2 = *param_1;
+  }
+  else {
+    iVar1 = FUN_004e597b(param_5);
+    *(int *)(param_4 + 0xc) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != *(int *)(iVar2 + 0xc)) goto LAB_004e5c07;
+  }
+  *(int *)(iVar2 + 0xc) = iVar1;
+LAB_004e5c07:
+  *(undefined4 *)(iVar1 + 8) = 0;
+  *(undefined4 *)(iVar1 + 0xc) = 0;
+  *(int *)(iVar1 + 4) = param_4;
+  CMemoryAllocatorVariableSize__BalanceTree(iVar1,*param_1 + 4);
+  param_1[1] = param_1[1] + 1;
+  *param_2 = iVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e5f70 280 1
+@@CALLERS ?Copy@CReplaceableMeshDef@@UAEXPBVCDefClassBase@@@Z
+@@CALLEES FUN_004e6088, OnReadFinished
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_004e5f70(CActiveFile *param_1,CActiveFile *param_2)
+
+{
+  uint uVar1;
+  int iVar2;
+  uint uVar3;
+  undefined4 *puVar4;
+  undefined4 *puVar5;
+  undefined4 *puVar6;
+  undefined4 *local_c;
+  undefined4 *local_8;
+  
+  if (param_2 != param_1) {
+    iVar2 = *(int *)(param_2 + 4);
+    puVar5 = *(undefined4 **)param_2;
+    uVar1 = (iVar2 - (int)puVar5) / 0xe;
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)param_1) / 0xe) < uVar1) {
+      iVar2 = FUN_004e6088(uVar1,puVar5,iVar2);
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar2;
+      *(uint *)(param_1 + 8) = uVar1 * 0xe + iVar2;
+    }
+    else {
+      uVar3 = (*(int *)(param_1 + 4) - *(int *)param_1) / 0xe;
+      if (uVar3 < uVar1) {
+        iVar2 = (int)(uVar3 * 0xe) / 0xe;
+        local_c = *(undefined4 **)param_1;
+        local_8 = puVar5;
+        if (0 < iVar2) {
+          do {
+            iVar2 = iVar2 + -1;
+            *local_c = *local_8;
+            local_c[1] = local_8[1];
+            local_c[2] = local_8[2];
+            *(undefined2 *)(local_c + 3) = *(undefined2 *)(local_8 + 3);
+            local_c = (undefined4 *)((int)local_c + 0xe);
+            local_8 = (undefined4 *)((int)local_8 + 0xe);
+          } while (iVar2 != 0);
+        }
+        puVar5 = *(undefined4 **)(param_2 + 4);
+        puVar6 = *(undefined4 **)(param_1 + 4);
+        for (puVar4 = (undefined4 *)
+                      ((((int)puVar6 - *(int *)param_1) / 0xe) * 0xe + *(int *)param_2);
+            puVar4 != puVar5; puVar4 = (undefined4 *)((int)puVar4 + 0xe)) {
+          if (puVar6 != (undefined4 *)0x0) {
+            *puVar6 = *puVar4;
+            puVar6[1] = puVar4[1];
+            puVar6[2] = puVar4[2];
+            *(undefined2 *)(puVar6 + 3) = *(undefined2 *)(puVar4 + 3);
+          }
+          puVar6 = (undefined4 *)((int)puVar6 + 0xe);
+        }
+      }
+      else {
+        iVar2 = (iVar2 - (int)puVar5) / 0xe;
+        local_8 = *(undefined4 **)param_1;
+        if (0 < iVar2) {
+          do {
+            *local_8 = *puVar5;
+            local_8[1] = puVar5[1];
+            puVar6 = puVar5 + 3;
+            local_8[2] = puVar5[2];
+            puVar5 = (undefined4 *)((int)puVar5 + 0xe);
+            iVar2 = iVar2 + -1;
+            *(undefined2 *)(local_8 + 3) = *(undefined2 *)puVar6;
+            local_8 = (undefined4 *)((int)local_8 + 0xe);
+          } while (iVar2 != 0);
+        }
+      }
+    }
+    *(uint *)(param_1 + 4) = uVar1 * 0xe + *(int *)param_1;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6088 66 1
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e6088(int param_1,undefined4 *param_2,undefined4 *param_3)
+
+{
+  undefined4 *puVar1;
+  void *pvVar2;
+  int iVar3;
+  
+  if (param_1 == 0) {
+    pvVar2 = (void *)0x0;
+  }
+  else {
+    pvVar2 = malloc(param_1 * 0xe);
+  }
+  if (param_2 != param_3) {
+    iVar3 = (int)pvVar2 - (int)param_2;
+    do {
+      puVar1 = (undefined4 *)(iVar3 + (int)param_2);
+      if (puVar1 != (undefined4 *)0x0) {
+        *puVar1 = *param_2;
+        puVar1[1] = param_2[1];
+        puVar1[2] = param_2[2];
+        *(undefined2 *)(puVar1 + 3) = *(undefined2 *)(param_2 + 3);
+      }
+      param_2 = (undefined4 *)((int)param_2 + 0xe);
+    } while (param_2 != param_3);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e610d 115 1
+@@CALLERS ?Copy@CIdleSchedulerDef@@UAEXPBVCDefClassBase@@@Z
+@@CALLEES OnKill, Tree_CloneRecursive
+@@STRINGS 
+@@DECOMP
+
+CTCCarryable * __thiscall FUN_004e610d(CTCCarryable *param_1,CTCCarryable *param_2)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  int iVar3;
+  
+  if (param_1 != param_2) {
+    CTCCarryable::OnKill(param_1);
+    *(undefined4 *)(param_1 + 4) = 0;
+    if (*(int *)(*(int *)param_2 + 4) == 0) {
+      *(undefined4 *)(*(int *)param_1 + 4) = 0;
+      *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+      *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    }
+    else {
+      iVar1 = *(int *)param_1;
+      uVar2 = Tree_CloneRecursive(*(int *)(*(int *)param_2 + 4),iVar1);
+      *(undefined4 *)(iVar1 + 4) = uVar2;
+      iVar1 = *(int *)(*(int *)param_1 + 4);
+      do {
+        iVar3 = iVar1;
+        iVar1 = *(int *)(iVar3 + 8);
+      } while (iVar1 != 0);
+      *(int *)(*(int *)param_1 + 8) = iVar3;
+      iVar1 = *(int *)(*(int *)param_1 + 4);
+      do {
+        iVar3 = iVar1;
+        iVar1 = *(int *)(iVar3 + 0xc);
+      } while (iVar1 != 0);
+      *(int *)(*(int *)param_1 + 0xc) = iVar3;
+      *(int *)(param_1 + 4) = *(int *)(param_2 + 4);
+    }
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e628d 61 1
+@@CALLERS UpdateShadowScene
+@@CALLEES GetNoAllocatedAreas, WriteCBYTE
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004e628d(CDataOutputStream *param_1,ulong *param_2)
+
+{
+  ulong uVar1;
+  CMemoryAllocatorVariableSize *this;
+  
+  CDataOutputStream::WriteCBYTE(param_1,(char)param_2[1]);
+  uVar1 = *(ulong *)(*param_2 + 8);
+  if (uVar1 != *param_2) {
+    do {
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x10));
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x14));
+      uVar1 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    } while (uVar1 != *param_2);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6520 115 1
+@@CALLERS 
+@@CALLEES OnKill, Tree_CloneRecursive
+@@STRINGS 
+@@DECOMP
+
+CTCCarryable * __thiscall FUN_004e6520(CTCCarryable *param_1,CTCCarryable *param_2)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  int iVar3;
+  
+  if (param_1 != param_2) {
+    CTCCarryable::OnKill(param_1);
+    *(undefined4 *)(param_1 + 4) = 0;
+    if (*(int *)(*(int *)param_2 + 4) == 0) {
+      *(undefined4 *)(*(int *)param_1 + 4) = 0;
+      *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+      *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    }
+    else {
+      iVar1 = *(int *)param_1;
+      uVar2 = Tree_CloneRecursive(*(int *)(*(int *)param_2 + 4),iVar1);
+      *(undefined4 *)(iVar1 + 4) = uVar2;
+      iVar1 = *(int *)(*(int *)param_1 + 4);
+      do {
+        iVar3 = iVar1;
+        iVar1 = *(int *)(iVar3 + 8);
+      } while (iVar1 != 0);
+      *(int *)(*(int *)param_1 + 8) = iVar3;
+      iVar1 = *(int *)(*(int *)param_1 + 4);
+      do {
+        iVar3 = iVar1;
+        iVar1 = *(int *)(iVar3 + 0xc);
+      } while (iVar1 != 0);
+      *(int *)(*(int *)param_1 + 0xc) = iVar3;
+      *(int *)(param_1 + 4) = *(int *)(param_2 + 4);
+    }
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6645 115 1
+@@CALLERS 
+@@CALLEES OnKill, Tree_CloneRecursive
+@@STRINGS 
+@@DECOMP
+
+CTCCarryable * __thiscall FUN_004e6645(CTCCarryable *param_1,CTCCarryable *param_2)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  int iVar3;
+  
+  if (param_1 != param_2) {
+    CTCCarryable::OnKill(param_1);
+    *(undefined4 *)(param_1 + 4) = 0;
+    if (*(int *)(*(int *)param_2 + 4) == 0) {
+      *(undefined4 *)(*(int *)param_1 + 4) = 0;
+      *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+      *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    }
+    else {
+      iVar1 = *(int *)param_1;
+      uVar2 = Tree_CloneRecursive(*(int *)(*(int *)param_2 + 4),iVar1);
+      *(undefined4 *)(iVar1 + 4) = uVar2;
+      iVar1 = *(int *)(*(int *)param_1 + 4);
+      do {
+        iVar3 = iVar1;
+        iVar1 = *(int *)(iVar3 + 8);
+      } while (iVar1 != 0);
+      *(int *)(*(int *)param_1 + 8) = iVar3;
+      iVar1 = *(int *)(*(int *)param_1 + 4);
+      do {
+        iVar3 = iVar1;
+        iVar1 = *(int *)(iVar3 + 0xc);
+      } while (iVar1 != 0);
+      *(int *)(*(int *)param_1 + 0xc) = iVar3;
+      *(int *)(param_1 + 4) = *(int *)(param_2 + 4);
+    }
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e67c0 65 1
+@@CALLERS UpdateShadowScene
+@@CALLEES GetNoAllocatedAreas, WriteCBYTE
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004e67c0(CDataOutputStream *param_1,ulong *param_2)
+
+{
+  ulong uVar1;
+  CMemoryAllocatorVariableSize *this;
+  
+  CDataOutputStream::WriteCBYTE(param_1,(char)param_2[1]);
+  uVar1 = *(ulong *)(*param_2 + 8);
+  if (uVar1 != *param_2) {
+    do {
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x10));
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x14));
+      uVar1 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    } while (uVar1 != *param_2);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6918 134 1
+@@CALLERS TransferBinaryIn
+@@CALLEES RBTree::GetMaxNode, FUN_004e699e
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_004e6918(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  bool bVar2;
+  int iVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  iVar5 = *(int *)(iVar1 + 4);
+  bVar2 = true;
+  iVar6 = iVar1;
+  if (iVar5 != 0) {
+    do {
+      iVar6 = iVar5;
+      bVar2 = *param_3 < *(int *)(iVar6 + 0x10);
+      if (bVar2) {
+        iVar5 = *(int *)(iVar6 + 8);
+      }
+      else {
+        iVar5 = *(int *)(iVar6 + 0xc);
+      }
+    } while (iVar5 != 0);
+  }
+  iVar3 = iVar6;
+  if (bVar2) {
+    iVar7 = iVar6;
+    if (iVar6 == *(int *)(iVar1 + 8)) goto LAB_004e6974;
+    iVar3 = RBTree__GetMaxNode(iVar6);
+  }
+  iVar7 = iVar5;
+  if (*param_3 <= *(int *)(iVar3 + 0x10)) {
+    *param_2 = iVar3;
+    *(undefined1 *)(param_2 + 1) = 0;
+    return param_2;
+  }
+LAB_004e6974:
+  piVar4 = (int *)FUN_004e699e(&param_3,iVar7,iVar6,param_3,0);
+  *param_2 = *piVar4;
+  *(undefined1 *)(param_2 + 1) = 1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e699e 136 1
+@@CALLERS 
+@@CALLEES FUN_004e6623, CMemoryAllocatorVariableSize::BalanceTree
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004e699e(int *param_1,int *param_2,int param_3,int param_4,int *param_5,int param_6)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  if ((param_4 == *param_1) ||
+     ((param_6 == 0 && ((param_3 != 0 || (*param_5 < *(int *)(param_4 + 0x10))))))) {
+    iVar1 = FUN_004e6623(param_5);
+    *(int *)(param_4 + 8) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != iVar2) {
+      if (param_4 == *(int *)(iVar2 + 8)) {
+        *(int *)(iVar2 + 8) = iVar1;
+      }
+      goto LAB_004e69fe;
+    }
+    *(int *)(iVar2 + 4) = iVar1;
+    iVar2 = *param_1;
+  }
+  else {
+    iVar1 = FUN_004e6623(param_5);
+    *(int *)(param_4 + 0xc) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != *(int *)(iVar2 + 0xc)) goto LAB_004e69fe;
+  }
+  *(int *)(iVar2 + 0xc) = iVar1;
+LAB_004e69fe:
+  *(undefined4 *)(iVar1 + 8) = 0;
+  *(undefined4 *)(iVar1 + 0xc) = 0;
+  *(int *)(iVar1 + 4) = param_4;
+  CMemoryAllocatorVariableSize__BalanceTree(iVar1,*param_1 + 4);
+  param_1[1] = param_1[1] + 1;
+  *param_2 = iVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6a5b 65 1
+@@CALLERS UpdateShadowScene
+@@CALLEES GetNoAllocatedAreas, WriteCBYTE
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004e6a5b(CDataOutputStream *param_1,ulong *param_2)
+
+{
+  ulong uVar1;
+  CMemoryAllocatorVariableSize *this;
+  
+  CDataOutputStream::WriteCBYTE(param_1,(char)param_2[1]);
+  uVar1 = *(ulong *)(*param_2 + 8);
+  if (uVar1 != *param_2) {
+    do {
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x10));
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x14));
+      uVar1 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    } while (uVar1 != *param_2);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6bb3 134 1
+@@CALLERS TransferBinaryIn
+@@CALLEES FUN_004e6c39, RBTree::GetMaxNode
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_004e6bb3(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  bool bVar2;
+  int iVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  iVar5 = *(int *)(iVar1 + 4);
+  bVar2 = true;
+  iVar6 = iVar1;
+  if (iVar5 != 0) {
+    do {
+      iVar6 = iVar5;
+      bVar2 = *param_3 < *(int *)(iVar6 + 0x10);
+      if (bVar2) {
+        iVar5 = *(int *)(iVar6 + 8);
+      }
+      else {
+        iVar5 = *(int *)(iVar6 + 0xc);
+      }
+    } while (iVar5 != 0);
+  }
+  iVar3 = iVar6;
+  if (bVar2) {
+    iVar7 = iVar6;
+    if (iVar6 == *(int *)(iVar1 + 8)) goto LAB_004e6c0f;
+    iVar3 = RBTree__GetMaxNode(iVar6);
+  }
+  iVar7 = iVar5;
+  if (*param_3 <= *(int *)(iVar3 + 0x10)) {
+    *param_2 = iVar3;
+    *(undefined1 *)(param_2 + 1) = 0;
+    return param_2;
+  }
+LAB_004e6c0f:
+  piVar4 = (int *)FUN_004e6c39(&param_3,iVar7,iVar6,param_3,0);
+  *param_2 = *piVar4;
+  *(undefined1 *)(param_2 + 1) = 1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6c39 136 1
+@@CALLERS 
+@@CALLEES FUN_004e6748, CMemoryAllocatorVariableSize::BalanceTree
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004e6c39(int *param_1,int *param_2,int param_3,int param_4,int *param_5,int param_6)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  if ((param_4 == *param_1) ||
+     ((param_6 == 0 && ((param_3 != 0 || (*param_5 < *(int *)(param_4 + 0x10))))))) {
+    iVar1 = FUN_004e6748(param_5);
+    *(int *)(param_4 + 8) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != iVar2) {
+      if (param_4 == *(int *)(iVar2 + 8)) {
+        *(int *)(iVar2 + 8) = iVar1;
+      }
+      goto LAB_004e6c99;
+    }
+    *(int *)(iVar2 + 4) = iVar1;
+    iVar2 = *param_1;
+  }
+  else {
+    iVar1 = FUN_004e6748(param_5);
+    *(int *)(param_4 + 0xc) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != *(int *)(iVar2 + 0xc)) goto LAB_004e6c99;
+  }
+  *(int *)(iVar2 + 0xc) = iVar1;
+LAB_004e6c99:
+  *(undefined4 *)(iVar1 + 8) = 0;
+  *(undefined4 *)(iVar1 + 0xc) = 0;
+  *(int *)(iVar1 + 4) = param_4;
+  CMemoryAllocatorVariableSize__BalanceTree(iVar1,*param_1 + 4);
+  param_1[1] = param_1[1] + 1;
+  *param_2 = iVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e6f74 333 1
+@@CALLERS 
+@@CALLEES FUN_004e70cf, OnReadFinished
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_004e6f74(CActiveFile *param_1,CActiveFile *param_2)
+
+{
+  uint uVar1;
+  int iVar2;
+  uint uVar3;
+  undefined4 *puVar4;
+  int iVar5;
+  undefined4 *puVar6;
+  undefined4 *puVar7;
+  undefined4 *puVar8;
+  undefined4 *puVar9;
+  undefined4 *local_10;
+  undefined4 *local_c;
+  
+  if (param_2 != param_1) {
+    iVar2 = *(int *)(param_2 + 4);
+    local_c = *(undefined4 **)param_2;
+    uVar1 = (iVar2 - (int)local_c) / 0x18;
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)param_1) / 0x18) < uVar1) {
+      iVar2 = FUN_004e70cf(uVar1,local_c,iVar2);
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar2;
+      *(uint *)(param_1 + 8) = iVar2 + uVar1 * 0x18;
+    }
+    else {
+      uVar3 = (*(int *)(param_1 + 4) - *(int *)param_1) / 0x18;
+      if (uVar3 < uVar1) {
+        iVar2 = (int)(uVar3 * 0x18) / 0x18;
+        local_10 = *(undefined4 **)param_1;
+        if (0 < iVar2) {
+          do {
+            iVar2 = iVar2 + -1;
+            puVar4 = local_c;
+            puVar8 = local_10;
+            for (iVar5 = 6; iVar5 != 0; iVar5 = iVar5 + -1) {
+              *puVar8 = *puVar4;
+              puVar4 = puVar4 + 1;
+              puVar8 = puVar8 + 1;
+            }
+            local_10 = local_10 + 6;
+            local_c = local_c + 6;
+          } while (iVar2 != 0);
+        }
+        puVar8 = *(undefined4 **)(param_2 + 4);
+        puVar6 = *(undefined4 **)(param_1 + 4);
+        puVar4 = (undefined4 *)
+                 (*(int *)param_2 + ((*(int *)(param_1 + 4) - *(int *)param_1) / 0x18) * 0x18);
+        if (puVar4 != puVar8) {
+          local_10 = puVar6 + 1;
+          param_2 = (CActiveFile *)(puVar4 + 1);
+          do {
+            if (puVar6 != (undefined4 *)0x0) {
+              *puVar6 = *puVar4;
+              puVar7 = (undefined4 *)param_2;
+              puVar9 = local_10;
+              for (iVar2 = 5; iVar2 != 0; iVar2 = iVar2 + -1) {
+                *puVar9 = *puVar7;
+                puVar7 = puVar7 + 1;
+                puVar9 = puVar9 + 1;
+              }
+            }
+            param_2 = (CActiveFile *)((int)param_2 + 0x18);
+            local_10 = local_10 + 6;
+            puVar4 = puVar4 + 6;
+            puVar6 = puVar6 + 6;
+          } while (puVar4 != puVar8);
+        }
+      }
+      else {
+        iVar2 = (iVar2 - (int)local_c) / 0x18;
+        param_2 = (CActiveFile *)local_c;
+        local_c = *(undefined4 **)param_1;
+        if (0 < iVar2) {
+          do {
+            iVar2 = iVar2 + -1;
+            puVar4 = (undefined4 *)param_2;
+            puVar8 = local_c;
+            for (iVar5 = 6; iVar5 != 0; iVar5 = iVar5 + -1) {
+              *puVar8 = *puVar4;
+              puVar4 = puVar4 + 1;
+              puVar8 = puVar8 + 1;
+            }
+            param_2 = (CActiveFile *)((int)param_2 + 0x18);
+            local_c = local_c + 6;
+          } while (iVar2 != 0);
+        }
+      }
+    }
+    *(uint *)(param_1 + 4) = *(int *)param_1 + uVar1 * 0x18;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e70cf 79 1
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e70cf(int param_1,undefined4 *param_2,undefined4 *param_3)
+
+{
+  void *pvVar1;
+  int iVar2;
+  int iVar3;
+  undefined4 *puVar4;
+  undefined4 *puVar5;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x18);
+  }
+  if (param_2 != param_3) {
+    iVar3 = (int)pvVar1 - (int)param_2;
+    do {
+      puVar4 = (undefined4 *)(iVar3 + (int)param_2);
+      if (puVar4 != (undefined4 *)0x0) {
+        *puVar4 = *param_2;
+        puVar4 = param_2 + 1;
+        puVar5 = (undefined4 *)(iVar3 + (int)(param_2 + 1));
+        for (iVar2 = 5; iVar2 != 0; iVar2 = iVar2 + -1) {
+          *puVar5 = *puVar4;
+          puVar4 = puVar4 + 1;
+          puVar5 = puVar5 + 1;
+        }
+      }
+      param_2 = param_2 + 6;
+    } while (param_2 != param_3);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e7279 79 1
+@@CALLERS CActiveFile_CopyElements
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e7279(int param_1,undefined4 *param_2,undefined4 *param_3)
+
+{
+  void *pvVar1;
+  int iVar2;
+  int iVar3;
+  undefined4 *puVar4;
+  undefined4 *puVar5;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x28);
+  }
+  if (param_2 != param_3) {
+    iVar3 = (int)pvVar1 - (int)param_2;
+    do {
+      puVar4 = (undefined4 *)(iVar3 + (int)param_2);
+      if (puVar4 != (undefined4 *)0x0) {
+        *puVar4 = *param_2;
+        puVar4 = param_2 + 1;
+        puVar5 = (undefined4 *)(iVar3 + (int)(param_2 + 1));
+        for (iVar2 = 9; iVar2 != 0; iVar2 = iVar2 + -1) {
+          *puVar5 = *puVar4;
+          puVar4 = puVar4 + 1;
+          puVar5 = puVar5 + 1;
+        }
+      }
+      param_2 = param_2 + 10;
+    } while (param_2 != param_3);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e72c8 327 1
+@@CALLERS 
+@@CALLEES FUN_004e741d, OnReadFinished
+@@STRINGS 
+@@DECOMP
+
+CActiveFile * __thiscall FUN_004e72c8(CActiveFile *param_1,CActiveFile *param_2)
+
+{
+  undefined4 *puVar1;
+  uint uVar2;
+  int iVar3;
+  uint uVar4;
+  undefined4 *puVar5;
+  undefined4 *puVar6;
+  undefined4 *puVar7;
+  undefined4 *puVar8;
+  undefined4 *local_c;
+  undefined4 *local_8;
+  
+  if (param_2 != param_1) {
+    iVar3 = *(int *)(param_2 + 4);
+    puVar5 = *(undefined4 **)param_2;
+    uVar2 = (iVar3 - (int)puVar5) / 0xc;
+    if ((uint)((*(int *)(param_1 + 8) - *(int *)param_1) / 0xc) < uVar2) {
+      iVar3 = FUN_004e741d(uVar2,puVar5,iVar3);
+      CFileInstaller::CActiveFile::OnReadFinished(param_1);
+      *(int *)param_1 = iVar3;
+      *(uint *)(param_1 + 8) = iVar3 + uVar2 * 0xc;
+    }
+    else {
+      uVar4 = (*(int *)(param_1 + 4) - *(int *)param_1) / 0xc;
+      if (uVar4 < uVar2) {
+        iVar3 = (int)(uVar4 * 0xc) / 0xc;
+        local_c = *(undefined4 **)param_1;
+        local_8 = puVar5;
+        if (0 < iVar3) {
+          do {
+            iVar3 = iVar3 + -1;
+            *local_c = *local_8;
+            local_c[1] = local_8[1];
+            local_c[2] = local_8[2];
+            local_c = local_c + 3;
+            local_8 = local_8 + 3;
+          } while (iVar3 != 0);
+        }
+        puVar1 = *(undefined4 **)(param_2 + 4);
+        puVar7 = *(undefined4 **)(param_1 + 4);
+        puVar5 = (undefined4 *)
+                 (*(int *)param_2 + ((*(int *)(param_1 + 4) - *(int *)param_1) / 0xc) * 0xc);
+        if (puVar5 != puVar1) {
+          puVar8 = puVar7 + 1;
+          puVar6 = puVar5 + 1;
+          do {
+            if (puVar7 != (undefined4 *)0x0) {
+              *puVar7 = *puVar5;
+              *puVar8 = *puVar6;
+              puVar8[1] = puVar6[1];
+            }
+            puVar5 = puVar5 + 3;
+            puVar7 = puVar7 + 3;
+            puVar8 = puVar8 + 3;
+            puVar6 = puVar6 + 3;
+          } while (puVar5 != puVar1);
+        }
+      }
+      else {
+        iVar3 = (iVar3 - (int)puVar5) / 0xc;
+        local_8 = *(undefined4 **)param_1;
+        if (0 < iVar3) {
+          do {
+            *local_8 = *puVar5;
+            puVar1 = puVar5 + 2;
+            local_8[1] = puVar5[1];
+            puVar5 = puVar5 + 3;
+            iVar3 = iVar3 + -1;
+            local_8[2] = *puVar1;
+            local_8 = local_8 + 3;
+          } while (iVar3 != 0);
+        }
+      }
+    }
+    *(uint *)(param_1 + 4) = *(int *)param_1 + uVar2 * 0xc;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e741d 80 1
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void FUN_004e741d(int param_1,undefined4 *param_2,undefined4 *param_3)
+
+{
+  void *pvVar1;
+  int iVar2;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0xc);
+  }
+  if (param_2 != param_3) {
+    iVar2 = (int)pvVar1 - (int)param_2;
+    do {
+      if ((undefined4 *)(iVar2 + (int)param_2) != (undefined4 *)0x0) {
+        *(undefined4 *)(iVar2 + (int)param_2) = *param_2;
+        *(undefined4 *)(iVar2 + 4 + (int)param_2) = param_2[1];
+        *(undefined4 *)(iVar2 + 8 + (int)param_2) = param_2[2];
+      }
+      param_2 = param_2 + 3;
+    } while (param_2 != param_3);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e7822 74 1
+@@CALLERS ?Transfer@CHeroMorphDef@@UAEXAAVCPersistContext@@@Z
+@@CALLEES TransferBinaryIn, TransferBinaryOut, CNavigationLayer, OnReadFinished, CheckCRC
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004e7822(CPersistContext *param_1,CExpressionSet *param_2)
+
+{
+  CNavigationLayer local_14 [16];
+  
+  CPersistContext::CheckCRC(param_1,"");
+  CNavQuadTree::CNavigationLayer::CNavigationLayer(local_14);
+  if (*(int *)(param_1 + 0x18) == 2) {
+    CExpressionSet::TransferBinaryIn(param_2,*(CMemoryDataInputStream **)(param_1 + 0x24));
+  }
+  else if (*(int *)(param_1 + 0x18) == 3) {
+    CExpressionSet::TransferBinaryOut(param_2,*(CDataOutputStream **)(param_1 + 0x28));
+  }
+  CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)local_14);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e788a 74 1
+@@CALLERS ?Transfer@CHeroMorphDef@@UAEXAAVCPersistContext@@@Z
+@@CALLEES TransferBinaryOut, TransferBinaryIn, OnReadFinished, CNavigationLayer, CheckCRC
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004e788a(CPersistContext *param_1,CSkeletalMorphs *param_2)
+
+{
+  CNavigationLayer local_14 [16];
+  
+  CPersistContext::CheckCRC(param_1,"");
+  CNavQuadTree::CNavigationLayer::CNavigationLayer(local_14);
+  if (*(int *)(param_1 + 0x18) == 2) {
+    CSkeletalMorphs::TransferBinaryIn(param_2,*(CMemoryDataInputStream **)(param_1 + 0x24));
+  }
+  else if (*(int *)(param_1 + 0x18) == 3) {
+    CSkeletalMorphs::TransferBinaryOut(param_2,*(CDataOutputStream **)(param_1 + 0x28));
+  }
+  CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)local_14);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e7a62 61 1
+@@CALLERS UpdateShadowScene
+@@CALLEES GetNoAllocatedAreas, WriteCBYTE
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004e7a62(CDataOutputStream *param_1,ulong *param_2)
+
+{
+  ulong uVar1;
+  CMemoryAllocatorVariableSize *this;
+  
+  CDataOutputStream::WriteCBYTE(param_1,(char)param_2[1]);
+  uVar1 = *(ulong *)(*param_2 + 8);
+  if (uVar1 != *param_2) {
+    do {
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x10));
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x14));
+      uVar1 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    } while (uVar1 != *param_2);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e7bb5 134 1
+@@CALLERS TransferBinaryIn
+@@CALLEES FUN_004e7c3b, RBTree::GetMaxNode
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_004e7bb5(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  bool bVar2;
+  int iVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  iVar5 = *(int *)(iVar1 + 4);
+  bVar2 = true;
+  iVar6 = iVar1;
+  if (iVar5 != 0) {
+    do {
+      iVar6 = iVar5;
+      bVar2 = *param_3 < *(int *)(iVar6 + 0x10);
+      if (bVar2) {
+        iVar5 = *(int *)(iVar6 + 8);
+      }
+      else {
+        iVar5 = *(int *)(iVar6 + 0xc);
+      }
+    } while (iVar5 != 0);
+  }
+  iVar3 = iVar6;
+  if (bVar2) {
+    iVar7 = iVar6;
+    if (iVar6 == *(int *)(iVar1 + 8)) goto LAB_004e7c11;
+    iVar3 = RBTree__GetMaxNode(iVar6);
+  }
+  iVar7 = iVar5;
+  if (*param_3 <= *(int *)(iVar3 + 0x10)) {
+    *param_2 = iVar3;
+    *(undefined1 *)(param_2 + 1) = 0;
+    return param_2;
+  }
+LAB_004e7c11:
+  piVar4 = (int *)FUN_004e7c3b(&param_3,iVar7,iVar6,param_3,0);
+  *param_2 = *piVar4;
+  *(undefined1 *)(param_2 + 1) = 1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e7c3b 136 1
+@@CALLERS 
+@@CALLEES AllocAndCopyFields, CMemoryAllocatorVariableSize::BalanceTree
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004e7c3b(int *param_1,int *param_2,int param_3,int param_4,int *param_5,int param_6)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  if ((param_4 == *param_1) ||
+     ((param_6 == 0 && ((param_3 != 0 || (*param_5 < *(int *)(param_4 + 0x10))))))) {
+    iVar1 = AllocAndCopyFields(param_5);
+    *(int *)(param_4 + 8) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != iVar2) {
+      if (param_4 == *(int *)(iVar2 + 8)) {
+        *(int *)(iVar2 + 8) = iVar1;
+      }
+      goto LAB_004e7c9b;
+    }
+    *(int *)(iVar2 + 4) = iVar1;
+    iVar2 = *param_1;
+  }
+  else {
+    iVar1 = AllocAndCopyFields(param_5);
+    *(int *)(param_4 + 0xc) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != *(int *)(iVar2 + 0xc)) goto LAB_004e7c9b;
+  }
+  *(int *)(iVar2 + 0xc) = iVar1;
+LAB_004e7c9b:
+  *(undefined4 *)(iVar1 + 8) = 0;
+  *(undefined4 *)(iVar1 + 0xc) = 0;
+  *(int *)(iVar1 + 4) = param_4;
+  CMemoryAllocatorVariableSize__BalanceTree(iVar1,*param_1 + 4);
+  param_1[1] = param_1[1] + 1;
+  *param_2 = iVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e8743 47 1
+@@CALLERS push_back
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_004e8743(int param_1,undefined4 *param_2,int param_3)
+
+{
+  int iVar1;
+  undefined4 *puVar2;
+  
+  iVar1 = *(int *)(param_1 + 4) - param_3 >> 2;
+  puVar2 = param_2;
+  if (0 < iVar1) {
+    do {
+      *puVar2 = *(undefined4 *)((param_3 - (int)param_2) + (int)puVar2);
+      puVar2 = puVar2 + 1;
+      iVar1 = iVar1 + -1;
+    } while (iVar1 != 0);
+  }
+  *(undefined4 **)(param_1 + 4) = puVar2;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e8772 267 1
+@@CALLERS push_back
+@@CALLEES _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, FUN_004e8898
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004e8772(int param_1,ulong *param_2,uint param_3,ulong *param_4)
+
+{
+  uint uVar1;
+  ulong *puVar2;
+  ulong *puVar3;
+  int iVar4;
+  ulong *puVar5;
+  uint uVar6;
+  int iVar7;
+  ulong *puVar8;
+  
+  uVar1 = param_3;
+  if (param_3 != 0) {
+    if ((uint)(*(int *)(param_1 + 8) - *(int *)(param_1 + 4) >> 2) < param_3) {
+      param_3 = param_3 & 0xffffff;
+      FUN_004e8898(param_2,param_4,(int)&param_3 + 3,uVar1,0);
+    }
+    else {
+      param_4 = (ulong *)*param_4;
+      puVar8 = *(ulong **)(param_1 + 4);
+      uVar1 = *(int *)(param_1 + 4) - (int)param_2 >> 2;
+      if (param_3 < uVar1) {
+        puVar2 = puVar8 + -param_3;
+        puVar5 = puVar8;
+        for (puVar3 = puVar2; puVar3 != puVar8; puVar3 = puVar3 + 1) {
+          if (puVar5 != (ulong *)0x0) {
+            *puVar5 = *puVar3;
+          }
+          puVar5 = puVar5 + 1;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + param_3 * 4;
+        iVar4 = (int)puVar2 - (int)param_2 >> 2;
+        if (0 < iVar4) {
+          iVar7 = (int)puVar2 - (int)puVar8;
+          do {
+            puVar8 = puVar8 + -1;
+            iVar4 = iVar4 + -1;
+            *puVar8 = *(ulong *)(iVar7 + (int)puVar8);
+          } while (iVar4 != 0);
+        }
+        puVar8 = param_2 + param_3;
+        for (; param_2 != puVar8; param_2 = param_2 + 1) {
+          *param_2 = (ulong)param_4;
+        }
+      }
+      else {
+        uVar6 = param_3 - uVar1;
+        param_3 = uVar1;
+        std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>(puVar8,uVar6,(ulong *)&param_4);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar6 * 4;
+        puVar3 = *(ulong **)(param_1 + 4);
+        for (puVar5 = param_2; puVar5 != puVar8; puVar5 = puVar5 + 1) {
+          if (puVar3 != (ulong *)0x0) {
+            *puVar3 = *puVar5;
+          }
+          puVar3 = puVar3 + 1;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + param_3 * 4;
+        for (; param_2 != puVar8; param_2 = param_2 + 1) {
+          *param_2 = (ulong)param_4;
+        }
+      }
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e8898 207 1
+@@CALLERS 
+@@CALLEES free, malloc
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004e8898(int *param_1,undefined4 *param_2,undefined4 *param_3,undefined4 param_4,
+            undefined4 *param_5,char param_6)
+
+{
+  undefined4 *puVar1;
+  uint uVar2;
+  undefined4 *puVar3;
+  uint *puVar4;
+  int iVar5;
+  int iVar6;
+  uint local_8;
+  
+  uVar2 = (uint)param_5;
+  local_8 = param_1[1] - *param_1 >> 2;
+  puVar4 = (uint *)&param_5;
+  if (param_5 <= local_8) {
+    puVar4 = &local_8;
+  }
+  iVar6 = *puVar4 + local_8;
+  if (iVar6 == 0) {
+    param_5 = (undefined4 *)0x0;
+  }
+  else {
+    param_5 = malloc(iVar6 * 4);
+  }
+  puVar3 = param_5;
+  for (puVar1 = (undefined4 *)*param_1; puVar1 != param_2; puVar1 = puVar1 + 1) {
+    if (puVar3 != (undefined4 *)0x0) {
+      *puVar3 = *puVar1;
+    }
+    puVar3 = puVar3 + 1;
+  }
+  if (uVar2 == 1) {
+    if (puVar3 != (undefined4 *)0x0) {
+      *puVar3 = *param_3;
+    }
+    puVar3 = puVar3 + 1;
+  }
+  else {
+    for (; uVar2 != 0; uVar2 = uVar2 - 1) {
+      if (puVar3 != (undefined4 *)0x0) {
+        *puVar3 = *param_3;
+      }
+      puVar3 = puVar3 + 1;
+    }
+  }
+  if ((param_6 == '\0') && (puVar1 = (undefined4 *)param_1[1], param_2 != puVar1)) {
+    iVar5 = (int)param_2 - (int)puVar3;
+    do {
+      if (puVar3 != (undefined4 *)0x0) {
+        *puVar3 = *(undefined4 *)(iVar5 + (int)puVar3);
+      }
+      puVar3 = puVar3 + 1;
+    } while ((undefined4 *)(iVar5 + (int)puVar3) != puVar1);
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  *param_1 = (int)param_5;
+  param_1[1] = (int)puVar3;
+  param_1[2] = (int)(param_5 + iVar6);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e8ac5 47 1
+@@CALLERS push_back
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_004e8ac5(int param_1,undefined4 *param_2,int param_3)
+
+{
+  int iVar1;
+  undefined4 *puVar2;
+  
+  iVar1 = *(int *)(param_1 + 4) - param_3 >> 2;
+  puVar2 = param_2;
+  if (0 < iVar1) {
+    do {
+      *puVar2 = *(undefined4 *)((param_3 - (int)param_2) + (int)puVar2);
+      puVar2 = puVar2 + 1;
+      iVar1 = iVar1 + -1;
+    } while (iVar1 != 0);
+  }
+  *(undefined4 **)(param_1 + 4) = puVar2;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e8af4 267 1
+@@CALLERS push_back
+@@CALLEES VectorReallocateAndMove, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004e8af4(int param_1,ulong *param_2,uint param_3,ulong *param_4)
+
+{
+  uint uVar1;
+  ulong *puVar2;
+  ulong *puVar3;
+  int iVar4;
+  ulong *puVar5;
+  uint uVar6;
+  int iVar7;
+  ulong *puVar8;
+  
+  uVar1 = param_3;
+  if (param_3 != 0) {
+    if ((uint)(*(int *)(param_1 + 8) - *(int *)(param_1 + 4) >> 2) < param_3) {
+      param_3 = param_3 & 0xffffff;
+      VectorReallocateAndMove(param_2,param_4,(int)&param_3 + 3,uVar1,0);
+    }
+    else {
+      param_4 = (ulong *)*param_4;
+      puVar8 = *(ulong **)(param_1 + 4);
+      uVar1 = *(int *)(param_1 + 4) - (int)param_2 >> 2;
+      if (param_3 < uVar1) {
+        puVar2 = puVar8 + -param_3;
+        puVar5 = puVar8;
+        for (puVar3 = puVar2; puVar3 != puVar8; puVar3 = puVar3 + 1) {
+          if (puVar5 != (ulong *)0x0) {
+            *puVar5 = *puVar3;
+          }
+          puVar5 = puVar5 + 1;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + param_3 * 4;
+        iVar4 = (int)puVar2 - (int)param_2 >> 2;
+        if (0 < iVar4) {
+          iVar7 = (int)puVar2 - (int)puVar8;
+          do {
+            puVar8 = puVar8 + -1;
+            iVar4 = iVar4 + -1;
+            *puVar8 = *(ulong *)(iVar7 + (int)puVar8);
+          } while (iVar4 != 0);
+        }
+        puVar8 = param_2 + param_3;
+        for (; param_2 != puVar8; param_2 = param_2 + 1) {
+          *param_2 = (ulong)param_4;
+        }
+      }
+      else {
+        uVar6 = param_3 - uVar1;
+        param_3 = uVar1;
+        std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>(puVar8,uVar6,(ulong *)&param_4);
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + uVar6 * 4;
+        puVar3 = *(ulong **)(param_1 + 4);
+        for (puVar5 = param_2; puVar5 != puVar8; puVar5 = puVar5 + 1) {
+          if (puVar3 != (ulong *)0x0) {
+            *puVar3 = *puVar5;
+          }
+          puVar3 = puVar3 + 1;
+        }
+        *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + param_3 * 4;
+        for (; param_2 != puVar8; param_2 = param_2 + 1) {
+          *param_2 = (ulong)param_4;
+        }
+      }
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e910f 71 1
+@@CALLERS UpdateShadowScene
+@@CALLEES GetNoAllocatedAreas, WriteCBYTE
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004e910f(CDataOutputStream *param_1,ulong *param_2)
+
+{
+  ulong uVar1;
+  CMemoryAllocatorVariableSize *this;
+  
+  CDataOutputStream::WriteCBYTE(param_1,(char)param_2[1]);
+  uVar1 = *(ulong *)(*param_2 + 8);
+  if (uVar1 != *param_2) {
+    do {
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x10));
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x14));
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x18));
+      uVar1 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    } while (uVar1 != *param_2);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e9213 134 1
+@@CALLERS TransferBinaryIn
+@@CALLEES RBTree::GetMaxNode, FUN_004e9299
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_004e9213(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  bool bVar2;
+  int iVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  iVar5 = *(int *)(iVar1 + 4);
+  bVar2 = true;
+  iVar6 = iVar1;
+  if (iVar5 != 0) {
+    do {
+      iVar6 = iVar5;
+      bVar2 = *param_3 < *(int *)(iVar6 + 0x10);
+      if (bVar2) {
+        iVar5 = *(int *)(iVar6 + 8);
+      }
+      else {
+        iVar5 = *(int *)(iVar6 + 0xc);
+      }
+    } while (iVar5 != 0);
+  }
+  iVar3 = iVar6;
+  if (bVar2) {
+    iVar7 = iVar6;
+    if (iVar6 == *(int *)(iVar1 + 8)) goto LAB_004e926f;
+    iVar3 = RBTree__GetMaxNode(iVar6);
+  }
+  iVar7 = iVar5;
+  if (*param_3 <= *(int *)(iVar3 + 0x10)) {
+    *param_2 = iVar3;
+    *(undefined1 *)(param_2 + 1) = 0;
+    return param_2;
+  }
+LAB_004e926f:
+  piVar4 = (int *)FUN_004e9299(&param_3,iVar7,iVar6,param_3,0);
+  *param_2 = *piVar4;
+  *(undefined1 *)(param_2 + 1) = 1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e9299 136 1
+@@CALLERS 
+@@CALLEES AllocAndCopyThreeFields, CMemoryAllocatorVariableSize::BalanceTree
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004e9299(int *param_1,int *param_2,int param_3,int param_4,int *param_5,int param_6)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  if ((param_4 == *param_1) ||
+     ((param_6 == 0 && ((param_3 != 0 || (*param_5 < *(int *)(param_4 + 0x10))))))) {
+    iVar1 = AllocAndCopyThreeFields(param_5);
+    *(int *)(param_4 + 8) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != iVar2) {
+      if (param_4 == *(int *)(iVar2 + 8)) {
+        *(int *)(iVar2 + 8) = iVar1;
+      }
+      goto LAB_004e92f9;
+    }
+    *(int *)(iVar2 + 4) = iVar1;
+    iVar2 = *param_1;
+  }
+  else {
+    iVar1 = AllocAndCopyThreeFields(param_5);
+    *(int *)(param_4 + 0xc) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != *(int *)(iVar2 + 0xc)) goto LAB_004e92f9;
+  }
+  *(int *)(iVar2 + 0xc) = iVar1;
+LAB_004e92f9:
+  *(undefined4 *)(iVar1 + 8) = 0;
+  *(undefined4 *)(iVar1 + 0xc) = 0;
+  *(int *)(iVar1 + 4) = param_4;
+  CMemoryAllocatorVariableSize__BalanceTree(iVar1,*param_1 + 4);
+  param_1[1] = param_1[1] + 1;
+  *param_2 = iVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e9356 61 1
+@@CALLERS UpdateShadowScene
+@@CALLEES GetNoAllocatedAreas, WriteCBYTE
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004e9356(CDataOutputStream *param_1,ulong *param_2)
+
+{
+  ulong uVar1;
+  CMemoryAllocatorVariableSize *this;
+  
+  CDataOutputStream::WriteCBYTE(param_1,(char)param_2[1]);
+  uVar1 = *(ulong *)(*param_2 + 8);
+  if (uVar1 != *param_2) {
+    do {
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x10));
+      CDataOutputStream::WriteCBYTE(param_1,(char)*(undefined4 *)(uVar1 + 0x14));
+      uVar1 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    } while (uVar1 != *param_2);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e94c8 136 1
+@@CALLERS RBTree::FindInsertPosition
+@@CALLEES CMemoryAllocatorVariableSize::BalanceTree, FUN_004e4d19
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_004e94c8(int *param_1,int *param_2,int param_3,int param_4,int *param_5,int param_6)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  if ((param_4 == *param_1) ||
+     ((param_6 == 0 && ((param_3 != 0 || (*param_5 < *(int *)(param_4 + 0x10))))))) {
+    iVar1 = FUN_004e4d19(param_5);
+    *(int *)(param_4 + 8) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != iVar2) {
+      if (param_4 == *(int *)(iVar2 + 8)) {
+        *(int *)(iVar2 + 8) = iVar1;
+      }
+      goto LAB_004e9528;
+    }
+    *(int *)(iVar2 + 4) = iVar1;
+    iVar2 = *param_1;
+  }
+  else {
+    iVar1 = FUN_004e4d19(param_5);
+    *(int *)(param_4 + 0xc) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != *(int *)(iVar2 + 0xc)) goto LAB_004e9528;
+  }
+  *(int *)(iVar2 + 0xc) = iVar1;
+LAB_004e9528:
+  *(undefined4 *)(iVar1 + 8) = 0;
+  *(undefined4 *)(iVar1 + 0xc) = 0;
+  *(int *)(iVar1 + 4) = param_4;
+  CMemoryAllocatorVariableSize__BalanceTree(iVar1,*param_1 + 4);
+  param_1[1] = param_1[1] + 1;
+  *param_2 = iVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e9550 77 1
+@@CALLERS ?Transfer@CWeaponDef@@UAEXAAVCPersistContext@@@Z
+@@CALLEES TransferBinaryIn, CDateAndTime, TransferBinaryOut, FinishWithDynamicTextures, CheckCRC
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004e9550(CPersistContext *param_1,CObjectAugmentationParticleSet *param_2)
+
+{
+  CDateAndTime local_30 [44];
+  
+  CPersistContext::CheckCRC(param_1,"");
+  CDateAndTime::CDateAndTime(local_30);
+  if (*(int *)(param_1 + 0x18) == 2) {
+    CPersistTraits<CObjectAugmentationParticleSet>::TransferBinaryIn
+              ((CPersistTraits<CObjectAugmentationParticleSet> *)local_30,
+               *(CMemoryDataInputStream **)(param_1 + 0x24),param_2);
+  }
+  else if (*(int *)(param_1 + 0x18) == 3) {
+    CPersistTraits<CObjectAugmentationParticleSet>::TransferBinaryOut
+              ((CPersistTraits<CObjectAugmentationParticleSet> *)local_30,
+               *(CDataOutputStream **)(param_1 + 0x28),param_2);
+  }
+  CEngineScreenEffectDisplacementRenderer::FinishWithDynamicTextures
+            ((CEngineScreenEffectDisplacementRenderer *)local_30);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004e9c63 71 1
+@@CALLERS CActiveFile_ReallocateAndCopy
+@@CALLEES _Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_>,std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>,std::pair<class_CCharString_const_,struct_std::pair<long,class_CDateAndTime>_>_>, malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_004e9c63(int param_1,pair<CCharString_const_,std::pair<long,CDateAndTime>_> *param_2,
+                   pair<CCharString_const_,std::pair<long,CDateAndTime>_> *param_3)
+
+{
+  void *pvVar1;
+  pair<class_CCharString_const_,struct_std::pair<long,class_CDateAndTime>_> *unaff_EDI;
+  int iVar2;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x48);
+  }
+  if (param_2 != param_3) {
+    iVar2 = (int)pvVar1 - (int)param_2;
+    do {
+      std::
+      _Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_>,std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>,std::pair<class_CCharString_const_,struct_std::pair<long,class_CDateAndTime>_>_>
+                ((allocator<std::pair<CCharString_const_,std::pair<long,CDateAndTime>_>_> *)
+                 (param_2 + iVar2),param_2,unaff_EDI);
+      param_2 = param_2 + 0x48;
+    } while (param_2 != param_3);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC

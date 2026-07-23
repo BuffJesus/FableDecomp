@@ -1,0 +1,924 @@
+@@@FUNC 004c5c40 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004c5c40(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c6680 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004c6680(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x1c);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c66a0 50 0
+@@CALLERS 
+@@CALLEES free, CMemoryAllocatorVariableSize::Erase
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004c66a0(int *param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  void *_Memory;
+  
+  iVar1 = *param_1;
+  _Memory = (void *)CMemoryAllocatorVariableSize__Erase(param_2,iVar1 + 4,iVar1 + 8,iVar1 + 0xc);
+  if (_Memory != (void *)0x0) {
+    free(_Memory);
+  }
+  param_1[1] = param_1[1] + -1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c67d0 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_004c67d0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c6af0 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_004c6af0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c72a0 3 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+void FUN_004c72a0(void)
+
+{
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004cc200 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004cc200(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004cc260 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004cc260(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x14);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004cc520 78 0
+@@CALLERS 
+@@CALLEES CheckCRC, TransferBinaryIn, WriteCBYTE
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004cc520(CPersistContext *param_1,__uint64 *param_2)
+
+{
+  CPersistTraits<unsigned___int64> local_8 [8];
+  
+  CPersistContext::CheckCRC(param_1,"");
+  if (*(int *)(param_1 + 0x18) == 2) {
+    CPersistTraits<unsigned___int64>::TransferBinaryIn
+              (local_8,*(CMemoryDataInputStream **)(param_1 + 0x24),param_2);
+  }
+  else if (*(int *)(param_1 + 0x18) == 3) {
+    CDataOutputStream::WriteCBYTE(*(CDataOutputStream **)(param_1 + 0x28),(char)(int)*param_2);
+    return;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004cc800 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004cc800(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004cca80 78 0
+@@CALLERS 
+@@CALLEES CheckCRC, TransferBinaryIn, WriteCBYTE
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004cca80(CPersistContext *param_1,undefined4 param_2,__uint64 *param_3)
+
+{
+  CPersistTraits<unsigned___int64> local_8 [8];
+  
+  CPersistContext::CheckCRC(param_1,"");
+  if (*(int *)(param_1 + 0x18) == 2) {
+    CPersistTraits<unsigned___int64>::TransferBinaryIn
+              (local_8,*(CMemoryDataInputStream **)(param_1 + 0x24),param_3);
+  }
+  else if (*(int *)(param_1 + 0x18) == 3) {
+    CDataOutputStream::WriteCBYTE(*(CDataOutputStream **)(param_1 + 0x28),(char)(int)*param_3);
+    return;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ccc10 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004ccc10(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x14);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004cd400 96 0
+@@CALLERS 
+@@CALLEES std::vector_Realloc_And_Copy
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004cd400(int param_1,undefined4 *param_2,undefined4 *param_3)
+
+{
+  undefined4 *puVar1;
+  undefined4 local_8;
+  undefined4 local_4;
+  
+  local_4 = *param_3;
+  local_8 = *param_2;
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  if (puVar1 != *(undefined4 **)(param_1 + 8)) {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = local_8;
+      puVar1[1] = local_4;
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 8;
+    *(undefined1 *)(param_1 + 0xd) = 1;
+    return;
+  }
+  std__vector_Realloc_And_Copy(puVar1,&local_8,&param_2,1,1);
+  *(undefined1 *)(param_1 + 0xd) = 1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d1e20 95 0
+@@CALLERS 
+@@CALLEES std::vector_Realloc_And_Copy
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004d1e20(int param_1,undefined4 *param_2,undefined4 *param_3)
+
+{
+  undefined4 *puVar1;
+  undefined4 local_8;
+  undefined4 local_4;
+  
+  local_8 = *param_2;
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  local_4 = *param_3;
+  if (puVar1 != *(undefined4 **)(param_1 + 8)) {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = local_8;
+      puVar1[1] = local_4;
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 8;
+    *(undefined1 *)(param_1 + 0xd) = 1;
+    return;
+  }
+  std__vector_Realloc_And_Copy(puVar1,&local_8,&param_2,1,1);
+  *(undefined1 *)(param_1 + 0xd) = 1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d1f10 69 0
+@@CALLERS 
+@@CALLEES Vector_Reserve_And_Assign, CCharString
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004d1f10(int param_1,undefined4 *param_2)
+
+{
+  undefined4 *puVar1;
+  
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  if (puVar1 != *(undefined4 **)(param_1 + 8)) {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = *param_2;
+      CCharString::CCharString((CCharString *)(puVar1 + 1),(CCharString *)(param_2 + 1));
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 8;
+    return;
+  }
+  Vector_Reserve_And_Assign(puVar1,param_2,&param_2,1,1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2060 132 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, Vector_Reserve_And_Assign, CCharString
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004d2060(int param_1,undefined4 *param_2,CCharString *param_3)
+
+{
+  undefined4 *puVar1;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_ESI;
+  undefined4 local_8;
+  CCharString local_4 [4];
+  
+  local_8 = *param_2;
+  CCharString::CCharString(local_4,param_3);
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  if (puVar1 != *(undefined4 **)(param_1 + 8)) {
+    ppVar2 = extraout_EDX;
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = local_8;
+      CCharString::CCharString((CCharString *)(puVar1 + 1),local_4);
+      ppVar2 = extraout_EDX_00;
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 8;
+    std::
+    _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+              ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)local_4,ppVar2,
+               unaff_ESI);
+    *(undefined1 *)(param_1 + 0xd) = 1;
+    return;
+  }
+  Vector_Reserve_And_Assign(puVar1,&local_8,&param_2,1,1);
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)local_4,
+             extraout_EDX_01,unaff_ESI);
+  *(undefined1 *)(param_1 + 0xd) = 1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d28bb 29 0
+@@CALLERS 
+@@CALLEES CTCHeroMorph, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d28bb(CThing *param_1)
+
+{
+  CTCHeroMorph *this;
+  undefined4 uVar1;
+  
+  this = operator_new(100);
+  if (this != (CTCHeroMorph *)0x0) {
+    uVar1 = CTCHeroMorph::CTCHeroMorph(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d28eb 29 0
+@@CALLERS 
+@@CALLEES CTCSmokeGenerator, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d28eb(CThing *param_1)
+
+{
+  CTCSmokeGenerator *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x20);
+  if (this != (CTCSmokeGenerator *)0x0) {
+    uVar1 = CTCSmokeGenerator::CTCSmokeGenerator(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d291b 29 0
+@@CALLERS 
+@@CALLEES CTCCreatureNavigation, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d291b(CThing *param_1)
+
+{
+  CTCCreatureNavigation *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x60);
+  if (this != (CTCCreatureNavigation *)0x0) {
+    uVar1 = CTCCreatureNavigation::CTCCreatureNavigation(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d294b 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCPhysicsLight
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d294b(CThing *param_1)
+
+{
+  CTCPhysicsLight *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x44);
+  if (this != (CTCPhysicsLight *)0x0) {
+    uVar1 = CTCPhysicsLight::CTCPhysicsLight(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d297b 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCActivationTrigger
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d297b(CThing *param_1)
+
+{
+  CTCActivationTrigger *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x88);
+  if (this != (CTCActivationTrigger *)0x0) {
+    uVar1 = CTCActivationTrigger::CTCActivationTrigger(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d29ae 32 0
+@@CALLERS 
+@@CALLEES CTCPhysicsControlled, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d29ae(CThing *param_1)
+
+{
+  CTCPhysicsControlled *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0xac);
+  if (this != (CTCPhysicsControlled *)0x0) {
+    uVar1 = CTCPhysicsControlled::CTCPhysicsControlled(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d29e1 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCPhysicsBase
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d29e1(CThing *param_1)
+
+{
+  CTCPhysicsBase *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0xb0);
+  if (this != (CTCPhysicsBase *)0x0) {
+    uVar1 = CTCPhysicsBase::CTCPhysicsBase(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2a14 29 0
+@@CALLERS 
+@@CALLEES CComponentContainer, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2a14(long param_1)
+
+{
+  CComponentContainer *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CComponentContainer *)0x0) {
+    uVar1 = NUISystem::CComponentContainer::CComponentContainer(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2a44 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCRandomAppearanceMorph
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2a44(CThing *param_1)
+
+{
+  CTCRandomAppearanceMorph *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x2c);
+  if (this != (CTCRandomAppearanceMorph *)0x0) {
+    uVar1 = CTCRandomAppearanceMorph::CTCRandomAppearanceMorph(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2aa4 29 0
+@@CALLERS 
+@@CALLEES CTCActionUseBase, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2aa4(CThing *param_1)
+
+{
+  CTCActionUseBase *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CTCActionUseBase *)0x0) {
+    uVar1 = CTCActionUseBase::CTCActionUseBase(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2ad4 29 0
+@@CALLERS 
+@@CALLEES CTCActionUseScriptedHook, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2ad4(CThing *param_1)
+
+{
+  CTCActionUseScriptedHook *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x50);
+  if (this != (CTCActionUseScriptedHook *)0x0) {
+    uVar1 = CTCActionUseScriptedHook::CTCActionUseScriptedHook(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2c12 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCActionUseBuyOrSteal
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2c12(CThing *param_1)
+
+{
+  CTCActionUseBuyOrSteal *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x20);
+  if (this != (CTCActionUseBuyOrSteal *)0x0) {
+    uVar1 = CTCActionUseBuyOrSteal::CTCActionUseBuyOrSteal(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2d98 29 0
+@@CALLERS 
+@@CALLEES CEngineSubPrimitive2DClockSprite_ctor, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2d98(undefined4 param_1)
+
+{
+  void *pvVar1;
+  undefined4 uVar2;
+  
+  pvVar1 = operator_new(0x28);
+  if (pvVar1 != (void *)0x0) {
+    uVar2 = CEngineSubPrimitive2DClockSprite_ctor(param_1);
+    return uVar2;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2e0a 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCTalk
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2e0a(CThing *param_1)
+
+{
+  CTCTalk *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x3c);
+  if (this != (CTCTalk *)0x0) {
+    uVar1 = CTCTalk::CTCTalk(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2e44 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCQuestCard
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2e44(CThing *param_1)
+
+{
+  CTCQuestCard *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x34);
+  if (this != (CTCQuestCard *)0x0) {
+    uVar1 = CTCQuestCard::CTCQuestCard(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2e74 32 0
+@@CALLERS 
+@@CALLEES CTCInventory, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2e74(CThing *param_1)
+
+{
+  CTCInventory *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x228);
+  if (this != (CTCInventory *)0x0) {
+    uVar1 = CTCInventory::CTCInventory(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2eba 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCWallMountEffects
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2eba(CThing *param_1)
+
+{
+  CTCWallMountEffects *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x1a0);
+  if (this != (CTCWallMountEffects *)0x0) {
+    uVar1 = CTCWallMountEffects::CTCWallMountEffects(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2f13 32 0
+@@CALLERS 
+@@CALLEES CPSCOrbit, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_004d2f13(void)
+
+{
+  CPSCOrbit *this;
+  undefined4 uVar1;
+  
+  this = operator_new(600);
+  if (this != (CPSCOrbit *)0x0) {
+    uVar1 = NParticleEngine::CPSCOrbit::CPSCOrbit(this);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2f46 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCInventoryMagic
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2f46(CThing *param_1)
+
+{
+  CTCInventoryMagic *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x140);
+  if (this != (CTCInventoryMagic *)0x0) {
+    uVar1 = CTCInventoryMagic::CTCInventoryMagic(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2f79 29 0
+@@CALLERS 
+@@CALLEES CTCHeroExperience, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2f79(CThing *param_1)
+
+{
+  CTCHeroExperience *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x60);
+  if (this != (CTCHeroExperience *)0x0) {
+    uVar1 = CTCHeroExperience::CTCHeroExperience(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2fa9 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCHeroStats
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2fa9(CThing *param_1)
+
+{
+  CTCHeroStats *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x1dc);
+  if (this != (CTCHeroStats *)0x0) {
+    uVar1 = CTCHeroStats::CTCHeroStats(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d2fdc 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCHero
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d2fdc(CThing *param_1)
+
+{
+  CTCHero *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x158);
+  if (this != (CTCHero *)0x0) {
+    uVar1 = CTCHero::CTCHero(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d300f 32 0
+@@CALLERS 
+@@CALLEES CTCInventoryAbilities, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d300f(CThing *param_1)
+
+{
+  CTCInventoryAbilities *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x1d8);
+  if (this != (CTCInventoryAbilities *)0x0) {
+    uVar1 = CTCInventoryAbilities::CTCInventoryAbilities(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d3042 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCInventoryExperience
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d3042(CThing *param_1)
+
+{
+  CTCInventoryExperience *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x270);
+  if (this != (CTCInventoryExperience *)0x0) {
+    uVar1 = CTCInventoryExperience::CTCInventoryExperience(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC

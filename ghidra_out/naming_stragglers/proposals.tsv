@@ -1,0 +1,3 @@
+address	current_name	proposed_name	confidence	evidence	donors	body_size	instruction_count
+004159a0	InitFlags_Field4_26	??0CGameEvent@@QAE@XZ	medium	strict-instruction-signature	ego_r	11	4
+0042d9d0	Field_SetToMinusOne	??0CDefString@@QAE@XZ	medium	strict-instruction-signature	ego_r	9	3

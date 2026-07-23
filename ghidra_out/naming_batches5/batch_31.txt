@@ -1,0 +1,882 @@
+@@@FUNC 004d56f3 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCCreatureFlyOnSpline
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d56f3(CThing *param_1)
+
+{
+  CTCCreatureFlyOnSpline *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x20);
+  if (this != (CTCCreatureFlyOnSpline *)0x0) {
+    uVar1 = CTCCreatureFlyOnSpline::CTCCreatureFlyOnSpline(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5723 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCFireballSpell
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5723(CThing *param_1)
+
+{
+  CTCFireballSpell *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x80);
+  if (this != (CTCFireballSpell *)0x0) {
+    uVar1 = CTCFireballSpell::CTCFireballSpell(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5797 29 0
+@@CALLERS 
+@@CALLEES CTCCreatureGeneratorCreator, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5797(CThing *param_1)
+
+{
+  CTCCreatureGeneratorCreator *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x28);
+  if (this != (CTCCreatureGeneratorCreator *)0x0) {
+    uVar1 = CTCCreatureGeneratorCreator::CTCCreatureGeneratorCreator(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d57c7 32 0
+@@CALLERS 
+@@CALLEES CTCShotDefinitionBase, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d57c7(CThing *param_1)
+
+{
+  CTCShotDefinitionBase *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0xac);
+  if (this != (CTCShotDefinitionBase *)0x0) {
+    uVar1 = NThingShot::CTCShotDefinitionBase::CTCShotDefinitionBase(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d580d 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCCameraCollision
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d580d(CThing *param_1)
+
+{
+  CTCCameraCollision *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x10);
+  if (this != (CTCCameraCollision *)0x0) {
+    uVar1 = CTCCameraCollision::CTCCameraCollision(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5866 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCMultiArrow
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5866(CThing *param_1)
+
+{
+  CTCMultiArrow *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x48);
+  if (this != (CTCMultiArrow *)0x0) {
+    uVar1 = CTCMultiArrow::CTCMultiArrow(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5896 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCMultiStrike
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5896(CThing *param_1)
+
+{
+  CTCMultiStrike *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x58);
+  if (this != (CTCMultiStrike *)0x0) {
+    uVar1 = CTCMultiStrike::CTCMultiStrike(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d58c6 29 0
+@@CALLERS 
+@@CALLEES CTCBurntEffect, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d58c6(CThing *param_1)
+
+{
+  CTCBurntEffect *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x38);
+  if (this != (CTCBurntEffect *)0x0) {
+    uVar1 = CTCBurntEffect::CTCBurntEffect(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d58f6 29 0
+@@CALLERS 
+@@CALLEES CTCElectrocutedEffect, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d58f6(CThing *param_1)
+
+{
+  CTCElectrocutedEffect *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x34);
+  if (this != (CTCElectrocutedEffect *)0x0) {
+    uVar1 = CTCElectrocutedEffect::CTCElectrocutedEffect(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5926 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCBurntEffect
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5926(CThing *param_1)
+
+{
+  CTCBurntEffect *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x40);
+  if (this != (CTCBurntEffect *)0x0) {
+    uVar1 = CTCBurntEffect::CTCBurntEffect(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5995 32 0
+@@CALLERS 
+@@CALLEES CTCTavernGameCoinGolf, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5995(CThing *param_1)
+
+{
+  CTCTavernGameCoinGolf *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x158);
+  if (this != (CTCTavernGameCoinGolf *)0x0) {
+    uVar1 = CTCTavernGameCoinGolf::CTCTavernGameCoinGolf(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d59de 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCTavernGameCoinGolf
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d59de(CThing *param_1)
+
+{
+  CTCTavernGameCoinGolf *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x180);
+  if (this != (CTCTavernGameCoinGolf *)0x0) {
+    uVar1 = CTCTavernGameCoinGolf::CTCTavernGameCoinGolf(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5a11 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCTavernGameCardSorting
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5a11(CThing *param_1)
+
+{
+  CTCTavernGameCardSorting *this;
+  undefined4 uVar1;
+  
+  this = operator_new(800);
+  if (this != (CTCTavernGameCardSorting *)0x0) {
+    uVar1 = CTCTavernGameCardSorting::CTCTavernGameCardSorting(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5a44 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCTavernGameCardPairs
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5a44(CThing *param_1)
+
+{
+  CTCTavernGameCardPairs *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x330);
+  if (this != (CTCTavernGameCardPairs *)0x0) {
+    uVar1 = CTCTavernGameCardPairs::CTCTavernGameCardPairs(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5a77 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCTavernGameSpotTheAddition
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5a77(CThing *param_1)
+
+{
+  CTCTavernGameSpotTheAddition *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x188);
+  if (this != (CTCTavernGameSpotTheAddition *)0x0) {
+    uVar1 = CTCTavernGameSpotTheAddition::CTCTavernGameSpotTheAddition(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5aaa 32 0
+@@CALLERS 
+@@CALLEES operator_new, CTCTavernGameCardBlackjack
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5aaa(CThing *param_1)
+
+{
+  CTCTavernGameCardBlackjack *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x378);
+  if (this != (CTCTavernGameCardBlackjack *)0x0) {
+    uVar1 = CTCTavernGameCardBlackjack::CTCTavernGameCardBlackjack(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5b71 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCCreatureFlyOnSpline
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5b71(CThing *param_1)
+
+{
+  CTCCreatureFlyOnSpline *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x2c);
+  if (this != (CTCCreatureFlyOnSpline *)0x0) {
+    uVar1 = CTCCreatureFlyOnSpline::CTCCreatureFlyOnSpline(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5ba1 29 0
+@@CALLERS 
+@@CALLEES CTCCreatureFlyInCircles, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5ba1(CThing *param_1)
+
+{
+  CTCCreatureFlyInCircles *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x78);
+  if (this != (CTCCreatureFlyInCircles *)0x0) {
+    uVar1 = CTCCreatureFlyInCircles::CTCCreatureFlyInCircles(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5bd1 29 0
+@@CALLERS 
+@@CALLEES CTCTavernBar, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5bd1(CThing *param_1)
+
+{
+  CTCTavernBar *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x20);
+  if (this != (CTCTavernBar *)0x0) {
+    uVar1 = CTCTavernBar::CTCTavernBar(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5c01 29 0
+@@CALLERS 
+@@CALLEES CTCWallMountEffects, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5c01(CThing *param_1)
+
+{
+  CTCWallMountEffects *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x24);
+  if (this != (CTCWallMountEffects *)0x0) {
+    uVar1 = CTCWallMountEffects::CTCWallMountEffects(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5c47 29 0
+@@CALLERS 
+@@CALLEES CTCFish, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5c47(CThing *param_1)
+
+{
+  CTCFish *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x1c);
+  if (this != (CTCFish *)0x0) {
+    uVar1 = CTCFish::CTCFish(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5c8d 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCTeleporter
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5c8d(CThing *param_1)
+
+{
+  CTCTeleporter *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x1c);
+  if (this != (CTCTeleporter *)0x0) {
+    uVar1 = CTCTeleporter::CTCTeleporter(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5d23 29 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveManagerParticleGroup, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5d23(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveManagerParticleGroup *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x1c);
+  if (this != (CEnginePrimitiveManagerParticleGroup *)0x0) {
+    uVar1 = CEnginePrimitiveManagerParticleGroup::CEnginePrimitiveManagerParticleGroup(this,param_1)
+    ;
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5d53 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCEffectOnDie
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5d53(CThing *param_1)
+
+{
+  CTCEffectOnDie *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x24);
+  if (this != (CTCEffectOnDie *)0x0) {
+    uVar1 = CTCEffectOnDie::CTCEffectOnDie(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5e14 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCAICreatureWillPowerIndicator
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5e14(CThing *param_1)
+
+{
+  CTCAICreatureWillPowerIndicator *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x24);
+  if (this != (CTCAICreatureWillPowerIndicator *)0x0) {
+    uVar1 = CTCAICreatureWillPowerIndicator::CTCAICreatureWillPowerIndicator(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5e44 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCGraphicAppearanceMultipleStaticMeshes
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5e44(CThing *param_1)
+
+{
+  CTCGraphicAppearanceMultipleStaticMeshes *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x20);
+  if (this != (CTCGraphicAppearanceMultipleStaticMeshes *)0x0) {
+    uVar1 = NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::
+            CTCGraphicAppearanceMultipleStaticMeshes(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5e74 29 0
+@@CALLERS 
+@@CALLEES CTCOwnedEntity, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5e74(CThing *param_1)
+
+{
+  CTCOwnedEntity *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x20);
+  if (this != (CTCOwnedEntity *)0x0) {
+    uVar1 = CTCOwnedEntity::CTCOwnedEntity(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5f35 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCCreatureFlyOnSpline
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5f35(CThing *param_1)
+
+{
+  CTCCreatureFlyOnSpline *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x24);
+  if (this != (CTCCreatureFlyOnSpline *)0x0) {
+    uVar1 = CTCCreatureFlyOnSpline::CTCCreatureFlyOnSpline(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5f65 29 0
+@@CALLERS 
+@@CALLEES CTCFishingRod, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5f65(CThing *param_1)
+
+{
+  CTCFishingRod *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x10);
+  if (this != (CTCFishingRod *)0x0) {
+    uVar1 = CTCFishingRod::CTCFishingRod(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d5fab 29 0
+@@CALLERS 
+@@CALLEES operator_new, CMesh
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d5fab(long param_1)
+
+{
+  CMesh *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x2c);
+  if (this != (CMesh *)0x0) {
+    uVar1 = NUISystem::CMesh::CMesh(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d6009 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCShotDefinitionNymphFun
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d6009(CThing *param_1)
+
+{
+  CTCShotDefinitionNymphFun *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x10);
+  if (this != (CTCShotDefinitionNymphFun *)0x0) {
+    uVar1 = NThingShot::CTCShotDefinitionNymphFun::CTCShotDefinitionNymphFun(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d6039 29 0
+@@CALLERS 
+@@CALLEES CEnginePrimitiveGroupManager, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d6039(CArray<CEngineScene*> *param_1)
+
+{
+  CEnginePrimitiveGroupManager *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0xc);
+  if (this != (CEnginePrimitiveGroupManager *)0x0) {
+    uVar1 = CEnginePrimitiveGroupManager::CEnginePrimitiveGroupManager(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d60a2 29 0
+@@CALLERS 
+@@CALLEES CTCQuickAccessMenu, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d60a2(CThing *param_1)
+
+{
+  CTCQuickAccessMenu *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x1c);
+  if (this != (CTCQuickAccessMenu *)0x0) {
+    uVar1 = CTCQuickAccessMenu::CTCQuickAccessMenu(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d6135 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCQuickAccessMenu
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d6135(CThing *param_1)
+
+{
+  CTCQuickAccessMenu *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x30);
+  if (this != (CTCQuickAccessMenu *)0x0) {
+    uVar1 = CTCQuickAccessMenu::CTCQuickAccessMenu(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d6209 29 0
+@@CALLERS 
+@@CALLEES CTCCameraCollision, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d6209(CThing *param_1)
+
+{
+  CTCCameraCollision *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x10);
+  if (this != (CTCCameraCollision *)0x0) {
+    uVar1 = CTCCameraCollision::CTCCameraCollision(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d624f 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCFadeOutAndIn
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d624f(CThing *param_1)
+
+{
+  CTCFadeOutAndIn *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x24);
+  if (this != (CTCFadeOutAndIn *)0x0) {
+    uVar1 = CTCFadeOutAndIn::CTCFadeOutAndIn(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d62ed 32 0
+@@CALLERS 
+@@CALLEES operator_new, CEngineSubPrimitive2DClockSprite::CEngineSubPrimitive2DClockSprite
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d62ed(undefined4 param_1)
+
+{
+  void *pvVar1;
+  undefined4 uVar2;
+  
+  pvVar1 = operator_new(0xd8);
+  if (pvVar1 != (void *)0x0) {
+    uVar2 = CEngineSubPrimitive2DClockSprite__CEngineSubPrimitive2DClockSprite(param_1);
+    return uVar2;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d6336 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCDeadShotInThingTracker
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d6336(CThing *param_1)
+
+{
+  CTCDeadShotInThingTracker *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x18);
+  if (this != (CTCDeadShotInThingTracker *)0x0) {
+    uVar1 = CTCDeadShotInThingTracker::CTCDeadShotInThingTracker(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d642d 29 0
+@@CALLERS 
+@@CALLEES CTCAtmosPlayer, operator_new
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d642d(CThing *param_1)
+
+{
+  CTCAtmosPlayer *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CTCAtmosPlayer *)0x0) {
+    uVar1 = CTCAtmosPlayer::CTCAtmosPlayer(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004d645d 29 0
+@@CALLERS 
+@@CALLEES operator_new, CTCWillResponse
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_004d645d(CThing *param_1)
+
+{
+  CTCWillResponse *this;
+  undefined4 uVar1;
+  
+  this = operator_new(0x14);
+  if (this != (CTCWillResponse *)0x0) {
+    uVar1 = CTCWillResponse::CTCWillResponse(this,param_1);
+    return uVar1;
+  }
+  return 0;
+}
+
+
+@@ENDFUNC

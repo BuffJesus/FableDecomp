@@ -1,0 +1,86 @@
+{
+  "functions": {
+    "00bfe050": {
+      "address": "0x00BFE050",
+      "class_name": "CLandscapeLayerMesh",
+      "function_name": "LoadForeground",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T10:23:14"
+    },
+    "00bf3b60": {
+      "address": "0x00BF3B60",
+      "class_name": "CEngineLandscapePatch",
+      "function_name": "LoadForegroundPatch",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T10:33:19"
+    },
+    "00be7d70": {
+      "address": "0x00BE7D70",
+      "class_name": "CLandscapeBackgroundPatch",
+      "function_name": "Load",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T10:44:37"
+    },
+    "00be8920": {
+      "address": "0x00BE8920",
+      "class_name": "CLandscapeBackgroundPatch",
+      "function_name": "LoadCompressed",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T10:46:50"
+    }
+  },
+  "runs": [
+    {
+      "address": "0x00BFE050",
+      "class_name": "CLandscapeLayerMesh",
+      "function_name": "LoadForeground",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T10:23:14"
+    },
+    {
+      "address": "0x00BF3B60",
+      "class_name": "CEngineLandscapePatch",
+      "function_name": "LoadForegroundPatch",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T10:33:19"
+    },
+    {
+      "address": "0x00BE7D70",
+      "class_name": "CLandscapeBackgroundPatch",
+      "function_name": "Load",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T10:44:37"
+    },
+    {
+      "address": "0x00BE8920",
+      "class_name": "CLandscapeBackgroundPatch",
+      "function_name": "LoadCompressed",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-22T10:46:50"
+    }
+  ]
+}

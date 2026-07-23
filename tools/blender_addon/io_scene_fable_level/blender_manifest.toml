@@ -1,0 +1,19 @@
+schema_version = "1.0.0"
+
+id = "io_scene_fable_level"
+version = "0.1.0"
+name = "Fable TLC level terrain importer"
+tagline = "Import/export Fable: The Lost Chapters .lev terrain as a Blender heightmap"
+maintainer = "FableTLC RE project"
+type = "add-on"
+
+blender_version_min = "4.2.0"
+
+license = ["SPDX:MIT"]
+
+tags = ["Import-Export"]
+
+# The addon reads/writes .lev files the user selects on disk and imports the
+# byte-exact tools/lev_rw.py from the repo's tools/ dir. No network access.
+[permissions]
+files = "Import/export Fable .lev terrain files selected by the user"

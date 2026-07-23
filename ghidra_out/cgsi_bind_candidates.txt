@@ -1,0 +1,78 @@
+# CGSI bind candidates WITH demangled signatures (task #10 complete)
+
+## Conversation/dialogue (6)
+  slot 364   long CGameScriptInterface::AddNewConversation(CScriptThing const &,bool,bool)   @0x008906c0
+  slot 365   void CGameScriptInterface::AddPersonToConversation(long,CScriptThing const &)   @0x00890710
+  slot 366   void CGameScriptInterface::AddLineToConversation(long,CCharString const &,bool,CScriptThing const &,CScriptThing const &)   @0x00890750
+  slot 367   void CGameScriptInterface::RemoveConversation(long,bool)   @0x008907c0
+  slot 368   bool CGameScriptInterface::IsConversationActive(long)   @0x008907d0
+  slot 415   void CGameScriptInterface::CameraDoConversation(CScriptThing const &,CScriptThing const &,ECameraOp,bool)   @0x0088edc0
+
+## Property/house/door (11)
+  slot 425   void CGameScriptInterface::OpenDoor(CScriptThing const &)   @0x00895db0
+  slot 426   void CGameScriptInterface::CloseDoor(CScriptThing const &)   @0x00895de0
+  slot 427   void CGameScriptInterface::OpenHouseDoors(CScriptThing const &)   @0x0088dfd0
+  slot 428   void CGameScriptInterface::CloseHouseDoors(CScriptThing const &)   @0x0088e000
+  slot 429   void CGameScriptInterface::JamDoor(CScriptThing const &)   @0x00895e10
+  slot 430   void CGameScriptInterface::SetDoorTriggerType(CScriptThing const &,EDoorTriggerType)   @0x00895e70
+  slot 431   void CGameScriptInterface::OverrideAutomaticHouseLocking(CScriptThing const &,bool)   @0x0088e030
+  slot 432   void CGameScriptInterface::SetHouseOwnedByPlayer(CScriptThing const &,bool,bool)   @0x00895ed0
+  slot 433   void CGameScriptInterface::SetBuyableHouseAsScripted(CScriptThing const &,bool)   @0x00896000
+  slot 684   bool CGameScriptInterface::IsThingADoor(CScriptThing const &)   @0x008a0ee0
+  slot 738   long CGameScriptInterface::GetNumHousesOwned(void)   @0x008a12a0
+
+## Minigame/skill (21)
+  slot 55    bool CGameScriptInterface::MsgOnFishingGameFinished(CScriptThing &)   @0x00894110
+  slot 243   bool CGameScriptInterface::IsFishingSpotEnabled(CScriptThing const &)   @0x008958f0
+  slot 244   void CGameScriptInterface::DisableFishingSpot(CScriptThing const &)   @0x00895950
+  slot 247   void CGameScriptInterface::HeroGoFishing(bool)   @0x00895a90
+  slot 248   long CGameScriptInterface::GetHeroFishingLevel(void)   @0x00895b00
+  slot 249   void CGameScriptInterface::HeroGoDigging(void)   @0x0088df80
+  slot 250   void CGameScriptInterface::HeroStopDigging(void)   @0x0088dfa0
+  slot 251   void CGameScriptInterface::HeroPlayOracleMinigame(void)   @0x00895b60
+  slot 252   bool CGameScriptInterface::IsHeroPlayingOracleMinigame(void)   @0x00895bc0
+  slot 253   bool CGameScriptInterface::HasHeroWonOracleMinigame(void)   @0x00895c30
+  slot 254   void CGameScriptInterface::HeroPlayFireheartMinigame(void)   @0x00895c90
+  slot 255   void CGameScriptInterface::HeroQuitFireheartMinigame(void)   @0x00895cf0
+  slot 256   bool CGameScriptInterface::HasHeroForceQuitFireheartMinigame(void)   @0x00895d50
+  slot 342   void CGameScriptInterface::DisplayMiniGameInfo(bool,EMiniGameType)   @0x00891c60
+  slot 343   void CGameScriptInterface::UpdateMiniGameInfoBar(float)   @0x00891c80
+  slot 575   CScriptThing CGameScriptInterface::GetNearestEnabledDiggingSpot(CScriptThing const &)   @0x0089ef90
+  slot 576   bool CGameScriptInterface::IsDiggingSpotEnabled(CScriptThing const &)   @0x0089f1e0
+  slot 577   bool CGameScriptInterface::IsDiggingSpotHidden(CScriptThing const &)   @0x0089f240
+  slot 578   void CGameScriptInterface::SetDiggingSpotAsHidden(CScriptThing const &,bool)   @0x0089f2a0
+  slot 728   void CGameScriptInterface::UpdateOnlineScore_FishingCompo(float)   @0x008a11c0
+  slot 729   void CGameScriptInterface::UpdateScore_FishingCompetition(float)   @0x008a1240
+
+## Entity/UID query (8)
+  slot 72    CScriptThing CGameScriptInterface::GetThingWithScriptName(CCharString const &)   @0x008a7d60
+  slot 73    CScriptThing CGameScriptInterface::GetThingWithScriptName(CCharString const &,CCharString const &)   @0x008930f0
+  slot 83    CScriptThing CGameScriptInterface::GetThingWithUID(unsigned __int64)   @0x00891d50
+  slot 85    long CGameScriptInterface::GetAllThingsInLevel(CCharString const &,std::vector<CScriptThing,std::allocator<CScriptThing> > &)   @0x008a8af0
+  slot 86    bool CGameScriptInterface::IsThingWithThisUIDAlive(unsigned __int64)   @0x0088e260
+  slot 183   long CGameScriptInterface::GetNumberOfItemsOfTypeInInventory(CCharString const &)   @0x00897190
+  slot 218   long CGameScriptInterface::GetNumberOfTimesHeroHasHadSex(void)   @0x00897c90
+  slot 437   long CGameScriptInterface::GetNumberOfKeysNeededToUnlockChest(CScriptThing const &,CCharString &)   @0x008966c0
+
+## Logbook/UI (14)
+  slot 5     void CGameScriptInterface::DeactivateBoastUi(void)   @0x008a0c60
+  slot 32    bool CGameScriptInterface::MsgIsBoastMade(long)   @0x00893960
+  slot 33    bool CGameScriptInterface::MsgOnBoastMade(long &,CCharString &)   @0x008939d0
+  slot 34    bool CGameScriptInterface::MsgOnBoastsMade(std::vector<std::pair<long,CCharString>,std::allocator<std::pair<long,CCharString> > > &)   @0x008a9ae0
+  slot 35    void CGameScriptInterface::RemoveBoastMessage(void)   @0x00893a50
+  slot 303   void CGameScriptInterface::AddBoast(CCharString const &,long,long,long,bool,CCharString const &,long)   @0x00893060
+  slot 304   void CGameScriptInterface::RemoveBoast(long,CCharString const &)   @0x00891580
+  slot 305   void CGameScriptInterface::SetBoastAsFailed(long,CCharString const &)   @0x008915b0
+  slot 306   void CGameScriptInterface::SetBoastAsCompleted(long,CCharString const &)   @0x008915e0
+  slot 307   bool CGameScriptInterface::IsBoastTaken(long,CCharString const &)   @0x00891550
+  slot 308   void CGameScriptInterface::AddLogBookEntry(CWideString const &,CWideString const &,CWideString const &,CHeroLogBook::CHeroLogBookEntry::ECategory)   @0x0088fe00
+  slot 439   void CGameScriptInterface::SetTrophyAsMountable(CScriptThing const &,bool)   @0x00896790
+  slot 882   void CGameScriptInterface::SetBoastingEnabled(bool)   @0x0088fc20
+  slot 883   bool CGameScriptInterface::GetBoastingEnabled(void)   @0x0088fc30
+
+## Scene/region (4)
+  slot 60    void CGameScriptInterface::GetWanderingPopulationScriptDefNameInCurrentRegion(CCharString &)   @0x0088e390
+  slot 61    void CGameScriptInterface::GetWanderingPopulationScriptDefNameInRegion(CCharString const &,CCharString &)   @0x00891e30
+  slot 385   void CGameScriptInterface::SetCutsceneMode(bool,bool)   @0x0089d600
+  slot 390   void CGameScriptInterface::PreloadNewScene(float)   @0x00890b70
+

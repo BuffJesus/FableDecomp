@@ -1,0 +1,622 @@
+004048e0	Identity_Pass	returns param1 unchanged; thunk or identity wrapper
+004159a0	Flags_Initialize	sets *(param+4)=0xff and *(param+0x26)=0; simple flag init
+0042a58d	RBTree_GetMaxNode_Wrapper1	calls RBTree::GetMaxNode; assignment wrapper
+0042a59e	RBTree_GetMaxNode_Wrapper2	calls RBTree::GetMaxNode; identical to 0042a58d
+0042a5af	RBTree_GetMaxNode_Wrapper3	calls RBTree::GetMaxNode; identical pattern
+0042a5c0	RBTree_GetMaxNode_Wrapper4	calls RBTree::GetMaxNode; identical pattern
+0042a5d1	RBTree_GetMaxNode_Wrapper5	calls RBTree::GetMaxNode; identical pattern
+0042a5e2	RBTree_GetMaxNode_Wrapper6	calls RBTree::GetMaxNode; identical pattern
+0042d9d0	InitializeToInvalid	__fastcall sets param to 0xffffffff; marker initialization
+0043368c	NullFunction_1	Empty function; no-op stub
+004368e0	STL_DoublyLinkedListNode_Allocate_0xc	__fastcall malloc(0xc), circular list init; intrusive list node allocator
+004369e0	STL_DoublyLinkedListNode_Allocate_0xc_2	__fastcall malloc(0xc), circular list init; intrusive list node allocator
+0043fc20	STL_DoublyLinkedListNode_Allocate_0x20	__fastcall malloc(0x20), circular list init; intrusive list node allocator
+0043fc40	STL_DoublyLinkedListNode_Allocate_0x18	__fastcall malloc(0x18), circular list init; intrusive list node allocator
+00440c90	STL_DoublyLinkedListNode_Allocate_0x20_2	__fastcall malloc(0x20), circular list init; intrusive list node allocator
+00440cd0	STL_DoublyLinkedListNode_Allocate_0x18_2	__fastcall malloc(0x18), circular list init; intrusive list node allocator
+0044b950	STL_DoublyLinkedListNode_Allocate_0xc_3	__fastcall malloc(0xc), circular list init; intrusive list node allocator
+0044b9f0	STL_DoublyLinkedListNode_Allocate_0xc_4	__fastcall malloc(0xc), circular list init; intrusive list node allocator
+0044c6af	NullFunction_2	Empty function; no-op stub
+004c5c40	List_AllocNode_12bytes	Allocates 0x18, self-referential pointers at [0] and [4] indicate doubly-linked list node initialization
+004c6680	Container_AllocBuffer_28bytes	Allocates 0x1c bytes with no visible initialization; generic buffer allocator wrapper
+004c67d0	List_AllocInit_28bytes	Allocates 0x1c, initializes self-pointers at +8 and +0xc indicating linked list head with count at param_1[1]
+004c6af0	List_AllocInit_28bytes_v2	Identical to 004c67d0 - allocates 0x1c with linked list self-pointer init
+004c72a0	Stub_NoOp	Empty function body; trivial stub with no implementation
+004cc200	List_AllocNode_12bytes_v2	Allocates 0xc with self-pointers at [0] and [4]; minimal linked list node
+004cc260	Container_AllocNode_20bytes	Allocates 0x14 with self-pointers at [0] and [4]; container node initialization
+004ccc10	Container_AllocNode_20bytes_v2	Allocates 0x14 with self-pointers at [0] and [4]; container node variant
+004fe7f0	Sound_ProcessThemeParticles	complex fastcall with malloc/free, processes SOUND_THEME string, builds particle arrays, tree construction/traversal, particle morph processing
+00507070	LText_LoadAndProcessEntries	complex thiscall, massive vector/tree manipulation, uninitialized_copy, tree traversal, binary search tree insertion, loads localized text entries
+005155f0	StdList_InitializeEmpty_Extended	Allocates 0x18 block, initializes at param_1+8, self-linked structure same pattern as 005150c0 but for a container member
+005159a0	StdList_InitializeEmpty_Container	Allocates 0x14 (20-byte) block, initializes doubly-linked list (offsets 8 and 0xc point to itself)
+00516e80	StdList_InitializeEmpty_Sentinel	Allocates 0xc, self-linked structure (0xc doubly-linked sentinel), fastcall wrapper
+00517810	StdList_InitializeContainer_0x14	Allocates 0x14, initializes doubly-linked list structure at offsets 8/0xc
+0051a040	StdList_InitializeContainer_Extended	Allocates 0x14, initializes list structure, additional fields at offsets 3-6 cleared
+005283a0	StdList_InitializeEmpty_0x10	Allocates 0x10 (16-byte), self-linked doubly-linked list sentinel
+00528410	Container_Allocate_0x28	Allocates fixed 0x28 block, no further initialization visible
+00528480	Container_Allocate_0x20_Variant1	Allocates fixed 0x20 block, no further initialization visible
+005284b0	Container_Allocate_0x20_Variant2	Allocates fixed 0x20 block, no further initialization visible
+00528520	Container_Allocate_0x24	Allocates fixed 0x24 block, no further initialization visible
+00528590	Container_Allocate_0x20_Variant3	Allocates fixed 0x20 block, no further initialization visible
+00528c20	StdList_InitializeEmpty_0x10_Variant2	Allocates 0x10, self-linked doubly-linked list
+00528c60	StdList_InitializeContainer_0x28	Allocates 0x28 (40-byte), initializes doubly-linked list at offsets 8/0xc
+00528cf0	StdList_InitializeContainer_0x20_Variant1	Allocates 0x20, initializes doubly-linked list at offsets 8/0xc
+00528d80	StdList_InitializeContainer_0x20_Variant2	Allocates 0x20, initializes doubly-linked list at offsets 8/0xc
+00528dc0	StdList_InitializeContainer_0x24	Allocates 0x24, initializes doubly-linked list at offsets 8/0xc
+00528e50	StdList_InitializeContainer_0x20_Variant3	Allocates 0x20, initializes doubly-linked list at offsets 8/0xc
+005297a0	StubFunc_ReturnZero	Trivial stub returning zero; no callees or meaningful logic
+00553490	Allocator_CreateSmall28Bytes	Allocates 0x1c (28) bytes, initializes output pointer; generic allocator wrapper.
+00566b70	Allocator_CreateSmall28Bytes	Allocates 0x1c bytes; generic small heap allocation.
+00566be0	Allocator_CreateSmall24Bytes	Allocates 0x18 bytes; generic small heap allocation.
+00566ca0	Allocator_CreateSmall32Bytes	Allocates 0x20 bytes; generic small heap allocation.
+00567ea0	Vector_ZeroInitialize	Zeroes 3 undefined4 values; minimal initializer for empty vector state.
+0056a580	Alloc_LinkedListNode_0x20	malloc(0x20) initialization with linked list structure pattern (head/tail/prev/next pointers)
+0056a5c0	Dealloc_LinkedListNode	Calls free and TreeNode_DestructWithCCharString; tree traversal cleanup pattern with refcount decrement
+0056cf70	Alloc_LinkedListNode_0x34	malloc(0x34) initialization; generic list node allocator
+0056cfa0	Alloc_LinkedListNode_0x20_Alt	malloc(0x20) initialization; similar pattern to 0056a580
+0056d010	Alloc_LinkedListNode_0x18	malloc(0x18) initialization; variant sized allocator
+0056d2c0	Alloc_Container_0x34	malloc(0x34) with doubly-linked container initialization (head/tail setup)
+0056d350	Alloc_Container_0x20	malloc(0x20) with container initialization (head/tail/prev/next)
+0056d390	Alloc_Container_0x18	malloc(0x18) with container initialization
+0056ddc0	Alloc_Container_0x34_Alt	malloc(0x34) with container structure initialization
+0059adcd	RBTree_GetMaxNode_Wrapper	Tiny fastcall wrapper: calls RBTree::GetMaxNode and stores result back; generic tree node accessor helper.
+005b198d	RBTree_GetMaxNode_Wrapper	Identical to 0059adcd; instantiation template of fastcall RBTree max-node getter.
+005b199e	RBTree_GetMaxNode_Wrapper	Same wrapper pattern; likely different template instantiation.
+005b19af	RBTree_GetMaxNode_Wrapper	Identical wrapper; another template instance.
+005b19c0	RBTree_GetMaxNode_Wrapper	Same fastcall wrapper over RBTree::GetMaxNode.
+005ba88b	RBTree_GetMaxNode_Wrapper	RBTree::GetMaxNode wrapper; template instantiation.
+005ba89c	RBTree_GetMaxNode_Wrapper	Same wrapper pattern.
+005ba8ad	RBTree_GetMaxNode_Wrapper	Identical RBTree max-node accessor template.
+005ba8be	RBTree_GetMaxNode_Wrapper	RBTree::GetMaxNode wrapper instantiation.
+005cbfe9	RBTree_GetMaxNode_Wrapper	Fastcall RBTree::GetMaxNode wrapper; template instantiation.
+005cc530	Math_DamageRoll	Takes int count and float multiplier, iterates count times multiplying by global float, applies ROUND and division—damage roll/calculation
+005d839d	RBTree_Wrapper_GetMaxNode	Fastcall wrapper, calls RBTree::GetMaxNode, stores result back—thin adapter/thunk
+005e0200	DoublyLinkedList_Init_24Byte	Fastcall, malloc(0x18), stores pointer in param and returns—circular doubly linked list init
+005e0b00	DoublyLinkedList_Init_24Byte_WithSize	Fastcall, malloc(0x18), initializes param[0] and param[1], sets up circular pointers at offsets 8/12—list init
+005e3080	DoublyLinkedList_Init_24Byte_WithSize	Identical to 005e0b00: malloc(0x18), circular list init with dual pointers
+005e8e50	DoublyLinkedList_Init_24Byte	Fastcall, malloc(0x18)—circular list init
+005e8ff0	DoublyLinkedList_Init_24Byte_WithSize	Fastcall, malloc(0x18), initializes circular pointers—doubly linked list init
+005e9320	DoublyLinkedList_Init_24Byte_WithSize	Fastcall, malloc(0x18), circular pointers—list init pattern
+005f82d9	RBTree_Wrapper_GetMaxNode	Fastcall wrapper: RBTree::GetMaxNode adapter/thunk
+005f82ea	RBTree_Wrapper_GetMaxNode	Fastcall wrapper: RBTree::GetMaxNode thunk
+005f8944	DoublyLinkedList_Init_12Byte	Fastcall, malloc(0xc), sets circular pointers—small doubly linked list init
+005f8f50	LinkedList_InsertBefore_Wrapper	Thiscall, calls LinkedList_InsertNodeBefore with dereferenced param—list insert wrapper
+005f8f6f	LuaClosure_Create_Wrapper	Thiscall, calls luaV_Cclosure with dereferenced params—Lua C closure wrapper
+006152c0	DoublyLinkedList_Init_16Byte	Fastcall, malloc(0x10), circular pointers—doubly linked list init
+00615340	DoublyLinkedList_Init_12Byte	Fastcall, malloc(0xc), circular pointers—small list init
+006153a0	DoublyLinkedList_Init_12Byte	Fastcall, malloc(0xc), circular pointers—list init
+00615400	DoublyLinkedList_Init_12Byte	Fastcall, malloc(0xc), circular pointers—list init
+00615460	DoublyLinkedList_Init_12Byte	Fastcall, malloc(0xc), circular pointers—list init
+006154c0	DoublyLinkedList_Init_12Byte	Fastcall, malloc(0xc), circular pointers—list init
+00615580	DoublyLinkedList_Init_24Byte	Fastcall, malloc(0x18)—list init
+006155b0	SomeClass_Init_108Byte	Fastcall, malloc(0x6c=108 bytes)—structure init of unknown type
+00615650	SomeClass_Init_28Byte	Fastcall, malloc(0x1c=28 bytes)—structure init
+00616790	LList_Init_0x10	Allocates 0x10 bytes, initializes doubly-linked list sentinel with self-pointers at +0, +4
+006167f0	LList_Init_0xc	Allocates 0xc bytes, same doubly-linked list pattern with self-pointers
+00616820	LList_Init_0xc_2	Allocates 0xc bytes, identical list node initialization
+00616850	LList_Init_0xc_3	Allocates 0xc bytes, same pattern
+00616880	LList_Init_0xc_4	Allocates 0xc bytes, identical pattern
+006168b0	LList_Init_0xc_5	Allocates 0xc bytes, same doubly-linked list initialization
+006168e0	LList_Init_0xc_6	Allocates 0xc bytes, doubly-linked list pattern
+00616930	Container_Init_0x18	Allocates 0x18 bytes, stores pointer at [0], clears [1], links at +8 and +c
+006169c0	Container_Init_0x6c	Allocates 0x6c bytes, standard container initialization pattern
+00616a40	Container_Init_0x1c	Allocates 0x1c bytes, container pattern
+00617140	Container_Init_0x18_2	Allocates 0x18 bytes, container initialization
+00617270	Container_Init_0x1c_2	Allocates 0x1c bytes
+00619e30	Container_Init_0x6c_2	Allocates 0x6c bytes
+00623a80	Container_Init_0x18_3	Allocates 0x18 bytes, simple initialization
+00624160	Container_Init_0x18_4	Allocates 0x18 bytes
+00624520	Container_Init_0x18_5	Allocates 0x18 bytes
+00630b60	Container_Init_0x18_6	Allocates 0x18 bytes
+00630b90	Container_Init_0x18_7	Allocates 0x18 bytes
+00630cc0	Container_Init_0x18_8	Allocates 0x18 bytes
+00630d50	Container_Init_0x18_9	Allocates 0x18 bytes
+00630f50	Container_Init_0x18_10	Allocates 0x18 bytes
+006313e0	Container_Init_0x18_11	Allocates 0x18 bytes
+0063ec80	Identity_Passthrough	Trivial fastcall identity function returning param_1 unchanged; no callees or strings.
+0063f340	LDoubleLinkedList_Init_12byte	Fastcall malloc(0xc) and self-link pattern; initializes circular doubly-linked list node.
+0063f450	LDoubleLinkedList_Init_12byte_Copy	Identical to 0063f340; malloc(0xc) self-link pattern for list initialization.
+006579e0	Vector_InitWith_1_2_neg1	Fastcall; inserts three values (1, 2, -1) into vector with InsertMultipleAndGrow.
+00657ac0	Vector_InitWith_2_3_1	Fastcall; inserts three values (2, 3, 1) into vector via InsertMultipleAndGrow.
+00662020	Render_FetchOffsetMember	Member offset chain at +0xe0 and +0xfc suggests rendering/state accessor but no clear class.
+00669510	LDoubleLinkedList_Init_16byte	Fastcall malloc(0x10) with self-link pattern; circular list initialization (larger node).
+0066a1a0	LDoubleLinkedList_Init_16byte_Copy	Identical malloc(0x10) self-link; list node initialization variant.
+00674e50	Vector_Cleanup_Free	Fastcall; frees contained vector pointer then deletes the container itself.
+00674e80	Vector_Cleanup_Free_Copy	Identical to 00674e50; vector cleanup and deallocation.
+0067aeb0	DoublyLinkedListHead_Init_0xC	Allocates 0xc bytes, sets *(ptr)=ptr and *(ptr+4)=ptr (doubly-linked list head initialization)
+0067af60	VectorContainer_Init_0x18	Allocates 0x18 bytes and stores pointer (vector/container initialization without head pointer)
+0067afd0	VectorContainer_Init_0x18_alt	Identical to 0067af60: allocates 0x18 bytes for generic container
+0067b040	VectorContainer_Init_0x18_alt2	Identical pattern: 0x18 byte allocation for container initialization
+0067b570	DoublyLinkedListHead_Init_0xC_alt	Allocates 0xc, initializes doubly-linked list head (ptr->next=ptr->prev=ptr)
+0067b5f0	BinaryTreeNode_Init	Allocates 0x18, initializes tree node structure with head=ptr, capacity and end pointers, size=0
+0067b680	BinaryTreeNode_Init_alt	Identical to 0067b5f0: tree node initialization with 0x18 allocation
+0067b710	BinaryTreeNode_Init_alt2	Identical tree node initialization pattern
+0067bc70	DoublyLinkedListHead_Init_0xC_alt2	Doubly-linked list head initialization (0xc allocation, prev/next=head)
+0067bd30	BinaryTreeNode_Init_alt3	Tree node init pattern: 0x18 allocation with head/capacity/end/size setup
+0067bdc0	BinaryTreeNode_Init_alt4	Tree node initialization
+0067be50	BinaryTreeNode_Init_alt5	Tree node initialization
+00685ba0	DoublyLinkedListHead_Init_0xC_alt3	Doubly-linked list head init (0xc alloc, head.next=head.prev=head)
+006864c0	DoublyLinkedListHead_Init_0xC_alt4	Void fastcall doubly-linked list head initialization
+00687480	DoublyLinkedListHead_Init_0x60	Allocates 0x60 bytes (larger list node), initializes head.next=head.prev=head
+00687910	DoublyLinkedListHead_Init_0x60_alt	Allocates 0x60 bytes doubly-linked list head (larger node size)
+006960a0	VectorContainer_Init_0x18_alt3	Allocates 0x18 bytes for container
+006960d0	VectorContainer_Init_0x18_alt4	Allocates 0x18 bytes for container
+00696590	BinaryTreeNode_Init_alt6	Tree node initialization (0x18 allocation)
+006965d0	BinaryTreeNode_Init_alt7	Tree node initialization
+00696de0	BinaryTreeNode_Init_alt8	Tree node initialization
+00696e70	BinaryTreeNode_Init_alt9	Tree node initialization
+006db170	ListNode_Init_16	Allocates 0x10 bytes, sets self-referential pointers at offsets 0 and 4 (classic doubly-linked list sentinel node init)
+006db230	ListNode_Init_24	Allocates 0x18 bytes, initializes with self-referential pointers at +8 and +0xc (doubly-linked list node)
+006db5a0	ListNode_Init_24	Allocates 0x18 bytes, identical pattern to 006db230
+006db730	ListNode_Init_24	Allocates 0x18 bytes, identical pattern to 006db230
+006db770	ListNode_Init_24	Allocates 0x18 bytes, identical pattern to 006db230
+006dbc00	ListNode_Init_24_WithHeader	Allocates 0x18 bytes, stores in param_1[1] with offset pattern at +8/+0xc (list with header structure)
+006dbc50	ListNode_Init_24_WithHeader	Allocates 0x18 bytes, stores in param_1[1], identical to 006dbc00
+006dbfe0	ListNode_Init_24	Allocates 0x18 bytes, identical pattern to 006db230
+006dc1b0	ListNode_Init_24	Allocates 0x18 bytes, identical pattern to 006db230
+006e4b30	ListNode_Init_32	Allocates 0x20 bytes, sets self-referential pointers at offsets 0 and 4 (doubly-linked list node, larger size)
+006e4e10	ListNode_Init_32	Allocates 0x20 bytes, identical to 006e4b30
+006e6930	Allocator_AllocAndReturn_64	Allocates 0x40 bytes, stores pointer in param_1, simple allocation wrapper
+006e6ae0	ListNode_Init_64	Allocates 0x40 bytes, initializes with self-referential pointers at +8/+0xc
+006e7030	ListNode_Init_64	Allocates 0x40 bytes, initializes with self-referential pointers
+006f09b0	ListNode_Init_12	Allocates 0xc bytes, sets self-referential pointers at offsets 0 and 4
+006f0af0	Allocator_AllocAndReturn_32	Allocates 0x20 bytes, simple allocation wrapper
+006f0b60	Allocator_AllocAndReturn_136	Allocates 0x88 bytes, simple allocation wrapper
+006f0b90	Allocator_AllocAndReturn_24	Allocates 0x18 bytes, simple allocation wrapper
+006f0c00	Allocator_AllocAndReturn_24	Allocates 0x18 bytes, simple allocation wrapper
+006f18f0	ListNode_Init_12	Allocates 0xc bytes, sets self-referential pointers
+006f1a50	ListNode_Init_32	Allocates 0x20 bytes, initializes with self-referential pointers
+006f1ae0	ListNode_Init_136	Allocates 0x88 bytes, initializes with self-referential pointers
+006f1b20	ListNode_Init_24	Allocates 0x18 bytes, initializes with self-referential pointers
+006f1b60	ListNode_Init_24	Allocates 0x18 bytes, initializes with self-referential pointers
+006f23a0	ListNode_Init_32	Allocates 0x20 bytes, initializes with self-referential pointers
+006f8aa0	passthrough_identity	Returns param_1 unchanged; trivial pass-through function, likely an inlined identity or no-op wrapper.
+00718e80	Vector_LinkedList_Initialize_0x10	malloc(0x10) with self-referential linked list pointers at +0 and +4.
+00718ea0	Vector_LinkedList_Initialize_0x10_B	Identical to 00718e80; malloc(0x10) linked list init.
+00719180	Vector_LinkedList_Initialize_0x10_C	Identical allocator; malloc(0x10) self-referential list.
+00719690	Vector_LinkedList_Initialize_0x10_D	Identical allocator; malloc(0x10) linked list init.
+0071f860	Container_AllocateBuffer_0x34	malloc(0x34) single pointer, no structure initialization; generic allocator.
+007298e0	Vector_LinkedList_Initialize_0x1c	malloc(0x1c) with self-referential pointers; linked list allocator.
+00729940	Vector_LinkedList_Initialize_0x1c_B	Identical to 007298e0.
+0072d480	Vector_LinkedList_Initialize_0x1c_C	Identical allocator pattern.
+0072d8f0	Vector_LinkedList_Initialize_0x1c_D	Identical allocator.
+00737f50	Container_AllocateBuffer_0x24	malloc(0x24); simple allocator.
+0073db00	Vector_LinkedList_Initialize_0x10_E	malloc(0x10) linked list.
+00743200	Vector_LinkedList_Initialize_0x10_F	Identical allocator.
+00755e50	Vector_LinkedList_Initialize_0x1c_E	malloc(0x1c) allocator.
+00758ae0	LinkedListNode_InitializeEmpty	Allocates 0x4c bytes, sets first two dwords to point to self (circular list sentinel pattern).
+00758d90	LinkedListNode_InitializeEmpty	Identical to 00758ae0; allocates 0x4c bytes with self-pointing links.
+0075f780	LinkedListNode_CreateSmall	Allocates 0xc bytes (small node), initializes self-pointing circular links.
+0075f830	LinkedListNode_Delete	Frees pointer dereference then deletes the node itself; cleanup helper.
+007602f0	CSplineTrack_ValidateDistance	Loops through track points using _CIacos (arc cosine), accumulates distance; validates track.
+007695f0	Allocator_CreateMedium	Allocates 0x20 bytes; generic medium-sized allocation helper.
+00769f30	Vector_CreateInitialized	Initializes vector with malloc(0x20), sets up begin=end=capacity pointers.
+0076acf0	Vector_CreateInitialized	Allocates 0x20 bytes, initializes vector state; identical to 00769f30.
+0076c710	Vector_PushBack_RotationElement	Pushes element using Array_MoveBackwardCopy or Vector_InsertRange_Mixed; element size 0xc.
+0076f9e0	LinkedListNode_CreateMedium	Allocates 0x24 bytes with self-pointing circular links; medium node creation.
+0076fbf0	LinkedListNode_CreateMedium	Allocates 0x24 bytes; identical circular list initialization.
+00771b30	Allocator_DeleteWithFreedBuffer	Frees *param then deletes param; cleanup for allocated buffer.
+00776f30	Allocator_CreateLarge	Allocates 0x30 bytes; generic large-sized allocation.
+00777520	Vector_CreateInitialized	Allocates 0x30 bytes, initializes vector pointers; third variant.
+00777a00	Vector_CreateInitialized	Allocates 0x30 bytes; fourth vector initialization variant.
+0077ffe0	LinkedListNode_CreateSmallSentinel	Allocates 0x14 bytes with self-pointing links; smallest node variant.
+00780040	LinkedListNode_CreateSmallSentinel	Allocates 0x14 bytes; circular list creation, identical to 0077ffe0.
+00782fb0	Vector_Reserve_0x20	malloc(0x20) initialization; fastcall vector constructor pattern; size unknown.
+00783d50	Vector_Initialize_0x20	malloc(0x20), zero initialization, sets up size/begin/end pointers; vector constructor pattern.
+00783fb0	Vector_Initialize_0x20_v2	Identical to 00783d50; malloc(0x20) vector initialization.
+00784fb0	Vector_Initialize_DoublyLinked_0xc	malloc(0xc), sets pointer to self at +0 and +4; doubly-linked list node init.
+00785d00	Vector_Initialize_DoublyLinked_0xc_v2	Identical to 00784fb0; doubly-linked list node initialization.
+00792220	Vector_Initialize_DoublyLinked_0xc_v3	malloc(0xc) with self-pointers at +0/+4; doubly-linked list node.
+007922a0	Vector_Reserve_0x2c	malloc(0x2c) single allocation; vector reserve pattern.
+007926f0	Vector_Initialize_0x2c	malloc(0x2c) with size/begin/end pointer setup; vector initialization for larger element.
+00792b30	Vector_Initialize_0x2c_v2	malloc(0x2c) vector init, identical to 007926f0.
+007977e0	Vector_Reserve_0x2c_v2	malloc(0x2c) allocation; vector reserve.
+00797ae0	Vector_Initialize_0x2c_v3	malloc(0x2c) vector initialization.
+00797e30	Vector_Initialize_0x2c_v4	malloc(0x2c) vector init.
+0079f0b0	Vector_Reserve_0x14	malloc(0x14) allocation; vector reserve.
+0079f2a0	Vector_Initialize_0x14	malloc(0x14) with size/begin/end setup; vector initialization.
+0079f410	Vector_Initialize_0x14_v2	malloc(0x14) vector init.
+007a35b0	Vector_Initialize_DoublyLinked_0x10	malloc(0x10) with self-pointers; doubly-linked list node.
+007a3c60	Vector_Initialize_DoublyLinked_0x10_v2	malloc(0x10) doubly-linked list node.
+007a6170	Vector_Initialize_DoublyLinked_0xc_v4	malloc(0xc) doubly-linked list node.
+007a6320	Vector_Initialize_DoublyLinked_0xc_v5	malloc(0xc) doubly-linked list node.
+007acb50	Vector_Reserve_0x18	malloc(0x18) allocation; vector reserve.
+007acb80	Vector_Reserve_0x20_v2	malloc(0x20) allocation; vector reserve.
+007acde0	Vector_Initialize_0x18	malloc(0x18) vector initialization.
+007b7c30	CTCInterface_AddHistoryNode	malloc(0x10) for doubly-linked node; __ftol2() conversion suggests frame/history tracking
+007b7c80	CTCInterface_AddHistoryNode	Similar pattern to 007b7c30; malloc(0x10) + __ftol2 conversion; duplicate frame node insertion
+0080eb40	std_vector_push_back_proxy	Thiscall on vector-like container, inserts element or reallocates; thin wrapper around Vector_InsertN.
+00817710	std_list_Allocate_Node_24bytes	Allocates 0x18 bytes and returns via output param; wrapper for malloc(0x18).
+00824b40	std_list_Allocate_Node_92bytes	Allocates 0x5c bytes, initializes self-referential bidirectional links; intrusive list node.
+00824bc0	std_list_Allocate_Node_16bytes	Allocates 0x10 bytes, initializes self-referential prev/next; intrusive list node.
+00824e80	std_list_Allocate_Node_24bytes	Allocates 0x18 bytes via malloc; list node allocator.
+00824ef0	std_list_Allocate_Node_48bytes	Allocates 0x30 bytes via malloc; list node allocator.
+008254a0	std_list_Allocate_Node_92bytes	Allocates 0x5c bytes, initializes self-referential links; identical to 0x00824b40.
+00825540	std_list_Allocate_Node_16bytes	Allocates 0x10 bytes with self-referential links; list node allocator.
+00827e20	std_list_Allocate_Node_12bytes	Allocates 0xc bytes, initializes self-referential links; intrusive list node.
+00828c20	std_list_Allocate_Node_12bytes	Allocates 0xc bytes with prev/next self-references; list node allocator.
+0082c570	std_list_Allocate_Node_24bytes	Allocates 0x18 bytes, initializes self-referential bidirectional links.
+0082c900	std_list_Allocate_Node_24bytes	Allocates 0x18 bytes with intrusive list node initialization.
+00835180	Allocate_SimpleBuffer	Allocates 0x14 bytes and stores pointer; minimal initialization, no clear subsystem
+008368f0	CEntity_CallVTableSlot52	thiscall, indirect vtable call at offset 0x34 of vtable pointed to by *[param_1+0x98], likely a virtual method; caller is SetToKillOnLevelUnload
+008697f0	Allocate_SimpleBuffer	Allocates 0x18 bytes and stores pointer; minimal initialization
+0086c5c0	std_pair_insertion_sort_conditional_insert	fastcall comparing key param_3 vs *param_1, conditionally calls _Move_backward or pair_insertion_sort_shift
+0086f600	Vector_PushBack_with_heap_maintain	Pushes 3-DWORD element, calls make_heap_Sift_3 to maintain heap property
+0086fa00	std_pair_insertion_sort_conditional_insert_int	fastcall variant; compares int param_3 vs *param_1, conditionally moves or sorts pair
+008702d0	NavigationData_Initialize	Initializes undefined4[3] with 0xffffffff, 0, 0; likely navigation state struct
+008709c0	CWorldDriver_FindMeshVolumeWrapper	Wrapper function; calls CWorldDriver_FindClosestMeshVolume with masked local uint
+00874ca0	List_NodeAllocator_Init_16	malloc(0x10); initializes self-referencing node pointers; doubly-linked list sentinel
+00874d30	List_NodeAllocator_Init_16_v2	Identical to 0x00874ca0; allocates 0x10-byte node with self-referential next/prev
+00876e10	Physics_AccumulateLightingContributions	Iterates linked list, accumulates lighting values from grid using distance weighting
+00883280	List_NodeAllocator_Init_68	malloc(0x68); self-referencing node pointers; larger node for 0x68-byte element
+00883300	List_NodeAllocator_Init_28	malloc(0x28); initializes node with self-referential pointers
+00883340	List_NodeAllocator_Init_44	malloc(0x44); linked list node initialization
+008833c0	List_NodeAllocator_Init_20	malloc(0x20); simpler node without self-referential next pointer setup
+008833f0	List_NodeAllocator_Init_14	malloc(0x14); minimal node allocation
+00883be0	List_NodeAllocator_Init_68_v2	malloc(0x68) with self-referential pointers; duplicate allocator
+00883c60	List_NodeAllocator_Init_28_v2	malloc(0x28); duplicate node init
+00883ca0	List_NodeAllocator_Init_44_v2	malloc(0x44); duplicate node init
+00884180	List_NodeAllocator_Init_68_void	malloc(0x68) with void return; node init for linked list
+008841a0	List_NodeAllocator_Init_28_void	malloc(0x28) returning void; node allocator
+008841c0	List_NodeAllocator_Init_44_void	malloc(0x44) returning void; node allocator
+008841e0	ListNode_Init_0x14	Allocates 0x14 bytes and initializes doubly-linked list with self-pointers
+00884620	ListNode_Init_0x20	Allocates 0x20 bytes and initializes doubly-linked list with self-pointers
+008aee40	Alloc_0x18	Minimal wrapper allocating 0x18 bytes via malloc
+008aefe0	ListNode_Init_0x18_A	Allocates 0x18 bytes and initializes doubly-linked list
+008afcc0	ListNode_Init_0x18_B	Allocates 0x18 bytes and initializes doubly-linked list
+008b22d0	Alloc_0x18_B	Minimal wrapper allocating 0x18 bytes
+008b2340	Alloc_0x18_C	Minimal wrapper allocating 0x18 bytes
+008b23b0	Alloc_0x18_D	Minimal wrapper allocating 0x18 bytes
+008b2790	ListNode_Init_0x18_C	Allocates 0x18 bytes and initializes doubly-linked list
+008b2820	ListNode_Init_0x18_D	Allocates 0x18 bytes and initializes doubly-linked list
+008b28b0	ListNode_Init_0x18_E	Allocates 0x18 bytes and initializes doubly-linked list
+008b2c20	ListNode_Init_0x18_F	Allocates 0x18 bytes and initializes doubly-linked list
+008b2cb0	ListNode_Init_0x18_G	Allocates 0x18 bytes and initializes doubly-linked list
+008b2d40	ListNode_Init_0x18_H	Allocates 0x18 bytes and initializes doubly-linked list
+008ebdb0	ListNode_Init_0x10_A	Allocates 0x10 bytes, initializes with self-pointers for doubly-linked list
+008ebff0	ListNode_Init_0x10_B	Allocates 0x10 bytes, initializes with self-pointers
+008f9f30	ListNode_Init_0xc_A	Allocates 0xc bytes, initializes self-pointing pointers
+008fa040	ListNode_Init_0xc_B	Allocates 0xc bytes, initializes self-pointing pointers
+008fbd20	ListNode_Init_0x10_C	Allocates 0x10 bytes, initializes self-pointing pointers
+0090aec0	GameEntity_Initialize	Allocates multiple 0xc-byte lists and a complex data structure; no caller names to confirm exact role.
+0094b730	GetTrue	No callees, returns constant 1; trivial predicate function.
+00987670	Identity	No callees, returns param_1 unchanged; trivial pass-through function.
+00987700	Identity	No callees, returns param_1 unchanged; trivial pass-through function.
+00999f90	Allocator_Initialize	Fastcall allocates 0x14 bytes; minimal context, generic allocator init
+009aa690	Allocator_InitCircularList	Allocates 0x10, self-referencing pointers at +0 and +4; circular doubly-linked list node init
+009aa6c0	Allocator_Initialize	Allocates 0x28; opaque allocator init
+009aa6f0	Allocator_Initialize	Allocates 0x28; variant allocator init
+009aa720	Allocator_Initialize	Allocates 0x18; allocator init variant
+009aa750	Allocator_Initialize	Allocates 0x14; allocator init variant
+009ac290	LTextNode_Sentinel_Init	Allocates 0x10, initializes doubly-linked sentinel (both pointers self-ref). Generic linked list node initializer.
+009b3430	LTextNode_Init_0x18	Allocates 0x18 bytes, minimal initialization. Generic node allocator for 24-byte structure.
+009b3f00	LTextBinTree_Variant_Ctor	Allocates 0x18, initializes sentinel. Variant of LTextBinTree with smaller allocation than 0x28.
+009b6f40	LTextBinTree_Variant2_Ctor	Allocates 0x18, initializes sentinel. Another LTextBinTree template variant.
+009b8c00	Vector_InsertAt_Pair_Complex	Vector insertion with reallocation; complex pair handling with move/copy semantics, handles index < size or >= size cases
+009bdec0	LTextNode_Init_0x24	Allocates 0x24 bytes, self-linked sentinel. Generic node init for 36-byte structure.
+009be170	LTextNode_Init_0x24_v2	Allocates 0x24, self-linked sentinel. Duplicate of 009bdec0 pattern.
+009c2200	LTextNode_Init_0x0c	Allocates 0xc bytes, self-linked. Minimal node for 12-byte structure.
+009c22b0	LTextNode_Init_0x20	Allocates 0x20, no sentinel init. Generic allocator for 32-byte structure.
+009c2320	LTextNode_Init_0x14	Allocates 0x14, no sentinel init. Generic allocator for 20-byte structure.
+009c2540	LTextNode_Init_0x0c_v2	Allocates 0xc, self-linked sentinel. Duplicate of 009c2200 pattern.
+009c25f0	LTextBinTree_Variant3_Ctor	Allocates 0x20, initializes sentinel. Another LTextBinTree template size.
+009c26e0	LTextBinTree_Variant4_Ctor	Allocates 0x14, initializes sentinel. Another LTextBinTree instantiation.
+009c2b00	LTextBinTree_Variant5_Ctor	Allocates 0x20, initializes sentinel. Template variant of LTextBinTree.
+009c2bd0	LTextBinTree_Variant6_Ctor	Allocates 0x14, initializes sentinel. Another LTextBinTree size variant.
+009c6710	LTextNode_Init_0x14_v2	Allocates 0x14, self-linked sentinel. Duplicate of node init pattern.
+009c67b0	LTextNode_Init_0x0c_v3	Allocates 0xc, self-linked sentinel. Another 12-byte node initializer.
+009c68d0	LTextNode_Init_0x10	Allocates 0x10, self-linked sentinel. Generic 16-byte node init.
+009c6910	List_Allocate_184byte	Allocates 0xb8 (184) bytes, initializes as circular doubly-linked list (prev/next pointers at offset 0, 4). Intrusive container allocator.
+009c6ac0	List_Allocate_20byte	Allocates 0x14 (20) bytes, circular doubly-linked list structure. Typical intrusive list container.
+009c6b60	List_Allocate_12byte	Allocates 0xc (12) bytes, initializes doubly-linked list pointers. Minimal list node.
+009c7000	List_Allocate_16byte	Allocates 0x10 (16) bytes, initializes circular doubly-linked list. Standard intrusive node.
+009c7730	List_Allocate_184byte	Allocates 0xb8 (184) bytes, circular doubly-linked list structure. Large intrusive container.
+009d2840	Vector_Allocate_32byte	Allocates 0x20 (32) bytes; vector/container allocation stub.
+009d2ab0	Vector_Allocate_32byte_Init	Allocates 0x20 (32) bytes, initializes prev/next pointers to self; intrusive container setup.
+009d3890	Vector_Allocate_24byte_Init	Allocates 0x18 (24) bytes, initializes circular list. Medium intrusive node.
+009d46d0	Vector_Allocate_32byte_Init	Allocates 0x20 (32) bytes, initializes circular linked list. Third variant of same pattern.
+009d7740	List_Allocate_16byte	Allocates 0x10 (16) bytes, circular doubly-linked list. Standard list node.
+009d7850	Vector_Allocate_20byte	Allocates 0x14 (20) bytes without list init. Simple vector node.
+009d7b40	Vector_Allocate_20byte_Init	Allocates 0x14 (20) bytes, initializes circular list. List node variant.
+009d7e10	Vector_Allocate_20byte_Init	Allocates 0x14 (20) bytes, circular list init. Fourth variant of 20-byte allocator.
+009d80c0	List_Allocate_16byte	Allocates 0x10 (16) bytes, circular doubly-linked list. Intrusive node.
+009d83b0	Vector_Allocate_40byte	Allocates 0x28 (40) bytes. Larger container node.
+009d8410	Vector_Allocate_40byte_Init	Allocates 0x28 (40) bytes, initializes circular list. Large intrusive node.
+009d8530	Vector_Allocate_40byte_Init	Allocates 0x28 (40) bytes, circular list. Second 40-byte allocator variant.
+009e4810	List_Allocate_64byte	Allocates 0x40 (64) bytes, circular doubly-linked list. Large container node.
+009e48d0	List_Allocate_64byte	Allocates 0x40 (64) bytes, circular list. Another 64-byte allocator.
+009e6a70	std_binary_search_pair_by_string	Fastcall on pair range with 4-element unrolled loop, string Compare on each pair — generic binary search.
+009e98c0	vector_byte_push_back	Thiscall, vector reallocation on full; modifies byte at offset, increments size.
+009ebcb0	vector_insert_four_elements	Thiscall initializing 4 repeated push_back sequences via VectorInsertElementRange.
+009eeb90	LinkedList_AllocateNode	Fastcall malloc(0x18), self-referential bidirectional pointers — doubly-linked node.
+009eebe0	Alloc_0x18_bytes	Fastcall malloc(0x18) wrapper, minimal initialization.
+009eec60	Alloc_0x1c_bytes	Fastcall malloc(0x1c) wrapper.
+009eee90	LinkedList_AllocateNode	Fastcall malloc(0x18) with bidirectional pointers — doubly-linked node.
+009eef50	Container_Initialize	Fastcall malloc(0x18), initializes forward/back/capacity pointers — STL container.
+009eefd0	Container_Initialize_0x1c	Fastcall malloc(0x1c), container structure initialization.
+009ef870	Container_Initialize	Fastcall malloc(0x18), container init.
+009efdf0	vector_insert_object_with_vftable	Thiscall, vector_insert_fill_range, copies vftable and CCharString — generic object insertion.
+009eff60	Container_Initialize_0x1c	Fastcall malloc(0x1c), container structure init.
+009f0ce0	Alloc_0x24_bytes	Fastcall malloc(0x24) wrapper.
+009f0ef0	Container_Initialize_0x24	Fastcall malloc(0x24), container structure init.
+009f13c0	Container_Initialize_0x24	Fastcall malloc(0x24), container init.
+009f5600	CInputEventVector_PushBack	Thiscall, vector_CInputEvent_insert and CInputEvent constructor — push event.
+009f6d50	CInputEventVector_PushBack	Thiscall, vector_CInputEvent_insert and CInputEvent — push event.
+009f76f0	AllocateArray_0x18_stride	malloc(param_1 * 0x18) — allocates sized array.
+009f79d0	LinkedListNode_RemoveAndFree	Unlinks list node pointers, frees — linked-list node cleanup.
+009f7a30	LinkedList_AllocateNode	Fastcall malloc(0x18), bidirectional self-pointers.
+009f7b60	STL_CountUntilIterator	Iterates STL tree_iterator until param_2, counts iterations.
+009f7bb0	LinkedList_AllocateNode	Fastcall malloc(0x18), bidirectional pointers.
+009f7d70	STL_CountUntilIterator	Iterates STL tree_iterator until param_2, counts.
+009f8740	LinkedList_AllocateNode_0x40	Fastcall malloc(0x40), bidirectional pointers.
+009f8ab0	LinkedList_AllocateNode_0x40	Fastcall malloc(0x40), bidirectional pointers.
+00a215a0	Container_Init_40bytes	Allocates 0x28 bytes and stores pointer; generic initializer for opaque container type
+00a21610	Container_Init_24bytes	Allocates 0x18 bytes; generic container initializer
+00a220a0	Container_Init_24bytes_v2	Allocates 0x18 with circular setup; generic container initializer
+00a22360	Container_Init_40bytes_v2	Allocates 0x28 with circular structure; container initializer
+00a2abd0	Container_Init_32bytes	Allocates 0x20; generic initializer
+00a2ac00	Container_Init_28bytes	Allocates 0x1c; generic initializer
+00a2b890	Container_Init_32bytes_Circular	Allocates 0x20 with circular structure; container initializer
+00a2b8d0	Container_Init_28bytes_Circular	Allocates 0x1c with circular structure; container initializer
+00a2c960	Vector_Reallocate_CScriptThing_Complex	Vector reallocate with size 0x10, complex copy/fill involving CScriptThing and refcount initialization logic
+00a2cfa0	Container_Init_24bytes_Extended	Allocates 0x18, initializes extra fields at +12/+16; extended container init
+00a2d050	Container_Init_20bytes	Allocates 0x14; container initializer
+00a2d250	Container_Init_28bytes_v2	Allocates 0x1c; generic initializer
+00a2e200	Container_Init_32bytes_v2	Allocates 0x20; generic initializer
+00a39440	List_Initialize_16byte	malloc(0x14=20), stores in param_1[0] — minimal list/node init, no distinctive calls.
+00a39510	List_Initialize_20byte_Circular	malloc(0x14), self-circular init at offsets +8 and +0xc — doubly-linked list, but no strong naming signal.
+00a3ff40	List_Initialize_12byte	malloc(0xc), self-circular list (pvVar1[0]=pvVar1, pvVar1[1]=pvVar1) — minimal circular list init.
+00a40150	List_Initialize_12byte_v2	Identical to 00a3ff40 — malloc(0xc), self-circular pointers.
+00a46530	Vector_Insert_Conditional	Conditional insert with callback; if callback returns true, shifts and inserts CCharString+4 fields, else appends via Vector_Insert_ConditionalShift
+00a47ed0	List_Initialize_12byte_v3	malloc(0xc), self-circular — yet another 12-byte circular list initializer.
+00a47f30	List_Initialize_12byte_v4	Identical pattern — malloc(0xc), self-circular pointers.
+00a54110	List_Initialize_16byte	malloc(0x10=16), self-circular — 16-byte doubly-linked list node init.
+00a54160	Allocate_24byte_Buffer	malloc(0x18=24), no further structure — minimal allocator.
+00a544a0	List_Initialize_16byte_v2	malloc(0x10), self-circular — duplicate 16-byte list initializer.
+00a544e0	List_Initialize_24byte_Circular	malloc(0x18=24), self-circular at +8 and +0xc — 24-byte doubly-linked list init.
+00a54e10	List_Initialize_24byte_Circular_v2	Identical to 00a544e0 — malloc(0x18), self-circular.
+00a60990	Allocate_52byte_Buffer	malloc(0x34=52) — minimal allocator for 52-byte structure.
+00a611d0	List_Initialize_52byte_Circular	malloc(0x34=52), self-circular at +8 and +0xc — 52-byte doubly-linked list init.
+00a61730	List_Initialize_52byte_Circular_v2	Identical to 00a611d0 — malloc(0x34), self-circular.
+00a68910	CVolumeTexture_Decompress_Or_Process	Takes CVolumeTexture, calls Lock/Unlock, GetByteColourDepth, ReleaseVolume, InitNumberBox—complex multi-step texture processing with unclear end goal.
+00a78680	Map_Or_Deque_Initialize	Thiscall, allocates 0x10 bytes, self-referential doubly-linked list structure, XOR combination of two params—likely list/deque initialization with hash key.
+00a7f450	Deque_Initialize_Sentinel_0x14	Same circular self-referential pattern but allocates 0x14 instead of 0x10—likely larger sentinel node for different container type.
+00a7f4b0	Deque_Initialize_Sentinel_0xc	Allocates 0xc, self-referential circular structure—smallest variant of sentinel init.
+00a7f550	Deque_Initialize_Sentinel_0xc	Identical 0xc sentinel allocation to 00a7f4b0—multiple identical container init functions.
+00a7f680	Allocate_Buffer_0x18	Allocates 0x18 bytes, stores in param_1[0], no initialization—simple buffer allocation helper.
+00a7f6f0	Allocate_Buffer_0x18	Duplicate: allocates 0x18 bytes without extra init—generic buffer allocation.
+00a80480	Deque_Initialize_Sentinel_0xc	0xc circular self-ref allocation—third occurrence of this pattern.
+00a80520	Deque_Initialize_Sentinel_0xc	Fourth occurrence of 0xc circular sentinel initialization.
+00a84b80	Deque_Initialize_Sentinel_0x14	0x14 circular self-ref allocation—larger sentinel variant.
+00aaca40	DoublyLinkedList_Create	Fastcall; malloc(0x10); initializes self-referential forward/back pointers (circular sentinel); classic doubly-linked list initialization.
+00aacd60	DoublyLinkedList_Create	Fastcall; malloc(0x10); identical to 00aaca40; circular doubly-linked list sentinel init.
+00ac3a10	Allocator_DeleteNode	Fastcall; frees *param_1 then operator_delete param_1 itself; cleanup of allocated node and its pointer.
+00ad2330	std::list_Create_24	Fastcall; *param_1=0; malloc(0x18); minimal initialization of 24-byte list structure.
+00ad2360	std::list_Create_32	Fastcall; *param_1=0; malloc(0x20); minimal initialization of 32-byte structure.
+00ad23a0	std::list_Create_28	Fastcall; *param_1=0; malloc(0x1c); minimal initialization of 28-byte structure.
+00ad2450	std::list_Create_32_Alt	Fastcall; *param_1=0; malloc(0x20); identical to 00ad2360; alternate wrapper for 32-byte list.
+00ad2f20	std::list_InitNode_24	Fastcall; malloc(0x18); initializes [param_1], [param_1+4]=0, circular self-pointers at +8, +0xc; doubly-linked node creation.
+00ad2f60	std::list_Destructor_24	Fastcall; if (param_1+4), calls BuildTreeArray; clears forward/back pointers; frees *param_1; destructor for 24-byte list.
+00ad2fb0	std::list_InitNode_32	Fastcall; malloc(0x20); same init pattern as 00ad2f20 but for 32-byte node.
+00ad3010	std::list_InitNode_28	Fastcall; malloc(0x1c); same init pattern for 28-byte node.
+00ad3150	std::list_InitNode_32_Alt	Fastcall; malloc(0x20); alternate 32-byte node initialization.
+00ad3960	std::list_InitNode_24_Alt	Fastcall; malloc(0x18); alternate 24-byte node initialization.
+00ad39a0	std::list_Destructor_32	Fastcall; if (param_1[1]), BuildTreeArray; clears pointers; frees; destructor for 32-byte list.
+00ad49c0	std::list_InitNode_20	Fastcall; malloc(0x14); init pattern for 20-byte node; minimal circular-list setup.
+00ad4f30	std::list_DestructRefcounted_20	Fastcall; if (param_1[1]), calls Utility_DestroyRefcountedTreeNode on *param_1+4; frees; destructor for refcounted 20-byte node.
+00ad5dc0	std::list_InitNode_32_Alt2	Fastcall; malloc(0x20); another 32-byte node initializer variant.
+00ad5e00	std::list_DestructRefcounted_32	Fastcall; if (param_1[1]), DestroyRefcountedTreeNode; frees; destructor for 32-byte refcounted node.
+00ad5f00	std::list_DestructRefcounted_32_Alt	Fastcall; if (param_1[1]), DestroyRefcountedTreeNode; frees; alternate 32-byte refcounted destructor.
+00ad6610	std::list_InitNode_28_Alt	Fastcall; malloc(0x1c); another 28-byte node initializer.
+00ad6650	std::list_DestructRefcounted_28	Fastcall; if (param_1[1]), DestroyRefcountedTreeNode; frees; destructor for 28-byte refcounted node.
+00ad6810	std::list_DestructTreeNode_32	Fastcall; if (param_1[1]), TreeNode_DestructWithRefcount; frees; destructor for 32-byte tree-node list.
+00ad72c0	std::list_InitNode_32_Alt3	Fastcall; malloc(0x20); another 32-byte node variant.
+00ad7300	std::list_DestructTreeNode_32_Alt	Fastcall; if (param_1[1]), TreeNode_DestructWithRefcount; frees; alternate 32-byte tree-node destructor.
+00adb180	std::list_Create_32_Alt2	Fastcall; *param_1=0; malloc(0x20); another 32-byte list initializer.
+00adb240	Std_List_Construct_Default	malloc(0x1c) size matches doubly-linked list node; callerCount=0, no strong class evidence; generic init pattern
+00adb5a0	Std_BinTree_Node_Construct	malloc(0x1c) followed by linked-list field init (offsets 0,4,8,c); no named callers to disambiguate
+00adb890	Std_BinTree_Node_Construct	Identical to 00adb5a0: malloc(0x1c) + node init; generic binary tree allocator
+00adc930	Std_List_Construct_Default	malloc(0x20), self-referential doubly-linked list init (pvVar1 at offset 0 and 4)
+00add130	Unknown_VtableDispatch_WithParam	thiscall; calls vtable methods at offset 0 and 4 with bitfield logic; no other class evidence
+00aeb940	Std_List_Construct_Default_WithValue	malloc(0x10), self-referential doubly-linked list init; stores param_2 at offset 4
+00aec610	Std_List_Construct_Default	malloc(0x10), self-referential doubly-linked list sentinel init
+00aec960	Std_List_Construct_Default	malloc(0x10), self-referential doubly-linked list sentinel init
+00af66f0	Std_List_Construct_Default	malloc(0xc), self-referential doubly-linked list sentinel
+00af6750	Std_List_Construct_Default	malloc(0xc), self-referential doubly-linked list sentinel
+00af6bf0	Std_List_Construct_Default	malloc(0xc), self-referential doubly-linked list sentinel
+00af6c40	Std_List_Construct_Default	malloc(0xc), self-referential doubly-linked list sentinel
+00b09e20	Std_List_Construct_Default	malloc(0x18), self-referential doubly-linked list sentinel
+00b09ed0	Std_List_Construct_Default	malloc(0x18), self-referential doubly-linked list sentinel
+00b0f770	Std_List_Construct_Default	malloc(0x10), self-referential doubly-linked list sentinel
+00b0f7f0	Std_List_Construct_Default	malloc(0x10), self-referential doubly-linked list sentinel
+00b2e7b0	Alloc_44Bytes	Bare malloc(0x2c) with no distinguishing structure; likely container allocation
+00b3e790	Alloc_28Bytes	Bare malloc(0x1c); no structure distinguishes purpose
+00b43bf0	Alloc_36Bytes	Bare malloc(0x24); no structural evidence
+00b84b20	Render_SortPrimitivesRadix	Radix sort implementation: builds histogram from shifted param_1 values, computes prefix sums, then outputs sorted pairs to param_2 array using the histogram indices. Allocates lar
+00b96540	Alloc_SizeZero32	malloc(0x20) allocator: fastcall wrapper zeroing param_1 then allocating 32 bytes.
+00b96570	Alloc_SizeZero48	malloc(0x30) allocator: fastcall wrapper zeroing param_1 then allocating 48 bytes.
+00b96640	Alloc_SizeZero28	malloc(0x1c) allocator: fastcall wrapper zeroing param_1 then allocating 28 bytes.
+00b968e0	InitDoubleLinkedList_Size28	fastcall allocating 0x1c bytes and initializing doubly-linked list sentinel: sets prev/next pointers (+0x8, +0xc) to point to itself, clears forward link.
+00b96ae0	InitDoubleLinkedList_Size32	fastcall allocating 0x20 bytes and initializing doubly-linked list sentinel: sets prev/next pointers to self, clears forward link.
+00b96b20	InitDoubleLinkedList_Size48	fastcall allocating 0x30 bytes and initializing doubly-linked list sentinel: sets prev/next pointers to self, clears forward link.
+00b97130	InitDoubleLinkedList_Size48_Variant2	fastcall allocating 0x30 bytes and initializing doubly-linked list sentinel; identical pattern to 00b96b20.
+00b97fc0	InitDoubleLinkedList_Size28_Variant	fastcall allocating 0x1c and initializing doubly-linked list sentinel; identical to 00b968e0.
+00b980c0	InitDoubleLinkedList_Size28_Variant2	fastcall allocating 0x1c and initializing doubly-linked list sentinel.
+00b981f0	InitDoubleLinkedList_Size28_Variant3	fastcall allocating 0x1c and initializing doubly-linked list sentinel.
+00b98850	InitDoubleLinkedList_Size32_Variant	fastcall allocating 0x20 and initializing doubly-linked list sentinel.
+00bce370	Alloc_SizeZero28_Variant	malloc(0x1c) allocator: fastcall wrapper zeroing param_1.
+00bce3e0	InitDoubleLinkedList_Size28_Variant4	fastcall allocating 0x1c and initializing doubly-linked list sentinel.
+00bce5a0	InitDoubleLinkedList_Size28_Variant5	fastcall allocating 0x1c and initializing doubly-linked list sentinel.
+00bd84f0	Alloc_SizeZero32_Variant	malloc(0x20) allocator: fastcall wrapper.
+00bd86f0	InitDoubleLinkedList_Size32_Variant2	fastcall allocating 0x20 and initializing doubly-linked list sentinel.
+00bd9080	InitDoubleLinkedList_Size32_Variant3	fastcall allocating 0x20 and initializing doubly-linked list sentinel.
+00bdaaa0	LinkedList_Initialize_Small_2	Identical to 00bdaa10; multiple copies of same linked-list init template
+00bdab30	LinkedList_Initialize_Small_3	Identical to 00bdaa10; duplicate initialization routine
+00bdac50	LinkedList_Initialize_Small_4	Identical to 00bdaa10; fourth duplicate
+00bdacc0	LinkedList_Initialize_Small_5	Identical to 00bdaa10; fifth duplicate
+00bdad30	LinkedList_Initialize_Small_6	Identical to 00bdaa10; sixth duplicate
+00bdae60	LinkedList_Initialize_Small_7	Void variant of 00bdaa10; returns nothing instead of pointer
+00bdae80	LinkedList_Initialize_Small_8	Identical to 00bdae60; void linked-list init duplicate
+00bdaea0	LinkedList_Initialize_Small_9	Identical to 00bdae60; another void init duplicate
+00c08880	VirtualMethodPointer_SetVtable	Sets a single vtable pointer; simple vtable assignment thunk
+00c09c90	Container_Iterate_ProcessFrontBack	Iterates container via vtable offset 0x2c, processes elements via vtable 0x20 and 0x24; generic container iteration with front/back callbacks
+00c09f80	Container_Iterate_ProcessFrontBack_2	Identical to 00c09c90; duplicate container iteration
+00c0a1b0	Container_Iterate_ProcessFrontBack_3	Identical to 00c09c90; third duplicate
+00c0f5d0	Container_Iterate_ProcessFrontBack_4	Identical to 00c09c90; fourth duplicate of container iteration
+00c0f7d0	Scheduler_ProcessEventQueue	vtable offsets 0x3c,0x2c,0x28,0x20,0x24,0x10 suggest generic container iteration and callback dispatch with no named callees or strings
+00c0f9d0	Scheduler_DispatchEvents	Identical structure to 00c0f7d0; generic container/iterator pattern using vtable offsets
+00c0fc00	Iterator_ProcessContainer	Thiscall with param_1[1] dereference suggests container iterator; vtable dispatch at +0x3c,+0x2c,+0x20
+00c115d0	Inventory_ProcessSpecialAction	Calls ProcessButtonAReleased with vtable offset +0x1c; special inventory action handler
+00c127c0	Inventory_DebugDumpTextures	Calls TextureIndex_GetByProperties loop; Playback_LogStatus, CCharStringData release; texture debug dump
+00c15540	Container_IterateAndDispatch	Identical to 00c0f7d0; thiscall container dispatcher with vtable offsets, no identifying callees
+00c156a0	Container_ProcessElements	Identical pattern to 00c15540; generic container iteration
+00c19cb0	std_pair_constructor_wrapper	Thiscall with allocator and pair params; calls _Cons_val constructor; generic template instantiation wrapper.
+00c19d20	std_pair_constructor_wrapper	Thiscall with allocator and pair params; calls _Cons_val constructor; vtable dispatch at +0x3c.
+00c19d90	std_pair_constructor_wrapper_with_param	Thiscall with allocator, pair, and third param; complex template instantiation with vtable calls.
+00c19f90	GetPropertyAt_0x84	Tiny accessor returning value at fixed offset 0x84; likely a property getter for compressed thiscall methods
+00c207f0	VTable_InitAndCleanup	Fastcall; sets vtable pointer, calls EmptyStub, _E2; vtable initialization pattern.
+00c20ef0	GetTexturesInUse_IsWeaponSlotActive	Reads short at +0xac, returns 1 if not in cases 2-4, else 0; appears to be a slot/state validator for graphical objects, but naming uncertain.
+00c271d0	GetSoundsCurrentLayer_Init	Fastcall; sets vtable pointer to GetSoundsCurrentLayer function; vtable/function pointer init.
+00c27af0	InitVtablePtr_SoundLayer	Initializes a vtable pointer (PTR_GetSoundsCurrentLayer) and zeros 3 fields; likely a SoundLayer initializer or thunk.
+00c29eb0	InitVtablePtr	Single field initialization with vtable pointer LAB_012b40a4; opaque initialization helper.
+00c29f50	InitVtablePtr_WithInvalidFlag	Initializes vtable pointer and sets marker field to 0xffffffff; suggests an 'invalid' or 'uninitialized' state flag.
+00c2d7b0	GetWeaponTypeValidation	Fastcall checks short at offset +0xe against values 0/1/2; called by CTCInventory_EquipItem; likely validates weapon type codes
+00c2e480	Inventory_ProcessItemQuickAssign	Iterates via vtable offsets 0x34/0x3c; calls FUN_00c2e2b0 and GetCanItemBeQuickAssigned; processes quick item assignment loop
+00c2ea30	AnimationEvents_IterateAndProcess	Wrapper calling FUN_00c2e8d0 in loop; iterate animation events via vtable 0x20; simple iteration helper
+00c2ea70	AnimationEventMappings_IterateAndProcess	Wrapper calling FUN_00c2e960 in loop; iterate mappings via vtable 0x20; processes event trigger mappings
+00c2eab0	AnimationEventTriggers_IterateAndProcess	Wrapper calling FUN_00c2e5a0 in loop; iterate triggers via vtable 0x10; processes all event triggers
+00c2f070	ShaderResource_AutoDeleteOnFailure	Returns int from pointer check *param_1; error string 'Shouls have checked first...'; cleanup/validation on shader auto-delete
+00c2f190	ShaderResource_AutoDeleteOnFailure_Variant1	Identical to FUN_00c2f070 (body size 192, same error strings); variant of shader resource cleanup
+00c2f2b0	ShaderResource_AutoDeleteOnFailure_Variant2	Identical to FUN_00c2f070/FUN_00c2f190 (body size 192, same error strings); third variant of shader resource cleanup
+00c334d0	SaveToFile_GetStatusBit	Fastcall wrapping FUN_00c3dfd0; called by SaveToFile; returns status bit result for save operation
+00c336f0	ConstraintRepeat_SetParameter	Called by AddConstraintRepeat; sets param at offset 0x1d4/0x180 via indirect call; parameter configuration helper
+00c359e0	FUN_00c43ec0_Wrapper	Thin wrapper that calls FUN_00c43ec0 and returns result; no distinctive identifying evidence beyond parameter pass-through
+00c362f0	SteeringAgent_Vector_DestructorHelper	Fastcall with exception handling setup; constructs CSBAgents from vector; virtual method call on constructed object
+00c364a0	RedblackTree_Node::CActionConstructor	Thiscall with complex exception handling; calls RedblackTree_NodeCtor and CDateAndTime ctor; vtable setup and virtual method invocation
+00c36e00	SteeringAgent_Vector_DestructorHelper2	Similar exception wrapper calling CSBAgents constructor and virtual method at offset 0x10
+00c36fb0	SteeringAgent_Vector_DestructorHelper3	Exception wrapper calling CSBAgents and virtual method at offset 0x10
+00c37000	Script_GetSomeFloat_Wrapper	Exception wrapper constructing CBaseIntelligentPointer and returning float value; opaque purpose
+00c372c0	RedblackTree_Node::Constructor	Thiscall ctor; calls RedblackTree_NodeCtor; initializes vtable ptr and flag at +0x13
+00c37c40	SteeringAgent_Vector_DestructorHelper4	Fastcall exception wrapper; CSBAgents constructor with virtual method at offset 0x08
+00c3abf0	CSubPrimitiveList_Node::Constructor	Fastcall ctor; sets vtable and node ptr; calls RedblackTree_NodeCtor
+00c3b180	CSubPrimitiveList_Node::Constructor2	Fastcall; similar to 00c3abf0, vtable setup and RedblackTree_NodeCtor
+00c3b440	Container_ProcessListItems	thiscall with list traversal pattern; gets vtable at [1], iterates, calls methods at predictable offsets; likely generic container iteration
+00c43de0	CircularQueue_GetNextItem	Fastcall checks circular buffer index at +0x1e, dispatches vtable method at *param_1+0x20
+00c43f80	Audio_ProcessShaderUpdate	Calls CShaderConstantRange_ShouldClearPrimitives and CModeBlock_CreateAudioBuffer; shader+audio update
+00c44b50	CCreatureAction_ComparePriority	Calls GetKey and GetFramesRemaining, compares input key priorities
+00c44ce0	CGame_ProcessGameObjects	Loops through game objects, calls FUN_00c2a3d0 on each, dispatches vtable method
+00c44dc0	CSteeringAgent_CalculateDamage	Constructs CSBAgents, calls CTCWeapon_GetDamageValue and FUN_00c44ab0, multiplies damage result
+00c452f0	Container_ProcessListItems	identical to 00c3b440; duplicate container iteration
+00c45440	Container_ProcessListItems	identical to 00c3b440; third duplicate container iteration
+00c46bb0	Container_ProcessListItems	fourth duplicate of list iteration pattern
+00c479a0	Container_ProcessListItems	fifth duplicate of list iteration pattern
+00c47af0	Container_ProcessListItems	sixth duplicate of list iteration pattern
+00c48960	Unknown_EventHandler_A	Thiscall with identical pattern to 00c48a00/48b40/48be0/48c80; calls AddSuccessfulBlockParry, PKCSemaphore_Release, EventQueue; event callback pattern
+00c48a00	Unknown_EventHandler_B	Identical body to 00c48960/48b40; appears to be vtable slot for event handler; called via _Cons_val allocator callback
+00c48b40	Unknown_EventHandler_C	Identical body to 00c48960/48a00; multiple vtable event slots with same implementation
+00c48be0	Unknown_EventHandler_D	Identical body to other event handlers; sequence suggests vtable indexing for event dispatch
+00c48c80	Unknown_EventHandler_E	Identical body to other event handlers; fifth sequential slot in vtable pattern
+00c49d50	Unknown_EventCallback_A	Fastcall; calls AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout; simple event callback with no clear class context
+00c49dd0	Unknown_EventCallback_B	Fastcall; calls AddSuccessfulBlockParry, EventQueue_ProcessWithTimeout; 45 byte stub similar to 00c49d50
+00c4bd70	Unknown_EventHandler_F	Identical to event handlers 00c48960/48a00/48b40; further vtable slot
+00c4e380	Unknown_RenderCheck	Fastcall; caller AddToRenderList; checks param_4[0x1f0]; returns 0xfffffffc or result of FUN_00c66c90; render eligibility check
+00c52aa0	GetOrComputeValue	no callees or strings; appears to be computation/getter stub
+00c57070	CircularBuffer_QueryWriteSpace	Fastcall circular buffer query; checks vtable offset 0x10, handles wrap-around with modulo arithmetic
+00c58270	StereoMatrix_ApplyGain	Thiscall; branches on param_1[8]==1 (mono); calls vtable at +0x18/+0x20 with gain values 0x3f000000
+00c582f0	StereoMatrix_ApplySmallGain	Thiscall; similar to above but with gain 0x4000; uses vtable offsets +0x10/+0x14
+00c58630	QuadMatrix_ApplyGain	Thiscall quad processing (4x copies); branches on param_1[8] value (1/2/other), writes to offsets +0x200, +0x400, +0x600
+00c592c0	VTableInitializer_SingleSlot	Fastcall; single line sets param_1[0] to a PTR, looks like vtable pointer init
+00c59570	VertexBuffer_Initialize	Fastcall; sets vtable pointer, zero-fills 0x58 dwords + tail (offset pattern for mesh/buffer init)
+00c5d150	Audio_VectorMultiplyFixed	Complex SIMD vector multiply with fixed coefficients; pmulhw operations; processes 16-byte aligned elements.
+00c5d1f0	Audio_VectorMultiplyLinearRamp	Thiscall; uses paddsw to increment packed values; pmulhw with ramping coefficients; accumulates into output array.
+00c5d370	HashAccumulate_16x16	Non-thiscall; 8-iteration loop, accumulates 16 int32 values to param_2 (checksum/hash)
+00c5d3f0	HashAccumulate_16x16_v2	Non-thiscall; identical to 00c5d370, 8-loop accum of 16 ints to target
+00c5d4b0	HashAccumulate_16x16_v3	Non-thiscall; third copy of 16x16 hash accumulation pattern
+00c61ce0	CStdPair_GetFirst	Dereferences pair pointer twice; returns first element of pair structure.
+00c62a30	CStreamBuffer_UpdatePosition	Thiscall; updates position with multiplication: [0] += [1] * param_2 * 2; buffer position tracking.
+00c62ff0	CTCHeroStats_ValidateSpellGuid	Thiscall; compares 4x register blocks with DAT_012b9468/78/88/98, checks stack param bounds
+00c6a180	NScript::CQ_GuildTrainingSkillScript::InterpolateGeometry	Thiscall void, called by GetCurrentMask, branches on frame range check, calls FUN_00c75ce0/00c75e90 geometry functions
+00c6a200	NScript::CQ_GuildTrainingSkillScript::RenderGeometry	Thiscall void, called by GetCurrentMask, branches on frame range, calls FUN_00c75a20/00c75ab0 render functions
+00c73340	Audio_ExtractPCMStereoSample	Non-thiscall variant. Reads from param_1+0x30/0x34 (output), checks param_1+0x3c for condition. Calls CAudioSoundBuffer_TransferPCMData if flag clear. Extracts stereo frame data.
+00c74f60	CTCHeroStats_InitializeVtable	Fastcall initializer: sets *param_1 to &PTR_LAB_012bf074, zeros param_1[1] and param_1[2]. Likely vtable or small object zero-init.
+00c75400	CTCStat_InitializeVtable	Fastcall initializer, identical to 00c74f60. Sets vtable pointer and zeros two fields. Generic constructor/init stub.
+00c786e0	Math_PackDWords	Stores low dword of param_2 and high dword of param_3 into param_1 via CONCAT44. Packs/rearranges dword fields.
+00c78720	Math_ExtractHighDWord	Extracts high dword from param_3 into high dword of param_1; low dword from param_2. Simple dword extraction helper.
+00c787d0	Math_SIMD_PaddSW	Wraps paddsw MMX instruction. Adds two 64-bit values with signed saturation, stores in param_1.
+00c78810	Math_SIMD_PmulHW	Wraps pmulhw MMX instruction. High-word multiply of two 64-bit values.
+00c78850	Math_SIMD_PmAddWD	Wraps pmaddwd MMX instruction. Multiply-add packed words to doublewords.
+00c78890	Math_SIMD_PackSSdW	Wraps packssdw MMX instruction. Packs signed dwords to words with saturation.
+00c788d0	Math_Add_Int64_Result	Adds param_2 and param_3 (64-bit), stores in param_1 via CONCAT44.
+00c88e60	UnknownUtility_NoCalls	No callees or callers identified; 681 bytes, likely utility or thunk function
+00c89110	UnknownInit_Wrapper	Calls Init; 142 bytes, likely a wrapper or initialization helper
+00c896c0	UnknownInit_Wrapper2	Calls Init; 140 bytes, similar to 00c89110, likely initialization helper
+00c8bae0	UnknownVoid_Stub	No callees; 43 bytes, stub or empty placeholder function
+00c8c730	WorldMap_ProcessWithCallback_Variant	Nearly identical to 00c8c580, slightly different stack frame. Alternate callback-driven world map processor.
+00c91980	UnknownMath_Utility	No callers/callees; 183 bytes, standalone math or utility function
+00c92f10	UnknownMath_StackAlloc	Calls __chkstk; 362 bytes, stack allocation checker for large local arrays
+00c93080	UnknownMath_Process	Calls FUN_00c92f10 (stack alloc); 320 bytes, likely math computation with stack allocation
+00c93b30	UnknownVoid_Stub2	No callees; 254 bytes, utility or stub function
+00c94190	Audio_ComputeAmplitude	Returns float10, thiscall with member access (+0x1c, +0x28, +0xb78); division and scaling operations suggest audio level calculation
+00c942b0	Audio_CalculateAmplitudeForBit	Accesses DAT_013a3d48/3948; bit manipulation on unaffected registers; audio amplitude table lookup
+00c9a230	Audio_ProcessBitstream	Largest function (6041 bytes); very long decomp; likely master audio processing loop
+00c9cb60	Math_ScaleAndOffset	Opaque arithmetic: param / 0xff + 1 + param. Converts to subsystem role without class context.
+00c9e4a0	Mesh_ValidateDetailBounds	Returns uint; validation logic; likely bounds/sanity check for mesh detail
+00ca5da0	GetMember_AtOffset0x44	Thiscall with CriticalSection protection; reads member at offset 0x44; likely getter for a cached value but no identifying callees
+00ca5e70	GetDividedValue_AtOffset0x48_0x4c	Uses __alldiv for 64-bit division; reads pairs at 0x48/0x4c and 0x44; conditional logic but unclear purpose
+00ca65b0	ThreadSync_WaitForMultipleObjects_WithTimeout	Fastcall with thiscall; calls WaitForMultipleObjects in loop; handles timeout 0xffffffff (infinite); unclear object type
+00ca6620	GetDataWithRetryLogic	Calls FUN_00cb09a0; checks for 0x102 timeout status; returns data at offset 8; purpose unclear
+00ca67b0	Finalize_Cleanup_Resources	Calls timeKillEvent, vtable methods; large exception handler; cleans up timer and calls destructors but no specific naming clues
+00ca68f0	SetEvent_AndInitialize_State	Calls SetEvent and FUN_00caaca0; CSurface::GetRefCount; state machine transitions to value 2
+00ca6b00	SetEventAndCallVtable_OnCondition	Fastcall; calls SetEvent; checks flags at offsets 5, 0x1b, 0x1c; calls vtable at 0x60
+00ca6b40	ResetEvent_AndPump_ThreadMessages	Fastcall; calls ResetEvent, vtable methods, ThreadMsg_PumpAndWaitForCompletion; thread coordination
+00ca8610	QueryInterface_CheckAndReturn	Returns 0x80040208 on state mismatch; calls vtable at 0x24; COM-style interface check but unclear class
+00ca86d0	PerformSequence_WithTwoAttempts	Thiscall; calls multiple vtable methods in sequence with error checking; retry/fallback pattern
+00ca8d50	ValidateAndAggregate_Entries	Complex iteration over entries; calls vtable methods; conditional aggregation logic; unclear purpose
+00ca9c80	Invoke_AndCleanup_OnSuccess	Calls vtable at offset 0x38; cleans up member at offset 0x26 if success; no clear class identity
+00ca9ec0	GetQuadValues_WithCriticalSection	Reads 4 values at offsets 0x2c, 0x34, 0x38, 0x3c; conditional critical section; unclear structure
+00caa040	GetDifference_WithOffset	Computes (0x2c - 0x30) + 0x20; simple calculation with critical section but purpose unclear
+00caf090	FilteredThingIterator_CheckNext	Calls operator() and COM_QueryInterface_Wrapper; appears to filter and validate things in sequence
+00cb1ae0	StrcmpEx_CheckVariant	Fastcall compares 4 integers at &DAT_012c0694 with two positions in param_1; checks two 4-int patterns
+00cb1b20	StrcmpEx_CheckFullVariant	Thiscall compares two objects thoroughly: checks offsets 0, 4, 11 (4-int patterns), then field at offset 16 and string comparison
+00cd2d37	TextureBuffer_InitForCopy	Thiscall that zeros member fields + called by CopyBackBufferToTexture; similar pattern to pair of functions, likely buffer initialization
+00cd2d61	TextureBuffer_InitForCopy_Alt	Identical to 00cd2d37 (same size 42), alternate variant for different buffer type
+00cdb550	StdDeque_Allocate	Allocates 0x24-byte buffer, stores pointer via param; deque-like allocation pattern
+00cdb710	StdMap_Construct_Bidirectional	Allocates 0x14, initializes bidirectional links (prev/next pointers at offset 0 and 4), map node pattern
+00cdb750	StdDeque_Construct	Allocates 0x24, initializes doubly-linked structure with self-referencing pointers at offsets 8/0xc
+00cdbeb0	StdMap_DestroyNode_Helper	Calls StdMap_DestroyNode then free, manages cleanup of map node with payload destruction
+00d9d930	CActiveEntityScriptBase_Factory_Type8	Factory pattern; allocates CActiveEntityScriptBase with generic spawn signature
+00d9ffd0	CActiveEntityScriptBase_Factory_Type9	Factory allocator; creates CActiveEntityScriptBase instance
+00da8320	CActiveEntityScriptBase_Factory_Type10	Generic factory; spawns CActiveEntityScriptBase
+00db8520	CActiveEntityScriptBase_Factory_Type11	Factory spawner; allocates CActiveEntityScriptBase
+00dc0170	CActiveEntityScriptBase_Factory_Type12	Generic factory; CActiveEntityScriptBase spawner
+00dc8700	CActiveEntityScriptBase_Factory_Type13	Factory pattern; spawns CActiveEntityScriptBase variant
+00dcf790	CActiveEntityScriptBase_Factory_Type14	Factory allocator; CActiveEntityScriptBase spawn
+00dd9300	CActiveEntityScriptBase_Factory_Type15	Factory; creates CActiveEntityScriptBase
+00ddc7d0	CActiveEntityScriptBase_Factory_Type16	Factory; allocates CActiveEntityScriptBase
+00ddeee0	CActiveEntityScriptBase_Factory_Type17	Factory; CActiveEntityScriptBase spawner
+00dec5b0	CActiveEntityScriptBase_Factory_Type18	Factory; allocates CActiveEntityScriptBase
+00def220	CActiveEntityScriptBase_Factory_Type19	Factory; CActiveEntityScriptBase spawner
+00df3550	CActiveEntityScriptBase_Factory_Type20	Factory; spawns CActiveEntityScriptBase
+00df4a50	CActiveEntityScriptBase_Factory_Type21	Factory allocator; CActiveEntityScriptBase variant
+00df99f0	CActiveEntityScriptBase_Factory_Type22	Factory; allocates CActiveEntityScriptBase
+00dfc100	CActiveEntityScriptBase_Factory_Type23	Factory; CActiveEntityScriptBase spawner
+00e05170	CActiveEntityScriptBase_Factory_Type24	Factory; allocates CActiveEntityScriptBase
+00e245e0	std_vector_FindIf_With_Compare	calls vector_pop_back_shift and Compare; appears to search/remove from vector; returns uint
+00e7f7d0	GenerateCompetitionEntry_Helper	called by GenerateCompetitionEntry; no callees or strings; tiny stub/helper function
+00e83920	CScriptThing_Constructor_Helper	thiscall returning undefined4*; calls CScriptThing, CCharString; initialization helper
+00ed7d50	CScriptThing_StringConstructor	thiscall returning undefined4*; calls CScriptThing, CCharString; named object constructor
+00ee3140	Quest_ExecuteAction	Large function (~1366 bytes); manipulates various script entities and quest state; handles complex script execution logic
+00ee41f0	CHeroMorphDef_Helper	thiscall returning undefined4*; calls CHeroMorphDef, CBase, CCharString; initialization helper
+00ee4dd0	Script_ProcessEntity	Very large function (~1943 bytes); processes script entities with complex control flow and resource management
+00ee91e0	Script_Handler	Medium-sized function (~613 bytes); general script handling routine
+00eeaef0	Script_ExecutionLoop	Large function (~1906 bytes); likely main script execution loop with various operations
+00ef54a0	Script_Cleanup	Medium-sized function (~463 bytes); likely cleanup/finalization routine
+00f35510	Vector_CopyBackward_CThingBuildingDef_2	backward copy loop 0x38 stride; calls operator= and std::vector_assign_CClanMember
+00f35910	Vector_CopyBackward_CThingBuildingDef_3	backward 0x38-byte copy loop; operator= and std::vector_assign_CClanMember
+01229370	Generic_MemoryPool_Deleter1	17 bytes, calls free; generic memory pool element deleter
+01229630	Generic_MemoryPool_Deleter2	17 bytes, calls free; another memory pool deleter variant
+0122a2f0	std_Cons_val_EHeroMorphType_CEntry	Thunk for std::_Cons_val allocator constructor; wraps pair construction
+0122a940	std_Cons_val_EHeroMorphType_CEntry_Dual	Calls _Cons_val twice for two allocators; pair construction helper
+0122ad60	Cleanup_GlobalHeap_0	Simple null-check and free on DAT_014377f0; generic cleanup
+0122adb0	Cleanup_GlobalHeap_1	Identical pattern to 0122ad60; checks and frees DAT_0143b978
+0132d470	Obfuscated_BadInstruction	control flow with bad instruction data; corrupted or intentionally obfuscated code

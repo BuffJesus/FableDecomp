@@ -1,0 +1,1917 @@
+@@@FUNC 005b2663 134 1
+@@CALLERS 
+@@CALLEES RBTree::GetMaxNode, TreeInsertNode_RightChild
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_005b2663(int *param_1,int *param_2,uint *param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  int *piVar3;
+  int iVar4;
+  int iVar5;
+  bool bVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  iVar4 = *(int *)(iVar1 + 4);
+  bVar6 = true;
+  iVar5 = iVar1;
+  if (iVar4 != 0) {
+    do {
+      iVar5 = iVar4;
+      bVar6 = *param_3 < *(uint *)(iVar5 + 0x10);
+      if (bVar6) {
+        iVar4 = *(int *)(iVar5 + 8);
+      }
+      else {
+        iVar4 = *(int *)(iVar5 + 0xc);
+      }
+    } while (iVar4 != 0);
+  }
+  iVar2 = iVar5;
+  if (bVar6) {
+    iVar7 = iVar5;
+    if (iVar5 == *(int *)(iVar1 + 8)) goto LAB_005b26bf;
+    iVar2 = RBTree__GetMaxNode(iVar5);
+  }
+  iVar7 = iVar4;
+  if (*param_3 <= *(uint *)(iVar2 + 0x10)) {
+    *param_2 = iVar2;
+    *(undefined1 *)(param_2 + 1) = 0;
+    return param_2;
+  }
+LAB_005b26bf:
+  piVar3 = (int *)TreeInsertNode_RightChild(&param_3,iVar7,iVar5,param_3,0);
+  *param_2 = *piVar3;
+  *(undefined1 *)(param_2 + 1) = 1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005b28f8 319 1
+@@CALLERS TransferIn
+@@CALLEES TreeInsertNode_LeftChild, GetNoAllocatedAreas, RBTree::GetMaxNode, FUN_005b2447
+@@STRINGS 
+@@DECOMP
+
+ulong * __thiscall
+FUN_005b28f8(ulong *param_1,ulong *param_2,ulong param_3,CMemoryAllocatorVariableSize *param_4)
+
+{
+  CMemoryAllocatorVariableSize *this;
+  int iVar1;
+  uint uVar2;
+  ulong uVar3;
+  ulong uVar4;
+  ulong *puVar5;
+  bool bVar6;
+  bool bVar7;
+  ulong *local_c;
+  ulong *puStack_8;
+  
+  uVar3 = *param_1;
+  local_c = param_1;
+  puStack_8 = param_1;
+  if (param_3 == *(ulong *)(uVar3 + 8)) {
+    if (param_1[1] == 0) goto LAB_005b2a1e;
+    this = *(CMemoryAllocatorVariableSize **)(param_3 + 0x10);
+    if (*(CMemoryAllocatorVariableSize **)param_4 < this) goto LAB_005b2925;
+    if (*(CMemoryAllocatorVariableSize **)param_4 <= this) goto LAB_005b293b;
+    uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    uVar4 = param_3;
+    if (uVar3 != *param_1) {
+      if (*(uint *)(uVar3 + 0x10) <= *(uint *)param_4) goto LAB_005b2a1e;
+      iVar1 = *(int *)(param_3 + 0xc);
+joined_r0x005b29fa:
+      if (iVar1 == 0) {
+        uVar3 = 0;
+        uVar4 = param_3;
+      }
+      else {
+        uVar4 = uVar3;
+        param_3 = 0;
+      }
+      goto LAB_005b2927;
+    }
+  }
+  else {
+    if (param_3 != uVar3) {
+      uVar4 = RBTree__GetMaxNode(param_3);
+      uVar2 = *(uint *)param_4;
+      bVar6 = uVar2 < *(uint *)(param_3 + 0x10);
+      if ((!bVar6) || (uVar2 <= *(uint *)(uVar4 + 0x10))) {
+        uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(param_4);
+        bVar7 = !bVar6;
+        if (!bVar6) {
+          bVar7 = *(uint *)(param_3 + 0x10) < uVar2;
+          if (!bVar7) goto LAB_005b293b;
+          if ((uVar3 == *param_1) || (uVar2 < *(uint *)(uVar3 + 0x10))) {
+            iVar1 = *(int *)(param_3 + 0xc);
+            goto joined_r0x005b29fa;
+          }
+        }
+        if (bVar6 == bVar7) {
+LAB_005b293b:
+          *param_2 = param_3;
+          return param_2;
+        }
+LAB_005b2a1e:
+        puVar5 = (ulong *)FUN_005b2447(&local_c,param_4);
+        *param_2 = *puVar5;
+        return param_2;
+      }
+      if (*(int *)(uVar4 + 0xc) == 0) {
+        uVar3 = 0;
+        param_3 = uVar4;
+        goto LAB_005b2927;
+      }
+LAB_005b2925:
+      uVar3 = param_3;
+      uVar4 = param_3;
+      param_3 = 0;
+      goto LAB_005b2927;
+    }
+    uVar4 = *(ulong *)(uVar3 + 0xc);
+    if (*(uint *)param_4 <= *(uint *)(*(ulong *)(uVar3 + 0xc) + 0x10)) goto LAB_005b2a1e;
+  }
+  uVar3 = 0;
+LAB_005b2927:
+  TreeInsertNode_LeftChild(param_2,uVar3,uVar4,param_4,param_3);
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005b2a37 319 1
+@@CALLERS TransferIn
+@@CALLEES GetNoAllocatedAreas, RBTree::GetMaxNode, Map_InsertLongKey, CMemoryAllocatorVariableSize::InsertNode
+@@STRINGS 
+@@DECOMP
+
+ulong * __thiscall
+FUN_005b2a37(ulong *param_1,ulong *param_2,ulong param_3,CMemoryAllocatorVariableSize *param_4)
+
+{
+  CMemoryAllocatorVariableSize *this;
+  int iVar1;
+  bool bVar2;
+  ulong uVar3;
+  ulong uVar4;
+  ulong *puVar5;
+  bool bVar6;
+  ulong *local_c;
+  ulong *puStack_8;
+  
+  uVar3 = *param_1;
+  local_c = param_1;
+  puStack_8 = param_1;
+  if (param_3 == *(ulong *)(uVar3 + 8)) {
+    if (param_1[1] == 0) goto LAB_005b2b5d;
+    this = *(CMemoryAllocatorVariableSize **)(param_3 + 0x10);
+    if (*(int *)param_4 < (int)this) goto LAB_005b2a64;
+    if (*(int *)param_4 <= (int)this) goto LAB_005b2a7a;
+    uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    uVar4 = param_3;
+    if (uVar3 != *param_1) {
+      if (*(int *)(uVar3 + 0x10) <= *(int *)param_4) goto LAB_005b2b5d;
+      iVar1 = *(int *)(param_3 + 0xc);
+joined_r0x005b2b39:
+      if (iVar1 == 0) {
+        uVar3 = 0;
+        uVar4 = param_3;
+      }
+      else {
+        uVar4 = uVar3;
+        param_3 = 0;
+      }
+      goto LAB_005b2a66;
+    }
+  }
+  else {
+    if (param_3 != uVar3) {
+      uVar4 = RBTree__GetMaxNode(param_3);
+      iVar1 = *(int *)param_4;
+      bVar2 = iVar1 < *(int *)(param_3 + 0x10);
+      if ((!bVar2) || (iVar1 <= *(int *)(uVar4 + 0x10))) {
+        uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(param_4);
+        bVar6 = !bVar2;
+        if (!bVar2) {
+          bVar6 = *(int *)(param_3 + 0x10) < iVar1;
+          if (!bVar6) goto LAB_005b2a7a;
+          if ((uVar3 == *param_1) || (iVar1 < *(int *)(uVar3 + 0x10))) {
+            iVar1 = *(int *)(param_3 + 0xc);
+            goto joined_r0x005b2b39;
+          }
+        }
+        if (bVar2 == bVar6) {
+LAB_005b2a7a:
+          *param_2 = param_3;
+          return param_2;
+        }
+LAB_005b2b5d:
+        puVar5 = (ulong *)Map_InsertLongKey(&local_c,param_4);
+        *param_2 = *puVar5;
+        return param_2;
+      }
+      if (*(int *)(uVar4 + 0xc) == 0) {
+        uVar3 = 0;
+        param_3 = uVar4;
+        goto LAB_005b2a66;
+      }
+LAB_005b2a64:
+      uVar3 = param_3;
+      uVar4 = param_3;
+      param_3 = 0;
+      goto LAB_005b2a66;
+    }
+    uVar4 = *(ulong *)(uVar3 + 0xc);
+    if (*(int *)param_4 <= *(int *)(*(ulong *)(uVar3 + 0xc) + 0x10)) goto LAB_005b2b5d;
+  }
+  uVar3 = 0;
+LAB_005b2a66:
+  CMemoryAllocatorVariableSize__InsertNode(param_2,uVar3,uVar4,param_4,param_3);
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005b2b76 319 1
+@@CALLERS TransferIn
+@@CALLEES GetNoAllocatedAreas, RBTree::GetMaxNode, FUN_005b2555, ScriptDataTreeInsert
+@@STRINGS 
+@@DECOMP
+
+ulong * __thiscall
+FUN_005b2b76(ulong *param_1,ulong *param_2,ulong param_3,CMemoryAllocatorVariableSize *param_4)
+
+{
+  CMemoryAllocatorVariableSize *this;
+  int iVar1;
+  uint uVar2;
+  ulong uVar3;
+  ulong uVar4;
+  ulong *puVar5;
+  bool bVar6;
+  bool bVar7;
+  ulong *local_c;
+  ulong *puStack_8;
+  
+  uVar3 = *param_1;
+  local_c = param_1;
+  puStack_8 = param_1;
+  if (param_3 == *(ulong *)(uVar3 + 8)) {
+    if (param_1[1] == 0) goto LAB_005b2c9c;
+    this = *(CMemoryAllocatorVariableSize **)(param_3 + 0x10);
+    if (*(CMemoryAllocatorVariableSize **)param_4 < this) goto LAB_005b2ba3;
+    if (*(CMemoryAllocatorVariableSize **)param_4 <= this) goto LAB_005b2bb9;
+    uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    uVar4 = param_3;
+    if (uVar3 != *param_1) {
+      if (*(uint *)(uVar3 + 0x10) <= *(uint *)param_4) goto LAB_005b2c9c;
+      iVar1 = *(int *)(param_3 + 0xc);
+joined_r0x005b2c78:
+      if (iVar1 == 0) {
+        uVar3 = 0;
+        uVar4 = param_3;
+      }
+      else {
+        uVar4 = uVar3;
+        param_3 = 0;
+      }
+      goto LAB_005b2ba5;
+    }
+  }
+  else {
+    if (param_3 != uVar3) {
+      uVar4 = RBTree__GetMaxNode(param_3);
+      uVar2 = *(uint *)param_4;
+      bVar6 = uVar2 < *(uint *)(param_3 + 0x10);
+      if ((!bVar6) || (uVar2 <= *(uint *)(uVar4 + 0x10))) {
+        uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(param_4);
+        bVar7 = !bVar6;
+        if (!bVar6) {
+          bVar7 = *(uint *)(param_3 + 0x10) < uVar2;
+          if (!bVar7) goto LAB_005b2bb9;
+          if ((uVar3 == *param_1) || (uVar2 < *(uint *)(uVar3 + 0x10))) {
+            iVar1 = *(int *)(param_3 + 0xc);
+            goto joined_r0x005b2c78;
+          }
+        }
+        if (bVar6 == bVar7) {
+LAB_005b2bb9:
+          *param_2 = param_3;
+          return param_2;
+        }
+LAB_005b2c9c:
+        puVar5 = (ulong *)FUN_005b2555(&local_c,param_4);
+        *param_2 = *puVar5;
+        return param_2;
+      }
+      if (*(int *)(uVar4 + 0xc) == 0) {
+        uVar3 = 0;
+        param_3 = uVar4;
+        goto LAB_005b2ba5;
+      }
+LAB_005b2ba3:
+      uVar3 = param_3;
+      uVar4 = param_3;
+      param_3 = 0;
+      goto LAB_005b2ba5;
+    }
+    uVar4 = *(ulong *)(uVar3 + 0xc);
+    if (*(uint *)param_4 <= *(uint *)(*(ulong *)(uVar3 + 0xc) + 0x10)) goto LAB_005b2c9c;
+  }
+  uVar3 = 0;
+LAB_005b2ba5:
+  ScriptDataTreeInsert(param_2,uVar3,uVar4,param_4,param_3);
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005b2cb5 319 1
+@@CALLERS TransferIn
+@@CALLEES GetNoAllocatedAreas, RBTree::GetMaxNode, TreeInsertNode_RightChild, FUN_005b2663
+@@STRINGS 
+@@DECOMP
+
+ulong * __thiscall
+FUN_005b2cb5(ulong *param_1,ulong *param_2,ulong param_3,CMemoryAllocatorVariableSize *param_4)
+
+{
+  CMemoryAllocatorVariableSize *this;
+  int iVar1;
+  uint uVar2;
+  ulong uVar3;
+  ulong uVar4;
+  ulong *puVar5;
+  bool bVar6;
+  bool bVar7;
+  ulong *local_c;
+  ulong *puStack_8;
+  
+  uVar3 = *param_1;
+  local_c = param_1;
+  puStack_8 = param_1;
+  if (param_3 == *(ulong *)(uVar3 + 8)) {
+    if (param_1[1] == 0) goto LAB_005b2ddb;
+    this = *(CMemoryAllocatorVariableSize **)(param_3 + 0x10);
+    if (*(CMemoryAllocatorVariableSize **)param_4 < this) goto LAB_005b2ce2;
+    if (*(CMemoryAllocatorVariableSize **)param_4 <= this) goto LAB_005b2cf8;
+    uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    uVar4 = param_3;
+    if (uVar3 != *param_1) {
+      if (*(uint *)(uVar3 + 0x10) <= *(uint *)param_4) goto LAB_005b2ddb;
+      iVar1 = *(int *)(param_3 + 0xc);
+joined_r0x005b2db7:
+      if (iVar1 == 0) {
+        uVar3 = 0;
+        uVar4 = param_3;
+      }
+      else {
+        uVar4 = uVar3;
+        param_3 = 0;
+      }
+      goto LAB_005b2ce4;
+    }
+  }
+  else {
+    if (param_3 != uVar3) {
+      uVar4 = RBTree__GetMaxNode(param_3);
+      uVar2 = *(uint *)param_4;
+      bVar6 = uVar2 < *(uint *)(param_3 + 0x10);
+      if ((!bVar6) || (uVar2 <= *(uint *)(uVar4 + 0x10))) {
+        uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(param_4);
+        bVar7 = !bVar6;
+        if (!bVar6) {
+          bVar7 = *(uint *)(param_3 + 0x10) < uVar2;
+          if (!bVar7) goto LAB_005b2cf8;
+          if ((uVar3 == *param_1) || (uVar2 < *(uint *)(uVar3 + 0x10))) {
+            iVar1 = *(int *)(param_3 + 0xc);
+            goto joined_r0x005b2db7;
+          }
+        }
+        if (bVar6 == bVar7) {
+LAB_005b2cf8:
+          *param_2 = param_3;
+          return param_2;
+        }
+LAB_005b2ddb:
+        puVar5 = (ulong *)FUN_005b2663(&local_c,param_4);
+        *param_2 = *puVar5;
+        return param_2;
+      }
+      if (*(int *)(uVar4 + 0xc) == 0) {
+        uVar3 = 0;
+        param_3 = uVar4;
+        goto LAB_005b2ce4;
+      }
+LAB_005b2ce2:
+      uVar3 = param_3;
+      uVar4 = param_3;
+      param_3 = 0;
+      goto LAB_005b2ce4;
+    }
+    uVar4 = *(ulong *)(uVar3 + 0xc);
+    if (*(uint *)param_4 <= *(uint *)(*(ulong *)(uVar3 + 0xc) + 0x10)) goto LAB_005b2ddb;
+  }
+  uVar3 = 0;
+LAB_005b2ce4:
+  TreeInsertNode_RightChild(param_2,uVar3,uVar4,param_4,param_3);
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005b2efe 319 1
+@@CALLERS TransferIn
+@@CALLEES GetNoAllocatedAreas, RBTree::GetMaxNode, CRegionDialog_InsertSortedByPrice, Shop_InsertItemByPrice
+@@STRINGS 
+@@DECOMP
+
+ulong * __thiscall
+FUN_005b2efe(ulong *param_1,ulong *param_2,ulong param_3,CMemoryAllocatorVariableSize *param_4)
+
+{
+  CMemoryAllocatorVariableSize *this;
+  int iVar1;
+  uint uVar2;
+  ulong uVar3;
+  ulong uVar4;
+  ulong *puVar5;
+  bool bVar6;
+  bool bVar7;
+  ulong *local_c;
+  ulong *puStack_8;
+  
+  uVar3 = *param_1;
+  local_c = param_1;
+  puStack_8 = param_1;
+  if (param_3 == *(ulong *)(uVar3 + 8)) {
+    if (param_1[1] == 0) goto LAB_005b3024;
+    this = *(CMemoryAllocatorVariableSize **)(param_3 + 0x10);
+    if (*(CMemoryAllocatorVariableSize **)param_4 < this) goto LAB_005b2f2b;
+    if (*(CMemoryAllocatorVariableSize **)param_4 <= this) goto LAB_005b2f41;
+    uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    uVar4 = param_3;
+    if (uVar3 != *param_1) {
+      if (*(uint *)(uVar3 + 0x10) <= *(uint *)param_4) goto LAB_005b3024;
+      iVar1 = *(int *)(param_3 + 0xc);
+joined_r0x005b3000:
+      if (iVar1 == 0) {
+        uVar3 = 0;
+        uVar4 = param_3;
+      }
+      else {
+        uVar4 = uVar3;
+        param_3 = 0;
+      }
+      goto LAB_005b2f2d;
+    }
+  }
+  else {
+    if (param_3 != uVar3) {
+      uVar4 = RBTree__GetMaxNode(param_3);
+      uVar2 = *(uint *)param_4;
+      bVar6 = uVar2 < *(uint *)(param_3 + 0x10);
+      if ((!bVar6) || (uVar2 <= *(uint *)(uVar4 + 0x10))) {
+        uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(param_4);
+        bVar7 = !bVar6;
+        if (!bVar6) {
+          bVar7 = *(uint *)(param_3 + 0x10) < uVar2;
+          if (!bVar7) goto LAB_005b2f41;
+          if ((uVar3 == *param_1) || (uVar2 < *(uint *)(uVar3 + 0x10))) {
+            iVar1 = *(int *)(param_3 + 0xc);
+            goto joined_r0x005b3000;
+          }
+        }
+        if (bVar6 == bVar7) {
+LAB_005b2f41:
+          *param_2 = param_3;
+          return param_2;
+        }
+LAB_005b3024:
+        puVar5 = (ulong *)Shop_InsertItemByPrice(&local_c,param_4);
+        *param_2 = *puVar5;
+        return param_2;
+      }
+      if (*(int *)(uVar4 + 0xc) == 0) {
+        uVar3 = 0;
+        param_3 = uVar4;
+        goto LAB_005b2f2d;
+      }
+LAB_005b2f2b:
+      uVar3 = param_3;
+      uVar4 = param_3;
+      param_3 = 0;
+      goto LAB_005b2f2d;
+    }
+    uVar4 = *(ulong *)(uVar3 + 0xc);
+    if (*(uint *)param_4 <= *(uint *)(*(ulong *)(uVar3 + 0xc) + 0x10)) goto LAB_005b3024;
+  }
+  uVar3 = 0;
+LAB_005b2f2d:
+  CRegionDialog_InsertSortedByPrice(param_2,uVar3,uVar4,param_4,param_3);
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005b425b 209 1
+@@CALLERS 
+@@CALLEES std::bitset::test, LowerBound, CArray_InsertNode, AddAppearanceModifierWithReplace, RemoveAllAppearanceModifiers, std::list::list, OnReadFinished
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_005b425b(int param_1)
+
+{
+  int iVar1;
+  CTCHeroAttachableAppearanceModifiers *this;
+  char cVar2;
+  int *piVar3;
+  int *piVar4;
+  ETCInterfaceType local_10;
+  int *local_c;
+  undefined1 local_5;
+  
+  if (*(int *)(param_1 + 0x158) != 0) {
+    iVar1 = *(int *)(param_1 + 4);
+    cVar2 = std__bitset__test(0x5e);
+    if (cVar2 != '\0') {
+      local_10 = 0x5e;
+      CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>::
+      LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                  *)(iVar1 + 0x44),&local_10);
+      iVar1 = *(int *)(param_1 + 0x158);
+      cVar2 = std__bitset__test(0x5e);
+      if (cVar2 != '\0') {
+        local_10 = 0x5e;
+        piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                        ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                      *)(iVar1 + 0x44),&local_10);
+        piVar4 = *(int **)(iVar1 + 0x48);
+        if ((piVar3 == piVar4) || (0x5e < *piVar3)) {
+          piVar3 = piVar4;
+        }
+        this = (CTCHeroAttachableAppearanceModifiers *)piVar3[1];
+        std__list__list(&local_5);
+        CArray_InsertNode(&local_c,2);
+        CTCHeroAttachableAppearanceModifiers::RemoveAllAppearanceModifiers(this,2);
+        piVar4 = (int *)*local_c;
+        if (piVar4 != local_c) {
+          do {
+            CTCHeroAttachableAppearanceModifiers::AddAppearanceModifierWithReplace(this,piVar4[2]);
+            piVar4 = (int *)*piVar4;
+          } while (piVar4 != local_c);
+        }
+        CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&local_c);
+      }
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005b9de7 28 1
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_005b9de7(int param_1)
+
+{
+  void *pvVar1;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0x14);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005b9ef3 28 1
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+void * FUN_005b9ef3(int param_1)
+
+{
+  void *pvVar1;
+  
+  if (param_1 == 0) {
+    pvVar1 = (void *)0x0;
+  }
+  else {
+    pvVar1 = malloc(param_1 * 0xc);
+  }
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005ba23a 105 1
+@@CALLERS _Umove<EWeaponClass*>
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_005ba23a(int *param_1,int *param_2,int param_3)
+
+{
+  int iVar1;
+  
+  iVar1 = ((int)param_2 - (int)param_1) / 0xc >> 2;
+  while( true ) {
+    if (iVar1 < 1) {
+      iVar1 = ((int)param_2 - (int)param_1) / 0xc;
+      if (iVar1 != 1) {
+        if (iVar1 != 2) {
+          if (iVar1 != 3) {
+            return param_2;
+          }
+          if (*param_1 == param_3) {
+            return param_1;
+          }
+          param_1 = param_1 + 3;
+        }
+        if (*param_1 == param_3) {
+          return param_1;
+        }
+        param_1 = param_1 + 3;
+      }
+      if (*param_1 != param_3) {
+        return param_2;
+      }
+      return param_1;
+    }
+    if (*param_1 == param_3) {
+      return param_1;
+    }
+    if (param_1[3] == param_3) {
+      return param_1 + 3;
+    }
+    if (param_1[6] == param_3) {
+      return param_1 + 6;
+    }
+    if (param_1[9] == param_3) break;
+    param_1 = param_1 + 0xc;
+    iVar1 = iVar1 + -1;
+  }
+  return param_1 + 9;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005ba2a3 105 1
+@@CALLERS _Umove<EWeaponClass*>
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_005ba2a3(int *param_1,int *param_2,int param_3)
+
+{
+  int iVar1;
+  
+  iVar1 = ((int)param_2 - (int)param_1) / 0x18 >> 2;
+  while( true ) {
+    if (iVar1 < 1) {
+      iVar1 = ((int)param_2 - (int)param_1) / 0x18;
+      if (iVar1 != 1) {
+        if (iVar1 != 2) {
+          if (iVar1 != 3) {
+            return param_2;
+          }
+          if (*param_1 == param_3) {
+            return param_1;
+          }
+          param_1 = param_1 + 6;
+        }
+        if (*param_1 == param_3) {
+          return param_1;
+        }
+        param_1 = param_1 + 6;
+      }
+      if (*param_1 != param_3) {
+        return param_2;
+      }
+      return param_1;
+    }
+    if (*param_1 == param_3) {
+      return param_1;
+    }
+    if (param_1[6] == param_3) {
+      return param_1 + 6;
+    }
+    if (param_1[0xc] == param_3) {
+      return param_1 + 0xc;
+    }
+    if (param_1[0x12] == param_3) break;
+    param_1 = param_1 + 0x18;
+    iVar1 = iVar1 + -1;
+  }
+  return param_1 + 0x12;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005ba30d 100 1
+@@CALLERS _Umove<EWeaponClass*>
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_005ba30d(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  iVar2 = (int)param_2 - (int)param_1 >> 4;
+  if (0 < iVar2) {
+    iVar1 = *param_3;
+    do {
+      if (*param_1 == iVar1) {
+        return param_1;
+      }
+      if (param_1[1] == iVar1) {
+        return param_1 + 1;
+      }
+      if (param_1[2] == iVar1) {
+        return param_1 + 2;
+      }
+      if (param_1[3] == iVar1) {
+        return param_1 + 3;
+      }
+      param_1 = param_1 + 4;
+      iVar2 = iVar2 + -1;
+    } while (0 < iVar2);
+  }
+  iVar2 = (int)param_2 - (int)param_1 >> 2;
+  if (iVar2 != 1) {
+    if (iVar2 != 2) {
+      if (iVar2 != 3) {
+        return param_2;
+      }
+      if (*param_1 == *param_3) {
+        return param_1;
+      }
+      param_1 = param_1 + 1;
+    }
+    if (*param_1 == *param_3) {
+      return param_1;
+    }
+    param_1 = param_1 + 1;
+  }
+  if (*param_1 != *param_3) {
+    return param_2;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005ba5ad 51 1
+@@CALLERS Add
+@@CALLEES FUN_005b9de7
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_005ba5ad(int *param_1,int param_2)
+
+{
+  int iVar1;
+  
+  *param_1 = 0;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  iVar1 = FUN_005b9de7(param_2,0);
+  *param_1 = iVar1;
+  param_1[1] = iVar1;
+  param_1[2] = iVar1 + param_2 * 0x14;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005ba8cf 136 1
+@@CALLERS 
+@@CALLEES FUN_005ba3ac, CMemoryAllocatorVariableSize::BalanceTree
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_005ba8cf(int *param_1,int *param_2,int param_3,int param_4,int *param_5,int param_6)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  if ((param_4 == *param_1) ||
+     ((param_6 == 0 && ((param_3 != 0 || (*param_5 < *(int *)(param_4 + 0x10))))))) {
+    iVar1 = FUN_005ba3ac(param_5);
+    *(int *)(param_4 + 8) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != iVar2) {
+      if (param_4 == *(int *)(iVar2 + 8)) {
+        *(int *)(iVar2 + 8) = iVar1;
+      }
+      goto LAB_005ba92f;
+    }
+    *(int *)(iVar2 + 4) = iVar1;
+    iVar2 = *param_1;
+  }
+  else {
+    iVar1 = FUN_005ba3ac(param_5);
+    *(int *)(param_4 + 0xc) = iVar1;
+    iVar2 = *param_1;
+    if (param_4 != *(int *)(iVar2 + 0xc)) goto LAB_005ba92f;
+  }
+  *(int *)(iVar2 + 0xc) = iVar1;
+LAB_005ba92f:
+  *(undefined4 *)(iVar1 + 8) = 0;
+  *(undefined4 *)(iVar1 + 0xc) = 0;
+  *(int *)(iVar1 + 4) = param_4;
+  CMemoryAllocatorVariableSize__BalanceTree(iVar1,*param_1 + 4);
+  param_1[1] = param_1[1] + 1;
+  *param_2 = iVar1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005ba986 56 1
+@@CALLERS SetAsWearing
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_005ba986(int *param_1,int *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  int iVar4;
+  
+  iVar1 = *param_1;
+  iVar2 = iVar1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar3 = *(int *)(iVar1 + 4);
+    do {
+      if (*(int *)(iVar3 + 0x10) < *param_2) {
+        iVar4 = *(int *)(iVar3 + 0xc);
+      }
+      else {
+        iVar4 = *(int *)(iVar3 + 8);
+        iVar2 = iVar3;
+      }
+      iVar3 = iVar4;
+    } while (iVar4 != 0);
+  }
+  if ((iVar2 == iVar1) || (*param_2 < *(int *)(iVar2 + 0x10))) {
+    iVar2 = iVar1;
+  }
+  return iVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005baa6b 54 1
+@@CALLERS std::vector::operator=
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_005baa6b(undefined4 *param_1,int param_2)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = (void *)0x0;
+  *param_1 = 0;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  if (param_2 != 0) {
+    pvVar1 = malloc(param_2 << 4);
+  }
+  param_1[2] = (void *)(param_2 * 0x10 + (int)pvVar1);
+  *param_1 = pvVar1;
+  param_1[1] = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bab9d 27 1
+@@CALLERS CalculateArmorValues
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_005bab9d(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005babe1 22 1
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_005babe1(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x14);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bac2e 22 1
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_005bac2e(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bac73 37 1
+@@CALLERS operator[]
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_005bac73(int *param_1,int *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  
+  iVar1 = *param_1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar2 = *(int *)(iVar1 + 4);
+    do {
+      if (*(int *)(iVar2 + 0x10) < *param_2) {
+        iVar3 = *(int *)(iVar2 + 0xc);
+      }
+      else {
+        iVar3 = *(int *)(iVar2 + 8);
+        iVar1 = iVar2;
+      }
+      iVar2 = iVar3;
+    } while (iVar3 != 0);
+  }
+  return iVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bac98 37 1
+@@CALLERS operator[]
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_005bac98(int *param_1,int *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  
+  iVar1 = *param_1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar2 = *(int *)(iVar1 + 4);
+    do {
+      if (*(int *)(iVar2 + 0x10) < *param_2) {
+        iVar3 = *(int *)(iVar2 + 0xc);
+      }
+      else {
+        iVar3 = *(int *)(iVar2 + 8);
+        iVar1 = iVar2;
+      }
+      iVar2 = iVar3;
+    } while (iVar3 != 0);
+  }
+  return iVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bacbd 47 1
+@@CALLERS 
+@@CALLEES CMemoryAllocatorVariableSize::Erase, free
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_005bacbd(int *param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  void *_Memory;
+  
+  iVar1 = *param_1;
+  _Memory = (void *)CMemoryAllocatorVariableSize__Erase(param_2,iVar1 + 4,iVar1 + 8,iVar1 + 0xc);
+  if (_Memory != (void *)0x0) {
+    free(_Memory);
+  }
+  param_1[1] = param_1[1] + -1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bacec 37 1
+@@CALLERS operator[]
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_005bacec(int *param_1,int *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  
+  iVar1 = *param_1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar2 = *(int *)(iVar1 + 4);
+    do {
+      if (*(int *)(iVar2 + 0x10) < *param_2) {
+        iVar3 = *(int *)(iVar2 + 0xc);
+      }
+      else {
+        iVar3 = *(int *)(iVar2 + 8);
+        iVar1 = iVar2;
+      }
+      iVar2 = iVar3;
+    } while (iVar3 != 0);
+  }
+  return iVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bad11 37 1
+@@CALLERS operator()
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_005bad11(int *param_1,int *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  
+  iVar1 = *param_1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar2 = *(int *)(iVar1 + 4);
+    do {
+      if (*(int *)(iVar2 + 0x10) < *param_2) {
+        iVar3 = *(int *)(iVar2 + 0xc);
+      }
+      else {
+        iVar3 = *(int *)(iVar2 + 8);
+        iVar1 = iVar2;
+      }
+      iVar2 = iVar3;
+    } while (iVar3 != 0);
+  }
+  return iVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bad36 37 1
+@@CALLERS operator()
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_005bad36(int *param_1,int *param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  
+  iVar1 = *param_1;
+  if (*(int *)(iVar1 + 4) != 0) {
+    iVar2 = *(int *)(iVar1 + 4);
+    do {
+      if (*param_2 < *(int *)(iVar2 + 0x10)) {
+        iVar3 = *(int *)(iVar2 + 8);
+        iVar1 = iVar2;
+      }
+      else {
+        iVar3 = *(int *)(iVar2 + 0xc);
+      }
+      iVar2 = iVar3;
+    } while (iVar3 != 0);
+  }
+  return iVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bad5b 134 1
+@@CALLERS bad_alloc
+@@CALLEES RBTree::GetMaxNode, FUN_005ba8cf
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_005bad5b(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  bool bVar2;
+  int iVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  iVar5 = *(int *)(iVar1 + 4);
+  bVar2 = true;
+  iVar6 = iVar1;
+  if (iVar5 != 0) {
+    do {
+      iVar6 = iVar5;
+      bVar2 = *param_3 < *(int *)(iVar6 + 0x10);
+      if (bVar2) {
+        iVar5 = *(int *)(iVar6 + 8);
+      }
+      else {
+        iVar5 = *(int *)(iVar6 + 0xc);
+      }
+    } while (iVar5 != 0);
+  }
+  iVar3 = iVar6;
+  if (bVar2) {
+    iVar7 = iVar6;
+    if (iVar6 == *(int *)(iVar1 + 8)) goto LAB_005badb7;
+    iVar3 = RBTree__GetMaxNode(iVar6);
+  }
+  iVar7 = iVar5;
+  if (*param_3 <= *(int *)(iVar3 + 0x10)) {
+    *param_2 = iVar3;
+    *(undefined1 *)(param_2 + 1) = 0;
+    return param_2;
+  }
+LAB_005badb7:
+  piVar4 = (int *)FUN_005ba8cf(&param_3,iVar7,iVar6,param_3,0);
+  *param_2 = *piVar4;
+  *(undefined1 *)(param_2 + 1) = 1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bafe3 37 1
+@@CALLERS Unwind@00fbdab0
+@@CALLEES _Copy_impl<CComplexNumber*,CComplexNumber*>
+@@STRINGS 
+@@DECOMP
+
+CComplexNumber * __thiscall
+FUN_005bafe3(int param_1,CComplexNumber *param_2,CComplexNumber *param_3)
+
+{
+  CComplexNumber *pCVar1;
+  
+  pCVar1 = std::_Copy_impl<CComplexNumber*,CComplexNumber*>
+                     (param_3,*(CComplexNumber **)(param_1 + 4),param_2);
+  *(CComplexNumber **)(param_1 + 4) = pCVar1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bb025 42 1
+@@CALLERS CopyBackBufferToTexture
+@@CALLEES FUN_005babe1
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_005bb025(int *param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  FUN_005babe1(param_3);
+  param_1[1] = 0;
+  *(undefined1 *)*param_1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bb066 42 1
+@@CALLERS CopyBackBufferToTexture
+@@CALLEES FUN_005bac2e
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_005bb066(int *param_1,undefined4 param_2,undefined4 param_3)
+
+{
+  FUN_005bac2e(param_3);
+  param_1[1] = 0;
+  *(undefined1 *)*param_1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bb102 68 1
+@@CALLERS BinarySearch_LowerBound
+@@CALLEES GetNoAllocatedAreas, OnKill, FUN_005bacbd
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_005bb102(CMemoryAllocatorVariableSize *param_1,ulong param_2,ulong param_3)
+
+{
+  ulong uVar1;
+  CMemoryAllocatorVariableSize *extraout_ECX;
+  
+  if ((param_2 == *(ulong *)(*(ulong *)param_1 + 8)) && (param_3 == *(ulong *)param_1)) {
+    CTCCarryable::OnKill((CTCCarryable *)param_1);
+  }
+  else {
+    while (param_2 != param_3) {
+      uVar1 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(param_1);
+      FUN_005bacbd(param_2);
+      param_1 = extraout_ECX;
+      param_2 = uVar1;
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bb2a8 134 1
+@@CALLERS 
+@@CALLEES RBTree::GetMaxNode, TreeInsertNode_24Byte
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_005bb2a8(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  bool bVar2;
+  int iVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  iVar5 = *(int *)(iVar1 + 4);
+  bVar2 = true;
+  iVar6 = iVar1;
+  if (iVar5 != 0) {
+    do {
+      iVar6 = iVar5;
+      bVar2 = *param_3 < *(int *)(iVar6 + 0x10);
+      if (bVar2) {
+        iVar5 = *(int *)(iVar6 + 8);
+      }
+      else {
+        iVar5 = *(int *)(iVar6 + 0xc);
+      }
+    } while (iVar5 != 0);
+  }
+  iVar3 = iVar6;
+  if (bVar2) {
+    iVar7 = iVar6;
+    if (iVar6 == *(int *)(iVar1 + 8)) goto LAB_005bb304;
+    iVar3 = RBTree__GetMaxNode(iVar6);
+  }
+  iVar7 = iVar5;
+  if (*param_3 <= *(int *)(iVar3 + 0x10)) {
+    *param_2 = iVar3;
+    *(undefined1 *)(param_2 + 1) = 0;
+    return param_2;
+  }
+LAB_005bb304:
+  piVar4 = (int *)TreeInsertNode_24Byte(&param_3,iVar7,iVar6,param_3,0);
+  *param_2 = *piVar4;
+  *(undefined1 *)(param_2 + 1) = 1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bb409 181 1
+@@CALLERS 
+@@CALLEES _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>, malloc, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, free
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_005bb409(int *param_1,undefined4 param_2,ulong *param_3,undefined4 param_4,void *param_5,
+            char param_6)
+
+{
+  uint *puVar1;
+  uint *extraout_EAX;
+  void **ppvVar2;
+  int iVar3;
+  void *local_8;
+  
+  local_8 = (void *)(param_1[1] - *param_1 >> 3);
+  ppvVar2 = &param_5;
+  if (param_5 <= local_8) {
+    ppvVar2 = &local_8;
+  }
+  iVar3 = (int)*ppvVar2 + (int)local_8;
+  if (iVar3 == 0) {
+    local_8 = (void *)0x0;
+  }
+  else {
+    local_8 = malloc(iVar3 * 8);
+  }
+  puVar1 = std::
+           _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                     (*param_1,param_2,local_8,&stack0x00000017);
+  if (param_5 == (void *)0x1) {
+    if (puVar1 != (uint *)0x0) {
+      *puVar1 = *param_3;
+      puVar1[1] = param_3[1];
+    }
+    puVar1 = puVar1 + 2;
+  }
+  else {
+    std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>(puVar1,(uint)param_5,param_3);
+    puVar1 = extraout_EAX;
+  }
+  if (param_6 == '\0') {
+    puVar1 = std::
+             _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                       (param_2,param_1[1],puVar1,&stack0x00000017);
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  *param_1 = (int)local_8;
+  param_1[1] = (int)puVar1;
+  param_1[2] = (int)((int)local_8 + iVar3 * 8);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bb4e6 180 1
+@@CALLERS std::vector_PushBack
+@@CALLEES malloc, _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>, free
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_005bb4e6(int *param_1,undefined4 param_2,uint *param_3,undefined4 param_4,void *param_5,
+            char param_6)
+
+{
+  void *pvVar1;
+  uint *puVar2;
+  void **ppvVar3;
+  int iVar4;
+  void *local_8;
+  
+  local_8 = (void *)(param_1[1] - *param_1 >> 2);
+  ppvVar3 = &param_5;
+  if (param_5 <= local_8) {
+    ppvVar3 = &local_8;
+  }
+  iVar4 = (int)*ppvVar3 + (int)local_8;
+  if (iVar4 == 0) {
+    local_8 = (void *)0x0;
+  }
+  else {
+    local_8 = malloc(iVar4 * 4);
+  }
+  puVar2 = std::
+           _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                     (*param_1,param_2,local_8,&stack0x00000017);
+  pvVar1 = param_5;
+  if (param_5 == (void *)0x1) {
+    if (puVar2 != (uint *)0x0) {
+      *puVar2 = *param_3;
+    }
+    puVar2 = puVar2 + 1;
+  }
+  else {
+    for (; pvVar1 != (void *)0x0; pvVar1 = (void *)((int)pvVar1 - 1)) {
+      if (puVar2 != (uint *)0x0) {
+        *puVar2 = *param_3;
+      }
+      puVar2 = puVar2 + 1;
+    }
+  }
+  if (param_6 == '\0') {
+    puVar2 = std::
+             _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>
+                       (param_2,param_1[1],puVar2,&stack0x00000017);
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  *param_1 = (int)local_8;
+  param_1[1] = (int)puVar2;
+  param_1[2] = (int)((int)local_8 + iVar4 * 4);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bb5ef 319 1
+@@CALLERS TransferIn
+@@CALLEES CMemoryAllocatorVariableSize::FindOrInsert, CMemoryAllocatorVariableSize::InsertNode, GetNoAllocatedAreas, RBTree::GetMaxNode
+@@STRINGS 
+@@DECOMP
+
+ulong * __thiscall
+FUN_005bb5ef(ulong *param_1,ulong *param_2,ulong param_3,CMemoryAllocatorVariableSize *param_4)
+
+{
+  CMemoryAllocatorVariableSize *this;
+  int iVar1;
+  bool bVar2;
+  ulong uVar3;
+  ulong uVar4;
+  ulong *puVar5;
+  bool bVar6;
+  ulong *local_c;
+  ulong *puStack_8;
+  
+  uVar3 = *param_1;
+  local_c = param_1;
+  puStack_8 = param_1;
+  if (param_3 == *(ulong *)(uVar3 + 8)) {
+    if (param_1[1] == 0) goto LAB_005bb715;
+    this = *(CMemoryAllocatorVariableSize **)(param_3 + 0x10);
+    if (*(int *)param_4 < (int)this) goto LAB_005bb61c;
+    if (*(int *)param_4 <= (int)this) goto LAB_005bb632;
+    uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    uVar4 = param_3;
+    if (uVar3 != *param_1) {
+      if (*(int *)(uVar3 + 0x10) <= *(int *)param_4) goto LAB_005bb715;
+      iVar1 = *(int *)(param_3 + 0xc);
+joined_r0x005bb6f1:
+      if (iVar1 == 0) {
+        uVar3 = 0;
+        uVar4 = param_3;
+      }
+      else {
+        uVar4 = uVar3;
+        param_3 = 0;
+      }
+      goto LAB_005bb61e;
+    }
+  }
+  else {
+    if (param_3 != uVar3) {
+      uVar4 = RBTree__GetMaxNode(param_3);
+      iVar1 = *(int *)param_4;
+      bVar2 = iVar1 < *(int *)(param_3 + 0x10);
+      if ((!bVar2) || (iVar1 <= *(int *)(uVar4 + 0x10))) {
+        uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(param_4);
+        bVar6 = !bVar2;
+        if (!bVar2) {
+          bVar6 = *(int *)(param_3 + 0x10) < iVar1;
+          if (!bVar6) goto LAB_005bb632;
+          if ((uVar3 == *param_1) || (iVar1 < *(int *)(uVar3 + 0x10))) {
+            iVar1 = *(int *)(param_3 + 0xc);
+            goto joined_r0x005bb6f1;
+          }
+        }
+        if (bVar2 == bVar6) {
+LAB_005bb632:
+          *param_2 = param_3;
+          return param_2;
+        }
+LAB_005bb715:
+        puVar5 = (ulong *)CMemoryAllocatorVariableSize__FindOrInsert(&local_c,param_4);
+        *param_2 = *puVar5;
+        return param_2;
+      }
+      if (*(int *)(uVar4 + 0xc) == 0) {
+        uVar3 = 0;
+        param_3 = uVar4;
+        goto LAB_005bb61e;
+      }
+LAB_005bb61c:
+      uVar3 = param_3;
+      uVar4 = param_3;
+      param_3 = 0;
+      goto LAB_005bb61e;
+    }
+    uVar4 = *(ulong *)(uVar3 + 0xc);
+    if (*(int *)param_4 <= *(int *)(*(ulong *)(uVar3 + 0xc) + 0x10)) goto LAB_005bb715;
+  }
+  uVar3 = 0;
+LAB_005bb61e:
+  CMemoryAllocatorVariableSize__InsertNode(param_2,uVar3,uVar4,param_4,param_3);
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bb85a 319 1
+@@CALLERS TransferIn
+@@CALLEES GetNoAllocatedAreas, RBTree::GetMaxNode, TreeInsertNode_24Byte, FUN_005bb2a8
+@@STRINGS 
+@@DECOMP
+
+ulong * __thiscall
+FUN_005bb85a(ulong *param_1,ulong *param_2,ulong param_3,CMemoryAllocatorVariableSize *param_4)
+
+{
+  CMemoryAllocatorVariableSize *this;
+  int iVar1;
+  bool bVar2;
+  ulong uVar3;
+  ulong uVar4;
+  ulong *puVar5;
+  bool bVar6;
+  ulong *local_c;
+  ulong *puStack_8;
+  
+  uVar3 = *param_1;
+  local_c = param_1;
+  puStack_8 = param_1;
+  if (param_3 == *(ulong *)(uVar3 + 8)) {
+    if (param_1[1] == 0) goto LAB_005bb980;
+    this = *(CMemoryAllocatorVariableSize **)(param_3 + 0x10);
+    if (*(int *)param_4 < (int)this) goto LAB_005bb887;
+    if (*(int *)param_4 <= (int)this) goto LAB_005bb89d;
+    uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    uVar4 = param_3;
+    if (uVar3 != *param_1) {
+      if (*(int *)(uVar3 + 0x10) <= *(int *)param_4) goto LAB_005bb980;
+      iVar1 = *(int *)(param_3 + 0xc);
+joined_r0x005bb95c:
+      if (iVar1 == 0) {
+        uVar3 = 0;
+        uVar4 = param_3;
+      }
+      else {
+        uVar4 = uVar3;
+        param_3 = 0;
+      }
+      goto LAB_005bb889;
+    }
+  }
+  else {
+    if (param_3 != uVar3) {
+      uVar4 = RBTree__GetMaxNode(param_3);
+      iVar1 = *(int *)param_4;
+      bVar2 = iVar1 < *(int *)(param_3 + 0x10);
+      if ((!bVar2) || (iVar1 <= *(int *)(uVar4 + 0x10))) {
+        uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(param_4);
+        bVar6 = !bVar2;
+        if (!bVar2) {
+          bVar6 = *(int *)(param_3 + 0x10) < iVar1;
+          if (!bVar6) goto LAB_005bb89d;
+          if ((uVar3 == *param_1) || (iVar1 < *(int *)(uVar3 + 0x10))) {
+            iVar1 = *(int *)(param_3 + 0xc);
+            goto joined_r0x005bb95c;
+          }
+        }
+        if (bVar2 == bVar6) {
+LAB_005bb89d:
+          *param_2 = param_3;
+          return param_2;
+        }
+LAB_005bb980:
+        puVar5 = (ulong *)FUN_005bb2a8(&local_c,param_4);
+        *param_2 = *puVar5;
+        return param_2;
+      }
+      if (*(int *)(uVar4 + 0xc) == 0) {
+        uVar3 = 0;
+        param_3 = uVar4;
+        goto LAB_005bb889;
+      }
+LAB_005bb887:
+      uVar3 = param_3;
+      uVar4 = param_3;
+      param_3 = 0;
+      goto LAB_005bb889;
+    }
+    uVar4 = *(ulong *)(uVar3 + 0xc);
+    if (*(int *)param_4 <= *(int *)(*(ulong *)(uVar3 + 0xc) + 0x10)) goto LAB_005bb980;
+  }
+  uVar3 = 0;
+LAB_005bb889:
+  TreeInsertNode_24Byte(param_2,uVar3,uVar4,param_4,param_3);
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bba5b 57 1
+@@CALLERS AddClothingMenuEntry
+@@CALLEES FUN_005bb409
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_005bba5b(int param_1,undefined4 *param_2)
+
+{
+  undefined4 *puVar1;
+  
+  puVar1 = *(undefined4 **)(param_1 + 4);
+  if (puVar1 == *(undefined4 **)(param_1 + 8)) {
+    FUN_005bb409(puVar1,param_2,(int)&param_2 + 3,1,1);
+  }
+  else {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = *param_2;
+      puVar1[1] = param_2[1];
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 8;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bbaf9 59 1
+@@CALLERS 
+@@CALLEES ~CTCShotDefinitionProjectile, CMemoryAllocatorVariableSize::Erase, free
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_005bbaf9(int *param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  void *_Memory;
+  
+  iVar1 = *param_1;
+  _Memory = (void *)CMemoryAllocatorVariableSize__Erase(param_2,iVar1 + 4,iVar1 + 8,iVar1 + 0xc);
+  NThingShot::CTCShotDefinitionProjectile::~CTCShotDefinitionProjectile
+            ((CTCShotDefinitionProjectile *)((int)_Memory + 0x10));
+  if (_Memory != (void *)0x0) {
+    free(_Memory);
+  }
+  param_1[1] = param_1[1] + -1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bbd46 134 1
+@@CALLERS 
+@@CALLEES RBTree::GetMaxNode, ScriptDataTreeInsert_RightBranch
+@@STRINGS 
+@@DECOMP
+
+int * __thiscall FUN_005bbd46(int *param_1,int *param_2,int *param_3)
+
+{
+  int iVar1;
+  bool bVar2;
+  int iVar3;
+  int *piVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  
+  iVar1 = *param_1;
+  iVar5 = *(int *)(iVar1 + 4);
+  bVar2 = true;
+  iVar6 = iVar1;
+  if (iVar5 != 0) {
+    do {
+      iVar6 = iVar5;
+      bVar2 = *param_3 < *(int *)(iVar6 + 0x10);
+      if (bVar2) {
+        iVar5 = *(int *)(iVar6 + 8);
+      }
+      else {
+        iVar5 = *(int *)(iVar6 + 0xc);
+      }
+    } while (iVar5 != 0);
+  }
+  iVar3 = iVar6;
+  if (bVar2) {
+    iVar7 = iVar6;
+    if (iVar6 == *(int *)(iVar1 + 8)) goto LAB_005bbda2;
+    iVar3 = RBTree__GetMaxNode(iVar6);
+  }
+  iVar7 = iVar5;
+  if (*param_3 <= *(int *)(iVar3 + 0x10)) {
+    *param_2 = iVar3;
+    *(undefined1 *)(param_2 + 1) = 0;
+    return param_2;
+  }
+LAB_005bbda2:
+  piVar4 = (int *)ScriptDataTreeInsert_RightBranch(&param_3,iVar7,iVar6,param_3,0);
+  *param_2 = *piVar4;
+  *(undefined1 *)(param_2 + 1) = 1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bbe32 319 1
+@@CALLERS TransferIn
+@@CALLEES GetNoAllocatedAreas, RBTree::GetMaxNode, ScriptDataTreeInsert_RightBranch, FUN_005bbd46
+@@STRINGS 
+@@DECOMP
+
+ulong * __thiscall
+FUN_005bbe32(ulong *param_1,ulong *param_2,ulong param_3,CMemoryAllocatorVariableSize *param_4)
+
+{
+  CMemoryAllocatorVariableSize *this;
+  int iVar1;
+  bool bVar2;
+  ulong uVar3;
+  ulong uVar4;
+  ulong *puVar5;
+  bool bVar6;
+  ulong *local_c;
+  ulong *puStack_8;
+  
+  uVar3 = *param_1;
+  local_c = param_1;
+  puStack_8 = param_1;
+  if (param_3 == *(ulong *)(uVar3 + 8)) {
+    if (param_1[1] == 0) goto LAB_005bbf58;
+    this = *(CMemoryAllocatorVariableSize **)(param_3 + 0x10);
+    if (*(int *)param_4 < (int)this) goto LAB_005bbe5f;
+    if (*(int *)param_4 <= (int)this) goto LAB_005bbe75;
+    uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this);
+    uVar4 = param_3;
+    if (uVar3 != *param_1) {
+      if (*(int *)(uVar3 + 0x10) <= *(int *)param_4) goto LAB_005bbf58;
+      iVar1 = *(int *)(param_3 + 0xc);
+joined_r0x005bbf34:
+      if (iVar1 == 0) {
+        uVar3 = 0;
+        uVar4 = param_3;
+      }
+      else {
+        uVar4 = uVar3;
+        param_3 = 0;
+      }
+      goto LAB_005bbe61;
+    }
+  }
+  else {
+    if (param_3 != uVar3) {
+      uVar4 = RBTree__GetMaxNode(param_3);
+      iVar1 = *(int *)param_4;
+      bVar2 = iVar1 < *(int *)(param_3 + 0x10);
+      if ((!bVar2) || (iVar1 <= *(int *)(uVar4 + 0x10))) {
+        uVar3 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(param_4);
+        bVar6 = !bVar2;
+        if (!bVar2) {
+          bVar6 = *(int *)(param_3 + 0x10) < iVar1;
+          if (!bVar6) goto LAB_005bbe75;
+          if ((uVar3 == *param_1) || (iVar1 < *(int *)(uVar3 + 0x10))) {
+            iVar1 = *(int *)(param_3 + 0xc);
+            goto joined_r0x005bbf34;
+          }
+        }
+        if (bVar2 == bVar6) {
+LAB_005bbe75:
+          *param_2 = param_3;
+          return param_2;
+        }
+LAB_005bbf58:
+        puVar5 = (ulong *)FUN_005bbd46(&local_c,param_4);
+        *param_2 = *puVar5;
+        return param_2;
+      }
+      if (*(int *)(uVar4 + 0xc) == 0) {
+        uVar3 = 0;
+        param_3 = uVar4;
+        goto LAB_005bbe61;
+      }
+LAB_005bbe5f:
+      uVar3 = param_3;
+      uVar4 = param_3;
+      param_3 = 0;
+      goto LAB_005bbe61;
+    }
+    uVar4 = *(ulong *)(uVar3 + 0xc);
+    if (*(int *)param_4 <= *(int *)(*(ulong *)(uVar3 + 0xc) + 0x10)) goto LAB_005bbf58;
+  }
+  uVar3 = 0;
+LAB_005bbe61:
+  ScriptDataTreeInsert_RightBranch(param_2,uVar3,uVar4,param_4,param_3);
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 005bc0fb 176 1
+@@CALLERS ContainerInsertElement
+@@CALLEES Vector_UninitializedCopy, OnReadFinished, _Uninit_copy<CArray<CRandomAppearanceMorph::CBodyPartMesh>*,CArray<class_CRandomAppearanceMorph::CBodyPartMesh>*,std::allocator<CArray<CRandomAppearanceMorph::CBodyPartMesh>_>_>, _Fill_n<unsigned_long*,unsigned_int,unsigned_long>, FUN_005b9ef3
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_005bc0fb(CActiveFile *param_1,undefined4 param_2,ulong *param_3,undefined4 param_4,
+            CArray<CRandomAppearanceMorph::CBodyPartMesh> *param_5,char param_6)
+
+{
+  CArray<CRandomAppearanceMorph::CBodyPartMesh> *pCVar1;
+  CArray<CRandomAppearanceMorph::CBodyPartMesh> *pCVar2;
+  int iVar3;
+  CArray<CRandomAppearanceMorph::CBodyPartMesh> *extraout_EAX;
+  CArray<CRandomAppearanceMorph::CBodyPartMesh> **ppCVar4;
+  CArray<CRandomAppearanceMorph::CBodyPartMesh> *local_8;
+  
+  pCVar2 = (CArray<CRandomAppearanceMorph::CBodyPartMesh> *)
+           ((*(int *)(param_1 + 4) - *(int *)param_1) / 0xc);
+  ppCVar4 = &param_5;
+  local_8 = pCVar2;
+  if (param_5 <= pCVar2) {
+    ppCVar4 = &local_8;
+  }
+  pCVar1 = *ppCVar4;
+  iVar3 = FUN_005b9ef3(pCVar1 + (int)pCVar2,0);
+  local_8 = std::
+            _Uninit_copy<CArray<CRandomAppearanceMorph::CBodyPartMesh>*,CArray<class_CRandomAppearanceMorph::CBodyPartMesh>*,std::allocator<CArray<CRandomAppearanceMorph::CBodyPartMesh>_>_>
+                      (*(undefined4 *)param_1,param_2,iVar3,&stack0x00000017);
+  if (param_5 == (CArray<CRandomAppearanceMorph::CBodyPartMesh> *)0x1) {
+    if (local_8 != (CArray<CRandomAppearanceMorph::CBodyPartMesh> *)0x0) {
+      Vector_UninitializedCopy(param_3);
+    }
+    local_8 = local_8 + 0xc;
+  }
+  else {
+    std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>((ulong *)local_8,(uint)param_5,param_3);
+    local_8 = extraout_EAX;
+  }
+  if (param_6 == '\0') {
+    local_8 = std::
+              _Uninit_copy<CArray<CRandomAppearanceMorph::CBodyPartMesh>*,CArray<class_CRandomAppearanceMorph::CBodyPartMesh>*,std::allocator<CArray<CRandomAppearanceMorph::CBodyPartMesh>_>_>
+                        (param_2,*(undefined4 *)(param_1 + 4),local_8,&stack0x00000017);
+  }
+  CFileInstaller::CActiveFile::OnReadFinished(param_1);
+  *(CArray<CRandomAppearanceMorph::CBodyPartMesh> **)(param_1 + 4) = local_8;
+  *(int *)param_1 = iVar3;
+  *(int *)(param_1 + 8) = iVar3 + (int)(pCVar1 + (int)pCVar2) * 0xc;
+  return;
+}
+
+
+@@ENDFUNC

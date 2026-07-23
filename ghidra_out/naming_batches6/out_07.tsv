@@ -1,0 +1,78 @@
+00c29eb0	Ctor_SetVtable_012b40a4	low	Only stores &PTR_LAB_012b40a4 into *this; a minimal ctor/vtable setter, no other evidence
+00c29f50	Ctor_Init_012b40a4	low	Sets vtable 012b40a4 then this[1]=-1, this[2]=0; constructor initializing two fields
+00c3b440	NodeList_TransferAll_c3b440	medium	Reserves via this[1]->vf10(param2->vf3c()+node->vf28()) then loops param2->vf2c/vf20 moving each into this->vf24; splice/transfer of all elements
+00c452f0	NodeList_TransferAll_c452f0	medium	Byte-identical to c3b440: element transfer loop (param2->vf2c/vf20 -> this->vf24) with pre-reserve
+00c45440	NodeList_TransferAll_c45440	medium	Byte-identical container element-transfer loop (template instantiation)
+00c46bb0	NodeList_TransferAll_c46bb0	medium	Byte-identical container element-transfer loop (template instantiation)
+00c479a0	NodeList_TransferAll_c479a0	medium	Byte-identical container element-transfer loop (template instantiation)
+00c47af0	NodeList_TransferAll_c47af0	medium	Byte-identical container element-transfer loop (template instantiation)
+00c52aa0	CPU_IsCpuidSupported	high	Classic EFLAGS ID-flag (bit 0x200000) toggle test: XOR 0x200000 and compare - detects CPUID support
+00c57070	Stream_CheckBytesAvailable	medium	Calls source->vf10(peek), then compares current pos (param+0xc/0x10) against required count (param+0x14); returns bool "enough bytes"
+00c58270	Audio_RouteChannels2_c58270	medium	Channel-count at this[8]; routes source this[1..4] to dest param2 and param2+0x200 via vf0x18(...,0x3f000000=0.5f)/vf0x20; stereo channel setup
+00c582f0	Audio_RouteChannels2_c582f0	medium	Sibling of c58270: routes this[1..4] to param2/+0x200 via vf0x10(...,0x4000)/vf0x14; two-channel routing
+00c58630	Audio_RouteChannels4_c58630	medium	Handles 1/2/4 channels writing param2,+0x200,+0x400,+0x600 from this[1..4] via vf0x10/vf0x14; four-channel routing
+00c592c0	Ctor_SetVtable_012b8f64	low	Stores &PTR_LAB_012b8f64 into *this; minimal ctor/vtable setter
+00c59570	Ctor_ZeroInit_012b8f64	medium	Sets vtable 012b8f64 then zero-fills 0x58 dwords and clears [0x59]/[0x5d]; constructor
+00c5d370	IntBlock128_AddInPlace_c5d370	medium	8-iteration loop each adding 16 ints (param1[i]+param2[i]->param2[i]), advancing 0x10; element-wise add of 128 ints (param2 += param1)
+00c5d3f0	IntBlock128_AddInPlace_c5d3f0	medium	Byte-identical 128-int element-wise accumulate (param2 += param1)
+00c5d4b0	IntBlock128_AddInPlace_c5d4b0	medium	Byte-identical 128-int element-wise accumulate (param2 += param1)
+00c62ff0	Audio_MatchFormatGuid	medium	Compares incoming 16-byte key against several format GUIDs (DAT_012b9468/78/88/98), selects a this+offset block, re-matches against DAT_012b94b8 and a range check; format/subtype resolver
+00c73340	CAudioSoundBuffer_GetPosition	medium	Calls CAudioSoundBuffer_TransferPCMData; returns this+0x30 or this+0x34 into *param2 depending on format field ==2; a buffer position/state getter
+00c74f60	Ctor_Init_012bf074	low	Sets vtable 012bf074 and clears this[1],this[2]; constructor
+00c75400	Ctor_Init_012bf074_b	low	Byte-similar ctor: sets vtable 012bf074 and clears this[1],this[2]
+00c786e0	Simd_PackLowDwords	medium	Packs low dword of *param2 (low) and *param3 (high) into *param1 (MMX punpckldq-style build)
+00c78720	Simd_PackHighDwords	medium	Packs high dwords of *param2 and *param3 into *param1 (MMX punpckhdq-style), returns *param3
+00c787d0	Simd_PackedAddSaturateWords	high	Decomp is paddsw(*param2,*param3) stored to *param1; MMX PADDSW wrapper
+00c78810	Simd_PackedMulHighWords	high	Decomp is pmulhw(*param2,*param3); MMX PMULHW wrapper
+00c78850	Simd_PackedMultiplyAddWords	high	Decomp is pmaddwd(*param2,*param3); MMX PMADDWD wrapper
+00c78890	Simd_PackSignedDwordsToWords	high	Decomp is packssdw(*param2,*param3); MMX PACKSSDW wrapper
+00c788d0	Simd_PackedAddDwords	high	Adds low and high dwords of *param2/*param3 separately into *param1; MMX PADDD (unsaturated dword add)
+00c8c730	Batch_InvokeWithStackArgs_c8c730	low	Decomp corrupted by unreliable spacebase tracking (alloca/__chkstk); builds a variable stack array then invokes callback param_3, returns -0x83 when *(in_EAX+0x58)<=1; callee names likely spurious
+00c9f8c0	Mesh_BlendMorphStreams	low	Dispatches per vertex-stream via PTR_DAT_013a3dc8 table by type, applies threshold-based add/subtract of float pairs (_DAT_0122dedc), finalizes with Mesh_ComputeDetailLOD; mesh morph/delta blending (decomp partly corrupted)
+00ca5da0	CritSec_GetField44_Locked	medium	Null-check returns E_POINTER(0x80004003), then Enter/LeaveCriticalSection(this-100) around copying *(this+0x44) to *param2; locked getter
+00ca5e70	CritSec_GetDividedValue_Locked	low	Under lock, __alldiv of 64-bit *(this+0x48/0x4c) by (*(this+0x44)-1) into *param2; locked computed getter, else writes 0
+00ca65b0	Audio_WaitForBufferEvent	medium	Calls vf0x48, loops WaitForMultipleObjects(2 handles,10000) while WAIT_TIMEOUT(0x102), vf0x4c; returns 0x80040223 on index0 else clears this[0x1a]; waits on 2 events
+00ca6620	Thread_WaitAndGetStatus	medium	OS_WaitForMultipleObjectsWithMessages(this+0x50); on WAIT_TIMEOUT returns 0x40237 else 0; copies this+8 status to *param3
+00ca67b0	CAudioBank_Stop	medium	SEH+CritSec(this+0x70); if state(this+8)==1 vf0x30(1); else resumes, sets flag 0xa4=1, timeKillEvent(0xb4), releases; stop/deactivate path
+00ca68f0	CAudioBank_Start	medium	SEH+CritSec(this+0x70); SetEvent(this+0x50), CAudioBank_SetAudioFormat, clears flag 0xa4=0, sets state(this+8)=2; start/activate path
+00ca6b00	AudioThread_RequestStop	medium	If this[5]!=0 sets flag this[0x1c]=1 and (if this[0x1b]==0) SetEvent(this[0x17]) plus vf0x60; signals a stop-request event
+00ca6b40	AudioThread_StopAndWait	medium	ResetEvent(this[0x17]) if state[5]==1, vf0x28(0)/vf0x6c/vf0x70, then ThreadMsg_PumpAndWaitForCompletion; stops and waits for worker
+00ca8610	COM_QueryInterface_012a9a24	medium	Calls param2->vf0x24 then param2->vf0(QueryInterface for IID DAT_012a9a24) into this+0x9c; returns 0x80040208 on id mismatch
+00ca86d0	Com_CreateWithFallback	low	COM create pattern: vf0xc alloc, vf0x3c bind, vf0x10 activate; on failure Releases and retries via this->vf0x48 fallback path
+00ca8d50	Enumerate_QueryInterface_012a9a24	low	Loops count=obj->vf0x18, per item obj->vf0x1c(i)->+0xc, checks type==1, QueryInterface(DAT_012a9a24), Releases; returns whether any matched
+00ca9c80	Object_AcquireField26	low	Calls this->vf0x38(this[0x27],&this[0x26]); on success and this[10]+0x14!=0 AddRefs this[0x26] via vf0x14
+00ca9ec0	GetVectorFields_Locked	low	Under lock (this+4, or none if this==0xc) copies fields 0x2c/0x34/0x38/0x3c into param2[0..3]; locked 4-field getter
+00caa040	GetBufferOffset_Locked	low	Under lock computes *param2 = (*(this+0x2c) - *(this+0x30)) + *(this+0x20); locked offset/position getter
+00caf090	CThingFilter_CheckThing	medium	Calls vf0x50, COM_QueryInterface_Wrapper, then CThingFilter_IsValid::operator()(this,thing) and releases; evaluates a thing filter predicate
+00cdb550	Alloc_Struct0x24_cdb550	low	Clears *param1, malloc(0x24), stores into *param1; allocates a 0x24-byte struct
+00cdb710	List_AllocSelfLinkedNode	medium	malloc(0x14) then node->[0]=node, node->[4]=node (self-referential head sentinel of a circular list)
+00cdb750	StdMap_AllocHead	medium	malloc(0x24), sets count[1]=0, node->0/+4=0, +8=self, +0xc=self; std::map/tree head-node init (matches StdMap_DestroyNode family)
+00cdbeb0	StdMap_DestroyAll	medium	Calls StdMap_DestroyNode on root, resets head links and count, then free(*this); container clear+free
+00d9d930	CActiveEntityScriptBase_Create_d9d930	medium	operator_new(0x60)+CActiveEntityScriptBase ctor, sets vtable 012d6c44, wraps in CCountedPointer<CFileInfo>; quest-script allocator (name->allocator table)
+00d9ffd0	CActiveEntityScriptBase_Create_d9ffd0	medium	Identical allocator pattern; vtable 012d6e5c; CActiveEntityScriptBase factory
+00da8320	CActiveEntityScriptBase_Create_da8320	medium	Identical allocator pattern; vtable 012d7844; CActiveEntityScriptBase factory
+00db8520	CActiveEntityScriptBase_Create_db8520	medium	Identical allocator pattern; vtable 012d95b0; CActiveEntityScriptBase factory
+00dc0170	CActiveEntityScriptBase_Create_dc0170	medium	Identical allocator pattern; vtable 012d9f9c; CActiveEntityScriptBase factory
+00dc8700	CActiveEntityScriptBase_Create_dc8700	medium	Identical allocator pattern; vtable 012daa38; CActiveEntityScriptBase factory
+00dcf790	CActiveEntityScriptBase_Create_dcf790	medium	Identical allocator pattern; vtable 012db50c; CActiveEntityScriptBase factory
+00dd9300	CActiveEntityScriptBase_Create_dd9300	medium	Identical allocator pattern; vtable 012dc584; CActiveEntityScriptBase factory
+00ddc7d0	CActiveEntityScriptBase_Create_ddc7d0	medium	Identical allocator pattern; vtable 012dca80; CActiveEntityScriptBase factory
+00ddeee0	CActiveEntityScriptBase_Create_ddeee0	medium	Identical allocator pattern; vtable 012dcd2c; CActiveEntityScriptBase factory
+00dec5b0	CActiveEntityScriptBase_Create_dec5b0	medium	Identical allocator pattern; vtable 012ddc04; CActiveEntityScriptBase factory
+00def220	CActiveEntityScriptBase_Create_def220	medium	Identical allocator pattern; vtable 012ddf08; CActiveEntityScriptBase factory
+00df3550	CActiveEntityScriptBase_Create_df3550	medium	Identical operator_new(0x60)+CActiveEntityScriptBase ctor+CCountedPointer wrap; quest-script allocator
+00df4a50	CActiveEntityScriptBase_Create_df4a50	medium	Identical CActiveEntityScriptBase allocator pattern (272-byte factory)
+00df99f0	CActiveEntityScriptBase_Create_df99f0	medium	Identical CActiveEntityScriptBase allocator pattern (272-byte factory)
+00dfc100	CActiveEntityScriptBase_Create_dfc100	medium	Identical CActiveEntityScriptBase allocator pattern (272-byte factory)
+00e05170	CActiveEntityScriptBase_Create_e05170	medium	Identical CActiveEntityScriptBase allocator pattern (272-byte factory)
+00ee3140	Script_TravHeroWhisper_Main	high	Strings "TravHero Whisper"/"CS_TRAVHERO_WHISPERLEAVE"/"CS_TRAVHERO_WHISPERPUB"/"TEXT_QST_B14_WHISPERPUB"; calls PlayCutscene, AllocateMapThingUID; B14 Whisper quest script body
+00ee4dd0	Script_TourGuide_Main	high	Strings "TourGuideGuide"/"M_TG_ClosingTimeExit"; uses FollowThing/MoveToPosition/Speak on scripted thing; Tour Guide quest script body
+00ee91e0	Script_MakeThingsSpeakNumbered	low	Iterates allocated areas, builds int-string via GFIntToCharString, calls Speak per thing while thread not terminating; numbered crowd-speak routine
+00eeaef0	Script_PickpocketExpression	medium	String "EXPRESSION_PICKPOCKET"; rand/IsAlive checks driving pickpocket expression and steal chance; pickpocket script body
+00ef54a0	Script_CrateBlastBoxTrap	medium	Strings "CrateDeathMarker"/"THING_EXPLOSION_BLASTBOX"; spawns marker, waits until hero within 2.0, then creates explosion; crate blast-box trap script
+01229370	GlobalDtor_Free_013ba8ec	medium	atexit-style: if DAT_013ba8ec!=0 free it; global cleanup destructor
+01229630	GlobalDtor_Free_013bac20	medium	atexit-style: if DAT_013bac20!=0 free it; global cleanup destructor
+0122a2f0	DynamicInit_013bb6a4	medium	Dynamic initializer copying a value into global DAT_013bb6a4 via _Cons_val
+0122a940	DynamicInit_013caa54_58	medium	Dynamic initializer populating globals DAT_013caa58 and DAT_013caa54 via _Cons_val
+0122ad60	GlobalDtor_Free_014377f0	medium	atexit-style: if DAT_014377f0!=0 free it; global cleanup destructor
+0122adb0	GlobalDtor_Free_0143b978	medium	atexit-style: if DAT_0143b978!=0 free it; global cleanup destructor

@@ -1,0 +1,162 @@
+quest_name	id	master	allocFunc	dataAlloc	section
+Q_SunnyvaleMaster	1	1	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	
+HeroBoasts	1	0	NCreatureAction::CActionEventRemoveObject::Alloc	pSunnyvaleDataAlloc_func	S_HB
+PersonalScriptMain	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_PSM
+PersonalScript_GlobalThings	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_PSGT
+Gameflow	1	0	NScript::CGameflowScript::Alloc	pSunnyvaleDataAlloc_func	S_GF
+GameflowAssistance	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_GFA
+Q_ArenaHoldingScript	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_AHS
+LadyGreyWifeManager	1	0	(code *)&LAB_00cf91c0	pSunnyvaleDataAlloc_func	S_LGWM
+Q_AmbushTraders	1	0	(code *)&LAB_00cfa2f0	pSunnyvaleDataAlloc_func	S_QAT
+Q_Arena	1	0	(code *)&LAB_00cfabf0	pSunnyvaleDataAlloc_func	S_QA
+Q_AwakeningTheOracle	1	0	(code *)&LAB_00d00590	pSunnyvaleDataAlloc_func	S_QATO
+Q_BanditCamp	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QBC
+Q_BanditCampBossBattle	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QBCBB
+Q_BanditCampHoldingScript	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QBCHS
+Q_BountyHunt	1	0	(code *)&LAB_00d1cba0	pSunnyvaleDataAlloc_func	S_QBH
+Q_BreakSiege	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QBS
+Q_BowerstoneTownLifeIntro	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QBTLI
+Q_DragonBossFight	1	0	(code *)&LAB_00d27240	pSunnyvaleDataAlloc_func	S_QDBF
+Q_EndGame	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QEG
+Q_EndGameFocalSites	1	0	(code *)&LAB_00d2f5f0	pSunnyvaleDataAlloc_func	S_QEGFS
+Q_EndGameBossBattle	1	0	(code *)&LAB_00d34410	pSunnyvaleDataAlloc_func	S_QEGBB
+Q_FireHeart	1	0	(code *)&LAB_00d3afc0	pSunnyvaleDataAlloc_func	S_QFHT
+Q_GuildTraining	1	0	NScript::CQ_BountyHuntScript::Alloc	pSunnyvaleDataAlloc_func	S_QGT
+Q_GuildTrainingDeparture	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QGTD
+Q_GuildTrainingPreMelee	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QGTPM
+Q_GuildTrainingMelee	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QGTM
+Q_GuildTrainingWill	1	0	NScript::CQ_GuildTrainingWillScript::Alloc	pSunnyvaleDataAlloc_func	S_QGTW
+Q_GuildTrainingSkill	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QGTS
+Q_GuildTrainingWoodsDeparture	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QGTWD
+Q_GuildTrainingWoodsMelee	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QGTWM
+Q_GuildTrainingWoodsWill	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QGTWW
+Q_HangingTreeGood	1	0	(code *)&LAB_00d78290	pSunnyvaleDataAlloc_func	S_QHTG
+Q_HangingTreeEvil	1	0	(code *)&LAB_00d6ed10	pSunnyvaleDataAlloc_func	S_QHTE
+Q_HeroSouls	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QHSS
+Q_HeroSoulsThunder	1	0	(code *)&LAB_00d7c6a0	pSunnyvaleDataAlloc_func	S_QHST
+Q_HeroSoulsArena	1	0	(code *)&LAB_00d80ba0	pSunnyvaleDataAlloc_func	S_QHSA
+Q_HeroSoulsBriar	1	0	(code *)&LAB_00d83300	pSunnyvaleDataAlloc_func	S_QHSB
+Q_HeroSoulsMother	1	0	(code *)&LAB_00d84af0	pSunnyvaleDataAlloc_func	S_QHSM
+Q_HeroSoulsGuildmaster	1	0	(code *)&LAB_00d87a80	pSunnyvaleDataAlloc_func	S_QHSG
+Q_HeroSoulsNostro	1	0	NScript::CQ_BountyHuntScript::Alloc	pSunnyvaleDataAlloc_func	S_QHSN
+Q_HerosOldHouse	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QHOH
+Q_HobbeCave	1	0	NScript::CQ_BountyHuntScript::Alloc	pSunnyvaleDataAlloc_func	S_QHC
+Q_HobbeToothContest	1	0	NScript::CQ_BountyHuntScript::Alloc	pSunnyvaleDataAlloc_func	S_QHTC
+Q_MinionCamp	1	0	(code *)&LAB_00da2f40	pSunnyvaleDataAlloc_func	S_QMC
+Q_MinionClifftopChase	1	0	NScript::CQ_MinionClifftopChaseScript::Alloc	pSunnyvaleDataAlloc_func	S_QMCC
+Q_NewOakValeIntro	1	0	(code *)&LAB_00dbef70	pSunnyvaleDataAlloc_func	S_QNOVI
+Q_OakValeBanditRaid	1	0	NScript::CQ_OakValeBanditRaidScript::Alloc	pSunnyvaleDataAlloc_func	S_QOVBR
+Q_OrchardFarmRaid	1	0	(code *)&LAB_00dd1ef0	pSunnyvaleDataAlloc_func	S_QOFR
+Q_OrchardFarmRaidEvil	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QOFRE
+Q_OrchardFarmRaidGood	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QOFRG
+Q_OpeningGraveyardSecretPassage	1	0	(code *)&LAB_00dcbfd0	pSunnyvaleDataAlloc_func	S_QOGSP
+Q_PrisonEscapeRescueMother	1	0	NScript::CQ_BountyHuntScript::Alloc	pSunnyvaleDataAlloc_func	S_QPERM
+Q_PrisonRace	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QPR
+Q_PrisonWardenGame	1	0	NScript::CQ_PrisonWardenGameScript::Alloc	pSunnyvaleDataAlloc_func	S_QPWG
+Q_RansomVictim	1	0	(code *)&LAB_00debc60	pSunnyvaleDataAlloc_func	S_QRV
+Q_RansomVictimChiefsHouse	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QRVCH
+Q_SecretPassage	1	0	(code *)&LAB_00df1080	pSunnyvaleDataAlloc_func	S_QSP
+Q_SummoningTheShip	1	0	NScript::CQ_BountyHuntScript::Alloc	pSunnyvaleDataAlloc_func	S_QSTS
+Q_TentacleKrakenBossFight	1	0	NScript::CQ_PrisonWardenGameScript::Alloc	pSunnyvaleDataAlloc_func	S_QTKBF
+Q_TraderConflictEvil	1	0	NScript::CQ_TraderConflictEvilScript::Alloc	pSunnyvaleDataAlloc_func	S_QTCE
+Q_TraderConflictGood	1	0	NScript::CQ_GuildTrainingWillScript::Alloc	pSunnyvaleDataAlloc_func	S_QTCG
+Q_TraderEscort	1	0	NScript::CQ_BountyHuntScript::Alloc	pSunnyvaleDataAlloc_func	S_QTE
+Q_WaspBoss	1	0	NScript::CQ_BountyHuntScript::Alloc	pSunnyvaleDataAlloc_func	S_QWB
+Q_WhiteBalverineKnotholeGlade	1	0	NScript::CQ_PrisonWardenGameScript::Alloc	pSunnyvaleDataAlloc_func	S_QWBKG
+Q_UndeadRising	1	0	NScript::CGameflowScript::Alloc	pSunnyvaleDataAlloc_func	S_QUR
+Q_WhiteBalverineWW	1	0	NScript::CQ_PrisonWardenGameScript::Alloc	pSunnyvaleDataAlloc_func	S_QWBW
+Q_WizardBattle	1	0	(code *)&LAB_00e1d9f0	pSunnyvaleDataAlloc_func	S_QWZB
+QR_EscortTrader	1	0	(code *)&LAB_00e24c30	pSunnyvaleDataAlloc_func	S_QRET
+QR_EscortTrader_Manager	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QRETM
+QS_GuardianSisterInfo	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QSGSI
+QS_GuardianSisterInfo2_SisterInBanditCamp	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QSGSI2
+QS_GuardianTrophyDealerInfo	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QSGTDI
+QS_MeetSister	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_QSMS
+QS_ScytheInfo	1	0	(code *)&LAB_00e2ab00	pSunnyvaleDataAlloc_func	S_QSSI
+V_AmbushScam	1	0	(code *)&LAB_00e322c0	pSunnyvaleDataAlloc_func	S_VAS
+V_ArcheryCompetition	1	0	(code *)&LAB_00e37630	pSunnyvaleDataAlloc_func	S_VAC
+V_AssassinAttacks	1	0	(code *)&LAB_00e39850	pSunnyvaleDataAlloc_func	S_VAA
+V_BanditToll	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VBT
+V_BanditCampPath	1	0	(code *)&LAB_00e477a0	pSunnyvaleDataAlloc_func	S_VBCP
+V_BeardyBaldy	1	0	(code *)&LAB_00e54260	pSunnyvaleDataAlloc_func	S_VBB
+V_BeggarAndChild	1	0	NScript::CQ_MinionClifftopChaseScript::Alloc	pSunnyvaleDataAlloc_func	S_VBAC
+V_BodyGuard	1	0	(code *)&LAB_00e62730	pSunnyvaleDataAlloc_func	S_VBGu
+V_BookCollecting	1	0	(code *)&LAB_00e57a50	pSunnyvaleDataAlloc_func	S_VBC
+V_Bordello	1	0	(code *)&LAB_00e46a00	pSunnyvaleDataAlloc_func	S_VB
+V_ChapelOfEvil	1	0	NCreatureAction::CActionEventRemoveObject::Alloc	pSunnyvaleDataAlloc_func	S_VCOE
+V_ExposeMayor	1	0	(code *)&LAB_00e7b290	pSunnyvaleDataAlloc_func	S_VEM
+V_ChickenKicking	1	0	(code *)&LAB_00e68e60	pSunnyvaleDataAlloc_func	S_VCK
+V_DemonDoors	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_DDRS
+V_Fisherman	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VFM
+V_FishingCompetition	1	0	NScript::CQ_PrisonWardenGameScript::Alloc	pSunnyvaleDataAlloc_func	S_VFC
+V_FisticuffsClub	1	0	(code *)&LAB_00e8b700	pSunnyvaleDataAlloc_func	S_VFCC
+V_GhostGrannyNecklace	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VGGN
+V_GuildMaster	1	0	NCreatureAction::CActionEventRemoveObject::Alloc	pSunnyvaleDataAlloc_func	S_VGM
+V_HauntedHouse	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VHH
+V_HeroDolls	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VHDS
+V_HeroDuel	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VHD
+V_HiddenBooty	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VHB
+V_IntroductionToTrophies	1	0	NScript::CQ_MinionClifftopChaseScript::Alloc	pSunnyvaleDataAlloc_func	S_VITT
+V_KnotholeGladeGates	1	0	NScript::CQ_PrisonWardenGameScript::Alloc	pSunnyvaleDataAlloc_func	S_VKGG
+V_LostTrader	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VLT
+V_MazeResearch	1	0	(code *)&LAB_00ea8690	pSunnyvaleDataAlloc_func	S_VMR
+V_MurderTwist	1	0	NScript::CQ_GuildTrainingWillScript::Alloc	pSunnyvaleDataAlloc_func	S_VMT
+V_MurderTwistFinal	1	0	(code *)&LAB_00eb6a60	pSunnyvaleDataAlloc_func	S_VMTF
+V_MayorsInvitation	1	0	NScript::CQ_PrisonWardenGameScript::Alloc	pSunnyvaleDataAlloc_func	S_VMI
+V_Oracle	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VO
+V_ParanoidWhispers	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VPW
+V_PicnicAreaAfterWaspBoss	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VPAAWB
+V_RandomPopulationSim	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VRPS
+V_RockTrollFirstEncounter	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VRTFE
+V_SickChild	1	0	(code *)&LAB_00ed0e00	pSunnyvaleDataAlloc_func	S_VSC
+V_SingingStones	1	0	(code *)&LAB_00ed39a0	pSunnyvaleDataAlloc_func	S_VSS
+V_StatueMaster	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VSM
+V_SwordInTheStone	1	0	(code *)&LAB_00ed75f0	pSunnyvaleDataAlloc_func	S_VSITS
+V_TalentlessBard	1	0	(code *)&LAB_00edacc0	pSunnyvaleDataAlloc_func	S_VTB
+V_TourGuide	1	0	(code *)&LAB_00ee6c00	pSunnyvaleDataAlloc_func	S_VTG
+V_TempleOfLight	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VTOL
+V_TravellingHeroes	1	0	(code *)&LAB_00ee40a0	pSunnyvaleDataAlloc_func	S_VTH
+V_TrophyDealer	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	S_VTD
+Global_WatchForHeroDeath	1	0	(code *)&LAB_00ee90a0	(code *)0x0	
+Global_DebugCycleThroughSpeech	1	0	(code *)&LAB_00ee9450	(code *)0x0	
+Expression_Fish	1	0	(code *)&LAB_00ee9f00	(code *)0x0	
+Expression_Follow	1	0	(code *)&LAB_00eea3e0	(code *)0x0	
+Expression_Wait	1	0	(code *)&LAB_00eea740	(code *)0x0	
+Expression_Dig	1	0	(code *)&LAB_00eeae70	(code *)0x0	
+Expression_Pickpocket	1	0	(code *)&LAB_00eeb730	(code *)0x0	
+Expression_Picklock	1	0	(code *)&LAB_00eebd70	(code *)0x0	
+Expression_Steal	1	0	(code *)&LAB_00eec390	(code *)0x0	
+Global_TeleportToHeroGuild	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	
+Global_ToggleTimeDisplay	1	0	(code *)&LAB_00eed060	(code *)0x0	
+Global_GiveHeroItemsFromRewardChest	1	0	(code *)&LAB_00eec750	(code *)0x0	
+Global_OpenChest	1	0	(code *)&LAB_00eecea0	(code *)0x0	
+CS_OakValeRevisited	1	0	(code *)&LAB_00ee8be0	pSunnyvaleDataAlloc_func	CS_OVR
+alextest	1	1	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4a60	
+PersonalScript_alextest	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4a60	
+DanyalTestScripts	1	1	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4b80	
+ProximityPodiumTest	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4b80	
+HitSwitchTest	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4b80	
+GuildSealTriggerTest	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4b80	
+PersonalScript_Aardvark	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4b80	
+HeroTurningDebugger	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4b80	
+joss_test_scripts	1	1	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4b20	
+guy_script	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4b20	
+bandit_level_cutscene	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4b20	
+Empty	1	1	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4ac0	
+TestTheInventory	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4ac0	
+PersonalScript_Empty	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4ac0	
+TestNewNav1	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4ac0	
+TestNewNav2	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4ac0	
+TestNewNav3	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4ac0	
+TestNewNav4	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4ac0	
+TestNewNav5	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4ac0	
+TestQuestCard1	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4ac0	
+TestQuestCard2	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4ac0	
+TestQuestCard3	1	0	NCreatureAction::CActionEventShot::Alloc	(code *)&LAB_00cd4ac0	
+MarkTestScripts	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	
+BenTestScripts	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	
+TonyTestScripts	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	
+ShowTargetedThingHealth	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	
+OracleMinigameTest	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	
+Q_CinemaTest	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	
+CS_PlayCutscene	1	0	NCreatureAction::CActionEventShot::Alloc	pSunnyvaleDataAlloc_func	

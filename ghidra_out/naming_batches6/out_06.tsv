@@ -1,0 +1,78 @@
+00ad3010	StdTreeMap_Construct_ad3010	medium	malloc + node[+8]/[+0xc]=self head-node with size field param_1[1]=0 = std::_Tree ctor (0x1c node)
+00ad3150	StdTreeMap_Construct_ad3150	medium	same _Tree head-node ctor pattern, malloc 0x20
+00ad3960	StdTreeMap_Construct_ad3960	medium	same _Tree head-node ctor pattern, malloc 0x18
+00ad39a0	LTextBinTree_Destroy_ad39a0	high	typed LTextTreeWalkThrough; calls LTextBinTree<LTextGroup*>::BuildTreeArray then resets head and frees = tree clear/destruct
+00ad49c0	StdTreeMap_Construct_ad49c0	medium	same _Tree head-node ctor pattern, malloc 0x14
+00ad4f30	StdTreeMap_Destruct_ad4f30	medium	calls Utility_DestroyRefcountedTreeNode on root then frees head = std::_Tree destructor
+00ad5dc0	StdTreeMap_Construct_ad5dc0	medium	same _Tree head-node ctor pattern, malloc 0x20
+00ad5e00	StdTreeMap_Destruct_ad5e00	medium	calls Utility_DestroyRefcountedTreeNode then free = _Tree destructor
+00ad5f00	StdTreeMap_Destruct_ad5f00	medium	calls Utility_DestroyRefcountedTreeNode then free = _Tree destructor
+00ad6610	StdTreeMap_Construct_ad6610	medium	same _Tree head-node ctor pattern, malloc 0x1c
+00ad6650	StdTreeMap_Destruct_ad6650	medium	calls Utility_DestroyRefcountedTreeNode then free = _Tree destructor
+00ad6810	StdTreeMap_Destruct_ad6810	medium	calls TreeNode_DestructWithRefcount on root then free = _Tree destructor
+00ad72c0	StdTreeMap_Construct_ad72c0	medium	same _Tree head-node ctor pattern, malloc 0x20
+00ad7300	StdTreeMap_Destruct_ad7300	medium	calls TreeNode_DestructWithRefcount then free = _Tree destructor
+00adb180	StdList_Construct_adb180	medium	malloc 0x20; node->next=node, node->prev=node = std::list head-node ctor
+00adb240	Object_AllocateBuffer_adb240	low	minimal *param_1=malloc(0x1c) with no field init; type unknown
+00adb5a0	StdTreeMap_Construct_adb5a0	medium	same _Tree head-node ctor pattern, malloc 0x1c
+00adb890	StdTreeMap_Construct_adb890	medium	same _Tree head-node ctor pattern, malloc 0x1c
+00adc930	StdList_Construct_adc930	medium	malloc 0x20; self-referential next/prev = std::list head-node ctor
+00add130	Callback_InvokePair_add130	low	invokes two vtable callbacks via param_1[1] and param_1 with param_2 flag; functor dispatch, thin context
+00aeb940	StdList_ConstructWithArg_aeb940	medium	list head-node ctor (malloc 0x10, self-ref) then stores param_2 at param_1[1]
+00aec610	StdList_Construct_aec610	medium	malloc 0x10; self-referential next/prev = std::list head-node ctor
+00aec960	StdList_Construct_aec960	medium	malloc 0x10; self-referential next/prev = std::list head-node ctor
+00af66f0	StdList_Construct_af66f0	medium	malloc 0xc; self-referential next/prev = std::list head-node ctor
+00af6750	StdList_Construct_af6750	medium	malloc 0xc; self-referential next/prev = std::list head-node ctor
+00af6bf0	StdList_Construct_af6bf0	medium	malloc 0xc; self-referential next/prev = std::list head-node ctor
+00af6c40	StdList_Construct_af6c40	medium	malloc 0xc; self-referential next/prev = std::list head-node ctor
+00b09e20	StdList_Construct_b09e20	medium	malloc 0x18; self-referential next/prev = std::list head-node ctor
+00b09ed0	StdList_Construct_b09ed0	medium	malloc 0x18; self-referential next/prev = std::list head-node ctor
+00b0f770	StdList_Construct_b0f770	medium	malloc 0x10; self-referential next/prev = std::list head-node ctor
+00b0f7f0	StdList_Construct_b0f7f0	medium	malloc 0x10; self-referential next/prev = std::list head-node ctor
+00b2e7b0	Object_AllocateBuffer_b2e7b0	low	minimal *param_1=malloc(0x2c) with no field init; type unknown
+00b3e790	Object_AllocateBuffer_b3e790	low	minimal *param_1=malloc(0x1c) with no field init; type unknown
+00b43bf0	Object_AllocateBuffer_b43bf0	low	minimal *param_1=malloc(0x24) with no field init; type unknown
+00b84b20	RadixSort_CountingPass_b84b20	high	1024-bucket histogram over 8-byte (key,value) pairs, 10-bit digit (shift param_4*10 & 0x3ff), prefix sum, scatter into param_2 = radix/counting sort pass
+00b96540	Object_AllocateBuffer_b96540	low	minimal *param_1=malloc(0x20) with no field init; type unknown
+00b96570	Object_AllocateBuffer_b96570	low	minimal *param_1=malloc(0x30) with no field init; type unknown
+00b96640	Object_AllocateBuffer_b96640	low	minimal *param_1=malloc(0x1c) with no field init; type unknown
+00b968e0	StdTreeMap_Construct_b968e0	medium	same _Tree head-node ctor pattern, malloc 0x1c
+00b96ae0	StdTreeMap_Construct_b96ae0	medium	same _Tree head-node ctor pattern, malloc 0x20
+00b96b20	StdTreeMap_Construct_b96b20	medium	same _Tree head-node ctor pattern, malloc 0x30
+00b97130	StdTreeMap_Construct_b97130	medium	same _Tree head-node ctor pattern, malloc 0x30
+00b97fc0	StdTreeMap_Construct_b97fc0	medium	same _Tree head-node ctor pattern, malloc 0x1c
+00b980c0	StdTreeMap_Construct_b980c0	medium	same _Tree head-node ctor pattern, malloc 0x1c
+00b981f0	StdTreeMap_Construct_b981f0	medium	same _Tree head-node ctor pattern, malloc 0x1c
+00b98850	StdTreeMap_Construct_b98850	medium	same _Tree head-node ctor pattern, malloc 0x20
+00bce370	Object_AllocateBuffer_bce370	low	minimal *param_1=malloc(0x1c) with no field init; type unknown
+00bce3e0	StdTreeMap_Construct_bce3e0	medium	same _Tree head-node ctor pattern, malloc 0x1c
+00bce5a0	StdTreeMap_Construct_bce5a0	medium	same _Tree head-node ctor pattern, malloc 0x1c
+00bd84f0	Object_AllocateBuffer_bd84f0	low	minimal *param_1=malloc(0x20) with no field init; type unknown
+00bd86f0	StdTreeMap_Construct_bd86f0	medium	same _Tree head-node ctor pattern, malloc 0x20
+00bd9080	StdTreeMap_Construct_bd9080	medium	same _Tree head-node ctor pattern, malloc 0x20
+00bdaaa0	StdList_Construct_bdaaa0	medium	malloc 0xc; self-referential next/prev = std::list head-node ctor
+00bdab30	StdList_Construct_bdab30	medium	malloc 0xc; self-referential next/prev = std::list head-node ctor
+00bdac50	StdList_Construct_bdac50	medium	malloc 0xc; self-referential next/prev = std::list head-node ctor
+00bdacc0	StdList_Construct_bdacc0	medium	malloc 0xc; self-referential next/prev = std::list head-node ctor
+00bdad30	StdList_Construct_bdad30	medium	malloc 0xc; self-referential next/prev = std::list head-node ctor
+00bdae60	StdList_Construct_bdae60	medium	malloc 0xc; self-referential next/prev = std::list head-node ctor (void return)
+00bdae80	StdList_Construct_bdae80	medium	malloc 0xc; self-referential next/prev = std::list head-node ctor (void return)
+00bdaea0	StdList_Construct_bdaea0	medium	malloc 0xc; self-referential next/prev = std::list head-node ctor (void return)
+00c08880	Object_SetVtable_c08880	low	single store *param_1=PTR_DAT_0139c900; vtable/init stub, class unknown
+00c0f5d0	Collection_TransferAllFrom_c0f5d0	medium	reserves this+src combined size (vtbl 0x3c/0x28/0x10) then drains src (vtbl 0x2c/0x20) adding each to this (0x24) = move-append all elements
+00c09c90	Collection_TransferAllFrom_c09c90	medium	same reserve-then-drain-and-append template clone
+00c09f80	Collection_TransferAllFrom_c09f80	medium	same reserve-then-drain-and-append template clone
+00c0a1b0	Collection_TransferAllFrom_c0a1b0	medium	same reserve-then-drain-and-append template clone
+00c0f7d0	Collection_TransferAllFrom_c0f7d0	medium	same reserve-then-drain-and-append template clone
+00c0f9d0	Collection_TransferAllFrom_c0f9d0	medium	same reserve-then-drain-and-append template clone
+00c0fc00	Collection_TransferAllFrom_c0fc00	medium	same reserve-then-drain-and-append template clone
+00c115d0	CTCInventory_ProcessButtonARelease_c115d0	medium	SEH-wrapped; calls NInventory::CTCInventoryBase::ProcessButtonAReleased on this+0x2c then virtual 0x1c
+00c127c0	CTCInventory_DumpCombatActionDebug_c127c0	medium	loops count at this+0x228, TextureIndex_GetByProperties per entry, Thiscall_CombatActionDebugFormat + Playback_LogStatus = debug dump loop
+00c15540	Collection_TransferAllFrom_c15540	medium	same reserve-then-drain-and-append template clone
+00c156a0	Collection_TransferAllFrom_c156a0	medium	same reserve-then-drain-and-append template clone
+00c19cb0	ClothingSuitPartMap_InsertNode_c19cb0	medium	SEH-wrapped std::_Cons_val for pair<EClothingSuitPart,long> then virtual 0x3c = map node insert
+00c19d20	ClothingSuitPartMap_InsertNode_c19d20	medium	SEH-wrapped std::_Cons_val for pair<EClothingSuitPart,long> then virtual 0x3c = map node insert
+00c19d90	ClothingSuitPartMap_InsertNode_c19d90	medium	SEH-wrapped _Cons_val pair<EClothingSuitPart,long> then two vtable-0x28 dispatches with PTR_LAB tables = map insert variant
+00c207f0	Object_Destruct_c207f0	low	sets vtable PTR_LAB_012b3674 then calls EmptyStub/_E2 = destructor stub, class unknown
+00c271d0	SoundObject_SetVtable_c271d0	medium	single store *param_1=&PTR_GetSoundsCurrentLayer_012b4034 = ctor setting sound-layer vtable
+00c27af0	SoundObject_Construct_c27af0	medium	sets &PTR_GetSoundsCurrentLayer_012b4034 vtable and zeros three fields = sound-layer object ctor

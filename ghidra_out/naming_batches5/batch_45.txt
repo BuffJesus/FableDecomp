@@ -1,0 +1,1545 @@
+@@@FUNC 00631420 66 0
+@@CALLERS 
+@@CALLEES BuildTreeArray, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00631420(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0063ec80 3 0
+@@CALLERS 
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+undefined4 __fastcall FUN_0063ec80(undefined4 param_1)
+
+{
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0063f150 138 0
+@@CALLERS 
+@@CALLEES ~CPhysicsMeshObject, BeginInputLoading, GetPhysicsMeshObject
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_0063f150(int param_1,int *param_2)
+
+{
+  CTCPhysicsBase *this;
+  CWideString *pCVar1;
+  char cVar2;
+  char extraout_AL;
+  int iVar3;
+  CMainGameComponent aCStack_40 [64];
+  
+  if ((int *)param_2[0x18] != (int *)0x0) {
+    cVar2 = (**(code **)(*(int *)param_2[0x18] + 0xa8))();
+    if (cVar2 != '\0') {
+      cVar2 = (**(code **)(*param_2 + 0xdc))();
+      goto LAB_0063f184;
+    }
+  }
+  cVar2 = (**(code **)(*param_2 + 0xdc))();
+LAB_0063f184:
+  if (cVar2 != '\0') {
+    this = (CTCPhysicsBase *)param_2[0x18];
+    pCVar1 = *(CWideString **)(param_1 + 4);
+    iVar3 = (**(code **)(*(int *)this + 0x174))();
+    if (iVar3 != 0) {
+      CTCPhysicsBase::GetPhysicsMeshObject(this);
+      CMainGameComponent::BeginInputLoading(aCStack_40,pCVar1);
+      CPhysicsMeshObject::~CPhysicsMeshObject((CPhysicsMeshObject *)aCStack_40);
+      if (extraout_AL != '\0') {
+        return 1;
+      }
+    }
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0063f1e0 150 0
+@@CALLERS 
+@@CALLEES ~CPhysicsMeshObject, operator(), BeginInputLoading, GetPhysicsMeshObject
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_0063f1e0(undefined4 *param_1,CThing *param_2)
+
+{
+  CTCPhysicsBase *this;
+  CWideString *pCVar1;
+  bool bVar2;
+  char cVar3;
+  char extraout_AL;
+  int iVar4;
+  CMainGameComponent aCStack_40 [64];
+  
+  bVar2 = CThingFilter_IsNot::operator()((CThingFilter_IsNot *)*param_1,param_2);
+  if (!bVar2) {
+    return 0;
+  }
+  if ((*(int **)(param_2 + 0x60) == (int *)0x0) ||
+     (cVar3 = (**(code **)(**(int **)(param_2 + 0x60) + 0xa8))(), cVar3 == '\0')) {
+    cVar3 = (**(code **)(*(int *)param_2 + 0xdc))();
+  }
+  else {
+    cVar3 = (**(code **)(*(int *)param_2 + 0xdc))();
+  }
+  if (cVar3 != '\0') {
+    this = *(CTCPhysicsBase **)(param_2 + 0x60);
+    pCVar1 = (CWideString *)param_1[2];
+    iVar4 = (**(code **)(*(int *)this + 0x174))();
+    if (iVar4 != 0) {
+      CTCPhysicsBase::GetPhysicsMeshObject(this);
+      CMainGameComponent::BeginInputLoading(aCStack_40,pCVar1);
+      CPhysicsMeshObject::~CPhysicsMeshObject((CPhysicsMeshObject *)aCStack_40);
+      if (extraout_AL != '\0') {
+        return 1;
+      }
+    }
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0063f2c0 118 0
+@@CALLERS 
+@@CALLEES GetMapwhoPosition
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_0063f2c0(undefined4 *param_1,int param_2)
+
+{
+  CTCPhysicsBase *this;
+  float *pfVar1;
+  char cVar2;
+  float *pfVar3;
+  
+  this = *(CTCPhysicsBase **)(param_2 + 0x60);
+  pfVar1 = (float *)*param_1;
+  if (this != (CTCPhysicsBase *)0x0) {
+    pfVar3 = (float *)CTCPhysicsBase::GetMapwhoPosition(this);
+    if ((pfVar3[1] - pfVar1[1]) * (pfVar3[1] - pfVar1[1]) +
+        (*pfVar3 - *pfVar1) * (*pfVar3 - *pfVar1) <
+        (*(float *)(this + 0x34) + pfVar1[3]) * (*(float *)(this + 0x34) + pfVar1[3])) {
+      cVar2 = (*(code *)**(undefined4 **)param_1[1])(param_2);
+      if (cVar2 != '\0') {
+        return 1;
+      }
+    }
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0063f340 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0063f340(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0063f450 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0063f450(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006563cf 76 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_006563cf(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0x8c);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0x8c;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0x8c < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065641b 76 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_0065641b(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0xcb);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0xcb;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0xcb < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00656467 76 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00656467(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0xd0);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0xd0;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0xd0 < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006564b3 75 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_006564b3(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0x34);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0x34;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0x34 < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006564fe 76 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_006564fe(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0xdf);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0xdf;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0xdf < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065654a 75 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_0065654a(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0x30);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0x30;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0x30 < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00656595 75 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00656595(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0x27);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0x27;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0x27 < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006565e0 75 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_006565e0(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0xd);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0xd;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0xd < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065662b 76 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_0065662b(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0x90);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0x90;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0x90 < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00656677 76 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00656677(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0xa8);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0xa8;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0xa8 < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006579e0 209 0
+@@CALLERS 
+@@CALLEES memmove, std::vector::InsertMultipleAndGrow
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Removing unreachable block (ram,0x006579ef) */
+
+void FUN_006579e0(undefined4 *param_1)
+
+{
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  undefined4 *puVar3;
+  
+  puVar3 = param_1;
+  puVar1 = (undefined4 *)*param_1;
+  puVar2 = param_1 + 2;
+  param_1[1] = puVar1;
+  param_1 = (undefined4 *)0x1;
+  if (puVar1 == (undefined4 *)*puVar2) {
+    std__vector__InsertMultipleAndGrow(puVar1,&param_1,&param_1,1,1);
+  }
+  else {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = 1;
+    }
+    puVar3[1] = puVar3[1] + 4;
+  }
+  puVar2 = (undefined4 *)puVar3[1];
+  param_1 = (undefined4 *)0x2;
+  if (puVar2 == (undefined4 *)puVar3[2]) {
+    std__vector__InsertMultipleAndGrow(puVar2,&param_1,&param_1,1,1);
+  }
+  else {
+    if (puVar2 != (undefined4 *)0x0) {
+      *puVar2 = 2;
+    }
+    puVar3[1] = puVar3[1] + 4;
+  }
+  puVar2 = (undefined4 *)puVar3[1];
+  param_1 = (undefined4 *)0xffffffff;
+  if (puVar2 == (undefined4 *)puVar3[2]) {
+    std__vector__InsertMultipleAndGrow(puVar2,&param_1,&param_1,1,1);
+    return;
+  }
+  if (puVar2 != (undefined4 *)0x0) {
+    *puVar2 = 0xffffffff;
+  }
+  puVar3[1] = puVar3[1] + 4;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00657ac0 209 0
+@@CALLERS 
+@@CALLEES memmove, std::vector::InsertMultipleAndGrow
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Removing unreachable block (ram,0x00657acf) */
+
+void FUN_00657ac0(undefined4 *param_1)
+
+{
+  undefined4 *puVar1;
+  undefined4 *puVar2;
+  undefined4 *puVar3;
+  
+  puVar3 = param_1;
+  puVar1 = (undefined4 *)*param_1;
+  puVar2 = param_1 + 2;
+  param_1[1] = puVar1;
+  param_1 = (undefined4 *)0x2;
+  if (puVar1 == (undefined4 *)*puVar2) {
+    std__vector__InsertMultipleAndGrow(puVar1,&param_1,&param_1,1,1);
+  }
+  else {
+    if (puVar1 != (undefined4 *)0x0) {
+      *puVar1 = 2;
+    }
+    puVar3[1] = puVar3[1] + 4;
+  }
+  puVar2 = (undefined4 *)puVar3[1];
+  param_1 = (undefined4 *)0x3;
+  if (puVar2 == (undefined4 *)puVar3[2]) {
+    std__vector__InsertMultipleAndGrow(puVar2,&param_1,&param_1,1,1);
+  }
+  else {
+    if (puVar2 != (undefined4 *)0x0) {
+      *puVar2 = 3;
+    }
+    puVar3[1] = puVar3[1] + 4;
+  }
+  puVar2 = (undefined4 *)puVar3[1];
+  param_1 = (undefined4 *)0x1;
+  if (puVar2 == (undefined4 *)puVar3[2]) {
+    std__vector__InsertMultipleAndGrow(puVar2,&param_1,&param_1,1,1);
+    return;
+  }
+  if (puVar2 != (undefined4 *)0x0) {
+    *puVar2 = 1;
+  }
+  puVar3[1] = puVar3[1] + 4;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0065ce9b 372 0
+@@CALLERS 
+@@CALLEES free, GFGetPreMainMemoryUsed, Transfer<signed_char>, GetCellBoundingBox, Transfer<long>, TransferVector<unsigned_long>, _Umove<EWeaponClass*>, TransferIn, CVector_Reserve, IsBinary
+@@STRINGS HasBeenInitiallyPopulated	PlayersCrimes	FramePlayerLastSeenByGuard	AmountOfFineAlreadyPaid	Limbo	IsEnemyBecauseOfCrime
+@@DECOMP
+
+void __thiscall FUN_0065ce9b(int param_1,CEngineSceneGrid *param_2,char param_3)
+
+{
+  long *plVar1;
+  bool bVar2;
+  long lVar3;
+  EWeaponClass *unaff_EDI;
+  EWeaponClass *pEVar4;
+  CEngineSceneGrid *this;
+  char cStack0000000b;
+  EWeaponClass *local_20;
+  EWeaponClass *local_1c;
+  undefined4 local_18;
+  void *local_14;
+  EWeaponClass local_10 [2];
+  EWeaponClass *local_8;
+  
+  this = param_2;
+  CEngineSceneGrid::GetCellBoundingBox
+            (param_2,(C3DBoundingBox *)"HasBeenInitiallyPopulated",param_1 + 0x7a,(ulong)unaff_EDI);
+  bVar2 = CPersistContext::IsBinary((CPersistContext *)this);
+  if (bVar2) {
+    local_14 = (void *)0x0;
+    local_10[0] = 0;
+    local_10[1] = 0;
+    CVector_Reserve(*(undefined4 *)(param_1 + 0x68));
+    CPersistTraits<C2DVector>::TransferIn
+              ((CPersistTraits<C2DVector> *)&param_2,
+               *(CPersistContext **)(*(CStringParser **)(param_1 + 100) + 8),
+               *(CStringParser **)(param_1 + 100));
+    CPersistContext::TransferVector<unsigned_long>
+              ((CPersistContext *)this,"PlayersCrimes",
+               (vector<unsigned_long,std::allocator<unsigned_long>_> *)&local_14);
+    lVar3 = GFGetPreMainMemoryUsed();
+    local_8 = (EWeaponClass *)(*(int *)(param_1 + 0x80) - lVar3);
+    param_2 = (CEngineSceneGrid *)0x0;
+    CPersistContext::Transfer<signed_char>
+              ((CPersistContext *)this,"FramePlayerLastSeenByGuard",(char *)&local_8,
+               (char *)&param_2);
+    if (local_14 != (void *)0x0) {
+      free(local_14);
+    }
+  }
+  else {
+    local_20 = (EWeaponClass *)0x0;
+    local_1c = (EWeaponClass *)0x0;
+    local_18 = 0;
+    CPersistContext::TransferVector<unsigned_long>
+              ((CPersistContext *)this,"PlayersCrimes",
+               (vector<unsigned_long,std::allocator<unsigned_long>_> *)&local_20);
+    local_8 = local_1c;
+    pEVar4 = local_20;
+    if (local_20 != local_1c) {
+      do {
+        std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>
+                  ((vector<EWeaponClass,std::allocator<EWeaponClass>_> *)(param_1 + 100),local_10,
+                   pEVar4,unaff_EDI);
+        pEVar4 = pEVar4 + 1;
+      } while (pEVar4 != local_8);
+    }
+    plVar1 = (long *)(param_1 + 0x80);
+    CPersistContext::Transfer<long>((CPersistContext *)param_2,"FramePlayerLastSeenByGuard",plVar1);
+    lVar3 = GFGetPreMainMemoryUsed();
+    *plVar1 = *plVar1 + lVar3;
+    this = param_2;
+    if (local_20 != (EWeaponClass *)0x0) {
+      free(local_20);
+      this = param_2;
+    }
+  }
+  if (param_3 != '\0') {
+    CPersistContext::Transfer<long>
+              ((CPersistContext *)this,"AmountOfFineAlreadyPaid",(long *)(param_1 + 0xa0));
+  }
+  CEngineSceneGrid::GetCellBoundingBox
+            (this,(C3DBoundingBox *)"Limbo",param_1 + 0xb2,(ulong)unaff_EDI);
+  bVar2 = CPersistContext::IsBinary((CPersistContext *)this);
+  if (!bVar2) {
+    *(undefined1 *)(param_1 + 0xb3) = *(undefined1 *)(param_1 + 0xb2);
+  }
+  CEngineSceneGrid::GetCellBoundingBox
+            (this,(C3DBoundingBox *)"IsEnemyBecauseOfCrime",param_1 + 0x7c,(ulong)unaff_EDI);
+  cStack0000000b = '\0';
+  CPersistContext::Transfer<signed_char>
+            ((CPersistContext *)this,"CurrentIsHeroCriminal",(char *)(param_1 + 0xe4),
+             &stack0x0000000b);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006606f0 76 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_006606f0(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0xc3);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0xc3;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0xc3 < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0066073c 75 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_0066073c(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0x1f);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0x1f;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0x1f < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 006607fd 75 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_006607fd(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(7);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 7;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (7 < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660848 76 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00660848(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0xb5);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0xb5;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0xb5 < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660dd8 75 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00660dd8(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0x23);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0x23;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0x23 < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660e23 75 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00660e23(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0x75);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0x75;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0x75 < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660e6e 76 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00660e6e(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0xbd);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0xbd;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0xbd < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660eba 76 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00660eba(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0xf3);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0xf3;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0xf3 < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660f06 75 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00660f06(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0x4f);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0x4f;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0x4f < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00660f6a 75 0
+@@CALLERS 
+@@CALLEES LowerBound, std::bitset::test
+@@STRINGS 
+@@DECOMP
+
+uint __thiscall FUN_00660f6a(ETCInterfaceType param_1,int *param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  int *piVar3;
+  ETCInterfaceType local_8;
+  
+  local_8 = param_1;
+  uVar2 = std__bitset__test(0x51);
+  if ((char)uVar2 == '\0') {
+    uVar2 = uVar2 & 0xffffff00;
+  }
+  else {
+    local_8 = 0x51;
+    piVar3 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(param_1 + 0x44),&local_8);
+    if ((piVar3 == *(int **)(param_1 + 0x48)) || (0x51 < *piVar3)) {
+      piVar3 = *(int **)(param_1 + 0x48);
+    }
+    iVar1 = piVar3[1];
+    *param_2 = iVar1;
+    uVar2 = CONCAT31((int3)((uint)iVar1 >> 8),1);
+  }
+  return uVar2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00661d70 250 0
+@@CALLERS 
+@@CALLEES DoSizeof
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+int __fastcall FUN_00661d70(CVertexBufferWin32 *param_1)
+
+{
+  float fVar1;
+  float fVar2;
+  float *pfVar3;
+  float *pfVar4;
+  uint3 uVar5;
+  float fVar6;
+  float10 fVar7;
+  float10 fVar8;
+  CVertexBufferWin32 *unaff_retaddr;
+  float fStack_10;
+  float local_c;
+  float fStack_8;
+  
+  (**(code **)(**(int **)(param_1 + 0x60) + 0x118))(&local_c);
+  pfVar3 = (float *)CVertexBufferWin32::DoSizeof(param_1);
+  pfVar4 = (float *)CVertexBufferWin32::DoSizeof(unaff_retaddr);
+  fVar7 = (float10)*pfVar4 - (float10)*pfVar3;
+  fVar8 = (float10)pfVar4[1] - (float10)pfVar3[1];
+  fVar1 = (float)((float10)pfVar4[2] - (float10)pfVar3[2]);
+  fVar2 = (float)(fVar8 * fVar8 +
+                 fVar7 * fVar7 + ((float10)pfVar4[2] - (float10)pfVar3[2]) * (float10)fVar1);
+  fVar6 = (float)((0x17c - ((uint)fVar2 >> 0x17 & 0xff) & 0x3fe) << 0x16 |
+                 (&DAT_013ce558)[(uint)fVar2 >> 0x11 & 0x7f] << 0xf);
+  fVar6 = (_DAT_0122ded4 - fVar6 * fVar6 * fVar2) * fVar6 * _DAT_0122f59c;
+  fVar8 = (float10)local_c * fVar8 * (float10)fVar6 +
+          (float10)fStack_10 * (float10)(float)(fVar7 * (float10)fVar6) +
+          (float10)fStack_8 * (float10)fVar1 * (float10)fVar6;
+  fVar7 = (float10)fcos((float10)_DAT_0125aae0);
+  uVar5 = (uint3)(CONCAT22((short)((uint)((&DAT_013ce558)[(uint)fVar2 >> 0x11 & 0x7f] << 0xf) >>
+                                  0x10),
+                           (ushort)(fVar7 < fVar8) << 8 | (ushort)(NAN(fVar7) || NAN(fVar8)) << 10 |
+                           (ushort)(fVar7 == fVar8) << 0xe) >> 8);
+  if (fVar7 < fVar8) {
+    return CONCAT31(uVar5,1);
+  }
+  return (uint)uVar5 << 8;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00669040 183 0
+@@CALLERS 
+@@CALLEES GetMapwhoPosition
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_00669040(undefined4 *param_1,int param_2)
+
+{
+  int iVar1;
+  int *piVar2;
+  int *piVar3;
+  CTCPhysicsBase *this;
+  float *pfVar4;
+  char cVar5;
+  float *pfVar6;
+  
+  if (param_2 != *(int *)*param_1) {
+    iVar1 = param_1[1];
+    piVar2 = *(int **)(iVar1 + 4);
+    piVar3 = *(int **)(param_2 + 0x60);
+    if ((piVar2 != (int *)0x0) && (piVar3 != (int *)0x0)) {
+      cVar5 = (**(code **)(*piVar2 + 0xe4))();
+      if ((cVar5 == '\0') && (cVar5 = (**(code **)(**(int **)(iVar1 + 4) + 0xe8))(), cVar5 == '\0'))
+      {
+        return 0;
+      }
+      cVar5 = (**(code **)(*piVar3 + 0xe4))();
+      if (cVar5 != '\0') {
+        this = *(CTCPhysicsBase **)(param_2 + 0x60);
+        pfVar4 = (float *)param_1[2];
+        if ((this != (CTCPhysicsBase *)0x0) &&
+           (pfVar6 = (float *)CTCPhysicsBase::GetMapwhoPosition(this),
+           (pfVar6[1] - pfVar4[1]) * (pfVar6[1] - pfVar4[1]) +
+           (*pfVar6 - *pfVar4) * (*pfVar6 - *pfVar4) <
+           (*(float *)(this + 0x34) + pfVar4[3]) * (*(float *)(this + 0x34) + pfVar4[3]))) {
+          return 1;
+        }
+      }
+    }
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00669110 134 0
+@@CALLERS 
+@@CALLEES operator(), GetBoundingInfo
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_00669110(undefined4 *param_1,CThing *param_2)
+
+{
+  float *pfVar1;
+  CThing *pCVar2;
+  bool bVar3;
+  float local_c;
+  float local_8;
+  float local_4;
+  
+  pCVar2 = param_2;
+  pfVar1 = (float *)*param_1;
+  CTCPhysicsBase::GetBoundingInfo
+            (*(CTCPhysicsBase **)(param_2 + 0x60),(C3DVector *)&local_c,(float *)&param_2);
+  if ((local_c - *pfVar1) * (local_c - *pfVar1) +
+      (local_8 - pfVar1[1]) * (local_8 - pfVar1[1]) + (local_4 - pfVar1[2]) * (local_4 - pfVar1[2])
+      < ((float)param_2 + pfVar1[3]) * ((float)param_2 + pfVar1[3])) {
+    bVar3 = CThingFilter_PosInContainmentVolume::operator()
+                      ((CThingFilter_PosInContainmentVolume *)param_1[1],pCVar2);
+    if (bVar3) {
+      return 1;
+    }
+  }
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00669510 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00669510(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0066a1a0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_0066a1a0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0066e742 87 0
+@@CALLERS 
+@@CALLEES PeekGuiDef, CSoundInit
+@@STRINGS 
+@@DECOMP
+
+void FUN_0066e742(int param_1)
+
+{
+  undefined4 uVar1;
+  int iVar2;
+  CPlayerGuiDef *pCVar3;
+  int *piVar4;
+  undefined4 uVar5;
+  undefined4 uVar6;
+  CSoundInit local_28 [32];
+  undefined4 local_8;
+  
+  local_8 = 0;
+  if (param_1 == 2) {
+    pCVar3 = CPlayerGui::PeekGuiDef();
+    local_8 = *(undefined4 *)(pCVar3 + 0x3c);
+  }
+  if (DAT_013b8394 != (int *)0x0) {
+    uVar1 = *(undefined4 *)(DAT_013b86a0 + 0x10);
+    piVar4 = (int *)(**(code **)(*DAT_013b8394 + 0x24))();
+    iVar2 = *piVar4;
+    uVar6 = 0;
+    uVar5 = CSoundInit::CSoundInit(local_28);
+    (**(code **)(iVar2 + 0xc))(uVar1,local_8,1,uVar5,uVar6);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00671160 844 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile_Assign
+@@STRINGS 
+@@DECOMP
+
+CThingBaseDef * __thiscall FUN_00671160(CThingBaseDef *param_1,CThingBaseDef *param_2)
+
+{
+  CThingBaseDef CVar1;
+  
+  CThingBaseDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  *(undefined4 *)(param_1 + 0x7c) = *(undefined4 *)(param_2 + 0x7c);
+  *(undefined4 *)(param_1 + 0x80) = *(undefined4 *)(param_2 + 0x80);
+  *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_2 + 0x84);
+  *(undefined4 *)(param_1 + 0x88) = *(undefined4 *)(param_2 + 0x88);
+  *(undefined4 *)(param_1 + 0x8c) = *(undefined4 *)(param_2 + 0x8c);
+  *(undefined4 *)(param_1 + 0x90) = *(undefined4 *)(param_2 + 0x90);
+  *(undefined4 *)(param_1 + 0x94) = *(undefined4 *)(param_2 + 0x94);
+  *(undefined4 *)(param_1 + 0x98) = *(undefined4 *)(param_2 + 0x98);
+  *(undefined4 *)(param_1 + 0x9c) = *(undefined4 *)(param_2 + 0x9c);
+  *(undefined4 *)(param_1 + 0xa0) = *(undefined4 *)(param_2 + 0xa0);
+  *(undefined4 *)(param_1 + 0xa4) = *(undefined4 *)(param_2 + 0xa4);
+  *(undefined4 *)(param_1 + 0xa8) = *(undefined4 *)(param_2 + 0xa8);
+  *(undefined4 *)(param_1 + 0xac) = *(undefined4 *)(param_2 + 0xac);
+  *(undefined4 *)(param_1 + 0xb0) = *(undefined4 *)(param_2 + 0xb0);
+  *(undefined4 *)(param_1 + 0xb4) = *(undefined4 *)(param_2 + 0xb4);
+  *(undefined4 *)(param_1 + 0xb8) = *(undefined4 *)(param_2 + 0xb8);
+  *(undefined4 *)(param_1 + 0xbc) = *(undefined4 *)(param_2 + 0xbc);
+  *(undefined4 *)(param_1 + 0xc0) = *(undefined4 *)(param_2 + 0xc0);
+  *(undefined4 *)(param_1 + 0xc4) = *(undefined4 *)(param_2 + 0xc4);
+  CActiveFile_Assign(param_2 + 200);
+  *(undefined4 *)(param_1 + 0xd4) = *(undefined4 *)(param_2 + 0xd4);
+  *(undefined4 *)(param_1 + 0xd8) = *(undefined4 *)(param_2 + 0xd8);
+  *(undefined4 *)(param_1 + 0xdc) = *(undefined4 *)(param_2 + 0xdc);
+  *(undefined4 *)(param_1 + 0xe0) = *(undefined4 *)(param_2 + 0xe0);
+  *(undefined4 *)(param_1 + 0xe4) = *(undefined4 *)(param_2 + 0xe4);
+  *(undefined4 *)(param_1 + 0xe8) = *(undefined4 *)(param_2 + 0xe8);
+  *(undefined4 *)(param_1 + 0xec) = *(undefined4 *)(param_2 + 0xec);
+  *(undefined4 *)(param_1 + 0xf0) = *(undefined4 *)(param_2 + 0xf0);
+  *(undefined4 *)(param_1 + 0xf4) = *(undefined4 *)(param_2 + 0xf4);
+  *(undefined4 *)(param_1 + 0xf8) = *(undefined4 *)(param_2 + 0xf8);
+  *(undefined4 *)(param_1 + 0xfc) = *(undefined4 *)(param_2 + 0xfc);
+  *(undefined4 *)(param_1 + 0x100) = *(undefined4 *)(param_2 + 0x100);
+  *(undefined4 *)(param_1 + 0x104) = *(undefined4 *)(param_2 + 0x104);
+  *(undefined4 *)(param_1 + 0x108) = *(undefined4 *)(param_2 + 0x108);
+  *(undefined2 *)(param_1 + 0x10c) = *(undefined2 *)(param_2 + 0x10c);
+  *(undefined4 *)(param_1 + 0x10e) = *(undefined4 *)(param_2 + 0x10e);
+  *(undefined4 *)(param_1 + 0x112) = *(undefined4 *)(param_2 + 0x112);
+  *(undefined4 *)(param_1 + 0x116) = *(undefined4 *)(param_2 + 0x116);
+  *(undefined2 *)(param_1 + 0x11a) = *(undefined2 *)(param_2 + 0x11a);
+  *(undefined4 *)(param_1 + 0x11c) = *(undefined4 *)(param_2 + 0x11c);
+  *(undefined4 *)(param_1 + 0x120) = *(undefined4 *)(param_2 + 0x120);
+  *(undefined4 *)(param_1 + 0x124) = *(undefined4 *)(param_2 + 0x124);
+  param_1[0x128] = param_2[0x128];
+  *(undefined4 *)(param_1 + 300) = *(undefined4 *)(param_2 + 300);
+  *(undefined4 *)(param_1 + 0x130) = *(undefined4 *)(param_2 + 0x130);
+  *(undefined4 *)(param_1 + 0x134) = *(undefined4 *)(param_2 + 0x134);
+  param_1[0x138] =
+       (CThingBaseDef)((byte)param_1[0x138] ^ ((byte)param_2[0x138] ^ (byte)param_1[0x138]) & 1);
+  *(undefined4 *)(param_1 + 0x13c) = *(undefined4 *)(param_2 + 0x13c);
+  *(undefined4 *)(param_1 + 0x140) = *(undefined4 *)(param_2 + 0x140);
+  *(undefined4 *)(param_1 + 0x144) = *(undefined4 *)(param_2 + 0x144);
+  CVar1 = (CThingBaseDef)((byte)param_1[0x148] ^ ((byte)param_1[0x148] ^ (byte)param_2[0x148]) & 1);
+  param_1[0x148] = CVar1;
+  CVar1 = (CThingBaseDef)(((byte)param_2[0x148] ^ (byte)CVar1) & 2 ^ (byte)CVar1);
+  param_1[0x148] = CVar1;
+  CVar1 = (CThingBaseDef)(((byte)param_2[0x148] ^ (byte)CVar1) & 4 ^ (byte)CVar1);
+  param_1[0x148] = CVar1;
+  CVar1 = (CThingBaseDef)(((byte)param_2[0x148] ^ (byte)CVar1) & 8 ^ (byte)CVar1);
+  param_1[0x148] = CVar1;
+  CVar1 = (CThingBaseDef)(((byte)param_2[0x148] ^ (byte)CVar1) & 0x10 ^ (byte)CVar1);
+  param_1[0x148] = CVar1;
+  CVar1 = (CThingBaseDef)(((byte)param_2[0x148] ^ (byte)CVar1) & 0x20 ^ (byte)CVar1);
+  param_1[0x148] = CVar1;
+  CVar1 = (CThingBaseDef)(((byte)param_2[0x148] ^ (byte)CVar1) & 0x40 ^ (byte)CVar1);
+  param_1[0x148] = CVar1;
+  param_1[0x148] =
+       (CThingBaseDef)(((byte)param_2[0x148] ^ (byte)CVar1) & 0x7f ^ (byte)param_2[0x148]);
+  CVar1 = (CThingBaseDef)((byte)param_1[0x149] ^ ((byte)param_1[0x149] ^ (byte)param_2[0x149]) & 1);
+  param_1[0x149] = CVar1;
+  param_1[0x149] = (CThingBaseDef)(((byte)param_2[0x149] ^ (byte)CVar1) & 2 ^ (byte)CVar1);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00674e50 33 0
+@@CALLERS 
+@@CALLEES free, operator_delete
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00674e50(undefined4 *param_1)
+
+{
+  if (param_1 != (undefined4 *)0x0) {
+    if ((void *)*param_1 != (void *)0x0) {
+      free((void *)*param_1);
+    }
+    operator_delete(param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00674e80 33 0
+@@CALLERS 
+@@CALLEES free, operator_delete
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00674e80(undefined4 *param_1)
+
+{
+  if (param_1 != (undefined4 *)0x0) {
+    if ((void *)*param_1 != (void *)0x0) {
+      free((void *)*param_1);
+    }
+    operator_delete(param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00675c00 543 0
+@@CALLERS 
+@@CALLEES CActiveFile::operator=, Vector_Assign_12byte, operator=, Vector_Assign_44byte, CTCCarryable_assign, CTCCarryable_assign_copy
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_00675c00(int param_1,int param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  CThingBuildingDef *pCVar3;
+  CThingBuildingDef *this;
+  
+  if (param_2 != param_1) {
+    iVar1 = *(int *)(param_2 + 0x28);
+    iVar2 = *(int *)(param_1 + 0x28);
+    Vector_Assign_44byte(iVar1);
+    *(undefined1 *)(iVar2 + 0xd) = *(undefined1 *)(iVar1 + 0xd);
+    CRandomAppearanceMorph::operator=
+              (*(CRandomAppearanceMorph **)(param_1 + 0x30),
+               *(CRandomAppearanceMorph **)(param_2 + 0x30));
+    iVar1 = *(int *)(param_2 + 0x38);
+    iVar2 = *(int *)(param_1 + 0x38);
+    Vector_Assign_12byte(iVar1);
+    *(undefined1 *)(iVar2 + 0xd) = *(undefined1 *)(iVar1 + 0xd);
+    pCVar3 = *(CThingBuildingDef **)(param_2 + 0x40);
+    this = *(CThingBuildingDef **)(param_1 + 0x40);
+    CThingBuildingDef::operator=(this,pCVar3);
+    *(undefined4 *)(this + 0x28) = *(undefined4 *)(pCVar3 + 0x28);
+    *(undefined4 *)(this + 0x2c) = *(undefined4 *)(pCVar3 + 0x2c);
+    *(undefined4 *)(this + 0x30) = *(undefined4 *)(pCVar3 + 0x30);
+    *(undefined4 *)(this + 0x34) = *(undefined4 *)(pCVar3 + 0x34);
+    *(undefined4 *)(this + 0x38) = *(undefined4 *)(pCVar3 + 0x38);
+    *(undefined4 *)(this + 0x3c) = *(undefined4 *)(pCVar3 + 0x3c);
+    *(undefined4 *)(this + 0x40) = *(undefined4 *)(pCVar3 + 0x40);
+    *(undefined4 *)(this + 0x44) = *(undefined4 *)(pCVar3 + 0x44);
+    CActiveFile__operator_(param_2 + 0x48);
+    CActiveFile__operator_(param_2 + 0x54);
+    CTCCarryable_assign(param_2 + 0x60);
+    CActiveFile__operator_(param_2 + 0x6c);
+    *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+    *(undefined4 *)(param_1 + 0x7c) = *(undefined4 *)(param_2 + 0x7c);
+    *(undefined4 *)(param_1 + 0x80) = *(undefined4 *)(param_2 + 0x80);
+    *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_2 + 0x84);
+    *(undefined4 *)(param_1 + 0x88) = *(undefined4 *)(param_2 + 0x88);
+    *(undefined4 *)(param_1 + 0x8c) = *(undefined4 *)(param_2 + 0x8c);
+    *(undefined4 *)(param_1 + 0x98) = *(undefined4 *)(param_2 + 0x98);
+    *(undefined4 *)(param_1 + 0x9c) = *(undefined4 *)(param_2 + 0x9c);
+    *(undefined4 *)(param_1 + 0xa0) = *(undefined4 *)(param_2 + 0xa0);
+    *(undefined4 *)(param_1 + 0xa4) = *(undefined4 *)(param_2 + 0xa4);
+    *(undefined4 *)(param_1 + 0x94) = *(undefined4 *)(param_2 + 0x94);
+    *(undefined4 *)(param_1 + 0x90) = *(undefined4 *)(param_2 + 0x90);
+    *(undefined4 *)(param_1 + 0xa8) = *(undefined4 *)(param_2 + 0xa8);
+    *(undefined4 *)(param_1 + 0xac) = *(undefined4 *)(param_2 + 0xac);
+    *(undefined4 *)(param_1 + 0xb0) = *(undefined4 *)(param_2 + 0xb0);
+    *(undefined4 *)(param_1 + 0xb4) = *(undefined4 *)(param_2 + 0xb4);
+    *(undefined4 *)(param_1 + 0xb8) = *(undefined4 *)(param_2 + 0xb8);
+    *(undefined4 *)(param_1 + 0xbc) = *(undefined4 *)(param_2 + 0xbc);
+    *(undefined4 *)(param_1 + 0xc0) = *(undefined4 *)(param_2 + 0xc0);
+    *(undefined4 *)(param_1 + 0xc4) = *(undefined4 *)(param_2 + 0xc4);
+    *(undefined1 *)(param_1 + 0xcd) = *(undefined1 *)(param_2 + 0xcd);
+    *(undefined1 *)(param_1 + 200) = *(undefined1 *)(param_2 + 200);
+    *(undefined1 *)(param_1 + 0xc9) = *(undefined1 *)(param_2 + 0xc9);
+    *(undefined1 *)(param_1 + 0xca) = *(undefined1 *)(param_2 + 0xca);
+    *(undefined1 *)(param_1 + 0xcb) = *(undefined1 *)(param_2 + 0xcb);
+    *(undefined1 *)(param_1 + 0xcc) = *(undefined1 *)(param_2 + 0xcc);
+    CTCCarryable_assign_copy(param_2 + 0xd0);
+    *(undefined4 *)(param_1 + 0xdc) = *(undefined4 *)(param_2 + 0xdc);
+    *(undefined4 *)(param_1 + 0xe0) = *(undefined4 *)(param_2 + 0xe0);
+    *(undefined1 *)(param_1 + 0xe4) = *(undefined1 *)(param_2 + 0xe4);
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC

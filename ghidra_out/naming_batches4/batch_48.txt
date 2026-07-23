@@ -1,0 +1,2155 @@
+@@@FUNC 00c0b4c0 63 1
+@@CALLERS CMatrix::UpdateInversePerspective
+@@CALLEES 
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+float10 FUN_00c0b4c0(float param_1)
+
+{
+  if (_DAT_0128f604 <= param_1) {
+    return (float10)param_1 - (float10)_DAT_0128f608;
+  }
+  if ((float10)param_1 < (float10)_DAT_012b1eb8) {
+    return (float10)param_1 + (float10)_DAT_0128f608;
+  }
+  return (float10)param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0bee0 167 1
+@@CALLERS CCharString_SetData
+@@CALLEES CCharString_ReleaseRefcount, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, CCharString_AllocFromSize
+@@STRINGS m_pchData != NULL 	GetData()->nRefs <= 1 
+@@DECOMP
+
+void __thiscall FUN_00c0bee0(int *param_1,int param_2)
+
+{
+  int iVar1;
+  int *piVar2;
+  
+  piVar2 = param_1;
+  if (*param_1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&stack0xffffffff)
+    ;
+  }
+  iVar1 = param_2;
+  if (*(int *)(*param_1 + -0xc) < 2) {
+    if (*param_1 == 0) {
+      if (DAT_0143bb2c != (code *)0x0) {
+        (*DAT_0143bb2c)();
+      }
+      std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+      list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+                ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+    }
+    if (iVar1 <= *(int *)(*param_1 + -4)) goto LAB_00c0bf42;
+  }
+  CCharString_ReleaseRefcount();
+  CCharString_AllocFromSize(iVar1);
+LAB_00c0bf42:
+  if (*param_1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+  }
+  if (1 < *(int *)(*param_1 + -0xc)) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)(piVar2);
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0c220 79 1
+@@CALLERS CCharString_InsertData
+@@CALLEES CCharString_AllocFromSize
+@@STRINGS 
+@@DECOMP
+
+void __thiscall
+FUN_00c0c220(int *param_1,uint param_2,undefined4 *param_3,uint param_4,undefined4 *param_5)
+
+{
+  uint uVar1;
+  undefined4 *puVar2;
+  
+  if (param_4 + param_2 != 0) {
+    CCharString_AllocFromSize(param_4 + param_2);
+    puVar2 = (undefined4 *)*param_1;
+    for (uVar1 = param_2 >> 2; uVar1 != 0; uVar1 = uVar1 - 1) {
+      *puVar2 = *param_3;
+      param_3 = param_3 + 1;
+      puVar2 = puVar2 + 1;
+    }
+    for (uVar1 = param_2 & 3; uVar1 != 0; uVar1 = uVar1 - 1) {
+      *(undefined1 *)puVar2 = *(undefined1 *)param_3;
+      param_3 = (undefined4 *)((int)param_3 + 1);
+      puVar2 = (undefined4 *)((int)puVar2 + 1);
+    }
+    puVar2 = (undefined4 *)(*param_1 + param_2);
+    for (uVar1 = param_4 >> 2; uVar1 != 0; uVar1 = uVar1 - 1) {
+      *puVar2 = *param_5;
+      param_5 = param_5 + 1;
+      puVar2 = puVar2 + 1;
+    }
+    for (param_4 = param_4 & 3; param_4 != 0; param_4 = param_4 - 1) {
+      *(undefined1 *)puVar2 = *(undefined1 *)param_5;
+      param_5 = (undefined4 *)((int)param_5 + 1);
+      puVar2 = (undefined4 *)((int)puVar2 + 1);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0c4b0 378 1
+@@CALLERS 
+@@CALLEES CCharStringData_ReleaseWithRefcount, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, CCharString_AllocFromSize
+@@STRINGS nMinBufLength >= 0 	m_pchData != NULL 	GetData()->nRefs <= 1 
+@@DECOMP
+
+int __thiscall FUN_00c0c4b0(int *param_1,int param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined4 *puVar3;
+  int iVar4;
+  undefined4 *puVar5;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lStack_5;
+  undefined4 *puStack_4;
+  
+  iVar4 = param_2;
+  if (param_2 < 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+  }
+  if (*param_1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+  }
+  iVar1 = *param_1;
+  if (*(int *)(iVar1 + -0xc) < 2) {
+    if (iVar1 == 0) {
+      if (DAT_0143bb2c != (code *)0x0) {
+        (*DAT_0143bb2c)();
+      }
+      std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+      list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+                ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+    }
+    iVar1 = *param_1;
+    if (iVar4 <= *(int *)(iVar1 + -4)) goto LAB_00c0c5c3;
+  }
+  if (iVar1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+  }
+  puVar3 = (undefined4 *)*param_1;
+  puStack_4 = puVar3 + -3;
+  if (puVar3 == (undefined4 *)0x0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&lStack_5);
+  }
+  iVar1 = *(int *)(*param_1 + -8);
+  if (iVar4 < iVar1) {
+    iVar4 = iVar1;
+  }
+  CCharString_AllocFromSize(iVar4);
+  puVar5 = (undefined4 *)*param_1;
+  for (uVar2 = iVar1 + 1U >> 2; uVar2 != 0; uVar2 = uVar2 - 1) {
+    *puVar5 = *puVar3;
+    puVar5 = puVar5 + 1;
+    puVar3 = puVar3 + 1;
+  }
+  for (uVar2 = iVar1 + 1U & 3; uVar2 != 0; uVar2 = uVar2 - 1) {
+    *(undefined1 *)puVar5 = *(undefined1 *)puVar3;
+    puVar3 = (undefined4 *)((int)puVar3 + 1);
+    puVar5 = (undefined4 *)((int)puVar5 + 1);
+  }
+  if (*param_1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+  }
+  *(int *)(*param_1 + -8) = iVar1;
+  CCharStringData_ReleaseWithRefcount(puStack_4);
+LAB_00c0c5c3:
+  if (*param_1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+  }
+  if (1 < *(int *)(*param_1 + -0xc)) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+  }
+  if (*param_1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+  }
+  return *param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0c630 137 1
+@@CALLERS 
+@@CALLEES list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, RefcountedData_Copy, lstrlenA
+@@STRINGS m_pchData != NULL 	nNewLength <= GetData()->nAllocLength 
+@@DECOMP
+
+void __thiscall FUN_00c0c630(int *param_1,int param_2)
+
+{
+  int iVar1;
+  
+  RefcountedData_Copy();
+  iVar1 = param_2;
+  if (param_2 == -1) {
+    iVar1 = lstrlenA((LPCSTR)*param_1);
+  }
+  if (*param_1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+  }
+  if (*(int *)(*param_1 + -4) < iVar1) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+  }
+  if (*param_1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+  }
+  *(int *)(*param_1 + -8) = iVar1;
+  *(undefined1 *)(iVar1 + *param_1) = 0;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0d7c0 108 1
+@@CALLERS 
+@@CALLEES _mbsinc, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, RefcountedData_Copy
+@@STRINGS m_pchData != NULL 
+@@DECOMP
+
+void __thiscall
+FUN_00c0d7c0(int *param_1,list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> param_2)
+
+{
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lVar1;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *_Ptr;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lVar2;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *plVar3;
+  
+  RefcountedData_Copy();
+  lVar1 = param_2;
+  _Ptr = (list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)*param_1;
+  lVar2 = *_Ptr;
+  plVar3 = (list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)0x0;
+  if (lVar2 != (list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>)0x0) {
+    do {
+      if (lVar2 == lVar1) {
+        if (plVar3 == (list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)0x0) {
+          plVar3 = _Ptr;
+        }
+      }
+      else {
+        plVar3 = (list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)0x0;
+      }
+      _Ptr = (list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)
+             _mbsinc((uchar *)_Ptr);
+      lVar2 = *_Ptr;
+    } while (lVar2 != (list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>)0x0);
+    if (plVar3 != (list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)0x0) {
+      *plVar3 = (list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>)0x0;
+      if (*param_1 == 0) {
+        if (DAT_0143bb2c != (code *)0x0) {
+          (*DAT_0143bb2c)();
+        }
+        std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+        list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&param_2);
+      }
+      *(int *)(*param_1 + -8) = (int)plVar3 - *param_1;
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0d970 152 1
+@@CALLERS 
+@@CALLEES _mbsinc, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, memmove, RefcountedData_Copy
+@@STRINGS m_pchData != NULL 
+@@DECOMP
+
+void __thiscall
+FUN_00c0d970(int *param_1,list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> param_2)
+
+{
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lVar1;
+  void *_Dst;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> lVar2;
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *_Ptr;
+  int iVar3;
+  
+  RefcountedData_Copy();
+  lVar2 = param_2;
+  _Ptr = (list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)*param_1;
+  lVar1 = *_Ptr;
+  while (lVar2 == lVar1) {
+    _Ptr = (list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)
+           _mbsinc((uchar *)_Ptr);
+    lVar1 = *_Ptr;
+  }
+  if (_Ptr != (list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)*param_1) {
+    if ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)*param_1 ==
+        (list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)0x0) {
+      if (DAT_0143bb2c != (code *)0x0) {
+        (*DAT_0143bb2c)();
+      }
+      std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+      list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&param_2);
+    }
+    _Dst = (void *)*param_1;
+    iVar3 = (*(int *)((int)_Dst + -8) - (int)_Ptr) + (int)_Dst;
+    memmove(_Dst,_Ptr,iVar3 + 1);
+    if (*param_1 == 0) {
+      if (DAT_0143bb2c != (code *)0x0) {
+        (*DAT_0143bb2c)();
+      }
+      std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+      list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(&param_2);
+    }
+    *(int *)(*param_1 + -8) = iVar3;
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0dcf0 57 1
+@@CALLERS operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+@@CALLEES list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, CCharString_InsertData
+@@STRINGS m_pchData != NULL 
+@@DECOMP
+
+void FUN_00c0dcf0(int *param_1)
+
+{
+  int *piVar1;
+  
+  piVar1 = param_1;
+  if (*param_1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_1);
+  }
+  CCharString_InsertData(*(undefined4 *)(*piVar1 + -8),*piVar1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0dd60 72 1
+@@CALLERS operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+@@CALLEES sprintf, __security_check_cookie, ApplyScriptedMapBrush
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+
+void __thiscall FUN_00c0dd60(CWorldMap *param_1,undefined8 param_2)
+
+{
+  undefined1 unaff_SI;
+  CScriptedMapBrush local_44 [64];
+  undefined4 local_4;
+  
+  local_4 = DAT_0139c8a8;
+  sprintf((char *)local_44,"%.2f",param_2);
+  CWorldMap::ApplyScriptedMapBrush(param_1,local_44,(bool)unaff_SI);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0df50 415 1
+@@CALLERS 
+@@CALLEES list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, CCharString_AllocFromSize, CShaderResource::Assign, CCharStringData::Release
+@@STRINGS m_pchData != NULL 	nFirst >= 0 	nFirst + nCount <= GetData()->nDataLength 
+@@DECOMP
+
+undefined4 __thiscall FUN_00c0df50(int *param_1,undefined4 param_2,undefined *param_3,int param_4)
+
+{
+  int iVar1;
+  int iVar2;
+  int iVar3;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  uint uStack_4;
+  
+  uStack_4 = 0xffffffff;
+  puStack_8 = &LAB_01210f41;
+  pvStack_c = ExceptionList;
+  iVar2 = (int)param_3;
+  if ((int)param_3 < 0) {
+    iVar2 = 0;
+  }
+  iVar3 = param_4;
+  if (param_4 < 0) {
+    iVar3 = 0;
+  }
+  ExceptionList = &pvStack_c;
+  if (*param_1 == 0) {
+    ExceptionList = &pvStack_c;
+    if (DAT_0143bb2c != (code *)0x0) {
+      ExceptionList = &pvStack_c;
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_3);
+  }
+  iVar1 = *param_1;
+  if (*(int *)(iVar1 + -8) < iVar2 + iVar3) {
+    if (iVar1 == 0) {
+      if (DAT_0143bb2c != (code *)0x0) {
+        (*DAT_0143bb2c)();
+      }
+      std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+      list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+                ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_3);
+    }
+    iVar1 = *param_1;
+    iVar3 = *(int *)(iVar1 + -8) - iVar2;
+  }
+  if (iVar1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_3);
+  }
+  if (*(int *)(*param_1 + -8) < iVar2) {
+    iVar3 = 0;
+  }
+  if (iVar2 < 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_3);
+  }
+  if (*param_1 == 0) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_3);
+  }
+  if (*(int *)(*param_1 + -8) < iVar2 + iVar3) {
+    if (DAT_0143bb2c != (code *)0x0) {
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_3);
+  }
+  if (iVar2 == 0) {
+    if (*param_1 == 0) {
+      if (DAT_0143bb2c != (code *)0x0) {
+        (*DAT_0143bb2c)();
+      }
+      std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+      list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+                ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_3);
+    }
+    if (iVar3 == *(int *)(*param_1 + -8)) {
+      CShaderResource__Assign(param_1);
+      ExceptionList = pvStack_c;
+      return param_2;
+    }
+  }
+  param_3 = PTR_DAT_0139c900;
+  uStack_4 = 1;
+  CCharString_AllocFromSize(&param_3,iVar3,iVar2,0);
+  CShaderResource__Assign(&param_3);
+  uStack_4 = uStack_4 & 0xffffff00;
+  CCharStringData__Release();
+  ExceptionList = pvStack_c;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0e1f0 208 1
+@@CALLERS 
+@@CALLEES list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, CCharString_AllocFromSize, CShaderResource::Assign, CCharStringData::Release
+@@STRINGS m_pchData != NULL 
+@@DECOMP
+
+void * __thiscall FUN_00c0e1f0(int *param_1,void *param_2,undefined *param_3)
+
+{
+  void *pvVar1;
+  int iVar2;
+  undefined4 *puVar3;
+  void *pvVar4;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 uStack_4;
+  
+  uStack_4 = 0xffffffff;
+  puStack_8 = &LAB_01210f97;
+  pvStack_c = ExceptionList;
+  iVar2 = (int)param_3;
+  if ((int)param_3 < 0) {
+    iVar2 = 0;
+  }
+  ExceptionList = &pvStack_c;
+  if (*param_1 == 0) {
+    ExceptionList = &pvStack_c;
+    if (DAT_0143bb2c != (code *)0x0) {
+      ExceptionList = &pvStack_c;
+      (*DAT_0143bb2c)();
+    }
+    std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+    list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+              ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_3);
+  }
+  if (*(int *)(*param_1 + -8) <= iVar2) {
+    CShaderResource__Assign(param_1);
+    ExceptionList = pvStack_c;
+    return param_2;
+  }
+  param_3 = PTR_DAT_0139c900;
+  pvVar4 = (void *)0x0;
+  puVar3 = &param_3;
+  uStack_4 = 1;
+  CCharString_AllocFromSize(puVar3,iVar2,0);
+  pvVar1 = pvStack_c;
+  CShaderResource__Assign(&puStack_8);
+  CCharStringData__Release(puVar3,iVar2,1);
+  ExceptionList = pvVar4;
+  return pvVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0e360 209 1
+@@CALLERS 
+@@CALLEES CCharString_ReverseFind, FUN_00c0e1f0, FUN_00c0d970, CShaderResource::Assign, Std_Allocator_Construct, CCharString_AssignmentOp, CCharStringData::Release, FUN_00c0d7c0
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall FUN_00c0e360(int *param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  undefined1 local_18 [4];
+  undefined1 local_14 [4];
+  undefined4 local_10;
+  void *local_c;
+  undefined1 *puStack_8;
+  uint local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01210fca;
+  local_c = ExceptionList;
+  local_10 = 0;
+  ExceptionList = &local_c;
+  iVar1 = CCharString_ReverseFind(0x5c);
+  if (iVar1 < 1) {
+    iVar1 = 0;
+  }
+  Std_Allocator_Construct(*param_1 + iVar1);
+  local_4 = 1;
+  FUN_00c0d970(0x5c);
+  iVar1 = CCharString_ReverseFind(0x2e);
+  if (-1 < iVar1) {
+    uVar2 = FUN_00c0e1f0(local_14,iVar1);
+    local_4._0_1_ = 2;
+    CCharString_AssignmentOp(uVar2);
+    local_4 = CONCAT31(local_4._1_3_,1);
+    CCharStringData__Release();
+    FUN_00c0d7c0(0x2e);
+  }
+  CShaderResource__Assign(local_18);
+  local_10 = 1;
+  local_4 = local_4 & 0xffffff00;
+  CCharStringData__Release();
+  ExceptionList = local_c;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0e9e0 46 1
+@@CALLERS 
+@@CALLEES operator_new
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c0e9e0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
+
+{
+  undefined4 *puVar1;
+  
+  puVar1 = operator_new(0xc);
+  puVar1[1] = param_3;
+  *puVar1 = param_2;
+  puVar1[2] = param_4;
+  (**(code **)(*(int *)(param_1 + 0x60) + 0x24))(puVar1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0ea10 52 1
+@@CALLERS CEngineVSConstantLayoutLights
+@@CALLEES operator_delete
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c0ea10(int param_1)
+
+{
+  void *pvVar1;
+  
+  pvVar1 = (void *)(**(code **)(*(int *)(param_1 + 0x60) + 0x2c))();
+  while (pvVar1 != (void *)0x0) {
+    (**(code **)(*(int *)(param_1 + 0x60) + 0x20))(pvVar1);
+    operator_delete(pvVar1);
+    pvVar1 = (void *)(**(code **)(*(int *)(param_1 + 0x60) + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0eaf0 41 1
+@@CALLERS CEngineVSConstantLayoutLights
+@@CALLEES OnDie
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c0eaf0(CTCMapwho *param_1)
+
+{
+  int iVar1;
+  
+  iVar1 = (**(code **)(*(int *)(param_1 + 0x50) + 0x2c))();
+  while (iVar1 != 0) {
+    CTCMapwho::OnDie(param_1);
+    iVar1 = (**(code **)(*(int *)(param_1 + 0x50) + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0eb40 41 1
+@@CALLERS CEngineVSConstantLayoutLights
+@@CALLEES OnDie
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c0eb40(CTCMapwho *param_1)
+
+{
+  int iVar1;
+  
+  iVar1 = (**(code **)(*(int *)(param_1 + 0x74) + 0x2c))();
+  while (iVar1 != 0) {
+    CTCMapwho::OnDie(param_1);
+    iVar1 = (**(code **)(*(int *)(param_1 + 0x74) + 0x2c))();
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c0ec90 78 1
+@@CALLERS 
+@@CALLEES CTCMapwho_ClearMessageQueue, GetKeyPressed
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c0ec90(int param_1)
+
+{
+  CManager *this;
+  wchar_t wVar1;
+  CManager *pCVar2;
+  uint uVar3;
+  
+  if (*(int *)(param_1 + 0x48) == 0) {
+    return;
+  }
+LAB_00c0eca0:
+  do {
+    pCVar2 = (CManager *)0x0;
+    uVar3 = 0;
+    do {
+      if (*(uint *)(param_1 + 0x34) <= uVar3) {
+        if (pCVar2 == (CManager *)0x0) {
+          return;
+        }
+        CTCMapwho_ClearMessageQueue(pCVar2);
+        goto LAB_00c0eca0;
+      }
+      this = *(CManager **)(*(int *)(param_1 + 0x2c) + uVar3 * 4);
+      wVar1 = NUISystem::CManager::GetKeyPressed(this);
+      if ((char)wVar1 != '\0') {
+        pCVar2 = this;
+      }
+      uVar3 = uVar3 + 1;
+    } while (pCVar2 == (CManager *)0x0);
+    CTCMapwho_ClearMessageQueue(pCVar2);
+  } while( true );
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c104f0 427 1
+@@CALLERS CTCHero_OnBlockParrySuccess
+@@CALLEES CCombatAbilityStrafeDef::Initialize, ~CPixelShaderData
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c104f0(int param_1,void ****param_2)
+
+{
+  int *piVar1;
+  int *unaff_EBX;
+  int *unaff_EBP;
+  undefined4 ****local_28;
+  void ****local_24;
+  void ****local_20;
+  void ***local_1c;
+  void **local_18;
+  void *local_14 [2];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  puStack_8 = &LAB_012113f4;
+  pvStack_c = ExceptionList;
+  local_18 = local_14;
+  local_4 = 0;
+  local_1c = (void ***)&PTR_LAB_012b1b78;
+  ExceptionList = &pvStack_c;
+  CCombatAbilityStrafeDef__Initialize(1);
+  local_24 = &local_1c;
+  local_28 = (undefined4 ****)&PTR_FUN_012b2614;
+  local_20 = param_2;
+  local_4 = 2;
+  (**(code **)(*(int *)(param_1 + 0x10) + 0x28))(&local_28);
+  (*(*local_1c)[10])();
+  piVar1 = (int *)(*(*local_1c)[0xb])();
+  while (piVar1 != (int *)0x0) {
+    (*(*local_1c)[6])(&local_20,piVar1);
+    (**(code **)(*piVar1 + 0x1c))(param_1);
+    (**(code **)(*piVar1 + 0x20))(1);
+    piVar1 = (int *)(**(code **)(*unaff_EBX + 0x2c))();
+  }
+  local_20 = (void ****)&PTR_LAB_012b1b78;
+  puStack_8 = (undefined1 *)0x3;
+  CPixelShaderData::~CPixelShaderData((CPixelShaderData *)&local_18);
+  local_1c = &local_18;
+  puStack_8 = (undefined1 *)0x4;
+  local_20 = (void ****)&PTR_LAB_012b1c40;
+  CCombatAbilityStrafeDef__Initialize(1);
+  local_28 = &local_20;
+  local_24 = param_2;
+  puStack_8 = (undefined1 *)0x6;
+  (**(code **)(*(int *)(param_1 + 0x10) + 0x28))(&stack0xffffffd4);
+  (*(code *)(*local_20)[10])();
+  piVar1 = (int *)(*(code *)(*local_20)[0xb])();
+  while (piVar1 != (int *)0x0) {
+    (*(code *)(*local_20)[6])(&local_24,piVar1);
+    (**(code **)(*piVar1 + 0x1c))(param_1);
+    (**(code **)(*piVar1 + 0x20))(1);
+    piVar1 = (int *)(**(code **)(*unaff_EBP + 0x2c))();
+  }
+  local_24 = (void ****)&PTR_LAB_012b1c40;
+  pvStack_c = (void *)0x7;
+  CPixelShaderData::~CPixelShaderData((CPixelShaderData *)&local_1c);
+  ExceptionList = local_14[0];
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c10f40 153 1
+@@CALLERS swap<NScript::CRuntimeScriptedEntityPersist::CPersistInfo>
+@@CALLEES CPhysicalPrimitiveMesh_ComputeLighting, EventQueue_ProcessWithTimeout, AddSuccessfulBlockParry, IsIdentical
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c10f40(int param_1,undefined4 *param_2)
+
+{
+  CTriangleInfo *this;
+  bool bVar1;
+  CTriangleInfo *unaff_EDI;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012114c6;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  this = (CTriangleInfo *)(param_1 + 8);
+  local_4 = 0;
+  bVar1 = CTriangleStripifier::CTriangleInfo::IsIdentical(this,unaff_EDI);
+  if (!bVar1) {
+    *(undefined4 *)this = *param_2;
+    *(undefined4 *)(param_1 + 0xc) = param_2[1];
+    *(undefined4 *)(param_1 + 0x10) = param_2[2];
+    CPhysicalPrimitiveMesh_ComputeLighting(this,param_1 + 0x14,param_1 + 0x20);
+    *(uint *)(param_1 + 0x7c8) = *(uint *)(param_1 + 0x7c8) | 4;
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c11230 242 1
+@@CALLERS 
+@@CALLEES C3DGroup2, InputEvent_ValidateForContext, CTCInventory::OnCreate, OnCreate, Thiscall_ActionLightningStateHandler, $E2, GetPMeshAnims
+@@STRINGS 
+@@DECOMP
+
+undefined4 __thiscall
+FUN_00c11230(int param_1,C3DAnimationBlendState **param_2,C3DAnimationBlendState **param_3,
+            undefined4 param_4,int param_5,uint param_6)
+
+{
+  char cVar1;
+  int iVar2;
+  C3DGroup2 local_1c [12];
+  void *pvStack_10;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012114fc;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  C3DGroup2::C3DGroup2(local_1c);
+  local_4 = 0;
+  CAnimateThing::GetPMeshAnims((CAnimateThing *)local_1c,param_2,param_3);
+  iVar2 = (**(code **)(*(int *)(param_1 + 500) + 0x44))(local_1c);
+  CTCStealth::OnCreate((CTCStealth *)&stack0xffffffe0);
+  if (iVar2 != 0) {
+    cVar1 = InputEvent_ValidateForContext(param_1);
+    if (cVar1 == '\0') {
+      CTCInventory__OnCreate(param_1);
+    }
+    else {
+      if (((*(int *)(iVar2 + 0x28) == 0) && (param_5 == 0)) || (param_6 < *(uint *)(iVar2 + 0x14)))
+      {
+        puStack_8 = (undefined1 *)0xffffffff;
+        _E2();
+        ExceptionList = pvStack_10;
+        return 0;
+      }
+      Thiscall_ActionLightningStateHandler(param_1);
+    }
+  }
+  puStack_8 = (undefined1 *)0xffffffff;
+  _E2();
+  ExceptionList = pvStack_10;
+  return 1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c11950 127 1
+@@CALLERS 
+@@CALLEES ActivateThemeDensityDisplay, EventQueue_ProcessWithTimeout, AddSuccessfulBlockParry, operator()
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c11950(int param_1)
+
+{
+  bool bVar1;
+  undefined3 extraout_var;
+  undefined3 extraout_var_00;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  CEditControlCentre *this;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012115e6;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  bVar1 = NScript::CIsThingAlive::operator()((CIsThingAlive *)(param_1 + 0x2c));
+  this = (CEditControlCentre *)CONCAT31(extraout_var,bVar1);
+  while (this != (CEditControlCentre *)0x0) {
+    CEditControlCentre::ActivateThemeDensityDisplay(this,param_1);
+    bVar1 = NScript::CIsThingAlive::operator()((CIsThingAlive *)(param_1 + 0x2c));
+    this = (CEditControlCentre *)CONCAT31(extraout_var_00,bVar1);
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c11d00 507 1
+@@CALLERS 
+@@CALLEES FUN_00c26010, operator_new, FUN_00c25b10, FUN_00c1c0b0, FUN_00c222d0, CConsoleVariable, FUN_00c1c700
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+CCharString * __thiscall
+FUN_00c11d00(CCharString *param_1,int param_2,undefined4 param_3,undefined4 param_4,
+            undefined4 param_5,undefined4 param_6,undefined4 param_7,undefined4 param_8)
+
+{
+  float fVar1;
+  CConsoleVariable *pCVar2;
+  undefined4 uVar3;
+  void *pvVar4;
+  int iVar5;
+  long *unaff_EDI;
+  CCharString *pCVar6;
+  undefined4 local_14;
+  undefined4 local_10;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211673;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  *(undefined ***)param_1 = &PTR_AddConstraintRepeat_012b2748;
+  *(int *)(param_1 + 4) = param_2;
+  *(undefined4 *)(param_1 + 8) = 0;
+  *(undefined4 *)(param_1 + 0xc) = 0;
+  *(undefined4 *)(param_1 + 0x10) = 0;
+  *(undefined4 *)(param_1 + 0x14) = 0;
+  *(undefined4 *)(param_1 + 0x18) = 0x3f800000;
+  *(undefined4 *)(param_1 + 0x1c) = 0;
+  *(undefined4 *)(param_1 + 0x20) = 0;
+  *(undefined4 *)(param_1 + 0x24) = 0;
+  *(undefined4 *)(param_1 + 0x28) = 0x3f800000;
+  FUN_00c222d0(param_3,param_4,param_5);
+  fVar1 = _DAT_01252370;
+  *(undefined4 *)(param_1 + 0x7d4) = param_7;
+  *(undefined4 *)(param_1 + 0x7b4) = 0;
+  *(undefined4 *)(param_1 + 0x7b8) = 0;
+  *(undefined4 *)(param_1 + 0x7c0) = 0x3f800000;
+  *(undefined4 *)(param_1 + 0x7c4) = 0;
+  *(undefined4 *)(param_1 + 0x7c8) = 0;
+  *(undefined4 *)(param_1 + 0x7cc) = 0;
+  *(undefined4 *)(param_1 + 2000) = param_6;
+  local_4 = 0;
+  FUN_00c26010(fVar1 / *(float *)(param_2 + 0x70));
+  param_1[0x828] = (CCharString)0x0;
+  pCVar6 = param_1 + 0x82c;
+  for (iVar5 = 0x15; iVar5 != 0; iVar5 = iVar5 + -1) {
+    *(undefined4 *)pCVar6 = 0;
+    pCVar6 = pCVar6 + 4;
+  }
+  local_4._0_1_ = 1;
+  *(undefined4 *)(param_1 + 0x880) = 0;
+  param_1[0x884] = (CCharString)0x0;
+  param_1[0x885] = (CCharString)0x1;
+  *(undefined4 *)(param_1 + 0x888) = 500;
+  *(undefined4 *)(param_1 + 0x88c) = 0;
+  pCVar2 = operator_new(0x40);
+  local_4._0_1_ = 2;
+  if (pCVar2 == (CConsoleVariable *)0x0) {
+    uVar3 = 0;
+  }
+  else {
+    uVar3 = CConsoleVariable::CConsoleVariable(pCVar2,param_1,unaff_EDI);
+  }
+  local_4._0_1_ = 1;
+  *(undefined4 *)(param_1 + 0x7b4) = uVar3;
+  pCVar2 = operator_new(0x40);
+  local_4._0_1_ = 3;
+  if (pCVar2 == (CConsoleVariable *)0x0) {
+    uVar3 = 0;
+  }
+  else {
+    uVar3 = CConsoleVariable::CConsoleVariable(pCVar2,param_1,unaff_EDI);
+  }
+  local_4._0_1_ = 1;
+  *(undefined4 *)(param_1 + 0x7b8) = uVar3;
+  pvVar4 = operator_new(0x1c);
+  local_4._0_1_ = 4;
+  if (pvVar4 == (void *)0x0) {
+    uVar3 = 0;
+  }
+  else {
+    uVar3 = FUN_00c1c700(param_1,param_8);
+  }
+  local_4._0_1_ = 1;
+  *(undefined4 *)(param_1 + 0x7bc) = uVar3;
+  FUN_00c1c0b0();
+  local_14 = 0x3000;
+  local_10 = 0xf;
+  pvVar4 = operator_new(0x18);
+  local_4 = CONCAT31(local_4._1_3_,5);
+  if (pvVar4 == (void *)0x0) {
+    *(undefined4 *)(param_1 + 0x7c4) = 0;
+  }
+  else {
+    uVar3 = FUN_00c25b10(0x42480000,0,*(undefined4 *)(param_1 + 0x7bc),&local_14);
+    *(undefined4 *)(param_1 + 0x7c4) = uVar3;
+  }
+  ExceptionList = local_c;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c11f00 72 1
+@@CALLERS 
+@@CALLEES operator(), CTCInventory_ProcessKeyPress, CTCInventory::OnCreate, FUN_00c21e60
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c11f00(int param_1,undefined4 param_2)
+
+{
+  CIsThingAlive *this;
+  bool bVar1;
+  undefined3 extraout_var;
+  undefined3 extraout_var_00;
+  int iVar2;
+  
+  this = (CIsThingAlive *)(param_1 + 0x2c);
+  bVar1 = NScript::CIsThingAlive::operator()(this);
+  if (CONCAT31(extraout_var,bVar1) == 0) {
+    CTCInventory_ProcessKeyPress();
+    bVar1 = NScript::CIsThingAlive::operator()(this);
+    if (CONCAT31(extraout_var_00,bVar1) == 0) {
+      iVar2 = FUN_00c21e60(param_2);
+      if (iVar2 != 0) {
+        CTCInventory__OnCreate(param_1);
+      }
+      NScript::CIsThingAlive::operator()(this);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c11f50 167 1
+@@CALLERS ~CAIStateGroup_JackOfBladesBase
+@@CALLEES FUN_00c276b0, InputEvent_ValidateForContext, NUISystem_CSpellContainerList_PopulateSpells, CTCInventory::OnCreate, EventQueue_ProcessWithTimeout, AddSuccessfulBlockParry, TextureIndex_GetByProperties
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c11f50(int param_1)
+
+{
+  char cVar1;
+  int iVar2;
+  uint uVar3;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211685;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar3 = 0;
+  local_4 = 0;
+  if (*(int *)(param_1 + 0x228) != 0) {
+    do {
+      iVar2 = TextureIndex_GetByProperties(uVar3);
+      if (*(int *)(iVar2 + 4) != 0) {
+        FUN_00c276b0();
+        cVar1 = InputEvent_ValidateForContext(param_1);
+        if (cVar1 == '\0') {
+          CTCInventory__OnCreate(param_1);
+        }
+      }
+      uVar3 = uVar3 + 1;
+    } while (uVar3 < *(uint *)(param_1 + 0x228));
+  }
+  NUISystem_CSpellContainerList_PopulateSpells();
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c12140 288 1
+@@CALLERS CTCHero_OnBlockParrySuccess
+@@CALLEES ParticleEffect_Release, operator_delete, FUN_00c22260, VectorBoundsCheckOrThrow, $E2, CTCInventory::OnCreate, EventQueue_ProcessWithTimeout, AddSuccessfulBlockParry, GetKeyPressed, WriteToFile, operator()
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c12140(CChunkedFileSaver *param_1,CDataOutputStream *param_2)
+
+{
+  CIsThingAlive *this;
+  CDataOutputStream *pCVar1;
+  wchar_t wVar2;
+  CManager *this_00;
+  undefined2 extraout_var;
+  void *pvVar3;
+  CIsThingAlive *extraout_EAX;
+  CIsThingAlive *extraout_EAX_00;
+  uint uVar4;
+  CChunkedFileSaver *unaff_EDI;
+  CChunkedFileSaver *pCVar5;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012116a9;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  pCVar1 = param_2;
+  uVar4 = 0;
+  local_4 = 0;
+  if (*(int *)(param_1 + 0x60) != 0) {
+    do {
+      this_00 = (CManager *)VectorBoundsCheckOrThrow(uVar4);
+      wVar2 = NUISystem::CManager::GetKeyPressed(this_00);
+      if (((CONCAT22(extraout_var,wVar2) != 0) && (*(int *)(this_00 + 0x18) != 0)) &&
+         (*(CDataOutputStream **)(*(int *)(this_00 + 0x18) + 4) == pCVar1)) {
+        CTCInventory__OnCreate(param_1);
+      }
+      uVar4 = uVar4 + 1;
+    } while (uVar4 < *(uint *)(param_1 + 0x60));
+  }
+  uVar4 = 0;
+  if (*(int *)(pCVar1 + 0x34) != 0) {
+    do {
+      param_2 = *(CDataOutputStream **)(*(int *)(pCVar1 + 0x2c) + uVar4 * 4);
+      pvVar3 = (void *)(**(code **)(*(int *)(param_1 + 0x284) + 0x44))(&param_2);
+      if (pvVar3 != (void *)0x0) {
+        ParticleEffect_Release(param_1);
+        _E2();
+        operator_delete(pvVar3);
+      }
+      uVar4 = uVar4 + 1;
+    } while (uVar4 < *(uint *)(pCVar1 + 0x34));
+  }
+  FUN_00c22260(pCVar1);
+  CChunkedFileRawDataChunk::WriteToFile
+            ((CChunkedFileRawDataChunk *)(param_1 + 0x2c),pCVar1,unaff_EDI);
+  this = extraout_EAX;
+  while (this != (CIsThingAlive *)0x0) {
+    pCVar5 = param_1;
+    NScript::CIsThingAlive::operator()(this);
+    *(undefined4 *)(this + 0x20) = 0;
+    CChunkedFileRawDataChunk::WriteToFile
+              ((CChunkedFileRawDataChunk *)(param_1 + 0x2c),pCVar1,pCVar5);
+    this = extraout_EAX_00;
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c12270 134 1
+@@CALLERS 
+@@CALLEES VectorBoundsCheckOrThrow, EventQueue_ProcessWithTimeout, AddSuccessfulBlockParry, FUN_00c21700
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c12270(int param_1,int param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012116bb;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar2 = 0;
+  local_4 = 0;
+  if (*(int *)(param_1 + 0x60) != 0) {
+    do {
+      iVar1 = VectorBoundsCheckOrThrow(uVar2);
+      if (*(int *)(iVar1 + 0xa4) == param_2) {
+        FUN_00c21700(param_1);
+      }
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < *(uint *)(param_1 + 0x60));
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c123b0 171 1
+@@CALLERS ~C3DMesh2
+@@CALLEES VectorBoundsCheckOrThrow, CTCInventory::OnCreate, EventQueue_ProcessWithTimeout, AddSuccessfulBlockParry, GetKeyPressed, operator()
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c123b0(int param_1)
+
+{
+  wchar_t wVar1;
+  CManager *this;
+  undefined2 extraout_var;
+  CIsThingAlive *this_00;
+  uint uVar2;
+  int iVar3;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012116df;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar2 = 0;
+  local_4 = 0;
+  if (*(int *)(param_1 + 0x60) != 0) {
+    do {
+      this = (CManager *)VectorBoundsCheckOrThrow(uVar2);
+      wVar1 = NUISystem::CManager::GetKeyPressed(this);
+      if (CONCAT22(extraout_var,wVar1) != 0) {
+        CTCInventory__OnCreate(param_1);
+      }
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < *(uint *)(param_1 + 0x60));
+  }
+  this_00 = (CIsThingAlive *)(**(code **)(*(int *)(param_1 + 0x2c) + 0x2c))();
+  while (this_00 != (CIsThingAlive *)0x0) {
+    iVar3 = param_1;
+    NScript::CIsThingAlive::operator()(this_00);
+    this_00 = (CIsThingAlive *)(**(code **)(*(int *)(param_1 + 0x2c) + 0x2c))(iVar3);
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c12880 179 1
+@@CALLERS ~CPixelShader
+@@CALLEES VectorBoundsCheckOrThrow, NUISystem_CSpellContainerList_PopulateSpells, EventQueue_ProcessWithTimeout, FUN_00c21a50, HeroWorksInBrothel, AddSuccessfulBlockParry, GetKeyPressed, OpenInventory
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c12880(CV_BordelloScript *param_1)
+
+{
+  wchar_t wVar1;
+  CManager *this;
+  undefined2 extraout_var;
+  uint uVar2;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211765;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar2 = 0;
+  local_4 = 0;
+  if (*(int *)(param_1 + 0x60) != 0) {
+    do {
+      this = (CManager *)VectorBoundsCheckOrThrow(uVar2);
+      wVar1 = NUISystem::CManager::GetKeyPressed(this);
+      if (CONCAT22(extraout_var,wVar1) != 0) {
+        FUN_00c21a50(param_1,*(undefined4 *)(param_1 + 0x7c8));
+      }
+      uVar2 = uVar2 + 1;
+    } while (uVar2 < *(uint *)(param_1 + 0x60));
+  }
+  *(undefined4 *)(param_1 + 0x7c8) = 0;
+  NUISystem_CSpellContainerList_PopulateSpells();
+  NScript::CV_BordelloScript::HeroWorksInBrothel(param_1);
+  CTCInventoryMagic::OpenInventory(*(CTCInventoryMagic **)(param_1 + 0x7bc));
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c12940 912 1
+@@CALLERS CombatBlockReward_ProcessWithExceptionHandler
+@@CALLEES CanCollideWithLandscape, GetKeyPressed, AddSuccessfulBlockParry, SetCurrentMapNumber, FUN_00c11f00, FUN_00c11230, ByteToFloatScale, FUN_00c21c20, GetFloatTLX, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, GetU1, GetCanItemBeQuickAssigned, FUN_00c1ba70, Init, CanCollideWithThingsOneWay, FUN_00c20580, CTCInventoryItem_GetWeaponClass_Wrapper, pair<unsigned_long,C3DMeshVolume>, EventQueue_ProcessWithTimeout, rand
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+uint __thiscall
+FUN_00c12940(int param_1,undefined4 param_2,undefined4 *param_3,undefined4 param_4,
+            undefined4 param_5,CGenericVertex<CTVertexLandscapeBackgroundBase> *param_6,int *param_7
+            )
+
+{
+  bool bVar1;
+  wchar_t wVar2;
+  int iVar3;
+  undefined2 extraout_var_00;
+  CManager *this;
+  undefined3 extraout_var;
+  undefined2 extraout_var_01;
+  uint uVar4;
+  undefined4 extraout_EAX;
+  uint uVar5;
+  uint uVar6;
+  undefined2 extraout_var_02;
+  uint uVar7;
+  uint uVar8;
+  float10 fVar9;
+  float fVar10;
+  float fVar11;
+  undefined4 uVar12;
+  undefined4 *puVar13;
+  undefined4 *puVar14;
+  float *pfVar15;
+  undefined4 uVar16;
+  CTCHeroExperience local_6c [8];
+  undefined4 local_64;
+  undefined4 local_60;
+  undefined4 local_5c;
+  undefined4 local_58;
+  undefined4 local_54;
+  undefined4 local_50;
+  undefined4 local_4c;
+  float local_48;
+  undefined4 local_44;
+  float local_40;
+  undefined4 local_3c;
+  wchar_t local_38;
+  undefined2 local_36;
+  undefined4 local_34;
+  undefined4 local_30;
+  undefined4 local_2c;
+  undefined4 local_28;
+  undefined4 local_24;
+  float local_20;
+  float local_1c;
+  undefined4 local_18;
+  undefined4 local_14;
+  undefined4 local_10;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211777;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_6c);
+  local_4 = 0;
+  std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+  list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+            ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&local_5c);
+  if (param_3 == (undefined4 *)0x0) {
+    NScript::CV_ChickenKickingScript::CChickenSign::Init((CChickenSign *)&local_5c);
+  }
+  else {
+    local_5c = *param_3;
+    local_58 = param_3[1];
+    local_54 = param_3[2];
+    local_50 = param_3[3];
+    local_4c = param_3[4];
+  }
+  FUN_00c20580(&local_5c);
+  fVar10 = CGraphicFrameData::GetFloatTLX((CGraphicFrameData *)&local_5c);
+  if (fVar10 < _DAT_0122dedc == (fVar10 == _DAT_0122dedc)) {
+    iVar3 = rand();
+    fVar10 = (float)iVar3 * _DAT_0129c81c;
+    fVar11 = CGraphicFrameData::GetFloatTLX((CGraphicFrameData *)&local_5c);
+    if (fVar10 <= fVar11) {
+      wVar2 = NUISystem::CManager::GetKeyPressed((CManager *)&local_5c);
+      uVar4 = (uint)(ushort)wVar2;
+      bVar1 = CTCPhysicsStandard::CanCollideWithThingsOneWay((CTCPhysicsStandard *)&local_5c);
+      uVar7 = (uint)bVar1;
+      uVar12 = *(undefined4 *)(param_6 + 0x1c);
+      wVar2 = NUISystem::CManager::GetKeyPressed((CManager *)&local_5c);
+      iVar3 = FUN_00c11230(param_2,param_5,wVar2,uVar12,uVar7,uVar4);
+      if (iVar3 != 0) {
+        wVar2 = NUISystem::CManager::GetKeyPressed((CManager *)&local_5c);
+        if (CONCAT22(extraout_var_00,wVar2) == 0) {
+          CThing::SetCurrentMapNumber((CThing *)&local_5c,1);
+        }
+        wVar2 = NUISystem::CManager::GetKeyPressed((CManager *)&local_5c);
+        this = (CManager *)FUN_00c11f00(wVar2);
+        if (this == (CManager *)0x0) {
+          local_4 = 0xffffffff;
+          EventQueue_ProcessWithTimeout();
+          ExceptionList = local_c;
+          return 0;
+        }
+        local_48 = 1.0;
+        local_44 = 0x3f800000;
+        local_40 = 1.0;
+        local_3c = 0x3f800000;
+        local_38 = 0;
+        local_36 = 0;
+        fVar9 = (float10)ByteToFloatScale();
+        local_48 = (float)fVar9;
+        iVar3 = rand();
+        fVar10 = ((float)iVar3 + (float)iVar3) * _DAT_0129c81c - _DAT_0122ded8;
+        fVar11 = CGenericVertex<CTVertexLandscapeBackgroundBase>::GetU1
+                           ((CGenericVertex<CTVertexLandscapeBackgroundBase> *)&local_5c);
+        local_40 = CGraphicFrameData::GetFloatTLX((CGraphicFrameData *)&local_5c);
+        local_40 = local_40 + fVar11 * fVar10;
+        local_38 = NUISystem::CManager::GetKeyPressed((CManager *)&local_5c);
+        bVar1 = NInventory::CTCInventoryBase::GetCanItemBeQuickAssigned
+                          ((CTCInventoryBase *)&local_5c);
+        local_3c = *(undefined4 *)(param_6 + 0x28);
+        local_36 = (undefined2)CONCAT31(extraout_var,bVar1);
+        local_44 = *(undefined4 *)(param_6 + 0x24);
+        std::pair<unsigned_long,C3DMeshVolume>::pair<unsigned_long,C3DMeshVolume>
+                  ((pair<unsigned_long,C3DMeshVolume> *)&local_34);
+        local_34 = *(undefined4 *)(param_6 + 0x2c);
+        local_18 = *(undefined4 *)(param_6 + 0x40);
+        fVar9 = (float10)FUN_00c1ba70();
+        local_1c = (float)fVar9;
+        fVar9 = (float10)CTCInventoryItem_GetWeaponClass_Wrapper();
+        local_20 = (float)fVar9;
+        local_30 = *(undefined4 *)(param_6 + 0x30);
+        local_2c = *(undefined4 *)(param_6 + 0x34);
+        local_28 = *(undefined4 *)(param_6 + 0x38);
+        local_24 = *(undefined4 *)(param_6 + 0x3c);
+        local_14 = *(undefined4 *)(param_6 + 0x48);
+        local_10 = *(undefined4 *)(param_6 + 0x4c);
+        wVar2 = NUISystem::CManager::GetKeyPressed((CManager *)&local_5c);
+        local_60 = CONCAT22(extraout_var_01,wVar2);
+        local_64 = param_4;
+        if (param_7 == (int *)0x0) {
+          iVar3 = *(int *)(param_1 + 0x88c);
+          *(int *)(param_1 + 0x88c) = iVar3 + 1;
+        }
+        else {
+          iVar3 = *param_7;
+        }
+        bVar1 = CTCPhysicsStandard::CanCollideWithLandscape((CTCPhysicsStandard *)&local_5c);
+        uVar4 = (uint)bVar1;
+        CGenericVertex<CTVertexLandscapeBackgroundBase>::GetU1(param_6);
+        uVar16 = extraout_EAX;
+        bVar1 = CTCPhysicsStandard::CanCollideWithLandscape((CTCPhysicsStandard *)param_6);
+        uVar7 = (uint)bVar1;
+        bVar1 = CTCPhysicsStandard::CanCollideWithThingsOneWay((CTCPhysicsStandard *)param_6);
+        uVar5 = (uint)bVar1;
+        pfVar15 = &local_48;
+        puVar13 = &local_34;
+        puVar14 = &local_64;
+        bVar1 = CTCPhysicsStandard::CanCollideWithThingsOneWay((CTCPhysicsStandard *)&local_5c);
+        uVar8 = (uint)bVar1;
+        uVar12 = *(undefined4 *)(param_6 + 0x1c);
+        wVar2 = NUISystem::CManager::GetKeyPressed((CManager *)&local_5c);
+        uVar6 = (uint)(ushort)wVar2;
+        wVar2 = NUISystem::CManager::GetKeyPressed((CManager *)&local_5c);
+        FUN_00c21c20(param_1,iVar3,*(undefined4 *)(param_6 + 0x20),wVar2,param_2,param_5,uVar6,
+                     uVar12,uVar8,puVar13,puVar14,pfVar15,uVar5,uVar7,uVar16,uVar4);
+        wVar2 = NUISystem::CManager::GetKeyPressed(this);
+        local_4 = 0xffffffff;
+        EventQueue_ProcessWithTimeout();
+        ExceptionList = local_c;
+        return -(uint)(CONCAT22(extraout_var_02,wVar2) != 0) & (uint)this;
+      }
+    }
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return 0;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c131c0 332 1
+@@CALLERS 
+@@CALLEES CombatBlockReward_ProcessWithExceptionHandler, operator(), GetWaterHeightAtPosition, EventQueue_ProcessWithTimeout, AddSuccessfulBlockParry, Update
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Removing unreachable block (ram,0x00c132d6) */
+/* WARNING: Removing unreachable block (ram,0x00c132ea) */
+/* WARNING: Removing unreachable block (ram,0x00c132e5) */
+/* WARNING: Removing unreachable block (ram,0x00c132ed) */
+
+undefined4 __thiscall FUN_00c131c0(C3DVector *param_1,int *param_2)
+
+{
+  bool bVar1;
+  int *piVar2;
+  int iVar3;
+  int *piVar4;
+  undefined4 uVar5;
+  CEnginePrimitive *pCVar6;
+  undefined3 extraout_var;
+  uint uVar7;
+  CEnginePrimitive *unaff_EBP;
+  uint uVar8;
+  undefined4 uVar9;
+  undefined4 uVar10;
+  CEnginePrimitive *pCVar11;
+  CTCHeroExperience local_14 [8];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012117dc;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  uVar8 = 0;
+  local_4 = 0;
+  piVar2 = (int *)(**(code **)(*param_2 + 0x14))();
+  iVar3 = (**(code **)(*piVar2 + 0x14))();
+  if (iVar3 != 0) {
+    do {
+      piVar2 = (int *)(**(code **)(*param_2 + 0x14))();
+      uVar7 = uVar8;
+      iVar3 = (**(code **)(*piVar2 + 0x10))();
+      pCVar11 = unaff_EBP;
+      if (iVar3 != 0) {
+        piVar4 = (int *)(**(code **)(*param_2 + 0x14))();
+        uVar10 = 0;
+        uVar9 = 0;
+        piVar2 = param_2;
+        uVar5 = (**(code **)(*piVar4 + 0x1c))(uVar8,0,param_2,0);
+        pCVar6 = (CEnginePrimitive *)
+                 CombatBlockReward_ProcessWithExceptionHandler(uVar5,uVar9,piVar2,uVar10);
+        if ((pCVar6 != (CEnginePrimitive *)0x0) &&
+           (pCVar11 = pCVar6, unaff_EBP != (CEnginePrimitive *)0x0)) {
+          if (*(int *)(unaff_EBP + 0x30) == 0) {
+            bVar1 = NScript::CIsThingAlive::operator()((CIsThingAlive *)(param_1 + 0x2c));
+            *(int *)(param_1 + 0x88c) = *(int *)(param_1 + 0x88c) + 1;
+            CGameScriptInterface::GetWaterHeightAtPosition
+                      ((CGameScriptInterface *)CONCAT31(extraout_var,bVar1),param_1);
+          }
+          CEngineInternalPrimitiveParticleSpriteTrailGroup::Update
+                    (*(CEngineInternalPrimitiveParticleSpriteTrailGroup **)(unaff_EBP + 0x30),pCVar6
+                     ,uVar7);
+        }
+      }
+      uVar8 = uVar8 + 1;
+      piVar2 = (int *)(**(code **)(*param_2 + 0x14))();
+      uVar7 = (**(code **)(*piVar2 + 0x14))();
+      unaff_EBP = pCVar11;
+    } while (uVar8 < uVar7);
+  }
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = pvStack_c;
+  return 0xffffffff;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c13310 182 1
+@@CALLERS 
+@@CALLEES CNavigationLayer, EventQueue_ProcessWithTimeout, FUN_00c131c0, AddSuccessfulBlockParry, CBrainOutput_LoadSerialized, CAtmosProcess
+@@STRINGS 
+@@DECOMP
+
+undefined4 FUN_00c13310(undefined4 param_1,undefined4 param_2)
+
+{
+  undefined4 uVar1;
+  CTCHeroExperience local_64 [8];
+  CAtmosProcess local_5c [28];
+  undefined4 local_40;
+  undefined4 local_3c;
+  undefined4 local_38;
+  undefined4 local_34;
+  undefined4 local_30;
+  CNavigationLayer local_2c [16];
+  undefined4 local_1c;
+  undefined2 local_18;
+  undefined4 local_14;
+  undefined4 local_10;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012117ee;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_64);
+  local_4 = 0;
+  CAtmosProcess::CAtmosProcess(local_5c);
+  local_40 = 0;
+  local_3c = 0;
+  local_38 = 0x3f800000;
+  local_34 = 0x3f800000;
+  local_30 = 0;
+  CNavQuadTree::CNavigationLayer::CNavigationLayer(local_2c);
+  local_1c = 0;
+  local_18 = 0;
+  local_14 = 0;
+  local_10 = 0;
+  CBrainOutput_LoadSerialized(param_2);
+  uVar1 = FUN_00c131c0(param_1,local_5c);
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return uVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c13840 112 1
+@@CALLERS vector_insert_realloc_grow
+@@CALLEES basic_string<char,std::char_traits<char>,std::allocator<char>_>, exception, _CxxThrowException
+@@STRINGS vector<T> too long
+@@DECOMP
+
+void FUN_00c13840(void)
+
+{
+  basic_string<char,std::char_traits<char>,std::allocator<char>_> local_50 [28];
+  undefined **local_34 [3];
+  basic_string<char,std::char_traits<char>,std::allocator<char>_> local_28 [28];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  int local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211892;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  std::basic_string<char,std::char_traits<char>,std::allocator<char>_>::
+  basic_string<char,std::char_traits<char>,std::allocator<char>_>(local_50,"vector<T> too long");
+  local_4 = 0;
+  exception::exception((exception *)local_34);
+  local_4._0_1_ = 1;
+  local_34[0] = &PTR__vector_deleting_destructor__012b263c;
+  std::basic_string<char,std::char_traits<char>,std::allocator<char>_>::
+  basic_string<char,std::char_traits<char>,std::allocator<char>_>
+            (local_28,(basic_string<char,struct_std::char_traits<char>,class_std::allocator<char>_>
+                       *)local_50);
+  local_4 = (uint)local_4._1_3_ << 8;
+  local_34[0] = &PTR__vector_deleting_destructor__012b2644;
+                    /* WARNING: Subroutine does not return */
+  _CxxThrowException(local_34,(ThrowInfo *)&DAT_0136aa24);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c138f0 112 1
+@@CALLERS vector_insert_realloc_grow_variant
+@@CALLEES basic_string<char,std::char_traits<char>,std::allocator<char>_>, exception, _CxxThrowException
+@@STRINGS vector<T> too long
+@@DECOMP
+
+void FUN_00c138f0(void)
+
+{
+  basic_string<char,std::char_traits<char>,std::allocator<char>_> local_50 [28];
+  undefined **local_34 [3];
+  basic_string<char,std::char_traits<char>,std::allocator<char>_> local_28 [28];
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  int local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012118b2;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  std::basic_string<char,std::char_traits<char>,std::allocator<char>_>::
+  basic_string<char,std::char_traits<char>,std::allocator<char>_>(local_50,"vector<T> too long");
+  local_4 = 0;
+  exception::exception((exception *)local_34);
+  local_4._0_1_ = 1;
+  local_34[0] = &PTR__vector_deleting_destructor__012b263c;
+  std::basic_string<char,std::char_traits<char>,std::allocator<char>_>::
+  basic_string<char,std::char_traits<char>,std::allocator<char>_>
+            (local_28,(basic_string<char,struct_std::char_traits<char>,class_std::allocator<char>_>
+                       *)local_50);
+  local_4 = (uint)local_4._1_3_ << 8;
+  local_34[0] = &PTR__vector_deleting_destructor__012b2644;
+                    /* WARNING: Subroutine does not return */
+  _CxxThrowException(local_34,(ThrowInfo *)&DAT_0136aa24);
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c14ad0 67 1
+@@CALLERS CTCHero_OnBlockParrySuccess
+@@CALLEES Combat_HandleBlockParryEvent
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_00c14ad0(int param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  
+  iVar1 = (**(code **)(*(int *)(param_1 + 0x40) + 0x44))(&param_2);
+  while (iVar1 != 0) {
+    Combat_HandleBlockParryEvent(iVar1);
+    iVar1 = (**(code **)(*(int *)(param_1 + 0x40) + 0x44))(&stack0xfffffff8);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c14dd0 112 1
+@@CALLERS ~CPixelShader
+@@CALLEES OnActivate, EventQueue_ProcessWithTimeout, AddSuccessfulBlockParry, LoadSea
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c14dd0(CActionSummonerLightningAttackTarget *param_1)
+
+{
+  CMemoryDataInputStream *unaff_ESI;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_012119ed;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  NTCScriptedControl::CActionSummonerLightningAttackTarget::OnActivate(param_1);
+  CEngineWaterRenderer::LoadSea(*(CEngineWaterRenderer **)(param_1 + 8),unaff_ESI);
+  NTCScriptedControl::CActionSummonerLightningAttackTarget::OnActivate
+            (*(CActionSummonerLightningAttackTarget **)(param_1 + 0xc));
+  *(int *)(param_1 + 0x70) = *(int *)(param_1 + 0x70) + 1;
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c14e40 323 1
+@@CALLERS 
+@@CALLEES operator_new, RedblackTree_NodeCtor, Init, CTCDiceGame, CDateAndTime, FUN_00c2a8c0
+@@STRINGS 
+@@DECOMP
+
+CThing * __thiscall
+FUN_00c14e40(CThing *param_1,undefined4 param_2,undefined4 *param_3,ulong param_4)
+
+{
+  void *pvVar1;
+  undefined4 uVar2;
+  CTCDiceGame *this;
+  ulong unaff_ESI;
+  ulong unaff_EDI;
+  CThing *pCVar3;
+  void *pvVar4;
+  undefined1 *puVar5;
+  
+  pvVar4 = ExceptionList;
+  puVar5 = &LAB_01211a62;
+  ExceptionList = &stack0xfffffff4;
+  *(undefined4 *)(param_1 + 4) = param_2;
+  *(undefined ***)param_1 = &PTR_OnPredicateFail_012b29f8;
+  *(undefined4 *)(param_1 + 8) = 0;
+  *(undefined4 *)(param_1 + 0xc) = 0;
+  *(CThing **)(param_1 + 0x14) = param_1 + 0x18;
+  *(undefined ***)(param_1 + 0x10) = &PTR_LAB_012b29b0;
+  pCVar3 = param_1;
+  RedblackTree_NodeCtor(0);
+  *(CThing **)(param_1 + 0x44) = param_1 + 0x48;
+  *(undefined ***)(param_1 + 0x40) = &PTR_LAB_012b28d8;
+  RedblackTree_NodeCtor(0);
+  CDateAndTime::CDateAndTime
+            ((CDateAndTime *)(param_1 + 0x70),0,param_4,unaff_EDI,unaff_ESI,(ulong)pCVar3,
+             (ulong)pvVar4,(ulong)puVar5);
+  NScript::CQ_GuildTrainingPreMeleeScript::Init((CQ_GuildTrainingPreMeleeScript *)(param_1 + 0x78));
+  NScript::CQ_GuildTrainingPreMeleeScript::Init((CQ_GuildTrainingPreMeleeScript *)(param_1 + 0x84));
+  NScript::CQ_GuildTrainingPreMeleeScript::Init((CQ_GuildTrainingPreMeleeScript *)(param_1 + 0x90));
+  *(undefined4 *)(param_1 + 0x9c) = 0;
+  *(undefined4 *)(param_1 + 0xa0) = 0;
+  pvVar1 = operator_new(0xd4);
+  if (pvVar1 == (void *)0x0) {
+    uVar2 = 0;
+  }
+  else {
+    uVar2 = FUN_00c2a8c0(param_1,*param_3);
+  }
+  *(undefined4 *)(param_1 + 8) = uVar2;
+  this = operator_new(100);
+  if (this != (CTCDiceGame *)0x0) {
+    uVar2 = CTCDiceGame::CTCDiceGame(this,param_1);
+    *(undefined4 *)(param_1 + 0xc) = uVar2;
+    ExceptionList = pvVar4;
+    return param_1;
+  }
+  *(undefined4 *)(param_1 + 0xc) = 0;
+  ExceptionList = pvVar4;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c14f90 248 1
+@@CALLERS `vector_deleting_destructor'
+@@CALLEES operator_delete, Map_CheckEmpty, DeleteData, Clear, CTCDPhysicalObstruction
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00c14f90(undefined4 *param_1)
+
+{
+  int *piVar1;
+  CLineCountedMemoryDataOutputStream *this;
+  CTCDPhysicalObstruction *this_00;
+  int iVar2;
+  CThing *unaff_EDI;
+  void *pvStack_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  puStack_8 = &LAB_01211ac1;
+  pvStack_c = ExceptionList;
+  ExceptionList = &pvStack_c;
+  *param_1 = &PTR_OnPredicateFail_012b29f8;
+  piVar1 = param_1 + 4;
+  local_4 = 5;
+  iVar2 = (**(code **)(param_1[4] + 0x2c))();
+  while (iVar2 != 0) {
+    CCountedPointer<CJoystick>::DeleteData(param_1);
+    iVar2 = (**(code **)(*piVar1 + 0x2c))();
+  }
+  this = (CLineCountedMemoryDataOutputStream *)param_1[3];
+  if (this != (CLineCountedMemoryDataOutputStream *)0x0) {
+    CLineCountedMemoryDataOutputStream::Clear(this);
+    operator_delete(this);
+  }
+  this_00 = (CTCDPhysicalObstruction *)param_1[2];
+  param_1[3] = 0;
+  if (this_00 != (CTCDPhysicalObstruction *)0x0) {
+    CTCDPhysicalObstruction::CTCDPhysicalObstruction(this_00,unaff_EDI);
+    operator_delete(this_00);
+  }
+  param_1[2] = 0;
+  param_1[0x24] = &PTR_LAB_012b2828;
+  param_1[0x21] = &PTR_LAB_012b2828;
+  param_1[0x1e] = &PTR_LAB_012b2828;
+  param_1[0x10] = &PTR_LAB_012b28d8;
+  local_4._0_1_ = 6;
+  Map_CheckEmpty();
+  param_1[0x10] = &PTR_LAB_012b1ab0;
+  *piVar1 = (int)&PTR_LAB_012b29b0;
+  local_4 = CONCAT31(local_4._1_3_,7);
+  Map_CheckEmpty();
+  *piVar1 = (int)&PTR_LAB_012b1ab0;
+  *param_1 = &PTR_LAB_012b27e0;
+  ExceptionList = pvStack_c;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c15b00 133 1
+@@CALLERS 
+@@CALLEES Fastcall_FindAnimationTriggers, EventQueue_ProcessWithTimeout, AddSuccessfulBlockParry
+@@STRINGS 
+@@DECOMP
+
+undefined1 __fastcall FUN_00c15b00(int param_1)
+
+{
+  undefined1 uVar1;
+  CTCHeroExperience local_14 [8];
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01211bea;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  CTCHeroExperience::AddSuccessfulBlockParry(local_14);
+  local_4 = 0;
+  if (*(int *)(param_1 + 8) == 0) {
+    local_4 = 0xffffffff;
+    EventQueue_ProcessWithTimeout();
+    ExceptionList = local_c;
+    return 1;
+  }
+  uVar1 = Fastcall_FindAnimationTriggers();
+  local_4 = 0xffffffff;
+  EventQueue_ProcessWithTimeout();
+  ExceptionList = local_c;
+  return uVar1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c16050 212 1
+@@CALLERS AddActionOnInactive
+@@CALLEES FUN_00c2d2f0, operator_new, GetBoundingRadius
+@@STRINGS 
+@@DECOMP
+
+C3DMeshObject * __thiscall
+FUN_00c16050(C3DMeshObject *param_1,undefined4 param_2,undefined2 *param_3)
+
+{
+  void *pvVar1;
+  undefined4 uVar2;
+  float fVar3;
+  undefined4 local_18;
+  undefined4 local_14;
+  undefined4 local_10;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+  puStack_8 = &LAB_01211c85;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  *(undefined4 *)(param_1 + 4) = param_2;
+  *(undefined ***)param_1 = &PTR__vector_deleting_destructor__012b2a74;
+  *(undefined4 *)(param_1 + 8) = 0;
+  *(undefined2 *)(param_1 + 0xc) = *param_3;
+  *(undefined2 *)(param_1 + 0xe) = param_3[1];
+  *(undefined4 *)(param_1 + 0x10) = 0x3f800000;
+  *(undefined4 *)(param_1 + 0x14) = 0x3f800000;
+  local_14 = *(undefined4 *)(param_3 + 0xc);
+  local_18 = *(undefined4 *)(param_3 + 8);
+  local_10 = *(undefined4 *)(param_3 + 10);
+  local_4 = 0;
+  fVar3 = C3DMeshObject::GetBoundingRadius(param_1);
+  pvVar1 = operator_new(0x340);
+  local_4 = CONCAT31(local_4._1_3_,1);
+  if (pvVar1 == (void *)0x0) {
+    uVar2 = 0;
+  }
+  else {
+    uVar2 = FUN_00c2d2f0(*(undefined4 *)(*(int *)(param_1 + 4) + 0x5c),&local_18,
+                         *(undefined4 *)(param_3 + 2),*(undefined4 *)(param_3 + 4),
+                         *(undefined4 *)(param_3 + 6),fVar3);
+  }
+  *(undefined4 *)(param_1 + 8) = uVar2;
+  ExceptionList = local_c;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00c169d0 316 1
+@@CALLERS CDefString_SetFromWide
+@@CALLEES operator_delete, operator_new, operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>, list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>, CCharStringData::Release
+@@STRINGS d:\dev\audio\ver_fable_1.5_b\libpk\PKCAutoDeleteArray.h
+@@DECOMP
+
+void __thiscall FUN_00c169d0(int *param_1,uint param_2)
+
+{
+  uint uVar1;
+  void *pvVar2;
+  CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+  *pCVar3;
+  uint uVar4;
+  uint uVar5;
+  int *local_10;
+  void *local_c;
+  undefined1 *puStack_8;
+  void *local_4;
+  
+  uVar1 = param_2;
+  local_4 = (void *)0xffffffff;
+  puStack_8 = &LAB_01211d08;
+  local_c = ExceptionList;
+  if (param_2 != param_1[1]) {
+    local_10 = param_1;
+    if (param_2 == 0) {
+      if (param_1[1] != 0) {
+        ExceptionList = &local_c;
+        operator_delete((void *)*param_1);
+        *param_1 = 0;
+      }
+      param_1[1] = 0;
+      ExceptionList = local_c;
+      return;
+    }
+    ExceptionList = &local_c;
+    pvVar2 = operator_new(param_2 * 2);
+    if (pvVar2 == (void *)0x0) {
+      local_10 = (int *)PTR_DAT_0139c900;
+      local_4 = pvVar2;
+      pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                *)NScript::
+                  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            ((CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                              *)&local_10,
+                             (CIsThingAlive *)
+                             "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCAutoDeleteArray.h");
+      pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                *)NScript::
+                  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            (pCVar3,(CIsThingAlive *)&DAT_0122e028);
+      pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                *)NScript::
+                  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            (pCVar3,(CIsThingAlive *)&DAT_00000039);
+      pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                *)NScript::
+                  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            (pCVar3,(CIsThingAlive *)&DAT_012b1ae4);
+      pCVar3 = (CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                *)NScript::
+                  operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                            (pCVar3,(CIsThingAlive *)&DAT_012b1b58);
+      NScript::
+      operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+                (pCVar3,(CIsThingAlive *)&DAT_0129b208);
+      if (DAT_0143bb2c != (code *)0x0) {
+        (*DAT_0143bb2c)();
+      }
+      local_4 = (void *)0xffffffff;
+      CCharStringData__Release();
+      std::list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>::
+      list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>
+                ((list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *)&param_2);
+    }
+    uVar5 = uVar1;
+    if ((uint)param_1[1] < uVar1) {
+      uVar5 = param_1[1];
+    }
+    if ((uVar5 != 0) && (uVar4 = 0, uVar5 != 0)) {
+      do {
+        *(undefined2 *)((int)pvVar2 + uVar4 * 2) = *(undefined2 *)(*param_1 + uVar4 * 2);
+        uVar4 = uVar4 + 1;
+      } while (uVar4 < uVar5);
+    }
+    if ((void *)*param_1 != (void *)0x0) {
+      operator_delete((void *)*param_1);
+    }
+    *param_1 = (int)pvVar2;
+    param_1[1] = uVar1;
+  }
+  ExceptionList = local_c;
+  return;
+}
+
+
+@@ENDFUNC

@@ -1,0 +1,1648 @@
+@@@FUNC 0073f720 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS 
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_0073f720(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267908;
+  CCharString::CCharString((CCharString *)&param_2,"COOK",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0073f7f0 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS HANDS_BOUND
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_0073f7f0(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267944;
+  CCharString::CCharString((CCharString *)&param_2,"HANDS_BOUND",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0073f8c0 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS JACK_OF_BLADES_VULNERABLE
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_0073f8c0(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267984;
+  CCharString::CCharString((CCharString *)&param_2,"JACK_OF_BLADES_VULNERABLE",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0073f990 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS VULNERABLE
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_0073f990(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__012679d4;
+  CCharString::CCharString((CCharString *)&param_2,"VULNERABLE",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0073fa60 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS UNDERWATER
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_0073fa60(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267a14;
+  CCharString::CCharString((CCharString *)&param_2,"UNDERWATER",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0073fb30 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS CARRYING_GENERIC_BOX
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_0073fb30(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267a54;
+  CCharString::CCharString((CCharString *)&param_2,"CARRYING_GENERIC_BOX",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0073fc10 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS CARRYING_PLATE
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_0073fc10(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267aa0;
+  CCharString::CCharString((CCharString *)&param_2,"CARRYING_PLATE",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0073ff70 116 1
+@@CALLERS 
+@@CALLEES operator=, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, CModeSitBase, Calc
+@@STRINGS SIT_FLOOR
+@@DECOMP
+
+CModeSitBase * __thiscall FUN_0073ff70(CModeSitBase *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  NCreatureMode::CModeSitBase::CModeSitBase(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267bbc;
+  CCharString::CCharString((CCharString *)&param_2,"SIT_FLOOR",-1);
+  *(undefined ***)(param_1 + 0x2c) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x30));
+  CCharString::operator=((CCharString *)(param_1 + 0x30),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x34) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00740570 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS JACK_OF_BLADES_DEATH
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00740570(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267da8;
+  CCharString::CCharString((CCharString *)&param_2,"JACK_OF_BLADES_DEATH",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00740750 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS UNDERGROUND
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00740750(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267e38;
+  CCharString::CCharString((CCharString *)&param_2,"UNDERGROUND",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00740820 116 1
+@@CALLERS 
+@@CALLEES operator=, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CModeBase, CCharString, Calc
+@@STRINGS KNOCKED_DOWN
+@@DECOMP
+
+CModeBase * __thiscall FUN_00740820(CModeBase *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureModeManager::CModeBase::CModeBase(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267e78;
+  CCharString::CCharString((CCharString *)&param_2,"KNOCKED_DOWN",-1);
+  *(undefined ***)(param_1 + 0x1c) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x20));
+  CCharString::operator=((CCharString *)(param_1 + 0x20),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x24) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007408f0 116 1
+@@CALLERS 
+@@CALLEES operator=, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CModeBase, CCharString, Calc
+@@STRINGS FORCE_PUSHED
+@@DECOMP
+
+CModeBase * __thiscall FUN_007408f0(CModeBase *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureModeManager::CModeBase::CModeBase(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267ebc;
+  CCharString::CCharString((CCharString *)&param_2,"FORCE_PUSHED",-1);
+  *(undefined ***)(param_1 + 0x1c) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x20));
+  CCharString::operator=((CCharString *)(param_1 + 0x20),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x24) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007409c0 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS BERSERK_NO_WEAPON
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_007409c0(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267f00;
+  CCharString::CCharString((CCharString *)&param_2,"BERSERK_NO_WEAPON",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00740a90 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS WADING_NO_WEAPON
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00740a90(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267f48;
+  CCharString::CCharString((CCharString *)&param_2,"WADING_NO_WEAPON",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00740b60 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS BATTLE_CHARGE
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00740b60(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267f90;
+  CCharString::CCharString((CCharString *)&param_2,"BATTLE_CHARGE",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00740c30 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS ASSASSIN_RUSH
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00740c30(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01267fd4;
+  CCharString::CCharString((CCharString *)&param_2,"ASSASSIN_RUSH",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00740d00 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS DRINKING_FROM_TANKARD
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00740d00(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01268018;
+  CCharString::CCharString((CCharString *)&param_2,"DRINKING_FROM_TANKARD",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00740dd0 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS EAT_AT_TABLE
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00740dd0(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01268064;
+  CCharString::CCharString((CCharString *)&param_2,"EAT_AT_TABLE",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00740ea0 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS HOLD_JUG
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00740ea0(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__012680a8;
+  CCharString::CCharString((CCharString *)&param_2,"HOLD_JUG",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00740f70 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS SERVE_CUSTOMER
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00740f70(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__012680e8;
+  CCharString::CCharString((CCharString *)&param_2,"SERVE_CUSTOMER",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00741040 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS FILL_JUG
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00741040(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__0126812c;
+  CCharString::CCharString((CCharString *)&param_2,"FILL_JUG",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00741110 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS DRUNK
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00741110(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__0126816c;
+  CCharString::CCharString((CCharString *)&param_2,"DRUNK",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007411e0 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS ARMS_OFF_TABLE
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_007411e0(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__012681a8;
+  CCharString::CCharString((CCharString *)&param_2,"ARMS_OFF_TABLE",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007414c0 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS ROLL_AROUND
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_007414c0(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01268270;
+  CCharString::CCharString((CCharString *)&param_2,"ROLL_AROUND",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00741590 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS CAGED
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00741590(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__012682b0;
+  CCharString::CCharString((CCharString *)&param_2,"CAGED",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00741660 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS DYING
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00741660(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__012682ec;
+  CCharString::CCharString((CCharString *)&param_2,"DYING",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00741800 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS CONCENTRATE
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00741800(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01268368;
+  CCharString::CCharString((CCharString *)&param_2,"CONCENTRATE",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00741c40 116 1
+@@CALLERS 
+@@CALLEES operator=, CTCCreatureNavigation, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CCharString, Calc
+@@STRINGS HIT_BY_EPIC_SPELL
+@@DECOMP
+
+CTCCreatureNavigation * __thiscall FUN_00741c40(CTCCreatureNavigation *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCCreatureNavigation::CTCCreatureNavigation(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__01268498;
+  CCharString::CCharString((CCharString *)&param_2,"HIT_BY_EPIC_SPELL",-1);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x6c));
+  CCharString::operator=((CCharString *)(param_1 + 0x6c),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x70) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00742360 99 1
+@@CALLERS _Insertion_sort1<std::pair<long,long>*,CKeyPairCompareLess<long,long>,std::pair<long,long>_>
+@@CALLEES FUN_0073cfc0
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00742360(uint *param_1,int param_2,uint param_3,uint param_4,undefined4 param_5)
+
+{
+  undefined4 *puVar1;
+  int iVar2;
+  
+  if (*param_1 <= param_3) {
+    FUN_0073cfc0(param_3,param_4,param_5);
+    return;
+  }
+  puVar1 = (undefined4 *)(param_2 + 8);
+  iVar2 = param_2 - (int)param_1 >> 3;
+  if (0 < iVar2) {
+    do {
+      iVar2 = iVar2 + -1;
+      puVar1[-2] = *(undefined4 *)(param_2 + -8);
+      puVar1[-1] = *(undefined4 *)(param_2 + -4);
+      puVar1 = puVar1 + -2;
+      param_2 = param_2 + -8;
+    } while (iVar2 != 0);
+  }
+  *param_1 = param_3;
+  param_1[1] = param_4;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00742930 234 1
+@@CALLERS `vector_deleting_destructor'
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, ~CBaseIntelligentPointer, ~CModeStandBase, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00742930(CModeStandBase *param_1)
+
+{
+  int *piVar1;
+  undefined4 *puVar2;
+  int *piVar3;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_02;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_03;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar4;
+  undefined4 *puVar5;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  puVar2 = *(undefined4 **)(param_1 + 0xac);
+  for (puVar5 = *(undefined4 **)(param_1 + 0xa8); puVar5 != puVar2; puVar5 = puVar5 + 2) {
+    (**(code **)*puVar5)(0);
+  }
+  if (*(void **)(param_1 + 0xa8) != (void *)0x0) {
+    free(*(void **)(param_1 + 0xa8));
+  }
+  piVar3 = *(int **)(param_1 + 0xa4);
+  if (piVar3 != (int *)0x0) {
+    piVar1 = piVar3 + 1;
+    *piVar1 = *piVar1 + -1;
+    if (*piVar1 == 0) {
+      (**(code **)(*piVar3 + 4))();
+    }
+    *(undefined4 *)(param_1 + 0xa4) = 0;
+  }
+  CBaseIntelligentPointer::~CBaseIntelligentPointer((CBaseIntelligentPointer *)(param_1 + 0x9c));
+  CBaseIntelligentPointer::~CBaseIntelligentPointer((CBaseIntelligentPointer *)(param_1 + 0x94));
+  CBaseIntelligentPointer::~CBaseIntelligentPointer((CBaseIntelligentPointer *)(param_1 + 0x8c));
+  puVar2 = *(undefined4 **)(param_1 + 0x84);
+  ppVar4 = extraout_EDX;
+  for (puVar5 = *(undefined4 **)(param_1 + 0x80); puVar5 != puVar2; puVar5 = puVar5 + 2) {
+    (**(code **)*puVar5)(0);
+    ppVar4 = extraout_EDX_00;
+  }
+  if (*(void **)(param_1 + 0x80) != (void *)0x0) {
+    free(*(void **)(param_1 + 0x80));
+    ppVar4 = extraout_EDX_01;
+  }
+  puVar2 = *(undefined4 **)(param_1 + 0x78);
+  for (puVar5 = *(undefined4 **)(param_1 + 0x74); puVar5 != puVar2; puVar5 = puVar5 + 2) {
+    (**(code **)*puVar5)(0);
+    ppVar4 = extraout_EDX_02;
+  }
+  if (*(void **)(param_1 + 0x74) != (void *)0x0) {
+    free(*(void **)(param_1 + 0x74));
+    ppVar4 = extraout_EDX_03;
+  }
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)(param_1 + 0x6c),
+             ppVar4,unaff_EDI);
+  *(undefined ***)(param_1 + 0x68) = &PTR_LAB_0122ffcc;
+  CModeStandBase::~CModeStandBase(param_1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00743470 107 1
+@@CALLERS Sort_IntrosortPhase
+@@CALLEES _Sort_heap<std::pair<long,unsigned_long>*>, FUN_0073df30, _Adjust_heap<std::pair<unsigned_long,NParticleEngine::CParticleUpdateParamDesc<unsigned_long,unsigned_long>_>*,int,std::pair<unsigned_long,class_NParticleEngine::CParticleUpdateParamDesc<unsigned_long,unsigned_long>_>,NParticleEngine::CParticleUpdateParameters<unsigned_long,unsigned_long>::CParticleUpdateCCompareParamDesc<unsigned_long>_>
+@@STRINGS 
+@@DECOMP
+
+void __fastcall
+FUN_00743470(pair<long,unsigned_long> *param_1,pair<long,unsigned_long> *param_2,
+            pair<long,unsigned_long> *param_3,undefined4 param_4,undefined4 param_5)
+
+{
+  uint uVar1;
+  uint uVar2;
+  pair<long,unsigned_long> *ppVar3;
+  
+  FUN_0073df30(param_5,0,0);
+  for (ppVar3 = param_2; ppVar3 < param_3; ppVar3 = ppVar3 + 8) {
+    uVar1 = *(uint *)ppVar3;
+    if (uVar1 < *(uint *)param_1) {
+      uVar2 = *(uint *)(ppVar3 + 4);
+      *(uint *)ppVar3 = *(uint *)param_1;
+      *(uint *)(ppVar3 + 4) = *(uint *)(param_1 + 4);
+      std::
+      _Adjust_heap<std::pair<unsigned_long,NParticleEngine::CParticleUpdateParamDesc<unsigned_long,unsigned_long>_>*,int,std::pair<unsigned_long,class_NParticleEngine::CParticleUpdateParamDesc<unsigned_long,unsigned_long>_>,NParticleEngine::CParticleUpdateParameters<unsigned_long,unsigned_long>::CParticleUpdateCCompareParamDesc<unsigned_long>_>
+                (param_1,0,(int)param_2 - (int)param_1 >> 3,uVar1,uVar2,param_5);
+    }
+  }
+  std::_Sort_heap<std::pair<long,unsigned_long>*>(param_1,param_2);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00744040 116 1
+@@CALLERS 
+@@CALLEES operator=, _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, CTCKrakenTentacle, CCharString, Calc
+@@STRINGS HOVER
+@@DECOMP
+
+CTCKrakenTentacle * __thiscall FUN_00744040(CTCKrakenTentacle *param_1,CThing *param_2)
+
+{
+  undefined1 *puVar1;
+  ulong uVar2;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  
+  CTCKrakenTentacle::CTCKrakenTentacle(param_1,param_2);
+  *(undefined ***)param_1 = &PTR__scalar_deleting_destructor__012687fc;
+  CCharString::CCharString((CCharString *)&param_2,"HOVER",-1);
+  *(undefined ***)(param_1 + 0x40) = &PTR_LAB_01267568;
+  CCharString::CCharString((CCharString *)(param_1 + 0x44));
+  CCharString::operator=((CCharString *)(param_1 + 0x44),(CCharString *)&param_2);
+  if (param_2 == (CThing *)0x0) {
+    uVar2 = 0;
+    puVar1 = &DAT_0129aaf4;
+  }
+  else {
+    uVar2 = *(ulong *)(param_2 + 4);
+    puVar1 = *(undefined1 **)param_2;
+  }
+  uVar2 = CCRC::Calc(0,puVar1,uVar2);
+  *(ulong *)(param_1 + 0x48) = uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)&param_2,extraout_EDX,
+             unaff_EDI);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00746ec0 326 1
+@@CALLERS ?GetNextPos@CCombatAction_StabThing@@UBE?AVC3DVector@@XZ
+@@CALLEES GetStabPosOnThing, DoSizeof, _CIfmod
+@@STRINGS 
+@@DECOMP
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __thiscall FUN_00746ec0(int param_1,float *param_2,undefined4 param_3,float *param_4)
+
+{
+  float fVar1;
+  float fVar2;
+  float *pfVar3;
+  float fVar4;
+  float10 fVar5;
+  float10 fVar6;
+  float local_24;
+  float local_20;
+  float local_1c;
+  float local_18;
+  float local_14;
+  float local_10;
+  float local_c;
+  
+  NStealth::GetStabPosOnThing((CThing *)&local_24);
+  pfVar3 = (float *)CVertexBufferWin32::DoSizeof(*(CVertexBufferWin32 **)(param_1 + 4));
+  fVar5 = (float10)local_24 - (float10)*pfVar3;
+  fVar6 = (float10)local_20 - (float10)pfVar3[1];
+  fVar1 = (float)((float10)local_1c - (float10)pfVar3[2]);
+  fVar2 = (float)(fVar5 * fVar5 +
+                 fVar6 * fVar6 + ((float10)local_1c - (float10)pfVar3[2]) * (float10)fVar1);
+  fVar4 = (float)((0x17c - ((uint)fVar2 >> 0x17 & 0xff) & 0x3fe) << 0x16 |
+                 (&DAT_013ce558)[(uint)fVar2 >> 0x11 & 0x7f] << 0xf);
+  fVar2 = (_DAT_0122ded4 - fVar4 * fVar4 * fVar2) * fVar4 * _DAT_0122f59c;
+  local_c = (float)(fVar5 * (float10)fVar2);
+  local_18 = local_24 - local_c;
+  local_14 = (float)((float10)local_20 - fVar6 * (float10)fVar2);
+  local_10 = local_1c - fVar1 * fVar2;
+  fVar5 = (float10)fpatan((float10)local_c,fVar6 * (float10)fVar2);
+  fVar5 = fVar5 * (float10)_DAT_01237f08;
+  if ((fVar5 < (float10)_DAT_0122dedc) || ((float10)_DAT_0122ded8 <= fVar5)) {
+    fVar5 = (float10)_CIfmod();
+    if (fVar5 < (float10)_DAT_0122dedc) {
+      fVar5 = fVar5 + (float10)_DAT_0122ded8;
+    }
+  }
+  *param_4 = (float)fVar5;
+  *param_2 = local_18;
+  param_2[1] = local_14;
+  param_2[2] = local_10;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007475c0 150 1
+@@CALLERS UpdateHearability
+@@CALLEES GetSoundRadiusMultiplier, LowerBound
+@@STRINGS 
+@@DECOMP
+
+float10 __fastcall FUN_007475c0(int param_1)
+
+{
+  int iVar1;
+  int *piVar2;
+  float local_8;
+  ETCInterfaceType local_4;
+  
+  iVar1 = *(int *)(param_1 + 4);
+  local_8 = 1.0;
+  if ((*(uint *)(iVar1 + 0x2c) & 0x100) != 0) {
+    local_8 = 1.45735e-43;
+    piVar2 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(iVar1 + 0x44),(ETCInterfaceType *)&local_8);
+    if ((piVar2 == *(int **)(iVar1 + 0x48)) || (0x68 < *piVar2)) {
+      piVar2 = *(int **)(iVar1 + 0x48);
+    }
+    local_8 = CTCHeroExperience::GetSoundRadiusMultiplier((CTCHeroExperience *)piVar2[1]);
+  }
+  iVar1 = *(int *)(param_1 + 4);
+  if ((*(byte *)(iVar1 + 0x20) & 0x10) != 0) {
+    local_4 = 4;
+    piVar2 = (int *)CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                    ::LowerBound((CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_>
+                                  *)(iVar1 + 0x44),&local_4);
+    if ((piVar2 == *(int **)(iVar1 + 0x48)) || (4 < *piVar2)) {
+      piVar2 = *(int **)(iVar1 + 0x48);
+    }
+    return (float10)local_8 * (float10)*(float *)(piVar2[1] + 0xa8);
+  }
+  return (float10)local_8;
+}
+
+
+@@ENDFUNC
+@@@FUNC 007485f0 159 1
+@@CALLERS SetAsInDanger
+@@CALLEES GetPItem
+@@STRINGS 
+@@DECOMP
+
+CBaseIntelligentPointer * __fastcall
+FUN_007485f0(CBaseIntelligentPointer *param_1,CBaseIntelligentPointer *param_2,CBaseObject *param_3)
+
+{
+  CBaseObject *pCVar1;
+  int iVar2;
+  
+  iVar2 = (int)param_2 - (int)param_1 >> 6;
+  while( true ) {
+    if (iVar2 < 1) {
+      iVar2 = (int)param_2 - (int)param_1 >> 4;
+      if (iVar2 != 1) {
+        if (iVar2 != 2) {
+          if (iVar2 != 3) {
+            return param_2;
+          }
+          pCVar1 = CBaseIntelligentPointer::GetPItem(param_1);
+          if (pCVar1 == param_3) {
+            return param_1;
+          }
+          param_1 = param_1 + 0x10;
+        }
+        pCVar1 = CBaseIntelligentPointer::GetPItem(param_1);
+        if (pCVar1 == param_3) {
+          return param_1;
+        }
+        param_1 = param_1 + 0x10;
+      }
+      pCVar1 = CBaseIntelligentPointer::GetPItem(param_1);
+      if (pCVar1 != param_3) {
+        return param_2;
+      }
+      return param_1;
+    }
+    pCVar1 = CBaseIntelligentPointer::GetPItem(param_1);
+    if (pCVar1 == param_3) {
+      return param_1;
+    }
+    pCVar1 = CBaseIntelligentPointer::GetPItem(param_1 + 0x10);
+    if (pCVar1 == param_3) {
+      return param_1 + 0x10;
+    }
+    pCVar1 = CBaseIntelligentPointer::GetPItem(param_1 + 0x20);
+    if (pCVar1 == param_3) {
+      return param_1 + 0x20;
+    }
+    pCVar1 = CBaseIntelligentPointer::GetPItem(param_1 + 0x30);
+    if (pCVar1 == param_3) break;
+    param_1 = param_1 + 0x40;
+    iVar2 = iVar2 + -1;
+  }
+  return param_1 + 0x30;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00748690 159 1
+@@CALLERS MovedInNotification
+@@CALLEES GetPItem
+@@STRINGS 
+@@DECOMP
+
+CBaseIntelligentPointer * __fastcall
+FUN_00748690(CBaseIntelligentPointer *param_1,CBaseIntelligentPointer *param_2,CBaseObject *param_3)
+
+{
+  CBaseObject *pCVar1;
+  int iVar2;
+  
+  iVar2 = (int)param_2 - (int)param_1 >> 6;
+  while( true ) {
+    if (iVar2 < 1) {
+      iVar2 = (int)param_2 - (int)param_1 >> 4;
+      if (iVar2 != 1) {
+        if (iVar2 != 2) {
+          if (iVar2 != 3) {
+            return param_2;
+          }
+          pCVar1 = CBaseIntelligentPointer::GetPItem(param_1);
+          if (pCVar1 == param_3) {
+            return param_1;
+          }
+          param_1 = param_1 + 0x10;
+        }
+        pCVar1 = CBaseIntelligentPointer::GetPItem(param_1);
+        if (pCVar1 == param_3) {
+          return param_1;
+        }
+        param_1 = param_1 + 0x10;
+      }
+      pCVar1 = CBaseIntelligentPointer::GetPItem(param_1);
+      if (pCVar1 != param_3) {
+        return param_2;
+      }
+      return param_1;
+    }
+    pCVar1 = CBaseIntelligentPointer::GetPItem(param_1);
+    if (pCVar1 == param_3) {
+      return param_1;
+    }
+    pCVar1 = CBaseIntelligentPointer::GetPItem(param_1 + 0x10);
+    if (pCVar1 == param_3) {
+      return param_1 + 0x10;
+    }
+    pCVar1 = CBaseIntelligentPointer::GetPItem(param_1 + 0x20);
+    if (pCVar1 == param_3) {
+      return param_1 + 0x20;
+    }
+    pCVar1 = CBaseIntelligentPointer::GetPItem(param_1 + 0x30);
+    if (pCVar1 == param_3) break;
+    param_1 = param_1 + 0x40;
+    iVar2 = iVar2 + -1;
+  }
+  return param_1 + 0x30;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00748760 132 1
+@@CALLERS Sort_IntrosortPhase_Compact
+@@CALLEES operator()
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00748760(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3)
+
+{
+  bool bVar1;
+  
+  bVar1 = _anon_AE0DD725::CCompare_FurthestFromInitPos2D::operator()
+                    ((CCompare_FurthestFromInitPos2D *)&stack0x00000008,(CThing *)*param_1,
+                     (CThing *)*param_2);
+  if (bVar1) {
+    bVar1 = _anon_AE0DD725::CCompare_FurthestFromInitPos2D::operator()
+                      ((CCompare_FurthestFromInitPos2D *)&stack0x00000008,(CThing *)*param_2,
+                       (CThing *)*param_3);
+    if (!bVar1) {
+      bVar1 = _anon_AE0DD725::CCompare_FurthestFromInitPos2D::operator()
+                        ((CCompare_FurthestFromInitPos2D *)&stack0x00000008,(CThing *)*param_1,
+                         (CThing *)*param_3);
+      if (!bVar1) {
+        return param_1;
+      }
+      return param_3;
+    }
+  }
+  else {
+    bVar1 = _anon_AE0DD725::CCompare_FurthestFromInitPos2D::operator()
+                      ((CCompare_FurthestFromInitPos2D *)&stack0x00000008,(CThing *)*param_1,
+                       (CThing *)*param_3);
+    if (bVar1) {
+      return param_1;
+    }
+    bVar1 = _anon_AE0DD725::CCompare_FurthestFromInitPos2D::operator()
+                      ((CCompare_FurthestFromInitPos2D *)&stack0x00000008,(CThing *)*param_2,
+                       (CThing *)*param_3);
+    if (bVar1) {
+      return param_3;
+    }
+  }
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00748810 67 1
+@@CALLERS Vector_InsertSorted
+@@CALLEES operator()
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_00748810(undefined4 *param_1,CThing *param_2)
+
+{
+  bool bVar1;
+  undefined4 *puVar2;
+  
+  bVar1 = _anon_AE0DD725::CCompare_FurthestFromInitPos2D::operator()
+                    ((CCompare_FurthestFromInitPos2D *)&stack0x00000004,param_2,
+                     (CThing *)param_1[-1]);
+  puVar2 = param_1;
+  if (bVar1) {
+    do {
+      param_1 = puVar2 + -1;
+      *puVar2 = *param_1;
+      bVar1 = _anon_AE0DD725::CCompare_FurthestFromInitPos2D::operator()
+                        ((CCompare_FurthestFromInitPos2D *)&stack0x00000004,param_2,
+                         (CThing *)puVar2[-2]);
+      puVar2 = param_1;
+    } while (bVar1);
+  }
+  *param_1 = param_2;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00748aa0 74 1
+@@CALLERS 
+@@CALLEES CBaseIntelligentPointer, GetPItem, SetPItem
+@@STRINGS 
+@@DECOMP
+
+CBaseIntelligentPointer * __fastcall
+FUN_00748aa0(CBaseIntelligentPointer *param_1,int param_2,CBaseIntelligentPointer *param_3)
+
+{
+  CBaseObject *pCVar1;
+  
+  for (; param_2 != 0; param_2 = param_2 + -1) {
+    if (param_1 != (CBaseIntelligentPointer *)0x0) {
+      CBaseIntelligentPointer::CBaseIntelligentPointer(param_1);
+      *(undefined ***)param_1 = &PTR__vector_deleting_destructor__01237f1c;
+      pCVar1 = CBaseIntelligentPointer::GetPItem(param_3);
+      CBaseIntelligentPointer::SetPItem(param_1,pCVar1);
+      *(undefined4 *)(param_1 + 8) = *(undefined4 *)(param_3 + 8);
+      *(undefined4 *)(param_1 + 0xc) = *(undefined4 *)(param_3 + 0xc);
+    }
+    param_1 = param_1 + 0x10;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00748b60 120 1
+@@CALLERS Sort_IntrosortPhase_Compact
+@@CALLEES operator()
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_00748b60(undefined4 *param_1,undefined4 *param_2,CThing *param_3)
+
+{
+  undefined4 *puVar1;
+  undefined4 uVar2;
+  bool bVar3;
+  
+  while( true ) {
+    bVar3 = _anon_AE0DD725::CCompare_FurthestFromInitPos2D::operator()
+                      ((CCompare_FurthestFromInitPos2D *)&stack0x00000008,(CThing *)*param_1,param_3
+                      );
+    if (bVar3) {
+      do {
+        puVar1 = param_1 + 1;
+        param_1 = param_1 + 1;
+        bVar3 = _anon_AE0DD725::CCompare_FurthestFromInitPos2D::operator()
+                          ((CCompare_FurthestFromInitPos2D *)&stack0x00000008,(CThing *)*puVar1,
+                           param_3);
+      } while (bVar3);
+    }
+    puVar1 = param_2 + -1;
+    param_2 = param_2 + -1;
+    bVar3 = _anon_AE0DD725::CCompare_FurthestFromInitPos2D::operator()
+                      ((CCompare_FurthestFromInitPos2D *)&stack0x00000008,param_3,(CThing *)*puVar1)
+    ;
+    if (bVar3) {
+      do {
+        puVar1 = param_2 + -1;
+        param_2 = param_2 + -1;
+        bVar3 = _anon_AE0DD725::CCompare_FurthestFromInitPos2D::operator()
+                          ((CCompare_FurthestFromInitPos2D *)&stack0x00000008,param_3,
+                           (CThing *)*puVar1);
+      } while (bVar3);
+    }
+    if (param_2 <= param_1) break;
+    uVar2 = *param_1;
+    *param_1 = *param_2;
+    *param_2 = uVar2;
+    param_1 = param_1 + 1;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC

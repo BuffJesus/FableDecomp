@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-07-22T18:26:37-06:00",
+  "candidates": 115,
+  "pass": 85,
+  "review": 30,
+  "issue_counts": {
+    "explicit-parameter-count-mismatch": 14,
+    "method-name-mismatch": 7,
+    "owner-mismatch": 7,
+    "duplicate-linkage-signature": 7,
+    "return-shape-mismatch": 4,
+    "definition-not-parsed": 2
+  }
+}

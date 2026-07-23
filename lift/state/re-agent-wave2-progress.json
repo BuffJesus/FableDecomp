@@ -1,0 +1,326 @@
+{
+  "functions": {
+    "00ab46e0": {
+      "address": "0x00AB46E0",
+      "class_name": "",
+      "function_name": "?GetPos@CMouseDX@@UBEXPAVC2DVector@@@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:24:45"
+    },
+    "00ab4700": {
+      "address": "0x00AB4700",
+      "class_name": "",
+      "function_name": "?SetPos@CMouseDX@@UAEXPBVC2DVector@@@Z",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:29:45"
+    },
+    "00ab5390": {
+      "address": "0x00AB5390",
+      "class_name": "",
+      "function_name": "?SetMouseCursor@CMouseDX@@UAEXABVCSurface@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:36:34"
+    },
+    "00ab5f00": {
+      "address": "0x00AB5F00",
+      "class_name": "",
+      "function_name": "?PeekPos@CMouseDX@@UBEABVC2DVector@@XZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:37:03"
+    },
+    "00ab5f10": {
+      "address": "0x00AB5F10",
+      "class_name": "",
+      "function_name": "?SetInputOn@CMouseDX@@UAEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:37:39"
+    },
+    "00ab5f20": {
+      "address": "0x00AB5F20",
+      "class_name": "",
+      "function_name": "?SetRecentringOn@CMouseDX@@UAEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:38:06"
+    },
+    "00ab5f30": {
+      "address": "0x00AB5F30",
+      "class_name": "",
+      "function_name": "?IsRecentringOn@CMouseDX@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:38:52"
+    },
+    "00ab5f40": {
+      "address": "0x00AB5F40",
+      "class_name": "",
+      "function_name": "?SetDrawCursor@CMouseDX@@UAEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:39:19"
+    },
+    "00ab5f50": {
+      "address": "0x00AB5F50",
+      "class_name": "",
+      "function_name": "?IsDrawingCursor@CMouseDX@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:39:48"
+    },
+    "00ab5f60": {
+      "address": "0x00AB5F60",
+      "class_name": "",
+      "function_name": "?SetMouseFiltering@CMouseDX@@UAEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:40:12"
+    },
+    "00ab5f70": {
+      "address": "0x00AB5F70",
+      "class_name": "",
+      "function_name": "?IsLMBDown@CMouseDX@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:40:43"
+    },
+    "00ab5f80": {
+      "address": "0x00AB5F80",
+      "class_name": "",
+      "function_name": "?IsMMBDown@CMouseDX@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:41:05"
+    },
+    "00ab5f90": {
+      "address": "0x00AB5F90",
+      "class_name": "",
+      "function_name": "?IsRMBDown@CMouseDX@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:41:28"
+    },
+    "00a65d30": {
+      "address": "0x00A65D30",
+      "class_name": "",
+      "function_name": "?ConsolidateFreeAreas@CMemoryAllocatorFixedSize@@UAEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:41:48"
+    },
+    "00a65d40": {
+      "address": "0x00A65D40",
+      "class_name": "",
+      "function_name": "?GetAllocationSize@CMemoryAllocatorFixedSize@@UAEKPAX@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:42:14"
+    },
+    "00a65d50": {
+      "address": "0x00A65D50",
+      "class_name": "",
+      "function_name": "?GetTotalMemoryControlledByAllocator@CMemoryAllocatorFixedSize@@UAEKXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:42:46"
+    }
+  },
+  "runs": [
+    {
+      "address": "0x00AB46E0",
+      "class_name": "",
+      "function_name": "?GetPos@CMouseDX@@UBEXPAVC2DVector@@@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:24:45"
+    },
+    {
+      "address": "0x00AB4700",
+      "class_name": "",
+      "function_name": "?SetPos@CMouseDX@@UAEXPBVC2DVector@@@Z",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:29:45"
+    },
+    {
+      "address": "0x00AB5390",
+      "class_name": "",
+      "function_name": "?SetMouseCursor@CMouseDX@@UAEXABVCSurface@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:36:34"
+    },
+    {
+      "address": "0x00AB5F00",
+      "class_name": "",
+      "function_name": "?PeekPos@CMouseDX@@UBEABVC2DVector@@XZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:37:03"
+    },
+    {
+      "address": "0x00AB5F10",
+      "class_name": "",
+      "function_name": "?SetInputOn@CMouseDX@@UAEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:37:39"
+    },
+    {
+      "address": "0x00AB5F20",
+      "class_name": "",
+      "function_name": "?SetRecentringOn@CMouseDX@@UAEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:38:06"
+    },
+    {
+      "address": "0x00AB5F30",
+      "class_name": "",
+      "function_name": "?IsRecentringOn@CMouseDX@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:38:52"
+    },
+    {
+      "address": "0x00AB5F40",
+      "class_name": "",
+      "function_name": "?SetDrawCursor@CMouseDX@@UAEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:39:19"
+    },
+    {
+      "address": "0x00AB5F50",
+      "class_name": "",
+      "function_name": "?IsDrawingCursor@CMouseDX@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:39:48"
+    },
+    {
+      "address": "0x00AB5F60",
+      "class_name": "",
+      "function_name": "?SetMouseFiltering@CMouseDX@@UAEX_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:40:12"
+    },
+    {
+      "address": "0x00AB5F70",
+      "class_name": "",
+      "function_name": "?IsLMBDown@CMouseDX@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:40:43"
+    },
+    {
+      "address": "0x00AB5F80",
+      "class_name": "",
+      "function_name": "?IsMMBDown@CMouseDX@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:41:05"
+    },
+    {
+      "address": "0x00AB5F90",
+      "class_name": "",
+      "function_name": "?IsRMBDown@CMouseDX@@UBE_NXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:41:28"
+    },
+    {
+      "address": "0x00A65D30",
+      "class_name": "",
+      "function_name": "?ConsolidateFreeAreas@CMemoryAllocatorFixedSize@@UAEXXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:41:48"
+    },
+    {
+      "address": "0x00A65D40",
+      "class_name": "",
+      "function_name": "?GetAllocationSize@CMemoryAllocatorFixedSize@@UAEKPAX@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:42:14"
+    },
+    {
+      "address": "0x00A65D50",
+      "class_name": "",
+      "function_name": "?GetTotalMemoryControlledByAllocator@CMemoryAllocatorFixedSize@@UAEKXZ",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-22T12:42:46"
+    }
+  ]
+}

@@ -1,0 +1,1328 @@
+@@@FUNC 004adf40 59 0
+@@CALLERS 
+@@CALLEES CTestQuest, Vector_Reserve_And_Assign
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004adf40(int param_1,CTestQuest *param_2)
+
+{
+  CTestQuest *this;
+  
+  this = *(CTestQuest **)(param_1 + 4);
+  if (this != *(CTestQuest **)(param_1 + 8)) {
+    if (this != (CTestQuest *)0x0) {
+      CTestQuest::CTestQuest(this,param_2);
+    }
+    *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 0x1c;
+    return;
+  }
+  Vector_Reserve_And_Assign(this,param_2,&param_2,1,1);
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004adff0 66 0
+@@CALLERS 
+@@CALLEES LinkedList_DestroyRecursive, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004adff0(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    LinkedList_DestroyRecursive(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ae1c0 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_004ae1c0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x1c);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ae6c0 66 0
+@@CALLERS 
+@@CALLEES free, BuildTreeArray
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004ae6c0(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ae710 66 0
+@@CALLERS 
+@@CALLEES free, BuildTreeArray
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004ae710(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ae760 66 0
+@@CALLERS 
+@@CALLEES free, BuildTreeArray
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004ae760(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004b3060 496 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, LoadThingsWithSectionNames, GetDayOrNightOnlyStringFromFullSectionName, StdSet_Insert, free, BuildTreeArray, malloc, WorldMap_BuildLoadSectionsList, Compare
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004b3060(CQuestManager *param_1)
+
+{
+  undefined4 *puVar1;
+  undefined1 *puVar2;
+  char cVar3;
+  long lVar4;
+  undefined1 *puVar5;
+  CWorldMap *this;
+  undefined1 *puVar6;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar7;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EBP;
+  undefined8 uVar8;
+  set<CCharString,std::less<CCharString>,std::allocator<CCharString>_> *psVar9;
+  ELoadType EVar10;
+  CCharString local_24 [4];
+  undefined1 local_20 [8];
+  undefined1 *local_18;
+  int local_14;
+  undefined1 *local_c;
+  int local_8;
+  
+  if (param_1[0x8c] == (CQuestManager)0x0) {
+    param_1[0x8c] = (CQuestManager)0x1;
+    local_18 = (undefined1 *)0x0;
+    local_18 = malloc(0x14);
+    local_14 = 0;
+    *local_18 = 0;
+    *(undefined4 *)(local_18 + 4) = 0;
+    *(undefined1 **)(local_18 + 8) = local_18;
+    *(undefined1 **)(local_18 + 0xc) = local_18;
+    WorldMap_BuildLoadSectionsList(&local_18);
+    local_c = (undefined1 *)0x0;
+    local_c = malloc(0x14);
+    local_8 = 0;
+    *local_c = 0;
+    *(undefined4 *)(local_c + 4) = 0;
+    *(undefined1 **)(local_c + 8) = local_c;
+    *(undefined1 **)(local_c + 0xc) = local_c;
+    puVar5 = *(undefined1 **)(local_18 + 8);
+    if (puVar5 != local_18) {
+      do {
+        uVar8 = CQuestManager::GetDayOrNightOnlyStringFromFullSectionName(param_1,local_24);
+        ppVar7 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar8 >> 0x20);
+        puVar1 = (undefined4 *)*(int *)uVar8;
+        if (puVar1 == DAT_013bac18) {
+          cVar3 = '\x01';
+        }
+        else if ((puVar1 == (undefined4 *)0x0) || (DAT_013bac18 == (undefined4 *)0x0)) {
+          cVar3 = '\0';
+        }
+        else {
+          ppVar7 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)puVar1[1];
+          if (ppVar7 == (pair<EHeroMorphType,CParticleMorphs::CEntry> *)DAT_013bac18[1]) {
+            lVar4 = CBasicString<char>::Compare((char *)*puVar1,(char *)*DAT_013bac18);
+            cVar3 = '\x01' - (lVar4 != 0);
+            ppVar7 = extraout_EDX;
+          }
+          else {
+            cVar3 = '\0';
+          }
+        }
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)local_24,ppVar7,
+                   unaff_EBP);
+        if (cVar3 != '\0') {
+          StdSet_Insert(local_20,puVar5 + 0x10);
+        }
+        puVar6 = *(undefined1 **)(puVar5 + 0xc);
+        if (puVar6 == (undefined1 *)0x0) {
+          puVar6 = *(undefined1 **)(puVar5 + 4);
+          if (puVar5 == *(undefined1 **)(puVar6 + 0xc)) {
+            do {
+              puVar5 = puVar6;
+              puVar6 = *(undefined1 **)(puVar5 + 4);
+            } while (puVar5 == *(undefined1 **)(puVar6 + 0xc));
+          }
+          if (*(undefined1 **)(puVar5 + 0xc) != puVar6) {
+            puVar5 = puVar6;
+          }
+        }
+        else {
+          for (puVar2 = *(undefined1 **)(puVar6 + 8); puVar5 = puVar6, puVar2 != (undefined1 *)0x0;
+              puVar2 = *(undefined1 **)(puVar2 + 8)) {
+            puVar6 = puVar2;
+          }
+        }
+      } while (puVar5 != local_18);
+    }
+    EVar10 = 0;
+    psVar9 = (set<CCharString,std::less<CCharString>,std::allocator<CCharString>_> *)&local_c;
+    this = (CWorldMap *)(**(code **)(**(int **)(param_1 + 0x7c) + 0x30))();
+    CWorldMap::LoadThingsWithSectionNames(this,psVar9,EVar10);
+    if (local_8 != 0) {
+      LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+                ((LTextTreeWalkThrough *)&local_c,*(LTextBinNode **)(local_c + 4));
+      *(undefined1 **)(local_c + 8) = local_c;
+      *(undefined4 *)(local_c + 4) = 0;
+      *(undefined1 **)(local_c + 0xc) = local_c;
+      local_8 = 0;
+    }
+    if (local_c != (undefined1 *)0x0) {
+      free(local_c);
+    }
+    if (local_14 != 0) {
+      LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+                ((LTextTreeWalkThrough *)&local_18,*(LTextBinNode **)(local_18 + 4));
+      *(undefined1 **)(local_18 + 8) = local_18;
+      *(undefined4 *)(local_18 + 4) = 0;
+      *(undefined1 **)(local_18 + 0xc) = local_18;
+      local_14 = 0;
+    }
+    if (local_18 != (undefined1 *)0x0) {
+      free(local_18);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004b3260 379 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, DeleteThingsWithSectionName, GetDayOrNightOnlyStringFromFullSectionName, free, BuildTreeArray, malloc, WorldMap_BuildLoadSectionsList, Compare, CCharString
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004b3260(CQuestManager *param_1)
+
+{
+  undefined4 *puVar1;
+  undefined1 *puVar2;
+  char cVar3;
+  long lVar4;
+  CThingManager *this;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar7;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EBX;
+  undefined8 uVar8;
+  CCharString *pCVar9;
+  CCharString local_14 [4];
+  CCharString local_10 [4];
+  undefined1 *local_c;
+  int local_8;
+  
+  if (param_1[0x8c] != (CQuestManager)0x0) {
+    local_c = (undefined1 *)0x0;
+    local_c = malloc(0x14);
+    local_8 = 0;
+    *local_c = 0;
+    *(undefined4 *)(local_c + 4) = 0;
+    *(undefined1 **)(local_c + 8) = local_c;
+    *(undefined1 **)(local_c + 0xc) = local_c;
+    WorldMap_BuildLoadSectionsList(&local_c);
+    puVar5 = *(undefined1 **)(local_c + 8);
+    if (puVar5 != local_c) {
+      do {
+        CCharString::CCharString(local_14,(CCharString *)(puVar5 + 0x10));
+        uVar8 = CQuestManager::GetDayOrNightOnlyStringFromFullSectionName(param_1,local_10);
+        ppVar7 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar8 >> 0x20);
+        puVar1 = (undefined4 *)*(int *)uVar8;
+        if (puVar1 == DAT_013bac18) {
+          cVar3 = '\x01';
+        }
+        else if ((puVar1 == (undefined4 *)0x0) || (DAT_013bac18 == (undefined4 *)0x0)) {
+          cVar3 = '\0';
+        }
+        else {
+          ppVar7 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)puVar1[1];
+          if (ppVar7 == (pair<EHeroMorphType,CParticleMorphs::CEntry> *)DAT_013bac18[1]) {
+            lVar4 = CBasicString<char>::Compare((char *)*puVar1,(char *)*DAT_013bac18);
+            cVar3 = '\x01' - (lVar4 != 0);
+            ppVar7 = extraout_EDX;
+          }
+          else {
+            cVar3 = '\0';
+          }
+        }
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)local_10,ppVar7,
+                   unaff_EBX);
+        ppVar7 = extraout_EDX_00;
+        if (cVar3 != '\0') {
+          pCVar9 = local_14;
+          this = (CThingManager *)(**(code **)(**(int **)(param_1 + 0x7c) + 0xc))();
+          CThingManager::DeleteThingsWithSectionName(this,pCVar9);
+          ppVar7 = extraout_EDX_01;
+        }
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)local_14,ppVar7,
+                   unaff_EBX);
+        puVar6 = *(undefined1 **)(puVar5 + 0xc);
+        if (puVar6 == (undefined1 *)0x0) {
+          puVar6 = *(undefined1 **)(puVar5 + 4);
+          if (puVar5 == *(undefined1 **)(puVar6 + 0xc)) {
+            do {
+              puVar5 = puVar6;
+              puVar6 = *(undefined1 **)(puVar5 + 4);
+            } while (puVar5 == *(undefined1 **)(puVar6 + 0xc));
+          }
+          if (*(undefined1 **)(puVar5 + 0xc) != puVar6) {
+            puVar5 = puVar6;
+          }
+        }
+        else {
+          for (puVar2 = *(undefined1 **)(puVar6 + 8); puVar5 = puVar6, puVar2 != (undefined1 *)0x0;
+              puVar2 = *(undefined1 **)(puVar2 + 8)) {
+            puVar6 = puVar2;
+          }
+        }
+      } while (puVar5 != local_c);
+    }
+    param_1[0x8c] = (CQuestManager)0x0;
+    if (local_8 != 0) {
+      LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+                ((LTextTreeWalkThrough *)&local_c,*(LTextBinNode **)(local_c + 4));
+      *(undefined1 **)(local_c + 8) = local_c;
+      *(undefined4 *)(local_c + 4) = 0;
+      *(undefined1 **)(local_c + 0xc) = local_c;
+      local_8 = 0;
+    }
+    if (local_c != (undefined1 *)0x0) {
+      free(local_c);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004b33e0 496 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, LoadThingsWithSectionNames, GetDayOrNightOnlyStringFromFullSectionName, StdSet_Insert, free, BuildTreeArray, malloc, WorldMap_BuildLoadSectionsList, Compare
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004b33e0(CQuestManager *param_1)
+
+{
+  undefined4 *puVar1;
+  undefined1 *puVar2;
+  char cVar3;
+  long lVar4;
+  undefined1 *puVar5;
+  CWorldMap *this;
+  undefined1 *puVar6;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar7;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EBP;
+  undefined8 uVar8;
+  set<CCharString,std::less<CCharString>,std::allocator<CCharString>_> *psVar9;
+  ELoadType EVar10;
+  CCharString local_24 [4];
+  undefined1 local_20 [8];
+  undefined1 *local_18;
+  int local_14;
+  undefined1 *local_c;
+  int local_8;
+  
+  if (param_1[0x8d] == (CQuestManager)0x0) {
+    param_1[0x8d] = (CQuestManager)0x1;
+    local_18 = (undefined1 *)0x0;
+    local_18 = malloc(0x14);
+    local_14 = 0;
+    *local_18 = 0;
+    *(undefined4 *)(local_18 + 4) = 0;
+    *(undefined1 **)(local_18 + 8) = local_18;
+    *(undefined1 **)(local_18 + 0xc) = local_18;
+    WorldMap_BuildLoadSectionsList(&local_18);
+    local_c = (undefined1 *)0x0;
+    local_c = malloc(0x14);
+    local_8 = 0;
+    *local_c = 0;
+    *(undefined4 *)(local_c + 4) = 0;
+    *(undefined1 **)(local_c + 8) = local_c;
+    *(undefined1 **)(local_c + 0xc) = local_c;
+    puVar5 = *(undefined1 **)(local_18 + 8);
+    if (puVar5 != local_18) {
+      do {
+        uVar8 = CQuestManager::GetDayOrNightOnlyStringFromFullSectionName(param_1,local_24);
+        ppVar7 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar8 >> 0x20);
+        puVar1 = (undefined4 *)*(int *)uVar8;
+        if (puVar1 == DAT_013bac1c) {
+          cVar3 = '\x01';
+        }
+        else if ((puVar1 == (undefined4 *)0x0) || (DAT_013bac1c == (undefined4 *)0x0)) {
+          cVar3 = '\0';
+        }
+        else {
+          ppVar7 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)puVar1[1];
+          if (ppVar7 == (pair<EHeroMorphType,CParticleMorphs::CEntry> *)DAT_013bac1c[1]) {
+            lVar4 = CBasicString<char>::Compare((char *)*puVar1,(char *)*DAT_013bac1c);
+            cVar3 = '\x01' - (lVar4 != 0);
+            ppVar7 = extraout_EDX;
+          }
+          else {
+            cVar3 = '\0';
+          }
+        }
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)local_24,ppVar7,
+                   unaff_EBP);
+        if (cVar3 != '\0') {
+          StdSet_Insert(local_20,puVar5 + 0x10);
+        }
+        puVar6 = *(undefined1 **)(puVar5 + 0xc);
+        if (puVar6 == (undefined1 *)0x0) {
+          puVar6 = *(undefined1 **)(puVar5 + 4);
+          if (puVar5 == *(undefined1 **)(puVar6 + 0xc)) {
+            do {
+              puVar5 = puVar6;
+              puVar6 = *(undefined1 **)(puVar5 + 4);
+            } while (puVar5 == *(undefined1 **)(puVar6 + 0xc));
+          }
+          if (*(undefined1 **)(puVar5 + 0xc) != puVar6) {
+            puVar5 = puVar6;
+          }
+        }
+        else {
+          for (puVar2 = *(undefined1 **)(puVar6 + 8); puVar5 = puVar6, puVar2 != (undefined1 *)0x0;
+              puVar2 = *(undefined1 **)(puVar2 + 8)) {
+            puVar6 = puVar2;
+          }
+        }
+      } while (puVar5 != local_18);
+    }
+    EVar10 = 0;
+    psVar9 = (set<CCharString,std::less<CCharString>,std::allocator<CCharString>_> *)&local_c;
+    this = (CWorldMap *)(**(code **)(**(int **)(param_1 + 0x7c) + 0x30))();
+    CWorldMap::LoadThingsWithSectionNames(this,psVar9,EVar10);
+    if (local_8 != 0) {
+      LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+                ((LTextTreeWalkThrough *)&local_c,*(LTextBinNode **)(local_c + 4));
+      *(undefined1 **)(local_c + 8) = local_c;
+      *(undefined4 *)(local_c + 4) = 0;
+      *(undefined1 **)(local_c + 0xc) = local_c;
+      local_8 = 0;
+    }
+    if (local_c != (undefined1 *)0x0) {
+      free(local_c);
+    }
+    if (local_14 != 0) {
+      LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+                ((LTextTreeWalkThrough *)&local_18,*(LTextBinNode **)(local_18 + 4));
+      *(undefined1 **)(local_18 + 8) = local_18;
+      *(undefined4 *)(local_18 + 4) = 0;
+      *(undefined1 **)(local_18 + 0xc) = local_18;
+      local_14 = 0;
+    }
+    if (local_18 != (undefined1 *)0x0) {
+      free(local_18);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004b35e0 379 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, DeleteThingsWithSectionName, GetDayOrNightOnlyStringFromFullSectionName, free, BuildTreeArray, malloc, WorldMap_BuildLoadSectionsList, Compare, CCharString
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004b35e0(CQuestManager *param_1)
+
+{
+  undefined4 *puVar1;
+  undefined1 *puVar2;
+  char cVar3;
+  long lVar4;
+  CThingManager *this;
+  undefined1 *puVar5;
+  undefined1 *puVar6;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *ppVar7;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EBX;
+  undefined8 uVar8;
+  CCharString *pCVar9;
+  CCharString local_14 [4];
+  CCharString local_10 [4];
+  undefined1 *local_c;
+  int local_8;
+  
+  if (param_1[0x8d] != (CQuestManager)0x0) {
+    local_c = (undefined1 *)0x0;
+    local_c = malloc(0x14);
+    local_8 = 0;
+    *local_c = 0;
+    *(undefined4 *)(local_c + 4) = 0;
+    *(undefined1 **)(local_c + 8) = local_c;
+    *(undefined1 **)(local_c + 0xc) = local_c;
+    WorldMap_BuildLoadSectionsList(&local_c);
+    puVar5 = *(undefined1 **)(local_c + 8);
+    if (puVar5 != local_c) {
+      do {
+        CCharString::CCharString(local_14,(CCharString *)(puVar5 + 0x10));
+        uVar8 = CQuestManager::GetDayOrNightOnlyStringFromFullSectionName(param_1,local_10);
+        ppVar7 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar8 >> 0x20);
+        puVar1 = (undefined4 *)*(int *)uVar8;
+        if (puVar1 == DAT_013bac1c) {
+          cVar3 = '\x01';
+        }
+        else if ((puVar1 == (undefined4 *)0x0) || (DAT_013bac1c == (undefined4 *)0x0)) {
+          cVar3 = '\0';
+        }
+        else {
+          ppVar7 = (pair<EHeroMorphType,CParticleMorphs::CEntry> *)puVar1[1];
+          if (ppVar7 == (pair<EHeroMorphType,CParticleMorphs::CEntry> *)DAT_013bac1c[1]) {
+            lVar4 = CBasicString<char>::Compare((char *)*puVar1,(char *)*DAT_013bac1c);
+            cVar3 = '\x01' - (lVar4 != 0);
+            ppVar7 = extraout_EDX;
+          }
+          else {
+            cVar3 = '\0';
+          }
+        }
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)local_10,ppVar7,
+                   unaff_EBX);
+        ppVar7 = extraout_EDX_00;
+        if (cVar3 != '\0') {
+          pCVar9 = local_14;
+          this = (CThingManager *)(**(code **)(**(int **)(param_1 + 0x7c) + 0xc))();
+          CThingManager::DeleteThingsWithSectionName(this,pCVar9);
+          ppVar7 = extraout_EDX_01;
+        }
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)local_14,ppVar7,
+                   unaff_EBX);
+        puVar6 = *(undefined1 **)(puVar5 + 0xc);
+        if (puVar6 == (undefined1 *)0x0) {
+          puVar6 = *(undefined1 **)(puVar5 + 4);
+          if (puVar5 == *(undefined1 **)(puVar6 + 0xc)) {
+            do {
+              puVar5 = puVar6;
+              puVar6 = *(undefined1 **)(puVar5 + 4);
+            } while (puVar5 == *(undefined1 **)(puVar6 + 0xc));
+          }
+          if (*(undefined1 **)(puVar5 + 0xc) != puVar6) {
+            puVar5 = puVar6;
+          }
+        }
+        else {
+          for (puVar2 = *(undefined1 **)(puVar6 + 8); puVar5 = puVar6, puVar2 != (undefined1 *)0x0;
+              puVar2 = *(undefined1 **)(puVar2 + 8)) {
+            puVar6 = puVar2;
+          }
+        }
+      } while (puVar5 != local_c);
+    }
+    param_1[0x8d] = (CQuestManager)0x0;
+    if (local_8 != 0) {
+      LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+                ((LTextTreeWalkThrough *)&local_c,*(LTextBinNode **)(local_c + 4));
+      *(undefined1 **)(local_c + 8) = local_c;
+      *(undefined4 *)(local_c + 4) = 0;
+      *(undefined1 **)(local_c + 0xc) = local_c;
+      local_8 = 0;
+    }
+    if (local_c != (undefined1 *)0x0) {
+      free(local_c);
+    }
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004b88c0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004b88c0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004b88e0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004b88e0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004b8900 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004b8900(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004b8960 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004b8960(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x28);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004b8980 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004b8980(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x14);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004b8b10 66 0
+@@CALLERS 
+@@CALLEES _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>, free, CMemoryAllocatorVariableSize::Erase
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004b8b10(int *param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  void *_Memory;
+  pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *unaff_EDI;
+  undefined8 uVar2;
+  
+  iVar1 = *param_1;
+  uVar2 = CMemoryAllocatorVariableSize__Erase(param_2,iVar1 + 4,iVar1 + 8,iVar1 + 0xc);
+  _Memory = (void *)uVar2;
+  std::
+  _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+            ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)((int)_Memory + 0x10),
+             (pair<EHeroMorphType,CParticleMorphs::CEntry> *)((ulonglong)uVar2 >> 0x20),unaff_EDI);
+  if (_Memory != (void *)0x0) {
+    free(_Memory);
+  }
+  param_1[1] = param_1[1] + -1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004b96d0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004b96d0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ba400 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004ba400(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ba420 63 0
+@@CALLERS 
+@@CALLEES malloc, CCharString
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004ba420(int *param_1,CCharString *param_2)
+
+{
+  int iVar1;
+  undefined4 *puVar2;
+  int *piVar3;
+  
+  iVar1 = *param_1;
+  piVar3 = malloc(0x10);
+  if ((CCharString *)(piVar3 + 2) != (CCharString *)0x0) {
+    CCharString::CCharString((CCharString *)(piVar3 + 2),param_2);
+    piVar3[3] = *(int *)(param_2 + 4);
+  }
+  puVar2 = *(undefined4 **)(iVar1 + 4);
+  *piVar3 = iVar1;
+  piVar3[1] = (int)puVar2;
+  *puVar2 = piVar3;
+  *(int **)(iVar1 + 4) = piVar3;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ba480 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004ba480(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ba530 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004ba530(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x28);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004ba5b0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004ba5b0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x14);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004bada0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004bada0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x10);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004badc0 63 0
+@@CALLERS 
+@@CALLEES std::list_Insert_Range, malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall FUN_004badc0(undefined4 *param_1,undefined4 *param_2)
+
+{
+  undefined4 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x10);
+  *puVar1 = puVar1;
+  puVar1[1] = puVar1;
+  *param_1 = puVar1;
+  std__list_Insert_Range(*puVar1,*(undefined4 *)*param_2,(undefined4 *)*param_2,&param_2);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004baf10 42 0
+@@CALLERS 
+@@CALLEES _Ubound, _Lbound
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __thiscall
+FUN_004baf10(_Tree<std::_Tmap_traits<CCharString,unsigned_long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,unsigned_long>_>,1>_>
+             *param_1,undefined4 *param_2,CCharString *param_3)
+
+{
+  _Node *p_Var1;
+  _Node *p_Var2;
+  
+  p_Var1 = std::
+           _Tree<std::_Tmap_traits<CCharString,unsigned_long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,unsigned_long>_>,1>_>
+           ::_Ubound(param_1,param_3);
+  p_Var2 = std::
+           _Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>
+           ::_Lbound((_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>
+                      *)param_1,param_3);
+  *param_2 = p_Var2;
+  param_2[1] = p_Var1;
+  return param_2;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c34d0 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004c34d0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c3530 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004c3530(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c35f0 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004c35f0(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x20);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c3660 27 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004c3660(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0x18);
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c36c0 50 0
+@@CALLERS 
+@@CALLEES free, CMemoryAllocatorVariableSize::Erase
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004c36c0(int *param_1,undefined4 param_2)
+
+{
+  int iVar1;
+  void *_Memory;
+  
+  iVar1 = *param_1;
+  _Memory = (void *)CMemoryAllocatorVariableSize__Erase(param_2,iVar1 + 4,iVar1 + 8,iVar1 + 0xc);
+  if (_Memory != (void *)0x0) {
+    free(_Memory);
+  }
+  param_1[1] = param_1[1] + -1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c3e10 32 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+undefined4 * __fastcall FUN_004c3e10(undefined4 *param_1)
+
+{
+  void *pvVar1;
+  
+  *param_1 = 0;
+  pvVar1 = malloc(0xc);
+  *(void **)pvVar1 = pvVar1;
+  *(void **)((int)pvVar1 + 4) = pvVar1;
+  *param_1 = pvVar1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c3e90 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_004c3e90(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x20);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c3ed0 56 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_004c3ed0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x18);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c3f10 66 0
+@@CALLERS 
+@@CALLEES free, BuildTreeArray
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004c3f10(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c42d0 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_004c42d0(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x18);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c4310 66 0
+@@CALLERS 
+@@CALLEES free, BuildTreeArray
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004c4310(LTextTreeWalkThrough *param_1)
+
+{
+  if (*(int *)(param_1 + 4) != 0) {
+    LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+              (param_1,*(LTextBinNode **)(*(int *)param_1 + 4));
+    *(int *)(*(int *)param_1 + 8) = *(int *)param_1;
+    *(undefined4 *)(*(int *)param_1 + 4) = 0;
+    *(int *)(*(int *)param_1 + 0xc) = *(int *)param_1;
+    *(undefined4 *)(param_1 + 4) = 0;
+  }
+  if (*(void **)param_1 != (void *)0x0) {
+    free(*(void **)param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c43b0 78 0
+@@CALLERS 
+@@CALLEES free, CMemoryAllocatorVariableSize::Erase
+@@STRINGS 
+@@DECOMP
+
+void __thiscall FUN_004c43b0(int *param_1,undefined4 param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  int *piVar3;
+  void *_Memory;
+  
+  iVar2 = *param_1;
+  _Memory = (void *)CMemoryAllocatorVariableSize__Erase(param_2,iVar2 + 4,iVar2 + 8,iVar2 + 0xc);
+  piVar3 = *(int **)((int)_Memory + 0x14);
+  if (piVar3 != (int *)0x0) {
+    piVar1 = piVar3 + 1;
+    *piVar1 = *piVar1 + -1;
+    if (*piVar1 == 0) {
+      (**(code **)(*piVar3 + 4))();
+    }
+    *(undefined4 *)((int)_Memory + 0x14) = 0;
+  }
+  if (_Memory != (void *)0x0) {
+    free(_Memory);
+  }
+  param_1[1] = param_1[1] + -1;
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c53b0 66 0
+@@CALLERS 
+@@CALLEES BinaryTree_DestroyRecursive, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004c53b0(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    BinaryTree_DestroyRecursive(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c5800 54 0
+@@CALLERS 
+@@CALLEES malloc
+@@STRINGS 
+@@DECOMP
+
+int * __fastcall FUN_004c5800(int *param_1)
+
+{
+  undefined1 *puVar1;
+  
+  *param_1 = 0;
+  puVar1 = malloc(0x20);
+  *param_1 = (int)puVar1;
+  param_1[1] = 0;
+  *puVar1 = 0;
+  *(undefined4 *)(*param_1 + 4) = 0;
+  *(int *)(*param_1 + 8) = *param_1;
+  *(int *)(*param_1 + 0xc) = *param_1;
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004c5840 66 0
+@@CALLERS 
+@@CALLEES BinaryTree_DestroyRecursive, free
+@@STRINGS 
+@@DECOMP
+
+void __fastcall FUN_004c5840(int *param_1)
+
+{
+  if (param_1[1] != 0) {
+    BinaryTree_DestroyRecursive(*(undefined4 *)(*param_1 + 4));
+    *(int *)(*param_1 + 8) = *param_1;
+    *(undefined4 *)(*param_1 + 4) = 0;
+    *(int *)(*param_1 + 0xc) = *param_1;
+    param_1[1] = 0;
+  }
+  if ((void *)*param_1 != (void *)0x0) {
+    free((void *)*param_1);
+  }
+  return;
+}
+
+
+@@ENDFUNC

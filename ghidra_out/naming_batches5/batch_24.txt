@@ -1,0 +1,1241 @@
+@@@FUNC 0045dd05 39 0
+@@CALLERS 
+@@CALLEES operator=, CTCCarryable_CopyAssign
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_0045dd05(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  param_1[0x39] = param_2[0x39];
+  CTCCarryable_CopyAssign(param_2 + 0x3c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045e187 39 0
+@@CALLERS 
+@@CALLEES operator=, CTCCarryable_AssignClonedTree3
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_0045e187(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  param_1[0x39] = param_2[0x39];
+  CTCCarryable_AssignClonedTree3(param_2 + 0x3c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045e55a 159 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_0045e55a(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  *(undefined4 *)(param_1 + 0x7c) = *(undefined4 *)(param_2 + 0x7c);
+  *(undefined4 *)(param_1 + 0x80) = *(undefined4 *)(param_2 + 0x80);
+  *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_2 + 0x84);
+  *(undefined4 *)(param_1 + 0x88) = *(undefined4 *)(param_2 + 0x88);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045e660 52 0
+@@CALLERS 
+@@CALLEES CTCCarryable_AssignClonedTree4
+@@STRINGS 
+@@DECOMP
+
+int __thiscall FUN_0045e660(int param_1,int param_2)
+
+{
+  int iVar1;
+  undefined4 *puVar2;
+  undefined4 *puVar3;
+  
+  *(undefined1 *)(param_1 + 0x40) = *(undefined1 *)(param_2 + 0x40);
+  CTCCarryable_AssignClonedTree4(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  puVar2 = *(undefined4 **)(param_2 + 0x3c);
+  puVar3 = *(undefined4 **)(param_1 + 0x3c);
+  for (iVar1 = 0x2d; iVar1 != 0; iVar1 = iVar1 + -1) {
+    *puVar3 = *puVar2;
+    puVar2 = puVar2 + 1;
+    puVar3 = puVar3 + 1;
+  }
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045ee9b 146 0
+@@CALLERS 
+@@CALLEES operator=, CTCCarryable_AssignClonedTree5, CTCCarryable_CopyAssign, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_0045ee9b(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase *pCVar1;
+  int iVar2;
+  
+  CParentDefClassBase::operator=(param_1,param_2);
+  CTCCarryable_AssignClonedTree5(param_2 + 0x3c);
+  param_1[0x48] = param_2[0x48];
+  param_1[0x49] = param_2[0x49];
+  param_1[0x4a] = param_2[0x4a];
+  param_1[0x4b] = param_2[0x4b];
+  param_1[0x4c] = param_2[0x4c];
+  CTCCarryable_CopyAssign(param_2 + 0x50);
+  param_1[0x5c] = param_2[0x5c];
+  param_1[0x5d] = param_2[0x5d];
+  param_1[0x5e] = param_2[0x5e];
+  param_1[0x5f] = param_2[0x5f];
+  param_1[0x60] = param_2[0x60];
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  param_1[0x68] = param_2[0x68];
+  CActiveFile__operator_(param_2 + 0x6c);
+  pCVar1 = param_1 + 0x78;
+  iVar2 = 0x4f;
+  do {
+    *pCVar1 = pCVar1[(int)param_2 - (int)param_1];
+    pCVar1 = pCVar1 + 1;
+    iVar2 = iVar2 + -1;
+  } while (iVar2 != 0);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045f58a 141 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_0045f58a(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  *(undefined4 *)(param_1 + 0x7c) = *(undefined4 *)(param_2 + 0x7c);
+  CActiveFile__operator_(param_2 + 0x80);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045f635 195 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_0045f635(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  CActiveFile__operator_(param_2 + 0x40);
+  CActiveFile__operator_(param_2 + 0x4c);
+  CActiveFile__operator_(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  *(undefined4 *)(param_1 + 0x7c) = *(undefined4 *)(param_2 + 0x7c);
+  *(undefined4 *)(param_1 + 0x80) = *(undefined4 *)(param_2 + 0x80);
+  *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_2 + 0x84);
+  *(undefined4 *)(param_1 + 0x88) = *(undefined4 *)(param_2 + 0x88);
+  *(undefined4 *)(param_1 + 0x8c) = *(undefined4 *)(param_2 + 0x8c);
+  CActiveFile__operator_(param_2 + 0x90);
+  *(undefined4 *)(param_1 + 0x9c) = *(undefined4 *)(param_2 + 0x9c);
+  *(undefined4 *)(param_1 + 0xa0) = *(undefined4 *)(param_2 + 0xa0);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045f854 591 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_0045f854(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  CActiveFile__operator_(param_2 + 0x7c);
+  CActiveFile__operator_(param_2 + 0x88);
+  *(undefined4 *)(param_1 + 0x94) = *(undefined4 *)(param_2 + 0x94);
+  CActiveFile__operator_(param_2 + 0x98);
+  CActiveFile__operator_(param_2 + 0xa4);
+  CActiveFile__operator_(param_2 + 0xb0);
+  *(undefined4 *)(param_1 + 0xbc) = *(undefined4 *)(param_2 + 0xbc);
+  CActiveFile__operator_(param_2 + 0xc0);
+  CActiveFile__operator_(param_2 + 0xcc);
+  CActiveFile__operator_(param_2 + 0xd8);
+  CActiveFile__operator_(param_2 + 0xe4);
+  CActiveFile__operator_(param_2 + 0xf0);
+  CActiveFile__operator_(param_2 + 0xfc);
+  CActiveFile__operator_(param_2 + 0x108);
+  CActiveFile__operator_(param_2 + 0x114);
+  *(undefined4 *)(param_1 + 0x120) = *(undefined4 *)(param_2 + 0x120);
+  *(undefined4 *)(param_1 + 0x124) = *(undefined4 *)(param_2 + 0x124);
+  *(undefined4 *)(param_1 + 0x128) = *(undefined4 *)(param_2 + 0x128);
+  *(undefined4 *)(param_1 + 300) = *(undefined4 *)(param_2 + 300);
+  *(undefined4 *)(param_1 + 0x130) = *(undefined4 *)(param_2 + 0x130);
+  *(undefined4 *)(param_1 + 0x134) = *(undefined4 *)(param_2 + 0x134);
+  CActiveFile__operator_(param_2 + 0x138);
+  *(undefined4 *)(param_1 + 0x144) = *(undefined4 *)(param_2 + 0x144);
+  *(undefined4 *)(param_1 + 0x148) = *(undefined4 *)(param_2 + 0x148);
+  *(undefined4 *)(param_1 + 0x14c) = *(undefined4 *)(param_2 + 0x14c);
+  CActiveFile__operator_(param_2 + 0x150);
+  CActiveFile__operator_(param_2 + 0x15c);
+  CActiveFile__operator_(param_2 + 0x168);
+  CActiveFile__operator_(param_2 + 0x174);
+  param_1[0x180] = param_2[0x180];
+  *(undefined4 *)(param_1 + 0x184) = *(undefined4 *)(param_2 + 0x184);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045fd53 186 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_0045fd53(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase *pCVar1;
+  int iVar2;
+  
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  pCVar1 = param_1 + 0x50;
+  iVar2 = 3;
+  do {
+    *(undefined4 *)pCVar1 = *(undefined4 *)(pCVar1 + ((int)param_2 - (int)param_1));
+    pCVar1 = pCVar1 + 4;
+    iVar2 = iVar2 + -1;
+  } while (iVar2 != 0);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  CActiveFile__operator_(param_2 + 0x78);
+  *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_2 + 0x84);
+  *(undefined4 *)(param_1 + 0x88) = *(undefined4 *)(param_2 + 0x88);
+  CActiveFile__operator_(param_2 + 0x8c);
+  CActiveFile__operator_(param_2 + 0x98);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0045fe2b 154 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_0045fe2b(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  int iVar1;
+  CParentDefClassBase *pCVar2;
+  int iVar3;
+  int iVar4;
+  
+  CParentDefClassBase::operator=(param_1,param_2);
+  iVar4 = 4;
+  pCVar2 = param_1 + 0x3c;
+  iVar1 = (int)param_2 - (int)param_1;
+  iVar3 = iVar4;
+  do {
+    *(undefined4 *)pCVar2 = *(undefined4 *)(pCVar2 + iVar1);
+    pCVar2 = pCVar2 + 4;
+    iVar3 = iVar3 + -1;
+  } while (iVar3 != 0);
+  pCVar2 = param_1 + 0x4c;
+  iVar3 = iVar4;
+  do {
+    *(undefined4 *)pCVar2 = *(undefined4 *)(pCVar2 + iVar1);
+    pCVar2 = pCVar2 + 4;
+    iVar3 = iVar3 + -1;
+  } while (iVar3 != 0);
+  pCVar2 = param_1 + 0x5c;
+  iVar3 = iVar4;
+  do {
+    *(undefined4 *)pCVar2 = *(undefined4 *)(pCVar2 + iVar1);
+    pCVar2 = pCVar2 + 4;
+    iVar3 = iVar3 + -1;
+  } while (iVar3 != 0);
+  pCVar2 = param_1 + 0x6c;
+  iVar3 = iVar4;
+  do {
+    *(undefined4 *)pCVar2 = *(undefined4 *)(pCVar2 + iVar1);
+    pCVar2 = pCVar2 + 4;
+    iVar3 = iVar3 + -1;
+  } while (iVar3 != 0);
+  pCVar2 = param_1 + 0x7c;
+  iVar3 = 3;
+  do {
+    *(undefined4 *)pCVar2 = *(undefined4 *)(pCVar2 + iVar1);
+    pCVar2 = pCVar2 + 4;
+    iVar3 = iVar3 + -1;
+  } while (iVar3 != 0);
+  pCVar2 = param_1 + 0x88;
+  do {
+    *(undefined4 *)pCVar2 = *(undefined4 *)(pCVar2 + iVar1);
+    pCVar2 = pCVar2 + 4;
+    iVar4 = iVar4 + -1;
+  } while (iVar4 != 0);
+  CActiveFile__operator_(param_2 + 0x98);
+  *(undefined4 *)(param_1 + 0xa4) = *(undefined4 *)(param_2 + 0xa4);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004600cb 75 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=, CCombatWheel::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_004600cb(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  CActiveFile__operator_(param_2 + 0x3c);
+  CActiveFile__operator_(param_2 + 0x48);
+  CActiveFile__operator_(param_2 + 0x54);
+  CCombatWheel__operator_(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00460131 57 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00460131(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  CActiveFile__operator_(param_2 + 0x3c);
+  CActiveFile__operator_(param_2 + 0x48);
+  CActiveFile__operator_(param_2 + 0x54);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00460185 60 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00460185(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase *pCVar1;
+  int iVar2;
+  
+  CParentDefClassBase::operator=(param_1,param_2);
+  pCVar1 = param_1 + 0x3c;
+  iVar2 = 4;
+  do {
+    *(undefined4 *)pCVar1 = *(undefined4 *)(pCVar1 + ((int)param_2 - (int)param_1));
+    pCVar1 = pCVar1 + 4;
+    iVar2 = iVar2 + -1;
+  } while (iVar2 != 0);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004601ea 81 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_004601ea(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  CActiveFile__operator_(param_2 + 0x3c);
+  CActiveFile__operator_(param_2 + 0x48);
+  CActiveFile__operator_(param_2 + 0x54);
+  CActiveFile__operator_(param_2 + 0x60);
+  CActiveFile__operator_(param_2 + 0x6c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00460256 51 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00460256(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  CActiveFile__operator_(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004602a4 405 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_004602a4(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  CActiveFile__operator_(param_2 + 0x3c);
+  CActiveFile__operator_(param_2 + 0x48);
+  CActiveFile__operator_(param_2 + 0x54);
+  CActiveFile__operator_(param_2 + 0x60);
+  CActiveFile__operator_(param_2 + 0x6c);
+  CActiveFile__operator_(param_2 + 0x78);
+  CActiveFile__operator_(param_2 + 0x84);
+  CActiveFile__operator_(param_2 + 0x90);
+  CActiveFile__operator_(param_2 + 0x9c);
+  CActiveFile__operator_(param_2 + 0xa8);
+  CActiveFile__operator_(param_2 + 0xb4);
+  CActiveFile__operator_(param_2 + 0xc0);
+  *(undefined4 *)(param_1 + 0xcc) = *(undefined4 *)(param_2 + 0xcc);
+  *(undefined4 *)(param_1 + 0xd0) = *(undefined4 *)(param_2 + 0xd0);
+  *(undefined4 *)(param_1 + 0xd4) = *(undefined4 *)(param_2 + 0xd4);
+  *(undefined4 *)(param_1 + 0xd8) = *(undefined4 *)(param_2 + 0xd8);
+  CActiveFile__operator_(param_2 + 0xdc);
+  CActiveFile__operator_(param_2 + 0xe8);
+  CActiveFile__operator_(param_2 + 0xf4);
+  CActiveFile__operator_(param_2 + 0x100);
+  *(undefined4 *)(param_1 + 0x10c) = *(undefined4 *)(param_2 + 0x10c);
+  *(undefined4 *)(param_1 + 0x110) = *(undefined4 *)(param_2 + 0x110);
+  *(undefined4 *)(param_1 + 0x114) = *(undefined4 *)(param_2 + 0x114);
+  *(undefined4 *)(param_1 + 0x118) = *(undefined4 *)(param_2 + 0x118);
+  *(undefined4 *)(param_1 + 0x11c) = *(undefined4 *)(param_2 + 0x11c);
+  *(undefined4 *)(param_1 + 0x120) = *(undefined4 *)(param_2 + 0x120);
+  *(undefined4 *)(param_1 + 0x124) = *(undefined4 *)(param_2 + 0x124);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00460457 93 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00460457(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  CActiveFile__operator_(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  CActiveFile__operator_(param_2 + 0x58);
+  CCharString::operator=((CCharString *)(param_1 + 100),(CCharString *)(param_2 + 100));
+  CCharString::operator=((CCharString *)(param_1 + 0x68),(CCharString *)(param_2 + 0x68));
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004604cf 51 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_004604cf(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  CActiveFile__operator_(param_2 + 0x48);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0046051d 81 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_0046051d(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  CActiveFile__operator_(param_2 + 0x48);
+  CActiveFile__operator_(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00460589 51 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00460589(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004605e5 87 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_004605e5(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00460657 309 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00460657(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  CActiveFile__operator_(param_2 + 0x3c);
+  CActiveFile__operator_(param_2 + 0x48);
+  CActiveFile__operator_(param_2 + 0x54);
+  CActiveFile__operator_(param_2 + 0x60);
+  CActiveFile__operator_(param_2 + 0x6c);
+  CActiveFile__operator_(param_2 + 0x78);
+  *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_2 + 0x84);
+  CActiveFile__operator_(param_2 + 0x88);
+  CActiveFile__operator_(param_2 + 0x94);
+  CActiveFile__operator_(param_2 + 0xa0);
+  CActiveFile__operator_(param_2 + 0xac);
+  CActiveFile__operator_(param_2 + 0xb8);
+  CActiveFile__operator_(param_2 + 0xc4);
+  param_1[0xd0] = param_2[0xd0];
+  *(undefined4 *)(param_1 + 0xd4) = *(undefined4 *)(param_2 + 0xd4);
+  *(undefined4 *)(param_1 + 0xd8) = *(undefined4 *)(param_2 + 0xd8);
+  CActiveFile__operator_(param_2 + 0xdc);
+  CActiveFile__operator_(param_2 + 0xe8);
+  *(undefined4 *)(param_1 + 0xf4) = *(undefined4 *)(param_2 + 0xf4);
+  *(undefined4 *)(param_1 + 0xf8) = *(undefined4 *)(param_2 + 0xf8);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004608c6 309 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_004608c6(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  CActiveFile__operator_(param_2 + 0x3c);
+  CActiveFile__operator_(param_2 + 0x48);
+  CActiveFile__operator_(param_2 + 0x54);
+  CActiveFile__operator_(param_2 + 0x60);
+  CActiveFile__operator_(param_2 + 0x6c);
+  CActiveFile__operator_(param_2 + 0x78);
+  *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_2 + 0x84);
+  CActiveFile__operator_(param_2 + 0x88);
+  CActiveFile__operator_(param_2 + 0x94);
+  CActiveFile__operator_(param_2 + 0xa0);
+  CActiveFile__operator_(param_2 + 0xac);
+  CActiveFile__operator_(param_2 + 0xb8);
+  CActiveFile__operator_(param_2 + 0xc4);
+  param_1[0xd0] = param_2[0xd0];
+  *(undefined4 *)(param_1 + 0xd4) = *(undefined4 *)(param_2 + 0xd4);
+  *(undefined4 *)(param_1 + 0xd8) = *(undefined4 *)(param_2 + 0xd8);
+  CActiveFile__operator_(param_2 + 0xdc);
+  CActiveFile__operator_(param_2 + 0xe8);
+  *(undefined4 *)(param_1 + 0xf4) = *(undefined4 *)(param_2 + 0xf4);
+  *(undefined4 *)(param_1 + 0xf8) = *(undefined4 *)(param_2 + 0xf8);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00460a19 45 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00460a19(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  CActiveFile__operator_(param_2 + 0x44);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00460a61 105 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile_AssignUndefinedVector8_2, CActiveFile::CopyAssign_84, CActiveFile::CopyAssign_16, CActiveFile::CopyAssign_12, CActiveFile_AssignUndefinedVector20
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00460a61(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  CActiveFile_AssignUndefinedVector20(param_2 + 0x3c);
+  CActiveFile_AssignUndefinedVector8_2(param_2 + 0x48);
+  CActiveFile__CopyAssign_16(param_2 + 0x54);
+  CActiveFile__CopyAssign_12(param_2 + 0x60);
+  CActiveFile__CopyAssign_84(param_2 + 0x6c);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  *(undefined4 *)(param_1 + 0x7c) = *(undefined4 *)(param_2 + 0x7c);
+  *(undefined4 *)(param_1 + 0x80) = *(undefined4 *)(param_2 + 0x80);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00461344 87 0
+@@CALLERS 
+@@CALLEES operator=, CTCCarryable_CopyConstructor, CTCCarryable::CopyAssign
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00461344(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  CTCCarryable__CopyAssign(param_2 + 0x3c);
+  CTCCarryable_CopyConstructor(param_2 + 0x48);
+  CTCCarryable_CopyConstructor(param_2 + 0x54);
+  param_1[0x60] = param_2[0x60];
+  param_1[0x61] = param_2[0x61];
+  param_1[0x62] = param_2[0x62];
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00461acd 143 0
+@@CALLERS 
+@@CALLEES operator=, ShareData
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00461acd(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  CCountedPointer<NUISystem::CAction>::ShareData
+            ((CCountedPointer<NUISystem::CAction> *)(param_1 + 0x3c),*(CAction **)(param_2 + 0x3c),
+             *(CCPPointerInfo **)(param_2 + 0x40));
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  param_1[0x6c] = param_2[0x6c];
+  param_1[0x6d] = param_2[0x6d];
+  param_1[0x6e] = param_2[0x6e];
+  param_1[0x6f] = param_2[0x6f];
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  param_1[0x74] = param_2[0x74];
+  param_1[0x75] = param_2[0x75];
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00461d50 81 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::CopyAssign_4
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00461d50(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  CActiveFile__CopyAssign_4(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  param_1[100] = param_2[100];
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00461ed8 63 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00461ed8(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  param_1[0x48] = param_2[0x48];
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00461f7c 621 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=, CTCCarryable_CloneTree, CTCCarryable_assign_copy
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00461f7c(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  CTCCarryable_assign_copy(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  CTCCarryable_assign_copy(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  CTCCarryable_assign_copy(param_2 + 0x78);
+  *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_2 + 0x84);
+  *(undefined4 *)(param_1 + 0x88) = *(undefined4 *)(param_2 + 0x88);
+  *(undefined4 *)(param_1 + 0x8c) = *(undefined4 *)(param_2 + 0x8c);
+  *(undefined4 *)(param_1 + 0x90) = *(undefined4 *)(param_2 + 0x90);
+  *(undefined4 *)(param_1 + 0x94) = *(undefined4 *)(param_2 + 0x94);
+  *(undefined4 *)(param_1 + 0x98) = *(undefined4 *)(param_2 + 0x98);
+  CTCCarryable_assign_copy(param_2 + 0x9c);
+  *(undefined4 *)(param_1 + 0xa8) = *(undefined4 *)(param_2 + 0xa8);
+  *(undefined4 *)(param_1 + 0xac) = *(undefined4 *)(param_2 + 0xac);
+  CTCCarryable_assign_copy(param_2 + 0xb0);
+  *(undefined4 *)(param_1 + 0xbc) = *(undefined4 *)(param_2 + 0xbc);
+  *(undefined4 *)(param_1 + 0xc0) = *(undefined4 *)(param_2 + 0xc0);
+  CTCCarryable_assign_copy(param_2 + 0xc4);
+  param_1[0xd0] = param_2[0xd0];
+  *(undefined4 *)(param_1 + 0xd4) = *(undefined4 *)(param_2 + 0xd4);
+  param_1[0xd8] = param_2[0xd8];
+  *(undefined4 *)(param_1 + 0xdc) = *(undefined4 *)(param_2 + 0xdc);
+  param_1[0xe0] = param_2[0xe0];
+  param_1[0xe1] = param_2[0xe1];
+  param_1[0xe2] = param_2[0xe2];
+  *(undefined4 *)(param_1 + 0xe4) = *(undefined4 *)(param_2 + 0xe4);
+  *(undefined4 *)(param_1 + 0xe8) = *(undefined4 *)(param_2 + 0xe8);
+  *(undefined4 *)(param_1 + 0xec) = *(undefined4 *)(param_2 + 0xec);
+  *(undefined4 *)(param_1 + 0xf0) = *(undefined4 *)(param_2 + 0xf0);
+  *(undefined4 *)(param_1 + 0xf4) = *(undefined4 *)(param_2 + 0xf4);
+  CTCCarryable_assign_copy(param_2 + 0xf8);
+  *(undefined4 *)(param_1 + 0x104) = *(undefined4 *)(param_2 + 0x104);
+  *(undefined4 *)(param_1 + 0x108) = *(undefined4 *)(param_2 + 0x108);
+  *(undefined4 *)(param_1 + 0x10c) = *(undefined4 *)(param_2 + 0x10c);
+  *(undefined4 *)(param_1 + 0x110) = *(undefined4 *)(param_2 + 0x110);
+  *(undefined4 *)(param_1 + 0x114) = *(undefined4 *)(param_2 + 0x114);
+  *(undefined4 *)(param_1 + 0x118) = *(undefined4 *)(param_2 + 0x118);
+  CActiveFile__operator_(param_2 + 0x11c);
+  CActiveFile__operator_(param_2 + 0x128);
+  param_1[0x134] = param_2[0x134];
+  param_1[0x135] = param_2[0x135];
+  param_1[0x136] = param_2[0x136];
+  *(undefined4 *)(param_1 + 0x138) = *(undefined4 *)(param_2 + 0x138);
+  CTCCarryable_CloneTree(param_2 + 0x13c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00462451 117 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::CopyAssign_4, CTCCarryable_CloneTree
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00462451(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  param_1[0x48] = param_2[0x48];
+  param_1[0x49] = param_2[0x49];
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  CActiveFile__CopyAssign_4(param_2 + 0x50);
+  param_1[0x5c] = param_2[0x5c];
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  param_1[100] = param_2[100];
+  param_1[0x65] = param_2[0x65];
+  CTCCarryable_CloneTree(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004625fd 87 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_004625fd(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  param_1[0x50] = param_2[0x50];
+  param_1[0x51] = param_2[0x51];
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  param_1[0x58] = param_2[0x58];
+  param_1[0x59] = param_2[0x59];
+  param_1[0x5a] = param_2[0x5a];
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0046267d 351 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_0046267d(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  param_1[0x50] = param_2[0x50];
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  param_1[0x5c] = param_2[0x5c];
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  *(undefined4 *)(param_1 + 0x7c) = *(undefined4 *)(param_2 + 0x7c);
+  param_1[0x80] = param_2[0x80];
+  param_1[0x81] = param_2[0x81];
+  param_1[0x82] = param_2[0x82];
+  *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_2 + 0x84);
+  param_1[0x88] = param_2[0x88];
+  param_1[0x89] = param_2[0x89];
+  param_1[0x8a] = param_2[0x8a];
+  *(undefined4 *)(param_1 + 0x8c) = *(undefined4 *)(param_2 + 0x8c);
+  param_1[0x90] = param_2[0x90];
+  param_1[0x91] = param_2[0x91];
+  *(undefined4 *)(param_1 + 0x94) = *(undefined4 *)(param_2 + 0x94);
+  *(undefined4 *)(param_1 + 0x98) = *(undefined4 *)(param_2 + 0x98);
+  *(undefined4 *)(param_1 + 0x9c) = *(undefined4 *)(param_2 + 0x9c);
+  *(undefined4 *)(param_1 + 0xa0) = *(undefined4 *)(param_2 + 0xa0);
+  *(undefined4 *)(param_1 + 0xa4) = *(undefined4 *)(param_2 + 0xa4);
+  param_1[0xa8] = param_2[0xa8];
+  param_1[0xa9] = param_2[0xa9];
+  param_1[0xaa] = param_2[0xaa];
+  param_1[0xab] = param_2[0xab];
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004628d0 117 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_004628d0(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 0046296e 39 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_0046296e(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004629fb 238 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_004629fb(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase *pCVar1;
+  
+  CParentDefClassBase::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+  *(undefined4 *)(param_1 + 0x40) = *(undefined4 *)(param_2 + 0x40);
+  *(undefined4 *)(param_1 + 0x44) = *(undefined4 *)(param_2 + 0x44);
+  *(undefined4 *)(param_1 + 0x48) = *(undefined4 *)(param_2 + 0x48);
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  *(undefined4 *)(param_1 + 0x54) = *(undefined4 *)(param_2 + 0x54);
+  *(undefined4 *)(param_1 + 0x58) = *(undefined4 *)(param_2 + 0x58);
+  *(undefined4 *)(param_1 + 0x5c) = *(undefined4 *)(param_2 + 0x5c);
+  *(undefined4 *)(param_1 + 0x60) = *(undefined4 *)(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(param_2 + 100);
+  *(undefined4 *)(param_1 + 0x68) = *(undefined4 *)(param_2 + 0x68);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  *(undefined4 *)(param_1 + 0x7c) = *(undefined4 *)(param_2 + 0x7c);
+  *(undefined4 *)(param_1 + 0x80) = *(undefined4 *)(param_2 + 0x80);
+  *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_2 + 0x84);
+  *(undefined4 *)(param_1 + 0x88) = *(undefined4 *)(param_2 + 0x88);
+  *(undefined4 *)(param_1 + 0x8c) = *(undefined4 *)(param_2 + 0x8c);
+  *(undefined4 *)(param_1 + 0x90) = *(undefined4 *)(param_2 + 0x90);
+  *(undefined4 *)(param_1 + 0x94) = *(undefined4 *)(param_2 + 0x94);
+  *(undefined4 *)(param_1 + 0x98) = *(undefined4 *)(param_2 + 0x98);
+  *(undefined4 *)(param_1 + 0x9c) = *(undefined4 *)(param_2 + 0x9c);
+  pCVar1 = param_1 + 0xa0;
+  *pCVar1 = (CParentDefClassBase)((byte)*pCVar1 ^ ((byte)param_2[0xa0] ^ (byte)*pCVar1) & 1);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00462b15 57 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::CopyAssign_12, CActiveFile::operator=, CActiveFile_CopyAssign
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00462b15(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  CActiveFile__CopyAssign_12(param_2 + 0x3c);
+  CActiveFile__operator_(param_2 + 0x48);
+  CActiveFile_CopyAssign(param_2 + 0x54);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00462e2d 75 0
+@@CALLERS 
+@@CALLEES operator=, CActiveFile::operator=, CSimpleMemoryPool_AssignFrom
+@@STRINGS 
+@@DECOMP
+
+CParentDefClassBase * __thiscall
+FUN_00462e2d(CParentDefClassBase *param_1,CParentDefClassBase *param_2)
+
+{
+  CParentDefClassBase::operator=(param_1,param_2);
+  CActiveFile__operator_(param_2 + 0x3c);
+  CActiveFile__operator_(param_2 + 0x48);
+  CActiveFile__operator_(param_2 + 0x54);
+  CSimpleMemoryPool_AssignFrom(param_2 + 0x60);
+  *(undefined4 *)(param_1 + 0x6c) = *(undefined4 *)(param_2 + 0x6c);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 00463ba2 57 0
+@@CALLERS 
+@@CALLEES operator=, CSoundMap
+@@STRINGS 
+@@DECOMP
+
+CThingBuildingDef * __thiscall FUN_00463ba2(CThingBuildingDef *param_1,CThingBuildingDef *param_2)
+
+{
+  CThingBuildingDef::operator=(param_1,param_2);
+  CSoundMap::CSoundMap((CSoundMap *)(param_1 + 0x28),(CSoundMap *)(param_2 + 0x28));
+  CCharString::operator=((CCharString *)(param_1 + 0x48),(CCharString *)(param_2 + 0x48));
+  *(undefined4 *)(param_1 + 0x4c) = *(undefined4 *)(param_2 + 0x4c);
+  *(undefined4 *)(param_1 + 0x50) = *(undefined4 *)(param_2 + 0x50);
+  return param_1;
+}
+
+
+@@ENDFUNC
+@@@FUNC 004642fa 208 0
+@@CALLERS 
+@@CALLEES operator=
+@@STRINGS 
+@@DECOMP
+
+CThingBaseDef * __thiscall FUN_004642fa(CThingBaseDef *param_1,CThingBaseDef *param_2)
+
+{
+  CThingBaseDef CVar1;
+  
+  CThingBaseDef::operator=(param_1,param_2);
+  *(undefined4 *)(param_1 + 0x70) = *(undefined4 *)(param_2 + 0x70);
+  *(undefined4 *)(param_1 + 0x74) = *(undefined4 *)(param_2 + 0x74);
+  *(undefined4 *)(param_1 + 0x78) = *(undefined4 *)(param_2 + 0x78);
+  *(undefined2 *)(param_1 + 0x7c) = *(undefined2 *)(param_2 + 0x7c);
+  *(undefined4 *)(param_1 + 0x80) = *(undefined4 *)(param_2 + 0x80);
+  *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_2 + 0x84);
+  *(undefined4 *)(param_1 + 0x88) = *(undefined4 *)(param_2 + 0x88);
+  *(undefined4 *)(param_1 + 0x8c) = *(undefined4 *)(param_2 + 0x8c);
+  *(undefined4 *)(param_1 + 0x90) = *(undefined4 *)(param_2 + 0x90);
+  *(undefined4 *)(param_1 + 0x94) = *(undefined4 *)(param_2 + 0x94);
+  param_1[0x98] =
+       (CThingBaseDef)((byte)param_1[0x98] ^ ((byte)param_1[0x98] ^ (byte)param_2[0x98]) & 1);
+  CVar1 = (CThingBaseDef)(((byte)param_2[0x98] ^ (byte)param_1[0x98]) & 2 ^ (byte)param_1[0x98]);
+  param_1[0x98] = CVar1;
+  CVar1 = (CThingBaseDef)(((byte)param_2[0x98] ^ (byte)CVar1) & 4 ^ (byte)CVar1);
+  param_1[0x98] = CVar1;
+  CVar1 = (CThingBaseDef)(((byte)param_2[0x98] ^ (byte)CVar1) & 8 ^ (byte)CVar1);
+  param_1[0x98] = CVar1;
+  param_1[0x98] = (CThingBaseDef)(((byte)param_2[0x98] ^ (byte)CVar1) & 0x10 ^ (byte)CVar1);
+  return param_1;
+}
+
+
+@@ENDFUNC
