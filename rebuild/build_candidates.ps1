@@ -7976,6 +7976,1791 @@ $catalog = @(
         TestSource = 'CEngineLightingManager_UpdateShadowScene_00452d4d_test.cpp'
         PassPattern = 'CEngineLightingManager_00452d4d_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0044f700'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044f700.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0044f700_test.cpp'
+        PassPattern = 'DestVal_0044f700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004509f8'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004509f8.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004509f8_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_004509f8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450a58'
+        Module = 'vector<CIntelligentPointer<CThing_const_> '
+        Source = 'vectorCIntelligentPointerCThingconst_Destroy_00450a58.cpp'
+        TestSource = 'vectorCIntelligentPointerCThingconst_Destroy_00450a58_test.cpp'
+        PassPattern = 'vecCIP_00450a58_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450a74'
+        Module = 'vector<CIntelligentPointer<CThing_const_>'
+        Source = 'vectorCIntelligentPointerCThingconst_Destroy_00450a74.cpp'
+        TestSource = 'vectorCIntelligentPointerCThingconst_Destroy_00450a74_test.cpp'
+        PassPattern = 'vector_00450a74_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450ab2'
+        Module = 'vector<CIntelligentPointer<CThing_const_> '
+        Source = 'vectorCIntelligentPointerCThingconst_Destroy_00450ab2.cpp'
+        TestSource = 'vectorCIntelligentPointerCThingconst_Destroy_00450ab2_test.cpp'
+        PassPattern = 'vecdestroy_00450ab2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450ace'
+        Module = 'vector<CIntelligentPointer<CThing_const_> '
+        Source = 'vectorCIntelligentPointerCThingconst_Destroy_00450ace.cpp'
+        TestSource = 'vectorCIntelligentPointerCThingconst_Destroy_00450ace_test.cpp'
+        PassPattern = 'vector_CIntelligentPointer_00450ace_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450be3'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00450be3.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00450be3_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00450be3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c1f6'
+        Module = 'CCarrySlotDef'
+        Source = 'CCarrySlotDef_GetSizeofClass_0044c1f6.cpp'
+        TestSource = 'CCarrySlotDef_GetSizeofClass_0044c1f6_test.cpp'
+        PassPattern = 'CCarrySlotDef_0044c1f6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c2e2'
+        Module = 'CHeroMarriageDef'
+        Source = 'CHeroMarriageDef_GetSizeofClass_0044c2e2.cpp'
+        TestSource = 'CHeroMarriageDef_GetSizeofClass_0044c2e2_test.cpp'
+        PassPattern = 'CHeroMarriageDef_0044c2e2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004509d9'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004509d9.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004509d9_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_004509d9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f6ba'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f6ba.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f6ba_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044f6ba_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044faba'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044faba.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044faba_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044faba_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450b79'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00450b79.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00450b79_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00450b79_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450855'
+        Module = 'CGuiControlTreePane'
+        Source = 'CGuiControlTreePane_SortTreeRecursively_00450855.cpp'
+        TestSource = 'CGuiControlTreePane_SortTreeRecursively_00450855_test.cpp'
+        PassPattern = 'CGuiControlTreePane_00450855_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004516e7'
+        Module = 'CTCEnemy'
+        Source = 'CTCEnemy_SetFaction_004516e7.cpp'
+        TestSource = 'CTCEnemy_SetFaction_004516e7_test.cpp'
+        PassPattern = 'CTCEnemy_004516e7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450bba'
+        Module = '_Dest_val<std::allocator<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_>,std'
+        Source = 'DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_00450bba.cpp'
+        TestSource = 'DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_00450bba_test.cpp'
+        PassPattern = 'Destval_00450bba_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450e92'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_00450e92.cpp'
+        TestSource = 'CTCCarryable_OnKill_00450e92_test.cpp'
+        PassPattern = 'CTCCarryable_00450e92_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450edf'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_00450edf.cpp'
+        TestSource = 'CTCCarryable_OnKill_00450edf_test.cpp'
+        PassPattern = 'CTCCarryable_00450edf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450f50'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_00450f50.cpp'
+        TestSource = 'CTCCarryable_OnKill_00450f50_test.cpp'
+        PassPattern = 'CTCCarryable_00450f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450fac'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_00450fac.cpp'
+        TestSource = 'CTCCarryable_OnKill_00450fac_test.cpp'
+        PassPattern = 'CTCCarryable_00450fac_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450ff9'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_00450ff9.cpp'
+        TestSource = 'CTCCarryable_OnKill_00450ff9_test.cpp'
+        PassPattern = 'CTCCarryable_00450ff9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451046'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_00451046.cpp'
+        TestSource = 'CTCCarryable_OnKill_00451046_test.cpp'
+        PassPattern = 'CTCCarryable_00451046_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004510bf'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_004510bf.cpp'
+        TestSource = 'CTCCarryable_OnKill_004510bf_test.cpp'
+        PassPattern = 'CTCCarryable_004510bf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045110c'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_0045110c.cpp'
+        TestSource = 'CTCCarryable_OnKill_0045110c_test.cpp'
+        PassPattern = 'CTCCarryable_0045110c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451159'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_00451159.cpp'
+        TestSource = 'CTCCarryable_OnKill_00451159_test.cpp'
+        PassPattern = 'CTCCarryable_00451159_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004511a6'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_004511a6.cpp'
+        TestSource = 'CTCCarryable_OnKill_004511a6_test.cpp'
+        PassPattern = 'CTCCarryable_004511a6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004511f3'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_004511f3.cpp'
+        TestSource = 'CTCCarryable_OnKill_004511f3_test.cpp'
+        PassPattern = 'CTCCarryable_004511f3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451240'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_00451240.cpp'
+        TestSource = 'CTCCarryable_OnKill_00451240_test.cpp'
+        PassPattern = 'CTCCarryable_00451240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045128d'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_0045128d.cpp'
+        TestSource = 'CTCCarryable_OnKill_0045128d_test.cpp'
+        PassPattern = 'CTCCarryable_0045128d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004512da'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_004512da.cpp'
+        TestSource = 'CTCCarryable_OnKill_004512da_test.cpp'
+        PassPattern = 'CTCCarryable_004512da_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f3b2'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044f3b2.cpp'
+        TestSource = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0044f3b2_test.cpp'
+        PassPattern = 'DestVal_0044f3b2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004506c0'
+        Module = 'LTextTreeWalkThrough'
+        Source = 'LTextTreeWalkThrough_BuildTreeArray_004506c0.cpp'
+        TestSource = 'LTextTreeWalkThrough_BuildTreeArray_004506c0_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_004506c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004506ed'
+        Module = 'LTextTreeWalkThrough'
+        Source = 'LTextTreeWalkThrough_BuildTreeArray_004506ed.cpp'
+        TestSource = 'LTextTreeWalkThrough_BuildTreeArray_004506ed_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_004506ed_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045071a'
+        Module = 'LTextTreeWalkThrough'
+        Source = 'LTextTreeWalkThrough_BuildTreeArray_0045071a.cpp'
+        TestSource = 'LTextTreeWalkThrough_BuildTreeArray_0045071a_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_0045071a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450747'
+        Module = 'LTextTreeWalkThrough'
+        Source = 'LTextTreeWalkThrough_BuildTreeArray_00450747.cpp'
+        TestSource = 'LTextTreeWalkThrough_BuildTreeArray_00450747_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_00450747_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450774'
+        Module = 'LTextTreeWalkThrough'
+        Source = 'LTextTreeWalkThrough_BuildTreeArray_00450774.cpp'
+        TestSource = 'LTextTreeWalkThrough_BuildTreeArray_00450774_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_00450774_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004507a1'
+        Module = 'LTextTreeWalkThrough'
+        Source = 'LTextTreeWalkThrough_BuildTreeArray_004507a1.cpp'
+        TestSource = 'LTextTreeWalkThrough_BuildTreeArray_004507a1_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_004507a1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004507ce'
+        Module = 'LTextTreeWalkThrough'
+        Source = 'LTextTreeWalkThrough_BuildTreeArray_004507ce.cpp'
+        TestSource = 'LTextTreeWalkThrough_BuildTreeArray_004507ce_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_004507ce_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004507fb'
+        Module = 'LTextTreeWalkThrough'
+        Source = 'LTextTreeWalkThrough_BuildTreeArray_004507fb.cpp'
+        TestSource = 'LTextTreeWalkThrough_BuildTreeArray_004507fb_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_004507fb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450828'
+        Module = 'LTextTreeWalkThrough'
+        Source = 'LTextTreeWalkThrough_BuildTreeArray_00450828.cpp'
+        TestSource = 'LTextTreeWalkThrough_BuildTreeArray_00450828_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_00450828_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045087c'
+        Module = 'LTextTreeWalkThrough'
+        Source = 'LTextTreeWalkThrough_BuildTreeArray_0045087c.cpp'
+        TestSource = 'LTextTreeWalkThrough_BuildTreeArray_0045087c_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_0045087c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450903'
+        Module = 'LTextTreeWalkThrough'
+        Source = 'LTextTreeWalkThrough_BuildTreeArray_00450903.cpp'
+        TestSource = 'LTextTreeWalkThrough_BuildTreeArray_00450903_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_00450903_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450930'
+        Module = 'LTextTreeWalkThrough'
+        Source = 'LTextTreeWalkThrough_BuildTreeArray_00450930.cpp'
+        TestSource = 'LTextTreeWalkThrough_BuildTreeArray_00450930_test.cpp'
+        PassPattern = 'LTextTreeWalkThrough_00450930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045095d'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = 'CEngineInternalPrimitiveMeshBase_GetMeshEffect_0045095d.cpp'
+        TestSource = 'CEngineInternalPrimitiveMeshBase_GetMeshEffect_0045095d_test.cpp'
+        PassPattern = 'CEngineInternalPrimitiveMeshBase_0045095d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f71b'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f71b.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f71b_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044f71b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f753'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f753.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f753_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044f753_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f90f'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f90f.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f90f_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044f90f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044fa19'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fa19.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fa19_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044fa19_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f7c3'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f7c3.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f7c3_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044f7c3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00450142'
+        Module = 'CCountedPointer<std::vector<CCharString'
+        Source = 'CCountedPointerstdvectorCCharString_Reset_00450142.cpp'
+        TestSource = 'CCountedPointerstdvectorCCharString_Reset_00450142_test.cpp'
+        PassPattern = 'CCountedPointer_00450142_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c41e'
+        Module = 'CCombatAbilityData'
+        Source = 'CCombatAbilityData_TransferBinaryOut_0044c41e.cpp'
+        TestSource = 'CCombatAbilityData_TransferBinaryOut_0044c41e_test.cpp'
+        PassPattern = 'CCombatAbilityData_0044c41e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044fd16'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fd16.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fd16_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044fd16_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044fd55'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fd55.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fd55_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044fd55_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044fd94'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fd94.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fd94_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044fd94_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044f65a'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f65a.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044f65a_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044f65a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044fe5f'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fe5f.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fe5f_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044fe5f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044fea5'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fea5.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fea5_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044fea5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044feeb'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044feeb.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044feeb_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044feeb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044ff31'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044ff31.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044ff31_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044ff31_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044ff77'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044ff77.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044ff77_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044ff77_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044ffbd'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044ffbd.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044ffbd_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044ffbd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044be30'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044be30.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044be30_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044be30_TEST_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044fe12'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fe12.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0044fe12_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0044fe12_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004525a3'
+        Module = 'CSpecialAbilitiesForcePushDataDef'
+        Source = 'CSpecialAbilitiesForcePushDataDef_Transfer_004525a3.cpp'
+        TestSource = 'CSpecialAbilitiesForcePushDataDef_Transfer_004525a3_test.cpp'
+        PassPattern = 'CSpecialAbilitiesForcePushDataDef_004525a3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004518a0'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_004518a0.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_004518a0_test.cpp'
+        PassPattern = 'CActiveFile_004518a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451a44'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_00451a44.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_00451a44_test.cpp'
+        PassPattern = 'CActiveFile_00451a44_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451ac6'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_00451ac6.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_00451ac6_test.cpp'
+        PassPattern = 'CActiveFile_00451ac6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004543af'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_004543af.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_004543af_test.cpp'
+        PassPattern = 'CActiveFile_004543af_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453aae'
+        Module = 'CSpecialAbilitiesDrainLifeDataDef'
+        Source = 'CSpecialAbilitiesDrainLifeDataDef_Copy_00453aae.cpp'
+        TestSource = 'CSpecialAbilitiesDrainLifeDataDef_Copy_00453aae_test.cpp'
+        PassPattern = 'CSpecialAbilitiesDrainLifeDataDef_00453aae_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453dc7'
+        Module = 'CHairCardDef'
+        Source = 'CHairCardDef_Copy_00453dc7.cpp'
+        TestSource = 'CHairCardDef_Copy_00453dc7_test.cpp'
+        PassPattern = 'CHairCardDef_00453dc7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453e51'
+        Module = 'CAIStateGroup_HoverWanderAroundThing'
+        Source = 'CAIStateGroupHoverWanderAroundThing_CAIStateGroupHoverWanderAroundThing_00453e51.cpp'
+        TestSource = 'CAIStateGroupHoverWanderAroundThing_CAIStateGroupHoverWanderAroundThing_00453e51_test.cpp'
+        PassPattern = 'CAIStateGroup_HoverWanderAroundThing_00453e51_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045406a'
+        Module = 'CDragonActionHoverDef'
+        Source = 'CDragonActionHoverDef_Copy_0045406a.cpp'
+        TestSource = 'CDragonActionHoverDef_Copy_0045406a_test.cpp'
+        PassPattern = 'CDragonActionHoverDef_0045406a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004540d3'
+        Module = 'CAbilityDef'
+        Source = 'CAbilityDef_Copy_004540d3.cpp'
+        TestSource = 'CAbilityDef_Copy_004540d3_test.cpp'
+        PassPattern = 'CAbilityDef_004540d3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453af9'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00453af9.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00453af9_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00453af9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453ba8'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00453ba8.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00453ba8_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00453ba8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004545ee'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004545ee.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004545ee_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_004545ee_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004534a6'
+        Module = 'CDisplayManager'
+        Source = 'CDisplayManager_CopyBackBufferToTexture_004534a6.cpp'
+        TestSource = 'CDisplayManager_CopyBackBufferToTexture_004534a6_test.cpp'
+        PassPattern = 'CDisplayManager_004534a6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453536'
+        Module = 'CDisplayManager'
+        Source = 'CDisplayManager_CopyBackBufferToTexture_00453536.cpp'
+        TestSource = 'CDisplayManager_CopyBackBufferToTexture_00453536_test.cpp'
+        PassPattern = 'CDisplayManager_00453536_CopyBackBufferToTexture_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451c83'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00451c83.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00451c83_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00451c83_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453bc4'
+        Module = 'CTCInventoryItem'
+        Source = 'CTCInventoryItem_OnDie_00453bc4.cpp'
+        TestSource = 'CTCInventoryItem_OnDie_00453bc4_test.cpp'
+        PassPattern = 'CTCInventoryItem_00453bc4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453ed2'
+        Module = 'CCombatAbilityFlourishCounterAttackDef'
+        Source = 'CCombatAbilityFlourishCounterAttackDef_Copy_00453ed2.cpp'
+        TestSource = 'CCombatAbilityFlourishCounterAttackDef_Copy_00453ed2_test.cpp'
+        PassPattern = 'CCombatAbilityFlourishCounterAttackDef_00453ed2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453f3f'
+        Module = 'CCombatAbilityGetHitCounterAttackDef'
+        Source = 'CCombatAbilityGetHitCounterAttackDef_Copy_00453f3f.cpp'
+        TestSource = 'CCombatAbilityGetHitCounterAttackDef_Copy_00453f3f_test.cpp'
+        PassPattern = 'CCombatAbilityGetHitCounterAttackDef_00453f3f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454248'
+        Module = 'CGuildMasterDef'
+        Source = 'CGuildMasterDef_Copy_00454248.cpp'
+        TestSource = 'CGuildMasterDef_Copy_00454248_test.cpp'
+        PassPattern = 'CGuildMasterDef_00454248_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045460a'
+        Module = 'CTCInventoryItem'
+        Source = 'CTCInventoryItem_OnDie_0045460a.cpp'
+        TestSource = 'CTCInventoryItem_OnDie_0045460a_test.cpp'
+        PassPattern = 'CTCInventoryItem_0045460a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454690'
+        Module = 'CTextureReplacementDef'
+        Source = 'CTextureReplacementDef_GetSizeofClass_00454690.cpp'
+        TestSource = 'CTextureReplacementDef_GetSizeofClass_00454690_test.cpp'
+        PassPattern = 'CTextureReplacementDef_00454690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452b93'
+        Module = 'CCombatAbilityStrafeDef'
+        Source = 'CCombatAbilityStrafeDef_TransferCCombatAbilityStrafeDefUAEXAAVCPersistCo_00452b93.cpp'
+        TestSource = 'CCombatAbilityStrafeDef_TransferCCombatAbilityStrafeDefUAEXAAVCPersistCo_00452b93_test.cpp'
+        PassPattern = 'CCombatAbilityStrafeDef_00452b93_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004530bb'
+        Module = 'CGuildMasterDef'
+        Source = 'CGuildMasterDef_TransferCGuildMasterDefUAEXAAVCPersistContextZ_004530bb.cpp'
+        TestSource = 'CGuildMasterDef_TransferCGuildMasterDefUAEXAAVCPersistContextZ_004530bb_test.cpp'
+        PassPattern = 'CGuildMasterDef_004530bb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004538eb'
+        Module = 'CApprenticeSpeedTest'
+        Source = 'CApprenticeSpeedTest_OnPersist_004538eb.cpp'
+        TestSource = 'CApprenticeSpeedTest_OnPersist_004538eb_test.cpp'
+        PassPattern = 'CApprenticeSpeedTest_004538eb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045322c'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_0045322c.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_0045322c_test.cpp'
+        PassPattern = 'CActiveFile_0045322c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004532c3'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_004532c3.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_004532c3_test.cpp'
+        PassPattern = 'CActiveFile_004532c3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004532e6'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_004532e6.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_004532e6_test.cpp'
+        PassPattern = 'CActiveFile_004532e6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453327'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_00453327.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_00453327_test.cpp'
+        PassPattern = 'CActiveFile_00453327_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045334a'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_0045334a.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_0045334a_test.cpp'
+        PassPattern = 'CActiveFile_0045334a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004533e3'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_004533e3.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_004533e3_test.cpp'
+        PassPattern = 'CActiveFile_004533e3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453406'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_00453406.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_00453406_test.cpp'
+        PassPattern = 'CActiveFile_00453406_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453483'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_00453483.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_00453483_test.cpp'
+        PassPattern = 'CActiveFile_00453483_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004545ca'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_004545ca.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_004545ca_test.cpp'
+        PassPattern = 'CActiveFile_004545ca_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453842'
+        Module = 'CSmashableDef'
+        Source = 'CSmashableDef_Copy_00453842.cpp'
+        TestSource = 'CSmashableDef_Copy_00453842_test.cpp'
+        PassPattern = 'CSmashableDef_00453842_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004537e9'
+        Module = 'CBalverineBattleDef'
+        Source = 'CBalverineBattleDef_operator_004537e9.cpp'
+        TestSource = 'CBalverineBattleDef_operator_004537e9_test.cpp'
+        PassPattern = 'CBalverineBattleDef_004537e9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453ef1'
+        Module = 'CCombatAbilityMeleeAttackData'
+        Source = 'CCombatAbilityMeleeAttackData_operator_00453ef1.cpp'
+        TestSource = 'CCombatAbilityMeleeAttackData_operator_00453ef1_test.cpp'
+        PassPattern = 'CCombatAbilityMeleeAttackData_00453ef1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453f18'
+        Module = 'CCombatAbilityData'
+        Source = 'CCombatAbilityData_operator_00453f18.cpp'
+        TestSource = 'CCombatAbilityData_operator_00453f18_test.cpp'
+        PassPattern = 'CCombatAbilityData_00453f18_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453607'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_00453607.cpp'
+        TestSource = 'CTCCarryable_OnKill_00453607_test.cpp'
+        PassPattern = 'CTCCarryable_00453607_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453630'
+        Module = 'CTCCarryable'
+        Source = 'CTCCarryable_OnKill_00453630.cpp'
+        TestSource = 'CTCCarryable_OnKill_00453630_test.cpp'
+        PassPattern = 'CTCCarryable_00453630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454647'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00454647.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00454647_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00454647_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045470e'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045470e.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045470e_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0045470e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452184'
+        Module = 'CTCNoiseDef'
+        Source = 'CTCNoiseDef_TransferCTCNoiseDefUAEXAAVCPersistContextZ_00452184.cpp'
+        TestSource = 'CTCNoiseDef_TransferCTCNoiseDefUAEXAAVCPersistContextZ_00452184_test.cpp'
+        PassPattern = 'CTCNoiseDef_00452184_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004522c6'
+        Module = 'CSmashableDef'
+        Source = 'CSmashableDef_TransferCSmashableDefUAEXAAVCPersistContextZ_004522c6.cpp'
+        TestSource = 'CSmashableDef_TransferCSmashableDefUAEXAAVCPersistContextZ_004522c6_test.cpp'
+        PassPattern = 'CSmashableDef_004522c6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452bb4'
+        Module = 'CCombatAbilityUseProjectileWeaponDef'
+        Source = 'CCombatAbilityUseProjectileWeaponDef_TransferCCombatAbilityUseProjectileWeaponDefUAEX_00452bb4.cpp'
+        TestSource = 'CCombatAbilityUseProjectileWeaponDef_TransferCCombatAbilityUseProjectileWeaponDefUAEX_00452bb4_test.cpp'
+        PassPattern = 'CCombatAbilityUseProjectileWeaponDef_00452bb4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00453b15'
+        Module = 'CCompressedMemoryDataInputStream'
+        Source = 'CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_00453b15.cpp'
+        TestSource = 'CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_00453b15_test.cpp'
+        PassPattern = 'CCompressedMemoryDataInputStream_00453b15_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004518e1'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_004518e1.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_004518e1_test.cpp'
+        PassPattern = 'CActiveFile_004518e1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045228f'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_0045228f.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_0045228f_test.cpp'
+        PassPattern = 'CEngineLightingManager_0045228f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452256'
+        Module = 'CCarrySlotDef'
+        Source = 'CCarrySlotDef_TransferCCarrySlotDefUAEXAAVCPersistContextZ_00452256.cpp'
+        TestSource = 'CCarrySlotDef_TransferCCarrySlotDefUAEXAAVCPersistContextZ_00452256_test.cpp'
+        PassPattern = 'CCarrySlotDef_00452256_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452b14'
+        Module = 'CCombatAbilityAttackBase'
+        Source = 'CCombatAbilityAttackBase_TransferCCombatAbilityAttackBaseUAEXAAVCPersistC_00452b14.cpp'
+        TestSource = 'CCombatAbilityAttackBase_TransferCCombatAbilityAttackBaseUAEXAAVCPersistC_00452b14_test.cpp'
+        PassPattern = 'CCombatAbilityAttackBase_00452b14_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452c94'
+        Module = 'CDragonActionNapalmDef'
+        Source = 'CDragonActionNapalmDef_TransferCDragonActionNapalmDefUAEXAAVCPersistCon_00452c94.cpp'
+        TestSource = 'CDragonActionNapalmDef_TransferCDragonActionNapalmDefUAEXAAVCPersistCon_00452c94_test.cpp'
+        PassPattern = 'CDragonActionNapalmDef_00452c94_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004543c6'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_004543c6.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_004543c6_test.cpp'
+        PassPattern = 'CActiveFile_004543c6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451e59'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00451e59.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00451e59_test.cpp'
+        PassPattern = 'CEngineLightingManager_00451e59_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451efd'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00451efd.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00451efd_test.cpp'
+        PassPattern = 'CEngineLightingManager_00451efd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451fa1'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00451fa1.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00451fa1_test.cpp'
+        PassPattern = 'CEngineLightingManager_00451fa1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452045'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00452045.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00452045_test.cpp'
+        PassPattern = 'CEngineLightingManager_00452045_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452086'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00452086.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00452086_test.cpp'
+        PassPattern = 'CEngineLightingManager_00452086_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004521b2'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_004521b2.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_004521b2_test.cpp'
+        PassPattern = 'CEngineLightingManager_004521b2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004522f4'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_004522f4.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_004522f4_test.cpp'
+        PassPattern = 'CEngineLightingManager_004522f4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004526f7'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_004526f7.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_004526f7_test.cpp'
+        PassPattern = 'CEngineLightingManager_004526f7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045290a'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_0045290a.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_0045290a_test.cpp'
+        PassPattern = 'CEngineLightingManager_0045290a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452a60'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00452a60.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00452a60_test.cpp'
+        PassPattern = 'CEngineLightingManager_00452a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451b07'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_00451b07.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_00451b07_test.cpp'
+        PassPattern = 'CActiveFile_00451b07_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045266f'
+        Module = 'CCoopSpiritDef'
+        Source = 'CCoopSpiritDef_TransferCCoopSpiritDefUAEXAAVCPersistContextZ_0045266f.cpp'
+        TestSource = 'CCoopSpiritDef_TransferCCoopSpiritDefUAEXAAVCPersistContextZ_0045266f_test.cpp'
+        PassPattern = 'CCoopSpiritDef_0045266f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004526b3'
+        Module = 'CContextSensitiveItemDef'
+        Source = 'CContextSensitiveItemDef_TransferCContextSensitiveItemDefUAEXAAVCPersistC_004526b3.cpp'
+        TestSource = 'CContextSensitiveItemDef_TransferCContextSensitiveItemDefUAEXAAVCPersistC_004526b3_test.cpp'
+        PassPattern = 'CContextSensitiveItemDef_004526b3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00452b4d'
+        Module = 'CScrollingComponent'
+        Source = 'CScrollingComponent_ChangeState_00452b4d.cpp'
+        TestSource = 'CScrollingComponent_ChangeState_00452b4d_test.cpp'
+        PassPattern = 'CScrollingComponent_00452b4d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00451e11'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00451e11.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00451e11_test.cpp'
+        PassPattern = 'CEngineLightingManager_00451e11_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045212a'
+        Module = 'CPhysicsDef'
+        Source = 'CPhysicsDef_TransferCPhysicsDefUAEXAAVCPersistContextZ_0045212a.cpp'
+        TestSource = 'CPhysicsDef_TransferCPhysicsDefUAEXAAVCPersistContextZ_0045212a_test.cpp'
+        PassPattern = 'CPhysicsDef_0045212a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454f11'
+        Module = 'CThingSwitchDef'
+        Source = 'CThingSwitchDef_GetSizeofClass_00454f11.cpp'
+        TestSource = 'CThingSwitchDef_GetSizeofClass_00454f11_test.cpp'
+        PassPattern = 'CThingSwitchDef_00454f11_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455584'
+        Module = 'CInventoryCategoryDef'
+        Source = 'CInventoryCategoryDef_GetSizeofClass_00455584.cpp'
+        TestSource = 'CInventoryCategoryDef_GetSizeofClass_00455584_test.cpp'
+        PassPattern = 'CInventoryCategoryDef_00455584_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004556ca'
+        Module = 'CMessageEventDef'
+        Source = 'CMessageEventDef_GetSizeofClass_004556ca.cpp'
+        TestSource = 'CMessageEventDef_GetSizeofClass_004556ca_test.cpp'
+        PassPattern = 'CMessageEventDef_004556ca_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455c60'
+        Module = 'CEnvironmentThemeDaySetDef'
+        Source = 'CEnvironmentThemeDaySetDef_GetSizeofClass_00455c60.cpp'
+        TestSource = 'CEnvironmentThemeDaySetDef_GetSizeofClass_00455c60_test.cpp'
+        PassPattern = 'CEnvironmentThemeDaySetDef_00455c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455ca7'
+        Module = 'CEngineLocalDetailGeneratorDef'
+        Source = 'CEngineLocalDetailGeneratorDef_GetSizeofClass_00455ca7.cpp'
+        TestSource = 'CEngineLocalDetailGeneratorDef_GetSizeofClass_00455ca7_test.cpp'
+        PassPattern = 'CEngineLocalDetailGeneratorDef_00455ca7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455e8c'
+        Module = 'CSimVoicesDef'
+        Source = 'CSimVoicesDef_GetSizeofClass_00455e8c.cpp'
+        TestSource = 'CSimVoicesDef_GetSizeofClass_00455e8c_test.cpp'
+        PassPattern = 'CSimVoicesDef_00455e8c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455ec6'
+        Module = 'CSoundThemeDef'
+        Source = 'CSoundThemeDef_GetSizeofClass_00455ec6.cpp'
+        TestSource = 'CSoundThemeDef_GetSizeofClass_00455ec6_test.cpp'
+        PassPattern = 'CSoundThemeDef_00455ec6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455ff0'
+        Module = 'CCreatureGenerationFamilyDef'
+        Source = 'CCreatureGenerationFamilyDef_GetSizeofClass_00455ff0.cpp'
+        TestSource = 'CCreatureGenerationFamilyDef_GetSizeofClass_00455ff0_test.cpp'
+        PassPattern = 'CCreatureGenerationFamilyDef_00455ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004564b1'
+        Module = 'CEntitySoundDef'
+        Source = 'CEntitySoundDef_GetSizeofClass_004564b1.cpp'
+        TestSource = 'CEntitySoundDef_GetSizeofClass_004564b1_test.cpp'
+        PassPattern = 'CEntitySoundDef_004564b1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456511'
+        Module = 'CFactionDef'
+        Source = 'CFactionDef_GetSizeofClass_00456511.cpp'
+        TestSource = 'CFactionDef_GetSizeofClass_00456511_test.cpp'
+        PassPattern = 'CFactionDef_00456511_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004567bb'
+        Module = 'CCameraManagerDef'
+        Source = 'CCameraManagerDef_GetSizeofClass_004567bb.cpp'
+        TestSource = 'CCameraManagerDef_GetSizeofClass_004567bb_test.cpp'
+        PassPattern = 'CCameraManagerDef_004567bb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456814'
+        Module = 'CCameraManagerSetDef'
+        Source = 'CCameraManagerSetDef_GetSizeofClass_00456814.cpp'
+        TestSource = 'CCameraManagerSetDef_GetSizeofClass_00456814_test.cpp'
+        PassPattern = 'CCameraManagerSetDef_00456814_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045687f'
+        Module = 'CHeroPostcardGeneratorDef'
+        Source = 'CHeroPostcardGeneratorDef_GetSizeofClass_0045687f.cpp'
+        TestSource = 'CHeroPostcardGeneratorDef_GetSizeofClass_0045687f_test.cpp'
+        PassPattern = 'CHeroPostcardGeneratorDef_0045687f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456cfb'
+        Module = 'COpinionReactionMaskDef'
+        Source = 'COpinionReactionMaskDef_GetSizeofClass_00456cfb.cpp'
+        TestSource = 'COpinionReactionMaskDef_GetSizeofClass_00456cfb_test.cpp'
+        PassPattern = 'COpinionReactionMaskDef_00456cfb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456d3f'
+        Module = 'COpinionDeedMaskDef'
+        Source = 'COpinionDeedMaskDef_GetSizeofClass_00456d3f.cpp'
+        TestSource = 'COpinionDeedMaskDef_GetSizeofClass_00456d3f_test.cpp'
+        PassPattern = 'COpinionDeedMaskDef_00456d3f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456f23'
+        Module = 'CVillagerInteractionsDef'
+        Source = 'CVillagerInteractionsDef_GetSizeofClass_00456f23.cpp'
+        TestSource = 'CVillagerInteractionsDef_GetSizeofClass_00456f23_test.cpp'
+        PassPattern = 'CVillagerInteractionsDef_00456f23_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456fb8'
+        Module = 'COpinionPersonalityDef'
+        Source = 'COpinionPersonalityDef_GetSizeofClass_00456fb8.cpp'
+        TestSource = 'COpinionPersonalityDef_GetSizeofClass_00456fb8_test.cpp'
+        PassPattern = 'COpinionPersonalityDef_00456fb8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454b88'
+        Module = 'CThingBuildingDef'
+        Source = 'CThingBuildingDef_GetSizeofClass_00454b88.cpp'
+        TestSource = 'CThingBuildingDef_GetSizeofClass_00454b88_test.cpp'
+        PassPattern = 'CThingBuildingDef_00454b88_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454dc5'
+        Module = 'CThingHolySiteDef'
+        Source = 'CThingHolySiteDef_GetSizeofClass_00454dc5.cpp'
+        TestSource = 'CThingHolySiteDef_GetSizeofClass_00454dc5_test.cpp'
+        PassPattern = 'CThingHolySiteDef_00454dc5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454e1b'
+        Module = 'CThingMarkerDef'
+        Source = 'CThingMarkerDef_GetSizeofClass_00454e1b.cpp'
+        TestSource = 'CThingMarkerDef_GetSizeofClass_00454e1b_test.cpp'
+        PassPattern = 'CThingMarkerDef_00454e1b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454f59'
+        Module = 'CThingVillageDef'
+        Source = 'CThingVillageDef_GetSizeofClass_00454f59.cpp'
+        TestSource = 'CThingVillageDef_GetSizeofClass_00454f59_test.cpp'
+        PassPattern = 'CThingVillageDef_00454f59_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454fbd'
+        Module = 'CThingPhysicalSwitchDef'
+        Source = 'CThingPhysicalSwitchDef_GetSizeofClass_00454fbd.cpp'
+        TestSource = 'CThingPhysicalSwitchDef_GetSizeofClass_00454fbd_test.cpp'
+        PassPattern = 'CThingPhysicalSwitchDef_00454fbd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004554a4'
+        Module = 'CInventoryDef'
+        Source = 'CInventoryDef_GetSizeofClass_004554a4.cpp'
+        TestSource = 'CInventoryDef_GetSizeofClass_004554a4_test.cpp'
+        PassPattern = 'CInventoryDef_004554a4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455893'
+        Module = 'CSkyDef'
+        Source = 'CSkyDef_GetSizeofClass_00455893.cpp'
+        TestSource = 'CSkyDef_GetSizeofClass_00455893_test.cpp'
+        PassPattern = 'CSkyDef_00455893_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004558d9'
+        Module = 'CEnvironmentDef'
+        Source = 'CEnvironmentDef_GetSizeofClass_004558d9.cpp'
+        TestSource = 'CEnvironmentDef_GetSizeofClass_004558d9_test.cpp'
+        PassPattern = 'CEnvironmentDef_004558d9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455d22'
+        Module = 'CMaterialDef'
+        Source = 'CMaterialDef_GetSizeofClass_00455d22.cpp'
+        TestSource = 'CMaterialDef_GetSizeofClass_00455d22_test.cpp'
+        PassPattern = 'CMaterialDef_00455d22_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455ddd'
+        Module = 'CCombatTypeDef'
+        Source = 'CCombatTypeDef_GetSizeofClass_00455ddd.cpp'
+        TestSource = 'CCombatTypeDef_GetSizeofClass_00455ddd_test.cpp'
+        PassPattern = 'CCombatTypeDef_00455ddd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455f14'
+        Module = 'CThingNoiseDef'
+        Source = 'CThingNoiseDef_GetSizeofClass_00455f14.cpp'
+        TestSource = 'CThingNoiseDef_GetSizeofClass_00455f14_test.cpp'
+        PassPattern = 'CThingNoiseDef_00455f14_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456087'
+        Module = 'CHeroAbilityDef'
+        Source = 'CHeroAbilityDef_GetSizeofClass_00456087.cpp'
+        TestSource = 'CHeroAbilityDef_GetSizeofClass_00456087_test.cpp'
+        PassPattern = 'CHeroAbilityDef_00456087_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045617c'
+        Module = 'CHeroStatsDef'
+        Source = 'CHeroStatsDef_GetSizeofClass_0045617c.cpp'
+        TestSource = 'CHeroStatsDef_GetSizeofClass_0045617c_test.cpp'
+        PassPattern = 'CHeroStatsDef_0045617c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004564e5'
+        Module = 'CRegionDef'
+        Source = 'CRegionDef_GetSizeofClass_004564e5.cpp'
+        TestSource = 'CRegionDef_GetSizeofClass_004564e5_test.cpp'
+        PassPattern = 'CRegionDef_004564e5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045655e'
+        Module = 'CCameraModeDef'
+        Source = 'CCameraModeDef_GetSizeofClass_0045655e.cpp'
+        TestSource = 'CCameraModeDef_GetSizeofClass_0045655e_test.cpp'
+        PassPattern = 'CCameraModeDef_0045655e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004569a1'
+        Module = 'CExpressionDef'
+        Source = 'CExpressionDef_GetSizeofClass_004569a1.cpp'
+        TestSource = 'CExpressionDef_GetSizeofClass_004569a1_test.cpp'
+        PassPattern = 'CExpressionDef_004569a1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456d9e'
+        Module = 'COpinionDeedEffectsDef'
+        Source = 'COpinionDeedEffectsDef_GetSizeofClass_00456d9e.cpp'
+        TestSource = 'COpinionDeedEffectsDef_GetSizeofClass_00456d9e_test.cpp'
+        PassPattern = 'COpinionDeedEffectsDef_00456d9e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456df5'
+        Module = 'CCombatDialogueDef'
+        Source = 'CCombatDialogueDef_GetSizeofClass_00456df5.cpp'
+        TestSource = 'CCombatDialogueDef_GetSizeofClass_00456df5_test.cpp'
+        PassPattern = 'CCombatDialogueDef_00456df5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00457028'
+        Module = 'COpinionSourceDef'
+        Source = 'COpinionSourceDef_GetSizeofClass_00457028.cpp'
+        TestSource = 'COpinionSourceDef_GetSizeofClass_00457028_test.cpp'
+        PassPattern = 'COpinionSourceDef_00457028_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00457095'
+        Module = 'CSpecialAbilitiesAssassinRushDef'
+        Source = 'CSpecialAbilitiesAssassinRushDef_GetSizeofClass_00457095.cpp'
+        TestSource = 'CSpecialAbilitiesAssassinRushDef_GetSizeofClass_00457095_test.cpp'
+        PassPattern = 'CSpecialAbilitiesAssassinRushDef_00457095_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00457110'
+        Module = 'CSpecialAbilitiesBattleChargeDef'
+        Source = 'CSpecialAbilitiesBattleChargeDef_GetSizeofClass_00457110.cpp'
+        TestSource = 'CSpecialAbilitiesBattleChargeDef_GetSizeofClass_00457110_test.cpp'
+        PassPattern = 'CSpecialAbilitiesBattleChargeDef_00457110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004571e8'
+        Module = 'CSpecialAbilitiesMultiStrikeDef'
+        Source = 'CSpecialAbilitiesMultiStrikeDef_GetSizeofClass_004571e8.cpp'
+        TestSource = 'CSpecialAbilitiesMultiStrikeDef_GetSizeofClass_004571e8_test.cpp'
+        PassPattern = 'CSpecialAbilitiesMultiStrikeDef_004571e8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00457285'
+        Module = 'CSpecialAbilitiesMultiArrowDef'
+        Source = 'CSpecialAbilitiesMultiArrowDef_GetSizeofClass_00457285.cpp'
+        TestSource = 'CSpecialAbilitiesMultiArrowDef_GetSizeofClass_00457285_test.cpp'
+        PassPattern = 'CSpecialAbilitiesMultiArrowDef_00457285_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004573db'
+        Module = 'CSpecialAbilitiesBerserkDef'
+        Source = 'CSpecialAbilitiesBerserkDef_GetSizeofClass_004573db.cpp'
+        TestSource = 'CSpecialAbilitiesBerserkDef_GetSizeofClass_004573db_test.cpp'
+        PassPattern = 'CSpecialAbilitiesBerserkDef_004573db_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004575da'
+        Module = 'CSpecialAbilitiesBulletTimeDef'
+        Source = 'CSpecialAbilitiesBulletTimeDef_GetSizeofClass_004575da.cpp'
+        TestSource = 'CSpecialAbilitiesBulletTimeDef_GetSizeofClass_004575da_test.cpp'
+        PassPattern = 'CSpecialAbilitiesBulletTimeDef_004575da_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004576b9'
+        Module = 'CSpecialAbilitiesForcePushDef'
+        Source = 'CSpecialAbilitiesForcePushDef_GetSizeofClass_004576b9.cpp'
+        TestSource = 'CSpecialAbilitiesForcePushDef_GetSizeofClass_004576b9_test.cpp'
+        PassPattern = 'CSpecialAbilitiesForcePushDef_004576b9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454b4c'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = 'DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00454b4c.cpp'
+        TestSource = 'DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00454b4c_test.cpp'
+        PassPattern = '_Dest_val_00454b4c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455e59'
+        Module = 'CTCInventoryItem'
+        Source = 'CTCInventoryItem_OnDie_00455e59.cpp'
+        TestSource = 'CTCInventoryItem_OnDie_00455e59_test.cpp'
+        PassPattern = 'CTCInventoryItem_00455e59_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456531'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = 'DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00456531.cpp'
+        TestSource = 'DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00456531_test.cpp'
+        PassPattern = '_Dest_val_00456531_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004549b2'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004549b2.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004549b2_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_004549b2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454a96'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00454a96.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00454a96_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00454a96_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004554aa'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004554aa.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004554aa_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_004554aa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045569c'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045569c.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045569c_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0045569c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045585a'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045585a.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045585a_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0045585a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455d28'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00455d28.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00455d28_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00455d28_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455de3'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00455de3.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00455de3_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00455de3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455e90'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00455e90.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00455e90_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00455e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455ff4'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00455ff4.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00455ff4_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00455ff4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045608d'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045608d.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045608d_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0045608d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456182'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456182.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456182_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00456182_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004563ad'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004563ad.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004563ad_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_004563ad_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004563fe'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004563fe.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004563fe_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_004563fe_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456515'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456515.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456515_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00456515_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456779'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456779.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456779_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00456779_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004567bf'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004567bf.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004567bf_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_004567bf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456851'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456851.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456851_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00456851_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456948'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456948.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456948_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00456948_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456cc5'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456cc5.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456cc5_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00456cc5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456da4'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456da4.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456da4_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00456da4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456eed'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456eed.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456eed_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00456eed_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456f55'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456f55.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456f55_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00456f55_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456fbc'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456fbc.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00456fbc_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00456fbc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045702e'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045702e.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045702e_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0045702e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045709b'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045709b.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045709b_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0045709b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004570b7'
+        Module = 'CTCInventoryItem'
+        Source = 'CTCInventoryItem_OnDie_004570b7.cpp'
+        TestSource = 'CTCInventoryItem_OnDie_004570b7_test.cpp'
+        PassPattern = 'CTCInventoryItem_004570b7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00457116'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00457116.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00457116_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00457116_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004571ee'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004571ee.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004571ee_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_004571ee_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045728b'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045728b.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0045728b_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_0045728b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004573e1'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004573e1.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004573e1_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_004573e1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004575e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004575e0.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004575e0_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_004575e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004576bf'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004576bf.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_004576bf_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_004576bf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454f15'
+        Module = 'CThingSwitchDef'
+        Source = 'CThingSwitchDef_Transfer_00454f15.cpp'
+        TestSource = 'CThingSwitchDef_Transfer_00454f15_test.cpp'
+        PassPattern = 'CThingSwitchDef_00454f15_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454f5f'
+        Module = 'CThingVillageDef'
+        Source = 'CThingVillageDef_Transfer_00454f5f.cpp'
+        TestSource = 'CThingVillageDef_Transfer_00454f5f_test.cpp'
+        PassPattern = 'CThingVillageDef_00454f5f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454ad1'
+        Module = 'CDisplayManager'
+        Source = 'CDisplayManager_CopyBackBufferToTexture_00454ad1.cpp'
+        TestSource = 'CDisplayManager_CopyBackBufferToTexture_00454ad1_test.cpp'
+        PassPattern = 'CDisplayManager_00454ad1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454993'
+        Module = 'CHitLocationsDef'
+        Source = 'CHitLocationsDef_Copy_00454993.cpp'
+        TestSource = 'CHitLocationsDef_Copy_00454993_test.cpp'
+        PassPattern = 'CHitLocationsDef_00454993_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454ab2'
+        Module = 'CCombatAbilityBlockCounterAttackDef'
+        Source = 'CCombatAbilityBlockCounterAttackDef_Copy_00454ab2.cpp'
+        TestSource = 'CCombatAbilityBlockCounterAttackDef_Copy_00454ab2_test.cpp'
+        PassPattern = 'CCombatAbilityBlockCounterAttackDef_00454ab2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456244'
+        Module = 'CTextureReplacementDef'
+        Source = 'CTextureReplacementDef_Copy_00456244.cpp'
+        TestSource = 'CTextureReplacementDef_Copy_00456244_test.cpp'
+        PassPattern = 'CTextureReplacementDef_00456244_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045645d'
+        Module = 'CSystemRegistry'
+        Source = 'CSystemRegistry_CSystemRegistry_0045645d.cpp'
+        TestSource = 'CSystemRegistry_CSystemRegistry_0045645d_test.cpp'
+        PassPattern = 'CSystemRegistry_0045645d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455f1a'
+        Module = 'CThingNoiseDef'
+        Source = 'CThingNoiseDef_Transfer_00455f1a.cpp'
+        TestSource = 'CThingNoiseDef_Transfer_00455f1a_test.cpp'
+        PassPattern = 'CThingNoiseDef_00455f1a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456dc0'
+        Module = '_Dest_val<std'
+        Source = 'Destvalstd_allocatorCMacroCMacro_00456dc0.cpp'
+        TestSource = 'Destvalstd_allocatorCMacroCMacro_00456dc0_test.cpp'
+        PassPattern = '_Dest_val_std_00456dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455899'
+        Module = 'CEngineSubPrimitiveText'
+        Source = 'CEngineSubPrimitiveText_scalardeletingdestructor_00455899.cpp'
+        TestSource = 'CEngineSubPrimitiveText_scalardeletingdestructor_00455899_test.cpp'
+        PassPattern = 'CEngineSubPrimitiveText_00455899_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455c1d'
+        Module = 'CEngineSubPrimitiveText'
+        Source = 'CEngineSubPrimitiveText_scalardeletingdestructor_00455c1d.cpp'
+        TestSource = 'CEngineSubPrimitiveText_scalardeletingdestructor_00455c1d_test.cpp'
+        PassPattern = 'CEngineSubPrimitiveText_00455c1d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455c64'
+        Module = 'CEngineSubPrimitiveText'
+        Source = 'CEngineSubPrimitiveText_scalardeletingdestructor_00455c64.cpp'
+        TestSource = 'CEngineSubPrimitiveText_scalardeletingdestructor_00455c64_test.cpp'
+        PassPattern = 'CEngineSubPrimitiveText_00455c64_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455cab'
+        Module = 'CEngineSubPrimitiveText'
+        Source = 'CEngineSubPrimitiveText_scalardeletingdestructor_00455cab.cpp'
+        TestSource = 'CEngineSubPrimitiveText_scalardeletingdestructor_00455cab_test.cpp'
+        PassPattern = 'CEngineSubPrimitiveText_00455cab_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455eca'
+        Module = 'CEngineSubPrimitiveText'
+        Source = 'CEngineSubPrimitiveText_scalardeletingdestructor_00455eca.cpp'
+        TestSource = 'CEngineSubPrimitiveText_scalardeletingdestructor_00455eca_test.cpp'
+        PassPattern = 'CEngineSubPrimitiveText_00455eca_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456cff'
+        Module = 'CEngineSubPrimitiveText'
+        Source = 'CEngineSubPrimitiveText_scalardeletingdestructor_00456cff.cpp'
+        TestSource = 'CEngineSubPrimitiveText_scalardeletingdestructor_00456cff_test.cpp'
+        PassPattern = 'CEngineSubPrimitiveText_00456cff_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456d43'
+        Module = 'CEngineSubPrimitiveText'
+        Source = 'CEngineSubPrimitiveText_scalardeletingdestructor_00456d43.cpp'
+        TestSource = 'CEngineSubPrimitiveText_scalardeletingdestructor_00456d43_test.cpp'
+        PassPattern = 'CEngineSubPrimitiveText_00456d43_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456fd8'
+        Module = 'COpinionPersonalityDef'
+        Source = 'COpinionPersonalityDef_COpinionPersonalityDef_00456fd8.cpp'
+        TestSource = 'COpinionPersonalityDef_COpinionPersonalityDef_00456fd8_test.cpp'
+        PassPattern = 'COpinionPersonalityDef_00456fd8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004567db'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = 'CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_004567db.cpp'
+        TestSource = 'CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_004567db_test.cpp'
+        PassPattern = 'CPatchTesselationEdgeStrip_004567db_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004572a7'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = 'CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_004572a7.cpp'
+        TestSource = 'CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_004572a7_test.cpp'
+        PassPattern = 'CPatchTesselationEdgeStrip_004572a7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454dcb'
+        Module = 'CThingHolySiteDef'
+        Source = 'CThingHolySiteDef_Transfer_00454dcb.cpp'
+        TestSource = 'CThingHolySiteDef_Transfer_00454dcb_test.cpp'
+        PassPattern = 'CThingHolySiteDef_00454dcb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045704a'
+        Module = 'CTCInventoryItem'
+        Source = 'CTCInventoryItem_OnDie_0045704a.cpp'
+        TestSource = 'CTCInventoryItem_OnDie_0045704a_test.cpp'
+        PassPattern = 'CTCInventoryItem_0045704a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456f27'
+        Module = 'CVillagerInteractionsDef'
+        Source = 'CVillagerInteractionsDef_TransferCVillagerInteractionsDefUAEXAAVCPersistC_00456f27.cpp'
+        TestSource = 'CVillagerInteractionsDef_TransferCVillagerInteractionsDefUAEXAAVCPersistC_00456f27_test.cpp'
+        PassPattern = 'CVillagerInteractionsDef_00456f27_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454a00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00454a00.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00454a00_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00454a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454a32'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00454a32.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00454a32_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00454a32_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454a64'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00454a64.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00454a64_test.cpp'
+        PassPattern = 'CLandscapeBackgroundPatch_00454a64_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004563c9'
+        Module = 'CTCInventoryItem'
+        Source = 'CTCInventoryItem_OnDie_004563c9.cpp'
+        TestSource = 'CTCInventoryItem_OnDie_004563c9_test.cpp'
+        PassPattern = 'CTCInventoryItem_004563c9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004560a9'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = 'CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_004560a9.cpp'
+        TestSource = 'CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_004560a9_test.cpp'
+        PassPattern = 'CPatchTesselationEdgeStrip_004560a9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456818'
+        Module = 'CCameraManagerSetDef'
+        Source = 'CCameraManagerSetDef_TransferCCameraManagerSetDefUAEXAAVCPersistConte_00456818.cpp'
+        TestSource = 'CCameraManagerSetDef_TransferCCameraManagerSetDefUAEXAAVCPersistConte_00456818_test.cpp'
+        PassPattern = 'CCameraManagerSetDef_00456818_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456883'
+        Module = 'CHeroPostcardGeneratorDef'
+        Source = 'CHeroPostcardGeneratorDef_TransferCHeroPostcardGeneratorDefUAEXAAVCPersist_00456883.cpp'
+        TestSource = 'CHeroPostcardGeneratorDef_TransferCHeroPostcardGeneratorDefUAEXAAVCPersist_00456883_test.cpp'
+        PassPattern = 'CHeroPostcardGeneratorDef_00456883_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454e21'
+        Module = 'CThingMarkerDef'
+        Source = 'CThingMarkerDef_Transfer_00454e21.cpp'
+        TestSource = 'CThingMarkerDef_Transfer_00454e21_test.cpp'
+        PassPattern = 'CThingMarkerDef_00454e21_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455dff'
+        Module = 'CTCAssassinRush'
+        Source = 'CTCAssassinRush_FinishMove_00455dff.cpp'
+        TestSource = 'CTCAssassinRush_FinishMove_00455dff_test.cpp'
+        PassPattern = 'CTCAssassinRush_00455dff_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454cfa'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00454cfa.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00454cfa_test.cpp'
+        PassPattern = 'CEngineLightingManager_00454cfa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454e5b'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00454e5b.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00454e5b_test.cpp'
+        PassPattern = 'CEngineLightingManager_00454e5b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004555f8'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_004555f8.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_004555f8_test.cpp'
+        PassPattern = 'CEngineLightingManager_004555f8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455712'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00455712.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00455712_test.cpp'
+        PassPattern = 'CEngineLightingManager_00455712_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004557b6'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_004557b6.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_004557b6_test.cpp'
+        PassPattern = 'CEngineLightingManager_004557b6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456ad9'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00456ad9.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00456ad9_test.cpp'
+        PassPattern = 'CEngineLightingManager_00456ad9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456b7d'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00456b7d.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00456b7d_test.cpp'
+        PassPattern = 'CEngineLightingManager_00456b7d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456c21'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00456c21.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00456c21_test.cpp'
+        PassPattern = 'CEngineLightingManager_00456c21_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004556ce'
+        Module = 'CMessageEventDef'
+        Source = 'CMessageEventDef_TransferCMessageEventDefUAEXAAVCPersistContextZ_004556ce.cpp'
+        TestSource = 'CMessageEventDef_TransferCMessageEventDefUAEXAAVCPersistContextZ_004556ce_test.cpp'
+        PassPattern = 'CMessageEventDef_004556ce_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00454fc3'
+        Module = 'CThingPhysicalSwitchDef'
+        Source = 'CThingPhysicalSwitchDef_Transfer_00454fc3.cpp'
+        TestSource = 'CThingPhysicalSwitchDef_Transfer_00454fc3_test.cpp'
+        PassPattern = 'CThingPhysicalSwitchDef_00454fc3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00456903'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_00456903.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_00456903_test.cpp'
+        PassPattern = 'CEngineLightingManager_00456903_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00457132'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = 'CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00457132.cpp'
+        TestSource = 'CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00457132_test.cpp'
+        PassPattern = 'CPatchTesselationEdgeStrip_00457132_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004568bc'
+        Module = 'CEngineLightingManager'
+        Source = 'CEngineLightingManager_UpdateShadowScene_004568bc.cpp'
+        TestSource = 'CEngineLightingManager_UpdateShadowScene_004568bc_test.cpp'
+        PassPattern = 'CEngineLightingManager_004568bc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045720a'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = 'CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_0045720a.cpp'
+        TestSource = 'CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_0045720a_test.cpp'
+        PassPattern = 'CPatchTesselationEdgeStrip_0045720a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00455d44'
+        Module = 'CPatchTesselationEdgeStrip'
+        Source = 'CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00455d44.cpp'
+        TestSource = 'CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00455d44_test.cpp'
+        PassPattern = 'CPatchTesselationEdgeStrip_00455d44_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
