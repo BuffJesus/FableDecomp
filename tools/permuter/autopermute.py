@@ -140,7 +140,7 @@ def main():
         """All single-step AST mutations of `text` (re-parsed)."""
         wf = work / "walk.cpp"
         wf.write_text(text, encoding="utf-8")
-        return cm.temp_intro_variants(wf, leaf) + cm.reassoc_variants(wf, leaf)
+        return cm.all_variants(wf, leaf)
 
     # Phase 2: greedy stacking (deterministic best-first).
     if a.mutate and cm:

@@ -71,3 +71,12 @@ GetHeaderOverhead, GetNoFreeAreas, GetTotalMemoryAllocated exact; __setdefaultpr
 OnReleaseDefaultPoolResources relocation). Remaining DIFFERs are metric/scheduler artifacts or
 research-tier reimplementations; next byte-parity growth needs fresh oracle bytes (Ghidra window)
 for new promotion-queue functions, sequenced around the auto-RE loop's Ghidra ownership.
+
+## Std_Move_Backward @00405ba0 — CLOSED as unmatchable-from-source (2026-07-23)
+Exhaustive: flag/pragma grid (170), temp-intro/reassoc AST mutations, random multi-mutation
+composition, statement-split, keep-last-live rewrite, and the **genuine VC7.1 STL source shape**
+(`_Uninit_copy` scalar: `size_t _Count = (size_t)(_Last-_First); return (T*)memmove(...) + _Count;`
+from `D:\Tools\vc71\include\memory`) all produce `sub edx,ecx; mov esi,edx` where retail has
+`mov esi,edx; sub esi,ecx` (score 4, same length/semantics). Since even the original's own source
+form doesn't reproduce it under our cl 13.10, the residue is a compiler build/SP middle-end ordering
+difference — not source-controllable. Do not regrind.
