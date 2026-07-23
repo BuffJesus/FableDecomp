@@ -3896,3 +3896,10 @@ build-from-user-copy is the legally-defensible pattern.
 - The refreshed promotion queue has 31 uncompiled agent candidates. `entry @ 0x00401067` ranks
   first, followed by `CNavQuadTree::InitialiseLines @ 0x00A7A5E0`; use the latter when a smaller,
   subsystem-focused promotion is preferable to CRT startup work.
+- Used the interval before the next unattended batch to promote `Getter_FieldE0_FC @ 0x00662020`.
+  Its two-value behavior oracle passes and the VC7.1 object is a raw 13/13-byte retail match. A
+  conservative `_global` fastcall override records the ECX overlay pointer and unsigned 32-bit
+  return without assigning a speculative owner class.
+- Curated status is now **91/91** compile+behavior PASS (**0.184%**), with 33 raw retail matches,
+  17 relocation-normalized matches, 68 verified lifts overall, and about **405** promotions left to
+  the first 1% milestone. The remaining uncompiled agent queue fell from 31 to 30.

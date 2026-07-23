@@ -17,6 +17,8 @@ leans on automation because the target is large.
   binaries, PDBs, Ghidra databases, build products, and raw agent transcripts.
 - [x] Promote `CEngineLandscapePatch::RelocateData @ 0x00BF3980`; its six-path behavior oracle passes
   and its 143-byte body is an exact relocation-normalized retail match.
+- [x] Promote the dependency-free `Getter_FieldE0_FC @ 0x00662020`; its corrected fastcall prototype
+  and 13-byte VC7.1 object are raw byte-identical to retail.
 - [ ] Ingest and review both completed `ConnectVerticalMapEdge` reconstructions; promote them only
   after their allocation/refcount and connector-vector behavior can be isolated in a safe harness.
 - [ ] Take the next queue-ranked small candidate, currently `entry @ 0x00401067`, through VC7.1
@@ -66,13 +68,13 @@ The landscape-paint lane now includes four relocation-masked byte-identical `CWo
 methods, four functional `CMap::Set/GetEngineTheme/BlendAt` implementations, and three functional
 `CScriptedMapBrush` cell accessors. The latter expose the authored brush layout directly: five
 32-bit theme slots per cell and byte-addressed blend values at cell offset `0x10 + layer`, with a
-`0x14`-byte cell stride. The curated suite is 90/90 for VC7.1 compile and focused behavior; the
+`0x14`-byte cell stride. The curated suite is 91/91 for VC7.1 compile and focused behavior; the
 map/brush bodies remain honestly non-matching until their compiler code shape is tuned against
 retail.
 
 For milestone accounting, 1% of the 49,553-function catalog is approximately 496 verified
-functions. The compile+behavior lane is currently 90 functions (0.182%); reaching 1% therefore
-requires roughly 406 additional promotions. Clean pseudo-C, naming, and prototype coverage are
+functions. The compile+behavior lane is currently 91 functions (0.184%); reaching 1% therefore
+requires roughly 405 additional promotions. Clean pseudo-C, naming, and prototype coverage are
 tracked separately and must not be presented as completed buildable source.
 
 The recent curated exact-match closure now includes eight locally proven code-shape matches. Five are raw
@@ -104,10 +106,13 @@ match. Its focused oracle covers direct patch-data relocation, asynchronous-data
 priority notification, head/interior linked-list repair, missing nodes, and the null early-return
 path. All 57 fixed instruction bytes and control-flow offsets match retail; only the three expected
 direct-call COFF relocations are masked.
+`Getter_FieldE0_FC @ 0x00662020` adds a raw 13-byte match for the opaque
+`*(*(self + 0xE0) + 0xFC)` accessor. The curated override records the observed ECX fastcall input and
+unsigned 32-bit return, closing one calling-convention/prototype gap without inventing a class name.
 
 The signature audit supports both qualified member definitions and `_global` definitions with C
 linkage/calling-convention qualifiers. This removed seven false-negative parse reviews and raised
-the clean audited candidate set to 85/121; 36 snapshots remain in signature review, including two
+the clean audited candidate set to 86/121; 35 snapshots remain in signature review, including two
 genuinely noncanonical constructor/destructor definitions that still cannot be parsed.
 
 The toolchain now also queries the private donor PDB directly through Visual Studio's installed

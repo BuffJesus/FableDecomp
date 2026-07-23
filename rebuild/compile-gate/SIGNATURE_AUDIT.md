@@ -1,12 +1,12 @@
 # Candidate signature audit
 
-Generated: `2026-07-22T19:01:34-06:00`
+Generated: `2026-07-22T19:08:03-06:00`
 
-Clean: **85 / 121**. Review required: **36**.
+Clean: **86 / 121**. Review required: **35**.
 
 | Issue | Candidates |
 |---|---:|
-| `explicit-parameter-count-mismatch` | 20 |
+| `explicit-parameter-count-mismatch` | 19 |
 | `method-name-mismatch` | 8 |
 | `owner-mismatch` | 7 |
 | `duplicate-linkage-signature` | 7 |
@@ -29,7 +29,6 @@ Clean: **85 / 121**. Review required: **36**.
 | `00409090` | `_global` | `Engine_FindPrimitiveInArray` | `Engine_FindPrimitiveInArray` | explicit-parameter-count-mismatch |
 | `0040cec0` | `_global` | `CUserProfileManager_Constructor` | `CUserProfileManager_Constructor` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004fe7f0` | `_global` | `CollectSoundThemeSwitchDefs` | `CollectSoundThemeSwitchDefs` | explicit-parameter-count-mismatch |
-| `00662020` | `_global` | `Getter_FieldE0_FC` | `Getter_FieldE0_FC` | explicit-parameter-count-mismatch |
 | `006b0730` | `CTCPhysicsBase` | `CTCPhysicsBase` | `CTCPhysicsBase` | owner-mismatch;duplicate-linkage-signature |
 | `00713140` | `CActionDoCreatureAction` | `CActionDoCreatureAction` | `CActionDoCreatureAction` | owner-mismatch |
 | `007266c0` | `CTCPhysicsBase` | `CTCPhysicsBase` | `CTCPhysicsBase` | owner-mismatch;duplicate-linkage-signature |
