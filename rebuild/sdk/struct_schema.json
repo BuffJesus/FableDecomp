@@ -917,7 +917,7 @@
    "size": "0xa4"
   },
   "CEngineThemeGroupDef": {
-   "verified_methods": 1,
+   "verified_methods": 2,
    "size": "0x3a"
   },
   "CEntitySoundDef": {
@@ -2959,7 +2959,7 @@
    "size": "0x1"
   },
   "CThingGroupDef": {
-   "verified_methods": 1,
+   "verified_methods": 2,
    "size": "0x3a"
   },
   "CThingHolySiteDef": {
@@ -3406,7 +3406,7 @@
    ]
   },
   "global": {
-   "verified_methods": 53,
+   "verified_methods": 60,
    "size": "0xd0",
    "fields": [
     {

@@ -10461,6 +10461,69 @@ $catalog = @(
         TestSource = 'CPlayerGuiDef_GetSizeofClass_00459e24_test.cpp'
         PassPattern = 'AUTO_TINY_00459e24_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00401480'
+        Module = '_global'
+        Source = 'global_sub00401480_00401480.cpp'
+        TestSource = 'global_sub00401480_00401480_test.cpp'
+        PassPattern = 'AUTO_TINY_00401480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041ca1c'
+        Module = '_global'
+        Source = 'global_sub0041ca1c_0041ca1c.cpp'
+        TestSource = 'global_sub0041ca1c_0041ca1c_test.cpp'
+        PassPattern = 'AUTO_TINY_0041ca1c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041ca22'
+        Module = '_global'
+        Source = 'global_sub0041ca22_0041ca22.cpp'
+        TestSource = 'global_sub0041ca22_0041ca22_test.cpp'
+        PassPattern = 'AUTO_TINY_0041ca22_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041ca6d'
+        Module = '_global'
+        Source = 'global_sub0041ca6d_0041ca6d.cpp'
+        TestSource = 'global_sub0041ca6d_0041ca6d_test.cpp'
+        PassPattern = 'AUTO_TINY_0041ca6d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041ccd7'
+        Module = '_global'
+        Source = 'global_sub0041ccd7_0041ccd7.cpp'
+        TestSource = 'global_sub0041ccd7_0041ccd7_test.cpp'
+        PassPattern = 'AUTO_TINY_0041ccd7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041cd6f'
+        Module = '_global'
+        Source = 'global_sub0041cd6f_0041cd6f.cpp'
+        TestSource = 'global_sub0041cd6f_0041cd6f_test.cpp'
+        PassPattern = 'AUTO_TINY_0041cd6f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041cd83'
+        Module = '_global'
+        Source = 'global_sub0041cd83_0041cd83.cpp'
+        TestSource = 'global_sub0041cd83_0041cd83_test.cpp'
+        PassPattern = 'AUTO_TINY_0041cd83_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045954d'
+        Module = 'CThingGroupDef'
+        Source = 'CThingGroupDef_Transfer_0045954d.cpp'
+        TestSource = 'CThingGroupDef_Transfer_0045954d_test.cpp'
+        PassPattern = 'AUTO_TINY_0045954d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00459764'
+        Module = 'CEngineThemeGroupDef'
+        Source = 'CEngineThemeGroupDef_Transfer_00459764.cpp'
+        TestSource = 'CEngineThemeGroupDef_Transfer_00459764_test.cpp'
+        PassPattern = 'AUTO_TINY_00459764_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
