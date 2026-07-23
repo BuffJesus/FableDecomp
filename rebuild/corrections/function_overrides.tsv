@@ -1,4 +1,5 @@
 address	name	module	calling_convention	return_type	parameter_count	parameter_types	evidence
+0088e340	CGameScriptInterface::GetRegionName	CGameScriptInterface	__thiscall	CCharString const &	1	CGameScriptInterface const *	CGSI aligned vtable slot 15 and decorated UBEABV return prove const method returning CCharString const reference
 00662020	Getter_FieldE0_FC	_global	__fastcall	ulong	1	Getter_FieldE0_FC_OuterOverlay const *	retail 13-byte ECX accessor: return dword at *(*(self+0xE0)+0xFC)
 00401f30	GFGetBuildNumber2	_global	__cdecl	void	0		retail no-argument build-version file probe and global string assignment
 0063a9e0	CWorldMap::SetThemeBlendAtBlock	CWorldMap	__thiscall	void	5	CWorldMap *,C2DCoordI const &,uchar,ulong,EThemePaintType	Ego_r PDB ?SetThemeBlendAtBlock@CWorldMap@@QAEXABVC2DCoordI@@EKW4EThemePaintType@@@Z plus retail call to CMap::SetEngineBlendAt

@@ -3948,3 +3948,11 @@ build-from-user-copy is the legally-defensible pattern.
 - An agent PASS is only structural evidence. Nothing writes ForgeFSE pointer tables or changes
   `hookApproved`; build identity, owner/callsite, calling convention, focused behavior, and a live
   ForgeFSE probe are still required.
+- Added `tools/audit_forgefse_binding_slots.py` to compare ForgeFSE's 918 CGSI `pVTable[N]`
+  assignments with the aligned retail slot map and current overlay. Initial result: 442/443 exact
+  Quest slot/address matches, zero missing assignment families. It correctly groups the four
+  `CameraUseCameraPoint_*` overload entries.
+- The only mismatch exposed a bad exact-name recommendation: `CTCQuestCard::GetRegionName @
+  0x007025A0` versus ForgeFSE slot 15 / decorated CGSI method `CGameScriptInterface::GetRegionName @
+  0x0088E340`. Added a vtable/decorated-symbol-backed override. The next post-agent refresh applies
+  it and the audit is configured to fail unless the result becomes 443/443.
