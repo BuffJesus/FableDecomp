@@ -1,55 +1,119 @@
 rank	address	module	name	retail_bytes	candidate_source_bytes	checker_verdict	first_blocker
-1	00c19f90	_global	Getter_Field84	0	338	PASS	
-2	00c2d7b0	_global	CTCInventory_CheckSlotTypeNegative	0	493	PASS	
-3	00c20ef0	_global	IsStateStreaming_2to4	0	582	PASS	
-4	008702d0	_global	Handle_InitInvalid_008702d0	0	728	PASS	
-5	004aada0	CScriptThing	CScriptThing::MsgOpenedChest	0	811	PASS	invalid use of incomplete type 'class CScriptThing'
-6	004aacc0	CScriptThing	CScriptThing::MsgPerformedAnySpecialAbility	0	940	PASS	invalid use of incomplete type 'class CScriptThing'
-7	00890fc0	CGameScriptInterface	CGameScriptInterface::CameraResetToViewBehindHero	0	1066	PASS	expected '(' before '{' token
-8	004aaf80	CScriptThing	CScriptThing::MsgIsKicked	0	1075	PASS	invalid use of incomplete type 'class CScriptThing'
-9	004ab040	CScriptThing	CScriptThing::SetAsUsable	0	1094	PASS	invalid use of incomplete type 'class CScriptThing'
-10	004aace0	CScriptThing	CScriptThing::MsgPerformedAnyAggressiveSpecialAbility	0	1382	PASS	invalid use of incomplete type 'class CScriptThing'
-11	007266c0	CTCPhysicsBase	CTCPhysicsBase	0	1401	PASS	static assertion failed
-12	008368f0	_global	ConditionalVirtualDispatch_OnLevelUnload	0	1421	PASS	
-13	004aad00	CScriptThing	CScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility	0	1425	PASS	invalid use of incomplete type 'class CScriptThing'
-14	00c37000	_global	IntelligentPointer_BuildAndDispatchFloat	0	1482	PASS	
-15	00c36e00	_global	CSBAgents_BuildAndDispatch_SummonerLightning	0	1495	PASS	
-16	00c36fb0	_global	CSBAgents_BuildAndDispatch_TavernGame	0	1687	PASS	expected '(' before '{' token
-17	00c362f0	_global	CSBAgents_BuildAndDispatch_A	0	1706	PASS	
-18	00890180	CGameScriptInterface	CGameScriptInterface::CancelRadialBlurFade	0	1736	PASS	
-19	0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	0	1753	PASS	
-20	0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	0	1754	PASS	
-21	00c336f0	_global	Constraint_NotifyGlobalManager	0	1818	PASS	
-22	00c43f80	_global	Weapon_ProcessAnimFrameIfReady	0	1845	PASS	expected '(' before '{' token
-23	00403480	_global	_WinMain@16	0	1865	PASS	
-24	0088ec90	CGameScriptInterface	CGameScriptInterface::CameraSetCameraPreloadFlag	0	1885	PASS	
-25	006b0730	CTCPhysicsBase	CTCPhysicsBase	0	1971	PASS	'C3DVector' does not name a type
-26	00c3b900	CLandscapeLayerMesh	CLandscapeLayerMesh	0	1978	PASS	'CEngineLandscapeMap' does not name a type
-27	00c43de0	_global	DrawAutoPickups_SelectAndDrawPrimitive	0	2098	PASS	
-28	00409090	_global	Engine_FindPrimitiveInArray	0	2191	PASS	
-29	00caf680	CEngineLandscapePatch	CEngineLandscapePatch::AllocateTask	0	2195	PASS	'CEngineLandscapePatch' has not been declared
-30	0088ece0	CGameScriptInterface	CGameScriptInterface::CameraShake	0	2424	PASS	
-31	00713140	CActionDoCreatureAction	CActionDoCreatureAction	0	2734	PASS	invalid use of incomplete type 'class NTCScriptedControl::CActionDoCreatureAction'
-32	00a65ff0	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::CMemoryAllocatorFixedSize	0	2986	PASS	'CMemoryAllocatorFixedSize' does not name a type
-33	00890ff0	CGameScriptInterface	CGameScriptInterface::CameraDefault	0	3894	PASS	'field48' was not declared in this scope
-34	00ab5d00	CMouseDX	CMouseDX::CMouseDX	0	4084	PASS	
-35	00bfd420	CLandscapeLayerMesh	CLandscapeLayerMesh	0	4210	PASS	'CLandscapeLayerMesh' does not name a type
-36	00caf580	CEngineLandscapePatch	CEngineLandscapePatch::Destructor	0	4306	PASS	invalid use of incomplete type 'class CCharString'
-37	00bfddd0	CLandscapeLayerMesh	CLandscapeLayerMesh	0	4322	PASS	'CGraphicInfoFrame' does not name a type
-38	008977f0	CGameScriptInterface	CGameScriptInterface::ApplyHeroPenaltyForDeath	0	4950	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-39	004022b0	_global	GFInitialise	0	4991	PASS	invalid use of incomplete type 'struct CDisplayManager'
-40	00891720	CGameScriptInterface	CGameScriptInterface::ChangeHeroHealthBy	0	5345	PASS	
-41	007602f0	_global	Math_PolygonAngleSumClosureCheck	0	5367	PASS	expected '(' before '{' token
-42	008a0820	CGameScriptInterface	CGameScriptInterface::CancelHeroTeleportEffects	0	5545	PASS	
-43	00402130	_global	MyDocuments_CheckWritePermissions	0	6575	PASS	
-44	00a76f30	CNavQuadTree	IsAreaBlockedByLines	0	6581	PASS	'list' in namespace 'std' does not name a template type
-45	00401067	_global	entry	0	6600	PASS	static assertion failed
-46	00401c00	_global	GFHandleSystemInitError	0	9788	PASS	
-47	004fe7f0	_global	CollectSoundThemeSwitchDefs	0	10371	PASS	static assertion failed
-48	00a793d0	CNavQuadTree	ConnectVerticalMapEdge	0	12933	PASS	'CNavConnectorNode' does not name a type
-49	00a79680	CNavQuadTree	ConnectVerticalMapEdge	0	13026	PASS	'CNavConnectorNode' does not name a type
-50	0040cec0	_global	CUserProfileManager_Constructor	0	14968	FAIL	
-51	00a79b30	CNavQuadTreeNode	Initialise	0	16120	PASS	'CANavQuadTreeNode' does not name a type
-52	00a781a0	CNavQuadTree	UpdateLines	0	16425	PASS	'C2DVector' does not name a type
-53	0050a650	CWorldMap	GetMapNavigationAreaInit	0	26227	PASS	use of enum 'EHeroMorphType' without previous declaration
-54	00a7a8d0	CNavQuadTree	Initialise	0	27473	PASS	'C2DLineF' was not declared in this scope
+1	0088e210	CGameScriptInterface	CGameScriptInterface::DisplayTime	0	212	PASS	
+2	0088fbb0	CGameScriptInterface	CGameScriptInterface::GetCountBetMoneyDown	0	212	PASS	
+3	0088fb10	CGameScriptInterface	CGameScriptInterface::GetQuitTavernGame	0	228		
+4	0088fb30	CGameScriptInterface	CGameScriptInterface::GetPrizeTavernTable	0	232		
+5	0088fc10	CGameScriptInterface	CGameScriptInterface::GetTradingPriceMult	0	235		
+6	0088fbd0	CGameScriptInterface	CGameScriptInterface::GetSpotTheAdditionBeaten	0	242		
+7	0088fad0	CGameScriptInterface	CGameScriptInterface::GetPlayerUsingWillDummies	0	244		
+8	0088fa90	CGameScriptInterface	CGameScriptInterface::GetPlayerUsingMeleeDummies	0	246	PASS	
+9	0088fab0	CGameScriptInterface	CGameScriptInterface::GetPlayerUsingRangedDummies	0	248	PASS	
+10	00893050	CGameScriptInterface	CGameScriptInterface::GetIsGossipForPlayerSize	0	248	PASS	
+11	0088fb50	CGameScriptInterface	CGameScriptInterface::GetBettingActive	0	262	PASS	
+12	0088fb70	CGameScriptInterface	CGameScriptInterface::GetBettingAccept	0	262	PASS	
+13	0088fc30	CGameScriptInterface	CGameScriptInterface::GetBoastingEnabled	0	266	PASS	
+14	0088faf0	CGameScriptInterface	CGameScriptInterface::GetCheapHeadLooking	0	268	PASS	
+15	0088fbf0	CGameScriptInterface	CGameScriptInterface::GetGlobalTargetingDistanceOffset	0	299	PASS	
+16	00893040	CGameScriptInterface	CGameScriptInterface::GetActiveGossipCategoriesSize	0	315	PASS	'reinterpret_cast' from integer to pointer
+17	00c19f90	_global	Getter_Field84	0	338	PASS	
+18	0088e500	CGameScriptInterface	CGameScriptInterface::FixMovieSequenceCamera	0	361	PASS	'reinterpret_cast' from integer to pointer
+19	00c2d7b0	_global	CTCInventory_CheckSlotTypeNegative	0	493	PASS	
+20	00891520	CGameScriptInterface	CGameScriptInterface::FailAllActiveQuests	0	558	PASS	'reinterpret_cast' from integer to pointer
+21	00c20ef0	_global	IsStateStreaming_2to4	0	582	PASS	
+22	0088f900	CGameScriptInterface	CGameScriptInterface::GetCountdownTimer	0	593	PASS	
+23	00891c40	CGameScriptInterface	CGameScriptInterface::DisplayMoneyBag	0	600	PASS	
+24	006e7290	CGameScriptInterface	CGameScriptInterface::EndLetterBox	0	611	PASS	
+25	008702d0	_global	Handle_InitInvalid_008702d0	0	728	PASS	
+26	00891870	CGameScriptInterface	CGameScriptInterface::IsHeroOnQuest	0	741		'reinterpret_cast' from integer to pointer
+27	004aada0	CScriptThing	CScriptThing::MsgOpenedChest	0	811	PASS	invalid use of incomplete type 'class CScriptThing'
+28	0088f4a0	CGameScriptInterface	CGameScriptInterface::EnableDecals	0	811	PASS	
+29	00891320	CGameScriptInterface	CGameScriptInterface::EnableDangerMusic	0	904	PASS	
+30	004aacc0	CScriptThing	CScriptThing::MsgPerformedAnySpecialAbility	0	940	PASS	invalid use of incomplete type 'class CScriptThing'
+31	0088e4c0	CGameScriptInterface	CGameScriptInterface::FadeScreenIn	0	958	PASS	
+32	0088f9e0	CGameScriptInterface	CGameScriptInterface::GetGuildSealRecallAngleXY	0	1043	PASS	
+33	00890fc0	CGameScriptInterface	CGameScriptInterface::CameraResetToViewBehindHero	0	1066	PASS	expected '(' before '{' token
+34	004aaf80	CScriptThing	CScriptThing::MsgIsKicked	0	1075	PASS	invalid use of incomplete type 'class CScriptThing'
+35	004ab040	CScriptThing	CScriptThing::SetAsUsable	0	1094	PASS	invalid use of incomplete type 'class CScriptThing'
+36	0088f450	CGameScriptInterface	CGameScriptInterface::IsHeroSleepingEnabled	0	1137		
+37	008907e0	CGameScriptInterface	CGameScriptInterface::FadeScreenOutUntilNextCallToFadeScreenIn	0	1239	PASS	
+38	008913c0	CGameScriptInterface	CGameScriptInterface::IsHeroInTavernGame	0	1333		
+39	004aace0	CScriptThing	CScriptThing::MsgPerformedAnyAggressiveSpecialAbility	0	1382	PASS	invalid use of incomplete type 'class CScriptThing'
+40	007266c0	CTCPhysicsBase	CTCPhysicsBase	0	1401	PASS	static assertion failed
+41	008368f0	_global	ConditionalVirtualDispatch_OnLevelUnload	0	1421	PASS	
+42	004aad00	CScriptThing	CScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility	0	1425	PASS	invalid use of incomplete type 'class CScriptThing'
+43	0088f620	CGameScriptInterface	CGameScriptInterface::EnableSounds	0	1460	PASS	
+44	0088ecc0	CGameScriptInterface	CGameScriptInterface::IsCameraInScriptedMode	0	1468		
+45	00c37000	_global	IntelligentPointer_BuildAndDispatchFloat	0	1482	PASS	
+46	00c36e00	_global	CSBAgents_BuildAndDispatch_SummonerLightning	0	1495	PASS	
+47	008a78e0	CGameScriptInterface	CGameScriptInterface::ClearActiveGossipCategories	0	1562	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+48	008a7930	CGameScriptInterface	CGameScriptInterface::ClearIsGossipForPlayer	0	1600	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+49	00c36fb0	_global	CSBAgents_BuildAndDispatch_TavernGame	0	1687	PASS	expected '(' before '{' token
+50	00c362f0	_global	CSBAgents_BuildAndDispatch_A	0	1706	PASS	
+51	00890180	CGameScriptInterface	CGameScriptInterface::CancelRadialBlurFade	0	1736	PASS	
+52	0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	0	1753	PASS	
+53	0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	0	1754	PASS	
+54	006e7340	CGameScriptInterface	CGameScriptInterface::GetGameAngleXY	0	1770	PASS	
+55	008902b0	CGameScriptInterface	CGameScriptInterface::IsHeroChild	0	1784		
+56	00c336f0	_global	Constraint_NotifyGlobalManager	0	1818	PASS	
+57	00c43f80	_global	Weapon_ProcessAnimFrameIfReady	0	1845	PASS	expected '(' before '{' token
+58	00403480	_global	_WinMain@16	0	1865	PASS	
+59	0088ec90	CGameScriptInterface	CGameScriptInterface::CameraSetCameraPreloadFlag	0	1885	PASS	
+60	00890370	CGameScriptInterface	CGameScriptInterface::GetHeroHealth	0	1965	PASS	'reinterpret_cast' from integer to pointer
+61	006b0730	CTCPhysicsBase	CTCPhysicsBase	0	1971	PASS	'C3DVector' does not name a type
+62	00c3b900	CLandscapeLayerMesh	CLandscapeLayerMesh	0	1978	PASS	'CEngineLandscapeMap' does not name a type
+63	008903a0	CGameScriptInterface	CGameScriptInterface::GetHeroHealthMax	0	2031	PASS	'reinterpret_cast' from integer to pointer
+64	00c43de0	_global	DrawAutoPickups_SelectAndDrawPrimitive	0	2098	PASS	
+65	00409090	_global	Engine_FindPrimitiveInArray	0	2191	PASS	
+66	00caf680	CEngineLandscapePatch	CEngineLandscapePatch::AllocateTask	0	2195	PASS	'CEngineLandscapePatch' has not been declared
+67	008903d0	CGameScriptInterface	CGameScriptInterface::GetHeroHealthPercentage	0	2374	PASS	'reinterpret_cast' from integer to pointer
+68	0088ece0	CGameScriptInterface	CGameScriptInterface::CameraShake	0	2424	PASS	
+69	008901e0	CGameScriptInterface	CGameScriptInterface::DisplacementMonochromeEffectColourFadeOut	0	2637	PASS	
+70	00891ea0	CGameScriptInterface	CGameScriptInterface::IsHeroAllowedHenchmenInCurrentRegion	0	2698		
+71	00713140	CActionDoCreatureAction	CActionDoCreatureAction	0	2734	PASS	invalid use of incomplete type 'class NTCScriptedControl::CActionDoCreatureAction'
+72	00a65ff0	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::CMemoryAllocatorFixedSize	0	2986	PASS	'CMemoryAllocatorFixedSize' does not name a type
+73	008a1590	CGameScriptInterface	CGameScriptInterface::GetBestTimePairs	0	2996	PASS	'reinterpret_cast' from integer to pointer
+74	00899ef0	CGameScriptInterface	CGameScriptInterface::GiveHeroMorality	0	3000		'ScriptInterfaceContext14* CGameScriptInterface::Context14' is private within this context
+75	008a15f0	CGameScriptInterface	CGameScriptInterface::GetBestTimeSorting	0	3012	PASS	'reinterpret_cast' from integer to pointer
+76	008a17d0	CGameScriptInterface	CGameScriptInterface::GetBestTimeGuessTheAddition	0	3014	PASS	'reinterpret_cast' from integer to pointer
+77	00899220	CGameScriptInterface	CGameScriptInterface::IncreaseHeroRenownLevel	0	3179		'reinterpret_cast' from integer to pointer
+78	00897b10	CGameScriptInterface	CGameScriptInterface::GetHeroHasCurrentMarriage	0	3628	PASS	'reinterpret_cast' from integer to pointer
+79	0089b330	CGameScriptInterface	CGameScriptInterface::IsHeroNaked	0	3667		
+80	00897bd0	CGameScriptInterface	CGameScriptInterface::GetHeroHasChildren	0	3810	PASS	
+81	00899560	CGameScriptInterface	CGameScriptInterface::GetHeroAge	0	3866	PASS	'reinterpret_cast' from integer to pointer
+82	00890ff0	CGameScriptInterface	CGameScriptInterface::CameraDefault	0	3894	PASS	'field48' was not declared in this scope
+83	00898e60	CGameScriptInterface	CGameScriptInterface::IsHeroHandLampLit	0	3931		'reinterpret_cast' from integer to pointer
+84	00899850	CGameScriptInterface	CGameScriptInterface::GetHeroFatness	0	3946	PASS	'reinterpret_cast' from integer to pointer
+85	00897c30	CGameScriptInterface	CGameScriptInterface::GetHeroHasMurderedWife	0	3986	PASS	
+86	008998c0	CGameScriptInterface	CGameScriptInterface::GetHeroScariness	0	4010	PASS	'reinterpret_cast' from integer to pointer
+87	008987e0	CGameScriptInterface	CGameScriptInterface::ConfiscateAllHeroWeapons	0	4077	PASS	
+88	00897b70	CGameScriptInterface	CGameScriptInterface::GetHeroHasDivorcedMarriage	0	4078	PASS	
+89	00ab5d00	CMouseDX	CMouseDX::CMouseDX	0	4084	PASS	
+90	00899f90	CGameScriptInterface	CGameScriptInterface::GetHeroMorality	0	4118	PASS	'reinterpret_cast' from integer to pointer
+91	00897aa0	CGameScriptInterface	CGameScriptInterface::GetHeroHasMarried	0	4185	PASS	'reinterpret_cast' from integer to pointer
+92	00bfd420	CLandscapeLayerMesh	CLandscapeLayerMesh	0	4210	PASS	'CLandscapeLayerMesh' does not name a type
+93	00caf580	CEngineLandscapePatch	CEngineLandscapePatch::Destructor	0	4306	PASS	invalid use of incomplete type 'class CCharString'
+94	00bfddd0	CLandscapeLayerMesh	CLandscapeLayerMesh	0	4322	PASS	'CGraphicInfoFrame' does not name a type
+95	00899930	CGameScriptInterface	CGameScriptInterface::GetHeroAttractiveness	0	4405	PASS	
+96	00899700	CGameScriptInterface	CGameScriptInterface::GetDistanceHeroCanBeHeardFrom	0	4510	PASS	
+97	008991a0	CGameScriptInterface	CGameScriptInterface::IsHeroRenownLevelFull	0	4672		'reinterpret_cast' from integer to pointer
+98	008999a0	CGameScriptInterface	CGameScriptInterface::GetHeroWillEnergyLevel	0	4819	PASS	'reinterpret_cast' from integer to pointer
+99	008977f0	CGameScriptInterface	CGameScriptInterface::ApplyHeroPenaltyForDeath	0	4950	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+100	004022b0	_global	GFInitialise	0	4991	PASS	invalid use of incomplete type 'struct CDisplayManager'
+101	00891720	CGameScriptInterface	CGameScriptInterface::ChangeHeroHealthBy	0	5345	PASS	
+102	007602f0	_global	Math_PolygonAngleSumClosureCheck	0	5367	PASS	expected '(' before '{' token
+103	008a0820	CGameScriptInterface	CGameScriptInterface::CancelHeroTeleportEffects	0	5545	PASS	
+104	0089a070	CGameScriptInterface	CGameScriptInterface::ChangeHeroMoralityDueToTheft	0	5630	PASS	
+105	0089a0e0	CGameScriptInterface	CGameScriptInterface::ChangeHeroMoralityDueToPicklock	0	5728	PASS	
+106	008986d0	CGameScriptInterface	CGameScriptInterface::ConfiscateAllHeroItems	0	6516	PASS	
+107	00402130	_global	MyDocuments_CheckWritePermissions	0	6575	PASS	
+108	00a76f30	CNavQuadTree	IsAreaBlockedByLines	0	6581	PASS	'list' in namespace 'std' does not name a template type
+109	00401067	_global	entry	0	6600	PASS	static assertion failed
+110	00401c00	_global	GFHandleSystemInitError	0	9788	PASS	
+111	004fe7f0	_global	CollectSoundThemeSwitchDefs	0	10371	PASS	static assertion failed
+112	00a793d0	CNavQuadTree	ConnectVerticalMapEdge	0	12933	PASS	'CNavConnectorNode' does not name a type
+113	00a79680	CNavQuadTree	ConnectVerticalMapEdge	0	13026	PASS	'CNavConnectorNode' does not name a type
+114	0040cec0	_global	CUserProfileManager_Constructor	0	14968	FAIL	
+115	00a79b30	CNavQuadTreeNode	Initialise	0	16120	PASS	'CANavQuadTreeNode' does not name a type
+116	00a781a0	CNavQuadTree	UpdateLines	0	16425	PASS	'C2DVector' does not name a type
+117	0050a650	CWorldMap	GetMapNavigationAreaInit	0	26227	PASS	use of enum 'EHeroMorphType' without previous declaration
+118	00a7a8d0	CNavQuadTree	Initialise	0	27473	PASS	'C2DLineF' was not declared in this scope

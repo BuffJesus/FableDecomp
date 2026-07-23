@@ -46,6 +46,8 @@ imgui.ini
 /rebuild/build/
 /rebuild/refresh.log
 /rebuild/refresh.state.json
+# Local parity-fix verification scratch (isolated compiles, not the shared build catalog).
+/rebuild/corrections/_verify/
 
 # RE-agent transcripts/state are local and continuously changing; keep source/config/results.
 /lift/logs/

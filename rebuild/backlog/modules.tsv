@@ -1,8 +1,8 @@
 rank	track	module	score	catalog_functions	prototype_complete	prototype_gaps	calling_convention_unknown	naming_review	agent_candidates	verified_lifts
-1	candidate-cluster	_global	476624	11370	1994	9376	9323	391	43	0
-2	candidate-cluster	CMouseDX	433000	24	24	0	0	0	14	10
-3	candidate-cluster	CMemoryAllocatorFixedSize	425500	21	21	0	0	0	11	7
-4	candidate-cluster	CGameScriptInterface	419994	954	948	6	5	0	10	0
+1	candidate-cluster	CGameScriptInterface	547994	954	948	6	5	0	74	0
+2	candidate-cluster	_global	476624	11370	1994	9376	9323	391	43	0
+3	candidate-cluster	CMouseDX	433000	24	24	0	0	0	14	10
+4	candidate-cluster	CMemoryAllocatorFixedSize	425500	21	21	0	0	0	11	7
 5	candidate-cluster	CNavQuadTree	417999	22	21	1	1	0	9	0
 6	candidate-cluster	CEngineLandscapePatch	417998	29	27	2	2	0	9	0
 7	candidate-cluster	CEngineLandscapeRenderer	416000	33	33	0	0	0	8	0
