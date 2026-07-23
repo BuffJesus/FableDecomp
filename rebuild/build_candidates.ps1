@@ -11280,6 +11280,41 @@ $catalog = @(
         TestSource = 'global_sub00451c3d_00451c3d_test.cpp'
         PassPattern = 'AUTO_TINY_00451c3d_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0046a174'
+        Module = 'CAppearanceDef'
+        Source = 'CAppearanceDef_GetSizeofClass_0046a174.cpp'
+        TestSource = 'CAppearanceDef_GetSizeofClass_0046a174_test.cpp'
+        PassPattern = 'AUTO_TINY_0046a174_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046ee66'
+        Module = 'CQuickAccessItemButtonGuiDef'
+        Source = 'CQuickAccessItemButtonGuiDef_GetSizeofClass_0046ee66.cpp'
+        TestSource = 'CQuickAccessItemButtonGuiDef_GetSizeofClass_0046ee66_test.cpp'
+        PassPattern = 'AUTO_TINY_0046ee66_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046f1ff'
+        Module = 'CAbilityButtonGuiDef'
+        Source = 'CAbilityButtonGuiDef_GetSizeofClass_0046f1ff.cpp'
+        TestSource = 'CAbilityButtonGuiDef_GetSizeofClass_0046f1ff_test.cpp'
+        PassPattern = 'AUTO_TINY_0046f1ff_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046f723'
+        Module = 'CLensFlareElementDef'
+        Source = 'CLensFlareElementDef_GetSizeofClass_0046f723.cpp'
+        TestSource = 'CLensFlareElementDef_GetSizeofClass_0046f723_test.cpp'
+        PassPattern = 'AUTO_TINY_0046f723_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00471f93'
+        Module = 'COpinionDeedReactionDef'
+        Source = 'COpinionDeedReactionDef_GetSizeofClass_00471f93.cpp'
+        TestSource = 'COpinionDeedReactionDef_GetSizeofClass_00471f93_test.cpp'
+        PassPattern = 'AUTO_TINY_00471f93_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH

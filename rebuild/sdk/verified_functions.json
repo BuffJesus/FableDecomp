@@ -1,5 +1,5 @@
 {
- "count": 1583,
+ "count": 1588,
  "functions": [
   {
    "address": "0x004012bc",
@@ -11888,6 +11888,51 @@
    "calling_convention": "__thiscall",
    "return_type": "ulong",
    "parameter_types": "CPlayerGuiDef *",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0046a174",
+   "name": "CAppearanceDef::GetSizeofClass",
+   "module": "CAppearanceDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CAppearanceDef *",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0046ee66",
+   "name": "CQuickAccessItemButtonGuiDef::GetSizeofClass",
+   "module": "CQuickAccessItemButtonGuiDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CQuickAccessItemButtonGuiDef *",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0046f1ff",
+   "name": "CAbilityButtonGuiDef::GetSizeofClass",
+   "module": "CAbilityButtonGuiDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CAbilityButtonGuiDef *",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0046f723",
+   "name": "CLensFlareElementDef::GetSizeofClass",
+   "module": "CLensFlareElementDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CLensFlareElementDef *",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00471f93",
+   "name": "COpinionDeedReactionDef::GetSizeofClass",
+   "module": "COpinionDeedReactionDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "COpinionDeedReactionDef *",
    "parity": "EXACT"
   },
   {
