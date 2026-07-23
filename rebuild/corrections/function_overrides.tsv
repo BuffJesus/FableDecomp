@@ -1,4 +1,5 @@
 address	name	module	calling_convention	return_type	parameter_count	parameter_types	evidence
+00662020	Getter_FieldE0_FC	_global	__fastcall	ulong	1	Getter_FieldE0_FC_OuterOverlay const *	retail 13-byte ECX accessor: return dword at *(*(self+0xE0)+0xFC)
 00401f30	GFGetBuildNumber2	_global	__cdecl	void	0		retail no-argument build-version file probe and global string assignment
 0063a9e0	CWorldMap::SetThemeBlendAtBlock	CWorldMap	__thiscall	void	5	CWorldMap *,C2DCoordI const &,uchar,ulong,EThemePaintType	Ego_r PDB ?SetThemeBlendAtBlock@CWorldMap@@QAEXABVC2DCoordI@@EKW4EThemePaintType@@@Z plus retail call to CMap::SetEngineBlendAt
 00beaaa0	CEngineScreenEffectOutlineGlow::~CEngineScreenEffectOutlineGlow	CEngineScreenEffectOutlineGlow	__thiscall	void	1	CEngineScreenEffectOutlineGlow *	retail body plus scalar-deleting wrapper at 00beb4d0

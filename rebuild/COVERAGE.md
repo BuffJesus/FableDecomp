@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-07-22T19:03:54-06:00`
+Generated: `2026-07-22T19:08:54-06:00`
 
 | Stage | Complete | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
@@ -8,19 +8,19 @@ Generated: `2026-07-22T19:03:54-06:00`
 | Mechanically named | 49,553 | 49,553 | 100.000% | No default `FUN_*` labels |
 | Accepted naming quality | 49,162 | 49,553 | 99.211% | Excludes current low-confidence/address-suffixed review tail |
 | Usable reconstruction/navigation names | 49,510 | 49,553 | 99.913% | Includes explicitly classified compiler/template family labels; does not claim original symbols |
-| Calling convention known | 38,480 | 49,553 | 77.654% | Required for ABI-correct declarations |
-| Complete non-undefined prototype | 34,202 | 49,553 | 69.021% | Known CC, return, and parameter types |
+| Calling convention known | 38,481 | 49,553 | 77.656% | Required for ABI-correct declarations |
+| Complete non-undefined prototype | 34,203 | 49,553 | 69.023% | Known CC, return, and parameter types |
 | Auto-RE candidate source | 121 | 49,553 | 0.244% | Generated/reviewed candidate; not compile-verified |
 | Auto-RE checker PASS | 112 | 49,553 | 0.226% | Structural checker grade only |
 | Auto-RE source integrity | 121 | 121 | 100.000% | Balanced, non-empty source snapshots |
 | Host C++20 syntax pass | 28 | 121 | 23.140% | Strict 32-bit translation unit with real declarations |
-| Candidate signature audit clean | 85 | 121 | 70.248% | Definition agrees with manifest owner/name/shape and has unique linkage |
-| VC7.1 compiled candidate | 90 | 49,553 | 0.182% | Compiles to an object; behavioral parity not yet claimed |
-| Behavior-tested candidate | 90 | 49,553 | 0.182% | Local branch/layout oracle passes; retail parity not yet claimed |
-| Candidate retail `.text` match | 32 | 49,553 | 0.065% | Generated-candidate track exact matches awaiting promotion |
+| Candidate signature audit clean | 86 | 121 | 71.074% | Definition agrees with manifest owner/name/shape and has unique linkage |
+| VC7.1 compiled candidate | 91 | 49,553 | 0.184% | Compiles to an object; behavioral parity not yet claimed |
+| Behavior-tested candidate | 91 | 49,553 | 0.184% | Local branch/layout oracle passes; retail parity not yet claimed |
+| Candidate retail `.text` match | 33 | 49,553 | 0.067% | Generated-candidate track exact matches awaiting promotion |
 | Candidate relocation-masked `.text` match | 17 | 49,553 | 0.034% | Exact instruction bytes/layout after masking expected COFF linker fields |
-| Verified functional or matching C++ | 67 | 49,553 | 0.135% | Compiled under VC7.1 and checked against retail |
-| Byte-identical C++ | 48 | 49,553 | 0.097% | Exact `.text` match |
+| Verified functional or matching C++ | 68 | 49,553 | 0.137% | Compiled under VC7.1 and checked against retail |
+| Byte-identical C++ | 49 | 49,553 | 0.099% | Exact `.text` match |
 | Lifted modules | 3 | 3,433 | 0.087% | Module-level reconstruction proof |
 
 ## Interpretation
@@ -31,10 +31,10 @@ The clean-decompile sweep predates later function discovery, so its denominator 
 
 ## Current gates
 
-- 15,351 functions still lack a complete non-undefined prototype.
-- 11,073 functions still have an unknown calling convention.
+- 15,350 functions still lack a complete non-undefined prototype.
+- 11,072 functions still have an unknown calling convention.
 - 40 names remain in the semantic/accessor review tail; donor proposals and the invalid boundary are tracked separately.
-- 31 auto-RE candidates still need a VC7.1-compatible translation unit.
-- 36 original generated candidate definitions still disagree with corrected manifest identities or parameter shapes; curated replacements are tracked separately.
+- 30 auto-RE candidates still need a VC7.1-compatible translation unit.
+- 35 original generated candidate definitions still disagree with corrected manifest identities or parameter shapes; curated replacements are tracked separately.
 - 41 behavior-tested candidates still differ structurally from the retail parity oracle.
 - VC7.1 + Win32 + Direct3D 9 compile/link/runtime SDK probe: **resolved and passing**.

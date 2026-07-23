@@ -31,7 +31,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 0063a9e0	CWorldMap	CWorldMap::SetThemeBlendAtBlock	PASS	CWorldMap	SetThemeBlendAtBlock	void	void	4	4		PASS	
 0063aa50	CWorldMap	GetThemeAtBlock	PASS	CWorldMap	GetThemeAtBlock	ulong	unsigned long	3	3		PASS	
 0063aab0	CWorldMap	GetThemeBlendAtBlock	PASS	CWorldMap	GetThemeBlendAtBlock	ulong	unsigned long	3	3		PASS	
-00662020	_global	Getter_FieldE0_FC	PASS	_global	Getter_FieldE0_FC	undefined	std::uint32_t __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
+00662020	_global	Getter_FieldE0_FC	PASS	_global	Getter_FieldE0_FC	ulong	std::uint32_t __fastcall	1	1		PASS	
 006b0730	CTCPhysicsBase	CTCPhysicsBase	PASS	TCPhysicsBase	CTCPhysicsBase	undefined	C	1	1	006b0730;007266c0	REVIEW	owner-mismatch;duplicate-linkage-signature
 00713140	CActionDoCreatureAction	CActionDoCreatureAction	PASS	ActionDoCreatureAction	CActionDoCreatureAction	undefined	C	1	1		REVIEW	owner-mismatch
 007266c0	CTCPhysicsBase	CTCPhysicsBase	PASS	TCPhysicsBase	CTCPhysicsBase	undefined	C	1	1	006b0730;007266c0	REVIEW	owner-mismatch;duplicate-linkage-signature

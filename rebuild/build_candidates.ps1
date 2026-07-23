@@ -17,6 +17,10 @@ $catalog = @(
         TestSource = 'Global_GFGetBuildNumber2_00401f30_test.cpp'; PassPattern = 'GF_GET_BUILD_NUMBER_2_TEST PASS'
     },
     [pscustomobject]@{
+        Address = '00662020'; Module = '_global'; Source = 'Global_GetterFieldE0FC_00662020.cpp'
+        TestSource = 'Global_GetterFieldE0FC_00662020_test.cpp'; PassPattern = 'GETTER_FIELD_E0_FC_TEST PASS'
+    },
+    [pscustomobject]@{
         Address = '00a7a650'; Module = 'CNavQuadTree'; Source = 'CNavQuadTree_LinkToNeighbouringMaps_00a7a650.cpp'
         TestSource = 'CNavQuadTree_LinkToNeighbouringMaps_00a7a650_test.cpp'; PassPattern = 'NAV_QUAD_TREE_LINK_NEIGHBOURING_MAPS_TEST PASS'
     },
