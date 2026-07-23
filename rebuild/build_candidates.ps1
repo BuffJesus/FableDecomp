@@ -759,6 +759,34 @@ $catalog = @(
         TestSource = 'CIEngine_GetStaticMapUpdatePassCountCIEngineU_00b23470_test.cpp'
         PassPattern = 'CIENGINE_00b23470_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0041e5f2'
+        Module = '_global'
+        Source = 'global_GetInstance_0041e5f2.cpp'
+        TestSource = 'global_GetInstance_0041e5f2_test.cpp'
+        PassPattern = 'GLOBAL_0041e5f2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00419603'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = 'CEngineInternalPrimitiveMeshBase_GetMeshEffect_00419603.cpp'
+        TestSource = 'CEngineInternalPrimitiveMeshBase_GetMeshEffect_00419603_test.cpp'
+        PassPattern = 'CENGINEINTERNALPRIMITIVEMESHBASE_00419603_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041cc14'
+        Module = 'CTCLook'
+        Source = 'CTCLook_GetHeadAngularVelocityMaxXY_0041cc14.cpp'
+        TestSource = 'CTCLook_GetHeadAngularVelocityMaxXY_0041cc14_test.cpp'
+        PassPattern = 'CTCLOOK_0041cc14_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00658604'
+        Module = 'CTCVillage'
+        Source = 'CTCVillage_GetIsHeroEnemyOfGuards_00658604.cpp'
+        TestSource = 'CTCVillage_GetIsHeroEnemyOfGuards_00658604_test.cpp'
+        PassPattern = 'CTCVILLAGE_00658604_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
