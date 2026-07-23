@@ -1,13 +1,13 @@
 # Candidate signature audit
 
-Generated: `2026-07-22T18:26:37-06:00`
+Generated: `2026-07-22T19:01:34-06:00`
 
-Clean: **85 / 115**. Review required: **30**.
+Clean: **85 / 121**. Review required: **36**.
 
 | Issue | Candidates |
 |---|---:|
-| `explicit-parameter-count-mismatch` | 14 |
-| `method-name-mismatch` | 7 |
+| `explicit-parameter-count-mismatch` | 20 |
+| `method-name-mismatch` | 8 |
 | `owner-mismatch` | 7 |
 | `duplicate-linkage-signature` | 7 |
 | `return-shape-mismatch` | 4 |
@@ -28,9 +28,15 @@ Clean: **85 / 115**. Review required: **30**.
 | `00404a90` | `_global` | `$E2` | `GlobalAt` | method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch |
 | `00409090` | `_global` | `Engine_FindPrimitiveInArray` | `Engine_FindPrimitiveInArray` | explicit-parameter-count-mismatch |
 | `0040cec0` | `_global` | `CUserProfileManager_Constructor` | `CUserProfileManager_Constructor` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `004fe7f0` | `_global` | `CollectSoundThemeSwitchDefs` | `CollectSoundThemeSwitchDefs` | explicit-parameter-count-mismatch |
+| `00662020` | `_global` | `Getter_FieldE0_FC` | `Getter_FieldE0_FC` | explicit-parameter-count-mismatch |
 | `006b0730` | `CTCPhysicsBase` | `CTCPhysicsBase` | `CTCPhysicsBase` | owner-mismatch;duplicate-linkage-signature |
 | `00713140` | `CActionDoCreatureAction` | `CActionDoCreatureAction` | `CActionDoCreatureAction` | owner-mismatch |
 | `007266c0` | `CTCPhysicsBase` | `CTCPhysicsBase` | `CTCPhysicsBase` | owner-mismatch;duplicate-linkage-signature |
+| `007602f0` | `_global` | `Math_PolygonAngleSumClosureCheck` | `Math_PolygonAngleSumClosureCheck_InvSqrtOrdered` | method-name-mismatch;explicit-parameter-count-mismatch |
+| `008368f0` | `_global` | `ConditionalVirtualDispatch_OnLevelUnload` | `ConditionalVirtualDispatch_OnLevelUnload` | explicit-parameter-count-mismatch |
+| `0086c5c0` | `_global` | `CPersistInfo_InsertionSortStep_0086c5c0` | `CPersistInfo_InsertionSortStep_0086c5c0` | explicit-parameter-count-mismatch |
+| `0086fa00` | `_global` | `CPersistInfo_InsertionSortStep_0086fa00` | `CPersistInfo_InsertionSortStep_0086fa00` | explicit-parameter-count-mismatch |
 | `00a65ff0` | `CMemoryAllocatorFixedSize` | `CMemoryAllocatorFixedSize::CMemoryAllocatorFixedSize` | `CMemoryAllocatorFixedSize` | owner-mismatch |
 | `00a793d0` | `CNavQuadTree` | `ConnectVerticalMapEdge` | `ConnectVerticalMapEdge` | duplicate-linkage-signature |
 | `00a79680` | `CNavQuadTree` | `ConnectVerticalMapEdge` | `ConnectVerticalMapEdge` | duplicate-linkage-signature |

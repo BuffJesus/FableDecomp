@@ -13,11 +13,15 @@ leans on automation because the target is large.
 - [x] Generate `rebuild/backlog/PROMOTION_QUEUE.md`, a continuously refreshed ranking of every
   uncompiled auto-RE result by checker/signature quality and estimated porting cost.
 - [x] Validate the queue by promoting its first-ranked result, `GFGetBuildNumber2 @ 0x00401F30`.
+- [x] Establish the public recovery repository at `BuffJesus/FableDecomp`, excluding original game
+  binaries, PDBs, Ghidra databases, build products, and raw agent transcripts.
+- [x] Promote `CEngineLandscapePatch::RelocateData @ 0x00BF3980`; its six-path behavior oracle passes
+  and its 143-byte body is an exact relocation-normalized retail match.
 - [ ] Ingest and review both completed `ConnectVerticalMapEdge` reconstructions; promote them only
   after their allocation/refcount and connector-vector behavior can be isolated in a safe harness.
-- [ ] Take the next queue-ranked small candidate, currently
-  `CEngineLandscapePatch::RelocateData @ 0x00BF3980`, through VC7.1 compile, behavior, and retail
-  comparison.
+- [ ] Take the next queue-ranked small candidate, currently `entry @ 0x00401067`, through VC7.1
+  compile, behavior, and retail comparison, or skip to the smaller `InitialiseLines @ 0x00A7A5E0`
+  if CRT startup dependencies make the entry-point harness disproportionately expensive.
 - [ ] Tune `LinkToNeighbouringMaps @ 0x00A7A650` toward the retail x87/local schedule; its current
   implementation is behavior-verified but nine bytes longer than retail.
 - [ ] Continue closing corrected ABI identities from decorated retail/donor symbols, treating the
@@ -62,13 +66,13 @@ The landscape-paint lane now includes four relocation-masked byte-identical `CWo
 methods, four functional `CMap::Set/GetEngineTheme/BlendAt` implementations, and three functional
 `CScriptedMapBrush` cell accessors. The latter expose the authored brush layout directly: five
 32-bit theme slots per cell and byte-addressed blend values at cell offset `0x10 + layer`, with a
-`0x14`-byte cell stride. The curated suite is 89/89 for VC7.1 compile and focused behavior; the
+`0x14`-byte cell stride. The curated suite is 90/90 for VC7.1 compile and focused behavior; the
 map/brush bodies remain honestly non-matching until their compiler code shape is tuned against
 retail.
 
 For milestone accounting, 1% of the 49,553-function catalog is approximately 496 verified
-functions. The compile+behavior lane is currently 89 functions (0.180%); reaching 1% therefore
-requires roughly 407 additional promotions. Clean pseudo-C, naming, and prototype coverage are
+functions. The compile+behavior lane is currently 90 functions (0.182%); reaching 1% therefore
+requires roughly 406 additional promotions. Clean pseudo-C, naming, and prototype coverage are
 tracked separately and must not be presented as completed buildable source.
 
 The recent curated exact-match closure now includes eight locally proven code-shape matches. Five are raw
@@ -95,11 +99,16 @@ its behavior oracle verifies all 19 global stores and their exact widths.
 and allocator-block rollover/free. Its clean 144-byte object deliberately omits 40 bytes of
 provably unreachable copy scaffolding retained in the 191-byte retail body, so it is functional
 but nonmatching.
+`CEngineLandscapePatch::RelocateData @ 0x00BF3980` now adds a 143-byte relocation-normalized exact
+match. Its focused oracle covers direct patch-data relocation, asynchronous-data relocation and
+priority notification, head/interior linked-list repair, missing nodes, and the null early-return
+path. All 57 fixed instruction bytes and control-flow offsets match retail; only the three expected
+direct-call COFF relocations are masked.
 
 The signature audit supports both qualified member definitions and `_global` definitions with C
 linkage/calling-convention qualifiers. This removed seven false-negative parse reviews and raised
-the clean audited candidate set to 85/113; the two remaining unparsed candidates have genuinely
-noncanonical constructor/destructor shapes and stay in review.
+the clean audited candidate set to 85/121; 36 snapshots remain in signature review, including two
+genuinely noncanonical constructor/destructor definitions that still cannot be parsed.
 
 The toolchain now also queries the private donor PDB directly through Visual Studio's installed
 `llvm-pdbutil` and DIA runtime. Each future auto-RE target receives an exact qualified donor symbol
