@@ -78,7 +78,8 @@ def main():
     ap.add_argument("addr"); ap.add_argument("cpp", type=Path)
     ap.add_argument("--oracle", type=Path, default=DEFAULT_ORACLE)
     ap.add_argument("--name", default=None)
-    ap.add_argument("--mutate", action="store_true", help="also random-search commutative swaps")
+    ap.add_argument("--mutate", action="store_true", help="also run AST mutation search (temp-intro + reassoc)")
+    ap.add_argument("--depth", type=int, default=3, help="greedy stacking depth for AST mutations")
     ap.add_argument("--iters", type=int, default=400)
     ap.add_argument("--seed", type=int, default=1)
     a = ap.parse_args()
@@ -95,14 +96,21 @@ def main():
     best = None
     tried = 0
 
-    def consider(text, flags, pragma, label):
-        nonlocal best, tried
-        tried += 1
-        r = sc(text, flags, pragma)
+    def _update_best(r, text, flags, pragma, label):
+        nonlocal best
         if best is None or r["score"] < best[0]["score"]:
             best = (r, text, flags, pragma, label)
             extra = f"prefix={r.get('prefix')}/{r.get('retail')}" if r["status"] == "DIFFER" else ""
             print(f"  NEW BEST score={r['score']:>8} {r['status']:16} {label} {extra}")
+
+    def tried_inc():
+        nonlocal tried
+        tried += 1
+
+    def consider(text, flags, pragma, label):
+        tried_inc()
+        r = sc(text, flags, pragma)
+        _update_best(r, text, flags, pragma, label)
         return r["score"] == 0
 
     # Phase 1: exhaustive flag x pragma grid on the untouched source
@@ -112,20 +120,49 @@ def main():
             if consider(base, flags, pragma, f"{' '.join(flags)} | {pragma or '(no pragma)'}"):
                 print("MATCH via flag/pragma sweep"); return _finish(a, best)
 
-    # Phase 2: optional random commutative-swap search, each with a random flag/pragma
+    # Phase 2: AST-driven mutation search (temp-introduction + reassociation) with
+    # greedy stacking. This is the register-allocation cracker.
     if a.mutate:
-        sites = find_swaps(base)
-        print(f"Phase 2: random commutative-swap search over {len(sites)} sites x {a.iters} iters")
-        if sites:
-            for _ in range(a.iters):
-                k = rng.randint(1, len(sites))
-                chosen = rng.sample(range(len(sites)), k)
-                text = apply_swaps(base, sites, chosen)
-                flags = rng.choice(FLAG_SETS); pragma = rng.choice(PRAGMAS)
-                if consider(text, flags, pragma, f"swap{sorted(chosen)} {' '.join(flags)} {pragma or ''}"):
-                    print("MATCH via mutation search"); return _finish(a, best)
-        else:
-            print("  (no commutative sites detected)")
+        try:
+            import clang_mutations as cm
+        except Exception as e:
+            print(f"  (clang mutations unavailable: {e})"); cm = None
+        # resolve the function leaf name for the AST walker
+        from permuter_score import _read_tsv  # type: ignore
+        orc = {r["address"].lower(): r for r in _read_tsv(a.oracle)}
+        leaf = (a.name or orc.get(a.addr.lower().replace("0x", ""), {}).get("name", "")).rsplit("::", 1)[-1]
+        FLAG_SUBSET = [["/O2", "/Oy"], ["/O1", "/Oy"], ["/Ox", "/Oy"], ["/Os", "/Oy"], ["/Ot", "/Oy"]]
+        PRAGMA_SUBSET = ["", '#pragma optimize("s",on)', '#pragma optimize("t",on)']
+        cur = base
+        curfile = work / "cur.cpp"
+        for depth in range(a.depth):
+            curfile.write_text(cur, encoding="utf-8")
+            variants = []
+            if cm:
+                variants += cm.temp_intro_variants(curfile, leaf)
+                variants += cm.reassoc_variants(curfile, leaf)
+            if not variants:
+                print(f"Phase 2 depth {depth}: no AST variants"); break
+            print(f"Phase 2 depth {depth}: {len(variants)} mutation variants x {len(FLAG_SUBSET)*len(PRAGMA_SUBSET)} flag/pragma")
+            round_best = None
+            for lbl, mtext in variants:
+                for flags in FLAG_SUBSET:
+                    for pragma in PRAGMA_SUBSET:
+                        r = sc(mtext, flags, pragma)
+                        tried_inc()
+                        if round_best is None or r["score"] < round_best[0]["score"]:
+                            round_best = (r, mtext, flags, pragma, lbl)
+                        if r["score"] == 0:
+                            _update_best(r, mtext, flags, pragma, lbl)
+                            print(f"MATCH via AST mutation: {lbl}"); return _finish(a, best)
+            # accept round best if it improves; else stop
+            rb = round_best[0]["score"]
+            if rb < best[0]["score"]:
+                _update_best(*round_best)
+                print(f"  depth {depth} accepted: score={rb} via {round_best[4]}")
+                cur = round_best[1]
+            else:
+                print(f"  depth {depth} no improvement (best round score={rb}); stopping"); break
 
     return _finish(a, best)
 
