@@ -2817,6 +2817,916 @@ $catalog = @(
         TestSource = 'CPlayerGui_ForceClose_00408360_test.cpp'
         PassPattern = 'CPlayerGui_00408360_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00415920'
+        Module = 'CGameComponent'
+        Source = 'CGameComponent_Init_00415920.cpp'
+        TestSource = 'CGameComponent_Init_00415920_test.cpp'
+        PassPattern = 'PASS_00415920'
+    }
+    [pscustomobject]@{
+        Address = '00415930'
+        Module = 'CGameComponent'
+        Source = 'CGameComponent_SetQuit_00415930.cpp'
+        TestSource = 'CGameComponent_SetQuit_00415930_test.cpp'
+        PassPattern = 'PASS_00415930'
+    }
+    [pscustomobject]@{
+        Address = '00415e83'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_OnPreDeviceReset_00415e83.cpp'
+        TestSource = 'CMainGameComponent_OnPreDeviceReset_00415e83_test.cpp'
+        PassPattern = 'PASS_00415e83'
+    }
+    [pscustomobject]@{
+        Address = '004197b0'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_IsEditorActive_004197b0.cpp'
+        TestSource = 'CMainGameComponent_IsEditorActive_004197b0_test.cpp'
+        PassPattern = 'PASS_004197b0'
+    }
+    [pscustomobject]@{
+        Address = '00415fbc'
+        Module = '_global'
+        Source = 'global_GFGetPreMainMemoryUsed_00415fbc.cpp'
+        TestSource = 'global_GFGetPreMainMemoryUsed_00415fbc_test.cpp'
+        PassPattern = 'PASS_00415fbc'
+    }
+    [pscustomobject]@{
+        Address = '004167c8'
+        Module = '_global'
+        Source = 'global_GFGetPreMainMemoryUsed_004167c8.cpp'
+        TestSource = 'global_GFGetPreMainMemoryUsed_004167c8_test.cpp'
+        PassPattern = 'PASS_004167c8'
+    }
+    [pscustomobject]@{
+        Address = '004194b5'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004194b5.cpp'
+        TestSource = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004194b5_test.cpp'
+        PassPattern = 'PASS_004194b5'
+    }
+    [pscustomobject]@{
+        Address = '004197a0'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_SetQuit_004197a0.cpp'
+        TestSource = 'CMainGameComponent_SetQuit_004197a0_test.cpp'
+        PassPattern = 'PASS_004197a0'
+    }
+    [pscustomobject]@{
+        Address = '0041c7a0'
+        Module = 'list<NUISystem::CList*'
+        Source = 'listNUISystemCList_begin_0041c7a0.cpp'
+        TestSource = 'listNUISystemCList_begin_0041c7a0_test.cpp'
+        PassPattern = 'PASS_0041c7a0'
+    }
+    [pscustomobject]@{
+        Address = '0041cf40'
+        Module = 'CMap'
+        Source = 'CMap_DrawGetSeaLevel_0041cf40.cpp'
+        TestSource = 'CMap_DrawGetSeaLevel_0041cf40_test.cpp'
+        PassPattern = 'PASS_0041cf40'
+    }
+    [pscustomobject]@{
+        Address = '0041c7b0'
+        Module = '_List_const_iterator<std::_List_val<CVsyncCallbackTimer::CPendingQuery'
+        Source = 'ListconstiteratorstdListvalCVsyncCallbackTimerCPendingQuery_operator_0041c7b0.cpp'
+        TestSource = 'ListconstiteratorstdListvalCVsyncCallbackTimerCPendingQuery_operator_0041c7b0_test.cpp'
+        PassPattern = 'PASS_0041c7b0'
+    }
+    [pscustomobject]@{
+        Address = '0041cd89'
+        Module = 'CObservable'
+        Source = 'CObservable_AddExclusiveObserver_0041cd89.cpp'
+        TestSource = 'CObservable_AddExclusiveObserver_0041cd89_test.cpp'
+        PassPattern = 'PASS_0041cd89'
+    }
+    [pscustomobject]@{
+        Address = '004175da'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_OnPostDeviceReset_004175da.cpp'
+        TestSource = 'CMainGameComponent_OnPostDeviceReset_004175da_test.cpp'
+        PassPattern = 'PASS_004175da'
+    }
+    [pscustomobject]@{
+        Address = '00416219'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = 'ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00416219.cpp'
+        TestSource = 'ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00416219_test.cpp'
+        PassPattern = 'PASS_00416219'
+    }
+    [pscustomobject]@{
+        Address = '00416225'
+        Module = 'CWorld'
+        Source = 'CWorld_DrawGetEnvironment_00416225.cpp'
+        TestSource = 'CWorld_DrawGetEnvironment_00416225_test.cpp'
+        PassPattern = 'PASS_00416225'
+    }
+    [pscustomobject]@{
+        Address = '00416359'
+        Module = 'CWorld'
+        Source = 'CWorld_DrawGetEnvironment_00416359.cpp'
+        TestSource = 'CWorld_DrawGetEnvironment_00416359_test.cpp'
+        PassPattern = 'PASS_00416359'
+    }
+    [pscustomobject]@{
+        Address = '0041cf1f'
+        Module = 'CTCPhysicsNavigator'
+        Source = 'CTCPhysicsNavigator_EnableNavigator_0041cf1f.cpp'
+        TestSource = 'CTCPhysicsNavigator_EnableNavigator_0041cf1f_test.cpp'
+        PassPattern = 'PASS_0041cf1f'
+    }
+    [pscustomobject]@{
+        Address = '0041cf33'
+        Module = 'CObservable'
+        Source = 'CObservable_AddExclusiveObserver_0041cf33.cpp'
+        TestSource = 'CObservable_AddExclusiveObserver_0041cf33_test.cpp'
+        PassPattern = 'PASS_0041cf33'
+    }
+    [pscustomobject]@{
+        Address = '00416047'
+        Module = 'CEditInputProcessCopyPaste'
+        Source = 'CEditInputProcessCopyPaste_AddToInterface_00416047.cpp'
+        TestSource = 'CEditInputProcessCopyPaste_AddToInterface_00416047_test.cpp'
+        PassPattern = 'PASS_00416047'
+    }
+    [pscustomobject]@{
+        Address = '0041c820'
+        Module = 'CPixelFormat'
+        Source = 'CPixelFormat_IsEquivalent_0041c820.cpp'
+        TestSource = 'CPixelFormat_IsEquivalent_0041c820_test.cpp'
+        PassPattern = 'PASS_0041c820'
+    }
+    [pscustomobject]@{
+        Address = '00419036'
+        Module = '_global'
+        Source = 'global_DeleteData_00419036.cpp'
+        TestSource = 'global_DeleteData_00419036_test.cpp'
+        PassPattern = 'PASS_00419036'
+    }
+    [pscustomobject]@{
+        Address = '00415bd0'
+        Module = 'CSurface'
+        Source = 'CSurface_GetWidth_00415bd0.cpp'
+        TestSource = 'CSurface_GetWidth_00415bd0_test.cpp'
+        PassPattern = 'PASS_00415bd0'
+    }
+    [pscustomobject]@{
+        Address = '00415fc1'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = 'ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00415fc1.cpp'
+        TestSource = 'ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00415fc1_test.cpp'
+        PassPattern = 'PASS_00415fc1'
+    }
+    [pscustomobject]@{
+        Address = '00415fe0'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_ProcessEvent_00415fe0.cpp'
+        TestSource = 'CMainGameComponent_ProcessEvent_00415fe0_test.cpp'
+        PassPattern = 'PASS_00415fe0'
+    }
+    [pscustomobject]@{
+        Address = '00415530'
+        Module = 'CActionDoCreatureAction'
+        Source = 'CActionDoCreatureAction_GetActionName_00415530.cpp'
+        TestSource = 'CActionDoCreatureAction_GetActionName_00415530_test.cpp'
+        PassPattern = 'PASS_00415530'
+    }
+    [pscustomobject]@{
+        Address = '00415bf0'
+        Module = 'CSurface'
+        Source = 'CSurface_GetHeight_00415bf0.cpp'
+        TestSource = 'CSurface_GetHeight_00415bf0_test.cpp'
+        PassPattern = 'PASS_00415bf0'
+    }
+    [pscustomobject]@{
+        Address = '00415ff2'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_EventIsSystemEvent_00415ff2.cpp'
+        TestSource = 'CMainGameComponent_EventIsSystemEvent_00415ff2_test.cpp'
+        PassPattern = 'PASS_00415ff2'
+    }
+    [pscustomobject]@{
+        Address = '00419352'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = 'DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_00419352.cpp'
+        TestSource = 'DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_00419352_test.cpp'
+        PassPattern = 'PASS_00419352'
+    }
+    [pscustomobject]@{
+        Address = '0041ca3e'
+        Module = 'CObservable'
+        Source = 'CObservable_AddExclusiveObserver_0041ca3e.cpp'
+        TestSource = 'CObservable_AddExclusiveObserver_0041ca3e_test.cpp'
+        PassPattern = 'PASS_0041ca3e'
+    }
+    [pscustomobject]@{
+        Address = '0041d1b4'
+        Module = 'CBankFile'
+        Source = 'CBankFile_GetBankHandle_0041d1b4.cpp'
+        TestSource = 'CBankFile_GetBankHandle_0041d1b4_test.cpp'
+        PassPattern = 'PASS_0041d1b4'
+    }
+    [pscustomobject]@{
+        Address = '0041c7c0'
+        Module = '_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString'
+        Source = 'TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c7c0.cpp'
+        TestSource = 'TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c7c0_test.cpp'
+        PassPattern = 'PASS_0041c7c0'
+    }
+    [pscustomobject]@{
+        Address = '0041c830'
+        Module = '_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<CCharString'
+        Source = 'TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c830.cpp'
+        TestSource = 'TreeconstiteratorstdTreevalstdTmaptraitsCCharString_operator_0041c830_test.cpp'
+        PassPattern = 'PASS_0041c830'
+    }
+    [pscustomobject]@{
+        Address = '0041ce9d'
+        Module = 'CManager'
+        Source = 'CManager_UpdateErrorMessage_0041ce9d.cpp'
+        TestSource = 'CManager_UpdateErrorMessage_0041ce9d_test.cpp'
+        PassPattern = 'PASS_0041ce9d'
+    }
+    [pscustomobject]@{
+        Address = '00416202'
+        Module = '_global'
+        Source = 'global_operatornew_00416202.cpp'
+        TestSource = 'global_operatornew_00416202_test.cpp'
+        PassPattern = 'PASS_00416202'
+    }
+    [pscustomobject]@{
+        Address = '00416268'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_BeginInputLoading_00416268.cpp'
+        TestSource = 'CMainGameComponent_BeginInputLoading_00416268_test.cpp'
+        PassPattern = 'PASS_00416268'
+    }
+    [pscustomobject]@{
+        Address = '0041627f'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_BeginInputLoading_0041627f.cpp'
+        TestSource = 'CMainGameComponent_BeginInputLoading_0041627f_test.cpp'
+        PassPattern = 'PASS_0041627f'
+    }
+    [pscustomobject]@{
+        Address = '00419463'
+        Module = 'CCountedPointer<CTexture>'
+        Source = 'CCountedPointerCTexture_operator_00419463.cpp'
+        TestSource = 'CCountedPointerCTexture_operator_00419463_test.cpp'
+        PassPattern = 'PASS_00419463'
+    }
+    [pscustomobject]@{
+        Address = '004194ba'
+        Module = 'CCountedPointer<CTexture>'
+        Source = 'CCountedPointerCTexture_operator_004194ba.cpp'
+        TestSource = 'CCountedPointerCTexture_operator_004194ba_test.cpp'
+        PassPattern = 'PASS_004194ba'
+    }
+    [pscustomobject]@{
+        Address = '00419554'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00419554.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00419554_test.cpp'
+        PassPattern = 'PASS_00419554'
+    }
+    [pscustomobject]@{
+        Address = '00414f70'
+        Module = 'CConsoleCommandBase'
+        Source = 'CConsoleCommandBase_GetTypeAsStringCConsoleCommandBaseMB_00414f70.cpp'
+        TestSource = 'CConsoleCommandBase_GetTypeAsStringCConsoleCommandBaseMB_00414f70_test.cpp'
+        PassPattern = 'PASS_00414f70'
+    }
+    [pscustomobject]@{
+        Address = '00415d70'
+        Module = 'CDefString'
+        Source = 'CDefString_operatorclassCCharString_00415d70.cpp'
+        TestSource = 'CDefString_operatorclassCCharString_00415d70_test.cpp'
+        PassPattern = 'PASS_00415d70'
+    }
+    [pscustomobject]@{
+        Address = '00419764'
+        Module = 'CTCInventoryItem'
+        Source = 'CTCInventoryItem_OnDie_00419764.cpp'
+        TestSource = 'CTCInventoryItem_OnDie_00419764_test.cpp'
+        PassPattern = 'PASS_00419764'
+    }
+    [pscustomobject]@{
+        Address = '0041c7e0'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = 'CMemoryAllocatorVariableSize_GetNoAllocatedAreas_0041c7e0.cpp'
+        TestSource = 'CMemoryAllocatorVariableSize_GetNoAllocatedAreas_0041c7e0_test.cpp'
+        PassPattern = 'PASS_0041c7e0'
+    }
+    [pscustomobject]@{
+        Address = '0041c800'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = 'CMemoryAllocatorVariableSize_GetNoAllocatedAreas_0041c800.cpp'
+        TestSource = 'CMemoryAllocatorVariableSize_GetNoAllocatedAreas_0041c800_test.cpp'
+        PassPattern = 'PASS_0041c800'
+    }
+    [pscustomobject]@{
+        Address = '0041bae0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bae0.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bae0_test.cpp'
+        PassPattern = 'PASS_0041bae0'
+    }
+    [pscustomobject]@{
+        Address = '0041bd00'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bd00.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bd00_test.cpp'
+        PassPattern = 'PASS_0041bd00'
+    }
+    [pscustomobject]@{
+        Address = '0041bd60'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bd60.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bd60_test.cpp'
+        PassPattern = 'PASS_0041bd60'
+    }
+    [pscustomobject]@{
+        Address = '0041cc50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041cc50.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041cc50_test.cpp'
+        PassPattern = 'PASS_0041cc50'
+    }
+    [pscustomobject]@{
+        Address = '00415e67'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00415e67.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00415e67_test.cpp'
+        PassPattern = 'PASS_00415e67'
+    }
+    [pscustomobject]@{
+        Address = '0041940c'
+        Module = '_global'
+        Source = 'global_DeleteData_0041940c.cpp'
+        TestSource = 'global_DeleteData_0041940c_test.cpp'
+        PassPattern = 'PASS_0041940c'
+    }
+    [pscustomobject]@{
+        Address = '0041977d'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0041977d.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0041977d_test.cpp'
+        PassPattern = 'PASS_0041977d'
+    }
+    [pscustomobject]@{
+        Address = '0041d198'
+        Module = 'CManager'
+        Source = 'CManager_SetGraphicsBank_0041d198.cpp'
+        TestSource = 'CManager_SetGraphicsBank_0041d198_test.cpp'
+        PassPattern = 'PASS_0041d198'
+    }
+    [pscustomobject]@{
+        Address = '00412b00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00412b00.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00412b00_test.cpp'
+        PassPattern = 'PASS_00412b00'
+    }
+    [pscustomobject]@{
+        Address = '00412c50'
+        Module = 'vector<EWeaponClass'
+        Source = 'vectorEWeaponClass_UmoveEWeaponClass_00412c50.cpp'
+        TestSource = 'vectorEWeaponClass_UmoveEWeaponClass_00412c50_test.cpp'
+        PassPattern = 'PASS_00412c50'
+    }
+    [pscustomobject]@{
+        Address = '00415050'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00415050.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00415050_test.cpp'
+        PassPattern = 'PASS_00415050'
+    }
+    [pscustomobject]@{
+        Address = '0041c760'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0041c760.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0041c760_test.cpp'
+        PassPattern = 'PASS_0041c760'
+    }
+    [pscustomobject]@{
+        Address = '00416296'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_IsControllerDisconnected_00416296.cpp'
+        TestSource = 'CMainGameComponent_IsControllerDisconnected_00416296_test.cpp'
+        PassPattern = 'PASS_00416296'
+    }
+    [pscustomobject]@{
+        Address = '00414e00'
+        Module = '_Destroy_range<std'
+        Source = 'Destroyrangestd_allocatorCSpeechFrame_00414e00.cpp'
+        TestSource = 'Destroyrangestd_allocatorCSpeechFrame_00414e00_test.cpp'
+        PassPattern = 'PASS_00414e00'
+    }
+    [pscustomobject]@{
+        Address = '004167a7'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = 'DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_004167a7.cpp'
+        TestSource = 'DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_004167a7_test.cpp'
+        PassPattern = 'PASS_004167a7'
+    }
+    [pscustomobject]@{
+        Address = '004131d0'
+        Module = '_Dest_val<std'
+        Source = 'Destvalstd_allocatorCMacroCMacro_004131d0.cpp'
+        TestSource = 'Destvalstd_allocatorCMacroCMacro_004131d0_test.cpp'
+        PassPattern = 'PASS_004131d0'
+    }
+    [pscustomobject]@{
+        Address = '0041bb00'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0041bb00.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_0041bb00_test.cpp'
+        PassPattern = 'PASS_0041bb00'
+    }
+    [pscustomobject]@{
+        Address = '004193a0'
+        Module = '_global'
+        Source = 'global_DeleteData_004193a0.cpp'
+        TestSource = 'global_DeleteData_004193a0_test.cpp'
+        PassPattern = 'PASS_004193a0'
+    }
+    [pscustomobject]@{
+        Address = '004193c4'
+        Module = '_global'
+        Source = 'global_DeleteData_004193c4.cpp'
+        TestSource = 'global_DeleteData_004193c4_test.cpp'
+        PassPattern = 'PASS_004193c4'
+    }
+    [pscustomobject]@{
+        Address = '004193e8'
+        Module = '_global'
+        Source = 'global_DeleteData_004193e8.cpp'
+        TestSource = 'global_DeleteData_004193e8_test.cpp'
+        PassPattern = 'PASS_004193e8'
+    }
+    [pscustomobject]@{
+        Address = '00416392'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_PeekWorldChecksum_00416392.cpp'
+        TestSource = 'CMainGameComponent_PeekWorldChecksum_00416392_test.cpp'
+        PassPattern = 'PASS_00416392'
+    }
+    [pscustomobject]@{
+        Address = '0041919c'
+        Module = '_global'
+        Source = 'global_GFLimitReturndouble_0041919c.cpp'
+        TestSource = 'global_GFLimitReturndouble_0041919c_test.cpp'
+        PassPattern = 'PASS_0041919c'
+    }
+    [pscustomobject]@{
+        Address = '0041cc2b'
+        Module = 'CTCLook'
+        Source = 'CTCLook_GetHeadAngularVelocityMaxXY_0041cc2b.cpp'
+        TestSource = 'CTCLook_GetHeadAngularVelocityMaxXY_0041cc2b_test.cpp'
+        PassPattern = 'PASS_0041cc2b'
+    }
+    [pscustomobject]@{
+        Address = '004160a6'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_UninitEventPackageLoading_004160a6.cpp'
+        TestSource = 'CMainGameComponent_UninitEventPackageLoading_004160a6_test.cpp'
+        PassPattern = 'PASS_004160a6'
+    }
+    [pscustomobject]@{
+        Address = '00416122'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_UninitEventPackageLoading_00416122.cpp'
+        TestSource = 'CMainGameComponent_UninitEventPackageLoading_00416122_test.cpp'
+        PassPattern = 'PASS_00416122'
+    }
+    [pscustomobject]@{
+        Address = '004190e2'
+        Module = 'CCountedPointer<NUISystem::CAction>'
+        Source = 'CCountedPointerNUISystemCAction_ShareData_004190e2.cpp'
+        TestSource = 'CCountedPointerNUISystemCAction_ShareData_004190e2_test.cpp'
+        PassPattern = 'PASS_004190e2'
+    }
+    [pscustomobject]@{
+        Address = '00419134'
+        Module = 'CCountedPointer<NUISystem::CAction>'
+        Source = 'CCountedPointerNUISystemCAction_ShareData_00419134.cpp'
+        TestSource = 'CCountedPointerNUISystemCAction_ShareData_00419134_test.cpp'
+        PassPattern = 'PASS_00419134'
+    }
+    [pscustomobject]@{
+        Address = '00419047'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00419047.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00419047_test.cpp'
+        PassPattern = 'PASS_00419047'
+    }
+    [pscustomobject]@{
+        Address = '00419650'
+        Module = 'CThing'
+        Source = 'CThing_GetPBaseDef_00419650.cpp'
+        TestSource = 'CThing_GetPBaseDef_00419650_test.cpp'
+        PassPattern = 'PASS_00419650'
+    }
+    [pscustomobject]@{
+        Address = '0041ba70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041ba70.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041ba70_test.cpp'
+        PassPattern = 'PASS_0041ba70'
+    }
+    [pscustomobject]@{
+        Address = '00414f90'
+        Module = 'CCompressedMemoryDataInputStream'
+        Source = 'CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_00414f90.cpp'
+        TestSource = 'CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_00414f90_test.cpp'
+        PassPattern = 'PASS_00414f90'
+    }
+    [pscustomobject]@{
+        Address = '0041971e'
+        Module = 'CActiveFile'
+        Source = 'CActiveFile_OnReadFinished_0041971e.cpp'
+        TestSource = 'CActiveFile_OnReadFinished_0041971e_test.cpp'
+        PassPattern = 'PASS_0041971e'
+    }
+    [pscustomobject]@{
+        Address = '004190b6'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004190b6.cpp'
+        TestSource = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004190b6_test.cpp'
+        PassPattern = 'PASS_004190b6'
+    }
+    [pscustomobject]@{
+        Address = '00419108'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00419108.cpp'
+        TestSource = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00419108_test.cpp'
+        PassPattern = 'PASS_00419108'
+    }
+    [pscustomobject]@{
+        Address = '00412f60'
+        Module = 'CInitBaseClass'
+        Source = 'CInitBaseClass_Uninitialise_00412f60.cpp'
+        TestSource = 'CInitBaseClass_Uninitialise_00412f60_test.cpp'
+        PassPattern = 'PASS_00412f60'
+    }
+    [pscustomobject]@{
+        Address = '00416365'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_PostChangeResolution_00416365.cpp'
+        TestSource = 'CMainGameComponent_PostChangeResolution_00416365_test.cpp'
+        PassPattern = 'PASS_00416365'
+    }
+    [pscustomobject]@{
+        Address = '0041bcd0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bcd0.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bcd0_test.cpp'
+        PassPattern = 'PASS_0041bcd0'
+    }
+    [pscustomobject]@{
+        Address = '0041bd80'
+        Module = 'CTCMapwho'
+        Source = 'CTCMapwho_OnDie_0041bd80.cpp'
+        TestSource = 'CTCMapwho_OnDie_0041bd80_test.cpp'
+        PassPattern = 'PASS_0041bd80'
+    }
+    [pscustomobject]@{
+        Address = '0041732a'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_InitPlayerManager_0041732a.cpp'
+        TestSource = 'CMainGameComponent_InitPlayerManager_0041732a_test.cpp'
+        PassPattern = 'PASS_0041732a'
+    }
+    [pscustomobject]@{
+        Address = '00419680'
+        Module = 'CBulletTimeManager'
+        Source = 'CBulletTimeManager_IsBulletTimeActive_00419680.cpp'
+        TestSource = 'CBulletTimeManager_IsBulletTimeActive_00419680_test.cpp'
+        PassPattern = 'PASS_00419680'
+    }
+    [pscustomobject]@{
+        Address = '0041baa0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041baa0.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041baa0_test.cpp'
+        PassPattern = 'PASS_0041baa0'
+    }
+    [pscustomobject]@{
+        Address = '0041d165'
+        Module = '_global'
+        Source = 'global_OnCloseMenus_0041d165.cpp'
+        TestSource = 'global_OnCloseMenus_0041d165_test.cpp'
+        PassPattern = 'PASS_0041d165'
+    }
+    [pscustomobject]@{
+        Address = '00413310'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00413310.cpp'
+        TestSource = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00413310_test.cpp'
+        PassPattern = 'PASS_00413310'
+    }
+    [pscustomobject]@{
+        Address = '0041a810'
+        Module = 'C2DBoxF'
+        Source = 'C2DBoxF_Move_0041a810.cpp'
+        TestSource = 'C2DBoxF_Move_0041a810_test.cpp'
+        PassPattern = 'PASS_0041a810'
+    }
+    [pscustomobject]@{
+        Address = '0041bc90'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0041bc90.cpp'
+        TestSource = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0041bc90_test.cpp'
+        PassPattern = 'PASS_0041bc90'
+    }
+    [pscustomobject]@{
+        Address = '00412c10'
+        Module = 'vector<EWeaponClass'
+        Source = 'vectorEWeaponClass_UmoveEWeaponClass_00412c10.cpp'
+        TestSource = 'vectorEWeaponClass_UmoveEWeaponClass_00412c10_test.cpp'
+        PassPattern = 'PASS_00412c10'
+    }
+    [pscustomobject]@{
+        Address = '00416670'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_ProcessEventPackage_00416670.cpp'
+        TestSource = 'CMainGameComponent_ProcessEventPackage_00416670_test.cpp'
+        PassPattern = 'PASS_00416670'
+    }
+    [pscustomobject]@{
+        Address = '0041ab00'
+        Module = 'CSprite'
+        Source = 'CSprite_GetDefaultGraphicIndex_0041ab00.cpp'
+        TestSource = 'CSprite_GetDefaultGraphicIndex_0041ab00_test.cpp'
+        PassPattern = 'PASS_0041ab00'
+    }
+    [pscustomobject]@{
+        Address = '0041be70'
+        Module = 'CEnginePrimitiveHandle'
+        Source = 'CEnginePrimitiveHandle_Clear_0041be70.cpp'
+        TestSource = 'CEnginePrimitiveHandle_Clear_0041be70_test.cpp'
+        PassPattern = 'PASS_0041be70'
+    }
+    [pscustomobject]@{
+        Address = '004166a8'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_CreatePlayers_004166a8.cpp'
+        TestSource = 'CMainGameComponent_CreatePlayers_004166a8_test.cpp'
+        PassPattern = 'PASS_004166a8'
+    }
+    [pscustomobject]@{
+        Address = '00419365'
+        Module = 'CAssoc'
+        Source = 'CAssoc_scalardeletingdestructor_00419365.cpp'
+        TestSource = 'CAssoc_scalardeletingdestructor_00419365_test.cpp'
+        PassPattern = 'PASS_00419365'
+    }
+    [pscustomobject]@{
+        Address = '00419428'
+        Module = 'CCountedPointer<std::vector<CCharString'
+        Source = 'CCountedPointerstdvectorCCharString_Reset_00419428.cpp'
+        TestSource = 'CCountedPointerstdvectorCCharString_Reset_00419428_test.cpp'
+        PassPattern = 'PASS_00419428'
+    }
+    [pscustomobject]@{
+        Address = '0041947a'
+        Module = 'CCountedPointer<std::vector<CCharString'
+        Source = 'CCountedPointerstdvectorCCharString_Reset_0041947a.cpp'
+        TestSource = 'CCountedPointerstdvectorCCharString_Reset_0041947a_test.cpp'
+        PassPattern = 'PASS_0041947a'
+    }
+    [pscustomobject]@{
+        Address = '00419518'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00419518.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00419518_test.cpp'
+        PassPattern = 'PASS_00419518'
+    }
+    [pscustomobject]@{
+        Address = '0041bdb0'
+        Module = 'CGraphicFrameData'
+        Source = 'CGraphicFrameData_scalardeletingdestructor_0041bdb0.cpp'
+        TestSource = 'CGraphicFrameData_scalardeletingdestructor_0041bdb0_test.cpp'
+        PassPattern = 'PASS_0041bdb0'
+    }
+    [pscustomobject]@{
+        Address = '0041bd20'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bd20.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041bd20_test.cpp'
+        PassPattern = 'PASS_0041bd20'
+    }
+    [pscustomobject]@{
+        Address = '0041d1c8'
+        Module = 'CTCBoastingCrowdControl'
+        Source = 'CTCBoastingCrowdControl_OnKillCrowd_0041d1c8.cpp'
+        TestSource = 'CTCBoastingCrowdControl_OnKillCrowd_0041d1c8_test.cpp'
+        PassPattern = 'PASS_0041d1c8'
+    }
+    [pscustomobject]@{
+        Address = '00413350'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00413350.cpp'
+        TestSource = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_00413350_test.cpp'
+        PassPattern = 'PASS_00413350'
+    }
+    [pscustomobject]@{
+        Address = '00412b20'
+        Module = 'vector<std::pair<CCharString'
+        Source = 'vectorstdpairCCharString_resize_00412b20.cpp'
+        TestSource = 'vectorstdpairCCharString_resize_00412b20_test.cpp'
+        PassPattern = 'PASS_00412b20'
+    }
+    [pscustomobject]@{
+        Address = '00416005'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_InitDefinitions_00416005.cpp'
+        TestSource = 'CMainGameComponent_InitDefinitions_00416005_test.cpp'
+        PassPattern = 'PASS_00416005'
+    }
+    [pscustomobject]@{
+        Address = '0041915a'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0041915a.cpp'
+        TestSource = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_0041915a_test.cpp'
+        PassPattern = 'PASS_0041915a'
+    }
+    [pscustomobject]@{
+        Address = '0041d122'
+        Module = '_global'
+        Source = 'global_OnOpenMenus_0041d122.cpp'
+        TestSource = 'global_OnOpenMenus_0041d122_test.cpp'
+        PassPattern = 'PASS_0041d122'
+    }
+    [pscustomobject]@{
+        Address = '0041649c'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_AddGameEvent_0041649c.cpp'
+        TestSource = 'CMainGameComponent_AddGameEvent_0041649c_test.cpp'
+        PassPattern = 'PASS_0041649c'
+    }
+    [pscustomobject]@{
+        Address = '00414c90'
+        Module = '_global'
+        Source = 'global_Get_00414c90.cpp'
+        TestSource = 'global_Get_00414c90_test.cpp'
+        PassPattern = 'PASS_00414c90'
+    }
+    [pscustomobject]@{
+        Address = '00415dd0'
+        Module = 'CDefString'
+        Source = 'CDefString_operatorclassCCharString_00415dd0.cpp'
+        TestSource = 'CDefString_operatorclassCCharString_00415dd0_test.cpp'
+        PassPattern = 'PASS_00415dd0'
+    }
+    [pscustomobject]@{
+        Address = '004194d1'
+        Module = 'CCountedPointer<std::vector<CCharString'
+        Source = 'CCountedPointerstdvectorCCharString_Reset_004194d1.cpp'
+        TestSource = 'CCountedPointerstdvectorCCharString_Reset_004194d1_test.cpp'
+        PassPattern = 'PASS_004194d1'
+    }
+    [pscustomobject]@{
+        Address = '00413230'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00413230.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00413230_test.cpp'
+        PassPattern = 'PASS_00413230'
+    }
+    [pscustomobject]@{
+        Address = '0041906e'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041906e.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_0041906e_test.cpp'
+        PassPattern = 'PASS_0041906e'
+    }
+    [pscustomobject]@{
+        Address = '00412a50'
+        Module = 'vector<unsigned_int'
+        Source = 'vectorunsignedint_resize_00412a50.cpp'
+        TestSource = 'vectorunsignedint_resize_00412a50_test.cpp'
+        PassPattern = 'PASS_00412a50'
+    }
+    [pscustomobject]@{
+        Address = '00416056'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_InitEventPackageLoading_00416056.cpp'
+        TestSource = 'CMainGameComponent_InitEventPackageLoading_00416056_test.cpp'
+        PassPattern = 'PASS_00416056'
+    }
+    [pscustomobject]@{
+        Address = '00415940'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00415940.cpp'
+        TestSource = 'CLandscapeBackgroundPatch_vectordeletingdestructor_00415940_test.cpp'
+        PassPattern = 'PASS_00415940'
+    }
+    [pscustomobject]@{
+        Address = '0041799b'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_ChangeTextureColourDepthCMainGameCom_0041799b.cpp'
+        TestSource = 'CMainGameComponent_ChangeTextureColourDepthCMainGameCom_0041799b_test.cpp'
+        PassPattern = 'PASS_0041799b'
+    }
+    [pscustomobject]@{
+        Address = '00415830'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00415830.cpp'
+        TestSource = 'DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive_CTriangleList_00415830_test.cpp'
+        PassPattern = 'PASS_00415830'
+    }
+    [pscustomobject]@{
+        Address = '004195af'
+        Module = 'CCountedPointer<std::vector<CCharString'
+        Source = 'CCountedPointerstdvectorCCharString_Reset_004195af.cpp'
+        TestSource = 'CCountedPointerstdvectorCCharString_Reset_004195af_test.cpp'
+        PassPattern = 'PASS_004195af'
+    }
+    [pscustomobject]@{
+        Address = '00416c35'
+        Module = '_global'
+        Source = 'global_ConsoleForceUpdateTickSpeed_00416c35.cpp'
+        TestSource = 'global_ConsoleForceUpdateTickSpeed_00416c35_test.cpp'
+        PassPattern = 'PASS_00416c35'
+    }
+    [pscustomobject]@{
+        Address = '0041bdf0'
+        Module = 'CGraphicFrameData'
+        Source = 'CGraphicFrameData_scalardeletingdestructor_0041bdf0.cpp'
+        TestSource = 'CGraphicFrameData_scalardeletingdestructor_0041bdf0_test.cpp'
+        PassPattern = 'PASS_0041bdf0'
+    }
+    [pscustomobject]@{
+        Address = '004160cc'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_InitEventPackageSaving_004160cc.cpp'
+        TestSource = 'CMainGameComponent_InitEventPackageSaving_004160cc_test.cpp'
+        PassPattern = 'PASS_004160cc'
+    }
+    [pscustomobject]@{
+        Address = '004167da'
+        Module = '_global'
+        Source = 'global_AppReinitFunc_004167da.cpp'
+        TestSource = 'global_AppReinitFunc_004167da_test.cpp'
+        PassPattern = 'PASS_004167da'
+    }
+    [pscustomobject]@{
+        Address = '00412aa0'
+        Module = 'vector<EWeaponClass'
+        Source = 'vectorEWeaponClass_UmoveEWeaponClass_00412aa0.cpp'
+        TestSource = 'vectorEWeaponClass_UmoveEWeaponClass_00412aa0_test.cpp'
+        PassPattern = 'PASS_00412aa0'
+    }
+    [pscustomobject]@{
+        Address = '004161a7'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_AddEventPackageSetToSave_004161a7.cpp'
+        TestSource = 'CMainGameComponent_AddEventPackageSetToSave_004161a7_test.cpp'
+        PassPattern = 'PASS_004161a7'
+    }
+    [pscustomobject]@{
+        Address = '004129f0'
+        Module = 'vector<CBrainBehaviour'
+        Source = 'vectorCBrainBehaviour_resize_004129f0.cpp'
+        TestSource = 'vectorCBrainBehaviour_resize_004129f0_test.cpp'
+        PassPattern = 'PASS_004129f0'
+    }
+    [pscustomobject]@{
+        Address = '0041674a'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_IsTimeForServerUpdate_0041674a.cpp'
+        TestSource = 'CMainGameComponent_IsTimeForServerUpdate_0041674a_test.cpp'
+        PassPattern = 'PASS_0041674a'
+    }
+    [pscustomobject]@{
+        Address = '0041c4a0'
+        Module = 'CObject'
+        Source = 'CObject_CObject_0041c4a0.cpp'
+        TestSource = 'CObject_CObject_0041c4a0_test.cpp'
+        PassPattern = 'PASS_0041c4a0'
+    }
+    [pscustomobject]@{
+        Address = '004191c1'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004191c1.cpp'
+        TestSource = 'DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCCountedPointerQuadricOptimiserInternals_COptimisedPrimitive_004191c1_test.cpp'
+        PassPattern = 'PASS_004191c1'
+    }
+    [pscustomobject]@{
+        Address = '0041c700'
+        Module = 'CGraphicFrame'
+        Source = 'CGraphicFrame_UnInitialise_0041c700.cpp'
+        TestSource = 'CGraphicFrame_UnInitialise_0041c700_test.cpp'
+        PassPattern = 'PASS_0041c700'
+    }
+    [pscustomobject]@{
+        Address = '00416148'
+        Module = 'CMainGameComponent'
+        Source = 'CMainGameComponent_GetEventPackageSetFromSave_00416148.cpp'
+        TestSource = 'CMainGameComponent_GetEventPackageSetFromSave_00416148_test.cpp'
+        PassPattern = 'PASS_00416148'
+    }
 )
 
 $oldPath = $env:PATH
