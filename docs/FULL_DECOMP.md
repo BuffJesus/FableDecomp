@@ -91,8 +91,8 @@ backing inspection (6/6 CTests pass); FQT annotates its API Reference while keep
 implementation separate from binding approval (190/190 tests pass); and ForgeFSE validates every
 manifest key, count, candidate address, and safety-policy flag before runtime binding work. Current
 evidence provides 462 owner-aligned recommendations and 53 verified engine functions, but
-`hookApprovedBindings` remains zero. This intentionally prevents exact-name correlation from being
-mistaken for a safe callable address.
+`verifiedRecommendedBindings` and `hookApprovedBindings` both remain zero. This intentionally
+prevents exact-name correlation from being mistaken for a safe callable address.
 
 The recent curated exact-match closure now includes eight locally proven code-shape matches. Five are raw
 byte matches: `$E2 @ 0x00406770`, the

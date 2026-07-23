@@ -136,7 +136,7 @@ def main() -> int:
         by_leaf.setdefault(leaf.casefold(), []).append(row)
 
     functions: list[dict[str, object]] = []
-    unique = ambiguous = unmatched = recommended = 0
+    unique = ambiguous = unmatched = recommended = verified_recommended = 0
     for function in fse.get("functions", []):
         matches = [candidate(row, function.get("scope", "")) for row in by_leaf.get(function["name"].casefold(), [])]
         matches.sort(key=lambda item: (-int(item["score"]), str(item["address"])))
@@ -158,6 +158,8 @@ def main() -> int:
             if len(matches) == 1 or int(matches[0]["score"]) >= int(matches[1]["score"]) + 15:
                 chosen = matches[0]["address"]
                 recommended += 1
+                if bool(matches[0]["engineImplementationVerified"]):
+                    verified_recommended += 1
         functions.append(
             {
                 "name": function["name"],
@@ -192,6 +194,7 @@ def main() -> int:
             "ambiguousExactNameMatches": ambiguous,
             "unmatched": unmatched,
             "ownerAlignedRecommendations": recommended,
+            "verifiedRecommendedBindings": verified_recommended,
             "verifiedEngineFunctions": len(verified_engine_functions),
             "hookApprovedBindings": 0,
         },

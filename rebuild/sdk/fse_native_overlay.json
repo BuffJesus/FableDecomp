@@ -17,6 +17,7 @@
     "ambiguousExactNameMatches": 76,
     "unmatched": 413,
     "ownerAlignedRecommendations": 462,
+    "verifiedRecommendedBindings": 0,
     "verifiedEngineFunctions": 53,
     "hookApprovedBindings": 0
   },

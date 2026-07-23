@@ -3914,7 +3914,8 @@ build-from-user-copy is the legally-defensible pattern.
 - Extended `tools/export_fse_native_overlay.py` so the canonical schema-1.1 overlay also mirrors to
   `D:\Code\FQT\FQT\FSE_Source\docs\fse_native_overlay.json`, alongside the existing FableForge and
   ForgeFSE mirrors. Current counts: 931 FSE functions, 518 exact-name correlations, 462 owner-aligned
-  recommendations, 53 verified engine implementations, and zero approved runtime hooks.
+  recommendations, 53 verified engine implementations, zero verified recommended bindings, and
+  zero approved runtime hooks.
 - FableForge's native-overlay test no longer hard-codes a stale verified-function count; it checks
   structural agreement with the generated list. Full CTest result: 6/6 pass.
 - FQT now loads the overlay through a policy-gated service, correlates by `scope + name`, and shows
