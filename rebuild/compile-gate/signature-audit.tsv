@@ -25,14 +25,17 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 0040cec0	_global	CUserProfileManager_Constructor	FAIL	_global	CUserProfileManager_Constructor	undefined	CUserProfileManager* __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
 0040e130	_global	Vector_FreeElements	PASS	_global	Vector_FreeElements	void	void __stdcall	2	2		PASS	
 0040e170	_global	Array_LinearSearchInt	PASS	_global	Array_LinearSearchInt	int *	int* __fastcall	3	3		PASS	
+004fe7f0	_global	CollectSoundThemeSwitchDefs	PASS	_global	CollectSoundThemeSwitchDefs	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
 0050a650	CWorldMap	GetMapNavigationAreaInit	PASS	CWorldMap	GetMapNavigationAreaInit	void	void	4	4		PASS	
 0063a970	CWorldMap	SetThemeAtBlock	PASS	CWorldMap	SetThemeAtBlock	void	void	4	4		PASS	
 0063a9e0	CWorldMap	CWorldMap::SetThemeBlendAtBlock	PASS	CWorldMap	SetThemeBlendAtBlock	void	void	4	4		PASS	
 0063aa50	CWorldMap	GetThemeAtBlock	PASS	CWorldMap	GetThemeAtBlock	ulong	unsigned long	3	3		PASS	
 0063aab0	CWorldMap	GetThemeBlendAtBlock	PASS	CWorldMap	GetThemeBlendAtBlock	ulong	unsigned long	3	3		PASS	
+00662020	_global	Getter_FieldE0_FC	PASS	_global	Getter_FieldE0_FC	undefined	std::uint32_t __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
 006b0730	CTCPhysicsBase	CTCPhysicsBase	PASS	TCPhysicsBase	CTCPhysicsBase	undefined	C	1	1	006b0730;007266c0	REVIEW	owner-mismatch;duplicate-linkage-signature
 00713140	CActionDoCreatureAction	CActionDoCreatureAction	PASS	ActionDoCreatureAction	CActionDoCreatureAction	undefined	C	1	1		REVIEW	owner-mismatch
 007266c0	CTCPhysicsBase	CTCPhysicsBase	PASS	TCPhysicsBase	CTCPhysicsBase	undefined	C	1	1	006b0730;007266c0	REVIEW	owner-mismatch;duplicate-linkage-signature
+007602f0	_global	Math_PolygonAngleSumClosureCheck	PASS	_global	Math_PolygonAngleSumClosureCheck_InvSqrtOrdered	undefined	[[nodiscard]] static float	0	1		REVIEW	method-name-mismatch;explicit-parameter-count-mismatch
 0081ee60	CMap	SetEngineThemeAt	PASS	CMap	SetEngineThemeAt	void	void	5	5		PASS	
 0081efc0	CMap	SetEngineBlendAt	PASS	CMap	SetEngineBlendAt	void	void	5	5		PASS	
 0081f090	CMap	GetEngineThemeAt	PASS	CMap	GetEngineThemeAt	ulong	unsigned long	4	4		PASS	
@@ -40,6 +43,9 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 0082e330	CScriptedMapBrush	GetTheme	PASS	CScriptedMapBrush	GetTheme	ulong	unsigned long	3	3		PASS	
 0082e3d0	CScriptedMapBrush	GetThemeBlend	PASS	CScriptedMapBrush	GetThemeBlend	uchar	unsigned char	3	3		PASS	
 0082e420	CScriptedMapBrush	SetThemeBlend	PASS	CScriptedMapBrush	SetThemeBlend	void	void	4	4		PASS	
+008368f0	_global	ConditionalVirtualDispatch_OnLevelUnload	PASS	_global	ConditionalVirtualDispatch_OnLevelUnload	undefined	void __thiscall	0	2		REVIEW	explicit-parameter-count-mismatch
+0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	PASS	_global	CPersistInfo_InsertionSortStep_0086c5c0	undefined	void __fastcall	0	6		REVIEW	explicit-parameter-count-mismatch
+0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	PASS	_global	CPersistInfo_InsertionSortStep_0086fa00	undefined	void __fastcall	0	6		REVIEW	explicit-parameter-count-mismatch
 008ed590	CObjectFamilyDef	GetRandomObject	PASS	CObjectFamilyDef	GetRandomObject	long	long	0	0		PASS	
 00a65d30	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::ConsolidateFreeAreas	PASS	CMemoryAllocatorFixedSize	ConsolidateFreeAreas	void	void	0	0		PASS	
 00a65d40	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::GetAllocationSize	PASS	CMemoryAllocatorFixedSize	GetAllocationSize	ulong	unsigned long	1	1		PASS	

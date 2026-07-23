@@ -3878,3 +3878,21 @@ build-from-user-copy is the legally-defensible pattern.
 - Curated suite: **89/89** compile+behavior PASS (**0.180%**), about **407** more promotions to 1%.
   Both `ConnectVerticalMapEdge` variants are now checker PASS; the unattended worker continued to
   naming target `0x004FE7F0` without intervention.
+
+### Public recovery baseline + landscape relocation promotion (2026-07-22 19:04 MDT)
+
+- Initialized the workspace as Git repository `BuffJesus/FableDecomp`, committed 1,324 source,
+  documentation, compact-oracle, and generated-report files as `cac16c0`, and pushed `main`.
+  Original binaries/PDBs, Ghidra/BSim databases, local build products, multi-gigabyte XML exports,
+  and raw agent logs remain excluded. Local and remote commit hashes were verified identical.
+- Continued ongoing work on branch `agent/continue-decomp`. The completed Wave 3 tail added checker
+  passes for `ConditionalVirtualDispatch_OnLevelUnload` and both `CPersistInfo` insertion-sort
+  steps, bringing the agent ledger to 121 integrity-clean candidates and 112 checker passes.
+- Promoted `CEngineLandscapePatch::RelocateData @ 0x00BF3980`. The test suite covers its direct,
+  asynchronous, list-head, list-interior, miss, and null paths. VC7.1 builds and all **90/90**
+  focused behavior tests pass (**0.182%**, about **406** promotions to 1%).
+- The retail comparison is `RELOCATION_MATCH`: 143/143 bytes, 57/57 fixed instruction bytes, and
+  three expected direct-call relocation fields. The relocation-matched candidate count is now 17.
+- The refreshed promotion queue has 31 uncompiled agent candidates. `entry @ 0x00401067` ranks
+  first, followed by `CNavQuadTree::InitialiseLines @ 0x00A7A5E0`; use the latter when a smaller,
+  subsystem-focused promotion is preferable to CRT startup work.

@@ -1497,7 +1497,7 @@ CEngineLandscapeLODMap	8	3	3	0	0	0	0	0	0	0	0
 CEngineLandscapeMap	34	19	19	2	1	4	4	1	1	0	0
 CEngineLandscapeMemoryManager	25	16	12	0	0	0	0	0	0	0	0
 CEngineLandscapeMeshBuilder	10	3	2	0	0	0	0	0	0	0	0
-CEngineLandscapePatch	28	29	27	6	3	6	6	1	0	0	0
+CEngineLandscapePatch	28	29	27	6	3	7	7	1	1	0	0
 CEngineLandscapeRenderer	39	33	33	8	0	8	8	6	0	0	0
 CEngineLayerRenderer	2	1	1	0	0	0	0	0	0	0	0
 CEngineLightingManager	35	134	134	0	0	0	0	0	0	0	0
@@ -2462,7 +2462,7 @@ CNavBlockedQuadTreeNode	4	15	13	0	0	0	0	0	0	0	0
 CNavButton	2	2	2	0	0	0	0	0	0	0	0
 CNavConnectorNode	0	2	1	0	0	0	0	0	0	0	0
 CNavNavigableLeafNode	17	22	20	0	0	0	0	0	0	0	0
-CNavQuadTree	29	22	21	8	1	3	3	0	0	0	0
+CNavQuadTree	29	22	21	8	1	3	3	0	2	0	0
 CNavQuadTreeNode	18	26	24	1	0	0	0	0	0	0	0
 CNavRegion	8	2	2	0	0	0	0	0	0	0	0
 CNavRegionConnection	2	0	0	0	0	0	0	0	0	0	0
@@ -3928,7 +3928,7 @@ CWitnessesSearchingDeed	0	1	0	0	0	0	0	0	0	0	0
 CWomanToAttract	6	4	4	0	0	0	0	0	0	0	0
 CWorld	206	154	150	0	0	0	0	0	0	0	0
 CWorldManager	0	3	0	0	0	0	0	0	0	0	0
-CWorldMap	200	185	182	5	0	4	4	0	0	0	0
+CWorldMap	200	185	182	5	0	4	4	0	4	0	0
 CWorldMapPlacementDialog	2	0	0	0	0	0	0	0	0	0	0
 CWorldMapPlacementPopupDialog	9	0	0	0	0	0	0	0	0	0	0
 CWound	7	17	17	0	0	0	0	0	0	0	0
@@ -4496,7 +4496,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	0	0	0	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11370	1993	25	1	19	19	0	0	0	0
+_global	0	11370	1993	31	1	19	19	5	6	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

@@ -527,6 +527,13 @@ $catalog = @(
         PassPattern = 'LANDSCAPE_PATCH_CAN_RELOCATE_TEST PASS'
     },
     [pscustomobject]@{
+        Address = '00bf3980'
+        Module = 'CEngineLandscapePatch'
+        Source = 'CEngineLandscapePatch_RelocateData_00bf3980.cpp'
+        TestSource = 'CEngineLandscapePatch_RelocateData_00bf3980_test.cpp'
+        PassPattern = 'LANDSCAPE_PATCH_RELOCATE_DATA_TEST PASS'
+    },
+    [pscustomobject]@{
         Address = '00b676a0'
         Module = 'CEngineLandscapeRenderer'
         Source = 'CEngineLandscapeRenderer_OnReleaseDefaultPoolResources_00b676a0.cpp'
