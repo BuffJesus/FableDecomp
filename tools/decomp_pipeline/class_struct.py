@@ -66,8 +66,8 @@ def facts_for(cls):
     for f in files:
         txt = open(f, encoding="utf-8", errors="ignore").read()
         base = os.path.basename(f)
-        # class size from GetSizeofClass constant-return
-        if "GetSizeofClass" in base or "GetSizeofClass" in txt:
+        # class size from GetSizeofClass constant-return (only when the FILE is that method)
+        if "GetSizeofClass" in base:
             mm = SIZEOFCLASS_RE.search(txt)
             if mm:
                 size = max(size or 0, int(mm.group(1), 0))
@@ -103,10 +103,11 @@ def render(cls):
         typ, name = off_map[off]
         lines.append(f"    {typ} {name}; // +{off:#x}")
         cur = off + type_size(typ)
-    if size and size > cur:
+    consistent = size and size >= cur  # drop sizes contradicted by observed fields
+    if consistent and size > cur:
         lines.append(f"    unsigned char _tail[{size - cur:#x}]; // class size {size:#x}")
     lines.append("};")
-    if size:
+    if consistent:
         lines.append(f"// sizeof({cls}) == {size:#x}")
     return "\n".join(lines)
 
