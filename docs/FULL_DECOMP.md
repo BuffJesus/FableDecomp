@@ -83,6 +83,17 @@ functions. The compile+behavior lane is currently 91 functions (0.184%); reachin
 requires roughly 405 additional promotions. Clean pseudo-C, naming, and prototype coverage are
 tracked separately and must not be presented as completed buildable source.
 
+### Downstream native-evidence consumers (2026-07-22 19:25 MDT)
+
+The FSE-to-engine overlay is now an actively validated interface rather than a passive report. Its
+931 rows are mirrored to FableForge, ForgeFSE, and FQT. FableForge parses the evidence for native
+backing inspection (6/6 CTests pass); FQT annotates its API Reference while keeping verified engine
+implementation separate from binding approval (190/190 tests pass); and ForgeFSE validates every
+manifest key, count, candidate address, and safety-policy flag before runtime binding work. Current
+evidence provides 462 owner-aligned recommendations and 53 verified engine functions, but
+`hookApprovedBindings` remains zero. This intentionally prevents exact-name correlation from being
+mistaken for a safe callable address.
+
 The recent curated exact-match closure now includes eight locally proven code-shape matches. Five are raw
 byte matches: `$E2 @ 0x00406770`, the
 `initterm @ 0x00401356` import thunk, `__dllonexit @ 0x004013DE`, and the 17-byte

@@ -3908,3 +3908,21 @@ build-from-user-copy is the legally-defensible pattern.
   now waits up to five minutes for a verified live refresh PID and resumes immediately after Ghidra
   is released. A manual scheduled-task smoke run entered `CNavQuadTree::Initialise @ 0x00A7A8D0`
   at 19:11:30, proving the unattended loop is active again.
+
+### RE evidence applied to FableForge, ForgeFSE, and FQT (2026-07-22 19:25 MDT)
+
+- Extended `tools/export_fse_native_overlay.py` so the canonical schema-1.1 overlay also mirrors to
+  `D:\Code\FQT\FQT\FSE_Source\docs\fse_native_overlay.json`, alongside the existing FableForge and
+  ForgeFSE mirrors. Current counts: 931 FSE functions, 518 exact-name correlations, 462 owner-aligned
+  recommendations, 53 verified engine implementations, and zero approved runtime hooks.
+- FableForge's native-overlay test no longer hard-codes a stale verified-function count; it checks
+  structural agreement with the generated list. Full CTest result: 6/6 pass.
+- FQT now loads the overlay through a policy-gated service, correlates by `scope + name`, and shows
+  native candidate/provenance state in API Reference. It rejects duplicate keys, unsafe policy,
+  stale function counts, and recommendations that lack candidate evidence. Full .NET result:
+  190/190 tests pass.
+- ForgeFSE now has `scripts/Test-FseNativeOverlay.ps1`. It cross-checks all manifest keys and summary
+  counts, candidate evidence, match statuses, and both non-equivalence policy flags before the data
+  can be considered for binding work. The current 931-function overlay passes.
+- No recommendation is an executable hook. A binding still requires target-build identity,
+  owner/vtable or callsite confirmation, calling-convention validation, and a ForgeFSE runtime probe.

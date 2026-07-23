@@ -44,3 +44,20 @@ Do not think of ChocolateBox/SilverChest as alternatives to the FableWin donor. 
 That makes the debug/editor donor valuable even when names do not port directly to retail code:
 editor-only symbols document file semantics, conflict resolution, save/load paths, and data model
 relationships that can improve FQT and future native modding tools.
+
+## Shared native-evidence overlay
+
+`tools/export_fse_native_overlay.py` now publishes the same schema-1.1 overlay to all three active
+consumers. The current dataset covers all 931 FSE declarations: 442 unique exact-name matches, 76
+ambiguous matches, 413 unmatched declarations, 462 owner-aligned recommendations, and 53 verified
+engine implementations. Recommendations remain research evidence; none are approved runtime hooks.
+
+| Consumer | Applied use | Safety boundary |
+|---|---|---|
+| FableForge | Typed overlay reader and GUI/CLI native-backing inspection | Rejects unsupported schema, unsafe policy, stale counts, and recommendations absent from candidate evidence |
+| ForgeFSE | `scripts/Test-FseNativeOverlay.ps1` validates the runtime project's manifest against the overlay | Requires an explicit `hookApproved` review; current approved count is zero |
+| FQT | API Reference annotates functions with match, candidate address, qualified engine name, and verification state | Displays verified implementation and hook approval as separate states; never promotes a recommendation into a binding |
+
+The canonical file is `rebuild/sdk/fse_native_overlay.json`; byte-identical mirrors are written to
+FableForge `docs/re_reference/`, ForgeFSE `docs/`, and FQT `FSE_Source/docs/` whenever the exporter
+runs without `--no-mirrors` or explicit `--output` arguments.
