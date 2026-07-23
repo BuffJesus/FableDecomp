@@ -212,6 +212,7 @@ def main() -> int:
             [
                 Path(r"D:\Code\FableForge\docs\re_reference\fse_native_overlay.json"),
                 Path(r"D:\Code\ForgeFSE\docs\fse_native_overlay.json"),
+                Path(r"D:\Code\FQT\FQT\FSE_Source\docs\fse_native_overlay.json"),
             ]
         )
     changed = [str(path.resolve()) for path in outputs if write_if_changed(path.resolve(), payload)]
