@@ -1,8 +1,8 @@
 # Curated C++ promotion queue
 
-Generated: `2026-07-22T19:11:18-06:00`
+Generated: `2026-07-22T19:48:17-06:00`
 
-Uncompiled auto-RE candidates: **30**. Showing: **30**.
+Uncompiled auto-RE candidates: **41**. Showing: **41**.
 
 Ranking favors checker/integrity/signature PASS, then the smallest declaration, dependency, VC7.1, and source-size repair surface. It does not claim semantic correctness; every promotion still needs a focused behavior oracle and retail comparison.
 
@@ -36,5 +36,16 @@ Ranking favors checker/integrity/signature PASS, then the smallest declaration, 
 | 26 | `0x00A79680` | `CNavQuadTree::ConnectVerticalMapEdge` | `manual-lift` | `REVIEW` | 9 | 58 | 13026 | 'CNavConnectorNode' does not name a type |
 | 27 | `0x00A793D0` | `CNavQuadTree::ConnectVerticalMapEdge` | `manual-lift` | `REVIEW` | 11 | 60 | 12933 | 'CNavConnectorNode' does not name a type |
 | 28 | `0x004FE7F0` | `CollectSoundThemeSwitchDefs` | `manual-lift` | `REVIEW` | 16 | 83 | 10371 | static assertion failed |
-| 29 | `0x00A7A8D0` | `CNavQuadTree::Initialise` | `manual-lift` | `PASS` | 14 | 130 | 26232 | 'C2DLineF' was not declared in this scope |
-| 30 | `0x0040CEC0` | `CUserProfileManager_Constructor` | `vc71-port` | `REVIEW` | 0 | 99 | 14968 |  |
+| 29 | `0x00A7A8D0` | `CNavQuadTree::Initialise` | `manual-lift` | `PASS` | 13 | 142 | 27473 | 'C2DLineF' was not declared in this scope |
+| 30 | `0x00C19F90` | `Getter_Field84` | `vc71-port` | `REVIEW` | 0 | 4 | 338 |  |
+| 31 | `0x00C2D7B0` | `CTCInventory_CheckSlotTypeNegative` | `vc71-port` | `REVIEW` | 0 | 5 | 493 |  |
+| 32 | `0x00C20EF0` | `IsStateStreaming_2to4` | `vc71-port` | `REVIEW` | 0 | 6 | 582 |  |
+| 33 | `0x008702D0` | `Handle_InitInvalid_008702d0` | `vc71-port` | `REVIEW` | 0 | 8 | 728 |  |
+| 34 | `0x00C37000` | `IntelligentPointer_BuildAndDispatchFloat` | `vc71-port` | `REVIEW` | 0 | 9 | 1482 |  |
+| 35 | `0x00C36E00` | `CSBAgents_BuildAndDispatch_SummonerLightning` | `vc71-port` | `REVIEW` | 0 | 10 | 1495 |  |
+| 36 | `0x00C362F0` | `CSBAgents_BuildAndDispatch_A` | `vc71-port` | `REVIEW` | 0 | 13 | 1706 |  |
+| 37 | `0x00C43DE0` | `DrawAutoPickups_SelectAndDrawPrimitive` | `vc71-port` | `REVIEW` | 0 | 19 | 2098 |  |
+| 38 | `0x00C336F0` | `Constraint_NotifyGlobalManager` | `vc71-port` | `REVIEW` | 0 | 21 | 1818 |  |
+| 39 | `0x0040CEC0` | `CUserProfileManager_Constructor` | `vc71-port` | `REVIEW` | 0 | 99 | 14968 |  |
+| 40 | `0x00C36FB0` | `CSBAgents_BuildAndDispatch_TavernGame` | `dependency-stub` | `REVIEW` | 1 | 10 | 1687 | expected '(' before '{' token |
+| 41 | `0x00C43F80` | `Weapon_ProcessAnimFrameIfReady` | `manual-lift` | `REVIEW` | 1 | 13 | 1845 | expected '(' before '{' token |

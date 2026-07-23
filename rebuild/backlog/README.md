@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-07-22T19:11:18-06:00`
+Generated: `2026-07-22T19:48:17-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 
@@ -8,7 +8,7 @@ The order favors generated candidate clusters first, then extension of proven mo
 
 | Rank | Track | Module | Functions | Prototype gaps | Agent candidates | Verified lifts |
 |---:|---|---|---:|---:|---:|---:|
-| 1 | candidate-cluster | `_global` | 11370 | 9376 | 32 | 0 |
+| 1 | candidate-cluster | `_global` | 11370 | 9376 | 43 | 0 |
 | 2 | candidate-cluster | `CMouseDX` | 24 | 0 | 14 | 10 |
 | 3 | candidate-cluster | `CMemoryAllocatorFixedSize` | 21 | 0 | 11 | 7 |
 | 4 | candidate-cluster | `CNavQuadTree` | 22 | 1 | 9 | 0 |
@@ -40,21 +40,21 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 
 | Rank | Address | Module | Retail bytes | Candidate bytes | Blocker |
 |---:|---|---|---:|---:|---|
-| 1 | `00a7a5e0` | `CNavQuadTree` | 0 | 1309 | 'C2DLineF' was not declared in this scope |
-| 2 | `007266c0` | `CTCPhysicsBase` | 0 | 1401 | static assertion failed |
-| 3 | `008368f0` | `_global` | 0 | 1421 |  |
-| 4 | `0086fa00` | `_global` | 0 | 1753 |  |
-| 5 | `0086c5c0` | `_global` | 0 | 1754 |  |
-| 6 | `00403480` | `_global` | 0 | 1865 |  |
-| 7 | `006b0730` | `CTCPhysicsBase` | 0 | 1971 | 'C3DVector' does not name a type |
-| 8 | `00c3b900` | `CLandscapeLayerMesh` | 0 | 1978 | 'CEngineLandscapeMap' does not name a type |
-| 9 | `00409090` | `_global` | 0 | 2191 |  |
-| 10 | `00caf680` | `CEngineLandscapePatch` | 0 | 2195 | 'CEngineLandscapePatch' has not been declared |
-| 11 | `00713140` | `CActionDoCreatureAction` | 0 | 2734 | invalid use of incomplete type 'class NTCScriptedControl::CActionDoCreatureAction' |
-| 12 | `00a65ff0` | `CMemoryAllocatorFixedSize` | 0 | 2986 | 'CMemoryAllocatorFixedSize' does not name a type |
-| 13 | `00ab5d00` | `CMouseDX` | 0 | 4084 |  |
-| 14 | `00bfd420` | `CLandscapeLayerMesh` | 0 | 4210 | 'CLandscapeLayerMesh' does not name a type |
-| 15 | `00caf580` | `CEngineLandscapePatch` | 0 | 4306 | invalid use of incomplete type 'class CCharString' |
+| 1 | `00c19f90` | `_global` | 0 | 338 |  |
+| 2 | `00c2d7b0` | `_global` | 0 | 493 |  |
+| 3 | `00c20ef0` | `_global` | 0 | 582 |  |
+| 4 | `008702d0` | `_global` | 0 | 728 |  |
+| 5 | `00a7a5e0` | `CNavQuadTree` | 0 | 1309 | 'C2DLineF' was not declared in this scope |
+| 6 | `007266c0` | `CTCPhysicsBase` | 0 | 1401 | static assertion failed |
+| 7 | `008368f0` | `_global` | 0 | 1421 |  |
+| 8 | `00c37000` | `_global` | 0 | 1482 |  |
+| 9 | `00c36e00` | `_global` | 0 | 1495 |  |
+| 10 | `00c36fb0` | `_global` | 0 | 1687 | expected '(' before '{' token |
+| 11 | `00c362f0` | `_global` | 0 | 1706 |  |
+| 12 | `0086fa00` | `_global` | 0 | 1753 |  |
+| 13 | `0086c5c0` | `_global` | 0 | 1754 |  |
+| 14 | `00c336f0` | `_global` | 0 | 1818 |  |
+| 15 | `00c43f80` | `_global` | 0 | 1845 | expected '(' before '{' token |
 
 ## First function queue
 
@@ -71,32 +71,32 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 | 9 | `008368f0` | `_global` | signature-audit |  |
 | 10 | `0086c5c0` | `_global` | signature-audit |  |
 | 11 | `0086fa00` | `_global` | signature-audit |  |
-| 12 | `00ab5d00` | `CMouseDX` | signature-audit |  |
-| 13 | `00a65ff0` | `CMemoryAllocatorFixedSize` | signature-audit | 'CMemoryAllocatorFixedSize' does not name a type |
-| 14 | `00a793d0` | `CNavQuadTree` | signature-audit | 'CNavConnectorNode' does not name a type |
-| 15 | `00a79680` | `CNavQuadTree` | signature-audit | 'CNavConnectorNode' does not name a type |
-| 16 | `00caf580` | `CEngineLandscapePatch` | signature-audit | invalid use of incomplete type 'class CCharString' |
-| 17 | `00caf680` | `CEngineLandscapePatch` | signature-audit | 'CEngineLandscapePatch' has not been declared |
-| 18 | `00bfd420` | `CLandscapeLayerMesh` | signature-audit | 'CLandscapeLayerMesh' does not name a type |
-| 19 | `00bfddd0` | `CLandscapeLayerMesh` | signature-audit | 'CGraphicInfoFrame' does not name a type |
-| 20 | `00c3b900` | `CLandscapeLayerMesh` | signature-audit | 'CEngineLandscapeMap' does not name a type |
-| 21 | `006b0730` | `CTCPhysicsBase` | signature-audit | 'C3DVector' does not name a type |
-| 22 | `007266c0` | `CTCPhysicsBase` | signature-audit | static assertion failed |
-| 23 | `00713140` | `CActionDoCreatureAction` | signature-audit | invalid use of incomplete type 'class NTCScriptedControl::CActionDoCreatureAction' |
-| 24 | `00401296` | `_global` | compiled-needs-parity |  |
-| 25 | `004012ce` | `_global` | compiled-needs-parity |  |
-| 26 | `0040135c` | `_global` | compiled-needs-parity |  |
-| 27 | `00403c60` | `_global` | compiled-needs-parity |  |
-| 28 | `00404280` | `_global` | compiled-needs-parity |  |
-| 29 | `00405ba0` | `_global` | compiled-needs-parity |  |
-| 30 | `0040bb90` | `_global` | compiled-needs-parity |  |
-| 31 | `0040e170` | `_global` | compiled-needs-parity |  |
-| 32 | `00ab4700` | `CMouseDX` | compiled-needs-parity |  |
-| 33 | `00a65d70` | `CMemoryAllocatorFixedSize` | compiled-needs-parity |  |
-| 34 | `00a65da0` | `CMemoryAllocatorFixedSize` | compiled-needs-parity |  |
-| 35 | `00a65e20` | `CMemoryAllocatorFixedSize` | compiled-needs-parity |  |
-| 36 | `00a7a650` | `CNavQuadTree` | compiled-needs-parity |  |
-| 37 | `00bf3a90` | `CEngineLandscapePatch` | compiled-needs-parity |  |
-| 38 | `00bf3b60` | `CEngineLandscapePatch` | compiled-needs-parity |  |
-| 39 | `00bf4130` | `CEngineLandscapePatch` | compiled-needs-parity |  |
-| 40 | `00bf4220` | `CEngineLandscapePatch` | compiled-needs-parity |  |
+| 12 | `00c20ef0` | `_global` | signature-audit |  |
+| 13 | `00c2d7b0` | `_global` | signature-audit |  |
+| 14 | `00c336f0` | `_global` | signature-audit |  |
+| 15 | `00c362f0` | `_global` | signature-audit |  |
+| 16 | `00c36e00` | `_global` | signature-audit |  |
+| 17 | `00c36fb0` | `_global` | signature-audit | expected '(' before '{' token |
+| 18 | `00c37000` | `_global` | signature-audit |  |
+| 19 | `00c43de0` | `_global` | signature-audit |  |
+| 20 | `00c43f80` | `_global` | signature-audit | expected '(' before '{' token |
+| 21 | `008702d0` | `_global` | signature-audit |  |
+| 22 | `00c19f90` | `_global` | signature-audit |  |
+| 23 | `00ab5d00` | `CMouseDX` | signature-audit |  |
+| 24 | `00a65ff0` | `CMemoryAllocatorFixedSize` | signature-audit | 'CMemoryAllocatorFixedSize' does not name a type |
+| 25 | `00a793d0` | `CNavQuadTree` | signature-audit | 'CNavConnectorNode' does not name a type |
+| 26 | `00a79680` | `CNavQuadTree` | signature-audit | 'CNavConnectorNode' does not name a type |
+| 27 | `00caf580` | `CEngineLandscapePatch` | signature-audit | invalid use of incomplete type 'class CCharString' |
+| 28 | `00caf680` | `CEngineLandscapePatch` | signature-audit | 'CEngineLandscapePatch' has not been declared |
+| 29 | `00bfd420` | `CLandscapeLayerMesh` | signature-audit | 'CLandscapeLayerMesh' does not name a type |
+| 30 | `00bfddd0` | `CLandscapeLayerMesh` | signature-audit | 'CGraphicInfoFrame' does not name a type |
+| 31 | `00c3b900` | `CLandscapeLayerMesh` | signature-audit | 'CEngineLandscapeMap' does not name a type |
+| 32 | `006b0730` | `CTCPhysicsBase` | signature-audit | 'C3DVector' does not name a type |
+| 33 | `007266c0` | `CTCPhysicsBase` | signature-audit | static assertion failed |
+| 34 | `00713140` | `CActionDoCreatureAction` | signature-audit | invalid use of incomplete type 'class NTCScriptedControl::CActionDoCreatureAction' |
+| 35 | `00401296` | `_global` | compiled-needs-parity |  |
+| 36 | `004012ce` | `_global` | compiled-needs-parity |  |
+| 37 | `0040135c` | `_global` | compiled-needs-parity |  |
+| 38 | `00403c60` | `_global` | compiled-needs-parity |  |
+| 39 | `00404280` | `_global` | compiled-needs-parity |  |
+| 40 | `00405ba0` | `_global` | compiled-needs-parity |  |
