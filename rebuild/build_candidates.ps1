@@ -24,7 +24,19 @@ $catalog = @(
         Address = '00a7a650'; Module = 'CNavQuadTree'; Source = 'CNavQuadTree_LinkToNeighbouringMaps_00a7a650.cpp'
         TestSource = 'CNavQuadTree_LinkToNeighbouringMaps_00a7a650_test.cpp'; PassPattern = 'NAV_QUAD_TREE_LINK_NEIGHBOURING_MAPS_TEST PASS'
     },
-    [pscustomobject]@{
+      [pscustomobject]@{
+          Address = '00a7a5e0'; Module = 'CNavQuadTree'; Source = 'CNavQuadTree_InitialiseLines_00a7a5e0.cpp'
+          TestSource = 'CNavQuadTree_InitialiseLines_00a7a5e0_test.cpp'; PassPattern = 'NAV_QUAD_TREE_INITIALISE_LINES_TEST PASS'
+      },
+      [pscustomobject]@{
+          Address = '0088edb0'; Module = 'CGameScriptInterface'; Source = 'CGameScriptInterface_CameraCancelScreenEffect_0088edb0.cpp'
+          TestSource = 'CGameScriptInterface_CameraCancelScreenEffect_0088edb0_test.cpp'; PassPattern = 'CAMERA_CANCEL_SCREEN_EFFECT_TEST PASS'
+      },
+      [pscustomobject]@{
+          Address = '0088eda0'; Module = 'CGameScriptInterface'; Source = 'CGameScriptInterface_CameraUseScreenEffect_0088eda0.cpp'
+          TestSource = 'CGameScriptInterface_CameraUseScreenEffect_0088eda0_test.cpp'; PassPattern = 'CAMERA_USE_SCREEN_EFFECT_TEST PASS'
+      },
+      [pscustomobject]@{
         Address = '00a77480'; Module = 'CNavQuadTree'; Source = 'CNavQuadTree_JoinNavigationLayers_00a77480.cpp'
         TestSource = 'CNavQuadTree_JoinNavigationLayers_00a77480_test.cpp'; PassPattern = 'NAV_QUAD_TREE_JOIN_NAVIGATION_LAYERS_TEST PASS'
     },

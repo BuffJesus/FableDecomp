@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-07-22T19:48:17-06:00`
+Generated: `2026-07-22T20:26:41-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 
@@ -11,28 +11,28 @@ The order favors generated candidate clusters first, then extension of proven mo
 | 1 | candidate-cluster | `_global` | 11370 | 9376 | 43 | 0 |
 | 2 | candidate-cluster | `CMouseDX` | 24 | 0 | 14 | 10 |
 | 3 | candidate-cluster | `CMemoryAllocatorFixedSize` | 21 | 0 | 11 | 7 |
-| 4 | candidate-cluster | `CNavQuadTree` | 22 | 1 | 9 | 0 |
-| 5 | candidate-cluster | `CEngineLandscapePatch` | 29 | 2 | 9 | 0 |
-| 6 | candidate-cluster | `CEngineLandscapeRenderer` | 33 | 0 | 8 | 0 |
-| 7 | candidate-cluster | `CWorldMap` | 185 | 3 | 5 | 0 |
-| 8 | candidate-cluster | `CEngineLandscapeMap` | 19 | 0 | 4 | 0 |
-| 9 | candidate-cluster | `CEnginePrimitiveManagerMeshBase` | 4 | 0 | 4 | 0 |
-| 10 | candidate-cluster | `CLandscapeLayerMesh` | 9 | 3 | 4 | 0 |
-| 11 | candidate-cluster | `CMap` | 89 | 3 | 4 | 0 |
-| 12 | candidate-cluster | `CLandscapeBackgroundPatch` | 3019 | 0 | 3 | 0 |
-| 13 | candidate-cluster | `CLandscapeBackgroundTreeNode` | 29 | 0 | 3 | 0 |
-| 14 | candidate-cluster | `CScriptedMapBrush` | 8 | 1 | 3 | 0 |
-| 15 | candidate-cluster | `CTCPhysicsBase` | 51 | 2 | 2 | 1 |
-| 16 | candidate-cluster | `CEngineScreenEffectOutlineGlow` | 31 | 0 | 2 | 0 |
-| 17 | candidate-cluster | `CLocalDetailCacheMap` | 8 | 0 | 1 | 0 |
-| 18 | candidate-cluster | `CObjectFamilyDef` | 4 | 0 | 1 | 0 |
-| 19 | candidate-cluster | `CActionDoCreatureAction` | 751 | 1 | 1 | 0 |
-| 20 | candidate-cluster | `CNavQuadTreeNode` | 26 | 2 | 1 | 0 |
-| 21 | quick-closure | `CTCInventoryAbilities` | 100 | 1 | 0 | 0 |
-| 22 | quick-closure | `C3DMeshFileSubMeshChunk` | 99 | 1 | 0 | 0 |
-| 23 | quick-closure | `CPatchTesselationEdgeStrip` | 98 | 1 | 0 | 0 |
-| 24 | quick-closure | `CRegion` | 72 | 1 | 0 | 0 |
-| 25 | quick-closure | `CDefClassBase` | 168 | 2 | 0 | 0 |
+| 4 | candidate-cluster | `CGameScriptInterface` | 954 | 6 | 10 | 0 |
+| 5 | candidate-cluster | `CNavQuadTree` | 22 | 1 | 9 | 0 |
+| 6 | candidate-cluster | `CEngineLandscapePatch` | 29 | 2 | 9 | 0 |
+| 7 | candidate-cluster | `CEngineLandscapeRenderer` | 33 | 0 | 8 | 0 |
+| 8 | candidate-cluster | `CScriptThing` | 103 | 2 | 6 | 0 |
+| 9 | candidate-cluster | `CWorldMap` | 185 | 3 | 5 | 0 |
+| 10 | candidate-cluster | `CEngineLandscapeMap` | 19 | 0 | 4 | 0 |
+| 11 | candidate-cluster | `CEnginePrimitiveManagerMeshBase` | 4 | 0 | 4 | 0 |
+| 12 | candidate-cluster | `CLandscapeLayerMesh` | 9 | 3 | 4 | 0 |
+| 13 | candidate-cluster | `CMap` | 89 | 3 | 4 | 0 |
+| 14 | candidate-cluster | `CLandscapeBackgroundPatch` | 3019 | 0 | 3 | 0 |
+| 15 | candidate-cluster | `CLandscapeBackgroundTreeNode` | 29 | 0 | 3 | 0 |
+| 16 | candidate-cluster | `CScriptedMapBrush` | 8 | 1 | 3 | 0 |
+| 17 | candidate-cluster | `CTCPhysicsBase` | 51 | 2 | 2 | 1 |
+| 18 | candidate-cluster | `CEngineScreenEffectOutlineGlow` | 31 | 0 | 2 | 0 |
+| 19 | candidate-cluster | `CLocalDetailCacheMap` | 8 | 0 | 1 | 0 |
+| 20 | candidate-cluster | `CObjectFamilyDef` | 4 | 0 | 1 | 0 |
+| 21 | candidate-cluster | `CActionDoCreatureAction` | 751 | 1 | 1 | 0 |
+| 22 | candidate-cluster | `CNavQuadTreeNode` | 26 | 2 | 1 | 0 |
+| 23 | quick-closure | `CTCInventoryAbilities` | 100 | 1 | 0 | 0 |
+| 24 | quick-closure | `C3DMeshFileSubMeshChunk` | 99 | 1 | 0 | 0 |
+| 25 | quick-closure | `CPatchTesselationEdgeStrip` | 98 | 1 | 0 | 0 |
 
 ## Small candidate quick wins
 
@@ -44,17 +44,17 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 | 2 | `00c2d7b0` | `_global` | 0 | 493 |  |
 | 3 | `00c20ef0` | `_global` | 0 | 582 |  |
 | 4 | `008702d0` | `_global` | 0 | 728 |  |
-| 5 | `00a7a5e0` | `CNavQuadTree` | 0 | 1309 | 'C2DLineF' was not declared in this scope |
-| 6 | `007266c0` | `CTCPhysicsBase` | 0 | 1401 | static assertion failed |
-| 7 | `008368f0` | `_global` | 0 | 1421 |  |
-| 8 | `00c37000` | `_global` | 0 | 1482 |  |
-| 9 | `00c36e00` | `_global` | 0 | 1495 |  |
-| 10 | `00c36fb0` | `_global` | 0 | 1687 | expected '(' before '{' token |
-| 11 | `00c362f0` | `_global` | 0 | 1706 |  |
-| 12 | `0086fa00` | `_global` | 0 | 1753 |  |
-| 13 | `0086c5c0` | `_global` | 0 | 1754 |  |
-| 14 | `00c336f0` | `_global` | 0 | 1818 |  |
-| 15 | `00c43f80` | `_global` | 0 | 1845 | expected '(' before '{' token |
+| 5 | `004aada0` | `CScriptThing` | 0 | 811 | invalid use of incomplete type 'class CScriptThing' |
+| 6 | `004aacc0` | `CScriptThing` | 0 | 940 | invalid use of incomplete type 'class CScriptThing' |
+| 7 | `00890fc0` | `CGameScriptInterface` | 0 | 1066 | expected '(' before '{' token |
+| 8 | `004aaf80` | `CScriptThing` | 0 | 1075 | invalid use of incomplete type 'class CScriptThing' |
+| 9 | `004ab040` | `CScriptThing` | 0 | 1094 | invalid use of incomplete type 'class CScriptThing' |
+| 10 | `004aace0` | `CScriptThing` | 0 | 1382 | invalid use of incomplete type 'class CScriptThing' |
+| 11 | `007266c0` | `CTCPhysicsBase` | 0 | 1401 | static assertion failed |
+| 12 | `008368f0` | `_global` | 0 | 1421 |  |
+| 13 | `004aad00` | `CScriptThing` | 0 | 1425 | invalid use of incomplete type 'class CScriptThing' |
+| 14 | `00c37000` | `_global` | 0 | 1482 |  |
+| 15 | `00c36e00` | `_global` | 0 | 1495 |  |
 
 ## First function queue
 
