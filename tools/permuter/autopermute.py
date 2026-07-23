@@ -21,7 +21,7 @@ import argparse, random, re, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from permuter_score import score_source, DEFAULT_ORACLE  # noqa: E402
+from permuter_score import score_source, DEFAULT_ORACLE, COMPILE_FAIL  # noqa: E402
 
 FLAG_SETS = [
     ["/O2", "/Oy"], ["/O2", "/Oy-"],
@@ -78,8 +78,10 @@ def main():
     ap.add_argument("addr"); ap.add_argument("cpp", type=Path)
     ap.add_argument("--oracle", type=Path, default=DEFAULT_ORACLE)
     ap.add_argument("--name", default=None)
-    ap.add_argument("--mutate", action="store_true", help="also run AST mutation search (temp-intro + reassoc)")
+    ap.add_argument("--mutate", action="store_true", help="greedy AST mutation search (temp-intro + reassoc)")
     ap.add_argument("--depth", type=int, default=3, help="greedy stacking depth for AST mutations")
+    ap.add_argument("--random", type=int, default=0, help="random multi-mutation restarts (composes several mutations)")
+    ap.add_argument("--walk", type=int, default=6, help="max mutations composed per random restart")
     ap.add_argument("--iters", type=int, default=400)
     ap.add_argument("--seed", type=int, default=1)
     a = ap.parse_args()
@@ -120,19 +122,28 @@ def main():
             if consider(base, flags, pragma, f"{' '.join(flags)} | {pragma or '(no pragma)'}"):
                 print("MATCH via flag/pragma sweep"); return _finish(a, best)
 
-    # Phase 2: AST-driven mutation search (temp-introduction + reassociation) with
-    # greedy stacking. This is the register-allocation cracker.
-    if a.mutate:
+    # Shared AST-mutation setup (used by greedy Phase 2 and random Phase 3).
+    cm = None
+    leaf = ""
+    if a.mutate or a.random:
         try:
-            import clang_mutations as cm
+            import clang_mutations as cm  # type: ignore
         except Exception as e:
             print(f"  (clang mutations unavailable: {e})"); cm = None
-        # resolve the function leaf name for the AST walker
         from permuter_score import _read_tsv  # type: ignore
         orc = {r["address"].lower(): r for r in _read_tsv(a.oracle)}
         leaf = (a.name or orc.get(a.addr.lower().replace("0x", ""), {}).get("name", "")).rsplit("::", 1)[-1]
-        FLAG_SUBSET = [["/O2", "/Oy"], ["/O1", "/Oy"], ["/Ox", "/Oy"], ["/Os", "/Oy"], ["/Ot", "/Oy"]]
-        PRAGMA_SUBSET = ["", '#pragma optimize("s",on)', '#pragma optimize("t",on)']
+    FLAG_SUBSET = [["/O2", "/Oy"], ["/O1", "/Oy"], ["/Ox", "/Oy"], ["/Os", "/Oy"], ["/Ot", "/Oy"]]
+    PRAGMA_SUBSET = ["", '#pragma optimize("s",on)', '#pragma optimize("t",on)', '#pragma optimize("g",on)']
+
+    def mutations_of(text):
+        """All single-step AST mutations of `text` (re-parsed)."""
+        wf = work / "walk.cpp"
+        wf.write_text(text, encoding="utf-8")
+        return cm.temp_intro_variants(wf, leaf) + cm.reassoc_variants(wf, leaf)
+
+    # Phase 2: greedy stacking (deterministic best-first).
+    if a.mutate and cm:
         cur = base
         curfile = work / "cur.cpp"
         for depth in range(a.depth):
@@ -163,6 +174,32 @@ def main():
                 cur = round_best[1]
             else:
                 print(f"  depth {depth} no improvement (best round score={rb}); stopping"); break
+
+    # Phase 3: random multi-mutation combination. A random walk that COMPOSES several
+    # mutations (accepting lateral/worse moves) so it can cross a plateau -- e.g. a pair
+    # of temp-introductions that together flip a register allocation no single one does.
+    if a.random and cm:
+        print(f"Phase 3: random multi-mutation ({a.random} restarts x walk<={a.walk})")
+        for restart in range(a.random):
+            # 30% of restarts intensify from the best-known source, else diversify from base
+            if best is not None and best[0]["score"] < COMPILE_FAIL and rng.random() < 0.3:
+                cur = best[1]
+            else:
+                cur = base
+            for step in range(a.walk):
+                variants = mutations_of(cur)
+                if not variants:
+                    break
+                _, cur = rng.choice(variants)          # random move (composes over steps)
+                flags = rng.choice(FLAG_SUBSET)
+                pragma = rng.choice(PRAGMA_SUBSET)
+                tried_inc()
+                r = sc(cur, flags, pragma)
+                _update_best(r, cur, flags, pragma, f"rand r{restart}s{step+1} {' '.join(flags)} {pragma or ''}")
+                if r["score"] == 0:
+                    print(f"MATCH via random multi-mutation (restart {restart}, {step+1} mutations)")
+                    return _finish(a, best)
+        print(f"  random search done ({tried} total evaluations)")
 
     return _finish(a, best)
 
