@@ -1,10 +1,6 @@
 {
- "count": 225,
+ "count": 216,
  "classes": {
-  "CAFile": {
-   "verified_methods": 2,
-   "size": "0x4"
-  },
   "CAIStateGroupBase": {
    "verified_methods": 4,
    "fields": [
@@ -157,10 +153,6 @@
   "CAppearanceDef": {
    "verified_methods": 1,
    "size": "0x78"
-  },
-  "CApprenticeSpeedTest": {
-   "verified_methods": 1,
-   "size": "0x4"
   },
   "CArmourDef": {
    "verified_methods": 1,
@@ -437,10 +429,6 @@
     }
    ]
   },
-  "CCombatAbilityMeleeAttackData": {
-   "verified_methods": 1,
-   "size": "0x18"
-  },
   "CCombatAbilityStrafeDef": {
    "verified_methods": 3,
    "size": "0x44",
@@ -488,7 +476,6 @@
   },
   "CCombatWheel": {
    "verified_methods": 5,
-   "size": "0x4",
    "fields": [
     {
      "offset": "0x0",
@@ -816,10 +803,6 @@
     }
    ]
   },
-  "CEngineInternalPrimitiveBase": {
-   "verified_methods": 7,
-   "size": "0x4"
-  },
   "CEngineInternalPrimitiveMeshBase": {
    "verified_methods": 15,
    "fields": [
@@ -911,7 +894,6 @@
   },
   "CEngineSubPrimitiveText": {
    "verified_methods": 10,
-   "size": "0x3c",
    "fields": [
     {
      "offset": "0x3c",
@@ -935,10 +917,6 @@
   "CEnvironmentDef": {
    "verified_methods": 1,
    "size": "0x134"
-  },
-  "CEnvironmentThemeDaySetDef": {
-   "verified_methods": 1,
-   "size": "0x6c"
   },
   "CExplosiveTrailDef": {
    "verified_methods": 2,
@@ -1009,7 +987,6 @@
   },
   "CGameScriptInterface": {
    "verified_methods": 68,
-   "size": "0x1010",
    "fields": [
     {
      "offset": "0x0",
@@ -1223,10 +1200,6 @@
   "CInventoryDef": {
    "verified_methods": 1,
    "size": "0xa34"
-  },
-  "CInventoryItemDef": {
-   "verified_methods": 1,
-   "size": "0x4"
   },
   "CJackDragonDef": {
    "verified_methods": 2,
@@ -2269,7 +2242,6 @@
   },
   "CSpecialAbilitiesDrainLifeDataDef": {
    "verified_methods": 3,
-   "size": "0x2c",
    "fields": [
     {
      "offset": "0x28",
@@ -2683,10 +2655,6 @@
     }
    ]
   },
-  "CTCLook": {
-   "verified_methods": 3,
-   "size": "0x20"
-  },
   "CTCNoiseDef": {
    "verified_methods": 2,
    "fields": [
@@ -2974,10 +2942,6 @@
     }
    ]
   },
-  "CThingFilterIsUnconscious": {
-   "verified_methods": 1,
-   "size": "0x1"
-  },
   "CThingGroupDef": {
    "verified_methods": 2,
    "size": "0x3a"
@@ -3232,7 +3196,6 @@
   },
   "CViewBase": {
    "verified_methods": 6,
-   "size": "0x28",
    "fields": [
     {
      "offset": "0x28",
@@ -3320,10 +3283,6 @@
      "name": "refcount"
     }
    ]
-  },
-  "DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym": {
-   "verified_methods": 1,
-   "size": "0x20"
   },
   "DestvalstdallocatorstdpairunsignedlongCCountedPointerCFactionstd": {
    "verified_methods": 2,
@@ -3427,7 +3386,6 @@
   },
   "global": {
    "verified_methods": 168,
-   "size": "0xd0",
    "fields": [
     {
      "offset": "0x0",
