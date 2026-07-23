@@ -1,4 +1,5 @@
 _perm/
 _score/
+_auto/
 *.match.cpp
 *.best.cpp

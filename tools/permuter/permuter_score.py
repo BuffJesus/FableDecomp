@@ -91,8 +91,12 @@ def _env():
 COMPILE_FAIL = 10 ** 9
 
 
+DEFAULT_FLAGS = ["/O2", "/Oy"]
+
+
 def score_source(cpp: Path, addr: str, name: str | None = None,
-                 oracle: Path = DEFAULT_ORACLE, workdir: Path | None = None) -> dict:
+                 oracle: Path = DEFAULT_ORACLE, workdir: Path | None = None,
+                 flags: list | None = None, prepend: str = "") -> dict:
     addr = addr.lower().replace("0x", "")
     workdir = workdir or (cpp.parent / "_score")
     workdir.mkdir(parents=True, exist_ok=True)
@@ -101,11 +105,16 @@ def score_source(cpp: Path, addr: str, name: str | None = None,
     if o is None:
         return {"score": COMPILE_FAIL, "status": "NO_ORACLE"}
     leaf = (name or o["name"]).rsplit("::", 1)[-1].lstrip("~")
+    src = cpp
+    if prepend:
+        src = workdir / f"{addr}.pre.cpp"
+        src.write_text(prepend + "\n" + cpp.read_text(encoding="utf-8"), encoding="utf-8")
     obj = workdir / f"{addr}.obj"
     if obj.exists():
         obj.unlink()
-    cp = subprocess.run([str(VC / "bin" / "cl.exe"), "/nologo", "/c", "/O2", "/Oy", "/W3",
-                         f"/Fo{obj}", str(cpp)], capture_output=True, text=True, env=_env())
+    cp = subprocess.run([str(VC / "bin" / "cl.exe"), "/nologo", "/c", "/W3"]
+                        + (flags or DEFAULT_FLAGS) + [f"/Fo{obj}", str(src)],
+                        capture_output=True, text=True, env=_env())
     if cp.returncode != 0 or not obj.exists():
         return {"score": COMPILE_FAIL, "status": "COMPILE_FAIL",
                 "detail": cp.stdout[-400:] + cp.stderr[-200:]}
