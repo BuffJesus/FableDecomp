@@ -1,5 +1,39 @@
 # HANDOFF — resume here
 
+*Last updated: 2026-07-23 16:xx MDT (local deterministic byte-match lane + SDK exports online).*
+
+## Current authoritative resume point (2026-07-23 late) - verified coverage + local tiny lane
+
+Current audited buildable-source coverage:
+- `rebuild/src/compiled/`: 1,623 landed source files.
+- `rebuild/compile-gate/parity_audit.tsv`: 1,588 true byte-matches (`EXACT`/`RELOC`), 34 known
+  `DIFFER` behavior-tier functions, 1 `NO_ORACLE` orphan.
+- SDK exports are current:
+  - `rebuild/sdk/verified_functions.json`: 1,588 byte-verified functions for downstream tooling.
+  - `rebuild/sdk/struct_schema.json`: 225 reconstructed class schemas (134 with class size facts).
+  - `rebuild/sdk/forgefse_verified_bindings.json`: 73 ForgeFSE binding-queue targets verified.
+
+New local deterministic lane:
+- `tools/decomp_pipeline/auto_author_tiny.py` authors trivial tiny functions without an LLM and
+  still lands only through `verify_and_land.py`.
+- Supported patterns include `ret`, `ret 4`, constant returns, `return self` fastcall helpers,
+  `return self & imm8`, and tiny `*self = imm32` stores. No inline/naked asm is used.
+- This locally landed +9 from batch14/15, +39 more fastcall helper shapes from batch14, +69 from
+  batch16, and +5 from batch17 after the earlier batch14 +76 and SDK export commits.
+
+Pending production batches:
+- `batch15`: staged; 108 unlanded candidates remain after local tiny draining.
+- `batch16`: staged; 205 unlanded candidates remain; bundles and UTF-8 address list exist under
+  the session scratchpad.
+- `batch17`: staged; 125 unlanded candidates remain; bundles/address list exist under scratchpad.
+- Run the ultracode authoring workflow on these remaining candidates, then wrap output as
+  `{"result":{"authored":[...]}}` and land with `verify_and_land.py <wrapped> <batch_oracle> --land`.
+
+Selector/oracle improvements:
+- `next_batch.py` now splits merged oracle rows at `ret -> prologue` and also `ret -> ret/retN`,
+  preventing fused tiny functions from becoming unwinnable over-length rows.
+- Continue using one authoring lane at a time unless rate limits are clearly stable.
+
 *Last updated: 2026-07-23 08:xx MDT (self-sustaining byte-match promotion loop online).*
 
 ## Current authoritative resume point (2026-07-23) — self-sustaining byte-match loop
