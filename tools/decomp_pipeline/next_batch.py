@@ -55,6 +55,64 @@ def ends_clean(b):
     if len(b) >= 5 and b[-5] == 0xE9: return True        # jmp rel32
     return False
 
+import subprocess, tempfile
+OBJDUMP = r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe"
+import re as _re
+_ILINE = _re.compile(r"^\s*([0-9a-fA-F]+):\s+((?:[0-9a-fA-F]{2} )+)\s*(\S+)")
+# byte patterns that begin a NEW function (MSVC prologues / thunks)
+def _is_prologue(b, p):
+    if p >= len(b): return False
+    x = b[p]
+    if x in (0x55, 0x56, 0x57, 0x53): return True          # push ebp/esi/edi/ebx
+    if x == 0x6A: return True                               # push imm8 (e.g. push -1 SEH, or push size)
+    if x == 0xB8: return True                               # mov eax,imm32 (const-return fn)
+    if p + 1 < len(b):
+        pair = b[p:p+2]
+        if pair in (b"\x8b\xff", b"\x83\xec", b"\x81\xec", b"\xc7\x01", b"\x8b\xf1", b"\x8b\xc1"): return True
+    return False
+
+def _disasm(seg):
+    with tempfile.NamedTemporaryFile(suffix=".bin", delete=False) as t:
+        t.write(seg); n = t.name
+    try:
+        out = subprocess.run([OBJDUMP, "-D", "-b", "binary", "-m", "i386", "-M", "intel", n],
+                             capture_output=True, text=True).stdout
+    finally:
+        os.unlink(n)
+    ins = []
+    for l in out.splitlines():
+        m = _ILINE.match(l)
+        if m:
+            off = int(m.group(1), 16); nb = len(m.group(2).split()); ins.append((off, nb, m.group(3)))
+    return ins
+
+def first_function_len(seg):
+    """Length of the FIRST function in seg. Splits merged pe_oracle rows at a
+    ret -> (padding) -> prologue boundary. Returns len(seg) if no split found."""
+    ins = _disasm(seg)
+    for off, nb, mn in ins:
+        if mn.startswith("ret"):
+            end = off + nb
+            p = end
+            while p < len(seg) and seg[p] in (0xCC, 0x90): p += 1
+            if p >= len(seg): return end          # only trailing padding -> this ret ends it
+            if _is_prologue(seg, p): return end    # a new function starts -> split here
+            # else: early return inside one function; keep scanning
+    return len(seg)
+
+def split_all(body):
+    pieces = []; i = 0
+    guard = 0
+    while i < len(body) and guard < 32:
+        guard += 1
+        seg = body[i:]
+        L = first_function_len(seg)
+        if L <= 0 or L >= len(seg):
+            pieces.append((i, body[i:])); break
+        pieces.append((i, body[i:i + L])); i += L
+        while i < len(body) and body[i] in (0xCC, 0x90): i += 1
+    return pieces
+
 def main():
     batch = sys.argv[1]; count = int(sys.argv[2])
     max_len = int(sys.argv[3]) if len(sys.argv) > 3 else 96
@@ -89,14 +147,28 @@ def main():
         if rt in ("", "undefined"): return False
         return any(k in rt for k in ACCESSOR_RET)
 
-    picked = []
+    picked = []; recovered = []; trimmed = 0
+    seen_addr = set(excl)
     for r in man:
         if len(picked) >= count: break
         if not eligible(r): continue
         va = int(r["address"], 16); b = body(va)
-        if not b or not (1 <= len(b) <= max_len) or not ends_clean(b): continue
-        picked.append((r, b))
+        if not b: continue
+        parts = split_all(b)
+        first = parts[0][1]
+        if len(parts) > 1: trimmed += 1
+        if not (1 <= len(first) <= max_len) or not ends_clean(first): continue
+        picked.append((r, first)); seen_addr.add(r["address"].lower())
+        # recover hidden second+ functions the manifest lacked a boundary for
+        for rel_off, seg in parts[1:]:
+            ra = va + rel_off; rhex = f"{ra:08x}"
+            if rhex in seen_addr or not (1 <= len(seg) <= max_len) or not ends_clean(seg): continue
+            seen_addr.add(rhex)
+            recovered.append(({"address": rhex, "name": f"sub_{rhex}", "module": "_global",
+                               "calling_convention": "__fastcall", "return_type": "?", "parameter_count": "0"}, seg))
     picked.sort(key=lambda x: len(x[1]))
+    picked += recovered  # append recovered hidden functions as bonus candidates
+    if trimmed: print(f"[next_batch] trimmed {trimmed} merged (over-length) rows; recovered {len(recovered)} hidden functions", file=sys.stderr)
 
     pending = ROOT / "rebuild/oracles/pending"
     with open(pending / f"{batch}_oracle.tsv", "w", encoding="utf-8", newline="") as f:
