@@ -1,5 +1,5 @@
 {
- "count": 178,
+ "count": 196,
  "classes": {
   "CAFile": {
    "verified_methods": 2,
@@ -101,7 +101,7 @@
    "size": "0x34"
   },
   "CActiveFile": {
-   "verified_methods": 52,
+   "verified_methods": 57,
    "fields": [
     {
      "offset": "0x0",
@@ -479,17 +479,17 @@
    ]
   },
   "CComponent": {
-   "verified_methods": 3,
+   "verified_methods": 4,
    "fields": [
     {
      "offset": "0x0",
-     "type": "int",
-     "name": "f30"
+     "type": "int*",
+     "name": "first"
     },
     {
      "offset": "0x4",
-     "type": "int",
-     "name": "f98"
+     "type": "int*",
+     "name": "second"
     },
     {
      "offset": "0x8",
@@ -1063,12 +1063,12 @@
    ]
   },
   "CGuiControlTreePane": {
-   "verified_methods": 15,
+   "verified_methods": 16,
    "fields": [
     {
      "offset": "0x0",
      "type": "Node*",
-     "name": "next"
+     "name": "head"
     },
     {
      "offset": "0x4",
@@ -1154,7 +1154,7 @@
    ]
   },
   "CIME": {
-   "verified_methods": 2,
+   "verified_methods": 3,
    "fields": [
     {
      "offset": "0x8",
@@ -1185,7 +1185,7 @@
    "size": "0x78"
   },
   "CLandscapeBackgroundPatch": {
-   "verified_methods": 112,
+   "verified_methods": 140,
    "fields": [
     {
      "offset": "0x0",
@@ -1195,7 +1195,7 @@
     {
      "offset": "0x4",
      "type": "CInner",
-     "name": "inner"
+     "name": "inner4"
     },
     {
      "offset": "0x8",
@@ -1423,6 +1423,26 @@
    "verified_methods": 1,
    "size": "0x98"
   },
+  "CMemoryAllocatorVariableSize": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0x4",
+     "type": "Node*",
+     "name": "left"
+    },
+    {
+     "offset": "0x8",
+     "type": "Node*",
+     "name": "right"
+    },
+    {
+     "offset": "0xc",
+     "type": "Node*",
+     "name": "parent"
+    }
+   ]
+  },
   "CMemoryFile": {
    "verified_methods": 3,
    "fields": [
@@ -1580,7 +1600,7 @@
    ]
   },
   "CObservable": {
-   "verified_methods": 7,
+   "verified_methods": 8,
    "fields": [
     {
      "offset": "0x134",
@@ -1589,6 +1609,11 @@
     },
     {
      "offset": "0x138",
+     "type": "void*",
+     "name": "exclusiveObserver"
+    },
+    {
+     "offset": "0x13c",
      "type": "void*",
      "name": "exclusiveObserver"
     },
@@ -1692,7 +1717,7 @@
    ]
   },
   "CPatchTesselationEdgeStrip": {
-   "verified_methods": 7,
+   "verified_methods": 12,
    "fields": [
     {
      "offset": "0x3c",
@@ -1723,6 +1748,16 @@
      "offset": "0x50",
      "type": "void*",
      "name": "p50"
+    },
+    {
+     "offset": "0x54",
+     "type": "void*",
+     "name": "p54"
+    },
+    {
+     "offset": "0x58",
+     "type": "void*",
+     "name": "p58"
     },
     {
      "offset": "0x5c",
@@ -1758,6 +1793,11 @@
      "offset": "0x78",
      "type": "void*",
      "name": "p78"
+    },
+    {
+     "offset": "0x7c",
+     "type": "void*",
+     "name": "p8c"
     },
     {
      "offset": "0x80",
@@ -1928,8 +1968,13 @@
    ]
   },
   "CRegion": {
-   "verified_methods": 11,
+   "verified_methods": 12,
    "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "field0"
+    },
     {
      "offset": "0x18",
      "type": "CCharString",
@@ -1983,6 +2028,21 @@
      "offset": "0x28",
      "type": "void*",
      "name": "field28"
+    }
+   ]
+  },
+  "CShaderPreParser": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0x7d0",
+     "type": "char*",
+     "name": "begin"
+    },
+    {
+     "offset": "0x7d4",
+     "type": "char*",
+     "name": "end"
     }
    ]
   },
@@ -2095,6 +2155,14 @@
    "verified_methods": 1,
    "size": "0x18c"
   },
+  "CSpecialAbilitiesBurntEffectDef": {
+   "verified_methods": 1,
+   "size": "0x54"
+  },
+  "CSpecialAbilitiesDivineWrathDef": {
+   "verified_methods": 1,
+   "size": "0xfc"
+  },
   "CSpecialAbilitiesDrainLifeDataDef": {
    "verified_methods": 3,
    "size": "0x2c",
@@ -2105,6 +2173,26 @@
      "name": "sub"
     }
    ]
+  },
+  "CSpecialAbilitiesDrainLifeDef": {
+   "verified_methods": 1,
+   "size": "0x70"
+  },
+  "CSpecialAbilitiesDrunkennessDef": {
+   "verified_methods": 1,
+   "size": "0x50"
+  },
+  "CSpecialAbilitiesElectrocutedEffectDef": {
+   "verified_methods": 1,
+   "size": "0x6c"
+  },
+  "CSpecialAbilitiesEnflameDef": {
+   "verified_methods": 1,
+   "size": "0xa8"
+  },
+  "CSpecialAbilitiesFireballSpellDef": {
+   "verified_methods": 1,
+   "size": "0x54"
   },
   "CSpecialAbilitiesForcePushDataDef": {
    "verified_methods": 2,
@@ -2117,6 +2205,18 @@
     }
    ]
   },
+  "CSpecialAbilitiesGhostSwordDef": {
+   "verified_methods": 1,
+   "size": "0x58"
+  },
+  "CSpecialAbilitiesHealLifeDef": {
+   "verified_methods": 1,
+   "size": "0x60"
+  },
+  "CSpecialAbilitiesLightningSpellDef": {
+   "verified_methods": 1,
+   "size": "0x128"
+  },
   "CSpecialAbilitiesMultiArrowDef": {
    "verified_methods": 1,
    "size": "0x80"
@@ -2124,6 +2224,22 @@
   "CSpecialAbilitiesMultiStrikeDef": {
    "verified_methods": 1,
    "size": "0x9c"
+  },
+  "CSpecialAbilitiesSummonSpellDef": {
+   "verified_methods": 1,
+   "size": "0x6c"
+  },
+  "CSpecialAbilitiesThunderLightningStormDef": {
+   "verified_methods": 1,
+   "size": "0x68"
+  },
+  "CSpecialAbilitiesTurncoatSpellDef": {
+   "verified_methods": 1,
+   "size": "0x78"
+  },
+  "CSpecialAbilitiesUnholyPowerDef": {
+   "verified_methods": 1,
+   "size": "0xfc"
   },
   "CSpecialEffectsDef": {
    "verified_methods": 1,
@@ -2394,7 +2510,7 @@
    ]
   },
   "CTCInventoryItem": {
-   "verified_methods": 10,
+   "verified_methods": 13,
    "fields": [
     {
      "offset": "0x0",
@@ -2432,6 +2548,16 @@
      "name": "sub3c"
     },
     {
+     "offset": "0x44",
+     "type": "void*",
+     "name": "ptr44"
+    },
+    {
+     "offset": "0x48",
+     "type": "void*",
+     "name": "ptr48"
+    },
+    {
      "offset": "0x53",
      "type": "SubA",
      "name": "sub50"
@@ -2445,6 +2571,11 @@
      "offset": "0x80",
      "type": "void*",
      "name": "ptr80"
+    },
+    {
+     "offset": "0x98",
+     "type": "void*",
+     "name": "ptr98"
     }
    ]
   },
@@ -2783,7 +2914,7 @@
    "size": "0x74"
   },
   "CThingTrackNode": {
-   "verified_methods": 2,
+   "verified_methods": 3,
    "fields": [
     {
      "offset": "0x0",
@@ -2794,6 +2925,16 @@
      "offset": "0x4",
      "type": "int",
      "name": "member18"
+    },
+    {
+     "offset": "0x10",
+     "type": "void*",
+     "name": "member10"
+    },
+    {
+     "offset": "0x20",
+     "type": "char",
+     "name": "member20"
     }
    ]
   },
@@ -2805,6 +2946,26 @@
      "offset": "0x70",
      "type": "int",
      "name": "member70"
+    }
+   ]
+  },
+  "CTopologySizeGrid": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "dummy0"
+    },
+    {
+     "offset": "0x4",
+     "type": "int*",
+     "name": "p4"
+    },
+    {
+     "offset": "0x14",
+     "type": "int*",
+     "name": "p14"
     }
    ]
   },
@@ -3000,7 +3161,7 @@
    ]
   },
   "DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC": {
-   "verified_methods": 81,
+   "verified_methods": 84,
    "fields": [
     {
      "offset": "0x0",
@@ -3015,11 +3176,11 @@
    ]
   },
   "DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3": {
-   "verified_methods": 7,
+   "verified_methods": 11,
    "fields": [
     {
      "offset": "0x0",
-     "type": "int",
+     "type": "long",
      "name": "refcount"
     },
     {
@@ -3047,6 +3208,21 @@
   "DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym": {
    "verified_methods": 1,
    "size": "0x20"
+  },
+  "DestvalstdallocatorstdpairunsignedlongCCountedPointerCFactionstd": {
+   "verified_methods": 2,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "long",
+     "name": "refcount"
+    },
+    {
+     "offset": "0x4",
+     "type": "void*",
+     "name": "obj"
+    }
+   ]
   },
   "Global": {
    "verified_methods": 22,
@@ -3134,7 +3310,7 @@
    ]
   },
   "global": {
-   "verified_methods": 51,
+   "verified_methods": 53,
    "size": "0xd0",
    "fields": [
     {

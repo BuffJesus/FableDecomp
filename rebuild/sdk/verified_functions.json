@@ -1,5 +1,5 @@
 {
- "count": 1366,
+ "count": 1442,
  "functions": [
   {
    "address": "0x004012bc",
@@ -146,6 +146,15 @@
    "parity": "RELOC"
   },
   {
+   "address": "0x004038c0",
+   "name": "`vector_constructor_iterator'",
+   "module": "_global",
+   "calling_convention": "__stdcall",
+   "return_type": "void",
+   "parameter_types": "void *,uint,int,_func_void_ptr_void_ptr *",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x00403a00",
    "name": "GetLength",
    "module": "CCharString",
@@ -209,6 +218,15 @@
    "parity": "RELOC"
   },
   {
+   "address": "0x004047d0",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x00404a80",
    "name": "AddChildPrimitive",
    "module": "CEngineInternalPrimitiveBase",
@@ -252,6 +270,15 @@
    "return_type": "bool",
    "parameter_types": "CNetworkClient *,CGameEventPackageSet *",
    "parity": "RELOC"
+  },
+  {
+   "address": "0x00404f40",
+   "name": "Enable",
+   "module": "CIME",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CIME *,bool",
+   "parity": "MATCH*"
   },
   {
    "address": "0x00405ba0",
@@ -686,6 +713,15 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x0040f2c0",
+   "name": "OnReadFinished",
+   "module": "CActiveFile",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CActiveFile *",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x0040f470",
    "name": "FreeBuffer",
    "module": "CBankFileAsyncData",
@@ -740,6 +776,15 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x00411980",
+   "name": "SetParentColour",
+   "module": "CComponent",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CComponent *,CRGBColour *",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x00412020",
    "name": "OnDie",
    "module": "CTCInventoryItem",
@@ -774,6 +819,15 @@
    "return_type": "CCharString",
    "parameter_types": "CBankFile *",
    "parity": "RELOC"
+  },
+  {
+   "address": "0x004120c0",
+   "name": "`vector_deleting_destructor'",
+   "module": "CThingTrackNode",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CThingTrackNode *,uint",
+   "parity": "MATCH*"
   },
   {
    "address": "0x00412130",
@@ -900,6 +954,24 @@
    "return_type": "void",
    "parameter_types": "allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x004133a0",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00413480",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
   },
   {
    "address": "0x00414c90",
@@ -1649,6 +1721,15 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x004197b3",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x0041a810",
    "name": "Move",
    "module": "C2DBoxF",
@@ -1701,6 +1782,15 @@
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x0041bb30",
+   "name": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>",
+   "module": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals",
+   "calling_convention": "__fastcall",
+   "return_type": "void",
+   "parameter_types": "allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *",
+   "parity": "MATCH*"
   },
   {
    "address": "0x0041bc90",
@@ -1901,6 +1991,15 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x0041c9c0",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x0041ca31",
    "name": "AddExclusiveObserver",
    "module": "CObservable",
@@ -1917,6 +2016,15 @@
    "return_type": "void",
    "parameter_types": "CObservable *,CObserver *",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x0041ca52",
+   "name": "AddExclusiveObserver",
+   "module": "CObservable",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CObservable *,CObserver *",
+   "parity": "MATCH*"
   },
   {
    "address": "0x0041cc14",
@@ -1944,6 +2052,15 @@
    "return_type": "void",
    "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x0041cc70",
+   "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+   "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+   "calling_convention": "__fastcall",
+   "return_type": "void",
+   "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
+   "parity": "MATCH*"
   },
   {
    "address": "0x0041cd89",
@@ -2153,6 +2270,15 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x00428c1a",
+   "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+   "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+   "calling_convention": "__fastcall",
+   "return_type": "void",
+   "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x00428c8f",
    "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
    "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
@@ -2169,6 +2295,15 @@
    "return_type": "void",
    "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x00428cbf",
+   "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+   "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+   "calling_convention": "__fastcall",
+   "return_type": "void",
+   "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
+   "parity": "MATCH*"
   },
   {
    "address": "0x0042913a",
@@ -2250,6 +2385,15 @@
    "return_type": "void",
    "parameter_types": "allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x004292c0",
+   "name": "GetNoAllocatedAreas",
+   "module": "CMemoryAllocatorVariableSize",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CMemoryAllocatorVariableSize *",
+   "parity": "MATCH*"
   },
   {
    "address": "0x004293db",
@@ -2601,6 +2745,15 @@
    "return_type": "void",
    "parameter_types": "CTCMapwho *",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x0042a0ce",
+   "name": "SetMiniMapRegionExitTextOffsetX",
+   "module": "CRegion",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CRegion *,CCharString *,float",
+   "parity": "MATCH*"
   },
   {
    "address": "0x0042a141",
@@ -4232,6 +4385,15 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x00436380",
+   "name": "IS_THING_ALIVE<CThingBuilding*>",
+   "module": "_global",
+   "calling_convention": "__fastcall",
+   "return_type": "bool",
+   "parameter_types": "CThingBuilding * *",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x004364c0",
    "name": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>",
    "module": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager",
@@ -4248,6 +4410,24 @@
    "return_type": "void",
    "parameter_types": "CTCHeroStats *",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x00436740",
+   "name": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>",
+   "module": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals",
+   "calling_convention": "__fastcall",
+   "return_type": "void",
+   "parameter_types": "allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00436830",
+   "name": "Hora",
+   "module": "CTopologySizeGrid",
+   "calling_convention": "__thiscall",
+   "return_type": "float *",
+   "parameter_types": "CTopologySizeGrid *,long,long",
+   "parity": "MATCH*"
   },
   {
    "address": "0x004368a0",
@@ -5168,6 +5348,15 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x0043dd40",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x0043df80",
    "name": "fill<ENavigatorType*,ENavigatorType>",
    "module": "_global",
@@ -5807,6 +5996,15 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x004405d0",
+   "name": "OnReadFinished",
+   "module": "CActiveFile",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CActiveFile *",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x00440650",
    "name": "OnReadFinished",
    "module": "CActiveFile",
@@ -5852,6 +6050,15 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x004407b0",
+   "name": "SortTreeRecursively",
+   "module": "CGuiControlTreePane",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x00440a70",
    "name": "~vector<CConversation,std::allocator<CConversation>_>",
    "module": "~vector<CConversation,std",
@@ -5859,6 +6066,15 @@
    "return_type": "void",
    "parameter_types": "vector<CConversation,std::allocator<CConversation>_> *",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x00440ad0",
+   "name": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>",
+   "module": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals",
+   "calling_convention": "__fastcall",
+   "return_type": "void",
+   "parameter_types": "allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *",
+   "parity": "MATCH*"
   },
   {
    "address": "0x00440ba0",
@@ -5960,6 +6176,15 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x00441670",
+   "name": "OnReadFinished",
+   "module": "CActiveFile",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CActiveFile *",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x004422f0",
    "name": "OnReadFinished",
    "module": "CActiveFile",
@@ -6023,6 +6248,24 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x00442980",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00442cc0",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x00442d30",
    "name": "`vector_deleting_destructor'",
    "module": "CLandscapeBackgroundPatch",
@@ -6030,6 +6273,42 @@
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x00442da0",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00442f00",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00443010",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00443080",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
   },
   {
    "address": "0x00443140",
@@ -6174,6 +6453,15 @@
    "return_type": "void *",
    "parameter_types": "CEngineSubPrimitiveText *,uint",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x00444d70",
+   "name": "OnDie",
+   "module": "CTCMapwho",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CTCMapwho *",
+   "parity": "MATCH*"
   },
   {
    "address": "0x00444e90",
@@ -6372,6 +6660,15 @@
    "return_type": "ulong",
    "parameter_types": "CShaderPreParser *",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x00445960",
+   "name": "GetConstantCount",
+   "module": "CShaderPreParser",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CShaderPreParser *",
+   "parity": "MATCH*"
   },
   {
    "address": "0x00445ae0",
@@ -6588,6 +6885,15 @@
    "return_type": "void",
    "parameter_types": "allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *",
    "parity": "EXACT"
+  },
+  {
+   "address": "0x00447e00",
+   "name": "_Dest_val<std::allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_>,std::pair<unsigned_long,CCountedPointer<CFaction>_>_>",
+   "module": "_Dest_val<std::allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_>,std",
+   "calling_convention": "__fastcall",
+   "return_type": "void",
+   "parameter_types": "allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_> *,pair<unsigned_long,CCountedPointer<CFaction>_> *",
+   "parity": "MATCH*"
   },
   {
    "address": "0x00448080",
@@ -6852,6 +7158,15 @@
   },
   {
    "address": "0x0044be30",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0044c030",
    "name": "`vector_deleting_destructor'",
    "module": "CLandscapeBackgroundPatch",
    "calling_convention": "__thiscall",
@@ -7182,6 +7497,15 @@
    "return_type": "void *",
    "parameter_types": "uint",
    "parity": "RELOC"
+  },
+  {
+   "address": "0x0044eb34",
+   "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+   "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+   "calling_convention": "__fastcall",
+   "return_type": "void",
+   "parameter_types": "allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *",
+   "parity": "MATCH*"
   },
   {
    "address": "0x0044f3b2",
@@ -7643,6 +7967,15 @@
    "parity": "MATCH*"
   },
   {
+   "address": "0x00450dab",
+   "name": "OnReadFinished",
+   "module": "CActiveFile",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CActiveFile *",
+   "parity": "MATCH*"
+  },
+  {
    "address": "0x00450e92",
    "name": "OnKill",
    "module": "CTCCarryable",
@@ -7766,6 +8099,15 @@
    "calling_convention": "__thiscall",
    "return_type": "void",
    "parameter_types": "CTCCarryable *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0045151c",
+   "name": "OnReadFinished",
+   "module": "CActiveFile",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CActiveFile *",
    "parity": "MATCH*"
   },
   {
@@ -9930,6 +10272,348 @@
   },
   {
    "address": "0x004576bf",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x004576db",
+   "name": "~CPatchTesselationEdgeStrip",
+   "module": "CPatchTesselationEdgeStrip",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CPatchTesselationEdgeStrip *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457738",
+   "name": "CSpecialAbilitiesEnflameDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesEnflameDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesEnflameDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0045773e",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0045775a",
+   "name": "OnDie",
+   "module": "CTCInventoryItem",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CTCInventoryItem *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457829",
+   "name": "CSpecialAbilitiesPhysicalShieldDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesPhysicalShieldDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesPhysicalShieldDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0045782f",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457916",
+   "name": "CSpecialAbilitiesDrainLifeDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesDrainLifeDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesDrainLifeDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0045791a",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457936",
+   "name": "~CPatchTesselationEdgeStrip",
+   "module": "CPatchTesselationEdgeStrip",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CPatchTesselationEdgeStrip *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x004579a2",
+   "name": "CSpecialAbilitiesHealLifeDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesHealLifeDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesHealLifeDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x004579a6",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x004579c2",
+   "name": "~CPatchTesselationEdgeStrip",
+   "module": "CPatchTesselationEdgeStrip",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CPatchTesselationEdgeStrip *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457a09",
+   "name": "CSpecialAbilitiesGhostSwordDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesGhostSwordDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesGhostSwordDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457a67",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457ac4",
+   "name": "CSpecialAbilitiesTurncoatSpellDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesTurncoatSpellDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesTurncoatSpellDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457ac8",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457b52",
+   "name": "CSpecialAbilitiesFireballSpellDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesFireballSpellDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesFireballSpellDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457b56",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457b72",
+   "name": "OnDie",
+   "module": "CTCInventoryItem",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CTCInventoryItem *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457c7e",
+   "name": "CSpecialAbilitiesLightningSpellDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesLightningSpellDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesLightningSpellDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457c84",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457de3",
+   "name": "CSpecialAbilitiesSummonSpellDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesSummonSpellDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesSummonSpellDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457de7",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457e03",
+   "name": "~CPatchTesselationEdgeStrip",
+   "module": "CPatchTesselationEdgeStrip",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CPatchTesselationEdgeStrip *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457e57",
+   "name": "CSpecialAbilitiesBurntEffectDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesBurntEffectDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesBurntEffectDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457e5b",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457e77",
+   "name": "OnDie",
+   "module": "CTCInventoryItem",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CTCInventoryItem *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457eb6",
+   "name": "CSpecialAbilitiesElectrocutedEffectDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesElectrocutedEffectDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesElectrocutedEffectDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457eba",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457ed6",
+   "name": "~CPatchTesselationEdgeStrip",
+   "module": "CPatchTesselationEdgeStrip",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "parameter_types": "CPatchTesselationEdgeStrip *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457f0f",
+   "name": "CSpecialAbilitiesDrunkennessDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesDrunkennessDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesDrunkennessDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457f57",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00457f8d",
+   "name": "CSpecialAbilitiesThunderLightningStormDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesThunderLightningStormDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesThunderLightningStormDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00458017",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x004580ef",
+   "name": "CSpecialAbilitiesDivineWrathDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesDivineWrathDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesDivineWrathDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x004580f5",
+   "name": "`vector_deleting_destructor'",
+   "module": "CLandscapeBackgroundPatch",
+   "calling_convention": "__thiscall",
+   "return_type": "void *",
+   "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x004582b4",
+   "name": "CSpecialAbilitiesUnholyPowerDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesUnholyPowerDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesUnholyPowerDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x004582ba",
    "name": "`vector_deleting_destructor'",
    "module": "CLandscapeBackgroundPatch",
    "calling_convention": "__thiscall",
