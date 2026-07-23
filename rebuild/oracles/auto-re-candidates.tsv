@@ -1616,3 +1616,8 @@ address	name	length	bytes
 00451c3b	sub_00451c3b	1	c3
 00451c3c	sub_00451c3c	1	c3
 00451c3d	sub_00451c3d	1	c3
+0046a174	CAppearanceDef::GetSizeofClass	4	6a7858c3
+0046ee66	CQuickAccessItemButtonGuiDef::GetSizeofClass	4	6a5058c3
+0046f1ff	CAbilityButtonGuiDef::GetSizeofClass	4	6a5c58c3
+0046f723	CLensFlareElementDef::GetSizeofClass	4	6a4c58c3
+00471f93	COpinionDeedReactionDef::GetSizeofClass	4	6a5058c3

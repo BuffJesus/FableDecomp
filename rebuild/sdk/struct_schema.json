@@ -1,5 +1,5 @@
 {
- "count": 220,
+ "count": 225,
  "classes": {
   "CAFile": {
    "verified_methods": 2,
@@ -44,6 +44,10 @@
      "name": "m28"
     }
    ]
+  },
+  "CAbilityButtonGuiDef": {
+   "verified_methods": 1,
+   "size": "0x5c"
   },
   "CAbilityDef": {
    "verified_methods": 3,
@@ -149,6 +153,10 @@
      "name": "bank"
     }
    ]
+  },
+  "CAppearanceDef": {
+   "verified_methods": 1,
+   "size": "0x78"
   },
   "CApprenticeSpeedTest": {
    "verified_methods": 1,
@@ -1384,6 +1392,10 @@
     }
    ]
   },
+  "CLensFlareElementDef": {
+   "verified_methods": 1,
+   "size": "0x4c"
+  },
   "CLightningDef": {
    "verified_methods": 1,
    "size": "0x58"
@@ -1687,6 +1699,10 @@
   "COpinionDeedMaskDef": {
    "verified_methods": 1,
    "size": "0x48"
+  },
+  "COpinionDeedReactionDef": {
+   "verified_methods": 1,
+   "size": "0x50"
   },
   "COpinionPersonalityDef": {
    "verified_methods": 2,
@@ -2038,6 +2054,10 @@
      "name": "screenPtr"
     }
    ]
+  },
+  "CQuickAccessItemButtonGuiDef": {
+   "verified_methods": 1,
+   "size": "0x50"
   },
   "CRegion": {
    "verified_methods": 12,
