@@ -1,5 +1,5 @@
 {
- "count": 196,
+ "count": 220,
  "classes": {
   "CAFile": {
    "verified_methods": 2,
@@ -154,6 +154,14 @@
    "verified_methods": 1,
    "size": "0x4"
   },
+  "CArmourDef": {
+   "verified_methods": 1,
+   "size": "0x6c"
+  },
+  "CAttackPatternDef": {
+   "verified_methods": 1,
+   "size": "0x48"
+  },
   "CAugmentationDef": {
    "verified_methods": 2,
    "size": "0x4c"
@@ -201,6 +209,10 @@
   "CBonusItemDef": {
    "verified_methods": 2,
    "size": "0x74"
+  },
+  "CBrainDef": {
+   "verified_methods": 1,
+   "size": "0x60"
   },
   "CBriarRoseDef": {
    "verified_methods": 2,
@@ -462,6 +474,10 @@
    "verified_methods": 1,
    "size": "0x8c"
   },
+  "CCombatSequenceDef": {
+   "verified_methods": 1,
+   "size": "0x68"
+  },
   "CCombatWheel": {
    "verified_methods": 5,
    "size": "0x4",
@@ -589,6 +605,10 @@
      "name": "ptr"
     }
    ]
+  },
+  "CCreatureAbilityDef": {
+   "verified_methods": 1,
+   "size": "0x40"
   },
   "CCreatureActionBase": {
    "verified_methods": 5,
@@ -892,6 +912,14 @@
     }
    ]
   },
+  "CEngineThemeDef": {
+   "verified_methods": 1,
+   "size": "0xa4"
+  },
+  "CEngineThemeGroupDef": {
+   "verified_methods": 1,
+   "size": "0x3a"
+  },
   "CEntitySoundDef": {
    "verified_methods": 1,
    "size": "0x54"
@@ -1062,6 +1090,10 @@
     }
    ]
   },
+  "CGlobalDef": {
+   "verified_methods": 1,
+   "size": "0x150"
+  },
   "CGuiControlTreePane": {
    "verified_methods": 16,
    "fields": [
@@ -1113,6 +1145,10 @@
    "verified_methods": 1,
    "size": "0x9c"
   },
+  "CHeroCombatDef": {
+   "verified_methods": 1,
+   "size": "0x148"
+  },
   "CHeroPostcardGeneratorDef": {
    "verified_methods": 2,
    "size": "0x5c",
@@ -1131,6 +1167,10 @@
   "CHeroTitleDef": {
    "verified_methods": 2,
    "size": "0x50"
+  },
+  "CHitLocationDef": {
+   "verified_methods": 1,
+   "size": "0x7c"
   },
   "CHitLocationsDef": {
    "verified_methods": 2,
@@ -1344,6 +1384,10 @@
     }
    ]
   },
+  "CLightningDef": {
+   "verified_methods": 1,
+   "size": "0x58"
+  },
   "CLocalDetailCacheMap": {
    "verified_methods": 1,
    "fields": [
@@ -1422,6 +1466,14 @@
   "CMaterialDef": {
    "verified_methods": 1,
    "size": "0x98"
+  },
+  "CMeleeCombatAbilityDef": {
+   "verified_methods": 1,
+   "size": "0x7c"
+  },
+  "CMeleeCombatKnockdownEffects": {
+   "verified_methods": 1,
+   "size": "0x5c"
   },
   "CMemoryAllocatorVariableSize": {
    "verified_methods": 4,
@@ -1598,6 +1650,10 @@
      "name": "flag8"
     }
    ]
+  },
+  "CObjectFamilyDef": {
+   "verified_methods": 2,
+   "size": "0x48"
   },
   "CObservable": {
    "verified_methods": 8,
@@ -1847,6 +1903,10 @@
     }
    ]
   },
+  "CPlayerDef": {
+   "verified_methods": 1,
+   "size": "0x44"
+  },
   "CPlayerGui": {
    "verified_methods": 14,
    "fields": [
@@ -1941,6 +2001,18 @@
      "name": "f7c"
     }
    ]
+  },
+  "CPlayerGuiDef": {
+   "verified_methods": 1,
+   "size": "0xab4"
+  },
+  "CPlayerInventoryDef": {
+   "verified_methods": 1,
+   "size": "0x70"
+  },
+  "CPlayerMovementDef": {
+   "verified_methods": 1,
+   "size": "0x7c"
   },
   "CQuestManager": {
    "verified_methods": 2,
@@ -2086,6 +2158,10 @@
     }
    ]
   },
+  "CSimBuildingDef": {
+   "verified_methods": 1,
+   "size": "0x48"
+  },
   "CSimVoicesDef": {
    "verified_methods": 1,
    "size": "0x54"
@@ -2128,6 +2204,10 @@
    "verified_methods": 2,
    "size": "0x60"
   },
+  "CSoundDef": {
+   "verified_methods": 1,
+   "size": "0x84"
+  },
   "CSoundThemeDef": {
    "verified_methods": 1,
    "size": "0x64"
@@ -2158,6 +2238,10 @@
   "CSpecialAbilitiesBurntEffectDef": {
    "verified_methods": 1,
    "size": "0x54"
+  },
+  "CSpecialAbilitiesCreatureTintDef": {
+   "verified_methods": 1,
+   "size": "0x50"
   },
   "CSpecialAbilitiesDivineWrathDef": {
    "verified_methods": 1,
@@ -2874,6 +2958,10 @@
    "verified_methods": 1,
    "size": "0x1"
   },
+  "CThingGroupDef": {
+   "verified_methods": 1,
+   "size": "0x3a"
+  },
   "CThingHolySiteDef": {
    "verified_methods": 2,
    "size": "0x80"
@@ -2889,6 +2977,10 @@
   "CThingNoiseDef": {
    "verified_methods": 2,
    "size": "0xa4"
+  },
+  "CThingObjectDef": {
+   "verified_methods": 1,
+   "size": "0x9c"
   },
   "CThingPhysicalSwitchDef": {
    "verified_methods": 2,
@@ -2908,6 +3000,10 @@
      "name": "flags"
     }
    ]
+  },
+  "CThingShotDef": {
+   "verified_methods": 1,
+   "size": "0xac"
   },
   "CThingSwitchDef": {
    "verified_methods": 2,
