@@ -1,5 +1,5 @@
 {
- "count": 1442,
+ "count": 1466,
  "functions": [
   {
    "address": "0x004012bc",
@@ -10619,6 +10619,222 @@
    "calling_convention": "__thiscall",
    "return_type": "void *",
    "parameter_types": "CLandscapeBackgroundPatch *,uint",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x004583da",
+   "name": "CSpecialAbilitiesCreatureTintDef::GetSizeofClass",
+   "module": "CSpecialAbilitiesCreatureTintDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSpecialAbilitiesCreatureTintDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00458454",
+   "name": "CSoundDef::GetSizeofClass",
+   "module": "CSoundDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSoundDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x004584e4",
+   "name": "CAttackPatternDef::GetSizeofClass",
+   "module": "CAttackPatternDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CAttackPatternDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0045853a",
+   "name": "CObjectFamilyDef::GetSizeofClass",
+   "module": "CObjectFamilyDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CObjectFamilyDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0045859d",
+   "name": "CArmourDef::GetSizeofClass",
+   "module": "CArmourDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CArmourDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x004585fa",
+   "name": "CHitLocationDef::GetSizeofClass",
+   "module": "CHitLocationDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CHitLocationDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x004588c2",
+   "name": "CCombatSequenceDef::GetSizeofClass",
+   "module": "CCombatSequenceDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CCombatSequenceDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0045890d",
+   "name": "CLightningDef::GetSizeofClass",
+   "module": "CLightningDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CLightningDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00458a2d",
+   "name": "CGlobalDef::GetSizeofClass",
+   "module": "CGlobalDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CGlobalDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00458b7b",
+   "name": "CHeroCombatDef::GetSizeofClass",
+   "module": "CHeroCombatDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CHeroCombatDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00458c46",
+   "name": "CMeleeCombatAbilityDef::GetSizeofClass",
+   "module": "CMeleeCombatAbilityDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CMeleeCombatAbilityDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00458c99",
+   "name": "CMeleeCombatKnockdownEffects::GetSizeofClass",
+   "module": "CMeleeCombatKnockdownEffects",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CMeleeCombatKnockdownEffects *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00458d69",
+   "name": "CThingShotDef::GetSizeofClass",
+   "module": "CThingShotDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CThingShotDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00459129",
+   "name": "CThingObjectDef::GetSizeofClass",
+   "module": "CThingObjectDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CThingObjectDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0045934f",
+   "name": "CCreatureAbilityDef::GetSizeofClass",
+   "module": "CCreatureAbilityDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CCreatureAbilityDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00459549",
+   "name": "CThingGroupDef::GetSizeofClass",
+   "module": "CThingGroupDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CThingGroupDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x0045957e",
+   "name": "CPlayerDef::GetSizeofClass",
+   "module": "CPlayerDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CPlayerDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00459611",
+   "name": "CPlayerMovementDef::GetSizeofClass",
+   "module": "CPlayerMovementDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CPlayerMovementDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00459700",
+   "name": "CSimBuildingDef::GetSizeofClass",
+   "module": "CSimBuildingDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CSimBuildingDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00459760",
+   "name": "CEngineThemeGroupDef::GetSizeofClass",
+   "module": "CEngineThemeGroupDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CEngineThemeGroupDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00459795",
+   "name": "CEngineThemeDef::GetSizeofClass",
+   "module": "CEngineThemeDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CEngineThemeDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00459a9e",
+   "name": "CBrainDef::GetSizeofClass",
+   "module": "CBrainDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CBrainDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00459b53",
+   "name": "CPlayerInventoryDef::GetSizeofClass",
+   "module": "CPlayerInventoryDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CPlayerInventoryDef *",
+   "parity": "MATCH*"
+  },
+  {
+   "address": "0x00459e24",
+   "name": "CPlayerGuiDef::GetSizeofClass",
+   "module": "CPlayerGuiDef",
+   "calling_convention": "__thiscall",
+   "return_type": "ulong",
+   "parameter_types": "CPlayerGuiDef *",
    "parity": "MATCH*"
   },
   {

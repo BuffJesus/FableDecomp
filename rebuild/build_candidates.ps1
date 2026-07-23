@@ -10293,6 +10293,174 @@ $catalog = @(
         TestSource = 'CThingTrackNode_vectordeletingdestructor_004120c0_test.cpp'
         PassPattern = 'CThingTrackNode_004120c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004583da'
+        Module = 'CSpecialAbilitiesCreatureTintDef'
+        Source = 'CSpecialAbilitiesCreatureTintDef_GetSizeofClass_004583da.cpp'
+        TestSource = 'CSpecialAbilitiesCreatureTintDef_GetSizeofClass_004583da_test.cpp'
+        PassPattern = 'AUTO_TINY_004583da_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004584e4'
+        Module = 'CAttackPatternDef'
+        Source = 'CAttackPatternDef_GetSizeofClass_004584e4.cpp'
+        TestSource = 'CAttackPatternDef_GetSizeofClass_004584e4_test.cpp'
+        PassPattern = 'AUTO_TINY_004584e4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045853a'
+        Module = 'CObjectFamilyDef'
+        Source = 'CObjectFamilyDef_GetSizeofClass_0045853a.cpp'
+        TestSource = 'CObjectFamilyDef_GetSizeofClass_0045853a_test.cpp'
+        PassPattern = 'AUTO_TINY_0045853a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045859d'
+        Module = 'CArmourDef'
+        Source = 'CArmourDef_GetSizeofClass_0045859d.cpp'
+        TestSource = 'CArmourDef_GetSizeofClass_0045859d_test.cpp'
+        PassPattern = 'AUTO_TINY_0045859d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004585fa'
+        Module = 'CHitLocationDef'
+        Source = 'CHitLocationDef_GetSizeofClass_004585fa.cpp'
+        TestSource = 'CHitLocationDef_GetSizeofClass_004585fa_test.cpp'
+        PassPattern = 'AUTO_TINY_004585fa_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004588c2'
+        Module = 'CCombatSequenceDef'
+        Source = 'CCombatSequenceDef_GetSizeofClass_004588c2.cpp'
+        TestSource = 'CCombatSequenceDef_GetSizeofClass_004588c2_test.cpp'
+        PassPattern = 'AUTO_TINY_004588c2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045890d'
+        Module = 'CLightningDef'
+        Source = 'CLightningDef_GetSizeofClass_0045890d.cpp'
+        TestSource = 'CLightningDef_GetSizeofClass_0045890d_test.cpp'
+        PassPattern = 'AUTO_TINY_0045890d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00458c46'
+        Module = 'CMeleeCombatAbilityDef'
+        Source = 'CMeleeCombatAbilityDef_GetSizeofClass_00458c46.cpp'
+        TestSource = 'CMeleeCombatAbilityDef_GetSizeofClass_00458c46_test.cpp'
+        PassPattern = 'AUTO_TINY_00458c46_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00458c99'
+        Module = 'CMeleeCombatKnockdownEffects'
+        Source = 'CMeleeCombatKnockdownEffects_GetSizeofClass_00458c99.cpp'
+        TestSource = 'CMeleeCombatKnockdownEffects_GetSizeofClass_00458c99_test.cpp'
+        PassPattern = 'AUTO_TINY_00458c99_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045934f'
+        Module = 'CCreatureAbilityDef'
+        Source = 'CCreatureAbilityDef_GetSizeofClass_0045934f.cpp'
+        TestSource = 'CCreatureAbilityDef_GetSizeofClass_0045934f_test.cpp'
+        PassPattern = 'AUTO_TINY_0045934f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00459549'
+        Module = 'CThingGroupDef'
+        Source = 'CThingGroupDef_GetSizeofClass_00459549.cpp'
+        TestSource = 'CThingGroupDef_GetSizeofClass_00459549_test.cpp'
+        PassPattern = 'AUTO_TINY_00459549_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045957e'
+        Module = 'CPlayerDef'
+        Source = 'CPlayerDef_GetSizeofClass_0045957e.cpp'
+        TestSource = 'CPlayerDef_GetSizeofClass_0045957e_test.cpp'
+        PassPattern = 'AUTO_TINY_0045957e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00459611'
+        Module = 'CPlayerMovementDef'
+        Source = 'CPlayerMovementDef_GetSizeofClass_00459611.cpp'
+        TestSource = 'CPlayerMovementDef_GetSizeofClass_00459611_test.cpp'
+        PassPattern = 'AUTO_TINY_00459611_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00459700'
+        Module = 'CSimBuildingDef'
+        Source = 'CSimBuildingDef_GetSizeofClass_00459700.cpp'
+        TestSource = 'CSimBuildingDef_GetSizeofClass_00459700_test.cpp'
+        PassPattern = 'AUTO_TINY_00459700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00459760'
+        Module = 'CEngineThemeGroupDef'
+        Source = 'CEngineThemeGroupDef_GetSizeofClass_00459760.cpp'
+        TestSource = 'CEngineThemeGroupDef_GetSizeofClass_00459760_test.cpp'
+        PassPattern = 'AUTO_TINY_00459760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00459a9e'
+        Module = 'CBrainDef'
+        Source = 'CBrainDef_GetSizeofClass_00459a9e.cpp'
+        TestSource = 'CBrainDef_GetSizeofClass_00459a9e_test.cpp'
+        PassPattern = 'AUTO_TINY_00459a9e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00459b53'
+        Module = 'CPlayerInventoryDef'
+        Source = 'CPlayerInventoryDef_GetSizeofClass_00459b53.cpp'
+        TestSource = 'CPlayerInventoryDef_GetSizeofClass_00459b53_test.cpp'
+        PassPattern = 'AUTO_TINY_00459b53_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00458454'
+        Module = 'CSoundDef'
+        Source = 'CSoundDef_GetSizeofClass_00458454.cpp'
+        TestSource = 'CSoundDef_GetSizeofClass_00458454_test.cpp'
+        PassPattern = 'AUTO_TINY_00458454_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00458a2d'
+        Module = 'CGlobalDef'
+        Source = 'CGlobalDef_GetSizeofClass_00458a2d.cpp'
+        TestSource = 'CGlobalDef_GetSizeofClass_00458a2d_test.cpp'
+        PassPattern = 'AUTO_TINY_00458a2d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00458b7b'
+        Module = 'CHeroCombatDef'
+        Source = 'CHeroCombatDef_GetSizeofClass_00458b7b.cpp'
+        TestSource = 'CHeroCombatDef_GetSizeofClass_00458b7b_test.cpp'
+        PassPattern = 'AUTO_TINY_00458b7b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00458d69'
+        Module = 'CThingShotDef'
+        Source = 'CThingShotDef_GetSizeofClass_00458d69.cpp'
+        TestSource = 'CThingShotDef_GetSizeofClass_00458d69_test.cpp'
+        PassPattern = 'AUTO_TINY_00458d69_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00459129'
+        Module = 'CThingObjectDef'
+        Source = 'CThingObjectDef_GetSizeofClass_00459129.cpp'
+        TestSource = 'CThingObjectDef_GetSizeofClass_00459129_test.cpp'
+        PassPattern = 'AUTO_TINY_00459129_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00459795'
+        Module = 'CEngineThemeDef'
+        Source = 'CEngineThemeDef_GetSizeofClass_00459795.cpp'
+        TestSource = 'CEngineThemeDef_GetSizeofClass_00459795_test.cpp'
+        PassPattern = 'AUTO_TINY_00459795_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00459e24'
+        Module = 'CPlayerGuiDef'
+        Source = 'CPlayerGuiDef_GetSizeofClass_00459e24.cpp'
+        TestSource = 'CPlayerGuiDef_GetSizeofClass_00459e24_test.cpp'
+        PassPattern = 'AUTO_TINY_00459e24_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
