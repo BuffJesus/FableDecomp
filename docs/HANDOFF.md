@@ -4146,3 +4146,61 @@ build-from-user-copy is the legally-defensible pattern.
   to `m_pTCInterfaceMapEnd` and still call `reinterpret_cast<CTCShop*>(pEntry->m_pInterface)`.
   Also verify whether `CTCShop::GetName()` is really the nakedness predicate or just a bad donor
   name for the interface method at type key `0x5E`.
+
+---
+
+## RESUME POINT — Custom-entity (NPC) pipeline + forge-entity design (2026-07-24)
+
+Full custom-NPC toolchain proven end-to-end this session. All pieces work; the remaining work is
+(a) finishing the custom CREATURE def wiring and (b) building the centralized `forge entity` orchestrator.
+
+### What works (verified, mostly in-game)
+- **Native NPC spawn** — TWO requirements (both mandatory; see [[fable-level-modding-gotchas]]):
+  (1) the game reads `data/Levels/FinalAlbion.wad`, NOT loose .tng (repack with `forge wad repack`);
+  (2) the thing must be in the correct `XXXSectionStart <quest>` section (donor book trader is in
+  `Q_NewOakValeIntro_PreAttack`; EOF-append lands in PostAttack = post-raid only). Builder:
+  `work/quest_card_custom_20260723/npc_placement/build_childhood_npc_west.py`. Runtime alternative
+  (no TNG/WAD/section): ForgeFSE `Quest:CreateCreatureNearby("CREATURE_TRADER_01", hero:GetPos(), r, scriptName)`.
+- **Custom mesh** — FBX → headless Blender (`C:/Programs/Blender/blender.exe --background --factory-startup`)
+  decimate (101k→3k tris) → `mesh_rw.compose_mesh` → `big_write.rebuild(adds=)` into graphics.big.
+  Material MUST use a real `diffuse_id` (0 → short Info → build_model 0 LODs). Scripts:
+  `work/meshy_npc_mesh/` (static) + `work/meshy_npc_mesh/skinned/` (type-5).
+- **Skinned mesh** — auto-weight to a donor's 63-bone Bip01 skeleton (`mesh_rw.clone_skeleton(MESH_TRADER_01)`),
+  Blender `ARMATURE_AUTO` weights (≤3/vert, sum 255), compose type-5. VERIFIED (has_skeleton, topology, weights)
+  in a graphics.big copy. Inherits standard biped anims. `work/meshy_npc_mesh/skinned/`.
+- **Texture** — PNG → 512² DXT1 (`texture_build.build_entry`) → `big_write.rebuild(adds=)` into
+  textures.big `GBANK_MAIN_PC`. `work/meshy_npc_mesh/inject_tex.py` (Meshy tex = id 6291).
+- **Dialogue** — ElevenLabs TTS → WAV → `tools/dialogue_pipeline.py stage --add` = Xbox-ADPCM .lut +
+  auto lipsync + text.big + snds.bin. **CONFIRMED IN-GAME: grown banks (`--add`) ARE accepted by the
+  live engine** (resolves the old "unproven" caveat). Normalize TTS to ~-14 LUFS (raw ElevenLabs ~-24 dB
+  is too quiet: `ffmpeg -af loudnorm=I=-14:TP=-1`). SecretHunt NPC has 5 voiced lines (Callum voice).
+- **GiveHeroYesNoQuestion answer mapping** — button1→**1**, button2→**0**, button3→**2** (per working
+  GhostGranny sample; the ForgeFSE log label "0=Btn1" is MISLEADING). Setting a flag on the wrong index
+  inverts accept/decline. SecretHunt entity fixed.
+
+### THE creature→body-mesh mechanism (ultracode, HIGH confidence)
+`CCreatureDef` **`Graphic` field** (CRC tag `0x2e6b63c8` = crc0("Graphic")), layout
+`{u32 kind, u32 modelId, u32 zero, f32 scale, u8 flag}` + optional nested CRC-tagged sub-graphics
+(eyes/attachments). **`modelId` (payload offset +4) = the graphics.big MBANK_ALLMESHES TOC *id*** of the
+body mesh (1:1 by id). CREATURE_TRADER_01 modelId=**5149** = `MESH_BS_MALE_MIDDLE_UNCLOTHED_01` (a naked
+base body; clothes layered via `InitialAppearanceModifiers` → CAppearanceModifierDef.Graphics[]). That's
+why MESH_TRADER_01/5370 was never in the def. Verified across 9 creatures. Engine chain: CEngineGraphic
+`0x00434b50` → CTCGraphicAppearance `GetRenderMeshObject 0x004bc750`. **To make a custom creature:** inject
+the skinned mesh → get its id N → set a new/cloned creature def's `Graphic.modelId` (+4) = N (hand-patch
+confirmed; `forge defs set-field` targeting the nested +4 not yet exercised). Custom-creature workflow
+(build phase) finishing under `work/meshy_npc_mesh/custom_creature/`.
+
+### NEXT: `forge entity` centralized orchestrator (design agreed, not built)
+Pain = hand-wiring cross-refs across game.bin/graphics.big/textures.big/text.big/.lut/dialogue.big/TNG.
+Design: ONE `*.entity.json` manifest (name, mesh fbx, texture png, def clone+overrides, dialogue lines,
+spawn) → `forge entity build <manifest> <game-root> [--deploy]` that (1) allocates all ids from a central
+`entities.registry.json`, (2) runs each sub-pipeline, (3) auto cross-wires (mesh mat←tex id;
+def Graphic.modelId←mesh id; text→SpeechBank→snds→lut→lipsync; spawn←def name), (4) handles WAD/section
+gotchas, (5) stages + atomic deploy + rollback. Implement as a Python orchestrator wrapping `forge` +
+the tools above, exposed as `forge entity`. First slice: id registry + mesh/texture/def cross-wire.
+
+### Other session outcomes
+- Co-op multiplayer subsystem decompiled → COMPLETE-BUT-GATED (docs/FINDINGS.md); 1 flag
+  (`CNetworkClient+0x2662`) from life. Auto-RE wave3 lane pointed at the co-op cluster (Codex-quota blocked).
+- Decomp: +11 fse2 byte-matches via the diff-feedback refine loop (the effective cracker vs 0 from
+  first-pass authoring). Real byte-match total ~1,700 (3.43%) — README corrected from stale 57.
