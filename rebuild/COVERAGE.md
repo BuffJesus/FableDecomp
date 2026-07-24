@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-07-22T22:12:02-06:00`
+Generated: `2026-07-22T23:12:19-06:00`
 
 | Stage | Complete | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
@@ -10,17 +10,17 @@ Generated: `2026-07-22T22:12:02-06:00`
 | Usable reconstruction/navigation names | 49,510 | 49,553 | 99.913% | Includes explicitly classified compiler/template family labels; does not claim original symbols |
 | Calling convention known | 38,481 | 49,553 | 77.656% | Required for ABI-correct declarations |
 | Complete non-undefined prototype | 34,203 | 49,553 | 69.023% | Known CC, return, and parameter types |
-| Auto-RE candidate source | 212 | 49,553 | 0.428% | Generated/reviewed candidate; not compile-verified |
-| Auto-RE checker PASS | 204 | 49,553 | 0.412% | Structural checker grade only |
-| Auto-RE source integrity | 212 | 212 | 100.000% | Balanced, non-empty source snapshots |
-| Host C++20 syntax pass | 85 | 212 | 40.094% | Strict 32-bit translation unit with real declarations |
-| Candidate signature audit clean | 166 | 212 | 78.302% | Definition agrees with manifest owner/name/shape and has unique linkage |
+| Auto-RE candidate source | 244 | 49,553 | 0.492% | Generated/reviewed candidate; not compile-verified |
+| Auto-RE checker PASS | 236 | 49,553 | 0.476% | Structural checker grade only |
+| Auto-RE source integrity | 244 | 244 | 100.000% | Balanced, non-empty source snapshots |
+| Host C++20 syntax pass | 105 | 244 | 43.033% | Strict 32-bit translation unit with real declarations |
+| Candidate signature audit clean | 198 | 244 | 81.148% | Definition agrees with manifest owner/name/shape and has unique linkage |
 | VC7.1 compiled candidate | 94 | 49,553 | 0.190% | Compiles to an object; behavioral parity not yet claimed |
 | Behavior-tested candidate | 94 | 49,553 | 0.190% | Local branch/layout oracle passes; retail parity not yet claimed |
-| Candidate retail `.text` match | 35 | 49,553 | 0.071% | Generated-candidate track exact matches awaiting promotion |
-| Candidate relocation-masked `.text` match | 18 | 49,553 | 0.036% | Exact instruction bytes/layout after masking expected COFF linker fields |
-| Verified functional or matching C++ | 71 | 49,553 | 0.143% | Compiled under VC7.1 and checked against retail |
-| Byte-identical C++ | 51 | 49,553 | 0.103% | Exact `.text` match |
+| Candidate retail `.text` match | 39 | 49,553 | 0.079% | Generated-candidate track exact matches awaiting promotion |
+| Candidate relocation-masked `.text` match | 20 | 49,553 | 0.040% | Exact instruction bytes/layout after masking expected COFF linker fields |
+| Verified functional or matching C++ | 77 | 49,553 | 0.155% | Compiled under VC7.1 and checked against retail |
+| Byte-identical C++ | 55 | 49,553 | 0.111% | Exact `.text` match |
 | Lifted modules | 3 | 3,433 | 0.087% | Module-level reconstruction proof |
 
 ## Interpretation
@@ -34,7 +34,7 @@ The clean-decompile sweep predates later function discovery, so its denominator 
 - 15,350 functions still lack a complete non-undefined prototype.
 - 11,072 functions still have an unknown calling convention.
 - 40 names remain in the semantic/accessor review tail; donor proposals and the invalid boundary are tracked separately.
-- 118 auto-RE candidates still need a VC7.1-compatible translation unit.
+- 150 auto-RE candidates still need a VC7.1-compatible translation unit.
 - 46 original generated candidate definitions still disagree with corrected manifest identities or parameter shapes; curated replacements are tracked separately.
-- 41 behavior-tested candidates still differ structurally from the retail parity oracle.
+- 35 behavior-tested candidates still differ structurally from the retail parity oracle.
 - VC7.1 + Win32 + Direct3D 9 compile/link/runtime SDK probe: **resolved and passing**.

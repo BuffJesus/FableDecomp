@@ -1,0 +1,75 @@
+rank	priority	address	length	name	snapshot	reason
+1	P0	00896f60	97	CGameScriptInterface::SetDeathRecoveryMarkerName	yes	save/death recovery state wrapper
+2	P0	00896df0	104	CGameScriptInterface::KickOffCreditsScreen	yes	screen flow wrapper
+3	P0	00894300	111	CGameScriptInterface::MsgIsQuestionAnsweredYesOrNo	yes	yes/no NPC interaction path
+4	P0	0089e4c0	120	CGameScriptInterface::AddScreenTitleMessage	yes	custom quest/NPC title-message path
+5	P0	00891220	125	CGameScriptInterface::OverrideMusic	yes	quest music control paired with verified StopOverrideMusic
+6	P0	00896ee0	125	CGameScriptInterface::GetDeathRecoveryMarkerName	yes	save/death recovery state wrapper
+7	P0	008913f0	148	CGameScriptInterface::AddQuestCard	yes	quest-card ABI directly supports custom-card runtime
+8	P0	0089ad90	155	CGameScriptInterface::IsQuestStartScreenActive	no	quest start-screen state
+9	P1	00891610	97	CGameScriptInterface::GetMostRecentValidUsedTarget	yes	short fse2 candidate; finished snapshot available
+10	P1	008a8e40	98	CGameScriptInterface::EntityDecapitate	yes	short fse2 candidate; finished snapshot available
+11	P1	0089d7c0	99	CGameScriptInterface::SetAbilityAvailability	yes	short fse2 candidate; finished snapshot available
+12	P1	00893f80	100	CGameScriptInterface::MsgOnHeroCastSpell	no	short fse2 candidate
+13	P1	008979c0	101	CGameScriptInterface::IsEntityMarriedToHero	yes	short fse2 candidate; finished snapshot available
+14	P1	00897a30	101	CGameScriptInterface::IsEntityMarriable	yes	short fse2 candidate; finished snapshot available
+15	P1	00899770	101	CGameScriptInterface::GetHeroRoughExperienceLevel	yes	short fse2 candidate; finished snapshot available
+16	P1	008a8eb0	102	CGameScriptInterface::EntitySetAttackThingImmediately	yes	short fse2 candidate; finished snapshot available
+17	P1	008a1c50	104	CGameScriptInterface::RepopulateVillage	yes	short fse2 candidate; finished snapshot available
+18	P1	0089c8a0	104	CGameScriptInterface::IsDeedWitnessed	no	short fse2 candidate
+19	P1	008974f0	105	CGameScriptInterface::IsEntityWieldingWeapon	yes	short fse2 candidate; finished snapshot available
+20	P1	00898a50	105	CGameScriptInterface::GiveHeroTutorial	yes	short fse2 candidate; finished snapshot available
+21	P1	0089a000	105	CGameScriptInterface::GetHeroMoralityCategory	yes	short fse2 candidate; finished snapshot available
+22	P1	00894490	106	CGameScriptInterface::RemoveDeadCreature	yes	short fse2 candidate; finished snapshot available
+23	P1	008a0fd0	107	CGameScriptInterface::SetReadableObjectTextTag	no	short fse2 candidate
+24	P1	00899390	109	CGameScriptInterface::GetHeroStrengthLevel	yes	short fse2 candidate; finished snapshot available
+25	P1	00899400	109	CGameScriptInterface::GetHeroSkillLevel	yes	short fse2 candidate; finished snapshot available
+26	P1	00899470	109	CGameScriptInterface::GetHeroWillLevel	yes	short fse2 candidate; finished snapshot available
+27	P1	00893ec0	110	CGameScriptInterface::MsgOnHeroSlept	no	short fse2 candidate
+28	P2	0088de10	113	CGameScriptInterface::GiveThingItemInHand	yes	medium wrapper/accessor
+29	P2	008990c0	113	CGameScriptInterface::GiveHeroRenownPoints	yes	medium wrapper/accessor
+30	P2	008994e0	113	CGameScriptInterface::SetHeroAge	yes	medium wrapper/accessor
+31	P2	00899a10	113	CGameScriptInterface::SetHeroWillEnergyLevel	yes	medium wrapper/accessor
+32	P2	00899a90	113	CGameScriptInterface::SetHeroWillEnergyAsAbleToRefill	yes	medium wrapper/accessor
+33	P2	0089b450	113	CGameScriptInterface::ChangeHeroHairstyle	yes	medium wrapper/accessor
+34	P2	00898ec0	114	CGameScriptInterface::SetHeroHandLampAsLit	yes	medium wrapper/accessor
+35	P2	006e79e0	115	CGameScriptInterface::RegisterTimer	yes	medium wrapper/accessor
+36	P2	00890f40	115	CGameScriptInterface::EntityResetCombatTypeToDefault	yes	medium wrapper/accessor
+37	P2	008916a0	115	CGameScriptInterface::SheatheHeroWeapons	yes	medium wrapper/accessor
+38	P2	00899680	116	CGameScriptInterface::SetHeroAsApprentice	yes	medium wrapper/accessor
+39	P2	00892cf0	117	CGameScriptInterface::SetCreatureGeneratorsEnabled	yes	medium wrapper/accessor
+40	P2	00899c10	118	CGameScriptInterface::IsPlayerCreatureReadyToFireProjectileWeapon	no	medium wrapper/accessor
+41	P2	0089fda0	120	CGameScriptInterface::CreateRumble	yes	medium wrapper/accessor
+42	P2	008a9320	121	CGameScriptInterface::EntityCastForcePush	yes	medium wrapper/accessor
+43	P2	00899290	122	CGameScriptInterface::GetHeroStatLevel	yes	medium wrapper/accessor
+44	P2	00899310	122	CGameScriptInterface::GetHeroStatMax	yes	medium wrapper/accessor
+45	P2	0089fd20	123	CGameScriptInterface::CreatePhysicalBarrier	yes	medium wrapper/accessor
+46	P2	00899e10	123	CGameScriptInterface::SetPlayerCreatureOnlyTarget	no	medium wrapper/accessor
+47	P2	0089a490	124	CGameScriptInterface::GetHeroTargetedThing	yes	medium wrapper/accessor
+48	P2	008d0820	124	CGameScriptThing::IsOpenDoor	yes	medium wrapper/accessor
+49	P2	00896e60	127	CGameScriptInterface::SetPreferredQuickAccessItem	no	medium wrapper/accessor
+50	P2	00898b30	127	CGameScriptInterface::SetWeaponAsHerosActiveWeapon	no	medium wrapper/accessor
+51	P2	0089df70	128	CGameScriptInterface::EntityGetShotStrikePos	no	medium wrapper/accessor
+52	P2	00898bb0	129	CGameScriptInterface::GiveHeroItem	yes	medium wrapper/accessor
+53	P2	0089dff0	130	CGameScriptInterface::EntitySetAlwaysBlockAttacksFromThing	yes	medium wrapper/accessor
+54	P3	00894dd0	131	CGameScriptInterface::EntitySetAsMarryable	yes	larger wrapper; use struct hints and annotated disasm
+55	P3	00893060	134	CGameScriptInterface::AddBoast	no	larger wrapper; use struct hints and annotated disasm
+56	P3	008931b0	135	CGameScriptInterface::MsgIsLevelLoaded	yes	larger wrapper; use struct hints and annotated disasm
+57	P3	00893240	135	CGameScriptInterface::MsgIsLevelUnloaded	yes	larger wrapper; use struct hints and annotated disasm
+58	P3	008953a0	136	CGameScriptInterface::IsHeroPerformingExpression	yes	larger wrapper; use struct hints and annotated disasm
+59	P3	008955c0	136	CGameScriptInterface::IsEntityFollowingHero	yes	larger wrapper; use struct hints and annotated disasm
+60	P3	008902e0	137	CGameScriptInterface::GiveHeroObject	no	larger wrapper; use struct hints and annotated disasm
+61	P3	00897190	137	CGameScriptInterface::GetNumberOfItemsOfTypeInInventory	no	larger wrapper; use struct hints and annotated disasm
+62	P3	00899b10	140	CGameScriptInterface::IsPlayerZTargetingThing	yes	larger wrapper; use struct hints and annotated disasm
+63	P3	00896120	143	CGameScriptInterface::TryToRespawnDefNamed	no	larger wrapper; use struct hints and annotated disasm
+64	P3	0088f570	147	CGameScriptInterface::Play2DSound	yes	larger wrapper; use struct hints and annotated disasm
+65	P3	0089c7b0	147	CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses	yes	larger wrapper; use struct hints and annotated disasm
+66	P3	0089fc80	147	CGameScriptInterface::CreateExplosion	yes	larger wrapper; use struct hints and annotated disasm
+67	P3	00893b00	151	CGameScriptInterface::MsgOnExpressionPerformed	no	larger wrapper; use struct hints and annotated disasm
+68	P3	00892410	153	CGameScriptInterface::CameraMoveToPosAndLookAtPos	yes	larger wrapper; use struct hints and annotated disasm
+69	P3	00894c90	158	CGameScriptInterface::IsGiftFriendly	yes	larger wrapper; use struct hints and annotated disasm
+70	P3	00894bf0	159	CGameScriptInterface::IsGiftRomantic	yes	larger wrapper; use struct hints and annotated disasm
+71	P3	00894d30	159	CGameScriptInterface::IsGiftOffensive	yes	larger wrapper; use struct hints and annotated disasm
+72	P3	0089c670	160	CGameScriptInterface::EntityPostOpinionDeedToRecipient	yes	larger wrapper; use struct hints and annotated disasm
+73	P3	0089c710	160	CGameScriptInterface::EntityPostOpinionDeedToRecipientVillage	yes	larger wrapper; use struct hints and annotated disasm
+74	HOLD	008997e0	97	CGameScriptInterface::GetHeroExperienceAvailableToSpend	yes	known behavior PASS / DIFFER(101v97) register-allocation residue; do not blind-regrind

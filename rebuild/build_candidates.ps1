@@ -12071,6 +12071,20 @@ $catalog = @(
         TestSource = 'CGameScriptInterface_GetHeroWillEnergyPercentage_0089a210_test.cpp'
         PassPattern = 'CGameScriptInterface_0089a210_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0088ed20'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_CameraEarthquakeIntensityAtPos_0088ed20.cpp'
+        TestSource = 'CGameScriptInterface_CameraEarthquakeIntensityAtPos_0088ed20_test.cpp'
+        PassPattern = 'FSE2_0088ed20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008912a0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_StopOverrideMusic_008912a0.cpp'
+        TestSource = 'CGameScriptInterface_StopOverrideMusic_008912a0_test.cpp'
+        PassPattern = 'FSE2_008912a0_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH

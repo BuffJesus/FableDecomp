@@ -1,0 +1,192 @@
+rank	priority	address	length	name	lane	attempt	snapshot	next_action
+1	P0	00896f60	97	CGameScriptInterface::SetDeathRecoveryMarkerName	fse2	fresh	yes	save/death recovery state wrapper
+2	P0	00896df0	104	CGameScriptInterface::KickOffCreditsScreen	fse2	fresh	yes	screen flow wrapper
+3	P0	00894300	111	CGameScriptInterface::MsgIsQuestionAnsweredYesOrNo	fse2	fresh	yes	yes/no NPC interaction path
+4	P0	0089e4c0	120	CGameScriptInterface::AddScreenTitleMessage	fse2	fresh	yes	custom quest/NPC title-message path
+5	P0	00891220	125	CGameScriptInterface::OverrideMusic	fse2	fresh	yes	quest music control paired with verified StopOverrideMusic
+6	P0	00896ee0	125	CGameScriptInterface::GetDeathRecoveryMarkerName	fse2	fresh	yes	save/death recovery state wrapper
+7	P0	008913f0	148	CGameScriptInterface::AddQuestCard	fse2	fresh	yes	quest-card ABI directly supports custom-card runtime
+8	P0	0089ad90	155	CGameScriptInterface::IsQuestStartScreenActive	fse2	fresh	no	quest start-screen state
+9	P1	00891610	97	CGameScriptInterface::GetMostRecentValidUsedTarget	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+10	P1	008a8e40	98	CGameScriptInterface::EntityDecapitate	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+11	P1	0089d7c0	99	CGameScriptInterface::SetAbilityAvailability	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+12	P1	00893f80	100	CGameScriptInterface::MsgOnHeroCastSpell	fse2	fresh	no	short fse2 candidate
+13	P1	008979c0	101	CGameScriptInterface::IsEntityMarriedToHero	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+14	P1	00897a30	101	CGameScriptInterface::IsEntityMarriable	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+15	P1	00899770	101	CGameScriptInterface::GetHeroRoughExperienceLevel	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+16	P1	008a8eb0	102	CGameScriptInterface::EntitySetAttackThingImmediately	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+17	P1	0089c8a0	104	CGameScriptInterface::IsDeedWitnessed	fse2	fresh	no	short fse2 candidate
+18	P1	008a1c50	104	CGameScriptInterface::RepopulateVillage	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+19	P1	008974f0	105	CGameScriptInterface::IsEntityWieldingWeapon	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+20	P1	00898a50	105	CGameScriptInterface::GiveHeroTutorial	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+21	P1	0089a000	105	CGameScriptInterface::GetHeroMoralityCategory	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+22	P1	00894490	106	CGameScriptInterface::RemoveDeadCreature	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+23	P1	008a0fd0	107	CGameScriptInterface::SetReadableObjectTextTag	fse2	fresh	no	short fse2 candidate
+24	P1	00899390	109	CGameScriptInterface::GetHeroStrengthLevel	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+25	P1	00899400	109	CGameScriptInterface::GetHeroSkillLevel	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+26	P1	00899470	109	CGameScriptInterface::GetHeroWillLevel	fse2	fresh	yes	short fse2 candidate; finished snapshot available
+27	P1	00893ec0	110	CGameScriptInterface::MsgOnHeroSlept	fse2	fresh	no	short fse2 candidate
+28	P1	0044c1cd	15	CTCNoiseDef::GetSizeofClass	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+29	P1	0044c12f	23	CInventoryItemDef::GetSizeofClass	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+30	P1	0045017d	29	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+31	P1	0045324f	30	CopyBackBufferToTexture	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+32	P1	00453309	30	CopyBackBufferToTexture	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+33	P1	0045336d	30	CopyBackBufferToTexture	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+34	P1	004533c5	30	CopyBackBufferToTexture	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+35	P1	00453429	30	CopyBackBufferToTexture	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+36	P1	00453447	30	CopyBackBufferToTexture	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+37	P1	00453465	30	CopyBackBufferToTexture	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+38	P1	00453554	30	CopyBackBufferToTexture	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+39	P1	00450a90	34	_Destroy	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+40	P1	00456389	36	OnReadFinished	batch13	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+41	P1	0045180f	38	OnReadFinished	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+42	P1	0045011b	39	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+43	P1	00450a14	40	_Destroy	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+44	P1	0044c229	42	CSmashableDef::GetSizeofClass	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+45	P1	00454404	43	_Destroy_range<std::allocator<NCreatureHitNotification::CFlash>_>	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+46	P1	00453572	44	CopyBackBufferToTexture	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+47	P1	004508a9	45	BuildTreeArray	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+48	P1	004508d6	45	BuildTreeArray	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+49	P1	00450aea	49	_Destroy	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+50	P1	00453ac7	50	CSpecialAbilitiesForcePushDataDef::Copy	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+51	P1	004549ce	50	`vector_deleting_destructor'	batch13	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+52	P2	0088de10	113	CGameScriptInterface::GiveThingItemInHand	fse2	fresh	yes	medium wrapper/accessor
+53	P2	008990c0	113	CGameScriptInterface::GiveHeroRenownPoints	fse2	fresh	yes	medium wrapper/accessor
+54	P2	008994e0	113	CGameScriptInterface::SetHeroAge	fse2	fresh	yes	medium wrapper/accessor
+55	P2	00899a10	113	CGameScriptInterface::SetHeroWillEnergyLevel	fse2	fresh	yes	medium wrapper/accessor
+56	P2	00899a90	113	CGameScriptInterface::SetHeroWillEnergyAsAbleToRefill	fse2	fresh	yes	medium wrapper/accessor
+57	P2	0089b450	113	CGameScriptInterface::ChangeHeroHairstyle	fse2	fresh	yes	medium wrapper/accessor
+58	P2	00898ec0	114	CGameScriptInterface::SetHeroHandLampAsLit	fse2	fresh	yes	medium wrapper/accessor
+59	P2	006e79e0	115	CGameScriptInterface::RegisterTimer	fse2	fresh	yes	medium wrapper/accessor
+60	P2	00890f40	115	CGameScriptInterface::EntityResetCombatTypeToDefault	fse2	fresh	yes	medium wrapper/accessor
+61	P2	008916a0	115	CGameScriptInterface::SheatheHeroWeapons	fse2	fresh	yes	medium wrapper/accessor
+62	P2	00899680	116	CGameScriptInterface::SetHeroAsApprentice	fse2	fresh	yes	medium wrapper/accessor
+63	P2	00892cf0	117	CGameScriptInterface::SetCreatureGeneratorsEnabled	fse2	fresh	yes	medium wrapper/accessor
+64	P2	00899c10	118	CGameScriptInterface::IsPlayerCreatureReadyToFireProjectileWeapon	fse2	fresh	no	medium wrapper/accessor
+65	P2	0089fda0	120	CGameScriptInterface::CreateRumble	fse2	fresh	yes	medium wrapper/accessor
+66	P2	008a9320	121	CGameScriptInterface::EntityCastForcePush	fse2	fresh	yes	medium wrapper/accessor
+67	P2	00899290	122	CGameScriptInterface::GetHeroStatLevel	fse2	fresh	yes	medium wrapper/accessor
+68	P2	00899310	122	CGameScriptInterface::GetHeroStatMax	fse2	fresh	yes	medium wrapper/accessor
+69	P2	00899e10	123	CGameScriptInterface::SetPlayerCreatureOnlyTarget	fse2	fresh	no	medium wrapper/accessor
+70	P2	0089fd20	123	CGameScriptInterface::CreatePhysicalBarrier	fse2	fresh	yes	medium wrapper/accessor
+71	P2	0089a490	124	CGameScriptInterface::GetHeroTargetedThing	fse2	fresh	yes	medium wrapper/accessor
+72	P2	008d0820	124	CGameScriptThing::IsOpenDoor	fse2	fresh	yes	medium wrapper/accessor
+73	P2	00896e60	127	CGameScriptInterface::SetPreferredQuickAccessItem	fse2	fresh	no	medium wrapper/accessor
+74	P2	00898b30	127	CGameScriptInterface::SetWeaponAsHerosActiveWeapon	fse2	fresh	no	medium wrapper/accessor
+75	P2	0089df70	128	CGameScriptInterface::EntityGetShotStrikePos	fse2	fresh	no	medium wrapper/accessor
+76	P2	00898bb0	129	CGameScriptInterface::GiveHeroItem	fse2	fresh	yes	medium wrapper/accessor
+77	P2	0089dff0	130	CGameScriptInterface::EntitySetAlwaysBlockAttacksFromThing	fse2	fresh	yes	medium wrapper/accessor
+78	P3	00894dd0	131	CGameScriptInterface::EntitySetAsMarryable	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+79	P3	00893060	134	CGameScriptInterface::AddBoast	fse2	fresh	no	larger wrapper; use struct hints and annotated disasm
+80	P3	008931b0	135	CGameScriptInterface::MsgIsLevelLoaded	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+81	P3	00893240	135	CGameScriptInterface::MsgIsLevelUnloaded	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+82	P3	008953a0	136	CGameScriptInterface::IsHeroPerformingExpression	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+83	P3	008955c0	136	CGameScriptInterface::IsEntityFollowingHero	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+84	P3	008902e0	137	CGameScriptInterface::GiveHeroObject	fse2	fresh	no	larger wrapper; use struct hints and annotated disasm
+85	P3	00897190	137	CGameScriptInterface::GetNumberOfItemsOfTypeInInventory	fse2	fresh	no	larger wrapper; use struct hints and annotated disasm
+86	P3	00899b10	140	CGameScriptInterface::IsPlayerZTargetingThing	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+87	P3	00896120	143	CGameScriptInterface::TryToRespawnDefNamed	fse2	fresh	no	larger wrapper; use struct hints and annotated disasm
+88	P3	0088f570	147	CGameScriptInterface::Play2DSound	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+89	P3	0089c7b0	147	CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+90	P3	0089fc80	147	CGameScriptInterface::CreateExplosion	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+91	P3	00893b00	151	CGameScriptInterface::MsgOnExpressionPerformed	fse2	fresh	no	larger wrapper; use struct hints and annotated disasm
+92	P3	00892410	153	CGameScriptInterface::CameraMoveToPosAndLookAtPos	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+93	P3	00894c90	158	CGameScriptInterface::IsGiftFriendly	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+94	P3	00894bf0	159	CGameScriptInterface::IsGiftRomantic	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+95	P3	00894d30	159	CGameScriptInterface::IsGiftOffensive	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+96	P3	0089c670	160	CGameScriptInterface::EntityPostOpinionDeedToRecipient	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+97	P3	0089c710	160	CGameScriptInterface::EntityPostOpinionDeedToRecipientVillage	fse2	fresh	yes	larger wrapper; use struct hints and annotated disasm
+98	P2	0089cd50	20	CGameScriptInterface::CanThingBe_Smelled_ByOtherThing	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+99	P2	0088e130	23	CGameScriptInterface::GiveHeroWeapon	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+100	P2	008cfe30	24	CGameScriptThing::GetHomePos	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+101	P2	0088f480	25	CGameScriptInterface::ApplyScriptBrush	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+102	P2	0088e3d0	33	CGameScriptInterface::MiniMapAllowRouteBetweenRegions	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+103	P2	008a9dd0	34	CGameScriptInterface::AddNewRumourToCategory	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+104	P2	008a9e30	34	CGameScriptInterface::AddGossipVillage	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+105	P2	0088f9b0	36	CGameScriptInterface::GetGuildSealRecallPos	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+106	P2	00891550	36	CGameScriptInterface::IsBoastTaken	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+107	P2	00891580	36	CGameScriptInterface::RemoveBoast	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+108	P2	008915b0	36	CGameScriptInterface::SetBoastAsFailed	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+109	P2	008915e0	36	CGameScriptInterface::SetBoastAsCompleted	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+110	P2	0088fc90	40	CGameScriptInterface::HeroHasExpression	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+111	P2	0044f78b	56	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+112	P2	004546d5	57	CAppearanceModifierDef::GetSizeofClass	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+113	P2	0044f620	58	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+114	P2	0045338b	58	CopyBackBufferToTexture	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+115	P2	00456010	61	~CPatchTesselationEdgeStrip	batch13	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+116	P2	0044fcd7	63	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+117	P2	0044fdd3	63	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+118	P2	00452e01	65	UpdateShadowScene	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+119	P2	00455008	65	UpdateShadowScene	batch13	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+120	P2	0045641a	67	OnDie	batch13	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+121	P2	0044f883	70	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+122	P2	0044f8c9	70	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+123	P2	0044f947	70	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+124	P2	0044f98d	70	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+125	P2	0044f9d3	70	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+126	P2	00450003	70	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+127	P2	00450049	70	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+128	P2	0045008f	70	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+129	P2	004500d5	70	`vector_deleting_destructor'	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+130	P2	0044fa6d	77	~CBossDef	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+131	P2	0045098c	77	GetMeshEffect	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+132	P2	0045326d	86	CopyBackBufferToTexture	batch12	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+133	P2	00454aef	93	CopyBackBufferToTexture	batch13	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+134	P2	00450b1b	94	_Destroy	batch11	retry	no	previous non-win; validate oracle boundary, then diff-guided retry
+135	P3	0088e300	51	CGameScriptInterface::IsRegionLoaded	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+136	P3	0088e0b0	54	CGameScriptInterface::SetSoundThemesAsEnabledForRegion	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+137	P3	0088fdc0	60	CGameScriptInterface::SetTimeOfDay	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+138	P3	00891820	63	CGameScriptInterface::AddQuestRegion	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+139	P3	00897150	64	CGameScriptInterface::UnSetThingAndCarriedItemsNotAffectedByScreenFilter	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+140	P3	0088fe90	65	CGameScriptInterface::FastForwardTimeTo	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+141	P3	0088ff30	67	CGameScriptInterface::TransitionToThemeAllInternals	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+142	P3	008a0c10	73	CGameScriptInterface::EntityGetAppearanceSeed	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+143	P3	006e7690	74	CGameScriptInterface::DeregisterTimer	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+144	P3	0089c510	74	CGameScriptInterface::OpinionSourceSetAsAttentionGrabbing	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+145	P3	008a0bc0	76	CGameScriptInterface::EntitySetAppearanceSeed	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+146	P3	008950e0	79	CGameScriptInterface::ManuallyResetTrap	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+147	P3	0089c330	79	CGameScriptInterface::EntitySetOpinionDeedTypeEnabled	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+148	P3	0089c380	79	CGameScriptInterface::EntitySetOpinionAttitudeEnabled	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+149	P3	0089c3d0	79	CGameScriptInterface::EntitySetOpinionReactionEnabled	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+150	P3	0089c850	79	CGameScriptInterface::RemoveOpinionDeedStillSearchingForWitnesses	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+151	P3	00890820	80	CGameScriptInterface::FadeScreenOut	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+152	P3	00891d50	81	CGameScriptInterface::GetThingWithUID	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+153	P3	00891070	83	CGameScriptInterface::CameraUseCameraPoint	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+154	P3	008961b0	83	CGameScriptInterface::ClearHeroEnemyOfGuards	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+155	P3	0089e130	83	CGameScriptInterface::EntitySetMaxNumberOfAttackers	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+156	P3	0088fd00	84	CGameScriptInterface::EntitySetInLimbo	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+157	P3	00896060	85	CGameScriptInterface::SetVillageLimbo	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+158	P3	00896270	85	CGameScriptInterface::EnableGuards	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+159	P3	008978e0	86	CGameScriptInterface::EntitySetAsAbleToRegionFollowWhenMarried	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+160	P3	00898fa0	86	CGameScriptInterface::GetHeroGold	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+161	P3	0089a150	86	CGameScriptInterface::GetHeroWillEnergy	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+162	P3	0089a1b0	86	CGameScriptInterface::GetHeroWillEnergyMax	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+163	P3	00895130	88	CGameScriptInterface::SetTrapAsActive	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+164	P3	00897880	88	CGameScriptInterface::GetHeroTitle	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+165	P3	0089ef30	88	CGameScriptInterface::SetMoralityChangingAsEnabled	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+166	P3	008a0f70	88	CGameScriptInterface::SetReadableObjectText	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+167	P3	00897c90	89	CGameScriptInterface::GetNumberOfTimesHeroHasHadSex	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+168	P3	00891ef0	90	CGameScriptInterface::IsHeroAllowedHenchmenInRegion	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+169	P3	008962d0	90	CGameScriptInterface::EnableVillagerDefTypes	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+170	P3	00899060	90	CGameScriptInterface::SetHeroAbleToGainExperience	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+171	P3	0089aff0	90	CGameScriptInterface::EntitySetCombatAbility	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+172	P3	00897090	91	CGameScriptInterface::SetWhetherToFailQuestOnDeath	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+173	P3	00897cf0	91	CGameScriptInterface::SetNumberOfTimesHeroHasHadSex	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+174	P3	00897d50	91	CGameScriptInterface::SetHeroAsHavingHadSex	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+175	P3	00897db0	91	CGameScriptInterface::SetHeroAsHavingHadGaySex	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+176	P3	008984e0	91	CGameScriptInterface::SetWeaponOutCrimeEnabled	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+177	P3	00898540	91	CGameScriptInterface::SetGuardsIgnoreCrimes	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+178	P3	0089ec60	92	CGameScriptInterface::CreatureGeneratorAddTriggerer	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+179	P3	00899c90	93	CGameScriptInterface::GetPlayerCreatureCombatMultiplier	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+180	P3	0088e2a0	94	CGameScriptInterface::IsLevelLoaded	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+181	P3	008a1650	94	CGameScriptInterface::GetBestScoreBlackjack	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+182	P3	008a16b0	94	CGameScriptInterface::GetBestScoreCoinGolfOakVale	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+183	P3	008a1710	94	CGameScriptInterface::GetBestScoreCoinGolfSnowSpire	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+184	P3	008a1770	94	CGameScriptInterface::GetBestScoreShoveHaPenny	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+185	P3	0088ead0	95	CGameScriptInterface::EntitySetAsDamageable	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+186	P3	00899000	95	CGameScriptInterface::GiveHeroExperience	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+187	P3	00899140	95	CGameScriptInterface::GetHeroRenownLevel	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+188	P3	008a12a0	95	CGameScriptInterface::GetNumHousesOwned	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+189	P3	0088e6f0	96	CGameScriptInterface::AreEntitiesEnemies	fse1	retry	yes	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+190	P3	0089b3f0	96	CGameScriptInterface::SetHeroAsWearing	fse1	retry	no	ForgeFSE binding retry; inspect prior parity and oracle boundary before re-authoring
+191	HOLD	008997e0	97	CGameScriptInterface::GetHeroExperienceAvailableToSpend	fse2	fresh	yes	known behavior PASS / DIFFER(101v97) register-allocation residue; do not blind-regrind
