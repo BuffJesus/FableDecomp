@@ -12085,6 +12085,20 @@ $catalog = @(
         TestSource = 'CGameScriptInterface_StopOverrideMusic_008912a0_test.cpp'
         PassPattern = 'FSE2_008912a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00893f80'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_MsgOnHeroCastSpell_00893f80.cpp'
+        TestSource = 'CGameScriptInterface_MsgOnHeroCastSpell_00893f80_test.cpp'
+        PassPattern = 'FSE2_00893f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089c8a0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_IsDeedWitnessed_0089c8a0.cpp'
+        TestSource = 'CGameScriptInterface_IsDeedWitnessed_0089c8a0_test.cpp'
+        PassPattern = 'FSE2_0089c8a0_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
