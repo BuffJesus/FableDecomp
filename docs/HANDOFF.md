@@ -4218,3 +4218,45 @@ def is actually resolvable by name. Until then, custom NPCs must reuse an existi
 CREATURE_TRADER_01) — which works and is voiced. Rolled back cleanly; backups in
 FSE/backups/custom_creature_20260724/. All custom-creature build artifacts (verified offline) remain in
 work/meshy_npc_mesh/custom_creature/.
+
+### TOMORROW'S PLAN — custom creature working + next auto-RE rounds (2026-07-24)
+
+**A. Get a custom-mesh NPC in-game (two tracks):**
+- **Track A — QUICK WIN, low risk (do first): IN-PLACE edit, no append.** The engine rejects *appended*
+  defs (count/index not extended) but accepts *in-place* field edits (same size, same slot). So patch an
+  EXISTING creature's `Graphic.modelId` in place instead of adding a new def:
+  - Simplest: hand-patch `CREATURE_TRADER_01`'s Graphic.modelId at payload offset **1122** (tag@1114),
+    `5149 -> <our mesh id>`. game.bin size UNCHANGED. Deploy game.bin + graphics.big (skinned MESH under a
+    name) + textures.big (tex 6291). Result: every trader renders the Meshy body — proves the custom skinned
+    mesh renders + animates in-game. Downside: all traders, not a distinct creature.
+  - Better: repurpose a RARE/unused creature def (spawn by its name via CreateCreatureNearby) so only "our"
+    NPC changes. Same in-place mechanism.
+  - Also strip clothes: clear/patch the cloned def's `InitialAppearanceModifiers` (CAppearanceModifierDef
+    layers trader clothing over the base body) so the bare Meshy body shows.
+- **Track B — PROPER new def (needs RE):** decompile `CGameDefinitionManager::InitAndCompile`
+  **0x0044c72b** (+ ctor 0x0044c6c2, dtor 0x00450bff) to learn how game.bin defs are counted / name-indexed
+  / hashed at load, then fix `work/meshy_npc_mesh/custom_creature/02_add_creature.cpp` to update whatever the
+  engine trusts (candidate: a per-bank/def COUNT field, a names.bin name→id hash, or indexInDefinition
+  ordering). Then a truly distinct `CREATURE_MESHY_HUNTER` resolves by name. All build artifacts already
+  staged + offline-verified in work/meshy_npc_mesh/custom_creature/. Deploy rollback: FSE/backups/custom_creature_20260724/.
+
+**B. Next auto-RE candidate rounds (run via the CLAUDE Workflow loop — the Codex wave3 lane is quota-blocked):**
+- **Batch A (TOP — unblocks custom NPC):** `CGameDefinitionManager::InitAndCompile` 0x0044c72b, ctor
+  0x0044c6c2; `CreateCreature` 0x008a9100 + `CreateCreatureNearby` 0x0089f300 (how they resolve a def by
+  NAME); `CCreatureDef` 0x006768c0 / `CThingCreatureDef` 0x006710d0. Decompile these to solve Track B AND
+  document the def-load contract. Use an analysis Workflow like the co-op one (bundles from Fable.exe bytes
+  via pe_oracle + objdump).
+- **Batch B (custom-NPC polish):** `CAppearanceModifierDef` 0x004546d5, `CAppearanceDef` 0x0046a174,
+  `CEngineGraphic` 0x00434b50, `CTCGraphicAppearance::GetRenderMeshObject` 0x004bc750 — the appearance/clothing
+  + mesh-render path (strip clothes, understand attachment sub-graphics).
+- **Batch C (co-op revival):** the 24-target co-op cluster is prepended to the wave3 seed (Codex-blocked).
+  Either wait for Codex quota, or byte-match-reconstruct the gate/protocol via the Claude refine loop:
+  `IsMultiplayerGameActive` 0x449d20, `InitialiseAsNetworkHost` ~0x4ae940, `CGameEventPackage`
+  Compress/InitFromCompressedBuffer 0x9f1810/0x9f1870, and REBUILD `CheckSync` 0x4165e8 (the one gutted piece).
+- **Batch D (continue byte-match reconstruction):** ~64 remaining fse2 methods via the diff-feedback refine
+  loop (the proven cracker — first-pass authoring yields ~0, refine round lands them). Then the next
+  accessor/setter tiers from rebuild/backlog. Pipeline: tools/decomp_pipeline/ (author_wf -> verify_and_land;
+  refine_wf on close DIFFERs).
+- **Lane note:** the productive decomp engine is the Claude Workflow loop, NOT the Codex `re-agent.exe` wave3
+  lane (quota-limited). Drive Batch A/D through Workflow (schema-constrained author/refine/analyze), land via
+  verify_and_land.
