@@ -1,13 +1,13 @@
 # Auto-RE candidate compile gate
 
-Generated: `2026-07-22T22:11:35-06:00`
+Generated: `2026-07-23T19:58:58-06:00`
 
 | Gate | Passing | Total |
 |---|---:|---:|
-| Source integrity | 212 | 212 |
-| 32-bit host C++20 syntax | 85 | 212 |
-| No detected VC7.1 language blockers | 27 | 212 |
-| Ready for VC7.1 module compilation | 15 | 212 |
+| Source integrity | 509 | 509 |
+| 32-bit host C++20 syntax | 226 | 509 |
+| No detected VC7.1 language blockers | 49 | 509 |
+| Ready for VC7.1 module compilation | 34 | 509 |
 
 A checker PASS is not a compiler PASS. The host syntax gate supplies only standard-library and calling-convention compatibility; missing engine declarations must be resolved through real module headers.
 
@@ -15,14 +15,17 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 
 | Declaration | Candidates |
 |---|---:|
+| `offsetof` | 44 |
+| `class CGameScriptInterface` | 33 |
+| `mov` | 14 |
 | `CMouseDX` | 12 |
 | `CMemoryAllocatorFixedSize` | 11 |
 | `C2DVector` | 11 |
 | `CNavQuadTree` | 10 |
 | `EThemePaintType` | 8 |
+| `class CScriptThing` | 7 |
 | `CEngineLandscapeMap` | 7 |
 | `CGraphicInfoFrame` | 7 |
-| `class CScriptThing` | 6 |
 | `CANavQuadTreeNode` | 6 |
 | `CEngineLandscapePatch` | 6 |
 | `CWorldMap` | 5 |
@@ -42,8 +45,5 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 | `pFrameData` | 4 |
 | `pResource` | 4 |
 | `CLandscapeLayerMesh` | 4 |
-| `jmp` | 3 |
-| `mov` | 3 |
-| `self` | 3 |
 
 Full per-candidate results are in `candidates.tsv`.

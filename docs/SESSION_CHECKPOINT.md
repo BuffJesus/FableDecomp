@@ -4,6 +4,10 @@ Two tracks in flight: (A) background decomp/byte-match loop, (B) foreground cust
 `docs/HANDOFF.md` (automation-maintained) has the canonical decomp resume; this file adds the
 in-flight session state + the quest-card task the automation does NOT track.
 
+**Current prioritized queue:** `docs/ACTIVE_TASK_LIST.md`. Its generated address lists are
+`rebuild/backlog/active_candidate_queue.tsv`, `fse2_remaining_ranked.tsv`, and
+`pending_batch_status.tsv`. Use that queue instead of the older candidate ordering below.
+
 ## A. Background decomp — in flight
 - **Coverage:** ~1,731 landed src/compiled; ~1,588 audit-confirmed byte-matches (EXACT+RELOC).
   fse1 landed **108 verified ForgeFSE bindings** (commit `8b97302`).
@@ -44,7 +48,8 @@ FQT's start-screen generator already implements this exact flow (working referen
 QuestName +0x28/QuestSummary +0x2c/QuestObjective +0x30 (TextIDs), RegionName +0x38, InventoryCategory
 +0x40, RenownReward +0x44, GoldReward +0x48, RewardObjects +0x4c, IsCoreQuest +0x58.
 FSE API: `AddQuestCard`@0x008913F0 (vtable292, takes questCardObjectName), `GiveQuestCardDirectly`
-@0x008968C0 (transient, avoid), `SetQuestCard{Objective,GoldReward,RenownReward}`@0x008918B0/E8/920.
+@0x008968C0 (transient, avoid), `SetQuestCardObjective` plus the ForgeFSE wrapper names
+`SetQuestGoldReward`/`SetQuestRenownReward` for the reward fields.
 
 **Decision (user, 2026-07-23):** author **DISTINCT card def per quest** (9 hunt quests). Use **donor
 text** (clone WASP_MENACE TextIDs) for the first working test → swap in custom text.big entries later.
@@ -64,23 +69,42 @@ text** (clone WASP_MENACE TextIDs) for the first working test → swap in custom
 childhood prologue does **NOT** survive the childhood→adult time-skip. The runtime card THING
 (`CTCQuestCard`) is transient and destroyed on region/world unload; `AddQuestCard` only inserts into
 the runtime guild list (CQuestManager+0x58), which is NOT entity-serialized. **BUT quest SCRIPT_DATA
-variables DO persist** (save `START_SAVED_QUESTS`/`SCRIPT_DATA`, via `Quest:SetQuestVariable` /
-`GetQuestVariable`). ⇒ Use **discover-as-kid / hunt-as-adult**: the mysterious NPC in childhood Oakvale
+variables DO persist** when the same ForgeFSE quest implements `OnPersist` and round-trips its
+namespaced `SetStateBool` value with `PersistTransferBool`. (`SetStateBool` alone is in-memory;
+ForgeFSE exposes no `SetQuestVariable`/`GetQuestVariable` binding.) ⇒ Use **discover-as-kid /
+hunt-as-adult**: the mysterious NPC in childhood Oakvale
 sets a persistent quest variable; an adult script checks it and does AddQuestCard→Activate→Set*.
 Cites: `docs/QUEST_CARD_SYSTEM.md:13,23`, `docs/SAVE_ENTITY_GRAPH.md:256-280`, `FORGETEST_STATE.md:40`.
 
 **Design (user, 2026-07-23):** mysterious NPC flavor; discover-as-kid → hunt-as-adult.
 
+**DONE after the original checkpoint:**
+1. ✅ **Mysterious NPC placement package** under
+   `work/quest_card_custom_20260723/npc_placement/`. It clones the childhood
+   `NOVI_BookTrader` into StartOakValeEast at `M_BarrelManHiddenPos`, offline only. Validation:
+   106→107 things, exactly one addition, zero changes/removals/conflicts, base and modified TNGs
+   round-trip. The live TNG SHA-256 remains equal to the untouched base.
+2. ✅ **Correct persistence bridge:** `SecretHunt.lua` uses quest-local `SetStateBool` plus
+   `OnPersist`/`PersistTransferBool`; the NPC entity uses real `TEXT_SECRET_HUNT_NPC_*` dialogue
+   keys. No nonexistent SetQuestVariable API remains.
+3. ✅ **EgoCore-compatible text writer ported into FableForge:** `forge text set` and atomic
+   `forge text import`, plus quest-card `--title-text/--summary-text/--objective-text/--success-text`.
+   The writer preserves retail `BIGB`, metadata, type histogram, and untouched payloads. FableForge
+   test suite: 7/7 PASS.
+4. ✅ **Custom text staged:** `custom_text_manifest.json` contains 36 strings. The staged
+   `build/data/lang/English/text.big` retains all 28,913 retail records byte-identically and appends
+   IDs 28914–28949. All nine card defs now reference distinct custom title/summary/objective IDs.
+5. ✅ **Decomp resumed:** fse2 landed
+   `CGameScriptInterface::CameraEarthquakeIntensityAtPos @ 0x0088ED20` as
+   `RELOCATION_MATCH + behavior PASS`; fse2 is 1/76 with 75 remaining. Notes and the honest
+   0x008997E0 near miss are in `work/decomp_fse2_resume/`. The scheduled
+   `FableTLC Auto RE Wave 2` lane was restarted after integration and resumed Wave 3 work.
+
 **Next steps:**
-1. **Mysterious NPC placement** — TNG edit to add a hidden creature/NPC to childhood Oakvale (and/or
-   an adult Oakvale spot). Tooling: `forge tng` / SilverChest.TngBridge.
-2. Wire the childhood NPC to `Quest:SetQuestVariable("SecretHunt","DiscoveredAsChild",1)`; adult
-   quest-giver checks `GetQuestVariable` then runs the companion flow.
-3. Deploy test: back up install game.bin, copy `build/.../game.bin`, FSE smoke — confirm a HUNT card
-   shows in F9. (No install change until user OKs.)
-4. **EgoCore-parity follow-up (custom TEXT):** port EgoCore's def/text compiler so cards get CUSTOM
-   title/summary (not donor). EgoCore main-suite `Definitions/CompilerBackend.h` compiles plain-text
-   defs; FableForge has `forge/textbig.hpp` decode + `forge text` (read only) — needs a text.big
-   WRITER + a source-def compile frontend. This is the "custom cards via EgoCore" capability.
+1. Register `SecretHunt` plus `MysteryHunt1..9` in ForgeFSE/QST, then run the documented offline
+   deployment smoke. Back up and stage both game.bin and English text.big; do not deploy only one.
+2. Confirm the live region strings used by the companion hunt table, especially Graveyard,
+   HobbeCave, and Snowspire.
+3. Continue fse2 from the 75 remaining staged binding methods, using the VC7.1 byte gate.
 
 Artifacts folder: `work/quest_card_custom_20260723/` (README.md + companion_hunt_quest.lua + build/).

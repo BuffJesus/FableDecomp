@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-07-22T22:12:02-06:00`
+Generated: `2026-07-22T23:12:19-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 
@@ -8,7 +8,7 @@ The order favors generated candidate clusters first, then extension of proven mo
 
 | Rank | Track | Module | Functions | Prototype gaps | Agent candidates | Verified lifts |
 |---:|---|---|---:|---:|---:|---:|
-| 1 | candidate-cluster | `CGameScriptInterface` | 954 | 6 | 74 | 0 |
+| 1 | candidate-cluster | `CGameScriptInterface` | 954 | 6 | 106 | 0 |
 | 2 | candidate-cluster | `_global` | 11370 | 9376 | 43 | 0 |
 | 3 | candidate-cluster | `CMouseDX` | 24 | 0 | 14 | 10 |
 | 4 | candidate-cluster | `CMemoryAllocatorFixedSize` | 21 | 0 | 11 | 7 |
@@ -88,15 +88,15 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 | 26 | `00a79680` | `CNavQuadTree` | signature-audit | 'CNavConnectorNode' does not name a type |
 | 27 | `00caf580` | `CEngineLandscapePatch` | signature-audit | invalid use of incomplete type 'class CCharString' |
 | 28 | `00caf680` | `CEngineLandscapePatch` | signature-audit | 'CEngineLandscapePatch' has not been declared |
-| 29 | `00bfd420` | `CLandscapeLayerMesh` | signature-audit | 'CLandscapeLayerMesh' does not name a type |
-| 30 | `00bfddd0` | `CLandscapeLayerMesh` | signature-audit | 'CGraphicInfoFrame' does not name a type |
-| 31 | `00c3b900` | `CLandscapeLayerMesh` | signature-audit | 'CEngineLandscapeMap' does not name a type |
-| 32 | `006b0730` | `CTCPhysicsBase` | signature-audit | 'C3DVector' does not name a type |
-| 33 | `007266c0` | `CTCPhysicsBase` | signature-audit | static assertion failed |
-| 34 | `00713140` | `CActionDoCreatureAction` | signature-audit | invalid use of incomplete type 'class NTCScriptedControl::CActionDoCreatureAction' |
-| 35 | `00401296` | `_global` | compiled-needs-parity |  |
-| 36 | `004012ce` | `_global` | compiled-needs-parity |  |
-| 37 | `0040135c` | `_global` | compiled-needs-parity |  |
-| 38 | `00403c60` | `_global` | compiled-needs-parity |  |
-| 39 | `00404280` | `_global` | compiled-needs-parity |  |
-| 40 | `00405ba0` | `_global` | compiled-needs-parity |  |
+| 29 | `006e7290` | `CGameScriptInterface` | candidate-compile |  |
+| 30 | `006e7340` | `CGameScriptInterface` | candidate-compile |  |
+| 31 | `006e7d40` | `CGameScriptInterface` | candidate-compile |  |
+| 32 | `0088e210` | `CGameScriptInterface` | candidate-compile |  |
+| 33 | `0088e400` | `CGameScriptInterface` | candidate-compile |  |
+| 34 | `0088e4c0` | `CGameScriptInterface` | candidate-compile |  |
+| 35 | `0088e4d0` | `CGameScriptInterface` | candidate-compile |  |
+| 36 | `0088e500` | `CGameScriptInterface` | candidate-compile | 'reinterpret_cast' from integer to pointer |
+| 37 | `0088ec90` | `CGameScriptInterface` | candidate-compile |  |
+| 38 | `0088ecc0` | `CGameScriptInterface` | candidate-compile |  |
+| 39 | `0088ece0` | `CGameScriptInterface` | candidate-compile |  |
+| 40 | `0088f3e0` | `CGameScriptInterface` | candidate-compile |  |

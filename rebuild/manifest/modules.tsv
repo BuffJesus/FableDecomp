@@ -1498,7 +1498,7 @@ CEngineLandscapeMap	34	19	19	2	1	4	4	1	1	0	0
 CEngineLandscapeMemoryManager	25	16	12	0	0	0	0	0	0	0	0
 CEngineLandscapeMeshBuilder	10	3	2	0	0	0	0	0	0	0	0
 CEngineLandscapePatch	28	29	27	6	3	7	7	1	1	0	0
-CEngineLandscapeRenderer	39	33	33	8	0	8	8	6	0	0	0
+CEngineLandscapeRenderer	39	33	33	8	0	8	8	6	1	0	0
 CEngineLayerRenderer	2	1	1	0	0	0	0	0	0	0	0
 CEngineLightingManager	35	134	134	0	0	0	0	0	0	0	0
 CEngineLocalDetailGenerator	25	8	8	0	0	0	0	0	0	0	0
@@ -1785,7 +1785,7 @@ CGameMap	6	6	5	0	0	0	0	0	0	0	0
 CGameMapCell	2	1	1	0	0	0	0	0	0	0	0
 CGameNavigatorManagerExternalInterface	2	2	2	0	0	0	0	0	0	0	0
 CGamePlayerInterface	41	24	23	0	0	0	0	0	0	0	0
-CGameScriptInterface	935	954	948	74	0	2	2	2	0	0	0
+CGameScriptInterface	935	954	948	106	0	2	2	2	0	0	0
 CGameScriptThing	81	91	88	0	0	0	0	0	0	0	0
 CGameScriptThingManager	5	6	5	0	0	0	0	0	0	0	0
 CGameTimeManager	27	13	13	0	0	0	0	0	0	0	0
@@ -2272,7 +2272,7 @@ CMeleeOpponent	3	0	0	0	0	0	0	0	0	0	0
 CMeleeThunder	2	2	2	0	0	0	0	0	0	0	0
 CMemoryAllocator	51	17	16	0	0	0	0	0	0	0	0
 CMemoryAllocatorBase	0	2	1	0	0	0	0	0	0	0	0
-CMemoryAllocatorFixedSize	23	21	21	11	0	10	10	7	0	5	2
+CMemoryAllocatorFixedSize	23	21	21	11	0	10	10	10	0	5	2
 CMemoryAllocatorVariableSize	29	61	27	0	0	0	0	0	0	0	0
 CMemoryArea	2	0	0	0	0	0	0	0	0	0	0
 CMemoryAreaChunk	14	6	6	0	0	0	0	0	0	0	0
@@ -4496,7 +4496,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	0	0	0	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11370	1994	42	1	20	20	6	6	0	0
+_global	0	11370	1994	42	1	20	20	7	7	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0
