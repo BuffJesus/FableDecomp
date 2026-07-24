@@ -108,3 +108,38 @@ Cites: `docs/QUEST_CARD_SYSTEM.md:13,23`, `docs/SAVE_ENTITY_GRAPH.md:256-280`, `
 3. Continue fse2 from the 75 remaining staged binding methods, using the VC7.1 byte gate.
 
 Artifacts folder: `work/quest_card_custom_20260723/` (README.md + companion_hunt_quest.lua + build/).
+
+---
+
+## Session addendum — 2026-07-23 (evening)
+
+**Decomp landings:** +2 byte-exact fse2 bindings via a NEW **diff-feedback refine loop**
+(`MsgOnHeroCastSpell` 0x00893f80, `IsDeedWitnessed` 0x0089c8a0; both RELOCATION_MATCH + behaviour
+PASS). Byte-match count 55→57. Method: author → compile → feed annotated retail-vs-built disasm diff
+back to the agent with register-alloc nudging → verify_and_land. This cracked cases the mechanical
+`crack_residue.py` sweep and first-pass authoring both missed (0 wins each).
+
+**fse2 status:** 20 of 76 authored (session-limit cut the fan-out at 55 failures); 0 byte-exact on
+first pass, 2 landed after the refine round. ~55 methods still un-authored; ~8 close DIFFERs remain
+(same-length near-misses, candidates for another refine round). New tool: `verify_residue.py`.
+
+**Residues (the 8 register-alloc DIFFERs):** still DIFFER. Agent re-authoring reached 0 byte-exact;
+several are now documented **IRREDUCIBLE** — VC7.1 13.10 deterministically emits a register
+allocation retail doesn't (e.g. 0081f090 extra `mov esi,eax`; 008994e0 tail `Apply` this-via-eax).
+These are compiler-scheduler artifacts, not source-shape bugs. Honest verdict: not all residues are
+crackable from C source under this toolchain.
+
+**Quest cards — track C DONE:** `work/quest_card_custom_20260723/deploy/` registration package
+assembled + offline-validated (TNG 106→107 clean; 9 HUNT cards decode clean). Engine finding:
+MysteryHunt1..9 need NO separate ForgeFSE registration — `LuaQuestState::ActivateQuest` forwards the
+name string to engine ActivateQuest (vtable[276]); one host quest `SecretHunt` drives all nine.
+Remaining: in-game smoke (manual, needs live game) + confirm Graveyard/HobbeCave/Snowspire region
+strings.
+
+**Major finding — dormant co-op multiplayer subsystem.** Documented in `docs/FINDINGS.md`
+(2-source: retail name DB + `ego_r` debug PDB). `LHNetworkLib` sockets + `CNetworkClient`
+client/host `CGameEventPackage` replication + `CPlayerManager` multi-controller + combat-capable
+`CTCCoopSpirit` (COOP_SPIRIT_PLAYER_ONE..FOUR). Next probe: decompile the gate/protocol cluster
+(`IsMultiplayerGameActive` 0x449d20, `InitialiseAsNetworkHost` ~0x4ae940, `GetLocalGameEventPackageSet`
+0x4aeaa0, `ProcessEventPackage` 0x416670, `CTCCoopSpirit::Construct` 0x4d55d0) to gauge how gated vs
+gutted the path is.

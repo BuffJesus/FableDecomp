@@ -1271,3 +1271,71 @@ CompileSingleLOD = write-side answer key, cross-checked on retail entries):
   (proof: `tools/blender_addon/tests/proof/fable_compose_new_meshes.{blend,png}`).
 - Limits: static only (no skinning), LOD0+ghost only, tri lists, no bump layouts/cloth/
   helpers; engine load not yet observed in-game (payload is grammar-identical to retail).
+
+---
+
+## Dormant multiplayer / co-op subsystem (2026-07-23, HIGH confidence, 2-source)
+
+**Claim:** Fable: The Lost Chapters retains a near-complete but disabled **co-op multiplayer**
+subsystem — networking transport, a client/host/local event-replication protocol, multi-player
+management, and a combat-capable co-op "spirit" entity. This is the plumbing for Fable's famously
+cut cooperative play. Reviving it is a *reverse-a-dormant-subsystem* problem, not a
+*write-netcode-from-scratch* one.
+
+**Evidence (retail `Fable.exe` name DB AND `debug_build/ego_r.exe` PDB agree):**
+
+1. **Transport — `LHNetworkLib` (Lionhead network library).** Retail: `LSocket` (`CreateSocket`,
+   `Bind`, `Listen`, `Accept`, `CheckForAcceptedConnectionsOnSocket`, `LSocket::Send`,
+   `LSocket_ReceiveWithTimeout`, `SetNonBlocking`, `CNetworkConnection_Cleanup`). Debug build adds
+   RTTI/classes `LSocketServer`, `DatagrammPacket` (UDP), `LSocketConnError`, plus `CNetworkClient`
+   and `CNetworkServer` RTTI and the init string `"was unable to initialise the network manager."`
+   Client + server + UDP + error handling + connection pooling (`std::list<LSocket*>`).
+
+2. **Replication protocol — `CNetworkClient` + `CGameEventPackage`.** One class serves three roles:
+   `InitialiseAsLocal` / `InitialiseAsNetworkClient` / `InitialiseAsNetworkHost`. The event flow:
+   `SendGameEvent` -> `GetLocalGameEventPackageSet` / `GetGameEventPackageSet` ->
+   `ReceiveGameEventPackageSet` -> `IsGameEventPackageWaiting` / `IsServerGameEventPackageWaiting` ->
+   `CheckForLocalFrameUpdate`, with `CheckSync`, `ConfirmFeedbackGameEventPackage`,
+   `UpdateFromEventPackageSet`, and save integration (`GetEventPackageSetFromSave`,
+   `AddEventPackageSetToSave`). The commands themselves are the `EA*` action set (`EAMoveCreature`,
+   `EAUseProjectileWeapon`, `EAControlledCreatureUseAbility`, `EASkipCutScene`, ...). This is a
+   command/event-replication model (local events packaged, exchanged, sync-checked, applied per
+   frame) — the standard shape for input-replicated netplay.
+
+3. **Multi-player management — `CPlayerManager`.** `CreatePlayers` / `DestroyPlayers`,
+   `GetMainPlayer`, `DowngradePlayerToNonMainPlayer`, and controller mapping
+   (`GetPlayerNumberFromJoystickDeviceNumber`, `IsPlayerAssociatedWithJoystickDeviceNumber`,
+   `GetMainPlayerJoystickDeviceNumber`) => local multi-controller co-op. Plus hero-swap
+   (`GetPlayerHeroSwapScriptName`/`SetPlayerHeroSwapScriptName`), `IsMultiplayerGameActive` (a real
+   108-byte query at retail `0x00449d20`, NOT a stub), `GetMultiplayerColour`, `GetSpiritDefName`,
+   `GetSpiritScoreText`.
+
+4. **The co-op player entity — `CTCCoopSpirit` / `CCoopSpiritDef`.** A first-class Thing type
+   (`CTCCoopSpirit::Construct` retail `0x004d55d0`; full `CDefPointer`/`GetTC`/`PeekTC` machinery).
+   It is combat-capable and score-bearing: `ApplyMovementVector`, `FrameUpdate`, `OnHit`, `OnStrike`,
+   `GetMeleeTargetRange`, `GetAttackEffectName`; `AddExperience`, `AddScore`, `GetScore`,
+   `ResetScore`; and it tethers to a master player: `SetMasterPlayer`, `GetAttractToMasterDistance`,
+   `GetNoFramesForOffscreenReturnToMaster`. Definition constants name **four** slots:
+   `COOP_SPIRIT_PLAYER_ONE..FOUR`. `CCoopSpiritDef::Transfer(CPersistContext&)` (retail `0x004526xx`)
+   means the spirit state is **serializable** through the same persist context as the save-entity
+   graph — so a co-op session integrates with existing save plumbing.
+
+**Interpretation.** The design was up to 4 players joining as combat-capable "co-op spirits" tethered
+to the main hero, earning score/XP, over a client/host `CNetworkClient` exchanging `CGameEventPackage`
+sets across `LHNetworkLib` sockets. This matches the publicly-known cut Fable co-op ("Hero Spirit").
+
+**Caveats / not yet established.** (a) Completeness and *reachability* of the path in retail is
+unproven — whether it is complete-but-gated or partially gutted requires decompiling the cluster.
+(b) Some debug-build network strings are statically-linked Perforce P4API (`$P4PORT`, "unopened
+rpc", "Fatal client error; disconnecting") — those are asset-checkout tooling, NOT Fable netcode,
+and were excluded. (c) Determinism for true lockstep is unverified; the event-package model may be
+command-replication with server authority rather than lockstep.
+
+**Highest-value next probe.** Decompile the gate + protocol core: `CPlayerManager::IsMultiplayerGameActive`
+(`0x00449d20`), `CNetworkClient::InitialiseAsNetworkHost` / `InitialiseAsNetworkClient` (near
+`0x004ae940`), `GetLocalGameEventPackageSet` (`0x004aeaa0`) + `ProcessEventPackage` (`0x00416670`),
+and `CTCCoopSpirit::Construct` (`0x004d55d0`). Free transport options for reviving it (all $0):
+ZeroTier/Radmin virtual-LAN over the built-in `LSocket` direct path (lowest effort); or, since TLC
+ships on Steam (AppID 174790), Steamworks P2P (`SteamNetworkingMessages`) for free NAT relay +
+lobbies; or GameNetworkingSockets (MIT) for Steam-quality transport without Steam. Transport is the
+cheap part — the decomp-dependent work is the `CGameEventPackage` sync model.
