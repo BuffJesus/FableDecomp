@@ -38,8 +38,41 @@ $env:RE_AGENT_CODEX_JS = 'C:\Users\Cornelio\AppData\Local\JetBrains\Rider2026.2\
 $env:RE_AGENT_CODEX_MAX_ATTEMPTS = '3'
 $env:RE_AGENT_DECOMPILE_CACHE_DIR = 'D:\Documents\FableTLC\lift\.cache\re-agent-decompile'
 
+# === Co-op / multiplayer cluster (priority probe, added 2026-07-23) =========
+# Fable retains a disabled co-op subsystem (docs/FINDINGS.md). Decompile the GATE,
+# the CNetworkClient client/host lifecycle, the CGameEventPackage replication +
+# WIRE FORMAT (Compress/InitFromCompressedBuffer), and the CTCCoopSpirit entity so
+# we can judge how complete-vs-gutted the path is and plan a revival. These run
+# first (already-recorded addresses are skipped by the shared ledgers).
+$coopTargets = @(
+    [pscustomobject]@{ Address = '0x00449D20'; Slug = 'mp-playermgr-ismultiplayergameactive' },
+    [pscustomobject]@{ Address = '0x00449B60'; Slug = 'mp-playermgr-getmultiplayercolour' },
+    [pscustomobject]@{ Address = '0x004AE940'; Slug = 'mp-networkclient-initialiseaslocal' },
+    [pscustomobject]@{ Address = '0x004AE9D0'; Slug = 'mp-networkclient-update' },
+    [pscustomobject]@{ Address = '0x004AEA70'; Slug = 'mp-networkclient-isfreetorender' },
+    [pscustomobject]@{ Address = '0x004AEAA0'; Slug = 'mp-networkclient-getlocaleventpackageset' },
+    [pscustomobject]@{ Address = '0x004AEBA0'; Slug = 'mp-networkclient-geteventpackageset' },
+    [pscustomobject]@{ Address = '0x00416670'; Slug = 'mp-processeventpackage' },
+    [pscustomobject]@{ Address = '0x004165E8'; Slug = 'mp-checksync' },
+    [pscustomobject]@{ Address = '0x0041726D'; Slug = 'mp-updatefromeventpackageset' },
+    [pscustomobject]@{ Address = '0x00416148'; Slug = 'mp-geteventpackagesetfromsave' },
+    [pscustomobject]@{ Address = '0x004161A7'; Slug = 'mp-addeventpackagesettosave' },
+    [pscustomobject]@{ Address = '0x009F1810'; Slug = 'mp-gameevent-compressintobuffer' },
+    [pscustomobject]@{ Address = '0x009F1870'; Slug = 'mp-gameevent-initfromcompressedbuffer' },
+    [pscustomobject]@{ Address = '0x009F19A0'; Slug = 'mp-packageset-compressintobuffer' },
+    [pscustomobject]@{ Address = '0x009F1AC0'; Slug = 'mp-packageset-initfromcompressedbuffer' },
+    [pscustomobject]@{ Address = '0x009F16F0'; Slug = 'mp-packageset-addpackage' },
+    [pscustomobject]@{ Address = '0x00A0D340'; Slug = 'mp-processedinput-addgameevent' },
+    [pscustomobject]@{ Address = '0x004D55D0'; Slug = 'mp-coopspirit-construct' },
+    [pscustomobject]@{ Address = '0x006700F0'; Slug = 'mp-coopspirit-oncreate' },
+    [pscustomobject]@{ Address = '0x006701A0'; Slug = 'mp-coopspirit-updateattractiontomaster' },
+    [pscustomobject]@{ Address = '0x0066FF20'; Slug = 'mp-coopspirit-swaptohero' },
+    [pscustomobject]@{ Address = '0x00670710'; Slug = 'mp-coopspirit-updatescore' },
+    [pscustomobject]@{ Address = '0x0062C0E0'; Slug = 'mp-world-eamovespirit' }
+)
+
 # Prototype-closure seed: quick ABI/accessor wins first, then moderate bodies.
-$seedTargets = @(
+$seedTargets = @() + $coopTargets + @(
     [pscustomobject]@{ Address = '0x00A66550'; Slug = 'fixedallocator-getfragmentation' },
     [pscustomobject]@{ Address = '0x00BDC130'; Slug = 'landscapemap-relocatedata' },
     [pscustomobject]@{ Address = '0x00B6CA10'; Slug = 'landscaperenderer-peekscenefilterflags' },
