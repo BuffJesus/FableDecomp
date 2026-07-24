@@ -12099,6 +12099,62 @@ $catalog = @(
         TestSource = 'CGameScriptInterface_IsDeedWitnessed_0089c8a0_test.cpp'
         PassPattern = 'FSE2_0089c8a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00894300'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_MsgIsQuestionAnsweredYesOrNo_00894300.cpp'
+        TestSource = 'CGameScriptInterface_MsgIsQuestionAnsweredYesOrNo_00894300_test.cpp'
+        PassPattern = 'FSE2_00894300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890f40'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntityResetCombatTypeToDefault_00890f40.cpp'
+        TestSource = 'CGameScriptInterface_EntityResetCombatTypeToDefault_00890f40_test.cpp'
+        PassPattern = 'FSE2_00890f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00899c10'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_IsPlayerCreatureReadyToFireProjectileWeapon_00899c10.cpp'
+        TestSource = 'CGameScriptInterface_IsPlayerCreatureReadyToFireProjectileWeapon_00899c10_test.cpp'
+        PassPattern = 'FSE2_00899c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089e4c0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_AddScreenTitleMessage_0089e4c0.cpp'
+        TestSource = 'CGameScriptInterface_AddScreenTitleMessage_0089e4c0_test.cpp'
+        PassPattern = 'FSE2_0089e4c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d0820'
+        Module = 'CGameScriptThing'
+        Source = 'CGameScriptThing_IsOpenDoor_008d0820.cpp'
+        TestSource = 'CGameScriptThing_IsOpenDoor_008d0820_test.cpp'
+        PassPattern = 'FSE2_008d0820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00898bb0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GiveHeroItem_00898bb0.cpp'
+        TestSource = 'CGameScriptInterface_GiveHeroItem_00898bb0_test.cpp'
+        PassPattern = 'FSE2_00898bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089dff0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing_0089dff0.cpp'
+        TestSource = 'CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing_0089dff0_test.cpp'
+        PassPattern = 'FSE2_0089dff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008902e0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GiveHeroObject_008902e0.cpp'
+        TestSource = 'CGameScriptInterface_GiveHeroObject_008902e0_test.cpp'
+        PassPattern = 'FSE2_008902e0_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
