@@ -49,12 +49,38 @@ FSE API: `AddQuestCard`@0x008913F0 (vtable292, takes questCardObjectName), `Give
 **Decision (user, 2026-07-23):** author **DISTINCT card def per quest** (9 hunt quests). Use **donor
 text** (clone WASP_MENACE TextIDs) for the first working test → swap in custom text.big entries later.
 
-**Plan / next steps:**
-1. Confirm `forge quest card` (or `forge defs` clone) exists in `D:\Code\FableForge\apps\forge`.
-2. Author 9 defs `OBJECT_QUEST_CARD_HUNT_1..9`, `--donor OBJECT_QUEST_CARD_WASP_MENACE`, per-quest
-   gold/renown; byte-validate with `forge defs decode` (assert clean decode, rewards set, TextIDs
-   non-zero). Offline — no game.bin risk until user deploys.
-3. Provide companion script wiring the accept-handler flow above, script-name-matched per quest.
-4. (Later) custom text.big entries to replace donor title/summary.
+**DONE (2026-07-23):**
+- ✅ **9 distinct hunt cards authored + byte-validated** → `work/quest_card_custom_20260723/`.
+  `build/data/CompiledDefs/game.bin` = retail + `OBJECT_QUEST_CARD_HUNT_1..9` (entries 14763–14780),
+  cloned from Wasp Menace (valid TextIDs 5289/6894 → non-blank), escalating rewards 200g/50r →
+  2000g/550r, IsCoreQuest=1, all decode clean. Tool: `forge quest card <root> <schema> HUNT_N
+  --donor OBJECT_QUEST_CARD_WASP_MENACE --in-place --gold G --renown R --core 1` (pass bare `HUNT_N`;
+  the tool prepends `OBJECT_QUEST_CARD_`).
+- ✅ Companion script `work/quest_card_custom_20260723/companion_hunt_quest.lua` (accept-handler flow).
+- ✅ Latent retail donor found: `OBJECT_QUEST_CARD_BOUNTY_HUNT` #3725, `CREATURE_BANDIT_BOUNTYHUNT`
+  #1118, `OBJECT_HERO_TITLE_SHADOWHUNTER` #3971 — Fable ships a bounty-hunt scaffold.
 
-Artifacts folder for this task: create under `work/quest_card_custom_YYYYMMDD/`.
+**PERSISTENCE SPIKE VERDICT (2026-07-23, decomp — HIGH confidence):** a quest card activated in the
+childhood prologue does **NOT** survive the childhood→adult time-skip. The runtime card THING
+(`CTCQuestCard`) is transient and destroyed on region/world unload; `AddQuestCard` only inserts into
+the runtime guild list (CQuestManager+0x58), which is NOT entity-serialized. **BUT quest SCRIPT_DATA
+variables DO persist** (save `START_SAVED_QUESTS`/`SCRIPT_DATA`, via `Quest:SetQuestVariable` /
+`GetQuestVariable`). ⇒ Use **discover-as-kid / hunt-as-adult**: the mysterious NPC in childhood Oakvale
+sets a persistent quest variable; an adult script checks it and does AddQuestCard→Activate→Set*.
+Cites: `docs/QUEST_CARD_SYSTEM.md:13,23`, `docs/SAVE_ENTITY_GRAPH.md:256-280`, `FORGETEST_STATE.md:40`.
+
+**Design (user, 2026-07-23):** mysterious NPC flavor; discover-as-kid → hunt-as-adult.
+
+**Next steps:**
+1. **Mysterious NPC placement** — TNG edit to add a hidden creature/NPC to childhood Oakvale (and/or
+   an adult Oakvale spot). Tooling: `forge tng` / SilverChest.TngBridge.
+2. Wire the childhood NPC to `Quest:SetQuestVariable("SecretHunt","DiscoveredAsChild",1)`; adult
+   quest-giver checks `GetQuestVariable` then runs the companion flow.
+3. Deploy test: back up install game.bin, copy `build/.../game.bin`, FSE smoke — confirm a HUNT card
+   shows in F9. (No install change until user OKs.)
+4. **EgoCore-parity follow-up (custom TEXT):** port EgoCore's def/text compiler so cards get CUSTOM
+   title/summary (not donor). EgoCore main-suite `Definitions/CompilerBackend.h` compiles plain-text
+   defs; FableForge has `forge/textbig.hpp` decode + `forge text` (read only) — needs a text.big
+   WRITER + a source-def compile frontend. This is the "custom cards via EgoCore" capability.
+
+Artifacts folder: `work/quest_card_custom_20260723/` (README.md + companion_hunt_quest.lua + build/).
