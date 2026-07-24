@@ -4204,3 +4204,17 @@ the tools above, exposed as `forge entity`. First slice: id registry + mesh/text
   (`CNetworkClient+0x2662`) from life. Auto-RE wave3 lane pointed at the co-op cluster (Codex-quota blocked).
 - Decomp: +11 fse2 byte-matches via the diff-feedback refine loop (the effective cracker vs 0 from
   first-pass authoring). Real byte-match total ~1,700 (3.43%) — README corrected from stale 57.
+
+### BLOCKER (2026-07-24, next session): custom game.bin def not engine-recognized
+Deployed CREATURE_MESHY_HUNTER (added to game.bin via forgecore File::addEntry) — `forge defs list/decode`
+sees it (entry 14781, Graphic.modelId=8113, all_tags_ok) but the ENGINE does NOT:
+`Quest:CreateCreatureNearby("CREATURE_MESHY_HUNTER") -> nil (def missing?)` and the load became
+unstable/crashed. Same class as the TNG bug: **forge's parser ≠ the engine's game.bin loader.** Appending
+a def entry is insufficient — the engine builds its def name→index table from a count/header/hash our
+append did not extend (candidates: a per-type def count, the names.bin index/hash, or indexInDefinition
+ordering). NEXT: RE the game.bin def-load + name-resolution path (grep name DB for CGameDefinitionManager /
+LoadDefinitions / GetDefinition / def name hash; check for a def-count field the engine trusts) so an added
+def is actually resolvable by name. Until then, custom NPCs must reuse an existing creature def (e.g.
+CREATURE_TRADER_01) — which works and is voiced. Rolled back cleanly; backups in
+FSE/backups/custom_creature_20260724/. All custom-creature build artifacts (verified offline) remain in
+work/meshy_npc_mesh/custom_creature/.
