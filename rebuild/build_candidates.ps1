@@ -11315,6 +11315,762 @@ $catalog = @(
         TestSource = 'COpinionDeedReactionDef_GetSizeofClass_00471f93_test.cpp'
         PassPattern = 'AUTO_TINY_00471f93_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0088f560'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntityCastLightningAtTarget_0088f560.cpp'
+        TestSource = 'CGameScriptInterface_EntityCastLightningAtTarget_0088f560_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fb90'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetBettingAmount_0088fb90.cpp'
+        TestSource = 'CGameScriptInterface_GetBettingAmount_0088fb90_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fb90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e080'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetConstantFPS_0088e080.cpp'
+        TestSource = 'CGameScriptInterface_GetConstantFPS_0088e080_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088e080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e920'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetAllowScreenFadingIfAlreadyFaded_0088e920.cpp'
+        TestSource = 'CGameScriptInterface_SetAllowScreenFadingIfAlreadyFaded_0088e920_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088e920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fe70'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetDayCount_0088fe70.cpp'
+        TestSource = 'CGameScriptInterface_GetDayCount_0088fe70_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fe70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e7d30'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetCreatureCreationDelayFrames_006e7d30.cpp'
+        TestSource = 'CGameScriptInterface_SetCreatureCreationDelayFrames_006e7d30_test.cpp'
+        PassPattern = 'CGameScriptInterface_006e7d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f930'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_AutoSave_0088f930.cpp'
+        TestSource = 'CGameScriptInterface_AutoSave_0088f930_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fb60'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetBettingAccept_0088fb60.cpp'
+        TestSource = 'CGameScriptInterface_SetBettingAccept_0088fb60_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fb60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fb40'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetBettingActive_0088fb40.cpp'
+        TestSource = 'CGameScriptInterface_SetBettingActive_0088fb40_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fc20'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetBoastingEnabled_0088fc20.cpp'
+        TestSource = 'CGameScriptInterface_SetBoastingEnabled_0088fc20_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fc20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fae0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetCheapHeadLooking_0088fae0.cpp'
+        TestSource = 'CGameScriptInterface_SetCheapHeadLooking_0088fae0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fba0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetCountBetMoneyDown_0088fba0.cpp'
+        TestSource = 'CGameScriptInterface_SetCountBetMoneyDown_0088fba0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fbe0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetGlobalTargetingDistanceOffset_0088fbe0.cpp'
+        TestSource = 'CGameScriptInterface_SetGlobalTargetingDistanceOffset_0088fbe0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fa80'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetPlayerUsingMeleeDummies_0088fa80.cpp'
+        TestSource = 'CGameScriptInterface_SetPlayerUsingMeleeDummies_0088fa80_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fa80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088faa0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetPlayerUsingRangedDummies_0088faa0.cpp'
+        TestSource = 'CGameScriptInterface_SetPlayerUsingRangedDummies_0088faa0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088faa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fac0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetPlayerUsingWillDummies_0088fac0.cpp'
+        TestSource = 'CGameScriptInterface_SetPlayerUsingWillDummies_0088fac0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fb20'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetPrizeTavernTable_0088fb20.cpp'
+        TestSource = 'CGameScriptInterface_SetPrizeTavernTable_0088fb20_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fb00'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetQuitTavernGame_0088fb00.cpp'
+        TestSource = 'CGameScriptInterface_SetQuitTavernGame_0088fb00_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fbc0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetSpotTheAdditionBeaten_0088fbc0.cpp'
+        TestSource = 'CGameScriptInterface_SetSpotTheAdditionBeaten_0088fbc0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fc00'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetTradingPriceMult_0088fc00.cpp'
+        TestSource = 'CGameScriptInterface_SetTradingPriceMult_0088fc00_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fc00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fb80'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetBettingAmount_0088fb80.cpp'
+        TestSource = 'CGameScriptInterface_SetBettingAmount_0088fb80_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aa890'
+        Module = 'CScriptThing'
+        Source = 'CScriptThing_IsDead_004aa890.cpp'
+        TestSource = 'CScriptThing_IsDead_004aa890_test.cpp'
+        PassPattern = 'CScriptThing_004aa890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890960'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetNextInOpinionAttitudeGraph_00890960.cpp'
+        TestSource = 'CGameScriptInterface_GetNextInOpinionAttitudeGraph_00890960_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e910'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetAllowScreenFadingOnNextRegionChange_0088e910.cpp'
+        TestSource = 'CGameScriptInterface_SetAllowScreenFadingOnNextRegionChange_0088e910_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088e910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f460'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetExperienceSpendingAsEnabled_0088f460.cpp'
+        TestSource = 'CGameScriptInterface_SetExperienceSpendingAsEnabled_0088f460_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f440'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetHeroSleepingAsEnabled_0088f440.cpp'
+        TestSource = 'CGameScriptInterface_SetHeroSleepingAsEnabled_0088f440_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f430'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetRegionTextDisplayAsActive_0088f430.cpp'
+        TestSource = 'CGameScriptInterface_SetRegionTextDisplayAsActive_0088f430_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f940'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetSavingAsEnabled_0088f940.cpp'
+        TestSource = 'CGameScriptInterface_SetSavingAsEnabled_0088f940_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f470'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetSummonerDeathExplosionAffectsHero_0088f470.cpp'
+        TestSource = 'CGameScriptInterface_SetSummonerDeathExplosionAffectsHero_0088f470_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f410'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetTeleportingAsActive_0088f410.cpp'
+        TestSource = 'CGameScriptInterface_SetTeleportingAsActive_0088f410_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ec70'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntityClearMaxNumberOfAttackers_0088ec70.cpp'
+        TestSource = 'CGameScriptInterface_EntityClearMaxNumberOfAttackers_0088ec70_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088ec70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e090'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetAllSoundsAsMuted_0088e090.cpp'
+        TestSource = 'CGameScriptInterface_SetAllSoundsAsMuted_0088e090_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088e090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089cd30'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_CanThingBeNearlySeenByOtherThing_0089cd30.cpp'
+        TestSource = 'CGameScriptInterface_CanThingBeNearlySeenByOtherThing_0089cd30_test.cpp'
+        PassPattern = 'CGameScriptInterface_0089cd30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089cd10'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_CanThingBeSeenByOtherThing_0089cd10.cpp'
+        TestSource = 'CGameScriptInterface_CanThingBeSeenByOtherThing_0089cd10_test.cpp'
+        PassPattern = 'CGameScriptInterface_0089cd10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a7ec0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntitySetThingAsAllyOfThing_008a7ec0.cpp'
+        TestSource = 'CGameScriptInterface_EntitySetThingAsAllyOfThing_008a7ec0_test.cpp'
+        PassPattern = 'CGameScriptInterface_008a7ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fe50'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetDayOfWeek_0088fe50.cpp'
+        TestSource = 'CGameScriptInterface_GetDayOfWeek_0088fe50_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fe50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e110'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GiveHeroTitle_0088e110.cpp'
+        TestSource = 'CGameScriptInterface_GiveHeroTitle_0088e110_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088e110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a9db0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_AddRumourCategory_008a9db0.cpp'
+        TestSource = 'CGameScriptInterface_AddRumourCategory_008a9db0_test.cpp'
+        PassPattern = 'CGameScriptInterface_008a9db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00892e80'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_ActivateQuest_00892e80.cpp'
+        TestSource = 'CGameScriptInterface_ActivateQuest_00892e80_test.cpp'
+        PassPattern = 'CGameScriptInterface_00892e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890970'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetOpinionAttitudeAsString_00890970.cpp'
+        TestSource = 'CGameScriptInterface_GetOpinionAttitudeAsString_00890970_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00891c80'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_UpdateMiniGameInfoBar_00891c80.cpp'
+        TestSource = 'CGameScriptInterface_UpdateMiniGameInfoBar_00891c80_test.cpp'
+        PassPattern = 'CGameScriptInterface_00891c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00891680'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetMostRecentValidUsedTargetName_00891680.cpp'
+        TestSource = 'CGameScriptInterface_GetMostRecentValidUsedTargetName_00891680_test.cpp'
+        PassPattern = 'CGameScriptInterface_00891680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00892050'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetHUDEnabled_00892050.cpp'
+        TestSource = 'CGameScriptInterface_SetHUDEnabled_00892050_test.cpp'
+        PassPattern = 'CGameScriptInterface_00892050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008901c0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_DisplacementMonochromeEffectColourFadeTo_008901c0.cpp'
+        TestSource = 'CGameScriptInterface_DisplacementMonochromeEffectColourFadeTo_008901c0_test.cpp'
+        PassPattern = 'CGameScriptInterface_008901c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00891c60'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_DisplayMiniGameInfo_00891c60.cpp'
+        TestSource = 'CGameScriptInterface_DisplayMiniGameInfo_00891c60_test.cpp'
+        PassPattern = 'CGameScriptInterface_00891c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f6e0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntitySetAllStategroupsEnabled_0088f6e0.cpp'
+        TestSource = 'CGameScriptInterface_EntitySetAllStategroupsEnabled_0088f6e0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fd60'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_IsEntityInLimbo_0088fd60.cpp'
+        TestSource = 'CGameScriptInterface_IsEntityInLimbo_0088fd60_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fd60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890220'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_IsEntityWieldingMeleeWeapon_00890220.cpp'
+        TestSource = 'CGameScriptInterface_IsEntityWieldingMeleeWeapon_00890220_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890250'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_IsEntityWieldingRangedWeapon_00890250.cpp'
+        TestSource = 'CGameScriptInterface_IsEntityWieldingRangedWeapon_00890250_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890690'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntityAttachToScript_00890690.cpp'
+        TestSource = 'CGameScriptInterface_EntityAttachToScript_00890690_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a0ee0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_IsThingADoor_008a0ee0.cpp'
+        TestSource = 'CGameScriptInterface_IsThingADoor_008a0ee0_test.cpp'
+        PassPattern = 'CGameScriptInterface_008a0ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f6b0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntitySetStategroupEnabled_0088f6b0.cpp'
+        TestSource = 'CGameScriptInterface_EntitySetStategroupEnabled_0088f6b0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f6b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004abe60'
+        Module = 'CScriptThing'
+        Source = 'CScriptThing_MsgWhoKilledMe_004abe60.cpp'
+        TestSource = 'CScriptThing_MsgWhoKilledMe_004abe60_test.cpp'
+        PassPattern = 'CScriptThing_004abe60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a0f10'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_IsThingSmashable_008a0f10.cpp'
+        TestSource = 'CGameScriptInterface_IsThingSmashable_008a0f10_test.cpp'
+        PassPattern = 'CGameScriptInterface_008a0f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a0e80'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_IsThingABed_008a0e80.cpp'
+        TestSource = 'CGameScriptInterface_IsThingABed_008a0e80_test.cpp'
+        PassPattern = 'CGameScriptInterface_008a0e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a0eb0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_IsThingAChest_008a0eb0.cpp'
+        TestSource = 'CGameScriptInterface_IsThingAChest_008a0eb0_test.cpp'
+        PassPattern = 'CGameScriptInterface_008a0eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a0f40'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_IsThingSearchable_008a0f40.cpp'
+        TestSource = 'CGameScriptInterface_IsThingSearchable_008a0f40_test.cpp'
+        PassPattern = 'CGameScriptInterface_008a0f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a9e00'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_RemoveRumourCategory_008a9e00.cpp'
+        TestSource = 'CGameScriptInterface_RemoveRumourCategory_008a9e00_test.cpp'
+        PassPattern = 'CGameScriptInterface_008a9e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aa9e0'
+        Module = 'CScriptThing'
+        Source = 'CScriptThing_GetCurrentMapName_004aa9e0.cpp'
+        TestSource = 'CScriptThing_GetCurrentMapName_004aa9e0_test.cpp'
+        PassPattern = 'CScriptThing_004aa9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aaa10'
+        Module = 'CScriptThing'
+        Source = 'CScriptThing_GetHomeMapName_004aaa10.cpp'
+        TestSource = 'CScriptThing_GetHomeMapName_004aaa10_test.cpp'
+        PassPattern = 'CScriptThing_004aaa10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890280'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_IsEntityAbleToAttack_00890280.cpp'
+        TestSource = 'CGameScriptInterface_IsEntityAbleToAttack_00890280_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e76e0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetTimer_006e76e0.cpp'
+        TestSource = 'CGameScriptInterface_SetTimer_006e76e0_test.cpp'
+        PassPattern = 'CGameScriptInterface_006e76e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890400'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetHealth_00890400.cpp'
+        TestSource = 'CGameScriptInterface_GetHealth_00890400_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e7710'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetTimer_006e7710.cpp'
+        TestSource = 'CGameScriptInterface_GetTimer_006e7710_test.cpp'
+        PassPattern = 'CGameScriptInterface_006e7710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f980'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetGuildSealRecallLocation_0088f980.cpp'
+        TestSource = 'CGameScriptInterface_SetGuildSealRecallLocation_0088f980_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a96c0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetCategoryActivity_008a96c0.cpp'
+        TestSource = 'CGameScriptInterface_SetCategoryActivity_008a96c0_test.cpp'
+        PassPattern = 'CGameScriptInterface_008a96c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890010'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetEnvironmentThemeWeightAllChannels_00890010.cpp'
+        TestSource = 'CGameScriptInterface_SetEnvironmentThemeWeightAllChannels_00890010_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890010_TEST_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fee0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_TransitionToTheme_0088fee0.cpp'
+        TestSource = 'CGameScriptInterface_TransitionToTheme_0088fee0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e7300'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_IsCameraPosOnScreen_006e7300.cpp'
+        TestSource = 'CGameScriptInterface_IsCameraPosOnScreen_006e7300_test.cpp'
+        PassPattern = 'CGameScriptInterface_006e7300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890090'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetEnvironmentThemeWeightExternals_00890090.cpp'
+        TestSource = 'CGameScriptInterface_SetEnvironmentThemeWeightExternals_00890090_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ffb0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_TransitionToThemeExternals_0088ffb0.cpp'
+        TestSource = 'CGameScriptInterface_TransitionToThemeExternals_0088ffb0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088ffb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008aa050'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_RemoveGossip_008aa050.cpp'
+        TestSource = 'CGameScriptInterface_RemoveGossip_008aa050_test.cpp'
+        PassPattern = 'CGameScriptInterface_008aa050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008aa510'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_RemoveGossipFactions_008aa510.cpp'
+        TestSource = 'CGameScriptInterface_RemoveGossipFactions_008aa510_test.cpp'
+        PassPattern = 'CGameScriptInterface_008aa510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008aa2b0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_RemoveGossipVillages_008aa2b0.cpp'
+        TestSource = 'CGameScriptInterface_RemoveGossipVillages_008aa2b0_test.cpp'
+        PassPattern = 'CGameScriptInterface_008aa2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e340'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetRegionName_0088e340.cpp'
+        TestSource = 'CGameScriptInterface_GetRegionName_0088e340_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088e340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890430'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_ModifyThingHealth_00890430.cpp'
+        TestSource = 'CGameScriptInterface_ModifyThingHealth_00890430_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088fcc0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GiveHeroAbility_0088fcc0.cpp'
+        TestSource = 'CGameScriptInterface_GiveHeroAbility_0088fcc0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088fcc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00892df0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_ClearAllRumbles_00892df0.cpp'
+        TestSource = 'CGameScriptInterface_ClearAllRumbles_00892df0_test.cpp'
+        PassPattern = 'CGameScriptInterface_00892df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00891880'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetActiveQuestName_00891880.cpp'
+        TestSource = 'CGameScriptInterface_GetActiveQuestName_00891880_test.cpp'
+        PassPattern = 'CGameScriptInterface_00891880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a9720'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetActiveGossipCategories_008a9720.cpp'
+        TestSource = 'CGameScriptInterface_SetActiveGossipCategories_008a9720_test.cpp'
+        PassPattern = 'CGameScriptInterface_008a9720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890f00'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntitySetAbleToBeEngagedInCombat_00890f00.cpp'
+        TestSource = 'CGameScriptInterface_EntitySetAbleToBeEngagedInCombat_00890f00_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890ec0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntitySetEvadeAllHits_00890ec0.cpp'
+        TestSource = 'CGameScriptInterface_EntitySetEvadeAllHits_00890ec0_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890e80'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntitySetNegateAllHits_00890e80.cpp'
+        TestSource = 'CGameScriptInterface_EntitySetNegateAllHits_00890e80_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f850'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntitySetDeedReactionsEnabled_0088f850.cpp'
+        TestSource = 'CGameScriptInterface_EntitySetDeedReactionsEnabled_0088f850_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f810'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntitySetOpinionReactionsEnabled_0088f810.cpp'
+        TestSource = 'CGameScriptInterface_EntitySetOpinionReactionsEnabled_0088f810_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f7d0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntitySetSleepEnabled_0088f7d0.cpp'
+        TestSource = 'CGameScriptInterface_EntitySetSleepEnabled_0088f7d0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088f890'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_PlayAVIMovie_0088f890.cpp'
+        TestSource = 'CGameScriptInterface_PlayAVIMovie_0088f890_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088f890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008aa4d0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_ClearGossipFactions_008aa4d0.cpp'
+        TestSource = 'CGameScriptInterface_ClearGossipFactions_008aa4d0_test.cpp'
+        PassPattern = 'CGameScriptInterface_008aa4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008aa270'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_ClearGossipVillages_008aa270.cpp'
+        TestSource = 'CGameScriptInterface_ClearGossipVillages_008aa270_test.cpp'
+        PassPattern = 'CGameScriptInterface_008aa270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008aa480'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetGossipFactionsSize_008aa480.cpp'
+        TestSource = 'CGameScriptInterface_GetGossipFactionsSize_008aa480_test.cpp'
+        PassPattern = 'CGameScriptInterface_008aa480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a9fc0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetGossipSize_008a9fc0.cpp'
+        TestSource = 'CGameScriptInterface_GetGossipSize_008a9fc0_test.cpp'
+        PassPattern = 'CGameScriptInterface_008a9fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008aa220'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetGossipVillagesSize_008aa220.cpp'
+        TestSource = 'CGameScriptInterface_GetGossipVillagesSize_008aa220_test.cpp'
+        PassPattern = 'CGameScriptInterface_008aa220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e7410'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_NewScriptFrame_006e7410.cpp'
+        TestSource = 'CGameScriptInterface_NewScriptFrame_006e7410_test.cpp'
+        PassPattern = 'CGameScriptInterface_006e7410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890040'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetEnvironmentThemeWeightAllInternals_00890040.cpp'
+        TestSource = 'CGameScriptInterface_SetEnvironmentThemeWeightAllInternals_00890040_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890870'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetFactionAsAlliedToFaction_00890870.cpp'
+        TestSource = 'CGameScriptInterface_SetFactionAsAlliedToFaction_00890870_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890910'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetFactionAsEnemyToFaction_00890910.cpp'
+        TestSource = 'CGameScriptInterface_SetFactionAsEnemyToFaction_00890910_test.cpp'
+        PassPattern = 'CGameScriptInterface_00890910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008908c0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetFactionAsNeutralToFaction_008908c0.cpp'
+        TestSource = 'CGameScriptInterface_SetFactionAsNeutralToFaction_008908c0_test.cpp'
+        PassPattern = 'CGameScriptInterface_008908c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089c4c0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_EntityClearPersonalityOverride_0089c4c0.cpp'
+        TestSource = 'CGameScriptInterface_EntityClearPersonalityOverride_0089c4c0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0089c4c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00891490'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_RemoveQuestCardFromGuild_00891490.cpp'
+        TestSource = 'CGameScriptInterface_RemoveQuestCardFromGuild_00891490_test.cpp'
+        PassPattern = 'CGameScriptInterface_00891490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00895090'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_ManuallyTriggerTrap_00895090.cpp'
+        TestSource = 'CGameScriptInterface_ManuallyTriggerTrap_00895090_test.cpp'
+        PassPattern = 'CGameScriptInterface_00895090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00892f80'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetQuestAsCompleted_00892f80.cpp'
+        TestSource = 'CGameScriptInterface_SetQuestAsCompleted_00892f80_test.cpp'
+        PassPattern = 'CGameScriptInterface_00892f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00892fd0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetQuestAsFailed_00892fd0.cpp'
+        TestSource = 'CGameScriptInterface_SetQuestAsFailed_00892fd0_test.cpp'
+        PassPattern = 'CGameScriptInterface_00892fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00896210'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_IsSleepingTime_00896210.cpp'
+        TestSource = 'CGameScriptInterface_IsSleepingTime_00896210_test.cpp'
+        PassPattern = 'CGameScriptInterface_00896210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a1300'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_StartSneaking_008a1300.cpp'
+        TestSource = 'CGameScriptInterface_StartSneaking_008a1300_test.cpp'
+        PassPattern = 'CGameScriptInterface_008a1300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00899cf0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetPlayerCreatureCombatMultiplierRunningNumHits_00899cf0.cpp'
+        TestSource = 'CGameScriptInterface_GetPlayerCreatureCombatMultiplierRunningNumHits_00899cf0_test.cpp'
+        PassPattern = 'CGameScriptInterface_00899cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089ecc0'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_CreatureGeneratorRemoveTriggerer_0089ecc0.cpp'
+        TestSource = 'CGameScriptInterface_CreatureGeneratorRemoveTriggerer_0089ecc0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0089ecc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089a270'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_SetThingAsKilled_0089a270.cpp'
+        TestSource = 'CGameScriptInterface_SetThingAsKilled_0089a270_test.cpp'
+        PassPattern = 'CGameScriptInterface_0089a270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089a210'
+        Module = 'CGameScriptInterface'
+        Source = 'CGameScriptInterface_GetHeroWillEnergyPercentage_0089a210.cpp'
+        TestSource = 'CGameScriptInterface_GetHeroWillEnergyPercentage_0089a210_test.cpp'
+        PassPattern = 'CGameScriptInterface_0089a210_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
