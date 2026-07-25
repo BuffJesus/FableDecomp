@@ -4455,3 +4455,42 @@ live `rebuild/`, `lift/`, or documented `work/` trees. The first run moved 18 ol
 `work/scratch/root/{objects,sources}/` and `snapshots/local-archives/`, with no collisions or
 protected files. The local 909 MiB `FSE/` deployment-backup tree remains in place because active
 deployment scripts address it, but it is now explicitly ignored by Git.
+
+### Wave 3 ForgeFSE wrapper batch review (2026-07-25 16:33 MDT)
+
+The post-publication 16-target batch completed with a final checker PASS for every selected address.
+`SetWanderCentrePoint @ 0x008A23B0` and
+`SetWeaponAsHerosActiveWeapon @ 0x00898B30` each recorded an initial failed outer attempt before a
+later PASS. These are structural results under `lift/reports/wave3/code/`, not promotions.
+
+Manual semantic review found that checker PASS materially overstates this batch:
+
+- Ten wrappers assign a failed `LowerBound` result to the vector-map end sentinel and then read its
+  value: `SetHeroAsWearing`, `SetNumberOfTimesHeroHasHadSex`,
+  `SetPlayerCreatureOnlyTarget`, `SetPreferredQuickAccessItem`, `SetReadableObjectText`,
+  `SetReadableObjectTextTag`, `SetThingAndCarriedItemsNotAffectedByScreenFilter`,
+  `SetTrapAsActive`, `SetWanderCentrePoint`, and `SetWeaponAsHerosActiveWeapon`.
+  Treat all ten as unsafe review-only source.
+- `SetQuestInfoText @ 0x00891A00` mixes an unrelated morph-entry allocator/template into text-bank
+  lookup, aliases its parameter storage as several incompatible temporaries, and destroys the wrong
+  local. It needs reconstruction from bytes rather than incremental cleanup.
+- `SetThingAsConscious @ 0x008A9610` calls helpers labeled as unrelated GUI/lightning classes for
+  creature-action construction/destruction. Those BSim-derived identities are not credible enough
+  for promotion.
+- `StopSound @ 0x0088F660` needs vtable/dispatch confirmation to rule out self-recursion, and
+  `SetSoundThemesAsEnabledForRegion @ 0x0088E0B0` still needs world-vtable/region-category ABI review.
+- The two direct owner-byte writes, `DontPopulateNextLoadedRegion @ 0x0088E380` and
+  `SetGuildMasterMessages @ 0x0088E200`, are the only straightforward outputs in this batch, but
+  they still require the normal VC7.1 behavior/parity promotion gates.
+
+A standard post-batch refresh completed cleanly at 16:44 MDT after the queue released Ghidra. It
+raised generated Wave/agent intake to **550 total / 542 checker PASS / 233 host C++20 syntax PASS**;
+the VC7.1-ready subset is 35. The candidate signature audit is 483 PASS / 67 review. The curated
+catalog and retail result are unchanged at **1,850 compile+behavior PASS**, with **914 exact + 609
+relocation matches**, 199 differing, and 128 oracle-missing. Tooling SDK validation and the
+ForgeFSE Quest slot audit remain clean. Canonical refresh state:
+`f4b77e9eca489a121e9f1fdbe333f4a283f2c38557a1688a164eeeddf183c169`.
+
+This refresh performs syntax/signature intake and dashboard regeneration; it does not promote any
+wrapper above. The immediately preceding `SetFactionAsAlliedToFaction @ 0x00890870` result is also
+retained only as structural review source.

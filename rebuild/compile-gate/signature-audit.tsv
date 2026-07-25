@@ -89,11 +89,14 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 008702d0	_global	Handle_InitInvalid_008702d0	PASS	_global	Handle_InitInvalid_008702d0	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
 0088de10	CGameScriptInterface	CGameScriptInterface::GiveThingItemInHand	PASS	CGameScriptInterface	GiveThingItemInHand	void	void	3	3		PASS	
 0088e090	CGameScriptInterface	CGameScriptInterface::SetAllSoundsAsMuted	PASS	CGameScriptInterface	SetAllSoundsAsMuted	void	void __thiscall	1	1		PASS	
+0088e0b0	CGameScriptInterface	CGameScriptInterface::SetSoundThemesAsEnabledForRegion	PASS	CGameScriptInterface	SetSoundThemesAsEnabledForRegion	void	void __thiscall	2	2		PASS	
 0088e110	CGameScriptInterface	CGameScriptInterface::GiveHeroTitle	PASS	CGameScriptInterface	GiveHeroTitle	void	void	1	1		PASS	
 0088e130	CGameScriptInterface	CGameScriptInterface::GiveHeroWeapon	PASS	CGameScriptInterface	GiveHeroWeapon	void	void	2	2		PASS	
+0088e200	CGameScriptInterface	CGameScriptInterface::SetGuildMasterMessages	PASS	CGameScriptInterface	SetGuildMasterMessages	void	void __thiscall	1	1		PASS	
 0088e210	CGameScriptInterface	CGameScriptInterface::DisplayTime	PASS	CGameScriptInterface	DisplayTime	void	void __thiscall	1	1		PASS	
 0088e2a0	CGameScriptInterface	CGameScriptInterface::IsLevelLoaded	PASS	CGameScriptInterface	IsLevelLoaded	bool	int __thiscall	1	1		PASS	
 0088e300	CGameScriptInterface	CGameScriptInterface::IsRegionLoaded	PASS	CGameScriptInterface	IsRegionLoaded	bool	bool __thiscall	1	1		PASS	
+0088e380	CGameScriptInterface	CGameScriptInterface::DontPopulateNextLoadedRegion	PASS	CGameScriptInterface	DontPopulateNextLoadedRegion	void	void __thiscall	0	0		PASS	
 0088e3d0	CGameScriptInterface	CGameScriptInterface::MiniMapAllowRouteBetweenRegions	PASS	CGameScriptInterface	MiniMapAllowRouteBetweenRegions	void	void	3	3		PASS	
 0088e400	CGameScriptInterface	CGameScriptInterface::MiniMapSetAsEnabled	PASS	CGameScriptInterface	MiniMapSetAsEnabled	void	void __thiscall	1	1		PASS	
 0088e4c0	CGameScriptInterface	CGameScriptInterface::FadeScreenIn	PASS	CGameScriptInterface	FadeScreenIn	void	void __thiscall	0	0		PASS	
@@ -125,6 +128,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 0088f570	CGameScriptInterface	CGameScriptInterface::Play2DSound	PASS	CGameScriptInterface	Play2DSound	ulong	std::uint32_t __thiscall	1	1		PASS	
 0088f610	CGameScriptInterface	CGameScriptInterface::IsSoundPlaying	PASS	CGameScriptInterface	IsSoundPlaying	bool	bool __thiscall	1	1		PASS	
 0088f620	CGameScriptInterface	CGameScriptInterface::EnableSounds	PASS	CGameScriptInterface	EnableSounds	void	void __thiscall	1	1		PASS	
+0088f660	CGameScriptInterface	CGameScriptInterface::StopSound	PASS	CGameScriptInterface	StopSound	void	void	1	1		PASS	
 0088f6b0	CGameScriptInterface	CGameScriptInterface::EntitySetStategroupEnabled	PASS	CGameScriptInterface	EntitySetStategroupEnabled	void	void __thiscall	3	3		PASS	
 0088f6e0	CGameScriptInterface	CGameScriptInterface::EntitySetAllStategroupsEnabled	PASS	CGameScriptInterface	EntitySetAllStategroupsEnabled	void	void __thiscall	2	2		PASS	
 0088f710	CGameScriptInterface	CGameScriptInterface::EntitySetCombatEnabled	PASS	CGameScriptInterface	EntitySetCombatEnabled	void	void __thiscall	2	2		PASS	
@@ -235,6 +239,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00891870	CGameScriptInterface	CGameScriptInterface::IsHeroOnQuest	PASS	CGameScriptInterface	IsHeroOnQuest	bool	bool __thiscall	0	0		PASS	
 00891880	CGameScriptInterface	CGameScriptInterface::GetActiveQuestName	PASS	CGameScriptInterface	GetActiveQuestName	CCharString	CCharString	0	0		PASS	
 00891920	CGameScriptInterface	CGameScriptInterface::DisplayQuestInfo	PASS	CGameScriptInterface	DisplayQuestInfo	void	void __thiscall	1	1		PASS	
+00891a00	CGameScriptInterface	CGameScriptInterface::SetQuestInfoText	PASS	CGameScriptInterface	SetQuestInfoText	void	void __thiscall	1	1		PASS	
 00891ac0	CGameScriptInterface	CGameScriptInterface::AddQuestInfoBar	PASS	CGameScriptInterface	AddQuestInfoBar	long	long __thiscall	7	7		PASS	
 00891b20	CGameScriptInterface	CGameScriptInterface::AddQuestInfoTimer	PASS	CGameScriptInterface	AddQuestInfoTimer	long	long __thiscall	3	3		PASS	
 00891b50	CGameScriptInterface	CGameScriptInterface::AddQuestInfoCounterList	PASS	CGameScriptInterface	AddQuestInfoCounterList	long	long __thiscall	3	3		PASS	
@@ -279,6 +284,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00894dd0	CGameScriptInterface	CGameScriptInterface::EntitySetAsMarryable	PASS	CGameScriptInterface	EntitySetAsMarryable	void	void __thiscall	2	2		PASS	
 00895090	CGameScriptInterface	CGameScriptInterface::ManuallyTriggerTrap	PASS	CGameScriptInterface	ManuallyTriggerTrap	bool	bool __thiscall	1	1		PASS	
 008950e0	CGameScriptInterface	CGameScriptInterface::ManuallyResetTrap	PASS	CGameScriptInterface	ManuallyResetTrap	bool	bool __thiscall	1	1		PASS	
+00895130	CGameScriptInterface	CGameScriptInterface::SetTrapAsActive	PASS	CGameScriptInterface	SetTrapAsActive	void	void __thiscall	2	2		PASS	
 00895190	CGameScriptInterface	CGameScriptInterface::GiveThingItemInSlot	PASS	CGameScriptInterface	GiveThingItemInSlot	void	void __thiscall	3	3		PASS	
 008953a0	CGameScriptInterface	CGameScriptInterface::IsHeroPerformingExpression	PASS	CGameScriptInterface	IsHeroPerformingExpression	bool	bool __thiscall	1	1		PASS	
 008954a0	CGameScriptInterface	CGameScriptInterface::EntityFollowThing	PASS	CGameScriptInterface	EntityFollowThing	void	void __thiscall	4	4		PASS	
@@ -288,6 +294,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00896390	CGameScriptInterface	CGameScriptInterface::OpenChest	PASS	CGameScriptInterface	OpenChest	bool	bool __thiscall	2	2		PASS	
 00896b60	CGameScriptInterface	CGameScriptInterface::KickOffQuestStartScreen	PASS	CGameScriptInterface	KickOffQuestStartScreen	void	void __thiscall	3	3		PASS	
 00896df0	CGameScriptInterface	CGameScriptInterface::KickOffCreditsScreen	PASS	CGameScriptInterface	KickOffCreditsScreen	void	void __thiscall	1	1		PASS	
+00896e60	CGameScriptInterface	CGameScriptInterface::SetPreferredQuickAccessItem	PASS	CGameScriptInterface	SetPreferredQuickAccessItem	void	void __thiscall	3	3		PASS	
 00896ee0	CGameScriptInterface	CGameScriptInterface::GetDeathRecoveryMarkerName	PASS	CGameScriptInterface	GetDeathRecoveryMarkerName	CCharString	CCharString __thiscall	0	0		PASS	
 00896f60	CGameScriptInterface	CGameScriptInterface::SetDeathRecoveryMarkerName	PASS	CGameScriptInterface	SetDeathRecoveryMarkerName	void	void __thiscall	1	1		PASS	
 00896fd0	CGameScriptInterface	CGameScriptInterface::ResetDeathRecoveryMarkerNameToDefault	PASS	CGameScriptInterface	ResetDeathRecoveryMarkerNameToDefault	void	void __thiscall	0	0		PASS	
@@ -308,6 +315,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00897bd0	CGameScriptInterface	CGameScriptInterface::GetHeroHasChildren	PASS	CGameScriptInterface	GetHeroHasChildren	bool	bool __thiscall	0	0		PASS	
 00897c30	CGameScriptInterface	CGameScriptInterface::GetHeroHasMurderedWife	PASS	CGameScriptInterface	GetHeroHasMurderedWife	bool	bool __thiscall	0	0		PASS	
 00897c90	CGameScriptInterface	CGameScriptInterface::GetNumberOfTimesHeroHasHadSex	PASS	CGameScriptInterface	GetNumberOfTimesHeroHasHadSex	long	long __thiscall	0	0		PASS	
+00897cf0	CGameScriptInterface	CGameScriptInterface::SetNumberOfTimesHeroHasHadSex	PASS	CGameScriptInterface	SetNumberOfTimesHeroHasHadSex	void	void __thiscall	1	1		PASS	
 00897d50	CGameScriptInterface	CGameScriptInterface::SetHeroAsHavingHadSex	PASS	CGameScriptInterface	SetHeroAsHavingHadSex	void	void __thiscall	1	1		PASS	
 00897db0	CGameScriptInterface	CGameScriptInterface::SetHeroAsHavingHadGaySex	PASS	CGameScriptInterface	SetHeroAsHavingHadGaySex	void	void __thiscall	1	1		PASS	
 008981c0	CGameScriptInterface	CGameScriptInterface::AddTattooToHero	PASS	CGameScriptInterface	AddTattooToHero	void	void __thiscall	1	1		PASS	
@@ -321,6 +329,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00898840	CGameScriptInterface	CGameScriptInterface::ConfiscateItemsOfTypeFromHero	PASS	CGameScriptInterface	ConfiscateItemsOfTypeFromHero	void	void __thiscall	1	1		PASS	
 00898940	CGameScriptInterface	CGameScriptInterface::ReturnAllConfiscatedItemsToHero	PASS	CGameScriptInterface	ReturnAllConfiscatedItemsToHero	void	void __thiscall	0	0		PASS	
 00898a50	CGameScriptInterface	CGameScriptInterface::GiveHeroTutorial	PASS	CGameScriptInterface	GiveHeroTutorial	bool	bool __thiscall	1	1		PASS	
+00898b30	CGameScriptInterface	CGameScriptInterface::SetWeaponAsHerosActiveWeapon	PASS	CGameScriptInterface	SetWeaponAsHerosActiveWeapon	void	void __thiscall	1	1		PASS	
 00898bb0	CGameScriptInterface	CGameScriptInterface::GiveHeroItem	PASS	CGameScriptInterface	GiveHeroItem	void	void __thiscall	1	1		PASS	
 00898e60	CGameScriptInterface	CGameScriptInterface::IsHeroHandLampLit	PASS	CGameScriptInterface	IsHeroHandLampLit	bool	bool __thiscall	0	0		PASS	
 00898ec0	CGameScriptInterface	CGameScriptInterface::SetHeroHandLampAsLit	PASS	CGameScriptInterface	SetHeroHandLampAsLit	void	void __thiscall	1	1		PASS	
@@ -355,6 +364,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00899cf0	CGameScriptInterface	CGameScriptInterface::GetPlayerCreatureCombatMultiplierRunningNumHits	PASS	CGameScriptInterface	GetPlayerCreatureCombatMultiplierRunningNumHits	long	long __thiscall	0	0		PASS	
 00899d50	CGameScriptInterface	CGameScriptInterface::ResetPlayerCreatureCombatMultiplier	PASS	CGameScriptInterface	ResetPlayerCreatureCombatMultiplier	void	void __thiscall	0	0		PASS	
 00899db0	CGameScriptInterface	CGameScriptInterface::IsPlayerCreatureFlourishEnabled	PASS	CGameScriptInterface	IsPlayerCreatureFlourishEnabled	bool	bool __thiscall	0	0		PASS	
+00899e10	CGameScriptInterface	CGameScriptInterface::SetPlayerCreatureOnlyTarget	PASS	CGameScriptInterface	SetPlayerCreatureOnlyTarget	void	void __thiscall	1	1		PASS	
 00899e90	CGameScriptInterface	CGameScriptInterface::ResetPlayerCreatureOnlyTarget	PASS	CGameScriptInterface	ResetPlayerCreatureOnlyTarget	void	void __thiscall	0	0		PASS	
 00899ef0	CGameScriptInterface	CGameScriptInterface::GiveHeroMorality	PASS	CGameScriptInterface	GiveHeroMorality	void	void __thiscall	1	1		PASS	
 00899f90	CGameScriptInterface	CGameScriptInterface::GetHeroMorality	PASS	CGameScriptInterface	GetHeroMorality	float	float __thiscall	0	0		PASS	
@@ -369,6 +379,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 0089aff0	CGameScriptInterface	CGameScriptInterface::EntitySetCombatAbility	PASS	CGameScriptInterface	EntitySetCombatAbility	void	void __thiscall	2	2		PASS	
 0089b330	CGameScriptInterface	CGameScriptInterface::IsHeroNaked	PASS	CGameScriptInterface	IsHeroNaked	bool	bool __thiscall	0	0		PASS	
 0089b390	CGameScriptInterface	CGameScriptInterface::RemoveHeroClothing	PASS	CGameScriptInterface	RemoveHeroClothing	void	void __thiscall	0	0		PASS	
+0089b3f0	CGameScriptInterface	CGameScriptInterface::SetHeroAsWearing	PASS	CGameScriptInterface	SetHeroAsWearing	void	void __thiscall	1	1		PASS	
 0089b450	CGameScriptInterface	CGameScriptInterface::ChangeHeroHairstyle	PASS	CGameScriptInterface	ChangeHeroHairstyle	void	void __thiscall	1	1		PASS	
 0089b4d0	CGameScriptInterface	CGameScriptInterface::RemoveHeroHairstyle	PASS	CGameScriptInterface	RemoveHeroHairstyle	void	void __thiscall	0	0		PASS	
 0089c330	CGameScriptInterface	CGameScriptInterface::EntitySetOpinionDeedTypeEnabled	PASS	CGameScriptInterface	EntitySetOpinionDeedTypeEnabled	void	void __thiscall	3	3		PASS	
@@ -407,6 +418,8 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 008a0ee0	CGameScriptInterface	CGameScriptInterface::IsThingADoor	PASS	CGameScriptInterface	IsThingADoor	bool	bool __thiscall	1	1		PASS	
 008a0f10	CGameScriptInterface	CGameScriptInterface::IsThingSmashable	PASS	CGameScriptInterface	IsThingSmashable	bool	bool __thiscall	1	1		PASS	
 008a0f40	CGameScriptInterface	CGameScriptInterface::IsThingSearchable	PASS	CGameScriptInterface	IsThingSearchable	bool	bool __thiscall	1	1		PASS	
+008a0f70	CGameScriptInterface	CGameScriptInterface::SetReadableObjectText	PASS	CGameScriptInterface	SetReadableObjectText	void	void __thiscall	2	2		PASS	
+008a0fd0	CGameScriptInterface	CGameScriptInterface::SetReadableObjectTextTag	PASS	CGameScriptInterface	SetReadableObjectTextTag	void	void __thiscall	2	2		PASS	
 008a12a0	CGameScriptInterface	CGameScriptInterface::GetNumHousesOwned	PASS	CGameScriptInterface	GetNumHousesOwned	long	long __thiscall	0	0		PASS	
 008a1300	CGameScriptInterface	CGameScriptInterface::StartSneaking	PASS	CGameScriptInterface	StartSneaking	void	void __thiscall	0	0		PASS	
 008a1590	CGameScriptInterface	CGameScriptInterface::GetBestTimePairs	PASS	CGameScriptInterface	GetBestTimePairs	float	float __thiscall	0	0		PASS	
@@ -417,6 +430,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 008a1770	CGameScriptInterface	CGameScriptInterface::GetBestScoreShoveHaPenny	PASS	CGameScriptInterface	GetBestScoreShoveHaPenny	long	long __thiscall	0	0		PASS	
 008a17d0	CGameScriptInterface	CGameScriptInterface::GetBestTimeGuessTheAddition	PASS	CGameScriptInterface	GetBestTimeGuessTheAddition	float	float __thiscall	0	0		PASS	
 008a1c50	CGameScriptInterface	CGameScriptInterface::RepopulateVillage	PASS	CGameScriptInterface	RepopulateVillage	void	void __thiscall	1	1		PASS	
+008a23b0	CGameScriptInterface	CGameScriptInterface::SetWanderCentrePoint	PASS	CGameScriptInterface	SetWanderCentrePoint	void	void __thiscall	2	2		PASS	
 008a78e0	CGameScriptInterface	CGameScriptInterface::ClearActiveGossipCategories	PASS	CGameScriptInterface	ClearActiveGossipCategories	void	void __thiscall	0	0		PASS	
 008a7930	CGameScriptInterface	CGameScriptInterface::ClearIsGossipForPlayer	PASS	CGameScriptInterface	ClearIsGossipForPlayer	void	void __thiscall	0	0		PASS	
 008a7980	CGameScriptInterface	CGameScriptInterface::EntityStopFollowing	PASS	CGameScriptInterface	EntityStopFollowing	void	void __thiscall	1	1		PASS	
@@ -426,8 +440,10 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 008a8eb0	CGameScriptInterface	CGameScriptInterface::EntitySetAttackThingImmediately	PASS	CGameScriptInterface	EntitySetAttackThingImmediately	void	void __thiscall	4	4		PASS	
 008a9320	CGameScriptInterface	CGameScriptInterface::EntityCastForcePush	PASS	CGameScriptInterface	EntityCastForcePush	bool	bool __thiscall	2	2		PASS	
 008a93a0	CGameScriptInterface	CGameScriptInterface::EntityWillTeleportToArea	PASS	CGameScriptInterface	EntityWillTeleportToArea	bool	bool __thiscall	4	4		PASS	
+008a9610	CGameScriptInterface	CGameScriptInterface::SetThingAsConscious	PASS	CGameScriptInterface	SetThingAsConscious	void	void __thiscall	3	3		PASS	
 008a96c0	CGameScriptInterface	CGameScriptInterface::SetCategoryActivity	PASS	CGameScriptInterface	SetCategoryActivity	void	void __thiscall	2	2		PASS	
 008a9720	CGameScriptInterface	CGameScriptInterface::SetActiveGossipCategories	PASS	CGameScriptInterface	SetActiveGossipCategories	void	void __thiscall	2	2		PASS	
+008a99f0	CGameScriptInterface	CGameScriptInterface::SetThingAndCarriedItemsNotAffectedByScreenFilter	PASS	CGameScriptInterface	SetThingAndCarriedItemsNotAffectedByScreenFilter	void	void __thiscall	2	2		PASS	
 008a9db0	CGameScriptInterface	CGameScriptInterface::AddRumourCategory	PASS	CGameScriptInterface	AddRumourCategory	void	void __thiscall	1	1		PASS	
 008a9dd0	CGameScriptInterface	CGameScriptInterface::AddNewRumourToCategory	PASS	CGameScriptInterface	AddNewRumourToCategory	void	void __thiscall	2	2		PASS	
 008a9e00	CGameScriptInterface	CGameScriptInterface::RemoveRumourCategory	PASS	CGameScriptInterface	RemoveRumourCategory	void	void __thiscall	1	1		PASS	

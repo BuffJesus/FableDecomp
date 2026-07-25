@@ -27,7 +27,7 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Reconstruction | — of which byte-**identical** (no relocation masking) | 914 (1.84%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
-| Auto-RE intake | Generated candidates / structural checker PASS | 534 / 526 |
+| Auto-RE intake | Generated candidates / structural checker PASS | 550 / 542 |
 
 Counts above are from the 2026-07-25 canonical refresh: the VC7.1 compile/behaviour catalog,
 `rebuild/compile-gate/retail-parity.json`, and `rebuild/COVERAGE.md`. Generated agent code is tracked
