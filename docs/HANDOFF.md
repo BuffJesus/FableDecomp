@@ -4451,7 +4451,7 @@ Workspace organization is now documented in `docs/WORKSPACE_LAYOUT.md`.
 `tools/organize_workspace.ps1` safely archives only loose root scratch/build debris and delegates
 RE-agent transcript cleanup to `lift/scripts/organize_lift.ps1`; it never deletes files or reshapes
 live `rebuild/`, `lift/`, or documented `work/` trees. The first run moved 18 old root artifacts
-(13 `.obj` files, four scratch/header files, and `FableTLC_RE_docs.zip`) into
+(12 `.obj` files, five scratch/header files, and `FableTLC_RE_docs.zip`) into
 `work/scratch/root/{objects,sources}/` and `snapshots/local-archives/`, with no collisions or
 protected files. The local 909 MiB `FSE/` deployment-backup tree remains in place because active
 deployment scripts address it, but it is now explicitly ignored by Git.
