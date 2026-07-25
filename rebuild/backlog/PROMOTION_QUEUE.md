@@ -1,8 +1,8 @@
 # Curated C++ promotion queue
 
-Generated: `2026-07-25T15:34:18-06:00`
+Generated: `2026-07-25T16:44:08-06:00`
 
-Uncompiled auto-RE candidates: **255**. Showing: **100**.
+Uncompiled auto-RE candidates: **271**. Showing: **100**.
 
 Ranking favors checker/integrity/signature PASS, then the smallest declaration, dependency, VC7.1, and source-size repair surface. It does not claim semantic correctness; every promotion still needs a focused behavior oracle and retail comparison.
 

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-25T15:34:17-06:00",
-  "candidates": 534,
-  "pass": 467,
+  "generated_at": "2026-07-25T16:44:07-06:00",
+  "candidates": 550,
+  "pass": 483,
   "review": 67,
   "issue_counts": {
     "explicit-parameter-count-mismatch": 42,

@@ -42,6 +42,10 @@ leans on automation because the target is large.
   `OnCreate @ 0x006700F0` has confused definition/template types, while
   `UpdateAttractionToMaster @ 0x006701A0` and `UpdateScore @ 0x00670710` can dereference a failed
   vector-map lookup; `UpdateAttractionToMaster` also has an uninitialized physics pointer.
+- [ ] Repair the latest ForgeFSE wrapper batch before promotion. Ten structural-PASS wrappers
+  dereference the vector-map end sentinel on lookup failure; `SetQuestInfoText @ 0x00891A00` also
+  contains unrelated morph-template reconstruction, and `SetThingAsConscious @ 0x008A9610` has
+  implausible BSim-derived action helper identities. The exact list is in `docs/HANDOFF.md`.
 - [ ] Tune `LinkToNeighbouringMaps @ 0x00A7A650` toward the retail x87/local schedule; its current
   implementation is behavior-verified but nine bytes longer than retail.
 - [ ] Continue closing corrected ABI identities from decorated retail/donor symbols, treating the

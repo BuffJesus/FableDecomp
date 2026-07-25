@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-07-25T15:34:18-06:00`
+Generated: `2026-07-25T16:44:08-06:00`
 
 | Stage | Complete | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
@@ -10,11 +10,11 @@ Generated: `2026-07-25T15:34:18-06:00`
 | Usable reconstruction/navigation names | 49,510 | 49,553 | 99.913% | Includes explicitly classified compiler/template family labels; does not claim original symbols |
 | Calling convention known | 38,481 | 49,553 | 77.656% | Required for ABI-correct declarations |
 | Complete non-undefined prototype | 34,203 | 49,553 | 69.023% | Known CC, return, and parameter types |
-| Auto-RE candidate source | 534 | 49,553 | 1.078% | Generated/reviewed candidate; not compile-verified |
-| Auto-RE checker PASS | 526 | 49,553 | 1.061% | Structural checker grade only |
-| Auto-RE source integrity | 534 | 534 | 100.000% | Balanced, non-empty source snapshots |
-| Host C++20 syntax pass | 227 | 534 | 42.509% | Strict 32-bit translation unit with real declarations |
-| Candidate signature audit clean | 467 | 534 | 87.453% | Definition agrees with manifest owner/name/shape and has unique linkage |
+| Auto-RE candidate source | 550 | 49,553 | 1.110% | Generated/reviewed candidate; not compile-verified |
+| Auto-RE checker PASS | 542 | 49,553 | 1.094% | Structural checker grade only |
+| Auto-RE source integrity | 550 | 550 | 100.000% | Balanced, non-empty source snapshots |
+| Host C++20 syntax pass | 233 | 550 | 42.364% | Strict 32-bit translation unit with real declarations |
+| Candidate signature audit clean | 483 | 550 | 87.818% | Definition agrees with manifest owner/name/shape and has unique linkage |
 | VC7.1 compiled candidate | 1,850 | 49,553 | 3.733% | Compiles to an object; behavioral parity not yet claimed |
 | Behavior-tested candidate | 1,850 | 49,553 | 3.733% | Local branch/layout oracle passes; retail parity not yet claimed |
 | Candidate retail `.text` match | 914 | 49,553 | 1.844% | Generated-candidate track exact matches awaiting promotion |
@@ -34,7 +34,7 @@ The clean-decompile sweep predates later function discovery, so its denominator 
 - 15,350 functions still lack a complete non-undefined prototype.
 - 11,072 functions still have an unknown calling convention.
 - 40 names remain in the semantic/accessor review tail; donor proposals and the invalid boundary are tracked separately.
-- -1,316 auto-RE candidates still need a VC7.1-compatible translation unit.
+- -1,300 auto-RE candidates still need a VC7.1-compatible translation unit.
 - 67 original generated candidate definitions still disagree with corrected manifest identities or parameter shapes; curated replacements are tracked separately.
 - 327 behavior-tested candidates still differ structurally from the retail parity oracle.
 - VC7.1 + Win32 + Direct3D 9 compile/link/runtime SDK probe: **resolved and passing**.
