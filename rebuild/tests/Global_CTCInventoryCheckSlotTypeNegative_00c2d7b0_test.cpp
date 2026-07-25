@@ -10,16 +10,7 @@ struct CTCInventory
     unsigned short slotType;
 };
 
-int __fastcall CTCInventory_CheckSlotTypeNegative(CTCInventory* self)
-{
-    switch (self->slotType)
-    {
-    case 0:  return 0;
-    case 1:  return -1;
-    case 2:  return -1;
-    default: return 0;
-    }
-}
+int __fastcall CTCInventory_CheckSlotTypeNegative(CTCInventory* self);
 
 int main()
 {

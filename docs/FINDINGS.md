@@ -1365,3 +1365,39 @@ The subsystem is not dead — it is one flag away from running.
   to REBUILD, not merely re-enable.
 
 Decompiled via the Claude Workflow loop (not the Codex re-agent lane). Bytes from retail `Fable.exe`.
+
+## game.bin definition-load contract + the two append bugs (2026-07-24, HIGH confidence, verify=CONFIRMED)
+
+RE'd via the Claude Workflow loop (`defload-contract-re`, 8 decode agents → synthesis → adversarial
+verify). On-disk layout byte-proven vs the retail base; both bugs reproduced and fixed. Full write-up:
+`docs/DEF_LOAD_CONTRACT.md`. Bytes from retail `Fable.exe` + `data/CompiledDefs/{game,names}.bin`.
+
+**The canonical Fable name hash `crc0`** = reflected CRC-32, poly `0xEDB88320`, **seed 0, NO final
+inversion** (`CCRC::Calc(0,…)` / `CCharString::ComputeCRC32` @0x00404310). Proven: **13593/13593**
+names.bin stored CRCs equal `crc0(name)`; 0 match any other variant. `crc0("CREATURE_TRADER_01")=
+0xAA22BB08`, `crc0("Graphic")=0x2E6B63C8`. Keys game.bin field tags, names.bin entries, and the
+`std::map<unsigned_long, CDefClassInfo>` def-class registry (registrar 0x564395).
+
+**Why an appended def was `nil` in-engine (two bugs, both required):**
+1. forge's `nameCrc` used `0xFFFFFFFF - mz_crc32` (matches 0/13593 real names) → every NEW name got an
+   un-resolvable CRC. Fixed in FableForge `bin.cpp`.
+2. Creature payloads carry ABSOLUTE global entry indices as self back-refs (TRADER_01=1549 @ payload
+   {25,193,301}); a byte-clone keeps the donor index → wrong wiring → instability. Fixed by value-keyed
+   retarget in `02_add_creature.cpp` (shared component sub-defs left intact).
+
+Header counts (nameCount/tableSize/entryCount/dense indexInDefinition) were already correct — never the
+cause. Resolution: `CreateCreature 0x008A9100` hashes the name, queries the registry, and on miss returns
+the null `CObjectRef` (typetag 0x1238C8C) → Lua nil.
+
+## Co-op cluster — corrections + CheckSync rebuild (2026-07-24, verify=PLAUSIBLE)
+Full write-up: `docs/COOP_REVIVAL.md`. Byte-solid (opcode-proven): enable gate = `[CNetworkClient+0x2662]`
+(Update no-ops when 0; InitialiseAsLocal 0x4AE940 sets it + stores back-ptr +0x2678); `CGameEvent` wire
+format `[u16 hdr(15-bit id|0x8000 flag)][u8 sub][u8 len][payload]` (Compress=pack dense, not compression);
+CheckSync 0x004165E8 is genuinely STUBBED (reads 3 remote u32s + world checksum, discards all, no compare).
+CNetworkClient is embedded at `CMainGameComponent+0x13AB8`.
+**Corrections to the earlier co-op section (all same-lineage phantoms):** (1) the InitialiseAsLocal base-init
+precondition `0x4EBA10` is a flat-disassembler ARTIFACT, not a resolved address — real target is
+relocation-masked/UNKNOWN. (2) UpdateFromEventPackageSet's world forward is `0x0049DFB0 CWorld::Update`, not
+`0x0049E0B0`. (3) the package/event loop accessors are structural GetCount/GetAt but engine_api.tsv only
+BSim-mislabels them (no TSV name confirms). Raw-poking +0x2662 without InitialiseAsLocal storing +0x2678 can
+CTD (forwarder null-deref) — enable via InitialiseAsLocal, not a bare poke.

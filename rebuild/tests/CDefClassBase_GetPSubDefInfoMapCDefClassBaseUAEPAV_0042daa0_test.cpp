@@ -10,11 +10,7 @@ struct CDefClassBase {
 };
 
 CVectorMap_ulong_CSubDefInfo * __fastcall
-CDefClassBase_GetPSubDefInfoMap(CDefClassBase *thisptr)
-{
-    (void)thisptr;
-    return 0;
-}
+CDefClassBase_GetPSubDefInfoMap(CDefClassBase *thisptr);
 
 int main()
 {

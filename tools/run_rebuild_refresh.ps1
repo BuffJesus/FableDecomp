@@ -1,5 +1,6 @@
 param(
-    [switch]$Force
+    [switch]$Force,
+    [switch]$ResumeAfterOracle
 )
 
 $ErrorActionPreference = 'Stop'
@@ -152,17 +153,27 @@ if (-not $Force -and (Test-Path -LiteralPath $statePath)) {
 Set-Content -LiteralPath $pidPath -Value $PID -Encoding ASCII
 Write-RefreshLog "START refresh pid=$PID fingerprint=$fingerprint"
 try {
-    Invoke-Checked 'MSVC decorated prototype recovery' {
-        & $python (Join-Path $tools 'recover_msvc_prototypes.py') --root $root
-    }
-    Invoke-Checked 'candidate compile gate' {
-        & $python (Join-Path $tools 'gate_re_agent_candidates.py') --root $root
-    }
-    Invoke-Checked 'VC7.1 candidate build and behavior tests' {
-        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $rebuild 'build_candidates.ps1')
-    }
-    Invoke-Checked 'retail oracle export' {
-        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $tools 'ExportCandidateOracles.ps1')
+    if ($ResumeAfterOracle) {
+        $compiledManifest = Join-Path $rebuild 'compile-gate\vc71-compiled.tsv'
+        $oracleManifest = Join-Path $rebuild 'oracles\auto-re-candidates.tsv'
+        if (-not (Test-Path -LiteralPath $compiledManifest) -or
+            -not (Test-Path -LiteralPath $oracleManifest)) {
+            throw 'ResumeAfterOracle requires compiled and retail-oracle manifests'
+        }
+        Write-RefreshLog 'RESUME after retail oracle export'
+    } else {
+        Invoke-Checked 'MSVC decorated prototype recovery' {
+            & $python (Join-Path $tools 'recover_msvc_prototypes.py') --root $root
+        }
+        Invoke-Checked 'candidate compile gate' {
+            & $python (Join-Path $tools 'gate_re_agent_candidates.py') --root $root
+        }
+        Invoke-Checked 'VC7.1 candidate build and behavior tests' {
+            & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $rebuild 'build_candidates.ps1')
+        }
+        Invoke-Checked 'retail oracle export' {
+            & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $tools 'ExportCandidateOracles.ps1')
+        }
     }
     Invoke-Checked 'retail parity comparison' {
         & $python (Join-Path $tools 'compare_candidate_objects.py') --root $root

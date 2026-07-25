@@ -6,11 +6,7 @@ struct CCombatManager;
 
 extern void * __fastcall CThingCreatureBase_GetCombatBase(CThingCreatureBase *self);
 
-CCombatManager * __fastcall CThingCreatureBase_GetCombatManager(CThingCreatureBase *self)
-{
-    unsigned char *base = (unsigned char *)CThingCreatureBase_GetCombatBase(self);
-    return *(CCombatManager **)(base + 0x4c);
-}
+CCombatManager * __fastcall CThingCreatureBase_GetCombatManager(CThingCreatureBase *self);
 
 // ---- test fixture ----
 // The helper returns a base object; at +0x4c it stores the combat manager ptr.

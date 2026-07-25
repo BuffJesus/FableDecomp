@@ -7,10 +7,7 @@ struct CObj
     unsigned int  field84;   // +0x84
 };
 
-unsigned int __fastcall Getter_Field84(struct CObj* self)
-{
-    return self->field84;
-}
+unsigned int __fastcall Getter_Field84(struct CObj* self);
 
 int main()
 {

@@ -18,7 +18,9 @@ def read_functions(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(stream, delimiter="\t"))
 
 
-def owner_relevance(module: str, scope: str) -> tuple[str, int, str | None]:
+def owner_relevance(
+    module: str, scope: str, qualified_name: str = ""
+) -> tuple[str, int, str | None]:
     """Classify whether an exact leaf-name match lives in a plausible FSE owner."""
     if scope == "Entity":
         if module in ("CScriptThing", "CGameScriptThing"):
@@ -29,6 +31,10 @@ def owner_relevance(module: str, scope: str) -> tuple[str, int, str | None]:
             return "moderate", 25, "game-script-interface-owner"
     elif scope == "Quest":
         if module == "CGameScriptInterface":
+            if qualified_name.startswith("CGameScriptInterface::"):
+                # A decorated/vtable-backed member identity is stronger owner evidence
+                # than an unqualified helper that was grouped into the same module.
+                return "strong", 180, "quest-interface-qualified-owner"
             return "strong", 60, "quest-interface-owner"
         if "Quest" in module or module in ("CWorld", "CThingManager", "CHero"):
             return "moderate", 35, "quest-runtime-owner"
@@ -60,7 +66,7 @@ def score(row: dict[str, str], scope: str) -> tuple[int, list[str]]:
     elif row.get("lift_grade") == "functional":
         value += 70
         reasons.append("verified-functional-lift")
-    _, owner_points, owner_reason = owner_relevance(module, scope)
+    _, owner_points, owner_reason = owner_relevance(module, scope, row["name"])
     value += owner_points
     if owner_reason:
         reasons.append(owner_reason)
@@ -70,7 +76,7 @@ def score(row: dict[str, str], scope: str) -> tuple[int, list[str]]:
 def candidate(row: dict[str, str], scope: str) -> dict[str, object]:
     address = int(row["address"], 16)
     points, reasons = score(row, scope)
-    owner_match, _, _ = owner_relevance(row["module"], scope)
+    owner_match, _, _ = owner_relevance(row["module"], scope, row["name"])
     implementation_verified = (
         row.get("retail_parity") in ("MATCH", "RELOCATION_MATCH")
         or row.get("lift_grade") in ("matching", "functional")

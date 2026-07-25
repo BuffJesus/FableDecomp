@@ -6,10 +6,7 @@ class CEngineInternalPrimitiveMorphInfo;
 class CEngineInternalPrimitiveMeshBase { public: int filler; };
 
 CEngineInternalPrimitiveMorphInfo * __fastcall
-CEngineInternalPrimitiveMeshBase_GetMorphInfo(CEngineInternalPrimitiveMeshBase * /*this_ in ecx*/)
-{
-    return 0;
-}
+CEngineInternalPrimitiveMeshBase_GetMorphInfo(CEngineInternalPrimitiveMeshBase * /*this_ in ecx*/);
 
 int main(void)
 {

@@ -7,8 +7,8 @@ from pathlib import Path
 
 ROOT = Path(r"D:\Documents\FableTLC")
 VC = Path(r"D:\Tools\vc71")
-SP = Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\1d84be3f-a25d-4888-923b-bcd7fa732dfb\scratchpad")
-WORK = SP / "landverify"; WORK.mkdir(exist_ok=True)
+SP = ROOT / "rebuild" / "build"
+WORK = SP / "landverify"; WORK.mkdir(parents=True, exist_ok=True)
 OBJDUMP = r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe"
 DS = re.compile(r"^\s*[0-9a-fA-F]+\s+<(.+)>:$"); DB = re.compile(r"^\s*[0-9a-fA-F]+:\s+((?:[0-9a-fA-F]{2}\s+)+)")
 RL = re.compile(r"^([0-9a-fA-F]{8})\s+\S+\s+.+$")
@@ -103,7 +103,7 @@ def main():
     print(f"{'addr':10} {'parity':16} {'behav':6} name")
     for c in data:
         addr=c["address"].lower().replace("0x","")
-        name=c["name"]; leaf=name.rsplit("::",1)[-1]
+        name=c.get("name") or (orc.get(addr,{}).get("name")) or f"sub_{addr}"; leaf=name.rsplit("::",1)[-1]
         if addr in landed_addrs: continue  # skip already-landed
         o=orc.get(addr)
         if not o: print(f"{addr:10} {'NO_ORACLE':16} {'-':6} {name}"); continue
@@ -119,14 +119,27 @@ def main():
                 if st2.startswith(("MATCH","RELOCATION")):
                     src=cand; st=st2+f"[{P.split('(')[1].split(',')[0]}]"; break
         tobj=WORK/f"{addr}.t.obj"; exe=WORK/f"{addr}.exe"; tobj.unlink(missing_ok=True); exe.unlink(missing_ok=True)
+        sobj=WORK/f"{addr}.obj"  # source object from the last parity_of(src) compile
         beh="TCC_FAIL"
         tc=cl(["/nologo","/c","/Od","/W3",f"/Fo{tobj}",str(tp)],e)
         if tc.returncode==0 and tobj.exists():
+            def _run_exe():
+                rn=subprocess.run([str(exe)],capture_output=True,text=True,env=e)
+                return "PASS" if (rn.returncode==0 and re.search(re.escape(patt),rn.stdout or "")) else "FAIL"
+            # 1) test-only link (self-contained test)
             lk=subprocess.run([str(VC/"bin"/"link.exe"),"/nologo",f"/out:{exe}",str(tobj)],capture_output=True,text=True,env=e)
             if lk.returncode==0 and exe.exists():
-                rn=subprocess.run([str(exe)],capture_output=True,text=True,env=e)
-                beh="PASS" if (rn.returncode==0 and re.search(re.escape(patt),rn.stdout or "")) else "FAIL"
-            else: beh="LINK_FAIL"
+                beh=_run_exe()
+            else:
+                # 2) fallback: link source.obj + test.obj together (thunk/accessor where the
+                #    tested fn lives in source and the test provides its _impl mocks). Duplicate
+                #    symbols just fail again -> no regression vs the test-only LINK_FAIL.
+                beh="LINK_FAIL"
+                if sobj.exists():
+                    exe.unlink(missing_ok=True)
+                    lk2=subprocess.run([str(VC/"bin"/"link.exe"),"/nologo",f"/out:{exe}",str(sobj),str(tobj)],capture_output=True,text=True,env=e)
+                    if lk2.returncode==0 and exe.exists():
+                        beh=_run_exe()
         print(f"{addr:10} {st:16} {beh:6} {name}")
         if st.startswith(("MATCH","RELOCATION_MATCH")) and beh=="PASS":
             base=make_base(mod, leaf, addr)

@@ -6,11 +6,7 @@ struct CDefClassBase
     void* vftable;
 };
 
-extern "C" bool __fastcall CDefClassBase_IsParentDef(CDefClassBase* self)
-{
-    (void)self;
-    return false;
-}
+extern "C" bool __fastcall CDefClassBase_IsParentDef(CDefClassBase* self);
 
 int main(void)
 {
