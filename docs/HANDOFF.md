@@ -4260,3 +4260,198 @@ work/meshy_npc_mesh/custom_creature/.
 - **Lane note:** the productive decomp engine is the Claude Workflow loop, NOT the Codex `re-agent.exe` wave3
   lane (quota-limited). Drive Batch A/D through Workflow (schema-constrained author/refine/analyze), land via
   verify_and_land.
+
+---
+
+## RESUME POINT — game.bin def-load contract RE'd; BOTH append bugs fixed (2026-07-24, authoritative)
+
+The standing blocker ("custom game.bin def not engine-recognized") is **SOLVED at the byte level.**
+RE'd the def-load / name-resolution contract via the Claude Workflow loop (`defload-contract-re`:
+8 decode agents → synthesis → adversarial verify, **verdict CONFIRMED**). Full contract:
+`docs/DEF_LOAD_CONTRACT.md`. Artifacts: `work/def_load_re/`.
+
+### Root cause was NOT the counts — it was two payload/CRC bugs (both now fixed + offline-verified)
+- **BUG #1 — wrong names.bin CRC.** forge wrote `0xFFFFFFFF - mz_crc32(name)` which matches **0/13593**
+  retail names. The engine hash is `crc0` = seed-0 reflected CRC-32 poly `0xEDB88320`, **no final
+  inversion** (proven: 13593/13593 stored CRCs == crc0). Every NEW appended name got an un-resolvable
+  CRC → `CreateCreature(name) → nil`. **FIXED** in `D:\Code\FableForge\libs\forgecore\src\bin.cpp`
+  `nameCrc()`; `libforgecore.a` rebuilt. Verified: appended `CREATURE_MESHY_HUNTER` now stores
+  `0x5A11F1E5` == crc0(name).
+- **BUG #2 — stale internal global entry-index refs.** A creature payload carries its own global entry
+  index as self/owner back-refs (`CREATURE_TRADER_01`=1549 at payload offsets {25,193,301}). A byte-clone
+  keeps 1549 but lands at a new index → engine wires to wrong entries → instability. **FIXED** in
+  `work/meshy_npc_mesh/custom_creature/02_add_creature.cpp` (rewrite every `u32==donorGlobalIdx` →
+  landing index; leave SHARED component sub-defs alone). Verified: "retargeted 3 self-index refs
+  1549 -> 14781", reload clean.
+- Counts were already correct (writer extends nameCount/tableSize/entryCount, recomputes dense
+  indexInDefinition). The `crc0` id is now the canonical fact for ALL Fable name hashing.
+
+### Track A (quick win) — STAGED, ready for your in-game test
+`03_inplace_modelid.cpp` → `inplace_modelid.exe`: IN-PLACE repoint of `CREATURE_TRADER_01`
+`Graphic.modelId` 5149→8113 (our Meshy skinned mesh) via `setEntryData` (no append; sidesteps both
+bugs by construction — CONFIRMED safe). Staged: `CompiledDefs_inplace/game.bin`+`names.bin`,
+`graphics_meshy_hunter.big` (mesh id 8113), `textures_meshy.big`. Deploy/rollback:
+`deploy_trackA.sh deploy|rollback` (backs up 4 retail files first). **NOT yet deployed — your call.**
+⚠ **Rebuild from a pristine base first:** the current Steam install is at **14781** entries (+20 stale
+appends over pristine 14761) — likely carrying the old wrong-CRC names. Steam → Verify integrity of game
+files, then re-run `inplace_modelid.exe`, THEN deploy. Test: load near a trader; it should render the
+Meshy body + animate (biped set). Clothing may still layer (InitialAppearanceModifiers = polish).
+
+### Track B (distinct named creature) — append tool now offline-clean
+`add_creature.exe` (rebuilt w/ both fixes) produces an engine-valid `CREATURE_MESHY_HUNTER` append:
+`CompiledDefs_append_fixed/`. Still needs (a) a pristine base and (b) an in-game name-resolve test.
+Recommended controlled A/B/C (per DEF_LOAD_CONTRACT open questions): append with correct-crc-only vs
+index-rewrite-only vs both, to isolate which flips the nil. For a creature with its OWN sub-defs, append
+the full coordinated set + retarget every self+sibling index (`work/append_fix/APPEND_ALGORITHM.md`).
+
+### Next best tasks
+1. (User) Steam-verify → rebuild Track A from pristine → deploy → confirm Meshy body renders in-game.
+2. Land Track B in-game: deploy `CompiledDefs_append_fixed` + the two bigs on a pristine base, spawn
+   `CreateCreatureNearby("CREATURE_MESHY_HUNTER")`, confirm non-nil. Run the A/B/C isolation.
+3. Batch B (appearance/clothing): decompile `CAppearanceModifierDef` 0x004546d5, `CAppearanceDef`
+   0x0046a174 to strip trader clothing off the base body. Same Workflow pattern.
+4. Then `forge entity` orchestrator (design in the 2026-07-24 custom-entity section above) can bake in
+   the now-known def-load contract (crc0 names + index retargeting) as its game.bin cross-wire step.
+
+---
+
+## Background decomp session addendum (2026-07-24) — 3 contracts landed + byte-match lanes
+
+Three analysis workflows completed via the Claude Workflow loop; all findings documented (read these):
+- **`docs/DEF_LOAD_CONTRACT.md`** — game.bin def-load; both append bugs FIXED (crc0 + self-index retarget).
+  Track B append tool clean on pristine base → `work/meshy_npc_mesh/custom_creature/CompiledDefs_append_fixed`.
+- **`docs/APPEARANCE_STRIP_FINDINGS.md`** — clothing layering. **EMPIRICAL CORRECTION:** TRADER_01's
+  `InitialAppearanceModifiers` is `count=0` (empty) — NOT the clothing source. Real appearance = the linked
+  `CAppearanceDef`[10745] (18 KB, ~20 mesh ids), needs its own RE pass. `count=0` proven engine-valid.
+  **Don't build an IAM strip — deploy Track B and observe what actually renders first.**
+- **`docs/COOP_REVIVAL.md`** — enable gate `[CNetworkClient+0x2662]` (opcode-proven), CGameEvent wire format,
+  CheckSync 0x004165E8 gutted + rebuild spec. Verify PLAUSIBLE; corrected several fabricated addresses
+  (0x4EBA10 phantom, 0x0049E0B0→0x0049DFB0). Enable via InitialiseAsLocal, NOT a bare +0x2662 poke (CTD risk).
+
+**Byte-match author→land loop** (tools/decomp_pipeline): validated end-to-end. batch3 authored but it's ~83%
+pre-landed residue (0 fresh wins; first-pass≈0 is normal, the diff-refine round is the cracker). Fixed two
+lander bugs (missing-`name` fallback to oracle; stale scratchpad path → `rebuild/build/landverify`). Fresh-yield
+map computed across pending batches (~1,200 un-landed): batch14=292, batch16=205, batch17=125, batch15=108,
+fse1=69, fse2=64(refine lane). Reusable author workflow: `scratchpad/author_bytematch.js` (args
+`{bundleDir, addrs}`); land with `verify_and_land.py <task.output> <oracle.tsv> --land`.
+
+### Next best tasks
+1. (User) deploy Track B, spawn CREATURE_MESHY_HUNTER, observe render (bare body vs CAppearanceDef clothing).
+2. Land batch17 wins (author-batch17 running); then fan batch14/16/15 + fse2 refine lane for fresh promotions.
+3. If custom body is clothed: RE `CAppearanceDef`[10745] structure to null/repoint its mesh list.
+4. Co-op: resolve the masked InitialiseAsLocal precondition + find the tag-1 sync-event producer, then attempt enable.
+
+---
+
+## Background decomp resume (2026-07-25) - Wave 3 live again
+
+The scheduled Wave 3 runner recovered from the previous Codex quota block. Its first resumed
+16-target co-op batch completed with 16/16 structural PASS results:
+
+- player/network gate and local-client lifecycle (`0x00449D20` through `0x004AEBA0`);
+- event apply/sync/save integration (`0x00416670`, `0x004165E8`, `0x0041726D`,
+  `0x00416148`, `0x004161A7`);
+- event and package-set wire codecs (`0x009F1810`, `0x009F1870`, `0x009F19A0`,
+  `0x009F1AC0`).
+
+These are durable generated reports under `lift/reports/wave3/code/`, not curated promotions.
+The codec reconstructions independently confirm the framing already documented in
+`docs/COOP_REVIVAL.md`: package count byte, per-package event count plus 32-bit sequence, then
+dense event records `[u16 id|replacement][u8 player][u8 payload length][payload]`.
+`CheckSync` also reconfirms the retail stub: it reads the remote checksum/checksum/sequence tuple
+and discards it without a comparison.
+
+The next scheduled batch started immediately on the remaining co-op/spirit cluster. At this
+checkpoint `AddPackage`, `CProcessedInput::AddGameEvent`, and `CTCCoopSpirit::Construct` passed;
+`CTCCoopSpirit::OnCreate @ 0x006700F0` exhausted both attempts with structural FAIL, and the runner
+continued to `UpdateAttractionToMaster @ 0x006701A0`. Let the bounded runner continue; do not treat
+the failed `OnCreate` decompilation as evidence that the retail function is absent.
+
+The post-batch refresh exposed an older compile-driver integration bug: 1,038 catalog behavior
+tests are deliberately self-contained, but `rebuild/build_candidates.ps1` always linked
+`source.obj + test.obj`, causing duplicate-symbol failures. The driver now prefers that external
+link and falls back to a test-only link, matching `verify_and_land.py`. Stale tests that could
+cleanly exercise the real source object were converted to external declarations. Current gate:
+**1,850/1,850 VC7.1 compiles and 1,850/1,850 behavior PASS**. The remaining retail-oracle/parity
+refresh must run after Wave 3 releases Ghidra.
+
+### Wave 3 co-op tail and refresh repair (2026-07-25 15:14 MDT)
+
+The second co-op/spirit batch was intentionally stopped after its useful tail so the refreshed
+VC7.1 exclusion set can prevent already-compiled ForgeFSE bindings from being selected again.
+Durable ledger results after the first 16/16 batch:
+
+- `CGameEventPackageSet::AddPackage @ 0x009F16F0`,
+  `CProcessedInput::AddGameEvent @ 0x00A0D340`, and
+  `CTCCoopSpirit::Construct @ 0x004D55D0`: checker PASS.
+- `CTCCoopSpirit::OnCreate @ 0x006700F0`: the first outer attempt failed, but the second passed.
+  The resulting source is still review-only: it confuses definition pointers, a morph-entry pair,
+  `std::_Cons_val`, and unrelated definition template types. Do not promote it from checker status.
+- `CTCCoopSpirit::UpdateAttractionToMaster @ 0x006701A0`: checker PASS, but unsafe as generated.
+  `pPhysics` is uninitialized when the physics-interface flag is clear, and a failed `LowerBound`
+  assigns the end sentinel before dereferencing `pEntry->m_Value`.
+- `CTCCoopSpirit::SwapToHero @ 0x0066FF20`: the first outer attempt failed and the second passed.
+  It needs ABI/ownership review of the raw helper calls and local temporary before promotion.
+- `CTCCoopSpirit::UpdateScore @ 0x00670710`: checker PASS, but its failed `LowerBound` path likewise
+  dereferences the map-end sentinel. Keep it review-only.
+- `CWorld::EAMoveSpirit @ 0x0062C0E0`: checker PASS, but needs interface-lookup and packet-buffer
+  lifetime/layout review before promotion.
+
+The final selected row before the stop was the stale
+`CGameScriptInterface::SetFactionAsAlliedToFaction @ 0x00890870`; it passed, then the queue exited
+cleanly. The next scheduled refill will read the repaired 1,850-row VC7.1 exclusion catalog.
+
+The forced rebuild refresh then exposed a Windows command-line limit in candidate oracle export:
+all 1,850 requested addresses were being appended as Ghidra script arguments. The exporter now
+writes a UTF-8 response file and invokes `ExportFunctionOracle.java` with `@<address-file>`; the
+Ghidra script accepts either that response-file form or the legacy direct-address form. A direct
+smoke export succeeded. It requested all 1,850 compiled rows and emitted 1,722 actual Ghidra
+function-start oracles; the other 128 addresses are aliases/interior addresses or otherwise lack a
+function start in the current Ghidra database.
+
+The first downstream audit after that repair caught two owner-ranking regressions:
+`GiveHeroExpression` and `DisplayTutorial` selected byte-matched unqualified helpers at
+`0x004383D0`/`0x00435070` instead of the decorated, vtable-backed CGSI methods at
+`0x0088FC60`/`0x0089E710`. `export_fse_native_overlay.py` now gives qualified
+`CGameScriptInterface::` identities stronger owner evidence than an unqualified helper merely
+grouped into the same module. The regenerated audit passes **452/452** Quest bindings with zero
+mismatches or missing assignment families.
+
+`tools/run_rebuild_refresh.ps1` now also supports `-ResumeAfterOracle`. It validates that both the
+compiled manifest and oracle manifest exist, then resumes at retail parity. This was used after a
+detached console produced Python exit 120 from a broken stdout pipe; the underlying parity files
+had been written, but the stage correctly remained failed until rerun through the canonical
+foreground path.
+
+Final refresh completed at 15:34 MDT:
+
+- curated catalog: **1,850/1,850 VC7.1 compile PASS and 1,850/1,850 behavior PASS**;
+- retail parity: **914 exact + 609 relocation matches**, 199 differing, 128 oracle-missing;
+- generated Wave/agent sources: 534 total, 526 checker PASS, 227 host C++20 syntax PASS;
+- candidate signature audit: 467 PASS, 67 review;
+- tooling SDK: PASS; ForgeFSE Quest slot audit: **452/452 PASS**;
+- reconstruction backlog, promotion queue, and `rebuild/COVERAGE.md` regenerated;
+- canonical state: `rebuild/refresh.state.json`, fingerprint
+  `feb58d667b9930ca84d5eeea147aa832a60d0c56e8250f0b76d93cbb6db25f2f`.
+
+The scheduled Wave 3 task was manually triggered once after the clean refresh to verify its new
+selection set. It started a fresh bounded 16-target batch at 15:35 MDT with
+`Quest.DontPopulateNextLoadedRegion @ 0x0088E380`, confirming that the stale
+`0x00890870` compiled binding is now excluded. Leave this batch running under the normal scheduled
+task; `lift/state/re-agent-wave3-queue.log` remains authoritative.
+
+### Public progress update and workspace housekeeping (2026-07-25)
+
+`README.md` now reports the canonical 1,850-row VC7.1 gate instead of the stale July 23 counts and
+contains a dedicated cut-multiplayer overview: surviving four-player/event replication machinery,
+the `CNetworkClient+0x2662` enable contract, the gutted `CheckSync`, unsafe raw-poke caveat, and the
+remaining revival order. `docs/COOP_REVIVAL.md` is the detailed byte-level source.
+
+Workspace organization is now documented in `docs/WORKSPACE_LAYOUT.md`.
+`tools/organize_workspace.ps1` safely archives only loose root scratch/build debris and delegates
+RE-agent transcript cleanup to `lift/scripts/organize_lift.ps1`; it never deletes files or reshapes
+live `rebuild/`, `lift/`, or documented `work/` trees. The first run moved 18 old root artifacts
+(13 `.obj` files, four scratch/header files, and `FableTLC_RE_docs.zip`) into
+`work/scratch/root/{objects,sources}/` and `snapshots/local-archives/`, with no collisions or
+protected files. The local 909 MiB `FSE/` deployment-backup tree remains in place because active
+deployment scripts address it, but it is now explicitly ignored by Git.

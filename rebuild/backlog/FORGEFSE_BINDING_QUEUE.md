@@ -4,115 +4,115 @@ Generated from `rebuild/sdk/fse_native_overlay.json`. Rows are reverse-engineeri
 prototype-review targets, not executable bindings. The unattended agent may advance a row
 to structural review; it cannot set `hookApproved`.
 
-- FSE recommendations: 462
-- Unique retail target addresses: 462
-- Needs reversal: 350
-- Agent reviewed: 110
-- Implementation verified: 2
+- FSE recommendations: 472
+- Unique retail target addresses: 472
+- Needs reversal: 75
+- Agent reviewed: 203
+- Implementation verified: 192
 - Hook approved: 0
-- Direct wrapper/retail signatures: 167
-- Wrapper adapters required: 269
+- Direct wrapper/retail signatures: 169
+- Wrapper adapters required: 277
 - Signature/arity review required: 26
 
 | Rank | FSE API | Retail candidate | Address | Bridge | Match | Owner | Prototype | Stage | Score |
 |---:|---|---|---|---|---|---|:---:|---|---:|
-| 1 | `Quest.ScreenFilterFadeOut` | `CGameScriptInterface::ScreenFilterFadeOut` | `0x00890200` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 2 | `Quest.SetAllowScreenFadingIfAlreadyFaded` | `CGameScriptInterface::SetAllowScreenFadingIfAlreadyFaded` | `0x0088E920` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 3 | `Quest.SetAllowScreenFadingOnNextRegionChange` | `CGameScriptInterface::SetAllowScreenFadingOnNextRegionChange` | `0x0088E910` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 4 | `Quest.SetAllSoundsAsMuted` | `CGameScriptInterface::SetAllSoundsAsMuted` | `0x0088E090` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 5 | `Quest.SetBettingAccept` | `CGameScriptInterface::SetBettingAccept` | `0x0088FB60` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 6 | `Quest.SetBettingActive` | `CGameScriptInterface::SetBettingActive` | `0x0088FB40` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 7 | `Quest.SetBoastingEnabled` | `CGameScriptInterface::SetBoastingEnabled` | `0x0088FC20` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 8 | `Quest.SetCheapHeadLooking` | `CGameScriptInterface::SetCheapHeadLooking` | `0x0088FAE0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 9 | `Quest.SetCountBetMoneyDown` | `CGameScriptInterface::SetCountBetMoneyDown` | `0x0088FBA0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 10 | `Quest.SetExperienceSpendingAsEnabled` | `CGameScriptInterface::SetExperienceSpendingAsEnabled` | `0x0088F460` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 11 | `Quest.SetGlobalTargetingDistanceOffset` | `CGameScriptInterface::SetGlobalTargetingDistanceOffset` | `0x0088FBE0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 12 | `Quest.SetGuardsIgnoreCrimes` | `CGameScriptInterface::SetGuardsIgnoreCrimes` | `0x00898540` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 13 | `Quest.SetHeroAbleToGainExperience` | `CGameScriptInterface::SetHeroAbleToGainExperience` | `0x00899060` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 14 | `Quest.SetHeroAge` | `CGameScriptInterface::SetHeroAge` | `0x008994E0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 15 | `Quest.SetHeroAsApprentice` | `CGameScriptInterface::SetHeroAsApprentice` | `0x00899680` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 16 | `Quest.SetHeroAsHavingHadGaySex` | `CGameScriptInterface::SetHeroAsHavingHadGaySex` | `0x00897DB0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 17 | `Quest.SetHeroAsHavingHadSex` | `CGameScriptInterface::SetHeroAsHavingHadSex` | `0x00897D50` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 18 | `Quest.SetHeroAsTeenager` | `CGameScriptInterface::SetHeroAsTeenager` | `0x008995D0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 19 | `Quest.SetHeroHandLampAsLit` | `CGameScriptInterface::SetHeroHandLampAsLit` | `0x00898EC0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 20 | `Quest.SetHeroSleepingAsEnabled` | `CGameScriptInterface::SetHeroSleepingAsEnabled` | `0x0088F440` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 21 | `Quest.SetHeroWeaponsAsUsable` | `CGameScriptInterface::SetHeroWeaponsAsUsable` | `0x00898410` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 22 | `Quest.SetHeroWillAsUsable` | `CGameScriptInterface::SetHeroWillAsUsable` | `0x00898340` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 23 | `Quest.SetHeroWillEnergyAsAbleToRefill` | `CGameScriptInterface::SetHeroWillEnergyAsAbleToRefill` | `0x00899A90` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 24 | `Quest.SetHeroWillEnergyLevel` | `CGameScriptInterface::SetHeroWillEnergyLevel` | `0x00899A10` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 25 | `Quest.SetHUDEnabled` | `CGameScriptInterface::SetHUDEnabled` | `0x00892050` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 26 | `Quest.SetMoralityChangingAsEnabled` | `CGameScriptInterface::SetMoralityChangingAsEnabled` | `0x0089EF30` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 27 | `Quest.SetPlayerUsingMeleeDummies` | `CGameScriptInterface::SetPlayerUsingMeleeDummies` | `0x0088FA80` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 28 | `Quest.SetPlayerUsingRangedDummies` | `CGameScriptInterface::SetPlayerUsingRangedDummies` | `0x0088FAA0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 29 | `Quest.SetPlayerUsingWillDummies` | `CGameScriptInterface::SetPlayerUsingWillDummies` | `0x0088FAC0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 30 | `Quest.SetPrizeTavernTable` | `CGameScriptInterface::SetPrizeTavernTable` | `0x0088FB20` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 31 | `Quest.SetQuitTavernGame` | `CGameScriptInterface::SetQuitTavernGame` | `0x0088FB00` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 32 | `Quest.SetRegionTextDisplayAsActive` | `CGameScriptInterface::SetRegionTextDisplayAsActive` | `0x0088F430` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 33 | `Quest.SetSavingAsEnabled` | `CGameScriptInterface::SetSavingAsEnabled` | `0x0088F940` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 34 | `Quest.SetSpotTheAdditionBeaten` | `CGameScriptInterface::SetSpotTheAdditionBeaten` | `0x0088FBC0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 35 | `Quest.SetSummonerDeathExplosionAffectsHero` | `CGameScriptInterface::SetSummonerDeathExplosionAffectsHero` | `0x0088F470` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 36 | `Quest.SetTeleportingAsActive` | `CGameScriptInterface::SetTeleportingAsActive` | `0x0088F410` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 37 | `Quest.SetTimeOfDay` | `CGameScriptInterface::SetTimeOfDay` | `0x0088FDC0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 38 | `Quest.SetTradingPriceMult` | `CGameScriptInterface::SetTradingPriceMult` | `0x0088FC00` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 39 | `Quest.SetWeaponOutCrimeEnabled` | `CGameScriptInterface::SetWeaponOutCrimeEnabled` | `0x008984E0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 40 | `Quest.SetWhetherToFailQuestOnDeath` | `CGameScriptInterface::SetWhetherToFailQuestOnDeath` | `0x00897090` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 41 | `Quest.SheatheHeroWeapons` | `CGameScriptInterface::SheatheHeroWeapons` | `0x008916A0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 42 | `Quest.StartCountdownTimer` | `CGameScriptInterface::StartCountdownTimer` | `0x0088F8D0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 43 | `Quest.StopOverrideMusic` | `CGameScriptInterface::StopOverrideMusic` | `0x008912A0` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 44 | `Quest.UpdateMiniGameInfoBar` | `CGameScriptInterface::UpdateMiniGameInfoBar` | `0x00891C80` | direct-signature | unique | strong | yes | needs-reversal | 100 |
-| 45 | `Entity.IsDead` | `CScriptThing::IsDead` | `0x004AA890` | direct-signature | ambiguous | strong | yes | needs-reversal | 100 |
-| 46 | `Quest.AutoSave` | `CGameScriptInterface::AutoSave` | `0x0088F930` | direct-signature | ambiguous | strong | yes | needs-reversal | 100 |
-| 47 | `Quest.AutoSaveCheckPoint` | `CGameScriptInterface::AutoSaveCheckPoint` | `0x0088F910` | direct-signature | ambiguous | strong | yes | needs-reversal | 100 |
-| 48 | `Quest.AutoSaveQuestStart` | `CGameScriptInterface::AutoSaveQuestStart` | `0x0088F920` | direct-signature | ambiguous | strong | yes | needs-reversal | 100 |
-| 49 | `Quest.ClearAllRumbles` | `CGameScriptInterface::ClearAllRumbles` | `0x00892DF0` | direct-signature | ambiguous | strong | yes | needs-reversal | 100 |
-| 50 | `Quest.DisplayQuestInfo` | `CGameScriptInterface::DisplayQuestInfo` | `0x00891920` | direct-signature | ambiguous | strong | yes | needs-reversal | 100 |
-| 51 | `Quest.FastForwardTimeTo` | `CGameScriptInterface::FastForwardTimeTo` | `0x0088FE90` | direct-signature | ambiguous | strong | yes | needs-reversal | 100 |
-| 52 | `Quest.IsDangerMusicEnabled` | `CGameScriptInterface::IsDangerMusicEnabled` | `0x00891330` | direct-signature | ambiguous | strong | yes | needs-reversal | 100 |
-| 53 | `Quest.ResetToFrontEnd` | `CGameScriptInterface::ResetToFrontEnd` | `0x0088F970` | direct-signature | ambiguous | strong | yes | needs-reversal | 100 |
-| 54 | `Quest.SetEnvironmentalEffectsAlwaysUpdate` | `CGameScriptInterface::SetEnvironmentalEffectsAlwaysUpdate` | `0x00890B90` | direct-signature | ambiguous | strong | yes | needs-reversal | 100 |
-| 55 | `Quest.StartSneaking` | `CGameScriptInterface::StartSneaking` | `0x008A1300` | direct-signature | ambiguous | strong | yes | needs-reversal | 100 |
-| 56 | `Entity.GetCurrentMapName` | `CScriptThing::GetCurrentMapName` | `0x004AA9E0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 57 | `Entity.GetHomeMapName` | `CScriptThing::GetHomeMapName` | `0x004AAA10` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 58 | `Entity.GetHomePos` | `CGameScriptThing::GetHomePos` | `0x008CFE30` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 59 | `Entity.IsOpenDoor` | `CGameScriptThing::IsOpenDoor` | `0x008D0820` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 60 | `Entity.MsgHowLongWasExpressionPerformed` | `CScriptThing::MsgHowLongWasExpressionPerformed` | `0x004AAC10` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 61 | `Entity.MsgIsKilledBy` | `CScriptThing::MsgIsKilledBy` | `0x004AAAF0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 62 | `Entity.MsgWhoHitMe` | `CGameScriptThing::MsgWhoHitMe` | `0x008D1890` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 63 | `Entity.MsgWhoKilledMe` | `CScriptThing::MsgWhoKilledMe` | `0x004ABE60` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 64 | `Quest.ActivateQuest` | `CGameScriptInterface::ActivateQuest` | `0x00892E80` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 65 | `Quest.AddCrimeCommitted` | `CGameScriptInterface::AddCrimeCommitted` | `0x0089FEB0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 66 | `Quest.AddFeatCard` | `CGameScriptInterface::AddFeatCard` | `0x00891540` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 67 | `Quest.AddGossipVillage` | `CGameScriptInterface::AddGossipVillage` | `0x008A9E30` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 68 | `Quest.AddNewRumourToCategory` | `CGameScriptInterface::AddNewRumourToCategory` | `0x008A9DD0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 69 | `Quest.AddQuestCard` | `CGameScriptInterface::AddQuestCard` | `0x008913F0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 70 | `Quest.AddQuestInfoBar` | `CGameScriptInterface::AddQuestInfoBar` | `0x00891AC0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 71 | `Quest.AddQuestInfoCounterList` | `CGameScriptInterface::AddQuestInfoCounterList` | `0x00891B50` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 72 | `Quest.AddQuestInfoTimer` | `CGameScriptInterface::AddQuestInfoTimer` | `0x00891B20` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 73 | `Quest.AddRumourCategory` | `CGameScriptInterface::AddRumourCategory` | `0x008A9DB0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 74 | `Quest.AddScreenTitleMessage` | `CGameScriptInterface::AddScreenTitleMessage` | `0x0089E4C0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 75 | `Quest.AddTattooToHero` | `CGameScriptInterface::AddTattooToHero` | `0x008981C0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 76 | `Quest.ApplyScriptBrush` | `CGameScriptInterface::ApplyScriptBrush` | `0x0088F480` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 77 | `Quest.AreEntitiesEnemies` | `CGameScriptInterface::AreEntitiesEnemies` | `0x0088E6F0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 78 | `Quest.CacheMusicSet` | `CGameScriptInterface::CacheMusicSet` | `0x00891310` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 79 | `Quest.CameraCircleAroundPos` | `CGameScriptInterface::CameraCircleAroundPos` | `0x00892C20` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 80 | `Quest.CameraCircleAroundThing` | `CGameScriptInterface::CameraCircleAroundThing` | `0x00892B50` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 81 | `Quest.CameraEarthquakeIntensityAtPos` | `CGameScriptInterface::CameraEarthquakeIntensityAtPos` | `0x0088ED20` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 82 | `Quest.CameraMoveBetweenLookFromAndLookTo` | `CGameScriptInterface::CameraMoveBetweenLookFromAndLookTo` | `0x00892610` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 83 | `Quest.CameraMoveToPosAndLookAtPos` | `CGameScriptInterface::CameraMoveToPosAndLookAtPos` | `0x00892410` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 84 | `Quest.CanThingBe_Heard_ByOtherThing` | `CGameScriptInterface::CanThingBe_Heard_ByOtherThing` | `0x0089CD70` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 85 | `Quest.CanThingBe_NearlySeen_ByOtherThing` | `CGameScriptInterface::CanThingBe_NearlySeen_ByOtherThing` | `0x0089CD30` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 86 | `Quest.CanThingBe_Seen_ByOtherThing` | `CGameScriptInterface::CanThingBe_Seen_ByOtherThing` | `0x0089CD10` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 87 | `Quest.CanThingBe_Smelled_ByOtherThing` | `CGameScriptInterface::CanThingBe_Smelled_ByOtherThing` | `0x0089CD50` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 88 | `Quest.ChangeHeroHairstyle` | `CGameScriptInterface::ChangeHeroHairstyle` | `0x0089B450` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 89 | `Quest.ChangeQuestInfoBarColour` | `CGameScriptInterface::ChangeQuestInfoBarColour` | `0x00891BA0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 90 | `Quest.CheckForCameraMessage` | `CGameScriptInterface::CheckForCameraMessage` | `0x006E7920` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 91 | `Quest.ClearGossipFactions` | `CGameScriptInterface::ClearGossipFactions` | `0x008AA4D0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 92 | `Quest.ClearGossipVillages` | `CGameScriptInterface::ClearGossipVillages` | `0x008AA270` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 93 | `Quest.ClearHeroEnemyOfGuards` | `CGameScriptInterface::ClearHeroEnemyOfGuards` | `0x008961B0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 94 | `Quest.ClearThingBestEnemyTarget` | `CGameScriptInterface::ClearThingBestEnemyTarget` | `0x008A03F0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 95 | `Quest.ConfiscateItemsOfTypeFromHero` | `CGameScriptInterface::ConfiscateItemsOfTypeFromHero` | `0x00898840` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 96 | `Quest.CreateExperienceOrb` | `CGameScriptInterface::CreateExperienceOrb` | `0x0089FBB0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 97 | `Quest.CreateExplosion` | `CGameScriptInterface::CreateExplosion` | `0x0089FC80` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 98 | `Quest.CreateLight` | `CGameScriptInterface::CreateLight` | `0x0089FAA0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 99 | `Quest.CreatePhysicalBarrier` | `CGameScriptInterface::CreatePhysicalBarrier` | `0x0089FD20` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
-| 100 | `Quest.CreateRumble` | `CGameScriptInterface::CreateRumble` | `0x0089FDA0` | wrapper-adapter | unique | strong | yes | needs-reversal | 100 |
+| 1 | `Quest.DontPopulateNextLoadedRegion` | `CGameScriptInterface::DontPopulateNextLoadedRegion` | `0x0088E380` | direct-signature | ambiguous | strong | yes | needs-reversal | 220 |
+| 2 | `Quest.SetGuildMasterMessages` | `CGameScriptInterface::SetGuildMasterMessages` | `0x0088E200` | direct-signature | ambiguous | strong | yes | needs-reversal | 220 |
+| 3 | `Quest.SetHeroAsWearing` | `CGameScriptInterface::SetHeroAsWearing` | `0x0089B3F0` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 4 | `Quest.SetNumberOfTimesHeroHasHadSex` | `CGameScriptInterface::SetNumberOfTimesHeroHasHadSex` | `0x00897CF0` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 5 | `Quest.SetPlayerCreatureOnlyTarget` | `CGameScriptInterface::SetPlayerCreatureOnlyTarget` | `0x00899E10` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 6 | `Quest.SetPreferredQuickAccessItem` | `CGameScriptInterface::SetPreferredQuickAccessItem` | `0x00896E60` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 7 | `Quest.SetQuestInfoText` | `CGameScriptInterface::SetQuestInfoText` | `0x00891A00` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 8 | `Quest.SetReadableObjectText` | `CGameScriptInterface::SetReadableObjectText` | `0x008A0F70` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 9 | `Quest.SetReadableObjectTextTag` | `CGameScriptInterface::SetReadableObjectTextTag` | `0x008A0FD0` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 10 | `Quest.SetSoundThemesAsEnabledForRegion` | `CGameScriptInterface::SetSoundThemesAsEnabledForRegion` | `0x0088E0B0` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 11 | `Quest.SetThingAndCarriedItemsNotAffectedByScreenFilter` | `CGameScriptInterface::SetThingAndCarriedItemsNotAffectedByScreenFilter` | `0x008A99F0` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 12 | `Quest.SetThingAsConscious` | `CGameScriptInterface::SetThingAsConscious` | `0x008A9610` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 13 | `Quest.SetTrapAsActive` | `CGameScriptInterface::SetTrapAsActive` | `0x00895130` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 14 | `Quest.SetWanderCentrePoint` | `CGameScriptInterface::SetWanderCentrePoint` | `0x008A23B0` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 15 | `Quest.SetWeaponAsHerosActiveWeapon` | `CGameScriptInterface::SetWeaponAsHerosActiveWeapon` | `0x00898B30` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 16 | `Quest.StopSound` | `CGameScriptInterface::StopSound` | `0x0088F660` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 17 | `Quest.TakeObjectFromHero` | `CGameScriptInterface::TakeObjectFromHero` | `0x00898DB0` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 18 | `Quest.TellHeroQuestObjectiveCompleted` | `CGameScriptInterface::TellHeroQuestObjectiveCompleted` | `0x00891800` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 19 | `Quest.TellHeroQuestObjectiveFailed` | `CGameScriptInterface::TellHeroQuestObjectiveFailed` | `0x00891810` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 20 | `Quest.TransitionToThemeAllInternals` | `CGameScriptInterface::TransitionToThemeAllInternals` | `0x0088FF30` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 21 | `Quest.UnSetThingAndCarriedItemsNotAffectedByScreenFilter` | `CGameScriptInterface::UnSetThingAndCarriedItemsNotAffectedByScreenFilter` | `0x00897150` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 22 | `Quest.UpdateQuestInfoBar` | `CGameScriptInterface::UpdateQuestInfoBar` | `0x00891B80` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 23 | `Quest.UpdateQuestInfoCounter` | `CGameScriptInterface::UpdateQuestInfoCounter` | `0x00891BD0` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 24 | `Quest.UpdateQuestInfoCounterList` | `CGameScriptInterface::UpdateQuestInfoCounterList` | `0x00891BE0` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 25 | `Quest.UpdateQuestInfoTick` | `CGameScriptInterface::UpdateQuestInfoTick` | `0x00891BF0` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 26 | `Quest.UpdateQuestInfoTimer` | `CGameScriptInterface::UpdateQuestInfoTimer` | `0x00891BB0` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 27 | `Quest.WaitForCameraMessage` | `CGameScriptInterface::WaitForCameraMessage` | `0x006E7820` | wrapper-adapter | unique | strong | yes | needs-reversal | 220 |
+| 28 | `Quest.AddBoast` | `CGameScriptInterface::AddBoast` | `0x00893060` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 29 | `Quest.AddGossipFactionToCategory` | `CGameScriptInterface::AddGossipFactionToCategory` | `0x008A9E60` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 30 | `Quest.AddQuestRegion` | `CGameScriptInterface::AddQuestRegion` | `0x00891820` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 31 | `Quest.AddScreenMessage` | `CGameScriptInterface::AddScreenMessage` | `0x00892850` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 32 | `Quest.CameraUseCameraPoint` | `CGameScriptInterface::CameraUseCameraPoint` | `0x00891070` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 33 | `Quest.ClearGossip` | `CGameScriptInterface::ClearGossip` | `0x008AA010` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 34 | `Quest.DeactivateQuest` | `CGameScriptInterface::DeactivateQuest` | `0x00892F00` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 35 | `Quest.DisplayTutorial` | `CGameScriptInterface::DisplayTutorial` | `0x0089E710` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 36 | `Quest.EnableGuards` | `CGameScriptInterface::EnableGuards` | `0x00896270` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 37 | `Quest.EnableVillagerDefTypes` | `CGameScriptInterface::EnableVillagerDefTypes` | `0x008962D0` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 38 | `Quest.GetNumberOfItemsOfTypeInInventory` | `CGameScriptInterface::GetNumberOfItemsOfTypeInInventory` | `0x00897190` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 39 | `Quest.GetWaterHeightAtPosition` | `CGameScriptInterface::GetWaterHeightAtPosition` | `0x0088DF60` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 40 | `Quest.GiveHeroExpression` | `CGameScriptInterface::GiveHeroExpression` | `0x0088FC60` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 41 | `Quest.GiveHeroGold` | `CGameScriptInterface::GiveHeroGold` | `0x00898F40` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 42 | `Quest.IsBoastTaken` | `CGameScriptInterface::IsBoastTaken` | `0x00891550` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 43 | `Quest.IsQuestCompleted` | `CGameScriptInterface::IsQuestCompleted` | `0x00892F60` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 44 | `Quest.IsQuestRegistered` | `CGameScriptInterface::IsQuestRegistered` | `0x00892F50` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 45 | `Quest.RadialBlurSetCenterWorldPos` | `CGameScriptInterface::RadialBlurSetCenterWorldPos` | `0x008901A0` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 46 | `Quest.RemoveBoast` | `CGameScriptInterface::RemoveBoast` | `0x00891580` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 47 | `Quest.SetBoastAsCompleted` | `CGameScriptInterface::SetBoastAsCompleted` | `0x008915E0` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 48 | `Quest.SetQuestAsPersistent` | `CGameScriptInterface::SetQuestAsPersistent` | `0x00893020` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 49 | `Quest.SetQuestCardObjective` | `CGameScriptInterface::SetQuestCardObjective` | `0x00896A30` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 50 | `Quest.SetQuestInfoName` | `CGameScriptInterface::SetQuestInfoName` | `0x00891940` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 51 | `Quest.SetSaveGameMarkerPos` | `CGameScriptInterface::SetSaveGameMarkerPos` | `0x0088F960` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 52 | `Quest.SetVillageLimbo` | `CGameScriptInterface::SetVillageLimbo` | `0x00896060` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 53 | `Quest.TryToRespawnDefNamed` | `CGameScriptInterface::TryToRespawnDefNamed` | `0x00896120` | wrapper-adapter | ambiguous | strong | yes | needs-reversal | 220 |
+| 54 | `Quest.CreateCreature` | `CGameScriptInterface::CreateCreature` | `0x008A9100` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 55 | `Quest.CreateCreatureNearby` | `CGameScriptInterface::CreateCreatureNearby` | `0x0089F300` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 56 | `Quest.DebugGetAllTextEntriesForTargetedThing` | `CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing` | `0x008A0CB0` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 57 | `Quest.EntityGetAppearanceSeed` | `CGameScriptInterface::EntityGetAppearanceSeed` | `0x008A0C10` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 58 | `Quest.EntityGetShotStrikePos` | `CGameScriptInterface::EntityGetShotStrikePos` | `0x0089DF70` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 59 | `Quest.FadeScreenOut` | `CGameScriptInterface::FadeScreenOut` | `0x00890820` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 60 | `Quest.GetAllCreaturesExcludingHero` | `CGameScriptInterface::GetAllCreaturesExcludingHero` | `0x008A89D0` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 61 | `Quest.GetAllCreaturesInAreaWithScriptName` | `CGameScriptInterface::GetAllCreaturesInAreaWithScriptName` | `0x008A86C0` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 62 | `Quest.GetAllThingsWithDefNameByDistanceFrom` | `CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom` | `0x008A9C40` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 63 | `Quest.GetItemDefNamesFromContainer` | `CGameScriptInterface::GetItemDefNamesFromContainer` | `0x008A8F20` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 64 | `Quest.GetSleepingPositionAndOrientationFromBed` | `CGameScriptInterface::GetSleepingPositionAndOrientationFromBed` | `0x008A1B10` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 65 | `Quest.IsQuestStartScreenActive` | `CGameScriptInterface::IsQuestStartScreenActive` | `0x0089AD90` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 66 | `Quest.MsgOnBoastsMade` | `CGameScriptInterface::MsgOnBoastsMade` | `0x008A9AE0` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 67 | `Quest.MsgOnExpressionPerformed` | `CGameScriptInterface::MsgOnExpressionPerformed` | `0x00893B00` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 68 | `Quest.MsgOnHeroSlept` | `CGameScriptInterface::MsgOnHeroSlept` | `0x00893EC0` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 69 | `Quest.StartMovieSequence` | `CGameScriptInterface::StartMovieSequence` | `0x0089B110` | signature-review | unique | strong | yes | needs-reversal | 220 |
+| 70 | `Entity.MsgExpressionPerformedTo` | `CScriptThing::MsgExpressionPerformedTo` | `0x004AABF0` | signature-review | unique | strong | yes | needs-reversal | 100 |
+| 71 | `Entity.MsgIsPresentedWithItem` | `CScriptThing::MsgIsPresentedWithItem` | `0x004AAC60` | signature-review | unique | strong | yes | needs-reversal | 100 |
+| 72 | `Entity.MsgReceivedMoney` | `CScriptThing::MsgReceivedMoney` | `0x004AAC40` | signature-review | unique | strong | yes | needs-reversal | 100 |
+| 73 | `Quest.GetAllActiveQuestInfo` | `CGameScriptInterface::GetAllActiveQuestInfo` | `0x00891530` | signature-review | ambiguous | strong | yes | needs-reversal | 220 |
+| 74 | `Quest.SetQuestWorldMapOffset` | `CGameScriptInterface::SetQuestWorldMapOffset` | `0x00891860` | signature-review | ambiguous | strong | yes | needs-reversal | 220 |
+| 75 | `Quest.SetTimeAsStopped` | `CGameScriptInterface::SetTimeAsStopped` | `0x0088FE80` | signature-review | ambiguous | strong | yes | needs-reversal | 220 |
+| 76 | `Quest.ApplyHeroPenaltyForDeath` | `CGameScriptInterface::ApplyHeroPenaltyForDeath` | `0x008977F0` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 77 | `Quest.CameraDefault` | `CGameScriptInterface::CameraDefault` | `0x00890FF0` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 78 | `Quest.CameraShake` | `CGameScriptInterface::CameraShake` | `0x0088ECE0` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 79 | `Quest.CancelHeroTeleportEffects` | `CGameScriptInterface::CancelHeroTeleportEffects` | `0x008A0820` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 80 | `Quest.ChangeHeroHealthBy` | `CGameScriptInterface::ChangeHeroHealthBy` | `0x00891720` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 81 | `Quest.ChangeHeroMoralityDueToPicklock` | `CGameScriptInterface::ChangeHeroMoralityDueToPicklock` | `0x0089A0E0` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 82 | `Quest.ChangeHeroMoralityDueToTheft` | `CGameScriptInterface::ChangeHeroMoralityDueToTheft` | `0x0089A070` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 83 | `Quest.ConfiscateAllHeroItems` | `CGameScriptInterface::ConfiscateAllHeroItems` | `0x008986D0` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 84 | `Quest.FadeScreenOutUntilNextCallToFadeScreenIn` | `CGameScriptInterface::FadeScreenOutUntilNextCallToFadeScreenIn` | `0x008907E0` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 85 | `Quest.GetBestTimeGuessTheAddition` | `CGameScriptInterface::GetBestTimeGuessTheAddition` | `0x008A17D0` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 86 | `Quest.GetBestTimePairs` | `CGameScriptInterface::GetBestTimePairs` | `0x008A1590` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 87 | `Quest.GetBestTimeSorting` | `CGameScriptInterface::GetBestTimeSorting` | `0x008A15F0` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 88 | `Quest.GetDistanceHeroCanBeHeardFrom` | `CGameScriptInterface::GetDistanceHeroCanBeHeardFrom` | `0x00899700` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 89 | `Quest.GetHeroAge` | `CGameScriptInterface::GetHeroAge` | `0x00899560` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 90 | `Quest.GetHeroAttractiveness` | `CGameScriptInterface::GetHeroAttractiveness` | `0x00899930` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 91 | `Quest.GetHeroFatness` | `CGameScriptInterface::GetHeroFatness` | `0x00899850` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 92 | `Quest.GetHeroHasChildren` | `CGameScriptInterface::GetHeroHasChildren` | `0x00897BD0` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 93 | `Quest.GetHeroHasCurrentMarriage` | `CGameScriptInterface::GetHeroHasCurrentMarriage` | `0x00897B10` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 94 | `Quest.GetHeroHasDivorcedMarriage` | `CGameScriptInterface::GetHeroHasDivorcedMarriage` | `0x00897B70` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 95 | `Quest.GetHeroHasMarried` | `CGameScriptInterface::GetHeroHasMarried` | `0x00897AA0` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 96 | `Quest.GetHeroHasMurderedWife` | `CGameScriptInterface::GetHeroHasMurderedWife` | `0x00897C30` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 97 | `Quest.GetHeroMorality` | `CGameScriptInterface::GetHeroMorality` | `0x00899F90` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 98 | `Quest.GetHeroScariness` | `CGameScriptInterface::GetHeroScariness` | `0x008998C0` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 99 | `Quest.GetHeroWillEnergyLevel` | `CGameScriptInterface::GetHeroWillEnergyLevel` | `0x008999A0` | direct-signature | unique | strong | yes | agent-reviewed | 245 |
+| 100 | `Quest.GiveHeroMorality` | `CGameScriptInterface::GiveHeroMorality` | `0x00899EF0` | direct-signature | unique | strong | yes | agent-reviewed | 245 |

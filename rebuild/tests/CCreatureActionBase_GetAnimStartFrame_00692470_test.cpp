@@ -13,10 +13,7 @@ struct CCreatureActionBase {
   long frameOffset;
 };
 
-long __fastcall CCreatureActionBase_GetAnimStartFrame(CCreatureActionBase* self)
-{
-  return self->vtbl->slot06(self) + self->frameOffset;
-}
+long __fastcall CCreatureActionBase_GetAnimStartFrame(CCreatureActionBase* self);
 
 static long __fastcall stub_slot06(CCreatureActionBase*) { return 100; }
 

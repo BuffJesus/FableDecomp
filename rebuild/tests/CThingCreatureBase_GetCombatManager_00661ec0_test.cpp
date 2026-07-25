@@ -18,19 +18,15 @@ struct CThingCreatureBase
 // Stub helper: returns a fixture object whose +0x4c holds our sentinel manager.
 static CThingCreatureHelperResult g_fixture;
 
-extern "C" CThingCreatureHelperResult * __fastcall
+CThingCreatureHelperResult * __fastcall
 CThingCreatureBase_GetCombatManagerHelper(void *pThis)
 {
     (void)pThis;
     return &g_fixture;
 }
 
-// The function under test (mirrors the generated source).
-CCombatManager * __fastcall CThingCreatureBase__GetCombatManager(CThingCreatureBase *pThis)
-{
-    CThingCreatureHelperResult *pObj = CThingCreatureBase_GetCombatManagerHelper(pThis);
-    return pObj->pCombatManager;
-}
+// The function under test lives in the reconstruction object.
+CCombatManager * __fastcall CThingCreatureBase__GetCombatManager(CThingCreatureBase *pThis);
 
 int main()
 {

@@ -38,6 +38,10 @@ leans on automation because the target is large.
   `0x0089B330_global_IsHeroNaked_CGameScriptInterface_UBE_NXZ.cpp` before promotion. It has useful
   typed overlays but currently dereferences the vector-map end sentinel on the no-entry path; verify
   the type-key `0x5E` interface and called predicate before adding it to the curated lane.
+- [ ] Reconstruct the Wave 3 co-op spirit tail from bytes before promotion. The structural-PASS
+  `OnCreate @ 0x006700F0` has confused definition/template types, while
+  `UpdateAttractionToMaster @ 0x006701A0` and `UpdateScore @ 0x00670710` can dereference a failed
+  vector-map lookup; `UpdateAttractionToMaster` also has an uninitialized physics pointer.
 - [ ] Tune `LinkToNeighbouringMaps @ 0x00A7A650` toward the retail x87/local schedule; its current
   implementation is behavior-verified but nine bytes longer than retail.
 - [ ] Continue closing corrected ABI identities from decorated retail/donor symbols, treating the

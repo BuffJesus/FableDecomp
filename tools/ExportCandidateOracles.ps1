@@ -8,6 +8,7 @@ $scripts = Join-Path $root 'tools\ghidra_scripts'
 $candidateManifest = Join-Path $root 'rebuild\compile-gate\vc71-compiled.tsv'
 $output = Join-Path $root 'rebuild\oracles\auto-re-candidates.tsv'
 $temp = "$output.tmp.$PID"
+$addressFile = "$output.addresses.$PID.txt"
 
 if (-not (Test-Path -LiteralPath $candidateManifest)) {
     throw "Candidate compile manifest is missing: $candidateManifest"
@@ -21,18 +22,29 @@ if ($addresses.Count -eq 0) {
     throw 'Candidate compile manifest contains no addresses'
 }
 
-$arguments = @(
-    $project,
-    'FableTLC',
-    '-process', 'Fable.exe',
-    '-noanalysis',
-    '-scriptPath', $scripts,
-    '-postScript', 'ExportFunctionOracle.java', $temp
-) + $addresses
+try {
+    [System.IO.File]::WriteAllLines(
+        $addressFile,
+        [string[]]$addresses,
+        [System.Text.UTF8Encoding]::new($false)
+    )
+    $arguments = @(
+        $project,
+        'FableTLC',
+        '-process', 'Fable.exe',
+        '-noanalysis',
+        '-scriptPath', $scripts,
+        '-postScript', 'ExportFunctionOracle.java', $temp, "@$addressFile"
+    )
 
-& $headless @arguments
-if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $temp)) {
-    throw "Candidate oracle export failed with exit code $LASTEXITCODE"
+    & $headless @arguments
+    if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $temp)) {
+        throw "Candidate oracle export failed with exit code $LASTEXITCODE"
+    }
+    Move-Item -LiteralPath $temp -Destination $output -Force
 }
-Move-Item -LiteralPath $temp -Destination $output -Force
+finally {
+    Remove-Item -LiteralPath $addressFile -Force -ErrorAction SilentlyContinue
+    Remove-Item -LiteralPath $temp -Force -ErrorAction SilentlyContinue
+}
 Write-Output "CANDIDATE_ORACLES PASS functions=$($addresses.Count) output=$output"

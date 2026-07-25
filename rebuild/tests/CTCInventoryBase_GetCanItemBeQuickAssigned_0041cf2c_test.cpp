@@ -7,10 +7,7 @@ struct CTCInventoryBase
     bool CanItemBeQuickAssigned; // 0xC8
 };
 
-bool __fastcall CTCInventoryBase_GetCanItemBeQuickAssigned(CTCInventoryBase *self)
-{
-    return self->CanItemBeQuickAssigned;
-}
+bool __fastcall CTCInventoryBase_GetCanItemBeQuickAssigned(CTCInventoryBase *self);
 
 int main()
 {

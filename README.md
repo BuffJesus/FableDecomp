@@ -22,23 +22,61 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.656% |
 | Analysis DB | Complete non-`undefined` prototype | 69.023% |
-| Reconstruction | Landed sources, VC7.1-compiled **and** behaviour-gated | **1,735** |
-| Reconstruction | Retail `.text` byte-match (EXACT + relocation-masked) | **1,700** (3.43%) |
-| Reconstruction | — of which byte-**identical** (no relocation masking) | 1,112 (2.24%) |
-| Reconstruction | Landed sources still `DIFFER` (residue tail) | 34 |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **1,850** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **1,523** (3.07%) |
+| Reconstruction | — of which byte-**identical** (no relocation masking) | 914 (1.84%) |
+| Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
+| Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
+| Auto-RE intake | Generated candidates / structural checker PASS | 534 / 526 |
 
-Counts above are from `tools/decomp_pipeline/catalog_parity_audit.py` over the landed catalog
-(`rebuild/src/compiled/` vs `rebuild/oracles/`) — the authoritative measure. (The older
-`rebuild/COVERAGE.md` dashboard tracks only the original hand-curated `build_candidates.ps1` subset
-and undercounts the automated pipeline's mass lands; it is being reconciled.) The first **1%**
-compiled-byte-match milestone (496 functions) is **passed**; the project is at ~3.4% and climbing.
+Counts above are from the 2026-07-25 canonical refresh: the VC7.1 compile/behaviour catalog,
+`rebuild/compile-gate/retail-parity.json`, and `rebuild/COVERAGE.md`. Generated agent code is tracked
+separately and is never counted as reconstructed merely because a structural checker accepted it.
+The first **1%** compiled-byte-match milestone (496 functions) is passed; current verified retail
+parity is ~3.07% of the 49,553-function catalog. The lower match count than an earlier README is an
+audit reconciliation, not deleted source: the unified gate now exposes every `DIFFER` and missing
+function-start oracle instead of mixing older mass-land and curated-subset totals.
 **`docs/HANDOFF.md` is the authoritative resume point** — read its top section first.
 
-> **Notable finding (2026-07-23):** the binary retains a **near-complete but disabled co-op
-> multiplayer subsystem** — `LHNetworkLib` sockets, a `CNetworkClient` client/host event-replication
-> protocol (`CGameEventPackage`), `CPlayerManager` multi-controller management, and a combat-capable
-> `CTCCoopSpirit` entity with `COOP_SPIRIT_PLAYER_ONE..FOUR` slots (Fable's cut co-op). Two-source
-> confirmed (retail name DB + `ego_r` debug PDB). See `docs/FINDINGS.md`.
+The latest unattended Wave 3 pass reconstructed the co-op event/package codecs and player/network
+gate cluster as reviewable candidates. The refresh also validates 452/452 recommended ForgeFSE
+Quest bindings against their exact CGSI vtable slots. See `docs/HANDOFF.md` for the live batch and
+promotion caveats.
+
+## The cut multiplayer system
+
+The retail PC binary retains a substantial disabled co-op implementation. It is more than a few
+unused strings, but it is **not a ready-to-enable multiplayer mode**.
+
+What survives:
+
+- `CPlayerManager` manages four player slots and exposes a data-driven
+  `IsMultiplayerGameActive` check.
+- `CTCCoopSpirit` is a combat/movement entity for the extra player, with player-one through
+  player-four definition slots.
+- `CNetworkClient` is embedded in `CMainGameComponent`; its per-frame update is gated by byte
+  `CNetworkClient+0x2662`. `InitialiseAsLocal` sets that gate and the required component back-pointer.
+- `CGameEvent`, `CGameEventPackage`, and `CGameEventPackageSet` retain a dense replication protocol.
+  An event is `[u16 id+flag][u8 player/subfield][u8 payload length][payload]`, while package sets add
+  sequence numbers and event counts.
+- The receive/apply path still rejects stale sequence numbers, forwards packages into the world and
+  display engine, dispatches individual events, and integrates package sets with save/load.
+
+What was cut or gutted:
+
+- `CheckSync` reads a remote three-word synchronization record and computes the local world checksum,
+  then discards every value. There is no comparison, desync latch, report, or recovery path.
+- The tag-1 sync-event producer and the meanings of the other two synchronization words are not yet
+  proven.
+- A complete retail lobby/transport startup path has not been recovered. Network host/client setup
+  and the original desync reaction still need reconstruction.
+- Raw-poking the enable byte is unsafe: update forwarders dereference a back-pointer installed by
+  `InitialiseAsLocal`, so setting only `+0x2662` can crash.
+
+The practical revival order is therefore: seat a valid second player, initialize local mode through
+the real initializer, confirm event sequence movement, rebuild synchronization checking, and only
+then attach a modern transport. The byte-level contract, corrected addresses, evidence limits, and
+revival plan are in [`docs/COOP_REVIVAL.md`](docs/COOP_REVIVAL.md).
 
 ## Why this is tractable
 - `Fable.exe` is a clean MSVC PE32 — **no packer, no DRM stub** — Ghidra loads it directly.
@@ -86,6 +124,9 @@ Promotion queues and the backlog are generated under `rebuild/backlog/`.
   VC7.1 scorer, an automatic flag/pragma sweep, and libclang AST mutations (temp-introduction, reassoc,
   statement-split) with greedy + random multi-mutation search. Cracked several DIFFERs that plain
   compilation missed (many retail TUs were size-optimized). Requires `libclang`.
+- **`tools/organize_workspace.ps1`** — non-destructive local housekeeping for loose root scratch
+  objects/sources and RE-agent transcripts. It preserves the live `rebuild/`, `lift/`, and `work/`
+  contracts; preview with `-WhatIf`.
 
 ## Layout
 | Path | What |
@@ -96,11 +137,13 @@ Promotion queues and the backlog are generated under `rebuild/backlog/`.
 | `docs/FINDINGS.md` | Cited technical truth (cross-checked ≥2 sources). |
 | `docs/SYSTEMS_ANALYSIS.md` | Per-subsystem maps + moddability verdicts. |
 | `docs/TOOLCHAIN.md` | Exact commands: Ghidra import, GhidraMCP, FSE import, VC7.1 setup. |
+| `docs/WORKSPACE_LAYOUT.md` | Public/local artifact boundaries and safe housekeeping. |
 | `rebuild/` | The buildable reconstruction: curated source, tests, oracles, compile gate, coverage. |
 | `lift/` | Auto-RE agent lane: candidate reports, config, durable run state. |
 | `ghidra_out/` | Decompile dumps + `labels_*.tsv` (the reproducible name DB source). |
 | `tools/` | Ghidra RE script suite, FSE import, parity/dashboard tooling, Lua + asset tooling. |
 | `refs/` | FSE manifest + runtime log, format references. |
+| `work/`, `snapshots/`, `FSE/` | Local experiments, archives, and deployment backups (ignored). |
 
 ## Repository hygiene
 

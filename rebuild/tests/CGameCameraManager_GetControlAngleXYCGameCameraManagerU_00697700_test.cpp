@@ -8,10 +8,7 @@ struct CGameCameraManager
     float m_controlAngleXY;
 };
 
-float __fastcall GetControlAngleXY_CGameCameraManager(CGameCameraManager *thisptr)
-{
-    return thisptr->m_controlAngleXY;
-}
+float __fastcall GetControlAngleXY_CGameCameraManager(CGameCameraManager *thisptr);
 
 int main(void)
 {
