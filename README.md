@@ -22,8 +22,8 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Analysis DB | Usable reconstruction/navigation names | 99.211% |
 | Analysis DB | Calling convention known | 77.676% |
 | Analysis DB | Complete non-`undefined` prototype | 69.053% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **4,911** |
-| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **4,584** (9.25%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **4,912** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **4,585** (9.25%) |
 | Reconstruction | — of which byte-**identical** (no relocation masking) | 2,686 (5.42%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |

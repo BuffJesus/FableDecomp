@@ -34308,6 +34308,13 @@ $catalog = @(
         PassPattern = 'FABLETLC_REGISTER_VS_LAYOUT_BEHAVIOR PASS'
     }
     [pscustomobject]@{
+        Address = '0098b5e0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetVertexShaderConstantLayout_0098b5e0.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetVertexShaderConstantLayout_0098b5e0_test.cpp'
+        PassPattern = 'FABLETLC_SET_VS_LAYOUT_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
         Address = '00988020'
         Module = 'CShaderRenderManager'
         Source = '00/98/CShaderRenderManager_ApplyVertexShader_00988020.cpp'
