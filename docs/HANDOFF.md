@@ -1,6 +1,6 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 00:35 MDT (full GFInitialise visual path plus 395-function parity replay).*
+*Last updated: 2026-07-26 00:55 MDT (full GFInitialise visual path plus 420-function parity replay).*
 
 ## Full GFInitialise + parity replay checkpoint (2026-07-26)
 
@@ -22,9 +22,13 @@
   destructor shape. That added 131 verified scalar destructors and also
   recovered 264 previously stranded supported vector destructors. All 395
   passed behavior and relocation-normalized object parity before promotion.
-- The full catalog now passes with **3,704 compiled/behavior-gated functions**.
-  Retail object parity is **1,895 exact + 1,482 relocation-normalized = 3,377 /
-  49,553 (6.81%)**. The strict whole-executable percentage in the root README
+- The next replay pattern recognizes the 38-byte composite scalar destructor:
+  it destroys one embedded member, destroys the owner, and conditionally frees
+  owner storage. Another 25 candidates passed focused ordering/flag behavior
+  and relocation-normalized parity before promotion.
+- The full catalog now passes with **3,729 compiled/behavior-gated functions**.
+  Retail object parity is **1,895 exact + 1,507 relocation-normalized = 3,402 /
+  49,553 (6.87%)**. The strict whole-executable percentage in the root README
   and generated coverage dashboard is refreshed from these results.
 - Ghidra remains stopped and available for the other project. The six
   non-identical Wave 3 root/shard collisions remain preserved for deliberate

@@ -41,6 +41,9 @@ determined by the retail bytes:
   56 8b f1 e8 xx xx xx xx f6 44 24 08 01 74 07 56
      e8 yy yy yy yy 59 8b c6 5e c2 04 00
                      -> destruct an object and optionally delete its storage
+  56 8b f1 8d 4e oo e8 xx xx xx xx 8b ce e8 yy yy yy yy
+     f6 44 24 08 01 74 07 56 e8 zz zz zz zz 59 8b c6 5e c2 04 00
+                     -> destruct a member and its owner, then optionally delete
   51 56 8b f1 8b 56 04 8b 0e 8d 44 24 07 50 e8 xx xx xx xx
      8b 36 85 f6 74 07 56 e8 yy yy yy yy 59 5e 59 c3
                      -> finish an async read and release its resource
@@ -238,6 +241,16 @@ def const_from_bytes(bs: bytes):
     ):
         return ("scalar_deleting_destructor", None)
     if (
+        len(bs) == 38
+        and bs[:5] == b"\x56\x8b\xf1\x8d\x4e"
+        and bs[6] == 0xE8
+        and bs[11:14] == b"\x8b\xce\xe8"
+        and bs[18:26] == b"\xf6\x44\x24\x08\x01\x74\x07\x56"
+        and bs[26] == 0xE8
+        and bs[31:] == b"\x59\x8b\xc6\x5e\xc2\x04\x00"
+    ):
+        return ("composite_scalar_deleting_destructor", bs[5])
+    if (
         len(bs) == 35
         and bs[:14] == b"\x51\x56\x8b\xf1\x8b\x56\x04\x8b\x0e"
         b"\x8d\x44\x24\x07\x50"
@@ -282,10 +295,17 @@ def candidate(row):
         name = f"GlobalMethodTailThunk_{addr}"
         cls, leaf = "global", name
         module = "_global"
-    elif rettype == "scalar_deleting_destructor":
+    elif rettype in (
+        "scalar_deleting_destructor",
+        "composite_scalar_deleting_destructor",
+    ):
         module = row.get("module") or "_global"
         cls = sanitize(module)
-        leaf = "ScalarDeletingDestructor"
+        leaf = (
+            "ScalarDeletingDestructor"
+            if rettype == "scalar_deleting_destructor"
+            else "CompositeScalarDeletingDestructor"
+        )
     else:
         cls, leaf = split_name(name)
         module = row.get("module") or (cls if cls != "global" else "_global")
@@ -820,6 +840,70 @@ def candidate(row):
             f"    {fn}(&object, 0, 1);\n"
             "    if (g_AutoTinyScalarDestructorCalls != 2 ||\n"
             "        g_AutoTinyScalarDeleteCalls != 1)\n"
+            "        return 1;\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "composite_scalar_deleting_destructor":
+        source = (
+            '#pragma optimize("s", on)\n'
+            "extern void __fastcall AutoTinyMemberDestructor(void* member);\n"
+            "extern void __fastcall AutoTinyCompositeDestructor(void* self);\n"
+            "extern void __cdecl AutoTinyCompositeDelete(void* object);\n"
+            f"void* __fastcall {fn}("
+            "void* self, int, unsigned int flags)\n"
+            "{\n"
+            "    AutoTinyMemberDestructor("
+            f"static_cast<unsigned char*>(self) + {value});\n"
+            "    AutoTinyCompositeDestructor(self);\n"
+            "    if (flags & 1)\n"
+            "        AutoTinyCompositeDelete(self);\n"
+            "    return self;\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "static int g_AutoTinyMemberDestructorCalls = 0;\n"
+            "static int g_AutoTinyCompositeDestructorCalls = 0;\n"
+            "static int g_AutoTinyCompositeDeleteCalls = 0;\n"
+            "static void* g_AutoTinyObservedMember = 0;\n"
+            "void __fastcall AutoTinyMemberDestructor(void* member)\n"
+            "{\n"
+            "    ++g_AutoTinyMemberDestructorCalls;\n"
+            "    g_AutoTinyObservedMember = member;\n"
+            "}\n"
+            "void __fastcall AutoTinyCompositeDestructor(void*)\n"
+            "{\n"
+            "    ++g_AutoTinyCompositeDestructorCalls;\n"
+            "}\n"
+            "void __cdecl AutoTinyCompositeDelete(void*)\n"
+            "{\n"
+            "    ++g_AutoTinyCompositeDeleteCalls;\n"
+            "}\n"
+            f"void* __fastcall {fn}("
+            "void* self, int, unsigned int flags)\n"
+            "{\n"
+            "    AutoTinyMemberDestructor("
+            f"static_cast<unsigned char*>(self) + {value});\n"
+            "    AutoTinyCompositeDestructor(self);\n"
+            "    if (flags & 1)\n"
+            "        AutoTinyCompositeDelete(self);\n"
+            "    return self;\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            "    unsigned char object[256] = {0};\n"
+            f"    if ({fn}(object, 0, 0) != object ||\n"
+            f"        g_AutoTinyObservedMember != object + {value} ||\n"
+            "        g_AutoTinyMemberDestructorCalls != 1 ||\n"
+            "        g_AutoTinyCompositeDestructorCalls != 1 ||\n"
+            "        g_AutoTinyCompositeDeleteCalls != 0)\n"
+            "        return 1;\n"
+            f"    {fn}(object, 0, 1);\n"
+            "    if (g_AutoTinyMemberDestructorCalls != 2 ||\n"
+            "        g_AutoTinyCompositeDestructorCalls != 2 ||\n"
+            "        g_AutoTinyCompositeDeleteCalls != 1)\n"
             "        return 1;\n"
             f"    std::printf(\"{pattern}\\n\");\n"
             "    return 0;\n"
