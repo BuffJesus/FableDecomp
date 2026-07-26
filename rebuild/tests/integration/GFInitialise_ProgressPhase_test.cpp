@@ -42,10 +42,22 @@ int main()
     if (
         g_FableProgressBeginCalls != 1 ||
         g_FableProgressConstructCalls != 1 ||
-        g_FableProgressInstallCalls != 1 ||
-        g_FableProgressDestroyCalls != 1)
+        g_FableProgressInstallCalls != 0 ||
+        g_FableProgressDestroyCalls != 0 ||
+        g_FableProgressDisplayObject_013CAA38 == 0 ||
+        g_FableProgressDisplayReference_013CAA3C == 0 ||
+        g_FableProgressDisplayReference_013CAA3C->owners != 1)
     {
         return 3;
+    }
+
+    FableReleaseProgressDisplayBoundary();
+    if (
+        g_FableProgressDisplayObject_013CAA38 != 0 ||
+        g_FableProgressDisplayReference_013CAA3C != 0 ||
+        g_FableProgressDestroyCalls != 1)
+    {
+        return 7;
     }
 
     ResetFixture();
@@ -69,7 +81,9 @@ int main()
         g_FableProgressBeginCalls != 1 ||
         g_FableProgressConstructCalls != 0 ||
         g_FableProgressInstallCalls != 0 ||
-        g_FableProgressDestroyCalls != 0)
+        g_FableProgressDestroyCalls != 0 ||
+        g_FableProgressDisplayObject_013CAA38 != 0 ||
+        g_FableProgressDisplayReference_013CAA3C != 0)
     {
         return 6;
     }

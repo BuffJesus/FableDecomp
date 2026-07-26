@@ -84,8 +84,12 @@ struct CProgressDisplay
 
 FABLE_STATIC_ASSERT(sizeof(CProgressDisplay) == 0x88);
 
+struct FableReferenceCount;
+
 extern fable_u8 g_CProgressDisplayVTable_012388B4;
 extern double g_FableZeroDouble_0122ED70;
+extern CProgressDisplay* g_FableProgressDisplayObject_013CAA38;
+extern FableReferenceCount* g_FableProgressDisplayReference_013CAA3C;
 void FABLE_FASTCALL FableConstructWideString(CWideString* value);
 void FABLE_FASTCALL FableConstructCharString(CCharString* value);
 
@@ -121,6 +125,7 @@ struct CCountedProgressDisplay
 
 fable_u8 FABLE_FASTCALL GFInitialiseState_Begin(GFInitialiseState* state);
 void FABLE_FASTCALL SetProgressDisplay(CCountedProgressDisplay* display);
+void FABLE_FASTCALL FableReleaseProgressDisplayBoundary();
 
 fable_u8 FABLE_FASTCALL GFInitialise_SetupProgressDisplay(
     GFInitialiseState* state);

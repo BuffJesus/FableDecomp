@@ -113,6 +113,8 @@ void FABLE_CDECL GFGetBuildNumber2()
 
 void FABLE_FASTCALL FablePrepareGFInitialiseBoundary()
 {
+    FableReleaseProgressDisplayBoundary();
+
     memset(
         &g_FableBoundaryEngineRoot,
         0,
@@ -192,8 +194,8 @@ fable_u8 FABLE_FASTCALL GFInitialiseState_Begin(
     return g_FableProgressBeginEnabled ? 1 : 0;
 }
 
-void FABLE_FASTCALL SetProgressDisplay(
-    CCountedProgressDisplay* /* display */)
+void FABLE_FASTCALL FableReleaseProgressDisplayBoundary()
 {
-    ++g_FableProgressInstallCalls;
+    CCountedProgressDisplay emptyDisplay(0);
+    SetProgressDisplay(&emptyDisplay);
 }
