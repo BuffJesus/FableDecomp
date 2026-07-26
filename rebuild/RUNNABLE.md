@@ -6,15 +6,16 @@ bootstrap as a running game.
 
 ## Current executable milestone
 
-**The Stage 2 checkpoint now runs GFMain Phase 1:** VC7.1 links and runs a
+**The Stage 3 checkpoint now runs GFMain Phases 1 and 2:** VC7.1 links and runs a
 Win32 GUI executable through the recovered `WinMain @ 0x00403480`
-and an authored integration unit for retail `0x00402510-0x004025A6`.
+and authored integration units for retail `0x00402510-0x00402668`.
 Its 141-byte body is an exact relocation-normalized retail match, and
 the fixture proves both first-instance and duplicate-instance paths,
 the 200 KiB MicroThread stack handoff, and the fastcall GFMain ABI.
 Phase 1 constructs the recovered system defaults, establishes the
 executable/project path with promoted retail functions, crosses a
-counted console-variable boundary, and returns at the Phase 2 boundary.
+counted console-variable boundary, then continues through the basic-install
+and failure-policy sequence to the Phase 3 boundary.
 
 The first GFInitialise leaf is also promoted:
 `GFInitialise_SetupProgressDisplay @ 0x00413120` is a 128-byte
@@ -40,6 +41,9 @@ Phase 2 now has all seven direct calls proven: the repeated string/profile
 leaves, `NProfileTimer::EndProfile`, the async failure-policy encoder,
 the TLC startup-latch clear, and the 69-byte counted `CFileInstaller`
 singleton retrieval path.
+The authored Phase 2 integration fixture proves setting propagation,
+optional installer setup, startup-latch handling, async failure policy,
+and balanced counted ownership on both enabled and skipped paths.
 
 **Stage 0 remains the smallest linker proof:** VC7.1 links a console
 PE containing
@@ -66,11 +70,12 @@ Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,
 `FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS`,
 `FABLETLC_STARTUP_LATCH_BEHAVIOR PASS`,
 `FABLETLC_FILE_INSTALLER_GET_BEHAVIOR PASS`,
-`FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS`, and
-`STAGE2_STARTUP PASS`.
+`FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS`,
+`FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS`, and
+`STAGE3_STARTUP PASS`.
 Generated products stay under the ignored `rebuild/build/` tree.
 
-Stage 2 uses explicit integration boundaries and is not claimed as a
+Stages 2 and 3 use explicit integration boundaries and are not claimed as a
 retail-matching GFMain. It does **not** yet initialize Lionhead engine
 services, open the retail window, load assets, or enter the game loop.
 
@@ -139,7 +144,7 @@ These are integration units, not invented retail functions.
 
 Phase closure order:
 1. **runtime and project bootstrap:** Callable in Stage 2; close CSystemManagerInit's one-instruction scheduling residue and replace the console-variable boundary from recovered registration data.
-2. **basic-install and failure-policy bootstrap:** Type and recover the temporary counted-pointer release path surrounding the now-matched singleton retrieval.
+2. **basic-install and failure-policy bootstrap:** Callable in Stage 3 with typed counted ownership; begin Phase 3 settings and persistence recovery.
 3. **settings, persistence, and IME:** Separate optional settings-file parsing from default-value initialization.
 4. **root child hierarchy:** Recover the five named child definitions and the owner/container type.
 5. **retail banks and INI files:** Name each bank path and turn the repeated open sequence into data-backed records.
