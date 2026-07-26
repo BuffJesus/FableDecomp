@@ -1,15 +1,4 @@
-#include "rebuild_abi.h"
-
-struct Render2DDrawListBlockView
-{
-    Render2DDrawListBlockView* begin00;
-    Render2DDrawListBlockView* end04;
-    fable_u8 unknown08[0x18];
-
-    Render2DDrawListBlockView* CopyBlock(
-        Render2DDrawListBlockView* destination,
-        const Render2DDrawListBlockView* source);
-};
+#include "fable_render2d_vertex_queue.h"
 
 Render2DDrawListBlockView* Render2DDrawListBlockView::CopyBlock(
     Render2DDrawListBlockView* destination,

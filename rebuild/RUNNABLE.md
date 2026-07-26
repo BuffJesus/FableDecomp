@@ -48,9 +48,10 @@ active-stage bookkeeping. The exact 167-byte
 `CRenderStateManager::RealiseRenderState` body also drains ten queued render,
 texture-stage, and sampler states for the live draw. Other dependency dispatch
 now includes the recovered 11-byte `CRenderManagerCore::SetAWindow` ownership
-hop into a compact D3D9 viewport endpoint. Remaining dispatch is still authored
-rather than the complete Lionhead coordinator, runtime archive loader, or game
-loop.
+hop into a compact D3D9 viewport endpoint. The exact 79-byte
+`Render2DDrawList::CopyBlock` full-clear path then resets the live 0x20-byte
+vertex queue. Remaining dispatch is still authored rather than the complete
+Lionhead coordinator, runtime archive loader, or game loop.
 
 The first parent-coordinator seam is now canonical too:
 `FableBuildRender2DBatchPlan` models the recovered 0x3C-byte draw-record

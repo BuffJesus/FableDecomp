@@ -58,6 +58,10 @@
   compact display endpoint issues D3D9 `SetViewport`. The full 189-byte
   `CDisplayManager::SetViewport @ 0x009BF490` remains unrecovered because its
   post-viewport shader-manager callback still requires the singleton graph.
+- Exact 79/79-byte `Render2DDrawList::CopyBlock @ 0x009E1440` is now the
+  fourth live dependency. The lifecycle `CLEAR_VERTEX_QUEUE` event constructs
+  the retail 0x20-byte controller view and invokes its exact full-clear path,
+  proving the end pointer returns to begin after the six submitted vertices.
 - Ego PDB corrected the visible vertex ABI to
   `CTVertexRHWColSpecTex1Base`: 0x20 bytes containing XYZRHW, diffuse,
   specular, and UV. The bridge now uses FVF `0x1C4`, a compile-time 0x20 size
