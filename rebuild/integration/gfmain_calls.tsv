@@ -16,38 +16,38 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 2	0040261f	009d81e0	FableClearStartupLatch_013964A8	RELOCATION_MATCH	rebuild/src/compiled/00/9d/Global_ClearStartupLatch_009d81e0.cpp
 2	0040262a	009d5240	CBankFileAsync::SetEnableFailureHandling	RELOCATION_MATCH	rebuild/src/compiled/00/9d/CBankFileAsync_SetEnableFailureHandling_009d5240.cpp
 3	00402668	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
-3	00402678	0099ebf0	CCharString
-3	00402683	009d8240	$E2
-3	0040268c	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+3	00402678	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+3	00402683	009d8240	NProfileTimer::StartProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp
+3	0040268c	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	0040269f	00415530	GetActionName
 3	004026a6	0099e480	GetDefaultVal<CAnimationSet>
 3	004026b5	0099bff0	CCharString::SetFromEnum
 3	004026c0	0099bf30	CCharString::AssignFromValue
-3	004026c9	0099b510	~CCharString
-3	004026d2	0099b510	~CCharString
-3	004026db	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+3	004026c9	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+3	004026d2	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+3	004026db	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	004026e4	00999230	PathExists
 3	004026fe	0099ad80	CDiskFileWin32
-3	00402713	0099e4b0	CCharString
+3	00402713	0099e4b0	CCharString::CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_DefaultConstructor_0099e4b0.cpp
 3	00402724	0099f2e0	LoadFromFile
-3	00402735	0099ebf0	CCharString
+3	00402735	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
 3	00402745	00404720	CStringParser
-3	0040274e	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+3	0040274e	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	00402765	009badd0	CPersistContext
 3	00402785	004045c0	Transfer<signed_char>
 3	004027a5	004045c0	Transfer<signed_char>
 3	004027c5	004045c0	Transfer<signed_char>
 3	004027d1	00405350	LoadIMESettings
 3	004027da	004046b0	SortTreeRecursively
-3	004027e3	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-3	004027ec	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+3	004027e3	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+3	004027ec	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	004027f5	0099a2e0	CBase
-3	004027fe	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+3	004027fe	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	0040280f	0099a920	?Close@CDiskFileWin32@@UAEXXZ
-3	00402818	0099b510	~CCharString
+3	00402818	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
 3	00402821	0099a300	CBase
-3	0040282c	009bc890	SetLeftAlignText
-3	00402837	009bc8a0	SetLeftAlignText
+3	0040282c	009bc890	NTextLayoutConfig::SetPrimaryLeftAlignment	RELOCATION_MATCH	rebuild/src/compiled/00/9b/TextLayout_SetPrimaryLeftAlignment_009bc890.cpp
+3	00402837	009bc8a0	NTextLayoutConfig::SetSecondaryLeftAlignment	RELOCATION_MATCH	rebuild/src/compiled/00/9b/TextLayout_SetSecondaryLeftAlignment_009bc8a0.cpp
 3	0040283e	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
 4	0040284e	0099ebf0	CCharString
 4	00402859	009d8240	$E2
