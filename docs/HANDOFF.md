@@ -1,6 +1,18 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 (D3D9 visual presentation bridge).*
+*Last updated: 2026-07-26 (recovered pixel-format closure).*
+
+## EgoMP donor review (2026-07-26)
+
+- The public [`98thrxse/egomp`](https://github.com/98thrxse/egomp) runtime
+  hook project has been audited at commit `816e58f`. Its strongest usable
+  evidence is the `CMainGameComponent` singleton/object graph and the
+  Init/PostInit/Update/Shutdown callback order; it contains no renderer,
+  archive loader, or standalone boot implementation.
+- Several EgoMP hook labels conflict with byte-proven identities here, so its
+  addresses are treated as hypotheses requiring retail/PDB validation.
+  GPLv3 code is not copied. The reusable evidence and licensing boundary are
+  recorded in `docs/EGOMP_DONOR_AUDIT.md`.
 
 ## D3D9 visual presentation bridge (2026-07-26)
 
@@ -77,8 +89,15 @@
   `CTexture::CalcByteLength @ 0x009F9EE0` null path. Calc is behavior-proven
   but remains an honest 134-byte `ORACLE_MISSING` candidate (direct retail
   inspection shows a semantically equivalent 143-byte register-allocation
-  difference). The nonnull pixel-format/table path remains deliberately
-  fail-closed in the visual bridge.
+  difference).
+- Calc's nonnull path is no longer a link shim. Relocation-matched
+  `CPixelFormat::GetColourDepth @ 0x009E3820` (13/13 bytes) and
+  `CPixelFormat::Initialise @ 0x009E3830` (50/50 bytes), plus the exact
+  1,692-byte retail table at `0x0129BA40`, are linked into both the visual
+  executable and its behavior fixture. The current retail-shaped temporary
+  wrapper is intentionally null, so execution still takes Calc's null branch,
+  but every nonnull accounting dependency is now concrete and independently
+  gated. The authored fail-closed definitions have been removed.
 - Exact 121/121-byte
   `CRenderStateManager::RestoreCaptureBlock @ 0x00A05840` is now the eighth
   live direct dependency. It closes a compact sentinel-only capture block
