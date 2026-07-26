@@ -14,7 +14,7 @@ namespace
     };
 }
 
-fable_i32 g_CStringInstanceCount_013BCA20 = 0;
+fable_i32 g_CWideStringInstanceCount_013BCA20 = 0;
 
 static void InstallStorage(
     CWideString& value,
@@ -26,14 +26,14 @@ static void InstallStorage(
 
 static int VerifyNullStorageRelease()
 {
-    g_CStringInstanceCount_013BCA20 = 0;
+    g_CWideStringInstanceCount_013BCA20 = 0;
     {
         CWideString value;
-        if (g_CStringInstanceCount_013BCA20 != 1)
+        if (g_CWideStringInstanceCount_013BCA20 != 1)
             return 1;
     }
 
-    if (g_CStringInstanceCount_013BCA20 != 0)
+    if (g_CWideStringInstanceCount_013BCA20 != 0)
         return 2;
     return 0;
 }
@@ -58,7 +58,7 @@ static int VerifySharedStorageRelease()
     }
     delete storage;
 
-    if (g_CStringInstanceCount_013BCA20 != 0)
+    if (g_CWideStringInstanceCount_013BCA20 != 0)
         return 4;
     return 0;
 }
@@ -76,7 +76,7 @@ static int VerifySoleOwnerRelease()
         InstallStorage(value, storage);
     }
 
-    if (g_CStringInstanceCount_013BCA20 != 0)
+    if (g_CWideStringInstanceCount_013BCA20 != 0)
         return 5;
     return 0;
 }

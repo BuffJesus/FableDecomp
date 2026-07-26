@@ -60,9 +60,14 @@ The `GFMain` Phase-1 filesystem pair is promoted as well:
 `CAFile::GetProjectPath @ 0x00997510` (146 bytes) and
 `CAFile::SetCurrentPath @ 0x009974F0` (30 bytes) are relocation-normalized retail matches.
 Focused fixtures prove executable-directory discovery and that the OS working directory changes
-before the engine's cached path. The folded `CWideString` constructor and reference-counted
-destructor are also recovered, bringing Phase 1 to 4/9 direct callees proven; the remaining setup
-helpers and `CSystemManagerInit` are the next closure targets.
+before the engine's cached path. The folded `CWideString` and `CCharString` lifetime pairs are also
+recovered and now live in a shared string-domain header. The PDB lineage also resolves the one-byte
+retail no-op as `NProfileTimer::StartProfile`, bringing Phase 1 to 7/9 direct callees at
+relocation match. The nested default `CCharString` constructor is proven as well, and
+`CSystemManagerInit` now has readable typed source plus a passing behavior fixture for its
+layout, defaults, region GUID, and subobject order. Its 265-byte build differs only by one
+three-byte `lea` being scheduled earlier, so that residue is tracked explicitly rather than
+misreported as an exact match.
 
 The unattended Wave 3 lane has moved from the co-op event/package codecs into ForgeFSE Quest
 wrappers. The current refresh validates 452/452 recommended Quest bindings against their exact

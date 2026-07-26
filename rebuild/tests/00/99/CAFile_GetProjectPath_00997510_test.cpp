@@ -22,7 +22,7 @@ CWideString::CWideString(const wchar_t* text)
 {
     wcsncpy(g_ownedText, text, kMaximumPathCharacters - 1);
     g_ownedText[kMaximumPathCharacters - 1] = L'\0';
-    storage_ = reinterpret_cast<fable_u32>(g_ownedText);
+    storage_ = reinterpret_cast<CWideStringData*>(g_ownedText);
 }
 
 CWideString::~CWideString()

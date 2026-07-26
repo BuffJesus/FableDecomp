@@ -24,6 +24,14 @@ def main() -> int:
         type=Path,
         default=Path(__file__).resolve().parents[1],
     )
+    parser.add_argument(
+        "--allow-move",
+        metavar="SOURCE:LENGTH:DESTINATION",
+        help=(
+            "Accept one documented instruction-scheduling residue when moving "
+            "the built byte range to DESTINATION reproduces retail."
+        ),
+    )
     parser.add_argument("--objdump", default="objdump")
     args = parser.parse_args()
 
@@ -57,7 +65,39 @@ def main() -> int:
             f"BOOT_OBJECT FAIL address={address} "
             f"retail={len(retail)} built={len(built)}"
         )
-    if mask_relocations(retail, relocations) != mask_relocations(built, relocations):
+    masked_retail = mask_relocations(retail, relocations)
+    masked_built = mask_relocations(built, relocations)
+    if masked_retail != masked_built and args.allow_move:
+        try:
+            source_text, length_text, destination_text = args.allow_move.split(":")
+            source = int(source_text, 0)
+            length = int(length_text, 0)
+            destination = int(destination_text, 0)
+        except (TypeError, ValueError):
+            raise SystemExit(
+                "BOOT_OBJECT FAIL "
+                f"address={address} reason=invalid-allow-move"
+            )
+
+        moved = masked_built[source : source + length]
+        candidate = (
+            masked_built[:source] +
+            masked_built[source + length :]
+        )
+        candidate = (
+            candidate[:destination] +
+            moved +
+            candidate[destination:]
+        )
+        if candidate == masked_retail:
+            print(
+                f"BOOT_OBJECT SCHEDULING_RESIDUE address={address} "
+                f"symbol={symbol} bytes={len(built)} "
+                f"relocations={len(relocations)} move={args.allow_move}"
+            )
+            return 0
+
+    if masked_retail != masked_built:
         raise SystemExit(
             f"BOOT_OBJECT FAIL address={address} "
             "reason=non-relocation-bytes-differ"
