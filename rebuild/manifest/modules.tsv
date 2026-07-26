@@ -2723,7 +2723,7 @@ CPrizeScoreDef	1	3	3	0	0	1	1	1	0	0	0
 CProcessedInput	7	1	1	1	0	0	0	0	0	0	0
 CProfile	10	8	0	0	0	0	0	0	0	0	0
 CProfileManager	18	0	0	0	0	0	0	0	0	0	0
-CProgressDisplay	15	15	14	0	0	2	2	1	1	0	0
+CProgressDisplay	15	15	14	0	0	3	3	1	2	0	0
 CProjectileWeapon	20	8	5	0	0	0	0	0	0	0	0
 CProng	5	2	2	0	0	0	0	0	0	0	0
 CProphetCage	3	1	1	0	0	0	0	0	0	0	0

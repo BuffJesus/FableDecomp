@@ -34062,6 +34062,13 @@ $catalog = @(
         TestSource = '00/cb/global_DeleteData_00cb8d10_test.cpp'
         PassPattern = 'AUTO_TINY_00cb8d10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00499a70'
+        Module = 'CProgressDisplay'
+        Source = '00/49/CProgressDisplay_SetToDisplayText_00499a70.cpp'
+        TestSource = '00/49/CProgressDisplay_SetToDisplayText_00499a70_test.cpp'
+        PassPattern = 'FABLETLC_PROGRESS_DISPLAY_TEXT_MODE_BEHAVIOR PASS'
+    }
 )
 
 $oldPath = $env:PATH

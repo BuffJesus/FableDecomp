@@ -22,8 +22,8 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Analysis DB | Usable reconstruction/navigation names | 99.211% |
 | Analysis DB | Calling convention known | 77.674% |
 | Analysis DB | Complete non-`undefined` prototype | 69.049% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **4,870** |
-| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **4,543** (9.17%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **4,871** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **4,544** (9.17%) |
 | Reconstruction | — of which byte-**identical** (no relocation masking) | 2,672 (5.39%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
@@ -81,8 +81,9 @@ relocation-normalized match that releases the prior counted object, retains the 
 reference across the visible window lifetime, and releases it on shutdown. The handoff now
 acquires that owner through the recovered 28-byte `GetProgressDisplay @ 0x009EA060` and queries
 the real `active79` state through the exact four-byte
-`CProgressDisplay::IsActive @ 0x0049B460`. A successful smoke boot exposes that state in the
-top-level window title as `Retail Progress Display Ready`. The authored window is still
+`CProgressDisplay::IsActive @ 0x0049B460`. The startup now also traverses the recovered
+47-byte `CProgressDisplay::SetToDisplayText @ 0x00499A70` state transition before presentation.
+A successful smoke boot exposes the retained state in the top-level window title. The authored window is still
 scaffolding, not a claim that retail rendering or the game loop is recovered.
 
 The `GFMain` Phase-1 filesystem pair is promoted as well:
@@ -126,12 +127,14 @@ with `rebuild/build_bootstrap.ps1`, then launch it from `rebuild/build/bootstrap
 | Visible milestone | Current state | What remains |
 |---|---|---|
 | First actual retail image | **Runnable now: `FRONTEND_BACKDROP_01` is decoded from `frontend.big` and shown by the reconstructed executable** | Presentation currently uses the authored GDI window rather than Lionhead's runtime archive/texture/renderer stack. |
-| First recovered retail progress setup | **Coordinator, setup, 0x88-byte constructor, retained owner, counted getter, and active-state query are connected** | Recover `StartProgress`, texture initialization, and the renderer/display resources that draw the retained object. |
+| First recovered retail progress setup | **Coordinator, setup, 0x88-byte constructor, retained owner, counted getter, active-state query, and text-mode transition are connected** | Recover the shared `StartProgress`/initialize body, texture initialization, and the renderer/display resources that draw the retained object. |
 | Retail-rendered frame/frontend | **Several major closures away** | Recover display/D3D setup, runtime archive and texture ownership, primitive submission, and the update/render/present loop. |
 | Retail intro video | **Farther than the first renderer frame** | Add the movie/Bink ownership and decode path, timing, audio, and frame presentation after renderer/display initialization. |
 
-The “actual image” milestone is therefore reached, but “the game is rendering” is not. The nearest
-honest engine milestone remains the game's progress display and its texture consumers, not the
+The “actual image” milestone is therefore reached, but “the game is rendering” is not. Retail
+inspection shows the apparent 13-byte `StartProgress @ 0x00499AA0` entry falls through into the
+405-byte body at `0x00499AAD`; it must be recovered as a shared control-flow unit rather than
+promoted as a misleading standalone leaf. The nearest honest engine milestone remains the game's progress display and its texture consumers, not the
 intro movie or interactive menu. That is not one or two functions away: only two of ten GFMain
 integration phases are callable, even though 40 of its 257 direct call sites and 21 of Phase 3's
 34 sites are already proven. These dependency counts are more informative than converting them

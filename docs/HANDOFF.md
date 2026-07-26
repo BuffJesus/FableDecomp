@@ -1,6 +1,33 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 10:14 MDT (first retail image on reconstructed screen checkpoint).*
+*Last updated: 2026-07-26 10:34 MDT (retail image + progress text-state checkpoint).*
+
+## Retail image + progress text-state checkpoint (2026-07-26)
+
+- `CProgressDisplay::SetToDisplayText @ 0x00499A70` is recovered, behavior
+  gated, and promoted as a 47-byte relocation-normalized retail match. The
+  fixture proves false clears the primary string and progress value, while
+  true calls `CalculateNextTextTag`; the visual startup now traverses the
+  recovered false transition before presenting the retained display state.
+- The complete Release bootstrap remains green through every retail leaf,
+  Stage 0-3, the GFInitialise progress integration, and the retail-art visual
+  checkpoint. The executable still displays genuine `FRONTEND_BACKDROP_01`
+  pixels from the user's local `frontend.big`.
+- The canonical VC7.1 compile/behavior gate passes **4,871 / 4,871**.
+  Retail parity is **2,672 exact + 1,872 relocation-normalized = 4,544 /
+  49,553 (9.17%)**; the honest residue remains 199 differences and 128
+  missing function-start oracles.
+- Retail inspection corrected the next target: the apparent 13-byte
+  `StartProgress @ 0x00499AA0` has no return and falls through into the
+  405-byte entry/body at `0x00499AAD`. Recover that shared control-flow unit
+  together; do not promote the short entry independently.
+- Next visual closure remains `InitialiseTextures`, runtime texture/resource
+  ownership, and the smallest renderer-backed progress draw/present path.
+  The current retail image is real, but its extraction and GDI presentation
+  remain an explicit authored bridge rather than the recovered game renderer.
+  A direct-call audit of the 2,920-byte retail `InitialiseTextures` body found
+  46 unique callees, only three of which are currently canonical parity
+  matches, so treat it as a dependency cluster rather than a single-leaf gap.
 
 ## First retail image on reconstructed screen checkpoint (2026-07-26)
 
@@ -21,8 +48,8 @@
   primitive setup, render/present scheduling, and the game loop remain open.
   Intro video is farther away because the movie/Bink path, timing, audio, and
   frame presentation sit on top of that display foundation.
-- Next visual target: recover and connect
-  `CProgressDisplay::StartProgress @ 0x00499AA0`,
+- Next visual target: recover the shared
+  `CProgressDisplay::StartProgress @ 0x00499AA0` / `0x00499AAD` body,
   `CProgressDisplay::InitialiseTextures @ 0x0049A0B0`, and the smallest
   renderer-backed progress draw path. Keep build-time retail-image display as
   an explicit, tested bridge rather than mislabeling it as the engine renderer.
