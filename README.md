@@ -22,8 +22,8 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Analysis DB | Usable reconstruction/navigation names | 99.211% |
 | Analysis DB | Calling convention known | 77.660% |
 | Analysis DB | Complete non-`undefined` prototype | 69.027% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **1,850** |
-| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **1,523** (3.07%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **1,853** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **1,526** (3.08%) |
 | Reconstruction | — of which byte-**identical** (no relocation masking) | 913 (1.84%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
@@ -35,7 +35,7 @@ separately and is never counted as reconstructed merely because a structural che
 The successful refresh also synchronizes this table automatically; GitHub is updated at reviewed
 checkpoints rather than publishing live, unreviewed queue output.
 The first **1%** compiled-byte-match milestone (496 functions) is passed; current verified retail
-parity is ~3.07% of the 49,553-function catalog. The lower match count than an earlier README is an
+parity is ~3.08% of the 49,553-function catalog. The lower match count than an earlier README is an
 audit reconciliation, not deleted source: the unified gate now exposes every `DIFFER` and missing
 function-start oracle instead of mixing older mass-land and curated-subset totals.
 **`docs/HANDOFF.md` is the authoritative resume point** — read its top section first.
@@ -102,7 +102,7 @@ constructor, and counted-pointer assignment paths. Typing the caller's temporary
 cleanup completed the Phase 2 ownership closure; Phase 3 settings and persistence are now the next
 runnable boundary.
 
-Phase 3 now has 20 of 34 direct calls proven. Fifteen are honest reuse of the already-matched
+Phase 3 now has 21 of 34 direct calls proven. Fifteen are honest reuse of the already-matched
 string/profile lifetime targets; another pair are seven-byte primary and secondary text-alignment
 setters at `0x009BC890` and `0x009BC8A0`. Their adjacent retail globals remain address-bearing
 until the settings caller proves whether they are channels or fields of one owner. Two additional
@@ -118,6 +118,14 @@ relocation normalization, and its fixture proves construction of `"English"` wit
 and balanced result destruction. The correction is recorded in
 `rebuild/integration/abi_corrections.tsv` so later name imports cannot silently restore the donor
 mistake.
+
+The following GFMain call had the same failure mode: `0x0099E480` was labeled
+`GetDefaultVal<CAnimationSet>`, even though its retail ABI takes a `CCharString` in `ECX` and a
+hidden `CWideString` result on the stack. Donor PDB lineage and the complete retail call chain
+confirm `CCharString::ToWideString`. Its readable 45-byte implementation, the 13-byte
+`CWideString::CreateFromCharString` factory, and the 66-byte counted-storage copy constructor all
+relocation-match retail and pass focused construction, sharing, copy, and destruction fixtures.
+Both corrections are durable manual overrides and documented in the ABI-corrections ledger.
 
 The project-owner-provided [boot-screen concept](rebuild/assets/boot/fabledecomp_boot_concept.png)
 is archived at its native resolution and now drives the authored visual checkpoint. The build

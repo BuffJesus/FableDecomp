@@ -1,21 +1,23 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-25 21:32 MDT (Phase 3 factory corrected; Wave 3 batch checkpointed).*
+*Last updated: 2026-07-25 21:52 MDT (Phase 3 narrow-to-wide conversion chain recovered).*
 
 ## Visible boot checkpoint (2026-07-25)
 
 - The complete VC7.1 bootstrap gate passes through Stage 3, with GFMain Phase 3
-  now at 20/34 proven direct calls.
+  now at 21/34 proven direct calls.
 - TLC `0x00415530` is no longer accepted as the donor virtual
   `CActionDoCreatureAction::GetActionName`. Retail ABI and caller evidence prove
   a no-argument fastcall value factory that constructs the default language
   `"English"` in its hidden `CCharString` result. Readable typed source remains
   a 19-byte relocation-normalized match, and the real fixture covers construction
   and destruction. `rebuild/integration/abi_corrections.tsv` records the mismatch.
-- The next Phase 3 candidate is adjacent `0x0099E480`: its current
-  `GetDefaultVal<CAnimationSet>` label is also inconsistent with the retail ABI.
-  Caller flow and the donor PDB point to `CCharString::ToWideString`; recover and
-  gate helpers `0x0099B6A0` and `0x0099B720` before promoting that provisional name.
+- Adjacent `0x0099E480` is also corrected: the old
+  `GetDefaultVal<CAnimationSet>` label contradicted its hidden-result ABI.
+  Donor lineage plus retail flow prove `CCharString::ToWideString`. Its 45-byte
+  body, `CWideString::CreateFromCharString @ 0x0099B6A0` (13 bytes), and the
+  `CWideString` copy constructor at `0x0099B720` (66 bytes) all
+  relocation-match and pass focused ownership/lifetime gates.
 - `FableTLC-Reconstruction-VisualCheckpoint.exe` now follows the retail-matched
   WinMain and reconstructed GFMain Phases 1/2, then opens a responsive 1280x720
   Win32 window containing the project-owner boot artwork.
@@ -28,11 +30,10 @@
   the user closes it.
 - A normal-launch smoke test confirmed a responsive window titled
   `FableDecomp - Visual Boot Checkpoint` and a clean exit.
-- Wave 3 PID 4184 completed its bounded batch normally at 21:31 MDT.
-  `0x008A9AE0` exhausted both attempts, while the final three bindings
-  (`0x00893B00`, `0x00893EC0`, and `0x0089B110`) passed. The queue recorded
-  three targets still pending; its scheduled launcher will resume them in the
-  next batch.
+- Wave 3 resumed under PID 6516. `Quest.CreateCreature @ 0x008A9100`
+  exhausted both bounded attempts without stalling the queue; the worker moved
+  to `Quest.GetAllCreaturesInAreaWithScriptName @ 0x008A86C0`. The scheduled
+  launcher continues to skip duplicate starts while this worker is live.
 
 *Previous checkpoint: 2026-07-25 19:32 MDT (Stage-1 WinMain plus first Stage-2 leaf).*
 
@@ -66,8 +67,8 @@ and was skipped rather than stalling the queue.
 
 The canonical refresh passes from the organized tree:
 
-- **1,850 / 1,850** curated sources compile under VC7.1 and pass their focused behavior gates.
-- Retail comparison remains **913 exact + 610 relocation-normalized = 1,523 matches**;
+- **1,853 / 1,853** curated sources compile under VC7.1 and pass their focused behavior gates.
+- Retail comparison is **913 exact + 613 relocation-normalized = 1,526 matches**;
   **199** honestly differ and **128** lack a function-start oracle.
 - Auto-RE intake is **573 generated / 565 structural PASS**. Structural results are not promotions.
 - The promotion queue has **115 semantic-quarantine** candidates.

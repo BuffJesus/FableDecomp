@@ -613,7 +613,7 @@ CCham	3	7	7	0	0	0	0	0	0	0	0
 CChangeText	0	2	0	0	0	0	0	0	0	0	0
 CChangingStateComponent	29	17	16	0	0	0	0	0	0	0	0
 CCharMap	0	1	0	0	0	0	0	0	0	0	0
-CCharString	31	74	40	0	0	1	1	1	0	0	0
+CCharString	31	73	39	0	0	2	2	1	1	0	0
 CCharStringData	1	2	0	0	0	0	0	0	0	0	0
 CCharStringMap	0	3	0	0	0	0	0	0	0	0	0
 CCharStringPairVector	0	1	0	0	0	0	0	0	0	0	0
@@ -3913,7 +3913,7 @@ CWhisperAlly	2	0	0	0	0	0	0	0	0	0	0
 CWhisperBattleDef	2	3	3	0	0	0	0	0	0	0	0
 CWhispie	2	1	1	0	0	0	0	0	0	0	0
 CWideScreenMagicPauseEntities	0	2	1	0	0	0	0	0	0	0	0
-CWideString	26	8	4	0	0	0	0	0	0	0	0
+CWideString	26	11	9	0	0	2	2	0	2	0	0
 CWideStringData	1	0	0	0	0	0	0	0	0	0	0
 CWifeDef	2	3	3	0	0	0	0	0	0	0	0
 CWillApprentice	2	0	0	0	0	0	0	0	0	0	0
@@ -4496,7 +4496,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11370	1995	42	1	78	78	39	23	0	0
+_global	0	11369	1994	42	1	78	78	39	23	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0
@@ -4550,7 +4550,7 @@ map<NUISystem::CManager::EUsedKeys	0	8	8	0	0	2	2	2	0	0	0
 map<long	0	4	4	0	0	0	0	0	0	0	0
 map<std::pair<long	0	1	1	0	0	0	0	0	0	0	0
 map<void*	0	1	1	0	0	0	0	0	0	0	0
-operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript	0	17	17	0	0	0	0	0	0	0	0
+operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript	0	16	16	0	0	0	0	0	0	0	0
 pair<C3DVector	0	2	2	0	0	0	0	0	0	0	0
 pair<CCharString	0	8	1	0	0	1	1	0	0	0	0
 pair<CCharString,CSymbolMap	0	4	0	0	0	0	0	0	0	0	0
