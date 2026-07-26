@@ -34314,6 +34314,13 @@ $catalog = @(
         TestSource = '00/a0/CRenderStateManager_RealiseRenderState_00a058c0_test.cpp'
         PassPattern = 'FABLETLC_REALISE_RENDER_STATE_BEHAVIOR PASS'
     }
+    [pscustomobject]@{
+        Address = '009fa1c0'
+        Module = 'CTexture'
+        Source = '00/9f/CTexture_Assignment_009fa1c0.cpp'
+        TestSource = '00/9f/CTexture_Assignment_009fa1c0_test.cpp'
+        PassPattern = 'FABLETLC_TEXTURE_ASSIGNMENT_BEHAVIOR PASS'
+    }
 )
 
 $oldPath = $env:PATH

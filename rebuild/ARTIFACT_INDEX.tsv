@@ -4350,6 +4350,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 009f2e20	CSurface		rebuild/src/compiled/00/9f/CSurface_Uninitialise_009f2e20.cpp	rebuild/tests/00/9f/CSurface_Uninitialise_009f2e20_test.cpp		rebuild/build/candidates-Release/00/9f/009f2e20
 009f9d50	CThingFilter_IsUnconscious		rebuild/src/compiled/00/9f/CThingFilterIsUnconscious_operator_009f9d50.cpp	rebuild/tests/00/9f/CThingFilterIsUnconscious_operator_009f9d50_test.cpp		rebuild/build/candidates-Release/00/9f/009f9d50
 009f9f70	CTexture		rebuild/src/compiled/00/9f/CTexture_Uninitialise_009f9f70.cpp	rebuild/tests/00/9f/CTexture_Uninitialise_009f9f70_test.cpp		rebuild/build/candidates-Release/00/9f/009f9f70
+009fa1c0	CTexture		rebuild/src/compiled/00/9f/CTexture_Assignment_009fa1c0.cpp	rebuild/tests/00/9f/CTexture_Assignment_009fa1c0_test.cpp		rebuild/build/candidates-Release/00/9f/009fa1c0
 009fa230	CTexture		rebuild/src/compiled/00/9f/CTexture_InitialiseFromPreallocatedTexture_009fa230.cpp	rebuild/tests/00/9f/CTexture_InitialiseFromPreallocatedTexture_009fa230_test.cpp		rebuild/build/candidates-Release/00/9f/009fa230
 009fbef0	CResource		rebuild/src/compiled/00/9f/CResource_GetUnloadableMemory_009fbef0.cpp	rebuild/tests/00/9f/CResource_GetUnloadableMemory_009fbef0_test.cpp		rebuild/build/candidates-Release/00/9f/009fbef0
 009fbf00	CResource		rebuild/src/compiled/00/9f/CResource_GetDebugMemoryInUse_009fbf00.cpp	rebuild/tests/00/9f/CResource_GetDebugMemoryInUse_009fbf00_test.cpp		rebuild/build/candidates-Release/00/9f/009fbf00
