@@ -146,6 +146,7 @@ namespace
     FableD3DTexture9* g_Texture = 0;
     fable_i32 g_ArtworkWidth = 0;
     fable_i32 g_ArtworkHeight = 0;
+    bool g_Presented = false;
 
     bool Failed(FableD3DResult result)
     {
@@ -406,7 +407,12 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     {
         return false;
     }
-    return !Failed(present(g_Device, 0, 0, 0, 0));
+    if (Failed(present(g_Device, 0, 0, 0, 0)))
+    {
+        return false;
+    }
+    g_Presented = true;
+    return true;
 }
 
 void FABLE_FASTCALL FableShutdownVisualD3D9()
@@ -416,9 +422,15 @@ void FABLE_FASTCALL FableShutdownVisualD3D9()
     ReleaseObject(g_Direct3D);
     g_ArtworkWidth = 0;
     g_ArtworkHeight = 0;
+    g_Presented = false;
 }
 
 bool FABLE_FASTCALL FableIsVisualD3D9Active()
 {
     return g_Device != 0 && g_Texture != 0;
+}
+
+bool FABLE_FASTCALL FableWasVisualD3D9Presented()
+{
+    return g_Presented;
 }

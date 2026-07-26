@@ -13,13 +13,23 @@
   device and texture initialization succeeds.
 - The full Release bootstrap and all integration fixtures pass. A fresh live
   launch produced
-  `FableDecomp - D3D9 Retail Frontend + Progress Display Ready`, captured the
-  actual forest-and-Hero retail frame from the window, accepted `WM_CLOSE`,
-  and exited zero.
+  `FableDecomp - D3D9 Presented - Retail Frontend + Progress Display Ready`,
+  captured the actual forest-and-Hero retail frame from the window, accepted
+  `WM_CLOSE`, and exited zero. `smoke_visual_checkpoint.ps1` now gates that
+  same successful-present title and clean shutdown automatically.
 - The central visual boundary is now narrower: replace the authored
   `DrawPrimitiveUP` quad with recovered `CRenderManager2D::Render2DDrawList`
   orchestration. All 25 of that function's direct dependencies are already
   behavior-gated; 21 have retail byte parity.
+- The first parent seam is canonical and part of the Release bootstrap:
+  `FableBuildRender2DBatchPlan` uses the recovered 0x3C-byte tagged record
+  layout and reproduces stable/state/topology/text splits, shader reapply,
+  vertex-cursor arithmetic, overflow reporting, and retail's precise
+  2001+1 primitive limit. Its VC7.1 fixture passes.
+- Ego PDB evidence corrected retail `0x00A0AA80` from the false inventory
+  identity to `CRenderManagerCore::SetAWindow(C2DBoxF)`. The existing
+  11-byte relocation match and behavior gate are preserved under the
+  corrected name.
 
 ## Shader binding/render-state closure (2026-07-26)
 
@@ -116,7 +126,7 @@
   and dirty-mask clearing.
 - Three relocation-normalized additions close the float viewport tail thunk,
   word-wrap callback configuration, and preallocated texture adoption:
-  `NInventory::CTCInventoryBase::SetViewport(C2DBoxF) @ 0x00A0AA80`,
+  `CRenderManagerCore::SetAWindow(C2DBoxF) @ 0x00A0AA80`,
   `WordWrap_SetCallback @ 0x00A0FD90`, and
   `CTexture::InitialiseFromPreallocatedTexture @ 0x009FA230`. The viewport
   identity correction is persisted in `function_overrides.tsv`.
