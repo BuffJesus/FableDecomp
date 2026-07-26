@@ -6,7 +6,9 @@ void* FABLE_CDECL FableFileInstallerAllocate(fable_u32 size);
 
 struct CFileInstaller
 {
-    fable_u8 unknown00[0xA0];
+    fable_u8 unknown00[0x81];
+    fable_u8 basicInstallStartupFlag;
+    fable_u8 unknown82[0x1E];
 
     CFileInstaller();
 
@@ -24,6 +26,7 @@ struct CCountedFileInstaller
     void* reference;
 
     void operator=(CFileInstaller* value);
+    void Reset();
 };
 
 FABLE_STATIC_ASSERT(sizeof(CCountedFileInstaller) == 0x08);

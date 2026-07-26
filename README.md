@@ -44,9 +44,10 @@ The executable-integration lane has advanced beyond isolated object files. The o
 toolchain now builds and runs a Win32 GUI shell through the recovered `WinMain @ 0x00403480`;
 that wrapper is a 141-byte relocation-normalized retail match and its focused fixture proves the
 single-instance mutex, MicroThread stack handoff, duplicate-instance skip, and fastcall `GFMain`
-boundary. Stage 2 now continues through an authored GFMain Phase 1 integration unit, establishes
-the executable/project path with the promoted retail-matching functions, constructs the recovered
-system defaults, crosses an explicit console-variable boundary, and exits at the Phase 2 boundary.
+boundary. Stage 3 now continues through authored GFMain Phase 1 and Phase 2 integration units. It
+establishes the executable/project path with the promoted retail-matching functions, constructs
+the recovered system defaults, crosses an explicit console-variable boundary, applies the basic-install and
+failure-policy state, and exits at the Phase 3 boundary.
 `rebuild/RUNNABLE.md` tracks the remaining boot gates, with engine initialization, data loading,
 and the game loop ahead of installer, settings-menu, x64, or broad C++23 work.
 
@@ -77,6 +78,11 @@ The integration fixture proves the phase returns successfully, invokes the conso
 boundary exactly once, and leaves a non-empty cached project path. The phase unit is clearly
 marked as authored integration code—not a claim that the complete 3,952-byte retail GFMain matches.
 
+`FableTLC-Reconstruction-Stage3.exe` continues through the authored Phase 2 sequence. Its fixture
+proves readable state propagation, conditional installer creation, startup-latch handling, async
+failure policy, and balanced counted ownership. Stage 2 remains independently runnable so the
+Phase 1 checkpoint does not disappear as later phases are added.
+
 Phase 2 recovery has reached all seven direct calls in retail order. PDB and donor lineage resolves
 the repeated one-byte
 `$E2` leaf as the compiled-out `NProfileTimer::EndProfile`, and the retail executable confirms the
@@ -86,7 +92,8 @@ and has been replaced with a conservative address-bearing name. These leaves and
 string/profile calls now relocation-match and pass focused behavior fixtures. The 69-byte
 `CFileInstallerSingleton::Get` also matches retail exactly, including its lazy 160-byte allocation,
 constructor, and counted-pointer assignment paths. Typing the caller's temporary counted-pointer
-cleanup is the next Phase 2 ownership closure.
+cleanup completed the Phase 2 ownership closure; Phase 3 settings and persistence are now the next
+runnable boundary.
 
 The unattended Wave 3 lane has moved from the co-op event/package codecs into ForgeFSE Quest
 wrappers. The current refresh validates 452/452 recommended Quest bindings against their exact
