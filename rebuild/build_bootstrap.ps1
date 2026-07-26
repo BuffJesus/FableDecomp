@@ -42,6 +42,10 @@ $primaryLeftAlignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9b\TextLay
 $primaryLeftAlignmentBehaviorSource = Join-Path $rebuildRoot 'tests\00\9b\TextLayout_SetPrimaryLeftAlignment_009bc890_test.cpp'
 $secondaryLeftAlignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9b\TextLayout_SetSecondaryLeftAlignment_009bc8a0.cpp'
 $secondaryLeftAlignmentBehaviorSource = Join-Path $rebuildRoot 'tests\00\9b\TextLayout_SetSecondaryLeftAlignment_009bc8a0_test.cpp'
+$cbaseRestoreASource = Join-Path $rebuildRoot 'src\compiled\00\99\CBase_RestoreVTable_0099a2e0.cpp'
+$cbaseRestoreABehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CBase_RestoreVTable_0099a2e0_test.cpp'
+$cbaseRestoreBSource = Join-Path $rebuildRoot 'src\compiled\00\99\CBase_RestoreVTable_0099a300.cpp'
+$cbaseRestoreBBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CBase_RestoreVTable_0099a300_test.cpp'
 $charStringDefaultSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharString_DefaultConstructor_0099e4b0.cpp'
 $charStringDefaultBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_DefaultConstructor_0099e4b0_test.cpp'
 $systemManagerInitSource = Join-Path $rebuildRoot 'src\compiled\00\40\CSystemManagerInit_Constructor_00403b10.cpp'
@@ -120,6 +124,8 @@ $startupLatchPassPattern = 'FABLETLC_STARTUP_LATCH_BEHAVIOR PASS'
 $fileInstallerGetPassPattern = 'FABLETLC_FILE_INSTALLER_GET_BEHAVIOR PASS'
 $primaryLeftAlignmentPassPattern = 'FABLETLC_PRIMARY_LEFT_ALIGNMENT_BEHAVIOR PASS'
 $secondaryLeftAlignmentPassPattern = 'FABLETLC_SECONDARY_LEFT_ALIGNMENT_BEHAVIOR PASS'
+$cbaseRestoreAPassPattern = 'FABLETLC_CBASE_RESTORE_A_BEHAVIOR PASS'
+$cbaseRestoreBPassPattern = 'FABLETLC_CBASE_RESTORE_B_BEHAVIOR PASS'
 
 $required = @(
     (Join-Path $vcRoot 'bin\cl.exe'),
@@ -157,6 +163,10 @@ $required = @(
     $primaryLeftAlignmentBehaviorSource,
     $secondaryLeftAlignmentSource,
     $secondaryLeftAlignmentBehaviorSource,
+    $cbaseRestoreASource,
+    $cbaseRestoreABehaviorSource,
+    $cbaseRestoreBSource,
+    $cbaseRestoreBBehaviorSource,
     $charStringDefaultSource,
     $charStringDefaultBehaviorSource,
     $systemManagerInitSource,
@@ -327,6 +337,22 @@ try {
         -BehaviorSource $secondaryLeftAlignmentBehaviorSource `
         -OutputStem 'secondary-left-alignment' `
         -PassPattern $secondaryLeftAlignmentPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099a2e0' `
+        -Description 'first folded CBase vtable restore' `
+        -Source $cbaseRestoreASource `
+        -BehaviorSource $cbaseRestoreABehaviorSource `
+        -OutputStem 'cbase-restore-a' `
+        -PassPattern $cbaseRestoreAPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099a300' `
+        -Description 'second folded CBase vtable restore' `
+        -Source $cbaseRestoreBSource `
+        -BehaviorSource $cbaseRestoreBBehaviorSource `
+        -OutputStem 'cbase-restore-b' `
+        -PassPattern $cbaseRestoreBPassPattern
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions "/Fo$retailObject" $retailSource
     if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $retailObject)) {

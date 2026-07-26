@@ -95,10 +95,17 @@ constructor, and counted-pointer assignment paths. Typing the caller's temporary
 cleanup completed the Phase 2 ownership closure; Phase 3 settings and persistence are now the next
 runnable boundary.
 
-Phase 3 begins with 17 of 34 direct calls proven. Fifteen are honest reuse of the already-matched
+Phase 3 begins with 19 of 34 direct calls proven. Fifteen are honest reuse of the already-matched
 string/profile lifetime targets; the first new pair are seven-byte primary and secondary
 text-alignment setters at `0x009BC890` and `0x009BC8A0`. Their adjacent retail globals remain
 address-bearing until the settings caller proves whether they are channels or fields of one owner.
+Two additional seven-byte cleanup leaves restore the shared `CBase` vtable; their address-bearing
+function names preserve the still-unknown derived persistence owners.
+
+The project-owner-provided [boot-screen concept](rebuild/assets/boot/fabledecomp_boot_concept.png)
+is archived at its native resolution for the first visual milestone. It remains source artwork,
+not a runtime dependency, until the reconstructed window and renderer establish the required
+texture format and presentation path.
 
 The unattended Wave 3 lane has moved from the co-op event/package codecs into ForgeFSE Quest
 wrappers. The current refresh validates 452/452 recommended Quest bindings against their exact
