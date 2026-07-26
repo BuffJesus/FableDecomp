@@ -266,13 +266,16 @@ extern "C" long FABLE_FASTCALL GFMain(
     FablePrepareGFInitialiseBoundary();
     if (!GFInitialise())
     {
+        FableReleaseProgressDisplayBoundary();
         return 1;
     }
 
-    return FableRunVisualBootCheckpoint(
+    const long visualResult = FableRunVisualBootCheckpoint(
         instance,
         commandLine,
         showCommand);
+    FableReleaseProgressDisplayBoundary();
+    return visualResult;
 #else
     return 0;
 #endif
