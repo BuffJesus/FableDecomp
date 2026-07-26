@@ -1,24 +1,26 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 12:32 MDT (nested renderer-family closure).*
+*Last updated: 2026-07-26 12:41 MDT (nested renderer-family closure).*
 
 ## Nested renderer-family closure (2026-07-26)
 
 - Both remaining direct `RenderProgress` bodies now have complete direct-callee
   maps in `rebuild/integration/renderer_nested_dependencies.tsv`:
   `DrawRetailDisplay @ 0x00498490` has 37 unique dependencies and
-  `Render2DDrawList @ 0x009DA9F0` has 25. Sixteen of the 62 family rows are
+  `Render2DDrawList @ 0x009DA9F0` has 25. Seventeen of the 62 family rows are
   canonical retail matches, with two additional wide-string lifetime leaves
   already proven by the boot gate.
-- This pass promoted seven focused dependencies, all with real behavior
-  fixtures and relocation-normalized retail instruction streams:
+- This pass promoted eight focused dependencies, all with real behavior
+  fixtures and retail-matching instruction streams:
   `FormatTextForVWindow @ 0x00497F80`,
   `GFRoundVXToNearestPixel @ 0x009E1D00`,
   `GFRoundVYToNearestPixel @ 0x009E1D50`,
   `GFAXToVX @ 0x009E1DA0`,
+  `GetRenderTargetDimensions @ 0x009BEDC0`,
   `EnableVertexShaders @ 0x00987FE0`,
   `DisableVertexShaders @ 0x009880E0`, and
-  `EnablePixelShaders @ 0x00988110`.
+  `EnablePixelShaders @ 0x00988110`. The dimensions accessor is a true
+  **24/24-byte exact match**; the other seven are relocation-normalized.
 - EgoCore PDB evidence corrected three poisoned identities/prototypes.
   `0x009A4EC0` is now the fixed `GFGetSystemManager` accessor rather than
   `AddChildPrimitive`; `0x009BEDC0` is
@@ -26,8 +28,8 @@
   `FormatTextForVWindow` is the private const `CProgressDisplay` method, not a
   global fastcall. The corrections are persisted in
   `rebuild/corrections/function_overrides.tsv`.
-- The canonical VC7.1 compile/behavior gate passes **4,895 / 4,895**. Retail
-  parity is **2,675 exact + 1,893 relocation-normalized = 4,568 / 49,552
+- The canonical VC7.1 compile/behavior gate passes **4,896 / 4,896**. Retail
+  parity is **2,676 exact + 1,893 relocation-normalized = 4,569 / 49,552
   (9.22%)**; honest residue remains 199 differences and 128 missing
   function-start oracles.
 - The Release bootstrap was rebuilt and remains green with
