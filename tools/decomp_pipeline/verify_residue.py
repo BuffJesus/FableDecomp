@@ -119,7 +119,10 @@ def main():
         beh = behaviour(tst, addr, patt)
         print(f"{addr:10} {st:18} {beh:6} {name}")
         if st.startswith(("MATCH", "RELOCATION_MATCH")) and beh == "PASS":
-            landed = glob.glob(str(ROOT / f"rebuild/src/compiled/*{addr}*.cpp"))
+            landed = glob.glob(
+                str(ROOT / f"rebuild/src/compiled/**/*{addr}*.cpp"),
+                recursive=True,
+            )
             wins.append({"addr": addr, "name": name, "status": st, "src": src, "landed": landed[0] if landed else None})
     print(f"\nWINS: {len(wins)}")
     for w in wins: print(f"  {w['addr']} {w['status']} -> {w['landed']}")

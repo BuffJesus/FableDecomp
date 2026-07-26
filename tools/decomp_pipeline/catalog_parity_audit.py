@@ -85,7 +85,7 @@ def main():
     jobs = int(sys.argv[sys.argv.index("--jobs") + 1]) if "--jobs" in sys.argv else 6
     SP.mkdir(parents=True, exist_ok=True)
     oracle = {r["address"].lower(): r for r in csv.DictReader(open(ROOT / "rebuild/oracles/auto-re-candidates.tsv", encoding="utf-8-sig"), delimiter="\t")}
-    files = sorted(glob.glob(str(ROOT / "rebuild/src/compiled/*.cpp")))
+    files = sorted(glob.glob(str(ROOT / "rebuild/src/compiled/**/*.cpp"), recursive=True))
     results = []
     with ThreadPoolExecutor(max_workers=jobs) as ex:
         for r in ex.map(lambda f: classify(f, oracle), files):

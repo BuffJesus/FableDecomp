@@ -1,13 +1,13 @@
 # Auto-RE candidate compile gate
 
-Generated: `2026-07-25T17:53:07-06:00`
+Generated: `2026-07-25T18:26:31-06:00`
 
 | Gate | Passing | Total |
 |---|---:|---:|
-| Source integrity | 566 | 566 |
-| 32-bit host C++20 syntax | 249 | 566 |
-| No detected VC7.1 language blockers | 56 | 566 |
-| Ready for VC7.1 module compilation | 37 | 566 |
+| Source integrity | 573 | 573 |
+| 32-bit host C++20 syntax | 251 | 573 |
+| No detected VC7.1 language blockers | 57 | 573 |
+| Ready for VC7.1 module compilation | 38 | 573 |
 
 A checker PASS is not a compiler PASS. The host syntax gate supplies only standard-library and calling-convention compatibility; missing engine declarations must be resolved through real module headers.
 
@@ -15,8 +15,8 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 
 | Declaration | Candidates |
 |---|---:|
-| `offsetof` | 53 |
-| `class CGameScriptInterface` | 33 |
+| `offsetof` | 57 |
+| `class CGameScriptInterface` | 34 |
 | `mov` | 14 |
 | `CMouseDX` | 12 |
 | `CMemoryAllocatorFixedSize` | 11 |

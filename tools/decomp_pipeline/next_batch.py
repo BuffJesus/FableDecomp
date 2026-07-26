@@ -131,7 +131,7 @@ def main():
         return raw[:end]
 
     landed = {os.path.basename(p).split("_")[-1].replace(".cpp", "").lower()
-              for p in glob.glob(str(ROOT / "rebuild/src/compiled/*.cpp"))}
+              for p in glob.glob(str(ROOT / "rebuild/src/compiled/**/*.cpp"), recursive=True)}
     have = {r["address"].lower() for r in tsv(ROOT / "rebuild/oracles/auto-re-candidates.tsv")}
     pend = set()
     for p in glob.glob(str(ROOT / "rebuild/oracles/pending/*_oracle.tsv")):

@@ -60,7 +60,11 @@ def parse_struct(body):
 
 def facts_for(cls):
     """Merge all verified facts for a class -> (offset->(type,name), class_size, n_files)."""
-    files = [p for p in glob.glob(str(SRC / "*.cpp")) if os.path.basename(p).startswith(cls + "_")]
+    files = [
+        p
+        for p in glob.glob(str(SRC / "**/*.cpp"), recursive=True)
+        if os.path.basename(p).startswith(cls + "_")
+    ]
     off_map = {}
     size = None
     for f in files:
@@ -116,7 +120,7 @@ def main():
     if sys.argv[1] == "--map":
         out = Path(sys.argv[2])
         classes = set()
-        for p in glob.glob(str(SRC / "*.cpp")):
+        for p in glob.glob(str(SRC / "**/*.cpp"), recursive=True):
             b = os.path.basename(p)
             if "_" in b:
                 classes.add(b.split("_")[0])

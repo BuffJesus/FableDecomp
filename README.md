@@ -19,19 +19,21 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 |---|---|---|
 | Analysis DB | Functions catalogued | **49,553** |
 | Analysis DB | Mechanically named (no `FUN_*`) | 100.000% |
-| Analysis DB | Usable reconstruction/navigation names | 99.913% |
-| Analysis DB | Calling convention known | 77.656% |
-| Analysis DB | Complete non-`undefined` prototype | 69.023% |
+| Analysis DB | Usable reconstruction/navigation names | 99.211% |
+| Analysis DB | Calling convention known | 77.660% |
+| Analysis DB | Complete non-`undefined` prototype | 69.027% |
 | Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **1,850** |
 | Reconstruction | Retail `.text` match (exact + relocation-normalized) | **1,523** (3.07%) |
 | Reconstruction | — of which byte-**identical** (no relocation masking) | 914 (1.84%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
-| Auto-RE intake | Generated candidates / structural checker PASS | 566 / 558 |
+| Auto-RE intake | Generated candidates / structural checker PASS | 573 / 565 |
 
 Counts above are from the 2026-07-25 canonical refresh: the VC7.1 compile/behaviour catalog,
 `rebuild/compile-gate/retail-parity.json`, and `rebuild/COVERAGE.md`. Generated agent code is tracked
 separately and is never counted as reconstructed merely because a structural checker accepted it.
+The successful refresh also synchronizes this table automatically; GitHub is updated at reviewed
+checkpoints rather than publishing live, unreviewed queue output.
 The first **1%** compiled-byte-match milestone (496 functions) is passed; current verified retail
 parity is ~3.07% of the 49,553-function catalog. The lower match count than an earlier README is an
 audit reconciliation, not deleted source: the unified gate now exposes every `DIFFER` and missing
@@ -96,10 +98,12 @@ Each function is promoted through an evidence gate, not asserted:
 
 1. **Auto-RE lift** — an agent lane drafts candidate C++ from Ghidra decompiler output
    (`lift/reports/`), tracked as low-confidence until it compiles.
-2. **Curated port** — a faithful, VC7.1-compilable translation lands in `rebuild/src/compiled/`
+2. **Curated port** — a faithful, VC7.1-compilable translation lands in the address-sharded
+   `rebuild/src/compiled/<aa>/<bb>/`
    with real declarations from `rebuild/include/`.
 3. **Compile + behaviour test** — `rebuild/build_candidates.ps1` compiles each unit with the original
-   **VC7.1 `cl.exe`** and runs a per-function behaviour oracle (`rebuild/tests/`).
+   **VC7.1 `cl.exe`** and runs a per-function behaviour oracle
+   (`rebuild/tests/<aa>/<bb>/`).
 4. **Retail parity** — `tools/compare_candidate_objects.py` disassembles the object and compares its
    `.text` against authoritative retail bytes (`rebuild/oracles/`, exported from Ghidra by
    `ExportFunctionOracle.java`), masking expected COFF relocation fields. Result: `MATCH`,
@@ -126,8 +130,11 @@ Promotion queues and the backlog are generated under `rebuild/backlog/`.
   statement-split) with greedy + random multi-mutation search. Cracked several DIFFERs that plain
   compilation missed (many retail TUs were size-optimized). Requires `libclang`.
 - **`tools/organize_workspace.ps1`** — non-destructive local housekeeping for loose root scratch
-  objects/sources and RE-agent transcripts. It preserves the live `rebuild/`, `lift/`, and `work/`
-  contracts; preview with `-WhatIf`.
+  objects/sources, RE-agent transcripts, address-sharded candidate/curated source, tests, and
+  per-function build products. It preserves collisions and live worker safety; preview with
+  `-WhatIf`. `rebuild/ARTIFACT_INDEX.tsv` provides address/module navigation.
+- **`docs/SOURCE_ARCHITECTURE.md`** — the boundary between raw agent intake, the one-function
+  VC7.1 retail-parity layer, and cohesive human-facing C++23 subsystem code.
 
 ## Layout
 | Path | What |
@@ -139,6 +146,7 @@ Promotion queues and the backlog are generated under `rebuild/backlog/`.
 | `docs/SYSTEMS_ANALYSIS.md` | Per-subsystem maps + moddability verdicts. |
 | `docs/TOOLCHAIN.md` | Exact commands: Ghidra import, GhidraMCP, FSE import, VC7.1 setup. |
 | `docs/WORKSPACE_LAYOUT.md` | Public/local artifact boundaries and safe housekeeping. |
+| `docs/SOURCE_ARCHITECTURE.md` | Address sharding, readable module design, and C++23 policy. |
 | `rebuild/` | The buildable reconstruction: curated source, tests, oracles, compile gate, coverage. |
 | `lift/` | Auto-RE agent lane: candidate reports, config, durable run state. |
 | `ghidra_out/` | Decompile dumps + `labels_*.tsv` (the reproducible name DB source). |

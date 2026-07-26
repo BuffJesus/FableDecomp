@@ -19,6 +19,9 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
+from artifact_layout import sharded_file
+from build_promotion_queue import semantic_hazards
+
 
 ADDRESS_RE = re.compile(r"^0x([0-9a-fA-F]{8})_")
 ERROR_RE = re.compile(r"\berror:\s*(.+)")
@@ -70,7 +73,7 @@ def discover(root: Path) -> list[Candidate]:
     for origin, directory in locations:
         if not directory.exists():
             continue
-        for source in sorted(directory.glob("*.cpp")):
+        for source in sorted(directory.rglob("*.cpp")):
             match = ADDRESS_RE.match(source.name)
             if match:
                 selected[match.group(1).lower()] = Candidate(match.group(1).lower(), source.resolve(), origin)
@@ -187,7 +190,8 @@ def main() -> int:
         payload = candidate.source.read_bytes()
         text = payload.decode("utf-8-sig", errors="replace")
         digest = hashlib.sha256(payload).hexdigest()
-        snapshot = snapshot_dir / candidate.source.name
+        snapshot = sharded_file(snapshot_dir, candidate.address, candidate.source.name)
+        snapshot.parent.mkdir(parents=True, exist_ok=True)
         if not snapshot.exists() or snapshot.read_bytes() != payload:
             snapshot.write_bytes(payload)
         integrity_ok, integrity_detail = integrity(text)
@@ -217,6 +221,7 @@ def main() -> int:
         dependency_counts.update(missing)
         features = vc71_features(text)
         vc71_count = sum(features.values())
+        hazards = semantic_hazards(text)
         source_row = manifest_rows.get(candidate.address, {})
         rows.append(
             {
@@ -237,6 +242,7 @@ def main() -> int:
                 "missing_dependencies": ";".join(missing),
                 "vc71_incompatibilities": vc71_count,
                 "vc71_features": ";".join(f"{key}:{value}" for key, value in sorted(features.items())),
+                "semantic_hazards": ";".join(hazards),
                 "compile_ready": int(integrity_ok and host_pass and vc71_count == 0),
             }
         )
@@ -250,6 +256,7 @@ def main() -> int:
         "host_cpp20_syntax_pass": sum(row["host_cpp20_syntax"] == "PASS" for row in rows),
         "vc71_compatible": sum(int(row["vc71_incompatibilities"]) == 0 for row in rows),
         "compile_ready": sum(int(row["compile_ready"]) for row in rows),
+        "semantic_quarantine": sum(bool(row["semantic_hazards"]) for row in rows),
         "unique_missing_dependencies": len(dependency_counts),
     }
     temp_json = gate_dir / "summary.json.tmp"

@@ -138,7 +138,7 @@ def index_agent_code(directories: list[Path]) -> dict[str, str]:
     for directory in directories:
         if not directory.exists():
             continue
-        for path in directory.glob("*.cpp"):
+        for path in directory.rglob("*.cpp"):
             match = re.match(r"0x([0-9a-fA-F]{8})_", path.name)
             if match:
                 result[match.group(1).lower()] = str(path.resolve())

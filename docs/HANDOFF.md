@@ -1,5 +1,45 @@
 # HANDOFF — resume here
 
+*Last updated: 2026-07-25 18:36 MDT (address-sharded workflow validated end to end).*
+
+## Current authoritative resume point (2026-07-25)
+
+The canonical refresh passes from the organized tree:
+
+- **1,850 / 1,850** curated sources compile under VC7.1 and pass their focused behavior gates.
+- Retail comparison remains **914 exact + 609 relocation-normalized = 1,523 matches**;
+  **199** honestly differ and **128** lack a function-start oracle.
+- Auto-RE intake is **573 generated / 565 structural PASS**. Structural results are not promotions.
+- The promotion queue has **115 semantic-quarantine** candidates.
+
+The checkout no longer keeps reconstruction output in giant flat directories. Source, tests,
+snapshots, compiler products, verification products, agent reports, transcripts, round JSONs, and
+the decompiler cache are address-sharded. The initial migration moved 21,978 files, historical
+report/transcript recovery moved another 2,453, and the cache migration moved 560, all without an
+unresolved collision. `rebuild/ARTIFACT_INDEX.tsv` maps addresses/modules across those trees.
+`tools/organize_decomp_artifacts.py` now runs inside the refresh, while each queue runner writes
+transcripts directly to an address leaf and organizes a target's report output immediately.
+
+The latest seven Wave 3 Quest wrappers are under the `00/88`, `00/89`, and `00/8a` report shards.
+Do not promote these four until their failed lookup paths are reconstructed from retail control flow:
+
+- `DisplayTutorial @ 0x0089E710`
+- `EnableGuards @ 0x00896270`
+- `EnableVillagerDefTypes @ 0x008962D0`
+- `GetNumberOfItemsOfTypeInInventory @ 0x00897190`
+
+All four can select a map end sentinel and then dereference it. The inventory wrapper also reinterprets
+the address of `itemTypeName` as an inventory interface on its fallback path. `ClearGossip` uses an
+implausible `CMeshDataBank::CLipSyncEntry` value identity that needs type correction. `DeactivateQuest`
+is a plausible thin forwarder, while `GetWaterHeightAtPosition` still needs its raw vtable slot and
+null behavior checked. The candidate gate and promotion queue now quarantine sentinel and
+address-reinterpret patterns independently of the agent verdict.
+
+Source policy is in `docs/SOURCE_ARCHITECTURE.md`: retain isolated VC7.1 translation units for retail
+parity, and build cohesive C++23 subsystem code only under `rebuild/modern/` after signatures,
+layouts, call edges, and representative behavior are stable. Co-op event/package codecs and small
+terrain/theme APIs are the best early modernization candidates.
+
 *Last updated: 2026-07-23 16:xx MDT (local deterministic byte-match lane + SDK exports online).*
 
 ## Current authoritative resume point (2026-07-23 late) - verified coverage + local tiny lane

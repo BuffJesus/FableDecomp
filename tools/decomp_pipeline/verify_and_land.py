@@ -8,7 +8,10 @@ from pathlib import Path
 ROOT = Path(r"D:\Documents\FableTLC")
 VC = Path(r"D:\Tools\vc71")
 SP = ROOT / "rebuild" / "build"
-WORK = SP / "landverify"; WORK.mkdir(parents=True, exist_ok=True)
+WORK_ROOT = SP / "landverify"; WORK_ROOT.mkdir(parents=True, exist_ok=True)
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from artifact_layout import shard_directory
+
 OBJDUMP = r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe"
 DS = re.compile(r"^\s*[0-9a-fA-F]+\s+<(.+)>:$"); DB = re.compile(r"^\s*[0-9a-fA-F]+:\s+((?:[0-9a-fA-F]{2}\s+)+)")
 RL = re.compile(r"^([0-9a-fA-F]{8})\s+\S+\s+.+$")
@@ -89,9 +92,9 @@ def main():
     PRAGMAS=["", '#pragma optimize("s",on)', '#pragma optimize("t",on)', '#pragma optimize("g",on)']
     catp = ROOT/"rebuild"/"build_candidates.ps1"
     landed_addrs = cataloged_addresses(catp)
-    def parity_of(srctext, addr, leaf, retail):
-        sp=WORK/f"{addr}.cpp"; sp.write_text(srctext,encoding="utf-8")
-        obj=WORK/f"{addr}.obj"; obj.unlink(missing_ok=True)
+    def parity_of(srctext, addr, leaf, retail, work):
+        sp=work/f"{addr}.cpp"; sp.write_text(srctext,encoding="utf-8")
+        obj=work/f"{addr}.obj"; obj.unlink(missing_ok=True)
         cp=cl(["/nologo","/c","/O2","/Oy","/W3",f"/Fo{obj}",str(sp)],e)
         if cp.returncode or not obj.exists(): return "SRC_FAIL",None,None
         try: built,sec,_=obj_text(obj,leaf)
@@ -107,19 +110,20 @@ def main():
         if addr in landed_addrs: continue  # skip already-landed
         o=orc.get(addr)
         if not o: print(f"{addr:10} {'NO_ORACLE':16} {'-':6} {name}"); continue
+        work=shard_directory(WORK_ROOT, addr, leaf=True); work.mkdir(parents=True, exist_ok=True)
         src0=vc71(c["source_cpp"]); tst=vc71(c["test_cpp"]); patt=c["pass_pattern"]; mod=c.get("module","_global")
-        tp=WORK/f"{addr}.test.cpp"; tp.write_text(tst,encoding="utf-8")
+        tp=work/f"{addr}.test.cpp"; tp.write_text(tst,encoding="utf-8")
         retail=bytes.fromhex(o["bytes"])
         # try base source, then a pragma sweep (permuter flag-sweep integrated)
-        src=src0; st,_,_=parity_of(src, addr, leaf, retail)
+        src=src0; st,_,_=parity_of(src, addr, leaf, retail, work)
         if not st.startswith(("MATCH","RELOCATION")):
             for P in PRAGMAS[1:]:
                 cand=P+"\n"+src0
-                st2,_,_=parity_of(cand, addr, leaf, retail)
+                st2,_,_=parity_of(cand, addr, leaf, retail, work)
                 if st2.startswith(("MATCH","RELOCATION")):
                     src=cand; st=st2+f"[{P.split('(')[1].split(',')[0]}]"; break
-        tobj=WORK/f"{addr}.t.obj"; exe=WORK/f"{addr}.exe"; tobj.unlink(missing_ok=True); exe.unlink(missing_ok=True)
-        sobj=WORK/f"{addr}.obj"  # source object from the last parity_of(src) compile
+        tobj=work/f"{addr}.t.obj"; exe=work/f"{addr}.exe"; tobj.unlink(missing_ok=True); exe.unlink(missing_ok=True)
+        sobj=work/f"{addr}.obj"  # source object from the last parity_of(src) compile
         beh="TCC_FAIL"
         tc=cl(["/nologo","/c","/Od","/W3",f"/Fo{tobj}",str(tp)],e)
         if tc.returncode==0 and tobj.exists():
@@ -151,11 +155,15 @@ def main():
         srcdir=ROOT/"rebuild"/"src"/"compiled"; tdir=ROOT/"rebuild"/"tests"
         entries=[]
         for w in wins:
-            (srcdir/f"{w['base']}.cpp").write_text(w["src"],encoding="utf-8")
-            (tdir/f"{w['base']}_test.cpp").write_text(w["test"],encoding="utf-8")
+            src_shard=shard_directory(srcdir, w["addr"]); src_shard.mkdir(parents=True, exist_ok=True)
+            test_shard=shard_directory(tdir, w["addr"]); test_shard.mkdir(parents=True, exist_ok=True)
+            source_rel=f"{w['addr'][:2]}/{w['addr'][2:4]}/{w['base']}.cpp"
+            test_rel=f"{w['addr'][:2]}/{w['addr'][2:4]}/{w['base']}_test.cpp"
+            (srcdir/source_rel).write_text(w["src"],encoding="utf-8")
+            (tdir/test_rel).write_text(w["test"],encoding="utf-8")
             entries.append("    [pscustomobject]@{\n"
                 f"        Address = '{w['addr']}'\n        Module = '{w['module']}'\n"
-                f"        Source = '{w['base']}.cpp'\n        TestSource = '{w['base']}_test.cpp'\n"
+                f"        Source = '{source_rel}'\n        TestSource = '{test_rel}'\n"
                 f"        PassPattern = '{w['pass']}'\n    }}")
         # insert into catalog before closing ')'
         text=catp.read_text(encoding="utf-8")

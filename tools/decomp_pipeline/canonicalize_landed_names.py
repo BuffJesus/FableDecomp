@@ -43,10 +43,10 @@ def main(argv):
     renamed = []
 
     for addr, t in sorted(by_addr.items()):
-        src_matches = list((ROOT / "rebuild" / "src" / "compiled").glob(f"*candidate{addr}_{addr}.cpp"))
-        test_matches = list((ROOT / "rebuild" / "tests").glob(f"*candidate{addr}_{addr}_test.cpp"))
-        src_matches += list((ROOT / "rebuild" / "src" / "compiled").glob(f"*candidate_{addr}_{addr}.cpp"))
-        test_matches += list((ROOT / "rebuild" / "tests").glob(f"*candidate_{addr}_{addr}_test.cpp"))
+        src_matches = list((ROOT / "rebuild" / "src" / "compiled").rglob(f"*candidate{addr}_{addr}.cpp"))
+        test_matches = list((ROOT / "rebuild" / "tests").rglob(f"*candidate{addr}_{addr}_test.cpp"))
+        src_matches += list((ROOT / "rebuild" / "src" / "compiled").rglob(f"*candidate_{addr}_{addr}.cpp"))
+        test_matches += list((ROOT / "rebuild" / "tests").rglob(f"*candidate_{addr}_{addr}_test.cpp"))
         src_matches = sorted(set(src_matches))
         test_matches = sorted(set(test_matches))
         if not src_matches and not test_matches:

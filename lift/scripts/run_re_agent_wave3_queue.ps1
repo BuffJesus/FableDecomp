@@ -36,7 +36,7 @@ $reAgent = 'C:\Users\Cornelio\AppData\Local\Programs\Python\Python314\Scripts\re
 $env:RE_AGENT_CODEX_BIN = 'C:\Users\Cornelio\AppData\Local\JetBrains\Rider2026.2\acp-agents\.runtimes\node\24.13.0\node.exe'
 $env:RE_AGENT_CODEX_JS = 'C:\Users\Cornelio\AppData\Local\JetBrains\Rider2026.2\acp-agents\.runtimes\node\24.13.0\npm-cache\_npx\a758dee5a93640a8\node_modules\@openai\codex\bin\codex.js'
 $env:RE_AGENT_CODEX_MAX_ATTEMPTS = '3'
-$env:RE_AGENT_DECOMPILE_CACHE_DIR = 'D:\Documents\FableTLC\lift\.cache\re-agent-decompile'
+$decompileCacheRoot = 'D:\Documents\FableTLC\lift\.cache\re-agent-decompile'
 
 # === Co-op / multiplayer cluster (priority probe, added 2026-07-23) =========
 # Fable retains a disabled co-op subsystem (docs/FINDINGS.md). Decompile the GATE,
@@ -303,14 +303,25 @@ try {
             Write-QueueLog "SKIP recorded $($target.Address) $($target.Slug)"
             continue
         }
+        $targetStartedAt = Get-Date
         for ($attempt = 1; $attempt -le $MaxAttemptsPerTarget; ++$attempt) {
             if (Test-Path -LiteralPath $stopPath) {
                 Write-QueueLog "STOP marker found before target=$($target.Address) attempt=$attempt"
                 exit 0
             }
             $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
-            $runLogRoot = Join-Path $liftRoot "logs\wave3\$(Get-Date -Format 'yyyy-MM-dd')"
+            $addressKey = $target.Address.ToLowerInvariant().Replace('0x', '')
+            $addressRelative = Join-Path $addressKey.Substring(0, 2) (
+                Join-Path $addressKey.Substring(2, 2) $addressKey
+            )
+            $runLogRoot = Join-Path $liftRoot (
+                Join-Path "logs\wave3\$(Get-Date -Format 'yyyy-MM-dd')" $addressRelative
+            )
+            $env:RE_AGENT_DECOMPILE_CACHE_DIR = Join-Path $decompileCacheRoot (
+                Join-Path $addressKey.Substring(0, 2) $addressKey.Substring(2, 2)
+            )
             New-Item -ItemType Directory -Path $runLogRoot -Force | Out-Null
+            New-Item -ItemType Directory -Path $env:RE_AGENT_DECOMPILE_CACHE_DIR -Force | Out-Null
             $stdoutPath = Join-Path $runLogRoot "re-agent-wave3-$($target.Slug)-$stamp.stdout.log"
             $stderrPath = Join-Path $runLogRoot "re-agent-wave3-$($target.Slug)-$stamp.stderr.log"
             $lane = if ($target.Lane) { $target.Lane } else { 'reconstruction' }
@@ -334,6 +345,13 @@ try {
                 $providerBlocked = $true
                 break
             }
+        }
+        try {
+            & (Join-Path $liftRoot 'scripts\organize_lift.ps1') `
+                -MinimumAgeMinutes 0 -Wave wave3 -Address $target.Address `
+                -StartedAt $targetStartedAt | Out-Null
+        } catch {
+            Write-QueueLog "WARN target artifact organization failed target=$($target.Address): $($_.Exception.Message)"
         }
         if ($providerBlocked) { exit 0 }
     }
