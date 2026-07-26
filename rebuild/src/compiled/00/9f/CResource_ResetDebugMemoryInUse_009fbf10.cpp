@@ -1,0 +1,1 @@
+void __fastcall CResource_ResetDebugMemoryInUse() {}

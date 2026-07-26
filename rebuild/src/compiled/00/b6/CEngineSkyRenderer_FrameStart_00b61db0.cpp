@@ -1,0 +1,1 @@
+void __stdcall CEngineSkyRenderer_FrameStart(int arg0) {}

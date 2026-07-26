@@ -1,0 +1,1 @@
+void __stdcall CKeyboard_SetHasInputFocus(int arg0) {}

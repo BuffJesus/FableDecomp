@@ -1,0 +1,1 @@
+void __fastcall CCreatureAction_BuildUpBattleCharge_PerformAction() {}

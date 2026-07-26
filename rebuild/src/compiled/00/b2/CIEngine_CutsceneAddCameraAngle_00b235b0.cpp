@@ -1,0 +1,1 @@
+void __stdcall CIEngine_CutsceneAddCameraAngle(int arg0) {}

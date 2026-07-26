@@ -1,0 +1,1 @@
+void __fastcall C3DAnimationStateAlpha_Validate() {}

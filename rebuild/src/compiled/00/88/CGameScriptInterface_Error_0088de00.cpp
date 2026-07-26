@@ -1,0 +1,1 @@
+void __stdcall CGameScriptInterface_Error(int arg0, int arg1, int arg2, int arg3) {}

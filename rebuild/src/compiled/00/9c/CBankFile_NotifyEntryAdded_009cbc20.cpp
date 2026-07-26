@@ -1,0 +1,1 @@
+void __stdcall CBankFile_NotifyEntryAdded(int arg0, int arg1, int arg2) {}

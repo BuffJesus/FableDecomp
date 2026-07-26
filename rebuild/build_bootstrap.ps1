@@ -61,12 +61,15 @@ $systemManagerInitSource = Join-Path $rebuildRoot 'src\compiled\00\40\CSystemMan
 $systemManagerInitBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CSystemManagerInit_Constructor_00403b10_test.cpp'
 $gfmainPhase1Source = Join-Path $rebuildRoot 'integration\gfmain_phase1.cpp'
 $gfmainPhase2Source = Join-Path $rebuildRoot 'integration\gfmain_phase2.cpp'
+$gfInitialiseProgressPhaseSource = Join-Path $rebuildRoot 'integration\gfinitialise_progress_phase.cpp'
+$gfInitialiseEngineBoundarySource = Join-Path $rebuildRoot 'integration\gfinitialise_engine_boundary.cpp'
 $stage2BoundarySource = Join-Path $rebuildRoot 'integration\stage2_engine_boundary.cpp'
 $visualBootSource = Join-Path $rebuildRoot 'integration\visual_boot_checkpoint.cpp'
 $visualBootArtwork = Join-Path $rebuildRoot 'assets\boot\fabledecomp_boot_concept.png'
 $visualBootBehaviorSource = Join-Path $rebuildRoot 'tests\integration\VisualBootCheckpoint_test.cpp'
 $gfmainPhase1BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase1_test.cpp'
 $gfmainPhase2BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase2_test.cpp'
+$gfInitialiseProgressPhaseBehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFInitialise_ProgressPhase_test.cpp'
 $bootObjectChecker = Join-Path $workspaceRoot 'tools\check_boot_object.py'
 $bootstrapObject = Join-Path $outDir 'bootstrap_main.obj'
 $retailObject = Join-Path $outDir 'retail_00403c60.obj'
@@ -93,6 +96,8 @@ $charStringDefaultObject = Join-Path $outDir 'char-string-default-constructor.ob
 $systemManagerInitObject = Join-Path $outDir 'system-manager-init-constructor.obj'
 $gfmainPhase1Object = Join-Path $outDir 'gfmain_phase1.obj'
 $gfmainPhase2Object = Join-Path $outDir 'gfmain_phase2.obj'
+$gfInitialiseProgressPhaseObject = Join-Path $outDir 'gfinitialise_progress_phase.obj'
+$gfInitialiseEngineBoundaryObject = Join-Path $outDir 'gfinitialise_engine_boundary.obj'
 $stage2BoundaryObject = Join-Path $outDir 'stage2_engine_boundary.obj'
 $stage3BoundaryObject = Join-Path $outDir 'stage3_engine_boundary.obj'
 $visualBoundaryObject = Join-Path $outDir 'visual_engine_boundary.obj'
@@ -103,6 +108,7 @@ $visualBootResourceSource = Join-Path $outDir 'visual_boot_checkpoint.rc'
 $visualBootResource = Join-Path $outDir 'visual_boot_checkpoint.res'
 $gfmainPhase1BehaviorObject = Join-Path $outDir 'gfmain_phase1_behavior.obj'
 $gfmainPhase2BehaviorObject = Join-Path $outDir 'gfmain_phase2_behavior.obj'
+$gfInitialiseProgressPhaseBehaviorObject = Join-Path $outDir 'gfinitialise_progress_phase_behavior.obj'
 $profileEndObject = Join-Path $outDir 'profile-end.obj'
 $asyncFailureHandlingObject = Join-Path $outDir 'async-failure-handling.obj'
 $startupLatchObject = Join-Path $outDir 'startup-latch-clear.obj'
@@ -120,6 +126,7 @@ $charStringDestructorBehaviorExecutable = Join-Path $outDir 'FableTLC-CharString
 $profileStartBehaviorExecutable = Join-Path $outDir 'FableTLC-ProfileStart-Behavior.exe'
 $gfmainPhase1BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase1-Behavior.exe'
 $gfmainPhase2BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase2-Behavior.exe'
+$gfInitialiseProgressPhaseBehaviorExecutable = Join-Path $outDir 'FableTLC-GFInitialiseProgressPhase-Behavior.exe'
 $stage2Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage2.exe'
 $stage3Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage3.exe'
 $visualCheckpointExecutable = Join-Path $outDir 'FableTLC-Reconstruction-VisualCheckpoint.exe'
@@ -138,6 +145,7 @@ $charStringDefaultPassPattern = 'FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVI
 $systemManagerInitPassPattern = 'FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS'
 $gfmainPhase1PassPattern = 'FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS'
 $gfmainPhase2PassPattern = 'FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS'
+$gfInitialiseProgressPhasePassPattern = 'FABLETLC_GFINITIALISE_PROGRESS_PHASE_BEHAVIOR PASS'
 $visualBootPassPattern = 'FABLETLC_VISUAL_BOOT_BEHAVIOR PASS'
 $profileEndPassPattern = 'FABLETLC_PROFILE_END_BEHAVIOR PASS'
 $asyncFailureHandlingPassPattern = 'FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS'
@@ -206,12 +214,15 @@ $required = @(
     $systemManagerInitBehaviorSource,
     $gfmainPhase1Source,
     $gfmainPhase2Source,
+    $gfInitialiseProgressPhaseSource,
+    $gfInitialiseEngineBoundarySource,
     $stage2BoundarySource,
     $visualBootSource,
     $visualBootArtwork,
     $visualBootBehaviorSource,
     $gfmainPhase1BehaviorSource,
     $gfmainPhase2BehaviorSource,
+    $gfInitialiseProgressPhaseBehaviorSource,
     $bootObjectChecker
 )
 $missing = @($required | Where-Object { -not (Test-Path -LiteralPath $_) })
@@ -885,6 +896,24 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfInitialiseProgressPhaseObject" $gfInitialiseProgressPhaseSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfInitialiseProgressPhaseObject)
+    ) {
+        throw 'Failed to compile the GFInitialise progress integration unit.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfInitialiseEngineBoundaryObject" $gfInitialiseEngineBoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfInitialiseEngineBoundaryObject)
+    ) {
+        throw 'Failed to compile the GFInitialise engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$stage2BoundaryObject" $stage2BoundarySource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -982,6 +1011,16 @@ try {
         throw 'Failed to compile the GFMain Phase 2 behavior fixture.'
     }
 
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfInitialiseProgressPhaseBehaviorObject" `
+        $gfInitialiseProgressPhaseBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfInitialiseProgressPhaseBehaviorObject)
+    ) {
+        throw 'Failed to compile the GFInitialise progress behavior fixture.'
+    }
+
     $phase1RuntimeObjects = @(
         $gfmainPhase1Object,
         $stage2BoundaryObject,
@@ -1018,6 +1057,9 @@ try {
     $visualRuntimeObjects = @(
         $gfmainPhase1Object,
         $gfmainPhase2Object,
+        $gfInitialiseProgressPhaseObject,
+        $gfInitialiseEngineBoundaryObject,
+        $progressSetupObject,
         $visualBoundaryObject,
         $visualBootObject,
         $setCurrentPathObject,
@@ -1073,6 +1115,34 @@ try {
         (($gfmainPhase2Output -join "`n") -notmatch [regex]::Escape($gfmainPhase2PassPattern))
     ) {
         throw "GFMain Phase 2 fixture failed with exit code $gfmainPhase2ExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$gfInitialiseProgressPhaseBehaviorExecutable" `
+        $gfInitialiseProgressPhaseObject `
+        $gfInitialiseEngineBoundaryObject `
+        $progressSetupObject `
+        $gfInitialiseProgressPhaseBehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfInitialiseProgressPhaseBehaviorExecutable)
+    ) {
+        throw 'Failed to link the GFInitialise progress behavior fixture.'
+    }
+
+    $gfInitialiseProgressPhaseOutput =
+        & $gfInitialiseProgressPhaseBehaviorExecutable 2>&1
+    $gfInitialiseProgressPhaseExitCode = $LASTEXITCODE
+    $gfInitialiseProgressPhaseOutput | Write-Output
+    if (
+        $gfInitialiseProgressPhaseExitCode -ne 0 -or
+        (($gfInitialiseProgressPhaseOutput -join "`n") -notmatch `
+            [regex]::Escape($gfInitialiseProgressPhasePassPattern))
+    ) {
+        throw (
+            'GFInitialise progress fixture failed with exit code ' +
+            "$gfInitialiseProgressPhaseExitCode."
+        )
     }
 
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:windows `
@@ -1139,7 +1209,8 @@ try {
     Write-Output "STAGE1_STARTUP PASS executable=$stage1Executable boundary=GFMain"
     Write-Output "STAGE2_STARTUP PASS executable=$stage2Executable boundary=GFMainPhase2"
     Write-Output "STAGE3_STARTUP PASS executable=$stage3Executable boundary=GFMainPhase3"
-    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=AuthoredVisualCheckpoint"
+    Write-Output "GFINITIALISE_PROGRESS_INTEGRATION PASS boundary=GFInitialiseTail"
+    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=GFInitialiseProgressThenAuthoredVisualCheckpoint"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude

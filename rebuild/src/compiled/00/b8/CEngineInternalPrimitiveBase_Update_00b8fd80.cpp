@@ -1,0 +1,1 @@
+void __stdcall CEngineInternalPrimitiveBase_Update(int arg0, int arg1) {}

@@ -258,6 +258,14 @@ extern "C" long FABLE_FASTCALL GFMain(
         return phase2Result;
 
 #if defined(FABLETLC_ENABLE_VISUAL_BOOT)
+    g_GFInitialiseProgressPhaseState.displayWidth = 1280;
+    if (
+        FableRunGFInitialiseProgressPhase(
+            g_GFInitialiseProgressPhaseState) != 1)
+    {
+        return 1;
+    }
+
     return FableRunVisualBootCheckpoint(
         instance,
         commandLine,

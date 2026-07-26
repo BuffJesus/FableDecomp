@@ -1,0 +1,1 @@
+void __stdcall CEngineInternalPrimitiveBase_GetChildPrimitiveHandle(int arg0, int arg1) {}

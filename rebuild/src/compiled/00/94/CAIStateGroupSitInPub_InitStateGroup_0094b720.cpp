@@ -1,0 +1,1 @@
+void __stdcall CAIStateGroup_SitInPub_InitStateGroup(int arg0, int arg1) {}

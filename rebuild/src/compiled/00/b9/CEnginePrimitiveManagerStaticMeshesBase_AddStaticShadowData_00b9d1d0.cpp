@@ -1,0 +1,1 @@
+void __stdcall CEnginePrimitiveManagerStaticMeshesBase_AddStaticShadowData(int arg0, int arg1) {}

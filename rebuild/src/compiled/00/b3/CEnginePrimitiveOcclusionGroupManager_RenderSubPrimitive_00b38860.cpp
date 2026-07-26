@@ -1,0 +1,1 @@
+void __stdcall CEnginePrimitiveOcclusionGroupManager_RenderSubPrimitive(int arg0, int arg1) {}

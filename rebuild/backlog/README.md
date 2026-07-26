@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-07-25T18:35:31-06:00`
+Generated: `2026-07-25T23:12:32-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 
@@ -8,11 +8,11 @@ The order favors generated candidate clusters first, then extension of proven mo
 
 | Rank | Track | Module | Functions | Prototype gaps | Agent candidates | Verified lifts |
 |---:|---|---|---:|---:|---:|---:|
-| 1 | candidate-cluster | `CGameScriptInterface` | 953 | 5 | 402 | 0 |
-| 2 | candidate-cluster | `_global` | 11369 | 9375 | 43 | 0 |
+| 1 | candidate-cluster | `CGameScriptInterface` | 953 | 5 | 435 | 0 |
+| 2 | candidate-cluster | `_global` | 11371 | 9372 | 57 | 0 |
 | 3 | candidate-cluster | `CMouseDX` | 24 | 0 | 14 | 10 |
-| 4 | candidate-cluster | `CMemoryAllocatorFixedSize` | 21 | 0 | 11 | 7 |
-| 5 | candidate-cluster | `CScriptThing` | 103 | 2 | 12 | 0 |
+| 4 | candidate-cluster | `CScriptThing` | 103 | 2 | 15 | 0 |
+| 5 | candidate-cluster | `CMemoryAllocatorFixedSize` | 21 | 0 | 11 | 7 |
 | 6 | candidate-cluster | `CNavQuadTree` | 22 | 1 | 9 | 0 |
 | 7 | candidate-cluster | `CEngineLandscapePatch` | 29 | 2 | 9 | 0 |
 | 8 | candidate-cluster | `CEngineLandscapeRenderer` | 33 | 0 | 8 | 0 |

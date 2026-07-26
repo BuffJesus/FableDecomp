@@ -1,0 +1,1 @@
+void __stdcall CEngine_SetLandscapeDebugTintColour(int arg0, int arg1) {}
