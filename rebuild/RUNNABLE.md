@@ -52,10 +52,13 @@ singleton retrieval path.
 The authored Phase 2 integration fixture proves setting propagation,
 optional installer setup, startup-latch handling, async failure policy,
 and balanced counted ownership on both enabled and skipped paths.
-Phase 3 has 20 of 34 direct calls proven. The newest promotion replaces
+Phase 3 has 21 of 34 direct calls proven. The first correction replaces
 a false donor `GetActionName` label with a TLC-specific no-argument
 default-language factory. Its readable 19-byte body constructs `"English"`
 in the fastcall hidden return slot and now has a real lifetime fixture.
+The next corrected call is `CCharString::ToWideString`: its 45-byte body
+and the 13-byte conversion factory plus 66-byte counted-storage copy
+constructor all relocation-match and pass focused ownership fixtures.
 The shared string/profile targets, two seven-byte text-alignment setters,
 and two folded seven-byte CBase vtable restores remain proven as well.
 
@@ -85,6 +88,9 @@ Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,
 `FABLETLC_STARTUP_LATCH_BEHAVIOR PASS`,
 `FABLETLC_FILE_INSTALLER_GET_BEHAVIOR PASS`,
 `FABLETLC_DEFAULT_LANGUAGE_NAME_BEHAVIOR PASS`,
+`FABLETLC_WIDE_STRING_FROM_CHAR_FACTORY_BEHAVIOR PASS`,
+`FABLETLC_WIDE_STRING_COPY_CONSTRUCTOR_BEHAVIOR PASS`,
+`FABLETLC_CHAR_TO_WIDE_STRING_BEHAVIOR PASS`,
 `FABLETLC_PRIMARY_LEFT_ALIGNMENT_BEHAVIOR PASS`,
 `FABLETLC_SECONDARY_LEFT_ALIGNMENT_BEHAVIOR PASS`,
 `FABLETLC_CBASE_RESTORE_A_BEHAVIOR PASS`,
@@ -127,7 +133,7 @@ These are integration units, not invented retail functions.
 |---:|---|---|---:|---:|---:|---|
 | 1 | `0x00402510`-`0x004025A6` | runtime and project bootstrap | 9 | 9 | 7 | CSystemManagerInit; GetProjectPath; SetCurrentPath; InitialiseConsoleVariables |
 | 2 | `0x004025A6`-`0x00402668` | basic-install and failure-policy bootstrap | 7 | 7 | 7 | CFileInstallerSingleton::Get; startup latch; SetEnableFailureHandling |
-| 3 | `0x00402668`-`0x0040284E` | settings, persistence, and IME | 34 | 23 | 20 | FableGetDefaultLanguageName_00415530; PathExists; LoadFromFile; CPersistContext; LoadIMESettings |
+| 3 | `0x00402668`-`0x0040284E` | settings, persistence, and IME | 34 | 23 | 21 | FableGetDefaultLanguageName_00415530; PathExists; LoadFromFile; CPersistContext; LoadIMESettings |
 | 4 | `0x0040284E`-`0x004029DC` | root child hierarchy | 29 | 5 | 0 | EnableNavigator; AddChild |
 | 5 | `0x004029DC`-`0x00402CE6` | retail banks and INI files | 65 | 15 | 0 | OpenRetailBank; OpenIniFile; GetDVDDialogueDir |
 | 6 | `0x00402CE6`-`0x00403082` | save paths, fonts, and display resources | 61 | 24 | 2 | LoadTable; MyDocuments_CheckWritePermissions; GetFontBankName; AddChildPrimitive |
@@ -160,6 +166,7 @@ These are integration units, not invented retail functions.
 | 3 | `0x00402683` | `0x009D8240` | NProfileTimer::StartProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp) |
 | 3 | `0x0040268C` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
 | 3 | `0x0040269F` | `0x00415530` | FableGetDefaultLanguageName_00415530 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/Global_GetDefaultLanguageName_00415530.cpp) |
+| 3 | `0x004026A6` | `0x0099E480` | CCharString::ToWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_ToWideString_0099e480.cpp) |
 | 3 | `0x004026C9` | `0x0099B510` | ~CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp) |
 | 3 | `0x004026D2` | `0x0099B510` | ~CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp) |
 | 3 | `0x004026DB` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |

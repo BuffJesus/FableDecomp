@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.1.0",
-  "generatedAt": "2026-07-25T21:29:45-06:00",
-  "sourceDigest": "da42ecbf4610353f8c0ae98b9cf914edf5cf3eb4a58879f919ef8ee7706005b8",
+  "generatedAt": "2026-07-25T21:52:52-06:00",
+  "sourceDigest": "6dca801b953d407fd0a6c059689bcacad3c466bccca8b176435a8111c9dd1544",
   "target": {
     "executable": "Fable.exe",
     "imageBase": "0x00400000",
@@ -18,7 +18,7 @@
     "unmatched": 413,
     "ownerAlignedRecommendations": 472,
     "verifiedRecommendedBindings": 192,
-    "verifiedEngineFunctions": 1524,
+    "verifiedEngineFunctions": 1527,
     "hookApprovedBindings": 0
   },
   "policy": {
@@ -70575,6 +70575,81 @@
         "exact-leaf-name",
         "complete-prototype",
         "retail-byte-match"
+      ]
+    },
+    {
+      "address": "0x0099B6A0",
+      "rva": "0x0059B6A0",
+      "qualifiedName": "CWideString::CreateFromCharString",
+      "module": "CWideString",
+      "callingConvention": "__fastcall",
+      "returnType": "CWideString",
+      "parameterCount": 1,
+      "parameterTypesText": "CCharString const &",
+      "prototypeComplete": true,
+      "cleanDecompile": "yes",
+      "agentVerdict": "",
+      "compiledStatus": "PASS",
+      "behaviorTest": "PASS",
+      "retailParity": "RELOCATION_MATCH",
+      "liftGrade": "",
+      "ownerRelevance": "none",
+      "engineImplementationVerified": true,
+      "score": 135,
+      "evidence": [
+        "exact-leaf-name",
+        "complete-prototype",
+        "retail-relocation-match"
+      ]
+    },
+    {
+      "address": "0x0099B720",
+      "rva": "0x0059B720",
+      "qualifiedName": "CWideString::CWideString",
+      "module": "CWideString",
+      "callingConvention": "__thiscall",
+      "returnType": "CWideString *",
+      "parameterCount": 2,
+      "parameterTypesText": "CWideString *,CWideString const &",
+      "prototypeComplete": true,
+      "cleanDecompile": "yes",
+      "agentVerdict": "",
+      "compiledStatus": "PASS",
+      "behaviorTest": "PASS",
+      "retailParity": "RELOCATION_MATCH",
+      "liftGrade": "",
+      "ownerRelevance": "none",
+      "engineImplementationVerified": true,
+      "score": 135,
+      "evidence": [
+        "exact-leaf-name",
+        "complete-prototype",
+        "retail-relocation-match"
+      ]
+    },
+    {
+      "address": "0x0099E480",
+      "rva": "0x0059E480",
+      "qualifiedName": "CCharString::ToWideString",
+      "module": "CCharString",
+      "callingConvention": "__thiscall",
+      "returnType": "CWideString",
+      "parameterCount": 1,
+      "parameterTypesText": "CCharString const *",
+      "prototypeComplete": true,
+      "cleanDecompile": "yes",
+      "agentVerdict": "",
+      "compiledStatus": "PASS",
+      "behaviorTest": "PASS",
+      "retailParity": "RELOCATION_MATCH",
+      "liftGrade": "",
+      "ownerRelevance": "none",
+      "engineImplementationVerified": true,
+      "score": 135,
+      "evidence": [
+        "exact-leaf-name",
+        "complete-prototype",
+        "retail-relocation-match"
       ]
     },
     {
