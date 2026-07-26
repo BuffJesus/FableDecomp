@@ -1,6 +1,25 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 16:02 MDT (direct draw-list dependency closure).*
+*Last updated: 2026-07-26 (D3D9 visual presentation bridge).*
+
+## D3D9 visual presentation bridge (2026-07-26)
+
+- The visual checkpoint no longer depends on GDI for its normal presentation
+  path. `visual_boot_d3d9.cpp` creates a real windowed D3D9 device, uploads the
+  decoded retail `FRONTEND_BACKDROP_01` bitmap into an A8R8G8B8 managed
+  texture, and presents an aspect-fitted textured triangle strip.
+- GDI remains as an explicit failure fallback while the recovered Lionhead
+  draw-list submission is connected. The D3D9 title is only selected after
+  device and texture initialization succeeds.
+- The full Release bootstrap and all integration fixtures pass. A fresh live
+  launch produced
+  `FableDecomp - D3D9 Retail Frontend + Progress Display Ready`, captured the
+  actual forest-and-Hero retail frame from the window, accepted `WM_CLOSE`,
+  and exited zero.
+- The central visual boundary is now narrower: replace the authored
+  `DrawPrimitiveUP` quad with recovered `CRenderManager2D::Render2DDrawList`
+  orchestration. All 25 of that function's direct dependencies are already
+  behavior-gated; 21 have retail byte parity.
 
 ## Shader binding/render-state closure (2026-07-26)
 
@@ -78,9 +97,9 @@
   top-level retail-art window, accepted `WM_CLOSE`, and exited zero.
 - No direct `Render2DDrawList` dependency remains behaviorally unrecovered.
   Sold, QuickDraw erase, ambient, and combined projection are the four
-  remaining byte-parity residues. Replacing the current GDI
-  presentation bridge with recovered Lionhead renderer submission remains
-  the central visual-closure boundary.
+  remaining byte-parity residues. Replacing the authored D3D9 textured-quad
+  bridge with recovered Lionhead renderer submission remains the central
+  visual-closure boundary.
 
 ## Texture/shader submit closure (2026-07-26)
 
