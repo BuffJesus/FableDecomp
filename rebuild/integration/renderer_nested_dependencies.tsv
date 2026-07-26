@@ -46,7 +46,7 @@ parent_address	parent_name	address	name	retail_bytes	recovery_status	source	note
 009da9f0	CRenderManager2D::Render2DDrawList	00988a50	CShaderRenderManager::UpdateCombinedProjectionTransform	975	UNRECOVERED		Large transform update.
 009da9f0	CRenderManager2D::Render2DDrawList	00989760	CShaderRenderManager::UpdateAmbient	85	UNRECOVERED		Ambient state upload.
 009da9f0	CRenderManager2D::Render2DDrawList	009897c0	CShaderRenderManager::UpdateFogColour	99	MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_UpdateFogColour_009897c0.cpp	Upload the four-component fog constant and clear its shader-state dirty bit.
-009da9f0	CRenderManager2D::Render2DDrawList	00989bf0	CShaderRenderManager::UpdatePixelShaderConstants	186	UNRECOVERED		Pixel constant upload.
+009da9f0	CRenderManager2D::Render2DDrawList	00989bf0	CShaderRenderManager::UpdatePixelShaderConstants	186	RELOCATION_MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_UpdatePixelShaderConstants_00989bf0.cpp	Gather indexed pixel constants into the static upload buffer and submit them.
 009da9f0	CRenderManager2D::Render2DDrawList	0098a760	CShaderRenderManager::UpdateLightGlobals	54	MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_UpdateLightGlobals_0098a760.cpp	Light-global upload.
 009da9f0	CRenderManager2D::Render2DDrawList	0098b230	CShaderRenderManager::RegisterVertexShaderConstantLayout	73	RELOCATION_MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_RegisterVertexShaderConstantLayout_0098b230.cpp	Resize and register the indexed vertex-shader constant layout.
 009da9f0	CRenderManager2D::Render2DDrawList	0098b5e0	CShaderRenderManager::SetVertexShaderConstantLayout	624	UNRECOVERED		Large constant-layout application.

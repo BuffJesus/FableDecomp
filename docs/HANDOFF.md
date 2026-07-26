@@ -1,11 +1,11 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 13:54 MDT (shader binding/render-state closure).*
+*Last updated: 2026-07-26 14:09 MDT (shader binding/render-state closure).*
 
 ## Shader binding/render-state closure (2026-07-26)
 
-- Five more `Render2DDrawList` dependencies are canonical, raising that
-  family from **11/25 to 16/25** while `DrawRetailDisplay` remains **13/37**.
+- Six more `Render2DDrawList` dependencies are canonical, raising that
+  family from **11/25 to 17/25** while `DrawRetailDisplay` remains **13/37**.
   `CShaderRenderManager::ApplyVertexShader @ 0x00988020` is a true
   **176/176-byte exact match** and covers shader-mode reconciliation, the
   unchanged binding fast path, vertex-shader/declaration updates, and both
@@ -25,9 +25,14 @@
   **99/99-byte exact match**. An active-layout alias preserves retail's
   register schedule; the fixture covers the four-float upload, register/count
   forwarding, the disabled upload path, and dirty-bit clearing.
-- The canonical VC7.1 compile/behavior gate passes **4,908 / 4,908**. Retail
-  parity is **2,684 exact + 1,897 relocation-normalized = 4,581 / 49,552
-  (9.24%)**; honest residue remains 199 differences and 128 missing
+- `CShaderRenderManager::UpdatePixelShaderConstants @ 0x00989BF0` is a
+  186-byte relocation-normalized match. Its static eight-vector upload
+  buffer, indexed gather loop, upload arguments, zero/null paths, buffer
+  reuse, and dirty-bit clear are behavior-gated; an explicit shared-tail
+  label preserves retail's ESI/EDI allocation.
+- The canonical VC7.1 compile/behavior gate passes **4,909 / 4,909**. Retail
+  parity is **2,684 exact + 1,898 relocation-normalized = 4,582 / 49,552
+  (9.25%)**; honest residue remains 199 differences and 128 missing
   function-start oracles.
 - The full Release bootstrap rebuilt with the genuine retail
   `FRONTEND_BACKDROP_01`. A fresh live launch opened
