@@ -38,6 +38,10 @@ $startupLatchSource = Join-Path $rebuildRoot 'src\compiled\00\9d\Global_ClearSta
 $startupLatchBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\Global_ClearStartupLatch_009d81e0_test.cpp'
 $fileInstallerGetSource = Join-Path $rebuildRoot 'src\compiled\00\40\CFileInstallerSingleton_Get_00404440.cpp'
 $fileInstallerGetBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CFileInstallerSingleton_Get_00404440_test.cpp'
+$primaryLeftAlignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9b\TextLayout_SetPrimaryLeftAlignment_009bc890.cpp'
+$primaryLeftAlignmentBehaviorSource = Join-Path $rebuildRoot 'tests\00\9b\TextLayout_SetPrimaryLeftAlignment_009bc890_test.cpp'
+$secondaryLeftAlignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9b\TextLayout_SetSecondaryLeftAlignment_009bc8a0.cpp'
+$secondaryLeftAlignmentBehaviorSource = Join-Path $rebuildRoot 'tests\00\9b\TextLayout_SetSecondaryLeftAlignment_009bc8a0_test.cpp'
 $charStringDefaultSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharString_DefaultConstructor_0099e4b0.cpp'
 $charStringDefaultBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_DefaultConstructor_0099e4b0_test.cpp'
 $systemManagerInitSource = Join-Path $rebuildRoot 'src\compiled\00\40\CSystemManagerInit_Constructor_00403b10.cpp'
@@ -114,6 +118,8 @@ $profileEndPassPattern = 'FABLETLC_PROFILE_END_BEHAVIOR PASS'
 $asyncFailureHandlingPassPattern = 'FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS'
 $startupLatchPassPattern = 'FABLETLC_STARTUP_LATCH_BEHAVIOR PASS'
 $fileInstallerGetPassPattern = 'FABLETLC_FILE_INSTALLER_GET_BEHAVIOR PASS'
+$primaryLeftAlignmentPassPattern = 'FABLETLC_PRIMARY_LEFT_ALIGNMENT_BEHAVIOR PASS'
+$secondaryLeftAlignmentPassPattern = 'FABLETLC_SECONDARY_LEFT_ALIGNMENT_BEHAVIOR PASS'
 
 $required = @(
     (Join-Path $vcRoot 'bin\cl.exe'),
@@ -147,6 +153,10 @@ $required = @(
     $startupLatchBehaviorSource,
     $fileInstallerGetSource,
     $fileInstallerGetBehaviorSource,
+    $primaryLeftAlignmentSource,
+    $primaryLeftAlignmentBehaviorSource,
+    $secondaryLeftAlignmentSource,
+    $secondaryLeftAlignmentBehaviorSource,
     $charStringDefaultSource,
     $charStringDefaultBehaviorSource,
     $systemManagerInitSource,
@@ -301,6 +311,22 @@ try {
         -BehaviorSource $fileInstallerGetBehaviorSource `
         -OutputStem 'cfi-singleton-get' `
         -PassPattern $fileInstallerGetPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009bc890' `
+        -Description 'primary left-alignment flag setter' `
+        -Source $primaryLeftAlignmentSource `
+        -BehaviorSource $primaryLeftAlignmentBehaviorSource `
+        -OutputStem 'primary-left-alignment' `
+        -PassPattern $primaryLeftAlignmentPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009bc8a0' `
+        -Description 'secondary left-alignment flag setter' `
+        -Source $secondaryLeftAlignmentSource `
+        -BehaviorSource $secondaryLeftAlignmentBehaviorSource `
+        -OutputStem 'secondary-left-alignment' `
+        -PassPattern $secondaryLeftAlignmentPassPattern
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions "/Fo$retailObject" $retailSource
     if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $retailObject)) {
