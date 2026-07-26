@@ -98,6 +98,19 @@ $retryPid = Join-Path $root 'lift\state\re-agent-retry-queue.pid'
 $wave2Pid = Join-Path $root 'lift\state\re-agent-wave2-queue.pid'
 $wave3Pids = @((Join-Path $root 'lift\state\re-agent-wave3-queue.pid'))
 $namingPid = Join-Path $root 'ghidra_out\naming_stragglers\pipeline.pid'
+$localParityPid = Join-Path $rebuild 'local-parity\queue.pid'
+if (Test-Path -LiteralPath $localParityPid) {
+    try {
+        $activeLocalParityPid = [int](Get-Content -LiteralPath $localParityPid -Raw)
+        if (Test-ProcessCommand $activeLocalParityPid 'run_local_parity_queue.ps1') {
+            Write-RefreshLog "DEFER local parity queue is mutating the candidate catalog pid=$activeLocalParityPid"
+            exit 0
+        }
+    } catch {
+        Write-RefreshLog 'DEFER local parity queue PID cannot be validated yet'
+        exit 0
+    }
+}
 if (Test-Path -LiteralPath $retryPid) {
     Write-RefreshLog 'DEFER auto-RE retry queue is active'
     exit 0
