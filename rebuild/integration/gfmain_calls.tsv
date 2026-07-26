@@ -41,11 +41,11 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 3	004027da	004046b0	SortTreeRecursively
 3	004027e3	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	004027ec	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
-3	004027f5	0099a2e0	CBase
+3	004027f5	0099a2e0	FableRestoreCBaseVTable_0099A2E0	RELOCATION_MATCH	rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a2e0.cpp
 3	004027fe	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	0040280f	0099a920	?Close@CDiskFileWin32@@UAEXXZ
 3	00402818	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
-3	00402821	0099a300	CBase
+3	00402821	0099a300	FableRestoreCBaseVTable_0099A300	RELOCATION_MATCH	rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a300.cpp
 3	0040282c	009bc890	NTextLayoutConfig::SetPrimaryLeftAlignment	RELOCATION_MATCH	rebuild/src/compiled/00/9b/TextLayout_SetPrimaryLeftAlignment_009bc890.cpp
 3	00402837	009bc8a0	NTextLayoutConfig::SetSecondaryLeftAlignment	RELOCATION_MATCH	rebuild/src/compiled/00/9b/TextLayout_SetSecondaryLeftAlignment_009bc8a0.cpp
 3	0040283e	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp

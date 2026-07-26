@@ -44,9 +44,9 @@ singleton retrieval path.
 The authored Phase 2 integration fixture proves setting propagation,
 optional installer setup, startup-latch handling, async failure policy,
 and balanced counted ownership on both enabled and skipped paths.
-Phase 3 has 17 of 34 direct calls proven after propagating the shared
+Phase 3 has 19 of 34 direct calls proven after propagating the shared
 string/profile targets and promoting its two seven-byte text-alignment
-flag setters.
+flag setters and two folded seven-byte CBase vtable restores.
 
 **Stage 0 remains the smallest linker proof:** VC7.1 links a console
 PE containing
@@ -75,6 +75,8 @@ Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,
 `FABLETLC_FILE_INSTALLER_GET_BEHAVIOR PASS`,
 `FABLETLC_PRIMARY_LEFT_ALIGNMENT_BEHAVIOR PASS`,
 `FABLETLC_SECONDARY_LEFT_ALIGNMENT_BEHAVIOR PASS`,
+`FABLETLC_CBASE_RESTORE_A_BEHAVIOR PASS`,
+`FABLETLC_CBASE_RESTORE_B_BEHAVIOR PASS`,
 `FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS`,
 `FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS`, and
 `STAGE3_STARTUP PASS`.
@@ -111,7 +113,7 @@ These are integration units, not invented retail functions.
 |---:|---|---|---:|---:|---:|---|
 | 1 | `0x00402510`-`0x004025A6` | runtime and project bootstrap | 9 | 9 | 7 | CSystemManagerInit; GetProjectPath; SetCurrentPath; InitialiseConsoleVariables |
 | 2 | `0x004025A6`-`0x00402668` | basic-install and failure-policy bootstrap | 7 | 7 | 7 | CFileInstallerSingleton::Get; startup latch; SetEnableFailureHandling |
-| 3 | `0x00402668`-`0x0040284E` | settings, persistence, and IME | 34 | 23 | 17 | GetActionName; PathExists; LoadFromFile; CPersistContext; LoadIMESettings |
+| 3 | `0x00402668`-`0x0040284E` | settings, persistence, and IME | 34 | 23 | 19 | GetActionName; PathExists; LoadFromFile; CPersistContext; LoadIMESettings |
 | 4 | `0x0040284E`-`0x004029DC` | root child hierarchy | 29 | 5 | 0 | EnableNavigator; AddChild |
 | 5 | `0x004029DC`-`0x00402CE6` | retail banks and INI files | 65 | 15 | 0 | OpenRetailBank; OpenIniFile; GetDVDDialogueDir |
 | 6 | `0x00402CE6`-`0x00403082` | save paths, fonts, and display resources | 61 | 24 | 2 | LoadTable; MyDocuments_CheckWritePermissions; GetFontBankName; AddChildPrimitive |
@@ -151,8 +153,10 @@ These are integration units, not invented retail functions.
 | 3 | `0x0040274E` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
 | 3 | `0x004027E3` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
 | 3 | `0x004027EC` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
+| 3 | `0x004027F5` | `0x0099A2E0` | FableRestoreCBaseVTable_0099A2E0 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a2e0.cpp) |
 | 3 | `0x004027FE` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
 | 3 | `0x00402818` | `0x0099B510` | ~CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp) |
+| 3 | `0x00402821` | `0x0099A300` | FableRestoreCBaseVTable_0099A300 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a300.cpp) |
 | 3 | `0x0040282C` | `0x009BC890` | NTextLayoutConfig::SetPrimaryLeftAlignment | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9b/TextLayout_SetPrimaryLeftAlignment_009bc890.cpp) |
 | 3 | `0x00402837` | `0x009BC8A0` | NTextLayoutConfig::SetSecondaryLeftAlignment | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9b/TextLayout_SetSecondaryLeftAlignment_009bc8a0.cpp) |
 | 3 | `0x0040283E` | `0x009D8250` | NProfileTimer::EndProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp) |
