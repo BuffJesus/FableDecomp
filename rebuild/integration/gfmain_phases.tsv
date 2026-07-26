@@ -1,5 +1,5 @@
 phase	start	end	role	anchors	next_action
-1	00402510	004025a6	runtime and project bootstrap	CSystemManagerInit; GetProjectPath; SetCurrentPath; InitialiseConsoleVariables	Promote the temporary string/object lifetimes and CSystemManagerInit, then make this the first callable GFMain phase.
+1	00402510	004025a6	runtime and project bootstrap	CSystemManagerInit; GetProjectPath; SetCurrentPath; InitialiseConsoleVariables	Promote the remaining setup helpers and CSystemManagerInit, then make this the first callable GFMain phase.
 2	004025a6	00402668	failure-handling bootstrap	CSystemManager::Get; Draw; SetEnableFailureHandling	Type the returned system-manager object and its temporary allocation/deletion path.
 3	00402668	0040284e	settings, persistence, and IME	GetActionName; PathExists; LoadFromFile; CPersistContext; LoadIMESettings	Separate optional settings-file parsing from default-value initialization.
 4	0040284e	004029dc	root child hierarchy	EnableNavigator; AddChild	Recover the five named child definitions and the owner/container type.
