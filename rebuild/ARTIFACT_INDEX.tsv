@@ -3277,7 +3277,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00cb13a0	CEditControlCentre		rebuild/src/compiled/00/cb/CEditControlCentre_PeekConnectedToTrackNode_00cb13a0.cpp	rebuild/tests/00/cb/CEditControlCentre_PeekConnectedToTrackNode_00cb13a0_test.cpp		rebuild/build/candidates-Release/00/cb/00cb13a0
 00e1df50	_global		rebuild/src/compiled/00/e1/global_AddChildPrimitive_00e1df50.cpp	rebuild/tests/00/e1/global_AddChildPrimitive_00e1df50_test.cpp		rebuild/build/candidates-Release/00/e1/00e1df50
 00e7f7d0		lift/reports/wave3/code/00/e7/0x00E7F7D0_global_GetFloatTableEntryByIndex.cpp				
-00ee91e0		lift/reports/wave3/code/00/ee/0x00EE91E0_global_Script_MakeThingsSpeakNumbered.cpp				
+00ee91e0		lift/reports/wave3/code/00/ee/0x00EE91E0_global_Script_MakeThingsSpeakNumbered.cpp;lift/reports/wave3/code/0x00EE91E0_global_Script_MakeThingsSpeakNumbered.cpp				
 012288b0	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk012288b0_012288b0.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk012288b0_012288b0_test.cpp		rebuild/build/candidates-Release/01/22/012288b0
 012288c0	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk012288c0_012288c0.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk012288c0_012288c0_test.cpp		rebuild/build/candidates-Release/01/22/012288c0
 01228910	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk01228910_01228910.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk01228910_01228910_test.cpp		rebuild/build/candidates-Release/01/22/01228910
@@ -3386,12 +3386,16 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 01229450	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk01229450_01229450.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk01229450_01229450_test.cpp		rebuild/build/candidates-Release/01/22/01229450
 01229460	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk01229460_01229460.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk01229460_01229460_test.cpp		rebuild/build/candidates-Release/01/22/01229460
 01229470	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk01229470_01229470.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk01229470_01229470_test.cpp		rebuild/build/candidates-Release/01/22/01229470
+01229480	_global		rebuild/src/compiled/01/22/global_CreateCRC_01229480.cpp	rebuild/tests/01/22/global_CreateCRC_01229480_test.cpp		rebuild/build/candidates-Release/01/22/01229480
+012294a0	_global		rebuild/src/compiled/01/22/global_CreateCRC_012294a0.cpp	rebuild/tests/01/22/global_CreateCRC_012294a0_test.cpp		rebuild/build/candidates-Release/01/22/012294a0
 012294c0	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk012294c0_012294c0.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk012294c0_012294c0_test.cpp		rebuild/build/candidates-Release/01/22/012294c0
+012294d0	_global		rebuild/src/compiled/01/22/global_CreateCRC_012294d0.cpp	rebuild/tests/01/22/global_CreateCRC_012294d0_test.cpp		rebuild/build/candidates-Release/01/22/012294d0
 012294f0	_global		rebuild/src/compiled/01/22/global_DisplayProgress_012294f0.cpp	rebuild/tests/01/22/global_DisplayProgress_012294f0_test.cpp		rebuild/build/candidates-Release/01/22/012294f0
 01229510	_global		rebuild/src/compiled/01/22/global_RenderMeshPrimitiveBlocks_01229510.cpp	rebuild/tests/01/22/global_RenderMeshPrimitiveBlocks_01229510_test.cpp		rebuild/build/candidates-Release/01/22/01229510
 01229530	_global		rebuild/src/compiled/01/22/global_DisplayProgress_01229530.cpp	rebuild/tests/01/22/global_DisplayProgress_01229530_test.cpp		rebuild/build/candidates-Release/01/22/01229530
 01229550	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk01229550_01229550.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk01229550_01229550_test.cpp		rebuild/build/candidates-Release/01/22/01229550
 012295e0	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk012295e0_012295e0.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk012295e0_012295e0_test.cpp		rebuild/build/candidates-Release/01/22/012295e0
+012295f0	_global		rebuild/src/compiled/01/22/global_CreateCRC_012295f0.cpp	rebuild/tests/01/22/global_CreateCRC_012295f0_test.cpp		rebuild/build/candidates-Release/01/22/012295f0
 01229610	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk01229610_01229610.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk01229610_01229610_test.cpp		rebuild/build/candidates-Release/01/22/01229610
 01229620	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk01229620_01229620.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk01229620_01229620_test.cpp		rebuild/build/candidates-Release/01/22/01229620
 01229650	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk01229650_01229650.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk01229650_01229650_test.cpp		rebuild/build/candidates-Release/01/22/01229650
@@ -3481,6 +3485,8 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 01229bc0	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk01229bc0_01229bc0.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk01229bc0_01229bc0_test.cpp		rebuild/build/candidates-Release/01/22/01229bc0
 01229bd0	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk01229bd0_01229bd0.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk01229bd0_01229bd0_test.cpp		rebuild/build/candidates-Release/01/22/01229bd0
 01229dc0	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk01229dc0_01229dc0.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk01229dc0_01229dc0_test.cpp		rebuild/build/candidates-Release/01/22/01229dc0
+01229df0	_global		rebuild/src/compiled/01/22/global_CreateCRC_01229df0.cpp	rebuild/tests/01/22/global_CreateCRC_01229df0_test.cpp		rebuild/build/candidates-Release/01/22/01229df0
+01229e20	_global		rebuild/src/compiled/01/22/global_CreateCRC_01229e20.cpp	rebuild/tests/01/22/global_CreateCRC_01229e20_test.cpp		rebuild/build/candidates-Release/01/22/01229e20
 01229e40	_global		rebuild/src/compiled/01/22/global_RenderMeshPrimitiveBlocks_01229e40.cpp	rebuild/tests/01/22/global_RenderMeshPrimitiveBlocks_01229e40_test.cpp		rebuild/build/candidates-Release/01/22/01229e40
 01229e60	_global		rebuild/src/compiled/01/22/global_RenderMeshPrimitiveBlocks_01229e60.cpp	rebuild/tests/01/22/global_RenderMeshPrimitiveBlocks_01229e60_test.cpp		rebuild/build/candidates-Release/01/22/01229e60
 01229ee0	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk01229ee0_01229ee0.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk01229ee0_01229ee0_test.cpp		rebuild/build/candidates-Release/01/22/01229ee0
@@ -3533,6 +3539,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 0122a430	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk0122a430_0122a430.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk0122a430_0122a430_test.cpp		rebuild/build/candidates-Release/01/22/0122a430
 0122a440	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk0122a440_0122a440.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk0122a440_0122a440_test.cpp		rebuild/build/candidates-Release/01/22/0122a440
 0122a450	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk0122a450_0122a450.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk0122a450_0122a450_test.cpp		rebuild/build/candidates-Release/01/22/0122a450
+0122a460	_global		rebuild/src/compiled/01/22/global_CreateCRC_0122a460.cpp	rebuild/tests/01/22/global_CreateCRC_0122a460_test.cpp		rebuild/build/candidates-Release/01/22/0122a460
 0122a480	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk0122a480_0122a480.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk0122a480_0122a480_test.cpp		rebuild/build/candidates-Release/01/22/0122a480
 0122a490	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk0122a490_0122a490.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk0122a490_0122a490_test.cpp		rebuild/build/candidates-Release/01/22/0122a490
 0122a4a0	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk0122a4a0_0122a4a0.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk0122a4a0_0122a4a0_test.cpp		rebuild/build/candidates-Release/01/22/0122a4a0

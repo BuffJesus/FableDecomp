@@ -22064,6 +22064,55 @@ $catalog = @(
         TestSource = '01/22/global_ClearCachedDefs_0122ad40_test.cpp'
         PassPattern = 'AUTO_TINY_0122ad40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '01229480'
+        Module = '_global'
+        Source = '01/22/global_CreateCRC_01229480.cpp'
+        TestSource = '01/22/global_CreateCRC_01229480_test.cpp'
+        PassPattern = 'AUTO_TINY_01229480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012294a0'
+        Module = '_global'
+        Source = '01/22/global_CreateCRC_012294a0.cpp'
+        TestSource = '01/22/global_CreateCRC_012294a0_test.cpp'
+        PassPattern = 'AUTO_TINY_012294a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012294d0'
+        Module = '_global'
+        Source = '01/22/global_CreateCRC_012294d0.cpp'
+        TestSource = '01/22/global_CreateCRC_012294d0_test.cpp'
+        PassPattern = 'AUTO_TINY_012294d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012295f0'
+        Module = '_global'
+        Source = '01/22/global_CreateCRC_012295f0.cpp'
+        TestSource = '01/22/global_CreateCRC_012295f0_test.cpp'
+        PassPattern = 'AUTO_TINY_012295f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229df0'
+        Module = '_global'
+        Source = '01/22/global_CreateCRC_01229df0.cpp'
+        TestSource = '01/22/global_CreateCRC_01229df0_test.cpp'
+        PassPattern = 'AUTO_TINY_01229df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229e20'
+        Module = '_global'
+        Source = '01/22/global_CreateCRC_01229e20.cpp'
+        TestSource = '01/22/global_CreateCRC_01229e20_test.cpp'
+        PassPattern = 'AUTO_TINY_01229e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a460'
+        Module = '_global'
+        Source = '01/22/global_CreateCRC_0122a460.cpp'
+        TestSource = '01/22/global_CreateCRC_0122a460_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a460_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
