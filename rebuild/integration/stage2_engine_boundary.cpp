@@ -5,6 +5,9 @@
 #include "fable_gfmain.h"
 #include "fable_startup.h"
 #include "fable_system.h"
+#if defined(FABLETLC_ENABLE_VISUAL_BOOT)
+#include "fable_visual_boot.h"
+#endif
 
 #include <stdlib.h>
 #include <string.h>
@@ -241,16 +244,27 @@ void FABLE_FASTCALL FableInitialiseConsoleVariablesBoundary()
 }
 
 extern "C" long FABLE_FASTCALL GFMain(
-    FableInstanceHandle /* instance */,
+    FableInstanceHandle instance,
     char* commandLine,
-    int /* showCommand */)
+    int showCommand)
 {
     const long phase1Result = FableRunGFMainPhase1(commandLine);
     if (phase1Result != 0)
         return phase1Result;
 
 #if defined(FABLETLC_ENABLE_GFMAIN_PHASE2)
-    return FableRunGFMainPhase2(g_GFMainPhase2State);
+    const long phase2Result = FableRunGFMainPhase2(g_GFMainPhase2State);
+    if (phase2Result != 0)
+        return phase2Result;
+
+#if defined(FABLETLC_ENABLE_VISUAL_BOOT)
+    return FableRunVisualBootCheckpoint(
+        instance,
+        commandLine,
+        showCommand);
+#else
+    return 0;
+#endif
 #else
     return 0;
 #endif
