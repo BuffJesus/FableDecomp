@@ -1330,7 +1330,7 @@ CDrawMouseCursor	2	6	5	0	0	0	0	0	0	0	0
 CDrawNPCName	4	2	2	0	0	0	0	0	0	0	0
 CDrawPerceivers	5	4	4	0	0	0	0	0	0	0	0
 CDrawProjectileTargetingCentre	1	1	1	0	0	0	0	0	0	0	0
-CDrawQuestInfo	38	44	43	0	0	0	0	0	0	0	0
+CDrawQuestInfo	38	43	42	0	0	0	0	0	0	0	0
 CDrawQuickAccessIcons	12	13	12	0	0	0	0	0	0	0	0
 CDrawQuickAccessIconsPC	2	2	0	0	0	0	0	0	0	0	0
 CDrawReceivedItems	1	1	1	0	0	0	0	0	0	0	0
@@ -1775,7 +1775,7 @@ CGame	4	1	1	0	0	0	0	0	0	0	0
 CGameCameraBase	6	5	4	0	0	0	0	0	0	0	0
 CGameCameraManager	75	76	74	0	0	6	6	3	3	0	0
 CGameComponent	0	2	2	0	0	2	2	2	0	0	0
-CGameDefinitionManager	6	3	2	0	0	0	0	0	0	0	0
+CGameDefinitionManager	6	4	3	0	0	1	1	0	1	0	0
 CGameEvent	6	14	13	2	0	0	0	0	0	0	0
 CGameEventDataPackage	1	0	0	0	0	0	0	0	0	0	0
 CGameEventPackage	4	15	13	0	0	0	0	0	0	0	0
@@ -1785,7 +1785,7 @@ CGameMap	6	6	5	0	0	0	0	0	0	0	0
 CGameMapCell	2	1	1	0	0	0	0	0	0	0	0
 CGameNavigatorManagerExternalInterface	2	2	2	0	0	0	0	0	0	0	0
 CGamePlayerInterface	41	24	23	0	0	13	13	13	0	0	0
-CGameScriptInterface	935	954	948	379	0	183	183	40	141	0	0
+CGameScriptInterface	935	953	948	395	0	183	183	40	141	0	0
 CGameScriptThing	81	91	88	3	0	5	5	2	3	0	0
 CGameScriptThingManager	5	6	5	0	0	0	0	0	0	0	0
 CGameTimeManager	27	13	13	0	0	0	0	0	0	0	0
@@ -2300,7 +2300,7 @@ CMessageEventFilter_IsOriginatedByThing	0	9	4	0	0	0	0	0	0	0	0
 CMessageEventFilter_IsOriginatorAlive	0	1	1	0	0	0	0	0	0	0	0
 CMessageEventFilter_MessageIDGreaterThan	0	1	1	0	0	0	0	0	0	0	0
 CMessageEventFilter_OccuredBetween	0	1	1	0	0	0	0	0	0	0	0
-CMessageEventManager	4	28	28	0	0	0	0	0	0	0	0
+CMessageEventManager	4	29	29	0	0	0	0	0	0	0	0
 CMiniMapDisplay	38	29	29	0	0	0	0	0	0	0	0
 CMinimapData	12	2	2	0	0	0	0	0	0	0	0
 CMinionAttackingGuard	1	0	0	0	0	0	0	0	0	0	0
@@ -2817,7 +2817,7 @@ CQuestInfoElementCounterList	1	2	1	0	0	0	0	0	0	0	0
 CQuestInfoElementMiniGameBar	3	2	2	0	0	0	0	0	0	0	0
 CQuestInfoElementTick	1	1	0	0	0	0	0	0	0	0	0
 CQuestInfoElementTimer	1	1	1	0	0	0	0	0	0	0	0
-CQuestManager	102	88	71	0	0	2	2	0	2	0	0
+CQuestManager	102	89	72	0	0	2	2	0	2	0	0
 CQuickAccessItemButtonGuiDef	1	7	3	0	0	1	1	1	0	0	0
 CQuickDrawTriInfo	0	2	0	0	0	0	0	0	0	0	0
 CRTFE_RockTroll	3	0	0	0	0	0	0	0	0	0	0
@@ -3365,7 +3365,7 @@ CTCInterestingToVillagers	4	0	0	0	0	0	0	0	0	0	0
 CTCInterface	0	4	0	0	0	0	0	0	0	0	0
 CTCInventory	118	93	90	0	0	0	0	0	0	0	0
 CTCInventoryAbilities	81	100	99	0	0	3	3	3	0	0	0
-CTCInventoryBase	140	136	133	0	0	6	6	6	0	0	0
+CTCInventoryBase	140	135	132	0	0	6	6	6	0	0	0
 CTCInventoryClothing	50	37	37	0	0	2	2	2	0	0	0
 CTCInventoryExperience	84	62	58	0	0	0	0	0	0	0	0
 CTCInventoryItem	60	103	101	0	0	15	15	2	11	0	0
@@ -3928,7 +3928,7 @@ CWitnessesSearchingDeed	0	1	0	0	0	0	0	0	0	0	0
 CWomanToAttract	6	4	4	0	0	0	0	0	0	0	0
 CWorld	206	154	150	1	0	5	5	2	0	0	0
 CWorldManager	0	3	0	0	0	0	0	0	0	0	0
-CWorldMap	200	185	182	5	0	5	5	1	4	0	0
+CWorldMap	200	186	183	5	0	5	5	1	4	0	0
 CWorldMapPlacementDialog	2	0	0	0	0	0	0	0	0	0	0
 CWorldMapPlacementPopupDialog	9	0	0	0	0	0	0	0	0	0	0
 CWound	7	17	17	0	0	1	1	1	0	0	0
@@ -4496,7 +4496,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11370	1994	42	1	78	78	39	23	0	0
+_global	0	11369	1994	42	1	77	77	39	22	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

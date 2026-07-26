@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-07-25T16:44:08-06:00",
+  "generated_at": "2026-07-25T17:58:49-06:00",
   "catalog_functions": 49553,
   "modules": 3433,
-  "calling_convention_known": 38481,
-  "prototype_complete": 34203,
+  "calling_convention_known": 38483,
+  "prototype_complete": 34205,
   "naming_quality_review": 391,
-  "agent_candidates": 550,
-  "agent_pass": 542,
+  "agent_candidates": 566,
+  "agent_pass": 558,
   "agent_fail": 7,
   "compiled_candidates": 1850,
   "behavior_tested_candidates": 1850,
@@ -21,6 +21,6 @@
   "mechanically_named": 49553,
   "accepted_name_quality": 49162,
   "verified_lifted": 1541,
-  "candidate_integrity_pass": 550,
-  "candidate_host_syntax_pass": 233
+  "candidate_integrity_pass": 566,
+  "candidate_host_syntax_pass": 249
 }
