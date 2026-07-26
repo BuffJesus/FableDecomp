@@ -1,6 +1,6 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-25 23:43 MDT (pending replay lands 323 verified functions).*
+*Last updated: 2026-07-25 23:46 MDT (reverse-loop replay lands seven verified functions).*
 
 ## GFInitialise visual-path checkpoint (2026-07-25)
 
@@ -34,6 +34,10 @@
   byte-and-behavior gate still decides every landing.
 - Full `build_bootstrap.ps1` remains green through the GFInitialise progress
   integration and authored visual checkpoint. Wave 3 continues independently.
+- A typed reverse-pointer object-array loop is now a deterministic pattern as
+  well. Pending replay found seven 32-byte `CreateCRC` wrappers; all seven pass
+  behavior and relocation parity. Current canonical totals are 3,163 compiled,
+  2,836 verified (5.72%), with 1,895 exact and 941 relocation-normalized.
 
 *Last updated: 2026-07-25 21:52 MDT (Phase 3 narrow-to-wide conversion chain recovered).*
 
