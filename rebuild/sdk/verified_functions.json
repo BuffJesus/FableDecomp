@@ -13610,6 +13610,33 @@
    "parity": "EXACT"
   },
   {
+   "address": "0x0099b6a0",
+   "name": "CWideString::CreateFromCharString",
+   "module": "CWideString",
+   "calling_convention": "__fastcall",
+   "return_type": "CWideString",
+   "parameter_types": "CCharString const &",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0099b720",
+   "name": "CWideString::CWideString",
+   "module": "CWideString",
+   "calling_convention": "__thiscall",
+   "return_type": "CWideString *",
+   "parameter_types": "CWideString *,CWideString const &",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0099e480",
+   "name": "CCharString::ToWideString",
+   "module": "CCharString",
+   "calling_convention": "__thiscall",
+   "return_type": "CWideString",
+   "parameter_types": "CCharString const *",
+   "parity": "RELOC"
+  },
+  {
    "address": "0x009acca0",
    "name": "GetDefClassIndexFromGlobalIndex",
    "module": "CDefinitionManager",

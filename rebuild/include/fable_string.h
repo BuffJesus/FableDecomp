@@ -23,17 +23,26 @@ struct CCharStringData
 };
 #pragma pack(pop)
 
+class CCharString;
+
 class CWideString
 {
 public:
     CWideString();
+    CWideString(const CWideString& other);
     explicit CWideString(const wchar_t* text);
     ~CWideString();
     operator const wchar_t*() const;
     CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
 
+    static CWideString FABLE_FASTCALL CreateFromCharString(
+        const CCharString& text);
+
 private:
+    explicit CWideString(const CCharString& text);
+    void UnassignString();
+
     CWideStringData* storage_;
 };
 
@@ -43,6 +52,7 @@ public:
     CCharString();
     CCharString(const char* text, long length);
     ~CCharString();
+    CWideString ToWideString() const;
 
 private:
     void UnassignString();

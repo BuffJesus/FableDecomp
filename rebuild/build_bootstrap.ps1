@@ -41,6 +41,12 @@ $fileInstallerGetSource = Join-Path $rebuildRoot 'src\compiled\00\40\CFileInstal
 $fileInstallerGetBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CFileInstallerSingleton_Get_00404440_test.cpp'
 $defaultLanguageNameSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetDefaultLanguageName_00415530.cpp'
 $defaultLanguageNameBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetDefaultLanguageName_00415530_test.cpp'
+$wideStringFromCharSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_CreateFromCharString_0099b6a0.cpp'
+$wideStringFromCharBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_CreateFromCharString_0099b6a0_test.cpp'
+$wideStringCopySource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_CopyConstructor_0099b720.cpp'
+$wideStringCopyBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_CopyConstructor_0099b720_test.cpp'
+$charToWideStringSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharString_ToWideString_0099e480.cpp'
+$charToWideStringBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_ToWideString_0099e480_test.cpp'
 $primaryLeftAlignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9b\TextLayout_SetPrimaryLeftAlignment_009bc890.cpp'
 $primaryLeftAlignmentBehaviorSource = Join-Path $rebuildRoot 'tests\00\9b\TextLayout_SetPrimaryLeftAlignment_009bc890_test.cpp'
 $secondaryLeftAlignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9b\TextLayout_SetSecondaryLeftAlignment_009bc8a0.cpp'
@@ -138,6 +144,9 @@ $asyncFailureHandlingPassPattern = 'FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PAS
 $startupLatchPassPattern = 'FABLETLC_STARTUP_LATCH_BEHAVIOR PASS'
 $fileInstallerGetPassPattern = 'FABLETLC_FILE_INSTALLER_GET_BEHAVIOR PASS'
 $defaultLanguageNamePassPattern = 'FABLETLC_DEFAULT_LANGUAGE_NAME_BEHAVIOR PASS'
+$wideStringFromCharPassPattern = 'FABLETLC_WIDE_STRING_FROM_CHAR_FACTORY_BEHAVIOR PASS'
+$wideStringCopyPassPattern = 'FABLETLC_WIDE_STRING_COPY_CONSTRUCTOR_BEHAVIOR PASS'
+$charToWideStringPassPattern = 'FABLETLC_CHAR_TO_WIDE_STRING_BEHAVIOR PASS'
 $primaryLeftAlignmentPassPattern = 'FABLETLC_PRIMARY_LEFT_ALIGNMENT_BEHAVIOR PASS'
 $secondaryLeftAlignmentPassPattern = 'FABLETLC_SECONDARY_LEFT_ALIGNMENT_BEHAVIOR PASS'
 $cbaseRestoreAPassPattern = 'FABLETLC_CBASE_RESTORE_A_BEHAVIOR PASS'
@@ -177,6 +186,12 @@ $required = @(
     $fileInstallerGetBehaviorSource,
     $defaultLanguageNameSource,
     $defaultLanguageNameBehaviorSource,
+    $wideStringFromCharSource,
+    $wideStringFromCharBehaviorSource,
+    $wideStringCopySource,
+    $wideStringCopyBehaviorSource,
+    $charToWideStringSource,
+    $charToWideStringBehaviorSource,
     $primaryLeftAlignmentSource,
     $primaryLeftAlignmentBehaviorSource,
     $secondaryLeftAlignmentSource,
@@ -364,6 +379,30 @@ try {
         -BehaviorSource $defaultLanguageNameBehaviorSource `
         -OutputStem 'default-language-name' `
         -PassPattern $defaultLanguageNamePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099b6a0' `
+        -Description 'CWideString narrow-string conversion factory' `
+        -Source $wideStringFromCharSource `
+        -BehaviorSource $wideStringFromCharBehaviorSource `
+        -OutputStem 'wide-string-from-char' `
+        -PassPattern $wideStringFromCharPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099b720' `
+        -Description 'CWideString counted-storage copy constructor' `
+        -Source $wideStringCopySource `
+        -BehaviorSource $wideStringCopyBehaviorSource `
+        -OutputStem 'wide-string-copy' `
+        -PassPattern $wideStringCopyPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099e480' `
+        -Description 'CCharString to CWideString conversion' `
+        -Source $charToWideStringSource `
+        -BehaviorSource $charToWideStringBehaviorSource `
+        -OutputStem 'char-to-wide-string' `
+        -PassPattern $charToWideStringPassPattern
 
     Invoke-VerifiedLeaf `
         -Address '009bc890' `
