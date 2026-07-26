@@ -15,7 +15,7 @@ import json
 import sys
 from pathlib import Path
 
-from auto_author_tiny import candidate
+from auto_author_tiny import candidate, rows_with_target_metadata
 
 
 ROOT = Path(r"D:\Documents\FableTLC")
@@ -53,7 +53,7 @@ def main():
     for path in sorted(PENDING.glob("*_oracle.tsv")):
         if path.resolve() == out_oracle.resolve():
             continue
-        for row in rows(path):
+        for row in rows_with_target_metadata(path):
             address = row["address"].lower().replace("0x", "")
             if address in seen or address not in manifest:
                 continue
