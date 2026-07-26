@@ -25,6 +25,11 @@ CWideString::CWideString(const wchar_t* text)
     storage_ = reinterpret_cast<fable_u32>(g_ownedText);
 }
 
+CWideString::~CWideString()
+{
+    storage_ = 0;
+}
+
 CWideString::operator const wchar_t*() const
 {
     return reinterpret_cast<const wchar_t*>(storage_);

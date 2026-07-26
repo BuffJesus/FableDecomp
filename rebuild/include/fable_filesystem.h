@@ -9,6 +9,7 @@ class CWideString
 public:
     CWideString();
     explicit CWideString(const wchar_t* text);
+    ~CWideString();
     operator const wchar_t*() const;
     CWideString& operator=(const CWideString& other);
 
@@ -26,5 +27,10 @@ public:
 // CAFile's process-wide working-directory cache. The address suffix is kept
 // until the enclosing retail static-data layout has been fully recovered.
 extern CWideString g_CAFileCurrentPath_013BCA10;
+
+// Retail folds equivalent narrow/wide string lifetime helpers. Keep one
+// neutral name for the shared live-object counter until that ownership unit
+// is promoted as a whole.
+extern fable_i32 g_CStringInstanceCount_013BCA20;
 
 FABLE_STATIC_ASSERT(sizeof(CWideString) == 0x04);

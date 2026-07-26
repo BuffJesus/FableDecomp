@@ -20,6 +20,10 @@ $setCurrentPathSource = Join-Path $rebuildRoot 'src\compiled\00\99\CAFile_SetCur
 $setCurrentPathBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CAFile_SetCurrentPath_009974f0_test.cpp'
 $getProjectPathSource = Join-Path $rebuildRoot 'src\compiled\00\99\CAFile_GetProjectPath_00997510.cpp'
 $getProjectPathBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CAFile_GetProjectPath_00997510_test.cpp'
+$wideStringConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_Constructor_0099aed0.cpp'
+$wideStringConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_Constructor_0099aed0_test.cpp'
+$wideStringDestructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_Destructor_0099b510.cpp'
+$wideStringDestructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_Destructor_0099b510_test.cpp'
 $bootObjectChecker = Join-Path $workspaceRoot 'tools\check_boot_object.py'
 $bootstrapObject = Join-Path $outDir 'bootstrap_main.obj'
 $retailObject = Join-Path $outDir 'retail_00403c60.obj'
@@ -32,17 +36,25 @@ $setCurrentPathObject = Join-Path $outDir 'set_current_path.obj'
 $setCurrentPathBehaviorObject = Join-Path $outDir 'set_current_path_behavior.obj'
 $getProjectPathObject = Join-Path $outDir 'get_project_path.obj'
 $getProjectPathBehaviorObject = Join-Path $outDir 'get_project_path_behavior.obj'
+$wideStringConstructorObject = Join-Path $outDir 'wide_string_constructor.obj'
+$wideStringConstructorBehaviorObject = Join-Path $outDir 'wide_string_constructor_behavior.obj'
+$wideStringDestructorObject = Join-Path $outDir 'wide_string_destructor.obj'
+$wideStringDestructorBehaviorObject = Join-Path $outDir 'wide_string_destructor_behavior.obj'
 $executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage0.exe'
 $winMainBehaviorExecutable = Join-Path $outDir 'FableTLC-WinMain-Behavior.exe'
 $stage1Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage1.exe'
 $progressSetupBehaviorExecutable = Join-Path $outDir 'FableTLC-ProgressDisplay-Behavior.exe'
 $setCurrentPathBehaviorExecutable = Join-Path $outDir 'FableTLC-SetCurrentPath-Behavior.exe'
 $getProjectPathBehaviorExecutable = Join-Path $outDir 'FableTLC-GetProjectPath-Behavior.exe'
+$wideStringConstructorBehaviorExecutable = Join-Path $outDir 'FableTLC-WideStringConstructor-Behavior.exe'
+$wideStringDestructorBehaviorExecutable = Join-Path $outDir 'FableTLC-WideStringDestructor-Behavior.exe'
 $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
 $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $progressSetupPassPattern = 'FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS'
 $setCurrentPathPassPattern = 'FABLETLC_SET_CURRENT_PATH_BEHAVIOR PASS'
 $getProjectPathPassPattern = 'FABLETLC_GET_PROJECT_PATH_BEHAVIOR PASS'
+$wideStringConstructorPassPattern = 'FABLETLC_WIDE_STRING_CONSTRUCTOR_BEHAVIOR PASS'
+$wideStringDestructorPassPattern = 'FABLETLC_WIDE_STRING_DESTRUCTOR_BEHAVIOR PASS'
 
 $required = @(
     (Join-Path $vcRoot 'bin\cl.exe'),
@@ -58,6 +70,10 @@ $required = @(
     $setCurrentPathBehaviorSource,
     $getProjectPathSource,
     $getProjectPathBehaviorSource,
+    $wideStringConstructorSource,
+    $wideStringConstructorBehaviorSource,
+    $wideStringDestructorSource,
+    $wideStringDestructorBehaviorSource,
     $bootObjectChecker
 )
 $missing = @($required | Where-Object { -not (Test-Path -LiteralPath $_) })
@@ -173,6 +189,54 @@ try {
         throw 'Failed to compile the CAFile project-path behavior fixture.'
     }
 
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$wideStringConstructorObject" $wideStringConstructorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $wideStringConstructorObject)
+    ) {
+        throw 'Failed to compile the CWideString default constructor.'
+    }
+
+    & python $bootObjectChecker --root $workspaceRoot `
+        --object $wideStringConstructorObject --address 0099aed0
+    if ($LASTEXITCODE -ne 0) {
+        throw 'The CWideString default constructor differs from retail outside relocations.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$wideStringConstructorBehaviorObject" $wideStringConstructorBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $wideStringConstructorBehaviorObject)
+    ) {
+        throw 'Failed to compile the CWideString constructor behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$wideStringDestructorObject" $wideStringDestructorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $wideStringDestructorObject)
+    ) {
+        throw 'Failed to compile the CWideString destructor.'
+    }
+
+    & python $bootObjectChecker --root $workspaceRoot `
+        --object $wideStringDestructorObject --address 0099b510
+    if ($LASTEXITCODE -ne 0) {
+        throw 'The CWideString destructor differs from retail outside relocations.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$wideStringDestructorBehaviorObject" $wideStringDestructorBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $wideStringDestructorBehaviorObject)
+    ) {
+        throw 'Failed to compile the CWideString destructor behavior fixture.'
+    }
+
     $linkOptions = @(
         '/nologo',
         '/subsystem:console',
@@ -279,6 +343,54 @@ try {
         (($getProjectPathOutput -join "`n") -notmatch [regex]::Escape($getProjectPathPassPattern))
     ) {
         throw "CAFile project-path fixture failed with exit code $getProjectPathExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$wideStringConstructorBehaviorExecutable" `
+        $wideStringConstructorObject $wideStringConstructorBehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $wideStringConstructorBehaviorExecutable)
+    ) {
+        throw 'Failed to link the CWideString constructor behavior fixture.'
+    }
+
+    $wideStringConstructorOutput = & $wideStringConstructorBehaviorExecutable 2>&1
+    $wideStringConstructorExitCode = $LASTEXITCODE
+    $wideStringConstructorOutput | Write-Output
+    if (
+        $wideStringConstructorExitCode -ne 0 -or
+        (
+            ($wideStringConstructorOutput -join "`n") -notmatch
+            [regex]::Escape($wideStringConstructorPassPattern)
+        )
+    ) {
+        throw "CWideString constructor fixture failed with exit code $wideStringConstructorExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$wideStringDestructorBehaviorExecutable" `
+        $wideStringConstructorObject `
+        $wideStringDestructorObject `
+        $wideStringDestructorBehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $wideStringDestructorBehaviorExecutable)
+    ) {
+        throw 'Failed to link the CWideString destructor behavior fixture.'
+    }
+
+    $wideStringDestructorOutput = & $wideStringDestructorBehaviorExecutable 2>&1
+    $wideStringDestructorExitCode = $LASTEXITCODE
+    $wideStringDestructorOutput | Write-Output
+    if (
+        $wideStringDestructorExitCode -ne 0 -or
+        (
+            ($wideStringDestructorOutput -join "`n") -notmatch
+            [regex]::Escape($wideStringDestructorPassPattern)
+        )
+    ) {
+        throw "CWideString destructor fixture failed with exit code $wideStringDestructorExitCode."
     }
 
     Write-Output "BOOTSTRAP_BUILD PASS configuration=$Configuration executable=$executable"
