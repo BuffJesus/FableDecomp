@@ -4,6 +4,18 @@ This dashboard tracks the shortest honest path from independently verified
 functions to a reconstructed executable. It does not count a diagnostic
 bootstrap as a running game.
 
+## Boot-path progress
+
+| Measure | Proven | Scope |
+|---|---:|---|
+| GFMain direct-call sites | 40/257 (15.56%) | All ten call clusters; repeated call sites count separately |
+| Callable authored GFMain phases | 2/10 (20.00%) | Integration checkpoints, not retail GFMain byte parity |
+| Current Phase 3 direct calls | 21/34 (61.76%) | Settings, persistence, and IME cluster |
+
+These are dependency counters, not an estimate of engineering time or total
+game completion. Whole-executable verified parity remains the stricter public
+percentage in the root README.
+
 ## Current executable milestone
 
 **The Stage 3 checkpoint now runs GFMain Phases 1 and 2:** VC7.1 links and runs a
