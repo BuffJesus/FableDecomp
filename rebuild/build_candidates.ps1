@@ -34184,6 +34184,20 @@ $catalog = @(
         PassPattern = 'FABLETLC_DISPLAY_SET_RENDER_TARGET_BEHAVIOR PASS'
     }
     [pscustomobject]@{
+        Address = '009bef80'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_SetViewportInteger_009bef80.cpp'
+        TestSource = '00/9b/CDisplayManager_SetViewportInteger_009bef80_test.cpp'
+        PassPattern = 'FABLETLC_DISPLAY_INTEGER_VIEWPORT_BEHAVIOR PASS'
+    },
+    [pscustomobject]@{
+        Address = '00a0aac0'
+        Module = '_global'
+        Source = '00/a0/Global_FableViewportE2_00a0aac0.cpp'
+        TestSource = '00/a0/Global_FableViewportE2_00a0aac0_test.cpp'
+        PassPattern = 'FABLETLC_VIEWPORT_E2_BEHAVIOR PASS'
+    },
+    [pscustomobject]@{
         Address = '009bf490'
         Module = 'CDisplayManager'
         Source = '00/9b/CDisplayManager_SetViewport_009bf490.cpp'
@@ -34245,6 +34259,13 @@ $catalog = @(
         Source = '00/98/CShaderRenderManager_EnableVertexShaders_00987fe0.cpp'
         TestSource = '00/98/CShaderRenderManager_EnableVertexShaders_00987fe0_test.cpp'
         PassPattern = 'FABLETLC_ENABLE_VERTEX_SHADERS_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009880d0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_OnPostViewportChanged_009880d0.cpp'
+        TestSource = '00/98/CShaderRenderManager_OnPostViewportChanged_009880d0_test.cpp'
+        PassPattern = 'FABLETLC_POST_VIEWPORT_CHANGED_BEHAVIOR PASS'
     }
     [pscustomobject]@{
         Address = '009880e0'
