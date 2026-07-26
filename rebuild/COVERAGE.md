@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-07-26T00:31:16-06:00`
+Generated: `2026-07-26T00:54:55-06:00`
 
 | Stage | Complete | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
@@ -15,11 +15,11 @@ Generated: `2026-07-26T00:31:16-06:00`
 | Auto-RE source integrity | 573 | 573 | 100.000% | Balanced, non-empty source snapshots |
 | Host C++20 syntax pass | 251 | 573 | 43.805% | Strict 32-bit translation unit with real declarations |
 | Candidate signature audit clean | 506 | 573 | 88.307% | Definition agrees with manifest owner/name/shape and has unique linkage |
-| VC7.1 compiled candidate | 3,704 | 49,553 | 7.475% | Compiles to an object; behavioral parity not yet claimed |
-| Behavior-tested candidate | 3,704 | 49,553 | 7.475% | Local branch/layout oracle passes; retail parity not yet claimed |
+| VC7.1 compiled candidate | 3,729 | 49,553 | 7.525% | Compiles to an object; behavioral parity not yet claimed |
+| Behavior-tested candidate | 3,729 | 49,553 | 7.525% | Local branch/layout oracle passes; retail parity not yet claimed |
 | Candidate retail `.text` match | 1,895 | 49,553 | 3.824% | Generated-candidate track exact matches awaiting promotion |
-| Candidate relocation-masked `.text` match | 1,482 | 49,553 | 2.991% | Exact instruction bytes/layout after masking expected COFF linker fields |
-| Verified functional or matching C++ | 3,395 | 49,553 | 6.851% | Compiled under VC7.1 and checked against retail |
+| Candidate relocation-masked `.text` match | 1,507 | 49,553 | 3.041% | Exact instruction bytes/layout after masking expected COFF linker fields |
+| Verified functional or matching C++ | 3,420 | 49,553 | 6.902% | Compiled under VC7.1 and checked against retail |
 | Byte-identical C++ | 1,911 | 49,553 | 3.856% | Exact `.text` match |
 | Lifted modules | 3 | 3,433 | 0.087% | Module-level reconstruction proof |
 
