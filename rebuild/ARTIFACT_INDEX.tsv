@@ -4294,6 +4294,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 0099e4b0			rebuild/src/compiled/00/99/CCharString_DefaultConstructor_0099e4b0.cpp	rebuild/tests/00/99/CCharString_DefaultConstructor_0099e4b0_test.cpp		
 0099eae0	CCharString		rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp	rebuild/tests/00/99/CCharString_Destructor_0099eae0_test.cpp		rebuild/build/candidates-Release/00/99/0099eae0
 0099ebf0	CCharString		rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp	rebuild/tests/00/99/CCharString_Constructor_0099ebf0_test.cpp		rebuild/build/candidates-Release/00/99/0099ebf0
+009a0cf0	CRenderManagerCore		rebuild/src/compiled/00/9a/CRenderManagerCore_AttachTextureToStage_009a0cf0.cpp	rebuild/tests/00/9a/CRenderManagerCore_AttachTextureToStage_009a0cf0_test.cpp		rebuild/build/candidates-Release/00/9a/009a0cf0
 009a42b0	_global		rebuild/src/compiled/00/9a/global_DeleteData_009a42b0.cpp	rebuild/tests/00/9a/global_DeleteData_009a42b0_test.cpp		rebuild/build/candidates-Release/00/9a/009a42b0
 009a4ec0	_global		rebuild/src/compiled/00/9a/Global_GFGetSystemManager_009a4ec0.cpp	rebuild/tests/00/9a/Global_GFGetSystemManager_009a4ec0_test.cpp		rebuild/build/candidates-Release/00/9a/009a4ec0
 009a6460	CSystemManager		rebuild/src/compiled/00/9a/CSystemManager_Update_009a6460.cpp	rebuild/tests/00/9a/CSystemManager_Update_009a6460_test.cpp		rebuild/build/candidates-Release/00/9a/009a6460

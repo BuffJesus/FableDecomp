@@ -1,11 +1,11 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 14:22 MDT (shader binding/render-state closure).*
+*Last updated: 2026-07-26 14:40 MDT (shader binding/render-state closure).*
 
 ## Shader binding/render-state closure (2026-07-26)
 
-- Seven more `Render2DDrawList` dependencies are canonical, raising that
-  family from **11/25 to 18/25** while `DrawRetailDisplay` remains **13/37**.
+- Eight more `Render2DDrawList` dependencies are canonical, raising that
+  family from **11/25 to 19/25** while `DrawRetailDisplay` remains **13/37**.
   `CShaderRenderManager::ApplyVertexShader @ 0x00988020` is a true
   **176/176-byte exact match** and covers shader-mode reconciliation, the
   unchanged binding fast path, vertex-shader/declaration updates, and both
@@ -35,8 +35,11 @@
   exposes the retail inlined assignment shape; its fixture covers the
   disabled no-op, device unbind, dirty-mask clear, ordinary decrement, and
   final-reference virtual release.
-- The canonical VC7.1 compile/behavior gate passes **4,910 / 4,910**. Retail
-  parity is **2,685 exact + 1,898 relocation-normalized = 4,583 / 49,552
+- `CRenderManagerCore::AttachTextureToStage @ 0x009A0CF0` is a true
+  **79/79-byte exact match**. The fixture covers changed and cached bindings,
+  null unbind, device/stage forwarding, and the active-stage high-water mark.
+- The canonical VC7.1 compile/behavior gate passes **4,911 / 4,911**. Retail
+  parity is **2,686 exact + 1,898 relocation-normalized = 4,584 / 49,552
   (9.25%)**; honest residue remains 199 differences and 128 missing
   function-start oracles.
 - The full Release bootstrap rebuilt with the genuine retail
@@ -44,10 +47,11 @@
   `FableTLC-Reconstruction-VisualCheckpoint.exe`, created the expected
   top-level retail-art window, accepted `WM_CLOSE`, and exited zero.
 - Continue the renderer family with `UpdateAmbient @ 0x00989760`,
-  `AttachTextureToStage @ 0x009A0CF0`, and `CopyBlock @ 0x009E1440`, then the
-  larger constant-layout and draw-list bodies. Replacing the current GDI
-  presentation bridge with recovered Lionhead renderer submission remains the
-  central visual-closure boundary.
+  `CopyBlock @ 0x009E1440`, and the corrected
+  `vector<CQuickDrawTriInfo>::erase @ 0x009E15E0`, then the larger
+  constant-layout and draw-list bodies. Replacing the current GDI presentation
+  bridge with recovered Lionhead renderer submission remains the central
+  visual-closure boundary.
 
 ## Texture/shader submit closure (2026-07-26)
 

@@ -34342,6 +34342,13 @@ $catalog = @(
         TestSource = '00/98/CShaderRenderManager_UpdatePixelShaderConstants_00989bf0_test.cpp'
         PassPattern = 'FABLETLC_UPDATE_PIXEL_SHADER_CONSTANTS_BEHAVIOR PASS'
     }
+    [pscustomobject]@{
+        Address = '009a0cf0'
+        Module = 'CRenderManagerCore'
+        Source = '00/9a/CRenderManagerCore_AttachTextureToStage_009a0cf0.cpp'
+        TestSource = '00/9a/CRenderManagerCore_AttachTextureToStage_009a0cf0_test.cpp'
+        PassPattern = 'FABLETLC_ATTACH_TEXTURE_TO_STAGE_BEHAVIOR PASS'
+    }
 )
 
 $oldPath = $env:PATH
