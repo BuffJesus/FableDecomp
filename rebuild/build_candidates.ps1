@@ -34224,6 +34224,13 @@ $catalog = @(
         PassPattern = 'FABLETLC_ENABLE_PIXEL_SHADERS_BEHAVIOR PASS'
     }
     [pscustomobject]@{
+        Address = '00988190'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_DisablePixelShaders_00988190.cpp'
+        TestSource = '00/98/CShaderRenderManager_DisablePixelShaders_00988190_test.cpp'
+        PassPattern = 'FABLETLC_DISABLE_PIXEL_SHADERS_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
         Address = '00987fe0'
         Module = 'CShaderRenderManager'
         Source = '00/98/CShaderRenderManager_EnableVertexShaders_00987fe0.cpp'
