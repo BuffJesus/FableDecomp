@@ -1,6 +1,6 @@
 param(
     [int]$BatchSize = 500,
-    [int]$MaximumFunctionBytes = 32,
+    [int]$MaximumFunctionBytes = 48,
     [int]$MaxBatchesPerRun = 4
 )
 
