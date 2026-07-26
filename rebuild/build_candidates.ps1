@@ -33866,6 +33866,202 @@ $catalog = @(
         TestSource = '00/f0/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00f01880_test.cpp'
         PassPattern = 'AUTO_TINY_00f01880_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00668610'
+        Module = '_global'
+        Source = '00/66/global_DeleteData_00668610.cpp'
+        TestSource = '00/66/global_DeleteData_00668610_test.cpp'
+        PassPattern = 'AUTO_TINY_00668610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067f650'
+        Module = '_global'
+        Source = '00/67/global_DeleteData_0067f650.cpp'
+        TestSource = '00/67/global_DeleteData_0067f650_test.cpp'
+        PassPattern = 'AUTO_TINY_0067f650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007044b0'
+        Module = '_global'
+        Source = '00/70/global_DeleteData_007044b0.cpp'
+        TestSource = '00/70/global_DeleteData_007044b0_test.cpp'
+        PassPattern = 'AUTO_TINY_007044b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007180c0'
+        Module = '_global'
+        Source = '00/71/global_DeleteData_007180c0.cpp'
+        TestSource = '00/71/global_DeleteData_007180c0_test.cpp'
+        PassPattern = 'AUTO_TINY_007180c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00763a20'
+        Module = '_global'
+        Source = '00/76/global_DeleteData_00763a20.cpp'
+        TestSource = '00/76/global_DeleteData_00763a20_test.cpp'
+        PassPattern = 'AUTO_TINY_00763a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008119a0'
+        Module = '_global'
+        Source = '00/81/global_DeleteData_008119a0.cpp'
+        TestSource = '00/81/global_DeleteData_008119a0_test.cpp'
+        PassPattern = 'AUTO_TINY_008119a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008aa810'
+        Module = '_global'
+        Source = '00/8a/global_DeleteData_008aa810.cpp'
+        TestSource = '00/8a/global_DeleteData_008aa810_test.cpp'
+        PassPattern = 'AUTO_TINY_008aa810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098ba10'
+        Module = '_global'
+        Source = '00/98/global_DeleteData_0098ba10.cpp'
+        TestSource = '00/98/global_DeleteData_0098ba10_test.cpp'
+        PassPattern = 'AUTO_TINY_0098ba10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a42b0'
+        Module = '_global'
+        Source = '00/9a/global_DeleteData_009a42b0.cpp'
+        TestSource = '00/9a/global_DeleteData_009a42b0_test.cpp'
+        PassPattern = 'AUTO_TINY_009a42b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d6a60'
+        Module = '_global'
+        Source = '00/9d/global_DeleteData_009d6a60.cpp'
+        TestSource = '00/9d/global_DeleteData_009d6a60_test.cpp'
+        PassPattern = 'AUTO_TINY_009d6a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009edc50'
+        Module = '_global'
+        Source = '00/9e/global_DeleteData_009edc50.cpp'
+        TestSource = '00/9e/global_DeleteData_009edc50_test.cpp'
+        PassPattern = 'AUTO_TINY_009edc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a110d0'
+        Module = '_global'
+        Source = '00/a1/global_DeleteData_00a110d0.cpp'
+        TestSource = '00/a1/global_DeleteData_00a110d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00a110d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a99fd0'
+        Module = '_global'
+        Source = '00/a9/global_DeleteData_00a99fd0.cpp'
+        TestSource = '00/a9/global_DeleteData_00a99fd0_test.cpp'
+        PassPattern = 'AUTO_TINY_00a99fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a99fe0'
+        Module = '_global'
+        Source = '00/a9/global_DeleteData_00a99fe0.cpp'
+        TestSource = '00/a9/global_DeleteData_00a99fe0_test.cpp'
+        PassPattern = 'AUTO_TINY_00a99fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a99ff0'
+        Module = '_global'
+        Source = '00/a9/global_DeleteData_00a99ff0.cpp'
+        TestSource = '00/a9/global_DeleteData_00a99ff0_test.cpp'
+        PassPattern = 'AUTO_TINY_00a99ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9a000'
+        Module = '_global'
+        Source = '00/a9/global_DeleteData_00a9a000.cpp'
+        TestSource = '00/a9/global_DeleteData_00a9a000_test.cpp'
+        PassPattern = 'AUTO_TINY_00a9a000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9cb20'
+        Module = '_global'
+        Source = '00/a9/global_DeleteData_00a9cb20.cpp'
+        TestSource = '00/a9/global_DeleteData_00a9cb20_test.cpp'
+        PassPattern = 'AUTO_TINY_00a9cb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9cb50'
+        Module = '_global'
+        Source = '00/a9/global_DeleteData_00a9cb50.cpp'
+        TestSource = '00/a9/global_DeleteData_00a9cb50_test.cpp'
+        PassPattern = 'AUTO_TINY_00a9cb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac1460'
+        Module = '_global'
+        Source = '00/ac/global_DeleteData_00ac1460.cpp'
+        TestSource = '00/ac/global_DeleteData_00ac1460_test.cpp'
+        PassPattern = 'AUTO_TINY_00ac1460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00acf3b0'
+        Module = '_global'
+        Source = '00/ac/global_DeleteData_00acf3b0.cpp'
+        TestSource = '00/ac/global_DeleteData_00acf3b0_test.cpp'
+        PassPattern = 'AUTO_TINY_00acf3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00acf420'
+        Module = '_global'
+        Source = '00/ac/global_DeleteData_00acf420.cpp'
+        TestSource = '00/ac/global_DeleteData_00acf420_test.cpp'
+        PassPattern = 'AUTO_TINY_00acf420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00acf430'
+        Module = '_global'
+        Source = '00/ac/global_DeleteData_00acf430.cpp'
+        TestSource = '00/ac/global_DeleteData_00acf430_test.cpp'
+        PassPattern = 'AUTO_TINY_00acf430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af0710'
+        Module = '_global'
+        Source = '00/af/global_DeleteData_00af0710.cpp'
+        TestSource = '00/af/global_DeleteData_00af0710_test.cpp'
+        PassPattern = 'AUTO_TINY_00af0710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b232e0'
+        Module = 'CIEngine'
+        Source = '00/b2/CIEngine_Release_00b232e0.cpp'
+        TestSource = '00/b2/CIEngine_Release_00b232e0_test.cpp'
+        PassPattern = 'AUTO_TINY_00b232e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b23990'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_Release_00b23990.cpp'
+        TestSource = '00/b2/CEngine_Release_00b23990_test.cpp'
+        PassPattern = 'AUTO_TINY_00b23990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b430a0'
+        Module = '_global'
+        Source = '00/b4/global_DeleteData_00b430a0.cpp'
+        TestSource = '00/b4/global_DeleteData_00b430a0_test.cpp'
+        PassPattern = 'AUTO_TINY_00b430a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b94f90'
+        Module = '_global'
+        Source = '00/b9/global_DeleteData_00b94f90.cpp'
+        TestSource = '00/b9/global_DeleteData_00b94f90_test.cpp'
+        PassPattern = 'AUTO_TINY_00b94f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb8d10'
+        Module = '_global'
+        Source = '00/cb/global_DeleteData_00cb8d10.cpp'
+        TestSource = '00/cb/global_DeleteData_00cb8d10_test.cpp'
+        PassPattern = 'AUTO_TINY_00cb8d10_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH

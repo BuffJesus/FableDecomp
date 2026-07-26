@@ -73,6 +73,9 @@ class TinyPatternTests(unittest.TestCase):
                 "8326005ec3"
             ): ("reset_intrusive_counted_handle_size", None),
             (
+                "85c974068b016a01ff10c3"
+            ): ("delete_virtual_object", None),
+            (
                 "568bf18b4e38ff5634c64605015ec3"
             ): ("suspend_process_callback", None),
         }
@@ -137,6 +140,24 @@ class TinyPatternTests(unittest.TestCase):
         self.assertIn("--current->references", authored["source_cpp"])
         self.assertIn("lastHandle.Reset()", authored["test_cpp"])
         self.assertIn("retained.references != 1", authored["test_cpp"])
+
+    def test_virtual_delete_candidate_checks_null_and_live_objects(self):
+        authored = candidate(
+            {
+                "address": "00419036",
+                "name": "DeleteData",
+                "module": "CCountedPointer",
+                "bytes": "85c974068b016a01ff10c3",
+            }
+        )
+
+        self.assertIsNotNone(authored)
+        self.assertIn("delete object", authored["source_cpp"])
+        self.assertIn("DeleteData(0)", authored["test_cpp"])
+        self.assertIn(
+            "g_AutoTinyVirtualDestructorCalls != 1",
+            authored["test_cpp"],
+        )
 
     def test_suspend_process_candidate_preserves_call_and_state_order(self):
         callback = candidate(
