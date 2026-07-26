@@ -34,6 +34,9 @@ $charStringDefaultSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharStrin
 $charStringDefaultBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_DefaultConstructor_0099e4b0_test.cpp'
 $systemManagerInitSource = Join-Path $rebuildRoot 'src\compiled\00\40\CSystemManagerInit_Constructor_00403b10.cpp'
 $systemManagerInitBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CSystemManagerInit_Constructor_00403b10_test.cpp'
+$gfmainPhase1Source = Join-Path $rebuildRoot 'integration\gfmain_phase1.cpp'
+$stage2BoundarySource = Join-Path $rebuildRoot 'integration\stage2_engine_boundary.cpp'
+$gfmainPhase1BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase1_test.cpp'
 $bootObjectChecker = Join-Path $workspaceRoot 'tools\check_boot_object.py'
 $bootstrapObject = Join-Path $outDir 'bootstrap_main.obj'
 $retailObject = Join-Path $outDir 'retail_00403c60.obj'
@@ -56,6 +59,11 @@ $charStringDestructorObject = Join-Path $outDir 'char_string_destructor.obj'
 $charStringDestructorBehaviorObject = Join-Path $outDir 'char_string_destructor_behavior.obj'
 $profileStartObject = Join-Path $outDir 'profile_start.obj'
 $profileStartBehaviorObject = Join-Path $outDir 'profile_start_behavior.obj'
+$charStringDefaultObject = Join-Path $outDir 'char-string-default-constructor.obj'
+$systemManagerInitObject = Join-Path $outDir 'system-manager-init-constructor.obj'
+$gfmainPhase1Object = Join-Path $outDir 'gfmain_phase1.obj'
+$stage2BoundaryObject = Join-Path $outDir 'stage2_engine_boundary.obj'
+$gfmainPhase1BehaviorObject = Join-Path $outDir 'gfmain_phase1_behavior.obj'
 $executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage0.exe'
 $winMainBehaviorExecutable = Join-Path $outDir 'FableTLC-WinMain-Behavior.exe'
 $stage1Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage1.exe'
@@ -67,6 +75,8 @@ $wideStringDestructorBehaviorExecutable = Join-Path $outDir 'FableTLC-WideString
 $charStringConstructorBehaviorExecutable = Join-Path $outDir 'FableTLC-CharStringConstructor-Behavior.exe'
 $charStringDestructorBehaviorExecutable = Join-Path $outDir 'FableTLC-CharStringDestructor-Behavior.exe'
 $profileStartBehaviorExecutable = Join-Path $outDir 'FableTLC-ProfileStart-Behavior.exe'
+$gfmainPhase1BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase1-Behavior.exe'
+$stage2Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage2.exe'
 $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
 $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $progressSetupPassPattern = 'FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS'
@@ -79,6 +89,7 @@ $charStringDestructorPassPattern = 'FABLETLC_CHAR_STRING_DESTRUCTOR_BEHAVIOR PAS
 $profileStartPassPattern = 'FABLETLC_PROFILE_START_BEHAVIOR PASS'
 $charStringDefaultPassPattern = 'FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVIOR PASS'
 $systemManagerInitPassPattern = 'FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS'
+$gfmainPhase1PassPattern = 'FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS'
 
 $required = @(
     (Join-Path $vcRoot 'bin\cl.exe'),
@@ -108,6 +119,9 @@ $required = @(
     $charStringDefaultBehaviorSource,
     $systemManagerInitSource,
     $systemManagerInitBehaviorSource,
+    $gfmainPhase1Source,
+    $stage2BoundarySource,
+    $gfmainPhase1BehaviorSource,
     $bootObjectChecker
 )
 $missing = @($required | Where-Object { -not (Test-Path -LiteralPath $_) })
@@ -649,8 +663,84 @@ try {
         throw "Profile-start fixture failed with exit code $profileStartExitCode."
     }
 
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase1Object" $gfmainPhase1Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase1Object)
+    ) {
+        throw 'Failed to compile the GFMain Phase 1 integration unit.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$stage2BoundaryObject" $stage2BoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $stage2BoundaryObject)
+    ) {
+        throw 'Failed to compile the Stage 2 engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase1BehaviorObject" $gfmainPhase1BehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase1BehaviorObject)
+    ) {
+        throw 'Failed to compile the GFMain Phase 1 behavior fixture.'
+    }
+
+    $phase1RuntimeObjects = @(
+        $gfmainPhase1Object,
+        $stage2BoundaryObject,
+        $setCurrentPathObject,
+        $getProjectPathObject,
+        $wideStringConstructorObject,
+        $wideStringDestructorObject,
+        $charStringConstructorObject,
+        $charStringDefaultObject,
+        $charStringDestructorObject,
+        $profileStartObject,
+        $systemManagerInitObject
+    )
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$gfmainPhase1BehaviorExecutable" `
+        @phase1RuntimeObjects $gfmainPhase1BehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase1BehaviorExecutable)
+    ) {
+        throw 'Failed to link the GFMain Phase 1 behavior fixture.'
+    }
+
+    $gfmainPhase1Output = & $gfmainPhase1BehaviorExecutable 2>&1
+    $gfmainPhase1ExitCode = $LASTEXITCODE
+    $gfmainPhase1Output | Write-Output
+    if (
+        $gfmainPhase1ExitCode -ne 0 -or
+        (($gfmainPhase1Output -join "`n") -notmatch [regex]::Escape($gfmainPhase1PassPattern))
+    ) {
+        throw "GFMain Phase 1 fixture failed with exit code $gfmainPhase1ExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:windows `
+        "/out:$stage2Executable" $winMainObject @phase1RuntimeObjects
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $stage2Executable)
+    ) {
+        throw 'Failed to link the Stage 2 startup executable.'
+    }
+
+    & $stage2Executable
+    if ($LASTEXITCODE -ne 0) {
+        throw "Stage 2 startup failed with exit code $LASTEXITCODE."
+    }
+
     Write-Output "BOOTSTRAP_BUILD PASS configuration=$Configuration executable=$executable"
     Write-Output "STAGE1_STARTUP PASS executable=$stage1Executable boundary=GFMain"
+    Write-Output "STAGE2_STARTUP PASS executable=$stage2Executable boundary=GFMainPhase2"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude
