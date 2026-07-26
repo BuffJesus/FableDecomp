@@ -48,11 +48,15 @@ active-stage bookkeeping. The exact 167-byte
 `CRenderStateManager::RealiseRenderState` body also drains ten queued render,
 texture-stage, and sampler states for the live draw. Other dependency dispatch
 now includes the recovered 11-byte `CRenderManagerCore::SetAWindow` ownership
-hop into a compact D3D9 viewport endpoint. The exact 79-byte
+hop and direct relocation-matched 112-byte `CDisplayManager::SetViewport`
+float conversion into a compact integer D3D9 endpoint. The exact 79-byte
 `Render2DDrawList::CopyBlock` full-clear path then resets the live 0x20-byte
 vertex queue. Exact 98-byte `CTexture::operator=` and 34-byte
 `CTexture::Uninitialise` bodies now execute the temporary/current/candidate
-wrapper lifetime events. Remaining dispatch is still authored rather than the
+wrapper lifetime events. The relocation-matched 74-byte preallocated initializer
+and behavior-gated `CalcByteLength` null path create the temporary wrapper, while
+exact 121-byte `RestoreCaptureBlock` closes the compact capture sentinel.
+Remaining dispatch is still authored rather than the
 complete
 Lionhead coordinator, runtime archive loader, or game loop.
 

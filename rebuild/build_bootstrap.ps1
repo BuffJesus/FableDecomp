@@ -93,8 +93,12 @@ $render2DDrawListAdapterSource = Join-Path $rebuildRoot 'integration\render2d_dr
 $render2DDrawListAdapterBehaviorSource = Join-Path $rebuildRoot 'tests\integration\Render2DDrawListAdapter_test.cpp'
 $attachTextureToStageSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CRenderManagerCore_AttachTextureToStage_009a0cf0.cpp'
 $realiseRenderStateSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderStateManager_RealiseRenderState_00a058c0.cpp'
+$displaySetViewportSource = Join-Path $rebuildRoot 'src\compiled\00\9b\CDisplayManager_SetViewport_009bf490.cpp'
 $setRenderWindowSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderManagerCore_SetAWindow_00a0aa80.cpp'
 $clearRender2DVertexQueueSource = Join-Path $rebuildRoot 'src\compiled\00\9e\Render2DDrawList_CopyBlock_009e1440.cpp'
+$restoreRenderStateCaptureSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderStateManager_RestoreCaptureBlock_00a05840.cpp'
+$textureCalcByteLengthSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_CalcByteLength_009f9ee0.cpp'
+$textureInitialisePreallocatedSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_InitialiseFromPreallocatedTexture_009fa230.cpp'
 $textureAssignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_Assignment_009fa1c0.cpp'
 $textureUninitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_Uninitialise_009f9f70.cpp'
 $gfmainPhase1BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase1_test.cpp'
@@ -147,8 +151,12 @@ $render2DDrawListAdapterObject = Join-Path $outDir 'render2d_draw_list_adapter.o
 $render2DDrawListAdapterBehaviorObject = Join-Path $outDir 'render2d_draw_list_adapter_behavior.obj'
 $attachTextureToStageObject = Join-Path $outDir 'attach_texture_to_stage.obj'
 $realiseRenderStateObject = Join-Path $outDir 'realise_render_state.obj'
+$displaySetViewportObject = Join-Path $outDir 'display_set_viewport.obj'
 $setRenderWindowObject = Join-Path $outDir 'set_render_window.obj'
 $clearRender2DVertexQueueObject = Join-Path $outDir 'clear_render2d_vertex_queue.obj'
+$restoreRenderStateCaptureObject = Join-Path $outDir 'restore_render_state_capture.obj'
+$textureCalcByteLengthObject = Join-Path $outDir 'texture_calc_byte_length.obj'
+$textureInitialisePreallocatedObject = Join-Path $outDir 'texture_initialise_preallocated.obj'
 $textureAssignmentObject = Join-Path $outDir 'texture_assignment.obj'
 $textureUninitialiseObject = Join-Path $outDir 'texture_uninitialise.obj'
 $visualBootRetailArtwork = Join-Path $outDir 'frontend_backdrop_01.png'
@@ -302,8 +310,12 @@ $required = @(
     $render2DDrawListAdapterBehaviorSource,
     $attachTextureToStageSource,
     $realiseRenderStateSource,
+    $displaySetViewportSource,
     $setRenderWindowSource,
     $clearRender2DVertexQueueSource,
+    $restoreRenderStateCaptureSource,
+    $textureCalcByteLengthSource,
+    $textureInitialisePreallocatedSource,
     $textureAssignmentSource,
     $textureUninitialiseSource,
     $gfmainPhase1BehaviorSource,
@@ -1231,6 +1243,15 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$displaySetViewportObject" $displaySetViewportSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $displaySetViewportObject)
+    ) {
+        throw 'Failed to compile recovered display viewport wrapper.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$setRenderWindowObject" $setRenderWindowSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -1266,6 +1287,33 @@ try {
         -not (Test-Path -LiteralPath $textureUninitialiseObject)
     ) {
         throw 'Failed to compile recovered texture uninitialisation.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$restoreRenderStateCaptureObject" $restoreRenderStateCaptureSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $restoreRenderStateCaptureObject)
+    ) {
+        throw 'Failed to compile recovered render-state capture restoration.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$textureCalcByteLengthObject" $textureCalcByteLengthSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $textureCalcByteLengthObject)
+    ) {
+        throw 'Failed to compile recovered texture byte-length calculation.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$textureInitialisePreallocatedObject" $textureInitialisePreallocatedSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $textureInitialisePreallocatedObject)
+    ) {
+        throw 'Failed to compile recovered preallocated texture initialisation.'
     }
 
     Add-Type -AssemblyName PresentationCore
@@ -1391,8 +1439,12 @@ try {
         $render2DDrawListAdapterObject,
         $attachTextureToStageObject,
         $realiseRenderStateObject,
+        $displaySetViewportObject,
         $setRenderWindowObject,
         $clearRender2DVertexQueueObject,
+        $restoreRenderStateCaptureObject,
+        $textureCalcByteLengthObject,
+        $textureInitialisePreallocatedObject,
         $textureAssignmentObject,
         $textureUninitialiseObject,
         $setCurrentPathObject,
@@ -1531,7 +1583,10 @@ try {
         $visualBootObject $visualBootD3D9Object `
         $render2DBatchPlanObject $render2DDrawListAdapterObject `
         $attachTextureToStageObject $realiseRenderStateObject `
-        $setRenderWindowObject $clearRender2DVertexQueueObject `
+        $displaySetViewportObject $setRenderWindowObject `
+        $clearRender2DVertexQueueObject `
+        $restoreRenderStateCaptureObject `
+        $textureCalcByteLengthObject $textureInitialisePreallocatedObject `
         $textureAssignmentObject $textureUninitialiseObject `
         $visualBootBehaviorObject $visualBootResource `
         user32.lib gdi32.lib d3d9.lib
@@ -1615,7 +1670,7 @@ try {
     } else {
         'AuthoredFallback'
     }
-    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DRecoveredLifetime"
+    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DRecoveredLifecycle"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude

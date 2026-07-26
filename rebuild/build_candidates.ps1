@@ -34184,6 +34184,13 @@ $catalog = @(
         PassPattern = 'FABLETLC_DISPLAY_SET_RENDER_TARGET_BEHAVIOR PASS'
     }
     [pscustomobject]@{
+        Address = '009bf490'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_SetViewport_009bf490.cpp'
+        TestSource = '00/9b/CDisplayManager_SetViewport_009bf490_test.cpp'
+        PassPattern = 'FABLETLC_DISPLAY_FLOAT_VIEWPORT_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
         Address = '00a05840'
         Module = 'CRenderStateManager'
         Source = '00/a0/CRenderStateManager_RestoreCaptureBlock_00a05840.cpp'
@@ -34266,6 +34273,13 @@ $catalog = @(
         Source = '00/a0/Global_WordWrapSetCallback_00a0fd90.cpp'
         TestSource = '00/a0/Global_WordWrapSetCallback_00a0fd90_test.cpp'
         PassPattern = 'FABLETLC_WORD_WRAP_CALLBACK_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f9ee0'
+        Module = 'CTexture'
+        Source = '00/9f/CTexture_CalcByteLength_009f9ee0.cpp'
+        TestSource = '00/9f/CTexture_CalcByteLength_009f9ee0_test.cpp'
+        PassPattern = 'FABLETLC_TEXTURE_CALC_BYTE_LENGTH PASS'
     }
     [pscustomobject]@{
         Address = '009f9f70'

@@ -1,19 +1,8 @@
 #pragma once
 
-#include "rebuild_abi.h"
+#include "fable_display_viewport.h"
 
-struct C2DBoxF
-{
-    float left;
-    float top;
-    float right;
-    float bottom;
-};
-
-struct CDisplayManagerWindowView
-{
-    void SetViewport(const C2DBoxF& viewport);
-};
+typedef CDisplayManager CDisplayManagerWindowView;
 
 struct CRenderManagerCoreWindowView
 {
@@ -23,5 +12,4 @@ struct CRenderManagerCoreWindowView
     void SetAWindow(const C2DBoxF& window);
 };
 
-FABLE_STATIC_ASSERT(sizeof(C2DBoxF) == 0x10);
 FABLE_STATIC_ASSERT(sizeof(CRenderManagerCoreWindowView) == 0x3A40);

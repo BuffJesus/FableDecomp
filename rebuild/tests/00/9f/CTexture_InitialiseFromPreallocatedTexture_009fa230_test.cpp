@@ -1,38 +1,12 @@
 #include <stdio.h>
 
-#include "rebuild_abi.h"
-
-struct FablePreallocatedTexture;
-typedef fable_u32 (__stdcall *FablePreallocatedTextureReleaseCall)(
-    FablePreallocatedTexture* texture);
-
-struct FablePreallocatedTextureVTable
-{
-    void* queryInterface00;
-    void* addRef04;
-    FablePreallocatedTextureReleaseCall release08;
-};
-
-struct FablePreallocatedTexture
-{
-    FablePreallocatedTextureVTable* vtable;
-};
-
-struct CTexturePreallocatedView
-{
-    FablePreallocatedTexture* texture00;
-    fable_u32 flags04;
-
-    void CalcByteLength();
-    bool InitialiseFromPreallocatedTexture(
-        FablePreallocatedTexture* texture);
-};
+#include "../../../src/compiled/00/9f/CTexture_InitialiseFromPreallocatedTexture_009fa230.cpp"
 
 static int g_ReleaseCalls = 0;
 static int g_CalcCalls = 0;
 
 static fable_u32 __stdcall ReleaseTexture(
-    FablePreallocatedTexture*)
+    FableLifecycleTexture*)
 {
     ++g_ReleaseCalls;
     return 0;
@@ -45,10 +19,10 @@ void CTexturePreallocatedView::CalcByteLength()
 
 int main()
 {
-    FablePreallocatedTextureVTable vtable =
+    FableLifecycleTextureVTable vtable =
         {0, 0, &ReleaseTexture};
-    FablePreallocatedTexture oldTexture = {&vtable};
-    FablePreallocatedTexture newTexture = {&vtable};
+    FableLifecycleTexture oldTexture = {&vtable};
+    FableLifecycleTexture newTexture = {&vtable};
     CTexturePreallocatedView owner =
         {&oldTexture, 0xF1234567};
 
