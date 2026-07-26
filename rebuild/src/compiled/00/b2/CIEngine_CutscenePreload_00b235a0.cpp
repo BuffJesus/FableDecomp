@@ -1,0 +1,1 @@
+void __stdcall CIEngine_CutscenePreload(int arg0, int arg1) {}

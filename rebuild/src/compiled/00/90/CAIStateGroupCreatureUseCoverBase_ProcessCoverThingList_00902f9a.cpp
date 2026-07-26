@@ -1,0 +1,1 @@
+void __stdcall CAIStateGroup_CreatureUseCoverBase_ProcessCoverThingList(int arg0) {}

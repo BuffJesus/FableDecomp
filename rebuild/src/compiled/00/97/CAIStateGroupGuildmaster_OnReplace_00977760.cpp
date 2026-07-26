@@ -1,0 +1,1 @@
+void __fastcall CAIStateGroup_Guildmaster_OnReplace() {}

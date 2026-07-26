@@ -1,0 +1,1 @@
+void __fastcall CCombatSequence_TrollRockAdvance_OnStart() {}

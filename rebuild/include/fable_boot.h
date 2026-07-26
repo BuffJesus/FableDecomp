@@ -81,3 +81,28 @@ void FABLE_FASTCALL SetProgressDisplay(CCountedProgressDisplay* display);
 
 fable_u8 FABLE_FASTCALL GFInitialise_SetupProgressDisplay(
     GFInitialiseState* state);
+
+struct GFInitialiseProgressPhaseState
+{
+    GFInitialiseState progressDisplay;
+    fable_i32 displayWidth;
+    fable_i32 halfDisplayWidth;
+};
+
+// Authored integration unit for the proven tail of retail GFInitialise
+// 0x004023BE-0x004023E7. It calls the retail-matched progress-display setup
+// leaf and carries the successful display-width result forward. It is not
+// claimed as a standalone retail function.
+fable_u8 FABLE_FASTCALL FableRunGFInitialiseProgressPhase(
+    GFInitialiseProgressPhaseState& state);
+
+extern GFInitialiseProgressPhaseState
+    g_GFInitialiseProgressPhaseState;
+
+// Observable Stage 4 boundary state. These counters are reconstruction
+// fixture instrumentation and are not retail globals.
+extern bool g_FableProgressBeginEnabled;
+extern fable_u32 g_FableProgressBeginCalls;
+extern fable_u32 g_FableProgressConstructCalls;
+extern fable_u32 g_FableProgressInstallCalls;
+extern fable_u32 g_FableProgressDestroyCalls;

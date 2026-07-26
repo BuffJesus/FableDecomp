@@ -1,0 +1,1 @@
+void __stdcall CIEngine_Enable2DSceneRendering(int arg0) {}

@@ -1,0 +1,1 @@
+void __stdcall CEngineInternalPrimitiveBase_SetMeshEffect(int arg0) {}

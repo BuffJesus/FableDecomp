@@ -1,262 +1,262 @@
 rank	address	module	name	workstream	gap	score	calling_convention	return_type	parameter_types	checker_verdict	compile_blocker	retail_parity	signature_issues	missing_dependencies
-1	00891610	CGameScriptInterface	CGameScriptInterface::GetMostRecentValidUsedTarget	candidate-cluster	signature-audit	2404295	__thiscall	CScriptThing	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer		explicit-parameter-count-mismatch;return-shape-mismatch	
-2	00891d50	CGameScriptInterface	CGameScriptInterface::GetThingWithUID	candidate-cluster	signature-audit	2404295	__thiscall	CScriptThing	CGameScriptInterface *,unsigned __int64	PASS	cannot call constructor 'NHeroInformationScreens::CBase::CBase' directly [-fpermissive]		explicit-parameter-count-mismatch;return-shape-mismatch	
-3	00892b50	CGameScriptInterface	CGameScriptInterface::CameraCircleAroundThing	candidate-cluster	signature-audit	2404295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,C3DVector const &,float	PASS	cannot call constructor 'NCameraModes::CScriptModuleBase::CScriptModuleBase' directly [-fpermissive]		definition-not-parsed	
-4	008961b0	CGameScriptInterface	CGameScriptInterface::ClearHeroEnemyOfGuards	candidate-cluster	signature-audit	2404295	__thiscall	void	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2		definition-not-parsed	offsetof
-5	0089a490	CGameScriptInterface	CGameScriptInterface::GetHeroTargetedThing	candidate-cluster	signature-audit	2404295	__thiscall	CScriptThing	CGameScriptInterface *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2		explicit-parameter-count-mismatch;return-shape-mismatch	class CParticleMorphs::CEntry;mov;offsetof
-6	0089c510	CGameScriptInterface	CGameScriptInterface::OpinionSourceSetAsAttentionGrabbing	candidate-cluster	signature-audit	2404295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS			definition-not-parsed	
-7	0089faa0	CGameScriptInterface	CGameScriptInterface::CreateLight	candidate-cluster	signature-audit	2404295	__thiscall	CScriptThing	CGameScriptInterface *,C3DVector const &,CRGBColour const &,CCharString const &,float,float,bool	PASS	invalid use of incomplete type 'class CGameScriptInterface'		explicit-parameter-count-mismatch;return-shape-mismatch	class CGameScriptInterface
-8	0089fbb0	CGameScriptInterface	CGameScriptInterface::CreateExperienceOrb	candidate-cluster	signature-audit	2404295	__thiscall	CScriptThing	CGameScriptInterface *,C3DVector const &,long	PASS	invalid use of incomplete type 'class CGameScriptInterface'		explicit-parameter-count-mismatch;return-shape-mismatch	class CGameScriptInterface
-9	0089fc80	CGameScriptInterface	CGameScriptInterface::CreateExplosion	candidate-cluster	signature-audit	2404295	__thiscall	CScriptThing	CGameScriptInterface *,CCharString const &,C3DVector const &,C3DVector const *,CCharString	PASS	invalid use of incomplete type 'class CGameScriptInterface'		explicit-parameter-count-mismatch;return-shape-mismatch	class CGameScriptInterface
-10	0089fd20	CGameScriptInterface	CGameScriptInterface::CreatePhysicalBarrier	candidate-cluster	signature-audit	2404295	__thiscall	CScriptThing	CGameScriptInterface *,float,C3DVector const &,C3DVector const *,CCharString	PASS	invalid use of incomplete type 'class CGameScriptInterface'		explicit-parameter-count-mismatch;return-shape-mismatch	class CGameScriptInterface
-11	0089fda0	CGameScriptInterface	CGameScriptInterface::CreateRumble	candidate-cluster	signature-audit	2404295	__thiscall	CScriptThing	CGameScriptInterface *,C3DVector const &,float,float,CCharString	PASS	invalid use of incomplete type 'class CGameScriptInterface'		explicit-parameter-count-mismatch;return-shape-mismatch	class CGameScriptInterface
-12	008a9fc0	CGameScriptInterface	CGameScriptInterface::GetGossipSize	candidate-cluster	compiled-needs-parity	2304295	__thiscall	int	CGameScriptInterface *,CCharString	PASS		DIFFER		
-13	008aa480	CGameScriptInterface	CGameScriptInterface::GetGossipFactionsSize	candidate-cluster	compiled-needs-parity	2304295	__thiscall	int	CGameScriptInterface *,CCharString	PASS		DIFFER		
-14	006e7690	CGameScriptInterface	CGameScriptInterface::DeregisterTimer	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long	PASS				
-15	006e7820	CGameScriptInterface	CGameScriptInterface::WaitForCameraMessage	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS				
-16	006e7920	CGameScriptInterface	CGameScriptInterface::CheckForCameraMessage	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS				
-17	006e79e0	CGameScriptInterface	CGameScriptInterface::RegisterTimer	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS				
-18	0088de10	CGameScriptInterface	CGameScriptInterface::GiveThingItemInHand	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CCharString const &,bool	PASS				
-19	0088df60	CGameScriptInterface	CGameScriptInterface::GetWaterHeightAtPosition	candidate-cluster	candidate-compile	2204295	__thiscall	float	CGameScriptInterface *,C3DVector const &	PASS				
-20	0088e0b0	CGameScriptInterface	CGameScriptInterface::SetSoundThemesAsEnabledForRegion	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,bool	PASS				
-21	0088e130	CGameScriptInterface	CGameScriptInterface::GiveHeroWeapon	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,bool	PASS				
-22	0088e200	CGameScriptInterface	CGameScriptInterface::SetGuildMasterMessages	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS				
-23	0088e2a0	CGameScriptInterface	CGameScriptInterface::IsLevelLoaded	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	static assertion failed			
-24	0088e300	CGameScriptInterface	CGameScriptInterface::IsRegionLoaded	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS				
-25	0088e380	CGameScriptInterface	CGameScriptInterface::DontPopulateNextLoadedRegion	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS				
-26	0088e3d0	CGameScriptInterface	CGameScriptInterface::MiniMapAllowRouteBetweenRegions	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &,bool	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
-27	0088e6f0	CGameScriptInterface	CGameScriptInterface::AreEntitiesEnemies	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &,CScriptThing const &	PASS				
-28	0088ead0	CGameScriptInterface	CGameScriptInterface::EntitySetAsDamageable	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
-29	0088ece0	CGameScriptInterface	CGameScriptInterface::CameraShake	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,float,float	PASS				
-30	0088f400	CGameScriptInterface	CGameScriptInterface::SetCreatureGeneratorsCreatureGroupAsEnabled	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,ECreatureGroup,bool	PASS				
-31	0088f480	CGameScriptInterface	CGameScriptInterface::ApplyScriptBrush	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS				
-32	0088f570	CGameScriptInterface	CGameScriptInterface::Play2DSound	candidate-cluster	candidate-compile	2204295	__thiscall	ulong	CGameScriptInterface *,CCharString const &	PASS				
-33	0088f610	CGameScriptInterface	CGameScriptInterface::IsSoundPlaying	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,ulong	PASS				
-34	0088f660	CGameScriptInterface	CGameScriptInterface::StopSound	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,ulong	PASS				
-35	0088f710	CGameScriptInterface	CGameScriptInterface::EntitySetCombatEnabled	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS				
-36	0088f8d0	CGameScriptInterface	CGameScriptInterface::StartCountdownTimer	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,float	PASS				
-37	0088f910	CGameScriptInterface	CGameScriptInterface::AutoSaveCheckPoint	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS				
-38	0088f920	CGameScriptInterface	CGameScriptInterface::AutoSaveQuestStart	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS				
-39	0088f970	CGameScriptInterface	CGameScriptInterface::ResetToFrontEnd	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS				
-40	0088f9b0	CGameScriptInterface	CGameScriptInterface::GetGuildSealRecallPos	candidate-cluster	candidate-compile	2204295	__thiscall	C3DVector	CGameScriptInterface *	PASS				
-41	0088fc90	CGameScriptInterface	CGameScriptInterface::HeroHasExpression	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS				
-42	0088fd00	CGameScriptInterface	CGameScriptInterface::EntitySetInLimbo	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool,bool	PASS				
-43	0088fdc0	CGameScriptInterface	CGameScriptInterface::SetTimeOfDay	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,float	PASS				
-44	0088fe30	CGameScriptInterface	CGameScriptInterface::GetTimeOfDay	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	expected '(' before '{' token			mov
-45	0088fe40	CGameScriptInterface	CGameScriptInterface::IsTimeOfDayBetween	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,long,long	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
-46	0088fe90	CGameScriptInterface	CGameScriptInterface::FastForwardTimeTo	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,float,float	PASS				
-47	0088ff30	CGameScriptInterface	CGameScriptInterface::TransitionToThemeAllInternals	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,float	PASS				
-48	00890200	CGameScriptInterface	CGameScriptInterface::ScreenFilterFadeOut	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,float,void *	PASS				
-49	008907c0	CGameScriptInterface	CGameScriptInterface::RemoveConversation	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long,bool	PASS	'reinterpret_cast' from integer to pointer			
-50	008907d0	CGameScriptInterface	CGameScriptInterface::IsConversationActive	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,long	PASS				
-51	008907e0	CGameScriptInterface	CGameScriptInterface::FadeScreenOutUntilNextCallToFadeScreenIn	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,float,float	PASS				
-52	00890b90	CGameScriptInterface	CGameScriptInterface::SetEnvironmentalEffectsAlwaysUpdate	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS				
-53	00890ff0	CGameScriptInterface	CGameScriptInterface::CameraDefault	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS	'field48' was not declared in this scope			field48
-54	00891070	CGameScriptInterface	CGameScriptInterface::CameraUseCameraPoint	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CScriptThing const &,float,long,long	PASS				
-55	00891170	CGameScriptInterface	CGameScriptInterface::PlaySoundAtPos	candidate-cluster	candidate-compile	2204295	__thiscall	ulong	CGameScriptInterface *,C3DVector const &,CCharString const &	PASS	'reinterpret_cast' from integer to pointer			
-56	00891220	CGameScriptInterface	CGameScriptInterface::OverrideMusic	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,EMusicSetType,bool,bool	PASS				
-57	00891310	CGameScriptInterface	CGameScriptInterface::CacheMusicSet	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,EMusicSetType	PASS				
-58	00891330	CGameScriptInterface	CGameScriptInterface::IsDangerMusicEnabled	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS				
-59	008913f0	CGameScriptInterface	CGameScriptInterface::AddQuestCard	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &,bool,bool	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
-60	008914e0	CGameScriptInterface	CGameScriptInterface::RemoveQuestCardFromHero	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS				
-61	00891540	CGameScriptInterface	CGameScriptInterface::AddFeatCard	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long,CCharString const &,CCharString const &	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
-62	008915b0	CGameScriptInterface	CGameScriptInterface::SetBoastAsFailed	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long,CCharString const &	PASS	'reinterpret_cast' from integer to pointer			
-63	008916a0	CGameScriptInterface	CGameScriptInterface::SheatheHeroWeapons	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-64	00891720	CGameScriptInterface	CGameScriptInterface::ChangeHeroHealthBy	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,float,bool,bool	PASS				
-65	008917f0	CGameScriptInterface	CGameScriptInterface::GiveHeroNewQuestObjective	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,ulong	PASS				
-66	00891800	CGameScriptInterface	CGameScriptInterface::TellHeroQuestObjectiveCompleted	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,ulong	PASS				
-67	00891810	CGameScriptInterface	CGameScriptInterface::TellHeroQuestObjectiveFailed	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,ulong	PASS				
-68	00891820	CGameScriptInterface	CGameScriptInterface::AddQuestRegion	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &	PASS				
-69	00891920	CGameScriptInterface	CGameScriptInterface::DisplayQuestInfo	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS	no matching function for call to 'NPlayerGui::CDrawQuestInfo::DisplayQuestInfo(NPlayerGui::CDrawQuestInfo*&, bool) const'			
-70	00891a00	CGameScriptInterface	CGameScriptInterface::SetQuestInfoText	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,char const *	PASS	static assertion failed			
-71	00891ac0	CGameScriptInterface	CGameScriptInterface::AddQuestInfoBar	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *,float,float,CRGBColour const &,CRGBColour const &,CCharString const &,CCharString const &,float	PASS	no matching function for call to 'NPlayerGui::CDrawQuestInfo::AddBar(NPlayerGui::CDrawQuestInfo*&, float&, float&, const CRGBColour&, const CRGBColour&, const CCharString&, const CCharString&, float&) const'			
-72	00891b20	CGameScriptInterface	CGameScriptInterface::AddQuestInfoTimer	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *,CTimer const &,CCharString const &,float	PASS				
-73	00891b50	CGameScriptInterface	CGameScriptInterface::AddQuestInfoCounterList	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *,CCharString const &,long,float	PASS				
-74	00891b80	CGameScriptInterface	CGameScriptInterface::UpdateQuestInfoBar	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long,float,float,float	PASS				
-75	00891ba0	CGameScriptInterface	CGameScriptInterface::ChangeQuestInfoBarColour	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long,CRGBColour const &,CRGBColour const &	PASS				
-76	00891bb0	CGameScriptInterface	CGameScriptInterface::UpdateQuestInfoTimer	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long,float	PASS				
-77	00891bd0	CGameScriptInterface	CGameScriptInterface::UpdateQuestInfoCounter	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long,long,long	PASS				
-78	00891be0	CGameScriptInterface	CGameScriptInterface::UpdateQuestInfoCounterList	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long,long,long	PASS				
-79	00891bf0	CGameScriptInterface	CGameScriptInterface::UpdateQuestInfoTick	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long,bool	PASS				
-80	00891c10	CGameScriptInterface	CGameScriptInterface::RemoveQuestInfoElement	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long	PASS				
-81	00891ca0	CGameScriptInterface	CGameScriptInterface::GetHero	candidate-cluster	candidate-compile	2204295	__thiscall	CScriptThing &	CGameScriptInterface *	PASS	'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type			class CParticleMorphs::CEntry;mov
-82	00891ea0	CGameScriptInterface	CGameScriptInterface::IsHeroAllowedHenchmenInCurrentRegion	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS				
-83	00891ef0	CGameScriptInterface	CGameScriptInterface::IsHeroAllowedHenchmenInRegion	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS				
-84	00892410	CGameScriptInterface	CGameScriptInterface::CameraMoveToPosAndLookAtPos	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,C3DVector const &,C3DVector const &,float	PASS				
-85	00892610	CGameScriptInterface	CGameScriptInterface::CameraMoveBetweenLookFromAndLookTo	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,C3DVector const &,C3DVector const &,C3DVector const &,C3DVector const &,float	PASS	expected '(' before '{' token			fild;mov
-86	00892850	CGameScriptInterface	CGameScriptInterface::AddScreenMessage	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,ETextGroupSelectionMethod	PASS				
-87	00892c20	CGameScriptInterface	CGameScriptInterface::CameraCircleAroundPos	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,C3DVector const &,C3DVector const &,float	PASS	expected '(' before '{' token			mov
-88	00892cf0	CGameScriptInterface	CGameScriptInterface::SetCreatureGeneratorsEnabled	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,bool	PASS	jump to label 'SetWorldFlag'			
-89	00892d70	CGameScriptInterface	CGameScriptInterface::SetCreatureGeneratorsEnabledDuringScript	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,bool	PASS	'reinterpret_cast' from integer to pointer			
-90	00892f00	CGameScriptInterface	CGameScriptInterface::DeactivateQuest	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,ulong	PASS				
-91	00892f10	CGameScriptInterface	CGameScriptInterface::DeactivateQuestLater	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,ulong	PASS	expected '(' before '{' token			mov
-92	00892f40	CGameScriptInterface	CGameScriptInterface::IsQuestActive	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	'reinterpret_cast' from integer to pointer			
-93	00892f70	CGameScriptInterface	CGameScriptInterface::IsQuestFailed	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	'reinterpret_cast' from integer to pointer			
-94	00893030	CGameScriptInterface	CGameScriptInterface::GetExclusiveQuestScriptName	candidate-cluster	candidate-compile	2204295	__thiscall	CCharString const &	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-95	00893060	CGameScriptInterface	CGameScriptInterface::AddBoast	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,long,long,long,bool,CCharString const &,long	PASS				
-96	008931b0	CGameScriptInterface	CGameScriptInterface::MsgIsLevelLoaded	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS				
-97	00893240	CGameScriptInterface	CGameScriptInterface::MsgIsLevelUnloaded	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS				
-98	00893e70	CGameScriptInterface	CGameScriptInterface::MsgOnGameSavedManually	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-99	008943c0	CGameScriptInterface	CGameScriptInterface::MsgIsTutorialClickedPast	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-100	00894490	CGameScriptInterface	CGameScriptInterface::RemoveDeadCreature	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS				
-101	00894bf0	CGameScriptInterface	CGameScriptInterface::IsGiftRomantic	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	invalid conversion from 'const void*' to 'void*' [-fpermissive]			
-102	00894c90	CGameScriptInterface	CGameScriptInterface::IsGiftFriendly	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	invalid conversion from 'const void*' to 'void*' [-fpermissive]			
-103	00894d30	CGameScriptInterface	CGameScriptInterface::IsGiftOffensive	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	invalid conversion from 'const void*' to 'void*' [-fpermissive]			
-104	00894dd0	CGameScriptInterface	CGameScriptInterface::EntitySetAsMarryable	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS				
-105	008950e0	CGameScriptInterface	CGameScriptInterface::ManuallyResetTrap	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			class CGameScriptInterface;offsetof
-106	00895130	CGameScriptInterface	CGameScriptInterface::SetTrapAsActive	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-107	00895190	CGameScriptInterface	CGameScriptInterface::GiveThingItemInSlot	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CCharString const &,CCharString const &	PASS				
-108	008953a0	CGameScriptInterface	CGameScriptInterface::IsHeroPerformingExpression	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-109	008954a0	CGameScriptInterface	CGameScriptInterface::EntityFollowThing	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CScriptThing const &,float,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-110	008955c0	CGameScriptInterface	CGameScriptInterface::IsEntityFollowingHero	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-111	00896270	CGameScriptInterface	CGameScriptInterface::EnableGuards	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-112	008962d0	CGameScriptInterface	CGameScriptInterface::EnableVillagerDefTypes	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-113	00896390	CGameScriptInterface	CGameScriptInterface::OpenChest	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			mov;offsetof
-114	00896b60	CGameScriptInterface	CGameScriptInterface::KickOffQuestStartScreen	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,bool,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			DAT_0122d70c;offsetof
-115	00896df0	CGameScriptInterface	CGameScriptInterface::KickOffCreditsScreen	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-116	00896e60	CGameScriptInterface	CGameScriptInterface::SetPreferredQuickAccessItem	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,long,long	PASS	'reinterpret_cast' from integer to pointer			
-117	00896ee0	CGameScriptInterface	CGameScriptInterface::GetDeathRecoveryMarkerName	candidate-cluster	candidate-compile	2204295	__thiscall	CCharString	CGameScriptInterface *	PASS	static assertion failed			
-118	00896f60	CGameScriptInterface	CGameScriptInterface::SetDeathRecoveryMarkerName	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-119	00897030	CGameScriptInterface	CGameScriptInterface::IsToFailQuestOnDeath	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-120	00897090	CGameScriptInterface	CGameScriptInterface::SetWhetherToFailQuestOnDeath	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS				
-121	00897150	CGameScriptInterface	CGameScriptInterface::UnSetThingAndCarriedItemsNotAffectedByScreenFilter	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing &	PASS				
-122	00897190	CGameScriptInterface	CGameScriptInterface::GetNumberOfItemsOfTypeInInventory	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			class CGameScriptInterface;offsetof
-123	008973a0	CGameScriptInterface	CGameScriptInterface::IsPlayerCarryingItemOfType	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-124	00897480	CGameScriptInterface	CGameScriptInterface::IsPlayerWieldingWeapon	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-125	008974f0	CGameScriptInterface	CGameScriptInterface::IsEntityWieldingWeapon	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &	PASS				
-126	008977f0	CGameScriptInterface	CGameScriptInterface::ApplyHeroPenaltyForDeath	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
-127	00897880	CGameScriptInterface	CGameScriptInterface::GetHeroTitle	candidate-cluster	candidate-compile	2204295	__thiscall	EHeroTitle	CGameScriptInterface *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-128	008978e0	CGameScriptInterface	CGameScriptInterface::EntitySetAsAbleToRegionFollowWhenMarried	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			class CGameScriptInterface;offsetof
-129	008979c0	CGameScriptInterface	CGameScriptInterface::IsEntityMarriedToHero	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-130	00897a30	CGameScriptInterface	CGameScriptInterface::IsEntityMarriable	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-131	00897aa0	CGameScriptInterface	CGameScriptInterface::GetHeroHasMarried	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-132	00897b10	CGameScriptInterface	CGameScriptInterface::GetHeroHasCurrentMarriage	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-133	00897b70	CGameScriptInterface	CGameScriptInterface::GetHeroHasDivorcedMarriage	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS				
-134	00897bd0	CGameScriptInterface	CGameScriptInterface::GetHeroHasChildren	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS				
-135	00897c30	CGameScriptInterface	CGameScriptInterface::GetHeroHasMurderedWife	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS				
-136	00897c90	CGameScriptInterface	CGameScriptInterface::GetNumberOfTimesHeroHasHadSex	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-137	00897cf0	CGameScriptInterface	CGameScriptInterface::SetNumberOfTimesHeroHasHadSex	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long	PASS	'reinterpret_cast' from integer to pointer			
-138	00897d50	CGameScriptInterface	CGameScriptInterface::SetHeroAsHavingHadSex	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
-139	00897db0	CGameScriptInterface	CGameScriptInterface::SetHeroAsHavingHadGaySex	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
-140	008981c0	CGameScriptInterface	CGameScriptInterface::AddTattooToHero	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS	static assertion failed			
-141	00898340	CGameScriptInterface	CGameScriptInterface::SetHeroWillAsUsable	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
-142	00898410	CGameScriptInterface	CGameScriptInterface::SetHeroWeaponsAsUsable	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
-143	008984e0	CGameScriptInterface	CGameScriptInterface::SetWeaponOutCrimeEnabled	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS				
-144	00898540	CGameScriptInterface	CGameScriptInterface::SetGuardsIgnoreCrimes	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
-145	00898600	CGameScriptInterface	CGameScriptInterface::RemoveAllHeroWeapons	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-146	008986d0	CGameScriptInterface	CGameScriptInterface::ConfiscateAllHeroItems	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS				
-147	00898840	CGameScriptInterface	CGameScriptInterface::ConfiscateItemsOfTypeFromHero	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS	'reinterpret_cast' from integer to pointer			
-148	00898940	CGameScriptInterface	CGameScriptInterface::ReturnAllConfiscatedItemsToHero	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-149	00898a50	CGameScriptInterface	CGameScriptInterface::GiveHeroTutorial	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,ETutorialCategory	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-150	00898b30	CGameScriptInterface	CGameScriptInterface::SetWeaponAsHerosActiveWeapon	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-151	00898db0	CGameScriptInterface	CGameScriptInterface::TakeObjectFromHero	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS				
-152	00898e60	CGameScriptInterface	CGameScriptInterface::IsHeroHandLampLit	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-153	00898ec0	CGameScriptInterface	CGameScriptInterface::SetHeroHandLampAsLit	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
-154	00898fa0	CGameScriptInterface	CGameScriptInterface::GetHeroGold	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-155	00899000	CGameScriptInterface	CGameScriptInterface::GiveHeroExperience	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-156	00899060	CGameScriptInterface	CGameScriptInterface::SetHeroAbleToGainExperience	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
-157	008990c0	CGameScriptInterface	CGameScriptInterface::GiveHeroRenownPoints	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,long	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-158	00899140	CGameScriptInterface	CGameScriptInterface::GetHeroRenownLevel	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-159	008991a0	CGameScriptInterface	CGameScriptInterface::IsHeroRenownLevelFull	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-160	00899220	CGameScriptInterface	CGameScriptInterface::IncreaseHeroRenownLevel	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-161	00899290	CGameScriptInterface	CGameScriptInterface::GetHeroStatLevel	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *,EHeroTrainableStatType	PASS	'reinterpret_cast' from integer to pointer			
-162	00899310	CGameScriptInterface	CGameScriptInterface::GetHeroStatMax	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *,EHeroTrainableStatType	PASS	'reinterpret_cast' from integer to pointer			
-163	00899390	CGameScriptInterface	CGameScriptInterface::GetHeroStrengthLevel	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-164	00899400	CGameScriptInterface	CGameScriptInterface::GetHeroSkillLevel	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-165	00899470	CGameScriptInterface	CGameScriptInterface::GetHeroWillLevel	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-166	008994e0	CGameScriptInterface	CGameScriptInterface::SetHeroAge	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,float	PASS	'reinterpret_cast' from integer to pointer			
-167	00899560	CGameScriptInterface	CGameScriptInterface::GetHeroAge	candidate-cluster	candidate-compile	2204295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-168	008995d0	CGameScriptInterface	CGameScriptInterface::SetHeroAsTeenager	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
-169	00899680	CGameScriptInterface	CGameScriptInterface::SetHeroAsApprentice	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
-170	00899700	CGameScriptInterface	CGameScriptInterface::GetDistanceHeroCanBeHeardFrom	candidate-cluster	candidate-compile	2204295	__thiscall	float	CGameScriptInterface *	PASS				
-171	00899770	CGameScriptInterface	CGameScriptInterface::GetHeroRoughExperienceLevel	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-172	008997e0	CGameScriptInterface	CGameScriptInterface::GetHeroExperienceAvailableToSpend	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-173	00899850	CGameScriptInterface	CGameScriptInterface::GetHeroFatness	candidate-cluster	candidate-compile	2204295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-174	008998c0	CGameScriptInterface	CGameScriptInterface::GetHeroScariness	candidate-cluster	candidate-compile	2204295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-175	00899930	CGameScriptInterface	CGameScriptInterface::GetHeroAttractiveness	candidate-cluster	candidate-compile	2204295	__thiscall	float	CGameScriptInterface *	PASS				
-176	008999a0	CGameScriptInterface	CGameScriptInterface::GetHeroWillEnergyLevel	candidate-cluster	candidate-compile	2204295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-177	00899a10	CGameScriptInterface	CGameScriptInterface::SetHeroWillEnergyLevel	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,float	PASS	'reinterpret_cast' from integer to pointer			
-178	00899a90	CGameScriptInterface	CGameScriptInterface::SetHeroWillEnergyAsAbleToRefill	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
-179	00899b10	CGameScriptInterface	CGameScriptInterface::IsPlayerZTargetingThing	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 4 arguments, but takes just 2			class CGameScriptInterface
-180	00899c90	CGameScriptInterface	CGameScriptInterface::GetPlayerCreatureCombatMultiplier	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-181	00899d50	CGameScriptInterface	CGameScriptInterface::ResetPlayerCreatureCombatMultiplier	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-182	00899db0	CGameScriptInterface	CGameScriptInterface::IsPlayerCreatureFlourishEnabled	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *	PASS				
-183	00899e10	CGameScriptInterface	CGameScriptInterface::SetPlayerCreatureOnlyTarget	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-184	00899e90	CGameScriptInterface	CGameScriptInterface::ResetPlayerCreatureOnlyTarget	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-185	00899ef0	CGameScriptInterface	CGameScriptInterface::GiveHeroMorality	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,float	PASS	'ScriptInterfaceContext14* CGameScriptInterface::Context14' is private within this context			
-186	00899f90	CGameScriptInterface	CGameScriptInterface::GetHeroMorality	candidate-cluster	candidate-compile	2204295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-187	0089a000	CGameScriptInterface	CGameScriptInterface::GetHeroMoralityCategory	candidate-cluster	candidate-compile	2204295	__thiscall	EMorality	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-188	0089a070	CGameScriptInterface	CGameScriptInterface::ChangeHeroMoralityDueToTheft	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS				
-189	0089a0e0	CGameScriptInterface	CGameScriptInterface::ChangeHeroMoralityDueToPicklock	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS				
-190	0089a150	CGameScriptInterface	CGameScriptInterface::GetHeroWillEnergy	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-191	0089a1b0	CGameScriptInterface	CGameScriptInterface::GetHeroWillEnergyMax	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-192	0089af30	CGameScriptInterface	CGameScriptInterface::RemoveAllCutSceneSkippedMessages	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS				
-193	0089aff0	CGameScriptInterface	CGameScriptInterface::EntitySetCombatAbility	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,float	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-194	0089b3f0	CGameScriptInterface	CGameScriptInterface::SetHeroAsWearing	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS				
-195	0089b450	CGameScriptInterface	CGameScriptInterface::ChangeHeroHairstyle	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS	'reinterpret_cast' from integer to pointer			
-196	0089b4d0	CGameScriptInterface	CGameScriptInterface::RemoveHeroHairstyle	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS				
-197	0089c330	CGameScriptInterface	CGameScriptInterface::EntitySetOpinionDeedTypeEnabled	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,EOpinionDeedType,bool	PASS	incomplete type '{anonymous}::OpinionDeedInterfaceMap' {aka '{anonymous}::CVectorMap<{anonymous}::ETCInterfaceType, CTCBase*, {anonymous}::CKeyPairCompareLess<{anonymous}::ETCInterfaceType, CTCBase*> >'} used in nested name specifier			
-198	0089c380	CGameScriptInterface	CGameScriptInterface::EntitySetOpinionAttitudeEnabled	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,EOpinionAttitudeType,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-199	0089c3d0	CGameScriptInterface	CGameScriptInterface::EntitySetOpinionReactionEnabled	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,EOpinionReactionType,bool	PASS	incomplete type '{anonymous}::OpinionReactionInterfaceMap' {aka '{anonymous}::CVectorMap<{anonymous}::ETCInterfaceType, CTCBase*, {anonymous}::CKeyPairCompareLess<{anonymous}::ETCInterfaceType, CTCBase*> >'} used in nested name specifier			
-200	0089c560	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedToAll	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,EOpinionDeedType	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-201	0089c670	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedToRecipient	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,EOpinionDeedType,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-202	0089c710	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedToRecipientVillage	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,EOpinionDeedType,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-203	0089c7b0	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *,CScriptThing const &,EOpinionDeedType,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-204	0089c850	CGameScriptInterface	CGameScriptInterface::RemoveOpinionDeedStillSearchingForWitnesses	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,long	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-205	0089cd50	CGameScriptInterface	CGameScriptInterface::CanThingBe_Smelled_ByOtherThing	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &,CScriptThing const &	PASS				
-206	0089cd70	CGameScriptInterface	CGameScriptInterface::CanThingBe_Heard_ByOtherThing	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &,CScriptThing const &	PASS				
-207	0089d7c0	CGameScriptInterface	CGameScriptInterface::SetAbilityAvailability	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,EHeroAbility,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-208	0089e130	CGameScriptInterface	CGameScriptInterface::EntitySetMaxNumberOfAttackers	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,long	PASS				
-209	0089e710	CGameScriptInterface	CGameScriptInterface::DisplayTutorial	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,ETutorialCategory	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-210	0089ec60	CGameScriptInterface	CGameScriptInterface::CreatureGeneratorAddTriggerer	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CScriptThing const &	PASS	comparison between distinct pointer types '{anonymous}::TCInterfaceEntryOverlay*' and 'CVectorMap<int, CTCBase*, CKeyPairCompareLess<int, CTCBase*> >::Entry*' lacks a cast			
-211	0089ef30	CGameScriptInterface	CGameScriptInterface::SetMoralityChangingAsEnabled	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
-212	0089feb0	CGameScriptInterface	CGameScriptInterface::AddCrimeCommitted	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,ECrime,bool,CScriptThing const *,CScriptThing const *,EOpinionPostDeedType	PASS	'reinterpret_cast' from integer to pointer			
-213	008a0260	CGameScriptInterface	CGameScriptInterface::GiveThingBestEnemyTarget	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-214	008a03f0	CGameScriptInterface	CGameScriptInterface::ClearThingBestEnemyTarget	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &	PASS				
-215	008a0820	CGameScriptInterface	CGameScriptInterface::CancelHeroTeleportEffects	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *	PASS				
-216	008a0bc0	CGameScriptInterface	CGameScriptInterface::EntitySetAppearanceSeed	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,ulong	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			class CGameScriptInterface;offsetof
-217	008a0f70	CGameScriptInterface	CGameScriptInterface::SetReadableObjectText	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CWideString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-218	008a0fd0	CGameScriptInterface	CGameScriptInterface::SetReadableObjectTextTag	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-219	008a12a0	CGameScriptInterface	CGameScriptInterface::GetNumHousesOwned	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-220	008a1590	CGameScriptInterface	CGameScriptInterface::GetBestTimePairs	candidate-cluster	candidate-compile	2204295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-221	008a15f0	CGameScriptInterface	CGameScriptInterface::GetBestTimeSorting	candidate-cluster	candidate-compile	2204295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-222	008a1650	CGameScriptInterface	CGameScriptInterface::GetBestScoreBlackjack	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			mov
-223	008a16b0	CGameScriptInterface	CGameScriptInterface::GetBestScoreCoinGolfOakVale	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-224	008a1710	CGameScriptInterface	CGameScriptInterface::GetBestScoreCoinGolfSnowSpire	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			mov
-225	008a1770	CGameScriptInterface	CGameScriptInterface::GetBestScoreShoveHaPenny	candidate-cluster	candidate-compile	2204295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			mov
-226	008a17d0	CGameScriptInterface	CGameScriptInterface::GetBestTimeGuessTheAddition	candidate-cluster	candidate-compile	2204295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
-227	008a1c50	CGameScriptInterface	CGameScriptInterface::RepopulateVillage	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-228	008a23b0	CGameScriptInterface	CGameScriptInterface::SetWanderCentrePoint	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing,C3DVector	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-229	008a7980	CGameScriptInterface	CGameScriptInterface::EntityStopFollowing	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-230	008a8c60	CGameScriptInterface	CGameScriptInterface::EntitySetAsSittingOnFloor	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-231	008a8e40	CGameScriptInterface	CGameScriptInterface::EntityDecapitate	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &	PASS				
-232	008a8eb0	CGameScriptInterface	CGameScriptInterface::EntitySetAttackThingImmediately	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CScriptThing const &,bool,bool	PASS				
-233	008a9320	CGameScriptInterface	CGameScriptInterface::EntityCastForcePush	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &,bool	PASS				
-234	008a93a0	CGameScriptInterface	CGameScriptInterface::EntityWillTeleportToArea	candidate-cluster	candidate-compile	2204295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &,C3DVector,float,float	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
-235	008a9610	CGameScriptInterface	CGameScriptInterface::SetThingAsConscious	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool,CCharString const &	PASS				
-236	008a99f0	CGameScriptInterface	CGameScriptInterface::SetThingAndCarriedItemsNotAffectedByScreenFilter	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CScriptThing &,void *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof;PTR__vector_deleting_destructor__01238c6c
-237	008a9dd0	CGameScriptInterface	CGameScriptInterface::AddNewRumourToCategory	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
-238	008a9e30	CGameScriptInterface	CGameScriptInterface::AddGossipVillage	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
-239	008a9e60	CGameScriptInterface	CGameScriptInterface::AddGossipFactionToCategory	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &	PASS				
-240	008aa010	CGameScriptInterface	CGameScriptInterface::ClearGossip	candidate-cluster	candidate-compile	2204295	__thiscall	void	CGameScriptInterface *,CCharString	PASS	static assertion failed			
-241	00401c00	_global	GFHandleSystemInitError	candidate-cluster	signature-audit	1676925	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-242	00402130	_global	MyDocuments_CheckWritePermissions	candidate-cluster	signature-audit	1676925	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-243	004022b0	_global	GFInitialise	candidate-cluster	signature-audit	1676925	unknown	undefined		PASS	invalid use of incomplete type 'struct CDisplayManager'		explicit-parameter-count-mismatch	struct CDisplayManager
-244	00403480	_global	_WinMain@16	candidate-cluster	signature-audit	1676925	unknown	undefined		PASS			method-name-mismatch;explicit-parameter-count-mismatch	
-245	00409090	_global	Engine_FindPrimitiveInArray	candidate-cluster	signature-audit	1676925	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-246	0040cec0	_global	CUserProfileManager_Constructor	candidate-cluster	signature-audit	1676925	unknown	undefined		FAIL			explicit-parameter-count-mismatch;return-shape-mismatch	
-247	004fe7f0	_global	CollectSoundThemeSwitchDefs	candidate-cluster	signature-audit	1676725	unknown	undefined		PASS	static assertion failed		explicit-parameter-count-mismatch	::LTextTreeWalkThrough;CCharString;CDefinitionManager;CDefPointer;CollectSoundThemeSwitchDefs_PostLookup;CollectSoundThemeSwitchDefs_PreLookup;COptimisedPrimitive;CThingPhysicalSwitchDef;definitionManager;LTextBinNode;LTextBinTree;LTextGroup;LTextTreeWalkThrough;self;soundThemeStorage;symbol
-248	007602f0	_global	Math_PolygonAngleSumClosureCheck	candidate-cluster	signature-audit	1676725	unknown	undefined		PASS	expected '(' before '{' token		method-name-mismatch;explicit-parameter-count-mismatch	fld
-249	0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	candidate-cluster	signature-audit	1676725	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-250	0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	candidate-cluster	signature-audit	1676725	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-251	00c20ef0	_global	IsStateStreaming_2to4	candidate-cluster	signature-audit	1676725	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-252	00c336f0	_global	Constraint_NotifyGlobalManager	candidate-cluster	signature-audit	1676725	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-253	00c362f0	_global	CSBAgents_BuildAndDispatch_A	candidate-cluster	signature-audit	1676725	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-254	00c36e00	_global	CSBAgents_BuildAndDispatch_SummonerLightning	candidate-cluster	signature-audit	1676725	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-255	00c36fb0	_global	CSBAgents_BuildAndDispatch_TavernGame	candidate-cluster	signature-audit	1676725	unknown	undefined		PASS	expected '(' before '{' token		method-name-mismatch;explicit-parameter-count-mismatch	jmp
-256	00c37000	_global	IntelligentPointer_BuildAndDispatchFloat	candidate-cluster	signature-audit	1676725	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-257	00c43de0	_global	DrawAutoPickups_SelectAndDrawPrimitive	candidate-cluster	signature-audit	1676725	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-258	008702d0	_global	Handle_InitInvalid_008702d0	candidate-cluster	signature-audit	1676625	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+1	00891610	CGameScriptInterface	CGameScriptInterface::GetMostRecentValidUsedTarget	candidate-cluster	signature-audit	2470295	__thiscall	CScriptThing	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer		explicit-parameter-count-mismatch;return-shape-mismatch	
+2	00891d50	CGameScriptInterface	CGameScriptInterface::GetThingWithUID	candidate-cluster	signature-audit	2470295	__thiscall	CScriptThing	CGameScriptInterface *,unsigned __int64	PASS	cannot call constructor 'NHeroInformationScreens::CBase::CBase' directly [-fpermissive]		explicit-parameter-count-mismatch;return-shape-mismatch	
+3	00892b50	CGameScriptInterface	CGameScriptInterface::CameraCircleAroundThing	candidate-cluster	signature-audit	2470295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,C3DVector const &,float	PASS	cannot call constructor 'NCameraModes::CScriptModuleBase::CScriptModuleBase' directly [-fpermissive]		definition-not-parsed	
+4	008961b0	CGameScriptInterface	CGameScriptInterface::ClearHeroEnemyOfGuards	candidate-cluster	signature-audit	2470295	__thiscall	void	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2		definition-not-parsed	offsetof
+5	0089a490	CGameScriptInterface	CGameScriptInterface::GetHeroTargetedThing	candidate-cluster	signature-audit	2470295	__thiscall	CScriptThing	CGameScriptInterface *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2		explicit-parameter-count-mismatch;return-shape-mismatch	class CParticleMorphs::CEntry;mov;offsetof
+6	0089c510	CGameScriptInterface	CGameScriptInterface::OpinionSourceSetAsAttentionGrabbing	candidate-cluster	signature-audit	2470295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS			definition-not-parsed	
+7	0089faa0	CGameScriptInterface	CGameScriptInterface::CreateLight	candidate-cluster	signature-audit	2470295	__thiscall	CScriptThing	CGameScriptInterface *,C3DVector const &,CRGBColour const &,CCharString const &,float,float,bool	PASS	invalid use of incomplete type 'class CGameScriptInterface'		explicit-parameter-count-mismatch;return-shape-mismatch	class CGameScriptInterface
+8	0089fbb0	CGameScriptInterface	CGameScriptInterface::CreateExperienceOrb	candidate-cluster	signature-audit	2470295	__thiscall	CScriptThing	CGameScriptInterface *,C3DVector const &,long	PASS	invalid use of incomplete type 'class CGameScriptInterface'		explicit-parameter-count-mismatch;return-shape-mismatch	class CGameScriptInterface
+9	0089fc80	CGameScriptInterface	CGameScriptInterface::CreateExplosion	candidate-cluster	signature-audit	2470295	__thiscall	CScriptThing	CGameScriptInterface *,CCharString const &,C3DVector const &,C3DVector const *,CCharString	PASS	invalid use of incomplete type 'class CGameScriptInterface'		explicit-parameter-count-mismatch;return-shape-mismatch	class CGameScriptInterface
+10	0089fd20	CGameScriptInterface	CGameScriptInterface::CreatePhysicalBarrier	candidate-cluster	signature-audit	2470295	__thiscall	CScriptThing	CGameScriptInterface *,float,C3DVector const &,C3DVector const *,CCharString	PASS	invalid use of incomplete type 'class CGameScriptInterface'		explicit-parameter-count-mismatch;return-shape-mismatch	class CGameScriptInterface
+11	0089fda0	CGameScriptInterface	CGameScriptInterface::CreateRumble	candidate-cluster	signature-audit	2470295	__thiscall	CScriptThing	CGameScriptInterface *,C3DVector const &,float,float,CCharString	PASS	invalid use of incomplete type 'class CGameScriptInterface'		explicit-parameter-count-mismatch;return-shape-mismatch	class CGameScriptInterface
+12	008a9fc0	CGameScriptInterface	CGameScriptInterface::GetGossipSize	candidate-cluster	compiled-needs-parity	2370295	__thiscall	int	CGameScriptInterface *,CCharString	PASS		DIFFER		
+13	008aa480	CGameScriptInterface	CGameScriptInterface::GetGossipFactionsSize	candidate-cluster	compiled-needs-parity	2370295	__thiscall	int	CGameScriptInterface *,CCharString	PASS		DIFFER		
+14	006e7690	CGameScriptInterface	CGameScriptInterface::DeregisterTimer	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long	PASS				
+15	006e7820	CGameScriptInterface	CGameScriptInterface::WaitForCameraMessage	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS				
+16	006e7920	CGameScriptInterface	CGameScriptInterface::CheckForCameraMessage	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS				
+17	006e79e0	CGameScriptInterface	CGameScriptInterface::RegisterTimer	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS				
+18	0088de10	CGameScriptInterface	CGameScriptInterface::GiveThingItemInHand	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CCharString const &,bool	PASS				
+19	0088df60	CGameScriptInterface	CGameScriptInterface::GetWaterHeightAtPosition	candidate-cluster	candidate-compile	2270295	__thiscall	float	CGameScriptInterface *,C3DVector const &	PASS				
+20	0088e0b0	CGameScriptInterface	CGameScriptInterface::SetSoundThemesAsEnabledForRegion	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,bool	PASS				
+21	0088e130	CGameScriptInterface	CGameScriptInterface::GiveHeroWeapon	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,bool	PASS				
+22	0088e200	CGameScriptInterface	CGameScriptInterface::SetGuildMasterMessages	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS				
+23	0088e2a0	CGameScriptInterface	CGameScriptInterface::IsLevelLoaded	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	static assertion failed			
+24	0088e300	CGameScriptInterface	CGameScriptInterface::IsRegionLoaded	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS				
+25	0088e380	CGameScriptInterface	CGameScriptInterface::DontPopulateNextLoadedRegion	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS				
+26	0088e3d0	CGameScriptInterface	CGameScriptInterface::MiniMapAllowRouteBetweenRegions	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &,bool	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
+27	0088e6f0	CGameScriptInterface	CGameScriptInterface::AreEntitiesEnemies	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &,CScriptThing const &	PASS				
+28	0088ead0	CGameScriptInterface	CGameScriptInterface::EntitySetAsDamageable	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
+29	0088ece0	CGameScriptInterface	CGameScriptInterface::CameraShake	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,float,float	PASS				
+30	0088f400	CGameScriptInterface	CGameScriptInterface::SetCreatureGeneratorsCreatureGroupAsEnabled	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,ECreatureGroup,bool	PASS				
+31	0088f480	CGameScriptInterface	CGameScriptInterface::ApplyScriptBrush	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS				
+32	0088f570	CGameScriptInterface	CGameScriptInterface::Play2DSound	candidate-cluster	candidate-compile	2270295	__thiscall	ulong	CGameScriptInterface *,CCharString const &	PASS				
+33	0088f610	CGameScriptInterface	CGameScriptInterface::IsSoundPlaying	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,ulong	PASS				
+34	0088f660	CGameScriptInterface	CGameScriptInterface::StopSound	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,ulong	PASS				
+35	0088f710	CGameScriptInterface	CGameScriptInterface::EntitySetCombatEnabled	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS				
+36	0088f8d0	CGameScriptInterface	CGameScriptInterface::StartCountdownTimer	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,float	PASS				
+37	0088f910	CGameScriptInterface	CGameScriptInterface::AutoSaveCheckPoint	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS				
+38	0088f920	CGameScriptInterface	CGameScriptInterface::AutoSaveQuestStart	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS				
+39	0088f970	CGameScriptInterface	CGameScriptInterface::ResetToFrontEnd	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS				
+40	0088f9b0	CGameScriptInterface	CGameScriptInterface::GetGuildSealRecallPos	candidate-cluster	candidate-compile	2270295	__thiscall	C3DVector	CGameScriptInterface *	PASS				
+41	0088fc90	CGameScriptInterface	CGameScriptInterface::HeroHasExpression	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS				
+42	0088fd00	CGameScriptInterface	CGameScriptInterface::EntitySetInLimbo	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool,bool	PASS				
+43	0088fdc0	CGameScriptInterface	CGameScriptInterface::SetTimeOfDay	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,float	PASS				
+44	0088fe30	CGameScriptInterface	CGameScriptInterface::GetTimeOfDay	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	expected '(' before '{' token			mov
+45	0088fe40	CGameScriptInterface	CGameScriptInterface::IsTimeOfDayBetween	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,long,long	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
+46	0088fe90	CGameScriptInterface	CGameScriptInterface::FastForwardTimeTo	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,float,float	PASS				
+47	0088ff30	CGameScriptInterface	CGameScriptInterface::TransitionToThemeAllInternals	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,float	PASS				
+48	00890200	CGameScriptInterface	CGameScriptInterface::ScreenFilterFadeOut	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,float,void *	PASS				
+49	008907c0	CGameScriptInterface	CGameScriptInterface::RemoveConversation	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long,bool	PASS	'reinterpret_cast' from integer to pointer			
+50	008907d0	CGameScriptInterface	CGameScriptInterface::IsConversationActive	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,long	PASS				
+51	008907e0	CGameScriptInterface	CGameScriptInterface::FadeScreenOutUntilNextCallToFadeScreenIn	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,float,float	PASS				
+52	00890b90	CGameScriptInterface	CGameScriptInterface::SetEnvironmentalEffectsAlwaysUpdate	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS				
+53	00890ff0	CGameScriptInterface	CGameScriptInterface::CameraDefault	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS	'field48' was not declared in this scope			field48
+54	00891070	CGameScriptInterface	CGameScriptInterface::CameraUseCameraPoint	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CScriptThing const &,float,long,long	PASS				
+55	00891170	CGameScriptInterface	CGameScriptInterface::PlaySoundAtPos	candidate-cluster	candidate-compile	2270295	__thiscall	ulong	CGameScriptInterface *,C3DVector const &,CCharString const &	PASS	'reinterpret_cast' from integer to pointer			
+56	00891220	CGameScriptInterface	CGameScriptInterface::OverrideMusic	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,EMusicSetType,bool,bool	PASS				
+57	00891310	CGameScriptInterface	CGameScriptInterface::CacheMusicSet	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,EMusicSetType	PASS				
+58	00891330	CGameScriptInterface	CGameScriptInterface::IsDangerMusicEnabled	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS				
+59	008913f0	CGameScriptInterface	CGameScriptInterface::AddQuestCard	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &,bool,bool	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
+60	008914e0	CGameScriptInterface	CGameScriptInterface::RemoveQuestCardFromHero	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS				
+61	00891540	CGameScriptInterface	CGameScriptInterface::AddFeatCard	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long,CCharString const &,CCharString const &	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
+62	008915b0	CGameScriptInterface	CGameScriptInterface::SetBoastAsFailed	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long,CCharString const &	PASS	'reinterpret_cast' from integer to pointer			
+63	008916a0	CGameScriptInterface	CGameScriptInterface::SheatheHeroWeapons	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+64	00891720	CGameScriptInterface	CGameScriptInterface::ChangeHeroHealthBy	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,float,bool,bool	PASS				
+65	008917f0	CGameScriptInterface	CGameScriptInterface::GiveHeroNewQuestObjective	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,ulong	PASS				
+66	00891800	CGameScriptInterface	CGameScriptInterface::TellHeroQuestObjectiveCompleted	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,ulong	PASS				
+67	00891810	CGameScriptInterface	CGameScriptInterface::TellHeroQuestObjectiveFailed	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,ulong	PASS				
+68	00891820	CGameScriptInterface	CGameScriptInterface::AddQuestRegion	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &	PASS				
+69	00891920	CGameScriptInterface	CGameScriptInterface::DisplayQuestInfo	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS	no matching function for call to 'NPlayerGui::CDrawQuestInfo::DisplayQuestInfo(NPlayerGui::CDrawQuestInfo*&, bool) const'			
+70	00891a00	CGameScriptInterface	CGameScriptInterface::SetQuestInfoText	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,char const *	PASS	static assertion failed			
+71	00891ac0	CGameScriptInterface	CGameScriptInterface::AddQuestInfoBar	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *,float,float,CRGBColour const &,CRGBColour const &,CCharString const &,CCharString const &,float	PASS	no matching function for call to 'NPlayerGui::CDrawQuestInfo::AddBar(NPlayerGui::CDrawQuestInfo*&, float&, float&, const CRGBColour&, const CRGBColour&, const CCharString&, const CCharString&, float&) const'			
+72	00891b20	CGameScriptInterface	CGameScriptInterface::AddQuestInfoTimer	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *,CTimer const &,CCharString const &,float	PASS				
+73	00891b50	CGameScriptInterface	CGameScriptInterface::AddQuestInfoCounterList	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *,CCharString const &,long,float	PASS				
+74	00891b80	CGameScriptInterface	CGameScriptInterface::UpdateQuestInfoBar	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long,float,float,float	PASS				
+75	00891ba0	CGameScriptInterface	CGameScriptInterface::ChangeQuestInfoBarColour	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long,CRGBColour const &,CRGBColour const &	PASS				
+76	00891bb0	CGameScriptInterface	CGameScriptInterface::UpdateQuestInfoTimer	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long,float	PASS				
+77	00891bd0	CGameScriptInterface	CGameScriptInterface::UpdateQuestInfoCounter	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long,long,long	PASS				
+78	00891be0	CGameScriptInterface	CGameScriptInterface::UpdateQuestInfoCounterList	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long,long,long	PASS				
+79	00891bf0	CGameScriptInterface	CGameScriptInterface::UpdateQuestInfoTick	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long,bool	PASS				
+80	00891c10	CGameScriptInterface	CGameScriptInterface::RemoveQuestInfoElement	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long	PASS				
+81	00891ca0	CGameScriptInterface	CGameScriptInterface::GetHero	candidate-cluster	candidate-compile	2270295	__thiscall	CScriptThing &	CGameScriptInterface *	PASS	'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type			class CParticleMorphs::CEntry;mov
+82	00891ea0	CGameScriptInterface	CGameScriptInterface::IsHeroAllowedHenchmenInCurrentRegion	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS				
+83	00891ef0	CGameScriptInterface	CGameScriptInterface::IsHeroAllowedHenchmenInRegion	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS				
+84	00892410	CGameScriptInterface	CGameScriptInterface::CameraMoveToPosAndLookAtPos	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,C3DVector const &,C3DVector const &,float	PASS				
+85	00892610	CGameScriptInterface	CGameScriptInterface::CameraMoveBetweenLookFromAndLookTo	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,C3DVector const &,C3DVector const &,C3DVector const &,C3DVector const &,float	PASS	expected '(' before '{' token			fild;mov
+86	00892850	CGameScriptInterface	CGameScriptInterface::AddScreenMessage	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,ETextGroupSelectionMethod	PASS				
+87	00892c20	CGameScriptInterface	CGameScriptInterface::CameraCircleAroundPos	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,C3DVector const &,C3DVector const &,float	PASS	expected '(' before '{' token			mov
+88	00892cf0	CGameScriptInterface	CGameScriptInterface::SetCreatureGeneratorsEnabled	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,bool	PASS	jump to label 'SetWorldFlag'			
+89	00892d70	CGameScriptInterface	CGameScriptInterface::SetCreatureGeneratorsEnabledDuringScript	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,bool	PASS	'reinterpret_cast' from integer to pointer			
+90	00892f00	CGameScriptInterface	CGameScriptInterface::DeactivateQuest	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,ulong	PASS				
+91	00892f10	CGameScriptInterface	CGameScriptInterface::DeactivateQuestLater	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,ulong	PASS	expected '(' before '{' token			mov
+92	00892f40	CGameScriptInterface	CGameScriptInterface::IsQuestActive	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	'reinterpret_cast' from integer to pointer			
+93	00892f70	CGameScriptInterface	CGameScriptInterface::IsQuestFailed	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	'reinterpret_cast' from integer to pointer			
+94	00893030	CGameScriptInterface	CGameScriptInterface::GetExclusiveQuestScriptName	candidate-cluster	candidate-compile	2270295	__thiscall	CCharString const &	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+95	00893060	CGameScriptInterface	CGameScriptInterface::AddBoast	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,long,long,long,bool,CCharString const &,long	PASS				
+96	008931b0	CGameScriptInterface	CGameScriptInterface::MsgIsLevelLoaded	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS				
+97	00893240	CGameScriptInterface	CGameScriptInterface::MsgIsLevelUnloaded	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS				
+98	00893e70	CGameScriptInterface	CGameScriptInterface::MsgOnGameSavedManually	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+99	008943c0	CGameScriptInterface	CGameScriptInterface::MsgIsTutorialClickedPast	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+100	00894490	CGameScriptInterface	CGameScriptInterface::RemoveDeadCreature	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS				
+101	00894bf0	CGameScriptInterface	CGameScriptInterface::IsGiftRomantic	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	invalid conversion from 'const void*' to 'void*' [-fpermissive]			
+102	00894c90	CGameScriptInterface	CGameScriptInterface::IsGiftFriendly	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	invalid conversion from 'const void*' to 'void*' [-fpermissive]			
+103	00894d30	CGameScriptInterface	CGameScriptInterface::IsGiftOffensive	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	invalid conversion from 'const void*' to 'void*' [-fpermissive]			
+104	00894dd0	CGameScriptInterface	CGameScriptInterface::EntitySetAsMarryable	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS				
+105	008950e0	CGameScriptInterface	CGameScriptInterface::ManuallyResetTrap	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			class CGameScriptInterface;offsetof
+106	00895130	CGameScriptInterface	CGameScriptInterface::SetTrapAsActive	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+107	00895190	CGameScriptInterface	CGameScriptInterface::GiveThingItemInSlot	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CCharString const &,CCharString const &	PASS				
+108	008953a0	CGameScriptInterface	CGameScriptInterface::IsHeroPerformingExpression	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+109	008954a0	CGameScriptInterface	CGameScriptInterface::EntityFollowThing	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CScriptThing const &,float,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+110	008955c0	CGameScriptInterface	CGameScriptInterface::IsEntityFollowingHero	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+111	00896270	CGameScriptInterface	CGameScriptInterface::EnableGuards	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+112	008962d0	CGameScriptInterface	CGameScriptInterface::EnableVillagerDefTypes	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+113	00896390	CGameScriptInterface	CGameScriptInterface::OpenChest	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			mov;offsetof
+114	00896b60	CGameScriptInterface	CGameScriptInterface::KickOffQuestStartScreen	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,bool,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			DAT_0122d70c;offsetof
+115	00896df0	CGameScriptInterface	CGameScriptInterface::KickOffCreditsScreen	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+116	00896e60	CGameScriptInterface	CGameScriptInterface::SetPreferredQuickAccessItem	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,long,long	PASS	'reinterpret_cast' from integer to pointer			
+117	00896ee0	CGameScriptInterface	CGameScriptInterface::GetDeathRecoveryMarkerName	candidate-cluster	candidate-compile	2270295	__thiscall	CCharString	CGameScriptInterface *	PASS	static assertion failed			
+118	00896f60	CGameScriptInterface	CGameScriptInterface::SetDeathRecoveryMarkerName	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+119	00897030	CGameScriptInterface	CGameScriptInterface::IsToFailQuestOnDeath	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+120	00897090	CGameScriptInterface	CGameScriptInterface::SetWhetherToFailQuestOnDeath	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS				
+121	00897150	CGameScriptInterface	CGameScriptInterface::UnSetThingAndCarriedItemsNotAffectedByScreenFilter	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing &	PASS				
+122	00897190	CGameScriptInterface	CGameScriptInterface::GetNumberOfItemsOfTypeInInventory	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			class CGameScriptInterface;offsetof
+123	008973a0	CGameScriptInterface	CGameScriptInterface::IsPlayerCarryingItemOfType	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+124	00897480	CGameScriptInterface	CGameScriptInterface::IsPlayerWieldingWeapon	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+125	008974f0	CGameScriptInterface	CGameScriptInterface::IsEntityWieldingWeapon	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &	PASS				
+126	008977f0	CGameScriptInterface	CGameScriptInterface::ApplyHeroPenaltyForDeath	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
+127	00897880	CGameScriptInterface	CGameScriptInterface::GetHeroTitle	candidate-cluster	candidate-compile	2270295	__thiscall	EHeroTitle	CGameScriptInterface *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+128	008978e0	CGameScriptInterface	CGameScriptInterface::EntitySetAsAbleToRegionFollowWhenMarried	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			class CGameScriptInterface;offsetof
+129	008979c0	CGameScriptInterface	CGameScriptInterface::IsEntityMarriedToHero	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+130	00897a30	CGameScriptInterface	CGameScriptInterface::IsEntityMarriable	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+131	00897aa0	CGameScriptInterface	CGameScriptInterface::GetHeroHasMarried	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+132	00897b10	CGameScriptInterface	CGameScriptInterface::GetHeroHasCurrentMarriage	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+133	00897b70	CGameScriptInterface	CGameScriptInterface::GetHeroHasDivorcedMarriage	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS				
+134	00897bd0	CGameScriptInterface	CGameScriptInterface::GetHeroHasChildren	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS				
+135	00897c30	CGameScriptInterface	CGameScriptInterface::GetHeroHasMurderedWife	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS				
+136	00897c90	CGameScriptInterface	CGameScriptInterface::GetNumberOfTimesHeroHasHadSex	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+137	00897cf0	CGameScriptInterface	CGameScriptInterface::SetNumberOfTimesHeroHasHadSex	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long	PASS	'reinterpret_cast' from integer to pointer			
+138	00897d50	CGameScriptInterface	CGameScriptInterface::SetHeroAsHavingHadSex	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
+139	00897db0	CGameScriptInterface	CGameScriptInterface::SetHeroAsHavingHadGaySex	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
+140	008981c0	CGameScriptInterface	CGameScriptInterface::AddTattooToHero	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS	static assertion failed			
+141	00898340	CGameScriptInterface	CGameScriptInterface::SetHeroWillAsUsable	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
+142	00898410	CGameScriptInterface	CGameScriptInterface::SetHeroWeaponsAsUsable	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
+143	008984e0	CGameScriptInterface	CGameScriptInterface::SetWeaponOutCrimeEnabled	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS				
+144	00898540	CGameScriptInterface	CGameScriptInterface::SetGuardsIgnoreCrimes	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
+145	00898600	CGameScriptInterface	CGameScriptInterface::RemoveAllHeroWeapons	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+146	008986d0	CGameScriptInterface	CGameScriptInterface::ConfiscateAllHeroItems	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS				
+147	00898840	CGameScriptInterface	CGameScriptInterface::ConfiscateItemsOfTypeFromHero	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS	'reinterpret_cast' from integer to pointer			
+148	00898940	CGameScriptInterface	CGameScriptInterface::ReturnAllConfiscatedItemsToHero	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+149	00898a50	CGameScriptInterface	CGameScriptInterface::GiveHeroTutorial	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,ETutorialCategory	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+150	00898b30	CGameScriptInterface	CGameScriptInterface::SetWeaponAsHerosActiveWeapon	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+151	00898db0	CGameScriptInterface	CGameScriptInterface::TakeObjectFromHero	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS				
+152	00898e60	CGameScriptInterface	CGameScriptInterface::IsHeroHandLampLit	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+153	00898ec0	CGameScriptInterface	CGameScriptInterface::SetHeroHandLampAsLit	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
+154	00898fa0	CGameScriptInterface	CGameScriptInterface::GetHeroGold	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+155	00899000	CGameScriptInterface	CGameScriptInterface::GiveHeroExperience	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+156	00899060	CGameScriptInterface	CGameScriptInterface::SetHeroAbleToGainExperience	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
+157	008990c0	CGameScriptInterface	CGameScriptInterface::GiveHeroRenownPoints	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,long	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+158	00899140	CGameScriptInterface	CGameScriptInterface::GetHeroRenownLevel	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+159	008991a0	CGameScriptInterface	CGameScriptInterface::IsHeroRenownLevelFull	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+160	00899220	CGameScriptInterface	CGameScriptInterface::IncreaseHeroRenownLevel	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+161	00899290	CGameScriptInterface	CGameScriptInterface::GetHeroStatLevel	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *,EHeroTrainableStatType	PASS	'reinterpret_cast' from integer to pointer			
+162	00899310	CGameScriptInterface	CGameScriptInterface::GetHeroStatMax	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *,EHeroTrainableStatType	PASS	'reinterpret_cast' from integer to pointer			
+163	00899390	CGameScriptInterface	CGameScriptInterface::GetHeroStrengthLevel	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+164	00899400	CGameScriptInterface	CGameScriptInterface::GetHeroSkillLevel	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+165	00899470	CGameScriptInterface	CGameScriptInterface::GetHeroWillLevel	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+166	008994e0	CGameScriptInterface	CGameScriptInterface::SetHeroAge	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,float	PASS	'reinterpret_cast' from integer to pointer			
+167	00899560	CGameScriptInterface	CGameScriptInterface::GetHeroAge	candidate-cluster	candidate-compile	2270295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+168	008995d0	CGameScriptInterface	CGameScriptInterface::SetHeroAsTeenager	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
+169	00899680	CGameScriptInterface	CGameScriptInterface::SetHeroAsApprentice	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
+170	00899700	CGameScriptInterface	CGameScriptInterface::GetDistanceHeroCanBeHeardFrom	candidate-cluster	candidate-compile	2270295	__thiscall	float	CGameScriptInterface *	PASS				
+171	00899770	CGameScriptInterface	CGameScriptInterface::GetHeroRoughExperienceLevel	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+172	008997e0	CGameScriptInterface	CGameScriptInterface::GetHeroExperienceAvailableToSpend	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+173	00899850	CGameScriptInterface	CGameScriptInterface::GetHeroFatness	candidate-cluster	candidate-compile	2270295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+174	008998c0	CGameScriptInterface	CGameScriptInterface::GetHeroScariness	candidate-cluster	candidate-compile	2270295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+175	00899930	CGameScriptInterface	CGameScriptInterface::GetHeroAttractiveness	candidate-cluster	candidate-compile	2270295	__thiscall	float	CGameScriptInterface *	PASS				
+176	008999a0	CGameScriptInterface	CGameScriptInterface::GetHeroWillEnergyLevel	candidate-cluster	candidate-compile	2270295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+177	00899a10	CGameScriptInterface	CGameScriptInterface::SetHeroWillEnergyLevel	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,float	PASS	'reinterpret_cast' from integer to pointer			
+178	00899a90	CGameScriptInterface	CGameScriptInterface::SetHeroWillEnergyAsAbleToRefill	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
+179	00899b10	CGameScriptInterface	CGameScriptInterface::IsPlayerZTargetingThing	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 4 arguments, but takes just 2			class CGameScriptInterface
+180	00899c90	CGameScriptInterface	CGameScriptInterface::GetPlayerCreatureCombatMultiplier	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+181	00899d50	CGameScriptInterface	CGameScriptInterface::ResetPlayerCreatureCombatMultiplier	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+182	00899db0	CGameScriptInterface	CGameScriptInterface::IsPlayerCreatureFlourishEnabled	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *	PASS				
+183	00899e10	CGameScriptInterface	CGameScriptInterface::SetPlayerCreatureOnlyTarget	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+184	00899e90	CGameScriptInterface	CGameScriptInterface::ResetPlayerCreatureOnlyTarget	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+185	00899ef0	CGameScriptInterface	CGameScriptInterface::GiveHeroMorality	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,float	PASS	'ScriptInterfaceContext14* CGameScriptInterface::Context14' is private within this context			
+186	00899f90	CGameScriptInterface	CGameScriptInterface::GetHeroMorality	candidate-cluster	candidate-compile	2270295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+187	0089a000	CGameScriptInterface	CGameScriptInterface::GetHeroMoralityCategory	candidate-cluster	candidate-compile	2270295	__thiscall	EMorality	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+188	0089a070	CGameScriptInterface	CGameScriptInterface::ChangeHeroMoralityDueToTheft	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS				
+189	0089a0e0	CGameScriptInterface	CGameScriptInterface::ChangeHeroMoralityDueToPicklock	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS				
+190	0089a150	CGameScriptInterface	CGameScriptInterface::GetHeroWillEnergy	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+191	0089a1b0	CGameScriptInterface	CGameScriptInterface::GetHeroWillEnergyMax	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+192	0089af30	CGameScriptInterface	CGameScriptInterface::RemoveAllCutSceneSkippedMessages	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS				
+193	0089aff0	CGameScriptInterface	CGameScriptInterface::EntitySetCombatAbility	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,float	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+194	0089b3f0	CGameScriptInterface	CGameScriptInterface::SetHeroAsWearing	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS				
+195	0089b450	CGameScriptInterface	CGameScriptInterface::ChangeHeroHairstyle	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &	PASS	'reinterpret_cast' from integer to pointer			
+196	0089b4d0	CGameScriptInterface	CGameScriptInterface::RemoveHeroHairstyle	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS				
+197	0089c330	CGameScriptInterface	CGameScriptInterface::EntitySetOpinionDeedTypeEnabled	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,EOpinionDeedType,bool	PASS	incomplete type '{anonymous}::OpinionDeedInterfaceMap' {aka '{anonymous}::CVectorMap<{anonymous}::ETCInterfaceType, CTCBase*, {anonymous}::CKeyPairCompareLess<{anonymous}::ETCInterfaceType, CTCBase*> >'} used in nested name specifier			
+198	0089c380	CGameScriptInterface	CGameScriptInterface::EntitySetOpinionAttitudeEnabled	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,EOpinionAttitudeType,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+199	0089c3d0	CGameScriptInterface	CGameScriptInterface::EntitySetOpinionReactionEnabled	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,EOpinionReactionType,bool	PASS	incomplete type '{anonymous}::OpinionReactionInterfaceMap' {aka '{anonymous}::CVectorMap<{anonymous}::ETCInterfaceType, CTCBase*, {anonymous}::CKeyPairCompareLess<{anonymous}::ETCInterfaceType, CTCBase*> >'} used in nested name specifier			
+200	0089c560	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedToAll	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,EOpinionDeedType	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+201	0089c670	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedToRecipient	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,EOpinionDeedType,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+202	0089c710	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedToRecipientVillage	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,EOpinionDeedType,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+203	0089c7b0	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *,CScriptThing const &,EOpinionDeedType,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+204	0089c850	CGameScriptInterface	CGameScriptInterface::RemoveOpinionDeedStillSearchingForWitnesses	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,long	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+205	0089cd50	CGameScriptInterface	CGameScriptInterface::CanThingBe_Smelled_ByOtherThing	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &,CScriptThing const &	PASS				
+206	0089cd70	CGameScriptInterface	CGameScriptInterface::CanThingBe_Heard_ByOtherThing	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &,CScriptThing const &	PASS				
+207	0089d7c0	CGameScriptInterface	CGameScriptInterface::SetAbilityAvailability	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,EHeroAbility,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+208	0089e130	CGameScriptInterface	CGameScriptInterface::EntitySetMaxNumberOfAttackers	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,long	PASS				
+209	0089e710	CGameScriptInterface	CGameScriptInterface::DisplayTutorial	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,ETutorialCategory	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+210	0089ec60	CGameScriptInterface	CGameScriptInterface::CreatureGeneratorAddTriggerer	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CScriptThing const &	PASS	comparison between distinct pointer types '{anonymous}::TCInterfaceEntryOverlay*' and 'CVectorMap<int, CTCBase*, CKeyPairCompareLess<int, CTCBase*> >::Entry*' lacks a cast			
+211	0089ef30	CGameScriptInterface	CGameScriptInterface::SetMoralityChangingAsEnabled	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,bool	PASS	'reinterpret_cast' from integer to pointer			
+212	0089feb0	CGameScriptInterface	CGameScriptInterface::AddCrimeCommitted	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,ECrime,bool,CScriptThing const *,CScriptThing const *,EOpinionPostDeedType	PASS	'reinterpret_cast' from integer to pointer			
+213	008a0260	CGameScriptInterface	CGameScriptInterface::GiveThingBestEnemyTarget	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+214	008a03f0	CGameScriptInterface	CGameScriptInterface::ClearThingBestEnemyTarget	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &	PASS				
+215	008a0820	CGameScriptInterface	CGameScriptInterface::CancelHeroTeleportEffects	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *	PASS				
+216	008a0bc0	CGameScriptInterface	CGameScriptInterface::EntitySetAppearanceSeed	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,ulong	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			class CGameScriptInterface;offsetof
+217	008a0f70	CGameScriptInterface	CGameScriptInterface::SetReadableObjectText	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CWideString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+218	008a0fd0	CGameScriptInterface	CGameScriptInterface::SetReadableObjectTextTag	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CCharString const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+219	008a12a0	CGameScriptInterface	CGameScriptInterface::GetNumHousesOwned	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+220	008a1590	CGameScriptInterface	CGameScriptInterface::GetBestTimePairs	candidate-cluster	candidate-compile	2270295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+221	008a15f0	CGameScriptInterface	CGameScriptInterface::GetBestTimeSorting	candidate-cluster	candidate-compile	2270295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+222	008a1650	CGameScriptInterface	CGameScriptInterface::GetBestScoreBlackjack	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			mov
+223	008a16b0	CGameScriptInterface	CGameScriptInterface::GetBestScoreCoinGolfOakVale	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+224	008a1710	CGameScriptInterface	CGameScriptInterface::GetBestScoreCoinGolfSnowSpire	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			mov
+225	008a1770	CGameScriptInterface	CGameScriptInterface::GetBestScoreShoveHaPenny	candidate-cluster	candidate-compile	2270295	__thiscall	long	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			mov
+226	008a17d0	CGameScriptInterface	CGameScriptInterface::GetBestTimeGuessTheAddition	candidate-cluster	candidate-compile	2270295	__thiscall	float	CGameScriptInterface *	PASS	'reinterpret_cast' from integer to pointer			
+227	008a1c50	CGameScriptInterface	CGameScriptInterface::RepopulateVillage	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+228	008a23b0	CGameScriptInterface	CGameScriptInterface::SetWanderCentrePoint	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing,C3DVector	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+229	008a7980	CGameScriptInterface	CGameScriptInterface::EntityStopFollowing	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+230	008a8c60	CGameScriptInterface	CGameScriptInterface::EntitySetAsSittingOnFloor	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+231	008a8e40	CGameScriptInterface	CGameScriptInterface::EntityDecapitate	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &	PASS				
+232	008a8eb0	CGameScriptInterface	CGameScriptInterface::EntitySetAttackThingImmediately	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,CScriptThing const &,bool,bool	PASS				
+233	008a9320	CGameScriptInterface	CGameScriptInterface::EntityCastForcePush	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &,bool	PASS				
+234	008a93a0	CGameScriptInterface	CGameScriptInterface::EntityWillTeleportToArea	candidate-cluster	candidate-compile	2270295	__thiscall	bool	CGameScriptInterface *,CScriptThing const &,C3DVector,float,float	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof
+235	008a9610	CGameScriptInterface	CGameScriptInterface::SetThingAsConscious	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing const &,bool,CCharString const &	PASS				
+236	008a99f0	CGameScriptInterface	CGameScriptInterface::SetThingAndCarriedItemsNotAffectedByScreenFilter	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CScriptThing &,void *	PASS	macro 'offsetof' passed 3 arguments, but takes just 2			offsetof;PTR__vector_deleting_destructor__01238c6c
+237	008a9dd0	CGameScriptInterface	CGameScriptInterface::AddNewRumourToCategory	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
+238	008a9e30	CGameScriptInterface	CGameScriptInterface::AddGossipVillage	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
+239	008a9e60	CGameScriptInterface	CGameScriptInterface::AddGossipFactionToCategory	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &	PASS				
+240	008aa010	CGameScriptInterface	CGameScriptInterface::ClearGossip	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString	PASS	static assertion failed			
+241	00401c00	_global	GFHandleSystemInitError	candidate-cluster	signature-audit	1704928	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+242	00402130	_global	MyDocuments_CheckWritePermissions	candidate-cluster	signature-audit	1704928	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+243	004022b0	_global	GFInitialise	candidate-cluster	signature-audit	1704928	__fastcall	bool		PASS	invalid use of incomplete type 'struct CDisplayManager'		explicit-parameter-count-mismatch	struct CDisplayManager
+244	00403480	_global	WinMain	candidate-cluster	signature-audit	1704928	__stdcall	int	HINSTANCE__ *,HINSTANCE__ *,char *,int	PASS			method-name-mismatch;explicit-parameter-count-mismatch	
+245	00409090	_global	Engine_FindPrimitiveInArray	candidate-cluster	signature-audit	1704928	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+246	0040cec0	_global	CUserProfileManager_Constructor	candidate-cluster	signature-audit	1704928	unknown	undefined		FAIL			explicit-parameter-count-mismatch;return-shape-mismatch	
+247	004fe7f0	_global	CollectSoundThemeSwitchDefs	candidate-cluster	signature-audit	1704728	unknown	undefined		PASS	static assertion failed		explicit-parameter-count-mismatch	::LTextTreeWalkThrough;CCharString;CDefinitionManager;CDefPointer;CollectSoundThemeSwitchDefs_PostLookup;CollectSoundThemeSwitchDefs_PreLookup;COptimisedPrimitive;CThingPhysicalSwitchDef;definitionManager;LTextBinNode;LTextBinTree;LTextGroup;LTextTreeWalkThrough;self;soundThemeStorage;symbol
+248	007602f0	_global	Math_PolygonAngleSumClosureCheck	candidate-cluster	signature-audit	1704728	unknown	undefined		PASS	expected '(' before '{' token		method-name-mismatch;explicit-parameter-count-mismatch	fld
+249	0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	candidate-cluster	signature-audit	1704728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+250	0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	candidate-cluster	signature-audit	1704728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+251	00c20ef0	_global	IsStateStreaming_2to4	candidate-cluster	signature-audit	1704728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+252	00c336f0	_global	Constraint_NotifyGlobalManager	candidate-cluster	signature-audit	1704728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+253	00c362f0	_global	CSBAgents_BuildAndDispatch_A	candidate-cluster	signature-audit	1704728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+254	00c36e00	_global	CSBAgents_BuildAndDispatch_SummonerLightning	candidate-cluster	signature-audit	1704728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+255	00c36fb0	_global	CSBAgents_BuildAndDispatch_TavernGame	candidate-cluster	signature-audit	1704728	unknown	undefined		PASS	expected '(' before '{' token		method-name-mismatch;explicit-parameter-count-mismatch	jmp
+256	00c37000	_global	IntelligentPointer_BuildAndDispatchFloat	candidate-cluster	signature-audit	1704728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+257	00c43de0	_global	DrawAutoPickups_SelectAndDrawPrimitive	candidate-cluster	signature-audit	1704728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+258	008702d0	_global	Handle_InitInvalid_008702d0	candidate-cluster	signature-audit	1704628	unknown	undefined		PASS			explicit-parameter-count-mismatch	
 259	00ab5d00	CMouseDX	CMouseDX::CMouseDX	candidate-cluster	signature-audit	1633300	__thiscall	void	CMouseDX *,CInputManagerDX *,bool	PASS			owner-mismatch	
 260	00a65ff0	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::CMemoryAllocatorFixedSize	candidate-cluster	signature-audit	1625800	__thiscall	void	CMemoryAllocatorFixedSize *,void *,ulong,ulong,ulong,ulong,ulong	PASS	'CMemoryAllocatorFixedSize' does not name a type		owner-mismatch	CMemoryAllocatorFixedSize
 261	00a793d0	CNavQuadTree	ConnectVerticalMapEdge	candidate-cluster	signature-audit	1618299	__thiscall	void	CNavQuadTree *,float,float,CNavigatorManager const &	PASS	'CNavConnectorNode' does not name a type		duplicate-linkage-signature	adjacent_node;adjacent_position;C2DVector;CANavQuadTreeNode;CNavConnectorNode;CNavigatorManager;CNavQuadTree;connector_node;CTCMapwho;this_node;this_position
@@ -265,12 +265,12 @@ rank	address	module	name	workstream	gap	score	calling_convention	return_type	par
 264	00caf680	CEngineLandscapePatch	CEngineLandscapePatch::AllocateTask	candidate-cluster	signature-audit	1618298	unknown	undefined		PASS	'CEngineLandscapePatch' has not been declared		explicit-parameter-count-mismatch	CEngineLandscapePatch;REVERSED_FUNCTION
 265	004d55d0	CTCCoopSpirit	CTCCoopSpirit::Construct	candidate-cluster	signature-audit	1610198	unknown	undefined		PASS	'CTCCoopSpirit' does not name a type		explicit-parameter-count-mismatch;return-shape-mismatch	CTCCoopSpirit
 266	008d1890	CGameScriptThing	CGameScriptThing::MsgWhoHitMe	candidate-cluster	signature-audit	1606297	__thiscall	CScriptThing	CGameScriptThing *	PASS			explicit-parameter-count-mismatch;return-shape-mismatch	
-267	007266c0	CTCPhysicsBase	CTCPhysicsBase	candidate-cluster	signature-audit	1604798	__thiscall	undefined	CTCPhysicsBase *,CThing *	PASS	static assertion failed		owner-mismatch;duplicate-linkage-signature	CTCPhysicsBase
-268	00401296	_global	__onexit	candidate-cluster	compiled-needs-parity	1576925	__cdecl	void	_onexit_t	PASS		DIFFER		
-269	004012ce	_global	__RTC_Initialize	candidate-cluster	compiled-needs-parity	1576925	__cdecl	void		PASS		DIFFER		
-270	00404280	_global	WideString_EqualsLen	candidate-cluster	compiled-needs-parity	1576925	__cdecl	int	WideStringRange const *,ushort const *	PASS		DIFFER		
-271	0040bb90	_global	CUserProfileManager_SaveAndCleanup	candidate-cluster	compiled-needs-parity	1576925	__fastcall	void	CUserProfileManager *	PASS		DIFFER		
-272	0040e170	_global	Array_LinearSearchInt	candidate-cluster	compiled-needs-parity	1576925	__fastcall	int *	int *,int *,int *	PASS		DIFFER		
+267	00401296	_global	__onexit	candidate-cluster	compiled-needs-parity	1604928	__cdecl	void	_onexit_t	PASS		DIFFER		
+268	004012ce	_global	__RTC_Initialize	candidate-cluster	compiled-needs-parity	1604928	__cdecl	void		PASS		DIFFER		
+269	00404280	_global	WideString_EqualsLen	candidate-cluster	compiled-needs-parity	1604928	__cdecl	int	WideStringRange const *,ushort const *	PASS		DIFFER		
+270	0040bb90	_global	CUserProfileManager_SaveAndCleanup	candidate-cluster	compiled-needs-parity	1604928	__fastcall	void	CUserProfileManager *	PASS		DIFFER		
+271	0040e170	_global	Array_LinearSearchInt	candidate-cluster	compiled-needs-parity	1604928	__fastcall	int *	int *,int *,int *	PASS		DIFFER		
+272	007266c0	CTCPhysicsBase	CTCPhysicsBase	candidate-cluster	signature-audit	1604798	__thiscall	undefined	CTCPhysicsBase *,CThing *	PASS	static assertion failed		owner-mismatch;duplicate-linkage-signature	CTCPhysicsBase
 273	00ab4700	CMouseDX	CMouseDX::SetPos	candidate-cluster	compiled-needs-parity	1533300	__thiscall	void	CMouseDX *,C2DVector const *	PASS		DIFFER		C2DVector;CMouseDX;fild
 274	00a7a650	CNavQuadTree	LinkToNeighbouringMaps	candidate-cluster	compiled-needs-parity	1518299	__thiscall	void	CNavQuadTree *,CNavigatorManager const &	PASS		DIFFER		CNavigatorManager;CNavQuadTree;ConnectVerticalMapEdge;self
 275	00bf3a90	CEngineLandscapePatch	LoadHeader	candidate-cluster	compiled-needs-parity	1518298	__thiscall	void	CEngineLandscapePatch *,CMemoryDataInputStream *	PASS		DIFFER		
@@ -298,11 +298,11 @@ rank	address	module	name	workstream	gap	score	calling_convention	return_type	par
 297	0082e330	CScriptedMapBrush	GetTheme	candidate-cluster	compiled-needs-parity	1506299	__thiscall	ulong	CScriptedMapBrush *,long,long,ulong	PASS		DIFFER		CScriptedMapBrush
 298	0082e3d0	CScriptedMapBrush	GetThemeBlend	candidate-cluster	compiled-needs-parity	1506299	__thiscall	uchar	CScriptedMapBrush *,long,long,ulong	PASS		DIFFER		CScriptedMapBrush
 299	0082e420	CScriptedMapBrush	SetThemeBlend	candidate-cluster	compiled-needs-parity	1506299	__thiscall	void	CScriptedMapBrush *,long,long,uchar,ulong	PASS		DIFFER		CScriptedMapBrush
-300	008ed590	CObjectFamilyDef	GetRandomObject	candidate-cluster	compiled-needs-parity	1502300	__thiscall	long	CObjectFamilyDef *	PASS		DIFFER		CObjectFamilyDef;entry;GFROR13;gMainGameComponent;mObjectsBegin;mObjectsEnd;ObjectFamilyEntry
-301	00bdf010	CLocalDetailCacheMap	OpenStaticMap	candidate-cluster	compiled-needs-parity	1502300	__thiscall	void	CLocalDetailCacheMap *,CEngineStaticMapFileBlockManager *,CDataInputStream *	PASS		DIFFER		CDataInputStream;CEngineStaticMapFileBlockManager;CLocalDetailCacheMap;in;pStaticMapFileBlockManager
-302	00401067	_global	entry	candidate-cluster	calling-convention+prototype	1476925	unknown	undefined		PASS	static assertion failed			_exception;_startupinfo;startupInfoArgs
-303	004aaaf0	CScriptThing	CScriptThing::MsgIsKilledBy	candidate-cluster	candidate-compile	1424298	__thiscall	bool	CScriptThing *,CCharString const &	PASS				
-304	004aac10	CScriptThing	CScriptThing::MsgHowLongWasExpressionPerformed	candidate-cluster	candidate-compile	1424298	__thiscall	long	CScriptThing *	PASS				
+300	00401067	_global	entry	candidate-cluster	calling-convention+prototype	1504928	unknown	undefined		PASS	static assertion failed			_exception;_startupinfo;startupInfoArgs
+301	008ed590	CObjectFamilyDef	GetRandomObject	candidate-cluster	compiled-needs-parity	1502300	__thiscall	long	CObjectFamilyDef *	PASS		DIFFER		CObjectFamilyDef;entry;GFROR13;gMainGameComponent;mObjectsBegin;mObjectsEnd;ObjectFamilyEntry
+302	00bdf010	CLocalDetailCacheMap	OpenStaticMap	candidate-cluster	compiled-needs-parity	1502300	__thiscall	void	CLocalDetailCacheMap *,CEngineStaticMapFileBlockManager *,CDataInputStream *	PASS		DIFFER		CDataInputStream;CEngineStaticMapFileBlockManager;CLocalDetailCacheMap;in;pStaticMapFileBlockManager
+303	004aaaf0	CScriptThing	CScriptThing::MsgIsKilledBy	candidate-cluster	candidate-compile	1430298	__thiscall	bool	CScriptThing *,CCharString const &	PASS				
+304	004aac10	CScriptThing	CScriptThing::MsgHowLongWasExpressionPerformed	candidate-cluster	candidate-compile	1430298	__thiscall	long	CScriptThing *	PASS				
 305	00a76f30	CNavQuadTree	IsAreaBlockedByLines	candidate-cluster	candidate-compile	1418299	__thiscall	bool	CNavQuadTree *,C2DBoxF &,vector<std::list<C2DLineF,std::allocator<C2DLineF> > const *,std::allocator<std::list<C2DLineF,std::allocator<C2DLineF> > const *> > &	PASS	'list' in namespace 'std' does not name a template type			C2DBoxF;C2DLineF;C2DLineList;C2DVector;CNavQuadTree;DAT_0129ba3c;lineLists;std;this_00
 306	00a781a0	CNavQuadTree	UpdateLines	candidate-cluster	candidate-compile	1418299	__thiscall	void	CNavQuadTree *,vector<std::list<C2DLineF,std::allocator<C2DLineF> >,std::allocator<std::list<C2DLineF,std::allocator<C2DLineF> > > > &,vector<C2DLineF,std::allocator<C2DLineF> > &,C2DBoxI &	PASS	'C2DVector' does not name a type			C2DBoxF;C2DBoxI;C2DLineF;C2DVector;CNavQuadTree;DAT_0122dcb4;DAT_0123095c;DAT_0125916c;local_1c_line;MapPos;MapWidth;pCVar15
 307	00a7a8d0	CNavQuadTree	Initialise	candidate-cluster	candidate-compile	1418299	__thiscall	void	CNavQuadTree *,CNavigationAreaInit &	PASS	'C2DLineF' was not declared in this scope			C2DLineF;C2DVector;CANavQuadTreeNode;CNavigationPosition;CNavQuadTree;lineLists;lines;node;nodes;oldLast;point;self;std
@@ -329,173 +329,173 @@ rank	address	module	name	workstream	gap	score	calling_convention	return_type	par
 328	00a0d340	CProcessedInput	AddGameEvent	candidate-cluster	candidate-compile	1402300	__thiscall	void	CProcessedInput *,CGameEvent *	PASS	'CProcessedInput' has not been declared			CGameEvent;CProcessedInput
 329	00a79b30	CNavQuadTreeNode	Initialise	candidate-cluster	candidate-compile	1402298	__thiscall	void	CNavQuadTreeNode *,CNavQuadTree &,ENavQuadTreeNodeType &,vector<unsigned __int64,std::allocator<unsigned __int64> > &	PASS	'CANavQuadTreeNode' does not name a type			::operator_new;C2DBoxF;C2DVector;CANavQuadTreeNode;CNavNavigableLeafNode;CNavQuadTree;CNavQuadTree_InitializeLeafNode;CNavQuadTreeNode;CNavSwitchableLeafNode;DAT_013d2d2c;ENavQuadTreeNodeType;GoToHigherDetail;local_44;pCVar6;pCVar7;pCVar8;SetBLNode;std
 330	0062c0e0	CWorld	EAMoveSpirit	candidate-cluster	candidate-compile	1402296	__thiscall	void	CWorld *,CGameEvent *	PASS	'CWorld' has not been declared			C3DVector;CGameEvent;CKeyPairCompareLess;CTCBase;CTCCoopSpirit;CVectorMap;CWorld;ETCInterfaceType;InterfaceMap;interfaceType
-331	004b1670	CGameScriptInterface	CGameScriptInterface::AddQuestCardEntry	candidate-cluster	calling-convention+prototype	1204295	unknown	undefined						
-332	00681cd0	CGameScriptInterface	CGameScriptInterface::SetOpinionReactionMask	candidate-cluster	calling-convention+prototype	1204295	unknown	undefined						
-333	006e7740	CGameScriptInterface	CGameScriptInterface	candidate-cluster	prototype	1204295	__thiscall	undefined	CGameScriptInterface *,CMainGameComponent *,CGameDefinitionManager *,CWorld *,CPlayerManager *,CDisplayEngine *					
-334	008ae890	CGameScriptInterface	CGameScriptInterface::_AddGossipVillages_impl	candidate-cluster	calling-convention+prototype	1204295	unknown	undefined						
-335	008aeac0	CGameScriptInterface	CGameScriptInterface::_AddGossipFactions_impl	candidate-cluster	calling-convention+prototype	1204295	unknown	undefined						
-336	0040f0a0	_global	Compare_Unsigned16Array	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-337	0040f390	_global	Buffer_RellocateAndUpdateWritePointer	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-338	0040f4a0	_global	Std_BitSet_Allocate	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-339	0040f6b0	_global	CString_FillRange	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-340	0040fbf0	_global	CWideString_FillBackward	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-341	00410460	_global	std_vector_C2DLineF_Copy	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-342	00410550	_global	MemoryPool_AdvancePointer	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-343	00410d80	_global	bitset_advance_iterator	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-344	00410ed0	_global	Std_Deque_PopFront_ChunkBased	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-345	00410f30	_global	Buffer_AllocateAndZero	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-346	004110d0	_global	CString_FillRange	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-347	00411630	_global	Std_Deque_Resize_WithGap	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-348	004117c0	_global	Std_Vector_Insert_Range	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-349	00411910	_global	Buffer_AllocateAndZero	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-350	00411a10	_global	Std_Vector_Insert_Range_Copies_4byte	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-351	00411b00	_global	vector_push_back_copy	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-352	00411b90	_global	std_vector_assign	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-353	00411db0	_global	Std_Vector_Insert_Range_Dispatch	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-354	00411f10	_global	Std_Vector_Insert_Range_4Bytes	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-355	004121d0	_global	Std_Vector_PushBack_WithGrow	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-356	00412330	_global	Std_Vector_Insert_Range_Copies	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-357	00412450	_global	Std_Vector_Erase_Range	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-358	004124c0	_global	Std_Vector_Insert_Range_16Bytes	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-359	004125a0	_global	Std_Vector_Insert_Range_Copies_28byte	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-360	004126e0	_global	vector_resize_with_fill	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-361	004127e0	_global	Std_Deque_PushBack_ChunkAlloc	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-362	004128a0	_global	Vector_PushBack	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-363	00412b70	_global	Std_Vector_Resize	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-364	00413120	_global	GFInitialise_SetupProgressDisplay	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-365	00415fd3	_global	DivideByGameSpeed	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-366	0041641f	_global	CMainGameComponent_ChangeDisplayMode	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-367	00417a58	_global	CMainGameComponent_InitSoundBanks	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-368	00418c3b	_global	GFMain_ProcessSaveFileMetadata	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-369	00419f50	_global	Vector_FromRange	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-370	0041c090	_global	CGraphicFrameData_ReleaseReference	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-371	0041c780	_global	__EH_epilog3	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-372	0041ceb3	_global	CASound_PlayFromSymbol	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-373	0041cfb2	_global	GetTextBySymbol	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-374	0041d0a8	_global	CASound_PlayMessage	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-375	00429ab9	_global	DoublyLinkedList_Unlink	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-376	00429b02	_global	LinkedList_Unlink_and_Free	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-377	00429b52	_global	LinkedList_RemoveNode	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-378	00429fbe	_global	LinkedList_AllocateNode_12bytes	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-379	00429fe3	_global	LinkedList_AllocateNode	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-380	0042a008	_global	Std_List_AllocateNode	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-381	0042a58d	_global	RBTreeIterator_MoveToMax_A	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-382	0042a59e	_global	RBTreeIterator_MoveToMax_B	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-383	0042a5af	_global	RBTreeIterator_MoveToMax_C	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-384	0042a5c0	_global	RBTreeIterator_MoveToMax_D	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-385	0042a82b	_global	BinarySearchTree_FindLessOrEqual	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-386	0042a879	_global	BinarySearchTree_FindNode	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-387	0042a8bd	_global	MemoryAllocator_CountAllocatedBlocks	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-388	0042aadc	_global	LinkedList_InsertBefore	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-389	0042ab01	_global	Std_DoubleLinkedList_CreateNode	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-390	0042ab33	_global	LinkedList_Insert_Before	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-391	0042ab8a	_global	Std_List_Insert	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-392	0042ac0a	_global	DoublyLinkedList_InitializeEmpty	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-393	0042ac52	_global	Allocator_Alloc_56bytes	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-394	0042ac9f	_global	Allocator_Alloc_24bytes	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-395	0042acec	_global	LinkedList_Initialize	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-396	0042ad10	_global	Allocator_Alloc_28bytes	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-397	0042ad34	_global	StdMap_LowerBound	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-398	0042ad6c	_global	BinarySearchTree_FindEqualOrGreater	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-399	0042ad91	_global	BinarySearchTree_FindExact	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-400	0042adb6	_global	BinarySearchTree_EraseNode	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-401	0042ae0e	_global	BinarySearchTree_FindByIntKey	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-402	0042ae33	_global	BinaryTree_Find	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-403	0042ae58	_global	BinarySearchTree_FindByComparator	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-404	0042ae90	_global	BinarySearchTree_FindGreaterOrEqual	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-405	0042aeb5	_global	BinarySearchTree_FindByUintComparator	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-406	0042b467	_global	StdMap_FindLE	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-407	0042b4f3	_global	BinarySearchTree_FindLessOrEqual_Copy	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-408	0042b52b	_global	BinarySearchTree_LowerBound	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-409	0042b5a8	_global	BinarySearchTreeNode_Create	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-410	0042b5ca	_global	BinarySearchTreeNode_CreateDuplicate	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-411	0042b5ec	_global	BinarySearchTreeNode_CreateCopy	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-412	0042b687	_global	LinkedList_PushFront	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-413	0042b6b8	_global	Std_List_PushFront	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-414	0042b72b	_global	CTexture_InitEmpty_56bytes	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-415	0042b76c	_global	CTexture_InitEmpty_24bytes	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-416	0042b7ad	_global	LinkedList_InitializeNode	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-417	0042b7ee	_global	CTexture_InitEmpty_28bytes	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-418	0042b854	_global	CMemoryAllocatorVariableSize_Clear	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-419	0042b98b	_global	BinarySearchTree_InsertAndBalance	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-420	0042ba13	_global	RBTree_InsertOrReplace	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-421	0042ba99	_global	BinaryTree_InsertNodeLeft	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-422	0042bb21	_global	RBTree_InsertLeft	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-423	0042bba7	_global	BinaryTree_InsertNodeRight	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-424	0042bc2f	_global	RBTree_InsertRight	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-425	0042bcb5	_global	CMemoryAllocatorVariableSize_InsertNode	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-426	0042bd4a	_global	RBTree_InsertString	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-427	0042bf06	_global	CEngineSceneGrid_Initialize	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-428	0042c082	_global	CMemoryAllocatorVariableSize_FindInsertPoint	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-429	0042c1c1	_global	CMemoryAllocatorVariableSize_FindInsertPointLeft	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-430	0042c300	_global	CMemoryAllocatorVariableSize_FindInsertPointRight	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-431	0042c43f	_global	CTC_FindInterface_0x10e	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-432	0042c48b	_global	CTC_FindInterface_0x11	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-433	0042c4d6	_global	CTC_FindInterface_0x17	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-434	0042c521	_global	CTC_FindInterface_4	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-435	0042c56c	_global	CTCBase_FindInterfaceType_0x19	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-436	0042c5b7	_global	CTCBase_FindInterfaceType_0x16	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-437	0042c602	_global	CTCBase_FindInterfaceType_0x29	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-438	0042c64d	_global	CTCBase_FindInterfaceType_0xe8	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-439	0042c699	_global	CTCBase_FindInterfaceType_0x1b	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-440	0042c6e4	_global	CTCBase_FindInterfaceType_0x6f	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-441	0042c72f	_global	CTCBase_FindInterfaceType_0x13	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-442	0042c77a	_global	CTCBase_FindInterfaceType_0x14	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-443	0042c7c5	_global	CTCBase_FindInterfaceType_0x12	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-444	0042c810	_global	CTCBase_FindInterfaceType_0xf6	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-445	0042c85c	_global	CTCBase_FindInterfaceType_0x10d	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-446	0042c8a8	_global	CTCBase_FindInterfaceType_0xd0	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-447	0042c8f4	_global	CTCBase_FindInterfaceType_0xfc	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-448	0042c940	_global	CMemoryAllocatorVariableSize_InsertWithString	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-449	0042cb08	_global	BinaryTree_InsertScriptData	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-450	0042cb90	_global	CSurface_Clone_Recursive	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-451	0042cc03	_global	BinaryTree_InsertCString	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-452	0042cc98	_global	RBTree_InsertStringKey	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-453	0042cd3e	_global	FID_conflict:max_size	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-454	0042cd61	_global	FID_conflict:max_size	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-455	0042cde0	_global	CompareAndCountAllocations	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-456	0042ce7a	_global	CTCCarryable_CopyAssign	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-457	0042cee3	_global	CMemoryAllocatorVariableSize_FindOrInsert	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-458	0042cf69	_global	CMemoryAllocatorVariableSize_InsertStringNode	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-459	0042d2c6	_global	CMemoryAllocatorVariableSize_FindAllocationNode	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-460	0042d45d	_global	CPersistTraits_Transfer_And_Construct	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-461	0042d604	_global	CChangingStateComponent_StateChangeHandler_1	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-462	0042d65b	_global	CChangingStateComponent_StateChangeHandler_2	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-463	0042ded5	_global	CFrontEnd_PlayAutoSaveSound	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-464	0042e17c	_global	Init_FrontendSounds	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-465	00430022	_global	Queue_Initialize	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-466	0043006f	_global	Stack_Initialize	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-467	0043019f	_global	LinkedList_Initialize	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-468	004301c9	_global	ListNode_Construct	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-469	004303f0	_global	CMemoryBlock_Destructor	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-470	00431277	_global	UpdateShadowScene_WriteState	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-471	00431363	_global	BinaryTree_Insert_With_Position	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-472	004313e9	_global	std_set_insert_uint_via_FUN	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-473	00431471	_global	TreeNode_AllocData	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-474	00431606	_global	Map_InsertStringKeyNode	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-475	004316cf	_global	BinaryTree_InsertDigScriptNode	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-476	004317d0	_global	CMemoryBlock_Destructor	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-477	00431e80	_global	CParentDefClassBase_CopyAssign_1	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-478	0043212b	_global	Vector_AllocateAndCopy	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-479	00432aa8	_global	CTCCarryable_CloneTree	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-480	00432b38	_global	CTCCarryable_assign	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-481	00432bab	_global	CExpression_DigScript_CloneTree	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-482	00432ff0	_global	Vector_AllocateAndCopyCCharString	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-483	0043336a	_global	Std_Vector_Erase_Range	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-484	004333b3	_global	Std_Vector_InsertRange	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-485	00433db5	_global	STL_AllocateAndInitializeArray	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-486	00433df0	_global	Array_AssignFrom	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-487	00434370	_global	CParentDefClassBase_CopyAssign_2	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-488	00434dc0	_global	$E2	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-489	00434dd0	_global	$E2	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-490	004350d0	_global	InitDisplayEngine_InitGraphics	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-491	00436a80	_global	Vector_EraseAndMove	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-492	00436ac0	_global	Vector_InsertN	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-493	0043a2a0	_global	ShowOnScreenMessage_FormatDisplay	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-494	0043a570	_global	NHeroInformationScreens_Destructor	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-495	0043f510	_global	FreePointerArray	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-496	0043f560	_global	Vector_FreeElementPointers	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-497	00440550	_global	Buffer_MoveData	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-498	00440590	_global	Buffer_Relocate	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-499	004408a0	_global	Std_Vector_Insert_Range	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
-500	00440b40	_global	Vector_DestructStringRange	candidate-cluster	calling-convention+prototype	476925	unknown	undefined						
+331	004b1670	CGameScriptInterface	CGameScriptInterface::AddQuestCardEntry	candidate-cluster	calling-convention+prototype	1270295	unknown	undefined						
+332	00681cd0	CGameScriptInterface	CGameScriptInterface::SetOpinionReactionMask	candidate-cluster	calling-convention+prototype	1270295	unknown	undefined						
+333	006e7740	CGameScriptInterface	CGameScriptInterface	candidate-cluster	prototype	1270295	__thiscall	undefined	CGameScriptInterface *,CMainGameComponent *,CGameDefinitionManager *,CWorld *,CPlayerManager *,CDisplayEngine *					
+334	008ae890	CGameScriptInterface	CGameScriptInterface::_AddGossipVillages_impl	candidate-cluster	calling-convention+prototype	1270295	unknown	undefined						
+335	008aeac0	CGameScriptInterface	CGameScriptInterface::_AddGossipFactions_impl	candidate-cluster	calling-convention+prototype	1270295	unknown	undefined						
+336	0040f0a0	_global	Compare_Unsigned16Array	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+337	0040f390	_global	Buffer_RellocateAndUpdateWritePointer	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+338	0040f4a0	_global	Std_BitSet_Allocate	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+339	0040f6b0	_global	CString_FillRange	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+340	0040fbf0	_global	CWideString_FillBackward	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+341	00410460	_global	std_vector_C2DLineF_Copy	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+342	00410550	_global	MemoryPool_AdvancePointer	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+343	00410d80	_global	bitset_advance_iterator	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+344	00410ed0	_global	Std_Deque_PopFront_ChunkBased	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+345	00410f30	_global	Buffer_AllocateAndZero	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+346	004110d0	_global	CString_FillRange	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+347	00411630	_global	Std_Deque_Resize_WithGap	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+348	004117c0	_global	Std_Vector_Insert_Range	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+349	00411910	_global	Buffer_AllocateAndZero	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+350	00411a10	_global	Std_Vector_Insert_Range_Copies_4byte	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+351	00411b00	_global	vector_push_back_copy	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+352	00411b90	_global	std_vector_assign	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+353	00411db0	_global	Std_Vector_Insert_Range_Dispatch	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+354	00411f10	_global	Std_Vector_Insert_Range_4Bytes	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+355	004121d0	_global	Std_Vector_PushBack_WithGrow	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+356	00412330	_global	Std_Vector_Insert_Range_Copies	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+357	00412450	_global	Std_Vector_Erase_Range	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+358	004124c0	_global	Std_Vector_Insert_Range_16Bytes	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+359	004125a0	_global	Std_Vector_Insert_Range_Copies_28byte	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+360	004126e0	_global	vector_resize_with_fill	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+361	004127e0	_global	Std_Deque_PushBack_ChunkAlloc	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+362	004128a0	_global	Vector_PushBack	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+363	00412b70	_global	Std_Vector_Resize	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+364	00415fd3	_global	DivideByGameSpeed	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+365	0041641f	_global	CMainGameComponent_ChangeDisplayMode	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+366	00417a58	_global	CMainGameComponent_InitSoundBanks	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+367	00418c3b	_global	GFMain_ProcessSaveFileMetadata	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+368	00419f50	_global	Vector_FromRange	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+369	0041c090	_global	CGraphicFrameData_ReleaseReference	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+370	0041c780	_global	__EH_epilog3	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+371	0041ceb3	_global	CASound_PlayFromSymbol	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+372	0041cfb2	_global	GetTextBySymbol	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+373	0041d0a8	_global	CASound_PlayMessage	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+374	00429ab9	_global	DoublyLinkedList_Unlink	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+375	00429b02	_global	LinkedList_Unlink_and_Free	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+376	00429b52	_global	LinkedList_RemoveNode	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+377	00429fbe	_global	LinkedList_AllocateNode_12bytes	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+378	00429fe3	_global	LinkedList_AllocateNode	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+379	0042a008	_global	Std_List_AllocateNode	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+380	0042a58d	_global	RBTreeIterator_MoveToMax_A	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+381	0042a59e	_global	RBTreeIterator_MoveToMax_B	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+382	0042a5af	_global	RBTreeIterator_MoveToMax_C	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+383	0042a5c0	_global	RBTreeIterator_MoveToMax_D	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+384	0042a82b	_global	BinarySearchTree_FindLessOrEqual	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+385	0042a879	_global	BinarySearchTree_FindNode	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+386	0042a8bd	_global	MemoryAllocator_CountAllocatedBlocks	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+387	0042aadc	_global	LinkedList_InsertBefore	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+388	0042ab01	_global	Std_DoubleLinkedList_CreateNode	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+389	0042ab33	_global	LinkedList_Insert_Before	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+390	0042ab8a	_global	Std_List_Insert	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+391	0042ac0a	_global	DoublyLinkedList_InitializeEmpty	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+392	0042ac52	_global	Allocator_Alloc_56bytes	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+393	0042ac9f	_global	Allocator_Alloc_24bytes	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+394	0042acec	_global	LinkedList_Initialize	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+395	0042ad10	_global	Allocator_Alloc_28bytes	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+396	0042ad34	_global	StdMap_LowerBound	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+397	0042ad6c	_global	BinarySearchTree_FindEqualOrGreater	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+398	0042ad91	_global	BinarySearchTree_FindExact	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+399	0042adb6	_global	BinarySearchTree_EraseNode	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+400	0042ae0e	_global	BinarySearchTree_FindByIntKey	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+401	0042ae33	_global	BinaryTree_Find	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+402	0042ae58	_global	BinarySearchTree_FindByComparator	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+403	0042ae90	_global	BinarySearchTree_FindGreaterOrEqual	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+404	0042aeb5	_global	BinarySearchTree_FindByUintComparator	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+405	0042b467	_global	StdMap_FindLE	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+406	0042b4f3	_global	BinarySearchTree_FindLessOrEqual_Copy	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+407	0042b52b	_global	BinarySearchTree_LowerBound	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+408	0042b5a8	_global	BinarySearchTreeNode_Create	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+409	0042b5ca	_global	BinarySearchTreeNode_CreateDuplicate	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+410	0042b5ec	_global	BinarySearchTreeNode_CreateCopy	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+411	0042b687	_global	LinkedList_PushFront	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+412	0042b6b8	_global	Std_List_PushFront	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+413	0042b72b	_global	CTexture_InitEmpty_56bytes	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+414	0042b76c	_global	CTexture_InitEmpty_24bytes	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+415	0042b7ad	_global	LinkedList_InitializeNode	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+416	0042b7ee	_global	CTexture_InitEmpty_28bytes	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+417	0042b854	_global	CMemoryAllocatorVariableSize_Clear	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+418	0042b98b	_global	BinarySearchTree_InsertAndBalance	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+419	0042ba13	_global	RBTree_InsertOrReplace	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+420	0042ba99	_global	BinaryTree_InsertNodeLeft	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+421	0042bb21	_global	RBTree_InsertLeft	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+422	0042bba7	_global	BinaryTree_InsertNodeRight	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+423	0042bc2f	_global	RBTree_InsertRight	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+424	0042bcb5	_global	CMemoryAllocatorVariableSize_InsertNode	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+425	0042bd4a	_global	RBTree_InsertString	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+426	0042bf06	_global	CEngineSceneGrid_Initialize	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+427	0042c082	_global	CMemoryAllocatorVariableSize_FindInsertPoint	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+428	0042c1c1	_global	CMemoryAllocatorVariableSize_FindInsertPointLeft	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+429	0042c300	_global	CMemoryAllocatorVariableSize_FindInsertPointRight	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+430	0042c43f	_global	CTC_FindInterface_0x10e	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+431	0042c48b	_global	CTC_FindInterface_0x11	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+432	0042c4d6	_global	CTC_FindInterface_0x17	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+433	0042c521	_global	CTC_FindInterface_4	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+434	0042c56c	_global	CTCBase_FindInterfaceType_0x19	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+435	0042c5b7	_global	CTCBase_FindInterfaceType_0x16	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+436	0042c602	_global	CTCBase_FindInterfaceType_0x29	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+437	0042c64d	_global	CTCBase_FindInterfaceType_0xe8	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+438	0042c699	_global	CTCBase_FindInterfaceType_0x1b	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+439	0042c6e4	_global	CTCBase_FindInterfaceType_0x6f	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+440	0042c72f	_global	CTCBase_FindInterfaceType_0x13	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+441	0042c77a	_global	CTCBase_FindInterfaceType_0x14	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+442	0042c7c5	_global	CTCBase_FindInterfaceType_0x12	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+443	0042c810	_global	CTCBase_FindInterfaceType_0xf6	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+444	0042c85c	_global	CTCBase_FindInterfaceType_0x10d	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+445	0042c8a8	_global	CTCBase_FindInterfaceType_0xd0	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+446	0042c8f4	_global	CTCBase_FindInterfaceType_0xfc	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+447	0042c940	_global	CMemoryAllocatorVariableSize_InsertWithString	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+448	0042cb08	_global	BinaryTree_InsertScriptData	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+449	0042cb90	_global	CSurface_Clone_Recursive	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+450	0042cc03	_global	BinaryTree_InsertCString	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+451	0042cc98	_global	RBTree_InsertStringKey	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+452	0042cd3e	_global	FID_conflict:max_size	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+453	0042cd61	_global	FID_conflict:max_size	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+454	0042cde0	_global	CompareAndCountAllocations	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+455	0042ce7a	_global	CTCCarryable_CopyAssign	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+456	0042cee3	_global	CMemoryAllocatorVariableSize_FindOrInsert	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+457	0042cf69	_global	CMemoryAllocatorVariableSize_InsertStringNode	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+458	0042d2c6	_global	CMemoryAllocatorVariableSize_FindAllocationNode	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+459	0042d45d	_global	CPersistTraits_Transfer_And_Construct	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+460	0042d604	_global	CChangingStateComponent_StateChangeHandler_1	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+461	0042d65b	_global	CChangingStateComponent_StateChangeHandler_2	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+462	0042ded5	_global	CFrontEnd_PlayAutoSaveSound	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+463	0042e17c	_global	Init_FrontendSounds	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+464	00430022	_global	Queue_Initialize	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+465	0043006f	_global	Stack_Initialize	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+466	0043019f	_global	LinkedList_Initialize	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+467	004301c9	_global	ListNode_Construct	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+468	004303f0	_global	CMemoryBlock_Destructor	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+469	00431277	_global	UpdateShadowScene_WriteState	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+470	00431363	_global	BinaryTree_Insert_With_Position	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+471	004313e9	_global	std_set_insert_uint_via_FUN	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+472	00431471	_global	TreeNode_AllocData	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+473	00431606	_global	Map_InsertStringKeyNode	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+474	004316cf	_global	BinaryTree_InsertDigScriptNode	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+475	004317d0	_global	CMemoryBlock_Destructor	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+476	00431e80	_global	CParentDefClassBase_CopyAssign_1	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+477	0043212b	_global	Vector_AllocateAndCopy	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+478	00432aa8	_global	CTCCarryable_CloneTree	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+479	00432b38	_global	CTCCarryable_assign	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+480	00432bab	_global	CExpression_DigScript_CloneTree	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+481	00432ff0	_global	Vector_AllocateAndCopyCCharString	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+482	0043336a	_global	Std_Vector_Erase_Range	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+483	004333b3	_global	Std_Vector_InsertRange	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+484	00433db5	_global	STL_AllocateAndInitializeArray	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+485	00433df0	_global	Array_AssignFrom	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+486	00434370	_global	CParentDefClassBase_CopyAssign_2	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+487	00434dc0	_global	$E2	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+488	00434dd0	_global	$E2	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+489	004350d0	_global	InitDisplayEngine_InitGraphics	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+490	00436a80	_global	Vector_EraseAndMove	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+491	00436ac0	_global	Vector_InsertN	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+492	0043a2a0	_global	ShowOnScreenMessage_FormatDisplay	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+493	0043a570	_global	NHeroInformationScreens_Destructor	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+494	0043f510	_global	FreePointerArray	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+495	0043f560	_global	Vector_FreeElementPointers	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+496	00440550	_global	Buffer_MoveData	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+497	00440590	_global	Buffer_Relocate	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+498	004408a0	_global	Std_Vector_Insert_Range	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+499	00440b40	_global	Vector_DestructStringRange	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						
+500	00440c00	_global	Vector_CopyPairRange	candidate-cluster	calling-convention+prototype	504928	unknown	undefined						

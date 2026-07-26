@@ -1,0 +1,1 @@
+void __stdcall CANavQuadTreeNode_SetUpNeighboursWithLeaf(int arg0, int arg1) {}

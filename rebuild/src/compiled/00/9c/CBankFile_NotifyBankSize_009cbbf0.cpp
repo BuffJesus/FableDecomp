@@ -1,0 +1,1 @@
+void __stdcall CBankFile_NotifyBankSize(int arg0, int arg1) {}

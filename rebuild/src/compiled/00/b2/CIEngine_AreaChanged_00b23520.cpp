@@ -1,0 +1,1 @@
+void __stdcall CIEngine_AreaChanged(int arg0) {}

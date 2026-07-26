@@ -1,0 +1,1 @@
+void __stdcall CNavigatorFlyer_UpdateLastPosition(int arg0) {}

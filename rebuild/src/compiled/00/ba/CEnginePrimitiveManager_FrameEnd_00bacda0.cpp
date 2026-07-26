@@ -1,0 +1,1 @@
+void __fastcall CEnginePrimitiveManager_FrameEnd() {}

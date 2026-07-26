@@ -1,0 +1,1 @@
+void __stdcall CEnginePrimitiveManager_Render2DPrimitive(int arg0, int arg1, int arg2) {}

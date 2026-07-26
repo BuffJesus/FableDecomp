@@ -1,0 +1,1 @@
+void __stdcall CIEngine_SetPrimitiveAnimation(int arg0, int arg1) {}

@@ -1,0 +1,1 @@
+void __stdcall CJoystick_UpdateInsertionsAndRemovals(int arg0, int arg1) {}

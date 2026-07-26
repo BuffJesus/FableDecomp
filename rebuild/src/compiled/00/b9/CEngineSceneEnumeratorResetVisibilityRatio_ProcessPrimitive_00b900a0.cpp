@@ -1,0 +1,1 @@
+void __stdcall CEngineSceneEnumeratorResetVisibilityRatio_ProcessPrimitive(int arg0) {}

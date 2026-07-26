@@ -1,0 +1,1 @@
+void __stdcall CIEngine_SetMapVisibility(int arg0, int arg1) {}
