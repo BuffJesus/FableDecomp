@@ -45,14 +45,8 @@ root discovery, texture-depth fallback, display clamping, player registration,
 progress setup, and both return paths covered. Its 128-byte
 `GFInitialise_SetupProgressDisplay @ 0x00413120` leaf independently matches
 and covers allocation, null-allocation, reference release, and rejected
-initialization. Its allocated object now traverses the retail-matched
-`CProgressDisplay::CProgressDisplay @ 0x00499CE0`: all 163 bytes match outside
-seven relocations, the exact 0x88-byte layout is typed, and the embedded wide
-and narrow strings are constructed and destroyed through recovered lifetime
-leaves. The 133-byte `SetProgressDisplay @ 0x009E9FD0` owner assignment also
-matches outside relocations and now retains the object across the visible
-window lifetime before balanced shutdown release. Authored boundary objects
-still stand in for the unrecovered engine singleton graph and renderer.
+initialization. Authored boundary objects still stand in for the unrecovered
+engine singleton graph and renderer.
 
 GFMain Phase 1 now has its filesystem pair promoted:
 `CAFile::GetProjectPath @ 0x00997510` (146 bytes) and
@@ -105,8 +99,6 @@ Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,
 `FABLETLC_CHAR_STRING_DESTRUCTOR_BEHAVIOR PASS`,
 `FABLETLC_PROFILE_START_BEHAVIOR PASS`,
 `FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVIOR PASS`,
-`FABLETLC_PROGRESS_DISPLAY_CONSTRUCTOR_BEHAVIOR PASS`,
-`FABLETLC_SET_PROGRESS_DISPLAY_BEHAVIOR PASS`,
 `FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS`,
 `FABLETLC_PROFILE_END_BEHAVIOR PASS`,
 `FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS`,
@@ -142,8 +134,10 @@ services, recover the retail window/renderer, load archives, or enter the game l
 | 3 | `0x00402510` | GFMain | 3952 | `INTEGRATION_PHASE1` | [source](../rebuild/integration/gfmain_phase1.cpp) | The 3,952-byte coordinator is split into ten call clusters; Phase 1 is callable with seven direct callees at relocation match, CSystemManagerInit behavior-proven with one moved instruction, and the 4,158-byte console registrar explicitly stubbed. |
 | 4 | `0x004022B0` | GFInitialise | 311 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/global_GFInitialise_004022b0.cpp) | The full 311-byte zero-parameter coordinator matches retail outside relocations, passes focused behavior, and now executes before the authored visual checkpoint through an explicit engine boundary. |
 | 5 | `0x00413120` | GFInitialise_SetupProgressDisplay | 128 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/Global_GFInitialiseSetupProgressDisplay_00413120.cpp) | The 128-byte leaf and ownership behavior are proven and now execute as part of the verified full GFInitialise coordinator on the visual path. |
-| 6 | `0x00499CE0` | CProgressDisplay constructor | 163 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/49/CProgressDisplay_Constructor_00499ce0.cpp) | The real 0x88-byte progress object now initializes on the visual path, including three recovered string subobjects, retail flags/timers, and balanced teardown. |
-| 7 | `0x009E9FD0` | SetProgressDisplay retained owner | 133 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9e/Global_SetProgressDisplay_009e9fd0.cpp) | The recovered global counted owner releases any prior display, retains the incoming reference across the window lifetime, and releases it on shutdown. |
+| 6 | `0x00499CE0` | CProgressDisplay constructor | 163 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/49/CProgressDisplay_Constructor_00499ce0.cpp) | The real 0x88-byte progress object is constructed on the visual path with its recovered string and state layout. |
+| 7 | `0x009E9FD0` | SetProgressDisplay retained owner | 133 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9e/Global_SetProgressDisplay_009e9fd0.cpp) | The retail counted owner keeps the progress object alive across the visual window and releases it on shutdown. |
+| 8 | `0x009EA060` | GetProgressDisplay counted query | 28 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9e/Global_GetProgressDisplay_009ea060.cpp) | The visual handoff now acquires the retained owner through the exact retail getter and balances the temporary reference after the window closes. |
+| 9 | `0x0049B460` | CProgressDisplay active-state query | 4 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/49/CProgressDisplay_IsActive_0049b460.cpp) | The visual window reports the recovered retained display state through the exact four-byte retail query. |
 
 ## Next dependency closure
 
@@ -151,7 +145,11 @@ services, recover the retail window/renderer, load archives, or enter the game l
 2. **WinMain wrapper (`0x00403480`):** Extend the integration path from the Phase 2 boundary one dependency closure at a time.
 3. **GFMain (`0x00402510`):** Close the constructor scheduling residue and replace the console boundary from recovered registration data while advancing Phase 2.
 4. **GFInitialise (`0x004022B0`):** Replace its boundary-owned root, display, and registration test doubles with recovered startup objects.
-5. **GFInitialise_SetupProgressDisplay (`0x00413120`):** Construction, global retained ownership, and balanced shutdown are now real; recover the display/resource consumers that render this object.
+5. **GFInitialise_SetupProgressDisplay (`0x00413120`):** Replace the instrumented progress-object ownership boundary with recovered engine ownership.
+6. **CProgressDisplay constructor (`0x00499CE0`):** Recover the display and texture consumers that render the retained object.
+7. **SetProgressDisplay retained owner (`0x009E9FD0`):** Replace the boundary display/resource graph with recovered engine ownership.
+8. **GetProgressDisplay counted query (`0x009EA060`):** Connect the returned object to recovered texture and drawing consumers.
+9. **CProgressDisplay active-state query (`0x0049B460`):** Recover StartProgress, InitialiseTextures, and the renderer-backed drawing path.
 
 ## GFMain dependency phases
 
@@ -239,8 +237,7 @@ Phase closure order:
 - **Stage 2 — engine bootstrap:** reconstructed GFMain/GFInitialise reaches
   the first visible progress-display state with controlled platform shims.
   **The Phase 1 checkpoint and an authored visual shell are implemented;
-  retail progress-object construction and retained ownership are connected,
-  while its engine display resources and renderer remain ahead.**
+  recovered retail progress-display wiring remains ahead.**
 - **Stage 3 — data bootstrap:** compiled definitions and core archives load
   far enough to create the main game component.
 - **Stage 4 — game loop:** the reconstructed process pumps input, updates a

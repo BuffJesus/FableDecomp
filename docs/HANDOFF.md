@@ -1,6 +1,42 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 09:18 MDT (retained visual owner + 254 counted resets checkpoint).*
+*Last updated: 2026-07-26 10:00 MDT (retail visual consumer + 468-function parity checkpoint).*
+
+## Retail visual consumer + 468-function parity checkpoint (2026-07-26)
+
+- The visual handoff now consumes the retained progress display through retail
+  code instead of reading the integration globals directly.
+  `GetProgressDisplay @ 0x009EA060` is a readable 28-byte counted getter that
+  matches outside two relocations and retains the returned owner.
+  `CProgressDisplay::IsActive @ 0x0049B460` is an exact four-byte query of the
+  recovered `active79` layout field.
+- Stage 2 acquires that counted snapshot after the verified `GFInitialise`,
+  feeds the recovered state into the visual checkpoint, releases the global
+  owner, and then balances the snapshot. The strengthened integration fixture
+  proves the temporary owner count rises from one to two and returns to one.
+  A real top-level-window smoke test opened with title
+  `FableDecomp - Retail Progress Display Ready` and closed cleanly.
+- Deterministic parity added four behavior-proven exact families:
+  **87** size-optimized counted resets (`and [esi], 0`), **214** three-byte
+  boolean-false returns, **29** boolean-false returns with one popped stack
+  argument, and **138** callback-backed suspend helpers. The suspend fixture
+  proves the callback observes the old flag and the suspended byte changes
+  only after the call.
+- A nearby 120-instance virtual suspend shape was deliberately not landed.
+  Its null branch jumps beyond the apparent function epilogue, so a normal
+  standalone C++ interpretation differed despite matching length. The matcher
+  was removed after the gate exposed that control-flow fact.
+- Full VC7.1 compile and behavior validation passes with **4,842 / 4,842**
+  candidates. Retail parity is **2,644 exact + 1,871
+  relocation-normalized = 4,515 / 49,553 (9.11%)**. The honest dashboard
+  still reports 199 differing candidates and 128 missing function-start
+  oracles.
+- Generated manifests, coverage, backlog, promotion queue, runnable dashboard,
+  artifact index, and root README are refreshed. The hourly Ghidra-free parity
+  task completed successfully at 09:46 and remains scheduled. The next safe
+  repeated leaf to inspect is the 28-instance 11-byte `DeleteData` virtual
+  release shape; keep the 120 virtual-suspend and padded 35-byte reset shapes
+  quarantined until their cross-boundary control flow is resolved.
 
 ## Retained visual owner + 254 counted resets checkpoint (2026-07-26)
 

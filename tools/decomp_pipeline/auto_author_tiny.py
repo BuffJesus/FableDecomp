@@ -8,6 +8,8 @@ determined by the retail bytes:
   c3                 -> empty void function
   c2 nn 00           -> empty __stdcall void function with nn/4 popped args
   33 c0 c3 / 31 c0 c3 -> return 0
+  32 c0 c3           -> return false in al
+  32 c0 c2 04 00     -> return false in al, pop one stack argument
   b0 xx c3           -> return bool/byte constant
   6a xx 58 c3        -> return signed imm8
   b8 xx xx xx xx c3  -> return imm32
@@ -66,6 +68,11 @@ determined by the retail bytes:
   56 8b f1 8b 0e 85 c9 74 10 ff 49 04 75 05 8b 01 ff 50
      04 c7 06 00 00 00 00 5e c3
                      -> release and clear one intrusive counted handle
+  56 8b f1 8b 0e 85 c9 74 0d ff 49 04 75 05 8b 01 ff 50
+     04 83 26 00 5e c3
+                     -> size-optimized release and clear of the same handle
+  56 8b f1 8b 4e 38 ff 56 34 c6 46 05 01 5e c3
+                     -> invoke a suspend callback, then mark suspended
 
 The normal verify_and_land.py gate still recompiles and byte-compares every
 candidate, so a bad inference can waste a compile but cannot mis-land.
@@ -146,6 +153,10 @@ def const_from_bytes(bs: bytes):
         return ("void_stdcall_pop", bs[1])
     if h in ("33c0c3", "31c0c3"):
         return ("int", 0)
+    if h == "32c0c3":
+        return ("bool", False)
+    if h == "32c0c20400":
+        return ("bool_pop4", False)
     if len(bs) == 3 and bs[0] == 0xB0 and bs[-1] == 0xC3:
         return ("bool", bool(bs[1]))
     if len(bs) == 4 and bs[0] == 0x6A and bs[2:] == b"\x58\xc3":
@@ -331,6 +342,19 @@ def const_from_bytes(bs: bytes):
         b"\x5e\xc3"
     ):
         return ("reset_intrusive_counted_handle", None)
+    if (
+        len(bs) == 24
+        and bs
+        == b"\x56\x8b\xf1\x8b\x0e\x85\xc9\x74\x0d\xff\x49\x04"
+        b"\x75\x05\x8b\x01\xff\x50\x04\x83\x26\x00\x5e\xc3"
+    ):
+        return ("reset_intrusive_counted_handle_size", None)
+    if (
+        bs
+        == b"\x56\x8b\xf1\x8b\x4e\x38\xff\x56\x34"
+        b"\xc6\x46\x05\x01\x5e\xc3"
+    ):
+        return ("suspend_process_callback", None)
     return None
 
 
@@ -404,6 +428,28 @@ def candidate(row):
             "int main()\n"
             "{\n"
             f"    if ({fn}() == {literal}) {{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "bool_pop4":
+        source = (
+            f"bool __fastcall {fn}(void*, int, int)\n"
+            "{\n"
+            "    return false;\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            f"bool __fastcall {fn}(void*, int, int)\n"
+            "{\n"
+            "    return false;\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            "    int object = 0;\n"
+            f"    if (!{fn}(&object, 1, 2)) "
+            f"{{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
             f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
             "    return 1;\n"
             "}\n"
@@ -1293,9 +1339,17 @@ def candidate(row):
             "    return 0;\n"
             "}\n"
         )
-    elif rettype == "reset_intrusive_counted_handle":
+    elif rettype in (
+        "reset_intrusive_counted_handle",
+        "reset_intrusive_counted_handle_size",
+    ):
+        optimization = (
+            "s"
+            if rettype == "reset_intrusive_counted_handle_size"
+            else "t"
+        )
         source = (
-            '#pragma optimize("t", on)\n'
+            f'#pragma optimize("{optimization}", on)\n'
             "struct AutoTinyCountedObject\n"
             "{\n"
             "    void** vtable;\n"
@@ -1371,6 +1425,61 @@ def candidate(row):
             "    AutoTinyCountedHandle empty = {0};\n"
             "    empty.Reset();\n"
             "    if (g_AutoTinyCountedReleaseCalls != 1)\n"
+            "        return 1;\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "suspend_process_callback":
+        source = (
+            "typedef void (__fastcall *AutoTinySuspendCallback)(void*);\n"
+            "struct AutoTinySuspendableProcess\n"
+            "{\n"
+            "    unsigned char unknown00[5];\n"
+            "    bool suspended05;\n"
+            "    unsigned char unknown06[0x2e];\n"
+            "    AutoTinySuspendCallback callback34;\n"
+            "    void* context38;\n"
+            "};\n"
+            f"void __fastcall {fn}(AutoTinySuspendableProcess* self)\n"
+            "{\n"
+            "    self->callback34(self->context38);\n"
+            "    self->suspended05 = true;\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "typedef void (__fastcall *AutoTinySuspendCallback)(void*);\n"
+            "struct AutoTinySuspendableProcess\n"
+            "{\n"
+            "    unsigned char unknown00[5];\n"
+            "    bool suspended05;\n"
+            "    unsigned char unknown06[0x2e];\n"
+            "    AutoTinySuspendCallback callback34;\n"
+            "    void* context38;\n"
+            "};\n"
+            "static int g_AutoTinySuspendCalls = 0;\n"
+            "static bool g_AutoTinySuspendObservedPriorState = true;\n"
+            "void __fastcall AutoTinySuspendCallbackImpl(void* context)\n"
+            "{\n"
+            "    AutoTinySuspendableProcess* self =\n"
+            "        static_cast<AutoTinySuspendableProcess*>(context);\n"
+            "    ++g_AutoTinySuspendCalls;\n"
+            "    g_AutoTinySuspendObservedPriorState = self->suspended05;\n"
+            "}\n"
+            f"void __fastcall {fn}(AutoTinySuspendableProcess* self)\n"
+            "{\n"
+            "    self->callback34(self->context38);\n"
+            "    self->suspended05 = true;\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            "    AutoTinySuspendableProcess process = {0};\n"
+            "    process.callback34 = AutoTinySuspendCallbackImpl;\n"
+            "    process.context38 = &process;\n"
+            f"    {fn}(&process);\n"
+            "    if (!process.suspended05 || g_AutoTinySuspendCalls != 1 ||\n"
+            "        g_AutoTinySuspendObservedPriorState)\n"
             "        return 1;\n"
             f"    std::printf(\"{pattern}\\n\");\n"
             "    return 0;\n"

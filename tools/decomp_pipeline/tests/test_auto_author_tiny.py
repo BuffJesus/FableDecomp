@@ -16,6 +16,8 @@ class TinyPatternTests(unittest.TestCase):
             "c3": ("void", None),
             "c21800": ("void_stdcall_pop", 24),
             "33c0c3": ("int", 0),
+            "32c0c3": ("bool", False),
+            "32c0c20400": ("bool_pop4", False),
             "b001c3": ("bool", True),
             "6aff58c3": ("int", -1),
             "b878563412c3": ("int", 0x12345678),
@@ -66,6 +68,13 @@ class TinyPatternTests(unittest.TestCase):
                 "568bf18b0e85c97410ff490475058b01ff5004"
                 "c706000000005ec3"
             ): ("reset_intrusive_counted_handle", None),
+            (
+                "568bf18b0e85c9740dff490475058b01ff5004"
+                "8326005ec3"
+            ): ("reset_intrusive_counted_handle_size", None),
+            (
+                "568bf18b4e38ff5634c64605015ec3"
+            ): ("suspend_process_callback", None),
         }
         for encoded, expected in cases.items():
             with self.subTest(encoded=encoded):
@@ -110,8 +119,44 @@ class TinyPatternTests(unittest.TestCase):
         self.assertIn("lastHandle.Reset()", authored["test_cpp"])
         self.assertIn("retained.references != 1", authored["test_cpp"])
 
+    def test_size_optimized_counted_reset_uses_same_ownership_fixture(self):
+        authored = candidate(
+            {
+                "address": "005b11ad",
+                "name": "_Dest_val",
+                "module": "CIVCountedPointer",
+                "bytes": (
+                    "568bf18b0e85c9740dff490475058b01ff5004"
+                    "8326005ec3"
+                ),
+            }
+        )
+
+        self.assertIsNotNone(authored)
+        self.assertIn('#pragma optimize("s", on)', authored["source_cpp"])
+        self.assertIn("--current->references", authored["source_cpp"])
+        self.assertIn("lastHandle.Reset()", authored["test_cpp"])
+        self.assertIn("retained.references != 1", authored["test_cpp"])
+
+    def test_suspend_process_candidate_preserves_call_and_state_order(self):
+        callback = candidate(
+            {
+                "address": "00cdd680",
+                "name": "SuspendableProcess",
+                "module": "_global",
+                "bytes": "568bf18b4e38ff5634c64605015ec3",
+            }
+        )
+        self.assertIsNotNone(callback)
+        self.assertIn("callback34(self->context38)", callback["source_cpp"])
+        self.assertIn(
+            "g_AutoTinySuspendObservedPriorState",
+            callback["test_cpp"],
+        )
+
     def test_unknown_pattern_is_rejected(self):
         self.assertIsNone(const_from_bytes(bytes.fromhex("558bec5dc3")))
+        self.assertIsNone(const_from_bytes(bytes.fromhex("32c9c3")))
         self.assertIsNone(
             const_from_bytes(
                 bytes.fromhex(
@@ -124,7 +169,7 @@ class TinyPatternTests(unittest.TestCase):
             const_from_bytes(
                 bytes.fromhex(
                     "568bf18b0e85c97410ff490475058b01ff5004"
-                    "8326005ec3"
+                    "8326015ec3"
                 )
             )
         )
