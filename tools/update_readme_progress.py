@@ -122,6 +122,24 @@ def main() -> int:
     if count != 1:
         raise RuntimeError("canonical refresh date sentence not found")
 
+    strict_parity = percentage(matches, total, 2)
+    text, count = re.subn(
+        r"(current verified retail\s+parity is \*\*)\d+(?:\.\d+)?%(\*\*)",
+        rf"\g<1>{strict_parity}\g<2>",
+        text,
+        count=1,
+    )
+    if count != 1:
+        raise RuntimeError("current verified parity sentence not found")
+    text, count = re.subn(
+        r"(The )\d+(?:\.\d+)?%( figure is intentionally the strict,)",
+        rf"\g<1>{strict_parity}\g<2>",
+        text,
+        count=1,
+    )
+    if count != 1:
+        raise RuntimeError("strict denominator sentence not found")
+
     temporary = readme.with_suffix(".md.tmp")
     temporary.write_text(text, encoding="utf-8")
     temporary.replace(readme)

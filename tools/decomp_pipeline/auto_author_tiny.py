@@ -19,6 +19,19 @@ determined by the retail bytes:
   8b c1 83 e0 xx c3  -> return first fastcall arg & imm8
   8b c1 83 e0 xx c2 04 00 -> same, pop one stack arg
   c7 01 xx xx xx xx c3 -> *first fastcall arg = imm32
+  b9 xx xx xx xx e9 yy yy yy yy -> tail-call a method on a global object
+  a1 xx xx xx xx 85 c0 74 07 50 e8 yy yy yy yy 59 c3
+                     -> call a function only when its global pointer is non-null
+  b9 xx xx xx xx e8 yy yy yy yy ff 0d zz zz zz zz c3
+                     -> call a global object's method, then decrement a counter
+  c7 05 xx xx xx xx ii ii ii ii b9 yy yy yy yy e9 zz zz zz zz
+                     -> assign a global object's first field, then tail-call a method
+  b9 xx xx xx xx e8 yy yy yy yy a1 zz zz zz zz 85 c0 74 07
+     50 e8 aa aa aa aa 59 c3
+                     -> call a method, then optionally call with a global pointer
+  b9 xx xx xx xx c7 05 yy yy yy yy ii ii ii ii e8 zz zz zz zz
+     b9 aa aa aa aa e9 bb bb bb bb
+                     -> assign a global field and call two methods
 
 The normal verify_and_land.py gate still recompiles and byte-compares every
 candidate, so a bad inference can waste a compile but cannot mis-land.
@@ -33,10 +46,26 @@ import sys
 from pathlib import Path
 
 
+CPP_KEYWORDS = {
+    "asm", "auto", "bool", "break", "case", "catch", "char", "class",
+    "const", "const_cast", "continue", "default", "delete", "do",
+    "double", "dynamic_cast", "else", "enum", "explicit", "export",
+    "extern", "false", "float", "for", "friend", "goto", "if", "inline",
+    "int", "long", "mutable", "namespace", "new", "operator", "private",
+    "protected", "public", "register", "reinterpret_cast", "return",
+    "short", "signed", "sizeof", "static", "static_cast", "struct",
+    "switch", "template", "this", "throw", "true", "try", "typedef",
+    "typeid", "typename", "union", "unsigned", "using", "virtual", "void",
+    "volatile", "wchar_t", "while",
+}
+
+
 def sanitize(s: str) -> str:
     s = re.sub(r"[^A-Za-z0-9_]", "_", s or "function")
     s = re.sub(r"_+", "_", s).strip("_")
     if not s or s[0].isdigit():
+        s = "fn_" + s
+    if s in CPP_KEYWORDS:
         s = "fn_" + s
     return s
 
@@ -85,6 +114,54 @@ def const_from_bytes(bs: bytes):
         return ("and_self_pop4", bs[4])
     if len(bs) == 7 and bs[:2] == b"\xc7\x01" and bs[-1] == 0xC3:
         return ("store_imm32", int.from_bytes(bs[2:6], "little", signed=False))
+    if len(bs) == 10 and bs[0] == 0xB9 and bs[5] == 0xE9:
+        return ("global_method_tail_thunk", None)
+    if (
+        len(bs) == 17
+        and bs[0] == 0xA1
+        and bs[5:11] == b"\x85\xc0\x74\x07\x50\xe8"
+        and bs[-2:] == b"\x59\xc3"
+    ):
+        return ("optional_global_pointer_call", None)
+    if (
+        len(bs) == 17
+        and bs[0] == 0xB9
+        and bs[5] == 0xE8
+        and bs[10:12] == b"\xff\x0d"
+        and bs[-1] == 0xC3
+    ):
+        return ("global_method_call_then_decrement", None)
+    if (
+        len(bs) == 20
+        and bs[:2] == b"\xc7\x05"
+        and bs[10] == 0xB9
+        and bs[15] == 0xE9
+    ):
+        return (
+            "global_field_store_then_method_tail",
+            int.from_bytes(bs[6:10], "little", signed=False),
+        )
+    if (
+        len(bs) == 27
+        and bs[0] == 0xB9
+        and bs[5] == 0xE8
+        and bs[10] == 0xA1
+        and bs[15:21] == b"\x85\xc0\x74\x07\x50\xe8"
+        and bs[-2:] == b"\x59\xc3"
+    ):
+        return ("global_method_then_optional_pointer_call", None)
+    if (
+        len(bs) == 30
+        and bs[0] == 0xB9
+        and bs[5:7] == b"\xc7\x05"
+        and bs[15] == 0xE8
+        and bs[20] == 0xB9
+        and bs[25] == 0xE9
+    ):
+        return (
+            "global_field_store_then_two_methods",
+            int.from_bytes(bs[11:15], "little", signed=False),
+        )
     return None
 
 
@@ -96,8 +173,17 @@ def candidate(row):
     if not k:
         return None
     rettype, value = k
-    cls, leaf = split_name(name)
-    module = row.get("module") or (cls if cls != "global" else "_global")
+    if rettype == "global_method_tail_thunk":
+        # The manifest names on this late-image thunk island are inherited from
+        # one oversized template range and are not trustworthy function names.
+        # Keep the honest unresolved role plus the address until PDB/RTTI work
+        # can identify each concrete object and method.
+        name = f"GlobalMethodTailThunk_{addr}"
+        cls, leaf = "global", name
+        module = "_global"
+    else:
+        cls, leaf = split_name(name)
+        module = row.get("module") or (cls if cls != "global" else "_global")
     fn = f"{cls}_{leaf}" if cls != "global" else leaf
     fn = sanitize(fn)
     pattern = f"AUTO_TINY_{addr}_TEST PASS"
@@ -201,6 +287,269 @@ def candidate(row):
             "    unsigned int x = 0;\n"
             f"    {fn}(&x);\n"
             f"    if (x == 0x{value:08x}) {{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "global_method_tail_thunk":
+        source = (
+            "struct AutoTinyThunkTarget\n"
+            "{\n"
+            "    void Invoke();\n"
+            "};\n"
+            "extern AutoTinyThunkTarget g_AutoTinyThunkObject;\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            "    g_AutoTinyThunkObject.Invoke();\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "static int g_AutoTinyThunkCalls = 0;\n"
+            "struct AutoTinyThunkTarget\n"
+            "{\n"
+            "    void Invoke();\n"
+            "};\n"
+            "AutoTinyThunkTarget g_AutoTinyThunkObject;\n"
+            "void AutoTinyThunkTarget::Invoke()\n"
+            "{\n"
+            "    ++g_AutoTinyThunkCalls;\n"
+            "}\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            "    g_AutoTinyThunkObject.Invoke();\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            f"    {fn}();\n"
+            "    if (g_AutoTinyThunkCalls == 1) "
+            f"{{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "optional_global_pointer_call":
+        source = (
+            "extern void* g_AutoTinyOptionalObject;\n"
+            "extern void __cdecl AutoTinyOptionalTarget(void* object);\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            "    if (g_AutoTinyOptionalObject != 0)\n"
+            "        AutoTinyOptionalTarget(g_AutoTinyOptionalObject);\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "static int g_AutoTinyOptionalValue = 0;\n"
+            "static void* g_AutoTinyObservedObject = 0;\n"
+            "void* g_AutoTinyOptionalObject = &g_AutoTinyOptionalValue;\n"
+            "void __cdecl AutoTinyOptionalTarget(void* object)\n"
+            "{\n"
+            "    g_AutoTinyObservedObject = object;\n"
+            "}\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            "    if (g_AutoTinyOptionalObject != 0)\n"
+            "        AutoTinyOptionalTarget(g_AutoTinyOptionalObject);\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            f"    {fn}();\n"
+            "    if (g_AutoTinyObservedObject == g_AutoTinyOptionalObject) "
+            f"{{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "global_method_call_then_decrement":
+        source = (
+            "struct AutoTinyMethodTarget\n"
+            "{\n"
+            "    void Invoke();\n"
+            "};\n"
+            "extern AutoTinyMethodTarget g_AutoTinyMethodObject;\n"
+            "extern unsigned int g_AutoTinyMethodCounter;\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            "    g_AutoTinyMethodObject.Invoke();\n"
+            "    --g_AutoTinyMethodCounter;\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "static int g_AutoTinyMethodCalls = 0;\n"
+            "struct AutoTinyMethodTarget\n"
+            "{\n"
+            "    void Invoke();\n"
+            "};\n"
+            "AutoTinyMethodTarget g_AutoTinyMethodObject;\n"
+            "unsigned int g_AutoTinyMethodCounter = 2;\n"
+            "void AutoTinyMethodTarget::Invoke()\n"
+            "{\n"
+            "    ++g_AutoTinyMethodCalls;\n"
+            "}\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            "    g_AutoTinyMethodObject.Invoke();\n"
+            "    --g_AutoTinyMethodCounter;\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            f"    {fn}();\n"
+            "    if (g_AutoTinyMethodCalls == 1 && "
+            "g_AutoTinyMethodCounter == 1) "
+            f"{{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "global_field_store_then_method_tail":
+        source = (
+            "struct AutoTinyFieldTarget\n"
+            "{\n"
+            "    unsigned int value;\n"
+            "    void Invoke();\n"
+            "};\n"
+            "extern AutoTinyFieldTarget g_AutoTinyFieldObject;\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            f"    g_AutoTinyFieldObject.value = 0x{value:08x};\n"
+            "    g_AutoTinyFieldObject.Invoke();\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "static int g_AutoTinyFieldCalls = 0;\n"
+            "struct AutoTinyFieldTarget\n"
+            "{\n"
+            "    unsigned int value;\n"
+            "    void Invoke();\n"
+            "};\n"
+            "AutoTinyFieldTarget g_AutoTinyFieldObject = {0};\n"
+            "void AutoTinyFieldTarget::Invoke()\n"
+            "{\n"
+            "    ++g_AutoTinyFieldCalls;\n"
+            "}\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            f"    g_AutoTinyFieldObject.value = 0x{value:08x};\n"
+            "    g_AutoTinyFieldObject.Invoke();\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            f"    {fn}();\n"
+            f"    if (g_AutoTinyFieldObject.value == 0x{value:08x} && "
+            "g_AutoTinyFieldCalls == 1) "
+            f"{{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "global_method_then_optional_pointer_call":
+        source = (
+            "struct AutoTinyMethodOptionalTarget\n"
+            "{\n"
+            "    void Invoke();\n"
+            "};\n"
+            "extern AutoTinyMethodOptionalTarget "
+            "g_AutoTinyMethodOptionalObject;\n"
+            "extern void* g_AutoTinyMethodOptionalPointer;\n"
+            "extern void __cdecl AutoTinyMethodOptionalCall(void* object);\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            "    g_AutoTinyMethodOptionalObject.Invoke();\n"
+            "    if (g_AutoTinyMethodOptionalPointer != 0)\n"
+            "        AutoTinyMethodOptionalCall("
+            "g_AutoTinyMethodOptionalPointer);\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "static int g_AutoTinyMethodOptionalCalls = 0;\n"
+            "static int g_AutoTinyMethodOptionalValue = 0;\n"
+            "static void* g_AutoTinyMethodOptionalObserved = 0;\n"
+            "struct AutoTinyMethodOptionalTarget\n"
+            "{\n"
+            "    void Invoke();\n"
+            "};\n"
+            "AutoTinyMethodOptionalTarget g_AutoTinyMethodOptionalObject;\n"
+            "void* g_AutoTinyMethodOptionalPointer = "
+            "&g_AutoTinyMethodOptionalValue;\n"
+            "void AutoTinyMethodOptionalTarget::Invoke()\n"
+            "{\n"
+            "    ++g_AutoTinyMethodOptionalCalls;\n"
+            "}\n"
+            "void __cdecl AutoTinyMethodOptionalCall(void* object)\n"
+            "{\n"
+            "    g_AutoTinyMethodOptionalObserved = object;\n"
+            "}\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            "    g_AutoTinyMethodOptionalObject.Invoke();\n"
+            "    if (g_AutoTinyMethodOptionalPointer != 0)\n"
+            "        AutoTinyMethodOptionalCall("
+            "g_AutoTinyMethodOptionalPointer);\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            f"    {fn}();\n"
+            "    if (g_AutoTinyMethodOptionalCalls == 1 && "
+            "g_AutoTinyMethodOptionalObserved == "
+            "g_AutoTinyMethodOptionalPointer) "
+            f"{{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "global_field_store_then_two_methods":
+        source = (
+            "struct AutoTinyFieldMethodsTarget\n"
+            "{\n"
+            "    unsigned int value;\n"
+            "    void First();\n"
+            "    void Second();\n"
+            "};\n"
+            "extern AutoTinyFieldMethodsTarget "
+            "g_AutoTinyFieldMethodsObject;\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            f"    g_AutoTinyFieldMethodsObject.value = 0x{value:08x};\n"
+            "    g_AutoTinyFieldMethodsObject.First();\n"
+            "    g_AutoTinyFieldMethodsObject.Second();\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "static int g_AutoTinyFieldFirstCalls = 0;\n"
+            "static int g_AutoTinyFieldSecondCalls = 0;\n"
+            "struct AutoTinyFieldMethodsTarget\n"
+            "{\n"
+            "    unsigned int value;\n"
+            "    void First();\n"
+            "    void Second();\n"
+            "};\n"
+            "AutoTinyFieldMethodsTarget g_AutoTinyFieldMethodsObject = {0};\n"
+            "void AutoTinyFieldMethodsTarget::First()\n"
+            "{\n"
+            "    ++g_AutoTinyFieldFirstCalls;\n"
+            "}\n"
+            "void AutoTinyFieldMethodsTarget::Second()\n"
+            "{\n"
+            "    ++g_AutoTinyFieldSecondCalls;\n"
+            "}\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            f"    g_AutoTinyFieldMethodsObject.value = 0x{value:08x};\n"
+            "    g_AutoTinyFieldMethodsObject.First();\n"
+            "    g_AutoTinyFieldMethodsObject.Second();\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            f"    {fn}();\n"
+            f"    if (g_AutoTinyFieldMethodsObject.value == 0x{value:08x} && "
+            "g_AutoTinyFieldFirstCalls == 1 && "
+            "g_AutoTinyFieldSecondCalls == 1) "
+            f"{{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
             f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
             "    return 1;\n"
             "}\n"
