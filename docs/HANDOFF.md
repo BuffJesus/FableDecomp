@@ -1,6 +1,36 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 00:03 MDT (Ghidra-free deterministic replay lands 145 verified functions).*
+*Last updated: 2026-07-26 00:35 MDT (full GFInitialise visual path plus 395-function parity replay).*
+
+## Full GFInitialise + parity replay checkpoint (2026-07-26)
+
+- `GFInitialise @ 0x004022B0` is promoted. Its readable VC7.1 source builds to
+  the retail 311-byte body, matches outside 38 expected relocation fields, and
+  passes focused behavior for root discovery, texture-depth fallback, display
+  clamping, player registration, progress setup, and both return paths.
+- The visual executable no longer calls only an authored approximation of the
+  coordinator tail. It prepares an explicit engine boundary, invokes the
+  verified full `GFInitialise`, traverses the independently verified
+  `GFInitialise_SetupProgressDisplay @ 0x00413120`, and then opens the authored
+  1280x720 boot window. The bootstrap is green through Stage 0-3, full
+  initialization, progress ownership, resource validation, and window handoff.
+- The next honest visual closures are to replace the coordinator's boundary
+  root/display/registration objects with recovered engine ownership, then
+  recover data/archive loading and the renderer/game-loop handoff. The window
+  remains deliberate scaffolding rather than a claim of retail rendering.
+- The pending-oracle replay now recognizes the common 28-byte scalar deleting
+  destructor shape. That added 131 verified scalar destructors and also
+  recovered 264 previously stranded supported vector destructors. All 395
+  passed behavior and relocation-normalized object parity before promotion.
+- The full catalog now passes with **3,704 compiled/behavior-gated functions**.
+  Retail object parity is **1,895 exact + 1,482 relocation-normalized = 3,377 /
+  49,553 (6.81%)**. The strict whole-executable percentage in the root README
+  and generated coverage dashboard is refreshed from these results.
+- Ghidra remains stopped and available for the other project. The six
+  non-identical Wave 3 root/shard collisions remain preserved for deliberate
+  evidence review; the organizer did not overwrite either side.
+
+*Previous checkpoint: 2026-07-26 00:03 MDT (Ghidra-free deterministic replay lands 145 verified functions).*
 
 ## Ghidra-free parity checkpoint (2026-07-26)
 

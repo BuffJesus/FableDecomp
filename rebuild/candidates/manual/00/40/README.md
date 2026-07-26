@@ -1,7 +1,7 @@
 # GFInitialise recovery workspace
 
-This address shard contains the reviewed manual candidate for retail
-`GFInitialise @ 0x004022B0` and its focused behavior fixture.
+This address shard records the manual recovery work that promoted retail
+`GFInitialise @ 0x004022B0` into the verified tree.
 
 Retail disassembly corrected two generated assumptions:
 
@@ -13,12 +13,15 @@ VC7.1 Release status:
 
 - behavior fixture: `PASS`
 - retail length: 311 bytes
-- candidate length: 312 bytes
-- relocation-masked bytes 0-219: identical
-- remaining blocker: register allocation/instruction scheduling in the two
-  display-dimension clamps
+- candidate length: 311 bytes
+- parity: `RELOCATION_MATCH`
+- promoted source:
+  `rebuild/src/compiled/00/40/global_GFInitialise_004022b0.cpp`
+- promoted fixture:
+  `rebuild/tests/00/40/global_GFInitialise_004022b0_test.cpp`
 
-The candidate stays here until the complete object passes the retail parity
-gate. It must not be copied into `rebuild/src/compiled/` or counted in the
-verified percentage before then. Scratch build products belong under
+The matching source keeps one mutable `displayDimension` local across the
+width and height clamps. Besides describing the shared operation clearly,
+that source shape gives VC7.1 the same register allocation and instruction
+scheduling as retail. Scratch build products belong under
 `rebuild/build/gfinitialise-Release/`.
