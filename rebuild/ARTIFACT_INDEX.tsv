@@ -4335,7 +4335,9 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 009d81e0			rebuild/src/compiled/00/9d/Global_ClearStartupLatch_009d81e0.cpp	rebuild/tests/00/9d/Global_ClearStartupLatch_009d81e0_test.cpp		
 009d8240			rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp	rebuild/tests/00/9d/NProfileTimer_StartProfile_009d8240_test.cpp		
 009d8250			rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp	rebuild/tests/00/9d/NProfileTimer_EndProfile_009d8250_test.cpp		
+009df060	CStateBlockFunctionSold		rebuild/src/compiled/00/9d/CStateBlockFunctionSold_Apply_009df060.cpp	rebuild/tests/00/9d/CStateBlockFunctionSold_Apply_009df060_test.cpp		rebuild/build/candidates-Release/00/9d/009df060
 009e1440	Render2DDrawList		rebuild/src/compiled/00/9e/Render2DDrawList_CopyBlock_009e1440.cpp	rebuild/tests/00/9e/Render2DDrawList_CopyBlock_009e1440_test.cpp		rebuild/build/candidates-Release/00/9e/009e1440
+009e15e0	std::vector<CQuickDrawTriInfo>		rebuild/src/compiled/00/9e/CQuickDrawTriInfoVector_Erase_009e15e0.cpp	rebuild/tests/00/9e/CQuickDrawTriInfoVector_Erase_009e15e0_test.cpp		rebuild/build/candidates-Release/00/9e/009e15e0
 009e1d00	_global		rebuild/src/compiled/00/9e/Global_GFRoundVXToNearestPixel_009e1d00.cpp	rebuild/tests/00/9e/Global_GFRoundVXToNearestPixel_009e1d00_test.cpp		rebuild/build/candidates-Release/00/9e/009e1d00
 009e1d50	_global		rebuild/src/compiled/00/9e/Global_GFRoundVYToNearestPixel_009e1d50.cpp	rebuild/tests/00/9e/Global_GFRoundVYToNearestPixel_009e1d50_test.cpp		rebuild/build/candidates-Release/00/9e/009e1d50
 009e1da0	_global		rebuild/src/compiled/00/9e/Global_GFAXToVX_009e1da0.cpp	rebuild/tests/00/9e/Global_GFAXToVX_009e1da0_test.cpp		rebuild/build/candidates-Release/00/9e/009e1da0
