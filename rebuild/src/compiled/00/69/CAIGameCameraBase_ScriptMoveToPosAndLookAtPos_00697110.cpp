@@ -1,0 +1,1 @@
+void __stdcall CAIGameCameraBase_ScriptMoveToPosAndLookAtPos(int arg0, int arg1, int arg2) {}

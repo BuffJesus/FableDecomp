@@ -1,0 +1,1 @@
+void __stdcall CInputProcessCycleSpecialCameraModes_ProcessInput(int arg0, int arg1) {}

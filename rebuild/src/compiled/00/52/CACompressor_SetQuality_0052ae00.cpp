@@ -1,0 +1,1 @@
+void __stdcall CACompressor_SetQuality(int arg0) {}

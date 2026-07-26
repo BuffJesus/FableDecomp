@@ -50,6 +50,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/InstallLocalParityTask
 
 - Batch 18 and batch 19 landed 97 authoritative manifest-backed deterministic authors through exact
   byte and behavior verification.
+- The first installed hourly run selected four additional 500-row batches and landed 204 of 205
+  deterministic authors. Canonical parity is now 1,827 matches across 2,154 compiled and
+  behavior-gated rows.
 - The integrity follow-up removed 146 byte-matching post-`ret` tails that lacked a manifest function
   start. `next_batch.py` no longer emits those speculative rows, and `verify_and_land.py`
   independently rejects any future outside-manifest candidate.

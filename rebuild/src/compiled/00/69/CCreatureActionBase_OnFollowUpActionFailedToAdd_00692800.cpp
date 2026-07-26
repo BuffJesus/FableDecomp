@@ -1,0 +1,1 @@
+void __fastcall CCreatureActionBase_OnFollowUpActionFailedToAdd() {}
