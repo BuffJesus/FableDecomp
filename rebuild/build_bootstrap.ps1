@@ -8,6 +8,7 @@ $ErrorActionPreference = 'Stop'
 $rebuildRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $workspaceRoot = Split-Path -Parent $rebuildRoot
 $vcRoot = 'D:\Tools\vc71'
+$windowsSdkLibRoot = 'C:\Program Files (x86)\Windows Kits\10\Lib'
 $outDir = Join-Path $rebuildRoot "build\bootstrap-$Configuration"
 $bootstrapSource = Join-Path $rebuildRoot 'integration\bootstrap_main.cpp'
 $retailSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_MemCmpUnsigned16_00403c60.cpp'
@@ -53,6 +54,9 @@ $systemManagerInitBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CSystemMa
 $gfmainPhase1Source = Join-Path $rebuildRoot 'integration\gfmain_phase1.cpp'
 $gfmainPhase2Source = Join-Path $rebuildRoot 'integration\gfmain_phase2.cpp'
 $stage2BoundarySource = Join-Path $rebuildRoot 'integration\stage2_engine_boundary.cpp'
+$visualBootSource = Join-Path $rebuildRoot 'integration\visual_boot_checkpoint.cpp'
+$visualBootArtwork = Join-Path $rebuildRoot 'assets\boot\fabledecomp_boot_concept.png'
+$visualBootBehaviorSource = Join-Path $rebuildRoot 'tests\integration\VisualBootCheckpoint_test.cpp'
 $gfmainPhase1BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase1_test.cpp'
 $gfmainPhase2BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase2_test.cpp'
 $bootObjectChecker = Join-Path $workspaceRoot 'tools\check_boot_object.py'
@@ -83,6 +87,12 @@ $gfmainPhase1Object = Join-Path $outDir 'gfmain_phase1.obj'
 $gfmainPhase2Object = Join-Path $outDir 'gfmain_phase2.obj'
 $stage2BoundaryObject = Join-Path $outDir 'stage2_engine_boundary.obj'
 $stage3BoundaryObject = Join-Path $outDir 'stage3_engine_boundary.obj'
+$visualBoundaryObject = Join-Path $outDir 'visual_engine_boundary.obj'
+$visualBootObject = Join-Path $outDir 'visual_boot_checkpoint.obj'
+$visualBootBehaviorObject = Join-Path $outDir 'visual_boot_checkpoint_behavior.obj'
+$visualBootBitmap = Join-Path $outDir 'fabledecomp_boot_concept.bmp'
+$visualBootResourceSource = Join-Path $outDir 'visual_boot_checkpoint.rc'
+$visualBootResource = Join-Path $outDir 'visual_boot_checkpoint.res'
 $gfmainPhase1BehaviorObject = Join-Path $outDir 'gfmain_phase1_behavior.obj'
 $gfmainPhase2BehaviorObject = Join-Path $outDir 'gfmain_phase2_behavior.obj'
 $profileEndObject = Join-Path $outDir 'profile-end.obj'
@@ -104,6 +114,8 @@ $gfmainPhase1BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase1-Behav
 $gfmainPhase2BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase2-Behavior.exe'
 $stage2Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage2.exe'
 $stage3Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage3.exe'
+$visualCheckpointExecutable = Join-Path $outDir 'FableTLC-Reconstruction-VisualCheckpoint.exe'
+$visualBootBehaviorExecutable = Join-Path $outDir 'FableTLC-VisualBoot-Behavior.exe'
 $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
 $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $progressSetupPassPattern = 'FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS'
@@ -118,6 +130,7 @@ $charStringDefaultPassPattern = 'FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVI
 $systemManagerInitPassPattern = 'FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS'
 $gfmainPhase1PassPattern = 'FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS'
 $gfmainPhase2PassPattern = 'FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS'
+$visualBootPassPattern = 'FABLETLC_VISUAL_BOOT_BEHAVIOR PASS'
 $profileEndPassPattern = 'FABLETLC_PROFILE_END_BEHAVIOR PASS'
 $asyncFailureHandlingPassPattern = 'FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS'
 $startupLatchPassPattern = 'FABLETLC_STARTUP_LATCH_BEHAVIOR PASS'
@@ -174,6 +187,9 @@ $required = @(
     $gfmainPhase1Source,
     $gfmainPhase2Source,
     $stage2BoundarySource,
+    $visualBootSource,
+    $visualBootArtwork,
+    $visualBootBehaviorSource,
     $gfmainPhase1BehaviorSource,
     $gfmainPhase2BehaviorSource,
     $bootObjectChecker
@@ -185,6 +201,17 @@ if ($missing.Count -gt 0) {
 
 New-Item -ItemType Directory -Path $outDir -Force | Out-Null
 
+$windowsSdkUmLib = Get-ChildItem -LiteralPath $windowsSdkLibRoot -Directory |
+    Where-Object {
+        Test-Path -LiteralPath (Join-Path $_.FullName 'um\x86\User32.Lib')
+    } |
+    Sort-Object { [version]$_.Name } -Descending |
+    Select-Object -First 1 -ExpandProperty FullName
+if (-not $windowsSdkUmLib) {
+    throw 'A Windows SDK x86 import-library directory is required for the visual checkpoint.'
+}
+$windowsSdkUmLib = Join-Path $windowsSdkUmLib 'um\x86'
+
 $oldPath = $env:PATH
 $oldInclude = $env:INCLUDE
 $oldLib = $env:LIB
@@ -194,7 +221,10 @@ try {
         (Join-Path $vcRoot 'include'),
         (Join-Path $rebuildRoot 'include')
     ) -join ';'
-    $env:LIB = Join-Path $vcRoot 'lib'
+    $env:LIB = @(
+        (Join-Path $vcRoot 'lib'),
+        $windowsSdkUmLib
+    ) -join ';'
 
     $compileOptions = @('/nologo', '/c', '/W3', '/MT', '/GS')
     if ($Configuration -eq 'Release') {
@@ -822,6 +852,67 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE2 `
+        /DFABLETLC_ENABLE_VISUAL_BOOT `
+        "/Fo$visualBoundaryObject" $stage2BoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $visualBoundaryObject)
+    ) {
+        throw 'Failed to compile the authored visual engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$visualBootObject" $visualBootSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $visualBootObject)
+    ) {
+        throw 'Failed to compile the visual boot checkpoint.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$visualBootBehaviorObject" $visualBootBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $visualBootBehaviorObject)
+    ) {
+        throw 'Failed to compile the visual boot behavior fixture.'
+    }
+
+    Add-Type -AssemblyName PresentationCore
+    $pngStream = [System.IO.File]::OpenRead($visualBootArtwork)
+    try {
+        $decoder = New-Object System.Windows.Media.Imaging.PngBitmapDecoder(
+            $pngStream,
+            [System.Windows.Media.Imaging.BitmapCreateOptions]::PreservePixelFormat,
+            [System.Windows.Media.Imaging.BitmapCacheOption]::OnLoad)
+        $encoder = New-Object System.Windows.Media.Imaging.BmpBitmapEncoder
+        $encoder.Frames.Add($decoder.Frames[0])
+        $bitmapStream = [System.IO.File]::Create($visualBootBitmap)
+        try {
+            $encoder.Save($bitmapStream)
+        } finally {
+            $bitmapStream.Dispose()
+        }
+    } finally {
+        $pngStream.Dispose()
+    }
+
+    $resourceBitmapPath = $visualBootBitmap.Replace('\', '/')
+    Set-Content -LiteralPath $visualBootResourceSource `
+        -Value "101 BITMAP `"$resourceBitmapPath`"" `
+        -Encoding Ascii
+    & (Join-Path $vcRoot 'bin\rc.exe') `
+        "/fo$visualBootResource" $visualBootResourceSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $visualBootResource)
+    ) {
+        throw 'Failed to compile the visual boot artwork resource.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$gfmainPhase1BehaviorObject" $gfmainPhase1BehaviorSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -857,6 +948,26 @@ try {
         $gfmainPhase1Object,
         $gfmainPhase2Object,
         $stage3BoundaryObject,
+        $setCurrentPathObject,
+        $getProjectPathObject,
+        $wideStringConstructorObject,
+        $wideStringDestructorObject,
+        $charStringConstructorObject,
+        $charStringDefaultObject,
+        $charStringDestructorObject,
+        $profileStartObject,
+        $profileEndObject,
+        $asyncFailureHandlingObject,
+        $startupLatchObject,
+        $fileInstallerGetObject,
+        $systemManagerInitObject
+    )
+
+    $visualRuntimeObjects = @(
+        $gfmainPhase1Object,
+        $gfmainPhase2Object,
+        $visualBoundaryObject,
+        $visualBootObject,
         $setCurrentPathObject,
         $getProjectPathObject,
         $wideStringConstructorObject,
@@ -940,10 +1051,43 @@ try {
         throw "Stage 3 startup failed with exit code $LASTEXITCODE."
     }
 
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:windows `
+        "/out:$visualCheckpointExecutable" `
+        $winMainObject @visualRuntimeObjects $visualBootResource `
+        user32.lib gdi32.lib
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $visualCheckpointExecutable)
+    ) {
+        throw 'Failed to link the authored visual startup executable.'
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$visualBootBehaviorExecutable" `
+        $visualBootObject $visualBootBehaviorObject $visualBootResource `
+        user32.lib gdi32.lib
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $visualBootBehaviorExecutable)
+    ) {
+        throw 'Failed to link the visual boot behavior fixture.'
+    }
+
+    $visualBootOutput = & $visualBootBehaviorExecutable 2>&1
+    $visualBootExitCode = $LASTEXITCODE
+    $visualBootOutput | Write-Output
+    if (
+        $visualBootExitCode -ne 0 -or
+        (($visualBootOutput -join "`n") -notmatch [regex]::Escape($visualBootPassPattern))
+    ) {
+        throw "Visual boot fixture failed with exit code $visualBootExitCode."
+    }
+
     Write-Output "BOOTSTRAP_BUILD PASS configuration=$Configuration executable=$executable"
     Write-Output "STAGE1_STARTUP PASS executable=$stage1Executable boundary=GFMain"
     Write-Output "STAGE2_STARTUP PASS executable=$stage2Executable boundary=GFMainPhase2"
     Write-Output "STAGE3_STARTUP PASS executable=$stage3Executable boundary=GFMainPhase3"
+    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=AuthoredVisualCheckpoint"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude
