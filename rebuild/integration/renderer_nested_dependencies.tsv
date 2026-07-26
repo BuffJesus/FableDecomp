@@ -21,7 +21,7 @@ parent_address	parent_name	address	name	retail_bytes	recovery_status	source	note
 00498490	CProgressDisplay::DrawRetailDisplay	0099efb0	CCharString::operator=	40	UNRECOVERED		Narrow-string assignment.
 00498490	CProgressDisplay::DrawRetailDisplay	0099f600	CCharString::AppendCString	130	UNRECOVERED		Generated name remains provisional.
 00498490	CProgressDisplay::DrawRetailDisplay	009a4ec0	GFGetSystemManager	6	MATCH	rebuild/src/compiled/00/9a/Global_GFGetSystemManager_009a4ec0.cpp	EgoCore-corrected fixed system-manager accessor.
-00498490	CProgressDisplay::DrawRetailDisplay	009bedc0	CDisplayManager::GetRenderTargetDimensions	24	UNRECOVERED		EgoCore PDB rejects the poisoned message-filter label.
+00498490	CProgressDisplay::DrawRetailDisplay	009bedc0	CDisplayManager::GetRenderTargetDimensions	24	MATCH	rebuild/src/compiled/00/9b/CDisplayManager_GetRenderTargetDimensions_009bedc0.cpp	EgoCore PDB rejects the poisoned message-filter label.
 00498490	CProgressDisplay::DrawRetailDisplay	009c7980	ConstructString	76	UNRECOVERED		Wide-string construction helper.
 00498490	CProgressDisplay::DrawRetailDisplay	009c95e0	CDataBank::GetTextBySymbol	150	UNRECOVERED		Localized text lookup.
 00498490	CProgressDisplay::DrawRetailDisplay	009dc6e0	CRenderManager2D::Draw2DTexture	388	UNRECOVERED		Texture primitive construction.

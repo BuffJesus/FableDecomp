@@ -34237,6 +34237,13 @@ $catalog = @(
         TestSource = '00/98/CShaderRenderManager_DisableVertexShaders_009880e0_test.cpp'
         PassPattern = 'FABLETLC_DISABLE_VERTEX_SHADERS_BEHAVIOR PASS'
     }
+    [pscustomobject]@{
+        Address = '009bedc0'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_GetRenderTargetDimensions_009bedc0.cpp'
+        TestSource = '00/9b/CDisplayManager_GetRenderTargetDimensions_009bedc0_test.cpp'
+        PassPattern = 'FABLETLC_RENDER_TARGET_DIMENSIONS_BEHAVIOR PASS'
+    }
 )
 
 $oldPath = $env:PATH
