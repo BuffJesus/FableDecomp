@@ -37,13 +37,19 @@ Returns true when a non-main player is seated with `[+0x91] bit0 CLEAR`. Indepen
 ```
 +0x00  u16 header    = (id & 0x7FFF) | (flag ? 0x8000 : 0)   // id is effectively 15-bit
 +0x02  u8  subField  = CGameEvent+0x04
-+0x03  u8  payloadLen= CGameEvent+0x25   (0..255)
++0x03  u8  payloadLen= CGameEvent+0x25   (encoded as u8; safe object capacity is 0..32)
 +0x04  u8[payloadLen] payload            (from CGameEvent+0x05, rep movsd+movsb)
 ```
 "Compress" = pack dense (no compression, no endian swap). Producer returns `payloadLen+4` (records
 concatenate). Consumer sets id=`hdr&0x7FFF`, `+0x27`=flag, `+0x25=0 then +=len`, and `+0x26=1`
 (pending/dirty apply flag). A `CGameEventPackageSet` frames N records; its own compress/init are
 `0x9F19A0`/`0x9F1AC0` (per FINDINGS, not decoded here).
+
+**Safety correction (2026-07-25):** although the length field can encode 0..255, the proven
+`CGameEvent` layout is only `0x28` bytes and its payload occupies `+0x05..+0x24` (32 bytes).
+The retail deserializer performs no bound check, so a length above 32 would overwrite adjacent
+fields/object memory. Modern readers must reject it. The C++23 proof-of-concept codec under
+`rebuild/modern/multiplayer/` enforces that capacity and tests the exact wire bytes.
 
 ## 4. Apply chain (all LIVE except CheckSync)
 `UpdateFromEventPackageSet` (`0x0041726D`) — iterates the package set; **sequence gate: apply a package
