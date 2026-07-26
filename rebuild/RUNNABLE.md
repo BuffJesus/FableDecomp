@@ -33,11 +33,14 @@ and failure-policy sequence to the Phase 3 boundary.
 `FableTLC-Reconstruction-VisualCheckpoint.exe` follows that same matched
 `WinMain` and reconstructed Phase 1/2 path, invokes the retail-matched full
 `GFInitialise` coordinator and its retail-matched progress-display leaf through
-an explicit engine boundary, then opens a responsive 1280x720 Win32 window containing the project
-boot artwork. The PNG is converted to a
-build-only bitmap and embedded as a resource. This proves executable-to-window
-handoff; it is deliberately labeled reconstruction scaffolding, not recovered
-retail renderer, archive-loading, or game-loop behavior.
+an explicit engine boundary, then opens a responsive 1280x720 Win32 window.
+When a retail `frontend.big` is available, the build decodes
+`FRONTEND_BACKDROP_01` through the recovered Lionhead-LZO/DXT1 tooling,
+crops it to its authored 640x480 frame, and embeds it in the executable.
+The authored project image remains a dependency-safe fallback. This is the
+first genuine game-derived image in the reconstructed process, but its GDI
+presentation remains scaffolding rather than the recovered retail renderer,
+runtime archive loader, or game loop.
 
 The full GFInitialise coordinator is promoted and connected:
 `GFInitialise @ 0x004022B0` is a 311-byte relocation-normalized match with
@@ -122,8 +125,10 @@ Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,
 Generated products stay under the ignored `rebuild/build/` tree.
 
 Stages 2 and 3 use explicit integration boundaries and are not claimed as a
-retail-matching GFMain. It does **not** yet initialize Lionhead engine
-services, recover the retail window/renderer, load archives, or enter the game loop.
+retail-matching GFMain. The visual checkpoint can now present one build-time
+extracted retail asset, but it does **not** yet initialize Lionhead engine
+services, recover the retail renderer, load archives at runtime, play video,
+or enter the game loop.
 
 ## Retail boot spine
 

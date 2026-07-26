@@ -40,7 +40,7 @@ CLI:
   python texture_build.py replace   <src.big> <out.big> <entry_name> <image>
                                     [--sub SUBBANK] [--format ...] [--raw-mip0]
   python texture_build.py roundtrip <src.big> [--entry NAME] [--samples N]
-  python texture_build.py decode    <src.big> <entry_name> <out.png>
+  python texture_build.py decode    <src.big> <entry_name> <out.png> [--crop-real]
   python texture_build.py selftest
 """
 import os
@@ -490,7 +490,7 @@ def load_image_rgba(path):
 
 def save_png(rgba, path):
     from PIL import Image
-    Image.fromarray(rgba, "RGBA").save(path)
+    Image.fromarray(rgba).save(path)
 
 
 def fit_to_alloc(rgba, aw, ah):
@@ -558,6 +558,7 @@ def cmd_replace(argv):
 def cmd_decode(argv):
     src, name, out_png = argv[:3]
     sub = _opt(argv, "--sub", None)
+    crop_real = "--crop-real" in argv
     buf, parsed = load_big(src)
     hits = find_entry(parsed, name, sub)
     if not hits:
@@ -565,9 +566,13 @@ def cmd_decode(argv):
     s, e = hits[0]
     pay = buf[e["offset"]:e["offset"] + e["size"]]
     d, mips = decode_entry(e["info"], pay, max_mips=1)
-    save_png(mips[0], out_png)
+    image = mips[0]
+    if crop_real:
+        image = image[:d["height"], :d["width"]]
+    save_png(image, out_png)
     print("decoded [%s] %r %s %dx%d -> %s"
-          % (s["name"], name, d["fmt_name"], d["alloc_w"], d["alloc_h"], out_png))
+          % (s["name"], name, d["fmt_name"], image.shape[1], image.shape[0],
+             out_png))
 
 
 def cmd_roundtrip(argv):

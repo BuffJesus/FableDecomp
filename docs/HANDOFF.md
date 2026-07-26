@@ -1,6 +1,33 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 10:06 MDT (virtual-delete parity + retail visual consumer checkpoint).*
+*Last updated: 2026-07-26 10:14 MDT (first retail image on reconstructed screen checkpoint).*
+
+## First retail image on reconstructed screen checkpoint (2026-07-26)
+
+- `FableTLC-Reconstruction-VisualCheckpoint.exe` now displays genuine retail
+  Fable artwork. The bootstrap locates a user-owned `frontend.big`, decodes
+  `FRONTEND_BACKDROP_01` through the recovered Lionhead-LZO/DXT1 toolchain,
+  crops the 1024x512 allocation to its authored 640x480 frame, and embeds only
+  the ignored build product. No retail artwork is added to Git; the existing
+  project concept remains the portable fallback.
+- A real top-level-window smoke test opened at 1280x720 client size with title
+  `FableDecomp - Retail Frontend Asset + Progress Display Ready`, captured the
+  retail image visibly centered in the reconstructed process, then closed with
+  exit code zero. The full Release bootstrap and all retail leaf/behavior gates
+  pass with `asset=RetailFrontendBackdrop`.
+- This closes “first actual game image,” but not “retail rendering.” Pixels are
+  currently presented by the authored GDI checkpoint after build-time
+  extraction. Runtime bank loading, Lionhead texture ownership, D3D device and
+  primitive setup, render/present scheduling, and the game loop remain open.
+  Intro video is farther away because the movie/Bink path, timing, audio, and
+  frame presentation sit on top of that display foundation.
+- Next visual target: recover and connect
+  `CProgressDisplay::StartProgress @ 0x00499AA0`,
+  `CProgressDisplay::InitialiseTextures @ 0x0049A0B0`, and the smallest
+  renderer-backed progress draw path. Keep build-time retail-image display as
+  an explicit, tested bridge rather than mislabeling it as the engine renderer.
+- Strict whole-executable parity remains **4,543 / 49,553 (9.17%)** from the
+  prior checkpoint; the hourly Ghidra-free lane remains scheduled independently.
 
 ## Virtual-delete parity + retail visual consumer checkpoint (2026-07-26)
 

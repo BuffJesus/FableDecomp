@@ -1,6 +1,8 @@
 param(
     [ValidateSet('Debug', 'Release')]
-    [string]$Configuration = 'Release'
+    [string]$Configuration = 'Release',
+
+    [string]$RetailFrontendBank = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -76,7 +78,9 @@ $gfInitialiseEngineBoundarySource = Join-Path $rebuildRoot 'integration\gfinitia
 $progressDisplayStringBoundarySource = Join-Path $rebuildRoot 'integration\progress_display_string_boundary.cpp'
 $stage2BoundarySource = Join-Path $rebuildRoot 'integration\stage2_engine_boundary.cpp'
 $visualBootSource = Join-Path $rebuildRoot 'integration\visual_boot_checkpoint.cpp'
-$visualBootArtwork = Join-Path $rebuildRoot 'assets\boot\fabledecomp_boot_concept.png'
+$visualBootFallbackArtwork = Join-Path $rebuildRoot 'assets\boot\fabledecomp_boot_concept.png'
+$visualBootArtwork = $visualBootFallbackArtwork
+$textureBuilder = Join-Path $workspaceRoot 'tools\texture_build.py'
 $visualBootBehaviorSource = Join-Path $rebuildRoot 'tests\integration\VisualBootCheckpoint_test.cpp'
 $gfmainPhase1BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase1_test.cpp'
 $gfmainPhase2BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase2_test.cpp'
@@ -120,7 +124,8 @@ $stage3BoundaryObject = Join-Path $outDir 'stage3_engine_boundary.obj'
 $visualBoundaryObject = Join-Path $outDir 'visual_engine_boundary.obj'
 $visualBootObject = Join-Path $outDir 'visual_boot_checkpoint.obj'
 $visualBootBehaviorObject = Join-Path $outDir 'visual_boot_checkpoint_behavior.obj'
-$visualBootBitmap = Join-Path $outDir 'fabledecomp_boot_concept.bmp'
+$visualBootRetailArtwork = Join-Path $outDir 'frontend_backdrop_01.png'
+$visualBootBitmap = Join-Path $outDir 'visual_boot_artwork.bmp'
 $visualBootResourceSource = Join-Path $outDir 'visual_boot_checkpoint.rc'
 $visualBootResource = Join-Path $outDir 'visual_boot_checkpoint.res'
 $gfmainPhase1BehaviorObject = Join-Path $outDir 'gfmain_phase1_behavior.obj'
@@ -251,11 +256,12 @@ $required = @(
     $progressDisplayStringBoundarySource,
     $stage2BoundarySource,
     $visualBootSource,
-    $visualBootArtwork,
+    $visualBootFallbackArtwork,
     $visualBootBehaviorSource,
     $gfmainPhase1BehaviorSource,
     $gfmainPhase2BehaviorSource,
     $gfInitialiseProgressPhaseBehaviorSource,
+    $textureBuilder,
     $bootObjectChecker
 )
 $missing = @($required | Where-Object { -not (Test-Path -LiteralPath $_) })
@@ -264,6 +270,54 @@ if ($missing.Count -gt 0) {
 }
 
 New-Item -ItemType Directory -Path $outDir -Force | Out-Null
+
+$retailFrontendCandidates = @()
+if ($RetailFrontendBank) {
+    $retailFrontendCandidates += $RetailFrontendBank
+} else {
+    $retailFrontendCandidates += Join-Path $workspaceRoot 'work\ui_proto\art\frontend.big'
+    $programFilesX86 = ${env:ProgramFiles(x86)}
+    if ($programFilesX86) {
+        $retailFrontendCandidates += Join-Path $programFilesX86 `
+            'Steam\steamapps\common\Fable The Lost Chapters\data\graphics\pc\frontend.big'
+    }
+}
+
+$selectedRetailFrontendBank = $retailFrontendCandidates |
+    Where-Object {
+        $_ -and (Test-Path -LiteralPath $_ -PathType Leaf)
+    } |
+    Select-Object -First 1
+$visualBootUsesRetailAsset = $false
+if ($selectedRetailFrontendBank) {
+    & python $textureBuilder decode `
+        $selectedRetailFrontendBank `
+        FRONTEND_BACKDROP_01 `
+        $visualBootRetailArtwork `
+        --crop-real
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $visualBootRetailArtwork)
+    ) {
+        if ($RetailFrontendBank) {
+            throw "Failed to decode FRONTEND_BACKDROP_01 from $selectedRetailFrontendBank."
+        }
+        Write-Warning (
+            "Retail frontend asset decode failed; using authored artwork fallback."
+        )
+    } else {
+        $visualBootArtwork = $visualBootRetailArtwork
+        $visualBootUsesRetailAsset = $true
+        Write-Output (
+            "VISUAL_ASSET RETAIL name=FRONTEND_BACKDROP_01 " +
+            "bank=$selectedRetailFrontendBank"
+        )
+    }
+} elseif ($RetailFrontendBank) {
+    throw "Retail frontend bank was not found: $RetailFrontendBank"
+} else {
+    Write-Output 'VISUAL_ASSET FALLBACK name=fabledecomp_boot_concept'
+}
 
 $windowsSdkUmLib = Get-ChildItem -LiteralPath $windowsSdkLibRoot -Directory |
     Where-Object {
@@ -295,6 +349,10 @@ try {
         $compileOptions += @('/O2', '/Oy')
     } else {
         $compileOptions += @('/Od', '/Zi')
+    }
+    $visualBootCompileOptions = @($compileOptions)
+    if ($visualBootUsesRetailAsset) {
+        $visualBootCompileOptions += '/DFABLETLC_RETAIL_FRONTEND_ARTWORK'
     }
 
     function Invoke-VerifiedLeaf {
@@ -1026,7 +1084,7 @@ try {
         throw 'Failed to compile the authored visual engine boundary.'
     }
 
-    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+    & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
         "/Fo$visualBootObject" $visualBootSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -1035,7 +1093,7 @@ try {
         throw 'Failed to compile the visual boot checkpoint.'
     }
 
-    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+    & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
         "/Fo$visualBootBehaviorObject" $visualBootBehaviorSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -1051,6 +1109,18 @@ try {
             $pngStream,
             [System.Windows.Media.Imaging.BitmapCreateOptions]::PreservePixelFormat,
             [System.Windows.Media.Imaging.BitmapCacheOption]::OnLoad)
+        if (
+            $visualBootUsesRetailAsset -and
+            (
+                $decoder.Frames[0].PixelWidth -ne 640 -or
+                $decoder.Frames[0].PixelHeight -ne 480
+            )
+        ) {
+            throw (
+                "Retail frontend artwork must be 640x480 after cropping; got " +
+                "$($decoder.Frames[0].PixelWidth)x$($decoder.Frames[0].PixelHeight)."
+            )
+        }
         $encoder = New-Object System.Windows.Media.Imaging.BmpBitmapEncoder
         $encoder.Frames.Add($decoder.Frames[0])
         $bitmapStream = [System.IO.File]::Create($visualBootBitmap)
@@ -1307,7 +1377,12 @@ try {
     Write-Output "STAGE3_STARTUP PASS executable=$stage3Executable boundary=GFMainPhase3"
     Write-Output "GFINITIALISE_COORDINATOR PASS address=004022b0 parity=RELOCATION_MATCH"
     Write-Output "GFINITIALISE_PROGRESS_INTEGRATION PASS boundary=GFInitialiseTail"
-    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint"
+    $visualAssetGrade = if ($visualBootUsesRetailAsset) {
+        'RetailFrontendBackdrop'
+    } else {
+        'AuthoredFallback'
+    }
+    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude

@@ -206,6 +206,12 @@ namespace
         "FableDecomp - Retail Progress Display Ready";
     const char kProgressActiveWindowTitle[] =
         "FableDecomp - Retail Progress Display Active";
+#if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
+    const char kRetailAssetReadyWindowTitle[] =
+        "FableDecomp - Retail Frontend Asset + Progress Display Ready";
+    const char kRetailAssetActiveWindowTitle[] =
+        "FableDecomp - Retail Frontend Asset + Progress Display Active";
+#endif
 
     const FableUint kImageBitmap = 0;
     const FableUint kLoadCreatedDibSection = 0x00002000;
@@ -328,6 +334,15 @@ void FABLE_FASTCALL FableSetVisualProgressDisplayState(
     g_RetailProgressDisplayActive = active;
 }
 
+bool FABLE_FASTCALL FableIsRetailVisualAssetEmbedded()
+{
+#if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
+    return true;
+#else
+    return false;
+#endif
+}
+
 long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     FableInstanceHandle instance,
     char* commandLine,
@@ -385,9 +400,15 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     const char* windowTitle = kWindowTitle;
     if (g_RetailProgressDisplayPresent)
     {
+#if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
+        windowTitle = g_RetailProgressDisplayActive
+            ? kRetailAssetActiveWindowTitle
+            : kRetailAssetReadyWindowTitle;
+#else
         windowTitle = g_RetailProgressDisplayActive
             ? kProgressActiveWindowTitle
             : kProgressReadyWindowTitle;
+#endif
     }
 
     FableWindow window = CreateWindowExA(
