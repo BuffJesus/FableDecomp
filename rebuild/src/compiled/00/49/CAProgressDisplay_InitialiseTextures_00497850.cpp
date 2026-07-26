@@ -1,0 +1,1 @@
+void __stdcall CAProgressDisplay_InitialiseTextures(int arg0, int arg1) {}

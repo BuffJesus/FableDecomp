@@ -3,6 +3,8 @@ param(
     [int]$MaxTargetsPerRun = 16,
     [int]$TargetTimeoutMinutes = 35,
     [int]$RefreshWaitMinutes = 5,
+    [int]$FailureThreshold = 2,
+    [int]$FailureCooldownHours = 48,
     [switch]$Preview
 )
 
@@ -184,6 +186,49 @@ function Test-Recorded([string]$Address) {
     }
 }
 
+function Get-TargetFailureState([string]$Address) {
+    if (-not (Test-Path -LiteralPath $sessionPath)) { return $null }
+    try {
+        $session = Get-Content -LiteralPath $sessionPath -Raw | ConvertFrom-Json
+        $key = $Address.ToLowerInvariant().Replace('0x', '')
+        $runs = @($session.runs | Where-Object {
+            $_.address.ToLowerInvariant().Replace('0x', '') -eq $key
+        })
+        if ($runs.Count -eq 0 -or @($runs | Where-Object { $_.success -eq $true }).Count -gt 0) {
+            return $null
+        }
+        $failures = @($runs | Where-Object { $_.success -ne $true })
+        if ($failures.Count -eq 0) { return $null }
+        $last = $failures |
+            Sort-Object { [datetime]::Parse($_.timestamp) } -Descending |
+            Select-Object -First 1
+        return [pscustomobject]@{
+            Failures = $failures.Count
+            LastFailure = [datetime]::Parse($last.timestamp)
+            FunctionName = $last.function_name
+        }
+    } catch {
+        Write-QueueLog "WARN could not calculate failure cooldown for $Address`: $($_.Exception.Message)"
+        return $null
+    }
+}
+
+function Test-FailureCooldown([string]$Address, [switch]$Quiet) {
+    if ($FailureThreshold -le 0 -or $FailureCooldownHours -le 0) { return $false }
+    $state = Get-TargetFailureState $Address
+    if ($null -eq $state -or $state.Failures -lt $FailureThreshold) { return $false }
+    $retryAfter = $state.LastFailure.AddHours($FailureCooldownHours)
+    if ($retryAfter -le (Get-Date)) { return $false }
+    if (-not $Quiet) {
+        Write-QueueLog (
+            "DEFER hard target=$Address failures=$($state.Failures) " +
+            "retry_after=$($retryAfter.ToString('yyyy-MM-dd HH:mm:ss')) " +
+            "name=$($state.FunctionName)"
+        )
+    }
+    return $true
+}
+
 function Get-AllRecordedAddresses {
     $recorded = @{}
     @(
@@ -229,7 +274,8 @@ function Get-AllRecordedAddresses {
 
 $allRecorded = Get-AllRecordedAddresses
 $pendingSeeds = @($seedTargets | Where-Object {
-    -not $allRecorded.ContainsKey($_.Address.ToLowerInvariant().Replace('0x', ''))
+    -not $allRecorded.ContainsKey($_.Address.ToLowerInvariant().Replace('0x', '')) -and
+    -not (Test-FailureCooldown $_.Address)
 })
 $targets = @($pendingSeeds | Select-Object -First $MaxTargetsPerRun)
 if ($targets.Count -eq 0) {
@@ -239,7 +285,8 @@ if ($targets.Count -eq 0) {
             Import-Csv -LiteralPath $backlogPath -Delimiter "`t" |
                 Where-Object {
                     $_.gap -match 'prototype' -and
-                    -not $allRecorded.ContainsKey($_.address.ToLowerInvariant().Replace('0x', ''))
+                    -not $allRecorded.ContainsKey($_.address.ToLowerInvariant().Replace('0x', '')) -and
+                    -not (Test-FailureCooldown $_.address -Quiet)
                 } |
                 Select-Object -First $MaxTargetsPerRun |
                 ForEach-Object {

@@ -1,0 +1,1 @@
+void __stdcall CAInputProcess_Update(int) {}
