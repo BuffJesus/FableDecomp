@@ -143,6 +143,7 @@ or enter the game loop.
 | 7 | `0x009E9FD0` | SetProgressDisplay retained owner | 133 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9e/Global_SetProgressDisplay_009e9fd0.cpp) | The retail counted owner keeps the progress object alive across the visual window and releases it on shutdown. |
 | 8 | `0x009EA060` | GetProgressDisplay counted query | 28 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9e/Global_GetProgressDisplay_009ea060.cpp) | The visual handoff now acquires the retained owner through the exact retail getter and balances the temporary reference after the window closes. |
 | 9 | `0x0049B460` | CProgressDisplay active-state query | 4 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/49/CProgressDisplay_IsActive_0049b460.cpp) | The visual window reports the recovered retained display state through the exact four-byte retail query. |
+| 10 | `0x00499A70` | CProgressDisplay text-mode state | 47 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/49/CProgressDisplay_SetToDisplayText_00499a70.cpp) | The visual startup now traverses the retail 47-byte state transition, clearing the primary text/value for false and routing true through CalculateNextTextTag. |
 
 ## Next dependency closure
 
@@ -154,7 +155,8 @@ or enter the game loop.
 6. **CProgressDisplay constructor (`0x00499CE0`):** Recover the display and texture consumers that render the retained object.
 7. **SetProgressDisplay retained owner (`0x009E9FD0`):** Replace the boundary display/resource graph with recovered engine ownership.
 8. **GetProgressDisplay counted query (`0x009EA060`):** Connect the returned object to recovered texture and drawing consumers.
-9. **CProgressDisplay active-state query (`0x0049B460`):** Recover StartProgress, InitialiseTextures, and the renderer-backed drawing path.
+9. **CProgressDisplay active-state query (`0x0049B460`):** Recover the shared StartProgress/Initialize body as one control-flow unit; the 13-byte StartProgress entry falls through into 0x00499AAD and is not a standalone leaf.
+10. **CProgressDisplay text-mode state (`0x00499A70`):** Recover the shared StartProgress/Initialize body, then InitialiseTextures and the renderer-backed drawing path.
 
 ## GFMain dependency phases
 

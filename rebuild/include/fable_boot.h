@@ -53,9 +53,9 @@ struct CProgressDisplay
     fable_u32 value3C;
     fable_u32 value40;
     fable_u32 value44;
-    fable_u32 wideText48;
-    fable_u32 primaryText4C;
-    fable_u32 secondaryText50;
+    CWideString wideText48;
+    CCharString primaryText4C;
+    CCharString secondaryText50;
     fable_u32 value54;
     fable_u32 value58;
     fable_u32 unknown5C;
@@ -76,6 +76,8 @@ struct CProgressDisplay
 
     CProgressDisplay();
     bool IsActive() const;
+    void SetToDisplayText(bool enabled);
+    void CalculateNextTextTag();
 
     __forceinline static void* operator new(unsigned int size)
     {
@@ -89,6 +91,7 @@ struct FableReferenceCount;
 
 extern fable_u8 g_CProgressDisplayVTable_012388B4;
 extern double g_FableZeroDouble_0122ED70;
+extern const char g_FableEmptyText_0122D70E[];
 extern CProgressDisplay* g_FableProgressDisplayObject_013CAA38;
 extern FableReferenceCount* g_FableProgressDisplayReference_013CAA3C;
 void FABLE_FASTCALL FableConstructWideString(CWideString* value);

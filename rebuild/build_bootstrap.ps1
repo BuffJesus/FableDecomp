@@ -23,6 +23,8 @@ $progressSetupSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GFIniti
 $progressSetupBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GFInitialiseSetupProgressDisplay_00413120_test.cpp'
 $progressDisplayConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\49\CProgressDisplay_Constructor_00499ce0.cpp'
 $progressDisplayConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\49\CProgressDisplay_Constructor_00499ce0_test.cpp'
+$progressDisplayTextModeSource = Join-Path $rebuildRoot 'src\compiled\00\49\CProgressDisplay_SetToDisplayText_00499a70.cpp'
+$progressDisplayTextModeBehaviorSource = Join-Path $rebuildRoot 'tests\00\49\CProgressDisplay_SetToDisplayText_00499a70_test.cpp'
 $progressDisplayIsActiveSource = Join-Path $rebuildRoot 'src\compiled\00\49\CProgressDisplay_IsActive_0049b460.cpp'
 $progressDisplayIsActiveBehaviorSource = Join-Path $rebuildRoot 'tests\00\49\CProgressDisplay_IsActive_0049b460_test.cpp'
 $setProgressDisplaySource = Join-Path $rebuildRoot 'src\compiled\00\9e\Global_SetProgressDisplay_009e9fd0.cpp'
@@ -95,6 +97,7 @@ $stage1BoundaryObject = Join-Path $outDir 'stage1_engine_boundary.obj'
 $progressSetupObject = Join-Path $outDir 'gfinitialise_setup_progress.obj'
 $progressSetupBehaviorObject = Join-Path $outDir 'gfinitialise_setup_progress_behavior.obj'
 $progressDisplayConstructorObject = Join-Path $outDir 'progress-display-constructor.obj'
+$progressDisplayTextModeObject = Join-Path $outDir 'progress-display-text-mode.obj'
 $progressDisplayIsActiveObject = Join-Path $outDir 'progress-display-is-active.obj'
 $setProgressDisplayObject = Join-Path $outDir 'set-progress-display.obj'
 $getProgressDisplayObject = Join-Path $outDir 'get-progress-display.obj'
@@ -158,6 +161,7 @@ $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $gfInitialisePassPattern = 'FABLETLC_GFINITIALISE_BEHAVIOR PASS'
 $progressSetupPassPattern = 'FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS'
 $progressDisplayConstructorPassPattern = 'FABLETLC_PROGRESS_DISPLAY_CONSTRUCTOR_BEHAVIOR PASS'
+$progressDisplayTextModePassPattern = 'FABLETLC_PROGRESS_DISPLAY_TEXT_MODE_BEHAVIOR PASS'
 $progressDisplayIsActivePassPattern = 'FABLETLC_PROGRESS_DISPLAY_IS_ACTIVE_BEHAVIOR PASS'
 $setProgressDisplayPassPattern = 'FABLETLC_SET_PROGRESS_DISPLAY_BEHAVIOR PASS'
 $getProgressDisplayPassPattern = 'FABLETLC_GET_PROGRESS_DISPLAY_BEHAVIOR PASS'
@@ -201,6 +205,8 @@ $required = @(
     $progressSetupBehaviorSource,
     $progressDisplayConstructorSource,
     $progressDisplayConstructorBehaviorSource,
+    $progressDisplayTextModeSource,
+    $progressDisplayTextModeBehaviorSource,
     $progressDisplayIsActiveSource,
     $progressDisplayIsActiveBehaviorSource,
     $setProgressDisplaySource,
@@ -445,6 +451,14 @@ try {
         -BehaviorSource $progressDisplayIsActiveBehaviorSource `
         -OutputStem 'progress-display-is-active' `
         -PassPattern $progressDisplayIsActivePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00499a70' `
+        -Description 'CProgressDisplay text-mode setter' `
+        -Source $progressDisplayTextModeSource `
+        -BehaviorSource $progressDisplayTextModeBehaviorSource `
+        -OutputStem 'progress-display-text-mode' `
+        -PassPattern $progressDisplayTextModePassPattern
 
     Invoke-VerifiedLeaf `
         -Address '009e9fd0' `
@@ -1214,6 +1228,7 @@ try {
         $gfInitialiseEngineBoundaryObject,
         $progressSetupObject,
         $progressDisplayConstructorObject,
+        $progressDisplayTextModeObject,
         $progressDisplayIsActiveObject,
         $setProgressDisplayObject,
         $getProgressDisplayObject,
