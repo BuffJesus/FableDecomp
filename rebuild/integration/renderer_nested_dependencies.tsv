@@ -1,0 +1,63 @@
+parent_address	parent_name	address	name	retail_bytes	recovery_status	source	notes
+00498490	CProgressDisplay::DrawRetailDisplay	00406c20	CUserProfileManager::GetAutoSaveDisplayName	149	UNRECOVERED		Profile-name text source.
+00498490	CProgressDisplay::DrawRetailDisplay	0040d2a0	CCodeSectionManager::Get	69	UNRECOVERED		Code-section singleton accessor.
+00498490	CProgressDisplay::DrawRetailDisplay	00437210	CFontBank::GetVStringWidth	76	MATCH	rebuild/src/compiled/00/43/CFontBank_GetVStringWidth_00437210.cpp	Text layout measurement.
+00498490	CProgressDisplay::DrawRetailDisplay	00437570	CWideString comparison leaf	8	MATCH	rebuild/src/compiled/00/43/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTypeCParticleMorphsCEntrystdpairenumEHeroMorphTypeclassCParticleMorphs_CEntryconst_00437570.cpp	Generated name remains poisoned; body is parity-proven.
+00498490	CProgressDisplay::DrawRetailDisplay	00438570	PeekGuiDef	63	RELOCATION_MATCH	rebuild/src/compiled/00/43/global_PeekGuiDef_00438570.cpp	GUI definition lookup.
+00498490	CProgressDisplay::DrawRetailDisplay	00497f80	CProgressDisplay::FormatTextForVWindow	77	RELOCATION_MATCH	rebuild/src/compiled/00/49/CProgressDisplay_FormatTextForVWindow_00497f80.cpp	EgoCore-corrected private method; wraps text and copies the window.
+00498490	CProgressDisplay::DrawRetailDisplay	00497fd0	CProgressDisplay::DisplayCenteredText	1070	UNRECOVERED		Large centered-text orchestration body.
+00498490	CProgressDisplay::DrawRetailDisplay	0099aed0	CWideString::CWideString	15	BOOT_RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Constructor_0099aed0.cpp	Boot-gated but not in the canonical candidate catalog.
+00498490	CProgressDisplay::DrawRetailDisplay	0099b150	CWideString::operator!=	121	UNRECOVERED		Ghidra name corrected from a generic comparison leaf.
+00498490	CProgressDisplay::DrawRetailDisplay	0099b510	CWideString::~CWideString	68	BOOT_RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp	Boot-gated but not in the canonical candidate catalog.
+00498490	CProgressDisplay::DrawRetailDisplay	0099b720	CWideString::CWideString	66	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_CopyConstructor_0099b720.cpp	Counted-storage copy constructor.
+00498490	CProgressDisplay::DrawRetailDisplay	0099b7d0	CWideString::operator=	47	UNRECOVERED		Wide-string assignment.
+00498490	CProgressDisplay::DrawRetailDisplay	0099b800	CWideString::AssignFromWide	92	UNRECOVERED		Generated name remains provisional.
+00498490	CProgressDisplay::DrawRetailDisplay	0099bff0	CWideString::SetFromEnum	134	UNRECOVERED		Generated name remains provisional.
+00498490	CProgressDisplay::DrawRetailDisplay	0099e960	CCharString::operator!=	65	UNRECOVERED		Narrow-string comparison.
+00498490	CProgressDisplay::DrawRetailDisplay	0099eae0	CCharString::~CCharString	12	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp	Counted narrow-string release.
+00498490	CProgressDisplay::DrawRetailDisplay	0099ebf0	CCharString::CCharString	61	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp	Length-qualified narrow-string construction.
+00498490	CProgressDisplay::DrawRetailDisplay	0099ec30	CCharString::CCharString	61	UNRECOVERED		Narrow-string copy constructor.
+00498490	CProgressDisplay::DrawRetailDisplay	0099ec70	CCharString::GetSubString	148	UNRECOVERED		Substring extraction.
+00498490	CProgressDisplay::DrawRetailDisplay	0099efb0	CCharString::operator=	40	UNRECOVERED		Narrow-string assignment.
+00498490	CProgressDisplay::DrawRetailDisplay	0099f600	CCharString::AppendCString	130	UNRECOVERED		Generated name remains provisional.
+00498490	CProgressDisplay::DrawRetailDisplay	009a4ec0	GFGetSystemManager	6	MATCH	rebuild/src/compiled/00/9a/Global_GFGetSystemManager_009a4ec0.cpp	EgoCore-corrected fixed system-manager accessor.
+00498490	CProgressDisplay::DrawRetailDisplay	009bedc0	CDisplayManager::GetRenderTargetDimensions	24	UNRECOVERED		EgoCore PDB rejects the poisoned message-filter label.
+00498490	CProgressDisplay::DrawRetailDisplay	009c7980	ConstructString	76	UNRECOVERED		Wide-string construction helper.
+00498490	CProgressDisplay::DrawRetailDisplay	009c95e0	CDataBank::GetTextBySymbol	150	UNRECOVERED		Localized text lookup.
+00498490	CProgressDisplay::DrawRetailDisplay	009dc6e0	CRenderManager2D::Draw2DTexture	388	UNRECOVERED		Texture primitive construction.
+00498490	CProgressDisplay::DrawRetailDisplay	009dca80	CRenderManager2D::Draw2DGraphic	971	UNRECOVERED		Graphic primitive construction.
+00498490	CProgressDisplay::DrawRetailDisplay	009dd210	CRenderManager2D::Draw2DScaledGraphic	854	UNRECOVERED		Scaled graphic primitive construction.
+00498490	CProgressDisplay::DrawRetailDisplay	009de3f0	ConstructString	25	UNRECOVERED		Integer-to-wide-string helper.
+00498490	CProgressDisplay::DrawRetailDisplay	009e1bc0	GFGetTime	168	UNRECOVERED		Animation/progress timing.
+00498490	CProgressDisplay::DrawRetailDisplay	009e1d00	GFRoundVXToNearestPixel	76	RELOCATION_MATCH	rebuild/src/compiled/00/9e/Global_GFRoundVXToNearestPixel_009e1d00.cpp	Virtual-X pixel snapping.
+00498490	CProgressDisplay::DrawRetailDisplay	009e1d50	GFRoundVYToNearestPixel	77	RELOCATION_MATCH	rebuild/src/compiled/00/9e/Global_GFRoundVYToNearestPixel_009e1d50.cpp	Virtual-Y pixel snapping.
+00498490	CProgressDisplay::DrawRetailDisplay	009e1da0	GFAXToVX	40	RELOCATION_MATCH	rebuild/src/compiled/00/9e/Global_GFAXToVX_009e1da0.cpp	Actual-X to virtual-X conversion.
+00498490	CProgressDisplay::DrawRetailDisplay	009e1dd0	GFAYToVY	49	UNRECOVERED		One adjacent-instruction scheduling residue remains.
+00498490	CProgressDisplay::DrawRetailDisplay	009e2020	GFABoxToVBox	199	UNRECOVERED		Y halves retain the same scheduling residue.
+00498490	CProgressDisplay::DrawRetailDisplay	00a0fd90	WordWrap_SetCallback	21	UNRECOVERED		Word-wrap callback configuration.
+00498490	CProgressDisplay::DrawRetailDisplay	00bfea70	__ftol2	117	TOOLCHAIN_RUNTIME		Microsoft floating-point conversion runtime helper.
+009da9f0	CRenderManager2D::Render2DDrawList	00987fe0	CShaderRenderManager::EnableVertexShaders	61	RELOCATION_MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_EnableVertexShaders_00987fe0.cpp	Vertex-shader mode setup.
+009da9f0	CRenderManager2D::Render2DDrawList	00988020	CShaderRenderManager::ApplyVertexShader	176	UNRECOVERED		Vertex-shader binding and ownership.
+009da9f0	CRenderManager2D::Render2DDrawList	009880e0	CShaderRenderManager::DisableVertexShaders	44	RELOCATION_MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_DisableVertexShaders_009880e0.cpp	Fixed-function vertex mode setup.
+009da9f0	CRenderManager2D::Render2DDrawList	00988110	CShaderRenderManager::EnablePixelShaders	36	RELOCATION_MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_EnablePixelShaders_00988110.cpp	Pixel-shader capability gate.
+009da9f0	CRenderManager2D::Render2DDrawList	00988190	CShaderRenderManager::DisablePixelShaders	85	UNRECOVERED		Behavior mapped; VC7.1 instruction scheduling still differs.
+009da9f0	CRenderManager2D::Render2DDrawList	00988290	CShaderRenderManager::ResetWorldTransform	131	MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_ResetWorldTransform_00988290.cpp	Identity world transform and dirty flags.
+009da9f0	CRenderManager2D::Render2DDrawList	00988a20	CShaderRenderManager::UpdatePixelShader	41	UNRECOVERED		Pixel-shader state upload.
+009da9f0	CRenderManager2D::Render2DDrawList	00988a50	CShaderRenderManager::UpdateCombinedProjectionTransform	975	UNRECOVERED		Large transform update.
+009da9f0	CRenderManager2D::Render2DDrawList	00989760	CShaderRenderManager::UpdateAmbient	85	UNRECOVERED		Ambient state upload.
+009da9f0	CRenderManager2D::Render2DDrawList	009897c0	CShaderRenderManager::UpdateFogColour	99	UNRECOVERED		Fog-colour state upload.
+009da9f0	CRenderManager2D::Render2DDrawList	00989bf0	CShaderRenderManager::UpdatePixelShaderConstants	186	UNRECOVERED		Pixel constant upload.
+009da9f0	CRenderManager2D::Render2DDrawList	0098a760	CShaderRenderManager::UpdateLightGlobals	54	UNRECOVERED		Light-global upload.
+009da9f0	CRenderManager2D::Render2DDrawList	0098b230	CShaderRenderManager::RegisterVertexShaderConstantLayout	73	UNRECOVERED		Constant-layout registration.
+009da9f0	CRenderManager2D::Render2DDrawList	0098b5e0	CShaderRenderManager::SetVertexShaderConstantLayout	624	UNRECOVERED		Large constant-layout application.
+009da9f0	CRenderManager2D::Render2DDrawList	0098b930	CShaderRenderManager::SetVSConstants	37	UNRECOVERED		Vertex constant upload.
+009da9f0	CRenderManager2D::Render2DDrawList	009a0cf0	CRenderManagerCore::AttachTextureToStage	79	UNRECOVERED		Texture-stage binding.
+009da9f0	CRenderManager2D::Render2DDrawList	009df060	CStateBlockFunctionAlphaBoolean::Apply	1736	UNRECOVERED		Large render-state application body; Ghidra label is poisoned.
+009da9f0	CRenderManager2D::Render2DDrawList	009e1440	Render2DDrawList::CopyBlock	79	UNRECOVERED		Candidate was 72 bytes and was not promoted.
+009da9f0	CRenderManager2D::Render2DDrawList	009e15e0	TextureCache_MoveAndCleanup	99	UNRECOVERED		Provisional helper identity.
+009da9f0	CRenderManager2D::Render2DDrawList	009f9f70	CTexture::Uninitialise	34	UNRECOVERED		Texture ownership release.
+009da9f0	CRenderManager2D::Render2DDrawList	009fa1c0	CTexture::operator=	98	UNRECOVERED		Texture counted assignment.
+009da9f0	CRenderManager2D::Render2DDrawList	009fa230	CTexture::InitialiseFromPreallocatedTexture	74	UNRECOVERED		Wrap a device texture.
+009da9f0	CRenderManager2D::Render2DDrawList	00a05840	CRenderStateManager::RestoreCaptureBlock	121	MATCH	rebuild/src/compiled/00/a0/CRenderStateManager_RestoreCaptureBlock_00a05840.cpp	Captured-state restoration.
+009da9f0	CRenderManager2D::Render2DDrawList	00a058c0	CRenderStateManager::RealiseRenderState	167	UNRECOVERED		Materialize restored render state.
+009da9f0	CRenderManager2D::Render2DDrawList	00a0aa80	Viewport forwarding leaf	11	UNRECOVERED		Generated template label is poisoned.
