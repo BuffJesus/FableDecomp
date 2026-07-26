@@ -318,6 +318,8 @@ Promotion queues and the backlog are generated under `rebuild/backlog/`.
 | `docs/TOOLCHAIN.md` | Exact commands: Ghidra import, GhidraMCP, FSE import, VC7.1 setup. |
 | `docs/WORKSPACE_LAYOUT.md` | Public/local artifact boundaries and safe housekeeping. |
 | `docs/SOURCE_ARCHITECTURE.md` | Address sharding, readable module design, and C++23 policy. |
+| `docs/COOP_REVIVAL.md` | Retail evidence, historical context, and the grounded Alter Ego revival plan. |
+| `docs/FABLE_TLC_REPORTED_BUGS.md` | Reported defects and the evidence template used before promotion to confirmed issues. |
 | `rebuild/` | The buildable reconstruction: curated source, tests, oracles, compile gate, coverage. |
 | `rebuild/RUNNABLE.md` | Staged executable-integration status and the retail boot-chain blockers. |
 | `lift/` | Auto-RE agent lane: candidate reports, config, durable run state. |
