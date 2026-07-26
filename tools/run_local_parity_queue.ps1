@@ -149,9 +149,19 @@ try {
         Invoke-Checked 'README progress refresh' {
             & $python (Join-Path $root 'tools\update_readme_progress.py') --root $root
         }
-        Invoke-Checked 'artifact organization' {
-            & $python (Join-Path $root 'tools\organize_decomp_artifacts.py') `
-                --root $root --apply --allow-active
+        Write-QueueLog 'START artifact organization'
+        & $python (Join-Path $root 'tools\organize_decomp_artifacts.py') `
+            --root $root --apply --allow-active
+        $organizerExit = $LASTEXITCODE
+        if ($organizerExit -eq 0) {
+            Write-QueueLog 'DONE artifact organization'
+        } elseif ($organizerExit -eq 2) {
+            # Exit 2 means collision-safe refusal: every source is preserved and
+            # the index is still refreshed. Live Wave3 can legitimately have a
+            # root copy and a sharded copy during its current target boundary.
+            Write-QueueLog 'WARN artifact organization preserved live collisions'
+        } else {
+            throw "artifact organization failed with exit code $organizerExit"
         }
     }
     Write-QueueLog "COMPLETE authored=$totalAuthored verified_wins=$totalWins"

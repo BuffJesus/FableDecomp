@@ -1,0 +1,1 @@
+void __fastcall CAnimComponentFollowingOnAnimFilter_SetDefaultValue() {}

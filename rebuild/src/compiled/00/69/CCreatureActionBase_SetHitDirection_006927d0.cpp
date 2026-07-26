@@ -1,0 +1,1 @@
+void __stdcall CCreatureActionBase_SetHitDirection(int arg0, int arg1, int arg2) {}

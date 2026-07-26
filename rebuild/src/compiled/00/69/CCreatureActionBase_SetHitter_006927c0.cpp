@@ -1,0 +1,1 @@
+void __stdcall CCreatureActionBase_SetHitter(int arg0) {}

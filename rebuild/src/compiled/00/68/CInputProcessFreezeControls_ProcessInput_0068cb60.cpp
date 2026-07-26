@@ -1,0 +1,1 @@
+void __stdcall CInputProcessFreezeControls_ProcessInput(int arg0, int arg1) {}

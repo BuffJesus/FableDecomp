@@ -1,0 +1,1 @@
+void __stdcall CGameScriptInterface_TraceMessage(int arg0) {}
