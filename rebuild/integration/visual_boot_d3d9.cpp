@@ -1,5 +1,6 @@
 #include "fable_visual_d3d9.h"
 #include "fable_render_state.h"
+#include "fable_render2d_vertex_queue.h"
 #include "fable_render_texture.h"
 #include "fable_render_window.h"
 #include "render2d_batch_plan.h"
@@ -360,6 +361,23 @@ namespace
                 RENDER2D_ADAPTER_REALISE_RENDER_STATE)
             {
                 g_RenderStateManager.RealiseRenderState();
+            }
+            else if (
+                eventKind ==
+                RENDER2D_ADAPTER_CLEAR_VERTEX_QUEUE)
+            {
+                Render2DDrawListBlockView controller = {};
+                Render2DDrawListBlockView* begin =
+                    reinterpret_cast<
+                        Render2DDrawListBlockView*>(
+                            const_cast<FableVisualVertex*>(
+                                vertices_));
+                Render2DDrawListBlockView* end = begin + 6;
+                controller.begin00 = begin;
+                controller.end04 = end;
+                controller.CopyBlock(begin, end);
+                if (controller.end04 != begin)
+                    succeeded_ = false;
             }
         }
 
