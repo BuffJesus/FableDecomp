@@ -52,6 +52,12 @@
   two sampler states; the recovered body performs change detection, dispatches
   them to the real D3D9 vtable, updates cached values, clears dirty markers,
   and drains the queue.
+- Relocation-matched 11-byte
+  `CRenderManagerCore::SetAWindow @ 0x00A0AA80` is now the third live
+  dependency. It performs the recovered core-to-display ownership hop; the
+  compact display endpoint issues D3D9 `SetViewport`. The full 189-byte
+  `CDisplayManager::SetViewport @ 0x009BF490` remains unrecovered because its
+  post-viewport shader-manager callback still requires the singleton graph.
 - Ego PDB corrected the visible vertex ABI to
   `CTVertexRHWColSpecTex1Base`: 0x20 bytes containing XYZRHW, diffuse,
   specular, and UV. The bridge now uses FVF `0x1C4`, a compile-time 0x20 size

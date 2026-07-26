@@ -1,6 +1,7 @@
 #include "fable_visual_d3d9.h"
 #include "fable_render_state.h"
 #include "fable_render_texture.h"
+#include "fable_render_window.h"
 #include "render2d_batch_plan.h"
 #include "render2d_draw_list_adapter.h"
 
@@ -48,6 +49,16 @@ struct FableD3DLockedRectangle
 {
     fable_i32 pitch;
     void* bits;
+};
+
+struct FableD3DViewport
+{
+    FableD3DDword x;
+    FableD3DDword y;
+    FableD3DDword width;
+    FableD3DDword height;
+    float minZ;
+    float maxZ;
 };
 
 struct FableVisualVertex
@@ -133,6 +144,9 @@ typedef FableD3DResult (FABLE_STDCALL *FableD3DDrawPrimitiveUp)(
     FableD3DUint primitiveCount,
     const void* vertices,
     FableD3DUint stride);
+typedef FableD3DResult (FABLE_STDCALL *FableD3DSetViewport)(
+    FableD3DDevice9* device,
+    const FableD3DViewport* viewport);
 
 extern "C" __declspec(dllimport) FableD3D9* FABLE_STDCALL
 Direct3DCreate9(FableD3DUint sdkVersion);
@@ -152,6 +166,7 @@ namespace
     FableD3DDevice9* g_Device = 0;
     FableD3DTexture9* g_Texture = 0;
     CRenderManagerCoreAttachTextureView g_RenderManagerCore = {};
+    CDisplayManagerWindowView g_DisplayManagerWindow;
     CRenderStateManagerRealiseView g_RenderStateManager = {};
     CRenderStateInfo g_VisualRenderStates[10] = {};
     fable_i32 g_ArtworkWidth = 0;
@@ -328,6 +343,20 @@ namespace
             }
             else if (
                 eventKind ==
+                RENDER2D_ADAPTER_SET_WINDOW)
+            {
+                const C2DBoxF* window =
+                    reinterpret_cast<const C2DBoxF*>(argument0);
+                if (window != 0)
+                {
+                    reinterpret_cast<
+                        CRenderManagerCoreWindowView*>(
+                            &g_RenderManagerCore)->
+                        SetAWindow(*window);
+                }
+            }
+            else if (
+                eventKind ==
                 RENDER2D_ADAPTER_REALISE_RENDER_STATE)
             {
                 g_RenderStateManager.RealiseRenderState();
@@ -385,6 +414,25 @@ namespace
     };
 }
 
+void CDisplayManagerWindowView::SetViewport(
+    const C2DBoxF& viewport)
+{
+    FableD3DViewport deviceViewport = {
+        static_cast<FableD3DDword>(viewport.left),
+        static_cast<FableD3DDword>(viewport.top),
+        static_cast<FableD3DDword>(
+            viewport.right - viewport.left),
+        static_cast<FableD3DDword>(
+            viewport.bottom - viewport.top),
+        0.0f,
+        1.0f
+    };
+    FableD3DSetViewport setViewport =
+        reinterpret_cast<FableD3DSetViewport>(
+            g_Device->vtable[47]);
+    setViewport(g_Device, &deviceViewport);
+}
+
 bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     void* window,
     fable_i32 backBufferWidth,
@@ -438,6 +486,9 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
         sizeof(g_RenderManagerCore));
     g_RenderManagerCore.displayDevice3CF0 =
         reinterpret_cast<FableTextureDevice*>(g_Device);
+    reinterpret_cast<CRenderManagerCoreWindowView*>(
+        &g_RenderManagerCore)->displayManager3A3C =
+            &g_DisplayManagerWindow;
     memset(
         &g_RenderStateManager,
         0,
@@ -570,7 +621,15 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
 
     Render2DAdapterInput adapterInput;
     memset(&adapterInput, 0, sizeof(adapterInput));
+    C2DBoxF fullWindow = {
+        0.0f,
+        0.0f,
+        static_cast<float>(clientWidth),
+        static_cast<float>(clientHeight)
+    };
     adapterInput.entryVertexShadersEnabled = true;
+    adapterInput.firstWindowIdentity =
+        reinterpret_cast<fable_u32>(&fullWindow);
     adapterInput.flushes = flushes;
     adapterInput.flushCount = flushCount;
     VisualRender2DAdapter adapter(vertices);
