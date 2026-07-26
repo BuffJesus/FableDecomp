@@ -1458,7 +1458,7 @@ CEngineInternalPrimitive2DText	1	1	1	0	0	0	0	0	0	0	0
 CEngineInternalPrimitive2DViewport	10	14	13	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveAnimatedMesh	16	16	16	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveAnimatedMeshFromFile	1	1	1	0	0	1	1	1	0	0	0
-CEngineInternalPrimitiveBase	15	101	99	0	0	43	43	42	1	0	0
+CEngineInternalPrimitiveBase	15	101	99	0	0	45	45	44	1	0	0
 CEngineInternalPrimitiveChanger	16	16	15	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveDecal	4	4	4	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveFlareSprite	1	1	1	0	0	0	0	0	0	0	0
@@ -3663,7 +3663,7 @@ CThingFilter_IsPotentialCustomer	0	2	1	0	0	0	0	0	0	0	0
 CThingFilter_IsSuspect	0	1	1	0	0	0	0	0	0	0	0
 CThingFilter_IsTargetable	0	1	1	0	0	0	0	0	0	0	0
 CThingFilter_IsTargetableBehind	0	1	1	0	0	0	0	0	0	0	0
-CThingFilter_IsUnconscious	0	16	16	0	0	1	1	1	0	0	0
+CThingFilter_IsUnconscious	0	16	16	0	0	3	3	3	0	0	0
 CThingFilter_IsValid	0	18	18	0	0	0	0	0	0	0	0
 CThingFilter_IsValidAttackTargetForCreature	0	2	1	0	0	0	0	0	0	0	0
 CThingFilter_IsValidCombatSpline	0	1	1	0	0	0	0	0	0	0	0
@@ -3927,7 +3927,7 @@ CWiseVillager	3	0	0	0	0	0	0	0	0	0	0
 CWitch	4	1	1	0	0	0	0	0	0	0	0
 CWitnessesSearchingDeed	0	1	0	0	0	0	0	0	0	0	0
 CWomanToAttract	6	4	4	0	0	0	0	0	0	0	0
-CWorld	206	154	150	1	0	37	37	34	0	0	0
+CWorld	206	154	150	1	0	42	42	39	0	0	0
 CWorldManager	0	3	0	0	0	0	0	0	0	0	0
 CWorldMap	200	186	183	5	0	7	7	3	4	0	0
 CWorldMapPlacementDialog	2	0	0	0	0	0	0	0	0	0	0
@@ -4233,7 +4233,7 @@ _Cons_val<std::allocator<std::pair<CSkeletalMorphs::CEntry,float>_>,std::pair<CS
 _Cons_val<std::allocator<std::pair<CWideString_const_,CChecksumCacheFile::CEntry>_>,std::pair<CWideString_const_,CChecksumCacheFile::CEntry>,std::pair<class_CWideString_const_,struct_CChecksumCacheFile	0	3	3	0	0	0	0	0	0	0	0
 _Cons_val<std::allocator<std::pair<CWideString_const_,float>_>,std::pair<CWideString_const_,float>,std	0	12	12	0	0	1	1	0	1	0	0
 _Cons_val<std::allocator<std::pair<EClothingSuitPart_const_,long>_>,std::pair<EClothingSuitPart_const_,long>,std	0	1	1	0	0	0	0	0	0	0	0
-_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	0	479	479	0	0	34	34	28	0	0	0
+_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	0	479	479	0	0	330	330	28	296	0	0
 _Cons_val<std::allocator<std::pair<long_const_,CShopItem>_>,std::pair<long_const_,CShopItem>,std	0	5	5	0	0	0	0	0	0	0	0
 _Cons_val<std::allocator<std::pair<long_const_,NProfileTimer::CProfilingInfo>_>,std::pair<long_const_,NProfileTimer::CProfilingInfo>,std::pair<long_const_,class_NProfileTimer	0	1	1	0	0	0	0	0	0	0	0
 _Cons_val<std::allocator<std::pair<unsigned___int64_const_,CGroupMemberData>_>,std::pair<unsigned___int64_const_,CGroupMemberData>,std	0	3	3	0	0	0	0	0	0	0	0
@@ -4497,7 +4497,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11371	1999	55	2	78	78	39	23	0	0
+_global	0	11371	1999	63	3	103	103	39	48	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

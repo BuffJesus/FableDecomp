@@ -1,6 +1,6 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-25 23:12 MDT (verified GFInitialise progress leaf connected).*
+*Last updated: 2026-07-25 23:43 MDT (pending replay lands 323 verified functions).*
 
 ## GFInitialise visual-path checkpoint (2026-07-25)
 
@@ -22,9 +22,18 @@
   residue closes.
 - The next visual-path closure is full `GFInitialise` promotion, then replacing
   the instrumented progress-object boundary with recovered display ownership.
-- The hourly local parity lane completed its latest four batches with 240 more
-  verified wins; the canonical README remains synchronized at 2,499 / 49,553
-  verified functions (5.04%). Wave 3 continues independently.
+- The final ordinary short-function pass added seven verified wins. Extending
+  deterministic authoring with six proven wrapper idioms and replaying staged
+  misses then added 323 more. The canonical catalog is now 3,156 compiled and
+  behavior-gated functions, with 2,829 / 49,553 retail matches (5.71%):
+  1,895 exact and 934 relocation-normalized.
+- `replay_pending_tiny.py` is now the first hourly local-parity stage. It
+  deduplicates old pending oracles, rejects non-manifest split artifacts, and
+  retries only rows recognized by the current deterministic vocabulary. This
+  makes later pattern additions recover old batches automatically. The normal
+  byte-and-behavior gate still decides every landing.
+- Full `build_bootstrap.ps1` remains green through the GFInitialise progress
+  integration and authored visual checkpoint. Wave 3 continues independently.
 
 *Last updated: 2026-07-25 21:52 MDT (Phase 3 narrow-to-wide conversion chain recovered).*
 
