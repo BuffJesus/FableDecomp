@@ -2,28 +2,16 @@
 
 #include <stdlib.h>
 
-namespace
-{
-    struct CWideStringStorage
-    {
-        wchar_t* text;
-        fable_u32 unknown04;
-        fable_u32 unknown08;
-        fable_i32 owners;
-    };
-}
-
 CWideString::~CWideString()
 {
-    CWideStringStorage* storage =
-        reinterpret_cast<CWideStringStorage*>(storage_);
+    CWideStringData* storage = storage_;
 
     if (storage != 0)
     {
         --storage->owners;
         if (storage->owners <= 0)
         {
-            storage = reinterpret_cast<CWideStringStorage*>(storage_);
+            storage = storage_;
             if (storage != 0)
             {
                 if (storage->text != 0)
@@ -34,5 +22,5 @@ CWideString::~CWideString()
         storage_ = 0;
     }
 
-    --g_CStringInstanceCount_013BCA20;
+    --g_CWideStringInstanceCount_013BCA20;
 }

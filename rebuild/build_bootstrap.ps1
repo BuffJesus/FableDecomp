@@ -24,6 +24,16 @@ $wideStringConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideS
 $wideStringConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_Constructor_0099aed0_test.cpp'
 $wideStringDestructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_Destructor_0099b510.cpp'
 $wideStringDestructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_Destructor_0099b510_test.cpp'
+$charStringConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharString_Constructor_0099ebf0.cpp'
+$charStringConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_Constructor_0099ebf0_test.cpp'
+$charStringDestructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharString_Destructor_0099eae0.cpp'
+$charStringDestructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_Destructor_0099eae0_test.cpp'
+$profileStartSource = Join-Path $rebuildRoot 'src\compiled\00\9d\NProfileTimer_StartProfile_009d8240.cpp'
+$profileStartBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\NProfileTimer_StartProfile_009d8240_test.cpp'
+$charStringDefaultSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharString_DefaultConstructor_0099e4b0.cpp'
+$charStringDefaultBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_DefaultConstructor_0099e4b0_test.cpp'
+$systemManagerInitSource = Join-Path $rebuildRoot 'src\compiled\00\40\CSystemManagerInit_Constructor_00403b10.cpp'
+$systemManagerInitBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CSystemManagerInit_Constructor_00403b10_test.cpp'
 $bootObjectChecker = Join-Path $workspaceRoot 'tools\check_boot_object.py'
 $bootstrapObject = Join-Path $outDir 'bootstrap_main.obj'
 $retailObject = Join-Path $outDir 'retail_00403c60.obj'
@@ -40,6 +50,12 @@ $wideStringConstructorObject = Join-Path $outDir 'wide_string_constructor.obj'
 $wideStringConstructorBehaviorObject = Join-Path $outDir 'wide_string_constructor_behavior.obj'
 $wideStringDestructorObject = Join-Path $outDir 'wide_string_destructor.obj'
 $wideStringDestructorBehaviorObject = Join-Path $outDir 'wide_string_destructor_behavior.obj'
+$charStringConstructorObject = Join-Path $outDir 'char_string_constructor.obj'
+$charStringConstructorBehaviorObject = Join-Path $outDir 'char_string_constructor_behavior.obj'
+$charStringDestructorObject = Join-Path $outDir 'char_string_destructor.obj'
+$charStringDestructorBehaviorObject = Join-Path $outDir 'char_string_destructor_behavior.obj'
+$profileStartObject = Join-Path $outDir 'profile_start.obj'
+$profileStartBehaviorObject = Join-Path $outDir 'profile_start_behavior.obj'
 $executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage0.exe'
 $winMainBehaviorExecutable = Join-Path $outDir 'FableTLC-WinMain-Behavior.exe'
 $stage1Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage1.exe'
@@ -48,6 +64,9 @@ $setCurrentPathBehaviorExecutable = Join-Path $outDir 'FableTLC-SetCurrentPath-B
 $getProjectPathBehaviorExecutable = Join-Path $outDir 'FableTLC-GetProjectPath-Behavior.exe'
 $wideStringConstructorBehaviorExecutable = Join-Path $outDir 'FableTLC-WideStringConstructor-Behavior.exe'
 $wideStringDestructorBehaviorExecutable = Join-Path $outDir 'FableTLC-WideStringDestructor-Behavior.exe'
+$charStringConstructorBehaviorExecutable = Join-Path $outDir 'FableTLC-CharStringConstructor-Behavior.exe'
+$charStringDestructorBehaviorExecutable = Join-Path $outDir 'FableTLC-CharStringDestructor-Behavior.exe'
+$profileStartBehaviorExecutable = Join-Path $outDir 'FableTLC-ProfileStart-Behavior.exe'
 $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
 $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $progressSetupPassPattern = 'FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS'
@@ -55,6 +74,11 @@ $setCurrentPathPassPattern = 'FABLETLC_SET_CURRENT_PATH_BEHAVIOR PASS'
 $getProjectPathPassPattern = 'FABLETLC_GET_PROJECT_PATH_BEHAVIOR PASS'
 $wideStringConstructorPassPattern = 'FABLETLC_WIDE_STRING_CONSTRUCTOR_BEHAVIOR PASS'
 $wideStringDestructorPassPattern = 'FABLETLC_WIDE_STRING_DESTRUCTOR_BEHAVIOR PASS'
+$charStringConstructorPassPattern = 'FABLETLC_CHAR_STRING_CONSTRUCTOR_BEHAVIOR PASS'
+$charStringDestructorPassPattern = 'FABLETLC_CHAR_STRING_DESTRUCTOR_BEHAVIOR PASS'
+$profileStartPassPattern = 'FABLETLC_PROFILE_START_BEHAVIOR PASS'
+$charStringDefaultPassPattern = 'FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVIOR PASS'
+$systemManagerInitPassPattern = 'FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS'
 
 $required = @(
     (Join-Path $vcRoot 'bin\cl.exe'),
@@ -74,6 +98,16 @@ $required = @(
     $wideStringConstructorBehaviorSource,
     $wideStringDestructorSource,
     $wideStringDestructorBehaviorSource,
+    $charStringConstructorSource,
+    $charStringConstructorBehaviorSource,
+    $charStringDestructorSource,
+    $charStringDestructorBehaviorSource,
+    $profileStartSource,
+    $profileStartBehaviorSource,
+    $charStringDefaultSource,
+    $charStringDefaultBehaviorSource,
+    $systemManagerInitSource,
+    $systemManagerInitBehaviorSource,
     $bootObjectChecker
 )
 $missing = @($required | Where-Object { -not (Test-Path -LiteralPath $_) })
@@ -100,6 +134,90 @@ try {
     } else {
         $compileOptions += @('/Od', '/Zi')
     }
+
+    function Invoke-VerifiedLeaf {
+        param(
+            [string]$Address,
+            [string]$Description,
+            [string]$Source,
+            [string]$BehaviorSource,
+            [string]$OutputStem,
+            [string]$PassPattern,
+            [string]$AllowMove
+        )
+
+        $object = Join-Path $outDir "$OutputStem.obj"
+        $behaviorObject = Join-Path $outDir "$OutputStem-behavior.obj"
+        $behaviorExecutable = Join-Path $outDir "$OutputStem-behavior.exe"
+
+        & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+            "/Fo$object" $Source
+        if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $object)) {
+            throw "Failed to compile $Description."
+        }
+
+        $checkArguments = @(
+            $bootObjectChecker,
+            '--root',
+            $workspaceRoot,
+            '--object',
+            $object,
+            '--address',
+            $Address
+        )
+        if ($AllowMove) {
+            $checkArguments += @('--allow-move', $AllowMove)
+        }
+        & python @checkArguments
+        if ($LASTEXITCODE -ne 0) {
+            throw "$Description failed its retail parity/residue gate."
+        }
+
+        & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+            "/Fo$behaviorObject" $BehaviorSource
+        if (
+            $LASTEXITCODE -ne 0 -or
+            -not (Test-Path -LiteralPath $behaviorObject)
+        ) {
+            throw "Failed to compile the $Description behavior fixture."
+        }
+
+        & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+            "/out:$behaviorExecutable" $object $behaviorObject
+        if (
+            $LASTEXITCODE -ne 0 -or
+            -not (Test-Path -LiteralPath $behaviorExecutable)
+        ) {
+            throw "Failed to link the $Description behavior fixture."
+        }
+
+        $behaviorOutput = & $behaviorExecutable 2>&1
+        $behaviorExitCode = $LASTEXITCODE
+        $behaviorOutput | Write-Output
+        if (
+            $behaviorExitCode -ne 0 -or
+            (($behaviorOutput -join "`n") -notmatch [regex]::Escape($PassPattern))
+        ) {
+            throw "$Description behavior fixture failed with exit code $behaviorExitCode."
+        }
+    }
+
+    Invoke-VerifiedLeaf `
+        -Address '0099e4b0' `
+        -Description 'CCharString default constructor' `
+        -Source $charStringDefaultSource `
+        -BehaviorSource $charStringDefaultBehaviorSource `
+        -OutputStem 'char-string-default-constructor' `
+        -PassPattern $charStringDefaultPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00403b10' `
+        -Description 'CSystemManagerInit constructor' `
+        -Source $systemManagerInitSource `
+        -BehaviorSource $systemManagerInitBehaviorSource `
+        -OutputStem 'system-manager-init-constructor' `
+        -PassPattern $systemManagerInitPassPattern `
+        -AllowMove '0x20:3:0x50'
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions "/Fo$retailObject" $retailSource
     if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $retailObject)) {
@@ -235,6 +353,75 @@ try {
         -not (Test-Path -LiteralPath $wideStringDestructorBehaviorObject)
     ) {
         throw 'Failed to compile the CWideString destructor behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$charStringConstructorObject" $charStringConstructorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $charStringConstructorObject)
+    ) {
+        throw 'Failed to compile the CCharString constructor.'
+    }
+
+    & python $bootObjectChecker --root $workspaceRoot `
+        --object $charStringConstructorObject --address 0099ebf0
+    if ($LASTEXITCODE -ne 0) {
+        throw 'The CCharString constructor differs from retail outside relocations.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$charStringConstructorBehaviorObject" $charStringConstructorBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $charStringConstructorBehaviorObject)
+    ) {
+        throw 'Failed to compile the CCharString constructor behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$charStringDestructorObject" $charStringDestructorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $charStringDestructorObject)
+    ) {
+        throw 'Failed to compile the CCharString destructor.'
+    }
+
+    & python $bootObjectChecker --root $workspaceRoot `
+        --object $charStringDestructorObject --address 0099eae0
+    if ($LASTEXITCODE -ne 0) {
+        throw 'The CCharString destructor differs from retail outside relocations.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$charStringDestructorBehaviorObject" $charStringDestructorBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $charStringDestructorBehaviorObject)
+    ) {
+        throw 'Failed to compile the CCharString destructor behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$profileStartObject" $profileStartSource
+    if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $profileStartObject)) {
+        throw 'Failed to compile the retail profile-start no-op.'
+    }
+
+    & python $bootObjectChecker --root $workspaceRoot `
+        --object $profileStartObject --address 009d8240
+    if ($LASTEXITCODE -ne 0) {
+        throw 'The profile-start no-op differs from retail.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$profileStartBehaviorObject" $profileStartBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $profileStartBehaviorObject)
+    ) {
+        throw 'Failed to compile the profile-start behavior fixture.'
     }
 
     $linkOptions = @(
@@ -391,6 +578,75 @@ try {
         )
     ) {
         throw "CWideString destructor fixture failed with exit code $wideStringDestructorExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$charStringConstructorBehaviorExecutable" `
+        $charStringConstructorObject `
+        $charStringConstructorBehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $charStringConstructorBehaviorExecutable)
+    ) {
+        throw 'Failed to link the CCharString constructor behavior fixture.'
+    }
+
+    $charStringConstructorOutput = & $charStringConstructorBehaviorExecutable 2>&1
+    $charStringConstructorExitCode = $LASTEXITCODE
+    $charStringConstructorOutput | Write-Output
+    if (
+        $charStringConstructorExitCode -ne 0 -or
+        (
+            ($charStringConstructorOutput -join "`n") -notmatch
+            [regex]::Escape($charStringConstructorPassPattern)
+        )
+    ) {
+        throw "CCharString constructor fixture failed with exit code $charStringConstructorExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$charStringDestructorBehaviorExecutable" `
+        $charStringDestructorObject `
+        $charStringDestructorBehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $charStringDestructorBehaviorExecutable)
+    ) {
+        throw 'Failed to link the CCharString destructor behavior fixture.'
+    }
+
+    $charStringDestructorOutput = & $charStringDestructorBehaviorExecutable 2>&1
+    $charStringDestructorExitCode = $LASTEXITCODE
+    $charStringDestructorOutput | Write-Output
+    if (
+        $charStringDestructorExitCode -ne 0 -or
+        (
+            ($charStringDestructorOutput -join "`n") -notmatch
+            [regex]::Escape($charStringDestructorPassPattern)
+        )
+    ) {
+        throw "CCharString destructor fixture failed with exit code $charStringDestructorExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$profileStartBehaviorExecutable" `
+        $profileStartObject `
+        $profileStartBehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $profileStartBehaviorExecutable)
+    ) {
+        throw 'Failed to link the profile-start behavior fixture.'
+    }
+
+    $profileStartOutput = & $profileStartBehaviorExecutable 2>&1
+    $profileStartExitCode = $LASTEXITCODE
+    $profileStartOutput | Write-Output
+    if (
+        $profileStartExitCode -ne 0 -or
+        (($profileStartOutput -join "`n") -notmatch [regex]::Escape($profileStartPassPattern))
+    ) {
+        throw "Profile-start fixture failed with exit code $profileStartExitCode."
     }
 
     Write-Output "BOOTSTRAP_BUILD PASS configuration=$Configuration executable=$executable"
