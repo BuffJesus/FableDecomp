@@ -6,8 +6,10 @@ catalog. Pairs with `tools/permuter/` (the register-allocation / flag-sweep crac
 
 ## The cycle
 
-1. **Select** untried candidates from `rebuild/manifest/functions.tsv` (accessors/setters/predicates
-   with a complete prototype, primitive/pointer return, not already landed) → `targets.json`.
+1. **Select** untried candidates from `rebuild/manifest/functions.tsv` with
+   `next_batch.py <name> <count> [max_len]`. It writes a paired oracle/target manifest under
+   `rebuild/oracles/pending/`. Capstone performs in-process function splitting when installed;
+   `objdump` remains the portable fallback.
 2. **Extract oracle** — coordinate with the auto-RE loop (drop `lift/state/re-agent-wave3-queue.stop`,
    run `ExportFunctionOracle.java` headless for the addresses, remove the marker). Ground-truth bytes.
    `pe_oracle.py` is a Ghidra-free fallback but only ~76% length-accurate — prefer the Ghidra export.
@@ -22,6 +24,20 @@ catalog. Pairs with `tools/permuter/` (the register-allocation / flag-sweep crac
    skips already-landed addresses, and (with `--land`) writes `src/compiled` + `tests` + catalog +
    oracle. Then `git` add/commit/push.
 
+The zero-agent fast path is `auto_author_tiny.py <oracle.tsv> <output.json>`. It recognizes only
+instruction streams whose source semantics are determined by the bytes (empty functions, constant
+returns, fastcall self returns, simple field loads/stores, and masks). Its output still goes through
+`verify_and_land.py`; a bad inference can cost one compile but cannot land.
+
+`tools/run_local_parity_queue.ps1` connects select → deterministic author → verify/land →
+canonical report refresh as a bounded, Ghidra-free background lane. It is intentionally separate
+from Wave 3 structural reconstruction so the strict verified counter can advance while Ghidra is
+busy. Install or update its hourly scheduled task with:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/InstallLocalParityTask.ps1
+```
+
 ## VC7.1 gotchas (baked into the tooling)
 - `__thiscall` on a free function is illegal (C4234) — model member accessors as `__fastcall(objptr)`
   (byte-identical for a this-only accessor).
@@ -30,11 +46,15 @@ catalog. Pairs with `tools/permuter/` (the register-allocation / flag-sweep crac
   MATCH; the lander sweeps this automatically.
 - Parity masks relocations (call rel32 + abs-addr operands) — declare engine callees/globals `extern`.
 
-## Resume point (paused 2026-07-23 for shutdown)
-- **200 fresh oracle rows already extracted** — `rebuild/oracles/pending/batch3_oracle.tsv` (+
-  `batch3_targets.json`). No Ghidra run needed to resume: `gen_bundles.py` them, author in batches of
-  ~50, verify_and_land.
-- A **re-author fleet** for 27 semantic-miss accessors was mid-run at shutdown (lost; re-runnable —
-  targets were the length-mismatched DIFFERs from the 55-accessor batch).
-- Session landed **30 byte-parity promotions**; dashboard byte-identical 51→55 and climbing as the
-  Rebuild Refresh ingests the ~24 accessor lands still pending a rebuild.
+## Current resume point (2026-07-25)
+
+- Batch 18 and batch 19 landed 97 authoritative manifest-backed deterministic authors through exact
+  byte and behavior verification.
+- The integrity follow-up removed 146 byte-matching post-`ret` tails that lacked a manifest function
+  start. `next_batch.py` no longer emits those speculative rows, and `verify_and_land.py`
+  independently rejects any future outside-manifest candidate.
+- Older staged batches remain excluded by `next_batch.py`, so the scheduled lane advances rather
+  than repeatedly selecting their unresolved rows.
+- `crack_residue.py`, `verify_residue.py`, and `tools/permuter/` remain targeted tools for promising
+  same-length `DIFFER` rows. They are not sprayed across every residue because prior audits proved
+  several compiler register-allocation differences irreducible from VC7.1 source spelling.

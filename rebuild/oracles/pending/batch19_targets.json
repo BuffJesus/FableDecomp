@@ -1,0 +1,4002 @@
+[
+ {
+  "address": "004df47f",
+  "name": "CObstacleNavigatorExternalInterface::GetPNavigatorObstacles",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "std::vector<CSteeringAgent const *,std::allocator<CSteeringAgent const *> > *",
+  "pc": "1"
+ },
+ {
+  "address": "004df482",
+  "name": "CObstacleNavigatorExternalInterface::GetPThingToNotAvoid",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "CSteeringAgent const *",
+  "pc": "1"
+ },
+ {
+  "address": "004df4a0",
+  "name": "CObstacleNavigatorExternalInterface::IsPlayer",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "004d4e78",
+  "name": "COccupiableDef::GetSizeofClass",
+  "module": "COccupiableDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d4fe6",
+  "name": "CInterestingToVillagersDef::GetSizeofClass",
+  "module": "CInterestingToVillagersDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d500f",
+  "name": "CGuardDef::GetSizeofClass",
+  "module": "CGuardDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d506c",
+  "name": "CActivateQuestDef::GetSizeofClass",
+  "module": "CActivateQuestDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d50b2",
+  "name": "CCrateStackDef::GetSizeofClass",
+  "module": "CCrateStackDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d5128",
+  "name": "COverheadDisplayDef::GetSizeofClass",
+  "module": "COverheadDisplayDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d513e",
+  "name": "CTavernTableDef::GetSizeofClass",
+  "module": "CTavernTableDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d5211",
+  "name": "CTavernDef::GetSizeofClass",
+  "module": "CTavernDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d52fa",
+  "name": "CDrunkennessDef::GetSizeofClass",
+  "module": "CDrunkennessDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d538e",
+  "name": "CFireballSpellLevelDef::GetSizeofClass",
+  "module": "CFireballSpellLevelDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d53a4",
+  "name": "CThingDrainLifeShotDef::GetSizeofClass",
+  "module": "CThingDrainLifeShotDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d584f",
+  "name": "CGoldDef::GetSizeofClass",
+  "module": "CGoldDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d597b",
+  "name": "CCoinGameObstacleDef::GetSizeofClass",
+  "module": "CCoinGameObstacleDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d5991",
+  "name": "CTavernGameCoinBaseDef::GetSizeofClass",
+  "module": "CTavernGameCoinBaseDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d59da",
+  "name": "CTavernGameCoinGolfDef::GetSizeofClass",
+  "module": "CTavernGameCoinGolfDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d5b15",
+  "name": "CDecapitationDef::GetSizeofClass",
+  "module": "CDecapitationDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d5c43",
+  "name": "CWallMountEffectsDef::GetSizeofClass",
+  "module": "CWallMountEffectsDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d5c89",
+  "name": "CFishDef::GetSizeofClass",
+  "module": "CFishDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d5ccf",
+  "name": "CTeleporterDef::GetSizeofClass",
+  "module": "CTeleporterDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d5d95",
+  "name": "CHeroSpecialMovementDef::GetSizeofClass",
+  "module": "CHeroSpecialMovementDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d5dbe",
+  "name": "CResurrectionItemDef::GetSizeofClass",
+  "module": "CResurrectionItemDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d5de7",
+  "name": "CKrakenTentacleDef::GetSizeofClass",
+  "module": "CKrakenTentacleDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d5e10",
+  "name": "CAICreatureWillPowerIndicatorDef::GetSizeofClass",
+  "module": "CAICreatureWillPowerIndicatorDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d5ee4",
+  "name": "CCarriedReadableDef::GetSizeofClass",
+  "module": "CCarriedReadableDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d5fa7",
+  "name": "CFishingRodDef::GetSizeofClass",
+  "module": "CFishingRodDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d6177",
+  "name": "CNymphDef::GetSizeofClass",
+  "module": "CNymphDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d61a0",
+  "name": "CSummonDef::GetSizeofClass",
+  "module": "CSummonDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d624b",
+  "name": "CCameraCollisionDef::GetSizeofClass",
+  "module": "CCameraCollisionDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d6332",
+  "name": "CTCVolumeContainmentTrackerDef::GetSizeofClass",
+  "module": "CTCVolumeContainmentTrackerDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d649f",
+  "name": "CWillResponseDef::GetSizeofClass",
+  "module": "CWillResponseDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d64f8",
+  "name": "CBettingDef::GetSizeofClass",
+  "module": "CBettingDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d6601",
+  "name": "COracleMinigameDef::GetSizeofClass",
+  "module": "COracleMinigameDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d665a",
+  "name": "CFireheartMinigameDef::GetSizeofClass",
+  "module": "CFireheartMinigameDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d6670",
+  "name": "CLightningOrbDef::GetSizeofClass",
+  "module": "CLightningOrbDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d66ac",
+  "name": "CHasNameDef::GetSizeofClass",
+  "module": "CHasNameDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d7a0b",
+  "name": "CCarryableDef::GetSizeofClass",
+  "module": "CCarryableDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d7a21",
+  "name": "CVillageMemberDef::GetSizeofClass",
+  "module": "CVillageMemberDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d7a46",
+  "name": "CBedDef::GetSizeofClass",
+  "module": "CBedDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d7a5c",
+  "name": "CSmokeGeneratorDef::GetSizeofClass",
+  "module": "CSmokeGeneratorDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d7a72",
+  "name": "CCreatureNavigationDef::GetSizeofClass",
+  "module": "CCreatureNavigationDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d7ae5",
+  "name": "CReadableDef::GetSizeofClass",
+  "module": "CReadableDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004dd920",
+  "name": "CCarryingDef::GetSizeofClass",
+  "module": "CCarryingDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004ddb52",
+  "name": "CBuyableHouseDef::GetSizeofClass",
+  "module": "CBuyableHouseDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004de200",
+  "name": "CCreatureGeneratorDef::GetSizeofClass",
+  "module": "CCreatureGeneratorDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004de7f9",
+  "name": "CCreatureModeDef::GetSizeofClass",
+  "module": "CCreatureModeDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004de8f1",
+  "name": "CBossDef::GetSizeofClass",
+  "module": "CBossDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004de912",
+  "name": "CFishingDef::GetSizeofClass",
+  "module": "CFishingDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004debc0",
+  "name": "CTurncoatDef::GetSizeofClass",
+  "module": "CTurncoatDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004defa3",
+  "name": "CKrakenDef::GetSizeofClass",
+  "module": "CKrakenDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004df477",
+  "name": "CObstacleNavigatorExternalInterface::GetNavigatorObstacles",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "std::vector<CSteeringAgent const *,std::allocator<CSteeringAgent const *> > const &",
+  "pc": "1"
+ },
+ {
+  "address": "004df47b",
+  "name": "CObstacleNavigatorExternalInterface::GetNavigatorObstacles",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "std::vector<CSteeringAgent const *,std::allocator<CSteeringAgent const *> > &",
+  "pc": "1"
+ },
+ {
+  "address": "004e088a",
+  "name": "CExperienceDef::GetSizeofClass",
+  "module": "CExperienceDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004e091a",
+  "name": "CHeroSuitDef::GetSizeofClass",
+  "module": "CHeroSuitDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004da6f7",
+  "name": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>",
+  "module": "_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004df3c6",
+  "name": "CObstacleNavigatorExternalInterface::IsMovementBlockedAt",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "5"
+ },
+ {
+  "address": "004df3e6",
+  "name": "CObstacleNavigatorExternalInterface::GetNavigationLevelAt",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "long",
+  "pc": "2"
+ },
+ {
+  "address": "004df54f",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004df885",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dfeb3",
+  "name": "CCarryableDef::Copy",
+  "module": "CCarryableDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004dffbe",
+  "name": "CBedDef::Copy",
+  "module": "CBedDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e0015",
+  "name": "CCreatureNavigationDef::Copy",
+  "module": "CCreatureNavigationDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e01d9",
+  "name": "CDoorDef::Copy",
+  "module": "CDoorDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e021d",
+  "name": "CKickableDef::Copy",
+  "module": "CKickableDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e0279",
+  "name": "CLightDef::Copy",
+  "module": "CLightDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e02ed",
+  "name": "CSpotLightDef::Copy",
+  "module": "CSpotLightDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e03cf",
+  "name": "CPerceivedThingDef::Copy",
+  "module": "CPerceivedThingDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e0425",
+  "name": "CStealthDef::Copy",
+  "module": "CStealthDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e046f",
+  "name": "CTrophyDef::Copy",
+  "module": "CTrophyDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e05a8",
+  "name": "CExplodingObjectDef::Copy",
+  "module": "CExplodingObjectDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e05da",
+  "name": "CLookDef::Copy",
+  "module": "CLookDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e0667",
+  "name": "COpinionOfHeroDef::Copy",
+  "module": "COpinionOfHeroDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e0707",
+  "name": "CStockItemDef::Copy",
+  "module": "CStockItemDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e074b",
+  "name": "CTimeAppearanceFadeDef::Copy",
+  "module": "CTimeAppearanceFadeDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e091e",
+  "name": "CHighlightItemDef::Copy",
+  "module": "CHighlightItemDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e0a00",
+  "name": "?Copy@CHeroCentreDef@@UAEXPBVCDefClassBase@@@Z",
+  "module": "CHeroCentreDef",
+  "cc": "__thiscall",
+  "ret": "CThingBuildingDef *",
+  "pc": "2"
+ },
+ {
+  "address": "004ded48",
+  "name": "CTavernGameSpotTheAdditionDef::GetSizeofClass",
+  "module": "CTavernGameSpotTheAdditionDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004df48c",
+  "name": "CObstacleNavigatorExternalInterface::GetConstantFPS",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "long",
+  "pc": "1"
+ },
+ {
+  "address": "004dff9f",
+  "name": "CVillageDef::GetSizeofClass",
+  "module": "CVillageDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004e0701",
+  "name": "CShopDef::GetSizeofClass",
+  "module": "CShopDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004df485",
+  "name": "CObstacleNavigatorExternalInterface::GetProximityForDirectApproach",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "1"
+ },
+ {
+  "address": "004df492",
+  "name": "CObstacleNavigatorExternalInterface::GetMinPathCost",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "1"
+ },
+ {
+  "address": "004df499",
+  "name": "CObstacleNavigatorExternalInterface::GetMaxPathCost",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "1"
+ },
+ {
+  "address": "004df4a3",
+  "name": "CObstacleNavigatorExternalInterface::GetForwardNavigationWidthExtension",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "1"
+ },
+ {
+  "address": "004df3b4",
+  "name": "CObstacleNavigatorExternalInterface::FindPosZAt",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "3"
+ },
+ {
+  "address": "004df3bd",
+  "name": "CObstacleNavigatorExternalInterface::FindPosZAtIncludingThemes",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "3"
+ },
+ {
+  "address": "004df3cb",
+  "name": "CObstacleNavigatorExternalInterface::GetTerrainDesirabilityAt",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "2"
+ },
+ {
+  "address": "004df3d4",
+  "name": "CObstacleNavigatorExternalInterface::GetTerrainHeightAt",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "2"
+ },
+ {
+  "address": "004df3dd",
+  "name": "CObstacleNavigatorExternalInterface::GetThemeHeightAt",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "2"
+ },
+ {
+  "address": "004df46e",
+  "name": "CObstacleNavigatorExternalInterface::PeekNavigatorMaxSpeed",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "2"
+ },
+ {
+  "address": "004df3eb",
+  "name": "CObstacleNavigatorExternalInterface::PeekNavigatorRadius",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "2"
+ },
+ {
+  "address": "004dcfbb",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004df554",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd989",
+  "name": "CVillageMemberDef::Transfer",
+  "module": "CVillageMemberDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004ddb56",
+  "name": "CBuyHouseDef::Transfer",
+  "module": "CBuyHouseDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004ddb66",
+  "name": "CWifeDef::Transfer",
+  "module": "CWifeDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004de33e",
+  "name": "CEnemyDef::Transfer",
+  "module": "CEnemyDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004de772",
+  "name": "CBoastingPodiumDef::Transfer",
+  "module": "CBoastingPodiumDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004de881",
+  "name": "CExpressionSubDef::Transfer",
+  "module": "CExpressionSubDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004de8b2",
+  "name": "COccupiableDef::Transfer",
+  "module": "COccupiableDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004de916",
+  "name": "CInterestingToVillagersDef::Transfer",
+  "module": "CInterestingToVillagersDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004de9f3",
+  "name": "CTavernDef::Transfer",
+  "module": "CTavernDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004dea03",
+  "name": "CFireballSpellLevelDef::Transfer",
+  "module": "CFireballSpellLevelDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004debc4",
+  "name": "CGoldDef::Transfer",
+  "module": "CGoldDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004dec1c",
+  "name": "CCoinGameObstacleDef::Transfer",
+  "module": "CCoinGameObstacleDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004def76",
+  "name": "CResurrectionItemDef::Transfer",
+  "module": "CResurrectionItemDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004df0f7",
+  "name": "CAICreatureWillPowerIndicatorDef::Transfer",
+  "module": "CAICreatureWillPowerIndicatorDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004df31c",
+  "name": "CCameraCollisionDef::Transfer",
+  "module": "CCameraCollisionDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d79c6",
+  "name": "AddChildPrimitive",
+  "module": "CEngineInternalPrimitiveBase",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "3"
+ },
+ {
+  "address": "004d79d7",
+  "name": "AddChildPrimitive",
+  "module": "CEngineInternalPrimitiveBase",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "3"
+ },
+ {
+  "address": "004d79e8",
+  "name": "AddChildPrimitive",
+  "module": "CEngineInternalPrimitiveBase",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "3"
+ },
+ {
+  "address": "004d4ca5",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4cd8",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4d08",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4d38",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4d4b",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4d5e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4d8e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4dc1",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4e40",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4e53",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4e99",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4ec9",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4edc",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4f3e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4f6e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4f81",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4fea",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5030",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5043",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d508d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d50d3",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5103",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d515f",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d518f",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d51a2",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d51b5",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5232",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5262",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5292",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d52c2",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d52d5",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d531b",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d532e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d53a8",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d53db",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d53ee",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5401",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5434",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5447",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d549f",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d54da",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d54ed",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5529",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d553c",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d554f",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5562",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d55bd",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d55ed",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d561d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d564d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d567d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d56b0",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d56e0",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5710",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5743",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5756",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d57b4",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d57e7",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d57fa",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d582a",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5853",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5883",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d58b3",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d58e3",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5913",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5943",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5956",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d59b5",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d59fe",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5a31",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5a64",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5a97",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5aca",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5add",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5af0",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5b19",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5b5e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5b8e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5bbe",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5bee",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5c1e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5c64",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5caa",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5cd3",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5ce6",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5cfd",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5d10",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5d40",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5d70",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5d99",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5dc2",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5deb",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5e31",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5e61",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5e91",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5ea4",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5eb7",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5ee8",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5f52",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5f82",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5fc8",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5fdb",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d5ff2",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6026",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6056",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6069",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d607c",
+  "name": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>",
+  "module": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d608f",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d60bf",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d60d2",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6122",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6152",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d617b",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d61a4",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d61b7",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6226",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d626c",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d627f",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d630d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6353",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6366",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d63a7",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d63e8",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d647a",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d64a3",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d64d3",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6519",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6549",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d655c",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d65a9",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d65dc",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6625",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6674",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6687",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d66b0",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d66c3",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d66f7",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6727",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d673a",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d674d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d6902",
+  "name": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>",
+  "module": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004de6ed",
+  "name": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>",
+  "module": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e0a1f",
+  "name": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>",
+  "module": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004db5bb",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004db68f",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd118",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd159",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd1c4",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd1db",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd21c",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd2b1",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd32b",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd36c",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd3ad",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd3ee",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd42f",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd470",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd4db",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd52b",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd56c",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd5ad",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dd5ee",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dfb47",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004d6954",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d696c",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6984",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d69bc",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d69d4",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d69ec",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6a18",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6a34",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6a54",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6a70",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6a88",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6aa0",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6ab8",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6ad8",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6af0",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6b08",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6b20",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6b38",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6b50",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6b70",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6b90",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6ba8",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6bc0",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6bd8",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6bf0",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6c08",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6c20",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d6c38",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9947",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d995f",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9977",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d998f",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d99a7",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d99bf",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d99d7",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d99ef",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9a07",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9a1f",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9a37",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9a4f",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9a67",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9a7f",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9a97",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9aaf",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9ac7",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9adf",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9af7",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9b0f",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9b27",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9b3f",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9b57",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9b6f",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9b87",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d9bbc",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004de60a",
+  "name": "OnDie",
+  "module": "CTCInventoryItem",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004df86c",
+  "name": "CopyBackBufferToTexture",
+  "module": "CDisplayManager",
+  "cc": "__thiscall",
+  "ret": "CTexture *",
+  "pc": "1"
+ },
+ {
+  "address": "004dffa5",
+  "name": "CVillageMemberDef::Copy",
+  "module": "CVillageMemberDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e00a3",
+  "name": "CReadableDef::Copy",
+  "module": "CReadableDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e01a7",
+  "name": "CBuyHouseDef::Copy",
+  "module": "CBuyHouseDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e01c0",
+  "name": "CWifeDef::Copy",
+  "module": "CWifeDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e064e",
+  "name": "CEnemyDef::Copy",
+  "module": "CEnemyDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e0a4e",
+  "name": "CBoastingPodiumDef::Copy",
+  "module": "CBoastingPodiumDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004dc83e",
+  "name": "OnCreate",
+  "module": "CTCActionUseBuyHouse",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dbe58",
+  "name": "_Destroy_range<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>_>",
+  "module": "_Destroy_range<std::allocator<std",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004dbe73",
+  "name": "_Destroy_range<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>_>",
+  "module": "_Destroy_range<std::allocator<std",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004dfc27",
+  "name": "_Destroy_range<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>_>",
+  "module": "_Destroy_range<std::allocator<std",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004d62d1",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d6915",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d7952",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d7b06",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d7b3f",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d7d62",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d7f5f",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d7f91",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d8177",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d81ca",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d833e",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d83bd",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d8466",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d852b",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d85aa",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d85e3",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d861c",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d8655",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d86d4",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d87fc",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d895f",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d8998",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d8bc5",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d8cf4",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d8dbc",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d8df8",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d8e34",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d8e70",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d8ea9",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d90aa",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d9305",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d9384",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d9449",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d952b",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d9564",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d95cf",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d9740",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d97b2",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d9845",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d992b",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004da54e",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004da5a1",
+  "name": "_Destroy",
+  "module": "vector<CIntelligentPointer<CThing_const_>",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004da5bd",
+  "name": "_Destroy",
+  "module": "vector<CIntelligentPointer<CThing_const_>",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004da5e2",
+  "name": "_Destroy",
+  "module": "vector<CIntelligentPointer<CThing_const_>",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004da5fe",
+  "name": "_Destroy",
+  "module": "vector<CIntelligentPointer<CThing_const_>",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004da61a",
+  "name": "_Destroy",
+  "module": "vector<CIntelligentPointer<CThing_const_>",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004da636",
+  "name": "_Destroy",
+  "module": "vector<CIntelligentPointer<CThing_const_>",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004da655",
+  "name": "_Destroy",
+  "module": "vector<CIntelligentPointer<CThing_const_>",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004dac1a",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004db1a6",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004db417",
+  "name": "`scalar_deleting_destructor'",
+  "module": "CAssoc",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004db461",
+  "name": "`scalar_deleting_destructor'",
+  "module": "CAssoc",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dbe1d",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dbf3a",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dbf76",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dbfaf",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dbfe8",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc021",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc082",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc0bb",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc0f4",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc12d",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc166",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc19f",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc1d8",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc211",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc24a",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc2a0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc2bc",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc2f5",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc32e",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc367",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc3a0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc3d9",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc412",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc44b",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc484",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc4bd",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc4f6",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc52f",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc5ab",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc5e4",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc63d",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc69e",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc6e2",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc71b",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc7ac",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc805",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc8fa",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dc953",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dcb20",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dcb79",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dcbb2",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dcc0b",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dcc44",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dcc7d",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dccb6",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dcd0f",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dcd88",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dcde1",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dce88",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dcec1",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dcf32",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dcf8b",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004de431",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dea77",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004deab3",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004deaef",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004deb2b",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004deb67",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dfc0b",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dfd8a",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dfe78",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004e0064",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004e00e9",
+  "name": "CQuestCardDef::GetSizeofClass",
+  "module": "CQuestCardDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004e015e",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004e037c",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004e0529",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004e080b",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004e0844",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004e08ab",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004e08e4",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004e0968",
+  "name": "`scalar_deleting_destructor'",
+  "module": "CAssoc",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004e09e4",
+  "name": "`scalar_deleting_destructor'",
+  "module": "CAssoc",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004e0a32",
+  "name": "`scalar_deleting_destructor'",
+  "module": "CAssoc",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d9b9f",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004dd782",
+  "name": "_Destroy_range<std::allocator<NCreatureHitNotification::CFlash>_>",
+  "module": "_Destroy_range<std::allocator<NCreatureHitNotification",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "4"
+ },
+ {
+  "address": "004df4ca",
+  "name": "CObstacleNavigatorExternalInterface::Clone",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "CNavigatorExternalInterface *",
+  "pc": "1"
+ },
+ {
+  "address": "004df7ff",
+  "name": "CopyBackBufferToTexture",
+  "module": "CDisplayManager",
+  "cc": "__thiscall",
+  "ret": "CTexture *",
+  "pc": "1"
+ },
+ {
+  "address": "004df84e",
+  "name": "CopyBackBufferToTexture",
+  "module": "CDisplayManager",
+  "cc": "__thiscall",
+  "ret": "CTexture *",
+  "pc": "1"
+ },
+ {
+  "address": "004df8ad",
+  "name": "CopyBackBufferToTexture",
+  "module": "CDisplayManager",
+  "cc": "__thiscall",
+  "ret": "CTexture *",
+  "pc": "1"
+ },
+ {
+  "address": "004df8cb",
+  "name": "CopyBackBufferToTexture",
+  "module": "CDisplayManager",
+  "cc": "__thiscall",
+  "ret": "CTexture *",
+  "pc": "1"
+ },
+ {
+  "address": "004df8e9",
+  "name": "CopyBackBufferToTexture",
+  "module": "CDisplayManager",
+  "cc": "__thiscall",
+  "ret": "CTexture *",
+  "pc": "1"
+ },
+ {
+  "address": "004df956",
+  "name": "CopyBackBufferToTexture",
+  "module": "CDisplayManager",
+  "cc": "__thiscall",
+  "ret": "CTexture *",
+  "pc": "1"
+ },
+ {
+  "address": "004dfa89",
+  "name": "CopyBackBufferToTexture",
+  "module": "CDisplayManager",
+  "cc": "__thiscall",
+  "ret": "CTexture *",
+  "pc": "1"
+ },
+ {
+  "address": "004dfaa7",
+  "name": "CopyBackBufferToTexture",
+  "module": "CDisplayManager",
+  "cc": "__thiscall",
+  "ret": "CTexture *",
+  "pc": "1"
+ },
+ {
+  "address": "004dfac5",
+  "name": "CopyBackBufferToTexture",
+  "module": "CDisplayManager",
+  "cc": "__thiscall",
+  "ret": "CTexture *",
+  "pc": "1"
+ },
+ {
+  "address": "004da68a",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004da6a9",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dbe39",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004dfe94",
+  "name": "OnDie",
+  "module": "CTCInventoryItem",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dfff6",
+  "name": "CSmokeGeneratorDef::Copy",
+  "module": "CSmokeGeneratorDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e0331",
+  "name": "CHeroDef::Copy",
+  "module": "CHeroDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004e0545",
+  "name": "OnDie",
+  "module": "CTCInventoryItem",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004e077d",
+  "name": "CGiftDef::Copy",
+  "module": "CGiftDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004da967",
+  "name": "~C3DAnimationBlendState",
+  "module": "C3DAnimationBlendState",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004db004",
+  "name": "~C3DAnimationBlendState",
+  "module": "C3DAnimationBlendState",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004db47d",
+  "name": "~C3DAnimationBlendState",
+  "module": "C3DAnimationBlendState",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dbf56",
+  "name": "~C3DAnimationBlendState",
+  "module": "C3DAnimationBlendState",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dc600",
+  "name": "~C3DAnimationBlendState",
+  "module": "C3DAnimationBlendState",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dc7c8",
+  "name": "~C3DAnimationBlendState",
+  "module": "C3DAnimationBlendState",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dc916",
+  "name": "~C3DAnimationBlendState",
+  "module": "C3DAnimationBlendState",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dcbce",
+  "name": "~C3DAnimationBlendState",
+  "module": "C3DAnimationBlendState",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dccd2",
+  "name": "~C3DAnimationBlendState",
+  "module": "C3DAnimationBlendState",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dcda4",
+  "name": "~C3DAnimationBlendState",
+  "module": "C3DAnimationBlendState",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dcdfd",
+  "name": "~C3DAnimationBlendState",
+  "module": "C3DAnimationBlendState",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004dcf4e",
+  "name": "~C3DAnimationBlendState",
+  "module": "C3DAnimationBlendState",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004df4aa",
+  "name": "CObstacleNavigatorExternalInterface::IsDead",
+  "module": "CObstacleNavigatorExternalInterface",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ }
+]

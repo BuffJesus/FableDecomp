@@ -22,9 +22,9 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Analysis DB | Usable reconstruction/navigation names | 99.211% |
 | Analysis DB | Calling convention known | 77.660% |
 | Analysis DB | Complete non-`undefined` prototype | 69.031% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **1,853** |
-| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **1,526** (3.08%) |
-| Reconstruction | — of which byte-**identical** (no relocation masking) | 913 (1.84%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **1,950** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **1,623** (3.28%) |
+| Reconstruction | — of which byte-**identical** (no relocation masking) | 1,010 (2.04%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
 | Auto-RE intake | Generated candidates / structural checker PASS | 573 / 565 |
@@ -168,6 +168,16 @@ CGSI vtable slots; generated wrappers remain reviewable intake until their ABI, 
 retail bytes are independently proven. See `docs/HANDOFF.md` for the live batch and promotion
 caveats.
 
+A second unattended lane now advances the strict verified counter without using Ghidra.
+`tools/run_local_parity_queue.ps1` selects fresh short functions, authors only deterministic
+byte-implied VC7.1 forms, and sends them through the same retail-byte and focused-behavior gate
+before landing. Its first two restored batches landed 97 authoritative manifest-backed matches.
+The same pass found and removed speculative post-`ret` tails that lacked a known function start;
+both selector and lander now reject that inflation path. Wave 3 also has a 48-hour cross-run
+cooldown after two unresolved failures, preventing a handful of hard wrappers from consuming every
+scheduled batch. The throughput diagnosis and the distinction between structural `PASS` and
+verified parity are documented in `docs/FULL_DECOMP.md`.
+
 The first modern reconstruction proof of concept now lives in
 `rebuild/modern/multiplayer/`: an x64 C++23 `GameEvent` model and codec using `std::span`,
 `std::expected`, owned storage, explicit little-endian serialization, and focused malformed-input
@@ -230,9 +240,10 @@ Each function is promoted through an evidence gate, not asserted:
 2. **Curated port** — a faithful, VC7.1-compilable translation lands in the address-sharded
    `rebuild/src/compiled/<aa>/<bb>/`
    with real declarations from `rebuild/include/`.
-3. **Compile + behaviour test** — `rebuild/build_candidates.ps1` compiles each unit with the original
-   **VC7.1 `cl.exe`** and runs a per-function behaviour oracle
-   (`rebuild/tests/<aa>/<bb>/`).
+3. **Compile + behaviour test** — `rebuild/build_candidates.ps1` compiles each changed unit with the
+   original **VC7.1 `cl.exe`** and runs a per-function behaviour oracle
+   (`rebuild/tests/<aa>/<bb>/`). Unchanged passing products are reused only when their source, test,
+   and shared headers are older; `-Force` performs a clean full-catalog audit.
 4. **Retail parity** — `tools/compare_candidate_objects.py` disassembles the object and compares its
    `.text` against authoritative retail bytes (`rebuild/oracles/`, exported from Ghidra by
    `ExportFunctionOracle.java`), masking expected COFF relocation fields. Result: `MATCH`,
@@ -245,6 +256,9 @@ Promotion queues and the backlog are generated under `rebuild/backlog/`.
 - **`tools/decomp_pipeline/`** — the promotion loop as reusable scripts: oracle extraction, disasm
   bundling, and `verify_and_land.py` (VC7.1 fixups + byte/behaviour gate + auto pragma-sweep + catalog
   wiring). See its README for the cycle and the resume point.
+- **`tools/run_local_parity_queue.ps1`** — the Ghidra-free unattended promotion lane. It advances
+  through bounded short-function batches, invokes deterministic authoring and the real byte/behavior
+  landing gate, then refreshes canonical parity reports and this README after verified wins.
 - **`tools/decomp_pipeline/crack_residue.py` + the diff-feedback refine loop** — for byte-parity
   residues the plain gate leaves as `DIFFER`. `crack_residue.py` sweeps mechanical
   semantics-preserving remedies (comparison-operand flip, liveness-shaping inline, pragma sweep); when
