@@ -2993,6 +2993,27 @@ $catalog = @(
         PassPattern = 'FABLETLC_DEFAULT_LANGUAGE_NAME_BEHAVIOR PASS'
     }
     [pscustomobject]@{
+        Address = '0099b6a0'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_CreateFromCharString_0099b6a0.cpp'
+        TestSource = '00/99/CWideString_CreateFromCharString_0099b6a0_test.cpp'
+        PassPattern = 'FABLETLC_WIDE_STRING_FROM_CHAR_FACTORY_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099b720'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_CopyConstructor_0099b720.cpp'
+        TestSource = '00/99/CWideString_CopyConstructor_0099b720_test.cpp'
+        PassPattern = 'FABLETLC_WIDE_STRING_COPY_CONSTRUCTOR_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099e480'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_ToWideString_0099e480.cpp'
+        TestSource = '00/99/CCharString_ToWideString_0099e480_test.cpp'
+        PassPattern = 'FABLETLC_CHAR_TO_WIDE_STRING_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
         Address = '00415bf0'
         Module = 'CSurface'
         Source = '00/41/CSurface_GetHeight_00415bf0.cpp'
