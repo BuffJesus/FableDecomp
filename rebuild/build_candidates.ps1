@@ -34315,6 +34315,20 @@ $catalog = @(
         PassPattern = 'FABLETLC_SET_VS_LAYOUT_BEHAVIOR PASS'
     }
     [pscustomobject]@{
+        Address = '00988a50'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UpdateCombinedProjectionTransform_00988a50.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateCombinedProjectionTransform_00988a50_test.cpp'
+        PassPattern = 'FABLETLC_UPDATE_COMBINED_PROJECTION_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00989760'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UpdateAmbient_00989760.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateAmbient_00989760_test.cpp'
+        PassPattern = 'FABLETLC_UPDATE_AMBIENT_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
         Address = '00988020'
         Module = 'CShaderRenderManager'
         Source = '00/98/CShaderRenderManager_ApplyVertexShader_00988020.cpp'

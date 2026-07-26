@@ -1,11 +1,12 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 15:35 MDT (draw-list copy closure).*
+*Last updated: 2026-07-26 15:45 MDT (draw-list copy and shader transform closure).*
 
 ## Shader binding/render-state closure (2026-07-26)
 
-- Ten more `Render2DDrawList` dependencies are canonical, raising that
-  family from **11/25 to 21/25** while `DrawRetailDisplay` remains **13/37**.
+- Twelve more `Render2DDrawList` dependencies are behavior-gated canonical
+  sources, raising that family from **11/25 to 23/25**; **21/25** already
+  achieve retail byte parity. `DrawRetailDisplay` remains **13/37**.
   `CShaderRenderManager::ApplyVertexShader @ 0x00988020` is a true
   **176/176-byte exact match** and covers shader-mode reconciliation, the
   unchanged binding fast path, vertex-shader/declaration updates, and both
@@ -49,19 +50,27 @@
   match**. The advancing-iterator source shape recovers retail's register
   allocation and 32-byte POD copy loop; its fixture covers positive, empty,
   and negative ranges plus the controller end-pointer update.
-- The canonical VC7.1 compile/behavior gate passes **4,913 / 4,913**. Retail
+- `UpdateCombinedProjectionTransform @ 0x00988A50` is now behavior-gated
+  across both its aligned SSE and scalar x87 paths. It computes the stored
+  Projection x View x World matrix, uploads four constants, and clears the
+  exact dirty bit. Its readable 1,048-byte VC7.1 body remains a scheduling
+  difference from the corrected contiguous 978-byte retail span; Ghidra had
+  truncated that oracle to 975 bytes.
+- `UpdateAmbient @ 0x00989760` is also behavior-gated and has the correct
+  85-byte size, vector/register upload, and dirty clear. Its remaining
+  difference is instruction scheduling after the layout-register load.
+- The canonical VC7.1 compile/behavior gate passes **4,915 / 4,915**. Retail
   parity is **2,687 exact + 1,899 relocation-normalized = 4,586 / 49,552
-  (9.25%)**; honest residue remains 199 differences and 128 missing
+  (9.25%)**; honest residue remains 201 differences and 128 missing
   function-start oracles.
 - The full Release bootstrap rebuilt with the genuine retail
   `FRONTEND_BACKDROP_01`. A fresh live launch opened
   `FableTLC-Reconstruction-VisualCheckpoint.exe`, created the expected
   top-level retail-art window, accepted `WM_CLOSE`, and exited zero.
-- Four direct dependencies remain: `UpdateAmbient @ 0x00989760`,
-  `UpdateCombinedProjectionTransform @ 0x00988A50`,
-  `CStateBlockFunctionSold::Apply @ 0x009DF060`,
-  and the corrected `vector<CQuickDrawTriInfo>::erase @ 0x009E15E0`.
-  Replacing the current GDI
+- Two direct dependencies remain behaviorally unrecovered:
+  `CStateBlockFunctionSold::Apply @ 0x009DF060` and the corrected
+  `vector<CQuickDrawTriInfo>::erase @ 0x009E15E0`. Ambient and combined
+  projection remain additional byte-parity residues. Replacing the current GDI
   presentation bridge with recovered Lionhead renderer submission remains
   the central visual-closure boundary.
 
