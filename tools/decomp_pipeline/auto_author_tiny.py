@@ -44,6 +44,10 @@ determined by the retail bytes:
   56 8b f1 8d 4e oo e8 xx xx xx xx 8b ce e8 yy yy yy yy
      f6 44 24 08 01 74 07 56 e8 zz zz zz zz 59 8b c6 5e c2 04 00
                      -> destruct a member and its owner, then optionally delete
+  56 8b f1 8d (4e oo|8e oo oo oo oo) e8 xx xx xx xx
+     8b ce e8 yy yy yy yy f6 44 24 08 01 74 09 56
+     e8 zz zz zz zz 83 c4 04 8b c6 5e c2 04 00
+                     -> speed-optimized form of the same composite destructor
   51 56 8b f1 8b 56 04 8b 0e 8d 44 24 07 50 e8 xx xx xx xx
      8b 36 85 f6 74 07 56 e8 yy yy yy yy 59 5e 59 c3
                      -> finish an async read and release its resource
@@ -250,6 +254,33 @@ def const_from_bytes(bs: bytes):
         and bs[31:] == b"\x59\x8b\xc6\x5e\xc2\x04\x00"
     ):
         return ("composite_scalar_deleting_destructor", bs[5])
+    if bs[:3] == b"\x56\x8b\xf1":
+        cursor = 3
+        if bs[cursor:cursor + 2] == b"\x8d\x4e":
+            member_offset = bs[cursor + 2]
+            cursor += 3
+        elif bs[cursor:cursor + 2] == b"\x8d\x8e":
+            member_offset = int.from_bytes(
+                bs[cursor + 2:cursor + 6], "little", signed=True
+            )
+            cursor += 6
+        else:
+            member_offset = None
+        if (
+            member_offset is not None
+            and bs[cursor:cursor + 1] == b"\xe8"
+            and bs[cursor + 5:cursor + 8] == b"\x8b\xce\xe8"
+            and bs[cursor + 12:cursor + 17]
+            == b"\xf6\x44\x24\x08\x01"
+            and bs[cursor + 17:cursor + 20] == b"\x74\x09\x56"
+            and bs[cursor + 20:cursor + 21] == b"\xe8"
+            and bs[cursor + 25:cursor + 28] == b"\x83\xc4\x04"
+            and bs[cursor + 28:] == b"\x8b\xc6\x5e\xc2\x04\x00"
+        ):
+            return (
+                "composite_scalar_deleting_destructor_speed",
+                member_offset,
+            )
     if (
         len(bs) == 35
         and bs[:14] == b"\x51\x56\x8b\xf1\x8b\x56\x04\x8b\x0e"
@@ -298,6 +329,7 @@ def candidate(row):
     elif rettype in (
         "scalar_deleting_destructor",
         "composite_scalar_deleting_destructor",
+        "composite_scalar_deleting_destructor_speed",
     ):
         module = row.get("module") or "_global"
         cls = sanitize(module)
@@ -845,9 +877,17 @@ def candidate(row):
             "    return 0;\n"
             "}\n"
         )
-    elif rettype == "composite_scalar_deleting_destructor":
+    elif rettype in (
+        "composite_scalar_deleting_destructor",
+        "composite_scalar_deleting_destructor_speed",
+    ):
+        optimization = (
+            "t"
+            if rettype == "composite_scalar_deleting_destructor_speed"
+            else "s"
+        )
         source = (
-            '#pragma optimize("s", on)\n'
+            f'#pragma optimize("{optimization}", on)\n'
             "extern void __fastcall AutoTinyMemberDestructor(void* member);\n"
             "extern void __fastcall AutoTinyCompositeDestructor(void* self);\n"
             "extern void __cdecl AutoTinyCompositeDelete(void* object);\n"

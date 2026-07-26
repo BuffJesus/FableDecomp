@@ -26796,6 +26796,1812 @@ $catalog = @(
         TestSource = '00/90/CEngineSubPrimitiveText_scalardeletingdestructor_0090348f_test.cpp'
         PassPattern = 'AUTO_TINY_0090348f_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00cd325f'
+        Module = 'CActiveFile'
+        Source = '00/cd/CActiveFile_OnReadFinished_00cd325f.cpp'
+        TestSource = '00/cd/CActiveFile_OnReadFinished_00cd325f_test.cpp'
+        PassPattern = 'AUTO_TINY_00cd325f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd3c8b'
+        Module = 'CActiveFile'
+        Source = '00/cd/CActiveFile_OnReadFinished_00cd3c8b.cpp'
+        TestSource = '00/cd/CActiveFile_OnReadFinished_00cd3c8b_test.cpp'
+        PassPattern = 'AUTO_TINY_00cd3c8b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd3d0b'
+        Module = 'CActiveFile'
+        Source = '00/cd/CActiveFile_OnReadFinished_00cd3d0b.cpp'
+        TestSource = '00/cd/CActiveFile_OnReadFinished_00cd3d0b_test.cpp'
+        PassPattern = 'AUTO_TINY_00cd3d0b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd3699'
+        Module = 'CTCCarryable'
+        Source = '00/cd/CTCCarryable_OnKill_00cd3699.cpp'
+        TestSource = '00/cd/CTCCarryable_OnKill_00cd3699_test.cpp'
+        PassPattern = 'AUTO_TINY_00cd3699_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048b8d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/48/CEngineSubPrimitiveText_scalardeletingdestructor_0048b8d0.cpp'
+        TestSource = '00/48/CEngineSubPrimitiveText_scalardeletingdestructor_0048b8d0_test.cpp'
+        PassPattern = 'AUTO_TINY_0048b8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aa690'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/4a/CEngineSubPrimitiveText_scalardeletingdestructor_004aa690.cpp'
+        TestSource = '00/4a/CEngineSubPrimitiveText_scalardeletingdestructor_004aa690_test.cpp'
+        PassPattern = 'AUTO_TINY_004aa690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b7600'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/4b/CEngineSubPrimitiveText_scalardeletingdestructor_004b7600.cpp'
+        TestSource = '00/4b/CEngineSubPrimitiveText_scalardeletingdestructor_004b7600_test.cpp'
+        PassPattern = 'AUTO_TINY_004b7600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00677360'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/67/CEngineSubPrimitiveText_scalardeletingdestructor_00677360.cpp'
+        TestSource = '00/67/CEngineSubPrimitiveText_scalardeletingdestructor_00677360_test.cpp'
+        PassPattern = 'AUTO_TINY_00677360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00695640'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/69/CEngineSubPrimitiveText_scalardeletingdestructor_00695640.cpp'
+        TestSource = '00/69/CEngineSubPrimitiveText_scalardeletingdestructor_00695640_test.cpp'
+        PassPattern = 'AUTO_TINY_00695640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062db90'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062db90.cpp'
+        TestSource = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062db90_test.cpp'
+        PassPattern = 'AUTO_TINY_0062db90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062dc70'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062dc70.cpp'
+        TestSource = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062dc70_test.cpp'
+        PassPattern = 'AUTO_TINY_0062dc70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062dd50'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062dd50.cpp'
+        TestSource = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062dd50_test.cpp'
+        PassPattern = 'AUTO_TINY_0062dd50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062de30'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062de30.cpp'
+        TestSource = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062de30_test.cpp'
+        PassPattern = 'AUTO_TINY_0062de30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062df10'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062df10.cpp'
+        TestSource = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062df10_test.cpp'
+        PassPattern = 'AUTO_TINY_0062df10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062dff0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062dff0.cpp'
+        TestSource = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062dff0_test.cpp'
+        PassPattern = 'AUTO_TINY_0062dff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062e0b0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062e0b0.cpp'
+        TestSource = '00/62/CEngineSubPrimitiveText_scalardeletingdestructor_0062e0b0_test.cpp'
+        PassPattern = 'AUTO_TINY_0062e0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066a730'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/66/CEngineSubPrimitiveText_scalardeletingdestructor_0066a730.cpp'
+        TestSource = '00/66/CEngineSubPrimitiveText_scalardeletingdestructor_0066a730_test.cpp'
+        PassPattern = 'AUTO_TINY_0066a730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069e700'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/69/CEngineSubPrimitiveText_scalardeletingdestructor_0069e700.cpp'
+        TestSource = '00/69/CEngineSubPrimitiveText_scalardeletingdestructor_0069e700_test.cpp'
+        PassPattern = 'AUTO_TINY_0069e700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a0880'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/6a/CEngineSubPrimitiveText_scalardeletingdestructor_006a0880.cpp'
+        TestSource = '00/6a/CEngineSubPrimitiveText_scalardeletingdestructor_006a0880_test.cpp'
+        PassPattern = 'AUTO_TINY_006a0880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c2e90'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/6c/CEngineSubPrimitiveText_scalardeletingdestructor_006c2e90.cpp'
+        TestSource = '00/6c/CEngineSubPrimitiveText_scalardeletingdestructor_006c2e90_test.cpp'
+        PassPattern = 'AUTO_TINY_006c2e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c4430'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/6c/CEngineSubPrimitiveText_scalardeletingdestructor_006c4430.cpp'
+        TestSource = '00/6c/CEngineSubPrimitiveText_scalardeletingdestructor_006c4430_test.cpp'
+        PassPattern = 'AUTO_TINY_006c4430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00718810'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/71/CEngineSubPrimitiveText_scalardeletingdestructor_00718810.cpp'
+        TestSource = '00/71/CEngineSubPrimitiveText_scalardeletingdestructor_00718810_test.cpp'
+        PassPattern = 'AUTO_TINY_00718810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007190f0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/71/CEngineSubPrimitiveText_scalardeletingdestructor_007190f0.cpp'
+        TestSource = '00/71/CEngineSubPrimitiveText_scalardeletingdestructor_007190f0_test.cpp'
+        PassPattern = 'AUTO_TINY_007190f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00719150'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/71/CEngineSubPrimitiveText_scalardeletingdestructor_00719150.cpp'
+        TestSource = '00/71/CEngineSubPrimitiveText_scalardeletingdestructor_00719150_test.cpp'
+        PassPattern = 'AUTO_TINY_00719150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00723240'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/72/CEngineSubPrimitiveText_scalardeletingdestructor_00723240.cpp'
+        TestSource = '00/72/CEngineSubPrimitiveText_scalardeletingdestructor_00723240_test.cpp'
+        PassPattern = 'AUTO_TINY_00723240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007276d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/72/CEngineSubPrimitiveText_scalardeletingdestructor_007276d0.cpp'
+        TestSource = '00/72/CEngineSubPrimitiveText_scalardeletingdestructor_007276d0_test.cpp'
+        PassPattern = 'AUTO_TINY_007276d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00729a00'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/72/CEngineSubPrimitiveText_scalardeletingdestructor_00729a00.cpp'
+        TestSource = '00/72/CEngineSubPrimitiveText_scalardeletingdestructor_00729a00_test.cpp'
+        PassPattern = 'AUTO_TINY_00729a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00731a50'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_00731a50.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_00731a50_test.cpp'
+        PassPattern = 'AUTO_TINY_00731a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073d770'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073d770.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073d770_test.cpp'
+        PassPattern = 'AUTO_TINY_0073d770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073e3e0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073e3e0.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073e3e0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073e3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073e4d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073e4d0.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073e4d0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073e4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073e5c0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073e5c0.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073e5c0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073e5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073ed20'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073ed20.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073ed20_test.cpp'
+        PassPattern = 'AUTO_TINY_0073ed20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073ee00'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073ee00.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073ee00_test.cpp'
+        PassPattern = 'AUTO_TINY_0073ee00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073eed0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073eed0.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073eed0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073eed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073efa0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073efa0.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073efa0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073efa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073f070'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f070.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f070_test.cpp'
+        PassPattern = 'AUTO_TINY_0073f070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073f140'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f140.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f140_test.cpp'
+        PassPattern = 'AUTO_TINY_0073f140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073f210'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f210.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f210_test.cpp'
+        PassPattern = 'AUTO_TINY_0073f210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073f2e0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f2e0.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f2e0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073f2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073f3b0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f3b0.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f3b0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073f3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073f480'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f480.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f480_test.cpp'
+        PassPattern = 'AUTO_TINY_0073f480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073f550'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f550.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f550_test.cpp'
+        PassPattern = 'AUTO_TINY_0073f550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073f620'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f620.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f620_test.cpp'
+        PassPattern = 'AUTO_TINY_0073f620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073f6f0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f6f0.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f6f0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073f6f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073f7c0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f7c0.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f7c0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073f7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073f890'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f890.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f890_test.cpp'
+        PassPattern = 'AUTO_TINY_0073f890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073f960'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f960.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073f960_test.cpp'
+        PassPattern = 'AUTO_TINY_0073f960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073fa30'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073fa30.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073fa30_test.cpp'
+        PassPattern = 'AUTO_TINY_0073fa30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073fb00'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073fb00.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073fb00_test.cpp'
+        PassPattern = 'AUTO_TINY_0073fb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073fbe0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073fbe0.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073fbe0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073fbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073fcb0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073fcb0.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073fcb0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073fcb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073fd80'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073fd80.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073fd80_test.cpp'
+        PassPattern = 'AUTO_TINY_0073fd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073ff40'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073ff40.cpp'
+        TestSource = '00/73/CEngineSubPrimitiveText_scalardeletingdestructor_0073ff40_test.cpp'
+        PassPattern = 'AUTO_TINY_0073ff40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740010'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740010.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740010_test.cpp'
+        PassPattern = 'AUTO_TINY_00740010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740220'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740220.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740220_test.cpp'
+        PassPattern = 'AUTO_TINY_00740220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740310'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740310.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740310_test.cpp'
+        PassPattern = 'AUTO_TINY_00740310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740610'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740610.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740610_test.cpp'
+        PassPattern = 'AUTO_TINY_00740610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007407f0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_007407f0.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_007407f0_test.cpp'
+        PassPattern = 'AUTO_TINY_007407f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007408c0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_007408c0.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_007408c0_test.cpp'
+        PassPattern = 'AUTO_TINY_007408c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740990'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740990.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740990_test.cpp'
+        PassPattern = 'AUTO_TINY_00740990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740a60'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740a60.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740a60_test.cpp'
+        PassPattern = 'AUTO_TINY_00740a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740b30'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740b30.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740b30_test.cpp'
+        PassPattern = 'AUTO_TINY_00740b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740c00'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740c00.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740c00_test.cpp'
+        PassPattern = 'AUTO_TINY_00740c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740cd0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740cd0.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740cd0_test.cpp'
+        PassPattern = 'AUTO_TINY_00740cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740da0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740da0.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740da0_test.cpp'
+        PassPattern = 'AUTO_TINY_00740da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740e70'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740e70.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740e70_test.cpp'
+        PassPattern = 'AUTO_TINY_00740e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740f40'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740f40.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00740f40_test.cpp'
+        PassPattern = 'AUTO_TINY_00740f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00741010'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741010.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741010_test.cpp'
+        PassPattern = 'AUTO_TINY_00741010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007410e0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_007410e0.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_007410e0_test.cpp'
+        PassPattern = 'AUTO_TINY_007410e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007411b0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_007411b0.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_007411b0_test.cpp'
+        PassPattern = 'AUTO_TINY_007411b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00741280'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741280.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741280_test.cpp'
+        PassPattern = 'AUTO_TINY_00741280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00741560'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741560.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741560_test.cpp'
+        PassPattern = 'AUTO_TINY_00741560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00741630'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741630.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741630_test.cpp'
+        PassPattern = 'AUTO_TINY_00741630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00741700'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741700.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741700_test.cpp'
+        PassPattern = 'AUTO_TINY_00741700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007417d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_007417d0.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_007417d0_test.cpp'
+        PassPattern = 'AUTO_TINY_007417d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007418a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_007418a0.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_007418a0_test.cpp'
+        PassPattern = 'AUTO_TINY_007418a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00741b30'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741b30.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741b30_test.cpp'
+        PassPattern = 'AUTO_TINY_00741b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00741eb0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741eb0.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00741eb0_test.cpp'
+        PassPattern = 'AUTO_TINY_00741eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00743960'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00743960.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00743960_test.cpp'
+        PassPattern = 'AUTO_TINY_00743960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00744130'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00744130.cpp'
+        TestSource = '00/74/CEngineSubPrimitiveText_scalardeletingdestructor_00744130_test.cpp'
+        PassPattern = 'AUTO_TINY_00744130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00750a60'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/75/CEngineSubPrimitiveText_scalardeletingdestructor_00750a60.cpp'
+        TestSource = '00/75/CEngineSubPrimitiveText_scalardeletingdestructor_00750a60_test.cpp'
+        PassPattern = 'AUTO_TINY_00750a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00771030'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/77/CEngineSubPrimitiveText_scalardeletingdestructor_00771030.cpp'
+        TestSource = '00/77/CEngineSubPrimitiveText_scalardeletingdestructor_00771030_test.cpp'
+        PassPattern = 'AUTO_TINY_00771030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00780310'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/78/CEngineSubPrimitiveText_scalardeletingdestructor_00780310.cpp'
+        TestSource = '00/78/CEngineSubPrimitiveText_scalardeletingdestructor_00780310_test.cpp'
+        PassPattern = 'AUTO_TINY_00780310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c9eb0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/7c/CEngineSubPrimitiveText_scalardeletingdestructor_007c9eb0.cpp'
+        TestSource = '00/7c/CEngineSubPrimitiveText_scalardeletingdestructor_007c9eb0_test.cpp'
+        PassPattern = 'AUTO_TINY_007c9eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e1180'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007e1180.cpp'
+        TestSource = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007e1180_test.cpp'
+        PassPattern = 'AUTO_TINY_007e1180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e3570'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007e3570.cpp'
+        TestSource = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007e3570_test.cpp'
+        PassPattern = 'AUTO_TINY_007e3570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f7f20'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/6f/CEngineSubPrimitiveText_scalardeletingdestructor_006f7f20.cpp'
+        TestSource = '00/6f/CEngineSubPrimitiveText_scalardeletingdestructor_006f7f20_test.cpp'
+        PassPattern = 'AUTO_TINY_006f7f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f8110'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/6f/CEngineSubPrimitiveText_scalardeletingdestructor_006f8110.cpp'
+        TestSource = '00/6f/CEngineSubPrimitiveText_scalardeletingdestructor_006f8110_test.cpp'
+        PassPattern = 'AUTO_TINY_006f8110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f81a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/6f/CEngineSubPrimitiveText_scalardeletingdestructor_006f81a0.cpp'
+        TestSource = '00/6f/CEngineSubPrimitiveText_scalardeletingdestructor_006f81a0_test.cpp'
+        PassPattern = 'AUTO_TINY_006f81a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f84a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/6f/CEngineSubPrimitiveText_scalardeletingdestructor_006f84a0.cpp'
+        TestSource = '00/6f/CEngineSubPrimitiveText_scalardeletingdestructor_006f84a0_test.cpp'
+        PassPattern = 'AUTO_TINY_006f84a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007186e0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/71/CEngineSubPrimitiveText_scalardeletingdestructor_007186e0.cpp'
+        TestSource = '00/71/CEngineSubPrimitiveText_scalardeletingdestructor_007186e0_test.cpp'
+        PassPattern = 'AUTO_TINY_007186e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00718790'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/71/CEngineSubPrimitiveText_scalardeletingdestructor_00718790.cpp'
+        TestSource = '00/71/CEngineSubPrimitiveText_scalardeletingdestructor_00718790_test.cpp'
+        PassPattern = 'AUTO_TINY_00718790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00854450'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/85/CEngineSubPrimitiveText_scalardeletingdestructor_00854450.cpp'
+        TestSource = '00/85/CEngineSubPrimitiveText_scalardeletingdestructor_00854450_test.cpp'
+        PassPattern = 'AUTO_TINY_00854450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00854580'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/85/CEngineSubPrimitiveText_scalardeletingdestructor_00854580.cpp'
+        TestSource = '00/85/CEngineSubPrimitiveText_scalardeletingdestructor_00854580_test.cpp'
+        PassPattern = 'AUTO_TINY_00854580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e3610'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e3610.cpp'
+        TestSource = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e3610_test.cpp'
+        PassPattern = 'AUTO_TINY_008e3610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e3660'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e3660.cpp'
+        TestSource = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e3660_test.cpp'
+        PassPattern = 'AUTO_TINY_008e3660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e36b0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e36b0.cpp'
+        TestSource = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e36b0_test.cpp'
+        PassPattern = 'AUTO_TINY_008e36b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e3820'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e3820.cpp'
+        TestSource = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e3820_test.cpp'
+        PassPattern = 'AUTO_TINY_008e3820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e39d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e39d0.cpp'
+        TestSource = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e39d0_test.cpp'
+        PassPattern = 'AUTO_TINY_008e39d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e8050'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007e8050.cpp'
+        TestSource = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007e8050_test.cpp'
+        PassPattern = 'AUTO_TINY_007e8050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007eb0e0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007eb0e0.cpp'
+        TestSource = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007eb0e0_test.cpp'
+        PassPattern = 'AUTO_TINY_007eb0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007eb360'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007eb360.cpp'
+        TestSource = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007eb360_test.cpp'
+        PassPattern = 'AUTO_TINY_007eb360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007eb540'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007eb540.cpp'
+        TestSource = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007eb540_test.cpp'
+        PassPattern = 'AUTO_TINY_007eb540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ee0a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007ee0a0.cpp'
+        TestSource = '00/7e/CEngineSubPrimitiveText_scalardeletingdestructor_007ee0a0_test.cpp'
+        PassPattern = 'AUTO_TINY_007ee0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084b240'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b240.cpp'
+        TestSource = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b240_test.cpp'
+        PassPattern = 'AUTO_TINY_0084b240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084b300'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b300.cpp'
+        TestSource = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b300_test.cpp'
+        PassPattern = 'AUTO_TINY_0084b300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084b330'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b330.cpp'
+        TestSource = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b330_test.cpp'
+        PassPattern = 'AUTO_TINY_0084b330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084b360'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b360.cpp'
+        TestSource = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b360_test.cpp'
+        PassPattern = 'AUTO_TINY_0084b360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084b3b0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b3b0.cpp'
+        TestSource = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b3b0_test.cpp'
+        PassPattern = 'AUTO_TINY_0084b3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084b430'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b430.cpp'
+        TestSource = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b430_test.cpp'
+        PassPattern = 'AUTO_TINY_0084b430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084b460'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b460.cpp'
+        TestSource = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b460_test.cpp'
+        PassPattern = 'AUTO_TINY_0084b460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084b4d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b4d0.cpp'
+        TestSource = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b4d0_test.cpp'
+        PassPattern = 'AUTO_TINY_0084b4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084b540'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b540.cpp'
+        TestSource = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b540_test.cpp'
+        PassPattern = 'AUTO_TINY_0084b540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084b570'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b570.cpp'
+        TestSource = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b570_test.cpp'
+        PassPattern = 'AUTO_TINY_0084b570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084b5a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b5a0.cpp'
+        TestSource = '00/84/CEngineSubPrimitiveText_scalardeletingdestructor_0084b5a0_test.cpp'
+        PassPattern = 'AUTO_TINY_0084b5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00860100'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/86/CEngineSubPrimitiveText_scalardeletingdestructor_00860100.cpp'
+        TestSource = '00/86/CEngineSubPrimitiveText_scalardeletingdestructor_00860100_test.cpp'
+        PassPattern = 'AUTO_TINY_00860100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00873490'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/87/CEngineSubPrimitiveText_scalardeletingdestructor_00873490.cpp'
+        TestSource = '00/87/CEngineSubPrimitiveText_scalardeletingdestructor_00873490_test.cpp'
+        PassPattern = 'AUTO_TINY_00873490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00874e70'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/87/CEngineSubPrimitiveText_scalardeletingdestructor_00874e70.cpp'
+        TestSource = '00/87/CEngineSubPrimitiveText_scalardeletingdestructor_00874e70_test.cpp'
+        PassPattern = 'AUTO_TINY_00874e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087e5c0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/87/CEngineSubPrimitiveText_scalardeletingdestructor_0087e5c0.cpp'
+        TestSource = '00/87/CEngineSubPrimitiveText_scalardeletingdestructor_0087e5c0_test.cpp'
+        PassPattern = 'AUTO_TINY_0087e5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b91e0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8b/CEngineSubPrimitiveText_scalardeletingdestructor_008b91e0.cpp'
+        TestSource = '00/8b/CEngineSubPrimitiveText_scalardeletingdestructor_008b91e0_test.cpp'
+        PassPattern = 'AUTO_TINY_008b91e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008bdfe0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8b/CEngineSubPrimitiveText_scalardeletingdestructor_008bdfe0.cpp'
+        TestSource = '00/8b/CEngineSubPrimitiveText_scalardeletingdestructor_008bdfe0_test.cpp'
+        PassPattern = 'AUTO_TINY_008bdfe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c3b90'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008c3b90.cpp'
+        TestSource = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008c3b90_test.cpp'
+        PassPattern = 'AUTO_TINY_008c3b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c5c60'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008c5c60.cpp'
+        TestSource = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008c5c60_test.cpp'
+        PassPattern = 'AUTO_TINY_008c5c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c7d00'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008c7d00.cpp'
+        TestSource = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008c7d00_test.cpp'
+        PassPattern = 'AUTO_TINY_008c7d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c93e0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008c93e0.cpp'
+        TestSource = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008c93e0_test.cpp'
+        PassPattern = 'AUTO_TINY_008c93e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c96f0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008c96f0.cpp'
+        TestSource = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008c96f0_test.cpp'
+        PassPattern = 'AUTO_TINY_008c96f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cc450'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008cc450.cpp'
+        TestSource = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008cc450_test.cpp'
+        PassPattern = 'AUTO_TINY_008cc450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ced20'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008ced20.cpp'
+        TestSource = '00/8c/CEngineSubPrimitiveText_scalardeletingdestructor_008ced20_test.cpp'
+        PassPattern = 'AUTO_TINY_008ced20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d60f0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8d/CEngineSubPrimitiveText_scalardeletingdestructor_008d60f0.cpp'
+        TestSource = '00/8d/CEngineSubPrimitiveText_scalardeletingdestructor_008d60f0_test.cpp'
+        PassPattern = 'AUTO_TINY_008d60f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e3860'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e3860.cpp'
+        TestSource = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e3860_test.cpp'
+        PassPattern = 'AUTO_TINY_008e3860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e8cd0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e8cd0.cpp'
+        TestSource = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e8cd0_test.cpp'
+        PassPattern = 'AUTO_TINY_008e8cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e8d00'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e8d00.cpp'
+        TestSource = '00/8e/CEngineSubPrimitiveText_scalardeletingdestructor_008e8d00_test.cpp'
+        PassPattern = 'AUTO_TINY_008e8d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00905070'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/90/CEngineSubPrimitiveText_scalardeletingdestructor_00905070.cpp'
+        TestSource = '00/90/CEngineSubPrimitiveText_scalardeletingdestructor_00905070_test.cpp'
+        PassPattern = 'AUTO_TINY_00905070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009050a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/90/CEngineSubPrimitiveText_scalardeletingdestructor_009050a0.cpp'
+        TestSource = '00/90/CEngineSubPrimitiveText_scalardeletingdestructor_009050a0_test.cpp'
+        PassPattern = 'AUTO_TINY_009050a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00905470'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/90/CEngineSubPrimitiveText_scalardeletingdestructor_00905470.cpp'
+        TestSource = '00/90/CEngineSubPrimitiveText_scalardeletingdestructor_00905470_test.cpp'
+        PassPattern = 'AUTO_TINY_00905470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009054a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/90/CEngineSubPrimitiveText_scalardeletingdestructor_009054a0.cpp'
+        TestSource = '00/90/CEngineSubPrimitiveText_scalardeletingdestructor_009054a0_test.cpp'
+        PassPattern = 'AUTO_TINY_009054a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00938180'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/93/CEngineSubPrimitiveText_scalardeletingdestructor_00938180.cpp'
+        TestSource = '00/93/CEngineSubPrimitiveText_scalardeletingdestructor_00938180_test.cpp'
+        PassPattern = 'AUTO_TINY_00938180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00938250'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/93/CEngineSubPrimitiveText_scalardeletingdestructor_00938250.cpp'
+        TestSource = '00/93/CEngineSubPrimitiveText_scalardeletingdestructor_00938250_test.cpp'
+        PassPattern = 'AUTO_TINY_00938250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098cbb0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/98/CEngineSubPrimitiveText_scalardeletingdestructor_0098cbb0.cpp'
+        TestSource = '00/98/CEngineSubPrimitiveText_scalardeletingdestructor_0098cbb0_test.cpp'
+        PassPattern = 'AUTO_TINY_0098cbb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c61b0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/9c/CEngineSubPrimitiveText_scalardeletingdestructor_009c61b0.cpp'
+        TestSource = '00/9c/CEngineSubPrimitiveText_scalardeletingdestructor_009c61b0_test.cpp'
+        PassPattern = 'AUTO_TINY_009c61b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e45f0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/9e/CEngineSubPrimitiveText_scalardeletingdestructor_009e45f0.cpp'
+        TestSource = '00/9e/CEngineSubPrimitiveText_scalardeletingdestructor_009e45f0_test.cpp'
+        PassPattern = 'AUTO_TINY_009e45f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ee390'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/9e/CEngineSubPrimitiveText_scalardeletingdestructor_009ee390.cpp'
+        TestSource = '00/9e/CEngineSubPrimitiveText_scalardeletingdestructor_009ee390_test.cpp'
+        PassPattern = 'AUTO_TINY_009ee390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a37850'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/a3/CEngineSubPrimitiveText_scalardeletingdestructor_00a37850.cpp'
+        TestSource = '00/a3/CEngineSubPrimitiveText_scalardeletingdestructor_00a37850_test.cpp'
+        PassPattern = 'AUTO_TINY_00a37850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3f700'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/a3/CEngineSubPrimitiveText_scalardeletingdestructor_00a3f700.cpp'
+        TestSource = '00/a3/CEngineSubPrimitiveText_scalardeletingdestructor_00a3f700_test.cpp'
+        PassPattern = 'AUTO_TINY_00a3f700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a46420'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/a4/CEngineSubPrimitiveText_scalardeletingdestructor_00a46420.cpp'
+        TestSource = '00/a4/CEngineSubPrimitiveText_scalardeletingdestructor_00a46420_test.cpp'
+        PassPattern = 'AUTO_TINY_00a46420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009084a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/90/CEngineSubPrimitiveText_scalardeletingdestructor_009084a0.cpp'
+        TestSource = '00/90/CEngineSubPrimitiveText_scalardeletingdestructor_009084a0_test.cpp'
+        PassPattern = 'AUTO_TINY_009084a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00910c90'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/91/CEngineSubPrimitiveText_scalardeletingdestructor_00910c90.cpp'
+        TestSource = '00/91/CEngineSubPrimitiveText_scalardeletingdestructor_00910c90_test.cpp'
+        PassPattern = 'AUTO_TINY_00910c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00916610'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/91/CEngineSubPrimitiveText_scalardeletingdestructor_00916610.cpp'
+        TestSource = '00/91/CEngineSubPrimitiveText_scalardeletingdestructor_00916610_test.cpp'
+        PassPattern = 'AUTO_TINY_00916610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00923b60'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/92/CEngineSubPrimitiveText_scalardeletingdestructor_00923b60.cpp'
+        TestSource = '00/92/CEngineSubPrimitiveText_scalardeletingdestructor_00923b60_test.cpp'
+        PassPattern = 'AUTO_TINY_00923b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00933fa0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/93/CEngineSubPrimitiveText_scalardeletingdestructor_00933fa0.cpp'
+        TestSource = '00/93/CEngineSubPrimitiveText_scalardeletingdestructor_00933fa0_test.cpp'
+        PassPattern = 'AUTO_TINY_00933fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00940680'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/94/CEngineSubPrimitiveText_scalardeletingdestructor_00940680.cpp'
+        TestSource = '00/94/CEngineSubPrimitiveText_scalardeletingdestructor_00940680_test.cpp'
+        PassPattern = 'AUTO_TINY_00940680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094b350'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/94/CEngineSubPrimitiveText_scalardeletingdestructor_0094b350.cpp'
+        TestSource = '00/94/CEngineSubPrimitiveText_scalardeletingdestructor_0094b350_test.cpp'
+        PassPattern = 'AUTO_TINY_0094b350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009538b0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/95/CEngineSubPrimitiveText_scalardeletingdestructor_009538b0.cpp'
+        TestSource = '00/95/CEngineSubPrimitiveText_scalardeletingdestructor_009538b0_test.cpp'
+        PassPattern = 'AUTO_TINY_009538b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00957340'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/95/CEngineSubPrimitiveText_scalardeletingdestructor_00957340.cpp'
+        TestSource = '00/95/CEngineSubPrimitiveText_scalardeletingdestructor_00957340_test.cpp'
+        PassPattern = 'AUTO_TINY_00957340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00957370'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/95/CEngineSubPrimitiveText_scalardeletingdestructor_00957370.cpp'
+        TestSource = '00/95/CEngineSubPrimitiveText_scalardeletingdestructor_00957370_test.cpp'
+        PassPattern = 'AUTO_TINY_00957370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00968040'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/96/CEngineSubPrimitiveText_scalardeletingdestructor_00968040.cpp'
+        TestSource = '00/96/CEngineSubPrimitiveText_scalardeletingdestructor_00968040_test.cpp'
+        PassPattern = 'AUTO_TINY_00968040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096d480'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/96/CEngineSubPrimitiveText_scalardeletingdestructor_0096d480.cpp'
+        TestSource = '00/96/CEngineSubPrimitiveText_scalardeletingdestructor_0096d480_test.cpp'
+        PassPattern = 'AUTO_TINY_0096d480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009821e0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/98/CEngineSubPrimitiveText_scalardeletingdestructor_009821e0.cpp'
+        TestSource = '00/98/CEngineSubPrimitiveText_scalardeletingdestructor_009821e0_test.cpp'
+        PassPattern = 'AUTO_TINY_009821e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aab150'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/aa/CEngineSubPrimitiveText_scalardeletingdestructor_00aab150.cpp'
+        TestSource = '00/aa/CEngineSubPrimitiveText_scalardeletingdestructor_00aab150_test.cpp'
+        PassPattern = 'AUTO_TINY_00aab150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aac7f0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/aa/CEngineSubPrimitiveText_scalardeletingdestructor_00aac7f0.cpp'
+        TestSource = '00/aa/CEngineSubPrimitiveText_scalardeletingdestructor_00aac7f0_test.cpp'
+        PassPattern = 'AUTO_TINY_00aac7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aaeed0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/aa/CEngineSubPrimitiveText_scalardeletingdestructor_00aaeed0.cpp'
+        TestSource = '00/aa/CEngineSubPrimitiveText_scalardeletingdestructor_00aaeed0_test.cpp'
+        PassPattern = 'AUTO_TINY_00aaeed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab0a10'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ab/CEngineSubPrimitiveText_scalardeletingdestructor_00ab0a10.cpp'
+        TestSource = '00/ab/CEngineSubPrimitiveText_scalardeletingdestructor_00ab0a10_test.cpp'
+        PassPattern = 'AUTO_TINY_00ab0a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abe080'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ab/CEngineSubPrimitiveText_scalardeletingdestructor_00abe080.cpp'
+        TestSource = '00/ab/CEngineSubPrimitiveText_scalardeletingdestructor_00abe080_test.cpp'
+        PassPattern = 'AUTO_TINY_00abe080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac1e90'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ac/CEngineSubPrimitiveText_scalardeletingdestructor_00ac1e90.cpp'
+        TestSource = '00/ac/CEngineSubPrimitiveText_scalardeletingdestructor_00ac1e90_test.cpp'
+        PassPattern = 'AUTO_TINY_00ac1e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac3960'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ac/CEngineSubPrimitiveText_scalardeletingdestructor_00ac3960.cpp'
+        TestSource = '00/ac/CEngineSubPrimitiveText_scalardeletingdestructor_00ac3960_test.cpp'
+        PassPattern = 'AUTO_TINY_00ac3960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b98560'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/b9/CEngineSubPrimitiveText_scalardeletingdestructor_00b98560.cpp'
+        TestSource = '00/b9/CEngineSubPrimitiveText_scalardeletingdestructor_00b98560_test.cpp'
+        PassPattern = 'AUTO_TINY_00b98560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb6200'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/cb/CEngineSubPrimitiveText_scalardeletingdestructor_00cb6200.cpp'
+        TestSource = '00/cb/CEngineSubPrimitiveText_scalardeletingdestructor_00cb6200_test.cpp'
+        PassPattern = 'AUTO_TINY_00cb6200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd4a30'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/cd/CEngineSubPrimitiveText_scalardeletingdestructor_00cd4a30.cpp'
+        TestSource = '00/cd/CEngineSubPrimitiveText_scalardeletingdestructor_00cd4a30_test.cpp'
+        PassPattern = 'AUTO_TINY_00cd4a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce6be0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ce/CEngineSubPrimitiveText_scalardeletingdestructor_00ce6be0.cpp'
+        TestSource = '00/ce/CEngineSubPrimitiveText_scalardeletingdestructor_00ce6be0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ce6be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce6c10'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ce/CEngineSubPrimitiveText_scalardeletingdestructor_00ce6c10.cpp'
+        TestSource = '00/ce/CEngineSubPrimitiveText_scalardeletingdestructor_00ce6c10_test.cpp'
+        PassPattern = 'AUTO_TINY_00ce6c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce6c80'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ce/CEngineSubPrimitiveText_scalardeletingdestructor_00ce6c80.cpp'
+        TestSource = '00/ce/CEngineSubPrimitiveText_scalardeletingdestructor_00ce6c80_test.cpp'
+        PassPattern = 'AUTO_TINY_00ce6c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d0edb0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d0/CEngineSubPrimitiveText_scalardeletingdestructor_00d0edb0.cpp'
+        TestSource = '00/d0/CEngineSubPrimitiveText_scalardeletingdestructor_00d0edb0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d0edb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d154e0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d1/CEngineSubPrimitiveText_scalardeletingdestructor_00d154e0.cpp'
+        TestSource = '00/d1/CEngineSubPrimitiveText_scalardeletingdestructor_00d154e0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d154e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d172e0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d1/CEngineSubPrimitiveText_scalardeletingdestructor_00d172e0.cpp'
+        TestSource = '00/d1/CEngineSubPrimitiveText_scalardeletingdestructor_00d172e0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d172e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d1fd00'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d1/CEngineSubPrimitiveText_scalardeletingdestructor_00d1fd00.cpp'
+        TestSource = '00/d1/CEngineSubPrimitiveText_scalardeletingdestructor_00d1fd00_test.cpp'
+        PassPattern = 'AUTO_TINY_00d1fd00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2d6d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d2/CEngineSubPrimitiveText_scalardeletingdestructor_00d2d6d0.cpp'
+        TestSource = '00/d2/CEngineSubPrimitiveText_scalardeletingdestructor_00d2d6d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d2d6d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d50650'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d5/CEngineSubPrimitiveText_scalardeletingdestructor_00d50650.cpp'
+        TestSource = '00/d5/CEngineSubPrimitiveText_scalardeletingdestructor_00d50650_test.cpp'
+        PassPattern = 'AUTO_TINY_00d50650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba81b0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ba/CEngineSubPrimitiveText_scalardeletingdestructor_00ba81b0.cpp'
+        TestSource = '00/ba/CEngineSubPrimitiveText_scalardeletingdestructor_00ba81b0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ba81b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd9a40'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/bd/CEngineSubPrimitiveText_scalardeletingdestructor_00bd9a40.cpp'
+        TestSource = '00/bd/CEngineSubPrimitiveText_scalardeletingdestructor_00bd9a40_test.cpp'
+        PassPattern = 'AUTO_TINY_00bd9a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd9a70'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/bd/CEngineSubPrimitiveText_scalardeletingdestructor_00bd9a70.cpp'
+        TestSource = '00/bd/CEngineSubPrimitiveText_scalardeletingdestructor_00bd9a70_test.cpp'
+        PassPattern = 'AUTO_TINY_00bd9a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d61c00'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d6/CEngineSubPrimitiveText_scalardeletingdestructor_00d61c00.cpp'
+        TestSource = '00/d6/CEngineSubPrimitiveText_scalardeletingdestructor_00d61c00_test.cpp'
+        PassPattern = 'AUTO_TINY_00d61c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6b560'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d6/CEngineSubPrimitiveText_scalardeletingdestructor_00d6b560.cpp'
+        TestSource = '00/d6/CEngineSubPrimitiveText_scalardeletingdestructor_00d6b560_test.cpp'
+        PassPattern = 'AUTO_TINY_00d6b560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d728a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d7/CEngineSubPrimitiveText_scalardeletingdestructor_00d728a0.cpp'
+        TestSource = '00/d7/CEngineSubPrimitiveText_scalardeletingdestructor_00d728a0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d728a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d729b0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d7/CEngineSubPrimitiveText_scalardeletingdestructor_00d729b0.cpp'
+        TestSource = '00/d7/CEngineSubPrimitiveText_scalardeletingdestructor_00d729b0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d729b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d732c0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d7/CEngineSubPrimitiveText_scalardeletingdestructor_00d732c0.cpp'
+        TestSource = '00/d7/CEngineSubPrimitiveText_scalardeletingdestructor_00d732c0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d732c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7c6d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d7/CEngineSubPrimitiveText_scalardeletingdestructor_00d7c6d0.cpp'
+        TestSource = '00/d7/CEngineSubPrimitiveText_scalardeletingdestructor_00d7c6d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d7c6d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d84470'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d8/CEngineSubPrimitiveText_scalardeletingdestructor_00d84470.cpp'
+        TestSource = '00/d8/CEngineSubPrimitiveText_scalardeletingdestructor_00d84470_test.cpp'
+        PassPattern = 'AUTO_TINY_00d84470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d87ab0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d8/CEngineSubPrimitiveText_scalardeletingdestructor_00d87ab0.cpp'
+        TestSource = '00/d8/CEngineSubPrimitiveText_scalardeletingdestructor_00d87ab0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d87ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d89d40'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d8/CEngineSubPrimitiveText_scalardeletingdestructor_00d89d40.cpp'
+        TestSource = '00/d8/CEngineSubPrimitiveText_scalardeletingdestructor_00d89d40_test.cpp'
+        PassPattern = 'AUTO_TINY_00d89d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d91580'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d91580.cpp'
+        TestSource = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d91580_test.cpp'
+        PassPattern = 'AUTO_TINY_00d91580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d973a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d973a0.cpp'
+        TestSource = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d973a0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d973a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d99e10'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d99e10.cpp'
+        TestSource = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d99e10_test.cpp'
+        PassPattern = 'AUTO_TINY_00d99e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9da90'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d9da90.cpp'
+        TestSource = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d9da90_test.cpp'
+        PassPattern = 'AUTO_TINY_00d9da90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9e1e0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d9e1e0.cpp'
+        TestSource = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d9e1e0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d9e1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9ffa0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d9ffa0.cpp'
+        TestSource = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d9ffa0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d9ffa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da29f0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/da/CEngineSubPrimitiveText_scalardeletingdestructor_00da29f0.cpp'
+        TestSource = '00/da/CEngineSubPrimitiveText_scalardeletingdestructor_00da29f0_test.cpp'
+        PassPattern = 'AUTO_TINY_00da29f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da82f0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/da/CEngineSubPrimitiveText_scalardeletingdestructor_00da82f0.cpp'
+        TestSource = '00/da/CEngineSubPrimitiveText_scalardeletingdestructor_00da82f0_test.cpp'
+        PassPattern = 'AUTO_TINY_00da82f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da8480'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/da/CEngineSubPrimitiveText_scalardeletingdestructor_00da8480.cpp'
+        TestSource = '00/da/CEngineSubPrimitiveText_scalardeletingdestructor_00da8480_test.cpp'
+        PassPattern = 'AUTO_TINY_00da8480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dca6a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/dc/CEngineSubPrimitiveText_scalardeletingdestructor_00dca6a0.cpp'
+        TestSource = '00/dc/CEngineSubPrimitiveText_scalardeletingdestructor_00dca6a0_test.cpp'
+        PassPattern = 'AUTO_TINY_00dca6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcf760'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/dc/CEngineSubPrimitiveText_scalardeletingdestructor_00dcf760.cpp'
+        TestSource = '00/dc/CEngineSubPrimitiveText_scalardeletingdestructor_00dcf760_test.cpp'
+        PassPattern = 'AUTO_TINY_00dcf760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd92d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/dd/CEngineSubPrimitiveText_scalardeletingdestructor_00dd92d0.cpp'
+        TestSource = '00/dd/CEngineSubPrimitiveText_scalardeletingdestructor_00dd92d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00dd92d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddad00'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/dd/CEngineSubPrimitiveText_scalardeletingdestructor_00ddad00.cpp'
+        TestSource = '00/dd/CEngineSubPrimitiveText_scalardeletingdestructor_00ddad00_test.cpp'
+        PassPattern = 'AUTO_TINY_00ddad00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de02f0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/de/CEngineSubPrimitiveText_scalardeletingdestructor_00de02f0.cpp'
+        TestSource = '00/de/CEngineSubPrimitiveText_scalardeletingdestructor_00de02f0_test.cpp'
+        PassPattern = 'AUTO_TINY_00de02f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de8340'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/de/CEngineSubPrimitiveText_scalardeletingdestructor_00de8340.cpp'
+        TestSource = '00/de/CEngineSubPrimitiveText_scalardeletingdestructor_00de8340_test.cpp'
+        PassPattern = 'AUTO_TINY_00de8340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df40c0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/df/CEngineSubPrimitiveText_scalardeletingdestructor_00df40c0.cpp'
+        TestSource = '00/df/CEngineSubPrimitiveText_scalardeletingdestructor_00df40c0_test.cpp'
+        PassPattern = 'AUTO_TINY_00df40c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df5c60'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/df/CEngineSubPrimitiveText_scalardeletingdestructor_00df5c60.cpp'
+        TestSource = '00/df/CEngineSubPrimitiveText_scalardeletingdestructor_00df5c60_test.cpp'
+        PassPattern = 'AUTO_TINY_00df5c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e00660'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e0/CEngineSubPrimitiveText_scalardeletingdestructor_00e00660.cpp'
+        TestSource = '00/e0/CEngineSubPrimitiveText_scalardeletingdestructor_00e00660_test.cpp'
+        PassPattern = 'AUTO_TINY_00e00660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e052d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e0/CEngineSubPrimitiveText_scalardeletingdestructor_00e052d0.cpp'
+        TestSource = '00/e0/CEngineSubPrimitiveText_scalardeletingdestructor_00e052d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e052d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0e700'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e0/CEngineSubPrimitiveText_scalardeletingdestructor_00e0e700.cpp'
+        TestSource = '00/e0/CEngineSubPrimitiveText_scalardeletingdestructor_00e0e700_test.cpp'
+        PassPattern = 'AUTO_TINY_00e0e700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e13bf0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e13bf0.cpp'
+        TestSource = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e13bf0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e13bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e18410'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e18410.cpp'
+        TestSource = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e18410_test.cpp'
+        PassPattern = 'AUTO_TINY_00e18410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1a7d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e1a7d0.cpp'
+        TestSource = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e1a7d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e1a7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1f780'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e1f780.cpp'
+        TestSource = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e1f780_test.cpp'
+        PassPattern = 'AUTO_TINY_00e1f780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2ea60'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e2/CEngineSubPrimitiveText_scalardeletingdestructor_00e2ea60.cpp'
+        TestSource = '00/e2/CEngineSubPrimitiveText_scalardeletingdestructor_00e2ea60_test.cpp'
+        PassPattern = 'AUTO_TINY_00e2ea60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e37310'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e37310.cpp'
+        TestSource = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e37310_test.cpp'
+        PassPattern = 'AUTO_TINY_00e37310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e374c0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e374c0.cpp'
+        TestSource = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e374c0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e374c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e37e10'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e37e10.cpp'
+        TestSource = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e37e10_test.cpp'
+        PassPattern = 'AUTO_TINY_00e37e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e39510'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e39510.cpp'
+        TestSource = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e39510_test.cpp'
+        PassPattern = 'AUTO_TINY_00e39510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3ac40'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e3ac40.cpp'
+        TestSource = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e3ac40_test.cpp'
+        PassPattern = 'AUTO_TINY_00e3ac40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4a9d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e4/CEngineSubPrimitiveText_scalardeletingdestructor_00e4a9d0.cpp'
+        TestSource = '00/e4/CEngineSubPrimitiveText_scalardeletingdestructor_00e4a9d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e4a9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4b1a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e4/CEngineSubPrimitiveText_scalardeletingdestructor_00e4b1a0.cpp'
+        TestSource = '00/e4/CEngineSubPrimitiveText_scalardeletingdestructor_00e4b1a0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e4b1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e54200'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e5/CEngineSubPrimitiveText_scalardeletingdestructor_00e54200.cpp'
+        TestSource = '00/e5/CEngineSubPrimitiveText_scalardeletingdestructor_00e54200_test.cpp'
+        PassPattern = 'AUTO_TINY_00e54200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e546a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e5/CEngineSubPrimitiveText_scalardeletingdestructor_00e546a0.cpp'
+        TestSource = '00/e5/CEngineSubPrimitiveText_scalardeletingdestructor_00e546a0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e546a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5fcb0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e5/CEngineSubPrimitiveText_scalardeletingdestructor_00e5fcb0.cpp'
+        TestSource = '00/e5/CEngineSubPrimitiveText_scalardeletingdestructor_00e5fcb0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e5fcb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5fce0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e5/CEngineSubPrimitiveText_scalardeletingdestructor_00e5fce0.cpp'
+        TestSource = '00/e5/CEngineSubPrimitiveText_scalardeletingdestructor_00e5fce0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e5fce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5fd10'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e5/CEngineSubPrimitiveText_scalardeletingdestructor_00e5fd10.cpp'
+        TestSource = '00/e5/CEngineSubPrimitiveText_scalardeletingdestructor_00e5fd10_test.cpp'
+        PassPattern = 'AUTO_TINY_00e5fd10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e64f80'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e6/CEngineSubPrimitiveText_scalardeletingdestructor_00e64f80.cpp'
+        TestSource = '00/e6/CEngineSubPrimitiveText_scalardeletingdestructor_00e64f80_test.cpp'
+        PassPattern = 'AUTO_TINY_00e64f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6a5d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e6/CEngineSubPrimitiveText_scalardeletingdestructor_00e6a5d0.cpp'
+        TestSource = '00/e6/CEngineSubPrimitiveText_scalardeletingdestructor_00e6a5d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e6a5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6b3a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e6/CEngineSubPrimitiveText_scalardeletingdestructor_00e6b3a0.cpp'
+        TestSource = '00/e6/CEngineSubPrimitiveText_scalardeletingdestructor_00e6b3a0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e6b3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7b860'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e7/CEngineSubPrimitiveText_scalardeletingdestructor_00e7b860.cpp'
+        TestSource = '00/e7/CEngineSubPrimitiveText_scalardeletingdestructor_00e7b860_test.cpp'
+        PassPattern = 'AUTO_TINY_00e7b860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7c830'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e7/CEngineSubPrimitiveText_scalardeletingdestructor_00e7c830.cpp'
+        TestSource = '00/e7/CEngineSubPrimitiveText_scalardeletingdestructor_00e7c830_test.cpp'
+        PassPattern = 'AUTO_TINY_00e7c830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8d240'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e8/CEngineSubPrimitiveText_scalardeletingdestructor_00e8d240.cpp'
+        TestSource = '00/e8/CEngineSubPrimitiveText_scalardeletingdestructor_00e8d240_test.cpp'
+        PassPattern = 'AUTO_TINY_00e8d240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e92940'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e92940.cpp'
+        TestSource = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e92940_test.cpp'
+        PassPattern = 'AUTO_TINY_00e92940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e93050'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e93050.cpp'
+        TestSource = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e93050_test.cpp'
+        PassPattern = 'AUTO_TINY_00e93050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e98430'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e98430.cpp'
+        TestSource = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e98430_test.cpp'
+        PassPattern = 'AUTO_TINY_00e98430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9cfa0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e9cfa0.cpp'
+        TestSource = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e9cfa0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e9cfa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9da90'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e9da90.cpp'
+        TestSource = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e9da90_test.cpp'
+        PassPattern = 'AUTO_TINY_00e9da90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9e0b0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e9e0b0.cpp'
+        TestSource = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e9e0b0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e9e0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea2cc0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ea/CEngineSubPrimitiveText_scalardeletingdestructor_00ea2cc0.cpp'
+        TestSource = '00/ea/CEngineSubPrimitiveText_scalardeletingdestructor_00ea2cc0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ea2cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea7650'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ea/CEngineSubPrimitiveText_scalardeletingdestructor_00ea7650.cpp'
+        TestSource = '00/ea/CEngineSubPrimitiveText_scalardeletingdestructor_00ea7650_test.cpp'
+        PassPattern = 'AUTO_TINY_00ea7650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eae8e0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ea/CEngineSubPrimitiveText_scalardeletingdestructor_00eae8e0.cpp'
+        TestSource = '00/ea/CEngineSubPrimitiveText_scalardeletingdestructor_00eae8e0_test.cpp'
+        PassPattern = 'AUTO_TINY_00eae8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb6310'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/eb/CEngineSubPrimitiveText_scalardeletingdestructor_00eb6310.cpp'
+        TestSource = '00/eb/CEngineSubPrimitiveText_scalardeletingdestructor_00eb6310_test.cpp'
+        PassPattern = 'AUTO_TINY_00eb6310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb6340'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/eb/CEngineSubPrimitiveText_scalardeletingdestructor_00eb6340.cpp'
+        TestSource = '00/eb/CEngineSubPrimitiveText_scalardeletingdestructor_00eb6340_test.cpp'
+        PassPattern = 'AUTO_TINY_00eb6340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebcc70'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/eb/CEngineSubPrimitiveText_scalardeletingdestructor_00ebcc70.cpp'
+        TestSource = '00/eb/CEngineSubPrimitiveText_scalardeletingdestructor_00ebcc70_test.cpp'
+        PassPattern = 'AUTO_TINY_00ebcc70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec2830'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ec/CEngineSubPrimitiveText_scalardeletingdestructor_00ec2830.cpp'
+        TestSource = '00/ec/CEngineSubPrimitiveText_scalardeletingdestructor_00ec2830_test.cpp'
+        PassPattern = 'AUTO_TINY_00ec2830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec5330'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ec/CEngineSubPrimitiveText_scalardeletingdestructor_00ec5330.cpp'
+        TestSource = '00/ec/CEngineSubPrimitiveText_scalardeletingdestructor_00ec5330_test.cpp'
+        PassPattern = 'AUTO_TINY_00ec5330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ecd5d0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ec/CEngineSubPrimitiveText_scalardeletingdestructor_00ecd5d0.cpp'
+        TestSource = '00/ec/CEngineSubPrimitiveText_scalardeletingdestructor_00ecd5d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ecd5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed2890'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00ed2890.cpp'
+        TestSource = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00ed2890_test.cpp'
+        PassPattern = 'AUTO_TINY_00ed2890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed75c0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00ed75c0.cpp'
+        TestSource = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00ed75c0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ed75c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed99a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00ed99a0.cpp'
+        TestSource = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00ed99a0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ed99a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edc2a0'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00edc2a0.cpp'
+        TestSource = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00edc2a0_test.cpp'
+        PassPattern = 'AUTO_TINY_00edc2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edd000'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00edd000.cpp'
+        TestSource = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00edd000_test.cpp'
+        PassPattern = 'AUTO_TINY_00edd000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef5040'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ef/CEngineSubPrimitiveText_scalardeletingdestructor_00ef5040.cpp'
+        TestSource = '00/ef/CEngineSubPrimitiveText_scalardeletingdestructor_00ef5040_test.cpp'
+        PassPattern = 'AUTO_TINY_00ef5040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef8d00'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/ef/CEngineSubPrimitiveText_scalardeletingdestructor_00ef8d00.cpp'
+        TestSource = '00/ef/CEngineSubPrimitiveText_scalardeletingdestructor_00ef8d00_test.cpp'
+        PassPattern = 'AUTO_TINY_00ef8d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f03870'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/f0/CEngineSubPrimitiveText_scalardeletingdestructor_00f03870.cpp'
+        TestSource = '00/f0/CEngineSubPrimitiveText_scalardeletingdestructor_00f03870_test.cpp'
+        PassPattern = 'AUTO_TINY_00f03870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f09c70'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/f0/CEngineSubPrimitiveText_scalardeletingdestructor_00f09c70.cpp'
+        TestSource = '00/f0/CEngineSubPrimitiveText_scalardeletingdestructor_00f09c70_test.cpp'
+        PassPattern = 'AUTO_TINY_00f09c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6e280'
+        Module = 'CEngineSubPrimitiveText'
+        Source = '00/e6/CEngineSubPrimitiveText_scalardeletingdestructor_00e6e280.cpp'
+        TestSource = '00/e6/CEngineSubPrimitiveText_scalardeletingdestructor_00e6e280_test.cpp'
+        PassPattern = 'AUTO_TINY_00e6e280_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH

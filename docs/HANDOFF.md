@@ -1,6 +1,39 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 01:02 MDT (103-function expanded unattended replay checkpoint).*
+*Last updated: 2026-07-26 08:00 MDT (258-function speed-destructor replay checkpoint).*
+
+## Speed-optimized composite-destructor replay checkpoint (2026-07-26)
+
+- The next unsupported 33-48-byte cluster is closed. Retail uses both an
+  8-bit and a 32-bit member displacement for this composite scalar deleting
+  destructor, plus speed-optimized caller cleanup (`add esp, 4`) instead of
+  the previously supported size-optimized `pop ecx`.
+- `auto_author_tiny.py` now recognizes only that exact control-flow shape and
+  emits the corresponding `#pragma optimize("t", on)` readable source. Unit
+  coverage locks both displacement encodings. Focused probes independently
+  proved a 40-byte and a 43-byte representative before the full replay.
+- Pending-oracle replay authored **254 / 254** candidates. Every candidate
+  passed its member/owner/delete ordering fixture and relocation-normalized
+  retail comparison. The hourly queue also recovered four newly exposed
+  async-read/kill wrappers, for **258** new verified functions since the prior
+  checkpoint.
+- The full VC7.1 catalog and behavior gate now passes with **4,090 / 4,090**
+  functions. Candidate retail parity is **1,895 exact + 1,868
+  relocation-normalized = 3,763 / 49,553 (7.59%)**; 199 honest differences
+  and 128 missing function-start oracles remain visible.
+- Generated manifests, backlog, promotion queue, coverage dashboard, artifact
+  index, and root README are refreshed. The collision-safe organizer again
+  preserved the six non-identical stopped-Wave-3 root/shard pairs.
+- **Resume the parity lane** with the remaining repeated 33-48-byte families.
+  The largest honest clusters are creature-action clone allocation/copy
+  wrappers and counted-pointer release/assignment helpers. Add a family only
+  after its ABI, allocation failure, reference-count, and ownership behavior
+  are represented in focused fixtures.
+- The visual-boot resume point remains `rebuild/RUNNABLE.md`: replace the
+  boundary-owned `GFInitialise` engine-root/display/player doubles, then close
+  archive loading and the renderer/game-loop handoff.
+
+*Previous checkpoint: 2026-07-26 01:02 MDT (103-function expanded unattended replay checkpoint).*
 
 ## Expanded unattended replay checkpoint (2026-07-26)
 
