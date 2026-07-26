@@ -43,8 +43,10 @@ $charStringDefaultBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharStri
 $systemManagerInitSource = Join-Path $rebuildRoot 'src\compiled\00\40\CSystemManagerInit_Constructor_00403b10.cpp'
 $systemManagerInitBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CSystemManagerInit_Constructor_00403b10_test.cpp'
 $gfmainPhase1Source = Join-Path $rebuildRoot 'integration\gfmain_phase1.cpp'
+$gfmainPhase2Source = Join-Path $rebuildRoot 'integration\gfmain_phase2.cpp'
 $stage2BoundarySource = Join-Path $rebuildRoot 'integration\stage2_engine_boundary.cpp'
 $gfmainPhase1BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase1_test.cpp'
+$gfmainPhase2BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase2_test.cpp'
 $bootObjectChecker = Join-Path $workspaceRoot 'tools\check_boot_object.py'
 $bootstrapObject = Join-Path $outDir 'bootstrap_main.obj'
 $retailObject = Join-Path $outDir 'retail_00403c60.obj'
@@ -70,8 +72,15 @@ $profileStartBehaviorObject = Join-Path $outDir 'profile_start_behavior.obj'
 $charStringDefaultObject = Join-Path $outDir 'char-string-default-constructor.obj'
 $systemManagerInitObject = Join-Path $outDir 'system-manager-init-constructor.obj'
 $gfmainPhase1Object = Join-Path $outDir 'gfmain_phase1.obj'
+$gfmainPhase2Object = Join-Path $outDir 'gfmain_phase2.obj'
 $stage2BoundaryObject = Join-Path $outDir 'stage2_engine_boundary.obj'
+$stage3BoundaryObject = Join-Path $outDir 'stage3_engine_boundary.obj'
 $gfmainPhase1BehaviorObject = Join-Path $outDir 'gfmain_phase1_behavior.obj'
+$gfmainPhase2BehaviorObject = Join-Path $outDir 'gfmain_phase2_behavior.obj'
+$profileEndObject = Join-Path $outDir 'profile-end.obj'
+$asyncFailureHandlingObject = Join-Path $outDir 'async-failure-handling.obj'
+$startupLatchObject = Join-Path $outDir 'startup-latch-clear.obj'
+$fileInstallerGetObject = Join-Path $outDir 'cfi-singleton-get.obj'
 $executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage0.exe'
 $winMainBehaviorExecutable = Join-Path $outDir 'FableTLC-WinMain-Behavior.exe'
 $stage1Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage1.exe'
@@ -84,7 +93,9 @@ $charStringConstructorBehaviorExecutable = Join-Path $outDir 'FableTLC-CharStrin
 $charStringDestructorBehaviorExecutable = Join-Path $outDir 'FableTLC-CharStringDestructor-Behavior.exe'
 $profileStartBehaviorExecutable = Join-Path $outDir 'FableTLC-ProfileStart-Behavior.exe'
 $gfmainPhase1BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase1-Behavior.exe'
+$gfmainPhase2BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase2-Behavior.exe'
 $stage2Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage2.exe'
+$stage3Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage3.exe'
 $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
 $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $progressSetupPassPattern = 'FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS'
@@ -98,6 +109,7 @@ $profileStartPassPattern = 'FABLETLC_PROFILE_START_BEHAVIOR PASS'
 $charStringDefaultPassPattern = 'FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVIOR PASS'
 $systemManagerInitPassPattern = 'FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS'
 $gfmainPhase1PassPattern = 'FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS'
+$gfmainPhase2PassPattern = 'FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS'
 $profileEndPassPattern = 'FABLETLC_PROFILE_END_BEHAVIOR PASS'
 $asyncFailureHandlingPassPattern = 'FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS'
 $startupLatchPassPattern = 'FABLETLC_STARTUP_LATCH_BEHAVIOR PASS'
@@ -140,8 +152,10 @@ $required = @(
     $systemManagerInitSource,
     $systemManagerInitBehaviorSource,
     $gfmainPhase1Source,
+    $gfmainPhase2Source,
     $stage2BoundarySource,
     $gfmainPhase1BehaviorSource,
+    $gfmainPhase2BehaviorSource,
     $bootObjectChecker
 )
 $missing = @($required | Where-Object { -not (Test-Path -LiteralPath $_) })
@@ -728,6 +742,15 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase2Object" $gfmainPhase2Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase2Object)
+    ) {
+        throw 'Failed to compile the GFMain Phase 2 integration unit.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$stage2BoundaryObject" $stage2BoundarySource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -737,12 +760,31 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE2 `
+        "/Fo$stage3BoundaryObject" $stage2BoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $stage3BoundaryObject)
+    ) {
+        throw 'Failed to compile the Stage 3 engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$gfmainPhase1BehaviorObject" $gfmainPhase1BehaviorSource
     if (
         $LASTEXITCODE -ne 0 -or
         -not (Test-Path -LiteralPath $gfmainPhase1BehaviorObject)
     ) {
         throw 'Failed to compile the GFMain Phase 1 behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase2BehaviorObject" $gfmainPhase2BehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase2BehaviorObject)
+    ) {
+        throw 'Failed to compile the GFMain Phase 2 behavior fixture.'
     }
 
     $phase1RuntimeObjects = @(
@@ -756,6 +798,25 @@ try {
         $charStringDefaultObject,
         $charStringDestructorObject,
         $profileStartObject,
+        $systemManagerInitObject
+    )
+
+    $phase2RuntimeObjects = @(
+        $gfmainPhase1Object,
+        $gfmainPhase2Object,
+        $stage3BoundaryObject,
+        $setCurrentPathObject,
+        $getProjectPathObject,
+        $wideStringConstructorObject,
+        $wideStringDestructorObject,
+        $charStringConstructorObject,
+        $charStringDefaultObject,
+        $charStringDestructorObject,
+        $profileStartObject,
+        $profileEndObject,
+        $asyncFailureHandlingObject,
+        $startupLatchObject,
+        $fileInstallerGetObject,
         $systemManagerInitObject
     )
 
@@ -779,6 +840,26 @@ try {
         throw "GFMain Phase 1 fixture failed with exit code $gfmainPhase1ExitCode."
     }
 
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$gfmainPhase2BehaviorExecutable" `
+        @phase2RuntimeObjects $gfmainPhase2BehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase2BehaviorExecutable)
+    ) {
+        throw 'Failed to link the GFMain Phase 2 behavior fixture.'
+    }
+
+    $gfmainPhase2Output = & $gfmainPhase2BehaviorExecutable 2>&1
+    $gfmainPhase2ExitCode = $LASTEXITCODE
+    $gfmainPhase2Output | Write-Output
+    if (
+        $gfmainPhase2ExitCode -ne 0 -or
+        (($gfmainPhase2Output -join "`n") -notmatch [regex]::Escape($gfmainPhase2PassPattern))
+    ) {
+        throw "GFMain Phase 2 fixture failed with exit code $gfmainPhase2ExitCode."
+    }
+
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:windows `
         "/out:$stage2Executable" $winMainObject @phase1RuntimeObjects
     if (
@@ -793,9 +874,24 @@ try {
         throw "Stage 2 startup failed with exit code $LASTEXITCODE."
     }
 
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:windows `
+        "/out:$stage3Executable" $winMainObject @phase2RuntimeObjects
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $stage3Executable)
+    ) {
+        throw 'Failed to link the Stage 3 startup executable.'
+    }
+
+    & $stage3Executable
+    if ($LASTEXITCODE -ne 0) {
+        throw "Stage 3 startup failed with exit code $LASTEXITCODE."
+    }
+
     Write-Output "BOOTSTRAP_BUILD PASS configuration=$Configuration executable=$executable"
     Write-Output "STAGE1_STARTUP PASS executable=$stage1Executable boundary=GFMain"
     Write-Output "STAGE2_STARTUP PASS executable=$stage2Executable boundary=GFMainPhase2"
+    Write-Output "STAGE3_STARTUP PASS executable=$stage3Executable boundary=GFMainPhase3"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude
