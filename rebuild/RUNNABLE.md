@@ -36,6 +36,10 @@ The nested default `CCharString` constructor is retail-matched, while
 `CSystemManagerInit` now passes a focused layout/defaults/construction-order
 fixture. Its 265-byte object has one documented instruction-scheduling
 residue: `lea ecx,[esi+0x5c]` is emitted earlier than retail.
+Phase 2 now has all seven direct calls proven: the repeated string/profile
+leaves, `NProfileTimer::EndProfile`, the async failure-policy encoder,
+the TLC startup-latch clear, and the 69-byte counted `CFileInstaller`
+singleton retrieval path.
 
 **Stage 0 remains the smallest linker proof:** VC7.1 links a console
 PE containing
@@ -58,6 +62,10 @@ Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,
 `FABLETLC_PROFILE_START_BEHAVIOR PASS`,
 `FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVIOR PASS`,
 `FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS`,
+`FABLETLC_PROFILE_END_BEHAVIOR PASS`,
+`FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS`,
+`FABLETLC_STARTUP_LATCH_BEHAVIOR PASS`,
+`FABLETLC_FILE_INSTALLER_GET_BEHAVIOR PASS`,
 `FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS`, and
 `STAGE2_STARTUP PASS`.
 Generated products stay under the ignored `rebuild/build/` tree.
@@ -92,15 +100,15 @@ These are integration units, not invented retail functions.
 | Phase | Address range | Role | Direct calls | Unique targets | Proven | Anchors |
 |---:|---|---|---:|---:|---:|---|
 | 1 | `0x00402510`-`0x004025A6` | runtime and project bootstrap | 9 | 9 | 7 | CSystemManagerInit; GetProjectPath; SetCurrentPath; InitialiseConsoleVariables |
-| 2 | `0x004025A6`-`0x00402668` | failure-handling bootstrap | 7 | 7 | 0 | CSystemManager::Get; Draw; SetEnableFailureHandling |
-| 3 | `0x00402668`-`0x0040284E` | settings, persistence, and IME | 34 | 23 | 0 | GetActionName; PathExists; LoadFromFile; CPersistContext; LoadIMESettings |
+| 2 | `0x004025A6`-`0x00402668` | basic-install and failure-policy bootstrap | 7 | 7 | 7 | CFileInstallerSingleton::Get; startup latch; SetEnableFailureHandling |
+| 3 | `0x00402668`-`0x0040284E` | settings, persistence, and IME | 34 | 23 | 2 | GetActionName; PathExists; LoadFromFile; CPersistContext; LoadIMESettings |
 | 4 | `0x0040284E`-`0x004029DC` | root child hierarchy | 29 | 5 | 0 | EnableNavigator; AddChild |
 | 5 | `0x004029DC`-`0x00402CE6` | retail banks and INI files | 65 | 15 | 0 | OpenRetailBank; OpenIniFile; GetDVDDialogueDir |
-| 6 | `0x00402CE6`-`0x00403082` | save paths, fonts, and display resources | 61 | 24 | 0 | LoadTable; MyDocuments_CheckWritePermissions; GetFontBankName; AddChildPrimitive |
+| 6 | `0x00402CE6`-`0x00403082` | save paths, fonts, and display resources | 61 | 24 | 2 | LoadTable; MyDocuments_CheckWritePermissions; GetFontBankName; AddChildPrimitive |
 | 7 | `0x00403082`-`0x0040329C` | command line and window configuration | 15 | 10 | 0 | GetWindowTitle; CCharString assignments |
 | 8 | `0x0040329C`-`0x004032D5` | EULA and hardware configuration | 5 | 4 | 0 | DoEULAThings; GFConfigDetection; GFFreeConfigDetection |
-| 9 | `0x004032D5`-`0x00403389` | engine primitive assembly | 11 | 10 | 0 | AddChildPrimitive; Initialise; GFMain_ProcessSaveFileMetadata |
-| 10 | `0x00403389`-`0x00403480` | GFInitialise, launch, error handling, and cleanup | 21 | 13 | 0 | GFInitialise; GFHandleSystemInitError; CSystemRegistry |
+| 9 | `0x004032D5`-`0x00403389` | engine primitive assembly | 11 | 10 | 1 | AddChildPrimitive; Initialise; GFMain_ProcessSaveFileMetadata |
+| 10 | `0x00403389`-`0x00403480` | GFInitialise, launch, error handling, and cleanup | 21 | 13 | 2 | GFInitialise; GFHandleSystemInitError; CSystemRegistry |
 
 ### Verified GFMain dependencies
 
@@ -114,10 +122,24 @@ These are integration units, not invented retail functions.
 | 1 | `0x00402583` | `0x00997510` | GetProjectPath | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CAFile_GetProjectPath_00997510.cpp) |
 | 1 | `0x0040258A` | `0x009974F0` | SetCurrentPath | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CAFile_SetCurrentPath_009974f0.cpp) |
 | 1 | `0x00402593` | `0x0099B510` | ~CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp) |
+| 2 | `0x004025AC` | `0x009D8250` | NProfileTimer::EndProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp) |
+| 2 | `0x004025BC` | `0x0099EBF0` | CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp) |
+| 2 | `0x004025C7` | `0x009D8240` | NProfileTimer::StartProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp) |
+| 2 | `0x004025D0` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
+| 2 | `0x0040260B` | `0x00404440` | CFileInstallerSingleton::Get | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CFileInstallerSingleton_Get_00404440.cpp) |
+| 2 | `0x0040261F` | `0x009D81E0` | FableClearStartupLatch_013964A8 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/Global_ClearStartupLatch_009d81e0.cpp) |
+| 2 | `0x0040262A` | `0x009D5240` | CBankFileAsync::SetEnableFailureHandling | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/CBankFileAsync_SetEnableFailureHandling_009d5240.cpp) |
+| 3 | `0x00402668` | `0x009D8250` | NProfileTimer::EndProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp) |
+| 3 | `0x0040283E` | `0x009D8250` | NProfileTimer::EndProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp) |
+| 6 | `0x00402CE6` | `0x009D8250` | NProfileTimer::EndProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp) |
+| 6 | `0x00402D6A` | `0x009D8250` | NProfileTimer::EndProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp) |
+| 9 | `0x00403335` | `0x009D8250` | NProfileTimer::EndProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp) |
+| 10 | `0x004033B8` | `0x009D8250` | NProfileTimer::EndProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp) |
+| 10 | `0x004033D6` | `0x009D8250` | NProfileTimer::EndProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp) |
 
 Phase closure order:
 1. **runtime and project bootstrap:** Callable in Stage 2; close CSystemManagerInit's one-instruction scheduling residue and replace the console-variable boundary from recovered registration data.
-2. **failure-handling bootstrap:** Type the returned system-manager object and its temporary allocation/deletion path.
+2. **basic-install and failure-policy bootstrap:** Type and recover the temporary counted-pointer release path surrounding the now-matched singleton retrieval.
 3. **settings, persistence, and IME:** Separate optional settings-file parsing from default-value initialization.
 4. **root child hierarchy:** Recover the five named child definitions and the owner/container type.
 5. **retail banks and INI files:** Name each bank path and turn the repeated open sequence into data-backed records.

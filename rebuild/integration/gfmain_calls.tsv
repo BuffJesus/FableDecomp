@@ -8,14 +8,14 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 1	0040258a	009974f0	SetCurrentPath	RELOCATION_MATCH	rebuild/src/compiled/00/99/CAFile_SetCurrentPath_009974f0.cpp
 1	00402593	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
 1	004025a1	00413c50	InitialiseConsoleVariables
-2	004025ac	009d8250	$E2
-2	004025bc	0099ebf0	CCharString
-2	004025c7	009d8240	$E2
-2	004025d0	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-2	0040260b	00404440	Get
-2	0040261f	009d81e0	Draw
-2	0040262a	009d5240	SetEnableFailureHandling
-3	00402668	009d8250	$E2
+2	004025ac	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
+2	004025bc	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+2	004025c7	009d8240	NProfileTimer::StartProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp
+2	004025d0	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+2	0040260b	00404440	CFileInstallerSingleton::Get	RELOCATION_MATCH	rebuild/src/compiled/00/40/CFileInstallerSingleton_Get_00404440.cpp
+2	0040261f	009d81e0	FableClearStartupLatch_013964A8	RELOCATION_MATCH	rebuild/src/compiled/00/9d/Global_ClearStartupLatch_009d81e0.cpp
+2	0040262a	009d5240	CBankFileAsync::SetEnableFailureHandling	RELOCATION_MATCH	rebuild/src/compiled/00/9d/CBankFileAsync_SetEnableFailureHandling_009d5240.cpp
+3	00402668	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
 3	00402678	0099ebf0	CCharString
 3	00402683	009d8240	$E2
 3	0040268c	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
@@ -48,7 +48,7 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 3	00402821	0099a300	CBase
 3	0040282c	009bc890	SetLeftAlignText
 3	00402837	009bc8a0	SetLeftAlignText
-3	0040283e	009d8250	$E2
+3	0040283e	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
 4	0040284e	0099ebf0	CCharString
 4	00402859	009d8240	$E2
 4	00402862	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
@@ -143,7 +143,7 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 5	00402cc8	009a76c0	operator_new
 5	00402cd1	0099b510	~CCharString
 5	00402cdf	0099b800	CCharString::AssignFromWide
-6	00402ce6	009d8250	$E2
+6	00402ce6	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
 6	00402cf6	0099ebf0	CCharString
 6	00402d01	009d8240	$E2
 6	00402d0a	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
@@ -152,7 +152,7 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 6	00402d36	009d4a40	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
 6	00402d3f	0099b510	~CCharString
 6	00402d63	009d4c30	LoadTable
-6	00402d6a	009d8250	$E2
+6	00402d6a	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
 6	00402d80	0041a4c0	GetAutoSaveCheckPointFileName
 6	00402d87	0099af10	operator_char_const*
 6	00402d9b	0099b510	~CCharString
@@ -227,7 +227,7 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 9	00403302	009a0ef0	SetLeftAlignText
 9	00403325	009a4ec0	AddChildPrimitive
 9	0040332c	009a6610	Initialise
-9	00403335	009d8250	$E2
+9	00403335	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
 9	0040333a	009a4ec0	AddChildPrimitive
 9	00403346	00404a80	AddChildPrimitive
 9	0040334d	00405650	Initialise
@@ -239,11 +239,11 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 10	0040339b	0099b150	CWideString::NotEqual
 10	004033aa	0040d2a0	Get
 10	004033b1	0040d400	AddLineToDrawBuffer
-10	004033b8	009d8250	$E2
+10	004033b8	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
 10	004033c2	00412f90	Play
 10	004033c7	00401b80	~CAIStateGroup_JackDragon
 10	004033cf	00401c00	GFHandleSystemInitError
-10	004033d6	009d8250	$E2
+10	004033d6	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
 10	004033e5	0099cf10	CSystemRegistry
 10	004033f4	0099d100	WriteBOOL
 10	004033fd	0099cf70	~CSystemRegistry
