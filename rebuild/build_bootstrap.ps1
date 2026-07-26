@@ -1313,6 +1313,7 @@ try {
         $visualBoundaryObject,
         $visualBootObject,
         $visualBootD3D9Object,
+        $render2DBatchPlanObject,
         $setCurrentPathObject,
         $getProjectPathObject,
         $wideStringConstructorObject,
@@ -1446,7 +1447,7 @@ try {
 
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
         "/out:$visualBootBehaviorExecutable" `
-        $visualBootObject $visualBootD3D9Object `
+        $visualBootObject $visualBootD3D9Object $render2DBatchPlanObject `
         $visualBootBehaviorObject $visualBootResource `
         user32.lib gdi32.lib d3d9.lib
     if (
@@ -1529,7 +1530,7 @@ try {
     } else {
         'AuthoredFallback'
     }
-    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9TexturedQuad"
+    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DBatchPlan"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude

@@ -7,7 +7,9 @@
 - The visual checkpoint no longer depends on GDI for its normal presentation
   path. `visual_boot_d3d9.cpp` creates a real windowed D3D9 device, uploads the
   decoded retail `FRONTEND_BACKDROP_01` bitmap into an A8R8G8B8 managed
-  texture, and presents an aspect-fitted textured triangle strip.
+  texture. Two retail-shaped triangle records now flow through
+  `FableBuildRender2DBatchPlan`, and its triangle-list flush drives the live
+  `DrawPrimitiveUP`.
 - GDI remains as an explicit failure fallback while the recovered Lionhead
   draw-list submission is connected. The D3D9 title is only selected after
   device and texture initialization succeeds.
@@ -18,9 +20,10 @@
   `WM_CLOSE`, and exited zero. `smoke_visual_checkpoint.ps1` now gates that
   same successful-present title and clean shutdown automatically.
 - The central visual boundary is now narrower: replace the authored
-  `DrawPrimitiveUP` quad with recovered `CRenderManager2D::Render2DDrawList`
-  orchestration. All 25 of that function's direct dependencies are already
-  behavior-gated; 21 have retail byte parity.
+  D3D9 dependency dispatcher with concrete recovered
+  `CRenderManager2D::Render2DDrawList` dependency calls. Its batching semantics
+  now drive the visible frame; all 25 direct dependencies are behavior-gated
+  and 21 have retail byte parity.
 - The first parent seam is canonical and part of the Release bootstrap:
   `FableBuildRender2DBatchPlan` uses the recovered 0x3C-byte tagged record
   layout and reproduces stable/state/topology/text splits, shader reapply,
@@ -114,8 +117,8 @@
   top-level retail-art window, accepted `WM_CLOSE`, and exited zero.
 - No direct `Render2DDrawList` dependency remains behaviorally unrecovered.
   Sold, QuickDraw erase, ambient, and combined projection are the four
-  remaining byte-parity residues. Replacing the authored D3D9 textured-quad
-  bridge with recovered Lionhead renderer submission remains the central
+  remaining byte-parity residues. Replacing the authored D3D9 dependency
+  dispatcher with concrete recovered Lionhead calls remains the central
   visual-closure boundary.
 
 ## Texture/shader submit closure (2026-07-26)

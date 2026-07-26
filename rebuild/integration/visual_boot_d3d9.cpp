@@ -1,4 +1,5 @@
 #include "fable_visual_d3d9.h"
+#include "render2d_batch_plan.h"
 
 #include <string.h>
 
@@ -138,7 +139,6 @@ namespace
     const FableD3DUint kD3DFormatA8R8G8B8 = 21;
     const FableD3DUint kD3DPoolManaged = 1;
     const FableD3DDword kD3DClearTarget = 1;
-    const FableD3DUint kD3DPrimitiveTriangleStrip = 5;
     const FableD3DDword kD3DFvfXyzRhwTexture1 = 0x104;
 
     FableD3D9* g_Direct3D = 0;
@@ -332,12 +332,32 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     const float right = left + drawWidth;
     const float bottom = top + drawHeight;
 
-    FableVisualVertex vertices[4] = {
+    FableVisualVertex vertices[6] = {
         {left, top, 0.0f, 1.0f, 0.0f, 0.0f},
         {right, top, 0.0f, 1.0f, 1.0f, 0.0f},
         {left, bottom, 0.0f, 1.0f, 0.0f, 1.0f},
+        {left, bottom, 0.0f, 1.0f, 0.0f, 1.0f},
+        {right, top, 0.0f, 1.0f, 1.0f, 0.0f},
         {right, bottom, 0.0f, 1.0f, 1.0f, 1.0f}
     };
+    FableRender2DPlanRecord records[2];
+    memset(records, 0, sizeof(records));
+    records[0].textureIdentity =
+        reinterpret_cast<fable_u32>(g_Texture);
+    records[0].payload.normal.stateBlock = 1;
+    records[1] = records[0];
+    FableRender2DPlanEvent planEvents[8];
+    FableRender2DPlanOutput plan = {
+        planEvents,
+        8,
+        0,
+        false
+    };
+    FableBuildRender2DBatchPlan(records, 2, plan);
+    if (plan.overflow)
+    {
+        return false;
+    }
 
     FableD3DClear clear =
         reinterpret_cast<FableD3DClear>(
@@ -387,7 +407,6 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     setRenderState(g_Device, 22, 1);
     setRenderState(g_Device, 27, 0);
     setRenderState(g_Device, 137, 0);
-    setTexture(g_Device, 0, g_Texture);
     setTextureStageState(g_Device, 0, 1, 2);
     setTextureStageState(g_Device, 0, 2, 2);
     setTextureStageState(g_Device, 0, 4, 2);
@@ -395,13 +414,32 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     setSamplerState(g_Device, 0, 5, 2);
     setSamplerState(g_Device, 0, 6, 2);
     setFvf(g_Device, kD3DFvfXyzRhwTexture1);
-    const FableD3DResult drawResult =
-        drawPrimitiveUp(
-            g_Device,
-            kD3DPrimitiveTriangleStrip,
-            2,
-            vertices,
-            sizeof(FableVisualVertex));
+    FableD3DResult drawResult = 0;
+    for (fable_u32 eventIndex = 0;
+         eventIndex < plan.count;
+         ++eventIndex)
+    {
+        const FableRender2DPlanEvent& event =
+            plan.events[eventIndex];
+        if (event.kind == FABLE_RENDER2D_PLAN_BIND_TEXTURE)
+        {
+            drawResult = setTexture(g_Device, 0, g_Texture);
+        }
+        else if (event.kind == FABLE_RENDER2D_PLAN_FLUSH)
+        {
+            drawResult = drawPrimitiveUp(
+                g_Device,
+                event.argument0,
+                event.argument1,
+                vertices + event.argument2,
+                sizeof(FableVisualVertex));
+        }
+        if (Failed(drawResult))
+        {
+            endScene(g_Device);
+            return false;
+        }
+    }
     const FableD3DResult endResult = endScene(g_Device);
     if (Failed(drawResult) || Failed(endResult))
     {
