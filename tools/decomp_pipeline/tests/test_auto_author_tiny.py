@@ -38,6 +38,14 @@ class TinyPatternTests(unittest.TestCase):
                 "f644240801740756e8f06e7200598bc65ec20400"
             ): ("composite_scalar_deleting_destructor", 0x2C),
             (
+                "568bf18d4e28e828704c008bcee871ed1a00"
+                "f644240801740956e8f06e720083c4048bc65ec20400"
+            ): ("composite_scalar_deleting_destructor_speed", 0x28),
+            (
+                "568bf18d8ea8000000e828704c008bcee871ed1a00"
+                "f644240801740956e8f06e720083c4048bc65ec20400"
+            ): ("composite_scalar_deleting_destructor_speed", 0xA8),
+            (
                 "51568bf18b56048b0e8d44240750e8e5dafdff8b36"
                 "85f6740756e8d2b97800595e59c3"
             ): ("finish_async_read_then_release", None),

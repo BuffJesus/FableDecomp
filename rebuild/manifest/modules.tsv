@@ -391,7 +391,7 @@ CActiveDialogueInfo	0	4	0	0	0	0	0	0	0	0	0
 CActiveEntity	0	1	0	0	0	0	0	0	0	0	0
 CActiveEntityScript<NScript::CQ_HangingTreeEvilScript>	0	120	120	0	0	0	0	0	0	0	0
 CActiveEntityScriptBase	3	1	0	0	0	0	0	0	0	0	0
-CActiveFile	4	433	398	0	0	123	123	15	96	0	0
+CActiveFile	4	433	398	0	0	126	126	15	99	0	0
 CActiveQuest	4	1	0	0	0	0	0	0	0	0	0
 CActivity	1	1	1	0	0	0	0	0	0	0	0
 CAnimComponentCombatComboChain	6	7	7	0	0	1	1	1	0	0	0
@@ -1612,7 +1612,7 @@ CEngineSubPrimitiveAnimatedMesh	0	80	0	0	0	0	0	0	0	0	0
 CEngineSubPrimitiveBase	0	4	0	0	0	0	0	0	0	0	0
 CEngineSubPrimitiveGameMesh	0	35	35	0	0	0	0	0	0	0	0
 CEngineSubPrimitiveRenderer	13	10	10	0	0	0	0	0	0	0	0
-CEngineSubPrimitiveText	0	390	390	0	0	100	100	3	97	0	0
+CEngineSubPrimitiveText	0	390	390	0	0	354	354	3	351	0	0
 CEngineSurfaceCompositionManager	24	18	17	0	0	1	1	1	0	0	0
 CEngineTextureMorphSet	5	0	0	0	0	0	0	0	0	0	0
 CEngineTexturePalette	4	2	2	0	0	0	0	0	0	0	0
@@ -3231,7 +3231,7 @@ CTCCarriedActionUseShow	3	0	0	0	0	0	0	0	0	0	0
 CTCCarriedActionUseSpade	5	0	0	0	0	0	0	0	0	0	0
 CTCCarriedActionUseTrophy	5	2	1	0	0	0	0	0	0	0	0
 CTCCarriedActionUseWallMount	3	0	0	0	0	0	0	0	0	0	0
-CTCCarryable	16	258	239	0	0	57	57	6	50	0	0
+CTCCarryable	16	258	239	0	0	58	58	6	51	0	0
 CTCCarrying	31	18	17	0	0	0	0	0	0	0	0
 CTCChest	14	11	7	0	0	0	0	0	0	0	0
 CTCClock	9	3	3	0	0	0	0	0	0	0	0
