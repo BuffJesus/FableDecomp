@@ -56,7 +56,7 @@ parent_address	parent_name	address	name	retail_bytes	recovery_status	source	note
 009da9f0	CRenderManager2D::Render2DDrawList	009e1440	Render2DDrawList::CopyBlock	79	UNRECOVERED		Candidate was 72 bytes and was not promoted.
 009da9f0	CRenderManager2D::Render2DDrawList	009e15e0	TextureCache_MoveAndCleanup	99	UNRECOVERED		Provisional helper identity.
 009da9f0	CRenderManager2D::Render2DDrawList	009f9f70	CTexture::Uninitialise	34	MATCH	rebuild/src/compiled/00/9f/CTexture_Uninitialise_009f9f70.cpp	Texture ownership release.
-009da9f0	CRenderManager2D::Render2DDrawList	009fa1c0	CTexture::operator=	98	UNRECOVERED		Texture counted assignment.
+009da9f0	CRenderManager2D::Render2DDrawList	009fa1c0	CTexture::operator=	98	MATCH	rebuild/src/compiled/00/9f/CTexture_Assignment_009fa1c0.cpp	Release and adopt the counted texture while copying packed ownership metadata.
 009da9f0	CRenderManager2D::Render2DDrawList	009fa230	CTexture::InitialiseFromPreallocatedTexture	74	RELOCATION_MATCH	rebuild/src/compiled/00/9f/CTexture_InitialiseFromPreallocatedTexture_009fa230.cpp	Wrap a device texture and update ownership flags.
 009da9f0	CRenderManager2D::Render2DDrawList	00a05840	CRenderStateManager::RestoreCaptureBlock	121	MATCH	rebuild/src/compiled/00/a0/CRenderStateManager_RestoreCaptureBlock_00a05840.cpp	Captured-state restoration.
 009da9f0	CRenderManager2D::Render2DDrawList	00a058c0	CRenderStateManager::RealiseRenderState	167	MATCH	rebuild/src/compiled/00/a0/CRenderStateManager_RealiseRenderState_00a058c0.cpp	Dispatch queued render, texture-stage, and sampler changes to the device.

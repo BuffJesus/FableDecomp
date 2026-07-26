@@ -1,11 +1,11 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 13:22 MDT (shader binding/render-state closure).*
+*Last updated: 2026-07-26 13:35 MDT (shader binding/render-state closure).*
 
 ## Shader binding/render-state closure (2026-07-26)
 
-- Three more `Render2DDrawList` dependencies are canonical, raising that
-  family from **11/25 to 14/25** while `DrawRetailDisplay` remains **13/37**.
+- Four more `Render2DDrawList` dependencies are canonical, raising that
+  family from **11/25 to 15/25** while `DrawRetailDisplay` remains **13/37**.
   `CShaderRenderManager::ApplyVertexShader @ 0x00988020` is a true
   **176/176-byte exact match** and covers shader-mode reconciliation, the
   unchanged binding fast path, vertex-shader/declaration updates, and both
@@ -17,8 +17,12 @@
 - `CShaderRenderManager::RegisterVertexShaderConstantLayout @ 0x0098B230`
   is a 73-byte relocation-normalized match with resize and in-range
   registration behavior gated.
-- The canonical VC7.1 compile/behavior gate passes **4,906 / 4,906**. Retail
-  parity is **2,682 exact + 1,897 relocation-normalized = 4,579 / 49,552
+- `CTexture::operator= @ 0x009FA1C0` is a true **98/98-byte exact match**.
+  Its fixture proves old-texture release, incoming `AddRef`, separate copying
+  of both packed ownership fields, null assignment, return identity, and the
+  retail self-assignment behavior.
+- The canonical VC7.1 compile/behavior gate passes **4,907 / 4,907**. Retail
+  parity is **2,683 exact + 1,897 relocation-normalized = 4,580 / 49,552
   (9.24%)**; honest residue remains 199 differences and 128 missing
   function-start oracles.
 - The full Release bootstrap rebuilt with the genuine retail
