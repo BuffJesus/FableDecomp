@@ -99,6 +99,13 @@ def main() -> int:
         "release, and rejected-initialization behavior covered. It is not yet",
         "reachable through the reconstructed GFMain/GFInitialise path.",
         "",
+        "GFMain Phase 1 now has its filesystem pair promoted:",
+        "`CAFile::GetProjectPath @ 0x00997510` (146 bytes) and",
+        "`CAFile::SetCurrentPath @ 0x009974F0` (30 bytes) are",
+        "relocation-normalized matches. Focused fixtures prove executable-directory",
+        "discovery and the recovered update ordering: the OS working directory",
+        "changes before the engine updates its cached current-path string.",
+        "",
         "**Stage 0 remains the smallest linker proof:** VC7.1 links a console",
         "PE containing",
         "`MemCmp_Unsigned16 @ 0x00403C60`, whose function body is byte-identical",
@@ -110,7 +117,9 @@ def main() -> int:
         "",
         "Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,",
         "`FABLETLC_WINMAIN_BEHAVIOR PASS`,",
-        "`FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS`, and `STAGE1_STARTUP PASS`.",
+        "`FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS`,",
+        "`FABLETLC_SET_CURRENT_PATH_BEHAVIOR PASS`,",
+        "`FABLETLC_GET_PROJECT_PATH_BEHAVIOR PASS`, and `STAGE1_STARTUP PASS`.",
         "Generated products stay under the ignored `rebuild/build/` tree.",
         "",
         "Stage 1 still stops at an instrumented GFMain stub. It does **not** yet",
@@ -169,8 +178,8 @@ def main() -> int:
             "The 3,952-byte coordinator is split by observed retail call clusters.",
             "These are integration units, not invented retail functions.",
             "",
-            "| Phase | Address range | Role | Direct calls | Unique targets | Anchors |",
-            "|---:|---|---|---:|---:|---|",
+            "| Phase | Address range | Role | Direct calls | Unique targets | Proven | Anchors |",
+            "|---:|---|---|---:|---:|---:|---|",
         ]
     )
     for phase in gfmain_phases:
@@ -178,16 +187,46 @@ def main() -> int:
             item for item in gfmain_calls if item["phase"] == phase["phase"]
         ]
         unique_targets = {item["target"] for item in phase_calls}
+        proven_calls = sum(
+            bool(item.get("validated_grade")) for item in phase_calls
+        )
         lines.append(
             "| {phase} | `0x{start}`-`0x{end}` | {role} | {calls} | "
-            "{targets} | {anchors} |".format(
+            "{targets} | {proven} | {anchors} |".format(
                 phase=phase["phase"],
                 start=phase["start"].upper(),
                 end=phase["end"].upper(),
                 role=phase["role"],
                 calls=len(phase_calls),
                 targets=len(unique_targets),
+                proven=proven_calls,
                 anchors=phase["anchors"],
+            )
+        )
+
+    verified_dependencies = [
+        item for item in gfmain_calls if item.get("validated_grade")
+    ]
+    lines.extend(
+        [
+            "",
+            "### Verified GFMain dependencies",
+            "",
+            "| Phase | Call site | Target | Function | Grade | Source |",
+            "|---:|---:|---:|---|---|---|",
+        ]
+    )
+    for item in verified_dependencies:
+        source = repository_path(root, item.get("validated_source") or "")
+        lines.append(
+            "| {phase} | `0x{call_site}` | `0x{target}` | {name} | "
+            "`{grade}` | {source} |".format(
+                phase=item["phase"],
+                call_site=item["call_site"].upper(),
+                target=item["target"].upper(),
+                name=item["analysis_name"],
+                grade=item["validated_grade"],
+                source=markdown_source(source),
             )
         )
 
