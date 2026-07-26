@@ -18,6 +18,11 @@ CWideString::CWideString()
 {
 }
 
+CWideString::~CWideString()
+{
+    storage_ = 0;
+}
+
 CWideString::operator const wchar_t*() const
 {
     return reinterpret_cast<const wchar_t*>(storage_);

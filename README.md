@@ -60,8 +60,9 @@ The `GFMain` Phase-1 filesystem pair is promoted as well:
 `CAFile::GetProjectPath @ 0x00997510` (146 bytes) and
 `CAFile::SetCurrentPath @ 0x009974F0` (30 bytes) are relocation-normalized retail matches.
 Focused fixtures prove executable-directory discovery and that the OS working directory changes
-before the engine's cached path. Phase 1 is now 2/9 direct callees proven; temporary string
-lifetimes and `CSystemManagerInit` are the next closure targets.
+before the engine's cached path. The folded `CWideString` constructor and reference-counted
+destructor are also recovered, bringing Phase 1 to 4/9 direct callees proven; the remaining setup
+helpers and `CSystemManagerInit` are the next closure targets.
 
 The unattended Wave 3 lane has moved from the co-op event/package codecs into ForgeFSE Quest
 wrappers. The current refresh validates 452/452 recommended Quest bindings against their exact
