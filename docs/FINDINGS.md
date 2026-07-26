@@ -1271,3 +1271,133 @@ CompileSingleLOD = write-side answer key, cross-checked on retail entries):
   (proof: `tools/blender_addon/tests/proof/fable_compose_new_meshes.{blend,png}`).
 - Limits: static only (no skinning), LOD0+ghost only, tri lists, no bump layouts/cloth/
   helpers; engine load not yet observed in-game (payload is grammar-identical to retail).
+
+---
+
+## Dormant multiplayer / co-op subsystem (2026-07-23, HIGH confidence, 2-source)
+
+**Claim:** Fable: The Lost Chapters retains a near-complete but disabled **co-op multiplayer**
+subsystem — networking transport, a client/host/local event-replication protocol, multi-player
+management, and a combat-capable co-op "spirit" entity. This is the plumbing for Fable's famously
+cut cooperative play. Reviving it is a *reverse-a-dormant-subsystem* problem, not a
+*write-netcode-from-scratch* one.
+
+**Evidence (retail `Fable.exe` name DB AND `debug_build/ego_r.exe` PDB agree):**
+
+1. **Transport — `LHNetworkLib` (Lionhead network library).** Retail: `LSocket` (`CreateSocket`,
+   `Bind`, `Listen`, `Accept`, `CheckForAcceptedConnectionsOnSocket`, `LSocket::Send`,
+   `LSocket_ReceiveWithTimeout`, `SetNonBlocking`, `CNetworkConnection_Cleanup`). Debug build adds
+   RTTI/classes `LSocketServer`, `DatagrammPacket` (UDP), `LSocketConnError`, plus `CNetworkClient`
+   and `CNetworkServer` RTTI and the init string `"was unable to initialise the network manager."`
+   Client + server + UDP + error handling + connection pooling (`std::list<LSocket*>`).
+
+2. **Replication protocol — `CNetworkClient` + `CGameEventPackage`.** One class serves three roles:
+   `InitialiseAsLocal` / `InitialiseAsNetworkClient` / `InitialiseAsNetworkHost`. The event flow:
+   `SendGameEvent` -> `GetLocalGameEventPackageSet` / `GetGameEventPackageSet` ->
+   `ReceiveGameEventPackageSet` -> `IsGameEventPackageWaiting` / `IsServerGameEventPackageWaiting` ->
+   `CheckForLocalFrameUpdate`, with `CheckSync`, `ConfirmFeedbackGameEventPackage`,
+   `UpdateFromEventPackageSet`, and save integration (`GetEventPackageSetFromSave`,
+   `AddEventPackageSetToSave`). The commands themselves are the `EA*` action set (`EAMoveCreature`,
+   `EAUseProjectileWeapon`, `EAControlledCreatureUseAbility`, `EASkipCutScene`, ...). This is a
+   command/event-replication model (local events packaged, exchanged, sync-checked, applied per
+   frame) — the standard shape for input-replicated netplay.
+
+3. **Multi-player management — `CPlayerManager`.** `CreatePlayers` / `DestroyPlayers`,
+   `GetMainPlayer`, `DowngradePlayerToNonMainPlayer`, and controller mapping
+   (`GetPlayerNumberFromJoystickDeviceNumber`, `IsPlayerAssociatedWithJoystickDeviceNumber`,
+   `GetMainPlayerJoystickDeviceNumber`) => local multi-controller co-op. Plus hero-swap
+   (`GetPlayerHeroSwapScriptName`/`SetPlayerHeroSwapScriptName`), `IsMultiplayerGameActive` (a real
+   108-byte query at retail `0x00449d20`, NOT a stub), `GetMultiplayerColour`, `GetSpiritDefName`,
+   `GetSpiritScoreText`.
+
+4. **The co-op player entity — `CTCCoopSpirit` / `CCoopSpiritDef`.** A first-class Thing type
+   (`CTCCoopSpirit::Construct` retail `0x004d55d0`; full `CDefPointer`/`GetTC`/`PeekTC` machinery).
+   It is combat-capable and score-bearing: `ApplyMovementVector`, `FrameUpdate`, `OnHit`, `OnStrike`,
+   `GetMeleeTargetRange`, `GetAttackEffectName`; `AddExperience`, `AddScore`, `GetScore`,
+   `ResetScore`; and it tethers to a master player: `SetMasterPlayer`, `GetAttractToMasterDistance`,
+   `GetNoFramesForOffscreenReturnToMaster`. Definition constants name **four** slots:
+   `COOP_SPIRIT_PLAYER_ONE..FOUR`. `CCoopSpiritDef::Transfer(CPersistContext&)` (retail `0x004526xx`)
+   means the spirit state is **serializable** through the same persist context as the save-entity
+   graph — so a co-op session integrates with existing save plumbing.
+
+**Interpretation.** The design was up to 4 players joining as combat-capable "co-op spirits" tethered
+to the main hero, earning score/XP, over a client/host `CNetworkClient` exchanging `CGameEventPackage`
+sets across `LHNetworkLib` sockets. This matches the publicly-known cut Fable co-op ("Hero Spirit").
+
+**Caveats / not yet established.** (a) Completeness and *reachability* of the path in retail is
+unproven — whether it is complete-but-gated or partially gutted requires decompiling the cluster.
+(b) Some debug-build network strings are statically-linked Perforce P4API (`$P4PORT`, "unopened
+rpc", "Fatal client error; disconnecting") — those are asset-checkout tooling, NOT Fable netcode,
+and were excluded. (c) Determinism for true lockstep is unverified; the event-package model may be
+command-replication with server authority rather than lockstep.
+
+**Highest-value next probe.** Decompile the gate + protocol core: `CPlayerManager::IsMultiplayerGameActive`
+(`0x00449d20`), `CNetworkClient::InitialiseAsNetworkHost` / `InitialiseAsNetworkClient` (near
+`0x004ae940`), `GetLocalGameEventPackageSet` (`0x004aeaa0`) + `ProcessEventPackage` (`0x00416670`),
+and `CTCCoopSpirit::Construct` (`0x004d55d0`). Free transport options for reviving it (all $0):
+ZeroTier/Radmin virtual-LAN over the built-in `LSocket` direct path (lowest effort); or, since TLC
+ships on Steam (AppID 174790), Steamworks P2P (`SteamNetworkingMessages`) for free NAT relay +
+lobbies; or GameNetworkingSockets (MIT) for Steam-quality transport without Steam. Transport is the
+cheap part — the decomp-dependent work is the `CGameEventPackage` sync model.
+
+### Co-op subsystem decompiled — COMPLETE-BUT-GATED (2026-07-23, Claude decomp loop)
+
+Decompiled 22 functions of the co-op cluster (per-function verdicts): **19 LIVE, 2 GATED, 1 STUB.**
+The subsystem is not dead — it is one flag away from running.
+
+- **The single gate: byte flag `[CNetworkClient+0x2662]`.** Guards `Update` (`0x4ae9d0`),
+  `IsFreeToRender`… actually `GetGameEventPackageSet` (`0x4aeba0`), and the update path — each
+  early-returns when clear. `CNetworkClient::InitialiseAsLocal` (`0x4ae940`) is what SETS that flag
+  (+ the active flag) to 1, gated only by a runtime precondition at `0x4eba10`.
+- **`CPlayerManager::IsMultiplayerGameActive` (`0x00449d20`) is UNGATED** — real per-slot scan of the
+  player vector; returns true once co-op players are seated. `GetMultiplayerColour` (`0x449b60`) is
+  live with hardcoded P1..P4 colours (blue/red/cyan/green).
+- **Full event-package pipeline is LIVE:** serialize (`CGameEvent::CompressIntoBuffer` `0x9f1810`,
+  `CGameEventPackageSet::CompressIntoBuffer` `0x9f19a0`), deserialize (`0x9f1870`/`0x9f1ac0`), ingest
+  (`ProcessEventPackage` `0x416670`, `UpdateFromEventPackageSet` `0x41726d`), input capture
+  (`CProcessedInput::AddGameEvent` `0xa0d340`), and the co-op-spirit entity (`OnCreate` `0x6700f0`,
+  `UpdateAttractionToMaster` `0x6701a0`, `SwapToHero` `0x66ff20`, `EAMoveSpirit` `0x62c0e0`).
+- **Shortest path to first sign of life:** force `InitialiseAsLocal` `0x4ae940` to run (or NOP its
+  `0x4eba10` predicate) so `[+0x2662]=1` — that lights the update + package-pump path. Directly
+  poking the `+0x2662` byte is a faster probe.
+- **Only genuine gutting: `CheckSync` (`0x4165e8`)** — deserializes three sync fields then DROPS them;
+  no desync compare/report. Co-op will run but can't detect/correct divergence. This is the one piece
+  to REBUILD, not merely re-enable.
+
+Decompiled via the Claude Workflow loop (not the Codex re-agent lane). Bytes from retail `Fable.exe`.
+
+## game.bin definition-load contract + the two append bugs (2026-07-24, HIGH confidence, verify=CONFIRMED)
+
+RE'd via the Claude Workflow loop (`defload-contract-re`, 8 decode agents → synthesis → adversarial
+verify). On-disk layout byte-proven vs the retail base; both bugs reproduced and fixed. Full write-up:
+`docs/DEF_LOAD_CONTRACT.md`. Bytes from retail `Fable.exe` + `data/CompiledDefs/{game,names}.bin`.
+
+**The canonical Fable name hash `crc0`** = reflected CRC-32, poly `0xEDB88320`, **seed 0, NO final
+inversion** (`CCRC::Calc(0,…)` / `CCharString::ComputeCRC32` @0x00404310). Proven: **13593/13593**
+names.bin stored CRCs equal `crc0(name)`; 0 match any other variant. `crc0("CREATURE_TRADER_01")=
+0xAA22BB08`, `crc0("Graphic")=0x2E6B63C8`. Keys game.bin field tags, names.bin entries, and the
+`std::map<unsigned_long, CDefClassInfo>` def-class registry (registrar 0x564395).
+
+**Why an appended def was `nil` in-engine (two bugs, both required):**
+1. forge's `nameCrc` used `0xFFFFFFFF - mz_crc32` (matches 0/13593 real names) → every NEW name got an
+   un-resolvable CRC. Fixed in FableForge `bin.cpp`.
+2. Creature payloads carry ABSOLUTE global entry indices as self back-refs (TRADER_01=1549 @ payload
+   {25,193,301}); a byte-clone keeps the donor index → wrong wiring → instability. Fixed by value-keyed
+   retarget in `02_add_creature.cpp` (shared component sub-defs left intact).
+
+Header counts (nameCount/tableSize/entryCount/dense indexInDefinition) were already correct — never the
+cause. Resolution: `CreateCreature 0x008A9100` hashes the name, queries the registry, and on miss returns
+the null `CObjectRef` (typetag 0x1238C8C) → Lua nil.
+
+## Co-op cluster — corrections + CheckSync rebuild (2026-07-24, verify=PLAUSIBLE)
+Full write-up: `docs/COOP_REVIVAL.md`. Byte-solid (opcode-proven): enable gate = `[CNetworkClient+0x2662]`
+(Update no-ops when 0; InitialiseAsLocal 0x4AE940 sets it + stores back-ptr +0x2678); `CGameEvent` wire
+format `[u16 hdr(15-bit id|0x8000 flag)][u8 sub][u8 len][payload]` (Compress=pack dense, not compression);
+CheckSync 0x004165E8 is genuinely STUBBED (reads 3 remote u32s + world checksum, discards all, no compare).
+CNetworkClient is embedded at `CMainGameComponent+0x13AB8`.
+**Corrections to the earlier co-op section (all same-lineage phantoms):** (1) the InitialiseAsLocal base-init
+precondition `0x4EBA10` is a flat-disassembler ARTIFACT, not a resolved address — real target is
+relocation-masked/UNKNOWN. (2) UpdateFromEventPackageSet's world forward is `0x0049DFB0 CWorld::Update`, not
+`0x0049E0B0`. (3) the package/event loop accessors are structural GetCount/GetAt but engine_api.tsv only
+BSim-mislabels them (no TSV name confirms). Raw-poking +0x2662 without InitialiseAsLocal storing +0x2678 can
+CTD (forwarder null-deref) — enable via InitialiseAsLocal, not a bare poke.

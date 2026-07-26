@@ -1,0 +1,65 @@
+extern "C" __declspec(naked) void F_0042fc13(void)
+{
+    __asm
+    {
+        _emit 0x56
+        _emit 0x8b
+        _emit 0xf1
+        _emit 0xe8
+        _emit 0x2d
+        _emit 0xfd
+        _emit 0xff
+        _emit 0xff
+        _emit 0x8b
+        _emit 0x44
+        _emit 0x24
+        _emit 0x08
+        _emit 0x85
+        _emit 0xc0
+        _emit 0x89
+        _emit 0x06
+        _emit 0x74
+        _emit 0x25
+        _emit 0x6a
+        _emit 0x0c
+        _emit 0xe8
+        _emit 0xee
+        _emit 0xed
+        _emit 0x7c
+        _emit 0x00
+        _emit 0x85
+        _emit 0xc0
+        _emit 0x59
+        _emit 0x74
+        _emit 0x14
+        _emit 0x8b
+        _emit 0x0e
+        _emit 0xc7
+        _emit 0x00
+        _emit 0x01
+        _emit 0x00
+        _emit 0x00
+        _emit 0x00
+        _emit 0xc7
+        _emit 0x40
+        _emit 0x04
+        _emit 0x64
+        _emit 0xf8
+        _emit 0x42
+        _emit 0x00
+        _emit 0x89
+        _emit 0x48
+        _emit 0x08
+        _emit 0xeb
+        _emit 0x02
+        _emit 0x33
+        _emit 0xc0
+        _emit 0x89
+        _emit 0x46
+        _emit 0x04
+        _emit 0x5e
+        _emit 0xc2
+        _emit 0x04
+        _emit 0x00
+    }
+}

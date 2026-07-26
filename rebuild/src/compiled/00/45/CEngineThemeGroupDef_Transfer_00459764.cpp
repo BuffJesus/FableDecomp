@@ -1,0 +1,1 @@
+void __stdcall CEngineThemeGroupDef_Transfer(int) {}

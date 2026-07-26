@@ -1,0 +1,73 @@
+extern "C" __declspec(naked) void F_0041d122(void)
+{
+    __asm
+    {
+        _emit 0xff
+        _emit 0x05
+        _emit 0x14
+        _emit 0x87
+        _emit 0x3b
+        _emit 0x01
+        _emit 0x83
+        _emit 0x3d
+        _emit 0x14
+        _emit 0x87
+        _emit 0x3b
+        _emit 0x01
+        _emit 0x01
+        _emit 0x75
+        _emit 0x33
+        _emit 0xa1
+        _emit 0xa0
+        _emit 0x86
+        _emit 0x3b
+        _emit 0x01
+        _emit 0x8b
+        _emit 0x40
+        _emit 0x28
+        _emit 0x8b
+        _emit 0x48
+        _emit 0x2c
+        _emit 0x8b
+        _emit 0x01
+        _emit 0xff
+        _emit 0x90
+        _emit 0x20
+        _emit 0x01
+        _emit 0x00
+        _emit 0x00
+        _emit 0x85
+        _emit 0xc0
+        _emit 0x74
+        _emit 0x1c
+        _emit 0x8b
+        _emit 0x48
+        _emit 0x0c
+        _emit 0xd9
+        _emit 0xe8
+        _emit 0x51
+        _emit 0xd9
+        _emit 0x1c
+        _emit 0x24
+        _emit 0xff
+        _emit 0x35
+        _emit 0xcc
+        _emit 0x58
+        _emit 0x37
+        _emit 0x01
+        _emit 0x89
+        _emit 0x0d
+        _emit 0x18
+        _emit 0x87
+        _emit 0x3b
+        _emit 0x01
+        _emit 0x8b
+        _emit 0xc8
+        _emit 0xe8
+        _emit 0x1c
+        _emit 0x55
+        _emit 0x5e
+        _emit 0x00
+        _emit 0xc3
+    }
+}

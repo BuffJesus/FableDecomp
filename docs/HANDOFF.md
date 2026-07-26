@@ -1,6 +1,167 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-18 (FableWin donor pipeline complete; retail `Fable.exe` 80.13% named).*
+*Last updated: 2026-07-25 18:36 MDT (address-sharded workflow validated end to end).*
+
+## Current authoritative resume point (2026-07-25)
+
+The canonical refresh passes from the organized tree:
+
+- **1,850 / 1,850** curated sources compile under VC7.1 and pass their focused behavior gates.
+- Retail comparison remains **914 exact + 609 relocation-normalized = 1,523 matches**;
+  **199** honestly differ and **128** lack a function-start oracle.
+- Auto-RE intake is **573 generated / 565 structural PASS**. Structural results are not promotions.
+- The promotion queue has **115 semantic-quarantine** candidates.
+
+The checkout no longer keeps reconstruction output in giant flat directories. Source, tests,
+snapshots, compiler products, verification products, agent reports, transcripts, round JSONs, and
+the decompiler cache are address-sharded. The initial migration moved 21,978 files, historical
+report/transcript recovery moved another 2,453, and the cache migration moved 560, all without an
+unresolved collision. `rebuild/ARTIFACT_INDEX.tsv` maps addresses/modules across those trees.
+`tools/organize_decomp_artifacts.py` now runs inside the refresh, while each queue runner writes
+transcripts directly to an address leaf and organizes a target's report output immediately.
+
+The latest seven Wave 3 Quest wrappers are under the `00/88`, `00/89`, and `00/8a` report shards.
+Do not promote these four until their failed lookup paths are reconstructed from retail control flow:
+
+- `DisplayTutorial @ 0x0089E710`
+- `EnableGuards @ 0x00896270`
+- `EnableVillagerDefTypes @ 0x008962D0`
+- `GetNumberOfItemsOfTypeInInventory @ 0x00897190`
+
+All four can select a map end sentinel and then dereference it. The inventory wrapper also reinterprets
+the address of `itemTypeName` as an inventory interface on its fallback path. `ClearGossip` uses an
+implausible `CMeshDataBank::CLipSyncEntry` value identity that needs type correction. `DeactivateQuest`
+is a plausible thin forwarder, while `GetWaterHeightAtPosition` still needs its raw vtable slot and
+null behavior checked. The candidate gate and promotion queue now quarantine sentinel and
+address-reinterpret patterns independently of the agent verdict.
+
+Source policy is in `docs/SOURCE_ARCHITECTURE.md`: retain isolated VC7.1 translation units for retail
+parity, and build cohesive C++23 subsystem code only under `rebuild/modern/` after signatures,
+layouts, call edges, and representative behavior are stable. Co-op event/package codecs and small
+terrain/theme APIs are the best early modernization candidates.
+
+*Last updated: 2026-07-23 16:xx MDT (local deterministic byte-match lane + SDK exports online).*
+
+## Current authoritative resume point (2026-07-23 late) - verified coverage + local tiny lane
+
+Current audited buildable-source coverage:
+- `rebuild/src/compiled/`: 1,623 landed source files.
+- `rebuild/compile-gate/parity_audit.tsv`: 1,588 true byte-matches (`EXACT`/`RELOC`), 34 known
+  `DIFFER` behavior-tier functions, 1 `NO_ORACLE` orphan.
+- SDK exports are current:
+  - `rebuild/sdk/verified_functions.json`: 1,588 byte-verified functions for downstream tooling.
+  - `rebuild/sdk/struct_schema.json`: 225 reconstructed class schemas (134 with class size facts).
+  - `rebuild/sdk/forgefse_verified_bindings.json`: 73 ForgeFSE binding-queue targets verified.
+
+New local deterministic lane:
+- `tools/decomp_pipeline/auto_author_tiny.py` authors trivial tiny functions without an LLM and
+  still lands only through `verify_and_land.py`.
+- Supported patterns include `ret`, `ret 4`, constant returns, `return self` fastcall helpers,
+  `return self & imm8`, and tiny `*self = imm32` stores. No inline/naked asm is used.
+- This locally landed +9 from batch14/15, +39 more fastcall helper shapes from batch14, +69 from
+  batch16, and +5 from batch17 after the earlier batch14 +76 and SDK export commits.
+
+Pending production batches:
+- `batch15`: staged; 108 unlanded candidates remain after local tiny draining.
+- `batch16`: staged; 205 unlanded candidates remain; bundles and UTF-8 address list exist under
+  the session scratchpad.
+- `batch17`: staged; 125 unlanded candidates remain; bundles/address list exist under scratchpad.
+- Run the ultracode authoring workflow on these remaining candidates, then wrap output as
+  `{"result":{"authored":[...]}}` and land with `verify_and_land.py <wrapped> <batch_oracle> --land`.
+
+Selector/oracle improvements:
+- `next_batch.py` now splits merged oracle rows at `ret -> prologue` and also `ret -> ret/retN`,
+  preventing fused tiny functions from becoming unwinnable over-length rows.
+- Continue using one authoring lane at a time unless rate limits are clearly stable.
+
+*Last updated: 2026-07-23 08:xx MDT (self-sustaining byte-match promotion loop online).*
+
+## Current authoritative resume point (2026-07-23) — self-sustaining byte-match loop
+
+The buildable-decomp promotion lane is now a self-refilling cycle. Candidate supply is
+effectively unlimited (32,687 untried high-yield functions in the manifest); the bottleneck is
+authoring throughput, not candidates.
+
+**This session landed 142 byte-identical promotions** (12 pilot + 130 batch3-rest), taking
+`rebuild/src/compiled/` from 131 → 261 files (roughly tripling the prior byte-identical count of
+55). batch4 (123 promotion-queue accessors) and batch5 (130 manifest-sweep accessors) are
+authoring in parallel at handoff; land them on completion.
+
+**The loop (one round):**
+1. `python tools/decomp_pipeline/next_batch.py batchN <count> [max_len=96]` — selects the next N
+   untried high-yield accessors (complete proto, known CC, accessor-ish return), mints their retail
+   oracle **straight from Fable.exe (Ghidra-free**, next-address length heuristic + ends-in-ret
+   confidence filter), writes `rebuild/oracles/pending/batchN_oracle.tsv` + `_targets.json`, prints
+   the address list. **No Ghidra window / no lock contention** — safe to run anytime.
+2. `python tools/decomp_pipeline/gen_bundles.py <oracle> <targets> <bundles_dir> <manifest.json> 96`
+   — disasm bundles for the authoring fleet.
+3. Launch the authoring workflow (scratchpad `author_wf.js`): ultracode `Workflow`, one agent per
+   candidate, each authors `source_cpp`/`test_cpp`/`pass_pattern` and self-verifies with
+   `check_one.py` (iterates to a byte-match). Args: `{"batch":"batchN","addrs":[...]}`.
+4. `python tools/decomp_pipeline/verify_and_land.py <wf_output.json> <oracle> --land` — re-verifies
+   every candidate independently under VC7.1 (agent self-reports cannot cause a false land), writes
+   `src/compiled` + `tests` + catalog + oracle for exact/relocation MATCH + behavior PASS wins.
+   Wrap the workflow return as `{"result":{"authored":[...]}}` before feeding it.
+5. `git add rebuild/src/compiled rebuild/tests rebuild/build_candidates.ps1
+   rebuild/oracles/auto-re-candidates.tsv && git commit`. Keep ~2 lanes in flight; each workflow
+   completion is the trigger to land+commit+refill+relaunch.
+
+**Durable tooling added this session:** `tools/decomp_pipeline/next_batch.py` (selector+oracle
+minter), `tools/decomp_pipeline/check_one.py` (per-agent single-candidate scorer, isolated workdir
+so parallel `cl.exe` don't collide). `pe_oracle.py` self-validates 103/130 (79%) exact vs known
+rows; every miss is *over*-long (shared epilogue / SEH tail), never wrong content — so a stray row
+can only waste authoring effort, never mis-land.
+
+**Yield notes:** 3–48 byte accessors/stubs win at ~76–100%; larger bodies with engine calls are
+behavioral reimplementations that byte-match rarely (correctly deprioritized). `pe_oracle` over-long
+rows and equal-length register-allocation/scheduler artifacts (see `docs/PARITY_TRIAGE.md`) are the
+two non-winnable classes — not source-reachable, do not regrind.
+
+## Current authoritative resume point (2026-07-22)
+
+- Read `docs/FULL_DECOMP.md` and generated `rebuild/COVERAGE.md` before the older session history
+  below. The current catalog is 49,553 functions: 100% mechanically named, 99.913% usable
+  reconstruction/navigation names, 77.656% known calling conventions, and 69.023% complete
+  prototypes. These database metrics are not buildable-source coverage.
+- Buildable reconstruction remains below 1%: 94 VC7.1-compiled and behavior-tested candidates
+  (0.190%), 71 verified functional-or-matching functions (0.143%), and 51 raw byte-identical
+  functions (0.103%). The first 1% compile+behavior milestone is 496, leaving 402 promotions.
+- `CNavQuadTree::InitialiseLines @ 0x00A7A5E0` is the newest curated promotion. Its focused
+  grow/shrink/zero oracle passes and all 102 instruction bytes match retail after masking the six
+  expected COFF relocation fields.
+- The first ForgeFSE binding batch completed 16/16 structural PASS. The generated binding queue is
+  462 unique target addresses: 16 agent-reviewed, 446 still needing reversal, 167 direct-signature,
+  269 adapter, and 26 signature/arity-review rows. Binding approval intentionally remains zero.
+- The recurring task `FableTLC Auto RE Wave 2` actually launches the Wave 3 runner every 15 minutes;
+  its next refill is automatic, uses `IgnoreNew`, and writes durable state under `lift/state/`.
+  `FableTLC Rebuild Refresh` runs on the same cadence and defers while the queue owns Ghidra.
+- The ForgeFSE wrappers at `0x0088EDB0` and `0x0088EDA0` are now raw retail matches. Next manual
+  wrapper target: `CancelRadialBlurFade @ 0x00890180`. Next deeper nav batch:
+  `IsAreaBlockedByLines @ 0x00A76F30`, then shared declarations for `UpdateLines`, `Initialise`, and
+  `CNavQuadTreeNode::Initialise`.
+- Focused quest-card/terrain smoke artifacts are under
+  `work/runtime_smoke_quest_terrain_20260722/`. The game install has been restored: original
+  `FableScriptExtender.dll`, `game.bin`, `names.bin`, and `FSE_Master.lua` are back, and
+  `FSE/map_resource_alias.ini` is absent.
+- Runtime control now proves ForgeFSE can register/run a quest card when the card asset exists:
+  `OBJECT_QUEST_CARD_WASP_MENACE` displayed as Wasp Menace with 1337 gold, 500 renown, card art,
+  and Guildmaster "new quest available" audio. The failure is the custom/repurposed card asset or
+  text/definition binding, not the base quest API.
+- Do not combine active quest-card tests with terrain teleport tests. The active quest triggered the
+  engine's "leave a Quest region" abandon/reload modal during the ForgeTest teleport flow, which can
+  block or confuse manual teleport validation even when `GoToMapSlot` returns `ok=true`.
+- Terrain status: whole-LEV aliasing is disproven as a fix. Run 3 replaced black ground with a
+  white/empty donor-space hole because donor bounds/bank state came across. Run 4 opened native
+  `Data\Levels\FinalAlbion\ForgeTest.lev` at bank entry 426 and captured stronger foreground
+  render/layer telemetry, but it was contaminated by the active quest flow. Next terrain run should
+  disable quest activation and compare native ForgeTest foreground layer material/texture handles to
+  a healthy retail patch.
+- Current Claude Code decomp pointer: review
+  `lift/reports/wave3/code/0x0089B330_global_IsHeroNaked_CGameScriptInterface_UBE_NXZ.cpp`.
+  It names `CGameScriptInterface::IsHeroNaked`, but its current reconstruction dereferences
+  `pEntry->m_pInterface` even after assigning the map end sentinel on a failed `LowerBound`. Treat
+  that as a correctness hazard before promotion; likely target lane is a small ForgeFSE wrapper/API
+  batch after `CancelRadialBlurFade`.
 
 ## Status
 Active reverse-engineering pipeline completed the **Phase 1 FableWin donor expansion**. After
@@ -3878,3 +4039,563 @@ build-from-user-copy is the legally-defensible pattern.
 - Curated suite: **89/89** compile+behavior PASS (**0.180%**), about **407** more promotions to 1%.
   Both `ConnectVerticalMapEdge` variants are now checker PASS; the unattended worker continued to
   naming target `0x004FE7F0` without intervention.
+
+### Public recovery baseline + landscape relocation promotion (2026-07-22 19:04 MDT)
+
+- Initialized the workspace as Git repository `BuffJesus/FableDecomp`, committed 1,324 source,
+  documentation, compact-oracle, and generated-report files as `cac16c0`, and pushed `main`.
+  Original binaries/PDBs, Ghidra/BSim databases, local build products, multi-gigabyte XML exports,
+  and raw agent logs remain excluded. Local and remote commit hashes were verified identical.
+- Continued ongoing work on branch `agent/continue-decomp`. The completed Wave 3 tail added checker
+  passes for `ConditionalVirtualDispatch_OnLevelUnload` and both `CPersistInfo` insertion-sort
+  steps, bringing the agent ledger to 121 integrity-clean candidates and 112 checker passes.
+- Promoted `CEngineLandscapePatch::RelocateData @ 0x00BF3980`. The test suite covers its direct,
+  asynchronous, list-head, list-interior, miss, and null paths. VC7.1 builds and all **90/90**
+  focused behavior tests pass (**0.182%**, about **406** promotions to 1%).
+- The retail comparison is `RELOCATION_MATCH`: 143/143 bytes, 57/57 fixed instruction bytes, and
+  three expected direct-call relocation fields. The relocation-matched candidate count is now 17.
+- The refreshed promotion queue has 31 uncompiled agent candidates. `entry @ 0x00401067` ranks
+  first, followed by `CNavQuadTree::InitialiseLines @ 0x00A7A5E0`; use the latter when a smaller,
+  subsystem-focused promotion is preferable to CRT startup work.
+- Used the interval before the next unattended batch to promote `Getter_FieldE0_FC @ 0x00662020`.
+  Its two-value behavior oracle passes and the VC7.1 object is a raw 13/13-byte retail match. A
+  conservative `_global` fastcall override records the ECX overlay pointer and unsigned 32-bit
+  return without assigning a speculative owner class.
+- Curated status is now **91/91** compile+behavior PASS (**0.184%**), with 33 raw retail matches,
+  17 relocation-normalized matches, 68 verified lifts overall, and about **405** promotions left to
+  the first 1% milestone. The remaining uncompiled agent queue fell from 31 to 30.
+- Fixed a deterministic scheduled-task collision: `FableTLC Rebuild Refresh` starts roughly 30
+  seconds before `FableTLC Auto RE Wave 2`, so the latter had begun deferring every cycle. Wave 3
+  now waits up to five minutes for a verified live refresh PID and resumes immediately after Ghidra
+  is released. A manual scheduled-task smoke run entered `CNavQuadTree::Initialise @ 0x00A7A8D0`
+  at 19:11:30, proving the unattended loop is active again.
+
+### RE evidence applied to FableForge, ForgeFSE, and FQT (2026-07-22 19:25 MDT)
+
+- Extended `tools/export_fse_native_overlay.py` so the canonical schema-1.1 overlay also mirrors to
+  `D:\Code\FQT\FQT\FSE_Source\docs\fse_native_overlay.json`, alongside the existing FableForge and
+  ForgeFSE mirrors. Current counts: 931 FSE functions, 518 exact-name correlations, 462 owner-aligned
+  recommendations, 53 verified engine implementations, zero verified recommended bindings, and
+  zero approved runtime hooks.
+- FableForge's native-overlay test no longer hard-codes a stale verified-function count; it checks
+  structural agreement with the generated list. Full CTest result: 6/6 pass.
+- FQT now loads the overlay through a policy-gated service, correlates by `scope + name`, and shows
+  native candidate/provenance state in API Reference. It rejects duplicate keys, unsafe policy,
+  stale function counts, and recommendations that lack candidate evidence. Full .NET result:
+  190/190 tests pass.
+- ForgeFSE now has `scripts/Test-FseNativeOverlay.ps1`. It cross-checks all manifest keys and summary
+  counts, candidate evidence, match statuses, and both non-equivalence policy flags before the data
+  can be considered for binding work. The current 931-function overlay passes.
+- No recommendation is an executable hook. A binding still requires target-build identity,
+  owner/vtable or callsite confirmation, calling-convention validation, and a ForgeFSE runtime probe.
+
+### ForgeFSE binding lane added to unattended RE (2026-07-22 19:40 MDT)
+
+- Added `tools/build_forgefse_binding_queue.py`. It validates the overlay safety policy and candidate
+  evidence, deduplicates targets by retail address, classifies verification stage, and writes
+  `rebuild/backlog/forgefse-binding-queue.tsv` plus `FORGEFSE_BINDING_QUEUE.md` deterministically.
+- Current queue: 462 recommendations / 462 unique addresses; 167 direct wrapper-to-retail
+  signatures, 269 expected wrapper adapters, and 26 signature/arity reviews. All remain
+  `needs-reversal`; zero are implementation-verified bindings or approved hooks.
+- `tools/run_rebuild_refresh.ps1` regenerates the queue immediately after refreshing the overlay.
+  Its fingerprint now includes the builder, so ranking changes cannot be skipped as “unchanged.”
+- `lift/scripts/run_re_agent_wave3_queue.ps1` loads this lane after the completed curated seeds and
+  before naming/prototype backlog rows. It uses the existing single PID, refresh wait, timeouts,
+  cross-wave ledgers, and compiled-behavior exclusion gate—there is no competing Ghidra process.
+- Static selection smoke test chose 16 direct-signature targets, beginning with
+  `Entity.MsgIsKicked @ 0x004AAF80`, `Entity.MsgOpenedChest @ 0x004AADA0`, and
+  `Entity.SetAsUsable @ 0x004AB040`. The currently active pre-change batch is allowed to finish;
+  the next scheduled refill automatically uses the ForgeFSE lane.
+- An agent PASS is only structural evidence. Nothing writes ForgeFSE pointer tables or changes
+  `hookApproved`; build identity, owner/callsite, calling convention, focused behavior, and a live
+  ForgeFSE probe are still required.
+- Added `tools/audit_forgefse_binding_slots.py` to compare ForgeFSE's 918 CGSI `pVTable[N]`
+  assignments with the aligned retail slot map and current overlay. Initial result: 442/443 exact
+  Quest slot/address matches, zero missing assignment families. It correctly groups the four
+  `CameraUseCameraPoint_*` overload entries.
+- The only mismatch exposed a bad exact-name recommendation:
+  `CTCQuestCard::GetRegionName @ 0x007025A0` versus ForgeFSE slot 15 / decorated CGSI method
+  `CGameScriptInterface::GetRegionName @ 0x0088E340`. Added a vtable/decorated-symbol-backed
+  override; the post-agent refresh applied it and the audit now requires 443/443.
+- The forced refresh completed successfully: 132 integrity-clean agent candidates, 124 checker
+  passes, 91 curated compile+behavior passes, and a **443/443 PASS** for ForgeFSE Quest vtable
+  slot/address entries. No assignment family is missing.
+- Cleanly stopped the old batch after its in-flight retry (no process kill), refreshed, removed the
+  stop marker, and manually started the scheduled task. The live 16-target ForgeFSE batch began at
+  19:48:25 with `Entity.MsgIsKicked -> CScriptThing::MsgIsKicked @ 0x004AAF80`.
+
+### Navigation + ForgeFSE wrapper promotions (2026-07-22 20:27 MDT)
+
+- Promoted `CNavQuadTree::InitialiseLines @ 0x00A7A5E0`: VC7.1 compile and grow/shrink/zero behavior
+  tests pass, the decorated nested-STL signature matches the donor, and its 102-byte body is a
+  relocation-normalized retail match.
+- Promoted `CGameScriptInterface::CameraCancelScreenEffect @ 0x0088EDB0` and
+  `CameraUseScreenEffect @ 0x0088EDA0`. Their exact public-virtual-const symbols match donor/retail,
+  and their complete bodies are raw matches (`c3` and `c2 0c 00`).
+- Fresh dashboard: 94/94 compile+behavior PASS (0.190%), 71 verified functional-or-matching
+  functions (0.143%), 51 raw byte-identical functions, and 402 promotions left to the first 1% lane.
+- The first ForgeFSE batch completed 16/16 structural PASS. The scheduled refresh ingested it and
+  the three new curated promotions. At 20:25 the next RE task correctly waited for that refresh,
+  resumed automatically at 20:26:44, and started a new 16-target batch with
+  `Quest.ChangeHeroMoralityDueToPicklock @ 0x0089A0E0`.
+
+### Quest-card and ForgeTest smoke handoff (2026-07-22 22:45 MDT)
+
+- Focused runtime folder:
+  `work/runtime_smoke_quest_terrain_20260722/`. Stable user screenshots were copied to
+  `captures_native_run4/user_wasp_card_1337.png` and
+  `captures_native_run4/user_quest_region_block.png`; do not rely on the original temp attachment
+  paths.
+- Install state is restored. `revert_alias_probe.ps1` restored the prelaunch extender DLL
+  (`C3C88AD94AFB...`) and removed `FSE/map_resource_alias.ini`; `revert.ps1` restored
+  `data\CompiledDefs\game.bin` (`E3C7E368B515...`), `names.bin` (`AC6288FA493E...`), and
+  `FSE\Master\FSE_Master.lua` (`8857D08DA987...`). No live `Fable.exe` process remained when the
+  handoff was written.
+- Run 1 proved native ForgeTest streams and is playable but its terrain renders black. Evidence:
+  `results/FableScriptExtender_20260722_211516.log`,
+  `captures/fable_20260722_211430_575.png`, and
+  `captures/fable_20260722_211526_518.png`.
+- Run 2 proved Lua-time map aliasing is too late for static-map bootstrap. Static maps have already
+  opened before `FSE_Master.Main()` arms the alias.
+- Run 3 proved early whole-file aliasing works technically but is the wrong fix. The exact source
+  `Data\Levels\FinalAlbion\ForgeTest.lev` was replaced with donor
+  `Darkwood9_Leadout_01.lev`, but the donor registered its own bank/bounds
+  `(2816,2368)..(2848,2400)` instead of ForgeTest's native
+  `(2784,2560)..(2816,2592)`, producing a white/empty terrain hole rather than valid ForgeTest
+  terrain. Preserve ForgeTest's LEV/heightfield and isolate only its landscape material/bank
+  dependency.
+- Run 4 used the known-good `OBJECT_QUEST_CARD_WASP_MENACE` asset. The user confirmed the Wasp
+  Menace card appeared with 1337 gold and Guildmaster "new quest available" audio. Local source also
+  confirms ForgeFSE `Quest:GiveQuestCardDirectly()` takes a quest-card object name first; the
+  pasted `textDBEntry` interpretation is wrong for this build.
+- Run 4 also showed the active quest can block terrain validation. The user screenshot shows the
+  engine modal: "You are attempting to leave a Quest region..." with Reload/Stay options while the
+  ForgeTest teleport banner is active. That is a quest-region transition guard, not a map-streaming
+  failure. Future terrain smokes should not activate a quest, or should clear/deactivate the card
+  before calling `GoToMapSlot`.
+- Run 4 produced useful native telemetry anyway. `results/FableScriptExtender_20260722_223533.log`
+  and `focused_markers_20260722_223533.txt` show native `ForgeTest.lev` opened at bank entry 426
+  with bounds `(2784,2560,37.8359)..(2816,2592,83)`, and the script later called
+  `GoToMapSlot(399, 2800, 2576, 74)` with `ok=true`. The collector also saved
+  `results/Fable.exe.16316.dmp`; keep it with this run.
+- Attached decomp pointer:
+  `lift/reports/wave3/code/0x0089B330_global_IsHeroNaked_CGameScriptInterface_UBE_NXZ.cpp`.
+  It is a named `CGameScriptInterface::IsHeroNaked` reconstruction with useful overlays at
+  `this+0x14`, target `+0x28`, interface map storage `+0x44`, map end `+0x48`, and flag byte
+  `+0x91`. Before promotion, fix/review the end-sentinel path: the current code can set `pEntry`
+  to `m_pTCInterfaceMapEnd` and still call `reinterpret_cast<CTCShop*>(pEntry->m_pInterface)`.
+  Also verify whether `CTCShop::GetName()` is really the nakedness predicate or just a bad donor
+  name for the interface method at type key `0x5E`.
+
+---
+
+## RESUME POINT — Custom-entity (NPC) pipeline + forge-entity design (2026-07-24)
+
+Full custom-NPC toolchain proven end-to-end this session. All pieces work; the remaining work is
+(a) finishing the custom CREATURE def wiring and (b) building the centralized `forge entity` orchestrator.
+
+### What works (verified, mostly in-game)
+- **Native NPC spawn** — TWO requirements (both mandatory; see [[fable-level-modding-gotchas]]):
+  (1) the game reads `data/Levels/FinalAlbion.wad`, NOT loose .tng (repack with `forge wad repack`);
+  (2) the thing must be in the correct `XXXSectionStart <quest>` section (donor book trader is in
+  `Q_NewOakValeIntro_PreAttack`; EOF-append lands in PostAttack = post-raid only). Builder:
+  `work/quest_card_custom_20260723/npc_placement/build_childhood_npc_west.py`. Runtime alternative
+  (no TNG/WAD/section): ForgeFSE `Quest:CreateCreatureNearby("CREATURE_TRADER_01", hero:GetPos(), r, scriptName)`.
+- **Custom mesh** — FBX → headless Blender (`C:/Programs/Blender/blender.exe --background --factory-startup`)
+  decimate (101k→3k tris) → `mesh_rw.compose_mesh` → `big_write.rebuild(adds=)` into graphics.big.
+  Material MUST use a real `diffuse_id` (0 → short Info → build_model 0 LODs). Scripts:
+  `work/meshy_npc_mesh/` (static) + `work/meshy_npc_mesh/skinned/` (type-5).
+- **Skinned mesh** — auto-weight to a donor's 63-bone Bip01 skeleton (`mesh_rw.clone_skeleton(MESH_TRADER_01)`),
+  Blender `ARMATURE_AUTO` weights (≤3/vert, sum 255), compose type-5. VERIFIED (has_skeleton, topology, weights)
+  in a graphics.big copy. Inherits standard biped anims. `work/meshy_npc_mesh/skinned/`.
+- **Texture** — PNG → 512² DXT1 (`texture_build.build_entry`) → `big_write.rebuild(adds=)` into
+  textures.big `GBANK_MAIN_PC`. `work/meshy_npc_mesh/inject_tex.py` (Meshy tex = id 6291).
+- **Dialogue** — ElevenLabs TTS → WAV → `tools/dialogue_pipeline.py stage --add` = Xbox-ADPCM .lut +
+  auto lipsync + text.big + snds.bin. **CONFIRMED IN-GAME: grown banks (`--add`) ARE accepted by the
+  live engine** (resolves the old "unproven" caveat). Normalize TTS to ~-14 LUFS (raw ElevenLabs ~-24 dB
+  is too quiet: `ffmpeg -af loudnorm=I=-14:TP=-1`). SecretHunt NPC has 5 voiced lines (Callum voice).
+- **GiveHeroYesNoQuestion answer mapping** — button1→**1**, button2→**0**, button3→**2** (per working
+  GhostGranny sample; the ForgeFSE log label "0=Btn1" is MISLEADING). Setting a flag on the wrong index
+  inverts accept/decline. SecretHunt entity fixed.
+
+### THE creature→body-mesh mechanism (ultracode, HIGH confidence)
+`CCreatureDef` **`Graphic` field** (CRC tag `0x2e6b63c8` = crc0("Graphic")), layout
+`{u32 kind, u32 modelId, u32 zero, f32 scale, u8 flag}` + optional nested CRC-tagged sub-graphics
+(eyes/attachments). **`modelId` (payload offset +4) = the graphics.big MBANK_ALLMESHES TOC *id*** of the
+body mesh (1:1 by id). CREATURE_TRADER_01 modelId=**5149** = `MESH_BS_MALE_MIDDLE_UNCLOTHED_01` (a naked
+base body; clothes layered via `InitialAppearanceModifiers` → CAppearanceModifierDef.Graphics[]). That's
+why MESH_TRADER_01/5370 was never in the def. Verified across 9 creatures. Engine chain: CEngineGraphic
+`0x00434b50` → CTCGraphicAppearance `GetRenderMeshObject 0x004bc750`. **To make a custom creature:** inject
+the skinned mesh → get its id N → set a new/cloned creature def's `Graphic.modelId` (+4) = N (hand-patch
+confirmed; `forge defs set-field` targeting the nested +4 not yet exercised). Custom-creature workflow
+(build phase) finishing under `work/meshy_npc_mesh/custom_creature/`.
+
+### NEXT: `forge entity` centralized orchestrator (design agreed, not built)
+Pain = hand-wiring cross-refs across game.bin/graphics.big/textures.big/text.big/.lut/dialogue.big/TNG.
+Design: ONE `*.entity.json` manifest (name, mesh fbx, texture png, def clone+overrides, dialogue lines,
+spawn) → `forge entity build <manifest> <game-root> [--deploy]` that (1) allocates all ids from a central
+`entities.registry.json`, (2) runs each sub-pipeline, (3) auto cross-wires (mesh mat←tex id;
+def Graphic.modelId←mesh id; text→SpeechBank→snds→lut→lipsync; spawn←def name), (4) handles WAD/section
+gotchas, (5) stages + atomic deploy + rollback. Implement as a Python orchestrator wrapping `forge` +
+the tools above, exposed as `forge entity`. First slice: id registry + mesh/texture/def cross-wire.
+
+### Other session outcomes
+- Co-op multiplayer subsystem decompiled → COMPLETE-BUT-GATED (docs/FINDINGS.md); 1 flag
+  (`CNetworkClient+0x2662`) from life. Auto-RE wave3 lane pointed at the co-op cluster (Codex-quota blocked).
+- Decomp: +11 fse2 byte-matches via the diff-feedback refine loop (the effective cracker vs 0 from
+  first-pass authoring). Real byte-match total ~1,700 (3.43%) — README corrected from stale 57.
+
+### BLOCKER (2026-07-24, next session): custom game.bin def not engine-recognized
+Deployed CREATURE_MESHY_HUNTER (added to game.bin via forgecore File::addEntry) — `forge defs list/decode`
+sees it (entry 14781, Graphic.modelId=8113, all_tags_ok) but the ENGINE does NOT:
+`Quest:CreateCreatureNearby("CREATURE_MESHY_HUNTER") -> nil (def missing?)` and the load became
+unstable/crashed. Same class as the TNG bug: **forge's parser ≠ the engine's game.bin loader.** Appending
+a def entry is insufficient — the engine builds its def name→index table from a count/header/hash our
+append did not extend (candidates: a per-type def count, the names.bin index/hash, or indexInDefinition
+ordering). NEXT: RE the game.bin def-load + name-resolution path (grep name DB for CGameDefinitionManager /
+LoadDefinitions / GetDefinition / def name hash; check for a def-count field the engine trusts) so an added
+def is actually resolvable by name. Until then, custom NPCs must reuse an existing creature def (e.g.
+CREATURE_TRADER_01) — which works and is voiced. Rolled back cleanly; backups in
+FSE/backups/custom_creature_20260724/. All custom-creature build artifacts (verified offline) remain in
+work/meshy_npc_mesh/custom_creature/.
+
+### TOMORROW'S PLAN — custom creature working + next auto-RE rounds (2026-07-24)
+
+**A. Get a custom-mesh NPC in-game (two tracks):**
+- **Track A — QUICK WIN, low risk (do first): IN-PLACE edit, no append.** The engine rejects *appended*
+  defs (count/index not extended) but accepts *in-place* field edits (same size, same slot). So patch an
+  EXISTING creature's `Graphic.modelId` in place instead of adding a new def:
+  - Simplest: hand-patch `CREATURE_TRADER_01`'s Graphic.modelId at payload offset **1122** (tag@1114),
+    `5149 -> <our mesh id>`. game.bin size UNCHANGED. Deploy game.bin + graphics.big (skinned MESH under a
+    name) + textures.big (tex 6291). Result: every trader renders the Meshy body — proves the custom skinned
+    mesh renders + animates in-game. Downside: all traders, not a distinct creature.
+  - Better: repurpose a RARE/unused creature def (spawn by its name via CreateCreatureNearby) so only "our"
+    NPC changes. Same in-place mechanism.
+  - Also strip clothes: clear/patch the cloned def's `InitialAppearanceModifiers` (CAppearanceModifierDef
+    layers trader clothing over the base body) so the bare Meshy body shows.
+- **Track B — PROPER new def (needs RE):** decompile `CGameDefinitionManager::InitAndCompile`
+  **0x0044c72b** (+ ctor 0x0044c6c2, dtor 0x00450bff) to learn how game.bin defs are counted / name-indexed
+  / hashed at load, then fix `work/meshy_npc_mesh/custom_creature/02_add_creature.cpp` to update whatever the
+  engine trusts (candidate: a per-bank/def COUNT field, a names.bin name→id hash, or indexInDefinition
+  ordering). Then a truly distinct `CREATURE_MESHY_HUNTER` resolves by name. All build artifacts already
+  staged + offline-verified in work/meshy_npc_mesh/custom_creature/. Deploy rollback: FSE/backups/custom_creature_20260724/.
+
+**B. Next auto-RE candidate rounds (run via the CLAUDE Workflow loop — the Codex wave3 lane is quota-blocked):**
+- **Batch A (TOP — unblocks custom NPC):** `CGameDefinitionManager::InitAndCompile` 0x0044c72b, ctor
+  0x0044c6c2; `CreateCreature` 0x008a9100 + `CreateCreatureNearby` 0x0089f300 (how they resolve a def by
+  NAME); `CCreatureDef` 0x006768c0 / `CThingCreatureDef` 0x006710d0. Decompile these to solve Track B AND
+  document the def-load contract. Use an analysis Workflow like the co-op one (bundles from Fable.exe bytes
+  via pe_oracle + objdump).
+- **Batch B (custom-NPC polish):** `CAppearanceModifierDef` 0x004546d5, `CAppearanceDef` 0x0046a174,
+  `CEngineGraphic` 0x00434b50, `CTCGraphicAppearance::GetRenderMeshObject` 0x004bc750 — the appearance/clothing
+  + mesh-render path (strip clothes, understand attachment sub-graphics).
+- **Batch C (co-op revival):** the 24-target co-op cluster is prepended to the wave3 seed (Codex-blocked).
+  Either wait for Codex quota, or byte-match-reconstruct the gate/protocol via the Claude refine loop:
+  `IsMultiplayerGameActive` 0x449d20, `InitialiseAsNetworkHost` ~0x4ae940, `CGameEventPackage`
+  Compress/InitFromCompressedBuffer 0x9f1810/0x9f1870, and REBUILD `CheckSync` 0x4165e8 (the one gutted piece).
+- **Batch D (continue byte-match reconstruction):** ~64 remaining fse2 methods via the diff-feedback refine
+  loop (the proven cracker — first-pass authoring yields ~0, refine round lands them). Then the next
+  accessor/setter tiers from rebuild/backlog. Pipeline: tools/decomp_pipeline/ (author_wf -> verify_and_land;
+  refine_wf on close DIFFERs).
+- **Lane note:** the productive decomp engine is the Claude Workflow loop, NOT the Codex `re-agent.exe` wave3
+  lane (quota-limited). Drive Batch A/D through Workflow (schema-constrained author/refine/analyze), land via
+  verify_and_land.
+
+---
+
+## RESUME POINT — game.bin def-load contract RE'd; BOTH append bugs fixed (2026-07-24, authoritative)
+
+The standing blocker ("custom game.bin def not engine-recognized") is **SOLVED at the byte level.**
+RE'd the def-load / name-resolution contract via the Claude Workflow loop (`defload-contract-re`:
+8 decode agents → synthesis → adversarial verify, **verdict CONFIRMED**). Full contract:
+`docs/DEF_LOAD_CONTRACT.md`. Artifacts: `work/def_load_re/`.
+
+### Root cause was NOT the counts — it was two payload/CRC bugs (both now fixed + offline-verified)
+- **BUG #1 — wrong names.bin CRC.** forge wrote `0xFFFFFFFF - mz_crc32(name)` which matches **0/13593**
+  retail names. The engine hash is `crc0` = seed-0 reflected CRC-32 poly `0xEDB88320`, **no final
+  inversion** (proven: 13593/13593 stored CRCs == crc0). Every NEW appended name got an un-resolvable
+  CRC → `CreateCreature(name) → nil`. **FIXED** in `D:\Code\FableForge\libs\forgecore\src\bin.cpp`
+  `nameCrc()`; `libforgecore.a` rebuilt. Verified: appended `CREATURE_MESHY_HUNTER` now stores
+  `0x5A11F1E5` == crc0(name).
+- **BUG #2 — stale internal global entry-index refs.** A creature payload carries its own global entry
+  index as self/owner back-refs (`CREATURE_TRADER_01`=1549 at payload offsets {25,193,301}). A byte-clone
+  keeps 1549 but lands at a new index → engine wires to wrong entries → instability. **FIXED** in
+  `work/meshy_npc_mesh/custom_creature/02_add_creature.cpp` (rewrite every `u32==donorGlobalIdx` →
+  landing index; leave SHARED component sub-defs alone). Verified: "retargeted 3 self-index refs
+  1549 -> 14781", reload clean.
+- Counts were already correct (writer extends nameCount/tableSize/entryCount, recomputes dense
+  indexInDefinition). The `crc0` id is now the canonical fact for ALL Fable name hashing.
+
+### Track A (quick win) — STAGED, ready for your in-game test
+`03_inplace_modelid.cpp` → `inplace_modelid.exe`: IN-PLACE repoint of `CREATURE_TRADER_01`
+`Graphic.modelId` 5149→8113 (our Meshy skinned mesh) via `setEntryData` (no append; sidesteps both
+bugs by construction — CONFIRMED safe). Staged: `CompiledDefs_inplace/game.bin`+`names.bin`,
+`graphics_meshy_hunter.big` (mesh id 8113), `textures_meshy.big`. Deploy/rollback:
+`deploy_trackA.sh deploy|rollback` (backs up 4 retail files first). **NOT yet deployed — your call.**
+⚠ **Rebuild from a pristine base first:** the current Steam install is at **14781** entries (+20 stale
+appends over pristine 14761) — likely carrying the old wrong-CRC names. Steam → Verify integrity of game
+files, then re-run `inplace_modelid.exe`, THEN deploy. Test: load near a trader; it should render the
+Meshy body + animate (biped set). Clothing may still layer (InitialAppearanceModifiers = polish).
+
+### Track B (distinct named creature) — append tool now offline-clean
+`add_creature.exe` (rebuilt w/ both fixes) produces an engine-valid `CREATURE_MESHY_HUNTER` append:
+`CompiledDefs_append_fixed/`. Still needs (a) a pristine base and (b) an in-game name-resolve test.
+Recommended controlled A/B/C (per DEF_LOAD_CONTRACT open questions): append with correct-crc-only vs
+index-rewrite-only vs both, to isolate which flips the nil. For a creature with its OWN sub-defs, append
+the full coordinated set + retarget every self+sibling index (`work/append_fix/APPEND_ALGORITHM.md`).
+
+### Next best tasks
+1. (User) Steam-verify → rebuild Track A from pristine → deploy → confirm Meshy body renders in-game.
+2. Land Track B in-game: deploy `CompiledDefs_append_fixed` + the two bigs on a pristine base, spawn
+   `CreateCreatureNearby("CREATURE_MESHY_HUNTER")`, confirm non-nil. Run the A/B/C isolation.
+3. Batch B (appearance/clothing): decompile `CAppearanceModifierDef` 0x004546d5, `CAppearanceDef`
+   0x0046a174 to strip trader clothing off the base body. Same Workflow pattern.
+4. Then `forge entity` orchestrator (design in the 2026-07-24 custom-entity section above) can bake in
+   the now-known def-load contract (crc0 names + index retargeting) as its game.bin cross-wire step.
+
+---
+
+## Background decomp session addendum (2026-07-24) — 3 contracts landed + byte-match lanes
+
+Three analysis workflows completed via the Claude Workflow loop; all findings documented (read these):
+- **`docs/DEF_LOAD_CONTRACT.md`** — game.bin def-load; both append bugs FIXED (crc0 + self-index retarget).
+  Track B append tool clean on pristine base → `work/meshy_npc_mesh/custom_creature/CompiledDefs_append_fixed`.
+- **`docs/APPEARANCE_STRIP_FINDINGS.md`** — clothing layering. **EMPIRICAL CORRECTION:** TRADER_01's
+  `InitialAppearanceModifiers` is `count=0` (empty) — NOT the clothing source. Real appearance = the linked
+  `CAppearanceDef`[10745] (18 KB, ~20 mesh ids), needs its own RE pass. `count=0` proven engine-valid.
+  **Don't build an IAM strip — deploy Track B and observe what actually renders first.**
+- **`docs/COOP_REVIVAL.md`** — enable gate `[CNetworkClient+0x2662]` (opcode-proven), CGameEvent wire format,
+  CheckSync 0x004165E8 gutted + rebuild spec. Verify PLAUSIBLE; corrected several fabricated addresses
+  (0x4EBA10 phantom, 0x0049E0B0→0x0049DFB0). Enable via InitialiseAsLocal, NOT a bare +0x2662 poke (CTD risk).
+
+**Byte-match author→land loop** (tools/decomp_pipeline): validated end-to-end. batch3 authored but it's ~83%
+pre-landed residue (0 fresh wins; first-pass≈0 is normal, the diff-refine round is the cracker). Fixed two
+lander bugs (missing-`name` fallback to oracle; stale scratchpad path → `rebuild/build/landverify`). Fresh-yield
+map computed across pending batches (~1,200 un-landed): batch14=292, batch16=205, batch17=125, batch15=108,
+fse1=69, fse2=64(refine lane). Reusable author workflow: `scratchpad/author_bytematch.js` (args
+`{bundleDir, addrs}`); land with `verify_and_land.py <task.output> <oracle.tsv> --land`.
+
+### Next best tasks
+1. (User) deploy Track B, spawn CREATURE_MESHY_HUNTER, observe render (bare body vs CAppearanceDef clothing).
+2. Land batch17 wins (author-batch17 running); then fan batch14/16/15 + fse2 refine lane for fresh promotions.
+3. If custom body is clothed: RE `CAppearanceDef`[10745] structure to null/repoint its mesh list.
+4. Co-op: resolve the masked InitialiseAsLocal precondition + find the tag-1 sync-event producer, then attempt enable.
+
+---
+
+## Background decomp resume (2026-07-25) - Wave 3 live again
+
+The scheduled Wave 3 runner recovered from the previous Codex quota block. Its first resumed
+16-target co-op batch completed with 16/16 structural PASS results:
+
+- player/network gate and local-client lifecycle (`0x00449D20` through `0x004AEBA0`);
+- event apply/sync/save integration (`0x00416670`, `0x004165E8`, `0x0041726D`,
+  `0x00416148`, `0x004161A7`);
+- event and package-set wire codecs (`0x009F1810`, `0x009F1870`, `0x009F19A0`,
+  `0x009F1AC0`).
+
+These are durable generated reports under `lift/reports/wave3/code/`, not curated promotions.
+The codec reconstructions independently confirm the framing already documented in
+`docs/COOP_REVIVAL.md`: package count byte, per-package event count plus 32-bit sequence, then
+dense event records `[u16 id|replacement][u8 player][u8 payload length][payload]`.
+`CheckSync` also reconfirms the retail stub: it reads the remote checksum/checksum/sequence tuple
+and discards it without a comparison.
+
+The next scheduled batch started immediately on the remaining co-op/spirit cluster. At this
+checkpoint `AddPackage`, `CProcessedInput::AddGameEvent`, and `CTCCoopSpirit::Construct` passed;
+`CTCCoopSpirit::OnCreate @ 0x006700F0` exhausted both attempts with structural FAIL, and the runner
+continued to `UpdateAttractionToMaster @ 0x006701A0`. Let the bounded runner continue; do not treat
+the failed `OnCreate` decompilation as evidence that the retail function is absent.
+
+The post-batch refresh exposed an older compile-driver integration bug: 1,038 catalog behavior
+tests are deliberately self-contained, but `rebuild/build_candidates.ps1` always linked
+`source.obj + test.obj`, causing duplicate-symbol failures. The driver now prefers that external
+link and falls back to a test-only link, matching `verify_and_land.py`. Stale tests that could
+cleanly exercise the real source object were converted to external declarations. Current gate:
+**1,850/1,850 VC7.1 compiles and 1,850/1,850 behavior PASS**. The remaining retail-oracle/parity
+refresh must run after Wave 3 releases Ghidra.
+
+### Wave 3 co-op tail and refresh repair (2026-07-25 15:14 MDT)
+
+The second co-op/spirit batch was intentionally stopped after its useful tail so the refreshed
+VC7.1 exclusion set can prevent already-compiled ForgeFSE bindings from being selected again.
+Durable ledger results after the first 16/16 batch:
+
+- `CGameEventPackageSet::AddPackage @ 0x009F16F0`,
+  `CProcessedInput::AddGameEvent @ 0x00A0D340`, and
+  `CTCCoopSpirit::Construct @ 0x004D55D0`: checker PASS.
+- `CTCCoopSpirit::OnCreate @ 0x006700F0`: the first outer attempt failed, but the second passed.
+  The resulting source is still review-only: it confuses definition pointers, a morph-entry pair,
+  `std::_Cons_val`, and unrelated definition template types. Do not promote it from checker status.
+- `CTCCoopSpirit::UpdateAttractionToMaster @ 0x006701A0`: checker PASS, but unsafe as generated.
+  `pPhysics` is uninitialized when the physics-interface flag is clear, and a failed `LowerBound`
+  assigns the end sentinel before dereferencing `pEntry->m_Value`.
+- `CTCCoopSpirit::SwapToHero @ 0x0066FF20`: the first outer attempt failed and the second passed.
+  It needs ABI/ownership review of the raw helper calls and local temporary before promotion.
+- `CTCCoopSpirit::UpdateScore @ 0x00670710`: checker PASS, but its failed `LowerBound` path likewise
+  dereferences the map-end sentinel. Keep it review-only.
+- `CWorld::EAMoveSpirit @ 0x0062C0E0`: checker PASS, but needs interface-lookup and packet-buffer
+  lifetime/layout review before promotion.
+
+The final selected row before the stop was the stale
+`CGameScriptInterface::SetFactionAsAlliedToFaction @ 0x00890870`; it passed, then the queue exited
+cleanly. The next scheduled refill will read the repaired 1,850-row VC7.1 exclusion catalog.
+
+The forced rebuild refresh then exposed a Windows command-line limit in candidate oracle export:
+all 1,850 requested addresses were being appended as Ghidra script arguments. The exporter now
+writes a UTF-8 response file and invokes `ExportFunctionOracle.java` with `@<address-file>`; the
+Ghidra script accepts either that response-file form or the legacy direct-address form. A direct
+smoke export succeeded. It requested all 1,850 compiled rows and emitted 1,722 actual Ghidra
+function-start oracles; the other 128 addresses are aliases/interior addresses or otherwise lack a
+function start in the current Ghidra database.
+
+The first downstream audit after that repair caught two owner-ranking regressions:
+`GiveHeroExpression` and `DisplayTutorial` selected byte-matched unqualified helpers at
+`0x004383D0`/`0x00435070` instead of the decorated, vtable-backed CGSI methods at
+`0x0088FC60`/`0x0089E710`. `export_fse_native_overlay.py` now gives qualified
+`CGameScriptInterface::` identities stronger owner evidence than an unqualified helper merely
+grouped into the same module. The regenerated audit passes **452/452** Quest bindings with zero
+mismatches or missing assignment families.
+
+`tools/run_rebuild_refresh.ps1` now also supports `-ResumeAfterOracle`. It validates that both the
+compiled manifest and oracle manifest exist, then resumes at retail parity. This was used after a
+detached console produced Python exit 120 from a broken stdout pipe; the underlying parity files
+had been written, but the stage correctly remained failed until rerun through the canonical
+foreground path.
+
+Final refresh completed at 15:34 MDT:
+
+- curated catalog: **1,850/1,850 VC7.1 compile PASS and 1,850/1,850 behavior PASS**;
+- retail parity: **914 exact + 609 relocation matches**, 199 differing, 128 oracle-missing;
+- generated Wave/agent sources: 534 total, 526 checker PASS, 227 host C++20 syntax PASS;
+- candidate signature audit: 467 PASS, 67 review;
+- tooling SDK: PASS; ForgeFSE Quest slot audit: **452/452 PASS**;
+- reconstruction backlog, promotion queue, and `rebuild/COVERAGE.md` regenerated;
+- canonical state: `rebuild/refresh.state.json`, fingerprint
+  `feb58d667b9930ca84d5eeea147aa832a60d0c56e8250f0b76d93cbb6db25f2f`.
+
+The scheduled Wave 3 task was manually triggered once after the clean refresh to verify its new
+selection set. It started a fresh bounded 16-target batch at 15:35 MDT with
+`Quest.DontPopulateNextLoadedRegion @ 0x0088E380`, confirming that the stale
+`0x00890870` compiled binding is now excluded. Leave this batch running under the normal scheduled
+task; `lift/state/re-agent-wave3-queue.log` remains authoritative.
+
+### Public progress update and workspace housekeeping (2026-07-25)
+
+`README.md` now reports the canonical 1,850-row VC7.1 gate instead of the stale July 23 counts and
+contains a dedicated cut-multiplayer overview: surviving four-player/event replication machinery,
+the `CNetworkClient+0x2662` enable contract, the gutted `CheckSync`, unsafe raw-poke caveat, and the
+remaining revival order. `docs/COOP_REVIVAL.md` is the detailed byte-level source.
+
+Workspace organization is now documented in `docs/WORKSPACE_LAYOUT.md`.
+`tools/organize_workspace.ps1` safely archives only loose root scratch/build debris and delegates
+RE-agent transcript cleanup to `lift/scripts/organize_lift.ps1`; it never deletes files or reshapes
+live `rebuild/`, `lift/`, or documented `work/` trees. The first run moved 18 old root artifacts
+(12 `.obj` files, five scratch/header files, and `FableTLC_RE_docs.zip`) into
+`work/scratch/root/{objects,sources}/` and `snapshots/local-archives/`, with no collisions or
+protected files. The local 909 MiB `FSE/` deployment-backup tree remains in place because active
+deployment scripts address it, but it is now explicitly ignored by Git.
+
+### Wave 3 ForgeFSE wrapper batch review (2026-07-25 16:33 MDT)
+
+The post-publication 16-target batch completed with a final checker PASS for every selected address.
+`SetWanderCentrePoint @ 0x008A23B0` and
+`SetWeaponAsHerosActiveWeapon @ 0x00898B30` each recorded an initial failed outer attempt before a
+later PASS. These are structural results under `lift/reports/wave3/code/`, not promotions.
+
+Manual semantic review found that checker PASS materially overstates this batch:
+
+- Ten wrappers assign a failed `LowerBound` result to the vector-map end sentinel and then read its
+  value: `SetHeroAsWearing`, `SetNumberOfTimesHeroHasHadSex`,
+  `SetPlayerCreatureOnlyTarget`, `SetPreferredQuickAccessItem`, `SetReadableObjectText`,
+  `SetReadableObjectTextTag`, `SetThingAndCarriedItemsNotAffectedByScreenFilter`,
+  `SetTrapAsActive`, `SetWanderCentrePoint`, and `SetWeaponAsHerosActiveWeapon`.
+  Treat all ten as unsafe review-only source.
+- `SetQuestInfoText @ 0x00891A00` mixes an unrelated morph-entry allocator/template into text-bank
+  lookup, aliases its parameter storage as several incompatible temporaries, and destroys the wrong
+  local. It needs reconstruction from bytes rather than incremental cleanup.
+- `SetThingAsConscious @ 0x008A9610` calls helpers labeled as unrelated GUI/lightning classes for
+  creature-action construction/destruction. Those BSim-derived identities are not credible enough
+  for promotion.
+- `StopSound @ 0x0088F660` needs vtable/dispatch confirmation to rule out self-recursion, and
+  `SetSoundThemesAsEnabledForRegion @ 0x0088E0B0` still needs world-vtable/region-category ABI review.
+- The two direct owner-byte writes, `DontPopulateNextLoadedRegion @ 0x0088E380` and
+  `SetGuildMasterMessages @ 0x0088E200`, are the only straightforward outputs in this batch, but
+  they still require the normal VC7.1 behavior/parity promotion gates.
+
+A standard post-batch refresh completed cleanly at 16:44 MDT after the queue released Ghidra. It
+raised generated Wave/agent intake to **550 total / 542 checker PASS / 233 host C++20 syntax PASS**;
+the VC7.1-ready subset is 35. The candidate signature audit is 483 PASS / 67 review. The curated
+catalog and retail result are unchanged at **1,850 compile+behavior PASS**, with **914 exact + 609
+relocation matches**, 199 differing, and 128 oracle-missing. Tooling SDK validation and the
+ForgeFSE Quest slot audit remain clean. Canonical refresh state:
+`f4b77e9eca489a121e9f1fdbe333f4a283f2c38557a1688a164eeeddf183c169`.
+
+This refresh performs syntax/signature intake and dashboard regeneration; it does not promote any
+wrapper above. The immediately preceding `SetFactionAsAlliedToFaction @ 0x00890870` result is also
+retained only as structural review source.
+
+### Wave 3 Quest wrapper ABI review (2026-07-25 17:45 MDT)
+
+The next bounded ForgeFSE batch completed with 16/16 final checker PASS results.
+`AddBoast @ 0x00893060` and `AddScreenMessage @ 0x00892850` each exhausted an
+initial four-round attempt before passing a second attempt. As in the preceding batch,
+checker PASS records structural agreement only; it is not promotion evidence.
+
+Retail bytes and donor-PDB signatures corrected nine identities that the generated sources
+had guessed incorrectly:
+
+- `TellHeroQuestObjectiveFailed` dispatches to
+  `CQuestManager::SetObjectiveAsFailed @ 0x004AF990`, which stores state 2; the completed
+  helper at `0x004AF960` stores state 1.
+- `TransitionToThemeAllInternals` uses the static fastcall
+  `CGameDefinitionManager::Get @ 0x0044C6B0`, then the four-argument
+  `CEnvironment::TransitionToTheme @ 0x006B3800`.
+- `UpdateQuestInfoCounterList` calls the distinct
+  `NPlayerGui::CDrawQuestInfo::UpdateCounterList @ 0x00644E80`.
+- `WaitForCameraMessage` obtains the `CMessageEventManager` held at `CWorld+0x60` and
+  removes the matched event through `RemoveMessage @ 0x00493B5B`; the previous GUI helper
+  names were unrelated.
+- `AddBoast` has two `CCharString const&` parameters and forwards them to
+  `CQuestManager::AddBoast @ 0x004B1720`. `CCharString` is four bytes, not the generated
+  eight-byte object.
+- `AddQuestRegion` obtains the region through `CWorldMap::GetRegion @ 0x004FC180` before
+  calling `CQuestManager::AddQuestRegion @ 0x004B3900`.
+- `AddGossipFactionToCategory` passes two four-byte `CCharString` values to the stdcall
+  helper at `0x008AEA40`.
+
+Three outputs remain explicitly unsafe/review-only. `TakeObjectFromHero` invents an
+`abort()` path and can dereference a failed vector-map lookup; the corresponding unset-screen-
+filter wrapper has the same end-sentinel problem. `WaitForCameraMessage` now has more credible
+manager/helper types, but its interface lookup still selects and dereferences the end sentinel.
+`AddScreenMessage` reached structural PASS while retaining ambiguous text-bank temporaries,
+ownership, and an implausible `CVertexBufferWin32::DoSizeof` identity for random state, so its
+source carries an explicit semantic-review marker.
+
+The final `CameraUseCameraPoint @ 0x00891070` candidate also demonstrated why manual byte review
+remains mandatory: the checker accepted an invented `CThing+0x91` flag test, but its complete
+83-byte retail body has only null checks for the thing and its `+0x60` camera component. The
+reviewed source removes that branch and types the real vtable forward to the overload taking a
+position at component `+0x0C` and a right-handed orientation returned by component slot `+0x120`.
+
+`tools/build_promotion_queue.py` now detects generated process-termination calls and a common
+end-sentinel-then-dereference pattern. It also honors explicit
+`RE_AGENT_SEMANTIC_REVIEW` markers. Flagged candidates are placed in a dedicated
+`semantic-review` quarantine behind ordinary manual lifts and are summarized separately in
+`rebuild/backlog/PROMOTION_QUEUE.md`. This does not claim the retail machine code lacks the
+path; it prevents unsafe generated C++ from being mistaken for promotion-ready source.
+
+The canonical post-review refresh completed at 17:58 MDT. Generated intake is now
+**566 total / 558 checker PASS / 249 host C++20 syntax PASS**, with 56 sources free of
+recognized VC7.1 language incompatibilities and 37 otherwise compile-ready. The candidate
+signature audit is **499 PASS / 67 review**. The semantic-review quarantine currently contains
+110 uncompiled candidates; this larger number reflects the new automated scan across the whole
+historical candidate set, not 110 regressions in this batch.
+
+The curated catalog remains **1,850/1,850 VC7.1 compile and behavior PASS**. Retail parity is
+unchanged at **914 exact + 609 relocation matches**, 199 differing, and 128 without a current
+function-start oracle. ForgeFSE's Quest slot audit remains **452/452 PASS**. Canonical refresh
+fingerprint: `003c33622095f5bc64cbdc53b048df966172039df17ac13646aa558d67b738f4`.
+
+The scheduled runner resumed as soon as the refresh released Ghidra. Its next bounded batch began
+at 17:59 MDT with `Quest.ClearGossip @ 0x008AA010`; leave that process running in the background.

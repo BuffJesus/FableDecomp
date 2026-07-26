@@ -21,7 +21,7 @@ time. **This is why it reliably displays.**
 ### `GiveHeroQuestCardDirectly(cardObj, questName, flag)` — vtable[295] @0x008968C0
 The **quest-activation-coupled** path — NOT a Logbook add. It:
 1. `CThingObject::Create(cardObjectDefIndex, …)` — makes a **transient** card thing.
-2. sets the card's region field to `questName` (`(tc+0x28) = param_3`).
+2. sets the card's script-quest name to `questName` (`(tc+0x28) = param_3`).
 3. `CQuestManager::ActivateQuestCard(card, true)` @0x004b4aa0.
 4. **If ActivateQuestCard returns false → `CThing::Kill(card)` — the card is destroyed.**
 
@@ -36,6 +36,11 @@ fn returns void and self-destructs the card on failure.
 **So:** we called `GiveHeroQuestCardDirectly` with `"FSE_Master"` (not an activatable
 card-region) → card created, activation failed, card Killed → nothing shown. **Wrong
 function for "show a card"; it's for "activate this quest through its card."**
+
+The first argument is an `OBJECT_QUEST_CARD_*` definition name. ForgeFSE formerly
+called it `textDBEntry` in its C++ header, but retail resolves that string to an
+object-definition index before calling `CThingObject::Create`; passing `TEXT_*`
+there is therefore incorrect.
 
 ## The rest of the group
 | Slot | Fn | Role |
@@ -60,12 +65,40 @@ Quest:AddQuestCard("OBJECT_DUMMY_QUEST_CARD_DEFEAT_SNOW_TROLL", "FSE_Master", fa
 - arg4 = `false` → also flashes the "new quest" GM HUD popup (`TEXT_QST_078_GM_MSG_NEW_QUEST`); `true` → silent.
 No ForgeFSE DLL change needed — `AddQuestCard` is already bound (vtable[292]).
 
+For a quest with runtime objective/reward text, registration and population are
+two separate phases. The setters resolve the **active** `CTCQuestCard` by script
+name, so calling them immediately after `AddQuestCard` while the card is merely in
+the Guild list is a no-op:
+
+```lua
+-- Registration phase: makes the compiled card asset available.
+Quest:AddQuestCard("OBJECT_QUEST_CARD_MY_CUSTOM_QUEST", "MyCustomQuest", false, true)
+
+-- Activation phase: creates/resolves the runtime card thing.
+Quest:ActivateQuest("MyCustomQuest")
+Quest:Pause(0.1)
+if not Quest:NewScriptFrame() then return end
+
+-- Runtime-population phase: these now have an active card to update.
+Quest:SetQuestCardObjective("MyCustomQuest", "TEXT_MY_CUSTOM_QUEST_OBJECTIVE",
+                            "Oakvale", "")
+Quest:SetQuestGoldReward("MyCustomQuest", 500)
+Quest:SetQuestRenownReward("MyCustomQuest", 100)
+Quest:KickOffQuestStartScreen("MyCustomQuest", false, false)
+```
+
+Use `Quest:` methods in Lua; these functions are methods on the quest-state object,
+not bare global functions.
+
 ## Facts worth remembering
 - **No `DUMMY_`-prefix hide filter exists** — the prefix is naming convention only.
 - `AddQuestCard` associates card↔quest **purely by name string**; the OBJECT needs no back-link to the quest.
 - `FUN_004b1670` **de-dups by card name** — if a prior run already added it to a persisted save's guild list, re-adding is a no-op (still displays, no second popup).
 - If a card still doesn't appear after `AddQuestCard`, the next suspect is the card's `<CQuestCardDef>` `RegionName` / `IsCoreQuest` / `InventoryCategory` (which Logbook tab it files under: Current vs Available vs Completed) — **not** the give path.
-- A full custom quest presents as: `AddQuestCard` (show) → `SetQuestCardObjective` + reward setters (fill) → `AddQuestInfoBar/Counter/Timer` (live HUD tracking) → `TellHeroQuestObjectiveCompleted` (close).
+- A full custom quest presents as: `AddQuestCard` (register) → `ActivateQuest`
+  (create/resolve runtime card) → `SetQuestCardObjective` + reward setters (fill)
+  → `AddQuestInfoBar/Counter/Timer` (live HUD tracking) →
+  `TellHeroQuestObjectiveCompleted` (close).
 
 Evidence: Ghidra headless of retail Fable.exe funcs 0x008913F0 / 0x004b1670 /
 0x008968C0 / 0x004b4aa0 / 0x004b4a10; ForgeFSE bindings GameInterface.cpp:1223-1226,

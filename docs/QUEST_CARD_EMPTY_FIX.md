@@ -33,6 +33,17 @@ with no zero-guard and no symbol resolver, so `--quest-name 0` silently bakes a 
 5. Document that these flags take a NUMERIC text.big TextID (forge has no resolver yet); the safe
    default is to OMIT them and inherit the donor's text.
 
+## Tooling status (2026-07-22)
+
+- FQT's normal start-screen generator now registers with `AddQuestCard`, activates
+  the quest, then reapplies objective/gold/renown to the active runtime card.
+- The generator no longer automatically follows registration with
+  `GiveQuestCardDirectly`; that path creates an activation-coupled transient card
+  and can kill it on failure.
+- ForgeFSE now names the direct-delivery argument `questCardObjectName` in its
+  header and generated manifest. The former `textDBEntry` name was misleading;
+  retail resolves an object definition there.
+
 ## Validation (byte-level, no in-game run)
 `forge quest card <root> <schema> TESTCARD --donor OBJECT_QUEST_CARD_WASP_MENACE --gold 500
 --renown 200 --core 1` then `forge defs decode <out> def_schema.json <idx>` and assert: clean

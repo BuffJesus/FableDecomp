@@ -1,0 +1,3408 @@
+{
+ "count": 216,
+ "classes": {
+  "CAIStateGroupBase": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0x4",
+     "type": "Inner*",
+     "name": "p"
+    },
+    {
+     "offset": "0x20",
+     "type": "CThingSearchTools*",
+     "name": "p20"
+    }
+   ]
+  },
+  "CAIStateGroupCreatureUseCoverBase": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0x18",
+     "type": "char",
+     "name": "member18"
+    }
+   ]
+  },
+  "CAIStateGroupHoverWanderAroundThing": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "void*",
+     "name": "vt"
+    },
+    {
+     "offset": "0x28",
+     "type": "Member*",
+     "name": "m28"
+    }
+   ]
+  },
+  "CAbilityButtonGuiDef": {
+   "verified_methods": 1,
+   "size": "0x5c"
+  },
+  "CAbilityDef": {
+   "verified_methods": 3,
+   "size": "0x2c",
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "unsigned char",
+     "name": "_tail"
+    }
+   ]
+  },
+  "CActionDoCreatureAction": {
+   "verified_methods": 2,
+   "fields": [
+    {
+     "offset": "0x4",
+     "type": "int",
+     "name": "f4"
+    },
+    {
+     "offset": "0x8",
+     "type": "char",
+     "name": "f8"
+    },
+    {
+     "offset": "0x9",
+     "type": "char",
+     "name": "f9"
+    },
+    {
+     "offset": "0xa",
+     "type": "int",
+     "name": "fc"
+    },
+    {
+     "offset": "0xe",
+     "type": "char",
+     "name": "f10"
+    },
+    {
+     "offset": "0x12",
+     "type": "int",
+     "name": "f14"
+    },
+    {
+     "offset": "0x16",
+     "type": "int",
+     "name": "f18"
+    }
+   ]
+  },
+  "CActionUseDef": {
+   "verified_methods": 2,
+   "size": "0x34"
+  },
+  "CActiveFile": {
+   "verified_methods": 57,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "void*",
+     "name": "p"
+    },
+    {
+     "offset": "0x4",
+     "type": "void*",
+     "name": "q"
+    }
+   ]
+  },
+  "CAnimateThing": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0x4",
+     "type": "int",
+     "name": "curFrame"
+    },
+    {
+     "offset": "0x8",
+     "type": "int",
+     "name": "endFrame"
+    },
+    {
+     "offset": "0xc",
+     "type": "unsigned char",
+     "name": "flags"
+    },
+    {
+     "offset": "0x10",
+     "type": "CMeshDataBank*",
+     "name": "bank"
+    },
+    {
+     "offset": "0xd0",
+     "type": "CMeshDataBank*",
+     "name": "bank"
+    },
+    {
+     "offset": "0x161c8",
+     "type": "CMeshDataBank*",
+     "name": "bank"
+    }
+   ]
+  },
+  "CAppearanceDef": {
+   "verified_methods": 1,
+   "size": "0x78"
+  },
+  "CArmourDef": {
+   "verified_methods": 1,
+   "size": "0x6c"
+  },
+  "CAttackPatternDef": {
+   "verified_methods": 1,
+   "size": "0x48"
+  },
+  "CAugmentationDef": {
+   "verified_methods": 2,
+   "size": "0x4c"
+  },
+  "CBalverineBattleDef": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0x28",
+     "type": "int",
+     "name": "f28"
+    },
+    {
+     "offset": "0x2c",
+     "type": "int",
+     "name": "f2c"
+    },
+    {
+     "offset": "0x30",
+     "type": "int",
+     "name": "f30"
+    }
+   ]
+  },
+  "CBankFileAsyncData": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0xc",
+     "type": "void*",
+     "name": "p0c"
+    },
+    {
+     "offset": "0x10",
+     "type": "unsigned int",
+     "name": "v1c"
+    },
+    {
+     "offset": "0x14",
+     "type": "void*",
+     "name": "p20"
+    }
+   ]
+  },
+  "CBonusItemDef": {
+   "verified_methods": 2,
+   "size": "0x74"
+  },
+  "CBrainDef": {
+   "verified_methods": 1,
+   "size": "0x60"
+  },
+  "CBriarRoseDef": {
+   "verified_methods": 2,
+   "size": "0x54"
+  },
+  "CCameraManagerDef": {
+   "verified_methods": 1,
+   "size": "0x74"
+  },
+  "CCameraManagerSetDef": {
+   "verified_methods": 2,
+   "size": "0x4c",
+   "fields": [
+    {
+     "offset": "0x3c",
+     "type": "int",
+     "name": "f3c"
+    },
+    {
+     "offset": "0x40",
+     "type": "int",
+     "name": "f40"
+    },
+    {
+     "offset": "0x44",
+     "type": "int",
+     "name": "f44"
+    },
+    {
+     "offset": "0x48",
+     "type": "int",
+     "name": "f48"
+    }
+   ]
+  },
+  "CCameraModeDef": {
+   "verified_methods": 1,
+   "size": "0xd8"
+  },
+  "CCarrySlotDef": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "unsigned long",
+     "name": "_first"
+    },
+    {
+     "offset": "0x28",
+     "type": "A",
+     "name": "a"
+    },
+    {
+     "offset": "0x2c",
+     "type": "B",
+     "name": "b"
+    },
+    {
+     "offset": "0x30",
+     "type": "C",
+     "name": "c"
+    },
+    {
+     "offset": "0x34",
+     "type": "A",
+     "name": "a2"
+    }
+   ]
+  },
+  "CCategory": {
+   "verified_methods": 5,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "fable_u32",
+     "name": "Handle00"
+    },
+    {
+     "offset": "0x8",
+     "type": "char*",
+     "name": "m_begin"
+    },
+    {
+     "offset": "0xc",
+     "type": "char*",
+     "name": "m_end"
+    },
+    {
+     "offset": "0x30",
+     "type": "char*",
+     "name": "base"
+    },
+    {
+     "offset": "0x3c",
+     "type": "int",
+     "name": "count"
+    },
+    {
+     "offset": "0x50",
+     "type": "__int64",
+     "name": "item"
+    },
+    {
+     "offset": "0x58",
+     "type": "long",
+     "name": "count"
+    }
+   ]
+  },
+  "CCharString": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "StringRep*",
+     "name": "rep"
+    }
+   ]
+  },
+  "CCombatAbilityAttackBase": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0x28",
+     "type": "char",
+     "name": "sub28"
+    },
+    {
+     "offset": "0x44",
+     "type": "unsigned short",
+     "name": "field44"
+    }
+   ]
+  },
+  "CCombatAbilityBlockCounterAttackDef": {
+   "verified_methods": 2,
+   "size": "0x48"
+  },
+  "CCombatAbilityBlockHeavyWeaponAttackDef": {
+   "verified_methods": 1,
+   "size": "0x58"
+  },
+  "CCombatAbilityBlockLightWeaponAttackDef": {
+   "verified_methods": 1,
+   "size": "0x58"
+  },
+  "CCombatAbilityBlockProjectileWeaponAttackDef": {
+   "verified_methods": 1,
+   "size": "0x58"
+  },
+  "CCombatAbilityBlockUnarmedAttackDef": {
+   "verified_methods": 1,
+   "size": "0x58"
+  },
+  "CCombatAbilityData": {
+   "verified_methods": 2,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "field_0"
+    },
+    {
+     "offset": "0x4",
+     "type": "int",
+     "name": "int4"
+    },
+    {
+     "offset": "0x8",
+     "type": "float",
+     "name": "f8"
+    },
+    {
+     "offset": "0xc",
+     "type": "float",
+     "name": "fc"
+    },
+    {
+     "offset": "0x10",
+     "type": "int",
+     "name": "int10"
+    },
+    {
+     "offset": "0x14",
+     "type": "int",
+     "name": "f14"
+    }
+   ]
+  },
+  "CCombatAbilityFlourishCounterAttackDef": {
+   "verified_methods": 2,
+   "size": "0x48",
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "unsigned char",
+     "name": "_base"
+    },
+    {
+     "offset": "0x28",
+     "type": "CMemberDef",
+     "name": "m_member"
+    }
+   ]
+  },
+  "CCombatAbilityGetHitCounterAttackDef": {
+   "verified_methods": 2,
+   "size": "0x48",
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "unsigned char",
+     "name": "_b"
+    }
+   ]
+  },
+  "CCombatAbilityStrafeDef": {
+   "verified_methods": 3,
+   "size": "0x44",
+   "fields": [
+    {
+     "offset": "0x28",
+     "type": "CFieldB",
+     "name": "f28"
+    },
+    {
+     "offset": "0x2c",
+     "type": "CFieldA",
+     "name": "f40"
+    }
+   ]
+  },
+  "CCombatAbilityUseProjectileWeaponDef": {
+   "verified_methods": 3,
+   "size": "0x48",
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "unsigned char",
+     "name": "_tail"
+    }
+   ]
+  },
+  "CCombatActionBase": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0xc0",
+     "type": "int",
+     "name": "strikeCount"
+    }
+   ]
+  },
+  "CCombatDialogueDef": {
+   "verified_methods": 1,
+   "size": "0x8c"
+  },
+  "CCombatSequenceDef": {
+   "verified_methods": 1,
+   "size": "0x68"
+  },
+  "CCombatWheel": {
+   "verified_methods": 5,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "Ring*",
+     "name": "begin"
+    },
+    {
+     "offset": "0x4",
+     "type": "Ring*",
+     "name": "end"
+    }
+   ]
+  },
+  "CComponent": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int*",
+     "name": "first"
+    },
+    {
+     "offset": "0x4",
+     "type": "int*",
+     "name": "second"
+    },
+    {
+     "offset": "0x8",
+     "type": "int",
+     "name": "f9c"
+    },
+    {
+     "offset": "0xc",
+     "type": "int",
+     "name": "fa0"
+    },
+    {
+     "offset": "0x10",
+     "type": "int",
+     "name": "fa4"
+    },
+    {
+     "offset": "0x14",
+     "type": "int",
+     "name": "fa8"
+    },
+    {
+     "offset": "0xd8",
+     "type": "CInner",
+     "name": "inner"
+    }
+   ]
+  },
+  "CCompressedMemoryDataInputStream": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0xa8",
+     "type": "void*",
+     "name": "buf_a8"
+    },
+    {
+     "offset": "0xb4",
+     "type": "void*",
+     "name": "buf_b4"
+    }
+   ]
+  },
+  "CContextSensitiveItemDef": {
+   "verified_methods": 3,
+   "size": "0x3c",
+   "fields": [
+    {
+     "offset": "0x28",
+     "type": "Field",
+     "name": "f0"
+    },
+    {
+     "offset": "0x2c",
+     "type": "Field",
+     "name": "f1"
+    },
+    {
+     "offset": "0x30",
+     "type": "Field",
+     "name": "f2"
+    },
+    {
+     "offset": "0x34",
+     "type": "Field",
+     "name": "f3"
+    },
+    {
+     "offset": "0x38",
+     "type": "Field",
+     "name": "f4"
+    }
+   ]
+  },
+  "CCoopSpiritDef": {
+   "verified_methods": 3,
+   "size": "0x3c",
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "unsigned char",
+     "name": "_tail"
+    }
+   ]
+  },
+  "CCountedPointerstdvectorCCharString": {
+   "verified_methods": 8,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "count"
+    },
+    {
+     "offset": "0x8",
+     "type": "void*",
+     "name": "ptr"
+    }
+   ]
+  },
+  "CCreatureAbilityDef": {
+   "verified_methods": 1,
+   "size": "0x40"
+  },
+  "CCreatureActionBase": {
+   "verified_methods": 5,
+   "fields": [
+    {
+     "offset": "0x48",
+     "type": "long",
+     "name": "frameOffset"
+    }
+   ]
+  },
+  "CCreatureGenerationFamilyDef": {
+   "verified_methods": 1,
+   "size": "0x5c"
+  },
+  "CCreatureStatsDef": {
+   "verified_methods": 2,
+   "size": "0x48"
+  },
+  "CDefClassBase": {
+   "verified_methods": 9,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "void*",
+     "name": "vftable"
+    }
+   ]
+  },
+  "CDefinitionManager": {
+   "verified_methods": 2,
+   "fields": [
+    {
+     "offset": "0x78",
+     "type": "Slot*",
+     "name": "s_first"
+    },
+    {
+     "offset": "0x7c",
+     "type": "Slot*",
+     "name": "s_last"
+    },
+    {
+     "offset": "0x80",
+     "type": "CDef**",
+     "name": "d_first"
+    },
+    {
+     "offset": "0x84",
+     "type": "CDef**",
+     "name": "d_last"
+    },
+    {
+     "offset": "0xa4",
+     "type": "Def**",
+     "name": "table"
+    }
+   ]
+  },
+  "CDegradableDef": {
+   "verified_methods": 2,
+   "size": "0x3c"
+  },
+  "CDiskFileWin32": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0xc",
+     "type": "long",
+     "name": "length"
+    },
+    {
+     "offset": "0x14",
+     "type": "bool",
+     "name": "m_isOpen"
+    },
+    {
+     "offset": "0x18",
+     "type": "char",
+     "name": "name"
+    }
+   ]
+  },
+  "CDisplayManager": {
+   "verified_methods": 11,
+   "fields": [
+    {
+     "offset": "0x54",
+     "type": "void***",
+     "name": "obj54"
+    },
+    {
+     "offset": "0x58",
+     "type": "unsigned int",
+     "name": "f5c"
+    },
+    {
+     "offset": "0x5c",
+     "type": "unsigned int",
+     "name": "f60"
+    },
+    {
+     "offset": "0x60",
+     "type": "unsigned int",
+     "name": "f1c4"
+    },
+    {
+     "offset": "0x64",
+     "type": "int",
+     "name": "field1c4"
+    }
+   ]
+  },
+  "CDragonActionHoverDef": {
+   "verified_methods": 3,
+   "size": "0x2c",
+   "fields": [
+    {
+     "offset": "0x28",
+     "type": "CSubField",
+     "name": "field28"
+    }
+   ]
+  },
+  "CDragonActionNapalmDef": {
+   "verified_methods": 3,
+   "size": "0x38",
+   "fields": [
+    {
+     "offset": "0x28",
+     "type": "Field",
+     "name": "f0"
+    },
+    {
+     "offset": "0x2c",
+     "type": "Field",
+     "name": "f1"
+    },
+    {
+     "offset": "0x30",
+     "type": "Field",
+     "name": "f2"
+    },
+    {
+     "offset": "0x34",
+     "type": "Field",
+     "name": "f3"
+    }
+   ]
+  },
+  "CDragonActionSwoopDef": {
+   "verified_methods": 2,
+   "size": "0x64"
+  },
+  "CEditControlCentre": {
+   "verified_methods": 5,
+   "fields": [
+    {
+     "offset": "0x8",
+     "type": "CThingTrackNode*",
+     "name": "node_at_8"
+    },
+    {
+     "offset": "0xc",
+     "type": "unsigned char",
+     "name": "use_connected"
+    },
+    {
+     "offset": "0xd",
+     "type": "CThingTrackNode*",
+     "name": "default_node"
+    },
+    {
+     "offset": "0x11",
+     "type": "CThingTrackNode*",
+     "name": "connected_node"
+    },
+    {
+     "offset": "0x28c",
+     "type": "unsigned char",
+     "name": "flagB"
+    },
+    {
+     "offset": "0x28d",
+     "type": "unsigned char",
+     "name": "flagA"
+    }
+   ]
+  },
+  "CEngine": {
+   "verified_methods": 5,
+   "fields": [
+    {
+     "offset": "0xc0",
+     "type": "CBank*",
+     "name": "banks"
+    }
+   ]
+  },
+  "CEngineInternalPrimitiveMeshBase": {
+   "verified_methods": 15,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "void**",
+     "name": "vtable"
+    },
+    {
+     "offset": "0x4",
+     "type": "int",
+     "name": "refCount"
+    }
+   ]
+  },
+  "CEngineLandscapePatch": {
+   "verified_methods": 7,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "fable_u8",
+     "name": "m_Pad00"
+    },
+    {
+     "offset": "0x10",
+     "type": "fable_u32",
+     "name": "m_uBytesRead"
+    },
+    {
+     "offset": "0x14",
+     "type": "fable_u8",
+     "name": "m_Pad08"
+    },
+    {
+     "offset": "0x24",
+     "type": "fable_u32*",
+     "name": "m_pCursor32"
+    },
+    {
+     "offset": "0x28",
+     "type": "fable_u8",
+     "name": "m_Pad10"
+    },
+    {
+     "offset": "0x38",
+     "type": "fable_i32",
+     "name": "m_nBytesRemaining"
+    }
+   ]
+  },
+  "CEngineLightingManager": {
+   "verified_methods": 30,
+   "fields": [
+    {
+     "offset": "0x18",
+     "type": "int",
+     "name": "mode"
+    },
+    {
+     "offset": "0x1c",
+     "type": "void*",
+     "name": "p24"
+    },
+    {
+     "offset": "0x20",
+     "type": "void*",
+     "name": "p28"
+    }
+   ]
+  },
+  "CEngineLocalDetailGeneratorDef": {
+   "verified_methods": 1,
+   "size": "0x48"
+  },
+  "CEnginePrimitiveManagerMeshBase": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "long",
+     "name": "Key"
+    },
+    {
+     "offset": "0x4",
+     "type": "CCompositeSurfaceInfo",
+     "name": "Value"
+    }
+   ]
+  },
+  "CEngineSubPrimitiveText": {
+   "verified_methods": 10,
+   "fields": [
+    {
+     "offset": "0x3c",
+     "type": "CSubObj",
+     "name": "sub"
+    }
+   ]
+  },
+  "CEngineThemeDef": {
+   "verified_methods": 1,
+   "size": "0xa4"
+  },
+  "CEngineThemeGroupDef": {
+   "verified_methods": 2,
+   "size": "0x3a"
+  },
+  "CEntitySoundDef": {
+   "verified_methods": 1,
+   "size": "0x54"
+  },
+  "CEnvironmentDef": {
+   "verified_methods": 1,
+   "size": "0x134"
+  },
+  "CExplosiveTrailDef": {
+   "verified_methods": 2,
+   "size": "0x4c"
+  },
+  "CExpressionDef": {
+   "verified_methods": 1,
+   "size": "0x90"
+  },
+  "CFactionDef": {
+   "verified_methods": 1,
+   "size": "0x54"
+  },
+  "CGameCameraManager": {
+   "verified_methods": 6,
+   "fields": [
+    {
+     "offset": "0x98",
+     "type": "Inner*",
+     "name": "inner"
+    },
+    {
+     "offset": "0xb1",
+     "type": "unsigned char",
+     "name": "changeInControlDirection"
+    },
+    {
+     "offset": "0xb8",
+     "type": "float",
+     "name": "m_controlAngleXY"
+    },
+    {
+     "offset": "0xc0",
+     "type": "int",
+     "name": "m_noControlStartTime"
+    },
+    {
+     "offset": "0xd4",
+     "type": "Sub*",
+     "name": "obj_d4"
+    },
+    {
+     "offset": "0xdc",
+     "type": "int",
+     "name": "flag_dc"
+    },
+    {
+     "offset": "0x100",
+     "type": "Sub100",
+     "name": "sub100"
+    },
+    {
+     "offset": "0x104",
+     "type": "char",
+     "name": "flag12c"
+    },
+    {
+     "offset": "0x105",
+     "type": "char",
+     "name": "flag12d"
+    },
+    {
+     "offset": "0x10c",
+     "type": "int",
+     "name": "h134"
+    }
+   ]
+  },
+  "CGameScriptInterface": {
+   "verified_methods": 68,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "void*",
+     "name": "vt"
+    },
+    {
+     "offset": "0x4",
+     "type": "CMid*",
+     "name": "mid"
+    },
+    {
+     "offset": "0x8",
+     "type": "void*",
+     "name": "f8"
+    },
+    {
+     "offset": "0xc",
+     "type": "void*",
+     "name": "fc"
+    },
+    {
+     "offset": "0xd",
+     "type": "char",
+     "name": "flag17"
+    },
+    {
+     "offset": "0xe",
+     "type": "char",
+     "name": "flagD7"
+    },
+    {
+     "offset": "0x14",
+     "type": "void*",
+     "name": "member14"
+    },
+    {
+     "offset": "0x18",
+     "type": "Inner*",
+     "name": "p18"
+    },
+    {
+     "offset": "0x48",
+     "type": "int",
+     "name": "field48"
+    },
+    {
+     "offset": "0x4c",
+     "type": "int",
+     "name": "creatureCreationDelayFrames"
+    },
+    {
+     "offset": "0x78",
+     "type": "bool",
+     "name": "flag"
+    },
+    {
+     "offset": "0x91",
+     "type": "unsigned char",
+     "name": "flags"
+    },
+    {
+     "offset": "0x29e",
+     "type": "unsigned char",
+     "name": "displayMoneyBag"
+    }
+   ]
+  },
+  "CGameScriptThing": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0xc",
+     "type": "CThingRef",
+     "name": "ref"
+    },
+    {
+     "offset": "0x20",
+     "type": "SThing*",
+     "name": "pThing"
+    },
+    {
+     "offset": "0x40",
+     "type": "float",
+     "name": "mAngleXY"
+    }
+   ]
+  },
+  "CGlobalDef": {
+   "verified_methods": 1,
+   "size": "0x150"
+  },
+  "CGuiControlTreePane": {
+   "verified_methods": 16,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "Node*",
+     "name": "head"
+    },
+    {
+     "offset": "0x4",
+     "type": "Node*",
+     "name": "prev"
+    }
+   ]
+  },
+  "CGuildMasterDef": {
+   "verified_methods": 3,
+   "size": "0x30",
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "unsigned char",
+     "name": "_b"
+    },
+    {
+     "offset": "0x28",
+     "type": "CMember",
+     "name": "m28"
+    },
+    {
+     "offset": "0x2c",
+     "type": "CMember",
+     "name": "m2c"
+    }
+   ]
+  },
+  "CHairCardDef": {
+   "verified_methods": 3,
+   "size": "0x2c",
+   "fields": [
+    {
+     "offset": "0x28",
+     "type": "int",
+     "name": "field28"
+    }
+   ]
+  },
+  "CHeroAbilityDef": {
+   "verified_methods": 1,
+   "size": "0x9c"
+  },
+  "CHeroCombatDef": {
+   "verified_methods": 1,
+   "size": "0x148"
+  },
+  "CHeroPostcardGeneratorDef": {
+   "verified_methods": 2,
+   "size": "0x5c",
+   "fields": [
+    {
+     "offset": "0x58",
+     "type": "char",
+     "name": "base"
+    }
+   ]
+  },
+  "CHeroStatsDef": {
+   "verified_methods": 1,
+   "size": "0x138"
+  },
+  "CHeroTitleDef": {
+   "verified_methods": 2,
+   "size": "0x50"
+  },
+  "CHitLocationDef": {
+   "verified_methods": 1,
+   "size": "0x7c"
+  },
+  "CHitLocationsDef": {
+   "verified_methods": 2,
+   "size": "0x34",
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "unsigned char",
+     "name": "_tail"
+    }
+   ]
+  },
+  "CIEngine": {
+   "verified_methods": 6,
+   "fields": [
+    {
+     "offset": "0x8",
+     "type": "bool",
+     "name": "active"
+    }
+   ]
+  },
+  "CIME": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0x8",
+     "type": "char",
+     "name": "enabled"
+    },
+    {
+     "offset": "0x50",
+     "type": "char",
+     "name": "flag50"
+    }
+   ]
+  },
+  "CInventoryCategoryDef": {
+   "verified_methods": 1,
+   "size": "0x58"
+  },
+  "CInventoryDef": {
+   "verified_methods": 1,
+   "size": "0xa34"
+  },
+  "CJackDragonDef": {
+   "verified_methods": 2,
+   "size": "0x78"
+  },
+  "CLandscapeBackgroundPatch": {
+   "verified_methods": 140,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "void*",
+     "name": "vftable"
+    },
+    {
+     "offset": "0x4",
+     "type": "CInner",
+     "name": "inner4"
+    },
+    {
+     "offset": "0x8",
+     "type": "void*",
+     "name": "f8"
+    },
+    {
+     "offset": "0xc",
+     "type": "CInner",
+     "name": "inner"
+    },
+    {
+     "offset": "0xb8",
+     "type": "void*",
+     "name": "tex"
+    }
+   ]
+  },
+  "CLandscapeLayerMesh": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "m_param"
+    },
+    {
+     "offset": "0x4",
+     "type": "void*",
+     "name": "pParam"
+    },
+    {
+     "offset": "0x8",
+     "type": "int",
+     "name": "m_f08"
+    },
+    {
+     "offset": "0xc",
+     "type": "int",
+     "name": "m_f0c"
+    },
+    {
+     "offset": "0x10",
+     "type": "short",
+     "name": "m_f10"
+    },
+    {
+     "offset": "0x12",
+     "type": "short",
+     "name": "m_f12"
+    },
+    {
+     "offset": "0x14",
+     "type": "int",
+     "name": "m_f14"
+    },
+    {
+     "offset": "0x18",
+     "type": "int",
+     "name": "m_f18"
+    },
+    {
+     "offset": "0x1c",
+     "type": "int",
+     "name": "m_f1c"
+    },
+    {
+     "offset": "0x20",
+     "type": "int",
+     "name": "f20"
+    },
+    {
+     "offset": "0x24",
+     "type": "int",
+     "name": "f24"
+    },
+    {
+     "offset": "0x28",
+     "type": "int",
+     "name": "f28"
+    },
+    {
+     "offset": "0x2c",
+     "type": "int",
+     "name": "f2c"
+    },
+    {
+     "offset": "0x30",
+     "type": "short",
+     "name": "f30"
+    },
+    {
+     "offset": "0x32",
+     "type": "short",
+     "name": "f32"
+    },
+    {
+     "offset": "0x34",
+     "type": "int",
+     "name": "f34"
+    },
+    {
+     "offset": "0x38",
+     "type": "char",
+     "name": "f44"
+    },
+    {
+     "offset": "0x3c",
+     "type": "int",
+     "name": "f3c"
+    },
+    {
+     "offset": "0x40",
+     "type": "int",
+     "name": "f40"
+    },
+    {
+     "offset": "0x44",
+     "type": "short",
+     "name": "f44"
+    },
+    {
+     "offset": "0x46",
+     "type": "short",
+     "name": "f46"
+    },
+    {
+     "offset": "0x48",
+     "type": "short",
+     "name": "f54"
+    },
+    {
+     "offset": "0x4a",
+     "type": "short",
+     "name": "f56"
+    },
+    {
+     "offset": "0x4c",
+     "type": "int",
+     "name": "f58"
+    },
+    {
+     "offset": "0x50",
+     "type": "int",
+     "name": "f5c"
+    }
+   ]
+  },
+  "CLensFlareElementDef": {
+   "verified_methods": 1,
+   "size": "0x4c"
+  },
+  "CLightningDef": {
+   "verified_methods": 1,
+   "size": "0x58"
+  },
+  "CLocalDetailCacheMap": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "fable_u32",
+     "name": "ChunkType"
+    },
+    {
+     "offset": "0x4",
+     "type": "fable_u32",
+     "name": "ChunkSize"
+    },
+    {
+     "offset": "0x8",
+     "type": "fable_u32",
+     "name": "ChunkFlags"
+    }
+   ]
+  },
+  "CManager": {
+   "verified_methods": 6,
+   "fields": [
+    {
+     "offset": "0x4",
+     "type": "CBase**",
+     "name": "screens"
+    },
+    {
+     "offset": "0x8",
+     "type": "int",
+     "name": "current"
+    },
+    {
+     "offset": "0x9c",
+     "type": "char",
+     "name": "flag9c"
+    },
+    {
+     "offset": "0xa0",
+     "type": "ICanvas*",
+     "name": "canvas"
+    },
+    {
+     "offset": "0x17c",
+     "type": "IErr*",
+     "name": "err"
+    }
+   ]
+  },
+  "CMap": {
+   "verified_methods": 7,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "unsigned long",
+     "name": "themeId"
+    },
+    {
+     "offset": "0x4",
+     "type": "unsigned char*",
+     "name": "data"
+    },
+    {
+     "offset": "0x1c",
+     "type": "long",
+     "name": "width"
+    },
+    {
+     "offset": "0x20",
+     "type": "long",
+     "name": "height"
+    }
+   ]
+  },
+  "CMaterialDef": {
+   "verified_methods": 1,
+   "size": "0x98"
+  },
+  "CMeleeCombatAbilityDef": {
+   "verified_methods": 1,
+   "size": "0x7c"
+  },
+  "CMeleeCombatKnockdownEffects": {
+   "verified_methods": 1,
+   "size": "0x5c"
+  },
+  "CMemoryAllocatorVariableSize": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0x4",
+     "type": "Node*",
+     "name": "left"
+    },
+    {
+     "offset": "0x8",
+     "type": "Node*",
+     "name": "right"
+    },
+    {
+     "offset": "0xc",
+     "type": "Node*",
+     "name": "parent"
+    }
+   ]
+  },
+  "CMemoryFile": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0x8",
+     "type": "long",
+     "name": "position"
+    },
+    {
+     "offset": "0xc",
+     "type": "long",
+     "name": "m_length"
+    },
+    {
+     "offset": "0x20",
+     "type": "char",
+     "name": "member"
+    }
+   ]
+  },
+  "CMessageEventDef": {
+   "verified_methods": 2,
+   "size": "0x50",
+   "fields": [
+    {
+     "offset": "0x3c",
+     "type": "int",
+     "name": "f3c"
+    },
+    {
+     "offset": "0x40",
+     "type": "int",
+     "name": "f40"
+    },
+    {
+     "offset": "0x44",
+     "type": "int",
+     "name": "f44"
+    },
+    {
+     "offset": "0x48",
+     "type": "int",
+     "name": "f48"
+    },
+    {
+     "offset": "0x4c",
+     "type": "int",
+     "name": "f4c"
+    }
+   ]
+  },
+  "CModeBlock": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0x80",
+     "type": "CAnimFilterBase*",
+     "name": "filter"
+    }
+   ]
+  },
+  "CNavQuadTree": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "fable_u8",
+     "name": "Unknown00"
+    },
+    {
+     "offset": "0x18",
+     "type": "fable_u8",
+     "name": "Initialising"
+    },
+    {
+     "offset": "0x1c",
+     "type": "float",
+     "name": "MapPosX"
+    },
+    {
+     "offset": "0x20",
+     "type": "float",
+     "name": "MapPosY"
+    },
+    {
+     "offset": "0x24",
+     "type": "fable_u8",
+     "name": "Unknown0F"
+    },
+    {
+     "offset": "0x28",
+     "type": "float",
+     "name": "MapWidth"
+    },
+    {
+     "offset": "0x2c",
+     "type": "float",
+     "name": "MapHeight"
+    },
+    {
+     "offset": "0x30",
+     "type": "long",
+     "name": "MapIndex"
+    },
+    {
+     "offset": "0x34",
+     "type": "fable_u32",
+     "name": "NavigationLayersFirst"
+    },
+    {
+     "offset": "0x38",
+     "type": "fable_u32",
+     "name": "NavigationLayersLast"
+    },
+    {
+     "offset": "0x3c",
+     "type": "fable_u8",
+     "name": "Unknown24"
+    },
+    {
+     "offset": "0x18c",
+     "type": "fable_u32",
+     "name": "HeapFirst"
+    },
+    {
+     "offset": "0x190",
+     "type": "fable_u32",
+     "name": "HeapLast"
+    },
+    {
+     "offset": "0x194",
+     "type": "fable_u8",
+     "name": "Unknown80"
+    },
+    {
+     "offset": "0x1a4",
+     "type": "fable_u8",
+     "name": "HeapOrder"
+    },
+    {
+     "offset": "0x1a8",
+     "type": "fable_u8",
+     "name": "HeapDirty"
+    }
+   ]
+  },
+  "CNetworkClient": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0x8",
+     "type": "char",
+     "name": "flag8"
+    }
+   ]
+  },
+  "CObjectFamilyDef": {
+   "verified_methods": 2,
+   "size": "0x48"
+  },
+  "CObservable": {
+   "verified_methods": 8,
+   "fields": [
+    {
+     "offset": "0x134",
+     "type": "void*",
+     "name": "exclusive"
+    },
+    {
+     "offset": "0x138",
+     "type": "void*",
+     "name": "exclusiveObserver"
+    },
+    {
+     "offset": "0x13c",
+     "type": "void*",
+     "name": "exclusiveObserver"
+    },
+    {
+     "offset": "0x140",
+     "type": "void*",
+     "name": "exclusiveObserver"
+    }
+   ]
+  },
+  "COpinionDeedEffectsDef": {
+   "verified_methods": 1,
+   "size": "0x80"
+  },
+  "COpinionDeedMaskDef": {
+   "verified_methods": 1,
+   "size": "0x48"
+  },
+  "COpinionDeedReactionDef": {
+   "verified_methods": 1,
+   "size": "0x50"
+  },
+  "COpinionPersonalityDef": {
+   "verified_methods": 2,
+   "size": "0x54",
+   "fields": [
+    {
+     "offset": "0x4",
+     "type": "void*",
+     "name": "ptr"
+    },
+    {
+     "offset": "0x8",
+     "type": "char",
+     "name": "member"
+    }
+   ]
+  },
+  "COpinionReactionMaskDef": {
+   "verified_methods": 1,
+   "size": "0x48"
+  },
+  "COpinionSourceDef": {
+   "verified_methods": 1,
+   "size": "0xc8"
+  },
+  "CParticleEmitter": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "a"
+    },
+    {
+     "offset": "0x4",
+     "type": "int",
+     "name": "b"
+    },
+    {
+     "offset": "0x8",
+     "type": "CSplineRef*",
+     "name": "begin"
+    },
+    {
+     "offset": "0xc",
+     "type": "CSplineRef*",
+     "name": "end"
+    }
+   ]
+  },
+  "CParticleSystem": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0xc",
+     "type": "Decal*",
+     "name": "begin"
+    },
+    {
+     "offset": "0x10",
+     "type": "Decal*",
+     "name": "end"
+    },
+    {
+     "offset": "0x14",
+     "type": "long",
+     "name": "base"
+    },
+    {
+     "offset": "0x48",
+     "type": "long",
+     "name": "base"
+    },
+    {
+     "offset": "0xb0",
+     "type": "float",
+     "name": "totalTime"
+    },
+    {
+     "offset": "0xb4",
+     "type": "float",
+     "name": "elapsed"
+    }
+   ]
+  },
+  "CPatchTesselationEdgeStrip": {
+   "verified_methods": 12,
+   "fields": [
+    {
+     "offset": "0x3c",
+     "type": "void*",
+     "name": "p3c"
+    },
+    {
+     "offset": "0x40",
+     "type": "void*",
+     "name": "p48"
+    },
+    {
+     "offset": "0x44",
+     "type": "void*",
+     "name": "p4c"
+    },
+    {
+     "offset": "0x48",
+     "type": "void*",
+     "name": "p58"
+    },
+    {
+     "offset": "0x4c",
+     "type": "void*",
+     "name": "p90"
+    },
+    {
+     "offset": "0x50",
+     "type": "void*",
+     "name": "p50"
+    },
+    {
+     "offset": "0x54",
+     "type": "void*",
+     "name": "p54"
+    },
+    {
+     "offset": "0x58",
+     "type": "void*",
+     "name": "p58"
+    },
+    {
+     "offset": "0x5c",
+     "type": "void*",
+     "name": "p5c"
+    },
+    {
+     "offset": "0x60",
+     "type": "void*",
+     "name": "p60"
+    },
+    {
+     "offset": "0x64",
+     "type": "void*",
+     "name": "p70"
+    },
+    {
+     "offset": "0x68",
+     "type": "void*",
+     "name": "p68"
+    },
+    {
+     "offset": "0x6c",
+     "type": "void*",
+     "name": "p6c"
+    },
+    {
+     "offset": "0x74",
+     "type": "void*",
+     "name": "p74"
+    },
+    {
+     "offset": "0x78",
+     "type": "void*",
+     "name": "p78"
+    },
+    {
+     "offset": "0x7c",
+     "type": "void*",
+     "name": "p8c"
+    },
+    {
+     "offset": "0x80",
+     "type": "void*",
+     "name": "p80"
+    },
+    {
+     "offset": "0x84",
+     "type": "void*",
+     "name": "p84"
+    },
+    {
+     "offset": "0x8c",
+     "type": "CMember",
+     "name": "m8c"
+    },
+    {
+     "offset": "0x90",
+     "type": "CSub",
+     "name": "sub90"
+    }
+   ]
+  },
+  "CPhysicsDef": {
+   "verified_methods": 3,
+   "size": "0x44",
+   "fields": [
+    {
+     "offset": "0x28",
+     "type": "float",
+     "name": "f28"
+    },
+    {
+     "offset": "0x2c",
+     "type": "float",
+     "name": "f2c"
+    },
+    {
+     "offset": "0x30",
+     "type": "float",
+     "name": "f30"
+    },
+    {
+     "offset": "0x40",
+     "type": "unsigned char",
+     "name": "sub"
+    }
+   ]
+  },
+  "CPlayerDef": {
+   "verified_methods": 1,
+   "size": "0x44"
+  },
+  "CPlayerGui": {
+   "verified_methods": 14,
+   "fields": [
+    {
+     "offset": "0xd",
+     "type": "unsigned char",
+     "name": "b0d"
+    },
+    {
+     "offset": "0xe",
+     "type": "unsigned char",
+     "name": "b0e"
+    },
+    {
+     "offset": "0xf",
+     "type": "unsigned char",
+     "name": "b0f"
+    },
+    {
+     "offset": "0x10",
+     "type": "unsigned char",
+     "name": "b10"
+    },
+    {
+     "offset": "0x11",
+     "type": "unsigned char",
+     "name": "b11"
+    },
+    {
+     "offset": "0x12",
+     "type": "unsigned char",
+     "name": "b12"
+    },
+    {
+     "offset": "0x13",
+     "type": "unsigned char",
+     "name": "b13"
+    },
+    {
+     "offset": "0x14",
+     "type": "unsigned char",
+     "name": "b14"
+    },
+    {
+     "offset": "0x15",
+     "type": "unsigned char",
+     "name": "b15"
+    },
+    {
+     "offset": "0x16",
+     "type": "unsigned char",
+     "name": "b16"
+    },
+    {
+     "offset": "0x17",
+     "type": "unsigned char",
+     "name": "b17"
+    },
+    {
+     "offset": "0x18",
+     "type": "unsigned char",
+     "name": "b18"
+    },
+    {
+     "offset": "0x19",
+     "type": "unsigned char",
+     "name": "b19"
+    },
+    {
+     "offset": "0x1a",
+     "type": "float",
+     "name": "f20"
+    },
+    {
+     "offset": "0x1e",
+     "type": "unsigned char",
+     "name": "b32"
+    },
+    {
+     "offset": "0x1f",
+     "type": "unsigned char",
+     "name": "b6c"
+    },
+    {
+     "offset": "0x20",
+     "type": "unsigned char",
+     "name": "b79"
+    },
+    {
+     "offset": "0x21",
+     "type": "float",
+     "name": "f7c"
+    }
+   ]
+  },
+  "CPlayerGuiDef": {
+   "verified_methods": 1,
+   "size": "0xab4"
+  },
+  "CPlayerInventoryDef": {
+   "verified_methods": 1,
+   "size": "0x70"
+  },
+  "CPlayerMovementDef": {
+   "verified_methods": 1,
+   "size": "0x7c"
+  },
+  "CQuestManager": {
+   "verified_methods": 2,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "key"
+    },
+    {
+     "offset": "0x4",
+     "type": "SubNode*",
+     "name": "next"
+    },
+    {
+     "offset": "0x8",
+     "type": "CCharString*",
+     "name": "name"
+    },
+    {
+     "offset": "0x98",
+     "type": "void*",
+     "name": "screenPtr"
+    }
+   ]
+  },
+  "CQuickAccessItemButtonGuiDef": {
+   "verified_methods": 1,
+   "size": "0x50"
+  },
+  "CRegion": {
+   "verified_methods": 12,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "field0"
+    },
+    {
+     "offset": "0x18",
+     "type": "CCharString",
+     "name": "nameA"
+    },
+    {
+     "offset": "0x1c",
+     "type": "CCharString",
+     "name": "nameB"
+    },
+    {
+     "offset": "0x20",
+     "type": "NameField",
+     "name": "field20"
+    },
+    {
+     "offset": "0x24",
+     "type": "int",
+     "name": "field24"
+    }
+   ]
+  },
+  "CRegionDef": {
+   "verified_methods": 1,
+   "size": "0xc4"
+  },
+  "CScriptThing": {
+   "verified_methods": 6,
+   "fields": [
+    {
+     "offset": "0x4",
+     "type": "CInner*",
+     "name": "inner"
+    }
+   ]
+  },
+  "CScrollingComponent": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0x18",
+     "type": "int",
+     "name": "state"
+    },
+    {
+     "offset": "0x24",
+     "type": "void*",
+     "name": "field24"
+    },
+    {
+     "offset": "0x28",
+     "type": "void*",
+     "name": "field28"
+    }
+   ]
+  },
+  "CShaderPreParser": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0x7d0",
+     "type": "char*",
+     "name": "begin"
+    },
+    {
+     "offset": "0x7d4",
+     "type": "char*",
+     "name": "end"
+    }
+   ]
+  },
+  "CShaderRenderManager": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0x1e8",
+     "type": "unsigned char",
+     "name": "inited"
+    },
+    {
+     "offset": "0x1e9",
+     "type": "float",
+     "name": "m"
+    },
+    {
+     "offset": "0x229",
+     "type": "unsigned int",
+     "name": "dirtyFlags"
+    },
+    {
+     "offset": "0x230",
+     "type": "unsigned int",
+     "name": "dst"
+    },
+    {
+     "offset": "0x260",
+     "type": "unsigned int",
+     "name": "flags"
+    },
+    {
+     "offset": "0x380",
+     "type": "Colour",
+     "name": "fogColour"
+    },
+    {
+     "offset": "0x384",
+     "type": "unsigned int",
+     "name": "flags"
+    }
+   ]
+  },
+  "CSimBuildingDef": {
+   "verified_methods": 1,
+   "size": "0x48"
+  },
+  "CSimVoicesDef": {
+   "verified_methods": 1,
+   "size": "0x54"
+  },
+  "CSkyDef": {
+   "verified_methods": 1,
+   "size": "0x80"
+  },
+  "CSmallVectorCANavQuadTreeNodeconst": {
+   "verified_methods": 2,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "CANavQuadTreeNode**",
+     "name": "m_data"
+    }
+   ]
+  },
+  "CSmashableDef": {
+   "verified_methods": 2,
+   "fields": [
+    {
+     "offset": "0x25",
+     "type": "unsigned char",
+     "name": "fieldA"
+    },
+    {
+     "offset": "0x26",
+     "type": "unsigned char",
+     "name": "fieldB"
+    },
+    {
+     "offset": "0x27",
+     "type": "int",
+     "name": "fieldC"
+    }
+   ]
+  },
+  "CSnowTrollDef": {
+   "verified_methods": 2,
+   "size": "0x60"
+  },
+  "CSoundDef": {
+   "verified_methods": 1,
+   "size": "0x84"
+  },
+  "CSoundThemeDef": {
+   "verified_methods": 1,
+   "size": "0x64"
+  },
+  "CSpecialAbilitiesAssassinRushDef": {
+   "verified_methods": 1,
+   "size": "0x8c"
+  },
+  "CSpecialAbilitiesBattleChargeDef": {
+   "verified_methods": 1,
+   "size": "0xa4"
+  },
+  "CSpecialAbilitiesBerserkDef": {
+   "verified_methods": 1,
+   "size": "0x188",
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "placeholder"
+    }
+   ]
+  },
+  "CSpecialAbilitiesBulletTimeDef": {
+   "verified_methods": 1,
+   "size": "0x18c"
+  },
+  "CSpecialAbilitiesBurntEffectDef": {
+   "verified_methods": 1,
+   "size": "0x54"
+  },
+  "CSpecialAbilitiesCreatureTintDef": {
+   "verified_methods": 1,
+   "size": "0x50"
+  },
+  "CSpecialAbilitiesDivineWrathDef": {
+   "verified_methods": 1,
+   "size": "0xfc"
+  },
+  "CSpecialAbilitiesDrainLifeDataDef": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0x28",
+     "type": "CSubField",
+     "name": "sub"
+    }
+   ]
+  },
+  "CSpecialAbilitiesDrainLifeDef": {
+   "verified_methods": 1,
+   "size": "0x70"
+  },
+  "CSpecialAbilitiesDrunkennessDef": {
+   "verified_methods": 1,
+   "size": "0x50"
+  },
+  "CSpecialAbilitiesElectrocutedEffectDef": {
+   "verified_methods": 1,
+   "size": "0x6c"
+  },
+  "CSpecialAbilitiesEnflameDef": {
+   "verified_methods": 1,
+   "size": "0xa8"
+  },
+  "CSpecialAbilitiesFireballSpellDef": {
+   "verified_methods": 1,
+   "size": "0x54"
+  },
+  "CSpecialAbilitiesForcePushDataDef": {
+   "verified_methods": 2,
+   "size": "0x2c",
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "unsigned char",
+     "name": "_tail"
+    }
+   ]
+  },
+  "CSpecialAbilitiesGhostSwordDef": {
+   "verified_methods": 1,
+   "size": "0x58"
+  },
+  "CSpecialAbilitiesHealLifeDef": {
+   "verified_methods": 1,
+   "size": "0x60"
+  },
+  "CSpecialAbilitiesLightningSpellDef": {
+   "verified_methods": 1,
+   "size": "0x128"
+  },
+  "CSpecialAbilitiesMultiArrowDef": {
+   "verified_methods": 1,
+   "size": "0x80"
+  },
+  "CSpecialAbilitiesMultiStrikeDef": {
+   "verified_methods": 1,
+   "size": "0x9c"
+  },
+  "CSpecialAbilitiesSummonSpellDef": {
+   "verified_methods": 1,
+   "size": "0x6c"
+  },
+  "CSpecialAbilitiesThunderLightningStormDef": {
+   "verified_methods": 1,
+   "size": "0x68"
+  },
+  "CSpecialAbilitiesTurncoatSpellDef": {
+   "verified_methods": 1,
+   "size": "0x78"
+  },
+  "CSpecialAbilitiesUnholyPowerDef": {
+   "verified_methods": 1,
+   "size": "0xfc"
+  },
+  "CSpecialEffectsDef": {
+   "verified_methods": 1,
+   "size": "0x34"
+  },
+  "CSummonerDef": {
+   "verified_methods": 2,
+   "size": "0x5c"
+  },
+  "CSystemRegistry": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "void*",
+     "name": "field0"
+    },
+    {
+     "offset": "0x4",
+     "type": "void*",
+     "name": "field4"
+    },
+    {
+     "offset": "0x8",
+     "type": "void*",
+     "name": "field8"
+    },
+    {
+     "offset": "0xc",
+     "type": "void*",
+     "name": "fieldC"
+    },
+    {
+     "offset": "0x10",
+     "type": "void*",
+     "name": "field10"
+    }
+   ]
+  },
+  "CTCAssassinRush": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0x3c",
+     "type": "void*",
+     "name": "p3c"
+    },
+    {
+     "offset": "0x40",
+     "type": "SubB",
+     "name": "b50"
+    },
+    {
+     "offset": "0x44",
+     "type": "void*",
+     "name": "p5c"
+    },
+    {
+     "offset": "0x48",
+     "type": "SubA",
+     "name": "a84"
+    }
+   ]
+  },
+  "CTCCarryable": {
+   "verified_methods": 23,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "Node*",
+     "name": "head"
+    },
+    {
+     "offset": "0x4",
+     "type": "Node*",
+     "name": "count"
+    },
+    {
+     "offset": "0x8",
+     "type": "Node*",
+     "name": "v8"
+    },
+    {
+     "offset": "0xc",
+     "type": "Node*",
+     "name": "vc"
+    }
+   ]
+  },
+  "CTCCombat": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "CInner*",
+     "name": "f24"
+    },
+    {
+     "offset": "0x4",
+     "type": "CObj*",
+     "name": "obj"
+    },
+    {
+     "offset": "0x1c",
+     "type": "int",
+     "name": "count"
+    },
+    {
+     "offset": "0x68",
+     "type": "int",
+     "name": "field_68"
+    },
+    {
+     "offset": "0x9c",
+     "type": "char",
+     "name": "flag"
+    }
+   ]
+  },
+  "CTCCreatureNavigation": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0x4",
+     "type": "CNavHelper*",
+     "name": "helper"
+    },
+    {
+     "offset": "0xc",
+     "type": "CNavObj*",
+     "name": "obj"
+    },
+    {
+     "offset": "0x10",
+     "type": "unsigned char",
+     "name": "flag"
+    },
+    {
+     "offset": "0x50",
+     "type": "int",
+     "name": "cur"
+    }
+   ]
+  },
+  "CTCEnemy": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0x4",
+     "type": "int",
+     "name": "field4"
+    }
+   ]
+  },
+  "CTCGraphicAppearance": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0x38",
+     "type": "SubObj*",
+     "name": "subptr"
+    },
+    {
+     "offset": "0x3c",
+     "type": "ListNode*",
+     "name": "head"
+    },
+    {
+     "offset": "0x40",
+     "type": "int",
+     "name": "counter"
+    },
+    {
+     "offset": "0x44",
+     "type": "char",
+     "name": "flags"
+    },
+    {
+     "offset": "0x45",
+     "type": "unsigned char",
+     "name": "state"
+    }
+   ]
+  },
+  "CTCHeroExperience": {
+   "verified_methods": 5,
+   "fields": [
+    {
+     "offset": "0xc",
+     "type": "int",
+     "name": "field_c"
+    },
+    {
+     "offset": "0x30",
+     "type": "float",
+     "name": "f30"
+    },
+    {
+     "offset": "0x34",
+     "type": "COther*",
+     "name": "p54"
+    },
+    {
+     "offset": "0x64",
+     "type": "int",
+     "name": "successfulBlockParry"
+    },
+    {
+     "offset": "0xd8",
+     "type": "int",
+     "name": "value"
+    }
+   ]
+  },
+  "CTCHeroStats": {
+   "verified_methods": 5,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "m00"
+    },
+    {
+     "offset": "0x28",
+     "type": "int",
+     "name": "m28"
+    },
+    {
+     "offset": "0xdc",
+     "type": "CTCHeroStatsInner*",
+     "name": "inner"
+    },
+    {
+     "offset": "0x19c",
+     "type": "float",
+     "name": "drunk"
+    }
+   ]
+  },
+  "CTCInventoryBase": {
+   "verified_methods": 6,
+   "fields": [
+    {
+     "offset": "0x8",
+     "type": "bool",
+     "name": "canQuickAssign"
+    },
+    {
+     "offset": "0x34",
+     "type": "bool",
+     "name": "canQuickAssign"
+    },
+    {
+     "offset": "0x9a",
+     "type": "unsigned char",
+     "name": "canQuickAssign"
+    },
+    {
+     "offset": "0xc0",
+     "type": "CCategory*",
+     "name": "categories"
+    },
+    {
+     "offset": "0xc8",
+     "type": "bool",
+     "name": "CanItemBeQuickAssigned"
+    }
+   ]
+  },
+  "CTCInventoryItem": {
+   "verified_methods": 13,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "void*",
+     "name": "vptr"
+    },
+    {
+     "offset": "0x8",
+     "type": "void*",
+     "name": "ptr8"
+    },
+    {
+     "offset": "0x10",
+     "type": "void*",
+     "name": "ptr10"
+    },
+    {
+     "offset": "0x20",
+     "type": "char",
+     "name": "sub20"
+    },
+    {
+     "offset": "0x28",
+     "type": "void*",
+     "name": "ptr28"
+    },
+    {
+     "offset": "0x30",
+     "type": "void*",
+     "name": "ptr30"
+    },
+    {
+     "offset": "0x3c",
+     "type": "SubB",
+     "name": "sub3c"
+    },
+    {
+     "offset": "0x44",
+     "type": "void*",
+     "name": "ptr44"
+    },
+    {
+     "offset": "0x48",
+     "type": "void*",
+     "name": "ptr48"
+    },
+    {
+     "offset": "0x53",
+     "type": "SubA",
+     "name": "sub50"
+    },
+    {
+     "offset": "0x72",
+     "type": "void*",
+     "name": "ptr6c"
+    },
+    {
+     "offset": "0x80",
+     "type": "void*",
+     "name": "ptr80"
+    },
+    {
+     "offset": "0x98",
+     "type": "void*",
+     "name": "ptr98"
+    }
+   ]
+  },
+  "CTCNoiseDef": {
+   "verified_methods": 2,
+   "fields": [
+    {
+     "offset": "0x28",
+     "type": "int",
+     "name": "a"
+    },
+    {
+     "offset": "0x2c",
+     "type": "int",
+     "name": "b"
+    },
+    {
+     "offset": "0x30",
+     "type": "int",
+     "name": "c"
+    }
+   ]
+  },
+  "CTCPerceiveThing": {
+   "verified_methods": 5,
+   "fields": [
+    {
+     "offset": "0x4",
+     "type": "int",
+     "name": "field4"
+    },
+    {
+     "offset": "0xc",
+     "type": "char",
+     "name": "sub"
+    },
+    {
+     "offset": "0x18",
+     "type": "float",
+     "name": "f18"
+    },
+    {
+     "offset": "0x20",
+     "type": "Vec3",
+     "name": "v20"
+    },
+    {
+     "offset": "0x2c",
+     "type": "CObj34*",
+     "name": "p34"
+    },
+    {
+     "offset": "0x2d",
+     "type": "unsigned char",
+     "name": "flag"
+    },
+    {
+     "offset": "0x2e",
+     "type": "unsigned char",
+     "name": "flag"
+    },
+    {
+     "offset": "0x34",
+     "type": "Sub*",
+     "name": "p34"
+    },
+    {
+     "offset": "0x38",
+     "type": "int",
+     "name": "m_updateFrame"
+    }
+   ]
+  },
+  "CTCPhysicsBase": {
+   "verified_methods": 6,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "vt"
+    },
+    {
+     "offset": "0x28",
+     "type": "CTCPhysicsData*",
+     "name": "data"
+    },
+    {
+     "offset": "0xe0",
+     "type": "CPhysicsData*",
+     "name": "data"
+    }
+   ]
+  },
+  "CTCPhysicsNavigator": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0x3c",
+     "type": "char",
+     "name": "enabled"
+    },
+    {
+     "offset": "0x48",
+     "type": "unsigned char",
+     "name": "enabled"
+    }
+   ]
+  },
+  "CTCPhysicsStandard": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0xc",
+     "type": "Vec",
+     "name": "ground"
+    },
+    {
+     "offset": "0x3c",
+     "type": "unsigned char",
+     "name": "flags"
+    },
+    {
+     "offset": "0x50",
+     "type": "Xform6",
+     "name": "cur"
+    },
+    {
+     "offset": "0x54",
+     "type": "Xform6",
+     "name": "interp"
+    },
+    {
+     "offset": "0x58",
+     "type": "unsigned int",
+     "name": "flag"
+    },
+    {
+     "offset": "0x15d",
+     "type": "unsigned char",
+     "name": "flags"
+    }
+   ]
+  },
+  "CTCShotDefinitionBase": {
+   "verified_methods": 7,
+   "fields": [
+    {
+     "offset": "0x160",
+     "type": "Inner*",
+     "name": "def"
+    },
+    {
+     "offset": "0x218",
+     "type": "SShotSub*",
+     "name": "sub"
+    },
+    {
+     "offset": "0x7a0",
+     "type": "CInner*",
+     "name": "inner"
+    }
+   ]
+  },
+  "CTCTavernGame": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0xa8",
+     "type": "int",
+     "name": "stateA"
+    },
+    {
+     "offset": "0xac",
+     "type": "int",
+     "name": "stateB"
+    }
+   ]
+  },
+  "CTCVillage": {
+   "verified_methods": 5,
+   "fields": [
+    {
+     "offset": "0x94",
+     "type": "RefPtr",
+     "name": "ptr"
+    },
+    {
+     "offset": "0xd4",
+     "type": "int",
+     "name": "m_guardEnemyThreshold"
+    }
+   ]
+  },
+  "CTCWeapon": {
+   "verified_methods": 2,
+   "fields": [
+    {
+     "offset": "0xc",
+     "type": "RefTarget*",
+     "name": "m_target"
+    },
+    {
+     "offset": "0x68",
+     "type": "Inner*",
+     "name": "inner"
+    }
+   ]
+  },
+  "CTargetingDef": {
+   "verified_methods": 1,
+   "size": "0x90"
+  },
+  "CTattooDef": {
+   "verified_methods": 2,
+   "size": "0x60"
+  },
+  "CTextureReplacementDef": {
+   "verified_methods": 2,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "char",
+     "name": "base"
+    },
+    {
+     "offset": "0x28",
+     "type": "CSub",
+     "name": "sub"
+    }
+   ]
+  },
+  "CThing": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0x70",
+     "type": "CLevelObj*",
+     "name": "level"
+    },
+    {
+     "offset": "0x90",
+     "type": "signed char",
+     "name": "idx"
+    }
+   ]
+  },
+  "CThingBuildingDef": {
+   "verified_methods": 2,
+   "size": "0xa4"
+  },
+  "CThingComponentSet": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "void*",
+     "name": "m_ptr"
+    },
+    {
+     "offset": "0x4",
+     "type": "unsigned char",
+     "name": "m_flag"
+    }
+   ]
+  },
+  "CThingCreatureBase": {
+   "verified_methods": 5,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "char",
+     "name": "_opaque"
+    },
+    {
+     "offset": "0x60",
+     "type": "Other*",
+     "name": "q"
+    },
+    {
+     "offset": "0x64",
+     "type": "Inner*",
+     "name": "p"
+    },
+    {
+     "offset": "0xe0",
+     "type": "CDazedDef*",
+     "name": "pDef"
+    }
+   ]
+  },
+  "CThingGroupDef": {
+   "verified_methods": 2,
+   "size": "0x3a"
+  },
+  "CThingHolySiteDef": {
+   "verified_methods": 2,
+   "size": "0x80"
+  },
+  "CThingMarkerDef": {
+   "verified_methods": 2,
+   "size": "0x88"
+  },
+  "CThingMultiArrowShotDef": {
+   "verified_methods": 2,
+   "size": "0x54"
+  },
+  "CThingNoiseDef": {
+   "verified_methods": 2,
+   "size": "0xa4"
+  },
+  "CThingObjectDef": {
+   "verified_methods": 1,
+   "size": "0x9c"
+  },
+  "CThingPhysicalSwitchDef": {
+   "verified_methods": 2,
+   "size": "0x94"
+  },
+  "CThingSearchTools": {
+   "verified_methods": 2,
+   "fields": [
+    {
+     "offset": "0x8",
+     "type": "TypeArrays*",
+     "name": "arrays"
+    },
+    {
+     "offset": "0x91",
+     "type": "unsigned char",
+     "name": "flags"
+    }
+   ]
+  },
+  "CThingShotDef": {
+   "verified_methods": 1,
+   "size": "0xac"
+  },
+  "CThingSwitchDef": {
+   "verified_methods": 2,
+   "size": "0x74"
+  },
+  "CThingTrackNode": {
+   "verified_methods": 3,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "void*",
+     "name": "vptr"
+    },
+    {
+     "offset": "0x4",
+     "type": "int",
+     "name": "member18"
+    },
+    {
+     "offset": "0x10",
+     "type": "void*",
+     "name": "member10"
+    },
+    {
+     "offset": "0x20",
+     "type": "char",
+     "name": "member20"
+    }
+   ]
+  },
+  "CThingVillageDef": {
+   "verified_methods": 2,
+   "size": "0x80",
+   "fields": [
+    {
+     "offset": "0x70",
+     "type": "int",
+     "name": "member70"
+    }
+   ]
+  },
+  "CTopologySizeGrid": {
+   "verified_methods": 1,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "dummy0"
+    },
+    {
+     "offset": "0x4",
+     "type": "int*",
+     "name": "p4"
+    },
+    {
+     "offset": "0x14",
+     "type": "int*",
+     "name": "p14"
+    }
+   ]
+  },
+  "CUserProfileManager": {
+   "verified_methods": 32,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "x"
+    },
+    {
+     "offset": "0xc",
+     "type": "char",
+     "name": "flag0c"
+    },
+    {
+     "offset": "0xd",
+     "type": "char",
+     "name": "field_d"
+    },
+    {
+     "offset": "0xe",
+     "type": "char",
+     "name": "field_cd"
+    },
+    {
+     "offset": "0xf",
+     "type": "char",
+     "name": "field_ce"
+    },
+    {
+     "offset": "0x10",
+     "type": "char",
+     "name": "m_field10"
+    },
+    {
+     "offset": "0x11",
+     "type": "int",
+     "name": "fld128"
+    },
+    {
+     "offset": "0x15",
+     "type": "char",
+     "name": "m_flag15"
+    },
+    {
+     "offset": "0x16",
+     "type": "unsigned char",
+     "name": "byte16"
+    },
+    {
+     "offset": "0x17",
+     "type": "char",
+     "name": "m_flag17"
+    },
+    {
+     "offset": "0x18",
+     "type": "char",
+     "name": "f18"
+    },
+    {
+     "offset": "0x20",
+     "type": "int",
+     "name": "val20"
+    },
+    {
+     "offset": "0x24",
+     "type": "float",
+     "name": "f24"
+    },
+    {
+     "offset": "0x28",
+     "type": "float",
+     "name": "f28"
+    },
+    {
+     "offset": "0x2c",
+     "type": "float",
+     "name": "f2c"
+    },
+    {
+     "offset": "0x30",
+     "type": "unsigned char",
+     "name": "b30"
+    },
+    {
+     "offset": "0x31",
+     "type": "unsigned char",
+     "name": "b31"
+    },
+    {
+     "offset": "0x33",
+     "type": "char",
+     "name": "flag"
+    },
+    {
+     "offset": "0x54",
+     "type": "Vec",
+     "name": "inputs"
+    },
+    {
+     "offset": "0xcf",
+     "type": "char",
+     "name": "flagCF"
+    },
+    {
+     "offset": "0xd0",
+     "type": "char",
+     "name": "m_fieldD0"
+    },
+    {
+     "offset": "0xd5",
+     "type": "char",
+     "name": "m_flagD5"
+    },
+    {
+     "offset": "0xd6",
+     "type": "unsigned char",
+     "name": "byteD6"
+    },
+    {
+     "offset": "0xd7",
+     "type": "char",
+     "name": "m_flagD7"
+    },
+    {
+     "offset": "0xd8",
+     "type": "char",
+     "name": "fD8"
+    },
+    {
+     "offset": "0xe0",
+     "type": "int",
+     "name": "vale0"
+    },
+    {
+     "offset": "0x134",
+     "type": "int",
+     "name": "mField"
+    },
+    {
+     "offset": "0x138",
+     "type": "void*",
+     "name": "m_pBackBuffer"
+    }
+   ]
+  },
+  "CViewBase": {
+   "verified_methods": 6,
+   "fields": [
+    {
+     "offset": "0x28",
+     "type": "CDisplayEngine*",
+     "name": "engine"
+    }
+   ]
+  },
+  "CVillagePeopleDef": {
+   "verified_methods": 2,
+   "size": "0xc4"
+  },
+  "CVillagerInteractionsDef": {
+   "verified_methods": 2,
+   "size": "0x48",
+   "fields": [
+    {
+     "offset": "0x3c",
+     "type": "int",
+     "name": "fieldA"
+    },
+    {
+     "offset": "0x40",
+     "type": "int",
+     "name": "fieldB"
+    },
+    {
+     "offset": "0x44",
+     "type": "int",
+     "name": "fieldC"
+    }
+   ]
+  },
+  "Destvalstd": {
+   "verified_methods": 4,
+   "fields": [
+    {
+     "offset": "0x4c",
+     "type": "char",
+     "name": "a"
+    }
+   ]
+  },
+  "DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC": {
+   "verified_methods": 84,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "refcount"
+    },
+    {
+     "offset": "0x4",
+     "type": "void*",
+     "name": "arg"
+    }
+   ]
+  },
+  "DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3": {
+   "verified_methods": 11,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "long",
+     "name": "refcount"
+    },
+    {
+     "offset": "0x4",
+     "type": "int",
+     "name": "refcount"
+    }
+   ]
+  },
+  "DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3DPrimitive": {
+   "verified_methods": 37,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "refcount"
+    },
+    {
+     "offset": "0x4",
+     "type": "int",
+     "name": "refcount"
+    }
+   ]
+  },
+  "DestvalstdallocatorstdpairunsignedlongCCountedPointerCFactionstd": {
+   "verified_methods": 2,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "long",
+     "name": "refcount"
+    },
+    {
+     "offset": "0x4",
+     "type": "void*",
+     "name": "obj"
+    }
+   ]
+  },
+  "Global": {
+   "verified_methods": 22,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "const void*",
+     "name": "data"
+    },
+    {
+     "offset": "0x4",
+     "type": "CircularListNode*",
+     "name": "previous"
+    },
+    {
+     "offset": "0x8",
+     "type": "unsigned char",
+     "name": "reserved"
+    },
+    {
+     "offset": "0xe",
+     "type": "unsigned short",
+     "name": "slotType"
+    },
+    {
+     "offset": "0x84",
+     "type": "unsigned int",
+     "name": "field84"
+    },
+    {
+     "offset": "0x8c",
+     "type": "unsigned long",
+     "name": "sourceCursor"
+    },
+    {
+     "offset": "0x90",
+     "type": "unsigned long",
+     "name": "savedCursor"
+    },
+    {
+     "offset": "0x98",
+     "type": "unsigned long",
+     "name": "cursor"
+    },
+    {
+     "offset": "0x9c",
+     "type": "void*",
+     "name": "activeBlock"
+    },
+    {
+     "offset": "0xa0",
+     "type": "unsigned long",
+     "name": "blockEnd"
+    },
+    {
+     "offset": "0xa4",
+     "type": "unsigned long",
+     "name": "blockLinks"
+    },
+    {
+     "offset": "0xa8",
+     "type": "unsigned long",
+     "name": "endCursor"
+    }
+   ]
+  },
+  "LTextTreeWalkThrough": {
+   "verified_methods": 19,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "TreeNode*",
+     "name": "p"
+    },
+    {
+     "offset": "0x8",
+     "type": "TreeNode*",
+     "name": "next"
+    },
+    {
+     "offset": "0xc",
+     "type": "TreeNode*",
+     "name": "child"
+    }
+   ]
+  },
+  "global": {
+   "verified_methods": 168,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "w"
+    },
+    {
+     "offset": "0x4",
+     "type": "int",
+     "name": "h"
+    },
+    {
+     "offset": "0x91",
+     "type": "unsigned char",
+     "name": "flags"
+    }
+   ]
+  }
+ }
+}

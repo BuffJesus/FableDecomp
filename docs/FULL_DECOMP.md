@@ -13,11 +13,44 @@ leans on automation because the target is large.
 - [x] Generate `rebuild/backlog/PROMOTION_QUEUE.md`, a continuously refreshed ranking of every
   uncompiled auto-RE result by checker/signature quality and estimated porting cost.
 - [x] Validate the queue by promoting its first-ranked result, `GFGetBuildNumber2 @ 0x00401F30`.
+- [x] Establish the public recovery repository at `BuffJesus/FableDecomp`, excluding original game
+  binaries, PDBs, Ghidra databases, build products, and raw agent transcripts.
+- [x] Promote `CEngineLandscapePatch::RelocateData @ 0x00BF3980`; its six-path behavior oracle passes
+  and its 143-byte body is an exact relocation-normalized retail match.
+- [x] Promote the dependency-free `Getter_FieldE0_FC @ 0x00662020`; its corrected fastcall prototype
+  and 13-byte VC7.1 object are raw byte-identical to retail.
+- [x] Build a 462-address ForgeFSE binding-verification queue and place it ahead of generic naming
+  and prototype backlog work in the existing lock-aware unattended runner.
+- [x] Promote `CNavQuadTree::InitialiseLines @ 0x00A7A5E0`; its grow/shrink/zero behavior oracle
+  passes and its complete 102-byte VC7.1 instruction stream is a relocation-normalized retail match.
+- [x] Complete the first bounded ForgeFSE reversal batch: 16/16 bindings reached structural PASS
+  and were ingested into the generated candidate/signature/promotion reports.
 - [ ] Ingest and review both completed `ConnectVerticalMapEdge` reconstructions; promote them only
   after their allocation/refcount and connector-vector behavior can be isolated in a safe harness.
-- [ ] Take the next queue-ranked small candidate, currently
-  `CEngineLandscapePatch::RelocateData @ 0x00BF3980`, through VC7.1 compile, behavior, and retail
-  comparison.
+- [ ] Take the next queue-ranked small candidate, currently `entry @ 0x00401067`, through VC7.1
+  compile, behavior, and retail comparison; skip to `CNavQuadTree::IsAreaBlockedByLines @ 0x00A76F30`
+  if CRT startup dependencies make the entry-point harness disproportionately expensive.
+- [x] Promote the dependency-free ForgeFSE wrapper pair at `0x0088EDB0` and `0x0088EDA0` as one
+  shared declaration/test batch; both virtual/const ABI identities and raw retail bodies match.
+- [ ] Promote the next compile-sized ForgeFSE batch, beginning with `CancelRadialBlurFade @
+  0x00890180`, while the unattended lane continues reversing direct-signature bindings.
+- [ ] Review the latest Wave 3 CGSI boolean wrapper snapshot
+  `0x0089B330_global_IsHeroNaked_CGameScriptInterface_UBE_NXZ.cpp` before promotion. It has useful
+  typed overlays but currently dereferences the vector-map end sentinel on the no-entry path; verify
+  the type-key `0x5E` interface and called predicate before adding it to the curated lane.
+- [ ] Reconstruct the Wave 3 co-op spirit tail from bytes before promotion. The structural-PASS
+  `OnCreate @ 0x006700F0` has confused definition/template types, while
+  `UpdateAttractionToMaster @ 0x006701A0` and `UpdateScore @ 0x00670710` can dereference a failed
+  vector-map lookup; `UpdateAttractionToMaster` also has an uninitialized physics pointer.
+- [ ] Repair the latest ForgeFSE wrapper batch before promotion. Ten structural-PASS wrappers
+  dereference the vector-map end sentinel on lookup failure; `SetQuestInfoText @ 0x00891A00` also
+  contains unrelated morph-template reconstruction, and `SetThingAsConscious @ 0x008A9610` has
+  implausible BSim-derived action helper identities. The exact list is in `docs/HANDOFF.md`.
+- [ ] Rebuild the latest Quest-wrapper review tail before promotion. `TakeObjectFromHero`,
+  `UnSetThingAndCarriedItemsNotAffectedByScreenFilter`, and `WaitForCameraMessage` retain unsafe
+  end-sentinel paths; `AddScreenMessage` still has ambiguous text-bank lifetimes and helper
+  identities. The corrected objective, environment, quest, gossip, message-manager, and camera
+  ABI evidence is recorded in `docs/HANDOFF.md` and `rebuild/corrections/function_overrides.tsv`.
 - [ ] Tune `LinkToNeighbouringMaps @ 0x00A7A650` toward the retail x87/local schedule; its current
   implementation is behavior-verified but nine bytes longer than retail.
 - [ ] Continue closing corrected ABI identities from decorated retail/donor symbols, treating the
@@ -34,13 +67,18 @@ prototype gaps in the generated reconstruction backlog while excluding every add
 by the primary, retry, Wave 2, or Wave 3 ledgers. A 35-minute target watchdog and two-attempt policy
 keep provider or Ghidra stalls from stopping later batches.
 
-Queue transcripts are separated from durable state: new attempts write to
-`lift/logs/<wave>/YYYY-MM-DD/`, YAML lives in `lift/config/`, durable queue control files live in
-`lift/state/`, and generated code/reviews live in `lift/reports/<wave>/`.
-`lift/scripts/organize_lift.ps1` safely sweeps older root-level stdout/stderr
-transcripts on every queue startup; it excludes recent and active-run files and never overwrites a
-collision. This keeps unattended operation bounded in directory density without adding another
-scheduled task or risking a live attempt.
+Queue transcripts are separated from durable state: attempts are archived under
+`lift/logs/<wave>/YYYY-MM-DD/<aa>/<bb>/<address>/`, YAML lives in `lift/config/`, durable queue
+control files live in `lift/state/`, and generated code lives in
+`lift/reports/<wave>/code/<aa>/<bb>/`. Each runner calls `lift/scripts/organize_lift.ps1` after a
+target completes. Its address and start-time boundary keep source and round reports together without
+claiming a neighboring target's files.
+
+The rebuild refresh runs `tools/organize_decomp_artifacts.py` at a queue-safe boundary. It keeps
+curated source, behavior tests, snapshots, compiler products, and verification products in the same
+two-byte address shards, rewrites catalog paths, and regenerates `rebuild/ARTIFACT_INDEX.tsv`.
+Discovery and refresh fingerprints are recursive. Collisions are preserved and fail the workflow
+for review rather than being overwritten.
 
 The final Wave 3 report/state move was completed without interrupting its active batch. The scheduled
 runner retains a guarded `lift/scripts/migrate_wave3_layout.ps1` preflight so an older checkout can
@@ -52,24 +90,72 @@ rebuild refresh ingests Wave 3 reports, compiles the curated catalog, exports re
 compiled row, rebuilds the manifest/backlog, and updates `rebuild/COVERAGE.md` after the RE queue
 releases Ghidra.
 
+The one-function VC7.1 translation units remain intentionally isolated for stable retail-object
+comparison. Cohesive, human-facing refactoring belongs in `rebuild/modern/<subsystem>/`, where
+proven functions can be assembled into C++23 APIs without corrupting original-codegen evidence.
+The boundary and subsystem readiness criteria are in `docs/SOURCE_ARCHITECTURE.md`.
+
+The scheduled refresh and RE triggers intentionally share a 15-minute cadence. The queue runner now
+waits up to five minutes when it sees a live refresh PID, polling every 15 seconds and resuming as
+soon as Ghidra is released. Previously their roughly 30-second trigger offset made every new RE run
+exit immediately behind the refresh task. A live scheduled smoke run now proceeds into its target
+instead of silently losing the entire cadence.
+
 The queue's cross-wave exclusion set also imports the curated VC7.1 compile gate. A candidate with
 both compile and focused-behavior PASS is terminal for agent scheduling even when the LLM checker was
 overly conservative; byte-parity and human review remain separate promotion evidence. This prevents
 the unattended loop from repeatedly spending provider time on functions already proven by a
 stronger executable oracle.
 
+The unattended refill order now includes `rebuild/backlog/forgefse-binding-queue.tsv` immediately
+after the completed subsystem seeds and before generic naming/prototype work. The queue contains all
+462 owner-aligned FSE recommendations and classifies the wrapper-to-retail bridge: 167 direct
+signatures, 269 expected wrapper adapters, and 26 signature/arity reviews. It prioritizes direct,
+unique, strong-owner, complete-prototype rows. The agent may produce a reconstruction and structural
+PASS, but it cannot set `hookApproved`; compile/behavior proof, target-build identity, ABI/callsite
+review, and a ForgeFSE runtime probe remain separate gates.
+
+Claude Code continuation note: the user is moving the decomp loop there next. Start by reading
+`docs/HANDOFF.md` and this section, then inspect the current Wave 3 outputs under
+`lift/reports/wave3/code/`. The attached target
+`0x0089B330_global_IsHeroNaked_CGameScriptInterface_UBE_NXZ.cpp` is not ready for blind promotion
+because its `LowerBound` miss path can still dereference the map-end entry. Prefer a small reviewed
+ForgeFSE wrapper/API batch over spending time on large render functions while the scheduled RE lane
+continues in the background.
+
+ForgeFSE entry validation is also automated against `ghidra_out/cgsi_slots_aligned.tsv`. The first
+audit compared 443 recommended Quest APIs with 918 existing `pVTable[N]` assignments: 442 already
+resolved to the exact recommended retail address, including the four overloaded
+`CameraUseCameraPoint` entries. The sole mismatch identified a decomp naming gap rather than a bad
+ForgeFSE slot: CGSI slot 15 is `CGameScriptInterface::GetRegionName @ 0x0088E340`, while exact-leaf
+matching had selected `CTCQuestCard::GetRegionName @ 0x007025A0`. A decorated-symbol/vtable-backed
+override corrects the manifest. The forced post-batch refresh applied it and the scheduled audit
+passed 443/443 entries with zero mismatches or missing assignment families.
+
 The landscape-paint lane now includes four relocation-masked byte-identical `CWorldMap` dispatch
 methods, four functional `CMap::Set/GetEngineTheme/BlendAt` implementations, and three functional
 `CScriptedMapBrush` cell accessors. The latter expose the authored brush layout directly: five
 32-bit theme slots per cell and byte-addressed blend values at cell offset `0x10 + layer`, with a
-`0x14`-byte cell stride. The curated suite is 89/89 for VC7.1 compile and focused behavior; the
+`0x14`-byte cell stride. The curated suite is 94/94 for VC7.1 compile and focused behavior; the
 map/brush bodies remain honestly non-matching until their compiler code shape is tuned against
 retail.
 
 For milestone accounting, 1% of the 49,553-function catalog is approximately 496 verified
-functions. The compile+behavior lane is currently 89 functions (0.180%); reaching 1% therefore
-requires roughly 407 additional promotions. Clean pseudo-C, naming, and prototype coverage are
+functions. The compile+behavior lane is currently 94 functions (0.190%); reaching 1% therefore
+requires 402 additional promotions. The stricter functional-or-matching count is 71 (0.143%).
+Clean pseudo-C, naming, and prototype coverage are
 tracked separately and must not be presented as completed buildable source.
+
+### Downstream native-evidence consumers (2026-07-22 19:25 MDT)
+
+The FSE-to-engine overlay is now an actively validated interface rather than a passive report. Its
+931 rows are mirrored to FableForge, ForgeFSE, and FQT. FableForge parses the evidence for native
+backing inspection (6/6 CTests pass); FQT annotates its API Reference while keeping verified engine
+implementation separate from binding approval (190/190 tests pass); and ForgeFSE validates every
+manifest key, count, candidate address, and safety-policy flag before runtime binding work. Current
+evidence provides 462 owner-aligned recommendations and 54 verified engine functions, but
+`verifiedRecommendedBindings` and `hookApprovedBindings` both remain zero. This intentionally
+prevents exact-name correlation from being mistaken for a safe callable address.
 
 The recent curated exact-match closure now includes eight locally proven code-shape matches. Five are raw
 byte matches: `$E2 @ 0x00406770`, the
@@ -95,11 +181,25 @@ its behavior oracle verifies all 19 global stores and their exact widths.
 and allocator-block rollover/free. Its clean 144-byte object deliberately omits 40 bytes of
 provably unreachable copy scaffolding retained in the 191-byte retail body, so it is functional
 but nonmatching.
+`CEngineLandscapePatch::RelocateData @ 0x00BF3980` now adds a 143-byte relocation-normalized exact
+match. Its focused oracle covers direct patch-data relocation, asynchronous-data relocation and
+priority notification, head/interior linked-list repair, missing nodes, and the null early-return
+path. All 57 fixed instruction bytes and control-flow offsets match retail; only the three expected
+direct-call COFF relocations are masked.
+`Getter_FieldE0_FC @ 0x00662020` adds a raw 13-byte match for the opaque
+`*(*(self + 0xE0) + 0xFC)` accessor. The curated override records the observed ECX fastcall input and
+unsigned 32-bit return, closing one calling-convention/prototype gap without inventing a class name.
+`CNavQuadTree::InitialiseLines @ 0x00A7A5E0` adds a 102-byte relocation-normalized match. Its oracle
+proves grid-vector growth, shrink, and zero-size behavior, integer cell bounds, input forwarding,
+and the final `UpdateLines` dispatch; donor decoration also fixes the nested STL/reference ABI.
+The ForgeFSE-facing `CameraCancelScreenEffect @ 0x0088EDB0` and `CameraUseScreenEffect @ 0x0088EDA0`
+stubs add raw one-byte (`ret`) and three-byte (`ret 0x0C`) matches. Their exact decorated symbols
+prove public virtual const methods and the latter's three-float stack ABI.
 
 The signature audit supports both qualified member definitions and `_global` definitions with C
 linkage/calling-convention qualifiers. This removed seven false-negative parse reviews and raised
-the clean audited candidate set to 85/113; the two remaining unparsed candidates have genuinely
-noncanonical constructor/destructor shapes and stay in review.
+the clean audited candidate set to 102/148; 46 snapshots remain in signature review, including two
+genuinely noncanonical constructor/destructor definitions that still cannot be parsed.
 
 The toolchain now also queries the private donor PDB directly through Visual Studio's installed
 `llvm-pdbutil` and DIA runtime. Each future auto-RE target receives an exact qualified donor symbol
