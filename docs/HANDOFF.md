@@ -1,6 +1,38 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 00:55 MDT (full GFInitialise visual path plus 420-function parity replay).*
+*Last updated: 2026-07-26 01:02 MDT (103-function expanded unattended replay checkpoint).*
+
+## Expanded unattended replay checkpoint (2026-07-26)
+
+- The first unattended run with the widened 48-byte candidate window completed
+  four bounded batches: **30 + 3 + 59 + 11 = 103 authored and 103 verified
+  wins**. The batch contains 64 scalar deleting destructors, 8 vector deleting
+  destructors, 17 async-read completion wrappers, 8 kill-notification
+  wrappers, and 6 text-tree array builders.
+- Every new source has a colocated focused behavior fixture and passed the
+  original VC7.1 compiler gate plus relocation-normalized retail object
+  comparison. The full catalog now passes with **3,832
+  compiled/behavior-gated functions**. Retail parity is **1,895 exact + 1,610
+  relocation-normalized = 3,505 / 49,553 (7.07%)**; 199 honest differences and
+  128 missing function-start oracles remain visible.
+- The four source oracle/target pairs under `rebuild/oracles/pending/` are kept
+  as replay provenance. The generated manifests, backlog, coverage dashboard,
+  artifact index, and root README were refreshed from the completed gate.
+- The hourly Ghidra-free local parity task remains installed. Ghidra and the
+  Wave 3 queue remain stopped so the other project can use the database. The
+  organizer again preserved the six non-identical Wave 3 root/shard collisions
+  instead of overwriting evidence.
+- **Resume the parity lane** by inspecting unsupported 33-48-byte oracle shapes
+  and adding only behavior-proven deterministic vocabulary before replaying
+  them. Do not inflate coverage with structural-only agent output.
+- **Resume the visual-boot lane** at
+  `rebuild/RUNNABLE.md`: replace the full `GFInitialise` boundary-owned engine
+  root, progress display, and player-registration doubles with recovered
+  startup ownership. Then close archive/data loading and the retail
+  renderer/game-loop handoff. The current artwork window is a verified
+  executable checkpoint, not recovered game rendering.
+
+*Previous checkpoint: 2026-07-26 00:55 MDT (full GFInitialise visual path plus 420-function parity replay).*
 
 ## Full GFInitialise + parity replay checkpoint (2026-07-26)
 
