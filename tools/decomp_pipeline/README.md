@@ -26,8 +26,11 @@ catalog. Pairs with `tools/permuter/` (the register-allocation / flag-sweep crac
 
 The zero-agent fast path is `auto_author_tiny.py <oracle.tsv> <output.json>`. It recognizes only
 instruction streams whose source semantics are determined by the bytes (empty functions, constant
-returns, fastcall self returns, simple field loads/stores, and masks). Its output still goes through
-`verify_and_land.py`; a bad inference can cost one compile but cannot land.
+returns, fastcall self returns, simple field loads/stores and masks, common deleting destructors,
+async-read completion wrappers, intrusive-list resets, and linked-tree walkers). It joins each
+pending oracle with its sibling target catalog so generated files retain their class/module
+grouping. Its output still goes through `verify_and_land.py`; a bad inference can cost one compile
+but cannot land.
 
 `tools/run_local_parity_queue.ps1` connects select → deterministic author → verify/land →
 canonical report refresh as a bounded, Ghidra-free background lane. It is intentionally separate
@@ -46,18 +49,18 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/InstallLocalParityTask
   MATCH; the lander sweeps this automatically.
 - Parity masks relocations (call rel32 + abs-addr operands) — declare engine callees/globals `extern`.
 
-## Current resume point (2026-07-25)
+## Current resume point (2026-07-26)
 
-- Batch 18 and batch 19 landed 97 authoritative manifest-backed deterministic authors through exact
-  byte and behavior verification.
-- The first installed hourly run selected four additional 500-row batches and landed 204 of 205
-  deterministic authors. Canonical parity is now 1,827 matches across 2,154 compiled and
-  behavior-gated rows.
-- The integrity follow-up removed 146 byte-matching post-`ret` tails that lacked a manifest function
-  start. `next_batch.py` no longer emits those speculative rows, and `verify_and_land.py`
-  independently rejects any future outside-manifest candidate.
-- Older staged batches remain excluded by `next_batch.py`, so the scheduled lane advances rather
-  than repeatedly selecting their unresolved rows.
+- The canonical catalog contains 3,308 VC7.1-compiled and behavior-gated functions.
+- Retail comparison has 1,895 exact and 1,086 relocation-normalized matches: 2,981 / 49,553
+  functions, or 6.02% strict whole-executable parity.
+- The latest Ghidra-free replay landed 145 readable candidates from existing authoritative oracles:
+  72 deleting destructors, 28 async-read completion wrappers, 26 intrusive-list resets, and
+  19 linked-tree walkers.
+- Pending replay filters already-landed and non-manifest addresses. Pattern additions therefore
+  recover old staged misses without selecting or exporting new retail evidence.
+- The integrity gate still rejects speculative post-`ret` splits and every address absent from the
+  authoritative function manifest.
 - `crack_residue.py`, `verify_residue.py`, and `tools/permuter/` remain targeted tools for promising
   same-length `DIFFER` rows. They are not sprayed across every residue because prior audits proved
   several compiler register-allocation differences irreducible from VC7.1 source spelling.
