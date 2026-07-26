@@ -45,8 +45,12 @@ root discovery, texture-depth fallback, display clamping, player registration,
 progress setup, and both return paths covered. Its 128-byte
 `GFInitialise_SetupProgressDisplay @ 0x00413120` leaf independently matches
 and covers allocation, null-allocation, reference release, and rejected
-initialization. Authored boundary objects still stand in for the unrecovered
-engine singleton graph and renderer.
+initialization. Its allocated object now traverses the retail-matched
+`CProgressDisplay::CProgressDisplay @ 0x00499CE0`: all 163 bytes match outside
+seven relocations, the exact 0x88-byte layout is typed, and the embedded wide
+and narrow strings are constructed and destroyed through recovered lifetime
+leaves. Authored boundary objects still stand in for the unrecovered engine
+singleton graph, retained progress-display owner, and renderer.
 
 GFMain Phase 1 now has its filesystem pair promoted:
 `CAFile::GetProjectPath @ 0x00997510` (146 bytes) and
@@ -99,6 +103,7 @@ Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,
 `FABLETLC_CHAR_STRING_DESTRUCTOR_BEHAVIOR PASS`,
 `FABLETLC_PROFILE_START_BEHAVIOR PASS`,
 `FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVIOR PASS`,
+`FABLETLC_PROGRESS_DISPLAY_CONSTRUCTOR_BEHAVIOR PASS`,
 `FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS`,
 `FABLETLC_PROFILE_END_BEHAVIOR PASS`,
 `FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS`,
@@ -134,6 +139,7 @@ services, recover the retail window/renderer, load archives, or enter the game l
 | 3 | `0x00402510` | GFMain | 3952 | `INTEGRATION_PHASE1` | [source](../rebuild/integration/gfmain_phase1.cpp) | The 3,952-byte coordinator is split into ten call clusters; Phase 1 is callable with seven direct callees at relocation match, CSystemManagerInit behavior-proven with one moved instruction, and the 4,158-byte console registrar explicitly stubbed. |
 | 4 | `0x004022B0` | GFInitialise | 311 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/global_GFInitialise_004022b0.cpp) | The full 311-byte zero-parameter coordinator matches retail outside relocations, passes focused behavior, and now executes before the authored visual checkpoint through an explicit engine boundary. |
 | 5 | `0x00413120` | GFInitialise_SetupProgressDisplay | 128 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/Global_GFInitialiseSetupProgressDisplay_00413120.cpp) | The 128-byte leaf and ownership behavior are proven and now execute as part of the verified full GFInitialise coordinator on the visual path. |
+| 6 | `0x00499CE0` | CProgressDisplay constructor | 163 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/49/CProgressDisplay_Constructor_00499ce0.cpp) | The real 0x88-byte progress object now initializes on the visual path, including three recovered string subobjects, retail flags/timers, and balanced teardown. |
 
 ## Next dependency closure
 
@@ -141,7 +147,7 @@ services, recover the retail window/renderer, load archives, or enter the game l
 2. **WinMain wrapper (`0x00403480`):** Extend the integration path from the Phase 2 boundary one dependency closure at a time.
 3. **GFMain (`0x00402510`):** Close the constructor scheduling residue and replace the console boundary from recovered registration data while advancing Phase 2.
 4. **GFInitialise (`0x004022B0`):** Replace its boundary-owned root, display, and registration test doubles with recovered startup objects.
-5. **GFInitialise_SetupProgressDisplay (`0x00413120`):** Replace the instrumented progress-object ownership boundary with recovered engine ownership.
+5. **GFInitialise_SetupProgressDisplay (`0x00413120`):** Recover the engine-side retained owner installed by `SetProgressDisplay`; construction and local counted teardown are now real.
 
 ## GFMain dependency phases
 
@@ -229,7 +235,8 @@ Phase closure order:
 - **Stage 2 — engine bootstrap:** reconstructed GFMain/GFInitialise reaches
   the first visible progress-display state with controlled platform shims.
   **The Phase 1 checkpoint and an authored visual shell are implemented;
-  recovered retail progress-display wiring remains ahead.**
+  retail progress-object construction is connected, while its retained
+  engine owner and renderer remain ahead.**
 - **Stage 3 — data bootstrap:** compiled definitions and core archives load
   far enough to create the main game component.
 - **Stage 4 — game loop:** the reconstructed process pumps input, updates a

@@ -19,6 +19,8 @@ $gfInitialiseBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\global_GFIniti
 $stage1BoundarySource = Join-Path $rebuildRoot 'integration\stage1_engine_boundary.cpp'
 $progressSetupSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GFInitialiseSetupProgressDisplay_00413120.cpp'
 $progressSetupBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GFInitialiseSetupProgressDisplay_00413120_test.cpp'
+$progressDisplayConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\49\CProgressDisplay_Constructor_00499ce0.cpp'
+$progressDisplayConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\49\CProgressDisplay_Constructor_00499ce0_test.cpp'
 $setCurrentPathSource = Join-Path $rebuildRoot 'src\compiled\00\99\CAFile_SetCurrentPath_009974f0.cpp'
 $setCurrentPathBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CAFile_SetCurrentPath_009974f0_test.cpp'
 $getProjectPathSource = Join-Path $rebuildRoot 'src\compiled\00\99\CAFile_GetProjectPath_00997510.cpp'
@@ -65,6 +67,7 @@ $gfmainPhase1Source = Join-Path $rebuildRoot 'integration\gfmain_phase1.cpp'
 $gfmainPhase2Source = Join-Path $rebuildRoot 'integration\gfmain_phase2.cpp'
 $gfInitialiseProgressPhaseSource = Join-Path $rebuildRoot 'integration\gfinitialise_progress_phase.cpp'
 $gfInitialiseEngineBoundarySource = Join-Path $rebuildRoot 'integration\gfinitialise_engine_boundary.cpp'
+$progressDisplayStringBoundarySource = Join-Path $rebuildRoot 'integration\progress_display_string_boundary.cpp'
 $stage2BoundarySource = Join-Path $rebuildRoot 'integration\stage2_engine_boundary.cpp'
 $visualBootSource = Join-Path $rebuildRoot 'integration\visual_boot_checkpoint.cpp'
 $visualBootArtwork = Join-Path $rebuildRoot 'assets\boot\fabledecomp_boot_concept.png'
@@ -81,6 +84,8 @@ $gfInitialiseObject = Join-Path $outDir 'gfinitialise.obj'
 $stage1BoundaryObject = Join-Path $outDir 'stage1_engine_boundary.obj'
 $progressSetupObject = Join-Path $outDir 'gfinitialise_setup_progress.obj'
 $progressSetupBehaviorObject = Join-Path $outDir 'gfinitialise_setup_progress_behavior.obj'
+$progressDisplayConstructorObject = Join-Path $outDir 'progress-display-constructor.obj'
+$progressDisplayStringBoundaryObject = Join-Path $outDir 'progress-display-string-boundary.obj'
 $setCurrentPathObject = Join-Path $outDir 'set_current_path.obj'
 $setCurrentPathBehaviorObject = Join-Path $outDir 'set_current_path_behavior.obj'
 $getProjectPathObject = Join-Path $outDir 'get_project_path.obj'
@@ -138,6 +143,7 @@ $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
 $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $gfInitialisePassPattern = 'FABLETLC_GFINITIALISE_BEHAVIOR PASS'
 $progressSetupPassPattern = 'FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS'
+$progressDisplayConstructorPassPattern = 'FABLETLC_PROGRESS_DISPLAY_CONSTRUCTOR_BEHAVIOR PASS'
 $setCurrentPathPassPattern = 'FABLETLC_SET_CURRENT_PATH_BEHAVIOR PASS'
 $getProjectPathPassPattern = 'FABLETLC_GET_PROJECT_PATH_BEHAVIOR PASS'
 $wideStringConstructorPassPattern = 'FABLETLC_WIDE_STRING_CONSTRUCTOR_BEHAVIOR PASS'
@@ -176,6 +182,8 @@ $required = @(
     $stage1BoundarySource,
     $progressSetupSource,
     $progressSetupBehaviorSource,
+    $progressDisplayConstructorSource,
+    $progressDisplayConstructorBehaviorSource,
     $setCurrentPathSource,
     $setCurrentPathBehaviorSource,
     $getProjectPathSource,
@@ -222,6 +230,7 @@ $required = @(
     $gfmainPhase2Source,
     $gfInitialiseProgressPhaseSource,
     $gfInitialiseEngineBoundarySource,
+    $progressDisplayStringBoundarySource,
     $stage2BoundarySource,
     $visualBootSource,
     $visualBootArtwork,
@@ -344,6 +353,14 @@ try {
         -BehaviorSource $charStringDefaultBehaviorSource `
         -OutputStem 'char-string-default-constructor' `
         -PassPattern $charStringDefaultPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00499ce0' `
+        -Description 'CProgressDisplay constructor' `
+        -Source $progressDisplayConstructorSource `
+        -BehaviorSource $progressDisplayConstructorBehaviorSource `
+        -OutputStem 'progress-display-constructor' `
+        -PassPattern $progressDisplayConstructorPassPattern
 
     Invoke-VerifiedLeaf `
         -Address '00403b10' `
@@ -928,6 +945,16 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$progressDisplayStringBoundaryObject" `
+        $progressDisplayStringBoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $progressDisplayStringBoundaryObject)
+    ) {
+        throw 'Failed to compile the progress-display string boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$stage2BoundaryObject" $stage2BoundarySource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -1074,6 +1101,7 @@ try {
         $gfInitialiseObject,
         $gfInitialiseEngineBoundaryObject,
         $progressSetupObject,
+        $progressDisplayConstructorObject,
         $visualBoundaryObject,
         $visualBootObject,
         $setCurrentPathObject,
@@ -1136,6 +1164,12 @@ try {
         $gfInitialiseProgressPhaseObject `
         $gfInitialiseEngineBoundaryObject `
         $progressSetupObject `
+        $progressDisplayConstructorObject `
+        $progressDisplayStringBoundaryObject `
+        $wideStringConstructorObject `
+        $wideStringDestructorObject `
+        $charStringDefaultObject `
+        $charStringDestructorObject `
         $gfInitialiseProgressPhaseBehaviorObject
     if (
         $LASTEXITCODE -ne 0 -or

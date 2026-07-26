@@ -232,6 +232,11 @@ void FABLE_FASTCALL FableConstructWideString(CWideString* value)
     new (value) CWideString;
 }
 
+void FABLE_FASTCALL FableConstructCharString(CCharString* value)
+{
+    new (value) CCharString;
+}
+
 void CRegionDef::ConstructStorage()
 {
 }

@@ -71,9 +71,13 @@ Its `GFInitialise_SetupProgressDisplay @ 0x00413120` leaf independently remains 
 relocation-normalized match with allocation, failure, and counted-lifetime tests. Its review
 corrected three misleading generated types: the allocated 0x88-byte object is
 `CProgressDisplay` (proven by its vtable), not `C3DMeshStats`, and the forwarded smart pointer is
-correspondingly `CCountedPointer<CProgressDisplay>`. The remaining boundary objects stand in for
-the unrecovered engine singleton graph and renderer; the authored window is still scaffolding,
-not a claim that retail rendering or the game loop is recovered.
+correspondingly `CCountedPointer<CProgressDisplay>`. The object now uses the recovered
+`CProgressDisplay::CProgressDisplay @ 0x00499CE0`, a 163-byte relocation-normalized match that
+types the complete 0x88-byte layout and constructs its three embedded string objects. The
+integration boundary performs balanced recovered string teardown. The remaining boundary objects
+stand in for the unrecovered engine singleton graph, retained display owner, and renderer; the
+authored window is still scaffolding, not a claim that retail rendering or the game loop is
+recovered.
 
 The `GFMain` Phase-1 filesystem pair is promoted as well:
 `CAFile::GetProjectPath @ 0x00997510` (146 bytes) and
@@ -112,7 +116,7 @@ claim that the retail window, renderer, archives, or game loop have been recover
 | Visible milestone | Current state | What remains |
 |---|---|---|
 | Authored project boot window | **Runnable now** | This proves the reconstructed process can reach and own a responsive window, but it does not use the retail renderer. |
-| First recovered retail progress setup | **Leaf proven and connected in the authored boot harness** | Promote the complete GFInitialise coordinator and replace the instrumented progress-object boundary with recovered engine/display ownership. |
+| First recovered retail progress setup | **Coordinator, setup leaf, and 0x88-byte object constructor are connected** | Recover the engine-side retained display owner and the actual renderer/display resources. |
 | Retail intro video or frontend menu | **Several major closures away** | Recover display/D3D setup, engine primitive initialization, core archives and compiled definitions, fonts/frontend banks, UI ownership, movie playback, and the update/render loop. |
 
 The nearest honest retail visual target is therefore the game's progress display, not the intro
