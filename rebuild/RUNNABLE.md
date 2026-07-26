@@ -24,6 +24,9 @@ GFMain Phase 1 now has its filesystem pair promoted:
 relocation-normalized matches. Focused fixtures prove executable-directory
 discovery and the recovered update ordering: the OS working directory
 changes before the engine updates its cached current-path string.
+The folded 15-byte `CWideString` default constructor and 68-byte
+reference-counted destructor are proven too, bringing Phase 1 to four
+of nine direct callees.
 
 **Stage 0 remains the smallest linker proof:** VC7.1 links a console
 PE containing
@@ -38,7 +41,10 @@ Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,
 `FABLETLC_WINMAIN_BEHAVIOR PASS`,
 `FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS`,
 `FABLETLC_SET_CURRENT_PATH_BEHAVIOR PASS`,
-`FABLETLC_GET_PROJECT_PATH_BEHAVIOR PASS`, and `STAGE1_STARTUP PASS`.
+`FABLETLC_GET_PROJECT_PATH_BEHAVIOR PASS`,
+`FABLETLC_WIDE_STRING_CONSTRUCTOR_BEHAVIOR PASS`,
+`FABLETLC_WIDE_STRING_DESTRUCTOR_BEHAVIOR PASS`, and
+`STAGE1_STARTUP PASS`.
 Generated products stay under the ignored `rebuild/build/` tree.
 
 Stage 1 still stops at an instrumented GFMain stub. It does **not** yet
@@ -51,7 +57,7 @@ or enter the game loop.
 |---:|---:|---|---:|---|---|---|
 | 1 | `0x00401067` | CRT entry | 466 | `agent-pass` | [source](../lift/reports/wave3/code/00/40/0x00401067_global_entry.cpp) | Structural candidate only; contains a raw register-fed CRT helper call and has not crossed the VC7.1 behavior/parity gate. |
 | 2 | `0x00403480` | WinMain wrapper | 141 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/Global_WinMain_00403480.cpp) | VC7.1 source matches all 141 non-relocation retail bytes and passes first-instance/duplicate-instance behavior, but GFMain is still an instrumented boundary. |
-| 3 | `0x00402510` | GFMain | 3952 | `not authored` | — | The 3,952-byte coordinator is split into ten call clusters; Phase 1 now has two of nine direct callees promoted. |
+| 3 | `0x00402510` | GFMain | 3952 | `not authored` | — | The 3,952-byte coordinator is split into ten call clusters; Phase 1 now has four of nine direct callees promoted. |
 | 4 | `0x004022B0` | GFInitialise | 311 | `agent-pass` | [source](../lift/reports/wave3/code/00/40/0x004022B0_global_GFInitialise.cpp) | Structural candidate only; incomplete display/primitive types and several global dependencies prevent promotion. |
 | 5 | `0x00413120` | GFInitialise_SetupProgressDisplay | 128 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/Global_GFInitialiseSetupProgressDisplay_00413120.cpp) | The 128-byte leaf and ownership behavior are proven, but GFMain/GFInitialise do not yet reach it in the reconstructed process. |
 
@@ -59,7 +65,7 @@ or enter the game loop.
 
 1. **CRT entry (`0x00401067`):** Recover the masked CRT helper identity and promote the entry function.
 2. **WinMain wrapper (`0x00403480`):** Replace the instrumented GFMain boundary one dependency closure at a time.
-3. **GFMain (`0x00402510`):** Promote the remaining Phase-1 temporary object lifetimes and CSystemManagerInit before authoring the callable integration seam.
+3. **GFMain (`0x00402510`):** Promote the remaining Phase-1 setup helpers and CSystemManagerInit before authoring the callable integration seam.
 4. **GFInitialise (`0x004022B0`):** Recover shared layouts and promote the small callees before the coordinator.
 5. **GFInitialise_SetupProgressDisplay (`0x00413120`):** Link its corrected CProgressDisplay/counting dependencies behind the GFInitialise boundary.
 
@@ -70,7 +76,7 @@ These are integration units, not invented retail functions.
 
 | Phase | Address range | Role | Direct calls | Unique targets | Proven | Anchors |
 |---:|---|---|---:|---:|---:|---|
-| 1 | `0x00402510`-`0x004025A6` | runtime and project bootstrap | 9 | 9 | 2 | CSystemManagerInit; GetProjectPath; SetCurrentPath; InitialiseConsoleVariables |
+| 1 | `0x00402510`-`0x004025A6` | runtime and project bootstrap | 9 | 9 | 4 | CSystemManagerInit; GetProjectPath; SetCurrentPath; InitialiseConsoleVariables |
 | 2 | `0x004025A6`-`0x00402668` | failure-handling bootstrap | 7 | 7 | 0 | CSystemManager::Get; Draw; SetEnableFailureHandling |
 | 3 | `0x00402668`-`0x0040284E` | settings, persistence, and IME | 34 | 23 | 0 | GetActionName; PathExists; LoadFromFile; CPersistContext; LoadIMESettings |
 | 4 | `0x0040284E`-`0x004029DC` | root child hierarchy | 29 | 5 | 0 | EnableNavigator; AddChild |
@@ -85,11 +91,13 @@ These are integration units, not invented retail functions.
 
 | Phase | Call site | Target | Function | Grade | Source |
 |---:|---:|---:|---|---|---|
+| 1 | `0x0040255C` | `0x0099AED0` | CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Constructor_0099aed0.cpp) |
 | 1 | `0x00402583` | `0x00997510` | GetProjectPath | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CAFile_GetProjectPath_00997510.cpp) |
 | 1 | `0x0040258A` | `0x009974F0` | SetCurrentPath | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CAFile_SetCurrentPath_009974f0.cpp) |
+| 1 | `0x00402593` | `0x0099B510` | ~CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp) |
 
 Phase closure order:
-1. **runtime and project bootstrap:** Promote the temporary string/object lifetimes and CSystemManagerInit, then make this the first callable GFMain phase.
+1. **runtime and project bootstrap:** Promote the remaining setup helpers and CSystemManagerInit, then make this the first callable GFMain phase.
 2. **failure-handling bootstrap:** Type the returned system-manager object and its temporary allocation/deletion path.
 3. **settings, persistence, and IME:** Separate optional settings-file parsing from default-value initialization.
 4. **root child hierarchy:** Recover the five named child definitions and the owner/container type.
