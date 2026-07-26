@@ -1,4 +1,6 @@
 #include "fable_visual_d3d9.h"
+#include "fable_render_state.h"
+#include "fable_render_texture.h"
 #include "render2d_batch_plan.h"
 #include "render2d_draw_list_adapter.h"
 
@@ -54,9 +56,13 @@ struct FableVisualVertex
     float y;
     float z;
     float rhw;
+    fable_u32 diffuseColour;
+    fable_u32 specularColour;
     float u;
     float v;
 };
+
+FABLE_STATIC_ASSERT(sizeof(FableVisualVertex) == 0x20);
 
 typedef FableD3DResult (FABLE_STDCALL *FableD3DRelease)(
     void* object);
@@ -140,11 +146,14 @@ namespace
     const FableD3DUint kD3DFormatA8R8G8B8 = 21;
     const FableD3DUint kD3DPoolManaged = 1;
     const FableD3DDword kD3DClearTarget = 1;
-    const FableD3DDword kD3DFvfXyzRhwTexture1 = 0x104;
+    const FableD3DDword kD3DFvfXyzRhwColourTexture1 = 0x1C4;
 
     FableD3D9* g_Direct3D = 0;
     FableD3DDevice9* g_Device = 0;
     FableD3DTexture9* g_Texture = 0;
+    CRenderManagerCoreAttachTextureView g_RenderManagerCore = {};
+    CRenderStateManagerRealiseView g_RenderStateManager = {};
+    CRenderStateInfo g_VisualRenderStates[10] = {};
     fable_i32 g_ArtworkWidth = 0;
     fable_i32 g_ArtworkHeight = 0;
     bool g_Presented = false;
@@ -287,19 +296,18 @@ namespace
                         g_Device->vtable[89]);
                 Record(setFvf(
                     g_Device,
-                    kD3DFvfXyzRhwTexture1));
+                    kD3DFvfXyzRhwColourTexture1));
             }
             else if (
                 eventKind ==
                 RENDER2D_ADAPTER_ATTACH_TEXTURE)
             {
-                FableD3DSetTexture setTexture =
-                    reinterpret_cast<FableD3DSetTexture>(
-                        g_Device->vtable[65]);
-                Record(setTexture(
-                    g_Device,
+                CTextureAttachView texture = {
+                    g_Texture
+                };
+                g_RenderManagerCore.AttachTextureToStage(
                     argument0,
-                    argument1 != 0 ? g_Texture : 0));
+                    argument1 != 0 ? &texture : 0);
             }
             else if (
                 eventKind ==
@@ -318,6 +326,12 @@ namespace
                     argument3));
                 drew_ = succeeded_;
             }
+            else if (
+                eventKind ==
+                RENDER2D_ADAPTER_REALISE_RENDER_STATE)
+            {
+                g_RenderStateManager.RealiseRenderState();
+            }
         }
 
         bool Succeeded() const
@@ -334,26 +348,35 @@ namespace
 
         void ApplyStateBlock()
         {
-            FableD3DSetDwordState setRenderState =
-                reinterpret_cast<FableD3DSetDwordState>(
-                    g_Device->vtable[57]);
-            FableD3DSetStageState setTextureStageState =
-                reinterpret_cast<FableD3DSetStageState>(
-                    g_Device->vtable[67]);
-            FableD3DSetStageState setSamplerState =
-                reinterpret_cast<FableD3DSetStageState>(
-                    g_Device->vtable[69]);
+            static const fable_u32 stateParameters[10] = {
+                7, 22, 27, 137,
+                1, 2, 4, 5,
+                5, 6
+            };
+            static const fable_u32 desiredValues[10] = {
+                0, 1, 0, 0,
+                2, 2, 2, 2,
+                2, 2
+            };
+            static const fable_u8 stateTypes[10] = {
+                1, 1, 1, 1,
+                2, 2, 2, 2,
+                3, 3
+            };
 
-            Record(setRenderState(g_Device, 7, 0));
-            Record(setRenderState(g_Device, 22, 1));
-            Record(setRenderState(g_Device, 27, 0));
-            Record(setRenderState(g_Device, 137, 0));
-            Record(setTextureStageState(g_Device, 0, 1, 2));
-            Record(setTextureStageState(g_Device, 0, 2, 2));
-            Record(setTextureStageState(g_Device, 0, 4, 2));
-            Record(setTextureStageState(g_Device, 0, 5, 2));
-            Record(setSamplerState(g_Device, 0, 5, 2));
-            Record(setSamplerState(g_Device, 0, 6, 2));
+            for (fable_u32 index = 0; index < 10; ++index)
+            {
+                CRenderStateInfo& state =
+                    g_VisualRenderStates[index];
+                state.DesiredState = desiredValues[index];
+                state.StateParam = stateParameters[index];
+                state.DirtyListFlag = 1;
+                state.StateType = stateTypes[index];
+                state.TextureStage = 0;
+                g_RenderStateManager.StateUpdateList2008[index] =
+                    &state;
+            }
+            g_RenderStateManager.StateUpdateListSize280C = 10;
         }
 
         const FableVisualVertex* vertices_;
@@ -409,6 +432,29 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
         FableShutdownVisualD3D9();
         return false;
     }
+    memset(
+        &g_RenderManagerCore,
+        0,
+        sizeof(g_RenderManagerCore));
+    g_RenderManagerCore.displayDevice3CF0 =
+        reinterpret_cast<FableTextureDevice*>(g_Device);
+    memset(
+        &g_RenderStateManager,
+        0,
+        sizeof(g_RenderStateManager));
+    g_RenderStateManager.PD3DDevice0004 =
+        reinterpret_cast<FableRenderStateDevice*>(g_Device);
+    memset(
+        g_VisualRenderStates,
+        0,
+        sizeof(g_VisualRenderStates));
+    for (fable_u32 stateIndex = 0;
+         stateIndex < 10;
+         ++stateIndex)
+    {
+        g_VisualRenderStates[stateIndex].CurrentState =
+            0xFFFFFFFFu;
+    }
     return true;
 }
 
@@ -442,12 +488,12 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     const float bottom = top + drawHeight;
 
     FableVisualVertex vertices[6] = {
-        {left, top, 0.0f, 1.0f, 0.0f, 0.0f},
-        {right, top, 0.0f, 1.0f, 1.0f, 0.0f},
-        {left, bottom, 0.0f, 1.0f, 0.0f, 1.0f},
-        {left, bottom, 0.0f, 1.0f, 0.0f, 1.0f},
-        {right, top, 0.0f, 1.0f, 1.0f, 0.0f},
-        {right, bottom, 0.0f, 1.0f, 1.0f, 1.0f}
+        {left, top, 0.0f, 1.0f, 0xFFFFFFFFu, 0, 0.0f, 0.0f},
+        {right, top, 0.0f, 1.0f, 0xFFFFFFFFu, 0, 1.0f, 0.0f},
+        {left, bottom, 0.0f, 1.0f, 0xFFFFFFFFu, 0, 0.0f, 1.0f},
+        {left, bottom, 0.0f, 1.0f, 0xFFFFFFFFu, 0, 0.0f, 1.0f},
+        {right, top, 0.0f, 1.0f, 0xFFFFFFFFu, 0, 1.0f, 0.0f},
+        {right, bottom, 0.0f, 1.0f, 0xFFFFFFFFu, 0, 1.0f, 1.0f}
     };
     FableRender2DPlanRecord records[2];
     memset(records, 0, sizeof(records));
@@ -549,6 +595,18 @@ void FABLE_FASTCALL FableShutdownVisualD3D9()
     ReleaseObject(g_Texture);
     ReleaseObject(g_Device);
     ReleaseObject(g_Direct3D);
+    memset(
+        &g_RenderManagerCore,
+        0,
+        sizeof(g_RenderManagerCore));
+    memset(
+        &g_RenderStateManager,
+        0,
+        sizeof(g_RenderStateManager));
+    memset(
+        g_VisualRenderStates,
+        0,
+        sizeof(g_VisualRenderStates));
     g_ArtworkWidth = 0;
     g_ArtworkHeight = 0;
     g_Presented = false;
