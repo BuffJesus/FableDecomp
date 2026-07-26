@@ -62,6 +62,10 @@ class TinyPatternTests(unittest.TestCase):
                 "568bf18b0e578b7c240c3b0f741c85c9740dff49047505"
                 "8b01ff50048326008b0785c089067403ff40045f5ec20400"
             ): ("assign_intrusive_counted_handle", None),
+            (
+                "568bf18b0e85c97410ff490475058b01ff5004"
+                "c706000000005ec3"
+            ): ("reset_intrusive_counted_handle", None),
         }
         for encoded, expected in cases.items():
             with self.subTest(encoded=encoded):
@@ -87,6 +91,25 @@ class TinyPatternTests(unittest.TestCase):
         self.assertIn("destination.Assign(&destination)", authored["test_cpp"])
         self.assertIn("retained.references != 1", authored["test_cpp"])
 
+    def test_counted_reset_candidate_has_ownership_fixture(self):
+        authored = candidate(
+            {
+                "address": "0050bf70",
+                "name": "_Dest_val",
+                "module": "CIVCountedPointer",
+                "bytes": (
+                    "568bf18b0e85c97410ff490475058b01ff5004"
+                    "c706000000005ec3"
+                ),
+            }
+        )
+
+        self.assertIsNotNone(authored)
+        self.assertIn("--current->references", authored["source_cpp"])
+        self.assertIn("object = 0", authored["source_cpp"])
+        self.assertIn("lastHandle.Reset()", authored["test_cpp"])
+        self.assertIn("retained.references != 1", authored["test_cpp"])
+
     def test_unknown_pattern_is_rejected(self):
         self.assertIsNone(const_from_bytes(bytes.fromhex("558bec5dc3")))
         self.assertIsNone(
@@ -94,6 +117,14 @@ class TinyPatternTests(unittest.TestCase):
                 bytes.fromhex(
                     "568bf18b0e578b7c240c3b0f741c85c9740dff49047505"
                     "8b01ff50048326008b0785c089067403ff40085f5ec20400"
+                )
+            )
+        )
+        self.assertIsNone(
+            const_from_bytes(
+                bytes.fromhex(
+                    "568bf18b0e85c97410ff490475058b01ff5004"
+                    "8326005ec3"
                 )
             )
         )

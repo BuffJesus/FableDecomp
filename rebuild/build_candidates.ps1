@@ -28784,6 +28784,1798 @@ $catalog = @(
         TestSource = '00/cd/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00cd26a8_test.cpp'
         PassPattern = 'AUTO_TINY_00cd26a8_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0050bf70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050bf70.cpp'
+        TestSource = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050bf70_test.cpp'
+        PassPattern = 'AUTO_TINY_0050bf70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0050bff0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050bff0.cpp'
+        TestSource = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050bff0_test.cpp'
+        PassPattern = 'AUTO_TINY_0050bff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0050c060'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050c060.cpp'
+        TestSource = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050c060_test.cpp'
+        PassPattern = 'AUTO_TINY_0050c060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0050c0b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050c0b0.cpp'
+        TestSource = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050c0b0_test.cpp'
+        PassPattern = 'AUTO_TINY_0050c0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0050f360'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050f360.cpp'
+        TestSource = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050f360_test.cpp'
+        PassPattern = 'AUTO_TINY_0050f360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0050f890'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050f890.cpp'
+        TestSource = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050f890_test.cpp'
+        PassPattern = 'AUTO_TINY_0050f890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0050f8f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050f8f0.cpp'
+        TestSource = '00/50/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0050f8f0_test.cpp'
+        PassPattern = 'AUTO_TINY_0050f8f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00526210'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/52/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00526210.cpp'
+        TestSource = '00/52/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00526210_test.cpp'
+        PassPattern = 'AUTO_TINY_00526210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00526230'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/52/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00526230.cpp'
+        TestSource = '00/52/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00526230_test.cpp'
+        PassPattern = 'AUTO_TINY_00526230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00527430'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/52/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00527430.cpp'
+        TestSource = '00/52/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00527430_test.cpp'
+        PassPattern = 'AUTO_TINY_00527430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d9ed0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005d9ed0.cpp'
+        TestSource = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005d9ed0_test.cpp'
+        PassPattern = 'AUTO_TINY_005d9ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005da020'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005da020.cpp'
+        TestSource = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005da020_test.cpp'
+        PassPattern = 'AUTO_TINY_005da020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005da040'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005da040.cpp'
+        TestSource = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005da040_test.cpp'
+        PassPattern = 'AUTO_TINY_005da040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dfaa0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005dfaa0.cpp'
+        TestSource = '00/5d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005dfaa0_test.cpp'
+        PassPattern = 'AUTO_TINY_005dfaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e0110'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e0110.cpp'
+        TestSource = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005e0110_test.cpp'
+        PassPattern = 'AUTO_TINY_005e0110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ecf70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005ecf70.cpp'
+        TestSource = '00/5e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005ecf70_test.cpp'
+        PassPattern = 'AUTO_TINY_005ecf70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063ed70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/63/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0063ed70.cpp'
+        TestSource = '00/63/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0063ed70_test.cpp'
+        PassPattern = 'AUTO_TINY_0063ed70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00668590'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00668590.cpp'
+        TestSource = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00668590_test.cpp'
+        PassPattern = 'AUTO_TINY_00668590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00668b40'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00668b40.cpp'
+        TestSource = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00668b40_test.cpp'
+        PassPattern = 'AUTO_TINY_00668b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00668cf0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00668cf0.cpp'
+        TestSource = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00668cf0_test.cpp'
+        PassPattern = 'AUTO_TINY_00668cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00668d50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00668d50.cpp'
+        TestSource = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00668d50_test.cpp'
+        PassPattern = 'AUTO_TINY_00668d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00668d70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00668d70.cpp'
+        TestSource = '00/66/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00668d70_test.cpp'
+        PassPattern = 'AUTO_TINY_00668d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00670af0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/67/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00670af0.cpp'
+        TestSource = '00/67/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00670af0_test.cpp'
+        PassPattern = 'AUTO_TINY_00670af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00685330'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00685330.cpp'
+        TestSource = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00685330_test.cpp'
+        PassPattern = 'AUTO_TINY_00685330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00685350'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00685350.cpp'
+        TestSource = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00685350_test.cpp'
+        PassPattern = 'AUTO_TINY_00685350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00685390'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00685390.cpp'
+        TestSource = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00685390_test.cpp'
+        PassPattern = 'AUTO_TINY_00685390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006855c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006855c0.cpp'
+        TestSource = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006855c0_test.cpp'
+        PassPattern = 'AUTO_TINY_006855c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00685680'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00685680.cpp'
+        TestSource = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00685680_test.cpp'
+        PassPattern = 'AUTO_TINY_00685680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006856a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006856a0.cpp'
+        TestSource = '00/68/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006856a0_test.cpp'
+        PassPattern = 'AUTO_TINY_006856a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00694f20'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/69/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00694f20.cpp'
+        TestSource = '00/69/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00694f20_test.cpp'
+        PassPattern = 'AUTO_TINY_00694f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069c500'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/69/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0069c500.cpp'
+        TestSource = '00/69/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0069c500_test.cpp'
+        PassPattern = 'AUTO_TINY_0069c500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069d070'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/69/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0069d070.cpp'
+        TestSource = '00/69/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0069d070_test.cpp'
+        PassPattern = 'AUTO_TINY_0069d070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a2770'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006a2770.cpp'
+        TestSource = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006a2770_test.cpp'
+        PassPattern = 'AUTO_TINY_006a2770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a2790'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006a2790.cpp'
+        TestSource = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006a2790_test.cpp'
+        PassPattern = 'AUTO_TINY_006a2790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a2970'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006a2970.cpp'
+        TestSource = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006a2970_test.cpp'
+        PassPattern = 'AUTO_TINY_006a2970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a2990'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006a2990.cpp'
+        TestSource = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006a2990_test.cpp'
+        PassPattern = 'AUTO_TINY_006a2990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006adbd0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006adbd0.cpp'
+        TestSource = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006adbd0_test.cpp'
+        PassPattern = 'AUTO_TINY_006adbd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006adbf0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006adbf0.cpp'
+        TestSource = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006adbf0_test.cpp'
+        PassPattern = 'AUTO_TINY_006adbf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006aded0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006aded0.cpp'
+        TestSource = '00/6a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006aded0_test.cpp'
+        PassPattern = 'AUTO_TINY_006aded0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b0ef0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0ef0.cpp'
+        TestSource = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0ef0_test.cpp'
+        PassPattern = 'AUTO_TINY_006b0ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b0f50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0f50.cpp'
+        TestSource = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b0f50_test.cpp'
+        PassPattern = 'AUTO_TINY_006b0f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b8b50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b8b50.cpp'
+        TestSource = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b8b50_test.cpp'
+        PassPattern = 'AUTO_TINY_006b8b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b8d50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b8d50.cpp'
+        TestSource = '00/6b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006b8d50_test.cpp'
+        PassPattern = 'AUTO_TINY_006b8d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ccb50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ccb50.cpp'
+        TestSource = '00/6c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ccb50_test.cpp'
+        PassPattern = 'AUTO_TINY_006ccb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d33d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d33d0.cpp'
+        TestSource = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d33d0_test.cpp'
+        PassPattern = 'AUTO_TINY_006d33d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d33f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d33f0.cpp'
+        TestSource = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d33f0_test.cpp'
+        PassPattern = 'AUTO_TINY_006d33f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d3410'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d3410.cpp'
+        TestSource = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d3410_test.cpp'
+        PassPattern = 'AUTO_TINY_006d3410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d36d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d36d0.cpp'
+        TestSource = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d36d0_test.cpp'
+        PassPattern = 'AUTO_TINY_006d36d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d36f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d36f0.cpp'
+        TestSource = '00/6d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d36f0_test.cpp'
+        PassPattern = 'AUTO_TINY_006d36f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ee200'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ee200.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ee200_test.cpp'
+        PassPattern = 'AUTO_TINY_006ee200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ee420'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ee420.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ee420_test.cpp'
+        PassPattern = 'AUTO_TINY_006ee420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ef3d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ef3d0.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ef3d0_test.cpp'
+        PassPattern = 'AUTO_TINY_006ef3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ef3f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ef3f0.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ef3f0_test.cpp'
+        PassPattern = 'AUTO_TINY_006ef3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ef460'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ef460.cpp'
+        TestSource = '00/6e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006ef460_test.cpp'
+        PassPattern = 'AUTO_TINY_006ef460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00708a90'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00708a90.cpp'
+        TestSource = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00708a90_test.cpp'
+        PassPattern = 'AUTO_TINY_00708a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070f7b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0070f7b0.cpp'
+        TestSource = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0070f7b0_test.cpp'
+        PassPattern = 'AUTO_TINY_0070f7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070fee0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0070fee0.cpp'
+        TestSource = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0070fee0_test.cpp'
+        PassPattern = 'AUTO_TINY_0070fee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070ffc0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0070ffc0.cpp'
+        TestSource = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0070ffc0_test.cpp'
+        PassPattern = 'AUTO_TINY_0070ffc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070ffe0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0070ffe0.cpp'
+        TestSource = '00/70/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0070ffe0_test.cpp'
+        PassPattern = 'AUTO_TINY_0070ffe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007107b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/71/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007107b0.cpp'
+        TestSource = '00/71/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007107b0_test.cpp'
+        PassPattern = 'AUTO_TINY_007107b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00722af0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/72/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00722af0.cpp'
+        TestSource = '00/72/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00722af0_test.cpp'
+        PassPattern = 'AUTO_TINY_00722af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072e630'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/72/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0072e630.cpp'
+        TestSource = '00/72/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0072e630_test.cpp'
+        PassPattern = 'AUTO_TINY_0072e630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00732440'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732440.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732440_test.cpp'
+        PassPattern = 'AUTO_TINY_00732440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00732530'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732530.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732530_test.cpp'
+        PassPattern = 'AUTO_TINY_00732530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00732ad0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732ad0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732ad0_test.cpp'
+        PassPattern = 'AUTO_TINY_00732ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00732b30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732b30.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00732b30_test.cpp'
+        PassPattern = 'AUTO_TINY_00732b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00736e10'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736e10.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736e10_test.cpp'
+        PassPattern = 'AUTO_TINY_00736e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00736e30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736e30.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736e30_test.cpp'
+        PassPattern = 'AUTO_TINY_00736e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00736e50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736e50.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736e50_test.cpp'
+        PassPattern = 'AUTO_TINY_00736e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00736e70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736e70.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736e70_test.cpp'
+        PassPattern = 'AUTO_TINY_00736e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00736e90'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736e90.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736e90_test.cpp'
+        PassPattern = 'AUTO_TINY_00736e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00736eb0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736eb0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736eb0_test.cpp'
+        PassPattern = 'AUTO_TINY_00736eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00736ed0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736ed0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00736ed0_test.cpp'
+        PassPattern = 'AUTO_TINY_00736ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00737590'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00737590.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00737590_test.cpp'
+        PassPattern = 'AUTO_TINY_00737590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007375b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007375b0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007375b0_test.cpp'
+        PassPattern = 'AUTO_TINY_007375b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007375d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007375d0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007375d0_test.cpp'
+        PassPattern = 'AUTO_TINY_007375d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007375f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007375f0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007375f0_test.cpp'
+        PassPattern = 'AUTO_TINY_007375f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00737610'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00737610.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00737610_test.cpp'
+        PassPattern = 'AUTO_TINY_00737610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00737630'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00737630.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00737630_test.cpp'
+        PassPattern = 'AUTO_TINY_00737630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007388b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007388b0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007388b0_test.cpp'
+        PassPattern = 'AUTO_TINY_007388b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073d290'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073d290.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073d290_test.cpp'
+        PassPattern = 'AUTO_TINY_0073d290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073d2b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073d2b0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073d2b0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073d2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073d2d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073d2d0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073d2d0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073d2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073d2f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073d2f0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073d2f0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073d2f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073da80'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073da80.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073da80_test.cpp'
+        PassPattern = 'AUTO_TINY_0073da80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073daa0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073daa0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073daa0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073daa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073dac0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073dac0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073dac0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073dac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073dae0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073dae0.cpp'
+        TestSource = '00/73/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0073dae0_test.cpp'
+        PassPattern = 'AUTO_TINY_0073dae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00746b60'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00746b60.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00746b60_test.cpp'
+        PassPattern = 'AUTO_TINY_00746b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00746bc0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00746bc0.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00746bc0_test.cpp'
+        PassPattern = 'AUTO_TINY_00746bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007482a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007482a0.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007482a0_test.cpp'
+        PassPattern = 'AUTO_TINY_007482a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007499f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007499f0.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007499f0_test.cpp'
+        PassPattern = 'AUTO_TINY_007499f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00749aa0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00749aa0.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00749aa0_test.cpp'
+        PassPattern = 'AUTO_TINY_00749aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074c8c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074c8c0.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074c8c0_test.cpp'
+        PassPattern = 'AUTO_TINY_0074c8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074c8e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074c8e0.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074c8e0_test.cpp'
+        PassPattern = 'AUTO_TINY_0074c8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074cc00'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074cc00.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074cc00_test.cpp'
+        PassPattern = 'AUTO_TINY_0074cc00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074f210'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f210.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f210_test.cpp'
+        PassPattern = 'AUTO_TINY_0074f210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074f230'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f230.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f230_test.cpp'
+        PassPattern = 'AUTO_TINY_0074f230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074f250'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f250.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f250_test.cpp'
+        PassPattern = 'AUTO_TINY_0074f250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074f440'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f440.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f440_test.cpp'
+        PassPattern = 'AUTO_TINY_0074f440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074f460'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f460.cpp'
+        TestSource = '00/74/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0074f460_test.cpp'
+        PassPattern = 'AUTO_TINY_0074f460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00751030'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/75/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00751030.cpp'
+        TestSource = '00/75/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00751030_test.cpp'
+        PassPattern = 'AUTO_TINY_00751030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00754c80'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/75/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00754c80.cpp'
+        TestSource = '00/75/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00754c80_test.cpp'
+        PassPattern = 'AUTO_TINY_00754c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00754ef0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/75/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00754ef0.cpp'
+        TestSource = '00/75/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00754ef0_test.cpp'
+        PassPattern = 'AUTO_TINY_00754ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00771060'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00771060.cpp'
+        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00771060_test.cpp'
+        PassPattern = 'AUTO_TINY_00771060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00771080'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00771080.cpp'
+        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00771080_test.cpp'
+        PassPattern = 'AUTO_TINY_00771080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00771940'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00771940.cpp'
+        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00771940_test.cpp'
+        PassPattern = 'AUTO_TINY_00771940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007719a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007719a0.cpp'
+        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007719a0_test.cpp'
+        PassPattern = 'AUTO_TINY_007719a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00778880'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00778880.cpp'
+        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00778880_test.cpp'
+        PassPattern = 'AUTO_TINY_00778880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007788e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007788e0.cpp'
+        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007788e0_test.cpp'
+        PassPattern = 'AUTO_TINY_007788e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00779af0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00779af0.cpp'
+        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00779af0_test.cpp'
+        PassPattern = 'AUTO_TINY_00779af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077d000'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0077d000.cpp'
+        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0077d000_test.cpp'
+        PassPattern = 'AUTO_TINY_0077d000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077d060'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0077d060.cpp'
+        TestSource = '00/77/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0077d060_test.cpp'
+        PassPattern = 'AUTO_TINY_0077d060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007810b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007810b0.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007810b0_test.cpp'
+        PassPattern = 'AUTO_TINY_007810b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00781260'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00781260.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00781260_test.cpp'
+        PassPattern = 'AUTO_TINY_00781260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00784e50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00784e50.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00784e50_test.cpp'
+        PassPattern = 'AUTO_TINY_00784e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00784f90'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00784f90.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00784f90_test.cpp'
+        PassPattern = 'AUTO_TINY_00784f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00786f40'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00786f40.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00786f40_test.cpp'
+        PassPattern = 'AUTO_TINY_00786f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00787a60'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00787a60.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00787a60_test.cpp'
+        PassPattern = 'AUTO_TINY_00787a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00787ac0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00787ac0.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00787ac0_test.cpp'
+        PassPattern = 'AUTO_TINY_00787ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078d9e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0078d9e0.cpp'
+        TestSource = '00/78/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0078d9e0_test.cpp'
+        PassPattern = 'AUTO_TINY_0078d9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00798bb0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00798bb0.cpp'
+        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00798bb0_test.cpp'
+        PassPattern = 'AUTO_TINY_00798bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079bc20'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079bc20.cpp'
+        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079bc20_test.cpp'
+        PassPattern = 'AUTO_TINY_0079bc20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079c3e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079c3e0.cpp'
+        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079c3e0_test.cpp'
+        PassPattern = 'AUTO_TINY_0079c3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079c450'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079c450.cpp'
+        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079c450_test.cpp'
+        PassPattern = 'AUTO_TINY_0079c450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079db50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079db50.cpp'
+        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079db50_test.cpp'
+        PassPattern = 'AUTO_TINY_0079db50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079ecb0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079ecb0.cpp'
+        TestSource = '00/79/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0079ecb0_test.cpp'
+        PassPattern = 'AUTO_TINY_0079ecb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a3170'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a3170.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a3170_test.cpp'
+        PassPattern = 'AUTO_TINY_007a3170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a4f70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a4f70.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a4f70_test.cpp'
+        PassPattern = 'AUTO_TINY_007a4f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a4fe0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a4fe0.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a4fe0_test.cpp'
+        PassPattern = 'AUTO_TINY_007a4fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a5ef0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a5ef0.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a5ef0_test.cpp'
+        PassPattern = 'AUTO_TINY_007a5ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a6050'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a6050.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a6050_test.cpp'
+        PassPattern = 'AUTO_TINY_007a6050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a6c10'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a6c10.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a6c10_test.cpp'
+        PassPattern = 'AUTO_TINY_007a6c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a6c80'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a6c80.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a6c80_test.cpp'
+        PassPattern = 'AUTO_TINY_007a6c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ab4d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ab4d0.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ab4d0_test.cpp'
+        PassPattern = 'AUTO_TINY_007ab4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007acb30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007acb30.cpp'
+        TestSource = '00/7a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007acb30_test.cpp'
+        PassPattern = 'AUTO_TINY_007acb30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b23a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b23a0.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b23a0_test.cpp'
+        PassPattern = 'AUTO_TINY_007b23a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b23c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b23c0.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b23c0_test.cpp'
+        PassPattern = 'AUTO_TINY_007b23c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b2420'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b2420.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b2420_test.cpp'
+        PassPattern = 'AUTO_TINY_007b2420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b2440'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b2440.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b2440_test.cpp'
+        PassPattern = 'AUTO_TINY_007b2440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b2460'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b2460.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b2460_test.cpp'
+        PassPattern = 'AUTO_TINY_007b2460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b3950'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b3950.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b3950_test.cpp'
+        PassPattern = 'AUTO_TINY_007b3950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b5620'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b5620.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b5620_test.cpp'
+        PassPattern = 'AUTO_TINY_007b5620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b73d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b73d0.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b73d0_test.cpp'
+        PassPattern = 'AUTO_TINY_007b73d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b7e30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b7e30.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b7e30_test.cpp'
+        PassPattern = 'AUTO_TINY_007b7e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b95e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b95e0.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007b95e0_test.cpp'
+        PassPattern = 'AUTO_TINY_007b95e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bb8a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007bb8a0.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007bb8a0_test.cpp'
+        PassPattern = 'AUTO_TINY_007bb8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bb900'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007bb900.cpp'
+        TestSource = '00/7b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007bb900_test.cpp'
+        PassPattern = 'AUTO_TINY_007bb900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c3940'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c3940.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c3940_test.cpp'
+        PassPattern = 'AUTO_TINY_007c3940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c39a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c39a0.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c39a0_test.cpp'
+        PassPattern = 'AUTO_TINY_007c39a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c39c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c39c0.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c39c0_test.cpp'
+        PassPattern = 'AUTO_TINY_007c39c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c4d20'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c4d20.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c4d20_test.cpp'
+        PassPattern = 'AUTO_TINY_007c4d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c65a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c65a0.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c65a0_test.cpp'
+        PassPattern = 'AUTO_TINY_007c65a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c7670'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7670.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007c7670_test.cpp'
+        PassPattern = 'AUTO_TINY_007c7670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ca070'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ca070.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ca070_test.cpp'
+        PassPattern = 'AUTO_TINY_007ca070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cc880'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cc880.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cc880_test.cpp'
+        PassPattern = 'AUTO_TINY_007cc880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cd700'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd700.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd700_test.cpp'
+        PassPattern = 'AUTO_TINY_007cd700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cd850'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd850.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cd850_test.cpp'
+        PassPattern = 'AUTO_TINY_007cd850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cec30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cec30.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cec30_test.cpp'
+        PassPattern = 'AUTO_TINY_007cec30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cf280'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cf280.cpp'
+        TestSource = '00/7c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007cf280_test.cpp'
+        PassPattern = 'AUTO_TINY_007cf280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d0f60'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d0f60.cpp'
+        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d0f60_test.cpp'
+        PassPattern = 'AUTO_TINY_007d0f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d4b70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d4b70.cpp'
+        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d4b70_test.cpp'
+        PassPattern = 'AUTO_TINY_007d4b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d5ca0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d5ca0.cpp'
+        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d5ca0_test.cpp'
+        PassPattern = 'AUTO_TINY_007d5ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d9630'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d9630.cpp'
+        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d9630_test.cpp'
+        PassPattern = 'AUTO_TINY_007d9630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007df980'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007df980.cpp'
+        TestSource = '00/7d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007df980_test.cpp'
+        PassPattern = 'AUTO_TINY_007df980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e0490'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e0490.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e0490_test.cpp'
+        PassPattern = 'AUTO_TINY_007e0490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e0980'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e0980.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e0980_test.cpp'
+        PassPattern = 'AUTO_TINY_007e0980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e09e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e09e0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e09e0_test.cpp'
+        PassPattern = 'AUTO_TINY_007e09e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e11b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e11b0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e11b0_test.cpp'
+        PassPattern = 'AUTO_TINY_007e11b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e1210'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e1210.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e1210_test.cpp'
+        PassPattern = 'AUTO_TINY_007e1210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e1380'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e1380.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e1380_test.cpp'
+        PassPattern = 'AUTO_TINY_007e1380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e13e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e13e0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e13e0_test.cpp'
+        PassPattern = 'AUTO_TINY_007e13e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e1cb0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e1cb0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e1cb0_test.cpp'
+        PassPattern = 'AUTO_TINY_007e1cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e1d10'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e1d10.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e1d10_test.cpp'
+        PassPattern = 'AUTO_TINY_007e1d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e31a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e31a0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e31a0_test.cpp'
+        PassPattern = 'AUTO_TINY_007e31a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e3200'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e3200.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e3200_test.cpp'
+        PassPattern = 'AUTO_TINY_007e3200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e4750'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e4750.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e4750_test.cpp'
+        PassPattern = 'AUTO_TINY_007e4750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e47b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e47b0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e47b0_test.cpp'
+        PassPattern = 'AUTO_TINY_007e47b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e4d10'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e4d10.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e4d10_test.cpp'
+        PassPattern = 'AUTO_TINY_007e4d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e70c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e70c0.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e70c0_test.cpp'
+        PassPattern = 'AUTO_TINY_007e70c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7170'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e7170.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007e7170_test.cpp'
+        PassPattern = 'AUTO_TINY_007e7170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ebd70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ebd70.cpp'
+        TestSource = '00/7e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ebd70_test.cpp'
+        PassPattern = 'AUTO_TINY_007ebd70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f91e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/7f/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007f91e0.cpp'
+        TestSource = '00/7f/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007f91e0_test.cpp'
+        PassPattern = 'AUTO_TINY_007f91e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083b8f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083b8f0.cpp'
+        TestSource = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083b8f0_test.cpp'
+        PassPattern = 'AUTO_TINY_0083b8f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083b950'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083b950.cpp'
+        TestSource = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083b950_test.cpp'
+        PassPattern = 'AUTO_TINY_0083b950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083cec0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083cec0.cpp'
+        TestSource = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083cec0_test.cpp'
+        PassPattern = 'AUTO_TINY_0083cec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083d5b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083d5b0.cpp'
+        TestSource = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083d5b0_test.cpp'
+        PassPattern = 'AUTO_TINY_0083d5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083d610'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083d610.cpp'
+        TestSource = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083d610_test.cpp'
+        PassPattern = 'AUTO_TINY_0083d610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083e070'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083e070.cpp'
+        TestSource = '00/83/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0083e070_test.cpp'
+        PassPattern = 'AUTO_TINY_0083e070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085a5c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/85/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0085a5c0.cpp'
+        TestSource = '00/85/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0085a5c0_test.cpp'
+        PassPattern = 'AUTO_TINY_0085a5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008698c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/86/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008698c0.cpp'
+        TestSource = '00/86/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008698c0_test.cpp'
+        PassPattern = 'AUTO_TINY_008698c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008698e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/86/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008698e0.cpp'
+        TestSource = '00/86/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008698e0_test.cpp'
+        PassPattern = 'AUTO_TINY_008698e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00869a70'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/86/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00869a70.cpp'
+        TestSource = '00/86/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00869a70_test.cpp'
+        PassPattern = 'AUTO_TINY_00869a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087c330'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/87/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0087c330.cpp'
+        TestSource = '00/87/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0087c330_test.cpp'
+        PassPattern = 'AUTO_TINY_0087c330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087c470'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/87/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0087c470.cpp'
+        TestSource = '00/87/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0087c470_test.cpp'
+        PassPattern = 'AUTO_TINY_0087c470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c2d80'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c2d80.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c2d80_test.cpp'
+        PassPattern = 'AUTO_TINY_008c2d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c2da0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c2da0.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c2da0_test.cpp'
+        PassPattern = 'AUTO_TINY_008c2da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c32f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c32f0.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c32f0_test.cpp'
+        PassPattern = 'AUTO_TINY_008c32f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c3310'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c3310.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c3310_test.cpp'
+        PassPattern = 'AUTO_TINY_008c3310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c58d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c58d0.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c58d0_test.cpp'
+        PassPattern = 'AUTO_TINY_008c58d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c7780'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c7780.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c7780_test.cpp'
+        PassPattern = 'AUTO_TINY_008c7780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c77f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c77f0.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c77f0_test.cpp'
+        PassPattern = 'AUTO_TINY_008c77f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c7810'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c7810.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008c7810_test.cpp'
+        PassPattern = 'AUTO_TINY_008c7810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cbf90'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cbf90.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cbf90_test.cpp'
+        PassPattern = 'AUTO_TINY_008cbf90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cd050'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cd050.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cd050_test.cpp'
+        PassPattern = 'AUTO_TINY_008cd050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cd0b0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cd0b0.cpp'
+        TestSource = '00/8c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008cd0b0_test.cpp'
+        PassPattern = 'AUTO_TINY_008cd0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e2c50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008e2c50.cpp'
+        TestSource = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008e2c50_test.cpp'
+        PassPattern = 'AUTO_TINY_008e2c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e2ed0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008e2ed0.cpp'
+        TestSource = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008e2ed0_test.cpp'
+        PassPattern = 'AUTO_TINY_008e2ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e2ef0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008e2ef0.cpp'
+        TestSource = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008e2ef0_test.cpp'
+        PassPattern = 'AUTO_TINY_008e2ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008efdc0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008efdc0.cpp'
+        TestSource = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008efdc0_test.cpp'
+        PassPattern = 'AUTO_TINY_008efdc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008efee0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008efee0.cpp'
+        TestSource = '00/8e/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_008efee0_test.cpp'
+        PassPattern = 'AUTO_TINY_008efee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00956520'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00956520.cpp'
+        TestSource = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00956520_test.cpp'
+        PassPattern = 'AUTO_TINY_00956520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095c540'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0095c540.cpp'
+        TestSource = '00/95/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0095c540_test.cpp'
+        PassPattern = 'AUTO_TINY_0095c540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00978130'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/97/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00978130.cpp'
+        TestSource = '00/97/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00978130_test.cpp'
+        PassPattern = 'AUTO_TINY_00978130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00981fb0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/98/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00981fb0.cpp'
+        TestSource = '00/98/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00981fb0_test.cpp'
+        PassPattern = 'AUTO_TINY_00981fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00982060'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/98/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00982060.cpp'
+        TestSource = '00/98/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00982060_test.cpp'
+        PassPattern = 'AUTO_TINY_00982060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c9ec0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c9ec0.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c9ec0_test.cpp'
+        PassPattern = 'AUTO_TINY_009c9ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c9f20'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c9f20.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c9f20_test.cpp'
+        PassPattern = 'AUTO_TINY_009c9f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ca390'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009ca390.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009ca390_test.cpp'
+        PassPattern = 'AUTO_TINY_009ca390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ca8c0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009ca8c0.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009ca8c0_test.cpp'
+        PassPattern = 'AUTO_TINY_009ca8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ca8e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009ca8e0.cpp'
+        TestSource = '00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009ca8e0_test.cpp'
+        PassPattern = 'AUTO_TINY_009ca8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a29a30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29a30.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29a30_test.cpp'
+        PassPattern = 'AUTO_TINY_00a29a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a29ac0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29ac0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29ac0_test.cpp'
+        PassPattern = 'AUTO_TINY_00a29ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a29b10'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29b10.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29b10_test.cpp'
+        PassPattern = 'AUTO_TINY_00a29b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a29b60'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29b60.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29b60_test.cpp'
+        PassPattern = 'AUTO_TINY_00a29b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a29cc0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29cc0.cpp'
+        TestSource = '00/a2/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a29cc0_test.cpp'
+        PassPattern = 'AUTO_TINY_00a29cc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a42960'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a4/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a42960.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a42960_test.cpp'
+        PassPattern = 'AUTO_TINY_00a42960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a433d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a4/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a433d0.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a433d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00a433d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a43940'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a4/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a43940.cpp'
+        TestSource = '00/a4/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a43940_test.cpp'
+        PassPattern = 'AUTO_TINY_00a43940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6b4d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a6/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a6b4d0.cpp'
+        TestSource = '00/a6/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a6b4d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00a6b4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a94ea0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a94ea0.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a94ea0_test.cpp'
+        PassPattern = 'AUTO_TINY_00a94ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a94f50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a94f50.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a94f50_test.cpp'
+        PassPattern = 'AUTO_TINY_00a94f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a96580'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a96580.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a96580_test.cpp'
+        PassPattern = 'AUTO_TINY_00a96580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9cb30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a9cb30.cpp'
+        TestSource = '00/a9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00a9cb30_test.cpp'
+        PassPattern = 'AUTO_TINY_00a9cb30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00abfa50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/ab/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00abfa50.cpp'
+        TestSource = '00/ab/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00abfa50_test.cpp'
+        PassPattern = 'AUTO_TINY_00abfa50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af19d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af19d0.cpp'
+        TestSource = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af19d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00af19d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af1a20'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af1a20.cpp'
+        TestSource = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af1a20_test.cpp'
+        PassPattern = 'AUTO_TINY_00af1a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af1d50'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af1d50.cpp'
+        TestSource = '00/af/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00af1d50_test.cpp'
+        PassPattern = 'AUTO_TINY_00af1d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b66b90'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/b6/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b66b90.cpp'
+        TestSource = '00/b6/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b66b90_test.cpp'
+        PassPattern = 'AUTO_TINY_00b66b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b66bf0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/b6/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b66bf0.cpp'
+        TestSource = '00/b6/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b66bf0_test.cpp'
+        PassPattern = 'AUTO_TINY_00b66bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b83500'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/b8/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b83500.cpp'
+        TestSource = '00/b8/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b83500_test.cpp'
+        PassPattern = 'AUTO_TINY_00b83500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9c4e0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/b9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b9c4e0.cpp'
+        TestSource = '00/b9/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00b9c4e0_test.cpp'
+        PassPattern = 'AUTO_TINY_00b9c4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0040d8d0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/40/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0040d8d0.cpp'
+        TestSource = '00/40/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0040d8d0_test.cpp'
+        PassPattern = 'AUTO_TINY_0040d8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048ad60'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/48/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0048ad60.cpp'
+        TestSource = '00/48/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0048ad60_test.cpp'
+        PassPattern = 'AUTO_TINY_0048ad60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048c5a0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/48/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0048c5a0.cpp'
+        TestSource = '00/48/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0048c5a0_test.cpp'
+        PassPattern = 'AUTO_TINY_0048c5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a7f20'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a7f20.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a7f20_test.cpp'
+        PassPattern = 'AUTO_TINY_004a7f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a7f40'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a7f40.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a7f40_test.cpp'
+        PassPattern = 'AUTO_TINY_004a7f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a7f60'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a7f60.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a7f60_test.cpp'
+        PassPattern = 'AUTO_TINY_004a7f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a7fc0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a7fc0.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a7fc0_test.cpp'
+        PassPattern = 'AUTO_TINY_004a7fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a8020'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a8020.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a8020_test.cpp'
+        PassPattern = 'AUTO_TINY_004a8020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a97f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a97f0.cpp'
+        TestSource = '00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a97f0_test.cpp'
+        PassPattern = 'AUTO_TINY_004a97f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004b6b30'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004b6b30.cpp'
+        TestSource = '00/4b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004b6b30_test.cpp'
+        PassPattern = 'AUTO_TINY_004b6b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c2340'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c2340.cpp'
+        TestSource = '00/4c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c2340_test.cpp'
+        PassPattern = 'AUTO_TINY_004c2340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c32f0'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c32f0.cpp'
+        TestSource = '00/4c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c32f0_test.cpp'
+        PassPattern = 'AUTO_TINY_004c32f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00499ce0'
+        Module = 'CProgressDisplay'
+        Source = '00/49/CProgressDisplay_Constructor_00499ce0.cpp'
+        TestSource = '00/49/CProgressDisplay_Constructor_00499ce0_test.cpp'
+        PassPattern = 'FABLETLC_PROGRESS_DISPLAY_CONSTRUCTOR_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e9fd0'
+        Module = '_global'
+        Source = '00/9e/Global_SetProgressDisplay_009e9fd0.cpp'
+        TestSource = '00/9e/Global_SetProgressDisplay_009e9fd0_test.cpp'
+        PassPattern = 'FABLETLC_SET_PROGRESS_DISPLAY_BEHAVIOR PASS'
+    }
 )
 
 $oldPath = $env:PATH

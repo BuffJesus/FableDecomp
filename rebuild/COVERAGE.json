@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T08:43:23-06:00",
+  "generated_at": "2026-07-26T09:17:37-06:00",
   "catalog_functions": 49553,
   "modules": 3433,
   "calling_convention_known": 38490,
@@ -8,10 +8,10 @@
   "agent_candidates": 632,
   "agent_pass": 619,
   "agent_fail": 12,
-  "compiled_candidates": 4116,
-  "behavior_tested_candidates": 4116,
-  "candidate_retail_matches": 1921,
-  "candidate_relocation_matches": 1868,
+  "compiled_candidates": 4372,
+  "behavior_tested_candidates": 4372,
+  "candidate_retail_matches": 2175,
+  "candidate_relocation_matches": 1870,
   "lift_matching": 16,
   "lift_functional": 2,
   "lift_modules": 3,
@@ -20,7 +20,7 @@
   "vc71_sdk_probe_pass": true,
   "mechanically_named": 49553,
   "accepted_name_quality": 49162,
-  "verified_lifted": 3807,
+  "verified_lifted": 4063,
   "candidate_integrity_pass": 573,
   "candidate_host_syntax_pass": 251
 }
