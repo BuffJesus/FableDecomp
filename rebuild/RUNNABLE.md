@@ -1,0 +1,108 @@
+# Runnable reconstruction
+
+This dashboard tracks the shortest honest path from independently verified
+functions to a reconstructed executable. It does not count a diagnostic
+bootstrap as a running game.
+
+## Current executable milestone
+
+**Stage 1 now reaches the GFMain boundary:** VC7.1 links and runs a
+Win32 GUI executable through the recovered `WinMain @ 0x00403480`.
+Its 141-byte body is an exact relocation-normalized retail match, and
+the fixture proves both first-instance and duplicate-instance paths,
+the 200 KiB MicroThread stack handoff, and the fastcall GFMain ABI.
+
+The first Stage-2 leaf is also promoted:
+`GFInitialise_SetupProgressDisplay @ 0x00413120` is a 128-byte
+relocation-normalized match with allocation, null-allocation, reference
+release, and rejected-initialization behavior covered. It is not yet
+reachable through the reconstructed GFMain/GFInitialise path.
+
+**Stage 0 remains the smallest linker proof:** VC7.1 links a console
+PE containing
+`MemCmp_Unsigned16 @ 0x00403C60`, whose function body is byte-identical
+to retail. The executable invokes that function and verifies its behavior.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/build_bootstrap.ps1
+```
+
+Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,
+`FABLETLC_WINMAIN_BEHAVIOR PASS`,
+`FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS`, and `STAGE1_STARTUP PASS`.
+Generated products stay under the ignored `rebuild/build/` tree.
+
+Stage 1 still stops at an instrumented GFMain stub. It does **not** yet
+initialize Lionhead engine services, open the retail window, load assets,
+or enter the game loop.
+
+## Retail boot spine
+
+| Order | Address | Role | Retail size | Current source grade | Source | Blocking fact |
+|---:|---:|---|---:|---|---|---|
+| 1 | `0x00401067` | CRT entry | 466 | `agent-pass` | [source](../lift/reports/wave3/code/00/40/0x00401067_global_entry.cpp) | Structural candidate only; contains a raw register-fed CRT helper call and has not crossed the VC7.1 behavior/parity gate. |
+| 2 | `0x00403480` | WinMain wrapper | 141 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/Global_WinMain_00403480.cpp) | VC7.1 source matches all 141 non-relocation retail bytes and passes first-instance/duplicate-instance behavior, but GFMain is still an instrumented boundary. |
+| 3 | `0x00402510` | GFMain | 3952 | `not authored` | — | No authored reconstruction; approximately 3,952 retail bytes and 995 instructions. |
+| 4 | `0x004022B0` | GFInitialise | 311 | `agent-pass` | [source](../lift/reports/wave3/code/00/40/0x004022B0_global_GFInitialise.cpp) | Structural candidate only; incomplete display/primitive types and several global dependencies prevent promotion. |
+| 5 | `0x00413120` | GFInitialise_SetupProgressDisplay | 128 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/Global_GFInitialiseSetupProgressDisplay_00413120.cpp) | The 128-byte leaf and ownership behavior are proven, but GFMain/GFInitialise do not yet reach it in the reconstructed process. |
+
+## Next dependency closure
+
+1. **CRT entry (`0x00401067`):** Recover the masked CRT helper identity and promote the entry function.
+2. **WinMain wrapper (`0x00403480`):** Replace the instrumented GFMain boundary one dependency closure at a time.
+3. **GFMain (`0x00402510`):** Split its call graph into named initialization phases and author the first dependency closure.
+4. **GFInitialise (`0x004022B0`):** Recover shared layouts and promote the small callees before the coordinator.
+5. **GFInitialise_SetupProgressDisplay (`0x00413120`):** Link its corrected CProgressDisplay/counting dependencies behind the GFInitialise boundary.
+
+## GFMain dependency phases
+
+The 3,952-byte coordinator is split by observed retail call clusters.
+These are integration units, not invented retail functions.
+
+| Phase | Address range | Role | Direct calls | Unique targets | Anchors |
+|---:|---|---|---:|---:|---|
+| 1 | `0x00402510`-`0x004025A6` | runtime and project bootstrap | 9 | 9 | CSystemManagerInit; GetProjectPath; SetCurrentPath; InitialiseConsoleVariables |
+| 2 | `0x004025A6`-`0x00402668` | failure-handling bootstrap | 7 | 7 | CSystemManager::Get; Draw; SetEnableFailureHandling |
+| 3 | `0x00402668`-`0x0040284E` | settings, persistence, and IME | 34 | 23 | GetActionName; PathExists; LoadFromFile; CPersistContext; LoadIMESettings |
+| 4 | `0x0040284E`-`0x004029DC` | root child hierarchy | 29 | 5 | EnableNavigator; AddChild |
+| 5 | `0x004029DC`-`0x00402CE6` | retail banks and INI files | 65 | 15 | OpenRetailBank; OpenIniFile; GetDVDDialogueDir |
+| 6 | `0x00402CE6`-`0x00403082` | save paths, fonts, and display resources | 61 | 24 | LoadTable; MyDocuments_CheckWritePermissions; GetFontBankName; AddChildPrimitive |
+| 7 | `0x00403082`-`0x0040329C` | command line and window configuration | 15 | 10 | GetWindowTitle; CCharString assignments |
+| 8 | `0x0040329C`-`0x004032D5` | EULA and hardware configuration | 5 | 4 | DoEULAThings; GFConfigDetection; GFFreeConfigDetection |
+| 9 | `0x004032D5`-`0x00403389` | engine primitive assembly | 11 | 10 | AddChildPrimitive; Initialise; GFMain_ProcessSaveFileMetadata |
+| 10 | `0x00403389`-`0x00403480` | GFInitialise, launch, error handling, and cleanup | 21 | 13 | GFInitialise; GFHandleSystemInitError; CSystemRegistry |
+
+Phase closure order:
+1. **runtime and project bootstrap:** Recover the two temporary string/object lifetimes and make this the first callable GFMain phase.
+2. **failure-handling bootstrap:** Type the returned system-manager object and its temporary allocation/deletion path.
+3. **settings, persistence, and IME:** Separate optional settings-file parsing from default-value initialization.
+4. **root child hierarchy:** Recover the five named child definitions and the owner/container type.
+5. **retail banks and INI files:** Name each bank path and turn the repeated open sequence into data-backed records.
+6. **save paths, fonts, and display resources:** Split filesystem permission checks from font/display resource construction.
+7. **command line and window configuration:** Recover the no-call command-line decision block and its persistent option fields.
+8. **EULA and hardware configuration:** Isolate the exit-on-failure policy behind an injectable process-exit seam.
+9. **engine primitive assembly:** Type the root engine primitive and carry its successful initialization result forward.
+10. **GFInitialise, launch, error handling, and cleanup:** Close the GFInitialise return/error branches and persistent registry write.
+
+## Milestone definitions
+
+- **Stage 0 — linked code:** an owned x86 executable runs at least one
+  behavior-gated, retail-matching function. **Implemented.**
+- **Stage 1 — owned startup:** reconstructed WinMain reaches an
+  instrumented GFMain boundary without borrowing retail code.
+  **Implemented; exact CRT-entry parity remains a separate task.**
+- **Stage 2 — engine bootstrap:** reconstructed GFMain/GFInitialise reaches
+  the first visible progress-display state with controlled platform shims.
+- **Stage 3 — data bootstrap:** compiled definitions and core archives load
+  far enough to create the main game component.
+- **Stage 4 — game loop:** the reconstructed process pumps input, updates a
+  minimal world, renders frames, and shuts down cleanly.
+- **Stage 5 — playable slice:** a controlled region can be loaded and the
+  hero can be moved and saved.
+
+Modern x64 APIs may continue as small oracle-backed experiments, but menus,
+installer work, enhancements, and broad port refactors are intentionally
+behind Stage 4.
+
+_Generated by `tools/write_runnable_dashboard.py` from the function, parity,
+coverage, and boot-chain manifests._

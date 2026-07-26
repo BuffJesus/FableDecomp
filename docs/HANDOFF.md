@@ -1,6 +1,32 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-25 18:36 MDT (address-sharded workflow validated end to end).*
+*Last updated: 2026-07-25 19:32 MDT (Stage-1 WinMain plus first Stage-2 leaf).*
+
+## Runnable checkpoint (2026-07-25)
+
+The reconstruction now has an owned executable integration lane:
+
+- `rebuild/build_bootstrap.ps1` builds and runs both Stage 0 and Stage 1 under VC7.1.
+- `WinMain @ 0x00403480` is promoted under `rebuild/src/compiled/00/40/`; its 141-byte
+  function is a relocation-normalized retail match and its focused fixture covers the
+  first-instance path, duplicate-instance skip, 200 KiB MicroThread stack, and fastcall GFMain ABI.
+- The Stage-1 product is a genuine PE32 Windows GUI executable, but `GFMain` is deliberately an
+  instrumented boundary stub. It does not initialize the engine, load data, render, or enter a loop.
+- `rebuild/RUNNABLE.md` is the generated boot dashboard. The next critical path is to split
+  `GFMain @ 0x00402510` into named dependency closures and reach
+  `GFInitialise_SetupProgressDisplay @ 0x00413120`.
+- `GFInitialise_SetupProgressDisplay @ 0x00413120` itself is now promoted: 128 bytes,
+  relocation-normalized match, with initialization rejection, allocation success/failure, and
+  counted-reference release covered. The bytes corrected the generated `C3DMeshStats` mistake:
+  vtable `0x012388B4` proves the allocated 0x88-byte object is `CProgressDisplay`.
+- Product upgrades (installer, settings menus, x64 migration, and broad C++23 refactors) remain
+  behind the Stage-4 game-loop milestone. The modern multiplayer codec stays a bounded proof.
+
+The hidden Wave 3 worker remained live throughout this work. By 19:19 MDT it had advanced through
+`TryToRespawnDefNamed @ 0x00896120`; `SetQuestInfoName @ 0x00891940` failed both bounded attempts
+and was skipped rather than stalling the queue.
+
+*Last updated: 2026-07-25 18:52 MDT (first x64 C++23 subsystem proof passes).*
 
 ## Current authoritative resume point (2026-07-25)
 
@@ -39,6 +65,18 @@ Source policy is in `docs/SOURCE_ARCHITECTURE.md`: retain isolated VC7.1 transla
 parity, and build cohesive C++23 subsystem code only under `rebuild/modern/` after signatures,
 layouts, call edges, and representative behavior are stable. Co-op event/package codecs and small
 terrain/theme APIs are the best early modernization candidates.
+
+The first modern subsystem proof now exists under `rebuild/modern/multiplayer/`. It turns the
+byte-proven single-record `CGameEvent` format into an owning `GameEvent` class plus an explicit
+`GameEventCodec`, built as native x64 C++23. Its tests cover exact recovered wire bytes, round trips,
+concatenated records, all retail payload boundaries, and malformed input. The review also corrected
+an important safety point: the wire length is one byte, but the `0x28` retail object only owns 32
+payload bytes, so the modern decoder rejects lengths above 32. Package-set framing remains outside
+the module until its boundaries receive the same review.
+
+At this checkpoint the hidden Wave 3 task remains live. It completed seven additional ForgeFSE
+bindings after the organized restart and was processing `0x008915E0` at 18:52 MDT; its generated
+sources and progress state are intentionally left uncommitted until the next reviewed refresh.
 
 *Last updated: 2026-07-23 16:xx MDT (local deterministic byte-match lane + SDK exports online).*
 
