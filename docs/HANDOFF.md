@@ -1,6 +1,37 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 11:30 MDT (Ghidra boundary repair + renderer-leaf closure).*
+*Last updated: 2026-07-26 12:04 MDT (EgoCore-assisted renderer closure).*
+
+## EgoCore-assisted renderer closure (2026-07-26)
+
+- The canonical `CProgressDisplay::RenderProgress @ 0x00499880` direct-call
+  ledger is now **15/17 recovered**. This pass closed all five remaining small
+  leaves: `ClearRenderTarget @ 0x009BE420`,
+  `SetRenderTargetAsBackScreen @ 0x009BF220`,
+  `SwapScreens @ 0x009BEEB0`, `SetRenderTarget @ 0x009BF160`, and
+  `RestoreCaptureBlock @ 0x00A05840`.
+- EgoCore was materially useful. `debug_build/Ego_r.pdb` and `ego_r.exe`
+  supplied exact class/function names, prototypes, donor addresses, function
+  lengths, and a `CDisplayManager` layout. Comparing those donor bodies to TLC
+  exposed the original inline-accessor/source shapes needed for VC7.1 register
+  allocation and preserved `SwapScreens`' distinct generic-failure epilogue.
+- All five additions have focused behavior fixtures. Four are
+  relocation-normalized retail matches; `RestoreCaptureBlock` is a true
+  **121/121-byte exact match**. The canonical gate passes **4,888 / 4,888**.
+  Retail parity is **2,675 exact + 1,886 relocation-normalized = 4,561 /
+  49,552 (9.20%)**; honest residue remains 199 differences and 128 missing
+  function-start oracles.
+- The full Release bootstrap passed with `asset=RetailFrontendBackdrop`. A
+  fresh top-level window smoke test opened
+  `FableTLC-Reconstruction-VisualCheckpoint.exe` with title
+  `FableDecomp - Retail Frontend Asset + Progress Display Ready`, accepted
+  `WM_CLOSE`, and exited zero.
+- The only remaining direct renderer dependencies are the large orchestration
+  bodies `CProgressDisplay::DrawRetailDisplay @ 0x00498490` (5,101 bytes) and
+  `CRenderManager2D::Render2DDrawList @ 0x009DA9F0` (3,344 bytes). Continue
+  decomposing their dependency families while preserving the already-visible
+  retail backdrop checkpoint; runtime archive/texture ownership and replacing
+  the GDI presentation bridge remain the visual-closure boundary.
 
 ## Ghidra boundary repair + renderer-leaf closure (2026-07-26)
 

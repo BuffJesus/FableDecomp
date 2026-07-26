@@ -5,14 +5,14 @@ address	name	retail_bytes	recovery_status	source	role
 009bef20	CDisplayManager::BeginRender	41	RELOCATION_MATCH	rebuild/src/compiled/00/9b/CDisplayManager_BeginRender_009bef20.cpp	Begin the device and core render transaction.
 00a10dc0	CRenderTarget::CRenderTarget	76	RELOCATION_MATCH	rebuild/src/compiled/00/a1/CRenderTarget_Constructor_00a10dc0.cpp	Snapshot the current front/back surfaces.
 00a0b560	NInventory::CTCInventoryBase::SetViewportFloat	42	RELOCATION_MATCH	rebuild/src/compiled/00/a0/CTCInventoryBase_SetViewportFloat_00a0b560.cpp	Convert the floating retail viewport and forward it to the display manager.
-009be420	CDisplayManager::ClearRenderTarget	109	UNRECOVERED		Clear the progress target when the full-screen flag is active.
-009bf220	CDisplayManager::SetRenderTargetAsBackScreen	168	UNRECOVERED		Bind the back screen before progress primitive submission.
+009be420	CDisplayManager::ClearRenderTarget	109	RELOCATION_MATCH	rebuild/src/compiled/00/9b/CDisplayManager_ClearRenderTarget_009be420.cpp	Clear the progress target when the full-screen flag is active.
+009bf220	CDisplayManager::SetRenderTargetAsBackScreen	168	RELOCATION_MATCH	rebuild/src/compiled/00/9b/CDisplayManager_SetRenderTargetAsBackScreen_009bf220.cpp	Bind the back screen before progress primitive submission.
 00498490	CProgressDisplay::DrawRetailDisplay	5101	UNRECOVERED		Build the actual progress-background, bar, and text primitives.
 009da9f0	CRenderManager2D::Render2DDrawList	3344	UNRECOVERED		Submit the accumulated 2D primitive list.
 009bef50	CDisplayManager::EndRender	43	RELOCATION_MATCH	rebuild/src/compiled/00/9b/CDisplayManager_EndRender_009bef50.cpp	End the core and device render transaction.
-009beeb0	CDisplayManager::SwapScreens	97	UNRECOVERED		Present the back screen and advance the display frame.
+009beeb0	CDisplayManager::SwapScreens	97	RELOCATION_MATCH	rebuild/src/compiled/00/9b/CDisplayManager_SwapScreens_009beeb0.cpp	Present the back screen and advance the display frame.
 00a0aa90	NInventory::CTCInventoryBase::SetViewport	11	RELOCATION_MATCH	rebuild/src/compiled/00/a0/CTCInventoryBase_SetViewport_00a0aa90.cpp	Restore the saved integer viewport through the inventory display owner.
-009bf160	CDisplayManager::SetRenderTarget	189	UNRECOVERED		Restore the saved render target.
+009bf160	CDisplayManager::SetRenderTarget	189	RELOCATION_MATCH	rebuild/src/compiled/00/9b/CDisplayManager_SetRenderTarget_009bf160.cpp	Restore the saved render target.
 009f2e20	CSurface::Uninitialise	32	MATCH	rebuild/src/compiled/00/9f/CSurface_Uninitialise_009f2e20.cpp	Release both temporary surface snapshots.
 0099a2e0	NHeroInformationScreens::CBase::CBase	7	RELOCATION_MATCH	rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a2e0.cpp	Restore the base vtable during temporary render-target cleanup.
-00a05840	CRenderStateManager::RestoreCaptureBlock	121	UNRECOVERED		Restore the renderer state captured around progress drawing.
+00a05840	CRenderStateManager::RestoreCaptureBlock	121	MATCH	rebuild/src/compiled/00/a0/CRenderStateManager_RestoreCaptureBlock_00a05840.cpp	Restore the renderer state captured around progress drawing.

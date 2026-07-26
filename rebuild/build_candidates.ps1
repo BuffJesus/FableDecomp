@@ -34153,6 +34153,41 @@ $catalog = @(
         TestSource = '00/a1/CRenderTarget_Constructor_00a10dc0_test.cpp'
         PassPattern = 'FABLETLC_RENDER_TARGET_CONSTRUCTOR_BEHAVIOR PASS'
     }
+    [pscustomobject]@{
+        Address = '009be420'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_ClearRenderTarget_009be420.cpp'
+        TestSource = '00/9b/CDisplayManager_ClearRenderTarget_009be420_test.cpp'
+        PassPattern = 'FABLETLC_DISPLAY_CLEAR_TARGET_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bf220'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_SetRenderTargetAsBackScreen_009bf220.cpp'
+        TestSource = '00/9b/CDisplayManager_SetRenderTargetAsBackScreen_009bf220_test.cpp'
+        PassPattern = 'FABLETLC_DISPLAY_BACK_SCREEN_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009beeb0'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_SwapScreens_009beeb0.cpp'
+        TestSource = '00/9b/CDisplayManager_SwapScreens_009beeb0_test.cpp'
+        PassPattern = 'FABLETLC_DISPLAY_SWAP_SCREENS_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bf160'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_SetRenderTarget_009bf160.cpp'
+        TestSource = '00/9b/CDisplayManager_SetRenderTarget_009bf160_test.cpp'
+        PassPattern = 'FABLETLC_DISPLAY_SET_RENDER_TARGET_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a05840'
+        Module = 'CRenderStateManager'
+        Source = '00/a0/CRenderStateManager_RestoreCaptureBlock_00a05840.cpp'
+        TestSource = '00/a0/CRenderStateManager_RestoreCaptureBlock_00a05840_test.cpp'
+        PassPattern = 'FABLETLC_RESTORE_CAPTURE_BLOCK_BEHAVIOR PASS'
+    }
 )
 
 $oldPath = $env:PATH
