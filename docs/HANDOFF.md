@@ -1,6 +1,43 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 10:34 MDT (retail image + progress text-state checkpoint).*
+*Last updated: 2026-07-26 11:30 MDT (Ghidra boundary repair + renderer-leaf closure).*
+
+## Ghidra boundary repair + renderer-leaf closure (2026-07-26)
+
+- The visual executable is bootable now and again passed a fresh top-level
+  window smoke test with exit code zero. It displays the genuine retail
+  `FRONTEND_BACKDROP_01` from the user's local `frontend.big`; the executable
+  is `rebuild/build/bootstrap-Release/FableTLC-Reconstruction-VisualCheckpoint.exe`.
+  Presentation is still the explicit GDI bridge, not Lionhead's recovered
+  renderer.
+- `CProgressDisplay::GetPTextBank @ 0x00497B30` is a behavior-proven 35-byte
+  relocation match. It selects the primary bank at owner offset `+0x14`, falls
+  back to the game bank at `+0x60`, and returns null when neither exists. It is
+  recovered and boot-gated but is not yet fed by runtime-populated bank owners.
+- Ghidra now models `CProgressDisplay::StartProgress @ 0x00499AA0` as the
+  correct single 418-byte function ending at `0x00499C41`. The former
+  `0x00499AAD` entry was a false mid-function start. The repair is reproducible
+  through `tools/ghidra_scripts/MergeFallthroughFunction.java`, and
+  `rebuild/corrections/function_boundary_exclusions.tsv` prevents regenerated
+  manifests from restoring the false function.
+- `CProgressDisplay::RenderProgress @ 0x00499880` is mapped as the next
+  renderer boundary. Ten of its seventeen unique direct dependencies are now
+  canonical retail matches; see
+  `rebuild/integration/render_progress_dependencies.tsv`. This pass added the
+  quick-assignment guard, system update, begin/end render, float and integer
+  viewport forwarding, render-target constructor, surface release, and the
+  already-boot-proven CBase constructor.
+- The canonical VC7.1 compile/behavior gate passes **4,883 / 4,883**.
+  Retail parity is **2,674 exact + 1,882 relocation-normalized = 4,556 /
+  49,552 (9.19%)**. The denominator is one smaller because the false
+  `0x00499AAD` start is no longer counted; honest residue remains 199
+  differences and 128 missing function-start oracles.
+- Next visual closure: recover the remaining seven `RenderProgress`
+  dependencies, prioritizing `ClearRenderTarget`, back-screen/target binding,
+  `SwapScreens`, and render-state restore before the 5,101-byte
+  `DrawRetailDisplay` and 3,344-byte `Render2DDrawList` bodies. In parallel,
+  continue the 2,920-byte `InitialiseTextures` dependency cluster and integrate
+  the corrected `StartProgress` body.
 
 ## Retail image + progress text-state checkpoint (2026-07-26)
 

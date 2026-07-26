@@ -5,6 +5,7 @@
 
 struct HINSTANCE__;
 typedef HINSTANCE__* FableInstanceHandle;
+struct CDataBank;
 
 // Globals written by the retail WinMain wrapper before it transfers control
 // to GFMain. Their names retain the retail virtual addresses until their
@@ -78,6 +79,7 @@ struct CProgressDisplay
     bool IsActive() const;
     void SetToDisplayText(bool enabled);
     void CalculateNextTextTag();
+    CDataBank* GetPTextBank() const;
 
     __forceinline static void* operator new(unsigned int size)
     {
@@ -87,11 +89,32 @@ struct CProgressDisplay
 
 FABLE_STATIC_ASSERT(sizeof(CProgressDisplay) == 0x88);
 
+#pragma pack(push, 1)
+struct FableProgressTextBankSlot
+{
+    fable_u8 unknown00[0x14];
+    CDataBank* textBank14;
+};
+
+struct FableGameTextBankSlot
+{
+    fable_u8 unknown00[0x60];
+    CDataBank* textBank60;
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT(sizeof(FableProgressTextBankSlot) == 0x18);
+FABLE_STATIC_ASSERT(sizeof(FableGameTextBankSlot) == 0x64);
+
 struct FableReferenceCount;
 
 extern fable_u8 g_CProgressDisplayVTable_012388B4;
 extern double g_FableZeroDouble_0122ED70;
 extern const char g_FableEmptyText_0122D70E[];
+extern FableProgressTextBankSlot*
+    g_FableProgressTextBankSlot_013B86A0;
+extern FableGameTextBankSlot*
+    g_FableGameTextBankSlot_013B871C;
 extern CProgressDisplay* g_FableProgressDisplayObject_013CAA38;
 extern FableReferenceCount* g_FableProgressDisplayReference_013CAA3C;
 void FABLE_FASTCALL FableConstructWideString(CWideString* value);

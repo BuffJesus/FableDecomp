@@ -521,7 +521,7 @@ CBankFileDependencies	8	0	0	0	0	0	0	0	0	0	0
 CBankFileEntryDependencies	1	0	0	0	0	0	0	0	0	0	0
 CBankFileEntryUpdateData	5	7	7	0	0	0	0	0	0	0	0
 CBankFileManager	21	9	9	0	0	0	0	0	0	0	0
-CBase	38	212	11	0	0	0	0	0	0	0	0
+CBase	38	212	11	0	0	1	1	0	1	0	0
 CBaseBlock	2	2	2	0	0	0	0	0	0	0	0
 CBaseInit	1	1	1	0	0	0	0	0	0	0	0
 CBaseIntelligentPointer	4	20	6	0	0	0	0	0	0	0	0
@@ -613,7 +613,7 @@ CCham	3	7	7	0	0	0	0	0	0	0	0
 CChangeText	0	2	0	0	0	0	0	0	0	0	0
 CChangingStateComponent	29	17	16	0	0	0	0	0	0	0	0
 CCharMap	0	1	0	0	0	0	0	0	0	0	0
-CCharString	31	68	38	0	0	2	2	1	1	0	0
+CCharString	31	68	38	0	0	3	3	1	2	0	0
 CCharStringData	1	2	0	0	0	0	0	0	0	0	0
 CCharStringMap	0	3	0	0	0	0	0	0	0	0	0
 CCharStringPairVector	0	1	0	0	0	0	0	0	0	0	0
@@ -1294,7 +1294,7 @@ CDisplacedTrader	4	0	0	0	0	0	0	0	0	0	0
 CDisplacementProcess	2	1	1	0	0	0	0	0	0	0	0
 CDisplayEngine	41	14	12	0	0	3	3	3	0	0	0
 CDisplayEngineInit	0	2	0	0	0	0	0	0	0	0	0
-CDisplayManager	62	111	111	0	0	11	11	1	2	0	0
+CDisplayManager	62	111	111	0	0	13	13	1	4	0	0
 CDisplayManagerInit	0	1	0	0	0	0	0	0	0	0	0
 CDisplayViewManager	3	5	5	0	0	0	0	0	0	0	0
 CDoNotTarget	1	0	0	0	0	0	0	0	0	0	0
@@ -2723,7 +2723,7 @@ CPrizeScoreDef	1	3	3	0	0	1	1	1	0	0	0
 CProcessedInput	7	1	1	1	0	0	0	0	0	0	0
 CProfile	10	8	0	0	0	0	0	0	0	0	0
 CProfileManager	18	0	0	0	0	0	0	0	0	0	0
-CProgressDisplay	15	15	14	0	0	3	3	1	2	0	0
+CProgressDisplay	15	14	14	0	0	4	4	1	3	0	0
 CProjectileWeapon	20	8	5	0	0	0	0	0	0	0	0
 CProng	5	2	2	0	0	0	0	0	0	0	0
 CProphetCage	3	1	1	0	0	0	0	0	0	0	0
@@ -2863,7 +2863,7 @@ CReluctantTrader	3	0	0	0	0	0	0	0	0	0	0
 CRenderManager2D	31	29	27	0	0	0	0	0	0	0	0
 CRenderManagerCore	39	26	24	0	0	0	0	0	0	0	0
 CRenderStateManager	10	9	8	0	0	0	0	0	0	0	0
-CRenderTarget	6	16	14	0	0	0	0	0	0	0	0
+CRenderTarget	6	16	14	0	0	1	1	0	1	0	0
 CReplaceSerialise<CFileFormatEditMapBrushHeader	0	3	3	0	0	0	0	0	0	0	0
 CReplaceSerialise<CFileFormatHeightMapCell	0	1	1	0	0	0	0	0	0	0	0
 CReplaceSerialise<CFileFormatMapHeader	0	1	1	0	0	0	0	0	0	0	0
@@ -3126,7 +3126,7 @@ CSummonerAttacker	4	1	1	0	0	0	0	0	0	0	0
 CSummonerDef	2	3	3	0	0	2	2	2	0	0	0
 CSummonerMinion	3	1	1	0	0	0	0	0	0	0	0
 CSummonerToKill	8	3	3	0	0	0	0	0	0	0	0
-CSurface	40	47	44	0	0	3	3	3	0	0	0
+CSurface	40	47	44	0	0	4	4	4	0	0	0
 CSurfaceCompositor	6	6	5	0	0	0	0	0	0	0	0
 CSurveyDialog	81	3	3	0	0	0	0	0	0	0	0
 CSuspendableProcessMicrothread	6	4	4	0	0	0	0	0	0	0	0
@@ -3138,7 +3138,7 @@ CSwordVoid	2	1	1	0	0	0	0	0	0	0	0
 CSymbolMap	18	15	11	0	0	0	0	0	0	0	0
 CSystemFont	2	1	1	0	0	0	0	0	0	0	0
 CSystemFontCharacter	2	0	0	0	0	0	0	0	0	0	0
-CSystemManager	34	20	18	0	0	0	0	0	0	0	0
+CSystemManager	34	20	18	0	0	1	1	0	1	0	0
 CSystemManagerInit	1	1	0	0	0	0	0	0	0	0	0
 CSystemRegistry	10	36	35	0	0	1	1	0	1	0	0
 CTB_Bard	4	1	1	0	0	0	0	0	0	0	0
@@ -3160,7 +3160,7 @@ CTCActionUseMapTable	3	0	0	0	0	0	0	0	0	0	0
 CTCActionUsePickUp	3	0	0	0	0	0	0	0	0	0	0
 CTCActionUsePickUpGenericBox	3	0	0	0	0	0	0	0	0	0	0
 CTCActionUsePutInInventory	3	0	0	0	0	0	0	0	0	0	0
-CTCActionUseReadable	7	5	4	0	0	0	0	0	0	0	0
+CTCActionUseReadable	7	4	3	0	0	0	0	0	0	0	0
 CTCActionUseScriptedHook	15	13	11	0	0	0	0	0	0	0	0
 CTCActionUseSearch	3	0	0	0	0	0	0	0	0	0	0
 CTCActionUseSign	3	0	0	0	0	0	0	0	0	0	0
@@ -3366,7 +3366,7 @@ CTCInterestingToVillagers	4	0	0	0	0	0	0	0	0	0	0
 CTCInterface	0	4	0	0	0	0	0	0	0	0	0
 CTCInventory	118	93	90	0	0	0	0	0	0	0	0
 CTCInventoryAbilities	81	100	99	0	0	3	3	3	0	0	0
-CTCInventoryBase	140	135	132	0	0	6	6	6	0	0	0
+CTCInventoryBase	140	135	132	0	0	7	7	7	0	0	0
 CTCInventoryClothing	50	37	37	0	0	2	2	2	0	0	0
 CTCInventoryExperience	84	62	58	0	0	0	0	0	0	0	0
 CTCInventoryItem	60	103	101	0	0	15	15	2	11	0	0
@@ -4085,6 +4085,7 @@ NHitLocationCodelets	4	0	0	0	0	0	0	0	0	0	0
 NHitLocations	0	1	0	0	0	0	0	0	0	0	0
 NHitLocations::CPhysicalPrimitiveCylinder	0	1	0	0	0	0	0	0	0	0	0
 NInputProcess	1	0	0	0	0	0	0	0	0	0	0
+NInventory::CTCInventoryBase	0	2	2	0	0	2	2	0	2	0	0
 NLocalisation	7	0	0	0	0	0	0	0	0	0	0
 NParticleEngine	32	0	0	0	0	0	0	0	0	0	0
 NParticleEngine::CPSCOrbit	0	1	0	0	0	0	0	0	0	0	0
@@ -4233,7 +4234,7 @@ _Cons_val<std::allocator<std::pair<CSkeletalMorphs::CEntry,float>_>,std::pair<CS
 _Cons_val<std::allocator<std::pair<CWideString_const_,CChecksumCacheFile::CEntry>_>,std::pair<CWideString_const_,CChecksumCacheFile::CEntry>,std::pair<class_CWideString_const_,struct_CChecksumCacheFile	0	3	3	0	0	0	0	0	0	0	0
 _Cons_val<std::allocator<std::pair<CWideString_const_,float>_>,std::pair<CWideString_const_,float>,std	0	12	12	0	0	1	1	0	1	0	0
 _Cons_val<std::allocator<std::pair<EClothingSuitPart_const_,long>_>,std::pair<EClothingSuitPart_const_,long>,std	0	1	1	0	0	0	0	0	0	0	0
-_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	0	479	479	0	0	330	330	28	296	0	0
+_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	0	478	478	0	0	331	331	28	297	0	0
 _Cons_val<std::allocator<std::pair<long_const_,CShopItem>_>,std::pair<long_const_,CShopItem>,std	0	5	5	0	0	0	0	0	0	0	0
 _Cons_val<std::allocator<std::pair<long_const_,NProfileTimer::CProfilingInfo>_>,std::pair<long_const_,NProfileTimer::CProfilingInfo>,std::pair<long_const_,class_NProfileTimer	0	1	1	0	0	0	0	0	0	0	0
 _Cons_val<std::allocator<std::pair<unsigned___int64_const_,CGroupMemberData>_>,std::pair<unsigned___int64_const_,CGroupMemberData>,std	0	3	3	0	0	0	0	0	0	0	0
