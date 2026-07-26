@@ -22,12 +22,12 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Analysis DB | Usable reconstruction/navigation names | 99.211% |
 | Analysis DB | Calling convention known | 77.674% |
 | Analysis DB | Complete non-`undefined` prototype | 69.049% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **2,826** |
-| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **2,499** (5.04%) |
-| Reconstruction | — of which byte-**identical** (no relocation masking) | 1,886 (3.81%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **3,156** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **2,829** (5.71%) |
+| Reconstruction | — of which byte-**identical** (no relocation masking) | 1,895 (3.82%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
-| Auto-RE intake | Generated candidates / structural checker PASS | 623 / 611 |
+| Auto-RE intake | Generated candidates / structural checker PASS | 632 / 619 |
 | Boot path | GFMain direct-call sites proven | **40 / 257** (15.56%) |
 | Boot path | Callable authored GFMain phases | **2 / 10** (20.00%) |
 | Boot path | Current Phase 3 direct calls proven | **21 / 34** (61.76%) |
@@ -38,10 +38,10 @@ separately and is never counted as reconstructed merely because a structural che
 The successful refresh also synchronizes this table automatically; GitHub is updated at reviewed
 checkpoints rather than publishing live, unreviewed queue output.
 The first **5%** compiled-byte-match milestone (2,478 functions) is passed; current verified retail
-parity is **5.04%** of the 49,553-function catalog. The lower match count than an earlier README is an
+parity is **5.71%** of the 49,553-function catalog. The lower match count than an earlier README is an
 audit reconciliation, not deleted source: the unified gate now exposes every `DIFFER` and missing
 function-start oracle instead of mixing older mass-land and curated-subset totals.
-The 5.04% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
+The 5.71% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
 a second lens over the 3,952-byte GFMain coordinator: they measure proven direct call sites and
 callable integration phases, not percentage of total engineering time. Repeated calls count
 separately because every occurrence must be linked in the correct lifetime and control-flow
@@ -192,6 +192,13 @@ verified parity are documented in `docs/FULL_DECOMP.md`.
 The first installed hourly run added another 204 manifest-backed exact matches from four bounded
 batches. Its incremental VC7.1 gate rebuilt the 204 changed rows in 32 seconds, and the new local
 object/oracle fingerprint cache reduced the unchanged 2,154-row parity pass to 0.18 seconds.
+
+The latest convergence pass added **330** more verified functions. Seven came from the final
+ordinary 32-byte batches; a new pending-pattern replay then recovered 323 earlier misses after the
+deterministic vocabulary learned global-object tail calls, optional global-pointer calls, and
+small method/field wrapper sequences. Replay rejects addresses outside the canonical manifest,
+deduplicates staged rows, and uses the same byte-and-behavior landing gate. This means a pattern
+improvement now harvests old batches automatically instead of helping only newly selected code.
 
 The first modern reconstruction proof of concept now lives in
 `rebuild/modern/multiplayer/`: an x64 C++23 `GameEvent` model and codec using `std::span`,
