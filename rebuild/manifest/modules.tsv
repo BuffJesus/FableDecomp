@@ -353,7 +353,7 @@ CAbilityTrackDef	1	8	4	0	0	0	0	0	0	0	0
 CAbilityTrackLevelDef	1	17	3	0	0	0	0	0	0	0	0
 CAction	2	1	1	0	0	0	0	0	0	0	0
 CActionBase	2	0	0	0	0	0	0	0	0	0	0
-CActionDoCreatureAction	3	751	750	1	0	2	2	1	1	0	0
+CActionDoCreatureAction	3	750	749	1	0	1	1	0	1	0	0
 CActionDropGenericBox	2	0	0	0	0	0	0	0	0	0	0
 CActionEventAddObject	4	2	2	0	0	0	0	0	0	0	0
 CActionEventCameraShake	4	1	1	0	0	0	0	0	0	0	0
@@ -4496,7 +4496,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11369	1994	42	1	77	77	39	22	0	0
+_global	0	11370	1995	42	1	78	78	39	23	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

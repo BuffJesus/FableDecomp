@@ -1173,12 +1173,12 @@
   },
   {
    "address": "0x00415530",
-   "name": "GetActionName",
-   "module": "CActionDoCreatureAction",
-   "calling_convention": "__thiscall",
+   "name": "FableGetDefaultLanguageName_00415530",
+   "module": "_global",
+   "calling_convention": "__fastcall",
    "return_type": "CCharString",
-   "parameter_types": "CActionDoCreatureAction *",
-   "parity": "EXACT"
+   "parameter_types": "",
+   "parity": "RELOC"
   },
   {
    "address": "0x00415830",

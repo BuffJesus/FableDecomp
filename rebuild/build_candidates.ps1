@@ -2987,10 +2987,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00415530'
-        Module = 'CActionDoCreatureAction'
-        Source = '00/41/CActionDoCreatureAction_GetActionName_00415530.cpp'
-        TestSource = '00/41/CActionDoCreatureAction_GetActionName_00415530_test.cpp'
-        PassPattern = 'PASS_00415530'
+        Module = '_global'
+        Source = '00/41/Global_GetDefaultLanguageName_00415530.cpp'
+        TestSource = '00/41/Global_GetDefaultLanguageName_00415530_test.cpp'
+        PassPattern = 'FABLETLC_DEFAULT_LANGUAGE_NAME_BEHAVIOR PASS'
     }
     [pscustomobject]@{
         Address = '00415bf0'

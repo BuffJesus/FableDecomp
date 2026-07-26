@@ -431,7 +431,7 @@ address	name	length	bytes
 00415bd0	CSurface::GetWidth	18	83ec088d042450e8b4d35d008b0083c408c3
 00415fc1	std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	18	db0550553701d84c2404e8a08a7e00c20400
 00415fe0	CMainGameComponent::ProcessEvent	18	8b4424048b00484875058b01ff5010c20400
-00415530	NTCScriptedControl::CActionDoCreatureAction::GetActionName	19	566aff6808eb22018bf1e8b19658008bc65ec3
+00415530	FableGetDefaultLanguageName_00415530	19	566aff6808eb22018bf1e8b19658008bc65ec3
 00415bf0	CSurface::GetHeight	19	83ec088d042450e894d35d008b400483c408c3
 00415ff2	CMainGameComponent::EventIsSystemEvent	19	8b4424048b004848740432c0eb02b001c20400
 00419352	std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	19	568bf18d4e08e8b31058008bce5ee9ab105800
