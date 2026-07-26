@@ -77,6 +77,17 @@ The integration fixture proves the phase returns successfully, invokes the conso
 boundary exactly once, and leaves a non-empty cached project path. The phase unit is clearly
 marked as authored integration code—not a claim that the complete 3,952-byte retail GFMain matches.
 
+Phase 2 recovery has reached all seven direct calls in retail order. PDB and donor lineage resolves
+the repeated one-byte
+`$E2` leaf as the compiled-out `NProfileTimer::EndProfile`, and the retail executable confirms the
+17-byte `CBankFileAsync::SetEnableFailureHandling` policy encoder. A second 17-byte TLC-specific
+leaf conditionally clears startup latch `0x013964A8`; its old BSim-derived `Draw` label was incorrect
+and has been replaced with a conservative address-bearing name. These leaves and the reused
+string/profile calls now relocation-match and pass focused behavior fixtures. The 69-byte
+`CFileInstallerSingleton::Get` also matches retail exactly, including its lazy 160-byte allocation,
+constructor, and counted-pointer assignment paths. Typing the caller's temporary counted-pointer
+cleanup is the next Phase 2 ownership closure.
+
 The unattended Wave 3 lane has moved from the co-op event/package codecs into ForgeFSE Quest
 wrappers. The current refresh validates 452/452 recommended Quest bindings against their exact
 CGSI vtable slots; generated wrappers remain reviewable intake until their ABI, behavior, and
