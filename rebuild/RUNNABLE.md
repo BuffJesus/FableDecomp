@@ -54,7 +54,11 @@ float conversion into a compact integer D3D9 endpoint. The exact 79-byte
 vertex queue. Exact 98-byte `CTexture::operator=` and 34-byte
 `CTexture::Uninitialise` bodies now execute the temporary/current/candidate
 wrapper lifetime events. The relocation-matched 74-byte preallocated initializer
-and behavior-gated `CalcByteLength` null path create the temporary wrapper, while
+and behavior-gated `CalcByteLength` null path create the temporary wrapper.
+Calc's nonnull path is fully link-resolved through relocation-matched
+`CPixelFormat::Initialise` and `GetColourDepth` bodies plus the exact
+1,692-byte retail pixel-format table; the temporary visual wrapper remains
+null by design. The
 exact 121-byte `RestoreCaptureBlock` closes the compact capture sentinel.
 Remaining dispatch is still authored rather than the
 complete

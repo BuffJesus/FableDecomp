@@ -98,6 +98,9 @@ $setRenderWindowSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderManag
 $clearRender2DVertexQueueSource = Join-Path $rebuildRoot 'src\compiled\00\9e\Render2DDrawList_CopyBlock_009e1440.cpp'
 $restoreRenderStateCaptureSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderStateManager_RestoreCaptureBlock_00a05840.cpp'
 $textureCalcByteLengthSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_CalcByteLength_009f9ee0.cpp'
+$pixelFormatGetColourDepthSource = Join-Path $rebuildRoot 'src\compiled\00\9e\CPixelFormat_GetColourDepth_009e3820.cpp'
+$pixelFormatInitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\9e\CPixelFormat_InitialiseD3DFormat_009e3830.cpp'
+$pixelFormatTableSource = Join-Path $rebuildRoot 'src\compiled\01\29\CPixelFormat_Table_0129ba40.cpp'
 $textureInitialisePreallocatedSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_InitialiseFromPreallocatedTexture_009fa230.cpp'
 $textureAssignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_Assignment_009fa1c0.cpp'
 $textureUninitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_Uninitialise_009f9f70.cpp'
@@ -156,6 +159,9 @@ $setRenderWindowObject = Join-Path $outDir 'set_render_window.obj'
 $clearRender2DVertexQueueObject = Join-Path $outDir 'clear_render2d_vertex_queue.obj'
 $restoreRenderStateCaptureObject = Join-Path $outDir 'restore_render_state_capture.obj'
 $textureCalcByteLengthObject = Join-Path $outDir 'texture_calc_byte_length.obj'
+$pixelFormatGetColourDepthObject = Join-Path $outDir 'pixel_format_get_colour_depth.obj'
+$pixelFormatInitialiseObject = Join-Path $outDir 'pixel_format_initialise.obj'
+$pixelFormatTableObject = Join-Path $outDir 'pixel_format_table.obj'
 $textureInitialisePreallocatedObject = Join-Path $outDir 'texture_initialise_preallocated.obj'
 $textureAssignmentObject = Join-Path $outDir 'texture_assignment.obj'
 $textureUninitialiseObject = Join-Path $outDir 'texture_uninitialise.obj'
@@ -315,6 +321,9 @@ $required = @(
     $clearRender2DVertexQueueSource,
     $restoreRenderStateCaptureSource,
     $textureCalcByteLengthSource,
+    $pixelFormatGetColourDepthSource,
+    $pixelFormatInitialiseSource,
+    $pixelFormatTableSource,
     $textureInitialisePreallocatedSource,
     $textureAssignmentSource,
     $textureUninitialiseSource,
@@ -1308,6 +1317,33 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$pixelFormatGetColourDepthObject" $pixelFormatGetColourDepthSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $pixelFormatGetColourDepthObject)
+    ) {
+        throw 'Failed to compile recovered pixel-format colour depth.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$pixelFormatInitialiseObject" $pixelFormatInitialiseSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $pixelFormatInitialiseObject)
+    ) {
+        throw 'Failed to compile recovered pixel-format initialisation.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$pixelFormatTableObject" $pixelFormatTableSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $pixelFormatTableObject)
+    ) {
+        throw 'Failed to compile the recovered retail pixel-format table.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$textureInitialisePreallocatedObject" $textureInitialisePreallocatedSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -1444,6 +1480,9 @@ try {
         $clearRender2DVertexQueueObject,
         $restoreRenderStateCaptureObject,
         $textureCalcByteLengthObject,
+        $pixelFormatGetColourDepthObject,
+        $pixelFormatInitialiseObject,
+        $pixelFormatTableObject,
         $textureInitialisePreallocatedObject,
         $textureAssignmentObject,
         $textureUninitialiseObject,
@@ -1586,7 +1625,9 @@ try {
         $displaySetViewportObject $setRenderWindowObject `
         $clearRender2DVertexQueueObject `
         $restoreRenderStateCaptureObject `
-        $textureCalcByteLengthObject $textureInitialisePreallocatedObject `
+        $textureCalcByteLengthObject `
+        $pixelFormatGetColourDepthObject $pixelFormatInitialiseObject `
+        $pixelFormatTableObject $textureInitialisePreallocatedObject `
         $textureAssignmentObject $textureUninitialiseObject `
         $visualBootBehaviorObject $visualBootResource `
         user32.lib gdi32.lib d3d9.lib
@@ -1670,7 +1711,7 @@ try {
     } else {
         'AuthoredFallback'
     }
-    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DRecoveredLifecycle"
+    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DRecoveredPixelFormat"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude
