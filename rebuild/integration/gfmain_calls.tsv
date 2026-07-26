@@ -1,11 +1,11 @@
-phase	call_site	target	analysis_name
+phase	call_site	target	analysis_name	validated_grade	validated_source
 1	00402535	0099ebf0	CCharString
 1	0040253f	009d8240	$E2
 1	00402547	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
 1	00402553	00403b10	CSystemManagerInit
 1	0040255c	0099aed0	CCharString
-1	00402583	00997510	GetProjectPath
-1	0040258a	009974f0	SetCurrentPath
+1	00402583	00997510	GetProjectPath	RELOCATION_MATCH	rebuild/src/compiled/00/99/CAFile_GetProjectPath_00997510.cpp
+1	0040258a	009974f0	SetCurrentPath	RELOCATION_MATCH	rebuild/src/compiled/00/99/CAFile_SetCurrentPath_009974f0.cpp
 1	00402593	0099b510	~CCharString
 1	004025a1	00413c50	InitialiseConsoleVariables
 2	004025ac	009d8250	$E2
