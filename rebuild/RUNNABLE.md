@@ -130,16 +130,16 @@ services, recover the retail window/renderer, load archives, or enter the game l
 | 1 | `0x00401067` | CRT entry | 466 | `agent-pass` | [source](../lift/reports/wave3/code/00/40/0x00401067_global_entry.cpp) | Structural candidate only; contains a raw register-fed CRT helper call and has not crossed the VC7.1 behavior/parity gate. |
 | 2 | `0x00403480` | WinMain wrapper | 141 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/Global_WinMain_00403480.cpp) | VC7.1 source matches all 141 non-relocation retail bytes and passes first-instance/duplicate-instance behavior; Stage 2 now carries its GFMain handoff through the authored Phase 1 integration unit. |
 | 3 | `0x00402510` | GFMain | 3952 | `INTEGRATION_PHASE1` | [source](../rebuild/integration/gfmain_phase1.cpp) | The 3,952-byte coordinator is split into ten call clusters; Phase 1 is callable with seven direct callees at relocation match, CSystemManagerInit behavior-proven with one moved instruction, and the 4,158-byte console registrar explicitly stubbed. |
-| 4 | `0x004022B0` | GFInitialise | 311 | `BEHAVIOR_PASS_NEAR_MATCH` | [source](candidates/manual/00/40/GFInitialise_004022b0.cpp) | Retail proves a zero-parameter coordinator. The corrected candidate passes behavior and matches bytes 0-219 after relocation masking, but its readable clamp tail builds to 312 bytes versus retail's 311. |
-| 5 | `0x00413120` | GFInitialise_SetupProgressDisplay | 128 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/Global_GFInitialiseSetupProgressDisplay_00413120.cpp) | The 128-byte leaf and ownership behavior are proven and now execute in the authored visual boot harness; the complete retail coordinator and renderer remain incomplete. |
+| 4 | `0x004022B0` | GFInitialise | 311 | `BEHAVIOR_PASS_NEAR_MATCH` | [source](../rebuild/candidates/manual/00/40/GFInitialise_004022b0.cpp) | Retail proves a zero-parameter fastcall coordinator. The corrected candidate passes behavior and matches through byte 219, but its dimension-clamp tail builds to 312 bytes versus retail's 311. |
+| 5 | `0x00413120` | GFInitialise_SetupProgressDisplay | 128 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/Global_GFInitialiseSetupProgressDisplay_00413120.cpp) | The 128-byte leaf and ownership behavior are proven and now execute in the authored visual boot harness; the surrounding full retail GFInitialise and renderer remain incomplete. |
 
 ## Next dependency closure
 
 1. **CRT entry (`0x00401067`):** Recover the masked CRT helper identity and promote the entry function.
 2. **WinMain wrapper (`0x00403480`):** Extend the integration path from the Phase 2 boundary one dependency closure at a time.
 3. **GFMain (`0x00402510`):** Close the constructor scheduling residue and replace the console boundary from recovered registration data while advancing Phase 2.
-4. **GFInitialise (`0x004022B0`):** Close the one-byte clamp scheduling residue, verify the remaining engine globals, and promote the full coordinator.
-5. **GFInitialise_SetupProgressDisplay (`0x00413120`):** Replace the instrumented progress-object boundary with recovered engine/display ownership.
+4. **GFInitialise (`0x004022B0`):** Close the clamp scheduling residue, verify the remaining engine globals, and promote the full coordinator.
+5. **GFInitialise_SetupProgressDisplay (`0x00413120`):** Replace the instrumented progress-object boundary with recovered engine ownership while promoting the full coordinator.
 
 ## GFMain dependency phases
 

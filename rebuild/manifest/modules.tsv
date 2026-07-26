@@ -391,7 +391,7 @@ CActiveDialogueInfo	0	4	0	0	0	0	0	0	0	0	0
 CActiveEntity	0	1	0	0	0	0	0	0	0	0	0
 CActiveEntityScript<NScript::CQ_HangingTreeEvilScript>	0	120	120	0	0	0	0	0	0	0	0
 CActiveEntityScriptBase	3	1	0	0	0	0	0	0	0	0	0
-CActiveFile	4	433	398	0	0	78	78	15	51	0	0
+CActiveFile	4	433	398	0	0	106	106	15	79	0	0
 CActiveQuest	4	1	0	0	0	0	0	0	0	0	0
 CActivity	1	1	1	0	0	0	0	0	0	0	0
 CAnimComponentCombatComboChain	6	7	7	0	0	1	1	1	0	0	0
@@ -2149,7 +2149,7 @@ CLadyGreyWifeManagerScript	4	4	3	0	0	0	0	0	0	0	0
 CLadyGreysBed	2	1	1	0	0	0	0	0	0	0	0
 CLandscapeBackgroundDynamicBuildTemplate	6	1	0	0	0	0	0	0	0	0	0
 CLandscapeBackgroundLoadTask	1	43	43	0	0	0	0	0	0	0	0
-CLandscapeBackgroundPatch	36	3019	3019	2	1	149	149	35	84	0	0
+CLandscapeBackgroundPatch	36	3019	3019	2	1	221	221	35	156	0	0
 CLandscapeBackgroundSubNodeBase	0	4	4	0	0	3	3	3	0	0	0
 CLandscapeBackgroundSubNodeSplitBranch	7	54	53	0	0	1	1	1	0	0	0
 CLandscapeBackgroundTreeNode	59	29	29	3	0	4	4	2	0	0	0
@@ -3231,7 +3231,7 @@ CTCCarriedActionUseShow	3	0	0	0	0	0	0	0	0	0	0
 CTCCarriedActionUseSpade	5	0	0	0	0	0	0	0	0	0	0
 CTCCarriedActionUseTrophy	5	2	1	0	0	0	0	0	0	0	0
 CTCCarriedActionUseWallMount	3	0	0	0	0	0	0	0	0	0	0
-CTCCarryable	16	258	239	0	0	23	23	6	16	0	0
+CTCCarryable	16	258	239	0	0	49	49	6	42	0	0
 CTCCarrying	31	18	17	0	0	0	0	0	0	0	0
 CTCChest	14	11	7	0	0	0	0	0	0	0	0
 CTCClock	9	3	3	0	0	0	0	0	0	0	0
@@ -4048,7 +4048,7 @@ LTextBinTree	0	3	0	0	0	0	0	0	0	0	0
 LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	0	2	0	0	0	0	0	0	0	0	0
 LTextSymbol	0	2	2	0	0	0	0	0	0	0	0
 LTextSystem	0	2	2	0	0	0	0	0	0	0	0
-LTextTreeWalkThrough	0	171	140	0	0	19	19	5	13	0	0
+LTextTreeWalkThrough	0	171	140	0	0	38	38	5	32	0	0
 LandscapeLayerList	0	1	0	0	0	0	0	0	0	0	0
 LinkedList	0	1	0	0	0	0	0	0	0	0	0
 LoadVerts<CPatchTesselationEdgeStrip	0	4	4	0	0	0	0	0	0	0	0
