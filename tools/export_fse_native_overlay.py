@@ -18,7 +18,9 @@ def read_functions(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(stream, delimiter="\t"))
 
 
-def owner_relevance(module: str, scope: str) -> tuple[str, int, str | None]:
+def owner_relevance(
+    module: str, scope: str, qualified_name: str = ""
+) -> tuple[str, int, str | None]:
     """Classify whether an exact leaf-name match lives in a plausible FSE owner."""
     if scope == "Entity":
         if module in ("CScriptThing", "CGameScriptThing"):
@@ -29,6 +31,10 @@ def owner_relevance(module: str, scope: str) -> tuple[str, int, str | None]:
             return "moderate", 25, "game-script-interface-owner"
     elif scope == "Quest":
         if module == "CGameScriptInterface":
+            if qualified_name.startswith("CGameScriptInterface::"):
+                # A decorated/vtable-backed member identity is stronger owner evidence
+                # than an unqualified helper that was grouped into the same module.
+                return "strong", 180, "quest-interface-qualified-owner"
             return "strong", 60, "quest-interface-owner"
         if "Quest" in module or module in ("CWorld", "CThingManager", "CHero"):
             return "moderate", 35, "quest-runtime-owner"
@@ -60,7 +66,7 @@ def score(row: dict[str, str], scope: str) -> tuple[int, list[str]]:
     elif row.get("lift_grade") == "functional":
         value += 70
         reasons.append("verified-functional-lift")
-    _, owner_points, owner_reason = owner_relevance(module, scope)
+    _, owner_points, owner_reason = owner_relevance(module, scope, row["name"])
     value += owner_points
     if owner_reason:
         reasons.append(owner_reason)
@@ -70,7 +76,7 @@ def score(row: dict[str, str], scope: str) -> tuple[int, list[str]]:
 def candidate(row: dict[str, str], scope: str) -> dict[str, object]:
     address = int(row["address"], 16)
     points, reasons = score(row, scope)
-    owner_match, _, _ = owner_relevance(row["module"], scope)
+    owner_match, _, _ = owner_relevance(row["module"], scope, row["name"])
     implementation_verified = (
         row.get("retail_parity") in ("MATCH", "RELOCATION_MATCH")
         or row.get("lift_grade") in ("matching", "functional")
@@ -136,7 +142,7 @@ def main() -> int:
         by_leaf.setdefault(leaf.casefold(), []).append(row)
 
     functions: list[dict[str, object]] = []
-    unique = ambiguous = unmatched = recommended = 0
+    unique = ambiguous = unmatched = recommended = verified_recommended = 0
     for function in fse.get("functions", []):
         matches = [candidate(row, function.get("scope", "")) for row in by_leaf.get(function["name"].casefold(), [])]
         matches.sort(key=lambda item: (-int(item["score"]), str(item["address"])))
@@ -158,6 +164,8 @@ def main() -> int:
             if len(matches) == 1 or int(matches[0]["score"]) >= int(matches[1]["score"]) + 15:
                 chosen = matches[0]["address"]
                 recommended += 1
+                if bool(matches[0]["engineImplementationVerified"]):
+                    verified_recommended += 1
         functions.append(
             {
                 "name": function["name"],
@@ -192,6 +200,7 @@ def main() -> int:
             "ambiguousExactNameMatches": ambiguous,
             "unmatched": unmatched,
             "ownerAlignedRecommendations": recommended,
+            "verifiedRecommendedBindings": verified_recommended,
             "verifiedEngineFunctions": len(verified_engine_functions),
             "hookApprovedBindings": 0,
         },
@@ -212,6 +221,7 @@ def main() -> int:
             [
                 Path(r"D:\Code\FableForge\docs\re_reference\fse_native_overlay.json"),
                 Path(r"D:\Code\ForgeFSE\docs\fse_native_overlay.json"),
+                Path(r"D:\Code\FQT\FQT\FSE_Source\docs\fse_native_overlay.json"),
             ]
         )
     changed = [str(path.resolve()) for path in outputs if write_if_changed(path.resolve(), payload)]

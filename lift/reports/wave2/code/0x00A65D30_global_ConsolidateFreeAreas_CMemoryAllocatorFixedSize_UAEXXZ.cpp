@@ -1,3 +1,0 @@
-void CMemoryAllocatorFixedSize::ConsolidateFreeAreas()
-{
-}

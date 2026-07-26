@@ -1,0 +1,1 @@
+void __fastcall sub_00434830() {}

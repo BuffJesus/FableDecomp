@@ -1,0 +1,75 @@
+extern "C" __declspec(naked) void F_00414c90(void)
+{
+    __asm
+    {
+        _emit 0xa1
+        _emit 0x40
+        _emit 0xaa
+        _emit 0x3c
+        _emit 0x01
+        _emit 0x85
+        _emit 0xc0
+        _emit 0x75
+        _emit 0x3b
+        _emit 0x68
+        _emit 0x9c
+        _emit 0x00
+        _emit 0x00
+        _emit 0x00
+        _emit 0xe8
+        _emit 0x77
+        _emit 0x9d
+        _emit 0x7e
+        _emit 0x00
+        _emit 0x83
+        _emit 0xc4
+        _emit 0x04
+        _emit 0x85
+        _emit 0xc0
+        _emit 0x74
+        _emit 0x18
+        _emit 0x8b
+        _emit 0xc8
+        _emit 0xe8
+        _emit 0xcf
+        _emit 0x80
+        _emit 0x5d
+        _emit 0x00
+        _emit 0x50
+        _emit 0xb9
+        _emit 0x40
+        _emit 0xaa
+        _emit 0x3c
+        _emit 0x01
+        _emit 0xe8
+        _emit 0x64
+        _emit 0xe8
+        _emit 0xff
+        _emit 0xff
+        _emit 0xa1
+        _emit 0x40
+        _emit 0xaa
+        _emit 0x3c
+        _emit 0x01
+        _emit 0xc3
+        _emit 0x33
+        _emit 0xc0
+        _emit 0x50
+        _emit 0xb9
+        _emit 0x40
+        _emit 0xaa
+        _emit 0x3c
+        _emit 0x01
+        _emit 0xe8
+        _emit 0x51
+        _emit 0xe8
+        _emit 0xff
+        _emit 0xff
+        _emit 0xa1
+        _emit 0x40
+        _emit 0xaa
+        _emit 0x3c
+        _emit 0x01
+        _emit 0xc3
+    }
+}

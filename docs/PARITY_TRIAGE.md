@@ -1,0 +1,114 @@
+# Parity-gap triage — DIFFER candidates (2026-07-22)
+
+Diagnosis of the 41 `DIFFER` compiled candidates (compiled + behaviour-tested but not yet byte-matching retail). Method: precomputed retail-vs-built disassembly bundles (relocation-masked, mirroring `tools/compare_candidate_objects.py`); one diagnostician agent per tractable candidate; every proposed fix re-verified in isolation with the real VC7.1 `cl.exe` (byte-compare **and** full compile+link+behaviour-test) before applying. Only provable, test-passing fixes were landed.
+
+## Verified promotions applied (DIFFER → MATCH)
+
+| Address | Function | Result | Root cause / fix |
+|---|---|---|---|
+| `00403c60` | MemCmp_Unsigned16 | **MATCH** | operation_order_or_idiom: Replaced the `if (count != 0) do {...} while (index < count)` structure with a canonical unsigned for-loop (yields `jbe` entry guard, opcode 76 vs 74), and replaced the `-(unsigned)(...) & 0xFFFFFFFE + 1` return expression with the `... ? -1 : 1` ternary (yields `sbb;and;inc` instead of the redundant double `neg`). Compiled with the exact gate command `cl /O2 /Oy /W3` under VC7.1: the emitted .tex |
+| `00a65d70` | ?GetHeaderOverhead@CMemoryAllocatorFixedSize@@UAEKXZ | **MATCH** | operation_order_or_idiom: Move the accumulation (`total += headerSize + AreaCount*4`) ahead of the pointer advance (`current = current->Next`) and read `current->AreaCount` inline instead of into a named local. Empirically under VC7.1 cl /O2 /Oy /W3 this makes the compiler load HeaderSize into ECX before `push esi` and use ESI for the loop-carried value, producing object .text bytes identical to retail (36/36). Confirmed b |
+| `00a65e20` | ?GetNoFreeAreas@CMemoryAllocatorFixedSize@@UAEKXZ | **MATCH** | operation_order_or_idiom: Reads AreaCapacity fresh inside the accumulation expression (instead of hoisting it into a local) and advances `current = current->Next` AFTER the `total +=` accumulation. This makes VC7.1 /O2 /Oy hoist the AreaCapacity load into the loop preheader before the esi/edi pushes and pick the retail register coloring (capacity held across the loop, count in edi, temp in esi), producing a byte-exact `.te |
+| `0040135c` | __setdefaultprecision | **RELOCATION_MATCH** | codegen_flag_or_intrinsic: The source semantics were already correct (_controlfp(_PC_53, _MCW_PC) == push 0x10000; push 0x30000; call). The only byte divergence is stack cleanup style, which is a codegen size-vs-speed decision, not a source logic bug. Adding `#pragma optimize("s", on)` at file scope makes the file-local optimizer favor size, so cl.exe emits `pop ecx; pop ecx` even under the harness's fixed `/O2 /Oy` command |
+| `00b676a0` | ?OnReleaseDefaultPoolResources@CEngineLandscapeRenderer@@UAEXXZ | **RELOCATION_MATCH** | calling_convention_or_virtualness: Verified empirically with the project's own VC7.1 at D:\Tools\vc71 using the exact `cl /nologo /c /O2 /Oy /W3` command. The corrected body compiles to a .text section of exactly 0x45 (69) bytes matching retail's 69, and every byte matches retail once the 3 relocation fields are masked (global ref at off 0x02, call rel32 at off 0x2b, global ref at off 0x31): retail 8b15 XXXX 8b4224 8b4a20 56 2bc1 3 |
+
+These five compile, byte/relocation-match retail, and pass their existing behaviour test in isolation, so the automation's next Rebuild Refresh promotes them without risk to its all-or-nothing catalog build.
+
+## Rejected (false byte-match)
+
+- `0040e170` Array_LinearSearchInt: byte-match only by CHANGING the prototype (PAHPAH000 vs test's PAHPAH00) -> LINK_FAIL against catalog test; rejected.
+
+## Partial (idiom corrected, residual scheduler artifact — still DIFFER)
+
+- `0081efc0` CMap::SetEngineBlendAt (operation_order_or_idiom): Retail's `cdq; and edx,3; add r,edx; sar r,2` is standard VC7.1 codegen for signed `int / 4`. The manual `(v + ((v>>31)&3)) >> 2` is arithmetically identical but the explicit `v >> 31` prevents the compiler from using cdq, producing the longer mov/sar-0x1f form and altered register allocation/order. Rewriting both quarter-grid coordinate reductions as `x / 4` and `y / 4` restores the cdq idiom and
+- `0081f090` CMap::GetEngineThemeAt (operation_order_or_idiom): Replaces the hand-rolled signed-divide-by-4 idiom `(n + ((n>>31)&3)) >> 2` with plain `n / 4` for both x and y, making VC7.1 emit retail's cdq(cltd)/and 3/add/sar 2 sequence instead of mov+sar 0x1f+and+add. This corrects the actual root-cause idiom behind the 73-byte tail mismatch. Compiles clean under `cl /O2 /Oy /W3` and the behavior test still passes (MAP_GET_ENGINE_THEME_TEST PASS). Full byte-
+- `0081f170` CMap::GetEngineBlendAt (operation_order_or_idiom): Replace the hand-rolled signed round-toward-zero shift `((v + ((v>>31)&3)) >> 2)` with a true signed `/ 4`. VC7.1 /O2 lowers `signed / 4` to exactly the retail `cdq; and edx,0x3; add eax,edx; sar,0x2` idiom, matching the observed bytes and freeing the register pressure so the compiler reserves edi/esi function-wide (the source of retail's early `push edi` staging in the Default branch). Struct lay
+- `0081ee60` CMap::SetEngineThemeAt (operation_order_or_idiom): Reordered the top-level conditionals so the paintType==Default (game-grid) path is the fall-through of the first branch and paintType==Replace is the cold tail, matching retail's `jne L_nonzero` layout instead of the original's Replace-inline-first codegen. Also moved the `storage->gameGrid` load inside each themeId branch (evaluating the AddThemeDefIndexToPalette call before the grid deref in the
+- `00a65da0` ?GetTotalMemoryAllocated@CMemoryAllocatorFixedSize@@UAEKXZ (operation_order_or_idiom): Regroup the accumulation so each node's contribution is a single self-contained addend added to `total`. The original `total = total + areaCount * Alloc + Header` parses as `(total + areaCount*Alloc) + Header` (two adds into the accumulator), which made MSVC keep the loop-invariant AllocationSize live in esi and spill ebx as a multiply temporary — producing an extra `push ebx`, a `mov ebx,esi` cop
+- `00ab4700` ?SetPos@CMouseDX@@UAEXPBVC2DVector@@@Z (operation_order_or_idiom): Copies each vector field into a local (x, y) so MSVC reads position->X/->Y once and reuses the register for the second (Cached*) store, matching retail's mov ecx,[eax]/mov eax,ecx and mov edx,[eax+4]/mov ecx,edx sequences. Replaces the context->ResolvePrimitiveOwner() thiscall with a free-function resolver (ResolveMousePrimitiveOwner) so no spurious `this`-load of position->Y is emitted, and cache
+- `008ed590` CObjectFamilyDef::GetRandomObject (operation_order_or_idiom): Removes the cached `count` local so VC7.1 recomputes (End-Begin)>>3 for each guard and each loop bound exactly as retail does (which is what produces the repeated [esi+0x40]/[esi+0x3c] reloads and the two-separate-subtraction pattern). Switches result access from a walked `entry->Object` pointer to indexed `mObjectsBegin[index].Object`, matching retail's `mov eax,[ebx+eax*8]`. The RNG/div block is
+
+## Two failure classes
+
+1. **Structural / source-controllable** — calling convention or virtualness, struct offset/type, signedness, a missing idiom, or a size-vs-speed codegen choice (`#pragma optimize("s")`). All five applied fixes are this class.
+
+2. **Register-allocation / instruction-scheduling artifacts** — same length and semantics, differ only in which physical register holds a value or where a callee-saved `push` lands. The CMap theme getters/setters fix the real idiom (hand-rolled signed /4 → `cdq` form) but retain a residual scheduler divergence no source form controls. Proximity of byte-match ≠ winnability.
+
+## Research tier (large 0%-match loaders)
+
+The ~16 large `DIFFER` loaders (Render 2654B, RenderForeground 4431B, LoadHeader 1929B, texture preloaders, …) are **behavioural reimplementations**, not instruction-faithful ports — they call named helper stubs and pass behaviour tests but cannot byte-match without a full rewrite pinning/inlining every engine call. Correctly deprioritised vs the small structural wins; they remain legitimately at the behaviour-tested tier.
+
+## Update — 6th promotion + confirmed dead-ends (2026-07-22, solo pass)
+
+- **`CMemoryAllocatorFixedSize::GetTotalMemoryAllocated` @00a65da0 → exact MATCH** (52/52, behaviour PASS).
+  Rewritten in the sibling `while`-loop style: `total += current->AreaCount *
+  AllocationSizeIncludingHeader + HeaderSize`. Both member reads hoist as loop-invariants (esi/ecx),
+  matching retail's two-callee-saved-register shape (the prior form spilled to ebx).
+- **`WideString_EqualsLen` @00404280 — unwinnable metric artifact, left DIFFER.** Retail is 64 bytes
+  ending at `ret`; its two `return 0` branches `jne 0x40` jump *past* the counted body to an
+  MSVC-folded **shared `xor eax,eax; ret` epilogue** that lives outside this function. A standalone TU
+  must emit its own 3-byte tail (→67 bytes), so byte-count can never equal retail's 64. Not a source
+  defect; the comparison is apples-to-oranges for functions with folded shared epilogues.
+- **CMap theme accessors (`GetEngineThemeAt` @0081f090 et al.) — non-source-controllable scheduler
+  artifact, left DIFFER.** The signed `/4` idiom is already corrected (`cdq` form). The residual is
+  pure register allocation / evaluation order: retail keeps `quarterGrid` in `ecx` and arranges each
+  divided operand in `eax` for a 1-byte `cdq`; VC7.1 on every source form tried holds them in `ecx`
+  and emits the 5-byte `mov edx,reg; sar edx,0x1f`. Commutative-reorder attempts are canonicalized
+  away. Confirmed class-2 (see failure classes above); proximity (74/147) ≠ winnability.
+
+## Remaining DIFFER — do-not-regrind list
+- `Std_Move_Backward` @00405ba0 (9/30): only divergence is `mov esi,edx; sub esi,ecx` (retail) vs
+  `sub edx,ecx; mov esi,edx` (ours) — a register-allocation ordering nuance; size_t-cast + reorder
+  attempts do not move it. Class-2 scheduler artifact.
+- `__onexit` @00401296, `__RTC_Initialize` @004012ce: CRT-internal; depend on absolute CRT global
+  addresses/layout a standalone TU cannot reproduce (indirect jmp/pushes through fixed globals).
+  Not byte-matchable in isolation.
+- `CObjectFamilyDef::GetRandomObject` @008ed590 (1/166), `CMouseDX::SetPos` @00ab4700 (4/174):
+  low structural match — need a fresh Ghidra decompile pass, not a codegen tweak.
+
+**Parity lane outcome (this session): 6 DIFFER→MATCH promotions landed** (MemCmp_Unsigned16,
+GetHeaderOverhead, GetNoFreeAreas, GetTotalMemoryAllocated exact; __setdefaultprecision,
+OnReleaseDefaultPoolResources relocation). Remaining DIFFERs are metric/scheduler artifacts or
+research-tier reimplementations; next byte-parity growth needs fresh oracle bytes (Ghidra window)
+for new promotion-queue functions, sequenced around the auto-RE loop's Ghidra ownership.
+
+## Std_Move_Backward @00405ba0 — CLOSED as unmatchable-from-source (2026-07-23)
+Exhaustive: flag/pragma grid (170), temp-intro/reassoc AST mutations, random multi-mutation
+composition, statement-split, keep-last-live rewrite, and the **genuine VC7.1 STL source shape**
+(`_Uninit_copy` scalar: `size_t _Count = (size_t)(_Last-_First); return (T*)memmove(...) + _Count;`
+from `D:\Tools\vc71\include\memory`) all produce `sub edx,ecx; mov esi,edx` where retail has
+`mov esi,edx; sub esi,ecx` (score 4, same length/semantics). Since even the original's own source
+form doesn't reproduce it under our cl 13.10, the residue is a compiler build/SP middle-end ordering
+difference — not source-controllable. Do not regrind.
+
+## Accessor batch — permuter harvest exhausted (2026-07-23)
+Ran --mutate --random over all remaining DIFFER accessors. Flag/pragma sweep already banked the
+5 reachable wins (optimize("s")). Residue splits: (a) length-mismatched candidates
+(prefix N/large) are SEMANTIC gaps needing re-authoring, not permutable; (b) equal-length score 3-8
+(005bd404/427 GetAnimationSpeedValue, 00643b3b IsAwareOfThing, 005486b0 PeekConnectedToTrackNode)
+are the register-allocation-artifact class — same wall as Std_Move_Backward. No further byte-parity
+wins are flag/mutation-reachable in this batch; next growth is re-authoring the semantic misses.
+
+## Std_Move_Backward @00405ba0 — CRACKED (2026-07-23), verdict reversed
+The earlier "unmatchable-from-source" closure was WRONG. Root cause of the score-4 residue
+(`sub edx,ecx; mov esi,edx` ours vs `mov esi,edx; sub esi,ecx` retail) was register liveness,
+and liveness is source-controllable. Fix = **liveness-shaping**: write the count `(last-first)`
+as a REPEATED INLINE subexpression at both use sites instead of a named local:
+```cpp
+dest = (char*)memmove(dest, first, (char*)last - (char*)first) + ((char*)last - (char*)first);
+```
+The named-local form (`size_t count = ...; memmove(...,count); dest += count;`) lets MSVC compute
+`last-first` in place (`sub edx,ecx`) then copy to the callee-saved reg (`mov esi,edx`). Duplicating
+the subexpression makes MSVC materialize it directly into esi (`mov esi,edx; sub esi,ecx`) to keep it
+live across the call — retail's exact form. Also `if (last != first)` (not `first != last`) fixes the
+`cmp edx,ecx` operand order. Verified RELOCATION_MATCH + behavior PASS under VC7.1 /O2 /Oy.
+
+Generalizable lever for the "register-allocation / scheduler artifact" class: **liveness-shaping**
+— named-local vs repeated-inline-subexpression vs temp-into-specific-var changes which register holds
+a value and when it is materialized. This is a NEW permuter mutation axis the prior sweep never tried
+(it mutated statement structure/flags, not value liveness). The `/G5/G6/G7/GB` CPU-target flags do
+NOT affect this residue (swept, all identical). Compiler build is 13.10.3077 (VC7.1 RTM).
+
+INTEGRITY NOTE: the mass-loop had landed a named-local Std_Move_Backward that passes behavior but
+DIFFERs from retail (does not byte-match). Replaced with the matching form. Worth a catalog-wide
+recompile-vs-oracle sweep to find other behavior-pass-but-not-byte-match lands.

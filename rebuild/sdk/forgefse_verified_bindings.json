@@ -1,0 +1,663 @@
+{
+ "count": 73,
+ "note": "Retail address+CC+signature+behaviour byte-confirmed; ready for ForgeFSE owner/vtable + runtime-probe binding step.",
+ "bindings": [
+  {
+   "address": "0x008d0110",
+   "api_names": "Entity.IsNull",
+   "qualified_name": "CGameScriptThing::IsNull",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "wrapper-adapter",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x004aaf80",
+   "api_names": "Entity.MsgIsKicked",
+   "qualified_name": "CScriptThing::MsgIsKicked",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x004aada0",
+   "api_names": "Entity.MsgOpenedChest",
+   "qualified_name": "CScriptThing::MsgOpenedChest",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x004aace0",
+   "api_names": "Entity.MsgPerformedAnyAggressiveSpecialAbility",
+   "qualified_name": "CScriptThing::MsgPerformedAnyAggressiveSpecialAbility",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x004aad00",
+   "api_names": "Entity.MsgPerformedAnyNonAggressiveSpecialAbility",
+   "qualified_name": "CScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x004aacc0",
+   "api_names": "Entity.MsgPerformedAnySpecialAbility",
+   "qualified_name": "CScriptThing::MsgPerformedAnySpecialAbility",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x004ab040",
+   "api_names": "Entity.SetAsUsable",
+   "qualified_name": "CScriptThing::SetAsUsable",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00890fc0",
+   "api_names": "Quest.CameraResetToViewBehindHero",
+   "qualified_name": "CGameScriptInterface::CameraResetToViewBehindHero",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088ec90",
+   "api_names": "Quest.CameraSetCameraPreloadFlag",
+   "qualified_name": "CGameScriptInterface::CameraSetCameraPreloadFlag",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00890180",
+   "api_names": "Quest.CancelRadialBlurFade",
+   "qualified_name": "CGameScriptInterface::CancelRadialBlurFade",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x008a78e0",
+   "api_names": "Quest.ClearActiveGossipCategories",
+   "qualified_name": "CGameScriptInterface::ClearActiveGossipCategories",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x008a7930",
+   "api_names": "Quest.ClearIsGossipForPlayer",
+   "qualified_name": "CGameScriptInterface::ClearIsGossipForPlayer",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x008987e0",
+   "api_names": "Quest.ConfiscateAllHeroWeapons",
+   "qualified_name": "CGameScriptInterface::ConfiscateAllHeroWeapons",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x008901e0",
+   "api_names": "Quest.DisplacementMonochromeEffectColourFadeOut",
+   "qualified_name": "CGameScriptInterface::DisplacementMonochromeEffectColourFadeOut",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x00891c40",
+   "api_names": "Quest.DisplayMoneyBag",
+   "qualified_name": "CGameScriptInterface::DisplayMoneyBag",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088e210",
+   "api_names": "Quest.DisplayTime",
+   "qualified_name": "CGameScriptInterface::DisplayTime",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00891320",
+   "api_names": "Quest.EnableDangerMusic",
+   "qualified_name": "CGameScriptInterface::EnableDangerMusic",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088f4a0",
+   "api_names": "Quest.EnableDecals",
+   "qualified_name": "CGameScriptInterface::EnableDecals",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088f620",
+   "api_names": "Quest.EnableSounds",
+   "qualified_name": "CGameScriptInterface::EnableSounds",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x006e7290",
+   "api_names": "Quest.EndLetterBox",
+   "qualified_name": "CGameScriptInterface::EndLetterBox",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088e4c0",
+   "api_names": "Quest.FadeScreenIn",
+   "qualified_name": "CGameScriptInterface::FadeScreenIn",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x00891520",
+   "api_names": "Quest.FailAllActiveQuests",
+   "qualified_name": "CGameScriptInterface::FailAllActiveQuests",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088e500",
+   "api_names": "Quest.FixMovieSequenceCamera",
+   "qualified_name": "CGameScriptInterface::FixMovieSequenceCamera",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x00893040",
+   "api_names": "Quest.GetActiveGossipCategoriesSize",
+   "qualified_name": "CGameScriptInterface::GetActiveGossipCategoriesSize",
+   "calling_convention": "__thiscall",
+   "return_type": "int",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088fb70",
+   "api_names": "Quest.GetBettingAccept",
+   "qualified_name": "CGameScriptInterface::GetBettingAccept",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088fb50",
+   "api_names": "Quest.GetBettingActive",
+   "qualified_name": "CGameScriptInterface::GetBettingActive",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088fc30",
+   "api_names": "Quest.GetBoastingEnabled",
+   "qualified_name": "CGameScriptInterface::GetBoastingEnabled",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088faf0",
+   "api_names": "Quest.GetCheapHeadLooking",
+   "qualified_name": "CGameScriptInterface::GetCheapHeadLooking",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088fbb0",
+   "api_names": "Quest.GetCountBetMoneyDown",
+   "qualified_name": "CGameScriptInterface::GetCountBetMoneyDown",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088f900",
+   "api_names": "Quest.GetCountdownTimer",
+   "qualified_name": "CGameScriptInterface::GetCountdownTimer",
+   "calling_convention": "__thiscall",
+   "return_type": "float",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x006e7340",
+   "api_names": "Quest.GetGameAngleXY",
+   "qualified_name": "CGameScriptInterface::GetGameAngleXY",
+   "calling_convention": "__thiscall",
+   "return_type": "float",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088fbf0",
+   "api_names": "Quest.GetGlobalTargetingDistanceOffset",
+   "qualified_name": "CGameScriptInterface::GetGlobalTargetingDistanceOffset",
+   "calling_convention": "__thiscall",
+   "return_type": "float",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088f9e0",
+   "api_names": "Quest.GetGuildSealRecallAngleXY",
+   "qualified_name": "CGameScriptInterface::GetGuildSealRecallAngleXY",
+   "calling_convention": "__thiscall",
+   "return_type": "float",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00890370",
+   "api_names": "Quest.GetHeroHealth",
+   "qualified_name": "CGameScriptInterface::GetHeroHealth",
+   "calling_convention": "__thiscall",
+   "return_type": "float",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x008903a0",
+   "api_names": "Quest.GetHeroHealthMax",
+   "qualified_name": "CGameScriptInterface::GetHeroHealthMax",
+   "calling_convention": "__thiscall",
+   "return_type": "float",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x008903d0",
+   "api_names": "Quest.GetHeroHealthPercentage",
+   "qualified_name": "CGameScriptInterface::GetHeroHealthPercentage",
+   "calling_convention": "__thiscall",
+   "return_type": "float",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x00893050",
+   "api_names": "Quest.GetIsGossipForPlayerSize",
+   "qualified_name": "CGameScriptInterface::GetIsGossipForPlayerSize",
+   "calling_convention": "__thiscall",
+   "return_type": "int",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088fa90",
+   "api_names": "Quest.GetPlayerUsingMeleeDummies",
+   "qualified_name": "CGameScriptInterface::GetPlayerUsingMeleeDummies",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088fab0",
+   "api_names": "Quest.GetPlayerUsingRangedDummies",
+   "qualified_name": "CGameScriptInterface::GetPlayerUsingRangedDummies",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088fad0",
+   "api_names": "Quest.GetPlayerUsingWillDummies",
+   "qualified_name": "CGameScriptInterface::GetPlayerUsingWillDummies",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088fb30",
+   "api_names": "Quest.GetPrizeTavernTable",
+   "qualified_name": "CGameScriptInterface::GetPrizeTavernTable",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088fb10",
+   "api_names": "Quest.GetQuitTavernGame",
+   "qualified_name": "CGameScriptInterface::GetQuitTavernGame",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088fbd0",
+   "api_names": "Quest.GetSpotTheAdditionBeaten",
+   "qualified_name": "CGameScriptInterface::GetSpotTheAdditionBeaten",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088fc10",
+   "api_names": "Quest.GetTradingPriceMult",
+   "qualified_name": "CGameScriptInterface::GetTradingPriceMult",
+   "calling_convention": "__thiscall",
+   "return_type": "float",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088ecc0",
+   "api_names": "Quest.IsCameraInScriptedMode",
+   "qualified_name": "CGameScriptInterface::IsCameraInScriptedMode",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x008902b0",
+   "api_names": "Quest.IsHeroChild",
+   "qualified_name": "CGameScriptInterface::IsHeroChild",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x008913c0",
+   "api_names": "Quest.IsHeroInTavernGame",
+   "qualified_name": "CGameScriptInterface::IsHeroInTavernGame",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0089b330",
+   "api_names": "Quest.IsHeroNaked",
+   "qualified_name": "CGameScriptInterface::IsHeroNaked",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x00891870",
+   "api_names": "Quest.IsHeroOnQuest",
+   "qualified_name": "CGameScriptInterface::IsHeroOnQuest",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088f450",
+   "api_names": "Quest.IsHeroSleepingEnabled",
+   "qualified_name": "CGameScriptInterface::IsHeroSleepingEnabled",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00892270",
+   "api_names": "Quest.IsInCutscene",
+   "qualified_name": "CGameScriptInterface::IsInCutscene",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x00899ba0",
+   "api_names": "Quest.IsPlayerCreatureBlocking",
+   "qualified_name": "CGameScriptInterface::IsPlayerCreatureBlocking",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x00890170",
+   "api_names": "Quest.IsRadialBlurFadeActive",
+   "qualified_name": "CGameScriptInterface::IsRadialBlurFadeActive",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00892b30",
+   "api_names": "Quest.IsSafeToDisplayGameInfo",
+   "qualified_name": "CGameScriptInterface::IsSafeToDisplayGameInfo",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088f950",
+   "api_names": "Quest.IsSavingEnabled",
+   "qualified_name": "CGameScriptInterface::IsSavingEnabled",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0088e4d0",
+   "api_names": "Quest.IsScreenFadingOut",
+   "qualified_name": "CGameScriptInterface::IsScreenFadingOut",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0088f420",
+   "api_names": "Quest.IsTeleportingActive",
+   "qualified_name": "CGameScriptInterface::IsTeleportingActive",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0088f3e0",
+   "api_names": "Quest.IsTutorialSystemEnabled",
+   "qualified_name": "CGameScriptInterface::IsTutorialSystemEnabled",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x00892030",
+   "api_names": "Quest.MiniMapRemoveAllMarkers",
+   "qualified_name": "CGameScriptInterface::MiniMapRemoveAllMarkers",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088e400",
+   "api_names": "Quest.MiniMapSetAsEnabled",
+   "qualified_name": "CGameScriptInterface::MiniMapSetAsEnabled",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x00894370",
+   "api_names": "Quest.MsgIsGameInfoClickedPast",
+   "qualified_name": "CGameScriptInterface::MsgIsGameInfoClickedPast",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x008942c0",
+   "api_names": "Quest.MsgOnChestOpeningCancelled",
+   "qualified_name": "CGameScriptInterface::MsgOnChestOpeningCancelled",
+   "calling_convention": "__thiscall",
+   "return_type": "bool",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x00890150",
+   "api_names": "Quest.RadialBlurFadeOut",
+   "qualified_name": "CGameScriptInterface::RadialBlurFadeOut",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x00891510",
+   "api_names": "Quest.RemoveAllAvailableQuestCardsFromGuild",
+   "qualified_name": "CGameScriptInterface::RemoveAllAvailableQuestCardsFromGuild",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x00891c30",
+   "api_names": "Quest.RemoveAllQuestInfoElements",
+   "qualified_name": "CGameScriptInterface::RemoveAllQuestInfoElements",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0089b390",
+   "api_names": "Quest.RemoveHeroClothing",
+   "qualified_name": "CGameScriptInterface::RemoveHeroClothing",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x006e7d40",
+   "api_names": "Quest.ResetCreatureCreationDelayFrames",
+   "qualified_name": "CGameScriptInterface::ResetCreatureCreationDelayFrames",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x00896fd0",
+   "api_names": "Quest.ResetDeathRecoveryMarkerNameToDefault",
+   "qualified_name": "CGameScriptInterface::ResetDeathRecoveryMarkerNameToDefault",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088ff10",
+   "api_names": "Quest.ResetToDefaultTheme",
+   "qualified_name": "CGameScriptInterface::ResetToDefaultTheme",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088fff0",
+   "api_names": "Quest.ResetToDefaultThemeExternals",
+   "qualified_name": "CGameScriptInterface::ResetToDefaultThemeExternals",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x008970f0",
+   "api_names": "Quest.ResetWhetherToFailQuestOnDeathToDefault",
+   "qualified_name": "CGameScriptInterface::ResetWhetherToFailQuestOnDeathToDefault",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "RELOC"
+  },
+  {
+   "address": "0x0088edb0",
+   "api_names": "Quest.CameraCancelScreenEffect",
+   "qualified_name": "CGameScriptInterface::CameraCancelScreenEffect",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  },
+  {
+   "address": "0x0088eda0",
+   "api_names": "Quest.CameraUseScreenEffect",
+   "qualified_name": "CGameScriptInterface::CameraUseScreenEffect",
+   "calling_convention": "__thiscall",
+   "return_type": "void",
+   "bridge_kind": "direct-signature",
+   "parity": "EXACT"
+  }
+ ]
+}

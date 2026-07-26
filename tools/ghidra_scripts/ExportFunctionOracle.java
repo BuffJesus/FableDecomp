@@ -8,20 +8,43 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExportFunctionOracle extends GhidraScript {
   @Override public void run() throws Exception {
     String[] args = getScriptArgs();
     if (args.length < 2) {
-      throw new IllegalArgumentException("usage: <output.tsv> <hex-address> [hex-address ...]");
+      throw new IllegalArgumentException(
+          "usage: <output.tsv> <hex-address> [hex-address ...] | <output.tsv> @<address-file>");
     }
     File output = new File(args[0]);
+    List<String> addressTexts = new ArrayList<>();
+    if (args.length == 2 && args[1].startsWith("@")) {
+      File addressFile = new File(args[1].substring(1));
+      for (String line : Files.readAllLines(addressFile.toPath(), StandardCharsets.UTF_8)) {
+        String text = line.trim();
+        if (!text.isEmpty() && !text.startsWith("#")) {
+          addressTexts.add(text);
+        }
+      }
+    }
+    else {
+      for (int index = 1; index < args.length; ++index) {
+        addressTexts.add(args[index]);
+      }
+    }
+    if (addressTexts.isEmpty()) {
+      throw new IllegalArgumentException("address list is empty");
+    }
+
     Memory memory = currentProgram.getMemory();
     try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
         new FileOutputStream(output), StandardCharsets.UTF_8))) {
       writer.write("address\tname\tlength\tbytes\n");
-      for (int index = 1; index < args.length; ++index) {
-        String text = args[index].replace("0x", "");
+      for (String addressText : addressTexts) {
+        String text = addressText.replace("0x", "");
         Address address = toAddr(Long.parseLong(text, 16));
         Function function = getFunctionAt(address);
         if (function == null) {

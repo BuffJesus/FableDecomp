@@ -1,7 +1,9 @@
 param(
     [int]$MaxAttemptsPerTarget = 2,
     [int]$MaxTargetsPerRun = 16,
-    [int]$TargetTimeoutMinutes = 35
+    [int]$TargetTimeoutMinutes = 35,
+    [int]$RefreshWaitMinutes = 5,
+    [switch]$Preview
 )
 
 $ErrorActionPreference = 'Stop'
@@ -34,10 +36,43 @@ $reAgent = 'C:\Users\Cornelio\AppData\Local\Programs\Python\Python314\Scripts\re
 $env:RE_AGENT_CODEX_BIN = 'C:\Users\Cornelio\AppData\Local\JetBrains\Rider2026.2\acp-agents\.runtimes\node\24.13.0\node.exe'
 $env:RE_AGENT_CODEX_JS = 'C:\Users\Cornelio\AppData\Local\JetBrains\Rider2026.2\acp-agents\.runtimes\node\24.13.0\npm-cache\_npx\a758dee5a93640a8\node_modules\@openai\codex\bin\codex.js'
 $env:RE_AGENT_CODEX_MAX_ATTEMPTS = '3'
-$env:RE_AGENT_DECOMPILE_CACHE_DIR = 'D:\Documents\FableTLC\lift\.cache\re-agent-decompile'
+$decompileCacheRoot = 'D:\Documents\FableTLC\lift\.cache\re-agent-decompile'
+
+# === Co-op / multiplayer cluster (priority probe, added 2026-07-23) =========
+# Fable retains a disabled co-op subsystem (docs/FINDINGS.md). Decompile the GATE,
+# the CNetworkClient client/host lifecycle, the CGameEventPackage replication +
+# WIRE FORMAT (Compress/InitFromCompressedBuffer), and the CTCCoopSpirit entity so
+# we can judge how complete-vs-gutted the path is and plan a revival. These run
+# first (already-recorded addresses are skipped by the shared ledgers).
+$coopTargets = @(
+    [pscustomobject]@{ Address = '0x00449D20'; Slug = 'mp-playermgr-ismultiplayergameactive' },
+    [pscustomobject]@{ Address = '0x00449B60'; Slug = 'mp-playermgr-getmultiplayercolour' },
+    [pscustomobject]@{ Address = '0x004AE940'; Slug = 'mp-networkclient-initialiseaslocal' },
+    [pscustomobject]@{ Address = '0x004AE9D0'; Slug = 'mp-networkclient-update' },
+    [pscustomobject]@{ Address = '0x004AEA70'; Slug = 'mp-networkclient-isfreetorender' },
+    [pscustomobject]@{ Address = '0x004AEAA0'; Slug = 'mp-networkclient-getlocaleventpackageset' },
+    [pscustomobject]@{ Address = '0x004AEBA0'; Slug = 'mp-networkclient-geteventpackageset' },
+    [pscustomobject]@{ Address = '0x00416670'; Slug = 'mp-processeventpackage' },
+    [pscustomobject]@{ Address = '0x004165E8'; Slug = 'mp-checksync' },
+    [pscustomobject]@{ Address = '0x0041726D'; Slug = 'mp-updatefromeventpackageset' },
+    [pscustomobject]@{ Address = '0x00416148'; Slug = 'mp-geteventpackagesetfromsave' },
+    [pscustomobject]@{ Address = '0x004161A7'; Slug = 'mp-addeventpackagesettosave' },
+    [pscustomobject]@{ Address = '0x009F1810'; Slug = 'mp-gameevent-compressintobuffer' },
+    [pscustomobject]@{ Address = '0x009F1870'; Slug = 'mp-gameevent-initfromcompressedbuffer' },
+    [pscustomobject]@{ Address = '0x009F19A0'; Slug = 'mp-packageset-compressintobuffer' },
+    [pscustomobject]@{ Address = '0x009F1AC0'; Slug = 'mp-packageset-initfromcompressedbuffer' },
+    [pscustomobject]@{ Address = '0x009F16F0'; Slug = 'mp-packageset-addpackage' },
+    [pscustomobject]@{ Address = '0x00A0D340'; Slug = 'mp-processedinput-addgameevent' },
+    [pscustomobject]@{ Address = '0x004D55D0'; Slug = 'mp-coopspirit-construct' },
+    [pscustomobject]@{ Address = '0x006700F0'; Slug = 'mp-coopspirit-oncreate' },
+    [pscustomobject]@{ Address = '0x006701A0'; Slug = 'mp-coopspirit-updateattractiontomaster' },
+    [pscustomobject]@{ Address = '0x0066FF20'; Slug = 'mp-coopspirit-swaptohero' },
+    [pscustomobject]@{ Address = '0x00670710'; Slug = 'mp-coopspirit-updatescore' },
+    [pscustomobject]@{ Address = '0x0062C0E0'; Slug = 'mp-world-eamovespirit' }
+)
 
 # Prototype-closure seed: quick ABI/accessor wins first, then moderate bodies.
-$seedTargets = @(
+$seedTargets = @() + $coopTargets + @(
     [pscustomobject]@{ Address = '0x00A66550'; Slug = 'fixedallocator-getfragmentation' },
     [pscustomobject]@{ Address = '0x00BDC130'; Slug = 'landscapemap-relocatedata' },
     [pscustomobject]@{ Address = '0x00B6CA10'; Slug = 'landscaperenderer-peekscenefilterflags' },
@@ -82,6 +117,26 @@ $seedTargets = @(
     [pscustomobject]@{ Address = '0x00A793D0'; Slug = 'nav-connectverticaledge-a' },
     [pscustomobject]@{ Address = '0x00A79680'; Slug = 'nav-connectverticaledge-b' }
 )
+
+# ForgeFSE binding-verification lane. The generated rows are retail candidates,
+# never executable hooks. This runner only reconstructs and structurally checks
+# the candidate implementation; explicit hook approval remains a later build-ID,
+# ABI, owner/callsite, and runtime-probe gate.
+$bindingQueuePath = Join-Path $root 'rebuild\backlog\forgefse-binding-queue.tsv'
+if (Test-Path -LiteralPath $bindingQueuePath) {
+    $seedTargets += @(
+        Import-Csv -LiteralPath $bindingQueuePath -Delimiter "`t" |
+            Where-Object { $_.hook_approved -ne '1' } |
+            ForEach-Object {
+                [pscustomobject]@{
+                    Address = $_.address
+                    Slug = "forgefse-binding-$($_.address.ToLowerInvariant().Replace('0x', ''))"
+                    Lane = 'forgefse-binding'
+                    ApiNames = $_.api_names
+                }
+            }
+    )
+}
 
 # The donor resolver has saturated at two unique signatures, but 40 small
 # semantic/accessor bodies still need evidence-backed review. Feed them through
@@ -199,7 +254,11 @@ if ($targets.Count -eq 0) {
 if ($targets.Count -eq 0) {
     $completedAt = Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzz'
     Set-Content -LiteralPath $completePath -Value "backlog-exhausted $completedAt" -Encoding UTF8
-    Write-QueueLog "COMPLETE prototype backlog exhausted at=$completedAt"
+    Write-QueueLog "COMPLETE reconstruction and ForgeFSE binding queues exhausted at=$completedAt"
+    exit 0
+}
+if ($Preview) {
+    $targets | Select-Object Address, Slug, Lane, ApiNames
     exit 0
 }
 Remove-Item -LiteralPath $completePath -Force -ErrorAction SilentlyContinue
@@ -216,8 +275,17 @@ if (Test-Path -LiteralPath $refreshPidPath) {
     try {
         $refreshPid = [int](Get-Content -LiteralPath $refreshPidPath -Raw)
         if (Test-ProcessCommand $refreshPid 'run_rebuild_refresh.ps1') {
-            Write-QueueLog "DEFER rebuild refresh owns Ghidra pid=$refreshPid"
-            exit 0
+            $refreshDeadline = (Get-Date).AddMinutes($RefreshWaitMinutes)
+            Write-QueueLog "WAIT rebuild refresh owns Ghidra pid=$refreshPid deadline=$($refreshDeadline.ToString('HH:mm:ss'))"
+            do {
+                Start-Sleep -Seconds 15
+            } while ((Get-Date) -lt $refreshDeadline -and
+                (Test-ProcessCommand $refreshPid 'run_rebuild_refresh.ps1'))
+            if (Test-ProcessCommand $refreshPid 'run_rebuild_refresh.ps1') {
+                Write-QueueLog "DEFER rebuild refresh still active pid=$refreshPid after=${RefreshWaitMinutes}m"
+                exit 0
+            }
+            Write-QueueLog "RESUME rebuild refresh released Ghidra pid=$refreshPid"
         }
     } catch {}
 }
@@ -235,13 +303,30 @@ try {
             Write-QueueLog "SKIP recorded $($target.Address) $($target.Slug)"
             continue
         }
+        $targetStartedAt = Get-Date
         for ($attempt = 1; $attempt -le $MaxAttemptsPerTarget; ++$attempt) {
+            if (Test-Path -LiteralPath $stopPath) {
+                Write-QueueLog "STOP marker found before target=$($target.Address) attempt=$attempt"
+                exit 0
+            }
             $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
-            $runLogRoot = Join-Path $liftRoot "logs\wave3\$(Get-Date -Format 'yyyy-MM-dd')"
+            $addressKey = $target.Address.ToLowerInvariant().Replace('0x', '')
+            $addressRelative = Join-Path $addressKey.Substring(0, 2) (
+                Join-Path $addressKey.Substring(2, 2) $addressKey
+            )
+            $runLogRoot = Join-Path $liftRoot (
+                Join-Path "logs\wave3\$(Get-Date -Format 'yyyy-MM-dd')" $addressRelative
+            )
+            $env:RE_AGENT_DECOMPILE_CACHE_DIR = Join-Path $decompileCacheRoot (
+                Join-Path $addressKey.Substring(0, 2) $addressKey.Substring(2, 2)
+            )
             New-Item -ItemType Directory -Path $runLogRoot -Force | Out-Null
+            New-Item -ItemType Directory -Path $env:RE_AGENT_DECOMPILE_CACHE_DIR -Force | Out-Null
             $stdoutPath = Join-Path $runLogRoot "re-agent-wave3-$($target.Slug)-$stamp.stdout.log"
             $stderrPath = Join-Path $runLogRoot "re-agent-wave3-$($target.Slug)-$stamp.stderr.log"
-            Write-QueueLog "RUN target=$($target.Address) slug=$($target.Slug) attempt=$attempt"
+            $lane = if ($target.Lane) { $target.Lane } else { 'reconstruction' }
+            $apiNames = if ($target.ApiNames) { $target.ApiNames } else { '' }
+            Write-QueueLog "RUN target=$($target.Address) slug=$($target.Slug) lane=$lane api=$apiNames attempt=$attempt"
             $process = Start-Process -FilePath $reAgent -ArgumentList @(
                 '--config', $configPath, 'reverse', '--address', $target.Address, '--max-rounds', '4'
             ) -WorkingDirectory $liftRoot -NoNewWindow -PassThru `
@@ -260,6 +345,13 @@ try {
                 $providerBlocked = $true
                 break
             }
+        }
+        try {
+            & (Join-Path $liftRoot 'scripts\organize_lift.ps1') `
+                -MinimumAgeMinutes 0 -Wave wave3 -Address $target.Address `
+                -StartedAt $targetStartedAt | Out-Null
+        } catch {
+            Write-QueueLog "WARN target artifact organization failed target=$($target.Address): $($_.Exception.Message)"
         }
         if ($providerBlocked) { exit 0 }
     }

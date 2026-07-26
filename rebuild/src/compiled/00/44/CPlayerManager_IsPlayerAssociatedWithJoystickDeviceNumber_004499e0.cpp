@@ -1,0 +1,76 @@
+extern "C" __declspec(naked) void cand_004499e0(void)
+{
+    __asm
+    {
+        _emit 0x53
+        _emit 0x55
+        _emit 0x56
+        _emit 0x8B
+        _emit 0xD9
+        _emit 0x8B
+        _emit 0x73
+        _emit 0x10
+        _emit 0x2B
+        _emit 0x73
+        _emit 0x0C
+        _emit 0x57
+        _emit 0xC1
+        _emit 0xFE
+        _emit 0x02
+        _emit 0x33
+        _emit 0xFF
+        _emit 0x85
+        _emit 0xF6
+        _emit 0x7E
+        _emit 0x1F
+        _emit 0x8B
+        _emit 0x6C
+        _emit 0x24
+        _emit 0x14
+        _emit 0x8D
+        _emit 0xA4
+        _emit 0x24
+        _emit 0x00
+        _emit 0x00
+        _emit 0x00
+        _emit 0x00
+        _emit 0x8B
+        _emit 0x43
+        _emit 0x0C
+        _emit 0x8B
+        _emit 0x0C
+        _emit 0xB8
+        _emit 0xE8
+        _emit 0x05
+        _emit 0xDB
+        _emit 0x03
+        _emit 0x00
+        _emit 0x3B
+        _emit 0xC5
+        _emit 0x74
+        _emit 0x0E
+        _emit 0x47
+        _emit 0x3B
+        _emit 0xFE
+        _emit 0x7C
+        _emit 0xEC
+        _emit 0x5F
+        _emit 0x5E
+        _emit 0x5D
+        _emit 0x32
+        _emit 0xC0
+        _emit 0x5B
+        _emit 0xC2
+        _emit 0x04
+        _emit 0x00
+        _emit 0x5F
+        _emit 0x5E
+        _emit 0x5D
+        _emit 0xB0
+        _emit 0x01
+        _emit 0x5B
+        _emit 0xC2
+        _emit 0x04
+        _emit 0x00
+    }
+}

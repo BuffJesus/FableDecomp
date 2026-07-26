@@ -1,5 +1,6 @@
 param(
-    [switch]$Force
+    [switch]$Force,
+    [switch]$ResumeAfterOracle
 )
 
 $ErrorActionPreference = 'Stop'
@@ -23,12 +24,12 @@ function Test-ProcessCommand([int]$ProcessId, [string]$Needle) {
 
 function Get-InputFingerprint {
     $inputs = @(
-        Get-ChildItem (Join-Path $root 'lift\reports\primary\code') -Filter '*.cpp' -File -ErrorAction SilentlyContinue
-        Get-ChildItem (Join-Path $root 'lift\reports\retry\code') -Filter '*.cpp' -File -ErrorAction SilentlyContinue
-        Get-ChildItem (Join-Path $root 'lift\reports\wave2\code') -Filter '*.cpp' -File -ErrorAction SilentlyContinue
-        Get-ChildItem (Join-Path $root 'lift\reports\wave3\code') -Filter '*.cpp' -File -ErrorAction SilentlyContinue
-        Get-ChildItem (Join-Path $rebuild 'src\compiled') -Filter '*.cpp' -File -ErrorAction SilentlyContinue
-        Get-ChildItem (Join-Path $rebuild 'tests') -Filter '*.cpp' -File -ErrorAction SilentlyContinue
+        Get-ChildItem (Join-Path $root 'lift\reports\primary\code') -Filter '*.cpp' -File -Recurse -ErrorAction SilentlyContinue
+        Get-ChildItem (Join-Path $root 'lift\reports\retry\code') -Filter '*.cpp' -File -Recurse -ErrorAction SilentlyContinue
+        Get-ChildItem (Join-Path $root 'lift\reports\wave2\code') -Filter '*.cpp' -File -Recurse -ErrorAction SilentlyContinue
+        Get-ChildItem (Join-Path $root 'lift\reports\wave3\code') -Filter '*.cpp' -File -Recurse -ErrorAction SilentlyContinue
+        Get-ChildItem (Join-Path $rebuild 'src\compiled') -Filter '*.cpp' -File -Recurse -ErrorAction SilentlyContinue
+        Get-ChildItem (Join-Path $rebuild 'tests') -Filter '*.cpp' -File -Recurse -ErrorAction SilentlyContinue
         Get-Item (Join-Path $root 'ghidra_out\engine_api.tsv') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $root 'ghidra_out\naming_stragglers\manifest.tsv') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $root 'ghidra_out\naming_stragglers\proposals.tsv') -ErrorAction SilentlyContinue
@@ -48,10 +49,16 @@ function Get-InputFingerprint {
         Get-Item (Join-Path $tools 'recover_msvc_prototypes.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'gen_fable_engine_header.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'export_fse_native_overlay.py') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $tools 'build_forgefse_binding_queue.py') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $tools 'audit_forgefse_binding_slots.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'validate_tooling_sdk.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'build_reconstruction_backlog.py') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $tools 'build_promotion_queue.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'triage_naming_quality.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'write_decomp_dashboard.py') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $tools 'artifact_layout.py') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $tools 'organize_decomp_artifacts.py') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $tools 'update_readme_progress.py') -ErrorAction SilentlyContinue
     ) | Where-Object { $null -ne $_ } | Sort-Object FullName
     $description = ($inputs | ForEach-Object {
         "$($_.FullName)|$($_.Length)|$($_.LastWriteTimeUtc.Ticks)"
@@ -134,6 +141,11 @@ if (Test-Path -LiteralPath $namingPid) {
     }
 }
 
+& $python (Join-Path $tools 'organize_decomp_artifacts.py') --root $root --apply --allow-active
+if ($LASTEXITCODE -ne 0) {
+    throw "decomp artifact organization failed with exit code $LASTEXITCODE"
+}
+
 $fingerprint = Get-InputFingerprint
 if (-not $Force -and (Test-Path -LiteralPath $statePath)) {
     try {
@@ -150,17 +162,27 @@ if (-not $Force -and (Test-Path -LiteralPath $statePath)) {
 Set-Content -LiteralPath $pidPath -Value $PID -Encoding ASCII
 Write-RefreshLog "START refresh pid=$PID fingerprint=$fingerprint"
 try {
-    Invoke-Checked 'MSVC decorated prototype recovery' {
-        & $python (Join-Path $tools 'recover_msvc_prototypes.py') --root $root
-    }
-    Invoke-Checked 'candidate compile gate' {
-        & $python (Join-Path $tools 'gate_re_agent_candidates.py') --root $root
-    }
-    Invoke-Checked 'VC7.1 candidate build and behavior tests' {
-        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $rebuild 'build_candidates.ps1')
-    }
-    Invoke-Checked 'retail oracle export' {
-        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $tools 'ExportCandidateOracles.ps1')
+    if ($ResumeAfterOracle) {
+        $compiledManifest = Join-Path $rebuild 'compile-gate\vc71-compiled.tsv'
+        $oracleManifest = Join-Path $rebuild 'oracles\auto-re-candidates.tsv'
+        if (-not (Test-Path -LiteralPath $compiledManifest) -or
+            -not (Test-Path -LiteralPath $oracleManifest)) {
+            throw 'ResumeAfterOracle requires compiled and retail-oracle manifests'
+        }
+        Write-RefreshLog 'RESUME after retail oracle export'
+    } else {
+        Invoke-Checked 'MSVC decorated prototype recovery' {
+            & $python (Join-Path $tools 'recover_msvc_prototypes.py') --root $root
+        }
+        Invoke-Checked 'candidate compile gate' {
+            & $python (Join-Path $tools 'gate_re_agent_candidates.py') --root $root
+        }
+        Invoke-Checked 'VC7.1 candidate build and behavior tests' {
+            & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $rebuild 'build_candidates.ps1')
+        }
+        Invoke-Checked 'retail oracle export' {
+            & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $tools 'ExportCandidateOracles.ps1')
+        }
     }
     Invoke-Checked 'retail parity comparison' {
         & $python (Join-Path $tools 'compare_candidate_objects.py') --root $root
@@ -173,6 +195,12 @@ try {
     }
     Invoke-Checked 'FSE native binding overlay' {
         & $python (Join-Path $tools 'export_fse_native_overlay.py') --root $root
+    }
+    Invoke-Checked 'ForgeFSE binding verification queue' {
+        & $python (Join-Path $tools 'build_forgefse_binding_queue.py') --root $root
+    }
+    Invoke-Checked 'ForgeFSE CGSI binding slot audit' {
+        & $python (Join-Path $tools 'audit_forgefse_binding_slots.py') --root $root
     }
     Invoke-Checked 'tooling SDK validation' {
         & $python (Join-Path $tools 'validate_tooling_sdk.py') --root $root
@@ -191,6 +219,12 @@ try {
     }
     Invoke-Checked 'coverage dashboard' {
         & $python (Join-Path $tools 'write_decomp_dashboard.py') --root $root
+    }
+    Invoke-Checked 'public README progress' {
+        & $python (Join-Path $tools 'update_readme_progress.py') --root $root
+    }
+    Invoke-Checked 'artifact layout index' {
+        & $python (Join-Path $tools 'organize_decomp_artifacts.py') --root $root --apply --allow-active
     }
     $newState = [ordered]@{
         fingerprint = $fingerprint

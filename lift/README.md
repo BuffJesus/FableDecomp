@@ -74,16 +74,28 @@ gate, replacing its source-parity engine with the byte-diff here.
 - `scripts/` contains PowerShell/Bash entry points, `bin/` contains command
   wrappers, and `proofs/{src,oracles,build}/` separates matching source, expected
   retail bytes, and disposable compiler output.
-- Per-attempt transcripts live under `logs/<wave>/YYYY-MM-DD/`. The queue runners
-  create these dated directories automatically. `scripts/organize_lift.ps1`
-  sweeps only completed root-level `*.stdout.log` and `*.stderr.log` files; it
-  defaults to a 30-minute safety window, detects active queue processes, never
-  overwrites a collision, and supports `-WhatIf`.
-- `.cache/` is replaceable decompiler cache data. Transcript housekeeping does
-  not touch reports, state, proof sources, or cache entries.
+- Per-attempt transcripts live under
+  `logs/<wave>/YYYY-MM-DD/<aa>/<bb>/<address>/`. Generated candidate source lives
+  under `reports/<wave>/code/<aa>/<bb>/`, and report-internal logs live under a
+  matching dated address leaf. Each queue runner calls
+  `scripts/organize_lift.ps1` after a target finishes, passing the target address
+  and start time so files are grouped as they are produced. The organizer
+  defaults to a 30-minute safety window for general sweeps, detects active queue
+  processes, never overwrites a collision, and supports `-WhatIf`.
+- `.cache/re-agent-decompile/<aa>/<bb>/` is replaceable decompiler cache data.
+  Runners select the target's shard before launch, and the workspace organizer
+  repairs older flat cache entries. Transcript housekeeping does not touch
+  state or proof sources.
 - `scripts/migrate_wave3_layout.ps1` completes the final Wave 3 cutover only
   after the legacy PID is gone. The scheduled Wave 3 runner invokes it before
   each new batch, so no manual cleanup check is required.
+
+The canonical rebuild refresh additionally runs
+`tools/organize_decomp_artifacts.py` at a queue-safe boundary. That organizer
+shards curated sources, tests, snapshots, and per-function compiler output,
+updates catalog paths, and writes `rebuild/ARTIFACT_INDEX.tsv`. A collision is a
+hard failure requiring review; generated snapshots are replaceable and ignored
+by Git.
 
 - `scripts/run_re_agent_queue.ps1` processes the 16 terrain targets sequentially and records
   each completed four-round result, including honest `FAIL` results.

@@ -1,54 +1,170 @@
 # Fable: The Lost Chapters — Decompilation & Native Modding
 
 A reverse-engineering project on the **native PC** `Fable.exe` (Fable: The Lost Chapters, Steam).
-**End goal: a full decompilation** — a complete, readable, buildable C/C++ source reconstruction of
+**End goal: a full decompilation** — a complete, readable, *buildable* C/C++ source reconstruction of
 the game (see `docs/FULL_DECOMP.md`) — with a deep native modding surface as the natural dividend.
 
 > **This is not a port project.** TLC is already a native x86-32 Windows game — there is nothing to
 > recompile (unlike the sibling **Fable2RE**, which statically recompiles an Xbox 360 PowerPC binary).
-> This is pure static analysis + live instrumentation of a **clean, unpacked PE32** (base `0x400000`).
+> This is pure static analysis + live instrumentation of a **clean, unpacked PE32** (ImageBase `0x400000`,
+> MSVC 2003 / VC7.1, ships `msvcr71.dll`).
+
+## Where the project stands
+
+Two milestones run in parallel: a near-complete **analysis database** (names + types for navigation and
+reasoning) and an early-stage **buildable reconstruction** (source that compiles under the original
+compiler and matches retail bytes). The reconstruction is deliberately *not* counted until it compiles.
+
+| Track | Metric | Status |
+|---|---|---|
+| Analysis DB | Functions catalogued | **49,553** |
+| Analysis DB | Mechanically named (no `FUN_*`) | 100.000% |
+| Analysis DB | Usable reconstruction/navigation names | 99.211% |
+| Analysis DB | Calling convention known | 77.660% |
+| Analysis DB | Complete non-`undefined` prototype | 69.027% |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **1,850** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **1,523** (3.07%) |
+| Reconstruction | — of which byte-**identical** (no relocation masking) | 914 (1.84%) |
+| Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
+| Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
+| Auto-RE intake | Generated candidates / structural checker PASS | 573 / 565 |
+
+Counts above are from the 2026-07-25 canonical refresh: the VC7.1 compile/behaviour catalog,
+`rebuild/compile-gate/retail-parity.json`, and `rebuild/COVERAGE.md`. Generated agent code is tracked
+separately and is never counted as reconstructed merely because a structural checker accepted it.
+The successful refresh also synchronizes this table automatically; GitHub is updated at reviewed
+checkpoints rather than publishing live, unreviewed queue output.
+The first **1%** compiled-byte-match milestone (496 functions) is passed; current verified retail
+parity is ~3.07% of the 49,553-function catalog. The lower match count than an earlier README is an
+audit reconciliation, not deleted source: the unified gate now exposes every `DIFFER` and missing
+function-start oracle instead of mixing older mass-land and curated-subset totals.
+**`docs/HANDOFF.md` is the authoritative resume point** — read its top section first.
+
+The unattended Wave 3 lane has moved from the co-op event/package codecs into ForgeFSE Quest
+wrappers. The current refresh validates 452/452 recommended Quest bindings against their exact
+CGSI vtable slots; generated wrappers remain reviewable intake until their ABI, behavior, and
+retail bytes are independently proven. See `docs/HANDOFF.md` for the live batch and promotion
+caveats.
+
+## The cut multiplayer system
+
+The retail PC binary retains a substantial disabled co-op implementation. It is more than a few
+unused strings, but it is **not a ready-to-enable multiplayer mode**.
+
+What survives:
+
+- `CPlayerManager` manages four player slots and exposes a data-driven
+  `IsMultiplayerGameActive` check.
+- `CTCCoopSpirit` is a combat/movement entity for the extra player, with player-one through
+  player-four definition slots.
+- `CNetworkClient` is embedded in `CMainGameComponent`; its per-frame update is gated by byte
+  `CNetworkClient+0x2662`. `InitialiseAsLocal` sets that gate and the required component back-pointer.
+- `CGameEvent`, `CGameEventPackage`, and `CGameEventPackageSet` retain a dense replication protocol.
+  An event is `[u16 id+flag][u8 player/subfield][u8 payload length][payload]`, while package sets add
+  sequence numbers and event counts.
+- The receive/apply path still rejects stale sequence numbers, forwards packages into the world and
+  display engine, dispatches individual events, and integrates package sets with save/load.
+
+What was cut or gutted:
+
+- `CheckSync` reads a remote three-word synchronization record and computes the local world checksum,
+  then discards every value. There is no comparison, desync latch, report, or recovery path.
+- The tag-1 sync-event producer and the meanings of the other two synchronization words are not yet
+  proven.
+- A complete retail lobby/transport startup path has not been recovered. Network host/client setup
+  and the original desync reaction still need reconstruction.
+- Raw-poking the enable byte is unsafe: update forwarders dereference a back-pointer installed by
+  `InitialiseAsLocal`, so setting only `+0x2662` can crash.
+
+The practical revival order is therefore: seat a valid second player, initialize local mode through
+the real initializer, confirm event sequence movement, rebuild synchronization checking, and only
+then attach a modern transport. The byte-level contract, corrected addresses, evidence limits, and
+revival plan are in [`docs/COOP_REVIVAL.md`](docs/COOP_REVIVAL.md).
 
 ## Why this is tractable
 - `Fable.exe` is a clean MSVC PE32 — **no packer, no DRM stub** — Ghidra loads it directly.
 - **FableScriptExtender (FSE)** already reversed the game's C++ scripting API: its **931-function
-  manifest** (`refs/fse_api_manifest.json`) and its **local source** (`D:\Code\FQT\SourceFilesToReference\FSE`)
-  seed Ghidra with real names, types, and engine call sites.
-- **~20 years of community RE** (fabletlcmod.com, Fable Explorer) already solved the *data formats* —
-  we do the complementary *engine internals* work.
-- The **Fable2RE** sibling project provides a proven Ghidra scripting suite + RE methodology, copied in.
+  manifest** (`refs/fse_api_manifest.json`) plus its local source seed Ghidra with real names, types,
+  and engine call sites. The `ForgeFSE` binding lane pins those call targets back into the database.
+- **Rich donor symbols.** BSim ports names from a PDB-symboled debug build (`ego_r.exe`, 28k PDB names)
+  and from `FableWin.exe` (the Lionhead level editor, 164k names) — this is what took naming from 3.9%
+  to ~100%. Runbook: `docs/BSIM_PORT.md`.
+- **~20 years of community RE** (fabletlcmod.com, Fable Explorer, EgoCore) already solved the *data
+  formats* — this project does the complementary *engine internals* work.
+
+## The reconstruction pipeline (`rebuild/`)
+
+Each function is promoted through an evidence gate, not asserted:
+
+1. **Auto-RE lift** — an agent lane drafts candidate C++ from Ghidra decompiler output
+   (`lift/reports/`), tracked as low-confidence until it compiles.
+2. **Curated port** — a faithful, VC7.1-compilable translation lands in the address-sharded
+   `rebuild/src/compiled/<aa>/<bb>/`
+   with real declarations from `rebuild/include/`.
+3. **Compile + behaviour test** — `rebuild/build_candidates.ps1` compiles each unit with the original
+   **VC7.1 `cl.exe`** and runs a per-function behaviour oracle
+   (`rebuild/tests/<aa>/<bb>/`).
+4. **Retail parity** — `tools/compare_candidate_objects.py` disassembles the object and compares its
+   `.text` against authoritative retail bytes (`rebuild/oracles/`, exported from Ghidra by
+   `ExportFunctionOracle.java`), masking expected COFF relocation fields. Result: `MATCH`,
+   `RELOCATION_MATCH`, or `DIFFER` — recorded in `rebuild/compile-gate/`.
+
+Promotion queues and the backlog are generated under `rebuild/backlog/`.
+
+### Tooling
+
+- **`tools/decomp_pipeline/`** — the promotion loop as reusable scripts: oracle extraction, disasm
+  bundling, and `verify_and_land.py` (VC7.1 fixups + byte/behaviour gate + auto pragma-sweep + catalog
+  wiring). See its README for the cycle and the resume point.
+- **`tools/decomp_pipeline/crack_residue.py` + the diff-feedback refine loop** — for byte-parity
+  residues the plain gate leaves as `DIFFER`. `crack_residue.py` sweeps mechanical
+  semantics-preserving remedies (comparison-operand flip, liveness-shaping inline, pragma sweep); when
+  those exhaust, an agent **refine loop** feeds the annotated retail-vs-built disasm diff back to an
+  authoring agent with register-allocation nudging guidance, which cracks structural/allocation
+  residues the mechanical remedies can't (and honestly labels the genuinely irreducible ones —
+  register-allocation artifacts no VC7.1 source spelling can reproduce). `verify_residue.py` gates and
+  overwrites landed sources on a win.
+- **`tools/permuter/`** — a [decomp-permuter](https://github.com/simonlindholm/decomp-permuter)-style
+  matcher on our toolchain, for the register-allocation / instruction-scheduling tail: a relocation-masked
+  VC7.1 scorer, an automatic flag/pragma sweep, and libclang AST mutations (temp-introduction, reassoc,
+  statement-split) with greedy + random multi-mutation search. Cracked several DIFFERs that plain
+  compilation missed (many retail TUs were size-optimized). Requires `libclang`.
+- **`tools/organize_workspace.ps1`** — non-destructive local housekeeping for loose root scratch
+  objects/sources, RE-agent transcripts, address-sharded candidate/curated source, tests, and
+  per-function build products. It preserves collisions and live worker safety; preview with
+  `-WhatIf`. `rebuild/ARTIFACT_INDEX.tsv` provides address/module navigation.
+- **`docs/SOURCE_ARCHITECTURE.md`** — the boundary between raw agent intake, the one-function
+  VC7.1 retail-parity layer, and cohesive human-facing C++23 subsystem code.
 
 ## Layout
 | Path | What |
 |---|---|
-| `docs/PLAN.md` | ★ **The plan — read first.** Goals, ecosystem integration, phased roadmap. |
-| `docs/FULL_DECOMP.md` | ★ The full-decompilation strategy (the primary goal). |
-| `docs/ECOSYSTEM.md` | Survey of existing tools (community + the user's own FSE/FQT/**EgoCore**). |
-| `docs/TOOLCHAIN.md` | Exact commands: Ghidra import, GhidraMCP, FSE import, live analysis. |
-| `docs/METHODOLOGY.md` | The Ghidra labelling/RE loop inherited from Fable2RE. |
-| `docs/HANDOFF.md` | ▶ Resume-here checklist. |
-| `tools/ghidra_scripts/` | Ghidra RE script suite (30 scripts, from Fable2RE). |
-| `tools/fse_import/` | Converts FSE's manifest → `fse_api.h` (Ghidra) + `fse_api_index.md` (roadmap). |
-| `tools/lua_mod/` | Lua bytecode disassembler + archive tooling (from Fable2RE). |
-| `refs/` | FSE manifest + runtime log, "Lua in Fable II" paper, (to add) FSE source + format wiki. |
-| `ghidra_proj/` | The Ghidra project `FableTLC` (created on first import). |
-| `ghidra_out/` | Decompile dumps + `labels_*.tsv` (the reproducible DB source). |
+| `docs/HANDOFF.md` | ▶ **Authoritative resume point — read first.** |
+| `docs/PLAN.md` | The plan: goals, ecosystem integration, phased roadmap. |
+| `docs/FULL_DECOMP.md` | The full-decompilation strategy (the primary goal). |
+| `docs/FINDINGS.md` | Cited technical truth (cross-checked ≥2 sources). |
+| `docs/SYSTEMS_ANALYSIS.md` | Per-subsystem maps + moddability verdicts. |
+| `docs/TOOLCHAIN.md` | Exact commands: Ghidra import, GhidraMCP, FSE import, VC7.1 setup. |
+| `docs/WORKSPACE_LAYOUT.md` | Public/local artifact boundaries and safe housekeeping. |
+| `docs/SOURCE_ARCHITECTURE.md` | Address sharding, readable module design, and C++23 policy. |
+| `rebuild/` | The buildable reconstruction: curated source, tests, oracles, compile gate, coverage. |
+| `lift/` | Auto-RE agent lane: candidate reports, config, durable run state. |
+| `ghidra_out/` | Decompile dumps + `labels_*.tsv` (the reproducible name DB source). |
+| `tools/` | Ghidra RE script suite, FSE import, parity/dashboard tooling, Lua + asset tooling. |
+| `refs/` | FSE manifest + runtime log, format references. |
+| `work/`, `snapshots/`, `FSE/` | Local experiments, archives, and deployment backups (ignored). |
 
 ## Repository hygiene
 
-This public repository preserves reconstruction source, documentation, automation, curated tests,
-and compact derived analysis catalogs. It intentionally does not contain original game executables,
-private PDBs, Ghidra/BSim databases, staged game archives, crash dumps, or generated build products.
-Those local inputs are reproducible prerequisites rather than redistributable project source; see
-`docs/TOOLCHAIN.md` for the expected local setup.
+This public repository preserves reconstruction source, documentation, automation, curated tests, and
+compact derived analysis catalogs. It intentionally **does not** contain original game executables,
+private PDBs, Ghidra/BSim databases, staged game archives, crash dumps, or generated build products —
+those are reproducible local prerequisites, not redistributable project source. See `docs/TOOLCHAIN.md`
+for the expected local setup. `.gitignore` enforces this; regenerate large BSim/PDB exports locally.
 
-## Quick start
-See `docs/TOOLCHAIN.md`. In short: install GhidraMCP into Ghidra 12.1.2 → `analyzeHeadless` import
-`Fable.exe` → `python tools/fse_import/fse_manifest_to_ghidra.py` → parse `fse_api.h` → run the
-RTTI + string-xref + FSE-target passes (Phase 1) → build `docs/SYSTEMS_ANALYSIS.md`.
-
-## Relationship to other projects on this machine
+## Related projects on this machine
+- **FableForge** (`D:\Code\FableForge`) — the active C++ modding toolchain that consumes this project's
+  RE outputs (WAD/TNG/WLD/LEV/STB readers, `forge validate`). The downstream target.
 - **Fable2RE** (`D:\Documents\Fable2RE`) — sibling; Xbox 360 Fable 2 recomp+decomp. Source of tooling.
-- **FQT** (`D:\Code\FQT`) — the user's WPF quest editor over FSE; a downstream consumer of this
-  project's extracted name/def tables.
-- **UE6Verse** (`C:\Users\...\UE6Verse`) — the user's UE6 game that ingests extracted Fable assets;
-  shares the `data\` format knowledge (see its memory notes).
+- **FQT** (`D:\Code\FQT`) — the user's WPF quest editor over FSE; consumes extracted name/def tables.
+- **EgoCore** — the completed data-format RE + headless extraction engine (asset/level/def/audio answer key).

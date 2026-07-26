@@ -1,0 +1,78 @@
+# ForgeTest — Authoritative State
+
+_Reconciled from six subsystem reports. Date of reconciliation: 2026-07-22. All SHAs are sha256 prefixes. Anything not directly verified in a report is marked **[unverified]**._
+
+---
+
+## Bottom line
+
+**Deployed right now** (game install `C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\`): the **OLD, uncorrected** ForgeTest set — terrain STB `d6de495f` (598,307,320 B, mtime 02:36, the AABB-fit variant), the **weak-probe** DLL `c3c88ad9` (4,503,552 B, 02:30, no `LandscapeForegroundDecodeProbe`), and quest lua `8857d08d` (9,368 B, 00:24) whose entire card block is dead (`if false`) and whose `ForgeTestEnter` teleport thread has no self-deactivation. **None of the corrected work is live**: the corrected-foreground STB `5b7e6c1f` (13:43), the strengthened DLLs (stage `ce869710` / Release `4eb17ab1` "ForgeFSE v0.1"), and the deactivate/ActivateQuest lua variants all exist only under `work/` and `D:/Code/ForgeFSE/`. The last user session (FSE log mtime 22:02) ran a **donor-alias** route (`ForgeTest.lev → Darkwood9_Leadout_01`) against a strengthened DLL that was afterward reverted — so **no ForgeTest-scope corrected-foreground frame has ever been captured**, and the teleport never persisted (0 post-teleport probe lines; quest re-armed twice). **Single most important next action:** deploy the corrected trio (STB `5b7e6c1f` + DLL `ce869710`/`4eb17ab1` + a non-donor ActivateQuest lua with a `DeactivateQuest("FSE_Master",0)` guard before `GoToMapSlot`), back up the current deployed trio first, then re-run the FSE terrain smoke and confirm the install STB hash becomes `5b7e6c1f`.
+
+---
+
+## Deployed vs authored
+
+| Artifact | Deployed (on disk in game) | Authored / corrected (not deployed) | Gap |
+|---|---|---|---|
+| Terrain STB `data/Levels/FinalAlbion_RT.stb` | `d6de495f` · 598,307,320 B · 02:36 (AABB-fit variant) | `5b7e6c1f` · 598,307,320 B · 13:43 (corrected-foreground) — `work/terrain_runtime_probe/stage/data/Levels/` & `work/forgetest_heightfield/..._foreground.stb` | Corrected foreground (fixes black hill) never promoted; ~11h gap (13:43 build postdates 02:36 deploy) |
+| `FableScriptExtender.dll` (game root) | `c3c88ad9` · 4,503,552 B · 02:30 (weak probes, **no** DecodeProbe) | `ce869710` · 4,508,160 B · 13:32 (stage) **and** `4eb17ab1` · 4,509,696 B · 21:30 (Release "ForgeFSE v0.1") — both carry `LandscapeForegroundDecodeProbe` | Deployed lacks the decode probe the 22:02 log itself used; strengthened builds staged, not deployed |
+| `FSE/Master/FSE_Master.lua` (quest) | `8857d08d` · 9,368 B · 00:24 (card block `if false`; no DeactivateQuest; no ActivateQuest; no alias) | Non-donor ActivateQuest variant `9febe30f` · 9,693 B · 21:08 (`work/runtime_smoke_.../stage/FSE_Master.lua`); AddQuestCard-only fix in `work/questcard_compat_stage/` (14:52) | Deployed lua neither self-deactivates (teleport re-arms) nor unlocks the quest via ActivateQuest; card fix authored only |
+| Retail rollback STB | — | `6477d9d0` · 597,979,518 B · Jan-31 — `work/terrain_runtime_probe/backups/data/Levels/` | Clean rollback source available |
+
+_Note: the 22:02 session's lua was the **donor-alias** variant `e7141d3c` (10,105 B, 21:53) which is **not** the file now in `FSE/Master/` — it was swapped out after that session._
+
+---
+
+## Per-subsystem state
+
+### 1. Terrain STB registration (deployed vs authored) — confidence 0.97
+- **Current:** Live install STB = `d6de495f` (AABB-fit). Corrected-foreground `5b7e6c1f` exists only in `work/`. The 22:02 game ran against the deployed AABB-fit STB; the FSE log has only runtime `LandscapeForegroundLayerProbe` render lines (fgMip=0), **no STB-swap/load record**.
+- **Contradiction w/ older notes:** HANDOFF/anchor implied `5b7e6c1f` is the authored deploy target; the **live install is actually `d6de495f`** — the correction was never promoted.
+- **Next action:** copy `work/terrain_runtime_probe/stage/data/Levels/FinalAlbion_RT.stb` (`5b7e6c1f`) over the deployed STB, re-run the FSE terrain smoke, confirm install hash becomes `5b7e6c1f`.
+
+### 2. Black authored-hill render — root cause + corrected bake — confidence 0.90
+- **Current (root cause PROVEN, per `docs/HANDOFF.md:3540-3579`):** all four real foreground frames held **unchanged donor geometry** at X=2816..2848, Y=2368..2400, Z=37.69..43, while `RenderForeground` (`0x00BF4570`) computed mapping constants from ForgeTest's registered patch bounds 2784..2816, 2560..2592. That geometry-vs-constant mismatch (not missing textures) produces the black silhouette. The fix (`forge stb bake-heightfield`) retargets foreground XY to 2784..2816,2560..2592, samples Z from the authored LEV (37.685..56.198), repacks 6/6/5 normals, preserves donor Blend/CliffU/CliffV+indices, rewrites the four directory offset/span pairs → `5b7e6c1f`. Offline validation green (26/26 LZO frames, 4/4 directory entries, 24 layers, full CTest).
+- **Contradiction w/ older notes:** `docs/TERRAIN_RENDER_FIX.md` (dated 2026-07-20) describes the editor-bake / FSE name-alias route and **predates / does not mention** the 13:43 corrected-foreground-bake root cause. Authoritative root cause = `HANDOFF.md:3540`, **not** `TERRAIN_RENDER_FIX.md`.
+- **[unverified]:** No ForgeTest-scope foreground frame has ever been captured live — in the 22:02 log all 8 `LandscapeForegroundDecodeProbe` frames and all 345 background-render lines are **retail-control** scope (map=0x14dba010), because that session used the donor-alias route against the old STB. The corrected STB has **not** been exercised in-game.
+- **Next action:** deploy ONLY `work/terrain_runtime_probe` (corrected `5b7e6c1f` STB + `ce869710` probe DLL + FSE_Master.lua), Fable closed; launch via FSE, teleport to slot 399, capture log + screenshot, then revert. First live test of the fix.
+
+### 3. Active-quest region-lock blocking the teleport — confidence 0.72
+- **Current:** Deployed `FSE_Master.lua` (`8857d08d`) arms `ForgeTestEnter`, pauses 20s, calls `Quest:GoToMapSlot(399,2800,2576,74)`, then 6 post-teleport probes. **No `DeactivateQuest` call exists.** In the 22:02 log, `GoToMapSlot` returns `ok=true` **twice** (lines 1404, 2994), `LoadRegion(region=95)` force-loads, `SetPlayerPos`/`ActivateNavMap`/`EntityTeleportToPosition` all report done — but **zero** post-teleport / "ForgeTestEnter done" lines. Instead `Init()`+`Main()` re-run a **second time** (lines 440, 1833). **Root cause:** FSE_Master is a registered ACTIVE region-associated quest; region-stream re-runs `dllmain.cpp` `InjectCustomScripts` (lines 555-567/590-602), re-arming Init/Main and killing the in-flight `ForgeTestEnter` thread before its probes — hero never persists.
+- **Bindings (source-confirmed, `GameInterface.cpp:1211-1212`):** `DeactivateQuest` = vtable[280]/0x460; `DeactivateQuestLater` = vtable[281]/0x464; `AddQuestRegion` = vtable[271]/0x43C. Lua wrappers in `LuaQuestState.cpp:302 / :890 / :364`.
+- **Contradiction w/ older notes:** deployed lua wording ("static-map binding probe in 20s") does **not** match the 22:02 log wording ("native render telemetry probe in 10s") — the log **predates** the deployed lua; teleport-failure evidence is inferred from an earlier but architecturally-identical build.
+- **[unverified]:** DeactivateQuest bindings are authored + compiled (Release .obj/.pdb match) but it was **NOT confirmed the deployed DLL actually exports them**. Confidence region-lock is the blocker: high; confidence the one-line DeactivateQuest is the complete fix: medium — verify empirically.
+- **Next action:** in the deployed `FSE_Master.lua`, immediately **before** the `GoToMapSlot` `pcall` (line ~126) insert `pcall(function() Quest:DeactivateQuest("FSE_Master", 0) end)`. Fallback: `DeactivateQuestLater("FSE_Master",0)` [vtable 281/0x464] or gate the Main re-arm with a Lua one-shot flag. Do **not** re-enable the `if false` card block. Re-deploy and re-run before trusting the fix.
+
+### 4. Quest-card + 1337 gold + guild "new quest" audio — confidence 0.90
+- **Current:** The card+gold+audio triad IS the card system working, but the DEPLOYED lua does **not** produce it. Per `docs/QUEST_CARD_SYSTEM.md`: `AddQuestCard` (vtable[292] @`0x008913F0` → `FUN_004b1670`) is the register-by-name path (inserts `{cardObj, questName, replayable}` into `CQuestManager` guild list `this+0x58`, sets dirty `+0x8F`); with flag4=false it flashes `TEXT_QST_078_GM_MSG_NEW_QUEST` (the "guild audio"). `SetQuestGoldReward("...",1337)` writes displayed gold. In deployed `8857d08d`, the whole block (lines 34-49) is wrapped in `if false then … end` (dead), uses "Defeat the Snow Troll" / `OBJECT_DUMMY_QUEST_CARD_DEFEAT_SNOW_TROLL` (**not** literally "Wasp Menace"), and still calls the wrong-for-display `GiveQuestCardDirectly` (line 45, vtable[295] @`0x008968C0`). The 22:02 log shows zero card/gold/1337/guild activity.
+- **Contradictions w/ older notes:** (a) anchor said deployed lua is the "07-20 smoke build"; actual mtime **07-22 00:24** (header self-labels 07-20). (b) task frames the triad as currently "appearing" — in the deployed script it's inside `if false` and did not fire this session. (c) task names "Wasp Menace"; deployed uses "Defeat the Snow Troll".
+- **Authored fix (not deployed):** `work/questcard_compat_stage/README.md` (14:52) prescribes `AddQuestCard` + `SetHeroGuideShowsQuestCards` ONLY, explicitly "Do not use GiveQuestCardDirectly merely to display a card." Lives only in the stage dir.
+- **Next action:** in game-install lua remove the `if false`/`end` guard (lines 34-49), delete the `GiveQuestCardDirectly` call (line 45), reorder to `AddQuestCard(flag4=false)` → `ActivateQuest`/`AddQuestRegion` → then `Set*Reward`/`Objective` (1337 gold); smoke test, confirm card+1337+chime in the log.
+
+### 5. FSE/ForgeFSE DLL variants inventory — confidence 0.90
+- **Current:** Five DLL copies. **Deployed** (game root) `c3c88ad9` (4,503,552 B, 02:30) = weak-probe build, only 5 landscape probe identifiers, **no** `LandscapeForegroundDecodeProbe` (grep 0). **Stage** `work/terrain_runtime_probe/stage/` `ce869710` (4,508,160 B, 13:32) = strengthened (DecodeProbe present, Decode string count 6 vs deployed 1), matches HANDOFF 13:43. **Release** `D:/Code/ForgeFSE/Release/` `4eb17ab1` (4,509,696 B, 21:30) = newest strengthened, "ForgeFSE v0.1", supersedes stage. Two stale copies: prelaunch mirror (`c3c88ad9`) + backup `5245a8a9` (5,252,608 B, Jul-21 23:25). All three current DLLs carry `AliasMapResources(4)/GoToMapSlot(15)/DeactivateQuest(3)` binding strings.
+- **Contradiction:** live FSE log (22:02) shows `LandscapeForegroundDecodeProbe` installing a hook @`0xbfe6b4` firing 9×, but the **currently deployed** `c3c88ad9` contains no such probe → a strengthened DLL ran that session and was then reverted/overwritten by the weak build now on disk. Also: HANDOFF 13:43 cites the staged Release as 4,508,160 B `ce869710`, but a newer 21:30 Release (`4eb17ab1`, 4,509,696 B) now supersedes it — the handoff size no longer matches the current Release.
+- **Next action:** deploy `D:/Code/ForgeFSE/Release/FableScriptExtender.dll` (`4eb17ab1`) over the game-root DLL (has DecodeProbe the 22:02 session relied on). Confirm which strengthened generation (`ce869710` stage vs `4eb17ab1` Release) is intended before overwriting; re-run the terrain probe to regenerate a matching log.
+
+### 6. Deploy/stage reconciliation (STB + DLL + lua sets) — confidence 0.86
+- **Current:** Complete sets exist in FOUR places. (1) **Deployed:** STB `d6de495f` + DLL `c3c88ad9` + lua `8857d08d`. (2) `work/runtime_smoke_quest_terrain_20260722/prelaunch/`: byte-identical mirror of deployed (02:36 snapshot). (3) `work/terrain_runtime_probe/stage/`: corrected STB `5b7e6c1f` (13:43) + newer DLL `ce869710` (13:32) + **old** deployed lua `8857d08d`. (4) `work/smoke_test/stage/`: older partial STB `8af88bc8` (598,112,760 B, Jul-21 23:06) + lua `1cd5e28`, no DLL, stale.
+- **CRITICAL:** no single existing stage dir is a ready-to-ship non-donor quest-unlocked set — it must be assembled. `terrain_runtime_probe/stage` pairs the correct STB + newest DLL with the OLD lua (no ActivateQuest, no DeactivateQuest).
+- **Contradictions:** deployed STB `d6de495f` ≠ corrected `5b7e6c1f` (correction never deployed). The `FSE/Master/FSE_Master.lua` in the game dir (00:24, no alias) is **not** what produced the 22:02 log — the log shows `AliasMapResources` which only the 21:53 donor variant `e7141d3c` contains, so the file was swapped after that session.
+- **Next action:** assemble a non-donor quest-unlocked set — deploy corrected STB `5b7e6c1f`, newest DLL `ce869710` (or Release `4eb17ab1`), and the 21:08 lua `9febe30f` (`work/runtime_smoke_quest_terrain_20260722/stage/FSE_Master.lua`) — the only variant that neither aliases to a donor nor omits `Quest:ActivateQuest(FSE_Master)`. Back up the current trio (or reuse `work/terrain_runtime_probe/backups/`) first. Verify no `AliasMapResources` line in the next log.
+
+---
+
+## Do next, in order
+
+1. **Back up the current deployed trio** (STB `d6de495f`, DLL `c3c88ad9`, lua `8857d08d`) — or confirm `work/terrain_runtime_probe/backups/` (retail STB `6477d9d0`, stock DLL, stock lua) is the intended rollback set. Fable must be closed.
+2. **Deploy the corrected-foreground STB** — copy `work/terrain_runtime_probe/stage/data/Levels/FinalAlbion_RT.stb` (`5b7e6c1f`) over `C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\data\Levels\FinalAlbion_RT.stb`. Fixes the black hill (root cause: `RenderForeground` @`0x00BF4570` geometry-vs-constant mismatch, `HANDOFF.md:3540`).
+3. **Deploy the strengthened DLL** — copy `D:/Code/ForgeFSE/Release/FableScriptExtender.dll` (`4eb17ab1`, ForgeFSE v0.1, has `LandscapeForegroundDecodeProbe`) — or stage `ce869710` — over the game-root DLL. **[unverified]** confirm which generation is intended and that it exports `DeactivateQuest`.
+4. **Fix the teleport re-arm in the deployed lua** — in `FSE/Master/FSE_Master.lua`, immediately before the `GoToMapSlot(399,...)` `pcall` (line ~126) insert `pcall(function() Quest:DeactivateQuest("FSE_Master", 0) end)` (binding vtable[280]/0x460, `LuaQuestState.cpp:302`). Fallback: `DeactivateQuestLater("FSE_Master",0)` (vtable[281]/0x464) or a Lua one-shot re-arm flag. Do **not** re-enable the `if false` card block yet.
+5. **Prefer the non-donor ActivateQuest lua** — instead of hand-patching, base the deploy on `9febe30f` (`work/runtime_smoke_quest_terrain_20260722/stage/FSE_Master.lua`, 21:08): the only variant that does not alias to a donor and does call `Quest:ActivateQuest(FSE_Master)`; add the step-4 DeactivateQuest guard to it.
+6. **(Optional, card triad)** enable the card path per `docs/QUEST_CARD_SYSTEM.md` + `work/questcard_compat_stage/README.md`: remove the `if false` guard, delete `GiveQuestCardDirectly` (line 45), use `AddQuestCard(flag4=false)` (vtable[292] @`0x008913F0`) then `Set*Reward`/`Objective` (1337 gold).
+7. **Re-run the FSE terrain + teleport smoke.** Verify: (a) install STB hash == `5b7e6c1f`; (b) FSE log shows a ForgeTest-**scope** `LandscapeForegroundDecodeProbe` frame (not retail-control); (c) **no** `AliasMapResources` line; (d) `ForgeTestEnter` post-teleport probe lines appear (quest survived, hero persists); (e) screenshot shows colored authored foreground, not the black silhouette.
+8. **Revert to backup** after capture (read-only probe discipline).
+
+---
+
+_Unverified items flagged inline: deployed-DLL export parity for `DeactivateQuest`; whether the one-line DeactivateQuest fully fixes the teleport (medium confidence); the intended strengthened-DLL generation (`ce869710` vs `4eb17ab1`); no ForgeTest-scope corrected-foreground frame has ever been captured live._
