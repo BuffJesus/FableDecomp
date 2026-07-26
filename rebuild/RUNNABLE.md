@@ -50,7 +50,10 @@ texture-stage, and sampler states for the live draw. Other dependency dispatch
 now includes the recovered 11-byte `CRenderManagerCore::SetAWindow` ownership
 hop into a compact D3D9 viewport endpoint. The exact 79-byte
 `Render2DDrawList::CopyBlock` full-clear path then resets the live 0x20-byte
-vertex queue. Remaining dispatch is still authored rather than the complete
+vertex queue. Exact 98-byte `CTexture::operator=` and 34-byte
+`CTexture::Uninitialise` bodies now execute the temporary/current/candidate
+wrapper lifetime events. Remaining dispatch is still authored rather than the
+complete
 Lionhead coordinator, runtime archive loader, or game loop.
 
 The first parent-coordinator seam is now canonical too:
@@ -166,8 +169,9 @@ and requires a clean zero exit.
 
 Stages 2 and 3 use explicit integration boundaries and are not claimed as a
 retail-matching GFMain. The visual checkpoint can now present one build-time
-extracted retail asset through D3D9, but it does **not** yet submit that image
-through the recovered Lionhead renderer, initialize the complete engine-service
+extracted retail asset through D3D9 and recovered Render2D batching/lifecycle
+seams, but it does **not** yet execute the complete Lionhead parent coordinator,
+initialize the complete engine-service
 graph, load archives at runtime, play video, or enter the game loop.
 
 ## Retail boot spine
