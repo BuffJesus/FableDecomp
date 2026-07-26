@@ -1,6 +1,40 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 12:41 MDT (nested renderer-family closure).*
+*Last updated: 2026-07-26 12:52 MDT (texture/shader submit closure).*
+
+## Texture/shader submit closure (2026-07-26)
+
+- Seven more nested renderer dependencies are canonical. The
+  `DrawRetailDisplay` family is now **13/37**, and the
+  `Render2DDrawList` family is **11/25**; the complete ledger remains
+  `rebuild/integration/renderer_nested_dependencies.tsv`.
+- Four additions are true byte-identical matches:
+  `CTexture::Uninitialise @ 0x009F9F70`,
+  `CShaderRenderManager::SetVSConstants @ 0x0098B930`,
+  `UpdatePixelShader @ 0x00988A20`, and
+  `UpdateLightGlobals @ 0x0098A760`. Focused fixtures cover null/no-op
+  branches, COM-style device calls, argument forwarding, ownership release,
+  and dirty-mask clearing.
+- Three relocation-normalized additions close the float viewport tail thunk,
+  word-wrap callback configuration, and preallocated texture adoption:
+  `NInventory::CTCInventoryBase::SetViewport(C2DBoxF) @ 0x00A0AA80`,
+  `WordWrap_SetCallback @ 0x00A0FD90`, and
+  `CTexture::InitialiseFromPreallocatedTexture @ 0x009FA230`. The viewport
+  identity correction is persisted in `function_overrides.tsv`.
+- The canonical VC7.1 compile/behavior gate passes **4,903 / 4,903**. Retail
+  parity is **2,680 exact + 1,896 relocation-normalized = 4,576 / 49,552
+  (9.23%)**; honest residue remains 199 differences and 128 missing
+  function-start oracles.
+- The full Release bootstrap rebuilt with `asset=RetailFrontendBackdrop`. A
+  fresh live launch again opened the retail-art window, accepted `WM_CLOSE`,
+  and exited zero.
+- Continue through adjacent texture ownership and shader realization:
+  `CTexture::operator= @ 0x009FA1C0`,
+  `CShaderRenderManager::ApplyVertexShader @ 0x00988020`,
+  `DisablePixelShaders @ 0x00988190`, ambient/fog uploads, and
+  `CRenderStateManager::RealiseRenderState @ 0x00A058C0`. The 3,344-byte
+  `Render2DDrawList` orchestration body remains unrecovered, but nearly half
+  of its unique direct dependencies are now canonical.
 
 ## Nested renderer-family closure (2026-07-26)
 

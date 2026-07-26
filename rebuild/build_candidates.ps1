@@ -34244,6 +34244,55 @@ $catalog = @(
         TestSource = '00/9b/CDisplayManager_GetRenderTargetDimensions_009bedc0_test.cpp'
         PassPattern = 'FABLETLC_RENDER_TARGET_DIMENSIONS_BEHAVIOR PASS'
     }
+    [pscustomobject]@{
+        Address = '00a0aa80'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/a0/CTCInventoryBase_SetViewportBoxF_00a0aa80.cpp'
+        TestSource = '00/a0/CTCInventoryBase_SetViewportBoxF_00a0aa80_test.cpp'
+        PassPattern = 'FABLETLC_INVENTORY_BOXF_VIEWPORT_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0fd90'
+        Module = '_global'
+        Source = '00/a0/Global_WordWrapSetCallback_00a0fd90.cpp'
+        TestSource = '00/a0/Global_WordWrapSetCallback_00a0fd90_test.cpp'
+        PassPattern = 'FABLETLC_WORD_WRAP_CALLBACK_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f9f70'
+        Module = 'CTexture'
+        Source = '00/9f/CTexture_Uninitialise_009f9f70.cpp'
+        TestSource = '00/9f/CTexture_Uninitialise_009f9f70_test.cpp'
+        PassPattern = 'FABLETLC_TEXTURE_UNINITIALISE_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098b930'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_SetVSConstants_0098b930.cpp'
+        TestSource = '00/98/CShaderRenderManager_SetVSConstants_0098b930_test.cpp'
+        PassPattern = 'FABLETLC_SET_VS_CONSTANTS_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00988a20'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UpdatePixelShader_00988a20.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdatePixelShader_00988a20_test.cpp'
+        PassPattern = 'FABLETLC_UPDATE_PIXEL_SHADER_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098a760'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UpdateLightGlobals_0098a760.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateLightGlobals_0098a760_test.cpp'
+        PassPattern = 'FABLETLC_UPDATE_LIGHT_GLOBALS_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fa230'
+        Module = 'CTexture'
+        Source = '00/9f/CTexture_InitialiseFromPreallocatedTexture_009fa230.cpp'
+        TestSource = '00/9f/CTexture_InitialiseFromPreallocatedTexture_009fa230_test.cpp'
+        PassPattern = 'FABLETLC_PREALLOCATED_TEXTURE_BEHAVIOR PASS'
+    }
 )
 
 $oldPath = $env:PATH
