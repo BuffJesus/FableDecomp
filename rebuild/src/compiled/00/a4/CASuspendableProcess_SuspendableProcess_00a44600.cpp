@@ -1,0 +1,1 @@
+void __fastcall CASuspendableProcess_SuspendableProcess() {}

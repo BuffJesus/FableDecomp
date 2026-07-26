@@ -1,0 +1,1 @@
+void __stdcall CStaticMapBankStateBlock_Set(int arg0) {}

@@ -1,0 +1,1 @@
+void __fastcall CEngineComponent_OnReleaseDefaultPoolResources() {}

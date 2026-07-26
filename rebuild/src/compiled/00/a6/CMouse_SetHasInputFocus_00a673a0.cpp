@@ -1,0 +1,1 @@
+void __stdcall CMouse_SetHasInputFocus(int arg0) {}

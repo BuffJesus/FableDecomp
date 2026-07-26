@@ -1,0 +1,1 @@
+void __stdcall CEnginePrimitiveManagerRepeatedZSprites_RenderSubPrimitive(int arg0, int arg1) {}

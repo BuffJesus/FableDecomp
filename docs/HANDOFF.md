@@ -1,5 +1,31 @@
 # HANDOFF — resume here
 
+*Last updated: 2026-07-25 23:12 MDT (verified GFInitialise progress leaf connected).*
+
+## GFInitialise visual-path checkpoint (2026-07-25)
+
+- The complete VC7.1 bootstrap gate passes with the visual executable now
+  traversing `GFInitialise_SetupProgressDisplay @ 0x00413120` before the
+  authored 1280x720 window. The leaf remains a 128-byte
+  relocation-normalized retail match.
+- `rebuild/integration/gfinitialise_progress_phase.cpp` is explicitly authored
+  integration code for retail `0x004023BE-0x004023E7`. Its fixture proves the
+  successful and rejected begin paths, state clearing, counted
+  `CProgressDisplay` lifetime, and odd-width half-display calculation.
+- Retail disassembly rejects the generated two-parameter `GFInitialise`
+  signature. The coordinator takes no caller parameters, obtains the fixed
+  engine root from `0x009A4EC0`, and passes state `0x013B83D0` in `ECX`.
+- The corrected manual coordinator candidate and fixture live together under
+  `rebuild/candidates/manual/00/40/`. Behavior passes and bytes 0-219 match
+  after relocation masking; the readable clamp tail is still 312 bytes versus
+  retail's 311. Keep it out of `rebuild/src/compiled/` until that final parity
+  residue closes.
+- The next visual-path closure is full `GFInitialise` promotion, then replacing
+  the instrumented progress-object boundary with recovered display ownership.
+- The hourly local parity lane completed its latest four batches with 240 more
+  verified wins; the canonical README remains synchronized at 2,499 / 49,553
+  verified functions (5.04%). Wave 3 continues independently.
+
 *Last updated: 2026-07-25 21:52 MDT (Phase 3 narrow-to-wide conversion chain recovered).*
 
 ## Visible boot checkpoint (2026-07-25)

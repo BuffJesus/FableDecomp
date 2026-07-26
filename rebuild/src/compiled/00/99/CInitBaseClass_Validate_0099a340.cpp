@@ -1,0 +1,1 @@
+void __fastcall CInitBaseClass_Validate() {}

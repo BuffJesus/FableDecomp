@@ -1,0 +1,1 @@
+void __stdcall CEngineInternalPrimitiveBase_ClearChildPrimitive(int arg0) {}

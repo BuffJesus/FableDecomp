@@ -1,0 +1,1 @@
+void __stdcall CIEngine_StartNewScene(int arg0, int arg1) {}
