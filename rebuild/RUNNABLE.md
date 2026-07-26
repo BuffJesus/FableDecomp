@@ -39,10 +39,11 @@ When a retail `frontend.big` is available, the build decodes
 crops it to its authored 640x480 frame, and embeds it in the executable.
 The authored project image remains a dependency-safe fallback. This is the
 first genuine game-derived image in the reconstructed process. An authored
-D3D9 bridge now uploads it as a managed texture and presents an aspect-fitted
-triangle strip through a real Win32 D3D9 device; GDI is retained only as a
-failure fallback. The bridge is still scaffolding rather than the recovered
-Lionhead draw-list submission, runtime archive loader, or game loop.
+D3D9 bridge now uploads it as a managed texture. Two retail-shaped triangle
+records pass through the recovered Render2D batch planner, whose triangle-list
+flush is executed on a real Win32 D3D9 device; GDI is retained only as a
+failure fallback. Low-level dependency dispatch is still authored rather than
+the complete Lionhead coordinator, runtime archive loader, or game loop.
 
 The first parent-coordinator seam is now canonical too:
 `FableBuildRender2DBatchPlan` models the recovered 0x3C-byte draw-record
