@@ -175,7 +175,6 @@ namespace
     fable_i32 g_ArtworkWidth = 0;
     fable_i32 g_ArtworkHeight = 0;
     bool g_Presented = false;
-    bool g_UnexpectedTextureAccounting = false;
 
     bool Failed(FableD3DResult result)
     {
@@ -324,12 +323,10 @@ namespace
                     CTexturePreallocatedView* texture =
                         reinterpret_cast<CTexturePreallocatedView*>(
                             &textures_[argument0 - 1]);
-                    g_UnexpectedTextureAccounting = false;
                     if (
                         !texture->InitialiseFromPreallocatedTexture(0) ||
                         texture->texture00 != 0 ||
-                        texture->ByteLength != 0 ||
-                        g_UnexpectedTextureAccounting)
+                        texture->ByteLength != 0)
                     {
                         succeeded_ = false;
                     }
@@ -506,18 +503,6 @@ namespace
         bool succeeded_;
         bool drew_;
     };
-}
-
-void CPixelFormatByteLengthView::Initialise(fable_u32)
-{
-    g_UnexpectedTextureAccounting = true;
-    value00 = 0xFFFFFFFF;
-}
-
-fable_u32 CPixelFormatByteLengthView::GetColourDepth() const
-{
-    g_UnexpectedTextureAccounting = true;
-    return 0;
 }
 
 void CDisplayManager::SetIntegerViewportEndpoint(

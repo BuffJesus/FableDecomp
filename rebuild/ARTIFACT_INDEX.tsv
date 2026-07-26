@@ -4342,6 +4342,8 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 009e1d00	_global		rebuild/src/compiled/00/9e/Global_GFRoundVXToNearestPixel_009e1d00.cpp	rebuild/tests/00/9e/Global_GFRoundVXToNearestPixel_009e1d00_test.cpp		rebuild/build/candidates-Release/00/9e/009e1d00
 009e1d50	_global		rebuild/src/compiled/00/9e/Global_GFRoundVYToNearestPixel_009e1d50.cpp	rebuild/tests/00/9e/Global_GFRoundVYToNearestPixel_009e1d50_test.cpp		rebuild/build/candidates-Release/00/9e/009e1d50
 009e1da0	_global		rebuild/src/compiled/00/9e/Global_GFAXToVX_009e1da0.cpp	rebuild/tests/00/9e/Global_GFAXToVX_009e1da0_test.cpp		rebuild/build/candidates-Release/00/9e/009e1da0
+009e3820			rebuild/src/compiled/00/9e/CPixelFormat_GetColourDepth_009e3820.cpp	rebuild/tests/00/9e/CPixelFormat_GetColourDepth_009e3820_test.cpp		
+009e3830			rebuild/src/compiled/00/9e/CPixelFormat_InitialiseD3DFormat_009e3830.cpp	rebuild/tests/00/9e/CPixelFormat_InitialiseD3DFormat_009e3830_test.cpp		
 009e41b0	CJoystick		rebuild/src/compiled/00/9e/CJoystick_Update_009e41b0.cpp	rebuild/tests/00/9e/CJoystick_Update_009e41b0_test.cpp		rebuild/build/candidates-Release/00/9e/009e41b0
 009e45f0	CEngineSubPrimitiveText		rebuild/src/compiled/00/9e/CEngineSubPrimitiveText_scalardeletingdestructor_009e45f0.cpp	rebuild/tests/00/9e/CEngineSubPrimitiveText_scalardeletingdestructor_009e45f0_test.cpp		rebuild/build/candidates-Release/00/9e/009e45f0
 009e4930	CJoystick		rebuild/src/compiled/00/9e/CJoystick_UpdateInsertionsAndRemovals_009e4930.cpp	rebuild/tests/00/9e/CJoystick_UpdateInsertionsAndRemovals_009e4930_test.cpp		rebuild/build/candidates-Release/00/9e/009e4930
@@ -5352,3 +5354,4 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 0122ae6a	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk0122ae6a_0122ae6a.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk0122ae6a_0122ae6a_test.cpp		rebuild/build/candidates-Release/01/22/0122ae6a
 0122ae74	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk0122ae74_0122ae74.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk0122ae74_0122ae74_test.cpp		rebuild/build/candidates-Release/01/22/0122ae74
 0122aea0	_global		rebuild/src/compiled/01/22/global_GlobalMethodTailThunk0122aea0_0122aea0.cpp	rebuild/tests/01/22/global_GlobalMethodTailThunk0122aea0_0122aea0_test.cpp		rebuild/build/candidates-Release/01/22/0122aea0
+0129ba40			rebuild/src/compiled/01/29/CPixelFormat_Table_0129ba40.cpp			

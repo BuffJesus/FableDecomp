@@ -34394,6 +34394,20 @@ $catalog = @(
         PassPattern = 'FABLETLC_RENDER2D_COPY_BLOCK_BEHAVIOR PASS'
     }
     [pscustomobject]@{
+        Address = '009e3820'
+        Module = 'CPixelFormat'
+        Source = '00/9e/CPixelFormat_GetColourDepth_009e3820.cpp'
+        TestSource = '00/9e/CPixelFormat_GetColourDepth_009e3820_test.cpp'
+        PassPattern = 'FABLETLC_PIXEL_FORMAT_COLOUR_DEPTH PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e3830'
+        Module = 'CPixelFormat'
+        Source = '00/9e/CPixelFormat_InitialiseD3DFormat_009e3830.cpp'
+        TestSource = '00/9e/CPixelFormat_InitialiseD3DFormat_009e3830_test.cpp'
+        PassPattern = 'FABLETLC_PIXEL_FORMAT_INITIALISE PASS'
+    }
+    [pscustomobject]@{
         Address = '009df060'
         Module = 'CStateBlockFunctionSold'
         Source = '00/9d/CStateBlockFunctionSold_Apply_009df060.cpp'
