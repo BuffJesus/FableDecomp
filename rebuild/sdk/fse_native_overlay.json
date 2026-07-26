@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.1.0",
-  "generatedAt": "2026-07-25T18:35:28-06:00",
-  "sourceDigest": "3fc94add20adcb9d835c544157d9276a49b05b88de3c6f39007882898d97e165",
+  "generatedAt": "2026-07-25T21:29:45-06:00",
+  "sourceDigest": "da42ecbf4610353f8c0ae98b9cf914edf5cf3eb4a58879f919ef8ee7706005b8",
   "target": {
     "executable": "Fable.exe",
     "imageBase": "0x00400000",
@@ -37133,26 +37133,26 @@
     {
       "address": "0x00415530",
       "rva": "0x00015530",
-      "qualifiedName": "GetActionName",
-      "module": "CActionDoCreatureAction",
-      "callingConvention": "__thiscall",
+      "qualifiedName": "FableGetDefaultLanguageName_00415530",
+      "module": "_global",
+      "callingConvention": "__fastcall",
       "returnType": "CCharString",
-      "parameterCount": 1,
-      "parameterTypesText": "CActionDoCreatureAction *",
+      "parameterCount": 0,
+      "parameterTypesText": "",
       "prototypeComplete": true,
       "cleanDecompile": "yes",
       "agentVerdict": "",
       "compiledStatus": "PASS",
       "behaviorTest": "PASS",
-      "retailParity": "MATCH",
+      "retailParity": "RELOCATION_MATCH",
       "liftGrade": "",
       "ownerRelevance": "none",
       "engineImplementationVerified": true,
-      "score": 140,
+      "score": 135,
       "evidence": [
         "exact-leaf-name",
         "complete-prototype",
-        "retail-byte-match"
+        "retail-relocation-match"
       ]
     },
     {

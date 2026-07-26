@@ -39,6 +39,8 @@ $startupLatchSource = Join-Path $rebuildRoot 'src\compiled\00\9d\Global_ClearSta
 $startupLatchBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\Global_ClearStartupLatch_009d81e0_test.cpp'
 $fileInstallerGetSource = Join-Path $rebuildRoot 'src\compiled\00\40\CFileInstallerSingleton_Get_00404440.cpp'
 $fileInstallerGetBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CFileInstallerSingleton_Get_00404440_test.cpp'
+$defaultLanguageNameSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetDefaultLanguageName_00415530.cpp'
+$defaultLanguageNameBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetDefaultLanguageName_00415530_test.cpp'
 $primaryLeftAlignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9b\TextLayout_SetPrimaryLeftAlignment_009bc890.cpp'
 $primaryLeftAlignmentBehaviorSource = Join-Path $rebuildRoot 'tests\00\9b\TextLayout_SetPrimaryLeftAlignment_009bc890_test.cpp'
 $secondaryLeftAlignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9b\TextLayout_SetSecondaryLeftAlignment_009bc8a0.cpp'
@@ -135,6 +137,7 @@ $profileEndPassPattern = 'FABLETLC_PROFILE_END_BEHAVIOR PASS'
 $asyncFailureHandlingPassPattern = 'FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS'
 $startupLatchPassPattern = 'FABLETLC_STARTUP_LATCH_BEHAVIOR PASS'
 $fileInstallerGetPassPattern = 'FABLETLC_FILE_INSTALLER_GET_BEHAVIOR PASS'
+$defaultLanguageNamePassPattern = 'FABLETLC_DEFAULT_LANGUAGE_NAME_BEHAVIOR PASS'
 $primaryLeftAlignmentPassPattern = 'FABLETLC_PRIMARY_LEFT_ALIGNMENT_BEHAVIOR PASS'
 $secondaryLeftAlignmentPassPattern = 'FABLETLC_SECONDARY_LEFT_ALIGNMENT_BEHAVIOR PASS'
 $cbaseRestoreAPassPattern = 'FABLETLC_CBASE_RESTORE_A_BEHAVIOR PASS'
@@ -172,6 +175,8 @@ $required = @(
     $startupLatchBehaviorSource,
     $fileInstallerGetSource,
     $fileInstallerGetBehaviorSource,
+    $defaultLanguageNameSource,
+    $defaultLanguageNameBehaviorSource,
     $primaryLeftAlignmentSource,
     $primaryLeftAlignmentBehaviorSource,
     $secondaryLeftAlignmentSource,
@@ -351,6 +356,14 @@ try {
         -BehaviorSource $fileInstallerGetBehaviorSource `
         -OutputStem 'cfi-singleton-get' `
         -PassPattern $fileInstallerGetPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00415530' `
+        -Description 'default-language narrow-string factory' `
+        -Source $defaultLanguageNameSource `
+        -BehaviorSource $defaultLanguageNameBehaviorSource `
+        -OutputStem 'default-language-name' `
+        -PassPattern $defaultLanguageNamePassPattern
 
     Invoke-VerifiedLeaf `
         -Address '009bc890' `
