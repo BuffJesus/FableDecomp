@@ -28602,6 +28602,188 @@ $catalog = @(
         TestSource = '00/e6/CEngineSubPrimitiveText_scalardeletingdestructor_00e6e280_test.cpp'
         PassPattern = 'AUTO_TINY_00e6e280_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00485657'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/48/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00485657.cpp'
+        TestSource = '00/48/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00485657_test.cpp'
+        PassPattern = 'AUTO_TINY_00485657_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00485686'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/48/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00485686.cpp'
+        TestSource = '00/48/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00485686_test.cpp'
+        PassPattern = 'AUTO_TINY_00485686_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057f846'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/57/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0057f846.cpp'
+        TestSource = '00/57/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0057f846_test.cpp'
+        PassPattern = 'AUTO_TINY_0057f846_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057f8d1'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/57/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0057f8d1.cpp'
+        TestSource = '00/57/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0057f8d1_test.cpp'
+        PassPattern = 'AUTO_TINY_0057f8d1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00592e40'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/59/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592e40.cpp'
+        TestSource = '00/59/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592e40_test.cpp'
+        PassPattern = 'AUTO_TINY_00592e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00592e6f'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/59/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592e6f.cpp'
+        TestSource = '00/59/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592e6f_test.cpp'
+        PassPattern = 'AUTO_TINY_00592e6f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00592ee3'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/59/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592ee3.cpp'
+        TestSource = '00/59/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592ee3_test.cpp'
+        PassPattern = 'AUTO_TINY_00592ee3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00592f12'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/59/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592f12.cpp'
+        TestSource = '00/59/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592f12_test.cpp'
+        PassPattern = 'AUTO_TINY_00592f12_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b19d9'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/5b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005b19d9.cpp'
+        TestSource = '00/5b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005b19d9_test.cpp'
+        PassPattern = 'AUTO_TINY_005b19d9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b1a08'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/5b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005b1a08.cpp'
+        TestSource = '00/5b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005b1a08_test.cpp'
+        PassPattern = 'AUTO_TINY_005b1a08_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ba957'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/5b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005ba957.cpp'
+        TestSource = '00/5b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005ba957_test.cpp'
+        PassPattern = 'AUTO_TINY_005ba957_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c09f6'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/5c/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005c09f6.cpp'
+        TestSource = '00/5c/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005c09f6_test.cpp'
+        PassPattern = 'AUTO_TINY_005c09f6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c0a25'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/5c/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005c0a25.cpp'
+        TestSource = '00/5c/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005c0a25_test.cpp'
+        PassPattern = 'AUTO_TINY_005c0a25_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8121'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/5f/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005f8121.cpp'
+        TestSource = '00/5f/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005f8121_test.cpp'
+        PassPattern = 'AUTO_TINY_005f8121_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f834a'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/5f/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005f834a.cpp'
+        TestSource = '00/5f/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005f834a_test.cpp'
+        PassPattern = 'AUTO_TINY_005f834a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f8379'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/5f/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005f8379.cpp'
+        TestSource = '00/5f/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005f8379_test.cpp'
+        PassPattern = 'AUTO_TINY_005f8379_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f83a8'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/5f/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005f83a8.cpp'
+        TestSource = '00/5f/CEngineInternalPrimitiveMeshBase_GetMeshEffect_005f83a8_test.cpp'
+        PassPattern = 'AUTO_TINY_005f83a8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065e689'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/65/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0065e689.cpp'
+        TestSource = '00/65/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0065e689_test.cpp'
+        PassPattern = 'AUTO_TINY_0065e689_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065e7f6'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/65/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0065e7f6.cpp'
+        TestSource = '00/65/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0065e7f6_test.cpp'
+        PassPattern = 'AUTO_TINY_0065e7f6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065e825'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/65/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0065e825.cpp'
+        TestSource = '00/65/CEngineInternalPrimitiveMeshBase_GetMeshEffect_0065e825_test.cpp'
+        PassPattern = 'AUTO_TINY_0065e825_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00788dbe'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/78/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00788dbe.cpp'
+        TestSource = '00/78/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00788dbe_test.cpp'
+        PassPattern = 'AUTO_TINY_00788dbe_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007be70b'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/7b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_007be70b.cpp'
+        TestSource = '00/7b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_007be70b_test.cpp'
+        PassPattern = 'AUTO_TINY_007be70b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007be73a'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/7b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_007be73a.cpp'
+        TestSource = '00/7b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_007be73a_test.cpp'
+        PassPattern = 'AUTO_TINY_007be73a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007be769'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/7b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_007be769.cpp'
+        TestSource = '00/7b/CEngineInternalPrimitiveMeshBase_GetMeshEffect_007be769_test.cpp'
+        PassPattern = 'AUTO_TINY_007be769_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd2671'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/cd/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00cd2671.cpp'
+        TestSource = '00/cd/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00cd2671_test.cpp'
+        PassPattern = 'AUTO_TINY_00cd2671_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd26a8'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/cd/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00cd26a8.cpp'
+        TestSource = '00/cd/CEngineInternalPrimitiveMeshBase_GetMeshEffect_00cd26a8_test.cpp'
+        PassPattern = 'AUTO_TINY_00cd26a8_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH
