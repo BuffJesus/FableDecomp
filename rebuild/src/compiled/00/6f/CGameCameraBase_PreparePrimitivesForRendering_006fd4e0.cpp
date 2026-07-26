@@ -1,0 +1,1 @@
+void __stdcall CGameCameraBase_PreparePrimitivesForRendering(int arg0) {}

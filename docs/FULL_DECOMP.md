@@ -122,6 +122,13 @@ behavior result only when the source, test, and shared headers are all older tha
 catalog run after this change, rebuilding only the newly landed manifest-backed rows took 12.29
 seconds instead of recompiling every historical PASS for several minutes.
 
+The first installed scheduled run then advanced four more 500-row selections and landed 204/205
+deterministic authors, bringing the canonical strict parity count to 1,827 (3.69%) across 2,154
+compiled and behavior-gated rows. Retail comparison now has its own ignored object/oracle
+fingerprint cache: an unchanged 2,154-row comparison reuses the prior atomic report and completed in
+0.18 seconds instead of disassembling the entire historical catalog again. `--force` remains
+available when a clean comparison audit is required.
+
 Queue transcripts are separated from durable state: attempts are archived under
 `lift/logs/<wave>/YYYY-MM-DD/<aa>/<bb>/<address>/`, YAML lives in `lift/config/`, durable queue
 control files live in `lift/state/`, and generated code lives in

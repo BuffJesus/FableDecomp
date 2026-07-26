@@ -1,0 +1,1 @@
+void __stdcall CCreatureActionBase_OnBlowBlocked(int arg0) {}

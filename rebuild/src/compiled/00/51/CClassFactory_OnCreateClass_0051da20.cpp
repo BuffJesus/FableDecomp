@@ -1,0 +1,1 @@
+void __stdcall CClassFactory_OnCreateClass(int arg0) {}
