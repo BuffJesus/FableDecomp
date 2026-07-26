@@ -20,3 +20,10 @@ representative behavior are stable. Each subsystem README should identify:
 - unsupported retail behavior.
 
 See `docs/SOURCE_ARCHITECTURE.md` for the promotion and modernization policy.
+
+## Current modules
+
+- `multiplayer/` — first x64 C++23 proof of concept: a safe, byte-compatible
+  codec for individual cut-co-op `CGameEvent` records, with boundary and stream
+  tests. Package framing and gameplay dispatch remain future evidence-gated
+  work.

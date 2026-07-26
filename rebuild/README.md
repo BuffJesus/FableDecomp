@@ -58,3 +58,10 @@ unknown-pragmas are warnings, not ABI errors.
 - `matching`: compiles under VC7.1 to byte-identical retail `.text`.
 
 The ultimate target is a functional rebuilt executable. Matching grade is pursued where practical.
+
+`RUNNABLE.md` tracks the executable-integration milestone separately from
+per-function coverage. `build_bootstrap.ps1` builds and runs the Stage-0
+byte-identical-function proof plus the Stage-1 Win32 GUI startup shell. The
+recovered WinMain body is a 141-byte relocation-normalized retail match and
+reaches an instrumented GFMain boundary. This is boot-chain progress, not yet
+a running game.

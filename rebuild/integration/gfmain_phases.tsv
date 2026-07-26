@@ -1,0 +1,11 @@
+phase	start	end	role	anchors	next_action
+1	00402510	004025a6	runtime and project bootstrap	CSystemManagerInit; GetProjectPath; SetCurrentPath; InitialiseConsoleVariables	Recover the two temporary string/object lifetimes and make this the first callable GFMain phase.
+2	004025a6	00402668	failure-handling bootstrap	CSystemManager::Get; Draw; SetEnableFailureHandling	Type the returned system-manager object and its temporary allocation/deletion path.
+3	00402668	0040284e	settings, persistence, and IME	GetActionName; PathExists; LoadFromFile; CPersistContext; LoadIMESettings	Separate optional settings-file parsing from default-value initialization.
+4	0040284e	004029dc	root child hierarchy	EnableNavigator; AddChild	Recover the five named child definitions and the owner/container type.
+5	004029dc	00402ce6	retail banks and INI files	OpenRetailBank; OpenIniFile; GetDVDDialogueDir	Name each bank path and turn the repeated open sequence into data-backed records.
+6	00402ce6	00403082	save paths, fonts, and display resources	LoadTable; MyDocuments_CheckWritePermissions; GetFontBankName; AddChildPrimitive	Split filesystem permission checks from font/display resource construction.
+7	00403082	0040329c	command line and window configuration	GetWindowTitle; CCharString assignments	Recover the no-call command-line decision block and its persistent option fields.
+8	0040329c	004032d5	EULA and hardware configuration	DoEULAThings; GFConfigDetection; GFFreeConfigDetection	Isolate the exit-on-failure policy behind an injectable process-exit seam.
+9	004032d5	00403389	engine primitive assembly	AddChildPrimitive; Initialise; GFMain_ProcessSaveFileMetadata	Type the root engine primitive and carry its successful initialization result forward.
+10	00403389	00403480	GFInitialise, launch, error handling, and cleanup	GFInitialise; GFHandleSystemInitError; CSystemRegistry	Close the GFInitialise return/error branches and persistent registry write.
