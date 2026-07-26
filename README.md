@@ -24,7 +24,7 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Analysis DB | Complete non-`undefined` prototype | 69.027% |
 | Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **1,850** |
 | Reconstruction | Retail `.text` match (exact + relocation-normalized) | **1,523** (3.07%) |
-| Reconstruction | — of which byte-**identical** (no relocation masking) | 914 (1.84%) |
+| Reconstruction | — of which byte-**identical** (no relocation masking) | 913 (1.84%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
 | Auto-RE intake | Generated candidates / structural checker PASS | 573 / 565 |
@@ -102,12 +102,22 @@ constructor, and counted-pointer assignment paths. Typing the caller's temporary
 cleanup completed the Phase 2 ownership closure; Phase 3 settings and persistence are now the next
 runnable boundary.
 
-Phase 3 begins with 19 of 34 direct calls proven. Fifteen are honest reuse of the already-matched
-string/profile lifetime targets; the first new pair are seven-byte primary and secondary
-text-alignment setters at `0x009BC890` and `0x009BC8A0`. Their adjacent retail globals remain
-address-bearing until the settings caller proves whether they are channels or fields of one owner.
-Two additional seven-byte cleanup leaves restore the shared `CBase` vtable; their address-bearing
-function names preserve the still-unknown derived persistence owners.
+Phase 3 now has 20 of 34 direct calls proven. Fifteen are honest reuse of the already-matched
+string/profile lifetime targets; another pair are seven-byte primary and secondary text-alignment
+setters at `0x009BC890` and `0x009BC8A0`. Their adjacent retail globals remain address-bearing
+until the settings caller proves whether they are channels or fields of one owner. Two additional
+seven-byte cleanup leaves restore the shared `CBase` vtable; their address-bearing function names
+preserve the still-unknown derived persistence owners.
+
+The newest dependency also closes a naming trap. Donor PDB/BSim evidence called
+`0x00415530` a virtual `CActionDoCreatureAction::GetActionName`, but the donor ABI loads a hidden
+return pointer from the stack and ends in `ret 4`; TLC receives the hidden `CCharString` result in
+`ECX` and ends in plain `ret`. The GFMain caller and adjacent language paths show that TLC's leaf is
+a no-argument default-language factory. It is now readable typed C++, still 19 bytes after
+relocation normalization, and its fixture proves construction of `"English"` with length `-1`
+and balanced result destruction. The correction is recorded in
+`rebuild/integration/abi_corrections.tsv` so later name imports cannot silently restore the donor
+mistake.
 
 The project-owner-provided [boot-screen concept](rebuild/assets/boot/fabledecomp_boot_concept.png)
 is archived at its native resolution and now drives the authored visual checkpoint. The build
