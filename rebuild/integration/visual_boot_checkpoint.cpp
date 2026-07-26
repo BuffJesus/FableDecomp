@@ -219,11 +219,19 @@ namespace
         "FableDecomp - D3D9 Retail Frontend + Progress Display Ready";
     const char kD3DRetailAssetActiveWindowTitle[] =
         "FableDecomp - D3D9 Retail Frontend + Progress Display Active";
+    const char kD3DRetailAssetPresentedReadyWindowTitle[] =
+        "FableDecomp - D3D9 Presented - Retail Frontend + Progress Display Ready";
+    const char kD3DRetailAssetPresentedActiveWindowTitle[] =
+        "FableDecomp - D3D9 Presented - Retail Frontend + Progress Display Active";
 #else
     const char kD3DCheckpointReadyWindowTitle[] =
         "FableDecomp - D3D9 Visual Checkpoint Ready";
     const char kD3DCheckpointActiveWindowTitle[] =
         "FableDecomp - D3D9 Visual Checkpoint Active";
+    const char kD3DCheckpointPresentedReadyWindowTitle[] =
+        "FableDecomp - D3D9 Presented - Visual Checkpoint Ready";
+    const char kD3DCheckpointPresentedActiveWindowTitle[] =
+        "FableDecomp - D3D9 Presented - Visual Checkpoint Active";
 #endif
 
     const FableUint kImageBitmap = 0;
@@ -494,6 +502,22 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
 
     ShowWindow(window, showCommand == 0 ? kShowNormal : showCommand);
     UpdateWindow(window);
+    if (FableWasVisualD3D9Presented())
+    {
+#if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
+        SetWindowTextA(
+            window,
+            g_RetailProgressDisplayActive
+                ? kD3DRetailAssetPresentedActiveWindowTitle
+                : kD3DRetailAssetPresentedReadyWindowTitle);
+#else
+        SetWindowTextA(
+            window,
+            g_RetailProgressDisplayActive
+                ? kD3DCheckpointPresentedActiveWindowTitle
+                : kD3DCheckpointPresentedReadyWindowTitle);
+#endif
+    }
 
     FableMessage message = {};
     while (GetMessageA(&message, 0, 0, 0) > 0)

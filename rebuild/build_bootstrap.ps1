@@ -87,6 +87,8 @@ $visualBootFallbackArtwork = Join-Path $rebuildRoot 'assets\boot\fabledecomp_boo
 $visualBootArtwork = $visualBootFallbackArtwork
 $textureBuilder = Join-Path $workspaceRoot 'tools\texture_build.py'
 $visualBootBehaviorSource = Join-Path $rebuildRoot 'tests\integration\VisualBootCheckpoint_test.cpp'
+$render2DBatchPlanSource = Join-Path $rebuildRoot 'integration\render2d_batch_plan.cpp'
+$render2DBatchPlanBehaviorSource = Join-Path $rebuildRoot 'tests\integration\Render2DBatchPlan_test.cpp'
 $gfmainPhase1BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase1_test.cpp'
 $gfmainPhase2BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase2_test.cpp'
 $gfInitialiseProgressPhaseBehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFInitialise_ProgressPhase_test.cpp'
@@ -131,6 +133,8 @@ $visualBoundaryObject = Join-Path $outDir 'visual_engine_boundary.obj'
 $visualBootObject = Join-Path $outDir 'visual_boot_checkpoint.obj'
 $visualBootD3D9Object = Join-Path $outDir 'visual_boot_d3d9.obj'
 $visualBootBehaviorObject = Join-Path $outDir 'visual_boot_checkpoint_behavior.obj'
+$render2DBatchPlanObject = Join-Path $outDir 'render2d_batch_plan.obj'
+$render2DBatchPlanBehaviorObject = Join-Path $outDir 'render2d_batch_plan_behavior.obj'
 $visualBootRetailArtwork = Join-Path $outDir 'frontend_backdrop_01.png'
 $visualBootBitmap = Join-Path $outDir 'visual_boot_artwork.bmp'
 $visualBootResourceSource = Join-Path $outDir 'visual_boot_checkpoint.rc'
@@ -160,6 +164,7 @@ $stage2Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage2.exe'
 $stage3Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage3.exe'
 $visualCheckpointExecutable = Join-Path $outDir 'FableTLC-Reconstruction-VisualCheckpoint.exe'
 $visualBootBehaviorExecutable = Join-Path $outDir 'FableTLC-VisualBoot-Behavior.exe'
+$render2DBatchPlanBehaviorExecutable = Join-Path $outDir 'FableTLC-Render2DBatchPlan-Behavior.exe'
 $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
 $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $gfInitialisePassPattern = 'FABLETLC_GFINITIALISE_BEHAVIOR PASS'
@@ -183,6 +188,7 @@ $gfmainPhase1PassPattern = 'FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS'
 $gfmainPhase2PassPattern = 'FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS'
 $gfInitialiseProgressPhasePassPattern = 'FABLETLC_GFINITIALISE_PROGRESS_PHASE_BEHAVIOR PASS'
 $visualBootPassPattern = 'FABLETLC_VISUAL_BOOT_BEHAVIOR PASS'
+$render2DBatchPlanPassPattern = 'FABLETLC_RENDER2D_BATCH_PLAN PASS'
 $profileEndPassPattern = 'FABLETLC_PROFILE_END_BEHAVIOR PASS'
 $asyncFailureHandlingPassPattern = 'FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS'
 $startupLatchPassPattern = 'FABLETLC_STARTUP_LATCH_BEHAVIOR PASS'
@@ -272,6 +278,8 @@ $required = @(
     $visualBootD3D9Source,
     $visualBootFallbackArtwork,
     $visualBootBehaviorSource,
+    $render2DBatchPlanSource,
+    $render2DBatchPlanBehaviorSource,
     $gfmainPhase1BehaviorSource,
     $gfmainPhase2BehaviorSource,
     $gfInitialiseProgressPhaseBehaviorSource,
@@ -1141,6 +1149,24 @@ try {
         throw 'Failed to compile the visual boot behavior fixture.'
     }
 
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$render2DBatchPlanObject" $render2DBatchPlanSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $render2DBatchPlanObject)
+    ) {
+        throw 'Failed to compile the Render2D batch planner.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$render2DBatchPlanBehaviorObject" $render2DBatchPlanBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $render2DBatchPlanBehaviorObject)
+    ) {
+        throw 'Failed to compile the Render2D batch-plan fixture.'
+    }
+
     Add-Type -AssemblyName PresentationCore
     $pngStream = [System.IO.File]::OpenRead($visualBootArtwork)
     try {
@@ -1411,6 +1437,31 @@ try {
         (($visualBootOutput -join "`n") -notmatch [regex]::Escape($visualBootPassPattern))
     ) {
         throw "Visual boot fixture failed with exit code $visualBootExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$render2DBatchPlanBehaviorExecutable" `
+        $render2DBatchPlanObject $render2DBatchPlanBehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $render2DBatchPlanBehaviorExecutable)
+    ) {
+        throw 'Failed to link the Render2D batch-plan fixture.'
+    }
+
+    $render2DBatchPlanOutput =
+        & $render2DBatchPlanBehaviorExecutable 2>&1
+    $render2DBatchPlanExitCode = $LASTEXITCODE
+    $render2DBatchPlanOutput | Write-Output
+    if (
+        $render2DBatchPlanExitCode -ne 0 -or
+        (($render2DBatchPlanOutput -join "`n") -notmatch `
+            [regex]::Escape($render2DBatchPlanPassPattern))
+    ) {
+        throw (
+            'Render2D batch-plan fixture failed with exit code ' +
+            "$render2DBatchPlanExitCode."
+        )
     }
 
     Write-Output "BOOTSTRAP_BUILD PASS configuration=$Configuration executable=$executable"

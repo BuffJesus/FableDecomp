@@ -1,6 +1,8 @@
 param(
     [string]$Configuration = 'Release',
-    [switch]$Force
+    [switch]$Force,
+
+    [string[]]$Address = @()
 )
 
 $ErrorActionPreference = 'Stop'
@@ -34253,10 +34255,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a0aa80'
-        Module = 'NInventory::CTCInventoryBase'
-        Source = '00/a0/CTCInventoryBase_SetViewportBoxF_00a0aa80.cpp'
-        TestSource = '00/a0/CTCInventoryBase_SetViewportBoxF_00a0aa80_test.cpp'
-        PassPattern = 'FABLETLC_INVENTORY_BOXF_VIEWPORT_BEHAVIOR PASS'
+        Module = 'CRenderManagerCore'
+        Source = '00/a0/CRenderManagerCore_SetAWindow_00a0aa80.cpp'
+        TestSource = '00/a0/CRenderManagerCore_SetAWindow_00a0aa80_test.cpp'
+        PassPattern = 'FABLETLC_RENDER_MANAGER_SET_A_WINDOW_BEHAVIOR PASS'
     }
     [pscustomobject]@{
         Address = '00a0fd90'
@@ -34393,6 +34395,36 @@ $catalog = @(
     }
 )
 
+$requestedAddresses = @(
+    $Address |
+        ForEach-Object {
+            $_.Trim().ToLowerInvariant().Replace('0x', '')
+        } |
+        Where-Object { $_ }
+)
+if ($requestedAddresses.Count -gt 0) {
+    $catalogAddresses = @(
+        $catalog |
+            ForEach-Object { $_.Address.ToLowerInvariant() }
+    )
+    $unknownAddresses = @(
+        $requestedAddresses |
+            Where-Object { $_ -notin $catalogAddresses }
+    )
+    if ($unknownAddresses.Count -gt 0) {
+        throw (
+            'Requested candidate addresses are not in the catalog: ' +
+            ($unknownAddresses -join ', ')
+        )
+    }
+    $catalog = @(
+        $catalog |
+            Where-Object {
+                $_.Address.ToLowerInvariant() -in $requestedAddresses
+            }
+    )
+}
+
 $oldPath = $env:PATH
 $oldInclude = $env:INCLUDE
 $oldLib = $env:LIB
@@ -34502,6 +34534,38 @@ try {
 }
 
 $report = Join-Path $reportDir 'vc71-compiled.tsv'
-$results | Export-Csv -LiteralPath "$report.tmp" -Delimiter "`t" -NoTypeInformation -Encoding UTF8
+$reportResults = $results
+if (
+    $requestedAddresses.Count -gt 0 -and
+    (Test-Path -LiteralPath $report)
+) {
+    $updatedByAddress = @{}
+    foreach ($result in $results) {
+        $updatedByAddress[$result.address.ToLowerInvariant()] = $result
+    }
+    $reportResults = @(
+        foreach ($existing in Import-Csv -LiteralPath $report -Delimiter "`t") {
+            $addressKey = $existing.address.ToLowerInvariant()
+            if ($updatedByAddress.ContainsKey($addressKey)) {
+                $updatedByAddress[$addressKey]
+                $updatedByAddress.Remove($addressKey)
+            } else {
+                $existing
+            }
+        }
+        foreach ($remaining in $updatedByAddress.Values) {
+            $remaining
+        }
+    )
+}
+$reportResults |
+    Export-Csv -LiteralPath "$report.tmp" `
+        -Delimiter "`t" `
+        -NoTypeInformation `
+        -Encoding UTF8
 Move-Item -LiteralPath "$report.tmp" -Destination $report -Force
-Write-Output "CANDIDATE_BUILD PASS objects=$($results.Count) out=$outDir"
+Write-Output (
+    "CANDIDATE_BUILD PASS objects=$($results.Count) " +
+    "scope=$(if ($requestedAddresses.Count) { 'selected' } else { 'all' }) " +
+    "out=$outDir"
+)

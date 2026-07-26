@@ -8,7 +8,7 @@ address	name	retail_bytes	recovery_status	source	role
 009be420	CDisplayManager::ClearRenderTarget	109	RELOCATION_MATCH	rebuild/src/compiled/00/9b/CDisplayManager_ClearRenderTarget_009be420.cpp	Clear the progress target when the full-screen flag is active.
 009bf220	CDisplayManager::SetRenderTargetAsBackScreen	168	RELOCATION_MATCH	rebuild/src/compiled/00/9b/CDisplayManager_SetRenderTargetAsBackScreen_009bf220.cpp	Bind the back screen before progress primitive submission.
 00498490	CProgressDisplay::DrawRetailDisplay	5101	UNRECOVERED		Build the actual progress-background, bar, and text primitives.
-009da9f0	CRenderManager2D::Render2DDrawList	3344	UNRECOVERED		Submit the accumulated 2D primitive list.
+009da9f0	CRenderManager2D::Render2DDrawList	3344	INTEGRATION_BATCH_PLAN	rebuild/integration/render2d_batch_plan.cpp	Behavior-gated queue layout and normal/text batch splitting; setup, renderer submission adapter, ownership cleanup, and full parent body remain to integrate.
 009bef50	CDisplayManager::EndRender	43	RELOCATION_MATCH	rebuild/src/compiled/00/9b/CDisplayManager_EndRender_009bef50.cpp	End the core and device render transaction.
 009beeb0	CDisplayManager::SwapScreens	97	RELOCATION_MATCH	rebuild/src/compiled/00/9b/CDisplayManager_SwapScreens_009beeb0.cpp	Present the back screen and advance the display frame.
 00a0aa90	NInventory::CTCInventoryBase::SetViewport	11	RELOCATION_MATCH	rebuild/src/compiled/00/a0/CTCInventoryBase_SetViewport_00a0aa90.cpp	Restore the saved integer viewport through the inventory display owner.
