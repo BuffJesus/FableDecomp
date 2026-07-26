@@ -54,10 +54,13 @@
   and drains the queue.
 - Relocation-matched 11-byte
   `CRenderManagerCore::SetAWindow @ 0x00A0AA80` is now the third live
-  dependency. It performs the recovered core-to-display ownership hop; the
-  compact display endpoint issues D3D9 `SetViewport`. The full 189-byte
-  `CDisplayManager::SetViewport @ 0x009BF490` remains unrecovered because its
-  post-viewport shader-manager callback still requires the singleton graph.
+  dependency. It performs the recovered core-to-display ownership hop, then
+  the direct relocation-matched 112/112-byte
+  `CDisplayManager::SetViewport(C2DBoxF) @ 0x009BF490` performs retail's x87
+  float-to-integer conversion. The earlier 189-byte extent was wrong. Its
+  compact integer endpoint issues D3D9 `SetViewport`; the full 479-byte retail
+  integer overload at `0x009BEF80` remains unrecovered because its final
+  post-viewport shader-manager callback requires the singleton graph.
 - Exact 79/79-byte `Render2DDrawList::CopyBlock @ 0x009E1440` is now the
   fourth live dependency. The lifecycle `CLEAR_VERTEX_QUEUE` event constructs
   the retail 0x20-byte controller view and invokes its exact full-clear path,
@@ -68,6 +71,18 @@
   wrapper assignment and teardown events. Those compact wrappers are null in
   the current visual path, so the retail ownership logic is exercised without
   taking ownership of the authored D3D9 presentation texture.
+- Relocation-matched 74/74-byte
+  `CTexture::InitialiseFromPreallocatedTexture @ 0x009FA230` is now the
+  seventh live direct dependency. Its null-wrapper call reaches the recovered
+  `CTexture::CalcByteLength @ 0x009F9EE0` null path. Calc is behavior-proven
+  but remains an honest 134-byte `ORACLE_MISSING` candidate (direct retail
+  inspection shows a semantically equivalent 143-byte register-allocation
+  difference). The nonnull pixel-format/table path remains deliberately
+  fail-closed in the visual bridge.
+- Exact 121/121-byte
+  `CRenderStateManager::RestoreCaptureBlock @ 0x00A05840` is now the eighth
+  live direct dependency. It closes a compact sentinel-only capture block
+  after the draw and verifies the retail counter/offset transition.
 - Ego PDB corrected the visible vertex ABI to
   `CTVertexRHWColSpecTex1Base`: 0x20 bytes containing XYZRHW, diffuse,
   specular, and UV. The bridge now uses FVF `0x1C4`, a compile-time 0x20 size

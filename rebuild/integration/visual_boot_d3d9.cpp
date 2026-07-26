@@ -1,6 +1,7 @@
 #include "fable_visual_d3d9.h"
 #include "fable_render_state.h"
 #include "fable_render2d_vertex_queue.h"
+#include "fable_render_capture.h"
 #include "fable_render_texture.h"
 #include "fable_render_window.h"
 #include "fable_texture_lifecycle.h"
@@ -174,6 +175,7 @@ namespace
     fable_i32 g_ArtworkWidth = 0;
     fable_i32 g_ArtworkHeight = 0;
     bool g_Presented = false;
+    bool g_UnexpectedTextureAccounting = false;
 
     bool Failed(FableD3DResult result)
     {
@@ -289,6 +291,9 @@ namespace
               drew_(false)
         {
             memset(textures_, 0, sizeof(textures_));
+            memset(&captureManager_, 0, sizeof(captureManager_));
+            memset(&captureSentinel_, 0, sizeof(captureSentinel_));
+            captureSentinel_.captureType11 = 4;
         }
 
         virtual void Invoke(
@@ -301,15 +306,34 @@ namespace
             if (!succeeded_)
                 return;
 
-            if (
+            if (eventKind == RENDER2D_ADAPTER_BEGIN_CAPTURE)
+            {
+                captureManager_.captures0008[0].entry00 =
+                    &captureSentinel_;
+                captureManager_.captures0008[0].value04 = 0;
+                captureManager_.captureCount2808 = 1;
+                captureManager_.pendingRestoreCount280C = 0;
+                captureManager_.captureOffset2814 = 2;
+            }
+            else if (
                 eventKind ==
                 RENDER2D_ADAPTER_INITIALISE_NULL_TEXTURE)
             {
                 if (argument0 >= 1 && argument0 <= 3)
-                    memset(
-                        &textures_[argument0 - 1],
-                        0,
-                        sizeof(textures_[0]));
+                {
+                    CTexturePreallocatedView* texture =
+                        reinterpret_cast<CTexturePreallocatedView*>(
+                            &textures_[argument0 - 1]);
+                    g_UnexpectedTextureAccounting = false;
+                    if (
+                        !texture->InitialiseFromPreallocatedTexture(0) ||
+                        texture->texture00 != 0 ||
+                        texture->ByteLength != 0 ||
+                        g_UnexpectedTextureAccounting)
+                    {
+                        succeeded_ = false;
+                    }
+                }
             }
             else if (
                 eventKind ==
@@ -415,6 +439,19 @@ namespace
                 if (controller.end04 != begin)
                     succeeded_ = false;
             }
+            else if (
+                eventKind ==
+                RENDER2D_ADAPTER_RESTORE_CAPTURE)
+            {
+                captureManager_.RestoreCaptureBlock();
+                if (
+                    captureManager_.captureCount2808 != 0 ||
+                    captureManager_.pendingRestoreCount280C != 0 ||
+                    captureManager_.captureOffset2814 != 1)
+                {
+                    succeeded_ = false;
+                }
+            }
         }
 
         bool Succeeded() const
@@ -464,13 +501,27 @@ namespace
 
         const FableVisualVertex* vertices_;
         CTextureAssignmentView textures_[3];
+        CRenderStateManagerCaptureView captureManager_;
+        CRenderStateEntry captureSentinel_;
         bool succeeded_;
         bool drew_;
     };
 }
 
-void CDisplayManagerWindowView::SetViewport(
-    const C2DBoxF& viewport)
+void CPixelFormatByteLengthView::Initialise(fable_u32)
+{
+    g_UnexpectedTextureAccounting = true;
+    value00 = 0xFFFFFFFF;
+}
+
+fable_u32 CPixelFormatByteLengthView::GetColourDepth() const
+{
+    g_UnexpectedTextureAccounting = true;
+    return 0;
+}
+
+void CDisplayManager::SetIntegerViewportEndpoint(
+    const C2DBoxI& viewport)
 {
     FableD3DViewport deviceViewport = {
         static_cast<FableD3DDword>(viewport.left),

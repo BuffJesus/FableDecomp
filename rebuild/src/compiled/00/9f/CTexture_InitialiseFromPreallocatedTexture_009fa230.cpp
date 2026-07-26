@@ -1,33 +1,7 @@
-#include "rebuild_abi.h"
-
-struct FablePreallocatedTexture;
-typedef fable_u32 (__stdcall *FablePreallocatedTextureReleaseCall)(
-    FablePreallocatedTexture* texture);
-
-struct FablePreallocatedTextureVTable
-{
-    void* queryInterface00;
-    void* addRef04;
-    FablePreallocatedTextureReleaseCall release08;
-};
-
-struct FablePreallocatedTexture
-{
-    FablePreallocatedTextureVTable* vtable;
-};
-
-struct CTexturePreallocatedView
-{
-    FablePreallocatedTexture* texture00;
-    fable_u32 flags04;
-
-    void CalcByteLength();
-    bool InitialiseFromPreallocatedTexture(
-        FablePreallocatedTexture* texture);
-};
+#include "fable_texture_lifecycle.h"
 
 bool CTexturePreallocatedView::InitialiseFromPreallocatedTexture(
-    FablePreallocatedTexture* texture)
+    FableLifecycleTexture* texture)
 {
     if (texture00 != 0)
     {
