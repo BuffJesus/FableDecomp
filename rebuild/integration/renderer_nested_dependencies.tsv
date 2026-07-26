@@ -37,7 +37,7 @@ parent_address	parent_name	address	name	retail_bytes	recovery_status	source	note
 00498490	CProgressDisplay::DrawRetailDisplay	00a0fd90	WordWrap_SetCallback	21	RELOCATION_MATCH	rebuild/src/compiled/00/a0/Global_WordWrapSetCallback_00a0fd90.cpp	Word-wrap callback configuration.
 00498490	CProgressDisplay::DrawRetailDisplay	00bfea70	__ftol2	117	TOOLCHAIN_RUNTIME		Microsoft floating-point conversion runtime helper.
 009da9f0	CRenderManager2D::Render2DDrawList	00987fe0	CShaderRenderManager::EnableVertexShaders	61	RELOCATION_MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_EnableVertexShaders_00987fe0.cpp	Vertex-shader mode setup.
-009da9f0	CRenderManager2D::Render2DDrawList	00988020	CShaderRenderManager::ApplyVertexShader	176	UNRECOVERED		Vertex-shader binding and ownership.
+009da9f0	CRenderManager2D::Render2DDrawList	00988020	CShaderRenderManager::ApplyVertexShader	176	MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_ApplyVertexShader_00988020.cpp	Bind the vertex shader and declaration after reconciling display-engine shader mode.
 009da9f0	CRenderManager2D::Render2DDrawList	009880e0	CShaderRenderManager::DisableVertexShaders	44	RELOCATION_MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_DisableVertexShaders_009880e0.cpp	Fixed-function vertex mode setup.
 009da9f0	CRenderManager2D::Render2DDrawList	00988110	CShaderRenderManager::EnablePixelShaders	36	RELOCATION_MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_EnablePixelShaders_00988110.cpp	Pixel-shader capability gate.
 009da9f0	CRenderManager2D::Render2DDrawList	00988190	CShaderRenderManager::DisablePixelShaders	85	UNRECOVERED		Behavior mapped; VC7.1 instruction scheduling still differs.
@@ -48,7 +48,7 @@ parent_address	parent_name	address	name	retail_bytes	recovery_status	source	note
 009da9f0	CRenderManager2D::Render2DDrawList	009897c0	CShaderRenderManager::UpdateFogColour	99	UNRECOVERED		Fog-colour state upload.
 009da9f0	CRenderManager2D::Render2DDrawList	00989bf0	CShaderRenderManager::UpdatePixelShaderConstants	186	UNRECOVERED		Pixel constant upload.
 009da9f0	CRenderManager2D::Render2DDrawList	0098a760	CShaderRenderManager::UpdateLightGlobals	54	MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_UpdateLightGlobals_0098a760.cpp	Light-global upload.
-009da9f0	CRenderManager2D::Render2DDrawList	0098b230	CShaderRenderManager::RegisterVertexShaderConstantLayout	73	UNRECOVERED		Constant-layout registration.
+009da9f0	CRenderManager2D::Render2DDrawList	0098b230	CShaderRenderManager::RegisterVertexShaderConstantLayout	73	RELOCATION_MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_RegisterVertexShaderConstantLayout_0098b230.cpp	Resize and register the indexed vertex-shader constant layout.
 009da9f0	CRenderManager2D::Render2DDrawList	0098b5e0	CShaderRenderManager::SetVertexShaderConstantLayout	624	UNRECOVERED		Large constant-layout application.
 009da9f0	CRenderManager2D::Render2DDrawList	0098b930	CShaderRenderManager::SetVSConstants	37	MATCH	rebuild/src/compiled/00/98/CShaderRenderManager_SetVSConstants_0098b930.cpp	Vertex constant upload.
 009da9f0	CRenderManager2D::Render2DDrawList	009a0cf0	CRenderManagerCore::AttachTextureToStage	79	UNRECOVERED		Texture-stage binding.
@@ -59,5 +59,5 @@ parent_address	parent_name	address	name	retail_bytes	recovery_status	source	note
 009da9f0	CRenderManager2D::Render2DDrawList	009fa1c0	CTexture::operator=	98	UNRECOVERED		Texture counted assignment.
 009da9f0	CRenderManager2D::Render2DDrawList	009fa230	CTexture::InitialiseFromPreallocatedTexture	74	RELOCATION_MATCH	rebuild/src/compiled/00/9f/CTexture_InitialiseFromPreallocatedTexture_009fa230.cpp	Wrap a device texture and update ownership flags.
 009da9f0	CRenderManager2D::Render2DDrawList	00a05840	CRenderStateManager::RestoreCaptureBlock	121	MATCH	rebuild/src/compiled/00/a0/CRenderStateManager_RestoreCaptureBlock_00a05840.cpp	Captured-state restoration.
-009da9f0	CRenderManager2D::Render2DDrawList	00a058c0	CRenderStateManager::RealiseRenderState	167	UNRECOVERED		Materialize restored render state.
+009da9f0	CRenderManager2D::Render2DDrawList	00a058c0	CRenderStateManager::RealiseRenderState	167	MATCH	rebuild/src/compiled/00/a0/CRenderStateManager_RealiseRenderState_00a058c0.cpp	Dispatch queued render, texture-stage, and sampler changes to the device.
 009da9f0	CRenderManager2D::Render2DDrawList	00a0aa80	NInventory::CTCInventoryBase::SetViewport(C2DBoxF)	11	RELOCATION_MATCH	rebuild/src/compiled/00/a0/CTCInventoryBase_SetViewportBoxF_00a0aa80.cpp	EgoCore and adjacent overloads reject the generated template label.

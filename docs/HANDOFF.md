@@ -1,6 +1,35 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 12:52 MDT (texture/shader submit closure).*
+*Last updated: 2026-07-26 13:22 MDT (shader binding/render-state closure).*
+
+## Shader binding/render-state closure (2026-07-26)
+
+- Three more `Render2DDrawList` dependencies are canonical, raising that
+  family from **11/25 to 14/25** while `DrawRetailDisplay` remains **13/37**.
+  `CShaderRenderManager::ApplyVertexShader @ 0x00988020` is a true
+  **176/176-byte exact match** and covers shader-mode reconciliation, the
+  unchanged binding fast path, vertex-shader/declaration updates, and both
+  device calls.
+- `CRenderStateManager::RealiseRenderState @ 0x00A058C0` is also a true
+  **167/167-byte exact match**. Its fixture covers render, texture-stage, and
+  sampler dispatch; unchanged and unsupported states; dirty-flag clearing;
+  queue draining; and negative/empty queue handling.
+- `CShaderRenderManager::RegisterVertexShaderConstantLayout @ 0x0098B230`
+  is a 73-byte relocation-normalized match with resize and in-range
+  registration behavior gated.
+- The canonical VC7.1 compile/behavior gate passes **4,906 / 4,906**. Retail
+  parity is **2,682 exact + 1,897 relocation-normalized = 4,579 / 49,552
+  (9.24%)**; honest residue remains 199 differences and 128 missing
+  function-start oracles.
+- The full Release bootstrap rebuilt with the genuine retail
+  `FRONTEND_BACKDROP_01`. A fresh live launch opened
+  `FableTLC-Reconstruction-VisualCheckpoint.exe`, created the expected
+  top-level retail-art window, accepted `WM_CLOSE`, and exited zero.
+- Continue the renderer family with `DisablePixelShaders @ 0x00988190`,
+  ambient/fog and pixel-constant uploads, `CTexture::operator= @ 0x009FA1C0`,
+  then the larger constant-layout and draw-list bodies. Replacing the current
+  GDI presentation bridge with recovered Lionhead renderer submission remains
+  the central visual-closure boundary.
 
 ## Texture/shader submit closure (2026-07-26)
 
