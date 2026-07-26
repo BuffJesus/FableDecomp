@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.1.0",
-  "generatedAt": "2026-07-25T16:44:05-06:00",
-  "sourceDigest": "f27922b79986b050517f6c0c167acc5c472cd866237d13d6e5cb31f95ac7b65b",
+  "generatedAt": "2026-07-25T17:58:45-06:00",
+  "sourceDigest": "d11208aedcd364509548df40d1111fa40ed06909a7cd93776042f506e553dc3e",
   "target": {
     "executable": "Fable.exe",
     "imageBase": "0x00400000",
@@ -4036,29 +4036,30 @@
           "parameterTypesText": "CGameScriptInterface *,CCharString const &,CCharString const &",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         },
         {
           "address": "0x004B3900",
           "rva": "0x000B3900",
-          "qualifiedName": "AddQuestRegion",
+          "qualifiedName": "CQuestManager::AddQuestRegion",
           "module": "CQuestManager",
           "callingConvention": "__thiscall",
           "returnType": "void",
           "parameterCount": 3,
-          "parameterTypesText": "CQuestManager *,CCharString *,CRegion *",
+          "parameterTypesText": "CQuestManager *,CCharString const &,CRegion const *",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
           "agentVerdict": "",
@@ -5194,17 +5195,18 @@
           "parameterTypesText": "CGameScriptInterface *,CCharString const &",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         }
@@ -6060,17 +6062,18 @@
           "parameterTypesText": "CGameScriptInterface *,CCharString const &,CCharString const &",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         },
@@ -9101,17 +9104,18 @@
           "parameterTypesText": "CGameScriptInterface *,long,long,long",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         }
@@ -9149,17 +9153,18 @@
           "parameterTypesText": "CGameScriptInterface *,CCharString const &,ETextGroupSelectionMethod",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         },
@@ -11517,17 +11522,18 @@
           "parameterTypesText": "CGameScriptInterface *,ulong",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         }
@@ -11560,17 +11566,18 @@
           "parameterTypesText": "CGameScriptInterface *,ulong",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         }
@@ -11993,42 +12000,44 @@
           "parameterTypesText": "CGameScriptInterface *,CCharString const &,long,long,long,bool,CCharString const &,long",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         },
         {
           "address": "0x004B1720",
           "rva": "0x000B1720",
-          "qualifiedName": "CGameScriptInterface::AddBoast",
-          "module": "CGameScriptInterface",
-          "callingConvention": "unknown",
-          "returnType": "undefined",
-          "parameterCount": 0,
-          "parameterTypesText": "",
-          "prototypeComplete": false,
+          "qualifiedName": "CQuestManager::AddBoast",
+          "module": "CQuestManager",
+          "callingConvention": "__thiscall",
+          "returnType": "void",
+          "parameterCount": 8,
+          "parameterTypesText": "CQuestManager *,CCharString const &,CCharString const &,long,long,long,bool,long",
+          "prototypeComplete": true,
           "cleanDecompile": "yes",
           "agentVerdict": "",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
-          "ownerRelevance": "strong",
+          "ownerRelevance": "moderate",
           "engineImplementationVerified": false,
-          "score": 200,
+          "score": 75,
           "evidence": [
             "exact-leaf-name",
-            "quest-interface-qualified-owner"
+            "complete-prototype",
+            "quest-runtime-owner"
           ]
         }
       ]
@@ -12592,17 +12601,18 @@
           "parameterTypesText": "CGameScriptInterface *,long,float,float,float",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         }
@@ -12694,17 +12704,18 @@
           "parameterTypesText": "CGameScriptInterface *,long,float",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         }
@@ -12747,17 +12758,18 @@
           "parameterTypesText": "CGameScriptInterface *,long,long,long",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         }
@@ -12795,17 +12807,18 @@
           "parameterTypesText": "CGameScriptInterface *,long,bool",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         }
@@ -14459,17 +14472,18 @@
           "parameterTypesText": "CGameScriptInterface *,CScriptThing const &,CScriptThing const &,float,long,long",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         },
@@ -17826,17 +17840,18 @@
           "parameterTypesText": "CGameScriptInterface *,CCharString const &",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         }
@@ -19559,12 +19574,12 @@
         {
           "address": "0x006B3800",
           "rva": "0x002B3800",
-          "qualifiedName": "TransitionToTheme",
+          "qualifiedName": "CEnvironment::TransitionToTheme",
           "module": "CEnvironment",
           "callingConvention": "__thiscall",
           "returnType": "void",
-          "parameterCount": 3,
-          "parameterTypesText": "CEnvironment *,long,float",
+          "parameterCount": 5,
+          "parameterTypesText": "CEnvironment *,long,long,long,float",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
           "agentVerdict": "",
@@ -19658,17 +19673,18 @@
           "parameterTypesText": "CGameScriptInterface *,CCharString const &,float",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         }
@@ -20567,17 +20583,18 @@
           "parameterTypesText": "CGameScriptInterface *,CScriptThing &",
           "prototypeComplete": true,
           "cleanDecompile": "yes",
-          "agentVerdict": "",
+          "agentVerdict": "PASS",
           "compiledStatus": "",
           "behaviorTest": "",
           "retailParity": "",
           "liftGrade": "",
           "ownerRelevance": "strong",
           "engineImplementationVerified": false,
-          "score": 220,
+          "score": 245,
           "evidence": [
             "exact-leaf-name",
             "complete-prototype",
+            "agent-structural-pass",
             "quest-interface-qualified-owner"
           ]
         }
@@ -51884,10 +51901,10 @@
     {
       "address": "0x0044C6B0",
       "rva": "0x0004C6B0",
-      "qualifiedName": "GFGetPreMainMemoryUsed",
-      "module": "_global",
+      "qualifiedName": "CGameDefinitionManager::Get",
+      "module": "CGameDefinitionManager",
       "callingConvention": "__fastcall",
-      "returnType": "long",
+      "returnType": "CGameDefinitionManager &",
       "parameterCount": 0,
       "parameterTypesText": "",
       "prototypeComplete": true,

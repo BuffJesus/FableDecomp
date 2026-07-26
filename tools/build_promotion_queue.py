@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -37,6 +38,47 @@ def feature_count(value: str) -> int:
         except (IndexError, ValueError):
             total += 1
     return total
+
+
+def semantic_hazards(text: str) -> list[str]:
+    """Return source patterns that need human review before compilation/promotion.
+
+    These are not proof that the reconstruction differs from retail. In particular,
+    Ghidra can faithfully expose an original lookup path that selects a vector-map
+    end sentinel and then reads through it. The generated C++ still needs review
+    because expressing that path as a normal C++ dereference invokes undefined
+    behavior even when it mirrors the machine code.
+    """
+    hazards: set[str] = set()
+    if "RE_AGENT_SEMANTIC_REVIEW" in text:
+        hazards.add("explicit-review-marker")
+
+    source = re.sub(r"//[^\r\n]*|/\*.*?\*/", "", text, flags=re.DOTALL)
+
+    if re.search(r"\b(?:std::)?(?:abort|terminate)\s*\(", source):
+        hazards.add("process-termination")
+
+    end_assignment = re.compile(
+        r"\b(?P<variable>[A-Za-z_]\w*)\s*=\s*"
+        r"[^;{}\r\n]*(?:m_p\w*End|\bend(?:Entry|Iterator)?\b|\.end\s*\(\s*\))\s*;",
+        re.IGNORECASE,
+    )
+    for assignment in end_assignment.finditer(source):
+        variable = re.escape(assignment.group("variable"))
+        tail = source[assignment.end():]
+        next_assignment = re.search(rf"\b{variable}\s*=", tail)
+        if next_assignment is not None:
+            tail = tail[:next_assignment.start()]
+        dereference = re.search(
+            rf"(?:\b{variable}\s*->|\(\s*\*\s*{variable}\s*\)|"
+            rf"\*\s*{variable}\b|\b{variable}\s*\[)",
+            tail,
+        )
+        if dereference is not None:
+            hazards.add("possible-end-sentinel-dereference")
+            break
+
+    return sorted(hazards)
 
 
 def lane_for(row: dict[str, str], missing: int, incompatible: int) -> str:
@@ -82,18 +124,24 @@ def main() -> int:
         checker_pass = candidate.get("checker_verdict") == "PASS"
         signature_pass = signature.get("status") == "PASS"
         integrity_pass = candidate.get("integrity") == "PASS"
-        lane = lane_for(candidate, missing, incompatible)
+        snapshot = candidate.get("snapshot", "")
+        hazards = semantic_hazards(
+            Path(snapshot).read_text(encoding="utf-8-sig", errors="replace")
+        ) if snapshot and Path(snapshot).is_file() else []
+        lane = "semantic-review" if hazards else lane_for(candidate, missing, incompatible)
         lane_rank = {
             "compile-now": 0,
             "vc71-port": 1,
             "declaration-fix": 2,
             "dependency-stub": 3,
             "manual-lift": 4,
+            "semantic-review": 5,
         }[lane]
         score = (
             0 if checker_pass else 1,
             0 if integrity_pass else 1,
             0 if signature_pass else 1,
+            0 if not hazards else 1,
             lane_rank,
             missing,
             incompatible,
@@ -119,12 +167,16 @@ def main() -> int:
                     "source_bytes": source_bytes,
                     "origin": candidate.get("origin", ""),
                     "first_blocker": candidate.get("first_blocker", ""),
-                    "snapshot": candidate.get("snapshot", ""),
+                    "semantic_hazards": ";".join(hazards),
+                    "snapshot": snapshot,
                 },
             )
         )
 
     ranked.sort(key=lambda item: item[0])
+    hazard_rows = [
+        item[1] for item in ranked if str(item[1]["semantic_hazards"]).strip()
+    ]
     rows = [item[1] for item in ranked[: max(0, args.limit)]]
     for index, row in enumerate(rows, 1):
         row["rank"] = index
@@ -139,26 +191,48 @@ def main() -> int:
         "",
         f"Generated: `{timestamp}`",
         "",
-        f"Uncompiled auto-RE candidates: **{len(ranked)}**. Showing: **{len(rows)}**.",
+        f"Uncompiled auto-RE candidates: **{len(ranked)}**. Showing: **{len(rows)}**. "
+        f"Semantic-review quarantine: **{len(hazard_rows)}**.",
         "",
-        "Ranking favors checker/integrity/signature PASS, then the smallest declaration, dependency, VC7.1, and source-size repair surface. It does not claim semantic correctness; every promotion still needs a focused behavior oracle and retail comparison.",
+        "Ranking favors checker/integrity/signature PASS and candidates without known source-level hazards, then the smallest declaration, dependency, VC7.1, and source-size repair surface. Structural fidelity does not by itself make an unsafe C++ expression promotable; every promotion still needs semantic review, a focused behavior oracle, and retail comparison.",
         "",
-        "| Rank | Address | Owner/function | Lane | Signature | Missing deps | VC7.1 fixes | Source bytes | First blocker |",
-        "|---:|---|---|---|---|---:|---:|---:|---|",
+        "| Rank | Address | Owner/function | Lane | Signature | Hazards | Missing deps | VC7.1 fixes | Source bytes | First blocker |",
+        "|---:|---|---|---|---|---|---:|---:|---:|---|",
     ]
     for row in rows:
         owner = row["name"] if row["module"] == "_global" else f"{row['module']}::{row['name']}"
         blocker = str(row["first_blocker"]).replace("|", "\\|")
         lines.append(
             f"| {row['rank']} | `0x{str(row['address']).upper()}` | `{owner}` | `{row['lane']}` | "
-            f"`{row['signature']}` | {row['missing_dependencies']} | {row['vc71_incompatibilities']} | "
+            f"`{row['signature']}` | {row['semantic_hazards']} | {row['missing_dependencies']} | {row['vc71_incompatibilities']} | "
             f"{row['source_bytes']} | {blocker} |"
         )
+    lines.extend(
+        [
+            "",
+            "## Semantic-review quarantine",
+            "",
+            "These candidates may structurally match the retail path, but their generated C++ contains a known source-level hazard and is intentionally ranked behind ordinary manual lifts.",
+            "",
+            "| Address | Owner/function | Hazards |",
+            "|---|---|---|",
+        ]
+    )
+    for row in hazard_rows[:25]:
+        owner = row["name"] if row["module"] == "_global" else f"{row['module']}::{row['name']}"
+        lines.append(
+            f"| `0x{str(row['address']).upper()}` | `{owner}` | {row['semantic_hazards']} |"
+        )
+    if len(hazard_rows) > 25:
+        lines.append(f"|  | _{len(hazard_rows) - 25} additional quarantined candidates omitted_ |  |")
     lines.append("")
     temporary = backlog / "PROMOTION_QUEUE.md.tmp"
     temporary.write_text("\n".join(lines), encoding="utf-8")
     temporary.replace(backlog / "PROMOTION_QUEUE.md")
-    print(f"promotion_candidates={len(ranked)} wrote={len(rows)}")
+    print(
+        f"promotion_candidates={len(ranked)} wrote={len(rows)} "
+        f"semantic_quarantine={len(hazard_rows)}"
+    )
     return 0
 
 

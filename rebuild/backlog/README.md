@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-07-25T16:44:08-06:00`
+Generated: `2026-07-25T17:58:48-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 
@@ -8,8 +8,8 @@ The order favors generated candidate clusters first, then extension of proven mo
 
 | Rank | Track | Module | Functions | Prototype gaps | Agent candidates | Verified lifts |
 |---:|---|---|---:|---:|---:|---:|
-| 1 | candidate-cluster | `CGameScriptInterface` | 954 | 6 | 379 | 0 |
-| 2 | candidate-cluster | `_global` | 11370 | 9376 | 43 | 0 |
+| 1 | candidate-cluster | `CGameScriptInterface` | 953 | 5 | 395 | 0 |
+| 2 | candidate-cluster | `_global` | 11369 | 9375 | 43 | 0 |
 | 3 | candidate-cluster | `CMouseDX` | 24 | 0 | 14 | 10 |
 | 4 | candidate-cluster | `CMemoryAllocatorFixedSize` | 21 | 0 | 11 | 7 |
 | 5 | candidate-cluster | `CScriptThing` | 103 | 2 | 12 | 0 |
@@ -19,7 +19,7 @@ The order favors generated candidate clusters first, then extension of proven mo
 | 9 | candidate-cluster | `CNetworkClient` | 6 | 0 | 5 | 0 |
 | 10 | candidate-cluster | `CMainGameComponent` | 63 | 1 | 5 | 0 |
 | 11 | candidate-cluster | `CTCCoopSpirit` | 24 | 2 | 5 | 0 |
-| 12 | candidate-cluster | `CWorldMap` | 185 | 3 | 5 | 0 |
+| 12 | candidate-cluster | `CWorldMap` | 186 | 3 | 5 | 0 |
 | 13 | candidate-cluster | `CEngineLandscapeMap` | 19 | 0 | 4 | 0 |
 | 14 | candidate-cluster | `CEnginePrimitiveManagerMeshBase` | 4 | 0 | 4 | 0 |
 | 15 | candidate-cluster | `CLandscapeLayerMesh` | 9 | 3 | 4 | 0 |
@@ -45,16 +45,16 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 | 3 | `0088f660` | `CGameScriptInterface` | 0 | 282 |  |
 | 4 | `004d55d0` | `CTCCoopSpirit` | 0 | 308 | 'CTCCoopSpirit' does not name a type |
 | 5 | `00892f10` | `CGameScriptInterface` | 0 | 394 | expected '(' before '{' token |
-| 6 | `00891540` | `CGameScriptInterface` | 0 | 446 | invalid use of incomplete type 'class CGameScriptInterface' |
-| 7 | `00449b60` | `CPlayerManager` | 0 | 455 | 'CRGBColour' does not name a type |
-| 8 | `008a9e30` | `CGameScriptInterface` | 0 | 489 | invalid use of incomplete type 'class CGameScriptInterface' |
-| 9 | `008917f0` | `CGameScriptInterface` | 0 | 525 |  |
-| 10 | `008914e0` | `CGameScriptInterface` | 0 | 526 |  |
-| 11 | `00893030` | `CGameScriptInterface` | 0 | 553 | 'reinterpret_cast' from integer to pointer |
-| 12 | `00c20ef0` | `_global` | 0 | 582 |  |
-| 13 | `0088f910` | `CGameScriptInterface` | 0 | 586 |  |
-| 14 | `0088f920` | `CGameScriptInterface` | 0 | 588 |  |
-| 15 | `00892f40` | `CGameScriptInterface` | 0 | 593 | 'reinterpret_cast' from integer to pointer |
+| 6 | `00891810` | `CGameScriptInterface` | 0 | 430 |  |
+| 7 | `00891540` | `CGameScriptInterface` | 0 | 446 | invalid use of incomplete type 'class CGameScriptInterface' |
+| 8 | `00891800` | `CGameScriptInterface` | 0 | 448 |  |
+| 9 | `00449b60` | `CPlayerManager` | 0 | 455 | 'CRGBColour' does not name a type |
+| 10 | `008a9e30` | `CGameScriptInterface` | 0 | 489 | invalid use of incomplete type 'class CGameScriptInterface' |
+| 11 | `008917f0` | `CGameScriptInterface` | 0 | 525 |  |
+| 12 | `008914e0` | `CGameScriptInterface` | 0 | 526 |  |
+| 13 | `00893030` | `CGameScriptInterface` | 0 | 553 | 'reinterpret_cast' from integer to pointer |
+| 14 | `00c20ef0` | `_global` | 0 | 582 |  |
+| 15 | `0088f910` | `CGameScriptInterface` | 0 | 586 |  |
 
 ## First function queue
 
@@ -74,29 +74,29 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 | 12 | `008a9fc0` | `CGameScriptInterface` | compiled-needs-parity |  |
 | 13 | `008aa480` | `CGameScriptInterface` | compiled-needs-parity |  |
 | 14 | `006e7690` | `CGameScriptInterface` | candidate-compile |  |
-| 15 | `006e7920` | `CGameScriptInterface` | candidate-compile |  |
-| 16 | `006e79e0` | `CGameScriptInterface` | candidate-compile |  |
-| 17 | `0088de10` | `CGameScriptInterface` | candidate-compile |  |
-| 18 | `0088e0b0` | `CGameScriptInterface` | candidate-compile |  |
-| 19 | `0088e130` | `CGameScriptInterface` | candidate-compile |  |
-| 20 | `0088e200` | `CGameScriptInterface` | candidate-compile |  |
-| 21 | `0088e2a0` | `CGameScriptInterface` | candidate-compile | static assertion failed |
-| 22 | `0088e300` | `CGameScriptInterface` | candidate-compile |  |
-| 23 | `0088e380` | `CGameScriptInterface` | candidate-compile |  |
-| 24 | `0088e3d0` | `CGameScriptInterface` | candidate-compile | invalid use of incomplete type 'class CGameScriptInterface' |
-| 25 | `0088e6f0` | `CGameScriptInterface` | candidate-compile |  |
-| 26 | `0088ead0` | `CGameScriptInterface` | candidate-compile | invalid use of incomplete type 'class CGameScriptInterface' |
-| 27 | `0088ece0` | `CGameScriptInterface` | candidate-compile |  |
-| 28 | `0088f400` | `CGameScriptInterface` | candidate-compile |  |
-| 29 | `0088f480` | `CGameScriptInterface` | candidate-compile |  |
-| 30 | `0088f570` | `CGameScriptInterface` | candidate-compile |  |
-| 31 | `0088f610` | `CGameScriptInterface` | candidate-compile |  |
-| 32 | `0088f660` | `CGameScriptInterface` | candidate-compile |  |
-| 33 | `0088f710` | `CGameScriptInterface` | candidate-compile |  |
-| 34 | `0088f8d0` | `CGameScriptInterface` | candidate-compile |  |
-| 35 | `0088f910` | `CGameScriptInterface` | candidate-compile |  |
-| 36 | `0088f920` | `CGameScriptInterface` | candidate-compile |  |
-| 37 | `0088f970` | `CGameScriptInterface` | candidate-compile |  |
-| 38 | `0088f9b0` | `CGameScriptInterface` | candidate-compile |  |
-| 39 | `0088fc90` | `CGameScriptInterface` | candidate-compile |  |
-| 40 | `0088fd00` | `CGameScriptInterface` | candidate-compile |  |
+| 15 | `006e7820` | `CGameScriptInterface` | candidate-compile |  |
+| 16 | `006e7920` | `CGameScriptInterface` | candidate-compile |  |
+| 17 | `006e79e0` | `CGameScriptInterface` | candidate-compile |  |
+| 18 | `0088de10` | `CGameScriptInterface` | candidate-compile |  |
+| 19 | `0088e0b0` | `CGameScriptInterface` | candidate-compile |  |
+| 20 | `0088e130` | `CGameScriptInterface` | candidate-compile |  |
+| 21 | `0088e200` | `CGameScriptInterface` | candidate-compile |  |
+| 22 | `0088e2a0` | `CGameScriptInterface` | candidate-compile | static assertion failed |
+| 23 | `0088e300` | `CGameScriptInterface` | candidate-compile |  |
+| 24 | `0088e380` | `CGameScriptInterface` | candidate-compile |  |
+| 25 | `0088e3d0` | `CGameScriptInterface` | candidate-compile | invalid use of incomplete type 'class CGameScriptInterface' |
+| 26 | `0088e6f0` | `CGameScriptInterface` | candidate-compile |  |
+| 27 | `0088ead0` | `CGameScriptInterface` | candidate-compile | invalid use of incomplete type 'class CGameScriptInterface' |
+| 28 | `0088ece0` | `CGameScriptInterface` | candidate-compile |  |
+| 29 | `0088f400` | `CGameScriptInterface` | candidate-compile |  |
+| 30 | `0088f480` | `CGameScriptInterface` | candidate-compile |  |
+| 31 | `0088f570` | `CGameScriptInterface` | candidate-compile |  |
+| 32 | `0088f610` | `CGameScriptInterface` | candidate-compile |  |
+| 33 | `0088f660` | `CGameScriptInterface` | candidate-compile |  |
+| 34 | `0088f710` | `CGameScriptInterface` | candidate-compile |  |
+| 35 | `0088f8d0` | `CGameScriptInterface` | candidate-compile |  |
+| 36 | `0088f910` | `CGameScriptInterface` | candidate-compile |  |
+| 37 | `0088f920` | `CGameScriptInterface` | candidate-compile |  |
+| 38 | `0088f970` | `CGameScriptInterface` | candidate-compile |  |
+| 39 | `0088f9b0` | `CGameScriptInterface` | candidate-compile |  |
+| 40 | `0088fc90` | `CGameScriptInterface` | candidate-compile |  |

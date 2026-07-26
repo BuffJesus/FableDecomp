@@ -27,7 +27,7 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Reconstruction | — of which byte-**identical** (no relocation masking) | 914 (1.84%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
-| Auto-RE intake | Generated candidates / structural checker PASS | 550 / 542 |
+| Auto-RE intake | Generated candidates / structural checker PASS | 566 / 558 |
 
 Counts above are from the 2026-07-25 canonical refresh: the VC7.1 compile/behaviour catalog,
 `rebuild/compile-gate/retail-parity.json`, and `rebuild/COVERAGE.md`. Generated agent code is tracked
@@ -38,10 +38,11 @@ audit reconciliation, not deleted source: the unified gate now exposes every `DI
 function-start oracle instead of mixing older mass-land and curated-subset totals.
 **`docs/HANDOFF.md` is the authoritative resume point** — read its top section first.
 
-The latest unattended Wave 3 pass reconstructed the co-op event/package codecs and player/network
-gate cluster as reviewable candidates. The refresh also validates 452/452 recommended ForgeFSE
-Quest bindings against their exact CGSI vtable slots. See `docs/HANDOFF.md` for the live batch and
-promotion caveats.
+The unattended Wave 3 lane has moved from the co-op event/package codecs into ForgeFSE Quest
+wrappers. The current refresh validates 452/452 recommended Quest bindings against their exact
+CGSI vtable slots; generated wrappers remain reviewable intake until their ABI, behavior, and
+retail bytes are independently proven. See `docs/HANDOFF.md` for the live batch and promotion
+caveats.
 
 ## The cut multiplayer system
 

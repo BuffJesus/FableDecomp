@@ -46,6 +46,11 @@ leans on automation because the target is large.
   dereference the vector-map end sentinel on lookup failure; `SetQuestInfoText @ 0x00891A00` also
   contains unrelated morph-template reconstruction, and `SetThingAsConscious @ 0x008A9610` has
   implausible BSim-derived action helper identities. The exact list is in `docs/HANDOFF.md`.
+- [ ] Rebuild the latest Quest-wrapper review tail before promotion. `TakeObjectFromHero`,
+  `UnSetThingAndCarriedItemsNotAffectedByScreenFilter`, and `WaitForCameraMessage` retain unsafe
+  end-sentinel paths; `AddScreenMessage` still has ambiguous text-bank lifetimes and helper
+  identities. The corrected objective, environment, quest, gossip, message-manager, and camera
+  ABI evidence is recorded in `docs/HANDOFF.md` and `rebuild/corrections/function_overrides.tsv`.
 - [ ] Tune `LinkToNeighbouringMaps @ 0x00A7A650` toward the retail x87/local schedule; its current
   implementation is behavior-verified but nine bytes longer than retail.
 - [ ] Continue closing corrected ABI identities from decorated retail/donor symbols, treating the

@@ -4494,3 +4494,68 @@ ForgeFSE Quest slot audit remain clean. Canonical refresh state:
 This refresh performs syntax/signature intake and dashboard regeneration; it does not promote any
 wrapper above. The immediately preceding `SetFactionAsAlliedToFaction @ 0x00890870` result is also
 retained only as structural review source.
+
+### Wave 3 Quest wrapper ABI review (2026-07-25 17:45 MDT)
+
+The next bounded ForgeFSE batch completed with 16/16 final checker PASS results.
+`AddBoast @ 0x00893060` and `AddScreenMessage @ 0x00892850` each exhausted an
+initial four-round attempt before passing a second attempt. As in the preceding batch,
+checker PASS records structural agreement only; it is not promotion evidence.
+
+Retail bytes and donor-PDB signatures corrected nine identities that the generated sources
+had guessed incorrectly:
+
+- `TellHeroQuestObjectiveFailed` dispatches to
+  `CQuestManager::SetObjectiveAsFailed @ 0x004AF990`, which stores state 2; the completed
+  helper at `0x004AF960` stores state 1.
+- `TransitionToThemeAllInternals` uses the static fastcall
+  `CGameDefinitionManager::Get @ 0x0044C6B0`, then the four-argument
+  `CEnvironment::TransitionToTheme @ 0x006B3800`.
+- `UpdateQuestInfoCounterList` calls the distinct
+  `NPlayerGui::CDrawQuestInfo::UpdateCounterList @ 0x00644E80`.
+- `WaitForCameraMessage` obtains the `CMessageEventManager` held at `CWorld+0x60` and
+  removes the matched event through `RemoveMessage @ 0x00493B5B`; the previous GUI helper
+  names were unrelated.
+- `AddBoast` has two `CCharString const&` parameters and forwards them to
+  `CQuestManager::AddBoast @ 0x004B1720`. `CCharString` is four bytes, not the generated
+  eight-byte object.
+- `AddQuestRegion` obtains the region through `CWorldMap::GetRegion @ 0x004FC180` before
+  calling `CQuestManager::AddQuestRegion @ 0x004B3900`.
+- `AddGossipFactionToCategory` passes two four-byte `CCharString` values to the stdcall
+  helper at `0x008AEA40`.
+
+Three outputs remain explicitly unsafe/review-only. `TakeObjectFromHero` invents an
+`abort()` path and can dereference a failed vector-map lookup; the corresponding unset-screen-
+filter wrapper has the same end-sentinel problem. `WaitForCameraMessage` now has more credible
+manager/helper types, but its interface lookup still selects and dereferences the end sentinel.
+`AddScreenMessage` reached structural PASS while retaining ambiguous text-bank temporaries,
+ownership, and an implausible `CVertexBufferWin32::DoSizeof` identity for random state, so its
+source carries an explicit semantic-review marker.
+
+The final `CameraUseCameraPoint @ 0x00891070` candidate also demonstrated why manual byte review
+remains mandatory: the checker accepted an invented `CThing+0x91` flag test, but its complete
+83-byte retail body has only null checks for the thing and its `+0x60` camera component. The
+reviewed source removes that branch and types the real vtable forward to the overload taking a
+position at component `+0x0C` and a right-handed orientation returned by component slot `+0x120`.
+
+`tools/build_promotion_queue.py` now detects generated process-termination calls and a common
+end-sentinel-then-dereference pattern. It also honors explicit
+`RE_AGENT_SEMANTIC_REVIEW` markers. Flagged candidates are placed in a dedicated
+`semantic-review` quarantine behind ordinary manual lifts and are summarized separately in
+`rebuild/backlog/PROMOTION_QUEUE.md`. This does not claim the retail machine code lacks the
+path; it prevents unsafe generated C++ from being mistaken for promotion-ready source.
+
+The canonical post-review refresh completed at 17:58 MDT. Generated intake is now
+**566 total / 558 checker PASS / 249 host C++20 syntax PASS**, with 56 sources free of
+recognized VC7.1 language incompatibilities and 37 otherwise compile-ready. The candidate
+signature audit is **499 PASS / 67 review**. The semantic-review quarantine currently contains
+110 uncompiled candidates; this larger number reflects the new automated scan across the whole
+historical candidate set, not 110 regressions in this batch.
+
+The curated catalog remains **1,850/1,850 VC7.1 compile and behavior PASS**. Retail parity is
+unchanged at **914 exact + 609 relocation matches**, 199 differing, and 128 without a current
+function-start oracle. ForgeFSE's Quest slot audit remains **452/452 PASS**. Canonical refresh
+fingerprint: `003c33622095f5bc64cbdc53b048df966172039df17ac13646aa558d67b738f4`.
+
+The scheduled runner resumed as soon as the refresh released Ghidra. Its next bounded batch began
+at 17:59 MDT with `Quest.ClearGossip @ 0x008AA010`; leave that process running in the background.
