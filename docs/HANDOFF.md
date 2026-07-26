@@ -26,6 +26,13 @@
   layout and reproduces stable/state/topology/text splits, shader reapply,
   vertex-cursor arithmetic, overflow reporting, and retail's precise
   2001+1 primitive limit. Its VC7.1 fixture passes.
+- The surrounding lifecycle adapter is canonical and bootstrap-gated too.
+  It covers the empty-list texture epilogue; all 13 tracked state requests;
+  conditional entry/restore shader changes; exact dirty-upload order;
+  attach-texture -> realise-state -> `DrawPrimitiveUP`; info/vertex queue
+  cleanup; layout/capture restoration; and texture teardown. The fixture
+  explicitly proves combined-projection dirtiness is low-byte bit `0x80`,
+  not the 32-bit sign bit.
 - Ego PDB evidence corrected retail `0x00A0AA80` from the false inventory
   identity to `CRenderManagerCore::SetAWindow(C2DBoxF)`. The existing
   11-byte relocation match and behavior gate are preserved under the
