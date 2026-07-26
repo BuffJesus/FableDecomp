@@ -19754,6 +19754,2316 @@ $catalog = @(
         TestSource = '00/94/CCreatureActionPlayHopscotch_GetAnimExtraFlags_00941ba0_test.cpp'
         PassPattern = 'AUTO_TINY_00941ba0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c8bb10'
+        Module = '_global'
+        Source = '00/c8/global_AddChildPrimitive_00c8bb10.cpp'
+        TestSource = '00/c8/global_AddChildPrimitive_00c8bb10_test.cpp'
+        PassPattern = 'AUTO_TINY_00c8bb10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4aa30'
+        Module = '_global'
+        Source = '00/c4/global_DrawGetEnvironment_00c4aa30.cpp'
+        TestSource = '00/c4/global_DrawGetEnvironment_00c4aa30_test.cpp'
+        PassPattern = 'AUTO_TINY_00c4aa30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4c010'
+        Module = '_global'
+        Source = '00/c4/global_DrawGetEnvironment_00c4c010.cpp'
+        TestSource = '00/c4/global_DrawGetEnvironment_00c4c010_test.cpp'
+        PassPattern = 'AUTO_TINY_00c4c010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4c020'
+        Module = '_global'
+        Source = '00/c4/global_DrawGetEnvironment_00c4c020.cpp'
+        TestSource = '00/c4/global_DrawGetEnvironment_00c4c020_test.cpp'
+        PassPattern = 'AUTO_TINY_00c4c020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c61c60'
+        Module = '_global'
+        Source = '00/c6/global_DrawGetEnvironment_00c61c60.cpp'
+        TestSource = '00/c6/global_DrawGetEnvironment_00c61c60_test.cpp'
+        PassPattern = 'AUTO_TINY_00c61c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8a950'
+        Module = '_global'
+        Source = '00/c8/global_DrawGetEnvironment_00c8a950.cpp'
+        TestSource = '00/c8/global_DrawGetEnvironment_00c8a950_test.cpp'
+        PassPattern = 'AUTO_TINY_00c8a950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1df50'
+        Module = '_global'
+        Source = '00/e1/global_AddChildPrimitive_00e1df50.cpp'
+        TestSource = '00/e1/global_AddChildPrimitive_00e1df50_test.cpp'
+        PassPattern = 'AUTO_TINY_00e1df50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00787c18'
+        Module = '_global'
+        Source = '00/78/global_operator_00787c18.cpp'
+        TestSource = '00/78/global_operator_00787c18_test.cpp'
+        PassPattern = 'AUTO_TINY_00787c18_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a23c60'
+        Module = '_global'
+        Source = '00/a2/global_operator_00a23c60.cpp'
+        TestSource = '00/a2/global_operator_00a23c60_test.cpp'
+        PassPattern = 'AUTO_TINY_00a23c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098f0e0'
+        Module = '_global'
+        Source = '00/98/global_GlobalMethodTailThunk0098f0e0_0098f0e0.cpp'
+        TestSource = '00/98/global_GlobalMethodTailThunk0098f0e0_0098f0e0_test.cpp'
+        PassPattern = 'AUTO_TINY_0098f0e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098f370'
+        Module = '_global'
+        Source = '00/98/global_GlobalMethodTailThunk0098f370_0098f370.cpp'
+        TestSource = '00/98/global_GlobalMethodTailThunk0098f370_0098f370_test.cpp'
+        PassPattern = 'AUTO_TINY_0098f370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c33690'
+        Module = '_global'
+        Source = '00/c3/global_GlobalMethodTailThunk00c33690_00c33690.cpp'
+        TestSource = '00/c3/global_GlobalMethodTailThunk00c33690_00c33690_test.cpp'
+        PassPattern = 'AUTO_TINY_00c33690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c336a0'
+        Module = '_global'
+        Source = '00/c3/global_GlobalMethodTailThunk00c336a0_00c336a0.cpp'
+        TestSource = '00/c3/global_GlobalMethodTailThunk00c336a0_00c336a0_test.cpp'
+        PassPattern = 'AUTO_TINY_00c336a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c33810'
+        Module = '_global'
+        Source = '00/c3/global_GlobalMethodTailThunk00c33810_00c33810.cpp'
+        TestSource = '00/c3/global_GlobalMethodTailThunk00c33810_00c33810_test.cpp'
+        PassPattern = 'AUTO_TINY_00c33810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c35980'
+        Module = '_global'
+        Source = '00/c3/global_GlobalMethodTailThunk00c35980_00c35980.cpp'
+        TestSource = '00/c3/global_GlobalMethodTailThunk00c35980_00c35980_test.cpp'
+        PassPattern = 'AUTO_TINY_00c35980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012288b0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012288b0_012288b0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012288b0_012288b0_test.cpp'
+        PassPattern = 'AUTO_TINY_012288b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012288c0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012288c0_012288c0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012288c0_012288c0_test.cpp'
+        PassPattern = 'AUTO_TINY_012288c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228910'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228910_01228910.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228910_01228910_test.cpp'
+        PassPattern = 'AUTO_TINY_01228910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228920'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228920_01228920.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228920_01228920_test.cpp'
+        PassPattern = 'AUTO_TINY_01228920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228930'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228930_01228930.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228930_01228930_test.cpp'
+        PassPattern = 'AUTO_TINY_01228930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228940'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228940_01228940.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228940_01228940_test.cpp'
+        PassPattern = 'AUTO_TINY_01228940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228950'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228950_01228950.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228950_01228950_test.cpp'
+        PassPattern = 'AUTO_TINY_01228950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228960'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228960_01228960.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228960_01228960_test.cpp'
+        PassPattern = 'AUTO_TINY_01228960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228970'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228970_01228970.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228970_01228970_test.cpp'
+        PassPattern = 'AUTO_TINY_01228970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228980'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228980_01228980.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228980_01228980_test.cpp'
+        PassPattern = 'AUTO_TINY_01228980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228990'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228990_01228990.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228990_01228990_test.cpp'
+        PassPattern = 'AUTO_TINY_01228990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012289a0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012289a0_012289a0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012289a0_012289a0_test.cpp'
+        PassPattern = 'AUTO_TINY_012289a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012289f0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012289f0_012289f0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012289f0_012289f0_test.cpp'
+        PassPattern = 'AUTO_TINY_012289f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228a00'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228a00_01228a00.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228a00_01228a00_test.cpp'
+        PassPattern = 'AUTO_TINY_01228a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228a10'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228a10_01228a10.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228a10_01228a10_test.cpp'
+        PassPattern = 'AUTO_TINY_01228a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228a20'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228a20_01228a20.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228a20_01228a20_test.cpp'
+        PassPattern = 'AUTO_TINY_01228a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228a30'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228a30_01228a30.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228a30_01228a30_test.cpp'
+        PassPattern = 'AUTO_TINY_01228a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228a40'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228a40_01228a40.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228a40_01228a40_test.cpp'
+        PassPattern = 'AUTO_TINY_01228a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228a51'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228a51_01228a51.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228a51_01228a51_test.cpp'
+        PassPattern = 'AUTO_TINY_01228a51_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228a5b'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228a5b_01228a5b.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228a5b_01228a5b_test.cpp'
+        PassPattern = 'AUTO_TINY_01228a5b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228a65'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228a65_01228a65.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228a65_01228a65_test.cpp'
+        PassPattern = 'AUTO_TINY_01228a65_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228a6f'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228a6f_01228a6f.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228a6f_01228a6f_test.cpp'
+        PassPattern = 'AUTO_TINY_01228a6f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228a79'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228a79_01228a79.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228a79_01228a79_test.cpp'
+        PassPattern = 'AUTO_TINY_01228a79_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228a83'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228a83_01228a83.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228a83_01228a83_test.cpp'
+        PassPattern = 'AUTO_TINY_01228a83_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228a8d'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228a8d_01228a8d.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228a8d_01228a8d_test.cpp'
+        PassPattern = 'AUTO_TINY_01228a8d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228a97'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228a97_01228a97.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228a97_01228a97_test.cpp'
+        PassPattern = 'AUTO_TINY_01228a97_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228aa1'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228aa1_01228aa1.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228aa1_01228aa1_test.cpp'
+        PassPattern = 'AUTO_TINY_01228aa1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228aab'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228aab_01228aab.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228aab_01228aab_test.cpp'
+        PassPattern = 'AUTO_TINY_01228aab_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228ab5'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228ab5_01228ab5.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228ab5_01228ab5_test.cpp'
+        PassPattern = 'AUTO_TINY_01228ab5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228abf'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228abf_01228abf.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228abf_01228abf_test.cpp'
+        PassPattern = 'AUTO_TINY_01228abf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228ac9'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228ac9_01228ac9.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228ac9_01228ac9_test.cpp'
+        PassPattern = 'AUTO_TINY_01228ac9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228ad3'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228ad3_01228ad3.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228ad3_01228ad3_test.cpp'
+        PassPattern = 'AUTO_TINY_01228ad3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228add'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228add_01228add.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228add_01228add_test.cpp'
+        PassPattern = 'AUTO_TINY_01228add_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228ae7'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228ae7_01228ae7.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228ae7_01228ae7_test.cpp'
+        PassPattern = 'AUTO_TINY_01228ae7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228af1'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228af1_01228af1.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228af1_01228af1_test.cpp'
+        PassPattern = 'AUTO_TINY_01228af1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228b00'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228b00_01228b00.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228b00_01228b00_test.cpp'
+        PassPattern = 'AUTO_TINY_01228b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228b10'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228b10_01228b10.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228b10_01228b10_test.cpp'
+        PassPattern = 'AUTO_TINY_01228b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228b20'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228b20_01228b20.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228b20_01228b20_test.cpp'
+        PassPattern = 'AUTO_TINY_01228b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228b98'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228b98_01228b98.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228b98_01228b98_test.cpp'
+        PassPattern = 'AUTO_TINY_01228b98_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228ba2'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228ba2_01228ba2.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228ba2_01228ba2_test.cpp'
+        PassPattern = 'AUTO_TINY_01228ba2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228c30'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228c30_01228c30.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228c30_01228c30_test.cpp'
+        PassPattern = 'AUTO_TINY_01228c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228c40'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228c40_01228c40.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228c40_01228c40_test.cpp'
+        PassPattern = 'AUTO_TINY_01228c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228c50'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228c50_01228c50.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228c50_01228c50_test.cpp'
+        PassPattern = 'AUTO_TINY_01228c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228dc0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228dc0_01228dc0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228dc0_01228dc0_test.cpp'
+        PassPattern = 'AUTO_TINY_01228dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228dd0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228dd0_01228dd0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228dd0_01228dd0_test.cpp'
+        PassPattern = 'AUTO_TINY_01228dd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228de0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228de0_01228de0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228de0_01228de0_test.cpp'
+        PassPattern = 'AUTO_TINY_01228de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228e44'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228e44_01228e44.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228e44_01228e44_test.cpp'
+        PassPattern = 'AUTO_TINY_01228e44_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228e50'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228e50_01228e50.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228e50_01228e50_test.cpp'
+        PassPattern = 'AUTO_TINY_01228e50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228e60'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228e60_01228e60.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228e60_01228e60_test.cpp'
+        PassPattern = 'AUTO_TINY_01228e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228e70'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228e70_01228e70.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228e70_01228e70_test.cpp'
+        PassPattern = 'AUTO_TINY_01228e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228e80'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228e80_01228e80.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228e80_01228e80_test.cpp'
+        PassPattern = 'AUTO_TINY_01228e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228e90'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228e90_01228e90.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228e90_01228e90_test.cpp'
+        PassPattern = 'AUTO_TINY_01228e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228ea0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228ea0_01228ea0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228ea0_01228ea0_test.cpp'
+        PassPattern = 'AUTO_TINY_01228ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228eb0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228eb0_01228eb0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228eb0_01228eb0_test.cpp'
+        PassPattern = 'AUTO_TINY_01228eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228eba'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228eba_01228eba.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228eba_01228eba_test.cpp'
+        PassPattern = 'AUTO_TINY_01228eba_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228ec4'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228ec4_01228ec4.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228ec4_01228ec4_test.cpp'
+        PassPattern = 'AUTO_TINY_01228ec4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228ece'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228ece_01228ece.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228ece_01228ece_test.cpp'
+        PassPattern = 'AUTO_TINY_01228ece_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228eec'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228eec_01228eec.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228eec_01228eec_test.cpp'
+        PassPattern = 'AUTO_TINY_01228eec_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228ef6'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228ef6_01228ef6.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228ef6_01228ef6_test.cpp'
+        PassPattern = 'AUTO_TINY_01228ef6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f00'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f00_01228f00.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f00_01228f00_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f0a'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f0a_01228f0a.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f0a_01228f0a_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f0a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f25'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f25_01228f25.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f25_01228f25_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f25_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f2f'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f2f_01228f2f.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f2f_01228f2f_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f2f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f39'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f39_01228f39.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f39_01228f39_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f39_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f43'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f43_01228f43.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f43_01228f43_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f43_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f4d'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f4d_01228f4d.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f4d_01228f4d_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f4d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f57'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f57_01228f57.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f57_01228f57_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f57_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f61'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f61_01228f61.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f61_01228f61_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f61_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f6b'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f6b_01228f6b.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f6b_01228f6b_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f6b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f75'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f75_01228f75.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f75_01228f75_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f75_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f7f'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f7f_01228f7f.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f7f_01228f7f_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f7f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f89'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f89_01228f89.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f89_01228f89_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f89_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f93'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f93_01228f93.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f93_01228f93_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f93_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f9d'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228f9d_01228f9d.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228f9d_01228f9d_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f9d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228fa7'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228fa7_01228fa7.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228fa7_01228fa7_test.cpp'
+        PassPattern = 'AUTO_TINY_01228fa7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228fb1'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228fb1_01228fb1.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228fb1_01228fb1_test.cpp'
+        PassPattern = 'AUTO_TINY_01228fb1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228fbb'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228fbb_01228fbb.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228fbb_01228fbb_test.cpp'
+        PassPattern = 'AUTO_TINY_01228fbb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228fc5'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228fc5_01228fc5.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228fc5_01228fc5_test.cpp'
+        PassPattern = 'AUTO_TINY_01228fc5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228fcf'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228fcf_01228fcf.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228fcf_01228fcf_test.cpp'
+        PassPattern = 'AUTO_TINY_01228fcf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228fd9'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228fd9_01228fd9.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228fd9_01228fd9_test.cpp'
+        PassPattern = 'AUTO_TINY_01228fd9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228fe3'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228fe3_01228fe3.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228fe3_01228fe3_test.cpp'
+        PassPattern = 'AUTO_TINY_01228fe3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228fed'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228fed_01228fed.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228fed_01228fed_test.cpp'
+        PassPattern = 'AUTO_TINY_01228fed_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228ff7'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01228ff7_01228ff7.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01228ff7_01228ff7_test.cpp'
+        PassPattern = 'AUTO_TINY_01228ff7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229001'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229001_01229001.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229001_01229001_test.cpp'
+        PassPattern = 'AUTO_TINY_01229001_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122900b'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122900b_0122900b.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122900b_0122900b_test.cpp'
+        PassPattern = 'AUTO_TINY_0122900b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229015'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229015_01229015.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229015_01229015_test.cpp'
+        PassPattern = 'AUTO_TINY_01229015_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122901f'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122901f_0122901f.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122901f_0122901f_test.cpp'
+        PassPattern = 'AUTO_TINY_0122901f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122917a'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122917a_0122917a.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122917a_0122917a_test.cpp'
+        PassPattern = 'AUTO_TINY_0122917a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012291d0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012291d0_012291d0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012291d0_012291d0_test.cpp'
+        PassPattern = 'AUTO_TINY_012291d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012291e0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012291e0_012291e0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012291e0_012291e0_test.cpp'
+        PassPattern = 'AUTO_TINY_012291e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012291f0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012291f0_012291f0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012291f0_012291f0_test.cpp'
+        PassPattern = 'AUTO_TINY_012291f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229200'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229200_01229200.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229200_01229200_test.cpp'
+        PassPattern = 'AUTO_TINY_01229200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229240'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229240_01229240.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229240_01229240_test.cpp'
+        PassPattern = 'AUTO_TINY_01229240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229250'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229250_01229250.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229250_01229250_test.cpp'
+        PassPattern = 'AUTO_TINY_01229250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229260'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229260_01229260.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229260_01229260_test.cpp'
+        PassPattern = 'AUTO_TINY_01229260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229270'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229270_01229270.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229270_01229270_test.cpp'
+        PassPattern = 'AUTO_TINY_01229270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012293a0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012293a0_012293a0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012293a0_012293a0_test.cpp'
+        PassPattern = 'AUTO_TINY_012293a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012293b0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012293b0_012293b0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012293b0_012293b0_test.cpp'
+        PassPattern = 'AUTO_TINY_012293b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012293c0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012293c0_012293c0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012293c0_012293c0_test.cpp'
+        PassPattern = 'AUTO_TINY_012293c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012293d0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012293d0_012293d0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012293d0_012293d0_test.cpp'
+        PassPattern = 'AUTO_TINY_012293d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012293e0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012293e0_012293e0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012293e0_012293e0_test.cpp'
+        PassPattern = 'AUTO_TINY_012293e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012293f0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012293f0_012293f0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012293f0_012293f0_test.cpp'
+        PassPattern = 'AUTO_TINY_012293f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229440'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229440_01229440.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229440_01229440_test.cpp'
+        PassPattern = 'AUTO_TINY_01229440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229450'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229450_01229450.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229450_01229450_test.cpp'
+        PassPattern = 'AUTO_TINY_01229450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229460'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229460_01229460.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229460_01229460_test.cpp'
+        PassPattern = 'AUTO_TINY_01229460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229470'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229470_01229470.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229470_01229470_test.cpp'
+        PassPattern = 'AUTO_TINY_01229470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012294c0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012294c0_012294c0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012294c0_012294c0_test.cpp'
+        PassPattern = 'AUTO_TINY_012294c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229550'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229550_01229550.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229550_01229550_test.cpp'
+        PassPattern = 'AUTO_TINY_01229550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012295e0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012295e0_012295e0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012295e0_012295e0_test.cpp'
+        PassPattern = 'AUTO_TINY_012295e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229610'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229610_01229610.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229610_01229610_test.cpp'
+        PassPattern = 'AUTO_TINY_01229610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229620'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229620_01229620.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229620_01229620_test.cpp'
+        PassPattern = 'AUTO_TINY_01229620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229650'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229650_01229650.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229650_01229650_test.cpp'
+        PassPattern = 'AUTO_TINY_01229650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229660'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229660_01229660.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229660_01229660_test.cpp'
+        PassPattern = 'AUTO_TINY_01229660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229670'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229670_01229670.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229670_01229670_test.cpp'
+        PassPattern = 'AUTO_TINY_01229670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229680'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229680_01229680.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229680_01229680_test.cpp'
+        PassPattern = 'AUTO_TINY_01229680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229690'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229690_01229690.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229690_01229690_test.cpp'
+        PassPattern = 'AUTO_TINY_01229690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012296a0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012296a0_012296a0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012296a0_012296a0_test.cpp'
+        PassPattern = 'AUTO_TINY_012296a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012296b0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012296b0_012296b0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012296b0_012296b0_test.cpp'
+        PassPattern = 'AUTO_TINY_012296b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012296c0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012296c0_012296c0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012296c0_012296c0_test.cpp'
+        PassPattern = 'AUTO_TINY_012296c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012296d0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012296d0_012296d0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012296d0_012296d0_test.cpp'
+        PassPattern = 'AUTO_TINY_012296d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012296e0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012296e0_012296e0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012296e0_012296e0_test.cpp'
+        PassPattern = 'AUTO_TINY_012296e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012296f0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012296f0_012296f0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012296f0_012296f0_test.cpp'
+        PassPattern = 'AUTO_TINY_012296f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229700'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229700_01229700.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229700_01229700_test.cpp'
+        PassPattern = 'AUTO_TINY_01229700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229710'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229710_01229710.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229710_01229710_test.cpp'
+        PassPattern = 'AUTO_TINY_01229710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229720'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229720_01229720.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229720_01229720_test.cpp'
+        PassPattern = 'AUTO_TINY_01229720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229730'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229730_01229730.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229730_01229730_test.cpp'
+        PassPattern = 'AUTO_TINY_01229730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229740'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229740_01229740.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229740_01229740_test.cpp'
+        PassPattern = 'AUTO_TINY_01229740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229750'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229750_01229750.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229750_01229750_test.cpp'
+        PassPattern = 'AUTO_TINY_01229750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229760'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229760_01229760.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229760_01229760_test.cpp'
+        PassPattern = 'AUTO_TINY_01229760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229770'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229770_01229770.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229770_01229770_test.cpp'
+        PassPattern = 'AUTO_TINY_01229770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229780'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229780_01229780.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229780_01229780_test.cpp'
+        PassPattern = 'AUTO_TINY_01229780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229790'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229790_01229790.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229790_01229790_test.cpp'
+        PassPattern = 'AUTO_TINY_01229790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012297a0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012297a0_012297a0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012297a0_012297a0_test.cpp'
+        PassPattern = 'AUTO_TINY_012297a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012297b0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012297b0_012297b0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012297b0_012297b0_test.cpp'
+        PassPattern = 'AUTO_TINY_012297b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012297c0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012297c0_012297c0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012297c0_012297c0_test.cpp'
+        PassPattern = 'AUTO_TINY_012297c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012297d0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012297d0_012297d0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012297d0_012297d0_test.cpp'
+        PassPattern = 'AUTO_TINY_012297d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012297e0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012297e0_012297e0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012297e0_012297e0_test.cpp'
+        PassPattern = 'AUTO_TINY_012297e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012297f0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012297f0_012297f0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012297f0_012297f0_test.cpp'
+        PassPattern = 'AUTO_TINY_012297f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229800'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229800_01229800.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229800_01229800_test.cpp'
+        PassPattern = 'AUTO_TINY_01229800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229810'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229810_01229810.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229810_01229810_test.cpp'
+        PassPattern = 'AUTO_TINY_01229810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229820'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229820_01229820.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229820_01229820_test.cpp'
+        PassPattern = 'AUTO_TINY_01229820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229830'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229830_01229830.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229830_01229830_test.cpp'
+        PassPattern = 'AUTO_TINY_01229830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229840'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229840_01229840.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229840_01229840_test.cpp'
+        PassPattern = 'AUTO_TINY_01229840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229850'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229850_01229850.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229850_01229850_test.cpp'
+        PassPattern = 'AUTO_TINY_01229850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229860'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229860_01229860.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229860_01229860_test.cpp'
+        PassPattern = 'AUTO_TINY_01229860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229870'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229870_01229870.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229870_01229870_test.cpp'
+        PassPattern = 'AUTO_TINY_01229870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229880'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229880_01229880.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229880_01229880_test.cpp'
+        PassPattern = 'AUTO_TINY_01229880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229890'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229890_01229890.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229890_01229890_test.cpp'
+        PassPattern = 'AUTO_TINY_01229890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012298a0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012298a0_012298a0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012298a0_012298a0_test.cpp'
+        PassPattern = 'AUTO_TINY_012298a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012298b0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012298b0_012298b0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012298b0_012298b0_test.cpp'
+        PassPattern = 'AUTO_TINY_012298b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012298c0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012298c0_012298c0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012298c0_012298c0_test.cpp'
+        PassPattern = 'AUTO_TINY_012298c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012298d0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012298d0_012298d0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012298d0_012298d0_test.cpp'
+        PassPattern = 'AUTO_TINY_012298d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012298e0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012298e0_012298e0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012298e0_012298e0_test.cpp'
+        PassPattern = 'AUTO_TINY_012298e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012298f0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012298f0_012298f0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012298f0_012298f0_test.cpp'
+        PassPattern = 'AUTO_TINY_012298f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229900'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229900_01229900.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229900_01229900_test.cpp'
+        PassPattern = 'AUTO_TINY_01229900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229910'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229910_01229910.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229910_01229910_test.cpp'
+        PassPattern = 'AUTO_TINY_01229910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229920'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229920_01229920.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229920_01229920_test.cpp'
+        PassPattern = 'AUTO_TINY_01229920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229930'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229930_01229930.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229930_01229930_test.cpp'
+        PassPattern = 'AUTO_TINY_01229930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229940'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229940_01229940.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229940_01229940_test.cpp'
+        PassPattern = 'AUTO_TINY_01229940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229950'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229950_01229950.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229950_01229950_test.cpp'
+        PassPattern = 'AUTO_TINY_01229950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229960'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229960_01229960.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229960_01229960_test.cpp'
+        PassPattern = 'AUTO_TINY_01229960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229970'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229970_01229970.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229970_01229970_test.cpp'
+        PassPattern = 'AUTO_TINY_01229970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229980'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229980_01229980.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229980_01229980_test.cpp'
+        PassPattern = 'AUTO_TINY_01229980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012299b0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012299b0_012299b0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012299b0_012299b0_test.cpp'
+        PassPattern = 'AUTO_TINY_012299b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012299c0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012299c0_012299c0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012299c0_012299c0_test.cpp'
+        PassPattern = 'AUTO_TINY_012299c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228f14'
+        Module = '_global'
+        Source = '01/22/global_DisplayProgress_01228f14.cpp'
+        TestSource = '01/22/global_DisplayProgress_01228f14_test.cpp'
+        PassPattern = 'AUTO_TINY_01228f14_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012294f0'
+        Module = '_global'
+        Source = '01/22/global_DisplayProgress_012294f0.cpp'
+        TestSource = '01/22/global_DisplayProgress_012294f0_test.cpp'
+        PassPattern = 'AUTO_TINY_012294f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229530'
+        Module = '_global'
+        Source = '01/22/global_DisplayProgress_01229530.cpp'
+        TestSource = '01/22/global_DisplayProgress_01229530_test.cpp'
+        PassPattern = 'AUTO_TINY_01229530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229990'
+        Module = '_global'
+        Source = '01/22/global_DisplayProgress_01229990.cpp'
+        TestSource = '01/22/global_DisplayProgress_01229990_test.cpp'
+        PassPattern = 'AUTO_TINY_01229990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01228ce0'
+        Module = '_global'
+        Source = '01/22/global_RenderMeshPrimitiveBlocks_01228ce0.cpp'
+        TestSource = '01/22/global_RenderMeshPrimitiveBlocks_01228ce0_test.cpp'
+        PassPattern = 'AUTO_TINY_01228ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229510'
+        Module = '_global'
+        Source = '01/22/global_RenderMeshPrimitiveBlocks_01229510.cpp'
+        TestSource = '01/22/global_RenderMeshPrimitiveBlocks_01229510_test.cpp'
+        PassPattern = 'AUTO_TINY_01229510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012299d0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012299d0_012299d0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012299d0_012299d0_test.cpp'
+        PassPattern = 'AUTO_TINY_012299d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012299e0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012299e0_012299e0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012299e0_012299e0_test.cpp'
+        PassPattern = 'AUTO_TINY_012299e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '012299f0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk012299f0_012299f0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk012299f0_012299f0_test.cpp'
+        PassPattern = 'AUTO_TINY_012299f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229a00'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229a00_01229a00.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229a00_01229a00_test.cpp'
+        PassPattern = 'AUTO_TINY_01229a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229a40'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229a40_01229a40.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229a40_01229a40_test.cpp'
+        PassPattern = 'AUTO_TINY_01229a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229a50'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229a50_01229a50.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229a50_01229a50_test.cpp'
+        PassPattern = 'AUTO_TINY_01229a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229a60'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229a60_01229a60.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229a60_01229a60_test.cpp'
+        PassPattern = 'AUTO_TINY_01229a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229a70'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229a70_01229a70.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229a70_01229a70_test.cpp'
+        PassPattern = 'AUTO_TINY_01229a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229a80'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229a80_01229a80.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229a80_01229a80_test.cpp'
+        PassPattern = 'AUTO_TINY_01229a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229a90'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229a90_01229a90.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229a90_01229a90_test.cpp'
+        PassPattern = 'AUTO_TINY_01229a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229aa0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229aa0_01229aa0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229aa0_01229aa0_test.cpp'
+        PassPattern = 'AUTO_TINY_01229aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229ad0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229ad0_01229ad0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229ad0_01229ad0_test.cpp'
+        PassPattern = 'AUTO_TINY_01229ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229ae0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229ae0_01229ae0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229ae0_01229ae0_test.cpp'
+        PassPattern = 'AUTO_TINY_01229ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229af0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229af0_01229af0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229af0_01229af0_test.cpp'
+        PassPattern = 'AUTO_TINY_01229af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229b00'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229b00_01229b00.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229b00_01229b00_test.cpp'
+        PassPattern = 'AUTO_TINY_01229b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229b10'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229b10_01229b10.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229b10_01229b10_test.cpp'
+        PassPattern = 'AUTO_TINY_01229b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229b20'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229b20_01229b20.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229b20_01229b20_test.cpp'
+        PassPattern = 'AUTO_TINY_01229b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229b30'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229b30_01229b30.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229b30_01229b30_test.cpp'
+        PassPattern = 'AUTO_TINY_01229b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229b40'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229b40_01229b40.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229b40_01229b40_test.cpp'
+        PassPattern = 'AUTO_TINY_01229b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229b50'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229b50_01229b50.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229b50_01229b50_test.cpp'
+        PassPattern = 'AUTO_TINY_01229b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229b60'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229b60_01229b60.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229b60_01229b60_test.cpp'
+        PassPattern = 'AUTO_TINY_01229b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229b70'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229b70_01229b70.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229b70_01229b70_test.cpp'
+        PassPattern = 'AUTO_TINY_01229b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229b80'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229b80_01229b80.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229b80_01229b80_test.cpp'
+        PassPattern = 'AUTO_TINY_01229b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229b8a'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229b8a_01229b8a.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229b8a_01229b8a_test.cpp'
+        PassPattern = 'AUTO_TINY_01229b8a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229b94'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229b94_01229b94.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229b94_01229b94_test.cpp'
+        PassPattern = 'AUTO_TINY_01229b94_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229b9e'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229b9e_01229b9e.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229b9e_01229b9e_test.cpp'
+        PassPattern = 'AUTO_TINY_01229b9e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229ba8'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229ba8_01229ba8.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229ba8_01229ba8_test.cpp'
+        PassPattern = 'AUTO_TINY_01229ba8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229bc0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229bc0_01229bc0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229bc0_01229bc0_test.cpp'
+        PassPattern = 'AUTO_TINY_01229bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229bd0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229bd0_01229bd0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229bd0_01229bd0_test.cpp'
+        PassPattern = 'AUTO_TINY_01229bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229dc0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229dc0_01229dc0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229dc0_01229dc0_test.cpp'
+        PassPattern = 'AUTO_TINY_01229dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229ee0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229ee0_01229ee0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229ee0_01229ee0_test.cpp'
+        PassPattern = 'AUTO_TINY_01229ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229f10'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229f10_01229f10.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229f10_01229f10_test.cpp'
+        PassPattern = 'AUTO_TINY_01229f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229f20'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229f20_01229f20.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229f20_01229f20_test.cpp'
+        PassPattern = 'AUTO_TINY_01229f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229f90'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229f90_01229f90.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229f90_01229f90_test.cpp'
+        PassPattern = 'AUTO_TINY_01229f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229fa0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229fa0_01229fa0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229fa0_01229fa0_test.cpp'
+        PassPattern = 'AUTO_TINY_01229fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229fb0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk01229fb0_01229fb0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk01229fb0_01229fb0_test.cpp'
+        PassPattern = 'AUTO_TINY_01229fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a060'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a060_0122a060.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a060_0122a060_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a070'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a070_0122a070.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a070_0122a070_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a080'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a080_0122a080.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a080_0122a080_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a090'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a090_0122a090.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a090_0122a090_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a1c0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a1c0_0122a1c0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a1c0_0122a1c0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a1c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a1d0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a1d0_0122a1d0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a1d0_0122a1d0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a1d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a1e0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a1e0_0122a1e0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a1e0_0122a1e0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a1f0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a1f0_0122a1f0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a1f0_0122a1f0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a200'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a200_0122a200.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a200_0122a200_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a230'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a230_0122a230.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a230_0122a230_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a240'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a240_0122a240.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a240_0122a240_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a250'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a250_0122a250.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a250_0122a250_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a260'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a260_0122a260.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a260_0122a260_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a270'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a270_0122a270.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a270_0122a270_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a280'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a280_0122a280.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a280_0122a280_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a290'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a290_0122a290.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a290_0122a290_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a2a0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a2a0_0122a2a0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a2a0_0122a2a0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a2b0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a2b0_0122a2b0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a2b0_0122a2b0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a2c0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a2c0_0122a2c0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a2c0_0122a2c0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a2d0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a2d0_0122a2d0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a2d0_0122a2d0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a2e0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a2e0_0122a2e0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a2e0_0122a2e0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a300'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a300_0122a300.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a300_0122a300_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a310'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a310_0122a310.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a310_0122a310_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a320'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a320_0122a320.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a320_0122a320_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a330'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a330_0122a330.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a330_0122a330_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a340'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a340_0122a340.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a340_0122a340_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a350'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a350_0122a350.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a350_0122a350_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a360'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a360_0122a360.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a360_0122a360_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a370'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a370_0122a370.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a370_0122a370_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a380'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a380_0122a380.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a380_0122a380_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a390'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a390_0122a390.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a390_0122a390_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a3a0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a3a0_0122a3a0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a3a0_0122a3a0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a3b0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a3b0_0122a3b0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a3b0_0122a3b0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a3c0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a3c0_0122a3c0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a3c0_0122a3c0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a3d0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a3d0_0122a3d0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a3d0_0122a3d0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a3e0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a3e0_0122a3e0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a3e0_0122a3e0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a3f0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a3f0_0122a3f0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a3f0_0122a3f0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a400'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a400_0122a400.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a400_0122a400_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a410'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a410_0122a410.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a410_0122a410_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a420'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a420_0122a420.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a420_0122a420_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a430'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a430_0122a430.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a430_0122a430_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a440'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a440_0122a440.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a440_0122a440_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a450'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a450_0122a450.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a450_0122a450_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a480'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a480_0122a480.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a480_0122a480_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a490'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a490_0122a490.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a490_0122a490_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a4a0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a4a0_0122a4a0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a4a0_0122a4a0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a4b0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a4b0_0122a4b0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a4b0_0122a4b0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a4c0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a4c0_0122a4c0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a4c0_0122a4c0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a4c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a4d0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a4d0_0122a4d0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a4d0_0122a4d0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a4e0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a4e0_0122a4e0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a4e0_0122a4e0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a5a0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a5a0_0122a5a0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a5a0_0122a5a0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a5b0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a5b0_0122a5b0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a5b0_0122a5b0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a5c0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a5c0_0122a5c0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a5c0_0122a5c0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a5d0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a5d0_0122a5d0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a5d0_0122a5d0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a600'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a600_0122a600.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a600_0122a600_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a680'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a680_0122a680.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a680_0122a680_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a690'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a690_0122a690.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a690_0122a690_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a6a0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a6a0_0122a6a0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a6a0_0122a6a0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a6b0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a6b0_0122a6b0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a6b0_0122a6b0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a6b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a780'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a780_0122a780.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a780_0122a780_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a820'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a820_0122a820.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a820_0122a820_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a870'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a870_0122a870.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a870_0122a870_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a880'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a880_0122a880.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a880_0122a880_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a8d0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a8d0_0122a8d0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a8d0_0122a8d0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a8e0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a8e0_0122a8e0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a8e0_0122a8e0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a8f0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a8f0_0122a8f0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a8f0_0122a8f0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a8f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a9e0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a9e0_0122a9e0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a9e0_0122a9e0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a9e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a9f0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122a9f0_0122a9f0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122a9f0_0122a9f0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122aa60'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122aa60_0122aa60.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122aa60_0122aa60_test.cpp'
+        PassPattern = 'AUTO_TINY_0122aa60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122aa70'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122aa70_0122aa70.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122aa70_0122aa70_test.cpp'
+        PassPattern = 'AUTO_TINY_0122aa70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122aaa0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122aaa0_0122aaa0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122aaa0_0122aaa0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122aaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122acd0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122acd0_0122acd0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122acd0_0122acd0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122acd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ace0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122ace0_0122ace0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122ace0_0122ace0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ace0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122acf0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122acf0_0122acf0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122acf0_0122acf0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122acf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122add0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122add0_0122add0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122add0_0122add0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122add0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ade0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122ade0_0122ade0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122ade0_0122ade0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ade0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122adf0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122adf0_0122adf0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122adf0_0122adf0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122adf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ae00'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122ae00_0122ae00.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122ae00_0122ae00_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ae00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ae10'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122ae10_0122ae10.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122ae10_0122ae10_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ae10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ae20'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122ae20_0122ae20.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122ae20_0122ae20_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ae20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ae30'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122ae30_0122ae30.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122ae30_0122ae30_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ae30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ae40'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122ae40_0122ae40.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122ae40_0122ae40_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ae40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ae50'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122ae50_0122ae50.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122ae50_0122ae50_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ae50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ae60'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122ae60_0122ae60.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122ae60_0122ae60_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ae60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ae6a'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122ae6a_0122ae6a.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122ae6a_0122ae6a_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ae6a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ae74'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122ae74_0122ae74.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122ae74_0122ae74_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ae74_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122aea0'
+        Module = '_global'
+        Source = '01/22/global_GlobalMethodTailThunk0122aea0_0122aea0.cpp'
+        TestSource = '01/22/global_GlobalMethodTailThunk0122aea0_0122aea0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122aea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229a20'
+        Module = '_global'
+        Source = '01/22/global_DisplayProgress_01229a20.cpp'
+        TestSource = '01/22/global_DisplayProgress_01229a20_test.cpp'
+        PassPattern = 'AUTO_TINY_01229a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229ab0'
+        Module = '_global'
+        Source = '01/22/global_DisplayProgress_01229ab0.cpp'
+        TestSource = '01/22/global_DisplayProgress_01229ab0_test.cpp'
+        PassPattern = 'AUTO_TINY_01229ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a5e0'
+        Module = 'Cons_val_std_allocator_std_pair_EHeroMorphType_CParticleMorphs_CEntry_std_pair_EHeroMorphType_CParticleMorphs_CEntry_std_pair_enum_EHeroMorphType_class_CParticleMorphs'
+        Source = '01/22/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0122a5e0.cpp'
+        TestSource = '01/22/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0122a5e0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a660'
+        Module = '_global'
+        Source = '01/22/global_DisplayProgress_0122a660.cpp'
+        TestSource = '01/22/global_DisplayProgress_0122a660_test.cpp'
+        PassPattern = 'AUTO_TINY_0122a660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122aa40'
+        Module = '_global'
+        Source = '01/22/global_DisplayProgress_0122aa40.cpp'
+        TestSource = '01/22/global_DisplayProgress_0122aa40_test.cpp'
+        PassPattern = 'AUTO_TINY_0122aa40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122aa80'
+        Module = '_global'
+        Source = '01/22/global_DisplayProgress_0122aa80.cpp'
+        TestSource = '01/22/global_DisplayProgress_0122aa80_test.cpp'
+        PassPattern = 'AUTO_TINY_0122aa80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122aab0'
+        Module = '_global'
+        Source = '01/22/global_DisplayProgress_0122aab0.cpp'
+        TestSource = '01/22/global_DisplayProgress_0122aab0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122aab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122aaf0'
+        Module = '_global'
+        Source = '01/22/global_DisplayProgress_0122aaf0.cpp'
+        TestSource = '01/22/global_DisplayProgress_0122aaf0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122aaf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122aad0'
+        Module = 'Cons_val_std_allocator_std_pair_EHeroMorphType_CParticleMorphs_CEntry_std_pair_EHeroMorphType_CParticleMorphs_CEntry_std_pair_enum_EHeroMorphType_class_CParticleMorphs'
+        Source = '01/22/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0122aad0.cpp'
+        TestSource = '01/22/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0122aad0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122aad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229e40'
+        Module = '_global'
+        Source = '01/22/global_RenderMeshPrimitiveBlocks_01229e40.cpp'
+        TestSource = '01/22/global_RenderMeshPrimitiveBlocks_01229e40_test.cpp'
+        PassPattern = 'AUTO_TINY_01229e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229e60'
+        Module = '_global'
+        Source = '01/22/global_RenderMeshPrimitiveBlocks_01229e60.cpp'
+        TestSource = '01/22/global_RenderMeshPrimitiveBlocks_01229e60_test.cpp'
+        PassPattern = 'AUTO_TINY_01229e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01229ef0'
+        Module = '_global'
+        Source = '01/22/global_RenderMeshPrimitiveBlocks_01229ef0.cpp'
+        TestSource = '01/22/global_RenderMeshPrimitiveBlocks_01229ef0_test.cpp'
+        PassPattern = 'AUTO_TINY_01229ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ab10'
+        Module = '_global'
+        Source = '01/22/global_ClearCachedDefs_0122ab10.cpp'
+        TestSource = '01/22/global_ClearCachedDefs_0122ab10_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ab10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ab30'
+        Module = '_global'
+        Source = '01/22/global_ClearCachedDefs_0122ab30.cpp'
+        TestSource = '01/22/global_ClearCachedDefs_0122ab30_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ab30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ab50'
+        Module = '_global'
+        Source = '01/22/global_ClearCachedDefs_0122ab50.cpp'
+        TestSource = '01/22/global_ClearCachedDefs_0122ab50_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ab50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ac70'
+        Module = '_global'
+        Source = '01/22/global_ClearCachedDefs_0122ac70.cpp'
+        TestSource = '01/22/global_ClearCachedDefs_0122ac70_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ac70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ac90'
+        Module = '_global'
+        Source = '01/22/global_ClearCachedDefs_0122ac90.cpp'
+        TestSource = '01/22/global_ClearCachedDefs_0122ac90_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ac90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122acb0'
+        Module = '_global'
+        Source = '01/22/global_ClearCachedDefs_0122acb0.cpp'
+        TestSource = '01/22/global_ClearCachedDefs_0122acb0_test.cpp'
+        PassPattern = 'AUTO_TINY_0122acb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ad00'
+        Module = '_global'
+        Source = '01/22/global_ClearCachedDefs_0122ad00.cpp'
+        TestSource = '01/22/global_ClearCachedDefs_0122ad00_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ad00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ad20'
+        Module = '_global'
+        Source = '01/22/global_ClearCachedDefs_0122ad20.cpp'
+        TestSource = '01/22/global_ClearCachedDefs_0122ad20_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ad20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122ad40'
+        Module = '_global'
+        Source = '01/22/global_ClearCachedDefs_0122ad40.cpp'
+        TestSource = '01/22/global_ClearCachedDefs_0122ad40_test.cpp'
+        PassPattern = 'AUTO_TINY_0122ad40_TEST PASS'
+    }
 )
 
 $oldPath = $env:PATH

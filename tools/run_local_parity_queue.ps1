@@ -84,6 +84,42 @@ Write-QueueLog (
     "max_batches=$MaxBatchesPerRun"
 )
 try {
+    $replayBatch = "replay-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
+    $replayOracle = Join-Path $pending "$replayBatch`_oracle.tsv"
+    $replayAuthored = Join-Path $work "$replayBatch-authored.json"
+    $replayVerificationLog = Join-Path $work "$replayBatch-verification.log"
+    Invoke-Checked "pending-pattern replay $replayBatch" {
+        & $python (Join-Path $pipeline 'replay_pending_tiny.py') `
+            $replayOracle $replayAuthored $BatchSize
+    }
+    $replayData = Get-Content -LiteralPath $replayAuthored -Raw | ConvertFrom-Json
+    $replayCount = @($replayData.result.authored).Count
+    $totalAuthored += $replayCount
+    if ($replayCount -gt 0) {
+        Invoke-Checked "pending replay verification $replayBatch" {
+            & $python (Join-Path $pipeline 'verify_and_land.py') `
+                $replayAuthored $replayOracle --land |
+                Tee-Object -FilePath $replayVerificationLog
+        }
+        $replayVerification = Get-Content -LiteralPath $replayVerificationLog -Raw
+        $replayWinMatch = [regex]::Match(
+            $replayVerification,
+            '(?m)^WINS:\s+(\d+)\s*$'
+        )
+        $replayWins = if ($replayWinMatch.Success) {
+            [int]$replayWinMatch.Groups[1].Value
+        } else {
+            0
+        }
+        $totalWins += $replayWins
+        Write-QueueLog (
+            "REPLAY authored=$replayCount verified_wins=$replayWins " +
+            "batch=$replayBatch"
+        )
+    } else {
+        Write-QueueLog "REPLAY no newly recognized pending candidates"
+    }
+
     for ($index = 1; $index -le $MaxBatchesPerRun; ++$index) {
         $batch = "auto-$(Get-Date -Format 'yyyyMMdd-HHmmss')-$index"
         $oracle = Join-Path $pending "$batch`_oracle.tsv"
