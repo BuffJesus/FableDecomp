@@ -1,6 +1,35 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 10:00 MDT (retail visual consumer + 468-function parity checkpoint).*
+*Last updated: 2026-07-26 10:06 MDT (virtual-delete parity + retail visual consumer checkpoint).*
+
+## Virtual-delete parity + retail visual consumer checkpoint (2026-07-26)
+
+- The visually bootable path remains green through the retail progress-display
+  consumer chain. Stage 2 acquires `GetProgressDisplay @ 0x009EA060`, reads
+  `CProgressDisplay::IsActive @ 0x0049B460`, and hands that state to the
+  authored top-level window before balancing both counted owners. The verified
+  smoke title is `FableDecomp - Retail Progress Display Ready`.
+- Deterministic parity now recognizes the exact 11-byte null-safe virtual
+  deletion shape `85 c9 74 06 8b 01 6a 01 ff 10 c3`. Its source is the
+  readable `delete object` operation through a virtual destructor, and its
+  behavior fixture proves null input is inert while one live allocation invokes
+  its virtual destructor exactly once.
+- Pending replay found exactly **28** authoritative instances and the VC7.1
+  gate landed **28 / 28 exact matches**: 26 `DeleteData` leaves plus
+  `CIEngine::Release` and `CEngine::Release`. No relocation masking was needed.
+- Full compile and behavior validation passes with **4,870 / 4,870**
+  candidates. Retail parity is **2,672 exact + 1,871
+  relocation-normalized = 4,543 / 49,553 (9.17%)**. The honest residue remains
+  199 differing candidates and 128 missing function-start oracles.
+- Canonical manifests, coverage, backlog, promotion queue, runnable dashboard,
+  artifact index, and root README are refreshed. Artifact organization
+  preserved six live Wave 3 collisions without moving either copy.
+- For parity, audit the two repeated 21-byte virtual navigation-wrapper
+  clusters only with concrete call/return fixtures. Keep the 120-instance
+  cross-boundary virtual-suspend shape, 97 tail-jump placeholders, and padded
+  35-byte counted resets quarantined. For visual closure, the next honest work
+  is still progress texture/resource initialization and drawing, followed by
+  the renderer/game-loop handoff.
 
 ## Retail visual consumer + 468-function parity checkpoint (2026-07-26)
 

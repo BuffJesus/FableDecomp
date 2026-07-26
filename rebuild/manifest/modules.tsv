@@ -1429,7 +1429,7 @@ CEndGameThunder	2	1	1	0	0	0	0	0	0	0	0
 CEndScythe	2	0	0	0	0	0	0	0	0	0	0
 CEndTrader	4	0	0	0	0	0	0	0	0	0	0
 CEnemyDef	2	3	3	0	0	1	1	1	0	0	0
-CEngine	99	157	146	0	0	15	15	11	4	0	0
+CEngine	99	157	146	0	0	16	16	12	4	0	0
 CEngineBillboardGenerator	2	5	3	0	0	0	0	0	0	0	0
 CEngineCamera	16	9	9	0	0	1	1	1	0	0	0
 CEngineCameraDesc	0	2	0	0	0	0	0	0	0	0	0
@@ -1976,7 +1976,7 @@ CHoverState	1	0	0	0	0	0	0	0	0	0	0
 CHoverable	15	11	10	0	0	0	0	0	0	0	0
 CHybridMultifractal	1	1	1	0	0	0	0	0	0	0	0
 CIDrawMap	1	3	3	0	0	0	0	0	0	0	0
-CIEngine	11	74	74	0	0	59	59	58	1	0	0
+CIEngine	11	74	74	0	0	60	60	59	1	0	0
 CIME	21	8	8	0	0	3	3	0	3	0	0
 CIMEFont	6	2	2	0	0	0	0	0	0	0	0
 CIPhysicsFacesSegmentBase	4	1	1	0	0	0	0	0	0	0	0
@@ -4497,7 +4497,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11371	1999	63	3	106	106	39	51	0	0
+_global	0	11371	1999	63	3	132	132	65	51	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

@@ -71,6 +71,8 @@ determined by the retail bytes:
   56 8b f1 8b 0e 85 c9 74 0d ff 49 04 75 05 8b 01 ff 50
      04 83 26 00 5e c3
                      -> size-optimized release and clear of the same handle
+  85 c9 74 06 8b 01 6a 01 ff 10 c3
+                     -> null-safe virtual deletion of one object
   56 8b f1 8b 4e 38 ff 56 34 c6 46 05 01 5e c3
                      -> invoke a suspend callback, then mark suspended
 
@@ -349,6 +351,8 @@ def const_from_bytes(bs: bytes):
         b"\x75\x05\x8b\x01\xff\x50\x04\x83\x26\x00\x5e\xc3"
     ):
         return ("reset_intrusive_counted_handle_size", None)
+    if bs == b"\x85\xc9\x74\x06\x8b\x01\x6a\x01\xff\x10\xc3":
+        return ("delete_virtual_object", None)
     if (
         bs
         == b"\x56\x8b\xf1\x8b\x4e\x38\xff\x56\x34"
@@ -1425,6 +1429,46 @@ def candidate(row):
             "    AutoTinyCountedHandle empty = {0};\n"
             "    empty.Reset();\n"
             "    if (g_AutoTinyCountedReleaseCalls != 1)\n"
+            "        return 1;\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "delete_virtual_object":
+        source = (
+            "struct AutoTinyVirtualObject\n"
+            "{\n"
+            "    virtual ~AutoTinyVirtualObject();\n"
+            "};\n"
+            f"void __fastcall {fn}(AutoTinyVirtualObject* object)\n"
+            "{\n"
+            "    delete object;\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "struct AutoTinyVirtualObject\n"
+            "{\n"
+            "    virtual ~AutoTinyVirtualObject();\n"
+            "};\n"
+            "static int g_AutoTinyVirtualDestructorCalls = 0;\n"
+            "AutoTinyVirtualObject::~AutoTinyVirtualObject()\n"
+            "{\n"
+            "    ++g_AutoTinyVirtualDestructorCalls;\n"
+            "}\n"
+            f"void __fastcall {fn}(AutoTinyVirtualObject* object)\n"
+            "{\n"
+            "    delete object;\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            f"    {fn}(0);\n"
+            "    if (g_AutoTinyVirtualDestructorCalls != 0)\n"
+            "        return 1;\n"
+            "    AutoTinyVirtualObject* object =\n"
+            "        new AutoTinyVirtualObject;\n"
+            f"    {fn}(object);\n"
+            "    if (g_AutoTinyVirtualDestructorCalls != 1)\n"
             "        return 1;\n"
             f"    std::printf(\"{pattern}\\n\");\n"
             "    return 0;\n"

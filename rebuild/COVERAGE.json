@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T09:59:14-06:00",
+  "generated_at": "2026-07-26T10:05:58-06:00",
   "catalog_functions": 49553,
   "modules": 3433,
   "calling_convention_known": 38490,
@@ -8,9 +8,9 @@
   "agent_candidates": 632,
   "agent_pass": 619,
   "agent_fail": 12,
-  "compiled_candidates": 4842,
-  "behavior_tested_candidates": 4842,
-  "candidate_retail_matches": 2644,
+  "compiled_candidates": 4870,
+  "behavior_tested_candidates": 4870,
+  "candidate_retail_matches": 2672,
   "candidate_relocation_matches": 1871,
   "lift_matching": 16,
   "lift_functional": 2,
@@ -20,7 +20,7 @@
   "vc71_sdk_probe_pass": true,
   "mechanically_named": 49553,
   "accepted_name_quality": 49162,
-  "verified_lifted": 4533,
+  "verified_lifted": 4561,
   "candidate_integrity_pass": 573,
   "candidate_host_syntax_pass": 251
 }
