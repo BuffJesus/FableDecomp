@@ -4,6 +4,8 @@
 
 namespace NProfileTimer
 {
+    void FABLE_FASTCALL EndProfile(long profileId);
+
     void FABLE_FASTCALL StartProfile(
         const CCharString& label,
         long profileId);

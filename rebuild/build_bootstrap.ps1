@@ -30,6 +30,14 @@ $charStringDestructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharSt
 $charStringDestructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_Destructor_0099eae0_test.cpp'
 $profileStartSource = Join-Path $rebuildRoot 'src\compiled\00\9d\NProfileTimer_StartProfile_009d8240.cpp'
 $profileStartBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\NProfileTimer_StartProfile_009d8240_test.cpp'
+$profileEndSource = Join-Path $rebuildRoot 'src\compiled\00\9d\NProfileTimer_EndProfile_009d8250.cpp'
+$profileEndBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\NProfileTimer_EndProfile_009d8250_test.cpp'
+$asyncFailureHandlingSource = Join-Path $rebuildRoot 'src\compiled\00\9d\CBankFileAsync_SetEnableFailureHandling_009d5240.cpp'
+$asyncFailureHandlingBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\CBankFileAsync_SetEnableFailureHandling_009d5240_test.cpp'
+$startupLatchSource = Join-Path $rebuildRoot 'src\compiled\00\9d\Global_ClearStartupLatch_009d81e0.cpp'
+$startupLatchBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\Global_ClearStartupLatch_009d81e0_test.cpp'
+$fileInstallerGetSource = Join-Path $rebuildRoot 'src\compiled\00\40\CFileInstallerSingleton_Get_00404440.cpp'
+$fileInstallerGetBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CFileInstallerSingleton_Get_00404440_test.cpp'
 $charStringDefaultSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharString_DefaultConstructor_0099e4b0.cpp'
 $charStringDefaultBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_DefaultConstructor_0099e4b0_test.cpp'
 $systemManagerInitSource = Join-Path $rebuildRoot 'src\compiled\00\40\CSystemManagerInit_Constructor_00403b10.cpp'
@@ -90,6 +98,10 @@ $profileStartPassPattern = 'FABLETLC_PROFILE_START_BEHAVIOR PASS'
 $charStringDefaultPassPattern = 'FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVIOR PASS'
 $systemManagerInitPassPattern = 'FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS'
 $gfmainPhase1PassPattern = 'FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS'
+$profileEndPassPattern = 'FABLETLC_PROFILE_END_BEHAVIOR PASS'
+$asyncFailureHandlingPassPattern = 'FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS'
+$startupLatchPassPattern = 'FABLETLC_STARTUP_LATCH_BEHAVIOR PASS'
+$fileInstallerGetPassPattern = 'FABLETLC_FILE_INSTALLER_GET_BEHAVIOR PASS'
 
 $required = @(
     (Join-Path $vcRoot 'bin\cl.exe'),
@@ -115,6 +127,14 @@ $required = @(
     $charStringDestructorBehaviorSource,
     $profileStartSource,
     $profileStartBehaviorSource,
+    $profileEndSource,
+    $profileEndBehaviorSource,
+    $asyncFailureHandlingSource,
+    $asyncFailureHandlingBehaviorSource,
+    $startupLatchSource,
+    $startupLatchBehaviorSource,
+    $fileInstallerGetSource,
+    $fileInstallerGetBehaviorSource,
     $charStringDefaultSource,
     $charStringDefaultBehaviorSource,
     $systemManagerInitSource,
@@ -232,6 +252,41 @@ try {
         -OutputStem 'system-manager-init-constructor' `
         -PassPattern $systemManagerInitPassPattern `
         -AllowMove '0x20:3:0x50'
+
+    Invoke-VerifiedLeaf `
+        -Address '009d8250' `
+        -Description 'NProfileTimer end-profile no-op' `
+        -Source $profileEndSource `
+        -BehaviorSource $profileEndBehaviorSource `
+        -OutputStem 'profile-end' `
+        -PassPattern $profileEndPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009d5240' `
+        -Description 'CBankFileAsync failure-handling policy setter' `
+        -Source $asyncFailureHandlingSource `
+        -BehaviorSource $asyncFailureHandlingBehaviorSource `
+        -OutputStem 'async-failure-handling' `
+        -PassPattern $asyncFailureHandlingPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009d81e0' `
+        -Description 'TLC startup-latch clear leaf' `
+        -Source $startupLatchSource `
+        -BehaviorSource $startupLatchBehaviorSource `
+        -OutputStem 'startup-latch-clear' `
+        -PassPattern $startupLatchPassPattern
+
+    # Avoid "installer" in the executable name: Windows' legacy installer
+    # detection otherwise requests elevation before this manifest-free VC7.1
+    # console fixture can run.
+    Invoke-VerifiedLeaf `
+        -Address '00404440' `
+        -Description 'CFileInstaller counted singleton retrieval' `
+        -Source $fileInstallerGetSource `
+        -BehaviorSource $fileInstallerGetBehaviorSource `
+        -OutputStem 'cfi-singleton-get' `
+        -PassPattern $fileInstallerGetPassPattern
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions "/Fo$retailObject" $retailSource
     if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $retailObject)) {
