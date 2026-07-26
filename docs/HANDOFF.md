@@ -62,6 +62,12 @@
   fourth live dependency. The lifecycle `CLEAR_VERTEX_QUEUE` event constructs
   the retail 0x20-byte controller view and invokes its exact full-clear path,
   proving the end pointer returns to begin after the six submitted vertices.
+- Exact 98/98-byte `CTexture::operator= @ 0x009FA1C0` and exact 34/34-byte
+  `CTexture::Uninitialise @ 0x009F9F70` are now the fifth and sixth live
+  dependencies. They execute the lifecycle adapter's temporary/current/candidate
+  wrapper assignment and teardown events. Those compact wrappers are null in
+  the current visual path, so the retail ownership logic is exercised without
+  taking ownership of the authored D3D9 presentation texture.
 - Ego PDB corrected the visible vertex ABI to
   `CTVertexRHWColSpecTex1Base`: 0x20 bytes containing XYZRHW, diffuse,
   specular, and UV. The bridge now uses FVF `0x1C4`, a compile-time 0x20 size

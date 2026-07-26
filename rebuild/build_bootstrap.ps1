@@ -95,6 +95,8 @@ $attachTextureToStageSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CRender
 $realiseRenderStateSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderStateManager_RealiseRenderState_00a058c0.cpp'
 $setRenderWindowSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderManagerCore_SetAWindow_00a0aa80.cpp'
 $clearRender2DVertexQueueSource = Join-Path $rebuildRoot 'src\compiled\00\9e\Render2DDrawList_CopyBlock_009e1440.cpp'
+$textureAssignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_Assignment_009fa1c0.cpp'
+$textureUninitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_Uninitialise_009f9f70.cpp'
 $gfmainPhase1BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase1_test.cpp'
 $gfmainPhase2BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase2_test.cpp'
 $gfInitialiseProgressPhaseBehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFInitialise_ProgressPhase_test.cpp'
@@ -147,6 +149,8 @@ $attachTextureToStageObject = Join-Path $outDir 'attach_texture_to_stage.obj'
 $realiseRenderStateObject = Join-Path $outDir 'realise_render_state.obj'
 $setRenderWindowObject = Join-Path $outDir 'set_render_window.obj'
 $clearRender2DVertexQueueObject = Join-Path $outDir 'clear_render2d_vertex_queue.obj'
+$textureAssignmentObject = Join-Path $outDir 'texture_assignment.obj'
+$textureUninitialiseObject = Join-Path $outDir 'texture_uninitialise.obj'
 $visualBootRetailArtwork = Join-Path $outDir 'frontend_backdrop_01.png'
 $visualBootBitmap = Join-Path $outDir 'visual_boot_artwork.bmp'
 $visualBootResourceSource = Join-Path $outDir 'visual_boot_checkpoint.rc'
@@ -300,6 +304,8 @@ $required = @(
     $realiseRenderStateSource,
     $setRenderWindowSource,
     $clearRender2DVertexQueueSource,
+    $textureAssignmentSource,
+    $textureUninitialiseSource,
     $gfmainPhase1BehaviorSource,
     $gfmainPhase2BehaviorSource,
     $gfInitialiseProgressPhaseBehaviorSource,
@@ -1244,6 +1250,24 @@ try {
         throw 'Failed to compile recovered Render2D vertex cleanup.'
     }
 
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$textureAssignmentObject" $textureAssignmentSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $textureAssignmentObject)
+    ) {
+        throw 'Failed to compile recovered texture assignment.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$textureUninitialiseObject" $textureUninitialiseSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $textureUninitialiseObject)
+    ) {
+        throw 'Failed to compile recovered texture uninitialisation.'
+    }
+
     Add-Type -AssemblyName PresentationCore
     $pngStream = [System.IO.File]::OpenRead($visualBootArtwork)
     try {
@@ -1369,6 +1393,8 @@ try {
         $realiseRenderStateObject,
         $setRenderWindowObject,
         $clearRender2DVertexQueueObject,
+        $textureAssignmentObject,
+        $textureUninitialiseObject,
         $setCurrentPathObject,
         $getProjectPathObject,
         $wideStringConstructorObject,
@@ -1506,6 +1532,7 @@ try {
         $render2DBatchPlanObject $render2DDrawListAdapterObject `
         $attachTextureToStageObject $realiseRenderStateObject `
         $setRenderWindowObject $clearRender2DVertexQueueObject `
+        $textureAssignmentObject $textureUninitialiseObject `
         $visualBootBehaviorObject $visualBootResource `
         user32.lib gdi32.lib d3d9.lib
     if (
@@ -1588,7 +1615,7 @@ try {
     } else {
         'AuthoredFallback'
     }
-    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DRecoveredQueue"
+    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DRecoveredLifetime"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude

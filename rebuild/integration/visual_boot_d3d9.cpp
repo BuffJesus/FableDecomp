@@ -3,6 +3,7 @@
 #include "fable_render2d_vertex_queue.h"
 #include "fable_render_texture.h"
 #include "fable_render_window.h"
+#include "fable_texture_lifecycle.h"
 #include "render2d_batch_plan.h"
 #include "render2d_draw_list_adapter.h"
 
@@ -287,6 +288,7 @@ namespace
               succeeded_(true),
               drew_(false)
         {
+            memset(textures_, 0, sizeof(textures_));
         }
 
         virtual void Invoke(
@@ -299,7 +301,41 @@ namespace
             if (!succeeded_)
                 return;
 
-            if (eventKind == RENDER2D_ADAPTER_APPLY_STATE_BLOCK)
+            if (
+                eventKind ==
+                RENDER2D_ADAPTER_INITIALISE_NULL_TEXTURE)
+            {
+                if (argument0 >= 1 && argument0 <= 3)
+                    memset(
+                        &textures_[argument0 - 1],
+                        0,
+                        sizeof(textures_[0]));
+            }
+            else if (
+                eventKind ==
+                RENDER2D_ADAPTER_ASSIGN_TEXTURE)
+            {
+                if (
+                    argument0 >= 1 && argument0 <= 3 &&
+                    argument1 >= 1 && argument1 <= 3)
+                {
+                    textures_[argument0 - 1] =
+                        textures_[argument1 - 1];
+                }
+            }
+            else if (
+                eventKind ==
+                RENDER2D_ADAPTER_UNINITIALISE_TEXTURE)
+            {
+                if (argument0 >= 1 && argument0 <= 3)
+                {
+                    reinterpret_cast<
+                        CTextureUninitialiseView*>(
+                            &textures_[argument0 - 1])->
+                        Uninitialise();
+                }
+            }
+            else if (eventKind == RENDER2D_ADAPTER_APPLY_STATE_BLOCK)
             {
                 ApplyStateBlock();
             }
@@ -427,6 +463,7 @@ namespace
         }
 
         const FableVisualVertex* vertices_;
+        CTextureAssignmentView textures_[3];
         bool succeeded_;
         bool drew_;
     };

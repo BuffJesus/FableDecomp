@@ -1,30 +1,4 @@
-#include "rebuild_abi.h"
-
-struct FableAssignmentTexture;
-
-typedef fable_u32 (__stdcall *FableAssignmentTextureCall)(
-    FableAssignmentTexture* texture);
-
-struct FableAssignmentTextureVTable
-{
-    void* queryInterface00;
-    FableAssignmentTextureCall addRef04;
-    FableAssignmentTextureCall release08;
-};
-
-struct FableAssignmentTexture
-{
-    FableAssignmentTextureVTable* vtable;
-};
-
-struct CTextureAssignmentView
-{
-    FableAssignmentTexture* PD3DTexture;
-    fable_u32 ByteLength : 28;
-    fable_u32 AllocationSource : 4;
-
-    CTextureAssignmentView& operator=(CTextureAssignmentView& rhs);
-};
+#include "fable_texture_lifecycle.h"
 
 CTextureAssignmentView& CTextureAssignmentView::operator=(
     CTextureAssignmentView& rhs)
