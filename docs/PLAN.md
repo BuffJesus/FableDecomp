@@ -64,6 +64,15 @@ The remaining goals are **milestones on the way to** (and dividends of) the full
 Non-goals: porting to another platform (unnecessary — it's already native PC); shipping a specific
 mod (downstream of the RE); Fable Anniversary (standing "TLC only" directive).
 
+### Current integration priority (2026-07-25)
+
+The next product milestone is a reconstructed process that reaches the game loop, not a polished
+port shell. Work proceeds through the staged gates in `rebuild/RUNNABLE.md`: owned startup,
+GFMain/GFInitialise, data bootstrap, then a minimal update/render loop. Installer work, replacement
+settings menus, x64 migration, and broad C++23 refactoring stay behind that runnable milestone.
+Small modern proofs may continue when they lock down a recovered contract, but they do not displace
+the VC7.1 boot-spine dependency closure.
+
 ---
 
 ## 2. What we inherit from Fable2RE (the transferable methodology)

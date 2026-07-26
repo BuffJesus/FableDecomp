@@ -40,11 +40,34 @@ audit reconciliation, not deleted source: the unified gate now exposes every `DI
 function-start oracle instead of mixing older mass-land and curated-subset totals.
 **`docs/HANDOFF.md` is the authoritative resume point** — read its top section first.
 
+The executable-integration lane has advanced beyond isolated object files. The original VC7.1
+toolchain now builds and runs a Win32 GUI shell through the recovered `WinMain @ 0x00403480`;
+that wrapper is a 141-byte relocation-normalized retail match and its focused fixture proves the
+single-instance mutex, MicroThread stack handoff, duplicate-instance skip, and fastcall `GFMain`
+boundary. The process intentionally stops at an instrumented `GFMain` stub. `rebuild/RUNNABLE.md`
+tracks the remaining boot gates, with engine initialization, data loading, and the game loop ahead
+of installer, settings-menu, x64, or broad C++23 work.
+
+The first Stage-2 leaf is ready behind that boundary:
+`GFInitialise_SetupProgressDisplay @ 0x00413120` is a 128-byte relocation-normalized match with
+focused allocation, failure, and counted-lifetime tests. Its review corrected three misleading
+generated types: the allocated 0x88-byte object is `CProgressDisplay` (proven by its vtable), not
+`C3DMeshStats`, and the forwarded smart pointer is correspondingly
+`CCountedPointer<CProgressDisplay>`. WinMain plus this leaf are two post-refresh promotions; the
+canonical metrics table above will absorb them on the next queue-safe refresh.
+
 The unattended Wave 3 lane has moved from the co-op event/package codecs into ForgeFSE Quest
 wrappers. The current refresh validates 452/452 recommended Quest bindings against their exact
 CGSI vtable slots; generated wrappers remain reviewable intake until their ABI, behavior, and
 retail bytes are independently proven. See `docs/HANDOFF.md` for the live batch and promotion
 caveats.
+
+The first modern reconstruction proof of concept now lives in
+`rebuild/modern/multiplayer/`: an x64 C++23 `GameEvent` model and codec using `std::span`,
+`std::expected`, owned storage, explicit little-endian serialization, and focused malformed-input
+and round-trip tests. It preserves the recovered single-event wire bytes while enforcing the
+retail object's actual 32-byte payload capacity. This is a separate human-facing layer, not a
+replacement for or parity claim about the VC7.1 one-function translation units.
 
 ## The cut multiplayer system
 
@@ -148,6 +171,7 @@ Promotion queues and the backlog are generated under `rebuild/backlog/`.
 | `docs/WORKSPACE_LAYOUT.md` | Public/local artifact boundaries and safe housekeeping. |
 | `docs/SOURCE_ARCHITECTURE.md` | Address sharding, readable module design, and C++23 policy. |
 | `rebuild/` | The buildable reconstruction: curated source, tests, oracles, compile gate, coverage. |
+| `rebuild/RUNNABLE.md` | Staged executable-integration status and the retail boot-chain blockers. |
 | `lift/` | Auto-RE agent lane: candidate reports, config, durable run state. |
 | `ghidra_out/` | Decompile dumps + `labels_*.tsv` (the reproducible name DB source). |
 | `tools/` | Ghidra RE script suite, FSE import, parity/dashboard tooling, Lua + asset tooling. |

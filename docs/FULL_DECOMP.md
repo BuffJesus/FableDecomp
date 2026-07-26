@@ -25,11 +25,18 @@ leans on automation because the target is large.
   passes and its complete 102-byte VC7.1 instruction stream is a relocation-normalized retail match.
 - [x] Complete the first bounded ForgeFSE reversal batch: 16/16 bindings reached structural PASS
   and were ingested into the generated candidate/signature/promotion reports.
+- [x] Establish Stage 0 executable integration: VC7.1 links and executes a byte-identical curated
+  retail function in an owned Win32 x86 process.
+- [x] Promote `WinMain @ 0x00403480`: the VC7.1 body matches all 141 non-relocation retail bytes,
+  its first/duplicate-instance fixture passes, and a Win32 GUI shell reaches a fastcall GFMain stub.
+- [x] Promote `GFInitialise_SetupProgressDisplay @ 0x00413120`: its corrected CProgressDisplay
+  ownership model passes focused behavior and all 128 non-relocation retail bytes match.
+- [ ] Reconstruct the first `GFMain @ 0x00402510` dependency closure and replace the Stage-1
+  instrumented boundary, working toward `GFInitialise_SetupProgressDisplay @ 0x00413120`.
 - [ ] Ingest and review both completed `ConnectVerticalMapEdge` reconstructions; promote them only
   after their allocation/refcount and connector-vector behavior can be isolated in a safe harness.
-- [ ] Take the next queue-ranked small candidate, currently `entry @ 0x00401067`, through VC7.1
-  compile, behavior, and retail comparison; skip to `CNavQuadTree::IsAreaBlockedByLines @ 0x00A76F30`
-  if CRT startup dependencies make the entry-point harness disproportionately expensive.
+- [ ] Recover exact CRT `entry @ 0x00401067` parity after the GFMain integration boundary is
+  useful; the compiler-owned CRT is sufficient for current startup-shell testing.
 - [x] Promote the dependency-free ForgeFSE wrapper pair at `0x0088EDB0` and `0x0088EDA0` as one
   shared declaration/test batch; both virtual/const ABI identities and raw retail bodies match.
 - [ ] Promote the next compile-sized ForgeFSE batch, beginning with `CancelRadialBlurFade @
@@ -55,8 +62,10 @@ leans on automation because the target is large.
   implementation is behavior-verified but nine bytes longer than retail.
 - [ ] Continue closing corrected ABI identities from decorated retail/donor symbols, treating the
   decorated `ABV` const-reference qualifier as authoritative when `llvm-pdbutil pretty` omits it.
-- [ ] Promote in small dependency-sharing batches until the curated lane reaches 496 functions
-  (the first 1% milestone), then begin module-level link replacement instead of isolated objects.
+- [x] Pass the 496-function first-1% milestone.
+- [ ] Prioritize boot-spine dependency closures and module-level link integration alongside small
+  background promotions. Defer installer, settings UI, x64, and broad modernization until the
+  reconstructed process reaches the game loop.
 
 ## Current unattended reconstruction loop (2026-07-22)
 
