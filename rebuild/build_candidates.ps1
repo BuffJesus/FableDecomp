@@ -34293,6 +34293,27 @@ $catalog = @(
         TestSource = '00/9f/CTexture_InitialiseFromPreallocatedTexture_009fa230_test.cpp'
         PassPattern = 'FABLETLC_PREALLOCATED_TEXTURE_BEHAVIOR PASS'
     }
+    [pscustomobject]@{
+        Address = '0098b230'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_RegisterVertexShaderConstantLayout_0098b230.cpp'
+        TestSource = '00/98/CShaderRenderManager_RegisterVertexShaderConstantLayout_0098b230_test.cpp'
+        PassPattern = 'FABLETLC_REGISTER_VS_LAYOUT_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00988020'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_ApplyVertexShader_00988020.cpp'
+        TestSource = '00/98/CShaderRenderManager_ApplyVertexShader_00988020_test.cpp'
+        PassPattern = 'FABLETLC_APPLY_VERTEX_SHADER_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a058c0'
+        Module = 'CRenderStateManager'
+        Source = '00/a0/CRenderStateManager_RealiseRenderState_00a058c0.cpp'
+        TestSource = '00/a0/CRenderStateManager_RealiseRenderState_00a058c0_test.cpp'
+        PassPattern = 'FABLETLC_REALISE_RENDER_STATE_BEHAVIOR PASS'
+    }
 )
 
 $oldPath = $env:PATH
