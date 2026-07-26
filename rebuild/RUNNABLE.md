@@ -59,6 +59,9 @@ empty-list epilogue, 13 tracked state requests, conditional shader changes,
 dirty uploads, attach/realise/DrawPrimitiveUP flush order, queue cleanup,
 capture/layout restoration, and texture ownership teardown. The gate also
 locks the recovered combined-projection dirty bit to `0x80`.
+The visible D3D9 checkpoint now executes both seams: planner output is
+translated into lifecycle flushes, and successful presentation requires the
+adapter to observe and complete a real `DrawPrimitiveUP` event.
 
 The full GFInitialise coordinator is promoted and connected:
 `GFInitialise @ 0x004022B0` is a 311-byte relocation-normalized match with
@@ -150,8 +153,8 @@ After the Release build, the live GPU presentation gate is:
 powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1
 ```
 
-It requires a `D3D9 Presented` window title, sends `WM_CLOSE`, and requires
-a clean zero exit.
+It requires a `D3D9 Presented via Render2D` window title, sends `WM_CLOSE`,
+and requires a clean zero exit.
 
 Stages 2 and 3 use explicit integration boundaries and are not claimed as a
 retail-matching GFMain. The visual checkpoint can now present one build-time

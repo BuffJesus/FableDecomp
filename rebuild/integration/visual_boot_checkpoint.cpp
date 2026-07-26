@@ -220,18 +220,18 @@ namespace
     const char kD3DRetailAssetActiveWindowTitle[] =
         "FableDecomp - D3D9 Retail Frontend + Progress Display Active";
     const char kD3DRetailAssetPresentedReadyWindowTitle[] =
-        "FableDecomp - D3D9 Presented - Retail Frontend + Progress Display Ready";
+        "FableDecomp - D3D9 Presented via Render2D - Retail Frontend + Progress Display Ready";
     const char kD3DRetailAssetPresentedActiveWindowTitle[] =
-        "FableDecomp - D3D9 Presented - Retail Frontend + Progress Display Active";
+        "FableDecomp - D3D9 Presented via Render2D - Retail Frontend + Progress Display Active";
 #else
     const char kD3DCheckpointReadyWindowTitle[] =
         "FableDecomp - D3D9 Visual Checkpoint Ready";
     const char kD3DCheckpointActiveWindowTitle[] =
         "FableDecomp - D3D9 Visual Checkpoint Active";
     const char kD3DCheckpointPresentedReadyWindowTitle[] =
-        "FableDecomp - D3D9 Presented - Visual Checkpoint Ready";
+        "FableDecomp - D3D9 Presented via Render2D - Visual Checkpoint Ready";
     const char kD3DCheckpointPresentedActiveWindowTitle[] =
-        "FableDecomp - D3D9 Presented - Visual Checkpoint Active";
+        "FableDecomp - D3D9 Presented via Render2D - Visual Checkpoint Active";
 #endif
 
     const FableUint kImageBitmap = 0;
