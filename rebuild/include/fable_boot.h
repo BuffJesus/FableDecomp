@@ -1,6 +1,7 @@
 #pragma once
 
 #include "rebuild_abi.h"
+#include "fable_string.h"
 
 struct HINSTANCE__;
 typedef HINSTANCE__* FableInstanceHandle;
@@ -34,7 +35,44 @@ void FABLE_CDECL FableOperatorDelete(void* allocation);
 
 struct CProgressDisplay
 {
-    fable_u8 unknown00[0x88];
+    void* vftable00;
+    fable_u32 value04;
+    fable_u32 value08;
+    fable_u32 value0C;
+    fable_u32 value10;
+    fable_u32 value14;
+    fable_u32 value18;
+    fable_u32 value1C;
+    fable_u32 value20;
+    fable_u32 value24;
+    fable_u32 value28;
+    fable_u32 value2C;
+    fable_u32 value30;
+    fable_u32 value34;
+    fable_u32 value38;
+    fable_u32 value3C;
+    fable_u32 value40;
+    fable_u32 value44;
+    fable_u32 wideText48;
+    fable_u32 primaryText4C;
+    fable_u32 secondaryText50;
+    fable_u32 value54;
+    fable_u32 value58;
+    fable_u32 unknown5C;
+    double progressTime60;
+    double displayTime68;
+    double completionTime70;
+    fable_u8 flag78;
+    fable_u8 active79;
+    fable_u8 drawRetail7A;
+    fable_u8 flag7B;
+    fable_u8 displayText7C;
+    fable_u8 flag7D;
+    fable_u8 flag7E;
+    fable_u8 flag7F;
+    fable_u8 flag80;
+    fable_u8 flag81;
+    fable_u8 unknown82[6];
 
     CProgressDisplay();
 
@@ -45,6 +83,11 @@ struct CProgressDisplay
 };
 
 FABLE_STATIC_ASSERT(sizeof(CProgressDisplay) == 0x88);
+
+extern fable_u8 g_CProgressDisplayVTable_012388B4;
+extern double g_FableZeroDouble_0122ED70;
+void FABLE_FASTCALL FableConstructWideString(CWideString* value);
+void FABLE_FASTCALL FableConstructCharString(CCharString* value);
 
 typedef void (FABLE_FASTCALL *FableDestroyReferencedObject)(void* object);
 
