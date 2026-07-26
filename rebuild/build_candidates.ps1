@@ -34321,6 +34321,13 @@ $catalog = @(
         TestSource = '00/9f/CTexture_Assignment_009fa1c0_test.cpp'
         PassPattern = 'FABLETLC_TEXTURE_ASSIGNMENT_BEHAVIOR PASS'
     }
+    [pscustomobject]@{
+        Address = '009897c0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UpdateFogColour_009897c0.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateFogColour_009897c0_test.cpp'
+        PassPattern = 'FABLETLC_UPDATE_FOG_COLOUR_BEHAVIOR PASS'
+    }
 )
 
 $oldPath = $env:PATH
