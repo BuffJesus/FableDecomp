@@ -22,9 +22,9 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Analysis DB | Usable reconstruction/navigation names | 99.211% |
 | Analysis DB | Calling convention known | 77.674% |
 | Analysis DB | Complete non-`undefined` prototype | 69.049% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **4,372** |
-| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **4,045** (8.16%) |
-| Reconstruction | — of which byte-**identical** (no relocation masking) | 2,175 (4.39%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **4,842** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **4,515** (9.11%) |
+| Reconstruction | — of which byte-**identical** (no relocation masking) | 2,644 (5.34%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
 | Auto-RE intake | Generated candidates / structural checker PASS | 632 / 619 |
@@ -38,10 +38,10 @@ separately and is never counted as reconstructed merely because a structural che
 The successful refresh also synchronizes this table automatically; GitHub is updated at reviewed
 checkpoints rather than publishing live, unreviewed queue output.
 The first **5%** compiled-byte-match milestone (2,478 functions) is passed; current verified retail
-parity is **8.16%** of the 49,553-function catalog. The lower match count than an earlier README is an
+parity is **9.11%** of the 49,553-function catalog. The lower match count than an earlier README is an
 audit reconciliation, not deleted source: the unified gate now exposes every `DIFFER` and missing
 function-start oracle instead of mixing older mass-land and curated-subset totals.
-The 8.16% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
+The 9.11% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
 a second lens over the 3,952-byte GFMain coordinator: they measure proven direct call sites and
 callable integration phases, not percentage of total engineering time. Repeated calls count
 separately because every occurrence must be linked in the correct lifetime and control-flow
@@ -78,8 +78,12 @@ integration boundary performs balanced recovered string teardown. The remaining 
 stand in for the unrecovered engine singleton graph and renderer. The global retained owner is now
 recovered too: `SetProgressDisplay @ 0x009E9FD0` is a 133-byte
 relocation-normalized match that releases the prior counted object, retains the incoming
-reference across the visible window lifetime, and releases it on shutdown. The authored window
-is still scaffolding, not a claim that retail rendering or the game loop is recovered.
+reference across the visible window lifetime, and releases it on shutdown. The handoff now
+acquires that owner through the recovered 28-byte `GetProgressDisplay @ 0x009EA060` and queries
+the real `active79` state through the exact four-byte
+`CProgressDisplay::IsActive @ 0x0049B460`. A successful smoke boot exposes that state in the
+top-level window title as `Retail Progress Display Ready`. The authored window is still
+scaffolding, not a claim that retail rendering or the game loop is recovered.
 
 The `GFMain` Phase-1 filesystem pair is promoted as well:
 `CAFile::GetProjectPath @ 0x00997510` (146 bytes) and
@@ -109,7 +113,9 @@ There is now a real visible checkpoint as well:
 `FableTLC-Reconstruction-VisualCheckpoint.exe` follows the retail-matched `WinMain` and the same
 reconstructed Phase 1/2 startup path, runs the retail-matched progress-display setup leaf through
 the authored `GFInitialise` tail phase, then opens a responsive 1280x720 Win32 window containing
-the project boot artwork. This last handoff is explicitly authored reconstruction scaffolding—not a
+the project boot artwork. The visual handoff now consumes a balanced retail counted-pointer
+snapshot and the retail active-state query before creating that window. This last handoff is
+explicitly authored reconstruction scaffolding—not a
 claim that the retail window, renderer, archives, or game loop have been recovered. Build it with
 `rebuild/build_bootstrap.ps1`, then launch it from `rebuild/build/bootstrap-Release/`.
 
@@ -118,7 +124,7 @@ claim that the retail window, renderer, archives, or game loop have been recover
 | Visible milestone | Current state | What remains |
 |---|---|---|
 | Authored project boot window | **Runnable now** | This proves the reconstructed process can reach and own a responsive window, but it does not use the retail renderer. |
-| First recovered retail progress setup | **Coordinator, setup, 0x88-byte constructor, and retained owner are connected** | Recover the actual renderer/display resources that consume the retained object. |
+| First recovered retail progress setup | **Coordinator, setup, 0x88-byte constructor, retained owner, counted getter, and active-state query are connected** | Recover `StartProgress`, texture initialization, and the renderer/display resources that draw the retained object. |
 | Retail intro video or frontend menu | **Several major closures away** | Recover display/D3D setup, engine primitive initialization, core archives and compiled definitions, fonts/frontend banks, UI ownership, movie playback, and the update/render loop. |
 
 The nearest honest retail visual target is therefore the game's progress display, not the intro
