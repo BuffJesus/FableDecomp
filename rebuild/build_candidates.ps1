@@ -15501,9 +15501,9 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009a4ec0'
         Module = '_global'
-        Source = '00/9a/global_AddChildPrimitive_009a4ec0.cpp'
-        TestSource = '00/9a/global_AddChildPrimitive_009a4ec0_test.cpp'
-        PassPattern = 'AUTO_TINY_009a4ec0_TEST PASS'
+        Source = '00/9a/Global_GFGetSystemManager_009a4ec0.cpp'
+        TestSource = '00/9a/Global_GFGetSystemManager_009a4ec0_test.cpp'
+        PassPattern = 'FABLETLC_GET_SYSTEM_MANAGER_BEHAVIOR PASS'
     }
     [pscustomobject]@{
         Address = '009fd0b0'
@@ -34187,6 +34187,55 @@ $catalog = @(
         Source = '00/a0/CRenderStateManager_RestoreCaptureBlock_00a05840.cpp'
         TestSource = '00/a0/CRenderStateManager_RestoreCaptureBlock_00a05840_test.cpp'
         PassPattern = 'FABLETLC_RESTORE_CAPTURE_BLOCK_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e1d00'
+        Module = '_global'
+        Source = '00/9e/Global_GFRoundVXToNearestPixel_009e1d00.cpp'
+        TestSource = '00/9e/Global_GFRoundVXToNearestPixel_009e1d00_test.cpp'
+        PassPattern = 'FABLETLC_ROUND_VX_TO_PIXEL_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e1d50'
+        Module = '_global'
+        Source = '00/9e/Global_GFRoundVYToNearestPixel_009e1d50.cpp'
+        TestSource = '00/9e/Global_GFRoundVYToNearestPixel_009e1d50_test.cpp'
+        PassPattern = 'FABLETLC_ROUND_VY_TO_PIXEL_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e1da0'
+        Module = '_global'
+        Source = '00/9e/Global_GFAXToVX_009e1da0.cpp'
+        TestSource = '00/9e/Global_GFAXToVX_009e1da0_test.cpp'
+        PassPattern = 'FABLETLC_GFAX_TO_VX_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00497f80'
+        Module = 'CProgressDisplay'
+        Source = '00/49/CProgressDisplay_FormatTextForVWindow_00497f80.cpp'
+        TestSource = '00/49/CProgressDisplay_FormatTextForVWindow_00497f80_test.cpp'
+        PassPattern = 'FABLETLC_FORMAT_TEXT_FOR_VWINDOW_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00988110'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_EnablePixelShaders_00988110.cpp'
+        TestSource = '00/98/CShaderRenderManager_EnablePixelShaders_00988110_test.cpp'
+        PassPattern = 'FABLETLC_ENABLE_PIXEL_SHADERS_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00987fe0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_EnableVertexShaders_00987fe0.cpp'
+        TestSource = '00/98/CShaderRenderManager_EnableVertexShaders_00987fe0_test.cpp'
+        PassPattern = 'FABLETLC_ENABLE_VERTEX_SHADERS_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009880e0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_DisableVertexShaders_009880e0.cpp'
+        TestSource = '00/98/CShaderRenderManager_DisableVertexShaders_009880e0_test.cpp'
+        PassPattern = 'FABLETLC_DISABLE_VERTEX_SHADERS_BEHAVIOR PASS'
     }
 )
 

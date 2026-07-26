@@ -1,5 +1,5 @@
 address	name	retail_bytes	recovery_status	source	role
-009a4ec0	CEngineInternalPrimitiveBase::AddChildPrimitive	6	MATCH	rebuild/src/compiled/00/9a/global_AddChildPrimitive_009a4ec0.cpp	Resolve display and renderer owners used by the progress path.
+009a4ec0	GFGetSystemManager	6	MATCH	rebuild/src/compiled/00/9a/Global_GFGetSystemManager_009a4ec0.cpp	Resolve the fixed system-manager owner used by the progress path.
 00a0aa60	NInventory::CTCInventoryBase::GetCanItemBeQuickAssigned	7	MATCH	rebuild/src/compiled/00/a0/CTCInventoryBase_GetCanItemBeQuickAssigned_00a0aa60.cpp	Guard progress rendering while inventory quick assignment is active.
 009a6460	CSystemManager::Update	65	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CSystemManager_Update_009a6460.cpp	Update the system manager before drawing when the progress flags require it.
 009bef20	CDisplayManager::BeginRender	41	RELOCATION_MATCH	rebuild/src/compiled/00/9b/CDisplayManager_BeginRender_009bef20.cpp	Begin the device and core render transaction.

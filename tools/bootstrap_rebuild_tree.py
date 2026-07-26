@@ -282,8 +282,22 @@ def main() -> int:
                 "name": override.get("name") or api["name"],
                 "cc": override.get("calling_convention") or api["cc"],
                 "ret": override.get("return_type") or api["ret"],
-                "nparams": override.get("parameter_count") or api["nparams"],
-                "params": override.get("parameter_types") or api["params"],
+                # Zero parameters and an empty parameter-type list are valid,
+                # intentional corrections. Truthiness fallback silently kept
+                # poisoned Ghidra parameters for no-argument overrides.
+                "nparams": (
+                    override["parameter_count"]
+                    if override.get("parameter_count") != ""
+                    else api["nparams"]
+                ),
+                "params": (
+                    override.get("parameter_types", "")
+                    if (
+                        override.get("parameter_types", "") != ""
+                        or override.get("parameter_count") == "0"
+                    )
+                    else api["params"]
+                ),
             }
         cc = api["cc"]
         ret = api["ret"]
