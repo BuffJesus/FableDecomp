@@ -1,6 +1,43 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 08:00 MDT (258-function speed-destructor replay checkpoint).*
+*Last updated: 2026-07-26 08:44 MDT (retail progress object + counted-handle parity checkpoint).*
+
+## Retail progress object + counted-handle parity checkpoint (2026-07-26)
+
+- The visually runnable path now allocates a real typed
+  `CProgressDisplay` and traverses its retail constructor at `0x00499CE0`.
+  The 163-byte leaf matches retail outside seven relocation fields, initializes
+  the exact 0x88-byte object layout, constructs one `CWideString` and two
+  `CCharString` subobjects, and passes an offset/flags/lifecycle fixture.
+- The former blanket-`memset` constructor boundary is gone. The full
+  `GFInitialise @ 0x004022B0` and
+  `GFInitialise_SetupProgressDisplay @ 0x00413120` path now uses the recovered
+  constructor and balanced recovered string teardown before handing off to
+  the authored 1280x720 boot window. The complete Release bootstrap is green
+  through Stage 0-3, GFInitialise progress integration, and the visual
+  checkpoint.
+- The remaining honest progress-display boundary is the engine-side retained
+  owner installed by `SetProgressDisplay`; the root/display/resource graph and
+  renderer are still controlled integration objects. Recover retained
+  ownership before claiming a retail progress frame, then continue with
+  archive/data loading and renderer/game-loop handoff.
+- The next 47-byte deterministic parity family is also landed: intrusive
+  counted-handle assignment releases the prior object through virtual slot 1
+  on its last reference, assigns the incoming object, and retains it when
+  non-null. Its focused fixture covers last-reference release, retained
+  decrement, incoming increment, null assignment, and self-assignment.
+- That family added **26 / 26 exact retail matches**. The full VC7.1 catalog
+  and behavior gate passes with **4,116 / 4,116** functions. Candidate retail
+  parity is **1,921 exact + 1,868 relocation-normalized = 3,789 / 49,553
+  (7.65%)**; 199 honest differences and 128 missing function-start oracles
+  remain visible.
+- Generated manifests, backlog, promotion queue, dashboard, artifact index,
+  and root README are refreshed. Ghidra and Wave 3 remain stopped; the hourly
+  Ghidra-free parity task remains installed. Resume deterministic parity with
+  the remaining creature-action clone allocation/copy clusters, adding ABI,
+  allocation-failure, copy, and ownership fixtures before replay.
+
+*Previous checkpoint: 2026-07-26 08:00 MDT (258-function speed-destructor replay checkpoint).*
 
 ## Speed-optimized composite-destructor replay checkpoint (2026-07-26)
 

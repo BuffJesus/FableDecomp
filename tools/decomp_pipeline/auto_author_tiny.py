@@ -59,6 +59,10 @@ determined by the retail bytes:
      e8 xx xx xx xx 8b 7e 08 56 e8 yy yy yy yy 85 ff 59
      8b f7 75 e6 5f 5e 5b c2 04 00
                      -> recursively consume a linked tree
+  56 8b f1 8b 0e 57 8b 7c 24 0c 3b 0f 74 1c 85 c9 74 0d
+     ff 49 04 75 05 8b 01 ff 50 04 83 26 00 8b 07 85 c0
+     89 06 74 03 ff 40 04 5f 5e c2 04 00
+                     -> release the old counted object and assign a new one
 
 The normal verify_and_land.py gate still recompiles and byte-compares every
 candidate, so a bad inference can waste a compile but cannot mis-land.
@@ -307,6 +311,15 @@ def const_from_bytes(bs: bytes):
         and bs[32:] == b"\x85\xff\x59\x8b\xf7\x75\xe6\x5f\x5e\x5b\xc2\x04\x00"
     ):
         return ("consume_linked_tree", None)
+    if (
+        len(bs) == 47
+        and bs
+        == b"\x56\x8b\xf1\x8b\x0e\x57\x8b\x7c\x24\x0c\x3b\x0f\x74\x1c"
+        b"\x85\xc9\x74\x0d\xff\x49\x04\x75\x05\x8b\x01\xff\x50\x04"
+        b"\x83\x26\x00\x8b\x07\x85\xc0\x89\x06\x74\x03\xff\x40\x04"
+        b"\x5f\x5e\xc2\x04\x00"
+    ):
+        return ("assign_intrusive_counted_handle", None)
     return None
 
 
@@ -1161,6 +1174,109 @@ def candidate(row):
             "    AutoTinyTreeNodeArgument argument = {&root};\n"
             f"    {fn}(&walker, argument);\n"
             "    if (g_AutoTinyFreedTreeNodes != 3)\n"
+            "        return 1;\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "assign_intrusive_counted_handle":
+        source = (
+            '#pragma optimize("s", on)\n'
+            "struct AutoTinyCountedObject\n"
+            "{\n"
+            "    void** vtable;\n"
+            "    long references;\n"
+            "};\n"
+            "struct AutoTinyCountedHandle\n"
+            "{\n"
+            "    AutoTinyCountedObject* object;\n"
+            "    void Assign(AutoTinyCountedHandle* source);\n"
+            "};\n"
+            "void AutoTinyCountedHandle::Assign("
+            "AutoTinyCountedHandle* source)\n"
+            "{\n"
+            "    AutoTinyCountedObject* current = object;\n"
+            "    if (current != source->object)\n"
+            "    {\n"
+            "        if (current != 0)\n"
+            "        {\n"
+            "            if (--current->references == 0)\n"
+            "                ((void (__fastcall*)(AutoTinyCountedObject*))"
+            "current->vtable[1])(current);\n"
+            "            object = 0;\n"
+            "        }\n"
+            "        AutoTinyCountedObject* incoming = source->object;\n"
+            "        object = incoming;\n"
+            "        if (incoming != 0)\n"
+            "            ++incoming->references;\n"
+            "    }\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "struct AutoTinyCountedObject\n"
+            "{\n"
+            "    void** vtable;\n"
+            "    long references;\n"
+            "};\n"
+            "struct AutoTinyCountedHandle\n"
+            "{\n"
+            "    AutoTinyCountedObject* object;\n"
+            "    void Assign(AutoTinyCountedHandle* source);\n"
+            "};\n"
+            "static int g_AutoTinyCountedReleaseCalls = 0;\n"
+            "static AutoTinyCountedObject* "
+            "g_AutoTinyCountedReleasedObject = 0;\n"
+            "void __fastcall AutoTinyCountedRelease("
+            "AutoTinyCountedObject* object)\n"
+            "{\n"
+            "    ++g_AutoTinyCountedReleaseCalls;\n"
+            "    g_AutoTinyCountedReleasedObject = object;\n"
+            "}\n"
+            "void AutoTinyCountedHandle::Assign("
+            "AutoTinyCountedHandle* source)\n"
+            "{\n"
+            "    AutoTinyCountedObject* current = object;\n"
+            "    if (current != source->object)\n"
+            "    {\n"
+            "        if (current != 0)\n"
+            "        {\n"
+            "            if (--current->references == 0)\n"
+            "                ((void (__fastcall*)(AutoTinyCountedObject*))"
+            "current->vtable[1])(current);\n"
+            "            object = 0;\n"
+            "        }\n"
+            "        AutoTinyCountedObject* incoming = source->object;\n"
+            "        object = incoming;\n"
+            "        if (incoming != 0)\n"
+            "            ++incoming->references;\n"
+            "    }\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            "    void* vtable[2] = {0, "
+            "(void*)AutoTinyCountedRelease};\n"
+            "    AutoTinyCountedObject last = {vtable, 1};\n"
+            "    AutoTinyCountedObject incoming = {vtable, 2};\n"
+            "    AutoTinyCountedHandle destination = {&last};\n"
+            "    AutoTinyCountedHandle source = {&incoming};\n"
+            "    destination.Assign(&source);\n"
+            "    if (destination.object != &incoming || "
+            "last.references != 0 || incoming.references != 3 ||\n"
+            "        g_AutoTinyCountedReleaseCalls != 1 || "
+            "g_AutoTinyCountedReleasedObject != &last)\n"
+            "        return 1;\n"
+            "    destination.Assign(&destination);\n"
+            "    if (incoming.references != 3 || "
+            "g_AutoTinyCountedReleaseCalls != 1)\n"
+            "        return 1;\n"
+            "    AutoTinyCountedObject retained = {vtable, 2};\n"
+            "    AutoTinyCountedHandle retainedHandle = {&retained};\n"
+            "    AutoTinyCountedHandle empty = {0};\n"
+            "    retainedHandle.Assign(&empty);\n"
+            "    if (retainedHandle.object != 0 || "
+            "retained.references != 1 ||\n"
+            "        g_AutoTinyCountedReleaseCalls != 1)\n"
             "        return 1;\n"
             f"    std::printf(\"{pattern}\\n\");\n"
             "    return 0;\n"

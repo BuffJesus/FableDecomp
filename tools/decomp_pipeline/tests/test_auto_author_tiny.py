@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from tools.decomp_pipeline.auto_author_tiny import (
+    candidate,
     const_from_bytes,
     rows_with_target_metadata,
 )
@@ -57,13 +58,45 @@ class TinyPatternTests(unittest.TestCase):
                 "53568b74240c85f68bd9741c57ff760c8bcbe8e9ffffff"
                 "8b7e0856e82948720085ff598bf775e65f5e5bc20400"
             ): ("consume_linked_tree", None),
+            (
+                "568bf18b0e578b7c240c3b0f741c85c9740dff49047505"
+                "8b01ff50048326008b0785c089067403ff40045f5ec20400"
+            ): ("assign_intrusive_counted_handle", None),
         }
         for encoded, expected in cases.items():
             with self.subTest(encoded=encoded):
                 self.assertEqual(const_from_bytes(bytes.fromhex(encoded)), expected)
 
+    def test_counted_assignment_candidate_has_ownership_fixture(self):
+        authored = candidate(
+            {
+                "address": "00485657",
+                "name": "GetMeshEffect",
+                "module": "CEngineInternalPrimitiveMeshBase",
+                "bytes": (
+                    "568bf18b0e578b7c240c3b0f741c85c9740dff49047505"
+                    "8b01ff50048326008b0785c089067403ff40045f5ec20400"
+                ),
+            }
+        )
+
+        self.assertIsNotNone(authored)
+        self.assertIn("current != source->object", authored["source_cpp"])
+        self.assertIn("--current->references", authored["source_cpp"])
+        self.assertIn("++incoming->references", authored["source_cpp"])
+        self.assertIn("destination.Assign(&destination)", authored["test_cpp"])
+        self.assertIn("retained.references != 1", authored["test_cpp"])
+
     def test_unknown_pattern_is_rejected(self):
         self.assertIsNone(const_from_bytes(bytes.fromhex("558bec5dc3")))
+        self.assertIsNone(
+            const_from_bytes(
+                bytes.fromhex(
+                    "568bf18b0e578b7c240c3b0f741c85c9740dff49047505"
+                    "8b01ff50048326008b0785c089067403ff40085f5ec20400"
+                )
+            )
+        )
 
     def test_oracle_rows_are_enriched_from_sibling_target_catalog(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -1466,7 +1466,7 @@ CEngineInternalPrimitiveGameMesh	1	0	0	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveGroup	12	12	12	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveLight	2	2	2	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveLine	3	4	4	0	0	0	0	0	0	0	0
-CEngineInternalPrimitiveMeshBase	10	67	67	0	0	15	15	14	0	0	0
+CEngineInternalPrimitiveMeshBase	10	67	67	0	0	41	41	40	0	0	0
 CEngineInternalPrimitiveMorphInfo	4	1	1	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveMorphedAnimatedMesh	2	2	2	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveMorphedStaticMesh	2	2	2	0	0	0	0	0	0	0	0
