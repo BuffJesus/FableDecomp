@@ -113,24 +113,29 @@ There is now a real visible checkpoint as well:
 `FableTLC-Reconstruction-VisualCheckpoint.exe` follows the retail-matched `WinMain` and the same
 reconstructed Phase 1/2 startup path, runs the retail-matched progress-display setup leaf through
 the authored `GFInitialise` tail phase, then opens a responsive 1280x720 Win32 window containing
-the project boot artwork. The visual handoff now consumes a balanced retail counted-pointer
-snapshot and the retail active-state query before creating that window. This last handoff is
-explicitly authored reconstruction scaffolding—not a
-claim that the retail window, renderer, archives, or game loop have been recovered. Build it with
-`rebuild/build_bootstrap.ps1`, then launch it from `rebuild/build/bootstrap-Release/`.
+the real retail `FRONTEND_BACKDROP_01` image when a local `frontend.big` is available. The build
+decodes its Lionhead-LZO/DXT1 payload, crops the allocated surface to the authored 640x480 frame,
+and embeds it without committing retail artwork; the project boot image remains the fallback.
+The visual handoff consumes a balanced retail counted-pointer snapshot and the retail active-state
+query before creating that window. Image presentation is still authored GDI scaffolding—not a
+claim that the retail renderer, runtime archive loader, or game loop has been recovered. Build it
+with `rebuild/build_bootstrap.ps1`, then launch it from `rebuild/build/bootstrap-Release/`.
 
 ### How close is a retail visual boot?
 
 | Visible milestone | Current state | What remains |
 |---|---|---|
-| Authored project boot window | **Runnable now** | This proves the reconstructed process can reach and own a responsive window, but it does not use the retail renderer. |
+| First actual retail image | **Runnable now: `FRONTEND_BACKDROP_01` is decoded from `frontend.big` and shown by the reconstructed executable** | Presentation currently uses the authored GDI window rather than Lionhead's runtime archive/texture/renderer stack. |
 | First recovered retail progress setup | **Coordinator, setup, 0x88-byte constructor, retained owner, counted getter, and active-state query are connected** | Recover `StartProgress`, texture initialization, and the renderer/display resources that draw the retained object. |
-| Retail intro video or frontend menu | **Several major closures away** | Recover display/D3D setup, engine primitive initialization, core archives and compiled definitions, fonts/frontend banks, UI ownership, movie playback, and the update/render loop. |
+| Retail-rendered frame/frontend | **Several major closures away** | Recover display/D3D setup, runtime archive and texture ownership, primitive submission, and the update/render/present loop. |
+| Retail intro video | **Farther than the first renderer frame** | Add the movie/Bink ownership and decode path, timing, audio, and frame presentation after renderer/display initialization. |
 
-The nearest honest retail visual target is therefore the game's progress display, not the intro
-movie or menu. We are not one or two functions away: only two of ten GFMain integration phases are
-callable, even though 40 of its 257 direct call sites and 21 of Phase 3's 34 sites are already
-proven. These dependency counts are more informative than converting them into a date estimate.
+The “actual image” milestone is therefore reached, but “the game is rendering” is not. The nearest
+honest engine milestone remains the game's progress display and its texture consumers, not the
+intro movie or interactive menu. That is not one or two functions away: only two of ten GFMain
+integration phases are callable, even though 40 of its 257 direct call sites and 21 of Phase 3's
+34 sites are already proven. These dependency counts are more informative than converting them
+into a date estimate.
 
 Phase 2 recovery has reached all seven direct calls in retail order. PDB and donor lineage resolves
 the repeated one-byte
@@ -179,9 +184,9 @@ differ from retail's inlined copy/destruction scheduling, so Phase 3 remains hon
 until the byte/behavior gate closes.
 
 The project-owner-provided [boot-screen concept](rebuild/assets/boot/fabledecomp_boot_concept.png)
-is archived at its native resolution and now drives the authored visual checkpoint. The build
-converts it into an ignored BMP resource for the VC7.1/GDI shell, leaving the original PNG
-unchanged. A later renderer can derive its own runtime format without committing generated copies.
+remains the dependency-safe fallback. When a retail bank is found, the build instead extracts
+`FRONTEND_BACKDROP_01` into the ignored build tree and converts it to the VC7.1/GDI resource.
+Neither the decoded retail image nor generated bitmap is committed.
 
 The unattended Wave 3 lane has moved from the co-op event/package codecs into ForgeFSE Quest
 wrappers. The current refresh validates 452/452 recommended Quest bindings against their exact

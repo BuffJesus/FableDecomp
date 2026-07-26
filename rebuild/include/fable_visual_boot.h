@@ -9,6 +9,8 @@ void FABLE_FASTCALL FableSetVisualProgressDisplayState(
     bool present,
     bool active);
 
+bool FABLE_FASTCALL FableIsRetailVisualAssetEmbedded();
+
 long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     FableInstanceHandle instance,
     char* commandLine,
