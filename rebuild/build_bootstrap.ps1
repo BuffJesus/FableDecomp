@@ -91,6 +91,8 @@ $render2DBatchPlanSource = Join-Path $rebuildRoot 'integration\render2d_batch_pl
 $render2DBatchPlanBehaviorSource = Join-Path $rebuildRoot 'tests\integration\Render2DBatchPlan_test.cpp'
 $render2DDrawListAdapterSource = Join-Path $rebuildRoot 'integration\render2d_draw_list_adapter.cpp'
 $render2DDrawListAdapterBehaviorSource = Join-Path $rebuildRoot 'tests\integration\Render2DDrawListAdapter_test.cpp'
+$attachTextureToStageSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CRenderManagerCore_AttachTextureToStage_009a0cf0.cpp'
+$realiseRenderStateSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderStateManager_RealiseRenderState_00a058c0.cpp'
 $gfmainPhase1BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase1_test.cpp'
 $gfmainPhase2BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase2_test.cpp'
 $gfInitialiseProgressPhaseBehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFInitialise_ProgressPhase_test.cpp'
@@ -139,6 +141,8 @@ $render2DBatchPlanObject = Join-Path $outDir 'render2d_batch_plan.obj'
 $render2DBatchPlanBehaviorObject = Join-Path $outDir 'render2d_batch_plan_behavior.obj'
 $render2DDrawListAdapterObject = Join-Path $outDir 'render2d_draw_list_adapter.obj'
 $render2DDrawListAdapterBehaviorObject = Join-Path $outDir 'render2d_draw_list_adapter_behavior.obj'
+$attachTextureToStageObject = Join-Path $outDir 'attach_texture_to_stage.obj'
+$realiseRenderStateObject = Join-Path $outDir 'realise_render_state.obj'
 $visualBootRetailArtwork = Join-Path $outDir 'frontend_backdrop_01.png'
 $visualBootBitmap = Join-Path $outDir 'visual_boot_artwork.bmp'
 $visualBootResourceSource = Join-Path $outDir 'visual_boot_checkpoint.rc'
@@ -288,6 +292,8 @@ $required = @(
     $render2DBatchPlanBehaviorSource,
     $render2DDrawListAdapterSource,
     $render2DDrawListAdapterBehaviorSource,
+    $attachTextureToStageSource,
+    $realiseRenderStateSource,
     $gfmainPhase1BehaviorSource,
     $gfmainPhase2BehaviorSource,
     $gfInitialiseProgressPhaseBehaviorSource,
@@ -1194,6 +1200,24 @@ try {
         throw 'Failed to compile the Render2D draw-list adapter fixture.'
     }
 
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$attachTextureToStageObject" $attachTextureToStageSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $attachTextureToStageObject)
+    ) {
+        throw 'Failed to compile the recovered texture-stage attachment.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$realiseRenderStateObject" $realiseRenderStateSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $realiseRenderStateObject)
+    ) {
+        throw 'Failed to compile recovered render-state realisation.'
+    }
+
     Add-Type -AssemblyName PresentationCore
     $pngStream = [System.IO.File]::OpenRead($visualBootArtwork)
     try {
@@ -1315,6 +1339,8 @@ try {
         $visualBootD3D9Object,
         $render2DBatchPlanObject,
         $render2DDrawListAdapterObject,
+        $attachTextureToStageObject,
+        $realiseRenderStateObject,
         $setCurrentPathObject,
         $getProjectPathObject,
         $wideStringConstructorObject,
@@ -1450,6 +1476,7 @@ try {
         "/out:$visualBootBehaviorExecutable" `
         $visualBootObject $visualBootD3D9Object `
         $render2DBatchPlanObject $render2DDrawListAdapterObject `
+        $attachTextureToStageObject $realiseRenderStateObject `
         $visualBootBehaviorObject $visualBootResource `
         user32.lib gdi32.lib d3d9.lib
     if (
@@ -1532,7 +1559,7 @@ try {
     } else {
         'AuthoredFallback'
     }
-    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DLifecycle"
+    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DRecoveredState"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude

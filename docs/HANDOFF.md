@@ -40,6 +40,23 @@
   translated into adapter input, and the concrete D3D9 adapter handles state
   application, FVF selection, texture attach/detach, and the actual
   `DrawPrimitiveUP`; presentation is accepted only after a draw succeeds.
+- The first lifecycle event now dispatches through a concrete recovered retail
+  dependency: exact 79/79-byte
+  `CRenderManagerCore::AttachTextureToStage @ 0x009A0CF0` handles both live
+  texture attachment and final detachment against the real D3D9 device. Its
+  stage cache and active-stage high-water state live in a compact reconstructed
+  core view; the targeted VC7.1 behavior/parity gate still reports `MATCH`.
+- Exact 167/167-byte
+  `CRenderStateManager::RealiseRenderState @ 0x00A058C0` is now the second live
+  dependency. The visual adapter queues four render, four texture-stage, and
+  two sampler states; the recovered body performs change detection, dispatches
+  them to the real D3D9 vtable, updates cached values, clears dirty markers,
+  and drains the queue.
+- Ego PDB corrected the visible vertex ABI to
+  `CTVertexRHWColSpecTex1Base`: 0x20 bytes containing XYZRHW, diffuse,
+  specular, and UV. The bridge now uses FVF `0x1C4`, a compile-time 0x20 size
+  assertion, white diffuse/zero specular, and the retail stride. A fresh frame
+  capture confirms the retail forest/Hero image remains intact.
 - Ego PDB evidence corrected retail `0x00A0AA80` from the false inventory
   identity to `CRenderManagerCore::SetAWindow(C2DBoxF)`. The existing
   11-byte relocation match and behavior gate are preserved under the
