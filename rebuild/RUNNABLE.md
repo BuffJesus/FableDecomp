@@ -47,8 +47,10 @@ failure fallback. Texture binding now executes the exact recovered 79-byte
 active-stage bookkeeping. The exact 167-byte
 `CRenderStateManager::RealiseRenderState` body also drains ten queued render,
 texture-stage, and sampler states for the live draw. Other dependency dispatch
-remains authored rather than the complete Lionhead coordinator, runtime archive
-loader, or game loop.
+now includes the recovered 11-byte `CRenderManagerCore::SetAWindow` ownership
+hop into a compact D3D9 viewport endpoint. Remaining dispatch is still authored
+rather than the complete Lionhead coordinator, runtime archive loader, or game
+loop.
 
 The first parent-coordinator seam is now canonical too:
 `FableBuildRender2DBatchPlan` models the recovered 0x3C-byte draw-record
