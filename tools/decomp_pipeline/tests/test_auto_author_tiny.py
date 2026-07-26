@@ -30,6 +30,10 @@ class TinyPatternTests(unittest.TestCase):
                 "56e863af7200598bc65ec20400"
             ): ("vector_deleting_destructor_with_vftable", None),
             (
+                "568bf1e80be2fffff644240801740756e8d2c07100"
+                "598bc65ec20400"
+            ): ("scalar_deleting_destructor", None),
+            (
                 "51568bf18b56048b0e8d44240750e8e5dafdff8b36"
                 "85f6740756e8d2b97800595e59c3"
             ): ("finish_async_read_then_release", None),

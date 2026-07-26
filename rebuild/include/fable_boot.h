@@ -82,6 +82,12 @@ void FABLE_FASTCALL SetProgressDisplay(CCountedProgressDisplay* display);
 fable_u8 FABLE_FASTCALL GFInitialise_SetupProgressDisplay(
     GFInitialiseState* state);
 
+bool FABLE_FASTCALL GFInitialise();
+
+// Authored engine boundary used to run the verified retail coordinator before
+// the surrounding renderer and singleton graph have been recovered.
+void FABLE_FASTCALL FablePrepareGFInitialiseBoundary();
+
 struct GFInitialiseProgressPhaseState
 {
     GFInitialiseState progressDisplay;
