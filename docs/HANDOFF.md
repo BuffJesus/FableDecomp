@@ -1,6 +1,24 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 (recovered viewport closure).*
+*Last updated: 2026-07-26 (EgoMP multiplayer audit and recovered viewport closure).*
+
+## EgoMP multiplayer value (2026-07-26)
+
+- EgoMP is useful to the eventual multiplayer goal as a feasibility proof and
+  engine-seam map. It demonstrates extra `CPlayer`/`CThingPlayerCreature`
+  pairs, remote motion through acceleration/facing callbacks, a minimal
+  joining-player roster, and the need to wait for retail region loading before
+  activating a peer.
+- It is not suitable as the production architecture. It is a client-authored
+  four-player listen-server relay without protocol/build negotiation, sender
+  ownership validation, ticked snapshots/interpolation, gameplay or persistent
+  world replication, reconnect/host migration, or security.
+- The intended path is an independently implemented, host-authoritative layer:
+  first prove two local creatures; then add stable replicated entity IDs,
+  versioned framing and content fingerprints, deterministic loopback tests,
+  ticked/interpolated ghost motion, and an explicit region-ready barrier.
+- The detailed evidence, hazards, integration order, source links, and GPLv3
+  boundary are recorded in `docs/EGOMP_MULTIPLAYER_AUDIT.md`.
 
 ## EgoMP donor review (2026-07-26)
 

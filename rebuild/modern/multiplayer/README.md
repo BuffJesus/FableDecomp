@@ -41,6 +41,11 @@ Package and package-set framing are intentionally unsupported until their
 layouts and boundary behavior receive the same focused review. Networking,
 transport, lobby behavior, and `CheckSync` are also outside this module.
 
+EgoMP independently demonstrates useful TLC player/creature, motion, and
+region-load integration seams, but its protocol is not inherited here. See
+[`docs/EGOMP_MULTIPLAYER_AUDIT.md`](../../../docs/EGOMP_MULTIPLAYER_AUDIT.md)
+for the evidence boundary and the recommended host-authoritative path.
+
 ## Build and test
 
 From the repository root:
