@@ -14,6 +14,8 @@ $bootstrapSource = Join-Path $rebuildRoot 'integration\bootstrap_main.cpp'
 $retailSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_MemCmpUnsigned16_00403c60.cpp'
 $winMainSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_WinMain_00403480.cpp'
 $winMainBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_WinMain_00403480_test.cpp'
+$gfInitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\40\global_GFInitialise_004022b0.cpp'
+$gfInitialiseBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\global_GFInitialise_004022b0_test.cpp'
 $stage1BoundarySource = Join-Path $rebuildRoot 'integration\stage1_engine_boundary.cpp'
 $progressSetupSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GFInitialiseSetupProgressDisplay_00413120.cpp'
 $progressSetupBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GFInitialiseSetupProgressDisplay_00413120_test.cpp'
@@ -75,6 +77,7 @@ $bootstrapObject = Join-Path $outDir 'bootstrap_main.obj'
 $retailObject = Join-Path $outDir 'retail_00403c60.obj'
 $winMainObject = Join-Path $outDir 'retail_winmain.obj'
 $winMainBehaviorObject = Join-Path $outDir 'winmain_behavior.obj'
+$gfInitialiseObject = Join-Path $outDir 'gfinitialise.obj'
 $stage1BoundaryObject = Join-Path $outDir 'stage1_engine_boundary.obj'
 $progressSetupObject = Join-Path $outDir 'gfinitialise_setup_progress.obj'
 $progressSetupBehaviorObject = Join-Path $outDir 'gfinitialise_setup_progress_behavior.obj'
@@ -133,6 +136,7 @@ $visualCheckpointExecutable = Join-Path $outDir 'FableTLC-Reconstruction-VisualC
 $visualBootBehaviorExecutable = Join-Path $outDir 'FableTLC-VisualBoot-Behavior.exe'
 $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
 $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
+$gfInitialisePassPattern = 'FABLETLC_GFINITIALISE_BEHAVIOR PASS'
 $progressSetupPassPattern = 'FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS'
 $setCurrentPathPassPattern = 'FABLETLC_SET_CURRENT_PATH_BEHAVIOR PASS'
 $getProjectPathPassPattern = 'FABLETLC_GET_PROJECT_PATH_BEHAVIOR PASS'
@@ -167,6 +171,8 @@ $required = @(
     $retailSource,
     $winMainSource,
     $winMainBehaviorSource,
+    $gfInitialiseSource,
+    $gfInitialiseBehaviorSource,
     $stage1BoundarySource,
     $progressSetupSource,
     $progressSetupBehaviorSource,
@@ -446,6 +452,14 @@ try {
         -BehaviorSource $cbaseRestoreBBehaviorSource `
         -OutputStem 'cbase-restore-b' `
         -PassPattern $cbaseRestoreBPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '004022b0' `
+        -Description 'full GFInitialise coordinator' `
+        -Source $gfInitialiseSource `
+        -BehaviorSource $gfInitialiseBehaviorSource `
+        -OutputStem 'gfinitialise' `
+        -PassPattern $gfInitialisePassPattern
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions "/Fo$retailObject" $retailSource
     if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $retailObject)) {
@@ -1057,7 +1071,7 @@ try {
     $visualRuntimeObjects = @(
         $gfmainPhase1Object,
         $gfmainPhase2Object,
-        $gfInitialiseProgressPhaseObject,
+        $gfInitialiseObject,
         $gfInitialiseEngineBoundaryObject,
         $progressSetupObject,
         $visualBoundaryObject,
@@ -1209,8 +1223,9 @@ try {
     Write-Output "STAGE1_STARTUP PASS executable=$stage1Executable boundary=GFMain"
     Write-Output "STAGE2_STARTUP PASS executable=$stage2Executable boundary=GFMainPhase2"
     Write-Output "STAGE3_STARTUP PASS executable=$stage3Executable boundary=GFMainPhase3"
+    Write-Output "GFINITIALISE_COORDINATOR PASS address=004022b0 parity=RELOCATION_MATCH"
     Write-Output "GFINITIALISE_PROGRESS_INTEGRATION PASS boundary=GFInitialiseTail"
-    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=GFInitialiseProgressThenAuthoredVisualCheckpoint"
+    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude

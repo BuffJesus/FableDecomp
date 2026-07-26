@@ -38,6 +38,9 @@ determined by the retail bytes:
   56 8b f1 c7 06 xx xx xx xx e8 yy yy yy yy f6 44 24 08 01
      74 07 56 e8 zz zz zz zz 59 8b c6 5e c2 04 00
                      -> restore a vtable, destruct, and optionally delete
+  56 8b f1 e8 xx xx xx xx f6 44 24 08 01 74 07 56
+     e8 yy yy yy yy 59 8b c6 5e c2 04 00
+                     -> destruct an object and optionally delete its storage
   51 56 8b f1 8b 56 04 8b 0e 8d 44 24 07 50 e8 xx xx xx xx
      8b 36 85 f6 74 07 56 e8 yy yy yy yy 59 5e 59 c3
                      -> finish an async read and release its resource
@@ -227,6 +230,14 @@ def const_from_bytes(bs: bytes):
     ):
         return ("vector_deleting_destructor_with_vftable", None)
     if (
+        len(bs) == 28
+        and bs[:4] == b"\x56\x8b\xf1\xe8"
+        and bs[8:16] == b"\xf6\x44\x24\x08\x01\x74\x07\x56"
+        and bs[16] == 0xE8
+        and bs[21:] == b"\x59\x8b\xc6\x5e\xc2\x04\x00"
+    ):
+        return ("scalar_deleting_destructor", None)
+    if (
         len(bs) == 35
         and bs[:14] == b"\x51\x56\x8b\xf1\x8b\x56\x04\x8b\x0e"
         b"\x8d\x44\x24\x07\x50"
@@ -271,6 +282,10 @@ def candidate(row):
         name = f"GlobalMethodTailThunk_{addr}"
         cls, leaf = "global", name
         module = "_global"
+    elif rettype == "scalar_deleting_destructor":
+        module = row.get("module") or "_global"
+        cls = sanitize(module)
+        leaf = "ScalarDeletingDestructor"
     else:
         cls, leaf = split_name(name)
         module = row.get("module") or (cls if cls != "global" else "_global")
@@ -756,6 +771,55 @@ def candidate(row):
             f"    {fn}(&object, 0, 1);\n"
             "    if (g_AutoTinyVectorDestructorCalls != 2 ||\n"
             "        g_AutoTinyVectorDeleteCalls != 1)\n"
+            "        return 1;\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "scalar_deleting_destructor":
+        source = (
+            '#pragma optimize("s", on)\n'
+            "extern void __fastcall AutoTinyScalarDestructor(void* self);\n"
+            "extern void __cdecl AutoTinyScalarDelete(void* object);\n"
+            f"void* __fastcall {fn}("
+            "void* self, int, unsigned int flags)\n"
+            "{\n"
+            "    AutoTinyScalarDestructor(self);\n"
+            "    if (flags & 1)\n"
+            "        AutoTinyScalarDelete(self);\n"
+            "    return self;\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "static int g_AutoTinyScalarDestructorCalls = 0;\n"
+            "static int g_AutoTinyScalarDeleteCalls = 0;\n"
+            "void __fastcall AutoTinyScalarDestructor(void*)\n"
+            "{\n"
+            "    ++g_AutoTinyScalarDestructorCalls;\n"
+            "}\n"
+            "void __cdecl AutoTinyScalarDelete(void*)\n"
+            "{\n"
+            "    ++g_AutoTinyScalarDeleteCalls;\n"
+            "}\n"
+            f"void* __fastcall {fn}("
+            "void* self, int, unsigned int flags)\n"
+            "{\n"
+            "    AutoTinyScalarDestructor(self);\n"
+            "    if (flags & 1)\n"
+            "        AutoTinyScalarDelete(self);\n"
+            "    return self;\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            "    int object = 0;\n"
+            f"    if ({fn}(&object, 0, 0) != &object ||\n"
+            "        g_AutoTinyScalarDestructorCalls != 1 ||\n"
+            "        g_AutoTinyScalarDeleteCalls != 0)\n"
+            "        return 1;\n"
+            f"    {fn}(&object, 0, 1);\n"
+            "    if (g_AutoTinyScalarDestructorCalls != 2 ||\n"
+            "        g_AutoTinyScalarDeleteCalls != 1)\n"
             "        return 1;\n"
             f"    std::printf(\"{pattern}\\n\");\n"
             "    return 0;\n"

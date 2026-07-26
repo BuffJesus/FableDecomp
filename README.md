@@ -22,8 +22,8 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Analysis DB | Usable reconstruction/navigation names | 99.211% |
 | Analysis DB | Calling convention known | 77.674% |
 | Analysis DB | Complete non-`undefined` prototype | 69.049% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **3,308** |
-| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **2,981** (6.02%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **3,704** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **3,377** (6.81%) |
 | Reconstruction | — of which byte-**identical** (no relocation masking) | 1,895 (3.82%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
@@ -38,10 +38,10 @@ separately and is never counted as reconstructed merely because a structural che
 The successful refresh also synchronizes this table automatically; GitHub is updated at reviewed
 checkpoints rather than publishing live, unreviewed queue output.
 The first **5%** compiled-byte-match milestone (2,478 functions) is passed; current verified retail
-parity is **6.02%** of the 49,553-function catalog. The lower match count than an earlier README is an
+parity is **6.81%** of the 49,553-function catalog. The lower match count than an earlier README is an
 audit reconciliation, not deleted source: the unified gate now exposes every `DIFFER` and missing
 function-start oracle instead of mixing older mass-land and curated-subset totals.
-The 6.02% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
+The 6.81% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
 a second lens over the 3,952-byte GFMain coordinator: they measure proven direct call sites and
 callable integration phases, not percentage of total engineering time. Repeated calls count
 separately because every occurrence must be linked in the correct lifetime and control-flow
@@ -59,23 +59,21 @@ failure-policy state, and exits at the Phase 3 boundary.
 `rebuild/RUNNABLE.md` tracks the remaining boot gates, with engine initialization, data loading,
 and the game loop ahead of installer, settings-menu, x64, or broad C++23 work.
 
-The first GFInitialise leaf is now connected in the runnable reconstruction:
-`GFInitialise_SetupProgressDisplay @ 0x00413120` is a 128-byte relocation-normalized match with
-focused allocation, failure, and counted-lifetime tests. Its review corrected three misleading
-generated types: the allocated 0x88-byte object is `CProgressDisplay` (proven by its vtable), not
-`C3DMeshStats`, and the forwarded smart pointer is correspondingly
-`CCountedPointer<CProgressDisplay>`. The visual executable traverses this verified leaf through an
-explicit authored tail-phase boundary before opening the project boot window. That proves the
-process-level connection and its ownership behavior; it does not claim that the full retail
-`GFInitialise` coordinator or renderer is complete.
+The full `GFInitialise @ 0x004022B0` coordinator is now connected in the runnable
+reconstruction. Retail proves that it has no caller-supplied parameters: it obtains the fixed
+engine root from `0x009A4EC0` and loads progress state `0x013B83D0` into `ECX`. The readable
+311-byte implementation is a relocation-normalized retail match, and focused behavior covers root
+discovery, texture-depth fallback, display clamping, player registration, progress setup, and both
+return paths. The visual executable now invokes that verified coordinator through an explicit
+engine boundary before opening the project boot window.
 
-The generated `GFInitialise @ 0x004022B0` prototype was also wrong. Retail has no caller-supplied
-parameters: it obtains the fixed engine root from `0x009A4EC0` and loads the progress state at
-`0x013B83D0` into `ECX`. The corrected readable candidate passes its focused behavior fixture and
-matches retail through the first 220 bytes. Its dimension-clamp tail still builds to 312 bytes
-versus retail's 311, so it remains an organized candidate rather than being counted as verified.
-Its source and fixture live in the address-sharded
-`rebuild/candidates/manual/00/40/` tree.
+Its `GFInitialise_SetupProgressDisplay @ 0x00413120` leaf independently remains a 128-byte
+relocation-normalized match with allocation, failure, and counted-lifetime tests. Its review
+corrected three misleading generated types: the allocated 0x88-byte object is
+`CProgressDisplay` (proven by its vtable), not `C3DMeshStats`, and the forwarded smart pointer is
+correspondingly `CCountedPointer<CProgressDisplay>`. The remaining boundary objects stand in for
+the unrecovered engine singleton graph and renderer; the authored window is still scaffolding,
+not a claim that retail rendering or the game loop is recovered.
 
 The `GFMain` Phase-1 filesystem pair is promoted as well:
 `CAFile::GetProjectPath @ 0x00997510` (146 bytes) and
