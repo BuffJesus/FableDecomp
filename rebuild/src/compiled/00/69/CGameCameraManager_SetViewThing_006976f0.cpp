@@ -1,0 +1,1 @@
+void __stdcall CGameCameraManager_SetViewThing(int arg0) {}

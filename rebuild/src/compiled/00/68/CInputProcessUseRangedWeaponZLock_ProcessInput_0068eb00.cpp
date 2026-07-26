@@ -1,0 +1,1 @@
+void __stdcall CInputProcessUseRangedWeaponZLock_ProcessInput(int arg0, int arg1) {}

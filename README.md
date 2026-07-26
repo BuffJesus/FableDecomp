@@ -22,9 +22,9 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Analysis DB | Usable reconstruction/navigation names | 99.211% |
 | Analysis DB | Calling convention known | 77.660% |
 | Analysis DB | Complete non-`undefined` prototype | 69.031% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **1,950** |
-| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **1,623** (3.28%) |
-| Reconstruction | — of which byte-**identical** (no relocation masking) | 1,010 (2.04%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **2,154** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **1,827** (3.69%) |
+| Reconstruction | — of which byte-**identical** (no relocation masking) | 1,214 (2.45%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
 | Auto-RE intake | Generated candidates / structural checker PASS | 573 / 565 |
@@ -178,6 +178,10 @@ cooldown after two unresolved failures, preventing a handful of hard wrappers fr
 scheduled batch. The throughput diagnosis and the distinction between structural `PASS` and
 verified parity are documented in `docs/FULL_DECOMP.md`.
 
+The first installed hourly run added another 204 manifest-backed exact matches from four bounded
+batches. Its incremental VC7.1 gate rebuilt the 204 changed rows in 32 seconds, and the new local
+object/oracle fingerprint cache reduced the unchanged 2,154-row parity pass to 0.18 seconds.
+
 The first modern reconstruction proof of concept now lives in
 `rebuild/modern/multiplayer/`: an x64 C++23 `GameEvent` model and codec using `std::span`,
 `std::expected`, owned storage, explicit little-endian serialization, and focused malformed-input
@@ -247,7 +251,8 @@ Each function is promoted through an evidence gate, not asserted:
 4. **Retail parity** — `tools/compare_candidate_objects.py` disassembles the object and compares its
    `.text` against authoritative retail bytes (`rebuild/oracles/`, exported from Ghidra by
    `ExportFunctionOracle.java`), masking expected COFF relocation fields. Result: `MATCH`,
-   `RELOCATION_MATCH`, or `DIFFER` — recorded in `rebuild/compile-gate/`.
+   `RELOCATION_MATCH`, or `DIFFER` — recorded in `rebuild/compile-gate/`. Unchanged object/oracle
+   fingerprints reuse an ignored local cache; `--force` performs a clean comparison.
 
 Promotion queues and the backlog are generated under `rebuild/backlog/`.
 
