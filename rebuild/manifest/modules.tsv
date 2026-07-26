@@ -4130,7 +4130,7 @@ Process<std::list<NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry,
 QuestData	0	13	0	0	0	0	0	0	0	0	0
 RBTree	0	21	0	0	0	0	0	0	0	0	0
 RBTreeNode	0	2	0	0	0	0	0	0	0	0	0
-Render2DDrawList	0	1	0	0	0	0	0	0	0	0	0
+Render2DDrawList	0	1	0	0	0	1	1	1	0	0	0
 SExpSpendUndo	3	8	3	0	0	0	0	0	0	0	0
 SaveVerts<CPatchTesselationEdgeStrip	0	4	4	0	0	0	0	0	0	0	0
 ScriptEventList	0	1	0	0	0	0	0	0	0	0	0

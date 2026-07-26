@@ -1,11 +1,11 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 15:10 MDT (shader layout/render-state closure).*
+*Last updated: 2026-07-26 15:35 MDT (draw-list copy closure).*
 
 ## Shader binding/render-state closure (2026-07-26)
 
-- Nine more `Render2DDrawList` dependencies are canonical, raising that
-  family from **11/25 to 20/25** while `DrawRetailDisplay` remains **13/37**.
+- Ten more `Render2DDrawList` dependencies are canonical, raising that
+  family from **11/25 to 21/25** while `DrawRetailDisplay` remains **13/37**.
   `CShaderRenderManager::ApplyVertexShader @ 0x00988020` is a true
   **176/176-byte exact match** and covers shader-mode reconciliation, the
   unchanged binding fast path, vertex-shader/declaration updates, and both
@@ -45,19 +45,23 @@
   selection, and final layout/index adoption. This also fixed a Ghidra
   function-body export defect that had truncated the retail oracle to 624
   bytes.
-- The canonical VC7.1 compile/behavior gate passes **4,912 / 4,912**. Retail
-  parity is **2,686 exact + 1,899 relocation-normalized = 4,585 / 49,552
+- `Render2DDrawList::CopyBlock @ 0x009E1440` is a true **79/79-byte exact
+  match**. The advancing-iterator source shape recovers retail's register
+  allocation and 32-byte POD copy loop; its fixture covers positive, empty,
+  and negative ranges plus the controller end-pointer update.
+- The canonical VC7.1 compile/behavior gate passes **4,913 / 4,913**. Retail
+  parity is **2,687 exact + 1,899 relocation-normalized = 4,586 / 49,552
   (9.25%)**; honest residue remains 199 differences and 128 missing
   function-start oracles.
 - The full Release bootstrap rebuilt with the genuine retail
   `FRONTEND_BACKDROP_01`. A fresh live launch opened
   `FableTLC-Reconstruction-VisualCheckpoint.exe`, created the expected
   top-level retail-art window, accepted `WM_CLOSE`, and exited zero.
-- Five direct dependencies remain: `UpdateAmbient @ 0x00989760`,
+- Four direct dependencies remain: `UpdateAmbient @ 0x00989760`,
   `UpdateCombinedProjectionTransform @ 0x00988A50`,
   `CStateBlockFunctionSold::Apply @ 0x009DF060`,
-  `CopyBlock @ 0x009E1440`, and the corrected
-  `vector<CQuickDrawTriInfo>::erase @ 0x009E15E0`. Replacing the current GDI
+  and the corrected `vector<CQuickDrawTriInfo>::erase @ 0x009E15E0`.
+  Replacing the current GDI
   presentation bridge with recovered Lionhead renderer submission remains
   the central visual-closure boundary.
 
