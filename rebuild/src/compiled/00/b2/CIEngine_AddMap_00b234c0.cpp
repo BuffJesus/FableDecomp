@@ -1,0 +1,1 @@
+void __stdcall CIEngine_AddMap(int arg0, int arg1) {}

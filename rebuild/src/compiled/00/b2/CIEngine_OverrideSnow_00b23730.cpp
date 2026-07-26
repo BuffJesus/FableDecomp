@@ -1,0 +1,1 @@
+void __stdcall CIEngine_OverrideSnow(int arg0) {}

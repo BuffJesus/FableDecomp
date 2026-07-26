@@ -1,0 +1,1 @@
+void __fastcall CBaseObject_Validate() {}

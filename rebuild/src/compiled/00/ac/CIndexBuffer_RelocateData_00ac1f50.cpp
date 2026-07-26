@@ -1,0 +1,1 @@
+void __stdcall CIndexBuffer_RelocateData(int arg0, int arg1, int arg2, int arg3) {}

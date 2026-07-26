@@ -1,0 +1,1 @@
+void __stdcall CEngineInternalPrimitiveBase_SetPosition(int arg0) {}

@@ -1,0 +1,1 @@
+void __fastcall CEngine_ReloadLocalDetailDefs() {}

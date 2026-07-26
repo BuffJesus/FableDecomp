@@ -1,0 +1,1 @@
+void __stdcall CEngineComponent_WorldFrameUpdate(int arg0) {}

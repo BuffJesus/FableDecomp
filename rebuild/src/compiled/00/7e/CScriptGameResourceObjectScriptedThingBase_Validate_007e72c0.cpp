@@ -1,0 +1,1 @@
+void __fastcall CScriptGameResourceObjectScriptedThingBase_Validate() {}

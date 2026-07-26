@@ -1,0 +1,1 @@
+void __stdcall CDataInputStream_InternalReadNextSourceChunk(int arg0, int arg1) {}

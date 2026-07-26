@@ -1,0 +1,1 @@
+void __stdcall CIEngine_SetWorld(int arg0) {}

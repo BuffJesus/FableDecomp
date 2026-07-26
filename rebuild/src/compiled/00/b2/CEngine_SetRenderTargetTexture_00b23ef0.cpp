@@ -1,0 +1,1 @@
+void __stdcall CEngine_SetRenderTargetTexture(int arg0) {}
