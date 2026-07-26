@@ -85,7 +85,7 @@ Write-QueueLog (
 )
 try {
     $replayBatch = "replay-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
-    $replayOracle = Join-Path $pending "$replayBatch`_oracle.tsv"
+    $replayOracle = Join-Path $work "$replayBatch-oracle.tsv"
     $replayAuthored = Join-Path $work "$replayBatch-authored.json"
     $replayVerificationLog = Join-Path $work "$replayBatch-verification.log"
     Invoke-Checked "pending-pattern replay $replayBatch" {
@@ -123,6 +123,7 @@ try {
     for ($index = 1; $index -le $MaxBatchesPerRun; ++$index) {
         $batch = "auto-$(Get-Date -Format 'yyyyMMdd-HHmmss')-$index"
         $oracle = Join-Path $pending "$batch`_oracle.tsv"
+        $targets = Join-Path $pending "$batch`_targets.json"
         $authored = Join-Path $work "$batch-authored.json"
         $selectionLog = Join-Path $work "$batch-addresses.json"
         $verificationLog = Join-Path $work "$batch-verification.log"
@@ -136,6 +137,7 @@ try {
             Import-Csv -LiteralPath $oracle -Delimiter "`t"
         ).Count
         if ($selectedCount -eq 0) {
+            Remove-Item -LiteralPath $oracle, $targets -Force -ErrorAction SilentlyContinue
             Write-QueueLog "COMPLETE eligible short-function backlog exhausted batch=$batch"
             break
         }

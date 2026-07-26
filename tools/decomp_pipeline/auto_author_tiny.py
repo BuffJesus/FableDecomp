@@ -32,6 +32,9 @@ determined by the retail bytes:
   b9 xx xx xx xx c7 05 yy yy yy yy ii ii ii ii e8 zz zz zz zz
      b9 aa aa aa aa e9 bb bb bb bb
                      -> assign a global field and call two methods
+  56 57 be xx xx xx xx bf nn nn nn nn 8d 64 24 00 83 ee ss
+     8b ce e8 yy yy yy yy 4f 75 f3 5f 5e c3
+                     -> reverse-walk a fixed object array and call each method
 
 The normal verify_and_land.py gate still recompiles and byte-compares every
 candidate, so a bad inference can waste a compile but cannot mis-land.
@@ -161,6 +164,21 @@ def const_from_bytes(bs: bytes):
         return (
             "global_field_store_then_two_methods",
             int.from_bytes(bs[11:15], "little", signed=False),
+        )
+    if (
+        len(bs) == 32
+        and bs[:3] == b"\x56\x57\xbe"
+        and bs[7] == 0xBF
+        and bs[12:18] == b"\x8d\x64\x24\x00\x83\xee"
+        and bs[19:22] == b"\x8b\xce\xe8"
+        and bs[26:] == b"\x4f\x75\xf3\x5f\x5e\xc3"
+    ):
+        return (
+            "reverse_global_object_method_loop",
+            (
+                int.from_bytes(bs[8:12], "little", signed=False),
+                bs[18],
+            ),
         )
     return None
 
@@ -549,6 +567,60 @@ def candidate(row):
             f"    if (g_AutoTinyFieldMethodsObject.value == 0x{value:08x} && "
             "g_AutoTinyFieldFirstCalls == 1 && "
             "g_AutoTinyFieldSecondCalls == 1) "
+            f"{{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "reverse_global_object_method_loop":
+        count, stride = value
+        source = (
+            "struct AutoTinyReverseLoopTarget\n"
+            "{\n"
+            f"    unsigned char storage[{stride}];\n"
+            "    void Invoke();\n"
+            "};\n"
+            "extern AutoTinyReverseLoopTarget "
+            f"g_AutoTinyReverseLoopObjects[{count}];\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            "    AutoTinyReverseLoopTarget* cursor =\n"
+            f"        g_AutoTinyReverseLoopObjects + {count};\n"
+            f"    for (int remaining = {count}; remaining != 0; --remaining)\n"
+            "    {\n"
+            "        --cursor;\n"
+            "        cursor->Invoke();\n"
+            "    }\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "static int g_AutoTinyReverseLoopCalls = 0;\n"
+            "struct AutoTinyReverseLoopTarget\n"
+            "{\n"
+            f"    unsigned char storage[{stride}];\n"
+            "    void Invoke();\n"
+            "};\n"
+            "AutoTinyReverseLoopTarget "
+            f"g_AutoTinyReverseLoopObjects[{count}] = {{0}};\n"
+            "void AutoTinyReverseLoopTarget::Invoke()\n"
+            "{\n"
+            "    ++g_AutoTinyReverseLoopCalls;\n"
+            "}\n"
+            f"void __fastcall {fn}()\n"
+            "{\n"
+            "    AutoTinyReverseLoopTarget* cursor =\n"
+            f"        g_AutoTinyReverseLoopObjects + {count};\n"
+            f"    for (int remaining = {count}; remaining != 0; --remaining)\n"
+            "    {\n"
+            "        --cursor;\n"
+            "        cursor->Invoke();\n"
+            "    }\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            f"    {fn}();\n"
+            f"    if (g_AutoTinyReverseLoopCalls == {count}) "
             f"{{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
             f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
             "    return 1;\n"
