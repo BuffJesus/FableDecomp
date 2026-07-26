@@ -44,11 +44,13 @@ The executable-integration lane has advanced beyond isolated object files. The o
 toolchain now builds and runs a Win32 GUI shell through the recovered `WinMain @ 0x00403480`;
 that wrapper is a 141-byte relocation-normalized retail match and its focused fixture proves the
 single-instance mutex, MicroThread stack handoff, duplicate-instance skip, and fastcall `GFMain`
-boundary. The process intentionally stops at an instrumented `GFMain` stub. `rebuild/RUNNABLE.md`
-tracks the remaining boot gates, with engine initialization, data loading, and the game loop ahead
-of installer, settings-menu, x64, or broad C++23 work.
+boundary. Stage 2 now continues through an authored GFMain Phase 1 integration unit, establishes
+the executable/project path with the promoted retail-matching functions, constructs the recovered
+system defaults, crosses an explicit console-variable boundary, and exits at the Phase 2 boundary.
+`rebuild/RUNNABLE.md` tracks the remaining boot gates, with engine initialization, data loading,
+and the game loop ahead of installer, settings-menu, x64, or broad C++23 work.
 
-The first Stage-2 leaf is ready behind that boundary:
+The first GFInitialise leaf is ready behind that boundary:
 `GFInitialise_SetupProgressDisplay @ 0x00413120` is a 128-byte relocation-normalized match with
 focused allocation, failure, and counted-lifetime tests. Its review corrected three misleading
 generated types: the allocated 0x88-byte object is `CProgressDisplay` (proven by its vtable), not
@@ -68,6 +70,12 @@ relocation match. The nested default `CCharString` constructor is proven as well
 layout, defaults, region GUID, and subobject order. Its 265-byte build differs only by one
 three-byte `lea` being scheduled earlier, so that residue is tracked explicitly rather than
 misreported as an exact match.
+
+Those dependencies are now linked together rather than only tested in isolation:
+`FableTLC-Reconstruction-Stage2.exe` runs from the retail-matched `WinMain` through GFMain Phase 1.
+The integration fixture proves the phase returns successfully, invokes the console-variable
+boundary exactly once, and leaves a non-empty cached project path. The phase unit is clearly
+marked as authored integration code—not a claim that the complete 3,952-byte retail GFMain matches.
 
 The unattended Wave 3 lane has moved from the co-op event/package codecs into ForgeFSE Quest
 wrappers. The current refresh validates 452/452 recommended Quest bindings against their exact

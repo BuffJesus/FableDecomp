@@ -6,13 +6,17 @@ bootstrap as a running game.
 
 ## Current executable milestone
 
-**Stage 1 now reaches the GFMain boundary:** VC7.1 links and runs a
-Win32 GUI executable through the recovered `WinMain @ 0x00403480`.
+**The Stage 2 checkpoint now runs GFMain Phase 1:** VC7.1 links and runs a
+Win32 GUI executable through the recovered `WinMain @ 0x00403480`
+and an authored integration unit for retail `0x00402510-0x004025A6`.
 Its 141-byte body is an exact relocation-normalized retail match, and
 the fixture proves both first-instance and duplicate-instance paths,
 the 200 KiB MicroThread stack handoff, and the fastcall GFMain ABI.
+Phase 1 constructs the recovered system defaults, establishes the
+executable/project path with promoted retail functions, crosses a
+counted console-variable boundary, and returns at the Phase 2 boundary.
 
-The first Stage-2 leaf is also promoted:
+The first GFInitialise leaf is also promoted:
 `GFInitialise_SetupProgressDisplay @ 0x00413120` is a 128-byte
 relocation-normalized match with allocation, null-allocation, reference
 release, and rejected-initialization behavior covered. It is not yet
@@ -53,29 +57,30 @@ Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,
 `FABLETLC_CHAR_STRING_DESTRUCTOR_BEHAVIOR PASS`,
 `FABLETLC_PROFILE_START_BEHAVIOR PASS`,
 `FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVIOR PASS`,
-`FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS`, and
-`STAGE1_STARTUP PASS`.
+`FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS`,
+`FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS`, and
+`STAGE2_STARTUP PASS`.
 Generated products stay under the ignored `rebuild/build/` tree.
 
-Stage 1 still stops at an instrumented GFMain stub. It does **not** yet
-initialize Lionhead engine services, open the retail window, load assets,
-or enter the game loop.
+Stage 2 uses explicit integration boundaries and is not claimed as a
+retail-matching GFMain. It does **not** yet initialize Lionhead engine
+services, open the retail window, load assets, or enter the game loop.
 
 ## Retail boot spine
 
 | Order | Address | Role | Retail size | Current source grade | Source | Blocking fact |
 |---:|---:|---|---:|---|---|---|
 | 1 | `0x00401067` | CRT entry | 466 | `agent-pass` | [source](../lift/reports/wave3/code/00/40/0x00401067_global_entry.cpp) | Structural candidate only; contains a raw register-fed CRT helper call and has not crossed the VC7.1 behavior/parity gate. |
-| 2 | `0x00403480` | WinMain wrapper | 141 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/Global_WinMain_00403480.cpp) | VC7.1 source matches all 141 non-relocation retail bytes and passes first-instance/duplicate-instance behavior, but GFMain is still an instrumented boundary. |
-| 3 | `0x00402510` | GFMain | 3952 | `not authored` | — | The 3,952-byte coordinator is split into ten call clusters; Phase 1 has seven of nine direct callees at relocation match and CSystemManagerInit behavior-proven with one moved instruction. |
+| 2 | `0x00403480` | WinMain wrapper | 141 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/Global_WinMain_00403480.cpp) | VC7.1 source matches all 141 non-relocation retail bytes and passes first-instance/duplicate-instance behavior; Stage 2 now carries its GFMain handoff through the authored Phase 1 integration unit. |
+| 3 | `0x00402510` | GFMain | 3952 | `INTEGRATION_PHASE1` | [source](../rebuild/integration/gfmain_phase1.cpp) | The 3,952-byte coordinator is split into ten call clusters; Phase 1 is callable with seven direct callees at relocation match, CSystemManagerInit behavior-proven with one moved instruction, and the 4,158-byte console registrar explicitly stubbed. |
 | 4 | `0x004022B0` | GFInitialise | 311 | `agent-pass` | [source](../lift/reports/wave3/code/00/40/0x004022B0_global_GFInitialise.cpp) | Structural candidate only; incomplete display/primitive types and several global dependencies prevent promotion. |
 | 5 | `0x00413120` | GFInitialise_SetupProgressDisplay | 128 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/Global_GFInitialiseSetupProgressDisplay_00413120.cpp) | The 128-byte leaf and ownership behavior are proven, but GFMain/GFInitialise do not yet reach it in the reconstructed process. |
 
 ## Next dependency closure
 
 1. **CRT entry (`0x00401067`):** Recover the masked CRT helper identity and promote the entry function.
-2. **WinMain wrapper (`0x00403480`):** Replace the instrumented GFMain boundary one dependency closure at a time.
-3. **GFMain (`0x00402510`):** Close that scheduling residue, then author the callable integration seam with InitialiseConsoleVariables isolated behind a boundary.
+2. **WinMain wrapper (`0x00403480`):** Extend the integration path from the Phase 2 boundary one dependency closure at a time.
+3. **GFMain (`0x00402510`):** Close the constructor scheduling residue and replace the console boundary from recovered registration data while advancing Phase 2.
 4. **GFInitialise (`0x004022B0`):** Recover shared layouts and promote the small callees before the coordinator.
 5. **GFInitialise_SetupProgressDisplay (`0x00413120`):** Link its corrected CProgressDisplay/counting dependencies behind the GFInitialise boundary.
 
@@ -111,7 +116,7 @@ These are integration units, not invented retail functions.
 | 1 | `0x00402593` | `0x0099B510` | ~CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp) |
 
 Phase closure order:
-1. **runtime and project bootstrap:** Close CSystemManagerInit's one-instruction scheduling residue, then make this the first callable GFMain phase with InitialiseConsoleVariables isolated behind a boundary.
+1. **runtime and project bootstrap:** Callable in Stage 2; close CSystemManagerInit's one-instruction scheduling residue and replace the console-variable boundary from recovered registration data.
 2. **failure-handling bootstrap:** Type the returned system-manager object and its temporary allocation/deletion path.
 3. **settings, persistence, and IME:** Separate optional settings-file parsing from default-value initialization.
 4. **root child hierarchy:** Recover the five named child definitions and the owner/container type.
@@ -131,6 +136,7 @@ Phase closure order:
   **Implemented; exact CRT-entry parity remains a separate task.**
 - **Stage 2 — engine bootstrap:** reconstructed GFMain/GFInitialise reaches
   the first visible progress-display state with controlled platform shims.
+  **The Phase 1 checkpoint is implemented; visible progress remains ahead.**
 - **Stage 3 — data bootstrap:** compiled definitions and core archives load
   far enough to create the main game component.
 - **Stage 4 — game loop:** the reconstructed process pumps input, updates a
