@@ -6,11 +6,16 @@ workflow-compatible JSON containing candidates for patterns that are completely
 determined by the retail bytes:
 
   c3                 -> empty void function
-  c2 04 00           -> empty __stdcall void function with one popped arg
+  c2 nn 00           -> empty __stdcall void function with nn/4 popped args
   33 c0 c3 / 31 c0 c3 -> return 0
+  b0 xx c3           -> return bool/byte constant
   6a xx 58 c3        -> return signed imm8
   b8 xx xx xx xx c3  -> return imm32
+  8b c1 c3           -> return the fastcall self pointer
   8b c1 c2 04 00     -> return first fastcall arg, pop one stack arg
+  8b 41 nn c3        -> return a 32-bit field at self + nn
+  8b 81 nn nn nn nn c3 -> return a 32-bit field at self + nn
+  dd 41 nn c3        -> return a double field at self + nn
   8b c1 83 e0 xx c3  -> return first fastcall arg & imm8
   8b c1 83 e0 xx c2 04 00 -> same, pop one stack arg
   c7 01 xx xx xx xx c3 -> *first fastcall arg = imm32
@@ -51,10 +56,12 @@ def const_from_bytes(bs: bytes):
     h = bs.hex()
     if h == "c3":
         return ("void", None)
-    if h == "c20400":
-        return ("void_stdcall_pop4", None)
+    if len(bs) == 3 and bs[0] == 0xC2 and bs[2] == 0 and bs[1] % 4 == 0:
+        return ("void_stdcall_pop", bs[1])
     if h in ("33c0c3", "31c0c3"):
         return ("int", 0)
+    if len(bs) == 3 and bs[0] == 0xB0 and bs[-1] == 0xC3:
+        return ("bool", bool(bs[1]))
     if len(bs) == 4 and bs[0] == 0x6A and bs[2:] == b"\x58\xc3":
         v = bs[1]
         if v >= 0x80:
@@ -62,8 +69,16 @@ def const_from_bytes(bs: bytes):
         return ("int", v)
     if len(bs) == 6 and bs[0] == 0xB8 and bs[-1] == 0xC3:
         return ("int", int.from_bytes(bs[1:5], "little", signed=False))
+    if h == "8bc1c3":
+        return ("return_self", None)
     if h == "8bc1c20400":
         return ("return_self_pop4", None)
+    if len(bs) == 4 and bs[:2] == b"\x8b\x41" and bs[-1] == 0xC3:
+        return ("load_int_field", bs[2])
+    if len(bs) == 7 and bs[:2] == b"\x8b\x81" and bs[-1] == 0xC3:
+        return ("load_int_field", int.from_bytes(bs[2:6], "little", signed=True))
+    if len(bs) == 4 and bs[:2] == b"\xdd\x41" and bs[-1] == 0xC3:
+        return ("load_double_field", bs[2])
     if len(bs) == 6 and bs[:4] == b"\x8b\xc1\x83\xe0" and bs[-1] == 0xC3:
         return ("and_self", bs[4])
     if len(bs) == 8 and bs[:4] == b"\x8b\xc1\x83\xe0" and bs[-3:] == b"\xc2\x04\x00":
@@ -98,16 +113,45 @@ def candidate(row):
             "    return 0;\n"
             "}\n"
         )
-    elif rettype == "void_stdcall_pop4":
-        source = f"void __stdcall {fn}(int) {{}}\n"
+    elif rettype == "void_stdcall_pop":
+        argument_count = value // 4
+        parameters = ", ".join(f"int arg{index}" for index in range(argument_count))
+        arguments = ", ".join(str(index + 1) for index in range(argument_count))
+        source = f"void __stdcall {fn}({parameters}) {{}}\n"
         test = (
             "#include <cstdio>\n"
-            f"void __stdcall {fn}(int) {{}}\n"
+            f"void __stdcall {fn}({parameters}) {{}}\n"
             "int main()\n"
             "{\n"
-            f"    {fn}(123);\n"
+            f"    {fn}({arguments});\n"
             f"    std::printf(\"{pattern}\\n\");\n"
             "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "bool":
+        literal = "true" if value else "false"
+        source = f"bool __fastcall {fn}()\n{{\n    return {literal};\n}}\n"
+        test = (
+            "#include <cstdio>\n"
+            f"bool __fastcall {fn}()\n{{\n    return {literal};\n}}\n"
+            "int main()\n"
+            "{\n"
+            f"    if ({fn}() == {literal}) {{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "return_self":
+        source = f"void* __fastcall {fn}(void* self)\n{{\n    return self;\n}}\n"
+        test = (
+            "#include <cstdio>\n"
+            f"void* __fastcall {fn}(void* self)\n{{\n    return self;\n}}\n"
+            "int main()\n"
+            "{\n"
+            "    int value = 0;\n"
+            f"    if ({fn}(&value) == &value) {{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
             "}\n"
         )
     elif rettype == "return_self_pop4":
@@ -157,6 +201,50 @@ def candidate(row):
             "    unsigned int x = 0;\n"
             f"    {fn}(&x);\n"
             f"    if (x == 0x{value:08x}) {{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "load_int_field":
+        source = (
+            f"int __fastcall {fn}(const unsigned char* self)\n"
+            "{\n"
+            f"    return *reinterpret_cast<const int*>(self + {value});\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            f"int __fastcall {fn}(const unsigned char* self)\n"
+            "{\n"
+            f"    return *reinterpret_cast<const int*>(self + {value});\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            f"    unsigned char object[{value + 4}] = {{0}};\n"
+            f"    *reinterpret_cast<int*>(object + {value}) = 0x12345678;\n"
+            f"    if ({fn}(object) == 0x12345678) {{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "load_double_field":
+        source = (
+            f"double __fastcall {fn}(const unsigned char* self)\n"
+            "{\n"
+            f"    return *reinterpret_cast<const double*>(self + {value});\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            f"double __fastcall {fn}(const unsigned char* self)\n"
+            "{\n"
+            f"    return *reinterpret_cast<const double*>(self + {value});\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            f"    unsigned char object[{value + 8}] = {{0}};\n"
+            f"    *reinterpret_cast<double*>(object + {value}) = 123.5;\n"
+            f"    if ({fn}(object) == 123.5) {{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
             f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
             "    return 1;\n"
             "}\n"

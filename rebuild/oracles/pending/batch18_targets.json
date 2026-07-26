@@ -1,0 +1,4002 @@
+[
+ {
+  "address": "00486360",
+  "name": "CAInputProcess::Init",
+  "module": "CAInputProcess",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "00486370",
+  "name": "CAInputProcess::Cleanup",
+  "module": "CAInputProcess",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "00494350",
+  "name": "CFrontendGameComponent::OnPreDeviceReset",
+  "module": "CFrontendGameComponent",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "00486380",
+  "name": "CAInputProcess::PreparePrimitivesForEngine",
+  "module": "CAInputProcess",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "00486390",
+  "name": "CAInputProcess::Update",
+  "module": "CAInputProcess",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0048b3a0",
+  "name": "CInputProcessConsole::ProcessWhilePaused",
+  "module": "CInputProcessConsole",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "00494360",
+  "name": "CFrontendGameComponent::OnPostDeviceReset",
+  "module": "CFrontendGameComponent",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "00497850",
+  "name": "CAProgressDisplay::InitialiseTextures",
+  "module": "CAProgressDisplay",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "00477424",
+  "name": "CEngineLocalDetailLayerDef::GetSizeofClass",
+  "module": "CEngineLocalDetailLayerDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004784e0",
+  "name": "CAppearanceModifierScalingDef::GetSizeofClass",
+  "module": "CAppearanceModifierScalingDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "00478702",
+  "name": "CAbilityTrackDef::GetSizeofClass",
+  "module": "CAbilityTrackDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "00478823",
+  "name": "CAbilityTrackLevelDef::GetSizeofClass",
+  "module": "CAbilityTrackLevelDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "0049b990",
+  "name": "DrawGetSeaLevel",
+  "module": "CMap",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "2"
+ },
+ {
+  "address": "0049bb40",
+  "name": "DrawGetEnvironment",
+  "module": "CWorld",
+  "cc": "__thiscall",
+  "ret": "CIDrawEnvironment *",
+  "pc": "1"
+ },
+ {
+  "address": "004d325d",
+  "name": "CBuyHouseDef::GetSizeofClass",
+  "module": "CBuyHouseDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d32a3",
+  "name": "CWifeDef::GetSizeofClass",
+  "module": "CWifeDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d331c",
+  "name": "CDoorDef::GetSizeofClass",
+  "module": "CDoorDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d33c2",
+  "name": "CKickableDef::GetSizeofClass",
+  "module": "CKickableDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d33d8",
+  "name": "CLightDef::GetSizeofClass",
+  "module": "CLightDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d341e",
+  "name": "CSpotLightDef::GetSizeofClass",
+  "module": "CSpotLightDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d3464",
+  "name": "CHeroDef::GetSizeofClass",
+  "module": "CHeroDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d35de",
+  "name": "CPerceivedThingDef::GetSizeofClass",
+  "module": "CPerceivedThingDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d3654",
+  "name": "CStealthDef::GetSizeofClass",
+  "module": "CStealthDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d374c",
+  "name": "CTrophyDef::GetSizeofClass",
+  "module": "CTrophyDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d38c9",
+  "name": "CExplodingObjectDef::GetSizeofClass",
+  "module": "CExplodingObjectDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d3938",
+  "name": "CLookDef::GetSizeofClass",
+  "module": "CLookDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d3ddb",
+  "name": "CEnemyDef::GetSizeofClass",
+  "module": "CEnemyDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d3f99",
+  "name": "COpinionOfHeroDef::GetSizeofClass",
+  "module": "COpinionOfHeroDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d4078",
+  "name": "CShopItemDef::GetSizeofClass",
+  "module": "CShopItemDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d4110",
+  "name": "CStockItemDef::GetSizeofClass",
+  "module": "CStockItemDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d4156",
+  "name": "CTimeAppearanceFadeDef::GetSizeofClass",
+  "module": "CTimeAppearanceFadeDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d41ab",
+  "name": "CGiftDef::GetSizeofClass",
+  "module": "CGiftDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d458a",
+  "name": "CHighlightItemDef::GetSizeofClass",
+  "module": "CHighlightItemDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d463c",
+  "name": "CHeroCentreDef::GetSizeofClass",
+  "module": "CHeroCentreDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d46f5",
+  "name": "CBoastingPodiumDef::GetSizeofClass",
+  "module": "CBoastingPodiumDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d489d",
+  "name": "CShipDef::GetSizeofClass",
+  "module": "CShipDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d4b97",
+  "name": "CExpressionSubDef::GetSizeofClass",
+  "module": "CExpressionSubDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004d4c54",
+  "name": "CSummonableCreatureDef::GetSizeofClass",
+  "module": "CSummonableCreatureDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "00472046",
+  "name": "?Copy@COpinionDeedReactionDef@@UAEXPBVCDefClassBase@@@Z",
+  "module": "COpinionDeedReactionDef",
+  "cc": "__thiscall",
+  "ret": "COpinionDeedReactionDef *",
+  "pc": "2"
+ },
+ {
+  "address": "00472e7e",
+  "name": "CEnvironmentThemeDaySetDef::Copy",
+  "module": "CEnvironmentThemeDaySetDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004734b2",
+  "name": "?Copy@CEnvironmentThemeDef@@UAEXPBVCDefClassBase@@@Z",
+  "module": "CEnvironmentThemeDef",
+  "cc": "__thiscall",
+  "ret": "CEnvironmentThemeDef *",
+  "pc": "2"
+ },
+ {
+  "address": "0047795f",
+  "name": "?Copy@CEngineLocalDetailObjectDef@@UAEXPBVCDefClassBase@@@Z",
+  "module": "CEngineLocalDetailObjectDef",
+  "cc": "__thiscall",
+  "ret": "CEngineLocalDetailObjectDef *",
+  "pc": "2"
+ },
+ {
+  "address": "0047812d",
+  "name": "CHeroStatsDef::Copy",
+  "module": "CHeroStatsDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0047852e",
+  "name": "?Copy@CAppearanceModifierScalingDef@@UAEXPBVCDefClassBase@@@Z",
+  "module": "CAppearanceModifierScalingDef",
+  "cc": "__thiscall",
+  "ret": "CBalverineBattleDef *",
+  "pc": "2"
+ },
+ {
+  "address": "00478871",
+  "name": "?Copy@CAbilityTrackLevelDef@@UAEXPBVCDefClassBase@@@Z",
+  "module": "CAbilityTrackLevelDef",
+  "cc": "__thiscall",
+  "ret": "CBalverineBattleDef *",
+  "pc": "2"
+ },
+ {
+  "address": "00478a68",
+  "name": "?Copy@CAbilityTrackDef@@UAEXPBVCDefClassBase@@@Z",
+  "module": "CAbilityTrackDef",
+  "cc": "__thiscall",
+  "ret": "CAbilityTrackDef *",
+  "pc": "2"
+ },
+ {
+  "address": "00494370",
+  "name": "CFrontendGameComponent::SetQuit",
+  "module": "CFrontendGameComponent",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004aa8a0",
+  "name": "CScriptThing::IsEqualTo",
+  "module": "CScriptThing",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "2"
+ },
+ {
+  "address": "004ae990",
+  "name": "Uninitialise",
+  "module": "CInitBaseClass",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004af280",
+  "name": "operator()",
+  "module": "CThingFilter_IsUnconscious",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "2"
+ },
+ {
+  "address": "004bffc0",
+  "name": "ClearMeshEffect",
+  "module": "CTCGraphicAppearance",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004c7460",
+  "name": "operator()",
+  "module": "CThingFilter_IsUnconscious",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "2"
+ },
+ {
+  "address": "004732da",
+  "name": "CEnvironmentThemeDef::GetSizeofClass",
+  "module": "CEnvironmentThemeDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "00477698",
+  "name": "CEngineLocalDetailObjectDef::GetSizeofClass",
+  "module": "CEngineLocalDetailObjectDef",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "0049d870",
+  "name": "GFGetPreMainMemoryUsed",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "long",
+  "pc": "0"
+ },
+ {
+  "address": "00487510",
+  "name": "DrawGetEnvironment",
+  "module": "CWorld",
+  "cc": "__thiscall",
+  "ret": "CIDrawEnvironment *",
+  "pc": "1"
+ },
+ {
+  "address": "0049c770",
+  "name": "DoSizeof",
+  "module": "CVertexBufferWin32",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004bbfc0",
+  "name": "SetCurrentThingManager",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004bbfd0",
+  "name": "SetCurrentThingManager",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004bbff0",
+  "name": "DrawGetSeaLevel",
+  "module": "CMap",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "2"
+ },
+ {
+  "address": "004c73d0",
+  "name": "DoSizeof",
+  "module": "CVertexBufferWin32",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004c74f0",
+  "name": "SetCurrentThingManager",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "00487b70",
+  "name": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>",
+  "module": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "00487dc0",
+  "name": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>",
+  "module": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "00487dd0",
+  "name": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>",
+  "module": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "00495610",
+  "name": "CFrontendGameComponent::ChangeTextureColourDepth",
+  "module": "CFrontendGameComponent",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0049c6f0",
+  "name": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>",
+  "module": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "0049d970",
+  "name": "CWorld::PostLoadInit",
+  "module": "CWorld",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "0049d9d0",
+  "name": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>",
+  "module": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "0049d800",
+  "name": "DoSizeof",
+  "module": "CVertexBufferWin32",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "0049d810",
+  "name": "DoSizeof",
+  "module": "CVertexBufferWin32",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004c7aa0",
+  "name": "GetDisplayEngine",
+  "module": "CViewBase",
+  "cc": "__thiscall",
+  "ret": "CDisplayEngine *",
+  "pc": "1"
+ },
+ {
+  "address": "004c7ab0",
+  "name": "GetDisplayEngine",
+  "module": "CViewBase",
+  "cc": "__thiscall",
+  "ret": "CDisplayEngine *",
+  "pc": "1"
+ },
+ {
+  "address": "004ca010",
+  "name": "ConstructFromParams",
+  "module": "CThing",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "5"
+ },
+ {
+  "address": "004cd9b0",
+  "name": "GetAnimGroupName",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "CCharString *",
+  "pc": "1"
+ },
+ {
+  "address": "004cd9c0",
+  "name": "GetAnimGroupName",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "CCharString *",
+  "pc": "1"
+ },
+ {
+  "address": "0047d008",
+  "name": "AddExclusiveObserver",
+  "module": "CObservable",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "00485d1a",
+  "name": "SetStaticCast<NUISystem::CComponent>",
+  "module": "SetStaticCast<NUISystem",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "00485d25",
+  "name": "SetStaticCast<NUISystem::CComponent>",
+  "module": "SetStaticCast<NUISystem",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "00485fe8",
+  "name": "SetStaticCast<NUISystem::CComponent>",
+  "module": "SetStaticCast<NUISystem",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004af270",
+  "name": "DontPopulateNextLoadedRegion",
+  "module": "CGameScriptInterface",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004c7a50",
+  "name": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>",
+  "module": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004c7a60",
+  "name": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>",
+  "module": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004c7bc0",
+  "name": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>",
+  "module": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "00497890",
+  "name": "GFROR13",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "long",
+  "pc": "1"
+ },
+ {
+  "address": "00499aa0",
+  "name": "CProgressDisplay::StartProgress",
+  "module": "CProgressDisplay",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "7"
+ },
+ {
+  "address": "0049d8b0",
+  "name": "AddExclusiveObserver",
+  "module": "CObservable",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004774ab",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "00478743",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "0048db98",
+  "name": "_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>",
+  "module": "_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0049bb30",
+  "name": "SetMainPlayerJoystickDeviceNumber",
+  "module": "CGameJoystickManager",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0049dbd0",
+  "name": "PopDontPopulateNextLoadedRegion",
+  "module": "CWorld",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "0049e1a0",
+  "name": "CWorld::DrawGetWorldMap",
+  "module": "CWorld",
+  "cc": "__thiscall",
+  "ret": "CIDrawWorldMap const *",
+  "pc": "1"
+ },
+ {
+  "address": "004aa930",
+  "name": "?SetDataString@CScriptThing@@UAEXABVCCharString@@@Z",
+  "module": "CScriptThing",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "8"
+ },
+ {
+  "address": "004c7580",
+  "name": "SetCurrentMapNumber",
+  "module": "CThing",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004c7590",
+  "name": "DetachTarget",
+  "module": "CRenderTarget",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "00479359",
+  "name": "CalcStringLength",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "0047989b",
+  "name": "CEngineLocalDetailGeneratorDef::Transfer",
+  "module": "CEngineLocalDetailGeneratorDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0047cfee",
+  "name": "BoughtSomething",
+  "module": "CAIStateGroup_BuyFromSeller",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "0047e186",
+  "name": "AddLearnedExpression",
+  "module": "CTCInventoryAbilities",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0048e062",
+  "name": "operator_new",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "void *",
+  "pc": "1"
+ },
+ {
+  "address": "004ab0e0",
+  "name": "CScriptThing::UpdateThingAttachment",
+  "module": "CScriptThing",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004ab0f0",
+  "name": "CScriptThing::IncrementScriptCounter",
+  "module": "CScriptThing",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004ab100",
+  "name": "CScriptThing::DecrementScriptCounter",
+  "module": "CScriptThing",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004aef50",
+  "name": "IsBinary",
+  "module": "CPersistContext",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "0047cfc2",
+  "name": "GetCameraSensitivity",
+  "module": "CUserProfileManager",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "1"
+ },
+ {
+  "address": "004852fb",
+  "name": "AddChildPrimitive",
+  "module": "CEngineInternalPrimitiveBase",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "3"
+ },
+ {
+  "address": "004853d8",
+  "name": "AddChildPrimitive",
+  "module": "CEngineInternalPrimitiveBase",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "3"
+ },
+ {
+  "address": "004853e9",
+  "name": "AddChildPrimitive",
+  "module": "CEngineInternalPrimitiveBase",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "3"
+ },
+ {
+  "address": "0048db35",
+  "name": "IsCameraResetting",
+  "module": "CUserProfileManager",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "0049373e",
+  "name": "AddChildPrimitive",
+  "module": "CEngineInternalPrimitiveBase",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "3"
+ },
+ {
+  "address": "0049374f",
+  "name": "AddChildPrimitive",
+  "module": "CEngineInternalPrimitiveBase",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "3"
+ },
+ {
+  "address": "0049bae0",
+  "name": "SetParentColour",
+  "module": "CComponent",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0049d310",
+  "name": "IsFading",
+  "module": "CTCFadeOutAndIn",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "0049e200",
+  "name": "GetChecksum",
+  "module": "CWorld",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "0049d910",
+  "name": "IsCreatureGenerationEnabledForGroup",
+  "module": "CWorld",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "2"
+ },
+ {
+  "address": "004ab060",
+  "name": "CScriptThing::SetFriendsWithEverythingFlag",
+  "module": "CScriptThing",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004ab0a0",
+  "name": "CScriptThing::SetActivationTriggerStatus",
+  "module": "CScriptThing",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004ab0c0",
+  "name": "?SetToKillOnLevelUnload@CScriptThing@@UAEX_N@Z",
+  "module": "CScriptThing",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "8"
+ },
+ {
+  "address": "004c7e70",
+  "name": "operator_new",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "void *",
+  "pc": "1"
+ },
+ {
+  "address": "00485239",
+  "name": "_Umove<EWeaponClass*>",
+  "module": "vector<EWeaponClass",
+  "cc": "__thiscall",
+  "ret": "EWeaponClass *",
+  "pc": "4"
+ },
+ {
+  "address": "004a9140",
+  "name": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>",
+  "module": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004c70f0",
+  "name": "IsActive",
+  "module": "CTCScriptedControl",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "004c7440",
+  "name": "EnableNavigator",
+  "module": "CTCPhysicsNavigator",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004c7bd0",
+  "name": "IsForceNoSerialise",
+  "module": "CThing",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "004d2a91",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2b04",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2b17",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2b7a",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2b8d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2ba0",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2bb3",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2bc6",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2bd9",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2bec",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2bff",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2c2f",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2c42",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2c55",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2c68",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2c7b",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2c8e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2ca1",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2cb4",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2cc7",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2cda",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2ced",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2d00",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2d13",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2d26",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2d39",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2d4c",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2d5f",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2d72",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2d85",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2dc8",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2e61",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2ea7",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2f96",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d2fc9",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d30db",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d313b",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d314e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d318d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d31d8",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3208",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3238",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d327e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d32c7",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d32f7",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d333d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d336d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d339d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d33f9",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d343f",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3485",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3498",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d34da",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d34ed",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3500",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3533",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3563",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3576",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3589",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d35b9",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d35ff",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d362f",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3675",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3688",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d36eb",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d376d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3780",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d37b3",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d37e3",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3813",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3844",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3874",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d38a4",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d38cd",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d38e0",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3959",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3989",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d39bc",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d39cf",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3a60",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3aa2",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3ae1",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3b2e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3b8c",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3beb",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3c1e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3c4e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3c7e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3cae",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3cde",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3cfb",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3d56",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3d86",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3db6",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3dfc",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3e30",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3e60",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3e73",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3e86",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3eb6",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3ee6",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3ef9",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3f70",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3fbd",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d3ff0",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4020",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4099",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d40ac",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d40eb",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d415a",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d41cc",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d41df",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4232",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4249",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d429b",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d430f",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4326",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4339",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4369",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4380",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4393",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d43a6",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4415",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4445",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4475",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d44a5",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d44d5",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4505",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4535",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d458e",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d45a1",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d45b4",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4617",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d465d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d468d",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d46bd",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d46d0",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4716",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4746",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4776",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4789",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d47b9",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d47e9",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4819",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d482c",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d48be",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d48ee",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4901",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4914",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4944",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4974",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d49a4",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d49b7",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d49ca",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4a30",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4a43",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4a56",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4a86",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4ab9",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4aec",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4aff",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4b2f",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4b5f",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4b72",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4b9b",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4bcb",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4bfb",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4c2b",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d4c75",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004874d0",
+  "name": "IsFirstPersonTargeting",
+  "module": "CPlayer",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "004aeba0",
+  "name": "GetGameEventPackageSet",
+  "module": "CNetworkClient",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "2"
+ },
+ {
+  "address": "004afdb0",
+  "name": "ChangeCameraAngle",
+  "module": "CEngine",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "00494168",
+  "name": "AddUBYTE",
+  "module": "CGameEvent",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0049d8f0",
+  "name": "SetAsPaused",
+  "module": "CWorld",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004baa30",
+  "name": "SetMiniMapRegionExitTextOffsetX",
+  "module": "CRegion",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004c7e10",
+  "name": "GetTypeName",
+  "module": "CThing",
+  "cc": "__thiscall",
+  "ret": "CCharString *",
+  "pc": "1"
+ },
+ {
+  "address": "004c7e30",
+  "name": "GetTypeName",
+  "module": "CThing",
+  "cc": "__thiscall",
+  "ret": "CCharString *",
+  "pc": "1"
+ },
+ {
+  "address": "00487120",
+  "name": "OnPredicateFail",
+  "module": "CHTG_Executioner",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "00487150",
+  "name": "OnPredicateFail",
+  "module": "CHTG_Executioner",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "00487550",
+  "name": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>",
+  "module": "_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0048faa0",
+  "name": "BeginInputLoading",
+  "module": "CMainGameComponent",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004ab150",
+  "name": "?IsNull@CScriptThing@@UBE_NXZ",
+  "module": "CScriptThing",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "004c7c40",
+  "name": "SetAsFrameUpdated",
+  "module": "CThing",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004c8280",
+  "name": "IsGameStatePersisted",
+  "module": "CThing",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "00485e45",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "0048d890",
+  "name": "OnDie",
+  "module": "CTCMapwho",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "00493bdd",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "0049d9b0",
+  "name": "CountReferences",
+  "module": "CPixelShader",
+  "cc": "__thiscall",
+  "ret": "ulong",
+  "pc": "1"
+ },
+ {
+  "address": "004a9b50",
+  "name": "OnDie",
+  "module": "CTCMapwho",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004a9b70",
+  "name": "OnDie",
+  "module": "CTCMapwho",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004baef0",
+  "name": "OnDie",
+  "module": "CTCMapwho",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "00484ff9",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "00485033",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004854af",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004854c7",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0048550c",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004861df",
+  "name": "_Umove<EWeaponClass*>",
+  "module": "vector<EWeaponClass",
+  "cc": "__thiscall",
+  "ret": "EWeaponClass *",
+  "pc": "4"
+ },
+ {
+  "address": "0049d850",
+  "name": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>",
+  "module": "_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004ae890",
+  "name": "CWorld::DrawGetProceduralTexture",
+  "module": "CWorld",
+  "cc": "__thiscall",
+  "ret": "CProceduralTexture const *",
+  "pc": "1"
+ },
+ {
+  "address": "004ae9a0",
+  "name": "ManualReset",
+  "module": "CTCTrapBase",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004b87d0",
+  "name": "SortTreeRecursively",
+  "module": "CGuiControlTreePane",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004c73b0",
+  "name": "operator_new",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "void *",
+  "pc": "1"
+ },
+ {
+  "address": "004d31c0",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "004d39eb",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "0047955b",
+  "name": "OnDie",
+  "module": "CTCInventoryItem",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "0048da89",
+  "name": "GetStringWidth",
+  "module": "CFontBank",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "2"
+ },
+ {
+  "address": "0049e9f0",
+  "name": "IsDisplayingMiniMapOnRegionLoad",
+  "module": "CWorld",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "004ac250",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004aca50",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004ad5a0",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004b82d0",
+  "name": "_Cons_val<std::allocator<std::pair<CWideString_const_,float>_>,std::pair<CWideString_const_,float>,std::pair<CWideString,float>_>",
+  "module": "_Cons_val<std::allocator<std::pair<CWideString_const_,float>_>,std::pair<CWideString_const_,float>,std",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004b8940",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004b99c0",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004b9a40",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004b9af0",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004b9b60",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004ba460",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004ba4c0",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004ba590",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004ba620",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004ba720",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004bae90",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004bb140",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004bbbc0",
+  "name": "TransferToGui",
+  "module": "CGuiVarTransferBool",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004c5990",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004c5c60",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004cc8b0",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004ccc30",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004cd650",
+  "name": "TransferToGui",
+  "module": "CGuiVarTransferBool",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004d2600",
+  "name": "TransferToGui",
+  "module": "CGuiVarTransferBool",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004d2620",
+  "name": "TransferToGui",
+  "module": "CGuiVarTransferBool",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004d2640",
+  "name": "TransferToGui",
+  "module": "CGuiVarTransferBool",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "00478751",
+  "name": "_Destroy",
+  "module": "vector<CIntelligentPointer<CThing_const_>",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004874f0",
+  "name": "IsUsingJoystickDeviceNumber",
+  "module": "CPlayer",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "2"
+ },
+ {
+  "address": "0049e350",
+  "name": "CWorld::DrawGetEnvironment",
+  "module": "CWorld",
+  "cc": "__thiscall",
+  "ret": "CIDrawEnvironment const *",
+  "pc": "1"
+ },
+ {
+  "address": "004a9760",
+  "name": "operator=",
+  "module": "CIntelligentPointer<CThingCreatureBase>",
+  "cc": "__thiscall",
+  "ret": "CIntelligentPointer<class_CThingCreatureBase> *",
+  "pc": "2"
+ },
+ {
+  "address": "004bfac0",
+  "name": "SetAlpha",
+  "module": "CTCGraphicAppearance",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004c7ac0",
+  "name": "AddToRenderList",
+  "module": "CThing",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "0047232b",
+  "name": "_Fill_n<unsigned_long*,unsigned_int,unsigned_long>",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "0047cfd3",
+  "name": "GetCameraSensitivity",
+  "module": "CUserProfileManager",
+  "cc": "__thiscall",
+  "ret": "float",
+  "pc": "1"
+ },
+ {
+  "address": "0047d5f2",
+  "name": "SetPDef",
+  "module": "CTCInGameMenu",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004853bd",
+  "name": "operator=",
+  "module": "CTavernTableDef",
+  "cc": "__thiscall",
+  "ret": "CTavernTableDef *",
+  "pc": "2"
+ },
+ {
+  "address": "0048ad60",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0048b160",
+  "name": "operator()<CThingMarker>",
+  "module": "CThingCompare_Nearest",
+  "cc": "__thiscall",
+  "ret": "CThingMarker *",
+  "pc": "3"
+ },
+ {
+  "address": "0048b220",
+  "name": "operator()<CThingMarker>",
+  "module": "CThingCompare_Nearest",
+  "cc": "__thiscall",
+  "ret": "CThingMarker *",
+  "pc": "3"
+ },
+ {
+  "address": "0048c5a0",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004a1c8e",
+  "name": "OnShowTrophyInitialise",
+  "module": "CTCTrophy",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004a7f20",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004a7f40",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004a7f60",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004a7fc0",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004a8020",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004a8d80",
+  "name": "operator()<CThingMarker>",
+  "module": "CThingCompare_Nearest",
+  "cc": "__thiscall",
+  "ret": "CThingMarker *",
+  "pc": "3"
+ },
+ {
+  "address": "004a97f0",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004b02f0",
+  "name": "RemoveAvailableQuestCardType",
+  "module": "CQuestManager",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004b6b30",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004c2340",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004c32f0",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004c3360",
+  "name": "_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>",
+  "module": "_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "00473496",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "00477460",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "00477943",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "00477bfc",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "00478512",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "00478706",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "00478855",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "00478a02",
+  "name": "OnReadFinished",
+  "module": "CActiveFile",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004861c3",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004ab130",
+  "name": "?IsAlive@CScriptThing@@UBE_NXZ",
+  "module": "CScriptThing",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "004af220",
+  "name": "_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>",
+  "module": "_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004b8110",
+  "name": "_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>",
+  "module": "_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004c7770",
+  "name": "SetAsGameStatePersisted",
+  "module": "CThing",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004c7880",
+  "name": "SetAsGameStatePersisted",
+  "module": "CThing",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "004d486f",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004774b9",
+  "name": "_Destroy",
+  "module": "vector<CIntelligentPointer<CThing_const_>",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "0048dba6",
+  "name": "SetVWindowsForDeprecatedDrawInterface",
+  "module": "CSubtitleRenderer",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "0049b460",
+  "name": "CProgressDisplay::IsActive",
+  "module": "CProgressDisplay",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "004aff80",
+  "name": "RemoveAllBoasts",
+  "module": "CQuestManager",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004c7ca0",
+  "name": "GetJoystickDeviceNumber",
+  "module": "CThing",
+  "cc": "__thiscall",
+  "ret": "long",
+  "pc": "1"
+ },
+ {
+  "address": "004d2a74",
+  "name": "GetActionName",
+  "module": "CActionDoCreatureAction",
+  "cc": "__thiscall",
+  "ret": "CCharString",
+  "pc": "1"
+ },
+ {
+  "address": "00485015",
+  "name": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>",
+  "module": "_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "00485aa7",
+  "name": "SelectEntryFromData",
+  "module": "CGuiControlListBox",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0048a4d0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b3b0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b400",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b420",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b440",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b460",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b480",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b4a0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b4c0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b4e0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b500",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b520",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b540",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b560",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b580",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b5a0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b5c0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b5e0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b600",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b620",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b640",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b660",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b680",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b6a0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b6c0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b6e0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b700",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b720",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b740",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b760",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b780",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b840",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b860",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b900",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b920",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b940",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b960",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b980",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b9a0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b9c0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048b9e0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048ba00",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048ba20",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048ba40",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048ba60",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048ba80",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048baa0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048bac0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048bae0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048bb00",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048bb20",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048bb40",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048bb60",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048bb80",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048bba0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048bbc0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048bbe0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048bc00",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048bc20",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048cea0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0048d870",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0049369b",
+  "name": "Fill",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "00497720",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "0049b7d0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004a8380",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004a83a0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004a9710",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004aca70",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004af3c0",
+  "name": "GetRegisteredQuestFromIndex",
+  "module": "CQuestManager",
+  "cc": "__thiscall",
+  "ret": "CCharString *",
+  "pc": "2"
+ },
+ {
+  "address": "004b75e0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004b7630",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004b77e0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004bb7f0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004bbba0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004c20f0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004c2130",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004c3d10",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004c4870",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004c5d80",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004c6060",
+  "name": "IsTimeForFullUpdate",
+  "module": "CBulletTimeManager",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "1"
+ },
+ {
+  "address": "004c7000",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004cd3e0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "004d1fc0",
+  "name": "`vector_deleting_destructor'",
+  "module": "CLandscapeBackgroundPatch",
+  "cc": "__thiscall",
+  "ret": "void *",
+  "pc": "2"
+ },
+ {
+  "address": "00477288",
+  "name": "CEngineLocalDetailGeneratorDef::Copy",
+  "module": "CEngineLocalDetailGeneratorDef",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "2"
+ },
+ {
+  "address": "0048521a",
+  "name": "_Fill<CHeroMarriageInfo*,CHeroMarriageInfo>",
+  "module": "_global",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "004b8330",
+  "name": "_Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,long>_>_>,std::pair<CCharString_const_,std::pair<long,long>_>,std::pair<class_CCharString_const_,struct_std::pair<long,long>_>_>",
+  "module": "_Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,long>_>_>,std::pair<CCharString_const_,std::pair<long,long>_>,std::pair<class_CCharString_const_,struct_std",
+  "cc": "__fastcall",
+  "ret": "void",
+  "pc": "3"
+ },
+ {
+  "address": "00487e90",
+  "name": "ToggleAggressiveMode",
+  "module": "CPlayer",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004bbbe0",
+  "name": "OnInitialActivate",
+  "module": "CTCVillage",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004bfae0",
+  "name": "Kill",
+  "module": "CParticleSystem",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004c11d0",
+  "name": "GetFocalPosIfLoaded",
+  "module": "CTCGraphicAppearance",
+  "cc": "__thiscall",
+  "ret": "bool",
+  "pc": "3"
+ },
+ {
+  "address": "004d2690",
+  "name": "OnInitialActivate",
+  "module": "CTCVillage",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004d26b0",
+  "name": "OnInitialActivate",
+  "module": "CTCVillage",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ },
+ {
+  "address": "004d26d0",
+  "name": "OnInitialActivate",
+  "module": "CTCVillage",
+  "cc": "__thiscall",
+  "ret": "void",
+  "pc": "1"
+ }
+]

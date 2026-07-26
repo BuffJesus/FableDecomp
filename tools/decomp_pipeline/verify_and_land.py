@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Verify authored candidates (byte-match + behaviour) and auto-land the wins.
-Usage: python verify_and_land.py <workflow_output.json> <oracle.tsv> [--land]
-Without --land: dry-run report only. With --land: writes src/tests/catalog/oracle for wins."""
+Usage: python verify_and_land.py <workflow_output.json> <oracle.tsv>
+       [--land] [--prune-outside-manifest]
+Without --land: dry-run report only. With --land: writes src/tests/catalog/oracle for wins.
+Candidates without an authoritative manifest function start are always rejected. The prune
+flag removes already-landed outside-manifest rows from this specific authoring payload."""
 import csv, json, re, subprocess, os, html, sys
 from pathlib import Path
 
@@ -84,13 +87,91 @@ def cataloged_addresses(catp):
         return set()
     return {m.group(1).lower() for m in re.finditer(r"Address\s*=\s*'([0-9a-fA-F]{8})'", catp.read_text(encoding="utf-8"))}
 
+def manifest_addresses():
+    path = ROOT / "rebuild" / "manifest" / "functions.tsv"
+    return {
+        row["address"].lower().replace("0x", "")
+        for row in csv.DictReader(open(path, encoding="utf-8-sig"), delimiter="\t")
+        if row.get("address")
+    }
+
+def prune_catalog_blocks(text, addresses):
+    """Remove simple top-level catalog object blocks for the specified addresses."""
+    lines = text.splitlines(keepends=True)
+    output = []
+    removed = 0
+    index = 0
+    while index < len(lines):
+        if "[pscustomobject]@{" not in lines[index]:
+            output.append(lines[index])
+            index += 1
+            continue
+        block = [lines[index]]
+        index += 1
+        while index < len(lines):
+            block.append(lines[index])
+            index += 1
+            if re.match(r"^\s*}\s*,?\s*$", block[-1]):
+                break
+        match = re.search(r"Address\s*=\s*'([0-9a-fA-F]{8})'", "".join(block))
+        if match and match.group(1).lower() in addresses:
+            removed += 1
+        else:
+            output.extend(block)
+    return "".join(output), removed
+
+def prune_outside_manifest(addresses, catp):
+    """Undo candidates from one authoring payload that lack a catalog function start."""
+    addresses = {address.lower().replace("0x", "") for address in addresses}
+    if not addresses:
+        return
+    catalog, removed_blocks = prune_catalog_blocks(catp.read_text(encoding="utf-8"), addresses)
+    catp.write_text(catalog, encoding="utf-8")
+
+    oracle_path = ROOT / "rebuild" / "oracles" / "auto-re-candidates.tsv"
+    oracle_rows = list(csv.DictReader(open(oracle_path, encoding="utf-8-sig"), delimiter="\t"))
+    kept = [row for row in oracle_rows if row["address"].lower().replace("0x", "") not in addresses]
+    with open(oracle_path, "w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(
+            stream,
+            delimiter="\t",
+            fieldnames=["address", "name", "length", "bytes"],
+            lineterminator="\n",
+        )
+        writer.writeheader()
+        writer.writerows(kept)
+
+    removed_files = 0
+    for address in addresses:
+        patterns = (
+            (ROOT / "rebuild" / "src" / "compiled", f"*_{address}.cpp"),
+            (ROOT / "rebuild" / "tests", f"*_{address}_test.cpp"),
+        )
+        for directory, pattern in patterns:
+            for path in directory.rglob(pattern):
+                path.unlink()
+                removed_files += 1
+    print(
+        f"PRUNED OUTSIDE_MANIFEST addresses={len(addresses)} "
+        f"catalog_blocks={removed_blocks} files={removed_files}"
+    )
+
 def main():
     outf=Path(sys.argv[1]); oraclef=Path(sys.argv[2]); land="--land" in sys.argv
+    prune="--prune-outside-manifest" in sys.argv
     data=json.loads(outf.read_text(encoding="utf-8"))["result"]["authored"]
     orc={r["address"].lower():r for r in csv.DictReader(open(oraclef,encoding="utf-8-sig"),delimiter="\t")}
     e=env(); wins=[]
     PRAGMAS=["", '#pragma optimize("s",on)', '#pragma optimize("t",on)', '#pragma optimize("g",on)']
     catp = ROOT/"rebuild"/"build_candidates.ps1"
+    known_manifest = manifest_addresses()
+    outside_manifest = {
+        c["address"].lower().replace("0x", "")
+        for c in data
+        if c["address"].lower().replace("0x", "") not in known_manifest
+    }
+    if prune:
+        prune_outside_manifest(outside_manifest, catp)
     landed_addrs = cataloged_addresses(catp)
     def parity_of(srctext, addr, leaf, retail, work):
         sp=work/f"{addr}.cpp"; sp.write_text(srctext,encoding="utf-8")
@@ -107,6 +188,9 @@ def main():
     for c in data:
         addr=c["address"].lower().replace("0x","")
         name=c.get("name") or (orc.get(addr,{}).get("name")) or f"sub_{addr}"; leaf=name.rsplit("::",1)[-1]
+        if addr in outside_manifest:
+            print(f"{addr:10} {'OUTSIDE_MANIFEST':16} {'-':6} {name}")
+            continue
         if addr in landed_addrs: continue  # skip already-landed
         o=orc.get(addr)
         if not o: print(f"{addr:10} {'NO_ORACLE':16} {'-':6} {name}"); continue
