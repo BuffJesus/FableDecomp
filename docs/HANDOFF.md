@@ -1,6 +1,43 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 08:44 MDT (retail progress object + counted-handle parity checkpoint).*
+*Last updated: 2026-07-26 09:18 MDT (retained visual owner + 254 counted resets checkpoint).*
+
+## Retained visual owner + 254 counted resets checkpoint (2026-07-26)
+
+- `SetProgressDisplay @ 0x009E9FD0` is recovered and promoted. Its readable
+  133-byte VC7.1 body matches retail outside 12 relocations, releases any prior
+  global counted display, retains the incoming reference, and passes focused
+  replacement/orphan/final-release behavior.
+- The visual executable now keeps the real typed 0x88-byte
+  `CProgressDisplay` alive after `GFInitialise_SetupProgressDisplay` returns.
+  The retained reference spans the authored window lifetime and is released
+  through the recovered counted owner on both initialization failure and
+  normal shutdown. The full Release bootstrap and an actual top-level-window
+  smoke test pass with exit code zero.
+- The next honest visual closure is no longer ownership. Recover the display
+  and resource consumers (`CProgressDisplay` texture initialization/progress
+  drawing plus the boundary-owned root/display/resource objects), then connect
+  archive/data loading and the renderer/game-loop handoff. The visible window
+  remains authored scaffolding until those consumers render it.
+- The deterministic parity vocabulary now includes the exact 27-byte
+  intrusive counted-handle reset. It decrements the owner count, calls virtual
+  release slot 1 only on the last owner, and clears the handle. Unit coverage
+  rejects the nearby `and [esi], 0` encoding, while the behavior fixture covers
+  last-owner release, retained-owner decrement, and null reset.
+- Pending replay promoted **254 / 254 byte-identical retail matches**. The two
+  visual leaves were also registered in the canonical catalog. The full VC7.1
+  compile/behavior gate passes with **4,372 / 4,372** functions. Candidate
+  retail parity is **2,175 exact + 1,870 relocation-normalized = 4,045 /
+  49,553 (8.16%)**; 199 honest differences and 128 missing function-start
+  oracles remain visible.
+- Generated manifests, backlog, promotion queue, coverage dashboard, artifact
+  index, and root README are refreshed. Ghidra and Wave 3 remain stopped; the
+  hourly Ghidra-free parity task remains installed. The closest safe next
+  parity family is the 24-byte counted reset variant that uses
+  `and [esi], 0` (87 staged instances); after that, move to creature-action
+  clone allocation/copy only with allocation-failure and copy semantics tested.
+
+*Previous checkpoint: 2026-07-26 08:44 MDT (retail progress object + counted-handle parity checkpoint).*
 
 ## Retail progress object + counted-handle parity checkpoint (2026-07-26)
 

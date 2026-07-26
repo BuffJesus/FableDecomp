@@ -2723,7 +2723,7 @@ CPrizeScoreDef	1	3	3	0	0	1	1	1	0	0	0
 CProcessedInput	7	1	1	1	0	0	0	0	0	0	0
 CProfile	10	8	0	0	0	0	0	0	0	0	0
 CProfileManager	18	0	0	0	0	0	0	0	0	0	0
-CProgressDisplay	15	15	14	0	0	0	0	0	0	0	0
+CProgressDisplay	15	15	14	0	0	1	1	0	1	0	0
 CProjectileWeapon	20	8	5	0	0	0	0	0	0	0	0
 CProng	5	2	2	0	0	0	0	0	0	0	0
 CProphetCage	3	1	1	0	0	0	0	0	0	0	0
@@ -4280,7 +4280,7 @@ _Count_if<std::_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThin
 _Dest_val<std	0	38	38	0	0	4	4	1	2	0	0
 _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	0	826	826	0	0	110	110	98	4	0	0
 _Dest_val<std::allocator<CEditLevelMerger::CConflict>,CEditLevelMerger	0	9	9	0	0	0	0	0	0	0	0
-_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	0	611	611	0	0	50	50	36	0	0	0
+_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	0	611	611	0	0	304	304	290	0	0	0
 _Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification	0	20	20	0	0	0	0	0	0	0	0
 _Dest_val<std::allocator<NScript::CQ_BountyHuntScript::TeleportData>,NScript::CQ_BountyHuntScript	0	2	2	0	0	0	0	0	0	0	0
 _Dest_val<std::allocator<std::pair<CCharString,C3DMeshVolume>_>,std	0	2	2	0	0	0	0	0	0	0	0
@@ -4497,7 +4497,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11371	1999	63	3	104	104	39	49	0	0
+_global	0	11371	1999	63	3	105	105	39	50	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0
