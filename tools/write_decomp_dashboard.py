@@ -91,7 +91,12 @@ def main() -> int:
         f"- {total - status['prototype_complete']:,} functions still lack a complete non-undefined prototype.",
         f"- {total - status['calling_convention_known']:,} functions still have an unknown calling convention.",
         f"- {naming_triage.get('remaining_semantic_review', status['naming_quality_review']):,} names remain in the semantic/accessor review tail; donor proposals and the invalid boundary are tracked separately.",
-        f"- {status['agent_candidates'] - status.get('compiled_candidates', 0):,} auto-RE candidates still need a VC7.1-compatible translation unit.",
+        (
+            f"- {gate.get('vc71_compatible', 0):,} of "
+            f"{gate.get('candidates', status['agent_candidates']):,} generated auto-RE intake rows "
+            "currently pass the standalone VC7.1 compatibility gate; the independently authored "
+            "compiled catalog is not subtracted from this intake ledger."
+        ),
         f"- {signature.get('review', 0):,} original generated candidate definitions still disagree with corrected manifest identities or parameter shapes; curated replacements are tracked separately.",
         f"- {structurally_different:,} behavior-tested candidates still differ structurally from the retail parity oracle.",
     ]

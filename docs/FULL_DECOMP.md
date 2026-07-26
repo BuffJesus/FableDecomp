@@ -67,14 +67,60 @@ leans on automation because the target is large.
   background promotions. Defer installer, settings UI, x64, and broad modernization until the
   reconstructed process reaches the game loop.
 
-## Current unattended reconstruction loop (2026-07-22)
+## Current unattended reconstruction loops (updated 2026-07-25)
 
-The active implementation is `lift/scripts/run_re_agent_wave3_queue.ps1`, launched every 15 minutes by the
-existing `FableTLC Auto RE Wave 2` scheduled-task entry. Each run is deliberately bounded to 16
-functions. It resumes its JSON ledger, exhausts the curated seed cluster first, then refills from
-prototype gaps in the generated reconstruction backlog while excluding every address already seen
-by the primary, retry, Wave 2, or Wave 3 ledgers. A 35-minute target watchdog and two-attempt policy
-keep provider or Ghidra stalls from stopping later batches.
+There are now two independent unattended lanes:
+
+1. `lift/scripts/run_re_agent_wave3_queue.ps1` performs evidence-rich structural reconstruction
+   through Ghidra. It is launched every 15 minutes by the existing `FableTLC Auto RE Wave 2`
+   scheduled-task entry and is bounded to 16 functions. It resumes its JSON ledger, exhausts the
+   curated seed cluster first, then refills from prototype gaps in the generated reconstruction
+   backlog while excluding every address already seen by the primary, retry, Wave 2, or Wave 3
+   ledgers.
+2. `tools/run_local_parity_queue.ps1` is Ghidra-free. It selects fresh short retail functions,
+   deterministically authors byte-implied VC7.1 source, runs the exact byte and focused-behavior
+   gates, lands only wins, rebuilds the canonical catalog, and updates the dashboard and README.
+   `tools/InstallLocalParityTask.ps1` registers it as the separate
+   `FableTLC Local Parity Queue` scheduled task.
+
+The two lanes measure different things. A Wave 3 `PASS` means the structural checker accepted an
+evidence-bearing reconstruction; it does **not** increase the whole-game verified percentage.
+Only a local or manually curated candidate that compiles, passes its behavior fixture, and matches
+retail `.text` increases that numerator.
+
+Wave 3 now applies a cross-run hard-target cooldown in addition to its 35-minute watchdog and
+two-attempt per-run limit. A target with two unresolved failures is deferred for 48 hours, allowing
+the next queued functions to run instead of spending every scheduled pass on the same large
+wrapper. The evidence and failed attempts remain in the append-only ledger for deliberate later
+review.
+
+### Why the verified percentage appeared to accelerate, then stall
+
+The early 0.1% to 3% jump was not the steady throughput of the current Wave 3 runner. History shows
+the curated catalog moving from 31 to 59 verified functions through ordinary batches, followed by
+the 2026-07-25 consolidation commit that imported a large previously prepared corpus and moved the
+canonical count from 59 to 1,523 verified matches (94 to 1,850 compiled sources). Later Wave 3
+batches kept producing structural results while the parity numerator remained nearly flat.
+
+The audit on 2026-07-25 found that the promotion tools already existed but were not connected to
+the scheduled runner: `next_batch.py`, `auto_author_tiny.py`, and `verify_and_land.py` had no
+background caller. In addition, the canonical refresh intentionally deferred while Wave 3 owned
+Ghidra, so an always-busy structural queue could leave reports and README metrics stale.
+
+The first two restored local batches produced 97 manifest-backed exact byte-and-behavior wins.
+An integrity audit also caught and removed 146 byte-matching post-`ret` tails that the selector's
+old speculative “hidden function” recovery had emitted without an authoritative function-start
+row. The selector no longer promotes those tails, and the lander independently rejects any address
+outside `rebuild/manifest/functions.tsv`. Capstone is now used for candidate splitting when
+available, replacing roughly 500 separate `objdump` launches per batch; the measured selector time
+fell from about 91 seconds to 1.12 seconds. The remaining residue/permuter tools are retained for
+targeted `DIFFER` work, not blindly scheduled across known VC7.1 register-allocation dead ends.
+
+The canonical VC7.1 catalog gate is incremental as well. It reuses an existing object and passing
+behavior result only when the source, test, and shared headers are all older than those products;
+`build_candidates.ps1 -Force` remains available for a clean full audit. On the first 1,950-row
+catalog run after this change, rebuilding only the newly landed manifest-backed rows took 12.29
+seconds instead of recompiling every historical PASS for several minutes.
 
 Queue transcripts are separated from durable state: attempts are archived under
 `lift/logs/<wave>/YYYY-MM-DD/<aa>/<bb>/<address>/`, YAML lives in `lift/config/`, durable queue

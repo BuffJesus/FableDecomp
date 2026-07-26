@@ -59,6 +59,11 @@ import subprocess, tempfile
 OBJDUMP = r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe"
 import re as _re
 _ILINE = _re.compile(r"^\s*([0-9a-fA-F]+):\s+((?:[0-9a-fA-F]{2} )+)\s*(\S+)")
+try:
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+    _CAPSTONE = Cs(CS_ARCH_X86, CS_MODE_32)
+except ImportError:
+    _CAPSTONE = None
 # byte patterns that begin a NEW function (MSVC prologues / thunks)
 def _is_prologue(b, p):
     if p >= len(b): return False
@@ -73,6 +78,11 @@ def _is_prologue(b, p):
     return False
 
 def _disasm(seg):
+    # Capstone is already part of the RE environment and avoids launching one
+    # objdump process per candidate (roughly 90 seconds for a 500-row batch).
+    # Keep objdump as a portability fallback for minimal installations.
+    if _CAPSTONE is not None:
+        return [(ins.address, ins.size, ins.mnemonic) for ins in _CAPSTONE.disasm(seg, 0)]
     with tempfile.NamedTemporaryFile(suffix=".bin", delete=False) as t:
         t.write(seg); n = t.name
     try:
@@ -148,7 +158,7 @@ def main():
         if rt in ("", "undefined"): return False
         return any(k in rt for k in ACCESSOR_RET)
 
-    picked = []; recovered = []; trimmed = 0
+    picked = []; trimmed = 0
     seen_addr = set(excl)
     for r in man:
         if len(picked) >= count: break
@@ -160,16 +170,13 @@ def main():
         if len(parts) > 1: trimmed += 1
         if not (1 <= len(first) <= max_len) or not ends_clean(first): continue
         picked.append((r, first)); seen_addr.add(r["address"].lower())
-        # recover hidden second+ functions the manifest lacked a boundary for
-        for rel_off, seg in parts[1:]:
-            ra = va + rel_off; rhex = f"{ra:08x}"
-            if rhex in seen_addr or not (1 <= len(seg) <= max_len) or not ends_clean(seg): continue
-            seen_addr.add(rhex)
-            recovered.append(({"address": rhex, "name": f"sub_{rhex}", "module": "_global",
-                               "calling_convention": "__fastcall", "return_type": "?", "parameter_count": "0"}, seg))
     picked.sort(key=lambda x: len(x[1]))
-    picked += recovered  # append recovered hidden functions as bonus candidates
-    if trimmed: print(f"[next_batch] trimmed {trimmed} merged (over-length) rows; recovered {len(recovered)} hidden functions", file=sys.stderr)
+    if trimmed:
+        print(
+            f"[next_batch] trimmed {trimmed} merged (over-length) manifest rows; "
+            "non-manifest tails were not promoted",
+            file=sys.stderr,
+        )
 
     pending = ROOT / "rebuild/oracles/pending"
     with open(pending / f"{batch}_oracle.tsv", "w", encoding="utf-8", newline="") as f:
