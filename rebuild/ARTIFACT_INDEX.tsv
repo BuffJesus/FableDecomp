@@ -1541,6 +1541,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00494350	CFrontendGameComponent		rebuild/src/compiled/00/49/CFrontendGameComponent_OnPreDeviceReset_00494350.cpp	rebuild/tests/00/49/CFrontendGameComponent_OnPreDeviceReset_00494350_test.cpp		rebuild/build/candidates-Release/00/49/00494350
 00494360	CFrontendGameComponent		rebuild/src/compiled/00/49/CFrontendGameComponent_OnPostDeviceReset_00494360.cpp	rebuild/tests/00/49/CFrontendGameComponent_OnPostDeviceReset_00494360_test.cpp		rebuild/build/candidates-Release/00/49/00494360
 00497850	CAProgressDisplay		rebuild/src/compiled/00/49/CAProgressDisplay_InitialiseTextures_00497850.cpp	rebuild/tests/00/49/CAProgressDisplay_InitialiseTextures_00497850_test.cpp		rebuild/build/candidates-Release/00/49/00497850
+00497b30	CProgressDisplay		rebuild/src/compiled/00/49/CProgressDisplay_GetPTextBank_00497b30.cpp	rebuild/tests/00/49/CProgressDisplay_GetPTextBank_00497b30_test.cpp		rebuild/build/candidates-Release/00/49/00497b30
 00499a70	CProgressDisplay		rebuild/src/compiled/00/49/CProgressDisplay_SetToDisplayText_00499a70.cpp	rebuild/tests/00/49/CProgressDisplay_SetToDisplayText_00499a70_test.cpp		rebuild/build/candidates-Release/00/49/00499a70
 00499ce0	CProgressDisplay		rebuild/src/compiled/00/49/CProgressDisplay_Constructor_00499ce0.cpp	rebuild/tests/00/49/CProgressDisplay_Constructor_00499ce0_test.cpp		rebuild/build/candidates-Release/00/49/00499ce0
 0049b460	CProgressDisplay		rebuild/src/compiled/00/49/CProgressDisplay_IsActive_0049b460.cpp	rebuild/tests/00/49/CProgressDisplay_IsActive_0049b460_test.cpp		rebuild/build/candidates-Release/00/49/0049b460
@@ -4269,7 +4270,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 009974f0			rebuild/src/compiled/00/99/CAFile_SetCurrentPath_009974f0.cpp	rebuild/tests/00/99/CAFile_SetCurrentPath_009974f0_test.cpp		
 00997510			rebuild/src/compiled/00/99/CAFile_GetProjectPath_00997510.cpp	rebuild/tests/00/99/CAFile_GetProjectPath_00997510_test.cpp		
 00997b30	_global		rebuild/src/compiled/00/99/global_AddChildPrimitive_00997b30.cpp	rebuild/tests/00/99/global_AddChildPrimitive_00997b30_test.cpp		rebuild/build/candidates-Release/00/99/00997b30
-0099a2e0			rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a2e0.cpp	rebuild/tests/00/99/CBase_RestoreVTable_0099a2e0_test.cpp		
+0099a2e0	NHeroInformationScreens::CBase		rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a2e0.cpp	rebuild/tests/00/99/CBase_RestoreVTable_0099a2e0_test.cpp		rebuild/build/candidates-Release/00/99/0099a2e0
 0099a300			rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a300.cpp	rebuild/tests/00/99/CBase_RestoreVTable_0099a300_test.cpp		
 0099a340	CInitBaseClass		rebuild/src/compiled/00/99/CInitBaseClass_Validate_0099a340.cpp	rebuild/tests/00/99/CInitBaseClass_Validate_0099a340_test.cpp		rebuild/build/candidates-Release/00/99/0099a340
 0099a400	CBaseObject		rebuild/src/compiled/00/99/CBaseObject_Validate_0099a400.cpp	rebuild/tests/00/99/CBaseObject_Validate_0099a400_test.cpp		rebuild/build/candidates-Release/00/99/0099a400
@@ -4279,10 +4280,11 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 0099b720	CWideString		rebuild/src/compiled/00/99/CWideString_CopyConstructor_0099b720.cpp	rebuild/tests/00/99/CWideString_CopyConstructor_0099b720_test.cpp		rebuild/build/candidates-Release/00/99/0099b720
 0099e480	CCharString		rebuild/src/compiled/00/99/CCharString_ToWideString_0099e480.cpp	rebuild/tests/00/99/CCharString_ToWideString_0099e480_test.cpp		rebuild/build/candidates-Release/00/99/0099e480
 0099e4b0			rebuild/src/compiled/00/99/CCharString_DefaultConstructor_0099e4b0.cpp	rebuild/tests/00/99/CCharString_DefaultConstructor_0099e4b0_test.cpp		
-0099eae0			rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp	rebuild/tests/00/99/CCharString_Destructor_0099eae0_test.cpp		
-0099ebf0			rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp	rebuild/tests/00/99/CCharString_Constructor_0099ebf0_test.cpp		
+0099eae0	CCharString		rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp	rebuild/tests/00/99/CCharString_Destructor_0099eae0_test.cpp		rebuild/build/candidates-Release/00/99/0099eae0
+0099ebf0	CCharString		rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp	rebuild/tests/00/99/CCharString_Constructor_0099ebf0_test.cpp		rebuild/build/candidates-Release/00/99/0099ebf0
 009a42b0	_global		rebuild/src/compiled/00/9a/global_DeleteData_009a42b0.cpp	rebuild/tests/00/9a/global_DeleteData_009a42b0_test.cpp		rebuild/build/candidates-Release/00/9a/009a42b0
 009a4ec0	_global		rebuild/src/compiled/00/9a/global_AddChildPrimitive_009a4ec0.cpp	rebuild/tests/00/9a/global_AddChildPrimitive_009a4ec0_test.cpp		rebuild/build/candidates-Release/00/9a/009a4ec0
+009a6460	CSystemManager		rebuild/src/compiled/00/9a/CSystemManager_Update_009a6460.cpp	rebuild/tests/00/9a/CSystemManager_Update_009a6460_test.cpp		rebuild/build/candidates-Release/00/9a/009a6460
 009acca0	CDefinitionManager		rebuild/src/compiled/00/9a/CDefinitionManager_GetDefClassIndexFromGlobalIndex_009acca0.cpp	rebuild/tests/00/9a/CDefinitionManager_GetDefClassIndexFromGlobalIndex_009acca0_test.cpp		rebuild/build/candidates-Release/00/9a/009acca0
 009ad950	CDefinitionManager		rebuild/src/compiled/00/9a/CDefinitionManager_ClearInstantiatedDefs_009ad950.cpp	rebuild/tests/00/9a/CDefinitionManager_ClearInstantiatedDefs_009ad950_test.cpp		rebuild/build/candidates-Release/00/9a/009ad950
 009b9890	_global		rebuild/src/compiled/00/9b/global_DrawGetEnvironment_009b9890.cpp	rebuild/tests/00/9b/global_DrawGetEnvironment_009b9890_test.cpp		rebuild/build/candidates-Release/00/9b/009b9890
@@ -4291,6 +4293,8 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 009be530	CDisplayManager		rebuild/src/compiled/00/9b/CDisplayManager_IsTextureBitDepthSupported_009be530.cpp	rebuild/tests/00/9b/CDisplayManager_IsTextureBitDepthSupported_009be530_test.cpp		rebuild/build/candidates-Release/00/9b/009be530
 009be800	CDisplayManager		rebuild/src/compiled/00/9b/CDisplayManager_IsSupportingCompressedTextures_009be800.cpp	rebuild/tests/00/9b/CDisplayManager_IsSupportingCompressedTextures_009be800_test.cpp		rebuild/build/candidates-Release/00/9b/009be800
 009be8f0	CDisplayManager		rebuild/src/compiled/00/9b/CDisplayManager_IsValidTextureFormat_009be8f0.cpp	rebuild/tests/00/9b/CDisplayManager_IsValidTextureFormat_009be8f0_test.cpp		rebuild/build/candidates-Release/00/9b/009be8f0
+009bef20	CDisplayManager		rebuild/src/compiled/00/9b/CDisplayManager_BeginRender_009bef20.cpp	rebuild/tests/00/9b/CDisplayManager_BeginRender_009bef20_test.cpp		rebuild/build/candidates-Release/00/9b/009bef20
+009bef50	CDisplayManager		rebuild/src/compiled/00/9b/CDisplayManager_EndRender_009bef50.cpp	rebuild/tests/00/9b/CDisplayManager_EndRender_009bef50_test.cpp		rebuild/build/candidates-Release/00/9b/009bef50
 009c61b0	CEngineSubPrimitiveText		rebuild/src/compiled/00/9c/CEngineSubPrimitiveText_scalardeletingdestructor_009c61b0.cpp	rebuild/tests/00/9c/CEngineSubPrimitiveText_scalardeletingdestructor_009c61b0_test.cpp		rebuild/build/candidates-Release/00/9c/009c61b0
 009c9ec0	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive		rebuild/src/compiled/00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c9ec0.cpp	rebuild/tests/00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c9ec0_test.cpp		rebuild/build/candidates-Release/00/9c/009c9ec0
 009c9f20	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive		rebuild/src/compiled/00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c9f20.cpp	rebuild/tests/00/9c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_009c9f20_test.cpp		rebuild/build/candidates-Release/00/9c/009c9f20
@@ -4326,6 +4330,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 009f1870		lift/reports/wave3/code/00/9f/0x009F1870_CGameEvent_InitFromCompressedBuffer.cpp			rebuild/candidates/snapshots/00/9f/0x009F1870_CGameEvent_InitFromCompressedBuffer.cpp	
 009f19a0		lift/reports/wave3/code/00/9f/0x009F19A0_CGameEventPackageSet_CompressIntoBuffer.cpp			rebuild/candidates/snapshots/00/9f/0x009F19A0_CGameEventPackageSet_CompressIntoBuffer.cpp	
 009f1ac0		lift/reports/wave3/code/00/9f/0x009F1AC0_CGameEventPackageSet_InitFromCompressedBuffer.cpp			rebuild/candidates/snapshots/00/9f/0x009F1AC0_CGameEventPackageSet_InitFromCompressedBuffer.cpp	
+009f2e20	CSurface		rebuild/src/compiled/00/9f/CSurface_Uninitialise_009f2e20.cpp	rebuild/tests/00/9f/CSurface_Uninitialise_009f2e20_test.cpp		rebuild/build/candidates-Release/00/9f/009f2e20
 009f9d50	CThingFilter_IsUnconscious		rebuild/src/compiled/00/9f/CThingFilterIsUnconscious_operator_009f9d50.cpp	rebuild/tests/00/9f/CThingFilterIsUnconscious_operator_009f9d50_test.cpp		rebuild/build/candidates-Release/00/9f/009f9d50
 009fbef0	CResource		rebuild/src/compiled/00/9f/CResource_GetUnloadableMemory_009fbef0.cpp	rebuild/tests/00/9f/CResource_GetUnloadableMemory_009fbef0_test.cpp		rebuild/build/candidates-Release/00/9f/009fbef0
 009fbf00	CResource		rebuild/src/compiled/00/9f/CResource_GetDebugMemoryInUse_009fbf00.cpp	rebuild/tests/00/9f/CResource_GetDebugMemoryInUse_009fbf00_test.cpp		rebuild/build/candidates-Release/00/9f/009fbf00
@@ -4335,9 +4340,13 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00a03b50	_global		rebuild/src/compiled/00/a0/global_DrawGetEnvironment_00a03b50.cpp	rebuild/tests/00/a0/global_DrawGetEnvironment_00a03b50_test.cpp		rebuild/build/candidates-Release/00/a0/00a03b50
 00a03b60	_global		rebuild/src/compiled/00/a0/global_DrawGetEnvironment_00a03b60.cpp	rebuild/tests/00/a0/global_DrawGetEnvironment_00a03b60_test.cpp		rebuild/build/candidates-Release/00/a0/00a03b60
 00a09d80	CMeshBankManager		rebuild/src/compiled/00/a0/CMeshBankManager_OnPostDeviceReset_00a09d80.cpp	rebuild/tests/00/a0/CMeshBankManager_OnPostDeviceReset_00a09d80_test.cpp		rebuild/build/candidates-Release/00/a0/00a09d80
+00a0aa60	NInventory::CTCInventoryBase		rebuild/src/compiled/00/a0/CTCInventoryBase_GetCanItemBeQuickAssigned_00a0aa60.cpp	rebuild/tests/00/a0/CTCInventoryBase_GetCanItemBeQuickAssigned_00a0aa60_test.cpp		rebuild/build/candidates-Release/00/a0/00a0aa60
+00a0aa90	NInventory::CTCInventoryBase		rebuild/src/compiled/00/a0/CTCInventoryBase_SetViewport_00a0aa90.cpp	rebuild/tests/00/a0/CTCInventoryBase_SetViewport_00a0aa90_test.cpp		rebuild/build/candidates-Release/00/a0/00a0aa90
+00a0b560	NInventory::CTCInventoryBase		rebuild/src/compiled/00/a0/CTCInventoryBase_SetViewportFloat_00a0b560.cpp	rebuild/tests/00/a0/CTCInventoryBase_SetViewportFloat_00a0b560_test.cpp		rebuild/build/candidates-Release/00/a0/00a0b560
 00a0be80	_global		rebuild/src/compiled/00/a0/global_DrawGetEnvironment_00a0be80.cpp	rebuild/tests/00/a0/global_DrawGetEnvironment_00a0be80_test.cpp		rebuild/build/candidates-Release/00/a0/00a0be80
 00a0d340		lift/reports/wave3/code/00/a0/0x00A0D340_CProcessedInput_AddGameEvent.cpp			rebuild/candidates/snapshots/00/a0/0x00A0D340_CProcessedInput_AddGameEvent.cpp	
 00a0d3b0	_global		rebuild/src/compiled/00/a0/global_DrawGetEnvironment_00a0d3b0.cpp	rebuild/tests/00/a0/global_DrawGetEnvironment_00a0d3b0_test.cpp		rebuild/build/candidates-Release/00/a0/00a0d3b0
+00a10dc0	CRenderTarget		rebuild/src/compiled/00/a1/CRenderTarget_Constructor_00a10dc0.cpp	rebuild/tests/00/a1/CRenderTarget_Constructor_00a10dc0_test.cpp		rebuild/build/candidates-Release/00/a1/00a10dc0
 00a110d0	_global		rebuild/src/compiled/00/a1/global_DeleteData_00a110d0.cpp	rebuild/tests/00/a1/global_DeleteData_00a110d0_test.cpp		rebuild/build/candidates-Release/00/a1/00a110d0
 00a18f20	CNavigatorFlyer		rebuild/src/compiled/00/a1/CNavigatorFlyer_CalculateRouteFromTo_00a18f20.cpp	rebuild/tests/00/a1/CNavigatorFlyer_CalculateRouteFromTo_00a18f20_test.cpp		rebuild/build/candidates-Release/00/a1/00a18f20
 00a19ab0	CClass		rebuild/src/compiled/00/a1/CClass_Save_00a19ab0.cpp	rebuild/tests/00/a1/CClass_Save_00a19ab0_test.cpp		rebuild/build/candidates-Release/00/a1/00a19ab0

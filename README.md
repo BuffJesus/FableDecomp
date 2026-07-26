@@ -17,14 +17,14 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 
 | Track | Metric | Status |
 |---|---|---|
-| Analysis DB | Functions catalogued | **49,553** |
+| Analysis DB | Functions catalogued | **49,552** |
 | Analysis DB | Mechanically named (no `FUN_*`) | 100.000% |
 | Analysis DB | Usable reconstruction/navigation names | 99.211% |
-| Analysis DB | Calling convention known | 77.674% |
-| Analysis DB | Complete non-`undefined` prototype | 69.049% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **4,871** |
-| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **4,544** (9.17%) |
-| Reconstruction | — of which byte-**identical** (no relocation masking) | 2,672 (5.39%) |
+| Analysis DB | Calling convention known | 77.676% |
+| Analysis DB | Complete non-`undefined` prototype | 69.051% |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **4,883** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **4,556** (9.19%) |
+| Reconstruction | — of which byte-**identical** (no relocation masking) | 2,674 (5.40%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
 | Auto-RE intake | Generated candidates / structural checker PASS | 632 / 619 |
@@ -38,10 +38,10 @@ separately and is never counted as reconstructed merely because a structural che
 The successful refresh also synchronizes this table automatically; GitHub is updated at reviewed
 checkpoints rather than publishing live, unreviewed queue output.
 The first **5%** compiled-byte-match milestone (2,478 functions) is passed; current verified retail
-parity is **9.17%** of the 49,553-function catalog. The lower match count than an earlier README is an
+parity is **9.19%** of the 49,552-function catalog. The lower match count than an earlier README is an
 audit reconciliation, not deleted source: the unified gate now exposes every `DIFFER` and missing
 function-start oracle instead of mixing older mass-land and curated-subset totals.
-The 9.17% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
+The 9.19% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
 a second lens over the 3,952-byte GFMain coordinator: they measure proven direct call sites and
 callable integration phases, not percentage of total engineering time. Repeated calls count
 separately because every occurrence must be linked in the correct lifetime and control-flow
@@ -127,14 +127,15 @@ with `rebuild/build_bootstrap.ps1`, then launch it from `rebuild/build/bootstrap
 | Visible milestone | Current state | What remains |
 |---|---|---|
 | First actual retail image | **Runnable now: `FRONTEND_BACKDROP_01` is decoded from `frontend.big` and shown by the reconstructed executable** | Presentation currently uses the authored GDI window rather than Lionhead's runtime archive/texture/renderer stack. |
-| First recovered retail progress setup | **Coordinator, setup, 0x88-byte constructor, retained owner, counted getter, active-state query, and text-mode transition are connected** | Recover the shared `StartProgress`/initialize body, texture initialization, and the renderer/display resources that draw the retained object. |
-| Retail-rendered frame/frontend | **Several major closures away** | Recover display/D3D setup, runtime archive and texture ownership, primitive submission, and the update/render/present loop. |
+| First recovered retail progress setup | **Coordinator, setup, 0x88-byte constructor, retained owner, counted getter, active-state query, and text-mode transition are connected; the primary/fallback text-bank selector is recovered** | Populate the retail bank owners, integrate the corrected 418-byte `StartProgress`, and recover texture initialization. |
+| Retail-rendered frame/frontend | **The 489-byte `RenderProgress` boundary is mapped and 10/17 direct dependencies are retail matches** | Recover clear/bind/draw/2D-submit/present/state-restore, runtime archive and texture ownership, then connect the update/render/present loop. |
 | Retail intro video | **Farther than the first renderer frame** | Add the movie/Bink ownership and decode path, timing, audio, and frame presentation after renderer/display initialization. |
 
 The “actual image” milestone is therefore reached, but “the game is rendering” is not. Retail
-inspection shows the apparent 13-byte `StartProgress @ 0x00499AA0` entry falls through into the
-405-byte body at `0x00499AAD`; it must be recovered as a shared control-flow unit rather than
-promoted as a misleading standalone leaf. The nearest honest engine milestone remains the game's progress display and its texture consumers, not the
+inspection and a reviewed Ghidra boundary repair establish one 418-byte
+`StartProgress @ 0x00499AA0` function through `0x00499C41`; the former
+`0x00499AAD` catalog row was a false mid-function start and is now excluded
+reproducibly. The nearest honest engine milestone remains the game's progress display and its texture consumers, not the
 intro movie or interactive menu. That is not one or two functions away: only two of ten GFMain
 integration phases are callable, even though 40 of its 257 direct call sites and 21 of Phase 3's
 34 sites are already proven. These dependency counts are more informative than converting them

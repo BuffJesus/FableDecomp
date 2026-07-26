@@ -34069,6 +34069,90 @@ $catalog = @(
         TestSource = '00/49/CProgressDisplay_SetToDisplayText_00499a70_test.cpp'
         PassPattern = 'FABLETLC_PROGRESS_DISPLAY_TEXT_MODE_BEHAVIOR PASS'
     }
+    [pscustomobject]@{
+        Address = '00497b30'
+        Module = 'CProgressDisplay'
+        Source = '00/49/CProgressDisplay_GetPTextBank_00497b30.cpp'
+        TestSource = '00/49/CProgressDisplay_GetPTextBank_00497b30_test.cpp'
+        PassPattern = 'FABLETLC_PROGRESS_TEXT_BANK_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099ebf0'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_Constructor_0099ebf0.cpp'
+        TestSource = '00/99/CCharString_Constructor_0099ebf0_test.cpp'
+        PassPattern = 'FABLETLC_CHAR_STRING_CONSTRUCTOR_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099eae0'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_Destructor_0099eae0.cpp'
+        TestSource = '00/99/CCharString_Destructor_0099eae0_test.cpp'
+        PassPattern = 'FABLETLC_CHAR_STRING_DESTRUCTOR_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099a2e0'
+        Module = 'NHeroInformationScreens::CBase'
+        Source = '00/99/CBase_RestoreVTable_0099a2e0.cpp'
+        TestSource = '00/99/CBase_RestoreVTable_0099a2e0_test.cpp'
+        PassPattern = 'FABLETLC_CBASE_RESTORE_A_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0aa60'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/a0/CTCInventoryBase_GetCanItemBeQuickAssigned_00a0aa60.cpp'
+        TestSource = '00/a0/CTCInventoryBase_GetCanItemBeQuickAssigned_00a0aa60_test.cpp'
+        PassPattern = 'FABLETLC_INVENTORY_QUICK_ASSIGN_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0aa90'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/a0/CTCInventoryBase_SetViewport_00a0aa90.cpp'
+        TestSource = '00/a0/CTCInventoryBase_SetViewport_00a0aa90_test.cpp'
+        PassPattern = 'FABLETLC_INVENTORY_VIEWPORT_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f2e20'
+        Module = 'CSurface'
+        Source = '00/9f/CSurface_Uninitialise_009f2e20.cpp'
+        TestSource = '00/9f/CSurface_Uninitialise_009f2e20_test.cpp'
+        PassPattern = 'FABLETLC_SURFACE_UNINITIALISE_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bef20'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_BeginRender_009bef20.cpp'
+        TestSource = '00/9b/CDisplayManager_BeginRender_009bef20_test.cpp'
+        PassPattern = 'FABLETLC_DISPLAY_BEGIN_RENDER_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bef50'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_EndRender_009bef50.cpp'
+        TestSource = '00/9b/CDisplayManager_EndRender_009bef50_test.cpp'
+        PassPattern = 'FABLETLC_DISPLAY_END_RENDER_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a6460'
+        Module = 'CSystemManager'
+        Source = '00/9a/CSystemManager_Update_009a6460.cpp'
+        TestSource = '00/9a/CSystemManager_Update_009a6460_test.cpp'
+        PassPattern = 'FABLETLC_SYSTEM_MANAGER_UPDATE_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0b560'
+        Module = 'NInventory::CTCInventoryBase'
+        Source = '00/a0/CTCInventoryBase_SetViewportFloat_00a0b560.cpp'
+        TestSource = '00/a0/CTCInventoryBase_SetViewportFloat_00a0b560_test.cpp'
+        PassPattern = 'FABLETLC_INVENTORY_FLOAT_VIEWPORT_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a10dc0'
+        Module = 'CRenderTarget'
+        Source = '00/a1/CRenderTarget_Constructor_00a10dc0.cpp'
+        TestSource = '00/a1/CRenderTarget_Constructor_00a10dc0_test.cpp'
+        PassPattern = 'FABLETLC_RENDER_TARGET_CONSTRUCTOR_BEHAVIOR PASS'
+    }
 )
 
 $oldPath = $env:PATH
