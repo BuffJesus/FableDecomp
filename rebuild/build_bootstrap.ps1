@@ -94,6 +94,9 @@ $render2DDrawListAdapterBehaviorSource = Join-Path $rebuildRoot 'tests\integrati
 $attachTextureToStageSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CRenderManagerCore_AttachTextureToStage_009a0cf0.cpp'
 $realiseRenderStateSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderStateManager_RealiseRenderState_00a058c0.cpp'
 $displaySetViewportSource = Join-Path $rebuildRoot 'src\compiled\00\9b\CDisplayManager_SetViewport_009bf490.cpp'
+$displaySetIntegerViewportSource = Join-Path $rebuildRoot 'src\compiled\00\9b\CDisplayManager_SetViewportInteger_009bef80.cpp'
+$postViewportShaderSource = Join-Path $rebuildRoot 'src\compiled\00\98\CShaderRenderManager_OnPostViewportChanged_009880d0.cpp'
+$viewportE2Source = Join-Path $rebuildRoot 'src\compiled\00\a0\Global_FableViewportE2_00a0aac0.cpp'
 $setRenderWindowSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderManagerCore_SetAWindow_00a0aa80.cpp'
 $clearRender2DVertexQueueSource = Join-Path $rebuildRoot 'src\compiled\00\9e\Render2DDrawList_CopyBlock_009e1440.cpp'
 $restoreRenderStateCaptureSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderStateManager_RestoreCaptureBlock_00a05840.cpp'
@@ -155,6 +158,9 @@ $render2DDrawListAdapterBehaviorObject = Join-Path $outDir 'render2d_draw_list_a
 $attachTextureToStageObject = Join-Path $outDir 'attach_texture_to_stage.obj'
 $realiseRenderStateObject = Join-Path $outDir 'realise_render_state.obj'
 $displaySetViewportObject = Join-Path $outDir 'display_set_viewport.obj'
+$displaySetIntegerViewportObject = Join-Path $outDir 'display_set_integer_viewport.obj'
+$postViewportShaderObject = Join-Path $outDir 'post_viewport_shader.obj'
+$viewportE2Object = Join-Path $outDir 'viewport_e2.obj'
 $setRenderWindowObject = Join-Path $outDir 'set_render_window.obj'
 $clearRender2DVertexQueueObject = Join-Path $outDir 'clear_render2d_vertex_queue.obj'
 $restoreRenderStateCaptureObject = Join-Path $outDir 'restore_render_state_capture.obj'
@@ -317,6 +323,9 @@ $required = @(
     $attachTextureToStageSource,
     $realiseRenderStateSource,
     $displaySetViewportSource,
+    $displaySetIntegerViewportSource,
+    $postViewportShaderSource,
+    $viewportE2Source,
     $setRenderWindowSource,
     $clearRender2DVertexQueueSource,
     $restoreRenderStateCaptureSource,
@@ -1261,6 +1270,33 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$displaySetIntegerViewportObject" $displaySetIntegerViewportSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $displaySetIntegerViewportObject)
+    ) {
+        throw 'Failed to compile recovered integer display viewport.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$postViewportShaderObject" $postViewportShaderSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $postViewportShaderObject)
+    ) {
+        throw 'Failed to compile recovered post-viewport shader notification.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$viewportE2Object" $viewportE2Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $viewportE2Object)
+    ) {
+        throw 'Failed to compile recovered viewport E2 target.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$setRenderWindowObject" $setRenderWindowSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -1476,6 +1512,9 @@ try {
         $attachTextureToStageObject,
         $realiseRenderStateObject,
         $displaySetViewportObject,
+        $displaySetIntegerViewportObject,
+        $postViewportShaderObject,
+        $viewportE2Object,
         $setRenderWindowObject,
         $clearRender2DVertexQueueObject,
         $restoreRenderStateCaptureObject,
@@ -1622,7 +1661,9 @@ try {
         $visualBootObject $visualBootD3D9Object `
         $render2DBatchPlanObject $render2DDrawListAdapterObject `
         $attachTextureToStageObject $realiseRenderStateObject `
-        $displaySetViewportObject $setRenderWindowObject `
+        $displaySetViewportObject $displaySetIntegerViewportObject `
+        $postViewportShaderObject $viewportE2Object `
+        $setRenderWindowObject `
         $clearRender2DVertexQueueObject `
         $restoreRenderStateCaptureObject `
         $textureCalcByteLengthObject `
@@ -1711,7 +1752,7 @@ try {
     } else {
         'AuthoredFallback'
     }
-    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DRecoveredPixelFormat"
+    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DRecoveredViewport"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude

@@ -26,10 +26,10 @@ class CDisplayManager
 public:
     void SetViewport(const C2DBoxF& viewport);
 
-    // Compact link seam for the retail integer overload. The complete retail
-    // endpoint clamps/caches the viewport, calls D3D9, then notifies the
-    // process-wide shader manager. A standalone renderer can supply this
-    // member with the same thiscall ABI and omit only that singleton callback.
+    // Link-visible name for the recovered retail integer overload at
+    // 0x009BEF80. C2DBoxI stores inclusive right/bottom edges; the endpoint
+    // converts them to exclusive D3D extents after clamping against the
+    // active render target.
     void SetIntegerViewportEndpoint(const C2DBoxI& viewport);
 };
 

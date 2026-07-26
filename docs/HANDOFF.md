@@ -1,6 +1,6 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 (recovered pixel-format closure).*
+*Last updated: 2026-07-26 (recovered viewport closure).*
 
 ## EgoMP donor review (2026-07-26)
 
@@ -69,10 +69,15 @@
   dependency. It performs the recovered core-to-display ownership hop, then
   the direct relocation-matched 112/112-byte
   `CDisplayManager::SetViewport(C2DBoxF) @ 0x009BF490` performs retail's x87
-  float-to-integer conversion. The earlier 189-byte extent was wrong. Its
-  compact integer endpoint issues D3D9 `SetViewport`; the full 479-byte retail
-  integer overload at `0x009BEF80` remains unrecovered because its final
-  post-viewport shader-manager callback requires the singleton graph.
+  float-to-integer conversion. The earlier 189-byte extent was wrong.
+  Its endpoint is now the full relocation-matched 479/479-byte retail integer
+  body at `0x009BEF80`: it clamps against the reconstructed display dimensions,
+  handles zero/full extents, updates the retail viewport and success caches,
+  calls D3D9 `SetViewport`, then notifies the shader singleton. The callback
+  `CShaderRenderManager::OnPostViewportChanged @ 0x009880D0` is an exact
+  11/11-byte match and sets update bit `0x00010000`; the conditional
+  `$E2 @ 0x00A0AAC0` dependency is an exact one-byte `ret`. The compact
+  authored integer endpoint has been removed.
 - Exact 79/79-byte `Render2DDrawList::CopyBlock @ 0x009E1440` is now the
   fourth live dependency. The lifecycle `CLEAR_VERTEX_QUEUE` event constructs
   the retail 0x20-byte controller view and invokes its exact full-clear path,
