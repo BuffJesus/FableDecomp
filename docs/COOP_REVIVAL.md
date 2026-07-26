@@ -7,6 +7,106 @@ this file, not the raw synthesis. Bytes from retail `Fable.exe`; cluster identit
 `ego_r.exe` + `FINDINGS.md` (same lineage — the CLAUDE.md ≥2-source bar is only weakly met for *names*,
 but the *opcode facts* are directly from retail bytes).
 
+---
+
+## Historical Context (Public Sources)
+
+Lionhead publicly described a local co-op system as early as 2003–2004. Key contemporary statements:
+
+- **Peter Molyneux** (multiple interviews archived by The Fable Historian and analysed in Avarice’s 2021 cut-content video):
+  - Up to **four players** on one machine.
+  - Drop-in design: a friend plugs in their save/memory card; their Hero is imported into the host world with **no restart or configuration**.
+  - Imported character becomes an **“Alter Ego”**.
+  - Players can freely swap who is the main Hero and who is the Alter Ego (White button on Xbox).
+  - Alter Ego can fight, gain experience, heal the main character, and trade items.
+  - Scoring system: helpful actions increase score; higher score makes it easier to take over as the main character.
+  - Described as “very cooperative but also a little bit competitive.”
+  - Explicitly stated the feature had already been tested internally.
+
+- **Dene Carter** also referenced multiplayer intentions in the same period.
+
+These statements align extremely well with the surviving code and assets.
+
+### Leftover Assets (Avarice cut-content research, 2021 + community RE)
+
+| Asset / System                     | Notes                                                                 | Relation to runtime code                  |
+|------------------------------------|-----------------------------------------------------------------------|-------------------------------------------|
+| `CCoopSpiritDef`                   | Multiple definitions (5+ active + null placeholder)                  | Matches `CTCCoopSpirit`                   |
+| Multiplayer orb / spirit effects   | Coloured orbs, particle emitters, lightning beam                     | Visuals for Alter Ego / spirit form       |
+| Scoreboard system                  | Full text strings + UI remnants + `Fable.exe` references             | Matches Molyneux’s scoring mechanic       |
+| Arena & Hero Centre leaderboards   | Unused score/leaderboard UI                                          | Competitive layer                         |
+| Trading stubs                      | References to inter-player trading                                   | Explicitly mentioned by Molyneux          |
+| Co-Op Spirit Player X entries      | Player-slot definitions                                              | Supports 4-player design                  |
+| Xbox Live–style UI elements        | Unused online UI pieces                                              | Suggests networked expansion was considered |
+
+Community consensus (fabletlcmod.com, 2000s–2010s): the system was a late-stage local co-op experiment that was cut for time. Full networking was never completed. No public mod ever restored live multi-player control of independent characters in the same world.
+
+---
+
+## Modern Reimagining — Grounded in Actual TLC Gameplay
+
+*Fable: The Lost Chapters* is a third-person action-RPG built around a single Hero whose every action permanently shapes their body, reputation, and the world. The co-op system was clearly designed to plug into that existing fantasy rather than replace it.
+
+### How TLC Actually Works (Relevant Systems)
+
+- **One Hero, one story.** The player is the Hero of Oakvale. Quest progress, world state, and most major choices belong to that single character.
+- **Combat is personal and multiplier-driven.** Melee, ranged, and Will (magic) feed a combat multiplier that multiplies experience. Flourish finishes, blocking, and timing matter.
+- **Experience is split into Strength / Skill / Will orbs.** These are spent at the Guild to raise attributes that permanently change the Hero’s appearance and capabilities.
+- **Alignment + Renown + Attractiveness/Scariness.** Good/evil deeds, trophies, clothing, hair, and tattoos all visibly morph the Hero and change how NPCs react.
+- **Boasting and public performance.** Players can boast before quests for extra renown and gold, turning heroism into a public spectacle.
+- **The world reacts to the Hero.** Villagers cheer, flee, or attack based on renown and alignment. Houses can be bought, trophies displayed, titles earned.
+
+Any co-op design that ignored these systems would have felt bolted-on. The surviving code and Molyneux’s statements suggest Lionhead tried to *extend* them.
+
+### Reconstructed “Alter Ego” Fantasy
+
+**Core idea**
+A second (or third/fourth) player does not start a parallel campaign. They import their own Hero into the *host’s* world as a living **Alter Ego** — a second expression of heroism that can fight, earn, and support, but does not own the story.
+
+**How it would have played in practice**
+
+1. **Drop-in**
+   Friend plugs in controller or loads their save. Their Hero appears as a `CTCCoopSpirit` near the Main Hero. Appearance, equipment, and base stats come from the imported save. No lobby, no reload.
+
+2. **Main Hero vs Alter Ego**
+   - Only the Main Hero advances gold quests, opens Demon Doors tied to story, and triggers major world changes.
+   - Alter Egos can fight, collect experience orbs, heal the Main Hero, open chests, and interact with most of the world.
+   - A single button (White) swaps roles. The previous Main becomes an Alter Ego and vice-versa. This is why `IsMultiplayerGameActive` only checks for a seated non-main player — identity is fluid by design.
+
+3. **Experience & Progression**
+   Experience orbs collected by an Alter Ego still feed the *Main Hero’s* Strength/Skill/Will pools (or a shared pool). This keeps the single-Hero progression model intact while letting secondary players contribute power.
+   Renown gains from quests and trophies remain tied to the Main Hero, but Alter Egos can earn a separate **co-op score**.
+
+4. **The Score System (the competitive heart)**
+   Helpful actions raise co-op score:
+   - Healing or protecting the Main Hero
+   - Landing the killing blow on tough enemies
+   - Completing side objectives while the Main Hero handles the critical path
+   - Successful trades of rare items
+
+   Higher score shortens the cooldown (or raises the chance) of seizing Main Hero status.
+   Leftover Arena and Hero Centre scoreboard UI implies this score was meant to be public and persistent — a light rivalry over who is the better companion.
+
+5. **Alignment & Appearance Tension**
+   Because Alter Egos are imported Heroes, they bring their own alignment and appearance. A pure good Main Hero fighting alongside a heavily corrupted Alter Ego (or vice-versa) would have created immediate visual and social contrast — villagers reacting differently to each body. This is pure *Fable*.
+
+6. **Trading**
+   Items can move between Main Hero and Alter Ego inventories. Since the Alter Ego comes from another save, this is genuine cross-save trading — something almost no single-player RPG of the era offered.
+
+7. **Visual Language**
+   The multiplayer orb effects, coloured particles, and lightning-beam remnants suggest Alter Egos were not fully opaque physical bodies. A semi-ethereal or “bound spirit” look would have made it visually clear who currently owns the story while still allowing solid combat interaction.
+
+### What a Session Would Have Felt Like
+
+Two friends on a couch. One is currently the Main Hero, chasing a gold quest. The other is an Alter Ego, scoring points by protecting them, finishing enemies, and occasionally demanding a role swap after a big contribution. Between fights they trade a legendary weapon or a morph potion. At the Arena the scoreboard shows who has been the better companion this week. Alignment differences make NPCs treat them differently. The story still belongs to one Hero, but heroism itself has become a shared, slightly competitive performance.
+
+This design respects every major TLC system (single story owner, experience orbs, renown, alignment morphing, boasting, public reputation) while delivering the “cooperative but a little competitive” fantasy Molyneux described.
+
+### Why It Was Cut
+Making the above feel polished required robust save import, fair scoring, reliable replication, clear visual distinction for spirits, and desync handling. The code left behind is the skeleton of exactly this fantasy; the missing pieces were the ones that take the longest to finish.
+
+---
+
 ## 1. Enable gate — byte `[CNetworkClient+0x2662]` (OPCODE-PROVEN, high confidence)
 `CNetworkClient::Update` (`0x004AE9D0`) opens `mov al,[ecx+0x2662]; test al,al; je <ret>` — if the byte is
 **0, Update is a total no-op**. `CNetworkClient::InitialiseAsLocal` (`0x004AE940`) is what sets it: on its
