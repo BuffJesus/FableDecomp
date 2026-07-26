@@ -24,12 +24,12 @@ function Test-ProcessCommand([int]$ProcessId, [string]$Needle) {
 
 function Get-InputFingerprint {
     $inputs = @(
-        Get-ChildItem (Join-Path $root 'lift\reports\primary\code') -Filter '*.cpp' -File -ErrorAction SilentlyContinue
-        Get-ChildItem (Join-Path $root 'lift\reports\retry\code') -Filter '*.cpp' -File -ErrorAction SilentlyContinue
-        Get-ChildItem (Join-Path $root 'lift\reports\wave2\code') -Filter '*.cpp' -File -ErrorAction SilentlyContinue
-        Get-ChildItem (Join-Path $root 'lift\reports\wave3\code') -Filter '*.cpp' -File -ErrorAction SilentlyContinue
-        Get-ChildItem (Join-Path $rebuild 'src\compiled') -Filter '*.cpp' -File -ErrorAction SilentlyContinue
-        Get-ChildItem (Join-Path $rebuild 'tests') -Filter '*.cpp' -File -ErrorAction SilentlyContinue
+        Get-ChildItem (Join-Path $root 'lift\reports\primary\code') -Filter '*.cpp' -File -Recurse -ErrorAction SilentlyContinue
+        Get-ChildItem (Join-Path $root 'lift\reports\retry\code') -Filter '*.cpp' -File -Recurse -ErrorAction SilentlyContinue
+        Get-ChildItem (Join-Path $root 'lift\reports\wave2\code') -Filter '*.cpp' -File -Recurse -ErrorAction SilentlyContinue
+        Get-ChildItem (Join-Path $root 'lift\reports\wave3\code') -Filter '*.cpp' -File -Recurse -ErrorAction SilentlyContinue
+        Get-ChildItem (Join-Path $rebuild 'src\compiled') -Filter '*.cpp' -File -Recurse -ErrorAction SilentlyContinue
+        Get-ChildItem (Join-Path $rebuild 'tests') -Filter '*.cpp' -File -Recurse -ErrorAction SilentlyContinue
         Get-Item (Join-Path $root 'ghidra_out\engine_api.tsv') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $root 'ghidra_out\naming_stragglers\manifest.tsv') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $root 'ghidra_out\naming_stragglers\proposals.tsv') -ErrorAction SilentlyContinue
@@ -53,8 +53,12 @@ function Get-InputFingerprint {
         Get-Item (Join-Path $tools 'audit_forgefse_binding_slots.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'validate_tooling_sdk.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'build_reconstruction_backlog.py') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $tools 'build_promotion_queue.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'triage_naming_quality.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'write_decomp_dashboard.py') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $tools 'artifact_layout.py') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $tools 'organize_decomp_artifacts.py') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $tools 'update_readme_progress.py') -ErrorAction SilentlyContinue
     ) | Where-Object { $null -ne $_ } | Sort-Object FullName
     $description = ($inputs | ForEach-Object {
         "$($_.FullName)|$($_.Length)|$($_.LastWriteTimeUtc.Ticks)"
@@ -137,6 +141,11 @@ if (Test-Path -LiteralPath $namingPid) {
     }
 }
 
+& $python (Join-Path $tools 'organize_decomp_artifacts.py') --root $root --apply --allow-active
+if ($LASTEXITCODE -ne 0) {
+    throw "decomp artifact organization failed with exit code $LASTEXITCODE"
+}
+
 $fingerprint = Get-InputFingerprint
 if (-not $Force -and (Test-Path -LiteralPath $statePath)) {
     try {
@@ -210,6 +219,12 @@ try {
     }
     Invoke-Checked 'coverage dashboard' {
         & $python (Join-Path $tools 'write_decomp_dashboard.py') --root $root
+    }
+    Invoke-Checked 'public README progress' {
+        & $python (Join-Path $tools 'update_readme_progress.py') --root $root
+    }
+    Invoke-Checked 'artifact layout index' {
+        & $python (Join-Path $tools 'organize_decomp_artifacts.py') --root $root --apply --allow-active
     }
     $newState = [ordered]@{
         fingerprint = $fingerprint

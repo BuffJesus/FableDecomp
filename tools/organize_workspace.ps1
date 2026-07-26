@@ -99,6 +99,26 @@ if (Test-Path -LiteralPath $liftOrganizer) {
     & $liftOrganizer -MinimumAgeMinutes $MinimumAgeMinutes -WhatIf:$WhatIfPreference
 }
 
+$artifactOrganizer = Join-Path $root 'tools\organize_decomp_artifacts.py'
+if (Test-Path -LiteralPath $artifactOrganizer) {
+    $python = (Get-Command python -ErrorAction Stop).Source
+    $artifactArguments = @(
+        $artifactOrganizer
+        '--root'
+        $root
+        '--minimum-age-minutes'
+        [string]$MinimumAgeMinutes
+        '--json'
+    )
+    if (-not $WhatIfPreference) {
+        $artifactArguments += '--apply'
+    }
+    & $python @artifactArguments
+    if ($LASTEXITCODE -ne 0) {
+        throw "Decomp artifact organizer failed with exit code $LASTEXITCODE"
+    }
+}
+
 [pscustomobject]@{
     Root = $root
     Cutoff = $cutoff

@@ -78,6 +78,18 @@ def semantic_hazards(text: str) -> list[str]:
             hazards.add("possible-end-sentinel-dereference")
             break
 
+    # A generated wrapper occasionally takes the address of an unrelated input
+    # object, casts it to an engine interface, and immediately calls through it
+    # as a fallback. This is not an ordinary overlay of `this`; quarantine it
+    # until retail control flow proves the owner conversion.
+    if re.search(
+        r"reinterpret_cast\s*<[^>]*\*>\s*\(\s*&\s*[A-Za-z_]\w*\s*\)"
+        r"\s*->\s*[A-Za-z_]\w*\s*\(",
+        source,
+        re.DOTALL,
+    ):
+        hazards.add("address-reinterpret-call")
+
     return sorted(hazards)
 
 

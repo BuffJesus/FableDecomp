@@ -115,7 +115,7 @@ def liveness_inline(src):
     return variants
 
 def behaviour_ok(src, addr, wd):
-    tests = glob.glob(str(ROOT / f"rebuild/tests/*{addr}*_test.cpp"))
+    tests = glob.glob(str(ROOT / f"rebuild/tests/**/*{addr}*_test.cpp"), recursive=True)
     if not tests: return None  # unknown
     so = wd / "s.obj"; to = wd / "t.obj"; exe = wd / "t.exe"
     for p in (so, to, exe):
@@ -158,7 +158,7 @@ def main():
     o = oracle.get(addr)
     if not o: print(f"no oracle for {addr}"); return
     retail = bytes.fromhex(o["bytes"]); leaf = o["name"].rsplit("::", 1)[-1]
-    srcs = glob.glob(str(ROOT / f"rebuild/src/compiled/*{addr}*.cpp"))
+    srcs = glob.glob(str(ROOT / f"rebuild/src/compiled/**/*{addr}*.cpp"), recursive=True)
     if not srcs: print(f"no landed source for {addr}"); return
     base = Path(srcs[0]).read_text(encoding="utf-8")
     # build candidate variant set

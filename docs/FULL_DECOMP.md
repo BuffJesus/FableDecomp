@@ -67,13 +67,18 @@ prototype gaps in the generated reconstruction backlog while excluding every add
 by the primary, retry, Wave 2, or Wave 3 ledgers. A 35-minute target watchdog and two-attempt policy
 keep provider or Ghidra stalls from stopping later batches.
 
-Queue transcripts are separated from durable state: new attempts write to
-`lift/logs/<wave>/YYYY-MM-DD/`, YAML lives in `lift/config/`, durable queue control files live in
-`lift/state/`, and generated code/reviews live in `lift/reports/<wave>/`.
-`lift/scripts/organize_lift.ps1` safely sweeps older root-level stdout/stderr
-transcripts on every queue startup; it excludes recent and active-run files and never overwrites a
-collision. This keeps unattended operation bounded in directory density without adding another
-scheduled task or risking a live attempt.
+Queue transcripts are separated from durable state: attempts are archived under
+`lift/logs/<wave>/YYYY-MM-DD/<aa>/<bb>/<address>/`, YAML lives in `lift/config/`, durable queue
+control files live in `lift/state/`, and generated code lives in
+`lift/reports/<wave>/code/<aa>/<bb>/`. Each runner calls `lift/scripts/organize_lift.ps1` after a
+target completes. Its address and start-time boundary keep source and round reports together without
+claiming a neighboring target's files.
+
+The rebuild refresh runs `tools/organize_decomp_artifacts.py` at a queue-safe boundary. It keeps
+curated source, behavior tests, snapshots, compiler products, and verification products in the same
+two-byte address shards, rewrites catalog paths, and regenerates `rebuild/ARTIFACT_INDEX.tsv`.
+Discovery and refresh fingerprints are recursive. Collisions are preserved and fail the workflow
+for review rather than being overwritten.
 
 The final Wave 3 report/state move was completed without interrupting its active batch. The scheduled
 runner retains a guarded `lift/scripts/migrate_wave3_layout.ps1` preflight so an older checkout can
@@ -84,6 +89,11 @@ a focused behavior test, a clean signature audit, and retail `.text` comparison.
 rebuild refresh ingests Wave 3 reports, compiles the curated catalog, exports retail bytes for every
 compiled row, rebuilds the manifest/backlog, and updates `rebuild/COVERAGE.md` after the RE queue
 releases Ghidra.
+
+The one-function VC7.1 translation units remain intentionally isolated for stable retail-object
+comparison. Cohesive, human-facing refactoring belongs in `rebuild/modern/<subsystem>/`, where
+proven functions can be assembled into C++23 APIs without corrupting original-codegen evidence.
+The boundary and subsystem readiness criteria are in `docs/SOURCE_ARCHITECTURE.md`.
 
 The scheduled refresh and RE triggers intentionally share a 15-minute cadence. The queue runner now
 waits up to five minutes when it sees a live refresh PID, polling every 15 seconds and resuming as

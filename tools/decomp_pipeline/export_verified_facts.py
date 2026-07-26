@@ -19,7 +19,7 @@ def main():
     man = {r["address"].lower(): r for r in tsv(ROOT / "rebuild/manifest/functions.tsv")}
     audit = {r["address"].lower(): r["verdict"] for r in tsv(ROOT / "rebuild/compile-gate/parity_audit.tsv")}
     landed = {os.path.basename(p).split("_")[-1].replace(".cpp", "").lower()
-              for p in glob.glob(str(ROOT / "rebuild/src/compiled/*.cpp"))}
+              for p in glob.glob(str(ROOT / "rebuild/src/compiled/**/*.cpp"), recursive=True)}
     # genuine byte-matches only: audited EXACT/RELOC, plus freshly-landed not-yet-audited (verify_and_land gated)
     def parity_of(a):
         v = audit.get(a)
@@ -39,7 +39,7 @@ def main():
 
     # struct schema from byte-verified accessors/sizes
     classes = set()
-    for p in glob.glob(str(ROOT / "rebuild/src/compiled/*.cpp")):
+    for p in glob.glob(str(ROOT / "rebuild/src/compiled/**/*.cpp"), recursive=True):
         b = os.path.basename(p)
         if "_" in b: classes.add(b.split("_")[0])
     schema = {}

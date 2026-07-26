@@ -128,9 +128,12 @@ function Get-PendingRetryTargets {
 function Repair-CodeFilenames([string]$CodeDir) {
     if (-not (Test-Path -LiteralPath $CodeDir)) { return }
     foreach ($entry in $artifactNames.GetEnumerator()) {
-        $badPath = Join-Path $CodeDir "$($entry.Key)__====.cpp"
-        if (-not (Test-Path -LiteralPath $badPath)) { continue }
-        $goodPath = Join-Path $CodeDir "$($entry.Key)_$($entry.Value).cpp"
+        $badFile = Get-ChildItem -LiteralPath $CodeDir -Recurse -File `
+            -Filter "$($entry.Key)__====.cpp" -ErrorAction SilentlyContinue |
+            Select-Object -First 1
+        if ($null -eq $badFile) { continue }
+        $badPath = $badFile.FullName
+        $goodPath = Join-Path $badFile.DirectoryName "$($entry.Key)_$($entry.Value).cpp"
         if (Test-Path -LiteralPath $goodPath) {
             Write-SupervisorLog "WARN cannot repair duplicate artifact $badPath"
             continue

@@ -18,7 +18,7 @@ $reAgent = 'C:\Users\Cornelio\AppData\Local\Programs\Python\Python314\Scripts\re
 $env:RE_AGENT_CODEX_BIN = 'C:\Users\Cornelio\AppData\Local\JetBrains\Rider2026.2\acp-agents\.runtimes\node\24.13.0\node.exe'
 $env:RE_AGENT_CODEX_JS = 'C:\Users\Cornelio\AppData\Local\JetBrains\Rider2026.2\acp-agents\.runtimes\node\24.13.0\npm-cache\_npx\a758dee5a93640a8\node_modules\@openai\codex\bin\codex.js'
 $env:RE_AGENT_CODEX_MAX_ATTEMPTS = '3'
-$env:RE_AGENT_DECOMPILE_CACHE_DIR = 'D:\Documents\FableTLC\lift\.cache\re-agent-decompile'
+$decompileCacheRoot = 'D:\Documents\FableTLC\lift\.cache\re-agent-decompile'
 
 $targets = @(
     [pscustomobject]@{ Address = '0x00BFE050'; Slug = 'landscapelayer-loadforeground' },
@@ -78,10 +78,21 @@ try {
             continue
         }
 
+        $targetStartedAt = Get-Date
         for ($attempt = 1; $attempt -le $MaxAttemptsPerTarget; $attempt++) {
             $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
-            $runLogRoot = Join-Path $liftRoot "logs\wave1\$(Get-Date -Format 'yyyy-MM-dd')"
+            $addressKey = $target.Address.ToLowerInvariant().Replace('0x', '')
+            $addressRelative = Join-Path $addressKey.Substring(0, 2) (
+                Join-Path $addressKey.Substring(2, 2) $addressKey
+            )
+            $runLogRoot = Join-Path $liftRoot (
+                Join-Path "logs\wave1\$(Get-Date -Format 'yyyy-MM-dd')" $addressRelative
+            )
+            $env:RE_AGENT_DECOMPILE_CACHE_DIR = Join-Path $decompileCacheRoot (
+                Join-Path $addressKey.Substring(0, 2) $addressKey.Substring(2, 2)
+            )
             New-Item -ItemType Directory -Path $runLogRoot -Force | Out-Null
+            New-Item -ItemType Directory -Path $env:RE_AGENT_DECOMPILE_CACHE_DIR -Force | Out-Null
             $stdoutPath = Join-Path $runLogRoot "re-agent-$($target.Slug)-$stamp.stdout.log"
             $stderrPath = Join-Path $runLogRoot "re-agent-$($target.Slug)-$stamp.stderr.log"
             Write-QueueLog "RUN target=$($target.Address) slug=$($target.Slug) attempt=$attempt"
@@ -108,6 +119,13 @@ try {
                 Write-QueueLog "RETRY unrecorded target=$($target.Address) after wrapper failure"
                 Start-Sleep -Seconds 10
             }
+        }
+        try {
+            & (Join-Path $liftRoot 'scripts\organize_lift.ps1') `
+                -MinimumAgeMinutes 0 -Wave primary -Address $target.Address `
+                -StartedAt $targetStartedAt | Out-Null
+        } catch {
+            Write-QueueLog "WARN target artifact organization failed target=$($target.Address): $($_.Exception.Message)"
         }
 
         if (-not (Test-TargetRecorded $target.Address)) {

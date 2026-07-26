@@ -1,47 +1,35 @@
 # Active task list — decomp, custom quests, and downstream tools
 
-*Refreshed 2026-07-23 from the landed catalog. This supersedes stale session queues.*
+*Refreshed 2026-07-25 from the canonical organized-tree build.*
 
 ## Current verified state
 
-- `rebuild/src/compiled/`: **1,733** landed source files.
-- Last full parity audit: **1,697** true byte matches (`1,112 EXACT + 585 RELOC`),
-  `34 DIFFER`, `1 NO_ORACLE`.
-- Two new fse2 functions passed focused and independent gates after that audit:
-  - `0x0088ED20 CGameScriptInterface::CameraEarthquakeIntensityAtPos`
-  - `0x008912A0 CGameScriptInterface::StopOverrideMusic`
-- fse2: **2/76 landed, 74 remaining**.
+- Curated reconstruction: **1,850 / 1,850** VC7.1 compile + behavior PASS.
+- Retail parity: **1,523** (`914 EXACT + 609 RELOCATION_MATCH`), with
+  `199 DIFFER` and `128 ORACLE_MISSING`.
+- Auto-RE intake: **573 generated / 565 structural PASS**; semantic quarantine: **115**.
+- Durable source/tests are address-sharded and indexed by `rebuild/ARTIFACT_INDEX.tsv`.
 - Custom quest assets are staged offline: nine card defs, 36 custom English strings,
   and one childhood mysterious-NPC TNG addition. Nothing has been deployed to the live game.
 
 Generated queues:
 
-- `rebuild/backlog/active_candidate_queue.tsv` — 191 active candidates across fse2,
-  fse1 retry, and the small batch11–13 cleanup lanes.
-- `rebuild/backlog/fse2_remaining_ranked.tsv` — all 74 remaining fse2 addresses.
-- `rebuild/backlog/pending_batch_status.tsv` — landed/remaining counts for every staged batch.
+- `rebuild/backlog/promotion_queue.tsv` — ranked uncompiled candidates with semantic hazards.
+- `rebuild/backlog/forgefse-binding-queue.tsv` — current binding reconstruction lane.
+- `rebuild/backlog/functions.tsv` — canonical reconstruction gaps.
 
-## P0 — close and audit the two current decomp wins
+## P0 — review the current Quest-wrapper tail
 
-1. Run the full catalog audit after the automation lane is idle:
+The organized-tree full build and parity refresh are complete. Review these generated wrappers
+before any promotion:
 
-   ```powershell
-   python tools/decomp_pipeline/catalog_parity_audit.py --jobs 6
-   ```
-
-2. Confirm both `0088ed20` and `008912a0` report `RELOC`, with no new `DIFFER`.
-3. Regenerate downstream facts:
-
-   ```powershell
-   python tools/decomp_pipeline/export_verified_facts.py
-   ```
-
-4. Run `git diff --check`, then commit only the two source files, two tests, catalog
-   rows, oracle rows, refreshed audit, SDK facts, and this queue. Do not scoop up
-   automation-owned manifest/lift/backlog changes.
-
-Acceptance: the audit has 1,733 rows, both new addresses are true matches, tests pass,
-and the SDK export contains both functions.
+1. Reconstruct the failed lookup paths in `DisplayTutorial @ 0x0089E710`,
+   `EnableGuards @ 0x00896270`, `EnableVillagerDefTypes @ 0x008962D0`, and
+   `GetNumberOfItemsOfTypeInInventory @ 0x00897190`; each currently dereferences an end sentinel.
+2. Correct the unrelated-object fallback in the inventory wrapper and the implausible lip-sync
+   container identity in `ClearGossip @ 0x008AA010`.
+3. Verify the raw slot and null behavior in `GetWaterHeightAtPosition @ 0x0088DF60`.
+4. Promote only through VC7.1 compile, focused behavior, signature audit, and retail comparison.
 
 ## P0 — make the secret hunt playable
 
