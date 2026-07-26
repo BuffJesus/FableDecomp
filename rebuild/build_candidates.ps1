@@ -34356,6 +34356,13 @@ $catalog = @(
         TestSource = '00/9a/CRenderManagerCore_AttachTextureToStage_009a0cf0_test.cpp'
         PassPattern = 'FABLETLC_ATTACH_TEXTURE_TO_STAGE_BEHAVIOR PASS'
     }
+    [pscustomobject]@{
+        Address = '009e1440'
+        Module = 'Render2DDrawList'
+        Source = '00/9e/Render2DDrawList_CopyBlock_009e1440.cpp'
+        TestSource = '00/9e/Render2DDrawList_CopyBlock_009e1440_test.cpp'
+        PassPattern = 'FABLETLC_RENDER2D_COPY_BLOCK_BEHAVIOR PASS'
+    }
 )
 
 $oldPath = $env:PATH
