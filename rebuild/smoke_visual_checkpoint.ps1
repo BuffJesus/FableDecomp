@@ -24,12 +24,12 @@ try {
             break
         }
         $title = $process.MainWindowTitle
-        if ($title -like '*D3D9 Presented*') {
+        if ($title -like '*D3D9 Presented via Render2D*') {
             break
         }
     }
 
-    if ($title -notlike '*D3D9 Presented*') {
+    if ($title -notlike '*D3D9 Presented via Render2D*') {
         throw "D3D9 presentation was not observed; last title was '$title'."
     }
 

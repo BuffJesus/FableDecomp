@@ -15,7 +15,7 @@
   device and texture initialization succeeds.
 - The full Release bootstrap and all integration fixtures pass. A fresh live
   launch produced
-  `FableDecomp - D3D9 Presented - Retail Frontend + Progress Display Ready`,
+  `FableDecomp - D3D9 Presented via Render2D - Retail Frontend + Progress Display Ready`,
   captured the actual forest-and-Hero retail frame from the window, accepted
   `WM_CLOSE`, and exited zero. `smoke_visual_checkpoint.ps1` now gates that
   same successful-present title and clean shutdown automatically.
@@ -36,6 +36,10 @@
   cleanup; layout/capture restoration; and texture teardown. The fixture
   explicitly proves combined-projection dirtiness is low-byte bit `0x80`,
   not the 32-bit sign bit.
+- The live D3D9 frame now traverses that lifecycle seam. Planner flushes are
+  translated into adapter input, and the concrete D3D9 adapter handles state
+  application, FVF selection, texture attach/detach, and the actual
+  `DrawPrimitiveUP`; presentation is accepted only after a draw succeeds.
 - Ego PDB evidence corrected retail `0x00A0AA80` from the false inventory
   identity to `CRenderManagerCore::SetAWindow(C2DBoxF)`. The existing
   11-byte relocation match and behavior gate are preserved under the

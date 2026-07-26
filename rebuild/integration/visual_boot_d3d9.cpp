@@ -1,5 +1,6 @@
 #include "fable_visual_d3d9.h"
 #include "render2d_batch_plan.h"
+#include "render2d_draw_list_adapter.h"
 
 #include <string.h>
 
@@ -251,6 +252,114 @@ namespace
         g_ArtworkHeight = absoluteHeight;
         return true;
     }
+
+    class VisualRender2DAdapter : public IRender2DDrawListAdapter
+    {
+    public:
+        explicit VisualRender2DAdapter(
+            const FableVisualVertex* vertices)
+            : vertices_(vertices),
+              succeeded_(true),
+              drew_(false)
+        {
+        }
+
+        virtual void Invoke(
+            fable_u32 eventKind,
+            fable_u32 argument0,
+            fable_u32 argument1,
+            fable_u32 argument2,
+            fable_u32 argument3)
+        {
+            if (!succeeded_)
+                return;
+
+            if (eventKind == RENDER2D_ADAPTER_APPLY_STATE_BLOCK)
+            {
+                ApplyStateBlock();
+            }
+            else if (
+                eventKind ==
+                RENDER2D_ADAPTER_APPLY_VERTEX_SHADER)
+            {
+                FableD3DSetFvf setFvf =
+                    reinterpret_cast<FableD3DSetFvf>(
+                        g_Device->vtable[89]);
+                Record(setFvf(
+                    g_Device,
+                    kD3DFvfXyzRhwTexture1));
+            }
+            else if (
+                eventKind ==
+                RENDER2D_ADAPTER_ATTACH_TEXTURE)
+            {
+                FableD3DSetTexture setTexture =
+                    reinterpret_cast<FableD3DSetTexture>(
+                        g_Device->vtable[65]);
+                Record(setTexture(
+                    g_Device,
+                    argument0,
+                    argument1 != 0 ? g_Texture : 0));
+            }
+            else if (
+                eventKind ==
+                RENDER2D_ADAPTER_DRAW_PRIMITIVE_UP)
+            {
+                FableD3DDrawPrimitiveUp drawPrimitiveUp =
+                    reinterpret_cast<FableD3DDrawPrimitiveUp>(
+                        g_Device->vtable[83]);
+                const fable_u8* vertexBytes =
+                    reinterpret_cast<const fable_u8*>(vertices_);
+                Record(drawPrimitiveUp(
+                    g_Device,
+                    argument0,
+                    argument1,
+                    vertexBytes + argument2,
+                    argument3));
+                drew_ = succeeded_;
+            }
+        }
+
+        bool Succeeded() const
+        {
+            return succeeded_ && drew_;
+        }
+
+    private:
+        void Record(FableD3DResult result)
+        {
+            if (Failed(result))
+                succeeded_ = false;
+        }
+
+        void ApplyStateBlock()
+        {
+            FableD3DSetDwordState setRenderState =
+                reinterpret_cast<FableD3DSetDwordState>(
+                    g_Device->vtable[57]);
+            FableD3DSetStageState setTextureStageState =
+                reinterpret_cast<FableD3DSetStageState>(
+                    g_Device->vtable[67]);
+            FableD3DSetStageState setSamplerState =
+                reinterpret_cast<FableD3DSetStageState>(
+                    g_Device->vtable[69]);
+
+            Record(setRenderState(g_Device, 7, 0));
+            Record(setRenderState(g_Device, 22, 1));
+            Record(setRenderState(g_Device, 27, 0));
+            Record(setRenderState(g_Device, 137, 0));
+            Record(setTextureStageState(g_Device, 0, 1, 2));
+            Record(setTextureStageState(g_Device, 0, 2, 2));
+            Record(setTextureStageState(g_Device, 0, 4, 2));
+            Record(setTextureStageState(g_Device, 0, 5, 2));
+            Record(setSamplerState(g_Device, 0, 5, 2));
+            Record(setSamplerState(g_Device, 0, 6, 2));
+        }
+
+        const FableVisualVertex* vertices_;
+        bool succeeded_;
+        bool drew_;
+    };
 }
 
 bool FABLE_FASTCALL FableInitialiseVisualD3D9(
@@ -384,37 +493,9 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         return false;
     }
 
-    FableD3DSetTexture setTexture =
-        reinterpret_cast<FableD3DSetTexture>(
-            g_Device->vtable[65]);
-    FableD3DSetDwordState setRenderState =
-        reinterpret_cast<FableD3DSetDwordState>(
-            g_Device->vtable[57]);
-    FableD3DSetStageState setTextureStageState =
-        reinterpret_cast<FableD3DSetStageState>(
-            g_Device->vtable[67]);
-    FableD3DSetStageState setSamplerState =
-        reinterpret_cast<FableD3DSetStageState>(
-            g_Device->vtable[69]);
-    FableD3DSetFvf setFvf =
-        reinterpret_cast<FableD3DSetFvf>(
-            g_Device->vtable[89]);
-    FableD3DDrawPrimitiveUp drawPrimitiveUp =
-        reinterpret_cast<FableD3DDrawPrimitiveUp>(
-            g_Device->vtable[83]);
-
-    setRenderState(g_Device, 7, 0);
-    setRenderState(g_Device, 22, 1);
-    setRenderState(g_Device, 27, 0);
-    setRenderState(g_Device, 137, 0);
-    setTextureStageState(g_Device, 0, 1, 2);
-    setTextureStageState(g_Device, 0, 2, 2);
-    setTextureStageState(g_Device, 0, 4, 2);
-    setTextureStageState(g_Device, 0, 5, 2);
-    setSamplerState(g_Device, 0, 5, 2);
-    setSamplerState(g_Device, 0, 6, 2);
-    setFvf(g_Device, kD3DFvfXyzRhwTexture1);
-    FableD3DResult drawResult = 0;
+    Render2DAdapterFlush flushes[4];
+    fable_u32 flushCount = 0;
+    fable_u32 currentTexture = 0;
     for (fable_u32 eventIndex = 0;
          eventIndex < plan.count;
          ++eventIndex)
@@ -423,25 +504,35 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             plan.events[eventIndex];
         if (event.kind == FABLE_RENDER2D_PLAN_BIND_TEXTURE)
         {
-            drawResult = setTexture(g_Device, 0, g_Texture);
+            currentTexture = event.argument0;
         }
         else if (event.kind == FABLE_RENDER2D_PLAN_FLUSH)
         {
-            drawResult = drawPrimitiveUp(
-                g_Device,
-                event.argument0,
-                event.argument1,
-                vertices + event.argument2,
-                sizeof(FableVisualVertex));
-        }
-        if (Failed(drawResult))
-        {
-            endScene(g_Device);
-            return false;
+            if (flushCount >= 4)
+            {
+                endScene(g_Device);
+                return false;
+            }
+            Render2DAdapterFlush& flush =
+                flushes[flushCount++];
+            flush.textureIdentity = currentTexture;
+            flush.primitiveType = event.argument0;
+            flush.primitiveCount = event.argument1;
+            flush.vertexIndex = event.argument2;
         }
     }
+
+    Render2DAdapterInput adapterInput;
+    memset(&adapterInput, 0, sizeof(adapterInput));
+    adapterInput.entryVertexShadersEnabled = true;
+    adapterInput.flushes = flushes;
+    adapterInput.flushCount = flushCount;
+    VisualRender2DAdapter adapter(vertices);
+    FableDriveRender2DDrawListAdapter(
+        adapterInput,
+        adapter);
     const FableD3DResult endResult = endScene(g_Device);
-    if (Failed(drawResult) || Failed(endResult))
+    if (!adapter.Succeeded() || Failed(endResult))
     {
         return false;
     }
