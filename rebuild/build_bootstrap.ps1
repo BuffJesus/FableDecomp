@@ -82,6 +82,7 @@ $gfInitialiseEngineBoundarySource = Join-Path $rebuildRoot 'integration\gfinitia
 $progressDisplayStringBoundarySource = Join-Path $rebuildRoot 'integration\progress_display_string_boundary.cpp'
 $stage2BoundarySource = Join-Path $rebuildRoot 'integration\stage2_engine_boundary.cpp'
 $visualBootSource = Join-Path $rebuildRoot 'integration\visual_boot_checkpoint.cpp'
+$visualBootD3D9Source = Join-Path $rebuildRoot 'integration\visual_boot_d3d9.cpp'
 $visualBootFallbackArtwork = Join-Path $rebuildRoot 'assets\boot\fabledecomp_boot_concept.png'
 $visualBootArtwork = $visualBootFallbackArtwork
 $textureBuilder = Join-Path $workspaceRoot 'tools\texture_build.py'
@@ -128,6 +129,7 @@ $stage2BoundaryObject = Join-Path $outDir 'stage2_engine_boundary.obj'
 $stage3BoundaryObject = Join-Path $outDir 'stage3_engine_boundary.obj'
 $visualBoundaryObject = Join-Path $outDir 'visual_engine_boundary.obj'
 $visualBootObject = Join-Path $outDir 'visual_boot_checkpoint.obj'
+$visualBootD3D9Object = Join-Path $outDir 'visual_boot_d3d9.obj'
 $visualBootBehaviorObject = Join-Path $outDir 'visual_boot_checkpoint_behavior.obj'
 $visualBootRetailArtwork = Join-Path $outDir 'frontend_backdrop_01.png'
 $visualBootBitmap = Join-Path $outDir 'visual_boot_artwork.bmp'
@@ -267,6 +269,7 @@ $required = @(
     $progressDisplayStringBoundarySource,
     $stage2BoundarySource,
     $visualBootSource,
+    $visualBootD3D9Source,
     $visualBootFallbackArtwork,
     $visualBootBehaviorSource,
     $gfmainPhase1BehaviorSource,
@@ -1121,6 +1124,15 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
+        "/Fo$visualBootD3D9Object" $visualBootD3D9Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $visualBootD3D9Object)
+    ) {
+        throw 'Failed to compile the D3D9 visual presenter.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
         "/Fo$visualBootBehaviorObject" $visualBootBehaviorSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -1247,6 +1259,7 @@ try {
         $getProgressDisplayObject,
         $visualBoundaryObject,
         $visualBootObject,
+        $visualBootD3D9Object,
         $setCurrentPathObject,
         $getProjectPathObject,
         $wideStringConstructorObject,
@@ -1370,7 +1383,7 @@ try {
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:windows `
         "/out:$visualCheckpointExecutable" `
         $winMainObject @visualRuntimeObjects $visualBootResource `
-        user32.lib gdi32.lib
+        user32.lib gdi32.lib d3d9.lib
     if (
         $LASTEXITCODE -ne 0 -or
         -not (Test-Path -LiteralPath $visualCheckpointExecutable)
@@ -1380,8 +1393,9 @@ try {
 
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
         "/out:$visualBootBehaviorExecutable" `
-        $visualBootObject $visualBootBehaviorObject $visualBootResource `
-        user32.lib gdi32.lib
+        $visualBootObject $visualBootD3D9Object `
+        $visualBootBehaviorObject $visualBootResource `
+        user32.lib gdi32.lib d3d9.lib
     if (
         $LASTEXITCODE -ne 0 -or
         -not (Test-Path -LiteralPath $visualBootBehaviorExecutable)
@@ -1410,7 +1424,7 @@ try {
     } else {
         'AuthoredFallback'
     }
-    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade"
+    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9TexturedQuad"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude
