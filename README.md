@@ -22,9 +22,9 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Analysis DB | Usable reconstruction/navigation names | 99.211% |
 | Analysis DB | Calling convention known | 77.676% |
 | Analysis DB | Complete non-`undefined` prototype | 69.051% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **4,883** |
-| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **4,556** (9.19%) |
-| Reconstruction | — of which byte-**identical** (no relocation masking) | 2,674 (5.40%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **4,888** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **4,561** (9.20%) |
+| Reconstruction | — of which byte-**identical** (no relocation masking) | 2,675 (5.40%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
 | Auto-RE intake | Generated candidates / structural checker PASS | 632 / 619 |
@@ -38,10 +38,10 @@ separately and is never counted as reconstructed merely because a structural che
 The successful refresh also synchronizes this table automatically; GitHub is updated at reviewed
 checkpoints rather than publishing live, unreviewed queue output.
 The first **5%** compiled-byte-match milestone (2,478 functions) is passed; current verified retail
-parity is **9.19%** of the 49,552-function catalog. The lower match count than an earlier README is an
+parity is **9.20%** of the 49,552-function catalog. The lower match count than an earlier README is an
 audit reconciliation, not deleted source: the unified gate now exposes every `DIFFER` and missing
 function-start oracle instead of mixing older mass-land and curated-subset totals.
-The 9.19% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
+The 9.20% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
 a second lens over the 3,952-byte GFMain coordinator: they measure proven direct call sites and
 callable integration phases, not percentage of total engineering time. Repeated calls count
 separately because every occurrence must be linked in the correct lifetime and control-flow
@@ -128,7 +128,7 @@ with `rebuild/build_bootstrap.ps1`, then launch it from `rebuild/build/bootstrap
 |---|---|---|
 | First actual retail image | **Runnable now: `FRONTEND_BACKDROP_01` is decoded from `frontend.big` and shown by the reconstructed executable** | Presentation currently uses the authored GDI window rather than Lionhead's runtime archive/texture/renderer stack. |
 | First recovered retail progress setup | **Coordinator, setup, 0x88-byte constructor, retained owner, counted getter, active-state query, and text-mode transition are connected; the primary/fallback text-bank selector is recovered** | Populate the retail bank owners, integrate the corrected 418-byte `StartProgress`, and recover texture initialization. |
-| Retail-rendered frame/frontend | **The 489-byte `RenderProgress` boundary is mapped and 10/17 direct dependencies are retail matches** | Recover clear/bind/draw/2D-submit/present/state-restore, runtime archive and texture ownership, then connect the update/render/present loop. |
+| Retail-rendered frame/frontend | **The 489-byte `RenderProgress` boundary is mapped and 15/17 direct dependencies are retail matches** | Recover the 5,101-byte retail-display builder and 3,344-byte 2D draw-list submitter, then replace the GDI bridge with the runtime render/present loop. |
 | Retail intro video | **Farther than the first renderer frame** | Add the movie/Bink ownership and decode path, timing, audio, and frame presentation after renderer/display initialization. |
 
 The “actual image” milestone is therefore reached, but “the game is rendering” is not. Retail
