@@ -34377,6 +34377,20 @@ $catalog = @(
         TestSource = '00/9e/Render2DDrawList_CopyBlock_009e1440_test.cpp'
         PassPattern = 'FABLETLC_RENDER2D_COPY_BLOCK_BEHAVIOR PASS'
     }
+    [pscustomobject]@{
+        Address = '009df060'
+        Module = 'CStateBlockFunctionSold'
+        Source = '00/9d/CStateBlockFunctionSold_Apply_009df060.cpp'
+        TestSource = '00/9d/CStateBlockFunctionSold_Apply_009df060_test.cpp'
+        PassPattern = 'FABLETLC_STATE_BLOCK_SOLD_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e15e0'
+        Module = 'std::vector<CQuickDrawTriInfo>'
+        Source = '00/9e/CQuickDrawTriInfoVector_Erase_009e15e0.cpp'
+        TestSource = '00/9e/CQuickDrawTriInfoVector_Erase_009e15e0_test.cpp'
+        PassPattern = 'FABLETLC_QUICKDRAW_ERASE_BEHAVIOR PASS'
+    }
 )
 
 $oldPath = $env:PATH

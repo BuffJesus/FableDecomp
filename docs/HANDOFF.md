@@ -1,11 +1,11 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 15:45 MDT (draw-list copy and shader transform closure).*
+*Last updated: 2026-07-26 16:02 MDT (direct draw-list dependency closure).*
 
 ## Shader binding/render-state closure (2026-07-26)
 
-- Twelve more `Render2DDrawList` dependencies are behavior-gated canonical
-  sources, raising that family from **11/25 to 23/25**; **21/25** already
+- Fourteen more `Render2DDrawList` dependencies are behavior-gated canonical
+  sources, raising that family from **11/25 to 25/25**; **21/25** already
   achieve retail byte parity. `DrawRetailDisplay` remains **13/37**.
   `CShaderRenderManager::ApplyVertexShader @ 0x00988020` is a true
   **176/176-byte exact match** and covers shader-mode reconciliation, the
@@ -59,18 +59,26 @@
 - `UpdateAmbient @ 0x00989760` is also behavior-gated and has the correct
   85-byte size, vector/register upload, and dirty clear. Its remaining
   difference is instruction scheduling after the layout-register load.
-- The canonical VC7.1 compile/behavior gate passes **4,915 / 4,915**. Retail
+- `CStateBlockFunctionSold::Apply @ 0x009DF060` is behavior-gated across all
+  17 tracked render/texture/sampler state transitions, capture snapshots,
+  dirty queueing, cached no-ops, and already-captured/already-queued states.
+  Its VC7.1 body is the exact 1,736-byte retail length and is only 24
+  non-relocation bytes away in a repeated two-register allocation.
+- `std::vector<CQuickDrawTriInfo>::erase @ 0x009E15E0` is behavior-gated for
+  middle, empty, and tail ranges. Ego PDB confirms the identity; its 99-byte
+  residue is isolated to EBX/EBP allocation around the non-scalar copy and
+  destruction loop.
+- The canonical VC7.1 compile/behavior gate passes **4,917 / 4,917**. Retail
   parity is **2,687 exact + 1,899 relocation-normalized = 4,586 / 49,552
-  (9.25%)**; honest residue remains 201 differences and 128 missing
+  (9.25%)**; honest residue remains 203 differences and 128 missing
   function-start oracles.
 - The full Release bootstrap rebuilt with the genuine retail
   `FRONTEND_BACKDROP_01`. A fresh live launch opened
   `FableTLC-Reconstruction-VisualCheckpoint.exe`, created the expected
   top-level retail-art window, accepted `WM_CLOSE`, and exited zero.
-- Two direct dependencies remain behaviorally unrecovered:
-  `CStateBlockFunctionSold::Apply @ 0x009DF060` and the corrected
-  `vector<CQuickDrawTriInfo>::erase @ 0x009E15E0`. Ambient and combined
-  projection remain additional byte-parity residues. Replacing the current GDI
+- No direct `Render2DDrawList` dependency remains behaviorally unrecovered.
+  Sold, QuickDraw erase, ambient, and combined projection are the four
+  remaining byte-parity residues. Replacing the current GDI
   presentation bridge with recovered Lionhead renderer submission remains
   the central visual-closure boundary.
 
