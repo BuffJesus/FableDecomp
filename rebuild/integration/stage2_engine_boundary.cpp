@@ -270,6 +270,13 @@ extern "C" long FABLE_FASTCALL GFMain(
         return 1;
     }
 
+    CCountedProgressDisplay progressDisplay(0);
+    GetProgressDisplay(&progressDisplay);
+    FableSetVisualProgressDisplayState(
+        progressDisplay.object != 0,
+        progressDisplay.object != 0 &&
+            progressDisplay.object->IsActive());
+
     const long visualResult = FableRunVisualBootCheckpoint(
         instance,
         commandLine,

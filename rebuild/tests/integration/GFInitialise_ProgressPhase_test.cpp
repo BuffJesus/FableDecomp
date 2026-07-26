@@ -51,6 +51,22 @@ int main()
         return 3;
     }
 
+    {
+        CCountedProgressDisplay snapshot(0);
+        if (
+            GetProgressDisplay(&snapshot) != &snapshot ||
+            snapshot.object != g_FableProgressDisplayObject_013CAA38 ||
+            snapshot.reference !=
+                g_FableProgressDisplayReference_013CAA3C ||
+            snapshot.reference->owners != 2 ||
+            snapshot.object->IsActive())
+        {
+            return 8;
+        }
+    }
+    if (g_FableProgressDisplayReference_013CAA3C->owners != 1)
+        return 9;
+
     FableReleaseProgressDisplayBoundary();
     if (
         g_FableProgressDisplayObject_013CAA38 != 0 ||

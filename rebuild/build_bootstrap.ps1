@@ -21,8 +21,12 @@ $progressSetupSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GFIniti
 $progressSetupBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GFInitialiseSetupProgressDisplay_00413120_test.cpp'
 $progressDisplayConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\49\CProgressDisplay_Constructor_00499ce0.cpp'
 $progressDisplayConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\49\CProgressDisplay_Constructor_00499ce0_test.cpp'
+$progressDisplayIsActiveSource = Join-Path $rebuildRoot 'src\compiled\00\49\CProgressDisplay_IsActive_0049b460.cpp'
+$progressDisplayIsActiveBehaviorSource = Join-Path $rebuildRoot 'tests\00\49\CProgressDisplay_IsActive_0049b460_test.cpp'
 $setProgressDisplaySource = Join-Path $rebuildRoot 'src\compiled\00\9e\Global_SetProgressDisplay_009e9fd0.cpp'
 $setProgressDisplayBehaviorSource = Join-Path $rebuildRoot 'tests\00\9e\Global_SetProgressDisplay_009e9fd0_test.cpp'
+$getProgressDisplaySource = Join-Path $rebuildRoot 'src\compiled\00\9e\Global_GetProgressDisplay_009ea060.cpp'
+$getProgressDisplayBehaviorSource = Join-Path $rebuildRoot 'tests\00\9e\Global_GetProgressDisplay_009ea060_test.cpp'
 $setCurrentPathSource = Join-Path $rebuildRoot 'src\compiled\00\99\CAFile_SetCurrentPath_009974f0.cpp'
 $setCurrentPathBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CAFile_SetCurrentPath_009974f0_test.cpp'
 $getProjectPathSource = Join-Path $rebuildRoot 'src\compiled\00\99\CAFile_GetProjectPath_00997510.cpp'
@@ -87,7 +91,9 @@ $stage1BoundaryObject = Join-Path $outDir 'stage1_engine_boundary.obj'
 $progressSetupObject = Join-Path $outDir 'gfinitialise_setup_progress.obj'
 $progressSetupBehaviorObject = Join-Path $outDir 'gfinitialise_setup_progress_behavior.obj'
 $progressDisplayConstructorObject = Join-Path $outDir 'progress-display-constructor.obj'
+$progressDisplayIsActiveObject = Join-Path $outDir 'progress-display-is-active.obj'
 $setProgressDisplayObject = Join-Path $outDir 'set-progress-display.obj'
+$getProgressDisplayObject = Join-Path $outDir 'get-progress-display.obj'
 $progressDisplayStringBoundaryObject = Join-Path $outDir 'progress-display-string-boundary.obj'
 $setCurrentPathObject = Join-Path $outDir 'set_current_path.obj'
 $setCurrentPathBehaviorObject = Join-Path $outDir 'set_current_path_behavior.obj'
@@ -147,7 +153,9 @@ $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $gfInitialisePassPattern = 'FABLETLC_GFINITIALISE_BEHAVIOR PASS'
 $progressSetupPassPattern = 'FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS'
 $progressDisplayConstructorPassPattern = 'FABLETLC_PROGRESS_DISPLAY_CONSTRUCTOR_BEHAVIOR PASS'
+$progressDisplayIsActivePassPattern = 'FABLETLC_PROGRESS_DISPLAY_IS_ACTIVE_BEHAVIOR PASS'
 $setProgressDisplayPassPattern = 'FABLETLC_SET_PROGRESS_DISPLAY_BEHAVIOR PASS'
+$getProgressDisplayPassPattern = 'FABLETLC_GET_PROGRESS_DISPLAY_BEHAVIOR PASS'
 $setCurrentPathPassPattern = 'FABLETLC_SET_CURRENT_PATH_BEHAVIOR PASS'
 $getProjectPathPassPattern = 'FABLETLC_GET_PROJECT_PATH_BEHAVIOR PASS'
 $wideStringConstructorPassPattern = 'FABLETLC_WIDE_STRING_CONSTRUCTOR_BEHAVIOR PASS'
@@ -188,8 +196,12 @@ $required = @(
     $progressSetupBehaviorSource,
     $progressDisplayConstructorSource,
     $progressDisplayConstructorBehaviorSource,
+    $progressDisplayIsActiveSource,
+    $progressDisplayIsActiveBehaviorSource,
     $setProgressDisplaySource,
     $setProgressDisplayBehaviorSource,
+    $getProgressDisplaySource,
+    $getProgressDisplayBehaviorSource,
     $setCurrentPathSource,
     $setCurrentPathBehaviorSource,
     $getProjectPathSource,
@@ -369,12 +381,28 @@ try {
         -PassPattern $progressDisplayConstructorPassPattern
 
     Invoke-VerifiedLeaf `
+        -Address '0049b460' `
+        -Description 'CProgressDisplay active-state query' `
+        -Source $progressDisplayIsActiveSource `
+        -BehaviorSource $progressDisplayIsActiveBehaviorSource `
+        -OutputStem 'progress-display-is-active' `
+        -PassPattern $progressDisplayIsActivePassPattern
+
+    Invoke-VerifiedLeaf `
         -Address '009e9fd0' `
         -Description 'retained progress-display owner assignment' `
         -Source $setProgressDisplaySource `
         -BehaviorSource $setProgressDisplayBehaviorSource `
         -OutputStem 'set-progress-display' `
         -PassPattern $setProgressDisplayPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009ea060' `
+        -Description 'retained progress-display owner query' `
+        -Source $getProgressDisplaySource `
+        -BehaviorSource $getProgressDisplayBehaviorSource `
+        -OutputStem 'get-progress-display' `
+        -PassPattern $getProgressDisplayPassPattern
 
     Invoke-VerifiedLeaf `
         -Address '00403b10' `
@@ -1116,7 +1144,9 @@ try {
         $gfInitialiseEngineBoundaryObject,
         $progressSetupObject,
         $progressDisplayConstructorObject,
+        $progressDisplayIsActiveObject,
         $setProgressDisplayObject,
+        $getProgressDisplayObject,
         $visualBoundaryObject,
         $visualBootObject,
         $setCurrentPathObject,
@@ -1180,7 +1210,9 @@ try {
         $gfInitialiseEngineBoundaryObject `
         $progressSetupObject `
         $progressDisplayConstructorObject `
+        $progressDisplayIsActiveObject `
         $setProgressDisplayObject `
+        $getProgressDisplayObject `
         $progressDisplayStringBoundaryObject `
         $wideStringConstructorObject `
         $wideStringDestructorObject `

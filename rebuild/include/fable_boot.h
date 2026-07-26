@@ -63,7 +63,7 @@ struct CProgressDisplay
     double displayTime68;
     double completionTime70;
     fable_u8 flag78;
-    fable_u8 active79;
+    bool active79;
     fable_u8 drawRetail7A;
     fable_u8 flag7B;
     fable_u8 displayText7C;
@@ -75,6 +75,7 @@ struct CProgressDisplay
     fable_u8 unknown82[6];
 
     CProgressDisplay();
+    bool IsActive() const;
 
     __forceinline static void* operator new(unsigned int size)
     {
@@ -125,6 +126,8 @@ struct CCountedProgressDisplay
 
 fable_u8 FABLE_FASTCALL GFInitialiseState_Begin(GFInitialiseState* state);
 void FABLE_FASTCALL SetProgressDisplay(CCountedProgressDisplay* display);
+CCountedProgressDisplay* FABLE_FASTCALL GetProgressDisplay(
+    CCountedProgressDisplay* result);
 void FABLE_FASTCALL FableReleaseProgressDisplayBoundary();
 
 fable_u8 FABLE_FASTCALL GFInitialise_SetupProgressDisplay(

@@ -202,6 +202,10 @@ namespace
     const int kBootArtworkResource = 101;
     const char kWindowClassName[] = "FableDecompVisualBootCheckpoint";
     const char kWindowTitle[] = "FableDecomp - Visual Boot Checkpoint";
+    const char kProgressReadyWindowTitle[] =
+        "FableDecomp - Retail Progress Display Ready";
+    const char kProgressActiveWindowTitle[] =
+        "FableDecomp - Retail Progress Display Active";
 
     const FableUint kImageBitmap = 0;
     const FableUint kLoadCreatedDibSection = 0x00002000;
@@ -220,6 +224,8 @@ namespace
 
     FableBitmap g_BootArtwork = 0;
     FableBitmapInfo g_BootArtworkInfo = {};
+    bool g_RetailProgressDisplayPresent = false;
+    bool g_RetailProgressDisplayActive = false;
 
     const char* IntegerResource(int identifier)
     {
@@ -314,6 +320,14 @@ namespace
     }
 }
 
+void FABLE_FASTCALL FableSetVisualProgressDisplayState(
+    bool present,
+    bool active)
+{
+    g_RetailProgressDisplayPresent = present;
+    g_RetailProgressDisplayActive = active;
+}
+
 long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     FableInstanceHandle instance,
     char* commandLine,
@@ -368,10 +382,18 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         0,
         0);
 
+    const char* windowTitle = kWindowTitle;
+    if (g_RetailProgressDisplayPresent)
+    {
+        windowTitle = g_RetailProgressDisplayActive
+            ? kProgressActiveWindowTitle
+            : kProgressReadyWindowTitle;
+    }
+
     FableWindow window = CreateWindowExA(
         0,
         kWindowClassName,
-        kWindowTitle,
+        windowTitle,
         kOverlappedWindow,
         kUseDefaultPosition,
         kUseDefaultPosition,
