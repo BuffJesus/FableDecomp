@@ -1,6 +1,29 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-25 19:32 MDT (Stage-1 WinMain plus first Stage-2 leaf).*
+*Last updated: 2026-07-25 21:07 MDT (first responsive visual checkpoint).*
+
+## Visible boot checkpoint (2026-07-25)
+
+- The complete VC7.1 bootstrap gate passes through Stage 3, with GFMain Phase 3
+  still at 19/34 proven direct calls.
+- `FableTLC-Reconstruction-VisualCheckpoint.exe` now follows the retail-matched
+  WinMain and reconstructed GFMain Phases 1/2, then opens a responsive 1280x720
+  Win32 window containing the project-owner boot artwork.
+- The window handoff is explicitly authored scaffolding, not a claim about the
+  retail renderer, archive loading, or game loop. Its embedded BMP is generated
+  under `rebuild/build/`; the source PNG remains canonical and unchanged.
+- A focused fixture invokes `--verify-visual-resource` directly, so the build
+  receives the visual boundary's real result and validates the embedded artwork
+  without opening or hanging on a window. A normal launch remains open until
+  the user closes it.
+- A normal-launch smoke test confirmed a responsive window titled
+  `FableDecomp - Visual Boot Checkpoint` and a clean exit.
+- The Wave 3 queue remains live under PID 4184. `0x008A86C0` exhausted its two
+  bounded attempts; subsequent targets `0x008A9C40` and `0x008A8F20` completed
+  their first bounded runs, and the worker advanced to ForgeFSE binding
+  `0x008A1B10`. The scheduled 15-minute launcher skips while this worker is live.
+
+*Previous checkpoint: 2026-07-25 19:32 MDT (Stage-1 WinMain plus first Stage-2 leaf).*
 
 ## Runnable checkpoint (2026-07-25)
 

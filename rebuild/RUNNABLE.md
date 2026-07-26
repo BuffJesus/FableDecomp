@@ -17,6 +17,14 @@ executable/project path with promoted retail functions, crosses a
 counted console-variable boundary, then continues through the basic-install
 and failure-policy sequence to the Phase 3 boundary.
 
+**A visible authored checkpoint is now runnable:**
+`FableTLC-Reconstruction-VisualCheckpoint.exe` follows that same matched
+`WinMain` and reconstructed Phase 1/2 path, then opens a responsive 1280x720
+Win32 window containing the project boot artwork. The PNG is converted to a
+build-only bitmap and embedded as a resource. This proves executable-to-window
+handoff; it is deliberately labeled reconstruction scaffolding, not recovered
+retail renderer, archive-loading, or game-loop behavior.
+
 The first GFInitialise leaf is also promoted:
 `GFInitialise_SetupProgressDisplay @ 0x00413120` is a 128-byte
 relocation-normalized match with allocation, null-allocation, reference
@@ -78,13 +86,15 @@ Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,
 `FABLETLC_CBASE_RESTORE_A_BEHAVIOR PASS`,
 `FABLETLC_CBASE_RESTORE_B_BEHAVIOR PASS`,
 `FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS`,
-`FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS`, and
-`STAGE3_STARTUP PASS`.
+`FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS`,
+`FABLETLC_VISUAL_BOOT_BEHAVIOR PASS`,
+`STAGE3_STARTUP PASS`, and
+`VISUAL_BOOT_CHECKPOINT PASS`.
 Generated products stay under the ignored `rebuild/build/` tree.
 
 Stages 2 and 3 use explicit integration boundaries and are not claimed as a
 retail-matching GFMain. It does **not** yet initialize Lionhead engine
-services, open the retail window, load assets, or enter the game loop.
+services, recover the retail window/renderer, load archives, or enter the game loop.
 
 ## Retail boot spine
 
@@ -187,7 +197,8 @@ Phase closure order:
   **Implemented; exact CRT-entry parity remains a separate task.**
 - **Stage 2 — engine bootstrap:** reconstructed GFMain/GFInitialise reaches
   the first visible progress-display state with controlled platform shims.
-  **The Phase 1 checkpoint is implemented; visible progress remains ahead.**
+  **The Phase 1 checkpoint and an authored visual shell are implemented;
+  recovered retail progress-display wiring remains ahead.**
 - **Stage 3 — data bootstrap:** compiled definitions and core archives load
   far enough to create the main game component.
 - **Stage 4 — game loop:** the reconstructed process pumps input, updates a

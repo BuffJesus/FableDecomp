@@ -83,6 +83,13 @@ proves readable state propagation, conditional installer creation, startup-latch
 failure policy, and balanced counted ownership. Stage 2 remains independently runnable so the
 Phase 1 checkpoint does not disappear as later phases are added.
 
+There is now a real visible checkpoint as well:
+`FableTLC-Reconstruction-VisualCheckpoint.exe` follows the retail-matched `WinMain` and the same
+reconstructed Phase 1/2 startup path, then opens a responsive 1280x720 Win32 window containing the
+project boot artwork. This last handoff is explicitly authored reconstruction scaffolding—not a
+claim that the retail window, renderer, archives, or game loop have been recovered. Build it with
+`rebuild/build_bootstrap.ps1`, then launch it from `rebuild/build/bootstrap-Release/`.
+
 Phase 2 recovery has reached all seven direct calls in retail order. PDB and donor lineage resolves
 the repeated one-byte
 `$E2` leaf as the compiled-out `NProfileTimer::EndProfile`, and the retail executable confirms the
@@ -103,9 +110,9 @@ Two additional seven-byte cleanup leaves restore the shared `CBase` vtable; thei
 function names preserve the still-unknown derived persistence owners.
 
 The project-owner-provided [boot-screen concept](rebuild/assets/boot/fabledecomp_boot_concept.png)
-is archived at its native resolution for the first visual milestone. It remains source artwork,
-not a runtime dependency, until the reconstructed window and renderer establish the required
-texture format and presentation path.
+is archived at its native resolution and now drives the authored visual checkpoint. The build
+converts it into an ignored BMP resource for the VC7.1/GDI shell, leaving the original PNG
+unchanged. A later renderer can derive its own runtime format without committing generated copies.
 
 The unattended Wave 3 lane has moved from the co-op event/package codecs into ForgeFSE Quest
 wrappers. The current refresh validates 452/452 recommended Quest bindings against their exact
