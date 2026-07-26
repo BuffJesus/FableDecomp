@@ -255,9 +255,16 @@ def main():
         text=text[:close]+"\n"+"\n".join(entries)+text[close:]
         catp.write_text(text,encoding="utf-8")
         # append oracle rows
-        with open(ROOT/"rebuild"/"oracles"/"auto-re-candidates.tsv","a",encoding="utf-8",newline="") as f:
+        oracle_catalog = ROOT/"rebuild"/"oracles"/"auto-re-candidates.tsv"
+        existing_oracle_addresses = {
+            row["address"].lower().replace("0x", "")
+            for row in csv.DictReader(open(oracle_catalog, encoding="utf-8-sig"), delimiter="\t")
+        }
+        with open(oracle_catalog,"a",encoding="utf-8",newline="") as f:
             for w in wins:
-                r=w["oracle_row"]; f.write(f"{w['addr']}\t{r['name']}\t{r['length']}\t{r['bytes']}\n")
+                if w["addr"] not in existing_oracle_addresses:
+                    r=w["oracle_row"]; f.write(f"{w['addr']}\t{r['name']}\t{r['length']}\t{r['bytes']}\n")
+                    existing_oracle_addresses.add(w["addr"])
         print(f"\nLANDED {len(wins)} wins into src/compiled + tests + catalog + oracle")
         for w in wins: print(f"  {w['base']}")
 

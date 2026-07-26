@@ -122,6 +122,12 @@ behavior result only when the source, test, and shared headers are all older tha
 catalog run after this change, rebuilding only the newly landed manifest-backed rows took 12.29
 seconds instead of recompiling every historical PASS for several minutes.
 
+The local parity queue and canonical rebuild refresh are single-writer peers. Each validates the
+other's PID/command line and defers before mutating the shared candidate catalog; manual publication
+snapshots must follow the same rule and wait for `rebuild/local-parity/queue.pid` to disappear.
+Repair/reland operations also deduplicate the retail oracle ledger, so recovering a catalog entry
+cannot append a second oracle row for the same address.
+
 The first installed scheduled run then advanced four more 500-row selections and landed 204/205
 deterministic authors, bringing the canonical strict parity count to 1,827 (3.69%) across 2,154
 compiled and behavior-gated rows. Retail comparison now has its own ignored object/oracle
