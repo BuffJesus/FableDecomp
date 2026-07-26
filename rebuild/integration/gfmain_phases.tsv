@@ -1,6 +1,6 @@
 phase	start	end	role	anchors	next_action
 1	00402510	004025a6	runtime and project bootstrap	CSystemManagerInit; GetProjectPath; SetCurrentPath; InitialiseConsoleVariables	Callable in Stage 2; close CSystemManagerInit's one-instruction scheduling residue and replace the console-variable boundary from recovered registration data.
-2	004025a6	00402668	basic-install and failure-policy bootstrap	CFileInstallerSingleton::Get; startup latch; SetEnableFailureHandling	Type and recover the temporary counted-pointer release path surrounding the now-matched singleton retrieval.
+2	004025a6	00402668	basic-install and failure-policy bootstrap	CFileInstallerSingleton::Get; startup latch; SetEnableFailureHandling	Callable in Stage 3 with typed counted ownership; begin Phase 3 settings and persistence recovery.
 3	00402668	0040284e	settings, persistence, and IME	GetActionName; PathExists; LoadFromFile; CPersistContext; LoadIMESettings	Separate optional settings-file parsing from default-value initialization.
 4	0040284e	004029dc	root child hierarchy	EnableNavigator; AddChild	Recover the five named child definitions and the owner/container type.
 5	004029dc	00402ce6	retail banks and INI files	OpenRetailBank; OpenIniFile; GetDVDDialogueDir	Name each bank path and turn the repeated open sequence into data-backed records.
