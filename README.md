@@ -21,13 +21,16 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Analysis DB | Mechanically named (no `FUN_*`) | 100.000% |
 | Analysis DB | Usable reconstruction/navigation names | 99.211% |
 | Analysis DB | Calling convention known | 77.660% |
-| Analysis DB | Complete non-`undefined` prototype | 69.027% |
+| Analysis DB | Complete non-`undefined` prototype | 69.031% |
 | Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **1,853** |
 | Reconstruction | Retail `.text` match (exact + relocation-normalized) | **1,526** (3.08%) |
 | Reconstruction | — of which byte-**identical** (no relocation masking) | 913 (1.84%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
 | Auto-RE intake | Generated candidates / structural checker PASS | 573 / 565 |
+| Boot path | GFMain direct-call sites proven | **40 / 257** (15.56%) |
+| Boot path | Callable authored GFMain phases | **2 / 10** (20.00%) |
+| Boot path | Current Phase 3 direct calls proven | **21 / 34** (61.76%) |
 
 Counts above are from the 2026-07-25 canonical refresh: the VC7.1 compile/behaviour catalog,
 `rebuild/compile-gate/retail-parity.json`, and `rebuild/COVERAGE.md`. Generated agent code is tracked
@@ -38,6 +41,11 @@ The first **1%** compiled-byte-match milestone (496 functions) is passed; curren
 parity is ~3.08% of the 49,553-function catalog. The lower match count than an earlier README is an
 audit reconciliation, not deleted source: the unified gate now exposes every `DIFFER` and missing
 function-start oracle instead of mixing older mass-land and curated-subset totals.
+The 3.08% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
+a second lens over the 3,952-byte GFMain coordinator: they measure proven direct call sites and
+callable integration phases, not percentage of total engineering time. Repeated calls count
+separately because every occurrence must be linked in the correct lifetime and control-flow
+context.
 **`docs/HANDOFF.md` is the authoritative resume point** — read its top section first.
 
 The executable-integration lane has advanced beyond isolated object files. The original VC7.1
@@ -90,6 +98,19 @@ project boot artwork. This last handoff is explicitly authored reconstruction sc
 claim that the retail window, renderer, archives, or game loop have been recovered. Build it with
 `rebuild/build_bootstrap.ps1`, then launch it from `rebuild/build/bootstrap-Release/`.
 
+### How close is a retail visual boot?
+
+| Visible milestone | Current state | What remains |
+|---|---|---|
+| Authored project boot window | **Runnable now** | This proves the reconstructed process can reach and own a responsive window, but it does not use the retail renderer. |
+| First recovered retail progress display | **Leaf proven; path not connected** | Finish the GFMain settings-to-engine dependency spine, promote the GFInitialise coordinator, and connect its already-matched progress-display setup leaf. |
+| Retail intro video or frontend menu | **Several major closures away** | Recover display/D3D setup, engine primitive initialization, core archives and compiled definitions, fonts/frontend banks, UI ownership, movie playback, and the update/render loop. |
+
+The nearest honest retail visual target is therefore the game's progress display, not the intro
+movie or menu. We are not one or two functions away: only two of ten GFMain integration phases are
+callable, even though 40 of its 257 direct call sites and 21 of Phase 3's 34 sites are already
+proven. These dependency counts are more informative than converting them into a date estimate.
+
 Phase 2 recovery has reached all seven direct calls in retail order. PDB and donor lineage resolves
 the repeated one-byte
 `$E2` leaf as the compiled-out `NProfileTimer::EndProfile`, and the retail executable confirms the
@@ -126,6 +147,15 @@ confirm `CCharString::ToWideString`. Its readable 45-byte implementation, the 13
 `CWideString::CreateFromCharString` factory, and the 66-byte counted-storage copy constructor all
 relocation-match retail and pass focused construction, sharing, copy, and destruction fixtures.
 Both corrections are durable manual overrides and documented in the ABI-corrections ledger.
+
+The next language-path pair is now identified without promoting a false match:
+`0x0099BFF0` is the fastcall
+`operator+(const wchar_t*, const CWideString&)`, assembling
+`L"Data\\lang\\" + language`, and `0x0099BF30` is
+`operator+(const CWideString&, const wchar_t*)`, appending
+`L"\\lang_settings.txt"`. The readable VC7.1 forms reproduce the hidden-result ABI but still
+differ from retail's inlined copy/destruction scheduling, so Phase 3 remains honestly at 21/34
+until the byte/behavior gate closes.
 
 The project-owner-provided [boot-screen concept](rebuild/assets/boot/fabledecomp_boot_concept.png)
 is archived at its native resolution and now drives the authored visual checkpoint. The build

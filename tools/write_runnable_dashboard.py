@@ -77,6 +77,18 @@ def main() -> int:
     boot_chain = read_tsv(root / "rebuild/integration/boot_chain.tsv")
     gfmain_phases = read_tsv(root / "rebuild/integration/gfmain_phases.tsv")
     gfmain_calls = read_tsv(root / "rebuild/integration/gfmain_calls.tsv")
+    matching_grades = {"MATCH", "EXACT", "RELOCATION_MATCH"}
+    proven_calls = sum(
+        row.get("validated_grade") in matching_grades for row in gfmain_calls
+    )
+    phase3_calls = [row for row in gfmain_calls if row.get("phase") == "3"]
+    phase3_proven = sum(
+        row.get("validated_grade") in matching_grades for row in phase3_calls
+    )
+    authored_phases = sum(
+        (root / "rebuild" / "integration" / f"gfmain_phase{phase}.cpp").exists()
+        for phase in range(1, len(gfmain_phases) + 1)
+    )
 
     lines = [
         "# Runnable reconstruction",
@@ -84,6 +96,30 @@ def main() -> int:
         "This dashboard tracks the shortest honest path from independently verified",
         "functions to a reconstructed executable. It does not count a diagnostic",
         "bootstrap as a running game.",
+        "",
+        "## Boot-path progress",
+        "",
+        "| Measure | Proven | Scope |",
+        "|---|---:|---|",
+        (
+            f"| GFMain direct-call sites | {proven_calls}/{len(gfmain_calls)} "
+            f"({100.0 * proven_calls / len(gfmain_calls):.2f}%) | "
+            "All ten call clusters; repeated call sites count separately |"
+        ),
+        (
+            f"| Callable authored GFMain phases | {authored_phases}/{len(gfmain_phases)} "
+            f"({100.0 * authored_phases / len(gfmain_phases):.2f}%) | "
+            "Integration checkpoints, not retail GFMain byte parity |"
+        ),
+        (
+            f"| Current Phase 3 direct calls | {phase3_proven}/{len(phase3_calls)} "
+            f"({100.0 * phase3_proven / len(phase3_calls):.2f}%) | "
+            "Settings, persistence, and IME cluster |"
+        ),
+        "",
+        "These are dependency counters, not an estimate of engineering time or total",
+        "game completion. Whole-executable verified parity remains the stricter public",
+        "percentage in the root README.",
         "",
         "## Current executable milestone",
         "",

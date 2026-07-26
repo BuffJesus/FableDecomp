@@ -21,8 +21,8 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 3	0040268c	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	0040269f	00415530	FableGetDefaultLanguageName_00415530	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetDefaultLanguageName_00415530.cpp
 3	004026a6	0099e480	CCharString::ToWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_ToWideString_0099e480.cpp
-3	004026b5	0099bff0	CCharString::SetFromEnum
-3	004026c0	0099bf30	CCharString::AssignFromValue
+3	004026b5	0099bff0	operator+(wchar_t const *,CWideString const &)		
+3	004026c0	0099bf30	operator+(CWideString const &,wchar_t const *)		
 3	004026c9	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
 3	004026d2	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
 3	004026db	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
