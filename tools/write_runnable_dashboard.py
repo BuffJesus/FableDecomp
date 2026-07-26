@@ -105,9 +105,14 @@ def main() -> int:
         "relocation-normalized matches. Focused fixtures prove executable-directory",
         "discovery and the recovered update ordering: the OS working directory",
         "changes before the engine updates its cached current-path string.",
-        "The folded 15-byte `CWideString` default constructor and 68-byte",
-        "reference-counted destructor are proven too, bringing Phase 1 to four",
-        "of nine direct callees.",
+        "The folded `CWideString` and `CCharString` lifetime pairs are proven",
+        "too and grouped in a shared string-domain header. The PDB lineage",
+        "resolves the one-byte retail no-op as `NProfileTimer::StartProfile`,",
+        "bringing Phase 1 to seven of nine direct callees at relocation match.",
+        "The nested default `CCharString` constructor is retail-matched, while",
+        "`CSystemManagerInit` now passes a focused layout/defaults/construction-order",
+        "fixture. Its 265-byte object has one documented instruction-scheduling",
+        "residue: `lea ecx,[esi+0x5c]` is emitted earlier than retail.",
         "",
         "**Stage 0 remains the smallest linker proof:** VC7.1 links a console",
         "PE containing",
@@ -124,7 +129,12 @@ def main() -> int:
         "`FABLETLC_SET_CURRENT_PATH_BEHAVIOR PASS`,",
         "`FABLETLC_GET_PROJECT_PATH_BEHAVIOR PASS`,",
         "`FABLETLC_WIDE_STRING_CONSTRUCTOR_BEHAVIOR PASS`,",
-        "`FABLETLC_WIDE_STRING_DESTRUCTOR_BEHAVIOR PASS`, and",
+        "`FABLETLC_WIDE_STRING_DESTRUCTOR_BEHAVIOR PASS`,",
+        "`FABLETLC_CHAR_STRING_CONSTRUCTOR_BEHAVIOR PASS`,",
+        "`FABLETLC_CHAR_STRING_DESTRUCTOR_BEHAVIOR PASS`,",
+        "`FABLETLC_PROFILE_START_BEHAVIOR PASS`,",
+        "`FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVIOR PASS`,",
+        "`FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS`, and",
         "`STAGE1_STARTUP PASS`.",
         "Generated products stay under the ignored `rebuild/build/` tree.",
         "",
@@ -194,7 +204,8 @@ def main() -> int:
         ]
         unique_targets = {item["target"] for item in phase_calls}
         proven_calls = sum(
-            bool(item.get("validated_grade")) for item in phase_calls
+            item.get("validated_grade") in {"MATCH", "RELOCATION_MATCH"}
+            for item in phase_calls
         )
         lines.append(
             "| {phase} | `0x{start}`-`0x{end}` | {role} | {calls} | "

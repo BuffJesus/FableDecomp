@@ -2,7 +2,7 @@
 
 #include "fable_filesystem.h"
 
-fable_i32 g_CStringInstanceCount_013BCA20 = 0;
+fable_i32 g_CWideStringInstanceCount_013BCA20 = 0;
 
 CWideString::~CWideString()
 {
@@ -10,7 +10,7 @@ CWideString::~CWideString()
 
 static int VerifyDefaultStringConstruction()
 {
-    g_CStringInstanceCount_013BCA20 = 41;
+    g_CWideStringInstanceCount_013BCA20 = 41;
 
     CWideString value;
     const fable_u32 storage =
@@ -18,7 +18,7 @@ static int VerifyDefaultStringConstruction()
 
     if (storage != 0)
         return 1;
-    if (g_CStringInstanceCount_013BCA20 != 42)
+    if (g_CWideStringInstanceCount_013BCA20 != 42)
         return 2;
     return 0;
 }
