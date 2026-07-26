@@ -35,6 +35,20 @@ determined by the retail bytes:
   56 57 be xx xx xx xx bf nn nn nn nn 8d 64 24 00 83 ee ss
      8b ce e8 yy yy yy yy 4f 75 f3 5f 5e c3
                      -> reverse-walk a fixed object array and call each method
+  56 8b f1 c7 06 xx xx xx xx e8 yy yy yy yy f6 44 24 08 01
+     74 07 56 e8 zz zz zz zz 59 8b c6 5e c2 04 00
+                     -> restore a vtable, destruct, and optionally delete
+  51 56 8b f1 8b 56 04 8b 0e 8d 44 24 07 50 e8 xx xx xx xx
+     8b 36 85 f6 74 07 56 e8 yy yy yy yy 59 5e 59 c3
+                     -> finish an async read and release its resource
+  56 8b f1 83 7e 04 00 74 1e 8b 06 ff 70 04 e8 xx xx xx xx
+     8b 06 89 40 08 8b 06 83 60 04 00 8b 06 89 40 0c
+     83 66 04 00 5e c3
+                     -> free and reset a non-empty intrusive list
+  53 56 8b 74 24 0c 85 f6 8b d9 74 1c 57 ff 76 0c 8b cb
+     e8 xx xx xx xx 8b 7e 08 56 e8 yy yy yy yy 85 ff 59
+     8b f7 75 e6 5f 5e 5b c2 04 00
+                     -> recursively consume a linked tree
 
 The normal verify_and_land.py gate still recompiles and byte-compares every
 candidate, so a bad inference can waste a compile but cannot mis-land.
@@ -82,6 +96,29 @@ def split_name(name: str):
         if m:
             return sanitize(m.group(2)), sanitize(m.group(1))
     return "global", sanitize(name)
+
+
+def rows_with_target_metadata(oracle: Path):
+    """Yield oracle rows enriched by the selector's sibling target catalog."""
+    target_path = oracle.with_name(
+        oracle.name.replace("_oracle.tsv", "_targets.json")
+    )
+    metadata = {}
+    if target_path.exists():
+        for target in json.loads(target_path.read_text(encoding="utf-8")):
+            address = target.get("address", "").lower().replace("0x", "")
+            if address:
+                metadata[address] = target
+
+    with open(oracle, encoding="utf-8-sig", newline="") as stream:
+        for row in csv.DictReader(stream, delimiter="\t"):
+            address = row["address"].lower().replace("0x", "")
+            target = metadata.get(address)
+            if target:
+                for field in ("module", "cc", "ret", "pc"):
+                    if target.get(field) and not row.get(field):
+                        row[field] = target[field]
+            yield row
 
 
 def const_from_bytes(bs: bytes):
@@ -180,6 +217,41 @@ def const_from_bytes(bs: bytes):
                 bs[18],
             ),
         )
+    if (
+        len(bs) == 34
+        and bs[:5] == b"\x56\x8b\xf1\xc7\x06"
+        and bs[9] == 0xE8
+        and bs[14:22] == b"\xf6\x44\x24\x08\x01\x74\x07\x56"
+        and bs[22] == 0xE8
+        and bs[27:] == b"\x59\x8b\xc6\x5e\xc2\x04\x00"
+    ):
+        return ("vector_deleting_destructor_with_vftable", None)
+    if (
+        len(bs) == 35
+        and bs[:14] == b"\x51\x56\x8b\xf1\x8b\x56\x04\x8b\x0e"
+        b"\x8d\x44\x24\x07\x50"
+        and bs[14] == 0xE8
+        and bs[19:27] == b"\x8b\x36\x85\xf6\x74\x07\x56\xe8"
+        and bs[31:] == b"\x59\x5e\x59\xc3"
+    ):
+        return ("finish_async_read_then_release", None)
+    if (
+        len(bs) == 41
+        and bs[:15] == b"\x56\x8b\xf1\x83\x7e\x04\x00\x74\x1e"
+        b"\x8b\x06\xff\x70\x04\xe8"
+        and bs[19:] == b"\x8b\x06\x89\x40\x08\x8b\x06\x83\x60\x04\x00"
+        b"\x8b\x06\x89\x40\x0c\x83\x66\x04\x00\x5e\xc3"
+    ):
+        return ("free_and_reset_intrusive_list", None)
+    if (
+        len(bs) == 45
+        and bs[:18] == b"\x53\x56\x8b\x74\x24\x0c\x85\xf6\x8b\xd9\x74\x1c"
+        b"\x57\xff\x76\x0c\x8b\xcb"
+        and bs[18] == 0xE8
+        and bs[23:28] == b"\x8b\x7e\x08\x56\xe8"
+        and bs[32:] == b"\x85\xff\x59\x8b\xf7\x75\xe6\x5f\x5e\x5b\xc2\x04\x00"
+    ):
+        return ("consume_linked_tree", None)
     return None
 
 
@@ -626,6 +698,286 @@ def candidate(row):
             "    return 1;\n"
             "}\n"
         )
+    elif rettype == "vector_deleting_destructor_with_vftable":
+        source = (
+            '#pragma optimize("s", on)\n'
+            "struct AutoTinyVectorObject\n"
+            "{\n"
+            "    void* vftable;\n"
+            "};\n"
+            "extern void* const g_AutoTinyVectorVftable;\n"
+            "extern void __fastcall AutoTinyVectorDestructor(void* self);\n"
+            "extern void __cdecl AutoTinyVectorDelete(void* object);\n"
+            f"void* __fastcall {fn}("
+            "AutoTinyVectorObject* self, int, unsigned int flags)\n"
+            "{\n"
+            "    self->vftable = (void*)&g_AutoTinyVectorVftable;\n"
+            "    AutoTinyVectorDestructor(self);\n"
+            "    if (flags & 1)\n"
+            "        AutoTinyVectorDelete(self);\n"
+            "    return self;\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "static int g_AutoTinyVectorDestructorCalls = 0;\n"
+            "static int g_AutoTinyVectorDeleteCalls = 0;\n"
+            "struct AutoTinyVectorObject\n"
+            "{\n"
+            "    void* vftable;\n"
+            "};\n"
+            "void* const g_AutoTinyVectorVftable = "
+            "(void*)0x12345678;\n"
+            "void __fastcall AutoTinyVectorDestructor(void*)\n"
+            "{\n"
+            "    ++g_AutoTinyVectorDestructorCalls;\n"
+            "}\n"
+            "void __cdecl AutoTinyVectorDelete(void*)\n"
+            "{\n"
+            "    ++g_AutoTinyVectorDeleteCalls;\n"
+            "}\n"
+            f"void* __fastcall {fn}("
+            "AutoTinyVectorObject* self, int, unsigned int flags)\n"
+            "{\n"
+            "    self->vftable = (void*)&g_AutoTinyVectorVftable;\n"
+            "    AutoTinyVectorDestructor(self);\n"
+            "    if (flags & 1)\n"
+            "        AutoTinyVectorDelete(self);\n"
+            "    return self;\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            "    AutoTinyVectorObject object = {0};\n"
+            f"    if ({fn}(&object, 0, 0) != &object ||\n"
+            "        object.vftable != &g_AutoTinyVectorVftable ||\n"
+            "        g_AutoTinyVectorDestructorCalls != 1 ||\n"
+            "        g_AutoTinyVectorDeleteCalls != 0)\n"
+            "        return 1;\n"
+            f"    {fn}(&object, 0, 1);\n"
+            "    if (g_AutoTinyVectorDestructorCalls != 2 ||\n"
+            "        g_AutoTinyVectorDeleteCalls != 1)\n"
+            "        return 1;\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "finish_async_read_then_release":
+        source = (
+            '#pragma optimize("s", on)\n'
+            "struct AutoTinyActiveFile\n"
+            "{\n"
+            "    void* resource;\n"
+            "    void* reader;\n"
+            "};\n"
+            "extern void __fastcall AutoTinyFinishRead("
+            "void* resource, void* reader, char* status);\n"
+            "extern void __cdecl AutoTinyReleaseResource(void* resource);\n"
+            f"void __fastcall {fn}(AutoTinyActiveFile* self)\n"
+            "{\n"
+            "    char status;\n"
+            "    AutoTinyFinishRead(self->resource, self->reader, &status);\n"
+            "    if (self->resource != 0)\n"
+            "        AutoTinyReleaseResource(self->resource);\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "struct AutoTinyActiveFile\n"
+            "{\n"
+            "    void* resource;\n"
+            "    void* reader;\n"
+            "};\n"
+            "static int g_AutoTinyFinishReadCalls = 0;\n"
+            "static int g_AutoTinyReleaseResourceCalls = 0;\n"
+            "static void* g_AutoTinyFinishedResource = 0;\n"
+            "static void* g_AutoTinyFinishedReader = 0;\n"
+            "void __fastcall AutoTinyFinishRead("
+            "void* resource, void* reader, char* status)\n"
+            "{\n"
+            "    ++g_AutoTinyFinishReadCalls;\n"
+            "    g_AutoTinyFinishedResource = resource;\n"
+            "    g_AutoTinyFinishedReader = reader;\n"
+            "    *status = 1;\n"
+            "}\n"
+            "void __cdecl AutoTinyReleaseResource(void*)\n"
+            "{\n"
+            "    ++g_AutoTinyReleaseResourceCalls;\n"
+            "}\n"
+            f"void __fastcall {fn}(AutoTinyActiveFile* self)\n"
+            "{\n"
+            "    char status;\n"
+            "    AutoTinyFinishRead(self->resource, self->reader, &status);\n"
+            "    if (self->resource != 0)\n"
+            "        AutoTinyReleaseResource(self->resource);\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            "    int resource = 0;\n"
+            "    int reader = 0;\n"
+            "    AutoTinyActiveFile present = {&resource, &reader};\n"
+            f"    {fn}(&present);\n"
+            "    if (g_AutoTinyFinishReadCalls != 1 ||\n"
+            "        g_AutoTinyReleaseResourceCalls != 1 ||\n"
+            "        g_AutoTinyFinishedResource != &resource ||\n"
+            "        g_AutoTinyFinishedReader != &reader)\n"
+            "        return 1;\n"
+            "    AutoTinyActiveFile absent = {0, &reader};\n"
+            f"    {fn}(&absent);\n"
+            "    if (g_AutoTinyFinishReadCalls != 2 ||\n"
+            "        g_AutoTinyReleaseResourceCalls != 1)\n"
+            "        return 1;\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "free_and_reset_intrusive_list":
+        source = (
+            '#pragma optimize("s", on)\n'
+            "struct AutoTinyListNode\n"
+            "{\n"
+            "    void* reserved;\n"
+            "    void* allocation;\n"
+            "    AutoTinyListNode* next;\n"
+            "    AutoTinyListNode* previous;\n"
+            "};\n"
+            "struct AutoTinyOwnedList\n"
+            "{\n"
+            "    AutoTinyListNode* head;\n"
+            "    long count;\n"
+            "};\n"
+            "extern void __stdcall AutoTinyFreeListAllocation(void* allocation);\n"
+            f"void __fastcall {fn}(AutoTinyOwnedList* self)\n"
+            "{\n"
+            "    if (self->count != 0)\n"
+            "    {\n"
+            "        AutoTinyFreeListAllocation(self->head->allocation);\n"
+            "        self->head->next = self->head;\n"
+            "        self->head->allocation = 0;\n"
+            "        self->head->previous = self->head;\n"
+            "        self->count = 0;\n"
+            "    }\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "struct AutoTinyListNode\n"
+            "{\n"
+            "    void* reserved;\n"
+            "    void* allocation;\n"
+            "    AutoTinyListNode* next;\n"
+            "    AutoTinyListNode* previous;\n"
+            "};\n"
+            "struct AutoTinyOwnedList\n"
+            "{\n"
+            "    AutoTinyListNode* head;\n"
+            "    long count;\n"
+            "};\n"
+            "static int g_AutoTinyFreeListCalls = 0;\n"
+            "static void* g_AutoTinyFreedAllocation = 0;\n"
+            "void __stdcall AutoTinyFreeListAllocation(void* allocation)\n"
+            "{\n"
+            "    ++g_AutoTinyFreeListCalls;\n"
+            "    g_AutoTinyFreedAllocation = allocation;\n"
+            "}\n"
+            f"void __fastcall {fn}(AutoTinyOwnedList* self)\n"
+            "{\n"
+            "    if (self->count != 0)\n"
+            "    {\n"
+            "        AutoTinyFreeListAllocation(self->head->allocation);\n"
+            "        self->head->next = self->head;\n"
+            "        self->head->allocation = 0;\n"
+            "        self->head->previous = self->head;\n"
+            "        self->count = 0;\n"
+            "    }\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            "    int allocation = 0;\n"
+            "    AutoTinyListNode head = {0, &allocation, 0, 0};\n"
+            "    AutoTinyOwnedList list = {&head, 1};\n"
+            f"    {fn}(&list);\n"
+            "    if (g_AutoTinyFreeListCalls != 1 ||\n"
+            "        g_AutoTinyFreedAllocation != &allocation ||\n"
+            "        head.next != &head || head.previous != &head ||\n"
+            "        head.allocation != 0 || list.count != 0)\n"
+            "        return 1;\n"
+            f"    {fn}(&list);\n"
+            "    if (g_AutoTinyFreeListCalls != 1)\n"
+            "        return 1;\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "consume_linked_tree":
+        source = (
+            '#pragma optimize("s", on)\n'
+            "struct AutoTinyTreeNode\n"
+            "{\n"
+            "    char reserved[8];\n"
+            "    AutoTinyTreeNode* next;\n"
+            "    AutoTinyTreeNode* child;\n"
+            "};\n"
+            "struct AutoTinyTreeWalker { char unused; };\n"
+            "struct AutoTinyTreeNodeArgument { AutoTinyTreeNode* node; };\n"
+            "extern \"C\" void __cdecl AutoTinyFreeTreeNode("
+            "AutoTinyTreeNode* node);\n"
+            f"void __fastcall {fn}("
+            "AutoTinyTreeWalker* self, AutoTinyTreeNodeArgument argument)\n"
+            "{\n"
+            "    AutoTinyTreeNode* node = argument.node;\n"
+            "    while (node != 0)\n"
+            "    {\n"
+            "        AutoTinyTreeNodeArgument child = {node->child};\n"
+            f"        {fn}(self, child);\n"
+            "        AutoTinyTreeNode* next = node->next;\n"
+            "        AutoTinyFreeTreeNode(node);\n"
+            "        node = next;\n"
+            "    }\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "struct AutoTinyTreeNode\n"
+            "{\n"
+            "    char reserved[8];\n"
+            "    AutoTinyTreeNode* next;\n"
+            "    AutoTinyTreeNode* child;\n"
+            "};\n"
+            "struct AutoTinyTreeWalker { char unused; };\n"
+            "struct AutoTinyTreeNodeArgument { AutoTinyTreeNode* node; };\n"
+            "static int g_AutoTinyFreedTreeNodes = 0;\n"
+            "extern \"C\" void __cdecl AutoTinyFreeTreeNode("
+            "AutoTinyTreeNode*)\n"
+            "{\n"
+            "    ++g_AutoTinyFreedTreeNodes;\n"
+            "}\n"
+            f"void __fastcall {fn}("
+            "AutoTinyTreeWalker* self, AutoTinyTreeNodeArgument argument)\n"
+            "{\n"
+            "    AutoTinyTreeNode* node = argument.node;\n"
+            "    while (node != 0)\n"
+            "    {\n"
+            "        AutoTinyTreeNodeArgument child = {node->child};\n"
+            f"        {fn}(self, child);\n"
+            "        AutoTinyTreeNode* next = node->next;\n"
+            "        AutoTinyFreeTreeNode(node);\n"
+            "        node = next;\n"
+            "    }\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            "    AutoTinyTreeNode child = {{0}, 0, 0};\n"
+            "    AutoTinyTreeNode sibling = {{0}, 0, 0};\n"
+            "    AutoTinyTreeNode root = {{0}, &sibling, &child};\n"
+            "    AutoTinyTreeWalker walker = {0};\n"
+            "    AutoTinyTreeNodeArgument argument = {&root};\n"
+            f"    {fn}(&walker, argument);\n"
+            "    if (g_AutoTinyFreedTreeNodes != 3)\n"
+            "        return 1;\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
     elif rettype == "load_int_field":
         source = (
             f"int __fastcall {fn}(const unsigned char* self)\n"
@@ -701,7 +1053,7 @@ def main():
     oracle = Path(sys.argv[1])
     out = Path(sys.argv[2])
     authored = []
-    for row in csv.DictReader(open(oracle, encoding="utf-8-sig"), delimiter="\t"):
+    for row in rows_with_target_metadata(oracle):
         c = candidate(row)
         if c:
             authored.append(c)

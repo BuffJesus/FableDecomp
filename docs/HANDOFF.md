@@ -1,6 +1,30 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-25 23:46 MDT (reverse-loop replay lands seven verified functions).*
+*Last updated: 2026-07-26 00:03 MDT (Ghidra-free deterministic replay lands 145 verified functions).*
+
+## Ghidra-free parity checkpoint (2026-07-26)
+
+- Ghidra is released for other work. The Wave 3 scheduled task is stopped at a
+  target boundary and `lift/state/re-agent-wave3-queue.stop` remains the local,
+  uncommitted restart guard.
+- Existing authoritative retail oracles were sufficient to land 145 readable
+  VC7.1 candidates: 72 vtable-restoring deleting destructors, 28 async-read
+  completion wrappers, 26 intrusive-list resets, and 19 recursive linked-tree
+  walkers.
+- Every candidate passed focused behavior and relocation-normalized retail
+  parity. The full catalog passes with 3,308 compiled/behavior-gated functions.
+  Retail parity is now 1,895 exact + 1,086 relocation-normalized = 2,981 /
+  49,553, or 6.02%.
+- `auto_author_tiny.py` now enriches oracle rows from the sibling target JSON
+  before authoring, and `replay_pending_tiny.py` uses the same join. This keeps
+  generated files in their class/module group instead of leaking into
+  `_global`. Unit coverage locks both the four new source shapes and metadata
+  join.
+- The organizer found six non-identical Wave 3 root/shard collisions and
+  preserved both sides. They remain outside this parity batch for deliberate
+  evidence review; no report was overwritten.
+
+*Previous checkpoint: 2026-07-25 23:46 MDT (reverse-loop replay lands seven verified functions).*
 
 ## GFInitialise visual-path checkpoint (2026-07-25)
 
