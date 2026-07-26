@@ -34,6 +34,10 @@ class TinyPatternTests(unittest.TestCase):
                 "598bc65ec20400"
             ): ("scalar_deleting_destructor", None),
             (
+                "568bf18d4e2ce828704c008bcee871ed1a00"
+                "f644240801740756e8f06e7200598bc65ec20400"
+            ): ("composite_scalar_deleting_destructor", 0x2C),
+            (
                 "51568bf18b56048b0e8d44240750e8e5dafdff8b36"
                 "85f6740756e8d2b97800595e59c3"
             ): ("finish_async_read_then_release", None),

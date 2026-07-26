@@ -22,8 +22,8 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 | Analysis DB | Usable reconstruction/navigation names | 99.211% |
 | Analysis DB | Calling convention known | 77.674% |
 | Analysis DB | Complete non-`undefined` prototype | 69.049% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **3,704** |
-| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **3,377** (6.81%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **3,729** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **3,402** (6.87%) |
 | Reconstruction | — of which byte-**identical** (no relocation masking) | 1,895 (3.82%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
@@ -38,10 +38,10 @@ separately and is never counted as reconstructed merely because a structural che
 The successful refresh also synchronizes this table automatically; GitHub is updated at reviewed
 checkpoints rather than publishing live, unreviewed queue output.
 The first **5%** compiled-byte-match milestone (2,478 functions) is passed; current verified retail
-parity is **6.81%** of the 49,553-function catalog. The lower match count than an earlier README is an
+parity is **6.87%** of the 49,553-function catalog. The lower match count than an earlier README is an
 audit reconciliation, not deleted source: the unified gate now exposes every `DIFFER` and missing
 function-start oracle instead of mixing older mass-land and curated-subset totals.
-The 6.81% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
+The 6.87% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
 a second lens over the 3,952-byte GFMain coordinator: they measure proven direct call sites and
 callable integration phases, not percentage of total engineering time. Repeated calls count
 separately because every occurrence must be linked in the correct lifetime and control-flow
