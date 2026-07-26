@@ -35,6 +35,8 @@ public:
     operator const wchar_t*() const;
     CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
+    const CWideString& operator+=(const CWideString& other);
+    const CWideString& operator+=(const wchar_t* text);
 
     static CWideString FABLE_FASTCALL CreateFromCharString(
         const CCharString& text);
@@ -45,6 +47,13 @@ private:
 
     CWideStringData* storage_;
 };
+
+CWideString FABLE_FASTCALL operator+(
+    const CWideString& left,
+    const wchar_t* right);
+CWideString FABLE_FASTCALL operator+(
+    const wchar_t* left,
+    const CWideString& right);
 
 class CCharString
 {
