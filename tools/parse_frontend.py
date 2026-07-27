@@ -170,7 +170,67 @@ def patch_field(payload, fields, field_name, new_value):
     return payload[:vstart] + new_value + payload[vend:]
 
 
-def fval(typ, raw):
+def decode_ui_states(raw, schema):
+    """Decode the tagged CUIStateDef vector used by frontend UI widgets.
+
+    The schema names this serialized type Vector_CUIStateDef_NUISystem even
+    though the element schema is simply CUIStateDef.  Keeping this decoder
+    here makes the retail position/scale/colour data inspectable instead of
+    returning one large opaque hex string.
+    """
+    if len(raw) < 4 or "CUIStateDef" not in schema:
+        return None
+    count = struct.unpack_from("<I", raw)[0]
+    pos = 4
+    states = []
+    for _ in range(count):
+        state = {}
+        for field in schema["CUIStateDef"]["fields"]:
+            name = field["name"]
+            typ = field["type"]
+            if pos + 4 > len(raw):
+                return None
+            tag = struct.unpack_from("<I", raw, pos)[0]
+            if tag != field_tag(name):
+                return None
+            pos += 4
+            if typ == "bool":
+                if pos + 1 > len(raw):
+                    return None
+                state[name] = bool(raw[pos])
+                pos += 1
+            elif typ == "Vector_uint32":
+                if pos + 4 > len(raw):
+                    return None
+                item_count = struct.unpack_from("<I", raw, pos)[0]
+                pos += 4
+                size = item_count * 4
+                if pos + size > len(raw):
+                    return None
+                state[name] = list(struct.unpack_from(
+                    "<%dI" % item_count, raw, pos))
+                pos += size
+            elif typ == "float":
+                if pos + 4 > len(raw):
+                    return None
+                state[name] = struct.unpack_from("<f", raw, pos)[0]
+                pos += 4
+            elif (
+                typ in ("int32", "CDefIndex") or
+                typ == "uint32" or
+                typ.startswith(("enum", "W4", "E"))
+            ):
+                if pos + 4 > len(raw):
+                    return None
+                state[name] = struct.unpack_from("<I", raw, pos)[0]
+                pos += 4
+            else:
+                return None
+        states.append(state)
+    return states if pos == len(raw) else None
+
+
+def fval(typ, raw, schema=None, names=None):
     """Human value for a fixed-size field byte string."""
     if raw is None:
         return "<undecoded>"
@@ -184,14 +244,29 @@ def fval(typ, raw):
         return struct.unpack("<f", raw)[0]
     if typ == "CWideString":
         return raw[:-2].decode("utf-16-le", "replace")
-    if typ in ("CCharString", "CDefString"):
+    if typ == "CCharString":
         return raw[:-1].decode("latin1", "replace")
+    if typ == "CDefString":
+        # CompiledDefs serializes a definition string as a names.bin-relative
+        # u32 offset, not as an inline ASCIIZ string.  The old inline-string
+        # interpretation happened to make offset 0x000000e0 look plausible,
+        # but produced mojibake for the other font names.
+        if len(raw) == 4:
+            offset = struct.unpack("<I", raw)[0]
+            if names is not None and offset in names:
+                return names[offset]
+            return "@names+0x%08X" % offset
+        return raw.hex()
     if typ == "Vector_int32":
         n = struct.unpack_from("<I", raw)[0]
         return list(struct.unpack_from("<%di" % n, raw, 4))
     if typ == "Vector_uint32":
         n = struct.unpack_from("<I", raw)[0]
         return list(struct.unpack_from("<%dI" % n, raw, 4))
+    if typ.startswith("Vector_CUIStateDef") and schema is not None:
+        decoded = decode_ui_states(raw, schema)
+        if decoded is not None:
+            return decoded
     return raw.hex()
 
 
@@ -239,7 +314,10 @@ def decode_entry(entry, schema):
     if stype is None:
         return None
     raw, leftover = decode_tagged(entry["payload"], schema[stype]["fields"])
-    return {nm: fval(typ, v) for nm, (typ, v) in raw.items()}, leftover
+    return {
+        nm: fval(typ, v, schema, entry.get("_names"))
+        for nm, (typ, v) in raw.items()
+    }, leftover
 
 
 def load_all(root, schema_path, bin_name="frontend.bin"):
@@ -248,6 +326,8 @@ def load_all(root, schema_path, bin_name="frontend.bin"):
         os.path.join(root, "data", "CompiledDefs", "names.bin"))
     entries, is_xbox = read_bin(
         os.path.join(root, "data", "CompiledDefs", bin_name), names)
+    for entry in entries:
+        entry["_names"] = names
     return entries, schema, is_xbox
 
 

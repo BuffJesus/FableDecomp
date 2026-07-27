@@ -239,30 +239,30 @@ rank	address	module	name	workstream	gap	score	calling_convention	return_type	par
 238	008a9e30	CGameScriptInterface	CGameScriptInterface::AddGossipVillage	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &	PASS	invalid use of incomplete type 'class CGameScriptInterface'			class CGameScriptInterface
 239	008a9e60	CGameScriptInterface	CGameScriptInterface::AddGossipFactionToCategory	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString const &,CCharString const &	PASS				
 240	008aa010	CGameScriptInterface	CGameScriptInterface::ClearGossip	candidate-cluster	candidate-compile	2270295	__thiscall	void	CGameScriptInterface *,CCharString	PASS	static assertion failed			
-241	00401c00	_global	GFHandleSystemInitError	candidate-cluster	signature-audit	1722928	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-242	00402130	_global	MyDocuments_CheckWritePermissions	candidate-cluster	signature-audit	1722928	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-243	00403480	_global	WinMain	candidate-cluster	signature-audit	1722928	__stdcall	int	HINSTANCE__ *,HINSTANCE__ *,char *,int	PASS			method-name-mismatch;explicit-parameter-count-mismatch	
-244	00409090	_global	Engine_FindPrimitiveInArray	candidate-cluster	signature-audit	1722928	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-245	0040cec0	_global	CUserProfileManager_Constructor	candidate-cluster	signature-audit	1722928	unknown	undefined		FAIL			explicit-parameter-count-mismatch;return-shape-mismatch	
-246	004fe7f0	_global	CollectSoundThemeSwitchDefs	candidate-cluster	signature-audit	1722728	unknown	undefined		PASS	static assertion failed		explicit-parameter-count-mismatch	::LTextTreeWalkThrough;CCharString;CDefinitionManager;CDefPointer;CollectSoundThemeSwitchDefs_PostLookup;CollectSoundThemeSwitchDefs_PreLookup;COptimisedPrimitive;CThingPhysicalSwitchDef;definitionManager;LTextBinNode;LTextBinTree;LTextGroup;LTextTreeWalkThrough;self;soundThemeStorage;symbol
-247	007602f0	_global	Math_PolygonAngleSumClosureCheck	candidate-cluster	signature-audit	1722728	unknown	undefined		PASS	expected '(' before '{' token		method-name-mismatch;explicit-parameter-count-mismatch	fld
-248	0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	candidate-cluster	signature-audit	1722728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-249	0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	candidate-cluster	signature-audit	1722728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-250	00c20ef0	_global	IsStateStreaming_2to4	candidate-cluster	signature-audit	1722728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-251	00c336f0	_global	Constraint_NotifyGlobalManager	candidate-cluster	signature-audit	1722728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-252	00c362f0	_global	CSBAgents_BuildAndDispatch_A	candidate-cluster	signature-audit	1722728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-253	00c36e00	_global	CSBAgents_BuildAndDispatch_SummonerLightning	candidate-cluster	signature-audit	1722728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-254	00c36fb0	_global	CSBAgents_BuildAndDispatch_TavernGame	candidate-cluster	signature-audit	1722728	unknown	undefined		PASS	expected '(' before '{' token		method-name-mismatch;explicit-parameter-count-mismatch	jmp
-255	00c37000	_global	IntelligentPointer_BuildAndDispatchFloat	candidate-cluster	signature-audit	1722728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-256	00c43de0	_global	DrawAutoPickups_SelectAndDrawPrimitive	candidate-cluster	signature-audit	1722728	unknown	undefined		PASS			explicit-parameter-count-mismatch	
-257	008702d0	_global	Handle_InitInvalid_008702d0	candidate-cluster	signature-audit	1722628	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+241	00401c00	_global	GFHandleSystemInitError	candidate-cluster	signature-audit	1722929	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+242	00402130	_global	MyDocuments_CheckWritePermissions	candidate-cluster	signature-audit	1722929	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+243	00403480	_global	WinMain	candidate-cluster	signature-audit	1722929	__stdcall	int	HINSTANCE__ *,HINSTANCE__ *,char *,int	PASS			method-name-mismatch;explicit-parameter-count-mismatch	
+244	00409090	_global	Engine_FindPrimitiveInArray	candidate-cluster	signature-audit	1722929	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+245	0040cec0	_global	CUserProfileManager_Constructor	candidate-cluster	signature-audit	1722929	unknown	undefined		FAIL			explicit-parameter-count-mismatch;return-shape-mismatch	
+246	004fe7f0	_global	CollectSoundThemeSwitchDefs	candidate-cluster	signature-audit	1722729	unknown	undefined		PASS	static assertion failed		explicit-parameter-count-mismatch	::LTextTreeWalkThrough;CCharString;CDefinitionManager;CDefPointer;CollectSoundThemeSwitchDefs_PostLookup;CollectSoundThemeSwitchDefs_PreLookup;COptimisedPrimitive;CThingPhysicalSwitchDef;definitionManager;LTextBinNode;LTextBinTree;LTextGroup;LTextTreeWalkThrough;self;soundThemeStorage;symbol
+247	007602f0	_global	Math_PolygonAngleSumClosureCheck	candidate-cluster	signature-audit	1722729	unknown	undefined		PASS	expected '(' before '{' token		method-name-mismatch;explicit-parameter-count-mismatch	fld
+248	0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	candidate-cluster	signature-audit	1722729	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+249	0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	candidate-cluster	signature-audit	1722729	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+250	00c20ef0	_global	IsStateStreaming_2to4	candidate-cluster	signature-audit	1722729	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+251	00c336f0	_global	Constraint_NotifyGlobalManager	candidate-cluster	signature-audit	1722729	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+252	00c362f0	_global	CSBAgents_BuildAndDispatch_A	candidate-cluster	signature-audit	1722729	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+253	00c36e00	_global	CSBAgents_BuildAndDispatch_SummonerLightning	candidate-cluster	signature-audit	1722729	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+254	00c36fb0	_global	CSBAgents_BuildAndDispatch_TavernGame	candidate-cluster	signature-audit	1722729	unknown	undefined		PASS	expected '(' before '{' token		method-name-mismatch;explicit-parameter-count-mismatch	jmp
+255	00c37000	_global	IntelligentPointer_BuildAndDispatchFloat	candidate-cluster	signature-audit	1722729	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+256	00c43de0	_global	DrawAutoPickups_SelectAndDrawPrimitive	candidate-cluster	signature-audit	1722729	unknown	undefined		PASS			explicit-parameter-count-mismatch	
+257	008702d0	_global	Handle_InitInvalid_008702d0	candidate-cluster	signature-audit	1722629	unknown	undefined		PASS			explicit-parameter-count-mismatch	
 258	00ab5d00	CMouseDX	CMouseDX::CMouseDX	candidate-cluster	signature-audit	1633300	__thiscall	void	CMouseDX *,CInputManagerDX *,bool	PASS			owner-mismatch	
 259	00a65ff0	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::CMemoryAllocatorFixedSize	candidate-cluster	signature-audit	1625800	__thiscall	void	CMemoryAllocatorFixedSize *,void *,ulong,ulong,ulong,ulong,ulong	PASS	'CMemoryAllocatorFixedSize' does not name a type		owner-mismatch	CMemoryAllocatorFixedSize
-260	00401296	_global	__onexit	candidate-cluster	compiled-needs-parity	1622928	__cdecl	void	_onexit_t	PASS		DIFFER		
-261	004012ce	_global	__RTC_Initialize	candidate-cluster	compiled-needs-parity	1622928	__cdecl	void		PASS		DIFFER		
-262	00404280	_global	WideString_EqualsLen	candidate-cluster	compiled-needs-parity	1622928	__cdecl	int	WideStringRange const *,ushort const *	PASS		DIFFER		
-263	0040bb90	_global	CUserProfileManager_SaveAndCleanup	candidate-cluster	compiled-needs-parity	1622928	__fastcall	void	CUserProfileManager *	PASS		DIFFER		
-264	0040e170	_global	Array_LinearSearchInt	candidate-cluster	compiled-needs-parity	1622928	__fastcall	int *	int *,int *,int *	PASS		DIFFER		
+260	00401296	_global	__onexit	candidate-cluster	compiled-needs-parity	1622929	__cdecl	void	_onexit_t	PASS		DIFFER		
+261	004012ce	_global	__RTC_Initialize	candidate-cluster	compiled-needs-parity	1622929	__cdecl	void		PASS		DIFFER		
+262	00404280	_global	WideString_EqualsLen	candidate-cluster	compiled-needs-parity	1622929	__cdecl	int	WideStringRange const *,ushort const *	PASS		DIFFER		
+263	0040bb90	_global	CUserProfileManager_SaveAndCleanup	candidate-cluster	compiled-needs-parity	1622929	__fastcall	void	CUserProfileManager *	PASS		DIFFER		
+264	0040e170	_global	Array_LinearSearchInt	candidate-cluster	compiled-needs-parity	1622929	__fastcall	int *	int *,int *,int *	PASS		DIFFER		
 265	00a793d0	CNavQuadTree	ConnectVerticalMapEdge	candidate-cluster	signature-audit	1618299	__thiscall	void	CNavQuadTree *,float,float,CNavigatorManager const &	PASS	'CNavConnectorNode' does not name a type		duplicate-linkage-signature	adjacent_node;adjacent_position;C2DVector;CANavQuadTreeNode;CNavConnectorNode;CNavigatorManager;CNavQuadTree;connector_node;CTCMapwho;this_node;this_position
 266	00a79680	CNavQuadTree	ConnectVerticalMapEdge	candidate-cluster	signature-audit	1618299	__thiscall	void	CNavQuadTree *,float,float,CNavigatorManager const &	PASS	'CNavConnectorNode' does not name a type		duplicate-linkage-signature	adjacent_node;C2DVector;CANavQuadTreeNode;CNavConnectorNode;CNavigatorManager;CNavQuadTree;connector_node;CTCMapwho;this_node
 267	00caf580	CEngineLandscapePatch	CEngineLandscapePatch::Destructor	candidate-cluster	signature-audit	1618298	unknown	undefined		PASS	invalid use of incomplete type 'class CCharString'		definition-not-parsed	class CCharString;class CEngineLandscapePatch
@@ -271,7 +271,7 @@ rank	address	module	name	workstream	gap	score	calling_convention	return_type	par
 270	008d1890	CGameScriptThing	CGameScriptThing::MsgWhoHitMe	candidate-cluster	signature-audit	1606297	__thiscall	CScriptThing	CGameScriptThing *	PASS			explicit-parameter-count-mismatch;return-shape-mismatch	
 271	007266c0	CTCPhysicsBase	CTCPhysicsBase	candidate-cluster	signature-audit	1604798	__thiscall	undefined	CTCPhysicsBase *,CThing *	PASS	static assertion failed		owner-mismatch;duplicate-linkage-signature	CTCPhysicsBase
 272	00ab4700	CMouseDX	CMouseDX::SetPos	candidate-cluster	compiled-needs-parity	1533300	__thiscall	void	CMouseDX *,C2DVector const *	PASS		DIFFER		C2DVector;CMouseDX;fild
-273	00401067	_global	entry	candidate-cluster	calling-convention+prototype	1522928	unknown	undefined		PASS	static assertion failed			_exception;_startupinfo;startupInfoArgs
+273	00401067	_global	entry	candidate-cluster	calling-convention+prototype	1522929	unknown	undefined		PASS	static assertion failed			_exception;_startupinfo;startupInfoArgs
 274	00a7a650	CNavQuadTree	LinkToNeighbouringMaps	candidate-cluster	compiled-needs-parity	1518299	__thiscall	void	CNavQuadTree *,CNavigatorManager const &	PASS		DIFFER		CNavigatorManager;CNavQuadTree;ConnectVerticalMapEdge;self
 275	00bf3a90	CEngineLandscapePatch	LoadHeader	candidate-cluster	compiled-needs-parity	1518298	__thiscall	void	CEngineLandscapePatch *,CMemoryDataInputStream *	PASS		DIFFER		
 276	00bf3b60	CEngineLandscapePatch	LoadForegroundPatch	candidate-cluster	compiled-needs-parity	1518298	__thiscall	LS_LOADING_STATUS	CEngineLandscapePatch *,CCountedPointer<CBankFileAsyncEntry>	FAIL		DIFFER	explicit-parameter-count-mismatch	CAnimationEntry;CAnimationPair;CBankFileAsyncData;CCountedPointer;CEngineLandscapeMap;CEngineLandscapePatch;CLandscapeLayerMesh;CWaterPatchMesh;LS_LOADING_STATUS;QuadricOptimiserInternals;std
@@ -333,169 +333,169 @@ rank	address	module	name	workstream	gap	score	calling_convention	return_type	par
 332	006e7740	CGameScriptInterface	CGameScriptInterface	candidate-cluster	prototype	1270295	__thiscall	undefined	CGameScriptInterface *,CMainGameComponent *,CGameDefinitionManager *,CWorld *,CPlayerManager *,CDisplayEngine *					
 333	008ae890	CGameScriptInterface	CGameScriptInterface::_AddGossipVillages_impl	candidate-cluster	calling-convention+prototype	1270295	unknown	undefined						
 334	008aeac0	CGameScriptInterface	CGameScriptInterface::_AddGossipFactions_impl	candidate-cluster	calling-convention+prototype	1270295	unknown	undefined						
-335	0040f0a0	_global	Compare_Unsigned16Array	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-336	0040f390	_global	Buffer_RellocateAndUpdateWritePointer	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-337	0040f4a0	_global	Std_BitSet_Allocate	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-338	0040f6b0	_global	CString_FillRange	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-339	0040fbf0	_global	CWideString_FillBackward	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-340	00410460	_global	std_vector_C2DLineF_Copy	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-341	00410550	_global	MemoryPool_AdvancePointer	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-342	00410d80	_global	bitset_advance_iterator	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-343	00410ed0	_global	Std_Deque_PopFront_ChunkBased	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-344	00410f30	_global	Buffer_AllocateAndZero	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-345	004110d0	_global	CString_FillRange	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-346	00411630	_global	Std_Deque_Resize_WithGap	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-347	004117c0	_global	Std_Vector_Insert_Range	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-348	00411910	_global	Buffer_AllocateAndZero	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-349	00411a10	_global	Std_Vector_Insert_Range_Copies_4byte	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-350	00411b00	_global	vector_push_back_copy	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-351	00411b90	_global	std_vector_assign	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-352	00411db0	_global	Std_Vector_Insert_Range_Dispatch	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-353	00411f10	_global	Std_Vector_Insert_Range_4Bytes	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-354	004121d0	_global	Std_Vector_PushBack_WithGrow	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-355	00412330	_global	Std_Vector_Insert_Range_Copies	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-356	00412450	_global	Std_Vector_Erase_Range	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-357	004124c0	_global	Std_Vector_Insert_Range_16Bytes	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-358	004125a0	_global	Std_Vector_Insert_Range_Copies_28byte	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-359	004126e0	_global	vector_resize_with_fill	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-360	004127e0	_global	Std_Deque_PushBack_ChunkAlloc	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-361	004128a0	_global	Vector_PushBack	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-362	00412b70	_global	Std_Vector_Resize	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-363	00415fd3	_global	DivideByGameSpeed	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-364	0041641f	_global	CMainGameComponent_ChangeDisplayMode	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-365	00417a58	_global	CMainGameComponent_InitSoundBanks	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-366	00418c3b	_global	GFMain_ProcessSaveFileMetadata	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-367	00419f50	_global	Vector_FromRange	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-368	0041c090	_global	CGraphicFrameData_ReleaseReference	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-369	0041c780	_global	__EH_epilog3	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-370	0041ceb3	_global	CASound_PlayFromSymbol	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-371	0041cfb2	_global	GetTextBySymbol	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-372	0041d0a8	_global	CASound_PlayMessage	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-373	00429ab9	_global	DoublyLinkedList_Unlink	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-374	00429b02	_global	LinkedList_Unlink_and_Free	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-375	00429b52	_global	LinkedList_RemoveNode	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-376	00429fbe	_global	LinkedList_AllocateNode_12bytes	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-377	00429fe3	_global	LinkedList_AllocateNode	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-378	0042a008	_global	Std_List_AllocateNode	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-379	0042a58d	_global	RBTreeIterator_MoveToMax_A	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-380	0042a59e	_global	RBTreeIterator_MoveToMax_B	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-381	0042a5af	_global	RBTreeIterator_MoveToMax_C	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-382	0042a5c0	_global	RBTreeIterator_MoveToMax_D	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-383	0042a82b	_global	BinarySearchTree_FindLessOrEqual	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-384	0042a879	_global	BinarySearchTree_FindNode	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-385	0042a8bd	_global	MemoryAllocator_CountAllocatedBlocks	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-386	0042aadc	_global	LinkedList_InsertBefore	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-387	0042ab01	_global	Std_DoubleLinkedList_CreateNode	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-388	0042ab33	_global	LinkedList_Insert_Before	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-389	0042ab8a	_global	Std_List_Insert	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-390	0042ac0a	_global	DoublyLinkedList_InitializeEmpty	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-391	0042ac52	_global	Allocator_Alloc_56bytes	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-392	0042ac9f	_global	Allocator_Alloc_24bytes	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-393	0042acec	_global	LinkedList_Initialize	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-394	0042ad10	_global	Allocator_Alloc_28bytes	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-395	0042ad34	_global	StdMap_LowerBound	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-396	0042ad6c	_global	BinarySearchTree_FindEqualOrGreater	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-397	0042ad91	_global	BinarySearchTree_FindExact	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-398	0042adb6	_global	BinarySearchTree_EraseNode	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-399	0042ae0e	_global	BinarySearchTree_FindByIntKey	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-400	0042ae33	_global	BinaryTree_Find	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-401	0042ae58	_global	BinarySearchTree_FindByComparator	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-402	0042ae90	_global	BinarySearchTree_FindGreaterOrEqual	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-403	0042aeb5	_global	BinarySearchTree_FindByUintComparator	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-404	0042b467	_global	StdMap_FindLE	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-405	0042b4f3	_global	BinarySearchTree_FindLessOrEqual_Copy	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-406	0042b52b	_global	BinarySearchTree_LowerBound	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-407	0042b5a8	_global	BinarySearchTreeNode_Create	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-408	0042b5ca	_global	BinarySearchTreeNode_CreateDuplicate	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-409	0042b5ec	_global	BinarySearchTreeNode_CreateCopy	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-410	0042b687	_global	LinkedList_PushFront	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-411	0042b6b8	_global	Std_List_PushFront	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-412	0042b72b	_global	CTexture_InitEmpty_56bytes	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-413	0042b76c	_global	CTexture_InitEmpty_24bytes	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-414	0042b7ad	_global	LinkedList_InitializeNode	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-415	0042b7ee	_global	CTexture_InitEmpty_28bytes	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-416	0042b854	_global	CMemoryAllocatorVariableSize_Clear	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-417	0042b98b	_global	BinarySearchTree_InsertAndBalance	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-418	0042ba13	_global	RBTree_InsertOrReplace	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-419	0042ba99	_global	BinaryTree_InsertNodeLeft	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-420	0042bb21	_global	RBTree_InsertLeft	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-421	0042bba7	_global	BinaryTree_InsertNodeRight	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-422	0042bc2f	_global	RBTree_InsertRight	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-423	0042bcb5	_global	CMemoryAllocatorVariableSize_InsertNode	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-424	0042bd4a	_global	RBTree_InsertString	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-425	0042bf06	_global	CEngineSceneGrid_Initialize	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-426	0042c082	_global	CMemoryAllocatorVariableSize_FindInsertPoint	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-427	0042c1c1	_global	CMemoryAllocatorVariableSize_FindInsertPointLeft	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-428	0042c300	_global	CMemoryAllocatorVariableSize_FindInsertPointRight	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-429	0042c43f	_global	CTC_FindInterface_0x10e	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-430	0042c48b	_global	CTC_FindInterface_0x11	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-431	0042c4d6	_global	CTC_FindInterface_0x17	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-432	0042c521	_global	CTC_FindInterface_4	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-433	0042c56c	_global	CTCBase_FindInterfaceType_0x19	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-434	0042c5b7	_global	CTCBase_FindInterfaceType_0x16	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-435	0042c602	_global	CTCBase_FindInterfaceType_0x29	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-436	0042c64d	_global	CTCBase_FindInterfaceType_0xe8	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-437	0042c699	_global	CTCBase_FindInterfaceType_0x1b	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-438	0042c6e4	_global	CTCBase_FindInterfaceType_0x6f	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-439	0042c72f	_global	CTCBase_FindInterfaceType_0x13	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-440	0042c77a	_global	CTCBase_FindInterfaceType_0x14	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-441	0042c7c5	_global	CTCBase_FindInterfaceType_0x12	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-442	0042c810	_global	CTCBase_FindInterfaceType_0xf6	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-443	0042c85c	_global	CTCBase_FindInterfaceType_0x10d	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-444	0042c8a8	_global	CTCBase_FindInterfaceType_0xd0	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-445	0042c8f4	_global	CTCBase_FindInterfaceType_0xfc	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-446	0042c940	_global	CMemoryAllocatorVariableSize_InsertWithString	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-447	0042cb08	_global	BinaryTree_InsertScriptData	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-448	0042cb90	_global	CSurface_Clone_Recursive	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-449	0042cc03	_global	BinaryTree_InsertCString	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-450	0042cc98	_global	RBTree_InsertStringKey	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-451	0042cd3e	_global	FID_conflict:max_size	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-452	0042cd61	_global	FID_conflict:max_size	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-453	0042cde0	_global	CompareAndCountAllocations	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-454	0042ce7a	_global	CTCCarryable_CopyAssign	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-455	0042cee3	_global	CMemoryAllocatorVariableSize_FindOrInsert	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-456	0042cf69	_global	CMemoryAllocatorVariableSize_InsertStringNode	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-457	0042d2c6	_global	CMemoryAllocatorVariableSize_FindAllocationNode	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-458	0042d45d	_global	CPersistTraits_Transfer_And_Construct	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-459	0042d604	_global	CChangingStateComponent_StateChangeHandler_1	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-460	0042d65b	_global	CChangingStateComponent_StateChangeHandler_2	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-461	0042ded5	_global	CFrontEnd_PlayAutoSaveSound	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-462	0042e17c	_global	Init_FrontendSounds	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-463	00430022	_global	Queue_Initialize	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-464	0043006f	_global	Stack_Initialize	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-465	0043019f	_global	LinkedList_Initialize	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-466	004301c9	_global	ListNode_Construct	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-467	004303f0	_global	CMemoryBlock_Destructor	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-468	00431277	_global	UpdateShadowScene_WriteState	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-469	00431363	_global	BinaryTree_Insert_With_Position	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-470	004313e9	_global	std_set_insert_uint_via_FUN	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-471	00431471	_global	TreeNode_AllocData	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-472	00431606	_global	Map_InsertStringKeyNode	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-473	004316cf	_global	BinaryTree_InsertDigScriptNode	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-474	004317d0	_global	CMemoryBlock_Destructor	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-475	00431e80	_global	CParentDefClassBase_CopyAssign_1	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-476	0043212b	_global	Vector_AllocateAndCopy	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-477	00432aa8	_global	CTCCarryable_CloneTree	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-478	00432b38	_global	CTCCarryable_assign	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-479	00432bab	_global	CExpression_DigScript_CloneTree	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-480	00432ff0	_global	Vector_AllocateAndCopyCCharString	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-481	0043336a	_global	Std_Vector_Erase_Range	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-482	004333b3	_global	Std_Vector_InsertRange	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-483	00433db5	_global	STL_AllocateAndInitializeArray	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-484	00433df0	_global	Array_AssignFrom	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-485	00434370	_global	CParentDefClassBase_CopyAssign_2	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-486	00434dc0	_global	$E2	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-487	00434dd0	_global	$E2	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-488	004350d0	_global	InitDisplayEngine_InitGraphics	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-489	00436a80	_global	Vector_EraseAndMove	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-490	00436ac0	_global	Vector_InsertN	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-491	0043a2a0	_global	ShowOnScreenMessage_FormatDisplay	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-492	0043a570	_global	NHeroInformationScreens_Destructor	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-493	0043f510	_global	FreePointerArray	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-494	0043f560	_global	Vector_FreeElementPointers	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-495	00440550	_global	Buffer_MoveData	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-496	00440590	_global	Buffer_Relocate	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-497	004408a0	_global	Std_Vector_Insert_Range	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-498	00440b40	_global	Vector_DestructStringRange	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-499	00440c00	_global	Vector_CopyPairRange	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
-500	00440d70	_global	Vector_EraseRange	candidate-cluster	calling-convention+prototype	522928	unknown	undefined						
+335	0040f0a0	_global	Compare_Unsigned16Array	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+336	0040f390	_global	Buffer_RellocateAndUpdateWritePointer	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+337	0040f4a0	_global	Std_BitSet_Allocate	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+338	0040f6b0	_global	CString_FillRange	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+339	0040fbf0	_global	CWideString_FillBackward	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+340	00410460	_global	std_vector_C2DLineF_Copy	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+341	00410550	_global	MemoryPool_AdvancePointer	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+342	00410d80	_global	bitset_advance_iterator	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+343	00410ed0	_global	Std_Deque_PopFront_ChunkBased	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+344	00410f30	_global	Buffer_AllocateAndZero	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+345	004110d0	_global	CString_FillRange	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+346	00411630	_global	Std_Deque_Resize_WithGap	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+347	004117c0	_global	Std_Vector_Insert_Range	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+348	00411910	_global	Buffer_AllocateAndZero	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+349	00411a10	_global	Std_Vector_Insert_Range_Copies_4byte	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+350	00411b00	_global	vector_push_back_copy	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+351	00411b90	_global	std_vector_assign	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+352	00411db0	_global	Std_Vector_Insert_Range_Dispatch	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+353	00411f10	_global	Std_Vector_Insert_Range_4Bytes	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+354	004121d0	_global	Std_Vector_PushBack_WithGrow	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+355	00412330	_global	Std_Vector_Insert_Range_Copies	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+356	00412450	_global	Std_Vector_Erase_Range	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+357	004124c0	_global	Std_Vector_Insert_Range_16Bytes	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+358	004125a0	_global	Std_Vector_Insert_Range_Copies_28byte	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+359	004126e0	_global	vector_resize_with_fill	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+360	004127e0	_global	Std_Deque_PushBack_ChunkAlloc	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+361	004128a0	_global	Vector_PushBack	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+362	00412b70	_global	Std_Vector_Resize	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+363	00415fd3	_global	DivideByGameSpeed	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+364	0041641f	_global	CMainGameComponent_ChangeDisplayMode	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+365	00417a58	_global	CMainGameComponent_InitSoundBanks	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+366	00418c3b	_global	GFMain_ProcessSaveFileMetadata	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+367	00419f50	_global	Vector_FromRange	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+368	0041c090	_global	CGraphicFrameData_ReleaseReference	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+369	0041c780	_global	__EH_epilog3	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+370	0041ceb3	_global	CASound_PlayFromSymbol	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+371	0041cfb2	_global	GetTextBySymbol	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+372	0041d0a8	_global	CASound_PlayMessage	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+373	00429ab9	_global	DoublyLinkedList_Unlink	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+374	00429b02	_global	LinkedList_Unlink_and_Free	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+375	00429b52	_global	LinkedList_RemoveNode	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+376	00429fbe	_global	LinkedList_AllocateNode_12bytes	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+377	00429fe3	_global	LinkedList_AllocateNode	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+378	0042a008	_global	Std_List_AllocateNode	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+379	0042a58d	_global	RBTreeIterator_MoveToMax_A	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+380	0042a59e	_global	RBTreeIterator_MoveToMax_B	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+381	0042a5af	_global	RBTreeIterator_MoveToMax_C	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+382	0042a5c0	_global	RBTreeIterator_MoveToMax_D	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+383	0042a82b	_global	BinarySearchTree_FindLessOrEqual	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+384	0042a879	_global	BinarySearchTree_FindNode	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+385	0042a8bd	_global	MemoryAllocator_CountAllocatedBlocks	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+386	0042aadc	_global	LinkedList_InsertBefore	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+387	0042ab01	_global	Std_DoubleLinkedList_CreateNode	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+388	0042ab33	_global	LinkedList_Insert_Before	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+389	0042ab8a	_global	Std_List_Insert	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+390	0042ac0a	_global	DoublyLinkedList_InitializeEmpty	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+391	0042ac52	_global	Allocator_Alloc_56bytes	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+392	0042ac9f	_global	Allocator_Alloc_24bytes	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+393	0042acec	_global	LinkedList_Initialize	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+394	0042ad10	_global	Allocator_Alloc_28bytes	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+395	0042ad34	_global	StdMap_LowerBound	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+396	0042ad6c	_global	BinarySearchTree_FindEqualOrGreater	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+397	0042ad91	_global	BinarySearchTree_FindExact	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+398	0042adb6	_global	BinarySearchTree_EraseNode	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+399	0042ae0e	_global	BinarySearchTree_FindByIntKey	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+400	0042ae33	_global	BinaryTree_Find	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+401	0042ae58	_global	BinarySearchTree_FindByComparator	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+402	0042ae90	_global	BinarySearchTree_FindGreaterOrEqual	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+403	0042aeb5	_global	BinarySearchTree_FindByUintComparator	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+404	0042b467	_global	StdMap_FindLE	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+405	0042b4f3	_global	BinarySearchTree_FindLessOrEqual_Copy	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+406	0042b52b	_global	BinarySearchTree_LowerBound	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+407	0042b5a8	_global	BinarySearchTreeNode_Create	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+408	0042b5ca	_global	BinarySearchTreeNode_CreateDuplicate	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+409	0042b5ec	_global	BinarySearchTreeNode_CreateCopy	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+410	0042b687	_global	LinkedList_PushFront	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+411	0042b6b8	_global	Std_List_PushFront	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+412	0042b72b	_global	CTexture_InitEmpty_56bytes	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+413	0042b76c	_global	CTexture_InitEmpty_24bytes	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+414	0042b7ad	_global	LinkedList_InitializeNode	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+415	0042b7ee	_global	CTexture_InitEmpty_28bytes	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+416	0042b854	_global	CMemoryAllocatorVariableSize_Clear	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+417	0042b98b	_global	BinarySearchTree_InsertAndBalance	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+418	0042ba13	_global	RBTree_InsertOrReplace	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+419	0042ba99	_global	BinaryTree_InsertNodeLeft	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+420	0042bb21	_global	RBTree_InsertLeft	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+421	0042bba7	_global	BinaryTree_InsertNodeRight	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+422	0042bc2f	_global	RBTree_InsertRight	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+423	0042bcb5	_global	CMemoryAllocatorVariableSize_InsertNode	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+424	0042bd4a	_global	RBTree_InsertString	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+425	0042bf06	_global	CEngineSceneGrid_Initialize	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+426	0042c082	_global	CMemoryAllocatorVariableSize_FindInsertPoint	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+427	0042c1c1	_global	CMemoryAllocatorVariableSize_FindInsertPointLeft	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+428	0042c300	_global	CMemoryAllocatorVariableSize_FindInsertPointRight	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+429	0042c43f	_global	CTC_FindInterface_0x10e	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+430	0042c48b	_global	CTC_FindInterface_0x11	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+431	0042c4d6	_global	CTC_FindInterface_0x17	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+432	0042c521	_global	CTC_FindInterface_4	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+433	0042c56c	_global	CTCBase_FindInterfaceType_0x19	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+434	0042c5b7	_global	CTCBase_FindInterfaceType_0x16	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+435	0042c602	_global	CTCBase_FindInterfaceType_0x29	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+436	0042c64d	_global	CTCBase_FindInterfaceType_0xe8	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+437	0042c699	_global	CTCBase_FindInterfaceType_0x1b	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+438	0042c6e4	_global	CTCBase_FindInterfaceType_0x6f	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+439	0042c72f	_global	CTCBase_FindInterfaceType_0x13	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+440	0042c77a	_global	CTCBase_FindInterfaceType_0x14	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+441	0042c7c5	_global	CTCBase_FindInterfaceType_0x12	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+442	0042c810	_global	CTCBase_FindInterfaceType_0xf6	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+443	0042c85c	_global	CTCBase_FindInterfaceType_0x10d	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+444	0042c8a8	_global	CTCBase_FindInterfaceType_0xd0	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+445	0042c8f4	_global	CTCBase_FindInterfaceType_0xfc	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+446	0042c940	_global	CMemoryAllocatorVariableSize_InsertWithString	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+447	0042cb08	_global	BinaryTree_InsertScriptData	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+448	0042cb90	_global	CSurface_Clone_Recursive	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+449	0042cc03	_global	BinaryTree_InsertCString	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+450	0042cc98	_global	RBTree_InsertStringKey	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+451	0042cd3e	_global	FID_conflict:max_size	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+452	0042cd61	_global	FID_conflict:max_size	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+453	0042cde0	_global	CompareAndCountAllocations	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+454	0042ce7a	_global	CTCCarryable_CopyAssign	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+455	0042cee3	_global	CMemoryAllocatorVariableSize_FindOrInsert	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+456	0042cf69	_global	CMemoryAllocatorVariableSize_InsertStringNode	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+457	0042d2c6	_global	CMemoryAllocatorVariableSize_FindAllocationNode	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+458	0042d45d	_global	CPersistTraits_Transfer_And_Construct	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+459	0042d604	_global	CChangingStateComponent_StateChangeHandler_1	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+460	0042d65b	_global	CChangingStateComponent_StateChangeHandler_2	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+461	0042ded5	_global	CFrontEnd_PlayAutoSaveSound	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+462	0042e17c	_global	Init_FrontendSounds	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+463	00430022	_global	Queue_Initialize	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+464	0043006f	_global	Stack_Initialize	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+465	0043019f	_global	LinkedList_Initialize	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+466	004301c9	_global	ListNode_Construct	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+467	004303f0	_global	CMemoryBlock_Destructor	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+468	00431277	_global	UpdateShadowScene_WriteState	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+469	00431363	_global	BinaryTree_Insert_With_Position	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+470	004313e9	_global	std_set_insert_uint_via_FUN	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+471	00431471	_global	TreeNode_AllocData	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+472	00431606	_global	Map_InsertStringKeyNode	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+473	004316cf	_global	BinaryTree_InsertDigScriptNode	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+474	004317d0	_global	CMemoryBlock_Destructor	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+475	00431e80	_global	CParentDefClassBase_CopyAssign_1	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+476	0043212b	_global	Vector_AllocateAndCopy	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+477	00432aa8	_global	CTCCarryable_CloneTree	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+478	00432b38	_global	CTCCarryable_assign	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+479	00432bab	_global	CExpression_DigScript_CloneTree	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+480	00432ff0	_global	Vector_AllocateAndCopyCCharString	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+481	0043336a	_global	Std_Vector_Erase_Range	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+482	004333b3	_global	Std_Vector_InsertRange	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+483	00433db5	_global	STL_AllocateAndInitializeArray	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+484	00433df0	_global	Array_AssignFrom	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+485	00434370	_global	CParentDefClassBase_CopyAssign_2	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+486	00434dc0	_global	$E2	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+487	00434dd0	_global	$E2	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+488	004350d0	_global	InitDisplayEngine_InitGraphics	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+489	00436a80	_global	Vector_EraseAndMove	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+490	00436ac0	_global	Vector_InsertN	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+491	0043a2a0	_global	ShowOnScreenMessage_FormatDisplay	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+492	0043a570	_global	NHeroInformationScreens_Destructor	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+493	0043f510	_global	FreePointerArray	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+494	0043f560	_global	Vector_FreeElementPointers	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+495	00440550	_global	Buffer_MoveData	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+496	00440590	_global	Buffer_Relocate	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+497	004408a0	_global	Std_Vector_Insert_Range	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+498	00440b40	_global	Vector_DestructStringRange	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+499	00440c00	_global	Vector_CopyPairRange	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						
+500	00440d70	_global	Vector_EraseRange	candidate-cluster	calling-convention+prototype	522929	unknown	undefined						

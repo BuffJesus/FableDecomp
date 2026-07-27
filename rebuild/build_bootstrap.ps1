@@ -61,6 +61,22 @@ $wideStringFromCharSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideStri
 $wideStringFromCharBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_CreateFromCharString_0099b6a0_test.cpp'
 $wideStringCopySource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_CopyConstructor_0099b720.cpp'
 $wideStringCopyBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_CopyConstructor_0099b720_test.cpp'
+$wideStringAddRightSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_AddWideStringAndLiteral_0099bf30.cpp'
+$wideStringAddRightBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_AddWideStringAndLiteral_0099bf30_test.cpp'
+$wideStringAddLeftSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_AddLiteralAndWideString_0099bff0.cpp'
+$wideStringAddLeftBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_AddLiteralAndWideString_0099bff0_test.cpp'
+$pathExistsSource = Join-Path $rebuildRoot 'src\compiled\00\99\CAFile_PathExists_00999230.cpp'
+$pathExistsBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CAFile_PathExists_00999230_test.cpp'
+$diskFileConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CDiskFileWin32_Constructor_0099AD80.cpp'
+$diskFileConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CDiskFileWin32_Constructor_0099AD80_test.cpp'
+$diskFileCloseSource = Join-Path $rebuildRoot 'src\compiled\00\99\CDiskFileWin32_Close_0099A920.cpp'
+$diskFileCloseBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CDiskFileWin32_Close_0099A920_test.cpp'
+$charStringLoadFileSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharString_LoadFromFile_0099f2e0.cpp'
+$charStringLoadFileBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_LoadFromFile_0099f2e0_test.cpp'
+$stringParserConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\40\CStringParser_Constructor_00404720.cpp'
+$stringParserConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CStringParser_Constructor_00404720_test.cpp'
+$persistContextTextConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\9b\CPersistContext_TextConstructor_009badd0.cpp'
+$persistContextTextConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\9b\CPersistContext_TextConstructor_009badd0_test.cpp'
 $charToWideStringSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharString_ToWideString_0099e480.cpp'
 $charToWideStringBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_ToWideString_0099e480_test.cpp'
 $primaryLeftAlignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9b\TextLayout_SetPrimaryLeftAlignment_009bc890.cpp'
@@ -71,6 +87,20 @@ $cbaseRestoreASource = Join-Path $rebuildRoot 'src\compiled\00\99\CBase_RestoreV
 $cbaseRestoreABehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CBase_RestoreVTable_0099a2e0_test.cpp'
 $cbaseRestoreBSource = Join-Path $rebuildRoot 'src\compiled\00\99\CBase_RestoreVTable_0099a300.cpp'
 $cbaseRestoreBBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CBase_RestoreVTable_0099a300_test.cpp'
+$cmovieIsPlayingSource = Join-Path $rebuildRoot 'src\compiled\00\54\CMovie_IsPlaying_00548520.cpp'
+$cmovieIsPlayingBehaviorSource = Join-Path $rebuildRoot 'tests\00\54\CMovie_IsPlaying_00548520_test.cpp'
+$cmovieSetMovieSource = Join-Path $rebuildRoot 'src\compiled\00\54\CMovie_SetMovie_00548510.cpp'
+$cmovieSetMovieBehaviorSource = Join-Path $rebuildRoot 'tests\00\54\CMovie_SetMovie_00548510_test.cpp'
+$videoSysGetTextureSource = Join-Path $rebuildRoot 'src\compiled\00\a3\CVideoSys_GetTexture_00a3b320.cpp'
+$videoSysGetTextureBehaviorSource = Join-Path $rebuildRoot 'tests\00\a3\CVideoSys_GetTexture_00a3b320_test.cpp'
+$videoSysAttemptToPlaySource = Join-Path $rebuildRoot 'src\compiled\00\a3\CVideoSys_AttemptToPlay_00a3b1a0.cpp'
+$videoSysAttemptToPlayBehaviorSource = Join-Path $rebuildRoot 'tests\00\a3\CVideoSys_AttemptToPlay_00a3b1a0_test.cpp'
+$videoSysWaitForStateSource = Join-Path $rebuildRoot 'src\compiled\00\a3\CVideoSys_WaitForState_00a3b0f0.cpp'
+$videoSysWaitForStateBehaviorSource = Join-Path $rebuildRoot 'tests\00\a3\CVideoSys_WaitForState_00a3b0f0_test.cpp'
+$videoSysPauseSource = Join-Path $rebuildRoot 'src\compiled\00\a3\CVideoSys_Pause_00a3b1c0.cpp'
+$videoSysPauseBehaviorSource = Join-Path $rebuildRoot 'tests\00\a3\CVideoSys_Pause_00a3b1c0_test.cpp'
+$videoSysStopSource = Join-Path $rebuildRoot 'src\compiled\00\a3\CVideoSys_Stop_00a3b1f0.cpp'
+$videoSysStopBehaviorSource = Join-Path $rebuildRoot 'tests\00\a3\CVideoSys_Stop_00a3b1f0_test.cpp'
 $charStringDefaultSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharString_DefaultConstructor_0099e4b0.cpp'
 $charStringDefaultBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_DefaultConstructor_0099e4b0_test.cpp'
 $systemManagerInitSource = Join-Path $rebuildRoot 'src\compiled\00\40\CSystemManagerInit_Constructor_00403b10.cpp'
@@ -84,6 +114,11 @@ $stage2BoundarySource = Join-Path $rebuildRoot 'integration\stage2_engine_bounda
 $visualBootSource = Join-Path $rebuildRoot 'integration\visual_boot_checkpoint.cpp'
 $visualBootD3D9Source = Join-Path $rebuildRoot 'integration\visual_boot_d3d9.cpp'
 $retailVideoBridgeSource = Join-Path $rebuildRoot 'integration\retail_video_bridge.cpp'
+$videoFrameConversionSource = Join-Path $rebuildRoot 'integration\video_frame_conversion.cpp'
+$videoFramePublicationSource = Join-Path $rebuildRoot 'integration\video_frame_publication.cpp'
+$videoFramePublicationBehaviorSource = Join-Path $rebuildRoot 'tests\integration\VideoFramePublication_test.cpp'
+$frontendStartupSequenceSource = Join-Path $rebuildRoot 'integration\frontend_startup_sequence.cpp'
+$frontendStartupSequenceBehaviorSource = Join-Path $rebuildRoot 'tests\integration\FrontendStartupSequence_test.cpp'
 $visualBootFallbackArtwork = Join-Path $rebuildRoot 'assets\boot\fabledecomp_boot_concept.png'
 $visualBootArtwork = $visualBootFallbackArtwork
 $textureBuilder = Join-Path $workspaceRoot 'tools\texture_build.py'
@@ -111,6 +146,14 @@ $pixelFormatTableSource = Join-Path $rebuildRoot 'src\compiled\01\29\CPixelForma
 $textureInitialisePreallocatedSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_InitialiseFromPreallocatedTexture_009fa230.cpp'
 $textureAssignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_Assignment_009fa1c0.cpp'
 $textureUninitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_Uninitialise_009f9f70.cpp'
+$surfaceCopyConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CSurface_CopyConstructor_009f2d60.cpp'
+$surfaceCopyConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\9f\CSurface_CopyConstructor_009f2d60_test.cpp'
+$surfaceInitialiseMipmapSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CSurface_InitialiseFromTextureMipmap_009f2f10.cpp'
+$surfaceInitialiseMipmapBehaviorSource = Join-Path $rebuildRoot 'tests\00\9f\CSurface_InitialiseFromTextureMipmap_009f2f10_test.cpp'
+$surfaceCopyFromSurfaceSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CSurface_CopyFromSurface_009f37e0.cpp'
+$surfaceCopyFromSurfaceBehaviorSource = Join-Path $rebuildRoot 'tests\00\9f\CSurface_CopyFromSurface_009f37e0_test.cpp'
+$textureCopyFromTextureSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_CopyFromTexture_009fa4e0.cpp'
+$textureCopyFromTextureBehaviorSource = Join-Path $rebuildRoot 'tests\00\9f\CTexture_CopyFromTexture_009fa4e0_test.cpp'
 $gfmainPhase1BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase1_test.cpp'
 $gfmainPhase2BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase2_test.cpp'
 $gfInitialiseProgressPhaseBehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFInitialise_ProgressPhase_test.cpp'
@@ -155,6 +198,11 @@ $visualBoundaryObject = Join-Path $outDir 'visual_engine_boundary.obj'
 $visualBootObject = Join-Path $outDir 'visual_boot_checkpoint.obj'
 $visualBootD3D9Object = Join-Path $outDir 'visual_boot_d3d9.obj'
 $retailVideoBridgeObject = Join-Path $outDir 'retail_video_bridge.obj'
+$videoFrameConversionObject = Join-Path $outDir 'video_frame_conversion.obj'
+$videoFramePublicationObject = Join-Path $outDir 'video_frame_publication.obj'
+$videoFramePublicationBehaviorObject = Join-Path $outDir 'video_frame_publication_behavior.obj'
+$frontendStartupSequenceObject = Join-Path $outDir 'frontend_startup_sequence.obj'
+$frontendStartupSequenceBehaviorObject = Join-Path $outDir 'frontend_startup_sequence_behavior.obj'
 $visualBootBehaviorObject = Join-Path $outDir 'visual_boot_checkpoint_behavior.obj'
 $render2DBatchPlanObject = Join-Path $outDir 'render2d_batch_plan.obj'
 $render2DBatchPlanBehaviorObject = Join-Path $outDir 'render2d_batch_plan_behavior.obj'
@@ -180,7 +228,11 @@ $textureInitialisePreallocatedObject = Join-Path $outDir 'texture_initialise_pre
 $textureAssignmentObject = Join-Path $outDir 'texture_assignment.obj'
 $textureUninitialiseObject = Join-Path $outDir 'texture_uninitialise.obj'
 $visualBootRetailArtwork = Join-Path $outDir 'frontend_backdrop_01.png'
+$visualBootRetailTitle = Join-Path $outDir 'frontend_title_01_sprite.png'
+$visualBootRetailTitleRight = Join-Path $outDir 'frontend_title_02_sprite.png'
+$visualBootRetailPrompt = Join-Path $outDir 'frontend_press_start_text.png'
 $visualBootBitmap = Join-Path $outDir 'visual_boot_artwork.bmp'
+$visualBootTitleBitmap = Join-Path $outDir 'visual_boot_title.bmp'
 $visualBootResourceSource = Join-Path $outDir 'visual_boot_checkpoint.rc'
 $visualBootResource = Join-Path $outDir 'visual_boot_checkpoint.res'
 $gfmainPhase1BehaviorObject = Join-Path $outDir 'gfmain_phase1_behavior.obj'
@@ -208,6 +260,8 @@ $stage2Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage2.exe'
 $stage3Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage3.exe'
 $visualCheckpointExecutable = Join-Path $outDir 'FableTLC-Reconstruction-VisualCheckpoint.exe'
 $visualBootBehaviorExecutable = Join-Path $outDir 'FableTLC-VisualBoot-Behavior.exe'
+$videoFramePublicationBehaviorExecutable = Join-Path $outDir 'FableTLC-VideoFramePublication-Behavior.exe'
+$frontendStartupSequenceBehaviorExecutable = Join-Path $outDir 'FableTLC-FrontendStartupSequence-Behavior.exe'
 $render2DBatchPlanBehaviorExecutable = Join-Path $outDir 'FableTLC-Render2DBatchPlan-Behavior.exe'
 $render2DDrawListAdapterBehaviorExecutable = Join-Path $outDir 'FableTLC-Render2DDrawListAdapter-Behavior.exe'
 $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
@@ -233,6 +287,8 @@ $gfmainPhase1PassPattern = 'FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS'
 $gfmainPhase2PassPattern = 'FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS'
 $gfInitialiseProgressPhasePassPattern = 'FABLETLC_GFINITIALISE_PROGRESS_PHASE_BEHAVIOR PASS'
 $visualBootPassPattern = 'FABLETLC_VISUAL_BOOT_BEHAVIOR PASS'
+$videoFramePublicationPassPattern = 'FABLETLC_VIDEO_FRAME_PUBLICATION PASS'
+$frontendStartupSequencePassPattern = 'FABLETLC_FRONTEND_STARTUP_SEQUENCE PASS'
 $render2DBatchPlanPassPattern = 'FABLETLC_RENDER2D_BATCH_PLAN PASS'
 $render2DDrawListAdapterPassPattern = 'FABLETLC_RENDER2D_DRAW_LIST_ADAPTER PASS'
 $profileEndPassPattern = 'FABLETLC_PROFILE_END_BEHAVIOR PASS'
@@ -242,11 +298,30 @@ $fileInstallerGetPassPattern = 'FABLETLC_FILE_INSTALLER_GET_BEHAVIOR PASS'
 $defaultLanguageNamePassPattern = 'FABLETLC_DEFAULT_LANGUAGE_NAME_BEHAVIOR PASS'
 $wideStringFromCharPassPattern = 'FABLETLC_WIDE_STRING_FROM_CHAR_FACTORY_BEHAVIOR PASS'
 $wideStringCopyPassPattern = 'FABLETLC_WIDE_STRING_COPY_CONSTRUCTOR_BEHAVIOR PASS'
+$wideStringAddRightPassPattern = 'FABLETLC_WIDE_STRING_ADD_RIGHT PASS'
+$wideStringAddLeftPassPattern = 'FABLETLC_WIDE_STRING_ADD_LEFT PASS'
+$pathExistsPassPattern = 'FABLETLC_PATH_EXISTS_00999230 PASS'
+$diskFileConstructorPassPattern = 'FABLETLC_DISK_FILE_CTOR_0099AD80 PASS'
+$diskFileClosePassPattern = 'FABLETLC_DISK_FILE_CLOSE_0099A920 PASS'
+$charStringLoadFilePassPattern = 'FABLETLC_CHAR_STRING_LOAD_FILE_0099F2E0 PASS'
+$stringParserConstructorPassPattern = 'FABLETLC_STRING_PARSER_CTOR_00404720 PASS'
+$persistContextTextConstructorPassPattern = 'FABLETLC_PERSIST_CONTEXT_TEXT_CTOR_009BADD0 PASS'
+$surfaceCopyConstructorPassPattern = 'FABLETLC_SURFACE_COPY_CONSTRUCTOR_BEHAVIOR PASS'
+$surfaceInitialiseMipmapPassPattern = 'FABLETLC_SURFACE_INITIALISE_TEXTURE_MIPMAP_BEHAVIOR PASS'
+$surfaceCopyFromSurfacePassPattern = 'FABLETLC_SURFACE_COPY_FROM_SURFACE_BEHAVIOR PASS'
+$textureCopyFromTexturePassPattern = 'FABLETLC_TEXTURE_COPY_FROM_TEXTURE_BEHAVIOR PASS'
 $charToWideStringPassPattern = 'FABLETLC_CHAR_TO_WIDE_STRING_BEHAVIOR PASS'
 $primaryLeftAlignmentPassPattern = 'FABLETLC_PRIMARY_LEFT_ALIGNMENT_BEHAVIOR PASS'
 $secondaryLeftAlignmentPassPattern = 'FABLETLC_SECONDARY_LEFT_ALIGNMENT_BEHAVIOR PASS'
 $cbaseRestoreAPassPattern = 'FABLETLC_CBASE_RESTORE_A_BEHAVIOR PASS'
 $cbaseRestoreBPassPattern = 'FABLETLC_CBASE_RESTORE_B_BEHAVIOR PASS'
+$cmovieIsPlayingPassPattern = 'FABLETLC_CMOVIE_IS_PLAYING PASS'
+$cmovieSetMoviePassPattern = 'FABLETLC_CMOVIE_SET_MOVIE PASS'
+$videoSysGetTexturePassPattern = 'FABLETLC_CVIDEOSYS_GET_TEXTURE PASS'
+$videoSysAttemptToPlayPassPattern = 'FABLETLC_CVIDEOSYS_ATTEMPT_TO_PLAY PASS'
+$videoSysWaitForStatePassPattern = 'FABLETLC_CVIDEOSYS_WAIT_FOR_STATE PASS'
+$videoSysPausePassPattern = 'FABLETLC_CVIDEOSYS_PAUSE PASS'
+$videoSysStopPassPattern = 'FABLETLC_CVIDEOSYS_STOP PASS'
 
 $required = @(
     (Join-Path $vcRoot 'bin\cl.exe'),
@@ -300,6 +375,22 @@ $required = @(
     $wideStringFromCharBehaviorSource,
     $wideStringCopySource,
     $wideStringCopyBehaviorSource,
+    $wideStringAddRightSource,
+    $wideStringAddRightBehaviorSource,
+    $wideStringAddLeftSource,
+    $wideStringAddLeftBehaviorSource,
+    $pathExistsSource,
+    $pathExistsBehaviorSource,
+    $diskFileConstructorSource,
+    $diskFileConstructorBehaviorSource,
+    $diskFileCloseSource,
+    $diskFileCloseBehaviorSource,
+    $charStringLoadFileSource,
+    $charStringLoadFileBehaviorSource,
+    $stringParserConstructorSource,
+    $stringParserConstructorBehaviorSource,
+    $persistContextTextConstructorSource,
+    $persistContextTextConstructorBehaviorSource,
     $charToWideStringSource,
     $charToWideStringBehaviorSource,
     $primaryLeftAlignmentSource,
@@ -310,6 +401,20 @@ $required = @(
     $cbaseRestoreABehaviorSource,
     $cbaseRestoreBSource,
     $cbaseRestoreBBehaviorSource,
+    $cmovieIsPlayingSource,
+    $cmovieIsPlayingBehaviorSource,
+    $cmovieSetMovieSource,
+    $cmovieSetMovieBehaviorSource,
+    $videoSysGetTextureSource,
+    $videoSysGetTextureBehaviorSource,
+    $videoSysAttemptToPlaySource,
+    $videoSysAttemptToPlayBehaviorSource,
+    $videoSysWaitForStateSource,
+    $videoSysWaitForStateBehaviorSource,
+    $videoSysPauseSource,
+    $videoSysPauseBehaviorSource,
+    $videoSysStopSource,
+    $videoSysStopBehaviorSource,
     $charStringDefaultSource,
     $charStringDefaultBehaviorSource,
     $systemManagerInitSource,
@@ -322,6 +427,11 @@ $required = @(
     $stage2BoundarySource,
     $visualBootSource,
     $visualBootD3D9Source,
+    $videoFrameConversionSource,
+    $videoFramePublicationSource,
+    $videoFramePublicationBehaviorSource,
+    $frontendStartupSequenceSource,
+    $frontendStartupSequenceBehaviorSource,
     $visualBootFallbackArtwork,
     $visualBootBehaviorSource,
     $render2DBatchPlanSource,
@@ -344,6 +454,14 @@ $required = @(
     $textureInitialisePreallocatedSource,
     $textureAssignmentSource,
     $textureUninitialiseSource,
+    $surfaceCopyConstructorSource,
+    $surfaceCopyConstructorBehaviorSource,
+    $surfaceInitialiseMipmapSource,
+    $surfaceInitialiseMipmapBehaviorSource,
+    $surfaceCopyFromSurfaceSource,
+    $surfaceCopyFromSurfaceBehaviorSource,
+    $textureCopyFromTextureSource,
+    $textureCopyFromTextureBehaviorSource,
     $gfmainPhase1BehaviorSource,
     $gfmainPhase2BehaviorSource,
     $gfInitialiseProgressPhaseBehaviorSource,
@@ -375,18 +493,39 @@ $selectedRetailFrontendBank = $retailFrontendCandidates |
     } |
     Select-Object -First 1
 $visualBootUsesRetailAsset = $false
+$visualBootUsesRetailPrompt = $false
 if ($selectedRetailFrontendBank) {
     & python $textureBuilder decode `
         $selectedRetailFrontendBank `
         FRONTEND_BACKDROP_01 `
         $visualBootRetailArtwork `
         --crop-real
+    $backdropDecodeExitCode = $LASTEXITCODE
+    & python $textureBuilder decode `
+        $selectedRetailFrontendBank `
+        FRONTEND_TITLE_01_SPRITE `
+        $visualBootRetailTitle `
+        --crop-real
+    $titleLeftDecodeExitCode = $LASTEXITCODE
+    & python $textureBuilder decode `
+        $selectedRetailFrontendBank `
+        FRONTEND_TITLE_02_SPRITE `
+        $visualBootRetailTitleRight `
+        --crop-real
+    $titleRightDecodeExitCode = $LASTEXITCODE
     if (
-        $LASTEXITCODE -ne 0 -or
-        -not (Test-Path -LiteralPath $visualBootRetailArtwork)
+        $backdropDecodeExitCode -ne 0 -or
+        $titleLeftDecodeExitCode -ne 0 -or
+        $titleRightDecodeExitCode -ne 0 -or
+        -not (Test-Path -LiteralPath $visualBootRetailArtwork) -or
+        -not (Test-Path -LiteralPath $visualBootRetailTitle) -or
+        -not (Test-Path -LiteralPath $visualBootRetailTitleRight)
     ) {
         if ($RetailFrontendBank) {
-            throw "Failed to decode FRONTEND_BACKDROP_01 from $selectedRetailFrontendBank."
+            throw (
+                "Failed to decode the retail frontend backdrop/title pair " +
+                "from $selectedRetailFrontendBank."
+            )
         }
         Write-Warning (
             "Retail frontend asset decode failed; using authored artwork fallback."
@@ -394,8 +533,50 @@ if ($selectedRetailFrontendBank) {
     } else {
         $visualBootArtwork = $visualBootRetailArtwork
         $visualBootUsesRetailAsset = $true
+        $retailDataRoot = Split-Path -Parent (
+            Split-Path -Parent (
+                Split-Path -Parent $selectedRetailFrontendBank
+            )
+        )
+        $fontCandidates = @()
+        $fontCandidates += Join-Path $retailDataRoot `
+            'lang\English\fonts.big'
+        $fontCandidates +=
+            'C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\data\lang\English\fonts.big'
+        if ($programFilesX86) {
+            $fontCandidates += Join-Path $programFilesX86 `
+                'Steam\steamapps\common\Fable The Lost Chapters\data\lang\English\fonts.big'
+        }
+        $selectedRetailFontBank = $fontCandidates |
+            Where-Object {
+                $_ -and (Test-Path -LiteralPath $_ -PathType Leaf)
+            } |
+            Select-Object -First 1
+        if ($selectedRetailFontBank) {
+            & python (Join-Path $workspaceRoot `
+                'tools\render_fable_static_font.py') `
+                $selectedRetailFontBank `
+                ENG_ARIAL_24 `
+                'Press Left Mouse Button To Continue' `
+                $visualBootRetailPrompt `
+                --canvas 640 480 `
+                --position 320 240 `
+                --align center
+            if (
+                $LASTEXITCODE -eq 0 -and
+                (Test-Path -LiteralPath $visualBootRetailPrompt)
+            ) {
+                $visualBootUsesRetailPrompt = $true
+            } else {
+                Write-Warning (
+                    "Retail press-start font render failed; keeping the " +
+                    "decoded title without the prompt."
+                )
+            }
+        }
         Write-Output (
-            "VISUAL_ASSET RETAIL name=FRONTEND_BACKDROP_01 " +
+            "VISUAL_ASSET RETAIL names=FRONTEND_BACKDROP_01," +
+            "FRONTEND_TITLE_01_SPRITE,FRONTEND_TITLE_02_SPRITE " +
             "bank=$selectedRetailFrontendBank"
         )
     }
@@ -671,6 +852,158 @@ try {
         -BehaviorSource $cbaseRestoreBBehaviorSource `
         -OutputStem 'cbase-restore-b' `
         -PassPattern $cbaseRestoreBPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099bf30' `
+        -Description 'wide-string plus UTF-16 literal' `
+        -Source $wideStringAddRightSource `
+        -BehaviorSource $wideStringAddRightBehaviorSource `
+        -OutputStem 'wide-string-add-right' `
+        -PassPattern $wideStringAddRightPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099bff0' `
+        -Description 'UTF-16 literal plus wide-string' `
+        -Source $wideStringAddLeftSource `
+        -BehaviorSource $wideStringAddLeftBehaviorSource `
+        -OutputStem 'wide-string-add-left' `
+        -PassPattern $wideStringAddLeftPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00999230' `
+        -Description 'Phase 3 expanded-path existence probe' `
+        -Source $pathExistsSource `
+        -BehaviorSource $pathExistsBehaviorSource `
+        -OutputStem 'path-exists' `
+        -PassPattern $pathExistsPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099ad80' `
+        -Description 'Phase 3 disk-file construction' `
+        -Source $diskFileConstructorSource `
+        -BehaviorSource $diskFileConstructorBehaviorSource `
+        -OutputStem 'disk-file-constructor' `
+        -PassPattern $diskFileConstructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099a920' `
+        -Description 'Phase 3 disk-file close' `
+        -Source $diskFileCloseSource `
+        -BehaviorSource $diskFileCloseBehaviorSource `
+        -OutputStem 'disk-file-close' `
+        -PassPattern $diskFileClosePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099f2e0' `
+        -Description 'Phase 3 settings-file read' `
+        -Source $charStringLoadFileSource `
+        -BehaviorSource $charStringLoadFileBehaviorSource `
+        -OutputStem 'char-string-load-file' `
+        -PassPattern $charStringLoadFilePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00404720' `
+        -Description 'Phase 3 settings string-parser construction' `
+        -Source $stringParserConstructorSource `
+        -BehaviorSource $stringParserConstructorBehaviorSource `
+        -OutputStem 'string-parser-constructor' `
+        -PassPattern $stringParserConstructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009badd0' `
+        -Description 'Phase 3 text persistence-context construction' `
+        -Source $persistContextTextConstructorSource `
+        -BehaviorSource $persistContextTextConstructorBehaviorSource `
+        -OutputStem 'persist-context-text-constructor' `
+        -PassPattern $persistContextTextConstructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009f2d60' `
+        -Description 'movie UI-surface copy construction' `
+        -Source $surfaceCopyConstructorSource `
+        -BehaviorSource $surfaceCopyConstructorBehaviorSource `
+        -OutputStem 'surface-copy-constructor' `
+        -PassPattern $surfaceCopyConstructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009f2f10' `
+        -Description 'movie mip-surface initialization' `
+        -Source $surfaceInitialiseMipmapSource `
+        -BehaviorSource $surfaceInitialiseMipmapBehaviorSource `
+        -OutputStem 'surface-initialise-mipmap' `
+        -PassPattern $surfaceInitialiseMipmapPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009f37e0' `
+        -Description 'movie decoder-to-UI surface copy' `
+        -Source $surfaceCopyFromSurfaceSource `
+        -BehaviorSource $surfaceCopyFromSurfaceBehaviorSource `
+        -OutputStem 'surface-copy-from-surface' `
+        -PassPattern $surfaceCopyFromSurfacePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009fa4e0' `
+        -Description 'movie texture mip-chain copy coordinator' `
+        -Source $textureCopyFromTextureSource `
+        -BehaviorSource $textureCopyFromTextureBehaviorSource `
+        -OutputStem 'texture-copy-from-texture' `
+        -PassPattern $textureCopyFromTexturePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00548510' `
+        -Description 'CMovie filename assignment' `
+        -Source $cmovieSetMovieSource `
+        -BehaviorSource $cmovieSetMovieBehaviorSource `
+        -OutputStem 'cmovie-set-movie' `
+        -PassPattern $cmovieSetMoviePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00548520' `
+        -Description 'CMovie playing-state query' `
+        -Source $cmovieIsPlayingSource `
+        -BehaviorSource $cmovieIsPlayingBehaviorSource `
+        -OutputStem 'cmovie-is-playing' `
+        -PassPattern $cmovieIsPlayingPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00a3b0f0' `
+        -Description 'CVideoSys filter-state wait loop' `
+        -Source $videoSysWaitForStateSource `
+        -BehaviorSource $videoSysWaitForStateBehaviorSource `
+        -OutputStem 'cvideosys-wait-for-state' `
+        -PassPattern $videoSysWaitForStatePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00a3b1c0' `
+        -Description 'CVideoSys pause transition' `
+        -Source $videoSysPauseSource `
+        -BehaviorSource $videoSysPauseBehaviorSource `
+        -OutputStem 'cvideosys-pause' `
+        -PassPattern $videoSysPausePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00a3b1f0' `
+        -Description 'CVideoSys stop transition' `
+        -Source $videoSysStopSource `
+        -BehaviorSource $videoSysStopBehaviorSource `
+        -OutputStem 'cvideosys-stop' `
+        -PassPattern $videoSysStopPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00a3b1a0' `
+        -Description 'CVideoSys media-control run transition' `
+        -Source $videoSysAttemptToPlaySource `
+        -BehaviorSource $videoSysAttemptToPlayBehaviorSource `
+        -OutputStem 'cvideosys-attempt-to-play' `
+        -PassPattern $videoSysAttemptToPlayPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00a3b320' `
+        -Description 'CVideoSys decoder-texture query' `
+        -Source $videoSysGetTextureSource `
+        -BehaviorSource $videoSysGetTextureBehaviorSource `
+        -OutputStem 'cvideosys-get-texture' `
+        -PassPattern $videoSysGetTexturePassPattern
 
     Invoke-VerifiedLeaf `
         -Address '004022b0' `
@@ -1223,6 +1556,54 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
+        "/Fo$videoFrameConversionObject" $videoFrameConversionSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $videoFrameConversionObject)
+    ) {
+        throw 'Failed to compile the recovered video-frame conversion.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
+        "/Fo$videoFramePublicationObject" $videoFramePublicationSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $videoFramePublicationObject)
+    ) {
+        throw 'Failed to compile the decoded-frame publication contract.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
+        "/Fo$videoFramePublicationBehaviorObject" `
+        $videoFramePublicationBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $videoFramePublicationBehaviorObject)
+    ) {
+        throw 'Failed to compile the decoded-frame publication fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$frontendStartupSequenceObject" `
+        $frontendStartupSequenceSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $frontendStartupSequenceObject)
+    ) {
+        throw 'Failed to compile the frontend startup sequence.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$frontendStartupSequenceBehaviorObject" `
+        $frontendStartupSequenceBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $frontendStartupSequenceBehaviorObject)
+    ) {
+        throw 'Failed to compile the frontend startup sequence fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
         "/Fo$visualBootBehaviorObject" $visualBootBehaviorSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -1463,9 +1844,115 @@ try {
         $pngStream.Dispose()
     }
 
+    if ($visualBootUsesRetailAsset) {
+        $titlePngStream = [System.IO.File]::OpenRead(
+            $visualBootRetailTitle)
+        $titleRightPngStream = [System.IO.File]::OpenRead(
+            $visualBootRetailTitleRight)
+        $promptPngStream = $null
+        if ($visualBootUsesRetailPrompt) {
+            $promptPngStream = [System.IO.File]::OpenRead(
+                $visualBootRetailPrompt)
+        }
+        try {
+            $titleDecoder =
+                New-Object System.Windows.Media.Imaging.PngBitmapDecoder(
+                    $titlePngStream,
+                    [System.Windows.Media.Imaging.BitmapCreateOptions]::PreservePixelFormat,
+                    [System.Windows.Media.Imaging.BitmapCacheOption]::OnLoad)
+            $titleRightDecoder =
+                New-Object System.Windows.Media.Imaging.PngBitmapDecoder(
+                    $titleRightPngStream,
+                    [System.Windows.Media.Imaging.BitmapCreateOptions]::PreservePixelFormat,
+                    [System.Windows.Media.Imaging.BitmapCacheOption]::OnLoad)
+            $promptDecoder = $null
+            if ($promptPngStream) {
+                $promptDecoder =
+                    New-Object System.Windows.Media.Imaging.PngBitmapDecoder(
+                        $promptPngStream,
+                        [System.Windows.Media.Imaging.BitmapCreateOptions]::PreservePixelFormat,
+                        [System.Windows.Media.Imaging.BitmapCacheOption]::OnLoad)
+            }
+            if (
+                $titleDecoder.Frames[0].PixelWidth -ne 256 -or
+                $titleDecoder.Frames[0].PixelHeight -ne 128 -or
+                $titleRightDecoder.Frames[0].PixelWidth -ne 256 -or
+                $titleRightDecoder.Frames[0].PixelHeight -ne 128
+            ) {
+                throw (
+                    "Each retail frontend title half must be 256x128 after " +
+                    "cropping; got " +
+                    "$($titleDecoder.Frames[0].PixelWidth)x" +
+                    "$($titleDecoder.Frames[0].PixelHeight) and " +
+                    "$($titleRightDecoder.Frames[0].PixelWidth)x" +
+                    "$($titleRightDecoder.Frames[0].PixelHeight)."
+                )
+            }
+            $titleVisual =
+                New-Object System.Windows.Media.DrawingVisual
+            $titleContext = $titleVisual.RenderOpen()
+            try {
+                $titleX = if ($visualBootUsesRetailPrompt) { 70 } else { 0 }
+                $titleY = if ($visualBootUsesRetailPrompt) { 30 } else { 0 }
+                $titleContext.DrawImage(
+                    $titleDecoder.Frames[0],
+                    (New-Object System.Windows.Rect(
+                        $titleX, $titleY, 256, 128)))
+                $titleContext.DrawImage(
+                    $titleRightDecoder.Frames[0],
+                    (New-Object System.Windows.Rect(
+                        ($titleX + 256), $titleY, 256, 128)))
+                if ($promptDecoder) {
+                    $titleContext.DrawImage(
+                        $promptDecoder.Frames[0],
+                        (New-Object System.Windows.Rect(0, 0, 640, 480)))
+                }
+            } finally {
+                $titleContext.Close()
+            }
+            $titleCanvasWidth =
+                if ($visualBootUsesRetailPrompt) { 640 } else { 512 }
+            $titleCanvasHeight =
+                if ($visualBootUsesRetailPrompt) { 480 } else { 128 }
+            $combinedTitle =
+                New-Object System.Windows.Media.Imaging.RenderTargetBitmap(
+                    $titleCanvasWidth,
+                    $titleCanvasHeight,
+                    96,
+                    96,
+                    [System.Windows.Media.PixelFormats]::Pbgra32)
+            $combinedTitle.Render($titleVisual)
+            $titleEncoder =
+                New-Object System.Windows.Media.Imaging.BmpBitmapEncoder
+            $titleEncoder.Frames.Add(
+                [System.Windows.Media.Imaging.BitmapFrame]::Create(
+                    $combinedTitle))
+            $titleBitmapStream =
+                [System.IO.File]::Create($visualBootTitleBitmap)
+            try {
+                $titleEncoder.Save($titleBitmapStream)
+            } finally {
+                $titleBitmapStream.Dispose()
+            }
+        } finally {
+            if ($promptPngStream) {
+                $promptPngStream.Dispose()
+            }
+            $titleRightPngStream.Dispose()
+            $titlePngStream.Dispose()
+        }
+    }
+
     $resourceBitmapPath = $visualBootBitmap.Replace('\', '/')
+    $resourceLines = @("101 BITMAP `"$resourceBitmapPath`"")
+    if ($visualBootUsesRetailAsset) {
+        $resourceTitleBitmapPath =
+            $visualBootTitleBitmap.Replace('\', '/')
+        $resourceLines +=
+            "102 BITMAP `"$resourceTitleBitmapPath`""
+    }
     Set-Content -LiteralPath $visualBootResourceSource `
-        -Value "101 BITMAP `"$resourceBitmapPath`"" `
+        -Value $resourceLines `
         -Encoding Ascii
     & (Join-Path $vcRoot 'bin\rc.exe') `
         "/fo$visualBootResource" $visualBootResourceSource
@@ -1552,6 +2039,9 @@ try {
         $visualBootObject,
         $visualBootD3D9Object,
         $retailVideoBridgeObject,
+        $videoFrameConversionObject,
+        $videoFramePublicationObject,
+        $frontendStartupSequenceObject,
         $render2DBatchPlanObject,
         $render2DDrawListAdapterObject,
         $attachTextureToStageObject,
@@ -1707,6 +2197,8 @@ try {
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
         "/out:$visualBootBehaviorExecutable" `
         $visualBootObject $visualBootD3D9Object $retailVideoBridgeObject `
+        $videoFrameConversionObject $videoFramePublicationObject `
+        $frontendStartupSequenceObject `
         $render2DBatchPlanObject $render2DDrawListAdapterObject `
         $attachTextureToStageObject $realiseRenderStateObject `
         $soldStateBlockObject `
@@ -1738,6 +2230,58 @@ try {
         (($visualBootOutput -join "`n") -notmatch [regex]::Escape($visualBootPassPattern))
     ) {
         throw "Visual boot fixture failed with exit code $visualBootExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$frontendStartupSequenceBehaviorExecutable" `
+        $frontendStartupSequenceObject `
+        $frontendStartupSequenceBehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $frontendStartupSequenceBehaviorExecutable)
+    ) {
+        throw 'Failed to link the frontend startup sequence fixture.'
+    }
+
+    $frontendStartupSequenceOutput =
+        & $frontendStartupSequenceBehaviorExecutable 2>&1
+    $frontendStartupSequenceExitCode = $LASTEXITCODE
+    $frontendStartupSequenceOutput | Write-Output
+    if (
+        $frontendStartupSequenceExitCode -ne 0 -or
+        (($frontendStartupSequenceOutput -join "`n") -notmatch `
+            [regex]::Escape($frontendStartupSequencePassPattern))
+    ) {
+        throw (
+            'Frontend startup sequence fixture failed with exit code ' +
+            "$frontendStartupSequenceExitCode."
+        )
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$videoFramePublicationBehaviorExecutable" `
+        $videoFrameConversionObject $videoFramePublicationObject `
+        $videoFramePublicationBehaviorObject kernel32.lib
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $videoFramePublicationBehaviorExecutable)
+    ) {
+        throw 'Failed to link the decoded-frame publication fixture.'
+    }
+
+    $videoFramePublicationOutput =
+        & $videoFramePublicationBehaviorExecutable 2>&1
+    $videoFramePublicationExitCode = $LASTEXITCODE
+    $videoFramePublicationOutput | Write-Output
+    if (
+        $videoFramePublicationExitCode -ne 0 -or
+        (($videoFramePublicationOutput -join "`n") -notmatch `
+            [regex]::Escape($videoFramePublicationPassPattern))
+    ) {
+        throw (
+            'Decoded-frame publication fixture failed with exit code ' +
+            "$videoFramePublicationExitCode."
+        )
     }
 
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
@@ -1799,7 +2343,7 @@ try {
     Write-Output "GFINITIALISE_COORDINATOR PASS address=004022b0 parity=RELOCATION_MATCH"
     Write-Output "GFINITIALISE_PROGRESS_INTEGRATION PASS boundary=GFInitialiseTail"
     $visualAssetGrade = if ($visualBootUsesRetailAsset) {
-        'RetailFrontendBackdrop'
+        'RetailFrontendTitleFrame'
     } else {
         'AuthoredFallback'
     }

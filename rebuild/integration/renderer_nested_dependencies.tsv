@@ -12,7 +12,7 @@ parent_address	parent_name	address	name	retail_bytes	recovery_status	source	note
 00498490	CProgressDisplay::DrawRetailDisplay	0099b720	CWideString::CWideString	66	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_CopyConstructor_0099b720.cpp	Counted-storage copy constructor.
 00498490	CProgressDisplay::DrawRetailDisplay	0099b7d0	CWideString::operator=	47	UNRECOVERED		Wide-string assignment.
 00498490	CProgressDisplay::DrawRetailDisplay	0099b800	CWideString::AssignFromWide	92	UNRECOVERED		Generated name remains provisional.
-00498490	CProgressDisplay::DrawRetailDisplay	0099bff0	CWideString::SetFromEnum	134	UNRECOVERED		Generated name remains provisional.
+00498490	CProgressDisplay::DrawRetailDisplay	0099bff0	operator+(wchar_t const *,CWideString const &)	134	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddLiteralAndWideString_0099bff0.cpp	Corrected fastcall hidden-result ABI; exact after relocation normalization.
 00498490	CProgressDisplay::DrawRetailDisplay	0099e960	CCharString::operator!=	65	UNRECOVERED		Narrow-string comparison.
 00498490	CProgressDisplay::DrawRetailDisplay	0099eae0	CCharString::~CCharString	12	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp	Counted narrow-string release.
 00498490	CProgressDisplay::DrawRetailDisplay	0099ebf0	CCharString::CCharString	61	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp	Length-qualified narrow-string construction.

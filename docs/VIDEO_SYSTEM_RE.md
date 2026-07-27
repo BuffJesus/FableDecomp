@@ -57,6 +57,15 @@ The verified `0x8C` `CVideoSys`, `0x180` `CTextureRenderer`, and recovered
 `CMovie` tail are encoded as VC7.1-compatible layout views and static
 assertions in `rebuild/include/fable_video_system.h`; the compatibility player
 compiles that header on every visual-checkpoint build.
+`CVideoSys::GetTexture @ 0x00A3B320` is now promoted as an exact
+10-byte relocation match with a behavior fixture proving the
+`CVideoSys +0x20 -> CTextureRenderer +0x164` handoff.
+`WaitForState @ 0x00A3B0F0` and `AttemptToPlay @ 0x00A3B1A0` are also
+exact relocation matches. Their fixtures prove the bounded 100-poll filter
+state wait and the successful/failed `IMediaControl::Run` transitions.
+`Pause @ 0x00A3B1C0` and `Stop @ 0x00A3B1F0` are exact 43-byte matches;
+their gates prove the COM calls, requested filter states, and logical
+playback-state updates.
 
 ## `CMovie`
 
@@ -78,11 +87,17 @@ the actual decoder is the process-wide `CVideoSys* @ 0x013B8ABC`.
 - The destructor performs the same graph/texture teardown when the instance is
   the active global movie.
 
+The `SetMovie` tail-call leaf is promoted as an exact 11-byte relocation
+match, and its fixture proves assignment of the recovered `CWideString` field.
+The `IsPlaying` leaf is an exact 7-byte relocation match whose fixture proves
+both stopped and playing states.
+
 The current reconstructed checkpoint still uses a compatibility DirectShow
-child window rather than the recovered texture-renderer/D3D upload path. Its
-ownership and end-of-stream sequencing now follow the recovered contracts; the
-remaining integration step is to implement the recovered `CTextureRenderer`
-contract and feed its decoded texture through recovered `CMovie::Draw`.
+child window for visible playback. Its ownership and end-of-stream sequencing
+now follow the recovered contracts. Independently, the native renderer probe
+implements the recovered sample handoff into a real D3D9 texture; the remaining
+visible integration step is to wrap that texture in the reconstructed
+`CTexture` contract and feed it through recovered `CMovie::Draw`.
 
 An optional generated cache may supply 2x Real-ESRGAN-enhanced WMV copies to
 this compatibility layer. It preserves filenames, frame counts, timing, and
@@ -107,6 +122,12 @@ RGB24-to-A8R8G8B8 and RGB24-to-A1R5G5B5 inner loops from
 `DoRenderSample` now compile as `FableConvertVideoRgb24Frame`; the visual
 behavior fixture proves both formats, source/destination row pitches, alpha,
 and untouched padding.
+`FablePublishDecodedVideoFrame` now supplies the recovered outer contract:
+it enters `CVideoSys +0x64`, invokes the writer that locks, converts, and
+unlocks the destination, publishes the texture at `+0x80` only after that
+writer returns, signals the frame event at `+0x7C`, and leaves the critical
+section. Its fixture proves the ordering, the successful publish/event path,
+and rejection without publication.
 
 The base-renderer dependency is resolved too. Microsoft’s MIT-licensed
 DirectShow base classes at pinned Windows-classic-samples commit
@@ -123,15 +144,36 @@ allocation exactly.
 The same subclass now runs as an actual DirectShow renderer filter.
 `directshow_texture_renderer_graph.cpp` installs it before `RenderFile`, uses
 the recovered media-type rules and row-pitch calculation, and receives decoded
-samples through `DoRenderSample`. Against untouched `lionhead_logo.wmv`, the
-gate received all 419 frames at 640x480, observed changing sample content, and
-received `EC_COMPLETE`. This proves graph negotiation and native sample
-delivery without an `IVideoWindow` child.
+samples through `DoRenderSample`. It creates a managed A8R8G8B8
+`IDirect3DTexture9`, locks it inside the recovered publication critical
+section, converts each RGB24 sample, unlocks it, and only then publishes the
+texture pointer and signals the frame event. Against untouched
+`lionhead_logo.wmv`, the gate received and converted all 419 frames at
+640x480, observed changing texture content, and received `EC_COMPLETE`,
+without an `IVideoWindow` child. A second managed D3D9 texture now exercises
+the recovered `CMovie::Draw` consumption prefix as well: each auto-reset frame
+event is consumed, the published decoder texture is read under
+`CVideoSys +0x64`, and its rows are copied into the presentation texture.
 
-The remaining work is reconstruction/integration: derive the retail subclass
-on that now-proven base, connect its sample conversion to the reconstructed
-D3D texture lifecycle under the recovered lock/event contract, and replace the
-visible compatibility bridge.
+The remaining work is D3D/UI integration: replace the probe's direct
+`IDirect3DTexture9` ownership with the reconstructed `CTexture` wrapper, feed
+that wrapper through the sprite-construction/submission tail of `CMovie::Draw`,
+and retire the visible compatibility bridge.
+
+The immediate wrapper boundary is now instruction-mapped rather than generic.
+`CTexture::CopyFromTexture @ 0x009FA4E0` iterates the smaller source/destination
+mipmap count and, for each level, obtains both `IDirect3DSurface9` objects,
+wraps them as temporary `CSurface` values, calls
+`CSurface::CopyFromSurface @ 0x009F37E0` with color `0xFFFFFFFF`, and releases
+both temporaries. Its four direct helper boundaries are the `CSurface` copy
+constructor at `0x009F2D60`, `InitialiseFromTextureMipmap @ 0x009F2F10`,
+`Uninitialise @ 0x009F2E20`, and `CopyFromSurface`. All four are now canonical
+retail matches with linked behavior fixtures. `CopyFromSurface` is a
+446/446-byte relocation-normalized match covering direct D3DX copies and the
+temporary-surface signed-format conversion branch. The remaining shortest
+native-visible movie path is the `CopyFromTexture` coordinator itself, the
+reconstructed `CTexture` wrapper connection, and the 2D-sprite submission
+tail.
 
 ## Live compatibility closure
 
@@ -143,8 +185,21 @@ lifecycle while native texture presentation is reconstructed:
 - it tears down one graph before constructing the next boot record;
 - Escape completes only the active record;
 - final completion releases the child video window and leaves the D3D9
-  frontend checkpoint visible.
+  frontend checkpoint visible. That checkpoint now draws the genuine
+  two-part retail Fable title over the backdrop with source alpha, using the
+  decoded `UI_TITLE` parent position `(70,30)` and the second child's exact
+  `+256` X offset.
 
 The focused `-VerifyBootToFrontend` smoke skips all three records, requires the
-post-movie frontend title, verifies that no DirectShow child remains attached,
-and samples the revealed frame for real color variation.
+post-movie title marked `Post-Movie Startup Ordered`, verifies that no
+DirectShow child remains attached, and samples the revealed frame for real
+color variation. Before publishing that title, the executable crosses the
+recovered bank-open, init, first-clear/swap, and `ChangeStateFirstTime` order
+through explicit service boundaries.
+
+`CTexture::CopyFromTexture @ 0x009FA4E0` is now a 289-byte
+relocation-normalized match with a linked behavior fixture covering mip-count
+minimums, per-level acquisition, filter forwarding, temporary surface
+ownership, and cleanup order. Together with its exact `CSurface` helpers, this
+closes the texture-copy coordinator immediately below the remaining
+`CMovie::Draw` sprite submission tail.
