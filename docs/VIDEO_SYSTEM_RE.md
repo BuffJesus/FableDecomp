@@ -120,9 +120,18 @@ VC7.1 subclass with the recovered fields at `+0x160` through `+0x17C`
 constructs successfully and is exactly `0x180` bytes, matching retail’s
 allocation exactly.
 
+The same subclass now runs as an actual DirectShow renderer filter.
+`directshow_texture_renderer_graph.cpp` installs it before `RenderFile`, uses
+the recovered media-type rules and row-pitch calculation, and receives decoded
+samples through `DoRenderSample`. Against untouched `lionhead_logo.wmv`, the
+gate received all 419 frames at 640x480, observed changing sample content, and
+received `EC_COMPLETE`. This proves graph negotiation and native sample
+delivery without an `IVideoWindow` child.
+
 The remaining work is reconstruction/integration: derive the retail subclass
-on that now-proven base and connect the recovered sample conversion to the
-existing reconstructed D3D texture lifecycle.
+on that now-proven base, connect its sample conversion to the reconstructed
+D3D texture lifecycle under the recovered lock/event contract, and replace the
+visible compatibility bridge.
 
 ## Live compatibility closure
 
