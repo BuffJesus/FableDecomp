@@ -558,6 +558,32 @@ namespace
             }
             else if (
                 eventKind ==
+                RENDER2D_ADAPTER_RESET_WORLD_TRANSFORM)
+            {
+                CShaderRenderManager_ResetWorldTransform(
+                    &g_CShaderRenderManager_013BC470);
+                const fable_u8* shaderBytes =
+                    reinterpret_cast<const fable_u8*>(
+                        &g_CShaderRenderManager_013BC470);
+                const float* worldTransform =
+                    reinterpret_cast<const float*>(
+                        shaderBytes + 0x1F0);
+                if (
+                    shaderBytes[0x1E8] != 1 ||
+                    worldTransform[0] != 1.0f ||
+                    worldTransform[5] != 1.0f ||
+                    worldTransform[10] != 1.0f ||
+                    worldTransform[15] != 1.0f ||
+                    (
+                        g_CShaderRenderManager_013BC470.
+                            updateFlags3D8 &
+                        0xC990) != 0xC990)
+                {
+                    succeeded_ = false;
+                }
+            }
+            else if (
+                eventKind ==
                 RENDER2D_ADAPTER_ATTACH_TEXTURE)
             {
                 CTextureAttachView texture = {
@@ -896,6 +922,7 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         static_cast<float>(clientHeight)
     };
     adapterInput.entryVertexShadersEnabled = true;
+    adapterInput.worldTransformNeedsReset = true;
     g_CShaderRenderManager_013BC470.updateFlags3D8 |= 1;
     adapterInput.dirtyFlagsAfterShaderApply =
         g_CShaderRenderManager_013BC470.updateFlags3D8;

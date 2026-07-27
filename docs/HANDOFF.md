@@ -16,8 +16,8 @@
 - `smoke_visual_checkpoint.ps1 -RetailVideo` requires the graph to reach the
   running state, captures the actual window twice 600 ms apart, requires
   different SHA-256 frame hashes, sends `WM_CLOSE`, and requires exit zero.
-  The first passing run observed hashes `80661AB06DD9...` and
-  `042FBA1AD86D...`.
+  The latest full-intro run observed hashes `A464B7FFF7E3...` and
+  `78AA5740DEDE...`.
 - Full Release bootstrap, the original static-window smoke, and the changing
   video smoke pass. The next honest visual target remains interactive retail
   rendering: runtime archive/texture ownership, the complete
@@ -46,6 +46,11 @@
   shader event. The fixed-function checkpoint deliberately keeps the counted
   pixel shader null, so the retail body performs no unsafe D3D bind but clears
   dirty bit `0x1`; the adapter gates that postcondition.
+- Exact 131/131-byte
+  `CShaderRenderManager::ResetWorldTransform @ 0x00988290` is live too. The
+  adapter starts from the uninitialised retail-shaped manager, executes the
+  recovered identity-matrix write, and gates all four diagonal values,
+  initialisation byte `+0x1E8`, and dirty mask `0xC990`.
 - D3D9 creation now includes a D16 auto-depth surface because Sold enables
   Z testing and Z writes; the frame clears both colour and depth.
 - The focused VC7.1 candidate/behavior gate passes. Sold remains an honest
