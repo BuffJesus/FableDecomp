@@ -71,6 +71,12 @@ public static class VisualSmokeNativeMethods
     public static extern bool ShowWindow(IntPtr window, int command);
 
     [DllImport("user32.dll")]
+    public static extern bool BringWindowToTop(IntPtr window);
+
+    [DllImport("user32.dll")]
+    public static extern bool SetForegroundWindow(IntPtr window);
+
+    [DllImport("user32.dll")]
     public static extern bool PostMessage(
         IntPtr window,
         uint message,
@@ -258,14 +264,19 @@ try {
                 '-VerifyBootToFrontend.'
             )
         }
-        if (
-            -not [VisualSmokeNativeMethods]::ShowWindow(
-                $process.MainWindowHandle,
-                3
-            )
-        ) {
-            throw 'Could not maximize the visual checkpoint window.'
-        }
+        # ShowWindow reports the previous visibility state, not whether the
+        # request succeeded. Explicitly activate the checkpoint as well:
+        # CopyFromScreen otherwise samples whichever application obscures it.
+        [void][VisualSmokeNativeMethods]::ShowWindow(
+            $process.MainWindowHandle,
+            3
+        )
+        [void][VisualSmokeNativeMethods]::BringWindowToTop(
+            $process.MainWindowHandle
+        )
+        [void][VisualSmokeNativeMethods]::SetForegroundWindow(
+            $process.MainWindowHandle
+        )
         Start-Sleep -Milliseconds 900
         $process.Refresh()
 
@@ -294,6 +305,10 @@ try {
         $maximizedGraphics =
             [System.Drawing.Graphics]::FromImage($maximizedBitmap)
         try {
+            [void][VisualSmokeNativeMethods]::SetForegroundWindow(
+                $process.MainWindowHandle
+            )
+            Start-Sleep -Milliseconds 100
             $maximizedGraphics.CopyFromScreen(
                 $clientOrigin.X,
                 $clientOrigin.Y,
