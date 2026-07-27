@@ -1,27 +1,78 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 (first changing retail-video checkpoint).*
+*Last updated: 2026-07-26 (recovered retail boot-movie sequence and video ownership).*
 
-## First changing retail-video checkpoint (2026-07-26)
+## Retail boot-movie sequence + CVideoSys/CMovie recovery (2026-07-26)
 
 - `FableTLC-Reconstruction-VisualCheckpoint.exe --retail-video` now resolves
-  the read-only Steam install and plays the shipped
-  `data/Video/microsoft_logo.wmv` inside the reconstructed boot window.
-  `--retail-video=lionhead`, `=attract`, and `=intro` select later shipped
-  movies.
+  the read-only Steam install and follows the sequence recovered from
+  `CNewFrontendGameComponent::Run @ 0x0042EC7C`: `lionhead_logo.wmv`,
+  `microsoft_logo.wmv`, then `intro_comp.wmv`. It advances on DirectShow
+  end-of-stream events and exposes the static frontend checkpoint only after
+  the intro completes. Escape skips the current movie and advances to the next;
+  the child video window drains keyboard messages to the parent so this works
+  with either window focused. `=microsoft`, `=lionhead`, `=attract`, and
+  `=intro` select one movie.
 - Playback uses an isolated DirectShow graph/child video window over the live
-  D3D9 + recovered Render2D static checkpoint. It is deliberately described
-  as a visual bridge, not recovered `CVideoSys`/`CMovie` ownership or native
-  GFMain movie sequencing.
+  D3D9 + recovered Render2D static checkpoint. The remaining compatibility
+  seam is presentation: the now-bounded retail `CTextureRenderer` and native
+  `CMovie::Draw` texture copy/submission are not live yet.
+- `CVideoSys` is recovered as a `0x8C`-byte DirectShow owner, including graph
+  interfaces, playback state, custom texture renderer, critical section,
+  frame-ready event, decoder texture, init/process/close lifecycle, and all
+  17 method boundaries. `CMovie` singleton ownership, state transition,
+  update, draw, filename, playing flag, and teardown are recovered too.
+  `CTextureRenderer` constructor, media-type validation/setup,
+  `DoRenderSample`, and destructor are bounded as well. Its sample callback
+  converts decoded RGB24 rows to RGBA/RGB565 under the `CVideoSys` lock,
+  publishes the texture, and signals the frame event.
+  Its exact A8R8G8B8/A1R5G5B5 conversion core is now live and behavior-tested
+  as `FableConvertVideoRgb24Frame`; the DirectShow base renderer and D3D
+  texture/sample wiring remain.
+  `ghidra_out/labels_video_system_recovery.tsv` preserves the 35-entry method
+  and startup map. Exact recovered layout views now compile from
+  `rebuild/include/fable_video_system.h`. Full notes:
+  `docs/VIDEO_SYSTEM_RE.md`.
 - `smoke_visual_checkpoint.ps1 -RetailVideo` requires the graph to reach the
   running state, captures the actual window twice 600 ms apart, requires
   different SHA-256 frame hashes, sends `WM_CLOSE`, and requires exit zero.
-  The latest full-intro run observed hashes `A464B7FFF7E3...` and
-  `78AA5740DEDE...`.
+  `-Movie boot -VerifyBootSequence -TimeoutSeconds 45` additionally requires
+  real completion of Lionhead and Microsoft and entry into movie 3/3. Latest
+  result: `Retail WMV Playing 3/3 - Intro`, changed frame hashes
+  `4C588BF57530...` and `C48318B38837...`, exit zero.
+- `-Movie boot -VerifyEscapeSkip -TimeoutSeconds 15` sends Escape during
+  Lionhead and Microsoft and requires entry into movie 3/3. The gate passes
+  with changed Intro frame hashes and exit zero.
+- `-Movie boot -VerifyBootToFrontend -OriginalVideo -TimeoutSeconds 25`
+  skips all three movies, requires the post-movie frontend checkpoint, proves
+  the DirectShow child is gone, and samples the revealed image. Latest result:
+  115 colors, stable frame hash `9CA69DE6BB72...`, child closed, exit zero.
 - Full Release bootstrap, the original static-window smoke, and the changing
-  video smoke pass. The next honest visual target remains interactive retail
-  rendering: runtime archive/texture ownership, the complete
-  `Render2DDrawList` parent, and eventually scene/world submission.
+  single-video and boot-sequence smokes pass. Next video-specific target:
+  reconstruct `CTextureRenderer` and feed its decoder texture through the
+  recovered `CMovie::Draw` path.
+
+The next complete-startup gates are GFMain Phases 3-10, replacement of the
+integration-owned engine/service graph, runtime bank loading, execution of
+`CNewFrontendGameComponent::Run`, and its input/update/interpolation/draw
+frontend loop. `rebuild/RUNNABLE.md` now carries the ordered closure list.
+
+## Optional Real-ESRGAN boot-video cache (2026-07-26)
+
+- `rebuild/upscale_retail_videos.ps1 -Movie boot -InstallVideo2X` uses the
+  pinned/hash-verified portable Video2X 6.4.0 release and its Vulkan NCNN
+  `realesr-animevideov3` 2x model. It writes only to the ignored
+  `rebuild/build/bootstrap-Release/upscaled-video/` cache.
+- Each result must retain the source video-frame and audio-packet counts before
+  it is published. Output remains WMV2/WMA so the existing
+  DirectShow compatibility graph can decode it without another codec path.
+- `--retail-video-upscaled` opts into a completed enhanced copy and
+  independently falls back to the read-only retail file. The live window title
+  includes `AI 2x`; untouched files remain the default parity path.
+- The first 640x480 -> 1280x960 Lionhead gate processed 419 frames in 22
+  seconds (19.05 FPS) on the local RX 9060 XT. Its enhanced-source visual smoke
+  passed with changing frames and clean exit. AI output is explicitly a
+  presentation option, not decomp/parity evidence.
 
 ## Recovered Sold state-block presentation (2026-07-26)
 
