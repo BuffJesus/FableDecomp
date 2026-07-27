@@ -1,9 +1,11 @@
 #pragma once
 
 #include "rebuild_abi.h"
+#include "fable_string.h"
 
 struct HINSTANCE__;
 typedef HINSTANCE__* FableInstanceHandle;
+struct CDataBank;
 
 // Globals written by the retail WinMain wrapper before it transfers control
 // to GFMain. Their names retain the retail virtual addresses until their
@@ -34,9 +36,50 @@ void FABLE_CDECL FableOperatorDelete(void* allocation);
 
 struct CProgressDisplay
 {
-    fable_u8 unknown00[0x88];
+    void* vftable00;
+    fable_u32 value04;
+    fable_u32 value08;
+    fable_u32 value0C;
+    fable_u32 value10;
+    fable_u32 value14;
+    fable_u32 value18;
+    fable_u32 value1C;
+    fable_u32 value20;
+    fable_u32 value24;
+    fable_u32 value28;
+    fable_u32 value2C;
+    fable_u32 value30;
+    fable_u32 value34;
+    fable_u32 value38;
+    fable_u32 value3C;
+    fable_u32 value40;
+    fable_u32 value44;
+    CWideString wideText48;
+    CCharString primaryText4C;
+    CCharString secondaryText50;
+    fable_u32 value54;
+    fable_u32 value58;
+    fable_u32 unknown5C;
+    double progressTime60;
+    double displayTime68;
+    double completionTime70;
+    fable_u8 flag78;
+    bool active79;
+    fable_u8 drawRetail7A;
+    fable_u8 flag7B;
+    fable_u8 displayText7C;
+    fable_u8 flag7D;
+    fable_u8 flag7E;
+    fable_u8 flag7F;
+    fable_u8 flag80;
+    fable_u8 flag81;
+    fable_u8 unknown82[6];
 
     CProgressDisplay();
+    bool IsActive() const;
+    void SetToDisplayText(bool enabled);
+    void CalculateNextTextTag();
+    CDataBank* GetPTextBank() const;
 
     __forceinline static void* operator new(unsigned int size)
     {
@@ -45,6 +88,37 @@ struct CProgressDisplay
 };
 
 FABLE_STATIC_ASSERT(sizeof(CProgressDisplay) == 0x88);
+
+#pragma pack(push, 1)
+struct FableProgressTextBankSlot
+{
+    fable_u8 unknown00[0x14];
+    CDataBank* textBank14;
+};
+
+struct FableGameTextBankSlot
+{
+    fable_u8 unknown00[0x60];
+    CDataBank* textBank60;
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT(sizeof(FableProgressTextBankSlot) == 0x18);
+FABLE_STATIC_ASSERT(sizeof(FableGameTextBankSlot) == 0x64);
+
+struct FableReferenceCount;
+
+extern fable_u8 g_CProgressDisplayVTable_012388B4;
+extern double g_FableZeroDouble_0122ED70;
+extern const char g_FableEmptyText_0122D70E[];
+extern FableProgressTextBankSlot*
+    g_FableProgressTextBankSlot_013B86A0;
+extern FableGameTextBankSlot*
+    g_FableGameTextBankSlot_013B871C;
+extern CProgressDisplay* g_FableProgressDisplayObject_013CAA38;
+extern FableReferenceCount* g_FableProgressDisplayReference_013CAA3C;
+void FABLE_FASTCALL FableConstructWideString(CWideString* value);
+void FABLE_FASTCALL FableConstructCharString(CCharString* value);
 
 typedef void (FABLE_FASTCALL *FableDestroyReferencedObject)(void* object);
 
@@ -78,6 +152,9 @@ struct CCountedProgressDisplay
 
 fable_u8 FABLE_FASTCALL GFInitialiseState_Begin(GFInitialiseState* state);
 void FABLE_FASTCALL SetProgressDisplay(CCountedProgressDisplay* display);
+CCountedProgressDisplay* FABLE_FASTCALL GetProgressDisplay(
+    CCountedProgressDisplay* result);
+void FABLE_FASTCALL FableReleaseProgressDisplayBoundary();
 
 fable_u8 FABLE_FASTCALL GFInitialise_SetupProgressDisplay(
     GFInitialiseState* state);

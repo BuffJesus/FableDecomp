@@ -7,6 +7,14 @@ FableInstanceHandle FABLE_STDCALL GetModuleHandleA(const char* moduleName);
 
 int main()
 {
+#if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
+    if (!FableIsRetailVisualAssetEmbedded())
+        return 1;
+#else
+    if (FableIsRetailVisualAssetEmbedded())
+        return 1;
+#endif
+
     char verificationCommand[] = "--verify-visual-resource";
     const long result = FableRunVisualBootCheckpoint(
         GetModuleHandleA(0),

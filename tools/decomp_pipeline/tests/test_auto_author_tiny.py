@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from tools.decomp_pipeline.auto_author_tiny import (
+    candidate,
     const_from_bytes,
     rows_with_target_metadata,
 )
@@ -15,6 +16,8 @@ class TinyPatternTests(unittest.TestCase):
             "c3": ("void", None),
             "c21800": ("void_stdcall_pop", 24),
             "33c0c3": ("int", 0),
+            "32c0c3": ("bool", False),
+            "32c0c20400": ("bool_pop4", False),
             "b001c3": ("bool", True),
             "6aff58c3": ("int", -1),
             "b878563412c3": ("int", 0x12345678),
@@ -38,6 +41,14 @@ class TinyPatternTests(unittest.TestCase):
                 "f644240801740756e8f06e7200598bc65ec20400"
             ): ("composite_scalar_deleting_destructor", 0x2C),
             (
+                "568bf18d4e28e828704c008bcee871ed1a00"
+                "f644240801740956e8f06e720083c4048bc65ec20400"
+            ): ("composite_scalar_deleting_destructor_speed", 0x28),
+            (
+                "568bf18d8ea8000000e828704c008bcee871ed1a00"
+                "f644240801740956e8f06e720083c4048bc65ec20400"
+            ): ("composite_scalar_deleting_destructor_speed", 0xA8),
+            (
                 "51568bf18b56048b0e8d44240750e8e5dafdff8b36"
                 "85f6740756e8d2b97800595e59c3"
             ): ("finish_async_read_then_release", None),
@@ -49,13 +60,140 @@ class TinyPatternTests(unittest.TestCase):
                 "53568b74240c85f68bd9741c57ff760c8bcbe8e9ffffff"
                 "8b7e0856e82948720085ff598bf775e65f5e5bc20400"
             ): ("consume_linked_tree", None),
+            (
+                "568bf18b0e578b7c240c3b0f741c85c9740dff49047505"
+                "8b01ff50048326008b0785c089067403ff40045f5ec20400"
+            ): ("assign_intrusive_counted_handle", None),
+            (
+                "568bf18b0e85c97410ff490475058b01ff5004"
+                "c706000000005ec3"
+            ): ("reset_intrusive_counted_handle", None),
+            (
+                "568bf18b0e85c9740dff490475058b01ff5004"
+                "8326005ec3"
+            ): ("reset_intrusive_counted_handle_size", None),
+            (
+                "85c974068b016a01ff10c3"
+            ): ("delete_virtual_object", None),
+            (
+                "568bf18b4e38ff5634c64605015ec3"
+            ): ("suspend_process_callback", None),
         }
         for encoded, expected in cases.items():
             with self.subTest(encoded=encoded):
                 self.assertEqual(const_from_bytes(bytes.fromhex(encoded)), expected)
 
+    def test_counted_assignment_candidate_has_ownership_fixture(self):
+        authored = candidate(
+            {
+                "address": "00485657",
+                "name": "GetMeshEffect",
+                "module": "CEngineInternalPrimitiveMeshBase",
+                "bytes": (
+                    "568bf18b0e578b7c240c3b0f741c85c9740dff49047505"
+                    "8b01ff50048326008b0785c089067403ff40045f5ec20400"
+                ),
+            }
+        )
+
+        self.assertIsNotNone(authored)
+        self.assertIn("current != source->object", authored["source_cpp"])
+        self.assertIn("--current->references", authored["source_cpp"])
+        self.assertIn("++incoming->references", authored["source_cpp"])
+        self.assertIn("destination.Assign(&destination)", authored["test_cpp"])
+        self.assertIn("retained.references != 1", authored["test_cpp"])
+
+    def test_counted_reset_candidate_has_ownership_fixture(self):
+        authored = candidate(
+            {
+                "address": "0050bf70",
+                "name": "_Dest_val",
+                "module": "CIVCountedPointer",
+                "bytes": (
+                    "568bf18b0e85c97410ff490475058b01ff5004"
+                    "c706000000005ec3"
+                ),
+            }
+        )
+
+        self.assertIsNotNone(authored)
+        self.assertIn("--current->references", authored["source_cpp"])
+        self.assertIn("object = 0", authored["source_cpp"])
+        self.assertIn("lastHandle.Reset()", authored["test_cpp"])
+        self.assertIn("retained.references != 1", authored["test_cpp"])
+
+    def test_size_optimized_counted_reset_uses_same_ownership_fixture(self):
+        authored = candidate(
+            {
+                "address": "005b11ad",
+                "name": "_Dest_val",
+                "module": "CIVCountedPointer",
+                "bytes": (
+                    "568bf18b0e85c9740dff490475058b01ff5004"
+                    "8326005ec3"
+                ),
+            }
+        )
+
+        self.assertIsNotNone(authored)
+        self.assertIn('#pragma optimize("s", on)', authored["source_cpp"])
+        self.assertIn("--current->references", authored["source_cpp"])
+        self.assertIn("lastHandle.Reset()", authored["test_cpp"])
+        self.assertIn("retained.references != 1", authored["test_cpp"])
+
+    def test_virtual_delete_candidate_checks_null_and_live_objects(self):
+        authored = candidate(
+            {
+                "address": "00419036",
+                "name": "DeleteData",
+                "module": "CCountedPointer",
+                "bytes": "85c974068b016a01ff10c3",
+            }
+        )
+
+        self.assertIsNotNone(authored)
+        self.assertIn("delete object", authored["source_cpp"])
+        self.assertIn("DeleteData(0)", authored["test_cpp"])
+        self.assertIn(
+            "g_AutoTinyVirtualDestructorCalls != 1",
+            authored["test_cpp"],
+        )
+
+    def test_suspend_process_candidate_preserves_call_and_state_order(self):
+        callback = candidate(
+            {
+                "address": "00cdd680",
+                "name": "SuspendableProcess",
+                "module": "_global",
+                "bytes": "568bf18b4e38ff5634c64605015ec3",
+            }
+        )
+        self.assertIsNotNone(callback)
+        self.assertIn("callback34(self->context38)", callback["source_cpp"])
+        self.assertIn(
+            "g_AutoTinySuspendObservedPriorState",
+            callback["test_cpp"],
+        )
+
     def test_unknown_pattern_is_rejected(self):
         self.assertIsNone(const_from_bytes(bytes.fromhex("558bec5dc3")))
+        self.assertIsNone(const_from_bytes(bytes.fromhex("32c9c3")))
+        self.assertIsNone(
+            const_from_bytes(
+                bytes.fromhex(
+                    "568bf18b0e578b7c240c3b0f741c85c9740dff49047505"
+                    "8b01ff50048326008b0785c089067403ff40085f5ec20400"
+                )
+            )
+        )
+        self.assertIsNone(
+            const_from_bytes(
+                bytes.fromhex(
+                    "568bf18b0e85c97410ff490475058b01ff5004"
+                    "8326015ec3"
+                )
+            )
+        )
 
     def test_oracle_rows_are_enriched_from_sibling_target_catalog(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -17,15 +17,15 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 
 | Track | Metric | Status |
 |---|---|---|
-| Analysis DB | Functions catalogued | **49,553** |
+| Analysis DB | Functions catalogued | **49,552** |
 | Analysis DB | Mechanically named (no `FUN_*`) | 100.000% |
 | Analysis DB | Usable reconstruction/navigation names | 99.211% |
-| Analysis DB | Calling convention known | 77.674% |
-| Analysis DB | Complete non-`undefined` prototype | 69.049% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **3,832** |
-| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **3,505** (7.07%) |
-| Reconstruction | — of which byte-**identical** (no relocation masking) | 1,895 (3.82%) |
-| Reconstruction | Compiled sources still honestly `DIFFER` | 199 |
+| Analysis DB | Calling convention known | 77.676% |
+| Analysis DB | Complete non-`undefined` prototype | 69.053% |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **4,917** |
+| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **4,586** (9.25%) |
+| Reconstruction | — of which byte-**identical** (no relocation masking) | 2,687 (5.42%) |
+| Reconstruction | Compiled sources still honestly `DIFFER` | 203 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
 | Auto-RE intake | Generated candidates / structural checker PASS | 632 / 619 |
 | Boot path | GFMain direct-call sites proven | **40 / 257** (15.56%) |
@@ -38,10 +38,10 @@ separately and is never counted as reconstructed merely because a structural che
 The successful refresh also synchronizes this table automatically; GitHub is updated at reviewed
 checkpoints rather than publishing live, unreviewed queue output.
 The first **5%** compiled-byte-match milestone (2,478 functions) is passed; current verified retail
-parity is **7.07%** of the 49,553-function catalog. The lower match count than an earlier README is an
+parity is **9.25%** of the 49,552-function catalog. The lower match count than an earlier README is an
 audit reconciliation, not deleted source: the unified gate now exposes every `DIFFER` and missing
 function-start oracle instead of mixing older mass-land and curated-subset totals.
-The 7.07% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
+The 9.25% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
 a second lens over the 3,952-byte GFMain coordinator: they measure proven direct call sites and
 callable integration phases, not percentage of total engineering time. Repeated calls count
 separately because every occurrence must be linked in the correct lifetime and control-flow
@@ -71,9 +71,20 @@ Its `GFInitialise_SetupProgressDisplay @ 0x00413120` leaf independently remains 
 relocation-normalized match with allocation, failure, and counted-lifetime tests. Its review
 corrected three misleading generated types: the allocated 0x88-byte object is
 `CProgressDisplay` (proven by its vtable), not `C3DMeshStats`, and the forwarded smart pointer is
-correspondingly `CCountedPointer<CProgressDisplay>`. The remaining boundary objects stand in for
-the unrecovered engine singleton graph and renderer; the authored window is still scaffolding,
-not a claim that retail rendering or the game loop is recovered.
+correspondingly `CCountedPointer<CProgressDisplay>`. The object now uses the recovered
+`CProgressDisplay::CProgressDisplay @ 0x00499CE0`, a 163-byte relocation-normalized match that
+types the complete 0x88-byte layout and constructs its three embedded string objects. The
+integration boundary performs balanced recovered string teardown. The remaining boundary objects
+stand in for the unrecovered engine singleton graph and renderer. The global retained owner is now
+recovered too: `SetProgressDisplay @ 0x009E9FD0` is a 133-byte
+relocation-normalized match that releases the prior counted object, retains the incoming
+reference across the visible window lifetime, and releases it on shutdown. The handoff now
+acquires that owner through the recovered 28-byte `GetProgressDisplay @ 0x009EA060` and queries
+the real `active79` state through the exact four-byte
+`CProgressDisplay::IsActive @ 0x0049B460`. The startup now also traverses the recovered
+47-byte `CProgressDisplay::SetToDisplayText @ 0x00499A70` state transition before presentation.
+A successful smoke boot exposes the retained state in the top-level window title. The authored window is still
+scaffolding, not a claim that retail rendering or the game loop is recovered.
 
 The `GFMain` Phase-1 filesystem pair is promoted as well:
 `CAFile::GetProjectPath @ 0x00997510` (146 bytes) and
@@ -103,22 +114,33 @@ There is now a real visible checkpoint as well:
 `FableTLC-Reconstruction-VisualCheckpoint.exe` follows the retail-matched `WinMain` and the same
 reconstructed Phase 1/2 startup path, runs the retail-matched progress-display setup leaf through
 the authored `GFInitialise` tail phase, then opens a responsive 1280x720 Win32 window containing
-the project boot artwork. This last handoff is explicitly authored reconstruction scaffolding—not a
-claim that the retail window, renderer, archives, or game loop have been recovered. Build it with
-`rebuild/build_bootstrap.ps1`, then launch it from `rebuild/build/bootstrap-Release/`.
+the real retail `FRONTEND_BACKDROP_01` image when a local `frontend.big` is available. The build
+decodes its Lionhead-LZO/DXT1 payload, crops the allocated surface to the authored 640x480 frame,
+and embeds it without committing retail artwork; the project boot image remains the fallback.
+The visual handoff consumes a balanced retail counted-pointer snapshot and the retail active-state
+query before creating that window. The static image now presents through D3D9 and recovered
+Render2D dependency bodies; it is not yet the complete retail renderer, runtime archive loader,
+or game loop. Build it with `rebuild/build_bootstrap.ps1`, then launch it from
+`rebuild/build/bootstrap-Release/`.
 
 ### How close is a retail visual boot?
 
 | Visible milestone | Current state | What remains |
 |---|---|---|
-| Authored project boot window | **Runnable now** | This proves the reconstructed process can reach and own a responsive window, but it does not use the retail renderer. |
-| First recovered retail progress setup | **Leaf proven and connected in the authored boot harness** | Promote the complete GFInitialise coordinator and replace the instrumented progress-object boundary with recovered engine/display ownership. |
-| Retail intro video or frontend menu | **Several major closures away** | Recover display/D3D setup, engine primitive initialization, core archives and compiled definitions, fonts/frontend banks, UI ownership, movie playback, and the update/render loop. |
+| First actual retail image | **Runnable now: `FRONTEND_BACKDROP_01` is decoded from `frontend.big` and presented through D3D9 plus recovered Render2D dependencies** | Runtime archive/texture ownership and the complete Lionhead parent renderer remain. |
+| First recovered retail progress setup | **Coordinator, setup, 0x88-byte constructor, retained owner, counted getter, active-state query, and text-mode transition are connected; the primary/fallback text-bank selector is recovered** | Populate the retail bank owners, integrate the corrected 418-byte `StartProgress`, and recover texture initialization. |
+| Retail-rendered frame/frontend | **The 489-byte `RenderProgress` boundary is mapped and 15/17 direct dependencies are retail matches** | Recover the 5,101-byte retail-display builder and 3,344-byte 2D draw-list submitter, then replace the GDI bridge with the runtime render/present loop. |
+| First retail video | **Runnable now with `--retail-video`; `=lionhead`, `=attract`, and `=intro` select later shipped movies.** | Playback uses a narrow DirectShow bridge. Recover retail `CVideoSys`/`CMovie` ownership and sequencing before calling it the native movie path. |
 
-The nearest honest retail visual target is therefore the game's progress display, not the intro
-movie or menu. We are not one or two functions away: only two of ten GFMain integration phases are
-callable, even though 40 of its 257 direct call sites and 21 of Phase 3's 34 sites are already
-proven. These dependency counts are more informative than converting them into a date estimate.
+The “actual image” milestone is therefore reached, but “the game is rendering” is not. Retail
+inspection and a reviewed Ghidra boundary repair establish one 418-byte
+`StartProgress @ 0x00499AA0` function through `0x00499C41`; the former
+`0x00499AAD` catalog row was a false mid-function start and is now excluded
+reproducibly. The nearest honest engine milestone remains the game's complete renderer and
+interactive frontend rather than the now-proven sidecar movie path. That is not one or two functions away: only two of ten GFMain
+integration phases are callable, even though 40 of its 257 direct call sites and 21 of Phase 3's
+34 sites are already proven. These dependency counts are more informative than converting them
+into a date estimate.
 
 Phase 2 recovery has reached all seven direct calls in retail order. PDB and donor lineage resolves
 the repeated one-byte
@@ -167,9 +189,9 @@ differ from retail's inlined copy/destruction scheduling, so Phase 3 remains hon
 until the byte/behavior gate closes.
 
 The project-owner-provided [boot-screen concept](rebuild/assets/boot/fabledecomp_boot_concept.png)
-is archived at its native resolution and now drives the authored visual checkpoint. The build
-converts it into an ignored BMP resource for the VC7.1/GDI shell, leaving the original PNG
-unchanged. A later renderer can derive its own runtime format without committing generated copies.
+remains the dependency-safe fallback. When a retail bank is found, the build instead extracts
+`FRONTEND_BACKDROP_01` into the ignored build tree and converts it to the VC7.1/GDI resource.
+Neither the decoded retail image nor generated bitmap is committed.
 
 The unattended Wave 3 lane has moved from the co-op event/package codecs into ForgeFSE Quest
 wrappers. The current refresh validates 452/452 recommended Quest bindings against their exact

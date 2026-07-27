@@ -19,6 +19,16 @@ python tools/compare_candidate_objects.py
 powershell -ExecutionPolicy Bypass -File tools/ProbeVc71Sdk.ps1
 ```
 
+For a focused compile/behavior iteration without rewriting the catalog report
+to a one-row file, pass one or more addresses:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/build_candidates.ps1 -Address 00a0aa80
+```
+
+Selected results are merged into the existing full `vc71-compiled.tsv`;
+omitting `-Address` retains the complete catalog gate.
+
 `FableTLC Rebuild Refresh` is a hidden 15-minute Scheduled Task installed by
 `tools/InstallRebuildRefreshTask.ps1`. It fingerprints candidate/manifests inputs, defers while the
 auto-RE or naming/Ghidra pipeline owns the workspace, and performs no work when inputs are unchanged.

@@ -1,4 +1,6 @@
 #include "fable_visual_boot.h"
+#include "fable_visual_d3d9.h"
+#include "retail_video_bridge.h"
 
 #include <string.h>
 
@@ -144,6 +146,17 @@ extern "C"
         int showCommand);
     __declspec(dllimport) FableBool FABLE_STDCALL UpdateWindow(
         FableWindow window);
+    __declspec(dllimport) FableBool FABLE_STDCALL SetWindowTextA(
+        FableWindow window,
+        const char* text);
+    __declspec(dllimport) FableWordParameter FABLE_STDCALL SetTimer(
+        FableWindow window,
+        FableWordParameter identifier,
+        FableUint intervalMilliseconds,
+        void* timerProcedure);
+    __declspec(dllimport) FableBool FABLE_STDCALL KillTimer(
+        FableWindow window,
+        FableWordParameter identifier);
     __declspec(dllimport) FableResult FABLE_STDCALL DefWindowProcA(
         FableWindow window,
         FableUint message,
@@ -202,6 +215,37 @@ namespace
     const int kBootArtworkResource = 101;
     const char kWindowClassName[] = "FableDecompVisualBootCheckpoint";
     const char kWindowTitle[] = "FableDecomp - Visual Boot Checkpoint";
+    const char kProgressReadyWindowTitle[] =
+        "FableDecomp - Retail Progress Display Ready";
+    const char kProgressActiveWindowTitle[] =
+        "FableDecomp - Retail Progress Display Active";
+    const char kRetailVideoStartingWindowTitle[] =
+        "FableDecomp - Retail WMV Starting";
+    const char kRetailVideoPlayingWindowTitle[] =
+        "FableDecomp - Retail WMV Playing - Recovered Boot + D3D9";
+#if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
+    const char kRetailAssetReadyWindowTitle[] =
+        "FableDecomp - Retail Frontend Asset + Progress Display Ready";
+    const char kRetailAssetActiveWindowTitle[] =
+        "FableDecomp - Retail Frontend Asset + Progress Display Active";
+    const char kD3DRetailAssetReadyWindowTitle[] =
+        "FableDecomp - D3D9 Retail Frontend + Progress Display Ready";
+    const char kD3DRetailAssetActiveWindowTitle[] =
+        "FableDecomp - D3D9 Retail Frontend + Progress Display Active";
+    const char kD3DRetailAssetPresentedReadyWindowTitle[] =
+        "FableDecomp - D3D9 Presented via Render2D - Retail Frontend + Progress Display Ready";
+    const char kD3DRetailAssetPresentedActiveWindowTitle[] =
+        "FableDecomp - D3D9 Presented via Render2D - Retail Frontend + Progress Display Active";
+#else
+    const char kD3DCheckpointReadyWindowTitle[] =
+        "FableDecomp - D3D9 Visual Checkpoint Ready";
+    const char kD3DCheckpointActiveWindowTitle[] =
+        "FableDecomp - D3D9 Visual Checkpoint Active";
+    const char kD3DCheckpointPresentedReadyWindowTitle[] =
+        "FableDecomp - D3D9 Presented via Render2D - Visual Checkpoint Ready";
+    const char kD3DCheckpointPresentedActiveWindowTitle[] =
+        "FableDecomp - D3D9 Presented via Render2D - Visual Checkpoint Active";
+#endif
 
     const FableUint kImageBitmap = 0;
     const FableUint kLoadCreatedDibSection = 0x00002000;
@@ -210,8 +254,11 @@ namespace
     const FableUint kClassRedrawHorizontal = 0x0002;
     const FableUint kClassRedrawVertical = 0x0001;
     const FableUint kMessageDestroy = 0x0002;
+    const FableUint kMessageSize = 0x0005;
     const FableUint kMessagePaint = 0x000F;
     const FableUint kMessageEraseBackground = 0x0014;
+    const FableUint kMessageTimer = 0x0113;
+    const FableWordParameter kRetailVideoTimer = 1;
     const FableDword kOverlappedWindow = 0x00CF0000UL;
     const int kUseDefaultPosition = static_cast<int>(0x80000000UL);
     const int kShowNormal = 1;
@@ -220,6 +267,8 @@ namespace
 
     FableBitmap g_BootArtwork = 0;
     FableBitmapInfo g_BootArtworkInfo = {};
+    bool g_RetailProgressDisplayPresent = false;
+    bool g_RetailProgressDisplayActive = false;
 
     const char* IntegerResource(int identifier)
     {
@@ -286,6 +335,26 @@ namespace
         EndPaint(window, &paint);
     }
 
+    bool PaintBootArtworkD3D9(FableWindow window)
+    {
+        if (!FableIsVisualD3D9Active())
+            return false;
+
+        FableRectangle client = {};
+        GetClientRect(window, &client);
+        if (!FableRenderVisualD3D9(
+                client.right - client.left,
+                client.bottom - client.top))
+        {
+            return false;
+        }
+
+        FablePaint paint = {};
+        BeginPaint(window, &paint);
+        EndPaint(window, &paint);
+        return true;
+    }
+
     FableResult FABLE_STDCALL VisualBootWindowProcedure(
         FableWindow window,
         FableUint message,
@@ -294,14 +363,41 @@ namespace
     {
         switch (message)
         {
+        case kMessageSize:
+            if (FableIsRetailVideoActive())
+            {
+                FableResizeRetailVideo(
+                    static_cast<fable_i32>(
+                        longParameter & 0xFFFF),
+                    static_cast<fable_i32>(
+                        (longParameter >> 16) & 0xFFFF));
+            }
+            return 0;
+
         case kMessagePaint:
-            PaintBootArtwork(window);
+            if (!PaintBootArtworkD3D9(window))
+                PaintBootArtwork(window);
+            return 0;
+
+        case kMessageTimer:
+            if (
+                wordParameter == kRetailVideoTimer &&
+                FableRetailVideoHasAdvanced())
+            {
+                KillTimer(window, kRetailVideoTimer);
+                SetWindowTextA(
+                    window,
+                    kRetailVideoPlayingWindowTitle);
+            }
             return 0;
 
         case kMessageEraseBackground:
             return 1;
 
         case kMessageDestroy:
+            KillTimer(window, kRetailVideoTimer);
+            FableShutdownRetailVideo();
+            FableShutdownVisualD3D9();
             PostQuitMessage(0);
             return 0;
         }
@@ -312,6 +408,23 @@ namespace
             wordParameter,
             longParameter);
     }
+}
+
+void FABLE_FASTCALL FableSetVisualProgressDisplayState(
+    bool present,
+    bool active)
+{
+    g_RetailProgressDisplayPresent = present;
+    g_RetailProgressDisplayActive = active;
+}
+
+bool FABLE_FASTCALL FableIsRetailVisualAssetEmbedded()
+{
+#if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
+    return true;
+#else
+    return false;
+#endif
 }
 
 long FABLE_FASTCALL FableRunVisualBootCheckpoint(
@@ -368,10 +481,24 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         0,
         0);
 
+    const char* windowTitle = kWindowTitle;
+    if (g_RetailProgressDisplayPresent)
+    {
+#if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
+        windowTitle = g_RetailProgressDisplayActive
+            ? kRetailAssetActiveWindowTitle
+            : kRetailAssetReadyWindowTitle;
+#else
+        windowTitle = g_RetailProgressDisplayActive
+            ? kProgressActiveWindowTitle
+            : kProgressReadyWindowTitle;
+#endif
+    }
+
     FableWindow window = CreateWindowExA(
         0,
         kWindowClassName,
-        kWindowTitle,
+        windowTitle,
         kOverlappedWindow,
         kUseDefaultPosition,
         kUseDefaultPosition,
@@ -389,8 +516,91 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         return 3;
     }
 
+    if (FableInitialiseVisualD3D9(
+            window,
+            1280,
+            720,
+            g_BootArtworkInfo.width,
+            g_BootArtworkInfo.height,
+            g_BootArtworkInfo.widthBytes,
+            g_BootArtworkInfo.bitsPerPixel,
+            g_BootArtworkInfo.pixels))
+    {
+#if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
+        SetWindowTextA(
+            window,
+            g_RetailProgressDisplayActive
+                ? kD3DRetailAssetActiveWindowTitle
+                : kD3DRetailAssetReadyWindowTitle);
+#else
+        SetWindowTextA(
+            window,
+            g_RetailProgressDisplayActive
+                ? kD3DCheckpointActiveWindowTitle
+                : kD3DCheckpointReadyWindowTitle);
+#endif
+    }
+
     ShowWindow(window, showCommand == 0 ? kShowNormal : showCommand);
     UpdateWindow(window);
+    if (FableWasVisualD3D9Presented())
+    {
+#if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
+        SetWindowTextA(
+            window,
+            g_RetailProgressDisplayActive
+                ? kD3DRetailAssetPresentedActiveWindowTitle
+                : kD3DRetailAssetPresentedReadyWindowTitle);
+#else
+        SetWindowTextA(
+            window,
+            g_RetailProgressDisplayActive
+                ? kD3DCheckpointPresentedActiveWindowTitle
+                : kD3DCheckpointPresentedReadyWindowTitle);
+#endif
+    }
+
+    if (
+        commandLine != 0 &&
+        strstr(commandLine, "--retail-video") != 0)
+    {
+        const char* selectedMovie = 0;
+        if (strstr(commandLine, "--retail-video=intro") != 0)
+            selectedMovie = "intro_comp.wmv";
+        else if (
+            strstr(
+                commandLine,
+                "--retail-video=attract") != 0)
+        {
+            selectedMovie = "fable_attract_english.wmv";
+        }
+        else if (
+            strstr(
+                commandLine,
+                "--retail-video=lionhead") != 0)
+        {
+            selectedMovie = "lionhead_logo.wmv";
+        }
+
+        if (FableStartRetailVideo(
+                window,
+                instance,
+                selectedMovie))
+        {
+            SetWindowTextA(window, kRetailVideoStartingWindowTitle);
+            SetTimer(
+                window,
+                kRetailVideoTimer,
+                50,
+                0);
+        }
+        else
+        {
+            SetWindowTextA(
+                window,
+                FableGetRetailVideoStatus());
+        }
+    }
 
     FableMessage message = {};
     while (GetMessageA(&message, 0, 0, 0) > 0)
@@ -399,6 +609,8 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         DispatchMessageA(&message);
     }
 
+    FableShutdownRetailVideo();
+    FableShutdownVisualD3D9();
     UnregisterClassA(kWindowClassName, instance);
     DeleteObject(g_BootArtwork);
     g_BootArtwork = 0;

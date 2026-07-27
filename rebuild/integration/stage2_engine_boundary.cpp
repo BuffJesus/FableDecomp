@@ -21,6 +21,7 @@ fable_i32 g_CCharStringInstanceCount_013BD800 = 0;
 fable_u32 g_FableConsoleVariablesBoundaryCalls = 0;
 fable_u32 g_CBankFileAsyncFailureHandlingMode_013CA868 = 0;
 bool g_FableStartupLatch_013964A8 = false;
+const char g_FableEmptyText_0122D70E[] = "";
 
 CCountedFileInstaller g_CFileInstallerSingleton_013CA818 = {0, 0};
 GFMainPhase2State g_GFMainPhase2State = {};
@@ -227,9 +228,27 @@ void CCharString::UnassignString()
     storage_ = 0;
 }
 
+const CCharString& CCharString::operator=(const char* text)
+{
+    UnassignString();
+    storage_ = AllocStringData(text, -1);
+    return *this;
+}
+
+// Authored link boundary until the recovered 1,052-byte text-tag parser is
+// ready to join the visual runtime. The connected false path never calls it.
+void CProgressDisplay::CalculateNextTextTag()
+{
+}
+
 void FABLE_FASTCALL FableConstructWideString(CWideString* value)
 {
     new (value) CWideString;
+}
+
+void FABLE_FASTCALL FableConstructCharString(CCharString* value)
+{
+    new (value) CCharString;
 }
 
 void CRegionDef::ConstructStorage()
@@ -261,13 +280,25 @@ extern "C" long FABLE_FASTCALL GFMain(
     FablePrepareGFInitialiseBoundary();
     if (!GFInitialise())
     {
+        FableReleaseProgressDisplayBoundary();
         return 1;
     }
 
-    return FableRunVisualBootCheckpoint(
+    CCountedProgressDisplay progressDisplay(0);
+    GetProgressDisplay(&progressDisplay);
+    if (progressDisplay.object != 0)
+        progressDisplay.object->SetToDisplayText(false);
+    FableSetVisualProgressDisplayState(
+        progressDisplay.object != 0,
+        progressDisplay.object != 0 &&
+            progressDisplay.object->IsActive());
+
+    const long visualResult = FableRunVisualBootCheckpoint(
         instance,
         commandLine,
         showCommand);
+    FableReleaseProgressDisplayBoundary();
+    return visualResult;
 #else
     return 0;
 #endif

@@ -61,6 +61,7 @@ public:
     CCharString();
     CCharString(const char* text, long length);
     ~CCharString();
+    const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
 private:

@@ -1,6 +1,655 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 01:02 MDT (103-function expanded unattended replay checkpoint).*
+*Last updated: 2026-07-26 (first changing retail-video checkpoint).*
+
+## First changing retail-video checkpoint (2026-07-26)
+
+- `FableTLC-Reconstruction-VisualCheckpoint.exe --retail-video` now resolves
+  the read-only Steam install and plays the shipped
+  `data/Video/microsoft_logo.wmv` inside the reconstructed boot window.
+  `--retail-video=lionhead`, `=attract`, and `=intro` select later shipped
+  movies.
+- Playback uses an isolated DirectShow graph/child video window over the live
+  D3D9 + recovered Render2D static checkpoint. It is deliberately described
+  as a visual bridge, not recovered `CVideoSys`/`CMovie` ownership or native
+  GFMain movie sequencing.
+- `smoke_visual_checkpoint.ps1 -RetailVideo` requires the graph to reach the
+  running state, captures the actual window twice 600 ms apart, requires
+  different SHA-256 frame hashes, sends `WM_CLOSE`, and requires exit zero.
+  The latest full-intro run observed hashes `A464B7FFF7E3...` and
+  `78AA5740DEDE...`.
+- Full Release bootstrap, the original static-window smoke, and the changing
+  video smoke pass. The next honest visual target remains interactive retail
+  rendering: runtime archive/texture ownership, the complete
+  `Render2DDrawList` parent, and eventually scene/world submission.
+
+## Recovered Sold state-block presentation (2026-07-26)
+
+- The visible retail `FRONTEND_BACKDROP_01` frame no longer uses the authored
+  ten-state D3D dispatcher. The live path now invokes the full recovered
+  1,736-byte `CStateBlockFunctionSold::Apply @ 0x009DF060`, which queues all
+  17 opaque-texture states before the exact recovered
+  `CRenderStateManager::RealiseRenderState @ 0x00A058C0` dispatches them.
+- The integration now uses one retail-shaped state-manager allocation through
+  `+0x3A3C` for capture, dirty-state queuing, device-state records, realise,
+  and restore. The retail object graph
+  `system +0x60 -> render system +0x08 -> render-state manager` is live, as
+  are named metadata for Z, alpha, texture operation/arguments, and sampler
+  filtering.
+- All 13 state requests that precede Sold in the recovered draw-list
+  orchestration are live too. Their retail global/literal/argument values now
+  enter the same capture and dirty queues. The visual gate proves 25 unique
+  states are realised for the draw, captured back to their valid baseline,
+  and realised again with empty queues, so repeated paint cycles remain safe.
+- Exact 41/41-byte
+  `CShaderRenderManager::UpdatePixelShader @ 0x00988A20` is live as the next
+  shader event. The fixed-function checkpoint deliberately keeps the counted
+  pixel shader null, so the retail body performs no unsafe D3D bind but clears
+  dirty bit `0x1`; the adapter gates that postcondition.
+- Exact 131/131-byte
+  `CShaderRenderManager::ResetWorldTransform @ 0x00988290` is live too. The
+  adapter starts from the uninitialised retail-shaped manager, executes the
+  recovered identity-matrix write, and gates all four diagonal values,
+  initialisation byte `+0x1E8`, and dirty mask `0xC990`.
+- D3D9 creation now includes a D16 auto-depth surface because Sold enables
+  Z testing and Z writes; the frame clears both colour and depth.
+- The focused VC7.1 candidate/behavior gate passes. Sold remains an honest
+  same-length `DIFFER` with 24 normalized bytes of repeated register-allocation
+  residue. The full Release bootstrap and live window smoke pass with title
+  `FableDecomp - D3D9 Presented via Render2D - Retail Frontend + Progress Display Ready`
+  and exit zero.
+- The next visual closure is to replace more of the adapter's remaining
+  shader/queue event dispatch with its recovered dependency bodies, then move
+  upward into the 3,344-byte `Render2DDrawList` orchestration body.
+
+## EgoMP multiplayer value (2026-07-26)
+
+- EgoMP is useful to the eventual multiplayer goal as a feasibility proof and
+  engine-seam map. It demonstrates extra `CPlayer`/`CThingPlayerCreature`
+  pairs, remote motion through acceleration/facing callbacks, a minimal
+  joining-player roster, and the need to wait for retail region loading before
+  activating a peer.
+- It is not suitable as the production architecture. It is a client-authored
+  four-player listen-server relay without protocol/build negotiation, sender
+  ownership validation, ticked snapshots/interpolation, gameplay or persistent
+  world replication, reconnect/host migration, or security.
+- The intended path is an independently implemented, host-authoritative layer:
+  first prove two local creatures; then add stable replicated entity IDs,
+  versioned framing and content fingerprints, deterministic loopback tests,
+  ticked/interpolated ghost motion, and an explicit region-ready barrier.
+- The detailed evidence, hazards, integration order, source links, and GPLv3
+  boundary are recorded in `docs/EGOMP_MULTIPLAYER_AUDIT.md`.
+- `docs/COOP_REVIVAL.md` now contains the direct comparison. The retail
+  `CNetworkClient`/package/`CheckSync` path and EgoMP's sidecar SLikeNet path
+  are separate systems: EgoMP corroborates physical remote-player lifecycle,
+  motion seams, the `CGameEvent` object layout, and a region-ready barrier,
+  but does not make the native enable gates safe or validate the reconstructed
+  Alter Ego gameplay fantasy.
+
+## EgoMP donor review (2026-07-26)
+
+- The public [`98thrxse/egomp`](https://github.com/98thrxse/egomp) runtime
+  hook project has been audited at commit `816e58f`. Its strongest usable
+  evidence is the `CMainGameComponent` singleton/object graph and the
+  Init/PostInit/Update/Shutdown callback order; it contains no renderer,
+  archive loader, or standalone boot implementation.
+- Several EgoMP hook labels conflict with byte-proven identities here, so its
+  addresses are treated as hypotheses requiring retail/PDB validation.
+  GPLv3 code is not copied. The reusable evidence and licensing boundary are
+  recorded in `docs/EGOMP_DONOR_AUDIT.md`.
+
+## D3D9 visual presentation bridge (2026-07-26)
+
+- The visual checkpoint no longer depends on GDI for its normal presentation
+  path. `visual_boot_d3d9.cpp` creates a real windowed D3D9 device, uploads the
+  decoded retail `FRONTEND_BACKDROP_01` bitmap into an A8R8G8B8 managed
+  texture. Two retail-shaped triangle records now flow through
+  `FableBuildRender2DBatchPlan`, and its triangle-list flush drives the live
+  `DrawPrimitiveUP`.
+- GDI remains as an explicit failure fallback while the recovered Lionhead
+  draw-list submission is connected. The D3D9 title is only selected after
+  device and texture initialization succeeds.
+- The full Release bootstrap and all integration fixtures pass. A fresh live
+  launch produced
+  `FableDecomp - D3D9 Presented via Render2D - Retail Frontend + Progress Display Ready`,
+  captured the actual forest-and-Hero retail frame from the window, accepted
+  `WM_CLOSE`, and exited zero. `smoke_visual_checkpoint.ps1` now gates that
+  same successful-present title and clean shutdown automatically.
+- The central visual boundary is now narrower: replace the authored
+  D3D9 dependency dispatcher with concrete recovered
+  `CRenderManager2D::Render2DDrawList` dependency calls. Its batching semantics
+  now drive the visible frame; all 25 direct dependencies are behavior-gated
+  and 21 have retail byte parity.
+- The first parent seam is canonical and part of the Release bootstrap:
+  `FableBuildRender2DBatchPlan` uses the recovered 0x3C-byte tagged record
+  layout and reproduces stable/state/topology/text splits, shader reapply,
+  vertex-cursor arithmetic, overflow reporting, and retail's precise
+  2001+1 primitive limit. Its VC7.1 fixture passes.
+- The surrounding lifecycle adapter is canonical and bootstrap-gated too.
+  It covers the empty-list texture epilogue; all 13 tracked state requests;
+  conditional entry/restore shader changes; exact dirty-upload order;
+  attach-texture -> realise-state -> `DrawPrimitiveUP`; info/vertex queue
+  cleanup; layout/capture restoration; and texture teardown. The fixture
+  explicitly proves combined-projection dirtiness is low-byte bit `0x80`,
+  not the 32-bit sign bit.
+- The live D3D9 frame now traverses that lifecycle seam. Planner flushes are
+  translated into adapter input, and the concrete D3D9 adapter handles state
+  application, FVF selection, texture attach/detach, and the actual
+  `DrawPrimitiveUP`; presentation is accepted only after a draw succeeds.
+- The first lifecycle event now dispatches through a concrete recovered retail
+  dependency: exact 79/79-byte
+  `CRenderManagerCore::AttachTextureToStage @ 0x009A0CF0` handles both live
+  texture attachment and final detachment against the real D3D9 device. Its
+  stage cache and active-stage high-water state live in a compact reconstructed
+  core view; the targeted VC7.1 behavior/parity gate still reports `MATCH`.
+- Exact 167/167-byte
+  `CRenderStateManager::RealiseRenderState @ 0x00A058C0` is now the second live
+  dependency. The visual adapter queues four render, four texture-stage, and
+  two sampler states; the recovered body performs change detection, dispatches
+  them to the real D3D9 vtable, updates cached values, clears dirty markers,
+  and drains the queue.
+- Relocation-matched 11-byte
+  `CRenderManagerCore::SetAWindow @ 0x00A0AA80` is now the third live
+  dependency. It performs the recovered core-to-display ownership hop, then
+  the direct relocation-matched 112/112-byte
+  `CDisplayManager::SetViewport(C2DBoxF) @ 0x009BF490` performs retail's x87
+  float-to-integer conversion. The earlier 189-byte extent was wrong.
+  Its endpoint is now the full relocation-matched 479/479-byte retail integer
+  body at `0x009BEF80`: it clamps against the reconstructed display dimensions,
+  handles zero/full extents, updates the retail viewport and success caches,
+  calls D3D9 `SetViewport`, then notifies the shader singleton. The callback
+  `CShaderRenderManager::OnPostViewportChanged @ 0x009880D0` is an exact
+  11/11-byte match and sets update bit `0x00010000`; the conditional
+  `$E2 @ 0x00A0AAC0` dependency is an exact one-byte `ret`. The compact
+  authored integer endpoint has been removed.
+- Exact 79/79-byte `Render2DDrawList::CopyBlock @ 0x009E1440` is now the
+  fourth live dependency. The lifecycle `CLEAR_VERTEX_QUEUE` event constructs
+  the retail 0x20-byte controller view and invokes its exact full-clear path,
+  proving the end pointer returns to begin after the six submitted vertices.
+- Exact 98/98-byte `CTexture::operator= @ 0x009FA1C0` and exact 34/34-byte
+  `CTexture::Uninitialise @ 0x009F9F70` are now the fifth and sixth live
+  dependencies. They execute the lifecycle adapter's temporary/current/candidate
+  wrapper assignment and teardown events. Those compact wrappers are null in
+  the current visual path, so the retail ownership logic is exercised without
+  taking ownership of the authored D3D9 presentation texture.
+- Relocation-matched 74/74-byte
+  `CTexture::InitialiseFromPreallocatedTexture @ 0x009FA230` is now the
+  seventh live direct dependency. Its null-wrapper call reaches the recovered
+  `CTexture::CalcByteLength @ 0x009F9EE0` null path. Calc is behavior-proven
+  but remains an honest 134-byte `ORACLE_MISSING` candidate (direct retail
+  inspection shows a semantically equivalent 143-byte register-allocation
+  difference).
+- Calc's nonnull path is no longer a link shim. Relocation-matched
+  `CPixelFormat::GetColourDepth @ 0x009E3820` (13/13 bytes) and
+  `CPixelFormat::Initialise @ 0x009E3830` (50/50 bytes), plus the exact
+  1,692-byte retail table at `0x0129BA40`, are linked into both the visual
+  executable and its behavior fixture. The current retail-shaped temporary
+  wrapper is intentionally null, so execution still takes Calc's null branch,
+  but every nonnull accounting dependency is now concrete and independently
+  gated. The authored fail-closed definitions have been removed.
+- Exact 121/121-byte
+  `CRenderStateManager::RestoreCaptureBlock @ 0x00A05840` is now the eighth
+  live direct dependency. It closes a compact sentinel-only capture block
+  after the draw and verifies the retail counter/offset transition.
+- Ego PDB corrected the visible vertex ABI to
+  `CTVertexRHWColSpecTex1Base`: 0x20 bytes containing XYZRHW, diffuse,
+  specular, and UV. The bridge now uses FVF `0x1C4`, a compile-time 0x20 size
+  assertion, white diffuse/zero specular, and the retail stride. A fresh frame
+  capture confirms the retail forest/Hero image remains intact.
+- Ego PDB evidence corrected retail `0x00A0AA80` from the false inventory
+  identity to `CRenderManagerCore::SetAWindow(C2DBoxF)`. The existing
+  11-byte relocation match and behavior gate are preserved under the
+  corrected name.
+
+## Shader binding/render-state closure (2026-07-26)
+
+- Fourteen more `Render2DDrawList` dependencies are behavior-gated canonical
+  sources, raising that family from **11/25 to 25/25**; **21/25** already
+  achieve retail byte parity. `DrawRetailDisplay` remains **13/37**.
+  `CShaderRenderManager::ApplyVertexShader @ 0x00988020` is a true
+  **176/176-byte exact match** and covers shader-mode reconciliation, the
+  unchanged binding fast path, vertex-shader/declaration updates, and both
+  device calls.
+- `CRenderStateManager::RealiseRenderState @ 0x00A058C0` is also a true
+  **167/167-byte exact match**. Its fixture covers render, texture-stage, and
+  sampler dispatch; unchanged and unsupported states; dirty-flag clearing;
+  queue draining; and negative/empty queue handling.
+- `CShaderRenderManager::RegisterVertexShaderConstantLayout @ 0x0098B230`
+  is a 73-byte relocation-normalized match with resize and in-range
+  registration behavior gated.
+- `CTexture::operator= @ 0x009FA1C0` is a true **98/98-byte exact match**.
+  Its fixture proves old-texture release, incoming `AddRef`, separate copying
+  of both packed ownership fields, null assignment, return identity, and the
+  retail self-assignment behavior.
+- `CShaderRenderManager::UpdateFogColour @ 0x009897C0` is a true
+  **99/99-byte exact match**. An active-layout alias preserves retail's
+  register schedule; the fixture covers the four-float upload, register/count
+  forwarding, the disabled upload path, and dirty-bit clearing.
+- `CShaderRenderManager::UpdatePixelShaderConstants @ 0x00989BF0` is a
+  186-byte relocation-normalized match. Its static eight-vector upload
+  buffer, indexed gather loop, upload arguments, zero/null paths, buffer
+  reuse, and dirty-bit clear are behavior-gated; an explicit shared-tail
+  label preserves retail's ESI/EDI allocation.
+- `CShaderRenderManager::DisablePixelShaders @ 0x00988190` is a true
+  **85/85-byte exact match**. Modeling the embedded counted shader handle
+  exposes the retail inlined assignment shape; its fixture covers the
+  disabled no-op, device unbind, dirty-mask clear, ordinary decrement, and
+  final-reference virtual release.
+- `CRenderManagerCore::AttachTextureToStage @ 0x009A0CF0` is a true
+  **79/79-byte exact match**. The fixture covers changed and cached bindings,
+  null unbind, device/stage forwarding, and the active-stage high-water mark.
+- `CShaderRenderManager::SetVertexShaderConstantLayout @ 0x0098B5E0` is a
+  **633-byte relocation-normalized match**. Named register ranges from the
+  Ego PDB recover the full transition logic: dependent dirty flags, light
+  buffer allocation and invalidation, vector clearing/resizing, null-layout
+  selection, and final layout/index adoption. This also fixed a Ghidra
+  function-body export defect that had truncated the retail oracle to 624
+  bytes.
+- `Render2DDrawList::CopyBlock @ 0x009E1440` is a true **79/79-byte exact
+  match**. The advancing-iterator source shape recovers retail's register
+  allocation and 32-byte POD copy loop; its fixture covers positive, empty,
+  and negative ranges plus the controller end-pointer update.
+- `UpdateCombinedProjectionTransform @ 0x00988A50` is now behavior-gated
+  across both its aligned SSE and scalar x87 paths. It computes the stored
+  Projection x View x World matrix, uploads four constants, and clears the
+  exact dirty bit. Its readable 1,048-byte VC7.1 body remains a scheduling
+  difference from the corrected contiguous 978-byte retail span; Ghidra had
+  truncated that oracle to 975 bytes.
+- `UpdateAmbient @ 0x00989760` is also behavior-gated and has the correct
+  85-byte size, vector/register upload, and dirty clear. Its remaining
+  difference is instruction scheduling after the layout-register load.
+- `CStateBlockFunctionSold::Apply @ 0x009DF060` is behavior-gated across all
+  17 tracked render/texture/sampler state transitions, capture snapshots,
+  dirty queueing, cached no-ops, and already-captured/already-queued states.
+  Its VC7.1 body is the exact 1,736-byte retail length and is only 24
+  non-relocation bytes away in a repeated two-register allocation.
+- `std::vector<CQuickDrawTriInfo>::erase @ 0x009E15E0` is behavior-gated for
+  middle, empty, and tail ranges. Ego PDB confirms the identity; its 99-byte
+  residue is isolated to EBX/EBP allocation around the non-scalar copy and
+  destruction loop.
+- The canonical VC7.1 compile/behavior gate passes **4,917 / 4,917**. Retail
+  parity is **2,687 exact + 1,899 relocation-normalized = 4,586 / 49,552
+  (9.25%)**; honest residue remains 203 differences and 128 missing
+  function-start oracles.
+- The full Release bootstrap rebuilt with the genuine retail
+  `FRONTEND_BACKDROP_01`. A fresh live launch opened
+  `FableTLC-Reconstruction-VisualCheckpoint.exe`, created the expected
+  top-level retail-art window, accepted `WM_CLOSE`, and exited zero.
+- No direct `Render2DDrawList` dependency remains behaviorally unrecovered.
+  Sold, QuickDraw erase, ambient, and combined projection are the four
+  remaining byte-parity residues. Replacing the authored D3D9 dependency
+  dispatcher with concrete recovered Lionhead calls remains the central
+  visual-closure boundary.
+
+## Texture/shader submit closure (2026-07-26)
+
+- Seven more nested renderer dependencies are canonical. The
+  `DrawRetailDisplay` family is now **13/37**, and the
+  `Render2DDrawList` family is **11/25**; the complete ledger remains
+  `rebuild/integration/renderer_nested_dependencies.tsv`.
+- Four additions are true byte-identical matches:
+  `CTexture::Uninitialise @ 0x009F9F70`,
+  `CShaderRenderManager::SetVSConstants @ 0x0098B930`,
+  `UpdatePixelShader @ 0x00988A20`, and
+  `UpdateLightGlobals @ 0x0098A760`. Focused fixtures cover null/no-op
+  branches, COM-style device calls, argument forwarding, ownership release,
+  and dirty-mask clearing.
+- Three relocation-normalized additions close the float viewport tail thunk,
+  word-wrap callback configuration, and preallocated texture adoption:
+  `CRenderManagerCore::SetAWindow(C2DBoxF) @ 0x00A0AA80`,
+  `WordWrap_SetCallback @ 0x00A0FD90`, and
+  `CTexture::InitialiseFromPreallocatedTexture @ 0x009FA230`. The viewport
+  identity correction is persisted in `function_overrides.tsv`.
+- The canonical VC7.1 compile/behavior gate passes **4,903 / 4,903**. Retail
+  parity is **2,680 exact + 1,896 relocation-normalized = 4,576 / 49,552
+  (9.23%)**; honest residue remains 199 differences and 128 missing
+  function-start oracles.
+- The full Release bootstrap rebuilt with `asset=RetailFrontendBackdrop`. A
+  fresh live launch again opened the retail-art window, accepted `WM_CLOSE`,
+  and exited zero.
+- Continue through adjacent texture ownership and shader realization:
+  `CTexture::operator= @ 0x009FA1C0`,
+  `CShaderRenderManager::ApplyVertexShader @ 0x00988020`,
+  `DisablePixelShaders @ 0x00988190`, ambient/fog uploads, and
+  `CRenderStateManager::RealiseRenderState @ 0x00A058C0`. The 3,344-byte
+  `Render2DDrawList` orchestration body remains unrecovered, but nearly half
+  of its unique direct dependencies are now canonical.
+
+## Nested renderer-family closure (2026-07-26)
+
+- Both remaining direct `RenderProgress` bodies now have complete direct-callee
+  maps in `rebuild/integration/renderer_nested_dependencies.tsv`:
+  `DrawRetailDisplay @ 0x00498490` has 37 unique dependencies and
+  `Render2DDrawList @ 0x009DA9F0` has 25. Seventeen of the 62 family rows are
+  canonical retail matches, with two additional wide-string lifetime leaves
+  already proven by the boot gate.
+- This pass promoted eight focused dependencies, all with real behavior
+  fixtures and retail-matching instruction streams:
+  `FormatTextForVWindow @ 0x00497F80`,
+  `GFRoundVXToNearestPixel @ 0x009E1D00`,
+  `GFRoundVYToNearestPixel @ 0x009E1D50`,
+  `GFAXToVX @ 0x009E1DA0`,
+  `GetRenderTargetDimensions @ 0x009BEDC0`,
+  `EnableVertexShaders @ 0x00987FE0`,
+  `DisableVertexShaders @ 0x009880E0`, and
+  `EnablePixelShaders @ 0x00988110`. The dimensions accessor is a true
+  **24/24-byte exact match**; the other seven are relocation-normalized.
+- EgoCore PDB evidence corrected three poisoned identities/prototypes.
+  `0x009A4EC0` is now the fixed `GFGetSystemManager` accessor rather than
+  `AddChildPrimitive`; `0x009BEDC0` is
+  `CDisplayManager::GetRenderTargetDimensions`; and
+  `FormatTextForVWindow` is the private const `CProgressDisplay` method, not a
+  global fastcall. The corrections are persisted in
+  `rebuild/corrections/function_overrides.tsv`.
+- The canonical VC7.1 compile/behavior gate passes **4,896 / 4,896**. Retail
+  parity is **2,676 exact + 1,893 relocation-normalized = 4,569 / 49,552
+  (9.22%)**; honest residue remains 199 differences and 128 missing
+  function-start oracles.
+- The Release bootstrap was rebuilt and remains green with
+  `asset=RetailFrontendBackdrop`. A fresh live window smoke opened
+  `FableTLC-Reconstruction-VisualCheckpoint.exe` with title
+  `FableDecomp - Retail Frontend Asset + Progress Display Ready`, accepted
+  `WM_CLOSE`, and exited zero.
+- Next nested closures should target `GFAYToVY @ 0x009E1DD0` and
+  `GFABoxToVBox @ 0x009E2020` (both semantically complete with one
+  adjacent-instruction scheduling residue), then
+  `DisablePixelShaders @ 0x00988190`, `ApplyVertexShader @ 0x00988020`, and
+  the texture ownership leaves. The actual large draw/submit bodies and
+  replacing the GDI presentation bridge remain the visual-closure boundary.
+
+## EgoCore-assisted renderer closure (2026-07-26)
+
+- The canonical `CProgressDisplay::RenderProgress @ 0x00499880` direct-call
+  ledger is now **15/17 recovered**. This pass closed all five remaining small
+  leaves: `ClearRenderTarget @ 0x009BE420`,
+  `SetRenderTargetAsBackScreen @ 0x009BF220`,
+  `SwapScreens @ 0x009BEEB0`, `SetRenderTarget @ 0x009BF160`, and
+  `RestoreCaptureBlock @ 0x00A05840`.
+- EgoCore was materially useful. `debug_build/Ego_r.pdb` and `ego_r.exe`
+  supplied exact class/function names, prototypes, donor addresses, function
+  lengths, and a `CDisplayManager` layout. Comparing those donor bodies to TLC
+  exposed the original inline-accessor/source shapes needed for VC7.1 register
+  allocation and preserved `SwapScreens`' distinct generic-failure epilogue.
+- All five additions have focused behavior fixtures. Four are
+  relocation-normalized retail matches; `RestoreCaptureBlock` is a true
+  **121/121-byte exact match**. The canonical gate passes **4,888 / 4,888**.
+  Retail parity is **2,675 exact + 1,886 relocation-normalized = 4,561 /
+  49,552 (9.20%)**; honest residue remains 199 differences and 128 missing
+  function-start oracles.
+- The full Release bootstrap passed with `asset=RetailFrontendBackdrop`. A
+  fresh top-level window smoke test opened
+  `FableTLC-Reconstruction-VisualCheckpoint.exe` with title
+  `FableDecomp - Retail Frontend Asset + Progress Display Ready`, accepted
+  `WM_CLOSE`, and exited zero.
+- The only remaining direct renderer dependencies are the large orchestration
+  bodies `CProgressDisplay::DrawRetailDisplay @ 0x00498490` (5,101 bytes) and
+  `CRenderManager2D::Render2DDrawList @ 0x009DA9F0` (3,344 bytes). Continue
+  decomposing their dependency families while preserving the already-visible
+  retail backdrop checkpoint; runtime archive/texture ownership and replacing
+  the GDI presentation bridge remain the visual-closure boundary.
+
+## Ghidra boundary repair + renderer-leaf closure (2026-07-26)
+
+- The visual executable is bootable now and again passed a fresh top-level
+  window smoke test with exit code zero. It displays the genuine retail
+  `FRONTEND_BACKDROP_01` from the user's local `frontend.big`; the executable
+  is `rebuild/build/bootstrap-Release/FableTLC-Reconstruction-VisualCheckpoint.exe`.
+  Presentation is still the explicit GDI bridge, not Lionhead's recovered
+  renderer.
+- `CProgressDisplay::GetPTextBank @ 0x00497B30` is a behavior-proven 35-byte
+  relocation match. It selects the primary bank at owner offset `+0x14`, falls
+  back to the game bank at `+0x60`, and returns null when neither exists. It is
+  recovered and boot-gated but is not yet fed by runtime-populated bank owners.
+- Ghidra now models `CProgressDisplay::StartProgress @ 0x00499AA0` as the
+  correct single 418-byte function ending at `0x00499C41`. The former
+  `0x00499AAD` entry was a false mid-function start. The repair is reproducible
+  through `tools/ghidra_scripts/MergeFallthroughFunction.java`, and
+  `rebuild/corrections/function_boundary_exclusions.tsv` prevents regenerated
+  manifests from restoring the false function.
+- `CProgressDisplay::RenderProgress @ 0x00499880` is mapped as the next
+  renderer boundary. Ten of its seventeen unique direct dependencies are now
+  canonical retail matches; see
+  `rebuild/integration/render_progress_dependencies.tsv`. This pass added the
+  quick-assignment guard, system update, begin/end render, float and integer
+  viewport forwarding, render-target constructor, surface release, and the
+  already-boot-proven CBase constructor.
+- The canonical VC7.1 compile/behavior gate passes **4,883 / 4,883**.
+  Retail parity is **2,674 exact + 1,882 relocation-normalized = 4,556 /
+  49,552 (9.19%)**. The denominator is one smaller because the false
+  `0x00499AAD` start is no longer counted; honest residue remains 199
+  differences and 128 missing function-start oracles.
+- Next visual closure: recover the remaining seven `RenderProgress`
+  dependencies, prioritizing `ClearRenderTarget`, back-screen/target binding,
+  `SwapScreens`, and render-state restore before the 5,101-byte
+  `DrawRetailDisplay` and 3,344-byte `Render2DDrawList` bodies. In parallel,
+  continue the 2,920-byte `InitialiseTextures` dependency cluster and integrate
+  the corrected `StartProgress` body.
+
+## Retail image + progress text-state checkpoint (2026-07-26)
+
+- `CProgressDisplay::SetToDisplayText @ 0x00499A70` is recovered, behavior
+  gated, and promoted as a 47-byte relocation-normalized retail match. The
+  fixture proves false clears the primary string and progress value, while
+  true calls `CalculateNextTextTag`; the visual startup now traverses the
+  recovered false transition before presenting the retained display state.
+- The complete Release bootstrap remains green through every retail leaf,
+  Stage 0-3, the GFInitialise progress integration, and the retail-art visual
+  checkpoint. The executable still displays genuine `FRONTEND_BACKDROP_01`
+  pixels from the user's local `frontend.big`.
+- The canonical VC7.1 compile/behavior gate passes **4,871 / 4,871**.
+  Retail parity is **2,672 exact + 1,872 relocation-normalized = 4,544 /
+  49,553 (9.17%)**; the honest residue remains 199 differences and 128
+  missing function-start oracles.
+- Retail inspection corrected the next target: the apparent 13-byte
+  `StartProgress @ 0x00499AA0` has no return and falls through into the
+  405-byte entry/body at `0x00499AAD`. Recover that shared control-flow unit
+  together; do not promote the short entry independently.
+- Next visual closure remains `InitialiseTextures`, runtime texture/resource
+  ownership, and the smallest renderer-backed progress draw/present path.
+  The current retail image is real, but its extraction and GDI presentation
+  remain an explicit authored bridge rather than the recovered game renderer.
+  A direct-call audit of the 2,920-byte retail `InitialiseTextures` body found
+  46 unique callees, only three of which are currently canonical parity
+  matches, so treat it as a dependency cluster rather than a single-leaf gap.
+
+## First retail image on reconstructed screen checkpoint (2026-07-26)
+
+- `FableTLC-Reconstruction-VisualCheckpoint.exe` now displays genuine retail
+  Fable artwork. The bootstrap locates a user-owned `frontend.big`, decodes
+  `FRONTEND_BACKDROP_01` through the recovered Lionhead-LZO/DXT1 toolchain,
+  crops the 1024x512 allocation to its authored 640x480 frame, and embeds only
+  the ignored build product. No retail artwork is added to Git; the existing
+  project concept remains the portable fallback.
+- A real top-level-window smoke test opened at 1280x720 client size with title
+  `FableDecomp - Retail Frontend Asset + Progress Display Ready`, captured the
+  retail image visibly centered in the reconstructed process, then closed with
+  exit code zero. The full Release bootstrap and all retail leaf/behavior gates
+  pass with `asset=RetailFrontendBackdrop`.
+- This closes “first actual game image,” but not “retail rendering.” Pixels are
+  currently presented by the authored GDI checkpoint after build-time
+  extraction. Runtime bank loading, Lionhead texture ownership, D3D device and
+  primitive setup, render/present scheduling, and the game loop remain open.
+  Intro video is farther away because the movie/Bink path, timing, audio, and
+  frame presentation sit on top of that display foundation.
+- Next visual target: recover the shared
+  `CProgressDisplay::StartProgress @ 0x00499AA0` / `0x00499AAD` body,
+  `CProgressDisplay::InitialiseTextures @ 0x0049A0B0`, and the smallest
+  renderer-backed progress draw path. Keep build-time retail-image display as
+  an explicit, tested bridge rather than mislabeling it as the engine renderer.
+- Strict whole-executable parity remains **4,543 / 49,553 (9.17%)** from the
+  prior checkpoint; the hourly Ghidra-free lane remains scheduled independently.
+
+## Virtual-delete parity + retail visual consumer checkpoint (2026-07-26)
+
+- The visually bootable path remains green through the retail progress-display
+  consumer chain. Stage 2 acquires `GetProgressDisplay @ 0x009EA060`, reads
+  `CProgressDisplay::IsActive @ 0x0049B460`, and hands that state to the
+  authored top-level window before balancing both counted owners. The verified
+  smoke title is `FableDecomp - Retail Progress Display Ready`.
+- Deterministic parity now recognizes the exact 11-byte null-safe virtual
+  deletion shape `85 c9 74 06 8b 01 6a 01 ff 10 c3`. Its source is the
+  readable `delete object` operation through a virtual destructor, and its
+  behavior fixture proves null input is inert while one live allocation invokes
+  its virtual destructor exactly once.
+- Pending replay found exactly **28** authoritative instances and the VC7.1
+  gate landed **28 / 28 exact matches**: 26 `DeleteData` leaves plus
+  `CIEngine::Release` and `CEngine::Release`. No relocation masking was needed.
+- Full compile and behavior validation passes with **4,870 / 4,870**
+  candidates. Retail parity is **2,672 exact + 1,871
+  relocation-normalized = 4,543 / 49,553 (9.17%)**. The honest residue remains
+  199 differing candidates and 128 missing function-start oracles.
+- Canonical manifests, coverage, backlog, promotion queue, runnable dashboard,
+  artifact index, and root README are refreshed. Artifact organization
+  preserved six live Wave 3 collisions without moving either copy.
+- For parity, audit the two repeated 21-byte virtual navigation-wrapper
+  clusters only with concrete call/return fixtures. Keep the 120-instance
+  cross-boundary virtual-suspend shape, 97 tail-jump placeholders, and padded
+  35-byte counted resets quarantined. For visual closure, the next honest work
+  is still progress texture/resource initialization and drawing, followed by
+  the renderer/game-loop handoff.
+
+## Retail visual consumer + 468-function parity checkpoint (2026-07-26)
+
+- The visual handoff now consumes the retained progress display through retail
+  code instead of reading the integration globals directly.
+  `GetProgressDisplay @ 0x009EA060` is a readable 28-byte counted getter that
+  matches outside two relocations and retains the returned owner.
+  `CProgressDisplay::IsActive @ 0x0049B460` is an exact four-byte query of the
+  recovered `active79` layout field.
+- Stage 2 acquires that counted snapshot after the verified `GFInitialise`,
+  feeds the recovered state into the visual checkpoint, releases the global
+  owner, and then balances the snapshot. The strengthened integration fixture
+  proves the temporary owner count rises from one to two and returns to one.
+  A real top-level-window smoke test opened with title
+  `FableDecomp - Retail Progress Display Ready` and closed cleanly.
+- Deterministic parity added four behavior-proven exact families:
+  **87** size-optimized counted resets (`and [esi], 0`), **214** three-byte
+  boolean-false returns, **29** boolean-false returns with one popped stack
+  argument, and **138** callback-backed suspend helpers. The suspend fixture
+  proves the callback observes the old flag and the suspended byte changes
+  only after the call.
+- A nearby 120-instance virtual suspend shape was deliberately not landed.
+  Its null branch jumps beyond the apparent function epilogue, so a normal
+  standalone C++ interpretation differed despite matching length. The matcher
+  was removed after the gate exposed that control-flow fact.
+- Full VC7.1 compile and behavior validation passes with **4,842 / 4,842**
+  candidates. Retail parity is **2,644 exact + 1,871
+  relocation-normalized = 4,515 / 49,553 (9.11%)**. The honest dashboard
+  still reports 199 differing candidates and 128 missing function-start
+  oracles.
+- Generated manifests, coverage, backlog, promotion queue, runnable dashboard,
+  artifact index, and root README are refreshed. The hourly Ghidra-free parity
+  task completed successfully at 09:46 and remains scheduled. The next safe
+  repeated leaf to inspect is the 28-instance 11-byte `DeleteData` virtual
+  release shape; keep the 120 virtual-suspend and padded 35-byte reset shapes
+  quarantined until their cross-boundary control flow is resolved.
+
+## Retained visual owner + 254 counted resets checkpoint (2026-07-26)
+
+- `SetProgressDisplay @ 0x009E9FD0` is recovered and promoted. Its readable
+  133-byte VC7.1 body matches retail outside 12 relocations, releases any prior
+  global counted display, retains the incoming reference, and passes focused
+  replacement/orphan/final-release behavior.
+- The visual executable now keeps the real typed 0x88-byte
+  `CProgressDisplay` alive after `GFInitialise_SetupProgressDisplay` returns.
+  The retained reference spans the authored window lifetime and is released
+  through the recovered counted owner on both initialization failure and
+  normal shutdown. The full Release bootstrap and an actual top-level-window
+  smoke test pass with exit code zero.
+- The next honest visual closure is no longer ownership. Recover the display
+  and resource consumers (`CProgressDisplay` texture initialization/progress
+  drawing plus the boundary-owned root/display/resource objects), then connect
+  archive/data loading and the renderer/game-loop handoff. The visible window
+  remains authored scaffolding until those consumers render it.
+- The deterministic parity vocabulary now includes the exact 27-byte
+  intrusive counted-handle reset. It decrements the owner count, calls virtual
+  release slot 1 only on the last owner, and clears the handle. Unit coverage
+  rejects the nearby `and [esi], 0` encoding, while the behavior fixture covers
+  last-owner release, retained-owner decrement, and null reset.
+- Pending replay promoted **254 / 254 byte-identical retail matches**. The two
+  visual leaves were also registered in the canonical catalog. The full VC7.1
+  compile/behavior gate passes with **4,372 / 4,372** functions. Candidate
+  retail parity is **2,175 exact + 1,870 relocation-normalized = 4,045 /
+  49,553 (8.16%)**; 199 honest differences and 128 missing function-start
+  oracles remain visible.
+- Generated manifests, backlog, promotion queue, coverage dashboard, artifact
+  index, and root README are refreshed. Ghidra and Wave 3 remain stopped; the
+  hourly Ghidra-free parity task remains installed. The closest safe next
+  parity family is the 24-byte counted reset variant that uses
+  `and [esi], 0` (87 staged instances); after that, move to creature-action
+  clone allocation/copy only with allocation-failure and copy semantics tested.
+
+*Previous checkpoint: 2026-07-26 08:44 MDT (retail progress object + counted-handle parity checkpoint).*
+
+## Retail progress object + counted-handle parity checkpoint (2026-07-26)
+
+- The visually runnable path now allocates a real typed
+  `CProgressDisplay` and traverses its retail constructor at `0x00499CE0`.
+  The 163-byte leaf matches retail outside seven relocation fields, initializes
+  the exact 0x88-byte object layout, constructs one `CWideString` and two
+  `CCharString` subobjects, and passes an offset/flags/lifecycle fixture.
+- The former blanket-`memset` constructor boundary is gone. The full
+  `GFInitialise @ 0x004022B0` and
+  `GFInitialise_SetupProgressDisplay @ 0x00413120` path now uses the recovered
+  constructor and balanced recovered string teardown before handing off to
+  the authored 1280x720 boot window. The complete Release bootstrap is green
+  through Stage 0-3, GFInitialise progress integration, and the visual
+  checkpoint.
+- The remaining honest progress-display boundary is the engine-side retained
+  owner installed by `SetProgressDisplay`; the root/display/resource graph and
+  renderer are still controlled integration objects. Recover retained
+  ownership before claiming a retail progress frame, then continue with
+  archive/data loading and renderer/game-loop handoff.
+- The next 47-byte deterministic parity family is also landed: intrusive
+  counted-handle assignment releases the prior object through virtual slot 1
+  on its last reference, assigns the incoming object, and retains it when
+  non-null. Its focused fixture covers last-reference release, retained
+  decrement, incoming increment, null assignment, and self-assignment.
+- That family added **26 / 26 exact retail matches**. The full VC7.1 catalog
+  and behavior gate passes with **4,116 / 4,116** functions. Candidate retail
+  parity is **1,921 exact + 1,868 relocation-normalized = 3,789 / 49,553
+  (7.65%)**; 199 honest differences and 128 missing function-start oracles
+  remain visible.
+- Generated manifests, backlog, promotion queue, dashboard, artifact index,
+  and root README are refreshed. Ghidra and Wave 3 remain stopped; the hourly
+  Ghidra-free parity task remains installed. Resume deterministic parity with
+  the remaining creature-action clone allocation/copy clusters, adding ABI,
+  allocation-failure, copy, and ownership fixtures before replay.
+
+*Previous checkpoint: 2026-07-26 08:00 MDT (258-function speed-destructor replay checkpoint).*
+
+## Speed-optimized composite-destructor replay checkpoint (2026-07-26)
+
+- The next unsupported 33-48-byte cluster is closed. Retail uses both an
+  8-bit and a 32-bit member displacement for this composite scalar deleting
+  destructor, plus speed-optimized caller cleanup (`add esp, 4`) instead of
+  the previously supported size-optimized `pop ecx`.
+- `auto_author_tiny.py` now recognizes only that exact control-flow shape and
+  emits the corresponding `#pragma optimize("t", on)` readable source. Unit
+  coverage locks both displacement encodings. Focused probes independently
+  proved a 40-byte and a 43-byte representative before the full replay.
+- Pending-oracle replay authored **254 / 254** candidates. Every candidate
+  passed its member/owner/delete ordering fixture and relocation-normalized
+  retail comparison. The hourly queue also recovered four newly exposed
+  async-read/kill wrappers, for **258** new verified functions since the prior
+  checkpoint.
+- The full VC7.1 catalog and behavior gate now passes with **4,090 / 4,090**
+  functions. Candidate retail parity is **1,895 exact + 1,868
+  relocation-normalized = 3,763 / 49,553 (7.59%)**; 199 honest differences
+  and 128 missing function-start oracles remain visible.
+- Generated manifests, backlog, promotion queue, coverage dashboard, artifact
+  index, and root README are refreshed. The collision-safe organizer again
+  preserved the six non-identical stopped-Wave-3 root/shard pairs.
+- **Resume the parity lane** with the remaining repeated 33-48-byte families.
+  The largest honest clusters are creature-action clone allocation/copy
+  wrappers and counted-pointer release/assignment helpers. Add a family only
+  after its ABI, allocation failure, reference-count, and ownership behavior
+  are represented in focused fixtures.
+- The visual-boot resume point remains `rebuild/RUNNABLE.md`: replace the
+  boundary-owned `GFInitialise` engine-root/display/player doubles, then close
+  archive loading and the renderer/game-loop handoff.
+
+*Previous checkpoint: 2026-07-26 01:02 MDT (103-function expanded unattended replay checkpoint).*
 
 ## Expanded unattended replay checkpoint (2026-07-26)
 

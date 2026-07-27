@@ -8,6 +8,8 @@ determined by the retail bytes:
   c3                 -> empty void function
   c2 nn 00           -> empty __stdcall void function with nn/4 popped args
   33 c0 c3 / 31 c0 c3 -> return 0
+  32 c0 c3           -> return false in al
+  32 c0 c2 04 00     -> return false in al, pop one stack argument
   b0 xx c3           -> return bool/byte constant
   6a xx 58 c3        -> return signed imm8
   b8 xx xx xx xx c3  -> return imm32
@@ -44,6 +46,10 @@ determined by the retail bytes:
   56 8b f1 8d 4e oo e8 xx xx xx xx 8b ce e8 yy yy yy yy
      f6 44 24 08 01 74 07 56 e8 zz zz zz zz 59 8b c6 5e c2 04 00
                      -> destruct a member and its owner, then optionally delete
+  56 8b f1 8d (4e oo|8e oo oo oo oo) e8 xx xx xx xx
+     8b ce e8 yy yy yy yy f6 44 24 08 01 74 09 56
+     e8 zz zz zz zz 83 c4 04 8b c6 5e c2 04 00
+                     -> speed-optimized form of the same composite destructor
   51 56 8b f1 8b 56 04 8b 0e 8d 44 24 07 50 e8 xx xx xx xx
      8b 36 85 f6 74 07 56 e8 yy yy yy yy 59 5e 59 c3
                      -> finish an async read and release its resource
@@ -55,6 +61,20 @@ determined by the retail bytes:
      e8 xx xx xx xx 8b 7e 08 56 e8 yy yy yy yy 85 ff 59
      8b f7 75 e6 5f 5e 5b c2 04 00
                      -> recursively consume a linked tree
+  56 8b f1 8b 0e 57 8b 7c 24 0c 3b 0f 74 1c 85 c9 74 0d
+     ff 49 04 75 05 8b 01 ff 50 04 83 26 00 8b 07 85 c0
+     89 06 74 03 ff 40 04 5f 5e c2 04 00
+                     -> release the old counted object and assign a new one
+  56 8b f1 8b 0e 85 c9 74 10 ff 49 04 75 05 8b 01 ff 50
+     04 c7 06 00 00 00 00 5e c3
+                     -> release and clear one intrusive counted handle
+  56 8b f1 8b 0e 85 c9 74 0d ff 49 04 75 05 8b 01 ff 50
+     04 83 26 00 5e c3
+                     -> size-optimized release and clear of the same handle
+  85 c9 74 06 8b 01 6a 01 ff 10 c3
+                     -> null-safe virtual deletion of one object
+  56 8b f1 8b 4e 38 ff 56 34 c6 46 05 01 5e c3
+                     -> invoke a suspend callback, then mark suspended
 
 The normal verify_and_land.py gate still recompiles and byte-compares every
 candidate, so a bad inference can waste a compile but cannot mis-land.
@@ -135,6 +155,10 @@ def const_from_bytes(bs: bytes):
         return ("void_stdcall_pop", bs[1])
     if h in ("33c0c3", "31c0c3"):
         return ("int", 0)
+    if h == "32c0c3":
+        return ("bool", False)
+    if h == "32c0c20400":
+        return ("bool_pop4", False)
     if len(bs) == 3 and bs[0] == 0xB0 and bs[-1] == 0xC3:
         return ("bool", bool(bs[1]))
     if len(bs) == 4 and bs[0] == 0x6A and bs[2:] == b"\x58\xc3":
@@ -250,6 +274,33 @@ def const_from_bytes(bs: bytes):
         and bs[31:] == b"\x59\x8b\xc6\x5e\xc2\x04\x00"
     ):
         return ("composite_scalar_deleting_destructor", bs[5])
+    if bs[:3] == b"\x56\x8b\xf1":
+        cursor = 3
+        if bs[cursor:cursor + 2] == b"\x8d\x4e":
+            member_offset = bs[cursor + 2]
+            cursor += 3
+        elif bs[cursor:cursor + 2] == b"\x8d\x8e":
+            member_offset = int.from_bytes(
+                bs[cursor + 2:cursor + 6], "little", signed=True
+            )
+            cursor += 6
+        else:
+            member_offset = None
+        if (
+            member_offset is not None
+            and bs[cursor:cursor + 1] == b"\xe8"
+            and bs[cursor + 5:cursor + 8] == b"\x8b\xce\xe8"
+            and bs[cursor + 12:cursor + 17]
+            == b"\xf6\x44\x24\x08\x01"
+            and bs[cursor + 17:cursor + 20] == b"\x74\x09\x56"
+            and bs[cursor + 20:cursor + 21] == b"\xe8"
+            and bs[cursor + 25:cursor + 28] == b"\x83\xc4\x04"
+            and bs[cursor + 28:] == b"\x8b\xc6\x5e\xc2\x04\x00"
+        ):
+            return (
+                "composite_scalar_deleting_destructor_speed",
+                member_offset,
+            )
     if (
         len(bs) == 35
         and bs[:14] == b"\x51\x56\x8b\xf1\x8b\x56\x04\x8b\x0e"
@@ -276,6 +327,38 @@ def const_from_bytes(bs: bytes):
         and bs[32:] == b"\x85\xff\x59\x8b\xf7\x75\xe6\x5f\x5e\x5b\xc2\x04\x00"
     ):
         return ("consume_linked_tree", None)
+    if (
+        len(bs) == 47
+        and bs
+        == b"\x56\x8b\xf1\x8b\x0e\x57\x8b\x7c\x24\x0c\x3b\x0f\x74\x1c"
+        b"\x85\xc9\x74\x0d\xff\x49\x04\x75\x05\x8b\x01\xff\x50\x04"
+        b"\x83\x26\x00\x8b\x07\x85\xc0\x89\x06\x74\x03\xff\x40\x04"
+        b"\x5f\x5e\xc2\x04\x00"
+    ):
+        return ("assign_intrusive_counted_handle", None)
+    if (
+        len(bs) == 27
+        and bs
+        == b"\x56\x8b\xf1\x8b\x0e\x85\xc9\x74\x10\xff\x49\x04"
+        b"\x75\x05\x8b\x01\xff\x50\x04\xc7\x06\x00\x00\x00\x00"
+        b"\x5e\xc3"
+    ):
+        return ("reset_intrusive_counted_handle", None)
+    if (
+        len(bs) == 24
+        and bs
+        == b"\x56\x8b\xf1\x8b\x0e\x85\xc9\x74\x0d\xff\x49\x04"
+        b"\x75\x05\x8b\x01\xff\x50\x04\x83\x26\x00\x5e\xc3"
+    ):
+        return ("reset_intrusive_counted_handle_size", None)
+    if bs == b"\x85\xc9\x74\x06\x8b\x01\x6a\x01\xff\x10\xc3":
+        return ("delete_virtual_object", None)
+    if (
+        bs
+        == b"\x56\x8b\xf1\x8b\x4e\x38\xff\x56\x34"
+        b"\xc6\x46\x05\x01\x5e\xc3"
+    ):
+        return ("suspend_process_callback", None)
     return None
 
 
@@ -298,6 +381,7 @@ def candidate(row):
     elif rettype in (
         "scalar_deleting_destructor",
         "composite_scalar_deleting_destructor",
+        "composite_scalar_deleting_destructor_speed",
     ):
         module = row.get("module") or "_global"
         cls = sanitize(module)
@@ -348,6 +432,28 @@ def candidate(row):
             "int main()\n"
             "{\n"
             f"    if ({fn}() == {literal}) {{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
+            f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
+            "    return 1;\n"
+            "}\n"
+        )
+    elif rettype == "bool_pop4":
+        source = (
+            f"bool __fastcall {fn}(void*, int, int)\n"
+            "{\n"
+            "    return false;\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            f"bool __fastcall {fn}(void*, int, int)\n"
+            "{\n"
+            "    return false;\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            "    int object = 0;\n"
+            f"    if (!{fn}(&object, 1, 2)) "
+            f"{{ std::printf(\"{pattern}\\n\"); return 0; }}\n"
             f"    std::printf(\"AUTO_TINY_{addr}_TEST FAIL\\n\");\n"
             "    return 1;\n"
             "}\n"
@@ -845,9 +951,17 @@ def candidate(row):
             "    return 0;\n"
             "}\n"
         )
-    elif rettype == "composite_scalar_deleting_destructor":
+    elif rettype in (
+        "composite_scalar_deleting_destructor",
+        "composite_scalar_deleting_destructor_speed",
+    ):
+        optimization = (
+            "t"
+            if rettype == "composite_scalar_deleting_destructor_speed"
+            else "s"
+        )
         source = (
-            '#pragma optimize("s", on)\n'
+            f'#pragma optimize("{optimization}", on)\n'
             "extern void __fastcall AutoTinyMemberDestructor(void* member);\n"
             "extern void __fastcall AutoTinyCompositeDestructor(void* self);\n"
             "extern void __cdecl AutoTinyCompositeDelete(void* object);\n"
@@ -1121,6 +1235,295 @@ def candidate(row):
             "    AutoTinyTreeNodeArgument argument = {&root};\n"
             f"    {fn}(&walker, argument);\n"
             "    if (g_AutoTinyFreedTreeNodes != 3)\n"
+            "        return 1;\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "assign_intrusive_counted_handle":
+        source = (
+            '#pragma optimize("s", on)\n'
+            "struct AutoTinyCountedObject\n"
+            "{\n"
+            "    void** vtable;\n"
+            "    long references;\n"
+            "};\n"
+            "struct AutoTinyCountedHandle\n"
+            "{\n"
+            "    AutoTinyCountedObject* object;\n"
+            "    void Assign(AutoTinyCountedHandle* source);\n"
+            "};\n"
+            "void AutoTinyCountedHandle::Assign("
+            "AutoTinyCountedHandle* source)\n"
+            "{\n"
+            "    AutoTinyCountedObject* current = object;\n"
+            "    if (current != source->object)\n"
+            "    {\n"
+            "        if (current != 0)\n"
+            "        {\n"
+            "            if (--current->references == 0)\n"
+            "                ((void (__fastcall*)(AutoTinyCountedObject*))"
+            "current->vtable[1])(current);\n"
+            "            object = 0;\n"
+            "        }\n"
+            "        AutoTinyCountedObject* incoming = source->object;\n"
+            "        object = incoming;\n"
+            "        if (incoming != 0)\n"
+            "            ++incoming->references;\n"
+            "    }\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "struct AutoTinyCountedObject\n"
+            "{\n"
+            "    void** vtable;\n"
+            "    long references;\n"
+            "};\n"
+            "struct AutoTinyCountedHandle\n"
+            "{\n"
+            "    AutoTinyCountedObject* object;\n"
+            "    void Assign(AutoTinyCountedHandle* source);\n"
+            "};\n"
+            "static int g_AutoTinyCountedReleaseCalls = 0;\n"
+            "static AutoTinyCountedObject* "
+            "g_AutoTinyCountedReleasedObject = 0;\n"
+            "void __fastcall AutoTinyCountedRelease("
+            "AutoTinyCountedObject* object)\n"
+            "{\n"
+            "    ++g_AutoTinyCountedReleaseCalls;\n"
+            "    g_AutoTinyCountedReleasedObject = object;\n"
+            "}\n"
+            "void AutoTinyCountedHandle::Assign("
+            "AutoTinyCountedHandle* source)\n"
+            "{\n"
+            "    AutoTinyCountedObject* current = object;\n"
+            "    if (current != source->object)\n"
+            "    {\n"
+            "        if (current != 0)\n"
+            "        {\n"
+            "            if (--current->references == 0)\n"
+            "                ((void (__fastcall*)(AutoTinyCountedObject*))"
+            "current->vtable[1])(current);\n"
+            "            object = 0;\n"
+            "        }\n"
+            "        AutoTinyCountedObject* incoming = source->object;\n"
+            "        object = incoming;\n"
+            "        if (incoming != 0)\n"
+            "            ++incoming->references;\n"
+            "    }\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            "    void* vtable[2] = {0, "
+            "(void*)AutoTinyCountedRelease};\n"
+            "    AutoTinyCountedObject last = {vtable, 1};\n"
+            "    AutoTinyCountedObject incoming = {vtable, 2};\n"
+            "    AutoTinyCountedHandle destination = {&last};\n"
+            "    AutoTinyCountedHandle source = {&incoming};\n"
+            "    destination.Assign(&source);\n"
+            "    if (destination.object != &incoming || "
+            "last.references != 0 || incoming.references != 3 ||\n"
+            "        g_AutoTinyCountedReleaseCalls != 1 || "
+            "g_AutoTinyCountedReleasedObject != &last)\n"
+            "        return 1;\n"
+            "    destination.Assign(&destination);\n"
+            "    if (incoming.references != 3 || "
+            "g_AutoTinyCountedReleaseCalls != 1)\n"
+            "        return 1;\n"
+            "    AutoTinyCountedObject retained = {vtable, 2};\n"
+            "    AutoTinyCountedHandle retainedHandle = {&retained};\n"
+            "    AutoTinyCountedHandle empty = {0};\n"
+            "    retainedHandle.Assign(&empty);\n"
+            "    if (retainedHandle.object != 0 || "
+            "retained.references != 1 ||\n"
+            "        g_AutoTinyCountedReleaseCalls != 1)\n"
+            "        return 1;\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
+    elif rettype in (
+        "reset_intrusive_counted_handle",
+        "reset_intrusive_counted_handle_size",
+    ):
+        optimization = (
+            "s"
+            if rettype == "reset_intrusive_counted_handle_size"
+            else "t"
+        )
+        source = (
+            f'#pragma optimize("{optimization}", on)\n'
+            "struct AutoTinyCountedObject\n"
+            "{\n"
+            "    void** vtable;\n"
+            "    long references;\n"
+            "};\n"
+            "struct AutoTinyCountedHandle\n"
+            "{\n"
+            "    AutoTinyCountedObject* object;\n"
+            "    void Reset();\n"
+            "};\n"
+            "void AutoTinyCountedHandle::Reset()\n"
+            "{\n"
+            "    AutoTinyCountedObject* current = object;\n"
+            "    if (current != 0)\n"
+            "    {\n"
+            "        if (--current->references == 0)\n"
+            "            ((void (__fastcall*)(AutoTinyCountedObject*))"
+            "current->vtable[1])(current);\n"
+            "        object = 0;\n"
+            "    }\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "struct AutoTinyCountedObject\n"
+            "{\n"
+            "    void** vtable;\n"
+            "    long references;\n"
+            "};\n"
+            "struct AutoTinyCountedHandle\n"
+            "{\n"
+            "    AutoTinyCountedObject* object;\n"
+            "    void Reset();\n"
+            "};\n"
+            "static int g_AutoTinyCountedReleaseCalls = 0;\n"
+            "static AutoTinyCountedObject* "
+            "g_AutoTinyCountedReleasedObject = 0;\n"
+            "void __fastcall AutoTinyCountedRelease("
+            "AutoTinyCountedObject* object)\n"
+            "{\n"
+            "    ++g_AutoTinyCountedReleaseCalls;\n"
+            "    g_AutoTinyCountedReleasedObject = object;\n"
+            "}\n"
+            "void AutoTinyCountedHandle::Reset()\n"
+            "{\n"
+            "    AutoTinyCountedObject* current = object;\n"
+            "    if (current != 0)\n"
+            "    {\n"
+            "        if (--current->references == 0)\n"
+            "            ((void (__fastcall*)(AutoTinyCountedObject*))"
+            "current->vtable[1])(current);\n"
+            "        object = 0;\n"
+            "    }\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            "    void* vtable[2] = {0, "
+            "(void*)AutoTinyCountedRelease};\n"
+            "    AutoTinyCountedObject last = {vtable, 1};\n"
+            "    AutoTinyCountedHandle lastHandle = {&last};\n"
+            "    lastHandle.Reset();\n"
+            "    if (lastHandle.object != 0 || last.references != 0 ||\n"
+            "        g_AutoTinyCountedReleaseCalls != 1 || "
+            "g_AutoTinyCountedReleasedObject != &last)\n"
+            "        return 1;\n"
+            "    AutoTinyCountedObject retained = {vtable, 2};\n"
+            "    AutoTinyCountedHandle retainedHandle = {&retained};\n"
+            "    retainedHandle.Reset();\n"
+            "    if (retainedHandle.object != 0 || "
+            "retained.references != 1 ||\n"
+            "        g_AutoTinyCountedReleaseCalls != 1)\n"
+            "        return 1;\n"
+            "    AutoTinyCountedHandle empty = {0};\n"
+            "    empty.Reset();\n"
+            "    if (g_AutoTinyCountedReleaseCalls != 1)\n"
+            "        return 1;\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "delete_virtual_object":
+        source = (
+            "struct AutoTinyVirtualObject\n"
+            "{\n"
+            "    virtual ~AutoTinyVirtualObject();\n"
+            "};\n"
+            f"void __fastcall {fn}(AutoTinyVirtualObject* object)\n"
+            "{\n"
+            "    delete object;\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "struct AutoTinyVirtualObject\n"
+            "{\n"
+            "    virtual ~AutoTinyVirtualObject();\n"
+            "};\n"
+            "static int g_AutoTinyVirtualDestructorCalls = 0;\n"
+            "AutoTinyVirtualObject::~AutoTinyVirtualObject()\n"
+            "{\n"
+            "    ++g_AutoTinyVirtualDestructorCalls;\n"
+            "}\n"
+            f"void __fastcall {fn}(AutoTinyVirtualObject* object)\n"
+            "{\n"
+            "    delete object;\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            f"    {fn}(0);\n"
+            "    if (g_AutoTinyVirtualDestructorCalls != 0)\n"
+            "        return 1;\n"
+            "    AutoTinyVirtualObject* object =\n"
+            "        new AutoTinyVirtualObject;\n"
+            f"    {fn}(object);\n"
+            "    if (g_AutoTinyVirtualDestructorCalls != 1)\n"
+            "        return 1;\n"
+            f"    std::printf(\"{pattern}\\n\");\n"
+            "    return 0;\n"
+            "}\n"
+        )
+    elif rettype == "suspend_process_callback":
+        source = (
+            "typedef void (__fastcall *AutoTinySuspendCallback)(void*);\n"
+            "struct AutoTinySuspendableProcess\n"
+            "{\n"
+            "    unsigned char unknown00[5];\n"
+            "    bool suspended05;\n"
+            "    unsigned char unknown06[0x2e];\n"
+            "    AutoTinySuspendCallback callback34;\n"
+            "    void* context38;\n"
+            "};\n"
+            f"void __fastcall {fn}(AutoTinySuspendableProcess* self)\n"
+            "{\n"
+            "    self->callback34(self->context38);\n"
+            "    self->suspended05 = true;\n"
+            "}\n"
+        )
+        test = (
+            "#include <cstdio>\n"
+            "typedef void (__fastcall *AutoTinySuspendCallback)(void*);\n"
+            "struct AutoTinySuspendableProcess\n"
+            "{\n"
+            "    unsigned char unknown00[5];\n"
+            "    bool suspended05;\n"
+            "    unsigned char unknown06[0x2e];\n"
+            "    AutoTinySuspendCallback callback34;\n"
+            "    void* context38;\n"
+            "};\n"
+            "static int g_AutoTinySuspendCalls = 0;\n"
+            "static bool g_AutoTinySuspendObservedPriorState = true;\n"
+            "void __fastcall AutoTinySuspendCallbackImpl(void* context)\n"
+            "{\n"
+            "    AutoTinySuspendableProcess* self =\n"
+            "        static_cast<AutoTinySuspendableProcess*>(context);\n"
+            "    ++g_AutoTinySuspendCalls;\n"
+            "    g_AutoTinySuspendObservedPriorState = self->suspended05;\n"
+            "}\n"
+            f"void __fastcall {fn}(AutoTinySuspendableProcess* self)\n"
+            "{\n"
+            "    self->callback34(self->context38);\n"
+            "    self->suspended05 = true;\n"
+            "}\n"
+            "int main()\n"
+            "{\n"
+            "    AutoTinySuspendableProcess process = {0};\n"
+            "    process.callback34 = AutoTinySuspendCallbackImpl;\n"
+            "    process.context38 = &process;\n"
+            f"    {fn}(&process);\n"
+            "    if (!process.suspended05 || g_AutoTinySuspendCalls != 1 ||\n"
+            "        g_AutoTinySuspendObservedPriorState)\n"
             "        return 1;\n"
             f"    std::printf(\"{pattern}\\n\");\n"
             "    return 0;\n"

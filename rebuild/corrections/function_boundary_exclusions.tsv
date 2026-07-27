@@ -1,0 +1,2 @@
+address	absorbed_by	evidence
+00499aad	00499aa0	Retail fallthrough body: decorated CProgressDisplay::StartProgress at 00499AA0 spans 418 bytes through its ret 18 at 00499C41; repaired in Ghidra with tools/ghidra_scripts/MergeFallthroughFunction.java.
