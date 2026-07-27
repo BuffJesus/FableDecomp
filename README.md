@@ -118,25 +118,26 @@ the real retail `FRONTEND_BACKDROP_01` image when a local `frontend.big` is avai
 decodes its Lionhead-LZO/DXT1 payload, crops the allocated surface to the authored 640x480 frame,
 and embeds it without committing retail artwork; the project boot image remains the fallback.
 The visual handoff consumes a balanced retail counted-pointer snapshot and the retail active-state
-query before creating that window. Image presentation is still authored GDI scaffolding—not a
-claim that the retail renderer, runtime archive loader, or game loop has been recovered. Build it
-with `rebuild/build_bootstrap.ps1`, then launch it from `rebuild/build/bootstrap-Release/`.
+query before creating that window. The static image now presents through D3D9 and recovered
+Render2D dependency bodies; it is not yet the complete retail renderer, runtime archive loader,
+or game loop. Build it with `rebuild/build_bootstrap.ps1`, then launch it from
+`rebuild/build/bootstrap-Release/`.
 
 ### How close is a retail visual boot?
 
 | Visible milestone | Current state | What remains |
 |---|---|---|
-| First actual retail image | **Runnable now: `FRONTEND_BACKDROP_01` is decoded from `frontend.big` and shown by the reconstructed executable** | Presentation currently uses the authored GDI window rather than Lionhead's runtime archive/texture/renderer stack. |
+| First actual retail image | **Runnable now: `FRONTEND_BACKDROP_01` is decoded from `frontend.big` and presented through D3D9 plus recovered Render2D dependencies** | Runtime archive/texture ownership and the complete Lionhead parent renderer remain. |
 | First recovered retail progress setup | **Coordinator, setup, 0x88-byte constructor, retained owner, counted getter, active-state query, and text-mode transition are connected; the primary/fallback text-bank selector is recovered** | Populate the retail bank owners, integrate the corrected 418-byte `StartProgress`, and recover texture initialization. |
 | Retail-rendered frame/frontend | **The 489-byte `RenderProgress` boundary is mapped and 15/17 direct dependencies are retail matches** | Recover the 5,101-byte retail-display builder and 3,344-byte 2D draw-list submitter, then replace the GDI bridge with the runtime render/present loop. |
-| Retail intro video | **Farther than the first renderer frame** | Add the movie/Bink ownership and decode path, timing, audio, and frame presentation after renderer/display initialization. |
+| First retail video | **Runnable now with `--retail-video`; `=lionhead`, `=attract`, and `=intro` select later shipped movies.** | Playback uses a narrow DirectShow bridge. Recover retail `CVideoSys`/`CMovie` ownership and sequencing before calling it the native movie path. |
 
 The “actual image” milestone is therefore reached, but “the game is rendering” is not. Retail
 inspection and a reviewed Ghidra boundary repair establish one 418-byte
 `StartProgress @ 0x00499AA0` function through `0x00499C41`; the former
 `0x00499AAD` catalog row was a false mid-function start and is now excluded
-reproducibly. The nearest honest engine milestone remains the game's progress display and its texture consumers, not the
-intro movie or interactive menu. That is not one or two functions away: only two of ten GFMain
+reproducibly. The nearest honest engine milestone remains the game's complete renderer and
+interactive frontend rather than the now-proven sidecar movie path. That is not one or two functions away: only two of ten GFMain
 integration phases are callable, even though 40 of its 257 direct call sites and 21 of Phase 3's
 34 sites are already proven. These dependency counts are more informative than converting them
 into a date estimate.
