@@ -106,10 +106,23 @@ This closes the reverse-engineering gap around the native frame handoff. The
 RGB24-to-A8R8G8B8 and RGB24-to-A1R5G5B5 inner loops from
 `DoRenderSample` now compile as `FableConvertVideoRgb24Frame`; the visual
 behavior fixture proves both formats, source/destination row pitches, alpha,
-and untouched padding. The
-remaining work is reconstruction/integration: provide the statically linked
-DirectShow base-class surface and connect the recovered sample conversion to
-the existing reconstructed D3D texture lifecycle.
+and untouched padding.
+
+The base-renderer dependency is resolved too. Microsoft’s MIT-licensed
+DirectShow base classes at pinned Windows-classic-samples commit
+`77f217b3f89d4dac7864a62cc91ff7b569f26a50` compile cleanly with the
+project’s VC7.1 + Windows SDK toolchain. The compiled
+`CBaseVideoRenderer` is exactly `0x160` bytes—the exact prefix extent observed
+before the first `CTextureRenderer` field at `+0x160` in retail.
+`rebuild/build_directshow_baseclasses.ps1 -InstallSource` reproduces the
+31-source static library and fails unless that layout invariant holds. A real
+VC7.1 subclass with the recovered fields at `+0x160` through `+0x17C`
+constructs successfully and is exactly `0x180` bytes, matching retail’s
+allocation exactly.
+
+The remaining work is reconstruction/integration: derive the retail subclass
+on that now-proven base and connect the recovered sample conversion to the
+existing reconstructed D3D texture lifecycle.
 
 ## Live compatibility closure
 

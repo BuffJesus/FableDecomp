@@ -29,6 +29,12 @@
   Its exact A8R8G8B8/A1R5G5B5 conversion core is now live and behavior-tested
   as `FableConvertVideoRgb24Frame`; the DirectShow base renderer and D3D
   texture/sample wiring remain.
+- The base-renderer dependency is no longer speculative:
+  `rebuild/build_directshow_baseclasses.ps1` pins Microsoft’s MIT-licensed
+  Windows classic-samples source, compiles all 31 base-class units with VC7.1,
+  produces `strmbase.lib`, and proves `sizeof(CBaseVideoRenderer) == 0x160`.
+  A constructed subclass with the recovered tail is exactly `0x180`, matching
+  both the retail field boundary and allocation.
   `ghidra_out/labels_video_system_recovery.tsv` preserves the 35-entry method
   and startup map. Exact recovered layout views now compile from
   `rebuild/include/fable_video_system.h`. Full notes:
