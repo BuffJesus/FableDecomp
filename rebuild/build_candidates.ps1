@@ -34442,6 +34442,895 @@ $catalog = @(
         TestSource = '00/9e/CQuickDrawTriInfoVector_Erase_009e15e0_test.cpp'
         PassPattern = 'FABLETLC_QUICKDRAW_ERASE_BEHAVIOR PASS'
     }
+    [pscustomobject]@{
+        Address = '0047b330'
+        Module = 'CThingSwitch'
+        Source = '00/47/CThingSwitch_vectordeletingdestructor_0047b330.cpp'
+        TestSource = '00/47/CThingSwitch_vectordeletingdestructor_0047b330_test.cpp'
+        PassPattern = 'AUTO_TINY_0047b330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00565870'
+        Module = 'CThingSwitch'
+        Source = '00/56/CThingSwitch_vectordeletingdestructor_00565870.cpp'
+        TestSource = '00/56/CThingSwitch_vectordeletingdestructor_00565870_test.cpp'
+        PassPattern = 'AUTO_TINY_00565870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00565bb0'
+        Module = 'CThingSwitch'
+        Source = '00/56/CThingSwitch_vectordeletingdestructor_00565bb0.cpp'
+        TestSource = '00/56/CThingSwitch_vectordeletingdestructor_00565bb0_test.cpp'
+        PassPattern = 'AUTO_TINY_00565bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006872b0'
+        Module = 'CThingSwitch'
+        Source = '00/68/CThingSwitch_vectordeletingdestructor_006872b0.cpp'
+        TestSource = '00/68/CThingSwitch_vectordeletingdestructor_006872b0_test.cpp'
+        PassPattern = 'AUTO_TINY_006872b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00695450'
+        Module = 'CThingSwitch'
+        Source = '00/69/CThingSwitch_vectordeletingdestructor_00695450.cpp'
+        TestSource = '00/69/CThingSwitch_vectordeletingdestructor_00695450_test.cpp'
+        PassPattern = 'AUTO_TINY_00695450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006956e0'
+        Module = 'CThingSwitch'
+        Source = '00/69/CThingSwitch_vectordeletingdestructor_006956e0.cpp'
+        TestSource = '00/69/CThingSwitch_vectordeletingdestructor_006956e0_test.cpp'
+        PassPattern = 'AUTO_TINY_006956e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070b320'
+        Module = 'CThingSwitch'
+        Source = '00/70/CThingSwitch_vectordeletingdestructor_0070b320.cpp'
+        TestSource = '00/70/CThingSwitch_vectordeletingdestructor_0070b320_test.cpp'
+        PassPattern = 'AUTO_TINY_0070b320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007190c0'
+        Module = 'CThingSwitch'
+        Source = '00/71/CThingSwitch_vectordeletingdestructor_007190c0.cpp'
+        TestSource = '00/71/CThingSwitch_vectordeletingdestructor_007190c0_test.cpp'
+        PassPattern = 'AUTO_TINY_007190c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00719120'
+        Module = 'CThingSwitch'
+        Source = '00/71/CThingSwitch_vectordeletingdestructor_00719120.cpp'
+        TestSource = '00/71/CThingSwitch_vectordeletingdestructor_00719120_test.cpp'
+        PassPattern = 'AUTO_TINY_00719120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073fe70'
+        Module = 'CThingSwitch'
+        Source = '00/73/CThingSwitch_vectordeletingdestructor_0073fe70.cpp'
+        TestSource = '00/73/CThingSwitch_vectordeletingdestructor_0073fe70_test.cpp'
+        PassPattern = 'AUTO_TINY_0073fe70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00741490'
+        Module = 'CThingSwitch'
+        Source = '00/74/CThingSwitch_vectordeletingdestructor_00741490.cpp'
+        TestSource = '00/74/CThingSwitch_vectordeletingdestructor_00741490_test.cpp'
+        PassPattern = 'AUTO_TINY_00741490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00741980'
+        Module = 'CThingSwitch'
+        Source = '00/74/CThingSwitch_vectordeletingdestructor_00741980.cpp'
+        TestSource = '00/74/CThingSwitch_vectordeletingdestructor_00741980_test.cpp'
+        PassPattern = 'AUTO_TINY_00741980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00741a60'
+        Module = 'CThingSwitch'
+        Source = '00/74/CThingSwitch_vectordeletingdestructor_00741a60.cpp'
+        TestSource = '00/74/CThingSwitch_vectordeletingdestructor_00741a60_test.cpp'
+        PassPattern = 'AUTO_TINY_00741a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00741c10'
+        Module = 'CThingSwitch'
+        Source = '00/74/CThingSwitch_vectordeletingdestructor_00741c10.cpp'
+        TestSource = '00/74/CThingSwitch_vectordeletingdestructor_00741c10_test.cpp'
+        PassPattern = 'AUTO_TINY_00741c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007692a0'
+        Module = 'CThingSwitch'
+        Source = '00/76/CThingSwitch_vectordeletingdestructor_007692a0.cpp'
+        TestSource = '00/76/CThingSwitch_vectordeletingdestructor_007692a0_test.cpp'
+        PassPattern = 'AUTO_TINY_007692a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076d900'
+        Module = 'CThingSwitch'
+        Source = '00/76/CThingSwitch_vectordeletingdestructor_0076d900.cpp'
+        TestSource = '00/76/CThingSwitch_vectordeletingdestructor_0076d900_test.cpp'
+        PassPattern = 'AUTO_TINY_0076d900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007811d0'
+        Module = 'CThingSwitch'
+        Source = '00/78/CThingSwitch_vectordeletingdestructor_007811d0.cpp'
+        TestSource = '00/78/CThingSwitch_vectordeletingdestructor_007811d0_test.cpp'
+        PassPattern = 'AUTO_TINY_007811d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bab30'
+        Module = 'CThingSwitch'
+        Source = '00/7b/CThingSwitch_vectordeletingdestructor_007bab30.cpp'
+        TestSource = '00/7b/CThingSwitch_vectordeletingdestructor_007bab30_test.cpp'
+        PassPattern = 'AUTO_TINY_007bab30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bb630'
+        Module = 'CThingSwitch'
+        Source = '00/7b/CThingSwitch_vectordeletingdestructor_007bb630.cpp'
+        TestSource = '00/7b/CThingSwitch_vectordeletingdestructor_007bb630_test.cpp'
+        PassPattern = 'AUTO_TINY_007bb630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e1c30'
+        Module = 'CThingSwitch'
+        Source = '00/7e/CThingSwitch_vectordeletingdestructor_007e1c30.cpp'
+        TestSource = '00/7e/CThingSwitch_vectordeletingdestructor_007e1c30_test.cpp'
+        PassPattern = 'AUTO_TINY_007e1c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e5920'
+        Module = 'CThingSwitch'
+        Source = '00/7e/CThingSwitch_vectordeletingdestructor_007e5920.cpp'
+        TestSource = '00/7e/CThingSwitch_vectordeletingdestructor_007e5920_test.cpp'
+        PassPattern = 'AUTO_TINY_007e5920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7e40'
+        Module = 'CThingSwitch'
+        Source = '00/7e/CThingSwitch_vectordeletingdestructor_007e7e40.cpp'
+        TestSource = '00/7e/CThingSwitch_vectordeletingdestructor_007e7e40_test.cpp'
+        PassPattern = 'AUTO_TINY_007e7e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00905440'
+        Module = 'CThingSwitch'
+        Source = '00/90/CThingSwitch_vectordeletingdestructor_00905440.cpp'
+        TestSource = '00/90/CThingSwitch_vectordeletingdestructor_00905440_test.cpp'
+        PassPattern = 'AUTO_TINY_00905440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00918ee0'
+        Module = 'CThingSwitch'
+        Source = '00/91/CThingSwitch_vectordeletingdestructor_00918ee0.cpp'
+        TestSource = '00/91/CThingSwitch_vectordeletingdestructor_00918ee0_test.cpp'
+        PassPattern = 'AUTO_TINY_00918ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e7bd0'
+        Module = 'CThingSwitch'
+        Source = '00/9e/CThingSwitch_vectordeletingdestructor_009e7bd0.cpp'
+        TestSource = '00/9e/CThingSwitch_vectordeletingdestructor_009e7bd0_test.cpp'
+        PassPattern = 'AUTO_TINY_009e7bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a437b0'
+        Module = 'CThingSwitch'
+        Source = '00/a4/CThingSwitch_vectordeletingdestructor_00a437b0.cpp'
+        TestSource = '00/a4/CThingSwitch_vectordeletingdestructor_00a437b0_test.cpp'
+        PassPattern = 'AUTO_TINY_00a437b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a8e040'
+        Module = 'CThingSwitch'
+        Source = '00/a8/CThingSwitch_vectordeletingdestructor_00a8e040.cpp'
+        TestSource = '00/a8/CThingSwitch_vectordeletingdestructor_00a8e040_test.cpp'
+        PassPattern = 'AUTO_TINY_00a8e040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac1960'
+        Module = 'CThingSwitch'
+        Source = '00/ac/CThingSwitch_vectordeletingdestructor_00ac1960.cpp'
+        TestSource = '00/ac/CThingSwitch_vectordeletingdestructor_00ac1960_test.cpp'
+        PassPattern = 'AUTO_TINY_00ac1960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af1bd0'
+        Module = 'CThingSwitch'
+        Source = '00/af/CThingSwitch_vectordeletingdestructor_00af1bd0.cpp'
+        TestSource = '00/af/CThingSwitch_vectordeletingdestructor_00af1bd0_test.cpp'
+        PassPattern = 'AUTO_TINY_00af1bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b15b20'
+        Module = 'CThingSwitch'
+        Source = '00/b1/CThingSwitch_vectordeletingdestructor_00b15b20.cpp'
+        TestSource = '00/b1/CThingSwitch_vectordeletingdestructor_00b15b20_test.cpp'
+        PassPattern = 'AUTO_TINY_00b15b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce0ec0'
+        Module = 'CThingSwitch'
+        Source = '00/ce/CThingSwitch_vectordeletingdestructor_00ce0ec0.cpp'
+        TestSource = '00/ce/CThingSwitch_vectordeletingdestructor_00ce0ec0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ce0ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce1200'
+        Module = 'CThingSwitch'
+        Source = '00/ce/CThingSwitch_vectordeletingdestructor_00ce1200.cpp'
+        TestSource = '00/ce/CThingSwitch_vectordeletingdestructor_00ce1200_test.cpp'
+        PassPattern = 'AUTO_TINY_00ce1200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce1250'
+        Module = 'CThingSwitch'
+        Source = '00/ce/CThingSwitch_vectordeletingdestructor_00ce1250.cpp'
+        TestSource = '00/ce/CThingSwitch_vectordeletingdestructor_00ce1250_test.cpp'
+        PassPattern = 'AUTO_TINY_00ce1250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cef9a0'
+        Module = 'CThingSwitch'
+        Source = '00/ce/CThingSwitch_vectordeletingdestructor_00cef9a0.cpp'
+        TestSource = '00/ce/CThingSwitch_vectordeletingdestructor_00cef9a0_test.cpp'
+        PassPattern = 'AUTO_TINY_00cef9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d032c0'
+        Module = 'CThingSwitch'
+        Source = '00/d0/CThingSwitch_vectordeletingdestructor_00d032c0.cpp'
+        TestSource = '00/d0/CThingSwitch_vectordeletingdestructor_00d032c0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d032c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d17310'
+        Module = 'CThingSwitch'
+        Source = '00/d1/CThingSwitch_vectordeletingdestructor_00d17310.cpp'
+        TestSource = '00/d1/CThingSwitch_vectordeletingdestructor_00d17310_test.cpp'
+        PassPattern = 'AUTO_TINY_00d17310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d20760'
+        Module = 'CThingSwitch'
+        Source = '00/d2/CThingSwitch_vectordeletingdestructor_00d20760.cpp'
+        TestSource = '00/d2/CThingSwitch_vectordeletingdestructor_00d20760_test.cpp'
+        PassPattern = 'AUTO_TINY_00d20760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d26160'
+        Module = 'CThingSwitch'
+        Source = '00/d2/CThingSwitch_vectordeletingdestructor_00d26160.cpp'
+        TestSource = '00/d2/CThingSwitch_vectordeletingdestructor_00d26160_test.cpp'
+        PassPattern = 'AUTO_TINY_00d26160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2d700'
+        Module = 'CThingSwitch'
+        Source = '00/d2/CThingSwitch_vectordeletingdestructor_00d2d700.cpp'
+        TestSource = '00/d2/CThingSwitch_vectordeletingdestructor_00d2d700_test.cpp'
+        PassPattern = 'AUTO_TINY_00d2d700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2d900'
+        Module = 'CThingSwitch'
+        Source = '00/d2/CThingSwitch_vectordeletingdestructor_00d2d900.cpp'
+        TestSource = '00/d2/CThingSwitch_vectordeletingdestructor_00d2d900_test.cpp'
+        PassPattern = 'AUTO_TINY_00d2d900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d30000'
+        Module = 'CThingSwitch'
+        Source = '00/d3/CThingSwitch_vectordeletingdestructor_00d30000.cpp'
+        TestSource = '00/d3/CThingSwitch_vectordeletingdestructor_00d30000_test.cpp'
+        PassPattern = 'AUTO_TINY_00d30000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d34440'
+        Module = 'CThingSwitch'
+        Source = '00/d3/CThingSwitch_vectordeletingdestructor_00d34440.cpp'
+        TestSource = '00/d3/CThingSwitch_vectordeletingdestructor_00d34440_test.cpp'
+        PassPattern = 'AUTO_TINY_00d34440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d38cf0'
+        Module = 'CThingSwitch'
+        Source = '00/d3/CThingSwitch_vectordeletingdestructor_00d38cf0.cpp'
+        TestSource = '00/d3/CThingSwitch_vectordeletingdestructor_00d38cf0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d38cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d50c30'
+        Module = 'CThingSwitch'
+        Source = '00/d5/CThingSwitch_vectordeletingdestructor_00d50c30.cpp'
+        TestSource = '00/d5/CThingSwitch_vectordeletingdestructor_00d50c30_test.cpp'
+        PassPattern = 'AUTO_TINY_00d50c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d52470'
+        Module = 'CThingSwitch'
+        Source = '00/d5/CThingSwitch_vectordeletingdestructor_00d52470.cpp'
+        TestSource = '00/d5/CThingSwitch_vectordeletingdestructor_00d52470_test.cpp'
+        PassPattern = 'AUTO_TINY_00d52470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d58460'
+        Module = 'CThingSwitch'
+        Source = '00/d5/CThingSwitch_vectordeletingdestructor_00d58460.cpp'
+        TestSource = '00/d5/CThingSwitch_vectordeletingdestructor_00d58460_test.cpp'
+        PassPattern = 'AUTO_TINY_00d58460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d5ae40'
+        Module = 'CThingSwitch'
+        Source = '00/d5/CThingSwitch_vectordeletingdestructor_00d5ae40.cpp'
+        TestSource = '00/d5/CThingSwitch_vectordeletingdestructor_00d5ae40_test.cpp'
+        PassPattern = 'AUTO_TINY_00d5ae40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d64370'
+        Module = 'CThingSwitch'
+        Source = '00/d6/CThingSwitch_vectordeletingdestructor_00d64370.cpp'
+        TestSource = '00/d6/CThingSwitch_vectordeletingdestructor_00d64370_test.cpp'
+        PassPattern = 'AUTO_TINY_00d64370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d67240'
+        Module = 'CThingSwitch'
+        Source = '00/d6/CThingSwitch_vectordeletingdestructor_00d67240.cpp'
+        TestSource = '00/d6/CThingSwitch_vectordeletingdestructor_00d67240_test.cpp'
+        PassPattern = 'AUTO_TINY_00d67240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d68e70'
+        Module = 'CThingSwitch'
+        Source = '00/d6/CThingSwitch_vectordeletingdestructor_00d68e70.cpp'
+        TestSource = '00/d6/CThingSwitch_vectordeletingdestructor_00d68e70_test.cpp'
+        PassPattern = 'AUTO_TINY_00d68e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6b6f0'
+        Module = 'CThingSwitch'
+        Source = '00/d6/CThingSwitch_vectordeletingdestructor_00d6b6f0.cpp'
+        TestSource = '00/d6/CThingSwitch_vectordeletingdestructor_00d6b6f0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d6b6f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d72b40'
+        Module = 'CThingSwitch'
+        Source = '00/d7/CThingSwitch_vectordeletingdestructor_00d72b40.cpp'
+        TestSource = '00/d7/CThingSwitch_vectordeletingdestructor_00d72b40_test.cpp'
+        PassPattern = 'AUTO_TINY_00d72b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7aa00'
+        Module = 'CThingSwitch'
+        Source = '00/d7/CThingSwitch_vectordeletingdestructor_00d7aa00.cpp'
+        TestSource = '00/d7/CThingSwitch_vectordeletingdestructor_00d7aa00_test.cpp'
+        PassPattern = 'AUTO_TINY_00d7aa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7c440'
+        Module = 'CThingSwitch'
+        Source = '00/d7/CThingSwitch_vectordeletingdestructor_00d7c440.cpp'
+        TestSource = '00/d7/CThingSwitch_vectordeletingdestructor_00d7c440_test.cpp'
+        PassPattern = 'AUTO_TINY_00d7c440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d80c00'
+        Module = 'CThingSwitch'
+        Source = '00/d8/CThingSwitch_vectordeletingdestructor_00d80c00.cpp'
+        TestSource = '00/d8/CThingSwitch_vectordeletingdestructor_00d80c00_test.cpp'
+        PassPattern = 'AUTO_TINY_00d80c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d82370'
+        Module = 'CThingSwitch'
+        Source = '00/d8/CThingSwitch_vectordeletingdestructor_00d82370.cpp'
+        TestSource = '00/d8/CThingSwitch_vectordeletingdestructor_00d82370_test.cpp'
+        PassPattern = 'AUTO_TINY_00d82370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d84600'
+        Module = 'CThingSwitch'
+        Source = '00/d8/CThingSwitch_vectordeletingdestructor_00d84600.cpp'
+        TestSource = '00/d8/CThingSwitch_vectordeletingdestructor_00d84600_test.cpp'
+        PassPattern = 'AUTO_TINY_00d84600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d84b20'
+        Module = 'CThingSwitch'
+        Source = '00/d8/CThingSwitch_vectordeletingdestructor_00d84b20.cpp'
+        TestSource = '00/d8/CThingSwitch_vectordeletingdestructor_00d84b20_test.cpp'
+        PassPattern = 'AUTO_TINY_00d84b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d872a0'
+        Module = 'CThingSwitch'
+        Source = '00/d8/CThingSwitch_vectordeletingdestructor_00d872a0.cpp'
+        TestSource = '00/d8/CThingSwitch_vectordeletingdestructor_00d872a0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d872a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d896e0'
+        Module = 'CThingSwitch'
+        Source = '00/d8/CThingSwitch_vectordeletingdestructor_00d896e0.cpp'
+        TestSource = '00/d8/CThingSwitch_vectordeletingdestructor_00d896e0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d896e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d91710'
+        Module = 'CThingSwitch'
+        Source = '00/d9/CThingSwitch_vectordeletingdestructor_00d91710.cpp'
+        TestSource = '00/d9/CThingSwitch_vectordeletingdestructor_00d91710_test.cpp'
+        PassPattern = 'AUTO_TINY_00d91710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9dac0'
+        Module = 'CThingSwitch'
+        Source = '00/d9/CThingSwitch_vectordeletingdestructor_00d9dac0.cpp'
+        TestSource = '00/d9/CThingSwitch_vectordeletingdestructor_00d9dac0_test.cpp'
+        PassPattern = 'AUTO_TINY_00d9dac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00daabd0'
+        Module = 'CThingSwitch'
+        Source = '00/da/CThingSwitch_vectordeletingdestructor_00daabd0.cpp'
+        TestSource = '00/da/CThingSwitch_vectordeletingdestructor_00daabd0_test.cpp'
+        PassPattern = 'AUTO_TINY_00daabd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db8680'
+        Module = 'CThingSwitch'
+        Source = '00/db/CThingSwitch_vectordeletingdestructor_00db8680.cpp'
+        TestSource = '00/db/CThingSwitch_vectordeletingdestructor_00db8680_test.cpp'
+        PassPattern = 'AUTO_TINY_00db8680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc02d0'
+        Module = 'CThingSwitch'
+        Source = '00/dc/CThingSwitch_vectordeletingdestructor_00dc02d0.cpp'
+        TestSource = '00/dc/CThingSwitch_vectordeletingdestructor_00dc02d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00dc02d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc2540'
+        Module = 'CThingSwitch'
+        Source = '00/dc/CThingSwitch_vectordeletingdestructor_00dc2540.cpp'
+        TestSource = '00/dc/CThingSwitch_vectordeletingdestructor_00dc2540_test.cpp'
+        PassPattern = 'AUTO_TINY_00dc2540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc8860'
+        Module = 'CThingSwitch'
+        Source = '00/dc/CThingSwitch_vectordeletingdestructor_00dc8860.cpp'
+        TestSource = '00/dc/CThingSwitch_vectordeletingdestructor_00dc8860_test.cpp'
+        PassPattern = 'AUTO_TINY_00dc8860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcf8f0'
+        Module = 'CThingSwitch'
+        Source = '00/dc/CThingSwitch_vectordeletingdestructor_00dcf8f0.cpp'
+        TestSource = '00/dc/CThingSwitch_vectordeletingdestructor_00dcf8f0_test.cpp'
+        PassPattern = 'AUTO_TINY_00dcf8f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddc950'
+        Module = 'CThingSwitch'
+        Source = '00/dd/CThingSwitch_vectordeletingdestructor_00ddc950.cpp'
+        TestSource = '00/dd/CThingSwitch_vectordeletingdestructor_00ddc950_test.cpp'
+        PassPattern = 'AUTO_TINY_00ddc950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddf060'
+        Module = 'CThingSwitch'
+        Source = '00/dd/CThingSwitch_vectordeletingdestructor_00ddf060.cpp'
+        TestSource = '00/dd/CThingSwitch_vectordeletingdestructor_00ddf060_test.cpp'
+        PassPattern = 'AUTO_TINY_00ddf060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00def380'
+        Module = 'CThingSwitch'
+        Source = '00/de/CThingSwitch_vectordeletingdestructor_00def380.cpp'
+        TestSource = '00/de/CThingSwitch_vectordeletingdestructor_00def380_test.cpp'
+        PassPattern = 'AUTO_TINY_00def380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00def730'
+        Module = 'CThingSwitch'
+        Source = '00/de/CThingSwitch_vectordeletingdestructor_00def730.cpp'
+        TestSource = '00/de/CThingSwitch_vectordeletingdestructor_00def730_test.cpp'
+        PassPattern = 'AUTO_TINY_00def730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df36b0'
+        Module = 'CThingSwitch'
+        Source = '00/df/CThingSwitch_vectordeletingdestructor_00df36b0.cpp'
+        TestSource = '00/df/CThingSwitch_vectordeletingdestructor_00df36b0_test.cpp'
+        PassPattern = 'AUTO_TINY_00df36b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df4bb0'
+        Module = 'CThingSwitch'
+        Source = '00/df/CThingSwitch_vectordeletingdestructor_00df4bb0.cpp'
+        TestSource = '00/df/CThingSwitch_vectordeletingdestructor_00df4bb0_test.cpp'
+        PassPattern = 'AUTO_TINY_00df4bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df9b50'
+        Module = 'CThingSwitch'
+        Source = '00/df/CThingSwitch_vectordeletingdestructor_00df9b50.cpp'
+        TestSource = '00/df/CThingSwitch_vectordeletingdestructor_00df9b50_test.cpp'
+        PassPattern = 'AUTO_TINY_00df9b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfa080'
+        Module = 'CThingSwitch'
+        Source = '00/df/CThingSwitch_vectordeletingdestructor_00dfa080.cpp'
+        TestSource = '00/df/CThingSwitch_vectordeletingdestructor_00dfa080_test.cpp'
+        PassPattern = 'AUTO_TINY_00dfa080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfc260'
+        Module = 'CThingSwitch'
+        Source = '00/df/CThingSwitch_vectordeletingdestructor_00dfc260.cpp'
+        TestSource = '00/df/CThingSwitch_vectordeletingdestructor_00dfc260_test.cpp'
+        PassPattern = 'AUTO_TINY_00dfc260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0afb0'
+        Module = 'CThingSwitch'
+        Source = '00/e0/CThingSwitch_vectordeletingdestructor_00e0afb0.cpp'
+        TestSource = '00/e0/CThingSwitch_vectordeletingdestructor_00e0afb0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e0afb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0e730'
+        Module = 'CThingSwitch'
+        Source = '00/e0/CThingSwitch_vectordeletingdestructor_00e0e730.cpp'
+        TestSource = '00/e0/CThingSwitch_vectordeletingdestructor_00e0e730_test.cpp'
+        PassPattern = 'AUTO_TINY_00e0e730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0e7b0'
+        Module = 'CThingSwitch'
+        Source = '00/e0/CThingSwitch_vectordeletingdestructor_00e0e7b0.cpp'
+        TestSource = '00/e0/CThingSwitch_vectordeletingdestructor_00e0e7b0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e0e7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e18380'
+        Module = 'CThingSwitch'
+        Source = '00/e1/CThingSwitch_vectordeletingdestructor_00e18380.cpp'
+        TestSource = '00/e1/CThingSwitch_vectordeletingdestructor_00e18380_test.cpp'
+        PassPattern = 'AUTO_TINY_00e18380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e19530'
+        Module = 'CThingSwitch'
+        Source = '00/e1/CThingSwitch_vectordeletingdestructor_00e19530.cpp'
+        TestSource = '00/e1/CThingSwitch_vectordeletingdestructor_00e19530_test.cpp'
+        PassPattern = 'AUTO_TINY_00e19530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1c0c0'
+        Module = 'CThingSwitch'
+        Source = '00/e1/CThingSwitch_vectordeletingdestructor_00e1c0c0.cpp'
+        TestSource = '00/e1/CThingSwitch_vectordeletingdestructor_00e1c0c0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e1c0c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1f7b0'
+        Module = 'CThingSwitch'
+        Source = '00/e1/CThingSwitch_vectordeletingdestructor_00e1f7b0.cpp'
+        TestSource = '00/e1/CThingSwitch_vectordeletingdestructor_00e1f7b0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e1f7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e29290'
+        Module = 'CThingSwitch'
+        Source = '00/e2/CThingSwitch_vectordeletingdestructor_00e29290.cpp'
+        TestSource = '00/e2/CThingSwitch_vectordeletingdestructor_00e29290_test.cpp'
+        PassPattern = 'AUTO_TINY_00e29290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2a2f0'
+        Module = 'CThingSwitch'
+        Source = '00/e2/CThingSwitch_vectordeletingdestructor_00e2a2f0.cpp'
+        TestSource = '00/e2/CThingSwitch_vectordeletingdestructor_00e2a2f0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e2a2f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2ab30'
+        Module = 'CThingSwitch'
+        Source = '00/e2/CThingSwitch_vectordeletingdestructor_00e2ab30.cpp'
+        TestSource = '00/e2/CThingSwitch_vectordeletingdestructor_00e2ab30_test.cpp'
+        PassPattern = 'AUTO_TINY_00e2ab30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2ea90'
+        Module = 'CThingSwitch'
+        Source = '00/e2/CThingSwitch_vectordeletingdestructor_00e2ea90.cpp'
+        TestSource = '00/e2/CThingSwitch_vectordeletingdestructor_00e2ea90_test.cpp'
+        PassPattern = 'AUTO_TINY_00e2ea90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e47770'
+        Module = 'CThingSwitch'
+        Source = '00/e4/CThingSwitch_vectordeletingdestructor_00e47770.cpp'
+        TestSource = '00/e4/CThingSwitch_vectordeletingdestructor_00e47770_test.cpp'
+        PassPattern = 'AUTO_TINY_00e47770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e54230'
+        Module = 'CThingSwitch'
+        Source = '00/e5/CThingSwitch_vectordeletingdestructor_00e54230.cpp'
+        TestSource = '00/e5/CThingSwitch_vectordeletingdestructor_00e54230_test.cpp'
+        PassPattern = 'AUTO_TINY_00e54230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5d080'
+        Module = 'CThingSwitch'
+        Source = '00/e5/CThingSwitch_vectordeletingdestructor_00e5d080.cpp'
+        TestSource = '00/e5/CThingSwitch_vectordeletingdestructor_00e5d080_test.cpp'
+        PassPattern = 'AUTO_TINY_00e5d080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5d110'
+        Module = 'CThingSwitch'
+        Source = '00/e5/CThingSwitch_vectordeletingdestructor_00e5d110.cpp'
+        TestSource = '00/e5/CThingSwitch_vectordeletingdestructor_00e5d110_test.cpp'
+        PassPattern = 'AUTO_TINY_00e5d110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6b3d0'
+        Module = 'CThingSwitch'
+        Source = '00/e6/CThingSwitch_vectordeletingdestructor_00e6b3d0.cpp'
+        TestSource = '00/e6/CThingSwitch_vectordeletingdestructor_00e6b3d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e6b3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e74d40'
+        Module = 'CThingSwitch'
+        Source = '00/e7/CThingSwitch_vectordeletingdestructor_00e74d40.cpp'
+        TestSource = '00/e7/CThingSwitch_vectordeletingdestructor_00e74d40_test.cpp'
+        PassPattern = 'AUTO_TINY_00e74d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7eec0'
+        Module = 'CThingSwitch'
+        Source = '00/e7/CThingSwitch_vectordeletingdestructor_00e7eec0.cpp'
+        TestSource = '00/e7/CThingSwitch_vectordeletingdestructor_00e7eec0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e7eec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e83d20'
+        Module = 'CThingSwitch'
+        Source = '00/e8/CThingSwitch_vectordeletingdestructor_00e83d20.cpp'
+        TestSource = '00/e8/CThingSwitch_vectordeletingdestructor_00e83d20_test.cpp'
+        PassPattern = 'AUTO_TINY_00e83d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e90bb0'
+        Module = 'CThingSwitch'
+        Source = '00/e9/CThingSwitch_vectordeletingdestructor_00e90bb0.cpp'
+        TestSource = '00/e9/CThingSwitch_vectordeletingdestructor_00e90bb0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e90bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e960e0'
+        Module = 'CThingSwitch'
+        Source = '00/e9/CThingSwitch_vectordeletingdestructor_00e960e0.cpp'
+        TestSource = '00/e9/CThingSwitch_vectordeletingdestructor_00e960e0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e960e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9a240'
+        Module = 'CThingSwitch'
+        Source = '00/e9/CThingSwitch_vectordeletingdestructor_00e9a240.cpp'
+        TestSource = '00/e9/CThingSwitch_vectordeletingdestructor_00e9a240_test.cpp'
+        PassPattern = 'AUTO_TINY_00e9a240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9fba0'
+        Module = 'CThingSwitch'
+        Source = '00/e9/CThingSwitch_vectordeletingdestructor_00e9fba0.cpp'
+        TestSource = '00/e9/CThingSwitch_vectordeletingdestructor_00e9fba0_test.cpp'
+        PassPattern = 'AUTO_TINY_00e9fba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea1060'
+        Module = 'CThingSwitch'
+        Source = '00/ea/CThingSwitch_vectordeletingdestructor_00ea1060.cpp'
+        TestSource = '00/ea/CThingSwitch_vectordeletingdestructor_00ea1060_test.cpp'
+        PassPattern = 'AUTO_TINY_00ea1060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea86c0'
+        Module = 'CThingSwitch'
+        Source = '00/ea/CThingSwitch_vectordeletingdestructor_00ea86c0.cpp'
+        TestSource = '00/ea/CThingSwitch_vectordeletingdestructor_00ea86c0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ea86c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ead9c0'
+        Module = 'CThingSwitch'
+        Source = '00/ea/CThingSwitch_vectordeletingdestructor_00ead9c0.cpp'
+        TestSource = '00/ea/CThingSwitch_vectordeletingdestructor_00ead9c0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ead9c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb62b0'
+        Module = 'CThingSwitch'
+        Source = '00/eb/CThingSwitch_vectordeletingdestructor_00eb62b0.cpp'
+        TestSource = '00/eb/CThingSwitch_vectordeletingdestructor_00eb62b0_test.cpp'
+        PassPattern = 'AUTO_TINY_00eb62b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb62e0'
+        Module = 'CThingSwitch'
+        Source = '00/eb/CThingSwitch_vectordeletingdestructor_00eb62e0.cpp'
+        TestSource = '00/eb/CThingSwitch_vectordeletingdestructor_00eb62e0_test.cpp'
+        PassPattern = 'AUTO_TINY_00eb62e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec1180'
+        Module = 'CThingSwitch'
+        Source = '00/ec/CThingSwitch_vectordeletingdestructor_00ec1180.cpp'
+        TestSource = '00/ec/CThingSwitch_vectordeletingdestructor_00ec1180_test.cpp'
+        PassPattern = 'AUTO_TINY_00ec1180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec1750'
+        Module = 'CThingSwitch'
+        Source = '00/ec/CThingSwitch_vectordeletingdestructor_00ec1750.cpp'
+        TestSource = '00/ec/CThingSwitch_vectordeletingdestructor_00ec1750_test.cpp'
+        PassPattern = 'AUTO_TINY_00ec1750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec29c0'
+        Module = 'CThingSwitch'
+        Source = '00/ec/CThingSwitch_vectordeletingdestructor_00ec29c0.cpp'
+        TestSource = '00/ec/CThingSwitch_vectordeletingdestructor_00ec29c0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ec29c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed0e30'
+        Module = 'CThingSwitch'
+        Source = '00/ed/CThingSwitch_vectordeletingdestructor_00ed0e30.cpp'
+        TestSource = '00/ed/CThingSwitch_vectordeletingdestructor_00ed0e30_test.cpp'
+        PassPattern = 'AUTO_TINY_00ed0e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed2a20'
+        Module = 'CThingSwitch'
+        Source = '00/ed/CThingSwitch_vectordeletingdestructor_00ed2a20.cpp'
+        TestSource = '00/ed/CThingSwitch_vectordeletingdestructor_00ed2a20_test.cpp'
+        PassPattern = 'AUTO_TINY_00ed2a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed4a10'
+        Module = 'CThingSwitch'
+        Source = '00/ed/CThingSwitch_vectordeletingdestructor_00ed4a10.cpp'
+        TestSource = '00/ed/CThingSwitch_vectordeletingdestructor_00ed4a10_test.cpp'
+        PassPattern = 'AUTO_TINY_00ed4a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed54a0'
+        Module = 'CThingSwitch'
+        Source = '00/ed/CThingSwitch_vectordeletingdestructor_00ed54a0.cpp'
+        TestSource = '00/ed/CThingSwitch_vectordeletingdestructor_00ed54a0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ed54a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edd030'
+        Module = 'CThingSwitch'
+        Source = '00/ed/CThingSwitch_vectordeletingdestructor_00edd030.cpp'
+        TestSource = '00/ed/CThingSwitch_vectordeletingdestructor_00edd030_test.cpp'
+        PassPattern = 'AUTO_TINY_00edd030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee1be0'
+        Module = 'CThingSwitch'
+        Source = '00/ee/CThingSwitch_vectordeletingdestructor_00ee1be0.cpp'
+        TestSource = '00/ee/CThingSwitch_vectordeletingdestructor_00ee1be0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ee1be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee76c0'
+        Module = 'CThingSwitch'
+        Source = '00/ee/CThingSwitch_vectordeletingdestructor_00ee76c0.cpp'
+        TestSource = '00/ee/CThingSwitch_vectordeletingdestructor_00ee76c0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ee76c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef51d0'
+        Module = 'CThingSwitch'
+        Source = '00/ef/CThingSwitch_vectordeletingdestructor_00ef51d0.cpp'
+        TestSource = '00/ef/CThingSwitch_vectordeletingdestructor_00ef51d0_test.cpp'
+        PassPattern = 'AUTO_TINY_00ef51d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efa390'
+        Module = 'CThingSwitch'
+        Source = '00/ef/CThingSwitch_vectordeletingdestructor_00efa390.cpp'
+        TestSource = '00/ef/CThingSwitch_vectordeletingdestructor_00efa390_test.cpp'
+        PassPattern = 'AUTO_TINY_00efa390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efaf00'
+        Module = 'CThingSwitch'
+        Source = '00/ef/CThingSwitch_vectordeletingdestructor_00efaf00.cpp'
+        TestSource = '00/ef/CThingSwitch_vectordeletingdestructor_00efaf00_test.cpp'
+        PassPattern = 'AUTO_TINY_00efaf00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efb5e0'
+        Module = 'CThingSwitch'
+        Source = '00/ef/CThingSwitch_vectordeletingdestructor_00efb5e0.cpp'
+        TestSource = '00/ef/CThingSwitch_vectordeletingdestructor_00efb5e0_test.cpp'
+        PassPattern = 'AUTO_TINY_00efb5e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efbb40'
+        Module = 'CThingSwitch'
+        Source = '00/ef/CThingSwitch_vectordeletingdestructor_00efbb40.cpp'
+        TestSource = '00/ef/CThingSwitch_vectordeletingdestructor_00efbb40_test.cpp'
+        PassPattern = 'AUTO_TINY_00efbb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc100'
+        Module = 'CThingSwitch'
+        Source = '00/ef/CThingSwitch_vectordeletingdestructor_00efc100.cpp'
+        TestSource = '00/ef/CThingSwitch_vectordeletingdestructor_00efc100_test.cpp'
+        PassPattern = 'AUTO_TINY_00efc100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efdc10'
+        Module = 'CThingSwitch'
+        Source = '00/ef/CThingSwitch_vectordeletingdestructor_00efdc10.cpp'
+        TestSource = '00/ef/CThingSwitch_vectordeletingdestructor_00efdc10_test.cpp'
+        PassPattern = 'AUTO_TINY_00efdc10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efefd0'
+        Module = 'CThingSwitch'
+        Source = '00/ef/CThingSwitch_vectordeletingdestructor_00efefd0.cpp'
+        TestSource = '00/ef/CThingSwitch_vectordeletingdestructor_00efefd0_test.cpp'
+        PassPattern = 'AUTO_TINY_00efefd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff740'
+        Module = 'CThingSwitch'
+        Source = '00/ef/CThingSwitch_vectordeletingdestructor_00eff740.cpp'
+        TestSource = '00/ef/CThingSwitch_vectordeletingdestructor_00eff740_test.cpp'
+        PassPattern = 'AUTO_TINY_00eff740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f01e80'
+        Module = 'CThingSwitch'
+        Source = '00/f0/CThingSwitch_vectordeletingdestructor_00f01e80.cpp'
+        TestSource = '00/f0/CThingSwitch_vectordeletingdestructor_00f01e80_test.cpp'
+        PassPattern = 'AUTO_TINY_00f01e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f09ca0'
+        Module = 'CThingSwitch'
+        Source = '00/f0/CThingSwitch_vectordeletingdestructor_00f09ca0.cpp'
+        TestSource = '00/f0/CThingSwitch_vectordeletingdestructor_00f09ca0_test.cpp'
+        PassPattern = 'AUTO_TINY_00f09ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1ccb0'
+        Module = 'CThingSwitch'
+        Source = '00/f1/CThingSwitch_vectordeletingdestructor_00f1ccb0.cpp'
+        TestSource = '00/f1/CThingSwitch_vectordeletingdestructor_00f1ccb0_test.cpp'
+        PassPattern = 'AUTO_TINY_00f1ccb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
@@ -34450,6 +35339,7 @@ $requestedAddresses = @(
             $_.Trim().ToLowerInvariant().Replace('0x', '')
         } |
         Where-Object { $_ }
+
 )
 if ($requestedAddresses.Count -gt 0) {
     $catalogAddresses = @(

@@ -11,6 +11,8 @@ param(
 
     [switch]$VerifyBootToFrontend,
 
+    [switch]$VerifyMaximizedScale,
+
     [switch]$VerifyUpscaled,
 
     [switch]$OriginalVideo,
@@ -28,7 +30,7 @@ if (-not $Executable) {
 }
 $Executable = (Resolve-Path -LiteralPath $Executable).Path
 
-if ($RetailVideo) {
+if ($RetailVideo -or $VerifyMaximizedScale) {
     Add-Type -AssemblyName System.Drawing
     if (-not ('VisualSmokeNativeMethods' -as [type])) {
         Add-Type @'
@@ -46,11 +48,27 @@ public static class VisualSmokeNativeMethods
         public int Bottom;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Point
+    {
+        public int X;
+        public int Y;
+    }
+
     [DllImport("user32.dll")]
     public static extern bool GetWindowRect(IntPtr window, out Rect rectangle);
 
     [DllImport("user32.dll")]
+    public static extern bool GetClientRect(IntPtr window, out Rect rectangle);
+
+    [DllImport("user32.dll")]
+    public static extern bool ClientToScreen(IntPtr window, ref Point point);
+
+    [DllImport("user32.dll")]
     public static extern IntPtr GetWindow(IntPtr window, uint command);
+
+    [DllImport("user32.dll")]
+    public static extern bool ShowWindow(IntPtr window, int command);
 
     [DllImport("user32.dll")]
     public static extern bool PostMessage(
@@ -212,7 +230,8 @@ try {
             Send-EscapeKey
             Wait-ForMovieTitle (
                 '*Retail Boot Movies Complete - ' +
-                'Frontend Checkpoint Ready*'
+                'Frontend Checkpoint Ready - ' +
+                'Post-Movie Startup Ordered*'
             )
             if (
                 [VisualSmokeNativeMethods]::GetWindow(
@@ -225,6 +244,149 @@ try {
                     'but its DirectShow child window is still attached.'
                 )
             }
+        }
+    }
+
+    $maximizedScaleProof = ''
+    if ($VerifyMaximizedScale) {
+        if (
+            $RetailVideo -and
+            -not $VerifyBootToFrontend
+        ) {
+            throw (
+                '-VerifyMaximizedScale with retail video requires ' +
+                '-VerifyBootToFrontend.'
+            )
+        }
+        if (
+            -not [VisualSmokeNativeMethods]::ShowWindow(
+                $process.MainWindowHandle,
+                3
+            )
+        ) {
+            throw 'Could not maximize the visual checkpoint window.'
+        }
+        Start-Sleep -Milliseconds 900
+        $process.Refresh()
+
+        $client = New-Object VisualSmokeNativeMethods+Rect
+        $clientOrigin = New-Object VisualSmokeNativeMethods+Point
+        if (
+            -not [VisualSmokeNativeMethods]::GetClientRect(
+                $process.MainWindowHandle,
+                [ref]$client
+            ) -or
+            -not [VisualSmokeNativeMethods]::ClientToScreen(
+                $process.MainWindowHandle,
+                [ref]$clientOrigin
+            )
+        ) {
+            throw 'Could not resolve the maximized client rectangle.'
+        }
+        $clientWidth = $client.Right - $client.Left
+        $clientHeight = $client.Bottom - $client.Top
+        if ($clientWidth -le 0 -or $clientHeight -le 0) {
+            throw 'The maximized client rectangle is empty.'
+        }
+
+        $maximizedBitmap =
+            New-Object System.Drawing.Bitmap $clientWidth, $clientHeight
+        $maximizedGraphics =
+            [System.Drawing.Graphics]::FromImage($maximizedBitmap)
+        try {
+            $maximizedGraphics.CopyFromScreen(
+                $clientOrigin.X,
+                $clientOrigin.Y,
+                0,
+                0,
+                $maximizedBitmap.Size
+            )
+            $maximizedScreenshot = Join-Path (
+                Split-Path -Parent $Executable
+            ) 'maximized-scale-smoke.png'
+            $maximizedBitmap.Save(
+                $maximizedScreenshot,
+                [System.Drawing.Imaging.ImageFormat]::Png
+            )
+
+            $retailBackdrop = Join-Path (
+                Split-Path -Parent $Executable
+            ) 'frontend_backdrop_01.png'
+            if (-not (Test-Path -LiteralPath $retailBackdrop)) {
+                throw (
+                    'The maximized-scale gate requires the decoded retail ' +
+                    "backdrop: $retailBackdrop"
+                )
+            }
+            $expectedBitmap =
+                [System.Drawing.Bitmap]::FromFile($retailBackdrop)
+            try {
+                $drawWidth = $clientWidth
+                $drawHeight = [int](
+                    $clientWidth *
+                    $expectedBitmap.Height /
+                    $expectedBitmap.Width
+                )
+                if ($drawHeight -gt $clientHeight) {
+                    $drawHeight = $clientHeight
+                    $drawWidth = [int](
+                        $clientHeight *
+                        $expectedBitmap.Width /
+                        $expectedBitmap.Height
+                    )
+                }
+                $drawLeft = [int](($clientWidth - $drawWidth) / 2)
+                $drawTop = [int](($clientHeight - $drawHeight) / 2)
+                $totalError = 0
+                $channelCount = 0
+                foreach ($sampleY in @(190, 250, 320, 390, 450)) {
+                    foreach ($sampleX in @(60, 160, 280, 400, 520, 600)) {
+                        $actualX = [Math]::Min(
+                            $clientWidth - 1,
+                            $drawLeft + [int](
+                                ($sampleX + 0.5) *
+                                $drawWidth /
+                                $expectedBitmap.Width
+                            )
+                        )
+                        $actualY = [Math]::Min(
+                            $clientHeight - 1,
+                            $drawTop + [int](
+                                ($sampleY + 0.5) *
+                                $drawHeight /
+                                $expectedBitmap.Height
+                            )
+                        )
+                        $actual =
+                            $maximizedBitmap.GetPixel($actualX, $actualY)
+                        $expected =
+                            $expectedBitmap.GetPixel($sampleX, $sampleY)
+                        $totalError +=
+                            [Math]::Abs($actual.R - $expected.R) +
+                            [Math]::Abs($actual.G - $expected.G) +
+                            [Math]::Abs($actual.B - $expected.B)
+                        $channelCount += 3
+                    }
+                }
+                $meanChannelError =
+                    [Math]::Round($totalError / $channelCount, 2)
+                if ($meanChannelError -gt 32) {
+                    throw (
+                        'The maximized frontend does not match the expected ' +
+                        "aspect-fit scale (mean channel error " +
+                        "$meanChannelError)."
+                    )
+                }
+                $maximizedScaleProof = (
+                    " maximized=${clientWidth}x${clientHeight}" +
+                    " scale-error=$meanChannelError"
+                )
+            } finally {
+                $expectedBitmap.Dispose()
+            }
+        } finally {
+            $maximizedGraphics.Dispose()
+            $maximizedBitmap.Dispose()
         }
     }
 
@@ -370,7 +532,8 @@ try {
 
     Write-Output (
         "VISUAL_WINDOW_SMOKE PASS title=$title" +
-        "$frameProof movie=$Movie exit=$($process.ExitCode)"
+        "$frameProof$maximizedScaleProof movie=$Movie " +
+        "exit=$($process.ExitCode)"
     )
 } finally {
     if (-not $process.HasExited) {

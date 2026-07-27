@@ -1294,7 +1294,7 @@ CDisplacedTrader	4	0	0	0	0	0	0	0	0	0	0
 CDisplacementProcess	2	1	1	0	0	0	0	0	0	0	0
 CDisplayEngine	41	14	12	0	0	3	3	3	0	0	0
 CDisplayEngineInit	0	2	0	0	0	0	0	0	0	0	0
-CDisplayManager	62	112	112	0	0	18	18	2	8	0	0
+CDisplayManager	62	112	112	0	0	20	20	2	9	0	0
 CDisplayManagerInit	0	1	0	0	0	0	0	0	0	0	0
 CDisplayViewManager	3	5	5	0	0	0	0	0	0	0	0
 CDoNotTarget	1	0	0	0	0	0	0	0	0	0	0
@@ -2686,7 +2686,7 @@ CPhysicsMesh	39	24	23	0	0	0	0	0	0	0	0
 CPhysicsMeshInfo	6	10	9	0	0	0	0	0	0	0	0
 CPhysicsMeshObject	27	19	18	0	0	0	0	0	0	0	0
 CPhysicsState	1	0	0	0	0	0	0	0	0	0	0
-CPixelFormat	18	13	12	0	0	1	1	1	0	0	0
+CPixelFormat	18	13	12	0	0	3	3	1	2	0	0
 CPixelShader	1	30	29	0	0	0	0	0	0	0	0
 CPixelShaderData	0	4	3	0	0	0	0	0	0	0	0
 CPlane	7	4	4	0	0	0	0	0	0	0	0
@@ -2861,7 +2861,7 @@ CRegister	0	4	0	0	0	0	0	0	0	0	0
 CRegisteredTCInfo	0	5	0	0	0	0	0	0	0	0	0
 CReluctantTrader	3	0	0	0	0	0	0	0	0	0	0
 CRenderManager2D	31	29	27	0	0	0	0	0	0	0	0
-CRenderManagerCore	39	26	24	0	0	1	1	1	0	0	0
+CRenderManagerCore	39	27	25	0	0	2	2	1	1	0	0
 CRenderStateManager	10	9	8	0	0	2	2	2	0	0	0
 CRenderTarget	6	16	14	0	0	1	1	0	1	0	0
 CReplaceSerialise<CFileFormatEditMapBrushHeader	0	3	3	0	0	0	0	0	0	0	0
@@ -2985,7 +2985,7 @@ CShaderDataBank	14	6	6	0	0	1	1	1	0	0	0
 CShaderDirectionalLight	1	3	1	0	0	0	0	0	0	0	0
 CShaderPointLight	1	1	1	0	0	0	0	0	0	0	0
 CShaderPreParser	48	7	7	0	0	3	3	3	0	0	0
-CShaderRenderManager	78	79	76	0	0	17	17	9	6	0	0
+CShaderRenderManager	78	79	76	0	0	18	18	10	6	0	0
 CShaderResource	12	13	8	0	0	0	0	0	0	0	0
 CShaderResourceArray	0	1	0	0	0	0	0	0	0	0	0
 CShadow	3	4	4	0	0	0	0	0	0	0	0
@@ -3582,7 +3582,7 @@ CText	18	10	9	0	0	0	0	0	0	0	0
 CTextContainer	3	9	4	0	0	0	0	0	0	0	0
 CTextEntry	5	3	2	0	0	0	0	0	0	0	0
 CTextSlider	13	7	5	0	0	0	0	0	0	0	0
-CTexture	33	32	29	0	0	3	3	2	1	0	0
+CTexture	33	32	29	0	0	4	4	2	1	0	0
 CTextureManager	15	10	9	0	0	0	0	0	0	0	0
 CTextureMorphs	4	4	4	0	0	0	0	0	0	0	0
 CTextureRenderer	0	1	0	0	0	0	0	0	0	0	0
@@ -3709,7 +3709,7 @@ CThingScriptUIDReplacer	5	1	0	0	0	0	0	0	0	0	0
 CThingSearchTools	5	110	108	0	0	2	2	1	1	0	0
 CThingShotDef	2	3	3	0	0	1	1	1	0	0	0
 CThingSoundEmitter	14	2	1	0	0	0	0	0	0	0	0
-CThingSwitch	23	215	215	0	0	0	0	0	0	0	0
+CThingSwitch	23	215	215	0	0	127	127	0	127	0	0
 CThingSwitchDef	4	3	3	0	0	2	2	1	1	0	0
 CThingTrackNode	27	57	57	0	0	3	3	1	2	0	0
 CThingVillage	10	2	2	0	0	0	0	0	0	0	0
@@ -4085,7 +4085,7 @@ NHitLocationCodelets	4	0	0	0	0	0	0	0	0	0	0
 NHitLocations	0	1	0	0	0	0	0	0	0	0	0
 NHitLocations::CPhysicalPrimitiveCylinder	0	1	0	0	0	0	0	0	0	0	0
 NInputProcess	1	0	0	0	0	0	0	0	0	0	0
-NInventory::CTCInventoryBase	0	3	3	0	0	3	3	0	3	0	0
+NInventory::CTCInventoryBase	0	2	2	0	0	2	2	0	2	0	0
 NLocalisation	7	0	0	0	0	0	0	0	0	0	0
 NParticleEngine	32	0	0	0	0	0	0	0	0	0	0
 NParticleEngine::CPSCOrbit	0	1	0	0	0	0	0	0	0	0	0
@@ -4498,7 +4498,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11370	1999	63	3	137	137	66	55	0	0
+_global	0	11370	1999	63	3	138	138	67	55	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

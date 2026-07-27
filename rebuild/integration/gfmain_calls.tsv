@@ -21,19 +21,19 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 3	0040268c	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	0040269f	00415530	FableGetDefaultLanguageName_00415530	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetDefaultLanguageName_00415530.cpp
 3	004026a6	0099e480	CCharString::ToWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_ToWideString_0099e480.cpp
-3	004026b5	0099bff0	operator+(wchar_t const *,CWideString const &)		
-3	004026c0	0099bf30	operator+(CWideString const &,wchar_t const *)		
+3	004026b5	0099bff0	operator+(wchar_t const *,CWideString const &)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddLiteralAndWideString_0099bff0.cpp
+3	004026c0	0099bf30	operator+(CWideString const &,wchar_t const *)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp
 3	004026c9	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
 3	004026d2	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
 3	004026db	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
-3	004026e4	00999230	PathExists
-3	004026fe	0099ad80	CDiskFileWin32
+3	004026e4	00999230	PathExists	RELOCATION_MATCH	rebuild/src/compiled/00/99/CAFile_PathExists_00999230.cpp
+3	004026fe	0099ad80	CDiskFileWin32	RELOCATION_MATCH	rebuild/src/compiled/00/99/CDiskFileWin32_Constructor_0099AD80.cpp
 3	00402713	0099e4b0	CCharString::CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_DefaultConstructor_0099e4b0.cpp
-3	00402724	0099f2e0	LoadFromFile
+3	00402724	0099f2e0	LoadFromFile	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_LoadFromFile_0099f2e0.cpp
 3	00402735	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
-3	00402745	00404720	CStringParser
+3	00402745	00404720	CStringParser	RELOCATION_MATCH	rebuild/src/compiled/00/40/CStringParser_Constructor_00404720.cpp
 3	0040274e	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
-3	00402765	009badd0	CPersistContext
+3	00402765	009badd0	CPersistContext	MATCH	rebuild/src/compiled/00/9b/CPersistContext_TextConstructor_009badd0.cpp
 3	00402785	004045c0	Transfer<signed_char>
 3	004027a5	004045c0	Transfer<signed_char>
 3	004027c5	004045c0	Transfer<signed_char>
@@ -43,7 +43,7 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 3	004027ec	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	004027f5	0099a2e0	FableRestoreCBaseVTable_0099A2E0	RELOCATION_MATCH	rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a2e0.cpp
 3	004027fe	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
-3	0040280f	0099a920	?Close@CDiskFileWin32@@UAEXXZ
+3	0040280f	0099a920	CDiskFileWin32::Close	RELOCATION_MATCH	rebuild/src/compiled/00/99/CDiskFileWin32_Close_0099A920.cpp
 3	00402818	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
 3	00402821	0099a300	FableRestoreCBaseVTable_0099A300	RELOCATION_MATCH	rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a300.cpp
 3	0040282c	009bc890	NTextLayoutConfig::SetPrimaryLeftAlignment	RELOCATION_MATCH	rebuild/src/compiled/00/9b/TextLayout_SetPrimaryLeftAlignment_009bc890.cpp

@@ -30,22 +30,30 @@ if (-not (Test-Path -LiteralPath $SourceDirectory)) {
     }
     New-Item -ItemType Directory -Force -Path $sourceRepository |
         Out-Null
-    & git -C $sourceRepository init
-    if ($LASTEXITCODE -ne 0) {
-        throw 'Could not initialise the DirectShow source repository.'
+    if (-not (Test-Path -LiteralPath (
+            Join-Path $sourceRepository '.git'
+        ))) {
+        & git -C $sourceRepository init --quiet
+        if ($LASTEXITCODE -ne 0) {
+            throw 'Could not initialise the DirectShow source repository.'
+        }
     }
-    & git -C $sourceRepository remote add origin `
-        'https://github.com/microsoft/Windows-classic-samples.git'
-    if ($LASTEXITCODE -ne 0) {
-        throw 'Could not configure the Microsoft sample repository.'
+    $remoteName = @(& git -C $sourceRepository remote) |
+        Where-Object { $_ -eq 'origin' }
+    if ($remoteName.Count -eq 0) {
+        & git -C $sourceRepository remote add origin `
+            'https://github.com/microsoft/Windows-classic-samples.git'
+        if ($LASTEXITCODE -ne 0) {
+            throw 'Could not configure the Microsoft sample repository.'
+        }
     }
     & git -C $sourceRepository sparse-checkout init --cone
     & git -C $sourceRepository sparse-checkout set $relativeBaseClasses
-    & git -C $sourceRepository fetch --depth 1 origin $commit
+    & git -C $sourceRepository fetch --quiet --depth 1 origin $commit
     if ($LASTEXITCODE -ne 0) {
         throw "Could not fetch pinned Microsoft commit $commit."
     }
-    & git -C $sourceRepository checkout --detach FETCH_HEAD
+    & git -C $sourceRepository checkout --quiet --detach FETCH_HEAD
     if ($LASTEXITCODE -ne 0) {
         throw "Could not check out pinned Microsoft commit $commit."
     }
@@ -192,8 +200,11 @@ $graphProbe = Join-Path (
     '/DNDEBUG',
     '/D_LIB',
     "/I$SourceDirectory",
+    "/I$(Join-Path $rebuildRoot 'include')",
     "/Fe$graphProbe",
     $graphProbeSource,
+    (Join-Path $rebuildRoot 'integration\video_frame_conversion.cpp'),
+    (Join-Path $rebuildRoot 'integration\video_frame_publication.cpp'),
     $library,
     'strmiids.lib',
     'winmm.lib',
@@ -201,7 +212,8 @@ $graphProbe = Join-Path (
     'oleaut32.lib',
     'user32.lib',
     'gdi32.lib',
-    'advapi32.lib'
+    'advapi32.lib',
+    'd3d9.lib'
 )
 if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $graphProbe)) {
     throw 'Failed to build the DirectShow texture-renderer graph probe.'
@@ -213,17 +225,21 @@ if (-not [string]::IsNullOrWhiteSpace($RetailMovie)) {
     $graphOutput = & $graphProbe $RetailMovie
     $graphExitCode = $LASTEXITCODE
     $graphOutput | Write-Output
+    $graphText = $graphOutput -join "`n"
+    $graphPattern =
+        'DIRECTSHOW_TEXTURE_RENDERER_GRAPH .*' +
+        'frames=419 .*changing=1 .*published=1 .*consumed=1 ' +
+        '.*ready=258 .*texture=1 .*event=1'
     if (
         $graphExitCode -ne 0 -or
-        (($graphOutput -join "`n") -notmatch
-            'DIRECTSHOW_TEXTURE_RENDERER_GRAPH')
+        $graphText -notmatch $graphPattern
     ) {
         throw (
             'The recovered-shape texture renderer did not receive ' +
-            'changing decoded retail frames.'
+            'and consume all changing decoded retail frames.'
         )
     }
-    $graphProof = ' graph=decoded-retail-frames'
+    $graphProof = ' graph=decoded-and-consumed-retail-frames'
 }
 
 Write-Output (

@@ -1,6 +1,9 @@
 #pragma once
 
 #include "rebuild_abi.h"
+#include "fable_string.h"
+
+struct CTextureRendererRecoveredLayout;
 
 // Retail PC layouts recovered from Fable.exe. These views deliberately use
 // opaque pointers/byte ranges so they stay valid with the VC7.1 Tier-0 build
@@ -15,7 +18,7 @@ struct CVideoSysRecoveredLayout
     void* basicAudio14;
     void* graphInterface18;
     void* graphInterface1C;
-    void* textureRenderer20;
+    CTextureRendererRecoveredLayout* textureRenderer20;
     fable_u32 loopPolicy24;
     fable_u32 playbackState28;
     fable_u8 flags2C[4];
@@ -25,6 +28,12 @@ struct CVideoSysRecoveredLayout
     void* decoderTexture80;
     fable_u32 decodedHeight84;
     fable_u32 decodedWidth88;
+
+    void WaitForState(fable_u32 desiredState);
+    bool AttemptToPlay();
+    bool Pause();
+    bool Stop();
+    void* GetTexture() const;
 };
 
 struct CTextureRendererRecoveredLayout
@@ -45,13 +54,16 @@ struct CTextureRendererRecoveredLayout
 struct CMovieRecoveredTail
 {
     fable_u8 inherited000[0x15C];
-    fable_u8 isPlaying15C;
+    bool isPlaying15C;
     fable_u8 padding15D[3];
     fable_u8 textureOwner160[0x14];
-    void* movieName174;
+    CWideString movieName174;
     fable_u8 playbackInfo178[0x1C];
     fable_u8 attemptToPlay194;
     fable_u8 alignment195[3];
+
+    void SetMovie(CWideString& movie);
+    bool IsPlaying() const;
 };
 
 enum CVideoSysRecoveredPlaybackState
@@ -68,6 +80,11 @@ enum FableVideoSystemRetailAddress
     FableRetailCMovieDraw = 0x00547F60,
     FableRetailCMovieSetMovie = 0x00548510,
     FableRetailCMovieIsPlaying = 0x00548520,
+    FableRetailCVideoSysWaitForState = 0x00A3B0F0,
+    FableRetailCVideoSysAttemptToPlay = 0x00A3B1A0,
+    FableRetailCVideoSysPause = 0x00A3B1C0,
+    FableRetailCVideoSysStop = 0x00A3B1F0,
+    FableRetailCVideoSysGetTexture = 0x00A3B320,
     FableRetailCVideoSysProcess = 0x00A3B430,
     FableRetailCTextureRendererDoRenderSample = 0x00A3B730,
     FableRetailCVideoSysInit = 0x00A3B9D0,
@@ -83,6 +100,29 @@ bool FABLE_FASTCALL FableConvertVideoRgb24Frame(
     fable_u32 sourceRowPitch,
     fable_u8* destination,
     fable_u32 destinationRowPitch,
+    fable_u32 width,
+    fable_u32 height);
+
+typedef bool (FABLE_FASTCALL *FableDecodedVideoFrameWriter)(
+    void* context,
+    fable_u32 textureFormat,
+    const fable_u8* source,
+    fable_u32 sourceRowPitch,
+    fable_u32 width,
+    fable_u32 height);
+
+// Reconstructed publication shell around the recovered conversion loop.
+// The writer performs lock -> convert -> unlock while the CVideoSys critical
+// section is held; only after it returns does this publish the texture and
+// signal the frame-ready event, matching DoRenderSample's observed order.
+bool FABLE_FASTCALL FablePublishDecodedVideoFrame(
+    CVideoSysRecoveredLayout& videoSystem,
+    void* decodedTexture,
+    FableDecodedVideoFrameWriter writer,
+    void* writerContext,
+    fable_u32 textureFormat,
+    const fable_u8* source,
+    fable_u32 sourceRowPitch,
     fable_u32 width,
     fable_u32 height);
 

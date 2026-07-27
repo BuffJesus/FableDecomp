@@ -8,6 +8,7 @@ from tools.decomp_pipeline.auto_author_tiny import (
     const_from_bytes,
     rows_with_target_metadata,
 )
+from tools.decomp_pipeline.verify_and_land import insert_catalog_entries
 
 
 class TinyPatternTests(unittest.TestCase):
@@ -48,6 +49,14 @@ class TinyPatternTests(unittest.TestCase):
                 "568bf18d8ea8000000e828704c008bcee871ed1a00"
                 "f644240801740956e8f06e720083c4048bc65ec20400"
             ): ("composite_scalar_deleting_destructor_speed", 0xA8),
+            (
+                "568bf18d4e48e835967cff8d4e34e8edfdffff"
+                "8bcee8a6c2fffff644240801740956e895d7f1ff"
+                "83c4048bc65ec20400"
+            ): (
+                "two_member_composite_scalar_deleting_destructor",
+                (0x48, 0x34),
+            ),
             (
                 "51568bf18b56048b0e8d44240750e8e5dafdff8b36"
                 "85f6740756e8d2b97800595e59c3"
@@ -102,6 +111,33 @@ class TinyPatternTests(unittest.TestCase):
         self.assertIn("++incoming->references", authored["source_cpp"])
         self.assertIn("destination.Assign(&destination)", authored["test_cpp"])
         self.assertIn("retained.references != 1", authored["test_cpp"])
+
+    def test_two_member_composite_destructor_checks_order_and_offsets(self):
+        authored = candidate(
+            {
+                "address": "00ce1200",
+                "name": "`vector deleting destructor'",
+                "module": "CThingSwitch",
+                "bytes": (
+                    "568bf18d4e48e835967cff8d4e34e8edfdffff"
+                    "8bcee8a6c2fffff644240801740956e895d7f1ff"
+                    "83c4048bc65ec20400"
+                ),
+            }
+        )
+
+        self.assertIsNotNone(authored)
+        self.assertIn("self) + 72", authored["source_cpp"])
+        self.assertIn("self) + 52", authored["source_cpp"])
+        self.assertIn(
+            "g_AutoTinySequence[0] != 1",
+            authored["test_cpp"],
+        )
+        self.assertIn(
+            "g_AutoTinySequence[2] != 3",
+            authored["test_cpp"],
+        )
+        self.assertIn("g_AutoTinySequence[6]", authored["test_cpp"])
 
     def test_counted_reset_candidate_has_ownership_fixture(self):
         authored = candidate(
@@ -225,6 +261,23 @@ class TinyPatternTests(unittest.TestCase):
         self.assertEqual(row["cc"], "__thiscall")
         self.assertEqual(row["ret"], "void")
         self.assertEqual(row["pc"], "1")
+
+    def test_catalog_insertion_does_not_splice_requested_addresses(self):
+        original = (
+            "$catalog = @(\n"
+            "    [pscustomobject]@{ Address = '00401000' }\n"
+            ")\n\n"
+            "$requestedAddresses = @(\n"
+            "    $Address | Where-Object { $_ }\n"
+            ")\n"
+        )
+        entry = "    [pscustomobject]@{ Address = '00402000' }"
+
+        updated = insert_catalog_entries(original, [entry])
+
+        catalog, requested = updated.split("$requestedAddresses = @(", 1)
+        self.assertIn("00402000", catalog)
+        self.assertNotIn("00402000", requested)
 
 
 if __name__ == "__main__":
