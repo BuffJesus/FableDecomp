@@ -207,6 +207,9 @@ boot order: `lionhead_logo.wmv`, `microsoft_logo.wmv`, then
 `intro_comp.wmv`. It advances on DirectShow end-of-stream events and reveals
 the static frontend checkpoint after the intro completes. Escape skips only
 the current movie and advances to the next one, matching the retail interaction.
+The parent D3D9 surface remains black while the movie graph starts and plays,
+so the title artwork cannot flash before the Lionhead movie. The frontend is
+presented only after the final movie completes or is skipped.
 The smoke gate
 requires the playback graph to enter the running state and proves that two
 captured window frames 600 ms apart differ. This stronger gate verifies both

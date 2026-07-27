@@ -21,6 +21,8 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     fable_i32 clientWidth,
     fable_i32 clientHeight);
 
+bool FABLE_FASTCALL FablePresentVisualD3D9Black();
+
 bool FABLE_FASTCALL FableResizeVisualD3D9(
     fable_i32 backBufferWidth,
     fable_i32 backBufferHeight);
