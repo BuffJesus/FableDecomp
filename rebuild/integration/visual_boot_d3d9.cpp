@@ -5,6 +5,7 @@
 #include "fable_render_texture.h"
 #include "fable_render_window.h"
 #include "fable_shader_render_manager.h"
+#include "fable_state_block_sold.h"
 #include "fable_texture_lifecycle.h"
 #include "render2d_batch_plan.h"
 #include "render2d_draw_list_adapter.h"
@@ -143,6 +144,15 @@ Direct3DCreate9(FableD3DUint sdkVersion);
 
 CShaderRenderManager g_CShaderRenderManager_013BC470;
 
+fable_u32 DAT_01396f6c = 2;
+fable_u32 DAT_01396f68 = 1;
+fable_u32 DAT_01396e04 = 4;
+fable_u32 DAT_01396ef0 = 2;
+fable_u32 DAT_01396eec = 0;
+fable_u32 DAT_01396e7c = 4;
+fable_u32 DAT_01396e70 = 1;
+fable_u32 DAT_01396e5c = 2;
+
 namespace
 {
     const FableD3DUint kD3DSdkVersion = 32;
@@ -150,8 +160,10 @@ namespace
     const FableD3DDword kD3DSoftwareVertexProcessing = 0x20;
     const FableD3DUint kD3DSwapEffectDiscard = 1;
     const FableD3DUint kD3DFormatA8R8G8B8 = 21;
+    const FableD3DUint kD3DFormatD16 = 80;
     const FableD3DUint kD3DPoolManaged = 1;
     const FableD3DDword kD3DClearTarget = 1;
+    const FableD3DDword kD3DClearZBuffer = 2;
     const FableD3DDword kD3DFvfXyzRhwColourTexture1 = 0x1C4;
 
     FableD3D9* g_Direct3D = 0;
@@ -159,8 +171,9 @@ namespace
     FableD3DTexture9* g_Texture = 0;
     CRenderManagerCoreAttachTextureView g_RenderManagerCore = {};
     fable_u32 g_DisplayManagerWindowStorage[0x214 / 4] = {};
-    CRenderStateManagerRealiseView g_RenderStateManager = {};
-    CRenderStateInfo g_VisualRenderStates[10] = {};
+    fable_u8 g_RenderStateManagerStorage[0x3A3C] = {};
+    fable_u8 g_RenderSystemStorage[0x0C] = {};
+    fable_u8 g_SystemManagerStorage[0x64] = {};
     fable_i32 g_ArtworkWidth = 0;
     fable_i32 g_ArtworkHeight = 0;
     bool g_Presented = false;
@@ -168,6 +181,65 @@ namespace
     bool Failed(FableD3DResult result)
     {
         return result < 0;
+    }
+
+    CRenderStateManagerRealiseView& RenderStateManager()
+    {
+        return *reinterpret_cast<CRenderStateManagerRealiseView*>(
+            g_RenderStateManagerStorage);
+    }
+
+    CRenderStateManagerCaptureView& CaptureManager()
+    {
+        return *reinterpret_cast<CRenderStateManagerCaptureView*>(
+            g_RenderStateManagerStorage);
+    }
+
+    CRenderStateInfo& VisualState(fable_u32 offset)
+    {
+        return *reinterpret_cast<CRenderStateInfo*>(
+            g_RenderStateManagerStorage + offset);
+    }
+
+    void InitialiseVisualState(
+        fable_u32 offset,
+        fable_u32 baselineValue,
+        fable_u32 stateParameter,
+        fable_u8 stateType,
+        fable_u8 textureStage)
+    {
+        CRenderStateInfo& state = VisualState(offset);
+        state.CurrentState = 0xFFFFFFFFu;
+        state.DesiredState = baselineValue;
+        state.BookmarkMask = 0;
+        state.StateParam = stateParameter;
+        state.DirtyListFlag = 0;
+        state.StateType = stateType;
+        state.TextureStage = textureStage;
+        state.padding13 = 0;
+    }
+
+    void InitialiseSoldStateMetadata()
+    {
+        InitialiseVisualState(0x291C, 5, 19, 1, 0);
+        InitialiseVisualState(0x2930, 6, 20, 1, 0);
+        InitialiseVisualState(0x2868, 0, 7, 1, 0);
+        InitialiseVisualState(0x28B8, 1, 27, 1, 0);
+        InitialiseVisualState(0x28CC, 1, 15, 1, 0);
+        InitialiseVisualState(0x2854, 0, 14, 1, 0);
+        InitialiseVisualState(0x287C, 8, 23, 1, 0);
+
+        InitialiseVisualState(0x3344, 0, 2, 2, 0);
+        InitialiseVisualState(0x33E4, 2, 3, 2, 0);
+        InitialiseVisualState(0x3484, 0, 5, 2, 0);
+        InitialiseVisualState(0x3524, 2, 6, 2, 0);
+        InitialiseVisualState(0x3204, 2, 1, 2, 0);
+        InitialiseVisualState(0x32A4, 2, 4, 2, 0);
+        InitialiseVisualState(0x3218, 4, 1, 2, 1);
+        InitialiseVisualState(0x32B8, 4, 4, 2, 1);
+
+        InitialiseVisualState(0x30C4, 1, 6, 3, 0);
+        InitialiseVisualState(0x3164, 1, 5, 3, 0);
     }
 
     template <typename T>
@@ -279,7 +351,6 @@ namespace
               drew_(false)
         {
             memset(textures_, 0, sizeof(textures_));
-            memset(&captureManager_, 0, sizeof(captureManager_));
             memset(&captureSentinel_, 0, sizeof(captureSentinel_));
             captureSentinel_.captureType11 = 4;
         }
@@ -296,12 +367,14 @@ namespace
 
             if (eventKind == RENDER2D_ADAPTER_BEGIN_CAPTURE)
             {
-                captureManager_.captures0008[0].entry00 =
+                CRenderStateManagerCaptureView& captureManager =
+                    CaptureManager();
+                captureManager.captures0008[0].entry00 =
                     &captureSentinel_;
-                captureManager_.captures0008[0].value04 = 0;
-                captureManager_.captureCount2808 = 1;
-                captureManager_.pendingRestoreCount280C = 0;
-                captureManager_.captureOffset2814 = 2;
+                captureManager.captures0008[0].value04 = 0;
+                captureManager.captureCount2808 = 1;
+                captureManager.pendingRestoreCount280C = 0;
+                captureManager.captureOffset2814 = 2;
             }
             else if (
                 eventKind ==
@@ -347,7 +420,8 @@ namespace
             }
             else if (eventKind == RENDER2D_ADAPTER_APPLY_STATE_BLOCK)
             {
-                ApplyStateBlock();
+                CStateBlockFunctionSoldView sold;
+                sold.Apply();
             }
             else if (
                 eventKind ==
@@ -406,7 +480,7 @@ namespace
                 eventKind ==
                 RENDER2D_ADAPTER_REALISE_RENDER_STATE)
             {
-                g_RenderStateManager.RealiseRenderState();
+                RenderStateManager().RealiseRenderState();
             }
             else if (
                 eventKind ==
@@ -429,11 +503,14 @@ namespace
                 eventKind ==
                 RENDER2D_ADAPTER_RESTORE_CAPTURE)
             {
-                captureManager_.RestoreCaptureBlock();
+                CRenderStateManagerCaptureView& captureManager =
+                    CaptureManager();
+                captureManager.RestoreCaptureBlock();
+                RenderStateManager().RealiseRenderState();
                 if (
-                    captureManager_.captureCount2808 != 0 ||
-                    captureManager_.pendingRestoreCount280C != 0 ||
-                    captureManager_.captureOffset2814 != 1)
+                    captureManager.captureCount2808 != 0 ||
+                    captureManager.pendingRestoreCount280C != 0 ||
+                    captureManager.captureOffset2814 != 1)
                 {
                     succeeded_ = false;
                 }
@@ -452,46 +529,17 @@ namespace
                 succeeded_ = false;
         }
 
-        void ApplyStateBlock()
-        {
-            static const fable_u32 stateParameters[10] = {
-                7, 22, 27, 137,
-                1, 2, 4, 5,
-                5, 6
-            };
-            static const fable_u32 desiredValues[10] = {
-                0, 1, 0, 0,
-                2, 2, 2, 2,
-                2, 2
-            };
-            static const fable_u8 stateTypes[10] = {
-                1, 1, 1, 1,
-                2, 2, 2, 2,
-                3, 3
-            };
-
-            for (fable_u32 index = 0; index < 10; ++index)
-            {
-                CRenderStateInfo& state =
-                    g_VisualRenderStates[index];
-                state.DesiredState = desiredValues[index];
-                state.StateParam = stateParameters[index];
-                state.DirtyListFlag = 1;
-                state.StateType = stateTypes[index];
-                state.TextureStage = 0;
-                g_RenderStateManager.StateUpdateList2008[index] =
-                    &state;
-            }
-            g_RenderStateManager.StateUpdateListSize280C = 10;
-        }
-
         const FableVisualVertex* vertices_;
         CTextureAssignmentView textures_[3];
-        CRenderStateManagerCaptureView captureManager_;
         CRenderStateEntry captureSentinel_;
         bool succeeded_;
         bool drew_;
     };
+}
+
+void* FABLE_FASTCALL GFGetSystemManager()
+{
+    return g_SystemManagerStorage;
 }
 
 bool FABLE_FASTCALL FableInitialiseVisualD3D9(
@@ -518,6 +566,8 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     parameters.swapEffect = kD3DSwapEffectDiscard;
     parameters.deviceWindow = window;
     parameters.windowed = 1;
+    parameters.enableAutoDepthStencil = 1;
+    parameters.autoDepthStencilFormat = kD3DFormatD16;
 
     FableD3DCreateDevice createDevice =
         reinterpret_cast<FableD3DCreateDevice>(
@@ -566,22 +616,21 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
             reinterpret_cast<CDisplayManagerWindowView*>(
                 g_DisplayManagerWindowStorage);
     memset(
-        &g_RenderStateManager,
+        g_RenderStateManagerStorage,
         0,
-        sizeof(g_RenderStateManager));
-    g_RenderStateManager.PD3DDevice0004 =
+        sizeof(g_RenderStateManagerStorage));
+    memset(g_RenderSystemStorage, 0, sizeof(g_RenderSystemStorage));
+    memset(g_SystemManagerStorage, 0, sizeof(g_SystemManagerStorage));
+    *reinterpret_cast<fable_u8**>(
+        g_SystemManagerStorage + 0x60) =
+            g_RenderSystemStorage;
+    *reinterpret_cast<fable_u8**>(
+        g_RenderSystemStorage + 0x08) =
+            g_RenderStateManagerStorage;
+    RenderStateManager().PD3DDevice0004 =
         reinterpret_cast<FableRenderStateDevice*>(g_Device);
-    memset(
-        g_VisualRenderStates,
-        0,
-        sizeof(g_VisualRenderStates));
-    for (fable_u32 stateIndex = 0;
-         stateIndex < 10;
-         ++stateIndex)
-    {
-        g_VisualRenderStates[stateIndex].CurrentState =
-            0xFFFFFFFFu;
-    }
+    CaptureManager().captureOffset2814 = 1;
+    InitialiseSoldStateMetadata();
     return true;
 }
 
@@ -657,7 +706,7 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             g_Device,
             0,
             0,
-            kD3DClearTarget,
+            kD3DClearTarget | kD3DClearZBuffer,
             0xFF000000u,
             1.0f,
             0)) ||
@@ -735,13 +784,11 @@ void FABLE_FASTCALL FableShutdownVisualD3D9()
         0,
         sizeof(g_RenderManagerCore));
     memset(
-        &g_RenderStateManager,
+        g_RenderStateManagerStorage,
         0,
-        sizeof(g_RenderStateManager));
-    memset(
-        g_VisualRenderStates,
-        0,
-        sizeof(g_VisualRenderStates));
+        sizeof(g_RenderStateManagerStorage));
+    memset(g_RenderSystemStorage, 0, sizeof(g_RenderSystemStorage));
+    memset(g_SystemManagerStorage, 0, sizeof(g_SystemManagerStorage));
     g_ArtworkWidth = 0;
     g_ArtworkHeight = 0;
     g_Presented = false;
