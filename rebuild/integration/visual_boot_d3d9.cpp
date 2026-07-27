@@ -152,6 +152,12 @@ fable_u32 DAT_01396eec = 0;
 fable_u32 DAT_01396e7c = 4;
 fable_u32 DAT_01396e70 = 1;
 fable_u32 DAT_01396e5c = 2;
+fable_u32 DAT_01396fb0 = 3;
+fable_u32 DAT_01396fa4 = 3;
+fable_u32 DAT_01396fa0 = 2;
+fable_u32 DAT_01396e58 = 1;
+fable_u32 DAT_01396e64 = 1;
+fable_u32 DAT_01396dd0 = 3;
 
 namespace
 {
@@ -221,6 +227,15 @@ namespace
 
     void InitialiseSoldStateMetadata()
     {
+        InitialiseVisualState(0x2890, 1, 22, 1, 0);
+        InitialiseVisualState(0x282C, 2, 8, 1, 0);
+        InitialiseVisualState(0x2818, 1, 9, 1, 0);
+        InitialiseVisualState(0x2E44, 0, 7, 3, 0);
+        InitialiseVisualState(0x2EE4, 1, 1, 3, 0);
+        InitialiseVisualState(0x2F84, 1, 2, 3, 0);
+        InitialiseVisualState(0x2944, 1, 28, 1, 0);
+        InitialiseVisualState(0x2A20, 0, 137, 1, 0);
+
         InitialiseVisualState(0x291C, 5, 19, 1, 0);
         InitialiseVisualState(0x2930, 6, 20, 1, 0);
         InitialiseVisualState(0x2868, 0, 7, 1, 0);
@@ -240,6 +255,81 @@ namespace
 
         InitialiseVisualState(0x30C4, 1, 6, 3, 0);
         InitialiseVisualState(0x3164, 1, 5, 3, 0);
+    }
+
+    void RequestTrackedVisualState(
+        fable_u32 offset,
+        fable_u32 requestedValue)
+    {
+        CRenderStateInfo& state = VisualState(offset);
+        if (state.DesiredState == requestedValue)
+            return;
+
+        CRenderStateManagerCaptureView& manager =
+            CaptureManager();
+        const fable_u32 activeCaptureMask =
+            manager.captureOffset2814;
+        if ((state.BookmarkMask & activeCaptureMask) == 0)
+        {
+            state.BookmarkMask |= activeCaptureMask;
+            CRenderStateCapture& capture =
+                manager.captures0008[
+                    manager.captureCount2808++];
+            capture.entry00 =
+                reinterpret_cast<CRenderStateEntry*>(&state);
+            capture.value04 = state.DesiredState;
+        }
+
+        state.DesiredState = requestedValue;
+        if (state.DirtyListFlag == 0)
+        {
+            state.DirtyListFlag = 1;
+            manager.pendingRestores2008[
+                manager.pendingRestoreCount280C++] =
+                    reinterpret_cast<CRenderStateEntry*>(&state);
+        }
+    }
+
+    bool ResolveTrackedVisualStateValue(
+        fable_u32 valueKind,
+        fable_u32 encodedValue,
+        fable_u32& resolvedValue)
+    {
+        if (
+            valueKind == RENDER2D_STATE_VALUE_LITERAL ||
+            valueKind == RENDER2D_STATE_VALUE_ARGUMENT)
+        {
+            resolvedValue = encodedValue;
+            return true;
+        }
+        if (valueKind != RENDER2D_STATE_VALUE_GLOBAL)
+            return false;
+
+        switch (encodedValue)
+        {
+        case 0x01396FB0:
+            resolvedValue = DAT_01396fb0;
+            return true;
+        case 0x01396FA4:
+            resolvedValue = DAT_01396fa4;
+            return true;
+        case 0x01396FA0:
+            resolvedValue = DAT_01396fa0;
+            return true;
+        case 0x01396E58:
+            resolvedValue = DAT_01396e58;
+            return true;
+        case 0x01396E64:
+            resolvedValue = DAT_01396e64;
+            return true;
+        case 0x01396DD0:
+            resolvedValue = DAT_01396dd0;
+            return true;
+        case 0x01396E04:
+            resolvedValue = DAT_01396e04;
+            return true;
+        }
+        return false;
     }
 
     template <typename T>
@@ -348,7 +438,8 @@ namespace
             const FableVisualVertex* vertices)
             : vertices_(vertices),
               succeeded_(true),
-              drew_(false)
+              drew_(false),
+              realisedStateBlock_(false)
         {
             memset(textures_, 0, sizeof(textures_));
             memset(&captureSentinel_, 0, sizeof(captureSentinel_));
@@ -375,6 +466,25 @@ namespace
                 captureManager.captureCount2808 = 1;
                 captureManager.pendingRestoreCount280C = 0;
                 captureManager.captureOffset2814 = 2;
+            }
+            else if (
+                eventKind ==
+                RENDER2D_ADAPTER_REQUEST_TRACKED_STATE)
+            {
+                fable_u32 requestedValue = 0;
+                if (!ResolveTrackedVisualStateValue(
+                        argument1,
+                        argument2,
+                        requestedValue))
+                {
+                    succeeded_ = false;
+                }
+                else
+                {
+                    RequestTrackedVisualState(
+                        argument0,
+                        requestedValue);
+                }
             }
             else if (
                 eventKind ==
@@ -480,7 +590,15 @@ namespace
                 eventKind ==
                 RENDER2D_ADAPTER_REALISE_RENDER_STATE)
             {
+                if (
+                    !realisedStateBlock_ &&
+                    RenderStateManager().
+                        StateUpdateListSize280C != 25)
+                {
+                    succeeded_ = false;
+                }
                 RenderStateManager().RealiseRenderState();
+                realisedStateBlock_ = true;
             }
             else if (
                 eventKind ==
@@ -506,6 +624,8 @@ namespace
                 CRenderStateManagerCaptureView& captureManager =
                     CaptureManager();
                 captureManager.RestoreCaptureBlock();
+                if (captureManager.pendingRestoreCount280C != 25)
+                    succeeded_ = false;
                 RenderStateManager().RealiseRenderState();
                 if (
                     captureManager.captureCount2808 != 0 ||
@@ -534,6 +654,7 @@ namespace
         CRenderStateEntry captureSentinel_;
         bool succeeded_;
         bool drew_;
+        bool realisedStateBlock_;
     };
 }
 
