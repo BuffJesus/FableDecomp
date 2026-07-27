@@ -19,6 +19,12 @@ versioning, sender validation, interpolation, gameplay-state replication,
 persistence, or security. Its most useful contribution is the set of engine
 seams and lifecycle constraints it exposes.
 
+This audit is the sidecar-prototype counterpart to
+[`COOP_REVIVAL.md`](COOP_REVIVAL.md), which documents TLC's separate dormant
+`CNetworkClient`/`CGameEventPackageSet` machinery. The two systems must not be
+treated as one implementation: EgoMP does not use or validate the retail
+network gate, package protocol, `CheckSync`, or multiplayer-active path.
+
 ## Useful engine evidence
 
 | Area | Evidence and value |
