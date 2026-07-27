@@ -20,6 +20,11 @@
   enter the same capture and dirty queues. The visual gate proves 25 unique
   states are realised for the draw, captured back to their valid baseline,
   and realised again with empty queues, so repeated paint cycles remain safe.
+- Exact 41/41-byte
+  `CShaderRenderManager::UpdatePixelShader @ 0x00988A20` is live as the next
+  shader event. The fixed-function checkpoint deliberately keeps the counted
+  pixel shader null, so the retail body performs no unsafe D3D bind but clears
+  dirty bit `0x1`; the adapter gates that postcondition.
 - D3D9 creation now includes a D16 auto-depth surface because Sold enables
   Z testing and Z writes; the frame clears both colour and depth.
 - The focused VC7.1 candidate/behavior gate passes. Sold remains an honest
@@ -48,6 +53,12 @@
   ticked/interpolated ghost motion, and an explicit region-ready barrier.
 - The detailed evidence, hazards, integration order, source links, and GPLv3
   boundary are recorded in `docs/EGOMP_MULTIPLAYER_AUDIT.md`.
+- `docs/COOP_REVIVAL.md` now contains the direct comparison. The retail
+  `CNetworkClient`/package/`CheckSync` path and EgoMP's sidecar SLikeNet path
+  are separate systems: EgoMP corroborates physical remote-player lifecycle,
+  motion seams, the `CGameEvent` object layout, and a region-ready barrier,
+  but does not make the native enable gates safe or validate the reconstructed
+  Alter Ego gameplay fantasy.
 
 ## EgoMP donor review (2026-07-26)
 

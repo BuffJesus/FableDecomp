@@ -94,6 +94,7 @@ $render2DDrawListAdapterBehaviorSource = Join-Path $rebuildRoot 'tests\integrati
 $attachTextureToStageSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CRenderManagerCore_AttachTextureToStage_009a0cf0.cpp'
 $realiseRenderStateSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderStateManager_RealiseRenderState_00a058c0.cpp'
 $soldStateBlockSource = Join-Path $rebuildRoot 'src\compiled\00\9d\CStateBlockFunctionSold_Apply_009df060.cpp'
+$updatePixelShaderSource = Join-Path $rebuildRoot 'src\compiled\00\98\CShaderRenderManager_UpdatePixelShader_00988a20.cpp'
 $displaySetViewportSource = Join-Path $rebuildRoot 'src\compiled\00\9b\CDisplayManager_SetViewport_009bf490.cpp'
 $displaySetIntegerViewportSource = Join-Path $rebuildRoot 'src\compiled\00\9b\CDisplayManager_SetViewportInteger_009bef80.cpp'
 $postViewportShaderSource = Join-Path $rebuildRoot 'src\compiled\00\98\CShaderRenderManager_OnPostViewportChanged_009880d0.cpp'
@@ -159,6 +160,7 @@ $render2DDrawListAdapterBehaviorObject = Join-Path $outDir 'render2d_draw_list_a
 $attachTextureToStageObject = Join-Path $outDir 'attach_texture_to_stage.obj'
 $realiseRenderStateObject = Join-Path $outDir 'realise_render_state.obj'
 $soldStateBlockObject = Join-Path $outDir 'sold_state_block.obj'
+$updatePixelShaderObject = Join-Path $outDir 'update_pixel_shader.obj'
 $displaySetViewportObject = Join-Path $outDir 'display_set_viewport.obj'
 $displaySetIntegerViewportObject = Join-Path $outDir 'display_set_integer_viewport.obj'
 $postViewportShaderObject = Join-Path $outDir 'post_viewport_shader.obj'
@@ -1272,6 +1274,15 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$updatePixelShaderObject" $updatePixelShaderSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $updatePixelShaderObject)
+    ) {
+        throw 'Failed to compile recovered pixel-shader update.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$displaySetViewportObject" $displaySetViewportSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -1523,6 +1534,7 @@ try {
         $attachTextureToStageObject,
         $realiseRenderStateObject,
         $soldStateBlockObject,
+        $updatePixelShaderObject,
         $displaySetViewportObject,
         $displaySetIntegerViewportObject,
         $postViewportShaderObject,
@@ -1674,6 +1686,7 @@ try {
         $render2DBatchPlanObject $render2DDrawListAdapterObject `
         $attachTextureToStageObject $realiseRenderStateObject `
         $soldStateBlockObject `
+        $updatePixelShaderObject `
         $displaySetViewportObject $displaySetIntegerViewportObject `
         $postViewportShaderObject $viewportE2Object `
         $setRenderWindowObject `
@@ -1765,7 +1778,7 @@ try {
     } else {
         'AuthoredFallback'
     }
-    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DRecoveredTrackedAndSoldState"
+    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DRecoveredTrackedSoldAndPixelShaderState"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude
