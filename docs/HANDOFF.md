@@ -1,6 +1,31 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 (EgoMP multiplayer audit and recovered viewport closure).*
+*Last updated: 2026-07-26 (EgoMP multiplayer audit and recovered Sold state-block presentation).*
+
+## Recovered Sold state-block presentation (2026-07-26)
+
+- The visible retail `FRONTEND_BACKDROP_01` frame no longer uses the authored
+  ten-state D3D dispatcher. The live path now invokes the full recovered
+  1,736-byte `CStateBlockFunctionSold::Apply @ 0x009DF060`, which queues all
+  17 opaque-texture states before the exact recovered
+  `CRenderStateManager::RealiseRenderState @ 0x00A058C0` dispatches them.
+- The integration now uses one retail-shaped state-manager allocation through
+  `+0x3A3C` for capture, dirty-state queuing, device-state records, realise,
+  and restore. The retail object graph
+  `system +0x60 -> render system +0x08 -> render-state manager` is live, as
+  are named metadata for Z, alpha, texture operation/arguments, and sampler
+  filtering.
+- D3D9 creation now includes a D16 auto-depth surface because Sold enables
+  Z testing and Z writes; the frame clears both colour and depth.
+- The focused VC7.1 candidate/behavior gate passes. Sold remains an honest
+  same-length `DIFFER` with 24 normalized bytes of repeated register-allocation
+  residue. The full Release bootstrap and live window smoke pass with title
+  `FableDecomp - D3D9 Presented via Render2D - Retail Frontend + Progress Display Ready`
+  and exit zero.
+- The next visual closure is to execute the preceding 13 tracked-state requests
+  (currently represented by adapter events) through the same manager, then
+  replace more of the adapter's remaining shader/queue event dispatch with its
+  recovered dependency bodies.
 
 ## EgoMP multiplayer value (2026-07-26)
 
