@@ -94,6 +94,26 @@ int main(int argc, char** argv) {
     wrU32(data, MODELID_OFF, newModelId);
     std::printf("patched modelId -> %u\n", rdU32(data, MODELID_OFF));
 
+    // FIX #2 (def-load-contract RE 2026-07-24): the payload carries the donor's
+    // OWN global entry index as self/owner back-references. A byte-for-byte clone
+    // keeps the donor's index, but our appended entry lands at a DIFFERENT global
+    // index, so the engine wires the def to the wrong entries -> instability /
+    // failed thing-creation. Retarget every u32 == donorGlobalIdx to the append
+    // landing index. Component/sibling refs (shared sub-defs) are left ALONE — we
+    // only rewrite the self index (value-keyed, robust to record layout).
+    // For CREATURE_TRADER_01 this is exactly 3 hits at payload offsets 25,193,301.
+    size_t donorGlobalIdx = SIZE_MAX;
+    for (size_t i = 0; i < game.entries().size(); ++i) {
+        if (game.entries()[i].name == DONOR) { donorGlobalIdx = i; break; }
+    }
+    const uint32_t newGlobalIdx = (uint32_t)game.entries().size(); // single-entry append lands here
+    const uint32_t oldIdx = (uint32_t)donorGlobalIdx;
+    int selfRefs = 0;
+    for (size_t o = 0; o + 4 <= data.size(); ++o) {
+        if (rdU32(data, o) == oldIdx) { wrU32(data, o, newGlobalIdx); ++selfRefs; }
+    }
+    std::printf("retargeted %d self-index refs %u -> %u\n", selfRefs, oldIdx, newGlobalIdx);
+
     // Snapshot definition BEFORE addEntry (it can realloc entries_ and dangle donor).
     const std::string defType = donor->definition;
     size_t idx = game.addEntry(defType, NEWNAME, std::move(data));

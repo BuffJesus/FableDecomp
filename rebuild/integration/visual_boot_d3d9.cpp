@@ -80,6 +80,9 @@ typedef FableD3DResult (FABLE_STDCALL *FableD3DCreateDevice)(
     FableD3DDword behaviorFlags,
     FableD3DPresentParameters* parameters,
     FableD3DDevice9** device);
+typedef FableD3DResult (FABLE_STDCALL *FableD3DReset)(
+    FableD3DDevice9* device,
+    FableD3DPresentParameters* parameters);
 typedef FableD3DResult (FABLE_STDCALL *FableD3DCreateTexture)(
     FableD3DDevice9* device,
     FableD3DUint width,
@@ -174,7 +177,9 @@ namespace
 
     FableD3D9* g_Direct3D = 0;
     FableD3DDevice9* g_Device = 0;
+    void* g_DeviceWindow = 0;
     FableD3DTexture9* g_Texture = 0;
+    FableD3DTexture9* g_TitleTexture = 0;
     CRenderManagerCoreAttachTextureView g_RenderManagerCore = {};
     fable_u32 g_DisplayManagerWindowStorage[0x214 / 4] = {};
     fable_u8 g_RenderStateManagerStorage[0x3A3C] = {};
@@ -182,6 +187,8 @@ namespace
     fable_u8 g_SystemManagerStorage[0x64] = {};
     fable_i32 g_ArtworkWidth = 0;
     fable_i32 g_ArtworkHeight = 0;
+    fable_i32 g_TitleWidth = 0;
+    fable_i32 g_TitleHeight = 0;
     bool g_Presented = false;
 
     bool Failed(FableD3DResult result)
@@ -344,11 +351,13 @@ namespace
     }
 
     bool UploadArtwork(
+        FableD3DTexture9*& texture,
         fable_i32 artworkWidth,
         fable_i32 artworkHeight,
         fable_i32 artworkPitch,
         fable_u32 artworkBitsPerPixel,
-        const void* artworkPixels)
+        const void* artworkPixels,
+        bool preserveAlpha)
     {
         if (
             artworkWidth <= 0 ||
@@ -375,7 +384,7 @@ namespace
                 0,
                 kD3DFormatA8R8G8B8,
                 kD3DPoolManaged,
-                &g_Texture,
+                &texture,
                 0)))
         {
             return false;
@@ -384,8 +393,8 @@ namespace
         FableD3DLockedRectangle locked = {};
         FableD3DLockTexture lockTexture =
             reinterpret_cast<FableD3DLockTexture>(
-                g_Texture->vtable[19]);
-        if (Failed(lockTexture(g_Texture, 0, &locked, 0, 0)))
+                texture->vtable[19]);
+        if (Failed(lockTexture(texture, 0, &locked, 0, 0)))
         {
             return false;
         }
@@ -410,8 +419,12 @@ namespace
             {
                 const fable_u8* pixel =
                     sourceRow + x * sourceBytesPerPixel;
+                const fable_u32 alpha =
+                    preserveAlpha && artworkBitsPerPixel == 32
+                        ? static_cast<fable_u32>(pixel[3]) << 24
+                        : 0xFF000000u;
                 destinationRow[x] =
-                    0xFF000000u |
+                    alpha |
                     (static_cast<fable_u32>(pixel[2]) << 16) |
                     (static_cast<fable_u32>(pixel[1]) << 8) |
                     static_cast<fable_u32>(pixel[0]);
@@ -420,14 +433,12 @@ namespace
 
         FableD3DUnlockTexture unlockTexture =
             reinterpret_cast<FableD3DUnlockTexture>(
-                g_Texture->vtable[20]);
-        if (Failed(unlockTexture(g_Texture, 0)))
+                texture->vtable[20]);
+        if (Failed(unlockTexture(texture, 0)))
         {
             return false;
         }
 
-        g_ArtworkWidth = artworkWidth;
-        g_ArtworkHeight = absoluteHeight;
         return true;
     }
 
@@ -435,8 +446,11 @@ namespace
     {
     public:
         explicit VisualRender2DAdapter(
-            const FableVisualVertex* vertices)
+            const FableVisualVertex* vertices,
+            fable_u32 vertexCount)
             : vertices_(vertices),
+              vertexCount_(vertexCount),
+              attachedTexture_(0),
               succeeded_(true),
               drew_(false),
               realisedStateBlock_(false)
@@ -586,12 +600,24 @@ namespace
                 eventKind ==
                 RENDER2D_ADAPTER_ATTACH_TEXTURE)
             {
-                CTextureAttachView texture = {
-                    g_Texture
-                };
+                FableD3DTexture9* selectedTexture = 0;
+                if (
+                    argument1 ==
+                    reinterpret_cast<fable_u32>(g_Texture))
+                {
+                    selectedTexture = g_Texture;
+                }
+                else if (
+                    argument1 ==
+                    reinterpret_cast<fable_u32>(g_TitleTexture))
+                {
+                    selectedTexture = g_TitleTexture;
+                }
+                CTextureAttachView texture = {selectedTexture};
+                attachedTexture_ = selectedTexture;
                 g_RenderManagerCore.AttachTextureToStage(
                     argument0,
-                    argument1 != 0 ? &texture : 0);
+                    selectedTexture != 0 ? &texture : 0);
             }
             else if (
                 eventKind ==
@@ -636,6 +662,19 @@ namespace
                     succeeded_ = false;
                 }
                 RenderStateManager().RealiseRenderState();
+                FableD3DSetDwordState setRenderState =
+                    reinterpret_cast<FableD3DSetDwordState>(
+                        g_Device->vtable[57]);
+                if (attachedTexture_ == g_TitleTexture)
+                {
+                    Record(setRenderState(g_Device, 19, 5));
+                    Record(setRenderState(g_Device, 20, 6));
+                    Record(setRenderState(g_Device, 27, 1));
+                }
+                else
+                {
+                    Record(setRenderState(g_Device, 27, 0));
+                }
                 realisedStateBlock_ = true;
             }
             else if (
@@ -648,7 +687,8 @@ namespace
                         Render2DDrawListBlockView*>(
                             const_cast<FableVisualVertex*>(
                                 vertices_));
-                Render2DDrawListBlockView* end = begin + 6;
+                Render2DDrawListBlockView* end =
+                    begin + vertexCount_;
                 controller.begin00 = begin;
                 controller.end04 = end;
                 controller.CopyBlock(begin, end);
@@ -688,6 +728,8 @@ namespace
         }
 
         const FableVisualVertex* vertices_;
+        fable_u32 vertexCount_;
+        FableD3DTexture9* attachedTexture_;
         CTextureAssignmentView textures_[3];
         CRenderStateEntry captureSentinel_;
         bool succeeded_;
@@ -709,12 +751,19 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     fable_i32 artworkHeight,
     fable_i32 artworkPitch,
     fable_u32 artworkBitsPerPixel,
-    const void* artworkPixels)
+    const void* artworkPixels,
+    fable_i32 titleWidth,
+    fable_i32 titleHeight,
+    fable_i32 titlePitch,
+    fable_u32 titleBitsPerPixel,
+    const void* titlePixels)
 {
     FableShutdownVisualD3D9();
+    g_DeviceWindow = window;
     g_Direct3D = Direct3DCreate9(kD3DSdkVersion);
     if (g_Direct3D == 0)
     {
+        g_DeviceWindow = 0;
         return false;
     }
 
@@ -741,14 +790,36 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
             &g_Device)) ||
         g_Device == 0 ||
         !UploadArtwork(
+            g_Texture,
             artworkWidth,
             artworkHeight,
             artworkPitch,
             artworkBitsPerPixel,
-            artworkPixels))
+            artworkPixels,
+            false) ||
+        (
+            titlePixels != 0 &&
+            !UploadArtwork(
+                g_TitleTexture,
+                titleWidth,
+                titleHeight,
+                titlePitch,
+                titleBitsPerPixel,
+                titlePixels,
+                true)
+        ))
     {
         FableShutdownVisualD3D9();
         return false;
+    }
+    g_ArtworkWidth = artworkWidth;
+    g_ArtworkHeight =
+        artworkHeight < 0 ? -artworkHeight : artworkHeight;
+    if (g_TitleTexture != 0)
+    {
+        g_TitleWidth = titleWidth;
+        g_TitleHeight =
+            titleHeight < 0 ? -titleHeight : titleHeight;
     }
     memset(
         &g_RenderManagerCore,
@@ -832,28 +903,79 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     const float right = left + drawWidth;
     const float bottom = top + drawHeight;
 
-    FableVisualVertex vertices[6] = {
+    const float designScaleX =
+        static_cast<float>(drawWidth) /
+        static_cast<float>(g_ArtworkWidth);
+    const float designScaleY =
+        static_cast<float>(drawHeight) /
+        static_cast<float>(g_ArtworkHeight);
+    const bool titleUsesDesignCanvas =
+        g_TitleWidth == g_ArtworkWidth &&
+        g_TitleHeight == g_ArtworkHeight;
+    const float titleLeft =
+        left + (titleUsesDesignCanvas ? 0.0f : 70.0f) * designScaleX;
+    const float titleTop =
+        top + (titleUsesDesignCanvas ? 0.0f : 30.0f) * designScaleY;
+    const float titleRight =
+        titleLeft + g_TitleWidth * designScaleX;
+    const float titleBottom =
+        titleTop + g_TitleHeight * designScaleY;
+
+    FableVisualVertex vertices[12] = {
         {left, top, 0.0f, 1.0f, 0xFFFFFFFFu, 0, 0.0f, 0.0f},
         {right, top, 0.0f, 1.0f, 0xFFFFFFFFu, 0, 1.0f, 0.0f},
         {left, bottom, 0.0f, 1.0f, 0xFFFFFFFFu, 0, 0.0f, 1.0f},
         {left, bottom, 0.0f, 1.0f, 0xFFFFFFFFu, 0, 0.0f, 1.0f},
         {right, top, 0.0f, 1.0f, 0xFFFFFFFFu, 0, 1.0f, 0.0f},
-        {right, bottom, 0.0f, 1.0f, 0xFFFFFFFFu, 0, 1.0f, 1.0f}
+        {right, bottom, 0.0f, 1.0f, 0xFFFFFFFFu, 0, 1.0f, 1.0f},
+        {
+            titleLeft, titleTop, 0.0f, 1.0f,
+            0xFFFFFFFFu, 0, 0.0f, 0.0f
+        },
+        {
+            titleRight, titleTop, 0.0f, 1.0f,
+            0xFFFFFFFFu, 0, 1.0f, 0.0f
+        },
+        {
+            titleLeft, titleBottom, 0.0f, 1.0f,
+            0xFFFFFFFFu, 0, 0.0f, 1.0f
+        },
+        {
+            titleLeft, titleBottom, 0.0f, 1.0f,
+            0xFFFFFFFFu, 0, 0.0f, 1.0f
+        },
+        {
+            titleRight, titleTop, 0.0f, 1.0f,
+            0xFFFFFFFFu, 0, 1.0f, 0.0f
+        },
+        {
+            titleRight, titleBottom, 0.0f, 1.0f,
+            0xFFFFFFFFu, 0, 1.0f, 1.0f
+        }
     };
-    FableRender2DPlanRecord records[2];
+    FableRender2DPlanRecord records[4];
     memset(records, 0, sizeof(records));
     records[0].textureIdentity =
         reinterpret_cast<fable_u32>(g_Texture);
     records[0].payload.normal.stateBlock = 1;
     records[1] = records[0];
-    FableRender2DPlanEvent planEvents[8];
+    fable_u32 recordCount = 2;
+    if (g_TitleTexture != 0)
+    {
+        records[2].textureIdentity =
+            reinterpret_cast<fable_u32>(g_TitleTexture);
+        records[2].payload.normal.stateBlock = 1;
+        records[3] = records[2];
+        recordCount = 4;
+    }
+    FableRender2DPlanEvent planEvents[12];
     FableRender2DPlanOutput plan = {
         planEvents,
-        8,
+        12,
         0,
         false
     };
-    FableBuildRender2DBatchPlan(records, 2, plan);
+    FableBuildRender2DBatchPlan(records, recordCount, plan);
     if (plan.overflow)
     {
         return false;
@@ -930,7 +1052,9 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         reinterpret_cast<fable_u32>(&fullWindow);
     adapterInput.flushes = flushes;
     adapterInput.flushCount = flushCount;
-    VisualRender2DAdapter adapter(vertices);
+    VisualRender2DAdapter adapter(
+        vertices,
+        recordCount * 3);
     FableDriveRender2DDrawListAdapter(
         adapterInput,
         adapter);
@@ -947,11 +1071,59 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     return true;
 }
 
+bool FABLE_FASTCALL FableResizeVisualD3D9(
+    fable_i32 backBufferWidth,
+    fable_i32 backBufferHeight)
+{
+    if (
+        g_Device == 0 ||
+        g_DeviceWindow == 0 ||
+        backBufferWidth <= 0 ||
+        backBufferHeight <= 0)
+    {
+        return false;
+    }
+
+    FableD3DPresentParameters parameters = {};
+    parameters.backBufferWidth = backBufferWidth;
+    parameters.backBufferHeight = backBufferHeight;
+    parameters.backBufferCount = 1;
+    parameters.swapEffect = kD3DSwapEffectDiscard;
+    parameters.deviceWindow = g_DeviceWindow;
+    parameters.windowed = 1;
+    parameters.enableAutoDepthStencil = 1;
+    parameters.autoDepthStencilFormat = kD3DFormatD16;
+
+    FableD3DReset reset =
+        reinterpret_cast<FableD3DReset>(
+            g_Device->vtable[16]);
+    if (Failed(reset(g_Device, &parameters)))
+        return false;
+
+    fable_u8* displayManagerBytes =
+        reinterpret_cast<fable_u8*>(
+            g_DisplayManagerWindowStorage);
+    *reinterpret_cast<fable_i32*>(
+        displayManagerBytes + 0x194) = backBufferWidth;
+    *reinterpret_cast<fable_i32*>(
+        displayManagerBytes + 0x198) = backBufferHeight;
+    RenderStateManager().PD3DDevice0004 =
+        reinterpret_cast<FableRenderStateDevice*>(g_Device);
+    CaptureManager().captureCount2808 = 0;
+    CaptureManager().pendingRestoreCount280C = 0;
+    CaptureManager().captureOffset2814 = 1;
+    InitialiseSoldStateMetadata();
+    g_Presented = false;
+    return true;
+}
+
 void FABLE_FASTCALL FableShutdownVisualD3D9()
 {
+    ReleaseObject(g_TitleTexture);
     ReleaseObject(g_Texture);
     ReleaseObject(g_Device);
     ReleaseObject(g_Direct3D);
+    g_DeviceWindow = 0;
     memset(
         &g_RenderManagerCore,
         0,
@@ -964,6 +1136,8 @@ void FABLE_FASTCALL FableShutdownVisualD3D9()
     memset(g_SystemManagerStorage, 0, sizeof(g_SystemManagerStorage));
     g_ArtworkWidth = 0;
     g_ArtworkHeight = 0;
+    g_TitleWidth = 0;
+    g_TitleHeight = 0;
     g_Presented = false;
 }
 

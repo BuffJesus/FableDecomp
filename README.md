@@ -19,29 +19,30 @@ compiler and matches retail bytes). The reconstruction is deliberately *not* cou
 |---|---|---|
 | Analysis DB | Functions catalogued | **49,552** |
 | Analysis DB | Mechanically named (no `FUN_*`) | 100.000% |
-| Analysis DB | Usable reconstruction/navigation names | 99.211% |
-| Analysis DB | Calling convention known | 77.676% |
-| Analysis DB | Complete non-`undefined` prototype | 69.053% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **4,917** |
-| Reconstruction | Retail `.text` match (exact + relocation-normalized) | **4,586** (9.25%) |
-| Reconstruction | — of which byte-**identical** (no relocation masking) | 2,687 (5.42%) |
+| Analysis DB | Accepted naming quality | 99.211% |
+| Analysis DB | Usable reconstruction/navigation names | 99.915% |
+| Analysis DB | Calling convention known | 77.678% |
+| Analysis DB | Complete non-`undefined` prototype | 69.055% |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **5,051** |
+| Reconstruction | Verified functional or matching C++ | **4,736** (9.558%) |
+| Reconstruction | — of which byte-**identical** C++ | 2,705 (5.459%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 203 |
-| Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
+| Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 130 |
 | Auto-RE intake | Generated candidates / structural checker PASS | 632 / 619 |
-| Boot path | GFMain direct-call sites proven | **40 / 257** (15.56%) |
+| Boot path | GFMain direct-call sites proven | **49 / 257** (19.07%) |
 | Boot path | Callable authored GFMain phases | **2 / 10** (20.00%) |
-| Boot path | Current Phase 3 direct calls proven | **21 / 34** (61.76%) |
+| Boot path | Current Phase 3 direct calls proven | **29 / 34** (85.29%) |
 
 Counts above are from the 2026-07-26 canonical refresh: the VC7.1 compile/behaviour catalog,
 `rebuild/compile-gate/retail-parity.json`, and `rebuild/COVERAGE.md`. Generated agent code is tracked
 separately and is never counted as reconstructed merely because a structural checker accepted it.
 The successful refresh also synchronizes this table automatically; GitHub is updated at reviewed
 checkpoints rather than publishing live, unreviewed queue output.
-The first **5%** compiled-byte-match milestone (2,478 functions) is passed; current verified retail
-parity is **9.25%** of the 49,552-function catalog. The lower match count than an earlier README is an
-audit reconciliation, not deleted source: the unified gate now exposes every `DIFFER` and missing
-function-start oracle instead of mixing older mass-land and curated-subset totals.
-The 9.25% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
+The first **5%** compiled-byte-match milestone (2,478 functions) is passed; current verified
+functional-or-matching coverage is **9.558%** of the 49,552-function catalog. The unified gate
+exposes every `DIFFER` and missing function-start oracle instead of mixing older mass-land and
+curated-subset totals. Of that verified set, **5.459%** is byte-identical C++.
+The 9.558% figure is intentionally the strict, whole-executable denominator. The boot-path rows are
 a second lens over the 3,952-byte GFMain coordinator: they measure proven direct call sites and
 callable integration phases, not percentage of total engineering time. Repeated calls count
 separately because every occurrence must be linked in the correct lifetime and control-flow
@@ -114,9 +115,13 @@ There is now a real visible checkpoint as well:
 `FableTLC-Reconstruction-VisualCheckpoint.exe` follows the retail-matched `WinMain` and the same
 reconstructed Phase 1/2 startup path, runs the retail-matched progress-display setup leaf through
 the authored `GFInitialise` tail phase, then opens a responsive 1280x720 Win32 window containing
-the real retail `FRONTEND_BACKDROP_01` image when a local `frontend.big` is available. The build
-decodes its Lionhead-LZO/DXT1 payload, crops the allocated surface to the authored 640x480 frame,
-and embeds it without committing retail artwork; the project boot image remains the fallback.
+the real retail `FRONTEND_BACKDROP_01` image and both alpha title halves when a local
+`frontend.big` is available. The build decodes their Lionhead-LZO/DXT/ARGB payloads, crops the
+allocated surfaces, and places the complete 512x128 title at retail UI coordinates `(70,30)`
+over the authored 640x480 frame. It also resolves `UI_PRESS_START_TEXT.Font`
+through names.bin, decodes the game's `ENG_ARIAL_24` glyph atlas/metrics from
+fonts.big, and renders the localized prompt at its retail `(320,240)` position.
+No retail artwork is committed; the project boot image remains the fallback.
 The visual handoff consumes a balanced retail counted-pointer snapshot and the retail active-state
 query before creating that window. The static image now presents through D3D9 and recovered
 Render2D dependency bodies; it is not yet the complete retail renderer, runtime archive loader,
@@ -127,10 +132,30 @@ or game loop. Build it with `rebuild/build_bootstrap.ps1`, then launch it from
 
 | Visible milestone | Current state | What remains |
 |---|---|---|
-| First actual retail image | **Runnable now: `FRONTEND_BACKDROP_01` is decoded from `frontend.big` and presented through D3D9 plus recovered Render2D dependencies** | Runtime archive/texture ownership and the complete Lionhead parent renderer remain. |
+| First actual retail title frame | **Runnable now: the backdrop, `FRONTEND_TITLE_01/02_SPRITE`, and retail-font `Press Left Mouse Button To Continue` widget are decoded, alpha-composited at retail coordinates, and presented through D3D9 plus recovered Render2D dependencies** | Legal text, input-driven transition, animated forest layers, remaining menu widgets, and the complete Lionhead parent renderer remain. |
 | First recovered retail progress setup | **Coordinator, setup, 0x88-byte constructor, retained owner, counted getter, active-state query, and text-mode transition are connected; the primary/fallback text-bank selector is recovered** | Populate the retail bank owners, integrate the corrected 418-byte `StartProgress`, and recover texture initialization. |
 | Retail-rendered frame/frontend | **The 489-byte `RenderProgress` boundary is mapped and 15/17 direct dependencies are retail matches** | Recover the 5,101-byte retail-display builder and 3,344-byte 2D draw-list submitter, then replace the GDI bridge with the runtime render/present loop. |
-| First retail video | **Runnable now with `--retail-video`; `=lionhead`, `=attract`, and `=intro` select later shipped movies.** | Playback uses a narrow DirectShow bridge. Recover retail `CVideoSys`/`CMovie` ownership and sequencing before calling it the native movie path. |
+| First retail video | **Runnable now with `--retail-video`: Lionhead → Microsoft → `intro_comp`, advanced by real end-of-stream events; Escape skips each movie. `=microsoft`, `=lionhead`, `=attract`, and `=intro` select one movie.** | The native probe decodes, publishes, consumes, and copies all 419 Lionhead frames through real D3D9 textures without a child window. Reconstructed `CTexture` wrapping and the `CMovie::Draw` sprite tail still need to replace the visible compatibility bridge. |
+
+The `-VerifyBootToFrontend` smoke now proves the complete visible handoff:
+all three graphs close, the recovered nine-step post-movie startup order is
+crossed, and the rendered frontend checkpoint remains on screen. The bank,
+engine, and frontend actions behind that order remain explicit authored
+boundaries.
+The D3D9 checkpoint also resets its windowed backbuffer on every nonzero
+`WM_SIZE`, refreshes the recovered render-state cache, and redraws immediately.
+The maximized-scale gate compares 30 samples against the decoded retail
+backdrop; the current 2560x1369 client passes with a 2.31 mean channel error
+with the retail press-start overlay present.
+The optional `rebuild/upscale_retail_videos.ps1 -Movie boot -InstallVideo2X`
+command builds a 2x Real-ESRGAN cache without modifying retail files.
+Add `--retail-video-upscaled` to use completed enhanced copies; untouched
+retail files remain the default parity source.
+Menu/UI artwork will use the same policy as it is integrated: optional cached
+2x assets, explicit selection, and independent retail fallback. Transparent
+sprites need alpha-aware processing and text should be rerendered from retail
+font metrics where possible. The implementation and resume checklist are in
+[`docs/UI_UPSCALE_PLAN.md`](docs/UI_UPSCALE_PLAN.md).
 
 The “actual image” milestone is therefore reached, but “the game is rendering” is not. Retail
 inspection and a reviewed Ghidra boundary repair establish one 418-byte
@@ -138,7 +163,7 @@ inspection and a reviewed Ghidra boundary repair establish one 418-byte
 `0x00499AAD` catalog row was a false mid-function start and is now excluded
 reproducibly. The nearest honest engine milestone remains the game's complete renderer and
 interactive frontend rather than the now-proven sidecar movie path. That is not one or two functions away: only two of ten GFMain
-integration phases are callable, even though 40 of its 257 direct call sites and 21 of Phase 3's
+integration phases are callable, even though 49 of its 257 direct call sites and 29 of Phase 3's
 34 sites are already proven. These dependency counts are more informative than converting them
 into a date estimate.
 
@@ -154,12 +179,16 @@ constructor, and counted-pointer assignment paths. Typing the caller's temporary
 cleanup completed the Phase 2 ownership closure; Phase 3 settings and persistence are now the next
 runnable boundary.
 
-Phase 3 now has 21 of 34 direct calls proven. Fifteen are honest reuse of the already-matched
+Phase 3 now has 29 of 34 direct calls proven. Fifteen are honest reuse of the already-matched
 string/profile lifetime targets; another pair are seven-byte primary and secondary text-alignment
 setters at `0x009BC890` and `0x009BC8A0`. Their adjacent retail globals remain address-bearing
 until the settings caller proves whether they are channels or fields of one owner. Two additional
 seven-byte cleanup leaves restore the shared `CBase` vtable; their address-bearing function names
 preserve the still-unknown derived persistence owners.
+The file-read path is now closed through exact
+`CCharString::LoadFromFile @ 0x0099F2E0`, `CStringParser @ 0x00404720`,
+and the text `CPersistContext` constructor at `0x009BADD0`, with linked
+fixtures covering their construction, ownership, and callback plumbing.
 
 The newest dependency also closes a naming trap. Donor PDB/BSim evidence called
 `0x00415530` a virtual `CActionDoCreatureAction::GetActionName`, but the donor ABI loads a hidden
@@ -179,19 +208,19 @@ confirm `CCharString::ToWideString`. Its readable 45-byte implementation, the 13
 relocation-match retail and pass focused construction, sharing, copy, and destruction fixtures.
 Both corrections are durable manual overrides and documented in the ABI-corrections ledger.
 
-The next language-path pair is now identified without promoting a false match:
+The next language-path pair is now promoted with exact parity:
 `0x0099BFF0` is the fastcall
 `operator+(const wchar_t*, const CWideString&)`, assembling
 `L"Data\\lang\\" + language`, and `0x0099BF30` is
 `operator+(const CWideString&, const wchar_t*)`, appending
-`L"\\lang_settings.txt"`. The readable VC7.1 forms reproduce the hidden-result ABI but still
-differ from retail's inlined copy/destruction scheduling, so Phase 3 remains honestly at 21/34
-until the byte/behavior gate closes.
+`L"\\lang_settings.txt"`. Their 134-byte and 177-byte VC7.1 objects are
+relocation-normalized retail matches, and linked fixtures prove hidden-result,
+counted ownership, refcount, and source-preservation behavior.
 
 The project-owner-provided [boot-screen concept](rebuild/assets/boot/fabledecomp_boot_concept.png)
 remains the dependency-safe fallback. When a retail bank is found, the build instead extracts
-`FRONTEND_BACKDROP_01` into the ignored build tree and converts it to the VC7.1/GDI resource.
-Neither the decoded retail image nor generated bitmap is committed.
+`FRONTEND_BACKDROP_01` and both title halves into the ignored build tree and converts them to
+alpha-capable VC7.1 resources. Neither decoded retail image nor generated bitmap is committed.
 
 The unattended Wave 3 lane has moved from the co-op event/package codecs into ForgeFSE Quest
 wrappers. The current refresh validates 452/452 recommended Quest bindings against their exact
@@ -340,6 +369,7 @@ Promotion queues and the backlog are generated under `rebuild/backlog/`.
 | `docs/SOURCE_ARCHITECTURE.md` | Address sharding, readable module design, and C++23 policy. |
 | `docs/COOP_REVIVAL.md` | Retail evidence, historical context, and the grounded Alter Ego revival plan. |
 | `docs/FABLE_TLC_REPORTED_BUGS.md` | Reported defects and the evidence template used before promotion to confirmed issues. |
+| `docs/UI_UPSCALE_PLAN.md` | Optional 2x menu/UI cache design, alpha/font rules, validation gates, and resume checklist. |
 | `rebuild/` | The buildable reconstruction: curated source, tests, oracles, compile gate, coverage. |
 | `rebuild/RUNNABLE.md` | Staged executable-integration status and the retail boot-chain blockers. |
 | `lift/` | Auto-RE agent lane: candidate reports, config, durable run state. |
