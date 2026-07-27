@@ -8,9 +8,9 @@ bootstrap as a running game.
 
 | Measure | Proven | Scope |
 |---|---:|---|
-| GFMain direct-call sites | 40/257 (15.56%) | All ten call clusters; repeated call sites count separately |
+| GFMain direct-call sites | 49/257 (19.07%) | All ten call clusters; repeated call sites count separately |
 | Callable authored GFMain phases | 2/10 (20.00%) | Integration checkpoints, not retail GFMain byte parity |
-| Current Phase 3 direct calls | 21/34 (61.76%) | Settings, persistence, and IME cluster |
+| Current Phase 3 direct calls | 29/34 (85.29%) | Settings, persistence, and IME cluster |
 
 These are dependency counters, not an estimate of engineering time or total
 game completion. Whole-executable verified parity remains the stricter public
@@ -35,11 +35,17 @@ and failure-policy sequence to the Phase 3 boundary.
 `GFInitialise` coordinator and its retail-matched progress-display leaf through
 an explicit engine boundary, then opens a responsive 1280x720 Win32 window.
 When a retail `frontend.big` is available, the build decodes
-`FRONTEND_BACKDROP_01` through the recovered Lionhead-LZO/DXT1 tooling,
-crops it to its authored 640x480 frame, and embeds it in the executable.
+`FRONTEND_BACKDROP_01` and the two ARGB title halves through the recovered
+Lionhead-LZO/DXT tooling, crops them to their authored frames, joins the title
+at its retail `+256` child offset, and embeds them in the executable.
 The authored project image remains a dependency-safe fallback. This is the
-first genuine game-derived image in the reconstructed process. An authored
-D3D9 bridge now uploads it as a managed texture. Two retail-shaped triangle
+first genuine game-derived title frame in the reconstructed process. An authored
+D3D9 bridge uploads the backdrop and alpha title as managed textures and places
+the title at the decoded UI parent coordinate `(70,30)`. The build also
+resolves the press-start widget's `CDefString` font reference to
+`ENG_ARIAL_24`, decodes that font's embedded retail TGA atlas and glyph
+metrics from fonts.big, and draws the localized line centered at its decoded
+`(320,240)` coordinate. Four retail-shaped triangle
 records pass through the recovered Render2D batch planner, whose triangle-list
 flush is executed on a real Win32 D3D9 device; GDI is retained only as a
 failure fallback. Texture binding now executes the exact recovered 79-byte
@@ -84,6 +90,11 @@ locks the recovered combined-projection dirty bit to `0x80`.
 The visible D3D9 checkpoint now executes both seams: planner output is
 translated into lifecycle flushes, and successful presentation requires the
 adapter to observe and complete a real `DrawPrimitiveUP` event.
+Windowed presentation now handles `WM_SIZE` by resetting the D3D9 backbuffer
+to the new client dimensions, restoring the tracked-state metadata, and
+redrawing. `smoke_visual_checkpoint.ps1 -VerifyMaximizedScale` maximizes the
+window and compares a 30-point rendered sample grid with the decoded retail
+backdrop, preventing the old fixed-1280x720 clipping/stretch regression.
 
 The full GFInitialise coordinator is promoted and connected:
 `GFInitialise @ 0x004022B0` is a 311-byte relocation-normalized match with
@@ -115,7 +126,7 @@ singleton retrieval path.
 The authored Phase 2 integration fixture proves setting propagation,
 optional installer setup, startup-latch handling, async failure policy,
 and balanced counted ownership on both enabled and skipped paths.
-Phase 3 has 21 of 34 direct calls proven. The first correction replaces
+Phase 3 has 29 of 34 direct calls proven. The first correction replaces
 a false donor `GetActionName` label with a TLC-specific no-argument
 default-language factory. Its readable 19-byte body constructs `"English"`
 in the fastcall hidden return slot and now has a real lifetime fixture.
@@ -123,7 +134,13 @@ The next corrected call is `CCharString::ToWideString`: its 45-byte body
 and the 13-byte conversion factory plus 66-byte counted-storage copy
 constructor all relocation-match and pass focused ownership fixtures.
 The shared string/profile targets, two seven-byte text-alignment setters,
-and two folded seven-byte CBase vtable restores remain proven as well.
+and two folded seven-byte CBase vtable restores remain proven as well. The
+two corrected wide-string concatenation overloads at `0x0099BF30` and
+`0x0099BFF0` are now 177-byte and 134-byte relocation-normalized matches with
+linked hidden-result/refcount behavior fixtures.
+The optional settings-file branch now continues through exact
+`CCharString::LoadFromFile @ 0x0099F2E0`, `CStringParser @ 0x00404720`, and
+the text `CPersistContext` constructor at `0x009BADD0`.
 
 **Stage 0 remains the smallest linker proof:** VC7.1 links a console
 PE containing
@@ -185,13 +202,101 @@ rebuild/build/bootstrap-Release/FableTLC-Reconstruction-VisualCheckpoint.exe --r
 powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 -RetailVideo
 ```
 
-The executable resolves the read-only Steam install and plays
-`data/Video/microsoft_logo.wmv` in its reconstructed window through a compact
-DirectShow bridge. The smoke gate requires the playback graph to enter the
-running state and proves that two captured window frames 600 ms apart differ.
-`--retail-video=lionhead`, `--retail-video=attract`, and
-`--retail-video=intro` select other shipped movies. This proves decoded retail
-motion, but does not claim the recovered `CVideoSys`/`CMovie` path.
+The executable resolves the read-only Steam install and follows the recovered
+boot order: `lionhead_logo.wmv`, `microsoft_logo.wmv`, then
+`intro_comp.wmv`. It advances on DirectShow end-of-stream events and reveals
+the static frontend checkpoint after the intro completes. Escape skips only
+the current movie and advances to the next one, matching the retail interaction.
+The smoke gate
+requires the playback graph to enter the running state and proves that two
+captured window frames 600 ms apart differ. This stronger gate verifies both
+pre-intro transitions:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 `
+  -RetailVideo -Movie boot -VerifyBootSequence -TimeoutSeconds 45
+```
+
+The skip gate sends Escape to movies 1 and 2 and requires movie 3 to start:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 `
+  -RetailVideo -Movie boot -VerifyEscapeSkip -TimeoutSeconds 15
+```
+
+The complete visible handoff gate skips all three, requires the frontend
+checkpoint, verifies that the DirectShow child window was released, and checks
+the revealed frame for real color variation:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 `
+  -RetailVideo -Movie boot -VerifyBootToFrontend -OriginalVideo `
+  -TimeoutSeconds 25
+```
+
+`--retail-video=microsoft`, `--retail-video=lionhead`,
+`--retail-video=attract`, and `--retail-video=intro` select one shipped movie.
+The `CVideoSys` and `CMovie` method map, ownership, playback state, critical
+section, frame event, and texture handoff are now recovered and documented in
+`docs/VIDEO_SYSTEM_RE.md`. Their verified binary layouts compile from
+`rebuild/include/fable_video_system.h`. The live compatibility path still uses
+a DirectShow child window for presentation. The separate native graph probe
+already receives every decoded sample into a real managed D3D9 texture without
+a child window; reconstructed `CTexture` ownership plus native `CMovie::Draw`
+remain to make that path visible.
+The first seven native handoff/state leaves are promoted with exact retail object
+parity and behavior gates: `CMovie::SetMovie @ 0x00548510`,
+`CMovie::IsPlaying @ 0x00548520`,
+`CVideoSys::WaitForState @ 0x00A3B0F0`,
+`CVideoSys::AttemptToPlay @ 0x00A3B1A0`,
+`CVideoSys::Pause @ 0x00A3B1C0`,
+`CVideoSys::Stop @ 0x00A3B1F0`, and
+`CVideoSys::GetTexture @ 0x00A3B320`.
+
+### Optional AI-enhanced boot movies
+
+The shipped startup movies are only 640 pixels wide. A reproducible, opt-in
+preprocessing path now generates 2x copies with the video-specific
+`realesr-animevideov3` model through portable Video2X/NCNN/Vulkan:
+
+```powershell
+rebuild/upscale_retail_videos.ps1 -Movie boot -InstallVideo2X
+```
+
+The script pins Video2X 6.4.0 and verifies its downloaded archive against the
+recorded SHA-256 before extraction. It streams frames through the GPU, retains
+the original frame count and stereo WMA audio, encodes a DirectShow-compatible
+WMV2 result at 8 Mbit/s, and validates dimensions, video-frame count, and
+audio-packet count before atomically publishing each file under the ignored
+`rebuild/build/bootstrap-Release/upscaled-video/` cache. Retail files are never
+modified.
+
+`--retail-video-upscaled` opts into each completed enhanced file and falls
+back independently to its retail source when absent. The title includes
+`AI 2x` when an enhanced file is live. Untouched retail files remain the
+default parity source. The focused selection gate is:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 `
+  -RetailVideo -Movie lionhead -VerifyUpscaled -TimeoutSeconds 15
+```
+
+This is a presentation enhancement, not a retail-parity claim. Super-resolution
+can infer plausible edge detail and may introduce temporal shimmer or altered
+fine texture. The untouched-file override remains the accuracy oracle.
+
+### Planned AI-enhanced menu/UI assets
+
+The equivalent UI path is documented but not implemented yet. It will use an
+ignored `upscaled-ui/` cache and explicit `--retail-ui-upscaled` selection,
+with independent fallback for every asset. Backdrops can be enhanced directly;
+transparent sprites must separate/recombine alpha, tiled backgrounds must be
+stitched before inference, and text should be rerendered from decoded retail
+glyph metrics where possible instead of allowing AI to reshape letters.
+
+See `docs/UI_UPSCALE_PLAN.md` for the proposed command, cache manifests,
+alpha/seam validation gates, exact first asset set, and next-session resume
+checklist.
 
 Stages 2 and 3 use explicit integration boundaries and are not claimed as a
 retail-matching GFMain. The visual checkpoint can now present one build-time
@@ -200,6 +305,51 @@ seams, but it does **not** yet execute the complete Lionhead parent coordinator,
 initialize the complete engine-service
 graph, load archives at runtime, run the native retail movie subsystem, or
 enter the game loop.
+
+## Remaining accurate-startup closure
+
+The visual checkpoint is an evidence-backed checkpoint, not yet the complete
+retail startup. The remaining work, in execution order, is:
+
+1. **Close GFMain Phases 3-10.** Only authored Phases 1 and 2 are callable.
+   The unresolved path covers settings/persistence/IME, the root child
+   hierarchy, retail banks and INI files, save paths/fonts/display resources,
+   command-line/window policy, EULA/hardware configuration, engine primitive
+   assembly, and the final GFInitialise/launch/error/cleanup branches.
+2. **Replace integration-owned startup objects.** GFInitialise and the visible
+   progress leaf execute, but the root engine, display, progress-resource, and
+   service-singleton graph are still controlled boundary objects rather than
+   the retail ownership graph.
+3. **Replace the post-movie service boundaries.** The visual executable now
+   crosses the recovered `CNewFrontendGameComponent::Run @ 0x0042EC7C` order:
+   runtime opens of `frontend.big`, localized `text.big`, and `shaders.big`,
+   then `Init2`, `InitialiseEngine`, frontend construction, first clear/swap,
+   and `CFrontEndManager::ChangeStateFirstTime`. A focused fixture proves the
+   nine-step bank path, six-step no-bank path, and failure short-circuiting.
+   The individual bank/engine/frontend actions remain authored boundaries.
+4. **Enter the real frontend loop.** The retail loop performs system update,
+   input, update, interpolation, and draw; it also clears stale input after
+   attract playback and owns the title/menu transition into either the main
+   game or the legacy frontend component. The current post-movie image is a
+   static build-time extraction, not this interactive loop.
+5. **Replace the movie presentation seam.** Playback order, completion,
+   ownership, state, synchronization, and Escape behavior are recovered, but
+   frames still use a DirectShow child window. Native parity requires the
+   recovered UI texture copy and `CMovie::Draw` sprite submission. The exact
+   `0x180` renderer subclass now negotiates the untouched Lionhead graph and
+   receives all 419 changing RGB24 frames without a child window; its
+   `DoRenderSample` path locks, converts, and unlocks a real managed
+   A8R8G8B8 `IDirect3DTexture9`, then publishes it and signals the recovered
+   event. The probe consumes that auto-reset event and copies the published
+   texture into a second managed D3D9 texture under the video critical section,
+   matching the synchronization/copy prefix of `CMovie::Draw`. Reconstructed
+   `CTexture` wrapping, sprite submission, and visible-path replacement are the
+   remaining seam. All four helpers directly under
+   `CTexture::CopyFromTexture` are now exact retail matches; its coordinator
+   and the `CMovie::Draw` sprite tail remain.
+6. **Close renderer/resource lifecycle.** Runtime archive/texture ownership,
+   the complete `Render2DDrawList` parent, input/audio/localization services,
+   device-reset/error paths, and orderly frontend shutdown are not yet live.
 
 ## Retail boot spine
 
@@ -240,7 +390,7 @@ These are integration units, not invented retail functions.
 |---:|---|---|---:|---:|---:|---|
 | 1 | `0x00402510`-`0x004025A6` | runtime and project bootstrap | 9 | 9 | 7 | CSystemManagerInit; GetProjectPath; SetCurrentPath; InitialiseConsoleVariables |
 | 2 | `0x004025A6`-`0x00402668` | basic-install and failure-policy bootstrap | 7 | 7 | 7 | CFileInstallerSingleton::Get; startup latch; SetEnableFailureHandling |
-| 3 | `0x00402668`-`0x0040284E` | settings, persistence, and IME | 34 | 23 | 21 | FableGetDefaultLanguageName_00415530; PathExists; LoadFromFile; CPersistContext; LoadIMESettings |
+| 3 | `0x00402668`-`0x0040284E` | settings, persistence, and IME | 34 | 23 | 29 | FableGetDefaultLanguageName_00415530; PathExists; LoadFromFile; CPersistContext; LoadIMESettings |
 | 4 | `0x0040284E`-`0x004029DC` | root child hierarchy | 29 | 5 | 0 | EnableNavigator; AddChild |
 | 5 | `0x004029DC`-`0x00402CE6` | retail banks and INI files | 65 | 15 | 0 | OpenRetailBank; OpenIniFile; GetDVDDialogueDir |
 | 6 | `0x00402CE6`-`0x00403082` | save paths, fonts, and display resources | 61 | 24 | 2 | LoadTable; MyDocuments_CheckWritePermissions; GetFontBankName; AddChildPrimitive |
@@ -278,8 +428,11 @@ These are integration units, not invented retail functions.
 | 3 | `0x004026D2` | `0x0099B510` | ~CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp) |
 | 3 | `0x004026DB` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
 | 3 | `0x00402713` | `0x0099E4B0` | CCharString::CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_DefaultConstructor_0099e4b0.cpp) |
+| 3 | `0x00402724` | `0x0099F2E0` | CCharString::LoadFromFile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_LoadFromFile_0099f2e0.cpp) |
 | 3 | `0x00402735` | `0x0099EBF0` | CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp) |
+| 3 | `0x00402745` | `0x00404720` | CStringParser | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CStringParser_Constructor_00404720.cpp) |
 | 3 | `0x0040274E` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
+| 3 | `0x00402765` | `0x009BADD0` | CPersistContext | `MATCH` | [source](../rebuild/src/compiled/00/9b/CPersistContext_TextConstructor_009badd0.cpp) |
 | 3 | `0x004027E3` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
 | 3 | `0x004027EC` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
 | 3 | `0x004027F5` | `0x0099A2E0` | FableRestoreCBaseVTable_0099A2E0 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a2e0.cpp) |

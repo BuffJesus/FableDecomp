@@ -71,6 +71,13 @@ of a clean PE32 at ImageBase `0x400000`.
   via `skeleton=mesh_rw.clone_skeleton(donor)` (bone blocks cloned raw; weight bytes sum
   exactly 255 retail-wide, max 3 influences); recipe: `docs/MESH_COMPOSE.md`.
 
+- Fable name hash = **crc0** = reflected CRC-32 poly 0xEDB88320, **seed 0, NO final inversion**
+  (`CCharString::ComputeCRC32` 0x00404310) — keys names.bin CRCs, game.bin field tags, and the
+  `map<unsigned_long,CDefClassInfo>` def registry (13593/13593 retail names verified). NOT
+  `0xFFFFFFFF-crc32`, NOT zlib crc32. A game.bin def APPEND is engine-resolvable only if (1) the new
+  names.bin CRC is crc0 (forge `bin.cpp` fixed) AND (2) the cloned payload's self global-entry-index
+  back-refs are retargeted to the new landing index (component sub-defs are SHARED, leave them). Counts
+  were never the bug. In-place `setEntryData` field edits sidestep both. See docs/DEF_LOAD_CONTRACT.md.
 - Save edits: any SAVED_ENTITIES cell edit must patch the 36-byte cell descriptor
   (recLen=29+clen / clen / ulen) AND sectionLen AND chunk1_ulen, then re-sign — patching only
   the section length mis-frames the engine's record walk. Use tools/save_edit.py

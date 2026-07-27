@@ -1,27 +1,202 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 (first changing retail-video checkpoint).*
+*Last updated: 2026-07-26 (retail boot/title path, maximize fix, retail
+press-start font, and optional UI-upscale resume plan).*
 
-## First changing retail-video checkpoint (2026-07-26)
+## Retail boot-movie sequence + CVideoSys/CMovie recovery (2026-07-26)
 
 - `FableTLC-Reconstruction-VisualCheckpoint.exe --retail-video` now resolves
-  the read-only Steam install and plays the shipped
-  `data/Video/microsoft_logo.wmv` inside the reconstructed boot window.
-  `--retail-video=lionhead`, `=attract`, and `=intro` select later shipped
-  movies.
+  the read-only Steam install and follows the sequence recovered from
+  `CNewFrontendGameComponent::Run @ 0x0042EC7C`: `lionhead_logo.wmv`,
+  `microsoft_logo.wmv`, then `intro_comp.wmv`. It advances on DirectShow
+  end-of-stream events and exposes the static frontend checkpoint only after
+  the intro completes. Escape skips the current movie and advances to the next;
+  the child video window drains keyboard messages to the parent so this works
+  with either window focused. `=microsoft`, `=lionhead`, `=attract`, and
+  `=intro` select one movie.
 - Playback uses an isolated DirectShow graph/child video window over the live
-  D3D9 + recovered Render2D static checkpoint. It is deliberately described
-  as a visual bridge, not recovered `CVideoSys`/`CMovie` ownership or native
-  GFMain movie sequencing.
+  D3D9 + recovered Render2D static checkpoint. The remaining compatibility
+  seam is presentation: the now-bounded retail `CTextureRenderer` and native
+  `CMovie::Draw` texture copy/submission are not live yet.
+- `CVideoSys` is recovered as a `0x8C`-byte DirectShow owner, including graph
+  interfaces, playback state, custom texture renderer, critical section,
+  frame-ready event, decoder texture, init/process/close lifecycle, and all
+  17 method boundaries. `CMovie` singleton ownership, state transition,
+  update, draw, filename, playing flag, and teardown are recovered too.
+  `CTextureRenderer` constructor, media-type validation/setup,
+  `DoRenderSample`, and destructor are bounded as well. Its sample callback
+  converts decoded RGB24 rows to RGBA/RGB565 under the `CVideoSys` lock,
+  publishes the texture, and signals the frame event.
+  Its exact A8R8G8B8/A1R5G5B5 conversion core is now live and behavior-tested
+  as `FableConvertVideoRgb24Frame`; the native probe now also exercises the
+  DirectShow base renderer and a real D3D9 texture/sample handoff.
+  Seven native handoff/state leaves are now owned, behavior-tested, and exact
+  relocation matches: `CMovie::SetMovie @ 0x00548510` (11 bytes),
+  `CMovie::IsPlaying @ 0x00548520` (7 bytes),
+  `CVideoSys::WaitForState @ 0x00A3B0F0` (52 bytes),
+  `CVideoSys::AttemptToPlay @ 0x00A3B1A0` (30 bytes),
+  `CVideoSys::Pause @ 0x00A3B1C0` (43 bytes),
+  `CVideoSys::Stop @ 0x00A3B1F0` (43 bytes), and
+  `CVideoSys::GetTexture @ 0x00A3B320` (10 bytes).
+- The base-renderer dependency is no longer speculative:
+  `rebuild/build_directshow_baseclasses.ps1` pins Microsoft’s MIT-licensed
+  Windows classic-samples source, compiles all 31 base-class units with VC7.1,
+  produces `strmbase.lib`, and proves `sizeof(CBaseVideoRenderer) == 0x160`.
+  A constructed subclass with the recovered tail is exactly `0x180`, matching
+  both the retail field boundary and allocation.
+  The graph probe then installs that subclass as the renderer for untouched
+  `lionhead_logo.wmv`: 419/419 changing 640x480 RGB24 frames arrived through
+  `DoRenderSample`, were converted into a real managed A8R8G8B8
+  `IDirect3DTexture9` through `LockRect`/`UnlockRect`, published at
+  `CVideoSys +0x80` under `+0x64` only after unlock, and signaled `+0x7C`,
+  followed by `EC_COMPLETE`, with no video child window. The probe also
+  consumes every auto-reset frame event and copies the published texture into
+  a separate managed D3D9 presentation texture under the same critical
+  section, matching the synchronization/copy prefix of `CMovie::Draw`.
+  `ghidra_out/labels_video_system_recovery.tsv` preserves the 35-entry method
+  and startup map. Exact recovered layout views now compile from
+  `rebuild/include/fable_video_system.h`. Full notes:
+  `docs/VIDEO_SYSTEM_RE.md`.
 - `smoke_visual_checkpoint.ps1 -RetailVideo` requires the graph to reach the
   running state, captures the actual window twice 600 ms apart, requires
   different SHA-256 frame hashes, sends `WM_CLOSE`, and requires exit zero.
-  The latest full-intro run observed hashes `A464B7FFF7E3...` and
-  `78AA5740DEDE...`.
+  `-Movie boot -VerifyBootSequence -TimeoutSeconds 45` additionally requires
+  real completion of Lionhead and Microsoft and entry into movie 3/3. Latest
+  result: `Retail WMV Playing 3/3 - Intro`, changed frame hashes
+  `4C588BF57530...` and `C48318B38837...`, exit zero.
+- `-Movie boot -VerifyEscapeSkip -TimeoutSeconds 15` sends Escape during
+  Lionhead and Microsoft and requires entry into movie 3/3. The gate passes
+  with changed Intro frame hashes and exit zero.
+- `-Movie boot -VerifyBootToFrontend -OriginalVideo -TimeoutSeconds 25`
+  skips all three movies, requires the ordered post-movie startup checkpoint,
+  proves the DirectShow child is gone, and samples the revealed image. The
+  executable now crosses an explicit nine-step seam matching retail's three
+  bank opens, `Init2`, engine/frontend initialization, first clear/swap, and
+  `ChangeStateFirstTime`. The services behind those steps remain authored
+  boundaries. The revealed frame now includes both retail title-sprite halves,
+  alpha-composited at the decoded `(70,30)` parent coordinate. Latest result:
+  115 sampled colors, frame hash `9B03F5627C83...`, child closed, exit zero.
 - Full Release bootstrap, the original static-window smoke, and the changing
-  video smoke pass. The next honest visual target remains interactive retail
-  rendering: runtime archive/texture ownership, the complete
-  `Render2DDrawList` parent, and eventually scene/world submission.
+  single-video and boot-sequence smokes pass. The latest combined regression
+  also skips all three original movies to a stable frontend with the child
+  closed, while the AI 2x Lionhead cache still presents changing frames and
+  exits cleanly. Next video-specific target: put the proven decoder and
+  presentation textures behind reconstructed `CTexture` wrappers, then connect
+  the sprite-construction/submission tail of recovered `CMovie::Draw`.
+  `CTexture::CopyFromTexture @ 0x009FA4E0` and all four direct `CSurface`
+  dependencies are now exact and behavior-gated, including the full 446-byte
+  surface-copy/conversion body. The texture coordinator's true body is
+  289 bytes; the older 286-byte catalog boundary omitted its three-byte
+  stack-allocation prologue.
+- Maximized frontend scaling is now gated. `WM_SIZE` resets the windowed D3D9
+  backbuffer before rebuilding the recovered state metadata and redrawing;
+  both the direct-title and Escape-skipped boot-to-frontend paths pass at a
+  2560x1369 client size. The 30-point retail-backdrop comparison reports a
+  2.31 mean per-channel error with the press-start overlay present, replacing
+  the former clipped 1280x720 surface.
+- The revealed checkpoint now includes the retail press-start widget.
+  `CDefString` decoding was corrected from an inline-string assumption to its
+  actual names.bin-relative u32 offset, proving `UI_PRESS_START_TEXT.Font =
+  ENG_ARIAL_24`. `tools/render_fable_static_font.py` decodes that
+  `FONT_ENGLISH_MAIN` entry's face/style metadata, `<ffffhhh>` glyph metrics,
+  UVs, and embedded 256x256 RGBA TGA, then renders the localized
+  `Press Left Mouse Button To Continue` at `(320,240)`. The full three-movie
+  Escape-to-frontend plus maximize smoke passes with frame hash
+  `79910A63B8B7...`.
+
+## Bedtime resume point: title/menu integration + optional AI UI cache
+
+The immediate visual target is now the complete press-start scene and its
+transition into the first main-menu screen. Resume in this order:
+
+1. Port the streaming Unicode font metadata/`GlyphData` decoder so
+   `UI_LEGAL_TEXT` can render its copyright symbol from retail font data.
+2. Decode/stitch and render the four forest frames (graphic ids 206-229) and
+   three sunbeam overlays (230-247), preserving their decoded 8-second and
+   2-second alpha transitions.
+3. Wire left mouse release through the recovered press-start button/action
+   boundary and change to the main-menu widget tree.
+4. Integrate the first main-menu button/text/pointer set from frontend.bin.
+5. Keep advancing GFMain Phases 3-10 and replacing authored post-movie
+   services with reconstructed retail owners in parallel with visible work.
+
+Menu/UI super-resolution is approved as an optional presentation feature.
+Follow the video-cache policy: installed/decoded retail assets stay untouched
+and remain the only parity oracle; enhanced results live in an ignored cache,
+require an explicit runtime option, and fall back to retail independently.
+The planned first targets are `FRONTEND_BACKDROP_01`, the composed two-part
+title, the forest/sunbeam frames, then main-menu sprites and fonts.
+
+Do not run ordinary RGB AI inference over premultiplied transparent sprites.
+Separate alpha, unpremultiply/extrude RGB edges, upscale RGB, scale alpha
+deterministically, and recombine. Stitch tiled backgrounds before inference to
+avoid seams. Prefer rerendering text at higher physical resolution from the
+decoded glyph metrics; AI glyph enhancement is comparison-only because it can
+deform repeated characters and punctuation.
+
+The proposed interfaces are `rebuild/upscale_retail_ui.ps1`, ignored
+`rebuild/build/bootstrap-Release/upscaled-ui/`, and
+`--retail-ui-upscaled`/`AI UI 2x`. They do **not** exist yet. Each cached
+asset needs a manifest containing source/model hashes, scale, alpha strategy,
+dimensions, and validation results. Full design and acceptance gates:
+`docs/UI_UPSCALE_PLAN.md`.
+
+Last verified state before stopping:
+
+- full Release bootstrap passed;
+- all three movies can be skipped with Escape into the frontend checkpoint;
+- title, retail-font prompt, DirectShow-child closure, and maximize smoke
+  passed at 2560x1369 (`scale-error=2.31`);
+- focused frontend/font tests pass and frontend.bin is 810/810 clean;
+- Ghidra is released with zero processes and zero locks.
+
+- The recovered conversion is now a standalone integration unit, and
+  `FablePublishDecodedVideoFrame` supplies the lock/publication/event shell
+  around it. Its focused behavior gate passes for both successful publication
+  and invalid-format rejection. `build_directshow_baseclasses.ps1` is now
+  restart-safe when its pinned source checkout is interrupted.
+
+The next complete-startup gates are GFMain Phases 3-10, replacement of the
+integration-owned engine/service graph, concrete runtime bank/init services
+behind the now-executable `CNewFrontendGameComponent::Run` post-movie order,
+and its input/update/interpolation/draw frontend loop.
+`rebuild/RUNNABLE.md` now carries the ordered closure list.
+
+The Phase 3 instruction range is now independently decoded. It profiles
+`Setup Language`, constructs
+`Data\lang\<default-language>\lang_settings.txt`, and only when that file
+exists opens/parses it, transfers `LeftAlignText`, `NoHangulWordWrap`, and
+`DisableCapsLock` with zero defaults, loads IME settings, and sorts the parse
+tree. Both text-alignment globals are applied even when the file is absent.
+The two wide-string concatenation callees at `0x0099BF30` and `0x0099BFF0`
+are promoted into the canonical catalog. Their 177-byte and 134-byte VC7.1
+objects are exact after relocation normalization, and linked fixtures prove
+the hidden-result ABI, refcount/lifetime behavior, and unchanged source
+operands. Phase 3 therefore has 29 of 34 direct calls proven after promotion
+of exact `CAFile::PathExists @ 0x00999230`, the
+`CDiskFileWin32` constructor at `0x0099AD80`, and its idempotent
+`Close @ 0x0099A920`. The optional-file branch now also contains exact
+`CCharString::LoadFromFile @ 0x0099F2E0`, `CStringParser @ 0x00404720`,
+and the text `CPersistContext` constructor at `0x009BADD0`; all three link
+their real candidate objects into focused behavior fixtures.
+
+## Optional Real-ESRGAN boot-video cache (2026-07-26)
+
+- `rebuild/upscale_retail_videos.ps1 -Movie boot -InstallVideo2X` uses the
+  pinned/hash-verified portable Video2X 6.4.0 release and its Vulkan NCNN
+  `realesr-animevideov3` 2x model. It writes only to the ignored
+  `rebuild/build/bootstrap-Release/upscaled-video/` cache.
+- Each result must retain the source video-frame and audio-packet counts before
+  it is published. Output remains WMV2/WMA so the existing
+  DirectShow compatibility graph can decode it without another codec path.
+- `--retail-video-upscaled` opts into a completed enhanced copy and
+  independently falls back to the read-only retail file. The live window title
+  includes `AI 2x`; untouched files remain the default parity path.
+- The first 640x480 -> 1280x960 Lionhead gate processed 419 frames in 22
+  seconds (19.05 FPS) on the local RX 9060 XT. Its enhanced-source visual smoke
+  passed again with hashes `6071A31E7204...` and `45290E78AAAE...` plus clean
+  exit. AI output is explicitly a
+  presentation option, not decomp/parity evidence.
 
 ## Recovered Sold state-block presentation (2026-07-26)
 
@@ -320,7 +495,7 @@
 - Both remaining direct `RenderProgress` bodies now have complete direct-callee
   maps in `rebuild/integration/renderer_nested_dependencies.tsv`:
   `DrawRetailDisplay @ 0x00498490` has 37 unique dependencies and
-  `Render2DDrawList @ 0x009DA9F0` has 25. Seventeen of the 62 family rows are
+  `Render2DDrawList @ 0x009DA9F0` has 25. Eighteen of the 62 family rows are
   canonical retail matches, with two additional wide-string lifetime leaves
   already proven by the boot gate.
 - This pass promoted eight focused dependencies, all with real behavior
@@ -3395,7 +3570,8 @@ not treat doc entity counts as stale if the parser gains more commands.
   GBANK_MAIN_PC (HUD_HEALTH_BAR_RING = 5553 etc.); effect ints -> particles.h
   (GUI_HEART_BEAT_NORMAL = 816); widget TextValue = literal wide string OR TEXT_GUI_*
   symbol resolved via text.big (already writable); Font -> fonts.h -> fonts.big
-  (BIGB, 3 sub-banks; glyph payload NOT cracked, 25.9MB GlyphData). Loading screens
+  (BIGB, 3 sub-banks; static font metadata/atlas/glyph metrics decoded and
+  rendered; streaming 25.9MB GlyphData still pending). Loading screens
   = loose DDS in data\Misc\LoadProgress.
 - NEW TOOL tools/parse_frontend.py: pure-python CompiledDefs reader/WRITER (save path
   mirrors forge bin.cpp: 32KiB inflated chunks, u16 offset table, sentinel pair +
@@ -3408,7 +3584,8 @@ not treat doc entity counts as stale if the parser gains more commands.
   clean, 1-entry diff. Main-menu background = frontend.big id 1 FRONTEND_BACKDROP_01
   (DXT1 640x480) -- plain texture_build replace.
 - EDITABILITY: HUD layout/colors, menu structure/positions/colors/text, GUI textures,
-  GUI text, load screens = editable TODAY. Not editable: font glyphs (format
+  GUI text, load screens, and static-font rendering = editable TODAY. Not editable:
+  streaming/Unicode font glyphs (format
   uncracked), ActionOn* semantics (compiled handlers). Docs: docs/FRONTEND_FORMAT.md.
 - Ghidra follow-ups (lock was taken): NUISystem enums (EType/EActionType) + action
   handler map; GraphicIndex bank-binding rule; fonts.big payload struct; engine

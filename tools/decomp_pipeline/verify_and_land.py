@@ -87,6 +87,12 @@ def cataloged_addresses(catp):
         return set()
     return {m.group(1).lower() for m in re.finditer(r"Address\s*=\s*'([0-9a-fA-F]{8})'", catp.read_text(encoding="utf-8"))}
 
+def insert_catalog_entries(text, entries):
+    """Append generated blocks to $catalog without touching later arrays."""
+    catalog_start = text.index("$catalog = @(")
+    close = text.index("\n)", catalog_start)
+    return text[:close] + "\n" + "\n".join(entries) + text[close:]
+
 def manifest_addresses():
     path = ROOT / "rebuild" / "manifest" / "functions.tsv"
     return {
@@ -249,10 +255,11 @@ def main():
                 f"        Address = '{w['addr']}'\n        Module = '{w['module']}'\n"
                 f"        Source = '{source_rel}'\n        TestSource = '{test_rel}'\n"
                 f"        PassPattern = '{w['pass']}'\n    }}")
-        # insert into catalog before closing ')'
+        # Insert into the $catalog array itself.  The build driver declares
+        # other arrays after the catalog, so searching backwards from a later
+        # marker can accidentally splice entries into $requestedAddresses.
         text=catp.read_text(encoding="utf-8")
-        marker="$oldPath = $env:PATH"; idx=text.index(marker); close=text.rindex("\n)",0,idx)
-        text=text[:close]+"\n"+"\n".join(entries)+text[close:]
+        text=insert_catalog_entries(text, entries)
         catp.write_text(text,encoding="utf-8")
         # append oracle rows
         oracle_catalog = ROOT/"rebuild"/"oracles"/"auto-re-candidates.tsv"
