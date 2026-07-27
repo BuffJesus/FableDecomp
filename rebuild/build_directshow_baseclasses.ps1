@@ -2,7 +2,9 @@
 param(
     [string]$SourceDirectory = '',
 
-    [switch]$InstallSource
+    [switch]$InstallSource,
+
+    [string]$RetailMovie = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -174,9 +176,59 @@ if (
     )
 }
 
+$graphProbeSource = Join-Path (
+    Join-Path $rebuildRoot 'probes'
+) 'directshow_texture_renderer_graph.cpp'
+$graphProbe = Join-Path (
+    $outputDirectory
+) 'directshow-texture-renderer-graph-probe.exe'
+& $compiler @(
+    '/nologo',
+    '/w',
+    '/O2',
+    '/MT',
+    '/DWIN32',
+    '/DWIN32_LEAN_AND_MEAN',
+    '/DNDEBUG',
+    '/D_LIB',
+    "/I$SourceDirectory",
+    "/Fe$graphProbe",
+    $graphProbeSource,
+    $library,
+    'strmiids.lib',
+    'winmm.lib',
+    'ole32.lib',
+    'oleaut32.lib',
+    'user32.lib',
+    'gdi32.lib',
+    'advapi32.lib'
+)
+if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $graphProbe)) {
+    throw 'Failed to build the DirectShow texture-renderer graph probe.'
+}
+
+$graphProof = ''
+if (-not [string]::IsNullOrWhiteSpace($RetailMovie)) {
+    $RetailMovie = (Resolve-Path -LiteralPath $RetailMovie).Path
+    $graphOutput = & $graphProbe $RetailMovie
+    $graphExitCode = $LASTEXITCODE
+    $graphOutput | Write-Output
+    if (
+        $graphExitCode -ne 0 -or
+        (($graphOutput -join "`n") -notmatch
+            'DIRECTSHOW_TEXTURE_RENDERER_GRAPH')
+    ) {
+        throw (
+            'The recovered-shape texture renderer did not receive ' +
+            'changing decoded retail frames.'
+        )
+    }
+    $graphProof = ' graph=decoded-retail-frames'
+}
+
 Write-Output (
     "DIRECTSHOW_BASECLASSES PASS commit=$commit " +
     "sources=$($sources.Count) base-video-renderer=0x160 " +
     "texture-renderer=0x180 " +
-    "library=$library"
+    "library=$library$graphProof"
 )

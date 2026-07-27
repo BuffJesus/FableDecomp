@@ -35,6 +35,9 @@
   produces `strmbase.lib`, and proves `sizeof(CBaseVideoRenderer) == 0x160`.
   A constructed subclass with the recovered tail is exactly `0x180`, matching
   both the retail field boundary and allocation.
+  The graph probe then installs that subclass as the renderer for untouched
+  `lionhead_logo.wmv`: 419/419 changing 640x480 RGB24 frames arrived through
+  `DoRenderSample`, followed by `EC_COMPLETE`, with no video child window.
   `ghidra_out/labels_video_system_recovery.tsv` preserves the 35-entry method
   and startup map. Exact recovered layout views now compile from
   `rebuild/include/fable_video_system.h`. Full notes:

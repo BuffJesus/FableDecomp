@@ -294,7 +294,10 @@ retail startup. The remaining work, in execution order, is:
    ownership, state, synchronization, and Escape behavior are recovered, but
    frames still use a DirectShow child window. Native parity requires the
    recovered `CTextureRenderer::DoRenderSample` conversion, frame event and
-   lock, UI texture copy, and `CMovie::Draw` sprite submission.
+   lock, UI texture copy, and `CMovie::Draw` sprite submission. The exact
+   `0x180` renderer subclass now negotiates the untouched Lionhead graph and
+   receives all 419 changing RGB24 frames without a child window; D3D texture
+   upload and visible-path replacement are the remaining seam.
 6. **Close renderer/resource lifecycle.** Runtime archive/texture ownership,
    the complete `Render2DDrawList` parent, input/audio/localization services,
    device-reset/error paths, and orderly frontend shutdown are not yet live.
