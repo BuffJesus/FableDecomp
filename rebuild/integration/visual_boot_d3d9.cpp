@@ -1071,6 +1071,34 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     return true;
 }
 
+bool FABLE_FASTCALL FablePresentVisualD3D9Black()
+{
+    if (g_Device == 0)
+        return false;
+
+    FableD3DClear clear =
+        reinterpret_cast<FableD3DClear>(
+            g_Device->vtable[43]);
+    FableD3DPresent present =
+        reinterpret_cast<FableD3DPresent>(
+            g_Device->vtable[17]);
+    if (Failed(clear(
+            g_Device,
+            0,
+            0,
+            kD3DClearTarget | kD3DClearZBuffer,
+            0xFF000000u,
+            1.0f,
+            0)) ||
+        Failed(present(g_Device, 0, 0, 0, 0)))
+    {
+        return false;
+    }
+
+    g_Presented = true;
+    return true;
+}
+
 bool FABLE_FASTCALL FableResizeVisualD3D9(
     fable_i32 backBufferWidth,
     fable_i32 backBufferHeight)

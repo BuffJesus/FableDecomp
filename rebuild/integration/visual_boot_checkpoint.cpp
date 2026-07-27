@@ -147,6 +147,10 @@ extern "C"
         int showCommand);
     __declspec(dllimport) FableBool FABLE_STDCALL UpdateWindow(
         FableWindow window);
+    __declspec(dllimport) FableBool FABLE_STDCALL InvalidateRect(
+        FableWindow window,
+        const FableRectangle* rectangle,
+        FableBool erase);
     __declspec(dllimport) FableBool FABLE_STDCALL SetWindowTextA(
         FableWindow window,
         const char* text);
@@ -307,6 +311,7 @@ namespace
     bool g_RetailBootSequenceActive = false;
     bool g_RetailVideoReachedRunningState = false;
     bool g_RetailVideoEscapePressed = false;
+    bool g_VisualFrontendVisible = true;
     unsigned long g_FrontendPostMovieStepMask = 0;
 
     bool FABLE_FASTCALL RunVisualFrontendPostMovieStep(
@@ -339,6 +344,7 @@ namespace
         FillRect(destination, &client, background);
 
         if (
+            g_VisualFrontendVisible &&
             g_BootArtwork != 0 &&
             g_BootArtworkInfo.width > 0 &&
             g_BootArtworkInfo.height > 0)
@@ -390,9 +396,12 @@ namespace
 
         FableRectangle client = {};
         GetClientRect(window, &client);
-        if (!FableRenderVisualD3D9(
+        const bool presented = g_VisualFrontendVisible
+            ? FableRenderVisualD3D9(
                 client.right - client.left,
-                client.bottom - client.top))
+                client.bottom - client.top)
+            : FablePresentVisualD3D9Black();
+        if (!presented)
         {
             return false;
         }
@@ -401,6 +410,26 @@ namespace
         BeginPaint(window, &paint);
         EndPaint(window, &paint);
         return true;
+    }
+
+    void RevealVisualFrontend(FableWindow window)
+    {
+        g_VisualFrontendVisible = true;
+        if (FableIsVisualD3D9Active())
+        {
+            FableRectangle client = {};
+            if (
+                GetClientRect(window, &client) &&
+                FableRenderVisualD3D9(
+                    client.right - client.left,
+                    client.bottom - client.top))
+            {
+                return;
+            }
+        }
+
+        InvalidateRect(window, 0, 1);
+        UpdateWindow(window);
     }
 
     bool StartRetailBootMovie()
@@ -449,9 +478,16 @@ namespace
                     clientWidth,
                     clientHeight))
             {
-                FableRenderVisualD3D9(
-                    clientWidth,
-                    clientHeight);
+                if (g_VisualFrontendVisible)
+                {
+                    FableRenderVisualD3D9(
+                        clientWidth,
+                        clientHeight);
+                }
+                else
+                {
+                    FablePresentVisualD3D9Black();
+                }
             }
             return 0;
         }
@@ -533,6 +569,7 @@ namespace
                     {
                         KillTimer(window, kRetailVideoTimer);
                         FableShutdownRetailVideo();
+                        RevealVisualFrontend(window);
                         bool frontendStartupReady = true;
                         if (g_RetailBootSequenceActive)
                         {
@@ -565,6 +602,7 @@ namespace
                         window,
                         FableGetRetailVideoStatus());
                     FableShutdownRetailVideo();
+                    RevealVisualFrontend(window);
                 }
             }
             return 0;
@@ -656,6 +694,11 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
 #endif
         return 0;
     }
+
+    const bool retailVideoRequested =
+        commandLine != 0 &&
+        strstr(commandLine, "--retail-video") != 0;
+    g_VisualFrontendVisible = !retailVideoRequested;
 
     FableWindowClass windowClass = {};
     windowClass.size = sizeof(windowClass);
@@ -774,9 +817,7 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
 #endif
     }
 
-    if (
-        commandLine != 0 &&
-        strstr(commandLine, "--retail-video") != 0)
+    if (retailVideoRequested)
     {
         g_RetailVideoWindow = window;
         g_RetailVideoInstance = instance;
@@ -836,6 +877,7 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
             SetWindowTextA(
                 window,
                 FableGetRetailVideoStatus());
+            RevealVisualFrontend(window);
         }
     }
 

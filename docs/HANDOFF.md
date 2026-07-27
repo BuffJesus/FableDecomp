@@ -5627,3 +5627,19 @@ fingerprint: `003c33622095f5bc64cbdc53b048df966172039df17ac13646aa558d67b738f4`.
 
 The scheduled runner resumed as soon as the refresh released Ghidra. Its next bounded batch began
 at 17:59 MDT with `Quest.ClearGossip @ 0x008AA010`; leave that process running in the background.
+
+### Retail-video pre-roll presentation fix (2026-07-26)
+
+The retail-video checkpoint no longer exposes the static
+`Fable: The Lost Chapters` frontend frame before the Lionhead movie appears.
+The cause was the parent window's initial `WM_SIZE`/`WM_PAINT` path rendering
+the already-loaded frontend textures before DirectShow attached its child
+window. Retail-video launches now present a black parent D3D9 surface during
+movie startup and playback, then explicitly reveal the frontend only after
+the final movie completes or is skipped. Non-video launches still present the
+frontend immediately.
+
+The complete Release bootstrap passes, as does the live three-movie
+Escape-skip handoff through the frontend and maximized 2560x1369 aspect-fit
+gate (`scale-error=2.31`). Ghidra is intentionally released for the other
+agent: no Ghidra process or project lock is active at this checkpoint.
