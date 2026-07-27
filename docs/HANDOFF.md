@@ -15,6 +15,11 @@
   `system +0x60 -> render system +0x08 -> render-state manager` is live, as
   are named metadata for Z, alpha, texture operation/arguments, and sampler
   filtering.
+- All 13 state requests that precede Sold in the recovered draw-list
+  orchestration are live too. Their retail global/literal/argument values now
+  enter the same capture and dirty queues. The visual gate proves 25 unique
+  states are realised for the draw, captured back to their valid baseline,
+  and realised again with empty queues, so repeated paint cycles remain safe.
 - D3D9 creation now includes a D16 auto-depth surface because Sold enables
   Z testing and Z writes; the frame clears both colour and depth.
 - The focused VC7.1 candidate/behavior gate passes. Sold remains an honest
@@ -22,10 +27,9 @@
   residue. The full Release bootstrap and live window smoke pass with title
   `FableDecomp - D3D9 Presented via Render2D - Retail Frontend + Progress Display Ready`
   and exit zero.
-- The next visual closure is to execute the preceding 13 tracked-state requests
-  (currently represented by adapter events) through the same manager, then
-  replace more of the adapter's remaining shader/queue event dispatch with its
-  recovered dependency bodies.
+- The next visual closure is to replace more of the adapter's remaining
+  shader/queue event dispatch with its recovered dependency bodies, then move
+  upward into the 3,344-byte `Render2DDrawList` orchestration body.
 
 ## EgoMP multiplayer value (2026-07-26)
 
