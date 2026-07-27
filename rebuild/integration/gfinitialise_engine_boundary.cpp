@@ -60,6 +60,8 @@ fable_u32 g_FableMaximumDisplayDimension_0137546C = 1280;
 fable_u32 g_FableDisplayWidth_013B7D64 = 0;
 fable_u32 g_FableDisplayHeight_013B7D60 = 0;
 fable_i32 g_FableHalfDisplayWidth_0137544C = 0;
+fable_u8 g_CProgressDisplayVTable_012388B4 = 0;
+double g_FableZeroDouble_0122ED70 = 0.0;
 
 bool g_FableProgressBeginEnabled = true;
 fable_u32 g_FableProgressBeginCalls = 0;
@@ -77,6 +79,14 @@ namespace
     {
         if (object != 0)
         {
+            CProgressDisplay* display =
+                static_cast<CProgressDisplay*>(object);
+            reinterpret_cast<CCharString*>(
+                &display->secondaryText50)->~CCharString();
+            reinterpret_cast<CCharString*>(
+                &display->primaryText4C)->~CCharString();
+            reinterpret_cast<CWideString*>(
+                &display->wideText48)->~CWideString();
             ++g_FableProgressDestroyCalls;
             FableOperatorDelete(object);
         }
@@ -103,6 +113,8 @@ void FABLE_CDECL GFGetBuildNumber2()
 
 void FABLE_FASTCALL FablePrepareGFInitialiseBoundary()
 {
+    FableReleaseProgressDisplayBoundary();
+
     memset(
         &g_FableBoundaryEngineRoot,
         0,
@@ -144,18 +156,14 @@ void FABLE_FASTCALL FablePrepareGFInitialiseBoundary()
 
 void* FABLE_CDECL FableOperatorNew(fable_u32 size)
 {
+    if (size == sizeof(CProgressDisplay))
+        ++g_FableProgressConstructCalls;
     return malloc(size);
 }
 
 void FABLE_CDECL FableOperatorDelete(void* allocation)
 {
     free(allocation);
-}
-
-CProgressDisplay::CProgressDisplay()
-{
-    memset(this, 0, sizeof(*this));
-    ++g_FableProgressConstructCalls;
 }
 
 CCountedProgressDisplay::CCountedProgressDisplay(CProgressDisplay* value)
@@ -186,8 +194,8 @@ fable_u8 FABLE_FASTCALL GFInitialiseState_Begin(
     return g_FableProgressBeginEnabled ? 1 : 0;
 }
 
-void FABLE_FASTCALL SetProgressDisplay(
-    CCountedProgressDisplay* /* display */)
+void FABLE_FASTCALL FableReleaseProgressDisplayBoundary()
 {
-    ++g_FableProgressInstallCalls;
+    CCountedProgressDisplay emptyDisplay(0);
+    SetProgressDisplay(&emptyDisplay);
 }

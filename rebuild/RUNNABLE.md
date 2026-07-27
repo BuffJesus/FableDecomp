@@ -33,11 +33,57 @@ and failure-policy sequence to the Phase 3 boundary.
 `FableTLC-Reconstruction-VisualCheckpoint.exe` follows that same matched
 `WinMain` and reconstructed Phase 1/2 path, invokes the retail-matched full
 `GFInitialise` coordinator and its retail-matched progress-display leaf through
-an explicit engine boundary, then opens a responsive 1280x720 Win32 window containing the project
-boot artwork. The PNG is converted to a
-build-only bitmap and embedded as a resource. This proves executable-to-window
-handoff; it is deliberately labeled reconstruction scaffolding, not recovered
-retail renderer, archive-loading, or game-loop behavior.
+an explicit engine boundary, then opens a responsive 1280x720 Win32 window.
+When a retail `frontend.big` is available, the build decodes
+`FRONTEND_BACKDROP_01` through the recovered Lionhead-LZO/DXT1 tooling,
+crops it to its authored 640x480 frame, and embeds it in the executable.
+The authored project image remains a dependency-safe fallback. This is the
+first genuine game-derived image in the reconstructed process. An authored
+D3D9 bridge now uploads it as a managed texture. Two retail-shaped triangle
+records pass through the recovered Render2D batch planner, whose triangle-list
+flush is executed on a real Win32 D3D9 device; GDI is retained only as a
+failure fallback. Texture binding now executes the exact recovered 79-byte
+`CRenderManagerCore::AttachTextureToStage` body, including its cache and
+active-stage bookkeeping. The exact 167-byte
+`CRenderStateManager::RealiseRenderState` body also drains ten queued render,
+texture-stage, and sampler states for the live draw. Other dependency dispatch
+now includes the recovered 11-byte `CRenderManagerCore::SetAWindow` ownership
+hop and direct relocation-matched 112-byte `CDisplayManager::SetViewport`
+float conversion. Its endpoint is now the full relocation-matched 479-byte
+integer overload, including clamping, retail viewport/cache updates, the real
+D3D9 call, exact one-byte `$E2`, and exact 11-byte post-viewport shader
+notification. The exact 79-byte
+`Render2DDrawList::CopyBlock` full-clear path then resets the live 0x20-byte
+vertex queue. Exact 98-byte `CTexture::operator=` and 34-byte
+`CTexture::Uninitialise` bodies now execute the temporary/current/candidate
+wrapper lifetime events. The relocation-matched 74-byte preallocated initializer
+and behavior-gated `CalcByteLength` null path create the temporary wrapper.
+Calc's nonnull path is fully link-resolved through relocation-matched
+`CPixelFormat::Initialise` and `GetColourDepth` bodies plus the exact
+1,692-byte retail pixel-format table; the temporary visual wrapper remains
+null by design. The
+exact 121-byte `RestoreCaptureBlock` closes the compact capture sentinel.
+Remaining dispatch is still authored rather than the
+complete
+Lionhead coordinator, runtime archive loader, or game loop.
+
+The first parent-coordinator seam is now canonical too:
+`FableBuildRender2DBatchPlan` models the recovered 0x3C-byte draw-record
+layout and exact normal/text batching decisions from
+`CRenderManager2D::Render2DDrawList @ 0x009DA9F0`. Its VC7.1 fixture covers
+empty and stable queues, state/topology splits, text interruption and shader
+reapplication, output overflow, and retail's exact 2001+1 primitive edge.
+This is a behavior-proven integration seam, not a byte-parity claim for the
+3,344-byte parent coordinator.
+
+A second behavior seam now gates its surrounding renderer lifecycle: the
+empty-list epilogue, 13 tracked state requests, conditional shader changes,
+dirty uploads, attach/realise/DrawPrimitiveUP flush order, queue cleanup,
+capture/layout restoration, and texture ownership teardown. The gate also
+locks the recovered combined-projection dirty bit to `0x80`.
+The visible D3D9 checkpoint now executes both seams: planner output is
+translated into lifecycle flushes, and successful presentation requires the
+adapter to observe and complete a real `DrawPrimitiveUP` event.
 
 The full GFInitialise coordinator is promoted and connected:
 `GFInitialise @ 0x004022B0` is a 311-byte relocation-normalized match with
@@ -116,14 +162,44 @@ Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,
 `FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS`,
 `FABLETLC_GFINITIALISE_PROGRESS_PHASE_BEHAVIOR PASS`,
 `FABLETLC_VISUAL_BOOT_BEHAVIOR PASS`,
+`FABLETLC_RENDER2D_BATCH_PLAN PASS`,
+`FABLETLC_RENDER2D_DRAW_LIST_ADAPTER PASS`,
 `STAGE3_STARTUP PASS`, and
 `GFINITIALISE_PROGRESS_INTEGRATION PASS`, and
 `VISUAL_BOOT_CHECKPOINT PASS`.
 Generated products stay under the ignored `rebuild/build/` tree.
 
+After the Release build, the live GPU presentation gate is:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1
+```
+
+It requires a `D3D9 Presented via Render2D` window title, sends `WM_CLOSE`,
+and requires a clean zero exit.
+
+The first changing retail-video checkpoint is opt-in:
+
+```powershell
+rebuild/build/bootstrap-Release/FableTLC-Reconstruction-VisualCheckpoint.exe --retail-video
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 -RetailVideo
+```
+
+The executable resolves the read-only Steam install and plays
+`data/Video/microsoft_logo.wmv` in its reconstructed window through a compact
+DirectShow bridge. The smoke gate requires the playback graph to enter the
+running state and proves that two captured window frames 600 ms apart differ.
+`--retail-video=lionhead`, `--retail-video=attract`, and
+`--retail-video=intro` select other shipped movies. This proves decoded retail
+motion, but does not claim the recovered `CVideoSys`/`CMovie` path.
+
 Stages 2 and 3 use explicit integration boundaries and are not claimed as a
-retail-matching GFMain. It does **not** yet initialize Lionhead engine
-services, recover the retail window/renderer, load archives, or enter the game loop.
+retail-matching GFMain. The visual checkpoint can now present one build-time
+extracted retail asset through D3D9 and recovered Render2D batching/lifecycle
+seams, but it does **not** yet execute the complete Lionhead parent coordinator,
+initialize the complete engine-service
+graph, load archives at runtime, run the native retail movie subsystem, or
+enter the game loop.
 
 ## Retail boot spine
 
@@ -134,6 +210,12 @@ services, recover the retail window/renderer, load archives, or enter the game l
 | 3 | `0x00402510` | GFMain | 3952 | `INTEGRATION_PHASE1` | [source](../rebuild/integration/gfmain_phase1.cpp) | The 3,952-byte coordinator is split into ten call clusters; Phase 1 is callable with seven direct callees at relocation match, CSystemManagerInit behavior-proven with one moved instruction, and the 4,158-byte console registrar explicitly stubbed. |
 | 4 | `0x004022B0` | GFInitialise | 311 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/global_GFInitialise_004022b0.cpp) | The full 311-byte zero-parameter coordinator matches retail outside relocations, passes focused behavior, and now executes before the authored visual checkpoint through an explicit engine boundary. |
 | 5 | `0x00413120` | GFInitialise_SetupProgressDisplay | 128 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/Global_GFInitialiseSetupProgressDisplay_00413120.cpp) | The 128-byte leaf and ownership behavior are proven and now execute as part of the verified full GFInitialise coordinator on the visual path. |
+| 6 | `0x00499CE0` | CProgressDisplay constructor | 163 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/49/CProgressDisplay_Constructor_00499ce0.cpp) | The real 0x88-byte progress object is constructed on the visual path with its recovered string and state layout. |
+| 7 | `0x009E9FD0` | SetProgressDisplay retained owner | 133 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9e/Global_SetProgressDisplay_009e9fd0.cpp) | The retail counted owner keeps the progress object alive across the visual window and releases it on shutdown. |
+| 8 | `0x009EA060` | GetProgressDisplay counted query | 28 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9e/Global_GetProgressDisplay_009ea060.cpp) | The visual handoff now acquires the retained owner through the exact retail getter and balances the temporary reference after the window closes. |
+| 9 | `0x0049B460` | CProgressDisplay active-state query | 4 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/49/CProgressDisplay_IsActive_0049b460.cpp) | The visual window reports the recovered retained display state through the exact four-byte retail query. |
+| 10 | `0x00499A70` | CProgressDisplay text-mode state | 47 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/49/CProgressDisplay_SetToDisplayText_00499a70.cpp) | The visual startup now traverses the retail 47-byte state transition, clearing the primary string and progress value for false and routing true through CalculateNextTextTag. |
+| 11 | `0x00497B30` | CProgressDisplay text-bank selector | 35 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/49/CProgressDisplay_GetPTextBank_00497b30.cpp) | The primary/fallback bank selection and null behavior are proven, but the visual bridge does not yet populate the retail text-bank owner globals. |
 
 ## Next dependency closure
 
@@ -142,6 +224,12 @@ services, recover the retail window/renderer, load archives, or enter the game l
 3. **GFMain (`0x00402510`):** Close the constructor scheduling residue and replace the console boundary from recovered registration data while advancing Phase 2.
 4. **GFInitialise (`0x004022B0`):** Replace its boundary-owned root, display, and registration test doubles with recovered startup objects.
 5. **GFInitialise_SetupProgressDisplay (`0x00413120`):** Replace the instrumented progress-object ownership boundary with recovered engine ownership.
+6. **CProgressDisplay constructor (`0x00499CE0`):** Recover the display and texture consumers that render the retained object.
+7. **SetProgressDisplay retained owner (`0x009E9FD0`):** Replace the boundary display/resource graph with recovered engine ownership.
+8. **GetProgressDisplay counted query (`0x009EA060`):** Connect the returned object to recovered texture and drawing consumers.
+9. **CProgressDisplay active-state query (`0x0049B460`):** Integrate the corrected 418-byte StartProgress body and its texture and rendering consumers.
+10. **CProgressDisplay text-mode state (`0x00499A70`):** Integrate the corrected 418-byte StartProgress body, then InitialiseTextures and the renderer-backed drawing path.
+11. **CProgressDisplay text-bank selector (`0x00497B30`):** Connect runtime bank ownership while recovering the corrected 418-byte StartProgress body and its renderer-backed display path.
 
 ## GFMain dependency phases
 

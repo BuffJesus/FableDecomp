@@ -104,6 +104,18 @@ def read_function_overrides(path: Path) -> dict[str, dict[str, str]]:
         return {normalize_address(row["address"]): row for row in csv.DictReader(stream, delimiter="\t")}
 
 
+def read_function_boundary_exclusions(path: Path) -> set[str]:
+    """Read false function starts absorbed into a reviewed retail function body."""
+    if not path.exists():
+        return set()
+    with path.open("r", encoding="utf-8-sig", errors="replace", newline="") as stream:
+        return {
+            normalize_address(row["address"])
+            for row in csv.DictReader(stream, delimiter="\t")
+            if row.get("address")
+        }
+
+
 def read_clean_coverage(path: Path) -> dict[str, bool]:
     result: dict[str, bool] = {}
     with path.open("r", encoding="utf-8-sig", errors="replace", newline="") as stream:
@@ -225,6 +237,9 @@ def main() -> int:
         rebuild / "corrections" / "msvc_prototype_overrides.tsv"
     )
     manual_overrides = read_function_overrides(rebuild / "corrections" / "function_overrides.tsv")
+    boundary_exclusions = read_function_boundary_exclusions(
+        rebuild / "corrections" / "function_boundary_exclusions.tsv"
+    )
     # Generated decorated-name recovery supplies broad ABI coverage; reviewed
     # manual rows remain authoritative for every overlapping address.
     overrides = {**generated_overrides, **manual_overrides}
@@ -258,6 +273,8 @@ def main() -> int:
     functions: list[FunctionRow] = []
     for api in api_rows:
         address = api["address"]
+        if address in boundary_exclusions:
+            continue
         if address in overrides:
             override = overrides[address]
             api = {
@@ -265,8 +282,22 @@ def main() -> int:
                 "name": override.get("name") or api["name"],
                 "cc": override.get("calling_convention") or api["cc"],
                 "ret": override.get("return_type") or api["ret"],
-                "nparams": override.get("parameter_count") or api["nparams"],
-                "params": override.get("parameter_types") or api["params"],
+                # Zero parameters and an empty parameter-type list are valid,
+                # intentional corrections. Truthiness fallback silently kept
+                # poisoned Ghidra parameters for no-argument overrides.
+                "nparams": (
+                    override["parameter_count"]
+                    if override.get("parameter_count") != ""
+                    else api["nparams"]
+                ),
+                "params": (
+                    override.get("parameter_types", "")
+                    if (
+                        override.get("parameter_types", "") != ""
+                        or override.get("parameter_count") == "0"
+                    )
+                    else api["params"]
+                ),
             }
         cc = api["cc"]
         ret = api["ret"]

@@ -1,6 +1,8 @@
 param(
     [ValidateSet('Debug', 'Release')]
-    [string]$Configuration = 'Release'
+    [string]$Configuration = 'Release',
+
+    [string]$RetailFrontendBank = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -19,6 +21,18 @@ $gfInitialiseBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\global_GFIniti
 $stage1BoundarySource = Join-Path $rebuildRoot 'integration\stage1_engine_boundary.cpp'
 $progressSetupSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GFInitialiseSetupProgressDisplay_00413120.cpp'
 $progressSetupBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GFInitialiseSetupProgressDisplay_00413120_test.cpp'
+$progressDisplayConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\49\CProgressDisplay_Constructor_00499ce0.cpp'
+$progressDisplayConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\49\CProgressDisplay_Constructor_00499ce0_test.cpp'
+$progressDisplayTextBankSource = Join-Path $rebuildRoot 'src\compiled\00\49\CProgressDisplay_GetPTextBank_00497b30.cpp'
+$progressDisplayTextBankBehaviorSource = Join-Path $rebuildRoot 'tests\00\49\CProgressDisplay_GetPTextBank_00497b30_test.cpp'
+$progressDisplayTextModeSource = Join-Path $rebuildRoot 'src\compiled\00\49\CProgressDisplay_SetToDisplayText_00499a70.cpp'
+$progressDisplayTextModeBehaviorSource = Join-Path $rebuildRoot 'tests\00\49\CProgressDisplay_SetToDisplayText_00499a70_test.cpp'
+$progressDisplayIsActiveSource = Join-Path $rebuildRoot 'src\compiled\00\49\CProgressDisplay_IsActive_0049b460.cpp'
+$progressDisplayIsActiveBehaviorSource = Join-Path $rebuildRoot 'tests\00\49\CProgressDisplay_IsActive_0049b460_test.cpp'
+$setProgressDisplaySource = Join-Path $rebuildRoot 'src\compiled\00\9e\Global_SetProgressDisplay_009e9fd0.cpp'
+$setProgressDisplayBehaviorSource = Join-Path $rebuildRoot 'tests\00\9e\Global_SetProgressDisplay_009e9fd0_test.cpp'
+$getProgressDisplaySource = Join-Path $rebuildRoot 'src\compiled\00\9e\Global_GetProgressDisplay_009ea060.cpp'
+$getProgressDisplayBehaviorSource = Join-Path $rebuildRoot 'tests\00\9e\Global_GetProgressDisplay_009ea060_test.cpp'
 $setCurrentPathSource = Join-Path $rebuildRoot 'src\compiled\00\99\CAFile_SetCurrentPath_009974f0.cpp'
 $setCurrentPathBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CAFile_SetCurrentPath_009974f0_test.cpp'
 $getProjectPathSource = Join-Path $rebuildRoot 'src\compiled\00\99\CAFile_GetProjectPath_00997510.cpp'
@@ -65,10 +79,38 @@ $gfmainPhase1Source = Join-Path $rebuildRoot 'integration\gfmain_phase1.cpp'
 $gfmainPhase2Source = Join-Path $rebuildRoot 'integration\gfmain_phase2.cpp'
 $gfInitialiseProgressPhaseSource = Join-Path $rebuildRoot 'integration\gfinitialise_progress_phase.cpp'
 $gfInitialiseEngineBoundarySource = Join-Path $rebuildRoot 'integration\gfinitialise_engine_boundary.cpp'
+$progressDisplayStringBoundarySource = Join-Path $rebuildRoot 'integration\progress_display_string_boundary.cpp'
 $stage2BoundarySource = Join-Path $rebuildRoot 'integration\stage2_engine_boundary.cpp'
 $visualBootSource = Join-Path $rebuildRoot 'integration\visual_boot_checkpoint.cpp'
-$visualBootArtwork = Join-Path $rebuildRoot 'assets\boot\fabledecomp_boot_concept.png'
+$visualBootD3D9Source = Join-Path $rebuildRoot 'integration\visual_boot_d3d9.cpp'
+$retailVideoBridgeSource = Join-Path $rebuildRoot 'integration\retail_video_bridge.cpp'
+$visualBootFallbackArtwork = Join-Path $rebuildRoot 'assets\boot\fabledecomp_boot_concept.png'
+$visualBootArtwork = $visualBootFallbackArtwork
+$textureBuilder = Join-Path $workspaceRoot 'tools\texture_build.py'
 $visualBootBehaviorSource = Join-Path $rebuildRoot 'tests\integration\VisualBootCheckpoint_test.cpp'
+$render2DBatchPlanSource = Join-Path $rebuildRoot 'integration\render2d_batch_plan.cpp'
+$render2DBatchPlanBehaviorSource = Join-Path $rebuildRoot 'tests\integration\Render2DBatchPlan_test.cpp'
+$render2DDrawListAdapterSource = Join-Path $rebuildRoot 'integration\render2d_draw_list_adapter.cpp'
+$render2DDrawListAdapterBehaviorSource = Join-Path $rebuildRoot 'tests\integration\Render2DDrawListAdapter_test.cpp'
+$attachTextureToStageSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CRenderManagerCore_AttachTextureToStage_009a0cf0.cpp'
+$realiseRenderStateSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderStateManager_RealiseRenderState_00a058c0.cpp'
+$soldStateBlockSource = Join-Path $rebuildRoot 'src\compiled\00\9d\CStateBlockFunctionSold_Apply_009df060.cpp'
+$updatePixelShaderSource = Join-Path $rebuildRoot 'src\compiled\00\98\CShaderRenderManager_UpdatePixelShader_00988a20.cpp'
+$resetWorldTransformSource = Join-Path $rebuildRoot 'src\compiled\00\98\CShaderRenderManager_ResetWorldTransform_00988290.cpp'
+$displaySetViewportSource = Join-Path $rebuildRoot 'src\compiled\00\9b\CDisplayManager_SetViewport_009bf490.cpp'
+$displaySetIntegerViewportSource = Join-Path $rebuildRoot 'src\compiled\00\9b\CDisplayManager_SetViewportInteger_009bef80.cpp'
+$postViewportShaderSource = Join-Path $rebuildRoot 'src\compiled\00\98\CShaderRenderManager_OnPostViewportChanged_009880d0.cpp'
+$viewportE2Source = Join-Path $rebuildRoot 'src\compiled\00\a0\Global_FableViewportE2_00a0aac0.cpp'
+$setRenderWindowSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderManagerCore_SetAWindow_00a0aa80.cpp'
+$clearRender2DVertexQueueSource = Join-Path $rebuildRoot 'src\compiled\00\9e\Render2DDrawList_CopyBlock_009e1440.cpp'
+$restoreRenderStateCaptureSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderStateManager_RestoreCaptureBlock_00a05840.cpp'
+$textureCalcByteLengthSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_CalcByteLength_009f9ee0.cpp'
+$pixelFormatGetColourDepthSource = Join-Path $rebuildRoot 'src\compiled\00\9e\CPixelFormat_GetColourDepth_009e3820.cpp'
+$pixelFormatInitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\9e\CPixelFormat_InitialiseD3DFormat_009e3830.cpp'
+$pixelFormatTableSource = Join-Path $rebuildRoot 'src\compiled\01\29\CPixelFormat_Table_0129ba40.cpp'
+$textureInitialisePreallocatedSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_InitialiseFromPreallocatedTexture_009fa230.cpp'
+$textureAssignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_Assignment_009fa1c0.cpp'
+$textureUninitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_Uninitialise_009f9f70.cpp'
 $gfmainPhase1BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase1_test.cpp'
 $gfmainPhase2BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase2_test.cpp'
 $gfInitialiseProgressPhaseBehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFInitialise_ProgressPhase_test.cpp'
@@ -81,6 +123,12 @@ $gfInitialiseObject = Join-Path $outDir 'gfinitialise.obj'
 $stage1BoundaryObject = Join-Path $outDir 'stage1_engine_boundary.obj'
 $progressSetupObject = Join-Path $outDir 'gfinitialise_setup_progress.obj'
 $progressSetupBehaviorObject = Join-Path $outDir 'gfinitialise_setup_progress_behavior.obj'
+$progressDisplayConstructorObject = Join-Path $outDir 'progress-display-constructor.obj'
+$progressDisplayTextModeObject = Join-Path $outDir 'progress-display-text-mode.obj'
+$progressDisplayIsActiveObject = Join-Path $outDir 'progress-display-is-active.obj'
+$setProgressDisplayObject = Join-Path $outDir 'set-progress-display.obj'
+$getProgressDisplayObject = Join-Path $outDir 'get-progress-display.obj'
+$progressDisplayStringBoundaryObject = Join-Path $outDir 'progress-display-string-boundary.obj'
 $setCurrentPathObject = Join-Path $outDir 'set_current_path.obj'
 $setCurrentPathBehaviorObject = Join-Path $outDir 'set_current_path_behavior.obj'
 $getProjectPathObject = Join-Path $outDir 'get_project_path.obj'
@@ -105,8 +153,34 @@ $stage2BoundaryObject = Join-Path $outDir 'stage2_engine_boundary.obj'
 $stage3BoundaryObject = Join-Path $outDir 'stage3_engine_boundary.obj'
 $visualBoundaryObject = Join-Path $outDir 'visual_engine_boundary.obj'
 $visualBootObject = Join-Path $outDir 'visual_boot_checkpoint.obj'
+$visualBootD3D9Object = Join-Path $outDir 'visual_boot_d3d9.obj'
+$retailVideoBridgeObject = Join-Path $outDir 'retail_video_bridge.obj'
 $visualBootBehaviorObject = Join-Path $outDir 'visual_boot_checkpoint_behavior.obj'
-$visualBootBitmap = Join-Path $outDir 'fabledecomp_boot_concept.bmp'
+$render2DBatchPlanObject = Join-Path $outDir 'render2d_batch_plan.obj'
+$render2DBatchPlanBehaviorObject = Join-Path $outDir 'render2d_batch_plan_behavior.obj'
+$render2DDrawListAdapterObject = Join-Path $outDir 'render2d_draw_list_adapter.obj'
+$render2DDrawListAdapterBehaviorObject = Join-Path $outDir 'render2d_draw_list_adapter_behavior.obj'
+$attachTextureToStageObject = Join-Path $outDir 'attach_texture_to_stage.obj'
+$realiseRenderStateObject = Join-Path $outDir 'realise_render_state.obj'
+$soldStateBlockObject = Join-Path $outDir 'sold_state_block.obj'
+$updatePixelShaderObject = Join-Path $outDir 'update_pixel_shader.obj'
+$resetWorldTransformObject = Join-Path $outDir 'reset_world_transform.obj'
+$displaySetViewportObject = Join-Path $outDir 'display_set_viewport.obj'
+$displaySetIntegerViewportObject = Join-Path $outDir 'display_set_integer_viewport.obj'
+$postViewportShaderObject = Join-Path $outDir 'post_viewport_shader.obj'
+$viewportE2Object = Join-Path $outDir 'viewport_e2.obj'
+$setRenderWindowObject = Join-Path $outDir 'set_render_window.obj'
+$clearRender2DVertexQueueObject = Join-Path $outDir 'clear_render2d_vertex_queue.obj'
+$restoreRenderStateCaptureObject = Join-Path $outDir 'restore_render_state_capture.obj'
+$textureCalcByteLengthObject = Join-Path $outDir 'texture_calc_byte_length.obj'
+$pixelFormatGetColourDepthObject = Join-Path $outDir 'pixel_format_get_colour_depth.obj'
+$pixelFormatInitialiseObject = Join-Path $outDir 'pixel_format_initialise.obj'
+$pixelFormatTableObject = Join-Path $outDir 'pixel_format_table.obj'
+$textureInitialisePreallocatedObject = Join-Path $outDir 'texture_initialise_preallocated.obj'
+$textureAssignmentObject = Join-Path $outDir 'texture_assignment.obj'
+$textureUninitialiseObject = Join-Path $outDir 'texture_uninitialise.obj'
+$visualBootRetailArtwork = Join-Path $outDir 'frontend_backdrop_01.png'
+$visualBootBitmap = Join-Path $outDir 'visual_boot_artwork.bmp'
 $visualBootResourceSource = Join-Path $outDir 'visual_boot_checkpoint.rc'
 $visualBootResource = Join-Path $outDir 'visual_boot_checkpoint.res'
 $gfmainPhase1BehaviorObject = Join-Path $outDir 'gfmain_phase1_behavior.obj'
@@ -134,10 +208,18 @@ $stage2Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage2.exe'
 $stage3Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage3.exe'
 $visualCheckpointExecutable = Join-Path $outDir 'FableTLC-Reconstruction-VisualCheckpoint.exe'
 $visualBootBehaviorExecutable = Join-Path $outDir 'FableTLC-VisualBoot-Behavior.exe'
+$render2DBatchPlanBehaviorExecutable = Join-Path $outDir 'FableTLC-Render2DBatchPlan-Behavior.exe'
+$render2DDrawListAdapterBehaviorExecutable = Join-Path $outDir 'FableTLC-Render2DDrawListAdapter-Behavior.exe'
 $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
 $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $gfInitialisePassPattern = 'FABLETLC_GFINITIALISE_BEHAVIOR PASS'
 $progressSetupPassPattern = 'FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS'
+$progressDisplayConstructorPassPattern = 'FABLETLC_PROGRESS_DISPLAY_CONSTRUCTOR_BEHAVIOR PASS'
+$progressDisplayTextBankPassPattern = 'FABLETLC_PROGRESS_TEXT_BANK_BEHAVIOR PASS'
+$progressDisplayTextModePassPattern = 'FABLETLC_PROGRESS_DISPLAY_TEXT_MODE_BEHAVIOR PASS'
+$progressDisplayIsActivePassPattern = 'FABLETLC_PROGRESS_DISPLAY_IS_ACTIVE_BEHAVIOR PASS'
+$setProgressDisplayPassPattern = 'FABLETLC_SET_PROGRESS_DISPLAY_BEHAVIOR PASS'
+$getProgressDisplayPassPattern = 'FABLETLC_GET_PROGRESS_DISPLAY_BEHAVIOR PASS'
 $setCurrentPathPassPattern = 'FABLETLC_SET_CURRENT_PATH_BEHAVIOR PASS'
 $getProjectPathPassPattern = 'FABLETLC_GET_PROJECT_PATH_BEHAVIOR PASS'
 $wideStringConstructorPassPattern = 'FABLETLC_WIDE_STRING_CONSTRUCTOR_BEHAVIOR PASS'
@@ -151,6 +233,8 @@ $gfmainPhase1PassPattern = 'FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS'
 $gfmainPhase2PassPattern = 'FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS'
 $gfInitialiseProgressPhasePassPattern = 'FABLETLC_GFINITIALISE_PROGRESS_PHASE_BEHAVIOR PASS'
 $visualBootPassPattern = 'FABLETLC_VISUAL_BOOT_BEHAVIOR PASS'
+$render2DBatchPlanPassPattern = 'FABLETLC_RENDER2D_BATCH_PLAN PASS'
+$render2DDrawListAdapterPassPattern = 'FABLETLC_RENDER2D_DRAW_LIST_ADAPTER PASS'
 $profileEndPassPattern = 'FABLETLC_PROFILE_END_BEHAVIOR PASS'
 $asyncFailureHandlingPassPattern = 'FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS'
 $startupLatchPassPattern = 'FABLETLC_STARTUP_LATCH_BEHAVIOR PASS'
@@ -176,6 +260,18 @@ $required = @(
     $stage1BoundarySource,
     $progressSetupSource,
     $progressSetupBehaviorSource,
+    $progressDisplayConstructorSource,
+    $progressDisplayConstructorBehaviorSource,
+    $progressDisplayTextBankSource,
+    $progressDisplayTextBankBehaviorSource,
+    $progressDisplayTextModeSource,
+    $progressDisplayTextModeBehaviorSource,
+    $progressDisplayIsActiveSource,
+    $progressDisplayIsActiveBehaviorSource,
+    $setProgressDisplaySource,
+    $setProgressDisplayBehaviorSource,
+    $getProgressDisplaySource,
+    $getProgressDisplayBehaviorSource,
     $setCurrentPathSource,
     $setCurrentPathBehaviorSource,
     $getProjectPathSource,
@@ -222,13 +318,36 @@ $required = @(
     $gfmainPhase2Source,
     $gfInitialiseProgressPhaseSource,
     $gfInitialiseEngineBoundarySource,
+    $progressDisplayStringBoundarySource,
     $stage2BoundarySource,
     $visualBootSource,
-    $visualBootArtwork,
+    $visualBootD3D9Source,
+    $visualBootFallbackArtwork,
     $visualBootBehaviorSource,
+    $render2DBatchPlanSource,
+    $render2DBatchPlanBehaviorSource,
+    $render2DDrawListAdapterSource,
+    $render2DDrawListAdapterBehaviorSource,
+    $attachTextureToStageSource,
+    $realiseRenderStateSource,
+    $displaySetViewportSource,
+    $displaySetIntegerViewportSource,
+    $postViewportShaderSource,
+    $viewportE2Source,
+    $setRenderWindowSource,
+    $clearRender2DVertexQueueSource,
+    $restoreRenderStateCaptureSource,
+    $textureCalcByteLengthSource,
+    $pixelFormatGetColourDepthSource,
+    $pixelFormatInitialiseSource,
+    $pixelFormatTableSource,
+    $textureInitialisePreallocatedSource,
+    $textureAssignmentSource,
+    $textureUninitialiseSource,
     $gfmainPhase1BehaviorSource,
     $gfmainPhase2BehaviorSource,
     $gfInitialiseProgressPhaseBehaviorSource,
+    $textureBuilder,
     $bootObjectChecker
 )
 $missing = @($required | Where-Object { -not (Test-Path -LiteralPath $_) })
@@ -237,6 +356,54 @@ if ($missing.Count -gt 0) {
 }
 
 New-Item -ItemType Directory -Path $outDir -Force | Out-Null
+
+$retailFrontendCandidates = @()
+if ($RetailFrontendBank) {
+    $retailFrontendCandidates += $RetailFrontendBank
+} else {
+    $retailFrontendCandidates += Join-Path $workspaceRoot 'work\ui_proto\art\frontend.big'
+    $programFilesX86 = ${env:ProgramFiles(x86)}
+    if ($programFilesX86) {
+        $retailFrontendCandidates += Join-Path $programFilesX86 `
+            'Steam\steamapps\common\Fable The Lost Chapters\data\graphics\pc\frontend.big'
+    }
+}
+
+$selectedRetailFrontendBank = $retailFrontendCandidates |
+    Where-Object {
+        $_ -and (Test-Path -LiteralPath $_ -PathType Leaf)
+    } |
+    Select-Object -First 1
+$visualBootUsesRetailAsset = $false
+if ($selectedRetailFrontendBank) {
+    & python $textureBuilder decode `
+        $selectedRetailFrontendBank `
+        FRONTEND_BACKDROP_01 `
+        $visualBootRetailArtwork `
+        --crop-real
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $visualBootRetailArtwork)
+    ) {
+        if ($RetailFrontendBank) {
+            throw "Failed to decode FRONTEND_BACKDROP_01 from $selectedRetailFrontendBank."
+        }
+        Write-Warning (
+            "Retail frontend asset decode failed; using authored artwork fallback."
+        )
+    } else {
+        $visualBootArtwork = $visualBootRetailArtwork
+        $visualBootUsesRetailAsset = $true
+        Write-Output (
+            "VISUAL_ASSET RETAIL name=FRONTEND_BACKDROP_01 " +
+            "bank=$selectedRetailFrontendBank"
+        )
+    }
+} elseif ($RetailFrontendBank) {
+    throw "Retail frontend bank was not found: $RetailFrontendBank"
+} else {
+    Write-Output 'VISUAL_ASSET FALLBACK name=fabledecomp_boot_concept'
+}
 
 $windowsSdkUmLib = Get-ChildItem -LiteralPath $windowsSdkLibRoot -Directory |
     Where-Object {
@@ -268,6 +435,10 @@ try {
         $compileOptions += @('/O2', '/Oy')
     } else {
         $compileOptions += @('/Od', '/Zi')
+    }
+    $visualBootCompileOptions = @($compileOptions)
+    if ($visualBootUsesRetailAsset) {
+        $visualBootCompileOptions += '/DFABLETLC_RETAIL_FRONTEND_ARTWORK'
     }
 
     function Invoke-VerifiedLeaf {
@@ -344,6 +515,54 @@ try {
         -BehaviorSource $charStringDefaultBehaviorSource `
         -OutputStem 'char-string-default-constructor' `
         -PassPattern $charStringDefaultPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00499ce0' `
+        -Description 'CProgressDisplay constructor' `
+        -Source $progressDisplayConstructorSource `
+        -BehaviorSource $progressDisplayConstructorBehaviorSource `
+        -OutputStem 'progress-display-constructor' `
+        -PassPattern $progressDisplayConstructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0049b460' `
+        -Description 'CProgressDisplay active-state query' `
+        -Source $progressDisplayIsActiveSource `
+        -BehaviorSource $progressDisplayIsActiveBehaviorSource `
+        -OutputStem 'progress-display-is-active' `
+        -PassPattern $progressDisplayIsActivePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00497b30' `
+        -Description 'CProgressDisplay text-bank selector' `
+        -Source $progressDisplayTextBankSource `
+        -BehaviorSource $progressDisplayTextBankBehaviorSource `
+        -OutputStem 'progress-display-text-bank' `
+        -PassPattern $progressDisplayTextBankPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00499a70' `
+        -Description 'CProgressDisplay text-mode setter' `
+        -Source $progressDisplayTextModeSource `
+        -BehaviorSource $progressDisplayTextModeBehaviorSource `
+        -OutputStem 'progress-display-text-mode' `
+        -PassPattern $progressDisplayTextModePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009e9fd0' `
+        -Description 'retained progress-display owner assignment' `
+        -Source $setProgressDisplaySource `
+        -BehaviorSource $setProgressDisplayBehaviorSource `
+        -OutputStem 'set-progress-display' `
+        -PassPattern $setProgressDisplayPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009ea060' `
+        -Description 'retained progress-display owner query' `
+        -Source $getProgressDisplaySource `
+        -BehaviorSource $getProgressDisplayBehaviorSource `
+        -OutputStem 'get-progress-display' `
+        -PassPattern $getProgressDisplayPassPattern
 
     Invoke-VerifiedLeaf `
         -Address '00403b10' `
@@ -928,6 +1147,16 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$progressDisplayStringBoundaryObject" `
+        $progressDisplayStringBoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $progressDisplayStringBoundaryObject)
+    ) {
+        throw 'Failed to compile the progress-display string boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$stage2BoundaryObject" $stage2BoundarySource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -957,7 +1186,7 @@ try {
         throw 'Failed to compile the authored visual engine boundary.'
     }
 
-    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+    & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
         "/Fo$visualBootObject" $visualBootSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -966,13 +1195,241 @@ try {
         throw 'Failed to compile the visual boot checkpoint.'
     }
 
-    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+    & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
+        "/Fo$visualBootD3D9Object" $visualBootD3D9Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $visualBootD3D9Object)
+    ) {
+        throw 'Failed to compile the D3D9 visual presenter.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
+        "/Fo$resetWorldTransformObject" $resetWorldTransformSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $resetWorldTransformObject)
+    ) {
+        throw 'Failed to compile the recovered world-transform reset.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
+        "/Fo$retailVideoBridgeObject" $retailVideoBridgeSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $retailVideoBridgeObject)
+    ) {
+        throw 'Failed to compile the retail video bridge.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
         "/Fo$visualBootBehaviorObject" $visualBootBehaviorSource
     if (
         $LASTEXITCODE -ne 0 -or
         -not (Test-Path -LiteralPath $visualBootBehaviorObject)
     ) {
         throw 'Failed to compile the visual boot behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$render2DBatchPlanObject" $render2DBatchPlanSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $render2DBatchPlanObject)
+    ) {
+        throw 'Failed to compile the Render2D batch planner.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$render2DBatchPlanBehaviorObject" $render2DBatchPlanBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $render2DBatchPlanBehaviorObject)
+    ) {
+        throw 'Failed to compile the Render2D batch-plan fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$render2DDrawListAdapterObject" $render2DDrawListAdapterSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $render2DDrawListAdapterObject)
+    ) {
+        throw 'Failed to compile the Render2D draw-list adapter.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$render2DDrawListAdapterBehaviorObject" `
+        $render2DDrawListAdapterBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $render2DDrawListAdapterBehaviorObject)
+    ) {
+        throw 'Failed to compile the Render2D draw-list adapter fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$attachTextureToStageObject" $attachTextureToStageSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $attachTextureToStageObject)
+    ) {
+        throw 'Failed to compile the recovered texture-stage attachment.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$realiseRenderStateObject" $realiseRenderStateSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $realiseRenderStateObject)
+    ) {
+        throw 'Failed to compile recovered render-state realisation.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$soldStateBlockObject" $soldStateBlockSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $soldStateBlockObject)
+    ) {
+        throw 'Failed to compile recovered Sold render-state block.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$updatePixelShaderObject" $updatePixelShaderSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $updatePixelShaderObject)
+    ) {
+        throw 'Failed to compile recovered pixel-shader update.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$displaySetViewportObject" $displaySetViewportSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $displaySetViewportObject)
+    ) {
+        throw 'Failed to compile recovered display viewport wrapper.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$displaySetIntegerViewportObject" $displaySetIntegerViewportSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $displaySetIntegerViewportObject)
+    ) {
+        throw 'Failed to compile recovered integer display viewport.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$postViewportShaderObject" $postViewportShaderSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $postViewportShaderObject)
+    ) {
+        throw 'Failed to compile recovered post-viewport shader notification.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$viewportE2Object" $viewportE2Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $viewportE2Object)
+    ) {
+        throw 'Failed to compile recovered viewport E2 target.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$setRenderWindowObject" $setRenderWindowSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $setRenderWindowObject)
+    ) {
+        throw 'Failed to compile the recovered Render2D window wrapper.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$clearRender2DVertexQueueObject" `
+        $clearRender2DVertexQueueSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath `
+            $clearRender2DVertexQueueObject)
+    ) {
+        throw 'Failed to compile recovered Render2D vertex cleanup.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$textureAssignmentObject" $textureAssignmentSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $textureAssignmentObject)
+    ) {
+        throw 'Failed to compile recovered texture assignment.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$textureUninitialiseObject" $textureUninitialiseSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $textureUninitialiseObject)
+    ) {
+        throw 'Failed to compile recovered texture uninitialisation.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$restoreRenderStateCaptureObject" $restoreRenderStateCaptureSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $restoreRenderStateCaptureObject)
+    ) {
+        throw 'Failed to compile recovered render-state capture restoration.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$textureCalcByteLengthObject" $textureCalcByteLengthSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $textureCalcByteLengthObject)
+    ) {
+        throw 'Failed to compile recovered texture byte-length calculation.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$pixelFormatGetColourDepthObject" $pixelFormatGetColourDepthSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $pixelFormatGetColourDepthObject)
+    ) {
+        throw 'Failed to compile recovered pixel-format colour depth.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$pixelFormatInitialiseObject" $pixelFormatInitialiseSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $pixelFormatInitialiseObject)
+    ) {
+        throw 'Failed to compile recovered pixel-format initialisation.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$pixelFormatTableObject" $pixelFormatTableSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $pixelFormatTableObject)
+    ) {
+        throw 'Failed to compile the recovered retail pixel-format table.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$textureInitialisePreallocatedObject" $textureInitialisePreallocatedSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $textureInitialisePreallocatedObject)
+    ) {
+        throw 'Failed to compile recovered preallocated texture initialisation.'
     }
 
     Add-Type -AssemblyName PresentationCore
@@ -982,6 +1439,18 @@ try {
             $pngStream,
             [System.Windows.Media.Imaging.BitmapCreateOptions]::PreservePixelFormat,
             [System.Windows.Media.Imaging.BitmapCacheOption]::OnLoad)
+        if (
+            $visualBootUsesRetailAsset -and
+            (
+                $decoder.Frames[0].PixelWidth -ne 640 -or
+                $decoder.Frames[0].PixelHeight -ne 480
+            )
+        ) {
+            throw (
+                "Retail frontend artwork must be 640x480 after cropping; got " +
+                "$($decoder.Frames[0].PixelWidth)x$($decoder.Frames[0].PixelHeight)."
+            )
+        }
         $encoder = New-Object System.Windows.Media.Imaging.BmpBitmapEncoder
         $encoder.Frames.Add($decoder.Frames[0])
         $bitmapStream = [System.IO.File]::Create($visualBootBitmap)
@@ -1074,8 +1543,36 @@ try {
         $gfInitialiseObject,
         $gfInitialiseEngineBoundaryObject,
         $progressSetupObject,
+        $progressDisplayConstructorObject,
+        $progressDisplayTextModeObject,
+        $progressDisplayIsActiveObject,
+        $setProgressDisplayObject,
+        $getProgressDisplayObject,
         $visualBoundaryObject,
         $visualBootObject,
+        $visualBootD3D9Object,
+        $retailVideoBridgeObject,
+        $render2DBatchPlanObject,
+        $render2DDrawListAdapterObject,
+        $attachTextureToStageObject,
+        $realiseRenderStateObject,
+        $soldStateBlockObject,
+        $updatePixelShaderObject,
+        $resetWorldTransformObject,
+        $displaySetViewportObject,
+        $displaySetIntegerViewportObject,
+        $postViewportShaderObject,
+        $viewportE2Object,
+        $setRenderWindowObject,
+        $clearRender2DVertexQueueObject,
+        $restoreRenderStateCaptureObject,
+        $textureCalcByteLengthObject,
+        $pixelFormatGetColourDepthObject,
+        $pixelFormatInitialiseObject,
+        $pixelFormatTableObject,
+        $textureInitialisePreallocatedObject,
+        $textureAssignmentObject,
+        $textureUninitialiseObject,
         $setCurrentPathObject,
         $getProjectPathObject,
         $wideStringConstructorObject,
@@ -1136,6 +1633,15 @@ try {
         $gfInitialiseProgressPhaseObject `
         $gfInitialiseEngineBoundaryObject `
         $progressSetupObject `
+        $progressDisplayConstructorObject `
+        $progressDisplayIsActiveObject `
+        $setProgressDisplayObject `
+        $getProgressDisplayObject `
+        $progressDisplayStringBoundaryObject `
+        $wideStringConstructorObject `
+        $wideStringDestructorObject `
+        $charStringDefaultObject `
+        $charStringDestructorObject `
         $gfInitialiseProgressPhaseBehaviorObject
     if (
         $LASTEXITCODE -ne 0 -or
@@ -1190,7 +1696,7 @@ try {
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:windows `
         "/out:$visualCheckpointExecutable" `
         $winMainObject @visualRuntimeObjects $visualBootResource `
-        user32.lib gdi32.lib
+        user32.lib gdi32.lib d3d9.lib advapi32.lib ole32.lib
     if (
         $LASTEXITCODE -ne 0 -or
         -not (Test-Path -LiteralPath $visualCheckpointExecutable)
@@ -1200,8 +1706,23 @@ try {
 
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
         "/out:$visualBootBehaviorExecutable" `
-        $visualBootObject $visualBootBehaviorObject $visualBootResource `
-        user32.lib gdi32.lib
+        $visualBootObject $visualBootD3D9Object $retailVideoBridgeObject `
+        $render2DBatchPlanObject $render2DDrawListAdapterObject `
+        $attachTextureToStageObject $realiseRenderStateObject `
+        $soldStateBlockObject `
+        $updatePixelShaderObject `
+        $resetWorldTransformObject `
+        $displaySetViewportObject $displaySetIntegerViewportObject `
+        $postViewportShaderObject $viewportE2Object `
+        $setRenderWindowObject `
+        $clearRender2DVertexQueueObject `
+        $restoreRenderStateCaptureObject `
+        $textureCalcByteLengthObject `
+        $pixelFormatGetColourDepthObject $pixelFormatInitialiseObject `
+        $pixelFormatTableObject $textureInitialisePreallocatedObject `
+        $textureAssignmentObject $textureUninitialiseObject `
+        $visualBootBehaviorObject $visualBootResource `
+        user32.lib gdi32.lib d3d9.lib advapi32.lib ole32.lib
     if (
         $LASTEXITCODE -ne 0 -or
         -not (Test-Path -LiteralPath $visualBootBehaviorExecutable)
@@ -1219,13 +1740,70 @@ try {
         throw "Visual boot fixture failed with exit code $visualBootExitCode."
     }
 
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$render2DBatchPlanBehaviorExecutable" `
+        $render2DBatchPlanObject $render2DBatchPlanBehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $render2DBatchPlanBehaviorExecutable)
+    ) {
+        throw 'Failed to link the Render2D batch-plan fixture.'
+    }
+
+    $render2DBatchPlanOutput =
+        & $render2DBatchPlanBehaviorExecutable 2>&1
+    $render2DBatchPlanExitCode = $LASTEXITCODE
+    $render2DBatchPlanOutput | Write-Output
+    if (
+        $render2DBatchPlanExitCode -ne 0 -or
+        (($render2DBatchPlanOutput -join "`n") -notmatch `
+            [regex]::Escape($render2DBatchPlanPassPattern))
+    ) {
+        throw (
+            'Render2D batch-plan fixture failed with exit code ' +
+            "$render2DBatchPlanExitCode."
+        )
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$render2DDrawListAdapterBehaviorExecutable" `
+        $render2DDrawListAdapterObject `
+        $render2DDrawListAdapterBehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath `
+            $render2DDrawListAdapterBehaviorExecutable)
+    ) {
+        throw 'Failed to link the Render2D draw-list adapter fixture.'
+    }
+
+    $render2DDrawListAdapterOutput =
+        & $render2DDrawListAdapterBehaviorExecutable 2>&1
+    $render2DDrawListAdapterExitCode = $LASTEXITCODE
+    $render2DDrawListAdapterOutput | Write-Output
+    if (
+        $render2DDrawListAdapterExitCode -ne 0 -or
+        (($render2DDrawListAdapterOutput -join "`n") -notmatch `
+            [regex]::Escape($render2DDrawListAdapterPassPattern))
+    ) {
+        throw (
+            'Render2D draw-list adapter fixture failed with exit code ' +
+            "$render2DDrawListAdapterExitCode."
+        )
+    }
+
     Write-Output "BOOTSTRAP_BUILD PASS configuration=$Configuration executable=$executable"
     Write-Output "STAGE1_STARTUP PASS executable=$stage1Executable boundary=GFMain"
     Write-Output "STAGE2_STARTUP PASS executable=$stage2Executable boundary=GFMainPhase2"
     Write-Output "STAGE3_STARTUP PASS executable=$stage3Executable boundary=GFMainPhase3"
     Write-Output "GFINITIALISE_COORDINATOR PASS address=004022b0 parity=RELOCATION_MATCH"
     Write-Output "GFINITIALISE_PROGRESS_INTEGRATION PASS boundary=GFInitialiseTail"
-    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint"
+    $visualAssetGrade = if ($visualBootUsesRetailAsset) {
+        'RetailFrontendBackdrop'
+    } else {
+        'AuthoredFallback'
+    }
+    Write-Output "VISUAL_BOOT_CHECKPOINT PASS executable=$visualCheckpointExecutable boundary=VerifiedGFInitialiseThenAuthoredVisualCheckpoint asset=$visualAssetGrade presentation=D3D9Render2DRecoveredTrackedSoldPixelShaderAndWorldTransformState"
 } finally {
     $env:PATH = $oldPath
     $env:INCLUDE = $oldInclude

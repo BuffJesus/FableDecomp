@@ -121,6 +121,9 @@ behavior result only when the source, test, and shared headers are all older tha
 `build_candidates.ps1 -Force` remains available for a clean full audit. On the first 1,950-row
 catalog run after this change, rebuilding only the newly landed manifest-backed rows took 12.29
 seconds instead of recompiling every historical PASS for several minutes.
+For renderer residue iteration, `build_candidates.ps1 -Address <address>`
+now restricts compilation and behavior execution to the requested catalog
+rows, then merges those rows into the complete report instead of replacing it.
 
 The local parity queue and canonical rebuild refresh are single-writer peers. Each validates the
 other's PID/command line and defers before mutating the shared candidate catalog; manual publication

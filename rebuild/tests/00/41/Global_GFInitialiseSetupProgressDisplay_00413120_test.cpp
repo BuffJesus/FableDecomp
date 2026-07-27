@@ -4,7 +4,9 @@
 
 namespace
 {
-    CProgressDisplay g_progressDisplay;
+    unsigned char g_progressDisplayStorage[sizeof(CProgressDisplay)];
+    CProgressDisplay* const g_progressDisplay =
+        reinterpret_cast<CProgressDisplay*>(g_progressDisplayStorage);
     FableReferenceCount g_reference;
     fable_u8 g_beginResult = 1;
     bool g_allocationEnabled = true;
@@ -16,11 +18,19 @@ namespace
     CProgressDisplay* g_observedDisplay = 0;
 }
 
+CWideString::CWideString()
+{
+}
+
+CCharString::CCharString()
+{
+}
+
 void* FABLE_CDECL FableOperatorNew(fable_u32 size)
 {
     if (!g_allocationEnabled || size != 0x88)
         return 0;
-    return &g_progressDisplay;
+    return g_progressDisplay;
 }
 
 void FABLE_CDECL FableOperatorDelete(void* allocation)
@@ -31,7 +41,7 @@ void FABLE_CDECL FableOperatorDelete(void* allocation)
 
 static void FABLE_FASTCALL DestroyProgressDisplay(void* object)
 {
-    if (object == &g_progressDisplay)
+    if (object == g_progressDisplay)
         ++g_destroyCalls;
 }
 
@@ -109,7 +119,7 @@ static int VerifySuccessfulSetup()
         return 5;
     if (g_beginCalls != 1 || g_constructCalls != 1 || g_setCalls != 1)
         return 6;
-    if (g_observedDisplay != &g_progressDisplay)
+    if (g_observedDisplay != g_progressDisplay)
         return 7;
     if (g_destroyCalls != 1 || g_deleteCalls != 1)
         return 8;
