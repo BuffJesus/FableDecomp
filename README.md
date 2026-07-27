@@ -130,7 +130,14 @@ or game loop. Build it with `rebuild/build_bootstrap.ps1`, then launch it from
 | First actual retail image | **Runnable now: `FRONTEND_BACKDROP_01` is decoded from `frontend.big` and presented through D3D9 plus recovered Render2D dependencies** | Runtime archive/texture ownership and the complete Lionhead parent renderer remain. |
 | First recovered retail progress setup | **Coordinator, setup, 0x88-byte constructor, retained owner, counted getter, active-state query, and text-mode transition are connected; the primary/fallback text-bank selector is recovered** | Populate the retail bank owners, integrate the corrected 418-byte `StartProgress`, and recover texture initialization. |
 | Retail-rendered frame/frontend | **The 489-byte `RenderProgress` boundary is mapped and 15/17 direct dependencies are retail matches** | Recover the 5,101-byte retail-display builder and 3,344-byte 2D draw-list submitter, then replace the GDI bridge with the runtime render/present loop. |
-| First retail video | **Runnable now with `--retail-video`; `=lionhead`, `=attract`, and `=intro` select later shipped movies.** | Playback uses a narrow DirectShow bridge. Recover retail `CVideoSys`/`CMovie` ownership and sequencing before calling it the native movie path. |
+| First retail video | **Runnable now with `--retail-video`: Lionhead → Microsoft → `intro_comp`, advanced by real end-of-stream events; Escape skips each movie. `=microsoft`, `=lionhead`, `=attract`, and `=intro` select one movie.** | `CVideoSys`/`CMovie` ownership, state, synchronization, and all method boundaries are recovered. Playback still uses a DirectShow child-window bridge; reconstruct `CTextureRenderer` and the native `CMovie::Draw` texture upload next. |
+
+The `-VerifyBootToFrontend` smoke now proves the complete visible handoff:
+all three graphs close and the rendered frontend checkpoint remains on screen.
+The optional `rebuild/upscale_retail_videos.ps1 -Movie boot -InstallVideo2X`
+command builds a 2x Real-ESRGAN cache without modifying retail files.
+Add `--retail-video-upscaled` to use completed enhanced copies; untouched
+retail files remain the default parity source.
 
 The “actual image” milestone is therefore reached, but “the game is rendering” is not. Retail
 inspection and a reviewed Ghidra boundary repair establish one 418-byte

@@ -185,13 +185,78 @@ rebuild/build/bootstrap-Release/FableTLC-Reconstruction-VisualCheckpoint.exe --r
 powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 -RetailVideo
 ```
 
-The executable resolves the read-only Steam install and plays
-`data/Video/microsoft_logo.wmv` in its reconstructed window through a compact
-DirectShow bridge. The smoke gate requires the playback graph to enter the
-running state and proves that two captured window frames 600 ms apart differ.
-`--retail-video=lionhead`, `--retail-video=attract`, and
-`--retail-video=intro` select other shipped movies. This proves decoded retail
-motion, but does not claim the recovered `CVideoSys`/`CMovie` path.
+The executable resolves the read-only Steam install and follows the recovered
+boot order: `lionhead_logo.wmv`, `microsoft_logo.wmv`, then
+`intro_comp.wmv`. It advances on DirectShow end-of-stream events and reveals
+the static frontend checkpoint after the intro completes. Escape skips only
+the current movie and advances to the next one, matching the retail interaction.
+The smoke gate
+requires the playback graph to enter the running state and proves that two
+captured window frames 600 ms apart differ. This stronger gate verifies both
+pre-intro transitions:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 `
+  -RetailVideo -Movie boot -VerifyBootSequence -TimeoutSeconds 45
+```
+
+The skip gate sends Escape to movies 1 and 2 and requires movie 3 to start:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 `
+  -RetailVideo -Movie boot -VerifyEscapeSkip -TimeoutSeconds 15
+```
+
+The complete visible handoff gate skips all three, requires the frontend
+checkpoint, verifies that the DirectShow child window was released, and checks
+the revealed frame for real color variation:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 `
+  -RetailVideo -Movie boot -VerifyBootToFrontend -OriginalVideo `
+  -TimeoutSeconds 25
+```
+
+`--retail-video=microsoft`, `--retail-video=lionhead`,
+`--retail-video=attract`, and `--retail-video=intro` select one shipped movie.
+The `CVideoSys` and `CMovie` method map, ownership, playback state, critical
+section, frame event, and texture handoff are now recovered and documented in
+`docs/VIDEO_SYSTEM_RE.md`. Their verified binary layouts compile from
+`rebuild/include/fable_video_system.h`. The live compatibility path still uses
+a DirectShow child window rather than reconstructed `CTextureRenderer` plus
+native `CMovie::Draw`.
+
+### Optional AI-enhanced boot movies
+
+The shipped startup movies are only 640 pixels wide. A reproducible, opt-in
+preprocessing path now generates 2x copies with the video-specific
+`realesr-animevideov3` model through portable Video2X/NCNN/Vulkan:
+
+```powershell
+rebuild/upscale_retail_videos.ps1 -Movie boot -InstallVideo2X
+```
+
+The script pins Video2X 6.4.0 and verifies its downloaded archive against the
+recorded SHA-256 before extraction. It streams frames through the GPU, retains
+the original frame count and stereo WMA audio, encodes a DirectShow-compatible
+WMV2 result at 8 Mbit/s, and validates dimensions, video-frame count, and
+audio-packet count before atomically publishing each file under the ignored
+`rebuild/build/bootstrap-Release/upscaled-video/` cache. Retail files are never
+modified.
+
+`--retail-video-upscaled` opts into each completed enhanced file and falls
+back independently to its retail source when absent. The title includes
+`AI 2x` when an enhanced file is live. Untouched retail files remain the
+default parity source. The focused selection gate is:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 `
+  -RetailVideo -Movie lionhead -VerifyUpscaled -TimeoutSeconds 15
+```
+
+This is a presentation enhancement, not a retail-parity claim. Super-resolution
+can infer plausible edge detail and may introduce temporal shimmer or altered
+fine texture. The untouched-file override remains the accuracy oracle.
 
 Stages 2 and 3 use explicit integration boundaries and are not claimed as a
 retail-matching GFMain. The visual checkpoint can now present one build-time
@@ -200,6 +265,39 @@ seams, but it does **not** yet execute the complete Lionhead parent coordinator,
 initialize the complete engine-service
 graph, load archives at runtime, run the native retail movie subsystem, or
 enter the game loop.
+
+## Remaining accurate-startup closure
+
+The visual checkpoint is an evidence-backed checkpoint, not yet the complete
+retail startup. The remaining work, in execution order, is:
+
+1. **Close GFMain Phases 3-10.** Only authored Phases 1 and 2 are callable.
+   The unresolved path covers settings/persistence/IME, the root child
+   hierarchy, retail banks and INI files, save paths/fonts/display resources,
+   command-line/window policy, EULA/hardware configuration, engine primitive
+   assembly, and the final GFInitialise/launch/error/cleanup branches.
+2. **Replace integration-owned startup objects.** GFInitialise and the visible
+   progress leaf execute, but the root engine, display, progress-resource, and
+   service-singleton graph are still controlled boundary objects rather than
+   the retail ownership graph.
+3. **Run `CNewFrontendGameComponent::Run @ 0x0042EC7C`.** Its recovered order
+   continues from the three movies into runtime opens of `frontend.big`,
+   localized `text.big`, and `shaders.big`, then `Init2`,
+   `InitialiseEngine`, frontend construction, first clear/swap, and
+   `CFrontEndManager::ChangeStateFirstTime`.
+4. **Enter the real frontend loop.** The retail loop performs system update,
+   input, update, interpolation, and draw; it also clears stale input after
+   attract playback and owns the title/menu transition into either the main
+   game or the legacy frontend component. The current post-movie image is a
+   static build-time extraction, not this interactive loop.
+5. **Replace the movie presentation seam.** Playback order, completion,
+   ownership, state, synchronization, and Escape behavior are recovered, but
+   frames still use a DirectShow child window. Native parity requires the
+   recovered `CTextureRenderer::DoRenderSample` conversion, frame event and
+   lock, UI texture copy, and `CMovie::Draw` sprite submission.
+6. **Close renderer/resource lifecycle.** Runtime archive/texture ownership,
+   the complete `Render2DDrawList` parent, input/audio/localization services,
+   device-reset/error paths, and orderly frontend shutdown are not yet live.
 
 ## Retail boot spine
 

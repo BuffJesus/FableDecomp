@@ -223,6 +223,12 @@ namespace
         "FableDecomp - Retail WMV Starting";
     const char kRetailVideoPlayingWindowTitle[] =
         "FableDecomp - Retail WMV Playing - Recovered Boot + D3D9";
+    const char kRetailVideoUpscaledPlayingWindowTitle[] =
+        "FableDecomp - Retail WMV Playing - AI 2x Enhanced";
+    const char kRetailVideoSequenceCompleteWindowTitle[] =
+        "FableDecomp - Retail Boot Movies Complete - Frontend Checkpoint Ready";
+    const char kRetailVideoCompleteWindowTitle[] =
+        "FableDecomp - Retail Movie Complete - Frontend Ready";
 #if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
     const char kRetailAssetReadyWindowTitle[] =
         "FableDecomp - Retail Frontend Asset + Progress Display Ready";
@@ -257,8 +263,28 @@ namespace
     const FableUint kMessageSize = 0x0005;
     const FableUint kMessagePaint = 0x000F;
     const FableUint kMessageEraseBackground = 0x0014;
+    const FableUint kMessageKeyDown = 0x0100;
+    const FableUint kMessageKeyUp = 0x0101;
     const FableUint kMessageTimer = 0x0113;
     const FableWordParameter kRetailVideoTimer = 1;
+    const FableWordParameter kEscapeKey = 0x1B;
+    const char* const kRetailBootMovies[] = {
+        "lionhead_logo.wmv",
+        "microsoft_logo.wmv",
+        "intro_comp.wmv"
+    };
+    const char* const kRetailBootPlayingWindowTitles[] = {
+        "FableDecomp - Retail WMV Playing 1/3 - Lionhead",
+        "FableDecomp - Retail WMV Playing 2/3 - Microsoft",
+        "FableDecomp - Retail WMV Playing 3/3 - Intro"
+    };
+    const char* const kRetailBootUpscaledPlayingWindowTitles[] = {
+        "FableDecomp - Retail WMV Playing 1/3 - Lionhead - AI 2x",
+        "FableDecomp - Retail WMV Playing 2/3 - Microsoft - AI 2x",
+        "FableDecomp - Retail WMV Playing 3/3 - Intro - AI 2x"
+    };
+    const unsigned int kRetailBootMovieCount =
+        sizeof(kRetailBootMovies) / sizeof(kRetailBootMovies[0]);
     const FableDword kOverlappedWindow = 0x00CF0000UL;
     const int kUseDefaultPosition = static_cast<int>(0x80000000UL);
     const int kShowNormal = 1;
@@ -269,6 +295,12 @@ namespace
     FableBitmapInfo g_BootArtworkInfo = {};
     bool g_RetailProgressDisplayPresent = false;
     bool g_RetailProgressDisplayActive = false;
+    FableWindow g_RetailVideoWindow = 0;
+    FableInstanceHandle g_RetailVideoInstance = 0;
+    unsigned int g_RetailBootMovieIndex = 0;
+    bool g_RetailBootSequenceActive = false;
+    bool g_RetailVideoReachedRunningState = false;
+    bool g_RetailVideoEscapePressed = false;
 
     const char* IntegerResource(int identifier)
     {
@@ -355,6 +387,22 @@ namespace
         return true;
     }
 
+    bool StartRetailBootMovie()
+    {
+        if (
+            !g_RetailBootSequenceActive ||
+            g_RetailBootMovieIndex >= kRetailBootMovieCount)
+        {
+            return false;
+        }
+
+        g_RetailVideoReachedRunningState = false;
+        return FableStartRetailVideo(
+            g_RetailVideoWindow,
+            g_RetailVideoInstance,
+            kRetailBootMovies[g_RetailBootMovieIndex]);
+    }
+
     FableResult FABLE_STDCALL VisualBootWindowProcedure(
         FableWindow window,
         FableUint message,
@@ -379,15 +427,93 @@ namespace
                 PaintBootArtwork(window);
             return 0;
 
-        case kMessageTimer:
+        case kMessageKeyDown:
             if (
-                wordParameter == kRetailVideoTimer &&
-                FableRetailVideoHasAdvanced())
+                wordParameter == kEscapeKey &&
+                !g_RetailVideoEscapePressed &&
+                FableIsRetailVideoActive())
             {
-                KillTimer(window, kRetailVideoTimer);
-                SetWindowTextA(
-                    window,
-                    kRetailVideoPlayingWindowTitle);
+                g_RetailVideoEscapePressed = true;
+                FableSkipRetailVideo();
+                return 0;
+            }
+            break;
+
+        case kMessageKeyUp:
+            if (wordParameter == kEscapeKey)
+            {
+                g_RetailVideoEscapePressed = false;
+                return 0;
+            }
+            break;
+
+        case kMessageTimer:
+            if (wordParameter == kRetailVideoTimer)
+            {
+                if (
+                    !g_RetailVideoReachedRunningState &&
+                    FableRetailVideoHasAdvanced())
+                {
+                    g_RetailVideoReachedRunningState = true;
+                    SetWindowTextA(
+                        window,
+                        g_RetailBootSequenceActive
+                            ? (
+                                FableIsRetailVideoUsingUpscaledSource()
+                                    ? kRetailBootUpscaledPlayingWindowTitles[
+                                        g_RetailBootMovieIndex]
+                                    : kRetailBootPlayingWindowTitles[
+                                        g_RetailBootMovieIndex]
+                            )
+                            : (
+                                FableIsRetailVideoUsingUpscaledSource()
+                                    ? kRetailVideoUpscaledPlayingWindowTitle
+                                    : kRetailVideoPlayingWindowTitle
+                            ));
+                }
+
+                const FableRetailVideoProcessResult result =
+                    FableProcessRetailVideo();
+                if (result == FableRetailVideoCompleted)
+                {
+                    if (
+                        g_RetailBootSequenceActive &&
+                        ++g_RetailBootMovieIndex <
+                            kRetailBootMovieCount)
+                    {
+                        if (StartRetailBootMovie())
+                        {
+                            SetWindowTextA(
+                                window,
+                                kRetailVideoStartingWindowTitle);
+                        }
+                        else
+                        {
+                            KillTimer(window, kRetailVideoTimer);
+                            SetWindowTextA(
+                                window,
+                                FableGetRetailVideoStatus());
+                        }
+                    }
+                    else
+                    {
+                        KillTimer(window, kRetailVideoTimer);
+                        FableShutdownRetailVideo();
+                        SetWindowTextA(
+                            window,
+                            g_RetailBootSequenceActive
+                                ? kRetailVideoSequenceCompleteWindowTitle
+                                : kRetailVideoCompleteWindowTitle);
+                    }
+                }
+                else if (result == FableRetailVideoFailed)
+                {
+                    KillTimer(window, kRetailVideoTimer);
+                    SetWindowTextA(
+                        window,
+                        FableGetRetailVideoStatus());
+                    FableShutdownRetailVideo();
+                }
             }
             return 0;
 
@@ -564,6 +690,16 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         commandLine != 0 &&
         strstr(commandLine, "--retail-video") != 0)
     {
+        g_RetailVideoWindow = window;
+        g_RetailVideoInstance = instance;
+        g_RetailBootMovieIndex = 0;
+        g_RetailBootSequenceActive = false;
+        g_RetailVideoReachedRunningState = false;
+        g_RetailVideoEscapePressed = false;
+        FableSetRetailVideoPreferUpscaled(
+            strstr(commandLine, "--retail-video-upscaled") != 0 &&
+            strstr(commandLine, "--retail-video-original") == 0);
+
         const char* selectedMovie = 0;
         if (strstr(commandLine, "--retail-video=intro") != 0)
             selectedMovie = "intro_comp.wmv";
@@ -580,6 +716,19 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
                 "--retail-video=lionhead") != 0)
         {
             selectedMovie = "lionhead_logo.wmv";
+        }
+        else if (
+            strstr(
+                commandLine,
+                "--retail-video=microsoft") != 0)
+        {
+            selectedMovie = "microsoft_logo.wmv";
+        }
+        else
+        {
+            g_RetailBootSequenceActive = true;
+            selectedMovie =
+                kRetailBootMovies[g_RetailBootMovieIndex];
         }
 
         if (FableStartRetailVideo(
