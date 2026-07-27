@@ -546,6 +546,18 @@ namespace
             }
             else if (
                 eventKind ==
+                RENDER2D_ADAPTER_UPDATE_PIXEL_SHADER)
+            {
+                CShaderRenderManagerUpdatePixelShaderView& shader =
+                    *reinterpret_cast<
+                        CShaderRenderManagerUpdatePixelShaderView*>(
+                            &g_CShaderRenderManager_013BC470);
+                shader.UpdatePixelShader();
+                if ((shader.shaderStateMask3D8 & 1) != 0)
+                    succeeded_ = false;
+            }
+            else if (
+                eventKind ==
                 RENDER2D_ADAPTER_ATTACH_TEXTURE)
             {
                 CTextureAttachView texture = {
@@ -731,7 +743,17 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
         displayManagerBytes + 0x194) = backBufferWidth;
     *reinterpret_cast<fable_i32*>(
         displayManagerBytes + 0x198) = backBufferHeight;
-    g_CShaderRenderManager_013BC470.updateFlags3D8 = 0;
+    memset(
+        &g_CShaderRenderManager_013BC470,
+        0,
+        sizeof(g_CShaderRenderManager_013BC470));
+    CShaderRenderManagerUpdatePixelShaderView& shaderManager =
+        *reinterpret_cast<
+            CShaderRenderManagerUpdatePixelShaderView*>(
+                &g_CShaderRenderManager_013BC470);
+    shaderManager.displayDevice1D4 =
+        reinterpret_cast<FablePixelShaderDevice*>(g_Device);
+    shaderManager.currentPixelShader1E4 = 0;
     reinterpret_cast<CRenderManagerCoreWindowView*>(
         &g_RenderManagerCore)->displayManager3A3C =
             reinterpret_cast<CDisplayManagerWindowView*>(
@@ -874,6 +896,9 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         static_cast<float>(clientHeight)
     };
     adapterInput.entryVertexShadersEnabled = true;
+    g_CShaderRenderManager_013BC470.updateFlags3D8 |= 1;
+    adapterInput.dirtyFlagsAfterShaderApply =
+        g_CShaderRenderManager_013BC470.updateFlags3D8;
     adapterInput.firstWindowIdentity =
         reinterpret_cast<fable_u32>(&fullWindow);
     adapterInput.flushes = flushes;
