@@ -25,9 +25,8 @@ struct CShaderRenderManagerUpdatePixelShaderView
     void UpdatePixelShader();
 };
 
-class CShaderRenderManager
+struct CShaderRenderManager
 {
-public:
     fable_u8 unknown000[0x3D8];
     fable_u32 updateFlags3D8;
 
@@ -37,3 +36,6 @@ public:
 FABLE_STATIC_ASSERT(
     sizeof(CShaderRenderManagerUpdatePixelShaderView) == 0x3DC);
 FABLE_STATIC_ASSERT(sizeof(CShaderRenderManager) == 0x3DC);
+
+void FABLE_FASTCALL CShaderRenderManager_ResetWorldTransform(
+    CShaderRenderManager* shaderManager);
