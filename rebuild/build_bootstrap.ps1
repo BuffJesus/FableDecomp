@@ -83,6 +83,7 @@ $progressDisplayStringBoundarySource = Join-Path $rebuildRoot 'integration\progr
 $stage2BoundarySource = Join-Path $rebuildRoot 'integration\stage2_engine_boundary.cpp'
 $visualBootSource = Join-Path $rebuildRoot 'integration\visual_boot_checkpoint.cpp'
 $visualBootD3D9Source = Join-Path $rebuildRoot 'integration\visual_boot_d3d9.cpp'
+$retailVideoBridgeSource = Join-Path $rebuildRoot 'integration\retail_video_bridge.cpp'
 $visualBootFallbackArtwork = Join-Path $rebuildRoot 'assets\boot\fabledecomp_boot_concept.png'
 $visualBootArtwork = $visualBootFallbackArtwork
 $textureBuilder = Join-Path $workspaceRoot 'tools\texture_build.py'
@@ -152,6 +153,7 @@ $stage3BoundaryObject = Join-Path $outDir 'stage3_engine_boundary.obj'
 $visualBoundaryObject = Join-Path $outDir 'visual_engine_boundary.obj'
 $visualBootObject = Join-Path $outDir 'visual_boot_checkpoint.obj'
 $visualBootD3D9Object = Join-Path $outDir 'visual_boot_d3d9.obj'
+$retailVideoBridgeObject = Join-Path $outDir 'retail_video_bridge.obj'
 $visualBootBehaviorObject = Join-Path $outDir 'visual_boot_checkpoint_behavior.obj'
 $render2DBatchPlanObject = Join-Path $outDir 'render2d_batch_plan.obj'
 $render2DBatchPlanBehaviorObject = Join-Path $outDir 'render2d_batch_plan_behavior.obj'
@@ -1201,6 +1203,15 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
+        "/Fo$retailVideoBridgeObject" $retailVideoBridgeSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $retailVideoBridgeObject)
+    ) {
+        throw 'Failed to compile the retail video bridge.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @visualBootCompileOptions `
         "/Fo$visualBootBehaviorObject" $visualBootBehaviorSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -1529,6 +1540,7 @@ try {
         $visualBoundaryObject,
         $visualBootObject,
         $visualBootD3D9Object,
+        $retailVideoBridgeObject,
         $render2DBatchPlanObject,
         $render2DDrawListAdapterObject,
         $attachTextureToStageObject,
@@ -1672,7 +1684,7 @@ try {
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:windows `
         "/out:$visualCheckpointExecutable" `
         $winMainObject @visualRuntimeObjects $visualBootResource `
-        user32.lib gdi32.lib d3d9.lib
+        user32.lib gdi32.lib d3d9.lib advapi32.lib ole32.lib
     if (
         $LASTEXITCODE -ne 0 -or
         -not (Test-Path -LiteralPath $visualCheckpointExecutable)
@@ -1682,7 +1694,7 @@ try {
 
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
         "/out:$visualBootBehaviorExecutable" `
-        $visualBootObject $visualBootD3D9Object `
+        $visualBootObject $visualBootD3D9Object $retailVideoBridgeObject `
         $render2DBatchPlanObject $render2DDrawListAdapterObject `
         $attachTextureToStageObject $realiseRenderStateObject `
         $soldStateBlockObject `
@@ -1697,7 +1709,7 @@ try {
         $pixelFormatTableObject $textureInitialisePreallocatedObject `
         $textureAssignmentObject $textureUninitialiseObject `
         $visualBootBehaviorObject $visualBootResource `
-        user32.lib gdi32.lib d3d9.lib
+        user32.lib gdi32.lib d3d9.lib advapi32.lib ole32.lib
     if (
         $LASTEXITCODE -ne 0 -or
         -not (Test-Path -LiteralPath $visualBootBehaviorExecutable)

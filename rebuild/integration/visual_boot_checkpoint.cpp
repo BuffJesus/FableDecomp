@@ -1,5 +1,6 @@
 #include "fable_visual_boot.h"
 #include "fable_visual_d3d9.h"
+#include "retail_video_bridge.h"
 
 #include <string.h>
 
@@ -148,6 +149,14 @@ extern "C"
     __declspec(dllimport) FableBool FABLE_STDCALL SetWindowTextA(
         FableWindow window,
         const char* text);
+    __declspec(dllimport) FableWordParameter FABLE_STDCALL SetTimer(
+        FableWindow window,
+        FableWordParameter identifier,
+        FableUint intervalMilliseconds,
+        void* timerProcedure);
+    __declspec(dllimport) FableBool FABLE_STDCALL KillTimer(
+        FableWindow window,
+        FableWordParameter identifier);
     __declspec(dllimport) FableResult FABLE_STDCALL DefWindowProcA(
         FableWindow window,
         FableUint message,
@@ -210,6 +219,10 @@ namespace
         "FableDecomp - Retail Progress Display Ready";
     const char kProgressActiveWindowTitle[] =
         "FableDecomp - Retail Progress Display Active";
+    const char kRetailVideoStartingWindowTitle[] =
+        "FableDecomp - Retail WMV Starting";
+    const char kRetailVideoPlayingWindowTitle[] =
+        "FableDecomp - Retail WMV Playing - Recovered Boot + D3D9";
 #if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
     const char kRetailAssetReadyWindowTitle[] =
         "FableDecomp - Retail Frontend Asset + Progress Display Ready";
@@ -241,8 +254,11 @@ namespace
     const FableUint kClassRedrawHorizontal = 0x0002;
     const FableUint kClassRedrawVertical = 0x0001;
     const FableUint kMessageDestroy = 0x0002;
+    const FableUint kMessageSize = 0x0005;
     const FableUint kMessagePaint = 0x000F;
     const FableUint kMessageEraseBackground = 0x0014;
+    const FableUint kMessageTimer = 0x0113;
+    const FableWordParameter kRetailVideoTimer = 1;
     const FableDword kOverlappedWindow = 0x00CF0000UL;
     const int kUseDefaultPosition = static_cast<int>(0x80000000UL);
     const int kShowNormal = 1;
@@ -347,15 +363,40 @@ namespace
     {
         switch (message)
         {
+        case kMessageSize:
+            if (FableIsRetailVideoActive())
+            {
+                FableResizeRetailVideo(
+                    static_cast<fable_i32>(
+                        longParameter & 0xFFFF),
+                    static_cast<fable_i32>(
+                        (longParameter >> 16) & 0xFFFF));
+            }
+            return 0;
+
         case kMessagePaint:
             if (!PaintBootArtworkD3D9(window))
                 PaintBootArtwork(window);
+            return 0;
+
+        case kMessageTimer:
+            if (
+                wordParameter == kRetailVideoTimer &&
+                FableRetailVideoHasAdvanced())
+            {
+                KillTimer(window, kRetailVideoTimer);
+                SetWindowTextA(
+                    window,
+                    kRetailVideoPlayingWindowTitle);
+            }
             return 0;
 
         case kMessageEraseBackground:
             return 1;
 
         case kMessageDestroy:
+            KillTimer(window, kRetailVideoTimer);
+            FableShutdownRetailVideo();
             FableShutdownVisualD3D9();
             PostQuitMessage(0);
             return 0;
@@ -519,6 +560,48 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
 #endif
     }
 
+    if (
+        commandLine != 0 &&
+        strstr(commandLine, "--retail-video") != 0)
+    {
+        const char* selectedMovie = 0;
+        if (strstr(commandLine, "--retail-video=intro") != 0)
+            selectedMovie = "intro_comp.wmv";
+        else if (
+            strstr(
+                commandLine,
+                "--retail-video=attract") != 0)
+        {
+            selectedMovie = "fable_attract_english.wmv";
+        }
+        else if (
+            strstr(
+                commandLine,
+                "--retail-video=lionhead") != 0)
+        {
+            selectedMovie = "lionhead_logo.wmv";
+        }
+
+        if (FableStartRetailVideo(
+                window,
+                instance,
+                selectedMovie))
+        {
+            SetWindowTextA(window, kRetailVideoStartingWindowTitle);
+            SetTimer(
+                window,
+                kRetailVideoTimer,
+                50,
+                0);
+        }
+        else
+        {
+            SetWindowTextA(
+                window,
+                FableGetRetailVideoStatus());
+        }
+    }
+
     FableMessage message = {};
     while (GetMessageA(&message, 0, 0, 0) > 0)
     {
@@ -526,6 +609,7 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         DispatchMessageA(&message);
     }
 
+    FableShutdownRetailVideo();
     FableShutdownVisualD3D9();
     UnregisterClassA(kWindowClassName, instance);
     DeleteObject(g_BootArtwork);

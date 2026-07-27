@@ -1,6 +1,27 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-26 (EgoMP multiplayer audit and recovered Sold state-block presentation).*
+*Last updated: 2026-07-26 (first changing retail-video checkpoint).*
+
+## First changing retail-video checkpoint (2026-07-26)
+
+- `FableTLC-Reconstruction-VisualCheckpoint.exe --retail-video` now resolves
+  the read-only Steam install and plays the shipped
+  `data/Video/microsoft_logo.wmv` inside the reconstructed boot window.
+  `--retail-video=lionhead`, `=attract`, and `=intro` select later shipped
+  movies.
+- Playback uses an isolated DirectShow graph/child video window over the live
+  D3D9 + recovered Render2D static checkpoint. It is deliberately described
+  as a visual bridge, not recovered `CVideoSys`/`CMovie` ownership or native
+  GFMain movie sequencing.
+- `smoke_visual_checkpoint.ps1 -RetailVideo` requires the graph to reach the
+  running state, captures the actual window twice 600 ms apart, requires
+  different SHA-256 frame hashes, sends `WM_CLOSE`, and requires exit zero.
+  The first passing run observed hashes `80661AB06DD9...` and
+  `042FBA1AD86D...`.
+- Full Release bootstrap, the original static-window smoke, and the changing
+  video smoke pass. The next honest visual target remains interactive retail
+  rendering: runtime archive/texture ownership, the complete
+  `Render2DDrawList` parent, and eventually scene/world submission.
 
 ## Recovered Sold state-block presentation (2026-07-26)
 

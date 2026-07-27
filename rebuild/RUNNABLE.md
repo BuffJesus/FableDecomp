@@ -178,12 +178,28 @@ powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1
 It requires a `D3D9 Presented via Render2D` window title, sends `WM_CLOSE`,
 and requires a clean zero exit.
 
+The first changing retail-video checkpoint is opt-in:
+
+```powershell
+rebuild/build/bootstrap-Release/FableTLC-Reconstruction-VisualCheckpoint.exe --retail-video
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 -RetailVideo
+```
+
+The executable resolves the read-only Steam install and plays
+`data/Video/microsoft_logo.wmv` in its reconstructed window through a compact
+DirectShow bridge. The smoke gate requires the playback graph to enter the
+running state and proves that two captured window frames 600 ms apart differ.
+`--retail-video=lionhead`, `--retail-video=attract`, and
+`--retail-video=intro` select other shipped movies. This proves decoded retail
+motion, but does not claim the recovered `CVideoSys`/`CMovie` path.
+
 Stages 2 and 3 use explicit integration boundaries and are not claimed as a
 retail-matching GFMain. The visual checkpoint can now present one build-time
 extracted retail asset through D3D9 and recovered Render2D batching/lifecycle
 seams, but it does **not** yet execute the complete Lionhead parent coordinator,
 initialize the complete engine-service
-graph, load archives at runtime, play video, or enter the game loop.
+graph, load archives at runtime, run the native retail movie subsystem, or
+enter the game loop.
 
 ## Retail boot spine
 
