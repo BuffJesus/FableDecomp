@@ -122,6 +122,15 @@ $frontendStartupSequenceBehaviorSource = Join-Path $rebuildRoot 'tests\integrati
 $visualBootFallbackArtwork = Join-Path $rebuildRoot 'assets\boot\fabledecomp_boot_concept.png'
 $visualBootArtwork = $visualBootFallbackArtwork
 $textureBuilder = Join-Path $workspaceRoot 'tools\texture_build.py'
+$staticFontRenderer = Join-Path $workspaceRoot 'tools\render_fable_static_font.py'
+$streamingFontRenderer = Join-Path $workspaceRoot 'tools\render_fable_streaming_font.py'
+$cursorBuilder = Join-Path $workspaceRoot 'tools\png_to_windows_cursor.py'
+$frontendAnimationRenderer = Join-Path $workspaceRoot `
+    'tools\render_fable_frontend_animation.py'
+$frontendMenuRenderer = Join-Path $workspaceRoot `
+    'tools\render_fable_frontend_menu.py'
+$frontendSubscreenRenderer = Join-Path $workspaceRoot `
+    'tools\render_fable_frontend_subscreens.py'
 $visualBootBehaviorSource = Join-Path $rebuildRoot 'tests\integration\VisualBootCheckpoint_test.cpp'
 $render2DBatchPlanSource = Join-Path $rebuildRoot 'integration\render2d_batch_plan.cpp'
 $render2DBatchPlanBehaviorSource = Join-Path $rebuildRoot 'tests\integration\Render2DBatchPlan_test.cpp'
@@ -231,8 +240,31 @@ $visualBootRetailArtwork = Join-Path $outDir 'frontend_backdrop_01.png'
 $visualBootRetailTitle = Join-Path $outDir 'frontend_title_01_sprite.png'
 $visualBootRetailTitleRight = Join-Path $outDir 'frontend_title_02_sprite.png'
 $visualBootRetailPrompt = Join-Path $outDir 'frontend_press_start_text.png'
+$visualBootRetailLegal = Join-Path $outDir 'frontend_legal_text.png'
+$visualBootRetailPointer = Join-Path $outDir 'frontend_mouse_pointer.png'
+$visualBootRetailForestSheet = Join-Path $outDir 'frontend_forest_sheet.png'
+$visualBootRetailSunbeamSheet = Join-Path $outDir 'frontend_sunbeam_sheet.png'
+$visualBootRetailMenu = Join-Path $outDir 'frontend_main_menu.png'
+$visualBootBuffJesusMenu =
+    Join-Path $outDir 'frontend_main_menu_buff_jesus.png'
+$visualBootRetailOptions = Join-Path $outDir 'frontend_options_menu.png'
+$visualBootRetailHelpers = Join-Path $outDir 'frontend_helpers.png'
+$visualBootRetailCoastalSheet = Join-Path $outDir 'frontend_coastal_sheet.png'
+$visualBootRetailCoastalSunbeamSheet =
+    Join-Path $outDir 'frontend_coastal_sunbeam_sheet.png'
 $visualBootBitmap = Join-Path $outDir 'visual_boot_artwork.bmp'
 $visualBootTitleBitmap = Join-Path $outDir 'visual_boot_title.bmp'
+$visualBootForestBitmap = Join-Path $outDir 'visual_boot_forest.bmp'
+$visualBootSunbeamBitmap = Join-Path $outDir 'visual_boot_sunbeam.bmp'
+$visualBootMenuBitmap = Join-Path $outDir 'visual_boot_main_menu.bmp'
+$visualBootBuffJesusMenuBitmap =
+    Join-Path $outDir 'visual_boot_main_menu_buff_jesus.bmp'
+$visualBootOptionsBitmap = Join-Path $outDir 'visual_boot_options_menu.bmp'
+$visualBootHelpersBitmap = Join-Path $outDir 'visual_boot_helpers.bmp'
+$visualBootCoastalBitmap = Join-Path $outDir 'visual_boot_coastal.bmp'
+$visualBootCoastalSunbeamBitmap =
+    Join-Path $outDir 'visual_boot_coastal_sunbeam.bmp'
+$visualBootCursor = Join-Path $outDir 'visual_boot_pointer.cur'
 $visualBootResourceSource = Join-Path $outDir 'visual_boot_checkpoint.rc'
 $visualBootResource = Join-Path $outDir 'visual_boot_checkpoint.res'
 $gfmainPhase1BehaviorObject = Join-Path $outDir 'gfmain_phase1_behavior.obj'
@@ -466,6 +498,11 @@ $required = @(
     $gfmainPhase2BehaviorSource,
     $gfInitialiseProgressPhaseBehaviorSource,
     $textureBuilder,
+    $staticFontRenderer,
+    $streamingFontRenderer,
+    $cursorBuilder,
+    $frontendAnimationRenderer,
+    $frontendMenuRenderer,
     $bootObjectChecker
 )
 $missing = @($required | Where-Object { -not (Test-Path -LiteralPath $_) })
@@ -479,12 +516,18 @@ $retailFrontendCandidates = @()
 if ($RetailFrontendBank) {
     $retailFrontendCandidates += $RetailFrontendBank
 } else {
-    $retailFrontendCandidates += Join-Path $workspaceRoot 'work\ui_proto\art\frontend.big'
+    # Prefer an untouched retail bank.  work\ui_proto\art is an intentional
+    # texture-authoring fixture whose FRONTEND_BUTTON_L_SPRITE is gold-tinted;
+    # using it for the checkpoint leaks that experiment into every title rule.
+    $retailFrontendCandidates +=
+        'C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\data\graphics\pc\frontend.big'
     $programFilesX86 = ${env:ProgramFiles(x86)}
     if ($programFilesX86) {
         $retailFrontendCandidates += Join-Path $programFilesX86 `
             'Steam\steamapps\common\Fable The Lost Chapters\data\graphics\pc\frontend.big'
     }
+    $retailFrontendCandidates += Join-Path $workspaceRoot `
+        'work\ui_proto\art\frontend.big'
 }
 
 $selectedRetailFrontendBank = $retailFrontendCandidates |
@@ -494,6 +537,12 @@ $selectedRetailFrontendBank = $retailFrontendCandidates |
     Select-Object -First 1
 $visualBootUsesRetailAsset = $false
 $visualBootUsesRetailPrompt = $false
+$visualBootUsesRetailLegal = $false
+$visualBootUsesRetailPointer = $false
+$visualBootUsesRetailAnimation = $false
+$visualBootUsesRetailMenu = $false
+$visualBootUsesBuffJesusMenu = $false
+$visualBootUsesRetailSubscreens = $false
 if ($selectedRetailFrontendBank) {
     & python $textureBuilder decode `
         $selectedRetailFrontendBank `
@@ -513,6 +562,12 @@ if ($selectedRetailFrontendBank) {
         $visualBootRetailTitleRight `
         --crop-real
     $titleRightDecodeExitCode = $LASTEXITCODE
+    & python $textureBuilder decode `
+        $selectedRetailFrontendBank `
+        MOUSE_POINTER_SPRITE_FE `
+        $visualBootRetailPointer `
+        --crop-real
+    $pointerDecodeExitCode = $LASTEXITCODE
     if (
         $backdropDecodeExitCode -ne 0 -or
         $titleLeftDecodeExitCode -ne 0 -or
@@ -533,11 +588,73 @@ if ($selectedRetailFrontendBank) {
     } else {
         $visualBootArtwork = $visualBootRetailArtwork
         $visualBootUsesRetailAsset = $true
+        if (
+            $pointerDecodeExitCode -eq 0 -and
+            (Test-Path -LiteralPath $visualBootRetailPointer)
+        ) {
+            & python $cursorBuilder `
+                $visualBootRetailPointer `
+                $visualBootCursor `
+                --hotspot 0 0
+            if (
+                $LASTEXITCODE -eq 0 -and
+                (Test-Path -LiteralPath $visualBootCursor)
+            ) {
+                $visualBootUsesRetailPointer = $true
+            }
+        }
+        if (-not $visualBootUsesRetailPointer) {
+            Write-Warning (
+                "Retail mouse-pointer decode failed; keeping the system arrow."
+            )
+        }
+        & python $frontendAnimationRenderer `
+            $selectedRetailFrontendBank `
+            $visualBootRetailForestSheet `
+            $visualBootRetailSunbeamSheet
+        if (
+            $LASTEXITCODE -eq 0 -and
+            (Test-Path -LiteralPath $visualBootRetailForestSheet) -and
+            (Test-Path -LiteralPath $visualBootRetailSunbeamSheet)
+        ) {
+            $visualBootUsesRetailAnimation = $true
+        } else {
+            Write-Warning (
+                "Retail forest/sunbeam decode failed; keeping the static " +
+                "frontend backdrop."
+            )
+        }
+        & python $frontendAnimationRenderer `
+            $selectedRetailFrontendBank `
+            $visualBootRetailCoastalSheet `
+            $visualBootRetailCoastalSunbeamSheet `
+            --theme coastal
+        $coastalAnimationReady =
+            $LASTEXITCODE -eq 0 -and
+            (Test-Path -LiteralPath $visualBootRetailCoastalSheet) -and
+            (Test-Path -LiteralPath $visualBootRetailCoastalSunbeamSheet)
         $retailDataRoot = Split-Path -Parent (
             Split-Path -Parent (
                 Split-Path -Parent $selectedRetailFrontendBank
             )
         )
+        $retailGameRoot = Split-Path -Parent $retailDataRoot
+        $frontendLayoutArguments = @()
+        $frontendSchema = Join-Path $workspaceRoot `
+            'ghidra_out\def_schema.json'
+        if (
+            (Test-Path -LiteralPath (
+                Join-Path $retailGameRoot `
+                    'data\CompiledDefs\frontend.bin')) -and
+            (Test-Path -LiteralPath $frontendSchema)
+        ) {
+            $frontendLayoutArguments += @(
+                '--game-root',
+                $retailGameRoot,
+                '--schema',
+                $frontendSchema
+            )
+        }
         $fontCandidates = @()
         $fontCandidates += Join-Path $retailDataRoot `
             'lang\English\fonts.big'
@@ -553,15 +670,16 @@ if ($selectedRetailFrontendBank) {
             } |
             Select-Object -First 1
         if ($selectedRetailFontBank) {
-            & python (Join-Path $workspaceRoot `
-                'tools\render_fable_static_font.py') `
+            & python $staticFontRenderer `
                 $selectedRetailFontBank `
                 ENG_ARIAL_24 `
                 'Press Left Mouse Button To Continue' `
                 $visualBootRetailPrompt `
                 --canvas 640 480 `
                 --position 320 240 `
-                --align center
+                --align center `
+                --scale 0.6666666667 `
+                --outline-pixels 1
             if (
                 $LASTEXITCODE -eq 0 -and
                 (Test-Path -LiteralPath $visualBootRetailPrompt)
@@ -573,12 +691,125 @@ if ($selectedRetailFrontendBank) {
                     "decoded title without the prompt."
                 )
             }
+
+            $legalText =
+                'Fable: The Lost Chapters ' +
+                [char]0x00A9 +
+                ' 2005 Lionhead Studios Ltd.  (P) 2005 Microsoft ' +
+                'Corporation.  All rights reserved.  Developed by ' +
+                'Lionhead Studios Ltd.'
+            & python $streamingFontRenderer `
+                $selectedRetailFontBank `
+                ENG_ARIAL_24 `
+                $legalText `
+                $visualBootRetailLegal `
+                --canvas 640 480 `
+                --position 320 340 `
+                --align center `
+                --wrap-width 420 `
+                --line-height 30 `
+                --scale 0.6666666667 `
+                --prefer-static-ascii `
+                --outline-pixels 1 `
+                --require-all-glyphs
+            if (
+                $LASTEXITCODE -eq 0 -and
+                (Test-Path -LiteralPath $visualBootRetailLegal)
+            ) {
+                $visualBootUsesRetailLegal = $true
+            } else {
+                Write-Warning (
+                    "Retail legal-text streaming-font render failed; " +
+                    "keeping the decoded title and available prompt."
+                )
+            }
+            if ($coastalAnimationReady) {
+                & python $frontendMenuRenderer `
+                    $selectedRetailFrontendBank `
+                    $selectedRetailFontBank `
+                    $visualBootRetailMenu `
+                    @frontendLayoutArguments
+                if (
+                    $LASTEXITCODE -eq 0 -and
+                    (Test-Path -LiteralPath $visualBootRetailMenu)
+                ) {
+                    $visualBootUsesRetailMenu = $true
+                    & python $frontendMenuRenderer `
+                        $selectedRetailFrontendBank `
+                        $selectedRetailFontBank `
+                        $visualBootBuffJesusMenu `
+                        --text-variant buff-jesus `
+                        @frontendLayoutArguments
+                    if (
+                        $LASTEXITCODE -eq 0 -and
+                        (Test-Path -LiteralPath $visualBootBuffJesusMenu)
+                    ) {
+                        $visualBootUsesBuffJesusMenu = $true
+                    } else {
+                        Write-Warning (
+                            "BuffJesus menu composition failed; the " +
+                            "retail-exact menu remains available."
+                        )
+                    }
+                } else {
+                    Write-Warning (
+                        "Retail main-menu composition failed; the " +
+                        "press-start screen remains available."
+                    )
+                }
+                if ($visualBootUsesRetailMenu) {
+                    & python $frontendSubscreenRenderer `
+                        $selectedRetailFrontendBank `
+                        $selectedRetailFontBank `
+                        $visualBootRetailOptions `
+                        $visualBootRetailHelpers `
+                        @frontendLayoutArguments
+                    if (
+                        $LASTEXITCODE -eq 0 -and
+                        (Test-Path -LiteralPath $visualBootRetailOptions) -and
+                        (Test-Path -LiteralPath $visualBootRetailHelpers)
+                    ) {
+                        $visualBootUsesRetailSubscreens = $true
+                    } else {
+                        Write-Warning (
+                            "Retail Options/Quit composition failed; the " +
+                            "first main menu remains available."
+                        )
+                    }
+                }
+            }
         }
         Write-Output (
             "VISUAL_ASSET RETAIL names=FRONTEND_BACKDROP_01," +
-            "FRONTEND_TITLE_01_SPRITE,FRONTEND_TITLE_02_SPRITE " +
+            "FRONTEND_TITLE_01_SPRITE,FRONTEND_TITLE_02_SPRITE," +
+            "MOUSE_POINTER_SPRITE_FE " +
             "bank=$selectedRetailFrontendBank"
         )
+        if ($visualBootUsesRetailAnimation) {
+            Write-Output (
+                "VISUAL_ANIMATION RETAIL forest=206-229 frames=4 " +
+                "sunbeams=230-247 frames=3"
+            )
+        }
+        if ($visualBootUsesRetailMenu) {
+            Write-Output (
+                "VISUAL_MENU RETAIL root=UI_FRONTEND_MAIN_MENU " +
+                "background=COASTAL action=229"
+            )
+            if ($visualBootUsesBuffJesusMenu) {
+                Write-Output (
+                    "VISUAL_MENU VARIANT name=buff-jesus " +
+                    "activation=--buff-jesus retail_default=preserved"
+                )
+            }
+        }
+        if ($visualBootUsesRetailSubscreens) {
+            Write-Output (
+                "VISUAL_SUBSCREENS RETAIL options_action=297 " +
+                "detail_actions=9,12,13,283 " +
+                "quit_action=314 no_action=86 yes_action=296"
+            )
+        }
     }
 } elseif ($RetailFrontendBank) {
     throw "Retail frontend bank was not found: $RetailFrontendBank"
@@ -621,7 +852,15 @@ try {
     if ($visualBootUsesRetailAsset) {
         $visualBootCompileOptions += '/DFABLETLC_RETAIL_FRONTEND_ARTWORK'
     }
-
+    if ($visualBootUsesRetailAnimation) {
+        $visualBootCompileOptions += '/DFABLETLC_RETAIL_FRONTEND_ANIMATION'
+    }
+    if ($visualBootUsesRetailMenu) {
+        $visualBootCompileOptions += '/DFABLETLC_RETAIL_FRONTEND_MENU'
+    }
+    if ($visualBootUsesRetailSubscreens) {
+        $visualBootCompileOptions += '/DFABLETLC_RETAIL_FRONTEND_SUBSCREENS'
+    }
     function Invoke-VerifiedLeaf {
         param(
             [string]$Address,
@@ -1850,9 +2089,14 @@ try {
         $titleRightPngStream = [System.IO.File]::OpenRead(
             $visualBootRetailTitleRight)
         $promptPngStream = $null
+        $legalPngStream = $null
         if ($visualBootUsesRetailPrompt) {
             $promptPngStream = [System.IO.File]::OpenRead(
                 $visualBootRetailPrompt)
+        }
+        if ($visualBootUsesRetailLegal) {
+            $legalPngStream = [System.IO.File]::OpenRead(
+                $visualBootRetailLegal)
         }
         try {
             $titleDecoder =
@@ -1870,6 +2114,14 @@ try {
                 $promptDecoder =
                     New-Object System.Windows.Media.Imaging.PngBitmapDecoder(
                         $promptPngStream,
+                        [System.Windows.Media.Imaging.BitmapCreateOptions]::PreservePixelFormat,
+                        [System.Windows.Media.Imaging.BitmapCacheOption]::OnLoad)
+            }
+            $legalDecoder = $null
+            if ($legalPngStream) {
+                $legalDecoder =
+                    New-Object System.Windows.Media.Imaging.PngBitmapDecoder(
+                        $legalPngStream,
                         [System.Windows.Media.Imaging.BitmapCreateOptions]::PreservePixelFormat,
                         [System.Windows.Media.Imaging.BitmapCacheOption]::OnLoad)
             }
@@ -1892,8 +2144,11 @@ try {
                 New-Object System.Windows.Media.DrawingVisual
             $titleContext = $titleVisual.RenderOpen()
             try {
-                $titleX = if ($visualBootUsesRetailPrompt) { 70 } else { 0 }
-                $titleY = if ($visualBootUsesRetailPrompt) { 30 } else { 0 }
+                $hasRetailTextOverlay =
+                    $visualBootUsesRetailPrompt -or
+                    $visualBootUsesRetailLegal
+                $titleX = if ($hasRetailTextOverlay) { 70 } else { 0 }
+                $titleY = if ($hasRetailTextOverlay) { 30 } else { 0 }
                 $titleContext.DrawImage(
                     $titleDecoder.Frames[0],
                     (New-Object System.Windows.Rect(
@@ -1907,13 +2162,18 @@ try {
                         $promptDecoder.Frames[0],
                         (New-Object System.Windows.Rect(0, 0, 640, 480)))
                 }
+                if ($legalDecoder) {
+                    $titleContext.DrawImage(
+                        $legalDecoder.Frames[0],
+                        (New-Object System.Windows.Rect(0, 0, 640, 480)))
+                }
             } finally {
                 $titleContext.Close()
             }
             $titleCanvasWidth =
-                if ($visualBootUsesRetailPrompt) { 640 } else { 512 }
+                if ($hasRetailTextOverlay) { 640 } else { 512 }
             $titleCanvasHeight =
-                if ($visualBootUsesRetailPrompt) { 480 } else { 128 }
+                if ($hasRetailTextOverlay) { 480 } else { 128 }
             $combinedTitle =
                 New-Object System.Windows.Media.Imaging.RenderTargetBitmap(
                     $titleCanvasWidth,
@@ -1935,11 +2195,110 @@ try {
                 $titleBitmapStream.Dispose()
             }
         } finally {
+            if ($legalPngStream) {
+                $legalPngStream.Dispose()
+            }
             if ($promptPngStream) {
                 $promptPngStream.Dispose()
             }
             $titleRightPngStream.Dispose()
             $titlePngStream.Dispose()
+        }
+    }
+
+    if ($visualBootUsesRetailAnimation) {
+        $animationSheets = @(
+            @{
+                Png = $visualBootRetailForestSheet
+                Bmp = $visualBootForestBitmap
+                Width = 640
+                Height = 1920
+            },
+            @{
+                Png = $visualBootRetailSunbeamSheet
+                Bmp = $visualBootSunbeamBitmap
+                Width = 640
+                Height = 1440
+            }
+        )
+        if ($visualBootUsesRetailMenu) {
+            $animationSheets += @(
+                @{
+                    Png = $visualBootRetailMenu
+                    Bmp = $visualBootMenuBitmap
+                    Width = 640
+                    Height = 3360
+                },
+                @{
+                    Png = $visualBootRetailCoastalSheet
+                    Bmp = $visualBootCoastalBitmap
+                    Width = 640
+                    Height = 1920
+                },
+                @{
+                    Png = $visualBootRetailCoastalSunbeamSheet
+                    Bmp = $visualBootCoastalSunbeamBitmap
+                    Width = 640
+                    Height = 1440
+                }
+            )
+            if ($visualBootUsesBuffJesusMenu) {
+                $animationSheets += @{
+                    Png = $visualBootBuffJesusMenu
+                    Bmp = $visualBootBuffJesusMenuBitmap
+                    Width = 640
+                    Height = 3360
+                }
+            }
+        }
+        if ($visualBootUsesRetailSubscreens) {
+            $animationSheets += @(
+                @{
+                    Png = $visualBootRetailOptions
+                    Bmp = $visualBootOptionsBitmap
+                    Width = 1024
+                    Height = 3840
+                },
+                @{
+                    Png = $visualBootRetailHelpers
+                    Bmp = $visualBootHelpersBitmap
+                    Width = 640
+                    Height = 2880
+                }
+            )
+        }
+        foreach ($sheet in $animationSheets) {
+            $sheetStream = [System.IO.File]::OpenRead($sheet.Png)
+            try {
+                $sheetDecoder =
+                    New-Object System.Windows.Media.Imaging.PngBitmapDecoder(
+                        $sheetStream,
+                        [System.Windows.Media.Imaging.BitmapCreateOptions]::PreservePixelFormat,
+                        [System.Windows.Media.Imaging.BitmapCacheOption]::OnLoad)
+                if (
+                    $sheetDecoder.Frames[0].PixelWidth -ne $sheet.Width -or
+                    $sheetDecoder.Frames[0].PixelHeight -ne $sheet.Height
+                ) {
+                    throw (
+                        "Retail animation sheet dimensions differ for " +
+                        "$($sheet.Png): " +
+                        "$($sheetDecoder.Frames[0].PixelWidth)x" +
+                        "$($sheetDecoder.Frames[0].PixelHeight)."
+                    )
+                }
+                $sheetEncoder =
+                    New-Object System.Windows.Media.Imaging.BmpBitmapEncoder
+                $sheetEncoder.Frames.Add($sheetDecoder.Frames[0])
+                $sheetBitmapStream =
+                    [System.IO.File]::Create($sheet.Bmp)
+                try {
+                    $sheetEncoder.Save($sheetBitmapStream)
+                } finally {
+                    $sheetBitmapStream.Dispose()
+                }
+            } finally {
+                $sheetStream.Dispose()
+            }
         }
     }
 
@@ -1950,6 +2309,50 @@ try {
             $visualBootTitleBitmap.Replace('\', '/')
         $resourceLines +=
             "102 BITMAP `"$resourceTitleBitmapPath`""
+    }
+    if ($visualBootUsesRetailAnimation) {
+        $resourceForestBitmapPath =
+            $visualBootForestBitmap.Replace('\', '/')
+        $resourceSunbeamBitmapPath =
+            $visualBootSunbeamBitmap.Replace('\', '/')
+        $resourceLines +=
+            "103 BITMAP `"$resourceForestBitmapPath`""
+        $resourceLines +=
+            "104 BITMAP `"$resourceSunbeamBitmapPath`""
+    }
+    if ($visualBootUsesRetailPointer) {
+        $resourceCursorPath = $visualBootCursor.Replace('\', '/')
+        $resourceLines += "105 CURSOR `"$resourceCursorPath`""
+    }
+    if ($visualBootUsesRetailMenu) {
+        $resourceMenuBitmapPath =
+            $visualBootMenuBitmap.Replace('\', '/')
+        $resourceCoastalBitmapPath =
+            $visualBootCoastalBitmap.Replace('\', '/')
+        $resourceCoastalSunbeamBitmapPath =
+            $visualBootCoastalSunbeamBitmap.Replace('\', '/')
+        $resourceLines +=
+            "106 BITMAP `"$resourceMenuBitmapPath`""
+        $resourceLines +=
+            "107 BITMAP `"$resourceCoastalBitmapPath`""
+        $resourceLines +=
+            "108 BITMAP `"$resourceCoastalSunbeamBitmapPath`""
+        if ($visualBootUsesBuffJesusMenu) {
+            $resourceBuffJesusMenuBitmapPath =
+                $visualBootBuffJesusMenuBitmap.Replace('\', '/')
+            $resourceLines +=
+                "111 BITMAP `"$resourceBuffJesusMenuBitmapPath`""
+        }
+    }
+    if ($visualBootUsesRetailSubscreens) {
+        $resourceOptionsBitmapPath =
+            $visualBootOptionsBitmap.Replace('\', '/')
+        $resourceHelpersBitmapPath =
+            $visualBootHelpersBitmap.Replace('\', '/')
+        $resourceLines +=
+            "109 BITMAP `"$resourceOptionsBitmapPath`""
+        $resourceLines +=
+            "110 BITMAP `"$resourceHelpersBitmapPath`""
     }
     Set-Content -LiteralPath $visualBootResourceSource `
         -Value $resourceLines `

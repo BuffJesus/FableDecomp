@@ -29,6 +29,54 @@ def read_tsv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle, delimiter="\t"))
 
 
+def verified_public_counts(
+    status: dict[str, object],
+    parity: dict[str, object],
+    coverage: dict[str, object],
+) -> tuple[int, int]:
+    """Return whole-project verified and byte-identical function counts."""
+    candidate_matches = (
+        int(parity["matching"]) + int(parity["relocation_matching"])
+    )
+    verified = (
+        candidate_matches
+        + int(status["lift_matching"])
+        + int(status["lift_functional"])
+    )
+    byte_identical = (
+        int(parity["matching"]) + int(status["lift_matching"])
+    )
+    if int(coverage["verified_lifted"]) != verified:
+        raise RuntimeError(
+            "coverage/README verified-function sources disagree: "
+            f"coverage={coverage['verified_lifted']} computed={verified}"
+        )
+    if int(coverage["candidate_retail_matches"]) != int(parity["matching"]):
+        raise RuntimeError(
+            "coverage/parity exact-match sources disagree: "
+            f"coverage={coverage['candidate_retail_matches']} "
+            f"parity={parity['matching']}"
+        )
+    return verified, byte_identical
+
+
+def replace_summary_denominator(text: str, total: int) -> str:
+    """Keep the prose denominator synchronized with the dashboard table."""
+    updated, count = re.subn(
+        r"(functional-or-matching coverage is \*\*"
+        r"\d+(?:\.\d+)?%\*\* of the )"
+        r"\d{1,3}(?:,\d{3})*"
+        r"(-function catalog\.)",
+        rf"\g<1>{total:,}\g<2>",
+        text,
+        count=1,
+    )
+    if count != 1:
+        raise RuntimeError(
+            "current functional-or-matching catalog denominator not found")
+    return updated
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
@@ -47,8 +95,18 @@ def main() -> int:
             encoding="utf-8-sig"
         )
     )
+    naming_triage = json.loads(
+        (
+            root
+            / "ghidra_out"
+            / "naming_stragglers"
+            / "quality_triage.json"
+        ).read_text(encoding="utf-8-sig")
+    )
     total = int(status["catalog_functions"])
-    matches = int(parity["matching"]) + int(parity["relocation_matching"])
+    verified, byte_identical = verified_public_counts(
+        status, parity, coverage
+    )
     gfmain_calls = read_tsv(root / "rebuild" / "integration" / "gfmain_calls.tsv")
     gfmain_phases = read_tsv(root / "rebuild" / "integration" / "gfmain_phases.tsv")
     matching_grades = {"MATCH", "EXACT", "RELOCATION_MATCH"}
@@ -69,8 +127,11 @@ def main() -> int:
         "Mechanically named (no `FUN_*`)": percentage(
             int(coverage["mechanically_named"]), total
         ),
-        "Usable reconstruction/navigation names": percentage(
+        "Accepted naming quality": percentage(
             int(coverage["accepted_name_quality"]), total
+        ),
+        "Usable reconstruction/navigation names": percentage(
+            int(naming_triage["usable_navigation_names"]), total
         ),
         "Calling convention known": percentage(
             int(status["calling_convention_known"]), total
@@ -81,11 +142,11 @@ def main() -> int:
         "Curated sources, VC7.1-compiled **and** behaviour-gated": (
             f"**{int(status['compiled_candidates']):,}**"
         ),
-        "Retail `.text` match (exact + relocation-normalized)": (
-            f"**{matches:,}** ({percentage(matches, total, 2)})"
+        "Verified functional or matching C++": (
+            f"**{verified:,}** ({percentage(verified, total, 2)})"
         ),
-        "— of which byte-**identical** (no relocation masking)": (
-            f"{int(parity['matching']):,} ({percentage(int(parity['matching']), total, 2)})"
+        "— of which byte-**identical** C++": (
+            f"{byte_identical:,} ({percentage(byte_identical, total, 2)})"
         ),
         "Compiled sources still honestly `DIFFER`": f"{int(parity['differing']):,}",
         "Compiled rows lacking a Ghidra function-start oracle": (
@@ -122,15 +183,28 @@ def main() -> int:
     if count != 1:
         raise RuntimeError("canonical refresh date sentence not found")
 
-    strict_parity = percentage(matches, total, 2)
+    strict_parity = percentage(verified, total, 2)
     text, count = re.subn(
-        r"(current verified retail\s+parity is \*\*)\d+(?:\.\d+)?%(\*\*)",
+        r"(functional-or-matching coverage is \*\*)"
+        r"\d+(?:\.\d+)?%(\*\*)",
         rf"\g<1>{strict_parity}\g<2>",
         text,
         count=1,
     )
     if count != 1:
-        raise RuntimeError("current verified parity sentence not found")
+        raise RuntimeError(
+            "current functional-or-matching coverage sentence not found")
+    text = replace_summary_denominator(text, total)
+    exact_parity = percentage(byte_identical, total, 2)
+    text, count = re.subn(
+        r"(Of that verified set, \*\*)"
+        r"\d+(?:\.\d+)?%(\*\* is byte-identical C\+\+\.)",
+        rf"\g<1>{exact_parity}\g<2>",
+        text,
+        count=1,
+    )
+    if count != 1:
+        raise RuntimeError("current byte-identical coverage sentence not found")
     text, count = re.subn(
         r"(The )\d+(?:\.\d+)?%( figure is intentionally the strict,)",
         rf"\g<1>{strict_parity}\g<2>",

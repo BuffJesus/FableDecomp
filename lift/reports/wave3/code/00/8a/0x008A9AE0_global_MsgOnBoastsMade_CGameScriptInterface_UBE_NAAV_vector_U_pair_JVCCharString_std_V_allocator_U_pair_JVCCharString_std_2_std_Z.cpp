@@ -1,212 +1,230 @@
+#include <cstddef>
+#include <cstdlib>
+#include <vector>
+
+class CCharString;
+class CMessageEventManager;
+class CGameScriptInterface;
+
+struct CMessageEventFilter_IsOfType;
+struct CMessageEventFilter_HasExtraData;
+struct CMessageEventFilter_OccuredBetween;
+
+template <typename T0, typename T1, typename T2>
+struct CFilter_Bind3;
+
 namespace
 {
-    struct CGameScriptInterface_ContextOverlay
-    {
-        std::byte pad_00[0x04];
-        void* context;
-    };
-    static_assert(offsetof(CGameScriptInterface_ContextOverlay, context) == 0x04);
+struct MsgOnBoastsMade_ManagerOwnerOverlay
+{
+    std::byte pad[0x60];
+    CMessageEventManager* messageEventManager;
+};
+static_assert(offsetof(MsgOnBoastsMade_ManagerOwnerOverlay, messageEventManager) == 0x60);
 
-    struct Context_MessageEventManagerOverlay
-    {
-        std::byte pad_00[0x60];
-        CMessageEventManager* messageEventManager;
-    };
-    static_assert(offsetof(Context_MessageEventManagerOverlay, messageEventManager) == 0x60);
+struct MsgOnBoastsMade_ScriptInterfaceOverlay
+{
+    std::byte pad[0x04];
+    MsgOnBoastsMade_ManagerOwnerOverlay* owner;
+};
+static_assert(offsetof(MsgOnBoastsMade_ScriptInterfaceOverlay, owner) == 0x04);
 
-    struct MessageEventListNode
-    {
-        MessageEventListNode* next;
-        MessageEventListNode* prev;
-        void* messageEvent;
-    };
-    static_assert(sizeof(MessageEventListNode) == 0x0C);
-    static_assert(offsetof(MessageEventListNode, messageEvent) == 0x08);
+struct MsgOnBoastsMade_EventPayloadOverlay
+{
+    long boastId;
+    std::byte pad[0x08];
+    CCharString boastText;
+};
+static_assert(offsetof(MsgOnBoastsMade_EventPayloadOverlay, boastText) == 0x0C);
 
-    struct BoastExtraData
-    {
-        long boastId;
-        std::byte pad_04[0x08];
-        CCharString boastText;
-    };
-    static_assert(offsetof(BoastExtraData, boastText) == 0x0C);
+struct MsgOnBoastsMade_MessageEventOverlay
+{
+    std::byte pad[0x3C];
+    MsgOnBoastsMade_EventPayloadOverlay* payload;
+};
+static_assert(offsetof(MsgOnBoastsMade_MessageEventOverlay, payload) == 0x3C);
 
-    struct MessageEvent_BoastOverlay
-    {
-        std::byte pad_00[0x3C];
-        BoastExtraData* const* extraData;
-    };
-    static_assert(offsetof(MessageEvent_BoastOverlay, extraData) == 0x3C);
+struct MsgOnBoastsMade_ResultNode
+{
+    MsgOnBoastsMade_ResultNode* next;
+    MsgOnBoastsMade_ResultNode* prev;
+    MsgOnBoastsMade_MessageEventOverlay* messageEvent;
+};
+static_assert(sizeof(MsgOnBoastsMade_ResultNode) == 0x0C);
+static_assert(offsetof(MsgOnBoastsMade_ResultNode, messageEvent) == 0x08);
 
-    struct MessageFilterTypeState
-    {
-        int messageType;
-        MessageEventListNode* results;
-    };
-    static_assert(sizeof(MessageFilterTypeState) == 0x08);
+struct MsgOnBoastsMade_TypeAndExtraDataFilterStorage
+{
+    int messageType;
+    MsgOnBoastsMade_ResultNode* resultList;
+};
+static_assert(sizeof(MsgOnBoastsMade_TypeAndExtraDataFilterStorage) == 0x08);
+static_assert(offsetof(MsgOnBoastsMade_TypeAndExtraDataFilterStorage, resultList) == 0x04);
 
-    struct MessageFilterBetweenState
-    {
-        long firstFrame;
-        long lastFrame;
-    };
-    static_assert(sizeof(MessageFilterBetweenState) == 0x08);
+struct MsgOnBoastsMade_OccuredBetweenFilterStorage
+{
+    long minFrame;
+    long maxFrame;
+};
+static_assert(sizeof(MsgOnBoastsMade_OccuredBetweenFilterStorage) == 0x08);
+static_assert(offsetof(MsgOnBoastsMade_OccuredBetweenFilterStorage, maxFrame) == 0x04);
 
-    struct MessageFilterBind3State
-    {
-        MessageFilterTypeState* isOfType;
-        MessageFilterBetweenState* occuredBetween;
-    };
-    static_assert(sizeof(MessageFilterBind3State) == 0x08);
+struct MsgOnBoastsMade_FilterBind3Overlay
+{
+    MsgOnBoastsMade_TypeAndExtraDataFilterStorage* typeAndExtraData;
+    MsgOnBoastsMade_OccuredBetweenFilterStorage* occuredBetween;
+};
+static_assert(sizeof(MsgOnBoastsMade_FilterBind3Overlay) == 0x08);
+static_assert(offsetof(MsgOnBoastsMade_FilterBind3Overlay, occuredBetween) == 0x04);
 
-    using BoastPair = std::pair<long, CCharString>;
+struct MsgOnBoastsMade_AppendedValueOverlay
+{
+    long boastId;
+    CCharString boastText;
+};
+static_assert(offsetof(MsgOnBoastsMade_AppendedValueOverlay, boastText) == 0x04);
+static_assert(sizeof(MsgOnBoastsMade_AppendedValueOverlay) == 0x08);
 
-    struct BoastVectorOverlay
-    {
-        BoastPair* first;
-        BoastPair* last;
-        BoastPair* end;
-    };
-    static_assert(offsetof(BoastVectorOverlay, first) == 0x00);
-    static_assert(offsetof(BoastVectorOverlay, last) == 0x04);
-    static_assert(offsetof(BoastVectorOverlay, end) == 0x08);
-
-    struct LocalPairRangeOverlay
-    {
-        long local_20;
-        CCharString local_1c;
-        std::byte local_29;
-    };
-    static_assert(offsetof(LocalPairRangeOverlay, local_20) == 0x00);
-    static_assert(offsetof(LocalPairRangeOverlay, local_1c) == 0x04);
-
-    extern BoastPair* __thiscall std__vector_InsertRangeWithCopy(
-        BoastVectorOverlay* self,
-        BoastPair* position,
-        const void* first,
-        const void* last,
-        int count,
-        int one_more);
-
-    extern BoastPair* __thiscall CCharString_CopyConstruct(
-        CCharString* self,
-        const CCharString* source);
-
-    extern void __thiscall std___Cons_val__allocator_pair_long_CCharString__(
-        CCharString* self,
-        BoastPair* ppVar6,
-        const BoastPair* unaff_EDI);
+struct MsgOnBoastsMade_VectorOverlay
+{
+    MsgOnBoastsMade_AppendedValueOverlay* begin;
+    MsgOnBoastsMade_AppendedValueOverlay* finish;
+    MsgOnBoastsMade_AppendedValueOverlay* endOfStorage;
+};
+static_assert(offsetof(MsgOnBoastsMade_VectorOverlay, finish) == 0x04);
+static_assert(offsetof(MsgOnBoastsMade_VectorOverlay, endOfStorage) == 0x08);
 }
 
-bool CGameScriptInterface::MsgOnBoastsMade(std::vector<std::pair<long, CCharString>>& out) const
+extern MsgOnBoastsMade_AppendedValueOverlay* std__vector_InsertRangeWithCopy(
+    MsgOnBoastsMade_AppendedValueOverlay* insertAt,
+    const void* first,
+    const void* last,
+    int constructForward,
+    int copyRange);
+
+extern MsgOnBoastsMade_AppendedValueOverlay* CCharString__CopyConstruct_ReturnsEDX(
+    CCharString* destination,
+    const CCharString* source);
+
+extern void std___Cons_val__allocator_pair_long_CCharString___pair_long_CCharString___const_ref(
+    void* allocatorLike,
+    MsgOnBoastsMade_AppendedValueOverlay* constructedPair,
+    const void* unaff_EDI);
+
+bool CGameScriptInterface::MsgOnBoastsMade(std::vector<std::pair<long, CCharString>>& outBoasts) const
 {
-    const long firstFrame = this->GetMaxWorldFrameForMessages();
-    const long lastFrame = this->GetMaxWorldFrameForMessages();
+    const long minFrame = CGameScriptInterface::GetMaxWorldFrameForMessages();
+    const long maxFrame = CGameScriptInterface::GetMaxWorldFrameForMessages();
 
-    auto* const context =
-        reinterpret_cast<const CGameScriptInterface_ContextOverlay*>(this)->context;
-    auto* const messageEventManager =
-        reinterpret_cast<Context_MessageEventManagerOverlay*>(context)->messageEventManager;
+    const auto* const thisOverlay = reinterpret_cast<const MsgOnBoastsMade_ScriptInterfaceOverlay*>(this);
+    CMessageEventManager* const messageEventManager = thisOverlay->owner->messageEventManager;
 
-    auto* const listHead =
-        static_cast<MessageEventListNode*>(std::malloc(sizeof(MessageEventListNode)));
-    listHead->next = listHead;
-    listHead->prev = listHead;
+    auto* const sentinel =
+        static_cast<MsgOnBoastsMade_ResultNode*>(std::malloc(sizeof(MsgOnBoastsMade_ResultNode)));
+    sentinel->next = sentinel;
+    sentinel->prev = sentinel;
 
-    MessageFilterTypeState typeState{0x29, listHead};
-    MessageFilterBetweenState betweenState{firstFrame, lastFrame};
-    MessageFilterBind3State filterState{&typeState, &betweenState};
+    MsgOnBoastsMade_TypeAndExtraDataFilterStorage typeAndExtraData;
+    MsgOnBoastsMade_OccuredBetweenFilterStorage occuredBetween;
+    MsgOnBoastsMade_FilterBind3Overlay filter;
 
-    messageEventManager
-        ->FindMostRecentMessage<
-            CFilter_Bind3<
-                CMessageEventFilter_IsOfType,
-                CMessageEventFilter_HasExtraData,
-                CMessageEventFilter_OccuredBetween>>(
-            reinterpret_cast<
-                CFilter_Bind3<
-                    CMessageEventFilter_IsOfType,
-                    CMessageEventFilter_HasExtraData,
-                    CMessageEventFilter_OccuredBetween>*>(&filterState));
+    typeAndExtraData.messageType = 0x29;
+    typeAndExtraData.resultList = sentinel;
+    occuredBetween.minFrame = minFrame;
+    occuredBetween.maxFrame = maxFrame;
+    filter.typeAndExtraData = &typeAndExtraData;
+    filter.occuredBetween = &occuredBetween;
 
-    for (MessageEventListNode* node = listHead->next; node != listHead; node = node->next)
+    messageEventManager->FindMostRecentMessage<
+        CFilter_Bind3<
+            CMessageEventFilter_IsOfType,
+            CMessageEventFilter_HasExtraData,
+            CMessageEventFilter_OccuredBetween>>(
+        reinterpret_cast<CFilter_Bind3<
+            CMessageEventFilter_IsOfType,
+            CMessageEventFilter_HasExtraData,
+            CMessageEventFilter_OccuredBetween>*>(&filter));
+
+    void* unaff_EDI; // incoming EDI-backed value observed by the decompilation
+
+    for (auto* node = sentinel->next; node != sentinel; node = node->next)
     {
-        auto* const messageEvent = reinterpret_cast<MessageEvent_BoastOverlay*>(node->messageEvent);
-        BoastExtraData* const extraData = *messageEvent->extraData;
+        MsgOnBoastsMade_AppendedValueOverlay appendedValue;
+        MsgOnBoastsMade_AppendedValueOverlay* ppVar6;
 
-        LocalPairRangeOverlay localPairRange;
-        localPairRange.local_20 = extraData->boastId;
-        CCharString_CopyConstruct(&localPairRange.local_1c, &extraData->boastText);
+        appendedValue.boastId = node->messageEvent->payload->boastId;
+        CCharString::CCharString(&appendedValue.boastText, &node->messageEvent->payload->boastText);
 
-        auto* const rawOut = reinterpret_cast<BoastVectorOverlay*>(&out);
-        BoastPair* ppVar6;
-        const BoastPair* unaff_EDI;
+        auto& outOverlay = reinterpret_cast<MsgOnBoastsMade_VectorOverlay&>(outBoasts);
+        MsgOnBoastsMade_AppendedValueOverlay* const finish = outOverlay.finish;
 
-        BoastPair* const puVar4 = rawOut->last;
-        if (puVar4 == rawOut->end)
+        if (finish == outOverlay.endOfStorage)
         {
             ppVar6 = std__vector_InsertRangeWithCopy(
-                rawOut,
-                puVar4,
-                &localPairRange.local_20,
-                &localPairRange.local_29,
+                finish,
+                &appendedValue.boastId,
+                reinterpret_cast<const std::byte*>(&appendedValue.boastId) + 0x08,
                 1,
                 1);
         }
         else
         {
-            ppVar6 = puVar4;
-            if (puVar4 != nullptr)
+            ppVar6 = reinterpret_cast<MsgOnBoastsMade_AppendedValueOverlay*>(finish);
+
+            if (finish != nullptr)
             {
-                puVar4->first = localPairRange.local_20;
-                ppVar6 = CCharString_CopyConstruct(&puVar4->second, &localPairRange.local_1c);
+                finish->boastId = appendedValue.boastId;
+                ppVar6 = CCharString__CopyConstruct_ReturnsEDX(
+                    &finish->boastText,
+                    &appendedValue.boastText);
             }
-            rawOut->last = reinterpret_cast<BoastPair*>(
-                reinterpret_cast<std::byte*>(rawOut->last) + sizeof(BoastPair));
+
+            outOverlay.finish = reinterpret_cast<MsgOnBoastsMade_AppendedValueOverlay*>(
+                reinterpret_cast<std::byte*>(outOverlay.finish) + 0x08);
         }
 
-        std___Cons_val__allocator_pair_long_CCharString__(
-            &localPairRange.local_1c,
+        std___Cons_val__allocator_pair_long_CCharString___pair_long_CCharString___const_ref(
+            &appendedValue.boastText,
             ppVar6,
             unaff_EDI);
     }
 
-    MessageEventListNode* node = listHead->next;
-    if (node != listHead)
+    auto* node = sentinel->next;
+    if (node != sentinel)
     {
         int count = 0;
-        MessageEventListNode* scan = node;
+        auto* scan = node;
         do
         {
             scan = scan->next;
             ++count;
-        } while (scan != listHead);
+        } while (scan != sentinel);
 
         if (count != 0)
         {
-            while (node != listHead)
+            while (node != sentinel)
             {
-                MessageEventListNode* const next = node->next;
+                auto* const next = node->next;
                 std::free(node);
                 node = next;
             }
 
-            listHead->next = listHead;
-            listHead->prev = listHead;
-            std::free(listHead);
+            sentinel->next = sentinel;
+            sentinel->prev = sentinel;
+            std::free(sentinel);
             return true;
         }
     }
 
-    while (node != listHead)
+    while (node != sentinel)
     {
-        MessageEventListNode* const next = node->next;
+        auto* const next = node->next;
         std::free(node);
         node = next;
     }
 
-    listHead->next = listHead;
-    listHead->prev = listHead;
-    std::free(listHead);
+    sentinel->next = sentinel;
+    sentinel->prev = sentinel;
+    std::free(sentinel);
     return false;
 }

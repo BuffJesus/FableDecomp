@@ -1,0 +1,4 @@
+00557850	?OnLeftClicked@CKeyRedefiner@NUISystem@@MAEXXZ	PDB-backed FableWin vtable-slot match: retail slot 0x0124b004 points to the tail-jump at 0x00557850, corresponding to FableWin CKeyRedefiner::OnLeftClicked.
+00557880	?OnUnhovered@CKeyRedefiner@NUISystem@@MAEXXZ	PDB-backed FableWin vtable-slot and body match: this slot follows OnHovered and dispatches state 4; the previous duplicate OnHovered label was a BSim collision.
+00557af0	?OnLeftUnclicked@CKeyRedefiner@NUISystem@@MAEXXZ	PDB-backed FableWin vtable-slot and body match: retail slot 0x0124b008 corresponds to CKeyRedefiner::OnLeftUnclicked and enters input-capture mode.
+00557c10	?ChangeState@CKeyRedefiner@NUISystem@@UAEXK@Z	PDB-backed FableWin vtable-slot and body match: calls CComponent::ChangeState, manages focus/cancellation, and has the exact unsigned-long state parameter.

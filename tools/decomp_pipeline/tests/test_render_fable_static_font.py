@@ -22,6 +22,7 @@ class StaticFontRenderTests(unittest.TestCase):
         }
         self.assertEqual(15, text_advance(font, "ABC"))
         self.assertEqual(10, text_advance(font, "A?C"))
+        self.assertEqual(10, text_advance(font, "ABC", 2.0 / 3.0))
 
 
 if __name__ == "__main__":

@@ -23,7 +23,7 @@ import os
 import struct
 import sys
 
-from PIL import Image
+from PIL import Image, ImageFilter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from parse_bigb import parse_footer, parse_header, parse_toc  # noqa: E402
@@ -33,7 +33,8 @@ GLYPH = struct.Struct("<ffffhhh")
 
 
 def load_font(bank_path, font_name):
-    data = open(bank_path, "rb").read()
+    with open(bank_path, "rb") as bank_file:
+        data = bank_file.read()
     _, _, footer_offset, _ = parse_header(data)
     subbanks, _ = parse_footer(data, footer_offset)
     static_bank = next(
@@ -94,24 +95,24 @@ def load_font(bank_path, font_name):
     }
 
 
-def text_advance(font, text):
+def text_advance(font, text, scale=1.0):
     total = 0
     for character in text:
         code = ord(character)
         if font["min_char"] <= code <= font["max_char"]:
             total += font["glyphs"][code - font["min_char"]][6]
-    return total
+    return total * scale
 
 
-def render_line(font, text, canvas_size, position, alignment):
+def render_line(font, text, canvas_size, position, alignment, scale=1.0):
     canvas = Image.new("RGBA", canvas_size, (0, 0, 0, 0))
     atlas = font["atlas"]
     atlas_width, atlas_height = atlas.size
     x = float(position[0])
     if alignment == "center":
-        x -= text_advance(font, text) * 0.5
+        x -= text_advance(font, text, scale) * 0.5
     elif alignment == "right":
-        x -= text_advance(font, text)
+        x -= text_advance(font, text, scale)
     y = int(round(position[1]))
 
     for character in text:
@@ -128,11 +129,29 @@ def render_line(font, text, canvas_size, position, alignment):
         crop_bottom = int(round(bottom * (atlas_height - 1))) + 1
         glyph = atlas.crop(
             (crop_left, crop_top, crop_right, crop_bottom))
+        if scale != 1.0:
+            glyph = glyph.resize(
+                (
+                    max(1, int(round(glyph.width * scale))),
+                    max(1, int(round(glyph.height * scale))),
+                ),
+                Image.Resampling.BILINEAR)
         canvas.alpha_composite(
             glyph,
-            (int(round(x + x_offset)), y))
-        x += advance
+            (int(round(x + x_offset * scale)), y))
+        x += advance * scale
     return canvas
+
+
+def add_outline(image, pixels):
+    if pixels <= 0:
+        return image
+    expanded_alpha = image.getchannel("A").filter(
+        ImageFilter.MaxFilter(pixels * 2 + 1))
+    outlined = Image.new("RGBA", image.size, (0, 0, 0, 0))
+    outlined.putalpha(expanded_alpha)
+    outlined.alpha_composite(image)
+    return outlined
 
 
 def main():
@@ -149,6 +168,12 @@ def main():
         default=(0, 0))
     parser.add_argument(
         "--align", choices=("left", "center", "right"), default="left")
+    parser.add_argument(
+        "--scale", type=float, default=1.0,
+        help="Scale retail glyph geometry and advances before composition")
+    parser.add_argument(
+        "--outline-pixels", type=int, default=0,
+        help="Add a black outline in 640x480 design-space pixels")
     args = parser.parse_args()
 
     font = load_font(args.bank, args.font)
@@ -157,7 +182,9 @@ def main():
         args.text,
         tuple(args.canvas),
         tuple(args.position),
-        args.align)
+        args.align,
+        args.scale)
+    image = add_outline(image, args.outline_pixels)
     image.save(args.output)
     print(
         "FABLE_STATIC_FONT_RENDER PASS font=%s face=%s height=%d "
