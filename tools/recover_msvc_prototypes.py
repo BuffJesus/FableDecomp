@@ -161,6 +161,13 @@ def parse_signature(result: str) -> tuple[str, str, str, list[str]] | None:
     return qualified_name, calling_convention, return_type, parameters
 
 
+def recovered_module(qualified_name: str, fallback: str) -> str:
+    """Prefer the owner encoded by the decorated signature over stale labels."""
+    if "::" not in qualified_name:
+        return fallback
+    return qualified_name.rsplit("::", 1)[0]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
@@ -194,7 +201,7 @@ def main() -> int:
             {
                 "address": item["address"].lower(),
                 "name": name,
-                "module": item["module"],
+                "module": recovered_module(name, item["module"]),
                 "calling_convention": cc,
                 "return_type": return_type,
                 "parameter_count": str(len(parameters)),

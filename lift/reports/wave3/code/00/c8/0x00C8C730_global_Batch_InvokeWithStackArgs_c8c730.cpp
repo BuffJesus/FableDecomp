@@ -1,56 +1,98 @@
+#include <bit>
 #include <cstddef>
 #include <cstdint>
 #include <malloc.h>
 
-struct CBankFile;
+struct CBankFile {
+    std::byte opaque;
+};
+
 struct CEditWorld;
 struct CIDrawWorldMap;
 struct CWorldMap;
 
-extern "C" int CreatureHitNotification_WaitForCompletion();
-extern "C" CEditWorld* Indexed_GetElementOffsetSafe();
-extern "C" long CWorldMap_GetNextRegionOnRouteTo(CWorldMap* self, unsigned long regionId, long routeState);
-extern "C" CIDrawWorldMap* CEditWorld_DrawGetWorldMap(CEditWorld* self);
-extern "C" unsigned long CBankFile_GetEntryDataSize(CBankFile* self, unsigned long entryId);
-extern "C" void VertexBuffer_FillData(...);
-extern "C" int VertexBuffer_WaitAndAllocate();
-extern "C" void __fastcall Buffer_SwapElements(void* tableBase, std::uint32_t* outValue);
-extern "C" void Audio_ConvolveChannels(...);
-
 struct CEditWorldOverlay {
-    std::byte pad_00[0x04];
-    std::uint32_t regionCount;
+    std::byte pad_0000[0x4];
+    std::int32_t entryCount;
 };
-static_assert(offsetof(CEditWorldOverlay, regionCount) == 0x04);
+static_assert(offsetof(CEditWorldOverlay, entryCount) == 0x4);
 
-struct BatchInvokeContextOverlay {
+struct Batch_InvokeWithStackArgs_c8c730_Overlay {
     std::byte pad_0000[0x58];
-    int field_58;
-    std::byte pad_005c[0x1E0 - 0x5C];
-    CBankFile bankFile_1e0;
+    std::int32_t activeCount;
+    std::byte pad_005C[0x184];
+    CBankFile bankFile;
 };
-static_assert(offsetof(BatchInvokeContextOverlay, field_58) == 0x58);
-static_assert(offsetof(BatchInvokeContextOverlay, bankFile_1e0) == 0x1E0);
+static_assert(offsetof(Batch_InvokeWithStackArgs_c8c730_Overlay, activeCount) == 0x58);
+static_assert(offsetof(Batch_InvokeWithStackArgs_c8c730_Overlay, bankFile) == 0x1E0);
 
-using BatchInvokeCallback = int(__thiscall*)(BatchInvokeContextOverlay*, std::uint64_t);
+struct Batch_InvokeWithStackArgs_c8c730_IncomingRegs {
+    Batch_InvokeWithStackArgs_c8c730_Overlay* eax_self;
+    CWorldMap* ecx_worldMap;
+    std::intptr_t esi_routeState;
+    std::uint32_t edi_region;
+};
 
-static inline std::size_t Align4(std::size_t value) {
-    return (value + 3u) & ~std::size_t(3);
-}
+struct CWorldMap_GetNextRegionOnRouteTo_RawCall {
+    CWorldMap* ecx_this;
+    std::uint32_t edi_region;
+    std::intptr_t esi_routeState;
+};
 
-// Ambient recovered inputs supplied by the lifting context for this function body:
-//   BatchInvokeContextOverlay* in_EAX
-//   CWorldMap* this_00
-//   unsigned long unaff_EDI
-//   long unaff_ESI
-int __stdcall Batch_InvokeWithStackArgs_c8c730(
+struct Audio_ConvolveChannels_RawCall {
+    int ecx_originalStride;
+    std::uint32_t edx_initialEntryDataSize;
+    int eax_updatedStride;
+    std::uint32_t stack_swappedValue;
+    void** stack_blocks;
+    int stack_originalEntryCount;
+    int stack_refreshedEntryCount;
+    std::uint32_t stack_currentEntryDataSize;
+};
+
+using BatchCallback = int(__thiscall*)(Batch_InvokeWithStackArgs_c8c730_Overlay*, double);
+
+extern "C" int __cdecl CreatureHitNotification_WaitForCompletion();
+extern "C" CEditWorld* __fastcall Indexed_GetElementOffsetSafe(
+    Batch_InvokeWithStackArgs_c8c730_Overlay* self,
+    std::int32_t index
+);
+extern "C" long CWorldMap_GetNextRegionOnRouteTo_raw(
+    const CWorldMap_GetNextRegionOnRouteTo_RawCall& call
+);
+extern "C" CIDrawWorldMap* __thiscall CEditWorld_DrawGetWorldMap(CEditWorld* self);
+extern "C" std::uint32_t __fastcall CBankFile_GetEntryDataSize(
+    CBankFile* self,
+    std::uint32_t entryIndex
+);
+extern "C" void __cdecl VertexBuffer_FillData(
+    Batch_InvokeWithStackArgs_c8c730_Overlay* self,
+    CEditWorld* editWorld,
+    CBankFile* bankFile,
+    void** stackBlocks,
+    int stride
+);
+extern "C" int __cdecl VertexBuffer_WaitAndAllocate();
+extern "C" void __fastcall Buffer_SwapElements(
+    CBankFile* self,
+    std::uint32_t* outValue
+);
+extern "C" void Audio_ConvolveChannels_raw(
+    const Audio_ConvolveChannels_RawCall& call
+);
+extern "C" const Batch_InvokeWithStackArgs_c8c730_IncomingRegs&
+Batch_InvokeWithStackArgs_c8c730_GetIncomingRegs();
+
+int __cdecl Batch_InvokeWithStackArgs_c8c730(
     std::uint32_t param_1,
     std::uint32_t param_2,
-    BatchInvokeCallback param_3)
-{
-    static_assert(sizeof(void*) == 4, "This reversal models the original 32-bit x86 stack layout.");
+    BatchCallback callback
+) {
+    const Batch_InvokeWithStackArgs_c8c730_IncomingRegs& regs =
+        Batch_InvokeWithStackArgs_c8c730_GetIncomingRegs();
+    auto* const self = regs.eax_self;
 
-    if (in_EAX->field_58 <= 1) {
+    if (self->activeCount <= 1) {
         return -0x83;
     }
 
@@ -59,57 +101,39 @@ int __stdcall Batch_InvokeWithStackArgs_c8c730(
         return result;
     }
 
-    CEditWorld* const editWorld = Indexed_GetElementOffsetSafe();
-    const long nextRegion = CWorldMap_GetNextRegionOnRouteTo(this_00, unaff_EDI, unaff_ESI);
-    const int regionCount = static_cast<int>(
-        reinterpret_cast<CEditWorldOverlay*>(editWorld)->regionCount);
+    CEditWorld* const editWorld = Indexed_GetElementOffsetSafe(self, -1);
+    const long nextRegion = CWorldMap_GetNextRegionOnRouteTo_raw({
+        regs.ecx_worldMap,
+        regs.edi_region,
+        regs.esi_routeState,
+    });
 
-    CIDrawWorldMap* const drawWorldMap = CEditWorld_DrawGetWorldMap(editWorld);
-    const int shiftedMapValue =
-        static_cast<int>(reinterpret_cast<std::uintptr_t>(drawWorldMap)) >>
+    const int originalEntryCount =
+        reinterpret_cast<CEditWorldOverlay*>(editWorld)->entryCount;
+
+    const int originalStride =
+        static_cast<int>(reinterpret_cast<std::uintptr_t>(CEditWorld_DrawGetWorldMap(editWorld))) >>
         ((static_cast<unsigned char>(nextRegion) + 1U) & 0x1F);
 
-    CBankFile* const bankFile = &in_EAX->bankFile_1e0;
-    CBankFile_GetEntryDataSize(bankFile, unaff_EDI);
+    CBankFile* const bankFile = &self->bankFile;
+    const std::uint32_t initialEntryDataSize = CBankFile_GetEntryDataSize(bankFile, 0);
 
-    const int iVar3 = regionCount * -4;
-    std::byte* const tableBase =
-        static_cast<std::byte*>(_alloca(Align4(static_cast<std::size_t>(regionCount) * 4u)));
-    std::byte* puVar10 = tableBase;
-    std::byte* puVar11 = tableBase;
-    int local_10 = 0;
+    void** const stackBlocks = static_cast<void**>(
+        _alloca((static_cast<std::uint32_t>(originalEntryCount) * 4U + 3U) & ~3U)
+    );
 
-    if (regionCount > 0) {
-        do {
-            const int iVar4 = shiftedMapValue * -4;
-            puVar11 = static_cast<std::byte*>(_alloca(Align4(static_cast<std::size_t>(shiftedMapValue) * 4u)));
-            *reinterpret_cast<std::byte**>(tableBase + iVar3 + local_10 * 4) = puVar11;
-            local_10 = local_10 + 1;
-            puVar10 = puVar11;
-            (void)puVar10;
-            (void)iVar4;
-        } while (local_10 < regionCount);
+    void* currentBlock = stackBlocks;
+    for (int i = 0; i < originalEntryCount; ++i) {
+        currentBlock = _alloca((static_cast<std::uint32_t>(originalStride) * 4U + 3U) & ~3U);
+        stackBlocks[i] = currentBlock;
     }
 
-    *reinterpret_cast<int*>(puVar11 - 0x04) = shiftedMapValue;
-    *reinterpret_cast<std::byte**>(puVar11 - 0x08) = tableBase + iVar3;
-    *reinterpret_cast<CBankFile**>(puVar11 - 0x0C) = bankFile;
-    *reinterpret_cast<CEditWorld**>(puVar11 - 0x10) = editWorld;
-    *reinterpret_cast<BatchInvokeContextOverlay**>(puVar11 - 0x14) = in_EAX;
+    VertexBuffer_FillData(self, editWorld, bankFile, stackBlocks, originalStride);
 
-    VertexBuffer_FillData(
-        *reinterpret_cast<BatchInvokeContextOverlay**>(puVar11 - 0x14),
-        *reinterpret_cast<CEditWorld**>(puVar11 - 0x10),
-        *reinterpret_cast<CBankFile**>(puVar11 - 0x0C),
-        *reinterpret_cast<void**>(puVar11 - 0x08),
-        *reinterpret_cast<int*>(puVar11 - 0x04));
+    const double callbackArg =
+        std::bit_cast<double>((static_cast<std::uint64_t>(param_2) << 32) | param_1);
 
-    *reinterpret_cast<std::uint64_t*>(puVar11 - 0x08) =
-        (static_cast<std::uint64_t>(param_2) << 32) | static_cast<std::uint64_t>(param_1);
-
-    auto* const puVar12 = reinterpret_cast<unsigned long*>(puVar11 - 0x0C);
-
-    result = param_3(in_EAX, (static_cast<std::uint64_t>(param_2) << 32) | static_cast<std::uint64_t>(param_1));
+    result = callback(self, callbackArg);
     if (result != 0) {
         return result;
     }
@@ -119,17 +143,29 @@ int __stdcall Batch_InvokeWithStackArgs_c8c730(
         return result;
     }
 
-    CEditWorld* const editWorld2 = Indexed_GetElementOffsetSafe();
-    const std::uint32_t regionCount2 =
-        reinterpret_cast<CEditWorldOverlay*>(editWorld2)->regionCount;
+    CEditWorld* const refreshedEditWorld = Indexed_GetElementOffsetSafe(self, -1);
+    const int refreshedEntryCount =
+        reinterpret_cast<CEditWorldOverlay*>(refreshedEditWorld)->entryCount;
 
-    CEditWorld_DrawGetWorldMap(editWorld2);
+    const int updatedStride =
+        static_cast<int>(reinterpret_cast<std::uintptr_t>(CEditWorld_DrawGetWorldMap(refreshedEditWorld))) >>
+        ((static_cast<unsigned char>(nextRegion) + 1U) & 0x1F);
 
-    const unsigned long entryDataSize = CBankFile_GetEntryDataSize(bankFile, *puVar12);
+    const std::uint32_t currentEntryDataSize = CBankFile_GetEntryDataSize(bankFile, 0);
 
-    std::uint32_t local_1c = 0;
-    Buffer_SwapElements(tableBase + iVar3, &local_1c);
+    std::uint32_t swappedValue = 0;
+    Buffer_SwapElements(bankFile, &swappedValue);
 
-    Audio_ConvolveChannels(local_1c, tableBase + iVar3, regionCount, regionCount2, entryDataSize);
+    Audio_ConvolveChannels_raw({
+        originalStride,
+        initialEntryDataSize,
+        updatedStride,
+        swappedValue,
+        stackBlocks,
+        originalEntryCount,
+        refreshedEntryCount,
+        currentEntryDataSize,
+    });
+
     return 0;
 }

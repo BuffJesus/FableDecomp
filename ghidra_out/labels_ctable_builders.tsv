@@ -1,0 +1,12 @@
+# Retail CTable builder corrections, recovered 2026-07-27.
+#
+# Evidence:
+# - retail bodies/vtable call order at 005518e0, 00551bc0, 00551ea0
+# - ego_r PDB names at 005cb9a0, 005cbc70, 005cbf40
+# - FableWin PDB-backed donor bodies at 0228ea30, 0228ef50, 0228f470
+#
+# LabelApplyForce is intentional here: two medium-confidence forge autonames
+# misidentified the horizontal-line and sprite-construction functions.
+005518e0	?ConstructHorizontalLine@CTable@NUISystem@@MAEXV?$CCountedPointer@VCComponent@NUISystem@@@@0AAVC2DVector@@KK@Z	PDB-backed donor + retail body/vtable parity
+00551bc0	?ConstructVerticalLine@CTable@NUISystem@@MAEXV?$CCountedPointer@VCComponent@NUISystem@@@@0AAVC2DVector@@KK@Z	PDB-backed donor + retail body/vtable parity
+00551ea0	?ConstructSpritesToDraw@CTable@NUISystem@@MAEXXZ	PDB-backed donor + retail body/vtable parity

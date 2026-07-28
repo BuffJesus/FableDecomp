@@ -1,17 +1,17 @@
 # Candidate signature audit
 
-Generated: `2026-07-25T18:35:31-06:00`
+Generated: `2026-07-27T23:18:15-06:00`
 
-Clean: **506 / 573**. Review required: **67**.
+Clean: **541 / 803**. Review required: **262**.
 
 | Issue | Candidates |
 |---|---:|
-| `explicit-parameter-count-mismatch` | 42 |
-| `return-shape-mismatch` | 16 |
-| `definition-not-parsed` | 11 |
-| `method-name-mismatch` | 9 |
-| `owner-mismatch` | 7 |
-| `duplicate-linkage-signature` | 7 |
+| `explicit-parameter-count-mismatch` | 232 |
+| `return-shape-mismatch` | 82 |
+| `method-name-mismatch` | 24 |
+| `duplicate-linkage-signature` | 24 |
+| `definition-not-parsed` | 12 |
+| `owner-mismatch` | 8 |
 
 ## Review queue
 
@@ -22,19 +22,187 @@ Clean: **506 / 573**. Review required: **67**.
 | `00401c00` | `_global` | `GFHandleSystemInitError` | `GFHandleSystemInitError` | explicit-parameter-count-mismatch |
 | `00402130` | `_global` | `MyDocuments_CheckWritePermissions` | `MyDocuments_CheckWritePermissions` | explicit-parameter-count-mismatch |
 | `004022b0` | `_global` | `GFInitialise` | `GFInitialise` | explicit-parameter-count-mismatch |
-| `00403480` | `_global` | `_WinMain@16` | `_WinMain_16` | method-name-mismatch;explicit-parameter-count-mismatch |
+| `00403480` | `_global` | `WinMain` | `_WinMain_16` | method-name-mismatch |
 | `00404690` | `_global` | `std_list_node_Init` | `std_list_node_Init` | explicit-parameter-count-mismatch |
 | `004046f0` | `_global` | `ListNode_Create_Circular` | `ListNode_Create_Circular` | explicit-parameter-count-mismatch |
-| `00404a90` | `_global` | `$E2` | `GlobalAt` | method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00404a90` | `_global` | `$E2` | `GlobalAt` | method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch;duplicate-linkage-signature |
 | `00409090` | `_global` | `Engine_FindPrimitiveInArray` | `Engine_FindPrimitiveInArray` | explicit-parameter-count-mismatch |
 | `0040cec0` | `_global` | `CUserProfileManager_Constructor` | `CUserProfileManager_Constructor` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0040f0a0` | `_global` | `Compare_Unsigned16Array` | `Compare_Unsigned16Array` | explicit-parameter-count-mismatch |
+| `0040f390` | `_global` | `Buffer_RellocateAndUpdateWritePointer` | `Buffer_RellocateAndUpdateWritePointer` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0040f4a0` | `_global` | `Std_BitSet_Allocate` | `Std_BitSet_Allocate` | explicit-parameter-count-mismatch |
+| `0040f6b0` | `_global` | `CString_FillRange` | `CString_FillRange` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `0040fbf0` | `_global` | `CWideString_FillBackward` | `CWideString_FillBackward` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00410460` | `_global` | `std_vector_C2DLineF_Copy` | `std_vector_C2DLineF_Copy` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00410550` | `_global` | `MemoryPool_AdvancePointer` | `MemoryPool_AdvancePointer` | explicit-parameter-count-mismatch |
+| `00410d80` | `_global` | `bitset_advance_iterator` | `bitset_advance_iterator` | explicit-parameter-count-mismatch |
+| `00410ed0` | `_global` | `Std_Deque_PopFront_ChunkBased` | `Std_Deque_PopFront_ChunkBased` | explicit-parameter-count-mismatch |
+| `00410f30` | `_global` | `Buffer_AllocateAndZero` | `Buffer_AllocateAndZero` | explicit-parameter-count-mismatch;return-shape-mismatch;duplicate-linkage-signature |
+| `004110d0` | `_global` | `CString_FillRange` | `CString_FillRange` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00411630` | `_global` | `Std_Deque_Resize_WithGap` | `Std_Deque_Resize_WithGap` | explicit-parameter-count-mismatch |
+| `004117c0` | `_global` | `Std_Vector_Insert_Range` | `Std_Vector_Insert_Range` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00411910` | `_global` | `Buffer_AllocateAndZero` | `Buffer_AllocateAndZero` | explicit-parameter-count-mismatch;return-shape-mismatch;duplicate-linkage-signature |
+| `00411a10` | `_global` | `Std_Vector_Insert_Range_Copies_4byte` | `Std_Vector_Insert_Range_Copies_4byte` | explicit-parameter-count-mismatch |
+| `00411b00` | `_global` | `vector_push_back_copy` | `` | definition-not-parsed |
+| `00411b90` | `_global` | `std_vector_assign` | `std_vector_assign` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00411db0` | `_global` | `Std_Vector_Insert_Range_Dispatch` | `Std_Vector_Insert_Range_Dispatch` | explicit-parameter-count-mismatch |
+| `00411f10` | `_global` | `Std_Vector_Insert_Range_4Bytes` | `Std_Vector_Insert_Range_4Bytes` | explicit-parameter-count-mismatch |
+| `004121d0` | `_global` | `Std_Vector_PushBack_WithGrow` | `Std_Vector_PushBack_WithGrow` | explicit-parameter-count-mismatch |
+| `00412330` | `_global` | `Std_Vector_Insert_Range_Copies` | `Std_Vector_Insert_Range_Copies` | explicit-parameter-count-mismatch |
+| `00412450` | `_global` | `Std_Vector_Erase_Range` | `Std_Vector_Erase_Range` | explicit-parameter-count-mismatch;return-shape-mismatch;duplicate-linkage-signature |
+| `004124c0` | `_global` | `Std_Vector_Insert_Range_16Bytes` | `Std_Vector_Insert_Range_16Bytes` | explicit-parameter-count-mismatch |
+| `004125a0` | `_global` | `Std_Vector_Insert_Range_Copies_28byte` | `Std_Vector_Insert_Range_Copies_28byte` | explicit-parameter-count-mismatch |
+| `004126e0` | `_global` | `vector_resize_with_fill` | `vector_resize_with_fill` | explicit-parameter-count-mismatch |
+| `004127e0` | `_global` | `Std_Deque_PushBack_ChunkAlloc` | `Std_Deque_PushBack_ChunkAlloc` | explicit-parameter-count-mismatch |
+| `004128a0` | `_global` | `Vector_PushBack` | `Vector_PushBack` | explicit-parameter-count-mismatch |
+| `00412b70` | `_global` | `Std_Vector_Resize` | `Std_Vector_Resize` | explicit-parameter-count-mismatch |
+| `00415fd3` | `_global` | `DivideByGameSpeed` | `DivideByGameSpeed` | explicit-parameter-count-mismatch |
+| `0041641f` | `_global` | `CMainGameComponent_ChangeDisplayMode` | `CMainGameComponent_ChangeDisplayMode` | explicit-parameter-count-mismatch |
+| `00417a58` | `_global` | `CMainGameComponent_InitSoundBanks` | `CMainGameComponent_InitSoundBanks` | explicit-parameter-count-mismatch |
+| `00419f50` | `_global` | `Vector_FromRange` | `Vector_FromRange` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0041c090` | `_global` | `CGraphicFrameData_ReleaseReference` | `defined` | method-name-mismatch;explicit-parameter-count-mismatch |
+| `0041c780` | `_global` | `__EH_epilog3` | `__EH_epilog3` | explicit-parameter-count-mismatch |
+| `0041ceb3` | `_global` | `CASound_PlayFromSymbol` | `CASound_PlayFromSymbol` | explicit-parameter-count-mismatch |
+| `0041cfb2` | `_global` | `GetTextBySymbol` | `GetTextBySymbol` | explicit-parameter-count-mismatch |
+| `0041d0a8` | `_global` | `CASound_PlayMessage` | `CASound_PlayMessage` | explicit-parameter-count-mismatch |
+| `00429ab9` | `_global` | `DoublyLinkedList_Unlink` | `DoublyLinkedList_Unlink` | explicit-parameter-count-mismatch |
+| `00429b02` | `_global` | `LinkedList_Unlink_and_Free` | `LinkedList_Unlink_and_Free` | explicit-parameter-count-mismatch |
+| `00429b52` | `_global` | `LinkedList_RemoveNode` | `LinkedList_RemoveNode` | explicit-parameter-count-mismatch |
+| `00429fbe` | `_global` | `LinkedList_AllocateNode_12bytes` | `LinkedList_AllocateNode_12bytes` | explicit-parameter-count-mismatch |
+| `00429fe3` | `_global` | `LinkedList_AllocateNode` | `LinkedList_AllocateNode` | explicit-parameter-count-mismatch |
+| `0042a008` | `_global` | `Std_List_AllocateNode` | `Std_List_AllocateNode` | explicit-parameter-count-mismatch |
+| `0042a58d` | `_global` | `RBTreeIterator_MoveToMax_A` | `RBTreeIterator_MoveToMax_A` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042a59e` | `_global` | `RBTreeIterator_MoveToMax_B` | `RBTreeIterator_MoveToMax_B` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042a5af` | `_global` | `RBTreeIterator_MoveToMax_C` | `RBTreeIterator_MoveToMax_C` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042a5c0` | `_global` | `RBTreeIterator_MoveToMax_D` | `RBTreeIterator_MoveToMax_D` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042a82b` | `_global` | `BinarySearchTree_FindLessOrEqual` | `BinarySearchTree_FindLessOrEqual` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042a879` | `_global` | `BinarySearchTree_FindNode` | `BinarySearchTree_FindNode` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042a8bd` | `_global` | `MemoryAllocator_CountAllocatedBlocks` | `MemoryAllocator_CountAllocatedBlocks` | explicit-parameter-count-mismatch |
+| `0042aadc` | `_global` | `LinkedList_InsertBefore` | `LinkedList_InsertBefore` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042ab01` | `_global` | `Std_DoubleLinkedList_CreateNode` | `Std_DoubleLinkedList_CreateNode` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042ab33` | `_global` | `LinkedList_Insert_Before` | `LinkedList_Insert_Before` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042ab8a` | `_global` | `Std_List_Insert` | `Std_List_Insert` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042ac0a` | `_global` | `DoublyLinkedList_InitializeEmpty` | `DoublyLinkedList_InitializeEmpty` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042ac52` | `_global` | `Allocator_Alloc_56bytes` | `Allocator_Alloc_56bytes` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042ac9f` | `_global` | `Allocator_Alloc_24bytes` | `Allocator_Alloc_24bytes` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042acec` | `_global` | `LinkedList_Initialize` | `LinkedList_Initialize` | explicit-parameter-count-mismatch;return-shape-mismatch;duplicate-linkage-signature |
+| `0042ad10` | `_global` | `Allocator_Alloc_28bytes` | `Allocator_Alloc_28bytes` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042ad34` | `_global` | `StdMap_LowerBound` | `StdMap_LowerBound` | explicit-parameter-count-mismatch |
+| `0042ad6c` | `_global` | `BinarySearchTree_FindEqualOrGreater` | `BinarySearchTree_FindEqualOrGreater` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042ad91` | `_global` | `BinarySearchTree_FindExact` | `BinarySearchTree_FindExact` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042adb6` | `_global` | `BinarySearchTree_EraseNode` | `BinarySearchTree_EraseNode` | explicit-parameter-count-mismatch |
+| `0042ae0e` | `_global` | `BinarySearchTree_FindByIntKey` | `BinarySearchTree_FindByIntKey` | explicit-parameter-count-mismatch |
+| `0042ae33` | `_global` | `BinaryTree_Find` | `BinaryTree_Find` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042ae58` | `_global` | `BinarySearchTree_FindByComparator` | `BinarySearchTree_FindByComparator` | explicit-parameter-count-mismatch |
+| `0042ae90` | `_global` | `BinarySearchTree_FindGreaterOrEqual` | `BinarySearchTree_FindGreaterOrEqual` | explicit-parameter-count-mismatch |
+| `0042aeb5` | `_global` | `BinarySearchTree_FindByUintComparator` | `BinarySearchTree_FindByUintComparator` | explicit-parameter-count-mismatch |
+| `0042b467` | `_global` | `StdMap_FindLE` | `StdMap_FindLE` | explicit-parameter-count-mismatch |
+| `0042b4f3` | `_global` | `BinarySearchTree_FindLessOrEqual_Copy` | `BinarySearchTree_FindLessOrEqual_Copy` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042b52b` | `_global` | `BinarySearchTree_LowerBound` | `BinarySearchTree_LowerBound` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042b5a8` | `_global` | `BinarySearchTreeNode_Create` | `BinarySearchTreeNode_Create` | explicit-parameter-count-mismatch |
+| `0042b5ca` | `_global` | `BinarySearchTreeNode_CreateDuplicate` | `BinarySearchTreeNode_CreateDuplicate` | explicit-parameter-count-mismatch |
+| `0042b5ec` | `_global` | `BinarySearchTreeNode_CreateCopy` | `BinarySearchTreeNode_CreateCopy` | explicit-parameter-count-mismatch |
+| `0042b687` | `_global` | `LinkedList_PushFront` | `LinkedList_PushFront` | explicit-parameter-count-mismatch |
+| `0042b6b8` | `_global` | `Std_List_PushFront` | `Std_List_PushFront` | explicit-parameter-count-mismatch |
+| `0042b72b` | `_global` | `CTexture_InitEmpty_56bytes` | `CTexture_InitEmpty_56bytes` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042b76c` | `_global` | `CTexture_InitEmpty_24bytes` | `CTexture_InitEmpty_24bytes` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042b7ad` | `_global` | `LinkedList_InitializeNode` | `LinkedList_InitializeNode` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042b7ee` | `_global` | `CTexture_InitEmpty_28bytes` | `CTexture_InitEmpty_28bytes` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042b854` | `_global` | `CMemoryAllocatorVariableSize_Clear` | `CMemoryAllocatorVariableSize_Clear` | explicit-parameter-count-mismatch |
+| `0042b98b` | `_global` | `BinarySearchTree_InsertAndBalance` | `BinarySearchTree_InsertAndBalance` | explicit-parameter-count-mismatch |
+| `0042ba13` | `_global` | `RBTree_InsertOrReplace` | `RBTree_InsertOrReplace` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042ba99` | `_global` | `BinaryTree_InsertNodeLeft` | `BinaryTree_InsertNodeLeft` | explicit-parameter-count-mismatch |
+| `0042bb21` | `_global` | `RBTree_InsertLeft` | `RBTree_InsertLeft` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042bba7` | `_global` | `BinaryTree_InsertNodeRight` | `if` | method-name-mismatch;explicit-parameter-count-mismatch |
+| `0042bc2f` | `_global` | `RBTree_InsertRight` | `RBTree_InsertRight` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042bcb5` | `_global` | `CMemoryAllocatorVariableSize_InsertNode` | `CMemoryAllocatorVariableSize_InsertNode` | explicit-parameter-count-mismatch |
+| `0042bd4a` | `_global` | `RBTree_InsertString` | `RBTreeStringNodeValue` | method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042bf06` | `_global` | `CEngineSceneGrid_Initialize` | `CEngineSceneGrid_Initialize` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042c082` | `_global` | `CMemoryAllocatorVariableSize_FindInsertPoint` | `NodeField8` | method-name-mismatch;explicit-parameter-count-mismatch |
+| `0042c1c1` | `_global` | `CMemoryAllocatorVariableSize_FindInsertPointLeft` | `CMemoryAllocatorVariableSize_FindInsertPointLeft` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042c300` | `_global` | `CMemoryAllocatorVariableSize_FindInsertPointRight` | `CMemoryAllocatorVariableSize_FindInsertPointRight` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042c43f` | `_global` | `CTC_FindInterface_0x10e` | `CTC_FindInterface_0x10e` | explicit-parameter-count-mismatch |
+| `0042c48b` | `_global` | `CTC_FindInterface_0x11` | `CTC_FindInterface_0x11` | explicit-parameter-count-mismatch |
+| `0042c4d6` | `_global` | `CTC_FindInterface_0x17` | `CTC_FindInterface_0x17` | explicit-parameter-count-mismatch |
+| `0042c521` | `_global` | `CTC_FindInterface_4` | `CTC_FindInterface_4` | explicit-parameter-count-mismatch |
+| `0042c56c` | `_global` | `CTCBase_FindInterfaceType_0x19` | `CTCBase_FindInterfaceType_0x19` | explicit-parameter-count-mismatch |
+| `0042c5b7` | `_global` | `CTCBase_FindInterfaceType_0x16` | `CTCBase_FindInterfaceType_0x16` | explicit-parameter-count-mismatch |
+| `0042c602` | `_global` | `CTCBase_FindInterfaceType_0x29` | `CTCBase_FindInterfaceType_0x29` | explicit-parameter-count-mismatch |
+| `0042c64d` | `_global` | `CTCBase_FindInterfaceType_0xe8` | `CTCBase_FindInterfaceType_0xe8` | explicit-parameter-count-mismatch |
+| `0042c699` | `_global` | `CTCBase_FindInterfaceType_0x1b` | `CTCBase_FindInterfaceType_0x1b` | explicit-parameter-count-mismatch |
+| `0042c6e4` | `_global` | `CTCBase_FindInterfaceType_0x6f` | `CTCBase_FindInterfaceType_0x6f` | explicit-parameter-count-mismatch |
+| `0042c72f` | `_global` | `CTCBase_FindInterfaceType_0x13` | `LowerBound` | method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042c77a` | `_global` | `CTCBase_FindInterfaceType_0x14` | `CTCBase_FindInterfaceType_0x14` | explicit-parameter-count-mismatch |
+| `0042c7c5` | `_global` | `CTCBase_FindInterfaceType_0x12` | `CTCBase_FindInterfaceType_0x12` | explicit-parameter-count-mismatch |
+| `0042c810` | `_global` | `CTCBase_FindInterfaceType_0xf6` | `if` | method-name-mismatch;explicit-parameter-count-mismatch |
+| `0042c85c` | `_global` | `CTCBase_FindInterfaceType_0x10d` | `CTCBase_FindInterfaceType_0x10d` | explicit-parameter-count-mismatch |
+| `0042c8a8` | `_global` | `CTCBase_FindInterfaceType_0xd0` | `CTCBase_FindInterfaceType_0xd0` | explicit-parameter-count-mismatch |
+| `0042c8f4` | `_global` | `CTCBase_FindInterfaceType_0xfc` | `CTCBase_FindInterfaceType_0xfc` | explicit-parameter-count-mismatch |
+| `0042c940` | `_global` | `CMemoryAllocatorVariableSize_InsertWithString` | `CMemoryAllocatorVariableSize_InsertWithString` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042cb08` | `_global` | `BinaryTree_InsertScriptData` | `if` | method-name-mismatch;explicit-parameter-count-mismatch |
+| `0042cb90` | `_global` | `CSurface_Clone_Recursive` | `CSurface_Clone_Recursive` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042cc03` | `_global` | `BinaryTree_InsertCString` | `BinaryTree_InsertCString` | explicit-parameter-count-mismatch |
+| `0042cc98` | `_global` | `RBTree_InsertStringKey` | `RBTree_InsertStringKey` | explicit-parameter-count-mismatch |
+| `0042cd3e` | `_global` | `FID_conflict:max_size` | `FID_conflict_max_size` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `0042cd61` | `_global` | `FID_conflict:max_size` | `FID_conflict_max_size` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `0042cde0` | `_global` | `CompareAndCountAllocations` | `CompareAndCountAllocations` | explicit-parameter-count-mismatch |
+| `0042ce7a` | `_global` | `CTCCarryable_CopyAssign` | `CTCCarryable_CopyAssign` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042cee3` | `_global` | `CMemoryAllocatorVariableSize_FindOrInsert` | `CMemoryAllocatorVariableSize_FindOrInsert` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042cf69` | `_global` | `CMemoryAllocatorVariableSize_InsertStringNode` | `if` | method-name-mismatch;explicit-parameter-count-mismatch |
+| `0042d2c6` | `_global` | `CMemoryAllocatorVariableSize_FindAllocationNode` | `CMemoryAllocatorVariableSize_FindAllocationNode` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042d45d` | `_global` | `CPersistTraits_Transfer_And_Construct` | `CPersistTraits_Transfer_And_Construct` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0042d604` | `_global` | `CChangingStateComponent_StateChangeHandler_1` | `CChangingStateComponent_StateChangeHandler_1` | explicit-parameter-count-mismatch |
+| `0042d65b` | `_global` | `CChangingStateComponent_StateChangeHandler_2` | `CChangingStateComponent_StateChangeHandler_2` | explicit-parameter-count-mismatch |
+| `0042ded5` | `_global` | `CFrontEnd_PlayAutoSaveSound` | `CFrontEnd_PlayAutoSaveSound` | explicit-parameter-count-mismatch |
+| `0042e17c` | `_global` | `Init_FrontendSounds` | `Local8Overlay` | method-name-mismatch |
+| `00430022` | `_global` | `Queue_Initialize` | `Queue_Initialize` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0043006f` | `_global` | `Stack_Initialize` | `Stack_Initialize` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0043019f` | `_global` | `LinkedList_Initialize` | `LinkedList_Initialize` | explicit-parameter-count-mismatch;return-shape-mismatch;duplicate-linkage-signature |
+| `004301c9` | `_global` | `ListNode_Construct` | `ListNode_Construct` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `004303f0` | `_global` | `CMemoryBlock_Destructor` | `if` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00431277` | `_global` | `UpdateShadowScene_WriteState` | `UpdateShadowScene_WriteState` | explicit-parameter-count-mismatch |
+| `00431363` | `_global` | `BinaryTree_Insert_With_Position` | `BinaryTree_Insert_With_Position` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `004313e9` | `_global` | `std_set_insert_uint_via_FUN` | `if` | method-name-mismatch;explicit-parameter-count-mismatch |
+| `00431471` | `_global` | `TreeNode_AllocData` | `TreeNode_AllocData` | explicit-parameter-count-mismatch |
+| `00431606` | `_global` | `Map_InsertStringKeyNode` | `Map_InsertStringKeyNode` | explicit-parameter-count-mismatch |
+| `004316cf` | `_global` | `BinaryTree_InsertDigScriptNode` | `BinaryTree_InsertDigScriptNode` | explicit-parameter-count-mismatch |
+| `004317d0` | `_global` | `CMemoryBlock_Destructor` | `CMemoryBlock_Destructor` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00431e80` | `_global` | `CParentDefClassBase_CopyAssign_1` | `CParentDefClassBase_CopyAssign_1` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0043212b` | `_global` | `Vector_AllocateAndCopy` | `Vector_AllocateAndCopy` | explicit-parameter-count-mismatch |
+| `00432aa8` | `_global` | `CTCCarryable_CloneTree` | `CTCCarryable_CloneTree` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00432b38` | `_global` | `CTCCarryable_assign` | `CTCCarryable_assign` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00432bab` | `_global` | `CExpression_DigScript_CloneTree` | `CExpression_DigScript_CloneTree` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00432ff0` | `_global` | `Vector_AllocateAndCopyCCharString` | `Vector_AllocateAndCopyCCharString` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0043336a` | `_global` | `Std_Vector_Erase_Range` | `Std_Vector_Erase_Range` | explicit-parameter-count-mismatch;return-shape-mismatch;duplicate-linkage-signature |
+| `004333b3` | `_global` | `Std_Vector_InsertRange` | `Std_Vector_InsertRange` | explicit-parameter-count-mismatch |
+| `00433db5` | `_global` | `STL_AllocateAndInitializeArray` | `STL_AllocateAndInitializeArray` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00433df0` | `_global` | `Array_AssignFrom` | `Array_AssignFrom` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00434370` | `_global` | `CParentDefClassBase_CopyAssign_2` | `CParentDefClassBase_CopyAssign_2` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00434dc0` | `_global` | `$E2` | `$E2` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00434dd0` | `_global` | `$E2` | `$E2` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `004350d0` | `_global` | `InitDisplayEngine_InitGraphics` | `InitDisplayEngine_InitGraphics` | explicit-parameter-count-mismatch |
+| `00436a80` | `_global` | `Vector_EraseAndMove` | `Vector_EraseAndMove` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00436ac0` | `_global` | `Vector_InsertN` | `Vector_InsertN` | explicit-parameter-count-mismatch |
+| `0043a2a0` | `_global` | `ShowOnScreenMessage_FormatDisplay` | `ShowOnScreenMessage_FormatDisplay` | explicit-parameter-count-mismatch |
+| `0043a570` | `_global` | `NHeroInformationScreens_Destructor` | `NHeroInformationScreens_Destructor` | explicit-parameter-count-mismatch |
+| `0043f510` | `_global` | `FreePointerArray` | `FreePointerArray` | explicit-parameter-count-mismatch |
+| `0043f560` | `_global` | `Vector_FreeElementPointers` | `Vector_FreeElementPointers` | explicit-parameter-count-mismatch |
+| `00440550` | `_global` | `Buffer_MoveData` | `Buffer_MoveData` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00440590` | `_global` | `Buffer_Relocate` | `Buffer_Relocate` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `004408a0` | `_global` | `Std_Vector_Insert_Range` | `Std_Vector_Insert_Range` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00440b40` | `_global` | `Vector_DestructStringRange` | `Vector_DestructStringRange` | explicit-parameter-count-mismatch |
+| `00440c00` | `_global` | `Vector_CopyPairRange` | `Vector_CopyPairRange` | explicit-parameter-count-mismatch |
+| `00440d70` | `_global` | `Vector_EraseRange` | `Vector_EraseRange` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aa9e0` | `CScriptThing` | `CScriptThing::GetCurrentMapName` | `GetCurrentMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aaa10` | `CScriptThing` | `CScriptThing::GetHomeMapName` | `GetHomeMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004abe60` | `CScriptThing` | `CScriptThing::MsgWhoKilledMe` | `` | definition-not-parsed |
+| `004b1670` | `CGameScriptInterface` | `CGameScriptInterface::AddQuestCardEntry` | `AddQuestCardEntry` | explicit-parameter-count-mismatch |
 | `004d55d0` | `CTCCoopSpirit` | `CTCCoopSpirit::Construct` | `Construct` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004fe7f0` | `_global` | `CollectSoundThemeSwitchDefs` | `CollectSoundThemeSwitchDefs` | explicit-parameter-count-mismatch |
+| `00681cd0` | `CGameScriptInterface` | `CGameScriptInterface::SetOpinionReactionMask` | `SetOpinionReactionMask` | explicit-parameter-count-mismatch |
 | `006b0730` | `CTCPhysicsBase` | `CTCPhysicsBase` | `CTCPhysicsBase` | owner-mismatch;duplicate-linkage-signature |
 | `006e7300` | `CGameScriptInterface` | `CGameScriptInterface::IsCameraPosOnScreen` | `` | definition-not-parsed |
+| `006e7740` | `CGameScriptInterface` | `CGameScriptInterface` | `CGameScriptInterface` | owner-mismatch |
 | `00713140` | `CActionDoCreatureAction` | `CActionDoCreatureAction` | `CActionDoCreatureAction` | owner-mismatch |
 | `007266c0` | `CTCPhysicsBase` | `CTCPhysicsBase` | `CTCPhysicsBase` | owner-mismatch;duplicate-linkage-signature |
 | `007602f0` | `_global` | `Math_PolygonAngleSumClosureCheck` | `Math_PolygonAngleSumClosureCheck_InvSqrtOrdered` | method-name-mismatch;explicit-parameter-count-mismatch |
@@ -49,14 +217,18 @@ Clean: **506 / 573**. Review required: **67**.
 | `00891610` | `CGameScriptInterface` | `CGameScriptInterface::GetMostRecentValidUsedTarget` | `GetMostRecentValidUsedTarget` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `00891d50` | `CGameScriptInterface` | `CGameScriptInterface::GetThingWithUID` | `GetThingWithUID` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `00892b50` | `CGameScriptInterface` | `CGameScriptInterface::CameraCircleAroundThing` | `` | definition-not-parsed |
+| `00896120` | `CGameScriptInterface` | `CGameScriptInterface::TryToRespawnDefNamed` | `TryToRespawnDefNamed` | return-shape-mismatch |
 | `008961b0` | `CGameScriptInterface` | `CGameScriptInterface::ClearHeroEnemyOfGuards` | `` | definition-not-parsed |
 | `0089a490` | `CGameScriptInterface` | `CGameScriptInterface::GetHeroTargetedThing` | `GetHeroTargetedThing` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `0089c510` | `CGameScriptInterface` | `CGameScriptInterface::OpinionSourceSetAsAttentionGrabbing` | `` | definition-not-parsed |
+| `0089f300` | `CGameScriptInterface` | `CGameScriptInterface::CreateCreatureNearby` | `CreateCreatureNearby` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `0089faa0` | `CGameScriptInterface` | `CGameScriptInterface::CreateLight` | `CreateLight` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `0089fbb0` | `CGameScriptInterface` | `CGameScriptInterface::CreateExperienceOrb` | `CreateExperienceOrb` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `0089fc80` | `CGameScriptInterface` | `CGameScriptInterface::CreateExplosion` | `CreateExplosion` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `0089fd20` | `CGameScriptInterface` | `CGameScriptInterface::CreatePhysicalBarrier` | `CreatePhysicalBarrier` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `0089fda0` | `CGameScriptInterface` | `CGameScriptInterface::CreateRumble` | `CreateRumble` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `008ae890` | `CGameScriptInterface` | `CGameScriptInterface::_AddGossipVillages_impl` | `_AddGossipVillages_impl` | explicit-parameter-count-mismatch |
+| `008aeac0` | `CGameScriptInterface` | `CGameScriptInterface::_AddGossipFactions_impl` | `_AddGossipFactions_impl` | explicit-parameter-count-mismatch |
 | `008d1890` | `CGameScriptThing` | `CGameScriptThing::MsgWhoHitMe` | `MsgWhoHitMe` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `00a65ff0` | `CMemoryAllocatorFixedSize` | `CMemoryAllocatorFixedSize::CMemoryAllocatorFixedSize` | `CMemoryAllocatorFixedSize` | owner-mismatch |
 | `00a793d0` | `CNavQuadTree` | `ConnectVerticalMapEdge` | `ConnectVerticalMapEdge` | duplicate-linkage-signature |
@@ -82,5 +254,28 @@ Clean: **506 / 573**. Review required: **67**.
 | `00c3b900` | `CLandscapeLayerMesh` | `CLandscapeLayerMesh` | `` | definition-not-parsed;duplicate-linkage-signature |
 | `00c43de0` | `_global` | `DrawAutoPickups_SelectAndDrawPrimitive` | `DrawAutoPickups_SelectAndDrawPrimitive` | explicit-parameter-count-mismatch |
 | `00c43f80` | `_global` | `Weapon_ProcessAnimFrameIfReady` | `Weapon_ProcessAnimFrameIfReady` | explicit-parameter-count-mismatch |
+| `00c44b50` | `_global` | `InputEvent_CheckKeyAndGetFrames` | `InputEvent_CheckKeyAndGetFrames` | explicit-parameter-count-mismatch |
+| `00c44dc0` | `_global` | `FireballSpell_DispatchScaledDamage` | `FireballSpell_DispatchScaledDamage` | explicit-parameter-count-mismatch |
+| `00c61ce0` | `_global` | `Getter_TripleDeref` | `Getter_TripleDeref` | explicit-parameter-count-mismatch |
+| `00c62a30` | `_global` | `StreamBuffer_AdvancePosition` | `StreamBuffer_AdvancePosition` | explicit-parameter-count-mismatch |
+| `00c88e60` | `_global` | `Audio_ProcessFilter4Channel` | `Audio_ProcessFilter4Channel` | explicit-parameter-count-mismatch |
+| `00c8bae0` | `_global` | `Script_GetEntryPointer` | `Script_GetEntryPointer` | explicit-parameter-count-mismatch |
+| `00c8c730` | `_global` | `Batch_InvokeWithStackArgs_c8c730` | `Batch_InvokeWithStackArgs_c8c730` | explicit-parameter-count-mismatch |
+| `00c92f10` | `_global` | `DSP_ComputeRunningMinEnvelope` | `DSP_ComputeRunningMinEnvelope` | explicit-parameter-count-mismatch |
+| `00c93080` | `_global` | `FFT_ComputeWaveformEnvelope` | `FFT_ComputeWaveformEnvelope` | explicit-parameter-count-mismatch |
+| `00c93b30` | `_global` | `Audio_ApplyGainTableToBuffer` | `Audio_ApplyGainTableToBuffer` | explicit-parameter-count-mismatch |
+| `00c94190` | `_global` | `Audio_ComputeClampedPosition` | `Audio_ComputeClampedPosition` | explicit-parameter-count-mismatch |
+| `00c942b0` | `_global` | `Audio_ComputeLog2WeightedCoeff` | `Audio_ComputeLog2WeightedCoeff` | explicit-parameter-count-mismatch |
+| `00c9cb60` | `_global` | `Math_ComputeByteChunkCount` | `Math_ComputeByteChunkCount` | explicit-parameter-count-mismatch |
+| `00c9e4a0` | `_global` | `Audio_CheckBufferRegionActive` | `QuarterRoundTowardZero` | method-name-mismatch;explicit-parameter-count-mismatch |
+| `00c9f8c0` | `_global` | `Mesh_BlendMorphStreams` | `Mesh_BlendMorphStreams` | explicit-parameter-count-mismatch |
+| `00ca5e70` | `_global` | `CritSec_GetDividedValue_Locked` | `CritSec_GetDividedValue_Locked` | explicit-parameter-count-mismatch |
+| `00ca8610` | `_global` | `COM_QueryInterface_012a9a24` | `COM_QueryInterface_012a9a24` | explicit-parameter-count-mismatch |
+| `00ca86d0` | `_global` | `Com_CreateWithFallback` | `Com_CreateWithFallback` | explicit-parameter-count-mismatch |
+| `00ca8d50` | `_global` | `Enumerate_QueryInterface_012a9a24` | `Enumerate_QueryInterface_012a9a24` | explicit-parameter-count-mismatch |
+| `00ca9c80` | `_global` | `Object_AcquireField26` | `Object_AcquireField26` | explicit-parameter-count-mismatch |
+| `00caa040` | `_global` | `GetBufferOffset_Locked` | `GetBufferOffset_Locked` | explicit-parameter-count-mismatch |
 | `00caf580` | `CEngineLandscapePatch` | `CEngineLandscapePatch::Destructor` | `` | definition-not-parsed |
 | `00caf680` | `CEngineLandscapePatch` | `CEngineLandscapePatch::AllocateTask` | `AllocateTask` | explicit-parameter-count-mismatch |
+| `00e7f7d0` | `_global` | `GetFloatTableEntryByIndex` | `GetFloatTableEntryByIndex` | explicit-parameter-count-mismatch |
+| `00ee91e0` | `_global` | `Script_MakeThingsSpeakNumbered` | `IsActiveThreadTerminating` | method-name-mismatch;explicit-parameter-count-mismatch |

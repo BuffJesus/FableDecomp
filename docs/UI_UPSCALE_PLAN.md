@@ -34,7 +34,9 @@ models; the chosen model and its hash belong in every output manifest.
 Decode to lossless PNG, upscale at 2x, and retain the original 4:3 logical
 layout. `FRONTEND_BACKDROP_01` therefore becomes a 1280x960 physical texture
 while still occupying the 640x480 design canvas. The renderer must use the
-enhanced texture dimensions for sampling, not for widget coordinates.
+enhanced texture dimensions for sampling, not for widget coordinates. Retail
+maps that logical canvas independently to the active output width and height;
+do not add another aspect-fit or pillarbox pass around the frontend.
 
 Animated forest backgrounds are tiled in retail data. For the checkpoint,
 stitch each six-tile 640x480 frame before upscaling so the model sees both
@@ -71,8 +73,13 @@ glyphs, punctuation, and small counters, so the preferred order is:
    default text path.
 
 The static `ENG_ARIAL_24` atlas and `<ffffhhh>` metrics are already decoded by
-`tools/render_fable_static_font.py`. The next font task is the streaming
-Unicode `GlyphData` path required by the legal string's copyright symbol.
+`tools/render_fable_static_font.py`. The PC streaming Unicode path is now
+decoded by `tools/render_fable_streaming_font.py`, including its 1,024 packed
+glyph banks, shared LZO metric chunks, 32x32/64x64 alpha blocks, and the legal
+string's copyright symbol. Higher-resolution rerendering can use both retail
+metric paths without AI-altering glyph shapes. Preserve the observed
+two-thirds frontend glyph scale, static ASCII advances/streaming Unicode
+fallback, dark edge, and straight-alpha upload semantics.
 
 ## Cache manifest and acceptance gates
 
@@ -102,8 +109,11 @@ An output is publishable only when:
    composed transparent logo during enhancement.
 3. Press-start forest frames, graphic ids 206-229, and sunbeam overlays
    230-247.
-4. Main-menu buttons, arrows, panels, mouse pointer, and other visible
-   `frontend.big` sprites as their widgets become live.
+4. Main-menu and Options `TS_BUTTON_L/M/R` ornaments, Back/No/Yes
+   `FRONTEND_BUTTON_*` and `FE_BUTTON_*` controls, detail-screen
+   `FE_OPTIONS_*` bars/knobs/arrows and `FE_SLOT_TEST_*` key rows, panels,
+   mouse pointer, and other visible `frontend.big` sprites as their widgets
+   become live.
 5. Static font atlases and then streaming Unicode fonts.
 6. In-game HUD sprites from `textures.big`, only after the frontend path and
    alpha gates are stable.
@@ -120,5 +130,6 @@ An output is publishable only when:
    window-title marker.
 5. Extend `smoke_visual_checkpoint.ps1` with enhanced-asset selection,
    maximize, alpha-edge, and retail-fallback gates.
-6. Continue the accurate startup path: streaming legal text, animated forest
-   layers, left-click transition, then the first main-menu widget set.
+6. Extend the now-live coastal-main-menu, Options/detail, and Quit paths with
+   optional cached 2x assets only after the default interactions remain green
+   under both `-VerifyMainMenu` and `-VerifySubscreens`.

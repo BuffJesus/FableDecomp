@@ -30,7 +30,8 @@ public class LabelApplyForce extends GhidraScript {
             return;
         }
 
-        int rows = 0, renamed = 0, created = 0, unchanged = 0, failed = 0;
+        int rows = 0, renamed = 0, created = 0, unchanged = 0;
+        int commented = 0, failed = 0;
         for (String line : Files.readAllLines(input.toPath())) {
             String s = line.trim();
             if (s.isEmpty() || s.startsWith("#")) continue;
@@ -40,6 +41,7 @@ public class LabelApplyForce extends GhidraScript {
 
             String addrText = cols[0].trim().replaceFirst("^0x", "");
             String newName = cols[1].trim();
+            String comment = cols.length >= 3 ? cols[2].trim() : "";
             Address address;
             try {
                 address = toAddr(Long.parseLong(addrText, 16));
@@ -64,6 +66,14 @@ public class LabelApplyForce extends GhidraScript {
 
             if (fn.getName().equals(newName)) {
                 unchanged++;
+                try {
+                    if (!comment.isEmpty()) {
+                        fn.setComment(comment);
+                        commented++;
+                    }
+                } catch (Exception e) {
+                    failed++;
+                }
                 continue;
             }
             try {
@@ -76,12 +86,21 @@ public class LabelApplyForce extends GhidraScript {
                     renamed++;
                 } catch (Exception e2) {
                     failed++;
+                    continue;
                 }
+            }
+            try {
+                if (!comment.isEmpty()) {
+                    fn.setComment(comment);
+                    commented++;
+                }
+            } catch (Exception e) {
+                failed++;
             }
         }
 
         println(String.format(
-            "LabelApplyForce: rows=%d renamed=%d created=%d unchanged=%d failed=%d",
-            rows, renamed, created, unchanged, failed));
+            "LabelApplyForce: rows=%d renamed=%d created=%d unchanged=%d commented=%d failed=%d",
+            rows, renamed, created, unchanged, commented, failed));
     }
 }

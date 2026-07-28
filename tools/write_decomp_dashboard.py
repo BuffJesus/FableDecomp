@@ -46,7 +46,11 @@ def main() -> int:
         **status,
         "mechanically_named": total,
         "accepted_name_quality": accepted_names,
+        "usable_navigation_names": naming_triage.get(
+            "usable_navigation_names", accepted_names
+        ),
         "verified_lifted": verified,
+        "byte_identical": byte_identical,
         "candidate_integrity_pass": gate.get("integrity_pass", 0),
         "candidate_host_syntax_pass": gate.get("host_cpp20_syntax_pass", 0),
     }

@@ -1,0 +1,248 @@
+struct CGameScriptInterface_SearchHost_Overlay
+{
+    std::byte pad_0x00[0x20];
+    CThingSearchTools* field_0x20;
+};
+static_assert(offsetof(CGameScriptInterface_SearchHost_Overlay, field_0x20) == 0x20);
+
+struct CGameScriptInterface_Overlay
+{
+    std::byte pad_0x00[0x04];
+    CGameScriptInterface_SearchHost_Overlay* field_0x04;
+};
+static_assert(offsetof(CGameScriptInterface_Overlay, field_0x04) == 0x04);
+
+template <typename T>
+struct VectorOverlay
+{
+    T* begin;
+    T* end;
+    T* capacity;
+};
+static_assert(sizeof(VectorOverlay<CScriptThing>) == 0x0C);
+static_assert(sizeof(VectorOverlay<CThingCreatureBase*>) == 0x0C);
+
+struct CScriptThing_Overlay
+{
+    void* vfptr;
+    std::int32_t field_0x04;
+    void* field_0x08;
+};
+static_assert(sizeof(CScriptThing_Overlay) == 0x0C);
+static_assert(offsetof(CScriptThing_Overlay, vfptr) == 0x00);
+static_assert(offsetof(CScriptThing_Overlay, field_0x04) == 0x04);
+static_assert(offsetof(CScriptThing_Overlay, field_0x08) == 0x08);
+
+struct SharedControlBlock_Overlay
+{
+    std::int32_t refCount;
+    void (__thiscall* releaseFn)(void*);
+    void* objectPtr;
+};
+static_assert(sizeof(SharedControlBlock_Overlay) == 0x0C);
+static_assert(offsetof(SharedControlBlock_Overlay, refCount) == 0x00);
+static_assert(offsetof(SharedControlBlock_Overlay, releaseFn) == 0x04);
+static_assert(offsetof(SharedControlBlock_Overlay, objectPtr) == 0x08);
+
+extern void* PTR__scalar_deleting_destructor__01238c8c;
+
+extern "C" int __cdecl __ftol2();
+extern void __thiscall std__vector___Reserve(std::vector<CScriptThing>* self, int additionalCount);
+extern void __thiscall std__vector_InsertRange(
+    std::vector<CScriptThing>* self,
+    CScriptThing* insertionEnd,
+    int predicateResult,
+    const CScriptThing_Overlay* source,
+    int countA,
+    int countB);
+
+long CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(
+    const CCharString& scriptName,
+    const C3DVector& position,
+    float radius,
+    std::vector<CScriptThing>& outThings) const
+{
+    const int x = [&]() -> int { (void)position.x; return __ftol2(); }();
+    const int y = [&]() -> int { (void)position.y; return __ftol2(); }();
+    int bottom = [&]() -> int { (void)radius; return __ftol2(); }();
+
+    int left = x - bottom;
+    int top = y - bottom;
+    int right = x + bottom;
+    bottom = y + bottom;
+
+    VectorOverlay<CThingCreatureBase*> found{};
+    CThingCreatureBase** unresolvedEdi;
+    std::pair<EHeroMorphType, CParticleMorphs::CEntry>* unresolvedEdx;
+
+    const auto* const self = reinterpret_cast<const CGameScriptInterface_Overlay*>(this);
+    CThingSearchTools* const searchTools = self->field_0x04->field_0x20;
+
+    if (*reinterpret_cast<CBasicString<char>* const*>(&scriptName) == nullptr)
+    {
+        int remaining = 1;
+        bool equal = true;
+        const char* lhs = "";
+        const char* rhs = "";
+
+        do
+        {
+            if (remaining == 0)
+            {
+                break;
+            }
+
+            --remaining;
+            equal = (*lhs == *rhs);
+            ++lhs;
+            ++rhs;
+        } while (equal);
+
+        if (equal)
+        {
+SearchPotentialCustomers:
+            CThingSearchTools::GetPBestThingInRoughArea<
+                CThingFilter_IsPotentialCustomer,
+                CThingCompare_Nearest,
+                CThingCreatureBase>(
+                    searchTools,
+                    reinterpret_cast<C2DBoxI*>(&left),
+                    reinterpret_cast<CThingFilter_IsPotentialCustomer*>(const_cast<C3DVector*>(&position)),
+                    reinterpret_cast<CThingCompare_Nearest*>(&found),
+                    unresolvedEdi);
+            goto AfterSearch;
+        }
+    }
+    else
+    {
+        const bool isEmpty =
+            CBasicString<char>::operator==(
+                *reinterpret_cast<CBasicString<char>* const*>(&scriptName),
+                "");
+
+        if (isEmpty)
+        {
+            goto SearchPotentialCustomers;
+        }
+    }
+
+    {
+        CCharString boundScriptName(scriptName);
+
+        CThingSearchTools::GetPBestThingInRoughArea<
+            CFilter_Bind2<CThingFilter_IsNot, CIsVeryCloseMotionlessCreature>,
+            CThingCompare_Nearest,
+            CThingCreatureBase>(
+                searchTools,
+                reinterpret_cast<C2DBoxI*>(&left),
+                reinterpret_cast<CFilter_Bind2<CThingFilter_IsNot, CIsVeryCloseMotionlessCreature>*>(&boundScriptName),
+                reinterpret_cast<CThingCompare_Nearest*>(&found),
+                unresolvedEdi);
+
+        std::_Cons_val<
+            std::allocator<std::pair<EHeroMorphType, CParticleMorphs::CEntry>>,
+            std::pair<EHeroMorphType, CParticleMorphs::CEntry>,
+            const std::pair<EHeroMorphType, CParticleMorphs::CEntry>&>(
+                reinterpret_cast<std::allocator<std::pair<EHeroMorphType, CParticleMorphs::CEntry>>*>(&boundScriptName),
+                unresolvedEdx,
+                reinterpret_cast<std::pair<EHeroMorphType, CParticleMorphs::CEntry>*>(unresolvedEdi));
+    }
+
+AfterSearch:
+    CThingCreatureBase** const foundEnd = found.end;
+    CThingCreatureBase** it = found.begin;
+    auto* const outOverlay = reinterpret_cast<VectorOverlay<CScriptThing>*>(&outThings);
+
+    if (found.begin == found.end)
+    {
+        if (found.begin != nullptr)
+        {
+            std::free(found.begin);
+        }
+        return 0;
+    }
+
+    std__vector___Reserve(
+        &outThings,
+        static_cast<int>(
+            (reinterpret_cast<std::uintptr_t>(found.end) -
+             reinterpret_cast<std::uintptr_t>(found.begin)) >> 2));
+
+    do
+    {
+        CScriptThing_Overlay temporaryThing;
+        const int predicateResult =
+            NScript::GFPredicateAnd<
+                NScript::CPredicate_And<
+                    NScript::CPredicate_And<
+                        NScript::CPredicate_And<
+                            NScript::CPredicate_And<NScript::CIsThingAlive, NScript::CIsThingAlive>,
+                            NScript::CIsThingAlive>,
+                        NScript::CIsThingAlive>,
+                    NScript::CIsThingAlive>>(
+                        *it,
+                        reinterpret_cast<CIsThingAlive*>(&temporaryThing));
+
+        CScriptThing* const outEnd = outOverlay->end;
+        if (outEnd == outOverlay->capacity)
+        {
+            std__vector_InsertRange(
+                &outThings,
+                outEnd,
+                predicateResult,
+                &temporaryThing,
+                1,
+                1);
+        }
+        else
+        {
+            auto* const dst = reinterpret_cast<CScriptThing_Overlay*>(outEnd);
+            if (dst != nullptr)
+            {
+                dst->vfptr = PTR__scalar_deleting_destructor__01238c8c;
+                dst->field_0x04 = *reinterpret_cast<std::int32_t*>(predicateResult + 4);
+
+                auto* const shared =
+                    *reinterpret_cast<SharedControlBlock_Overlay**>(predicateResult + 8);
+                dst->field_0x08 = shared;
+                if (shared != nullptr)
+                {
+                    ++shared->refCount;
+                }
+            }
+
+            outOverlay->end = reinterpret_cast<CScriptThing*>(
+                reinterpret_cast<std::byte*>(outOverlay->end) + 0x0C);
+        }
+
+        temporaryThing.vfptr = PTR__scalar_deleting_destructor__01238c8c;
+        if (temporaryThing.field_0x08 != nullptr)
+        {
+            auto* const shared =
+                reinterpret_cast<SharedControlBlock_Overlay*>(temporaryThing.field_0x08);
+            --shared->refCount;
+            if (shared->refCount == 0)
+            {
+                shared->releaseFn(shared->objectPtr);
+                operator delete(shared);
+            }
+        }
+
+        temporaryThing.field_0x04 = 0;
+        temporaryThing.field_0x08 = nullptr;
+        NHeroInformationScreens::CBase::CBase(
+            reinterpret_cast<NHeroInformationScreens::CBase*>(&temporaryThing));
+
+        ++it;
+    } while (it != foundEnd);
+
+    const int outBeginBytes = reinterpret_cast<int>(outOverlay->begin);
+    const int outEndBytes = reinterpret_cast<int>(outOverlay->end);
+
+    if (found.begin != nullptr)
+    {
+        std::free(found.begin);
+    }
+
+    return (outEndBytes - outBeginBytes) / 0x0C;
+}
