@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-25T18:35:31-06:00",
-  "catalog_functions": 49553,
-  "evidence_accepted": 49162,
+  "generated_at": "2026-07-27T23:18:15-06:00",
+  "catalog_functions": 49568,
+  "evidence_accepted": 49177,
   "accepted_reconstruction_family": 348,
-  "usable_navigation_names": 49510,
+  "usable_navigation_names": 49525,
   "remaining_semantic_review": 40,
   "donor_proposal_review": 2,
   "invalid_boundary_review": 1,

@@ -19,7 +19,7 @@ C3DAnimFileTimingEventChunk	0	5	5	0	0	0	0	0	0	0	0
 C3DAnimFileXAllocationSizeChunk	0	4	4	0	0	0	0	0	0	0	0
 C3DAnimFileXLoader	0	1	0	0	0	0	0	0	0	0	0
 C3DAnimFileXSequenceChunk	0	11	6	0	0	0	0	0	0	0	0
-C3DAnimation2	0	22	21	0	0	1	1	0	0	0	0
+C3DAnimation2	0	21	20	0	0	1	1	0	0	0	0
 C3DAnimationBlendState	0	73	52	0	0	0	0	0	0	0	0
 C3DAnimationBuilder	0	3	3	0	0	0	0	0	0	0	0
 C3DAnimationInfo	0	14	13	0	0	0	0	0	0	0	0
@@ -1294,7 +1294,7 @@ CDisplacedTrader	4	0	0	0	0	0	0	0	0	0	0
 CDisplacementProcess	2	1	1	0	0	0	0	0	0	0	0
 CDisplayEngine	41	14	12	0	0	3	3	3	0	0	0
 CDisplayEngineInit	0	2	0	0	0	0	0	0	0	0	0
-CDisplayManager	62	112	112	0	0	20	20	2	9	0	0
+CDisplayManager	62	112	112	0	0	20	20	2	10	0	0
 CDisplayManagerInit	0	1	0	0	0	0	0	0	0	0	0
 CDisplayViewManager	3	5	5	0	0	0	0	0	0	0	0
 CDoNotTarget	1	0	0	0	0	0	0	0	0	0	0
@@ -1498,7 +1498,7 @@ CEngineLandscapeLODMap	8	3	3	0	0	0	0	0	0	0	0
 CEngineLandscapeMap	34	19	19	2	1	4	4	1	1	0	0
 CEngineLandscapeMemoryManager	25	16	12	0	0	2	2	2	0	0	0
 CEngineLandscapeMeshBuilder	10	3	2	0	0	0	0	0	0	0	0
-CEngineLandscapePatch	28	29	27	6	3	7	7	1	1	0	0
+CEngineLandscapePatch	28	28	26	6	3	7	7	1	1	0	0
 CEngineLandscapeRenderer	39	33	33	8	0	8	8	6	1	0	0
 CEngineLayerRenderer	2	1	1	0	0	0	0	0	0	0	0
 CEngineLightingManager	35	134	134	0	0	30	30	7	23	0	0
@@ -1786,7 +1786,7 @@ CGameMap	6	6	5	0	0	0	0	0	0	0	0
 CGameMapCell	2	1	1	0	0	0	0	0	0	0	0
 CGameNavigatorManagerExternalInterface	2	2	2	0	0	0	0	0	0	0	0
 CGamePlayerInterface	41	24	23	0	0	13	13	13	0	0	0
-CGameScriptInterface	935	953	948	432	3	188	188	45	141	0	0
+CGameScriptInterface	935	953	948	437	3	188	188	45	141	0	0
 CGameScriptThing	81	91	88	3	0	6	6	3	3	0	0
 CGameScriptThingManager	5	6	5	0	0	0	0	0	0	0	0
 CGameTimeManager	27	13	13	0	0	0	0	0	0	0	0
@@ -2129,7 +2129,7 @@ CKG_ChiefBreakSiege	3	1	1	0	0	0	0	0	0	0	0
 CKG_Gate	2	1	1	0	0	0	0	0	0	0	0
 CKG_Sheriff	4	2	2	0	0	0	0	0	0	0	0
 CKeyCamera	0	1	0	0	0	0	0	0	0	0	0
-CKeyRedefiner	16	9	9	0	0	0	0	0	0	0	0
+CKeyRedefiner	16	7	7	0	0	0	0	0	0	0	0
 CKeyboard	10	4	4	0	0	1	1	1	0	0	0
 CKeyboardDX	10	10	9	0	0	0	0	0	0	0	0
 CKickableDef	2	3	3	0	0	1	1	1	0	0	0
@@ -2424,7 +2424,7 @@ CMovableResource	1	3	2	0	0	0	0	0	0	0	0
 CMovableResourceMemoryPool	6	5	5	0	0	0	0	0	0	0	0
 CMoveOnCylinder	4	2	2	0	0	0	0	0	0	0	0
 CMoveOnCylinderInit	1	0	0	0	0	0	0	0	0	0	0
-CMovie	9	8	7	0	0	0	0	0	0	0	0
+CMovie	9	16	9	0	0	0	0	0	0	0	0
 CMovieSubtitles	3	1	1	0	0	0	0	0	0	0	0
 CMultiStatBar	5	6	5	0	0	0	0	0	0	0	0
 CMultiStaticMeshDef	2	3	3	0	0	1	1	1	0	0	0
@@ -2985,7 +2985,7 @@ CShaderDataBank	14	6	6	0	0	1	1	1	0	0	0
 CShaderDirectionalLight	1	3	1	0	0	0	0	0	0	0	0
 CShaderPointLight	1	1	1	0	0	0	0	0	0	0	0
 CShaderPreParser	48	7	7	0	0	3	3	3	0	0	0
-CShaderRenderManager	78	79	76	0	0	18	18	10	6	0	0
+CShaderRenderManager	78	79	76	0	0	18	18	10	5	0	0
 CShaderResource	12	13	8	0	0	0	0	0	0	0	0
 CShaderResourceArray	0	1	0	0	0	0	0	0	0	0	0
 CShadow	3	4	4	0	0	0	0	0	0	0	0
@@ -3329,7 +3329,7 @@ CTCGhostSword	15	9	7	0	0	0	0	0	0	0	0
 CTCGift	7	1	1	0	0	0	0	0	0	0	0
 CTCGold	4	2	2	0	0	0	0	0	0	0	0
 CTCGossip	3	2	0	0	0	0	0	0	0	0	0
-CTCGraphicAppearance	80	62	58	0	0	3	3	0	3	0	0
+CTCGraphicAppearance	80	60	56	0	0	3	3	0	3	0	0
 CTCGraphicAppearanceAnimatedMesh	7	17	6	0	0	0	0	0	0	0	0
 CTCGraphicAppearanceMultipleStaticMeshes	6	5	3	0	0	0	0	0	0	0	0
 CTCGraphicAppearanceReplaceableMesh	8	7	5	0	0	0	0	0	0	0	0
@@ -3541,7 +3541,7 @@ CTH_Trigger_Oakvale_Gossip	2	0	0	0	0	0	0	0	0	0	0
 CTH_Whisper	2	0	0	0	0	0	0	0	0	0	0
 CTOL_AcolyteGood	3	1	1	0	0	0	0	0	0	0	0
 CTOL_AltarGood	2	0	0	0	0	0	0	0	0	0	0
-CTable	8	4	4	0	0	0	0	0	0	0	0
+CTable	8	3	3	0	0	0	0	0	0	0	0
 CTalkingTrader1	3	2	2	0	0	0	0	0	0	0	0
 CTalkingTrader2	2	0	0	0	0	0	0	0	0	0	0
 CTargetForKey	4	1	1	0	0	0	0	0	0	0	0
@@ -3579,13 +3579,13 @@ CTestQuestCard3Script	3	0	0	0	0	0	0	0	0	0	0
 CTestQuestNameCompare	0	1	1	0	0	0	0	0	0	0	0
 CTestTheInventoryScript	5	2	2	0	0	0	0	0	0	0	0
 CText	18	10	9	0	0	0	0	0	0	0	0
-CTextContainer	3	9	4	0	0	0	0	0	0	0	0
+CTextContainer	3	8	3	0	0	0	0	0	0	0	0
 CTextEntry	5	3	2	0	0	0	0	0	0	0	0
 CTextSlider	13	7	5	0	0	0	0	0	0	0	0
 CTexture	33	32	29	0	0	4	4	2	1	0	0
 CTextureManager	15	10	9	0	0	0	0	0	0	0	0
 CTextureMorphs	4	4	4	0	0	0	0	0	0	0	0
-CTextureRenderer	0	1	0	0	0	0	0	0	0	0	0
+CTextureRenderer	0	5	1	0	0	0	0	0	0	0	0
 CTextureReplacementDef	2	5	3	0	0	2	2	0	1	0	0
 CTheKraken	2	0	0	0	0	0	0	0	0	0	0
 CTheRealGuildmaster	14	1	1	0	0	0	0	0	0	0	0
@@ -3856,7 +3856,7 @@ CVictimsBrother	3	2	2	0	0	0	0	0	0	0	0
 CVictimsBrotherHelper	3	0	0	0	0	0	0	0	0	0	0
 CVictimsFather	4	1	1	0	0	0	0	0	0	0	0
 CVictimsFatherGuard	3	1	1	0	0	0	0	0	0	0	0
-CVideoSys	15	10	9	0	0	0	0	0	0	0	0
+CVideoSys	15	17	12	0	0	0	0	0	0	0	0
 CView3DBase	3	1	1	0	0	0	0	0	0	0	0
 CView3DThirdPerson	1	1	0	0	0	0	0	0	0	0	0
 CViewBase	4	25	22	0	0	6	6	0	6	0	0
@@ -4115,9 +4115,11 @@ NThingShot::CTCShotDefinitionMultiArrow	0	1	0	0	0	0	0	0	0	0	0
 NThingShot::CTCShotDefinitionNymphFun	0	5	0	0	0	0	0	0	0	0	0
 NUISystem	0	1	0	0	0	0	0	0	0	0	0
 NUISystem::CComponentContainer	0	3	0	0	0	0	0	0	0	0	0
+NUISystem::CKeyRedefiner	0	5	5	0	0	0	0	0	0	0	0
 NUISystem::CList	0	1	0	0	0	0	0	0	0	0	0
 NUISystem::CMesh	0	1	0	0	0	0	0	0	0	0	0
 NUISystem::CScrollingViewport	0	1	0	0	0	0	0	0	0	0	0
+NUISystem::CTable	0	3	3	0	0	0	0	0	0	0	0
 NUISystem::CTextContainer	0	3	0	0	0	0	0	0	0	0	0
 NVectorMath	7	0	0	0	0	0	0	0	0	0	0
 PKCAutoDeleteArray	0	1	0	0	0	0	0	0	0	0	0
@@ -4498,7 +4500,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11370	1999	63	3	138	138	67	55	0	0
+_global	0	11367	1999	226	6	138	138	67	55	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

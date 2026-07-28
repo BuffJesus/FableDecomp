@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-07-25T18:35:31-06:00",
-  "candidates": 573,
-  "pass": 506,
-  "review": 67,
+  "generated_at": "2026-07-27T23:18:15-06:00",
+  "candidates": 803,
+  "pass": 541,
+  "review": 262,
   "issue_counts": {
-    "explicit-parameter-count-mismatch": 42,
-    "return-shape-mismatch": 16,
-    "definition-not-parsed": 11,
-    "method-name-mismatch": 9,
-    "owner-mismatch": 7,
-    "duplicate-linkage-signature": 7
+    "explicit-parameter-count-mismatch": 232,
+    "return-shape-mismatch": 82,
+    "method-name-mismatch": 24,
+    "duplicate-linkage-signature": 24,
+    "definition-not-parsed": 12,
+    "owner-mismatch": 8
   }
 }

@@ -1,13 +1,13 @@
 # Auto-RE candidate compile gate
 
-Generated: `2026-07-25T18:26:31-06:00`
+Generated: `2026-07-27T23:17:33-06:00`
 
 | Gate | Passing | Total |
 |---|---:|---:|
-| Source integrity | 573 | 573 |
-| 32-bit host C++20 syntax | 251 | 573 |
-| No detected VC7.1 language blockers | 57 | 573 |
-| Ready for VC7.1 module compilation | 38 | 573 |
+| Source integrity | 803 | 803 |
+| 32-bit host C++20 syntax | 367 | 803 |
+| No detected VC7.1 language blockers | 67 | 803 |
+| Ready for VC7.1 module compilation | 41 | 803 |
 
 A checker PASS is not a compiler PASS. The host syntax gate supplies only standard-library and calling-convention compatibility; missing engine declarations must be resolved through real module headers.
 
@@ -15,35 +15,35 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 
 | Declaration | Candidates |
 |---|---:|
-| `offsetof` | 57 |
-| `class CGameScriptInterface` | 34 |
-| `mov` | 14 |
+| `offsetof` | 61 |
+| `class CGameScriptInterface` | 40 |
+| `CCharString` | 29 |
+| `CGameScriptInterface` | 23 |
+| `mov` | 16 |
+| `std` | 13 |
+| `CTCBase` | 13 |
+| `C2DVector` | 13 |
+| `ETCInterfaceType` | 12 |
 | `CMouseDX` | 12 |
+| `CKeyPairCompareLess` | 11 |
 | `CMemoryAllocatorFixedSize` | 11 |
-| `C2DVector` | 11 |
+| `self` | 10 |
+| `CScriptThing` | 10 |
 | `CNavQuadTree` | 10 |
+| `CWideString` | 9 |
+| `CDefinitionManager` | 8 |
+| `C3DVector` | 8 |
 | `EThemePaintType` | 8 |
+| `CVectorMap` | 7 |
 | `class CScriptThing` | 7 |
 | `CEngineLandscapeMap` | 7 |
 | `CGraphicInfoFrame` | 7 |
 | `CGameEvent` | 6 |
+| `next` | 6 |
 | `CTCCoopSpirit` | 6 |
-| `std` | 6 |
+| `CQuestManager` | 6 |
 | `CANavQuadTreeNode` | 6 |
 | `CEngineLandscapePatch` | 6 |
-| `CNetworkClient` | 5 |
-| `CGameEventPackageSet` | 5 |
-| `CWorldMap` | 5 |
-| `CEngineLandscapeRenderer` | 5 |
-| `LS_LOADING_STATUS` | 5 |
-| `CDataInputStream` | 5 |
-| `CMainGameComponent` | 4 |
-| `C2DCoordI` | 4 |
-| `GetMapNumberAt` | 4 |
-| `localCoord` | 4 |
-| `CMap` | 4 |
-| `C2DLineF` | 4 |
-| `::operator_new` | 4 |
-| `CFrameData` | 4 |
+| `CMemoryAllocatorVariableSize` | 5 |
 
 Full per-candidate results are in `candidates.tsv`.

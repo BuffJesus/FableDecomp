@@ -13,6 +13,14 @@ param(
 
     [switch]$VerifyMaximizedScale,
 
+    [switch]$VerifyFrontendAnimation,
+
+    [switch]$VerifyMainMenu,
+
+    [switch]$VerifySubscreens,
+
+    [switch]$BuffJesus,
+
     [switch]$VerifyUpscaled,
 
     [switch]$OriginalVideo,
@@ -30,7 +38,13 @@ if (-not $Executable) {
 }
 $Executable = (Resolve-Path -LiteralPath $Executable).Path
 
-if ($RetailVideo -or $VerifyMaximizedScale) {
+if (
+    $RetailVideo -or
+    $VerifyMaximizedScale -or
+    $VerifyFrontendAnimation -or
+    $VerifyMainMenu -or
+    $VerifySubscreens
+) {
     Add-Type -AssemblyName System.Drawing
     if (-not ('VisualSmokeNativeMethods' -as [type])) {
         Add-Type @'
@@ -77,7 +91,22 @@ public static class VisualSmokeNativeMethods
     public static extern bool SetForegroundWindow(IntPtr window);
 
     [DllImport("user32.dll")]
+    public static extern bool PrintWindow(
+        IntPtr window,
+        IntPtr deviceContext,
+        uint flags
+    );
+
+    [DllImport("user32.dll")]
     public static extern bool PostMessage(
+        IntPtr window,
+        uint message,
+        UIntPtr wordParameter,
+        IntPtr longParameter
+    );
+
+    [DllImport("user32.dll")]
+    public static extern IntPtr SendMessage(
         IntPtr window,
         uint message,
         UIntPtr wordParameter,
@@ -89,6 +118,19 @@ public static class VisualSmokeNativeMethods
 }
 
 $arguments = @()
+if ($BuffJesus) {
+    $arguments += '--buff-jesus'
+    if (-not $RetailVideo) {
+        # The public BuffJesus launch includes the retail boot sequence. Keep
+        # direct UI smoke runs fast unless they explicitly request that gate.
+        $arguments += '--skip-boot-videos'
+    }
+}
+if ($VerifyMaximizedScale -or $VerifySubscreens) {
+    # Keep the existing decoded-backdrop pixel oracle deterministic while the
+    # default frontend runs its independent forest/sunbeam animation.
+    $arguments += '--retail-frontend-static'
+}
 if ($RetailVideo) {
     $arguments += if ($Movie -eq 'boot') {
         '--retail-video'
@@ -111,6 +153,7 @@ if ($arguments.Count -ne 0) {
 }
 $process = Start-Process @startOptions
 $title = ''
+$quitViaRetailAction = $false
 $deadline = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
 try {
     while ([DateTime]::UtcNow -lt $deadline) {
@@ -136,6 +179,9 @@ try {
     if ($title -notlike $expectedTitle) {
         throw "Expected presentation was not observed; last title was '$title'."
     }
+    if ($BuffJesus -and -not $RetailVideo -and $title -notlike '*BuffJesus*') {
+        throw "The BuffJesus text variant was not activated; title was '$title'."
+    }
     if ($VerifyUpscaled) {
         if (-not $RetailVideo -or $OriginalVideo) {
             throw (
@@ -155,6 +201,22 @@ try {
         if (-not $RetailVideo -or $Movie -ne 'boot') {
             throw '-VerifyBootToFrontend requires -RetailVideo -Movie boot.'
         }
+    }
+    if ($VerifyFrontendAnimation -and $RetailVideo) {
+        throw (
+            '-VerifyFrontendAnimation targets the directly revealed ' +
+            'frontend; combine boot-to-frontend and animation as separate gates.'
+        )
+    }
+    if (
+        ($VerifyMainMenu -or $VerifySubscreens) -and
+        $RetailVideo -and
+        -not $VerifyBootToFrontend
+    ) {
+        throw (
+            'Frontend interaction verification targets the directly revealed press-start ' +
+            'screen unless -VerifyBootToFrontend is also selected.'
+        )
     }
 
     if ($VerifyBootSequence) {
@@ -227,10 +289,15 @@ try {
             )
         }
 
-        Send-EscapeKey
-        Wait-ForMovieTitle '*Retail WMV Playing 2/3 - Microsoft*'
-        Send-EscapeKey
-        Wait-ForMovieTitle '*Retail WMV Playing 3/3 - Intro*'
+        # -VerifyBootSequence has already observed the natural chain at 3/3.
+        # Do not rewind the assertion state and wait for the now-finished
+        # Microsoft movie when it is combined with -VerifyBootToFrontend.
+        if (-not $VerifyBootSequence) {
+            Send-EscapeKey
+            Wait-ForMovieTitle '*Retail WMV Playing 2/3 - Microsoft*'
+            Send-EscapeKey
+            Wait-ForMovieTitle '*Retail WMV Playing 3/3 - Intro*'
+        }
 
         if ($VerifyBootToFrontend) {
             Send-EscapeKey
@@ -337,21 +404,9 @@ try {
                 [System.Drawing.Bitmap]::FromFile($retailBackdrop)
             try {
                 $drawWidth = $clientWidth
-                $drawHeight = [int](
-                    $clientWidth *
-                    $expectedBitmap.Height /
-                    $expectedBitmap.Width
-                )
-                if ($drawHeight -gt $clientHeight) {
-                    $drawHeight = $clientHeight
-                    $drawWidth = [int](
-                        $clientHeight *
-                        $expectedBitmap.Width /
-                        $expectedBitmap.Height
-                    )
-                }
-                $drawLeft = [int](($clientWidth - $drawWidth) / 2)
-                $drawTop = [int](($clientHeight - $drawHeight) / 2)
+                $drawHeight = $clientHeight
+                $drawLeft = 0
+                $drawTop = 0
                 $totalError = 0
                 $channelCount = 0
                 foreach ($sampleY in @(190, 250, 320, 390, 450)) {
@@ -388,7 +443,7 @@ try {
                 if ($meanChannelError -gt 32) {
                     throw (
                         'The maximized frontend does not match the expected ' +
-                        "aspect-fit scale (mean channel error " +
+                        "retail full-view scale (mean channel error " +
                         "$meanChannelError)."
                     )
                 }
@@ -406,7 +461,12 @@ try {
     }
 
     $frameProof = ''
-    if ($RetailVideo) {
+    if (
+        $RetailVideo -or
+        $VerifyFrontendAnimation -or
+        $VerifyMainMenu -or
+        $VerifySubscreens
+    ) {
         $process.Refresh()
         $bounds = New-Object VisualSmokeNativeMethods+Rect
         if (
@@ -424,6 +484,11 @@ try {
         }
 
         function Get-WindowFrameHash {
+            [void][VisualSmokeNativeMethods]::BringWindowToTop(
+                $process.MainWindowHandle)
+            [void][VisualSmokeNativeMethods]::SetForegroundWindow(
+                $process.MainWindowHandle)
+            Start-Sleep -Milliseconds 40
             $bitmap = New-Object System.Drawing.Bitmap $width, $height
             $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
             $stream = New-Object System.IO.MemoryStream
@@ -488,16 +553,62 @@ try {
             }
         }
 
-        if ($VerifyBootToFrontend) {
+        if ($VerifyBootToFrontend -or $VerifySubscreens) {
             Start-Sleep -Milliseconds 600
         }
+
+        function Get-ClientDesignPixelArgb {
+            param(
+                [int]$DesignX,
+                [int]$DesignY
+            )
+            [void][VisualSmokeNativeMethods]::BringWindowToTop(
+                $process.MainWindowHandle)
+            [void][VisualSmokeNativeMethods]::SetForegroundWindow(
+                $process.MainWindowHandle)
+            $client = New-Object VisualSmokeNativeMethods+Rect
+            $origin = New-Object VisualSmokeNativeMethods+Point
+            if (
+                -not [VisualSmokeNativeMethods]::GetClientRect(
+                    $process.MainWindowHandle,
+                    [ref]$client
+                ) -or
+                -not [VisualSmokeNativeMethods]::ClientToScreen(
+                    $process.MainWindowHandle,
+                    [ref]$origin
+                )
+            ) {
+                throw 'Could not resolve the frontend client sample point.'
+            }
+            $clientWidth = $client.Right - $client.Left
+            $clientHeight = $client.Bottom - $client.Top
+            $sampleX = $origin.X + [int](
+                $DesignX * $clientWidth / 640)
+            $sampleY = $origin.Y + [int](
+                $DesignY * $clientHeight / 480)
+            $sample = New-Object System.Drawing.Bitmap 1, 1
+            $graphics = [System.Drawing.Graphics]::FromImage($sample)
+            try {
+                $graphics.CopyFromScreen(
+                    $sampleX,
+                    $sampleY,
+                    0,
+                    0,
+                    $sample.Size
+                )
+                return $sample.GetPixel(0, 0).ToArgb()
+            } finally {
+                $graphics.Dispose()
+                $sample.Dispose()
+            }
+        }
         $firstFrameHash = Get-WindowFrameHash
-        if ($VerifyBootToFrontend) {
+        if ($VerifyBootToFrontend -or $VerifySubscreens) {
             $sampleColorCount = Get-WindowSampleColorCount
             if ($sampleColorCount -lt 12) {
                 throw (
-                    'The DirectShow child closed, but the revealed frontend ' +
-                    "checkpoint was visually flat ($sampleColorCount colours)."
+                    'The revealed frontend checkpoint was visually flat ' +
+                    "($sampleColorCount colours)."
                 )
             }
             Start-Sleep -Milliseconds 300
@@ -511,7 +622,11 @@ try {
                 " frontend=$frameState" +
                 " colours=$sampleColorCount" +
                 " hash=$($firstFrameHash.Substring(0, 12))" +
-                ' directshow-child=closed'
+                $(if ($VerifyBootToFrontend) {
+                    ' directshow-child=closed'
+                } else {
+                    ' static-interaction-baseline=verified'
+                })
             )
         } else {
             $secondFrameHash = $firstFrameHash
@@ -523,8 +638,13 @@ try {
                 $secondFrameHash = Get-WindowFrameHash
             }
             if ($firstFrameHash -eq $secondFrameHash) {
+                $changingSurface = if ($VerifyFrontendAnimation) {
+                    'frontend forest/sunbeam animation'
+                } else {
+                    'retail WMV'
+                }
                 throw (
-                    'The retail WMV clock ran, but no changing frame was ' +
+                    "The $changingSurface clock ran, but no changing frame was " +
                     'observed before the smoke deadline.'
                 )
             }
@@ -533,18 +653,554 @@ try {
                 " second=$($secondFrameHash.Substring(0, 12))"
             )
         }
+
+        function Get-ClientFrameHash {
+            [void][VisualSmokeNativeMethods]::BringWindowToTop(
+                $process.MainWindowHandle)
+            [void][VisualSmokeNativeMethods]::SetForegroundWindow(
+                $process.MainWindowHandle)
+            Start-Sleep -Milliseconds 40
+            $client = New-Object VisualSmokeNativeMethods+Rect
+            $origin = New-Object VisualSmokeNativeMethods+Point
+            if (
+                -not [VisualSmokeNativeMethods]::GetClientRect(
+                    $process.MainWindowHandle,
+                    [ref]$client
+                ) -or
+                -not [VisualSmokeNativeMethods]::ClientToScreen(
+                    $process.MainWindowHandle,
+                    [ref]$origin
+                )
+            ) {
+                throw 'Could not resolve the frontend client capture area.'
+            }
+            $clientWidth = $client.Right - $client.Left
+            $clientHeight = $client.Bottom - $client.Top
+            $windowBitmap =
+                New-Object System.Drawing.Bitmap $width, $height
+            $windowGraphics =
+                [System.Drawing.Graphics]::FromImage($windowBitmap)
+            $deviceContext = $windowGraphics.GetHdc()
+            try {
+                if (-not [VisualSmokeNativeMethods]::PrintWindow(
+                    $process.MainWindowHandle,
+                    $deviceContext,
+                    2
+                )) {
+                    throw 'PrintWindow could not capture the frontend.'
+                }
+            } finally {
+                $windowGraphics.ReleaseHdc($deviceContext)
+                $windowGraphics.Dispose()
+            }
+            $sourceRectangle = New-Object System.Drawing.Rectangle `
+                ($origin.X - $bounds.Left), `
+                ($origin.Y - $bounds.Top), `
+                $clientWidth, `
+                $clientHeight
+            $bitmap = $windowBitmap.Clone(
+                $sourceRectangle,
+                $windowBitmap.PixelFormat)
+            $stream = New-Object System.IO.MemoryStream
+            try {
+                $bitmap.Save(
+                    $stream,
+                    [System.Drawing.Imaging.ImageFormat]::Bmp
+                )
+                $sha = [System.Security.Cryptography.SHA256]::Create()
+                try {
+                    return (
+                        [BitConverter]::ToString(
+                            $sha.ComputeHash($stream.ToArray())
+                        ) -replace '-', ''
+                    )
+                } finally {
+                    $sha.Dispose()
+                }
+            } finally {
+                $stream.Dispose()
+                $bitmap.Dispose()
+                $windowBitmap.Dispose()
+            }
+        }
+
+        if ($VerifyMainMenu -or $VerifySubscreens) {
+            $pressStartHash = Get-WindowFrameHash
+            if (
+                -not [VisualSmokeNativeMethods]::PostMessage(
+                    $process.MainWindowHandle,
+                    0x0202,
+                    [UIntPtr]::Zero,
+                    [IntPtr]::Zero
+                )
+            ) {
+                throw 'Could not release the retail press-start button.'
+            }
+            Start-Sleep -Milliseconds 500
+            $mainMenuHash = Get-WindowFrameHash
+            if ($mainMenuHash -eq $pressStartHash) {
+                throw (
+                    'The retail left-button release did not replace the ' +
+                    'press-start frontend with the main-menu frontend.'
+                )
+            }
+            $menuClient = New-Object VisualSmokeNativeMethods+Rect
+            if (
+                -not [VisualSmokeNativeMethods]::GetClientRect(
+                    $process.MainWindowHandle,
+                    [ref]$menuClient
+                )
+            ) {
+                throw 'Could not resolve the main-menu client rectangle.'
+            }
+            $hoverX = [int](320 * $menuClient.Right / 640)
+            $hoverY = [int](440 * $menuClient.Bottom / 480)
+            $hoverPosition = [IntPtr]::new(
+                (($hoverY -band 0xFFFF) -shl 16) -bor
+                ($hoverX -band 0xFFFF)
+            )
+            if (
+                -not [VisualSmokeNativeMethods]::PostMessage(
+                    $process.MainWindowHandle,
+                    0x0200,
+                    [UIntPtr]::Zero,
+                    $hoverPosition
+                )
+            ) {
+                throw 'Could not hover the retail Quit row.'
+            }
+            Start-Sleep -Milliseconds 150
+            $hoverMenuHash = Get-WindowFrameHash
+            if ($hoverMenuHash -eq $mainMenuHash) {
+                throw (
+                    'The compiled main-menu mouse geometry did not move ' +
+                    'selection from Continue Game to Quit.'
+                )
+            }
+            $menuBitmap = New-Object System.Drawing.Bitmap $width, $height
+            $menuGraphics =
+                [System.Drawing.Graphics]::FromImage($menuBitmap)
+            try {
+                $menuGraphics.CopyFromScreen(
+                    $bounds.Left,
+                    $bounds.Top,
+                    0,
+                    0,
+                    $menuBitmap.Size
+                )
+                $menuScreenshot = Join-Path (
+                    Split-Path -Parent $Executable
+                ) $(if ($BuffJesus) {
+                    'buff-jesus-main-menu-smoke.png'
+                } else {
+                    'main-menu-transition-smoke.png'
+                })
+                $menuBitmap.Save(
+                    $menuScreenshot,
+                    [System.Drawing.Imaging.ImageFormat]::Png
+                )
+            } finally {
+                $menuGraphics.Dispose()
+                $menuBitmap.Dispose()
+            }
+            $frameProof += (
+                " menu=transitioned" +
+                " press=$($pressStartHash.Substring(0, 12))" +
+                " main=$($mainMenuHash.Substring(0, 12))" +
+                " hover=$($hoverMenuHash.Substring(0, 12))"
+            )
+
+            if ($VerifySubscreens) {
+                function Send-DesignMouse {
+                    param(
+                        [int]$Message,
+                        [int]$DesignX,
+                        [int]$DesignY
+                    )
+                    $client = New-Object VisualSmokeNativeMethods+Rect
+                    if (
+                        -not [VisualSmokeNativeMethods]::GetClientRect(
+                            $process.MainWindowHandle,
+                            [ref]$client
+                        )
+                    ) {
+                        throw 'Could not resolve the frontend client rectangle.'
+                    }
+                    $x = [int]($DesignX * $client.Right / 640)
+                    $y = [int]($DesignY * $client.Bottom / 480)
+                    $position = [IntPtr]::new(
+                        (($y -band 0xFFFF) -shl 16) -bor
+                        ($x -band 0xFFFF)
+                    )
+                    # SendMessage makes the state transition and its immediate
+                    # render complete before the smoke captures the result.
+                    # PostMessage made this gate scheduler-dependent under a
+                    # concurrent VC7.1/retail-oracle refresh.
+                    [void][VisualSmokeNativeMethods]::SendMessage(
+                        $process.MainWindowHandle,
+                        [uint32]$Message,
+                        [UIntPtr]::Zero,
+                        $position
+                    )
+                }
+
+                # Move from Quit to Options and dispatch retail action 297.
+                Send-DesignMouse 0x0200 320 260
+                Start-Sleep -Milliseconds 100
+                Send-DesignMouse 0x0202 320 260
+                Start-Sleep -Milliseconds 350
+                $optionsHash = Get-WindowFrameHash
+                if (
+                    $optionsHash -eq $hoverMenuHash -or
+                    $optionsHash -eq $mainMenuHash
+                ) {
+                    throw (
+                        'Retail action 297 did not activate ' +
+                        'UI_FRONTEND_OPTIONS_SUB_MENU.'
+                    )
+                }
+                Send-DesignMouse 0x0200 320 205
+                Start-Sleep -Milliseconds 150
+                $optionsHoverHash = Get-WindowFrameHash
+                if ($optionsHoverHash -eq $optionsHash) {
+                    throw (
+                        'The compiled Options list geometry did not move ' +
+                        'selection to Audio Options.'
+                    )
+                }
+
+                function Send-FrontendEscape {
+                    [void][VisualSmokeNativeMethods]::SendMessage(
+                        $process.MainWindowHandle,
+                        0x0100,
+                        [UIntPtr]::new(0x1B),
+                        [IntPtr]::Zero
+                    )
+                    [void][VisualSmokeNativeMethods]::SendMessage(
+                        $process.MainWindowHandle,
+                        0x0101,
+                        [UIntPtr]::new(0x1B),
+                        [IntPtr]::Zero
+                    )
+                }
+
+                function Test-FrontendDetailScreen {
+                    param(
+                        [string]$Name,
+                        [int]$RowY,
+                        [string]$PreviousHash,
+                        [string]$ScreenshotName = '',
+                        [bool]$UseCancel = $false
+                    )
+                    Send-DesignMouse 0x0200 320 $RowY
+                    Start-Sleep -Milliseconds 80
+                    Send-DesignMouse 0x0202 320 $RowY
+                    Start-Sleep -Milliseconds 300
+                    $detailHash = Get-WindowFrameHash
+                    if ($detailHash -eq $PreviousHash) {
+                        throw (
+                            "Recovered Options action did not activate " +
+                            "the $Name detail screen."
+                        )
+                    }
+                    if ($Name -eq 'Redefine Keys') {
+                        # CKeyRedefiner::OnHovered enters retail visual state
+                        # 3.  Moving onto the first compiled row must replace
+                        # its two OFF slots with their ON counterparts.
+                        Send-DesignMouse 0x0200 120 116
+                        Start-Sleep -Milliseconds 150
+                        $redefineHoverHash = Get-WindowFrameHash
+                        if ($redefineHoverHash -eq $detailHash) {
+                            throw (
+                                'Redefine Keys hover did not enter recovered ' +
+                                'CKeyRedefiner visual state 3.'
+                            )
+                        }
+                        Send-DesignMouse 0x0202 120 116
+                        Start-Sleep -Milliseconds 100
+                        $redefineCaptureHash = Get-WindowFrameHash
+                        if ($redefineCaptureHash -eq $redefineHoverHash) {
+                            throw (
+                                'CKeyRedefiner::OnLeftUnclicked did not enter ' +
+                                'the recovered PRESS CONTROL capture state.'
+                            )
+                        }
+                        [void][VisualSmokeNativeMethods]::SendMessage(
+                            $process.MainWindowHandle,
+                            0x0100,
+                            [UIntPtr]::new(0x5A),
+                            [IntPtr]::Zero
+                        )
+                        Start-Sleep -Milliseconds 100
+                        $redefineChangedHash = Get-WindowFrameHash
+                        if ($redefineChangedHash -eq $redefineCaptureHash) {
+                            throw (
+                                'The recovered CKeyRedefiner capture state ' +
+                                'did not apply the Z keyboard control.'
+                            )
+                        }
+                        # UI_RESET action 284 restores the shipped arrow
+                        # scheme; UI_RESET_WASD action 311 restores W/S/A/D.
+                        Send-DesignMouse 0x0202 480 410
+                        Start-Sleep -Milliseconds 100
+                        $redefineArrowsHash = Get-WindowFrameHash
+                        if ($redefineArrowsHash -eq $redefineChangedHash) {
+                            throw (
+                                'Retail action 284 did not reset movement ' +
+                                'to the four arrow-key bindings.'
+                            )
+                        }
+                        Send-DesignMouse 0x0202 160 410
+                        Start-Sleep -Milliseconds 100
+                        $redefineWasdHash = Get-WindowFrameHash
+                        if ($redefineWasdHash -eq $redefineArrowsHash) {
+                            throw (
+                                'Retail action 311 did not reset movement ' +
+                                'to the four W/S/A/D bindings.'
+                            )
+                        }
+                        Send-DesignMouse 0x0200 160 410
+                        Start-Sleep -Milliseconds 100
+                        $redefineResetHoverHash = Get-WindowFrameHash
+                        if ($redefineResetHoverHash -eq $redefineWasdHash) {
+                            throw (
+                                'UI_RESET_WASD did not enter its recovered ' +
+                                'retail ON hover state.'
+                            )
+                        }
+                        $detailHash = $redefineResetHoverHash
+                    }
+                    if ($ScreenshotName) {
+                        $detailBitmap =
+                            New-Object System.Drawing.Bitmap $width, $height
+                        $detailGraphics =
+                            [System.Drawing.Graphics]::FromImage(
+                                $detailBitmap)
+                        try {
+                            $detailGraphics.CopyFromScreen(
+                                $bounds.Left,
+                                $bounds.Top,
+                                0,
+                                0,
+                                $detailBitmap.Size
+                            )
+                            $detailBitmap.Save(
+                                (Join-Path (
+                                    Split-Path -Parent $Executable
+                                ) $ScreenshotName),
+                                [System.Drawing.Imaging.ImageFormat]::Png
+                            )
+                        } finally {
+                            $detailGraphics.Dispose()
+                            $detailBitmap.Dispose()
+                        }
+                    }
+                    if ($UseCancel) {
+                        Send-DesignMouse 0x0202 120 450
+                    } else {
+                        Send-FrontendEscape
+                    }
+                    Start-Sleep -Milliseconds 250
+                    $returnHash = Get-WindowFrameHash
+                    if ($returnHash -eq $detailHash) {
+                        throw (
+                            "Retail action 86 did not return from the " +
+                            "$Name detail screen."
+                        )
+                    }
+                    return $detailHash
+                }
+
+                # Exercise the retail profile transaction around one text
+                # slider: mutation is live, Cancel reverts it, Apply keeps it,
+                # and Defaults restores the recovered profile default.
+                Send-DesignMouse 0x0200 320 155
+                Send-DesignMouse 0x0202 320 155
+                Start-Sleep -Milliseconds 250
+                $gameplayInitialHash = Get-ClientFrameHash
+                Send-DesignMouse 0x0202 480 90
+                Start-Sleep -Milliseconds 150
+                $gameplayMutatedHash = Get-ClientFrameHash
+                if ($gameplayMutatedHash -eq $gameplayInitialHash) {
+                    throw 'Gameplay text-slider action did not change its live value.'
+                }
+                Send-DesignMouse 0x0202 120 450
+                Start-Sleep -Milliseconds 200
+                Send-DesignMouse 0x0202 320 155
+                Start-Sleep -Milliseconds 200
+                $gameplayCancelledHash = Get-ClientFrameHash
+                if ($gameplayCancelledHash -ne $gameplayInitialHash) {
+                    throw (
+                        'Gameplay Cancel did not restore the activation value ' +
+                        "(initial=$($gameplayInitialHash.Substring(0, 12)) " +
+                        "cancelled=$($gameplayCancelledHash.Substring(0, 12)))."
+                    )
+                }
+                Send-DesignMouse 0x0202 480 90
+                Start-Sleep -Milliseconds 150
+                Send-DesignMouse 0x0202 490 450
+                Start-Sleep -Milliseconds 200
+                Send-DesignMouse 0x0202 320 155
+                Start-Sleep -Milliseconds 200
+                $gameplayAppliedHash = Get-ClientFrameHash
+                if ($gameplayAppliedHash -ne $gameplayMutatedHash) {
+                    throw 'Gameplay Apply did not preserve the changed profile value.'
+                }
+                Send-DesignMouse 0x0202 320 405
+                Start-Sleep -Milliseconds 150
+                $gameplayDefaultsHash = Get-ClientFrameHash
+                if ($gameplayDefaultsHash -ne $gameplayInitialHash) {
+                    throw (
+                        'Gameplay Defaults did not restore the recovered values ' +
+                        "(initial=$($gameplayInitialHash.Substring(0, 12)) " +
+                        "defaults=$($gameplayDefaultsHash.Substring(0, 12)))."
+                    )
+                }
+                Send-DesignMouse 0x0202 490 450
+                Start-Sleep -Milliseconds 200
+
+                $gameplayHash = Test-FrontendDetailScreen `
+                    'Gameplay Options' 155 $optionsHoverHash `
+                    'frontend-gameplay-options-smoke.png'
+                $videoHash = Test-FrontendDetailScreen `
+                    'Video Options' 185 $gameplayHash
+                $audioHash = Test-FrontendDetailScreen `
+                    'Audio Options' 215 $videoHash
+                $redefineHash = Test-FrontendDetailScreen `
+                    'Redefine Keys' 245 $audioHash `
+                    'frontend-redefine-keys-hover-smoke.png' $true
+
+                Send-DesignMouse 0x0200 120 430
+                Start-Sleep -Milliseconds 100
+                $optionsBackHoverHash = Get-WindowFrameHash
+                if ($optionsBackHoverHash -eq $optionsHoverHash) {
+                    throw 'The retail Back helper did not enter its hovered state.'
+                }
+                Send-DesignMouse 0x0202 120 430
+                Start-Sleep -Milliseconds 350
+                $returnedMenuHash = Get-WindowFrameHash
+                if ($returnedMenuHash -eq $optionsBackHoverHash) {
+                    throw 'Retail action 86 did not return from Options.'
+                }
+
+                # Dispatch retail action 314, hover No, then return via action 86.
+                Send-DesignMouse 0x0200 320 440
+                Start-Sleep -Milliseconds 100
+                Send-DesignMouse 0x0202 320 440
+                Start-Sleep -Milliseconds 350
+                $quitHash = Get-WindowFrameHash
+                if ($quitHash -eq $returnedMenuHash) {
+                    throw (
+                        'Retail action 314 did not activate ' +
+                        'UI_FRONTEND_QUIT_PROMPT.'
+                    )
+                }
+                # The quit prompt clears to black and the helper bars are
+                # opaque at their centres, so this point is a stable,
+                # animation-independent proof of the OFF -> ON state change.
+                $quitNoOffPixel = Get-ClientDesignPixelArgb 120 420
+                Send-DesignMouse 0x0200 120 420
+                $hoverDeadline = [DateTime]::UtcNow.AddSeconds(1)
+                do {
+                    Start-Sleep -Milliseconds 80
+                    $quitNoOnPixel = Get-ClientDesignPixelArgb 120 420
+                    if ($quitNoOnPixel -ne $quitNoOffPixel) {
+                        break
+                    }
+                    # PostMessage is asynchronous. Re-post while a loaded
+                    # build host is late presenting the first hover frame.
+                    Send-DesignMouse 0x0200 120 420
+                } while ([DateTime]::UtcNow -lt $hoverDeadline)
+                $quitNoHoverHash = Get-WindowFrameHash
+                if (
+                    $quitNoOnPixel -eq $quitNoOffPixel -or
+                    $quitNoHoverHash -eq $quitHash
+                ) {
+                    throw 'The retail Quit No helper did not enter its hovered state.'
+                }
+
+                $subscreenBitmap =
+                    New-Object System.Drawing.Bitmap $width, $height
+                $subscreenGraphics =
+                    [System.Drawing.Graphics]::FromImage($subscreenBitmap)
+                try {
+                    $subscreenGraphics.CopyFromScreen(
+                        $bounds.Left,
+                        $bounds.Top,
+                        0,
+                        0,
+                        $subscreenBitmap.Size
+                    )
+                    $subscreenScreenshot = Join-Path (
+                        Split-Path -Parent $Executable
+                    ) 'frontend-quit-prompt-smoke.png'
+                    $subscreenBitmap.Save(
+                        $subscreenScreenshot,
+                        [System.Drawing.Imaging.ImageFormat]::Png
+                    )
+                } finally {
+                    $subscreenGraphics.Dispose()
+                    $subscreenBitmap.Dispose()
+                }
+
+                Send-DesignMouse 0x0202 120 420
+                Start-Sleep -Milliseconds 350
+                $quitReturnHash = Get-WindowFrameHash
+                if ($quitReturnHash -eq $quitNoHoverHash) {
+                    throw 'Quit No action 86 did not return to the main menu.'
+                }
+                $frameProof += (
+                    " options=$($optionsHash.Substring(0, 12))" +
+                    " option-hover=$($optionsHoverHash.Substring(0, 12))" +
+                    " gameplay=$($gameplayHash.Substring(0, 12))" +
+                    " controls=cancel-apply-defaults" +
+                    " video=$($videoHash.Substring(0, 12))" +
+                    " audio=$($audioHash.Substring(0, 12))" +
+                    " redefine=$($redefineHash.Substring(0, 12))" +
+                    " redefine-hover=state3" +
+                    " back-hover=$($optionsBackHoverHash.Substring(0, 12))" +
+                    " quit=$($quitHash.Substring(0, 12))" +
+                    " no-hover=$($quitNoHoverHash.Substring(0, 12))" +
+                    " subscreens=verified"
+                )
+
+                # Re-enter the prompt and validate action 296 last, because
+                # its retail meaning is to end the application.
+                Send-DesignMouse 0x0200 320 440
+                Start-Sleep -Milliseconds 100
+                Send-DesignMouse 0x0202 320 440
+                Start-Sleep -Milliseconds 250
+                Send-DesignMouse 0x0200 490 420
+                Start-Sleep -Milliseconds 100
+                Send-DesignMouse 0x0202 490 420
+                $quitViaRetailAction = $true
+            }
+        }
     }
 
-    if (-not $process.CloseMainWindow()) {
-        throw 'The visual checkpoint did not accept WM_CLOSE.'
+    if (-not $quitViaRetailAction) {
+        if (-not $process.CloseMainWindow()) {
+            throw 'The visual checkpoint did not accept WM_CLOSE.'
+        }
     }
     if (-not $process.WaitForExit($TimeoutSeconds * 1000)) {
-        throw 'The visual checkpoint did not exit after WM_CLOSE.'
+        $exitTrigger = if ($quitViaRetailAction) {
+            'retail Quit Yes action 296'
+        } else {
+            'WM_CLOSE'
+        }
+        throw "The visual checkpoint did not exit after $exitTrigger."
     }
     if ($process.ExitCode -ne 0) {
         throw "The visual checkpoint exited with code $($process.ExitCode)."
     }
 
+    if ($quitViaRetailAction) {
+        $frameProof += ' yes-action=296-exited'
+    }
+    if ($BuffJesus) {
+        $frameProof += ' text=buff-jesus'
+    }
     Write-Output (
         "VISUAL_WINDOW_SMOKE PASS title=$title" +
         "$frameProof$maximizedScaleProof movie=$Movie " +

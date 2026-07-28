@@ -1,268 +1,277 @@
 #include <cstddef>
 #include <cstdint>
+#include <memory>
 #include <utility>
 
-namespace
-{
-    template <typename T>
-    [[nodiscard]] inline T &OffsetRef(void *base, std::size_t offset)
-    {
-        return *reinterpret_cast<T *>(static_cast<std::byte *>(base) + offset);
-    }
+static_assert(sizeof(void*) == 4, "This reversal models a 32-bit stack frame.");
 
-    template <typename Ret, typename... Args>
-    [[nodiscard]] inline Ret CallVFunc(void *object, std::size_t byteOffset, Args... args)
-    {
-        auto **const vftable = *reinterpret_cast<void ***>(object);
-        auto *const fnSlot = reinterpret_cast<std::byte *>(vftable) + byteOffset;
-        auto *const fn = *reinterpret_cast<Ret(__thiscall **)(void *, Args...)>(fnSlot);
-        return fn(object, args...);
-    }
+struct CScriptBase;
+struct CScriptThing;
+struct CCharString;
+struct CBase;
+struct C3DClothPrimitive;
+struct CBaseIntelligentPointer;
+struct CScriptGameResourceObjectMovieBase;
+struct CScriptGameResourceObjectScriptedThingBase;
+struct CMemoryAllocatorVariableSize;
+struct CTCCarryable;
 
-    template <typename... Args>
-    inline void CallVFuncVoid(void *object, std::size_t byteOffset, Args... args)
-    {
-        auto **const vftable = *reinterpret_cast<void ***>(object);
-        auto *const fnSlot = reinterpret_cast<std::byte *>(vftable) + byteOffset;
-        auto *const fn = *reinterpret_cast<void(__thiscall **)(void *, Args...)>(fnSlot);
-        fn(object, args...);
-    }
-
-    template <typename T>
-    [[nodiscard]] inline std::uint8_t SUB41(T value, int)
-    {
-        return static_cast<std::uint8_t>(static_cast<std::uint32_t>(value));
-    }
-
-    using ParticleMorphPair = std::pair<EHeroMorphType, CParticleMorphs::CEntry>;
-
-    struct ScopedRefArea
-    {
-        void **ppuStack_28;
-        int *piStack_24;
-        int *piStack_20;
-    };
-    static_assert(offsetof(ScopedRefArea, ppuStack_28) == 0x0);
-    static_assert(offsetof(ScopedRefArea, piStack_24) == 0x4);
-    static_assert(offsetof(ScopedRefArea, piStack_20) == 0x8);
-
-    struct UStack30Area
-    {
-        std::uint32_t uStack_30;
-        int *piStack_2c;
-    };
-    static_assert(offsetof(UStack30Area, uStack_30) == 0x0);
-    static_assert(offsetof(UStack30Area, piStack_2c) == 0x4);
-
-    struct WalkArea
-    {
-        std::uintptr_t uStack_1c;
-        int iStack_18;
-    };
-    static_assert(offsetof(WalkArea, uStack_1c) == 0x0);
-    static_assert(offsetof(WalkArea, iStack_18) == 0x4);
-
-    struct IntelligentPointerArea
-    {
-        void **ppuStack_14;
-        std::uint32_t uStack_c;
-        std::uint32_t uStack_8;
-    };
-    static_assert(offsetof(IntelligentPointerArea, ppuStack_14) == 0x0);
-    static_assert(offsetof(IntelligentPointerArea, uStack_c) == 0x4);
-    static_assert(offsetof(IntelligentPointerArea, uStack_8) == 0x8);
-
-    struct ScriptedThingStackArea
-    {
-        std::byte bytes[0x10];
-    };
-    static_assert(sizeof(ScriptedThingStackArea) == 0x10);
-
-    struct ConsValStackArea
-    {
-        std::byte bytes[sizeof(ParticleMorphPair)];
-    };
-    static_assert(sizeof(ConsValStackArea) == sizeof(ParticleMorphPair));
+namespace CFileInstaller {
+struct CActiveFile;
 }
 
-void __fastcall Script_MakeThingsSpeakNumbered(CScriptBase *param_1)
-{
-    char cVar1;
-    bool bVar2;
-    int iVar3;
-    ParticleMorphPair *ppVar4;
-    CScriptThing *pCVar5;
-    std::uintptr_t uVar6;
-    CMemoryAllocatorVariableSize *this_;
-    ParticleMorphPair *extraout_EDX;
-    ParticleMorphPair *extraout_EDX_00;
-    std::uint32_t unaff_EDI;
-    char *pcVar7;
-    CCharString *pCVar8;
-    CCharString *pCVar9;
-    std::uint8_t uVar10;
-    UStack30Area uStack30Area{};
-    ScopedRefArea scopedRef{};
-    WalkArea walk{};
-    IntelligentPointerArea intelligentPointer{};
-    ScriptedThingStackArea aCStack_10{};
-    ConsValStackArea stack0xffffffc8{};
+enum EHeroMorphType : int;
+struct CParticleMorphs {
+    struct CEntry;
+};
 
-    void *const scriptContext = OffsetRef<void *>(param_1, 0x40);
+using ParticleMorphPair = std::pair<EHeroMorphType, CParticleMorphs::CEntry>;
+using ParticleMorphPairAllocator = std::allocator<ParticleMorphPair>;
 
-    iVar3 = CallVFunc<int>(scriptContext, 0x118);
-    scopedRef.ppuStack_28 = reinterpret_cast<void **>(&PTR__scalar_deleting_destructor__01238c8c);
-    scopedRef.piStack_24 = *reinterpret_cast<int **>(iVar3 + 4);
-    scopedRef.piStack_20 = *reinterpret_cast<int **>(iVar3 + 8);
-    if (scopedRef.piStack_20 != nullptr) {
-        *scopedRef.piStack_20 = *scopedRef.piStack_20 + 1;
+extern bool CScriptBase::IsActiveThreadTerminating(CScriptBase*);
+
+extern void List_Node_Initialize(int, int);
+extern void LTextTreeWalkThrough_dtor();
+extern void LTextTreeWalkThrough_Cleanup();
+
+extern void C3DClothPrimitive::~C3DClothPrimitive(C3DClothPrimitive*);
+extern void CBaseIntelligentPointer::CBaseIntelligentPointer(CBaseIntelligentPointer*);
+extern void CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase(CScriptGameResourceObjectMovieBase*);
+extern void CTCCarryable::OnKill(CTCCarryable*);
+extern void CFileInstaller::CActiveFile::OnReadFinished(CFileInstaller::CActiveFile*);
+extern std::uint32_t CMemoryAllocatorVariableSize::GetNoAllocatedAreas(CMemoryAllocatorVariableSize*);
+extern ParticleMorphPair* GFIntToCharString_API();
+extern void StdConsVal_ParticleMorphPair(
+    ParticleMorphPairAllocator* dst,
+    ParticleMorphPair* extraout_edx,
+    const ParticleMorphPair* value);
+extern void operator_delete(void*);
+extern void NHeroInformationScreens::CBase::CBase(CBase*);
+
+extern bool CScriptThing::_IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ(CScriptThing*);
+extern void CScriptGameResourceObjectScriptedThingBase::_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z(
+    CScriptGameResourceObjectScriptedThingBase*,
+    CScriptThing*,
+    char*,
+    CCharString*,
+    CCharString*,
+    CCharString*,
+    bool,
+    bool);
+
+extern ParticleMorphPair* GFIntToCharString_API_WithExtraoutEDX(ParticleMorphPair** extraout_edx);
+extern ParticleMorphPair* Object40_VFuncA3C_WithExtraoutEDX(
+    void* object_40,
+    int** piStack_2c,
+    int zero,
+    ParticleMorphPair** extraout_edx);
+
+template <typename T>
+static T VCall(void* object, std::size_t byte_offset) {
+    return reinterpret_cast<T>((*reinterpret_cast<void***>(object))[byte_offset / 4]);
+}
+
+struct ScriptBaseOverlay {
+    std::byte pad_00[0x40];
+    void* object_40;
+};
+static_assert(offsetof(ScriptBaseOverlay, object_40) == 0x40);
+
+struct Acquire118ResultOverlay {
+    void* unk_00;
+    int* ptr_04;
+    int* ref_08;
+};
+static_assert(offsetof(Acquire118ResultOverlay, ptr_04) == 0x04);
+static_assert(offsetof(Acquire118ResultOverlay, ref_08) == 0x08);
+
+struct SpeakTaskLocal {
+    std::byte storage[4];
+};
+static_assert(sizeof(SpeakTaskLocal) == 4);
+
+struct FunctionStackOverlay {
+    ParticleMorphPairAllocator cons_val_slot_c8;
+    std::uint32_t uStack_30;
+    int* piStack_2c;
+    void* ppuStack_28;
+    int* piStack_24;
+    int* piStack_20;
+    std::uint32_t uStack_1c;
+    int iStack_18;
+    void* ppuStack_14;
+    SpeakTaskLocal aCStack_10;
+    std::uint32_t uStack_c;
+    std::uint32_t uStack_8;
+};
+static_assert(offsetof(FunctionStackOverlay, cons_val_slot_c8) == 0x00);
+static_assert(offsetof(FunctionStackOverlay, uStack_30) == 0x04);
+static_assert(offsetof(FunctionStackOverlay, piStack_2c) == 0x08);
+static_assert(offsetof(FunctionStackOverlay, ppuStack_28) == 0x0C);
+static_assert(offsetof(FunctionStackOverlay, piStack_24) == 0x10);
+static_assert(offsetof(FunctionStackOverlay, piStack_20) == 0x14);
+static_assert(offsetof(FunctionStackOverlay, uStack_1c) == 0x18);
+static_assert(offsetof(FunctionStackOverlay, iStack_18) == 0x1C);
+static_assert(offsetof(FunctionStackOverlay, ppuStack_14) == 0x20);
+static_assert(offsetof(FunctionStackOverlay, aCStack_10) == 0x24);
+static_assert(offsetof(FunctionStackOverlay, uStack_c) == 0x28);
+static_assert(offsetof(FunctionStackOverlay, uStack_8) == 0x2C);
+
+void __fastcall Script_MakeThingsSpeakNumbered(CScriptBase* param_1) {
+    FunctionStackOverlay frame{};
+    auto* const object_40 = reinterpret_cast<ScriptBaseOverlay*>(param_1)->object_40;
+
+    using Fn118NoArgs = std::intptr_t(__thiscall*)(void*);
+    const auto iVar3 = VCall<Fn118NoArgs>(object_40, 0x118)(object_40);
+
+    frame.ppuStack_28 = reinterpret_cast<void*>(0x01238C8C);
+    frame.piStack_24 = reinterpret_cast<Acquire118ResultOverlay*>(iVar3)->ptr_04;
+    frame.piStack_20 = reinterpret_cast<Acquire118ResultOverlay*>(iVar3)->ref_08;
+
+    if (frame.piStack_20 != nullptr) {
+        *frame.piStack_20 = *frame.piStack_20 + 1;
     }
 
-    if ((scopedRef.piStack_24 != nullptr) &&
-        ((cVar1 = CallVFunc<char>(scopedRef.piStack_24, 300)), cVar1 != '\0')) {
-        bVar2 = CScriptBase::IsActiveThreadTerminating(param_1);
-        if (bVar2) {
+    if (frame.piStack_24 != nullptr) {
+        using Fn300 = char(__thiscall*)(int*);
+        if (VCall<Fn300>(frame.piStack_24, 300)(frame.piStack_24) != '\0') {
+            if (CScriptBase::IsActiveThreadTerminating(param_1)) {
 LAB_00EE93A8:
-            C3DClothPrimitive::~C3DClothPrimitive(reinterpret_cast<C3DClothPrimitive *>(&scopedRef));
-            return;
-        }
-
-        List_Node_Initialize(
-            reinterpret_cast<int>(&uStack30Area.uStack_30) + 3,
-            reinterpret_cast<int>(&uStack30Area.uStack_30) + 2);
-
-        CallVFuncVoid(scriptContext, 0x950, &walk.uStack_1c);
-        if (walk.iStack_18 != 0) {
-            bVar2 = CScriptBase::IsActiveThreadTerminating(param_1);
-            if (bVar2) {
-                LTextTreeWalkThrough_dtor();
-                C3DClothPrimitive::~C3DClothPrimitive(reinterpret_cast<C3DClothPrimitive *>(&scopedRef));
+                C3DClothPrimitive::~C3DClothPrimitive(
+                    reinterpret_cast<C3DClothPrimitive*>(&frame.ppuStack_28));
                 return;
             }
 
-            CallVFuncVoid(scriptContext, 0x5CC, 1);
+            List_Node_Initialize(
+                static_cast<int>(reinterpret_cast<std::uintptr_t>(&frame.uStack_30) + 3),
+                static_cast<int>(reinterpret_cast<std::uintptr_t>(&frame.uStack_30) + 2));
 
-            CBaseIntelligentPointer::CBaseIntelligentPointer(
-                reinterpret_cast<CBaseIntelligentPointer *>(&intelligentPointer));
-            intelligentPointer.ppuStack_14 =
-                reinterpret_cast<void **>(&PTR__scalar_deleting_destructor__0127094c);
-            intelligentPointer.uStack_c = 0;
-            intelligentPointer.uStack_8 = 0;
+            using Fn950 = void(__thiscall*)(void*, void*);
+            VCall<Fn950>(object_40, 0x950)(object_40, &frame.uStack_1c);
 
-            CallVFuncVoid(scriptContext, 0x20, &uStack30Area.piStack_2c, &intelligentPointer, 4);
+            if (frame.iStack_18 != 0) {
+                if (CScriptBase::IsActiveThreadTerminating(param_1)) {
+                    LTextTreeWalkThrough_dtor();
+                    C3DClothPrimitive::~C3DClothPrimitive(
+                        reinterpret_cast<C3DClothPrimitive*>(&frame.ppuStack_28));
+                    return;
+                }
 
-            uVar6 = *reinterpret_cast<std::uintptr_t *>(walk.uStack_1c + 8);
-            if (uVar6 != walk.uStack_1c) {
-                do {
-                    bVar2 = CScriptBase::IsActiveThreadTerminating(param_1);
-                    if (bVar2) {
-                        goto LAB_00EE9391;
-                    }
+                using Fn5CC = void(__thiscall*)(void*, int);
+                VCall<Fn5CC>(object_40, 0x5CC)(object_40, 1);
 
-                    uVar10 = 1;
-                    pCVar9 = nullptr;
-                    ppVar4 = reinterpret_cast<ParticleMorphPair *>(GFIntToCharString_API());
+                CBaseIntelligentPointer::CBaseIntelligentPointer(
+                    reinterpret_cast<CBaseIntelligentPointer*>(&frame.ppuStack_14));
+                frame.ppuStack_14 = reinterpret_cast<void*>(0x0127094C);
+                frame.uStack_c = 0;
+                frame.uStack_8 = 0;
 
-                    CallVFuncVoid(scriptContext, 0x1C4);
+                using Fn020 = void(__thiscall*)(void*, int**, void*, int);
+                VCall<Fn020>(object_40, 0x20)(object_40, &frame.piStack_2c, &frame.ppuStack_14, 4);
 
-                    std::_Cons_val<
-                        std::allocator<ParticleMorphPair>,
-                        ParticleMorphPair,
-                        const ParticleMorphPair &
-                    >(
-                        reinterpret_cast<std::allocator<ParticleMorphPair> *>(&stack0xffffffc8),
-                        extraout_EDX,
-                        ppVar4);
-
-                    pCVar8 = nullptr;
-                    pcVar7 = reinterpret_cast<char *>(1);
-
-                    pCVar5 = reinterpret_cast<CScriptThing *>(
-                        CallVFunc<void *>(
-                            scriptContext,
-                            0x118,
-                            *reinterpret_cast<std::uint32_t *>(uVar6 + 0x10),
-                            0,
-                            0));
-
-                    CScriptGameResourceObjectScriptedThingBase::
-                    _Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z(
-                        reinterpret_cast<CScriptGameResourceObjectScriptedThingBase *>(&aCStack_10),
-                        pCVar5,
-                        pcVar7,
-                        pCVar8,
-                        reinterpret_cast<CCharString *>(ppVar4),
-                        pCVar9,
-                        static_cast<bool>(uVar10),
-                        SUB41(unaff_EDI, 0));
-
-                    bVar2 =
-                        CScriptThing::_IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ(
-                            reinterpret_cast<CScriptThing *>(&aCStack_10));
-                    if (bVar2) {
-                        do {
-                            CallVFuncVoid(scriptContext, 0x1C);
-                            bVar2 = CScriptBase::IsActiveThreadTerminating(param_1);
-                            if (bVar2) {
-                                goto LAB_00EE9391;
-                            }
-                            bVar2 =
-                                CScriptThing::_IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ(
-                                    reinterpret_cast<CScriptThing *>(&aCStack_10));
-                        } while (bVar2);
-                    }
-
-                    bVar2 = CScriptBase::IsActiveThreadTerminating(param_1);
-                    if (bVar2) {
-                        goto LAB_00EE9391;
-                    }
-
-                    this_ = reinterpret_cast<CMemoryAllocatorVariableSize *>(uVar6);
-                    uVar6 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this_);
-                } while (uVar6 != walk.uStack_1c);
-            }
-
-            bVar2 = CScriptBase::IsActiveThreadTerminating(param_1);
-            if (bVar2) {
+                std::uint32_t uVar6 = *reinterpret_cast<std::uint32_t*>(frame.uStack_1c + 8);
+                if (uVar6 != frame.uStack_1c) {
+                    do {
+                        if (CScriptBase::IsActiveThreadTerminating(param_1)) {
 LAB_00EE9391:
+                            CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase(
+                                reinterpret_cast<CScriptGameResourceObjectMovieBase*>(&frame.aCStack_10));
+                            CTCCarryable::OnKill(reinterpret_cast<CTCCarryable*>(&frame.uStack_1c));
+                            CFileInstaller::CActiveFile::OnReadFinished(
+                                reinterpret_cast<CFileInstaller::CActiveFile*>(&frame.uStack_1c));
+                            goto LAB_00EE93A8;
+                        }
+
+                        std::uint32_t iVar3_vftable = **reinterpret_cast<std::uint32_t**>(object_40);
+
+                        ParticleMorphPair* extraout_EDX = nullptr;
+                        ParticleMorphPair* const ppVar4 =
+                            GFIntToCharString_API_WithExtraoutEDX(&extraout_EDX);
+
+                        reinterpret_cast<void(__thiscall*)(void*)>(
+                            *reinterpret_cast<void**>(iVar3_vftable + 0x1C4))(object_40);
+
+                        StdConsVal_ParticleMorphPair(&frame.cons_val_slot_c8, extraout_EDX, ppVar4);
+
+                        using Fn118WithArgs = CScriptThing*(__thiscall*)(void*, std::uint32_t, int, int);
+                        CScriptThing* const pCVar5 =
+                            VCall<Fn118WithArgs>(object_40, 0x118)(
+                                object_40,
+                                *reinterpret_cast<std::uint32_t*>(uVar6 + 0x10),
+                                0,
+                                0);
+
+                        CCharString* const pCVar8 = nullptr;
+                        CCharString* const pCVar9 = nullptr;
+                        char* const pcVar7 = reinterpret_cast<char*>(1);
+                        const bool uVar10 = true;
+                        std::uint32_t unaff_EDI;
+                        CScriptGameResourceObjectScriptedThingBase::_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z(
+                            reinterpret_cast<CScriptGameResourceObjectScriptedThingBase*>(&frame.aCStack_10),
+                            pCVar5,
+                            pcVar7,
+                            pCVar8,
+                            reinterpret_cast<CCharString*>(ppVar4),
+                            pCVar9,
+                            uVar10,
+                            static_cast<bool>(static_cast<std::uint8_t>(unaff_EDI)));
+
+                        if (CScriptThing::_IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ(
+                                reinterpret_cast<CScriptThing*>(&frame.aCStack_10))) {
+                            do {
+                                using Fn01C = void(__thiscall*)(void*);
+                                VCall<Fn01C>(object_40, 0x1C)(object_40);
+
+                                if (CScriptBase::IsActiveThreadTerminating(param_1)) {
+                                    goto LAB_00EE9391;
+                                }
+                            } while (CScriptThing::_IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ(
+                                reinterpret_cast<CScriptThing*>(&frame.aCStack_10)));
+                        }
+
+                        if (CScriptBase::IsActiveThreadTerminating(param_1)) {
+                            goto LAB_00EE9391;
+                        }
+
+                        CMemoryAllocatorVariableSize* const this_ =
+                            reinterpret_cast<CMemoryAllocatorVariableSize*>(uVar6);
+                        uVar6 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this_);
+                    } while (uVar6 != frame.uStack_1c);
+                }
+
+                if (CScriptBase::IsActiveThreadTerminating(param_1)) {
+                    goto LAB_00EE9391;
+                }
+
+                VCall<Fn5CC>(object_40, 0x5CC)(object_40, 0);
                 CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase(
-                    reinterpret_cast<CScriptGameResourceObjectMovieBase *>(&aCStack_10));
-                CTCCarryable::OnKill(reinterpret_cast<CTCCarryable *>(&walk.uStack_1c));
-                CFileInstaller::CActiveFile::OnReadFinished(
-                    reinterpret_cast<CFileInstaller::CActiveFile *>(&walk.uStack_1c));
-                goto LAB_00EE93A8;
+                    reinterpret_cast<CScriptGameResourceObjectMovieBase*>(&frame.aCStack_10));
             }
 
-            CallVFuncVoid(scriptContext, 0x5CC, 0);
-            CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase(
-                reinterpret_cast<CScriptGameResourceObjectMovieBase *>(&aCStack_10));
+            LTextTreeWalkThrough_Cleanup();
         }
-
-        LTextTreeWalkThrough_Cleanup();
     }
 
-    iVar3 = *reinterpret_cast<int *>(scriptContext);
-    ppVar4 = reinterpret_cast<ParticleMorphPair *>(
-        CallVFunc<void *>(scriptContext, 0xA3C, &uStack30Area.piStack_2c, 0));
+    frame.piStack_2c = nullptr;
 
-    CallVFuncVoid(scriptContext, 0x464);
+    ParticleMorphPair* extraout_EDX_00 = nullptr;
+    ParticleMorphPair* const ppVar4 =
+        Object40_VFuncA3C_WithExtraoutEDX(object_40, &frame.piStack_2c, 0, &extraout_EDX_00);
 
-    std::_Cons_val<
-        std::allocator<ParticleMorphPair>,
-        ParticleMorphPair,
-        const ParticleMorphPair &
-    >(
-        reinterpret_cast<std::allocator<ParticleMorphPair> *>(&stack0xffffffc8),
-        extraout_EDX_00,
-        ppVar4);
+    using Fn464 = void(__thiscall*)(void*);
+    VCall<Fn464>(object_40, 0x464)(object_40);
 
-    if ((uStack30Area.piStack_2c != nullptr) &&
-        (*uStack30Area.piStack_2c = *uStack30Area.piStack_2c + -1, *uStack30Area.piStack_2c == 0)) {
-        (*reinterpret_cast<void (**)()>(uStack30Area.piStack_2c + 1))();
-        operator_delete(uStack30Area.piStack_2c);
+    StdConsVal_ParticleMorphPair(&frame.cons_val_slot_c8, extraout_EDX_00, ppVar4);
+
+    if (frame.piStack_2c != nullptr) {
+        *frame.piStack_2c = *frame.piStack_2c + -1;
+        if (*frame.piStack_2c == 0) {
+            reinterpret_cast<void(__thiscall*)(int*)>(frame.piStack_2c[1])(frame.piStack_2c);
+            operator_delete(frame.piStack_2c);
+        }
     }
 
-    uStack30Area.uStack_30 = 0;
-    uStack30Area.piStack_2c = nullptr;
-    NHeroInformationScreens::CBase::CBase(reinterpret_cast<CBase *>(&uStack30Area));
+    frame.uStack_30 = 0;
+    frame.piStack_2c = nullptr;
+    NHeroInformationScreens::CBase::CBase(reinterpret_cast<CBase*>(&frame.uStack_30));
 }

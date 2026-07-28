@@ -1,22 +1,185 @@
-# Active task list — decomp, custom quests, and downstream tools
+# Active task list — decomp, frontend parity, and downstream tools
 
-*Refreshed 2026-07-25 from the canonical organized-tree build.*
+*Refreshed 2026-07-27 from the canonical rebuild and visual parity gates.*
 
 ## Current verified state
 
-- Curated reconstruction: **1,850 / 1,850** VC7.1 compile + behavior PASS.
-- Retail parity: **1,523** (`914 EXACT + 609 RELOCATION_MATCH`), with
-  `199 DIFFER` and `128 ORACLE_MISSING`.
-- Auto-RE intake: **573 generated / 565 structural PASS**; semantic quarantine: **115**.
+- Curated reconstruction: **5,051 / 5,051** VC7.1 compile + behavior PASS.
+- Whole-project verified functional or matching C++: **4,736 / 49,568**
+  (**9.55%**), including **2,705 byte-identical** functions (**5.46%**).
+- Candidate retail parity: **4,718**
+  (`2,689 EXACT + 2,029 RELOCATION_MATCH`), with `205 DIFFER` and
+  `128 ORACLE_MISSING`; the whole-project totals additionally include 18
+  independently lifted matching/functional functions.
+- Auto-RE intake: **803 generated / 787 structural PASS**.
 - Durable source/tests are address-sharded and indexed by `rebuild/ARTIFACT_INDEX.tsv`.
 - Custom quest assets are staged offline: nine card defs, 36 custom English strings,
   and one childhood mysterious-NPC TNG addition. Nothing has been deployed to the live game.
+- The Release visual checkpoint, retail `frontend.bin` layout oracle, and complete
+  Options/Redefine/Quit interaction smoke pass. The scheduled auto-RE queue is
+  exhausted apart from five cooldown-deferred hard targets and will retry them
+  automatically.
 
 Generated queues:
 
 - `rebuild/backlog/promotion_queue.tsv` — ranked uncompiled candidates with semantic hazards.
 - `rebuild/backlog/forgefse-binding-queue.tsv` — current binding reconstruction lane.
 - `rebuild/backlog/functions.tsv` — canonical reconstruction gaps.
+
+## P0 — frontend runtime and pixel parity
+
+Completed in the current checkpoint:
+
+1. Retail `frontend.bin` now gates the compiled list origins, row steps, child
+   order, actions, table offsets, title rules, fonts, and Redefine mouse areas
+   used by the Python sheet builders.
+2. `CTable::Draw @ 0x00550DC0` ordinary/true transform propagation and generated
+   child positioning are promoted into VC7.1 runtime code and behavior tests.
+   Main-menu, Options, and Redefine hit regions use that transform chain.
+3. Screen headers resolve to the full 640-pixel title-rule center. Their table
+   now uses the exact `UI_TABLE_TITLE_WHOLE` mapping: all three horizontal
+   roles reference `UI_TEXTBOX_MIDDLE` (#122), producing one continuous retail
+   gold-edged/blue-filled rule instead of substituted selected-button pieces.
+   The build still prefers the pristine installed `frontend.big`.
+4. Plain `--buff-jesus` includes the three retail boot movies; the explicit
+   `--skip-boot-videos` developer override and retail/BuffJesus smokes pass.
+5. The horizontal/vertical `CTable` line geometry is promoted from retail and
+   the PDB-backed FableWin donor: primary placement, axis-specific zoom/repeat
+   count, resource-key filtering, cursor advancement, and truncated-output
+   accounting have VC7.1 behavior coverage. The installed-retail font test also
+   proves the Redefine key-label alpha centre equals its right-slot alpha centre.
+6. `CKeyRedefiner` is no longer hover-only in the live checkpoint. PDB-backed
+   vtable/body parity identifies `OnLeftClicked @ 0x00557850`,
+   `OnLeftUnclicked @ 0x00557AF0`, `ChangeState @ 0x00557C10`, and corrects
+   `OnUnhovered @ 0x00557880`. Clicking a row enters the yellow retail
+   `PRESS CONTROL` state; keyboard/three-button mouse capture, Escape
+   cancellation, duplicate clearing, and Apply/Cancel snapshots are exercised
+   by both retail-text and BuffJesus live smokes. Movement action 60 now
+   follows `CRedefinerList::RefreshScriptThings @ 0x00556A40`: it expands into
+   four W/S/A/D Forward/Back/Left/Right children before the remaining actions,
+   rather than occupying one composite display row. Reset actions 284/311 now
+   switch those children between arrows and WASD, and both reset controls use
+   their complete centered retail ON tables on hover.
+7. The exact high-level `ConstructSpritesToDraw` event order is now promoted:
+   corners 0/1/2/3, horizontal top/interior/bottom using 4+9, 4+12, 5+8,
+   then vertical left/interior/right using 6+10, 6+12, 7+11. Missing optional
+   tee/cross components remain null, and missing primary edge components
+   suppress their entire separator family. A VC7.1 fixture covers the full
+   route, sparse maps, offsets, repeat counts, and truncated output.
+8. The exact `ConstructSpritesToDraw` coordinate slice is promoted from retail
+   x87 instructions and cross-checked against Ego R: tiled width/height are
+   inner extents, corner sizes move the four edge cursors, normalized separator
+   tile indices reconstruct interior positions, and repeat/resource offsets
+   truncate exactly like retail. Bounded VC7.1 fixtures cover corner anchors,
+   line starts, interior rows/columns, and logical generated-child counts.
+   The live title rule now uses that inner-span-plus-corners composition before
+   the 640-pixel retail viewport clips it.
+9. `CList::SetSelectedChild @ 0x005360B1` is promoted from retail and both PDB
+   donors. It stores every requested index, leaves visible/invalid selections
+   stationary, finds the first contiguous visible window, and emits the exact
+   signed 25-pixel-per-row correction for a valid selection outside that
+   window. VC7.1 coverage includes above/below, visible, and invalid requests.
+10. Frontend lists are proven not to add a hidden centering offset:
+    `CFrontEndList::InitialiseOffsets @ 0x0054C480` ignores child count, writes
+    interpolation scalar `1.0`, and applies `(0,0)`. Retail, Ego R, and
+    FableWin bodies agree, and the VC7.1 fixture locks the override.
+11. Frontend list navigation is promoted from retail
+    `ScrollUp @ 0x0054C4C0` / `ScrollDown @ 0x0054C810` and cross-checked
+    against both PDB donors. Zero/singleton lists and stop-at-end boundaries
+    request the invalid action; successful moves wrap when allowed, transition
+    the old/new children through states 4/3, rotate row positions by exactly
+    `+30`/`-30` pixels, and recompute the optional distance alpha falloff with
+    the retail x87 truncation. VC7.1 coverage includes rejection, wrap, state,
+    motion, and bounded alpha output.
+12. Generic `CList::InitialiseOffsets @ 0x00536B4F` and
+    `DoRecomputeOffsets @ 0x0053C332` are promoted and cross-checked against
+    Ego R/FableWin. Odd/even centre selection, initial x/y displacement,
+    optional zero-origin behavior, states 0/1/4/5/6 position writes, states
+    1/4/5 alpha writes, centre reflection, and bounded child output now have
+    VC7.1 coverage. The fixture deliberately locks the stored-float alpha
+    residue (`126,191,255,191,127`) rather than a symmetric rounded ideal.
+
+Next work, in order:
+
+1. Finish `CTable::ConstructSpritesToDraw @ 0x00551EA0`: replace the promoted
+   pure planners with real component cloning, `CCountedPointer` increment/
+   release behavior, state-map writes, and the final generated-child vector.
+   Corner placement, edge cursors, and logical child counts are now covered.
+   The exact line-builder addresses
+   are now correctly named `ConstructHorizontalLine @ 0x005518E0` and
+   `ConstructVerticalLine @ 0x00551BC0` in Ghidra.
+2. Continue `CList` keyboard/controller navigation by replacing the pure
+   planners with real `CUIState` map writes and the scrolling-state vector.
+   `SetSelectedChild`, both initial-offset variants, `DoRecomputeOffsets`, and
+   frontend `ScrollUp/ScrollDown` decisions are covered. Next promote
+   disabled-child handling, the per-child state rotation, and timed selection
+   animation into the live renderer.
+3. Extend `CKeyRedefiner` beyond the first visible page: decode the full action
+   list, retail `IsRedefinableKey` filtering, action-pair coexistence table, and
+   profile persistence rather than keeping the compact key-name atlas as the
+   final renderer.
+4. Replace remaining detail-screen/helper constants with decoded definition
+   records, then gate every runtime hitbox against those same records.
+5. Move from precomposed 640×480 sheets toward live retail component rendering:
+   sprite tables, text components, state transitions, alpha/color inheritance,
+   and UI scaling should be emitted through the recovered Render2D path.
+6. Capture retail and reconstructed frames at identical states and add
+   alpha-aware image diffs for text baselines, highlight centers, title rules,
+   helper buttons, and 4:3/aspect-fit scaling.
+7. Continue the runnable boundary through the remaining GFMain Phase 3 calls
+   while keeping the frontend checkpoint available as a fast visual gate.
+
+Acceptance: decoded layout values and runtime hit regions share one oracle;
+headers and row text are centered by recovered transforms/metrics; every visible
+state has a deterministic screenshot gate; and the authored checkpoint clearly
+distinguishes exact retail data from still-approximate runtime behavior.
+
+## P0 — particles, RSA lighting, sky, and shadows
+
+The viewer-parity lane is now grounded in retail asset and runtime evidence:
+
+1. `tools/report_particle_rendering.py` joins selected `effects.big` emitters
+   to `textures.big` descriptors, preserving exact component path, real versus
+   allocated dimensions, UV crop, aspect, crossed-sprite count/angles,
+   orientation inputs, colours, decoded PDB sprite flags, and exact normal-pass
+   D3D9 blend state.
+2. The candle-flame defect has a concrete contract: texture 4422 is 32x64,
+   the quad aspect is 2.0, and two crossed planes are emitted at base-angle
+   offsets 0.125/0.375 turns. The planes are not animation frames.
+3. `tools/report_environment_lookup.py` samples the installed 190x21
+   `lighting_colours.tga` with the retail `(byte + 0.5) / 255` conversion.
+   All rows, including diffuse/ambient/backlight and sky/cloud gradients, are
+   decoded from the live `ENVIRONMENT` definition.
+4. `docs/PARTICLE_LIGHTING_VIEWER_HANDOFF.md` records the two sprite paths,
+   ten-quad batching, padded-texture UV behavior, environment columns,
+   lighting SIMD layout, layered sky inputs, and shadow-fade triple.
+5. `EEngineSpriteFlag` is recovered through the Ego R PDB. Zero is centered
+   `2D_FACE_ME`; the `3D_FACE_ME`, alignment, rotation, lighting, modulation,
+   and Z-buffer bits are now decoded in every generated effect report.
+6. The batched sprite normal-pass blend tuples are recovered: additive is
+   `ONE/ONE`, add-smooth is `ONE/INVSRCCOLOR`, and ordinary alpha is
+   `SRCALPHA/INVSRCALPHA`; ADD/SUB/REVSUB blend-op state is also exact.
+7. `tools/dump_shader_asm.py` extracts the original shader-model 1.1 token
+   streams from `shaders.big` and disassembles them with payload hashes.
+   Billboard, crossed, 3D-face-me, stipple, displacement, and ordinary sprite
+   shaders are dumped in `work/particle_shaders.asm`.
+8. The outer- and inner-sky shader programs are dumped in
+   `work/sky_shaders.asm`. The exact two-texture/gradient-alpha outer blend and
+   four-texture, two-layer inner/cloud composition are now documented.
+
+Next work, in order:
+
+1. Map names onto every now-disassembled particle shader constant register and
+   recover the separate RSA mesh-normal formula.
+2. Recover the signed blend-op shader behavior and the special depth/pass
+   overrides around the now-exact normal colour pass.
+3. Attach semantic names to the inner-sky/cloud constant registers and trace
+   each texture stage back to its upper/lower theme field; the GPU composition
+   itself is now exact.
+4. Promote shadow buffer allocation, depth packing, transforms, and scene
+   eligibility into a small documented renderer contract/test fixture.
+5. Add effect-specific golden reports for flame, statue waterfall, smoke, and
+   self-illuminated particles, then compare viewer captures by camera angle.
 
 ## P0 — review the current Quest-wrapper tail
 
