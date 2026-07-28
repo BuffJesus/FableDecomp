@@ -4,8 +4,8 @@ Compares ForgeFSE's `pVTable[N]` assignments with the retail CGSI slot map and t
 current owner-aligned overlay recommendation. A match validates the entry address/slot;
 it does not by itself approve the hook or prove wrapper behavior.
 
-- Quest recommendations audited: 452
-- Exact slot/address matches: 452
+- Quest recommendations audited: 454
+- Exact slot/address matches: 454
 - Address mismatches: 0
 - Missing assignment families: 0
 

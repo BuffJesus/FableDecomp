@@ -41,11 +41,28 @@ at its retail `+256` child offset, and embeds them in the executable.
 The authored project image remains a dependency-safe fallback. This is the
 first genuine game-derived title frame in the reconstructed process. An authored
 D3D9 bridge uploads the backdrop and alpha title as managed textures and places
-the title at the decoded UI parent coordinate `(70,30)`. The build also
+the title at the decoded UI parent coordinate `(70,30)`. The 640x480 frontend
+view is stretched independently over the client width and height, as observed
+in the retail 1280x720 reference; the artwork's own dark edges remain intact.
+The build also
 resolves the press-start widget's `CDefString` font reference to
 `ENG_ARIAL_24`, decodes that font's embedded retail TGA atlas and glyph
 metrics from fonts.big, and draws the localized line centered at its decoded
-`(320,240)` coordinate. Four retail-shaped triangle
+`(320,240)` coordinate at the retail two-thirds glyph scale with its dark edge.
+The legal widget now uses the PC streaming-font
+metadata and shared 25.9 MB `GlyphData`: its packed Unicode lookup, LZO metric
+chunks, and 32x32/64x64 alpha blocks render all 144 localized characters,
+including the retail copyright symbol, in a 420-pixel wrapped block centered
+at `(320,340)`. ASCII retains the static atlas's retail advances while the
+streaming bank supplies Unicode fallback, giving the reference three-line
+wrap. PBGRA title composition is unpremultiplied before straight-alpha D3D9
+blending. The default backdrop now decodes and stitches all 42 retail
+forest/sunbeam tiles into four-frame and three-frame D3D texture sheets.
+The press-start root's graphic-362 `MOUSE_POINTER_SPRITE_FE` is decoded into
+the active 32x32 cursor with its retail top-left hotspot.
+Non-repeating randomized choices crossfade with the widget tree's decoded
+8/8/8/2-second forest and 2-second sunbeam durations underneath the title and
+text; a changing frame-hash smoke gates the live animation. Retail-shaped triangle
 records pass through the recovered Render2D batch planner, whose triangle-list
 flush is executed on a real Win32 D3D9 device; GDI is retained only as a
 failure fallback. Texture binding now executes the exact recovered 79-byte
@@ -72,6 +89,42 @@ exact 121-byte `RestoreCaptureBlock` closes the compact capture sentinel.
 Remaining dispatch is still authored rather than the
 complete
 Lionhead coordinator, runtime archive loader, or game loop.
+
+The authored checkpoint now continues through the first retail frontend
+interaction. Left-button release follows
+`UI_FRONTEND_BUTTON_INVISIBLE`'s compiled action 229 into
+`UI_FRONTEND_MAIN_MENU`. That root replaces the forest layers with the decoded
+four-frame/three-sunbeam coastal animation while retaining the retail title.
+Its seven `ENG_ARIAL_24` rows, exact y offsets, 400/280-pixel button widths,
+and `TS_BUTTON_L/M/R` selection ornaments come from frontend.bin and
+frontend.big. Mouse motion maps back to the 640x480 design view and moves the
+selection through all seven compiled hit regions. The `-VerifyMainMenu` smoke
+gates press-start-to-menu and Continue-to-Quit hover as three distinct hashes.
+
+Options and Quit now continue beyond hover. Recovered
+`CFrontEndManager::Action` mappings route action 297 to
+`UI_FRONTEND_OPTIONS_SUB_MENU` and action 314 to
+`UI_FRONTEND_QUIT_PROMPT`. Options uses its exact four-row list, forest
+background, title/rule, and Back control; Quit uses its background-free black
+composition and exact localized question/No/Yes controls. Back and No execute
+recovered action 86, while Yes executes the checkpoint equivalent of retail
+action 296's main-component quit request.
+
+The next-level dispatcher is live: Gameplay action
+9 maps to `UI_FRONTEND_OPTIONS_MENU`, Audio action 12 to
+`UI_FRONTEND_AUDIO_OPTIONS_MENU`, Video action 13 to
+`UI_FRONTEND_SCREEN_VIDEO_OPTIONS_PC`, and Redefine Keys action 283 to
+`UI_FRONTEND_SCREEN_REDEFINE_KEYS_PC`. Their retail title rules, localized
+text, slider/arrow/slot sprites, Apply/Cancel/Defaults or Reset helpers, and
+forest/coastal choices render in the runnable. Video is seeded from the
+compiled defaults and Redefine from the shipped WASD control-scheme records;
+Gameplay, Audio, and Video values mutate live with Cancel/Apply/Defaults
+transactions. Redefine rows use their exact 26-pixel list spacing and recovered
+`CKeyRedefiner::OnHovered` state 3/state 4 transitions to switch the paired
+retail slot art between ON and OFF. Their generated children use the compiled
+`ENG_ARIAL_12` font and `(0,3)`/`(380,3)` text offsets. The build prefers the
+untouched installed `frontend.big`; the intentionally gold-tinted
+`work/ui_proto/art` experiment is only a fallback.
 
 The first parent-coordinator seam is now canonical too:
 `FableBuildRender2DBatchPlan` models the recovered 0x3C-byte draw-record
@@ -195,7 +248,53 @@ powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1
 It requires a `D3D9 Presented via Render2D` window title, sends `WM_CLOSE`,
 and requires a clean zero exit.
 
-The first changing retail-video checkpoint is opt-in:
+The retail press-start/main-menu interaction gate posts the decoded
+left-button release, requires the coastal screen transition, then hovers Quit
+through the compiled list geometry:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 `
+  -VerifyMainMenu -TimeoutSeconds 12
+```
+
+The full first-menu branch gate additionally enters Options, proves a Gameplay
+control mutates live, Cancel restores its entry value, Apply survives re-entry,
+and Defaults restores the recovered profile seed. It then visits every detail
+screen, proves the first Redefine row enters recovered hover state 3, returns
+through Back, enters Quit, returns through No, and re-enters to confirm Yes
+exits cleanly:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 `
+  -VerifySubscreens -TimeoutSeconds 25
+```
+
+The retail text remains the default parity path. An opt-in joke sheet keeps
+the same recovered geometry, assets, font metrics, actions, and hitboxes while
+replacing only the seven main-menu strings. Its normal launch now includes the
+recovered Lionhead, Microsoft, and intro movies before revealing the humorous
+menu:
+
+```powershell
+rebuild/build/bootstrap-Release/FableTLC-Reconstruction-VisualCheckpoint.exe `
+  --buff-jesus
+
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 `
+  -BuffJesus -VerifyMainMenu -TimeoutSeconds 20
+```
+
+The smoke command adds `--skip-boot-videos` internally so it can exercise the
+menu immediately. Use that switch directly when you want the same fast
+developer launch. The end-to-end boot-plus-BuffJesus menu gate is:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File rebuild/smoke_visual_checkpoint.ps1 `
+  -BuffJesus -RetailVideo -Movie boot -VerifyBootToFrontend -VerifyMainMenu `
+  -OriginalVideo -TimeoutSeconds 35
+```
+
+The first changing retail-video checkpoint remains opt-in for the unmodified
+retail-text path:
 
 ```powershell
 rebuild/build/bootstrap-Release/FableTLC-Reconstruction-VisualCheckpoint.exe --retail-video

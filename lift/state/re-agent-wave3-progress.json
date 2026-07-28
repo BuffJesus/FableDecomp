@@ -5428,7 +5428,7 @@
       "rounds_used": 4,
       "verdict": "FAIL",
       "parity_status": "red",
-      "timestamp": "2026-07-25T21:50:14"
+      "timestamp": "2026-07-27T22:11:36"
     },
     "0089f300": {
       "address": "0x0089F300",
@@ -5498,7 +5498,7 @@
       "rounds_used": 4,
       "verdict": "FAIL",
       "parity_status": "red",
-      "timestamp": "2026-07-25T22:03:26"
+      "timestamp": "2026-07-27T22:56:01"
     },
     "008a9c40": {
       "address": "0x008A9C40",
@@ -5548,7 +5548,7 @@
       "rounds_used": 4,
       "verdict": "FAIL",
       "parity_status": "red",
-      "timestamp": "2026-07-25T22:17:07"
+      "timestamp": "2026-07-27T23:09:42"
     },
     "00893b00": {
       "address": "0x00893B00",
@@ -5869,6 +5869,1716 @@
       "verdict": "FAIL",
       "parity_status": "yellow",
       "timestamp": "2026-07-25T23:44:14"
+    },
+    "004b1670": {
+      "address": "0x004B1670",
+      "class_name": "CGameScriptInterface",
+      "function_name": "AddQuestCardEntry",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:11:41"
+    },
+    "00681cd0": {
+      "address": "0x00681CD0",
+      "class_name": "CGameScriptInterface",
+      "function_name": "SetOpinionReactionMask",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:17:47"
+    },
+    "006e7740": {
+      "address": "0x006E7740",
+      "class_name": "CGameScriptInterface",
+      "function_name": "CGameScriptInterface",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:21:54"
+    },
+    "008ae890": {
+      "address": "0x008AE890",
+      "class_name": "CGameScriptInterface",
+      "function_name": "_AddGossipVillages_impl",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:25:52"
+    },
+    "008aeac0": {
+      "address": "0x008AEAC0",
+      "class_name": "CGameScriptInterface",
+      "function_name": "_AddGossipFactions_impl",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:36:43"
+    },
+    "0040f0a0": {
+      "address": "0x0040F0A0",
+      "class_name": "",
+      "function_name": "Compare_Unsigned16Array",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:37:56"
+    },
+    "0040f390": {
+      "address": "0x0040F390",
+      "class_name": "",
+      "function_name": "Buffer_RellocateAndUpdateWritePointer",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:38:34"
+    },
+    "0040f4a0": {
+      "address": "0x0040F4A0",
+      "class_name": "",
+      "function_name": "Std_BitSet_Allocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:39:36"
+    },
+    "0040f6b0": {
+      "address": "0x0040F6B0",
+      "class_name": "",
+      "function_name": "CString_FillRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:40:33"
+    },
+    "0040fbf0": {
+      "address": "0x0040FBF0",
+      "class_name": "",
+      "function_name": "CWideString_FillBackward",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:42:04"
+    },
+    "00410460": {
+      "address": "0x00410460",
+      "class_name": "",
+      "function_name": "std_vector_C2DLineF_Copy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:43:14"
+    },
+    "00410550": {
+      "address": "0x00410550",
+      "class_name": "",
+      "function_name": "MemoryPool_AdvancePointer",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:43:52"
+    },
+    "00410d80": {
+      "address": "0x00410D80",
+      "class_name": "",
+      "function_name": "bitset_advance_iterator",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:44:34"
+    },
+    "00410ed0": {
+      "address": "0x00410ED0",
+      "class_name": "",
+      "function_name": "Std_Deque_PopFront_ChunkBased",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:45:13"
+    },
+    "00410f30": {
+      "address": "0x00410F30",
+      "class_name": "",
+      "function_name": "Buffer_AllocateAndZero",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:45:56"
+    },
+    "004110d0": {
+      "address": "0x004110D0",
+      "class_name": "",
+      "function_name": "CString_FillRange",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:48:12"
+    },
+    "00411630": {
+      "address": "0x00411630",
+      "class_name": "",
+      "function_name": "Std_Deque_Resize_WithGap",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:56:52"
+    },
+    "004117c0": {
+      "address": "0x004117C0",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:59:30"
+    },
+    "00411910": {
+      "address": "0x00411910",
+      "class_name": "",
+      "function_name": "Buffer_AllocateAndZero",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T10:00:17"
+    },
+    "00411a10": {
+      "address": "0x00411A10",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range_Copies_4byte",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:01:11"
+    },
+    "00411b00": {
+      "address": "0x00411B00",
+      "class_name": "",
+      "function_name": "vector_push_back_copy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T10:02:07"
+    },
+    "00411b90": {
+      "address": "0x00411B90",
+      "class_name": "",
+      "function_name": "std_vector_assign",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:03:13"
+    },
+    "00411db0": {
+      "address": "0x00411DB0",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range_Dispatch",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:05:24"
+    },
+    "00411f10": {
+      "address": "0x00411F10",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range_4Bytes",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:06:46"
+    },
+    "004121d0": {
+      "address": "0x004121D0",
+      "class_name": "",
+      "function_name": "Std_Vector_PushBack_WithGrow",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T10:07:26"
+    },
+    "00412330": {
+      "address": "0x00412330",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range_Copies",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:10:19"
+    },
+    "00412450": {
+      "address": "0x00412450",
+      "class_name": "",
+      "function_name": "Std_Vector_Erase_Range",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T10:11:57"
+    },
+    "004124c0": {
+      "address": "0x004124C0",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range_16Bytes",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:14:06"
+    },
+    "004125a0": {
+      "address": "0x004125A0",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range_Copies_28byte",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:15:29"
+    },
+    "004126e0": {
+      "address": "0x004126E0",
+      "class_name": "",
+      "function_name": "vector_resize_with_fill",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:19:24"
+    },
+    "004127e0": {
+      "address": "0x004127E0",
+      "class_name": "",
+      "function_name": "Std_Deque_PushBack_ChunkAlloc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:20:34"
+    },
+    "004128a0": {
+      "address": "0x004128A0",
+      "class_name": "",
+      "function_name": "Vector_PushBack",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:21:24"
+    },
+    "00412b70": {
+      "address": "0x00412B70",
+      "class_name": "",
+      "function_name": "Std_Vector_Resize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:25:57"
+    },
+    "00415fd3": {
+      "address": "0x00415FD3",
+      "class_name": "",
+      "function_name": "DivideByGameSpeed",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:26:56"
+    },
+    "0041641f": {
+      "address": "0x0041641F",
+      "class_name": "",
+      "function_name": "CMainGameComponent_ChangeDisplayMode",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:29:05"
+    },
+    "00417a58": {
+      "address": "0x00417A58",
+      "class_name": "",
+      "function_name": "CMainGameComponent_InitSoundBanks",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:48:24"
+    },
+    "00418c3b": {
+      "address": "0x00418C3B",
+      "class_name": "",
+      "function_name": "GFMain_ProcessSaveFileMetadata",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:51:05"
+    },
+    "00419f50": {
+      "address": "0x00419F50",
+      "class_name": "",
+      "function_name": "Vector_FromRange",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T10:53:22"
+    },
+    "0041c090": {
+      "address": "0x0041C090",
+      "class_name": "",
+      "function_name": "CGraphicFrameData_ReleaseReference",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:55:34"
+    },
+    "0041c780": {
+      "address": "0x0041C780",
+      "class_name": "",
+      "function_name": "__EH_epilog3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:55:58"
+    },
+    "0041ceb3": {
+      "address": "0x0041CEB3",
+      "class_name": "",
+      "function_name": "CASound_PlayFromSymbol",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:57:34"
+    },
+    "0041cfb2": {
+      "address": "0x0041CFB2",
+      "class_name": "",
+      "function_name": "GetTextBySymbol",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T11:05:54"
+    },
+    "0041d0a8": {
+      "address": "0x0041D0A8",
+      "class_name": "",
+      "function_name": "CASound_PlayMessage",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T11:08:20"
+    },
+    "00429ab9": {
+      "address": "0x00429AB9",
+      "class_name": "",
+      "function_name": "DoublyLinkedList_Unlink",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:09:08"
+    },
+    "00429b02": {
+      "address": "0x00429B02",
+      "class_name": "",
+      "function_name": "LinkedList_Unlink_and_Free",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:09:43"
+    },
+    "00429b52": {
+      "address": "0x00429B52",
+      "class_name": "",
+      "function_name": "LinkedList_RemoveNode",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:10:42"
+    },
+    "00429fbe": {
+      "address": "0x00429FBE",
+      "class_name": "",
+      "function_name": "LinkedList_AllocateNode_12bytes",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T11:12:48"
+    },
+    "00429fe3": {
+      "address": "0x00429FE3",
+      "class_name": "",
+      "function_name": "LinkedList_AllocateNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:13:22"
+    },
+    "0042a008": {
+      "address": "0x0042A008",
+      "class_name": "",
+      "function_name": "Std_List_AllocateNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:29:23"
+    },
+    "0042a58d": {
+      "address": "0x0042A58D",
+      "class_name": "",
+      "function_name": "RBTreeIterator_MoveToMax_A",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:29:47"
+    },
+    "0042a59e": {
+      "address": "0x0042A59E",
+      "class_name": "",
+      "function_name": "RBTreeIterator_MoveToMax_B",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:30:09"
+    },
+    "0042a5af": {
+      "address": "0x0042A5AF",
+      "class_name": "",
+      "function_name": "RBTreeIterator_MoveToMax_C",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:30:38"
+    },
+    "0042a5c0": {
+      "address": "0x0042A5C0",
+      "class_name": "",
+      "function_name": "RBTreeIterator_MoveToMax_D",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:31:05"
+    },
+    "0042a82b": {
+      "address": "0x0042A82B",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindLessOrEqual",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:32:10"
+    },
+    "0042a879": {
+      "address": "0x0042A879",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:32:54"
+    },
+    "0042a8bd": {
+      "address": "0x0042A8BD",
+      "class_name": "",
+      "function_name": "MemoryAllocator_CountAllocatedBlocks",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:34:00"
+    },
+    "0042aadc": {
+      "address": "0x0042AADC",
+      "class_name": "",
+      "function_name": "LinkedList_InsertBefore",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:34:33"
+    },
+    "0042ab01": {
+      "address": "0x0042AB01",
+      "class_name": "",
+      "function_name": "Std_DoubleLinkedList_CreateNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:35:04"
+    },
+    "0042ab33": {
+      "address": "0x0042AB33",
+      "class_name": "",
+      "function_name": "LinkedList_Insert_Before",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:35:40"
+    },
+    "0042ab8a": {
+      "address": "0x0042AB8A",
+      "class_name": "",
+      "function_name": "Std_List_Insert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:36:18"
+    },
+    "0042ac0a": {
+      "address": "0x0042AC0A",
+      "class_name": "",
+      "function_name": "DoublyLinkedList_InitializeEmpty",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:36:46"
+    },
+    "0042ac52": {
+      "address": "0x0042AC52",
+      "class_name": "",
+      "function_name": "Allocator_Alloc_56bytes",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:37:11"
+    },
+    "0042ac9f": {
+      "address": "0x0042AC9F",
+      "class_name": "",
+      "function_name": "Allocator_Alloc_24bytes",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:37:35"
+    },
+    "0042acec": {
+      "address": "0x0042ACEC",
+      "class_name": "",
+      "function_name": "LinkedList_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:38:04"
+    },
+    "0042ad10": {
+      "address": "0x0042AD10",
+      "class_name": "",
+      "function_name": "Allocator_Alloc_28bytes",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:44:10"
+    },
+    "0042ad34": {
+      "address": "0x0042AD34",
+      "class_name": "",
+      "function_name": "StdMap_LowerBound",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:44:48"
+    },
+    "0042ad6c": {
+      "address": "0x0042AD6C",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindEqualOrGreater",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:46:02"
+    },
+    "0042ad91": {
+      "address": "0x0042AD91",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindExact",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:46:52"
+    },
+    "0042adb6": {
+      "address": "0x0042ADB6",
+      "class_name": "",
+      "function_name": "BinarySearchTree_EraseNode",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T11:47:55"
+    },
+    "0042ae0e": {
+      "address": "0x0042AE0E",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindByIntKey",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:48:39"
+    },
+    "0042ae33": {
+      "address": "0x0042AE33",
+      "class_name": "",
+      "function_name": "BinaryTree_Find",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:49:59"
+    },
+    "0042ae58": {
+      "address": "0x0042AE58",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindByComparator",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:50:43"
+    },
+    "0042ae90": {
+      "address": "0x0042AE90",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindGreaterOrEqual",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:52:27"
+    },
+    "0042aeb5": {
+      "address": "0x0042AEB5",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindByUintComparator",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:53:08"
+    },
+    "0042b467": {
+      "address": "0x0042B467",
+      "class_name": "",
+      "function_name": "StdMap_FindLE",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T11:55:03"
+    },
+    "0042b4f3": {
+      "address": "0x0042B4F3",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindLessOrEqual_Copy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:55:49"
+    },
+    "0042b52b": {
+      "address": "0x0042B52B",
+      "class_name": "",
+      "function_name": "BinarySearchTree_LowerBound",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T11:57:30"
+    },
+    "0042b5a8": {
+      "address": "0x0042B5A8",
+      "class_name": "",
+      "function_name": "BinarySearchTreeNode_Create",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:58:05"
+    },
+    "0042b5ca": {
+      "address": "0x0042B5CA",
+      "class_name": "",
+      "function_name": "BinarySearchTreeNode_CreateDuplicate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:58:41"
+    },
+    "0042b5ec": {
+      "address": "0x0042B5EC",
+      "class_name": "",
+      "function_name": "BinarySearchTreeNode_CreateCopy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:59:18"
+    },
+    "0042b687": {
+      "address": "0x0042B687",
+      "class_name": "",
+      "function_name": "LinkedList_PushFront",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:14:14"
+    },
+    "0042b6b8": {
+      "address": "0x0042B6B8",
+      "class_name": "",
+      "function_name": "Std_List_PushFront",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:14:43"
+    },
+    "0042b72b": {
+      "address": "0x0042B72B",
+      "class_name": "",
+      "function_name": "CTexture_InitEmpty_56bytes",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:15:43"
+    },
+    "0042b76c": {
+      "address": "0x0042B76C",
+      "class_name": "",
+      "function_name": "CTexture_InitEmpty_24bytes",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:16:24"
+    },
+    "0042b7ad": {
+      "address": "0x0042B7AD",
+      "class_name": "",
+      "function_name": "LinkedList_InitializeNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:17:14"
+    },
+    "0042b7ee": {
+      "address": "0x0042B7EE",
+      "class_name": "",
+      "function_name": "CTexture_InitEmpty_28bytes",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:19:09"
+    },
+    "0042b854": {
+      "address": "0x0042B854",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_Clear",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:22:30"
+    },
+    "0042b98b": {
+      "address": "0x0042B98B",
+      "class_name": "",
+      "function_name": "BinarySearchTree_InsertAndBalance",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:23:17"
+    },
+    "0042ba13": {
+      "address": "0x0042BA13",
+      "class_name": "",
+      "function_name": "RBTree_InsertOrReplace",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:24:58"
+    },
+    "0042ba99": {
+      "address": "0x0042BA99",
+      "class_name": "",
+      "function_name": "BinaryTree_InsertNodeLeft",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:26:36"
+    },
+    "0042bb21": {
+      "address": "0x0042BB21",
+      "class_name": "",
+      "function_name": "RBTree_InsertLeft",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:29:01"
+    },
+    "0042bba7": {
+      "address": "0x0042BBA7",
+      "class_name": "",
+      "function_name": "BinaryTree_InsertNodeRight",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:29:49"
+    },
+    "0042bc2f": {
+      "address": "0x0042BC2F",
+      "class_name": "",
+      "function_name": "RBTree_InsertRight",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:33:29"
+    },
+    "0042bcb5": {
+      "address": "0x0042BCB5",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_InsertNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:34:55"
+    },
+    "0042bd4a": {
+      "address": "0x0042BD4A",
+      "class_name": "",
+      "function_name": "RBTree_InsertString",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:36:21"
+    },
+    "0042bf06": {
+      "address": "0x0042BF06",
+      "class_name": "",
+      "function_name": "CEngineSceneGrid_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:37:30"
+    },
+    "0042c082": {
+      "address": "0x0042C082",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_FindInsertPoint",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:49:18"
+    },
+    "0042c1c1": {
+      "address": "0x0042C1C1",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_FindInsertPointLeft",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:50:35"
+    },
+    "0042c300": {
+      "address": "0x0042C300",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_FindInsertPointRight",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:53:15"
+    },
+    "0042c43f": {
+      "address": "0x0042C43F",
+      "class_name": "",
+      "function_name": "CTC_FindInterface_0x10e",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:55:32"
+    },
+    "0042c48b": {
+      "address": "0x0042C48B",
+      "class_name": "",
+      "function_name": "CTC_FindInterface_0x11",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:58:30"
+    },
+    "0042c4d6": {
+      "address": "0x0042C4D6",
+      "class_name": "",
+      "function_name": "CTC_FindInterface_0x17",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:00:13"
+    },
+    "0042c521": {
+      "address": "0x0042C521",
+      "class_name": "",
+      "function_name": "CTC_FindInterface_4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:01:23"
+    },
+    "0042c56c": {
+      "address": "0x0042C56C",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x19",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:03:17"
+    },
+    "0042c5b7": {
+      "address": "0x0042C5B7",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x16",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:04:50"
+    },
+    "0042c602": {
+      "address": "0x0042C602",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x29",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:07:19"
+    },
+    "0042c64d": {
+      "address": "0x0042C64D",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0xe8",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:08:15"
+    },
+    "0042c699": {
+      "address": "0x0042C699",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x1b",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:13:56"
+    },
+    "0042c6e4": {
+      "address": "0x0042C6E4",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x6f",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:16:52"
+    },
+    "0042c72f": {
+      "address": "0x0042C72F",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x13",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:19:40"
+    },
+    "0042c77a": {
+      "address": "0x0042C77A",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x14",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:22:25"
+    },
+    "0042c7c5": {
+      "address": "0x0042C7C5",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x12",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:25:00"
+    },
+    "0042c810": {
+      "address": "0x0042C810",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0xf6",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T13:29:47"
+    },
+    "0042c85c": {
+      "address": "0x0042C85C",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x10d",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:32:36"
+    },
+    "0042c8a8": {
+      "address": "0x0042C8A8",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0xd0",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:34:52"
+    },
+    "0042c8f4": {
+      "address": "0x0042C8F4",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0xfc",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:37:18"
+    },
+    "0042c940": {
+      "address": "0x0042C940",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_InsertWithString",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:39:59"
+    },
+    "0042cb08": {
+      "address": "0x0042CB08",
+      "class_name": "",
+      "function_name": "BinaryTree_InsertScriptData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T13:40:52"
+    },
+    "0042cb90": {
+      "address": "0x0042CB90",
+      "class_name": "",
+      "function_name": "CSurface_Clone_Recursive",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:42:02"
+    },
+    "0042cc03": {
+      "address": "0x0042CC03",
+      "class_name": "",
+      "function_name": "BinaryTree_InsertCString",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:43:07"
+    },
+    "0042cc98": {
+      "address": "0x0042CC98",
+      "class_name": "",
+      "function_name": "RBTree_InsertStringKey",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:43:57"
+    },
+    "0042cd3e": {
+      "address": "0x0042CD3E",
+      "class_name": "",
+      "function_name": "FID_conflict:max_size",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T13:44:41"
+    },
+    "0042cd61": {
+      "address": "0x0042CD61",
+      "class_name": "",
+      "function_name": "FID_conflict:max_size",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T13:45:48"
+    },
+    "0042cde0": {
+      "address": "0x0042CDE0",
+      "class_name": "",
+      "function_name": "CompareAndCountAllocations",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:46:25"
+    },
+    "0042ce7a": {
+      "address": "0x0042CE7A",
+      "class_name": "",
+      "function_name": "CTCCarryable_CopyAssign",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:49:52"
+    },
+    "0042cee3": {
+      "address": "0x0042CEE3",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_FindOrInsert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:51:06"
+    },
+    "0042cf69": {
+      "address": "0x0042CF69",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_InsertStringNode",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T13:54:26"
+    },
+    "0042d2c6": {
+      "address": "0x0042D2C6",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_FindAllocationNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:56:31"
+    },
+    "0042d45d": {
+      "address": "0x0042D45D",
+      "class_name": "",
+      "function_name": "CPersistTraits_Transfer_And_Construct",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T14:38:45"
+    },
+    "0042d604": {
+      "address": "0x0042D604",
+      "class_name": "",
+      "function_name": "CChangingStateComponent_StateChangeHandler_1",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T14:39:43"
+    },
+    "0042d65b": {
+      "address": "0x0042D65B",
+      "class_name": "",
+      "function_name": "CChangingStateComponent_StateChangeHandler_2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T14:40:38"
+    },
+    "0042ded5": {
+      "address": "0x0042DED5",
+      "class_name": "",
+      "function_name": "CFrontEnd_PlayAutoSaveSound",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T14:53:31"
+    },
+    "0042e17c": {
+      "address": "0x0042E17C",
+      "class_name": "",
+      "function_name": "Init_FrontendSounds",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T14:56:52"
+    },
+    "00430022": {
+      "address": "0x00430022",
+      "class_name": "",
+      "function_name": "Queue_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T14:57:18"
+    },
+    "0043006f": {
+      "address": "0x0043006F",
+      "class_name": "",
+      "function_name": "Stack_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T14:57:48"
+    },
+    "0043019f": {
+      "address": "0x0043019F",
+      "class_name": "",
+      "function_name": "LinkedList_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T14:58:29"
+    },
+    "004301c9": {
+      "address": "0x004301C9",
+      "class_name": "",
+      "function_name": "ListNode_Construct",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T14:59:39"
+    },
+    "004303f0": {
+      "address": "0x004303F0",
+      "class_name": "",
+      "function_name": "CMemoryBlock_Destructor",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:00:27"
+    },
+    "00431277": {
+      "address": "0x00431277",
+      "class_name": "",
+      "function_name": "UpdateShadowScene_WriteState",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:01:32"
+    },
+    "00431363": {
+      "address": "0x00431363",
+      "class_name": "",
+      "function_name": "BinaryTree_Insert_With_Position",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:03:59"
+    },
+    "004313e9": {
+      "address": "0x004313E9",
+      "class_name": "",
+      "function_name": "std_set_insert_uint_via_FUN",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T15:06:42"
+    },
+    "00431471": {
+      "address": "0x00431471",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T15:07:16"
+    },
+    "00431606": {
+      "address": "0x00431606",
+      "class_name": "",
+      "function_name": "Map_InsertStringKeyNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:08:19"
+    },
+    "004316cf": {
+      "address": "0x004316CF",
+      "class_name": "",
+      "function_name": "BinaryTree_InsertDigScriptNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:10:21"
+    },
+    "004317d0": {
+      "address": "0x004317D0",
+      "class_name": "",
+      "function_name": "CMemoryBlock_Destructor",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:28:34"
+    },
+    "00431e80": {
+      "address": "0x00431E80",
+      "class_name": "",
+      "function_name": "CParentDefClassBase_CopyAssign_1",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T15:29:29"
+    },
+    "0043212b": {
+      "address": "0x0043212B",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T15:30:23"
+    },
+    "00432aa8": {
+      "address": "0x00432AA8",
+      "class_name": "",
+      "function_name": "CTCCarryable_CloneTree",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:32:01"
+    },
+    "00432b38": {
+      "address": "0x00432B38",
+      "class_name": "",
+      "function_name": "CTCCarryable_assign",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:32:52"
+    },
+    "00432bab": {
+      "address": "0x00432BAB",
+      "class_name": "",
+      "function_name": "CExpression_DigScript_CloneTree",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:39:22"
+    },
+    "00432ff0": {
+      "address": "0x00432FF0",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopyCCharString",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:41:16"
+    },
+    "0043336a": {
+      "address": "0x0043336A",
+      "class_name": "",
+      "function_name": "Std_Vector_Erase_Range",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T15:42:17"
+    },
+    "004333b3": {
+      "address": "0x004333B3",
+      "class_name": "",
+      "function_name": "Std_Vector_InsertRange",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:52:55"
+    },
+    "00433db5": {
+      "address": "0x00433DB5",
+      "class_name": "",
+      "function_name": "STL_AllocateAndInitializeArray",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:54:30"
+    },
+    "00433df0": {
+      "address": "0x00433DF0",
+      "class_name": "",
+      "function_name": "Array_AssignFrom",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:56:55"
+    },
+    "00434370": {
+      "address": "0x00434370",
+      "class_name": "",
+      "function_name": "CParentDefClassBase_CopyAssign_2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T15:57:52"
+    },
+    "00434dc0": {
+      "address": "0x00434DC0",
+      "class_name": "",
+      "function_name": "$E2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T15:58:23"
+    },
+    "00434dd0": {
+      "address": "0x00434DD0",
+      "class_name": "",
+      "function_name": "$E2",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T15:59:03"
+    },
+    "004350d0": {
+      "address": "0x004350D0",
+      "class_name": "",
+      "function_name": "InitDisplayEngine_InitGraphics",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:00:55"
+    },
+    "00436a80": {
+      "address": "0x00436A80",
+      "class_name": "",
+      "function_name": "Vector_EraseAndMove",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T16:01:23"
+    },
+    "00436ac0": {
+      "address": "0x00436AC0",
+      "class_name": "",
+      "function_name": "Vector_InsertN",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:11:12"
+    },
+    "0043a2a0": {
+      "address": "0x0043A2A0",
+      "class_name": "",
+      "function_name": "ShowOnScreenMessage_FormatDisplay",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:24:16"
+    },
+    "0043a570": {
+      "address": "0x0043A570",
+      "class_name": "",
+      "function_name": "NHeroInformationScreens_Destructor",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:33:34"
+    },
+    "0043f510": {
+      "address": "0x0043F510",
+      "class_name": "",
+      "function_name": "FreePointerArray",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T16:34:00"
+    },
+    "0043f560": {
+      "address": "0x0043F560",
+      "class_name": "",
+      "function_name": "Vector_FreeElementPointers",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T16:34:21"
+    },
+    "00440550": {
+      "address": "0x00440550",
+      "class_name": "",
+      "function_name": "Buffer_MoveData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T16:34:59"
+    },
+    "00440590": {
+      "address": "0x00440590",
+      "class_name": "",
+      "function_name": "Buffer_Relocate",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T16:36:07"
+    },
+    "004408a0": {
+      "address": "0x004408A0",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:37:03"
+    },
+    "00440b40": {
+      "address": "0x00440B40",
+      "class_name": "",
+      "function_name": "Vector_DestructStringRange",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:38:23"
+    },
+    "00440c00": {
+      "address": "0x00440C00",
+      "class_name": "",
+      "function_name": "Vector_CopyPairRange",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:41:50"
+    },
+    "00440d70": {
+      "address": "0x00440D70",
+      "class_name": "",
+      "function_name": "Vector_EraseRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:42:32"
     }
   },
   "runs": [
@@ -12221,6 +13931,1866 @@
       "verdict": "FAIL",
       "parity_status": "yellow",
       "timestamp": "2026-07-25T23:44:14"
+    },
+    {
+      "address": "0x004B1670",
+      "class_name": "CGameScriptInterface",
+      "function_name": "AddQuestCardEntry",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:11:41"
+    },
+    {
+      "address": "0x00681CD0",
+      "class_name": "CGameScriptInterface",
+      "function_name": "SetOpinionReactionMask",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:17:47"
+    },
+    {
+      "address": "0x006E7740",
+      "class_name": "CGameScriptInterface",
+      "function_name": "CGameScriptInterface",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:21:54"
+    },
+    {
+      "address": "0x008AE890",
+      "class_name": "CGameScriptInterface",
+      "function_name": "_AddGossipVillages_impl",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:25:52"
+    },
+    {
+      "address": "0x008AEAC0",
+      "class_name": "CGameScriptInterface",
+      "function_name": "_AddGossipFactions_impl",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:33:52"
+    },
+    {
+      "address": "0x008AEAC0",
+      "class_name": "CGameScriptInterface",
+      "function_name": "_AddGossipFactions_impl",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:36:43"
+    },
+    {
+      "address": "0x0040F0A0",
+      "class_name": "",
+      "function_name": "Compare_Unsigned16Array",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:37:56"
+    },
+    {
+      "address": "0x0040F390",
+      "class_name": "",
+      "function_name": "Buffer_RellocateAndUpdateWritePointer",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:38:34"
+    },
+    {
+      "address": "0x0040F4A0",
+      "class_name": "",
+      "function_name": "Std_BitSet_Allocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:39:36"
+    },
+    {
+      "address": "0x0040F6B0",
+      "class_name": "",
+      "function_name": "CString_FillRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:40:33"
+    },
+    {
+      "address": "0x0040FBF0",
+      "class_name": "",
+      "function_name": "CWideString_FillBackward",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:42:04"
+    },
+    {
+      "address": "0x00410460",
+      "class_name": "",
+      "function_name": "std_vector_C2DLineF_Copy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:43:14"
+    },
+    {
+      "address": "0x00410550",
+      "class_name": "",
+      "function_name": "MemoryPool_AdvancePointer",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:43:52"
+    },
+    {
+      "address": "0x00410D80",
+      "class_name": "",
+      "function_name": "bitset_advance_iterator",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:44:34"
+    },
+    {
+      "address": "0x00410ED0",
+      "class_name": "",
+      "function_name": "Std_Deque_PopFront_ChunkBased",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:45:13"
+    },
+    {
+      "address": "0x00410F30",
+      "class_name": "",
+      "function_name": "Buffer_AllocateAndZero",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T09:45:56"
+    },
+    {
+      "address": "0x004110D0",
+      "class_name": "",
+      "function_name": "CString_FillRange",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:48:12"
+    },
+    {
+      "address": "0x00411630",
+      "class_name": "",
+      "function_name": "Std_Deque_Resize_WithGap",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:56:52"
+    },
+    {
+      "address": "0x004117C0",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T09:59:30"
+    },
+    {
+      "address": "0x00411910",
+      "class_name": "",
+      "function_name": "Buffer_AllocateAndZero",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T10:00:17"
+    },
+    {
+      "address": "0x00411A10",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range_Copies_4byte",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:01:11"
+    },
+    {
+      "address": "0x00411B00",
+      "class_name": "",
+      "function_name": "vector_push_back_copy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T10:02:07"
+    },
+    {
+      "address": "0x00411B90",
+      "class_name": "",
+      "function_name": "std_vector_assign",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:03:13"
+    },
+    {
+      "address": "0x00411DB0",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range_Dispatch",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:05:24"
+    },
+    {
+      "address": "0x00411F10",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range_4Bytes",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:06:46"
+    },
+    {
+      "address": "0x004121D0",
+      "class_name": "",
+      "function_name": "Std_Vector_PushBack_WithGrow",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T10:07:26"
+    },
+    {
+      "address": "0x00412330",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range_Copies",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:10:19"
+    },
+    {
+      "address": "0x00412450",
+      "class_name": "",
+      "function_name": "Std_Vector_Erase_Range",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T10:11:57"
+    },
+    {
+      "address": "0x004124C0",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range_16Bytes",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:14:06"
+    },
+    {
+      "address": "0x004125A0",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range_Copies_28byte",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:15:29"
+    },
+    {
+      "address": "0x004126E0",
+      "class_name": "",
+      "function_name": "vector_resize_with_fill",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:19:24"
+    },
+    {
+      "address": "0x004127E0",
+      "class_name": "",
+      "function_name": "Std_Deque_PushBack_ChunkAlloc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:20:34"
+    },
+    {
+      "address": "0x004128A0",
+      "class_name": "",
+      "function_name": "Vector_PushBack",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:21:24"
+    },
+    {
+      "address": "0x00412B70",
+      "class_name": "",
+      "function_name": "Std_Vector_Resize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:25:57"
+    },
+    {
+      "address": "0x00415FD3",
+      "class_name": "",
+      "function_name": "DivideByGameSpeed",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:26:56"
+    },
+    {
+      "address": "0x0041641F",
+      "class_name": "",
+      "function_name": "CMainGameComponent_ChangeDisplayMode",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:29:05"
+    },
+    {
+      "address": "0x00417A58",
+      "class_name": "",
+      "function_name": "CMainGameComponent_InitSoundBanks",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:39:52"
+    },
+    {
+      "address": "0x00417A58",
+      "class_name": "",
+      "function_name": "CMainGameComponent_InitSoundBanks",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:48:24"
+    },
+    {
+      "address": "0x00418C3B",
+      "class_name": "",
+      "function_name": "GFMain_ProcessSaveFileMetadata",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:51:05"
+    },
+    {
+      "address": "0x00419F50",
+      "class_name": "",
+      "function_name": "Vector_FromRange",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T10:53:22"
+    },
+    {
+      "address": "0x0041C090",
+      "class_name": "",
+      "function_name": "CGraphicFrameData_ReleaseReference",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:55:34"
+    },
+    {
+      "address": "0x0041C780",
+      "class_name": "",
+      "function_name": "__EH_epilog3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:55:58"
+    },
+    {
+      "address": "0x0041CEB3",
+      "class_name": "",
+      "function_name": "CASound_PlayFromSymbol",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T10:57:34"
+    },
+    {
+      "address": "0x0041CFB2",
+      "class_name": "",
+      "function_name": "GetTextBySymbol",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T11:01:32"
+    },
+    {
+      "address": "0x0041CFB2",
+      "class_name": "",
+      "function_name": "GetTextBySymbol",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T11:05:54"
+    },
+    {
+      "address": "0x0041D0A8",
+      "class_name": "",
+      "function_name": "CASound_PlayMessage",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T11:08:20"
+    },
+    {
+      "address": "0x00429AB9",
+      "class_name": "",
+      "function_name": "DoublyLinkedList_Unlink",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:09:08"
+    },
+    {
+      "address": "0x00429B02",
+      "class_name": "",
+      "function_name": "LinkedList_Unlink_and_Free",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:09:43"
+    },
+    {
+      "address": "0x00429B52",
+      "class_name": "",
+      "function_name": "LinkedList_RemoveNode",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:10:42"
+    },
+    {
+      "address": "0x00429FBE",
+      "class_name": "",
+      "function_name": "LinkedList_AllocateNode_12bytes",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T11:12:48"
+    },
+    {
+      "address": "0x00429FE3",
+      "class_name": "",
+      "function_name": "LinkedList_AllocateNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:13:22"
+    },
+    {
+      "address": "0x0042A008",
+      "class_name": "",
+      "function_name": "Std_List_AllocateNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:29:23"
+    },
+    {
+      "address": "0x0042A58D",
+      "class_name": "",
+      "function_name": "RBTreeIterator_MoveToMax_A",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:29:47"
+    },
+    {
+      "address": "0x0042A59E",
+      "class_name": "",
+      "function_name": "RBTreeIterator_MoveToMax_B",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:30:09"
+    },
+    {
+      "address": "0x0042A5AF",
+      "class_name": "",
+      "function_name": "RBTreeIterator_MoveToMax_C",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:30:38"
+    },
+    {
+      "address": "0x0042A5C0",
+      "class_name": "",
+      "function_name": "RBTreeIterator_MoveToMax_D",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:31:05"
+    },
+    {
+      "address": "0x0042A82B",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindLessOrEqual",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:32:10"
+    },
+    {
+      "address": "0x0042A879",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:32:54"
+    },
+    {
+      "address": "0x0042A8BD",
+      "class_name": "",
+      "function_name": "MemoryAllocator_CountAllocatedBlocks",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:34:00"
+    },
+    {
+      "address": "0x0042AADC",
+      "class_name": "",
+      "function_name": "LinkedList_InsertBefore",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:34:33"
+    },
+    {
+      "address": "0x0042AB01",
+      "class_name": "",
+      "function_name": "Std_DoubleLinkedList_CreateNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:35:04"
+    },
+    {
+      "address": "0x0042AB33",
+      "class_name": "",
+      "function_name": "LinkedList_Insert_Before",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:35:40"
+    },
+    {
+      "address": "0x0042AB8A",
+      "class_name": "",
+      "function_name": "Std_List_Insert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:36:18"
+    },
+    {
+      "address": "0x0042AC0A",
+      "class_name": "",
+      "function_name": "DoublyLinkedList_InitializeEmpty",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:36:46"
+    },
+    {
+      "address": "0x0042AC52",
+      "class_name": "",
+      "function_name": "Allocator_Alloc_56bytes",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:37:11"
+    },
+    {
+      "address": "0x0042AC9F",
+      "class_name": "",
+      "function_name": "Allocator_Alloc_24bytes",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:37:35"
+    },
+    {
+      "address": "0x0042ACEC",
+      "class_name": "",
+      "function_name": "LinkedList_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:38:04"
+    },
+    {
+      "address": "0x0042AD10",
+      "class_name": "",
+      "function_name": "Allocator_Alloc_28bytes",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T11:44:10"
+    },
+    {
+      "address": "0x0042AD34",
+      "class_name": "",
+      "function_name": "StdMap_LowerBound",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:44:48"
+    },
+    {
+      "address": "0x0042AD6C",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindEqualOrGreater",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:46:02"
+    },
+    {
+      "address": "0x0042AD91",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindExact",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:46:52"
+    },
+    {
+      "address": "0x0042ADB6",
+      "class_name": "",
+      "function_name": "BinarySearchTree_EraseNode",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T11:47:55"
+    },
+    {
+      "address": "0x0042AE0E",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindByIntKey",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:48:39"
+    },
+    {
+      "address": "0x0042AE33",
+      "class_name": "",
+      "function_name": "BinaryTree_Find",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:49:59"
+    },
+    {
+      "address": "0x0042AE58",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindByComparator",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:50:43"
+    },
+    {
+      "address": "0x0042AE90",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindGreaterOrEqual",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:52:27"
+    },
+    {
+      "address": "0x0042AEB5",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindByUintComparator",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:53:08"
+    },
+    {
+      "address": "0x0042B467",
+      "class_name": "",
+      "function_name": "StdMap_FindLE",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T11:55:03"
+    },
+    {
+      "address": "0x0042B4F3",
+      "class_name": "",
+      "function_name": "BinarySearchTree_FindLessOrEqual_Copy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:55:49"
+    },
+    {
+      "address": "0x0042B52B",
+      "class_name": "",
+      "function_name": "BinarySearchTree_LowerBound",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T11:57:30"
+    },
+    {
+      "address": "0x0042B5A8",
+      "class_name": "",
+      "function_name": "BinarySearchTreeNode_Create",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:58:05"
+    },
+    {
+      "address": "0x0042B5CA",
+      "class_name": "",
+      "function_name": "BinarySearchTreeNode_CreateDuplicate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:58:41"
+    },
+    {
+      "address": "0x0042B5EC",
+      "class_name": "",
+      "function_name": "BinarySearchTreeNode_CreateCopy",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T11:59:18"
+    },
+    {
+      "address": "0x0042B687",
+      "class_name": "",
+      "function_name": "LinkedList_PushFront",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:14:14"
+    },
+    {
+      "address": "0x0042B6B8",
+      "class_name": "",
+      "function_name": "Std_List_PushFront",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:14:43"
+    },
+    {
+      "address": "0x0042B72B",
+      "class_name": "",
+      "function_name": "CTexture_InitEmpty_56bytes",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:15:43"
+    },
+    {
+      "address": "0x0042B76C",
+      "class_name": "",
+      "function_name": "CTexture_InitEmpty_24bytes",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:16:24"
+    },
+    {
+      "address": "0x0042B7AD",
+      "class_name": "",
+      "function_name": "LinkedList_InitializeNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:17:14"
+    },
+    {
+      "address": "0x0042B7EE",
+      "class_name": "",
+      "function_name": "CTexture_InitEmpty_28bytes",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:19:09"
+    },
+    {
+      "address": "0x0042B854",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_Clear",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:22:30"
+    },
+    {
+      "address": "0x0042B98B",
+      "class_name": "",
+      "function_name": "BinarySearchTree_InsertAndBalance",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:23:17"
+    },
+    {
+      "address": "0x0042BA13",
+      "class_name": "",
+      "function_name": "RBTree_InsertOrReplace",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:24:58"
+    },
+    {
+      "address": "0x0042BA99",
+      "class_name": "",
+      "function_name": "BinaryTree_InsertNodeLeft",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:26:36"
+    },
+    {
+      "address": "0x0042BB21",
+      "class_name": "",
+      "function_name": "RBTree_InsertLeft",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:29:01"
+    },
+    {
+      "address": "0x0042BBA7",
+      "class_name": "",
+      "function_name": "BinaryTree_InsertNodeRight",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T12:29:49"
+    },
+    {
+      "address": "0x0042BC2F",
+      "class_name": "",
+      "function_name": "RBTree_InsertRight",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:33:29"
+    },
+    {
+      "address": "0x0042BCB5",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_InsertNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:34:55"
+    },
+    {
+      "address": "0x0042BD4A",
+      "class_name": "",
+      "function_name": "RBTree_InsertString",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:36:21"
+    },
+    {
+      "address": "0x0042BF06",
+      "class_name": "",
+      "function_name": "CEngineSceneGrid_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:37:30"
+    },
+    {
+      "address": "0x0042C082",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_FindInsertPoint",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:49:18"
+    },
+    {
+      "address": "0x0042C1C1",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_FindInsertPointLeft",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:50:35"
+    },
+    {
+      "address": "0x0042C300",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_FindInsertPointRight",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:53:15"
+    },
+    {
+      "address": "0x0042C43F",
+      "class_name": "",
+      "function_name": "CTC_FindInterface_0x10e",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:55:32"
+    },
+    {
+      "address": "0x0042C48B",
+      "class_name": "",
+      "function_name": "CTC_FindInterface_0x11",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T12:58:30"
+    },
+    {
+      "address": "0x0042C4D6",
+      "class_name": "",
+      "function_name": "CTC_FindInterface_0x17",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:00:13"
+    },
+    {
+      "address": "0x0042C521",
+      "class_name": "",
+      "function_name": "CTC_FindInterface_4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:01:23"
+    },
+    {
+      "address": "0x0042C56C",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x19",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:03:17"
+    },
+    {
+      "address": "0x0042C5B7",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x16",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:04:50"
+    },
+    {
+      "address": "0x0042C602",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x29",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:07:19"
+    },
+    {
+      "address": "0x0042C64D",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0xe8",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:08:15"
+    },
+    {
+      "address": "0x0042C699",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x1b",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T13:11:49"
+    },
+    {
+      "address": "0x0042C699",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x1b",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:13:56"
+    },
+    {
+      "address": "0x0042C6E4",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x6f",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:16:52"
+    },
+    {
+      "address": "0x0042C72F",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x13",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:19:40"
+    },
+    {
+      "address": "0x0042C77A",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x14",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:22:25"
+    },
+    {
+      "address": "0x0042C7C5",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x12",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:25:00"
+    },
+    {
+      "address": "0x0042C810",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0xf6",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T13:29:47"
+    },
+    {
+      "address": "0x0042C85C",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0x10d",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:32:36"
+    },
+    {
+      "address": "0x0042C8A8",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0xd0",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:34:52"
+    },
+    {
+      "address": "0x0042C8F4",
+      "class_name": "",
+      "function_name": "CTCBase_FindInterfaceType_0xfc",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:37:18"
+    },
+    {
+      "address": "0x0042C940",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_InsertWithString",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:39:59"
+    },
+    {
+      "address": "0x0042CB08",
+      "class_name": "",
+      "function_name": "BinaryTree_InsertScriptData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T13:40:52"
+    },
+    {
+      "address": "0x0042CB90",
+      "class_name": "",
+      "function_name": "CSurface_Clone_Recursive",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:42:02"
+    },
+    {
+      "address": "0x0042CC03",
+      "class_name": "",
+      "function_name": "BinaryTree_InsertCString",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:43:07"
+    },
+    {
+      "address": "0x0042CC98",
+      "class_name": "",
+      "function_name": "RBTree_InsertStringKey",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:43:57"
+    },
+    {
+      "address": "0x0042CD3E",
+      "class_name": "",
+      "function_name": "FID_conflict:max_size",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T13:44:41"
+    },
+    {
+      "address": "0x0042CD61",
+      "class_name": "",
+      "function_name": "FID_conflict:max_size",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T13:45:48"
+    },
+    {
+      "address": "0x0042CDE0",
+      "class_name": "",
+      "function_name": "CompareAndCountAllocations",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:46:25"
+    },
+    {
+      "address": "0x0042CE7A",
+      "class_name": "",
+      "function_name": "CTCCarryable_CopyAssign",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:49:52"
+    },
+    {
+      "address": "0x0042CEE3",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_FindOrInsert",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:51:06"
+    },
+    {
+      "address": "0x0042CF69",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_InsertStringNode",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T13:54:26"
+    },
+    {
+      "address": "0x0042D2C6",
+      "class_name": "",
+      "function_name": "CMemoryAllocatorVariableSize_FindAllocationNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T13:56:31"
+    },
+    {
+      "address": "0x0042D45D",
+      "class_name": "",
+      "function_name": "CPersistTraits_Transfer_And_Construct",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T14:33:53"
+    },
+    {
+      "address": "0x0042D45D",
+      "class_name": "",
+      "function_name": "CPersistTraits_Transfer_And_Construct",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T14:38:45"
+    },
+    {
+      "address": "0x0042D604",
+      "class_name": "",
+      "function_name": "CChangingStateComponent_StateChangeHandler_1",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T14:39:43"
+    },
+    {
+      "address": "0x0042D65B",
+      "class_name": "",
+      "function_name": "CChangingStateComponent_StateChangeHandler_2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T14:40:38"
+    },
+    {
+      "address": "0x0042DED5",
+      "class_name": "",
+      "function_name": "CFrontEnd_PlayAutoSaveSound",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T14:47:05"
+    },
+    {
+      "address": "0x0042DED5",
+      "class_name": "",
+      "function_name": "CFrontEnd_PlayAutoSaveSound",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T14:53:31"
+    },
+    {
+      "address": "0x0042E17C",
+      "class_name": "",
+      "function_name": "Init_FrontendSounds",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T14:56:52"
+    },
+    {
+      "address": "0x00430022",
+      "class_name": "",
+      "function_name": "Queue_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T14:57:18"
+    },
+    {
+      "address": "0x0043006F",
+      "class_name": "",
+      "function_name": "Stack_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T14:57:48"
+    },
+    {
+      "address": "0x0043019F",
+      "class_name": "",
+      "function_name": "LinkedList_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T14:58:29"
+    },
+    {
+      "address": "0x004301C9",
+      "class_name": "",
+      "function_name": "ListNode_Construct",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T14:59:39"
+    },
+    {
+      "address": "0x004303F0",
+      "class_name": "",
+      "function_name": "CMemoryBlock_Destructor",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:00:27"
+    },
+    {
+      "address": "0x00431277",
+      "class_name": "",
+      "function_name": "UpdateShadowScene_WriteState",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:01:32"
+    },
+    {
+      "address": "0x00431363",
+      "class_name": "",
+      "function_name": "BinaryTree_Insert_With_Position",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:03:59"
+    },
+    {
+      "address": "0x004313E9",
+      "class_name": "",
+      "function_name": "std_set_insert_uint_via_FUN",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T15:06:42"
+    },
+    {
+      "address": "0x00431471",
+      "class_name": "",
+      "function_name": "TreeNode_AllocData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T15:07:16"
+    },
+    {
+      "address": "0x00431606",
+      "class_name": "",
+      "function_name": "Map_InsertStringKeyNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:08:19"
+    },
+    {
+      "address": "0x004316CF",
+      "class_name": "",
+      "function_name": "BinaryTree_InsertDigScriptNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:10:21"
+    },
+    {
+      "address": "0x004317D0",
+      "class_name": "",
+      "function_name": "CMemoryBlock_Destructor",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:28:34"
+    },
+    {
+      "address": "0x00431E80",
+      "class_name": "",
+      "function_name": "CParentDefClassBase_CopyAssign_1",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T15:29:29"
+    },
+    {
+      "address": "0x0043212B",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopy",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T15:30:23"
+    },
+    {
+      "address": "0x00432AA8",
+      "class_name": "",
+      "function_name": "CTCCarryable_CloneTree",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:32:01"
+    },
+    {
+      "address": "0x00432B38",
+      "class_name": "",
+      "function_name": "CTCCarryable_assign",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:32:52"
+    },
+    {
+      "address": "0x00432BAB",
+      "class_name": "",
+      "function_name": "CExpression_DigScript_CloneTree",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T15:38:00"
+    },
+    {
+      "address": "0x00432BAB",
+      "class_name": "",
+      "function_name": "CExpression_DigScript_CloneTree",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:39:22"
+    },
+    {
+      "address": "0x00432FF0",
+      "class_name": "",
+      "function_name": "Vector_AllocateAndCopyCCharString",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:41:16"
+    },
+    {
+      "address": "0x0043336A",
+      "class_name": "",
+      "function_name": "Std_Vector_Erase_Range",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T15:42:17"
+    },
+    {
+      "address": "0x004333B3",
+      "class_name": "",
+      "function_name": "Std_Vector_InsertRange",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:48:17"
+    },
+    {
+      "address": "0x004333B3",
+      "class_name": "",
+      "function_name": "Std_Vector_InsertRange",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:52:55"
+    },
+    {
+      "address": "0x00433DB5",
+      "class_name": "",
+      "function_name": "STL_AllocateAndInitializeArray",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:54:30"
+    },
+    {
+      "address": "0x00433DF0",
+      "class_name": "",
+      "function_name": "Array_AssignFrom",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T15:56:55"
+    },
+    {
+      "address": "0x00434370",
+      "class_name": "",
+      "function_name": "CParentDefClassBase_CopyAssign_2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T15:57:52"
+    },
+    {
+      "address": "0x00434DC0",
+      "class_name": "",
+      "function_name": "$E2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T15:58:23"
+    },
+    {
+      "address": "0x00434DD0",
+      "class_name": "",
+      "function_name": "$E2",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T15:59:03"
+    },
+    {
+      "address": "0x004350D0",
+      "class_name": "",
+      "function_name": "InitDisplayEngine_InitGraphics",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:00:55"
+    },
+    {
+      "address": "0x00436A80",
+      "class_name": "",
+      "function_name": "Vector_EraseAndMove",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T16:01:23"
+    },
+    {
+      "address": "0x00436AC0",
+      "class_name": "",
+      "function_name": "Vector_InsertN",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:11:12"
+    },
+    {
+      "address": "0x0043A2A0",
+      "class_name": "",
+      "function_name": "ShowOnScreenMessage_FormatDisplay",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:18:30"
+    },
+    {
+      "address": "0x0043A2A0",
+      "class_name": "",
+      "function_name": "ShowOnScreenMessage_FormatDisplay",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:24:16"
+    },
+    {
+      "address": "0x0043A570",
+      "class_name": "",
+      "function_name": "NHeroInformationScreens_Destructor",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:33:34"
+    },
+    {
+      "address": "0x0043F510",
+      "class_name": "",
+      "function_name": "FreePointerArray",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T16:34:00"
+    },
+    {
+      "address": "0x0043F560",
+      "class_name": "",
+      "function_name": "Vector_FreeElementPointers",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T16:34:21"
+    },
+    {
+      "address": "0x00440550",
+      "class_name": "",
+      "function_name": "Buffer_MoveData",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T16:34:59"
+    },
+    {
+      "address": "0x00440590",
+      "class_name": "",
+      "function_name": "Buffer_Relocate",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-27T16:36:07"
+    },
+    {
+      "address": "0x004408A0",
+      "class_name": "",
+      "function_name": "Std_Vector_Insert_Range",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:37:03"
+    },
+    {
+      "address": "0x00440B40",
+      "class_name": "",
+      "function_name": "Vector_DestructStringRange",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:38:23"
+    },
+    {
+      "address": "0x00440C00",
+      "class_name": "",
+      "function_name": "Vector_CopyPairRange",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:41:50"
+    },
+    {
+      "address": "0x00440D70",
+      "class_name": "",
+      "function_name": "Vector_EraseRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-27T16:42:32"
+    },
+    {
+      "address": "0x008A9100",
+      "class_name": "",
+      "function_name": "?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T22:02:14"
+    },
+    {
+      "address": "0x008A9100",
+      "class_name": "",
+      "function_name": "?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T22:11:36"
+    },
+    {
+      "address": "0x008A86C0",
+      "class_name": "",
+      "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T22:48:15"
+    },
+    {
+      "address": "0x008A86C0",
+      "class_name": "",
+      "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T22:56:01"
+    },
+    {
+      "address": "0x008A9AE0",
+      "class_name": "",
+      "function_name": "?MsgOnBoastsMade@CGameScriptInterface@@UBE_NAAV?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T23:03:07"
+    },
+    {
+      "address": "0x008A9AE0",
+      "class_name": "",
+      "function_name": "?MsgOnBoastsMade@CGameScriptInterface@@UBE_NAAV?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-27T23:09:42"
     }
   ]
 }

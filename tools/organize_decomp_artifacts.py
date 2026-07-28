@@ -86,10 +86,13 @@ def plan_address_files(
     root: Path,
     *,
     leaf: bool = False,
+    suffixes: frozenset[str] | None = None,
 ) -> None:
     if not root.exists():
         return
     for source in sorted(path for path in root.rglob("*") if path.is_file()):
+        if suffixes is not None and source.suffix.lower() not in suffixes:
+            continue
         address = address_from_filename(source)
         if address is None:
             continue
@@ -143,16 +146,27 @@ def address_from_slug(name: str, slug_addresses: dict[str, str]) -> str | None:
     return max(matches, default=(0, None))[1]
 
 
+def try_get_mtime(source: Path) -> float | None:
+    """Return a stable mtime, or None when a concurrent organizer moved it."""
+    try:
+        return source.stat().st_mtime
+    except OSError:
+        return None
+
+
 def plan_report_logs(moves: list[Move], lift_root: Path) -> None:
     for wave in WAVES:
         logs_root = lift_root / "reports" / wave / "logs"
         if not logs_root.exists():
             continue
         for source in sorted(path for path in logs_root.rglob("*") if path.is_file()):
-            day = datetime.fromtimestamp(source.stat().st_mtime).strftime("%Y-%m-%d")
+            source_mtime = try_get_mtime(source)
+            if source_mtime is None:
+                continue
+            day = datetime.fromtimestamp(source_mtime).strftime("%Y-%m-%d")
             address = report_address(source)
             if address is None:
-                hour = datetime.fromtimestamp(source.stat().st_mtime).strftime("%H")
+                hour = datetime.fromtimestamp(source_mtime).strftime("%H")
                 destination = logs_root / day / "_unassigned" / hour / source.name
             else:
                 destination = sharded_file(
@@ -223,10 +237,22 @@ def update_catalog_paths(path: Path) -> tuple[str, int]:
     return pattern.sub(replace, text), changed
 
 
+def unique_collision_path(destination: Path, label: str, digest: str) -> Path:
+    stem = destination.name + f".{label}-{digest[:16]}"
+    candidate = destination.with_name(stem)
+    sequence = 2
+    while candidate.exists():
+        candidate = destination.with_name(f"{stem}-{sequence}")
+        sequence += 1
+    return candidate
+
+
 def apply_moves(moves: list[Move], workspace: Path) -> dict[str, int]:
     moved = 0
     collisions = 0
     identical = 0
+    archived = 0
+    unresolved = 0
     for item in moves:
         source = Path(item.source)
         destination = Path(item.destination)
@@ -236,13 +262,44 @@ def apply_moves(moves: list[Move], workspace: Path) -> dict[str, int]:
             continue
         if destination.exists():
             collisions += 1
-            if source.stat().st_size == destination.stat().st_size and sha256(source) == sha256(destination):
+            source_digest = sha256(source)
+            destination_digest = sha256(destination)
+            if (
+                source.stat().st_size == destination.stat().st_size and
+                source_digest == destination_digest
+            ):
                 identical += 1
+                duplicate = unique_collision_path(
+                    destination, "duplicate", source_digest)
+                duplicate.parent.mkdir(parents=True, exist_ok=True)
+                shutil.move(str(source), str(duplicate))
+                archived += 1
+                continue
+            if item.category != "agent-source":
+                incoming = unique_collision_path(
+                    destination, "incoming", source_digest)
+                incoming.parent.mkdir(parents=True, exist_ok=True)
+                shutil.move(str(source), str(incoming))
+                archived += 1
+                continue
+            previous = unique_collision_path(
+                destination, "collision", destination_digest)
+            previous.parent.mkdir(parents=True, exist_ok=True)
+            shutil.move(str(destination), str(previous))
+            shutil.move(str(source), str(destination))
+            moved += 1
+            archived += 1
             continue
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.move(str(source), str(destination))
         moved += 1
-    return {"moved": moved, "collisions": collisions, "identical_collisions": identical}
+    return {
+        "moved": moved,
+        "collisions": collisions,
+        "identical_collisions": identical,
+        "archived_collisions": archived,
+        "unresolved_collisions": unresolved,
+    }
 
 
 def relative_or_blank(path: Path | None, root: Path) -> str:
@@ -370,6 +427,7 @@ def main() -> int:
             moves,
             "agent-source",
             lift_root / "reports" / wave / "code",
+            suffixes=frozenset({".cpp"}),
         )
     plan_report_logs(moves, lift_root)
     plan_transcripts(moves, lift_root)
@@ -382,16 +440,19 @@ def main() -> int:
         moves,
         "candidate-snapshot",
         rebuild / "candidates" / "snapshots",
+        suffixes=frozenset({".cpp"}),
     )
     plan_address_files(
         moves,
         "compiled-source",
         rebuild / "src" / "compiled",
+        suffixes=frozenset({".cpp"}),
     )
     plan_address_files(
         moves,
         "behavior-test",
         rebuild / "tests",
+        suffixes=frozenset({".cpp"}),
     )
     plan_address_files(
         moves,
@@ -415,7 +476,13 @@ def main() -> int:
 
     catalog = rebuild / "build_candidates.ps1"
     catalog_text, catalog_updates = update_catalog_paths(catalog)
-    results = {"moved": 0, "collisions": 0, "identical_collisions": 0}
+    results = {
+        "moved": 0,
+        "collisions": 0,
+        "identical_collisions": 0,
+        "archived_collisions": 0,
+        "unresolved_collisions": 0,
+    }
     if args.apply:
         results = apply_moves(moves, root)
         if catalog_updates:
@@ -439,11 +506,12 @@ def main() -> int:
         print(
             f"mode={summary['mode']} planned={summary['planned_moves']} "
             f"moved={summary['moved']} collisions={summary['collisions']} "
+            f"archived={summary['archived_collisions']} "
             f"catalog_updates={summary['catalog_path_updates']}"
         )
         for category, count in sorted(categories.items()):
             print(f"  {category}: {count}")
-    if args.apply and results["collisions"]:
+    if args.apply and results["unresolved_collisions"]:
         return 2
     return 0
 

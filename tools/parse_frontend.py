@@ -52,9 +52,26 @@ SCHEMA_ALIAS = {
     "CONFIG_OPTIONS_DEFAULTS_DEF": "CConfigOptionsDefaultsDef",
 }
 
+TABLE_SPRITE_NAMES = {
+    0: "TOP_LEFT",
+    1: "TOP_RIGHT",
+    2: "BOTTOM_LEFT",
+    3: "BOTTOM_RIGHT",
+    4: "HORIZONTAL_TOP",
+    5: "HORIZONTAL_BOTTOM",
+    6: "VERTICAL_LEFT",
+    7: "VERTICAL_RIGHT",
+    8: "TEE_UP",
+    9: "TEE_DOWN",
+    10: "TEE_RIGHT",
+    11: "TEE_LEFT",
+    12: "CROSS",
+}
+
 
 def read_names(path):
-    b = open(path, "rb").read()
+    with open(path, "rb") as source:
+        b = source.read()
     magic, count = struct.unpack_from("<Ii", b, 4)
     base = 20
     names = {}  # offset (rel to end of header) -> name
@@ -68,7 +85,8 @@ def read_names(path):
 
 
 def read_bin(bin_path, names):
-    b = open(bin_path, "rb").read()
+    with open(bin_path, "rb") as source:
+        b = source.read()
     is_xbox = b[1] == 0xAA
     (count,) = struct.unpack_from("<I", b, 9)
     p = 13
@@ -230,6 +248,27 @@ def decode_ui_states(raw, schema):
     return states if pos == len(raw) else None
 
 
+def decode_table_sprites(raw):
+    """Decode map<ETableSprites, CDefIndex> from a CUIDef payload."""
+    if len(raw) < 4:
+        return None
+    count = struct.unpack_from("<I", raw)[0]
+    if len(raw) != 4 + count * 8:
+        return None
+    sprites = []
+    pos = 4
+    for _ in range(count):
+        sprite, component = struct.unpack_from("<Ii", raw, pos)
+        pos += 8
+        sprites.append({
+            "sprite": TABLE_SPRITE_NAMES.get(
+                sprite, "UNKNOWN_%u" % sprite),
+            "value": sprite,
+            "component": component,
+        })
+    return sprites
+
+
 def fval(typ, raw, schema=None, names=None):
     """Human value for a fixed-size field byte string."""
     if raw is None:
@@ -263,6 +302,10 @@ def fval(typ, raw, schema=None, names=None):
     if typ == "Vector_uint32":
         n = struct.unpack_from("<I", raw)[0]
         return list(struct.unpack_from("<%dI" % n, raw, 4))
+    if typ == "Map_JW4ETableSprites_NUISystem__":
+        decoded = decode_table_sprites(raw)
+        if decoded is not None:
+            return decoded
     if typ.startswith("Vector_CUIStateDef") and schema is not None:
         decoded = decode_ui_states(raw, schema)
         if decoded is not None:
@@ -321,7 +364,8 @@ def decode_entry(entry, schema):
 
 
 def load_all(root, schema_path, bin_name="frontend.bin"):
-    schema = json.load(open(schema_path))
+    with open(schema_path) as source:
+        schema = json.load(source)
     names, _ = read_names(
         os.path.join(root, "data", "CompiledDefs", "names.bin"))
     entries, is_xbox = read_bin(
