@@ -1,277 +1,232 @@
-#include <cstddef>
-#include <cstdint>
-#include <memory>
-#include <utility>
+void __fastcall Script_MakeThingsSpeakNumbered(CScriptBase* param_1)
+{
+    struct CScriptBase_40_Overlay
+    {
+        std::byte pad_00[0x40];
+        void* field_40;
+    };
+    static_assert(offsetof(CScriptBase_40_Overlay, field_40) == 0x40);
 
-static_assert(sizeof(void*) == 4, "This reversal models a 32-bit stack frame.");
+    struct ReturnedHandleOverlay
+    {
+        void* vftable;
+        int* field_04;
+        int* field_08;
+    };
+    static_assert(offsetof(ReturnedHandleOverlay, field_04) == 0x04);
+    static_assert(offsetof(ReturnedHandleOverlay, field_08) == 0x08);
 
-struct CScriptBase;
-struct CScriptThing;
-struct CCharString;
-struct CBase;
-struct C3DClothPrimitive;
-struct CBaseIntelligentPointer;
-struct CScriptGameResourceObjectMovieBase;
-struct CScriptGameResourceObjectScriptedThingBase;
-struct CMemoryAllocatorVariableSize;
-struct CTCCarryable;
+    using NumberedTextPair = std::pair<EHeroMorphType, CParticleMorphs::CEntry>;
 
-namespace CFileInstaller {
-struct CActiveFile;
-}
+    auto vcall = []<typename Fn>(void* object, std::size_t byteOffset) -> Fn
+    {
+        return reinterpret_cast<Fn>((*reinterpret_cast<void***>(object))[byteOffset / sizeof(void*)]);
+    };
 
-enum EHeroMorphType : int;
-struct CParticleMorphs {
-    struct CEntry;
-};
+    auto* const self40 = reinterpret_cast<CScriptBase_40_Overlay*>(param_1);
 
-using ParticleMorphPair = std::pair<EHeroMorphType, CParticleMorphs::CEntry>;
-using ParticleMorphPairAllocator = std::allocator<ParticleMorphPair>;
+    using Fn_118_NoArgs = int(__thiscall*)(void*);
+    auto* const returnedHandle =
+        reinterpret_cast<ReturnedHandleOverlay*>(vcall.operator()<Fn_118_NoArgs>(self40->field_40, 0x118)(self40->field_40));
 
-extern bool CScriptBase::IsActiveThreadTerminating(CScriptBase*);
-
-extern void List_Node_Initialize(int, int);
-extern void LTextTreeWalkThrough_dtor();
-extern void LTextTreeWalkThrough_Cleanup();
-
-extern void C3DClothPrimitive::~C3DClothPrimitive(C3DClothPrimitive*);
-extern void CBaseIntelligentPointer::CBaseIntelligentPointer(CBaseIntelligentPointer*);
-extern void CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase(CScriptGameResourceObjectMovieBase*);
-extern void CTCCarryable::OnKill(CTCCarryable*);
-extern void CFileInstaller::CActiveFile::OnReadFinished(CFileInstaller::CActiveFile*);
-extern std::uint32_t CMemoryAllocatorVariableSize::GetNoAllocatedAreas(CMemoryAllocatorVariableSize*);
-extern ParticleMorphPair* GFIntToCharString_API();
-extern void StdConsVal_ParticleMorphPair(
-    ParticleMorphPairAllocator* dst,
-    ParticleMorphPair* extraout_edx,
-    const ParticleMorphPair* value);
-extern void operator_delete(void*);
-extern void NHeroInformationScreens::CBase::CBase(CBase*);
-
-extern bool CScriptThing::_IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ(CScriptThing*);
-extern void CScriptGameResourceObjectScriptedThingBase::_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z(
-    CScriptGameResourceObjectScriptedThingBase*,
-    CScriptThing*,
-    char*,
-    CCharString*,
-    CCharString*,
-    CCharString*,
-    bool,
-    bool);
-
-extern ParticleMorphPair* GFIntToCharString_API_WithExtraoutEDX(ParticleMorphPair** extraout_edx);
-extern ParticleMorphPair* Object40_VFuncA3C_WithExtraoutEDX(
-    void* object_40,
-    int** piStack_2c,
-    int zero,
-    ParticleMorphPair** extraout_edx);
-
-template <typename T>
-static T VCall(void* object, std::size_t byte_offset) {
-    return reinterpret_cast<T>((*reinterpret_cast<void***>(object))[byte_offset / 4]);
-}
-
-struct ScriptBaseOverlay {
-    std::byte pad_00[0x40];
-    void* object_40;
-};
-static_assert(offsetof(ScriptBaseOverlay, object_40) == 0x40);
-
-struct Acquire118ResultOverlay {
-    void* unk_00;
-    int* ptr_04;
-    int* ref_08;
-};
-static_assert(offsetof(Acquire118ResultOverlay, ptr_04) == 0x04);
-static_assert(offsetof(Acquire118ResultOverlay, ref_08) == 0x08);
-
-struct SpeakTaskLocal {
-    std::byte storage[4];
-};
-static_assert(sizeof(SpeakTaskLocal) == 4);
-
-struct FunctionStackOverlay {
-    ParticleMorphPairAllocator cons_val_slot_c8;
-    std::uint32_t uStack_30;
+    void** ppuStack_28 = reinterpret_cast<void**>(&PTR__scalar_deleting_destructor__01238c8c);
+    int* piStack_24 = returnedHandle->field_04;
+    int* piStack_20 = returnedHandle->field_08;
     int* piStack_2c;
-    void* ppuStack_28;
-    int* piStack_24;
-    int* piStack_20;
-    std::uint32_t uStack_1c;
+    unsigned long uStack_1c;
     int iStack_18;
-    void* ppuStack_14;
-    SpeakTaskLocal aCStack_10;
-    std::uint32_t uStack_c;
-    std::uint32_t uStack_8;
-};
-static_assert(offsetof(FunctionStackOverlay, cons_val_slot_c8) == 0x00);
-static_assert(offsetof(FunctionStackOverlay, uStack_30) == 0x04);
-static_assert(offsetof(FunctionStackOverlay, piStack_2c) == 0x08);
-static_assert(offsetof(FunctionStackOverlay, ppuStack_28) == 0x0C);
-static_assert(offsetof(FunctionStackOverlay, piStack_24) == 0x10);
-static_assert(offsetof(FunctionStackOverlay, piStack_20) == 0x14);
-static_assert(offsetof(FunctionStackOverlay, uStack_1c) == 0x18);
-static_assert(offsetof(FunctionStackOverlay, iStack_18) == 0x1C);
-static_assert(offsetof(FunctionStackOverlay, ppuStack_14) == 0x20);
-static_assert(offsetof(FunctionStackOverlay, aCStack_10) == 0x24);
-static_assert(offsetof(FunctionStackOverlay, uStack_c) == 0x28);
-static_assert(offsetof(FunctionStackOverlay, uStack_8) == 0x2C);
+    void** ppuStack_14;
+    CScriptGameResourceObjectScriptedThingBase aCStack_10[4];
+    void* uStack_c;
+    void* uStack_8;
+    std::uint32_t uStack_30;
+    alignas(NumberedTextPair) std::byte stack0xffffffc8[sizeof(NumberedTextPair)];
+    NumberedTextPair* extraout_EDX;
+    NumberedTextPair* extraout_EDX_00;
+    std::uint32_t unaff_EDI;
 
-void __fastcall Script_MakeThingsSpeakNumbered(CScriptBase* param_1) {
-    FunctionStackOverlay frame{};
-    auto* const object_40 = reinterpret_cast<ScriptBaseOverlay*>(param_1)->object_40;
-
-    using Fn118NoArgs = std::intptr_t(__thiscall*)(void*);
-    const auto iVar3 = VCall<Fn118NoArgs>(object_40, 0x118)(object_40);
-
-    frame.ppuStack_28 = reinterpret_cast<void*>(0x01238C8C);
-    frame.piStack_24 = reinterpret_cast<Acquire118ResultOverlay*>(iVar3)->ptr_04;
-    frame.piStack_20 = reinterpret_cast<Acquire118ResultOverlay*>(iVar3)->ref_08;
-
-    if (frame.piStack_20 != nullptr) {
-        *frame.piStack_20 = *frame.piStack_20 + 1;
+    if (piStack_20 != nullptr)
+    {
+        ++*piStack_20;
     }
 
-    if (frame.piStack_24 != nullptr) {
-        using Fn300 = char(__thiscall*)(int*);
-        if (VCall<Fn300>(frame.piStack_24, 300)(frame.piStack_24) != '\0') {
-            if (CScriptBase::IsActiveThreadTerminating(param_1)) {
-LAB_00EE93A8:
-                C3DClothPrimitive::~C3DClothPrimitive(
-                    reinterpret_cast<C3DClothPrimitive*>(&frame.ppuStack_28));
+    if (piStack_24 != nullptr)
+    {
+        using Fn_12C = char(__thiscall*)(int*);
+        if (vcall.operator()<Fn_12C>(piStack_24, 0x12C)(piStack_24) != 0)
+        {
+            if (CScriptBase::IsActiveThreadTerminating(param_1))
+            {
+                C3DClothPrimitive::~C3DClothPrimitive(reinterpret_cast<C3DClothPrimitive*>(&ppuStack_28));
                 return;
             }
 
-            List_Node_Initialize(
-                static_cast<int>(reinterpret_cast<std::uintptr_t>(&frame.uStack_30) + 3),
-                static_cast<int>(reinterpret_cast<std::uintptr_t>(&frame.uStack_30) + 2));
+            List_Node_Initialize(reinterpret_cast<int>(&uStack_30) + 3, reinterpret_cast<int>(&uStack_30) + 2);
 
-            using Fn950 = void(__thiscall*)(void*, void*);
-            VCall<Fn950>(object_40, 0x950)(object_40, &frame.uStack_1c);
+            using Fn_950 = void(__thiscall*)(void*, unsigned long*);
+            vcall.operator()<Fn_950>(self40->field_40, 0x950)(self40->field_40, &uStack_1c);
 
-            if (frame.iStack_18 != 0) {
-                if (CScriptBase::IsActiveThreadTerminating(param_1)) {
+            if (iStack_18 != 0)
+            {
+                if (CScriptBase::IsActiveThreadTerminating(param_1))
+                {
                     LTextTreeWalkThrough_dtor();
-                    C3DClothPrimitive::~C3DClothPrimitive(
-                        reinterpret_cast<C3DClothPrimitive*>(&frame.ppuStack_28));
+                    C3DClothPrimitive::~C3DClothPrimitive(reinterpret_cast<C3DClothPrimitive*>(&ppuStack_28));
                     return;
                 }
 
-                using Fn5CC = void(__thiscall*)(void*, int);
-                VCall<Fn5CC>(object_40, 0x5CC)(object_40, 1);
+                using Fn_5CC = void(__thiscall*)(void*, int);
+                vcall.operator()<Fn_5CC>(self40->field_40, 0x5CC)(self40->field_40, 1);
 
                 CBaseIntelligentPointer::CBaseIntelligentPointer(
-                    reinterpret_cast<CBaseIntelligentPointer*>(&frame.ppuStack_14));
-                frame.ppuStack_14 = reinterpret_cast<void*>(0x0127094C);
-                frame.uStack_c = 0;
-                frame.uStack_8 = 0;
+                    reinterpret_cast<CBaseIntelligentPointer*>(&ppuStack_14));
+                ppuStack_14 = reinterpret_cast<void**>(&PTR__scalar_deleting_destructor__0127094c);
+                uStack_c = nullptr;
+                uStack_8 = nullptr;
 
-                using Fn020 = void(__thiscall*)(void*, int**, void*, int);
-                VCall<Fn020>(object_40, 0x20)(object_40, &frame.piStack_2c, &frame.ppuStack_14, 4);
+                using Fn_020 = void(__thiscall*)(void*, int**, void***, int);
+                vcall.operator()<Fn_020>(self40->field_40, 0x20)(self40->field_40, &piStack_2c, &ppuStack_14, 4);
 
-                std::uint32_t uVar6 = *reinterpret_cast<std::uint32_t*>(frame.uStack_1c + 8);
-                if (uVar6 != frame.uStack_1c) {
-                    do {
-                        if (CScriptBase::IsActiveThreadTerminating(param_1)) {
-LAB_00EE9391:
+                unsigned long uVar6 = *reinterpret_cast<unsigned long*>(uStack_1c + 0x08);
+                if (uVar6 != uStack_1c)
+                {
+                    do
+                    {
+                        if (CScriptBase::IsActiveThreadTerminating(param_1))
+                        {
                             CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase(
-                                reinterpret_cast<CScriptGameResourceObjectMovieBase*>(&frame.aCStack_10));
-                            CTCCarryable::OnKill(reinterpret_cast<CTCCarryable*>(&frame.uStack_1c));
+                                reinterpret_cast<CScriptGameResourceObjectMovieBase*>(aCStack_10));
+                            CTCCarryable::OnKill(reinterpret_cast<CTCCarryable*>(&uStack_1c));
                             CFileInstaller::CActiveFile::OnReadFinished(
-                                reinterpret_cast<CFileInstaller::CActiveFile*>(&frame.uStack_1c));
-                            goto LAB_00EE93A8;
+                                reinterpret_cast<CFileInstaller::CActiveFile*>(&uStack_1c));
+                            C3DClothPrimitive::~C3DClothPrimitive(reinterpret_cast<C3DClothPrimitive*>(&ppuStack_28));
+                            return;
                         }
 
-                        std::uint32_t iVar3_vftable = **reinterpret_cast<std::uint32_t**>(object_40);
+                        const int iVar3 = **reinterpret_cast<int**>(self40->field_40);
+                        const bool uVar10 = true;
+                        CCharString* pCVar9 = nullptr;
+                        auto* const ppVar4 =
+                            reinterpret_cast<NumberedTextPair*>(GFIntToCharString_API());
 
-                        ParticleMorphPair* extraout_EDX = nullptr;
-                        ParticleMorphPair* const ppVar4 =
-                            GFIntToCharString_API_WithExtraoutEDX(&extraout_EDX);
+                        reinterpret_cast<void(__thiscall*)(void*)>(iVar3 + 0x1C4)(self40->field_40);
 
-                        reinterpret_cast<void(__thiscall*)(void*)>(
-                            *reinterpret_cast<void**>(iVar3_vftable + 0x1C4))(object_40);
+                        std::_Cons_val<
+                            std::allocator<NumberedTextPair>,
+                            NumberedTextPair,
+                            const NumberedTextPair&>(
+                            reinterpret_cast<std::allocator<NumberedTextPair>*>(stack0xffffffc8),
+                            extraout_EDX,
+                            ppVar4);
 
-                        StdConsVal_ParticleMorphPair(&frame.cons_val_slot_c8, extraout_EDX, ppVar4);
+                        CCharString* pCVar8 = nullptr;
+                        char* pcVar7 = reinterpret_cast<char*>(1);
 
-                        using Fn118WithArgs = CScriptThing*(__thiscall*)(void*, std::uint32_t, int, int);
-                        CScriptThing* const pCVar5 =
-                            VCall<Fn118WithArgs>(object_40, 0x118)(
-                                object_40,
+                        using Fn_118_WithArgs = CScriptThing*(__thiscall*)(void*, std::uint32_t, int, int);
+                        auto* const pCVar5 =
+                            vcall.operator()<Fn_118_WithArgs>(self40->field_40, 0x118)(
+                                self40->field_40,
                                 *reinterpret_cast<std::uint32_t*>(uVar6 + 0x10),
                                 0,
                                 0);
 
-                        CCharString* const pCVar8 = nullptr;
-                        CCharString* const pCVar9 = nullptr;
-                        char* const pcVar7 = reinterpret_cast<char*>(1);
-                        const bool uVar10 = true;
-                        std::uint32_t unaff_EDI;
-                        CScriptGameResourceObjectScriptedThingBase::_Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z(
-                            reinterpret_cast<CScriptGameResourceObjectScriptedThingBase*>(&frame.aCStack_10),
-                            pCVar5,
-                            pcVar7,
-                            pCVar8,
-                            reinterpret_cast<CCharString*>(ppVar4),
-                            pCVar9,
-                            uVar10,
-                            static_cast<bool>(static_cast<std::uint8_t>(unaff_EDI)));
+                        CScriptGameResourceObjectScriptedThingBase::
+                            _Speak_CScriptGameResourceObjectScriptedThingBase__UAEXABVCScriptThing__KW4ETextGroupSelectionMethod___N22_Z(
+                                aCStack_10,
+                                pCVar5,
+                                pcVar7,
+                                pCVar8,
+                                reinterpret_cast<CCharString*>(ppVar4),
+                                pCVar9,
+                                uVar10,
+                                static_cast<bool>(static_cast<unsigned char>(unaff_EDI)));
 
                         if (CScriptThing::_IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ(
-                                reinterpret_cast<CScriptThing*>(&frame.aCStack_10))) {
-                            do {
-                                using Fn01C = void(__thiscall*)(void*);
-                                VCall<Fn01C>(object_40, 0x1C)(object_40);
+                                reinterpret_cast<CScriptThing*>(aCStack_10)))
+                        {
+                            do
+                            {
+                                using Fn_01C = void(__thiscall*)(void*);
+                                vcall.operator()<Fn_01C>(self40->field_40, 0x1C)(self40->field_40);
 
-                                if (CScriptBase::IsActiveThreadTerminating(param_1)) {
-                                    goto LAB_00EE9391;
+                                if (CScriptBase::IsActiveThreadTerminating(param_1))
+                                {
+                                    CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase(
+                                        reinterpret_cast<CScriptGameResourceObjectMovieBase*>(aCStack_10));
+                                    CTCCarryable::OnKill(reinterpret_cast<CTCCarryable*>(&uStack_1c));
+                                    CFileInstaller::CActiveFile::OnReadFinished(
+                                        reinterpret_cast<CFileInstaller::CActiveFile*>(&uStack_1c));
+                                    C3DClothPrimitive::~C3DClothPrimitive(
+                                        reinterpret_cast<C3DClothPrimitive*>(&ppuStack_28));
+                                    return;
                                 }
                             } while (CScriptThing::_IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase__UBE_NXZ(
-                                reinterpret_cast<CScriptThing*>(&frame.aCStack_10)));
+                                reinterpret_cast<CScriptThing*>(aCStack_10)));
                         }
 
-                        if (CScriptBase::IsActiveThreadTerminating(param_1)) {
-                            goto LAB_00EE9391;
+                        if (CScriptBase::IsActiveThreadTerminating(param_1))
+                        {
+                            CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase(
+                                reinterpret_cast<CScriptGameResourceObjectMovieBase*>(aCStack_10));
+                            CTCCarryable::OnKill(reinterpret_cast<CTCCarryable*>(&uStack_1c));
+                            CFileInstaller::CActiveFile::OnReadFinished(
+                                reinterpret_cast<CFileInstaller::CActiveFile*>(&uStack_1c));
+                            C3DClothPrimitive::~C3DClothPrimitive(reinterpret_cast<C3DClothPrimitive*>(&ppuStack_28));
+                            return;
                         }
 
-                        CMemoryAllocatorVariableSize* const this_ =
-                            reinterpret_cast<CMemoryAllocatorVariableSize*>(uVar6);
-                        uVar6 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this_);
-                    } while (uVar6 != frame.uStack_1c);
+                        uVar6 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(
+                            reinterpret_cast<CMemoryAllocatorVariableSize*>(uVar6));
+                    } while (uVar6 != uStack_1c);
                 }
 
-                if (CScriptBase::IsActiveThreadTerminating(param_1)) {
-                    goto LAB_00EE9391;
+                if (CScriptBase::IsActiveThreadTerminating(param_1))
+                {
+                    CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase(
+                        reinterpret_cast<CScriptGameResourceObjectMovieBase*>(aCStack_10));
+                    CTCCarryable::OnKill(reinterpret_cast<CTCCarryable*>(&uStack_1c));
+                    CFileInstaller::CActiveFile::OnReadFinished(
+                        reinterpret_cast<CFileInstaller::CActiveFile*>(&uStack_1c));
+                    C3DClothPrimitive::~C3DClothPrimitive(reinterpret_cast<C3DClothPrimitive*>(&ppuStack_28));
+                    return;
                 }
 
-                VCall<Fn5CC>(object_40, 0x5CC)(object_40, 0);
+                vcall.operator()<Fn_5CC>(self40->field_40, 0x5CC)(self40->field_40, 0);
                 CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase(
-                    reinterpret_cast<CScriptGameResourceObjectMovieBase*>(&frame.aCStack_10));
+                    reinterpret_cast<CScriptGameResourceObjectMovieBase*>(aCStack_10));
             }
 
             LTextTreeWalkThrough_Cleanup();
         }
     }
 
-    frame.piStack_2c = nullptr;
+    const int iVar3 = **reinterpret_cast<int**>(self40->field_40);
 
-    ParticleMorphPair* extraout_EDX_00 = nullptr;
-    ParticleMorphPair* const ppVar4 =
-        Object40_VFuncA3C_WithExtraoutEDX(object_40, &frame.piStack_2c, 0, &extraout_EDX_00);
+    using Fn_A3C = NumberedTextPair*(__thiscall*)(void*, int**, int);
+    auto* const ppVar4 =
+        reinterpret_cast<Fn_A3C>(iVar3 + 0xA3C)(self40->field_40, &piStack_2c, 0);
 
-    using Fn464 = void(__thiscall*)(void*);
-    VCall<Fn464>(object_40, 0x464)(object_40);
+    reinterpret_cast<void(__thiscall*)(void*)>(iVar3 + 0x464)(self40->field_40);
 
-    StdConsVal_ParticleMorphPair(&frame.cons_val_slot_c8, extraout_EDX_00, ppVar4);
+    std::_Cons_val<
+        std::allocator<NumberedTextPair>,
+        NumberedTextPair,
+        const NumberedTextPair&>(
+        reinterpret_cast<std::allocator<NumberedTextPair>*>(stack0xffffffc8),
+        extraout_EDX_00,
+        ppVar4);
 
-    if (frame.piStack_2c != nullptr) {
-        *frame.piStack_2c = *frame.piStack_2c + -1;
-        if (*frame.piStack_2c == 0) {
-            reinterpret_cast<void(__thiscall*)(int*)>(frame.piStack_2c[1])(frame.piStack_2c);
-            operator_delete(frame.piStack_2c);
+    if (piStack_2c != nullptr)
+    {
+        --*piStack_2c;
+        if (*piStack_2c == 0)
+        {
+            reinterpret_cast<void(__thiscall*)(int*)>(piStack_2c[1])(piStack_2c);
+            operator_delete(piStack_2c);
         }
     }
 
-    frame.uStack_30 = 0;
-    frame.piStack_2c = nullptr;
-    NHeroInformationScreens::CBase::CBase(reinterpret_cast<CBase*>(&frame.uStack_30));
+    uStack_30 = 0;
+    piStack_2c = nullptr;
+    NHeroInformationScreens::CBase::CBase(reinterpret_cast<CBase*>(&uStack_30));
 }

@@ -56,19 +56,7 @@ struct FableD3DLockedRectangle
     void* bits;
 };
 
-struct FableVisualVertex
-{
-    float x;
-    float y;
-    float z;
-    float rhw;
-    fable_u32 diffuseColour;
-    fable_u32 specularColour;
-    float u;
-    float v;
-};
-
-FABLE_STATIC_ASSERT(sizeof(FableVisualVertex) == 0x20);
+typedef FableRender2DSpriteVertex FableVisualVertex;
 
 typedef FableD3DResult (FABLE_STDCALL *FableD3DRelease)(
     void* object);
@@ -176,6 +164,9 @@ namespace
     const FableD3DDword kD3DClearTarget = 1;
     const FableD3DDword kD3DClearZBuffer = 2;
     const FableD3DDword kD3DFvfXyzRhwColourTexture1 = 0x1C4;
+    const fable_i32 kMainMenuRowYOffsets[7] = {
+        0, 30, 60, 120, 180, 210, 240
+    };
     const fable_u32 kDetailRowCounts[3] = {10, 3, 10};
     const fable_u32 kDetailValueCounts[3][10] = {
         {2, 2, 2, 10, 2, 16, 2, 2, 2, 2},
@@ -204,6 +195,36 @@ namespace
     FableD3DTexture9* g_CoastalSunbeamTexture = 0;
     FableD3DTexture9* g_OptionsTexture = 0;
     FableD3DTexture9* g_HelpersTexture = 0;
+    FableD3DTexture9* g_TitleSegmentTexture = 0;
+    FableD3DTexture9* g_ButtonLeftTexture = 0;
+    FableD3DTexture9* g_ButtonMiddleTexture = 0;
+    FableD3DTexture9* g_ButtonRightTexture = 0;
+    FableUiCountedComponent g_TitleRuleComponentStorage[3] = {};
+    FableUiComponentLifetimeCounters g_TitleRuleLifetime = {};
+    FableUiGeneratedComponentVector g_TitleRuleComponents = {
+        g_TitleRuleComponentStorage,
+        0,
+        3,
+        &g_TitleRuleLifetime
+    };
+    FableUiCountedComponent g_OptionsButtonComponentStorage[3] = {};
+    FableUiComponentLifetimeCounters g_OptionsButtonLifetime = {};
+    FableUiGeneratedComponentVector g_OptionsButtonComponents = {
+        g_OptionsButtonComponentStorage,
+        0,
+        3,
+        &g_OptionsButtonLifetime
+    };
+    FableUiCountedComponent g_MainMenuBigButtonComponentStorage[3] = {};
+    FableUiComponentLifetimeCounters g_MainMenuBigButtonLifetime = {};
+    FableUiGeneratedComponentVector g_MainMenuBigButtonComponents = {
+        g_MainMenuBigButtonComponentStorage,
+        0,
+        3,
+        &g_MainMenuBigButtonLifetime
+    };
+    FableUiRuntimeListChild g_MainMenuRowChildren[7] = {};
+    FableUiRuntimeListChild g_OptionsRowChildren[4] = {};
     CRenderManagerCoreAttachTextureView g_RenderManagerCore = {};
     fable_u32 g_DisplayManagerWindowStorage[0x214 / 4] = {};
     fable_u8 g_RenderStateManagerStorage[0x3A3C] = {};
@@ -217,6 +238,8 @@ namespace
     fable_i32 g_MenuHeight = 0;
     fable_i32 g_OptionsWidth = 0;
     fable_i32 g_OptionsHeight = 0;
+    fable_i32 g_TitleSegmentWidth = 0;
+    fable_i32 g_TitleSegmentHeight = 0;
     FableD3DDword g_AnimationStartTick = 0;
     FableD3DDword g_ForestTransitionStart = 0;
     FableD3DDword g_SunbeamTransitionStart = 0;
@@ -227,6 +250,7 @@ namespace
     fable_u32 g_AnimationRandomState = 0x4C494F4Eu;
     fable_u32 g_MainMenuSelection = 0;
     fable_u32 g_OptionsSelection = 0;
+    fable_u32 g_SaveSelection = 0;
     fable_u32 g_DetailScreen = 0;
     fable_u32 g_DetailOptionValues[3][10] = {};
     fable_u32 g_RedefineHover = 0;
@@ -236,6 +260,7 @@ namespace
     fable_u32 g_QuitHover = 0;
     bool g_MainMenuActive = false;
     bool g_OptionsMenuActive = false;
+    bool g_SaveMenuActive = false;
     bool g_OptionsBackHovered = false;
     bool g_QuitPromptActive = false;
     bool g_Presented = false;
@@ -578,6 +603,251 @@ namespace
         return index + value;
     }
 
+    bool InitialiseTitleRuleComponents(
+        fable_i32 segmentWidth,
+        fable_i32 segmentHeight)
+    {
+        if (
+            segmentWidth <= 0 ||
+            segmentHeight <= 0 ||
+            640 % segmentWidth != 0)
+        {
+            return false;
+        }
+
+        memset(
+            g_TitleRuleComponentStorage,
+            0,
+            sizeof(g_TitleRuleComponentStorage));
+        memset(
+            &g_TitleRuleLifetime,
+            0,
+            sizeof(g_TitleRuleLifetime));
+        g_TitleRuleComponents.size = 0;
+
+        FableUiTableRuntimeInput input = {};
+        input.geometry.availableSpriteMask =
+            (1UL << 0) |
+            (1UL << 1) |
+            (1UL << 4);
+        input.geometry.horizontalRepeatCount =
+            static_cast<unsigned long>(640 / segmentWidth);
+        input.geometry.horizontalEdgeSize.x =
+            static_cast<float>(segmentWidth);
+        input.geometry.horizontalEdgeSize.y =
+            static_cast<float>(segmentHeight);
+        input.geometry.cornerSize[0] =
+            input.geometry.horizontalEdgeSize;
+        input.geometry.cornerSize[1] =
+            input.geometry.horizontalEdgeSize;
+
+        const unsigned int spriteKeys[3] = {0, 1, 4};
+        for (unsigned int index = 0; index != 3; ++index)
+        {
+            const unsigned int spriteKey = spriteKeys[index];
+            input.sprite[spriteKey].definitionId = 122;
+            input.sprite[spriteKey].size =
+                input.geometry.horizontalEdgeSize;
+        }
+        return FableConstructUiTableComponents(
+            &input,
+            &g_TitleRuleComponents);
+    }
+
+    bool InitialiseButtonComponents(
+        fable_i32 totalWidth,
+        FableUiCountedComponent* storage,
+        FableUiComponentLifetimeCounters* lifetime,
+        FableUiGeneratedComponentVector* components,
+        fable_i32 leftWidth,
+        fable_i32 leftHeight,
+        fable_i32 middleWidth,
+        fable_i32 middleHeight,
+        fable_i32 rightWidth,
+        fable_i32 rightHeight)
+    {
+        const fable_i32 innerWidth =
+            totalWidth - leftWidth - rightWidth;
+        if (
+            storage == 0 ||
+            lifetime == 0 ||
+            components == 0 ||
+            leftWidth <= 0 ||
+            leftHeight <= 0 ||
+            middleWidth <= 0 ||
+            middleHeight <= 0 ||
+            rightWidth <= 0 ||
+            rightHeight <= 0 ||
+            innerWidth <= 0 ||
+            innerWidth % middleWidth != 0)
+        {
+            return false;
+        }
+
+        memset(
+            storage,
+            0,
+            sizeof(FableUiCountedComponent) * 3);
+        memset(
+            lifetime,
+            0,
+            sizeof(*lifetime));
+        components->size = 0;
+
+        FableUiTableRuntimeInput input = {};
+        input.geometry.availableSpriteMask =
+            (1UL << 0) |
+            (1UL << 1) |
+            (1UL << 4);
+        input.geometry.horizontalRepeatCount =
+            static_cast<unsigned long>(innerWidth / middleWidth);
+        input.geometry.horizontalEdgeSize.x =
+            static_cast<float>(middleWidth);
+        input.geometry.horizontalEdgeSize.y =
+            static_cast<float>(middleHeight);
+        input.geometry.cornerSize[0].x =
+            static_cast<float>(leftWidth);
+        input.geometry.cornerSize[0].y =
+            static_cast<float>(leftHeight);
+        input.geometry.cornerSize[1].x =
+            static_cast<float>(rightWidth);
+        input.geometry.cornerSize[1].y =
+            static_cast<float>(rightHeight);
+
+        input.sprite[0].definitionId = 129;
+        input.sprite[0].size = input.geometry.cornerSize[0];
+        input.sprite[1].definitionId = 130;
+        input.sprite[1].size = input.geometry.cornerSize[1];
+        input.sprite[4].definitionId = 131;
+        input.sprite[4].size =
+            input.geometry.horizontalEdgeSize;
+        return FableConstructUiTableComponents(
+            &input,
+            components);
+    }
+
+    void InitialiseMainMenuRowStates()
+    {
+        memset(
+            g_MainMenuRowChildren,
+            0,
+            sizeof(g_MainMenuRowChildren));
+        for (unsigned int child = 0; child != 7; ++child)
+        {
+            FableUiRuntimeListChild& row =
+                g_MainMenuRowChildren[child];
+            row.states.stateMask = 0x1F;
+            for (unsigned int state = 0; state != 5; ++state)
+            {
+                CUIStateRecoveredLayout& retailState =
+                    row.states.state[state];
+                retailState.stateChangeFlag = 7;
+                retailState.position.x =
+                    state == 2 ? 0.0f : 120.0f;
+                row.states.state[state].zoom.x = 1.0f;
+                row.states.state[state].zoom.y = 1.0f;
+                retailState.colour.red = 255;
+                retailState.colour.green = 255;
+                retailState.colour.blue = 255;
+                retailState.colour.alpha =
+                    state == 2 ? 0 : 255;
+                retailState.updateTime =
+                    state == 2 ? 0.2f : -1.0f;
+            }
+            row.currentState = child == 0 ? 3 : 0;
+            row.currentColour =
+                row.states.state[row.currentState].colour;
+        }
+    }
+
+    void ApplyMainMenuRowState(
+        unsigned int child,
+        unsigned long state)
+    {
+        if (
+            child >= 7 ||
+            state >= 7 ||
+            (
+                g_MainMenuRowChildren[child].states.stateMask &
+                (1u << state)
+            ) == 0)
+        {
+            return;
+        }
+        FableUiRuntimeListChild& row =
+            g_MainMenuRowChildren[child];
+        const CUIStateRecoveredLayout& retailState =
+            row.states.state[state];
+        row.currentState = state;
+        // The row atlas is authored at the retail state-0 text position
+        // x=120, so live CUIState positions are applied as deltas.
+        row.currentPosition.x =
+            retailState.position.x - 120.0f;
+        row.currentPosition.y =
+            retailState.position.y;
+        row.currentColour = retailState.colour;
+    }
+
+    void InitialiseOptionsRowStates()
+    {
+        memset(
+            g_OptionsRowChildren,
+            0,
+            sizeof(g_OptionsRowChildren));
+        for (unsigned int child = 0; child != 4; ++child)
+        {
+            FableUiRuntimeListChild& row =
+                g_OptionsRowChildren[child];
+            row.states.stateMask = 0x1F;
+            for (unsigned int state = 0; state != 5; ++state)
+            {
+                CUIStateRecoveredLayout& retailState =
+                    row.states.state[state];
+                retailState.stateChangeFlag = 7;
+                retailState.position.x =
+                    state == 2 ? 0.0f : 120.0f;
+                retailState.zoom.x = 1.0f;
+                retailState.zoom.y = 1.0f;
+                retailState.colour.red = 255;
+                retailState.colour.green = 255;
+                retailState.colour.blue = 255;
+                retailState.colour.alpha =
+                    state == 2 ? 0 : 255;
+                retailState.updateTime =
+                    state == 2 ? 0.2f : -1.0f;
+            }
+            row.currentState = child == 0 ? 3 : 0;
+            row.currentColour =
+                row.states.state[row.currentState].colour;
+        }
+    }
+
+    void ApplyOptionsRowState(
+        unsigned int child,
+        unsigned long state)
+    {
+        if (
+            child >= 4 ||
+            state >= 7 ||
+            (
+                g_OptionsRowChildren[child].states.stateMask &
+                (1u << state)
+            ) == 0)
+        {
+            return;
+        }
+        FableUiRuntimeListChild& row =
+            g_OptionsRowChildren[child];
+        const CUIStateRecoveredLayout& retailState =
+            row.states.state[state];
+        row.currentState = state;
+        row.currentPosition.x =
+            retailState.position.x - 120.0f;
+        row.currentPosition.y =
+            retailState.position.y;
+        row.currentColour = retailState.colour;
+    }
+
     class VisualRender2DAdapter : public IRender2DDrawListAdapter
     {
     public:
@@ -792,6 +1062,34 @@ namespace
                 {
                     selectedTexture = g_HelpersTexture;
                 }
+                else if (
+                    argument1 ==
+                    reinterpret_cast<fable_u32>(
+                        g_TitleSegmentTexture))
+                {
+                    selectedTexture = g_TitleSegmentTexture;
+                }
+                else if (
+                    argument1 ==
+                    reinterpret_cast<fable_u32>(
+                        g_ButtonLeftTexture))
+                {
+                    selectedTexture = g_ButtonLeftTexture;
+                }
+                else if (
+                    argument1 ==
+                    reinterpret_cast<fable_u32>(
+                        g_ButtonMiddleTexture))
+                {
+                    selectedTexture = g_ButtonMiddleTexture;
+                }
+                else if (
+                    argument1 ==
+                    reinterpret_cast<fable_u32>(
+                        g_ButtonRightTexture))
+                {
+                    selectedTexture = g_ButtonRightTexture;
+                }
                 CTextureAttachView texture = {selectedTexture};
                 attachedTexture_ = selectedTexture;
                 g_RenderManagerCore.AttachTextureToStage(
@@ -972,7 +1270,27 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     fable_i32 helpersHeight,
     fable_i32 helpersPitch,
     fable_u32 helpersBitsPerPixel,
-    const void* helpersPixels)
+    const void* helpersPixels,
+    fable_i32 titleSegmentWidth,
+    fable_i32 titleSegmentHeight,
+    fable_i32 titleSegmentPitch,
+    fable_u32 titleSegmentBitsPerPixel,
+    const void* titleSegmentPixels,
+    fable_i32 buttonLeftWidth,
+    fable_i32 buttonLeftHeight,
+    fable_i32 buttonLeftPitch,
+    fable_u32 buttonLeftBitsPerPixel,
+    const void* buttonLeftPixels,
+    fable_i32 buttonMiddleWidth,
+    fable_i32 buttonMiddleHeight,
+    fable_i32 buttonMiddlePitch,
+    fable_u32 buttonMiddleBitsPerPixel,
+    const void* buttonMiddlePixels,
+    fable_i32 buttonRightWidth,
+    fable_i32 buttonRightHeight,
+    fable_i32 buttonRightPitch,
+    fable_u32 buttonRightBitsPerPixel,
+    const void* buttonRightPixels)
 {
     FableShutdownVisualD3D9();
     g_DeviceWindow = window;
@@ -1109,6 +1427,54 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 helpersPixels,
                 true,
                 true)
+        ) ||
+        (
+            titleSegmentPixels != 0 &&
+            !UploadArtwork(
+                g_TitleSegmentTexture,
+                titleSegmentWidth,
+                titleSegmentHeight,
+                titleSegmentPitch,
+                titleSegmentBitsPerPixel,
+                titleSegmentPixels,
+                true,
+                true)
+        ) ||
+        (
+            buttonLeftPixels != 0 &&
+            !UploadArtwork(
+                g_ButtonLeftTexture,
+                buttonLeftWidth,
+                buttonLeftHeight,
+                buttonLeftPitch,
+                buttonLeftBitsPerPixel,
+                buttonLeftPixels,
+                true,
+                true)
+        ) ||
+        (
+            buttonMiddlePixels != 0 &&
+            !UploadArtwork(
+                g_ButtonMiddleTexture,
+                buttonMiddleWidth,
+                buttonMiddleHeight,
+                buttonMiddlePitch,
+                buttonMiddleBitsPerPixel,
+                buttonMiddlePixels,
+                true,
+                true)
+        ) ||
+        (
+            buttonRightPixels != 0 &&
+            !UploadArtwork(
+                g_ButtonRightTexture,
+                buttonRightWidth,
+                buttonRightHeight,
+                buttonRightPitch,
+                buttonRightBitsPerPixel,
+                buttonRightPixels,
+                true,
+                true)
         ))
     {
         FableShutdownVisualD3D9();
@@ -1150,7 +1516,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
         (
             g_MenuTexture != 0 &&
             (
-                g_MenuWidth != 640 ||
+                (g_MenuWidth != 640 && g_MenuWidth != 1280) ||
                 g_MenuHeight != 3360 ||
                 coastalWidth != 640 ||
                 (coastalHeight != 1920 && coastalHeight != -1920) ||
@@ -1167,13 +1533,37 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     }
     if (
         (g_OptionsTexture == 0) != (g_HelpersTexture == 0) ||
+        (g_OptionsTexture == 0) != (g_TitleSegmentTexture == 0) ||
+        (g_OptionsTexture == 0) != (g_ButtonLeftTexture == 0) ||
+        (g_OptionsTexture == 0) != (g_ButtonMiddleTexture == 0) ||
+        (g_OptionsTexture == 0) != (g_ButtonRightTexture == 0) ||
         (
             g_OptionsTexture != 0 &&
             (
-                optionsWidth != 1024 ||
+                optionsWidth != 1664 ||
                 (optionsHeight != 3840 && optionsHeight != -3840) ||
                 helpersWidth != 640 ||
-                (helpersHeight != 2880 && helpersHeight != -2880)
+                (helpersHeight != 2880 && helpersHeight != -2880) ||
+                titleSegmentWidth != 8 ||
+                (
+                    titleSegmentHeight != 64 &&
+                    titleSegmentHeight != -64
+                ) ||
+                buttonLeftWidth != 64 ||
+                (
+                    buttonLeftHeight != 64 &&
+                    buttonLeftHeight != -64
+                ) ||
+                buttonMiddleWidth != 8 ||
+                (
+                    buttonMiddleHeight != 64 &&
+                    buttonMiddleHeight != -64
+                ) ||
+                buttonRightWidth != 64 ||
+                (
+                    buttonRightHeight != 64 &&
+                    buttonRightHeight != -64
+                )
             )
         ))
     {
@@ -1185,9 +1575,58 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
         g_OptionsWidth = optionsWidth;
         g_OptionsHeight =
             optionsHeight < 0 ? -optionsHeight : optionsHeight;
+        g_TitleSegmentWidth = titleSegmentWidth;
+        g_TitleSegmentHeight =
+            titleSegmentHeight < 0
+                ? -titleSegmentHeight
+                : titleSegmentHeight;
+        if (!InitialiseTitleRuleComponents(
+                g_TitleSegmentWidth,
+                g_TitleSegmentHeight) ||
+            !InitialiseButtonComponents(
+                280,
+                g_OptionsButtonComponentStorage,
+                &g_OptionsButtonLifetime,
+                &g_OptionsButtonComponents,
+                buttonLeftWidth,
+                buttonLeftHeight < 0
+                    ? -buttonLeftHeight
+                    : buttonLeftHeight,
+                buttonMiddleWidth,
+                buttonMiddleHeight < 0
+                    ? -buttonMiddleHeight
+                    : buttonMiddleHeight,
+                buttonRightWidth,
+                buttonRightHeight < 0
+                    ? -buttonRightHeight
+                    : buttonRightHeight) ||
+            !InitialiseButtonComponents(
+                400,
+                g_MainMenuBigButtonComponentStorage,
+                &g_MainMenuBigButtonLifetime,
+                &g_MainMenuBigButtonComponents,
+                buttonLeftWidth,
+                buttonLeftHeight < 0
+                    ? -buttonLeftHeight
+                    : buttonLeftHeight,
+                buttonMiddleWidth,
+                buttonMiddleHeight < 0
+                    ? -buttonMiddleHeight
+                    : buttonMiddleHeight,
+                buttonRightWidth,
+                buttonRightHeight < 0
+                    ? -buttonRightHeight
+                    : buttonRightHeight))
+        {
+            FableShutdownVisualD3D9();
+            return false;
+        }
     }
     g_MainMenuSelection = 0;
+    InitialiseMainMenuRowStates();
     g_OptionsSelection = 0;
+    g_SaveSelection = 0;
+    InitialiseOptionsRowStates();
     g_DetailScreen = 0;
     memset(g_DetailOptionValues, 0, sizeof(g_DetailOptionValues));
     g_RedefineHover = 0;
@@ -1200,6 +1639,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     g_QuitHover = 0;
     g_MainMenuActive = false;
     g_OptionsMenuActive = false;
+    g_SaveMenuActive = false;
     g_OptionsBackHovered = false;
     g_QuitPromptActive = false;
     g_AnimationStartTick = 0;
@@ -1294,7 +1734,7 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     if (g_MainMenuActive)
     {
         overlayTexture = g_MenuTexture;
-        overlayWidth = g_MenuWidth;
+        overlayWidth = 640;
         overlayHeight = 480;
         overlayFrame = g_MainMenuSelection;
         overlayFrameCount = 7;
@@ -1305,6 +1745,14 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         overlayWidth = 640;
         overlayHeight = 480;
         overlayFrame = g_OptionsSelection;
+        overlayFrameCount = 8;
+    }
+    else if (g_SaveMenuActive)
+    {
+        overlayTexture = g_OptionsTexture;
+        overlayWidth = 640;
+        overlayHeight = 480;
+        overlayFrame = 4 + g_SaveSelection;
         overlayFrameCount = 8;
     }
     else if (g_DetailScreen != 0)
@@ -1333,8 +1781,8 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     const float titleBottom =
         titleTop + overlayHeight * designScaleY;
 
-    FableVisualVertex vertices[96];
-    FableRender2DPlanRecord records[32];
+    FableVisualVertex vertices[128];
+    FableRender2DPlanRecord records[48];
     fable_u32 vertexCount = 0;
     fable_u32 recordCount = 0;
     const bool coastalBackground =
@@ -1446,8 +1894,149 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             0.0f, 0.0f, 1.0f, 1.0f,
             0xFFFFFFFFu);
     }
+    if (
+        (g_OptionsMenuActive || g_SaveMenuActive ||
+         g_DetailScreen != 0) &&
+        g_TitleSegmentTexture != 0 &&
+        g_TitleRuleComponents.size != 0)
+    {
+        const FableUiRender2DBinding titleRuleBinding = {
+            122,
+            reinterpret_cast<fable_u32>(
+                g_TitleSegmentTexture),
+            0.0f,
+            0.0f,
+            1.0f,
+            1.0f,
+            0xFFFFFFFFu
+        };
+        const FableUiVector2 clipMinimum = {left, top};
+        const FableUiVector2 clipMaximum = {right, bottom};
+        FableUiRender2DAppendTarget titleRuleTarget = {
+            vertices,
+            128,
+            &vertexCount,
+            records,
+            48,
+            &recordCount,
+            &clipMinimum,
+            &clipMaximum
+        };
+        if (!FableAppendUiGeneratedComponentsToRender2D(
+                &g_TitleRuleComponents,
+                &titleRuleBinding,
+                1,
+                left,
+                top + 35.0f * designScaleY,
+                designScaleX,
+                designScaleY,
+                &titleRuleTarget))
+        {
+            return false;
+        }
+    }
+    const FableUiGeneratedComponentVector* selectedButtonComponents = 0;
+    float selectedButtonX = 0.0f;
+    float selectedButtonY = 0.0f;
+    if (g_MainMenuActive && g_MainMenuSelection < 7)
+    {
+        selectedButtonComponents =
+            g_MainMenuSelection == 0
+                ? &g_MainMenuBigButtonComponents
+                : &g_OptionsButtonComponents;
+        selectedButtonX =
+            g_MainMenuSelection == 0 ? 120.0f : 180.0f;
+        selectedButtonY =
+            static_cast<float>(
+                193 + kMainMenuRowYOffsets[g_MainMenuSelection]);
+    }
+    else if (g_OptionsMenuActive && g_OptionsSelection < 4)
+    {
+        selectedButtonComponents = &g_OptionsButtonComponents;
+        selectedButtonX = 180.0f;
+        selectedButtonY =
+            static_cast<float>(143 + g_OptionsSelection * 30);
+    }
+    if (
+        selectedButtonComponents != 0 &&
+        g_ButtonLeftTexture != 0 &&
+        g_ButtonMiddleTexture != 0 &&
+        g_ButtonRightTexture != 0 &&
+        selectedButtonComponents->size != 0)
+    {
+        const FableUiRender2DBinding buttonBindings[3] = {
+            {
+                129,
+                reinterpret_cast<fable_u32>(
+                    g_ButtonLeftTexture),
+                0.0f, 0.0f, 1.0f, 1.0f,
+                0xFFFFFFFFu
+            },
+            {
+                130,
+                reinterpret_cast<fable_u32>(
+                    g_ButtonRightTexture),
+                0.0f, 0.0f, 1.0f, 1.0f,
+                0xFFFFFFFFu
+            },
+            {
+                131,
+                reinterpret_cast<fable_u32>(
+                    g_ButtonMiddleTexture),
+                0.0f, 0.0f, 1.0f, 1.0f,
+                0xFFFFFFFFu
+            }
+        };
+        const FableUiVector2 clipMinimum = {left, top};
+        const FableUiVector2 clipMaximum = {right, bottom};
+        FableUiRender2DAppendTarget buttonTarget = {
+            vertices,
+            128,
+            &vertexCount,
+            records,
+            48,
+            &recordCount,
+            &clipMinimum,
+            &clipMaximum
+        };
+        if (!FableAppendUiGeneratedComponentsToRender2D(
+                selectedButtonComponents,
+                buttonBindings,
+                3,
+                left + selectedButtonX * designScaleX,
+                top + selectedButtonY * designScaleY,
+                designScaleX,
+                designScaleY,
+                &buttonTarget))
+        {
+            return false;
+        }
+    }
     if (overlayTexture != 0)
     {
+        const bool saveAtlasColumn =
+            g_SaveMenuActive &&
+            overlayTexture == g_OptionsTexture;
+        const float overlayU0 =
+            saveAtlasColumn
+                ? 1024.0f /
+                    static_cast<float>(g_OptionsWidth)
+                : 0.0f;
+        const float overlayU1 =
+            saveAtlasColumn
+                ? 1664.0f /
+                    static_cast<float>(g_OptionsWidth)
+                : (
+                    overlayTexture == g_OptionsTexture
+                        ? 640.0f /
+                            static_cast<float>(g_OptionsWidth)
+                        : (
+                            overlayTexture == g_MenuTexture
+                                ? 640.0f /
+                                    static_cast<float>(g_MenuWidth)
+                                : 1.0f
+                        )
+                );
         const float overlayV0 =
             static_cast<float>(overlayFrame) /
             static_cast<float>(overlayFrameCount);
@@ -1458,13 +2047,85 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             vertices, vertexCount, records, recordCount,
             overlayTexture,
             titleLeft, titleTop, titleRight, titleBottom,
-            0.0f,
+            overlayU0,
             overlayV0,
-            overlayTexture == g_OptionsTexture
-                ? 640.0f / static_cast<float>(g_OptionsWidth)
-                : 1.0f,
+            overlayU1,
             overlayV1,
             0xFFFFFFFFu);
+    }
+    if (
+        g_MainMenuActive &&
+        g_MenuTexture != 0 &&
+        g_MenuWidth == 1280)
+    {
+        for (fable_u32 row = 0; row != 7; ++row)
+        {
+            const FableUiRuntimeListChild& rowChild =
+                g_MainMenuRowChildren[row];
+            const float rowOffsetX =
+                rowChild.currentPosition.x * designScaleX;
+            const float rowOffsetY =
+                rowChild.currentPosition.y * designScaleY;
+            const fable_u32 rowColour =
+                (static_cast<fable_u32>(
+                    rowChild.currentColour.alpha) << 24) |
+                (static_cast<fable_u32>(
+                    rowChild.currentColour.red) << 16) |
+                (static_cast<fable_u32>(
+                    rowChild.currentColour.green) << 8) |
+                static_cast<fable_u32>(
+                    rowChild.currentColour.blue);
+            AppendVisualQuad(
+                vertices, vertexCount, records, recordCount,
+                g_MenuTexture,
+                left + rowOffsetX,
+                top + rowOffsetY,
+                right + rowOffsetX,
+                bottom + rowOffsetY,
+                0.5f,
+                static_cast<float>(row) / 7.0f,
+                1.0f,
+                static_cast<float>(row + 1) / 7.0f,
+                rowColour);
+        }
+    }
+    if (
+        g_OptionsMenuActive &&
+        g_OptionsTexture != 0 &&
+        g_OptionsWidth == 1664)
+    {
+        for (fable_u32 row = 0; row != 4; ++row)
+        {
+            const FableUiRuntimeListChild& rowChild =
+                g_OptionsRowChildren[row];
+            const float rowOffsetX =
+                rowChild.currentPosition.x * designScaleX;
+            const float rowOffsetY =
+                rowChild.currentPosition.y * designScaleY;
+            const fable_u32 rowColour =
+                (static_cast<fable_u32>(
+                    rowChild.currentColour.alpha) << 24) |
+                (static_cast<fable_u32>(
+                    rowChild.currentColour.red) << 16) |
+                (static_cast<fable_u32>(
+                    rowChild.currentColour.green) << 8) |
+                static_cast<fable_u32>(
+                    rowChild.currentColour.blue);
+            AppendVisualQuad(
+                vertices, vertexCount, records, recordCount,
+                g_OptionsTexture,
+                left + rowOffsetX,
+                top + rowOffsetY,
+                right + rowOffsetX,
+                bottom + rowOffsetY,
+                1024.0f /
+                    static_cast<float>(g_OptionsWidth),
+                static_cast<float>(row) / 8.0f,
+                1664.0f /
+                    static_cast<float>(g_OptionsWidth),
+                static_cast<float>(row + 1) / 8.0f,
+                rowColour);
+        }
     }
     if (
         g_DetailScreen >= 1 &&
@@ -1582,7 +2243,8 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             (atlasTop + 64.0f) / 2880.0f,
             0xFFFFFFFFu);
     }
-    if (g_OptionsMenuActive && g_HelpersTexture != 0)
+    if ((g_OptionsMenuActive || g_SaveMenuActive) &&
+        g_HelpersTexture != 0)
     {
         const fable_u32 helperFrame =
             g_OptionsBackHovered ? 1 : 0;
@@ -1788,6 +2450,15 @@ bool FABLE_FASTCALL FableResizeVisualD3D9(
 
 void FABLE_FASTCALL FableShutdownVisualD3D9()
 {
+    FableReleaseUiGeneratedComponents(
+        &g_MainMenuBigButtonComponents);
+    FableReleaseUiGeneratedComponents(
+        &g_OptionsButtonComponents);
+    FableReleaseUiGeneratedComponents(&g_TitleRuleComponents);
+    ReleaseObject(g_ButtonRightTexture);
+    ReleaseObject(g_ButtonMiddleTexture);
+    ReleaseObject(g_ButtonLeftTexture);
+    ReleaseObject(g_TitleSegmentTexture);
     ReleaseObject(g_HelpersTexture);
     ReleaseObject(g_OptionsTexture);
     ReleaseObject(g_CoastalSunbeamTexture);
@@ -1818,16 +2489,28 @@ void FABLE_FASTCALL FableShutdownVisualD3D9()
     g_MenuHeight = 0;
     g_OptionsWidth = 0;
     g_OptionsHeight = 0;
+    g_TitleSegmentWidth = 0;
+    g_TitleSegmentHeight = 0;
     g_AnimationStartTick = 0;
     g_ForestTransitionStart = 0;
     g_SunbeamTransitionStart = 0;
     g_MainMenuSelection = 0;
+    memset(
+        g_MainMenuRowChildren,
+        0,
+        sizeof(g_MainMenuRowChildren));
     g_OptionsSelection = 0;
+    g_SaveSelection = 0;
+    memset(
+        g_OptionsRowChildren,
+        0,
+        sizeof(g_OptionsRowChildren));
     g_DetailScreen = 0;
     memset(g_DetailOptionValues, 0, sizeof(g_DetailOptionValues));
     g_QuitHover = 0;
     g_MainMenuActive = false;
     g_OptionsMenuActive = false;
+    g_SaveMenuActive = false;
     g_OptionsBackHovered = false;
     g_QuitPromptActive = false;
     g_Presented = false;
@@ -1850,7 +2533,9 @@ void FABLE_FASTCALL FableSetVisualFrontendMainMenu(bool active)
     if (active)
     {
         g_MainMenuSelection = 0;
+        InitialiseMainMenuRowStates();
         g_OptionsMenuActive = false;
+        g_SaveMenuActive = false;
         g_DetailScreen = 0;
         g_QuitPromptActive = false;
     }
@@ -1863,7 +2548,46 @@ void FABLE_FASTCALL FableSetVisualFrontendMainMenuSelection(
 {
     if (!g_MainMenuActive || selection >= 7)
         return;
+    if (selection == g_MainMenuSelection)
+        return;
+    ApplyMainMenuRowState(g_MainMenuSelection, 4);
+    ApplyMainMenuRowState(selection, 3);
     g_MainMenuSelection = selection;
+}
+
+bool FABLE_FASTCALL FableScrollVisualFrontendMainMenu(
+    bool scrollDown,
+    fable_u32* selected,
+    fable_u32* soundRequest)
+{
+    if (soundRequest != 0)
+        *soundRequest = FableUiFrontEndSoundNone;
+    if (!g_MainMenuActive || selected == 0)
+        return false;
+    const fable_u32 previousSelection =
+        g_MainMenuSelection;
+    FableUiFrontEndListScrollPlan plan = {};
+    const bool moved = FableApplyUiFrontEndListScroll(
+            scrollDown,
+            true,
+            0,
+            g_MainMenuRowChildren,
+            7,
+            7,
+            static_cast<long>(g_MainMenuSelection),
+            &plan);
+    if (soundRequest != 0)
+        *soundRequest = static_cast<fable_u32>(plan.soundRequest);
+    if (!moved)
+    {
+        return false;
+    }
+    g_MainMenuSelection =
+        static_cast<fable_u32>(plan.selectedChild);
+    ApplyMainMenuRowState(previousSelection, 4);
+    ApplyMainMenuRowState(g_MainMenuSelection, 3);
+    *selected = g_MainMenuSelection;
+    return true;
 }
 
 void FABLE_FASTCALL FableSetVisualFrontendOptionsMenu(bool active)
@@ -1873,9 +2597,7 @@ void FABLE_FASTCALL FableSetVisualFrontendOptionsMenu(bool active)
     if (active &&
         (
             g_OptionsTexture == 0 ||
-            g_HelpersTexture == 0 ||
-            g_ForestTexture == 0 ||
-            g_SunbeamTexture == 0
+            g_HelpersTexture == 0
         ))
     {
         return;
@@ -1884,9 +2606,11 @@ void FABLE_FASTCALL FableSetVisualFrontendOptionsMenu(bool active)
     if (active)
     {
         g_MainMenuActive = false;
+        g_SaveMenuActive = false;
         g_DetailScreen = 0;
         g_QuitPromptActive = false;
         g_OptionsSelection = 0;
+        InitialiseOptionsRowStates();
         g_OptionsBackHovered = false;
     }
     g_AnimationStartTick = 0;
@@ -1897,14 +2621,51 @@ void FABLE_FASTCALL FableSetVisualFrontendOptionsSelection(
 {
     if (!g_OptionsMenuActive || selection >= 4)
         return;
+    if (selection == g_OptionsSelection)
+        return;
+    ApplyOptionsRowState(g_OptionsSelection, 4);
+    ApplyOptionsRowState(selection, 3);
     g_OptionsSelection = selection;
 }
 
 void FABLE_FASTCALL FableSetVisualFrontendOptionsBackHovered(bool hovered)
 {
-    if (!g_OptionsMenuActive)
+    if (!g_OptionsMenuActive && !g_SaveMenuActive)
         return;
     g_OptionsBackHovered = hovered;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendSaveMenu(bool active)
+{
+    if (g_SaveMenuActive == active)
+        return;
+    if (active &&
+        (
+            g_OptionsTexture == 0 ||
+            g_HelpersTexture == 0
+        ))
+    {
+        return;
+    }
+    g_SaveMenuActive = active;
+    if (active)
+    {
+        g_MainMenuActive = false;
+        g_OptionsMenuActive = false;
+        g_DetailScreen = 0;
+        g_QuitPromptActive = false;
+        g_SaveSelection = 0;
+        g_OptionsBackHovered = false;
+    }
+    g_AnimationStartTick = 0;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendSaveSelection(
+    fable_u32 selection)
+{
+    if (!g_SaveMenuActive || selection >= 4)
+        return;
+    g_SaveSelection = selection;
 }
 
 void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen)
@@ -1921,6 +2682,7 @@ void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen)
     {
         g_MainMenuActive = false;
         g_OptionsMenuActive = false;
+        g_SaveMenuActive = false;
         g_QuitPromptActive = false;
     }
     g_AnimationStartTick = 0;
@@ -1992,6 +2754,7 @@ void FABLE_FASTCALL FableSetVisualFrontendQuitPrompt(bool active)
     {
         g_MainMenuActive = false;
         g_OptionsMenuActive = false;
+        g_SaveMenuActive = false;
         g_DetailScreen = 0;
         g_QuitHover = 0;
     }

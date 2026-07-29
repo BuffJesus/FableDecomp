@@ -131,6 +131,7 @@ $frontendMenuRenderer = Join-Path $workspaceRoot `
     'tools\render_fable_frontend_menu.py'
 $frontendSubscreenRenderer = Join-Path $workspaceRoot `
     'tools\render_fable_frontend_subscreens.py'
+$frontendSoundExtractor = Join-Path $workspaceRoot 'tools\parse_lug.py'
 $visualBootBehaviorSource = Join-Path $rebuildRoot 'tests\integration\VisualBootCheckpoint_test.cpp'
 $render2DBatchPlanSource = Join-Path $rebuildRoot 'integration\render2d_batch_plan.cpp'
 $render2DBatchPlanBehaviorSource = Join-Path $rebuildRoot 'tests\integration\Render2DBatchPlan_test.cpp'
@@ -245,9 +246,23 @@ $visualBootRetailPointer = Join-Path $outDir 'frontend_mouse_pointer.png'
 $visualBootRetailForestSheet = Join-Path $outDir 'frontend_forest_sheet.png'
 $visualBootRetailSunbeamSheet = Join-Path $outDir 'frontend_sunbeam_sheet.png'
 $visualBootRetailMenu = Join-Path $outDir 'frontend_main_menu.png'
+$visualBootRetailMenuComponents =
+    Join-Path $outDir 'frontend_main_menu_components.png'
 $visualBootBuffJesusMenu =
     Join-Path $outDir 'frontend_main_menu_buff_jesus.png'
+$visualBootBuffJesusMenuComponents =
+    Join-Path $outDir 'frontend_main_menu_buff_jesus_components.png'
 $visualBootRetailOptions = Join-Path $outDir 'frontend_options_menu.png'
+$visualBootRetailOptionsComponents =
+    Join-Path $outDir 'frontend_options_menu_components.png'
+$visualBootRetailTitleSegment =
+    Join-Path $outDir 'frontend_title_rule_segment.png'
+$visualBootRetailButtonLeft =
+    Join-Path $outDir 'frontend_options_button_left.png'
+$visualBootRetailButtonMiddle =
+    Join-Path $outDir 'frontend_options_button_middle.png'
+$visualBootRetailButtonRight =
+    Join-Path $outDir 'frontend_options_button_right.png'
 $visualBootRetailHelpers = Join-Path $outDir 'frontend_helpers.png'
 $visualBootRetailCoastalSheet = Join-Path $outDir 'frontend_coastal_sheet.png'
 $visualBootRetailCoastalSunbeamSheet =
@@ -260,10 +275,22 @@ $visualBootMenuBitmap = Join-Path $outDir 'visual_boot_main_menu.bmp'
 $visualBootBuffJesusMenuBitmap =
     Join-Path $outDir 'visual_boot_main_menu_buff_jesus.bmp'
 $visualBootOptionsBitmap = Join-Path $outDir 'visual_boot_options_menu.bmp'
+$visualBootTitleSegmentBitmap =
+    Join-Path $outDir 'visual_boot_title_rule_segment.bmp'
+$visualBootButtonLeftBitmap =
+    Join-Path $outDir 'visual_boot_options_button_left.bmp'
+$visualBootButtonMiddleBitmap =
+    Join-Path $outDir 'visual_boot_options_button_middle.bmp'
+$visualBootButtonRightBitmap =
+    Join-Path $outDir 'visual_boot_options_button_right.bmp'
 $visualBootHelpersBitmap = Join-Path $outDir 'visual_boot_helpers.bmp'
 $visualBootCoastalBitmap = Join-Path $outDir 'visual_boot_coastal.bmp'
 $visualBootCoastalSunbeamBitmap =
     Join-Path $outDir 'visual_boot_coastal_sunbeam.bmp'
+$visualBootSoundUpDown = Join-Path $outDir 'visual_boot_gui_updown.wav'
+$visualBootSoundError = Join-Path $outDir 'visual_boot_gui_error.wav'
+$visualBootSoundBack = Join-Path $outDir 'visual_boot_gui_back.wav'
+$visualBootSoundForward = Join-Path $outDir 'visual_boot_gui_forward.wav'
 $visualBootCursor = Join-Path $outDir 'visual_boot_pointer.cur'
 $visualBootResourceSource = Join-Path $outDir 'visual_boot_checkpoint.rc'
 $visualBootResource = Join-Path $outDir 'visual_boot_checkpoint.res'
@@ -465,6 +492,7 @@ $required = @(
     $frontendStartupSequenceSource,
     $frontendStartupSequenceBehaviorSource,
     $visualBootFallbackArtwork,
+    $frontendSoundExtractor,
     $visualBootBehaviorSource,
     $render2DBatchPlanSource,
     $render2DBatchPlanBehaviorSource,
@@ -543,7 +571,51 @@ $visualBootUsesRetailAnimation = $false
 $visualBootUsesRetailMenu = $false
 $visualBootUsesBuffJesusMenu = $false
 $visualBootUsesRetailSubscreens = $false
+$visualBootUsesRetailUiSounds = $false
 if ($selectedRetailFrontendBank) {
+    $retailDataRootFromFrontend = Split-Path -Parent (
+        Split-Path -Parent (
+            Split-Path -Parent $selectedRetailFrontendBank
+        )
+    )
+    $selectedRetailFrontendSoundBank =
+        Join-Path $retailDataRootFromFrontend 'Sound\Frontend.lug'
+    if (Test-Path -LiteralPath $selectedRetailFrontendSoundBank -PathType Leaf) {
+        $soundSamples = @(
+            @{ Id = 3; Output = $visualBootSoundUpDown },
+            @{ Id = 7; Output = $visualBootSoundError },
+            @{ Id = 4; Output = $visualBootSoundBack },
+            @{ Id = 5; Output = $visualBootSoundForward }
+        )
+        $soundExtractionFailed = $false
+        foreach ($soundSample in $soundSamples) {
+            & python $frontendSoundExtractor `
+                $selectedRetailFrontendSoundBank `
+                --extract $soundSample.Id $soundSample.Output
+            if (
+                $LASTEXITCODE -ne 0 -or
+                -not (Test-Path -LiteralPath $soundSample.Output -PathType Leaf)
+            ) {
+                $soundExtractionFailed = $true
+                break
+            }
+        }
+        if (-not $soundExtractionFailed) {
+            $visualBootUsesRetailUiSounds = $true
+            Write-Output (
+                'VISUAL_UI_SOUND RETAIL ' +
+                'updown=CS_GUI_2/sample-3 ' +
+                'error=CS_GUI_5/sample-7 ' +
+                'back=CS_GUI_6/sample-4 ' +
+                'forward=CS_GUI_7/sample-5'
+            )
+        } else {
+            Write-Warning (
+                'Retail frontend sound extraction failed; visual input ' +
+                'continues without UI audio.'
+            )
+        }
+    }
     & python $textureBuilder decode `
         $selectedRetailFrontendBank `
         FRONTEND_BACKDROP_01 `
@@ -728,10 +800,12 @@ if ($selectedRetailFrontendBank) {
                     $selectedRetailFrontendBank `
                     $selectedRetailFontBank `
                     $visualBootRetailMenu `
+                    --component-output $visualBootRetailMenuComponents `
                     @frontendLayoutArguments
                 if (
                     $LASTEXITCODE -eq 0 -and
-                    (Test-Path -LiteralPath $visualBootRetailMenu)
+                    (Test-Path -LiteralPath $visualBootRetailMenu) -and
+                    (Test-Path -LiteralPath $visualBootRetailMenuComponents)
                 ) {
                     $visualBootUsesRetailMenu = $true
                     & python $frontendMenuRenderer `
@@ -739,10 +813,12 @@ if ($selectedRetailFrontendBank) {
                         $selectedRetailFontBank `
                         $visualBootBuffJesusMenu `
                         --text-variant buff-jesus `
+                        --component-output $visualBootBuffJesusMenuComponents `
                         @frontendLayoutArguments
                     if (
                         $LASTEXITCODE -eq 0 -and
-                        (Test-Path -LiteralPath $visualBootBuffJesusMenu)
+                        (Test-Path -LiteralPath $visualBootBuffJesusMenu) -and
+                        (Test-Path -LiteralPath $visualBootBuffJesusMenuComponents)
                     ) {
                         $visualBootUsesBuffJesusMenu = $true
                     } else {
@@ -763,10 +839,30 @@ if ($selectedRetailFrontendBank) {
                         $selectedRetailFontBank `
                         $visualBootRetailOptions `
                         $visualBootRetailHelpers `
+                        --components-output `
+                        $visualBootRetailOptionsComponents `
+                        --title-segment-output `
+                        $visualBootRetailTitleSegment `
+                        --button-left-output `
+                        $visualBootRetailButtonLeft `
+                        --button-middle-output `
+                        $visualBootRetailButtonMiddle `
+                        --button-right-output `
+                        $visualBootRetailButtonRight `
                         @frontendLayoutArguments
                     if (
                         $LASTEXITCODE -eq 0 -and
                         (Test-Path -LiteralPath $visualBootRetailOptions) -and
+                        (Test-Path -LiteralPath `
+                            $visualBootRetailOptionsComponents) -and
+                        (Test-Path -LiteralPath `
+                            $visualBootRetailTitleSegment) -and
+                        (Test-Path -LiteralPath `
+                            $visualBootRetailButtonLeft) -and
+                        (Test-Path -LiteralPath `
+                            $visualBootRetailButtonMiddle) -and
+                        (Test-Path -LiteralPath `
+                            $visualBootRetailButtonRight) -and
                         (Test-Path -LiteralPath $visualBootRetailHelpers)
                     ) {
                         $visualBootUsesRetailSubscreens = $true
@@ -860,6 +956,9 @@ try {
     }
     if ($visualBootUsesRetailSubscreens) {
         $visualBootCompileOptions += '/DFABLETLC_RETAIL_FRONTEND_SUBSCREENS'
+    }
+    if ($visualBootUsesRetailUiSounds) {
+        $visualBootCompileOptions += '/DFABLETLC_RETAIL_FRONTEND_SOUNDS'
     }
     function Invoke-VerifiedLeaf {
         param(
@@ -2222,11 +2321,15 @@ try {
             }
         )
         if ($visualBootUsesRetailMenu) {
+            $retailMenuEmbedPng = $visualBootRetailMenu
+            if ($visualBootUsesRetailSubscreens) {
+                $retailMenuEmbedPng = $visualBootRetailMenuComponents
+            }
             $animationSheets += @(
                 @{
-                    Png = $visualBootRetailMenu
+                    Png = $retailMenuEmbedPng
                     Bmp = $visualBootMenuBitmap
-                    Width = 640
+                    Width = if ($visualBootUsesRetailSubscreens) { 1280 } else { 640 }
                     Height = 3360
                 },
                 @{
@@ -2243,10 +2346,15 @@ try {
                 }
             )
             if ($visualBootUsesBuffJesusMenu) {
+                $buffJesusMenuEmbedPng = $visualBootBuffJesusMenu
+                if ($visualBootUsesRetailSubscreens) {
+                    $buffJesusMenuEmbedPng =
+                        $visualBootBuffJesusMenuComponents
+                }
                 $animationSheets += @{
-                    Png = $visualBootBuffJesusMenu
+                    Png = $buffJesusMenuEmbedPng
                     Bmp = $visualBootBuffJesusMenuBitmap
-                    Width = 640
+                    Width = if ($visualBootUsesRetailSubscreens) { 1280 } else { 640 }
                     Height = 3360
                 }
             }
@@ -2254,10 +2362,34 @@ try {
         if ($visualBootUsesRetailSubscreens) {
             $animationSheets += @(
                 @{
-                    Png = $visualBootRetailOptions
+                    Png = $visualBootRetailOptionsComponents
                     Bmp = $visualBootOptionsBitmap
-                    Width = 1024
+                    Width = 1664
                     Height = 3840
+                },
+                @{
+                    Png = $visualBootRetailTitleSegment
+                    Bmp = $visualBootTitleSegmentBitmap
+                    Width = 8
+                    Height = 64
+                },
+                @{
+                    Png = $visualBootRetailButtonLeft
+                    Bmp = $visualBootButtonLeftBitmap
+                    Width = 64
+                    Height = 64
+                },
+                @{
+                    Png = $visualBootRetailButtonMiddle
+                    Bmp = $visualBootButtonMiddleBitmap
+                    Width = 8
+                    Height = 64
+                },
+                @{
+                    Png = $visualBootRetailButtonRight
+                    Bmp = $visualBootButtonRightBitmap
+                    Width = 64
+                    Height = 64
                 },
                 @{
                     Png = $visualBootRetailHelpers
@@ -2349,10 +2481,44 @@ try {
             $visualBootOptionsBitmap.Replace('\', '/')
         $resourceHelpersBitmapPath =
             $visualBootHelpersBitmap.Replace('\', '/')
+        $resourceTitleSegmentBitmapPath =
+            $visualBootTitleSegmentBitmap.Replace('\', '/')
+        $resourceButtonLeftBitmapPath =
+            $visualBootButtonLeftBitmap.Replace('\', '/')
+        $resourceButtonMiddleBitmapPath =
+            $visualBootButtonMiddleBitmap.Replace('\', '/')
+        $resourceButtonRightBitmapPath =
+            $visualBootButtonRightBitmap.Replace('\', '/')
         $resourceLines +=
             "109 BITMAP `"$resourceOptionsBitmapPath`""
         $resourceLines +=
             "110 BITMAP `"$resourceHelpersBitmapPath`""
+        $resourceLines +=
+            "112 BITMAP `"$resourceTitleSegmentBitmapPath`""
+        $resourceLines +=
+            "113 BITMAP `"$resourceButtonLeftBitmapPath`""
+        $resourceLines +=
+            "114 BITMAP `"$resourceButtonMiddleBitmapPath`""
+        $resourceLines +=
+            "115 BITMAP `"$resourceButtonRightBitmapPath`""
+    }
+    if ($visualBootUsesRetailUiSounds) {
+        $resourceSoundUpDownPath =
+            $visualBootSoundUpDown.Replace('\', '/')
+        $resourceSoundErrorPath =
+            $visualBootSoundError.Replace('\', '/')
+        $resourceSoundBackPath =
+            $visualBootSoundBack.Replace('\', '/')
+        $resourceSoundForwardPath =
+            $visualBootSoundForward.Replace('\', '/')
+        $resourceLines +=
+            "116 WAVE `"$resourceSoundUpDownPath`""
+        $resourceLines +=
+            "117 WAVE `"$resourceSoundErrorPath`""
+        $resourceLines +=
+            "118 WAVE `"$resourceSoundBackPath`""
+        $resourceLines +=
+            "119 WAVE `"$resourceSoundForwardPath`""
     }
     Set-Content -LiteralPath $visualBootResourceSource `
         -Value $resourceLines `
@@ -2589,7 +2755,7 @@ try {
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:windows `
         "/out:$visualCheckpointExecutable" `
         $winMainObject @visualRuntimeObjects $visualBootResource `
-        user32.lib gdi32.lib d3d9.lib advapi32.lib ole32.lib
+        user32.lib gdi32.lib d3d9.lib advapi32.lib ole32.lib winmm.lib
     if (
         $LASTEXITCODE -ne 0 -or
         -not (Test-Path -LiteralPath $visualCheckpointExecutable)
@@ -2617,7 +2783,7 @@ try {
         $pixelFormatTableObject $textureInitialisePreallocatedObject `
         $textureAssignmentObject $textureUninitialiseObject `
         $visualBootBehaviorObject $visualBootResource `
-        user32.lib gdi32.lib d3d9.lib advapi32.lib ole32.lib
+        user32.lib gdi32.lib d3d9.lib advapi32.lib ole32.lib winmm.lib
     if (
         $LASTEXITCODE -ne 0 -or
         -not (Test-Path -LiteralPath $visualBootBehaviorExecutable)

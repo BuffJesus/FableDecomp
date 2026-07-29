@@ -1,0 +1,4 @@
+#define FURTHEST_VARIANT
+#define CGameScriptInterface_GetNearestWithScriptName \
+    CGameScriptInterface_GetFurthestWithScriptName
+#include "CGameScriptInterface_GetNearestWithScriptName_0089a510_test.cpp"

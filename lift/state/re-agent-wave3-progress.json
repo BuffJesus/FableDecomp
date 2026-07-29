@@ -5708,7 +5708,7 @@
       "rounds_used": 4,
       "verdict": "FAIL",
       "parity_status": "yellow",
-      "timestamp": "2026-07-25T22:48:03"
+      "timestamp": "2026-07-28T08:28:28"
     },
     "00c92f10": {
       "address": "0x00C92F10",
@@ -5864,11 +5864,11 @@
       "address": "0x00EE91E0",
       "class_name": "",
       "function_name": "Script_MakeThingsSpeakNumbered",
-      "success": false,
+      "success": true,
       "rounds_used": 4,
-      "verdict": "FAIL",
+      "verdict": "PASS",
       "parity_status": "yellow",
-      "timestamp": "2026-07-25T23:44:14"
+      "timestamp": "2026-07-28T08:37:17"
     },
     "004b1670": {
       "address": "0x004B1670",
@@ -7579,6 +7579,346 @@
       "verdict": "PASS",
       "parity_status": "yellow",
       "timestamp": "2026-07-27T16:42:32"
+    },
+    "00440e00": {
+      "address": "0x00440E00",
+      "class_name": "",
+      "function_name": "Vector_CopyElements",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-28T18:40:58"
+    },
+    "00441020": {
+      "address": "0x00441020",
+      "class_name": "",
+      "function_name": "vector_insert_with_fill",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T18:42:15"
+    },
+    "004413c0": {
+      "address": "0x004413C0",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T18:43:55"
+    },
+    "004416e0": {
+      "address": "0x004416E0",
+      "class_name": "",
+      "function_name": "VectorReallocateDouble",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T19:12:01"
+    },
+    "00441800": {
+      "address": "0x00441800",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T20:11:50"
+    },
+    "00441870": {
+      "address": "0x00441870",
+      "class_name": "",
+      "function_name": "List_DestroyElements",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T20:13:22"
+    },
+    "00441b90": {
+      "address": "0x00441B90",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T20:14:23"
+    },
+    "00441c20": {
+      "address": "0x00441C20",
+      "class_name": "",
+      "function_name": "TreePane_DestructorHelper",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T20:15:39"
+    },
+    "00442190": {
+      "address": "0x00442190",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T20:16:27"
+    },
+    "00442280": {
+      "address": "0x00442280",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T20:17:11"
+    },
+    "00442350": {
+      "address": "0x00442350",
+      "class_name": "",
+      "function_name": "Vector_InsertRangeWithRealloc",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T20:22:11"
+    },
+    "00442610": {
+      "address": "0x00442610",
+      "class_name": "",
+      "function_name": "RenderState_Destructor",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T20:59:12"
+    },
+    "004428b0": {
+      "address": "0x004428B0",
+      "class_name": "",
+      "function_name": "vector_push_back",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-28T20:59:56"
+    },
+    "00442d50": {
+      "address": "0x00442D50",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:01:20"
+    },
+    "00442e60": {
+      "address": "0x00442E60",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:26:12"
+    },
+    "004430f0": {
+      "address": "0x004430F0",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:27:01"
+    },
+    "00443540": {
+      "address": "0x00443540",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:41:03"
+    },
+    "004437e0": {
+      "address": "0x004437E0",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:41:47"
+    },
+    "00443840": {
+      "address": "0x00443840",
+      "class_name": "",
+      "function_name": "CGuiControlTreePane_Destructor_1",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T21:42:49"
+    },
+    "004438b0": {
+      "address": "0x004438B0",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:43:43"
+    },
+    "00443980": {
+      "address": "0x00443980",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:46:33"
+    },
+    "004439e0": {
+      "address": "0x004439E0",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:47:23"
+    },
+    "00443ac0": {
+      "address": "0x00443AC0",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:48:06"
+    },
+    "00443b20": {
+      "address": "0x00443B20",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:48:53"
+    },
+    "00443bd0": {
+      "address": "0x00443BD0",
+      "class_name": "",
+      "function_name": "CGuiControlTreePane_Destructor_2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T21:49:48"
+    },
+    "00443c10": {
+      "address": "0x00443C10",
+      "class_name": "",
+      "function_name": "CGuiControlTreePane_Destructor_3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T21:56:14"
+    },
+    "00443d70": {
+      "address": "0x00443D70",
+      "class_name": "",
+      "function_name": "EventConversation_Destructor",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T21:58:06"
+    },
+    "00443e20": {
+      "address": "0x00443E20",
+      "class_name": "",
+      "function_name": "TextureCache_Destructor",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T22:02:13"
+    },
+    "00444e10": {
+      "address": "0x00444E10",
+      "class_name": "",
+      "function_name": "CGuiControlTreePane_Destructor_4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T22:03:10"
+    },
+    "00444e50": {
+      "address": "0x00444E50",
+      "class_name": "",
+      "function_name": "CGuiControlTreePane_Destructor_5",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T22:56:05"
+    },
+    "00444ed0": {
+      "address": "0x00444ED0",
+      "class_name": "",
+      "function_name": "AsyncData_Destructor",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T22:57:11"
+    },
+    "00446b40": {
+      "address": "0x00446B40",
+      "class_name": "",
+      "function_name": "VectorMap_LookupValue",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T22:58:25"
+    },
+    "00446b90": {
+      "address": "0x00446B90",
+      "class_name": "",
+      "function_name": "VectorMap_LookupValue",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T23:00:19"
+    },
+    "00446d10": {
+      "address": "0x00446D10",
+      "class_name": "",
+      "function_name": "ProcessCombatInput_MapInputsToActions",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T23:04:16"
     }
   },
   "runs": [
@@ -15791,6 +16131,376 @@
       "verdict": "FAIL",
       "parity_status": "red",
       "timestamp": "2026-07-27T23:09:42"
+    },
+    {
+      "address": "0x00C8C730",
+      "class_name": "",
+      "function_name": "Batch_InvokeWithStackArgs_c8c730",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T08:17:18"
+    },
+    {
+      "address": "0x00C8C730",
+      "class_name": "",
+      "function_name": "Batch_InvokeWithStackArgs_c8c730",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T08:28:28"
+    },
+    {
+      "address": "0x00EE91E0",
+      "class_name": "",
+      "function_name": "Script_MakeThingsSpeakNumbered",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T08:37:17"
+    },
+    {
+      "address": "0x00440E00",
+      "class_name": "",
+      "function_name": "Vector_CopyElements",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-28T18:40:58"
+    },
+    {
+      "address": "0x00441020",
+      "class_name": "",
+      "function_name": "vector_insert_with_fill",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T18:42:15"
+    },
+    {
+      "address": "0x004413C0",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T18:43:55"
+    },
+    {
+      "address": "0x004416E0",
+      "class_name": "",
+      "function_name": "VectorReallocateDouble",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T19:12:01"
+    },
+    {
+      "address": "0x00441800",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T20:11:50"
+    },
+    {
+      "address": "0x00441870",
+      "class_name": "",
+      "function_name": "List_DestroyElements",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T20:13:22"
+    },
+    {
+      "address": "0x00441B90",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T20:14:23"
+    },
+    {
+      "address": "0x00441C20",
+      "class_name": "",
+      "function_name": "TreePane_DestructorHelper",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T20:15:39"
+    },
+    {
+      "address": "0x00442190",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T20:16:27"
+    },
+    {
+      "address": "0x00442280",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T20:17:11"
+    },
+    {
+      "address": "0x00442350",
+      "class_name": "",
+      "function_name": "Vector_InsertRangeWithRealloc",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T20:22:11"
+    },
+    {
+      "address": "0x00442610",
+      "class_name": "",
+      "function_name": "RenderState_Destructor",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T20:59:12"
+    },
+    {
+      "address": "0x004428B0",
+      "class_name": "",
+      "function_name": "vector_push_back",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-28T20:59:56"
+    },
+    {
+      "address": "0x00442D50",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:01:20"
+    },
+    {
+      "address": "0x00442E60",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:26:12"
+    },
+    {
+      "address": "0x004430F0",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:27:01"
+    },
+    {
+      "address": "0x00443540",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:41:03"
+    },
+    {
+      "address": "0x004437E0",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:41:47"
+    },
+    {
+      "address": "0x00443840",
+      "class_name": "",
+      "function_name": "CGuiControlTreePane_Destructor_1",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T21:42:49"
+    },
+    {
+      "address": "0x004438B0",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:43:43"
+    },
+    {
+      "address": "0x00443980",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:46:33"
+    },
+    {
+      "address": "0x004439E0",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:47:23"
+    },
+    {
+      "address": "0x00443AC0",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:48:06"
+    },
+    {
+      "address": "0x00443B20",
+      "class_name": "",
+      "function_name": "Catch@0047e8cc",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-28T21:48:53"
+    },
+    {
+      "address": "0x00443BD0",
+      "class_name": "",
+      "function_name": "CGuiControlTreePane_Destructor_2",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T21:49:48"
+    },
+    {
+      "address": "0x00443C10",
+      "class_name": "",
+      "function_name": "CGuiControlTreePane_Destructor_3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T21:56:14"
+    },
+    {
+      "address": "0x00443D70",
+      "class_name": "",
+      "function_name": "EventConversation_Destructor",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T21:58:06"
+    },
+    {
+      "address": "0x00443E20",
+      "class_name": "",
+      "function_name": "TextureCache_Destructor",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T22:02:13"
+    },
+    {
+      "address": "0x00444E10",
+      "class_name": "",
+      "function_name": "CGuiControlTreePane_Destructor_4",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T22:03:10"
+    },
+    {
+      "address": "0x00444E50",
+      "class_name": "",
+      "function_name": "CGuiControlTreePane_Destructor_5",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T22:56:05"
+    },
+    {
+      "address": "0x00444ED0",
+      "class_name": "",
+      "function_name": "AsyncData_Destructor",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T22:57:11"
+    },
+    {
+      "address": "0x00446B40",
+      "class_name": "",
+      "function_name": "VectorMap_LookupValue",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T22:58:25"
+    },
+    {
+      "address": "0x00446B90",
+      "class_name": "",
+      "function_name": "VectorMap_LookupValue",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T23:00:19"
+    },
+    {
+      "address": "0x00446D10",
+      "class_name": "",
+      "function_name": "ProcessCombatInput_MapInputsToActions",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-28T23:04:16"
     }
   ]
 }

@@ -1,7 +1,7 @@
 #include <cstdio>
 
-// Standalone reproduction + behavior test for
-//   CGameScriptInterface::AddScreenTitleMessage @ 0x0089e4c0
+// Behavior test for the linked reconstruction of
+// CGameScriptInterface::AddScreenTitleMessage @ 0x0089e4c0.
 
 static void*        g_chain_seen;
 static void*        g_a_seen;
@@ -20,35 +20,18 @@ static int          g_d_calls;
 struct AstmMap { void* lb(int* pKey); };
 struct AstmTarget { void d(void* a0, void* a1, void* a2, int z, int one); };
 
-extern "C" void* __fastcall ASTM_Helper_A(void* p_ecx);
-extern "C" void* __fastcall ASTM_Helper_B(void* p_ecx);
+void* __fastcall ASTM_Helper_A(void* p_ecx);
+void* __fastcall ASTM_Helper_B(void* p_ecx);
 
 void __fastcall CGameScriptInterface_AddScreenTitleMessage(
-    void* self_ecx, unsigned long, void* a0, void* a1, void* volatile a2)
-{
-    void* chain = *(void**)((char*)self_ecx + 0x14);
-    void* a = ASTM_Helper_A(chain);
-    unsigned char* obj = (unsigned char*)ASTM_Helper_B(a);
-    if (obj == 0) return;
-    if (*(unsigned char*)(obj + 0x91) & 0x01) return;
-    AstmTarget* target;
-    if (*(unsigned int*)(obj + 0x30) & 0x4000) {
-        int key = 0x8e;
-        AstmMap* map = (AstmMap*)(obj + 0x44);
-        void* node = map->lb(&key);
-        void* end = *(void**)((char*)map + 0x4);
-        void* pick;
-        if (node == end) pick = end;
-        else if (*(int*)node > 0x8e) pick = end;
-        else pick = node;
-        target = *(AstmTarget**)((char*)pick + 0x4);
-    } else target = (AstmTarget*)a2;
-    if (target == 0) return;
-    target->d(a0, a1, a2, 0, 1);
-}
+    void* self_ecx,
+    unsigned long,
+    void* areaName,
+    void* fadeTimeBits,
+    void* volatile rawMessageFlag);
 
-extern "C" void* __fastcall ASTM_Helper_A(void* p_ecx) { g_chain_seen = p_ecx; return g_A_ret; }
-extern "C" void* __fastcall ASTM_Helper_B(void* p_ecx) { g_a_seen = p_ecx; return g_B_ret; }
+void* __fastcall ASTM_Helper_A(void* p_ecx) { g_chain_seen = p_ecx; return g_A_ret; }
+void* __fastcall ASTM_Helper_B(void* p_ecx) { g_a_seen = p_ecx; return g_B_ret; }
 
 void* AstmMap::lb(int* pKey) { g_lb_this = this; g_lb_key = *pKey; return g_lb_ret; }
 void  AstmTarget::d(void* a0, void* a1, void* a2, int z, int one) {
@@ -74,42 +57,46 @@ int main() {
     static unsigned char obj[0x100];
 
     AstmTarget targetObj;
-    void* a0 = (void*)0xA000;
-    void* a1 = (void*)0xA100;
+    void* areaName = (void*)0xA000;
+    void* fadeTimeBits = (void*)0x3F400000;
 
     int fails = 0;
 
-    // Case 1: obj == 0 -> no d() call
+    // Case 1: no interface owner returns after both lookup helpers.
     reset();
     g_A_ret = (void*)0x22220000;
     g_B_ret = 0;
-    CGameScriptInterface_AddScreenTitleMessage(self, 0, a0, a1, (void*)0xDEAD);
+    CGameScriptInterface_AddScreenTitleMessage(
+        self, 0, areaName, fadeTimeBits, (void*)1);
     if (g_chain_seen != chainval) { printf("c1 chain\n"); fails++; }
     if (g_a_seen != g_A_ret)      { printf("c1 a\n"); fails++; }
     if (g_d_calls != 0)           { printf("c1 no-call\n"); fails++; }
 
-    // Case 2: byte[obj+0x91] & 1 -> early return
+    // Case 2: owner byte 0x91 bit 0 disables the operation.
     reset();
     for (int i=0;i<0x100;i++) obj[i]=0;
     obj[OFF_BYTE91] = 0x01;
     g_A_ret = (void*)0x33330000;
     g_B_ret = obj;
-    CGameScriptInterface_AddScreenTitleMessage(self, 0, a0, a1, (void*)&targetObj);
+    CGameScriptInterface_AddScreenTitleMessage(
+        self, 0, areaName, fadeTimeBits, (void*)1);
     if (g_d_calls != 0) { printf("c2 no-call\n"); fails++; }
+    if (g_lb_this != 0) { printf("c2 no-map\n"); fails++; }
 
-    // Case 3: flag 0x4000 clear -> target = a2
+    // Case 3: with no interface map, a false public bool is also a null
+    // fallback target.  This locks the retail raw-slot aliasing safely.
     reset();
     for (int i=0;i<0x100;i++) obj[i]=0;
     *(unsigned int*)(obj + OFF_FLAGS30) = 0x0000;
     g_A_ret = (void*)0x44440000;
     g_B_ret = obj;
-    CGameScriptInterface_AddScreenTitleMessage(self, 0, a0, a1, (void*)&targetObj);
-    if (g_d_calls != 1)          { printf("c3 call\n"); fails++; }
-    if (g_d_this != &targetObj)  { printf("c3 this\n"); fails++; }
-    if (g_d_a0 != a0 || g_d_a1 != a1 || g_d_a2 != (void*)&targetObj) { printf("c3 args\n"); fails++; }
-    if (g_d_z != 0 || g_d_one != 1) { printf("c3 zc\n"); fails++; }
+    CGameScriptInterface_AddScreenTitleMessage(
+        self, 0, areaName, fadeTimeBits, (void*)0);
+    if (g_lb_this != 0) { printf("c3 no-map\n"); fails++; }
+    if (g_d_calls != 0) { printf("c3 null-fallback\n"); fails++; }
 
-    // Case 4: flag set, node!=end and *node<=0x8e -> pick=node
+    // Case 4: a valid lower-bound entry supplies the display.  The public bool
+    // remains the third forwarded argument, followed by false and true.
     reset();
     for (int i=0;i<0x100;i++) obj[i]=0;
     *(unsigned int*)(obj + OFF_FLAGS30) = 0x4000;
@@ -121,14 +108,19 @@ int main() {
     g_lb_ret = nodeBuf;
     g_A_ret = (void*)0x55550000;
     g_B_ret = obj;
-    CGameScriptInterface_AddScreenTitleMessage(self, 0, a0, a1, (void*)0xBEEF);
+    CGameScriptInterface_AddScreenTitleMessage(
+        self, 0, areaName, fadeTimeBits, (void*)1);
     if (g_lb_this != (void*)(obj + OFF_MAP)) { printf("c4 map-this\n"); fails++; }
     if (g_lb_key != 0x8e)                    { printf("c4 key\n"); fails++; }
     if (g_d_calls != 1)                      { printf("c4 call\n"); fails++; }
     if (g_d_this != &targetObj)              { printf("c4 this\n"); fails++; }
-    if (g_d_a2 != (void*)0xBEEF)             { printf("c4 a2\n"); fails++; }
+    if (g_d_a0 != areaName || g_d_a1 != fadeTimeBits || g_d_a2 != (void*)1) {
+        printf("c4 args\n");
+        fails++;
+    }
+    if (g_d_z != 0 || g_d_one != 1)          { printf("c4 constants\n"); fails++; }
 
-    // Case 5: flag set, node!=end but *node>0x8e -> pick=end
+    // Case 5: an entry above key 0x8e falls back to the end node.
     reset();
     for (int i=0;i<0x100;i++) obj[i]=0;
     *(unsigned int*)(obj + OFF_FLAGS30) = 0x4000;
@@ -142,11 +134,13 @@ int main() {
     g_lb_ret = node5;
     g_A_ret = (void*)0x66660000;
     g_B_ret = obj;
-    CGameScriptInterface_AddScreenTitleMessage(self, 0, a0, a1, (void*)0xC0DE);
+    CGameScriptInterface_AddScreenTitleMessage(
+        self, 0, areaName, fadeTimeBits, (void*)0);
     if (g_d_calls != 1)         { printf("c5 call\n"); fails++; }
     if (g_d_this != &targetObj) { printf("c5 this (picked node instead of end)\n"); fails++; }
+    if (g_d_a2 != 0)            { printf("c5 false-forward\n"); fails++; }
 
-    // Case 6: flag set, node==end -> pick=end, target(end+4)==0 -> no call
+    // Case 6: an end node with no display produces no call.
     reset();
     for (int i=0;i<0x100;i++) obj[i]=0;
     *(unsigned int*)(obj + OFF_FLAGS30) = 0x4000;
@@ -157,7 +151,8 @@ int main() {
     g_lb_ret = endBuf6;
     g_A_ret = (void*)0x77770000;
     g_B_ret = obj;
-    CGameScriptInterface_AddScreenTitleMessage(self, 0, a0, a1, (void*)0x1234);
+    CGameScriptInterface_AddScreenTitleMessage(
+        self, 0, areaName, fadeTimeBits, (void*)1);
     if (g_d_calls != 0) { printf("c6 null-target no-call\n"); fails++; }
 
     if (fails == 0) {

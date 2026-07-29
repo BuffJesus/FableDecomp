@@ -50,15 +50,42 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     fable_i32 helpersHeight,
     fable_i32 helpersPitch,
     fable_u32 helpersBitsPerPixel,
-    const void* helpersPixels);
+    const void* helpersPixels,
+    fable_i32 titleSegmentWidth,
+    fable_i32 titleSegmentHeight,
+    fable_i32 titleSegmentPitch,
+    fable_u32 titleSegmentBitsPerPixel,
+    const void* titleSegmentPixels,
+    fable_i32 buttonLeftWidth,
+    fable_i32 buttonLeftHeight,
+    fable_i32 buttonLeftPitch,
+    fable_u32 buttonLeftBitsPerPixel,
+    const void* buttonLeftPixels,
+    fable_i32 buttonMiddleWidth,
+    fable_i32 buttonMiddleHeight,
+    fable_i32 buttonMiddlePitch,
+    fable_u32 buttonMiddleBitsPerPixel,
+    const void* buttonMiddlePixels,
+    fable_i32 buttonRightWidth,
+    fable_i32 buttonRightHeight,
+    fable_i32 buttonRightPitch,
+    fable_u32 buttonRightBitsPerPixel,
+    const void* buttonRightPixels);
 
 void FABLE_FASTCALL FableSetVisualFrontendMainMenu(bool active);
 void FABLE_FASTCALL FableSetVisualFrontendMainMenuSelection(
     fable_u32 selection);
+bool FABLE_FASTCALL FableScrollVisualFrontendMainMenu(
+    bool scrollDown,
+    fable_u32* selected,
+    fable_u32* soundRequest);
 void FABLE_FASTCALL FableSetVisualFrontendOptionsMenu(bool active);
 void FABLE_FASTCALL FableSetVisualFrontendOptionsSelection(
     fable_u32 selection);
 void FABLE_FASTCALL FableSetVisualFrontendOptionsBackHovered(bool hovered);
+void FABLE_FASTCALL FableSetVisualFrontendSaveMenu(bool active);
+void FABLE_FASTCALL FableSetVisualFrontendSaveSelection(
+    fable_u32 selection);
 void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen);
 void FABLE_FASTCALL FableSetVisualFrontendDetailOptionValue(
     fable_u32 screen,

@@ -726,24 +726,55 @@ try {
 
         if ($VerifyMainMenu -or $VerifySubscreens) {
             $pressStartHash = Get-WindowFrameHash
-            if (
-                -not [VisualSmokeNativeMethods]::PostMessage(
-                    $process.MainWindowHandle,
-                    0x0202,
-                    [UIntPtr]::Zero,
-                    [IntPtr]::Zero
-                )
-            ) {
-                throw 'Could not release the retail press-start button.'
-            }
+            [void][VisualSmokeNativeMethods]::SendMessage(
+                $process.MainWindowHandle,
+                0x0100,
+                [UIntPtr]::new(0x0D),
+                [IntPtr]::Zero
+            )
             Start-Sleep -Milliseconds 500
             $mainMenuHash = Get-WindowFrameHash
             if ($mainMenuHash -eq $pressStartHash) {
                 throw (
-                    'The retail left-button release did not replace the ' +
+                    'Keyboard Enter did not dispatch retail press-start ' +
+                    'action 229 and replace the ' +
                     'press-start frontend with the main-menu frontend.'
                 )
             }
+            [void][VisualSmokeNativeMethods]::SendMessage(
+                $process.MainWindowHandle,
+                0x0100,
+                [UIntPtr]::new(0x26),
+                [IntPtr]::Zero
+            )
+            Start-Sleep -Milliseconds 100
+            $keyboardUpHash = Get-WindowFrameHash
+            if ($keyboardUpHash -eq $mainMenuHash) {
+                throw (
+                    'Recovered CFrontEndList ScrollUp did not wrap ' +
+                    'Continue Game to Quit.'
+                )
+            }
+            [void][VisualSmokeNativeMethods]::SendMessage(
+                $process.MainWindowHandle,
+                0x0100,
+                [UIntPtr]::new(0x28),
+                [IntPtr]::Zero
+            )
+            Start-Sleep -Milliseconds 100
+            $keyboardDownHash = Get-WindowFrameHash
+            if ($keyboardDownHash -eq $keyboardUpHash) {
+                throw (
+                    'Recovered CFrontEndList ScrollDown did not return ' +
+                    'Quit to Continue Game.'
+                )
+            }
+            # Sample the translucent middle of the Quit ornament, away from
+            # its text and decorative end caps. This catches a valid generated
+            # selection plan whose TS_BUTTON_M texture is nevertheless dropped
+            # by the live Render2D texture-binding bridge.
+            $quitHighlightBeforeArgb =
+                Get-ClientDesignPixelArgb 260 450
             $menuClient = New-Object VisualSmokeNativeMethods+Rect
             if (
                 -not [VisualSmokeNativeMethods]::GetClientRect(
@@ -777,6 +808,31 @@ try {
                     'selection from Continue Game to Quit.'
                 )
             }
+            $quitHighlightAfterArgb =
+                Get-ClientDesignPixelArgb 260 450
+            $quitHighlightBefore =
+                [System.Drawing.Color]::FromArgb(
+                    $quitHighlightBeforeArgb)
+            $quitHighlightAfter =
+                [System.Drawing.Color]::FromArgb(
+                    $quitHighlightAfterArgb)
+            $quitHighlightDelta =
+                [Math]::Abs(
+                    [int]$quitHighlightAfter.R -
+                    [int]$quitHighlightBefore.R) +
+                [Math]::Abs(
+                    [int]$quitHighlightAfter.G -
+                    [int]$quitHighlightBefore.G) +
+                [Math]::Abs(
+                    [int]$quitHighlightAfter.B -
+                    [int]$quitHighlightBefore.B)
+            if ($quitHighlightDelta -lt 24) {
+                throw (
+                    'The Quit row selection moved, but its retail ' +
+                    'TS_BUTTON_M highlight texture was not visibly bound ' +
+                    "(sample delta $quitHighlightDelta)."
+                )
+            }
             $menuBitmap = New-Object System.Drawing.Bitmap $width, $height
             $menuGraphics =
                 [System.Drawing.Graphics]::FromImage($menuBitmap)
@@ -807,7 +863,9 @@ try {
                 " menu=transitioned" +
                 " press=$($pressStartHash.Substring(0, 12))" +
                 " main=$($mainMenuHash.Substring(0, 12))" +
-                " hover=$($hoverMenuHash.Substring(0, 12))"
+                " hover=$($hoverMenuHash.Substring(0, 12))" +
+                " highlight-delta=$quitHighlightDelta" +
+                " keys=enter-up-wrap-down"
             )
 
             if ($VerifySubscreens) {
@@ -844,10 +902,127 @@ try {
                     )
                 }
 
-                # Move from Quit to Options and dispatch retail action 297.
+                # Continue Game dispatches action 66, refreshes the recovered
+                # autosave/manual ordering, and enters used key 0x08.
+                Send-DesignMouse 0x0200 320 205
+                Start-Sleep -Milliseconds 100
+                $saveSelectionBeforeArgb =
+                    Get-ClientDesignPixelArgb 100 100
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x0D),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 250
+                $saveMenuHash = Get-WindowFrameHash
+                $saveSelectionAfterArgb =
+                    Get-ClientDesignPixelArgb 100 100
+                $saveSelectionBefore =
+                    [System.Drawing.Color]::FromArgb(
+                        $saveSelectionBeforeArgb)
+                $saveSelectionAfter =
+                    [System.Drawing.Color]::FromArgb(
+                        $saveSelectionAfterArgb)
+                $saveSelectionDelta =
+                    [Math]::Abs(
+                        [int]$saveSelectionAfter.R -
+                        [int]$saveSelectionBefore.R) +
+                    [Math]::Abs(
+                        [int]$saveSelectionAfter.G -
+                        [int]$saveSelectionBefore.G) +
+                    [Math]::Abs(
+                        [int]$saveSelectionAfter.B -
+                        [int]$saveSelectionBefore.B)
+                $saveDiagnosticBitmap =
+                    New-Object System.Drawing.Bitmap $width, $height
+                $saveDiagnosticGraphics =
+                    [System.Drawing.Graphics]::FromImage(
+                        $saveDiagnosticBitmap)
+                try {
+                    $saveDiagnosticGraphics.CopyFromScreen(
+                        $bounds.Left,
+                        $bounds.Top,
+                        0,
+                        0,
+                        $saveDiagnosticBitmap.Size
+                    )
+                    $saveDiagnosticBitmap.Save(
+                        (Join-Path (
+                            Split-Path -Parent $Executable
+                        ) 'frontend-saved-games-smoke.png'),
+                        [System.Drawing.Imaging.ImageFormat]::Png
+                    )
+                } finally {
+                    $saveDiagnosticGraphics.Dispose()
+                    $saveDiagnosticBitmap.Dispose()
+                }
+                if (
+                    $saveMenuHash -eq $hoverMenuHash -or
+                    $saveMenuHash -eq $mainMenuHash -or
+                    $saveSelectionDelta -lt 40
+                ) {
+                    throw (
+                        'Retail action 66 did not activate used key 0x08, ' +
+                        'UI_FRONTEND_PROFILE_SAVED_GAMES_MENU ' +
+                        "(selection sample delta $saveSelectionDelta)."
+                    )
+                }
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x28),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 100
+                $saveMenuDownHash = Get-WindowFrameHash
+                if ($saveMenuDownHash -eq $saveMenuHash) {
+                    throw (
+                        'Recovered saved-games list ScrollDown did not ' +
+                        'advance from AutoSave to Manual - Save1.'
+                    )
+                }
+                $saveBitmap =
+                    New-Object System.Drawing.Bitmap $width, $height
+                $saveGraphics =
+                    [System.Drawing.Graphics]::FromImage($saveBitmap)
+                try {
+                    $saveGraphics.CopyFromScreen(
+                        $bounds.Left,
+                        $bounds.Top,
+                        0,
+                        0,
+                        $saveBitmap.Size
+                    )
+                    $saveScreenshot = Join-Path (
+                        Split-Path -Parent $Executable
+                    ) 'frontend-saved-games-smoke.png'
+                    $saveBitmap.Save(
+                        $saveScreenshot,
+                        [System.Drawing.Imaging.ImageFormat]::Png
+                    )
+                } finally {
+                    $saveGraphics.Dispose()
+                    $saveBitmap.Dispose()
+                }
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x1B),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 150
+
+                # Move from Quit to Options and dispatch retail action 297
+                # through the selected child rather than a mouse release.
                 Send-DesignMouse 0x0200 320 260
                 Start-Sleep -Milliseconds 100
-                Send-DesignMouse 0x0202 320 260
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x0D),
+                    [IntPtr]::Zero
+                )
                 Start-Sleep -Milliseconds 350
                 $optionsHash = Get-WindowFrameHash
                 if (
@@ -857,6 +1032,34 @@ try {
                     throw (
                         'Retail action 297 did not activate ' +
                         'UI_FRONTEND_OPTIONS_SUB_MENU.'
+                    )
+                }
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x28),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 100
+                $optionsKeyboardDownHash = Get-WindowFrameHash
+                if ($optionsKeyboardDownHash -eq $optionsHash) {
+                    throw (
+                        'Recovered Options ScrollDown did not change ' +
+                        'the selected child.'
+                    )
+                }
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x26),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 100
+                $optionsKeyboardUpHash = Get-WindowFrameHash
+                if ($optionsKeyboardUpHash -eq $optionsKeyboardDownHash) {
+                    throw (
+                        'Recovered Options ScrollUp did not restore ' +
+                        'the selected child.'
                     )
                 }
                 Send-DesignMouse 0x0200 320 205
@@ -894,7 +1097,12 @@ try {
                     )
                     Send-DesignMouse 0x0200 320 $RowY
                     Start-Sleep -Milliseconds 80
-                    Send-DesignMouse 0x0202 320 $RowY
+                    [void][VisualSmokeNativeMethods]::SendMessage(
+                        $process.MainWindowHandle,
+                        0x0100,
+                        [UIntPtr]::new(0x0D),
+                        [IntPtr]::Zero
+                    )
                     Start-Sleep -Milliseconds 300
                     $detailHash = Get-WindowFrameHash
                     if ($detailHash -eq $PreviousHash) {
@@ -1018,6 +1226,69 @@ try {
                 Send-DesignMouse 0x0202 320 155
                 Start-Sleep -Milliseconds 250
                 $gameplayInitialHash = Get-ClientFrameHash
+                # The WinMM controller bridge emits these same virtual-key
+                # routes. Prove detail focus and Left/Right mutation without
+                # requiring physical controller hardware in automation.
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x27),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 100
+                $gameplayControllerFirstHash = Get-ClientFrameHash
+                if ($gameplayControllerFirstHash -eq $gameplayInitialHash) {
+                    throw (
+                        'Controller-compatible Right input did not mutate ' +
+                        'the focused Gameplay detail row.'
+                    )
+                }
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x25),
+                    [IntPtr]::Zero
+                )
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x28),
+                    [IntPtr]::Zero
+                )
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x27),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 100
+                $gameplayControllerSecondHash = Get-ClientFrameHash
+                if ($gameplayControllerSecondHash -eq $gameplayInitialHash) {
+                    throw (
+                        'Controller-compatible Down/Right input did not ' +
+                        'move focus and mutate the second Gameplay row.'
+                    )
+                }
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x25),
+                    [IntPtr]::Zero
+                )
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x26),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 100
+                $gameplayControllerRestoredHash = Get-ClientFrameHash
+                if ($gameplayControllerRestoredHash -ne $gameplayInitialHash) {
+                    throw (
+                        'Controller-compatible detail mutation did not ' +
+                        'round-trip to the activation values.'
+                    )
+                }
                 Send-DesignMouse 0x0202 480 90
                 Start-Sleep -Milliseconds 150
                 $gameplayMutatedHash = Get-ClientFrameHash
@@ -1151,6 +1422,9 @@ try {
                 }
                 $frameProof += (
                     " options=$($optionsHash.Substring(0, 12))" +
+                    " saves=$($saveMenuHash.Substring(0, 12))" +
+                    " save-scroll=$($saveMenuDownHash.Substring(0, 12))" +
+                    " save-highlight-delta=$saveSelectionDelta" +
                     " option-hover=$($optionsHoverHash.Substring(0, 12))" +
                     " gameplay=$($gameplayHash.Substring(0, 12))" +
                     " controls=cancel-apply-defaults" +

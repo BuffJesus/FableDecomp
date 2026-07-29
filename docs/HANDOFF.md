@@ -1,11 +1,199 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-27 (BuffJesus retail boot movies; pristine retail title
-textures; compiled Redefine row/font/mouse transforms; centered table
-ornaments and headers; stateful detail controls and Redefine hover states).*
+*Last updated: 2026-07-28 (live CTable title-rule and selection components;
+CUIState-driven main-menu/Options rows; keyboard/controller activation;
+retail list and screen-transition sounds; pristine retail textures; exact
+Redefine row composition/text origins; recovered Continue/save-browser
+construction and metadata boundary).*
 
-## Latest publication checkpoint (2026-07-27)
+## Latest publication checkpoint (2026-07-28)
 
+- `CTable::ConstructSpritesToDraw @ 0x00551EA0` now crosses the live renderer
+  boundary for the first component family. Options, Gameplay, Audio, Video,
+  and Redefine headers construct the three recovered
+  `UI_TEXTBOX_MIDDLE` (#122) children, retain them through retail-style
+  `CCountedPointer` controls, and submit their state-0 position/size/zoom as
+  textured quads through the recovered Render2D batch and draw-list path.
+- The generated-component adapter resolves retail texture/UV bindings by
+  definition identity, preserves draw order, clips the 640-pixel table span
+  with UV correction, and validates binding/capacity failures transactionally.
+  Focused VC7.1 coverage proves exact vertex coordinates, zoomed width,
+  texture/state records, clipping, missing-binding rejection, and unchanged
+  queue counts on failure.
+- The generated-child vector now uses explicit retail-style
+  `CCountedPointer` control blocks. A 20-component VC7.1 fixture proves the
+  local-create -> vector-copy -> local-release transition settles at one owned
+  reference per child, vector release destroys all 20 components and controls,
+  and a deliberately undersized vector rolls back without a leak. The full
+  Release bootstrap and all integrated behavior gates pass.
+- The build retains `frontend_options_menu.png` as the baked oracle, generates
+  a component sheet without either live family, and proves all eight frames
+  recompose pixel-identically before embedding the live assets.
+- The Options selected-row ornament is live too. `UI_BUTTON` (#73) supplies
+  the recovered 280-pixel table, local offset `(-80,-7)`, and definitions
+  129/130/131. Their pristine 64x64, 64x64, and 8x64 `TS_BUTTON_L/R/M`
+  textures become three owned children with a 19-tile middle zoom and move at
+  y=`143 + 30*selection`. Multi-definition texture binding is behavior-gated.
+  The full Release bootstrap, Options/Quit interaction smoke, and maximized
+  aspect-fit smoke pass.
+- Main-menu selection ornaments now use the same owned component bridge.
+  Rows 1-6 reuse the 280-pixel `UI_BUTTON`; Continue Game owns a second
+  three-child `UI_BUTTON_BIG` vector with the recovered 400-pixel span and
+  34-tile middle zoom. Both retail and BuffJesus component sheets exclude the
+  ornament and recompose pixel-identically across all seven frames. Retail,
+  BuffJesus, complete subscreen, and maximized-scale smokes pass.
+- Main-menu row text is no longer flattened into the seven selection frames.
+  Retail and BuffJesus builds pack seven independent transparent row canvases;
+  the D3D9 Render2D queue submits each row after the live ornament and
+  title-only frame. Recomposition remains pixel-identical for all 14 oracle
+  frames, and both main-menu, complete subscreen, and maximized smokes pass.
+- The retail `CUIState` ABI is now explicit and compile-locked at 0x24 bytes,
+  including Position `+0x08`, Zoom `+0x10`, Colour `+0x18`, UpdateTime
+  `+0x1C`, and LinearChange `+0x20`. A behavior-gated runtime boundary applies
+  `DoRecomputeOffsets` positions to states 0/1/4/5/6, alpha to 1/4/5, adopts
+  state 1 as the live child value, and snapshots each completed state map.
+  This adapter is behavior-equivalent integration code, not a byte-match claim
+  for the full retail `CList::DoRecomputeOffsets` body.
+- All seven main-menu and four Options text rows now own those exact five-state
+  maps and draw from their live `CUIState` position and colour. Keyboard Up/Down
+  invokes the recovered `CFrontEndList::ScrollUp/ScrollDown` decision path for
+  both the main menu and Options; wrapping, old/new states 4/3, selection, and
+  transactional rejection are behavior-gated. The retail definitions prove
+  both lists use `Wrapping=true`, `Scrolling=false`, zero alpha falloff, and a
+  30-pixel definition step. Their navigation states 3/4 are both immediately
+  visible at x=120 with `UpdateTime=-1`, so no row translation or fade is
+  correct here; only the live selection ornament moves.
+- Enter now activates press-start action 229, the implemented main-menu
+  actions 297/314, and all four Options actions 9/13/12/283 through the same
+  helpers as mouse release. The exact resume point is the remaining main-menu
+  action implementations, then extracting detail-screen rows and controls from
+  the precomposed frames. The runtime/test now preserve the complete decoded
+  main-menu action order `(66,16,297,10,67,321,314)` for Continue, Change
+  Profile, Options, LIVE, Credits, About, and Quit, so those remaining routes
+  no longer depend on inferred row indices.
+- The visual checkpoint now consumes the exact retail frontend UI sounds.
+  `UI_MISC_THINGS_DEF` and the recovered list bodies map successful Up/Down to
+  `CS_GUI_2`/sample 3 and a blocked boundary to `CS_GUI_5`/sample 7.
+  `CFrontEndManager::Update @ 0x00599E3F` maps back/forward transitions to
+  `CS_GUI_6`/sample 4 and `CS_GUI_7`/sample 5. The build extracts those RIFFs
+  from the installed `data\Sound\Frontend.lug`, embeds WAVE resources
+  116-119, and uses asynchronous resource playback. A PE resource audit proved
+  every embedded byte equals its extracted retail sample. The full VC7.1
+  build, retail subscreen smoke, BuffJesus menu smoke, and maximized-scale
+  smoke pass.
+- The missing live selected-row ornament was traced to the D3D9 texture bridge,
+  not the decoded assets or component geometry. `TS_BUTTON_L/M/R` and the
+  title-rule segment were submitted as valid Render2D records but omitted from
+  the adapter's texture-handle resolver, so null was attached at draw time.
+  All four bindings are now live. Release bootstrap, retail/BuffJesus main-menu
+  smokes, and the complete Options/detail/redefine/quit smoke pass; the smoke
+  now requires an off-text highlight sample delta (354/355 in the two public
+  variants).
+- Initial controller input is live through the period WinMM joystick API.
+  POV/analogue Up/Down, button-1/Start accept, and button-2/Back are edge-gated
+  into the same recovered scroll/action routes used by keyboard input. Focused
+  mapping/edge tests, the Release bootstrap, retail main-menu smoke, and the
+  complete subscreen smoke pass. Gameplay/Video/Audio screens also wrap row
+  focus and apply Left/Right through the live profile-value path; automation
+  mutates two rows and proves a clean round-trip. Held directions now implement
+  the exact recovered `CFrontendGameComponent::ChangeSelection @ 0x00494380`
+  state machine: direction changes fire immediately, the initial repeat delay
+  is 500 ms, and subsequent repeats use 100 ms. Focused threshold/release tests,
+  the Release bootstrap, and the complete subscreen smoke pass. The remaining
+  main-menu actions are still open.
+- The Redefine right column was a real component-routing mismatch: it reused
+  the left column's rounded `FE_SLOT_TEST_*` table. Retail
+  `UI_BUTTON_REDEFINE_RIGHT` maps all three table roles to
+  `UI_OPTIONS_HORIZONTAL_BAR`, graphic 385,
+  `FE_OPTIONS_HORIZONTAL_BAR_SPRITE`. The generated rows now combine the
+  rounded 280-pixel action table with that repeated 220-pixel bar.
+  `CText::Draw @ 0x0054EF00` and the downstream flags-zero font path prove
+  there is no hidden vertical centering; both labels retain their serialized
+  top origins. Sixteen focused subscreen tests, the full Release build, and
+  the complete interaction smoke pass.
+- Continue Game's browser is now mapped and live. Action 66 invokes
+  `RefreshAvailableSavedGamesForProfile @ 0x00598463` and, when rows exist,
+  enters used key `0x08` (`UI_FRONTEND_PROFILE_SAVED_GAMES_MENU`). The refresh
+  body replaces `UI_FRONTEND_LIST_FOR_SAVES`, attaches the scrolling-text and
+  screenshot viewports, and emits autosave-first then ascending non-empty
+  manual slots at 30-pixel intervals. Each button uses the exact save-list
+  definitions, owns the original filename action parameter, and routes to
+  action `0x11` or invalid-save action `0xDC` from the primary/companion
+  validity checks. The runnable renders the exact title, four-row list,
+  120-pixel-inner-width highlight, file-information block, and Back helper;
+  keyboard/mouse selection plus action-86 return pass a pixel-level smoke.
+  Its four frames are packed beside the existing eight-frame component atlas
+  within 1664x3840, avoiding the D3D9 4096-pixel texture-height ceiling.
+  Row action `0x11` remains deliberately disconnected from the main-game/world
+  handoff until that ownership boundary is reconstructed.
+- **Visual sign-off is not complete.** The user reviewed the current Saved
+  Games/keybind presentation and still considers it visibly incorrect.
+  Existing smokes prove routing and visible state changes, not screenshot
+  equivalence. Resume with identical-state retail/reconstruction captures and
+  alpha-aware diffs; correct measured text scale/baselines, highlight
+  span/placement, metadata, and background differences before claiming initial
+  frontend presentation parity.
+- `AddRegionAndTimeInfo @ 0x00597228` is now mapped as the save-browser
+  metadata producer rather than a UI helper. It decodes either compressed
+  `FableSav` or legacy text persistence, gives a valid `path + L"."` sidecar
+  precedence for `WorldFrame`, reads region/minimap names from the primary
+  `HEADER`, and always appends one synchronized record to the manager's three
+  metadata arrays. Its 2,296-byte archive/unwind graph remains decomp-backed,
+  not a fabricated quick parity shard.
+- `ConstructFileDescription @ 0x00595CC1` completes the browser's visible row
+  contract. It installs the file-info/detail text and picture into the two
+  viewports, composes profile/date/region/playtime text, and selects the
+  minimap-backed graphic or corrupt-save fallback at the shipped coordinates.
+  The row action was already owned by the refresh caller; this routine adds no
+  action object. Its 1,613-byte polymorphic text/refcount body is retained as
+  decomp evidence rather than split at an invented boundary.
+- In parallel, 238 address-isolated functions were promoted into the canonical
+  candidate catalog and replayed with the real VC7.1 compiler and behavior
+  harness. The scoped object audit includes exact 57/57-byte
+  `CFrontEndList::InitialiseOffsets` and 834/834-byte relocation-normalized
+  `CFrontEndList::ScrollUp`, plus the death-recovery wrappers, script adapters,
+  two network-client methods, and short quest/GUI tail adapters.
+  The exact manager transition set now includes `GotoNewProfileScreen`
+  176/176, `GotoNextScreen` 266/266, `GotoSpecificPreviousScreen` 170/170,
+  `GotoProfileMenu` 210/210, and `GotoPreviousScreen` 517/517, covering target
+  filtering, component-stack ownership, transition fields, forward/back
+  sounds, and intrusive refcounts. `LaunchVirtualKeyboard` is now 99/99 and
+  `CreateNewProfile` is 238/238, with focused fixtures for allocation order,
+  the retail null-allocation quirk, profile validation, defaults, save/menu
+  propagation, and both inversion branches. `CreateFrontEndButtonComponent`
+  is 614/614 with all definition-routing branches, hierarchy construction,
+  state widths, and counted-pointer release order covered. Exact manager
+  additions also include `RefreshAvailableProfilesForDelete` 546/546,
+  `LoadProfile` 130/130, `DoPressStart` 227/227, `AddPrefixToTitleBar` 75/75,
+  `CanAcceptOptionChanges` 56/56, `ChangeStateFirstTime` 21/21, and
+  `CreateComponent` 21/21. The same scoped gate includes
+  `CGameScriptInterface::AddQuestCard` at 148/148 with all notification/state
+  paths and temporary lifetimes covered. The batch audit is forty-four literal
+  exact matches plus 194 relocation-normalized matches with zero failures.
+  This checkpoint also covers the front-end screen constructor, destructor,
+  initializer, and left-click action ownership; both profile-list paging
+  variants; virtual-keyboard/profile-name handling; and the adjacent scripted
+  camera wrappers. `ExportCandidateOracles.ps1` now merges
+  `manual-re-candidates.tsv`, preserving twenty-seven independently verified
+  compiler-emitted/adjacent retail spans that Ghidra omits or truncates.
+  `CFrontEndManager::Action @ 0x0059A238`
+  has a separate behavior-proven
+  940-byte initial-action dispatcher, but it honestly remains `DIFFER` from
+  the 1,486-byte retail body because profile/trophy/localized-string/template
+  payload paths are not recovered. `ScrollDown @ 0x0054C810` is now a complete
+  977/977 relocation-normalized match using the same ABI-explicit recovered
+  form as `ScrollUp`; its fixture locks the retail x87-truncated alpha ramp
+  (`190,255,190,126,62`). The README
+  percentage remains the last full
+  atomic publication; do not add this scoped batch by hand. Run the global
+  parity/manifest refresh after those active frontend lanes release their
+  files.
+- `README.md` is now a documentation landing page rather than a chronological
+  reconstruction log: stable contents/anchors, compact status, one runnable
+  path, capability/roadmap tables, verification definitions, and a curated
+  subsystem index. Detailed addresses and session history remain here. The
+  canonical percentage updater and its focused tests pass against the new
+  expandable metrics block.
 - Build and launch from the repository root with
   `.\rebuild\build\bootstrap-Release\FableTLC-Reconstruction-VisualCheckpoint.exe --buff-jesus`.
   This public path includes the Lionhead/Microsoft/intro sequence;
@@ -27,10 +215,18 @@ ornaments and headers; stateful detail controls and Redefine hover states).*
 - The percentage table in `README.md` is generated only by the canonical
   refresh. Never hand-edit its counts; rerun `tools/run_rebuild_refresh.ps1`
   after auto-RE/organizer work has settled.
-- Next visible priorities are full 31-action Redefine scrolling/profile
-  persistence, live `CTable` component ownership in place of precomposed
-  sheets, keyboard/controller navigation and sounds, then matched retail vs.
+- Next visible priorities are the remaining Options/detail component families,
+  full 31-action Redefine scrolling/profile persistence, controller navigation
+  and remaining action/hover sound dispatch, then matched retail vs.
   reconstructed image-diff captures.
+- Unicorn 2.1.4 was assessed as a useful optional **function-level** x86
+  behavior oracle, not a game/runtime emulator. The current parity ledger has
+  2,390 short exact/no-relocation validation candidates and 174 sub-128-byte
+  `DIFFER` diagnosis candidates. `docs/UNICORN_EMULATION_PLAN.md` defines the
+  fixture/stub/result contract, particle/frontend use, hard limitations,
+  Python 3.13 isolation, ambiguous upstream license metadata, and U0–U2
+  acceptance gates. No dependency was installed and this does not alter the
+  canonical percentages.
 
 ## Retail boot-movie sequence + CVideoSys/CMovie recovery (2026-07-26)
 
@@ -295,10 +491,12 @@ ornaments and headers; stateful detail controls and Redefine hover states).*
   and Apply/Cancel/Defaults helpers all come from the retail banks. Audio
   correctly selects the coastal controller; the other three retain forest.
 - The Gameplay, Audio, and Video controls are now independently mutable.
-  The eight-frame Options sheet is 1024 pixels wide: its left 640 pixels hold
-  the recovered screens and its transparent right-hand atlas holds 124
-  text/numeric control states. D3D9 composes the selected 200x30 tile for each
-  live row, avoiding combinatorial full-screen variants.
+  The retained eight-frame Options oracle is 1024 pixels wide: its left 640
+  pixels hold the recovered screens and its transparent right-hand atlas holds
+  124 text/numeric control states. The live component atlas is now 1664 pixels
+  wide and adds four independent Options row canvases at x=1024. D3D9 composes
+  both those rows and the selected 200x30 control tiles without combinatorial
+  full-screen variants.
 - Video's first state is seeded from
   `CONFIG_OPTIONS_DEFAULTS_DEF_INSTANCE` (1024x768, AA off, and 1/3
   texture/mesh/shadow/effects detail). Recovered
@@ -315,13 +513,19 @@ ornaments and headers; stateful detail controls and Redefine hover states).*
   cancelable until Apply.
 - Redefine Keys renders the first visible page of action names from
   `UI_FRONTEND_LIST_REDEFINE_KEYS_MENU.ActionMap/ActionOrder`, with bindings
-  decoded from `FABLE_PC_CONTROL_SCHEME_GDD_WASD`. Its two 280/220-pixel slot
-  columns, 26-pixel rows, scroll arrows, undefined-control warning, and reset
-  helpers come from the compiled tree. The generated row children now use
-  `ENG_ARIAL_12` at the serialized `(0,3)`/`(380,3)` offsets, the right slot
-  retains its `-3` y offset, and hover swaps one complete 588x35 ON strip.
-  `CText::Draw @ 0x0054EF00` confirms alignment changes x only; its rounded
-  component y plus the retail glyph offset is the vertical baseline.
+  decoded from `FABLE_PC_CONTROL_SCHEME_GDD_WASD`. Its 280-pixel rounded
+  action-name column, 220-pixel horizontal-bar key-value column, 26-pixel
+  rows, scroll arrows, undefined-control warning, and reset helpers come from
+  the compiled tree. The right component repeats
+  `FE_OPTIONS_HORIZONTAL_BAR_SPRITE`; it is not another `FE_SLOT_TEST_*`
+  table. The generated row children use `ENG_ARIAL_12` at the serialized
+  `(0,3)`/`(380,3)` offsets, the right table retains its `-3` y offset, and
+  no extra vertical-centering bias is applied. `CText::Draw @ 0x0054EF00`
+  rounds x/y independently, changes x only for alignment, and forwards y
+  unchanged to `CEnginePrimitive2DText`; the static font renderer mirrors that
+  serialized top-origin contract. Hover swaps one complete 588x35 ON strip.
+  Focused tests gate the component routing and both columns' retail text
+  origins.
 - `-VerifySubscreens` now enters all four screens, verifies distinct live
   frames, proves mutation -> Cancel rollback -> mutation -> Apply persistence
   -> Defaults restoration on Gameplay, returns through both Escape and the
@@ -359,8 +563,8 @@ order:
    the four WASD child rows are now recovered; filtering, lower-page rows, and
    profile-backed persistence remain. `CKeyRedefiner::Initialise`,
    `UpdateKeyText`, and both hover handlers are already bounded.
-3. Add keyboard/list navigation and selected/unselected sound events from the
-   retail frontend update path.
+3. Connect controller polling to the recovered keyboard/list route, then
+   recover the remaining hover and action-specific sound dispatch.
 4. Keep advancing GFMain Phases 3-10 and replacing authored post-movie
    services with reconstructed retail owners in parallel with visible work.
 
@@ -5973,7 +6177,7 @@ only candidate parity in the whole-project “verified” and “byte-identical�
 README rows. It now includes the 16 matching and two functional independent
 lifts, validates its sources against `rebuild/COVERAGE.json`, and has focused
 regression tests. The correct public totals are **4,736 verified functional or
-matching (9.56%)** and **2,705 byte-identical (5.46%)**. Usable navigation names
+matching (9.55%)** and **2,705 byte-identical (5.46%)**. Usable navigation names
 are **99.913%**, distinct from the stricter **99.211%** accepted-name-quality
 row. `tools/write_decomp_dashboard.py` now serializes those derived navigation
 and byte-identical values as well.
@@ -6266,3 +6470,72 @@ five children with falloff 64 produce alphas
 (`126,190,255,190`) because `DoRecomputeOffsets` stores and reloads its
 intermediate alpha field on each iteration. The complete Release bootstrap
 passes after preserving both paths.
+
+## Live frontend state-map/navigation checkpoint (2026-07-28)
+
+`FableApplyUiFrontEndListScroll` now connects the recovered scroll planner to
+runtime children transactionally. It applies states 4/3 to the old/new
+selection, rotates the current colour values on the wrapping path, and retains
+the recovered position/alpha rewrite for non-wrapping lists. Rejection and
+capacity failures leave the children unchanged. Its VC7.1 behavior fixture
+covers wrap, non-wrap, alpha residue, and blocked boundaries.
+
+The D3D9 frontend owns seven runtime main-menu children whose five states are
+initialized from the exact decoded text definitions. Each row quad reads its
+live position and packed colour. Up/Down now routes both the main menu and
+Options through the recovered selection decision rather than editing an index
+in isolation. Mouse selection applies the same old/new states.
+
+Retail definition inspection corrects the earlier proposed animation: both
+lists are wrapping and non-scrolling, with zero alpha falloff. Main-menu text
+states 3 and 4 have the same `(120,0)` position, full alpha, and update time
+`-1`, so ordinary navigation has no row motion or fade to interpolate. The
+0.2-second hidden state 2 is a separate transition. The selected-button table
+is the moving visual during Up/Down.
+
+The full Release bootstrap passes, retail and BuffJesus menu recomposition is
+pixel-identical across all 14 frames, the complete subscreen smoke exercises
+Options Down/Up, and the maximized smoke passes at 2560x1369 with scale error
+8.56. These runtime adapters are authored integration with behavior and data
+oracles; they are not claims that the complete retail scroll or draw bodies are
+byte-identical.
+
+## Independent Options row checkpoint (2026-07-28)
+
+The four Options labels are no longer flattened into every selected frame.
+`build_options_row_layers` renders one transparent 640x480 canvas per decoded
+text child. The baked 1024x3840 sheet remains the oracle; the live component
+atlas is 1664x3840, retaining the existing screen, 124-value control, and
+55-key text coordinates while adding the row canvases at x=1024. The generator
+recomposes the live title rule, selected-button table, base frame, and four
+rows against every one of the eight baked frames and reports
+`oracle=PIXEL_IDENTICAL`.
+
+`validate_compiled_subscreen_layout` now locks the Options list's wrap,
+scrolling, alpha, step, child order/action, and all four text definitions'
+five-state x/y/alpha/time/flag tuples. D3D9 owns four corresponding
+`FableUiRuntimeListChild` values, applies states 4/3 on keyboard or mouse
+selection, and submits each row using its current position and packed colour.
+
+The complete Release build and VC7.1 behavior gates pass. The subscreen smoke
+reaches and mutates every Options destination after Down/Up navigation, the
+BuffJesus main-menu smoke passes, and maximized 2560x1369 scaling remains at
+error 8.56. The next frontend slice is Enter/controller activation through the
+recovered action dispatcher, followed by remaining detail-row extraction.
+
+## Keyboard activation checkpoint (2026-07-28)
+
+The Win32 input boundary now routes Enter through shared activation helpers.
+It dispatches press-start action 229, the currently live main-menu actions 297
+(Options) and 314 (Quit), and Options actions 9/13/12/283. Mouse release calls
+the same helpers, so screen ownership, detail-value snapshots, Redefine state,
+and D3D transitions cannot drift between the two input paths. Enter during an
+active key-redefinition capture remains a redefinable control value and is
+consumed before frontend activation.
+
+The full VC7.1 build passes. The complete subscreen smoke now uses Enter for
+press-start, main-menu Options entry, and all four Options destinations; its
+retail result reports `keys=enter-up-wrap-down`. The BuffJesus variant reports
+the same input proof, and maximized scaling remains green. This does not claim
+the retail controller polling/update path or the unimplemented Continue,
+profile, LIVE-aware, credits, and About actions.

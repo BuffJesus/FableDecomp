@@ -1,13 +1,13 @@
 # Auto-RE candidate compile gate
 
-Generated: `2026-07-27T23:17:33-06:00`
+Generated: `2026-07-28T22:48:06-06:00`
 
 | Gate | Passing | Total |
 |---|---:|---:|
-| Source integrity | 803 | 803 |
-| 32-bit host C++20 syntax | 367 | 803 |
-| No detected VC7.1 language blockers | 67 | 803 |
-| Ready for VC7.1 module compilation | 41 | 803 |
+| Source integrity | 832 | 832 |
+| 32-bit host C++20 syntax | 389 | 832 |
+| No detected VC7.1 language blockers | 67 | 832 |
+| Ready for VC7.1 module compilation | 41 | 832 |
 
 A checker PASS is not a compiler PASS. The host syntax gate supplies only standard-library and calling-convention compatibility; missing engine declarations must be resolved through real module headers.
 
@@ -17,7 +17,7 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 |---|---:|
 | `offsetof` | 61 |
 | `class CGameScriptInterface` | 40 |
-| `CCharString` | 29 |
+| `CCharString` | 30 |
 | `CGameScriptInterface` | 23 |
 | `mov` | 16 |
 | `std` | 13 |
@@ -41,9 +41,9 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 | `CGameEvent` | 6 |
 | `next` | 6 |
 | `CTCCoopSpirit` | 6 |
+| `CWorldMap` | 6 |
 | `CQuestManager` | 6 |
 | `CANavQuadTreeNode` | 6 |
 | `CEngineLandscapePatch` | 6 |
-| `CMemoryAllocatorVariableSize` | 5 |
 
 Full per-candidate results are in `candidates.tsv`.
