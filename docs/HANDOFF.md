@@ -6,6 +6,21 @@ retail list and screen-transition sounds; pristine retail textures; exact
 Redefine row composition/text origins; recovered Continue/save-browser
 construction and metadata boundary).*
 
+## Repository-history repair (2026-07-28)
+
+- Git history was rewritten across every published branch to purge four
+  retail-derived Blender test PNGs and `scratch_frn/retail.bin`. All commit
+  hashes from before this repair are obsolete.
+- Do **not** merge or push from a pre-rewrite clone; that can restore the
+  removed objects. Re-clone the repository, or fetch and rebase local work onto
+  the rewritten branch tips.
+- `.gitignore`, the README project boundaries, and the Blender-addon
+  documentation now require decoded textures, model renders, `.blend` proofs,
+  and retail byte extracts to remain local-only.
+- The rewritten branch graph is clean. GitHub pull-request refs and cached
+  objects require GitHub-side dereferencing/garbage collection before the old
+  blob IDs cease resolving.
+
 ## Latest publication checkpoint (2026-07-28)
 
 - `CTable::ConstructSpritesToDraw @ 0x00551EA0` now crosses the live renderer
