@@ -1,10 +1,12 @@
 // CGameScriptInterface::MsgIsQuestionAnsweredYesOrNo @ 0x00894300  (111 bytes)
 // VC7.1 / MSVC 2003, /O2 /Oy /W3, x86-32.
 //
-// Retail prologue reads `this` from ecx (__fastcall model), calls two this-only
-// accessors, then dispatches a message query through [[this+4]+0x60] with a
-// small stack-built argument block, and classifies the answer field at
-// result+0x3c into {0,1,2} (returned verbatim) or -1 (no/invalid answer).
+// Retail prologue reads `this` from ecx (__fastcall model), calls the two
+// address-distinct GetMaxWorldFrameForMessages entry points at 0x006e7510 and
+// 0x006e7530 in that order, then dispatches the bound IsOfType /
+// CanBeSeenOrHeard filter through [[this+4]+0x60].  Message type 0x10 denotes
+// the question-answer event.  The answer field at result+0x3c is returned
+// verbatim only for {0,1,2}; a missing or invalid answer returns -1.
 //
 // All engine callees are extern (relocation-masked in parity).  The dispatcher
 // member call is __fastcall (this in ecx, one stack arg); VC7.1 rejects the
@@ -41,8 +43,9 @@ struct GsiResult { char pad[0x3c]; int answer; };
 
 // --- engine externs (addresses masked by parity) --------------------------
 
-// Two this-only accessors on `this`: __fastcall single-arg => ecx only, edx
-// untouched (matches retail: no edx setup before either call).
+// Code-generation aliases for the two address-distinct
+// GetMaxWorldFrameForMessages entry points.  Both are this-only calls:
+// __fastcall single-arg => ecx only, edx untouched (matches retail).
 extern "C" void* __fastcall Gsi_A(void* thisptr);   // call 0x...53210
 extern "C" void* __fastcall Gsi_B(void* thisptr);   // call 0x...53230
 

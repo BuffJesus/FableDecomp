@@ -18,6 +18,7 @@ from render_fable_frontend_menu import (  # noqa: E402
     MENU_ROWS,
     build_selected_button,
     menu_rows_for_variant,
+    recompose_menu_frame,
     selected_button_left,
     validate_compiled_menu_layout,
 )
@@ -54,6 +55,23 @@ class FrontendMenuRenderTests(unittest.TestCase):
             self.assertEqual(
                 MENU_CONTENT_CENTER_X,
                 selected_button_left(width) + width // 2)
+
+    def test_live_ornament_recomposes_behind_component_text(self):
+        left = Image.new("RGBA", (64, 64), (1, 0, 0, 255))
+        middle = Image.new("RGBA", (8, 64), (2, 0, 0, 255))
+        right = Image.new("RGBA", (64, 64), (3, 0, 0, 255))
+        component = Image.new("RGBA", (640, 480), (0, 0, 0, 0))
+        component.putpixel((320, 200), (9, 9, 9, 255))
+        frame = recompose_menu_frame(
+            component,
+            left,
+            middle,
+            right,
+            0)
+        self.assertEqual((1, 0, 0, 255), frame.getpixel((120, 193)))
+        self.assertEqual((2, 0, 0, 255), frame.getpixel((300, 193)))
+        self.assertEqual((3, 0, 0, 255), frame.getpixel((519, 193)))
+        self.assertEqual((9, 9, 9, 255), frame.getpixel((320, 200)))
 
     def test_buff_jesus_variant_preserves_retail_layout(self):
         self.assertIs(MENU_ROWS, menu_rows_for_variant("retail"))

@@ -49,18 +49,23 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/InstallLocalParityTask
   MATCH; the lander sweeps this automatically.
 - Parity masks relocations (call rel32 + abs-addr operands) — declare engine callees/globals `extern`.
 
-## Current resume point (2026-07-26)
+## Current resume point (2026-07-27)
 
-- The canonical catalog contains 3,308 VC7.1-compiled and behavior-gated functions.
-- Retail comparison has 1,895 exact and 1,086 relocation-normalized matches: 2,981 / 49,553
-  functions, or 6.02% strict whole-executable parity.
-- The latest Ghidra-free replay landed 145 readable candidates from existing authoritative oracles:
-  72 deleting destructors, 28 async-read completion wrappers, 26 intrusive-list resets, and
-  19 linked-tree walkers.
-- Pending replay filters already-landed and non-manifest addresses. Pattern additions therefore
-  recover old staged misses without selecting or exporting new retail evidence.
+- The canonical catalog contains **5,051** VC7.1-compiled and behavior-gated
+  functions.
+- Candidate retail comparison contains **2,689 exact + 2,029
+  relocation-normalized matches = 4,718**, plus 205 `DIFFER` and 128
+  `ORACLE_MISSING` rows. Whole-project verified functional-or-matching coverage
+  is **4,736 / 49,568 (9.55%)**, including **2,705 byte-identical (5.46%)**.
+- Pending replay filters already-landed and non-manifest addresses. Pattern
+  additions therefore recover old staged misses without selecting or
+  exporting new retail evidence.
 - The integrity gate still rejects speculative post-`ret` splits and every address absent from the
   authoritative function manifest.
 - `crack_residue.py`, `verify_residue.py`, and `tools/permuter/` remain targeted tools for promising
   same-length `DIFFER` rows. They are not sprayed across every residue because prior audits proved
   several compiler register-allocation differences irreducible from VC7.1 source spelling.
+- `docs/UNICORN_EMULATION_PLAN.md` specifies an optional local 32-bit execution
+  oracle for retail behavior, ABI, block, and memory traces. It is a proposed
+  diagnostic input to this pipeline, not a replacement for compile, behavior,
+  signature, or byte-parity gates.

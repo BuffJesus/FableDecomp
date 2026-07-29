@@ -27,6 +27,23 @@ typedef void* FableCursor;
 typedef void* FableIcon;
 typedef void* FableMenu;
 
+struct FableJoyInfoEx
+{
+    FableDword size;
+    FableDword flags;
+    FableDword xPosition;
+    FableDword yPosition;
+    FableDword zPosition;
+    FableDword rPosition;
+    FableDword uPosition;
+    FableDword vPosition;
+    FableDword buttons;
+    FableDword buttonNumber;
+    FableDword pointOfView;
+    FableDword reserved1;
+    FableDword reserved2;
+};
+
 struct FablePoint
 {
     FableLong x;
@@ -159,6 +176,7 @@ extern "C"
         FableWordParameter identifier,
         FableUint intervalMilliseconds,
         void* timerProcedure);
+    __declspec(dllimport) FableDword FABLE_STDCALL GetTickCount();
     __declspec(dllimport) FableBool FABLE_STDCALL KillTimer(
         FableWindow window,
         FableWordParameter identifier);
@@ -177,6 +195,13 @@ extern "C"
         const FableMessage* message);
     __declspec(dllimport) FableResult FABLE_STDCALL DispatchMessageA(
         const FableMessage* message);
+    __declspec(dllimport) FableBool FABLE_STDCALL PlaySoundA(
+        const char* sound,
+        FableInstanceHandle module,
+        FableDword flags);
+    __declspec(dllimport) FableUint FABLE_STDCALL joyGetPosEx(
+        FableUint joystickIdentifier,
+        FableJoyInfoEx* information);
 
     __declspec(dllimport) FableGraphicsObject FABLE_STDCALL GetStockObject(
         int object);
@@ -213,6 +238,170 @@ extern "C"
         FableDeviceContext context);
     __declspec(dllimport) FableBool FABLE_STDCALL DeleteObject(
         FableGraphicsObject object);
+}
+
+fable_u32 FABLE_FASTCALL FableGetVisualFrontendMainMenuAction(
+    fable_u32 row)
+{
+    const fable_u32 actions[7] = {
+        66, 16, 297, 10, 67, 321, 314
+    };
+    return row < 7 ? actions[row] : 0;
+}
+
+fable_u32 FABLE_FASTCALL FablePlanVisualFrontendSaveRows(
+    const char* autosaveFilename,
+    bool autosavePrimaryValid,
+    bool autosaveCompanionValid,
+    const char* const* manualFilenames,
+    const bool* manualPrimaryValid,
+    const bool* manualCompanionValid,
+    fable_u32 manualSlotCount,
+    FableUiSaveBrowserRow* rows,
+    fable_u32 rowCapacity)
+{
+    fable_u32 rowCount = 0;
+    if (autosaveFilename != 0 && autosaveFilename[0] != '\0')
+    {
+        if (rows != 0 && rowCount < rowCapacity)
+        {
+            rows[rowCount].filename = autosaveFilename;
+            rows[rowCount].positionY =
+                static_cast<fable_i32>(rowCount * 30);
+            rows[rowCount].action =
+                autosavePrimaryValid && autosaveCompanionValid
+                    ? FableUiSaveBrowserLoadAction
+                    : FableUiSaveBrowserInvalidAction;
+        }
+        ++rowCount;
+    }
+    if (manualFilenames == 0)
+        return rowCount;
+    for (fable_u32 slot = 0; slot != manualSlotCount; ++slot)
+    {
+        const char* filename = manualFilenames[slot];
+        if (filename == 0 || filename[0] == '\0')
+            continue;
+        if (rows != 0 && rowCount < rowCapacity)
+        {
+            rows[rowCount].filename = filename;
+            rows[rowCount].positionY =
+                static_cast<fable_i32>(rowCount * 30);
+            rows[rowCount].action =
+                manualPrimaryValid != 0 &&
+                manualCompanionValid != 0 &&
+                manualPrimaryValid[slot] &&
+                manualCompanionValid[slot]
+                    ? FableUiSaveBrowserLoadAction
+                    : FableUiSaveBrowserInvalidAction;
+        }
+        ++rowCount;
+    }
+    return rowCount;
+}
+
+fable_u32 FABLE_FASTCALL FableMapUiControllerState(
+    fable_u32 xPosition,
+    fable_u32 yPosition,
+    fable_u32 pointOfView,
+    fable_u32 buttons)
+{
+    const fable_u32 kLowAxis = 0x4000;
+    const fable_u32 kHighAxis = 0xC000;
+    const fable_u32 kPovCentered = 0xFFFF;
+    fable_u32 state = 0;
+    if (xPosition < kLowAxis)
+        state |= FableUiControllerLeft;
+    else if (xPosition > kHighAxis)
+        state |= FableUiControllerRight;
+    if (yPosition < kLowAxis)
+        state |= FableUiControllerUp;
+    else if (yPosition > kHighAxis)
+        state |= FableUiControllerDown;
+
+    if (pointOfView != kPovCentered)
+    {
+        if (pointOfView <= 4500 || pointOfView >= 31500)
+            state |= FableUiControllerUp;
+        if (pointOfView >= 4500 && pointOfView <= 13500)
+            state |= FableUiControllerRight;
+        if (pointOfView >= 13500 && pointOfView <= 22500)
+            state |= FableUiControllerDown;
+        if (pointOfView >= 22500 && pointOfView <= 31500)
+            state |= FableUiControllerLeft;
+    }
+    if ((buttons & ((1UL << 0) | (1UL << 7))) != 0)
+        state |= FableUiControllerAccept;
+    if ((buttons & ((1UL << 1) | (1UL << 6))) != 0)
+        state |= FableUiControllerBack;
+    return state;
+}
+
+fable_u32 FABLE_FASTCALL FableConsumeUiControllerPressed(
+    fable_u32 currentState,
+    fable_u32* previousState)
+{
+    if (previousState == 0)
+        return 0;
+    const fable_u32 pressed = currentState & ~*previousState;
+    *previousState = currentState;
+    return pressed;
+}
+
+fable_u32 FABLE_FASTCALL FableConsumeUiControllerActions(
+    fable_u32 currentState,
+    fable_u32 currentTimeMs,
+    fable_u32* previousState,
+    FableUiControllerRepeatState* repeatState)
+{
+    const fable_u32 kMovementMask =
+        FableUiControllerUp |
+        FableUiControllerDown |
+        FableUiControllerLeft |
+        FableUiControllerRight;
+    const fable_u32 kInitialRepeatDelayMs = 500;
+    const fable_u32 kHeldRepeatDelayMs = 100;
+    const fable_u32 pressed =
+        FableConsumeUiControllerPressed(currentState, previousState);
+    fable_u32 movement = currentState & kMovementMask;
+
+    if ((movement & FableUiControllerUp) != 0)
+        movement = FableUiControllerUp;
+    else if ((movement & FableUiControllerDown) != 0)
+        movement = FableUiControllerDown;
+    else if ((movement & FableUiControllerLeft) != 0)
+        movement = FableUiControllerLeft;
+    else if ((movement & FableUiControllerRight) != 0)
+        movement = FableUiControllerRight;
+
+    fable_u32 actions = pressed & ~kMovementMask;
+    if (movement == 0)
+    {
+        repeatState->lastMovement = 0;
+        repeatState->isRepeating = false;
+        return actions;
+    }
+
+    if (repeatState->lastMovement != movement)
+    {
+        repeatState->lastMovement = movement;
+        repeatState->lastSelectionTimeMs = currentTimeMs;
+        repeatState->isRepeating = false;
+        return actions | movement;
+    }
+
+    const fable_u32 repeatDelay = repeatState->isRepeating
+        ? kHeldRepeatDelayMs
+        : kInitialRepeatDelayMs;
+    if (
+        currentTimeMs - repeatState->lastSelectionTimeMs >=
+        repeatDelay)
+    {
+        repeatState->lastSelectionTimeMs = currentTimeMs;
+        repeatState->isRepeating = true;
+        actions |= movement;
+    }
+    return actions;
 }
 
 void FABLE_FASTCALL FableResolveUiComponentTransform(
@@ -702,6 +891,429 @@ void FABLE_FASTCALL FablePlanUiTableGeometry(
     }
 }
 
+namespace
+{
+    void RetainUiCountedComponent(
+        FableUiCountedComponent* counted)
+    {
+        if (counted->reference == 0)
+            return;
+        ++counted->reference->referenceCount;
+        if (counted->reference->counters != 0)
+            ++counted->reference->counters->retains;
+    }
+
+    void ReleaseUiCountedComponent(
+        FableUiCountedComponent* counted)
+    {
+        FableUiCountedReference* reference = counted->reference;
+        counted->component = 0;
+        counted->reference = 0;
+        if (reference == 0)
+            return;
+
+        if (reference->counters != 0)
+            ++reference->counters->releases;
+        --reference->referenceCount;
+        if (reference->referenceCount != 0)
+            return;
+
+        FableUiComponentLifetimeCounters* counters =
+            reference->counters;
+        delete reference->component;
+        if (counters != 0)
+            ++counters->componentDeletions;
+        delete reference;
+        if (counters != 0)
+            ++counters->controlDeletions;
+    }
+
+    bool AppendUiCountedComponent(
+        FableUiGeneratedComponentVector* generated,
+        const FableUiCountedComponent* counted)
+    {
+        if (
+            generated->values == 0 ||
+            generated->size == generated->capacity)
+        {
+            return false;
+        }
+
+        generated->values[generated->size] = *counted;
+        RetainUiCountedComponent(
+            &generated->values[generated->size]);
+        ++generated->size;
+        return true;
+    }
+
+    bool CloneUiTableSprite(
+        const FableUiTableRuntimeInput* input,
+        unsigned int spriteKey,
+        const FableUiVector2* position,
+        const FableUiVector2* zoom,
+        FableUiGeneratedComponentVector* generated)
+    {
+        FableUiRuntimeComponent* component =
+            new FableUiRuntimeComponent;
+        if (component == 0)
+            return false;
+        if (generated->counters != 0)
+            ++generated->counters->componentAllocations;
+
+        component->definitionId =
+            input->sprite[spriteKey].definitionId;
+        component->sourceSpriteKey = spriteKey;
+        component->initialised = 1;
+        component->stateMask = 1;
+        component->size = input->sprite[spriteKey].size;
+        component->state[0].position = *position;
+        component->state[0].zoom = *zoom;
+
+        FableUiCountedReference* reference =
+            new FableUiCountedReference;
+        if (reference == 0)
+        {
+            delete component;
+            if (generated->counters != 0)
+                ++generated->counters->componentDeletions;
+            return false;
+        }
+        if (generated->counters != 0)
+            ++generated->counters->controlAllocations;
+
+        reference->referenceCount = 1;
+        reference->component = component;
+        reference->counters = generated->counters;
+
+        FableUiCountedComponent local = {
+            component,
+            reference};
+        const bool appended =
+            AppendUiCountedComponent(generated, &local);
+        ReleaseUiCountedComponent(&local);
+        return appended;
+    }
+
+    bool HasUiTableResourceKey(
+        const unsigned long* resourceKeys,
+        unsigned int resourceKeyCount,
+        fable_i32 resourceKey)
+    {
+        for (
+            unsigned int keyIndex = 0;
+            keyIndex != resourceKeyCount;
+            ++keyIndex)
+        {
+            if (
+                static_cast<fable_i32>(
+                    resourceKeys[keyIndex]) == resourceKey)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    bool ConstructUiTableLine(
+        const FableUiTableRuntimeInput* input,
+        bool vertical,
+        unsigned int primarySpriteKey,
+        fable_i32 secondarySpriteKey,
+        const FableUiVector2* start,
+        unsigned long repetitions,
+        fable_i32 resourceKeyOffset,
+        const unsigned long* resourceKeys,
+        unsigned int resourceKeyCount,
+        FableUiGeneratedComponentVector* generated)
+    {
+        FableUiVector2 primaryZoom = {1.0f, 1.0f};
+        if (vertical)
+            primaryZoom.y = static_cast<float>(repetitions);
+        else
+            primaryZoom.x = static_cast<float>(repetitions);
+
+        if (!CloneUiTableSprite(
+                input,
+                primarySpriteKey,
+                start,
+                &primaryZoom,
+                generated))
+        {
+            return false;
+        }
+
+        FableUiVector2 cursor = *start;
+        if (vertical)
+        {
+            cursor.y +=
+                input->sprite[primarySpriteKey].size.y;
+        }
+        else
+        {
+            cursor.x +=
+                input->sprite[primarySpriteKey].size.x;
+        }
+
+        if (
+            secondarySpriteKey < 0 ||
+            !HasUiTableSpriteMask(
+                input->geometry.availableSpriteMask,
+                static_cast<unsigned int>(secondarySpriteKey)))
+        {
+            return true;
+        }
+
+        const FableUiVector2 secondaryZoom = {1.0f, 1.0f};
+        for (
+            unsigned long iteration = 0;
+            iteration != repetitions;
+            ++iteration)
+        {
+            const fable_i32 resourceKey =
+                static_cast<fable_i32>(iteration) -
+                resourceKeyOffset;
+            if (!HasUiTableResourceKey(
+                    resourceKeys,
+                    resourceKeyCount,
+                    resourceKey))
+            {
+                continue;
+            }
+
+            if (!CloneUiTableSprite(
+                    input,
+                    static_cast<unsigned int>(
+                        secondarySpriteKey),
+                    &cursor,
+                    &secondaryZoom,
+                    generated))
+            {
+                return false;
+            }
+            if (vertical)
+            {
+                cursor.y += input->sprite[
+                    secondarySpriteKey].size.y;
+            }
+            else
+            {
+                cursor.x += input->sprite[
+                    secondarySpriteKey].size.x;
+            }
+        }
+        return true;
+    }
+}
+
+void FABLE_FASTCALL FableReleaseUiGeneratedComponents(
+    FableUiGeneratedComponentVector* generated)
+{
+    if (generated == 0)
+        return;
+    for (
+        unsigned int componentIndex = 0;
+        componentIndex != generated->size;
+        ++componentIndex)
+    {
+        ReleaseUiCountedComponent(
+            &generated->values[componentIndex]);
+    }
+    generated->size = 0;
+}
+
+bool FABLE_FASTCALL FableConstructUiTableComponents(
+    const FableUiTableRuntimeInput* input,
+    FableUiGeneratedComponentVector* generated)
+{
+    if (
+        input == 0 ||
+        generated == 0 ||
+        generated->size != 0 ||
+        (generated->capacity != 0 && generated->values == 0) ||
+        (input->geometry.horizontalSeparatorCount != 0 &&
+            input->geometry.horizontalSeparatorTiles == 0) ||
+        (input->geometry.verticalSeparatorCount != 0 &&
+            input->geometry.verticalSeparatorTiles == 0))
+    {
+        return false;
+    }
+
+    FableUiTableInteriorLine* horizontalInterior = 0;
+    FableUiTableInteriorLine* verticalInterior = 0;
+    if (input->geometry.horizontalSeparatorCount != 0)
+    {
+        horizontalInterior = new FableUiTableInteriorLine[
+            input->geometry.horizontalSeparatorCount];
+    }
+    if (input->geometry.verticalSeparatorCount != 0)
+    {
+        verticalInterior = new FableUiTableInteriorLine[
+            input->geometry.verticalSeparatorCount];
+    }
+
+    FableUiTableGeometryPlan geometry = {};
+    FablePlanUiTableGeometry(
+        &input->geometry,
+        horizontalInterior,
+        input->geometry.horizontalSeparatorCount,
+        verticalInterior,
+        input->geometry.verticalSeparatorCount,
+        &geometry);
+
+    const FableUiVector2 unitZoom = {1.0f, 1.0f};
+    bool succeeded = true;
+    for (
+        unsigned int corner = 0;
+        succeeded && corner != 4;
+        ++corner)
+    {
+        if ((geometry.emittedCornerMask & (1UL << corner)) == 0)
+            continue;
+        succeeded = CloneUiTableSprite(
+            input,
+            corner,
+            &geometry.cornerPosition[corner],
+            &unitZoom,
+            generated);
+    }
+
+    const unsigned long* horizontalLineResourceKeys =
+        input->geometry.verticalSeparatorTiles;
+    const unsigned int horizontalLineResourceKeyCount =
+        input->geometry.verticalSeparatorCount;
+    const unsigned long* verticalLineResourceKeys =
+        input->geometry.horizontalSeparatorTiles;
+    const unsigned int verticalLineResourceKeyCount =
+        input->geometry.horizontalSeparatorCount;
+
+    if (
+        succeeded &&
+        HasUiTableSpriteMask(
+            input->geometry.availableSpriteMask,
+            4))
+    {
+        succeeded = ConstructUiTableLine(
+            input,
+            false,
+            4,
+            9,
+            &geometry.topLineStart,
+            input->geometry.horizontalRepeatCount,
+            0,
+            horizontalLineResourceKeys,
+            horizontalLineResourceKeyCount,
+            generated);
+    }
+    for (
+        unsigned int line = 0;
+        succeeded &&
+            line != geometry.writtenHorizontalInteriorCount;
+        ++line)
+    {
+        if (!HasUiTableSpriteMask(
+                input->geometry.availableSpriteMask,
+                4))
+        {
+            break;
+        }
+        succeeded = ConstructUiTableLine(
+            input,
+            false,
+            4,
+            12,
+            &horizontalInterior[line].position,
+            horizontalInterior[line].repeatCount,
+            horizontalInterior[line].resourceKeyOffset,
+            horizontalLineResourceKeys,
+            horizontalLineResourceKeyCount,
+            generated);
+    }
+    if (
+        succeeded &&
+        HasUiTableSpriteMask(
+            input->geometry.availableSpriteMask,
+            5))
+    {
+        succeeded = ConstructUiTableLine(
+            input,
+            false,
+            5,
+            8,
+            &geometry.bottomLineStart,
+            input->geometry.horizontalRepeatCount,
+            0,
+            horizontalLineResourceKeys,
+            horizontalLineResourceKeyCount,
+            generated);
+    }
+    if (
+        succeeded &&
+        HasUiTableSpriteMask(
+            input->geometry.availableSpriteMask,
+            6))
+    {
+        succeeded = ConstructUiTableLine(
+            input,
+            true,
+            6,
+            10,
+            &geometry.leftLineStart,
+            input->geometry.verticalRepeatCount,
+            0,
+            verticalLineResourceKeys,
+            verticalLineResourceKeyCount,
+            generated);
+    }
+    for (
+        unsigned int line = 0;
+        succeeded &&
+            line != geometry.writtenVerticalInteriorCount;
+        ++line)
+    {
+        if (!HasUiTableSpriteMask(
+                input->geometry.availableSpriteMask,
+                6))
+        {
+            break;
+        }
+        succeeded = ConstructUiTableLine(
+            input,
+            true,
+            6,
+            12,
+            &verticalInterior[line].position,
+            verticalInterior[line].repeatCount,
+            verticalInterior[line].resourceKeyOffset,
+            verticalLineResourceKeys,
+            verticalLineResourceKeyCount,
+            generated);
+    }
+    if (
+        succeeded &&
+        HasUiTableSpriteMask(
+            input->geometry.availableSpriteMask,
+            7))
+    {
+        succeeded = ConstructUiTableLine(
+            input,
+            true,
+            7,
+            11,
+            &geometry.rightLineStart,
+            input->geometry.verticalRepeatCount,
+            0,
+            verticalLineResourceKeys,
+            verticalLineResourceKeyCount,
+            generated);
+    }
+
+    delete[] horizontalInterior;
+    delete[] verticalInterior;
+    if (!succeeded)
+        FableReleaseUiGeneratedComponents(generated);
+    return succeeded;
+}
+
 void FABLE_FASTCALL FablePlanUiListSelection(
     long requestedChild,
     const unsigned char* visibleChildren,
@@ -890,6 +1502,74 @@ void FABLE_FASTCALL FablePlanUiListRecomputeOffsets(
     plan->finalAlpha = alpha;
 }
 
+bool FABLE_FASTCALL FableApplyUiListRecomputedStates(
+    const FableUiListRecomputeInput* input,
+    FableUiRuntimeListChild* children,
+    unsigned int childCapacity,
+    FableUiRuntimeStateMap* stateSnapshots,
+    unsigned int stateSnapshotCapacity,
+    FableUiListRecomputePlan* plan)
+{
+    if (
+        input == 0 ||
+        plan == 0 ||
+        input->childCount > childCapacity ||
+        input->childCount > stateSnapshotCapacity ||
+        (input->childCount != 0 &&
+            (children == 0 || stateSnapshots == 0)))
+    {
+        return false;
+    }
+
+    FableUiListRecomputedChild* recomputed = 0;
+    if (input->childCount != 0)
+    {
+        recomputed = new FableUiListRecomputedChild[
+            input->childCount];
+    }
+    FablePlanUiListRecomputeOffsets(
+        input,
+        recomputed,
+        input->childCount,
+        plan);
+
+    const unsigned int positionStates[5] = {0, 1, 4, 5, 6};
+    const unsigned int alphaStates[3] = {1, 4, 5};
+    for (
+        unsigned int childIndex = 0;
+        childIndex != input->childCount;
+        ++childIndex)
+    {
+        FableUiRuntimeListChild& child = children[childIndex];
+        for (unsigned int stateIndex = 0; stateIndex != 5; ++stateIndex)
+        {
+            const unsigned int state = positionStates[stateIndex];
+            child.states.state[state].position.x =
+                recomputed[childIndex].position.x;
+            child.states.state[state].position.y =
+                recomputed[childIndex].position.y;
+            child.states.stateMask |= 1u << state;
+        }
+        for (unsigned int stateIndex = 0; stateIndex != 3; ++stateIndex)
+        {
+            const unsigned int state = alphaStates[stateIndex];
+            child.states.state[state].colour.alpha =
+                recomputed[childIndex].alpha;
+            child.states.stateMask |= 1u << state;
+        }
+
+        child.currentPosition.x =
+            child.states.state[1].position.x;
+        child.currentPosition.y =
+            child.states.state[1].position.y;
+        child.currentColour =
+            child.states.state[1].colour;
+        stateSnapshots[childIndex] = child.states;
+    }
+    delete[] recomputed;
+    return true;
+}
+
 void FABLE_FASTCALL FablePlanUiFrontEndListScroll(
     bool scrollDown,
     unsigned int childCount,
@@ -911,6 +1591,8 @@ void FABLE_FASTCALL FablePlanUiFrontEndListScroll(
     plan->selectedChildState = 0;
     plan->logicalAlphaCount = 0;
     plan->writtenAlphaCount = 0;
+    plan->soundRequest = FableUiFrontEndSoundNone;
+    plan->soundCriteriaDefinitionOffset = 0;
     plan->moved = false;
     plan->blockedAtBoundary = false;
     plan->requestsInvalidAction = false;
@@ -919,6 +1601,8 @@ void FABLE_FASTCALL FablePlanUiFrontEndListScroll(
     if (childCount <= 1)
     {
         plan->requestsInvalidAction = true;
+        plan->soundRequest = FableUiFrontEndSoundError;
+        plan->soundCriteriaDefinitionOffset = 0x1A4;
         return;
     }
 
@@ -929,6 +1613,8 @@ void FABLE_FASTCALL FablePlanUiFrontEndListScroll(
     {
         plan->blockedAtBoundary = true;
         plan->requestsInvalidAction = true;
+        plan->soundRequest = FableUiFrontEndSoundError;
+        plan->soundCriteriaDefinitionOffset = 0x1A4;
         return;
     }
 
@@ -944,6 +1630,8 @@ void FABLE_FASTCALL FablePlanUiFrontEndListScroll(
     plan->selectedChildState = 3;
     plan->moved = true;
     plan->requestsMoveAction = true;
+    plan->soundRequest = FableUiFrontEndSoundUpDown;
+    plan->soundCriteriaDefinitionOffset = 0x194;
 
     if (!stopsAtEnds)
         return;
@@ -978,6 +1666,94 @@ void FABLE_FASTCALL FablePlanUiFrontEndListScroll(
     }
 }
 
+bool FABLE_FASTCALL FableApplyUiFrontEndListScroll(
+    bool scrollDown,
+    bool wrapping,
+    unsigned char alphaFalloff,
+    FableUiRuntimeListChild* children,
+    unsigned int childCount,
+    unsigned int childCapacity,
+    long selectedChild,
+    FableUiFrontEndListScrollPlan* plan)
+{
+    if (
+        plan == 0 ||
+        childCount > childCapacity ||
+        selectedChild < 0 ||
+        static_cast<unsigned long>(selectedChild) >= childCount ||
+        (childCount != 0 && children == 0))
+    {
+        return false;
+    }
+
+    unsigned char* alpha = 0;
+    if (childCount != 0)
+        alpha = new unsigned char[childCount];
+    FablePlanUiFrontEndListScroll(
+        scrollDown,
+        childCount,
+        selectedChild,
+        !wrapping,
+        alphaFalloff,
+        alpha,
+        childCount,
+        plan);
+    if (!plan->moved)
+    {
+        delete[] alpha;
+        return false;
+    }
+
+    const unsigned int previous =
+        static_cast<unsigned int>(plan->previousSelectedChild);
+    const unsigned int selected =
+        static_cast<unsigned int>(plan->selectedChild);
+    children[previous].currentState =
+        plan->previousChildState;
+    children[selected].currentState =
+        plan->selectedChildState;
+
+    if (scrollDown)
+    {
+        const FableUiStateColour first =
+            children[0].currentColour;
+        for (unsigned int child = 0; child + 1 < childCount; ++child)
+        {
+            children[child].currentColour =
+                children[child + 1].currentColour;
+        }
+        children[childCount - 1].currentColour = first;
+    }
+    else
+    {
+        const FableUiStateColour last =
+            children[childCount - 1].currentColour;
+        for (unsigned int child = childCount - 1; child != 0; --child)
+        {
+            children[child].currentColour =
+                children[child - 1].currentColour;
+        }
+        children[0].currentColour = last;
+    }
+
+    if (!wrapping)
+    {
+        for (unsigned int child = 0; child != childCount; ++child)
+        {
+            children[child].currentPosition.x +=
+                plan->rowTranslation.x;
+            children[child].currentPosition.y +=
+                plan->rowTranslation.y;
+            children[child].currentColour.red = 255;
+            children[child].currentColour.green = 255;
+            children[child].currentColour.blue = 255;
+            children[child].currentColour.alpha = alpha[child];
+        }
+    }
+    delete[] alpha;
+    return true;
+}
+
 namespace
 {
     const int kBootArtworkResource = 101;
@@ -989,6 +1765,14 @@ namespace
     const int kBootOptionsResource = 109;
     const int kBootHelpersResource = 110;
     const int kBootBuffJesusMenuResource = 111;
+    const int kBootTitleSegmentResource = 112;
+    const int kBootButtonLeftResource = 113;
+    const int kBootButtonMiddleResource = 114;
+    const int kBootButtonRightResource = 115;
+    const int kBootSoundUpDownResource = 116;
+    const int kBootSoundErrorResource = 117;
+    const int kBootSoundBackResource = 118;
+    const int kBootSoundForwardResource = 119;
     const char kWindowClassName[] = "FableDecompVisualBootCheckpoint";
     const char kWindowTitle[] = "FableDecomp - Visual Boot Checkpoint";
     const char kProgressReadyWindowTitle[] =
@@ -1075,6 +1859,10 @@ namespace
     const int kShowNormal = 1;
     const int kHalftoneStretch = 4;
     const FableDword kCopySource = 0x00CC0020UL;
+    const FableDword kSoundAsync = 0x00000001UL;
+    const FableDword kSoundNoDefault = 0x00000002UL;
+    const FableDword kSoundResource = 0x00040004UL;
+    const FableDword kJoyReturnAll = 0x000000FFUL;
 
     FableBitmap g_BootArtwork = 0;
     FableBitmapInfo g_BootArtworkInfo = {};
@@ -1096,6 +1884,14 @@ namespace
     FableBitmapInfo g_BootOptionsArtworkInfo = {};
     FableBitmap g_BootHelpersArtwork = 0;
     FableBitmapInfo g_BootHelpersArtworkInfo = {};
+    FableBitmap g_BootTitleSegmentArtwork = 0;
+    FableBitmapInfo g_BootTitleSegmentArtworkInfo = {};
+    FableBitmap g_BootButtonLeftArtwork = 0;
+    FableBitmapInfo g_BootButtonLeftArtworkInfo = {};
+    FableBitmap g_BootButtonMiddleArtwork = 0;
+    FableBitmapInfo g_BootButtonMiddleArtworkInfo = {};
+    FableBitmap g_BootButtonRightArtwork = 0;
+    FableBitmapInfo g_BootButtonRightArtworkInfo = {};
     bool g_RetailProgressDisplayPresent = false;
     bool g_RetailProgressDisplayActive = false;
     FableWindow g_RetailVideoWindow = 0;
@@ -1105,12 +1901,17 @@ namespace
     bool g_RetailVideoReachedRunningState = false;
     bool g_RetailVideoEscapePressed = false;
     bool g_VisualFrontendVisible = true;
+    fable_u32 g_VisualControllerState = 0;
+    FableUiControllerRepeatState g_VisualControllerRepeatState = {};
     bool g_VisualMainMenuActive = false;
     unsigned int g_VisualMainMenuSelection = 0;
     bool g_VisualOptionsMenuActive = false;
     unsigned int g_VisualOptionsSelection = 0;
     bool g_VisualOptionsBackHovered = false;
+    bool g_VisualSaveMenuActive = false;
+    unsigned int g_VisualSaveSelection = 0;
     unsigned int g_VisualDetailScreen = 0;
+    unsigned int g_VisualDetailSelection = 0;
     const unsigned int kVisualDetailRowCounts[3] = {10, 3, 10};
     const unsigned int kVisualDetailValueCounts[3][10] = {
         {2, 2, 2, 10, 2, 16, 2, 2, 2, 2},
@@ -1252,6 +2053,27 @@ namespace
         return false;
     }
 
+    bool FindVisualSaveMenuRow(
+        int mouseX,
+        int mouseY,
+        unsigned int* rowFound)
+    {
+        for (unsigned int row = 0; row != 4; ++row)
+        {
+            const int rowTop = 90 + static_cast<int>(row * 30);
+            if (
+                mouseX >= 10 &&
+                mouseX < 250 &&
+                mouseY >= rowTop &&
+                mouseY < rowTop + 30)
+            {
+                *rowFound = row;
+                return true;
+            }
+        }
+        return false;
+    }
+
     bool FindVisualRedefineRow(
         int mouseX,
         int mouseY,
@@ -1299,6 +2121,26 @@ namespace
     {
         return reinterpret_cast<const char*>(
             static_cast<unsigned long>(identifier));
+    }
+
+    void PlayVisualFrontendResourceSound(int resource)
+    {
+#if defined(FABLETLC_RETAIL_FRONTEND_SOUNDS)
+        PlaySoundA(
+            IntegerResource(resource),
+            g_RetailVideoInstance,
+            kSoundAsync | kSoundNoDefault | kSoundResource);
+#else
+        (void)resource;
+#endif
+    }
+
+    void PlayVisualFrontendListSound(unsigned long request)
+    {
+        if (request == FableUiFrontEndSoundUpDown)
+            PlayVisualFrontendResourceSound(kBootSoundUpDownResource);
+        else if (request == FableUiFrontEndSoundError)
+            PlayVisualFrontendResourceSound(kBootSoundErrorResource);
     }
 
     void PaintBootArtwork(FableWindow window)
@@ -1453,6 +2295,7 @@ namespace
 
     void BeginVisualDetailScreen(unsigned int screen)
     {
+        g_VisualDetailSelection = 0;
         if (screen >= 1 && screen <= 3)
         {
             CopyVisualDetailValues(
@@ -1652,6 +2495,107 @@ namespace
         return false;
     }
 
+    bool ActivateVisualMainMenuSelection(FableWindow window)
+    {
+        if (!g_VisualMainMenuActive)
+            return false;
+        const fable_u32 action =
+            FableGetVisualFrontendMainMenuAction(
+                g_VisualMainMenuSelection);
+        if (action == 66)
+        {
+            // RefreshAvailableSavedGamesForProfile emits the autosave first,
+            // then ascending manual slots, before used key 0x08 activates
+            // UI_FRONTEND_PROFILE_SAVED_GAMES_MENU.
+            g_VisualMainMenuActive = false;
+            g_VisualSaveMenuActive = true;
+            g_VisualSaveSelection = 0;
+            g_VisualOptionsBackHovered = false;
+            FableSetVisualFrontendSaveMenu(true);
+            PlayVisualFrontendResourceSound(kBootSoundForwardResource);
+            RevealVisualFrontend(window);
+            return true;
+        }
+        if (action == 297)
+        {
+            // Action 297 -> used-key 0x18 ->
+            // UI_FRONTEND_OPTIONS_SUB_MENU.
+            g_VisualMainMenuActive = false;
+            g_VisualOptionsMenuActive = true;
+            g_VisualOptionsSelection = 0;
+            g_VisualOptionsBackHovered = false;
+            FableSetVisualFrontendOptionsMenu(true);
+            PlayVisualFrontendResourceSound(kBootSoundForwardResource);
+            RevealVisualFrontend(window);
+            return true;
+        }
+        if (action == 314)
+        {
+            // Action 314 -> used-key 0x1a ->
+            // UI_FRONTEND_QUIT_PROMPT.
+            g_VisualMainMenuActive = false;
+            g_VisualQuitPromptActive = true;
+            g_VisualQuitHover = 0;
+            FableSetVisualFrontendQuitPrompt(true);
+            PlayVisualFrontendResourceSound(kBootSoundForwardResource);
+            RevealVisualFrontend(window);
+            return true;
+        }
+        return false;
+    }
+
+    bool ActivateVisualOptionsSelection(FableWindow window)
+    {
+        if (
+            !g_VisualOptionsMenuActive ||
+            g_VisualOptionsSelection >= 4)
+        {
+            return false;
+        }
+        // Retail dispatcher/Init2 map:
+        // row 0 action 9   -> key 0x01 Gameplay
+        // row 1 action 13  -> key 0x05 Video
+        // row 2 action 12  -> key 0x04 Audio
+        // row 3 action 283 -> key 0x16 Redefine
+        const unsigned int detailScreens[4] = {
+            1, 3, 2, 4
+        };
+        g_VisualOptionsMenuActive = false;
+        g_VisualDetailScreen =
+            detailScreens[g_VisualOptionsSelection];
+        g_VisualRedefineHover = 0;
+        g_VisualRedefineResetHover = 0;
+        BeginVisualDetailScreen(g_VisualDetailScreen);
+        FableSetVisualFrontendOptionsMenu(false);
+        FableSetVisualFrontendDetailScreen(
+            g_VisualDetailScreen);
+        PlayVisualFrontendResourceSound(kBootSoundForwardResource);
+        RevealVisualFrontend(window);
+        return true;
+    }
+
+    bool ActivateVisualPressStart(FableWindow window)
+    {
+        if (
+            !g_VisualFrontendVisible ||
+            g_VisualMainMenuActive ||
+            g_VisualOptionsMenuActive ||
+            g_VisualSaveMenuActive ||
+            g_VisualDetailScreen != 0 ||
+            g_VisualQuitPromptActive ||
+            FableIsRetailVideoActive())
+        {
+            return false;
+        }
+        // UI_FRONTEND_BUTTON_INVISIBLE (#625) dispatches action 229.
+        g_VisualMainMenuActive = true;
+        g_VisualMainMenuSelection = 0;
+        FableSetVisualFrontendMainMenu(true);
+        PlayVisualFrontendResourceSound(kBootSoundForwardResource);
+        RevealVisualFrontend(window);
+        return true;
+    }
+
     bool StartRetailBootMovie()
     {
         if (
@@ -1750,6 +2694,152 @@ namespace
                 }
             }
             if (
+                !FableIsRetailVideoActive() &&
+                (wordParameter == 0x26 || wordParameter == 0x28))
+            {
+                const bool scrollDown = wordParameter == 0x28;
+                if (g_VisualMainMenuActive)
+                {
+                    fable_u32 selected = g_VisualMainMenuSelection;
+                    fable_u32 soundRequest =
+                        FableUiFrontEndSoundNone;
+                    const bool moved =
+                        FableScrollVisualFrontendMainMenu(
+                            scrollDown,
+                            &selected,
+                            &soundRequest);
+                    PlayVisualFrontendListSound(soundRequest);
+                    if (moved)
+                    {
+                        g_VisualMainMenuSelection = selected;
+                        RevealVisualFrontend(window);
+                    }
+                    return 0;
+                }
+                if (g_VisualOptionsMenuActive)
+                {
+                    FableUiFrontEndListScrollPlan plan = {};
+                    FablePlanUiFrontEndListScroll(
+                        scrollDown,
+                        4,
+                        static_cast<long>(
+                            g_VisualOptionsSelection),
+                        false,
+                        0,
+                        0,
+                        0,
+                        &plan);
+                    PlayVisualFrontendListSound(plan.soundRequest);
+                    if (plan.moved)
+                    {
+                        g_VisualOptionsSelection =
+                            static_cast<unsigned int>(
+                                plan.selectedChild);
+                        FableSetVisualFrontendOptionsSelection(
+                            g_VisualOptionsSelection);
+                        RevealVisualFrontend(window);
+                    }
+                    return 0;
+                }
+                if (g_VisualSaveMenuActive)
+                {
+                    FableUiFrontEndListScrollPlan plan = {};
+                    FablePlanUiFrontEndListScroll(
+                        scrollDown,
+                        4,
+                        static_cast<long>(g_VisualSaveSelection),
+                        false,
+                        0,
+                        0,
+                        0,
+                        &plan);
+                    PlayVisualFrontendListSound(plan.soundRequest);
+                    if (plan.moved)
+                    {
+                        g_VisualSaveSelection =
+                            static_cast<unsigned int>(
+                                plan.selectedChild);
+                        FableSetVisualFrontendSaveSelection(
+                            g_VisualSaveSelection);
+                        RevealVisualFrontend(window);
+                    }
+                    return 0;
+                }
+                if (
+                    g_VisualDetailScreen >= 1 &&
+                    g_VisualDetailScreen <= 3)
+                {
+                    const unsigned int screenIndex =
+                        g_VisualDetailScreen - 1;
+                    FableUiFrontEndListScrollPlan plan = {};
+                    FablePlanUiFrontEndListScroll(
+                        scrollDown,
+                        static_cast<long>(
+                            kVisualDetailRowCounts[screenIndex]),
+                        static_cast<long>(
+                            g_VisualDetailSelection),
+                        false,
+                        0,
+                        0,
+                        0,
+                        &plan);
+                    PlayVisualFrontendListSound(plan.soundRequest);
+                    if (plan.moved)
+                    {
+                        g_VisualDetailSelection =
+                            static_cast<unsigned int>(
+                                plan.selectedChild);
+                    }
+                    return 0;
+                }
+            }
+            if (
+                !FableIsRetailVideoActive() &&
+                (wordParameter == 0x25 || wordParameter == 0x27) &&
+                g_VisualDetailScreen >= 1 &&
+                g_VisualDetailScreen <= 3)
+            {
+                const unsigned int screenIndex =
+                    g_VisualDetailScreen - 1;
+                const unsigned int row =
+                    g_VisualDetailSelection;
+                const unsigned int valueCount =
+                    kVisualDetailValueCounts[screenIndex][row];
+                if (valueCount != 0)
+                {
+                    unsigned int value =
+                        g_VisualDetailValues[screenIndex][row];
+                    if (wordParameter == 0x25)
+                    {
+                        value =
+                            value == 0
+                                ? valueCount - 1
+                                : value - 1;
+                    }
+                    else
+                    {
+                        value = (value + 1) % valueCount;
+                    }
+                    g_VisualDetailValues[screenIndex][row] = value;
+                    SyncVisualDetailScreen(g_VisualDetailScreen);
+                    PlayVisualFrontendListSound(
+                        FableUiFrontEndSoundUpDown);
+                    RevealVisualFrontend(window);
+                }
+                return 0;
+            }
+            if (
+                wordParameter == 0x0D &&
+                !FableIsRetailVideoActive() &&
+                (
+                    ActivateVisualMainMenuSelection(window) ||
+                    ActivateVisualOptionsSelection(window) ||
+                    ActivateVisualPressStart(window)
+                ))
+            {
+                return 0;
+            }
+            if (
                 wordParameter == kEscapeKey &&
                 !FableIsRetailVideoActive())
             {
@@ -1760,6 +2850,8 @@ namespace
                     g_VisualMainMenuActive = true;
                     FableSetVisualFrontendQuitPrompt(false);
                     FableSetVisualFrontendMainMenu(true);
+                    PlayVisualFrontendResourceSound(
+                        kBootSoundBackResource);
                     RevealVisualFrontend(window);
                     return 0;
                 }
@@ -1773,6 +2865,8 @@ namespace
                     g_VisualOptionsMenuActive = true;
                     FableSetVisualFrontendDetailScreen(0);
                     FableSetVisualFrontendOptionsMenu(true);
+                    PlayVisualFrontendResourceSound(
+                        kBootSoundBackResource);
                     RevealVisualFrontend(window);
                     return 0;
                 }
@@ -1783,6 +2877,20 @@ namespace
                     g_VisualMainMenuActive = true;
                     FableSetVisualFrontendOptionsMenu(false);
                     FableSetVisualFrontendMainMenu(true);
+                    PlayVisualFrontendResourceSound(
+                        kBootSoundBackResource);
+                    RevealVisualFrontend(window);
+                    return 0;
+                }
+                if (g_VisualSaveMenuActive)
+                {
+                    // UI_HELPERS/UI_BACK dispatches retail action 86.
+                    g_VisualSaveMenuActive = false;
+                    g_VisualMainMenuActive = true;
+                    FableSetVisualFrontendSaveMenu(false);
+                    FableSetVisualFrontendMainMenu(true);
+                    PlayVisualFrontendResourceSound(
+                        kBootSoundBackResource);
                     RevealVisualFrontend(window);
                     return 0;
                 }
@@ -1826,6 +2934,7 @@ namespace
                 !FableIsRetailVideoActive() &&
                 (g_VisualMainMenuActive ||
                  g_VisualOptionsMenuActive ||
+                 g_VisualSaveMenuActive ||
                  g_VisualDetailScreen != 0 ||
                  g_VisualQuitPromptActive))
             {
@@ -1856,30 +2965,41 @@ namespace
                         g_VisualMainMenuActive = true;
                         FableSetVisualFrontendOptionsMenu(false);
                         FableSetVisualFrontendMainMenu(true);
+                        PlayVisualFrontendResourceSound(
+                            kBootSoundBackResource);
                         RevealVisualFrontend(window);
                         return 0;
                     }
                     unsigned int row = 0;
                     if (FindVisualOptionsMenuRow(mouseX, mouseY, &row))
                     {
-                        // Retail dispatcher/Init2 map:
-                        // row 0 action 9   -> key 0x01 Gameplay
-                        // row 1 action 13  -> key 0x05 Video
-                        // row 2 action 12  -> key 0x04 Audio
-                        // row 3 action 283 -> key 0x16 Redefine
-                        const unsigned int detailScreens[4] = {
-                            1, 3, 2, 4
-                        };
                         g_VisualOptionsSelection = row;
-                        g_VisualOptionsMenuActive = false;
-                        g_VisualDetailScreen = detailScreens[row];
-                        g_VisualRedefineHover = 0;
-                        g_VisualRedefineResetHover = 0;
-                        BeginVisualDetailScreen(
-                            g_VisualDetailScreen);
-                        FableSetVisualFrontendOptionsMenu(false);
-                        FableSetVisualFrontendDetailScreen(
-                            g_VisualDetailScreen);
+                        if (ActivateVisualOptionsSelection(window))
+                            return 0;
+                    }
+                }
+                else if (g_VisualSaveMenuActive)
+                {
+                    if (
+                        mouseX >= 20 &&
+                        mouseX < 270 &&
+                        mouseY >= 420 &&
+                        mouseY < 450)
+                    {
+                        g_VisualSaveMenuActive = false;
+                        g_VisualMainMenuActive = true;
+                        FableSetVisualFrontendSaveMenu(false);
+                        FableSetVisualFrontendMainMenu(true);
+                        PlayVisualFrontendResourceSound(
+                            kBootSoundBackResource);
+                        RevealVisualFrontend(window);
+                        return 0;
+                    }
+                    unsigned int row = 0;
+                    if (FindVisualSaveMenuRow(mouseX, mouseY, &row))
+                    {
+                        g_VisualSaveSelection = row;
+                        FableSetVisualFrontendSaveSelection(row);
                         RevealVisualFrontend(window);
                         return 0;
                     }
@@ -1901,6 +3021,8 @@ namespace
                         g_VisualOptionsMenuActive = true;
                         FableSetVisualFrontendDetailScreen(0);
                         FableSetVisualFrontendOptionsMenu(true);
+                        PlayVisualFrontendResourceSound(
+                            kBootSoundBackResource);
                         RevealVisualFrontend(window);
                         return 0;
                     }
@@ -1918,6 +3040,8 @@ namespace
                         g_VisualOptionsMenuActive = true;
                         FableSetVisualFrontendDetailScreen(0);
                         FableSetVisualFrontendOptionsMenu(true);
+                        PlayVisualFrontendResourceSound(
+                            kBootSoundBackResource);
                         RevealVisualFrontend(window);
                         return 0;
                     }
@@ -1999,6 +3123,8 @@ namespace
                         g_VisualMainMenuActive = true;
                         FableSetVisualFrontendQuitPrompt(false);
                         FableSetVisualFrontendMainMenu(true);
+                        PlayVisualFrontendResourceSound(
+                            kBootSoundBackResource);
                         RevealVisualFrontend(window);
                         return 0;
                     }
@@ -2021,49 +3147,13 @@ namespace
                     if (FindVisualMainMenuRow(mouseX, mouseY, &row))
                     {
                         g_VisualMainMenuSelection = row;
-                        if (row == 2)
-                        {
-                            // Action 297 -> used-key 0x18 ->
-                            // UI_FRONTEND_OPTIONS_SUB_MENU.
-                            g_VisualMainMenuActive = false;
-                            g_VisualOptionsMenuActive = true;
-                            g_VisualOptionsSelection = 0;
-                            g_VisualOptionsBackHovered = false;
-                            FableSetVisualFrontendOptionsMenu(true);
-                            RevealVisualFrontend(window);
+                        if (ActivateVisualMainMenuSelection(window))
                             return 0;
-                        }
-                        if (row == 6)
-                        {
-                            // Action 314 -> used-key 0x1a ->
-                            // UI_FRONTEND_QUIT_PROMPT.
-                            g_VisualMainMenuActive = false;
-                            g_VisualQuitPromptActive = true;
-                            g_VisualQuitHover = 0;
-                            FableSetVisualFrontendQuitPrompt(true);
-                            RevealVisualFrontend(window);
-                            return 0;
-                        }
                     }
                 }
             }
-            if (
-                g_VisualFrontendVisible &&
-                !g_VisualMainMenuActive &&
-                !g_VisualOptionsMenuActive &&
-                g_VisualDetailScreen == 0 &&
-                !g_VisualQuitPromptActive &&
-                !FableIsRetailVideoActive())
-            {
-                // UI_FRONTEND_BUTTON_INVISIBLE (#625) dispatches action 229
-                // on left-button release.  The resulting first-menu root is
-                // UI_FRONTEND_MAIN_MENU (#212).
-                g_VisualMainMenuActive = true;
-                g_VisualMainMenuSelection = 0;
-                FableSetVisualFrontendMainMenu(true);
-                RevealVisualFrontend(window);
+            if (ActivateVisualPressStart(window))
                 return 0;
-            }
             break;
 
         case kMessageMouseMove:
@@ -2071,6 +3161,7 @@ namespace
             if (
                 !g_VisualMainMenuActive &&
                 !g_VisualOptionsMenuActive &&
+                !g_VisualSaveMenuActive &&
                 g_VisualDetailScreen == 0 &&
                 !g_VisualQuitPromptActive)
                 break;
@@ -2141,6 +3232,31 @@ namespace
                 }
                 return 0;
             }
+            if (g_VisualSaveMenuActive)
+            {
+                const bool backHovered =
+                    mouseX >= 20 &&
+                    mouseX < 270 &&
+                    mouseY >= 420 &&
+                    mouseY < 450;
+                if (g_VisualOptionsBackHovered != backHovered)
+                {
+                    g_VisualOptionsBackHovered = backHovered;
+                    FableSetVisualFrontendOptionsBackHovered(
+                        backHovered);
+                    RevealVisualFrontend(window);
+                }
+                unsigned int row = 0;
+                if (
+                    FindVisualSaveMenuRow(mouseX, mouseY, &row) &&
+                    g_VisualSaveSelection != row)
+                {
+                    g_VisualSaveSelection = row;
+                    FableSetVisualFrontendSaveSelection(row);
+                    RevealVisualFrontend(window);
+                }
+                return 0;
+            }
             if (g_VisualDetailScreen != 0)
             {
                 if (g_VisualDetailScreen == 4)
@@ -2185,6 +3301,81 @@ namespace
                 wordParameter == kFrontendAnimationTimer &&
                 g_VisualFrontendVisible)
             {
+                fable_u32 controllerState = 0;
+                if (!FableIsRetailVideoActive())
+                {
+                    FableJoyInfoEx controller = {};
+                    controller.size = sizeof(controller);
+                    controller.flags = kJoyReturnAll;
+                    if (joyGetPosEx(0, &controller) == 0)
+                    {
+                        controllerState =
+                            FableMapUiControllerState(
+                                controller.xPosition,
+                                controller.yPosition,
+                                controller.pointOfView,
+                                controller.buttons);
+                    }
+                }
+                const fable_u32 controllerActions =
+                    FableConsumeUiControllerActions(
+                        controllerState,
+                        GetTickCount(),
+                        &g_VisualControllerState,
+                        &g_VisualControllerRepeatState);
+                if ((controllerActions & FableUiControllerUp) != 0)
+                {
+                    VisualBootWindowProcedure(
+                        window,
+                        kMessageKeyDown,
+                        0x26,
+                        0);
+                }
+                else if (
+                    (controllerActions & FableUiControllerDown) != 0)
+                {
+                    VisualBootWindowProcedure(
+                        window,
+                        kMessageKeyDown,
+                        0x28,
+                        0);
+                }
+                else if (
+                    (controllerActions & FableUiControllerLeft) != 0)
+                {
+                    VisualBootWindowProcedure(
+                        window,
+                        kMessageKeyDown,
+                        0x25,
+                        0);
+                }
+                else if (
+                    (controllerActions & FableUiControllerRight) != 0)
+                {
+                    VisualBootWindowProcedure(
+                        window,
+                        kMessageKeyDown,
+                        0x27,
+                        0);
+                }
+                else if (
+                    (controllerActions & FableUiControllerAccept) != 0)
+                {
+                    VisualBootWindowProcedure(
+                        window,
+                        kMessageKeyDown,
+                        0x0D,
+                        0);
+                }
+                else if (
+                    (controllerActions & FableUiControllerBack) != 0)
+                {
+                    VisualBootWindowProcedure(
+                        window,
+                        kMessageKeyDown,
+                        kEscapeKey,
+                        0);
+                }
                 InvalidateRect(window, 0, 0);
                 return 0;
             }
@@ -2283,6 +3474,11 @@ namespace
         case kMessageDestroy:
             KillTimer(window, kRetailVideoTimer);
             KillTimer(window, kFrontendAnimationTimer);
+            g_VisualControllerState = 0;
+            g_VisualControllerRepeatState.lastMovement = 0;
+            g_VisualControllerRepeatState.lastSelectionTimeMs = 0;
+            g_VisualControllerRepeatState.isRepeating = false;
+            g_VisualDetailSelection = 0;
             FableShutdownRetailVideo();
             FableShutdownVisualD3D9();
             PostQuitMessage(0);
@@ -2430,6 +3626,8 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     g_VisualOptionsMenuActive = false;
     g_VisualOptionsSelection = 0;
     g_VisualOptionsBackHovered = false;
+    g_VisualSaveMenuActive = false;
+    g_VisualSaveSelection = 0;
     g_VisualDetailScreen = 0;
     g_VisualRedefineHover = 0;
     g_VisualRedefineResetHover = 0;
@@ -2626,9 +3824,41 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         0,
         0,
         kLoadCreatedDibSection));
+    g_BootTitleSegmentArtwork = static_cast<FableBitmap>(LoadImageA(
+        instance,
+        IntegerResource(kBootTitleSegmentResource),
+        kImageBitmap,
+        0,
+        0,
+        kLoadCreatedDibSection));
+    g_BootButtonLeftArtwork = static_cast<FableBitmap>(LoadImageA(
+        instance,
+        IntegerResource(kBootButtonLeftResource),
+        kImageBitmap,
+        0,
+        0,
+        kLoadCreatedDibSection));
+    g_BootButtonMiddleArtwork = static_cast<FableBitmap>(LoadImageA(
+        instance,
+        IntegerResource(kBootButtonMiddleResource),
+        kImageBitmap,
+        0,
+        0,
+        kLoadCreatedDibSection));
+    g_BootButtonRightArtwork = static_cast<FableBitmap>(LoadImageA(
+        instance,
+        IntegerResource(kBootButtonRightResource),
+        kImageBitmap,
+        0,
+        0,
+        kLoadCreatedDibSection));
     if (
         g_BootOptionsArtwork != 0 &&
-        g_BootHelpersArtwork != 0)
+        g_BootHelpersArtwork != 0 &&
+        g_BootTitleSegmentArtwork != 0 &&
+        g_BootButtonLeftArtwork != 0 &&
+        g_BootButtonMiddleArtwork != 0 &&
+        g_BootButtonRightArtwork != 0)
     {
         GetObjectA(
             g_BootOptionsArtwork,
@@ -2638,11 +3868,35 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
             g_BootHelpersArtwork,
             sizeof(g_BootHelpersArtworkInfo),
             &g_BootHelpersArtworkInfo);
+        GetObjectA(
+            g_BootTitleSegmentArtwork,
+            sizeof(g_BootTitleSegmentArtworkInfo),
+            &g_BootTitleSegmentArtworkInfo);
+        GetObjectA(
+            g_BootButtonLeftArtwork,
+            sizeof(g_BootButtonLeftArtworkInfo),
+            &g_BootButtonLeftArtworkInfo);
+        GetObjectA(
+            g_BootButtonMiddleArtwork,
+            sizeof(g_BootButtonMiddleArtworkInfo),
+            &g_BootButtonMiddleArtworkInfo);
+        GetObjectA(
+            g_BootButtonRightArtwork,
+            sizeof(g_BootButtonRightArtworkInfo),
+            &g_BootButtonRightArtworkInfo);
     }
     else
     {
+        DeleteObject(g_BootButtonRightArtwork);
+        DeleteObject(g_BootButtonMiddleArtwork);
+        DeleteObject(g_BootButtonLeftArtwork);
+        DeleteObject(g_BootTitleSegmentArtwork);
         DeleteObject(g_BootHelpersArtwork);
         DeleteObject(g_BootOptionsArtwork);
+        g_BootButtonRightArtwork = 0;
+        g_BootButtonMiddleArtwork = 0;
+        g_BootButtonLeftArtwork = 0;
+        g_BootTitleSegmentArtwork = 0;
         g_BootHelpersArtwork = 0;
         g_BootOptionsArtwork = 0;
     }
@@ -2717,7 +3971,27 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
             g_BootHelpersArtworkInfo.height,
             g_BootHelpersArtworkInfo.widthBytes,
             g_BootHelpersArtworkInfo.bitsPerPixel,
-            g_BootHelpersArtworkInfo.pixels))
+            g_BootHelpersArtworkInfo.pixels,
+            g_BootTitleSegmentArtworkInfo.width,
+            g_BootTitleSegmentArtworkInfo.height,
+            g_BootTitleSegmentArtworkInfo.widthBytes,
+            g_BootTitleSegmentArtworkInfo.bitsPerPixel,
+            g_BootTitleSegmentArtworkInfo.pixels,
+            g_BootButtonLeftArtworkInfo.width,
+            g_BootButtonLeftArtworkInfo.height,
+            g_BootButtonLeftArtworkInfo.widthBytes,
+            g_BootButtonLeftArtworkInfo.bitsPerPixel,
+            g_BootButtonLeftArtworkInfo.pixels,
+            g_BootButtonMiddleArtworkInfo.width,
+            g_BootButtonMiddleArtworkInfo.height,
+            g_BootButtonMiddleArtworkInfo.widthBytes,
+            g_BootButtonMiddleArtworkInfo.bitsPerPixel,
+            g_BootButtonMiddleArtworkInfo.pixels,
+            g_BootButtonRightArtworkInfo.width,
+            g_BootButtonRightArtworkInfo.height,
+            g_BootButtonRightArtworkInfo.widthBytes,
+            g_BootButtonRightArtworkInfo.bitsPerPixel,
+            g_BootButtonRightArtworkInfo.pixels))
     {
 #if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
         SetWindowTextA(
@@ -2841,8 +4115,16 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     UnregisterClassA(kWindowClassName, instance);
 #if defined(FABLETLC_RETAIL_FRONTEND_MENU)
 #if defined(FABLETLC_RETAIL_FRONTEND_SUBSCREENS)
+    DeleteObject(g_BootButtonRightArtwork);
+    DeleteObject(g_BootButtonMiddleArtwork);
+    DeleteObject(g_BootButtonLeftArtwork);
+    DeleteObject(g_BootTitleSegmentArtwork);
     DeleteObject(g_BootHelpersArtwork);
     DeleteObject(g_BootOptionsArtwork);
+    g_BootButtonRightArtwork = 0;
+    g_BootButtonMiddleArtwork = 0;
+    g_BootButtonLeftArtwork = 0;
+    g_BootTitleSegmentArtwork = 0;
     g_BootHelpersArtwork = 0;
     g_BootOptionsArtwork = 0;
 #endif

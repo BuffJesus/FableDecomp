@@ -1,6 +1,6 @@
 # Active task list — decomp, frontend parity, and downstream tools
 
-*Refreshed 2026-07-27 from the canonical rebuild and visual parity gates.*
+*Refreshed 2026-07-28 from the canonical rebuild and visual parity gates.*
 
 ## Current verified state
 
@@ -11,7 +11,7 @@
   (`2,689 EXACT + 2,029 RELOCATION_MATCH`), with `205 DIFFER` and
   `128 ORACLE_MISSING`; the whole-project totals additionally include 18
   independently lifted matching/functional functions.
-- Auto-RE intake: **803 generated / 787 structural PASS**.
+- Auto-RE intake: **803 generated / 788 structural PASS**.
 - Durable source/tests are address-sharded and indexed by `rebuild/ARTIFACT_INDEX.tsv`.
 - Custom quest assets are staged offline: nine card defs, 36 custom English strings,
   and one childhood mysterious-NPC TNG addition. Nothing has been deployed to the live game.
@@ -98,22 +98,163 @@ Completed in the current checkpoint:
     1/4/5 alpha writes, centre reflection, and bounded child output now have
     VC7.1 coverage. The fixture deliberately locks the stored-float alpha
     residue (`126,191,255,191,127`) rather than a symmetric rounded ideal.
+13. `CTable::ConstructSpritesToDraw` now crosses from pure plans into owned
+    generated components. Definition-bearing sprite prototypes are cloned in
+    the recovered corner/horizontal/vertical order, initialised, and receive
+    state-0 position/zoom writes. Explicit `CCountedPointer` controls prove the
+    retail local-create/vector-copy/local-release sequence, final vector
+    ownership, complete destruction, and capacity-failure rollback. The
+    20-component fixture and full VC7.1 Release bootstrap pass.
+14. The first owned component family now reaches the live Render2D queue.
+    Options and all four detail headers construct three definition-122
+    `UI_TEXTBOX_MIDDLE` children, map them to the pristine 8x64 retail sprite,
+    and emit clipped/scaled quads plus ordinary texture/state records through
+    the existing batch and draw-list adapters. Binding/capacity failures are
+    transactional. The retained baked sheet and the no-rule component sheet
+    recompose pixel-identically across all eight frames; full Release,
+    subscreen interaction, and maximized aspect-fit smokes pass.
+15. The Options selected-row `UI_BUTTON` table is live. Definitions
+    129/130/131 bind to separate pristine `TS_BUTTON_L/R/M` textures, the
+    middle child carries the recovered 19-tile zoom, and the owned three-child
+    table follows y=`143 + 30*selection` behind the still-baked row text.
+    Multi-definition record emission is focused-test covered. Removing both
+    this ornament and the title rule from the component sheet still recomposes
+    all eight oracle frames pixel-identically. The live D3D9 adapter now
+    recognizes the title segment plus all three `TS_BUTTON_L/M/R` texture
+    handles; previously those valid Render2D records attached null and made
+    the runtime highlight disappear. Retail, BuffJesus, and full subscreen
+    smokes now require a visible off-texture highlight-pixel delta.
+16. Main-menu selection tables are live in both public variants. Rows 1-6
+    reuse the owned 280-pixel vector; Continue Game uses a second owned
+    `UI_BUTTON_BIG` vector with the recovered 400-pixel span and 34-tile
+    middle zoom. Retail and BuffJesus component sheets omit the ornament and
+    recompose all seven baked frames pixel-identically. Both main-menu smokes,
+    the complete subscreen smoke, maximized scaling, and the Release bootstrap
+    pass.
+17. Main-menu labels are seven independent Render2D rows rather than text
+    flattened into every selection frame. Retail and BuffJesus component
+    atlases retain title-only left frames and one transparent row canvas per
+    list child; recomposition is pixel-identical across all 14 frames. The
+    retail 0x24-byte `CUIState` layout is compile-locked, and a focused
+    `DoRecomputeOffsets` adapter writes the proven position/alpha state masks,
+    live state-1 values, and `ScrollingChildrenStates`-style snapshots with
+    transactional capacity rejection. The adapter is behavior-gated
+    integration code, not whole-function byte parity.
+18. The seven live row quads now consume their exact five-state `CUIState`
+    maps for position and colour. Main-menu and Options Up/Down input uses the
+    recovered frontend-list scroll decision path, including wrap, old/new
+    states 4/3, and unchanged-child rejection at a blocked boundary. Retail
+    definitions lock both lists to `Wrapping=true`, `Scrolling=false`,
+    `AlphaOffset=0`, and `PositionOffsetY=30`; text states 3/4 are immediately
+    visible at x=120 with `UpdateTime=-1`. Therefore navigation correctly moves
+    only the selected ornament rather than inventing a row translation/fade.
+    Retail, BuffJesus, complete subscreen (including Options Down/Up), and
+    maximized 2560x1369 smokes pass.
+19. Options labels are four independent Render2D row canvases rather than text
+    repeated in the four selection frames. The component sheet expands from
+    1024x3840 to 1664x3840: its original frame/control/key atlas coordinates
+    remain unchanged and x=1024..1664 holds the four row canvases. All four
+    quads consume their exact decoded five-state position/colour maps.
+    Recomposition against the retained 1024x3840 baked oracle is
+    pixel-identical for every Options and detail frame. The full VC7.1 build,
+    15 focused subscreen tests, retail interaction, BuffJesus main-menu, and
+    maximized smokes pass.
+20. Keyboard Enter now dispatches the selected recovered routes instead of
+    requiring a synthetic mouse release: press-start action 229, main-menu
+    Options/Quit actions 297/314, and Options actions 9/13/12/283. Mouse and
+    keyboard share the same transition helpers, keeping detail initialization,
+    saved-value snapshots, and D3D state changes aligned. The complete
+    subscreen smoke uses Enter for press-start, Options entry, and every detail
+    destination; retail and BuffJesus report `keys=enter-up-wrap-down`.
+21. Frontend navigation now uses the untouched retail `Frontend.lug` audio
+    rather than a synthetic placeholder. `CFrontEndList::ScrollUp/ScrollDown`
+    selects `UI_MISC_THINGS_DEF.SoundUpDown` (`CS_GUI_2`, sample 3) after a
+    move and `SoundError` (`CS_GUI_5`, sample 7) at a blocked boundary.
+    Recovered `CFrontEndManager::Update` transition fields select
+    `SoundBack` (`CS_GUI_6`, sample 4) and `SoundForward` (`CS_GUI_7`,
+    sample 5). The build extracts and embeds all four RIFFs byte-for-byte,
+    the executable resource audit matches their SHA-256 values, and the full
+    VC7.1 build plus interaction smokes pass.
+22. The first frontend-list bodies now have real object-code proof rather than
+    adapter-only evidence. `CFrontEndList::InitialiseOffsets @ 0x0054C480` is
+    exact 57/57 bytes with no relocations, and `ScrollUp @ 0x0054C4C0` is
+    relocation-normalized 834/834 bytes with zero non-relocation differences.
+    Its focused fixture covers reject/wrap, sound selection, states, colours,
+    positions, alpha math, and intrusive-reference release. `ScrollDown
+    @ 0x0054C810` now has equivalent behavior coverage and a complete
+    relocation-normalized 977/977-byte match. Its ABI-explicit recovered body
+    also locks the retail x87-truncated alpha ramp (`190,255,190,126,62`).
+23. The initial frontend-manager transition/profile seam now has canonical
+    object-code proof. `LaunchVirtualKeyboard @ 0x00596917` is a
+    relocation-normalized 99/99-byte match, including lookup/routing,
+    allocation/construction/storage order, and retail's null-allocation
+    behavior. `CreateNewProfile @ 0x0059697A` is a 238/238-byte match covering
+    no-space rejection, name-result semantics, defaults, both inversion
+    branches, save, menu-definition update, and profile-name propagation.
+    Neither body invents direct sound/refcount work; keyboard routing delegates
+    that boundary to the already matched `GotoNextScreen`.
+    `CreateFrontEndButtonComponent @ 0x00596A68` adds a 614/614-byte match for
+    default/custom definition routing, component composition, action setup,
+    state widths, and counted-pointer release order. `RefreshAvailableProfiles
+    @ 0x00596CCE` has a behavior- and ownership-proven fixture, but remains an
+    honest 329/824-byte `DIFFER` until its inlined string/action/allocator
+    temporary-lifetime graph is recovered.
+    `RefreshAvailableProfilesForDelete` 546/546, `LoadProfile` 130/130,
+    `DoPressStart` 227/227, `AddPrefixToTitleBar` 75/75, and
+    `CanAcceptOptionChanges` 56/56 further cover delete-list ownership,
+    press-start routing, profile publication, title propagation, and the
+    option-acceptance gate.
+24. Redefine Keys now uses the two different retail row primitives. The
+    280-pixel action-name side remains the rounded `FE_SLOT_TEST_L/M/R` table;
+    the 220-pixel key-value side is the repeated
+    `FE_OPTIONS_HORIZONTAL_BAR_SPRITE` selected by
+    `UI_OPTIONS_HORIZONTAL_BAR`. `CText::Draw @ 0x0054EF00` proves both
+    `ENG_ARIAL_12` children use their serialized `(0,3)`/`(380,3)` top
+    origins: alignment changes x only, y is rounded and forwarded unchanged,
+    and the downstream font call receives flags zero. The renderer and focused
+    tests now lock that code-derived geometry instead of aesthetically
+    centering the text.
+25. Continue Game's next screen and dynamic rows are recovered and live in the
+    checkpoint. Action 66
+    refreshes saves and enters used key `0x08`,
+    `UI_FRONTEND_PROFILE_SAVED_GAMES_MENU`. The 1,335-byte refresh body
+    replaces `UI_FRONTEND_LIST_FOR_SAVES`, attaches the scrolling text and
+    screenshot viewports, then builds autosave-first/ascending-manual rows at
+    30-pixel intervals. Each row carries the original filename and chooses
+    action `0x11` or invalid-save action `0xDC` from the primary/companion
+    validity checks. The runnable now enters the saved-games screen, renders
+    the decoded title/list/file-information/Back structure, moves the
+    ornamental highlight through the four sample rows with keyboard or mouse,
+    and returns through action 86. The 12 logical frames are packed into a
+    1664x3840 D3D9-safe atlas; save frames occupy x=1024..1664 at y=1920..3840.
+    The full Release build and pixel-level subscreen smoke prove activation,
+    highlight movement, and Back. Enter on a row deliberately does not cross
+    the still-unrecovered main-game/world-load boundary.
+
+Visual acceptance note: the saved-games and keybind screens are functional
+checkpoints, not presentation-parity sign-off. User review still finds the
+current screenshot visibly incorrect. Tomorrow's first UI task is a
+state-matched retail/reconstruction capture and alpha-aware diff, followed by
+evidence-based corrections to text scale/baselines, highlight span/placement,
+and any metadata/background differences the diff identifies. Do not describe
+the initial frontend as fully matched until that comparison passes.
 
 Next work, in order:
 
-1. Finish `CTable::ConstructSpritesToDraw @ 0x00551EA0`: replace the promoted
-   pure planners with real component cloning, `CCountedPointer` increment/
-   release behavior, state-map writes, and the final generated-child vector.
-   Corner placement, edge cursors, and logical child counts are now covered.
-   The exact line-builder addresses
-   are now correctly named `ConstructHorizontalLine @ 0x005518E0` and
-   `ConstructVerticalLine @ 0x00551BC0` in Ghidra.
-2. Continue `CList` keyboard/controller navigation by replacing the pure
-   planners with real `CUIState` map writes and the scrolling-state vector.
-   `SetSelectedChild`, both initial-offset variants, `DoRecomputeOffsets`, and
-   frontend `ScrollUp/ScrollDown` decisions are covered. Next promote
-   disabled-child handling, the per-child state rotation, and timed selection
-   animation into the live renderer.
+1. Extend the live WinMM controller bridge beyond initial navigation. POV and
+   analogue Up/Down plus button-1/Start accept and button-2/Back now enter the
+   same recovered list-scroll/action routes as keyboard input. Detail screens
+   now wrap row focus and apply Left/Right through the same live profile-value
+   path as mouse controls. Held direction input now mirrors the recovered
+   `CFrontendGameComponent::ChangeSelection @ 0x00494380` state machine:
+   immediate direction changes, a 500 ms initial delay, then 100 ms repeats.
+   Implement the remaining main-menu actions; connect validated save-row action
+   `0x11` to the recovered main-game load chain only after that ownership
+   boundary is ready. Recover mouse-hover and remaining
+   action sound dispatch separately before enabling it.
+2. Capture identical retail and reconstructed Saved Games and Redefine Keys
+   states. Produce alpha-aware image diffs and correct measured text,
+   highlight, metadata, and background discrepancies.
 3. Extend `CKeyRedefiner` beyond the first visible page: decode the full action
    list, retail `IsRedefinableKey` filtering, action-pair coexistence table, and
    profile persistence rather than keeping the compact key-name atlas as the
@@ -123,10 +264,7 @@ Next work, in order:
 5. Move from precomposed 640×480 sheets toward live retail component rendering:
    sprite tables, text components, state transitions, alpha/color inheritance,
    and UI scaling should be emitted through the recovered Render2D path.
-6. Capture retail and reconstructed frames at identical states and add
-   alpha-aware image diffs for text baselines, highlight centers, title rules,
-   helper buttons, and 4:3/aspect-fit scaling.
-7. Continue the runnable boundary through the remaining GFMain Phase 3 calls
+6. Continue the runnable boundary through the remaining GFMain Phase 3 calls
    while keeping the frontend checkpoint available as a fast visual gate.
 
 Acceptance: decoded layout values and runtime hit regions share one oracle;
@@ -289,6 +427,44 @@ Full fse2 ordering, including the 46 larger functions, is in
 `008997E0 GetHeroExperienceAvailableToSpend` is behavior `PASS` but best parity is
 `DIFFER(101v97)`. It is a documented register-allocation/spill residue. Do not blind
 regrind it; retry only with a new liveness/register hypothesis or a different compiler build.
+
+## P1 — pilot a Unicorn retail behavior oracle
+
+Adopt Unicorn only as an optional, local function-level x86 oracle. It must
+remain outside the canonical build and cannot change parity totals by itself.
+The full design and upstream evidence are in
+`docs/UNICORN_EMULATION_PLAN.md`.
+
+Current opportunity:
+
+- 2,390 `MATCH` functions are 2–64 bytes with zero recorded relocations,
+  providing a broad known-good harness-validation pool.
+- 174 `DIFFER` functions are at most 128 retail bytes, providing a bounded
+  second-stage trace-diagnosis pool.
+- CPU-side frontend geometry, billboard generation, particle batching, shader
+  constant selection, and D3D state arguments can be traced behind registered
+  stubs; actual D3D/shader output cannot.
+
+Pilot order:
+
+1. Create a separate Python 3.13 environment and pin `unicorn==2.1.4`; do not
+   vendor or link it into reconstructed binaries.
+2. Implement `tools/unicorn_oracle.py` around authoritative oracle rows,
+   original retail virtual addresses, explicit stack/heap/object fixtures,
+   mapped call stubs, a return sentinel, and hard instruction/time bounds.
+3. Prove deterministic register, stack-delta, block, memory-write, call-trace,
+   and fault JSON on five known exact leaves.
+4. Diagnose ten same-length, sub-128-byte `DIFFER` rows. Preserve
+   `UNSUPPORTED` separately from `MISMATCH`; feed only proven semantic/ABI
+   corrections into the normal author/refine loop.
+5. Trace one frontend geometry helper and one particle/RSA/render-state helper
+   behind engine/D3D stubs.
+
+Acceptance: repeated outputs are deterministic; existing behavior fixtures
+agree; deliberate bad fixtures fail; at least one trace replaces a guessed
+contract or repairs a real residue; retail bytes/snapshots remain local; and
+every promoted function still passes VC7.1 compile, behavior, and retail-byte
+comparison.
 
 ## P1 — clear small stalled batches
 
