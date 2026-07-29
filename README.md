@@ -316,6 +316,10 @@ rules.
 
 - No retail executable, artwork, video, archive, PDB, or decoded asset is
   committed.
+- Retail-derived screenshots, texture decodes, model renders, Blender files,
+  and byte-oracle extracts are local-only test outputs and are ignored by Git.
+  Tests must generate them from a user-supplied installation outside the
+  repository.
 - A local retail installation is used as read-only evidence and asset input.
 - Generated agent code is never treated as verified merely because it exists.
 - A visually similar checkpoint is not claimed as the complete retail

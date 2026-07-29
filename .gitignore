@@ -66,4 +66,8 @@ imgui.ini
 # Blender proof products generated from game assets.
 /tools/blender_addon/tests/**/*.blend
 /tools/blender_addon/tests/**/*.blend1
+/tools/blender_addon/tests/*.png
 /tools/blender_addon/tests/proof/*.png
+
+# Retail-derived scratch/oracle bytes must remain local.
+/scratch_frn/retail.bin

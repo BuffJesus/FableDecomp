@@ -144,6 +144,10 @@ tools/blender_addon/tests/
   blender_anim_test.py     headless ANIM action round-trip (import->export vs retail)
 ```
 
+All decoded textures, rendered proofs, and `.blend` files produced by these
+tests are local-only outputs. They are generated from the user's own retail
+installation, ignored by Git, and must never be committed.
+
 `fable_core` produces plain dataclasses that are the contract with the bpy layer:
 
 - `ImageData` — decoded RGBA (Blender-order flat float pixels) + dims + format.
@@ -208,9 +212,9 @@ Result (retail `graphics.big` + `textures.big`): indexes 6,290 texture entries,
 finds 3,259 compiled meshes, and proves a real texture into a material:
 `MESH_OBJECT_STATUE_BEAR` material 0 → tex id 237 (`BROWNBEAR_BODY_32.TGA`) →
 LZO1X-decompress + DXT1-decode → **512×512** RGBA, 126 distinct tones, full
-[0,1] range (real content, not noise). Writes a PNG of the decoded texture as
-visual evidence. The bear-body atlas (fur, paw pads, eye, mouth) and the seagull
-body/wing render as coherent images.
+[0,1] range (real content, not noise). Writes an ignored local PNG of the
+decoded texture as visual evidence. The bear-body atlas (fur, paw pads, eye,
+mouth) and the seagull body/wing render as coherent images.
 
 ### 4.2 Blender headless test — Blender 5.0 — **PASSED**
 ```
@@ -222,10 +226,11 @@ blender --background --factory-startup --python \
 the addon from source, runs the import operator, and asserts: 2 packed non-empty
 bpy images, 2 Principled-BSDF materials wired to image textures, an armature with
 bones, 3 LOD + 2 submesh empties, and real mesh objects (2 for the seagull).
-It saves `fable_import_MESH_SEAGULL_01.blend`
-and re-saves the packed bpy image to `fable_bpy_image_MESH_SEAGULL_01.png` (a
-coherent seagull-body texture) as proof the texture round-tripped **into**
-Blender's image datablock.
+It saves the ignored local file `fable_import_MESH_SEAGULL_01.blend` and
+re-saves the packed bpy image to the ignored local file
+`fable_bpy_image_MESH_SEAGULL_01.png` (a coherent seagull-body texture) as
+proof the texture round-tripped **into** Blender's image datablock. Neither
+output is distributed by this repository.
 
 **Bind-pose test** (`tests/blender_bones_test.py`, 2026-07-20): imports
 `MESH_SEAGULL_01` (27 bones) and `MESH_CREATURE_GOBLIN` (67 bones) and asserts:
