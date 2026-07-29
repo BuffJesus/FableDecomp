@@ -7,6 +7,7 @@ $project = Join-Path $root 'ghidra_proj'
 $scripts = Join-Path $root 'tools\ghidra_scripts'
 $candidateManifest = Join-Path $root 'rebuild\compile-gate\vc71-compiled.tsv'
 $output = Join-Path $root 'rebuild\oracles\auto-re-candidates.tsv'
+$supplement = Join-Path $root 'rebuild\oracles\manual-re-candidates.tsv'
 $temp = "$output.tmp.$PID"
 $addressFile = "$output.addresses.$PID.txt"
 
@@ -40,6 +41,43 @@ try {
     & $headless @arguments
     if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $temp)) {
         throw "Candidate oracle export failed with exit code $LASTEXITCODE"
+    }
+
+    # Some VC7.1 template helpers are emitted as adjacent instruction regions
+    # that Ghidra either does not mark as function starts or truncates at the
+    # first return. Preserve their independently verified complete retail
+    # spans across automatic oracle refreshes.
+    if (Test-Path -LiteralPath $supplement) {
+        $generatedRows = @(Import-Csv -LiteralPath $temp -Delimiter "`t")
+        $supplementRows = @(Import-Csv -LiteralPath $supplement -Delimiter "`t")
+        $overrides = @{}
+        foreach ($row in $supplementRows) {
+            $overrides[$row.address.ToLowerInvariant()] = $row
+        }
+
+        $lines = [System.Collections.Generic.List[string]]::new()
+        $lines.Add("address`tname`tlength`tbytes")
+        foreach ($row in $generatedRows) {
+            $key = $row.address.ToLowerInvariant()
+            if ($overrides.ContainsKey($key)) {
+                $row = $overrides[$key]
+                $overrides.Remove($key)
+            }
+            $lines.Add(
+                "$($row.address)`t$($row.name)`t$($row.length)`t$($row.bytes)"
+            )
+        }
+        foreach ($key in @($overrides.Keys | Sort-Object)) {
+            $row = $overrides[$key]
+            $lines.Add(
+                "$($row.address)`t$($row.name)`t$($row.length)`t$($row.bytes)"
+            )
+        }
+        [System.IO.File]::WriteAllLines(
+            $temp,
+            [string[]]$lines,
+            [System.Text.UTF8Encoding]::new($false)
+        )
     }
     Move-Item -LiteralPath $temp -Destination $output -Force
 }

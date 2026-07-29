@@ -22,7 +22,7 @@ import argparse
 import os
 import sys
 
-from PIL import Image
+from PIL import Image, ImageChops
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from render_fable_static_font import (  # noqa: E402
@@ -131,6 +131,15 @@ def validate_compiled_menu_layout(game_root, schema_path):
         "main-menu list step",
         list_values["PositionOffsetY"],
         30.0)
+    sound_values = layout.decoded("UI_MISC_THINGS_DEF_INSTANCE")
+    require_equal(
+        "frontend list movement sound",
+        sound_values["SoundUpDown"],
+        "CS_GUI_2")
+    require_equal(
+        "frontend invalid movement sound",
+        sound_values["SoundError"],
+        "CS_GUI_5")
 
     button_names = (
         "UI_FRONTEND_BUTTON_LOAD_GAME",
@@ -183,6 +192,37 @@ def validate_compiled_menu_layout(game_root, schema_path):
             "main-menu text font %d" % index,
             text_values["Font"],
             "ENG_ARIAL_24")
+        states = text_values["States"]
+        require_equal(
+            "main-menu text state count %d" % index,
+            len(states),
+            5)
+        require_equal(
+            "main-menu text state x %d" % index,
+            tuple(state["PositionX"] for state in states),
+            (120.0, 120.0, 0.0, 120.0, 120.0))
+        require_equal(
+            "main-menu text state y %d" % index,
+            tuple(state["PositionY"] for state in states),
+            (0.0, 0.0, 0.0, 0.0, 0.0))
+        require_equal(
+            "main-menu text state alpha %d" % index,
+            tuple(state["ColourA"] for state in states),
+            (1.0, 1.0, 0.0, 1.0, 1.0))
+        require_equal(
+            "main-menu text state time %d" % index,
+            tuple(state["UpdateTime"] for state in states),
+            (
+                -1.0,
+                -1.0,
+                0.20000000298023224,
+                -1.0,
+                -1.0,
+            ))
+        require_equal(
+            "main-menu text state flags %d" % index,
+            tuple(state["StateChangeFlag"] for state in states),
+            (7, 7, 7, 7, 7))
         require_equal(
             "main-menu table child %d" % index,
             inner_children[1],
@@ -198,19 +238,14 @@ def build_menu_overlay(
         frontend_bank,
         font_bank,
         selected_index=0,
-        menu_rows=MENU_ROWS):
+        menu_rows=MENU_ROWS,
+        include_selected_button=True,
+        include_text=True):
     if not 0 <= selected_index < len(menu_rows):
         raise ValueError("main-menu selection is outside the compiled list")
     buf, parsed = load_big(frontend_bank)
     title_left = _decode_named(buf, parsed, "FRONTEND_TITLE_01_SPRITE")
     title_right = _decode_named(buf, parsed, "FRONTEND_TITLE_02_SPRITE")
-    selected_width = 400 if selected_index == 0 else 280
-    selected = build_selected_button(
-        _decode_named(buf, parsed, "TS_BUTTON_L"),
-        _decode_named(buf, parsed, "TS_BUTTON_M"),
-        _decode_named(buf, parsed, "TS_BUTTON_R"),
-        selected_width)
-
     canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
     canvas.alpha_composite(title_left, TITLE_POSITION)
     canvas.alpha_composite(
@@ -218,34 +253,41 @@ def build_menu_overlay(
 
     # UI_BUTTON_BIG (#74) backs Continue Game; UI_BUTTON (#73) backs the
     # remaining six rows. CTable materializes both around the text anchor.
-    selected_y = menu_rows[selected_index][1]
-    canvas.alpha_composite(
-        selected,
-        (
-            selected_button_left(selected_width),
-            LIST_ORIGIN[1] + selected_y - 7,
-        ))
+    if include_selected_button:
+        selected_width = 400 if selected_index == 0 else 280
+        selected = build_selected_button(
+            _decode_named(buf, parsed, "TS_BUTTON_L"),
+            _decode_named(buf, parsed, "TS_BUTTON_M"),
+            _decode_named(buf, parsed, "TS_BUTTON_R"),
+            selected_width)
+        selected_y = menu_rows[selected_index][1]
+        canvas.alpha_composite(
+            selected,
+            (
+                selected_button_left(selected_width),
+                LIST_ORIGIN[1] + selected_y - 7,
+            ))
 
-    font = load_font(font_bank, "ENG_ARIAL_24")
-    for text, y_offset in menu_rows:
-        line = render_line(
-            font,
-            text,
-            CANVAS_SIZE,
-            (MENU_CONTENT_CENTER_X, LIST_ORIGIN[1] + y_offset),
-            "center",
-            2.0 / 3.0)
-        canvas.alpha_composite(add_outline(line, 1))
+    if include_text:
+        for row_layer in build_menu_text_row_layers(font_bank, menu_rows):
+            canvas.alpha_composite(row_layer)
     return canvas
 
 
-def build_menu_sheet(frontend_bank, font_bank, menu_rows=MENU_ROWS):
+def build_menu_sheet(
+        frontend_bank,
+        font_bank,
+        menu_rows=MENU_ROWS,
+        include_selected_button=True,
+        include_text=True):
     frames = [
         build_menu_overlay(
             frontend_bank,
             font_bank,
             selected_index,
-            menu_rows)
+            menu_rows,
+            include_selected_button,
+            include_text)
         for selected_index in range(len(menu_rows))
     ]
     sheet = Image.new(
@@ -257,6 +299,121 @@ def build_menu_sheet(frontend_bank, font_bank, menu_rows=MENU_ROWS):
     return sheet
 
 
+def build_menu_text_row_layers(font_bank, menu_rows=MENU_ROWS):
+    """Render each CFrontEndList text child into an independent design canvas."""
+    font = load_font(font_bank, "ENG_ARIAL_24")
+    layers = []
+    for text, y_offset in menu_rows:
+        line = render_line(
+            font,
+            text,
+            CANVAS_SIZE,
+            (MENU_CONTENT_CENTER_X, LIST_ORIGIN[1] + y_offset),
+            "center",
+            2.0 / 3.0)
+        layers.append(add_outline(line, 1))
+    return layers
+
+
+def build_menu_component_atlas(frontend_bank, font_bank, menu_rows=MENU_ROWS):
+    """Pack title-only frames and seven independent row canvases side by side."""
+    component_frames = build_menu_sheet(
+        frontend_bank,
+        font_bank,
+        menu_rows,
+        include_selected_button=False,
+        include_text=False)
+    atlas = Image.new(
+        "RGBA",
+        (CANVAS_SIZE[0] * 2, component_frames.height),
+        (0, 0, 0, 0))
+    atlas.alpha_composite(component_frames)
+    for row, row_layer in enumerate(
+            build_menu_text_row_layers(font_bank, menu_rows)):
+        atlas.alpha_composite(
+            row_layer,
+            (CANVAS_SIZE[0], row * CANVAS_SIZE[1]))
+    return atlas
+
+
+def recompose_menu_frame(
+        component_frame,
+        left,
+        middle,
+        right,
+        selected_index,
+        menu_rows=MENU_ROWS,
+        row_layers=None):
+    """Place the live ornament behind the retained title/text component frame."""
+    if component_frame.size != CANVAS_SIZE:
+        raise ValueError("main-menu component frame has unexpected dimensions")
+    if not 0 <= selected_index < len(menu_rows):
+        raise ValueError("main-menu selection is outside the compiled list")
+    selected_width = 400 if selected_index == 0 else 280
+    frame = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
+    frame.alpha_composite(
+        build_selected_button(left, middle, right, selected_width),
+        (
+            selected_button_left(selected_width),
+            LIST_ORIGIN[1] + menu_rows[selected_index][1] - 7,
+        ))
+    frame.alpha_composite(component_frame)
+    if row_layers is not None:
+        if len(row_layers) != len(menu_rows):
+            raise ValueError("main-menu row atlas has unexpected frame count")
+        for row_layer in row_layers:
+            if row_layer.size != CANVAS_SIZE:
+                raise ValueError(
+                    "main-menu row atlas has unexpected frame dimensions")
+            frame.alpha_composite(row_layer)
+    return frame
+
+
+def validate_menu_component_recomposition(
+        baked_sheet,
+        component_sheet,
+        left,
+        middle,
+        right,
+        menu_rows=MENU_ROWS):
+    baked_size = (
+        CANVAS_SIZE[0],
+        CANVAS_SIZE[1] * len(menu_rows))
+    component_size = (
+        CANVAS_SIZE[0] * 2,
+        CANVAS_SIZE[1] * len(menu_rows))
+    if baked_sheet.size != baked_size or component_sheet.size != component_size:
+        raise ValueError("main-menu sheet has unexpected dimensions")
+    row_layers = [
+        component_sheet.crop(
+            (
+                CANVAS_SIZE[0],
+                row * CANVAS_SIZE[1],
+                CANVAS_SIZE[0] * 2,
+                (row + 1) * CANVAS_SIZE[1],
+            ))
+        for row in range(len(menu_rows))
+    ]
+    for selected_index in range(len(menu_rows)):
+        top = selected_index * CANVAS_SIZE[1]
+        component_frame = component_sheet.crop(
+            (0, top, CANVAS_SIZE[0], top + CANVAS_SIZE[1]))
+        recomposed = recompose_menu_frame(
+            component_frame,
+            left,
+            middle,
+            right,
+            selected_index,
+            menu_rows,
+            row_layers)
+        baked_frame = baked_sheet.crop(
+            (0, top, CANVAS_SIZE[0], top + CANVAS_SIZE[1]))
+        if ImageChops.difference(recomposed, baked_frame).getbbox() is not None:
+            raise ValueError(
+                "live main-menu ornament does not reproduce oracle frame %d" %
+                selected_index)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("frontend_bank")
@@ -266,6 +423,7 @@ def main():
         "--text-variant",
         choices=tuple(sorted(MENU_TEXT_VARIANTS)),
         default="retail")
+    parser.add_argument("--component-output")
     parser.add_argument("--game-root")
     parser.add_argument("--schema")
     args = parser.parse_args()
@@ -278,14 +436,36 @@ def main():
     menu_rows = menu_rows_for_variant(args.text_variant)
     image = build_menu_sheet(args.frontend_bank, args.font_bank, menu_rows)
     image.save(args.output)
+    oracle_status = "BAKED_ONLY"
+    if args.component_output:
+        component_image = build_menu_component_atlas(
+            args.frontend_bank,
+            args.font_bank,
+            menu_rows)
+        buf, parsed = load_big(args.frontend_bank)
+        button_left = _decode_named(buf, parsed, "TS_BUTTON_L")
+        button_middle = _decode_named(buf, parsed, "TS_BUTTON_M")
+        button_right = _decode_named(buf, parsed, "TS_BUTTON_R")
+        validate_menu_component_recomposition(
+            image,
+            component_image,
+            button_left,
+            button_middle,
+            button_right,
+            menu_rows)
+        component_image.save(args.component_output)
+        oracle_status = "PIXEL_IDENTICAL"
     print(
-        "FABLE_FRONTEND_MENU PASS sheet=%dx%d frames=%d variant=%s output=%s" %
+        "FABLE_FRONTEND_MENU PASS sheet=%dx%d frames=%d variant=%s "
+        "oracle=%s output=%s components=%s" %
         (
             image.width,
             image.height,
             len(menu_rows),
             args.text_variant,
+            oracle_status,
             args.output,
+            args.component_output or "none",
         ))
 
 

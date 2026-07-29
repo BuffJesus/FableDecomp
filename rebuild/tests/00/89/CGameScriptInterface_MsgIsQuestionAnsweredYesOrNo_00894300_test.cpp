@@ -1,7 +1,8 @@
 // Standalone behavioral test for CGameScriptInterface::MsgIsQuestionAnsweredYesOrNo @ 0x00894300
 // VC7.1 model: member method = free __fastcall (this in ecx, unused edx, then stack args).
-// The harness links ONLY this object, so this file DEFINES its own copy of the
-// function plus recording stubs for all externs.
+// The harness links the real candidate object and supplies recording stubs for
+// all of its engine externs.  It deliberately does not duplicate the function
+// body: a behavior PASS therefore exercises the same object scored for parity.
 
 #include <cstdio>
 
@@ -23,12 +24,33 @@ static void* g_self_seen_A = 0;
 static void* g_self_seen_B = 0;
 static int   g_A_calls = 0;
 static int   g_B_calls = 0;
+static char  g_call_order[4] = { 0, 0, 0, 0 };
+static int   g_call_order_count = 0;
 
 static void* g_ret_r1 = (void*)0xAAAA0001;
 static void* g_ret_r2 = (void*)0xBBBB0002;
 
-extern "C" void* __fastcall Gsi_A(void* thisptr) { g_A_calls++; g_self_seen_A = thisptr; return g_ret_r1; }
-extern "C" void* __fastcall Gsi_B(void* thisptr) { g_B_calls++; g_self_seen_B = thisptr; return g_ret_r2; }
+static void record_call(char call)
+{
+    if (g_call_order_count < 4)
+        g_call_order[g_call_order_count++] = call;
+}
+
+extern "C" void* __fastcall Gsi_A(void* thisptr)
+{
+    record_call('A');
+    g_A_calls++;
+    g_self_seen_A = thisptr;
+    return g_ret_r1;
+}
+
+extern "C" void* __fastcall Gsi_B(void* thisptr)
+{
+    record_call('B');
+    g_B_calls++;
+    g_self_seen_B = thisptr;
+    return g_ret_r2;
+}
 
 // Dispatcher: captures the arg block it was handed and returns a configurable result.
 static GsiResult* g_query_result = 0;
@@ -49,6 +71,7 @@ static bool  g_cap_argPtr_ok = false;
 
 GsiResult* GsiDispatcher::Query(void* argBlock)
 {
+    record_call('Q');
     g_query_calls++;
     g_query_this = this;
     g_query_argblock = argBlock;
@@ -65,33 +88,10 @@ GsiResult* GsiDispatcher::Query(void* argBlock)
     return g_query_result;
 }
 
-// --- the reconstructed function (copy of source under test) ----------------
+// --- candidate entry point -------------------------------------------------
 
 extern "C" long __fastcall
-CGameScriptInterface_MsgIsQuestionAnsweredYesOrNo(void* self, void* /*edx*/)
-{
-    void* r1 = Gsi_A(self);
-    void* r2 = Gsi_B(self);
-
-    GsiDispatcher* dispatch =
-        *(GsiDispatcher**)((char*)(*(void**)((char*)self + 4)) + 0x60);
-
-    GsiArgs a;
-    a.r1      = r1;
-    a.len     = 0x10;
-    a.r2      = r2;
-    a.selfPtr = &a;
-    a.argPtr  = &a.r1;
-
-    GsiResult* res = dispatch->Query(&a.selfPtr);
-    if (res != 0) {
-        int v = res->answer;
-        if (v == 1) return 1;
-        if (v == 0) return 0;
-        if (v == 2) return 2;
-    }
-    return -1;
-}
+CGameScriptInterface_MsgIsQuestionAnsweredYesOrNo(void* self, void* edx);
 
 // --- harness ---------------------------------------------------------------
 
@@ -110,6 +110,9 @@ static long run_case(int answerVerb, bool nullResult, void** outArg)
     g_A_calls = g_B_calls = g_query_calls = 0;
     g_self_seen_A = g_self_seen_B = 0;
     g_query_argblock = 0;
+    g_query_this = 0;
+    g_call_order_count = 0;
+    g_call_order[0] = g_call_order[1] = g_call_order[2] = g_call_order[3] = 0;
 
     static GsiResult res;
     res.answer = answerVerb;
@@ -138,6 +141,8 @@ int main()
     if (run_case(2, false, 0) != 2) { printf("FAIL verb2\n"); fail++; }
     // Other verb -> -1
     if (run_case(7, false, 0) != -1) { printf("FAIL verb7\n"); fail++; }
+    if (run_case(-1, false, 0) != -1) { printf("FAIL verb-1\n"); fail++; }
+    if (run_case(3, false, 0) != -1) { printf("FAIL verb3\n"); fail++; }
     // Null result -> -1
     if (run_case(1, true, 0) != -1) { printf("FAIL nullres\n"); fail++; }
 
@@ -147,6 +152,15 @@ int main()
     if (g_A_calls != 1) { printf("FAIL A calls=%d\n", g_A_calls); fail++; }
     if (g_B_calls != 1) { printf("FAIL B calls=%d\n", g_B_calls); fail++; }
     if (g_query_calls != 1) { printf("FAIL query calls=%d\n", g_query_calls); fail++; }
+    if (g_call_order_count != 3 ||
+        g_call_order[0] != 'A' ||
+        g_call_order[1] != 'B' ||
+        g_call_order[2] != 'Q') {
+        printf("FAIL call order\n");
+        fail++;
+    }
+    if (g_self_seen_A != g_self) { printf("FAIL A this\n"); fail++; }
+    if (g_self_seen_B != g_self) { printf("FAIL B this\n"); fail++; }
     if (g_query_this != &g_dispatcher) { printf("FAIL query this\n"); fail++; }
 
     (void)argp;

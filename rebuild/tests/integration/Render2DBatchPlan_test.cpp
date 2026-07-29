@@ -229,6 +229,172 @@ int main()
         return 7;
     }
 
+    FableUiRuntimeComponent componentA = {};
+    componentA.definitionId = 122;
+    componentA.initialised = 1;
+    componentA.stateMask = 1;
+    componentA.size.x = 8.0f;
+    componentA.size.y = 6.0f;
+    componentA.state[0].position.x = 0.0f;
+    componentA.state[0].position.y = 2.0f;
+    componentA.state[0].zoom.x = 1.0f;
+    componentA.state[0].zoom.y = 1.0f;
+    FableUiRuntimeComponent componentB = componentA;
+    componentB.definitionId = 130;
+    componentB.state[0].position.x = 8.0f;
+    componentB.state[0].zoom.x = 80.0f;
+    FableUiCountedComponent countedComponents[2] = {
+        {&componentA, 0},
+        {&componentB, 0}
+    };
+    FableUiGeneratedComponentVector generated = {
+        countedComponents,
+        2,
+        2,
+        0
+    };
+    FableUiRender2DBinding bindings[2] = {
+        {
+            122,
+            0x12345678,
+            0.0f,
+            0.25f,
+            1.0f,
+            0.75f,
+            0xA0FFFFFF
+        },
+        {
+            130,
+            0x87654321,
+            0.0f,
+            0.25f,
+            1.0f,
+            0.75f,
+            0xA0FFFFFF
+        }
+    };
+    FableRender2DSpriteVertex generatedVertices[12];
+    FableRender2DPlanRecord generatedRecords[4];
+    fable_u32 generatedVertexCount = 0;
+    fable_u32 generatedRecordCount = 0;
+    FableUiRender2DAppendTarget appendTarget = {
+        generatedVertices,
+        12,
+        &generatedVertexCount,
+        generatedRecords,
+        4,
+        &generatedRecordCount,
+        0,
+        0
+    };
+    if (
+        !FableAppendUiGeneratedComponentsToRender2D(
+            &generated,
+            bindings,
+            2,
+            100.0f,
+            50.0f,
+            2.0f,
+            3.0f,
+            &appendTarget) ||
+        generatedVertexCount != 12 ||
+        generatedRecordCount != 4 ||
+        generatedVertices[0].x != 100.0f ||
+        generatedVertices[0].y != 56.0f ||
+        generatedVertices[1].x != 116.0f ||
+        generatedVertices[2].y != 74.0f ||
+        generatedVertices[6].x != 116.0f ||
+        generatedVertices[7].x != 1396.0f ||
+        generatedVertices[7].u != 1.0f ||
+        generatedVertices[8].v != 0.75f ||
+        generatedVertices[6].diffuseColour != 0xA0FFFFFF ||
+        generatedRecords[0].textureIdentity != 0x12345678 ||
+        generatedRecords[0].payload.normal.stateBlock != 1 ||
+        generatedRecords[1].textureIdentity != 0x12345678 ||
+        generatedRecords[2].textureIdentity != 0x87654321)
+    {
+        printf("FABLETLC_RENDER2D_BATCH_PLAN FAIL code=8\n");
+        return 8;
+    }
+
+    fable_u32 rejectedVertexCount = generatedVertexCount;
+    fable_u32 rejectedRecordCount = generatedRecordCount;
+    FableUiRender2DAppendTarget shortTarget = {
+        generatedVertices,
+        12,
+        &rejectedVertexCount,
+        generatedRecords,
+        4,
+        &rejectedRecordCount,
+        0,
+        0
+    };
+    if (
+        FableAppendUiGeneratedComponentsToRender2D(
+            &generated,
+            bindings,
+            2,
+            0.0f,
+            0.0f,
+            1.0f,
+            1.0f,
+            &shortTarget) ||
+        rejectedVertexCount != generatedVertexCount ||
+        rejectedRecordCount != generatedRecordCount)
+    {
+        printf("FABLETLC_RENDER2D_BATCH_PLAN FAIL code=9\n");
+        return 9;
+    }
+
+    FableUiRender2DBinding wrongBinding = bindings[0];
+    wrongBinding.definitionId = 999;
+    rejectedVertexCount = 0;
+    rejectedRecordCount = 0;
+    shortTarget.vertexCount = &rejectedVertexCount;
+    shortTarget.recordCount = &rejectedRecordCount;
+    if (
+        FableAppendUiGeneratedComponentsToRender2D(
+            &generated,
+            &wrongBinding,
+            1,
+            0.0f,
+            0.0f,
+            1.0f,
+            1.0f,
+            &shortTarget) ||
+        rejectedVertexCount != 0 ||
+        rejectedRecordCount != 0)
+    {
+        printf("FABLETLC_RENDER2D_BATCH_PLAN FAIL code=10\n");
+        return 10;
+    }
+
+    const FableUiVector2 clipMinimum = {100.0f, 50.0f};
+    const FableUiVector2 clipMaximum = {500.0f, 80.0f};
+    generatedVertexCount = 0;
+    generatedRecordCount = 0;
+    appendTarget.clipMinimum = &clipMinimum;
+    appendTarget.clipMaximum = &clipMaximum;
+    if (
+        !FableAppendUiGeneratedComponentsToRender2D(
+            &generated,
+            bindings,
+            2,
+            100.0f,
+            50.0f,
+            2.0f,
+            3.0f,
+            &appendTarget) ||
+        generatedVertexCount != 12 ||
+        generatedRecordCount != 4 ||
+        generatedVertices[7].x != 500.0f ||
+        generatedVertices[7].u < 0.299f ||
+        generatedVertices[7].u > 0.301f)
+    {
+        printf("FABLETLC_RENDER2D_BATCH_PLAN FAIL code=11\n");
+        return 11;
+    }
+
     printf("FABLETLC_RENDER2D_BATCH_PLAN PASS\n");
     return 0;
 }

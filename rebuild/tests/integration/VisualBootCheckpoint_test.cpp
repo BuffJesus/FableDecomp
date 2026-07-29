@@ -362,6 +362,144 @@ int main()
         return 10;
     }
 
+    FableUiTableRuntimeInput runtimeTable = {};
+    runtimeTable.geometry = geometryInput;
+    runtimeTable.geometry.availableSpriteMask = (1UL << 13) - 1;
+    for (unsigned int spriteKey = 0; spriteKey != 13; ++spriteKey)
+    {
+        runtimeTable.sprite[spriteKey].definitionId =
+            1000 + spriteKey;
+        runtimeTable.sprite[spriteKey].size.x = 1.0f;
+        runtimeTable.sprite[spriteKey].size.y = 1.0f;
+    }
+    runtimeTable.sprite[0].size = geometryInput.cornerSize[0];
+    runtimeTable.sprite[1].size = geometryInput.cornerSize[1];
+    runtimeTable.sprite[2].size = geometryInput.cornerSize[2];
+    runtimeTable.sprite[3].size = geometryInput.cornerSize[3];
+    runtimeTable.sprite[4].size =
+        geometryInput.horizontalEdgeSize;
+    runtimeTable.sprite[5].size =
+        geometryInput.horizontalEdgeSize;
+    runtimeTable.sprite[6].size =
+        geometryInput.verticalEdgeSize;
+    runtimeTable.sprite[7].size =
+        geometryInput.verticalEdgeSize;
+    runtimeTable.sprite[8].size.x = 2.0f;
+    runtimeTable.sprite[9].size.x = 2.0f;
+    runtimeTable.sprite[10].size.y = 2.0f;
+    runtimeTable.sprite[11].size.y = 2.0f;
+
+    FableUiCountedComponent generatedStorage[20] = {};
+    FableUiComponentLifetimeCounters lifetime = {};
+    FableUiGeneratedComponentVector generated = {
+        generatedStorage,
+        0,
+        20,
+        &lifetime};
+    const bool runtimeTableConstructed =
+        FableConstructUiTableComponents(
+            &runtimeTable,
+            &generated);
+    if (
+        !runtimeTableConstructed ||
+        generated.size != 20 ||
+        lifetime.componentAllocations != 20 ||
+        lifetime.controlAllocations != 20 ||
+        lifetime.retains != 20 ||
+        lifetime.releases != 20 ||
+        lifetime.componentDeletions != 0 ||
+        lifetime.controlDeletions != 0)
+    {
+        printf(
+            "table constructed=%u size=%u alloc=%u ctrl=%u "
+            "retain=%u release=%u delete=%u ctrlDelete=%u\n",
+            runtimeTableConstructed ? 1U : 0U,
+            generated.size,
+            lifetime.componentAllocations,
+            lifetime.controlAllocations,
+            lifetime.retains,
+            lifetime.releases,
+            lifetime.componentDeletions,
+            lifetime.controlDeletions);
+        return 22;
+    }
+    for (
+        unsigned int generatedIndex = 0;
+        generatedIndex != generated.size;
+        ++generatedIndex)
+    {
+        if (
+            generated.values[generatedIndex].component == 0 ||
+            generated.values[generatedIndex].reference == 0 ||
+            generated.values[generatedIndex].
+                reference->referenceCount != 1 ||
+            generated.values[generatedIndex].
+                component->initialised != 1 ||
+            generated.values[generatedIndex].
+                component->stateMask != 1)
+        {
+            return 23;
+        }
+    }
+    if (
+        generated.values[0].component->sourceSpriteKey != 0 ||
+        generated.values[0].component->definitionId != 1000 ||
+        generated.values[0].component->state[0].position.x != 0.0f ||
+        generated.values[0].component->state[0].position.y != 0.0f ||
+        generated.values[4].component->sourceSpriteKey != 4 ||
+        generated.values[4].component->state[0].position.x != 20.0f ||
+        generated.values[4].component->state[0].position.y != 0.0f ||
+        generated.values[4].component->state[0].zoom.x != 5.0f ||
+        generated.values[4].component->state[0].zoom.y != 1.0f ||
+        generated.values[5].component->sourceSpriteKey != 9 ||
+        generated.values[5].component->state[0].position.x != 30.0f ||
+        generated.values[6].component->sourceSpriteKey != 4 ||
+        generated.values[6].component->state[0].position.x != 10.0f ||
+        generated.values[6].component->state[0].position.y != 24.0f ||
+        generated.values[7].component->sourceSpriteKey != 12 ||
+        generated.values[8].component->sourceSpriteKey != 4 ||
+        generated.values[8].component->state[0].position.y != 40.0f ||
+        generated.values[10].component->sourceSpriteKey != 5 ||
+        generated.values[12].component->sourceSpriteKey != 6 ||
+        generated.values[12].component->state[0].zoom.x != 1.0f ||
+        generated.values[12].component->state[0].zoom.y != 4.0f ||
+        generated.values[15].component->sourceSpriteKey != 6 ||
+        generated.values[15].component->state[0].position.x != 40.0f ||
+        generated.values[15].component->state[0].position.y != 8.0f ||
+        generated.values[17].component->sourceSpriteKey != 7)
+    {
+        return 24;
+    }
+    FableReleaseUiGeneratedComponents(&generated);
+    if (
+        generated.size != 0 ||
+        lifetime.releases != 40 ||
+        lifetime.componentDeletions != 20 ||
+        lifetime.controlDeletions != 20)
+    {
+        return 25;
+    }
+
+    FableUiCountedComponent shortStorage[1] = {};
+    FableUiComponentLifetimeCounters failedLifetime = {};
+    FableUiGeneratedComponentVector shortGenerated = {
+        shortStorage,
+        0,
+        1,
+        &failedLifetime};
+    if (
+        FableConstructUiTableComponents(
+            &runtimeTable,
+            &shortGenerated) ||
+        shortGenerated.size != 0 ||
+        failedLifetime.componentAllocations !=
+            failedLifetime.componentDeletions ||
+        failedLifetime.controlAllocations !=
+            failedLifetime.controlDeletions)
+    {
+        return 26;
+    }
+
     const unsigned char visibleChildren[] = {0, 1, 1, 1, 0, 0};
     FableUiListSelectionPlan listSelectionPlan = {};
     FablePlanUiListSelection(
@@ -481,6 +619,66 @@ int main()
         return 17;
     }
 
+    FableUiRuntimeListChild runtimeListChildren[5] = {};
+    FableUiRuntimeStateMap runtimeListSnapshots[5] = {};
+    for (unsigned int child = 0; child != 5; ++child)
+    {
+        runtimeListChildren[child].currentState = 3;
+        runtimeListChildren[child].states.state[1].colour.red =
+            static_cast<unsigned char>(10 + child);
+        runtimeListChildren[child].states.state[1].colour.green = 20;
+        runtimeListChildren[child].states.state[1].colour.blue = 30;
+        runtimeListChildren[child].states.state[4].colour.red = 40;
+        runtimeListChildren[child].states.state[5].colour.red = 50;
+    }
+    FableUiListRecomputePlan appliedListPlan = {};
+    if (!FableApplyUiListRecomputedStates(
+            &genericListInput,
+            runtimeListChildren,
+            5,
+            runtimeListSnapshots,
+            5,
+            &appliedListPlan) ||
+        appliedListPlan.positionStateMask != 0x73 ||
+        appliedListPlan.alphaStateMask != 0x32 ||
+        runtimeListChildren[0].states.stateMask != 0x73 ||
+        runtimeListChildren[2].states.state[0].position.x != 0.0f ||
+        runtimeListChildren[2].states.state[0].position.y != 0.0f ||
+        runtimeListChildren[4].states.state[6].position.x != 8.0f ||
+        runtimeListChildren[4].states.state[6].position.y != 60.0f ||
+        runtimeListChildren[0].states.state[1].colour.alpha != 126 ||
+        runtimeListChildren[1].states.state[4].colour.alpha != 191 ||
+        runtimeListChildren[2].states.state[5].colour.alpha != 255 ||
+        runtimeListChildren[0].states.state[1].colour.red != 10 ||
+        runtimeListChildren[0].currentState != 3 ||
+        runtimeListChildren[4].currentPosition.x != 8.0f ||
+        runtimeListChildren[4].currentPosition.y != 60.0f ||
+        runtimeListChildren[0].currentColour.alpha != 126 ||
+        runtimeListSnapshots[3].state[4].position.y != 30.0f ||
+        runtimeListSnapshots[3].state[5].colour.alpha != 191)
+    {
+        return 27;
+    }
+
+    FableUiRuntimeListChild capacitySentinel = {};
+    capacitySentinel.states.stateMask = 0x80000000u;
+    FableUiRuntimeStateMap snapshotSentinel = {};
+    snapshotSentinel.stateMask = 0x40000000u;
+    FableUiListRecomputePlan rejectedApplyPlan = {};
+    if (
+        FableApplyUiListRecomputedStates(
+            &genericListInput,
+            &capacitySentinel,
+            1,
+            &snapshotSentinel,
+            1,
+            &rejectedApplyPlan) ||
+        capacitySentinel.states.stateMask != 0x80000000u ||
+        snapshotSentinel.stateMask != 0x40000000u)
+    {
+        return 28;
+    }
+
     unsigned char frontEndListAlpha[4] = {};
     FableUiFrontEndListScrollPlan frontEndListScrollPlan = {};
     FablePlanUiFrontEndListScroll(
@@ -497,6 +695,9 @@ int main()
         !frontEndListScrollPlan.blockedAtBoundary ||
         !frontEndListScrollPlan.requestsInvalidAction ||
         frontEndListScrollPlan.requestsMoveAction ||
+        frontEndListScrollPlan.soundRequest !=
+            FableUiFrontEndSoundError ||
+        frontEndListScrollPlan.soundCriteriaDefinitionOffset != 0x1A4 ||
         frontEndListScrollPlan.selectedChild != 0)
     {
         return 18;
@@ -518,6 +719,9 @@ int main()
         frontEndListScrollPlan.rowTranslation.y != 30.0f ||
         frontEndListScrollPlan.previousChildState != 4 ||
         frontEndListScrollPlan.selectedChildState != 3 ||
+        frontEndListScrollPlan.soundRequest !=
+            FableUiFrontEndSoundUpDown ||
+        frontEndListScrollPlan.soundCriteriaDefinitionOffset != 0x194 ||
         frontEndListScrollPlan.logicalAlphaCount != 0)
     {
         return 19;
@@ -536,6 +740,9 @@ int main()
         !frontEndListScrollPlan.moved ||
         frontEndListScrollPlan.selectedChild != 2 ||
         frontEndListScrollPlan.rowTranslation.y != -30.0f ||
+        frontEndListScrollPlan.soundRequest !=
+            FableUiFrontEndSoundUpDown ||
+        frontEndListScrollPlan.soundCriteriaDefinitionOffset != 0x194 ||
         frontEndListScrollPlan.logicalAlphaCount != 4 ||
         frontEndListScrollPlan.writtenAlphaCount != 4 ||
         frontEndListAlpha[0] != 126 ||
@@ -557,9 +764,268 @@ int main()
         &frontEndListScrollPlan);
     if (
         frontEndListScrollPlan.moved ||
-        !frontEndListScrollPlan.requestsInvalidAction)
+        !frontEndListScrollPlan.requestsInvalidAction ||
+        frontEndListScrollPlan.soundRequest !=
+            FableUiFrontEndSoundError ||
+        frontEndListScrollPlan.soundCriteriaDefinitionOffset != 0x1A4)
     {
         return 21;
+    }
+
+    FableUiRuntimeListChild wrappingChildren[4] = {};
+    for (unsigned int child = 0; child != 4; ++child)
+    {
+        wrappingChildren[child].currentPosition.y =
+            static_cast<float>(child * 30);
+        wrappingChildren[child].currentColour.red =
+            static_cast<unsigned char>(child + 1);
+        wrappingChildren[child].currentColour.alpha = 255;
+    }
+    FableUiFrontEndListScrollPlan appliedScrollPlan = {};
+    if (!FableApplyUiFrontEndListScroll(
+            true,
+            true,
+            64,
+            wrappingChildren,
+            4,
+            4,
+            1,
+            &appliedScrollPlan) ||
+        appliedScrollPlan.selectedChild != 2 ||
+        wrappingChildren[1].currentState != 4 ||
+        wrappingChildren[2].currentState != 3 ||
+        wrappingChildren[0].currentColour.red != 2 ||
+        wrappingChildren[1].currentColour.red != 3 ||
+        wrappingChildren[2].currentColour.red != 4 ||
+        wrappingChildren[3].currentColour.red != 1 ||
+        wrappingChildren[0].currentPosition.y != 0.0f ||
+        wrappingChildren[3].currentPosition.y != 90.0f)
+    {
+        return 29;
+    }
+
+    FableUiRuntimeListChild boundedChildren[4] = {};
+    for (unsigned int child = 0; child != 4; ++child)
+    {
+        boundedChildren[child].currentPosition.y =
+            static_cast<float>(child * 30);
+        boundedChildren[child].currentColour.red =
+            static_cast<unsigned char>(child + 1);
+    }
+    if (!FableApplyUiFrontEndListScroll(
+            true,
+            false,
+            64,
+            boundedChildren,
+            4,
+            4,
+            1,
+            &appliedScrollPlan) ||
+        boundedChildren[0].currentPosition.y != -30.0f ||
+        boundedChildren[3].currentPosition.y != 60.0f ||
+        boundedChildren[0].currentColour.red != 255 ||
+        boundedChildren[0].currentColour.alpha != 126 ||
+        boundedChildren[1].currentColour.alpha != 190 ||
+        boundedChildren[2].currentColour.alpha != 255 ||
+        boundedChildren[3].currentColour.alpha != 190)
+    {
+        return 30;
+    }
+
+    FableUiRuntimeListChild boundarySentinel[2] = {};
+    boundarySentinel[0].currentState = 99;
+    if (
+        FableApplyUiFrontEndListScroll(
+            false,
+            false,
+            64,
+            boundarySentinel,
+            2,
+            2,
+            0,
+            &appliedScrollPlan) ||
+        boundarySentinel[0].currentState != 99 ||
+        !appliedScrollPlan.blockedAtBoundary)
+    {
+        return 31;
+    }
+
+    if (
+        FableMapUiControllerState(
+            0x8000,
+            0x8000,
+            0xFFFF,
+            0) != 0 ||
+        FableMapUiControllerState(
+            0x2000,
+            0xE000,
+            0xFFFF,
+            0) !=
+            (FableUiControllerLeft | FableUiControllerDown) ||
+        FableMapUiControllerState(
+            0x8000,
+            0x8000,
+            4500,
+            0) !=
+            (FableUiControllerUp | FableUiControllerRight) ||
+        FableMapUiControllerState(
+            0x8000,
+            0x8000,
+            0xFFFF,
+            (1UL << 0) | (1UL << 6)) !=
+            (FableUiControllerAccept | FableUiControllerBack))
+    {
+        return 32;
+    }
+
+    const fable_u32 mainMenuActions[7] = {
+        66, 16, 297, 10, 67, 321, 314
+    };
+    for (fable_u32 row = 0; row != 7; ++row)
+    {
+        if (
+            FableGetVisualFrontendMainMenuAction(row) !=
+            mainMenuActions[row])
+        {
+            return 33;
+        }
+    }
+    if (FableGetVisualFrontendMainMenuAction(7) != 0)
+        return 33;
+
+    const char* manualSaveNames[5] = {
+        "Manual - Save1",
+        "",
+        0,
+        "Manual - Save4",
+        "Manual - Save5"
+    };
+    const bool manualPrimaryValid[5] = {
+        true, true, true, false, true
+    };
+    const bool manualCompanionValid[5] = {
+        true, true, true, true, false
+    };
+    FableUiSaveBrowserRow saveRows[3] = {};
+    const fable_u32 logicalSaveRows =
+        FablePlanVisualFrontendSaveRows(
+            "AutoSave",
+            true,
+            true,
+            manualSaveNames,
+            manualPrimaryValid,
+            manualCompanionValid,
+            5,
+            saveRows,
+            3);
+    if (
+        logicalSaveRows != 4 ||
+        saveRows[0].filename == 0 ||
+        saveRows[0].filename[0] != 'A' ||
+        saveRows[0].positionY != 0 ||
+        saveRows[0].action != FableUiSaveBrowserLoadAction ||
+        saveRows[1].filename != manualSaveNames[0] ||
+        saveRows[1].positionY != 30 ||
+        saveRows[1].action != FableUiSaveBrowserLoadAction ||
+        saveRows[2].filename != manualSaveNames[3] ||
+        saveRows[2].positionY != 60 ||
+        saveRows[2].action != FableUiSaveBrowserInvalidAction ||
+        FablePlanVisualFrontendSaveRows(
+            "",
+            false,
+            false,
+            manualSaveNames,
+            0,
+            0,
+            5,
+            0,
+            0) != 3)
+    {
+        return 36;
+    }
+
+    fable_u32 previousControllerState = 0;
+    const fable_u32 firstControllerPress =
+        FableConsumeUiControllerPressed(
+            FableUiControllerUp | FableUiControllerAccept,
+            &previousControllerState);
+    const fable_u32 heldControllerPress =
+        FableConsumeUiControllerPressed(
+            FableUiControllerUp | FableUiControllerAccept,
+            &previousControllerState);
+    const fable_u32 changedControllerPress =
+        FableConsumeUiControllerPressed(
+            FableUiControllerBack,
+            &previousControllerState);
+    const fable_u32 releasedControllerPress =
+        FableConsumeUiControllerPressed(
+            0,
+            &previousControllerState);
+    const fable_u32 reconnectedControllerPress =
+        FableConsumeUiControllerPressed(
+            FableUiControllerAccept,
+            &previousControllerState);
+    if (
+        firstControllerPress !=
+            (FableUiControllerUp | FableUiControllerAccept) ||
+        heldControllerPress != 0 ||
+        changedControllerPress != FableUiControllerBack ||
+        releasedControllerPress != 0 ||
+        reconnectedControllerPress != FableUiControllerAccept ||
+        previousControllerState != FableUiControllerAccept ||
+        FableConsumeUiControllerPressed(
+            FableUiControllerAccept,
+            0) != 0)
+    {
+        return 34;
+    }
+
+    FableUiControllerRepeatState controllerRepeat = {};
+    previousControllerState = 0;
+    if (
+        FableConsumeUiControllerActions(
+            FableUiControllerDown,
+            1000,
+            &previousControllerState,
+            &controllerRepeat) != FableUiControllerDown ||
+        controllerRepeat.lastMovement != FableUiControllerDown ||
+        controllerRepeat.lastSelectionTimeMs != 1000 ||
+        controllerRepeat.isRepeating ||
+        FableConsumeUiControllerActions(
+            FableUiControllerDown,
+            1499,
+            &previousControllerState,
+            &controllerRepeat) != 0 ||
+        FableConsumeUiControllerActions(
+            FableUiControllerDown,
+            1500,
+            &previousControllerState,
+            &controllerRepeat) != FableUiControllerDown ||
+        !controllerRepeat.isRepeating ||
+        FableConsumeUiControllerActions(
+            FableUiControllerDown,
+            1599,
+            &previousControllerState,
+            &controllerRepeat) != 0 ||
+        FableConsumeUiControllerActions(
+            FableUiControllerDown,
+            1600,
+            &previousControllerState,
+            &controllerRepeat) != FableUiControllerDown ||
+        FableConsumeUiControllerActions(
+            0,
+            1601,
+            &previousControllerState,
+            &controllerRepeat) != 0 ||
+        controllerRepeat.lastMovement != 0 ||
+        FableConsumeUiControllerActions(
+            FableUiControllerDown | FableUiControllerAccept,
+            1602,
+            &previousControllerState,
+            &controllerRepeat) !=
+            (FableUiControllerDown | FableUiControllerAccept))
+    {
+        return 35;
     }
 
     char verificationCommand[] = "--verify-visual-resource";

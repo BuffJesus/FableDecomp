@@ -101,6 +101,21 @@ frontend.big. Mouse motion maps back to the 640x480 design view and moves the
 selection through all seven compiled hit regions. The `-VerifyMainMenu` smoke
 gates press-start-to-menu and Continue-to-Quit hover as three distinct hashes.
 
+Continue Game now continues beyond hover as well. Recovered action 66 enters
+used key `0x08`, `UI_FRONTEND_PROFILE_SAVED_GAMES_MENU`, with autosave first
+and ascending manual rows at exact 30-pixel spacing. The live screen includes
+the retail title rule, 120-pixel-inner-width `TS_BUTTON_L/M/R` highlight,
+file-information block, and Back helper. Keyboard/mouse navigation moves the
+four-row highlight and action 86 returns to the main menu. The deterministic
+subscreen smoke requires a visible highlight-pixel delta and a changed frame
+hash after scrolling. Selecting a save does not start world loading yet; that
+remains the next main-game ownership boundary.
+
+This is a functional visual checkpoint, not final presentation parity. User
+review still finds the Saved Games/keybind presentation visibly incorrect.
+The next UI gate is a same-state retail capture plus alpha-aware image diff;
+the existing hash and pixel-delta smoke only proves routing and state change.
+
 Options and Quit now continue beyond hover. Recovered
 `CFrontEndManager::Action` mappings route action 297 to
 `UI_FRONTEND_OPTIONS_SUB_MENU` and action 314 to
@@ -121,8 +136,12 @@ compiled defaults and Redefine from the shipped WASD control-scheme records;
 Gameplay, Audio, and Video values mutate live with Cancel/Apply/Defaults
 transactions. Redefine rows use their exact 26-pixel list spacing and recovered
 `CKeyRedefiner::OnHovered` state 3/state 4 transitions to switch the paired
-retail slot art between ON and OFF. Their generated children use the compiled
-`ENG_ARIAL_12` font and `(0,3)`/`(380,3)` text offsets. The build prefers the
+retail row art between ON and OFF. The action-name side is the rounded
+`FE_SLOT_TEST_L/M/R` table; the key-value side is the repeated
+`FE_OPTIONS_HORIZONTAL_BAR_SPRITE`, as selected by the compiled right-table
+component. Their generated children use the compiled `ENG_ARIAL_12` font and
+the exact `(0,3)`/`(380,3)` top origins; `CText::Draw` applies no extra
+vertical centering. The build prefers the
 untouched installed `frontend.big`; the intentionally gold-tinted
 `work/ui_proto/art` experiment is only a fallback.
 

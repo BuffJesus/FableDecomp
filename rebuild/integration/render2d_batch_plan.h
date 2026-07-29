@@ -1,10 +1,23 @@
 #pragma once
 
 #include "rebuild_abi.h"
+#include "fable_visual_boot.h"
 
 struct FableRender2DVertex
 {
     fable_u8 bytes[0x20];
+};
+
+struct FableRender2DSpriteVertex
+{
+    float x;
+    float y;
+    float z;
+    float rhw;
+    fable_u32 diffuseColour;
+    fable_u32 specularColour;
+    float u;
+    float v;
 };
 
 struct FableRender2DWindow
@@ -45,8 +58,32 @@ struct FableRender2DPlanRecord
 };
 
 FABLE_STATIC_ASSERT(sizeof(FableRender2DVertex) == 0x20);
+FABLE_STATIC_ASSERT(sizeof(FableRender2DSpriteVertex) == 0x20);
 FABLE_STATIC_ASSERT(sizeof(FableRender2DWindow) == 0x10);
 FABLE_STATIC_ASSERT(sizeof(FableRender2DPlanRecord) == 0x3C);
+
+struct FableUiRender2DBinding
+{
+    unsigned long definitionId;
+    fable_u32 textureIdentity;
+    float u0;
+    float v0;
+    float u1;
+    float v1;
+    fable_u32 diffuseColour;
+};
+
+struct FableUiRender2DAppendTarget
+{
+    FableRender2DSpriteVertex* vertices;
+    fable_u32 vertexCapacity;
+    fable_u32* vertexCount;
+    FableRender2DPlanRecord* records;
+    fable_u32 recordCapacity;
+    fable_u32* recordCount;
+    const FableUiVector2* clipMinimum;
+    const FableUiVector2* clipMaximum;
+};
 
 enum FableRender2DPlanEventKind
 {
@@ -81,3 +118,18 @@ void FABLE_FASTCALL FableBuildRender2DBatchPlan(
     const FableRender2DPlanRecord* records,
     fable_u32 recordCount,
     FableRender2DPlanOutput& output);
+
+// Adapts live generated CTable children into the normal Render2D vertex and
+// record queues. Definition identity selects the retail sprite texture/UV
+// binding; state-zero position, size, and zoom produce each final quad.
+// Capacity and binding validation are transactional: failure leaves both
+// queue counts unchanged.
+bool FABLE_FASTCALL FableAppendUiGeneratedComponentsToRender2D(
+    const FableUiGeneratedComponentVector* generated,
+    const FableUiRender2DBinding* bindings,
+    fable_u32 bindingCount,
+    float parentX,
+    float parentY,
+    float scaleX,
+    float scaleY,
+    FableUiRender2DAppendTarget* target);

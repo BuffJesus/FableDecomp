@@ -12,18 +12,22 @@ Final screen-title composition uses the shared 640-pixel header center x=320.
 The serialized x=65/left-aligned title child remains a table-local record and
 is not treated as the final flat-surface text origin.
 
-The output consists of two vertical sheets.  The Options sheet has one
-640x480 frame per selected row followed by the Gameplay, Audio, Video, and
-Redefine Keys destination screens.  The helper sheet has Back off/on, the
-Quit prompt with neither/No/Yes hovered, and one compact atlas frame holding
-the nine complete retail Redefine Keys ON rows in the initial viewport.
+The primary output consists of two vertical sheets.  The Options sheet has
+one 640x480 frame per selected row followed by the Gameplay, Audio, Video,
+and Redefine Keys destination screens, then four selected-row views of the
+recovered initial saved-games browser.  The helper sheet has Back off/on,
+the Quit prompt with neither/No/Yes hovered, and one compact atlas frame
+holding the nine complete retail Redefine Keys ON rows in the initial
+viewport.  Optional component-path outputs retain the primary sheet as the
+oracle while removing its baked title rule and exporting that rule's retail
+sprite prototype separately for live CTable/Render2D composition.
 """
 
 import argparse
 import os
 import sys
 
-from PIL import Image
+from PIL import Image, ImageChops
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from render_fable_frontend_menu import (  # noqa: E402
@@ -49,6 +53,8 @@ CANVAS_SIZE = (640, 480)
 HEADER_RULE_POSITION = (0, 35)
 HEADER_TEXT_POSITION = (CANVAS_SIZE[0] // 2, 44)
 OPTIONS_SHEET_WIDTH = 1024
+OPTIONS_COMPONENT_SHEET_WIDTH = 1664
+OPTIONS_ROW_ATLAS_ORIGIN_X = OPTIONS_SHEET_WIDTH
 CONTROL_TILE_SIZE = (200, 30)
 CONTROL_ATLAS_ORIGIN_X = 640
 CONTROL_ATLAS_COLUMNS = 1
@@ -67,6 +73,21 @@ OPTIONS_ROWS = (
     ("Redefine Keys", 90),
 )
 DETAIL_SCREEN_COUNT = 4
+SAVE_BROWSER_ROWS = (
+    "AutoSave",
+    "Manual - Save1",
+    "Manual - Save2",
+    "Manual - Save3",
+)
+SAVE_LIST_ORIGIN = (10, 90)
+SAVE_ROW_STEP_Y = 30
+SAVE_LIST_HEIGHT = 150
+SAVE_SCREEN_FRAME_BASE = len(OPTIONS_ROWS) + DETAIL_SCREEN_COUNT
+OPTIONS_SHEET_FRAME_COUNT = SAVE_SCREEN_FRAME_BASE + len(SAVE_BROWSER_ROWS)
+SAVE_COMPONENT_ATLAS_ORIGIN = (
+    OPTIONS_ROW_ATLAS_ORIGIN_X,
+    len(OPTIONS_ROWS) * CANVAS_SIZE[1],
+)
 
 GAMEPLAY_ROWS = (
     ("Game Camera", "Normal", 0.0),
@@ -188,6 +209,10 @@ REDEFINE_TABLE_OFFSET = (-32, -2)
 REDEFINE_RIGHT_SLOT_OFFSET = (368, -3)
 REDEFINE_ACTION_TEXT_OFFSET = (0, 3)
 REDEFINE_KEY_TEXT_OFFSET = (380, 3)
+# CText::Draw rounds and forwards the serialized y origin unchanged. Text
+# alignment adjusts x only; the static renderer must not invent vertical
+# centering on either table primitive.
+REDEFINE_TEXT_RENDER_Y_BIAS = 0
 REDEFINE_MOUSE_OFFSET = (-40, 0)
 REDEFINE_MOUSE_SIZE = (600, 24)
 
@@ -206,6 +231,27 @@ def validate_compiled_subscreen_layout(game_root, schema_path):
         "Options list step",
         options_values["PositionOffsetY"],
         30.0)
+    require_equal(
+        "Options list wrapping",
+        options_values["Wrapping"],
+        True)
+    require_equal(
+        "Options list scrolling",
+        options_values["Scrolling"],
+        False)
+    require_equal(
+        "Options list alpha offset",
+        options_values["AlphaOffset"],
+        "00000000")
+    sound_values = layout.decoded("UI_MISC_THINGS_DEF_INSTANCE")
+    require_equal(
+        "Options movement sound",
+        sound_values["SoundUpDown"],
+        "CS_GUI_2")
+    require_equal(
+        "Options invalid movement sound",
+        sound_values["SoundError"],
+        "CS_GUI_5")
     option_buttons = (
         "UI_OPTIONS_BUTTON_GAME_OPTIONS",
         "UI_OPTIONS_BUTTON_VIDEO",
@@ -226,6 +272,76 @@ def validate_compiled_subscreen_layout(game_root, schema_path):
         tuple(
             int(options_values["PositionOffsetY"]) * index
             for index in range(len(option_buttons))))
+
+    save_list = "UI_FRONTEND_LIST_FOR_SAVES"
+    save_values = layout.decoded(save_list)
+    require_position(
+        "Saved-games list origin",
+        layout.initial_position(save_list),
+        SAVE_LIST_ORIGIN)
+    require_equal(
+        "Saved-games list step",
+        save_values["PositionOffsetY"],
+        float(SAVE_ROW_STEP_Y))
+    require_equal(
+        "Saved-games list visible height",
+        save_values["Height"],
+        float(SAVE_LIST_HEIGHT))
+    require_equal(
+        "Saved-games list wrapping",
+        save_values["Wrapping"],
+        True)
+    require_equal(
+        "Saved-games button child",
+        layout.child_names("UI_FRONTEND_BUTTON_FOR_SAVE_LIST"),
+        ("UI_BUTTON_MOUSE_AREA_SAVE_GAME",))
+    require_equal(
+        "Saved-games button table width",
+        layout.decoded("UI_BUTTON_FOR_SAVE_NAME")["Width"],
+        120.0)
+    option_text_names = (
+        "UI_TEXT_GAME_OPTIONS",
+        "UI_OPTIONS_BUTTON_VIDEO_TEXT",
+        "UI_TEXT_AUDIO_OPTIONS",
+        "UI_OPTIONS_BUTTON_REDEFINE_KEYS_TEXT",
+    )
+    for index, (button_name, text_name) in enumerate(
+            zip(option_buttons, option_text_names)):
+        inner_name = layout.child_names(button_name)[0]
+        require_equal(
+            "Options text child %d" % index,
+            layout.child_names(inner_name)[0],
+            text_name)
+        text_values = layout.decoded(text_name)
+        require_equal(
+            "Options text font %d" % index,
+            text_values["Font"],
+            "ENG_ARIAL_24")
+        states = text_values["States"]
+        require_equal(
+            "Options text state count %d" % index,
+            len(states),
+            5)
+        require_equal(
+            "Options text state x %d" % index,
+            tuple(state["PositionX"] for state in states),
+            (120.0, 120.0, 0.0, 120.0, 120.0))
+        require_equal(
+            "Options text state y %d" % index,
+            tuple(state["PositionY"] for state in states),
+            (0.0, 0.0, 0.0, 0.0, 0.0))
+        require_equal(
+            "Options text state alpha %d" % index,
+            tuple(state["ColourA"] for state in states),
+            (1.0, 1.0, 0.0, 1.0, 1.0))
+        require_equal(
+            "Options text state time %d" % index,
+            tuple(state["UpdateTime"] for state in states),
+            (-1.0, -1.0, 0.20000000298023224, -1.0, -1.0))
+        require_equal(
+            "Options text state flags %d" % index,
+            tuple(state["StateChangeFlag"] for state in states),
+            (7, 7, 7, 7, 7))
 
     title_rule = "UI_TABLE_TITLE_WHOLE"
     require_position(
@@ -248,6 +364,32 @@ def validate_compiled_subscreen_layout(game_root, schema_path):
             (1, 122, "UI_TEXTBOX_MIDDLE"),
             (4, 122, "UI_TEXTBOX_MIDDLE"),
         ))
+    require_equal(
+        "Options selected-button width",
+        layout.decoded("UI_BUTTON")["Width"],
+        280.0)
+    require_position(
+        "Options selected-button table offset",
+        layout.initial_position("UI_BUTTON"),
+        (-80, -7))
+    require_equal(
+        "Options selected-button table sprites",
+        layout.table_sprites("UI_BUTTON"),
+        (
+            (0, 129, "UI_FRONTEND_BUTTON_L"),
+            (1, 130, "UI_FRONTEND_BUTTON_R"),
+            (4, 131, "UI_FRONTEND_BUTTON_M"),
+        ))
+    require_equal(
+        "Options selected-button graphic indices",
+        tuple(
+            layout.decoded(component)["States"][0]["GraphicIndex"]
+            for component in (
+                "UI_FRONTEND_BUTTON_L",
+                "UI_FRONTEND_BUTTON_R",
+                "UI_FRONTEND_BUTTON_M",
+            )),
+        (364, 366, 365))
     require_equal(
         "resolved screen-title center",
         HEADER_TEXT_POSITION[0],
@@ -296,6 +438,27 @@ def validate_compiled_subscreen_layout(game_root, schema_path):
         "Redefine right slot offset",
         layout.initial_position("UI_BUTTON_REDEFINE_RIGHT"),
         REDEFINE_RIGHT_SLOT_OFFSET)
+    require_equal(
+        "Redefine left slot sprites",
+        layout.table_sprites("UI_BUTTON_REDEFINE_LEFT"),
+        (
+            (0, 356, "UI_OPTIONS_TEXT_SLOT_L"),
+            (1, 354, "UI_OPTIONS_TEXT_SLOT_R"),
+            (4, 355, "UI_OPTIONS_TEXT_SLOT_M"),
+        ))
+    require_equal(
+        "Redefine right bar sprites",
+        layout.table_sprites("UI_BUTTON_REDEFINE_RIGHT"),
+        (
+            (0, 357, "UI_OPTIONS_HORIZONTAL_BAR"),
+            (1, 357, "UI_OPTIONS_HORIZONTAL_BAR"),
+            (4, 357, "UI_OPTIONS_HORIZONTAL_BAR"),
+        ))
+    require_equal(
+        "Redefine right bar graphic",
+        layout.decoded("UI_OPTIONS_HORIZONTAL_BAR")["States"][0][
+            "GraphicIndex"],
+        385)
     require_position(
         "Redefine action text offset",
         layout.initial_position("UI_KEY_REDEFINER_ACTION_TEXT"),
@@ -373,23 +536,29 @@ def _draw_text(canvas, font, text, position, align="center"):
     canvas.alpha_composite(add_outline(line, 1))
 
 
-def _draw_title(canvas, frontend_bank_data, font, text):
+def _draw_title(
+        canvas,
+        frontend_bank_data,
+        font,
+        text,
+        include_rule=True):
     buf, parsed = frontend_bank_data
     # UI_TABLE_TITLE_WHOLE maps TOP_LEFT, TOP_RIGHT, and HORIZONTAL_TOP to
     # the same UI_TEXTBOX_MIDDLE component (#122). Its GraphicIndex resolves
     # to this installed gold double-rule sprite; the blue FRONTEND_BUTTON
     # trio belongs to UI_BUTTON/UI_BUTTON_BIG selection tables.
-    title_segment = _decode_named(
-        buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
-    # CTable treats Width as the tiled inner span. Natural-size corner
-    # components sit around that span; the 640-pixel design canvas clips the
-    # outer tail exactly as the retail viewport does.
-    title_rule = _build_table_horizontal(
-        title_segment,
-        title_segment,
-        title_segment,
-        640)
-    canvas.alpha_composite(title_rule, HEADER_RULE_POSITION)
+    if include_rule:
+        title_segment = _decode_named(
+            buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
+        # CTable treats Width as the tiled inner span. Natural-size corner
+        # components sit around that span; the 640-pixel design canvas clips
+        # the outer tail exactly as the retail viewport does.
+        title_rule = _build_table_horizontal(
+            title_segment,
+            title_segment,
+            title_segment,
+            640)
+        canvas.alpha_composite(title_rule, HEADER_RULE_POSITION)
     _draw_text(canvas, font, text, HEADER_TEXT_POSITION, "center")
 
 
@@ -470,12 +639,23 @@ def _draw_detail_helpers(canvas, font, assets):
     _draw_helper(canvas, assets["button"], font, (192, 400), "Defaults")
 
 
-def build_settings_frame(frontend_bank, font_bank, title, rows, row_ys):
+def build_settings_frame(
+        frontend_bank,
+        font_bank,
+        title,
+        rows,
+        row_ys,
+        include_title_rule=True):
     buf, parsed = load_big(frontend_bank)
     font = load_font(font_bank, "ENG_ARIAL_24")
     assets = _option_assets(buf, parsed)
     canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
-    _draw_title(canvas, (buf, parsed), font, title)
+    _draw_title(
+        canvas,
+        (buf, parsed),
+        font,
+        title,
+        include_title_rule)
     for row, y in zip(rows, row_ys):
         _draw_option_label(canvas, font, row[0], y)
     _draw_detail_helpers(canvas, font, assets)
@@ -486,7 +666,8 @@ def build_redefine_frame(
         frontend_bank,
         font_bank,
         hovered_index=None,
-        include_key_text=True):
+        include_key_text=True,
+        include_title_rule=True):
     if hovered_index is not None and not 0 <= hovered_index < len(REDEFINE_ROWS):
         raise ValueError("redefine hover is outside the compiled list")
 
@@ -494,6 +675,10 @@ def build_redefine_frame(
     font = load_font(font_bank, "ENG_ARIAL_24")
     row_font = load_font(font_bank, "ENG_ARIAL_12")
     assets = _option_assets(buf, parsed)
+    right_bar = _decode_named(
+        buf, parsed, "FE_OPTIONS_HORIZONTAL_BAR_SPRITE")
+    right_slot = _build_stretched(
+        right_bar, right_bar, right_bar, 220)
     slots = {}
     for state in ("OFF", "ON"):
         slot_left = _decode_named(
@@ -504,11 +689,16 @@ def build_redefine_frame(
             buf, parsed, "FE_SLOT_TEST_R_" + state)
         slots[state] = (
             _build_stretched(slot_left, slot_middle, slot_right, 280),
-            _build_stretched(slot_left, slot_middle, slot_right, 220),
+            right_slot,
         )
 
     canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
-    _draw_title(canvas, (buf, parsed), font, "Redefine Keys")
+    _draw_title(
+        canvas,
+        (buf, parsed),
+        font,
+        "Redefine Keys",
+        include_title_rule)
     for index, (label, key) in enumerate(REDEFINE_ROWS):
         base_x = REDEFINE_LIST_ORIGIN[0]
         base_y = (
@@ -533,7 +723,8 @@ def build_redefine_frame(
             label,
             (
                 base_x + REDEFINE_ACTION_TEXT_OFFSET[0],
-                base_y + REDEFINE_ACTION_TEXT_OFFSET[1],
+                base_y + REDEFINE_ACTION_TEXT_OFFSET[1] +
+                REDEFINE_TEXT_RENDER_Y_BIAS,
             ),
             "left")
         if include_key_text:
@@ -543,7 +734,8 @@ def build_redefine_frame(
                 key,
                 (
                     base_x + REDEFINE_KEY_TEXT_OFFSET[0],
-                    base_y + REDEFINE_KEY_TEXT_OFFSET[1],
+                    base_y + REDEFINE_KEY_TEXT_OFFSET[1] +
+                    REDEFINE_TEXT_RENDER_Y_BIAS,
                 ),
                 "left")
 
@@ -574,28 +766,110 @@ def build_redefine_frame(
     return canvas
 
 
-def build_options_frame(frontend_bank, font_bank, selected_index=0):
+def build_save_browser_frame(
+        frontend_bank,
+        font_bank,
+        selected_index=0,
+        include_title_rule=True):
+    """Compose the first live save-list page from its recovered definitions."""
+    if not 0 <= selected_index < len(SAVE_BROWSER_ROWS):
+        raise ValueError("save selection is outside the recovered list")
+
+    buf, parsed = load_big(frontend_bank)
+    font = load_font(font_bank, "ENG_ARIAL_24")
+    row_font = load_font(font_bank, "ENG_ARIAL_16")
+    assets = _option_assets(buf, parsed)
+    canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
+    _draw_title(
+        canvas,
+        (buf, parsed),
+        font,
+        "Saved Games",
+        include_title_rule)
+
+    selected = _build_table_horizontal(
+        _decode_named(buf, parsed, "TS_BUTTON_L"),
+        _decode_named(buf, parsed, "TS_BUTTON_M"),
+        _decode_named(buf, parsed, "TS_BUTTON_R"),
+        120)
+    canvas.alpha_composite(
+        selected,
+        (
+            SAVE_LIST_ORIGIN[0],
+            SAVE_LIST_ORIGIN[1] +
+            selected_index * SAVE_ROW_STEP_Y - 7,
+        ))
+    for row, filename in enumerate(SAVE_BROWSER_ROWS):
+        _draw_text(
+            canvas,
+            row_font,
+            filename,
+            (
+                SAVE_LIST_ORIGIN[0] + 60,
+                SAVE_LIST_ORIGIN[1] + row * SAVE_ROW_STEP_Y,
+            ),
+            "center")
+
+    # ConstructFileDescription installs these independent children only after
+    # selection metadata has been decoded. Keep this visual checkpoint honest:
+    # it shows the recovered positions and current local profile label, while
+    # the minimap viewport remains the next asset-backed boundary.
+    _draw_text(canvas, font, "File Information", (65, 261), "left")
+    _draw_text(
+        canvas,
+        row_font,
+        "Cornelio",
+        (95, 293),
+        "left")
+    _draw_helper(canvas, assets["back"], font, (20, 420), "Back")
+    return canvas
+
+
+def build_options_frame(
+        frontend_bank,
+        font_bank,
+        selected_index=0,
+        include_title_rule=True,
+        include_selected_button=True,
+        include_text=True):
     if not 0 <= selected_index < len(OPTIONS_ROWS):
         raise ValueError("options selection is outside the compiled list")
 
     buf, parsed = load_big(frontend_bank)
-    selected = build_selected_button(
-        _decode_named(buf, parsed, "TS_BUTTON_L"),
-        _decode_named(buf, parsed, "TS_BUTTON_M"),
-        _decode_named(buf, parsed, "TS_BUTTON_R"),
-        280)
     canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
     font = load_font(font_bank, "ENG_ARIAL_24")
-    _draw_title(canvas, (buf, parsed), font, "Options")
-    selected_y = OPTIONS_ROWS[selected_index][1]
-    canvas.alpha_composite(
-        selected,
-        (
-            selected_button_left(selected.width),
-            OPTIONS_LIST_ORIGIN[1] + selected_y - 7,
-        ))
+    _draw_title(
+        canvas,
+        (buf, parsed),
+        font,
+        "Options",
+        include_title_rule)
+    if include_selected_button:
+        selected = build_selected_button(
+            _decode_named(buf, parsed, "TS_BUTTON_L"),
+            _decode_named(buf, parsed, "TS_BUTTON_M"),
+            _decode_named(buf, parsed, "TS_BUTTON_R"),
+            280)
+        selected_y = OPTIONS_ROWS[selected_index][1]
+        canvas.alpha_composite(
+            selected,
+            (
+                selected_button_left(selected.width),
+                OPTIONS_LIST_ORIGIN[1] + selected_y - 7,
+            ))
 
+    if include_text:
+        for row_layer in build_options_row_layers(font_bank):
+            canvas.alpha_composite(row_layer)
+    return canvas
+
+
+def build_options_row_layers(font_bank):
+    """Render each Options text child into an independent design canvas."""
+    font = load_font(font_bank, "ENG_ARIAL_24")
+    layers = []
     for text, y_offset in OPTIONS_ROWS:
+        canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
         _draw_text(
             canvas,
             font,
@@ -604,12 +878,25 @@ def build_options_frame(frontend_bank, font_bank, selected_index=0):
                 MENU_CONTENT_CENTER_X,
                 OPTIONS_LIST_ORIGIN[1] + y_offset,
             ))
-    return canvas
+        layers.append(canvas)
+    return layers
 
 
-def build_options_sheet(frontend_bank, font_bank):
+def build_options_sheet(
+        frontend_bank,
+        font_bank,
+        include_title_rule=True,
+        include_selected_button=True,
+        include_options_text=True,
+        include_options_row_atlas=False):
     frames = [
-        build_options_frame(frontend_bank, font_bank, selected)
+        build_options_frame(
+            frontend_bank,
+            font_bank,
+            selected,
+            include_title_rule,
+            include_selected_button,
+            include_options_text)
         for selected in range(len(OPTIONS_ROWS))
     ]
     frames.extend((
@@ -618,30 +905,60 @@ def build_options_sheet(frontend_bank, font_bank):
             font_bank,
             "Gameplay Options",
             GAMEPLAY_ROWS,
-            tuple(90 + row * 30 for row in range(len(GAMEPLAY_ROWS)))),
+            tuple(90 + row * 30 for row in range(len(GAMEPLAY_ROWS))),
+            include_title_rule),
         build_settings_frame(
             frontend_bank,
             font_bank,
             "Audio Options",
             AUDIO_ROWS,
-            (130, 190, 250)),
+            (130, 190, 250),
+            include_title_rule),
         build_settings_frame(
             frontend_bank,
             font_bank,
             "Video Options",
             VIDEO_ROWS,
-            tuple(90 + row * 30 for row in range(len(VIDEO_ROWS)))),
+            tuple(90 + row * 30 for row in range(len(VIDEO_ROWS))),
+            include_title_rule),
         build_redefine_frame(
             frontend_bank,
             font_bank,
-            include_key_text=False),
+            include_key_text=False,
+            include_title_rule=include_title_rule),
     ))
+    frames.extend(
+        build_save_browser_frame(
+            frontend_bank,
+            font_bank,
+            selected,
+            include_title_rule)
+        for selected in range(len(SAVE_BROWSER_ROWS)))
     sheet = Image.new(
         "RGBA",
-        (OPTIONS_SHEET_WIDTH, CANVAS_SIZE[1] * len(frames)),
+        (
+            OPTIONS_COMPONENT_SHEET_WIDTH
+            if include_options_row_atlas
+            else OPTIONS_SHEET_WIDTH,
+            CANVAS_SIZE[1] * (
+                SAVE_SCREEN_FRAME_BASE
+                if include_options_row_atlas
+                else len(frames)
+            ),
+        ),
         (0, 0, 0, 0))
     for index, frame in enumerate(frames):
-        sheet.alpha_composite(frame, (0, index * CANVAS_SIZE[1]))
+        if include_options_row_atlas and index >= SAVE_SCREEN_FRAME_BASE:
+            sheet.alpha_composite(
+                frame,
+                (
+                    SAVE_COMPONENT_ATLAS_ORIGIN[0],
+                    SAVE_COMPONENT_ATLAS_ORIGIN[1] +
+                    (index - SAVE_SCREEN_FRAME_BASE) *
+                    CANVAS_SIZE[1],
+                ))
+        else:
+            sheet.alpha_composite(frame, (0, index * CANVAS_SIZE[1]))
 
     buf, parsed = load_big(frontend_bank)
     font = load_font(font_bank, "ENG_ARIAL_24")
@@ -669,7 +986,11 @@ def build_options_sheet(frontend_bank, font_bank):
             row_font,
             value,
             REDEFINE_KEY_TILE_SIZE,
-            (0, REDEFINE_KEY_TEXT_OFFSET[1]),
+            (
+                0,
+                REDEFINE_KEY_TEXT_OFFSET[1] +
+                REDEFINE_TEXT_RENDER_Y_BIAS,
+            ),
             "left",
             2.0 / 3.0)
         if key_index == 7:
@@ -684,6 +1005,16 @@ def build_options_sheet(frontend_bank, font_bank):
                 REDEFINE_KEY_ATLAS_ORIGIN_X,
                 key_index * REDEFINE_KEY_TILE_SIZE[1],
             ))
+
+    if include_options_row_atlas:
+        for row, row_layer in enumerate(
+                build_options_row_layers(font_bank)):
+            sheet.alpha_composite(
+                row_layer,
+                (
+                    OPTIONS_ROW_ATLAS_ORIGIN_X,
+                    row * CANVAS_SIZE[1],
+                ))
 
     return sheet
 
@@ -747,7 +1078,7 @@ def build_helper_sheet(frontend_bank, font_bank):
     # CKeyRedefiner::OnHovered selects visual state 3 on entry and state 4 on
     # exit.  Keep each complete 588x35 ON row intact in a sixth helper frame;
     # one runtime quad can then replace the corresponding OFF row without a
-    # filtering seam or any change to the 1024x3840 Options texture.
+    # filtering seam or any change to the Options component texture.
     hover_atlas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
     for row in range(len(REDEFINE_ROWS)):
         hovered = build_redefine_frame(
@@ -808,12 +1139,27 @@ def main():
     parser.add_argument("font_bank")
     parser.add_argument("options_output")
     parser.add_argument("helpers_output")
+    parser.add_argument("--components-output")
+    parser.add_argument("--title-segment-output")
+    parser.add_argument("--button-left-output")
+    parser.add_argument("--button-middle-output")
+    parser.add_argument("--button-right-output")
     parser.add_argument("--game-root")
     parser.add_argument("--schema")
     args = parser.parse_args()
 
     if bool(args.game_root) != bool(args.schema):
         parser.error("--game-root and --schema must be supplied together")
+    component_outputs = (
+        args.components_output,
+        args.title_segment_output,
+        args.button_left_output,
+        args.button_middle_output,
+        args.button_right_output,
+    )
+    if any(component_outputs) and not all(component_outputs):
+        parser.error(
+            "all component output arguments must be supplied together")
     if args.game_root:
         validate_compiled_subscreen_layout(args.game_root, args.schema)
 
@@ -821,9 +1167,113 @@ def main():
     helpers = build_helper_sheet(args.frontend_bank, args.font_bank)
     options.save(args.options_output)
     helpers.save(args.helpers_output)
+    component_output = ""
+    if args.components_output:
+        components = build_options_sheet(
+            args.frontend_bank,
+            args.font_bank,
+            include_title_rule=False,
+            include_selected_button=False,
+            include_options_text=False,
+            include_options_row_atlas=True)
+        components.save(args.components_output)
+        buf, parsed = load_big(args.frontend_bank)
+        title_segment = _decode_named(
+            buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
+        button_left = _decode_named(buf, parsed, "TS_BUTTON_L")
+        button_middle = _decode_named(buf, parsed, "TS_BUTTON_M")
+        button_right = _decode_named(buf, parsed, "TS_BUTTON_R")
+        selected_button = build_selected_button(
+            button_left,
+            button_middle,
+            button_right,
+            280)
+        title_rule = _build_table_horizontal(
+            title_segment,
+            title_segment,
+            title_segment,
+            CANVAS_SIZE[0])
+        option_row_layers = [
+            components.crop((
+                OPTIONS_ROW_ATLAS_ORIGIN_X,
+                row * CANVAS_SIZE[1],
+                OPTIONS_ROW_ATLAS_ORIGIN_X + CANVAS_SIZE[0],
+                (row + 1) * CANVAS_SIZE[1],
+            ))
+            for row in range(len(OPTIONS_ROWS))
+        ]
+        for frame_index in range(OPTIONS_SHEET_FRAME_COUNT):
+            composed = Image.new(
+                "RGBA", CANVAS_SIZE, (0, 0, 0, 0))
+            composed.alpha_composite(
+                title_rule,
+                HEADER_RULE_POSITION)
+            if frame_index < len(OPTIONS_ROWS):
+                composed.alpha_composite(
+                    selected_button,
+                    (
+                        selected_button_left(selected_button.width),
+                        OPTIONS_LIST_ORIGIN[1] +
+                        OPTIONS_ROWS[frame_index][1] -
+                        7,
+                    ))
+            if frame_index >= SAVE_SCREEN_FRAME_BASE:
+                component_left = SAVE_COMPONENT_ATLAS_ORIGIN[0]
+                component_top = (
+                    SAVE_COMPONENT_ATLAS_ORIGIN[1] +
+                    (frame_index - SAVE_SCREEN_FRAME_BASE) *
+                    CANVAS_SIZE[1]
+                )
+            else:
+                component_left = 0
+                component_top = frame_index * CANVAS_SIZE[1]
+            composed.alpha_composite(components.crop((
+                component_left,
+                component_top,
+                component_left + CANVAS_SIZE[0],
+                component_top + CANVAS_SIZE[1],
+            )))
+            if frame_index < len(OPTIONS_ROWS):
+                for row_layer in option_row_layers:
+                    composed.alpha_composite(row_layer)
+            oracle = options.crop((
+                0,
+                frame_index * CANVAS_SIZE[1],
+                CANVAS_SIZE[0],
+                (frame_index + 1) * CANVAS_SIZE[1],
+            ))
+            if ImageChops.difference(composed, oracle).getbbox():
+                raise ValueError(
+                    "live title/selection/row composition differs from "
+                    "the baked sheet oracle in frame %d" %
+                    frame_index)
+        title_segment.save(args.title_segment_output)
+        button_left.save(args.button_left_output)
+        button_middle.save(args.button_middle_output)
+        button_right.save(args.button_right_output)
+        component_output = (
+            " components=%dx%d title=%dx%d button=%dx%d+%dx%d+%dx%d "
+            "oracle=PIXEL_IDENTICAL outputs=%s,%s,%s,%s,%s" %
+            (
+                components.width,
+                components.height,
+                title_segment.width,
+                title_segment.height,
+                button_left.width,
+                button_left.height,
+                button_middle.width,
+                button_middle.height,
+                button_right.width,
+                button_right.height,
+                args.components_output,
+                args.title_segment_output,
+                args.button_left_output,
+                args.button_middle_output,
+                args.button_right_output,
+            ))
     print(
         "FABLE_FRONTEND_SUBSCREENS PASS "
-        "options=%dx%d helpers=%dx%d outputs=%s,%s" %
+        "options=%dx%d helpers=%dx%d outputs=%s,%s%s" %
         (
             options.width,
             options.height,
@@ -831,6 +1281,7 @@ def main():
             helpers.height,
             args.options_output,
             args.helpers_output,
+            component_output,
         ))
 
 

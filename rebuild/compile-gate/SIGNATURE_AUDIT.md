@@ -1,15 +1,15 @@
 # Candidate signature audit
 
-Generated: `2026-07-27T23:18:15-06:00`
+Generated: `2026-07-28T22:48:52-06:00`
 
-Clean: **541 / 803**. Review required: **262**.
+Clean: **541 / 832**. Review required: **291**.
 
 | Issue | Candidates |
 |---|---:|
-| `explicit-parameter-count-mismatch` | 232 |
-| `return-shape-mismatch` | 82 |
-| `method-name-mismatch` | 24 |
-| `duplicate-linkage-signature` | 24 |
+| `explicit-parameter-count-mismatch` | 261 |
+| `return-shape-mismatch` | 87 |
+| `method-name-mismatch` | 38 |
+| `duplicate-linkage-signature` | 38 |
 | `definition-not-parsed` | 12 |
 | `owner-mismatch` | 8 |
 
@@ -193,6 +193,35 @@ Clean: **541 / 803**. Review required: **262**.
 | `00440b40` | `_global` | `Vector_DestructStringRange` | `Vector_DestructStringRange` | explicit-parameter-count-mismatch |
 | `00440c00` | `_global` | `Vector_CopyPairRange` | `Vector_CopyPairRange` | explicit-parameter-count-mismatch |
 | `00440d70` | `_global` | `Vector_EraseRange` | `Vector_EraseRange` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00440e00` | `_global` | `Vector_CopyElements` | `Vector_CopyElements` | explicit-parameter-count-mismatch |
+| `00441020` | `_global` | `vector_insert_with_fill` | `vector_insert_with_fill` | explicit-parameter-count-mismatch |
+| `004413c0` | `_global` | `Vector_Reallocate` | `Vector_Reallocate` | explicit-parameter-count-mismatch |
+| `004416e0` | `_global` | `VectorReallocateDouble` | `VectorReallocateDouble` | explicit-parameter-count-mismatch |
+| `00441800` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00441870` | `_global` | `List_DestroyElements` | `List_DestroyElements` | explicit-parameter-count-mismatch |
+| `00441b90` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00441c20` | `_global` | `TreePane_DestructorHelper` | `TreePane_DestructorHelper` | explicit-parameter-count-mismatch |
+| `00442190` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00442280` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00442350` | `_global` | `Vector_InsertRangeWithRealloc` | `Vector_InsertRangeWithRealloc` | explicit-parameter-count-mismatch |
+| `00442610` | `_global` | `RenderState_Destructor` | `RenderState_Destructor` | explicit-parameter-count-mismatch |
+| `004428b0` | `_global` | `vector_push_back` | `vector_push_back` | explicit-parameter-count-mismatch |
+| `00442d50` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch;duplicate-linkage-signature |
+| `00442e60` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch;duplicate-linkage-signature |
+| `004430f0` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch;duplicate-linkage-signature |
+| `00443540` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `004437e0` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00443840` | `_global` | `CGuiControlTreePane_Destructor_1` | `CGuiControlTreePane_Destructor_1` | explicit-parameter-count-mismatch |
+| `004438b0` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00443980` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `004439e0` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00443ac0` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00443b20` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00443bd0` | `_global` | `CGuiControlTreePane_Destructor_2` | `CGuiControlTreePane_Destructor_2` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00443c10` | `_global` | `CGuiControlTreePane_Destructor_3` | `CGuiControlTreePane_Destructor_3` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00443d70` | `_global` | `EventConversation_Destructor` | `EventConversation_Destructor` | explicit-parameter-count-mismatch |
+| `00443e20` | `_global` | `TextureCache_Destructor` | `TextureCache_Destructor` | explicit-parameter-count-mismatch |
+| `00444e10` | `_global` | `CGuiControlTreePane_Destructor_4` | `CGuiControlTreePane_Destructor_4` | explicit-parameter-count-mismatch |
 | `004aa9e0` | `CScriptThing` | `CScriptThing::GetCurrentMapName` | `GetCurrentMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aaa10` | `CScriptThing` | `CScriptThing::GetHomeMapName` | `GetHomeMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004abe60` | `CScriptThing` | `CScriptThing::MsgWhoKilledMe` | `` | definition-not-parsed |

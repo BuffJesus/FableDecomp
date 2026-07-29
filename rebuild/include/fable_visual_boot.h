@@ -1,6 +1,7 @@
 #pragma once
 
 #include "fable_boot.h"
+#include "fable_ui_state.h"
 
 // Authored reconstruction checkpoint, not a recovered retail renderer.
 // It proves that the matched WinMain and reconstructed GFMain phases can hand
@@ -12,6 +13,78 @@ void FABLE_FASTCALL FableSetVisualProgressDisplayState(
 bool FABLE_FASTCALL FableIsRetailVisualAssetEmbedded();
 
 bool FABLE_FASTCALL FableShouldPlayBootVideos(const char* commandLine);
+
+// Decoded UI_FRONTEND_LIST_MAIN_MENU child action order.
+fable_u32 FABLE_FASTCALL FableGetVisualFrontendMainMenuAction(
+    fable_u32 row);
+
+enum FableUiSaveBrowserAction
+{
+    FableUiSaveBrowserLoadAction = 0x11,
+    FableUiSaveBrowserInvalidAction = 0xDC
+};
+
+struct FableUiSaveBrowserRow
+{
+    const char* filename;
+    fable_i32 positionY;
+    fable_u32 action;
+};
+
+// Recovered RefreshAvailableSavedGamesForProfile row contract: append the
+// non-empty autosave first, then non-empty manual slots in ascending order;
+// rows advance by 30 pixels and dispatch load only when both save parts pass
+// validation. The return value is the logical row count, even when output
+// capacity is smaller.
+fable_u32 FABLE_FASTCALL FablePlanVisualFrontendSaveRows(
+    const char* autosaveFilename,
+    bool autosavePrimaryValid,
+    bool autosaveCompanionValid,
+    const char* const* manualFilenames,
+    const bool* manualPrimaryValid,
+    const bool* manualCompanionValid,
+    fable_u32 manualSlotCount,
+    FableUiSaveBrowserRow* rows,
+    fable_u32 rowCapacity);
+
+enum FableUiControllerActionMask
+{
+    FableUiControllerUp = 1 << 0,
+    FableUiControllerDown = 1 << 1,
+    FableUiControllerLeft = 1 << 2,
+    FableUiControllerRight = 1 << 3,
+    FableUiControllerAccept = 1 << 4,
+    FableUiControllerBack = 1 << 5
+};
+
+// Compatibility bridge for the period WinMM joystick surface. Directional
+// state combines POV and analogue-axis thresholds; buttons 1/8 accept and
+// buttons 2/7 go back.
+fable_u32 FABLE_FASTCALL FableMapUiControllerState(
+    fable_u32 xPosition,
+    fable_u32 yPosition,
+    fable_u32 pointOfView,
+    fable_u32 buttons);
+
+fable_u32 FABLE_FASTCALL FableConsumeUiControllerPressed(
+    fable_u32 currentState,
+    fable_u32* previousState);
+
+struct FableUiControllerRepeatState
+{
+    fable_u32 lastMovement;
+    fable_u32 lastSelectionTimeMs;
+    bool isRepeating;
+};
+
+// Mirrors CFrontendGameComponent::ChangeSelection @ 0x00494380:
+// a changed direction fires immediately, then repeats after the initial
+// delay and subsequently at the shorter held delay.
+fable_u32 FABLE_FASTCALL FableConsumeUiControllerActions(
+    fable_u32 currentState,
+    fable_u32 currentTimeMs,
+    fable_u32* previousState,
+    FableUiControllerRepeatState* repeatState);
 
 struct FableUiVector2
 {
@@ -134,6 +207,65 @@ struct FableUiTableGeometryPlan
     unsigned int writtenVerticalInteriorCount;
 };
 
+struct FableUiComponentPrototype
+{
+    unsigned long definitionId;
+    FableUiVector2 size;
+};
+
+struct FableUiComponentState
+{
+    FableUiVector2 position;
+    FableUiVector2 zoom;
+};
+
+struct FableUiRuntimeComponent
+{
+    unsigned long definitionId;
+    unsigned int sourceSpriteKey;
+    unsigned int initialised;
+    unsigned int stateMask;
+    FableUiVector2 size;
+    FableUiComponentState state[1];
+};
+
+struct FableUiComponentLifetimeCounters
+{
+    unsigned int componentAllocations;
+    unsigned int componentDeletions;
+    unsigned int controlAllocations;
+    unsigned int controlDeletions;
+    unsigned int retains;
+    unsigned int releases;
+};
+
+struct FableUiCountedReference
+{
+    unsigned int referenceCount;
+    FableUiRuntimeComponent* component;
+    FableUiComponentLifetimeCounters* counters;
+};
+
+struct FableUiCountedComponent
+{
+    FableUiRuntimeComponent* component;
+    FableUiCountedReference* reference;
+};
+
+struct FableUiGeneratedComponentVector
+{
+    FableUiCountedComponent* values;
+    unsigned int size;
+    unsigned int capacity;
+    FableUiComponentLifetimeCounters* counters;
+};
+
+struct FableUiTableRuntimeInput
+{
+    FableUiTableGeometryInput geometry;
+    FableUiComponentPrototype sprite[13];
+};
+
 struct FableUiListSelectionPlan
 {
     long selectedChild;
@@ -174,6 +306,27 @@ struct FableUiListRecomputePlan
     float finalAlpha;
 };
 
+struct FableUiRuntimeStateMap
+{
+    CUIStateRecoveredLayout state[7];
+    unsigned int stateMask;
+};
+
+struct FableUiRuntimeListChild
+{
+    FableUiRuntimeStateMap states;
+    unsigned long currentState;
+    FableUiVector2 currentPosition;
+    FableUiStateColour currentColour;
+};
+
+enum FableUiFrontEndSoundRequest
+{
+    FableUiFrontEndSoundNone = 0,
+    FableUiFrontEndSoundUpDown = 1,
+    FableUiFrontEndSoundError = 2
+};
+
 struct FableUiFrontEndListScrollPlan
 {
     long previousSelectedChild;
@@ -183,6 +336,8 @@ struct FableUiFrontEndListScrollPlan
     unsigned long selectedChildState;
     unsigned int logicalAlphaCount;
     unsigned int writtenAlphaCount;
+    unsigned long soundRequest;
+    unsigned long soundCriteriaDefinitionOffset;
     bool moved;
     bool blockedAtBoundary;
     bool requestsInvalidAction;
@@ -230,6 +385,22 @@ void FABLE_FASTCALL FablePlanUiTableGeometry(
     unsigned int verticalInteriorCapacity,
     FableUiTableGeometryPlan* plan);
 
+// Live ownership step recovered from CTable::ConstructSpritesToDraw,
+// ConstructHorizontalLine, and ConstructVerticalLine. Every emitted sprite is
+// cloned from its definition-bearing prototype, initialised, receives a state
+// zero position (and line zoom), and is appended through retail-style
+// CCountedPointer copy/release semantics. The output vector owns one reference
+// to each component on success.
+bool FABLE_FASTCALL FableConstructUiTableComponents(
+    const FableUiTableRuntimeInput* input,
+    FableUiGeneratedComponentVector* generated);
+
+// Releases every counted component held by the generated-child vector. This
+// mirrors destruction/clear of CTable's final generated component vector and
+// resets the vector to an empty reusable state.
+void FABLE_FASTCALL FableReleaseUiGeneratedComponents(
+    FableUiGeneratedComponentVector* generated);
+
 // Recovered from CList::SetSelectedChild @ 0x005360B1. The requested index is
 // stored even when invalid. A valid child outside the first contiguous visible
 // window requests a vertical 25-pixel correction per displaced row.
@@ -266,6 +437,19 @@ void FABLE_FASTCALL FablePlanUiListRecomputeOffsets(
     unsigned int childOutputCapacity,
     FableUiListRecomputePlan* plan);
 
+// Applies the recovered DoRecomputeOffsets plan to real CUIState-shaped maps.
+// Positions are written to states 0/1/4/5/6, alpha to 1/4/5, state 1 is
+// adopted as the child's live position/colour, and each completed state map
+// is copied into the list's ScrollingChildrenStates-style snapshot vector.
+// Capacity failure is transactional.
+bool FABLE_FASTCALL FableApplyUiListRecomputedStates(
+    const FableUiListRecomputeInput* input,
+    FableUiRuntimeListChild* children,
+    unsigned int childCapacity,
+    FableUiRuntimeStateMap* stateSnapshots,
+    unsigned int stateSnapshotCapacity,
+    FableUiListRecomputePlan* plan);
+
 // Recovered from CFrontEndList::ScrollUp @ 0x0054C4C0 and ScrollDown
 // @ 0x0054C810. Lists with zero or one child reject movement. A list which
 // stops at its ends also rejects movement at the relevant boundary; otherwise
@@ -280,6 +464,21 @@ void FABLE_FASTCALL FablePlanUiFrontEndListScroll(
     unsigned char alphaFalloff,
     unsigned char* childAlphaOutput,
     unsigned int childAlphaCapacity,
+    FableUiFrontEndListScrollPlan* plan);
+
+// Applies the recovered CFrontEndList ScrollUp/ScrollDown transaction to live
+// children. Wrapping lists rotate colour ownership and change the old/new
+// states to 4/3 without translating their authored rows. Non-wrapping lists
+// additionally apply the 30-pixel position step and distance alpha falloff.
+// Rejected/boundary movement leaves the children unchanged.
+bool FABLE_FASTCALL FableApplyUiFrontEndListScroll(
+    bool scrollDown,
+    bool wrapping,
+    unsigned char alphaFalloff,
+    FableUiRuntimeListChild* children,
+    unsigned int childCount,
+    unsigned int childCapacity,
+    long selectedChild,
     FableUiFrontEndListScrollPlan* plan);
 
 long FABLE_FASTCALL FableRunVisualBootCheckpoint(
