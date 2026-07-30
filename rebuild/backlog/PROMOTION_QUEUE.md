@@ -1,8 +1,8 @@
 # Curated C++ promotion queue
 
-Generated: `2026-07-30T14:13:26-06:00`
+Generated: `2026-07-30T14:43:21-06:00`
 
-Uncompiled auto-RE candidates: **461**. Showing: **100**. Semantic-review quarantine: **90**.
+Uncompiled auto-RE candidates: **464**. Showing: **100**. Semantic-review quarantine: **90**.
 
 Ranking favors checker/integrity/signature PASS and candidates without known source-level hazards, then the smallest declaration, dependency, VC7.1, and source-size repair surface. Structural fidelity does not by itself make an unsafe C++ expression promotable; every promotion still needs semantic review, a focused behavior oracle, and retail comparison.
 
@@ -81,33 +81,33 @@ Ranking favors checker/integrity/signature PASS and candidates without known sou
 | 71 | `0x0088FE80` | `CGameScriptInterface::CGameScriptInterface::SetTimeAsStopped` | `dependency-stub` | `PASS` |  | 1 | 5 | 741 | 'CGameScriptInterface' has not been declared |
 | 72 | `0x0088FE40` | `CGameScriptInterface::CGameScriptInterface::IsTimeOfDayBetween` | `dependency-stub` | `PASS` |  | 1 | 6 | 1079 | invalid use of incomplete type 'class CGameScriptInterface' |
 | 73 | `0x0088E3D0` | `CGameScriptInterface::CGameScriptInterface::MiniMapAllowRouteBetweenRegions` | `dependency-stub` | `PASS` |  | 1 | 7 | 1391 | invalid use of incomplete type 'class CGameScriptInterface' |
-| 74 | `0x004AE9D0` | `CNetworkClient::Update` | `dependency-stub` | `PASS` |  | 1 | 7 | 844 | 'CNetworkClient' has not been declared |
-| 75 | `0x00893E70` | `CGameScriptInterface::CGameScriptInterface::MsgOnGameSavedManually` | `dependency-stub` | `PASS` |  | 1 | 9 | 2300 | macro 'offsetof' passed 3 arguments, but takes just 2 |
-| 76 | `0x00893EC0` | `CGameScriptInterface::CGameScriptInterface::MsgOnHeroSlept` | `dependency-stub` | `PASS` |  | 1 | 9 | 2000 | 'CGameScriptInterface' has not been declared |
-| 77 | `0x004AAC40` | `CScriptThing::CScriptThing::MsgReceivedMoney` | `dependency-stub` | `PASS` |  | 2 | 3 | 508 | 'CScriptThing' has not been declared |
-| 78 | `0x0088FC60` | `CGameScriptInterface::CGameScriptInterface::GiveHeroExpression` | `dependency-stub` | `PASS` |  | 2 | 10 | 1389 | 'reinterpret_cast' from integer to pointer |
-| 79 | `0x0088F960` | `CGameScriptInterface::CGameScriptInterface::SetSaveGameMarkerPos` | `dependency-stub` | `PASS` |  | 3 | 3 | 390 | 'CGameScriptInterface' has not been declared |
-| 80 | `0x004AE940` | `CNetworkClient::InitialiseAsLocal` | `dependency-stub` | `PASS` |  | 3 | 4 | 580 | 'CNetworkClient' has not been declared |
-| 81 | `0x004AAC60` | `CScriptThing::CScriptThing::MsgIsPresentedWithItem` | `dependency-stub` | `PASS` |  | 3 | 6 | 648 | 'CScriptThing' has not been declared |
-| 82 | `0x004AABF0` | `CScriptThing::CScriptThing::MsgExpressionPerformedTo` | `dependency-stub` | `PASS` |  | 3 | 6 | 700 | 'CScriptThing' has not been declared |
-| 83 | `0x008901A0` | `CGameScriptInterface::CGameScriptInterface::RadialBlurSetCenterWorldPos` | `dependency-stub` | `PASS` |  | 3 | 9 | 1155 | 'CEnvironmentSpellEffectInterpolator' does not name a type |
-| 84 | `0x00891A00` | `CGameScriptInterface::CGameScriptInterface::SetQuestInfoText` | `manual-lift` | `PASS` |  | 0 | 39 | 5228 | static assertion failed |
-| 85 | `0x0088EAD0` | `CGameScriptInterface::CGameScriptInterface::EntitySetAsDamageable` | `manual-lift` | `PASS` |  | 1 | 18 | 2384 | invalid use of incomplete type 'class CGameScriptInterface' |
-| 86 | `0x008943C0` | `CGameScriptInterface::CGameScriptInterface::MsgIsTutorialClickedPast` | `manual-lift` | `PASS` |  | 1 | 21 | 3529 | macro 'offsetof' passed 3 arguments, but takes just 2 |
-| 87 | `0x0089C380` | `CGameScriptInterface::CGameScriptInterface::EntitySetOpinionAttitudeEnabled` | `manual-lift` | `PASS` |  | 1 | 24 | 3222 | macro 'offsetof' passed 3 arguments, but takes just 2 |
-| 88 | `0x008A1650` | `CGameScriptInterface::CGameScriptInterface::GetBestScoreBlackjack` | `manual-lift` | `PASS` |  | 1 | 26 | 3934 | 'reinterpret_cast' from integer to pointer |
-| 89 | `0x008A1770` | `CGameScriptInterface::CGameScriptInterface::GetBestScoreShoveHaPenny` | `manual-lift` | `PASS` |  | 1 | 26 | 4325 | 'reinterpret_cast' from integer to pointer |
-| 90 | `0x008A1710` | `CGameScriptInterface::CGameScriptInterface::GetBestScoreCoinGolfSnowSpire` | `manual-lift` | `PASS` |  | 1 | 26 | 4445 | 'reinterpret_cast' from integer to pointer |
-| 91 | `0x00890FF0` | `CGameScriptInterface::CGameScriptInterface::CameraDefault` | `manual-lift` | `PASS` |  | 1 | 27 | 3783 | 'field48' was not declared in this scope |
-| 92 | `0x0089C7B0` | `CGameScriptInterface::CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses` | `manual-lift` | `PASS` |  | 1 | 27 | 4897 | macro 'offsetof' passed 3 arguments, but takes just 2 |
-| 93 | `0x008A1C50` | `CGameScriptInterface::CGameScriptInterface::RepopulateVillage` | `manual-lift` | `PASS` |  | 1 | 28 | 4207 | macro 'offsetof' passed 3 arguments, but takes just 2 |
-| 94 | `0x008A9AE0` | `CGameScriptInterface::CGameScriptInterface::MsgOnBoastsMade` | `manual-lift` | `PASS` |  | 1 | 35 | 8369 | field 'boastText' has incomplete type 'CCharString' |
-| 95 | `0x0089AD90` | `CGameScriptInterface::CGameScriptInterface::IsQuestStartScreenActive` | `manual-lift` | `PASS` |  | 1 | 40 | 3359 | invalid use of incomplete type 'class CGameScriptInterface' |
-| 96 | `0x009F19A0` | `CGameEventPackageSet::CompressIntoBuffer` | `manual-lift` | `PASS` |  | 1 | 45 | 3986 | 'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'? |
-| 97 | `0x00A0D340` | `CProcessedInput::AddGameEvent` | `manual-lift` | `PASS` |  | 2 | 15 | 1266 | 'CProcessedInput' has not been declared |
-| 98 | `0x009F16F0` | `CGameEventPackageSet::AddPackage` | `manual-lift` | `PASS` |  | 2 | 17 | 1282 | 'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'? |
-| 99 | `0x004165E8` | `CMainGameComponent::CheckSync` | `manual-lift` | `PASS` |  | 2 | 20 | 2016 | 'reinterpret_cast' from integer to pointer |
-| 100 | `0x00891CA0` | `CGameScriptInterface::CGameScriptInterface::GetHero` | `manual-lift` | `PASS` |  | 2 | 37 | 5438 | 'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type |
+| 74 | `0x00893E70` | `CGameScriptInterface::CGameScriptInterface::MsgOnGameSavedManually` | `dependency-stub` | `PASS` |  | 1 | 9 | 2300 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 75 | `0x00893EC0` | `CGameScriptInterface::CGameScriptInterface::MsgOnHeroSlept` | `dependency-stub` | `PASS` |  | 1 | 9 | 2000 | 'CGameScriptInterface' has not been declared |
+| 76 | `0x004AAC40` | `CScriptThing::CScriptThing::MsgReceivedMoney` | `dependency-stub` | `PASS` |  | 2 | 3 | 508 | 'CScriptThing' has not been declared |
+| 77 | `0x0088FC60` | `CGameScriptInterface::CGameScriptInterface::GiveHeroExpression` | `dependency-stub` | `PASS` |  | 2 | 10 | 1389 | 'reinterpret_cast' from integer to pointer |
+| 78 | `0x0088F960` | `CGameScriptInterface::CGameScriptInterface::SetSaveGameMarkerPos` | `dependency-stub` | `PASS` |  | 3 | 3 | 390 | 'CGameScriptInterface' has not been declared |
+| 79 | `0x004AE940` | `CNetworkClient::InitialiseAsLocal` | `dependency-stub` | `PASS` |  | 3 | 4 | 580 | 'CNetworkClient' has not been declared |
+| 80 | `0x004AAC60` | `CScriptThing::CScriptThing::MsgIsPresentedWithItem` | `dependency-stub` | `PASS` |  | 3 | 6 | 648 | 'CScriptThing' has not been declared |
+| 81 | `0x004AABF0` | `CScriptThing::CScriptThing::MsgExpressionPerformedTo` | `dependency-stub` | `PASS` |  | 3 | 6 | 700 | 'CScriptThing' has not been declared |
+| 82 | `0x008901A0` | `CGameScriptInterface::CGameScriptInterface::RadialBlurSetCenterWorldPos` | `dependency-stub` | `PASS` |  | 3 | 9 | 1155 | 'CEnvironmentSpellEffectInterpolator' does not name a type |
+| 83 | `0x00891A00` | `CGameScriptInterface::CGameScriptInterface::SetQuestInfoText` | `manual-lift` | `PASS` |  | 0 | 39 | 5228 | static assertion failed |
+| 84 | `0x0088EAD0` | `CGameScriptInterface::CGameScriptInterface::EntitySetAsDamageable` | `manual-lift` | `PASS` |  | 1 | 18 | 2384 | invalid use of incomplete type 'class CGameScriptInterface' |
+| 85 | `0x008943C0` | `CGameScriptInterface::CGameScriptInterface::MsgIsTutorialClickedPast` | `manual-lift` | `PASS` |  | 1 | 21 | 3529 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 86 | `0x0089C380` | `CGameScriptInterface::CGameScriptInterface::EntitySetOpinionAttitudeEnabled` | `manual-lift` | `PASS` |  | 1 | 24 | 3222 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 87 | `0x008A1650` | `CGameScriptInterface::CGameScriptInterface::GetBestScoreBlackjack` | `manual-lift` | `PASS` |  | 1 | 26 | 3934 | 'reinterpret_cast' from integer to pointer |
+| 88 | `0x008A1770` | `CGameScriptInterface::CGameScriptInterface::GetBestScoreShoveHaPenny` | `manual-lift` | `PASS` |  | 1 | 26 | 4325 | 'reinterpret_cast' from integer to pointer |
+| 89 | `0x008A1710` | `CGameScriptInterface::CGameScriptInterface::GetBestScoreCoinGolfSnowSpire` | `manual-lift` | `PASS` |  | 1 | 26 | 4445 | 'reinterpret_cast' from integer to pointer |
+| 90 | `0x00890FF0` | `CGameScriptInterface::CGameScriptInterface::CameraDefault` | `manual-lift` | `PASS` |  | 1 | 27 | 3783 | 'field48' was not declared in this scope |
+| 91 | `0x0089C7B0` | `CGameScriptInterface::CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses` | `manual-lift` | `PASS` |  | 1 | 27 | 4897 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 92 | `0x008A1C50` | `CGameScriptInterface::CGameScriptInterface::RepopulateVillage` | `manual-lift` | `PASS` |  | 1 | 28 | 4207 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 93 | `0x008A9AE0` | `CGameScriptInterface::CGameScriptInterface::MsgOnBoastsMade` | `manual-lift` | `PASS` |  | 1 | 35 | 8369 | field 'boastText' has incomplete type 'CCharString' |
+| 94 | `0x0089AD90` | `CGameScriptInterface::CGameScriptInterface::IsQuestStartScreenActive` | `manual-lift` | `PASS` |  | 1 | 40 | 3359 | invalid use of incomplete type 'class CGameScriptInterface' |
+| 95 | `0x009F19A0` | `CGameEventPackageSet::CompressIntoBuffer` | `manual-lift` | `PASS` |  | 1 | 45 | 3986 | 'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'? |
+| 96 | `0x00A0D340` | `CProcessedInput::AddGameEvent` | `manual-lift` | `PASS` |  | 2 | 15 | 1266 | 'CProcessedInput' has not been declared |
+| 97 | `0x009F16F0` | `CGameEventPackageSet::AddPackage` | `manual-lift` | `PASS` |  | 2 | 17 | 1282 | 'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'? |
+| 98 | `0x004165E8` | `CMainGameComponent::CheckSync` | `manual-lift` | `PASS` |  | 2 | 20 | 2016 | 'reinterpret_cast' from integer to pointer |
+| 99 | `0x00891CA0` | `CGameScriptInterface::CGameScriptInterface::GetHero` | `manual-lift` | `PASS` |  | 2 | 37 | 5438 | 'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type |
+| 100 | `0x00896390` | `CGameScriptInterface::CGameScriptInterface::OpenChest` | `manual-lift` | `PASS` |  | 2 | 77 | 14865 | macro 'offsetof' passed 3 arguments, but takes just 2 |
 
 ## Semantic-review quarantine
 

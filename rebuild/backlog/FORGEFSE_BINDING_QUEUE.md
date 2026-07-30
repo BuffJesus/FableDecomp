@@ -4,13 +4,13 @@ Generated from `rebuild/sdk/fse_native_overlay.json`. Rows are reverse-engineeri
 prototype-review targets, not executable bindings. The unattended agent may advance a row
 to structural review; it cannot set `hookApproved`.
 
-- FSE recommendations: 474
-- Unique retail target addresses: 474
+- FSE recommendations: 476
+- Unique retail target addresses: 476
 - Needs reversal: 2
 - Agent reviewed: 183
-- Implementation verified: 287
+- Implementation verified: 289
 - Hook approved: 0
-- Direct wrapper/retail signatures: 169
+- Direct wrapper/retail signatures: 171
 - Wrapper adapters required: 279
 - Signature/arity review required: 26
 

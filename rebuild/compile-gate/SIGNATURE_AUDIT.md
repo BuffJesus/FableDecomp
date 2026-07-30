@@ -1,15 +1,15 @@
 # Candidate signature audit
 
-Generated: `2026-07-30T14:13:25-06:00`
+Generated: `2026-07-30T14:43:20-06:00`
 
-Clean: **541 / 841**. Review required: **300**.
+Clean: **541 / 845**. Review required: **304**.
 
 | Issue | Candidates |
 |---|---:|
-| `explicit-parameter-count-mismatch` | 268 |
-| `return-shape-mismatch` | 89 |
-| `method-name-mismatch` | 40 |
-| `duplicate-linkage-signature` | 40 |
+| `explicit-parameter-count-mismatch` | 272 |
+| `return-shape-mismatch` | 90 |
+| `duplicate-linkage-signature` | 42 |
+| `method-name-mismatch` | 41 |
 | `definition-not-parsed` | 13 |
 | `owner-mismatch` | 8 |
 
@@ -195,7 +195,7 @@ Clean: **541 / 841**. Review required: **300**.
 | `00440d70` | `_global` | `Vector_EraseRange` | `Vector_EraseRange` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `00440e00` | `_global` | `Vector_CopyElements` | `Vector_CopyElements` | explicit-parameter-count-mismatch |
 | `00441020` | `_global` | `vector_insert_with_fill` | `vector_insert_with_fill` | explicit-parameter-count-mismatch |
-| `004413c0` | `_global` | `Vector_Reallocate` | `Vector_Reallocate` | explicit-parameter-count-mismatch |
+| `004413c0` | `_global` | `Vector_Reallocate` | `Vector_Reallocate` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
 | `004416e0` | `_global` | `VectorReallocateDouble` | `VectorReallocateDouble` | explicit-parameter-count-mismatch |
 | `00441800` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
 | `00441870` | `_global` | `List_DestroyElements` | `List_DestroyElements` | explicit-parameter-count-mismatch |
@@ -231,6 +231,10 @@ Clean: **541 / 841**. Review required: **300**.
 | `00448520` | `_global` | `Vector_DestroyRange` | `Vector_DestroyRange` | explicit-parameter-count-mismatch |
 | `00448ab0` | `_global` | `Heap_SiftDown_ContainmentVolume` | `Heap_SiftDown_ContainmentVolume` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `00448be0` | `_global` | `Heap_MakeHeap_NavConnector` | `Heap_MakeHeap_NavConnector` | explicit-parameter-count-mismatch |
+| `00448e90` | `_global` | `Vector_InsertWithMove` | `Vector_InsertWithMove` | explicit-parameter-count-mismatch |
+| `00449050` | `_global` | `Vector_ReallocateAndFill` | `UninitCopyActiveEntityScriptPair` | method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00449130` | `_global` | `Vector_Reallocate` | `Vector_Reallocate` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00449220` | `_global` | `Heap_BuildFromElements` | `Heap_BuildFromElements` | explicit-parameter-count-mismatch |
 | `004aa9e0` | `CScriptThing` | `CScriptThing::GetCurrentMapName` | `GetCurrentMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aaa10` | `CScriptThing` | `CScriptThing::GetHomeMapName` | `GetHomeMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004abe60` | `CScriptThing` | `CScriptThing::MsgWhoKilledMe` | `` | definition-not-parsed |

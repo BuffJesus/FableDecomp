@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-30T14:13:25-06:00",
-  "candidates": 841,
+  "generated_at": "2026-07-30T14:43:20-06:00",
+  "candidates": 845,
   "pass": 541,
-  "review": 300,
+  "review": 304,
   "issue_counts": {
-    "explicit-parameter-count-mismatch": 268,
-    "return-shape-mismatch": 89,
-    "method-name-mismatch": 40,
-    "duplicate-linkage-signature": 40,
+    "explicit-parameter-count-mismatch": 272,
+    "return-shape-mismatch": 90,
+    "duplicate-linkage-signature": 42,
+    "method-name-mismatch": 41,
     "definition-not-parsed": 13,
     "owner-mismatch": 8
   }

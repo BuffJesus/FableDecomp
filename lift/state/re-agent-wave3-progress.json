@@ -7979,6 +7979,26 @@
       "verdict": "PASS",
       "parity_status": "yellow",
       "timestamp": "2026-07-30T14:23:47"
+    },
+    "00449130": {
+      "address": "0x00449130",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-30T14:25:29"
+    },
+    "00449220": {
+      "address": "0x00449220",
+      "class_name": "",
+      "function_name": "Heap_BuildFromElements",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-30T14:26:42"
     }
   },
   "runs": [
@@ -16701,6 +16721,26 @@
       "verdict": "PASS",
       "parity_status": "yellow",
       "timestamp": "2026-07-30T14:23:47"
+    },
+    {
+      "address": "0x00449130",
+      "class_name": "",
+      "function_name": "Vector_Reallocate",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-30T14:25:29"
+    },
+    {
+      "address": "0x00449220",
+      "class_name": "",
+      "function_name": "Heap_BuildFromElements",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-30T14:26:42"
     }
   ]
 }

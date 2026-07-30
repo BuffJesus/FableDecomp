@@ -1294,7 +1294,7 @@ CDirtyDiscError	2	0	0	0	0	0	0	0	0	0	0
 CDiskFileWin32	13	16	13	0	0	4	4	2	2	0	0
 CDisplacedTrader	4	0	0	0	0	0	0	0	0	0	0
 CDisplacementProcess	2	1	1	0	0	0	0	0	0	0	0
-CDisplayEngine	41	14	12	0	0	3	3	3	0	0	0
+CDisplayEngine	41	14	12	0	0	4	4	4	0	0	0
 CDisplayEngineInit	0	2	0	0	0	1	1	1	0	0	0
 CDisplayManager	62	112	112	0	0	20	20	8	12	0	0
 CDisplayManagerInit	0	1	0	0	0	0	0	0	0	0	0
@@ -1788,7 +1788,7 @@ CGameMap	6	6	5	0	0	0	0	0	0	0	0
 CGameMapCell	2	1	1	0	0	0	0	0	0	0	0
 CGameNavigatorManagerExternalInterface	2	2	2	0	0	0	0	0	0	0	0
 CGamePlayerInterface	41	24	23	0	0	13	13	13	0	0	0
-CGameScriptInterface	935	953	948	438	2	301	301	45	254	0	0
+CGameScriptInterface	935	953	948	438	2	302	302	46	254	0	0
 CGameScriptThing	81	91	88	3	0	6	6	3	3	0	0
 CGameScriptThingManager	5	6	5	0	0	0	0	0	0	0	0
 CGameTimeManager	27	13	13	0	0	0	0	0	0	0	0
@@ -1867,7 +1867,7 @@ CGuiControlTextBox	8	0	0	0	0	0	0	0	0	0	0
 CGuiControlTextView	7	0	0	0	0	0	0	0	0	0	0
 CGuiControlTooltip	3	0	0	0	0	0	0	0	0	0	0
 CGuiControlTree	25	2	2	0	0	0	0	0	0	0	0
-CGuiControlTreePane	47	222	222	0	0	18	18	14	4	0	0
+CGuiControlTreePane	47	222	222	0	0	19	19	15	4	0	0
 CGuiInputProcess	2	4	4	0	0	0	0	0	0	0	0
 CGuiVarTransferBool	4	59	59	0	0	2	2	1	1	0	0
 CGuiVarTransferDefIndex	4	0	0	0	0	0	0	0	0	0	0
@@ -2248,7 +2248,7 @@ CManager	112	73	71	0	0	19	19	7	12	0	0
 CManagerLocalLight	1	0	0	0	0	0	0	0	0	0	0
 CManagerShadowedSpotLight	1	2	0	0	0	0	0	0	0	0	0
 CMansLover	5	2	2	0	0	0	0	0	0	0	0
-CMap	91	89	86	4	0	10	10	6	0	0	0
+CMap	91	89	86	4	0	11	11	7	0	0	0
 CMapFilenames	0	3	0	0	0	0	0	0	0	0	0
 CMapInfo	3	7	5	0	0	0	0	0	0	0	0
 CMapKeeper	4	2	2	0	0	0	0	0	0	0	0
@@ -2483,7 +2483,7 @@ CNecropolisEnemy	3	0	0	0	0	0	0	0	0	0	0
 CNecropolisGate	2	1	1	0	0	0	0	0	0	0	0
 CNecropolisGhost	4	0	0	0	0	0	0	0	0	0	0
 CNeedle	3	0	0	0	0	0	0	0	0	0	0
-CNetworkClient	14	6	6	5	0	3	3	0	3	0	0
+CNetworkClient	14	6	6	5	0	4	4	1	3	0	0
 CNewFrontendGameComponent	26	23	22	0	0	9	9	8	1	0	0
 CNoise	2	4	2	0	0	0	0	0	0	0	0
 CNostro	3	2	2	0	0	0	0	0	0	0	0
@@ -2820,7 +2820,7 @@ CQuestInfoElementCounterList	1	2	1	0	0	0	0	0	0	0	0
 CQuestInfoElementMiniGameBar	3	2	2	0	0	0	0	0	0	0	0
 CQuestInfoElementTick	1	1	0	0	0	0	0	0	0	0	0
 CQuestInfoElementTimer	1	1	1	0	0	0	0	0	0	0	0
-CQuestManager	102	89	72	0	0	3	3	0	3	0	0
+CQuestManager	102	89	72	0	0	5	5	2	3	0	0
 CQuickAccessItemButtonGuiDef	1	7	3	0	0	1	1	1	0	0	0
 CQuickDrawTriInfo	0	2	0	0	0	0	0	0	0	0	0
 CRTFE_RockTroll	3	0	0	0	0	0	0	0	0	0	0
@@ -2952,7 +2952,7 @@ CScriptModuleThingLookAtUpperBody	1	0	0	0	0	0	0	0	0	0	0
 CScriptModuleTransitionBetweenPoints	5	12	9	0	0	0	0	0	0	0	0
 CScriptModuleUseLamp	2	1	1	0	0	0	0	0	0	0	0
 CScriptObjectMap	0	1	0	0	0	0	0	0	0	0	0
-CScriptThing	78	103	101	15	0	11	11	8	3	0	0
+CScriptThing	78	103	101	15	0	16	16	13	3	0	0
 CScriptedControl	8	2	2	0	0	0	0	0	0	0	0
 CScriptedMapBrush	19	8	7	3	0	3	3	0	0	0	0
 CScrollBar	12	3	1	0	0	0	0	0	0	0	0
@@ -3331,7 +3331,7 @@ CTCGhostSword	15	9	7	0	0	0	0	0	0	0	0
 CTCGift	7	1	1	0	0	0	0	0	0	0	0
 CTCGold	4	2	2	0	0	0	0	0	0	0	0
 CTCGossip	3	2	0	0	0	0	0	0	0	0	0
-CTCGraphicAppearance	80	60	56	0	0	3	3	0	3	0	0
+CTCGraphicAppearance	80	60	56	0	0	4	4	1	3	0	0
 CTCGraphicAppearanceAnimatedMesh	7	17	6	0	0	0	0	0	0	0	0
 CTCGraphicAppearanceMultipleStaticMeshes	6	5	3	0	0	0	0	0	0	0	0
 CTCGraphicAppearanceReplaceableMesh	8	7	5	0	0	0	0	0	0	0	0
@@ -3494,7 +3494,7 @@ CTCTextureDecal	7	3	3	0	0	0	0	0	0	0	0
 CTCThingOwner	14	4	4	0	0	0	0	0	0	0	0
 CTCThingUIDDummyForSerialisation	4	0	0	0	0	0	0	0	0	0	0
 CTCTimeAppearanceFade	4	1	1	0	0	0	0	0	0	0	0
-CTCTrapBase	20	13	12	0	0	0	0	0	0	0	0
+CTCTrapBase	20	13	12	0	0	1	1	0	1	0	0
 CTCTrespassable	3	0	0	0	0	0	0	0	0	0	0
 CTCTrespasser	10	6	6	0	0	0	0	0	0	0	0
 CTCTrophy	20	17	17	0	0	0	0	0	0	0	0
@@ -3929,7 +3929,7 @@ CWiseVillager	3	0	0	0	0	0	0	0	0	0	0
 CWitch	4	1	1	0	0	0	0	0	0	0	0
 CWitnessesSearchingDeed	0	1	0	0	0	0	0	0	0	0	0
 CWomanToAttract	6	4	4	0	0	0	0	0	0	0	0
-CWorld	206	154	150	1	0	46	46	43	3	0	0
+CWorld	206	154	150	1	0	49	49	44	5	0	0
 CWorldManager	0	3	0	0	0	0	0	0	0	0	0
 CWorldMap	200	186	183	5	0	7	7	3	4	0	0
 CWorldMapPlacementDialog	2	0	0	0	0	0	0	0	0	0	0
@@ -4505,7 +4505,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11362	1997	264	5	159	159	89	66	0	0
+_global	0	11362	1997	268	5	160	160	89	67	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0
