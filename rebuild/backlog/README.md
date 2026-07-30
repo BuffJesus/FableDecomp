@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-07-29T22:12:07-06:00`
+Generated: `2026-07-30T10:03:52-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 
@@ -72,31 +72,31 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 | 10 | `0089fc80` | `CGameScriptInterface` | signature-audit | invalid use of incomplete type 'class CGameScriptInterface' |
 | 11 | `0089fd20` | `CGameScriptInterface` | signature-audit | invalid use of incomplete type 'class CGameScriptInterface' |
 | 12 | `0089fda0` | `CGameScriptInterface` | signature-audit | invalid use of incomplete type 'class CGameScriptInterface' |
-| 13 | `008ae890` | `CGameScriptInterface` | signature-audit | static assertion failed |
-| 14 | `008aeac0` | `CGameScriptInterface` | signature-audit | static assertion failed |
-| 15 | `008a9fc0` | `CGameScriptInterface` | compiled-needs-parity |  |
-| 16 | `008aa480` | `CGameScriptInterface` | compiled-needs-parity |  |
-| 17 | `006e7690` | `CGameScriptInterface` | candidate-compile |  |
-| 18 | `006e7820` | `CGameScriptInterface` | candidate-compile |  |
-| 19 | `006e7920` | `CGameScriptInterface` | candidate-compile |  |
-| 20 | `006e79e0` | `CGameScriptInterface` | candidate-compile |  |
-| 21 | `0088de10` | `CGameScriptInterface` | candidate-compile |  |
-| 22 | `0088df60` | `CGameScriptInterface` | candidate-compile |  |
-| 23 | `0088e0b0` | `CGameScriptInterface` | candidate-compile |  |
-| 24 | `0088e130` | `CGameScriptInterface` | candidate-compile |  |
-| 25 | `0088e200` | `CGameScriptInterface` | candidate-compile |  |
-| 26 | `0088e2a0` | `CGameScriptInterface` | candidate-compile | static assertion failed |
-| 27 | `0088e300` | `CGameScriptInterface` | candidate-compile |  |
-| 28 | `0088e380` | `CGameScriptInterface` | candidate-compile |  |
-| 29 | `0088e3d0` | `CGameScriptInterface` | candidate-compile | invalid use of incomplete type 'class CGameScriptInterface' |
-| 30 | `0088e6f0` | `CGameScriptInterface` | candidate-compile |  |
-| 31 | `0088ead0` | `CGameScriptInterface` | candidate-compile | invalid use of incomplete type 'class CGameScriptInterface' |
-| 32 | `0088ece0` | `CGameScriptInterface` | candidate-compile |  |
-| 33 | `0088f400` | `CGameScriptInterface` | candidate-compile |  |
-| 34 | `0088f480` | `CGameScriptInterface` | candidate-compile |  |
-| 35 | `0088f570` | `CGameScriptInterface` | candidate-compile |  |
-| 36 | `0088f610` | `CGameScriptInterface` | candidate-compile |  |
-| 37 | `0088f710` | `CGameScriptInterface` | candidate-compile |  |
-| 38 | `0088f8d0` | `CGameScriptInterface` | candidate-compile |  |
-| 39 | `0088f910` | `CGameScriptInterface` | candidate-compile |  |
-| 40 | `0088f920` | `CGameScriptInterface` | candidate-compile |  |
+| 13 | `008a9100` | `CGameScriptInterface` | signature-audit | 'EHeroMorphType' was not declared in this scope |
+| 14 | `008ae890` | `CGameScriptInterface` | signature-audit | static assertion failed |
+| 15 | `008aeac0` | `CGameScriptInterface` | signature-audit | static assertion failed |
+| 16 | `008a9fc0` | `CGameScriptInterface` | compiled-needs-parity |  |
+| 17 | `008aa480` | `CGameScriptInterface` | compiled-needs-parity |  |
+| 18 | `006e7690` | `CGameScriptInterface` | candidate-compile |  |
+| 19 | `006e7820` | `CGameScriptInterface` | candidate-compile |  |
+| 20 | `006e7920` | `CGameScriptInterface` | candidate-compile |  |
+| 21 | `006e79e0` | `CGameScriptInterface` | candidate-compile |  |
+| 22 | `0088de10` | `CGameScriptInterface` | candidate-compile |  |
+| 23 | `0088df60` | `CGameScriptInterface` | candidate-compile |  |
+| 24 | `0088e0b0` | `CGameScriptInterface` | candidate-compile |  |
+| 25 | `0088e130` | `CGameScriptInterface` | candidate-compile |  |
+| 26 | `0088e200` | `CGameScriptInterface` | candidate-compile |  |
+| 27 | `0088e2a0` | `CGameScriptInterface` | candidate-compile | static assertion failed |
+| 28 | `0088e300` | `CGameScriptInterface` | candidate-compile |  |
+| 29 | `0088e380` | `CGameScriptInterface` | candidate-compile |  |
+| 30 | `0088e3d0` | `CGameScriptInterface` | candidate-compile | invalid use of incomplete type 'class CGameScriptInterface' |
+| 31 | `0088e6f0` | `CGameScriptInterface` | candidate-compile |  |
+| 32 | `0088ead0` | `CGameScriptInterface` | candidate-compile | invalid use of incomplete type 'class CGameScriptInterface' |
+| 33 | `0088ece0` | `CGameScriptInterface` | candidate-compile |  |
+| 34 | `0088f400` | `CGameScriptInterface` | candidate-compile |  |
+| 35 | `0088f480` | `CGameScriptInterface` | candidate-compile |  |
+| 36 | `0088f570` | `CGameScriptInterface` | candidate-compile |  |
+| 37 | `0088f610` | `CGameScriptInterface` | candidate-compile |  |
+| 38 | `0088f710` | `CGameScriptInterface` | candidate-compile |  |
+| 39 | `0088f8d0` | `CGameScriptInterface` | candidate-compile |  |
+| 40 | `0088f910` | `CGameScriptInterface` | candidate-compile |  |

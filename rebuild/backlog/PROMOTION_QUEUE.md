@@ -1,6 +1,6 @@
 # Curated C++ promotion queue
 
-Generated: `2026-07-29T22:12:08-06:00`
+Generated: `2026-07-30T10:03:53-06:00`
 
 Uncompiled auto-RE candidates: **465**. Showing: **100**. Semantic-review quarantine: **90**.
 
@@ -101,13 +101,13 @@ Ranking favors checker/integrity/signature PASS and candidates without known sou
 | 91 | `0x00890FF0` | `CGameScriptInterface::CGameScriptInterface::CameraDefault` | `manual-lift` | `PASS` |  | 1 | 27 | 3783 | 'field48' was not declared in this scope |
 | 92 | `0x0089C7B0` | `CGameScriptInterface::CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses` | `manual-lift` | `PASS` |  | 1 | 27 | 4897 | macro 'offsetof' passed 3 arguments, but takes just 2 |
 | 93 | `0x008A1C50` | `CGameScriptInterface::CGameScriptInterface::RepopulateVillage` | `manual-lift` | `PASS` |  | 1 | 28 | 4207 | macro 'offsetof' passed 3 arguments, but takes just 2 |
-| 94 | `0x0089AD90` | `CGameScriptInterface::CGameScriptInterface::IsQuestStartScreenActive` | `manual-lift` | `PASS` |  | 1 | 40 | 3359 | invalid use of incomplete type 'class CGameScriptInterface' |
-| 95 | `0x009F19A0` | `CGameEventPackageSet::CompressIntoBuffer` | `manual-lift` | `PASS` |  | 1 | 45 | 3986 | 'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'? |
-| 96 | `0x00A0D340` | `CProcessedInput::AddGameEvent` | `manual-lift` | `PASS` |  | 2 | 15 | 1266 | 'CProcessedInput' has not been declared |
-| 97 | `0x009F16F0` | `CGameEventPackageSet::AddPackage` | `manual-lift` | `PASS` |  | 2 | 17 | 1282 | 'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'? |
-| 98 | `0x004165E8` | `CMainGameComponent::CheckSync` | `manual-lift` | `PASS` |  | 2 | 20 | 2016 | 'reinterpret_cast' from integer to pointer |
-| 99 | `0x00891CA0` | `CGameScriptInterface::CGameScriptInterface::GetHero` | `manual-lift` | `PASS` |  | 2 | 37 | 5438 | 'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type |
-| 100 | `0x00896390` | `CGameScriptInterface::CGameScriptInterface::OpenChest` | `manual-lift` | `PASS` |  | 2 | 77 | 14865 | macro 'offsetof' passed 3 arguments, but takes just 2 |
+| 94 | `0x008A9AE0` | `CGameScriptInterface::CGameScriptInterface::MsgOnBoastsMade` | `manual-lift` | `PASS` |  | 1 | 35 | 8369 | field 'boastText' has incomplete type 'CCharString' |
+| 95 | `0x0089AD90` | `CGameScriptInterface::CGameScriptInterface::IsQuestStartScreenActive` | `manual-lift` | `PASS` |  | 1 | 40 | 3359 | invalid use of incomplete type 'class CGameScriptInterface' |
+| 96 | `0x009F19A0` | `CGameEventPackageSet::CompressIntoBuffer` | `manual-lift` | `PASS` |  | 1 | 45 | 3986 | 'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'? |
+| 97 | `0x00A0D340` | `CProcessedInput::AddGameEvent` | `manual-lift` | `PASS` |  | 2 | 15 | 1266 | 'CProcessedInput' has not been declared |
+| 98 | `0x009F16F0` | `CGameEventPackageSet::AddPackage` | `manual-lift` | `PASS` |  | 2 | 17 | 1282 | 'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'? |
+| 99 | `0x004165E8` | `CMainGameComponent::CheckSync` | `manual-lift` | `PASS` |  | 2 | 20 | 2016 | 'reinterpret_cast' from integer to pointer |
+| 100 | `0x00891CA0` | `CGameScriptInterface::CGameScriptInterface::GetHero` | `manual-lift` | `PASS` |  | 2 | 37 | 5438 | 'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type |
 
 ## Semantic-review quarantine
 

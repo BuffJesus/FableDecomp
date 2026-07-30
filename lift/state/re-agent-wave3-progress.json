@@ -5428,7 +5428,7 @@
       "rounds_used": 4,
       "verdict": "FAIL",
       "parity_status": "red",
-      "timestamp": "2026-07-27T22:11:36"
+      "timestamp": "2026-07-30T08:33:19"
     },
     "0089f300": {
       "address": "0x0089F300",
@@ -5498,7 +5498,7 @@
       "rounds_used": 4,
       "verdict": "FAIL",
       "parity_status": "red",
-      "timestamp": "2026-07-27T22:56:01"
+      "timestamp": "2026-07-30T08:51:27"
     },
     "008a9c40": {
       "address": "0x008A9C40",
@@ -5544,11 +5544,11 @@
       "address": "0x008A9AE0",
       "class_name": "",
       "function_name": "?MsgOnBoastsMade@CGameScriptInterface@@UBE_NAAV?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@@Z",
-      "success": false,
-      "rounds_used": 4,
-      "verdict": "FAIL",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
       "parity_status": "red",
-      "timestamp": "2026-07-27T23:09:42"
+      "timestamp": "2026-07-30T08:56:23"
     },
     "00893b00": {
       "address": "0x00893B00",
@@ -5708,7 +5708,7 @@
       "rounds_used": 4,
       "verdict": "FAIL",
       "parity_status": "yellow",
-      "timestamp": "2026-07-28T08:28:28"
+      "timestamp": "2026-07-30T09:45:53"
     },
     "00c92f10": {
       "address": "0x00C92F10",
@@ -16571,6 +16571,76 @@
       "verdict": "PASS",
       "parity_status": "yellow",
       "timestamp": "2026-07-29T09:57:39"
+    },
+    {
+      "address": "0x008A9100",
+      "class_name": "",
+      "function_name": "?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-30T08:24:40"
+    },
+    {
+      "address": "0x008A9100",
+      "class_name": "",
+      "function_name": "?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-30T08:33:19"
+    },
+    {
+      "address": "0x008A86C0",
+      "class_name": "",
+      "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-30T08:41:34"
+    },
+    {
+      "address": "0x008A86C0",
+      "class_name": "",
+      "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-07-30T08:51:27"
+    },
+    {
+      "address": "0x008A9AE0",
+      "class_name": "",
+      "function_name": "?MsgOnBoastsMade@CGameScriptInterface@@UBE_NAAV?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@@Z",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-30T08:56:23"
+    },
+    {
+      "address": "0x00C8C730",
+      "class_name": "",
+      "function_name": "Batch_InvokeWithStackArgs_c8c730",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-30T09:34:40"
+    },
+    {
+      "address": "0x00C8C730",
+      "class_name": "",
+      "function_name": "Batch_InvokeWithStackArgs_c8c730",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-30T09:45:53"
     }
   ]
 }

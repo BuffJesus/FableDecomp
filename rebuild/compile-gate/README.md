@@ -1,6 +1,6 @@
 # Auto-RE candidate compile gate
 
-Generated: `2026-07-29T21:34:49-06:00`
+Generated: `2026-07-30T10:02:38-06:00`
 
 | Gate | Passing | Total |
 |---|---:|---:|
@@ -17,9 +17,9 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 |---|---:|
 | `offsetof` | 61 |
 | `class CGameScriptInterface` | 40 |
-| `CCharString` | 30 |
+| `CCharString` | 29 |
 | `CGameScriptInterface` | 23 |
-| `mov` | 16 |
+| `mov` | 15 |
 | `std` | 13 |
 | `CTCBase` | 13 |
 | `C2DVector` | 13 |
@@ -28,22 +28,22 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 | `self` | 11 |
 | `CKeyPairCompareLess` | 11 |
 | `CMemoryAllocatorFixedSize` | 11 |
-| `CScriptThing` | 10 |
 | `CNavQuadTree` | 10 |
 | `CWideString` | 9 |
+| `CScriptThing` | 9 |
 | `CDefinitionManager` | 8 |
-| `C3DVector` | 8 |
 | `EThemePaintType` | 8 |
 | `CVectorMap` | 7 |
 | `class CScriptThing` | 7 |
+| `C3DVector` | 7 |
 | `CEngineLandscapeMap` | 7 |
 | `CGraphicInfoFrame` | 7 |
 | `CGameEvent` | 6 |
 | `next` | 6 |
 | `CTCCoopSpirit` | 6 |
-| `CWorldMap` | 6 |
 | `CQuestManager` | 6 |
 | `CANavQuadTreeNode` | 6 |
 | `CEngineLandscapePatch` | 6 |
+| `CMemoryAllocatorVariableSize` | 5 |
 
 Full per-candidate results are in `candidates.tsv`.

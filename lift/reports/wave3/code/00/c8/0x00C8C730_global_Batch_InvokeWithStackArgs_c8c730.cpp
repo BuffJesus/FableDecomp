@@ -1,36 +1,142 @@
+#include <bit>
 #include <cstddef>
 #include <cstdint>
 #include <malloc.h>
 
-struct Batch_InvokeWithStackArgs_c8c730_EaxOverlay {
-    std::byte pad_00[0x58];
-    std::int32_t count_at_0x58;
-    std::byte pad_5c[0x1E0 - 0x5C];
-    CBankFile bank_file;
+struct CBankFile;
+struct CEditWorld;
+struct CIDrawWorldMap;
+struct CWorldMap;
+
+struct BatchInvokeStateOverlay {
+    std::byte pad_0000[0x58];
+    std::int32_t count;
 };
+static_assert(offsetof(BatchInvokeStateOverlay, count) == 0x58);
 
-static_assert(offsetof(Batch_InvokeWithStackArgs_c8c730_EaxOverlay, count_at_0x58) == 0x58);
-static_assert(offsetof(Batch_InvokeWithStackArgs_c8c730_EaxOverlay, bank_file) == 0x1E0);
+static inline CBankFile* GetBankFileAt1E0(BatchInvokeStateOverlay* state) {
+    return reinterpret_cast<CBankFile*>(reinterpret_cast<std::byte*>(state) + 0x1E0);
+}
 
-// Unresolved implicit inputs observed by the decompile/callsite context.
-extern CWorldMap* Batch_InvokeWithStackArgs_c8c730_GetImplicitWorldMapThis();
-extern long Batch_InvokeWithStackArgs_c8c730_GetImplicitRouteState();
+using BatchInvokeCallback = int(__thiscall*)(void*, double);
+using RawCodePtr = void(*)();
+
+static inline long CallGetNextRegionOnRouteToRaw(
+    CWorldMap* worldMapThisFromContext,
+    std::uint32_t routeTargetFromEdi,
+    long routeSourceFromEsi
+) {
+#if defined(_MSC_VER) && defined(_M_IX86)
+    auto fn = reinterpret_cast<RawCodePtr>(CWorldMap::GetNextRegionOnRouteTo);
+    long result;
+    __asm {
+        push esi
+        push edi
+        mov ecx, worldMapThisFromContext
+        mov edi, routeTargetFromEdi
+        mov esi, routeSourceFromEsi
+        call fn
+        mov result, eax
+        pop edi
+        pop esi
+    }
+    return result;
+#else
+    (void)worldMapThisFromContext;
+    (void)routeTargetFromEdi;
+    (void)routeSourceFromEsi;
+    __assume(0);
+#endif
+}
+
+static inline void CallVertexBufferFillDataRaw(
+    BatchInvokeStateOverlay* stateFromEax,
+    CEditWorld* editWorld,
+    CBankFile* bankFile,
+    void* stackArgBlockBase,
+    std::int32_t firstShiftedWorldMap
+) {
+#if defined(_MSC_VER) && defined(_M_IX86)
+    auto fn = reinterpret_cast<RawCodePtr>(VertexBuffer_FillData);
+    __asm {
+        push firstShiftedWorldMap
+        push stackArgBlockBase
+        push bankFile
+        push editWorld
+        push stateFromEax
+        call fn
+    }
+#else
+    (void)stateFromEax;
+    (void)editWorld;
+    (void)bankFile;
+    (void)stackArgBlockBase;
+    (void)firstShiftedWorldMap;
+    __assume(0);
+#endif
+}
+
+static inline void CallBufferSwapElementsRaw(CBankFile* bankFile, std::uint32_t* swapCookie) {
+#if defined(_MSC_VER) && defined(_M_IX86)
+    auto fn = reinterpret_cast<RawCodePtr>(Buffer_SwapElements);
+    __asm {
+        mov ecx, bankFile
+        mov edx, swapCookie
+        call fn
+    }
+#else
+    (void)bankFile;
+    (void)swapCookie;
+    __assume(0);
+#endif
+}
+
+static inline void CallAudioConvolveChannelsRaw(
+    std::int32_t firstShiftedWorldMap,
+    std::int32_t secondShiftedWorldMap,
+    std::uint32_t firstEntrySize,
+    std::uint32_t secondEntrySize,
+    void* stackArgBlockBase,
+    std::int32_t elementCount,
+    std::uint32_t worldValue,
+    std::uint32_t swapCookie
+) {
+#if defined(_MSC_VER) && defined(_M_IX86)
+    auto fn = reinterpret_cast<RawCodePtr>(Audio_ConvolveChannels);
+    __asm {
+        push swapCookie
+        push worldValue
+        push elementCount
+        push stackArgBlockBase
+        push secondEntrySize
+        mov edx, firstEntrySize
+        mov eax, secondShiftedWorldMap
+        mov ecx, firstShiftedWorldMap
+        call fn
+    }
+#else
+    (void)firstShiftedWorldMap;
+    (void)secondShiftedWorldMap;
+    (void)firstEntrySize;
+    (void)secondEntrySize;
+    (void)stackArgBlockBase;
+    (void)elementCount;
+    (void)worldValue;
+    (void)swapCookie;
+    __assume(0);
+#endif
+}
 
 int __stdcall Batch_InvokeWithStackArgs_c8c730(
+    BatchInvokeStateOverlay* stateFromEax,
+    long routeSourceFromEsi,
+    std::uint32_t routeTargetFromEdi,
     std::uint32_t param_1,
     std::uint32_t param_2,
-    void* param_3)
-{
-    auto* const eax_object =
-        reinterpret_cast<Batch_InvokeWithStackArgs_c8c730_EaxOverlay*>(__readeax());
-
-    const std::uint32_t route_arg = static_cast<std::uint32_t>(__readedi());
-    CWorldMap* const world_map_this =
-        Batch_InvokeWithStackArgs_c8c730_GetImplicitWorldMapThis();
-    const long route_state =
-        Batch_InvokeWithStackArgs_c8c730_GetImplicitRouteState();
-
-    if (eax_object->count_at_0x58 <= 1) {
+    void* callbackRaw,
+    CWorldMap* worldMapThisFromContext
+) {
+    if (stateFromEax->count <= 1) {
         return -0x83;
     }
 
@@ -39,50 +145,59 @@ int __stdcall Batch_InvokeWithStackArgs_c8c730(
         return result;
     }
 
-    auto* edit_world = static_cast<CEditWorld*>(Indexed_GetElementOffsetSafe());
-    const long next_region =
-        CWorldMap::GetNextRegionOnRouteTo(world_map_this, route_arg, route_state);
+    CEditWorld* editWorld = Indexed_GetElementOffsetSafe();
+    const long nextRegion =
+        CallGetNextRegionOnRouteToRaw(worldMapThisFromContext, routeTargetFromEdi, routeSourceFromEsi);
 
-    const int element_count =
-        *reinterpret_cast<int*>(reinterpret_cast<std::byte*>(edit_world) + 0x04);
+    const std::int32_t elementCount =
+        *reinterpret_cast<std::int32_t*>(reinterpret_cast<std::byte*>(editWorld) + 0x04);
 
-    auto* const draw_world_map = CEditWorld::DrawGetWorldMap(edit_world);
-    const int shifted_world_map =
-        static_cast<int>(reinterpret_cast<std::uintptr_t>(draw_world_map)) >>
-        ((static_cast<unsigned char>(next_region) + 1U) & 0x1F);
+    CIDrawWorldMap* drawWorldMap = CEditWorld::DrawGetWorldMap(editWorld);
+    const std::int32_t firstShiftedWorldMap =
+        static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(drawWorldMap)) >>
+        ((static_cast<unsigned char>(nextRegion) + 1U) & 0x1F);
 
-    auto* const bank_file =
-        reinterpret_cast<CBankFile*>(reinterpret_cast<std::byte*>(eax_object) + 0x1E0);
+    CBankFile* const bankFile = GetBankFileAt1E0(stateFromEax);
+    const std::uint32_t firstEntrySize = CBankFile::GetEntryDataSize(bankFile, routeTargetFromEdi);
 
-    const std::uint32_t first_entry_size = CBankFile::GetEntryDataSize(bank_file, 0);
+    const std::size_t pointerTableBytes =
+        static_cast<std::size_t>(elementCount) * sizeof(std::byte*);
+    const std::size_t perElementBytes =
+        static_cast<std::size_t>(firstShiftedWorldMap) * sizeof(std::uint32_t);
+    const std::size_t payloadBytes =
+        static_cast<std::size_t>(elementCount) * perElementBytes;
 
-    auto** const stack_blocks = static_cast<std::uint8_t**>(
-        _alloca(static_cast<std::size_t>(element_count) * sizeof(std::uint8_t*)));
+    std::byte* const stackStorage =
+        static_cast<std::byte*>(_alloca(pointerTableBytes + payloadBytes));
+    auto* const stackArgBlockBase =
+        reinterpret_cast<std::byte**>(stackStorage + payloadBytes);
 
-    std::uint8_t* current_block = reinterpret_cast<std::uint8_t*>(stack_blocks);
-    if (element_count > 0) {
-        for (int index = 0; index < element_count; ++index) {
-            current_block += shifted_world_map * -4;
-            stack_blocks[index] = current_block;
+    std::byte* current = reinterpret_cast<std::byte*>(stackArgBlockBase);
+    const std::ptrdiff_t stackStep = static_cast<std::ptrdiff_t>(firstShiftedWorldMap) * -4;
+
+    if (elementCount > 0) {
+        for (std::int32_t i = 0; i < elementCount; ++i) {
+            std::byte* const next = current + stackStep;
+            stackArgBlockBase[i] = next;
+            current = next;
         }
     }
 
-    VertexBuffer_FillData(
-        eax_object,
-        edit_world,
-        bank_file,
-        stack_blocks,
-        shifted_world_map);
+    CallVertexBufferFillDataRaw(
+        stateFromEax,
+        editWorld,
+        bankFile,
+        stackArgBlockBase,
+        firstShiftedWorldMap
+    );
 
-    __asm {
-        sub esp, 8
-        fld qword ptr [param_1]
-        mov ecx, eax_object
-        fstp qword ptr [esp]
-        call param_3
-        mov result, eax
-    }
+    const std::uint64_t packedParam =
+        (static_cast<std::uint64_t>(param_2) << 32) | static_cast<std::uint64_t>(param_1);
 
+    result = reinterpret_cast<BatchInvokeCallback>(callbackRaw)(
+        stateFromEax,
+        std::bit_cast<double>(packedParam)
+    );
     if (result != 0) {
         return result;
     }
@@ -92,33 +207,30 @@ int __stdcall Batch_InvokeWithStackArgs_c8c730(
         return result;
     }
 
-    edit_world = static_cast<CEditWorld*>(Indexed_GetElementOffsetSafe());
-    const std::uint32_t current_count =
-        *reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::byte*>(edit_world) + 0x04);
+    editWorld = Indexed_GetElementOffsetSafe();
+    const std::uint32_t worldValue =
+        *reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::byte*>(editWorld) + 0x04);
 
-    auto* const draw_world_map_after_wait = CEditWorld::DrawGetWorldMap(edit_world);
-    const int shifted_world_map_after_wait =
-        static_cast<int>(reinterpret_cast<std::uintptr_t>(draw_world_map_after_wait)) >>
-        ((static_cast<unsigned char>(next_region) + 1U) & 0x1F);
+    drawWorldMap = CEditWorld::DrawGetWorldMap(editWorld);
+    const std::int32_t secondShiftedWorldMap =
+        static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(drawWorldMap)) >>
+        ((static_cast<unsigned char>(nextRegion) + 1U) & 0x1F);
 
-    const std::uint32_t second_entry_size = CBankFile::GetEntryDataSize(bank_file, 0);
+    const std::uint32_t secondEntrySize = CBankFile::GetEntryDataSize(bankFile, routeTargetFromEdi);
 
-    std::uint32_t swap_output;
-    reinterpret_cast<void(__fastcall*)(CBankFile*, std::uint32_t*)>(Buffer_SwapElements)(
-        bank_file,
-        &swap_output);
+    std::uint32_t swapCookie = 0;
+    CallBufferSwapElementsRaw(bankFile, &swapCookie);
 
-    __asm {
-        push second_entry_size
-        push current_count
-        push element_count
-        push stack_blocks
-        push swap_output
-        mov edx, first_entry_size
-        mov eax, shifted_world_map_after_wait
-        mov ecx, shifted_world_map
-        call Audio_ConvolveChannels
-    }
+    CallAudioConvolveChannelsRaw(
+        firstShiftedWorldMap,
+        secondShiftedWorldMap,
+        firstEntrySize,
+        secondEntrySize,
+        stackArgBlockBase,
+        elementCount,
+        worldValue,
+        swapCookie
+    );
 
     return 0;
 }

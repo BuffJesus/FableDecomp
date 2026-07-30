@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T21:34:49-06:00",
+  "generated_at": "2026-07-30T10:02:38-06:00",
   "compiler": "C:\\Users\\Cornelio\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.EXE",
   "candidates": 840,
   "integrity_pass": 840,
@@ -7,5 +7,5 @@
   "vc71_compatible": 67,
   "compile_ready": 41,
   "semantic_quarantine": 145,
-  "unique_missing_dependencies": 532
+  "unique_missing_dependencies": 518
 }

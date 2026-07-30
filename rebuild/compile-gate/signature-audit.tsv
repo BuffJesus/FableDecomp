@@ -698,14 +698,14 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 008a8e40	CGameScriptInterface	CGameScriptInterface::EntityDecapitate	PASS	CGameScriptInterface	EntityDecapitate	void	void __thiscall	1	1		PASS	
 008a8eb0	CGameScriptInterface	CGameScriptInterface::EntitySetAttackThingImmediately	PASS	CGameScriptInterface	EntitySetAttackThingImmediately	void	void __thiscall	4	4		PASS	
 008a8f20	CGameScriptInterface	CGameScriptInterface::GetItemDefNamesFromContainer	PASS	CGameScriptInterface	GetItemDefNamesFromContainer	void	void	2	2		PASS	
-008a9100	CGameScriptInterface	CGameScriptInterface::CreateCreature	FAIL	CGameScriptInterface	CreateCreature	CScriptThing	CScriptThing	4	4		PASS	
+008a9100	CGameScriptInterface	CGameScriptInterface::CreateCreature	FAIL	CGameScriptInterface	CreateCreature	CScriptThing	CScriptThing* __thiscall	4	5		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
 008a9320	CGameScriptInterface	CGameScriptInterface::EntityCastForcePush	PASS	CGameScriptInterface	EntityCastForcePush	bool	bool __thiscall	2	2		PASS	
 008a93a0	CGameScriptInterface	CGameScriptInterface::EntityWillTeleportToArea	PASS	CGameScriptInterface	EntityWillTeleportToArea	bool	bool __thiscall	4	4		PASS	
 008a9610	CGameScriptInterface	CGameScriptInterface::SetThingAsConscious	PASS	CGameScriptInterface	SetThingAsConscious	void	void __thiscall	3	3		PASS	
 008a96c0	CGameScriptInterface	CGameScriptInterface::SetCategoryActivity	PASS	CGameScriptInterface	SetCategoryActivity	void	void __thiscall	2	2		PASS	
 008a9720	CGameScriptInterface	CGameScriptInterface::SetActiveGossipCategories	PASS	CGameScriptInterface	SetActiveGossipCategories	void	void __thiscall	2	2		PASS	
 008a99f0	CGameScriptInterface	CGameScriptInterface::SetThingAndCarriedItemsNotAffectedByScreenFilter	PASS	CGameScriptInterface	SetThingAndCarriedItemsNotAffectedByScreenFilter	void	void __thiscall	2	2		PASS	
-008a9ae0	CGameScriptInterface	CGameScriptInterface::MsgOnBoastsMade	FAIL	CGameScriptInterface	MsgOnBoastsMade	bool	bool	1	1		PASS	
+008a9ae0	CGameScriptInterface	CGameScriptInterface::MsgOnBoastsMade	PASS	CGameScriptInterface	MsgOnBoastsMade	bool	bool	1	1		PASS	
 008a9c40	CGameScriptInterface	CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom	PASS	CGameScriptInterface	GetAllThingsWithDefNameByDistanceFrom	long	int	3	3		PASS	
 008a9db0	CGameScriptInterface	CGameScriptInterface::AddRumourCategory	PASS	CGameScriptInterface	AddRumourCategory	void	void __thiscall	1	1		PASS	
 008a9dd0	CGameScriptInterface	CGameScriptInterface::AddNewRumourToCategory	PASS	CGameScriptInterface	AddNewRumourToCategory	void	void __thiscall	2	2		PASS	
@@ -820,7 +820,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00c62a30	_global	StreamBuffer_AdvancePosition	PASS	_global	StreamBuffer_AdvancePosition	undefined	void __thiscall	0	2		REVIEW	explicit-parameter-count-mismatch
 00c88e60	_global	Audio_ProcessFilter4Channel	PASS	_global	Audio_ProcessFilter4Channel	undefined	void __cdecl	0	5		REVIEW	explicit-parameter-count-mismatch
 00c8bae0	_global	Script_GetEntryPointer	PASS	_global	Script_GetEntryPointer	undefined	std::int32_t __fastcall	0	2		REVIEW	explicit-parameter-count-mismatch
-00c8c730	_global	Batch_InvokeWithStackArgs_c8c730	FAIL	_global	Batch_InvokeWithStackArgs_c8c730	undefined	int __stdcall	0	3		REVIEW	explicit-parameter-count-mismatch
+00c8c730	_global	Batch_InvokeWithStackArgs_c8c730	FAIL	_global	GetBankFileAt1E0	undefined	static inline CBankFile*	0	1		REVIEW	method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch
 00c92f10	_global	DSP_ComputeRunningMinEnvelope	PASS	_global	DSP_ComputeRunningMinEnvelope	undefined	void __cdecl	0	3		REVIEW	explicit-parameter-count-mismatch
 00c93080	_global	FFT_ComputeWaveformEnvelope	PASS	_global	FFT_ComputeWaveformEnvelope	undefined	void	0	2		REVIEW	explicit-parameter-count-mismatch
 00c93b30	_global	Audio_ApplyGainTableToBuffer	PASS	_global	Audio_ApplyGainTableToBuffer	undefined	void __fastcall	0	5		REVIEW	explicit-parameter-count-mismatch

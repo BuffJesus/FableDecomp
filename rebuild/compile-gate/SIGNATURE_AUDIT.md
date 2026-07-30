@@ -1,14 +1,14 @@
 # Candidate signature audit
 
-Generated: `2026-07-29T22:12:07-06:00`
+Generated: `2026-07-30T10:03:52-06:00`
 
-Clean: **541 / 840**. Review required: **299**.
+Clean: **540 / 840**. Review required: **300**.
 
 | Issue | Candidates |
 |---|---:|
-| `explicit-parameter-count-mismatch` | 267 |
-| `return-shape-mismatch` | 88 |
-| `method-name-mismatch` | 40 |
+| `explicit-parameter-count-mismatch` | 268 |
+| `return-shape-mismatch` | 90 |
+| `method-name-mismatch` | 41 |
 | `duplicate-linkage-signature` | 40 |
 | `definition-not-parsed` | 13 |
 | `owner-mismatch` | 8 |
@@ -264,6 +264,7 @@ Clean: **541 / 840**. Review required: **299**.
 | `0089fc80` | `CGameScriptInterface` | `CGameScriptInterface::CreateExplosion` | `CreateExplosion` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `0089fd20` | `CGameScriptInterface` | `CGameScriptInterface::CreatePhysicalBarrier` | `CreatePhysicalBarrier` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `0089fda0` | `CGameScriptInterface` | `CGameScriptInterface::CreateRumble` | `CreateRumble` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `008a9100` | `CGameScriptInterface` | `CGameScriptInterface::CreateCreature` | `CreateCreature` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `008ae890` | `CGameScriptInterface` | `CGameScriptInterface::_AddGossipVillages_impl` | `_AddGossipVillages_impl` | explicit-parameter-count-mismatch |
 | `008aeac0` | `CGameScriptInterface` | `CGameScriptInterface::_AddGossipFactions_impl` | `_AddGossipFactions_impl` | explicit-parameter-count-mismatch |
 | `008d1890` | `CGameScriptThing` | `CGameScriptThing::MsgWhoHitMe` | `MsgWhoHitMe` | explicit-parameter-count-mismatch;return-shape-mismatch |
@@ -297,7 +298,7 @@ Clean: **541 / 840**. Review required: **299**.
 | `00c62a30` | `_global` | `StreamBuffer_AdvancePosition` | `StreamBuffer_AdvancePosition` | explicit-parameter-count-mismatch |
 | `00c88e60` | `_global` | `Audio_ProcessFilter4Channel` | `Audio_ProcessFilter4Channel` | explicit-parameter-count-mismatch |
 | `00c8bae0` | `_global` | `Script_GetEntryPointer` | `Script_GetEntryPointer` | explicit-parameter-count-mismatch |
-| `00c8c730` | `_global` | `Batch_InvokeWithStackArgs_c8c730` | `Batch_InvokeWithStackArgs_c8c730` | explicit-parameter-count-mismatch |
+| `00c8c730` | `_global` | `Batch_InvokeWithStackArgs_c8c730` | `GetBankFileAt1E0` | method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch |
 | `00c92f10` | `_global` | `DSP_ComputeRunningMinEnvelope` | `DSP_ComputeRunningMinEnvelope` | explicit-parameter-count-mismatch |
 | `00c93080` | `_global` | `FFT_ComputeWaveformEnvelope` | `FFT_ComputeWaveformEnvelope` | explicit-parameter-count-mismatch |
 | `00c93b30` | `_global` | `Audio_ApplyGainTableToBuffer` | `Audio_ApplyGainTableToBuffer` | explicit-parameter-count-mismatch |

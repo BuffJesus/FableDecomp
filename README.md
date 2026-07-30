@@ -89,13 +89,13 @@ parity, coverage, and naming reports:
 | Reconstruction | — of which byte-**identical** C++ | 2,900 (5.85%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 40 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
-| Auto-RE intake | Generated candidates / structural checker PASS | 840 / 825 |
+| Auto-RE intake | Generated candidates / structural checker PASS | 840 / 826 |
 | Boot path | GFMain direct-call sites proven | **257 / 257** (100.00%) |
 | Boot path | Callable authored GFMain phases | **10 / 10** (100.00%) |
 | Boot path | Current Phase 10 direct calls proven | **21 / 21** (100.00%) |
 | Modern C++23 | GFMain phases promoted into the modern startup lane | **0 / 10** (0.00%) |
 
-Counts above are from the 2026-07-29 canonical refresh:
+Counts above are from the 2026-07-30 canonical refresh:
 `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json`,
 `rebuild/COVERAGE.md`, and the naming-quality reports.
 
