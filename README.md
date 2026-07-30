@@ -61,13 +61,13 @@ working memory and exact resume point are always at the top of
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Verified functional or matching reconstruction | **5,319 · 10.73%** |
-| Byte-identical reconstruction | **2,987 · 6.03%** |
+| Verified functional or matching reconstruction | **5,327 · 10.75%** |
+| Byte-identical reconstruction | **2,992 · 6.04%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
-Current functional-or-matching coverage is **10.73%** of the 49,568-function catalog.
-Of that verified set, **6.03%** is byte-identical C++.
+Current functional-or-matching coverage is **10.75%** of the 49,568-function catalog.
+Of that verified set, **6.04%** is byte-identical C++.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -84,9 +84,9 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.677% |
 | Analysis DB | Complete non-`undefined` prototype | 69.065% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **5,470** |
-| Reconstruction | Verified functional or matching C++ | **5,319** (10.73%) |
-| Reconstruction | — of which byte-**identical** C++ | 2,987 (6.03%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **5,478** |
+| Reconstruction | Verified functional or matching C++ | **5,327** (10.75%) |
+| Reconstruction | — of which byte-**identical** C++ | 2,992 (6.04%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 41 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
 | Auto-RE intake | Generated candidates / structural checker PASS | 845 / 831 |
@@ -100,7 +100,7 @@ Counts above are from the 2026-07-30 canonical refresh:
 `rebuild/COVERAGE.md`, and the naming-quality reports.
 
 Generated agent output is tracked separately and is never counted merely
-because a structural checker accepted it. The 10.73% figure is intentionally the strict,
+because a structural checker accepted it. The 10.75% figure is intentionally the strict,
 whole-executable denominator. Boot-path figures are a separate view of
 the 3,952-byte `GFMain` coordinator, not an estimate of total engineering time.
 The C++23 startup figure is deliberately separate too: exact x86 parity and

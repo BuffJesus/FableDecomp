@@ -38141,6 +38141,69 @@ $catalog = @(
         TestSource = '00/52/global_PhysicsScaleFloatByGameSpeed_0052e470_test.cpp'
         PassPattern = 'OK_0x0052e470'
     }
+    [pscustomobject]@{
+        Address = '0054a510'
+        Module = 'CUserProfileManager'
+        Source = '00/54/CUserProfileManager_GetCameraSensitivity_0054a510.cpp'
+        TestSource = '00/54/CUserProfileManager_GetCameraSensitivity_0054a510_test.cpp'
+        PassPattern = 'OK_0x0054a510'
+    }
+    [pscustomobject]@{
+        Address = '00554110'
+        Module = 'CMorphingSprite'
+        Source = '00/55/CMorphingSprite_InternalChanged_00554110.cpp'
+        TestSource = '00/55/CMorphingSprite_InternalChanged_00554110_test.cpp'
+        PassPattern = 'OK_0x00554110'
+    }
+    [pscustomobject]@{
+        Address = '00556540'
+        Module = '_global'
+        Source = '00/55/global_CanAcceptChanges_00556540.cpp'
+        TestSource = '00/55/global_CanAcceptChanges_00556540_test.cpp'
+        PassPattern = 'OK_0x00556540'
+    }
+    [pscustomobject]@{
+        Address = '00556570'
+        Module = 'CObservable'
+        Source = '00/55/CObservable_AddExclusiveObserver_00556570.cpp'
+        TestSource = '00/55/CObservable_AddExclusiveObserver_00556570_test.cpp'
+        PassPattern = 'OK_0x00556570'
+    }
+    [pscustomobject]@{
+        Address = '00557940'
+        Module = 'CTCKraken'
+        Source = '00/55/CTCKraken_HaveAllTentaclesBeenHit_00557940.cpp'
+        TestSource = '00/55/CTCKraken_HaveAllTentaclesBeenHit_00557940_test.cpp'
+        PassPattern = 'OK_0x00557940'
+    }
+    [pscustomobject]@{
+        Address = '0055ad30'
+        Module = 'CClickable'
+        Source = '00/55/CClickable_OnRightUnclicked_0055ad30.cpp'
+        TestSource = '00/55/CClickable_OnRightUnclicked_0055ad30_test.cpp'
+        PassPattern = 'OK_0x0055ad30'
+    }
+    [pscustomobject]@{
+        Address = '0055b9a0'
+        Module = 'CHoverable'
+        Source = '00/55/CHoverable_OnUnhovered_0055b9a0.cpp'
+        TestSource = '00/55/CHoverable_OnUnhovered_0055b9a0_test.cpp'
+        PassPattern = 'OK_0x0055b9a0'
+    }
+    [pscustomobject]@{
+        Address = '00556520'
+        Module = '_global'
+        Source = '00/55/global_IsRedefinerListActive_00556520.cpp'
+        TestSource = '00/55/global_IsRedefinerListActive_00556520_test.cpp'
+        PassPattern = 'OK_0x00556520'
+    }
+    [pscustomobject]@{
+        Address = '00557840'
+        Module = '_global'
+        Source = '00/55/global_ResetButtonCounts_00557840.cpp'
+        TestSource = '00/55/global_ResetButtonCounts_00557840_test.cpp'
+        PassPattern = 'OK_0x00557840'
+    }
 )
 
 $requestedAddresses = @(
