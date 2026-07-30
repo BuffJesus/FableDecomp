@@ -37336,6 +37336,20 @@ $catalog = @(
         TestSource = '00/c8/global_BatchInvokeWithStackArgsc8c730_00c8c730_test.cpp'
         PassPattern = 'Batch_InvokeWithStackArgs_c8c730_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0040e250'
+        Module = 'CAIStateGroup_EnemyCreatureBase'
+        Source = '00/40/CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_0040e250.cpp'
+        TestSource = '00/40/CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_0040e250_test.cpp'
+        PassPattern = 'OK_0x0040e250'
+    }
+    [pscustomobject]@{
+        Address = '004159b0'
+        Module = 'CGameEvent'
+        Source = '00/41/CGameEvent_CGameEvent_004159b0.cpp'
+        TestSource = '00/41/CGameEvent_CGameEvent_004159b0_test.cpp'
+        PassPattern = 'OK_0x004159b0'
+    }
 )
 
 $requestedAddresses = @(
