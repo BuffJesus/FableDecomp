@@ -37952,6 +37952,69 @@ $catalog = @(
         TestSource = '00/4d/CObstacleNavigatorExternalInterface_GetTerrainDesirabilityAt_004df3cb_test.cpp'
         PassPattern = 'OK_0x004df3cb'
     }
+    [pscustomobject]@{
+        Address = '004e9627'
+        Module = 'CDateAndTime'
+        Source = '00/4e/CDateAndTime_CDateAndTime_004e9627.cpp'
+        TestSource = '00/4e/CDateAndTime_CDateAndTime_004e9627_test.cpp'
+        PassPattern = 'OK_0x004e9627'
+    }
+    [pscustomobject]@{
+        Address = '004ea2ae'
+        Module = 'CIndexBuffer'
+        Source = '00/4e/CIndexBuffer_CIndexBuffer_004ea2ae.cpp'
+        TestSource = '00/4e/CIndexBuffer_CIndexBuffer_004ea2ae_test.cpp'
+        PassPattern = 'OK_0x004ea2ae'
+    }
+    [pscustomobject]@{
+        Address = '004ec9b5'
+        Module = 'CSoundInit'
+        Source = '00/4e/CSoundInit_CSoundInit_004ec9b5.cpp'
+        TestSource = '00/4e/CSoundInit_CSoundInit_004ec9b5_test.cpp'
+        PassPattern = 'OK_0x004ec9b5'
+    }
+    [pscustomobject]@{
+        Address = '004fab10'
+        Module = 'C2DBoxI'
+        Source = '00/4f/C2DBoxI_ContainsPoint_004fab10.cpp'
+        TestSource = '00/4f/C2DBoxI_ContainsPoint_004fab10_test.cpp'
+        PassPattern = 'OK_0x004fab10'
+    }
+    [pscustomobject]@{
+        Address = '004fb290'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_DrawFindLastUnblockedGroundPositionAndReportColl_004fb290.cpp'
+        TestSource = '00/4f/CWorldMap_DrawFindLastUnblockedGroundPositionAndReportColl_004fb290_test.cpp'
+        PassPattern = 'OK_0x004fb290'
+    }
+    [pscustomobject]@{
+        Address = '004fb2a0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_DrawFindLastUnblockedThemePositionAndReportColli_004fb2a0.cpp'
+        TestSource = '00/4f/CWorldMap_DrawFindLastUnblockedThemePositionAndReportColli_004fb2a0_test.cpp'
+        PassPattern = 'OK_0x004fb2a0'
+    }
+    [pscustomobject]@{
+        Address = '004fb2b0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_DrawGetDimensions_004fb2b0.cpp'
+        TestSource = '00/4f/CWorldMap_DrawGetDimensions_004fb2b0_test.cpp'
+        PassPattern = 'OK_0x004fb2b0'
+    }
+    [pscustomobject]@{
+        Address = '004fb2f0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_IsPosChangeable_004fb2f0.cpp'
+        TestSource = '00/4f/CWorldMap_IsPosChangeable_004fb2f0_test.cpp'
+        PassPattern = 'OK_0x004fb2f0'
+    }
+    [pscustomobject]@{
+        Address = '004e786c'
+        Module = 'CNavigationLayer'
+        Source = '00/4e/CNavigationLayer_CNavigationLayer_004e786c.cpp'
+        TestSource = '00/4e/CNavigationLayer_CNavigationLayer_004e786c_test.cpp'
+        PassPattern = 'OK_0x004e786c'
+    }
 )
 
 $requestedAddresses = @(
