@@ -37399,6 +37399,62 @@ $catalog = @(
         TestSource = '00/41/CIndexBuffer_CIndexBuffer_00414de0_test.cpp'
         PassPattern = 'OK_0x00414de0'
     }
+    [pscustomobject]@{
+        Address = '00419270'
+        Module = 'CDisplayEngineInit'
+        Source = '00/41/CDisplayEngineInit_CDisplayEngineInit_00419270.cpp'
+        TestSource = '00/41/CDisplayEngineInit_CDisplayEngineInit_00419270_test.cpp'
+        PassPattern = 'OK_0x00419270'
+    }
+    [pscustomobject]@{
+        Address = '00434ad0'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_ForceOpen_00434ad0.cpp'
+        TestSource = '00/43/CPlayerGui_ForceOpen_00434ad0_test.cpp'
+        PassPattern = 'OK_0x00434ad0'
+    }
+    [pscustomobject]@{
+        Address = '004371a0'
+        Module = 'CRightHandedSet'
+        Source = '00/43/CRightHandedSet_CRightHandedSet_004371a0.cpp'
+        TestSource = '00/43/CRightHandedSet_CRightHandedSet_004371a0_test.cpp'
+        PassPattern = 'OK_0x004371a0'
+    }
+    [pscustomobject]@{
+        Address = '004376b0'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_SetCrimeAsDisplaying_004376b0.cpp'
+        TestSource = '00/43/CPlayerGui_SetCrimeAsDisplaying_004376b0_test.cpp'
+        PassPattern = 'OK_0x004376b0'
+    }
+    [pscustomobject]@{
+        Address = '00419220'
+        Module = 'CGameEventPackage'
+        Source = '00/41/CGameEventPackage_CGameEventPackage_00419220.cpp'
+        TestSource = '00/41/CGameEventPackage_CGameEventPackage_00419220_test.cpp'
+        PassPattern = 'OK_0x00419220'
+    }
+    [pscustomobject]@{
+        Address = '0042ae0e'
+        Module = '_global'
+        Source = '00/42/global_BinarySearchTreeFindByIntKey_0042ae0e.cpp'
+        TestSource = '00/42/global_BinarySearchTreeFindByIntKey_0042ae0e_test.cpp'
+        PassPattern = 'OK_0x0042ae0e'
+    }
+    [pscustomobject]@{
+        Address = '0042ae33'
+        Module = '_global'
+        Source = '00/42/global_BinaryTreeFind_0042ae33.cpp'
+        TestSource = '00/42/global_BinaryTreeFind_0042ae33_test.cpp'
+        PassPattern = 'OK_0x0042ae33'
+    }
+    [pscustomobject]@{
+        Address = '0042ad6c'
+        Module = '_global'
+        Source = '00/42/global_BinarySearchTreeFindEqualOrGreater_0042ad6c.cpp'
+        TestSource = '00/42/global_BinarySearchTreeFindEqualOrGreater_0042ad6c_test.cpp'
+        PassPattern = 'OK_0x0042ad6c'
+    }
 )
 
 $requestedAddresses = @(
