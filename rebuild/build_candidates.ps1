@@ -38267,6 +38267,69 @@ $catalog = @(
         TestSource = '00/56/CTCBoastUI_RequestActivate_0056a860_test.cpp'
         PassPattern = 'OK_0x0056a860'
     }
+    [pscustomobject]@{
+        Address = '0057cae9'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_UpgradeRenownLevel_0057cae9.cpp'
+        TestSource = '00/57/CTCHeroStats_UpgradeRenownLevel_0057cae9_test.cpp'
+        PassPattern = 'OK_0x0057cae9'
+    }
+    [pscustomobject]@{
+        Address = '0057f0d7'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/57/CEngineInternalPrimitiveBase_AddChildPrimitive_0057f0d7.cpp'
+        TestSource = '00/57/CEngineInternalPrimitiveBase_AddChildPrimitive_0057f0d7_test.cpp'
+        PassPattern = 'OK_0x0057f0d7'
+    }
+    [pscustomobject]@{
+        Address = '0057fc46'
+        Module = 'CTattooDef'
+        Source = '00/57/CTattooDef_GetTypeBalancedAttractiveness_0057fc46.cpp'
+        TestSource = '00/57/CTattooDef_GetTypeBalancedAttractiveness_0057fc46_test.cpp'
+        PassPattern = 'OK_0x0057fc46'
+    }
+    [pscustomobject]@{
+        Address = '0057feb1'
+        Module = '_global'
+        Source = '00/57/global_UIntRBTreeFindGreaterOrEqual_0057feb1.cpp'
+        TestSource = '00/57/global_UIntRBTreeFindGreaterOrEqual_0057feb1_test.cpp'
+        PassPattern = 'OK_0x0057feb1'
+    }
+    [pscustomobject]@{
+        Address = '0057fed6'
+        Module = '_global'
+        Source = '00/57/global_UIntRBTreeFindLess_0057fed6.cpp'
+        TestSource = '00/57/global_UIntRBTreeFindLess_0057fed6_test.cpp'
+        PassPattern = 'OK_0x0057fed6'
+    }
+    [pscustomobject]@{
+        Address = '005819dd'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_ConstructItemDescription_005819dd.cpp'
+        TestSource = '00/58/CTCInventory_ConstructItemDescription_005819dd_test.cpp'
+        PassPattern = 'OK_0x005819dd'
+    }
+    [pscustomobject]@{
+        Address = '00581bde'
+        Module = '_global'
+        Source = '00/58/global_GetContextSensitivePreferredItemButtonIndex_00581bde.cpp'
+        TestSource = '00/58/global_GetContextSensitivePreferredItemButtonIndex_00581bde_test.cpp'
+        PassPattern = 'OK_0x00581bde'
+    }
+    [pscustomobject]@{
+        Address = '00593375'
+        Module = '_global'
+        Source = '00/59/global_BinarySearchTreeFindNode_00593375.cpp'
+        TestSource = '00/59/global_BinarySearchTreeFindNode_00593375_test.cpp'
+        PassPattern = 'OK_0x00593375'
+    }
+    [pscustomobject]@{
+        Address = '0059aaf9'
+        Module = 'CTCInventoryExperience'
+        Source = '00/59/CTCInventoryExperience_IncrementStatIndicator_0059aaf9.cpp'
+        TestSource = '00/59/CTCInventoryExperience_IncrementStatIndicator_0059aaf9_test.cpp'
+        PassPattern = 'OK_0x0059aaf9'
+    }
 )
 
 $requestedAddresses = @(

@@ -1376,7 +1376,7 @@ CEditInputProcessAnimation	2	0	0	0	0	0	0	0	0	0	0
 CEditInputProcessBase	2	0	0	0	0	0	0	0	0	0	0
 CEditInputProcessBone	2	0	0	0	0	0	0	0	0	0	0
 CEditInputProcessConsole	1	0	0	0	0	0	0	0	0	0	0
-CEditInputProcessCopyPaste	16	6	6	0	0	1	1	1	0	0	0
+CEditInputProcessCopyPaste	16	6	6	0	0	2	2	1	1	0	0
 CEditInputProcessEditCameraPoint	2	0	0	0	0	0	0	0	0	0	0
 CEditInputProcessEditShapes	3	0	0	0	0	0	0	0	0	0	0
 CEditInputProcessEditThings	2	0	0	0	0	0	0	0	0	0	0
@@ -1460,7 +1460,7 @@ CEngineInternalPrimitive2DText	1	1	1	0	0	0	0	0	0	0	0
 CEngineInternalPrimitive2DViewport	10	14	13	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveAnimatedMesh	16	16	16	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveAnimatedMeshFromFile	1	1	1	0	0	1	1	1	0	0	0
-CEngineInternalPrimitiveBase	15	100	98	0	0	55	55	54	1	0	0
+CEngineInternalPrimitiveBase	15	100	98	0	0	56	56	55	1	0	0
 CEngineInternalPrimitiveChanger	16	16	15	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveDecal	4	4	4	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveFlareSprite	1	1	1	0	0	0	0	0	0	0	0
@@ -3193,7 +3193,7 @@ CTCBed	9	13	3	0	0	0	0	0	0	0	0
 CTCBerserk	25	14	12	0	0	0	0	0	0	0	0
 CTCBetting	11	12	10	0	0	0	0	0	0	0	0
 CTCBlacksmiths	3	0	0	0	0	0	0	0	0	0	0
-CTCBoastUI	12	7	7	0	0	0	0	0	0	0	0
+CTCBoastUI	12	7	7	0	0	1	1	1	0	0	0
 CTCBoastingArea	11	4	4	0	0	0	0	0	0	0	0
 CTCBoastingCrowdControl	19	12	12	0	0	2	2	2	0	0	0
 CTCBoastingPodium	11	8	5	0	0	0	0	0	0	0	0
@@ -3357,7 +3357,7 @@ CTCHeroRangedAttacks	28	19	13	0	0	0	0	0	0	0	0
 CTCHeroReceiveItems	12	5	5	0	0	0	0	0	0	0	0
 CTCHeroRememberCrimes	8	1	1	0	0	0	0	0	0	0	0
 CTCHeroSpecialMovement	9	3	3	0	0	0	0	0	0	0	0
-CTCHeroStats	82	100	77	0	0	6	6	2	4	0	0
+CTCHeroStats	82	100	77	0	0	7	7	2	5	0	0
 CTCHighlightItem	10	4	4	0	0	0	0	0	0	0	0
 CTCHitLocations	15	8	6	0	0	0	0	0	0	0	0
 CTCHitOnCollision	4	1	1	0	0	0	0	0	0	0	0
@@ -3366,11 +3366,11 @@ CTCInGameMenu	38	28	26	0	0	0	0	0	0	0	0
 CTCInfoDisplay	8	1	1	0	0	0	0	0	0	0	0
 CTCInterestingToVillagers	4	0	0	0	0	0	0	0	0	0	0
 CTCInterface	0	4	0	0	0	0	0	0	0	0	0
-CTCInventory	118	93	90	0	0	0	0	0	0	0	0
+CTCInventory	118	93	90	0	0	1	1	1	0	0	0
 CTCInventoryAbilities	81	100	99	0	0	3	3	3	0	0	0
 CTCInventoryBase	140	135	132	0	0	7	7	7	0	0	0
 CTCInventoryClothing	50	37	37	0	0	2	2	2	0	0	0
-CTCInventoryExperience	84	62	58	0	0	2	2	2	0	0	0
+CTCInventoryExperience	84	62	58	0	0	3	3	3	0	0	0
 CTCInventoryItem	60	103	101	0	0	15	15	3	12	0	0
 CTCInventoryMagic	11	5	4	0	0	0	0	0	0	0	0
 CTCInventoryMap	73	43	41	0	0	0	0	0	0	0	0
@@ -3550,7 +3550,7 @@ CTargetForKey	4	1	1	0	0	0	0	0	0	0	0
 CTargetPoint	0	4	0	0	0	0	0	0	0	0	0
 CTargetPointFilter_FurtherFromPosThan	0	1	1	0	0	0	0	0	0	0	0
 CTargetingDef	3	3	3	0	0	1	1	1	0	0	0
-CTattooDef	8	14	9	0	0	2	2	2	0	0	0
+CTattooDef	8	14	9	0	0	3	3	3	0	0	0
 CTauntingBandit	3	2	2	0	0	0	0	0	0	0	0
 CTavernDef	3	3	3	0	0	1	1	1	0	0	0
 CTavernGameCardBaseDef	2	3	3	0	0	0	0	0	0	0	0
@@ -4505,7 +4505,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11362	1997	268	5	168	168	90	74	0	0
+_global	0	11362	1997	268	5	173	173	94	75	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0
