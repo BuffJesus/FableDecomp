@@ -38393,6 +38393,55 @@ $catalog = @(
         TestSource = '00/5b/global_RBTreeFindLTReverse_005bad36_test.cpp'
         PassPattern = 'OK_0x005bad36'
     }
+    [pscustomobject]@{
+        Address = '005bc499'
+        Module = 'CTCInventoryBase'
+        Source = '00/5b/CTCInventoryBase_RemoveItemFromInventory_005bc499.cpp'
+        TestSource = '00/5b/CTCInventoryBase_RemoveItemFromInventory_005bc499_test.cpp'
+        PassPattern = 'OK_0x005bc499'
+    }
+    [pscustomobject]@{
+        Address = '005bc4b6'
+        Module = 'CObservable'
+        Source = '00/5b/CObservable_AddExclusiveObserver_005bc4b6.cpp'
+        TestSource = '00/5b/CObservable_AddExclusiveObserver_005bc4b6_test.cpp'
+        PassPattern = 'OK_0x005bc4b6'
+    }
+    [pscustomobject]@{
+        Address = '005bc70a'
+        Module = 'CItem'
+        Source = '00/5b/CItem_UpdateNonQuestPersistentRefCount_005bc70a.cpp'
+        TestSource = '00/5b/CItem_UpdateNonQuestPersistentRefCount_005bc70a_test.cpp'
+        PassPattern = 'OK_0x005bc70a'
+    }
+    [pscustomobject]@{
+        Address = '005bc729'
+        Module = 'CItem'
+        Source = '00/5b/CItem_IsQuestPersistent_005bc729.cpp'
+        TestSource = '00/5b/CItem_IsQuestPersistent_005bc729_test.cpp'
+        PassPattern = 'OK_0x005bc729'
+    }
+    [pscustomobject]@{
+        Address = '005bc746'
+        Module = 'CScriptBase'
+        Source = '00/5b/CScriptBase_IsActiveThreadTerminating_005bc746.cpp'
+        TestSource = '00/5b/CScriptBase_IsActiveThreadTerminating_005bc746_test.cpp'
+        PassPattern = 'OK_0x005bc746'
+    }
+    [pscustomobject]@{
+        Address = '005bc638'
+        Module = 'CTCInventoryBase'
+        Source = '00/5b/CTCInventoryBase_ProcessButtonAReleased_005bc638.cpp'
+        TestSource = '00/5b/CTCInventoryBase_ProcessButtonAReleased_005bc638_test.cpp'
+        PassPattern = 'OK_0x005bc638'
+    }
+    [pscustomobject]@{
+        Address = '005bc6f9'
+        Module = 'CItem'
+        Source = '00/5b/CItem_SetQuestPersistentFlag_005bc6f9.cpp'
+        TestSource = '00/5b/CItem_SetQuestPersistentFlag_005bc6f9_test.cpp'
+        PassPattern = 'OK_0x005bc6f9'
+    }
 )
 
 $requestedAddresses = @(
