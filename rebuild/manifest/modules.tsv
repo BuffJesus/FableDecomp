@@ -1270,7 +1270,7 @@ CDataBankGroupEntry	4	6	6	0	0	0	0	0	0	0	0
 CDataBankTextEntry	4	1	1	0	0	0	0	0	0	0	0
 CDataInputStream	28	30	24	0	0	6	6	3	3	0	0
 CDataOutputStream	30	28	27	0	0	0	0	0	0	0	0
-CDateAndTime	6	31	6	0	0	1	1	1	0	0	0
+CDateAndTime	6	31	6	0	0	2	2	2	0	0	0
 CDead	1	0	0	0	0	0	0	0	0	0	0
 CDebugManager	29	1	1	0	0	0	0	0	0	0	0
 CDebugObjectTracker	1	0	0	0	0	0	0	0	0	0	0
@@ -1460,7 +1460,7 @@ CEngineInternalPrimitive2DText	1	1	1	0	0	0	0	0	0	0	0
 CEngineInternalPrimitive2DViewport	10	14	13	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveAnimatedMesh	16	16	16	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveAnimatedMeshFromFile	1	1	1	0	0	1	1	1	0	0	0
-CEngineInternalPrimitiveBase	15	100	98	0	0	54	54	53	1	0	0
+CEngineInternalPrimitiveBase	15	100	98	0	0	55	55	54	1	0	0
 CEngineInternalPrimitiveChanger	16	16	15	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveDecal	4	4	4	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveFlareSprite	1	1	1	0	0	0	0	0	0	0	0
@@ -1940,7 +1940,7 @@ CHeroExperienceDef	2	9	4	0	0	1	1	1	0	0	0
 CHeroInformationScreens	0	1	0	0	0	0	0	0	0	0	0
 CHeroLogBook	9	1	1	0	0	0	0	0	0	0	0
 CHeroMarriageDef	3	6	5	0	0	2	2	2	0	0	0
-CHeroMarriageInfo	0	1	0	0	0	0	0	0	0	0	0
+CHeroMarriageInfo	0	1	0	0	0	1	1	1	0	0	0
 CHeroMorphDef	2	9	4	0	0	1	1	1	0	0	0
 CHeroPostcardGenerator	1	0	0	0	0	0	0	0	0	0	0
 CHeroPostcardGeneratorDef	2	3	3	0	0	2	2	1	1	0	0
@@ -3357,7 +3357,7 @@ CTCHeroRangedAttacks	28	19	13	0	0	0	0	0	0	0	0
 CTCHeroReceiveItems	12	5	5	0	0	0	0	0	0	0	0
 CTCHeroRememberCrimes	8	1	1	0	0	0	0	0	0	0	0
 CTCHeroSpecialMovement	9	3	3	0	0	0	0	0	0	0	0
-CTCHeroStats	82	100	77	0	0	5	5	1	4	0	0
+CTCHeroStats	82	100	77	0	0	6	6	2	4	0	0
 CTCHighlightItem	10	4	4	0	0	0	0	0	0	0	0
 CTCHitLocations	15	8	6	0	0	0	0	0	0	0	0
 CTCHitOnCollision	4	1	1	0	0	0	0	0	0	0	0
@@ -3370,7 +3370,7 @@ CTCInventory	118	93	90	0	0	0	0	0	0	0	0
 CTCInventoryAbilities	81	100	99	0	0	3	3	3	0	0	0
 CTCInventoryBase	140	135	132	0	0	7	7	7	0	0	0
 CTCInventoryClothing	50	37	37	0	0	2	2	2	0	0	0
-CTCInventoryExperience	84	62	58	0	0	0	0	0	0	0	0
+CTCInventoryExperience	84	62	58	0	0	2	2	2	0	0	0
 CTCInventoryItem	60	103	101	0	0	15	15	3	12	0	0
 CTCInventoryMagic	11	5	4	0	0	0	0	0	0	0	0
 CTCInventoryMap	73	43	41	0	0	0	0	0	0	0	0
@@ -4505,7 +4505,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11362	1997	268	5	166	166	90	72	0	0
+_global	0	11362	1997	268	5	168	168	90	74	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

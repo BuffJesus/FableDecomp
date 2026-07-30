@@ -38204,6 +38204,69 @@ $catalog = @(
         TestSource = '00/55/global_ResetButtonCounts_00557840_test.cpp'
         PassPattern = 'OK_0x00557840'
     }
+    [pscustomobject]@{
+        Address = '0056e5ca'
+        Module = 'CTCInventoryExperience'
+        Source = '00/56/CTCInventoryExperience_IncrementStatIndicator_0056e5ca.cpp'
+        TestSource = '00/56/CTCInventoryExperience_IncrementStatIndicator_0056e5ca_test.cpp'
+        PassPattern = 'OK_0x0056e5ca'
+    }
+    [pscustomobject]@{
+        Address = '0056e5de'
+        Module = 'CTCInventoryExperience'
+        Source = '00/56/CTCInventoryExperience_DecrementStatIndicator_0056e5de.cpp'
+        TestSource = '00/56/CTCInventoryExperience_DecrementStatIndicator_0056e5de_test.cpp'
+        PassPattern = 'OK_0x0056e5de'
+    }
+    [pscustomobject]@{
+        Address = '00578ce6'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/57/CEngineInternalPrimitiveBase_AddChildPrimitive_00578ce6.cpp'
+        TestSource = '00/57/CEngineInternalPrimitiveBase_AddChildPrimitive_00578ce6_test.cpp'
+        PassPattern = 'OK_0x00578ce6'
+    }
+    [pscustomobject]@{
+        Address = '0057a376'
+        Module = 'CDateAndTime'
+        Source = '00/57/CDateAndTime_CDateAndTime_0057a376.cpp'
+        TestSource = '00/57/CDateAndTime_CDateAndTime_0057a376_test.cpp'
+        PassPattern = 'OK_0x0057a376'
+    }
+    [pscustomobject]@{
+        Address = '0057a3a2'
+        Module = 'CHeroMarriageInfo'
+        Source = '00/57/CHeroMarriageInfo_CHeroMarriageInfo_0057a3a2.cpp'
+        TestSource = '00/57/CHeroMarriageInfo_CHeroMarriageInfo_0057a3a2_test.cpp'
+        PassPattern = 'OK_0x0057a3a2'
+    }
+    [pscustomobject]@{
+        Address = '0057a56c'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_InformOfEvent_0057a56c.cpp'
+        TestSource = '00/57/CTCHeroStats_InformOfEvent_0057a56c_test.cpp'
+        PassPattern = 'OK_0x0057a56c'
+    }
+    [pscustomobject]@{
+        Address = '0055ddf0'
+        Module = 'CEditInputProcessCopyPaste'
+        Source = '00/55/CEditInputProcessCopyPaste_AddToInterface_0055ddf0.cpp'
+        TestSource = '00/55/CEditInputProcessCopyPaste_AddToInterface_0055ddf0_test.cpp'
+        PassPattern = 'OK_0x0055ddf0'
+    }
+    [pscustomobject]@{
+        Address = '00567ea0'
+        Module = '_global'
+        Source = '00/56/global_StdVectorConstruct_00567ea0.cpp'
+        TestSource = '00/56/global_StdVectorConstruct_00567ea0_test.cpp'
+        PassPattern = 'OK_0x00567ea0'
+    }
+    [pscustomobject]@{
+        Address = '0056a860'
+        Module = 'CTCBoastUI'
+        Source = '00/56/CTCBoastUI_RequestActivate_0056a860.cpp'
+        TestSource = '00/56/CTCBoastUI_RequestActivate_0056a860_test.cpp'
+        PassPattern = 'OK_0x0056a860'
+    }
 )
 
 $requestedAddresses = @(
