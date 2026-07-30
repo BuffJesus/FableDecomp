@@ -1,14 +1,14 @@
 # Candidate signature audit
 
-Generated: `2026-07-30T10:03:52-06:00`
+Generated: `2026-07-30T13:00:41-06:00`
 
-Clean: **540 / 840**. Review required: **300**.
+Clean: **541 / 841**. Review required: **300**.
 
 | Issue | Candidates |
 |---|---:|
 | `explicit-parameter-count-mismatch` | 268 |
-| `return-shape-mismatch` | 90 |
-| `method-name-mismatch` | 41 |
+| `return-shape-mismatch` | 89 |
+| `method-name-mismatch` | 40 |
 | `duplicate-linkage-signature` | 40 |
 | `definition-not-parsed` | 13 |
 | `owner-mismatch` | 8 |
@@ -230,6 +230,7 @@ Clean: **540 / 840**. Review required: **300**.
 | `00447390` | `_global` | `Catch@0040d959` | `Catch_0040d959` | method-name-mismatch;explicit-parameter-count-mismatch |
 | `00448520` | `_global` | `Vector_DestroyRange` | `Vector_DestroyRange` | explicit-parameter-count-mismatch |
 | `00448ab0` | `_global` | `Heap_SiftDown_ContainmentVolume` | `Heap_SiftDown_ContainmentVolume` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00448be0` | `_global` | `Heap_MakeHeap_NavConnector` | `Heap_MakeHeap_NavConnector` | explicit-parameter-count-mismatch |
 | `004aa9e0` | `CScriptThing` | `CScriptThing::GetCurrentMapName` | `GetCurrentMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aaa10` | `CScriptThing` | `CScriptThing::GetHomeMapName` | `GetHomeMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004abe60` | `CScriptThing` | `CScriptThing::MsgWhoKilledMe` | `` | definition-not-parsed |
@@ -298,7 +299,6 @@ Clean: **540 / 840**. Review required: **300**.
 | `00c62a30` | `_global` | `StreamBuffer_AdvancePosition` | `StreamBuffer_AdvancePosition` | explicit-parameter-count-mismatch |
 | `00c88e60` | `_global` | `Audio_ProcessFilter4Channel` | `Audio_ProcessFilter4Channel` | explicit-parameter-count-mismatch |
 | `00c8bae0` | `_global` | `Script_GetEntryPointer` | `Script_GetEntryPointer` | explicit-parameter-count-mismatch |
-| `00c8c730` | `_global` | `Batch_InvokeWithStackArgs_c8c730` | `GetBankFileAt1E0` | method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch |
 | `00c92f10` | `_global` | `DSP_ComputeRunningMinEnvelope` | `DSP_ComputeRunningMinEnvelope` | explicit-parameter-count-mismatch |
 | `00c93080` | `_global` | `FFT_ComputeWaveformEnvelope` | `FFT_ComputeWaveformEnvelope` | explicit-parameter-count-mismatch |
 | `00c93b30` | `_global` | `Audio_ApplyGainTableToBuffer` | `Audio_ApplyGainTableToBuffer` | explicit-parameter-count-mismatch |

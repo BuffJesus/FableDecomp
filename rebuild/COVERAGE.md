@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-07-30T10:03:53-06:00`
+Generated: `2026-07-30T13:00:42-06:00`
 
 | Stage | Complete | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
@@ -10,17 +10,17 @@ Generated: `2026-07-30T10:03:53-06:00`
 | Usable reconstruction/navigation names | 49,525 | 49,568 | 99.913% | Includes explicitly classified compiler/template family labels; does not claim original symbols |
 | Calling convention known | 38,503 | 49,568 | 77.677% | Required for ABI-correct declarations |
 | Complete non-undefined prototype | 34,234 | 49,568 | 69.065% | Known CC, return, and parameter types |
-| Auto-RE candidate source | 840 | 49,568 | 1.695% | Generated/reviewed candidate; not compile-verified |
-| Auto-RE checker PASS | 826 | 49,568 | 1.666% | Structural checker grade only |
-| Auto-RE source integrity | 840 | 840 | 100.000% | Balanced, non-empty source snapshots |
-| Host C++20 syntax pass | 394 | 840 | 46.905% | Strict 32-bit translation unit with real declarations |
-| Candidate signature audit clean | 540 | 840 | 64.286% | Definition agrees with manifest owner/name/shape and has unique linkage |
-| VC7.1 compiled candidate | 5,355 | 49,568 | 10.803% | Compiles to an object; behavioral parity not yet claimed |
-| Behavior-tested candidate | 5,355 | 49,568 | 10.803% | Local branch/layout oracle passes; retail parity not yet claimed |
-| Candidate retail `.text` match | 2,884 | 49,568 | 5.818% | Generated-candidate track exact matches awaiting promotion |
-| Candidate relocation-masked `.text` match | 2,303 | 49,568 | 4.646% | Exact instruction bytes/layout after masking expected COFF linker fields |
-| Verified functional or matching C++ | 5,205 | 49,568 | 10.501% | Compiled under VC7.1 and checked against retail |
-| Byte-identical C++ | 2,900 | 49,568 | 5.851% | Exact `.text` match |
+| Auto-RE candidate source | 841 | 49,568 | 1.697% | Generated/reviewed candidate; not compile-verified |
+| Auto-RE checker PASS | 827 | 49,568 | 1.668% | Structural checker grade only |
+| Auto-RE source integrity | 841 | 841 | 100.000% | Balanced, non-empty source snapshots |
+| Host C++20 syntax pass | 394 | 841 | 46.849% | Strict 32-bit translation unit with real declarations |
+| Candidate signature audit clean | 541 | 841 | 64.328% | Definition agrees with manifest owner/name/shape and has unique linkage |
+| VC7.1 compiled candidate | 5,365 | 49,568 | 10.824% | Compiles to an object; behavioral parity not yet claimed |
+| Behavior-tested candidate | 5,365 | 49,568 | 10.824% | Local branch/layout oracle passes; retail parity not yet claimed |
+| Candidate retail `.text` match | 2,890 | 49,568 | 5.830% | Generated-candidate track exact matches awaiting promotion |
+| Candidate relocation-masked `.text` match | 2,306 | 49,568 | 4.652% | Exact instruction bytes/layout after masking expected COFF linker fields |
+| Verified functional or matching C++ | 5,214 | 49,568 | 10.519% | Compiled under VC7.1 and checked against retail |
+| Byte-identical C++ | 2,906 | 49,568 | 5.863% | Exact `.text` match |
 | Lifted modules | 3 | 3,433 | 0.087% | Module-level reconstruction proof |
 
 ## Interpretation
@@ -34,7 +34,7 @@ The clean-decompile sweep predates later function discovery, so its denominator 
 - 15,334 functions still lack a complete non-undefined prototype.
 - 11,065 functions still have an unknown calling convention.
 - 40 names remain in the semantic/accessor review tail; donor proposals and the invalid boundary are tracked separately.
-- 67 of 840 generated auto-RE intake rows currently pass the standalone VC7.1 compatibility gate; the independently authored compiled catalog is not subtracted from this intake ledger.
+- 68 of 841 generated auto-RE intake rows currently pass the standalone VC7.1 compatibility gate; the independently authored compiled catalog is not subtracted from this intake ledger.
 - 300 original generated candidate definitions still disagree with corrected manifest identities or parameter shapes; curated replacements are tracked separately.
-- 168 behavior-tested candidates still differ structurally from the retail parity oracle.
+- 169 behavior-tested candidates still differ structurally from the retail parity oracle.
 - VC7.1 + Win32 + Direct3D 9 compile/link/runtime SDK probe: **resolved and passing**.

@@ -1,13 +1,13 @@
 # Auto-RE candidate compile gate
 
-Generated: `2026-07-30T10:02:38-06:00`
+Generated: `2026-07-30T12:58:50-06:00`
 
 | Gate | Passing | Total |
 |---|---:|---:|
-| Source integrity | 840 | 840 |
-| 32-bit host C++20 syntax | 394 | 840 |
-| No detected VC7.1 language blockers | 67 | 840 |
-| Ready for VC7.1 module compilation | 41 | 840 |
+| Source integrity | 841 | 841 |
+| 32-bit host C++20 syntax | 394 | 841 |
+| No detected VC7.1 language blockers | 68 | 841 |
+| Ready for VC7.1 module compilation | 41 | 841 |
 
 A checker PASS is not a compiler PASS. The host syntax gate supplies only standard-library and calling-convention compatibility; missing engine declarations must be resolved through real module headers.
 

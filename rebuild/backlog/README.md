@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-07-30T10:03:52-06:00`
+Generated: `2026-07-30T13:00:41-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 
@@ -9,7 +9,7 @@ The order favors generated candidate clusters first, then extension of proven mo
 | Rank | Track | Module | Functions | Prototype gaps | Agent candidates | Verified lifts |
 |---:|---|---|---:|---:|---:|---:|
 | 1 | candidate-cluster | `CGameScriptInterface` | 953 | 5 | 440 | 0 |
-| 2 | candidate-cluster | `_global` | 11362 | 9365 | 268 | 0 |
+| 2 | candidate-cluster | `_global` | 11362 | 9365 | 269 | 0 |
 | 3 | candidate-cluster | `CMouseDX` | 24 | 0 | 14 | 10 |
 | 4 | candidate-cluster | `CScriptThing` | 103 | 2 | 15 | 0 |
 | 5 | candidate-cluster | `CMemoryAllocatorFixedSize` | 21 | 0 | 11 | 7 |
@@ -52,9 +52,9 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 | 10 | `0042ad10` | `_global` | 0 | 139 |  |
 | 11 | `0043006f` | `_global` | 0 | 144 |  |
 | 12 | `0042acec` | `_global` | 0 | 172 |  |
-| 13 | `00415fd3` | `_global` | 0 | 180 |  |
-| 14 | `00430022` | `_global` | 0 | 183 |  |
-| 15 | `0043f510` | `_global` | 0 | 194 |  |
+| 13 | `00430022` | `_global` | 0 | 183 |  |
+| 14 | `0043f510` | `_global` | 0 | 194 |  |
+| 15 | `0043f560` | `_global` | 0 | 218 |  |
 
 ## First function queue
 

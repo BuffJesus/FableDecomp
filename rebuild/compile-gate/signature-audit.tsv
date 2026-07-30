@@ -233,6 +233,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00447390	_global	Catch@0040d959	PASS	_global	Catch_0040d959	undefined	void __fastcall	0	1		REVIEW	method-name-mismatch;explicit-parameter-count-mismatch
 00448520	_global	Vector_DestroyRange	PASS	_global	Vector_DestroyRange	undefined	void	0	4		REVIEW	explicit-parameter-count-mismatch
 00448ab0	_global	Heap_SiftDown_ContainmentVolume	PASS	_global	Heap_SiftDown_ContainmentVolume	undefined	CCountedPointer_CContainmentVolume_* __fastcall	0	5		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
+00448be0	_global	Heap_MakeHeap_NavConnector	PASS	_global	Heap_MakeHeap_NavConnector	undefined	void __fastcall	0	3		REVIEW	explicit-parameter-count-mismatch
 00449b60	CPlayerManager	GetMultiplayerColour	PASS	CPlayerManager	GetMultiplayerColour	CRGBColour	CRGBColour	1	1		PASS	
 00449d20	CPlayerManager	IsMultiplayerGameActive	PASS	CPlayerManager	IsMultiplayerGameActive	bool	bool	0	0		PASS	
 004aa890	CScriptThing	CScriptThing::IsDead	PASS	CScriptThing	IsDead	bool	bool	0	0		PASS	
@@ -820,7 +821,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00c62a30	_global	StreamBuffer_AdvancePosition	PASS	_global	StreamBuffer_AdvancePosition	undefined	void __thiscall	0	2		REVIEW	explicit-parameter-count-mismatch
 00c88e60	_global	Audio_ProcessFilter4Channel	PASS	_global	Audio_ProcessFilter4Channel	undefined	void __cdecl	0	5		REVIEW	explicit-parameter-count-mismatch
 00c8bae0	_global	Script_GetEntryPointer	PASS	_global	Script_GetEntryPointer	undefined	std::int32_t __fastcall	0	2		REVIEW	explicit-parameter-count-mismatch
-00c8c730	_global	Batch_InvokeWithStackArgs_c8c730	FAIL	_global	GetBankFileAt1E0	undefined	static inline CBankFile*	0	1		REVIEW	method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch
+00c8c730	_global	Batch_InvokeWithStackArgs_c8c730	FAIL	_global	Batch_InvokeWithStackArgs_c8c730	undefined	int	0	0		PASS	
 00c92f10	_global	DSP_ComputeRunningMinEnvelope	PASS	_global	DSP_ComputeRunningMinEnvelope	undefined	void __cdecl	0	3		REVIEW	explicit-parameter-count-mismatch
 00c93080	_global	FFT_ComputeWaveformEnvelope	PASS	_global	FFT_ComputeWaveformEnvelope	undefined	void	0	2		REVIEW	explicit-parameter-count-mismatch
 00c93b30	_global	Audio_ApplyGainTableToBuffer	PASS	_global	Audio_ApplyGainTableToBuffer	undefined	void __fastcall	0	5		REVIEW	explicit-parameter-count-mismatch
