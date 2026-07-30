@@ -1460,7 +1460,7 @@ CEngineInternalPrimitive2DText	1	1	1	0	0	0	0	0	0	0	0
 CEngineInternalPrimitive2DViewport	10	14	13	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveAnimatedMesh	16	16	16	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveAnimatedMeshFromFile	1	1	1	0	0	1	1	1	0	0	0
-CEngineInternalPrimitiveBase	15	100	98	0	0	51	51	50	1	0	0
+CEngineInternalPrimitiveBase	15	100	98	0	0	52	52	51	1	0	0
 CEngineInternalPrimitiveChanger	16	16	15	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveDecal	4	4	4	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveFlareSprite	1	1	1	0	0	0	0	0	0	0	0
@@ -1751,7 +1751,7 @@ CFleeingWoman	2	1	1	0	0	0	0	0	0	0	0
 CFleshEatingBalverine	2	0	0	0	0	0	0	0	0	0	0
 CFlick	2	0	0	0	0	0	0	0	0	0	0
 CFollower	2	0	0	0	0	0	0	0	0	0	0
-CFontBank	4	5	5	0	0	2	2	2	0	0	0
+CFontBank	4	5	5	0	0	3	3	3	0	0	0
 CFontBankStateBlock	3	12	12	0	0	7	7	0	7	0	0
 CFontDataBank	10	10	9	0	0	1	1	1	0	0	0
 CFontDataBankEntry	4	9	7	0	0	0	0	0	0	0	0
@@ -2502,7 +2502,7 @@ CObjectCacheGroupCollection	16	8	8	0	0	0	0	0	0	0	0
 CObjectFamilyDef	3	4	4	1	0	2	2	1	0	0	0
 CObjectTypeCollection	12	4	4	0	0	0	0	0	0	0	0
 CObjectTypeCollectionPalette	3	2	2	0	0	0	0	0	0	0	0
-CObservable	11	46	45	0	0	9	9	9	0	0	0
+CObservable	11	46	45	0	0	10	10	10	0	0	0
 CObserver	6	2	2	0	0	1	1	0	1	0	0
 CObstacleNavigatorExternalInterface	14	24	24	0	0	3	3	3	0	0	0
 COccupiableDef	2	3	3	0	0	1	1	1	0	0	0
@@ -2592,7 +2592,7 @@ CPerceivedThingDef	2	3	3	0	0	1	1	1	0	0	0
 CPerformanceCounterRegister	2	0	0	0	0	0	0	0	0	0	0
 CPerlinNoise	4	4	4	0	0	0	0	0	0	0	0
 CPermanentBarrier	2	1	1	0	0	0	0	0	0	0	0
-CPersistContext	23	149	140	0	0	2	2	1	1	0	0
+CPersistContext	23	149	140	0	0	3	3	2	1	0	0
 CPersistContextReadSection	0	4	0	0	0	1	1	0	1	0	0
 CPersistContext_TransferableComponent<CIntelligentPointer<CThing>_>	0	5	5	0	0	0	0	0	0	0	0
 CPersistContext_TransferableComponent<CReactionFrequencyTraitsArray>	0	1	1	0	0	0	0	0	0	0	0
@@ -2692,7 +2692,7 @@ CPixelFormat	18	13	12	0	0	3	3	1	2	0	0
 CPixelShader	1	30	29	0	0	0	0	0	0	0	0
 CPixelShaderData	0	4	3	0	0	0	0	0	0	0	0
 CPlane	7	4	4	0	0	0	0	0	0	0	0
-CPlayer	148	74	68	0	0	0	0	0	0	0	0
+CPlayer	148	74	68	0	0	1	1	1	0	0	0
 CPlayerDef	2	3	3	0	0	1	1	1	0	0	0
 CPlayerGui	91	41	40	0	0	16	16	15	1	0	0
 CPlayerGuiDef	3	4	3	0	0	2	2	2	0	0	0
@@ -3118,7 +3118,7 @@ CStringParser	43	34	30	0	0	0	0	0	0	0	0
 CSubPatchTreeLODLockElement	4	0	0	0	0	0	0	0	0	0	0
 CSubPrimitiveList	0	1	0	0	0	0	0	0	0	0	0
 CSubdivisionTriangle	2	2	2	0	0	0	0	0	0	0	0
-CSubtitleRenderer	47	43	41	0	0	1	1	1	0	0	0
+CSubtitleRenderer	47	43	41	0	0	2	2	2	0	0	0
 CSubtitledMessage	6	11	3	0	0	0	0	0	0	0	0
 CSummonDef	2	3	3	0	0	1	1	1	0	0	0
 CSummonableCreatureDef	2	3	3	0	0	1	1	1	0	0	0
@@ -3593,7 +3593,7 @@ CTheKraken	2	0	0	0	0	0	0	0	0	0	0
 CTheRealGuildmaster	14	1	1	0	0	0	0	0	0	0	0
 CTheme2MapDialog	22	0	0	0	0	0	0	0	0	0	0
 CThemeChannel	0	1	0	0	0	0	0	0	0	0	0
-CThing	118	80	76	0	0	4	4	2	2	0	0
+CThing	118	80	76	0	0	5	5	3	2	0	0
 CThingAICreature	82	28	27	0	0	0	0	0	0	0	0
 CThingAICreatureInit	0	1	0	0	0	0	0	0	0	0	0
 CThingAnimatable	0	1	0	0	0	0	0	0	0	0	0
@@ -3776,7 +3776,7 @@ CUndeadSoldier	2	1	1	0	0	0	0	0	0	0	0
 CUndeadSpawnCutscene	2	0	0	0	0	0	0	0	0	0	0
 CUndoBufferBase	3	0	0	0	0	0	0	0	0	0	0
 CUniqueVertex	1	0	0	0	0	0	0	0	0	0	0
-CUserProfileManager	123	140	138	0	0	34	34	4	30	0	0
+CUserProfileManager	123	140	138	0	0	35	35	5	30	0	0
 CVO_OracleMarker	4	3	3	0	0	0	0	0	0	0	0
 CVO_Woman	2	1	1	0	0	0	0	0	0	0	0
 CV_AmbushScamScript	19	31	20	0	0	0	0	0	0	0	0

@@ -37581,6 +37581,69 @@ $catalog = @(
         TestSource = '00/47/CUserProfileManager_GetCameraSensitivity_0047cfc2_test.cpp'
         PassPattern = 'OK_0x0047cfc2'
     }
+    [pscustomobject]@{
+        Address = '0047d008'
+        Module = 'CObservable'
+        Source = '00/47/CObservable_AddExclusiveObserver_0047d008.cpp'
+        TestSource = '00/47/CObservable_AddExclusiveObserver_0047d008_test.cpp'
+        PassPattern = 'OK_0x0047d008'
+    }
+    [pscustomobject]@{
+        Address = '004853d8'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/48/CEngineInternalPrimitiveBase_AddChildPrimitive_004853d8.cpp'
+        TestSource = '00/48/CEngineInternalPrimitiveBase_AddChildPrimitive_004853d8_test.cpp'
+        PassPattern = 'OK_0x004853d8'
+    }
+    [pscustomobject]@{
+        Address = '004874a0'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_IsTargetLocked_004874a0.cpp'
+        TestSource = '00/48/CPlayer_IsTargetLocked_004874a0_test.cpp'
+        PassPattern = 'OK_0x004874a0'
+    }
+    [pscustomobject]@{
+        Address = '0048bc40'
+        Module = 'CThing'
+        Source = '00/48/CThing_IsIncludedInThingScans_0048bc40.cpp'
+        TestSource = '00/48/CThing_IsIncludedInThingScans_0048bc40_test.cpp'
+        PassPattern = 'OK_0x0048bc40'
+    }
+    [pscustomobject]@{
+        Address = '0048da89'
+        Module = 'CFontBank'
+        Source = '00/48/CFontBank_GetStringWidth_0048da89.cpp'
+        TestSource = '00/48/CFontBank_GetStringWidth_0048da89_test.cpp'
+        PassPattern = 'OK_0x0048da89'
+    }
+    [pscustomobject]@{
+        Address = '0048db13'
+        Module = 'CPersistContext'
+        Source = '00/48/CPersistContext_IsBinary_0048db13.cpp'
+        TestSource = '00/48/CPersistContext_IsBinary_0048db13_test.cpp'
+        PassPattern = 'OK_0x0048db13'
+    }
+    [pscustomobject]@{
+        Address = '0048db35'
+        Module = 'CUserProfileManager'
+        Source = '00/48/CUserProfileManager_IsCameraResetting_0048db35.cpp'
+        TestSource = '00/48/CUserProfileManager_IsCameraResetting_0048db35_test.cpp'
+        PassPattern = 'OK_0x0048db35'
+    }
+    [pscustomobject]@{
+        Address = '0048dba6'
+        Module = 'CSubtitleRenderer'
+        Source = '00/48/CSubtitleRenderer_SetVWindowsForDeprecatedDrawInterface_0048dba6.cpp'
+        TestSource = '00/48/CSubtitleRenderer_SetVWindowsForDeprecatedDrawInterface_0048dba6_test.cpp'
+        PassPattern = 'OK_0x0048dba6'
+    }
+    [pscustomobject]@{
+        Address = '00487e90'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_ToggleAggressiveMode_00487e90.cpp'
+        TestSource = '00/48/CPlayer_ToggleAggressiveMode_00487e90_test.cpp'
+        PassPattern = 'OK_0x00487e90'
+    }
 )
 
 $requestedAddresses = @(
