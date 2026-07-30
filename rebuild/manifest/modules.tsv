@@ -963,7 +963,7 @@ CCreatureAction_FinishHealLifeSpell	2	3	3	0	0	1	1	1	0	0	0
 CCreatureAction_FinishWillForceSpell	2	4	3	0	0	1	1	1	0	0	0
 CCreatureAction_FinishWillTurncoatSpell	2	3	3	0	0	1	1	1	0	0	0
 CCreatureAction_FireMissileTest	2	4	2	0	0	0	0	0	0	0	0
-CCreatureAction_FireMissileWeapon	8	51	47	0	0	2	2	2	0	0	0
+CCreatureAction_FireMissileWeapon	8	51	47	0	0	3	3	2	1	0	0
 CCreatureAction_FodderIdle	2	3	3	0	0	1	1	1	0	0	0
 CCreatureAction_FodderPrimaryAttack	2	4	4	0	0	2	2	2	0	0	0
 CCreatureAction_FodderSecondaryAttack	2	4	4	0	0	2	2	2	0	0	0
@@ -3376,7 +3376,7 @@ CTCInventoryMagic	11	5	4	0	0	0	0	0	0	0	0
 CTCInventoryMap	73	43	41	0	0	0	0	0	0	0	0
 CTCInventoryQuests	50	22	22	0	0	0	0	0	0	0	0
 CTCInventoryStats	38	25	24	0	0	0	0	0	0	0	0
-CTCInventoryTrade	103	69	67	0	0	0	0	0	0	0	0
+CTCInventoryTrade	103	69	67	0	0	1	1	0	1	0	0
 CTCInventoryWeapons	67	43	43	0	0	0	0	0	0	0	0
 CTCJackPillar	4	2	2	0	0	0	0	0	0	0	0
 CTCJackShield	4	3	1	0	0	0	0	0	0	0	0
@@ -4505,7 +4505,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11362	1997	268	5	173	173	94	75	0	0
+_global	0	11362	1997	268	5	179	179	100	75	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

@@ -38330,6 +38330,69 @@ $catalog = @(
         TestSource = '00/59/CTCInventoryExperience_IncrementStatIndicator_0059aaf9_test.cpp'
         PassPattern = 'OK_0x0059aaf9'
     }
+    [pscustomobject]@{
+        Address = '0059b61c'
+        Module = 'CCreatureAction_FireMissileWeapon'
+        Source = '00/59/CCreatureActionFireMissileWeapon_FrameUpdate_0059b61c.cpp'
+        TestSource = '00/59/CCreatureActionFireMissileWeapon_FrameUpdate_0059b61c_test.cpp'
+        PassPattern = 'OK_0x0059b61c'
+    }
+    [pscustomobject]@{
+        Address = '0059b777'
+        Module = 'CTCInventoryTrade'
+        Source = '00/59/CTCInventoryTrade_ProcessButtonAReleased_0059b777.cpp'
+        TestSource = '00/59/CTCInventoryTrade_ProcessButtonAReleased_0059b777_test.cpp'
+        PassPattern = 'OK_0x0059b777'
+    }
+    [pscustomobject]@{
+        Address = '005b1dd9'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeFindNodeInt_005b1dd9.cpp'
+        TestSource = '00/5b/global_RBTreeFindNodeInt_005b1dd9_test.cpp'
+        PassPattern = 'OK_0x005b1dd9'
+    }
+    [pscustomobject]@{
+        Address = '005b1dfe'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeFindNodeUint3_005b1dfe.cpp'
+        TestSource = '00/5b/global_RBTreeFindNodeUint3_005b1dfe_test.cpp'
+        PassPattern = 'OK_0x005b1dfe'
+    }
+    [pscustomobject]@{
+        Address = '005bac73'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeLowerBound_005bac73.cpp'
+        TestSource = '00/5b/global_RBTreeLowerBound_005bac73_test.cpp'
+        PassPattern = 'OK_0x005bac73'
+    }
+    [pscustomobject]@{
+        Address = '005bac98'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeFindNode_005bac98.cpp'
+        TestSource = '00/5b/global_RBTreeFindNode_005bac98_test.cpp'
+        PassPattern = 'OK_0x005bac98'
+    }
+    [pscustomobject]@{
+        Address = '005bacec'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeFindNodeDup_005bacec.cpp'
+        TestSource = '00/5b/global_RBTreeFindNodeDup_005bacec_test.cpp'
+        PassPattern = 'OK_0x005bacec'
+    }
+    [pscustomobject]@{
+        Address = '005bad11'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeFindLEReverse_005bad11.cpp'
+        TestSource = '00/5b/global_RBTreeFindLEReverse_005bad11_test.cpp'
+        PassPattern = 'OK_0x005bad11'
+    }
+    [pscustomobject]@{
+        Address = '005bad36'
+        Module = '_global'
+        Source = '00/5b/global_RBTreeFindLTReverse_005bad36.cpp'
+        TestSource = '00/5b/global_RBTreeFindLTReverse_005bad36_test.cpp'
+        PassPattern = 'OK_0x005bad36'
+    }
 )
 
 $requestedAddresses = @(
