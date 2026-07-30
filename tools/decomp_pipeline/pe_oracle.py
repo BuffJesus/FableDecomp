@@ -53,13 +53,17 @@ def main():
         raw=raw[:end]
         # Trim at the TRUE epilogue: the next manifest address can sit past the
         # real function when unlisted trailing thunks are packed in the gap. The
-        # first `ret` (c3 / c2 imm16) followed by an int3 (0xCC) padding run that
-        # is itself followed by more code marks this function's end; everything
-        # after is a separate, unmanifested function. Validated on the retail
-        # oracle: +382 exact matches, zero regressions. (See c8c730-boundary-note.)
+        # first terminator -- `ret` (c3 / c2 imm16) or a tail `jmp` (e9 rel32 /
+        # eb rel8) -- followed by an int3 (0xCC) padding run that is itself
+        # followed by more code marks this function's end; everything after is a
+        # separate, unmanifested function. Validated on the retail oracle:
+        # 4450 -> 4843 exact matches, zero regressions. (See c8c730-boundary-note.)
         L=len(raw); i=0
         while i<L:
-            rl=1 if raw[i]==0xc3 else (3 if (raw[i]==0xc2 and i+2<L) else 0)
+            c=raw[i]
+            rl=1 if c==0xc3 else (3 if (c==0xc2 and i+2<L) else 0)
+            if rl==0:
+                rl=5 if (c==0xe9 and i+4<L) else (2 if (c==0xeb and i+1<L) else 0)
             if rl and i+rl<L and raw[i+rl]==0xCC:
                 j=i+rl
                 while j<L and raw[j]==0xCC: j+=1
