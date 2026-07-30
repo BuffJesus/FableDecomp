@@ -38568,6 +38568,69 @@ $catalog = @(
         TestSource = '00/5d/CCategory_GetCategoryIdentifier_005d9030_test.cpp'
         PassPattern = 'OK_0x005d9030'
     }
+    [pscustomobject]@{
+        Address = '005da680'
+        Module = 'CTCWeapon'
+        Source = '00/5d/CTCWeapon_IncrementNumThingsKilled_005da680.cpp'
+        TestSource = '00/5d/CTCWeapon_IncrementNumThingsKilled_005da680_test.cpp'
+        PassPattern = 'OK_0x005da680'
+    }
+    [pscustomobject]@{
+        Address = '005da7d0'
+        Module = 'CCategory'
+        Source = '00/5d/CCategory_GetCategoryIdentifier_005da7d0.cpp'
+        TestSource = '00/5d/CCategory_GetCategoryIdentifier_005da7d0_test.cpp'
+        PassPattern = 'OK_0x005da7d0'
+    }
+    [pscustomobject]@{
+        Address = '005da8f0'
+        Module = 'CTCWeapon'
+        Source = '00/5d/CTCWeapon_IsAnalogueLoading_005da8f0.cpp'
+        TestSource = '00/5d/CTCWeapon_IsAnalogueLoading_005da8f0_test.cpp'
+        PassPattern = 'OK_0x005da8f0'
+    }
+    [pscustomobject]@{
+        Address = '005daa40'
+        Module = 'CTCWeapon'
+        Source = '00/5d/CTCWeapon_IsProjectileWeapon_005daa40.cpp'
+        TestSource = '00/5d/CTCWeapon_IsProjectileWeapon_005daa40_test.cpp'
+        PassPattern = 'OK_0x005daa40'
+    }
+    [pscustomobject]@{
+        Address = '005dbe30'
+        Module = 'CAnimComponentFollowingOnAnim'
+        Source = '00/5d/CAnimComponentFollowingOnAnim_TransferBinaryIn_005dbe30.cpp'
+        TestSource = '00/5d/CAnimComponentFollowingOnAnim_TransferBinaryIn_005dbe30_test.cpp'
+        PassPattern = 'OK_0x005dbe30'
+    }
+    [pscustomobject]@{
+        Address = '005e3e70'
+        Module = 'CTCQuestCompletionUI'
+        Source = '00/5e/CTCQuestCompletionUI_IsOverridingScreenFade_005e3e70.cpp'
+        TestSource = '00/5e/CTCQuestCompletionUI_IsOverridingScreenFade_005e3e70_test.cpp'
+        PassPattern = 'OK_0x005e3e70'
+    }
+    [pscustomobject]@{
+        Address = '005e9a70'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_NewGame_005e9a70.cpp'
+        TestSource = '00/5e/CTCTavernGame_NewGame_005e9a70_test.cpp'
+        PassPattern = 'OK_0x005e9a70'
+    }
+    [pscustomobject]@{
+        Address = '005e9b10'
+        Module = '_global'
+        Source = '00/5e/global_HideMesh_005e9b10.cpp'
+        TestSource = '00/5e/global_HideMesh_005e9b10_test.cpp'
+        PassPattern = 'OK_0x005e9b10'
+    }
+    [pscustomobject]@{
+        Address = '005daa70'
+        Module = 'CTCWeapon'
+        Source = '00/5d/CTCWeapon_IsMeleeWeapon_005daa70.cpp'
+        TestSource = '00/5d/CTCWeapon_IsMeleeWeapon_005daa70_test.cpp'
+        PassPattern = 'OK_0x005daa70'
+    }
 )
 
 $requestedAddresses = @(

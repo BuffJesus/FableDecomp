@@ -1,6 +1,6 @@
 # Naming quality triage
 
-Generated: `2026-07-30T17:34:43-06:00`
+Generated: `2026-07-30T17:47:59-06:00`
 
 Evidence-accepted/original-quality names: **49,177 / 49,568**.
 Usable navigation names after accepting explicit reconstruction-family labels: **49,525 / 49,568 (99.913%)**.
