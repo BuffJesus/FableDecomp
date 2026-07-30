@@ -627,7 +627,7 @@ CChestDef	2	4	2	0	0	0	0	0	0	0	0
 CChestHidingAssassin	3	1	1	0	0	0	0	0	0	0	0
 CChickenMaster	3	0	0	0	0	0	0	0	0	0	0
 CChickenSign	3	3	3	0	0	0	0	0	0	0	0
-CChunkCollectionIndicator	3	3	3	0	0	0	0	0	0	0	0
+CChunkCollectionIndicator	3	3	3	0	0	1	1	1	0	0	0
 CChunkedFile	0	7	6	0	0	0	0	0	0	0	0
 CChunkedFileChunk	9	38	36	0	0	3	3	3	0	0	0
 CChunkedFileLoader	1	2	1	0	0	0	0	0	0	0	0
@@ -1813,7 +1813,7 @@ CGhostDude	2	1	1	0	0	0	0	0	0	0	0
 CGhostFisherman	4	0	0	0	0	0	0	0	0	0	0
 CGhostGrannyDaughterInLaw	2	0	0	0	0	0	0	0	0	0	0
 CGhostGrannyNecklace	3	1	1	0	0	0	0	0	0	0	0
-CGhostGrannySon	3	1	1	0	0	0	0	0	0	0	0
+CGhostGrannySon	3	1	1	0	0	1	1	1	0	0	0
 CGift	2	1	1	0	0	0	0	0	0	0	0
 CGiftDef	2	3	3	0	0	1	1	1	0	0	0
 CGlobalDef	3	6	6	0	0	3	3	2	1	0	0
@@ -2502,7 +2502,7 @@ CObjectCacheGroupCollection	16	8	8	0	0	0	0	0	0	0	0
 CObjectFamilyDef	3	4	4	1	0	2	2	1	0	0	0
 CObjectTypeCollection	12	4	4	0	0	0	0	0	0	0	0
 CObjectTypeCollectionPalette	3	2	2	0	0	0	0	0	0	0	0
-CObservable	11	46	45	0	0	12	12	12	0	0	0
+CObservable	11	46	45	0	0	13	13	13	0	0	0
 CObserver	6	2	2	0	0	1	1	0	1	0	0
 CObstacleNavigatorExternalInterface	14	24	24	0	0	8	8	3	5	0	0
 COccupiableDef	2	3	3	0	0	1	1	1	0	0	0
@@ -3371,7 +3371,7 @@ CTCInventoryAbilities	81	100	99	0	0	3	3	3	0	0	0
 CTCInventoryBase	140	135	132	0	0	11	11	11	0	0	0
 CTCInventoryClothing	50	37	37	0	0	2	2	2	0	0	0
 CTCInventoryExperience	84	62	58	0	0	3	3	3	0	0	0
-CTCInventoryItem	60	103	101	0	0	15	15	3	12	0	0
+CTCInventoryItem	60	103	101	0	0	16	16	4	12	0	0
 CTCInventoryMagic	11	5	4	0	0	0	0	0	0	0	0
 CTCInventoryMap	73	43	41	0	0	0	0	0	0	0	0
 CTCInventoryQuests	50	22	22	0	0	0	0	0	0	0	0
@@ -3510,7 +3510,7 @@ CTCVolumeContainmentTrackerDef	2	3	3	0	0	1	1	1	0	0	0
 CTCWallMount	11	4	4	0	0	0	0	0	0	0	0
 CTCWallMountEffects	14	7	4	0	0	0	0	0	0	0	0
 CTCWaterWader	5	5	3	0	0	0	0	0	0	0	0
-CTCWeapon	39	35	31	0	0	3	3	3	0	0	0
+CTCWeapon	39	35	31	0	0	4	4	4	0	0	0
 CTCWeaponTrail	19	10	10	0	0	0	0	0	0	0	0
 CTCWeatherVane	4	1	1	0	0	0	0	0	0	0	0
 CTCWife	44	38	38	0	0	0	0	0	0	0	0
@@ -4505,7 +4505,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11362	1997	268	5	180	180	101	75	0	0
+_global	0	11362	1997	268	5	183	183	103	76	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

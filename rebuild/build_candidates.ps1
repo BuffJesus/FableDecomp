@@ -38505,6 +38505,69 @@ $catalog = @(
         TestSource = '00/5c/CNavigationLayer_CNavigationLayer_005c14a6_test.cpp'
         PassPattern = 'OK_0x005c14a6'
     }
+    [pscustomobject]@{
+        Address = '005d84f2'
+        Module = '_global'
+        Source = '00/5d/global_CMemoryAllocatorVariableSizeFindNodeLinear_005d84f2.cpp'
+        TestSource = '00/5d/global_CMemoryAllocatorVariableSizeFindNodeLinear_005d84f2_test.cpp'
+        PassPattern = 'OK_0x005d84f2'
+    }
+    [pscustomobject]@{
+        Address = '005d8e40'
+        Module = 'CObservable'
+        Source = '00/5d/CObservable_AddExclusiveObserver_005d8e40.cpp'
+        TestSource = '00/5d/CObservable_AddExclusiveObserver_005d8e40_test.cpp'
+        PassPattern = 'OK_0x005d8e40'
+    }
+    [pscustomobject]@{
+        Address = '005d8e50'
+        Module = 'CChunkCollectionIndicator'
+        Source = '00/5d/CChunkCollectionIndicator_OnPredicateFail_005d8e50.cpp'
+        TestSource = '00/5d/CChunkCollectionIndicator_OnPredicateFail_005d8e50_test.cpp'
+        PassPattern = 'OK_0x005d8e50'
+    }
+    [pscustomobject]@{
+        Address = '005d92d0'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_GetEngineGraphic_005d92d0.cpp'
+        TestSource = '00/5d/CTCInventoryItem_GetEngineGraphic_005d92d0_test.cpp'
+        PassPattern = 'OK_0x005d92d0'
+    }
+    [pscustomobject]@{
+        Address = '005da490'
+        Module = '_global'
+        Source = '00/5d/global_ComparisonFloatWithEpsilon_005da490.cpp'
+        TestSource = '00/5d/global_ComparisonFloatWithEpsilon_005da490_test.cpp'
+        PassPattern = 'OK_0x005da490'
+    }
+    [pscustomobject]@{
+        Address = '005da4d0'
+        Module = 'CTCWeapon'
+        Source = '00/5d/CTCWeapon_SetAiming_005da4d0.cpp'
+        TestSource = '00/5d/CTCWeapon_SetAiming_005da4d0_test.cpp'
+        PassPattern = 'OK_0x005da4d0'
+    }
+    [pscustomobject]@{
+        Address = '005da4e0'
+        Module = 'CGhostGrannySon'
+        Source = '00/5d/CGhostGrannySon_Init_005da4e0.cpp'
+        TestSource = '00/5d/CGhostGrannySon_Init_005da4e0_test.cpp'
+        PassPattern = 'OK_0x005da4e0'
+    }
+    [pscustomobject]@{
+        Address = '005da510'
+        Module = '_global'
+        Source = '00/5d/global_IsMeleeWeaponClass_005da510.cpp'
+        TestSource = '00/5d/global_IsMeleeWeaponClass_005da510_test.cpp'
+        PassPattern = 'OK_0x005da510'
+    }
+    [pscustomobject]@{
+        Address = '005d9030'
+        Module = 'CCategory'
+        Source = '00/5d/CCategory_GetCategoryIdentifier_005d9030.cpp'
+        TestSource = '00/5d/CCategory_GetCategoryIdentifier_005d9030_test.cpp'
+        PassPattern = 'OK_0x005d9030'
+    }
 )
 
 $requestedAddresses = @(
