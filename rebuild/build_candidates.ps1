@@ -37707,6 +37707,69 @@ $catalog = @(
         TestSource = '00/49/CNearestBuildingWithProperty_CNearestBuildingWithProperty_0049cf80_test.cpp'
         PassPattern = 'OK_0x0049cf80'
     }
+    [pscustomobject]@{
+        Address = '0049e1a0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_DrawGetWorldMap_0049e1a0.cpp'
+        TestSource = '00/49/CWorld_DrawGetWorldMap_0049e1a0_test.cpp'
+        PassPattern = 'OK_0x0049e1a0'
+    }
+    [pscustomobject]@{
+        Address = '0049e1d0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_ProcessEvent_0049e1d0.cpp'
+        TestSource = '00/49/CWorld_ProcessEvent_0049e1d0_test.cpp'
+        PassPattern = 'OK_0x0049e1d0'
+    }
+    [pscustomobject]@{
+        Address = '0049e9f0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_IsDisplayingMiniMapOnRegionLoad_0049e9f0.cpp'
+        TestSource = '00/49/CWorld_IsDisplayingMiniMapOnRegionLoad_0049e9f0_test.cpp'
+        PassPattern = 'OK_0x0049e9f0'
+    }
+    [pscustomobject]@{
+        Address = '004ab060'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_SetFriendsWithEverythingFlag_004ab060.cpp'
+        TestSource = '00/4a/CScriptThing_SetFriendsWithEverythingFlag_004ab060_test.cpp'
+        PassPattern = 'OK_0x004ab060'
+    }
+    [pscustomobject]@{
+        Address = '004ab0a0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_SetActivationTriggerStatus_004ab0a0.cpp'
+        TestSource = '00/4a/CScriptThing_SetActivationTriggerStatus_004ab0a0_test.cpp'
+        PassPattern = 'OK_0x004ab0a0'
+    }
+    [pscustomobject]@{
+        Address = '004ab0e0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_UpdateThingAttachment_004ab0e0.cpp'
+        TestSource = '00/4a/CScriptThing_UpdateThingAttachment_004ab0e0_test.cpp'
+        PassPattern = 'OK_0x004ab0e0'
+    }
+    [pscustomobject]@{
+        Address = '004ab0f0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_IncrementScriptCounter_004ab0f0.cpp'
+        TestSource = '00/4a/CScriptThing_IncrementScriptCounter_004ab0f0_test.cpp'
+        PassPattern = 'OK_0x004ab0f0'
+    }
+    [pscustomobject]@{
+        Address = '004a9210'
+        Module = 'CDisplayEngine'
+        Source = '00/4a/CDisplayEngine_IsScreenFullyFadedOut_004a9210.cpp'
+        TestSource = '00/4a/CDisplayEngine_IsScreenFullyFadedOut_004a9210_test.cpp'
+        PassPattern = 'OK_0x004a9210'
+    }
+    [pscustomobject]@{
+        Address = '004ab100'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_DecrementScriptCounter_004ab100.cpp'
+        TestSource = '00/4a/CScriptThing_DecrementScriptCounter_004ab100_test.cpp'
+        PassPattern = 'OK_0x004ab100'
+    }
 )
 
 $requestedAddresses = @(
