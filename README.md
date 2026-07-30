@@ -61,13 +61,13 @@ working memory and exact resume point are always at the top of
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Verified functional or matching reconstruction | **4,984 · 10.05%** |
-| Byte-identical reconstruction | **2,751 · 5.55%** |
+| Verified functional or matching reconstruction | **5,205 · 10.50%** |
+| Byte-identical reconstruction | **2,900 · 5.85%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
-Current functional-or-matching coverage is **10.15%** of the 49,568-function catalog.
-Of that verified set, **5.57%** is byte-identical C++.
+Current functional-or-matching coverage is **10.50%** of the 49,568-function catalog.
+Of that verified set, **5.85%** is byte-identical C++.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -82,26 +82,30 @@ parity, coverage, and naming reports:
 | Analysis DB | Mechanically named (no `FUN_*`) | 100.000% |
 | Analysis DB | Accepted naming quality | 99.211% |
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
-| Analysis DB | Calling convention known | 77.665% |
-| Analysis DB | Complete non-`undefined` prototype | 69.045% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **5,346** |
-| Reconstruction | Verified functional or matching C++ | **5,031** (10.15%) |
-| Reconstruction | — of which byte-**identical** C++ | 2,762 (5.57%) |
-| Reconstruction | Compiled sources still honestly `DIFFER` | 205 |
+| Analysis DB | Calling convention known | 77.677% |
+| Analysis DB | Complete non-`undefined` prototype | 69.065% |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **5,355** |
+| Reconstruction | Verified functional or matching C++ | **5,205** (10.50%) |
+| Reconstruction | — of which byte-**identical** C++ | 2,900 (5.85%) |
+| Reconstruction | Compiled sources still honestly `DIFFER` | 40 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
-| Auto-RE intake | Generated candidates / structural checker PASS | 832 / 817 |
-| Boot path | GFMain direct-call sites proven | **48 / 257** (18.68%) |
-| Boot path | Callable authored GFMain phases | **2 / 10** (20.00%) |
-| Boot path | Current Phase 3 direct calls proven | **29 / 34** (85.29%) |
+| Auto-RE intake | Generated candidates / structural checker PASS | 840 / 825 |
+| Boot path | GFMain direct-call sites proven | **257 / 257** (100.00%) |
+| Boot path | Callable authored GFMain phases | **10 / 10** (100.00%) |
+| Boot path | Current Phase 10 direct calls proven | **21 / 21** (100.00%) |
+| Modern C++23 | GFMain phases promoted into the modern startup lane | **0 / 10** (0.00%) |
 
-Counts above are from the 2026-07-28 canonical refresh:
+Counts above are from the 2026-07-29 canonical refresh:
 `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json`,
 `rebuild/COVERAGE.md`, and the naming-quality reports.
 
 Generated agent output is tracked separately and is never counted merely
-because a structural checker accepted it. The 10.15% figure is intentionally the strict,
+because a structural checker accepted it. The 10.50% figure is intentionally the strict,
 whole-executable denominator. Boot-path figures are a separate view of
 the 3,952-byte `GFMain` coordinator, not an estimate of total engineering time.
+The C++23 startup figure is deliberately separate too: exact x86 parity and
+readable integration work do not count as a modern port merely because their
+interfaces are becoming stable.
 
 </details>
 
@@ -151,8 +155,8 @@ runtime boundary, see [rebuild/RUNNABLE.md](rebuild/RUNNABLE.md).
 | Area | Verified state | Major remaining boundary |
 |---|---|---|
 | Analysis database | Nearly complete navigation-quality names with recovered prototypes and calling conventions | Resolve the remaining ambiguous types, function starts, and hard naming stragglers |
-| Function reconstruction | 5,299 VC7.1-compiled and behavior-gated sources; 4,984 verified functional/matching | Continue strict promotion without counting structural-only generated code |
-| Startup | Retail-matched `WinMain`, recovered Phase 1/2 path, connected `GFInitialise`, progress-display ownership | Complete GFMain Phase 3 onward and replace authored integration seams |
+| Function reconstruction | 5,355 VC7.1-compiled and behavior-gated sources; 5,205 verified functional/matching | Continue strict promotion without counting structural-only generated code |
+| Startup | Retail-matched `WinMain`, all ten authored GFMain phases callable, connected exact `GFInitialise`, progress-display ownership | Replace the remaining GFMain dependency boundaries and pursue whole-coordinator retail parity |
 | Frontend | Boot movies, interactive menus, live generated title-rule and selection components, CUIState-driven main-menu/Save/Options rows, keyboard/mouse navigation, Continue-to-Saved-Games routing, and retail list/transition sounds | Visual sign-off is still open: measure reconstructed screens against identical retail captures before calling them presentation-parity; then connect validated save action `0x11` to the reconstructed main-game load boundary |
 | Controls | Interactive capture/cancel/apply, duplicate clearing, W/S/A/D movement expansion, arrow/WASD reset actions | Full 31-action scrolling, filtering, coexistence, and profile persistence |
 | Video | Retail movie order, end-of-stream advancement, Escape skip, and D3D9 texture publication | Replace the compatibility presentation seam with reconstructed `CTexture`/`CMovie::Draw` submission |
@@ -175,7 +179,10 @@ and the subsystem documents below.
 - Finish live `CTable`, `CList`, and `CKeyRedefiner` ownership and state flow,
   including detail-row extraction, controller input, and remaining actions.
 - Add deterministic retail-vs-reconstruction screenshot comparisons.
-- Continue GFMain Phase 3 and replace authored rendering/media seams.
+- Replace the remaining ownership-heavy GFMain dependency seams in Phases 3
+  and 5, plus Phase 6 font/text/display ownership. Phase 6 definition-table
+  loading and write-permission probing now execute exact coordinators;
+  Phases 4, 7, 8, 9, and 10 have every direct call independently proven.
 - Recover particle, RSA-lighting, sky, and shadow runtime contracts.
 
 ### P0 — product-facing native features
@@ -262,6 +269,7 @@ technical material lives in focused documents.
 | Document | Purpose |
 |---|---|
 | [FULL_DECOMP.md](docs/FULL_DECOMP.md) | Full-decomp strategy and promotion model |
+| [TECHNICAL_BRIEF.md](docs/TECHNICAL_BRIEF.md) | Current architecture, evidence grades, boot status, and modernization boundaries |
 | [SOURCE_ARCHITECTURE.md](docs/SOURCE_ARCHITECTURE.md) | Generated, parity, and modern-source boundaries |
 | [BSIM_PORT.md](docs/BSIM_PORT.md) | Donor-symbol porting runbook |
 | [DECOMP_ACCELERATORS.md](docs/DECOMP_ACCELERATORS.md) | Automation and throughput options |

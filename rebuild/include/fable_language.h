@@ -7,3 +7,8 @@
 // hidden CCharString return slot arrives in ECX and the leaf fills it with the
 // default language name.
 CCharString FABLE_FASTCALL FableGetDefaultLanguageName_00415530();
+
+// Retail language selector used by the startup font-bank lookup.
+fable_i32 FableGetCurrentLanguage_00415070();
+CCharString FABLE_FASTCALL FableGetFontBankName_00415260();
+CCharString FABLE_FASTCALL FableGetStreamingFontBankName_00415440();

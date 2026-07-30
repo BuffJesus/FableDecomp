@@ -2,12 +2,12 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 1	00402535	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
 1	0040253f	009d8240	NProfileTimer::StartProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp
 1	00402547	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
-1	00402553	00403b10	CSystemManagerInit	SCHEDULING_RESIDUE	rebuild/src/compiled/00/40/CSystemManagerInit_Constructor_00403b10.cpp
+1	00402553	00403b10	CSystemManagerInit	RELOCATION_MATCH	rebuild/src/compiled/00/40/CSystemManagerInit_Constructor_00403b10.cpp
 1	0040255c	0099aed0	CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Constructor_0099aed0.cpp
 1	00402583	00997510	GetProjectPath	RELOCATION_MATCH	rebuild/src/compiled/00/99/CAFile_GetProjectPath_00997510.cpp
 1	0040258a	009974f0	SetCurrentPath	RELOCATION_MATCH	rebuild/src/compiled/00/99/CAFile_SetCurrentPath_009974f0.cpp
 1	00402593	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
-1	004025a1	00413c50	InitialiseConsoleVariables
+1	004025a1	00413c50	InitialiseConsoleVariables	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_InitialiseConsoleVariables_00413c50.cpp
 2	004025ac	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
 2	004025bc	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
 2	004025c7	009d8240	NProfileTimer::StartProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp
@@ -34,11 +34,11 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 3	00402745	00404720	CStringParser	RELOCATION_MATCH	rebuild/src/compiled/00/40/CStringParser_Constructor_00404720.cpp
 3	0040274e	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	00402765	009badd0	CPersistContext	MATCH	rebuild/src/compiled/00/9b/CPersistContext_TextConstructor_009badd0.cpp
-3	00402785	004045c0	Transfer<signed_char>
-3	004027a5	004045c0	Transfer<signed_char>
-3	004027c5	004045c0	Transfer<signed_char>
-3	004027d1	00405350	LoadIMESettings
-3	004027da	004046b0	SortTreeRecursively
+3	00402785	004045c0	Transfer<signed_char>	RELOCATION_MATCH	rebuild/src/compiled/00/40/CPersistContext_TransferSignedChar_004045c0.cpp
+3	004027a5	004045c0	Transfer<signed_char>	RELOCATION_MATCH	rebuild/src/compiled/00/40/CPersistContext_TransferSignedChar_004045c0.cpp
+3	004027c5	004045c0	Transfer<signed_char>	RELOCATION_MATCH	rebuild/src/compiled/00/40/CPersistContext_TransferSignedChar_004045c0.cpp
+3	004027d1	00405350	NUISystem::CIME::LoadIMESettings	RELOCATION_MATCH	rebuild/src/compiled/00/40/CIME_LoadIMESettings_00405350.cpp
+3	004027da	004046b0	std::list<CStringParserCommentBoundaries>::~list	RELOCATION_MATCH	rebuild/src/compiled/00/40/CStringParserCommentList_Destructor_004046b0.cpp
 3	004027e3	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	004027ec	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	004027f5	0099a2e0	FableRestoreCBaseVTable_0099A2E0	RELOCATION_MATCH	rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a2e0.cpp
@@ -49,210 +49,210 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 3	0040282c	009bc890	NTextLayoutConfig::SetPrimaryLeftAlignment	RELOCATION_MATCH	rebuild/src/compiled/00/9b/TextLayout_SetPrimaryLeftAlignment_009bc890.cpp
 3	00402837	009bc8a0	NTextLayoutConfig::SetSecondaryLeftAlignment	RELOCATION_MATCH	rebuild/src/compiled/00/9b/TextLayout_SetSecondaryLeftAlignment_009bc8a0.cpp
 3	0040283e	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
-4	0040284e	0099ebf0	CCharString
-4	00402859	009d8240	$E2
-4	00402862	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-4	00402875	009a76d0	EnableNavigator
-4	00402885	0099ebf0	CCharString
-4	00402895	0099ebf0	CCharString
-4	004028a9	009a8150	AddChild
-4	004028b2	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-4	004028bb	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-4	004028cb	0099ebf0	CCharString
-4	004028db	0099ebf0	CCharString
-4	004028ef	009a8150	AddChild
-4	004028f8	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-4	00402901	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-4	00402911	0099ebf0	CCharString
-4	00402921	0099ebf0	CCharString
-4	00402935	009a8150	AddChild
-4	0040293e	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-4	00402947	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-4	00402957	0099ebf0	CCharString
-4	00402967	0099ebf0	CCharString
-4	0040297b	009a8150	AddChild
-4	00402984	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-4	0040298d	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-4	0040299d	0099ebf0	CCharString
-4	004029ad	0099ebf0	CCharString
-4	004029c1	009a8150	AddChild
-4	004029ca	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-4	004029d3	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-5	004029dc	0099aed0	CCharString
-5	00402a04	0099b6b0	CCharString::AssignFromWide
-5	00402a14	0041a100	GetAutoSaveFileName
-5	00402a1f	0099bf30	CCharString::AssignFromValue
-5	00402a2a	009a8840	OpenRetailBank
-5	00402a33	0099b510	~CCharString
-5	00402a3c	0099b510	~CCharString
-5	00402a51	0041a100	GetAutoSaveFileName
-5	00402a5c	0099be70	CCharString::AssignFromData
-5	00402a67	0099bf30	CCharString::AssignFromValue
-5	00402a72	009a8840	OpenRetailBank
-5	00402a7b	0099b510	~CCharString
-5	00402a84	0099b510	~CCharString
-5	00402a8d	0099b510	~CCharString
-5	00402a9c	0041a330	GetDVDDialogueDir
-5	00402aa7	0099bf30	CCharString::AssignFromValue
-5	00402ab2	009a8840	OpenRetailBank
-5	00402abb	0099b510	~CCharString
-5	00402ac4	0099b510	~CCharString
-5	00402ad8	0041a0c0	GetAutoSaveFileName
-5	00402ae3	0099be70	CCharString::AssignFromData
-5	00402aee	0099bf30	CCharString::AssignFromValue
-5	00402af9	009a8840	OpenRetailBank
-5	00402b02	0099b510	~CCharString
-5	00402b0b	0099b510	~CCharString
-5	00402b14	0099b510	~CCharString
-5	00402b23	0041a330	GetDVDDialogueDir
-5	00402b2e	0099bf30	CCharString::AssignFromValue
-5	00402b39	009a8840	OpenRetailBank
-5	00402b42	0099b510	~CCharString
-5	00402b4b	0099b510	~CCharString
-5	00402b5a	0041a0a0	GetAutoSaveFileName
-5	00402b65	0099bf30	CCharString::AssignFromValue
-5	00402b70	009a8840	OpenRetailBank
-5	00402b79	0099b510	~CCharString
-5	00402b82	0099b510	~CCharString
-5	00402b96	0041a1e0	GetAutoSaveFileName
-5	00402ba1	0099be70	CCharString::AssignFromData
-5	00402bac	0099bf30	CCharString::AssignFromValue
-5	00402bb7	009a8840	OpenRetailBank
-5	00402bc0	0099b510	~CCharString
-5	00402bc9	0099b510	~CCharString
-5	00402bd2	0099b510	~CCharString
-5	00402bdb	0099b510	~CCharString
-5	00402beb	0041a120	GetDVDDialogueDir
-5	00402bf6	0099bf30	CCharString::AssignFromValue
-5	00402c01	009a8840	OpenRetailBank
-5	00402c0a	0099b510	~CCharString
-5	00402c13	0099b510	~CCharString
-5	00402c22	0041a330	GetDVDDialogueDir
-5	00402c2d	0099bf30	CCharString::AssignFromValue
-5	00402c38	009a8840	OpenRetailBank
-5	00402c41	0099b510	~CCharString
-5	00402c4a	0099b510	~CCharString
-5	00402c58	0099b6b0	CCharString::AssignFromWide
-5	00402c61	009a76c0	operator_new
-5	00402c6a	0099b510	~CCharString
-5	00402c88	0099b6b0	CCharString::AssignFromWide
-5	00402c99	0099b6b0	CCharString::AssignFromWide
-5	00402ca8	009a8170	OpenIniFile
-5	00402cb1	0099b510	~CCharString
-5	00402cbf	0099b6b0	CCharString::AssignFromWide
-5	00402cc8	009a76c0	operator_new
-5	00402cd1	0099b510	~CCharString
-5	00402cdf	0099b800	CCharString::AssignFromWide
+4	0040284e	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+4	00402859	009d8240	NProfileTimer::StartProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp
+4	00402862	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+4	00402875	009a76d0	CBasicRetailBankManager::SetNavigatorEnabled	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBasicRetailBankManager_SetNavigatorEnabled_009a76d0.cpp
+4	00402885	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+4	00402895	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+4	004028a9	009a8150	CBasicRetailBankManager::AddBankAlias	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBasicRetailBankManager_AddBankAlias_009a8150.cpp
+4	004028b2	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+4	004028bb	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+4	004028cb	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+4	004028db	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+4	004028ef	009a8150	CBasicRetailBankManager::AddBankAlias	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBasicRetailBankManager_AddBankAlias_009a8150.cpp
+4	004028f8	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+4	00402901	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+4	00402911	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+4	00402921	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+4	00402935	009a8150	CBasicRetailBankManager::AddBankAlias	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBasicRetailBankManager_AddBankAlias_009a8150.cpp
+4	0040293e	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+4	00402947	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+4	00402957	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+4	00402967	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+4	0040297b	009a8150	CBasicRetailBankManager::AddBankAlias	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBasicRetailBankManager_AddBankAlias_009a8150.cpp
+4	00402984	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+4	0040298d	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+4	0040299d	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+4	004029ad	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+4	004029c1	009a8150	CBasicRetailBankManager::AddBankAlias	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBasicRetailBankManager_AddBankAlias_009a8150.cpp
+4	004029ca	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+4	004029d3	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+5	004029dc	0099aed0	CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Constructor_0099aed0.cpp
+5	00402a04	0099b6b0	CWideString::CWideString(const wchar_t*)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_LiteralConstructor_0099b6b0.cpp
+5	00402a14	0041a100	FableGetGraphicsDirectory_0041A100	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetGraphicsDirectory_0041a100.cpp
+5	00402a1f	0099bf30	operator+(CWideString const &,wchar_t const *)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp
+5	00402a2a	009a8840	OpenRetailBank	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp
+5	00402a33	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402a3c	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402a51	0041a100	FableGetGraphicsDirectory_0041A100	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetGraphicsDirectory_0041a100.cpp
+5	00402a5c	0099be70	operator+(CWideString const&,CWideString const&)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStrings_0099be70.cpp
+5	00402a67	0099bf30	operator+(CWideString const &,wchar_t const *)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp
+5	00402a72	009a8840	OpenRetailBank	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp
+5	00402a7b	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402a84	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402a8d	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402a9c	0041a330	FableGetLanguageDirectoryB_0041A330	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetLanguageDirectoryB_0041a330.cpp
+5	00402aa7	0099bf30	operator+(CWideString const &,wchar_t const *)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp
+5	00402ab2	009a8840	OpenRetailBank	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp
+5	00402abb	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402ac4	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402ad8	0041a0c0	FableGetMiscDirectoryB_0041A0C0	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetMiscDirectoryB_0041a0c0.cpp
+5	00402ae3	0099be70	operator+(CWideString const&,CWideString const&)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStrings_0099be70.cpp
+5	00402aee	0099bf30	operator+(CWideString const &,wchar_t const *)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp
+5	00402af9	009a8840	OpenRetailBank	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp
+5	00402b02	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402b0b	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402b14	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402b23	0041a330	FableGetLanguageDirectoryB_0041A330	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetLanguageDirectoryB_0041a330.cpp
+5	00402b2e	0099bf30	operator+(CWideString const &,wchar_t const *)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp
+5	00402b39	009a8840	OpenRetailBank	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp
+5	00402b42	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402b4b	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402b5a	0041a0a0	FableGetMiscDirectoryA_0041A0A0	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetMiscDirectoryA_0041a0a0.cpp
+5	00402b65	0099bf30	operator+(CWideString const &,wchar_t const *)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp
+5	00402b70	009a8840	OpenRetailBank	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp
+5	00402b79	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402b82	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402b96	0041a1e0	FableGetShadersDirectory_0041A1E0	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetShadersDirectory_0041a1e0.cpp
+5	00402ba1	0099be70	operator+(CWideString const&,CWideString const&)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStrings_0099be70.cpp
+5	00402bac	0099bf30	operator+(CWideString const &,wchar_t const *)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp
+5	00402bb7	009a8840	OpenRetailBank	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp
+5	00402bc0	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402bc9	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402bd2	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402bdb	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402beb	0041a120	FableGetLanguageDirectoryA_0041A120	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetLanguageDirectoryA_0041a120.cpp
+5	00402bf6	0099bf30	operator+(CWideString const &,wchar_t const *)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp
+5	00402c01	009a8840	OpenRetailBank	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp
+5	00402c0a	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402c13	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402c22	0041a330	FableGetLanguageDirectoryB_0041A330	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetLanguageDirectoryB_0041a330.cpp
+5	00402c2d	0099bf30	operator+(CWideString const &,wchar_t const *)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp
+5	00402c38	009a8840	OpenRetailBank	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp
+5	00402c41	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402c4a	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402c58	0099b6b0	CWideString::CWideString(const wchar_t*)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_LiteralConstructor_0099b6b0.cpp
+5	00402c61	009a76c0	NBankFileManager::SetHeaderDir	RELOCATION_MATCH	rebuild/src/compiled/00/9a/NBankFileManager_SetHeaderDir_009a76c0.cpp
+5	00402c6a	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402c88	0099b6b0	CWideString::CWideString(const wchar_t*)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_LiteralConstructor_0099b6b0.cpp
+5	00402c99	0099b6b0	CWideString::CWideString(const wchar_t*)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_LiteralConstructor_0099b6b0.cpp
+5	00402ca8	009a8170	OpenIniFile	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CBankFileManager_OpenIniFile_009a8170.cpp
+5	00402cb1	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402cbf	0099b6b0	CWideString::CWideString(const wchar_t*)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_LiteralConstructor_0099b6b0.cpp
+5	00402cc8	009a76c0	NBankFileManager::SetHeaderDir	RELOCATION_MATCH	rebuild/src/compiled/00/9a/NBankFileManager_SetHeaderDir_009a76c0.cpp
+5	00402cd1	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+5	00402cdf	0099b800	CWideString::operator=(wchar_t const*)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AssignLiteral_0099b800.cpp
 6	00402ce6	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
-6	00402cf6	0099ebf0	CCharString
-6	00402d01	009d8240	$E2
-6	00402d0a	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-6	00402d19	0099b7d0	operator=
-6	00402d2b	0099bf30	CCharString::AssignFromValue
-6	00402d36	009d4a40	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-6	00402d3f	0099b510	~CCharString
-6	00402d63	009d4c30	LoadTable
+6	00402cf6	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+6	00402d01	009d8240	NProfileTimer::StartProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp
+6	00402d0a	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+6	00402d19	0099b7d0	CWideString::operator=	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_CopyAssignment_0099b7d0.cpp
+6	00402d2b	0099bf30	operator+(CWideString const &,wchar_t const *)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp
+6	00402d36	009d4a40	CDefStringTableRecovered::SetTablePath	RELOCATION_MATCH	rebuild/src/compiled/00/9d/CDefStringTable_SetTablePath_009d4a40.cpp
+6	00402d3f	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00402d63	009d4c30	CDefStringTable::LoadTable	RELOCATION_MATCH	rebuild/src/compiled/00/9d/CDefStringTable_LoadTable_009d4c30.cpp
 6	00402d6a	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
-6	00402d80	0041a4c0	GetAutoSaveCheckPointFileName
-6	00402d87	0099af10	operator_char_const*
-6	00402d9b	0099b510	~CCharString
-6	00402db6	0041a4c0	GetAutoSaveCheckPointFileName
-6	00402dbd	00402130	MyDocuments_CheckWritePermissions
-6	00402dc8	0099b510	~CCharString
-6	00402de0	0041a540	GetSaveDir
-6	00402de7	0099af10	operator_char_const*
-6	00402df5	0099b510	~CCharString
-6	00402e06	0041a540	GetSaveDir
-6	00402e0d	0099af10	operator_char_const*
-6	00402e17	0099b6b0	CCharString::AssignFromWide
-6	00402e20	00402130	MyDocuments_CheckWritePermissions
-6	00402e2b	0099b510	~CCharString
-6	00402e34	0099b510	~CCharString
-6	00402e5e	009c85a0	CCompressedMemoryDataInputStream
-6	00402e69	0041a430	GetMyDocumentsDir
-6	00402e70	00402130	MyDocuments_CheckWritePermissions
-6	00402e7b	0099b510	~CCharString
-6	00402e89	00403e40	Reset
-6	00402e9d	00415260	GetFontBankName
-6	00402eac	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-6	00402eb5	0099aed0	CCharString
-6	00402ebd	009cc410	CVectorMap::LookupValue
-6	00402ed0	009c9070	GetPGroupEntry
-6	00402ee2	009c7a40	GetBankHandle
-6	00402eec	0099b7d0	operator=
-6	00402ef5	0099b510	~CCharString
-6	00402f1c	0099aed0	CCharString
-6	00402f2c	0099ebf0	CCharString
-6	00402f4a	004014a0	Calc
-6	00402f52	009cc410	CVectorMap::LookupValue
-6	00402f65	009c9070	GetPGroupEntry
-6	00402f77	009c7a40	GetBankHandle
-6	00402f81	0099b7d0	operator=
-6	00402f8a	0099b510	~CCharString
-6	00402fad	009a4ec0	AddChildPrimitive
-6	00402fbd	0099af10	operator_char_const*
-6	00402fc7	0099af10	operator_char_const*
-6	00402fd8	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-6	00402fe1	0099b510	~CCharString
-6	00402fea	0099b510	~CCharString
-6	0040300e	0099b510	~CCharString
-6	00403017	0099b510	~CCharString
-6	00403020	0099b510	~CCharString
-6	0040302c	0099b510	~CCharString
-6	00403038	0099b510	~CCharString
-6	00403044	0099b510	~CCharString
-6	00403050	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-6	0040305c	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-6	00403068	0099b510	~CCharString
-7	00403082	0099ebf0	CCharString
-7	0040308d	009d8240	$E2
-7	00403096	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-7	0040318b	0041a1e0	GetAutoSaveFileName
-7	00403198	0099b7d0	operator=
-7	004031a1	0099b510	~CCharString
-7	004031e5	004023f0	GetWindowTitle
-7	004031f2	0099b7d0	operator=
-7	004031fb	0099b510	~CCharString
-7	00403211	0041a180	GetAutoSaveFileName
-7	0040321e	0099b7d0	operator=
-7	00403227	0099b510	~CCharString
-7	00403230	00415440	GetFontBankName
-7	0040323d	0099efb0	operator=
-7	00403246	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-8	0040329c	00401fe0	DoEULAThings
-8	004032a7	00401284	exit
-8	004032c0	004017b0	GFConfigDetection
-8	004032cb	00401284	exit
-8	004032d0	00401b20	GFFreeConfigDetection
-9	00403302	009a0ef0	SetLeftAlignText
-9	00403325	009a4ec0	AddChildPrimitive
-9	0040332c	009a6610	Initialise
+6	00402d80	0041a4c0	FableGetAutoSaveCheckpointDirectory_0041A4C0	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetAutoSaveCheckpointDirectory_0041a4c0.cpp
+6	00402d87	0099af10	CWideString::operator const wchar_t*	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_ConversionOperator_0099af10.cpp
+6	00402d9b	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00402db6	0041a4c0	FableGetAutoSaveCheckpointDirectory_0041A4C0	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetAutoSaveCheckpointDirectory_0041a4c0.cpp
+6	00402dbd	00402130	FableCheckMyDocumentsWritePermissions_00402130	RELOCATION_MATCH	rebuild/src/compiled/00/40/Global_MyDocuments_CheckWritePermissions_00402130.cpp
+6	00402dc8	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00402de0	0041a540	NResourceDirectoryNames::GetSaveDir	RELOCATION_MATCH	rebuild/src/compiled/00/41/NResourceDirectoryNames_GetSaveDir_0041a540.cpp
+6	00402de7	0099af10	CWideString::operator const wchar_t*	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_ConversionOperator_0099af10.cpp
+6	00402df5	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00402e06	0041a540	NResourceDirectoryNames::GetSaveDir	RELOCATION_MATCH	rebuild/src/compiled/00/41/NResourceDirectoryNames_GetSaveDir_0041a540.cpp
+6	00402e0d	0099af10	CWideString::operator const wchar_t*	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_ConversionOperator_0099af10.cpp
+6	00402e17	0099b6b0	CWideString::CWideString(const wchar_t*)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_LiteralConstructor_0099b6b0.cpp
+6	00402e20	00402130	FableCheckMyDocumentsWritePermissions_00402130	RELOCATION_MATCH	rebuild/src/compiled/00/40/Global_MyDocuments_CheckWritePermissions_00402130.cpp
+6	00402e5e	009c85a0	NGameText::CDataBank::CDataBank	RELOCATION_MATCH	rebuild/src/compiled/00/9c/NGameText_CDataBank_Constructor_009c85a0.cpp
+6	00402e2b	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00402e34	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00402e69	0041a430	NResourceDirectoryNames::GetMyDocumentsDir	RELOCATION_MATCH	rebuild/src/compiled/00/41/NResourceDirectoryNames_GetMyDocumentsDir_0041a430.cpp
+6	00402e70	00402130	FableCheckMyDocumentsWritePermissions_00402130	RELOCATION_MATCH	rebuild/src/compiled/00/40/Global_MyDocuments_CheckWritePermissions_00402130.cpp
+6	00402e7b	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00402e89	00403e40	CCountedPointer<CIPhysicsFacesSegmentBase_const>::Reset	RELOCATION_MATCH	rebuild/src/compiled/00/40/CCountedPointer_PhysicsFacesSegment_Reset_00403e40.cpp
+6	00402e9d	00415260	GetFontBankName	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetFontBankName_00415260.cpp
+6	00402eac	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+6	00402eb5	0099aed0	CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Constructor_0099aed0.cpp
+6	00402ebd	009cc410	CVectorMap::LookupValue	RELOCATION_MATCH	rebuild/src/compiled/00/9c/FableVectorMap_LookupValue_009cc410.cpp
+6	00402ed0	009c9070	NGameText::CDataBank::GetPGroupEntry	RELOCATION_MATCH	rebuild/src/compiled/00/9c/NGameText_CDataBank_GetPGroupEntry_009c9070.cpp
+6	00402ee2	009c7a40	CBankFile::GetBankHandle	RELOCATION_MATCH	rebuild/src/compiled/00/9c/CBankFile_GetBankHandle_009c7a40.cpp
+6	00402eec	0099b7d0	CWideString::operator=	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_CopyAssignment_0099b7d0.cpp
+6	00402ef5	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00402f1c	0099aed0	CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Constructor_0099aed0.cpp
+6	00402f2c	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+6	00402f4a	004014a0	CCRC::Calc	RELOCATION_MATCH	rebuild/src/compiled/00/40/Global_CCRC_Calc_004014a0.cpp
+6	00402f52	009cc410	CVectorMap::LookupValue	RELOCATION_MATCH	rebuild/src/compiled/00/9c/FableVectorMap_LookupValue_009cc410.cpp
+6	00402f65	009c9070	NGameText::CDataBank::GetPGroupEntry	RELOCATION_MATCH	rebuild/src/compiled/00/9c/NGameText_CDataBank_GetPGroupEntry_009c9070.cpp
+6	00402f77	009c7a40	CBankFile::GetBankHandle	RELOCATION_MATCH	rebuild/src/compiled/00/9c/CBankFile_GetBankHandle_009c7a40.cpp
+6	00402f81	0099b7d0	CWideString::operator=	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_CopyAssignment_0099b7d0.cpp
+6	00402f8a	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00402fad	009a4ec0	GFGetSystemManager	RELOCATION_MATCH	rebuild/src/compiled/00/9a/Global_GFGetSystemManager_009a4ec0.cpp
+6	00402fbd	0099af10	CWideString::operator const wchar_t*	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_ConversionOperator_0099af10.cpp
+6	00402fc7	0099af10	CWideString::operator const wchar_t*	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_ConversionOperator_0099af10.cpp
+6	00402fd8	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+6	00402fe1	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00402fea	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	0040300e	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00403017	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00403020	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	0040302c	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00403038	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00403044	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+6	00403050	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+6	0040305c	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+6	00403068	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+7	00403082	0099ebf0	CCharString::CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+7	0040308d	009d8240	NProfileTimer::StartProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp
+7	00403096	0099eae0	CCharString::~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+7	0040318b	0041a1e0	FableGetShadersDirectory_0041A1E0	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetShadersDirectory_0041a1e0.cpp
+7	00403198	0099b7d0	CWideString::operator=	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_CopyAssignment_0099b7d0.cpp
+7	004031a1	0099b510	CWideString::~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+7	004031e5	004023f0	GetWindowTitle	RELOCATION_MATCH	rebuild/src/compiled/00/40/Global_GetWindowTitle_004023f0.cpp
+7	004031f2	0099b7d0	CWideString::operator=	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_CopyAssignment_0099b7d0.cpp
+7	004031fb	0099b510	CWideString::~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+7	00403211	0041a180	FableGetCacheDirectory_0041A180	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetCacheDirectory_0041a180.cpp
+7	0040321e	0099b7d0	CWideString::operator=	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_CopyAssignment_0099b7d0.cpp
+7	00403227	0099b510	CWideString::~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+7	00403230	00415440	FableGetStreamingFontBankName_00415440	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetStreamingFontBankName_00415440.cpp
+7	0040323d	0099efb0	CCharString::operator=	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_CopyAssignment_0099efb0.cpp
+7	00403246	0099eae0	CCharString::~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+8	0040329c	00401fe0	DoEULAThings	RELOCATION_MATCH	rebuild/src/compiled/00/40/EULA_DoEULAThings_00401fe0.cpp
+8	004032a7	00401284	exit	RELOCATION_MATCH	rebuild/src/compiled/00/40/Global_Exit_00401284.cpp
+8	004032c0	004017b0	GFConfigDetection	RELOCATION_MATCH	rebuild/src/compiled/00/40/Global_GFConfigDetection_004017b0.cpp
+8	004032cb	00401284	exit	RELOCATION_MATCH	rebuild/src/compiled/00/40/Global_Exit_00401284.cpp
+8	004032d0	00401b20	GFFreeConfigDetection	RELOCATION_MATCH	rebuild/src/compiled/00/40/Global_GFFreeConfigDetection_00401b20.cpp
+9	00403302	009a0ef0	CXMVPlayer::SetLeftAlignText	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CXMVPlayer_SetLeftAlignText_009a0ef0.cpp
+9	00403325	009a4ec0	GFGetSystemManager	RELOCATION_MATCH	rebuild/src/compiled/00/9a/Global_GFGetSystemManager_009a4ec0.cpp
+9	0040332c	009a6610	Initialise	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CSystemManager_Initialise_009a6610.cpp
 9	00403335	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
-9	0040333a	009a4ec0	AddChildPrimitive
-9	00403346	00404a80	AddChildPrimitive
-9	0040334d	00405650	Initialise
-9	0040335d	0099ebf0	CCharString
-9	00403368	009d8240	$E2
-9	00403371	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-9	0040337f	00418c3b	GFMain_ProcessSaveFileMetadata
-10	00403389	004022b0	GFInitialise
-10	0040339b	0099b150	CWideString::NotEqual
-10	004033aa	0040d2a0	Get
-10	004033b1	0040d400	AddLineToDrawBuffer
+9	0040333a	009a4ec0	GFGetSystemManager	RELOCATION_MATCH	rebuild/src/compiled/00/9a/Global_GFGetSystemManager_009a4ec0.cpp
+9	00403346	00404a80	AddChildPrimitive	RELOCATION_MATCH	rebuild/src/compiled/00/40/CEngineInternalPrimitiveBase_AddChildPrimitive_00404a80.cpp
+9	0040334d	00405650	Initialise	RELOCATION_MATCH	rebuild/src/compiled/00/40/CIME_Initialise_00405650.cpp
+9	0040335d	0099ebf0	CCharString::CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
+9	00403368	009d8240	NProfileTimer::StartProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp
+9	00403371	0099eae0	CCharString::~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+9	0040337f	00418c3b	CMainGameComponent::GenerateMetFilesFromLugFiles	RELOCATION_MATCH	rebuild/src/compiled/00/41/CMainGameComponent_GenerateMetFilesFromLugFiles_00418c3b.cpp
+10	00403389	004022b0	GFInitialise	RELOCATION_MATCH	rebuild/src/compiled/00/40/global_GFInitialise_004022b0.cpp
+10	0040339b	0099b150	CWideString::operator!=	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_NotEqualWide_0099b150.cpp
+10	004033aa	0040d2a0	CTBaseSingleton<CUserProfileManager>::Get	RELOCATION_MATCH	rebuild/src/compiled/00/40/CUserProfileManagerSingleton_Get_0040d2a0.cpp
+10	004033b1	0040d400	CUserProfileManager::SetProfileName	RELOCATION_MATCH	rebuild/src/compiled/00/40/CUserProfileManager_SetProfileName_0040d400.cpp
 10	004033b8	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
-10	004033c2	00412f90	Play
-10	004033c7	00401b80	~CAIStateGroup_JackDragon
-10	004033cf	00401c00	GFHandleSystemInitError
+10	004033c2	00412f90	Play	RELOCATION_MATCH	rebuild/src/compiled/00/41/CGame_Play_00412f90.cpp
+10	004033c7	00401b80	GFUninitialise	RELOCATION_MATCH	rebuild/src/compiled/00/40/Global_GFUninitialise_00401b80.cpp
+10	004033cf	00401c00	GFHandleSystemInitError	RELOCATION_MATCH	rebuild/src/compiled/00/40/Global_GFHandleSystemInitError_00401c00.cpp
 10	004033d6	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
-10	004033e5	0099cf10	CSystemRegistry
-10	004033f4	0099d100	WriteBOOL
-10	004033fd	0099cf70	~CSystemRegistry
-10	00403406	0099b510	~CCharString
-10	0040340f	0099b510	~CCharString
-10	00403418	0099b510	~CCharString
-10	00403424	0099b510	~CCharString
-10	00403430	0099b510	~CCharString
-10	0040343c	0099b510	~CCharString
-10	00403448	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-10	00403454	0099eae0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
-10	00403460	0099b510	~CCharString
+10	004033e5	0099cf10	CSystemRegistry::CSystemRegistry	RELOCATION_MATCH	rebuild/src/compiled/00/99/CSystemRegistry_Constructor_0099cf10.cpp
+10	004033f4	0099d100	CSystemRegistry::WriteBOOL	RELOCATION_MATCH	rebuild/src/compiled/00/99/CSystemRegistry_WriteBOOL_0099d100.cpp
+10	004033fd	0099cf70	CSystemRegistry::~CSystemRegistry	RELOCATION_MATCH	rebuild/src/compiled/00/99/CSystemRegistry_Destructor_0099cf70.cpp
+10	00403406	0099b510	CWideString::~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+10	0040340f	0099b510	CWideString::~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+10	00403418	0099b510	CWideString::~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+10	00403424	0099b510	CWideString::~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+10	00403430	0099b510	CWideString::~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+10	0040343c	0099b510	CWideString::~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
+10	00403448	0099eae0	CCharString::~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+10	00403454	0099eae0	CCharString::~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
+10	00403460	0099b510	CWideString::~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp

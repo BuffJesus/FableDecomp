@@ -7919,6 +7919,36 @@
       "verdict": "PASS",
       "parity_status": "yellow",
       "timestamp": "2026-07-28T23:04:16"
+    },
+    "00447390": {
+      "address": "0x00447390",
+      "class_name": "",
+      "function_name": "Catch@0040d959",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-29T07:25:30"
+    },
+    "00448520": {
+      "address": "0x00448520",
+      "class_name": "",
+      "function_name": "Vector_DestroyRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-29T09:00:17"
+    },
+    "00448ab0": {
+      "address": "0x00448AB0",
+      "class_name": "",
+      "function_name": "Heap_SiftDown_ContainmentVolume",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-29T09:57:39"
     }
   },
   "runs": [
@@ -16501,6 +16531,46 @@
       "verdict": "PASS",
       "parity_status": "yellow",
       "timestamp": "2026-07-28T23:04:16"
+    },
+    {
+      "address": "0x00447390",
+      "class_name": "",
+      "function_name": "Catch@0040d959",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-07-29T07:25:30"
+    },
+    {
+      "address": "0x00448520",
+      "class_name": "",
+      "function_name": "Vector_DestroyRange",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-29T08:58:34"
+    },
+    {
+      "address": "0x00448520",
+      "class_name": "",
+      "function_name": "Vector_DestroyRange",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-29T09:00:17"
+    },
+    {
+      "address": "0x00448AB0",
+      "class_name": "",
+      "function_name": "Heap_SiftDown_ContainmentVolume",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-29T09:57:39"
     }
   ]
 }

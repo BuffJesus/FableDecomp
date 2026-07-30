@@ -1217,9 +1217,9 @@ namespace
     };
 }
 
-void* FABLE_FASTCALL GFGetSystemManager()
+CSystemManager* FABLE_FASTCALL GFGetSystemManager()
 {
-    return g_SystemManagerStorage;
+    return reinterpret_cast<CSystemManager*>(g_SystemManagerStorage);
 }
 
 bool FABLE_FASTCALL FableInitialiseVisualD3D9(

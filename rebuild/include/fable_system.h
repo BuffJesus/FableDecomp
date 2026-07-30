@@ -23,7 +23,7 @@ public:
     CSystemManagerInit();
 
     fable_u8 unknown00[0x0C];
-    CWideString startupText;
+    fable_u32 startupTextStorage;
     fable_u8 enabled;
     fable_u8 unknown11;
     fable_u8 unknown12[0x02];
@@ -37,8 +37,8 @@ public:
     fable_u8 unknown22[0x02];
     fable_u32 unknown24;
     fable_u32 unknown28;
-    CCharString optionNameA;
-    CCharString optionNameB;
+    fable_u32 optionNameAStorage;
+    fable_u32 optionNameBStorage;
     fable_u8 useDefaultDisplay;
     fable_u8 unknown35[0x03];
     fable_u32 displayWidth;
@@ -61,13 +61,26 @@ public:
 };
 #pragma pack(pop)
 
+enum ESystemCode
+{
+    kSystemCodeSuccess = 1,
+    kSystemCodeWindowInitialisationFailed = 4
+};
+
 void FABLE_FASTCALL FableConstructWideString(CWideString* value);
+void FABLE_FASTCALL FableConstructCharString(CCharString* value);
+const CWideString& FABLE_FASTCALL FableAssignWideString(
+    CWideString* value,
+    void* unused,
+    const wchar_t* text);
+CSystemManagerInit* FABLE_FASTCALL
+FableGetSystemManagerInitBoundary();
 
 FABLE_STATIC_ASSERT(offsetof(CRegionDef, guid) == 0x44);
 FABLE_STATIC_ASSERT(offsetof(CRegionDef, allocationSize) == 0x58);
 FABLE_STATIC_ASSERT(sizeof(CRegionDef) == 0x5C);
-FABLE_STATIC_ASSERT(offsetof(CSystemManagerInit, startupText) == 0x0C);
-FABLE_STATIC_ASSERT(offsetof(CSystemManagerInit, optionNameA) == 0x2C);
+FABLE_STATIC_ASSERT(offsetof(CSystemManagerInit, startupTextStorage) == 0x0C);
+FABLE_STATIC_ASSERT(offsetof(CSystemManagerInit, optionNameAStorage) == 0x2C);
 FABLE_STATIC_ASSERT(offsetof(CSystemManagerInit, regionStorage) == 0x5C);
 FABLE_STATIC_ASSERT(offsetof(CSystemManagerInit, primaryIdentifierStorage) == 0xB8);
 FABLE_STATIC_ASSERT(sizeof(CSystemManagerInit) == 0xC8);

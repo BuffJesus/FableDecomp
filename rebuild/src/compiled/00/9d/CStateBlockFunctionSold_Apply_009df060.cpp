@@ -58,7 +58,7 @@ static __forceinline void QueueSoldTrackedDwordState(
 void CStateBlockFunctionSoldView::Apply()
 {
     fable_u8* systemManager =
-        static_cast<fable_u8*>(GFGetSystemManager());
+        reinterpret_cast<fable_u8*>(GFGetSystemManager());
     fable_u8* renderSystem =
         SoldStateAt<fable_u8*>(systemManager, 0x60);
     fable_u8* manager =
