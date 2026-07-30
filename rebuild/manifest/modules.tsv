@@ -2865,7 +2865,7 @@ CReluctantTrader	3	0	0	0	0	0	0	0	0	0	0
 CRenderManager2D	31	28	26	0	0	0	0	0	0	0	0
 CRenderManagerCore	39	27	25	0	0	2	2	1	1	0	0
 CRenderStateManager	10	9	8	0	0	2	2	2	0	0	0
-CRenderTarget	6	16	14	0	0	1	1	0	1	0	0
+CRenderTarget	6	16	14	0	0	2	2	0	2	0	0
 CReplaceSerialise<CFileFormatEditMapBrushHeader	0	3	3	0	0	0	0	0	0	0	0
 CReplaceSerialise<CFileFormatHeightMapCell	0	1	1	0	0	0	0	0	0	0	0
 CReplaceSerialise<CFileFormatMapHeader	0	1	1	0	0	0	0	0	0	0	0
@@ -3413,7 +3413,7 @@ CTCPhysicalShieldSpell	22	13	11	0	0	0	0	0	0	0	0
 CTCPhysicsBase	65	51	49	2	0	6	6	5	1	1	0
 CTCPhysicsControlled	17	9	8	0	0	0	0	0	0	0	0
 CTCPhysicsLight	8	5	4	0	0	0	0	0	0	0	0
-CTCPhysicsNavigator	15	23	23	0	0	4	4	3	1	0	0
+CTCPhysicsNavigator	15	23	23	0	0	5	5	4	1	0	0
 CTCPhysicsRigidBody	29	25	23	0	0	1	1	0	1	0	0
 CTCPhysicsStandard	65	41	41	0	0	4	4	2	2	0	0
 CTCPlot	3	0	0	0	0	0	0	0	0	0	0
@@ -3593,7 +3593,7 @@ CTheKraken	2	0	0	0	0	0	0	0	0	0	0
 CTheRealGuildmaster	14	1	1	0	0	0	0	0	0	0	0
 CTheme2MapDialog	22	0	0	0	0	0	0	0	0	0	0
 CThemeChannel	0	1	0	0	0	0	0	0	0	0	0
-CThing	118	80	76	0	0	5	5	3	2	0	0
+CThing	118	80	76	0	0	9	9	6	3	0	0
 CThingAICreature	82	28	27	0	0	0	0	0	0	0	0
 CThingAICreatureInit	0	1	0	0	0	0	0	0	0	0	0
 CThingAnimatable	0	1	0	0	0	0	0	0	0	0	0
@@ -3837,7 +3837,7 @@ CVectorMap<unsigned_long	0	24	24	0	0	0	0	0	0	0	0
 CVectorMap_EntryScriptBase	0	2	0	0	0	0	0	0	0	0	0
 CVersion	1	1	0	0	0	0	0	0	0	0	0
 CVertexBufferBase	4	0	0	0	0	0	0	0	0	0	0
-CVertexBufferWin32	6	28	26	0	0	3	3	3	0	0	0
+CVertexBufferWin32	6	28	26	0	0	4	4	4	0	0	0
 CVertexCache	2	0	0	0	0	0	0	0	0	0	0
 CVertexGroupBlock	9	12	11	0	0	0	0	0	0	0	0
 CVertexGroupBlockList	4	2	2	0	0	0	0	0	0	0	0
@@ -3861,7 +3861,7 @@ CVictimsFatherGuard	3	1	1	0	0	0	0	0	0	0	0
 CVideoSys	15	17	12	0	0	0	0	0	0	0	0
 CView3DBase	3	1	1	0	0	0	0	0	0	0	0
 CView3DThirdPerson	1	1	0	0	0	0	0	0	0	0	0
-CViewBase	4	25	22	0	0	6	6	0	6	0	0
+CViewBase	4	25	22	0	0	7	7	0	7	0	0
 CViewport	7	5	3	0	0	0	0	0	0	0	0
 CVillageDef	4	5	4	0	0	1	1	1	0	0	0
 CVillageMemberDef	3	3	3	0	0	1	1	1	0	0	0
@@ -4505,7 +4505,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11362	1997	268	5	160	160	89	67	0	0
+_global	0	11362	1997	268	5	161	161	89	68	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

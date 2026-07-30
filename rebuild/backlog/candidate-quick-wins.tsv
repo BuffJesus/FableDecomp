@@ -112,7 +112,7 @@ rank	address	module	name	retail_bytes	candidate_source_bytes	checker_verdict	fir
 111	00891310	CGameScriptInterface	CGameScriptInterface::CacheMusicSet	0	1168	PASS	
 112	00410ed0	_global	Std_Deque_PopFront_ChunkBased	0	1169	PASS	
 113	004aaaf0	CScriptThing	CScriptThing::MsgIsKilledBy	0	1192	PASS	
-114	00449220	_global	Heap_BuildFromElements	0	1195		
+114	00449220	_global	Heap_BuildFromElements	0	1195	PASS	
 115	008907d0	CGameScriptInterface	CGameScriptInterface::IsConversationActive	0	1197	PASS	
 116	008907e0	CGameScriptInterface	CGameScriptInterface::FadeScreenOutUntilNextCallToFadeScreenIn	0	1199	PASS	
 117	00410550	_global	MemoryPool_AdvancePointer	0	1219	PASS	
@@ -244,7 +244,7 @@ rank	address	module	name	retail_bytes	candidate_source_bytes	checker_verdict	fir
 243	00411f10	_global	Std_Vector_Insert_Range_4Bytes	0	2466	PASS	
 244	00894dd0	CGameScriptInterface	CGameScriptInterface::EntitySetAsMarryable	0	2481	PASS	
 245	00411a10	_global	Std_Vector_Insert_Range_Copies_4byte	0	2488	PASS	
-246	00448e90	_global	Vector_InsertWithMove	0	2495		cannot convert 'uint32_t*' {aka 'unsigned int*'} to 'NInventory::CItem*'
+246	00448e90	_global	Vector_InsertWithMove	0	2495	PASS	cannot convert 'uint32_t*' {aka 'unsigned int*'} to 'NInventory::CItem*'
 247	008aeac0	CGameScriptInterface	CGameScriptInterface::_AddGossipFactions_impl	0	2499	PASS	static assertion failed
 248	0042b98b	_global	BinarySearchTree_InsertAndBalance	0	2513	PASS	
 249	00890b90	CGameScriptInterface	CGameScriptInterface::SetEnvironmentalEffectsAlwaysUpdate	0	2519	PASS	
@@ -352,7 +352,7 @@ rank	address	module	name	retail_bytes	candidate_source_bytes	checker_verdict	fir
 351	008a1650	CGameScriptInterface	CGameScriptInterface::GetBestScoreBlackjack	0	3934	PASS	'reinterpret_cast' from integer to pointer
 352	00897b70	CGameScriptInterface	CGameScriptInterface::GetHeroHasDivorcedMarriage	0	3958	PASS	
 353	00898ec0	CGameScriptInterface	CGameScriptInterface::SetHeroHandLampAsLit	0	3960	PASS	'reinterpret_cast' from integer to pointer
-354	00449130	_global	Vector_Reallocate	0	3962		
+354	00449130	_global	Vector_Reallocate	0	3962	PASS	
 355	00ab5d00	CMouseDX	CMouseDX::CMouseDX	0	3963	PASS	
 356	009f19a0	CGameEventPackageSet	CompressIntoBuffer	0	3986	PASS	'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'?
 357	00670710	CTCCoopSpirit	UpdateScore	0	4000	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
@@ -399,7 +399,7 @@ rank	address	module	name	retail_bytes	candidate_source_bytes	checker_verdict	fir
 398	00894d30	CGameScriptInterface	CGameScriptInterface::IsGiftOffensive	0	5212	PASS	invalid conversion from 'const void*' to 'void*' [-fpermissive]
 399	007602f0	_global	Math_PolygonAngleSumClosureCheck	0	5219	PASS	expected '(' before '{' token
 400	00891a00	CGameScriptInterface	CGameScriptInterface::SetQuestInfoText	0	5228	PASS	static assertion failed
-401	00449050	_global	Vector_ReallocateAndFill	0	5359		
+401	00449050	_global	Vector_ReallocateAndFill	0	5359	PASS	
 402	0089c560	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedToAll	0	5377	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
 403	0042c082	_global	CMemoryAllocatorVariableSize_FindInsertPoint	0	5392	PASS	
 404	008a0820	CGameScriptInterface	CGameScriptInterface::CancelHeroTeleportEffects	0	5392	PASS	

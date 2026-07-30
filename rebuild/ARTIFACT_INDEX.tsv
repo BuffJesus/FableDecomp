@@ -1970,7 +1970,13 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 004c32f0	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive		rebuild/src/compiled/00/4c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c32f0.cpp	rebuild/tests/00/4c/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c32f0_test.cpp		rebuild/build/candidates-Release/00/4c/004c32f0
 004c70a0						rebuild/build/candidates-Release/00/4c/004c70a0
 004c7270						rebuild/build/candidates-Release/00/4c/004c7270
+004c73d0	CVertexBufferWin32		rebuild/src/compiled/00/4c/CVertexBufferWin32_DoSizeof_004c73d0.cpp	rebuild/tests/00/4c/CVertexBufferWin32_DoSizeof_004c73d0_test.cpp		rebuild/build/candidates-Release/00/4c/004c73d0
+004c7440	CTCPhysicsNavigator		rebuild/src/compiled/00/4c/CTCPhysicsNavigator_EnableNavigator_004c7440.cpp	rebuild/tests/00/4c/CTCPhysicsNavigator_EnableNavigator_004c7440_test.cpp		rebuild/build/candidates-Release/00/4c/004c7440
 004c7460	CThingFilter_IsUnconscious		rebuild/src/compiled/00/4c/CThingFilterIsUnconscious_operator_004c7460.cpp	rebuild/tests/00/4c/CThingFilterIsUnconscious_operator_004c7460_test.cpp		rebuild/build/candidates-Release/00/4c/004c7460
+004c74f0	_global		rebuild/src/compiled/00/4c/global_SetCurrentThingManager_004c74f0.cpp	rebuild/tests/00/4c/global_SetCurrentThingManager_004c74f0_test.cpp		rebuild/build/candidates-Release/00/4c/004c74f0
+004c7580	CThing		rebuild/src/compiled/00/4c/CThing_SetCurrentMapNumber_004c7580.cpp	rebuild/tests/00/4c/CThing_SetCurrentMapNumber_004c7580_test.cpp		rebuild/build/candidates-Release/00/4c/004c7580
+004c7590	CRenderTarget		rebuild/src/compiled/00/4c/CRenderTarget_DetachTarget_004c7590.cpp	rebuild/tests/00/4c/CRenderTarget_DetachTarget_004c7590_test.cpp		rebuild/build/candidates-Release/00/4c/004c7590
+004c7770	CThing		rebuild/src/compiled/00/4c/CThing_SetAsGameStatePersisted_004c7770.cpp	rebuild/tests/00/4c/CThing_SetAsGameStatePersisted_004c7770_test.cpp		rebuild/build/candidates-Release/00/4c/004c7770
 004c7930	CThing		rebuild/src/compiled/00/4c/CThing_IsLevelLess_004c7930.cpp	rebuild/tests/00/4c/CThing_IsLevelLess_004c7930_test.cpp		rebuild/build/candidates-Release/00/4c/004c7930
 004c7990	CViewBase		rebuild/src/compiled/00/4c/CViewBase_GetDisplayEngine_004c7990.cpp	rebuild/tests/00/4c/CViewBase_GetDisplayEngine_004c7990_test.cpp		rebuild/build/candidates-Release/00/4c/004c7990
 004c79a0	CAnimateThing		rebuild/src/compiled/00/4c/CAnimateThing_GetMeshBank_004c79a0.cpp	rebuild/tests/00/4c/CAnimateThing_GetMeshBank_004c79a0_test.cpp		rebuild/build/candidates-Release/00/4c/004c79a0
@@ -1982,7 +1988,10 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 004c7a30	CThing		rebuild/src/compiled/00/4c/CThing_GetPlayer_004c7a30.cpp	rebuild/tests/00/4c/CThing_GetPlayer_004c7a30_test.cpp		rebuild/build/candidates-Release/00/4c/004c7a30
 004c7a70	CViewBase		rebuild/src/compiled/00/4c/CViewBase_GetDisplayEngine_004c7a70.cpp	rebuild/tests/00/4c/CViewBase_GetDisplayEngine_004c7a70_test.cpp		rebuild/build/candidates-Release/00/4c/004c7a70
 004c7a80	CAnimateThing		rebuild/src/compiled/00/4c/CAnimateThing_GetMeshBank_004c7a80.cpp	rebuild/tests/00/4c/CAnimateThing_GetMeshBank_004c7a80_test.cpp		rebuild/build/candidates-Release/00/4c/004c7a80
+004c7aa0	CViewBase		rebuild/src/compiled/00/4c/CViewBase_GetDisplayEngine_004c7aa0.cpp	rebuild/tests/00/4c/CViewBase_GetDisplayEngine_004c7aa0_test.cpp		rebuild/build/candidates-Release/00/4c/004c7aa0
+004c7bd0	CThing		rebuild/src/compiled/00/4c/CThing_IsForceNoSerialise_004c7bd0.cpp	rebuild/tests/00/4c/CThing_IsForceNoSerialise_004c7bd0_test.cpp		rebuild/build/candidates-Release/00/4c/004c7bd0
 004c7d90	CAnimateThing		rebuild/src/compiled/00/4c/CAnimateThing_GetMeshBank_004c7d90.cpp	rebuild/tests/00/4c/CAnimateThing_GetMeshBank_004c7d90_test.cpp		rebuild/build/candidates-Release/00/4c/004c7d90
+004c7e10	CThing		rebuild/src/compiled/00/4c/CThing_GetTypeName_004c7e10.cpp	rebuild/tests/00/4c/CThing_GetTypeName_004c7e10_test.cpp		rebuild/build/candidates-Release/00/4c/004c7e10
 004d325d	CBuyHouseDef		rebuild/src/compiled/00/4d/CBuyHouseDef_GetSizeofClass_004d325d.cpp	rebuild/tests/00/4d/CBuyHouseDef_GetSizeofClass_004d325d_test.cpp		rebuild/build/candidates-Release/00/4d/004d325d
 004d32a3	CWifeDef		rebuild/src/compiled/00/4d/CWifeDef_GetSizeofClass_004d32a3.cpp	rebuild/tests/00/4d/CWifeDef_GetSizeofClass_004d32a3_test.cpp		rebuild/build/candidates-Release/00/4d/004d32a3
 004d331c	CDoorDef		rebuild/src/compiled/00/4d/CDoorDef_GetSizeofClass_004d331c.cpp	rebuild/tests/00/4d/CDoorDef_GetSizeofClass_004d331c_test.cpp		rebuild/build/candidates-Release/00/4d/004d331c

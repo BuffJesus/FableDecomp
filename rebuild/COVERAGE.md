@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-07-30T14:43:21-06:00`
+Generated: `2026-07-30T15:00:38-06:00`
 
 | Stage | Complete | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
@@ -15,12 +15,12 @@ Generated: `2026-07-30T14:43:21-06:00`
 | Auto-RE source integrity | 845 | 845 | 100.000% | Balanced, non-empty source snapshots |
 | Host C++20 syntax pass | 397 | 845 | 46.982% | Strict 32-bit translation unit with real declarations |
 | Candidate signature audit clean | 541 | 845 | 64.024% | Definition agrees with manifest owner/name/shape and has unique linkage |
-| VC7.1 compiled candidate | 5,427 | 49,568 | 10.949% | Compiles to an object; behavioral parity not yet claimed |
-| Behavior-tested candidate | 5,427 | 49,568 | 10.949% | Local branch/layout oracle passes; retail parity not yet claimed |
-| Candidate retail `.text` match | 2,944 | 49,568 | 5.939% | Generated-candidate track exact matches awaiting promotion |
-| Candidate relocation-masked `.text` match | 2,314 | 49,568 | 4.668% | Exact instruction bytes/layout after masking expected COFF linker fields |
-| Verified functional or matching C++ | 5,276 | 49,568 | 10.644% | Compiled under VC7.1 and checked against retail |
-| Byte-identical C++ | 2,960 | 49,568 | 5.972% | Exact `.text` match |
+| VC7.1 compiled candidate | 5,436 | 49,568 | 10.967% | Compiles to an object; behavioral parity not yet claimed |
+| Behavior-tested candidate | 5,436 | 49,568 | 10.967% | Local branch/layout oracle passes; retail parity not yet claimed |
+| Candidate retail `.text` match | 2,949 | 49,568 | 5.949% | Generated-candidate track exact matches awaiting promotion |
+| Candidate relocation-masked `.text` match | 2,318 | 49,568 | 4.676% | Exact instruction bytes/layout after masking expected COFF linker fields |
+| Verified functional or matching C++ | 5,285 | 49,568 | 10.662% | Compiled under VC7.1 and checked against retail |
+| Byte-identical C++ | 2,965 | 49,568 | 5.982% | Exact `.text` match |
 | Lifted modules | 3 | 3,433 | 0.087% | Module-level reconstruction proof |
 
 ## Interpretation
