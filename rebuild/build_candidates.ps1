@@ -37497,6 +37497,27 @@ $catalog = @(
         TestSource = '00/44/CXMVPlaybackInfo_CXMVPlaybackInfo_004457f0_test.cpp'
         PassPattern = 'OK_0x004457f0'
     }
+    [pscustomobject]@{
+        Address = '00445670'
+        Module = 'CInputTypeXboxPadLeftStickEvent'
+        Source = '00/44/CInputTypeXboxPadLeftStickEvent_GetType_00445670.cpp'
+        TestSource = '00/44/CInputTypeXboxPadLeftStickEvent_GetType_00445670_test.cpp'
+        PassPattern = 'OK_0x00445670'
+    }
+    [pscustomobject]@{
+        Address = '004456f0'
+        Module = 'CInputTypeMouseMovementEvent'
+        Source = '00/44/CInputTypeMouseMovementEvent_GetType_004456f0.cpp'
+        TestSource = '00/44/CInputTypeMouseMovementEvent_GetType_004456f0_test.cpp'
+        PassPattern = 'OK_0x004456f0'
+    }
+    [pscustomobject]@{
+        Address = '004457b0'
+        Module = 'CInputTypeMouseWheelMovementDownEvent'
+        Source = '00/44/CInputTypeMouseWheelMovementDownEvent_GetType_004457b0.cpp'
+        TestSource = '00/44/CInputTypeMouseWheelMovementDownEvent_GetType_004457b0_test.cpp'
+        PassPattern = 'OK_0x004457b0'
+    }
 )
 
 $requestedAddresses = @(

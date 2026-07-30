@@ -5250,3 +5250,6 @@ address	name	length	bytes
 00445730	CInputTypeMouseWheelMovementEvent::GetType	6	b806000000c3
 00445770	CInputTypeMouseWheelMovementUpEvent::GetType	6	b807000000c3
 004457f0	CXMVPlaybackInfo	8	c6819408000000c3
+00445670	CInputTypeXboxPadLeftStickEvent::GetType	6	b803000000c3
+004456f0	CInputTypeMouseMovementEvent::GetType	6	b805000000c3
+004457b0	CInputTypeMouseWheelMovementDownEvent::GetType	6	b808000000c3
