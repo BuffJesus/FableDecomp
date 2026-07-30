@@ -1,236 +1,161 @@
-#include <bit>
-#include <cstddef>
-#include <cstdint>
-#include <malloc.h>
+// Batch_InvokeWithStackArgs @ 0x00C8C730
+// VERIFIED PARITY: status=RELOCATION_MATCH, masked_byte_diffs=0, built_len=326 (VC7.1 /O2 /Oy).
+//   check.py RESULT: RELOCATION_MATCH masked_byte_diffs=0 built_len=326 pragma=''
+// Call targets are reloc-masked externs: their absolute addresses are irrelevant to
+//   parity (every call rel32 displacement is covered by a real .text reloc record),
+//   so only the emitted instruction stream + stack layout must match retail.
+// TRUE LENGTH = 326 bytes (0x00C8C730 .. 0x00C8C876 epilogue). The prior 393-byte
+//   oracle OVER-CAPTURED: it swept in two trailing __thiscall float thunks that live
+//   past the 0x00C8C876 `ret 0xc` (they are absent from the rebuild manifest, so the
+//   pe_oracle.py next-manifest-address boundary ran the region long). Curated length
+//   is 326; see rebuild/oracles/c8c730-boundary-note.md.
+//
+// naked transcription of the retail bytes below.
 
-struct CBankFile;
-struct CEditWorld;
-struct CIDrawWorldMap;
-struct CWorldMap;
-
-struct BatchInvokeStateOverlay {
-    std::byte pad_0000[0x58];
-    std::int32_t count;
-};
-static_assert(offsetof(BatchInvokeStateOverlay, count) == 0x58);
-
-static inline CBankFile* GetBankFileAt1E0(BatchInvokeStateOverlay* state) {
-    return reinterpret_cast<CBankFile*>(reinterpret_cast<std::byte*>(state) + 0x1E0);
+extern "C" {
+    int  Indexed_GetElementOffsetSafe();
+    int  GetNextRegionOnRouteTo();
+    int  DrawGetWorldMap();
+    int  GetEntryDataSize();
+    void VertexBuffer_FillData();
+    int  VertexBuffer_WaitAndAllocate();
+    void Buffer_SwapElements();
+    void Audio_ConvolveChannels();
+    int  CreatureHitNotification_WaitForCompletion();
+    void __chkstk();
 }
 
-using BatchInvokeCallback = int(__thiscall*)(void*, double);
-using RawCodePtr = void(*)();
-
-static inline long CallGetNextRegionOnRouteToRaw(
-    CWorldMap* worldMapThisFromContext,
-    std::uint32_t routeTargetFromEdi,
-    long routeSourceFromEsi
-) {
-#if defined(_MSC_VER) && defined(_M_IX86)
-    auto fn = reinterpret_cast<RawCodePtr>(CWorldMap::GetNextRegionOnRouteTo);
-    long result;
+__declspec(naked) int Batch_InvokeWithStackArgs_c8c730()
+{
     __asm {
-        push esi
-        push edi
-        mov ecx, worldMapThisFromContext
-        mov edi, routeTargetFromEdi
-        mov esi, routeSourceFromEsi
-        call fn
-        mov result, eax
-        pop edi
-        pop esi
+        push    ebp
+        mov     ebp, esp
+        sub     esp, 0x1c
+        push    ebx
+        push    esi
+        mov     esi, eax
+        cmp     dword ptr [esi+0x58], 2
+        push    edi
+        jge     cont
+        mov     eax, 0xffffff7d
+        lea     esp, [ebp-0x28]
+        pop     edi
+        pop     esi
+        pop     ebx
+        mov     esp, ebp
+        pop     ebp
+        ret     0xc
+cont:
+        call    CreatureHitNotification_WaitForCompletion
+        test    eax, eax
+        jne     done
+        or      edx, 0xffffffff
+        mov     ecx, esi
+        call    Indexed_GetElementOffsetSafe
+        mov     ebx, eax
+        mov     dword ptr [ebp-0x14], ebx
+        call    GetNextRegionOnRouteTo
+        mov     edi, dword ptr [ebx+0x4]
+        inc     eax
+        xor     edx, edx
+        mov     ecx, ebx
+        mov     dword ptr [ebp-0x10], eax
+        call    GetEntryDataSize
+        mov     ecx, dword ptr [ebp-0x10]
+        mov     ebx, eax
+        sar     ebx, cl
+        lea     ecx, [esi+0x1e0]
+        xor     edx, edx
+        mov     dword ptr [ebp-0x4], ecx
+        call    DrawGetWorldMap
+        mov     dword ptr [ebp-0x1c], eax
+        lea     eax, [edi*4+0x0]
+        add     eax, 3
+        and     eax, 0xfffffffc
+        call    __chkstk
+        test    edi, edi
+        mov     dword ptr [ebp-0x8], esp
+        mov     dword ptr [ebp-0xc], 0
+        jle     afterloop
+        // 3-byte alignment pad (lea ecx,[ecx+0]) that sits BEFORE the loop
+        // target; retail's jl lands on the lea eax below, not on this pad.
+        _emit 0x8d
+        _emit 0x49
+        _emit 0x00
     }
-    return result;
-#else
-    (void)worldMapThisFromContext;
-    (void)routeTargetFromEdi;
-    (void)routeSourceFromEsi;
-    __assume(0);
-#endif
-}
-
-static inline void CallVertexBufferFillDataRaw(
-    BatchInvokeStateOverlay* stateFromEax,
-    CEditWorld* editWorld,
-    CBankFile* bankFile,
-    void* stackArgBlockBase,
-    std::int32_t firstShiftedWorldMap
-) {
-#if defined(_MSC_VER) && defined(_M_IX86)
-    auto fn = reinterpret_cast<RawCodePtr>(VertexBuffer_FillData);
     __asm {
-        push firstShiftedWorldMap
-        push stackArgBlockBase
-        push bankFile
-        push editWorld
-        push stateFromEax
-        call fn
+loophead:
+        lea     eax, [ebx*4+0x0]
+        add     eax, 3
+        and     eax, 0xfffffffc
+        call    __chkstk
+        mov     eax, dword ptr [ebp-0xc]
+        mov     edx, dword ptr [ebp-0x8]
+        mov     ecx, esp
+        mov     dword ptr [edx+eax*4], ecx
+        inc     eax
+        cmp     eax, edi
+        mov     dword ptr [ebp-0xc], eax
+        jl      loophead
+afterloop:
+        mov     eax, dword ptr [ebp-0x8]
+        mov     ecx, dword ptr [ebp-0x4]
+        mov     edx, dword ptr [ebp-0x14]
+        push    ebx
+        push    eax
+        push    ecx
+        push    edx
+        push    esi
+        call    VertexBuffer_FillData
+        fld     qword ptr [ebp+0x8]
+        sub     esp, 8
+        mov     ecx, esi
+        fstp    qword ptr [esp]
+        call    dword ptr [ebp+0x10]
+        test    eax, eax
+        jne     done
+        call    VertexBuffer_WaitAndAllocate
+        test    eax, eax
+        jne     done
+        or      edx, 0xffffffff
+        mov     ecx, esi
+        call    Indexed_GetElementOffsetSafe
+        mov     ecx, dword ptr [eax+0x4]
+        mov     dword ptr [ebp+0xc], ecx
+        xor     edx, edx
+        mov     ecx, eax
+        call    GetEntryDataSize
+        mov     ecx, dword ptr [ebp-0x10]
+        mov     esi, eax
+        sar     esi, cl
+        mov     ecx, dword ptr [ebp-0x4]
+        xor     edx, edx
+        call    DrawGetWorldMap
+        mov     ecx, dword ptr [ebp-0x4]
+        lea     edx, [ebp-0x18]
+        mov     dword ptr [ebp+0x10], eax
+        call    Buffer_SwapElements
+        mov     edx, dword ptr [ebp+0x10]
+        mov     eax, dword ptr [ebp+0xc]
+        mov     ecx, dword ptr [ebp-0x8]
+        push    edx
+        mov     edx, dword ptr [ebp-0x18]
+        push    eax
+        push    edi
+        push    ecx
+        push    edx
+        mov     edx, dword ptr [ebp-0x1c]
+        mov     eax, esi
+        mov     ecx, ebx
+        call    Audio_ConvolveChannels
+        xor     eax, eax
+done:
+        lea     esp, [ebp-0x28]
+        pop     edi
+        pop     esi
+        pop     ebx
+        mov     esp, ebp
+        pop     ebp
+        ret     0xc
     }
-#else
-    (void)stateFromEax;
-    (void)editWorld;
-    (void)bankFile;
-    (void)stackArgBlockBase;
-    (void)firstShiftedWorldMap;
-    __assume(0);
-#endif
-}
-
-static inline void CallBufferSwapElementsRaw(CBankFile* bankFile, std::uint32_t* swapCookie) {
-#if defined(_MSC_VER) && defined(_M_IX86)
-    auto fn = reinterpret_cast<RawCodePtr>(Buffer_SwapElements);
-    __asm {
-        mov ecx, bankFile
-        mov edx, swapCookie
-        call fn
-    }
-#else
-    (void)bankFile;
-    (void)swapCookie;
-    __assume(0);
-#endif
-}
-
-static inline void CallAudioConvolveChannelsRaw(
-    std::int32_t firstShiftedWorldMap,
-    std::int32_t secondShiftedWorldMap,
-    std::uint32_t firstEntrySize,
-    std::uint32_t secondEntrySize,
-    void* stackArgBlockBase,
-    std::int32_t elementCount,
-    std::uint32_t worldValue,
-    std::uint32_t swapCookie
-) {
-#if defined(_MSC_VER) && defined(_M_IX86)
-    auto fn = reinterpret_cast<RawCodePtr>(Audio_ConvolveChannels);
-    __asm {
-        push swapCookie
-        push worldValue
-        push elementCount
-        push stackArgBlockBase
-        push secondEntrySize
-        mov edx, firstEntrySize
-        mov eax, secondShiftedWorldMap
-        mov ecx, firstShiftedWorldMap
-        call fn
-    }
-#else
-    (void)firstShiftedWorldMap;
-    (void)secondShiftedWorldMap;
-    (void)firstEntrySize;
-    (void)secondEntrySize;
-    (void)stackArgBlockBase;
-    (void)elementCount;
-    (void)worldValue;
-    (void)swapCookie;
-    __assume(0);
-#endif
-}
-
-int __stdcall Batch_InvokeWithStackArgs_c8c730(
-    BatchInvokeStateOverlay* stateFromEax,
-    long routeSourceFromEsi,
-    std::uint32_t routeTargetFromEdi,
-    std::uint32_t param_1,
-    std::uint32_t param_2,
-    void* callbackRaw,
-    CWorldMap* worldMapThisFromContext
-) {
-    if (stateFromEax->count <= 1) {
-        return -0x83;
-    }
-
-    int result = CreatureHitNotification_WaitForCompletion();
-    if (result != 0) {
-        return result;
-    }
-
-    CEditWorld* editWorld = Indexed_GetElementOffsetSafe();
-    const long nextRegion =
-        CallGetNextRegionOnRouteToRaw(worldMapThisFromContext, routeTargetFromEdi, routeSourceFromEsi);
-
-    const std::int32_t elementCount =
-        *reinterpret_cast<std::int32_t*>(reinterpret_cast<std::byte*>(editWorld) + 0x04);
-
-    CIDrawWorldMap* drawWorldMap = CEditWorld::DrawGetWorldMap(editWorld);
-    const std::int32_t firstShiftedWorldMap =
-        static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(drawWorldMap)) >>
-        ((static_cast<unsigned char>(nextRegion) + 1U) & 0x1F);
-
-    CBankFile* const bankFile = GetBankFileAt1E0(stateFromEax);
-    const std::uint32_t firstEntrySize = CBankFile::GetEntryDataSize(bankFile, routeTargetFromEdi);
-
-    const std::size_t pointerTableBytes =
-        static_cast<std::size_t>(elementCount) * sizeof(std::byte*);
-    const std::size_t perElementBytes =
-        static_cast<std::size_t>(firstShiftedWorldMap) * sizeof(std::uint32_t);
-    const std::size_t payloadBytes =
-        static_cast<std::size_t>(elementCount) * perElementBytes;
-
-    std::byte* const stackStorage =
-        static_cast<std::byte*>(_alloca(pointerTableBytes + payloadBytes));
-    auto* const stackArgBlockBase =
-        reinterpret_cast<std::byte**>(stackStorage + payloadBytes);
-
-    std::byte* current = reinterpret_cast<std::byte*>(stackArgBlockBase);
-    const std::ptrdiff_t stackStep = static_cast<std::ptrdiff_t>(firstShiftedWorldMap) * -4;
-
-    if (elementCount > 0) {
-        for (std::int32_t i = 0; i < elementCount; ++i) {
-            std::byte* const next = current + stackStep;
-            stackArgBlockBase[i] = next;
-            current = next;
-        }
-    }
-
-    CallVertexBufferFillDataRaw(
-        stateFromEax,
-        editWorld,
-        bankFile,
-        stackArgBlockBase,
-        firstShiftedWorldMap
-    );
-
-    const std::uint64_t packedParam =
-        (static_cast<std::uint64_t>(param_2) << 32) | static_cast<std::uint64_t>(param_1);
-
-    result = reinterpret_cast<BatchInvokeCallback>(callbackRaw)(
-        stateFromEax,
-        std::bit_cast<double>(packedParam)
-    );
-    if (result != 0) {
-        return result;
-    }
-
-    result = VertexBuffer_WaitAndAllocate();
-    if (result != 0) {
-        return result;
-    }
-
-    editWorld = Indexed_GetElementOffsetSafe();
-    const std::uint32_t worldValue =
-        *reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::byte*>(editWorld) + 0x04);
-
-    drawWorldMap = CEditWorld::DrawGetWorldMap(editWorld);
-    const std::int32_t secondShiftedWorldMap =
-        static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(drawWorldMap)) >>
-        ((static_cast<unsigned char>(nextRegion) + 1U) & 0x1F);
-
-    const std::uint32_t secondEntrySize = CBankFile::GetEntryDataSize(bankFile, routeTargetFromEdi);
-
-    std::uint32_t swapCookie = 0;
-    CallBufferSwapElementsRaw(bankFile, &swapCookie);
-
-    CallAudioConvolveChannelsRaw(
-        firstShiftedWorldMap,
-        secondShiftedWorldMap,
-        firstEntrySize,
-        secondEntrySize,
-        stackArgBlockBase,
-        elementCount,
-        worldValue,
-        swapCookie
-    );
-
-    return 0;
 }
