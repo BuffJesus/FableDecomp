@@ -37770,6 +37770,69 @@ $catalog = @(
         TestSource = '00/4a/CScriptThing_DecrementScriptCounter_004ab100_test.cpp'
         PassPattern = 'OK_0x004ab100'
     }
+    [pscustomobject]@{
+        Address = '004ae9d0'
+        Module = 'CNetworkClient'
+        Source = '00/4a/CNetworkClient_Update_004ae9d0.cpp'
+        TestSource = '00/4a/CNetworkClient_Update_004ae9d0_test.cpp'
+        PassPattern = 'OK_0x004ae9d0'
+    }
+    [pscustomobject]@{
+        Address = '004af270'
+        Module = 'CGameScriptInterface'
+        Source = '00/4a/CGameScriptInterface_DontPopulateNextLoadedRegion_004af270.cpp'
+        TestSource = '00/4a/CGameScriptInterface_DontPopulateNextLoadedRegion_004af270_test.cpp'
+        PassPattern = 'OK_0x004af270'
+    }
+    [pscustomobject]@{
+        Address = '004af960'
+        Module = 'CQuestManager'
+        Source = '00/4a/CQuestManager_SetObjectiveAsCompleted_004af960.cpp'
+        TestSource = '00/4a/CQuestManager_SetObjectiveAsCompleted_004af960_test.cpp'
+        PassPattern = 'OK_0x004af960'
+    }
+    [pscustomobject]@{
+        Address = '004af990'
+        Module = 'CQuestManager'
+        Source = '00/4a/CQuestManager_SetObjectiveAsFailed_004af990.cpp'
+        TestSource = '00/4a/CQuestManager_SetObjectiveAsFailed_004af990_test.cpp'
+        PassPattern = 'OK_0x004af990'
+    }
+    [pscustomobject]@{
+        Address = '004b87d0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/4b/CGuiControlTreePane_SortTreeRecursively_004b87d0.cpp'
+        TestSource = '00/4b/CGuiControlTreePane_SortTreeRecursively_004b87d0_test.cpp'
+        PassPattern = 'OK_0x004b87d0'
+    }
+    [pscustomobject]@{
+        Address = '004bbff0'
+        Module = 'CMap'
+        Source = '00/4b/CMap_DrawGetSeaLevel_004bbff0.cpp'
+        TestSource = '00/4b/CMap_DrawGetSeaLevel_004bbff0_test.cpp'
+        PassPattern = 'OK_0x004bbff0'
+    }
+    [pscustomobject]@{
+        Address = '004bc000'
+        Module = 'CTCGraphicAppearance'
+        Source = '00/4b/CTCGraphicAppearance_GetAnims_004bc000.cpp'
+        TestSource = '00/4b/CTCGraphicAppearance_GetAnims_004bc000_test.cpp'
+        PassPattern = 'OK_0x004bc000'
+    }
+    [pscustomobject]@{
+        Address = '004ae9a0'
+        Module = 'CTCTrapBase'
+        Source = '00/4a/CTCTrapBase_ManualReset_004ae9a0.cpp'
+        TestSource = '00/4a/CTCTrapBase_ManualReset_004ae9a0_test.cpp'
+        PassPattern = 'OK_0x004ae9a0'
+    }
+    [pscustomobject]@{
+        Address = '004bbfc0'
+        Module = '_global'
+        Source = '00/4b/global_SetCurrentThingManager_004bbfc0.cpp'
+        TestSource = '00/4b/global_SetCurrentThingManager_004bbfc0_test.cpp'
+        PassPattern = 'OK_0x004bbfc0'
+    }
 )
 
 $requestedAddresses = @(
