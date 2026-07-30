@@ -1460,7 +1460,7 @@ CEngineInternalPrimitive2DText	1	1	1	0	0	0	0	0	0	0	0
 CEngineInternalPrimitive2DViewport	10	14	13	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveAnimatedMesh	16	16	16	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveAnimatedMeshFromFile	1	1	1	0	0	1	1	1	0	0	0
-CEngineInternalPrimitiveBase	15	100	98	0	0	53	53	52	1	0	0
+CEngineInternalPrimitiveBase	15	100	98	0	0	54	54	53	1	0	0
 CEngineInternalPrimitiveChanger	16	16	15	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveDecal	4	4	4	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveFlareSprite	1	1	1	0	0	0	0	0	0	0	0
@@ -2504,7 +2504,7 @@ CObjectTypeCollection	12	4	4	0	0	0	0	0	0	0	0
 CObjectTypeCollectionPalette	3	2	2	0	0	0	0	0	0	0	0
 CObservable	11	46	45	0	0	10	10	10	0	0	0
 CObserver	6	2	2	0	0	1	1	0	1	0	0
-CObstacleNavigatorExternalInterface	14	24	24	0	0	3	3	3	0	0	0
+CObstacleNavigatorExternalInterface	14	24	24	0	0	8	8	3	5	0	0
 COccupiableDef	2	3	3	0	0	1	1	1	0	0	0
 COk	3	0	0	0	0	0	0	0	0	0	0
 COldFileFormatMapHeader8	1	0	0	0	0	0	0	0	0	0	0
@@ -2670,7 +2670,7 @@ CPersonalScript_alextestScript	3	0	0	0	0	0	0	0	0	0	0
 CPhonemeDataBank	9	0	0	0	0	0	0	0	0	0	0
 CPhysicalPrimitiveCylinder	13	7	7	0	0	0	0	0	0	0	0
 CPhysicalPrimitiveInit	3	1	1	0	0	0	0	0	0	0	0
-CPhysicalPrimitiveMesh	10	5	5	0	0	0	0	0	0	0	0
+CPhysicalPrimitiveMesh	10	5	5	0	0	1	1	1	0	0	0
 CPhysicalPrimitiveSphere	12	5	5	0	0	0	0	0	0	0	0
 CPhysicsCollisionPointsObject	2	0	0	0	0	0	0	0	0	0	0
 CPhysicsCoordCartesian	1	0	0	0	0	0	0	0	0	0	0
@@ -4505,7 +4505,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11362	1997	268	5	161	161	89	68	0	0
+_global	0	11362	1997	268	5	162	162	89	69	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0
