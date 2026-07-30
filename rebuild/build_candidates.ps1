@@ -37518,6 +37518,69 @@ $catalog = @(
         TestSource = '00/44/CInputTypeMouseWheelMovementDownEvent_GetType_004457b0_test.cpp'
         PassPattern = 'OK_0x004457b0'
     }
+    [pscustomobject]@{
+        Address = '00447a40'
+        Module = 'CEditControlCentre'
+        Source = '00/44/CEditControlCentre_OnEngineSurveyLMBHeld_00447a40.cpp'
+        TestSource = '00/44/CEditControlCentre_OnEngineSurveyLMBHeld_00447a40_test.cpp'
+        PassPattern = 'OK_0x00447a40'
+    }
+    [pscustomobject]@{
+        Address = '00469435'
+        Module = 'CVsyncCallbackTimerInfo'
+        Source = '00/46/CVsyncCallbackTimerInfo_CVsyncCallbackTimerInfo_00469435.cpp'
+        TestSource = '00/46/CVsyncCallbackTimerInfo_CVsyncCallbackTimerInfo_00469435_test.cpp'
+        PassPattern = 'OK_0x00469435'
+    }
+    [pscustomobject]@{
+        Address = '0046aade'
+        Module = 'C3DGroup2'
+        Source = '00/46/C3DGroup2_C3DGroup2_0046aade.cpp'
+        TestSource = '00/46/C3DGroup2_C3DGroup2_0046aade_test.cpp'
+        PassPattern = 'OK_0x0046aade'
+    }
+    [pscustomobject]@{
+        Address = '0046fece'
+        Module = 'CIndexBuffer'
+        Source = '00/46/CIndexBuffer_CIndexBuffer_0046fece.cpp'
+        TestSource = '00/46/CIndexBuffer_CIndexBuffer_0046fece_test.cpp'
+        PassPattern = 'OK_0x0046fece'
+    }
+    [pscustomobject]@{
+        Address = '0047040e'
+        Module = 'CNavigationLayer'
+        Source = '00/47/CNavigationLayer_CNavigationLayer_0047040e.cpp'
+        TestSource = '00/47/CNavigationLayer_CNavigationLayer_0047040e_test.cpp'
+        PassPattern = 'OK_0x0047040e'
+    }
+    [pscustomobject]@{
+        Address = '00471954'
+        Module = 'CAnimationEntry'
+        Source = '00/47/CAnimationEntry_CAnimationEntry_00471954.cpp'
+        TestSource = '00/47/CAnimationEntry_CAnimationEntry_00471954_test.cpp'
+        PassPattern = 'OK_0x00471954'
+    }
+    [pscustomobject]@{
+        Address = '00471c9a'
+        Module = 'CNearestBuildingWithProperty'
+        Source = '00/47/CNearestBuildingWithProperty_CNearestBuildingWithProperty_00471c9a.cpp'
+        TestSource = '00/47/CNearestBuildingWithProperty_CNearestBuildingWithProperty_00471c9a_test.cpp'
+        PassPattern = 'OK_0x00471c9a'
+    }
+    [pscustomobject]@{
+        Address = '00479359'
+        Module = '_global'
+        Source = '00/47/global_CalcStringLength_00479359.cpp'
+        TestSource = '00/47/global_CalcStringLength_00479359_test.cpp'
+        PassPattern = 'OK_0x00479359'
+    }
+    [pscustomobject]@{
+        Address = '0047cfc2'
+        Module = 'CUserProfileManager'
+        Source = '00/47/CUserProfileManager_GetCameraSensitivity_0047cfc2.cpp'
+        TestSource = '00/47/CUserProfileManager_GetCameraSensitivity_0047cfc2_test.cpp'
+        PassPattern = 'OK_0x0047cfc2'
+    }
 )
 
 $requestedAddresses = @(

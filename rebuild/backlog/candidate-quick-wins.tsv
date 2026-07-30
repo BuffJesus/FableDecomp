@@ -125,341 +125,338 @@ rank	address	module	name	retail_bytes	candidate_source_bytes	checker_verdict	fir
 124	0042c64d	_global	CTCBase_FindInterfaceType_0xe8	0	1280	PASS	field 'interfaceMap' has incomplete type 'CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >'
 125	009f16f0	CGameEventPackageSet	AddPackage	0	1282	PASS	'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'?
 126	0088de10	CGameScriptInterface	CGameScriptInterface::GiveThingItemInHand	0	1289	PASS	
-127	0042ad6c	_global	BinarySearchTree_FindEqualOrGreater	0	1296	PASS	'next' was not declared in this scope
-128	0042aeb5	_global	BinarySearchTree_FindByUintComparator	0	1300	PASS	
-129	0042b72b	_global	CTexture_InitEmpty_56bytes	0	1303	PASS	
-130	00443980	_global	Catch@0047e8cc	0	1304	PASS	
-131	00ca8610	_global	COM_QueryInterface_012a9a24	0	1304	PASS	
-132	00444e10	_global	CGuiControlTreePane_Destructor_4	0	1306	PASS	incomplete type 'CGuiControlTreePane' used in nested name specifier
-133	00c8bae0	_global	Script_GetEntryPointer	0	1306	PASS	
-134	00c44dc0	_global	FireballSpell_DispatchScaledDamage	0	1329	PASS	'CTCWeapon_GetDamageValue' was not declared in this scope
-135	00411910	_global	Buffer_AllocateAndZero	0	1338	PASS	
-136	0042ad34	_global	StdMap_LowerBound	0	1362	PASS	'CCharString' does not name a type
-137	007266c0	CTCPhysicsBase	CTCPhysicsBase	0	1362	PASS	static assertion failed
-138	00443840	_global	CGuiControlTreePane_Destructor_1	0	1370	PASS	'CGuiControlTreePane' has not been declared; did you mean 'CGuiControlTreeNode'?
-139	0042b7ee	_global	CTexture_InitEmpty_28bytes	0	1371	PASS	
-140	0042adb6	_global	BinarySearchTree_EraseNode	0	1372	PASS	
-141	0088fdc0	CGameScriptInterface	CGameScriptInterface::SetTimeOfDay	0	1376	PASS	
-142	0088fc60	CGameScriptInterface	CGameScriptInterface::GiveHeroExpression	0	1389	PASS	'reinterpret_cast' from integer to pointer
-143	0088e3d0	CGameScriptInterface	CGameScriptInterface::MiniMapAllowRouteBetweenRegions	0	1391	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-144	00442190	_global	Catch@0047e8cc	0	1402	PASS	
-145	00442d50	_global	Catch@0047e8cc	0	1407	PASS	
-146	00890820	CGameScriptInterface	CGameScriptInterface::FadeScreenOut	0	1422	PASS	'CRGBColour' was not declared in this scope
-147	00c37000	_global	IntelligentPointer_BuildAndDispatchFloat	0	1429	PASS	
-148	00410460	_global	std_vector_C2DLineF_Copy	0	1430	PASS	'_Copy_impl' is not a member of 'std'; did you mean '__apply_impl'?
-149	0042ae33	_global	BinaryTree_Find	0	1438	PASS	'next' was not declared in this scope
-150	0042ad91	_global	BinarySearchTree_FindExact	0	1440	PASS	
-151	00c36e00	_global	CSBAgents_BuildAndDispatch_SummonerLightning	0	1440	PASS	
-152	00410f30	_global	Buffer_AllocateAndZero	0	1454	PASS	
-153	0042ae0e	_global	BinarySearchTree_FindByIntKey	0	1455	PASS	'next' was not declared in this scope
-154	009f1870	CGameEvent	InitFromCompressedBuffer	0	1460	PASS	'CGameEvent' does not name a type
-155	00442280	_global	Catch@0047e8cc	0	1465	PASS	
-156	008a0c10	CGameScriptInterface	CGameScriptInterface::EntityGetAppearanceSeed	0	1478	PASS	'CGameScriptInterface' has not been declared
-157	00412450	_global	Std_Vector_Erase_Range	0	1491	PASS	'CWideString' does not name a type
-158	0042c521	_global	CTC_FindInterface_4	0	1502	PASS	'ETCInterfaceType' was not declared in this scope
-159	0088f480	CGameScriptInterface	CGameScriptInterface::ApplyScriptBrush	0	1510	PASS	
-160	00446b40	_global	VectorMap_LookupValue	0	1511	PASS	
-161	0042b4f3	_global	BinarySearchTree_FindLessOrEqual_Copy	0	1513	PASS	
-162	004127e0	_global	Std_Deque_PushBack_ChunkAlloc	0	1524	PASS	
-163	0088fe90	CGameScriptInterface	CGameScriptInterface::FastForwardTimeTo	0	1528	PASS	
-164	0042b854	_global	CMemoryAllocatorVariableSize_Clear	0	1544	PASS	variable or field 'BinarySearchTree_EraseNode_Impl' declared void
-165	0042ae90	_global	BinarySearchTree_FindGreaterOrEqual	0	1554	PASS	'next' was not declared in this scope
-166	00ca9c80	_global	Object_AcquireField26	0	1557	PASS	
-167	0042b467	_global	StdMap_FindLE	0	1558	PASS	static assertion failed
-168	006e7690	CGameScriptInterface	CGameScriptInterface::DeregisterTimer	0	1559	PASS	
-169	0088e300	CGameScriptInterface	CGameScriptInterface::IsRegionLoaded	0	1560	PASS	
-170	00c93b30	_global	Audio_ApplyGainTableToBuffer	0	1605	PASS	
-171	0088e6f0	CGameScriptInterface	CGameScriptInterface::AreEntitiesEnemies	0	1610	PASS	
-172	0042b52b	_global	BinarySearchTree_LowerBound	0	1620	PASS	field 'key' has incomplete type 'CCharString'
-173	00c36fb0	_global	CSBAgents_BuildAndDispatch_TavernGame	0	1622	PASS	expected '(' before '{' token
-174	0042c48b	_global	CTC_FindInterface_0x11	0	1625	PASS	
-175	0088fd00	CGameScriptInterface	CGameScriptInterface::EntitySetInLimbo	0	1625	PASS	
-176	0042ae58	_global	BinarySearchTree_FindByComparator	0	1633	PASS	field 'key' has incomplete type 'CCharString'
-177	00441c20	_global	TreePane_DestructorHelper	0	1634	PASS	
-178	0041cfb2	_global	GetTextBySymbol	0	1637	PASS	'NGameText' does not name a type
-179	0042cb90	_global	CSurface_Clone_Recursive	0	1643	PASS	'CSurface' was not declared in this scope
-180	00c362f0	_global	CSBAgents_BuildAndDispatch_A	0	1644	PASS	
-181	00441800	_global	Catch@0047e8cc	0	1661	PASS	
-182	00449d20	CPlayerManager	IsMultiplayerGameActive	0	1695	PASS	'reinterpret_cast' from integer to pointer
-183	0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	0	1701	PASS	
-184	0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	0	1702	PASS	
-185	00440b40	_global	Vector_DestructStringRange	0	1705	PASS	'CCharString' does not name a type
-186	0088f710	CGameScriptInterface	CGameScriptInterface::EntitySetCombatEnabled	0	1715	PASS	
-187	00431277	_global	UpdateShadowScene_WriteState	0	1736	PASS	variable or field 'UpdateShadowScene_WriteState' declared void
-188	0042a879	_global	BinarySearchTree_FindNode	0	1741	PASS	'next' was not declared in this scope
-189	00c336f0	_global	Constraint_NotifyGlobalManager	0	1763	PASS	
-190	00ca5e70	_global	CritSec_GetDividedValue_Locked	0	1778	PASS	'int64' in namespace 'std' does not name a type; did you mean 'int64_t'?
-191	00431e80	_global	CParentDefClassBase_CopyAssign_1	0	1786	PASS	'CParentDefClassBase' does not name a type
-192	0042a82b	_global	BinarySearchTree_FindLessOrEqual	0	1789	PASS	'next' was not declared in this scope
-193	00446b90	_global	VectorMap_LookupValue	0	1790	PASS	
-194	00c94190	_global	Audio_ComputeClampedPosition	0	1800	PASS	
-195	00403480	_global	WinMain	0	1804	PASS	
-196	00419f50	_global	Vector_FromRange	0	1804	PASS	
-197	00448ab0	_global	Heap_SiftDown_ContainmentVolume	0	1826	PASS	
-198	004124c0	_global	Std_Vector_Insert_Range_16Bytes	0	1853	PASS	
-199	0042c43f	_global	CTC_FindInterface_0x10e	0	1872	PASS	macro 'offsetof' passed 5 arguments, but takes just 2
-200	00440c00	_global	Vector_CopyPairRange	0	1879	PASS	#error Vector_CopyPairRange reversal requires MSVC x86 inline assembly to preserve the observed EDX post-call update.
-201	0088ff30	CGameScriptInterface	CGameScriptInterface::TransitionToThemeAllInternals	0	1906	PASS	
-202	0041ceb3	_global	CASound_PlayFromSymbol	0	1929	PASS	
-203	0088fc90	CGameScriptInterface	CGameScriptInterface::HeroHasExpression	0	1943	PASS	
-204	0042c810	_global	CTCBase_FindInterfaceType_0xf6	0	1965	PASS	'unsigned int CTCBase_FindInterfaceType_0xf6(void*, int*)' should have been declared inside '::'
-205	0042c77a	_global	CTCBase_FindInterfaceType_0x14	0	1989	PASS	
-206	00893ec0	CGameScriptInterface	CGameScriptInterface::MsgOnHeroSlept	0	2000	PASS	'CGameScriptInterface' has not been declared
-207	0042d604	_global	CChangingStateComponent_StateChangeHandler_1	0	2014	PASS	variable or field 'CChangingStateComponent_StateChangeHandler_1' declared void
-208	0041641f	_global	CMainGameComponent_ChangeDisplayMode	0	2015	PASS	incomplete type 'CScriptThing' used in nested name specifier
-209	004165e8	CMainGameComponent	CheckSync	0	2016	PASS	'reinterpret_cast' from integer to pointer
-210	00448be0	_global	Heap_MakeHeap_NavConnector	0	2020	PASS	'void std::_Adjust_heap(int, int, int, long int, uint32_t, int*, uint32_t)' should have been declared inside 'std'
-211	0042c699	_global	CTCBase_FindInterfaceType_0x1b	0	2022	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-212	0042c56c	_global	CTCBase_FindInterfaceType_0x19	0	2030	PASS	'ETCInterfaceType' does not name a type
-213	00c43de0	_global	DrawAutoPickups_SelectAndDrawPrimitive	0	2038	PASS	
-214	0042c4d6	_global	CTC_FindInterface_0x17	0	2055	PASS	'ETCInterfaceType' was not declared in this scope
-215	0042c6e4	_global	CTCBase_FindInterfaceType_0x6f	0	2056	PASS	static assertion failed
-216	00890200	CGameScriptInterface	CGameScriptInterface::ScreenFilterFadeOut	0	2093	PASS	
-217	00441870	_global	List_DestroyElements	0	2099	PASS	
-218	00409090	_global	Engine_FindPrimitiveInArray	0	2100	PASS	
-219	00caf680	CEngineLandscapePatch	CEngineLandscapePatch::AllocateTask	0	2109	PASS	'CEngineLandscapePatch' has not been declared
-220	0042c8f4	_global	CTCBase_FindInterfaceType_0xfc	0	2124	PASS	
-221	00898f40	CGameScriptInterface	CGameScriptInterface::GiveHeroGold	0	2160	PASS	'ETCInterfaceType' was not declared in this scope
-222	00c92f10	_global	DSP_ComputeRunningMinEnvelope	0	2187	PASS	
-223	0041d0a8	_global	CASound_PlayMessage	0	2188	PASS	cannot call constructor 'CSoundInit::CSoundInit' directly
-224	00444ed0	_global	AsyncData_Destructor	0	2201	PASS	
-225	004313e9	_global	std_set_insert_uint_via_FUN	0	2210	PASS	'void std_set_insert_uint_via_FUN(UIntSetTreeOverlay*, UIntSetNodeOverlay**, int, UIntSetNodeOverlay*, const uint32_t*, int)' should have been declared inside '::'
-226	00432aa8	_global	CTCCarryable_CloneTree	0	2218	PASS	
-227	0088e0b0	CGameScriptInterface	CGameScriptInterface::SetSoundThemesAsEnabledForRegion	0	2272	PASS	
-228	0042c72f	_global	CTCBase_FindInterfaceType_0x13	0	2279	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-229	00432b38	_global	CTCCarryable_assign	0	2291	PASS	
-230	00897150	CGameScriptInterface	CGameScriptInterface::UnSetThingAndCarriedItemsNotAffectedByScreenFilter	0	2298	PASS	
-231	00893e70	CGameScriptInterface	CGameScriptInterface::MsgOnGameSavedManually	0	2300	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-232	0042bba7	_global	BinaryTree_InsertNodeRight	0	2315	PASS	'void BinaryTree_InsertNodeRight(BinaryTreeOverlay*, BinaryTreeNodeOverlay**, int, BinaryTreeNodeOverlay*, const int32_t*, int)' should have been declared inside '::'
-233	0042ba99	_global	BinaryTree_InsertNodeLeft	0	2341	PASS	
-234	0042c85c	_global	CTCBase_FindInterfaceType_0x10d	0	2345	PASS	
-235	0042c5b7	_global	CTCBase_FindInterfaceType_0x16	0	2347	PASS	
-236	0088ece0	CGameScriptInterface	CGameScriptInterface::CameraShake	0	2350	PASS	
-237	0042c8a8	_global	CTCBase_FindInterfaceType_0xd0	0	2355	PASS	
-238	0088ead0	CGameScriptInterface	CGameScriptInterface::EntitySetAsDamageable	0	2384	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-239	004408a0	_global	Std_Vector_Insert_Range	0	2385	PASS	
-240	0088e2a0	CGameScriptInterface	CGameScriptInterface::IsLevelLoaded	0	2394	PASS	static assertion failed
-241	004aeaa0	CNetworkClient	GetLocalGameEventPackageSet	0	2398	PASS	'CNetworkClient' has not been declared
-242	008950e0	CGameScriptInterface	CGameScriptInterface::ManuallyResetTrap	0	2417	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-243	00411b90	_global	std_vector_assign	0	2436	PASS	
-244	0042c602	_global	CTCBase_FindInterfaceType_0x29	0	2441	PASS	
-245	0042d65b	_global	CChangingStateComponent_StateChangeHandler_2	0	2442	PASS	variable or field 'CChangingStateComponent_StateChangeHandler_2' declared void
-246	00411f10	_global	Std_Vector_Insert_Range_4Bytes	0	2466	PASS	
-247	00894dd0	CGameScriptInterface	CGameScriptInterface::EntitySetAsMarryable	0	2481	PASS	
-248	00411a10	_global	Std_Vector_Insert_Range_Copies_4byte	0	2488	PASS	
-249	008aeac0	CGameScriptInterface	CGameScriptInterface::_AddGossipFactions_impl	0	2499	PASS	static assertion failed
-250	0042b98b	_global	BinarySearchTree_InsertAndBalance	0	2513	PASS	
-251	00890b90	CGameScriptInterface	CGameScriptInterface::SetEnvironmentalEffectsAlwaysUpdate	0	2519	PASS	
-252	008ae890	CGameScriptInterface	CGameScriptInterface::_AddGossipVillages_impl	0	2531	PASS	static assertion failed
-253	00896060	CGameScriptInterface	CGameScriptInterface::SetVillageLimbo	0	2540	PASS	incomplete type 'CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >' used in nested name specifier
-254	00436ac0	_global	Vector_InsertN	0	2549	PASS	
-255	0041c090	_global	CGraphicFrameData_ReleaseReference	0	2568	PASS	incomplete type 'CGraphicFrameData' used in nested name specifier
-256	0089fd20	CGameScriptInterface	CGameScriptInterface::CreatePhysicalBarrier	0	2573	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-257	0042cb08	_global	BinaryTree_InsertScriptData	0	2607	PASS	'CScriptDataBase' does not name a type
-258	0042ba13	_global	RBTree_InsertOrReplace	0	2636	PASS	
-259	008a0bc0	CGameScriptInterface	CGameScriptInterface::EntitySetAppearanceSeed	0	2638	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-260	004350d0	_global	InitDisplayEngine_InitGraphics	0	2645	PASS	
-261	008961b0	CGameScriptInterface	CGameScriptInterface::ClearHeroEnemyOfGuards	0	2662	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-262	008a9320	CGameScriptInterface	CGameScriptInterface::EntityCastForcePush	0	2708	PASS	
-263	004413c0	_global	Vector_Reallocate	0	2713	PASS	
-264	0089b3f0	CGameScriptInterface	CGameScriptInterface::SetHeroAsWearing	0	2715	PASS	
-265	0089c510	CGameScriptInterface	CGameScriptInterface::OpinionSourceSetAsAttentionGrabbing	0	2715	PASS	
-266	006e79e0	CGameScriptInterface	CGameScriptInterface::RegisterTimer	0	2736	PASS	
-267	00412330	_global	Std_Vector_Insert_Range_Copies	0	2761	PASS	'CWideString' was not declared in this scope
-268	0040f4a0	_global	Std_BitSet_Allocate	0	2771	PASS	
-269	0042ce7a	_global	CTCCarryable_CopyAssign	0	2793	PASS	
-270	0042bb21	_global	RBTree_InsertLeft	0	2805	PASS	
-271	0089e130	CGameScriptInterface	CGameScriptInterface::EntitySetMaxNumberOfAttackers	0	2810	PASS	
-272	008962d0	CGameScriptInterface	CGameScriptInterface::EnableVillagerDefTypes	0	2812	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-273	00898fa0	CGameScriptInterface	CGameScriptInterface::GetHeroGold	0	2832	PASS	'reinterpret_cast' from integer to pointer
-274	00893060	CGameScriptInterface	CGameScriptInterface::AddBoast	0	2844	PASS	
-275	0042c7c5	_global	CTCBase_FindInterfaceType_0x12	0	2854	PASS	
-276	00891940	CGameScriptInterface	CGameScriptInterface::SetQuestInfoName	0	2863	PASS	'CGameScriptInterface' has not been declared
-277	0042cc98	_global	RBTree_InsertStringKey	0	2864	PASS	field 'key' has incomplete type 'CCharString'
-278	00895130	CGameScriptInterface	CGameScriptInterface::SetTrapAsActive	0	2889	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-279	008a1590	CGameScriptInterface	CGameScriptInterface::GetBestTimePairs	0	2907	PASS	'reinterpret_cast' from integer to pointer
-280	0042cc03	_global	BinaryTree_InsertCString	0	2913	PASS	invalid use of incomplete type 'struct CScriptDataBase'
-281	00443d70	_global	EventConversation_Destructor	0	2913	PASS	'CFileInstaller' does not name a type
-282	00a65ff0	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::CMemoryAllocatorFixedSize	0	2913	PASS	'CMemoryAllocatorFixedSize' does not name a type
-283	008a15f0	CGameScriptInterface	CGameScriptInterface::GetBestTimeSorting	0	2923	PASS	'reinterpret_cast' from integer to pointer
-284	008a17d0	CGameScriptInterface	CGameScriptInterface::GetBestTimeGuessTheAddition	0	2925	PASS	'reinterpret_cast' from integer to pointer
-285	00432bab	_global	CExpression_DigScript_CloneTree	0	2944	PASS	
-286	004117c0	_global	Std_Vector_Insert_Range	0	2961	PASS	
-287	00434370	_global	CParentDefClassBase_CopyAssign_2	0	2968	PASS	'CParentDefClassBase' does not name a type
-288	0040f6b0	_global	CString_FillRange	0	2978	PASS	
-289	00ca86d0	_global	Com_CreateWithFallback	0	2979	PASS	static assertion failed
-290	0089fda0	CGameScriptInterface	CGameScriptInterface::CreateRumble	0	2991	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-291	00893b00	CGameScriptInterface	CGameScriptInterface::MsgOnExpressionPerformed	0	3018	PASS	'CDefinitionManager' does not name a type
-292	0088f570	CGameScriptInterface	CGameScriptInterface::Play2DSound	0	3029	PASS	
-293	0042bd4a	_global	RBTree_InsertString	0	3055	PASS	no match for 'operator<' (operand types are 'const CCharString' and 'const CCharString')
-294	008a16b0	CGameScriptInterface	CGameScriptInterface::GetBestScoreCoinGolfOakVale	0	3055	PASS	'reinterpret_cast' from integer to pointer
-295	008a1b10	CGameScriptInterface	CGameScriptInterface::GetSleepingPositionAndOrientationFromBed	0	3084	PASS	'CGameScriptInterface' has not been declared
-296	00891070	CGameScriptInterface	CGameScriptInterface::CameraUseCameraPoint	0	3093	PASS	
-297	008978e0	CGameScriptInterface	CGameScriptInterface::EntitySetAsAbleToRegionFollowWhenMarried	0	3100	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-298	00896270	CGameScriptInterface	CGameScriptInterface::EnableGuards	0	3129	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-299	00899000	CGameScriptInterface	CGameScriptInterface::GiveHeroExperience	0	3131	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-300	00897090	CGameScriptInterface	CGameScriptInterface::SetWhetherToFailQuestOnDeath	0	3143	PASS	
-301	00441020	_global	vector_insert_with_fill	0	3160	PASS	'ENavigatorType' does not name a type
-302	009f1ac0	CGameEventPackageSet	InitFromCompressedBuffer	0	3193	PASS	'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'?
-303	004125a0	_global	Std_Vector_Insert_Range_Copies_28byte	0	3198	PASS	
-304	00448520	_global	Vector_DestroyRange	0	3198	PASS	
-305	0089c850	CGameScriptInterface	CGameScriptInterface::RemoveOpinionDeedStillSearchingForWitnesses	0	3210	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-306	0043a2a0	_global	ShowOnScreenMessage_FormatDisplay	0	3222	PASS	'CWideString' does not name a type
-307	0089c380	CGameScriptInterface	CGameScriptInterface::EntitySetOpinionAttitudeEnabled	0	3222	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-308	00893240	CGameScriptInterface	CGameScriptInterface::MsgIsLevelUnloaded	0	3236	PASS	
-309	004126e0	_global	vector_resize_with_fill	0	3237	PASS	
-310	00892cf0	CGameScriptInterface	CGameScriptInterface::SetCreatureGeneratorsEnabled	0	3296	PASS	jump to label 'SetWorldFlag'
-311	008984e0	CGameScriptInterface	CGameScriptInterface::SetWeaponOutCrimeEnabled	0	3309	PASS	
-312	00891170	CGameScriptInterface	CGameScriptInterface::PlaySoundAtPos	0	3318	PASS	'reinterpret_cast' from integer to pointer
-313	00897880	CGameScriptInterface	CGameScriptInterface::GetHeroTitle	0	3324	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-314	0089c330	CGameScriptInterface	CGameScriptInterface::EntitySetOpinionDeedTypeEnabled	0	3325	PASS	incomplete type '{anonymous}::OpinionDeedInterfaceMap' {aka '{anonymous}::CVectorMap<{anonymous}::ETCInterfaceType, CTCBase*, {anonymous}::CKeyPairCompareLess<{anonymous}::ETCInterfaceType, CTCBase*> >'} used in nested name specifier
-315	0089e710	CGameScriptInterface	CGameScriptInterface::DisplayTutorial	0	3331	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-316	0089ad90	CGameScriptInterface	CGameScriptInterface::IsQuestStartScreenActive	0	3359	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-317	00431363	_global	BinaryTree_Insert_With_Position	0	3365	PASS	
-318	00896df0	CGameScriptInterface	CGameScriptInterface::KickOffCreditsScreen	0	3390	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-319	0042bc2f	_global	RBTree_InsertRight	0	3416	PASS	
-320	0089fc80	CGameScriptInterface	CGameScriptInterface::CreateExplosion	0	3420	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-321	0042d45d	_global	CPersistTraits_Transfer_And_Construct	0	3424	PASS	'CCharString' does not name a type
-322	0042bcb5	_global	CMemoryAllocatorVariableSize_InsertNode	0	3428	PASS	'CScriptDataBase' does not name a type
-323	004416e0	_global	VectorReallocateDouble	0	3447	PASS	
-324	0089c3d0	CGameScriptInterface	CGameScriptInterface::EntitySetOpinionReactionEnabled	0	3454	PASS	incomplete type '{anonymous}::OpinionReactionInterfaceMap' {aka '{anonymous}::CVectorMap<{anonymous}::ETCInterfaceType, CTCBase*, {anonymous}::CKeyPairCompareLess<{anonymous}::ETCInterfaceType, CTCBase*> >'} used in nested name specifier
-325	0042ded5	_global	CFrontEnd_PlayAutoSaveSound	0	3458	FAIL	'NUISystem' has not been declared
-326	00896120	CGameScriptInterface	CGameScriptInterface::TryToRespawnDefNamed	0	3458	PASS	field 'interfaces_44' has incomplete type 'CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >'
-327	00897b10	CGameScriptInterface	CGameScriptInterface::GetHeroHasCurrentMarriage	0	3511	PASS	'reinterpret_cast' from integer to pointer
-328	008943c0	CGameScriptInterface	CGameScriptInterface::MsgIsTutorialClickedPast	0	3529	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-329	0042cee3	_global	CMemoryAllocatorVariableSize_FindOrInsert	0	3533	PASS	
-330	008a8f20	CGameScriptInterface	CGameScriptInterface::GetItemDefNamesFromContainer	0	3561	PASS	'CDefinitionManager' does not name a type
-331	00896a30	CGameScriptInterface	CGameScriptInterface::SetQuestCardObjective	0	3566	PASS	'ETCInterfaceType' was not declared in this scope
-332	00897030	CGameScriptInterface	CGameScriptInterface::IsToFailQuestOnDeath	0	3608	PASS	'reinterpret_cast' from integer to pointer
-333	0062c0e0	CWorld	EAMoveSpirit	0	3624	PASS	'CWorld' has not been declared
-334	00431606	_global	Map_InsertStringKeyNode	0	3646	PASS	
-335	008a9610	CGameScriptInterface	CGameScriptInterface::SetThingAsConscious	0	3648	PASS	
-336	0042e17c	_global	Init_FrontendSounds	0	3656	PASS	
-337	008931b0	CGameScriptInterface	CGameScriptInterface::MsgIsLevelLoaded	0	3672	PASS	
-338	00897bd0	CGameScriptInterface	CGameScriptInterface::GetHeroHasChildren	0	3699	PASS	
-339	0089ec60	CGameScriptInterface	CGameScriptInterface::CreatureGeneratorAddTriggerer	0	3701	PASS	comparison between distinct pointer types '{anonymous}::TCInterfaceEntryOverlay*' and 'CVectorMap<int, CTCBase*, CKeyPairCompareLess<int, CTCBase*> >::Entry*' lacks a cast
-340	00411db0	_global	Std_Vector_Insert_Range_Dispatch	0	3730	PASS	'CSubtitledMessage' was not declared in this scope
-341	00442610	_global	RenderState_Destructor	0	3767	PASS	
-342	00890ff0	CGameScriptInterface	CGameScriptInterface::CameraDefault	0	3783	PASS	'field48' was not declared in this scope
-343	00898e60	CGameScriptInterface	CGameScriptInterface::IsHeroHandLampLit	0	3806	PASS	'reinterpret_cast' from integer to pointer
-344	00418c3b	CMainGameComponent	CMainGameComponent::GenerateMetFilesFromLugFiles	0	3809	PASS	'CMemoryFile' does not name a type
-345	00897480	CGameScriptInterface	CGameScriptInterface::IsPlayerWieldingWeapon	0	3816	PASS	'reinterpret_cast' from integer to pointer
-346	00898540	CGameScriptInterface	CGameScriptInterface::SetGuardsIgnoreCrimes	0	3851	PASS	'reinterpret_cast' from integer to pointer
-347	00897190	CGameScriptInterface	CGameScriptInterface::GetNumberOfItemsOfTypeInInventory	0	3863	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-348	00897c30	CGameScriptInterface	CGameScriptInterface::GetHeroHasMurderedWife	0	3866	PASS	
-349	00898b30	CGameScriptInterface	CGameScriptInterface::SetWeaponAsHerosActiveWeapon	0	3868	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-350	00c9e4a0	_global	Audio_CheckBufferRegionActive	0	3871	PASS	
-351	004b1670	CGameScriptInterface	CGameScriptInterface::AddQuestCardEntry	0	3881	PASS	static assertion failed
-352	0089b4d0	CGameScriptInterface	CGameScriptInterface::RemoveHeroHairstyle	0	3883	PASS	
-353	008a1650	CGameScriptInterface	CGameScriptInterface::GetBestScoreBlackjack	0	3934	PASS	'reinterpret_cast' from integer to pointer
-354	00897b70	CGameScriptInterface	CGameScriptInterface::GetHeroHasDivorcedMarriage	0	3958	PASS	
-355	00898ec0	CGameScriptInterface	CGameScriptInterface::SetHeroHandLampAsLit	0	3960	PASS	'reinterpret_cast' from integer to pointer
-356	00ab5d00	CMouseDX	CMouseDX::CMouseDX	0	3963	PASS	
-357	009f19a0	CGameEventPackageSet	CompressIntoBuffer	0	3986	PASS	'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'?
-358	00670710	CTCCoopSpirit	UpdateScore	0	4000	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-359	00897d50	CGameScriptInterface	CGameScriptInterface::SetHeroAsHavingHadSex	0	4045	PASS	'reinterpret_cast' from integer to pointer
-360	008a0f70	CGameScriptInterface	CGameScriptInterface::SetReadableObjectText	0	4046	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-361	00897aa0	CGameScriptInterface	CGameScriptInterface::GetHeroHasMarried	0	4053	PASS	'reinterpret_cast' from integer to pointer
-362	008955c0	CGameScriptInterface	CGameScriptInterface::IsEntityFollowingHero	0	4071	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-363	0089ef30	CGameScriptInterface	CGameScriptInterface::SetMoralityChangingAsEnabled	0	4105	PASS	'reinterpret_cast' from integer to pointer
-364	00897db0	CGameScriptInterface	CGameScriptInterface::SetHeroAsHavingHadGaySex	0	4116	PASS	'reinterpret_cast' from integer to pointer
-365	00ca8d50	_global	Enumerate_QueryInterface_012a9a24	0	4138	PASS	
-366	00897c90	CGameScriptInterface	CGameScriptInterface::GetNumberOfTimesHeroHasHadSex	0	4150	PASS	'reinterpret_cast' from integer to pointer
-367	008a12a0	CGameScriptInterface	CGameScriptInterface::GetNumHousesOwned	0	4167	PASS	'reinterpret_cast' from integer to pointer
-368	00caf580	CEngineLandscapePatch	CEngineLandscapePatch::Destructor	0	4187	PASS	invalid use of incomplete type 'class CCharString'
-369	006700f0	CTCCoopSpirit	OnCreate	0	4196	PASS	'CDefClassBase' does not name a type
-370	008a1c50	CGameScriptInterface	CGameScriptInterface::RepopulateVillage	0	4207	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-371	0041726d	CMainGameComponent	UpdateFromEventPackageSet	0	4223	PASS	'reinterpret_cast' from integer to pointer
-372	00897cf0	CGameScriptInterface	CGameScriptInterface::SetNumberOfTimesHeroHasHadSex	0	4233	PASS	'reinterpret_cast' from integer to pointer
-373	0089af30	CGameScriptInterface	CGameScriptInterface::RemoveAllCutSceneSkippedMessages	0	4247	PASS	
-374	004316cf	_global	BinaryTree_InsertDigScriptNode	0	4283	PASS	invalid use of incomplete type 'class CScriptBase'
-375	008a1770	CGameScriptInterface	CGameScriptInterface::GetBestScoreShoveHaPenny	0	4325	PASS	'reinterpret_cast' from integer to pointer
-376	00c93080	_global	FFT_ComputeWaveformEnvelope	0	4346	PASS	
-377	0089cd70	CGameScriptInterface	CGameScriptInterface::CanThingBe_Heard_ByOtherThing	0	4433	PASS	
-378	008a1710	CGameScriptInterface	CGameScriptInterface::GetBestScoreCoinGolfSnowSpire	0	4445	PASS	'reinterpret_cast' from integer to pointer
-379	008953a0	CGameScriptInterface	CGameScriptInterface::IsHeroPerformingExpression	0	4469	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-380	00896e60	CGameScriptInterface	CGameScriptInterface::SetPreferredQuickAccessItem	0	4497	PASS	'reinterpret_cast' from integer to pointer
-381	008973a0	CGameScriptInterface	CGameScriptInterface::IsPlayerCarryingItemOfType	0	4555	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-382	0089b450	CGameScriptInterface	CGameScriptInterface::ChangeHeroHairstyle	0	4577	PASS	'reinterpret_cast' from integer to pointer
-383	006701a0	CTCCoopSpirit	UpdateAttractionToMaster	0	4683	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-384	0089b110	CGameScriptInterface	CGameScriptInterface::StartMovieSequence	0	4802	PASS	static assertion failed
-385	008977f0	CGameScriptInterface	CGameScriptInterface::ApplyHeroPenaltyForDeath	0	4820	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-386	00898db0	CGameScriptInterface	CGameScriptInterface::TakeObjectFromHero	0	4845	PASS	
-387	00411630	_global	Std_Deque_Resize_WithGap	0	4853	PASS	
-388	008a03f0	CGameScriptInterface	CGameScriptInterface::ClearThingBestEnemyTarget	0	4871	PASS	
-389	0089fbb0	CGameScriptInterface	CGameScriptInterface::CreateExperienceOrb	0	4877	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-390	0089c7b0	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses	0	4897	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-391	008a89d0	CGameScriptInterface	CGameScriptInterface::GetAllCreaturesExcludingHero	0	4932	PASS	'CGameScriptInterface' has not been declared
-392	0042c300	_global	CMemoryAllocatorVariableSize_FindInsertPointRight	0	5021	PASS	
-393	00898600	CGameScriptInterface	CGameScriptInterface::RemoveAllHeroWeapons	0	5077	PASS	'reinterpret_cast' from integer to pointer
-394	00894c90	CGameScriptInterface	CGameScriptInterface::IsGiftFriendly	0	5128	PASS	invalid conversion from 'const void*' to 'void*' [-fpermissive]
-395	0089c670	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedToRecipient	0	5172	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-396	0089c710	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedToRecipientVillage	0	5186	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-397	00891720	CGameScriptInterface	CGameScriptInterface::ChangeHeroHealthBy	0	5204	PASS	
-398	00894bf0	CGameScriptInterface	CGameScriptInterface::IsGiftRomantic	0	5210	PASS	invalid conversion from 'const void*' to 'void*' [-fpermissive]
-399	00894d30	CGameScriptInterface	CGameScriptInterface::IsGiftOffensive	0	5212	PASS	invalid conversion from 'const void*' to 'void*' [-fpermissive]
-400	007602f0	_global	Math_PolygonAngleSumClosureCheck	0	5219	PASS	expected '(' before '{' token
-401	00891a00	CGameScriptInterface	CGameScriptInterface::SetQuestInfoText	0	5228	PASS	static assertion failed
-402	0089c560	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedToAll	0	5377	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-403	0042c082	_global	CMemoryAllocatorVariableSize_FindInsertPoint	0	5392	PASS	
-404	008a0820	CGameScriptInterface	CGameScriptInterface::CancelHeroTeleportEffects	0	5392	PASS	
-405	00891ca0	CGameScriptInterface	CGameScriptInterface::GetHero	0	5438	PASS	'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type
-406	0066ff20	CTCCoopSpirit	SwapToHero	0	5478	PASS	'CVertexBufferWin32' does not name a type
-407	0089faa0	CGameScriptInterface	CGameScriptInterface::CreateLight	0	5501	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-408	0042cf69	_global	CMemoryAllocatorVariableSize_InsertStringNode	0	5568	PASS	'CCharString' was not declared in this scope
-409	00442350	_global	Vector_InsertRangeWithRealloc	0	5622	PASS	
-410	004110d0	_global	CString_FillRange	0	5635	PASS	
-411	0042c1c1	_global	CMemoryAllocatorVariableSize_FindInsertPointLeft	0	5661	PASS	
-412	00c88e60	_global	Audio_ProcessFilter4Channel	0	5711	PASS	
-413	00433df0	_global	Array_AssignFrom	0	5769	PASS	
-414	0042d2c6	_global	CMemoryAllocatorVariableSize_FindAllocationNode	0	5864	PASS	'CMemoryAllocatorVariableSize' has not been declared
-415	006e7920	CGameScriptInterface	CGameScriptInterface::CheckForCameraMessage	0	5901	PASS	
-416	008a7980	CGameScriptInterface	CGameScriptInterface::EntityStopFollowing	0	5978	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-417	004333b3	_global	Std_Vector_InsertRange	0	5999	FAIL	invalid use of incomplete type 'class CCharString'
-418	008d1890	CGameScriptThing	CGameScriptThing::MsgWhoHitMe	0	6148	PASS	
-419	008a9c40	CGameScriptInterface	CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom	0	6214	PASS	'CGameScriptInterface' has not been declared
-420	00446d10	_global	ProcessCombatInput_MapInputsToActions	0	6237	PASS	'EGameAction' does not name a type
-421	00898840	CGameScriptInterface	CGameScriptInterface::ConfiscateItemsOfTypeFromHero	0	6295	PASS	'reinterpret_cast' from integer to pointer
-422	008986d0	CGameScriptInterface	CGameScriptInterface::ConfiscateAllHeroItems	0	6335	PASS	
-423	00402130	_global	FableCheckMyDocumentsWritePermissions_00402130	0	6360	PASS	
-424	00401067	_global	entry	0	6397	PASS	static assertion failed
-425	00a76f30	CNavQuadTree	IsAreaBlockedByLines	0	6417	PASS	'list' in namespace 'std' does not name a template type
-426	008a99f0	CGameScriptInterface	CGameScriptInterface::SetThingAndCarriedItemsNotAffectedByScreenFilter	0	6584	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-427	006e7740	CGameScriptInterface	CGameScriptInterface	0	6598	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-428	008954a0	CGameScriptInterface	CGameScriptInterface::EntityFollowThing	0	6704	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-429	00898940	CGameScriptInterface	CGameScriptInterface::ReturnAllConfiscatedItemsToHero	0	6734	PASS	'reinterpret_cast' from integer to pointer
-430	008a23b0	CGameScriptInterface	CGameScriptInterface::SetWanderCentrePoint	0	6956	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-431	0042c940	_global	CMemoryAllocatorVariableSize_InsertWithString	0	7015	PASS	field 'key' has incomplete type 'CCharString'
-432	00443e20	_global	TextureCache_Destructor	0	7681	PASS	
-433	006e7820	CGameScriptInterface	CGameScriptInterface::WaitForCameraMessage	0	7728	PASS	
-434	00898410	CGameScriptInterface	CGameScriptInterface::SetHeroWeaponsAsUsable	0	7742	PASS	'reinterpret_cast' from integer to pointer
-435	00681cd0	CGameScriptInterface	CGameScriptInterface::SetOpinionReactionMask	0	7763	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-436	00898340	CGameScriptInterface	CGameScriptInterface::SetHeroWillAsUsable	0	7792	PASS	'reinterpret_cast' from integer to pointer
-437	00892850	CGameScriptInterface	CGameScriptInterface::AddScreenMessage	0	8341	PASS	
-438	008a9ae0	CGameScriptInterface	CGameScriptInterface::MsgOnBoastsMade	0	8369	PASS	field 'boastText' has incomplete type 'CCharString'
-439	00896b60	CGameScriptInterface	CGameScriptInterface::KickOffQuestStartScreen	0	8379	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-440	008a0260	CGameScriptInterface	CGameScriptInterface::GiveThingBestEnemyTarget	0	8469	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-441	008a0cb0	CGameScriptInterface	CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing	0	8729	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-442	00895190	CGameScriptInterface	CGameScriptInterface::GiveThingItemInSlot	0	8843	PASS	
-443	008981c0	CGameScriptInterface	CGameScriptInterface::AddTattooToHero	0	9170	PASS	static assertion failed
-444	0089f300	CGameScriptInterface	CGameScriptInterface::CreateCreatureNearby	0	9223	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-445	00401c00	_global	GFHandleSystemInitError	0	9567	PASS	
-446	008a8c60	CGameScriptInterface	CGameScriptInterface::EntitySetAsSittingOnFloor	0	9898	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-447	004fe7f0	_global	CollectSoundThemeSwitchDefs	0	10096	PASS	static assertion failed
-448	008a9100	CGameScriptInterface	CGameScriptInterface::CreateCreature	0	10315	FAIL	'EHeroMorphType' was not declared in this scope
-449	00ee91e0	_global	Script_MakeThingsSpeakNumbered	0	10832	PASS	variable or field 'Script_MakeThingsSpeakNumbered' declared void
-450	008a93a0	CGameScriptInterface	CGameScriptInterface::EntityWillTeleportToArea	0	10847	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-451	008a86c0	CGameScriptInterface	CGameScriptInterface::GetAllCreaturesInAreaWithScriptName	0	10873	FAIL	'CGameScriptInterface' has not been declared; did you mean 'CGameScriptInterface_Overlay'?
-452	004317d0	_global	CMemoryBlock_Destructor	0	11653	PASS	field 'string03C' has incomplete type 'CCharString'
-453	0089feb0	CGameScriptInterface	CGameScriptInterface::AddCrimeCommitted	0	12255	PASS	'reinterpret_cast' from integer to pointer
-454	00a793d0	CNavQuadTree	ConnectVerticalMapEdge	0	12654	PASS	'CNavConnectorNode' does not name a type
-455	00a79680	CNavQuadTree	ConnectVerticalMapEdge	0	12746	PASS	'CNavConnectorNode' does not name a type
-456	00c9f8c0	_global	Mesh_BlendMorphStreams	0	14028	PASS	
-457	0040cec0	_global	CUserProfileManager_Constructor	0	14574	FAIL	
-458	00896390	CGameScriptInterface	CGameScriptInterface::OpenChest	0	14865	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-459	00417a58	_global	CMainGameComponent_InitSoundBanks	0	15257	FAIL	'CDefString' does not name a type
-460	00a79b30	CNavQuadTreeNode	Initialise	0	15716	PASS	'CANavQuadTreeNode' does not name a type
-461	00a781a0	CNavQuadTree	UpdateLines	0	16017	PASS	'C2DVector' does not name a type
-462	0050a650	CWorldMap	GetMapNavigationAreaInit	0	25507	PASS	use of enum 'EHeroMorphType' without previous declaration
-463	00a7a8d0	CNavQuadTree	Initialise	0	26841	PASS	'C2DLineF' was not declared in this scope
-464	0043a570	_global	NHeroInformationScreens_Destructor	0	27846	PASS	return type specification for constructor invalid
+127	0042aeb5	_global	BinarySearchTree_FindByUintComparator	0	1300	PASS	
+128	0042b72b	_global	CTexture_InitEmpty_56bytes	0	1303	PASS	
+129	00443980	_global	Catch@0047e8cc	0	1304	PASS	
+130	00ca8610	_global	COM_QueryInterface_012a9a24	0	1304	PASS	
+131	00444e10	_global	CGuiControlTreePane_Destructor_4	0	1306	PASS	incomplete type 'CGuiControlTreePane' used in nested name specifier
+132	00c8bae0	_global	Script_GetEntryPointer	0	1306	PASS	
+133	00c44dc0	_global	FireballSpell_DispatchScaledDamage	0	1329	PASS	'CTCWeapon_GetDamageValue' was not declared in this scope
+134	00411910	_global	Buffer_AllocateAndZero	0	1338	PASS	
+135	0042ad34	_global	StdMap_LowerBound	0	1362	PASS	'CCharString' does not name a type
+136	007266c0	CTCPhysicsBase	CTCPhysicsBase	0	1362	PASS	static assertion failed
+137	00443840	_global	CGuiControlTreePane_Destructor_1	0	1370	PASS	'CGuiControlTreePane' has not been declared; did you mean 'CGuiControlTreeNode'?
+138	0042b7ee	_global	CTexture_InitEmpty_28bytes	0	1371	PASS	
+139	0042adb6	_global	BinarySearchTree_EraseNode	0	1372	PASS	
+140	0088fdc0	CGameScriptInterface	CGameScriptInterface::SetTimeOfDay	0	1376	PASS	
+141	0088fc60	CGameScriptInterface	CGameScriptInterface::GiveHeroExpression	0	1389	PASS	'reinterpret_cast' from integer to pointer
+142	0088e3d0	CGameScriptInterface	CGameScriptInterface::MiniMapAllowRouteBetweenRegions	0	1391	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+143	00442190	_global	Catch@0047e8cc	0	1402	PASS	
+144	00442d50	_global	Catch@0047e8cc	0	1407	PASS	
+145	00890820	CGameScriptInterface	CGameScriptInterface::FadeScreenOut	0	1422	PASS	'CRGBColour' was not declared in this scope
+146	00c37000	_global	IntelligentPointer_BuildAndDispatchFloat	0	1429	PASS	
+147	00410460	_global	std_vector_C2DLineF_Copy	0	1430	PASS	'_Copy_impl' is not a member of 'std'; did you mean '__apply_impl'?
+148	0042ad91	_global	BinarySearchTree_FindExact	0	1440	PASS	
+149	00c36e00	_global	CSBAgents_BuildAndDispatch_SummonerLightning	0	1440	PASS	
+150	00410f30	_global	Buffer_AllocateAndZero	0	1454	PASS	
+151	009f1870	CGameEvent	InitFromCompressedBuffer	0	1460	PASS	'CGameEvent' does not name a type
+152	00442280	_global	Catch@0047e8cc	0	1465	PASS	
+153	008a0c10	CGameScriptInterface	CGameScriptInterface::EntityGetAppearanceSeed	0	1478	PASS	'CGameScriptInterface' has not been declared
+154	00412450	_global	Std_Vector_Erase_Range	0	1491	PASS	'CWideString' does not name a type
+155	0042c521	_global	CTC_FindInterface_4	0	1502	PASS	'ETCInterfaceType' was not declared in this scope
+156	0088f480	CGameScriptInterface	CGameScriptInterface::ApplyScriptBrush	0	1510	PASS	
+157	00446b40	_global	VectorMap_LookupValue	0	1511	PASS	
+158	0042b4f3	_global	BinarySearchTree_FindLessOrEqual_Copy	0	1513	PASS	
+159	004127e0	_global	Std_Deque_PushBack_ChunkAlloc	0	1524	PASS	
+160	0088fe90	CGameScriptInterface	CGameScriptInterface::FastForwardTimeTo	0	1528	PASS	
+161	0042b854	_global	CMemoryAllocatorVariableSize_Clear	0	1544	PASS	variable or field 'BinarySearchTree_EraseNode_Impl' declared void
+162	0042ae90	_global	BinarySearchTree_FindGreaterOrEqual	0	1554	PASS	'next' was not declared in this scope
+163	00ca9c80	_global	Object_AcquireField26	0	1557	PASS	
+164	0042b467	_global	StdMap_FindLE	0	1558	PASS	static assertion failed
+165	006e7690	CGameScriptInterface	CGameScriptInterface::DeregisterTimer	0	1559	PASS	
+166	0088e300	CGameScriptInterface	CGameScriptInterface::IsRegionLoaded	0	1560	PASS	
+167	00c93b30	_global	Audio_ApplyGainTableToBuffer	0	1605	PASS	
+168	0088e6f0	CGameScriptInterface	CGameScriptInterface::AreEntitiesEnemies	0	1610	PASS	
+169	0042b52b	_global	BinarySearchTree_LowerBound	0	1620	PASS	field 'key' has incomplete type 'CCharString'
+170	00c36fb0	_global	CSBAgents_BuildAndDispatch_TavernGame	0	1622	PASS	expected '(' before '{' token
+171	0042c48b	_global	CTC_FindInterface_0x11	0	1625	PASS	
+172	0088fd00	CGameScriptInterface	CGameScriptInterface::EntitySetInLimbo	0	1625	PASS	
+173	0042ae58	_global	BinarySearchTree_FindByComparator	0	1633	PASS	field 'key' has incomplete type 'CCharString'
+174	00441c20	_global	TreePane_DestructorHelper	0	1634	PASS	
+175	0041cfb2	_global	GetTextBySymbol	0	1637	PASS	'NGameText' does not name a type
+176	0042cb90	_global	CSurface_Clone_Recursive	0	1643	PASS	'CSurface' was not declared in this scope
+177	00c362f0	_global	CSBAgents_BuildAndDispatch_A	0	1644	PASS	
+178	00441800	_global	Catch@0047e8cc	0	1661	PASS	
+179	00449d20	CPlayerManager	IsMultiplayerGameActive	0	1695	PASS	'reinterpret_cast' from integer to pointer
+180	0086fa00	_global	CPersistInfo_InsertionSortStep_0086fa00	0	1701	PASS	
+181	0086c5c0	_global	CPersistInfo_InsertionSortStep_0086c5c0	0	1702	PASS	
+182	00440b40	_global	Vector_DestructStringRange	0	1705	PASS	'CCharString' does not name a type
+183	0088f710	CGameScriptInterface	CGameScriptInterface::EntitySetCombatEnabled	0	1715	PASS	
+184	00431277	_global	UpdateShadowScene_WriteState	0	1736	PASS	variable or field 'UpdateShadowScene_WriteState' declared void
+185	0042a879	_global	BinarySearchTree_FindNode	0	1741	PASS	'next' was not declared in this scope
+186	00c336f0	_global	Constraint_NotifyGlobalManager	0	1763	PASS	
+187	00ca5e70	_global	CritSec_GetDividedValue_Locked	0	1778	PASS	'int64' in namespace 'std' does not name a type; did you mean 'int64_t'?
+188	00431e80	_global	CParentDefClassBase_CopyAssign_1	0	1786	PASS	'CParentDefClassBase' does not name a type
+189	0042a82b	_global	BinarySearchTree_FindLessOrEqual	0	1789	PASS	'next' was not declared in this scope
+190	00446b90	_global	VectorMap_LookupValue	0	1790	PASS	
+191	00c94190	_global	Audio_ComputeClampedPosition	0	1800	PASS	
+192	00403480	_global	WinMain	0	1804	PASS	
+193	00419f50	_global	Vector_FromRange	0	1804	PASS	
+194	00448ab0	_global	Heap_SiftDown_ContainmentVolume	0	1826	PASS	
+195	004124c0	_global	Std_Vector_Insert_Range_16Bytes	0	1853	PASS	
+196	0042c43f	_global	CTC_FindInterface_0x10e	0	1872	PASS	macro 'offsetof' passed 5 arguments, but takes just 2
+197	00440c00	_global	Vector_CopyPairRange	0	1879	PASS	#error Vector_CopyPairRange reversal requires MSVC x86 inline assembly to preserve the observed EDX post-call update.
+198	0088ff30	CGameScriptInterface	CGameScriptInterface::TransitionToThemeAllInternals	0	1906	PASS	
+199	0041ceb3	_global	CASound_PlayFromSymbol	0	1929	PASS	
+200	0088fc90	CGameScriptInterface	CGameScriptInterface::HeroHasExpression	0	1943	PASS	
+201	0042c810	_global	CTCBase_FindInterfaceType_0xf6	0	1965	PASS	'unsigned int CTCBase_FindInterfaceType_0xf6(void*, int*)' should have been declared inside '::'
+202	0042c77a	_global	CTCBase_FindInterfaceType_0x14	0	1989	PASS	
+203	00893ec0	CGameScriptInterface	CGameScriptInterface::MsgOnHeroSlept	0	2000	PASS	'CGameScriptInterface' has not been declared
+204	0042d604	_global	CChangingStateComponent_StateChangeHandler_1	0	2014	PASS	variable or field 'CChangingStateComponent_StateChangeHandler_1' declared void
+205	0041641f	_global	CMainGameComponent_ChangeDisplayMode	0	2015	PASS	incomplete type 'CScriptThing' used in nested name specifier
+206	004165e8	CMainGameComponent	CheckSync	0	2016	PASS	'reinterpret_cast' from integer to pointer
+207	00448be0	_global	Heap_MakeHeap_NavConnector	0	2020	PASS	'void std::_Adjust_heap(int, int, int, long int, uint32_t, int*, uint32_t)' should have been declared inside 'std'
+208	0042c699	_global	CTCBase_FindInterfaceType_0x1b	0	2022	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+209	0042c56c	_global	CTCBase_FindInterfaceType_0x19	0	2030	PASS	'ETCInterfaceType' does not name a type
+210	00c43de0	_global	DrawAutoPickups_SelectAndDrawPrimitive	0	2038	PASS	
+211	0042c4d6	_global	CTC_FindInterface_0x17	0	2055	PASS	'ETCInterfaceType' was not declared in this scope
+212	0042c6e4	_global	CTCBase_FindInterfaceType_0x6f	0	2056	PASS	static assertion failed
+213	00890200	CGameScriptInterface	CGameScriptInterface::ScreenFilterFadeOut	0	2093	PASS	
+214	00441870	_global	List_DestroyElements	0	2099	PASS	
+215	00409090	_global	Engine_FindPrimitiveInArray	0	2100	PASS	
+216	00caf680	CEngineLandscapePatch	CEngineLandscapePatch::AllocateTask	0	2109	PASS	'CEngineLandscapePatch' has not been declared
+217	0042c8f4	_global	CTCBase_FindInterfaceType_0xfc	0	2124	PASS	
+218	00898f40	CGameScriptInterface	CGameScriptInterface::GiveHeroGold	0	2160	PASS	'ETCInterfaceType' was not declared in this scope
+219	00c92f10	_global	DSP_ComputeRunningMinEnvelope	0	2187	PASS	
+220	0041d0a8	_global	CASound_PlayMessage	0	2188	PASS	cannot call constructor 'CSoundInit::CSoundInit' directly
+221	00444ed0	_global	AsyncData_Destructor	0	2201	PASS	
+222	004313e9	_global	std_set_insert_uint_via_FUN	0	2210	PASS	'void std_set_insert_uint_via_FUN(UIntSetTreeOverlay*, UIntSetNodeOverlay**, int, UIntSetNodeOverlay*, const uint32_t*, int)' should have been declared inside '::'
+223	00432aa8	_global	CTCCarryable_CloneTree	0	2218	PASS	
+224	0088e0b0	CGameScriptInterface	CGameScriptInterface::SetSoundThemesAsEnabledForRegion	0	2272	PASS	
+225	0042c72f	_global	CTCBase_FindInterfaceType_0x13	0	2279	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+226	00432b38	_global	CTCCarryable_assign	0	2291	PASS	
+227	00897150	CGameScriptInterface	CGameScriptInterface::UnSetThingAndCarriedItemsNotAffectedByScreenFilter	0	2298	PASS	
+228	00893e70	CGameScriptInterface	CGameScriptInterface::MsgOnGameSavedManually	0	2300	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+229	0042bba7	_global	BinaryTree_InsertNodeRight	0	2315	PASS	'void BinaryTree_InsertNodeRight(BinaryTreeOverlay*, BinaryTreeNodeOverlay**, int, BinaryTreeNodeOverlay*, const int32_t*, int)' should have been declared inside '::'
+230	0042ba99	_global	BinaryTree_InsertNodeLeft	0	2341	PASS	
+231	0042c85c	_global	CTCBase_FindInterfaceType_0x10d	0	2345	PASS	
+232	0042c5b7	_global	CTCBase_FindInterfaceType_0x16	0	2347	PASS	
+233	0088ece0	CGameScriptInterface	CGameScriptInterface::CameraShake	0	2350	PASS	
+234	0042c8a8	_global	CTCBase_FindInterfaceType_0xd0	0	2355	PASS	
+235	0088ead0	CGameScriptInterface	CGameScriptInterface::EntitySetAsDamageable	0	2384	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+236	004408a0	_global	Std_Vector_Insert_Range	0	2385	PASS	
+237	0088e2a0	CGameScriptInterface	CGameScriptInterface::IsLevelLoaded	0	2394	PASS	static assertion failed
+238	004aeaa0	CNetworkClient	GetLocalGameEventPackageSet	0	2398	PASS	'CNetworkClient' has not been declared
+239	008950e0	CGameScriptInterface	CGameScriptInterface::ManuallyResetTrap	0	2417	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+240	00411b90	_global	std_vector_assign	0	2436	PASS	
+241	0042c602	_global	CTCBase_FindInterfaceType_0x29	0	2441	PASS	
+242	0042d65b	_global	CChangingStateComponent_StateChangeHandler_2	0	2442	PASS	variable or field 'CChangingStateComponent_StateChangeHandler_2' declared void
+243	00411f10	_global	Std_Vector_Insert_Range_4Bytes	0	2466	PASS	
+244	00894dd0	CGameScriptInterface	CGameScriptInterface::EntitySetAsMarryable	0	2481	PASS	
+245	00411a10	_global	Std_Vector_Insert_Range_Copies_4byte	0	2488	PASS	
+246	008aeac0	CGameScriptInterface	CGameScriptInterface::_AddGossipFactions_impl	0	2499	PASS	static assertion failed
+247	0042b98b	_global	BinarySearchTree_InsertAndBalance	0	2513	PASS	
+248	00890b90	CGameScriptInterface	CGameScriptInterface::SetEnvironmentalEffectsAlwaysUpdate	0	2519	PASS	
+249	008ae890	CGameScriptInterface	CGameScriptInterface::_AddGossipVillages_impl	0	2531	PASS	static assertion failed
+250	00896060	CGameScriptInterface	CGameScriptInterface::SetVillageLimbo	0	2540	PASS	incomplete type 'CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >' used in nested name specifier
+251	00436ac0	_global	Vector_InsertN	0	2549	PASS	
+252	0041c090	_global	CGraphicFrameData_ReleaseReference	0	2568	PASS	incomplete type 'CGraphicFrameData' used in nested name specifier
+253	0089fd20	CGameScriptInterface	CGameScriptInterface::CreatePhysicalBarrier	0	2573	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+254	0042cb08	_global	BinaryTree_InsertScriptData	0	2607	PASS	'CScriptDataBase' does not name a type
+255	0042ba13	_global	RBTree_InsertOrReplace	0	2636	PASS	
+256	008a0bc0	CGameScriptInterface	CGameScriptInterface::EntitySetAppearanceSeed	0	2638	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+257	004350d0	_global	InitDisplayEngine_InitGraphics	0	2645	PASS	
+258	008961b0	CGameScriptInterface	CGameScriptInterface::ClearHeroEnemyOfGuards	0	2662	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+259	008a9320	CGameScriptInterface	CGameScriptInterface::EntityCastForcePush	0	2708	PASS	
+260	004413c0	_global	Vector_Reallocate	0	2713	PASS	
+261	0089b3f0	CGameScriptInterface	CGameScriptInterface::SetHeroAsWearing	0	2715	PASS	
+262	0089c510	CGameScriptInterface	CGameScriptInterface::OpinionSourceSetAsAttentionGrabbing	0	2715	PASS	
+263	006e79e0	CGameScriptInterface	CGameScriptInterface::RegisterTimer	0	2736	PASS	
+264	00412330	_global	Std_Vector_Insert_Range_Copies	0	2761	PASS	'CWideString' was not declared in this scope
+265	0040f4a0	_global	Std_BitSet_Allocate	0	2771	PASS	
+266	0042ce7a	_global	CTCCarryable_CopyAssign	0	2793	PASS	
+267	0042bb21	_global	RBTree_InsertLeft	0	2805	PASS	
+268	0089e130	CGameScriptInterface	CGameScriptInterface::EntitySetMaxNumberOfAttackers	0	2810	PASS	
+269	008962d0	CGameScriptInterface	CGameScriptInterface::EnableVillagerDefTypes	0	2812	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+270	00898fa0	CGameScriptInterface	CGameScriptInterface::GetHeroGold	0	2832	PASS	'reinterpret_cast' from integer to pointer
+271	00893060	CGameScriptInterface	CGameScriptInterface::AddBoast	0	2844	PASS	
+272	0042c7c5	_global	CTCBase_FindInterfaceType_0x12	0	2854	PASS	
+273	00891940	CGameScriptInterface	CGameScriptInterface::SetQuestInfoName	0	2863	PASS	'CGameScriptInterface' has not been declared
+274	0042cc98	_global	RBTree_InsertStringKey	0	2864	PASS	field 'key' has incomplete type 'CCharString'
+275	00895130	CGameScriptInterface	CGameScriptInterface::SetTrapAsActive	0	2889	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+276	008a1590	CGameScriptInterface	CGameScriptInterface::GetBestTimePairs	0	2907	PASS	'reinterpret_cast' from integer to pointer
+277	0042cc03	_global	BinaryTree_InsertCString	0	2913	PASS	invalid use of incomplete type 'struct CScriptDataBase'
+278	00443d70	_global	EventConversation_Destructor	0	2913	PASS	'CFileInstaller' does not name a type
+279	00a65ff0	CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize::CMemoryAllocatorFixedSize	0	2913	PASS	'CMemoryAllocatorFixedSize' does not name a type
+280	008a15f0	CGameScriptInterface	CGameScriptInterface::GetBestTimeSorting	0	2923	PASS	'reinterpret_cast' from integer to pointer
+281	008a17d0	CGameScriptInterface	CGameScriptInterface::GetBestTimeGuessTheAddition	0	2925	PASS	'reinterpret_cast' from integer to pointer
+282	00432bab	_global	CExpression_DigScript_CloneTree	0	2944	PASS	
+283	004117c0	_global	Std_Vector_Insert_Range	0	2961	PASS	
+284	00434370	_global	CParentDefClassBase_CopyAssign_2	0	2968	PASS	'CParentDefClassBase' does not name a type
+285	0040f6b0	_global	CString_FillRange	0	2978	PASS	
+286	00ca86d0	_global	Com_CreateWithFallback	0	2979	PASS	static assertion failed
+287	0089fda0	CGameScriptInterface	CGameScriptInterface::CreateRumble	0	2991	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+288	00893b00	CGameScriptInterface	CGameScriptInterface::MsgOnExpressionPerformed	0	3018	PASS	'CDefinitionManager' does not name a type
+289	0088f570	CGameScriptInterface	CGameScriptInterface::Play2DSound	0	3029	PASS	
+290	0042bd4a	_global	RBTree_InsertString	0	3055	PASS	no match for 'operator<' (operand types are 'const CCharString' and 'const CCharString')
+291	008a16b0	CGameScriptInterface	CGameScriptInterface::GetBestScoreCoinGolfOakVale	0	3055	PASS	'reinterpret_cast' from integer to pointer
+292	008a1b10	CGameScriptInterface	CGameScriptInterface::GetSleepingPositionAndOrientationFromBed	0	3084	PASS	'CGameScriptInterface' has not been declared
+293	00891070	CGameScriptInterface	CGameScriptInterface::CameraUseCameraPoint	0	3093	PASS	
+294	008978e0	CGameScriptInterface	CGameScriptInterface::EntitySetAsAbleToRegionFollowWhenMarried	0	3100	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+295	00896270	CGameScriptInterface	CGameScriptInterface::EnableGuards	0	3129	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+296	00899000	CGameScriptInterface	CGameScriptInterface::GiveHeroExperience	0	3131	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+297	00897090	CGameScriptInterface	CGameScriptInterface::SetWhetherToFailQuestOnDeath	0	3143	PASS	
+298	00441020	_global	vector_insert_with_fill	0	3160	PASS	'ENavigatorType' does not name a type
+299	009f1ac0	CGameEventPackageSet	InitFromCompressedBuffer	0	3193	PASS	'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'?
+300	004125a0	_global	Std_Vector_Insert_Range_Copies_28byte	0	3198	PASS	
+301	00448520	_global	Vector_DestroyRange	0	3198	PASS	
+302	0089c850	CGameScriptInterface	CGameScriptInterface::RemoveOpinionDeedStillSearchingForWitnesses	0	3210	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+303	0043a2a0	_global	ShowOnScreenMessage_FormatDisplay	0	3222	PASS	'CWideString' does not name a type
+304	0089c380	CGameScriptInterface	CGameScriptInterface::EntitySetOpinionAttitudeEnabled	0	3222	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+305	00893240	CGameScriptInterface	CGameScriptInterface::MsgIsLevelUnloaded	0	3236	PASS	
+306	004126e0	_global	vector_resize_with_fill	0	3237	PASS	
+307	00892cf0	CGameScriptInterface	CGameScriptInterface::SetCreatureGeneratorsEnabled	0	3296	PASS	jump to label 'SetWorldFlag'
+308	008984e0	CGameScriptInterface	CGameScriptInterface::SetWeaponOutCrimeEnabled	0	3309	PASS	
+309	00891170	CGameScriptInterface	CGameScriptInterface::PlaySoundAtPos	0	3318	PASS	'reinterpret_cast' from integer to pointer
+310	00897880	CGameScriptInterface	CGameScriptInterface::GetHeroTitle	0	3324	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+311	0089c330	CGameScriptInterface	CGameScriptInterface::EntitySetOpinionDeedTypeEnabled	0	3325	PASS	incomplete type '{anonymous}::OpinionDeedInterfaceMap' {aka '{anonymous}::CVectorMap<{anonymous}::ETCInterfaceType, CTCBase*, {anonymous}::CKeyPairCompareLess<{anonymous}::ETCInterfaceType, CTCBase*> >'} used in nested name specifier
+312	0089e710	CGameScriptInterface	CGameScriptInterface::DisplayTutorial	0	3331	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+313	0089ad90	CGameScriptInterface	CGameScriptInterface::IsQuestStartScreenActive	0	3359	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+314	00431363	_global	BinaryTree_Insert_With_Position	0	3365	PASS	
+315	00896df0	CGameScriptInterface	CGameScriptInterface::KickOffCreditsScreen	0	3390	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+316	0042bc2f	_global	RBTree_InsertRight	0	3416	PASS	
+317	0089fc80	CGameScriptInterface	CGameScriptInterface::CreateExplosion	0	3420	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+318	0042d45d	_global	CPersistTraits_Transfer_And_Construct	0	3424	PASS	'CCharString' does not name a type
+319	0042bcb5	_global	CMemoryAllocatorVariableSize_InsertNode	0	3428	PASS	'CScriptDataBase' does not name a type
+320	004416e0	_global	VectorReallocateDouble	0	3447	PASS	
+321	0089c3d0	CGameScriptInterface	CGameScriptInterface::EntitySetOpinionReactionEnabled	0	3454	PASS	incomplete type '{anonymous}::OpinionReactionInterfaceMap' {aka '{anonymous}::CVectorMap<{anonymous}::ETCInterfaceType, CTCBase*, {anonymous}::CKeyPairCompareLess<{anonymous}::ETCInterfaceType, CTCBase*> >'} used in nested name specifier
+322	0042ded5	_global	CFrontEnd_PlayAutoSaveSound	0	3458	FAIL	'NUISystem' has not been declared
+323	00896120	CGameScriptInterface	CGameScriptInterface::TryToRespawnDefNamed	0	3458	PASS	field 'interfaces_44' has incomplete type 'CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >'
+324	00897b10	CGameScriptInterface	CGameScriptInterface::GetHeroHasCurrentMarriage	0	3511	PASS	'reinterpret_cast' from integer to pointer
+325	008943c0	CGameScriptInterface	CGameScriptInterface::MsgIsTutorialClickedPast	0	3529	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+326	0042cee3	_global	CMemoryAllocatorVariableSize_FindOrInsert	0	3533	PASS	
+327	008a8f20	CGameScriptInterface	CGameScriptInterface::GetItemDefNamesFromContainer	0	3561	PASS	'CDefinitionManager' does not name a type
+328	00896a30	CGameScriptInterface	CGameScriptInterface::SetQuestCardObjective	0	3566	PASS	'ETCInterfaceType' was not declared in this scope
+329	00897030	CGameScriptInterface	CGameScriptInterface::IsToFailQuestOnDeath	0	3608	PASS	'reinterpret_cast' from integer to pointer
+330	0062c0e0	CWorld	EAMoveSpirit	0	3624	PASS	'CWorld' has not been declared
+331	00431606	_global	Map_InsertStringKeyNode	0	3646	PASS	
+332	008a9610	CGameScriptInterface	CGameScriptInterface::SetThingAsConscious	0	3648	PASS	
+333	0042e17c	_global	Init_FrontendSounds	0	3656	PASS	
+334	008931b0	CGameScriptInterface	CGameScriptInterface::MsgIsLevelLoaded	0	3672	PASS	
+335	00897bd0	CGameScriptInterface	CGameScriptInterface::GetHeroHasChildren	0	3699	PASS	
+336	0089ec60	CGameScriptInterface	CGameScriptInterface::CreatureGeneratorAddTriggerer	0	3701	PASS	comparison between distinct pointer types '{anonymous}::TCInterfaceEntryOverlay*' and 'CVectorMap<int, CTCBase*, CKeyPairCompareLess<int, CTCBase*> >::Entry*' lacks a cast
+337	00411db0	_global	Std_Vector_Insert_Range_Dispatch	0	3730	PASS	'CSubtitledMessage' was not declared in this scope
+338	00442610	_global	RenderState_Destructor	0	3767	PASS	
+339	00890ff0	CGameScriptInterface	CGameScriptInterface::CameraDefault	0	3783	PASS	'field48' was not declared in this scope
+340	00898e60	CGameScriptInterface	CGameScriptInterface::IsHeroHandLampLit	0	3806	PASS	'reinterpret_cast' from integer to pointer
+341	00418c3b	CMainGameComponent	CMainGameComponent::GenerateMetFilesFromLugFiles	0	3809	PASS	'CMemoryFile' does not name a type
+342	00897480	CGameScriptInterface	CGameScriptInterface::IsPlayerWieldingWeapon	0	3816	PASS	'reinterpret_cast' from integer to pointer
+343	00898540	CGameScriptInterface	CGameScriptInterface::SetGuardsIgnoreCrimes	0	3851	PASS	'reinterpret_cast' from integer to pointer
+344	00897190	CGameScriptInterface	CGameScriptInterface::GetNumberOfItemsOfTypeInInventory	0	3863	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+345	00897c30	CGameScriptInterface	CGameScriptInterface::GetHeroHasMurderedWife	0	3866	PASS	
+346	00898b30	CGameScriptInterface	CGameScriptInterface::SetWeaponAsHerosActiveWeapon	0	3868	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+347	00c9e4a0	_global	Audio_CheckBufferRegionActive	0	3871	PASS	
+348	004b1670	CGameScriptInterface	CGameScriptInterface::AddQuestCardEntry	0	3881	PASS	static assertion failed
+349	0089b4d0	CGameScriptInterface	CGameScriptInterface::RemoveHeroHairstyle	0	3883	PASS	
+350	008a1650	CGameScriptInterface	CGameScriptInterface::GetBestScoreBlackjack	0	3934	PASS	'reinterpret_cast' from integer to pointer
+351	00897b70	CGameScriptInterface	CGameScriptInterface::GetHeroHasDivorcedMarriage	0	3958	PASS	
+352	00898ec0	CGameScriptInterface	CGameScriptInterface::SetHeroHandLampAsLit	0	3960	PASS	'reinterpret_cast' from integer to pointer
+353	00ab5d00	CMouseDX	CMouseDX::CMouseDX	0	3963	PASS	
+354	009f19a0	CGameEventPackageSet	CompressIntoBuffer	0	3986	PASS	'CGameEventPackageSet' has not been declared; did you mean 'CGameEventPackageOverlay'?
+355	00670710	CTCCoopSpirit	UpdateScore	0	4000	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+356	00897d50	CGameScriptInterface	CGameScriptInterface::SetHeroAsHavingHadSex	0	4045	PASS	'reinterpret_cast' from integer to pointer
+357	008a0f70	CGameScriptInterface	CGameScriptInterface::SetReadableObjectText	0	4046	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+358	00897aa0	CGameScriptInterface	CGameScriptInterface::GetHeroHasMarried	0	4053	PASS	'reinterpret_cast' from integer to pointer
+359	008955c0	CGameScriptInterface	CGameScriptInterface::IsEntityFollowingHero	0	4071	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+360	0089ef30	CGameScriptInterface	CGameScriptInterface::SetMoralityChangingAsEnabled	0	4105	PASS	'reinterpret_cast' from integer to pointer
+361	00897db0	CGameScriptInterface	CGameScriptInterface::SetHeroAsHavingHadGaySex	0	4116	PASS	'reinterpret_cast' from integer to pointer
+362	00ca8d50	_global	Enumerate_QueryInterface_012a9a24	0	4138	PASS	
+363	00897c90	CGameScriptInterface	CGameScriptInterface::GetNumberOfTimesHeroHasHadSex	0	4150	PASS	'reinterpret_cast' from integer to pointer
+364	008a12a0	CGameScriptInterface	CGameScriptInterface::GetNumHousesOwned	0	4167	PASS	'reinterpret_cast' from integer to pointer
+365	00caf580	CEngineLandscapePatch	CEngineLandscapePatch::Destructor	0	4187	PASS	invalid use of incomplete type 'class CCharString'
+366	006700f0	CTCCoopSpirit	OnCreate	0	4196	PASS	'CDefClassBase' does not name a type
+367	008a1c50	CGameScriptInterface	CGameScriptInterface::RepopulateVillage	0	4207	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+368	0041726d	CMainGameComponent	UpdateFromEventPackageSet	0	4223	PASS	'reinterpret_cast' from integer to pointer
+369	00897cf0	CGameScriptInterface	CGameScriptInterface::SetNumberOfTimesHeroHasHadSex	0	4233	PASS	'reinterpret_cast' from integer to pointer
+370	0089af30	CGameScriptInterface	CGameScriptInterface::RemoveAllCutSceneSkippedMessages	0	4247	PASS	
+371	004316cf	_global	BinaryTree_InsertDigScriptNode	0	4283	PASS	invalid use of incomplete type 'class CScriptBase'
+372	008a1770	CGameScriptInterface	CGameScriptInterface::GetBestScoreShoveHaPenny	0	4325	PASS	'reinterpret_cast' from integer to pointer
+373	00c93080	_global	FFT_ComputeWaveformEnvelope	0	4346	PASS	
+374	0089cd70	CGameScriptInterface	CGameScriptInterface::CanThingBe_Heard_ByOtherThing	0	4433	PASS	
+375	008a1710	CGameScriptInterface	CGameScriptInterface::GetBestScoreCoinGolfSnowSpire	0	4445	PASS	'reinterpret_cast' from integer to pointer
+376	008953a0	CGameScriptInterface	CGameScriptInterface::IsHeroPerformingExpression	0	4469	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+377	00896e60	CGameScriptInterface	CGameScriptInterface::SetPreferredQuickAccessItem	0	4497	PASS	'reinterpret_cast' from integer to pointer
+378	008973a0	CGameScriptInterface	CGameScriptInterface::IsPlayerCarryingItemOfType	0	4555	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+379	0089b450	CGameScriptInterface	CGameScriptInterface::ChangeHeroHairstyle	0	4577	PASS	'reinterpret_cast' from integer to pointer
+380	006701a0	CTCCoopSpirit	UpdateAttractionToMaster	0	4683	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+381	0089b110	CGameScriptInterface	CGameScriptInterface::StartMovieSequence	0	4802	PASS	static assertion failed
+382	008977f0	CGameScriptInterface	CGameScriptInterface::ApplyHeroPenaltyForDeath	0	4820	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+383	00898db0	CGameScriptInterface	CGameScriptInterface::TakeObjectFromHero	0	4845	PASS	
+384	00411630	_global	Std_Deque_Resize_WithGap	0	4853	PASS	
+385	008a03f0	CGameScriptInterface	CGameScriptInterface::ClearThingBestEnemyTarget	0	4871	PASS	
+386	0089fbb0	CGameScriptInterface	CGameScriptInterface::CreateExperienceOrb	0	4877	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+387	0089c7b0	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses	0	4897	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+388	008a89d0	CGameScriptInterface	CGameScriptInterface::GetAllCreaturesExcludingHero	0	4932	PASS	'CGameScriptInterface' has not been declared
+389	0042c300	_global	CMemoryAllocatorVariableSize_FindInsertPointRight	0	5021	PASS	
+390	00898600	CGameScriptInterface	CGameScriptInterface::RemoveAllHeroWeapons	0	5077	PASS	'reinterpret_cast' from integer to pointer
+391	00894c90	CGameScriptInterface	CGameScriptInterface::IsGiftFriendly	0	5128	PASS	invalid conversion from 'const void*' to 'void*' [-fpermissive]
+392	0089c670	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedToRecipient	0	5172	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+393	0089c710	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedToRecipientVillage	0	5186	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+394	00891720	CGameScriptInterface	CGameScriptInterface::ChangeHeroHealthBy	0	5204	PASS	
+395	00894bf0	CGameScriptInterface	CGameScriptInterface::IsGiftRomantic	0	5210	PASS	invalid conversion from 'const void*' to 'void*' [-fpermissive]
+396	00894d30	CGameScriptInterface	CGameScriptInterface::IsGiftOffensive	0	5212	PASS	invalid conversion from 'const void*' to 'void*' [-fpermissive]
+397	007602f0	_global	Math_PolygonAngleSumClosureCheck	0	5219	PASS	expected '(' before '{' token
+398	00891a00	CGameScriptInterface	CGameScriptInterface::SetQuestInfoText	0	5228	PASS	static assertion failed
+399	0089c560	CGameScriptInterface	CGameScriptInterface::EntityPostOpinionDeedToAll	0	5377	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+400	0042c082	_global	CMemoryAllocatorVariableSize_FindInsertPoint	0	5392	PASS	
+401	008a0820	CGameScriptInterface	CGameScriptInterface::CancelHeroTeleportEffects	0	5392	PASS	
+402	00891ca0	CGameScriptInterface	CGameScriptInterface::GetHero	0	5438	PASS	'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type
+403	0066ff20	CTCCoopSpirit	SwapToHero	0	5478	PASS	'CVertexBufferWin32' does not name a type
+404	0089faa0	CGameScriptInterface	CGameScriptInterface::CreateLight	0	5501	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+405	0042cf69	_global	CMemoryAllocatorVariableSize_InsertStringNode	0	5568	PASS	'CCharString' was not declared in this scope
+406	00442350	_global	Vector_InsertRangeWithRealloc	0	5622	PASS	
+407	004110d0	_global	CString_FillRange	0	5635	PASS	
+408	0042c1c1	_global	CMemoryAllocatorVariableSize_FindInsertPointLeft	0	5661	PASS	
+409	00c88e60	_global	Audio_ProcessFilter4Channel	0	5711	PASS	
+410	00433df0	_global	Array_AssignFrom	0	5769	PASS	
+411	0042d2c6	_global	CMemoryAllocatorVariableSize_FindAllocationNode	0	5864	PASS	'CMemoryAllocatorVariableSize' has not been declared
+412	006e7920	CGameScriptInterface	CGameScriptInterface::CheckForCameraMessage	0	5901	PASS	
+413	008a7980	CGameScriptInterface	CGameScriptInterface::EntityStopFollowing	0	5978	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+414	004333b3	_global	Std_Vector_InsertRange	0	5999	FAIL	invalid use of incomplete type 'class CCharString'
+415	008d1890	CGameScriptThing	CGameScriptThing::MsgWhoHitMe	0	6148	PASS	
+416	008a9c40	CGameScriptInterface	CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom	0	6214	PASS	'CGameScriptInterface' has not been declared
+417	00446d10	_global	ProcessCombatInput_MapInputsToActions	0	6237	PASS	'EGameAction' does not name a type
+418	00898840	CGameScriptInterface	CGameScriptInterface::ConfiscateItemsOfTypeFromHero	0	6295	PASS	'reinterpret_cast' from integer to pointer
+419	008986d0	CGameScriptInterface	CGameScriptInterface::ConfiscateAllHeroItems	0	6335	PASS	
+420	00402130	_global	FableCheckMyDocumentsWritePermissions_00402130	0	6360	PASS	
+421	00401067	_global	entry	0	6397	PASS	static assertion failed
+422	00a76f30	CNavQuadTree	IsAreaBlockedByLines	0	6417	PASS	'list' in namespace 'std' does not name a template type
+423	008a99f0	CGameScriptInterface	CGameScriptInterface::SetThingAndCarriedItemsNotAffectedByScreenFilter	0	6584	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+424	006e7740	CGameScriptInterface	CGameScriptInterface	0	6598	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+425	008954a0	CGameScriptInterface	CGameScriptInterface::EntityFollowThing	0	6704	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+426	00898940	CGameScriptInterface	CGameScriptInterface::ReturnAllConfiscatedItemsToHero	0	6734	PASS	'reinterpret_cast' from integer to pointer
+427	008a23b0	CGameScriptInterface	CGameScriptInterface::SetWanderCentrePoint	0	6956	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+428	0042c940	_global	CMemoryAllocatorVariableSize_InsertWithString	0	7015	PASS	field 'key' has incomplete type 'CCharString'
+429	00443e20	_global	TextureCache_Destructor	0	7681	PASS	
+430	006e7820	CGameScriptInterface	CGameScriptInterface::WaitForCameraMessage	0	7728	PASS	
+431	00898410	CGameScriptInterface	CGameScriptInterface::SetHeroWeaponsAsUsable	0	7742	PASS	'reinterpret_cast' from integer to pointer
+432	00681cd0	CGameScriptInterface	CGameScriptInterface::SetOpinionReactionMask	0	7763	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+433	00898340	CGameScriptInterface	CGameScriptInterface::SetHeroWillAsUsable	0	7792	PASS	'reinterpret_cast' from integer to pointer
+434	00892850	CGameScriptInterface	CGameScriptInterface::AddScreenMessage	0	8341	PASS	
+435	008a9ae0	CGameScriptInterface	CGameScriptInterface::MsgOnBoastsMade	0	8369	PASS	field 'boastText' has incomplete type 'CCharString'
+436	00896b60	CGameScriptInterface	CGameScriptInterface::KickOffQuestStartScreen	0	8379	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+437	008a0260	CGameScriptInterface	CGameScriptInterface::GiveThingBestEnemyTarget	0	8469	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+438	008a0cb0	CGameScriptInterface	CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing	0	8729	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+439	00895190	CGameScriptInterface	CGameScriptInterface::GiveThingItemInSlot	0	8843	PASS	
+440	008981c0	CGameScriptInterface	CGameScriptInterface::AddTattooToHero	0	9170	PASS	static assertion failed
+441	0089f300	CGameScriptInterface	CGameScriptInterface::CreateCreatureNearby	0	9223	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+442	00401c00	_global	GFHandleSystemInitError	0	9567	PASS	
+443	008a8c60	CGameScriptInterface	CGameScriptInterface::EntitySetAsSittingOnFloor	0	9898	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+444	004fe7f0	_global	CollectSoundThemeSwitchDefs	0	10096	PASS	static assertion failed
+445	008a9100	CGameScriptInterface	CGameScriptInterface::CreateCreature	0	10315	FAIL	'EHeroMorphType' was not declared in this scope
+446	00ee91e0	_global	Script_MakeThingsSpeakNumbered	0	10832	PASS	variable or field 'Script_MakeThingsSpeakNumbered' declared void
+447	008a93a0	CGameScriptInterface	CGameScriptInterface::EntityWillTeleportToArea	0	10847	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+448	008a86c0	CGameScriptInterface	CGameScriptInterface::GetAllCreaturesInAreaWithScriptName	0	10873	FAIL	'CGameScriptInterface' has not been declared; did you mean 'CGameScriptInterface_Overlay'?
+449	004317d0	_global	CMemoryBlock_Destructor	0	11653	PASS	field 'string03C' has incomplete type 'CCharString'
+450	0089feb0	CGameScriptInterface	CGameScriptInterface::AddCrimeCommitted	0	12255	PASS	'reinterpret_cast' from integer to pointer
+451	00a793d0	CNavQuadTree	ConnectVerticalMapEdge	0	12654	PASS	'CNavConnectorNode' does not name a type
+452	00a79680	CNavQuadTree	ConnectVerticalMapEdge	0	12746	PASS	'CNavConnectorNode' does not name a type
+453	00c9f8c0	_global	Mesh_BlendMorphStreams	0	14028	PASS	
+454	0040cec0	_global	CUserProfileManager_Constructor	0	14574	FAIL	
+455	00896390	CGameScriptInterface	CGameScriptInterface::OpenChest	0	14865	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+456	00417a58	_global	CMainGameComponent_InitSoundBanks	0	15257	FAIL	'CDefString' does not name a type
+457	00a79b30	CNavQuadTreeNode	Initialise	0	15716	PASS	'CANavQuadTreeNode' does not name a type
+458	00a781a0	CNavQuadTree	UpdateLines	0	16017	PASS	'C2DVector' does not name a type
+459	0050a650	CWorldMap	GetMapNavigationAreaInit	0	25507	PASS	use of enum 'EHeroMorphType' without previous declaration
+460	00a7a8d0	CNavQuadTree	Initialise	0	26841	PASS	'C2DLineF' was not declared in this scope
+461	0043a570	_global	NHeroInformationScreens_Destructor	0	27846	PASS	return type specification for constructor invalid
