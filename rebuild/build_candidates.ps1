@@ -37896,6 +37896,62 @@ $catalog = @(
         TestSource = '00/4c/CThing_GetTypeName_004c7e10_test.cpp'
         PassPattern = 'OK_0x004c7e10'
     }
+    [pscustomobject]@{
+        Address = '004cd9b0'
+        Module = '_global'
+        Source = '00/4c/global_GetAnimGroupName_004cd9b0.cpp'
+        TestSource = '00/4c/global_GetAnimGroupName_004cd9b0_test.cpp'
+        PassPattern = 'OK_0x004cd9b0'
+    }
+    [pscustomobject]@{
+        Address = '004d79c6'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/4d/CEngineInternalPrimitiveBase_AddChildPrimitive_004d79c6.cpp'
+        TestSource = '00/4d/CEngineInternalPrimitiveBase_AddChildPrimitive_004d79c6_test.cpp'
+        PassPattern = 'OK_0x004d79c6'
+    }
+    [pscustomobject]@{
+        Address = '004df3b4'
+        Module = 'CObstacleNavigatorExternalInterface'
+        Source = '00/4d/CObstacleNavigatorExternalInterface_FindPosZAt_004df3b4.cpp'
+        TestSource = '00/4d/CObstacleNavigatorExternalInterface_FindPosZAt_004df3b4_test.cpp'
+        PassPattern = 'OK_0x004df3b4'
+    }
+    [pscustomobject]@{
+        Address = '004df3bd'
+        Module = 'CObstacleNavigatorExternalInterface'
+        Source = '00/4d/CObstacleNavigatorExternalInterface_FindPosZAtIncludingThemes_004df3bd.cpp'
+        TestSource = '00/4d/CObstacleNavigatorExternalInterface_FindPosZAtIncludingThemes_004df3bd_test.cpp'
+        PassPattern = 'OK_0x004df3bd'
+    }
+    [pscustomobject]@{
+        Address = '004df3d4'
+        Module = 'CObstacleNavigatorExternalInterface'
+        Source = '00/4d/CObstacleNavigatorExternalInterface_GetTerrainHeightAt_004df3d4.cpp'
+        TestSource = '00/4d/CObstacleNavigatorExternalInterface_GetTerrainHeightAt_004df3d4_test.cpp'
+        PassPattern = 'OK_0x004df3d4'
+    }
+    [pscustomobject]@{
+        Address = '004df3dd'
+        Module = 'CObstacleNavigatorExternalInterface'
+        Source = '00/4d/CObstacleNavigatorExternalInterface_GetThemeHeightAt_004df3dd.cpp'
+        TestSource = '00/4d/CObstacleNavigatorExternalInterface_GetThemeHeightAt_004df3dd_test.cpp'
+        PassPattern = 'OK_0x004df3dd'
+    }
+    [pscustomobject]@{
+        Address = '004cf3d0'
+        Module = 'CPhysicalPrimitiveMesh'
+        Source = '00/4c/CPhysicalPrimitiveMesh_GetClosestPointToPos2D_004cf3d0.cpp'
+        TestSource = '00/4c/CPhysicalPrimitiveMesh_GetClosestPointToPos2D_004cf3d0_test.cpp'
+        PassPattern = 'OK_0x004cf3d0'
+    }
+    [pscustomobject]@{
+        Address = '004df3cb'
+        Module = 'CObstacleNavigatorExternalInterface'
+        Source = '00/4d/CObstacleNavigatorExternalInterface_GetTerrainDesirabilityAt_004df3cb.cpp'
+        TestSource = '00/4d/CObstacleNavigatorExternalInterface_GetTerrainDesirabilityAt_004df3cb_test.cpp'
+        PassPattern = 'OK_0x004df3cb'
+    }
 )
 
 $requestedAddresses = @(
