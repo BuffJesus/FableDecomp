@@ -37329,6 +37329,13 @@ $catalog = @(
         TestSource = '00/99/CCharString_NotEqual_0099e900_test.cpp'
         PassPattern = 'CHAR_STRING_NOT_EQUAL_0099e900_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c8c730'
+        Module = '_global'
+        Source = '00/c8/global_BatchInvokeWithStackArgsc8c730_00c8c730.cpp'
+        TestSource = '00/c8/global_BatchInvokeWithStackArgsc8c730_00c8c730_test.cpp'
+        PassPattern = 'Batch_InvokeWithStackArgs_c8c730_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
