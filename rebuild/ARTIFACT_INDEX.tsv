@@ -1794,6 +1794,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00486390	CAInputProcess		rebuild/src/compiled/00/48/CAInputProcess_Update_00486390.cpp	rebuild/tests/00/48/CAInputProcess_Update_00486390_test.cpp		rebuild/build/candidates-Release/00/48/00486390
 004874a0	CPlayer		rebuild/src/compiled/00/48/CPlayer_IsTargetLocked_004874a0.cpp	rebuild/tests/00/48/CPlayer_IsTargetLocked_004874a0_test.cpp		rebuild/build/candidates-Release/00/48/004874a0
 00487510	_global		rebuild/src/compiled/00/48/global_DrawGetEnvironment_00487510.cpp	rebuild/tests/00/48/global_DrawGetEnvironment_00487510_test.cpp		rebuild/build/candidates-Release/00/48/00487510
+00487e90	CPlayer		rebuild/src/compiled/00/48/CPlayer_ToggleAggressiveMode_00487e90.cpp	rebuild/tests/00/48/CPlayer_ToggleAggressiveMode_00487e90_test.cpp		rebuild/build/candidates-Release/00/48/00487e90
 0048ad60	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive		rebuild/src/compiled/00/48/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0048ad60.cpp	rebuild/tests/00/48/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0048ad60_test.cpp		rebuild/build/candidates-Release/00/48/0048ad60
 0048adb0						rebuild/build/candidates-Release/00/48/0048adb0
 0048adc0						rebuild/build/candidates-Release/00/48/0048adc0
@@ -1814,7 +1815,9 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 0048db13	CPersistContext		rebuild/src/compiled/00/48/CPersistContext_IsBinary_0048db13.cpp	rebuild/tests/00/48/CPersistContext_IsBinary_0048db13_test.cpp		rebuild/build/candidates-Release/00/48/0048db13
 0048db35	CUserProfileManager		rebuild/src/compiled/00/48/CUserProfileManager_IsCameraResetting_0048db35.cpp	rebuild/tests/00/48/CUserProfileManager_IsCameraResetting_0048db35_test.cpp		rebuild/build/candidates-Release/00/48/0048db35
 0048dba6	CSubtitleRenderer		rebuild/src/compiled/00/48/CSubtitleRenderer_SetVWindowsForDeprecatedDrawInterface_0048dba6.cpp	rebuild/tests/00/48/CSubtitleRenderer_SetVWindowsForDeprecatedDrawInterface_0048dba6_test.cpp		rebuild/build/candidates-Release/00/48/0048dba6
+004935f8	_global		rebuild/src/compiled/00/49/global_GFToScreen_004935f8.cpp	rebuild/tests/00/49/global_GFToScreen_004935f8_test.cpp		rebuild/build/candidates-Release/00/49/004935f8
 004936b9						rebuild/build/candidates-Release/00/49/004936b9
+0049373e	CEngineInternalPrimitiveBase		rebuild/src/compiled/00/49/CEngineInternalPrimitiveBase_AddChildPrimitive_0049373e.cpp	rebuild/tests/00/49/CEngineInternalPrimitiveBase_AddChildPrimitive_0049373e_test.cpp		rebuild/build/candidates-Release/00/49/0049373e
 004940e3	CActiveFile		rebuild/src/compiled/00/49/CActiveFile_OnReadFinished_004940e3.cpp	rebuild/tests/00/49/CActiveFile_OnReadFinished_004940e3_test.cpp		rebuild/build/candidates-Release/00/49/004940e3
 00494350	CFrontendGameComponent		rebuild/src/compiled/00/49/CFrontendGameComponent_OnPreDeviceReset_00494350.cpp	rebuild/tests/00/49/CFrontendGameComponent_OnPreDeviceReset_00494350_test.cpp		rebuild/build/candidates-Release/00/49/00494350
 00494360	CFrontendGameComponent		rebuild/src/compiled/00/49/CFrontendGameComponent_OnPostDeviceReset_00494360.cpp	rebuild/tests/00/49/CFrontendGameComponent_OnPostDeviceReset_00494360_test.cpp		rebuild/build/candidates-Release/00/49/00494360
@@ -1850,20 +1853,27 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 004962c0	CFrontendGameComponent		rebuild/src/compiled/00/49/CFrontendGameComponent_ChooseProfileNumber_004962c0.cpp	rebuild/tests/00/49/CFrontendGameComponent_ChooseProfileNumber_004962c0_test.cpp		rebuild/build/candidates-Release/00/49/004962c0
 00496eb0	GFWrapLimit		rebuild/src/compiled/00/49/global_GFWrapLimit_00496eb0.cpp	rebuild/tests/00/49/global_GFWrapLimit_00496eb0_test.cpp		rebuild/build/candidates-Release/00/49/00496eb0
 00497850	CAProgressDisplay		rebuild/src/compiled/00/49/CAProgressDisplay_InitialiseTextures_00497850.cpp	rebuild/tests/00/49/CAProgressDisplay_InitialiseTextures_00497850_test.cpp		rebuild/build/candidates-Release/00/49/00497850
+00497890	_global		rebuild/src/compiled/00/49/global_GFROR13_00497890.cpp	rebuild/tests/00/49/global_GFROR13_00497890_test.cpp		rebuild/build/candidates-Release/00/49/00497890
 00497b30	CProgressDisplay		rebuild/src/compiled/00/49/CProgressDisplay_GetPTextBank_00497b30.cpp	rebuild/tests/00/49/CProgressDisplay_GetPTextBank_00497b30_test.cpp		rebuild/build/candidates-Release/00/49/00497b30
 00497f80	CProgressDisplay		rebuild/src/compiled/00/49/CProgressDisplay_FormatTextForVWindow_00497f80.cpp	rebuild/tests/00/49/CProgressDisplay_FormatTextForVWindow_00497f80_test.cpp		rebuild/build/candidates-Release/00/49/00497f80
 00499a70	CProgressDisplay		rebuild/src/compiled/00/49/CProgressDisplay_SetToDisplayText_00499a70.cpp	rebuild/tests/00/49/CProgressDisplay_SetToDisplayText_00499a70_test.cpp		rebuild/build/candidates-Release/00/49/00499a70
 00499ce0	CProgressDisplay		rebuild/src/compiled/00/49/CProgressDisplay_Constructor_00499ce0.cpp	rebuild/tests/00/49/CProgressDisplay_Constructor_00499ce0_test.cpp		rebuild/build/candidates-Release/00/49/00499ce0
 0049b460	CProgressDisplay		rebuild/src/compiled/00/49/CProgressDisplay_IsActive_0049b460.cpp	rebuild/tests/00/49/CProgressDisplay_IsActive_0049b460_test.cpp		rebuild/build/candidates-Release/00/49/0049b460
 0049b990	_global		rebuild/src/compiled/00/49/global_DrawGetSeaLevel_0049b990.cpp	rebuild/tests/00/49/global_DrawGetSeaLevel_0049b990_test.cpp		rebuild/build/candidates-Release/00/49/0049b990
+0049bb30	CGameJoystickManager		rebuild/src/compiled/00/49/CGameJoystickManager_SetMainPlayerJoystickDeviceNumber_0049bb30.cpp	rebuild/tests/00/49/CGameJoystickManager_SetMainPlayerJoystickDeviceNumber_0049bb30_test.cpp		rebuild/build/candidates-Release/00/49/0049bb30
 0049bb40	_global		rebuild/src/compiled/00/49/global_DrawGetEnvironment_0049bb40.cpp	rebuild/tests/00/49/global_DrawGetEnvironment_0049bb40_test.cpp		rebuild/build/candidates-Release/00/49/0049bb40
 0049bb50	CTCInventoryBase		rebuild/src/compiled/00/49/CTCInventoryBase_GetCanItemBeQuickAssigned_0049bb50.cpp	rebuild/tests/00/49/CTCInventoryBase_GetCanItemBeQuickAssigned_0049bb50_test.cpp		rebuild/build/candidates-Release/00/49/0049bb50
+0049c770	CVertexBufferWin32		rebuild/src/compiled/00/49/CVertexBufferWin32_DoSizeof_0049c770.cpp	rebuild/tests/00/49/CVertexBufferWin32_DoSizeof_0049c770_test.cpp		rebuild/build/candidates-Release/00/49/0049c770
 0049c780	CThingSearchTools		rebuild/src/compiled/00/49/CThingSearchTools_PeekTypeList_0049c780.cpp	rebuild/tests/00/49/CThingSearchTools_PeekTypeList_0049c780_test.cpp		rebuild/build/candidates-Release/00/49/0049c780
+0049c7a0	CThingSearchTools		rebuild/src/compiled/00/49/CThingSearchTools_CThingSearchTools_0049c7a0.cpp	rebuild/tests/00/49/CThingSearchTools_CThingSearchTools_0049c7a0_test.cpp		rebuild/build/candidates-Release/00/49/0049c7a0
+0049c9b0	CTCCoopSpirit		rebuild/src/compiled/00/49/CTCCoopSpirit_ApplyMovementVector_0049c9b0.cpp	rebuild/tests/00/49/CTCCoopSpirit_ApplyMovementVector_0049c9b0_test.cpp		rebuild/build/candidates-Release/00/49/0049c9b0
+0049cf80	CNearestBuildingWithProperty		rebuild/src/compiled/00/49/CNearestBuildingWithProperty_CNearestBuildingWithProperty_0049cf80.cpp	rebuild/tests/00/49/CNearestBuildingWithProperty_CNearestBuildingWithProperty_0049cf80_test.cpp		rebuild/build/candidates-Release/00/49/0049cf80
 0049d321						rebuild/build/candidates-Release/00/49/0049d321
 0049d330						rebuild/build/candidates-Release/00/49/0049d330
 0049d340						rebuild/build/candidates-Release/00/49/0049d340
 0049d350						rebuild/build/candidates-Release/00/49/0049d350
 0049d4e0	CWorld		rebuild/src/compiled/00/49/CWorld_IsHeroStateFileValid_0049d4e0.cpp	rebuild/tests/00/49/CWorld_IsHeroStateFileValid_0049d4e0_test.cpp		rebuild/build/candidates-Release/00/49/0049d4e0
+0049d870	_global		rebuild/src/compiled/00/49/global_GFGetPreMainMemoryUsed_0049d870.cpp	rebuild/tests/00/49/global_GFGetPreMainMemoryUsed_0049d870_test.cpp		rebuild/build/candidates-Release/00/49/0049d870
 004a0220	CWorld		rebuild/src/compiled/00/4a/CWorld_PrepareForLoad_004a0220.cpp	rebuild/tests/00/4a/CWorld_PrepareForLoad_004a0220_test.cpp		rebuild/build/candidates-Release/00/4a/004a0220
 004a2d70	CWorld		rebuild/src/compiled/00/4a/CWorld_LoadHeroStateInternal_004a2d70.cpp	rebuild/tests/00/4a/CWorld_LoadHeroStateInternal_004a2d70_test.cpp		rebuild/build/candidates-Release/00/4a/004a2d70
 004a7f20	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive		rebuild/src/compiled/00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a7f20.cpp	rebuild/tests/00/4a/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004a7f20_test.cpp		rebuild/build/candidates-Release/00/4a/004a7f20

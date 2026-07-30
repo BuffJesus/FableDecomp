@@ -1460,7 +1460,7 @@ CEngineInternalPrimitive2DText	1	1	1	0	0	0	0	0	0	0	0
 CEngineInternalPrimitive2DViewport	10	14	13	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveAnimatedMesh	16	16	16	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveAnimatedMeshFromFile	1	1	1	0	0	1	1	1	0	0	0
-CEngineInternalPrimitiveBase	15	100	98	0	0	52	52	51	1	0	0
+CEngineInternalPrimitiveBase	15	100	98	0	0	53	53	52	1	0	0
 CEngineInternalPrimitiveChanger	16	16	15	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveDecal	4	4	4	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveFlareSprite	1	1	1	0	0	0	0	0	0	0	0
@@ -1783,7 +1783,7 @@ CGameEvent	6	14	13	2	0	1	1	1	0	0	0
 CGameEventDataPackage	1	0	0	0	0	0	0	0	0	0	0
 CGameEventPackage	4	15	13	0	0	1	1	1	0	0	0
 CGameEventPackageSet	6	4	3	3	0	0	0	0	0	0	0
-CGameJoystickManager	4	11	1	0	0	0	0	0	0	0	0
+CGameJoystickManager	4	11	1	0	0	1	1	1	0	0	0
 CGameMap	6	6	5	0	0	0	0	0	0	0	0
 CGameMapCell	2	1	1	0	0	0	0	0	0	0	0
 CGameNavigatorManagerExternalInterface	2	2	2	0	0	0	0	0	0	0	0
@@ -2478,7 +2478,7 @@ CNavigatorExternalInterface	2	0	0	0	0	0	0	0	0	0	0
 CNavigatorFlyer	12	13	13	0	0	2	2	2	0	0	0
 CNavigatorManager	19	19	18	0	0	0	0	0	0	0	0
 CNavigatorQueueManager	3	18	18	0	0	1	1	1	0	0	0
-CNearestBuildingWithProperty	0	15	1	0	0	1	1	1	0	0	0
+CNearestBuildingWithProperty	0	15	1	0	0	2	2	2	0	0	0
 CNecropolisEnemy	3	0	0	0	0	0	0	0	0	0	0
 CNecropolisGate	2	1	1	0	0	0	0	0	0	0	0
 CNecropolisGhost	4	0	0	0	0	0	0	0	0	0	0
@@ -2692,7 +2692,7 @@ CPixelFormat	18	13	12	0	0	3	3	1	2	0	0
 CPixelShader	1	30	29	0	0	0	0	0	0	0	0
 CPixelShaderData	0	4	3	0	0	0	0	0	0	0	0
 CPlane	7	4	4	0	0	0	0	0	0	0	0
-CPlayer	148	74	68	0	0	1	1	1	0	0	0
+CPlayer	148	74	68	0	0	2	2	1	1	0	0
 CPlayerDef	2	3	3	0	0	1	1	1	0	0	0
 CPlayerGui	91	41	40	0	0	16	16	15	1	0	0
 CPlayerGuiDef	3	4	3	0	0	2	2	2	0	0	0
@@ -3241,7 +3241,7 @@ CTCCombat	68	37	35	0	0	4	4	1	3	0	0
 CTCCombatLeader	3	0	0	0	0	0	0	0	0	0	0
 CTCContainer	6	3	3	0	0	0	0	0	0	0	0
 CTCContainerRewardHero	14	11	11	0	0	0	0	0	0	0	0
-CTCCoopSpirit	36	24	22	5	0	3	3	3	0	0	0
+CTCCoopSpirit	36	24	22	5	0	4	4	4	0	0	0
 CTCCrateStack	11	6	6	0	0	0	0	0	0	0	0
 CTCCreatedEntity	3	0	0	0	0	0	0	0	0	0	0
 CTCCreatureExpression	8	5	5	0	0	0	0	0	0	0	0
@@ -3708,7 +3708,7 @@ CThingPhysicalSwitchDef	2	3	3	0	0	3	3	2	1	0	0
 CThingPlayerCreature	62	31	31	0	0	0	0	0	0	0	0
 CThingPropertyDialog	25	1	1	0	0	0	0	0	0	0	0
 CThingScriptUIDReplacer	5	1	0	0	0	0	0	0	0	0	0
-CThingSearchTools	5	110	108	0	0	2	2	1	1	0	0
+CThingSearchTools	5	110	108	0	0	3	3	2	1	0	0
 CThingShotDef	2	3	3	0	0	1	1	1	0	0	0
 CThingSoundEmitter	14	2	1	0	0	0	0	0	0	0	0
 CThingSwitch	23	215	215	0	0	127	127	0	127	0	0
@@ -3837,7 +3837,7 @@ CVectorMap<unsigned_long	0	24	24	0	0	0	0	0	0	0	0
 CVectorMap_EntryScriptBase	0	2	0	0	0	0	0	0	0	0	0
 CVersion	1	1	0	0	0	0	0	0	0	0	0
 CVertexBufferBase	4	0	0	0	0	0	0	0	0	0	0
-CVertexBufferWin32	6	28	26	0	0	2	2	2	0	0	0
+CVertexBufferWin32	6	28	26	0	0	3	3	3	0	0	0
 CVertexCache	2	0	0	0	0	0	0	0	0	0	0
 CVertexGroupBlock	9	12	11	0	0	0	0	0	0	0	0
 CVertexGroupBlockList	4	2	2	0	0	0	0	0	0	0	0
@@ -4505,7 +4505,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11362	1997	264	5	156	156	87	65	0	0
+_global	0	11362	1997	264	5	159	159	89	66	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0
