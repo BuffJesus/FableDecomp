@@ -604,7 +604,7 @@ CCarriedReadableDef	2	15	3	0	0	1	1	1	0	0	0
 CCarrySlotDef	2	3	3	0	0	3	3	2	1	0	0
 CCarryableDef	2	3	3	0	0	1	1	1	0	0	0
 CCarryingDef	2	3	3	0	0	1	1	1	0	0	0
-CCategory	45	52	48	0	0	4	4	2	2	0	0
+CCategory	45	52	48	0	0	7	7	5	2	0	0
 CCellDoor	2	0	0	0	0	0	0	0	0	0	0
 CCellDoorHero	2	0	0	0	0	0	0	0	0	0	0
 CCellWhisper	2	0	0	0	0	0	0	0	0	0	0
@@ -2115,7 +2115,7 @@ CIsThingConscious	1	2	2	0	0	0	0	0	0	0	0
 CIsUsableIciclePoint	0	1	1	0	0	0	0	0	0	0	0
 CIsVariableFalse	1	1	1	0	0	0	0	0	0	0	0
 CIsVeryCloseMotionlessCreature	0	1	1	0	0	0	0	0	0	0	0
-CItem	20	32	29	0	0	1	1	1	0	0	0
+CItem	20	32	29	0	0	4	4	4	0	0	0
 CJackDragonDef	2	3	3	0	0	2	2	2	0	0	0
 CJackOfBladesBattleDef	2	3	3	0	0	1	1	1	0	0	0
 CJames	4	0	0	0	0	0	0	0	0	0	0
@@ -2471,7 +2471,7 @@ CNavRegion	8	2	2	0	0	0	0	0	0	0	0
 CNavRegionConnection	2	0	0	0	0	0	0	0	0	0	0
 CNavSwitchableLeafNode	12	19	17	0	0	2	2	2	0	0	0
 CNavigationInput	0	1	1	0	0	0	0	0	0	0	0
-CNavigationLayer	0	11	0	0	0	2	2	2	0	0	0
+CNavigationLayer	0	11	0	0	0	3	3	3	0	0	0
 CNavigatorAStar	40	32	31	0	0	0	0	0	0	0	0
 CNavigatorBase	6	9	8	0	0	1	1	1	0	0	0
 CNavigatorExternalInterface	2	0	0	0	0	0	0	0	0	0	0
@@ -2502,7 +2502,7 @@ CObjectCacheGroupCollection	16	8	8	0	0	0	0	0	0	0	0
 CObjectFamilyDef	3	4	4	1	0	2	2	1	0	0	0
 CObjectTypeCollection	12	4	4	0	0	0	0	0	0	0	0
 CObjectTypeCollectionPalette	3	2	2	0	0	0	0	0	0	0	0
-CObservable	11	46	45	0	0	11	11	11	0	0	0
+CObservable	11	46	45	0	0	12	12	12	0	0	0
 CObserver	6	2	2	0	0	1	1	0	1	0	0
 CObstacleNavigatorExternalInterface	14	24	24	0	0	8	8	3	5	0	0
 COccupiableDef	2	3	3	0	0	1	1	1	0	0	0
@@ -2865,7 +2865,7 @@ CReluctantTrader	3	0	0	0	0	0	0	0	0	0	0
 CRenderManager2D	31	28	26	0	0	0	0	0	0	0	0
 CRenderManagerCore	39	27	25	0	0	2	2	1	1	0	0
 CRenderStateManager	10	9	8	0	0	2	2	2	0	0	0
-CRenderTarget	6	16	14	0	0	2	2	0	2	0	0
+CRenderTarget	6	16	14	0	0	3	3	0	3	0	0
 CReplaceSerialise<CFileFormatEditMapBrushHeader	0	3	3	0	0	0	0	0	0	0	0
 CReplaceSerialise<CFileFormatHeightMapCell	0	1	1	0	0	0	0	0	0	0	0
 CReplaceSerialise<CFileFormatMapHeader	0	1	1	0	0	0	0	0	0	0	0
@@ -2917,7 +2917,7 @@ CScreenFilterParams	1	0	0	0	0	0	0	0	0	0	0
 CScreenFilterProcess	3	0	0	0	0	0	0	0	0	0	0
 CScreenFilterSThingByPass	0	3	0	0	0	0	0	0	0	0	0
 CScreenMessage	3	4	3	0	0	0	0	0	0	0	0
-CScriptBase	26	31	28	0	0	0	0	0	0	0	0
+CScriptBase	26	31	28	0	0	1	1	1	0	0	0
 CScriptBrushDialog	3	0	0	0	0	0	0	0	0	0	0
 CScriptConversation	7	4	4	0	0	0	0	0	0	0	0
 CScriptConversationManager	6	3	3	0	0	0	0	0	0	0	0
@@ -3368,7 +3368,7 @@ CTCInterestingToVillagers	4	0	0	0	0	0	0	0	0	0	0
 CTCInterface	0	4	0	0	0	0	0	0	0	0	0
 CTCInventory	118	93	90	0	0	1	1	1	0	0	0
 CTCInventoryAbilities	81	100	99	0	0	3	3	3	0	0	0
-CTCInventoryBase	140	135	132	0	0	7	7	7	0	0	0
+CTCInventoryBase	140	135	132	0	0	11	11	11	0	0	0
 CTCInventoryClothing	50	37	37	0	0	2	2	2	0	0	0
 CTCInventoryExperience	84	62	58	0	0	3	3	3	0	0	0
 CTCInventoryItem	60	103	101	0	0	15	15	3	12	0	0
@@ -3510,7 +3510,7 @@ CTCVolumeContainmentTrackerDef	2	3	3	0	0	1	1	1	0	0	0
 CTCWallMount	11	4	4	0	0	0	0	0	0	0	0
 CTCWallMountEffects	14	7	4	0	0	0	0	0	0	0	0
 CTCWaterWader	5	5	3	0	0	0	0	0	0	0	0
-CTCWeapon	39	35	31	0	0	2	2	2	0	0	0
+CTCWeapon	39	35	31	0	0	3	3	3	0	0	0
 CTCWeaponTrail	19	10	10	0	0	0	0	0	0	0	0
 CTCWeatherVane	4	1	1	0	0	0	0	0	0	0	0
 CTCWife	44	38	38	0	0	0	0	0	0	0	0
@@ -3931,7 +3931,7 @@ CWitnessesSearchingDeed	0	1	0	0	0	0	0	0	0	0	0
 CWomanToAttract	6	4	4	0	0	0	0	0	0	0	0
 CWorld	206	154	150	1	0	49	49	44	5	0	0
 CWorldManager	0	3	0	0	0	0	0	0	0	0	0
-CWorldMap	200	186	183	5	0	14	14	8	6	0	0
+CWorldMap	200	186	183	5	0	15	15	9	6	0	0
 CWorldMapPlacementDialog	2	0	0	0	0	0	0	0	0	0	0
 CWorldMapPlacementPopupDialog	9	0	0	0	0	0	0	0	0	0	0
 CWound	7	17	17	0	0	1	1	1	0	0	0
@@ -4505,7 +4505,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11362	1997	268	5	179	179	100	75	0	0
+_global	0	11362	1997	268	5	180	180	101	75	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

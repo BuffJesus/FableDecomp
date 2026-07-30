@@ -38442,6 +38442,69 @@ $catalog = @(
         TestSource = '00/5b/CItem_SetQuestPersistentFlag_005bc6f9_test.cpp'
         PassPattern = 'OK_0x005bc6f9'
     }
+    [pscustomobject]@{
+        Address = '005bc988'
+        Module = 'CCategory'
+        Source = '00/5b/CCategory_GetHighlightedItem_005bc988.cpp'
+        TestSource = '00/5b/CCategory_GetHighlightedItem_005bc988_test.cpp'
+        PassPattern = 'OK_0x005bc988'
+    }
+    [pscustomobject]@{
+        Address = '005bc9b0'
+        Module = 'CCategory'
+        Source = '00/5b/CCategory_GetItemInSlotWithIndex_005bc9b0.cpp'
+        TestSource = '00/5b/CCategory_GetItemInSlotWithIndex_005bc9b0_test.cpp'
+        PassPattern = 'OK_0x005bc9b0'
+    }
+    [pscustomobject]@{
+        Address = '005bcace'
+        Module = 'CTCInventoryBase'
+        Source = '00/5b/CTCInventoryBase_GetSelectedCategory_005bcace.cpp'
+        TestSource = '00/5b/CTCInventoryBase_GetSelectedCategory_005bcace_test.cpp'
+        PassPattern = 'OK_0x005bcace'
+    }
+    [pscustomobject]@{
+        Address = '005bce2f'
+        Module = 'CWorldMap'
+        Source = '00/5b/CWorldMap_DrawGetNoMaps_005bce2f.cpp'
+        TestSource = '00/5b/CWorldMap_DrawGetNoMaps_005bce2f_test.cpp'
+        PassPattern = 'OK_0x005bce2f'
+    }
+    [pscustomobject]@{
+        Address = '005bce3c'
+        Module = 'CTCInventoryBase'
+        Source = '00/5b/CTCInventoryBase_GetCategoryWithIndex_005bce3c.cpp'
+        TestSource = '00/5b/CTCInventoryBase_GetCategoryWithIndex_005bce3c_test.cpp'
+        PassPattern = 'OK_0x005bce3c'
+    }
+    [pscustomobject]@{
+        Address = '005bd1b3'
+        Module = 'CCategory'
+        Source = '00/5b/CCategory_GetCategoryIdentifier_005bd1b3.cpp'
+        TestSource = '00/5b/CCategory_GetCategoryIdentifier_005bd1b3_test.cpp'
+        PassPattern = 'OK_0x005bd1b3'
+    }
+    [pscustomobject]@{
+        Address = '005bd404'
+        Module = 'CTCWeapon'
+        Source = '00/5b/CTCWeapon_GetAnimationSpeedValue_005bd404.cpp'
+        TestSource = '00/5b/CTCWeapon_GetAnimationSpeedValue_005bd404_test.cpp'
+        PassPattern = 'OK_0x005bd404'
+    }
+    [pscustomobject]@{
+        Address = '005bd993'
+        Module = 'CRenderTarget'
+        Source = '00/5b/CRenderTarget_DetachTarget_005bd993.cpp'
+        TestSource = '00/5b/CRenderTarget_DetachTarget_005bd993_test.cpp'
+        PassPattern = 'OK_0x005bd993'
+    }
+    [pscustomobject]@{
+        Address = '005c14a6'
+        Module = 'CNavigationLayer'
+        Source = '00/5c/CNavigationLayer_CNavigationLayer_005c14a6.cpp'
+        TestSource = '00/5c/CNavigationLayer_CNavigationLayer_005c14a6_test.cpp'
+        PassPattern = 'OK_0x005c14a6'
+    }
 )
 
 $requestedAddresses = @(
