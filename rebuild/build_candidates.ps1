@@ -37644,6 +37644,69 @@ $catalog = @(
         TestSource = '00/48/CPlayer_ToggleAggressiveMode_00487e90_test.cpp'
         PassPattern = 'OK_0x00487e90'
     }
+    [pscustomobject]@{
+        Address = '004935f8'
+        Module = '_global'
+        Source = '00/49/global_GFToScreen_004935f8.cpp'
+        TestSource = '00/49/global_GFToScreen_004935f8_test.cpp'
+        PassPattern = 'OK_0x004935f8'
+    }
+    [pscustomobject]@{
+        Address = '0049373e'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/49/CEngineInternalPrimitiveBase_AddChildPrimitive_0049373e.cpp'
+        TestSource = '00/49/CEngineInternalPrimitiveBase_AddChildPrimitive_0049373e_test.cpp'
+        PassPattern = 'OK_0x0049373e'
+    }
+    [pscustomobject]@{
+        Address = '00497890'
+        Module = '_global'
+        Source = '00/49/global_GFROR13_00497890.cpp'
+        TestSource = '00/49/global_GFROR13_00497890_test.cpp'
+        PassPattern = 'OK_0x00497890'
+    }
+    [pscustomobject]@{
+        Address = '0049c770'
+        Module = 'CVertexBufferWin32'
+        Source = '00/49/CVertexBufferWin32_DoSizeof_0049c770.cpp'
+        TestSource = '00/49/CVertexBufferWin32_DoSizeof_0049c770_test.cpp'
+        PassPattern = 'OK_0x0049c770'
+    }
+    [pscustomobject]@{
+        Address = '0049c7a0'
+        Module = 'CThingSearchTools'
+        Source = '00/49/CThingSearchTools_CThingSearchTools_0049c7a0.cpp'
+        TestSource = '00/49/CThingSearchTools_CThingSearchTools_0049c7a0_test.cpp'
+        PassPattern = 'OK_0x0049c7a0'
+    }
+    [pscustomobject]@{
+        Address = '0049c9b0'
+        Module = 'CTCCoopSpirit'
+        Source = '00/49/CTCCoopSpirit_ApplyMovementVector_0049c9b0.cpp'
+        TestSource = '00/49/CTCCoopSpirit_ApplyMovementVector_0049c9b0_test.cpp'
+        PassPattern = 'OK_0x0049c9b0'
+    }
+    [pscustomobject]@{
+        Address = '0049d870'
+        Module = '_global'
+        Source = '00/49/global_GFGetPreMainMemoryUsed_0049d870.cpp'
+        TestSource = '00/49/global_GFGetPreMainMemoryUsed_0049d870_test.cpp'
+        PassPattern = 'OK_0x0049d870'
+    }
+    [pscustomobject]@{
+        Address = '0049bb30'
+        Module = 'CGameJoystickManager'
+        Source = '00/49/CGameJoystickManager_SetMainPlayerJoystickDeviceNumber_0049bb30.cpp'
+        TestSource = '00/49/CGameJoystickManager_SetMainPlayerJoystickDeviceNumber_0049bb30_test.cpp'
+        PassPattern = 'OK_0x0049bb30'
+    }
+    [pscustomobject]@{
+        Address = '0049cf80'
+        Module = 'CNearestBuildingWithProperty'
+        Source = '00/49/CNearestBuildingWithProperty_CNearestBuildingWithProperty_0049cf80.cpp'
+        TestSource = '00/49/CNearestBuildingWithProperty_CNearestBuildingWithProperty_0049cf80_test.cpp'
+        PassPattern = 'OK_0x0049cf80'
+    }
 )
 
 $requestedAddresses = @(
