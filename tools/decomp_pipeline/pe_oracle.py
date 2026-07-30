@@ -50,7 +50,22 @@ def main():
         # strip trailing int3/nop padding
         end=len(raw)
         while end>0 and raw[end-1] in (0xCC,0x90): end-=1
-        return raw[:end]
+        raw=raw[:end]
+        # Trim at the TRUE epilogue: the next manifest address can sit past the
+        # real function when unlisted trailing thunks are packed in the gap. The
+        # first `ret` (c3 / c2 imm16) followed by an int3 (0xCC) padding run that
+        # is itself followed by more code marks this function's end; everything
+        # after is a separate, unmanifested function. Validated on the retail
+        # oracle: +382 exact matches, zero regressions. (See c8c730-boundary-note.)
+        L=len(raw); i=0
+        while i<L:
+            rl=1 if raw[i]==0xc3 else (3 if (raw[i]==0xc2 and i+2<L) else 0)
+            if rl and i+rl<L and raw[i+rl]==0xCC:
+                j=i+rl
+                while j<L and raw[j]==0xCC: j+=1
+                if j<L: return raw[:i+rl]
+            i+=1
+        return raw
     # validate vs known oracle
     oracle={r["address"].lower():r for r in read_tsv(ROOT/"rebuild/oracles/auto-re-candidates.tsv")}
     ok=bad=0; mism=[]

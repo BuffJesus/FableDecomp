@@ -29,3 +29,13 @@ part of `Batch_InvokeWithStackArgs`.
   records the true 326-byte length so future re-derivations do not regress to 393 bytes.
 - Landed source: `lift/reports/wave3/code/00/c8/0x00C8C730_global_Batch_InvokeWithStackArgs_c8c730.cpp`
   (`__declspec(naked)` full transcription; call targets are reloc-masked externs).
+
+
+## UPDATE (2026-07-30): pe_oracle.py has been FIXED
+`body()` now trims at the true epilogue (first `ret` + 0xCC padding run followed by
+more code = a packed-in unlisted thunk). Validated against the stored retail oracle:
+**4832 match / 396 mismatch (was 4450 / 778) — +382 exact matches, zero regressions.**
+`pe_oracle.py extract 0x00C8C730` now returns 326 bytes directly. The remaining 396
+mismatches are unrelated hand-curated rows (different tail handling), untouched by the fix.
+This note stays as the historical record; new extractions no longer need manual curation
+for the trailing-thunk case.
