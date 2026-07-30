@@ -37833,6 +37833,69 @@ $catalog = @(
         TestSource = '00/4b/global_SetCurrentThingManager_004bbfc0_test.cpp'
         PassPattern = 'OK_0x004bbfc0'
     }
+    [pscustomobject]@{
+        Address = '004c73d0'
+        Module = 'CVertexBufferWin32'
+        Source = '00/4c/CVertexBufferWin32_DoSizeof_004c73d0.cpp'
+        TestSource = '00/4c/CVertexBufferWin32_DoSizeof_004c73d0_test.cpp'
+        PassPattern = 'OK_0x004c73d0'
+    }
+    [pscustomobject]@{
+        Address = '004c7440'
+        Module = 'CTCPhysicsNavigator'
+        Source = '00/4c/CTCPhysicsNavigator_EnableNavigator_004c7440.cpp'
+        TestSource = '00/4c/CTCPhysicsNavigator_EnableNavigator_004c7440_test.cpp'
+        PassPattern = 'OK_0x004c7440'
+    }
+    [pscustomobject]@{
+        Address = '004c7580'
+        Module = 'CThing'
+        Source = '00/4c/CThing_SetCurrentMapNumber_004c7580.cpp'
+        TestSource = '00/4c/CThing_SetCurrentMapNumber_004c7580_test.cpp'
+        PassPattern = 'OK_0x004c7580'
+    }
+    [pscustomobject]@{
+        Address = '004c7770'
+        Module = 'CThing'
+        Source = '00/4c/CThing_SetAsGameStatePersisted_004c7770.cpp'
+        TestSource = '00/4c/CThing_SetAsGameStatePersisted_004c7770_test.cpp'
+        PassPattern = 'OK_0x004c7770'
+    }
+    [pscustomobject]@{
+        Address = '004c7aa0'
+        Module = 'CViewBase'
+        Source = '00/4c/CViewBase_GetDisplayEngine_004c7aa0.cpp'
+        TestSource = '00/4c/CViewBase_GetDisplayEngine_004c7aa0_test.cpp'
+        PassPattern = 'OK_0x004c7aa0'
+    }
+    [pscustomobject]@{
+        Address = '004c7bd0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_IsForceNoSerialise_004c7bd0.cpp'
+        TestSource = '00/4c/CThing_IsForceNoSerialise_004c7bd0_test.cpp'
+        PassPattern = 'OK_0x004c7bd0'
+    }
+    [pscustomobject]@{
+        Address = '004c74f0'
+        Module = '_global'
+        Source = '00/4c/global_SetCurrentThingManager_004c74f0.cpp'
+        TestSource = '00/4c/global_SetCurrentThingManager_004c74f0_test.cpp'
+        PassPattern = 'OK_0x004c74f0'
+    }
+    [pscustomobject]@{
+        Address = '004c7590'
+        Module = 'CRenderTarget'
+        Source = '00/4c/CRenderTarget_DetachTarget_004c7590.cpp'
+        TestSource = '00/4c/CRenderTarget_DetachTarget_004c7590_test.cpp'
+        PassPattern = 'OK_0x004c7590'
+    }
+    [pscustomobject]@{
+        Address = '004c7e10'
+        Module = 'CThing'
+        Source = '00/4c/CThing_GetTypeName_004c7e10.cpp'
+        TestSource = '00/4c/CThing_GetTypeName_004c7e10_test.cpp'
+        PassPattern = 'OK_0x004c7e10'
+    }
 )
 
 $requestedAddresses = @(
