@@ -7959,6 +7959,26 @@
       "verdict": "PASS",
       "parity_status": "green",
       "timestamp": "2026-07-30T12:28:06"
+    },
+    "00448e90": {
+      "address": "0x00448E90",
+      "class_name": "",
+      "function_name": "Vector_InsertWithMove",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-30T14:20:08"
+    },
+    "00449050": {
+      "address": "0x00449050",
+      "class_name": "",
+      "function_name": "Vector_ReallocateAndFill",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-30T14:23:47"
     }
   },
   "runs": [
@@ -16661,6 +16681,26 @@
       "verdict": "PASS",
       "parity_status": "green",
       "timestamp": "2026-07-30T12:28:06"
+    },
+    {
+      "address": "0x00448E90",
+      "class_name": "",
+      "function_name": "Vector_InsertWithMove",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-30T14:20:08"
+    },
+    {
+      "address": "0x00449050",
+      "class_name": "",
+      "function_name": "Vector_ReallocateAndFill",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-30T14:23:47"
     }
   ]
 }
