@@ -1,6 +1,6 @@
 # Candidate signature audit
 
-Generated: `2026-07-30T15:18:01-06:00`
+Generated: `2026-07-30T15:47:57-06:00`
 
 Clean: **541 / 845**. Review required: **304**.
 

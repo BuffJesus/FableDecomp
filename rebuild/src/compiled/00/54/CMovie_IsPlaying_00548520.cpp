@@ -1,6 +1,11 @@
-#include "fable_video_system.h"
+// CMovie::IsPlaying @ 0x00548520
+// mov al, [ecx+0x15c]; ret
+struct CMovie {
+    char pad[0x15c];
+    unsigned char m_bIsPlaying;
+};
 
-bool CMovieRecoveredTail::IsPlaying() const
+unsigned char __fastcall IsPlaying(CMovie *this_)
 {
-    return isPlaying15C;
+    return this_->m_bIsPlaying;
 }

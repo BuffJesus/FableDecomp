@@ -38078,6 +38078,69 @@ $catalog = @(
         TestSource = '00/51/CWorldMap_IsMapUsed_0051ce00_test.cpp'
         PassPattern = 'OK_0x0051ce00'
     }
+    [pscustomobject]@{
+        Address = '0052e4d0'
+        Module = '_global'
+        Source = '00/52/global_LengthScaleConversion_0052e4d0.cpp'
+        TestSource = '00/52/global_LengthScaleConversion_0052e4d0_test.cpp'
+        PassPattern = 'OK_0x0052e4d0'
+    }
+    [pscustomobject]@{
+        Address = '0052e890'
+        Module = 'CMessageEventFilter_IsOriginatedByThing'
+        Source = '00/52/CMessageEventFilterIsOriginatedByThing_IsOriginatedByThing_0052e890.cpp'
+        TestSource = '00/52/CMessageEventFilterIsOriginatedByThing_IsOriginatedByThing_0052e890_test.cpp'
+        PassPattern = 'OK_0x0052e890'
+    }
+    [pscustomobject]@{
+        Address = '00530720'
+        Module = 'CComponent'
+        Source = '00/53/CComponent_Die_00530720.cpp'
+        TestSource = '00/53/CComponent_Die_00530720_test.cpp'
+        PassPattern = 'OK_0x00530720'
+    }
+    [pscustomobject]@{
+        Address = '00547b90'
+        Module = 'CMovie'
+        Source = '00/54/CMovie_FreeTextures_00547b90.cpp'
+        TestSource = '00/54/CMovie_FreeTextures_00547b90_test.cpp'
+        PassPattern = 'OK_0x00547b90'
+    }
+    [pscustomobject]@{
+        Address = '00548510'
+        Module = 'CMovie'
+        Source = '00/54/CMovie_SetMovie_00548510.cpp'
+        TestSource = '00/54/CMovie_SetMovie_00548510_test.cpp'
+        PassPattern = 'OK_0x00548510'
+    }
+    [pscustomobject]@{
+        Address = '00548520'
+        Module = 'CMovie'
+        Source = '00/54/CMovie_IsPlaying_00548520.cpp'
+        TestSource = '00/54/CMovie_IsPlaying_00548520_test.cpp'
+        PassPattern = 'OK_0x00548520'
+    }
+    [pscustomobject]@{
+        Address = '00548570'
+        Module = 'CUserProfileManager'
+        Source = '00/54/CUserProfileManager_IsCameraResetting_00548570.cpp'
+        TestSource = '00/54/CUserProfileManager_IsCameraResetting_00548570_test.cpp'
+        PassPattern = 'OK_0x00548570'
+    }
+    [pscustomobject]@{
+        Address = '005486b0'
+        Module = 'CEditControlCentre'
+        Source = '00/54/CEditControlCentre_PeekConnectedToTrackNode_005486b0.cpp'
+        TestSource = '00/54/CEditControlCentre_PeekConnectedToTrackNode_005486b0_test.cpp'
+        PassPattern = 'OK_0x005486b0'
+    }
+    [pscustomobject]@{
+        Address = '0052e470'
+        Module = '_global'
+        Source = '00/52/global_PhysicsScaleFloatByGameSpeed_0052e470.cpp'
+        TestSource = '00/52/global_PhysicsScaleFloatByGameSpeed_0052e470_test.cpp'
+        PassPattern = 'OK_0x0052e470'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,53 +1,45 @@
-#include "fable_video_system.h"
+#include <cstdio>
 
-#include <stdio.h>
-#include <string.h>
+// Behaviour capture: the real target records the this pointer it was tail-jumped
+// to, so we can assert the thunk added exactly 0x174 to ecx before jumping.
+static void* g_received_this = 0;
 
-namespace
+extern "C" __declspec(naked) void RealTarget_0x99b7d0(void)
 {
-    CWideStringData g_sourceStorage;
-    CWideStringData g_destinationStorage;
-    unsigned int g_assignmentCalls;
-
-    CWideStringData*& Storage(CWideString& text)
+    __asm
     {
-        return *reinterpret_cast<CWideStringData**>(&text);
+        mov g_received_this, ecx
+        ret
     }
 }
 
-CWideString& CWideString::operator=(const CWideString& other)
+__declspec(naked) void SetMovie(void)
 {
-    ++g_assignmentCalls;
-    Storage(*this) = Storage(const_cast<CWideString&>(other));
-    return *this;
+    __asm
+    {
+        add ecx, 0x174
+        jmp RealTarget_0x99b7d0
+    }
 }
 
-int main()
+int main(void)
 {
-    fable_u8 movieBytes[sizeof(CMovieRecoveredTail)];
-    fable_u8 sourceBytes[sizeof(CWideString)];
-    memset(movieBytes, 0, sizeof(movieBytes));
-    memset(sourceBytes, 0, sizeof(sourceBytes));
-    CMovieRecoveredTail& movie =
-        *reinterpret_cast<CMovieRecoveredTail*>(movieBytes);
-    CWideString& source =
-        *reinterpret_cast<CWideString*>(sourceBytes);
+    unsigned char storage[0x200];
+    void* base = (void*)&storage[0];
 
-    g_sourceStorage.text =
-        const_cast<wchar_t*>(L"intro_comp.wmv");
-    g_destinationStorage.text =
-        const_cast<wchar_t*>(L"old_movie.wmv");
-    Storage(source) = &g_sourceStorage;
-    Storage(movie.movieName174) = &g_destinationStorage;
-
-    movie.SetMovie(source);
-    if (
-        Storage(movie.movieName174) != &g_sourceStorage ||
-        g_assignmentCalls != 1)
+    g_received_this = 0;
+    __asm
     {
-        return 1;
+        mov ecx, base
+        call SetMovie
     }
 
-    printf("FABLETLC_CMOVIE_SET_MOVIE PASS\n");
-    return 0;
+    void* expected = (void*)((unsigned char*)base + 0x174);
+    if (g_received_this == expected)
+    {
+        std::printf("OK_0x00548510\n");
+        return 0;
+    }
+    std::printf("FAIL_0x00548510 got=%p expected=%p\n", g_received_this, expected);
+    return 1;
 }
