@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-07-28T22:48:53-06:00`
+Generated: `2026-07-29T22:12:07-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 
@@ -9,15 +9,15 @@ The order favors generated candidate clusters first, then extension of proven mo
 | Rank | Track | Module | Functions | Prototype gaps | Agent candidates | Verified lifts |
 |---:|---|---|---:|---:|---:|---:|
 | 1 | candidate-cluster | `CGameScriptInterface` | 953 | 5 | 440 | 0 |
-| 2 | candidate-cluster | `_global` | 11367 | 9368 | 261 | 0 |
+| 2 | candidate-cluster | `_global` | 11362 | 9365 | 268 | 0 |
 | 3 | candidate-cluster | `CMouseDX` | 24 | 0 | 14 | 10 |
 | 4 | candidate-cluster | `CScriptThing` | 103 | 2 | 15 | 0 |
 | 5 | candidate-cluster | `CMemoryAllocatorFixedSize` | 21 | 0 | 11 | 7 |
 | 6 | candidate-cluster | `CNavQuadTree` | 22 | 1 | 9 | 0 |
 | 7 | candidate-cluster | `CEngineLandscapePatch` | 28 | 2 | 9 | 0 |
 | 8 | candidate-cluster | `CEngineLandscapeRenderer` | 33 | 0 | 8 | 0 |
-| 9 | candidate-cluster | `CNetworkClient` | 6 | 0 | 5 | 0 |
-| 10 | candidate-cluster | `CMainGameComponent` | 63 | 1 | 5 | 0 |
+| 9 | candidate-cluster | `CMainGameComponent` | 64 | 1 | 6 | 0 |
+| 10 | candidate-cluster | `CNetworkClient` | 6 | 0 | 5 | 0 |
 | 11 | candidate-cluster | `CTCCoopSpirit` | 24 | 2 | 5 | 0 |
 | 12 | candidate-cluster | `CWorldMap` | 186 | 3 | 5 | 0 |
 | 13 | candidate-cluster | `CEngineLandscapeMap` | 19 | 0 | 4 | 0 |
@@ -40,21 +40,21 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 
 | Rank | Address | Module | Retail bytes | Candidate bytes | Blocker |
 |---:|---|---|---:|---:|---|
-| 1 | `00434dc0` | `_global` | 0 | 55 |  |
-| 2 | `00434dd0` | `_global` | 0 | 63 |  |
+| 1 | `00434dc0` | `_global` | 0 | 53 |  |
+| 2 | `00434dd0` | `_global` | 0 | 60 |  |
 | 3 | `00c9cb60` | `_global` | 0 | 93 |  |
-| 4 | `0041c780` | `_global` | 0 | 128 |  |
-| 5 | `0042a59e` | `_global` | 0 | 137 | 'RBTree__GetMaxNode' was not declared in this scope |
-| 6 | `0042a5c0` | `_global` | 0 | 137 | 'RBTree__GetMaxNode' was not declared in this scope |
-| 7 | `0042b687` | `_global` | 0 | 137 | 'LinkedList_Insert_Before' was not declared in this scope |
-| 8 | `0042ac52` | `_global` | 0 | 140 |  |
-| 9 | `0042ac9f` | `_global` | 0 | 140 |  |
-| 10 | `0042ad10` | `_global` | 0 | 144 |  |
-| 11 | `0043006f` | `_global` | 0 | 151 |  |
-| 12 | `0042acec` | `_global` | 0 | 180 |  |
-| 13 | `00415fd3` | `_global` | 0 | 185 |  |
-| 14 | `00430022` | `_global` | 0 | 191 |  |
-| 15 | `0043f510` | `_global` | 0 | 203 |  |
+| 4 | `0041c780` | `_global` | 0 | 123 |  |
+| 5 | `0042a59e` | `_global` | 0 | 133 | 'RBTree__GetMaxNode' was not declared in this scope |
+| 6 | `0042a5c0` | `_global` | 0 | 133 | 'RBTree__GetMaxNode' was not declared in this scope |
+| 7 | `0042b687` | `_global` | 0 | 134 | 'LinkedList_Insert_Before' was not declared in this scope |
+| 8 | `0042ac52` | `_global` | 0 | 135 |  |
+| 9 | `0042ac9f` | `_global` | 0 | 135 |  |
+| 10 | `0042ad10` | `_global` | 0 | 139 |  |
+| 11 | `0043006f` | `_global` | 0 | 144 |  |
+| 12 | `0042acec` | `_global` | 0 | 172 |  |
+| 13 | `00415fd3` | `_global` | 0 | 180 |  |
+| 14 | `00430022` | `_global` | 0 | 183 |  |
+| 15 | `0043f510` | `_global` | 0 | 194 |  |
 
 ## First function queue
 

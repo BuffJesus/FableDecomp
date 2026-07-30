@@ -73,6 +73,19 @@ void FABLE_FASTCALL FableConstructWideString(CWideString* value)
     new (value) CWideString;
 }
 
+void FABLE_FASTCALL FableConstructCharString(CCharString* value)
+{
+    new (value) CCharString;
+}
+
+const CWideString& FABLE_FASTCALL FableAssignWideString(
+    CWideString* value,
+    void*,
+    const wchar_t* text)
+{
+    return *value = text;
+}
+
 void CRegionDef::ConstructStorage()
 {
     Record(kRegionConstructed, this, L'\0');

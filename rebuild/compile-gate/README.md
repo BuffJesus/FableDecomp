@@ -1,13 +1,13 @@
 # Auto-RE candidate compile gate
 
-Generated: `2026-07-28T22:48:06-06:00`
+Generated: `2026-07-29T21:34:49-06:00`
 
 | Gate | Passing | Total |
 |---|---:|---:|
-| Source integrity | 832 | 832 |
-| 32-bit host C++20 syntax | 389 | 832 |
-| No detected VC7.1 language blockers | 67 | 832 |
-| Ready for VC7.1 module compilation | 41 | 832 |
+| Source integrity | 840 | 840 |
+| 32-bit host C++20 syntax | 394 | 840 |
+| No detected VC7.1 language blockers | 67 | 840 |
+| Ready for VC7.1 module compilation | 41 | 840 |
 
 A checker PASS is not a compiler PASS. The host syntax gate supplies only standard-library and calling-convention compatibility; missing engine declarations must be resolved through real module headers.
 
@@ -25,9 +25,9 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 | `C2DVector` | 13 |
 | `ETCInterfaceType` | 12 |
 | `CMouseDX` | 12 |
+| `self` | 11 |
 | `CKeyPairCompareLess` | 11 |
 | `CMemoryAllocatorFixedSize` | 11 |
-| `self` | 10 |
 | `CScriptThing` | 10 |
 | `CNavQuadTree` | 10 |
 | `CWideString` | 9 |

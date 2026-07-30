@@ -15,13 +15,16 @@ long FABLE_FASTCALL FableRunGFMainPhase1(char* /* commandLine */)
         sizeof(kParseCommandLineProfile) - 1);
     NProfileTimer::StartProfile(profile, 0);
 
-    CSystemManagerInit systemManagerInit;
+    // Retail keeps this owner alive through Phase 9 system initialization.
+    // The authored accessor gives the split phase units that shared lifetime.
+    FableGetSystemManagerInitBoundary();
 
     CWideString projectPath = CAFile::GetProjectPath();
     CAFile::SetCurrentPath(projectPath);
 
-    // The registrar is kept visible as a boundary rather than replaced with
-    // thousands of guessed calls. Phase 2 can proceed once this returns.
+    // The exact 4,158-byte registrar is parity/behavior-gated independently.
+    // Stage 2 keeps its execution boundary until the recovered console object
+    // model is linked into the authored runtime.
     FableInitialiseConsoleVariablesBoundary();
     return 0;
 }

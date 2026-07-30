@@ -57,6 +57,7 @@ def main() -> int:
         objdump,
         args.object.resolve(),
         oracle["name"],
+        len(retail),
     )
     relocations = object_relocations(objdump, args.object.resolve(), section)
 

@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-07-28T22:48:52-06:00",
-  "candidates": 832,
+  "generated_at": "2026-07-29T22:12:07-06:00",
+  "candidates": 840,
   "pass": 541,
-  "review": 291,
+  "review": 299,
   "issue_counts": {
-    "explicit-parameter-count-mismatch": 261,
-    "return-shape-mismatch": 87,
-    "method-name-mismatch": 38,
-    "duplicate-linkage-signature": 38,
-    "definition-not-parsed": 12,
+    "explicit-parameter-count-mismatch": 267,
+    "return-shape-mismatch": 88,
+    "method-name-mismatch": 40,
+    "duplicate-linkage-signature": 40,
+    "definition-not-parsed": 13,
     "owner-mismatch": 8
   }
 }

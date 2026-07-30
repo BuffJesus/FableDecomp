@@ -1,17 +1,20 @@
 # Active task list — decomp, frontend parity, and downstream tools
 
-*Refreshed 2026-07-28 from the canonical rebuild and visual parity gates.*
+*Refreshed 2026-07-29 from the canonical rebuild and visual parity gates.*
 
 ## Current verified state
 
-- Curated reconstruction: **5,051 / 5,051** VC7.1 compile + behavior PASS.
-- Whole-project verified functional or matching C++: **4,736 / 49,568**
-  (**9.55%**), including **2,705 byte-identical** functions (**5.46%**).
-- Candidate retail parity: **4,718**
-  (`2,689 EXACT + 2,029 RELOCATION_MATCH`), with `205 DIFFER` and
+- Curated reconstruction: **5,355 / 5,355** VC7.1 compile + behavior PASS.
+- Whole-project verified functional or matching C++: **5,205 / 49,568**
+  (**10.50%**), including **2,900 byte-identical** functions (**5.85%**).
+- Candidate retail parity: **5,187**
+  (`2,884 EXACT + 2,303 RELOCATION_MATCH`), with `40 DIFFER` and
   `128 ORACLE_MISSING`; the whole-project totals additionally include 18
   independently lifted matching/functional functions.
-- Auto-RE intake: **803 generated / 788 structural PASS**.
+- Auto-RE intake: **840 generated / 825 structural PASS**.
+- GFMain evidence/control-flow closure: **257 / 257 direct calls** and
+  **10 / 10 authored phases**; the separate modern C++23 startup pass remains
+  **0 / 10 phases**.
 - Durable source/tests are address-sharded and indexed by `rebuild/ARTIFACT_INDEX.tsv`.
 - Custom quest assets are staged offline: nine card defs, 36 custom English strings,
   and one childhood mysterious-NPC TNG addition. Nothing has been deployed to the live game.
@@ -264,8 +267,21 @@ Next work, in order:
 5. Move from precomposed 640×480 sheets toward live retail component rendering:
    sprite tables, text components, state transitions, alpha/color inheritance,
    and UI scaling should be emitted through the recovered Render2D path.
-6. Continue the runnable boundary through the remaining GFMain Phase 3 calls
-   while keeping the frontend checkpoint available as a fast visual gate.
+6. Replace the remaining dependency boundaries inside the now-callable full
+   GFMain coordinator. Phase 10's `CWideString::operator!=` and complete
+   registry constructor/write/destructor closure are now exact, independently
+   behavior-gated leaves. The former render-manager startup-line call is now
+   correctly identified and exact as `CUserProfileManager::SetProfileName`,
+   its counted singleton getter is exact as well, and the former destructor
+   collision is now exact `GFUninitialise`. `CGame::Play` and its ownership
+   graph are exact as well, alongside the full `GFHandleSystemInitError`
+   dispatcher. All ten phases execute in Stage 3; Phase 10 is now 21/21
+   direct calls proven. Phase 7's final ownership-heavy `GetWindowTitle` leaf
+   is exact too, raising that phase to 15/15. Exact CIME initialization raises
+   Phase 9's exact CIME and LUG-to-MET coordinators raise it to 10/11 and
+   GFMain to 218/257 overall after exact Phase 8 configuration cleanup.
+   `CSystemManager::Initialise` is Phase 9's final edge.
+   The frontend checkpoint remains a fast visual gate.
 
 Acceptance: decoded layout values and runtime hit regions share one oracle;
 headers and row text are centered by recovered transforms/metrics; every visible

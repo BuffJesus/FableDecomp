@@ -16,9 +16,9 @@ static fable_u8 g_SystemManager[0x64];
 static fable_u8 g_RenderSystem[0x0C];
 static fable_u8 g_StateManager[0x3600];
 
-void* FABLE_FASTCALL GFGetSystemManager()
+CSystemManager* FABLE_FASTCALL GFGetSystemManager()
 {
-    return g_SystemManager;
+    return reinterpret_cast<CSystemManager*>(g_SystemManager);
 }
 
 static const fable_u32 g_StateOffsets[17] = {

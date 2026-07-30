@@ -15,7 +15,9 @@ from pathlib import Path
 
 RELOCATION_LINE = re.compile(r"^([0-9a-fA-F]{8})\s+\S+\s+.+$")
 DISASM_SYMBOL = re.compile(r"^\s*[0-9a-fA-F]+\s+<(.+)>:$")
-DISASM_BYTES = re.compile(r"^\s*[0-9a-fA-F]+:\s+((?:[0-9a-fA-F]{2}\s+)+)")
+DISASM_BYTES = re.compile(
+    r"^\s*([0-9a-fA-F]+):\s+((?:[0-9a-fA-F]{2}\s+)+)"
+)
 CACHE_VERSION = 1
 
 
@@ -24,29 +26,57 @@ def read_tsv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(stream, delimiter="\t"))
 
 
-def object_text(objdump: str, path: Path, expected_name: str) -> tuple[bytes, int, str]:
+def object_text(
+    objdump: str,
+    path: Path,
+    expected_name: str,
+    expected_size: int | None = None,
+) -> tuple[bytes, int, str]:
     process = subprocess.run([objdump, "-d", str(path)], capture_output=True, text=True, check=True)
     functions: list[dict[str, object]] = []
+    section_bytes: list[dict[int, int]] = []
     section_index = -1
     current: dict[str, object] | None = None
     for line in process.stdout.splitlines():
         if line.startswith("Disassembly of section .text:"):
             section_index += 1
+            section_bytes.append({})
             current = None
             continue
         symbol = DISASM_SYMBOL.match(line)
         if symbol:
-            current = {"symbol": symbol.group(1), "section": section_index, "bytes": bytearray()}
+            current = {
+                "symbol": symbol.group(1),
+                "section": section_index,
+                "start": int(line.split()[0], 16),
+                "bytes": bytearray(),
+            }
             functions.append(current)
             continue
         encoded = DISASM_BYTES.match(line)
         if encoded and current is not None:
-            current["bytes"].extend(bytes.fromhex(encoded.group(1)))
+            offset = int(encoded.group(1), 16)
+            payload = bytes.fromhex(encoded.group(2))
+            current["bytes"].extend(payload)
+            section_bytes[section_index].update(
+                (offset + index, value)
+                for index, value in enumerate(payload)
+            )
     if not functions:
         raise RuntimeError(f"no disassembled functions in {path}")
     leaf = expected_name.rsplit("::", 1)[-1].lstrip("~")
     named = [item for item in functions if leaf and leaf in str(item["symbol"])]
     selected = max(named or functions, key=lambda item: len(item["bytes"]))
+    if expected_size is not None:
+        start = int(selected["start"])
+        byte_map = section_bytes[int(selected["section"])]
+        sliced = bytes(
+            byte_map[index]
+            for index in range(start, start + expected_size)
+            if index in byte_map
+        )
+        if len(sliced) == expected_size:
+            return sliced, int(selected["section"]), str(selected["symbol"])
     return bytes(selected["bytes"]), int(selected["section"]), str(selected["symbol"])
 
 
@@ -196,7 +226,7 @@ def main() -> int:
             continue
         retail = bytes.fromhex(oracle["bytes"])
         built, selected_section, selected_symbol = object_text(
-            objdump, object_path, oracle["name"]
+            objdump, object_path, oracle["name"], len(retail)
         )
         relocations = object_relocations(objdump, object_path, selected_section)
         normalized_retail = mask_relocations(retail, relocations)

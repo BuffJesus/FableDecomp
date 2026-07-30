@@ -1,16 +1,16 @@
 # Candidate signature audit
 
-Generated: `2026-07-28T22:48:52-06:00`
+Generated: `2026-07-29T22:12:07-06:00`
 
-Clean: **541 / 832**. Review required: **291**.
+Clean: **541 / 840**. Review required: **299**.
 
 | Issue | Candidates |
 |---|---:|
-| `explicit-parameter-count-mismatch` | 261 |
-| `return-shape-mismatch` | 87 |
-| `method-name-mismatch` | 38 |
-| `duplicate-linkage-signature` | 38 |
-| `definition-not-parsed` | 12 |
+| `explicit-parameter-count-mismatch` | 267 |
+| `return-shape-mismatch` | 88 |
+| `method-name-mismatch` | 40 |
+| `duplicate-linkage-signature` | 40 |
+| `definition-not-parsed` | 13 |
 | `owner-mismatch` | 8 |
 
 ## Review queue
@@ -19,8 +19,7 @@ Clean: **541 / 832**. Review required: **291**.
 |---|---|---|---|---|
 | `00401356` | `_global` | `initterm` | `initterm` | explicit-parameter-count-mismatch |
 | `004013de` | `_global` | `__dllonexit` | `__dllonexit` | explicit-parameter-count-mismatch |
-| `00401c00` | `_global` | `GFHandleSystemInitError` | `GFHandleSystemInitError` | explicit-parameter-count-mismatch |
-| `00402130` | `_global` | `MyDocuments_CheckWritePermissions` | `MyDocuments_CheckWritePermissions` | explicit-parameter-count-mismatch |
+| `00402130` | `_global` | `FableCheckMyDocumentsWritePermissions_00402130` | `MyDocuments_CheckWritePermissions` | method-name-mismatch |
 | `004022b0` | `_global` | `GFInitialise` | `GFInitialise` | explicit-parameter-count-mismatch |
 | `00403480` | `_global` | `WinMain` | `_WinMain_16` | method-name-mismatch |
 | `00404690` | `_global` | `std_list_node_Init` | `std_list_node_Init` | explicit-parameter-count-mismatch |
@@ -59,6 +58,7 @@ Clean: **541 / 832**. Review required: **291**.
 | `00415fd3` | `_global` | `DivideByGameSpeed` | `DivideByGameSpeed` | explicit-parameter-count-mismatch |
 | `0041641f` | `_global` | `CMainGameComponent_ChangeDisplayMode` | `CMainGameComponent_ChangeDisplayMode` | explicit-parameter-count-mismatch |
 | `00417a58` | `_global` | `CMainGameComponent_InitSoundBanks` | `CMainGameComponent_InitSoundBanks` | explicit-parameter-count-mismatch |
+| `00418c3b` | `CMainGameComponent` | `CMainGameComponent::GenerateMetFilesFromLugFiles` | `` | definition-not-parsed |
 | `00419f50` | `_global` | `Vector_FromRange` | `Vector_FromRange` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `0041c090` | `_global` | `CGraphicFrameData_ReleaseReference` | `defined` | method-name-mismatch;explicit-parameter-count-mismatch |
 | `0041c780` | `_global` | `__EH_epilog3` | `__EH_epilog3` | explicit-parameter-count-mismatch |
@@ -222,6 +222,14 @@ Clean: **541 / 832**. Review required: **291**.
 | `00443d70` | `_global` | `EventConversation_Destructor` | `EventConversation_Destructor` | explicit-parameter-count-mismatch |
 | `00443e20` | `_global` | `TextureCache_Destructor` | `TextureCache_Destructor` | explicit-parameter-count-mismatch |
 | `00444e10` | `_global` | `CGuiControlTreePane_Destructor_4` | `CGuiControlTreePane_Destructor_4` | explicit-parameter-count-mismatch |
+| `00444e50` | `_global` | `CGuiControlTreePane_Destructor_5` | `CGuiControlTreePane_Destructor_5` | explicit-parameter-count-mismatch |
+| `00444ed0` | `_global` | `AsyncData_Destructor` | `AsyncData_Destructor` | explicit-parameter-count-mismatch |
+| `00446b40` | `_global` | `VectorMap_LookupValue` | `VectorMap_LookupValue` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00446b90` | `_global` | `VectorMap_LookupValue` | `VectorMap_LookupValue` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00446d10` | `_global` | `ProcessCombatInput_MapInputsToActions` | `ProcessCombatInput_MapInputsToActions` | explicit-parameter-count-mismatch |
+| `00447390` | `_global` | `Catch@0040d959` | `Catch_0040d959` | method-name-mismatch;explicit-parameter-count-mismatch |
+| `00448520` | `_global` | `Vector_DestroyRange` | `Vector_DestroyRange` | explicit-parameter-count-mismatch |
+| `00448ab0` | `_global` | `Heap_SiftDown_ContainmentVolume` | `Heap_SiftDown_ContainmentVolume` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aa9e0` | `CScriptThing` | `CScriptThing::GetCurrentMapName` | `GetCurrentMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aaa10` | `CScriptThing` | `CScriptThing::GetHomeMapName` | `GetHomeMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004abe60` | `CScriptThing` | `CScriptThing::MsgWhoKilledMe` | `` | definition-not-parsed |

@@ -7,9 +7,9 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 0040138c	_global	__SEH_prolog	PASS	_global	__SEH_prolog	void	"extern ""C"" void __cdecl"	2	2		PASS	
 004013c7	_global	__SEH_epilog	PASS	_global	__SEH_epilog	void	"extern ""C"" void __cdecl"	0	0		PASS	
 004013de	_global	__dllonexit	PASS	_global	__dllonexit	_onexit_t	"extern ""C"" void __cdecl"	3	0		REVIEW	explicit-parameter-count-mismatch
-00401c00	_global	GFHandleSystemInitError	PASS	_global	GFHandleSystemInitError	undefined	"extern ""C"" void __stdcall"	0	1		REVIEW	explicit-parameter-count-mismatch
+00401c00	_global	GFHandleSystemInitError	PASS	_global	GFHandleSystemInitError	void	"extern ""C"" void __stdcall"	1	1		PASS	
 00401f30	_global	GFGetBuildNumber2	PASS	_global	GFGetBuildNumber2	void	"extern ""C"" void __cdecl"	0	0		PASS	
-00402130	_global	MyDocuments_CheckWritePermissions	PASS	_global	MyDocuments_CheckWritePermissions	undefined	"extern ""C"" std::uint32_t __thiscall"	0	1		REVIEW	explicit-parameter-count-mismatch
+00402130	_global	FableCheckMyDocumentsWritePermissions_00402130	PASS	_global	MyDocuments_CheckWritePermissions	unsigned long	"extern ""C"" std::uint32_t __thiscall"	1	1		REVIEW	method-name-mismatch
 004022b0	_global	GFInitialise	PASS	_global	GFInitialise	bool	std::uint32_t __thiscall	0	2		REVIEW	explicit-parameter-count-mismatch
 00403480	_global	WinMain	PASS	_global	_WinMain_16	int	"extern ""C"" std::int32_t __stdcall"	4	4		REVIEW	method-name-mismatch
 00403c60	_global	MemCmp_Unsigned16	PASS	_global	MemCmp_Unsigned16	int	int __cdecl	3	3		PASS	
@@ -61,7 +61,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00416670	CMainGameComponent	ProcessEventPackage	PASS	CMainGameComponent	ProcessEventPackage	void	void	1	1		PASS	
 0041726d	CMainGameComponent	UpdateFromEventPackageSet	PASS	CMainGameComponent	UpdateFromEventPackageSet	void	void	1	1		PASS	
 00417a58	_global	CMainGameComponent_InitSoundBanks	FAIL	_global	CMainGameComponent_InitSoundBanks	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
-00418c3b	_global	GFMain_ProcessSaveFileMetadata	PASS	_global	GFMain_ProcessSaveFileMetadata	undefined	void	0	0		PASS	
+00418c3b	CMainGameComponent	CMainGameComponent::GenerateMetFilesFromLugFiles	PASS			void		0	-1		REVIEW	definition-not-parsed
 00419f50	_global	Vector_FromRange	PASS	_global	Vector_FromRange	undefined	U32Vector* __thiscall	0	2		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
 0041c090	_global	CGraphicFrameData_ReleaseReference	PASS	_global	defined	undefined	#if	0	1		REVIEW	method-name-mismatch;explicit-parameter-count-mismatch
 0041c780	_global	__EH_epilog3	PASS	_global	__EH_epilog3	undefined	void __thiscall	0	2		REVIEW	explicit-parameter-count-mismatch
@@ -225,6 +225,14 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00443d70	_global	EventConversation_Destructor	PASS	_global	EventConversation_Destructor	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
 00443e20	_global	TextureCache_Destructor	PASS	_global	TextureCache_Destructor	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
 00444e10	_global	CGuiControlTreePane_Destructor_4	PASS	_global	CGuiControlTreePane_Destructor_4	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
+00444e50	_global	CGuiControlTreePane_Destructor_5	PASS	_global	CGuiControlTreePane_Destructor_5	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
+00444ed0	_global	AsyncData_Destructor	PASS	_global	AsyncData_Destructor	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
+00446b40	_global	VectorMap_LookupValue	PASS	_global	VectorMap_LookupValue	undefined	std::uint32_t __thiscall	0	3	00446b40;00446b90	REVIEW	explicit-parameter-count-mismatch;duplicate-linkage-signature
+00446b90	_global	VectorMap_LookupValue	PASS	_global	VectorMap_LookupValue	undefined	std::uint32_t __thiscall	0	3	00446b40;00446b90	REVIEW	explicit-parameter-count-mismatch;duplicate-linkage-signature
+00446d10	_global	ProcessCombatInput_MapInputsToActions	PASS	_global	ProcessCombatInput_MapInputsToActions	undefined	std::uint32_t __thiscall	0	2		REVIEW	explicit-parameter-count-mismatch
+00447390	_global	Catch@0040d959	PASS	_global	Catch_0040d959	undefined	void __fastcall	0	1		REVIEW	method-name-mismatch;explicit-parameter-count-mismatch
+00448520	_global	Vector_DestroyRange	PASS	_global	Vector_DestroyRange	undefined	void	0	4		REVIEW	explicit-parameter-count-mismatch
+00448ab0	_global	Heap_SiftDown_ContainmentVolume	PASS	_global	Heap_SiftDown_ContainmentVolume	undefined	CCountedPointer_CContainmentVolume_* __fastcall	0	5		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
 00449b60	CPlayerManager	GetMultiplayerColour	PASS	CPlayerManager	GetMultiplayerColour	CRGBColour	CRGBColour	1	1		PASS	
 00449d20	CPlayerManager	IsMultiplayerGameActive	PASS	CPlayerManager	IsMultiplayerGameActive	bool	bool	0	0		PASS	
 004aa890	CScriptThing	CScriptThing::IsDead	PASS	CScriptThing	IsDead	bool	bool	0	0		PASS	

@@ -1,6 +1,7 @@
 import unittest
 
 from tools.update_readme_progress import (
+    replace_snapshot_row,
     replace_summary_denominator,
     verified_public_counts,
 )
@@ -53,6 +54,36 @@ class VerifiedPublicCountsTests(unittest.TestCase):
                 "49,568-function catalog."
             ),
         )
+
+    def test_updates_two_column_snapshot_row(self):
+        original = (
+            "| Snapshot | Current result |\n"
+            "|---|---:|\n"
+            "| Verified functional or matching reconstruction | "
+            "**4,984 · 10.05%** |\n"
+        )
+        self.assertEqual(
+            replace_snapshot_row(
+                original,
+                "Verified functional or matching reconstruction",
+                "**5,205 · 10.50%**",
+            ),
+            (
+                "| Snapshot | Current result |\n"
+                "|---|---:|\n"
+                "| Verified functional or matching reconstruction | "
+                "**5,205 · 10.50%** |\n"
+            ),
+        )
+
+    def test_rejects_missing_snapshot_row(self):
+        with self.assertRaisesRegex(
+                RuntimeError, "snapshot row not found exactly once"):
+            replace_snapshot_row(
+                "| Snapshot | Current result |\n",
+                "Byte-identical reconstruction",
+                "**2,900 · 5.85%**",
+            )
 
 
 if __name__ == "__main__":

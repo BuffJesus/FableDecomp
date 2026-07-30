@@ -24,6 +24,18 @@ def replace_row(text: str, label: str, value: str) -> str:
     return updated
 
 
+def replace_snapshot_row(text: str, label: str, value: str) -> str:
+    pattern = re.compile(
+        rf"(?m)^(\|\s*{re.escape(label)}\s*\|\s*)[^|]+(\|)$"
+    )
+    updated, count = pattern.subn(rf"\g<1>{value} \g<2>", text)
+    if count != 1:
+        raise RuntimeError(
+            f"README snapshot row not found exactly once: {label!r}"
+        )
+    return updated
+
+
 def read_tsv(path: Path) -> list[dict[str, str]]:
     with path.open(encoding="utf-8-sig", newline="") as handle:
         return list(csv.DictReader(handle, delimiter="\t"))
@@ -113,15 +125,31 @@ def main() -> int:
     proven_calls = sum(
         row.get("validated_grade") in matching_grades for row in gfmain_calls
     )
-    phase3_calls = [row for row in gfmain_calls if row.get("phase") == "3"]
-    phase3_proven = sum(
-        row.get("validated_grade") in matching_grades for row in phase3_calls
+    current_phase = len(gfmain_phases)
+    current_phase_calls = [
+        row
+        for row in gfmain_calls
+        if row.get("phase") == str(current_phase)
+    ]
+    current_phase_proven = sum(
+        row.get("validated_grade") in matching_grades
+        for row in current_phase_calls
     )
     authored_phases = sum(
         (root / "rebuild" / "integration" / f"gfmain_phase{phase}.cpp").exists()
         for phase in range(1, len(gfmain_phases) + 1)
     )
 
+    snapshot_values = {
+        "Catalogued retail functions": f"**{total:,}**",
+        "Verified functional or matching reconstruction": (
+            f"**{verified:,} · {percentage(verified, total, 2)}**"
+        ),
+        "Byte-identical reconstruction": (
+            f"**{byte_identical:,} · "
+            f"{percentage(byte_identical, total, 2)}**"
+        ),
+    }
     values = {
         "Functions catalogued": f"**{total:,}**",
         "Mechanically named (no `FUN_*`)": percentage(
@@ -163,13 +191,15 @@ def main() -> int:
             f"**{authored_phases} / {len(gfmain_phases)}** "
             f"({percentage(authored_phases, len(gfmain_phases), 2)})"
         ),
-        "Current Phase 3 direct calls proven": (
-            f"**{phase3_proven} / {len(phase3_calls)}** "
-            f"({percentage(phase3_proven, len(phase3_calls), 2)})"
+        f"Current Phase {current_phase} direct calls proven": (
+            f"**{current_phase_proven} / {len(current_phase_calls)}** "
+            f"({percentage(current_phase_proven, len(current_phase_calls), 2)})"
         ),
     }
 
     text = readme.read_text(encoding="utf-8")
+    for label, value in snapshot_values.items():
+        text = replace_snapshot_row(text, label, value)
     for label, value in values.items():
         text = replace_row(text, label, value)
 

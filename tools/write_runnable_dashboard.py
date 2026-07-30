@@ -85,6 +85,34 @@ def main() -> int:
     phase3_proven = sum(
         row.get("validated_grade") in matching_grades for row in phase3_calls
     )
+    phase4_calls = [row for row in gfmain_calls if row.get("phase") == "4"]
+    phase4_proven = sum(
+        row.get("validated_grade") in matching_grades for row in phase4_calls
+    )
+    phase5_calls = [row for row in gfmain_calls if row.get("phase") == "5"]
+    phase5_proven = sum(
+        row.get("validated_grade") in matching_grades for row in phase5_calls
+    )
+    phase6_calls = [row for row in gfmain_calls if row.get("phase") == "6"]
+    phase6_proven = sum(
+        row.get("validated_grade") in matching_grades for row in phase6_calls
+    )
+    phase7_calls = [row for row in gfmain_calls if row.get("phase") == "7"]
+    phase7_proven = sum(
+        row.get("validated_grade") in matching_grades for row in phase7_calls
+    )
+    phase8_calls = [row for row in gfmain_calls if row.get("phase") == "8"]
+    phase8_proven = sum(
+        row.get("validated_grade") in matching_grades for row in phase8_calls
+    )
+    phase9_calls = [row for row in gfmain_calls if row.get("phase") == "9"]
+    phase9_proven = sum(
+        row.get("validated_grade") in matching_grades for row in phase9_calls
+    )
+    phase10_calls = [row for row in gfmain_calls if row.get("phase") == "10"]
+    phase10_proven = sum(
+        row.get("validated_grade") in matching_grades for row in phase10_calls
+    )
     authored_phases = sum(
         (root / "rebuild" / "integration" / f"gfmain_phase{phase}.cpp").exists()
         for phase in range(1, len(gfmain_phases) + 1)
@@ -112,9 +140,9 @@ def main() -> int:
             "Integration checkpoints, not retail GFMain byte parity |"
         ),
         (
-            f"| Current Phase 3 direct calls | {phase3_proven}/{len(phase3_calls)} "
-            f"({100.0 * phase3_proven / len(phase3_calls):.2f}%) | "
-            "Settings, persistence, and IME cluster |"
+            f"| Current Phase 10 direct calls | {phase10_proven}/{len(phase10_calls)} "
+            f"({100.0 * phase10_proven / len(phase10_calls):.2f}%) | "
+            "GFInitialise, launch, error handling, and cleanup |"
         ),
         "",
         "These are dependency counters, not an estimate of engineering time or total",
@@ -123,20 +151,26 @@ def main() -> int:
         "",
         "## Current executable milestone",
         "",
-        "**The Stage 3 checkpoint now runs GFMain Phases 1 and 2:** VC7.1 links and runs a",
+        "**The Stage 3 checkpoint now runs all ten GFMain phases:** VC7.1 links and runs a",
         "Win32 GUI executable through the recovered `WinMain @ 0x00403480`",
-        "and authored integration units for retail `0x00402510-0x00402668`.",
+        "and authored integration units for retail `0x00402510-0x00403480`.",
         "Its 141-byte body is an exact relocation-normalized retail match, and",
         "the fixture proves both first-instance and duplicate-instance paths,",
         "the 200 KiB MicroThread stack handoff, and the fastcall GFMain ABI.",
         "Phase 1 constructs the recovered system defaults, establishes the",
         "executable/project path with promoted retail functions, crosses a",
-        "counted console-variable boundary, then continues through the basic-install",
-        "and failure-policy sequence to the Phase 3 boundary.",
+        "parity-gated console-variable registrar boundary, then continues through the basic-install",
+        "and failure-policy sequence, then constructs and applies the optional",
+        "language-settings path, the five basic retail-bank aliases, and the decoded",
+        "retail-bank/INI path sequence, definition-table setup, checkpoint/save",
+        "permission precedence, and the display-error branch before stopping at",
+        "the recovered CSystemManagerInit option block, EULA/configuration policy,",
+        "engine-root/IME initialization, GFInitialise/launch policy, system-error",
+        "handling, registry persistence, and final cleanup through GFMain return.",
         "",
         "**A visible authored checkpoint is now runnable:**",
         "`FableTLC-Reconstruction-VisualCheckpoint.exe` follows that same matched",
-        "`WinMain` and reconstructed Phase 1/2 path, invokes the retail-matched full",
+        "`WinMain` and reconstructed Phase 1-10 path, invokes the retail-matched full",
         "`GFInitialise` coordinator and its retail-matched progress-display leaf through",
         "an explicit engine boundary, then opens a responsive 1280x720 Win32 window.",
         "When a retail `frontend.big` is available, the build decodes",
@@ -192,7 +226,7 @@ def main() -> int:
         "initialization. Authored boundary objects still stand in for the unrecovered",
         "engine singleton graph and renderer.",
         "",
-        "GFMain Phase 1 now has its filesystem pair promoted:",
+        "GFMain Phase 1 now has all nine direct calls proven. Its filesystem pair,",
         "`CAFile::GetProjectPath @ 0x00997510` (146 bytes) and",
         "`CAFile::SetCurrentPath @ 0x009974F0` (30 bytes) are",
         "relocation-normalized matches. Focused fixtures prove executable-directory",
@@ -200,12 +234,13 @@ def main() -> int:
         "changes before the engine updates its cached current-path string.",
         "The folded `CWideString` and `CCharString` lifetime pairs are proven",
         "too and grouped in a shared string-domain header. The PDB lineage",
-        "resolves the one-byte retail no-op as `NProfileTimer::StartProfile`,",
-        "bringing Phase 1 to seven of nine direct callees at relocation match.",
-        "The nested default `CCharString` constructor is retail-matched, while",
-        "`CSystemManagerInit` now passes a focused layout/defaults/construction-order",
-        "fixture. Its 265-byte object has one documented instruction-scheduling",
-        "residue: `lea ecx,[esi+0x5c]` is emitted earlier than retail.",
+        "resolves the one-byte retail no-op as `NProfileTimer::StartProfile`.",
+        "The nested default `CCharString` constructor is retail-matched.",
+        "`CSystemManagerInit` now matches all 265 retail bytes and passes focused",
+        "layout/defaults/construction-order coverage. The final 4,158-byte",
+        "`InitialiseConsoleVariables` registrar matches with 403 relocations; its",
+        "fixture proves null-allocation, successful-allocation, and existing-singleton",
+        "entry paths without borrowing retail code.",
         "Phase 2 now has all seven direct calls proven: the repeated string/profile",
         "leaves, `NProfileTimer::EndProfile`, the async failure-policy encoder,",
         "the TLC startup-latch clear, and the 69-byte counted `CFileInstaller`",
@@ -213,15 +248,66 @@ def main() -> int:
         "The authored Phase 2 integration fixture proves setting propagation,",
         "optional installer setup, startup-latch handling, async failure policy,",
         "and balanced counted ownership on both enabled and skipped paths.",
-        "Phase 3 has 21 of 34 direct calls proven. The first correction replaces",
+        "Phase 3 has all 34 direct calls proven. The first correction replaces",
         "a false donor `GetActionName` label with a TLC-specific no-argument",
         "default-language factory. Its readable 19-byte body constructs `\"English\"`",
         "in the fastcall hidden return slot and now has a real lifetime fixture.",
         "The next corrected call is `CCharString::ToWideString`: its 45-byte body",
         "and the 13-byte conversion factory plus 66-byte counted-storage copy",
         "constructor all relocation-match and pass focused ownership fixtures.",
-        "The shared string/profile targets, two seven-byte text-alignment setters,",
-        "and two folded seven-byte CBase vtable restores remain proven as well.",
+        "The signed-char persistence specialization now closes three call sites;",
+        "its exact dispatcher and five mode bodies cover default, binary, and text",
+        "transfer behavior. The exact 765-byte CIME settings loader exercises eight",
+        "byte settings and twelve colour transfers. A false GUI tree-sort label is",
+        "corrected to the CStringParser comment-list destructor, whose exact body",
+        "proves node and sentinel ownership. Shared string/profile targets, two",
+        "alignment setters, and two folded CBase vtable restores remain proven.",
+        "The authored Phase 3 integration now executes the exact language/string/",
+        "profile/alignment leaves, locks the recovered settings pathname, and proves",
+        "present/open, present/open-failed, and absent optional-file behavior.",
+        "Disk/parser ownership and the IME settings path now cross exact, focused",
+        "retail leaves while the authored phase keeps broader engine state isolated.",
+        "Phase 4 has all 29 direct calls proven. Its corrected manager identities",
+        "replace false COMDAT donor labels, and its exact navigator setter and alias",
+        "wrapper drive five decoded PC-to-generic bank mappings. The wrapper's nested",
+        "`CCharString::operator=` is also a relocation-normalized match.",
+        "Phase 5 has all 65 direct calls proven. Exact OpenRetailBank and OpenIniFile",
+        "bodies cover retail BIGB loading, development INI parsing, directory/header",
+        "selection, bank-map population, and disk/retail/threaded ownership beneath",
+        "every GFMain branch.",
+        "Phase 6 is callable with all 61 direct calls proven. Complete Stage 3 and",
+        "visual builds execute the exact definition-table pathname setter and loader",
+        "through file open, 16 KiB stream construction, read, flag publication, and",
+        "balanced cleanup. They also execute the exact My Documents permission probe",
+        "through its successful memory-only create/open/delete route. Exact My",
+        "Documents and save-directory helpers normalize and assemble the user save",
+        "root with balanced wide-string lifetimes, while",
+        "the exact physics-faces counted reset gates shared/last-owner/allocation-",
+        "failure behavior. The game-text bank constructor, counted group acquisition,",
+        "and five-path write-permission probe close checkpoint/save permission",
+        "precedence and the font/text/group/display error path.",
+        "Phase 7 is callable with all 15 direct calls proven. Exact cache-directory",
+        "and streaming-font factories join the already-proven string/profile leaves;",
+        "the fixture maps the recovered 0xC8-byte CSystemManagerInit option writes,",
+        "alternate display defaults, region modes, and the static-map Phase 8 bypass.",
+        "GetWindowTitle now independently proves localized lookup, fallback, and ownership.",
+        "Phase 8 is callable with all 5 direct calls proven. Exact EULA loading,",
+        "hardware detection, configuration cleanup, and the shared CRT exit thunk",
+        "cover success, both retail exit-on-failure branches, config skip, and",
+        "the static-map bypass.",
+        "Phase 9 is callable with all 11 direct calls proven. The exact 998-byte",
+        "CSystemManager initializer covers bootstrap skip, window failure, drive",
+        "failure propagation, and full subsystem ownership; exact singleton,",
+        "movie-layout, profile, string, CIME, and LUG-to-MET leaves complete the phase.",
+        "Phase 10 closes the authored GFMain coordinator with all 21 direct",
+        "calls. Four scenarios cover GFInitialise success with and without startup",
+        "text, GFInitialise failure, system-initialization error handling, launch",
+        "cleanup, final profile closure, registry persistence, and the recovered",
+        "cross-phase string cleanup cardinality. The exact counted profile-manager",
+        "singleton/dispatcher pair, GFUninitialise shutdown coordinator, complete",
+        "initialization-error dispatcher, wide comparison, and registry closure are",
+        "independently retail-matched;",
+        "registry behavior tests use injected memory-only imports.",
         "",
         "**Stage 0 remains the smallest linker proof:** VC7.1 links a console",
         "PE containing",
@@ -233,22 +319,42 @@ def main() -> int:
         "```",
         "",
         "Expected terminal markers include `FABLETLC_BOOTSTRAP_STAGE0 PASS`,",
+        "`FABLETLC_CRC_CALC_BEHAVIOR PASS`,",
         "`FABLETLC_WINMAIN_BEHAVIOR PASS`,",
         "`FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS`,",
         "`FABLETLC_SET_CURRENT_PATH_BEHAVIOR PASS`,",
         "`FABLETLC_GET_PROJECT_PATH_BEHAVIOR PASS`,",
         "`FABLETLC_WIDE_STRING_CONSTRUCTOR_BEHAVIOR PASS`,",
+        "`FABLETLC_WIDE_LITERAL_CONSTRUCTOR_BEHAVIOR PASS`,",
         "`FABLETLC_WIDE_STRING_DESTRUCTOR_BEHAVIOR PASS`,",
+        "`FABLETLC_WIDE_STRING_CONVERSION_BEHAVIOR PASS`,",
+        "`FABLETLC_WIDE_STRING_COPY_ASSIGNMENT_BEHAVIOR PASS`,",
         "`FABLETLC_CHAR_STRING_CONSTRUCTOR_BEHAVIOR PASS`,",
         "`FABLETLC_CHAR_STRING_DESTRUCTOR_BEHAVIOR PASS`,",
         "`FABLETLC_PROFILE_START_BEHAVIOR PASS`,",
         "`FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVIOR PASS`,",
+        "`FABLETLC_CHAR_STRING_COPY_ASSIGNMENT_BEHAVIOR PASS`,",
+        "`FABLETLC_RETAIL_BANK_NAVIGATOR_BEHAVIOR PASS`,",
+        "`FABLETLC_RETAIL_BANK_ALIAS_BEHAVIOR PASS`,",
+        "`FABLETLC_GET_SYSTEM_MANAGER_BEHAVIOR PASS`,",
         "`FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS`,",
+        "`FABLETLC_INITIALISE_CONSOLE_VARIABLES PASS`,",
         "`FABLETLC_PROFILE_END_BEHAVIOR PASS`,",
         "`FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS`,",
         "`FABLETLC_STARTUP_LATCH_BEHAVIOR PASS`,",
         "`FABLETLC_FILE_INSTALLER_GET_BEHAVIOR PASS`,",
         "`FABLETLC_DEFAULT_LANGUAGE_NAME_BEHAVIOR PASS`,",
+        "`FABLETLC_FONT_BANK_NAME_BEHAVIOR PASS`,",
+        "`FABLETLC_MISC_DIRECTORY_A_BEHAVIOR PASS`,",
+        "`FABLETLC_MISC_DIRECTORY_B_BEHAVIOR PASS`,",
+        "`FABLETLC_GRAPHICS_DIRECTORY_BEHAVIOR PASS`,",
+        "`FABLETLC_LANGUAGE_DIRECTORY_A_BEHAVIOR PASS`,",
+        "`FABLETLC_SHADERS_DIRECTORY_BEHAVIOR PASS`,",
+        "`FABLETLC_LANGUAGE_DIRECTORY_B_BEHAVIOR PASS`,",
+        "`FABLETLC_CHECKPOINT_DIRECTORY_BEHAVIOR PASS`,",
+        "`FABLETLC_DEF_TABLE_PATH_BEHAVIOR PASS`,",
+        "`FABLETLC_BANK_HANDLE_BEHAVIOR PASS`,",
+        "`FABLETLC_VECTOR_MAP_LOOKUP_BEHAVIOR PASS`,",
         "`FABLETLC_WIDE_STRING_FROM_CHAR_FACTORY_BEHAVIOR PASS`,",
         "`FABLETLC_WIDE_STRING_COPY_CONSTRUCTOR_BEHAVIOR PASS`,",
         "`FABLETLC_CHAR_TO_WIDE_STRING_BEHAVIOR PASS`,",
@@ -258,6 +364,15 @@ def main() -> int:
         "`FABLETLC_CBASE_RESTORE_B_BEHAVIOR PASS`,",
         "`FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS`,",
         "`FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS`,",
+        "`FABLETLC_GFMAIN_PHASE3_BEHAVIOR PASS`,",
+        "`FABLETLC_GFMAIN_PHASE4_BEHAVIOR PASS`,",
+        "`FABLETLC_GFMAIN_PHASE5_BEHAVIOR PASS`,",
+        "`FABLETLC_GFMAIN_PHASE6_BEHAVIOR PASS`,",
+        "`FABLETLC_GFMAIN_PHASE7_BEHAVIOR PASS`,",
+        "`FABLETLC_GFMAIN_PHASE8_BEHAVIOR PASS`,",
+        "`FABLETLC_GFMAIN_PHASE9_BEHAVIOR PASS`,",
+        "`FABLETLC_GFMAIN_PHASE10_BEHAVIOR PASS`,",
+        "`FABLETLC_GFMAIN_COMPLETE PASS`,",
         "`FABLETLC_GFINITIALISE_PROGRESS_PHASE_BEHAVIOR PASS`,",
         "`FABLETLC_VISUAL_BOOT_BEHAVIOR PASS`,",
         "`FABLETLC_RENDER2D_BATCH_PLAN PASS`,",

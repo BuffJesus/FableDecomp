@@ -12,12 +12,82 @@ $workspaceRoot = Split-Path -Parent $rebuildRoot
 $vcRoot = 'D:\Tools\vc71'
 $windowsSdkLibRoot = 'C:\Program Files (x86)\Windows Kits\10\Lib'
 $outDir = Join-Path $rebuildRoot "build\bootstrap-$Configuration"
+$crcCalcSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_CCRC_Calc_004014a0.cpp'
+$crcCalcBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_CCRC_Calc_004014a0_test.cpp'
 $bootstrapSource = Join-Path $rebuildRoot 'integration\bootstrap_main.cpp'
 $retailSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_MemCmpUnsigned16_00403c60.cpp'
 $winMainSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_WinMain_00403480.cpp'
 $winMainBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_WinMain_00403480_test.cpp'
 $gfInitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\40\global_GFInitialise_004022b0.cpp'
 $gfInitialiseBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\global_GFInitialise_004022b0_test.cpp'
+$gfUninitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_GFUninitialise_00401b80.cpp'
+$gfUninitialiseBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_GFUninitialise_00401b80_test.cpp'
+$gfHandleSystemInitErrorSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_GFHandleSystemInitError_00401c00.cpp'
+$gfHandleSystemInitErrorBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_GFHandleSystemInitError_00401c00_test.cpp'
+$gamePlaySource = Join-Path $rebuildRoot 'src\compiled\00\41\CGame_Play_00412f90.cpp'
+$gamePlayBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\CGame_Play_00412f90_test.cpp'
+$initialiseConsoleVariablesSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_InitialiseConsoleVariables_00413c50.cpp'
+$initialiseConsoleVariablesBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_InitialiseConsoleVariables_00413c50_test.cpp'
+$getWindowTitleSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_GetWindowTitle_004023f0.cpp'
+$getWindowTitleBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_GetWindowTitle_004023f0_test.cpp'
+$imeInitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\40\CIME_Initialise_00405650.cpp'
+$imeInitialiseBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CIME_Initialise_00405650_test.cpp'
+$generateMetFilesSource = Join-Path $rebuildRoot 'src\compiled\00\41\CMainGameComponent_GenerateMetFilesFromLugFiles_00418c3b.cpp'
+$generateMetFilesBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\CMainGameComponent_GenerateMetFilesFromLugFiles_00418c3b_test.cpp'
+$freeConfigDetectionSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_GFFreeConfigDetection_00401b20.cpp'
+$freeConfigDetectionBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_GFFreeConfigDetection_00401b20_test.cpp'
+$systemManagerInitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CSystemManager_Initialise_009a6610.cpp'
+$systemManagerInitialiseBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\CSystemManager_Initialise_009a6610_test.cpp'
+$exitThunkSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_Exit_00401284.cpp'
+$exitThunkBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_Exit_00401284_test.cpp'
+$doEulaSource = Join-Path $rebuildRoot 'src\compiled\00\40\EULA_DoEULAThings_00401fe0.cpp'
+$doEulaBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\EULA_DoEULAThings_00401fe0_test.cpp'
+$configDetectionSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_GFConfigDetection_004017b0.cpp'
+$configDetectionBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_GFConfigDetection_004017b0_test.cpp'
+$persistSignedCharSource = Join-Path $rebuildRoot 'src\compiled\00\40\CPersistContext_TransferSignedChar_004045c0.cpp'
+$persistSignedCharBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CPersistContext_TransferSignedChar_004045c0_test.cpp'
+$stringParserCommentListDestructorSource = Join-Path $rebuildRoot 'src\compiled\00\40\CStringParserCommentList_Destructor_004046b0.cpp'
+$stringParserCommentListDestructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CStringParserCommentList_Destructor_004046b0_test.cpp'
+$imeSettingsSource = Join-Path $rebuildRoot 'src\compiled\00\40\CIME_LoadIMESettings_00405350.cpp'
+$imeSettingsBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CIME_LoadIMESettings_00405350_test.cpp'
+$bankHeaderDirectorySource = Join-Path $rebuildRoot 'src\compiled\00\9a\NBankFileManager_SetHeaderDir_009a76c0.cpp'
+$bankHeaderDirectoryBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\NBankFileManager_SetHeaderDir_009a76c0_test.cpp'
+$myDocumentsDirectorySource = Join-Path $rebuildRoot 'src\compiled\00\41\NResourceDirectoryNames_GetMyDocumentsDir_0041a430.cpp'
+$myDocumentsDirectoryBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\NResourceDirectoryNames_GetMyDocumentsDir_0041a430_test.cpp'
+$saveDirectorySource = Join-Path $rebuildRoot 'src\compiled\00\41\NResourceDirectoryNames_GetSaveDir_0041a540.cpp'
+$saveDirectoryBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\NResourceDirectoryNames_GetSaveDir_0041a540_test.cpp'
+$physicsFacesCountedResetSource = Join-Path $rebuildRoot 'src\compiled\00\40\CCountedPointer_PhysicsFacesSegment_Reset_00403e40.cpp'
+$physicsFacesCountedResetBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CCountedPointer_PhysicsFacesSegment_Reset_00403e40_test.cpp'
+$wideStringAssignLiteralSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_AssignLiteral_0099b800.cpp'
+$wideStringAssignLiteralBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_AssignLiteral_0099b800_test.cpp'
+$wideStringAddWideSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_AddWideStrings_0099be70.cpp'
+$wideStringAddWideBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_AddWideStrings_0099be70_test.cpp'
+$defStringTableLoadSource = Join-Path $rebuildRoot 'src\compiled\00\9d\CDefStringTable_LoadTable_009d4c30.cpp'
+$defStringTableLoadBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\CDefStringTable_LoadTable_009d4c30_test.cpp'
+$gameTextDataBankConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\9c\NGameText_CDataBank_Constructor_009c85a0.cpp'
+$gameTextDataBankConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\9c\NGameText_CDataBank_Constructor_009c85a0_test.cpp'
+$gameTextGetGroupEntrySource = Join-Path $rebuildRoot 'src\compiled\00\9c\NGameText_CDataBank_GetPGroupEntry_009c9070.cpp'
+$gameTextGetGroupEntryBehaviorSource = Join-Path $rebuildRoot 'tests\00\9c\NGameText_CDataBank_GetPGroupEntry_009c9070_test.cpp'
+$myDocumentsWritePermissionsSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_MyDocuments_CheckWritePermissions_00402130.cpp'
+$myDocumentsWritePermissionsBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_MyDocuments_CheckWritePermissions_00402130_test.cpp'
+$retailBankConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\9a\NBankFileManager_CRetailBank_Constructor_009ac4d0.cpp'
+$retailBankConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\NBankFileManager_CRetailBank_Constructor_009ac4d0_test.cpp'
+$threadedFileConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\98\CThreadedFile_Constructor_0098dfd0.cpp'
+$threadedFileConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\98\CThreadedFile_Constructor_0098dfd0_test.cpp'
+$threadedFileCountedResetSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CCountedPointer_CThreadedFile_Reset_009a9c80.cpp'
+$threadedFileCountedResetBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\CCountedPointer_CThreadedFile_Reset_009a9c80_test.cpp'
+$threadedFileOpenSource = Join-Path $rebuildRoot 'src\compiled\00\98\CThreadedFile_Open_0098e1e0.cpp'
+$threadedFileOpenBehaviorSource = Join-Path $rebuildRoot 'tests\00\98\CThreadedFile_Open_0098e1e0_test.cpp'
+$containedBankMapIndexSource = Join-Path $rebuildRoot 'src\compiled\00\9a\NBankFileManager_CContainedBankMap_Index_009ac530.cpp'
+$containedBankMapIndexBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\NBankFileManager_CContainedBankMap_Index_009ac530_test.cpp'
+$openRetailBankSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CBankFileManager_OpenRetailBank_009a8840.cpp'
+$openRetailBankBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\CBankFileManager_OpenRetailBank_009a8840_test.cpp'
+$openIniFileSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CBankFileManager_OpenIniFile_009a8170.cpp'
+$openIniFileBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\CBankFileManager_OpenIniFile_009a8170_test.cpp'
+$userProfileSingletonGetSource = Join-Path $rebuildRoot 'src\compiled\00\40\CUserProfileManagerSingleton_Get_0040d2a0.cpp'
+$userProfileSingletonGetBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CUserProfileManagerSingleton_Get_0040d2a0_test.cpp'
+$userProfileSetProfileNameSource = Join-Path $rebuildRoot 'src\compiled\00\40\CUserProfileManager_SetProfileName_0040d400.cpp'
+$userProfileSetProfileNameBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CUserProfileManager_SetProfileName_0040d400_test.cpp'
 $stage1BoundarySource = Join-Path $rebuildRoot 'integration\stage1_engine_boundary.cpp'
 $progressSetupSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GFInitialiseSetupProgressDisplay_00413120.cpp'
 $progressSetupBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GFInitialiseSetupProgressDisplay_00413120_test.cpp'
@@ -41,10 +111,36 @@ $wideStringConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideS
 $wideStringConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_Constructor_0099aed0_test.cpp'
 $wideStringDestructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_Destructor_0099b510.cpp'
 $wideStringDestructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_Destructor_0099b510_test.cpp'
+$wideStringConversionSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_ConversionOperator_0099af10.cpp'
+$wideStringConversionBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_ConversionOperator_0099af10_test.cpp'
+$wideStringNotEqualSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_NotEqualWide_0099b150.cpp'
+$wideStringNotEqualBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_NotEqualWide_0099b150_test.cpp'
+$systemRegistryConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CSystemRegistry_Constructor_0099cf10.cpp'
+$systemRegistryConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CSystemRegistry_Constructor_0099cf10_test.cpp'
+$systemRegistryDestructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CSystemRegistry_Destructor_0099cf70.cpp'
+$systemRegistryDestructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CSystemRegistry_Destructor_0099cf70_test.cpp'
+$systemRegistryWriteBoolSource = Join-Path $rebuildRoot 'src\compiled\00\99\CSystemRegistry_WriteBOOL_0099d100.cpp'
+$systemRegistryWriteBoolBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CSystemRegistry_WriteBOOL_0099d100_test.cpp'
+$wideLiteralConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_LiteralConstructor_0099b6b0.cpp'
+$wideLiteralConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_LiteralConstructor_0099b6b0_test.cpp'
+$wideStringCopyAssignmentSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_CopyAssignment_0099b7d0.cpp'
+$wideStringCopyAssignmentBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_CopyAssignment_0099b7d0_test.cpp'
 $charStringConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharString_Constructor_0099ebf0.cpp'
 $charStringConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_Constructor_0099ebf0_test.cpp'
 $charStringDestructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharString_Destructor_0099eae0.cpp'
 $charStringDestructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_Destructor_0099eae0_test.cpp'
+$charStringCopyAssignmentSource = Join-Path $rebuildRoot 'src\compiled\00\99\CCharString_CopyAssignment_0099efb0.cpp'
+$charStringCopyAssignmentBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CCharString_CopyAssignment_0099efb0_test.cpp'
+$retailBankNavigatorSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CBasicRetailBankManager_SetNavigatorEnabled_009a76d0.cpp'
+$retailBankNavigatorBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\CBasicRetailBankManager_SetNavigatorEnabled_009a76d0_test.cpp'
+$retailBankAliasSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CBasicRetailBankManager_AddBankAlias_009a8150.cpp'
+$retailBankAliasBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\CBasicRetailBankManager_AddBankAlias_009a8150_test.cpp'
+$getSystemManagerSource = Join-Path $rebuildRoot 'src\compiled\00\9a\Global_GFGetSystemManager_009a4ec0.cpp'
+$getSystemManagerBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\Global_GFGetSystemManager_009a4ec0_test.cpp'
+$movieLeftAlignSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CXMVPlayer_SetLeftAlignText_009a0ef0.cpp'
+$movieLeftAlignBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\CXMVPlayer_SetLeftAlignText_009a0ef0_test.cpp'
+$imePrimitiveSource = Join-Path $rebuildRoot 'src\compiled\00\40\CEngineInternalPrimitiveBase_AddChildPrimitive_00404a80.cpp'
+$imePrimitiveBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CEngineInternalPrimitiveBase_AddChildPrimitive_00404a80_test.cpp'
 $profileStartSource = Join-Path $rebuildRoot 'src\compiled\00\9d\NProfileTimer_StartProfile_009d8240.cpp'
 $profileStartBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\NProfileTimer_StartProfile_009d8240_test.cpp'
 $profileEndSource = Join-Path $rebuildRoot 'src\compiled\00\9d\NProfileTimer_EndProfile_009d8250.cpp'
@@ -57,6 +153,32 @@ $fileInstallerGetSource = Join-Path $rebuildRoot 'src\compiled\00\40\CFileInstal
 $fileInstallerGetBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CFileInstallerSingleton_Get_00404440_test.cpp'
 $defaultLanguageNameSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetDefaultLanguageName_00415530.cpp'
 $defaultLanguageNameBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetDefaultLanguageName_00415530_test.cpp'
+$fontBankNameSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetFontBankName_00415260.cpp'
+$fontBankNameBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetFontBankName_00415260_test.cpp'
+$streamingFontBankNameSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetStreamingFontBankName_00415440.cpp'
+$streamingFontBankNameBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetStreamingFontBankName_00415440_test.cpp'
+$miscDirectoryASource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetMiscDirectoryA_0041a0a0.cpp'
+$miscDirectoryABehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetMiscDirectoryA_0041a0a0_test.cpp'
+$miscDirectoryBSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetMiscDirectoryB_0041a0c0.cpp'
+$miscDirectoryBBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetMiscDirectoryB_0041a0c0_test.cpp'
+$graphicsDirectorySource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetGraphicsDirectory_0041a100.cpp'
+$graphicsDirectoryBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetGraphicsDirectory_0041a100_test.cpp'
+$languageDirectoryASource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetLanguageDirectoryA_0041a120.cpp'
+$languageDirectoryABehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetLanguageDirectoryA_0041a120_test.cpp'
+$shadersDirectorySource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetShadersDirectory_0041a1e0.cpp'
+$shadersDirectoryBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetShadersDirectory_0041a1e0_test.cpp'
+$cacheDirectorySource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetCacheDirectory_0041a180.cpp'
+$cacheDirectoryBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetCacheDirectory_0041a180_test.cpp'
+$languageDirectoryBSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetLanguageDirectoryB_0041a330.cpp'
+$languageDirectoryBBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetLanguageDirectoryB_0041a330_test.cpp'
+$checkpointDirectorySource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetAutoSaveCheckpointDirectory_0041a4c0.cpp'
+$checkpointDirectoryBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetAutoSaveCheckpointDirectory_0041a4c0_test.cpp'
+$defTablePathSource = Join-Path $rebuildRoot 'src\compiled\00\9d\CDefStringTable_SetTablePath_009d4a40.cpp'
+$defTablePathBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\CDefStringTable_SetTablePath_009d4a40_test.cpp'
+$bankHandleSource = Join-Path $rebuildRoot 'src\compiled\00\9c\CBankFile_GetBankHandle_009c7a40.cpp'
+$bankHandleBehaviorSource = Join-Path $rebuildRoot 'tests\00\9c\CBankFile_GetBankHandle_009c7a40_test.cpp'
+$vectorMapLookupSource = Join-Path $rebuildRoot 'src\compiled\00\9c\FableVectorMap_LookupValue_009cc410.cpp'
+$vectorMapLookupBehaviorSource = Join-Path $rebuildRoot 'tests\00\9c\FableVectorMap_LookupValue_009cc410_test.cpp'
 $wideStringFromCharSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_CreateFromCharString_0099b6a0.cpp'
 $wideStringFromCharBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_CreateFromCharString_0099b6a0_test.cpp'
 $wideStringCopySource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_CopyConstructor_0099b720.cpp'
@@ -107,8 +229,27 @@ $systemManagerInitSource = Join-Path $rebuildRoot 'src\compiled\00\40\CSystemMan
 $systemManagerInitBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CSystemManagerInit_Constructor_00403b10_test.cpp'
 $gfmainPhase1Source = Join-Path $rebuildRoot 'integration\gfmain_phase1.cpp'
 $gfmainPhase2Source = Join-Path $rebuildRoot 'integration\gfmain_phase2.cpp'
+$gfmainPhase3Source = Join-Path $rebuildRoot 'integration\gfmain_phase3.cpp'
+$gfmainPhase4Source = Join-Path $rebuildRoot 'integration\gfmain_phase4.cpp'
+$gfmainPhase5Source = Join-Path $rebuildRoot 'integration\gfmain_phase5.cpp'
+$gfmainPhase6Source = Join-Path $rebuildRoot 'integration\gfmain_phase6.cpp'
+$gfmainPhase7Source = Join-Path $rebuildRoot 'integration\gfmain_phase7.cpp'
+$gfmainPhase8Source = Join-Path $rebuildRoot 'integration\gfmain_phase8.cpp'
+$gfmainPhase9Source = Join-Path $rebuildRoot 'integration\gfmain_phase9.cpp'
+$gfmainPhase10Source = Join-Path $rebuildRoot 'integration\gfmain_phase10.cpp'
+$gfmainCompleteSource = Join-Path $rebuildRoot 'integration\gfmain_complete.cpp'
 $gfInitialiseProgressPhaseSource = Join-Path $rebuildRoot 'integration\gfinitialise_progress_phase.cpp'
 $gfInitialiseEngineBoundarySource = Join-Path $rebuildRoot 'integration\gfinitialise_engine_boundary.cpp'
+$phase6RuntimeBoundarySource =
+    Join-Path $rebuildRoot 'integration\phase6_runtime_boundary.cpp'
+$systemManagerRuntimeBoundarySource =
+    Join-Path $rebuildRoot 'integration\system_manager_runtime_boundary.cpp'
+$saveMetadataRuntimeBoundarySource =
+    Join-Path $rebuildRoot 'integration\save_metadata_runtime_boundary.cpp'
+$phase8RuntimeBoundarySource =
+    Join-Path $rebuildRoot 'integration\phase8_runtime_boundary.cpp'
+$phase7WindowTitleRuntimeBoundarySource =
+    Join-Path $rebuildRoot 'integration\phase7_window_title_runtime_boundary.cpp'
 $progressDisplayStringBoundarySource = Join-Path $rebuildRoot 'integration\progress_display_string_boundary.cpp'
 $stage2BoundarySource = Join-Path $rebuildRoot 'integration\stage2_engine_boundary.cpp'
 $visualBootSource = Join-Path $rebuildRoot 'integration\visual_boot_checkpoint.cpp'
@@ -166,6 +307,15 @@ $textureCopyFromTextureSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CText
 $textureCopyFromTextureBehaviorSource = Join-Path $rebuildRoot 'tests\00\9f\CTexture_CopyFromTexture_009fa4e0_test.cpp'
 $gfmainPhase1BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase1_test.cpp'
 $gfmainPhase2BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase2_test.cpp'
+$gfmainPhase3BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase3_test.cpp'
+$gfmainPhase4BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase4_test.cpp'
+$gfmainPhase5BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase5_test.cpp'
+$gfmainPhase6BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase6_test.cpp'
+$gfmainPhase7BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase7_test.cpp'
+$gfmainPhase8BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase8_test.cpp'
+$gfmainPhase9BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase9_test.cpp'
+$gfmainPhase10BehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Phase10_test.cpp'
+$gfmainCompleteBehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFMain_Complete_test.cpp'
 $gfInitialiseProgressPhaseBehaviorSource = Join-Path $rebuildRoot 'tests\integration\GFInitialise_ProgressPhase_test.cpp'
 $bootObjectChecker = Join-Path $workspaceRoot 'tools\check_boot_object.py'
 $bootstrapObject = Join-Path $outDir 'bootstrap_main.obj'
@@ -173,6 +323,10 @@ $retailObject = Join-Path $outDir 'retail_00403c60.obj'
 $winMainObject = Join-Path $outDir 'retail_winmain.obj'
 $winMainBehaviorObject = Join-Path $outDir 'winmain_behavior.obj'
 $gfInitialiseObject = Join-Path $outDir 'gfinitialise.obj'
+$gfUninitialiseObject = Join-Path $outDir 'gf-uninitialise.obj'
+$imeInitialiseObject = Join-Path $outDir 'cime-initialise.obj'
+$systemManagerInitialiseObject =
+    Join-Path $outDir 'system-manager-initialise.obj'
 $stage1BoundaryObject = Join-Path $outDir 'stage1_engine_boundary.obj'
 $progressSetupObject = Join-Path $outDir 'gfinitialise_setup_progress.obj'
 $progressSetupBehaviorObject = Join-Path $outDir 'gfinitialise_setup_progress_behavior.obj'
@@ -189,21 +343,99 @@ $getProjectPathBehaviorObject = Join-Path $outDir 'get_project_path_behavior.obj
 $wideStringConstructorObject = Join-Path $outDir 'wide_string_constructor.obj'
 $wideStringConstructorBehaviorObject = Join-Path $outDir 'wide_string_constructor_behavior.obj'
 $wideStringDestructorObject = Join-Path $outDir 'wide_string_destructor.obj'
+$wideStringConversionObject = Join-Path $outDir 'wide-string-conversion.obj'
+$wideLiteralConstructorObject = Join-Path $outDir 'wide-literal-constructor.obj'
+$wideStringCopyAssignmentObject = Join-Path $outDir 'wide-string-copy-assignment.obj'
 $wideStringDestructorBehaviorObject = Join-Path $outDir 'wide_string_destructor_behavior.obj'
 $charStringConstructorObject = Join-Path $outDir 'char_string_constructor.obj'
 $charStringConstructorBehaviorObject = Join-Path $outDir 'char_string_constructor_behavior.obj'
 $charStringDestructorObject = Join-Path $outDir 'char_string_destructor.obj'
 $charStringDestructorBehaviorObject = Join-Path $outDir 'char_string_destructor_behavior.obj'
+$charStringCopyAssignmentObject = Join-Path $outDir 'char-string-copy-assignment.obj'
+$retailBankNavigatorObject = Join-Path $outDir 'retail-bank-navigator.obj'
+$retailBankAliasObject = Join-Path $outDir 'retail-bank-alias.obj'
+$getSystemManagerObject = Join-Path $outDir 'get-system-manager.obj'
+$movieLeftAlignObject = Join-Path $outDir 'movie-left-align.obj'
+$imePrimitiveObject = Join-Path $outDir 'ime-primitive.obj'
+$crcCalcObject = Join-Path $outDir 'crc-calc.obj'
 $profileStartObject = Join-Path $outDir 'profile_start.obj'
 $profileStartBehaviorObject = Join-Path $outDir 'profile_start_behavior.obj'
+$defaultLanguageNameObject = Join-Path $outDir 'default-language-name.obj'
+$fontBankNameObject = Join-Path $outDir 'font-bank-name.obj'
+$streamingFontBankNameObject = Join-Path $outDir 'streaming-font-bank-name.obj'
+$miscDirectoryAObject = Join-Path $outDir 'misc-directory-a.obj'
+$miscDirectoryBObject = Join-Path $outDir 'misc-directory-b.obj'
+$graphicsDirectoryObject = Join-Path $outDir 'graphics-directory.obj'
+$languageDirectoryAObject = Join-Path $outDir 'language-directory-a.obj'
+$shadersDirectoryObject = Join-Path $outDir 'shaders-directory.obj'
+$cacheDirectoryObject = Join-Path $outDir 'cache-directory.obj'
+$languageDirectoryBObject = Join-Path $outDir 'language-directory-b.obj'
+$checkpointDirectoryObject = Join-Path $outDir 'checkpoint-directory.obj'
+$defTablePathObject = Join-Path $outDir 'def-table-path.obj'
+$defStringTableLoadObject =
+    Join-Path $outDir 'definition-string-table-load.obj'
+$myDocumentsWritePermissionsObject =
+    Join-Path $outDir 'my-documents-write-permissions.obj'
+$bankHandleObject = Join-Path $outDir 'bank-handle.obj'
+$vectorMapLookupObject = Join-Path $outDir 'vector-map-lookup.obj'
+$wideStringFromCharObject = Join-Path $outDir 'wide-string-from-char.obj'
+$wideStringCopyObject = Join-Path $outDir 'wide-string-copy.obj'
+$charToWideStringObject = Join-Path $outDir 'char-to-wide-string.obj'
+$wideStringAddRightObject = Join-Path $outDir 'wide-string-add-right.obj'
+$wideStringAddLeftObject = Join-Path $outDir 'wide-string-add-left.obj'
+$primaryLeftAlignmentObject = Join-Path $outDir 'primary-left-alignment.obj'
+$secondaryLeftAlignmentObject = Join-Path $outDir 'secondary-left-alignment.obj'
 $charStringDefaultObject = Join-Path $outDir 'char-string-default-constructor.obj'
 $systemManagerInitObject = Join-Path $outDir 'system-manager-init-constructor.obj'
 $gfmainPhase1Object = Join-Path $outDir 'gfmain_phase1.obj'
 $gfmainPhase2Object = Join-Path $outDir 'gfmain_phase2.obj'
+$gfmainPhase3Object = Join-Path $outDir 'gfmain_phase3.obj'
+$gfmainPhase4Object = Join-Path $outDir 'gfmain_phase4.obj'
+$gfmainPhase5Object = Join-Path $outDir 'gfmain_phase5.obj'
+$gfmainPhase6Object = Join-Path $outDir 'gfmain_phase6.obj'
+$gfmainPhase7Object = Join-Path $outDir 'gfmain_phase7.obj'
+$gfmainPhase8Object = Join-Path $outDir 'gfmain_phase8.obj'
+$gfmainPhase9Object = Join-Path $outDir 'gfmain_phase9.obj'
+$gfmainPhase10Object = Join-Path $outDir 'gfmain_phase10.obj'
+$gfmainCompleteObject = Join-Path $outDir 'gfmain_complete.obj'
 $gfInitialiseProgressPhaseObject = Join-Path $outDir 'gfinitialise_progress_phase.obj'
 $gfInitialiseEngineBoundaryObject = Join-Path $outDir 'gfinitialise_engine_boundary.obj'
+$phase6RuntimeBoundaryObject =
+    Join-Path $outDir 'phase6_runtime_boundary.obj'
+$systemManagerRuntimeBoundaryObject =
+    Join-Path $outDir 'system_manager_runtime_boundary.obj'
+$saveMetadataRuntimeBoundaryObject =
+    Join-Path $outDir 'save_metadata_runtime_boundary.obj'
+$generateMetFilesObject = Join-Path $outDir 'generate-met-files.obj'
+$phase8RuntimeBoundaryObject =
+    Join-Path $outDir 'phase8_runtime_boundary.obj'
+$doEulaObject = Join-Path $outDir 'do-eula-things.obj'
+$configDetectionObject = Join-Path $outDir 'gf-config-detection.obj'
+$freeConfigDetectionObject =
+    Join-Path $outDir 'free-config-detection.obj'
+$phase7WindowTitleRuntimeBoundaryObject =
+    Join-Path $outDir 'phase7_window_title_runtime_boundary.obj'
+$getWindowTitleObject = Join-Path $outDir 'get-window-title.obj'
 $stage2BoundaryObject = Join-Path $outDir 'stage2_engine_boundary.obj'
 $stage3BoundaryObject = Join-Path $outDir 'stage3_engine_boundary.obj'
+$stage3Phase3BoundaryObject =
+    Join-Path $outDir 'stage3_phase3_engine_boundary.obj'
+$stage3Phase4BoundaryObject =
+    Join-Path $outDir 'stage3_phase4_engine_boundary.obj'
+$stage3Phase5BoundaryObject =
+    Join-Path $outDir 'stage3_phase5_engine_boundary.obj'
+$stage3Phase6BoundaryObject =
+    Join-Path $outDir 'stage3_phase6_engine_boundary.obj'
+$stage3Phase7BoundaryObject =
+    Join-Path $outDir 'stage3_phase7_engine_boundary.obj'
+$stage3Phase8BoundaryObject =
+    Join-Path $outDir 'stage3_phase8_engine_boundary.obj'
+$stage3Phase9BoundaryObject =
+    Join-Path $outDir 'stage3_phase9_engine_boundary.obj'
+$stage3Phase10BoundaryObject =
+    Join-Path $outDir 'stage3_phase10_engine_boundary.obj'
+$stage3CompleteBoundaryObject =
+    Join-Path $outDir 'stage3_complete_engine_boundary.obj'
 $visualBoundaryObject = Join-Path $outDir 'visual_engine_boundary.obj'
 $visualBootObject = Join-Path $outDir 'visual_boot_checkpoint.obj'
 $visualBootD3D9Object = Join-Path $outDir 'visual_boot_d3d9.obj'
@@ -296,6 +528,15 @@ $visualBootResourceSource = Join-Path $outDir 'visual_boot_checkpoint.rc'
 $visualBootResource = Join-Path $outDir 'visual_boot_checkpoint.res'
 $gfmainPhase1BehaviorObject = Join-Path $outDir 'gfmain_phase1_behavior.obj'
 $gfmainPhase2BehaviorObject = Join-Path $outDir 'gfmain_phase2_behavior.obj'
+$gfmainPhase3BehaviorObject = Join-Path $outDir 'gfmain_phase3_behavior.obj'
+$gfmainPhase4BehaviorObject = Join-Path $outDir 'gfmain_phase4_behavior.obj'
+$gfmainPhase5BehaviorObject = Join-Path $outDir 'gfmain_phase5_behavior.obj'
+$gfmainPhase6BehaviorObject = Join-Path $outDir 'gfmain_phase6_behavior.obj'
+$gfmainPhase7BehaviorObject = Join-Path $outDir 'gfmain_phase7_behavior.obj'
+$gfmainPhase8BehaviorObject = Join-Path $outDir 'gfmain_phase8_behavior.obj'
+$gfmainPhase9BehaviorObject = Join-Path $outDir 'gfmain_phase9_behavior.obj'
+$gfmainPhase10BehaviorObject = Join-Path $outDir 'gfmain_phase10_behavior.obj'
+$gfmainCompleteBehaviorObject = Join-Path $outDir 'gfmain_complete_behavior.obj'
 $gfInitialiseProgressPhaseBehaviorObject = Join-Path $outDir 'gfinitialise_progress_phase_behavior.obj'
 $profileEndObject = Join-Path $outDir 'profile-end.obj'
 $asyncFailureHandlingObject = Join-Path $outDir 'async-failure-handling.obj'
@@ -314,6 +555,15 @@ $charStringDestructorBehaviorExecutable = Join-Path $outDir 'FableTLC-CharString
 $profileStartBehaviorExecutable = Join-Path $outDir 'FableTLC-ProfileStart-Behavior.exe'
 $gfmainPhase1BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase1-Behavior.exe'
 $gfmainPhase2BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase2-Behavior.exe'
+$gfmainPhase3BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase3-Behavior.exe'
+$gfmainPhase4BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase4-Behavior.exe'
+$gfmainPhase5BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase5-Behavior.exe'
+$gfmainPhase6BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase6-Behavior.exe'
+$gfmainPhase7BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase7-Behavior.exe'
+$gfmainPhase8BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase8-Behavior.exe'
+$gfmainPhase9BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase9-Behavior.exe'
+$gfmainPhase10BehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainPhase10-Behavior.exe'
+$gfmainCompleteBehaviorExecutable = Join-Path $outDir 'FableTLC-GFMainComplete-Behavior.exe'
 $gfInitialiseProgressPhaseBehaviorExecutable = Join-Path $outDir 'FableTLC-GFInitialiseProgressPhase-Behavior.exe'
 $stage2Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage2.exe'
 $stage3Executable = Join-Path $outDir 'FableTLC-Reconstruction-Stage3.exe'
@@ -326,6 +576,40 @@ $render2DDrawListAdapterBehaviorExecutable = Join-Path $outDir 'FableTLC-Render2
 $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
 $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $gfInitialisePassPattern = 'FABLETLC_GFINITIALISE_BEHAVIOR PASS'
+$gfUninitialisePassPattern = 'FABLETLC_GF_UNINITIALISE_BEHAVIOR PASS'
+$gfHandleSystemInitErrorPassPattern = 'FABLETLC_GF_HANDLE_SYSTEM_INIT_ERROR_BEHAVIOR PASS'
+$gamePlayPassPattern = 'FABLETLC_CGAME_PLAY_BEHAVIOR PASS'
+$initialiseConsoleVariablesPassPattern = 'FABLETLC_INITIALISE_CONSOLE_VARIABLES PASS'
+$getWindowTitlePassPattern = 'FABLETLC_GET_WINDOW_TITLE_BEHAVIOR PASS'
+$imeInitialisePassPattern = 'FABLETLC_CIME_INITIALISE_BEHAVIOR PASS'
+$generateMetFilesPassPattern = 'FABLETLC_GENERATE_MET_FILES_BEHAVIOR PASS'
+$freeConfigDetectionPassPattern = 'FABLETLC_FREE_CONFIG_DETECTION_BEHAVIOR PASS'
+$systemManagerInitialisePassPattern = 'FABLETLC_SYSTEM_MANAGER_INITIALISE_BEHAVIOR PASS'
+$exitThunkPassPattern = 'FABLETLC_EXIT_THUNK_BEHAVIOR PASS'
+$doEulaPassPattern = 'FABLETLC_EULA_BEHAVIOR PASS'
+$configDetectionPassPattern = 'FABLETLC_CONFIG_DETECTION_BEHAVIOR PASS'
+$persistSignedCharPassPattern = 'FABLETLC_PERSIST_SIGNED_CHAR_BEHAVIOR PASS'
+$stringParserCommentListDestructorPassPattern = 'FABLETLC_STRING_PARSER_COMMENT_LIST_DTOR PASS'
+$imeSettingsPassPattern = 'FABLETLC_IME_SETTINGS_BEHAVIOR PASS'
+$bankHeaderDirectoryPassPattern = 'FABLETLC_BANK_HEADER_DIRECTORY_BEHAVIOR PASS'
+$myDocumentsDirectoryPassPattern = 'FABLETLC_MY_DOCUMENTS_DIRECTORY_BEHAVIOR PASS'
+$saveDirectoryPassPattern = 'FABLETLC_SAVE_DIRECTORY_BEHAVIOR PASS'
+$physicsFacesCountedResetPassPattern = 'FABLETLC_PHYSICS_FACES_COUNTED_RESET PASS'
+$wideStringAssignLiteralPassPattern = 'FABLETLC_WIDE_STRING_ASSIGN_LITERAL PASS'
+$wideStringAddWidePassPattern = 'FABLETLC_WIDE_STRING_ADD_WIDE PASS'
+$defStringTableLoadPassPattern = 'FABLETLC_DEF_STRING_TABLE_LOAD_BEHAVIOR PASS'
+$gameTextDataBankConstructorPassPattern = 'FABLETLC_GAME_TEXT_DATA_BANK_CONSTRUCTOR PASS'
+$gameTextGetGroupEntryPassPattern = 'FABLETLC_GAME_TEXT_GET_GROUP_ENTRY PASS'
+$myDocumentsWritePermissionsPassPattern = 'FABLETLC_MY_DOCUMENTS_WRITE_PERMISSIONS PASS'
+$retailBankConstructorPassPattern = 'FABLETLC_RETAIL_BANK_CONSTRUCTOR PASS'
+$threadedFileConstructorPassPattern = 'FABLETLC_THREADED_FILE_CONSTRUCTOR PASS'
+$threadedFileCountedResetPassPattern = 'FABLETLC_THREADED_FILE_COUNTED_RESET PASS'
+$threadedFileOpenPassPattern = 'FABLETLC_THREADED_FILE_OPEN PASS'
+$containedBankMapIndexPassPattern = 'FABLETLC_CONTAINED_BANK_MAP_INDEX PASS'
+$openRetailBankPassPattern = 'FABLETLC_OPEN_RETAIL_BANK PASS'
+$openIniFilePassPattern = 'FABLETLC_OPEN_INI_FILE PASS'
+$userProfileSingletonGetPassPattern = 'FABLETLC_USER_PROFILE_SINGLETON_GET_BEHAVIOR PASS'
+$userProfileSetProfileNamePassPattern = 'FABLETLC_USER_PROFILE_SET_PROFILE_NAME_BEHAVIOR PASS'
 $progressSetupPassPattern = 'FABLETLC_PROGRESS_SETUP_BEHAVIOR PASS'
 $progressDisplayConstructorPassPattern = 'FABLETLC_PROGRESS_DISPLAY_CONSTRUCTOR_BEHAVIOR PASS'
 $progressDisplayTextBankPassPattern = 'FABLETLC_PROGRESS_TEXT_BANK_BEHAVIOR PASS'
@@ -337,6 +621,13 @@ $setCurrentPathPassPattern = 'FABLETLC_SET_CURRENT_PATH_BEHAVIOR PASS'
 $getProjectPathPassPattern = 'FABLETLC_GET_PROJECT_PATH_BEHAVIOR PASS'
 $wideStringConstructorPassPattern = 'FABLETLC_WIDE_STRING_CONSTRUCTOR_BEHAVIOR PASS'
 $wideStringDestructorPassPattern = 'FABLETLC_WIDE_STRING_DESTRUCTOR_BEHAVIOR PASS'
+$wideStringConversionPassPattern = 'FABLETLC_WIDE_STRING_CONVERSION_BEHAVIOR PASS'
+$wideStringNotEqualPassPattern = 'FABLETLC_WIDE_STRING_NOT_EQUAL_BEHAVIOR PASS'
+$systemRegistryConstructorPassPattern = 'FABLETLC_SYSTEM_REGISTRY_CONSTRUCTOR_BEHAVIOR PASS'
+$systemRegistryDestructorPassPattern = 'FABLETLC_SYSTEM_REGISTRY_DESTRUCTOR_BEHAVIOR PASS'
+$systemRegistryWriteBoolPassPattern = 'FABLETLC_SYSTEM_REGISTRY_WRITE_BOOL_BEHAVIOR PASS'
+$wideLiteralConstructorPassPattern = 'FABLETLC_WIDE_LITERAL_CONSTRUCTOR_BEHAVIOR PASS'
+$wideStringCopyAssignmentPassPattern = 'FABLETLC_WIDE_STRING_COPY_ASSIGNMENT_BEHAVIOR PASS'
 $charStringConstructorPassPattern = 'FABLETLC_CHAR_STRING_CONSTRUCTOR_BEHAVIOR PASS'
 $charStringDestructorPassPattern = 'FABLETLC_CHAR_STRING_DESTRUCTOR_BEHAVIOR PASS'
 $profileStartPassPattern = 'FABLETLC_PROFILE_START_BEHAVIOR PASS'
@@ -344,6 +635,15 @@ $charStringDefaultPassPattern = 'FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVI
 $systemManagerInitPassPattern = 'FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS'
 $gfmainPhase1PassPattern = 'FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS'
 $gfmainPhase2PassPattern = 'FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS'
+$gfmainPhase3PassPattern = 'FABLETLC_GFMAIN_PHASE3_BEHAVIOR PASS'
+$gfmainPhase4PassPattern = 'FABLETLC_GFMAIN_PHASE4_BEHAVIOR PASS'
+$gfmainPhase5PassPattern = 'FABLETLC_GFMAIN_PHASE5_BEHAVIOR PASS'
+$gfmainPhase6PassPattern = 'FABLETLC_GFMAIN_PHASE6_BEHAVIOR PASS'
+$gfmainPhase7PassPattern = 'FABLETLC_GFMAIN_PHASE7_BEHAVIOR PASS'
+$gfmainPhase8PassPattern = 'FABLETLC_GFMAIN_PHASE8_BEHAVIOR PASS'
+$gfmainPhase9PassPattern = 'FABLETLC_GFMAIN_PHASE9_BEHAVIOR PASS'
+$gfmainPhase10PassPattern = 'FABLETLC_GFMAIN_PHASE10_BEHAVIOR PASS'
+$gfmainCompletePassPattern = 'FABLETLC_GFMAIN_COMPLETE PASS'
 $gfInitialiseProgressPhasePassPattern = 'FABLETLC_GFINITIALISE_PROGRESS_PHASE_BEHAVIOR PASS'
 $visualBootPassPattern = 'FABLETLC_VISUAL_BOOT_BEHAVIOR PASS'
 $videoFramePublicationPassPattern = 'FABLETLC_VIDEO_FRAME_PUBLICATION PASS'
@@ -355,6 +655,8 @@ $asyncFailureHandlingPassPattern = 'FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PAS
 $startupLatchPassPattern = 'FABLETLC_STARTUP_LATCH_BEHAVIOR PASS'
 $fileInstallerGetPassPattern = 'FABLETLC_FILE_INSTALLER_GET_BEHAVIOR PASS'
 $defaultLanguageNamePassPattern = 'FABLETLC_DEFAULT_LANGUAGE_NAME_BEHAVIOR PASS'
+$fontBankNamePassPattern = 'FABLETLC_FONT_BANK_NAME_BEHAVIOR PASS'
+$streamingFontBankNamePassPattern = 'FABLETLC_STREAMING_FONT_BANK_NAME_BEHAVIOR PASS'
 $wideStringFromCharPassPattern = 'FABLETLC_WIDE_STRING_FROM_CHAR_FACTORY_BEHAVIOR PASS'
 $wideStringCopyPassPattern = 'FABLETLC_WIDE_STRING_COPY_CONSTRUCTOR_BEHAVIOR PASS'
 $wideStringAddRightPassPattern = 'FABLETLC_WIDE_STRING_ADD_RIGHT PASS'
@@ -372,6 +674,24 @@ $textureCopyFromTexturePassPattern = 'FABLETLC_TEXTURE_COPY_FROM_TEXTURE_BEHAVIO
 $charToWideStringPassPattern = 'FABLETLC_CHAR_TO_WIDE_STRING_BEHAVIOR PASS'
 $primaryLeftAlignmentPassPattern = 'FABLETLC_PRIMARY_LEFT_ALIGNMENT_BEHAVIOR PASS'
 $secondaryLeftAlignmentPassPattern = 'FABLETLC_SECONDARY_LEFT_ALIGNMENT_BEHAVIOR PASS'
+$charStringCopyAssignmentPassPattern = 'FABLETLC_CHAR_STRING_COPY_ASSIGNMENT_BEHAVIOR PASS'
+$retailBankNavigatorPassPattern = 'FABLETLC_RETAIL_BANK_NAVIGATOR_BEHAVIOR PASS'
+$retailBankAliasPassPattern = 'FABLETLC_RETAIL_BANK_ALIAS_BEHAVIOR PASS'
+$getSystemManagerPassPattern = 'FABLETLC_GET_SYSTEM_MANAGER_BEHAVIOR PASS'
+$movieLeftAlignPassPattern = 'FABLETLC_MOVIE_LEFT_ALIGN_BEHAVIOR PASS'
+$imePrimitivePassPattern = 'CEngineInternalPrimitiveBase_00404a80_TEST PASS'
+$crcCalcPassPattern = 'FABLETLC_CRC_CALC_BEHAVIOR PASS'
+$miscDirectoryAPassPattern = 'FABLETLC_MISC_DIRECTORY_A_BEHAVIOR PASS'
+$miscDirectoryBPassPattern = 'FABLETLC_MISC_DIRECTORY_B_BEHAVIOR PASS'
+$graphicsDirectoryPassPattern = 'FABLETLC_GRAPHICS_DIRECTORY_BEHAVIOR PASS'
+$languageDirectoryAPassPattern = 'FABLETLC_LANGUAGE_DIRECTORY_A_BEHAVIOR PASS'
+$shadersDirectoryPassPattern = 'FABLETLC_SHADERS_DIRECTORY_BEHAVIOR PASS'
+$cacheDirectoryPassPattern = 'FABLETLC_CACHE_DIRECTORY_BEHAVIOR PASS'
+$languageDirectoryBPassPattern = 'FABLETLC_LANGUAGE_DIRECTORY_B_BEHAVIOR PASS'
+$checkpointDirectoryPassPattern = 'FABLETLC_CHECKPOINT_DIRECTORY_BEHAVIOR PASS'
+$defTablePathPassPattern = 'FABLETLC_DEF_TABLE_PATH_BEHAVIOR PASS'
+$bankHandlePassPattern = 'FABLETLC_BANK_HANDLE_BEHAVIOR PASS'
+$vectorMapLookupPassPattern = 'FABLETLC_VECTOR_MAP_LOOKUP_BEHAVIOR PASS'
 $cbaseRestoreAPassPattern = 'FABLETLC_CBASE_RESTORE_A_BEHAVIOR PASS'
 $cbaseRestoreBPassPattern = 'FABLETLC_CBASE_RESTORE_B_BEHAVIOR PASS'
 $cmovieIsPlayingPassPattern = 'FABLETLC_CMOVIE_IS_PLAYING PASS'
@@ -391,6 +711,36 @@ $required = @(
     $winMainBehaviorSource,
     $gfInitialiseSource,
     $gfInitialiseBehaviorSource,
+    $gfUninitialiseSource,
+    $gfUninitialiseBehaviorSource,
+    $gfHandleSystemInitErrorSource,
+    $gfHandleSystemInitErrorBehaviorSource,
+    $gamePlaySource,
+    $gamePlayBehaviorSource,
+    $initialiseConsoleVariablesSource,
+    $initialiseConsoleVariablesBehaviorSource,
+    $getWindowTitleSource,
+    $getWindowTitleBehaviorSource,
+    $imeInitialiseSource,
+    $imeInitialiseBehaviorSource,
+    $generateMetFilesSource,
+    $generateMetFilesBehaviorSource,
+    $freeConfigDetectionSource,
+    $freeConfigDetectionBehaviorSource,
+    $systemManagerInitialiseSource,
+    $systemManagerInitialiseBehaviorSource,
+    $exitThunkSource,
+    $exitThunkBehaviorSource,
+    $doEulaSource,
+    $doEulaBehaviorSource,
+    $configDetectionSource,
+    $configDetectionBehaviorSource,
+    $persistSignedCharSource,
+    $persistSignedCharBehaviorSource,
+    $userProfileSingletonGetSource,
+    $userProfileSingletonGetBehaviorSource,
+    $userProfileSetProfileNameSource,
+    $userProfileSetProfileNameBehaviorSource,
     $stage1BoundarySource,
     $progressSetupSource,
     $progressSetupBehaviorSource,
@@ -414,10 +764,38 @@ $required = @(
     $wideStringConstructorBehaviorSource,
     $wideStringDestructorSource,
     $wideStringDestructorBehaviorSource,
+    $wideStringConversionSource,
+    $wideStringConversionBehaviorSource,
+    $wideStringNotEqualSource,
+    $wideStringNotEqualBehaviorSource,
+    $systemRegistryConstructorSource,
+    $systemRegistryConstructorBehaviorSource,
+    $systemRegistryDestructorSource,
+    $systemRegistryDestructorBehaviorSource,
+    $systemRegistryWriteBoolSource,
+    $systemRegistryWriteBoolBehaviorSource,
+    $wideLiteralConstructorSource,
+    $wideLiteralConstructorBehaviorSource,
+    $wideStringCopyAssignmentSource,
+    $wideStringCopyAssignmentBehaviorSource,
     $charStringConstructorSource,
     $charStringConstructorBehaviorSource,
     $charStringDestructorSource,
     $charStringDestructorBehaviorSource,
+    $charStringCopyAssignmentSource,
+    $charStringCopyAssignmentBehaviorSource,
+    $retailBankNavigatorSource,
+    $retailBankNavigatorBehaviorSource,
+    $retailBankAliasSource,
+    $retailBankAliasBehaviorSource,
+    $getSystemManagerSource,
+    $getSystemManagerBehaviorSource,
+    $movieLeftAlignSource,
+    $movieLeftAlignBehaviorSource,
+    $imePrimitiveSource,
+    $imePrimitiveBehaviorSource,
+    $crcCalcSource,
+    $crcCalcBehaviorSource,
     $profileStartSource,
     $profileStartBehaviorSource,
     $profileEndSource,
@@ -430,6 +808,32 @@ $required = @(
     $fileInstallerGetBehaviorSource,
     $defaultLanguageNameSource,
     $defaultLanguageNameBehaviorSource,
+    $fontBankNameSource,
+    $fontBankNameBehaviorSource,
+    $streamingFontBankNameSource,
+    $streamingFontBankNameBehaviorSource,
+    $miscDirectoryASource,
+    $miscDirectoryABehaviorSource,
+    $miscDirectoryBSource,
+    $miscDirectoryBBehaviorSource,
+    $graphicsDirectorySource,
+    $graphicsDirectoryBehaviorSource,
+    $languageDirectoryASource,
+    $languageDirectoryABehaviorSource,
+    $shadersDirectorySource,
+    $shadersDirectoryBehaviorSource,
+    $cacheDirectorySource,
+    $cacheDirectoryBehaviorSource,
+    $languageDirectoryBSource,
+    $languageDirectoryBBehaviorSource,
+    $checkpointDirectorySource,
+    $checkpointDirectoryBehaviorSource,
+    $defTablePathSource,
+    $defTablePathBehaviorSource,
+    $bankHandleSource,
+    $bankHandleBehaviorSource,
+    $vectorMapLookupSource,
+    $vectorMapLookupBehaviorSource,
     $wideStringFromCharSource,
     $wideStringFromCharBehaviorSource,
     $wideStringCopySource,
@@ -480,8 +884,22 @@ $required = @(
     $systemManagerInitBehaviorSource,
     $gfmainPhase1Source,
     $gfmainPhase2Source,
+    $gfmainPhase3Source,
+    $gfmainPhase4Source,
+    $gfmainPhase5Source,
+    $gfmainPhase6Source,
+    $gfmainPhase7Source,
+    $gfmainPhase8Source,
+    $gfmainPhase9Source,
+    $gfmainPhase10Source,
+    $gfmainCompleteSource,
     $gfInitialiseProgressPhaseSource,
     $gfInitialiseEngineBoundarySource,
+    $phase6RuntimeBoundarySource,
+    $systemManagerRuntimeBoundarySource,
+    $saveMetadataRuntimeBoundarySource,
+    $phase8RuntimeBoundarySource,
+    $phase7WindowTitleRuntimeBoundarySource,
     $progressDisplayStringBoundarySource,
     $stage2BoundarySource,
     $visualBootSource,
@@ -524,6 +942,15 @@ $required = @(
     $textureCopyFromTextureBehaviorSource,
     $gfmainPhase1BehaviorSource,
     $gfmainPhase2BehaviorSource,
+    $gfmainPhase3BehaviorSource,
+    $gfmainPhase4BehaviorSource,
+    $gfmainPhase5BehaviorSource,
+    $gfmainPhase6BehaviorSource,
+    $gfmainPhase7BehaviorSource,
+    $gfmainPhase8BehaviorSource,
+    $gfmainPhase9BehaviorSource,
+    $gfmainPhase10BehaviorSource,
+    $gfmainCompleteBehaviorSource,
     $gfInitialiseProgressPhaseBehaviorSource,
     $textureBuilder,
     $staticFontRenderer,
@@ -1036,6 +1463,411 @@ try {
         -PassPattern $charStringDefaultPassPattern
 
     Invoke-VerifiedLeaf `
+        -Address '0099af10' `
+        -Description 'CWideString const-pointer conversion' `
+        -Source $wideStringConversionSource `
+        -BehaviorSource $wideStringConversionBehaviorSource `
+        -OutputStem 'wide-string-conversion' `
+        -PassPattern $wideStringConversionPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099b150' `
+        -Description 'CWideString wide-literal inequality comparison' `
+        -Source $wideStringNotEqualSource `
+        -BehaviorSource $wideStringNotEqualBehaviorSource `
+        -OutputStem 'wide-string-not-equal' `
+        -PassPattern $wideStringNotEqualPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0040d400' `
+        -Description 'CUserProfileManager profile-name load/save dispatcher' `
+        -Source $userProfileSetProfileNameSource `
+        -BehaviorSource $userProfileSetProfileNameBehaviorSource `
+        -OutputStem 'user-profile-set-profile-name' `
+        -PassPattern $userProfileSetProfileNamePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00401b80' `
+        -Description 'GFUninitialise shutdown coordinator' `
+        -Source $gfUninitialiseSource `
+        -BehaviorSource $gfUninitialiseBehaviorSource `
+        -OutputStem 'gf-uninitialise' `
+        -PassPattern $gfUninitialisePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00401c00' `
+        -Description 'GFHandleSystemInitError message dispatcher' `
+        -Source $gfHandleSystemInitErrorSource `
+        -BehaviorSource $gfHandleSystemInitErrorBehaviorSource `
+        -OutputStem 'gf-handle-system-init-error' `
+        -PassPattern $gfHandleSystemInitErrorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00412f90' `
+        -Description 'CGame play and component ownership coordinator' `
+        -Source $gamePlaySource `
+        -BehaviorSource $gamePlayBehaviorSource `
+        -OutputStem 'cgame-play' `
+        -PassPattern $gamePlayPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00413c50' `
+        -Description 'retail console-variable registrar' `
+        -Source $initialiseConsoleVariablesSource `
+        -BehaviorSource $initialiseConsoleVariablesBehaviorSource `
+        -OutputStem 'initialise-console-variables' `
+        -PassPattern $initialiseConsoleVariablesPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '004023f0' `
+        -Description 'localized window-title ownership coordinator' `
+        -Source $getWindowTitleSource `
+        -BehaviorSource $getWindowTitleBehaviorSource `
+        -OutputStem 'get-window-title' `
+        -PassPattern $getWindowTitlePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00405650' `
+        -Description 'NUISystem CIME initialization coordinator' `
+        -Source $imeInitialiseSource `
+        -BehaviorSource $imeInitialiseBehaviorSource `
+        -OutputStem 'cime-initialise' `
+        -PassPattern $imeInitialisePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00418c3b' `
+        -Description 'CMainGameComponent LUG-to-MET generator' `
+        -Source $generateMetFilesSource `
+        -BehaviorSource $generateMetFilesBehaviorSource `
+        -OutputStem 'generate-met-files' `
+        -PassPattern $generateMetFilesPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00401b20' `
+        -Description 'configuration-detection release coordinator' `
+        -Source $freeConfigDetectionSource `
+        -BehaviorSource $freeConfigDetectionBehaviorSource `
+        -OutputStem 'free-config-detection' `
+        -PassPattern $freeConfigDetectionPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009a6610' `
+        -Description 'CSystemManager initialization coordinator' `
+        -Source $systemManagerInitialiseSource `
+        -BehaviorSource $systemManagerInitialiseBehaviorSource `
+        -OutputStem 'system-manager-initialise' `
+        -PassPattern $systemManagerInitialisePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00401284' `
+        -Description 'CRT process-exit import thunk' `
+        -Source $exitThunkSource `
+        -BehaviorSource $exitThunkBehaviorSource `
+        -OutputStem 'crt-exit-thunk' `
+        -PassPattern $exitThunkPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00401fe0' `
+        -Description 'EULA DLL coordinator' `
+        -Source $doEulaSource `
+        -BehaviorSource $doEulaBehaviorSource `
+        -OutputStem 'do-eula-things' `
+        -PassPattern $doEulaPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '004017b0' `
+        -Description 'hardware configuration-detection coordinator' `
+        -Source $configDetectionSource `
+        -BehaviorSource $configDetectionBehaviorSource `
+        -OutputStem 'gf-config-detection' `
+        -PassPattern $configDetectionPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '004045c0' `
+        -Description 'CPersistContext signed-char transfer dispatcher' `
+        -Source $persistSignedCharSource `
+        -BehaviorSource $persistSignedCharBehaviorSource `
+        -OutputStem 'persist-signed-char' `
+        -PassPattern $persistSignedCharPassPattern
+
+    $persistSignedCharObject =
+        Join-Path $outDir 'persist-signed-char.obj'
+    foreach ($persistCaseAddress in @(
+        '004045db',
+        '004045ef',
+        '00404608',
+        '00404622',
+        '00404647'
+    )) {
+        & python $bootObjectChecker `
+            --root $workspaceRoot `
+            --object $persistSignedCharObject `
+            --address $persistCaseAddress
+        if ($LASTEXITCODE -ne 0) {
+            throw (
+                'CPersistContext signed-char transfer case ' +
+                "$persistCaseAddress failed retail parity."
+            )
+        }
+    }
+
+    Invoke-VerifiedLeaf `
+        -Address '004046b0' `
+        -Description 'CStringParser comment-list destructor' `
+        -Source $stringParserCommentListDestructorSource `
+        -BehaviorSource $stringParserCommentListDestructorBehaviorSource `
+        -OutputStem 'string-parser-comment-list-destructor' `
+        -PassPattern $stringParserCommentListDestructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00405350' `
+        -Description 'NUISystem CIME settings loader' `
+        -Source $imeSettingsSource `
+        -BehaviorSource $imeSettingsBehaviorSource `
+        -OutputStem 'ime-settings' `
+        -PassPattern $imeSettingsPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009a76c0' `
+        -Description 'bank-file-manager header directory setter' `
+        -Source $bankHeaderDirectorySource `
+        -BehaviorSource $bankHeaderDirectoryBehaviorSource `
+        -OutputStem 'bank-header-directory' `
+        -PassPattern $bankHeaderDirectoryPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0041a430' `
+        -Description 'My Documents directory resolver' `
+        -Source $myDocumentsDirectorySource `
+        -BehaviorSource $myDocumentsDirectoryBehaviorSource `
+        -OutputStem 'my-documents-directory' `
+        -PassPattern $myDocumentsDirectoryPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0041a540' `
+        -Description 'save directory resolver' `
+        -Source $saveDirectorySource `
+        -BehaviorSource $saveDirectoryBehaviorSource `
+        -OutputStem 'save-directory' `
+        -PassPattern $saveDirectoryPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00403e40' `
+        -Description 'physics-faces counted-pointer reset' `
+        -Source $physicsFacesCountedResetSource `
+        -BehaviorSource $physicsFacesCountedResetBehaviorSource `
+        -OutputStem 'physics-faces-counted-reset' `
+        -PassPattern $physicsFacesCountedResetPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099b800' `
+        -Description 'CWideString literal assignment' `
+        -Source $wideStringAssignLiteralSource `
+        -BehaviorSource $wideStringAssignLiteralBehaviorSource `
+        -OutputStem 'wide-string-assign-literal' `
+        -PassPattern $wideStringAssignLiteralPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099be70' `
+        -Description 'CWideString wide-string concatenation' `
+        -Source $wideStringAddWideSource `
+        -BehaviorSource $wideStringAddWideBehaviorSource `
+        -OutputStem 'wide-string-add-wide' `
+        -PassPattern $wideStringAddWidePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009d4c30' `
+        -Description 'definition string table loader' `
+        -Source $defStringTableLoadSource `
+        -BehaviorSource $defStringTableLoadBehaviorSource `
+        -OutputStem 'definition-string-table-load' `
+        -PassPattern $defStringTableLoadPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009c85a0' `
+        -Description 'game-text data-bank constructor' `
+        -Source $gameTextDataBankConstructorSource `
+        -BehaviorSource $gameTextDataBankConstructorBehaviorSource `
+        -OutputStem 'game-text-data-bank-constructor' `
+        -PassPattern $gameTextDataBankConstructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009c9070' `
+        -Description 'game-text group-entry acquisition' `
+        -Source $gameTextGetGroupEntrySource `
+        -BehaviorSource $gameTextGetGroupEntryBehaviorSource `
+        -OutputStem 'game-text-get-group-entry' `
+        -PassPattern $gameTextGetGroupEntryPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00402130' `
+        -Description 'My Documents write-permission probe' `
+        -Source $myDocumentsWritePermissionsSource `
+        -BehaviorSource $myDocumentsWritePermissionsBehaviorSource `
+        -OutputStem 'my-documents-write-permissions' `
+        -PassPattern $myDocumentsWritePermissionsPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009ac4d0' `
+        -Description 'retail-bank ownership constructor' `
+        -Source $retailBankConstructorSource `
+        -BehaviorSource $retailBankConstructorBehaviorSource `
+        -OutputStem 'retail-bank-constructor' `
+        -PassPattern $retailBankConstructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0098dfd0' `
+        -Description 'threaded-file constructor' `
+        -Source $threadedFileConstructorSource `
+        -BehaviorSource $threadedFileConstructorBehaviorSource `
+        -OutputStem 'threaded-file-constructor' `
+        -PassPattern $threadedFileConstructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009a9c80' `
+        -Description 'threaded-file counted reset' `
+        -Source $threadedFileCountedResetSource `
+        -BehaviorSource $threadedFileCountedResetBehaviorSource `
+        -OutputStem 'threaded-file-counted-reset' `
+        -PassPattern $threadedFileCountedResetPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0098e1e0' `
+        -Description 'threaded-file open' `
+        -Source $threadedFileOpenSource `
+        -BehaviorSource $threadedFileOpenBehaviorSource `
+        -OutputStem 'threaded-file-open' `
+        -PassPattern $threadedFileOpenPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009ac530' `
+        -Description 'contained-bank map indexing' `
+        -Source $containedBankMapIndexSource `
+        -BehaviorSource $containedBankMapIndexBehaviorSource `
+        -OutputStem 'contained-bank-map-index' `
+        -PassPattern $containedBankMapIndexPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009a8840' `
+        -Description 'retail BIGB bank opening and header parse' `
+        -Source $openRetailBankSource `
+        -BehaviorSource $openRetailBankBehaviorSource `
+        -OutputStem 'open-retail-bank' `
+        -PassPattern $openRetailBankPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009a8170' `
+        -Description 'development bank INI parser' `
+        -Source $openIniFileSource `
+        -BehaviorSource $openIniFileBehaviorSource `
+        -OutputStem 'open-ini-file' `
+        -PassPattern $openIniFilePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0040d2a0' `
+        -Description 'CUserProfileManager counted singleton getter' `
+        -Source $userProfileSingletonGetSource `
+        -BehaviorSource $userProfileSingletonGetBehaviorSource `
+        -OutputStem 'user-profile-singleton-get' `
+        -PassPattern $userProfileSingletonGetPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099cf10' `
+        -Description 'CSystemRegistry constructor' `
+        -Source $systemRegistryConstructorSource `
+        -BehaviorSource $systemRegistryConstructorBehaviorSource `
+        -OutputStem 'system-registry-constructor' `
+        -PassPattern $systemRegistryConstructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099cf70' `
+        -Description 'CSystemRegistry destructor' `
+        -Source $systemRegistryDestructorSource `
+        -BehaviorSource $systemRegistryDestructorBehaviorSource `
+        -OutputStem 'system-registry-destructor' `
+        -PassPattern $systemRegistryDestructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099d100' `
+        -Description 'CSystemRegistry BOOL writer' `
+        -Source $systemRegistryWriteBoolSource `
+        -BehaviorSource $systemRegistryWriteBoolBehaviorSource `
+        -OutputStem 'system-registry-write-bool' `
+        -PassPattern $systemRegistryWriteBoolPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099b6b0' `
+        -Description 'CWideString wide-literal constructor' `
+        -Source $wideLiteralConstructorSource `
+        -BehaviorSource $wideLiteralConstructorBehaviorSource `
+        -OutputStem 'wide-literal-constructor' `
+        -PassPattern $wideLiteralConstructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099b7d0' `
+        -Description 'CWideString copy assignment' `
+        -Source $wideStringCopyAssignmentSource `
+        -BehaviorSource $wideStringCopyAssignmentBehaviorSource `
+        -OutputStem 'wide-string-copy-assignment' `
+        -PassPattern $wideStringCopyAssignmentPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099efb0' `
+        -Description 'CCharString counted-storage copy assignment' `
+        -Source $charStringCopyAssignmentSource `
+        -BehaviorSource $charStringCopyAssignmentBehaviorSource `
+        -OutputStem 'char-string-copy-assignment' `
+        -PassPattern $charStringCopyAssignmentPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009a76d0' `
+        -Description 'basic retail-bank navigator setter' `
+        -Source $retailBankNavigatorSource `
+        -BehaviorSource $retailBankNavigatorBehaviorSource `
+        -OutputStem 'retail-bank-navigator' `
+        -PassPattern $retailBankNavigatorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009a8150' `
+        -Description 'basic retail-bank alias wrapper' `
+        -Source $retailBankAliasSource `
+        -BehaviorSource $retailBankAliasBehaviorSource `
+        -OutputStem 'retail-bank-alias' `
+        -PassPattern $retailBankAliasPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009a4ec0' `
+        -Description 'global system-manager accessor' `
+        -Source $getSystemManagerSource `
+        -BehaviorSource $getSystemManagerBehaviorSource `
+        -OutputStem 'get-system-manager' `
+        -PassPattern $getSystemManagerPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009a0ef0' `
+        -Description 'CXMVPlayer left-aligned text setter' `
+        -Source $movieLeftAlignSource `
+        -BehaviorSource $movieLeftAlignBehaviorSource `
+        -OutputStem 'movie-left-align' `
+        -PassPattern $movieLeftAlignPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00404a80' `
+        -Description 'global IME primitive accessor' `
+        -Source $imePrimitiveSource `
+        -BehaviorSource $imePrimitiveBehaviorSource `
+        -OutputStem 'ime-primitive' `
+        -PassPattern $imePrimitivePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '004014a0' `
+        -Description 'CRC table accumulator' `
+        -Source $crcCalcSource `
+        -BehaviorSource $crcCalcBehaviorSource `
+        -OutputStem 'crc-calc' `
+        -PassPattern $crcCalcPassPattern
+
+    Invoke-VerifiedLeaf `
         -Address '00499ce0' `
         -Description 'CProgressDisplay constructor' `
         -Source $progressDisplayConstructorSource `
@@ -1089,8 +1921,7 @@ try {
         -Source $systemManagerInitSource `
         -BehaviorSource $systemManagerInitBehaviorSource `
         -OutputStem 'system-manager-init-constructor' `
-        -PassPattern $systemManagerInitPassPattern `
-        -AllowMove '0x20:3:0x50'
+        -PassPattern $systemManagerInitPassPattern
 
     Invoke-VerifiedLeaf `
         -Address '009d8250' `
@@ -1134,6 +1965,110 @@ try {
         -BehaviorSource $defaultLanguageNameBehaviorSource `
         -OutputStem 'default-language-name' `
         -PassPattern $defaultLanguageNamePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00415260' `
+        -Description 'language-specific font-bank name factory' `
+        -Source $fontBankNameSource `
+        -BehaviorSource $fontBankNameBehaviorSource `
+        -OutputStem 'font-bank-name' `
+        -PassPattern $fontBankNamePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00415440' `
+        -Description 'language-specific streaming-font bank factory' `
+        -Source $streamingFontBankNameSource `
+        -BehaviorSource $streamingFontBankNameBehaviorSource `
+        -OutputStem 'streaming-font-bank-name' `
+        -PassPattern $streamingFontBankNamePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0041a0a0' `
+        -Description 'first miscellaneous-resource directory factory' `
+        -Source $miscDirectoryASource `
+        -BehaviorSource $miscDirectoryABehaviorSource `
+        -OutputStem 'misc-directory-a' `
+        -PassPattern $miscDirectoryAPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0041a0c0' `
+        -Description 'second miscellaneous-resource directory factory' `
+        -Source $miscDirectoryBSource `
+        -BehaviorSource $miscDirectoryBBehaviorSource `
+        -OutputStem 'misc-directory-b' `
+        -PassPattern $miscDirectoryBPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0041a100' `
+        -Description 'graphics-resource directory factory' `
+        -Source $graphicsDirectorySource `
+        -BehaviorSource $graphicsDirectoryBehaviorSource `
+        -OutputStem 'graphics-directory' `
+        -PassPattern $graphicsDirectoryPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0041a120' `
+        -Description 'first language-resource directory factory' `
+        -Source $languageDirectoryASource `
+        -BehaviorSource $languageDirectoryABehaviorSource `
+        -OutputStem 'language-directory-a' `
+        -PassPattern $languageDirectoryAPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0041a1e0' `
+        -Description 'shader-resource directory factory' `
+        -Source $shadersDirectorySource `
+        -BehaviorSource $shadersDirectoryBehaviorSource `
+        -OutputStem 'shaders-directory' `
+        -PassPattern $shadersDirectoryPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0041a180' `
+        -Description 'cache-resource directory factory' `
+        -Source $cacheDirectorySource `
+        -BehaviorSource $cacheDirectoryBehaviorSource `
+        -OutputStem 'cache-directory' `
+        -PassPattern $cacheDirectoryPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0041a330' `
+        -Description 'second language-resource directory factory' `
+        -Source $languageDirectoryBSource `
+        -BehaviorSource $languageDirectoryBBehaviorSource `
+        -OutputStem 'language-directory-b' `
+        -PassPattern $languageDirectoryBPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0041a4c0' `
+        -Description 'auto-save checkpoint directory factory' `
+        -Source $checkpointDirectorySource `
+        -BehaviorSource $checkpointDirectoryBehaviorSource `
+        -OutputStem 'checkpoint-directory' `
+        -PassPattern $checkpointDirectoryPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009d4a40' `
+        -Description 'definition string-table pathname setter' `
+        -Source $defTablePathSource `
+        -BehaviorSource $defTablePathBehaviorSource `
+        -OutputStem 'def-table-path' `
+        -PassPattern $defTablePathPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009c7a40' `
+        -Description 'bank-handle wide-string accessor' `
+        -Source $bankHandleSource `
+        -BehaviorSource $bankHandleBehaviorSource `
+        -OutputStem 'bank-handle' `
+        -PassPattern $bankHandlePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '009cc410' `
+        -Description 'vector-map exact-key lookup' `
+        -Source $vectorMapLookupSource `
+        -BehaviorSource $vectorMapLookupBehaviorSource `
+        -OutputStem 'vector-map-lookup' `
+        -PassPattern $vectorMapLookupPassPattern
 
     Invoke-VerifiedLeaf `
         -Address '0099b6a0' `
@@ -1800,6 +2735,87 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase3Object" $gfmainPhase3Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase3Object)
+    ) {
+        throw 'Failed to compile the GFMain Phase 3 integration unit.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase4Object" $gfmainPhase4Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase4Object)
+    ) {
+        throw 'Failed to compile the GFMain Phase 4 integration unit.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase5Object" $gfmainPhase5Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase5Object)
+    ) {
+        throw 'Failed to compile the GFMain Phase 5 integration unit.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase6Object" $gfmainPhase6Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase6Object)
+    ) {
+        throw 'Failed to compile the GFMain Phase 6 integration unit.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase7Object" $gfmainPhase7Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase7Object)
+    ) {
+        throw 'Failed to compile the GFMain Phase 7 integration unit.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase8Object" $gfmainPhase8Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase8Object)
+    ) {
+        throw 'Failed to compile the GFMain Phase 8 integration unit.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase9Object" $gfmainPhase9Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase9Object)
+    ) {
+        throw 'Failed to compile the GFMain Phase 9 integration unit.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase10Object" $gfmainPhase10Source
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase10Object)
+    ) {
+        throw 'Failed to compile the GFMain Phase 10 integration unit.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainCompleteObject" $gfmainCompleteSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainCompleteObject)
+    ) {
+        throw 'Failed to compile the complete GFMain parent coordinator.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$gfInitialiseProgressPhaseObject" $gfInitialiseProgressPhaseSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -1815,6 +2831,56 @@ try {
         -not (Test-Path -LiteralPath $gfInitialiseEngineBoundaryObject)
     ) {
         throw 'Failed to compile the GFInitialise engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$phase6RuntimeBoundaryObject" `
+        $phase6RuntimeBoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $phase6RuntimeBoundaryObject)
+    ) {
+        throw 'Failed to compile the exact Phase 6 definition-table boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$systemManagerRuntimeBoundaryObject" `
+        $systemManagerRuntimeBoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $systemManagerRuntimeBoundaryObject)
+    ) {
+        throw 'Failed to compile the exact system-manager runtime boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$saveMetadataRuntimeBoundaryObject" `
+        $saveMetadataRuntimeBoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $saveMetadataRuntimeBoundaryObject)
+    ) {
+        throw 'Failed to compile the exact save-metadata runtime boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$phase8RuntimeBoundaryObject" `
+        $phase8RuntimeBoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $phase8RuntimeBoundaryObject)
+    ) {
+        throw 'Failed to compile the exact Phase 8 runtime boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$phase7WindowTitleRuntimeBoundaryObject" `
+        $phase7WindowTitleRuntimeBoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $phase7WindowTitleRuntimeBoundaryObject)
+    ) {
+        throw 'Failed to compile the exact Phase 7 window-title boundary.'
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
@@ -1848,6 +2914,165 @@ try {
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         /DFABLETLC_ENABLE_GFMAIN_PHASE2 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE3 `
+        "/Fo$stage3Phase3BoundaryObject" $stage2BoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $stage3Phase3BoundaryObject)
+    ) {
+        throw 'Failed to compile the Stage 3 Phase 3 engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE2 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE3 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE4 `
+        "/Fo$stage3Phase4BoundaryObject" $stage2BoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $stage3Phase4BoundaryObject)
+    ) {
+        throw 'Failed to compile the Stage 3 Phase 4 engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE2 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE3 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE4 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE5 `
+        "/Fo$stage3Phase5BoundaryObject" $stage2BoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $stage3Phase5BoundaryObject)
+    ) {
+        throw 'Failed to compile the Stage 3 Phase 5 engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE2 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE3 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE4 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE5 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE6 `
+        "/Fo$stage3Phase6BoundaryObject" $stage2BoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $stage3Phase6BoundaryObject)
+    ) {
+        throw 'Failed to compile the Stage 3 Phase 6 engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE2 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE3 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE4 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE5 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE6 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE7 `
+        "/Fo$stage3Phase7BoundaryObject" $stage2BoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $stage3Phase7BoundaryObject)
+    ) {
+        throw 'Failed to compile the Stage 3 Phase 7 engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE2 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE3 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE4 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE5 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE6 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE7 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE8 `
+        "/Fo$stage3Phase8BoundaryObject" $stage2BoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $stage3Phase8BoundaryObject)
+    ) {
+        throw 'Failed to compile the Stage 3 Phase 8 engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE2 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE3 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE4 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE5 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE6 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE7 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE8 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE9 `
+        "/Fo$stage3Phase9BoundaryObject" $stage2BoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $stage3Phase9BoundaryObject)
+    ) {
+        throw 'Failed to compile the Stage 3 Phase 9 engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE2 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE3 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE4 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE5 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE6 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE7 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE8 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE9 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE10 `
+        "/Fo$stage3Phase10BoundaryObject" $stage2BoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $stage3Phase10BoundaryObject)
+    ) {
+        throw 'Failed to compile the Stage 3 Phase 10 engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE2 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE3 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE4 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE5 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE6 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE7 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE8 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE9 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE10 `
+        /DFABLETLC_EXECUTE_EXACT_GFINITIALISE `
+        /DFABLETLC_EXECUTE_EXACT_GFUNINITIALISE `
+        /DFABLETLC_EXECUTE_EXACT_CIME `
+        /DFABLETLC_EXECUTE_EXACT_DEFINITION_TABLE `
+        /DFABLETLC_EXECUTE_EXACT_WRITE_PERMISSIONS `
+        /DFABLETLC_EXECUTE_EXACT_SYSTEM_MANAGER `
+        /DFABLETLC_EXECUTE_EXACT_SAVE_METADATA `
+        /DFABLETLC_EXECUTE_EXACT_PHASE8 `
+        /DFABLETLC_EXECUTE_EXACT_WINDOW_TITLE `
+        "/Fo$stage3CompleteBoundaryObject" $stage2BoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $stage3CompleteBoundaryObject)
+    ) {
+        throw 'Failed to compile the complete Stage 3 engine boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE2 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE3 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE4 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE5 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE6 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE7 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE8 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE9 `
+        /DFABLETLC_ENABLE_GFMAIN_PHASE10 `
+        /DFABLETLC_EXECUTE_EXACT_GFUNINITIALISE `
+        /DFABLETLC_EXECUTE_EXACT_CIME `
+        /DFABLETLC_EXECUTE_EXACT_DEFINITION_TABLE `
+        /DFABLETLC_EXECUTE_EXACT_WRITE_PERMISSIONS `
+        /DFABLETLC_EXECUTE_EXACT_SYSTEM_MANAGER `
+        /DFABLETLC_EXECUTE_EXACT_SAVE_METADATA `
+        /DFABLETLC_EXECUTE_EXACT_PHASE8 `
+        /DFABLETLC_EXECUTE_EXACT_WINDOW_TITLE `
         /DFABLETLC_ENABLE_VISUAL_BOOT `
         "/Fo$visualBoundaryObject" $stage2BoundarySource
     if (
@@ -2551,6 +3776,87 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase3BehaviorObject" $gfmainPhase3BehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase3BehaviorObject)
+    ) {
+        throw 'Failed to compile the GFMain Phase 3 behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase4BehaviorObject" $gfmainPhase4BehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase4BehaviorObject)
+    ) {
+        throw 'Failed to compile the GFMain Phase 4 behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase5BehaviorObject" $gfmainPhase5BehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase5BehaviorObject)
+    ) {
+        throw 'Failed to compile the GFMain Phase 5 behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase6BehaviorObject" $gfmainPhase6BehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase6BehaviorObject)
+    ) {
+        throw 'Failed to compile the GFMain Phase 6 behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase7BehaviorObject" $gfmainPhase7BehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase7BehaviorObject)
+    ) {
+        throw 'Failed to compile the GFMain Phase 7 behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase8BehaviorObject" $gfmainPhase8BehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase8BehaviorObject)
+    ) {
+        throw 'Failed to compile the GFMain Phase 8 behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase9BehaviorObject" $gfmainPhase9BehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase9BehaviorObject)
+    ) {
+        throw 'Failed to compile the GFMain Phase 9 behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainPhase10BehaviorObject" $gfmainPhase10BehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase10BehaviorObject)
+    ) {
+        throw 'Failed to compile the GFMain Phase 10 behavior fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gfmainCompleteBehaviorObject" $gfmainCompleteBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainCompleteBehaviorObject)
+    ) {
+        throw 'Failed to compile the complete GFMain parent fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$gfInitialiseProgressPhaseBehaviorObject" `
         $gfInitialiseProgressPhaseBehaviorSource
     if (
@@ -2593,10 +3899,217 @@ try {
         $systemManagerInitObject
     )
 
+    $phase3RuntimeObjects = @(
+        $gfmainPhase1Object,
+        $gfmainPhase2Object,
+        $gfmainPhase3Object,
+        $stage3Phase3BoundaryObject,
+        $setCurrentPathObject,
+        $getProjectPathObject,
+        $wideStringConstructorObject,
+        $wideStringDestructorObject,
+        $wideStringCopyObject,
+        $wideStringFromCharObject,
+        $wideStringAddRightObject,
+        $wideStringAddLeftObject,
+        $charStringConstructorObject,
+        $charStringDefaultObject,
+        $charStringDestructorObject,
+        $charToWideStringObject,
+        $defaultLanguageNameObject,
+        $profileStartObject,
+        $profileEndObject,
+        $primaryLeftAlignmentObject,
+        $secondaryLeftAlignmentObject,
+        $asyncFailureHandlingObject,
+        $startupLatchObject,
+        $fileInstallerGetObject,
+        $systemManagerInitObject
+    )
+
+    $phase4RuntimeObjects = @(
+        $gfmainPhase1Object,
+        $gfmainPhase2Object,
+        $gfmainPhase3Object,
+        $gfmainPhase4Object,
+        $stage3Phase4BoundaryObject,
+        $setCurrentPathObject,
+        $getProjectPathObject,
+        $wideStringConstructorObject,
+        $wideStringDestructorObject,
+        $wideStringCopyObject,
+        $wideStringFromCharObject,
+        $wideStringAddRightObject,
+        $wideStringAddLeftObject,
+        $charStringConstructorObject,
+        $charStringDefaultObject,
+        $charStringDestructorObject,
+        $charStringCopyAssignmentObject,
+        $charToWideStringObject,
+        $defaultLanguageNameObject,
+        $profileStartObject,
+        $profileEndObject,
+        $primaryLeftAlignmentObject,
+        $secondaryLeftAlignmentObject,
+        $retailBankNavigatorObject,
+        $retailBankAliasObject,
+        $asyncFailureHandlingObject,
+        $startupLatchObject,
+        $fileInstallerGetObject,
+        $systemManagerInitObject
+    )
+
+    $phase5RuntimeObjects = @(
+        $gfmainPhase1Object,
+        $gfmainPhase2Object,
+        $gfmainPhase3Object,
+        $gfmainPhase4Object,
+        $gfmainPhase5Object,
+        $stage3Phase5BoundaryObject,
+        $setCurrentPathObject,
+        $getProjectPathObject,
+        $wideStringConstructorObject,
+        $wideStringDestructorObject,
+        $wideStringCopyObject,
+        $wideStringFromCharObject,
+        $wideStringAddRightObject,
+        $wideStringAddLeftObject,
+        $charStringConstructorObject,
+        $charStringDefaultObject,
+        $charStringDestructorObject,
+        $charStringCopyAssignmentObject,
+        $charToWideStringObject,
+        $defaultLanguageNameObject,
+        $miscDirectoryAObject,
+        $miscDirectoryBObject,
+        $graphicsDirectoryObject,
+        $languageDirectoryAObject,
+        $shadersDirectoryObject,
+        $languageDirectoryBObject,
+        $profileStartObject,
+        $profileEndObject,
+        $primaryLeftAlignmentObject,
+        $secondaryLeftAlignmentObject,
+        $retailBankNavigatorObject,
+        $retailBankAliasObject,
+        $asyncFailureHandlingObject,
+        $startupLatchObject,
+        $fileInstallerGetObject,
+        $systemManagerInitObject
+    )
+
+    $phase6RuntimeObjects = @(
+        $phase5RuntimeObjects |
+            Where-Object { $_ -ne $stage3Phase5BoundaryObject }
+    )
+    $phase6RuntimeObjects += @(
+        $gfmainPhase6Object,
+        $stage3Phase6BoundaryObject
+    )
+
+    $phase7RuntimeObjects = @(
+        $phase6RuntimeObjects |
+            Where-Object { $_ -ne $stage3Phase6BoundaryObject }
+    )
+    $phase7RuntimeObjects += @(
+        $gfmainPhase7Object,
+        $stage3Phase7BoundaryObject,
+        $cacheDirectoryObject,
+        $streamingFontBankNameObject
+    )
+
+    $phase8RuntimeObjects = @(
+        $phase7RuntimeObjects |
+            Where-Object { $_ -ne $stage3Phase7BoundaryObject }
+    )
+    $phase8RuntimeObjects += @(
+        $gfmainPhase8Object,
+        $stage3Phase8BoundaryObject
+    )
+
+    $phase9RuntimeObjects = @(
+        $phase8RuntimeObjects |
+            Where-Object { $_ -ne $stage3Phase8BoundaryObject }
+    )
+    $phase9RuntimeObjects += @(
+        $gfmainPhase9Object,
+        $stage3Phase9BoundaryObject,
+        $getSystemManagerObject,
+        $movieLeftAlignObject,
+        $imePrimitiveObject
+    )
+
+    $phase10RuntimeObjects = @(
+        $phase9RuntimeObjects |
+            Where-Object { $_ -ne $stage3Phase9BoundaryObject }
+    )
+    $phase10RuntimeObjects += @(
+        $gfmainPhase10Object,
+        $gfmainCompleteObject,
+        $stage3Phase10BoundaryObject
+    )
+
+    $stage3CompleteRuntimeObjects = @(
+        $phase10RuntimeObjects |
+            Where-Object { $_ -ne $stage3Phase10BoundaryObject }
+    )
+    $stage3CompleteRuntimeObjects += @(
+        $stage3CompleteBoundaryObject,
+        $defTablePathObject,
+        $defStringTableLoadObject,
+        $myDocumentsWritePermissionsObject,
+        $phase6RuntimeBoundaryObject,
+        $gfInitialiseObject,
+        $gfUninitialiseObject,
+        $imeInitialiseObject,
+        $systemManagerInitialiseObject,
+        $systemManagerRuntimeBoundaryObject,
+        $generateMetFilesObject,
+        $saveMetadataRuntimeBoundaryObject,
+        $doEulaObject,
+        $configDetectionObject,
+        $freeConfigDetectionObject,
+        $phase8RuntimeBoundaryObject,
+        $getWindowTitleObject,
+        $phase7WindowTitleRuntimeBoundaryObject,
+        $gfInitialiseEngineBoundaryObject,
+        $progressSetupObject,
+        $progressDisplayConstructorObject,
+        $progressDisplayTextModeObject,
+        $progressDisplayIsActiveObject,
+        $setProgressDisplayObject,
+        $getProgressDisplayObject
+    )
+
     $visualRuntimeObjects = @(
         $gfmainPhase1Object,
         $gfmainPhase2Object,
+        $gfmainPhase3Object,
+        $gfmainPhase4Object,
+        $gfmainPhase5Object,
+        $gfmainPhase6Object,
+        $gfmainPhase7Object,
+        $gfmainPhase8Object,
+        $gfmainPhase9Object,
+        $gfmainPhase10Object,
+        $gfmainCompleteObject,
+        $defTablePathObject,
+        $defStringTableLoadObject,
+        $myDocumentsWritePermissionsObject,
+        $phase6RuntimeBoundaryObject,
         $gfInitialiseObject,
+        $gfUninitialiseObject,
+        $imeInitialiseObject,
+        $systemManagerInitialiseObject,
+        $systemManagerRuntimeBoundaryObject,
+        $generateMetFilesObject,
+        $saveMetadataRuntimeBoundaryObject,
+        $doEulaObject,
+        $configDetectionObject,
+        $freeConfigDetectionObject,
+        $phase8RuntimeBoundaryObject,
+        $getWindowTitleObject,
+        $phase7WindowTitleRuntimeBoundaryObject,
         $gfInitialiseEngineBoundaryObject,
         $progressSetupObject,
         $progressDisplayConstructorObject,
@@ -2636,11 +4149,32 @@ try {
         $getProjectPathObject,
         $wideStringConstructorObject,
         $wideStringDestructorObject,
+        $wideStringCopyObject,
+        $wideStringFromCharObject,
+        $wideStringAddRightObject,
+        $wideStringAddLeftObject,
         $charStringConstructorObject,
         $charStringDefaultObject,
         $charStringDestructorObject,
+        $charStringCopyAssignmentObject,
+        $charToWideStringObject,
+        $defaultLanguageNameObject,
+        $miscDirectoryAObject,
+        $miscDirectoryBObject,
+        $graphicsDirectoryObject,
+        $languageDirectoryAObject,
+        $shadersDirectoryObject,
+        $cacheDirectoryObject,
+        $languageDirectoryBObject,
+        $streamingFontBankNameObject,
         $profileStartObject,
         $profileEndObject,
+        $primaryLeftAlignmentObject,
+        $secondaryLeftAlignmentObject,
+        $movieLeftAlignObject,
+        $imePrimitiveObject,
+        $retailBankNavigatorObject,
+        $retailBankAliasObject,
         $asyncFailureHandlingObject,
         $startupLatchObject,
         $fileInstallerGetObject,
@@ -2685,6 +4219,186 @@ try {
         (($gfmainPhase2Output -join "`n") -notmatch [regex]::Escape($gfmainPhase2PassPattern))
     ) {
         throw "GFMain Phase 2 fixture failed with exit code $gfmainPhase2ExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$gfmainPhase3BehaviorExecutable" `
+        @phase3RuntimeObjects $gfmainPhase3BehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase3BehaviorExecutable)
+    ) {
+        throw 'Failed to link the GFMain Phase 3 behavior fixture.'
+    }
+
+    $gfmainPhase3Output = & $gfmainPhase3BehaviorExecutable 2>&1
+    $gfmainPhase3ExitCode = $LASTEXITCODE
+    $gfmainPhase3Output | Write-Output
+    if (
+        $gfmainPhase3ExitCode -ne 0 -or
+        (($gfmainPhase3Output -join "`n") -notmatch [regex]::Escape($gfmainPhase3PassPattern))
+    ) {
+        throw "GFMain Phase 3 fixture failed with exit code $gfmainPhase3ExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$gfmainPhase4BehaviorExecutable" `
+        @phase4RuntimeObjects $gfmainPhase4BehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase4BehaviorExecutable)
+    ) {
+        throw 'Failed to link the GFMain Phase 4 behavior fixture.'
+    }
+
+    $gfmainPhase4Output = & $gfmainPhase4BehaviorExecutable 2>&1
+    $gfmainPhase4ExitCode = $LASTEXITCODE
+    $gfmainPhase4Output | Write-Output
+    if (
+        $gfmainPhase4ExitCode -ne 0 -or
+        (($gfmainPhase4Output -join "`n") -notmatch [regex]::Escape($gfmainPhase4PassPattern))
+    ) {
+        throw "GFMain Phase 4 fixture failed with exit code $gfmainPhase4ExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$gfmainPhase5BehaviorExecutable" `
+        @phase5RuntimeObjects $gfmainPhase5BehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase5BehaviorExecutable)
+    ) {
+        throw 'Failed to link the GFMain Phase 5 behavior fixture.'
+    }
+
+    $gfmainPhase5Output = & $gfmainPhase5BehaviorExecutable 2>&1
+    $gfmainPhase5ExitCode = $LASTEXITCODE
+    $gfmainPhase5Output | Write-Output
+    if (
+        $gfmainPhase5ExitCode -ne 0 -or
+        (($gfmainPhase5Output -join "`n") -notmatch [regex]::Escape($gfmainPhase5PassPattern))
+    ) {
+        throw "GFMain Phase 5 fixture failed with exit code $gfmainPhase5ExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$gfmainPhase6BehaviorExecutable" `
+        @phase6RuntimeObjects $gfmainPhase6BehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase6BehaviorExecutable)
+    ) {
+        throw 'Failed to link the GFMain Phase 6 behavior fixture.'
+    }
+
+    $gfmainPhase6Output = & $gfmainPhase6BehaviorExecutable 2>&1
+    $gfmainPhase6ExitCode = $LASTEXITCODE
+    $gfmainPhase6Output | Write-Output
+    if (
+        $gfmainPhase6ExitCode -ne 0 -or
+        (($gfmainPhase6Output -join "`n") -notmatch [regex]::Escape($gfmainPhase6PassPattern))
+    ) {
+        throw "GFMain Phase 6 fixture failed with exit code $gfmainPhase6ExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$gfmainPhase7BehaviorExecutable" `
+        @phase7RuntimeObjects $gfmainPhase7BehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase7BehaviorExecutable)
+    ) {
+        throw 'Failed to link the GFMain Phase 7 behavior fixture.'
+    }
+
+    $gfmainPhase7Output = & $gfmainPhase7BehaviorExecutable 2>&1
+    $gfmainPhase7ExitCode = $LASTEXITCODE
+    $gfmainPhase7Output | Write-Output
+    if (
+        $gfmainPhase7ExitCode -ne 0 -or
+        (($gfmainPhase7Output -join "`n") -notmatch [regex]::Escape($gfmainPhase7PassPattern))
+    ) {
+        throw "GFMain Phase 7 fixture failed with exit code $gfmainPhase7ExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$gfmainPhase8BehaviorExecutable" `
+        @phase8RuntimeObjects $gfmainPhase8BehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase8BehaviorExecutable)
+    ) {
+        throw 'Failed to link the GFMain Phase 8 behavior fixture.'
+    }
+
+    $gfmainPhase8Output = & $gfmainPhase8BehaviorExecutable 2>&1
+    $gfmainPhase8ExitCode = $LASTEXITCODE
+    $gfmainPhase8Output | Write-Output
+    if (
+        $gfmainPhase8ExitCode -ne 0 -or
+        (($gfmainPhase8Output -join "`n") -notmatch [regex]::Escape($gfmainPhase8PassPattern))
+    ) {
+        throw "GFMain Phase 8 fixture failed with exit code $gfmainPhase8ExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$gfmainPhase9BehaviorExecutable" `
+        @phase9RuntimeObjects $gfmainPhase9BehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase9BehaviorExecutable)
+    ) {
+        throw 'Failed to link the GFMain Phase 9 behavior fixture.'
+    }
+
+    $gfmainPhase9Output = & $gfmainPhase9BehaviorExecutable 2>&1
+    $gfmainPhase9ExitCode = $LASTEXITCODE
+    $gfmainPhase9Output | Write-Output
+    if (
+        $gfmainPhase9ExitCode -ne 0 -or
+        (($gfmainPhase9Output -join "`n") -notmatch [regex]::Escape($gfmainPhase9PassPattern))
+    ) {
+        throw "GFMain Phase 9 fixture failed with exit code $gfmainPhase9ExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$gfmainCompleteBehaviorExecutable" `
+        $gfmainCompleteObject $gfmainCompleteBehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainCompleteBehaviorExecutable)
+    ) {
+        throw 'Failed to link the complete GFMain parent fixture.'
+    }
+
+    $gfmainCompleteOutput = & $gfmainCompleteBehaviorExecutable 2>&1
+    $gfmainCompleteExitCode = $LASTEXITCODE
+    $gfmainCompleteOutput | Write-Output
+    if (
+        $gfmainCompleteExitCode -ne 0 -or
+        (($gfmainCompleteOutput -join "`n") -notmatch [regex]::Escape($gfmainCompletePassPattern))
+    ) {
+        throw "Complete GFMain fixture failed with exit code $gfmainCompleteExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$gfmainPhase10BehaviorExecutable" `
+        @phase10RuntimeObjects $gfmainPhase10BehaviorObject
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gfmainPhase10BehaviorExecutable)
+    ) {
+        throw 'Failed to link the GFMain Phase 10 behavior fixture.'
+    }
+
+    $gfmainPhase10Output = & $gfmainPhase10BehaviorExecutable 2>&1
+    $gfmainPhase10ExitCode = $LASTEXITCODE
+    $gfmainPhase10Output | Write-Output
+    if (
+        $gfmainPhase10ExitCode -ne 0 -or
+        (($gfmainPhase10Output -join "`n") -notmatch [regex]::Escape($gfmainPhase10PassPattern))
+    ) {
+        throw "GFMain Phase 10 fixture failed with exit code $gfmainPhase10ExitCode."
     }
 
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
@@ -2739,7 +4453,8 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:windows `
-        "/out:$stage3Executable" $winMainObject @phase2RuntimeObjects
+        "/out:$stage3Executable" `
+        $winMainObject @stage3CompleteRuntimeObjects
     if (
         $LASTEXITCODE -ne 0 -or
         -not (Test-Path -LiteralPath $stage3Executable)
@@ -2908,7 +4623,7 @@ try {
     Write-Output "BOOTSTRAP_BUILD PASS configuration=$Configuration executable=$executable"
     Write-Output "STAGE1_STARTUP PASS executable=$stage1Executable boundary=GFMain"
     Write-Output "STAGE2_STARTUP PASS executable=$stage2Executable boundary=GFMainPhase2"
-    Write-Output "STAGE3_STARTUP PASS executable=$stage3Executable boundary=GFMainPhase3"
+    Write-Output "STAGE3_STARTUP PASS executable=$stage3Executable boundary=GFMainComplete deftable=ExactRelocationMatch permissions=ExactRelocationMatch windowtitle=ExactRelocationMatch phase8=ExactRelocationMatch systemmanager=ExactRelocationMatch cime=ExactRelocationMatch savemetadata=ExactRelocationMatch gfinitialise=ExactRelocationMatch gfuninitialise=ExactRelocationMatch"
     Write-Output "GFINITIALISE_COORDINATOR PASS address=004022b0 parity=RELOCATION_MATCH"
     Write-Output "GFINITIALISE_PROGRESS_INTEGRATION PASS boundary=GFInitialiseTail"
     $visualAssetGrade = if ($visualBootUsesRetailAsset) {

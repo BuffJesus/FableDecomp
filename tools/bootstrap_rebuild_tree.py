@@ -175,6 +175,32 @@ def read_retail_parity(path: Path) -> dict[str, dict[str, str]]:
         return {normalize_address(row["address"]): row for row in csv.DictReader(stream, delimiter="\t")}
 
 
+def read_verified_boot_leaves(path: Path, root: Path) -> dict[str, dict[str, str]]:
+    """Load independently gated exact leaves that bypass the bulk candidate queue."""
+    if not path.exists():
+        return {}
+    accepted_grades = {"MATCH", "RELOCATION_MATCH"}
+    result: dict[str, dict[str, str]] = {}
+    with path.open("r", encoding="utf-8-sig", errors="replace", newline="") as stream:
+        for row in csv.DictReader(stream, delimiter="\t"):
+            grade = row.get("validated_grade", "")
+            source = row.get("validated_source", "")
+            if grade not in accepted_grades or not source:
+                continue
+            source_path = Path(source)
+            if not source_path.is_absolute():
+                source_path = root / source_path
+            if not source_path.exists():
+                continue
+            result[normalize_address(row["target"])] = {
+                "status": "PASS",
+                "behavior_test": "PASS",
+                "source": str(source_path.resolve()),
+                "retail_parity": grade,
+            }
+    return result
+
+
 def verified_lifts(root: Path) -> dict[str, tuple[str, str]]:
     """Current hand-verified Tier-0 oracle results."""
     proof_source = root / "lift" / "proofs" / "src"
@@ -268,6 +294,9 @@ def main() -> int:
     )
     compiled = read_compiled_candidates(rebuild / "compile-gate" / "vc71-compiled.tsv")
     parity = read_retail_parity(rebuild / "compile-gate" / "retail-parity.tsv")
+    boot_leaves = read_verified_boot_leaves(
+        rebuild / "integration" / "gfmain_calls.tsv", root
+    )
     lifts = verified_lifts(root)
 
     functions: list[FunctionRow] = []
@@ -337,10 +366,14 @@ def main() -> int:
         data = asdict(row)
         data["prototype_complete"] = int(row.prototype_complete)
         data["agent_source_path"] = agent_code.get(row.address, "")
-        data["compiled_status"] = compiled.get(row.address, {}).get("status", "")
-        data["behavior_test"] = compiled.get(row.address, {}).get("behavior_test", "")
-        data["retail_parity"] = parity.get(row.address, {}).get("status", "")
-        data["compiled_source"] = compiled.get(row.address, {}).get("source", "")
+        compiled_proof = compiled.get(row.address) or boot_leaves.get(row.address, {})
+        parity_status = parity.get(row.address, {}).get("status", "")
+        if not parity_status:
+            parity_status = boot_leaves.get(row.address, {}).get("retail_parity", "")
+        data["compiled_status"] = compiled_proof.get("status", "")
+        data["behavior_test"] = compiled_proof.get("behavior_test", "")
+        data["retail_parity"] = parity_status
+        data["compiled_source"] = compiled_proof.get("source", "")
         function_rows.append(data)
     function_fields = list(function_rows[0].keys()) if function_rows else []
     write_tsv(manifest_dir / "functions.tsv", function_fields, function_rows)

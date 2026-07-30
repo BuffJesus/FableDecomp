@@ -1,10 +1,9 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-28 (live CTable title-rule and selection components;
-CUIState-driven main-menu/Options rows; keyboard/controller activation;
-retail list and screen-transition sounds; pristine retail textures; exact
-Redefine row composition/text origins; recovered Continue/save-browser
-construction and metadata boundary).*
+*Last updated: 2026-07-29 (GFMain 257/257 direct calls proven; all ten
+phases have every observed direct call closed; Phase 5 65/65; Phase 6
+61/61; all phases callable through final return; D3D9 visual checkpoint
+green).*
 
 ## Repository-history repair (2026-07-28)
 
@@ -21,8 +20,335 @@ construction and metadata boundary).*
   objects require GitHub-side dereferencing/garbage collection before the old
   blob IDs cease resolving.
 
-## Latest publication checkpoint (2026-07-28)
+## Latest publication checkpoint (2026-07-29)
 
+- The canonical public metrics were refreshed after the latest compile/parity
+  ledger settled: 5,355 curated sources compile and pass behavior gates;
+  5,205/49,568 functions are verified functional or matching (10.50%),
+  including 2,900 byte-identical functions (5.85%). GFMain remains 257/257
+  direct calls and 10/10 callable authored phases. The README updater now
+  synchronizes both the landing-page snapshot and detailed metrics table,
+  eliminating the stale 4,984/2,751 snapshot that previously disagreed with
+  the canonical dashboard.
+- Phase 6 definition-table ownership now crosses exact retail code in complete
+  Stage 3 and visual builds. One recovered table object receives the exact
+  `CDefStringTableRecovered::SetTablePath @ 0x009D4A40` (8 bytes), then the
+  exact `CDefStringTable::LoadTable @ 0x009D4C30` (164 bytes) executes the
+  successful file-open, 16 KiB stream, read, flag-publication, and balanced
+  cleanup route through isolated in-memory helpers. Live assertions cover
+  every hop and argument family; the focused exact fixture retains the
+  missing-path and both read-only modes. The same live owner now executes
+  `FableCheckMyDocumentsWritePermissions_00402130` (372 bytes) through its
+  successful create/open/delete route with memory-only Win32 handles and
+  streams, while its focused fixture retains redirected-folder and
+  create/open/delete failures. No probe file is created on the host. The
+  subordinate runtime owner lives in
+  `rebuild/integration/phase6_runtime_boundary.cpp`.
+- `D:\Downloads\fabledecomp_technical_brief.md` was audited as a useful
+  onboarding outline but not imported verbatim. It conflates the 75-byte Stage
+  0 `MemCmp_Unsigned16` proof with the 4,158-byte console registrar, overstates
+  relocation matches as universally byte-identical, treats temporary
+  boundaries as permanent public APIs, and carries a stale roadmap that still
+  lists all ten GFMain phases and exact system-manager recovery as unfinished.
+  Its validated architecture and subsystem inventory were folded into the
+  corrected repository-owned `docs/TECHNICAL_BRIEF.md`, including current
+  metrics, evidence grades, the six-allocation live system-manager route, and
+  the honest scope of the existing C++23/x64 lane.
+- `D:\Downloads\fable-decomp-and-reimpl.7z` has been audited without overlaying
+  it onto the workspace. It is a useful 2013 Anniversary `Ego_r` donor corpus,
+  not TLC retail parity evidence: 34,274 assembled donor function records,
+  1,579 PDB-derived headers, and original source-line grouping. Exact symbol
+  comparison found 30,636 overlaps with the existing donor-name table and 944
+  archive-only strings for later triage. The archive has no top-level license
+  or Git provenance, so its code is not being copied into the publishable tree.
+  See `docs/FABLE_DECOMP_REIMPL_ARCHIVE_AUDIT.md`.
+- `FableRunGFMainComplete` now consolidates the ten authored phase units into
+  one parent seam used by the complete Stage 3 and visual builds. Its fixture
+  covers the successful 1-10 sequence, every phase-specific early return,
+  instance/show propagation, command-line truncation, and the null-command
+  preservation path. This is an integration claim, not byte parity for the
+  3,952-byte retail parent; remaining GFMain gaps are ownership shims.
+- The nonvisual Stage 3 complete build now executes both the exact 311-byte
+  `GFInitialise @ 0x004022B0` coordinator and the exact 64-byte
+  `GFUninitialise @ 0x00401B80` shutdown coordinator through behavior-gated
+  engine boundaries; `GFInitialise` was previously limited to the visual
+  checkpoint and `GFUninitialise` was previously represented only by an
+  observable Phase 10 call. The injectable Phase 10 fixture retains its
+  independent success/failure seam.
+- Complete Stage 3 and visual builds now execute
+  `NUISystem::CIME::Initialise @ 0x00405650` as well. The six-byte global
+  primitive accessor now points at a correctly sized 0x54-byte CIME owner
+  instead of a four-byte token. A runtime assertion proves the exact body
+  reaches its UI initializer once in disabled-IME mode, while the focused
+  exact fixture continues to cover disabled, failure, and fully enabled paths.
+- `CSystemManager::Initialise @ 0x009A6610` now executes in complete Stage 3
+  and visual builds instead of returning an injected Phase 9 result. One
+  recovered 0xC8 `CSystemManagerInit` owner now spans Phase 1 construction,
+  Phase 7 population, and Phase 9 consumption. The live boundary now takes the
+  exact coordinator's recovered default-flags pre-initialization route rather
+  than its early-skip route. Runtime assertions prove process/scratch setup and
+  six owned allocations for display, input, drive, text, mesh, and colours,
+  including the display/mesh component handoff and retail initialization
+  counter. Its independent exact fixture continues to cover early skip, window
+  failure, drive failure, and full eight-allocation success.
+  Subordinate platform/component helpers remain isolated in
+  `rebuild/integration/system_manager_runtime_boundary.cpp`.
+- `CMainGameComponent::GenerateMetFilesFromLugFiles @ 0x00418C3B` now
+  executes in complete Stage 3 and visual builds when Phase 9's recovered
+  optional flag is enabled. The live checkpoint takes the exact 399-byte
+  coordinator's safe no-files route and asserts coordinator entry, wildcard
+  enumeration, and security-cookie closure. Its focused exact fixture still
+  covers one `.lug` file through path splitting, metadata generation, `.met`
+  dumping, and balanced cleanup. Subordinate filesystem/metadata helpers are
+  isolated in `rebuild/integration/save_metadata_runtime_boundary.cpp`.
+- Phase 8 now executes all three exact ownership coordinators in complete
+  Stage 3 and visual builds: `EULA::DoEULAThings @ 0x00401FE0` (136 bytes),
+  `GFConfigDetection @ 0x004017B0` (875 bytes), and
+  `GFFreeConfigDetection @ 0x00401B20` (49 bytes). The live route proves EULA
+  export acceptance/free, configuration creation, video probing,
+  requirements, security-cookie closure, `Config_Release`, and module release.
+  Focused exact fixtures still cover load/export/create/video failures and
+  software fallback. The authored Phase 8 fixture retains both safe process-
+  exit branches. Subordinate DLL/registry/hardware seams are isolated in
+  `rebuild/integration/phase8_runtime_boundary.cpp`.
+- Phase 7 now executes `GetWindowTitle @ 0x004023F0` in complete Stage 3 and
+  visual builds instead of returning an authored title directly. The live
+  route enters the exact 274-byte coordinator through bank allocation/open,
+  tag CRC and fallback lookup, normally owned `CWideString` return, and bank
+  teardown. Runtime assertions cover every hop. The focused exact fixture
+  retains localized group-entry acquisition, bank-handle assignment, and
+  counted release. Its isolated subordinate graph lives in
+  `rebuild/integration/phase7_window_title_runtime_boundary.cpp`.
+- Wiring the shutdown coordinator exposed and corrected an MSVC ABI mismatch:
+  `CSystemManager` is now consistently a `struct` in the singleton accessor,
+  shutdown/error headers, Stage 3 boundary, and Render2D sold-state path.
+  VC7.1 decorates `struct` and `class` return types differently, so this
+  removes a real link-time ownership split without changing the exact retail
+  code bytes.
+- `InitialiseConsoleVariables @ 0x00413C50` closes the final GFMain direct
+  call. Its complete 4,158-byte body relocation-matches retail with 403 COFF
+  relocations preserving 218 calls plus every console vtable, callback,
+  variable address, string, and singleton reference. The focused fixture
+  covers null allocation, successful allocation/constructor handoff, and the
+  existing-singleton initialization path. Phase 1 is now 9/9 and GFMain is
+  257/257 (100.00%).
+- `CSystemManagerInit::CSystemManagerInit @ 0x00403B10` no longer carries a
+  three-byte scheduling exception. Its explicit VC7.1 construction schedule
+  matches all 265 retail bytes with 12 relocations, while the existing fixture
+  continues to prove member construction order, layout, defaults, region
+  setup, identifiers, and cleanup-safe state. This raised GFMain to 256/257
+  before the registrar closed the ledger.
+- `CBankFileManager::OpenIniFile @ 0x009A8170` is now an exact 1,732-byte,
+  112-relocation reconstruction. Every directive literal, empty-string
+  sentinel, parser call, and memory-file vtable write remains linkable. Its
+  fixture covers empty-file parsing, base-directory extraction, both empty
+  and populated bank-map reset paths, and the complete file/stream/string
+  cleanup tail. Phase 5 is therefore closed at 65/65; subsequent Phase 1
+  closure brings the current GFMain ledger to 257/257.
+- `CBankFileManager::OpenRetailBank @ 0x009A8840` is now an exact 1,565-byte,
+  44-relocation reconstruction. Its focused fixture covers the missing-path,
+  invalid-`BIGB`, and bank-version-mismatch guards plus their distinct disk,
+  stream, and counted-owner cleanup. All nine GFMain retail-bank call sites
+  were promoted, raising Phase 5 from 55/65 to 64/65 and GFMain overall from
+  245/257 to 254/257 (98.83%) at that checkpoint; `OpenIniFile` subsequently
+  closed Phase 5.
+- The successful retail-bank dependency chain is now typed and exact beneath
+  that coordinator: `NBankFileManager::CRetailBank::CRetailBank`
+  (84 bytes), `CThreadedFile::CThreadedFile` (41 bytes),
+  `CCountedPointer<CThreadedFile>::Reset` (103 bytes),
+  `CThreadedFile::Open` (310 bytes), and the corrected
+  `CContainedBankMap::operator[]` (156 bytes). Ego PDB layout evidence fixes
+  `CContainedBank` as five unsigned-long fields and rejects the propagated
+  `C2DVector` specialization.
+- Phase 6 is closed at 61/61. The final exact leaves include
+  `NGameText::CDataBank::{constructor,GetPGroupEntry}` and
+  `FableCheckMyDocumentsWritePermissions`, with behavior coverage for async/
+  synchronous group acquisition, LRU refresh, redirected paths, and every
+  create/open/delete failure route.
+- GFMain Phase 10 (`0x00403389-0x00403480`) now closes the authored
+  coordinator through its retail return. Four behavior scenarios cover
+  successful `GFInitialise` with and without startup text, `GFInitialise`
+  failure, a failed Phase 9 system initialization, play/game-state cleanup,
+  both final profile closures, the persistent registry write, and the
+  recovered seven-wide/two-narrow cross-phase cleanup cardinality. Every
+  direct Phase 10 dependency now has an independently proven retail leaf;
+  ownership-heavy boundaries remain in the earlier GFMain phases.
+- Four Phase 10 dependencies are newly exact VC7.1 relocation matches:
+  `CWideString::operator!= @ 0x0099B150` plus
+  `CSystemRegistry::{constructor,WriteBOOL,destructor} @
+  0x0099CF10/0x0099D100/0x0099CF70`. The registry fixtures inject fake import
+  slots and never touch the host registry. The authored Phase 10 fixture keeps
+  its explicit persistence boundary while each underlying retail leaf is
+  independently byte- and behavior-gated.
+- `CUserProfileManager::SetProfileName @ 0x0040D400` is also newly exact.
+  Ego/FableWin PDB signatures and the retail call graph reject its old
+  `AddLineToDrawBuffer` BSim label: the 44-byte wrapper assigns the profile
+  name at `this+0x08`, then calls `Load()` for true or `Save()` for false.
+- Its preceding `CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0`
+  is now an exact 69-byte relocation match too. The focused fixture covers
+  cached access, successful `0x140`-byte construction/counting, and allocation
+  failure, completing the Phase 10 startup-profile pair.
+- `GFUninitialise @ 0x00401B80` replaces the false
+  `CAIStateGroup_JackDragon` destructor label. Ego’s PDB identity and the
+  retail body agree on a 64-byte global shutdown coordinator; its behavior
+  fixture locks the seven subsystem calls plus both manager-access/teardown
+  steps in retail order.
+- `GFHandleSystemInitError @ 0x00401C00` is now an exact 744-byte,
+  100-relocation match. Its fixture covers codes 2, 4, 5, 6, 10, 12-17 and
+  the unknown-code fallback, including every retail message literal. An
+  explicit `0x2C` POD slot layout preserves VC7.1's distinct case temporaries
+  without pretending those slots are recovered higher-level owners.
+- `CGame::Play @ 0x00412F90` is now an exact 394-byte, 23-relocation
+  match. Its focused fixture covers the definition-compilation disposal path,
+  main-game construction and string-init lifetime, legacy frontend selection,
+  component transitions, retired-component destruction, and quit latching.
+  PDB layouts lock `CGame` at `0x210`, its component and quit fields at
+  `+0x08/+0x20C`, and the main/frontend init records at `0x10/0x04`.
+- All ten GFMain call clusters are now callable in Stage 3 and the D3D9 visual
+  checkpoint. Phase 10 has all 21 direct calls proven after reconciling the
+  exact 311-byte `GFInitialise`, both no-op profile closures, seven shared
+  wide-string destructors, two shared narrow-string destructors, the wide
+  comparison, counted profile-manager pair, `GFUninitialise`, the full error
+  dispatcher, `CGame::Play`, and registry closure. GFMain overall is 257/257
+  direct calls proven (100.00%), and Stage 3 reports exact system-manager,
+  CIME, GFInitialise, and GFUninitialise execution beneath
+  `boundary=GFMainComplete`.
+- GFMain Phase 9 (`0x004032D5-0x00403389`) is now callable in Stage 3
+  and the visual checkpoint as the input to Phase 10.
+  The recovered two-bit engine option update, optional movie left-alignment,
+  system-manager initialization, IME initialization, `End basic init` profile
+  marker, and optional save-metadata dispatch are behavior-gated in retail
+  order. System-manager and CIME coordinators now execute exactly in complete
+  runtimes; save-metadata ownership remains an explicit boundary. The injected
+  Phase 9 fixture still proves propagation of non-success system
+  initialization for Phase 10 rather than treating it as an early GFMain
+  return. Optional save-metadata dispatch now enters the exact retail
+  coordinator in complete runtimes instead of stopping at an authored
+  counter.
+- `CXMVPlayer::SetLeftAlignText @ 0x009A0EF0` is a new exact seven-byte
+  relocation match, and the existing six-byte IME primitive accessor at
+  `0x00404A80` is now independently boot-gated. Crediting those plus shared
+  exact string/profile leaves raises Phase 9 to 8/11 direct calls and GFMain
+  overall to 195/257. The full Release bootstrap, all nine phase fixtures,
+  Stage 3 startup, and the D3D9 visual checkpoint pass.
+- GFMain Phase 8 (`0x0040329C-0x004032D5`) is now callable in Stage 3
+  and the visual checkpoint as the input to Phase 9. EULA,
+  hardware configuration detection, and configuration cleanup now execute
+  their exact retail coordinators in complete runtimes. Process exit remains
+  injectable. Five authored behavior scenarios cover the normal route, EULA
+  failure, configuration failure, configured detection skip, and Phase 7's
+  static-map bypass without terminating the test process.
+- GFMain Phase 7 (`0x00403082-0x0040329C`) is now callable in Stage 3
+  and the visual checkpoint as the input to Phase 8. Direct
+  disassembly plus the donor PDB mapped the block onto the recovered 0xC8-byte
+  `CSystemManagerInit`: instance/command/show propagation, default flags,
+  alternate display constants, region settings, shader/window/cache/font
+  strings, inactive/config policy, and the static-map Phase 8 bypass are now
+  explicit. Three behavior scenarios cover the default, alternate-display,
+  and static-map paths.
+- Two newly promoted Phase 7 leaves are exact VC7.1 relocation matches: the
+  17-byte `Data\Cache\` factory at `0x0041A180` and the 178-byte eight-way
+  `STREAMING_FONT_*_PC` selector at `0x00415440`. Crediting those plus the
+  already-proven profile, narrow/wide lifetime, and assignment leaves raises
+  Phase 7 to 14/15 direct calls and GFMain overall to 190/257. Only the
+  ownership-heavy `GetWindowTitle` text-bank coordinator remains behind an
+  explicit boundary.
+- That last Phase 7 edge is now closed:
+  `GetWindowTitle @ 0x004023F0` is an exact 274-byte, 19-relocation match.
+  Its fixture covers the retail fallback title and localized-bank result,
+  CRC/tag lookup, temporary string lifetimes, counted group release, and bank
+  destruction. Phase 7 is therefore 15/15 direct calls proven.
+- `NUISystem::CIME::Initialise @ 0x00405650` is now an exact 206-byte,
+  21-relocation match. Its fixture covers disabled IME setup, initialization
+  failure, and successful callback/font/appearance/draw/reset setup, raising
+  Phase 9 to 9/11 direct calls proven.
+- The former anonymous `GFMain_ProcessSaveFileMetadata @ 0x00418C3B` is
+  corrected from private donor symbols to the static
+  `CMainGameComponent::GenerateMetFilesFromLugFiles`. Its 399-byte body
+  matches retail outside 34 relocations; empty enumeration and one-file
+  `.lug` to `.met` generation are behavior-gated. Phase 9 is now 10/11.
+- `GFFreeConfigDetection @ 0x00401B20` is an exact 49-byte,
+  six-relocation match. Its memory-only fixture covers present and missing
+  `Config_Release` exports, unconditional module release, handle clearing,
+  and the retail false return without loading a real DLL.
+- GFMain Phase 6 (`0x00402CE6-0x00403082`) is now callable in Stage 3
+  and the visual checkpoint as the input to Phase 7. The
+  authored coordinator consumes Phase 5's compiled-definition root, builds
+  `names.bin`, propagates definition-table enable/load modes, constructs the
+  checkpoint and save paths, and preserves retail's checkpoint/save/My
+  Documents write-permission precedence. Its focused fixture covers five
+  branch scenarios, including normal continuation and the font/text/group/
+  display error path. Ownership-heavy definition load, compressed stream,
+  group-entry, and display operations remain explicit observable boundaries;
+  this integration is not a retail byte-parity claim.
+- GFMain Phase 5 (`0x004029DC-0x00402CE6`) is now callable in Stage 3
+  and the visual checkpoint as the input to Phase 6. Six
+  misidentified directory factories were contextually recovered and produce
+  exact VC7.1 relocation matches: four 17-byte literal factories for
+  `Data\Misc\`, `Data\Graphics\`, and `Data\Shaders\`, plus both 90-byte
+  language-directory factories yielding `Data\lang\English\`. Focused
+  behavior gates cover each hidden-result ABI and the language conversion/
+  concatenation chain.
+- The Phase 5 integration fixture locks the ordered full nine-bank sequence,
+  minimal fonts/text sequence, exact startup-priority flags, navigator and
+  full-bank branch conditions, `banks.ini` versus `banks_dvd.ini`, and the
+  retail/development header and compiled-definition roots. The large
+  `OpenRetailBank` and `OpenIniFile` implementations remain explicit
+  observable boundaries. Phase 5 is now 49/65 proven direct calls.
+- Phase 6 starts with `Setup definition manager table`, applies the
+  compiled-definition root from Phase 5, loads `names.bin`, propagates the
+  definition-table mode flags, probes checkpoint/save/My Documents write
+  permissions, and then enters font-bank/display-resource construction.
+  Promoting its already-exact repeated string/profile calls, the 41-byte
+  checkpoint-directory factory, the 8-byte definition-table-path tail thunk,
+  the 178-byte eight-way font-bank selector, the 56-byte CRC accumulator,
+  the 6-byte system-manager accessor, the five uses of the 15-byte wide-string
+  conversion accessor, three uses of the 47-byte wide-string copy assignment,
+  two 22-byte bank-handle calls, two 60-byte exact-key vector-map lookups, and
+  the Phase 6 use of the 104-byte wide-literal constructor raise Phase 6 to
+  50/61 and GFMain overall to 180/257. The same constructor corrects five
+  Phase 5 call identities and raises that callable phase to 49/65. The shared
+  assignment also proves three Phase 7 calls, while two later stale
+  `AddChildPrimitive` labels were corrected to the system-manager accessor.
+  All new leaves pass focused VC7.1 behavior gates; the ownership-heavy
+  definition load, compressed stream, group-entry, and display calls remain
+  explicit boundaries.
+  A readable 99-byte `GetSaveDir` candidate reproduced retail call order and
+  size but swapped two temporary stack slots, so it was deliberately rejected
+  from the exact catalog.
+  A readable 103-byte counted-pointer `Reset` candidate likewise matched
+  behavior and size but used an immediate-zero store where retail used
+  `xor`/`mov`; it remains outside the exact catalog.
+- GFMain Phase 4 (`0x0040284E-0x004029DC`) is now callable in the Stage 3
+  startup and visual checkpoint as an earlier part of the live chain. Retail literal and
+  callee analysis corrected two false COMDAT donor labels: the sequence copies
+  the persisted navigator flag into the basic retail-bank manager and installs
+  five platform-to-generic mappings: `GBANK_MAIN_PC`, `GBANK_GUI_PC`,
+  `GBANK_FRONT_END_PC`, `PARTICLE_MAIN_PC`, and
+  `PARTICLE_FRONTEND_PC`. The 10-byte navigator setter, 28-byte map-assignment
+  wrapper, and nested 40-byte `CCharString::operator=` are exact after
+  relocation normalization and pass focused VC7.1 behavior gates. With the
+  repeated profile/string lifetimes promoted, all 29 Phase 4 direct calls are
+  proven; the authored Phase 4 fixture verifies mapping order, both navigator
+  values, and balanced temporary-string ownership.
+- Phase 5 (`0x004029DC-0x00402CE6`) was independently decoded far enough
+  to name its data records. The navigator-enabled branch opens
+  `graphics.big`, `textures.big`, `dialogue.big`, `effects.big`, `text.big`,
+  `temp.big`, `shaders.big`, and `fonts.big` from recovered graphics, misc,
+  shaders, and `Data\lang\<language>\` roots; the terminal branch selects
+  `banks.ini` versus `banks_dvd.ini` and configures retail/dev header and
+  compiled-def roots. Repeated already-promoted `CWideString` construction,
+  concatenation, and destruction sites established the first 35 proven direct
+  calls without claiming the large `OpenRetailBank`/`OpenIniFile` bodies.
+- GFMain Phase 3 (`0x00402668-0x0040284E`) is now callable in the Stage 3
+  startup and visual checkpoint. The integration path executes the exact
+  profile leaves, default-language factory, narrow-to-wide conversion, both
+  wide-string concatenation bodies, and both alignment setters. Its focused
+  VC7.1 fixture covers settings-file present/open, present/open-failed, and
+  absent paths; locks `Data\lang\English\lang_settings.txt`; proves zero
+  defaults for missing keys; and keeps the disk/parser object graph plus
+  `Transfer<signed char>`, `LoadIMESettings`, and `SortTreeRecursively` behind
+  explicit boundaries.
 - `CTable::ConstructSpritesToDraw @ 0x00551EA0` now crosses the live renderer
   boundary for the first component family. Options, Gameplay, Audio, Video,
   and Redefine headers construct the three recovered
@@ -646,7 +972,7 @@ Last verified state before stopping:
   and invalid-format rejection. `build_directshow_baseclasses.ps1` is now
   restart-safe when its pinned source checkout is interrupted.
 
-The next complete-startup gates are GFMain Phases 3-10, replacement of the
+The next complete-startup gates are GFMain Phases 6-10, replacement of the
 integration-owned engine/service graph, concrete runtime bank/init services
 behind the now-executable `CNewFrontendGameComponent::Run` post-movie order,
 and its input/update/interpolation/draw frontend loop.
@@ -669,6 +995,17 @@ of exact `CAFile::PathExists @ 0x00999230`, the
 `CCharString::LoadFromFile @ 0x0099F2E0`, `CStringParser @ 0x00404720`,
 and the text `CPersistContext` constructor at `0x009BADD0`; all three link
 their real candidate objects into focused behavior fixtures.
+
+The Phase 4 instruction range is independently decoded as basic retail-bank
+alias setup, not a root-child hierarchy. It profiles `Setup basic retail
+banks`, copies byte `0x013B8616` to manager `0x013CA79C + 0x14`, and uses the
+manager's map at `+0x18` to assign generic bank names under five `_PC` keys.
+At `0x009A8150`, argument order and the nested
+`std::map<CCharString,CCharString>::operator[]` call prove the direction is
+platform key to generic value. The contextual names are recorded in
+`gfmain_calls.tsv`; the older `EnableNavigator` and `AddChild` labels remain
+recognizable as unrelated identical-body donor collisions rather than startup
+semantics.
 
 ## Optional Real-ESRGAN boot-video cache (2026-07-26)
 
