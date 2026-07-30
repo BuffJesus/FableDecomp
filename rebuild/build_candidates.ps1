@@ -37350,6 +37350,55 @@ $catalog = @(
         TestSource = '00/41/CGameEvent_CGameEvent_004159b0_test.cpp'
         PassPattern = 'OK_0x004159b0'
     }
+    [pscustomobject]@{
+        Address = '004159a0'
+        Module = '_global'
+        Source = '00/41/global_InitFlagsField426_004159a0.cpp'
+        TestSource = '00/41/global_InitFlagsField426_004159a0_test.cpp'
+        PassPattern = 'OK_0x004159a0'
+    }
+    [pscustomobject]@{
+        Address = '00415fd3'
+        Module = '_global'
+        Source = '00/41/global_DivideByGameSpeed_00415fd3.cpp'
+        TestSource = '00/41/global_DivideByGameSpeed_00415fd3_test.cpp'
+        PassPattern = 'OK_0x00415fd3'
+    }
+    [pscustomobject]@{
+        Address = '0041a7c0'
+        Module = '_global'
+        Source = '00/41/global_GFToScreen_0041a7c0.cpp'
+        TestSource = '00/41/global_GFToScreen_0041a7c0_test.cpp'
+        PassPattern = 'OK_0x0041a7c0'
+    }
+    [pscustomobject]@{
+        Address = '0042d9d0'
+        Module = '_global'
+        Source = '00/42/global_FieldSetToMinusOne_0042d9d0.cpp'
+        TestSource = '00/42/global_FieldSetToMinusOne_0042d9d0_test.cpp'
+        PassPattern = 'OK_0x0042d9d0'
+    }
+    [pscustomobject]@{
+        Address = '0042da10'
+        Module = 'CDefClassBase'
+        Source = '00/42/CDefClassBase_GetInstantiationName_0042da10.cpp'
+        TestSource = '00/42/CDefClassBase_GetInstantiationName_0042da10_test.cpp'
+        PassPattern = 'OK_0x0042da10'
+    }
+    [pscustomobject]@{
+        Address = '004303b0'
+        Module = 'CParentDefClassBase'
+        Source = '00/43/CParentDefClassBase_GetInstantiationName_004303b0.cpp'
+        TestSource = '00/43/CParentDefClassBase_GetInstantiationName_004303b0_test.cpp'
+        PassPattern = 'OK_0x004303b0'
+    }
+    [pscustomobject]@{
+        Address = '00414de0'
+        Module = 'CIndexBuffer'
+        Source = '00/41/CIndexBuffer_CIndexBuffer_00414de0.cpp'
+        TestSource = '00/41/CIndexBuffer_CIndexBuffer_00414de0_test.cpp'
+        PassPattern = 'OK_0x00414de0'
+    }
 )
 
 $requestedAddresses = @(
