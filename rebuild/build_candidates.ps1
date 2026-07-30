@@ -38015,6 +38015,69 @@ $catalog = @(
         TestSource = '00/4e/CNavigationLayer_CNavigationLayer_004e786c_test.cpp'
         PassPattern = 'OK_0x004e786c'
     }
+    [pscustomobject]@{
+        Address = '0050b450'
+        Module = 'CWADBank'
+        Source = '00/50/CWADBank_GetDataFormatVersion_0050b450.cpp'
+        TestSource = '00/50/CWADBank_GetDataFormatVersion_0050b450_test.cpp'
+        PassPattern = 'OK_0x0050b450'
+    }
+    [pscustomobject]@{
+        Address = '0050be40'
+        Module = '_global'
+        Source = '00/50/global_DeleteData_0050be40.cpp'
+        TestSource = '00/50/global_DeleteData_0050be40_test.cpp'
+        PassPattern = 'OK_0x0050be40'
+    }
+    [pscustomobject]@{
+        Address = '005143e0'
+        Module = 'CGuiControlTreePane'
+        Source = '00/51/CGuiControlTreePane_SortTreeRecursively_005143e0.cpp'
+        TestSource = '00/51/CGuiControlTreePane_SortTreeRecursively_005143e0_test.cpp'
+        PassPattern = 'OK_0x005143e0'
+    }
+    [pscustomobject]@{
+        Address = '0051ce20'
+        Module = 'CWorldMap'
+        Source = '00/51/CWorldMap_GetMap_0051ce20.cpp'
+        TestSource = '00/51/CWorldMap_GetMap_0051ce20_test.cpp'
+        PassPattern = 'OK_0x0051ce20'
+    }
+    [pscustomobject]@{
+        Address = '0051ce40'
+        Module = 'CWorldMap'
+        Source = '00/51/CWorldMap_PeekMap_0051ce40.cpp'
+        TestSource = '00/51/CWorldMap_PeekMap_0051ce40_test.cpp'
+        PassPattern = 'OK_0x0051ce40'
+    }
+    [pscustomobject]@{
+        Address = '0051e480'
+        Module = 'CPixelShader'
+        Source = '00/51/CPixelShader_CountReferences_0051e480.cpp'
+        TestSource = '00/51/CPixelShader_CountReferences_0051e480_test.cpp'
+        PassPattern = 'OK_0x0051e480'
+    }
+    [pscustomobject]@{
+        Address = '0051e580'
+        Module = 'CEditWorldMap'
+        Source = '00/51/CEditWorldMap_GetEditMap_0051e580.cpp'
+        TestSource = '00/51/CEditWorldMap_GetEditMap_0051e580_test.cpp'
+        PassPattern = 'OK_0x0051e580'
+    }
+    [pscustomobject]@{
+        Address = '0052ae10'
+        Module = 'CCompressorZlib'
+        Source = '00/52/CCompressorZlib_CompressAsImage_0052ae10.cpp'
+        TestSource = '00/52/CCompressorZlib_CompressAsImage_0052ae10_test.cpp'
+        PassPattern = 'OK_0x0052ae10'
+    }
+    [pscustomobject]@{
+        Address = '0051ce00'
+        Module = 'CWorldMap'
+        Source = '00/51/CWorldMap_IsMapUsed_0051ce00.cpp'
+        TestSource = '00/51/CWorldMap_IsMapUsed_0051ce00_test.cpp'
+        PassPattern = 'OK_0x0051ce00'
+    }
 )
 
 $requestedAddresses = @(
