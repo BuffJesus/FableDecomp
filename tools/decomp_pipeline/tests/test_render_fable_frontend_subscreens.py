@@ -55,6 +55,8 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     _build_table_horizontal,
     build_options_row_layers,
     build_save_browser_frame,
+    build_about_frame,
+    validate_compiled_about_layout,
     validate_compiled_subscreen_layout,
 )
 from render_fable_static_font import (  # noqa: E402
@@ -371,6 +373,37 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         validate_compiled_subscreen_layout(
             self.RETAIL_ROOT,
             self.SCHEMA)
+
+    @unittest.skipUnless(
+        os.path.isfile(os.path.join(
+            RETAIL_ROOT, "data", "CompiledDefs", "frontend.bin")),
+        "retail frontend.bin is not installed")
+    def test_about_screen_matches_shipped_frontend_bin(self):
+        validate_compiled_about_layout(
+            self.RETAIL_ROOT,
+            self.SCHEMA)
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend.big/fonts.big are not installed")
+    def test_about_frame_composes_title_message_and_back(self):
+        frame = build_about_frame(self.FRONTEND_BANK, self.FONT_BANK)
+        self.assertEqual(frame.size, (640, 480))
+
+        def region_has_pixels(box):
+            return frame.crop(box).getbbox() is not None
+
+        # Title rule + "About Fable" occupy the raised header band (y 5..30);
+        # the legal-notice message body sits just below (y 55..220); the Back
+        # helper renders near the bottom (y 420..475).
+        self.assertTrue(region_has_pixels((0, 5, 640, 32)), "title band empty")
+        self.assertTrue(
+            region_has_pixels((0, 55, 640, 220)), "message body empty")
+        self.assertTrue(
+            region_has_pixels((0, 420, 300, 475)), "Back helper empty")
+        # Composition is deterministic (same banks -> identical bytes).
+        again = build_about_frame(self.FRONTEND_BANK, self.FONT_BANK)
+        self.assertEqual(frame.tobytes(), again.tobytes())
 
 
 if __name__ == "__main__":

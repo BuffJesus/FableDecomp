@@ -6891,3 +6891,136 @@ retail result reports `keys=enter-up-wrap-down`. The BuffJesus variant reports
 the same input proof, and maximized scaling remains green. This does not claim
 the retail controller polling/update path or the unimplemented Continue,
 profile, LIVE-aware, credits, and About actions.
+
+## Remaining main-menu routes recovered + About screen wired (2026-07-30)
+
+The four previously-deferred main-menu routes are now fully recovered from
+`CFrontEndManager::Action @ 0x0059A238` (raw decomp in
+`work/frontend_re/CFrontEndManager_Action_0059A238.txt`) and documented in
+`docs/FRONTEND_FORMAT.md`:
+
+- **Change Profile (16)** -> `GotoProfileMenu @ 0x00597b20` (profile subsystem).
+- **Games for Windows - LIVE (10)** has **no `Action()` case** -> the switch
+  falls to the default `return`, so the row is a retail no-op with no forward
+  sound. The visual checkpoint now consumes it as an explicit no-op.
+- **Credits (67)** -> used key `0x09` -> `GotoNextScreen` (screen binding
+  inferred as `UI_FRONTEND_CREDITS_MENU`; Init2 confirmation pending).
+- **About (321)** -> used key `0x1c` -> `GotoNextScreen` (screen
+  `UI_FRONTEND_ABOUT_MENU`). Action->key is proven from the decomp; the
+  key->screen Init2 binding is inferred from the sole ABOUT screen def.
+
+The **About screen (`UI_FRONTEND_ABOUT_MENU`, #449)** is decoded and wired:
+
+- **Data oracle**: `validate_compiled_about_layout` (in
+  `tools/render_fable_frontend_subscreens.py`) locks the decoded child order
+  `[ABOUT_MESSAGE, ABOUT_MENU_TITLE, BLENDING_BACKGROUNDS_SPOOKY,
+  TABLE_TITLE_WHOLE_ABOUT, HELPERS]`, the title
+  (`TEXT_GUI_MENU_ABOUT_TITLE`, ENG_ARIAL_24, serialized `(65,14)`) and
+  message (`TEXT_GUI_MENU_ABOUT_MESSAGE`, ENG_ARIAL_12, `(320,60)`, text
+  window BR `(700,5000)`), the 640-wide title rule (comp 122), and the SPOOKY
+  swap children (`UI_SWAPPING_SPOOKY_SUNBEAM`/`UI_SWAPPING_SPOOKY`). Gated by
+  `test_about_screen_matches_shipped_frontend_bin`; passes against retail
+  `frontend.bin`.
+- **Runtime state machine**: `g_VisualAboutMenuActive`
+  (`visual_boot_checkpoint.cpp`) + `g_AboutMenuActive` /
+  `FableSetVisualFrontendAboutMenu` (`visual_boot_d3d9.cpp`). Enter/mouse on
+  the About row routes action 321 into the screen; Esc/Back (action 86) and a
+  UI_HELPERS Back-button click both return to the main menu. Mutual-exclusion,
+  press-start guards, and the reset path all include About.
+
+Proven here: the recovered dispatch mappings, the decoded About structure, and
+the route/back state machine (built green under VC7.1).
+
+### About baked panel — visual content recovered (2026-07-30, cont.)
+
+`build_about_frame` (`tools/render_fable_frontend_subscreens.py`) composes the
+640x480 About overlay panel through the exact Options helper pipeline
+(`_build_table_horizontal` title rule, `_draw_text`, `_draw_helper`):
+
+- Title rule (shared `UI_TEXTBOX_MIDDLE_FE_SPRITE`) at `(0,5)` + centred title
+  **"About Fable"** — the real string resolved from retail `text.big`
+  (`TEXT_GUI_MENU_ABOUT_TITLE`); `TEXT_GUI_MENU_OPTIONS`="Options" confirms the
+  renderer's literal-string convention is text-bank-faithful.
+- The legal-notice **message body** is the real text from the two `text.big`
+  groups `TEXT_GUI_MENU_ABOUT_MESSAGE_PART_1` (© Lionhead / Microsoft / DirectX,
+  3 member lines) and `_PART_2` (copyright warning), greedy-wrapped in the
+  700px window at `(320,60)`.
+- Single `UI_HELPERS` Back button.
+
+New CLI `--about-output`; structural oracle
+`test_about_frame_composes_title_message_and_back` (title/message/Back regions
+non-empty + deterministic) passes; 20/20 renderer tests green. Rendered proof
+reads as a genuine Fable About screen. NOTE: content is parity-faithful; the
+retail line-break/scroll positions are not yet reverse-engineered (the message
+scrolls, `TextWindowBRY=5000`), and the `©` glyph is absent from the
+`ENG_ARIAL_12` atlas.
+
+### About panel wired LIVE in D3D9 (2026-07-30, cont.)
+
+The baked panel is now drawn in-game. It is embedded as **resource 120**
+(`kBootAboutResource`), loaded into `g_AboutTexture`, and blitted by the
+`g_AboutMenuActive` overlay branch (`overlayFrameCount=1`). End-to-end wiring:
+
+- `build_bootstrap.ps1`: `$visualBootRetailAbout`/`$visualBootAboutBitmap`,
+  `--about-output` on the renderer call, an About entry in the RetailSubscreens
+  `$animationSheets` (640x480), and `.rc` line `120 BITMAP` (116-119 are WAVE,
+  so 120 is the first free id).
+- `visual_boot_checkpoint.cpp`: `kBootAboutResource=120`, `g_BootAboutArtwork`
+  + info, `LoadImageA`/`GetObjectA`, 5 about params appended to the single
+  `FableInitialiseVisualD3D9` call.
+- `fable_visual_d3d9.h` / `visual_boot_d3d9.cpp`: 5 `about*` params appended at
+  the END of the init signature (existing positional args unaffected);
+  `g_AboutTexture` global + `UploadArtwork` + overlay select + shutdown release
+  + Render2D attach-chain branch.
+
+Verified: full VC7.1 Release build green (`BOOTSTRAP_BUILD PASS`,
+`VISUAL_BOOT_CHECKPOINT PASS`, `FABLETLC_VISUAL_BOOT_BEHAVIOR PASS`); the
+`-VerifySubscreens` smoke now enters About (row 5 -> action 321), asserts the
+frame differs from main-menu/options/quit, saves `frontend-about-smoke.png`,
+and Back returns to the menu (`about=49A791F0021F`). The screenshot shows the
+"About Fable" title rule, the full legal-notice message, and the Back button
+composited over the frontend background — live visual parity for the panel.
+
+### SPOOKY animated background wired LIVE (2026-07-30, cont.)
+
+The About screen now renders its own SPOOKY graveyard background (misty
+cemetery, stone angel, iron fences, moonlit fog) instead of the forest
+placeholder. `render_fable_frontend_animation.py --theme spooky` already
+supported the theme; it stitches `UI_FRONTEND_BG_SPOOKY_N_M` into a 640x1920
+4-frame sheet + `UI_FRONTEND_BG_SPOOKY_SUNBEAM_N_M` into a 640x1440 3-frame
+sheet. Wiring mirrors coastal exactly:
+
+- `build_bootstrap.ps1`: spooky sheet/BMP vars, a `--theme spooky` animation
+  invocation gated by `$spookyAnimationReady`, two `$animationSheets` BMP
+  entries, and `.rc` lines `121 BITMAP`/`122 BITMAP`.
+- `visual_boot_checkpoint.cpp`: `kBootSpookyResource=121`/`122`,
+  `g_BootSpooky*Artwork` + info, LoadImage/GetObject pair guard, and 10 spooky
+  args appended to the init call (after the about group).
+- `fable_visual_d3d9.h` / `visual_boot_d3d9.cpp`: 10 `spooky*` params appended
+  after `about*`; `g_SpookyTexture`/`g_SpookySunbeamTexture` globals; two
+  UploadArtwork calls (`preserveAlpha=true, unpremultiply=false` like coastal);
+  a spooky dimension-validation guard; `spookyBackground = g_AboutMenuActive`
+  selecting spooky BG+sunbeam through the existing 4/3-frame swap-blend path;
+  shutdown releases; **and the Render2D attach-chain entries** (see gotcha).
+
+Verified: full VC7.1 Release build green; the `-VerifySubscreens` smoke enters
+About and captures `frontend-about-smoke.png` showing the graveyard behind the
+title/message/Back (`about=F735628A68BA`).
+
+**★ Gotcha (2026-07-30):** every new D3D9 frontend texture must be registered in
+BOTH places — the `FableInitialiseVisualD3D9` upload chain AND the
+`VisualRender2DAdapter` `RENDER2D_ADAPTER_ATTACH_TEXTURE` handler's
+pointer→`selectedTexture` chain (visual_boot_d3d9.cpp ~1024-1101). Miss the
+attach chain and the texture uploads fine, validates, and is selected as
+`backgroundTexture`, but its quads bind no texture and draw as a flat white
+fill. Symptom that pinned it: the About panel drew correctly (its texture WAS
+in the chain) while the spooky background quads rendered pure white
+(255,255,255) — a runtime file-diagnostic confirmed the artwork loaded
+(`S1 SB1 W640 P1`), isolating the fault to the missing attach-chain entry.
+
+**Deferred — message line-breaks.** The message body content is parity-faithful
+(real text.big strings) but its retail line-break/scroll positions are not yet
+reverse-engineered (`TextWindowBRY=5000` implies a scroll), and the `©` glyph is
+absent from the `ENG_ARIAL_12` atlas. Full pixel parity is still not claimed
+(needs a same-state retail capture + alpha-aware diff), consistent with the
+other subscreen checkpoints.

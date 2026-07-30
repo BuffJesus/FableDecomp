@@ -45,6 +45,7 @@ from render_fable_static_font import (  # noqa: E402
     add_outline,
     load_font,
     render_line,
+    text_advance,
 )
 from texture_build import load_big  # noqa: E402
 
@@ -52,6 +53,41 @@ from texture_build import load_big  # noqa: E402
 CANVAS_SIZE = (640, 480)
 HEADER_RULE_POSITION = (0, 35)
 HEADER_TEXT_POSITION = (CANVAS_SIZE[0] // 2, 44)
+
+# UI_FRONTEND_ABOUT_MENU (#449) header sits 30px higher than the Options
+# header: UI_TABLE_TITLE_WHOLE_ABOUT (#121) is serialized at (0,5) and
+# UI_TEXT_ABOUT_MENU_TITLE (#450) at (65,14) -> resolved centre x=320.
+ABOUT_RULE_POSITION = (0, 5)
+ABOUT_TITLE_TEXT_POSITION = (CANVAS_SIZE[0] // 2, 14)
+# UI_FRONTEND_ABOUT_MESSAGE (#451): ENG_ARIAL_12, serialized (320,60), text
+# window BR (700,5000).  The screen scrolls, so a baked still shows the
+# message at its initial (top) scroll position.
+ABOUT_MESSAGE_ORIGIN = (CANVAS_SIZE[0] // 2, 60)
+ABOUT_MESSAGE_WRAP_WIDTH = 600
+ABOUT_MESSAGE_LINE_STEP = 16
+ABOUT_MESSAGE_PARAGRAPH_GAP = 8
+ABOUT_TITLE = "About Fable"
+# Transcribed from retail text.big (verified names):
+#   TEXT_GUI_MENU_ABOUT_TITLE = "About Fable"
+#   TEXT_GUI_MENU_ABOUT_MESSAGE_PART_1 group = PART_1_01/_02/_03
+#   TEXT_GUI_MENU_ABOUT_MESSAGE_PART_2 group = PART_2_01
+# Content is parity-faithful; retail line-break/scroll positions are not yet
+# reverse-engineered, so the wrap below is a greedy best-effort layout.
+ABOUT_MESSAGE_PARAGRAPHS = (
+    "Fable: The Lost Chapters © 2005 Lionhead Studios Limited. "
+    "Lionhead, the Lionhead logo, and Fable are registered trademarks "
+    "owned by Lionhead Studios Limited. All rights reserved.",
+    "Published and distributed by Microsoft Corporation. "
+    "All rights reserved.",
+    "Microsoft, DirectSound, DirectX, the Microsoft Game Studios logo, "
+    "and Windows are either registered trademarks or trademarks of "
+    "Microsoft Corporation in the United States and/or other countries.",
+    "Warning: This computer program is protected by copyright law and "
+    "international treaties. Unauthorized reproduction or distribution of "
+    "this program, or any portion of it, may result in severe civil and "
+    "criminal penalties, and will be prosecuted to the maximum extent "
+    "possible under the law.",
+)
 OPTIONS_SHEET_WIDTH = 1024
 OPTIONS_COMPONENT_SHEET_WIDTH = 1664
 OPTIONS_ROW_ATLAS_ORIGIN_X = OPTIONS_SHEET_WIDTH
@@ -485,6 +521,95 @@ def validate_compiled_subscreen_layout(game_root, schema_path):
         tuple(float(value) for value in REDEFINE_MOUSE_SIZE))
 
 
+def validate_compiled_about_layout(game_root, schema_path):
+    """Gate the recovered About screen constants against frontend.bin.
+
+    ``UI_FRONTEND_ABOUT_MENU`` (#449) is the destination of main-menu action
+    321 -> used key 0x1c.  It is a Type-10 frontend screen structurally
+    identical to ``UI_FRONTEND_OPTIONS_SUB_MENU`` (#211) with the interactive
+    list replaced by a single static wrapped message, so it carries no
+    selectable rows -- the only exit is Back/action 86.  These asserts lock the
+    decoded child order, the title and message text symbols/fonts/origins, the
+    SPOOKY background, and the shared 640-pixel title rule.
+    """
+    layout = FrontendLayoutOracle(game_root, schema_path)
+
+    about_menu = "UI_FRONTEND_ABOUT_MENU"
+    about_values = layout.decoded(about_menu)
+    require_equal(
+        "About screen type",
+        about_values["Type"],
+        10)
+    require_equal(
+        "About child order",
+        layout.child_names(about_menu),
+        (
+            "UI_FRONTEND_ABOUT_MESSAGE",
+            "UI_TEXT_ABOUT_MENU_TITLE",
+            "UI_BLENDING_BACKGROUNDS_SPOOKY",
+            "UI_TABLE_TITLE_WHOLE_ABOUT",
+            "UI_HELPERS",
+        ))
+
+    title_text = layout.decoded("UI_TEXT_ABOUT_MENU_TITLE")
+    require_equal(
+        "About title symbol",
+        title_text["TextValue"],
+        "TEXT_GUI_MENU_ABOUT_TITLE")
+    require_equal(
+        "About title font",
+        title_text["Font"],
+        "ENG_ARIAL_24")
+    require_position(
+        "About title serialized position",
+        layout.initial_position("UI_TEXT_ABOUT_MENU_TITLE"),
+        (65, 14))
+
+    message_text = layout.decoded("UI_FRONTEND_ABOUT_MESSAGE")
+    require_equal(
+        "About message symbol",
+        message_text["TextValue"],
+        "TEXT_GUI_MENU_ABOUT_MESSAGE")
+    require_equal(
+        "About message font",
+        message_text["Font"],
+        "ENG_ARIAL_12")
+    require_position(
+        "About message serialized position",
+        layout.initial_position("UI_FRONTEND_ABOUT_MESSAGE"),
+        (320, 60))
+    require_equal(
+        "About message text window",
+        (message_text["TextWindowBRX"], message_text["TextWindowBRY"]),
+        (700.0, 5000.0))
+
+    about_rule = "UI_TABLE_TITLE_WHOLE_ABOUT"
+    require_equal(
+        "About title rule width",
+        layout.decoded(about_rule)["Width"],
+        float(CANVAS_SIZE[0]))
+    require_position(
+        "About title rule position",
+        layout.initial_position(about_rule),
+        (0, 5))
+    require_equal(
+        "About title rule sprites",
+        layout.table_sprites(about_rule),
+        (
+            (0, 122, "UI_TEXTBOX_MIDDLE"),
+            (1, 122, "UI_TEXTBOX_MIDDLE"),
+            (4, 122, "UI_TEXTBOX_MIDDLE"),
+        ))
+
+    require_equal(
+        "About background blend children",
+        layout.child_names("UI_BLENDING_BACKGROUNDS_SPOOKY"),
+        (
+            "UI_SWAPPING_SPOOKY_SUNBEAM",
+            "UI_SWAPPING_SPOOKY",
+        ))
+
+
 def _build_stretched(left, middle, right, width):
     """Assemble one retail three-piece horizontal sprite."""
     if width < left.width + right.width:
@@ -825,6 +950,66 @@ def build_save_browser_frame(
     return canvas
 
 
+def _wrap_text_lines(font, text, wrap_width, scale):
+    """Greedy word-wrap ``text`` so each line advance stays <= wrap_width."""
+    words = text.split()
+    lines = []
+    current = ""
+    for word in words:
+        candidate = word if not current else current + " " + word
+        if current and text_advance(font, candidate, scale) > wrap_width:
+            lines.append(current)
+            current = word
+        else:
+            current = candidate
+    if current:
+        lines.append(current)
+    return lines
+
+
+def build_about_frame(
+        frontend_bank,
+        font_bank,
+        include_title_rule=True,
+        include_message=True):
+    """Compose the UI_FRONTEND_ABOUT_MENU overlay panel (transparent).
+
+    Mirrors the Options/Settings composition: shared UI_TEXTBOX_MIDDLE title
+    rule + centred title, then the static legal-notice message, then the single
+    UI_HELPERS Back button.  The SPOOKY background is a live D3D9 layer (drawn
+    behind this panel), not part of the baked frame -- matching how the retail
+    forest/coastal backgrounds are composited at runtime rather than baked.
+    """
+    buf, parsed = load_big(frontend_bank)
+    canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
+    title_font = load_font(font_bank, "ENG_ARIAL_24")
+    if include_title_rule:
+        title_segment = _decode_named(
+            buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
+        title_rule = _build_table_horizontal(
+            title_segment, title_segment, title_segment, 640)
+        canvas.alpha_composite(title_rule, ABOUT_RULE_POSITION)
+    _draw_text(canvas, title_font, ABOUT_TITLE, ABOUT_TITLE_TEXT_POSITION)
+
+    if include_message:
+        message_font = load_font(font_bank, "ENG_ARIAL_12")
+        scale = 2.0 / 3.0
+        x, y = ABOUT_MESSAGE_ORIGIN
+        for paragraph in ABOUT_MESSAGE_PARAGRAPHS:
+            for line in _wrap_text_lines(
+                    message_font,
+                    paragraph,
+                    ABOUT_MESSAGE_WRAP_WIDTH,
+                    scale):
+                _draw_text(canvas, message_font, line, (x, y))
+                y += ABOUT_MESSAGE_LINE_STEP
+            y += ABOUT_MESSAGE_PARAGRAPH_GAP
+
+    assets = _option_assets(buf, parsed)
+    _draw_helper(canvas, assets["back"], title_font, (20, 440), "Back")
+    return canvas
+
+
 def build_options_frame(
         frontend_bank,
         font_bank,
@@ -1139,6 +1324,7 @@ def main():
     parser.add_argument("font_bank")
     parser.add_argument("options_output")
     parser.add_argument("helpers_output")
+    parser.add_argument("--about-output")
     parser.add_argument("--components-output")
     parser.add_argument("--title-segment-output")
     parser.add_argument("--button-left-output")
@@ -1167,6 +1353,9 @@ def main():
     helpers = build_helper_sheet(args.frontend_bank, args.font_bank)
     options.save(args.options_output)
     helpers.save(args.helpers_output)
+    if args.about_output:
+        about = build_about_frame(args.frontend_bank, args.font_bank)
+        about.save(args.about_output)
     component_output = ""
     if args.components_output:
         components = build_options_sheet(

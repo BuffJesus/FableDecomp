@@ -195,6 +195,9 @@ namespace
     FableD3DTexture9* g_CoastalSunbeamTexture = 0;
     FableD3DTexture9* g_OptionsTexture = 0;
     FableD3DTexture9* g_HelpersTexture = 0;
+    FableD3DTexture9* g_AboutTexture = 0;
+    FableD3DTexture9* g_SpookyTexture = 0;
+    FableD3DTexture9* g_SpookySunbeamTexture = 0;
     FableD3DTexture9* g_TitleSegmentTexture = 0;
     FableD3DTexture9* g_ButtonLeftTexture = 0;
     FableD3DTexture9* g_ButtonMiddleTexture = 0;
@@ -261,6 +264,7 @@ namespace
     bool g_MainMenuActive = false;
     bool g_OptionsMenuActive = false;
     bool g_SaveMenuActive = false;
+    bool g_AboutMenuActive = false;
     bool g_OptionsBackHovered = false;
     bool g_QuitPromptActive = false;
     bool g_Presented = false;
@@ -1064,6 +1068,25 @@ namespace
                 }
                 else if (
                     argument1 ==
+                    reinterpret_cast<fable_u32>(g_AboutTexture))
+                {
+                    selectedTexture = g_AboutTexture;
+                }
+                else if (
+                    argument1 ==
+                    reinterpret_cast<fable_u32>(g_SpookyTexture))
+                {
+                    selectedTexture = g_SpookyTexture;
+                }
+                else if (
+                    argument1 ==
+                    reinterpret_cast<fable_u32>(
+                        g_SpookySunbeamTexture))
+                {
+                    selectedTexture = g_SpookySunbeamTexture;
+                }
+                else if (
+                    argument1 ==
                     reinterpret_cast<fable_u32>(
                         g_TitleSegmentTexture))
                 {
@@ -1290,7 +1313,22 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     fable_i32 buttonRightHeight,
     fable_i32 buttonRightPitch,
     fable_u32 buttonRightBitsPerPixel,
-    const void* buttonRightPixels)
+    const void* buttonRightPixels,
+    fable_i32 aboutWidth,
+    fable_i32 aboutHeight,
+    fable_i32 aboutPitch,
+    fable_u32 aboutBitsPerPixel,
+    const void* aboutPixels,
+    fable_i32 spookyWidth,
+    fable_i32 spookyHeight,
+    fable_i32 spookyPitch,
+    fable_u32 spookyBitsPerPixel,
+    const void* spookyPixels,
+    fable_i32 spookySunbeamWidth,
+    fable_i32 spookySunbeamHeight,
+    fable_i32 spookySunbeamPitch,
+    fable_u32 spookySunbeamBitsPerPixel,
+    const void* spookySunbeamPixels)
 {
     FableShutdownVisualD3D9();
     g_DeviceWindow = window;
@@ -1475,6 +1513,42 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 buttonRightPixels,
                 true,
                 true)
+        ) ||
+        (
+            aboutPixels != 0 &&
+            !UploadArtwork(
+                g_AboutTexture,
+                aboutWidth,
+                aboutHeight,
+                aboutPitch,
+                aboutBitsPerPixel,
+                aboutPixels,
+                true,
+                true)
+        ) ||
+        (
+            spookyPixels != 0 &&
+            !UploadArtwork(
+                g_SpookyTexture,
+                spookyWidth,
+                spookyHeight,
+                spookyPitch,
+                spookyBitsPerPixel,
+                spookyPixels,
+                true,
+                false)
+        ) ||
+        (
+            spookySunbeamPixels != 0 &&
+            !UploadArtwork(
+                g_SpookySunbeamTexture,
+                spookySunbeamWidth,
+                spookySunbeamHeight,
+                spookySunbeamPitch,
+                spookySunbeamBitsPerPixel,
+                spookySunbeamPixels,
+                true,
+                false)
         ))
     {
         FableShutdownVisualD3D9();
@@ -1504,6 +1578,21 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 (forestHeight != 1920 && forestHeight != -1920) ||
                 sunbeamWidth != 640 ||
                 (sunbeamHeight != 1440 && sunbeamHeight != -1440)
+            )
+        ))
+    {
+        FableShutdownVisualD3D9();
+        return false;
+    }
+    if (
+        (g_SpookyTexture == 0) != (g_SpookySunbeamTexture == 0) ||
+        (
+            g_SpookyTexture != 0 &&
+            (
+                spookyWidth != 640 ||
+                (spookyHeight != 1920 && spookyHeight != -1920) ||
+                spookySunbeamWidth != 640 ||
+                (spookySunbeamHeight != 1440 && spookySunbeamHeight != -1440)
             )
         ))
     {
@@ -1640,6 +1729,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     g_MainMenuActive = false;
     g_OptionsMenuActive = false;
     g_SaveMenuActive = false;
+    g_AboutMenuActive = false;
     g_OptionsBackHovered = false;
     g_QuitPromptActive = false;
     g_AnimationStartTick = 0;
@@ -1769,6 +1859,20 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         overlayWidth = 0;
         overlayHeight = 0;
     }
+    else if (g_AboutMenuActive)
+    {
+        // UI_FRONTEND_ABOUT_MENU (#449): the baked About panel (WHOLE_ABOUT
+        // title rule + "About Fable" title + legal-notice message + Back) is a
+        // single 640x480 frame.  The SPOOKY animated background is still a
+        // pending live layer; until it is wired the forest background shows
+        // behind the panel.  If g_AboutTexture failed to load, overlayTexture
+        // stays 0 and only the background/helpers render.
+        overlayTexture = g_AboutTexture;
+        overlayWidth = g_AboutTexture != 0 ? 640 : 0;
+        overlayHeight = g_AboutTexture != 0 ? 480 : 0;
+        overlayFrame = 0;
+        overlayFrameCount = 1;
+    }
     const bool titleUsesDesignCanvas =
         overlayWidth == g_ArtworkWidth &&
         overlayHeight == g_ArtworkHeight;
@@ -1787,12 +1891,20 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     fable_u32 recordCount = 0;
     const bool coastalBackground =
         g_MainMenuActive || g_DetailScreen == 2;
+    // UI_FRONTEND_ABOUT_MENU owns the SPOOKY graveyard background
+    // (UI_BLENDING_BACKGROUNDS_SPOOKY: 4 BG frames + 3 sunbeam frames),
+    // animated by the same swap/blend path as forest/coastal.
+    const bool spookyBackground = g_AboutMenuActive;
     FableD3DTexture9* backgroundTexture =
-        coastalBackground ? g_CoastalTexture : g_ForestTexture;
+        spookyBackground
+            ? g_SpookyTexture
+            : (coastalBackground ? g_CoastalTexture : g_ForestTexture);
     FableD3DTexture9* sunbeamTexture =
-        coastalBackground
-            ? g_CoastalSunbeamTexture
-            : g_SunbeamTexture;
+        spookyBackground
+            ? g_SpookySunbeamTexture
+            : (coastalBackground
+                ? g_CoastalSunbeamTexture
+                : g_SunbeamTexture);
     if (
         !g_QuitPromptActive &&
         backgroundTexture != 0 &&
@@ -2459,6 +2571,9 @@ void FABLE_FASTCALL FableShutdownVisualD3D9()
     ReleaseObject(g_ButtonMiddleTexture);
     ReleaseObject(g_ButtonLeftTexture);
     ReleaseObject(g_TitleSegmentTexture);
+    ReleaseObject(g_SpookySunbeamTexture);
+    ReleaseObject(g_SpookyTexture);
+    ReleaseObject(g_AboutTexture);
     ReleaseObject(g_HelpersTexture);
     ReleaseObject(g_OptionsTexture);
     ReleaseObject(g_CoastalSunbeamTexture);
@@ -2536,6 +2651,7 @@ void FABLE_FASTCALL FableSetVisualFrontendMainMenu(bool active)
         InitialiseMainMenuRowStates();
         g_OptionsMenuActive = false;
         g_SaveMenuActive = false;
+        g_AboutMenuActive = false;
         g_DetailScreen = 0;
         g_QuitPromptActive = false;
     }
@@ -2607,6 +2723,7 @@ void FABLE_FASTCALL FableSetVisualFrontendOptionsMenu(bool active)
     {
         g_MainMenuActive = false;
         g_SaveMenuActive = false;
+        g_AboutMenuActive = false;
         g_DetailScreen = 0;
         g_QuitPromptActive = false;
         g_OptionsSelection = 0;
@@ -2652,6 +2769,7 @@ void FABLE_FASTCALL FableSetVisualFrontendSaveMenu(bool active)
     {
         g_MainMenuActive = false;
         g_OptionsMenuActive = false;
+        g_AboutMenuActive = false;
         g_DetailScreen = 0;
         g_QuitPromptActive = false;
         g_SaveSelection = 0;
@@ -2755,8 +2873,32 @@ void FABLE_FASTCALL FableSetVisualFrontendQuitPrompt(bool active)
         g_MainMenuActive = false;
         g_OptionsMenuActive = false;
         g_SaveMenuActive = false;
+        g_AboutMenuActive = false;
         g_DetailScreen = 0;
         g_QuitHover = 0;
+    }
+    g_AnimationStartTick = 0;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendAboutMenu(bool active)
+{
+    if (g_AboutMenuActive == active)
+        return;
+    // The About screen shares the UI_HELPERS bar (#577) with the other
+    // subscreens; require it before activating.  A dedicated baked frame for
+    // the SPOOKY background/title/message is not composed yet, so the live
+    // overlay currently draws no atlas panel (see the overlay selection).
+    if (active && g_HelpersTexture == 0)
+        return;
+    g_AboutMenuActive = active;
+    if (active)
+    {
+        g_MainMenuActive = false;
+        g_OptionsMenuActive = false;
+        g_SaveMenuActive = false;
+        g_DetailScreen = 0;
+        g_QuitPromptActive = false;
+        g_OptionsBackHovered = false;
     }
     g_AnimationStartTick = 0;
 }

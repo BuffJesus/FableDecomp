@@ -496,9 +496,13 @@ $visualBootRetailButtonMiddle =
 $visualBootRetailButtonRight =
     Join-Path $outDir 'frontend_options_button_right.png'
 $visualBootRetailHelpers = Join-Path $outDir 'frontend_helpers.png'
+$visualBootRetailAbout = Join-Path $outDir 'frontend_about_menu.png'
 $visualBootRetailCoastalSheet = Join-Path $outDir 'frontend_coastal_sheet.png'
 $visualBootRetailCoastalSunbeamSheet =
     Join-Path $outDir 'frontend_coastal_sunbeam_sheet.png'
+$visualBootRetailSpookySheet = Join-Path $outDir 'frontend_spooky_sheet.png'
+$visualBootRetailSpookySunbeamSheet =
+    Join-Path $outDir 'frontend_spooky_sunbeam_sheet.png'
 $visualBootBitmap = Join-Path $outDir 'visual_boot_artwork.bmp'
 $visualBootTitleBitmap = Join-Path $outDir 'visual_boot_title.bmp'
 $visualBootForestBitmap = Join-Path $outDir 'visual_boot_forest.bmp'
@@ -516,9 +520,13 @@ $visualBootButtonMiddleBitmap =
 $visualBootButtonRightBitmap =
     Join-Path $outDir 'visual_boot_options_button_right.bmp'
 $visualBootHelpersBitmap = Join-Path $outDir 'visual_boot_helpers.bmp'
+$visualBootAboutBitmap = Join-Path $outDir 'visual_boot_about_menu.bmp'
 $visualBootCoastalBitmap = Join-Path $outDir 'visual_boot_coastal.bmp'
 $visualBootCoastalSunbeamBitmap =
     Join-Path $outDir 'visual_boot_coastal_sunbeam.bmp'
+$visualBootSpookyBitmap = Join-Path $outDir 'visual_boot_spooky.bmp'
+$visualBootSpookySunbeamBitmap =
+    Join-Path $outDir 'visual_boot_spooky_sunbeam.bmp'
 $visualBootSoundUpDown = Join-Path $outDir 'visual_boot_gui_updown.wav'
 $visualBootSoundError = Join-Path $outDir 'visual_boot_gui_error.wav'
 $visualBootSoundBack = Join-Path $outDir 'visual_boot_gui_back.wav'
@@ -1132,6 +1140,15 @@ if ($selectedRetailFrontendBank) {
             $LASTEXITCODE -eq 0 -and
             (Test-Path -LiteralPath $visualBootRetailCoastalSheet) -and
             (Test-Path -LiteralPath $visualBootRetailCoastalSunbeamSheet)
+        & python $frontendAnimationRenderer `
+            $selectedRetailFrontendBank `
+            $visualBootRetailSpookySheet `
+            $visualBootRetailSpookySunbeamSheet `
+            --theme spooky
+        $spookyAnimationReady =
+            $LASTEXITCODE -eq 0 -and
+            (Test-Path -LiteralPath $visualBootRetailSpookySheet) -and
+            (Test-Path -LiteralPath $visualBootRetailSpookySunbeamSheet)
         $retailDataRoot = Split-Path -Parent (
             Split-Path -Parent (
                 Split-Path -Parent $selectedRetailFrontendBank
@@ -1276,6 +1293,8 @@ if ($selectedRetailFrontendBank) {
                         $visualBootRetailButtonMiddle `
                         --button-right-output `
                         $visualBootRetailButtonRight `
+                        --about-output `
+                        $visualBootRetailAbout `
                         @frontendLayoutArguments
                     if (
                         $LASTEXITCODE -eq 0 -and
@@ -1290,6 +1309,7 @@ if ($selectedRetailFrontendBank) {
                             $visualBootRetailButtonMiddle) -and
                         (Test-Path -LiteralPath `
                             $visualBootRetailButtonRight) -and
+                        (Test-Path -LiteralPath $visualBootRetailAbout) -and
                         (Test-Path -LiteralPath $visualBootRetailHelpers)
                     ) {
                         $visualBootUsesRetailSubscreens = $true
@@ -3584,6 +3604,22 @@ try {
                 }
             }
         }
+        if ($spookyAnimationReady) {
+            $animationSheets += @(
+                @{
+                    Png = $visualBootRetailSpookySheet
+                    Bmp = $visualBootSpookyBitmap
+                    Width = 640
+                    Height = 1920
+                },
+                @{
+                    Png = $visualBootRetailSpookySunbeamSheet
+                    Bmp = $visualBootSpookySunbeamBitmap
+                    Width = 640
+                    Height = 1440
+                }
+            )
+        }
         if ($visualBootUsesRetailSubscreens) {
             $animationSheets += @(
                 @{
@@ -3621,6 +3657,12 @@ try {
                     Bmp = $visualBootHelpersBitmap
                     Width = 640
                     Height = 2880
+                },
+                @{
+                    Png = $visualBootRetailAbout
+                    Bmp = $visualBootAboutBitmap
+                    Width = 640
+                    Height = 480
                 }
             )
         }
@@ -3701,6 +3743,16 @@ try {
                 "111 BITMAP `"$resourceBuffJesusMenuBitmapPath`""
         }
     }
+    if ($spookyAnimationReady) {
+        $resourceSpookyBitmapPath =
+            $visualBootSpookyBitmap.Replace('\', '/')
+        $resourceSpookySunbeamBitmapPath =
+            $visualBootSpookySunbeamBitmap.Replace('\', '/')
+        $resourceLines +=
+            "121 BITMAP `"$resourceSpookyBitmapPath`""
+        $resourceLines +=
+            "122 BITMAP `"$resourceSpookySunbeamBitmapPath`""
+    }
     if ($visualBootUsesRetailSubscreens) {
         $resourceOptionsBitmapPath =
             $visualBootOptionsBitmap.Replace('\', '/')
@@ -3714,10 +3766,14 @@ try {
             $visualBootButtonMiddleBitmap.Replace('\', '/')
         $resourceButtonRightBitmapPath =
             $visualBootButtonRightBitmap.Replace('\', '/')
+        $resourceAboutBitmapPath =
+            $visualBootAboutBitmap.Replace('\', '/')
         $resourceLines +=
             "109 BITMAP `"$resourceOptionsBitmapPath`""
         $resourceLines +=
             "110 BITMAP `"$resourceHelpersBitmapPath`""
+        $resourceLines +=
+            "120 BITMAP `"$resourceAboutBitmapPath`""
         $resourceLines +=
             "112 BITMAP `"$resourceTitleSegmentBitmapPath`""
         $resourceLines +=

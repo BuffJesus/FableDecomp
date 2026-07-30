@@ -1438,6 +1438,67 @@ try {
                     " subscreens=verified"
                 )
 
+                # Enter the About screen: main-menu row 5 dispatches retail
+                # action 321 -> used key 0x1c -> UI_FRONTEND_ABOUT_MENU, whose
+                # recovered g_AboutTexture panel ("About Fable" title rule +
+                # legal-notice message + Back) is a single 640x480 overlay.
+                Send-DesignMouse 0x0200 320 410
+                Start-Sleep -Milliseconds 100
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x0D),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 350
+                $aboutHash = Get-WindowFrameHash
+                if (
+                    $aboutHash -eq $mainMenuHash -or
+                    $aboutHash -eq $optionsHash -or
+                    $aboutHash -eq $quitHash
+                ) {
+                    throw (
+                        'Retail action 321 did not activate the recovered ' +
+                        'UI_FRONTEND_ABOUT_MENU panel.'
+                    )
+                }
+                $aboutBitmap =
+                    New-Object System.Drawing.Bitmap $width, $height
+                $aboutGraphics =
+                    [System.Drawing.Graphics]::FromImage($aboutBitmap)
+                try {
+                    $aboutGraphics.CopyFromScreen(
+                        $bounds.Left,
+                        $bounds.Top,
+                        0,
+                        0,
+                        $aboutBitmap.Size
+                    )
+                    $aboutScreenshot = Join-Path (
+                        Split-Path -Parent $Executable
+                    ) 'frontend-about-smoke.png'
+                    $aboutBitmap.Save(
+                        $aboutScreenshot,
+                        [System.Drawing.Imaging.ImageFormat]::Png
+                    )
+                } finally {
+                    $aboutGraphics.Dispose()
+                    $aboutBitmap.Dispose()
+                }
+                # UI_HELPERS/UI_BACK action 86 returns to the main menu.
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x1B),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 300
+                $aboutReturnHash = Get-WindowFrameHash
+                if ($aboutReturnHash -eq $aboutHash) {
+                    throw 'About Back action 86 did not return to the menu.'
+                }
+                $frameProof += " about=$($aboutHash.Substring(0, 12))"
+
                 # Re-enter the prompt and validate action 296 last, because
                 # its retail meaning is to end the application.
                 Send-DesignMouse 0x0200 320 440

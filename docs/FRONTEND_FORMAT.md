@@ -201,6 +201,54 @@ Continue Game, Options, and Quit are live; the other four identifiers are
 retained explicitly for their next recovered screen/action implementations
 instead of relying on row-index guesses.
 
+The remaining four routes are now fully recovered from the same
+`CFrontEndManager::Action @ 0x0059A238` decompilation:
+
+* **Change Profile (16, `0x10`)** does not resolve a used key; the dispatcher
+  calls `CFrontEndManager::GotoProfileMenu @ 0x00597b20` directly, which enters
+  the `UI_FRONTEND_LIST_FOR_PROFILES` profile-management subsystem
+  (create/delete/load-profile plus the virtual keyboard).
+* **Games for Windows - LIVE (10, `0xa`)** has **no case** in the switch. The
+  action is dispatched but falls to the default `return`, so the row is
+  intentionally inert on PC: the main menu stays put with no forward sound.
+  The visual checkpoint models this as an explicit consumed no-op.
+* **Credits (67, `0x43`)** resolves used key `0x09` and continues through
+  `GotoNextScreen(..., false)`. The `0x09 -> UI_FRONTEND_CREDITS_MENU`
+  binding (the multi-page `UI_FRONTEND_BG_CREDITS_1..3_0N` animated scroll) is
+  inferred from the sole matching screen def and the established Init2
+  key->screen pattern; direct `Init2 @ 0x00598A1C` confirmation is pending.
+* **About (321, `0x141`)** resolves used key `0x1c` and continues through
+  `GotoNextScreen(..., false)`. The `0x1c -> UI_FRONTEND_ABOUT_MENU` binding
+  (title `UI_TABLE_TITLE_WHOLE_ABOUT` + `UI_FRONTEND_ABOUT_MESSAGE` text) is
+  likewise inferred from the sole matching `ABOUT` screen def and the Init2
+  pattern; direct `Init2` confirmation is pending.
+
+The action->used-key half of both routes is proven directly:
+`Action()` sets `param_1 = 9` for `0x43` and `param_1 = 0x1c` for `0x141`
+before the shared `map<EUsedKeys,long>[used_key] -> GotoNextScreen` tail.
+
+### About screen (`UI_FRONTEND_ABOUT_MENU`, #449) — decoded structure
+
+Decoded from the shipped `frontend.bin` (schema `ghidra_out/def_schema.json`),
+the About screen is a `Type 10` frontend screen structurally identical to
+`UI_FRONTEND_OPTIONS_SUB_MENU` (#211) with the interactive list swapped for a
+static wrapped message. Its five children (`[451, 450, 737, 121, 577]`) are:
+
+| Idx | Name | Type | Key fields |
+|---|---|---|---|
+| 451 | `UI_FRONTEND_ABOUT_MESSAGE` | 6 (text) | `TEXT_GUI_MENU_ABOUT_MESSAGE`, `ENG_ARIAL_12`, state0 pos `(320,60)` A=1, text window BR `(700,5000)`, flag 34 |
+| 450 | `UI_TEXT_ABOUT_MENU_TITLE` | 6 (text) | `TEXT_GUI_MENU_ABOUT_TITLE`, `ENG_ARIAL_24`, state0 pos `(65,14)` A=1, flag 34 |
+| 737 | `UI_BLENDING_BACKGROUNDS_SPOOKY` | 5 | swap children `[739 UI_SWAPPING_SPOOKY_SUNBEAM, 738 UI_SWAPPING_SPOOKY]` (vs Options' `FOREST` #632) |
+| 121 | `UI_TABLE_TITLE_WHOLE_ABOUT` | 2 | W=640, pos `(0,5)`, sprites `TOP_LEFT/TOP_RIGHT/HORIZONTAL_TOP` from component 122 |
+| 577 | `UI_HELPERS` | 5 | shared helper bar, child `[563]` |
+
+Versus the Options children `[219, 338, 632, 120, 577]`, the only structural
+deltas are the message-for-list swap, the SPOOKY-for-FOREST background, the
+`WHOLE_ABOUT` title rule, and the title text sitting higher (child y=14, rule
+table y=5) than the Options header (title child y=44). The screen has no
+selectable rows: the only exit is Back/action 86 (`GotoPreviousScreen`) back to
+the main menu.
+
 The Continue route is no longer ambiguous. `CFrontEndManager::Action
 @ 0x0059A238` handles action 66 by calling
 `RefreshAvailableSavedGamesForProfile @ 0x00598463`; if no save rows and no

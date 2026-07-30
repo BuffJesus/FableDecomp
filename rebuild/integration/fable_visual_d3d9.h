@@ -70,7 +70,22 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     fable_i32 buttonRightHeight,
     fable_i32 buttonRightPitch,
     fable_u32 buttonRightBitsPerPixel,
-    const void* buttonRightPixels);
+    const void* buttonRightPixels,
+    fable_i32 aboutWidth,
+    fable_i32 aboutHeight,
+    fable_i32 aboutPitch,
+    fable_u32 aboutBitsPerPixel,
+    const void* aboutPixels,
+    fable_i32 spookyWidth,
+    fable_i32 spookyHeight,
+    fable_i32 spookyPitch,
+    fable_u32 spookyBitsPerPixel,
+    const void* spookyPixels,
+    fable_i32 spookySunbeamWidth,
+    fable_i32 spookySunbeamHeight,
+    fable_i32 spookySunbeamPitch,
+    fable_u32 spookySunbeamBitsPerPixel,
+    const void* spookySunbeamPixels);
 
 void FABLE_FASTCALL FableSetVisualFrontendMainMenu(bool active);
 void FABLE_FASTCALL FableSetVisualFrontendMainMenuSelection(
@@ -86,6 +101,7 @@ void FABLE_FASTCALL FableSetVisualFrontendOptionsBackHovered(bool hovered);
 void FABLE_FASTCALL FableSetVisualFrontendSaveMenu(bool active);
 void FABLE_FASTCALL FableSetVisualFrontendSaveSelection(
     fable_u32 selection);
+void FABLE_FASTCALL FableSetVisualFrontendAboutMenu(bool active);
 void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen);
 void FABLE_FASTCALL FableSetVisualFrontendDetailOptionValue(
     fable_u32 screen,

@@ -93,6 +93,12 @@ of a clean PE32 at ImageBase `0x400000`.
   CTD 0xA2428A on miss. Writer + chunk layout: work/newlevel_experiment/
   assemble_forgetest_stage2.py; post-mortem NEW_LEVEL_ASSEMBLY.md par.9. WER Application-log
   fault offsets are the fastest crash triage (offset+0x400000 = Ghidra VA).
+- Adding a D3D9 frontend texture (visual_boot_d3d9.cpp) requires registering it in BOTH the
+  `FableInitialiseVisualD3D9` upload chain AND the `VisualRender2DAdapter`
+  `RENDER2D_ADAPTER_ATTACH_TEXTURE` pointer->selectedTexture chain (~L1024-1101). Miss the attach
+  chain and the texture uploads/validates/selects fine but its quads bind nothing and draw FLAT
+  WHITE. Pinned the About-screen SPOOKY bg bug this way (2026-07-30); new frontend resource ids need
+  a free slot (101-120 were taken; 116-119 are WAVE, so About=120, spooky=121/122).
 
 ## Toolchain (see docs/TOOLCHAIN.md for commands)
 - Mario rig gotcha (2026-07-22): `work/mario_hero/stage_bindaxis4` is format-valid and looks

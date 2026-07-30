@@ -1764,6 +1764,9 @@ namespace
     const int kBootCoastalSunbeamResource = 108;
     const int kBootOptionsResource = 109;
     const int kBootHelpersResource = 110;
+    const int kBootAboutResource = 120;
+    const int kBootSpookyResource = 121;
+    const int kBootSpookySunbeamResource = 122;
     const int kBootBuffJesusMenuResource = 111;
     const int kBootTitleSegmentResource = 112;
     const int kBootButtonLeftResource = 113;
@@ -1884,6 +1887,12 @@ namespace
     FableBitmapInfo g_BootOptionsArtworkInfo = {};
     FableBitmap g_BootHelpersArtwork = 0;
     FableBitmapInfo g_BootHelpersArtworkInfo = {};
+    FableBitmap g_BootAboutArtwork = 0;
+    FableBitmapInfo g_BootAboutArtworkInfo = {};
+    FableBitmap g_BootSpookyArtwork = 0;
+    FableBitmapInfo g_BootSpookyArtworkInfo = {};
+    FableBitmap g_BootSpookySunbeamArtwork = 0;
+    FableBitmapInfo g_BootSpookySunbeamArtworkInfo = {};
     FableBitmap g_BootTitleSegmentArtwork = 0;
     FableBitmapInfo g_BootTitleSegmentArtworkInfo = {};
     FableBitmap g_BootButtonLeftArtwork = 0;
@@ -1910,6 +1919,7 @@ namespace
     bool g_VisualOptionsBackHovered = false;
     bool g_VisualSaveMenuActive = false;
     unsigned int g_VisualSaveSelection = 0;
+    bool g_VisualAboutMenuActive = false;
     unsigned int g_VisualDetailScreen = 0;
     unsigned int g_VisualDetailSelection = 0;
     const unsigned int kVisualDetailRowCounts[3] = {10, 3, 10};
@@ -2541,6 +2551,29 @@ namespace
             RevealVisualFrontend(window);
             return true;
         }
+        if (action == 10)
+        {
+            // Games for Windows - LIVE.  Retail
+            // CFrontEndManager::Action @ 0x0059A238 has NO case for action
+            // 0xa: the switch falls straight to the default `return`, so the
+            // row is dispatched but leaves the main menu unchanged with no
+            // forward sound.  Consume the activation here so the input is
+            // treated as handled (retail-faithful no-op) instead of falling
+            // through to the press-start/options activators.
+            return true;
+        }
+        if (action == 321)
+        {
+            // Action 321 (0x141) -> used key 0x1c ->
+            // GotoNextScreen -> UI_FRONTEND_ABOUT_MENU (#449).
+            g_VisualMainMenuActive = false;
+            g_VisualAboutMenuActive = true;
+            g_VisualOptionsBackHovered = false;
+            FableSetVisualFrontendAboutMenu(true);
+            PlayVisualFrontendResourceSound(kBootSoundForwardResource);
+            RevealVisualFrontend(window);
+            return true;
+        }
         return false;
     }
 
@@ -2581,6 +2614,7 @@ namespace
             g_VisualMainMenuActive ||
             g_VisualOptionsMenuActive ||
             g_VisualSaveMenuActive ||
+            g_VisualAboutMenuActive ||
             g_VisualDetailScreen != 0 ||
             g_VisualQuitPromptActive ||
             FableIsRetailVideoActive())
@@ -2894,6 +2928,20 @@ namespace
                     RevealVisualFrontend(window);
                     return 0;
                 }
+                if (g_VisualAboutMenuActive)
+                {
+                    // About screen has no selectable rows; UI_HELPERS/UI_BACK
+                    // (#563) dispatches retail action 86 -> GotoPreviousScreen
+                    // back to UI_FRONTEND_MAIN_MENU.
+                    g_VisualAboutMenuActive = false;
+                    g_VisualMainMenuActive = true;
+                    FableSetVisualFrontendAboutMenu(false);
+                    FableSetVisualFrontendMainMenu(true);
+                    PlayVisualFrontendResourceSound(
+                        kBootSoundBackResource);
+                    RevealVisualFrontend(window);
+                    return 0;
+                }
             }
             break;
 
@@ -2935,6 +2983,7 @@ namespace
                 (g_VisualMainMenuActive ||
                  g_VisualOptionsMenuActive ||
                  g_VisualSaveMenuActive ||
+                 g_VisualAboutMenuActive ||
                  g_VisualDetailScreen != 0 ||
                  g_VisualQuitPromptActive))
             {
@@ -3000,6 +3049,28 @@ namespace
                     {
                         g_VisualSaveSelection = row;
                         FableSetVisualFrontendSaveSelection(row);
+                        RevealVisualFrontend(window);
+                        return 0;
+                    }
+                }
+                else if (g_VisualAboutMenuActive)
+                {
+                    // About shares the UI_HELPERS Back button region with the
+                    // other subscreens; a click there dispatches retail action
+                    // 86 -> GotoPreviousScreen back to the main menu.  The
+                    // screen has no selectable rows.
+                    if (
+                        mouseX >= 20 &&
+                        mouseX < 270 &&
+                        mouseY >= 420 &&
+                        mouseY < 450)
+                    {
+                        g_VisualAboutMenuActive = false;
+                        g_VisualMainMenuActive = true;
+                        FableSetVisualFrontendAboutMenu(false);
+                        FableSetVisualFrontendMainMenu(true);
+                        PlayVisualFrontendResourceSound(
+                            kBootSoundBackResource);
                         RevealVisualFrontend(window);
                         return 0;
                     }
@@ -3628,6 +3699,7 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     g_VisualOptionsBackHovered = false;
     g_VisualSaveMenuActive = false;
     g_VisualSaveSelection = 0;
+    g_VisualAboutMenuActive = false;
     g_VisualDetailScreen = 0;
     g_VisualRedefineHover = 0;
     g_VisualRedefineResetHover = 0;
@@ -3809,6 +3881,43 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         g_BootBuffJesusMenuArtwork = 0;
         g_BootMenuArtwork = 0;
     }
+    // SPOOKY graveyard background for UI_FRONTEND_ABOUT_MENU: a 640x1920
+    // 4-frame sheet + 640x1440 3-frame sunbeam, animated like forest/coastal.
+    g_BootSpookyArtwork = static_cast<FableBitmap>(LoadImageA(
+        instance,
+        IntegerResource(kBootSpookyResource),
+        kImageBitmap,
+        0,
+        0,
+        kLoadCreatedDibSection));
+    g_BootSpookySunbeamArtwork =
+        static_cast<FableBitmap>(LoadImageA(
+            instance,
+            IntegerResource(kBootSpookySunbeamResource),
+            kImageBitmap,
+            0,
+            0,
+            kLoadCreatedDibSection));
+    if (
+        g_BootSpookyArtwork != 0 &&
+        g_BootSpookySunbeamArtwork != 0)
+    {
+        GetObjectA(
+            g_BootSpookyArtwork,
+            sizeof(g_BootSpookyArtworkInfo),
+            &g_BootSpookyArtworkInfo);
+        GetObjectA(
+            g_BootSpookySunbeamArtwork,
+            sizeof(g_BootSpookySunbeamArtworkInfo),
+            &g_BootSpookySunbeamArtworkInfo);
+    }
+    else
+    {
+        DeleteObject(g_BootSpookySunbeamArtwork);
+        DeleteObject(g_BootSpookyArtwork);
+        g_BootSpookySunbeamArtwork = 0;
+        g_BootSpookyArtwork = 0;
+    }
 #if defined(FABLETLC_RETAIL_FRONTEND_SUBSCREENS)
     g_BootOptionsArtwork = static_cast<FableBitmap>(LoadImageA(
         instance,
@@ -3852,13 +3961,21 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         0,
         0,
         kLoadCreatedDibSection));
+    g_BootAboutArtwork = static_cast<FableBitmap>(LoadImageA(
+        instance,
+        IntegerResource(kBootAboutResource),
+        kImageBitmap,
+        0,
+        0,
+        kLoadCreatedDibSection));
     if (
         g_BootOptionsArtwork != 0 &&
         g_BootHelpersArtwork != 0 &&
         g_BootTitleSegmentArtwork != 0 &&
         g_BootButtonLeftArtwork != 0 &&
         g_BootButtonMiddleArtwork != 0 &&
-        g_BootButtonRightArtwork != 0)
+        g_BootButtonRightArtwork != 0 &&
+        g_BootAboutArtwork != 0)
     {
         GetObjectA(
             g_BootOptionsArtwork,
@@ -3884,15 +4001,21 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
             g_BootButtonRightArtwork,
             sizeof(g_BootButtonRightArtworkInfo),
             &g_BootButtonRightArtworkInfo);
+        GetObjectA(
+            g_BootAboutArtwork,
+            sizeof(g_BootAboutArtworkInfo),
+            &g_BootAboutArtworkInfo);
     }
     else
     {
+        DeleteObject(g_BootAboutArtwork);
         DeleteObject(g_BootButtonRightArtwork);
         DeleteObject(g_BootButtonMiddleArtwork);
         DeleteObject(g_BootButtonLeftArtwork);
         DeleteObject(g_BootTitleSegmentArtwork);
         DeleteObject(g_BootHelpersArtwork);
         DeleteObject(g_BootOptionsArtwork);
+        g_BootAboutArtwork = 0;
         g_BootButtonRightArtwork = 0;
         g_BootButtonMiddleArtwork = 0;
         g_BootButtonLeftArtwork = 0;
@@ -3991,7 +4114,22 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
             g_BootButtonRightArtworkInfo.height,
             g_BootButtonRightArtworkInfo.widthBytes,
             g_BootButtonRightArtworkInfo.bitsPerPixel,
-            g_BootButtonRightArtworkInfo.pixels))
+            g_BootButtonRightArtworkInfo.pixels,
+            g_BootAboutArtworkInfo.width,
+            g_BootAboutArtworkInfo.height,
+            g_BootAboutArtworkInfo.widthBytes,
+            g_BootAboutArtworkInfo.bitsPerPixel,
+            g_BootAboutArtworkInfo.pixels,
+            g_BootSpookyArtworkInfo.width,
+            g_BootSpookyArtworkInfo.height,
+            g_BootSpookyArtworkInfo.widthBytes,
+            g_BootSpookyArtworkInfo.bitsPerPixel,
+            g_BootSpookyArtworkInfo.pixels,
+            g_BootSpookySunbeamArtworkInfo.width,
+            g_BootSpookySunbeamArtworkInfo.height,
+            g_BootSpookySunbeamArtworkInfo.widthBytes,
+            g_BootSpookySunbeamArtworkInfo.bitsPerPixel,
+            g_BootSpookySunbeamArtworkInfo.pixels))
     {
 #if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
         SetWindowTextA(
