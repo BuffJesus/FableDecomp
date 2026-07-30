@@ -37455,6 +37455,48 @@ $catalog = @(
         TestSource = '00/42/global_BinarySearchTreeFindEqualOrGreater_0042ad6c_test.cpp'
         PassPattern = 'OK_0x0042ad6c'
     }
+    [pscustomobject]@{
+        Address = '0043f450'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/43/C3DAnimationBlendState_C3DAnimationBlendState_0043f450.cpp'
+        TestSource = '00/43/C3DAnimationBlendState_C3DAnimationBlendState_0043f450_test.cpp'
+        PassPattern = 'OK_0x0043f450'
+    }
+    [pscustomobject]@{
+        Address = '00445620'
+        Module = 'CInputTypeXboxPadButtonEvent'
+        Source = '00/44/CInputTypeXboxPadButtonEvent_GetType_00445620.cpp'
+        TestSource = '00/44/CInputTypeXboxPadButtonEvent_GetType_00445620_test.cpp'
+        PassPattern = 'OK_0x00445620'
+    }
+    [pscustomobject]@{
+        Address = '004456b0'
+        Module = 'CInputTypeXboxPadRightStickEvent'
+        Source = '00/44/CInputTypeXboxPadRightStickEvent_GetType_004456b0.cpp'
+        TestSource = '00/44/CInputTypeXboxPadRightStickEvent_GetType_004456b0_test.cpp'
+        PassPattern = 'OK_0x004456b0'
+    }
+    [pscustomobject]@{
+        Address = '00445730'
+        Module = 'CInputTypeMouseWheelMovementEvent'
+        Source = '00/44/CInputTypeMouseWheelMovementEvent_GetType_00445730.cpp'
+        TestSource = '00/44/CInputTypeMouseWheelMovementEvent_GetType_00445730_test.cpp'
+        PassPattern = 'OK_0x00445730'
+    }
+    [pscustomobject]@{
+        Address = '00445770'
+        Module = 'CInputTypeMouseWheelMovementUpEvent'
+        Source = '00/44/CInputTypeMouseWheelMovementUpEvent_GetType_00445770.cpp'
+        TestSource = '00/44/CInputTypeMouseWheelMovementUpEvent_GetType_00445770_test.cpp'
+        PassPattern = 'OK_0x00445770'
+    }
+    [pscustomobject]@{
+        Address = '004457f0'
+        Module = 'CXMVPlaybackInfo'
+        Source = '00/44/CXMVPlaybackInfo_CXMVPlaybackInfo_004457f0.cpp'
+        TestSource = '00/44/CXMVPlaybackInfo_CXMVPlaybackInfo_004457f0_test.cpp'
+        PassPattern = 'OK_0x004457f0'
+    }
 )
 
 $requestedAddresses = @(
