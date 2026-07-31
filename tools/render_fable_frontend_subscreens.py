@@ -949,7 +949,8 @@ def build_save_browser_frame(
         font_bank,
         selected_index=0,
         include_title_rule=True,
-        include_viewport=True):
+        include_viewport=True,
+        include_highlight=True):
     """Compose the first live save-list page from its recovered definitions."""
     if not 0 <= selected_index < len(SAVE_BROWSER_ROWS):
         raise ValueError("save selection is outside the recovered list")
@@ -966,18 +967,26 @@ def build_save_browser_frame(
         "Saved Games",
         include_title_rule)
 
+    # The selection highlight is the same TS_BUTTON L/M/R ornament as the
+    # Options selected row (total width 64+120+64 = 248).  The live D3D9 path
+    # emits it as its own generated-component quad positioned by g_SaveSelection
+    # (InitialiseButtonComponents(248)), drawn BEFORE the name-bearing save cell
+    # so it sits behind the row text.  The component/atlas sheet omits it
+    # (include_highlight=False) and the recomposition proof re-adds it as its own
+    # layer under the names -> zero-mask PIXEL_IDENTICAL.
     selected = _build_table_horizontal(
         _decode_named(buf, parsed, "TS_BUTTON_L"),
         _decode_named(buf, parsed, "TS_BUTTON_M"),
         _decode_named(buf, parsed, "TS_BUTTON_R"),
         120)
-    canvas.alpha_composite(
-        selected,
-        (
-            SAVE_LIST_ORIGIN[0],
-            SAVE_LIST_ORIGIN[1] +
-            selected_index * SAVE_ROW_STEP_Y - 7,
-        ))
+    if include_highlight:
+        canvas.alpha_composite(
+            selected,
+            (
+                SAVE_LIST_ORIGIN[0],
+                SAVE_LIST_ORIGIN[1] +
+                selected_index * SAVE_ROW_STEP_Y - 7,
+            ))
     # Centre each save name on the highlight button, exactly as the main-menu
     # and Options rows centre their labels on their selected ornament. The
     # ornament is composited at SAVE_LIST_ORIGIN[0] and spans ``selected.width``
@@ -1217,7 +1226,8 @@ def build_options_sheet(
             font_bank,
             selected,
             include_title_rule,
-            include_viewport=not include_options_row_atlas)
+            include_viewport=not include_options_row_atlas,
+            include_highlight=not include_options_row_atlas)
         for selected in range(len(SAVE_BROWSER_ROWS)))
     sheet = Image.new(
         "RGBA",
@@ -1524,6 +1534,16 @@ def main():
         # sprites the oracle uses) for the recomposition proof.
         save_viewport_layer = build_save_preview_viewport(
             args.frontend_bank)
+        # The save-list selection highlight is a live generated-component quad
+        # (InitialiseButtonComponents(248)) positioned by g_SaveSelection, drawn
+        # behind the row names.  Rebuild the same 248px TS_BUTTON table the
+        # oracle bakes so the recomposition re-adds it as its own under-names
+        # layer per save frame.
+        save_highlight = _build_table_horizontal(
+            button_left,
+            button_middle,
+            button_right,
+            120)
         for frame_index in range(OPTIONS_SHEET_FRAME_COUNT):
             composed = Image.new(
                 "RGBA", CANVAS_SIZE, (0, 0, 0, 0))
@@ -1538,6 +1558,18 @@ def main():
                         OPTIONS_LIST_ORIGIN[1] +
                         OPTIONS_ROWS[frame_index][1] -
                         7,
+                    ))
+            if frame_index >= SAVE_SCREEN_FRAME_BASE:
+                # Live save-list highlight quad: behind the row names (which
+                # arrive with the component crop below), positioned by the save
+                # selection this frame represents.
+                composed.alpha_composite(
+                    save_highlight,
+                    (
+                        SAVE_LIST_ORIGIN[0],
+                        SAVE_LIST_ORIGIN[1] +
+                        (frame_index - SAVE_SCREEN_FRAME_BASE) *
+                        SAVE_ROW_STEP_Y - 7,
                     ))
             if frame_index >= SAVE_SCREEN_FRAME_BASE:
                 component_left = SAVE_COMPONENT_ATLAS_ORIGIN[0]

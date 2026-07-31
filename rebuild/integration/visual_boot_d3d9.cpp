@@ -226,6 +226,17 @@ namespace
         3,
         &g_MainMenuBigButtonLifetime
     };
+    // Saved-games list highlight: the same TS_BUTTON L/M/R ornament as the
+    // Options selected row, composed to the recovered 248px save-row total
+    // width (64 + 120 inner + 64), emitted live at the selected save row.
+    FableUiCountedComponent g_SaveButtonComponentStorage[3] = {};
+    FableUiComponentLifetimeCounters g_SaveButtonLifetime = {};
+    FableUiGeneratedComponentVector g_SaveButtonComponents = {
+        g_SaveButtonComponentStorage,
+        0,
+        3,
+        &g_SaveButtonLifetime
+    };
     FableUiRuntimeListChild g_MainMenuRowChildren[7] = {};
     FableUiRuntimeListChild g_OptionsRowChildren[4] = {};
     CRenderManagerCoreAttachTextureView g_RenderManagerCore = {};
@@ -1756,6 +1767,23 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 buttonRightWidth,
                 buttonRightHeight < 0
                     ? -buttonRightHeight
+                    : buttonRightHeight) ||
+            !InitialiseButtonComponents(
+                248,
+                g_SaveButtonComponentStorage,
+                &g_SaveButtonLifetime,
+                &g_SaveButtonComponents,
+                buttonLeftWidth,
+                buttonLeftHeight < 0
+                    ? -buttonLeftHeight
+                    : buttonLeftHeight,
+                buttonMiddleWidth,
+                buttonMiddleHeight < 0
+                    ? -buttonMiddleHeight
+                    : buttonMiddleHeight,
+                buttonRightWidth,
+                buttonRightHeight < 0
+                    ? -buttonRightHeight
                     : buttonRightHeight))
         {
             FableShutdownVisualD3D9();
@@ -2119,6 +2147,17 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         selectedButtonX = 180.0f;
         selectedButtonY =
             static_cast<float>(143 + g_OptionsSelection * 30);
+    }
+    else if (g_SaveMenuActive && g_SaveSelection < 4)
+    {
+        // Saved-games list highlight (SAVE_LIST_ORIGIN (10,90),
+        // SAVE_ROW_STEP_Y 30, -7 to align the 44px ornament on the 30px row).
+        // Emitted before the name-bearing save cell overlay so the highlight
+        // sits behind the row text, matching the baked composite order.
+        selectedButtonComponents = &g_SaveButtonComponents;
+        selectedButtonX = 10.0f;
+        selectedButtonY =
+            static_cast<float>(90 + g_SaveSelection * 30 - 7);
     }
     if (
         selectedButtonComponents != 0 &&
@@ -2716,6 +2755,8 @@ bool FABLE_FASTCALL FableResizeVisualD3D9(
 
 void FABLE_FASTCALL FableShutdownVisualD3D9()
 {
+    FableReleaseUiGeneratedComponents(
+        &g_SaveButtonComponents);
     FableReleaseUiGeneratedComponents(
         &g_MainMenuBigButtonComponents);
     FableReleaseUiGeneratedComponents(
