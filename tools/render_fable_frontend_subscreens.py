@@ -118,6 +118,16 @@ SAVE_BROWSER_ROWS = (
 SAVE_LIST_ORIGIN = (10, 90)
 SAVE_ROW_STEP_Y = 30
 SAVE_LIST_HEIGHT = 150
+# UI_VIEW_RING_SMALL child of UI_FRONTEND_PROFILE_SAVED_GAMES_MENU, serialized at
+# (314, 37): the save-preview viewport on the right. It frames a 256x256 region
+# minimap (MINIMAP_*_FRONT_END) behind the ring ornament
+# (UI_VIEW_RING_SMALL_SPRITE_FE, 256x256).
+SAVE_VIEW_RING_ORIGIN = (314, 37)
+SAVE_VIEW_RING_SPRITE = "UI_VIEW_RING_SMALL_SPRITE_FE"
+# The runtime selects the region minimap from the decoded save-region field;
+# that field is not recovered yet, so the checkpoint shows the starting region
+# (Oakvale) as a deterministic, asset-backed placeholder.
+SAVE_PREVIEW_MINIMAP = "MINIMAP_STARTOAKVALE_FRONT_END"
 SAVE_SCREEN_FRAME_BASE = len(OPTIONS_ROWS) + DETAIL_SCREEN_COUNT
 OPTIONS_SHEET_FRAME_COUNT = SAVE_SCREEN_FRAME_BASE + len(SAVE_BROWSER_ROWS)
 SAVE_COMPONENT_ATLAS_ORIGIN = (
@@ -911,6 +921,19 @@ def build_save_browser_frame(
         font,
         "Saved Games",
         include_title_rule)
+
+    # Save-preview viewport (UI_VIEW_RING_SMALL @ 314,37): a region minimap
+    # framed by the ring ornament, on the right of the screen. Retail draws the
+    # selected save's region here; until that save field is decoded the
+    # checkpoint shows the starting region as a deterministic placeholder.
+    ring = _decode_named(buf, parsed, SAVE_VIEW_RING_SPRITE)
+    try:
+        minimap = _decode_named(buf, parsed, SAVE_PREVIEW_MINIMAP)
+        if minimap.size == ring.size:
+            canvas.alpha_composite(minimap, SAVE_VIEW_RING_ORIGIN)
+    except ValueError:
+        pass
+    canvas.alpha_composite(ring, SAVE_VIEW_RING_ORIGIN)
 
     selected = _build_table_horizontal(
         _decode_named(buf, parsed, "TS_BUTTON_L"),

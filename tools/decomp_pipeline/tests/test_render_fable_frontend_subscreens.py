@@ -47,6 +47,7 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     SAVE_LIST_HEIGHT,
     SAVE_LIST_ORIGIN,
     SAVE_ROW_STEP_Y,
+    SAVE_VIEW_RING_ORIGIN,
     SAVE_SCREEN_FRAME_BASE,
     VIDEO_CONTROL_VALUES,
     VIDEO_ROWS,
@@ -227,16 +228,32 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         # 64px left of the highlight centre (read as left-aligned).
         frame = build_save_browser_frame(self.FRONTEND_BANK, self.FONT_BANK, 1)
         other = build_save_browser_frame(self.FRONTEND_BANK, self.FONT_BANK, 0)
-        highlight = ImageChops.difference(frame, other).getchannel("A").getbbox()
+        # Scope to the list column (x < 300); the save-preview viewport on the
+        # right (x >= 314) is a separate element and would skew the bbox.
+        LIST_W = 300
+        highlight = ImageChops.difference(frame, other).crop(
+            (0, 0, LIST_W, 480)).getchannel("A").getbbox()
         self.assertIsNotNone(highlight)
         highlight_center = (highlight[0] + highlight[2]) / 2.0
         # An unselected row (row 3) shares the list column and is free of the
         # highlight, so its text centre must equal the highlight centre.
         y = SAVE_LIST_ORIGIN[1] + 3 * SAVE_ROW_STEP_Y
-        band = frame.crop((0, y - 12, 640, y + 16)).getchannel("A").getbbox()
+        band = frame.crop((0, y - 12, LIST_W, y + 16)).getchannel("A").getbbox()
         self.assertIsNotNone(band)
         text_center = (band[0] + band[2]) / 2.0
         self.assertAlmostEqual(text_center, highlight_center, delta=3)
+
+    def test_save_browser_renders_preview_viewport_ring(self):
+        # UI_VIEW_RING_SMALL (serialized at 314,37) frames a region minimap in
+        # the save-preview viewport on the right. Guard that the 256x256 region
+        # is rendered (previously empty background).
+        frame = build_save_browser_frame(self.FRONTEND_BANK, self.FONT_BANK, 0)
+        ox, oy = SAVE_VIEW_RING_ORIGIN
+        region = frame.crop((ox, oy, ox + 256, oy + 256)).getchannel("A")
+        bounds = region.getbbox()
+        self.assertIsNotNone(bounds)
+        # The ring ornament fills essentially the whole 256x256 tile.
+        self.assertEqual((0, 0, 256, 256), bounds)
 
     def test_compiled_video_defaults_seed_first_frame(self):
         self.assertEqual(("Resolution", "1024 x 768", 0.0), VIDEO_ROWS[0])
