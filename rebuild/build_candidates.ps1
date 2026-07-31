@@ -38631,6 +38631,69 @@ $catalog = @(
         TestSource = '00/5d/CTCWeapon_IsMeleeWeapon_005daa70_test.cpp'
         PassPattern = 'OK_0x005daa70'
     }
+    [pscustomobject]@{
+        Address = '005e9bf0'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_IsCurrentOrUpcomingState_005e9bf0.cpp'
+        TestSource = '00/5e/CTCTavernGame_IsCurrentOrUpcomingState_005e9bf0_test.cpp'
+        PassPattern = 'OK_0x005e9bf0'
+    }
+    [pscustomobject]@{
+        Address = '005ede93'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_GetAbilityLevel_005ede93.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_GetAbilityLevel_005ede93_test.cpp'
+        PassPattern = 'OK_0x005ede93'
+    }
+    [pscustomobject]@{
+        Address = '005edeeb'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_GetAbilityStatType_005edeeb.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_GetAbilityStatType_005edeeb_test.cpp'
+        PassPattern = 'OK_0x005edeeb'
+    }
+    [pscustomobject]@{
+        Address = '005edf1f'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/5e/CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation_005edf1f.cpp'
+        TestSource = '00/5e/CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation_005edf1f_test.cpp'
+        PassPattern = 'OK_0x005edf1f'
+    }
+    [pscustomobject]@{
+        Address = '005edfd9'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_GetAbilityPDef_005edfd9.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_GetAbilityPDef_005edfd9_test.cpp'
+        PassPattern = 'OK_0x005edfd9'
+    }
+    [pscustomobject]@{
+        Address = '005edff7'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_GetAbilityMoralityCostFactor_005edff7.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_GetAbilityMoralityCostFactor_005edff7_test.cpp'
+        PassPattern = 'OK_0x005edff7'
+    }
+    [pscustomobject]@{
+        Address = '005ede7f'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_GetAbilityGraphicIndex_005ede7f.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_GetAbilityGraphicIndex_005ede7f_test.cpp'
+        PassPattern = 'OK_0x005ede7f'
+    }
+    [pscustomobject]@{
+        Address = '005edf08'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_IsAbilityAvailable_005edf08.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_IsAbilityAvailable_005edf08_test.cpp'
+        PassPattern = 'OK_0x005edf08'
+    }
+    [pscustomobject]@{
+        Address = '005f7d41'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/5f/CEngineInternalPrimitiveBase_AddChildPrimitive_005f7d41.cpp'
+        TestSource = '00/5f/CEngineInternalPrimitiveBase_AddChildPrimitive_005f7d41_test.cpp'
+        PassPattern = 'OK_0x005f7d41'
+    }
 )
 
 $requestedAddresses = @(

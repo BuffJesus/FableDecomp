@@ -1501,7 +1501,7 @@ CEngineLandscapeMap	34	19	19	2	1	5	5	1	2	0	0
 CEngineLandscapeMemoryManager	25	16	12	0	0	2	2	2	0	0	0
 CEngineLandscapeMeshBuilder	10	3	2	0	0	0	0	0	0	0	0
 CEngineLandscapePatch	28	28	26	6	3	7	7	1	1	0	0
-CEngineLandscapeRenderer	39	33	33	8	0	8	8	6	1	0	0
+CEngineLandscapeRenderer	39	33	33	8	0	9	9	7	1	0	0
 CEngineLayerRenderer	2	1	1	0	0	0	0	0	0	0	0
 CEngineLightingManager	35	134	134	0	0	30	30	7	23	0	0
 CEngineLocalDetailGenerator	25	8	8	0	0	0	0	0	0	0	0
@@ -3367,7 +3367,7 @@ CTCInfoDisplay	8	1	1	0	0	0	0	0	0	0	0
 CTCInterestingToVillagers	4	0	0	0	0	0	0	0	0	0	0
 CTCInterface	0	4	0	0	0	0	0	0	0	0	0
 CTCInventory	118	93	90	0	0	1	1	1	0	0	0
-CTCInventoryAbilities	81	100	99	0	0	3	3	3	0	0	0
+CTCInventoryAbilities	81	100	99	0	0	7	7	6	1	0	0
 CTCInventoryBase	140	135	132	0	0	11	11	11	0	0	0
 CTCInventoryClothing	50	37	37	0	0	2	2	2	0	0	0
 CTCInventoryExperience	84	62	58	0	0	3	3	3	0	0	0
@@ -3476,7 +3476,7 @@ CTCTargetingPlayer	29	11	10	0	0	0	0	0	0	0	0
 CTCTargetingSpirit	5	3	3	0	0	0	0	0	0	0	0
 CTCTavern	4	1	1	0	0	0	0	0	0	0	0
 CTCTavernBar	10	10	6	0	0	0	0	0	0	0	0
-CTCTavernGame	60	53	52	0	0	2	2	2	0	0	0
+CTCTavernGame	60	53	52	0	0	3	3	3	0	0	0
 CTCTavernGameCardBase	25	25	23	0	0	0	0	0	0	0	0
 CTCTavernGameCardBlackjack	34	17	15	0	0	0	0	0	0	0	0
 CTCTavernGameCardPairs	18	13	11	0	0	0	0	0	0	0	0
@@ -3510,7 +3510,7 @@ CTCVolumeContainmentTrackerDef	2	3	3	0	0	1	1	1	0	0	0
 CTCWallMount	11	4	4	0	0	0	0	0	0	0	0
 CTCWallMountEffects	14	7	4	0	0	0	0	0	0	0	0
 CTCWaterWader	5	5	3	0	0	0	0	0	0	0	0
-CTCWeapon	39	35	31	0	0	7	7	7	0	0	0
+CTCWeapon	39	35	31	0	0	8	8	8	0	0	0
 CTCWeaponTrail	19	10	10	0	0	0	0	0	0	0	0
 CTCWeatherVane	4	1	1	0	0	0	0	0	0	0	0
 CTCWife	44	38	38	0	0	0	0	0	0	0	0
