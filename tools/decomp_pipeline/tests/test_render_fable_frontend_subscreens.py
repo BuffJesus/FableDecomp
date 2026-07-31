@@ -56,7 +56,9 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     _build_stretched,
     _build_table_horizontal,
     build_options_row_layers,
+    build_options_sheet,
     build_save_browser_frame,
+    build_save_preview_viewport,
     build_about_frame,
     validate_compiled_about_layout,
     validate_compiled_subscreen_layout,
@@ -278,6 +280,71 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         # The rule starts at the left edge and spans most of the 287 span.
         self.assertEqual(0, band[0])
         self.assertGreater(band[2], 200)
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_save_preview_viewport_is_256_panel(self):
+        # The live D3D9 ring quad samples a 256x256 rect; the panel it draws must
+        # be exactly that size (minimap composited under the ring ornament).
+        panel = build_save_preview_viewport(self.FRONTEND_BANK)
+        self.assertEqual((256, 256), panel.size)
+        # The ring ornament reaches every tile edge.
+        self.assertEqual(
+            (0, 0, 256, 256), panel.getchannel("A").getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_oracle_save_frame_punches_hole_before_viewport(self):
+        # The live cell-background quads skip the ring rect; the oracle must
+        # match by clearing that rect before compositing the panel on top, so
+        # the viewport is the ONLY content there (rule/list/File-Info under it
+        # are removed, exactly as the live 4-quad split leaves them).
+        oracle = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0, include_viewport=True)
+        holed = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0, include_viewport=False)
+        ox, oy = SAVE_VIEW_RING_ORIGIN
+        holed = holed.copy()
+        holed.paste((0, 0, 0, 0), (ox, oy, ox + 256, oy + 256))
+        holed.alpha_composite(
+            build_save_preview_viewport(self.FRONTEND_BANK),
+            SAVE_VIEW_RING_ORIGIN)
+        self.assertIsNone(
+            ImageChops.difference(oracle, holed).getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_component_atlas_bakes_ring_source_but_cell_is_ring_free(self):
+        # The component/atlas sheet keeps the ring ONLY inside each save cell's
+        # 256x256 source rect (so the live ring quad has pixels to sample) while
+        # the rest of the cell is ring-free (so the live cell-background quads,
+        # which surround that rect, never double-draw the ring).
+        components = build_options_sheet(
+            self.FRONTEND_BANK,
+            self.FONT_BANK,
+            include_title_rule=False,
+            include_selected_button=False,
+            include_options_text=False,
+            include_options_row_atlas=True)
+        panel = build_save_preview_viewport(self.FRONTEND_BANK)
+        ax, ay = SAVE_COMPONENT_ATLAS_ORIGIN
+        ox, oy = SAVE_VIEW_RING_ORIGIN
+        for save_row in range(len(SAVE_BROWSER_ROWS)):
+            cell_top = ay + save_row * 480
+            ring_box = (
+                ax + ox,
+                cell_top + oy,
+                ax + ox + 256,
+                cell_top + oy + 256,
+            )
+            baked = components.crop(ring_box)
+            self.assertIsNone(
+                ImageChops.difference(baked, panel).getbbox(),
+                "save cell %d ring source rect must match the panel"
+                % save_row)
 
     def test_compiled_video_defaults_seed_first_frame(self):
         self.assertEqual(("Resolution", "1024 x 768", 0.0), VIDEO_ROWS[0])

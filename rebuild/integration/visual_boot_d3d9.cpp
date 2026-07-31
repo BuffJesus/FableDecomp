@@ -1245,6 +1245,57 @@ CSystemManager* FABLE_FASTCALL GFGetSystemManager()
     return reinterpret_cast<CSystemManager*>(g_SystemManagerStorage);
 }
 
+// Shared geometry for the saved-games preview viewport (UI_VIEW_RING_SMALL).
+// The panel is baked into the shared g_OptionsTexture save cells at design
+// (314,37), size 256x256; save cell N lives at atlas column 1024 and frame
+// (4 + selection) of the 8-frame, 480px-tall save band.  Both the cell
+// background split and the live ring quad reference these so the C++ sample and
+// the Python atlas bake stay in lockstep.
+const float kSaveViewportDesignLeft = 314.0f;
+const float kSaveViewportDesignTop = 37.0f;
+const float kSaveViewportDesignRight = 570.0f;
+const float kSaveViewportDesignBottom = 293.0f;
+const float kSaveAtlasColumnLeft = 1024.0f;
+const float kSaveAtlasFrameHeight = 480.0f;
+const fable_u32 kSaveAtlasFirstFrame = 4;
+
+bool FABLE_FASTCALL FableComputeSaveViewportAtlasRect(
+    fable_u32 saveSelection,
+    fable_i32 optionsAtlasWidth,
+    fable_i32 optionsAtlasHeight,
+    float* outLeftU,
+    float* outTopV,
+    float* outRightU,
+    float* outBottomV)
+{
+    if (saveSelection >= 4 ||
+        optionsAtlasWidth <= 0 ||
+        optionsAtlasHeight <= 0 ||
+        outLeftU == 0 ||
+        outTopV == 0 ||
+        outRightU == 0 ||
+        outBottomV == 0)
+    {
+        return false;
+    }
+    const float invWidth =
+        1.0f / static_cast<float>(optionsAtlasWidth);
+    const float invHeight =
+        1.0f / static_cast<float>(optionsAtlasHeight);
+    const float cellTop =
+        static_cast<float>(kSaveAtlasFirstFrame + saveSelection) *
+        kSaveAtlasFrameHeight;
+    *outLeftU =
+        (kSaveAtlasColumnLeft + kSaveViewportDesignLeft) * invWidth;
+    *outTopV =
+        (cellTop + kSaveViewportDesignTop) * invHeight;
+    *outRightU =
+        (kSaveAtlasColumnLeft + kSaveViewportDesignRight) * invWidth;
+    *outBottomV =
+        (cellTop + kSaveViewportDesignBottom) * invHeight;
+    return true;
+}
+
 bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     void* window,
     fable_i32 backBufferWidth,
@@ -2126,9 +2177,13 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     }
     if (overlayTexture != 0)
     {
+        // Must share the exact activation condition of the ring-fill quad
+        // below (g_OptionsWidth == 1664); otherwise the hole-punch surround
+        // quads would leave a transparent ring rect that nothing fills.
         const bool saveAtlasColumn =
             g_SaveMenuActive &&
-            overlayTexture == g_OptionsTexture;
+            overlayTexture == g_OptionsTexture &&
+            g_OptionsWidth == 1664;
         const float overlayU0 =
             saveAtlasColumn
                 ? 1024.0f /
@@ -2155,15 +2210,76 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         const float overlayV1 =
             static_cast<float>(overlayFrame + 1) /
             static_cast<float>(overlayFrameCount);
-        AppendVisualQuad(
-            vertices, vertexCount, records, recordCount,
-            overlayTexture,
-            titleLeft, titleTop, titleRight, titleBottom,
-            overlayU0,
-            overlayV0,
-            overlayU1,
-            overlayV1,
-            0xFFFFFFFFu);
+        if (saveAtlasColumn)
+        {
+            // The save cell bakes the UI_VIEW_RING_SMALL preview viewport at
+            // design (314,37), size 256x256.  Retail draws that viewport as a
+            // panel that sits ON TOP of everything else on the saved-games
+            // screen, so it must be emitted as its own live Render2D quad AFTER
+            // the title rule / list / helpers rather than inline with the cell
+            // background.  Emit the cell background here as four quads that
+            // surround the ring rect (top slab, bottom slab, mid-left,
+            // mid-right); the ring itself is re-emitted last, further below,
+            // sampling the same baked pixels exactly once.  Screen position and
+            // atlas UV are both affine in the cell's 640x480 design space, so
+            // each sub-quad interpolates titleLeft/titleTop + design*scale for
+            // its screen rect and (1024+dx)/W, (cellTop+dy)/H for its UV.
+            const float saveCellScaleX =
+                (titleRight - titleLeft) / 640.0f;
+            const float saveCellScaleY =
+                (titleBottom - titleTop) / 480.0f;
+            const float saveCellTop =
+                static_cast<float>(overlayFrame) * 480.0f;
+            const float saveInvW =
+                1.0f / static_cast<float>(g_OptionsWidth);
+            const float saveInvH =
+                1.0f / static_cast<float>(g_OptionsHeight);
+            const float ringDesignLeft = kSaveViewportDesignLeft;
+            const float ringDesignTop = kSaveViewportDesignTop;
+            const float ringDesignRight = kSaveViewportDesignRight;
+            const float ringDesignBottom = kSaveViewportDesignBottom;
+            struct SaveCellRect
+            {
+                float dx0;
+                float dy0;
+                float dx1;
+                float dy1;
+            };
+            const SaveCellRect surroundRects[4] = {
+                {0.0f, 0.0f, 640.0f, ringDesignTop},
+                {0.0f, ringDesignBottom, 640.0f, 480.0f},
+                {0.0f, ringDesignTop, ringDesignLeft, ringDesignBottom},
+                {ringDesignRight, ringDesignTop, 640.0f, ringDesignBottom}
+            };
+            for (fable_u32 rect = 0; rect != 4; ++rect)
+            {
+                const SaveCellRect& band = surroundRects[rect];
+                AppendVisualQuad(
+                    vertices, vertexCount, records, recordCount,
+                    overlayTexture,
+                    titleLeft + band.dx0 * saveCellScaleX,
+                    titleTop + band.dy0 * saveCellScaleY,
+                    titleLeft + band.dx1 * saveCellScaleX,
+                    titleTop + band.dy1 * saveCellScaleY,
+                    (1024.0f + band.dx0) * saveInvW,
+                    (saveCellTop + band.dy0) * saveInvH,
+                    (1024.0f + band.dx1) * saveInvW,
+                    (saveCellTop + band.dy1) * saveInvH,
+                    0xFFFFFFFFu);
+            }
+        }
+        else
+        {
+            AppendVisualQuad(
+                vertices, vertexCount, records, recordCount,
+                overlayTexture,
+                titleLeft, titleTop, titleRight, titleBottom,
+                overlayU0,
+                overlayV0,
+                overlayU1,
+                overlayV1,
+                0xFFFFFFFFu);
+        }
     }
     if (
         g_MainMenuActive &&
@@ -2382,6 +2498,44 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             1.0f,
             static_cast<float>(helperFrame + 1) / 6.0f,
             0xFFFFFFFFu);
+    }
+    // Save-preview viewport (UI_VIEW_RING_SMALL, design (314,37), 256x256):
+    // emitted LAST so the ring+region-minimap panel draws on top of the whole
+    // saved-games screen, matching retail composite order.  It reuses the
+    // already-attached g_OptionsTexture (no new texture, no attach-chain or
+    // FableInitialiseVisualD3D9 signature change), sampling the ring pixels
+    // baked into the selected save cell -- the exact rect the four cell
+    // background quads above deliberately skip, so the ring is drawn once.
+    if (g_SaveMenuActive &&
+        g_OptionsTexture != 0 &&
+        g_OptionsWidth == 1664)
+    {
+        float ringU0 = 0.0f;
+        float ringV0 = 0.0f;
+        float ringU1 = 0.0f;
+        float ringV1 = 0.0f;
+        if (FableComputeSaveViewportAtlasRect(
+                g_SaveSelection,
+                g_OptionsWidth,
+                g_OptionsHeight,
+                &ringU0,
+                &ringV0,
+                &ringU1,
+                &ringV1))
+        {
+            AppendVisualQuad(
+                vertices, vertexCount, records, recordCount,
+                g_OptionsTexture,
+                titleLeft + kSaveViewportDesignLeft * designScaleX,
+                titleTop + kSaveViewportDesignTop * designScaleY,
+                titleLeft + kSaveViewportDesignRight * designScaleX,
+                titleTop + kSaveViewportDesignBottom * designScaleY,
+                ringU0,
+                ringV0,
+                ringU1,
+                ringV1,
+                0xFFFFFFFFu);
+        }
     }
     FableRender2DPlanEvent planEvents[68];
     FableRender2DPlanOutput plan = {

@@ -27,7 +27,7 @@ import argparse
 import os
 import sys
 
-from PIL import Image, ImageChops, ImageDraw
+from PIL import Image, ImageChops
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from render_fable_frontend_menu import (  # noqa: E402
@@ -924,11 +924,32 @@ def build_redefine_frame(
     return canvas
 
 
+def build_save_preview_viewport(frontend_bank):
+    """Build the 256x256 save-preview viewport panel (region minimap under the
+    UI_VIEW_RING_SMALL ornament).  It is composited as the LAST layer of the
+    saved-games screen, matching retail, which draws the viewport panel on top
+    of the whole screen.  The live D3D9 path emits it as its own Render2D quad
+    after the title rule/list/helpers, so keeping it a discrete layer here lets
+    the recomposition proof reproduce the baked oracle pixel-for-pixel."""
+    buf, parsed = load_big(frontend_bank)
+    ring = _decode_named(buf, parsed, SAVE_VIEW_RING_SPRITE)
+    panel = Image.new("RGBA", ring.size, (0, 0, 0, 0))
+    try:
+        minimap = _decode_named(buf, parsed, SAVE_PREVIEW_MINIMAP)
+        if minimap.size == ring.size:
+            panel.alpha_composite(minimap)
+    except ValueError:
+        pass
+    panel.alpha_composite(ring)
+    return panel
+
+
 def build_save_browser_frame(
         frontend_bank,
         font_bank,
         selected_index=0,
-        include_title_rule=True):
+        include_title_rule=True,
+        include_viewport=True):
     """Compose the first live save-list page from its recovered definitions."""
     if not 0 <= selected_index < len(SAVE_BROWSER_ROWS):
         raise ValueError("save selection is outside the recovered list")
@@ -944,19 +965,6 @@ def build_save_browser_frame(
         font,
         "Saved Games",
         include_title_rule)
-
-    # Save-preview viewport (UI_VIEW_RING_SMALL @ 314,37): a region minimap
-    # framed by the ring ornament, on the right of the screen. Retail draws the
-    # selected save's region here; until that save field is decoded the
-    # checkpoint shows the starting region as a deterministic placeholder.
-    ring = _decode_named(buf, parsed, SAVE_VIEW_RING_SPRITE)
-    try:
-        minimap = _decode_named(buf, parsed, SAVE_PREVIEW_MINIMAP)
-        if minimap.size == ring.size:
-            canvas.alpha_composite(minimap, SAVE_VIEW_RING_ORIGIN)
-    except ValueError:
-        pass
-    canvas.alpha_composite(ring, SAVE_VIEW_RING_ORIGIN)
 
     selected = _build_table_horizontal(
         _decode_named(buf, parsed, "TS_BUTTON_L"),
@@ -1016,6 +1024,23 @@ def build_save_browser_frame(
         (95, 293),
         "left")
     _draw_helper(canvas, assets["back"], font, (20, 420), "Back")
+
+    # Save-preview viewport (UI_VIEW_RING_SMALL @ 314,37): a region minimap
+    # framed by the ring ornament, on the right of the screen.  It is the LAST
+    # thing composited (retail draws the viewport panel on top of the whole
+    # saved-games screen).  The live D3D9 path emits it as a standalone Render2D
+    # quad drawn last while the underlying cell-background quads SKIP the 256x256
+    # ring rect; to reproduce the live path pixel-for-pixel the oracle punches
+    # the same hole (clearing the rule/list/File-Info under the panel) before
+    # compositing the viewport on top.  The component/atlas variant omits the
+    # panel entirely (include_viewport=False) and the recomposition proof
+    # re-adds it as its own final layer -> zero-mask PIXEL_IDENTICAL.
+    if include_viewport:
+        ox, oy = SAVE_VIEW_RING_ORIGIN
+        canvas.paste((0, 0, 0, 0), (ox, oy, ox + 256, oy + 256))
+        canvas.alpha_composite(
+            build_save_preview_viewport(frontend_bank),
+            SAVE_VIEW_RING_ORIGIN)
     return canvas
 
 
@@ -1181,12 +1206,18 @@ def build_options_sheet(
             include_key_text=False,
             include_title_rule=include_title_rule),
     ))
+    # The oracle sheet (include_options_row_atlas=False) bakes the preview
+    # viewport into each save frame as ground truth.  The component/atlas sheet
+    # (include_options_row_atlas=True) is built ring-free so the live
+    # recomposition can re-add the viewport as its own final layer, matching the
+    # live D3D9 quad and proving a zero-mask PIXEL_IDENTICAL recomposition.
     frames.extend(
         build_save_browser_frame(
             frontend_bank,
             font_bank,
             selected,
-            include_title_rule)
+            include_title_rule,
+            include_viewport=not include_options_row_atlas)
         for selected in range(len(SAVE_BROWSER_ROWS)))
     sheet = Image.new(
         "RGBA",
@@ -1213,6 +1244,34 @@ def build_options_sheet(
                 ))
         else:
             sheet.alpha_composite(frame, (0, index * CANVAS_SIZE[1]))
+
+    if include_options_row_atlas:
+        # The save frames were built ring-free above.  The live D3D9 ring quad
+        # samples the preview viewport from each save cell at cell-local
+        # (314,37); bake ONLY that 256x256 rect back so the live quad has its
+        # source pixels while the rest of every cell stays ring-free (so the
+        # four cell-background quads never double-draw the ring).  Clear the rect
+        # first so the source is the panel over transparency, matching the pixels
+        # the live ring quad composites over the screen -- not the panel blended
+        # with whatever ring-free cell content sat under it.
+        viewport = build_save_preview_viewport(frontend_bank)
+        ox, oy = SAVE_VIEW_RING_ORIGIN
+        for save_row in range(len(SAVE_BROWSER_ROWS)):
+            source_left = SAVE_COMPONENT_ATLAS_ORIGIN[0] + ox
+            source_top = (
+                SAVE_COMPONENT_ATLAS_ORIGIN[1] +
+                save_row * CANVAS_SIZE[1] +
+                oy
+            )
+            sheet.paste(
+                (0, 0, 0, 0),
+                (
+                    source_left,
+                    source_top,
+                    source_left + 256,
+                    source_top + 256,
+                ))
+            sheet.alpha_composite(viewport, (source_left, source_top))
 
     buf, parsed = load_big(frontend_bank)
     font = load_font(font_bank, "ENG_ARIAL_24")
@@ -1460,6 +1519,11 @@ def main():
             ))
             for row in range(len(OPTIONS_ROWS))
         ]
+        # The save-preview viewport is the last-composited layer of every save
+        # frame in the live path; rebuild it once (from the same decoded
+        # sprites the oracle uses) for the recomposition proof.
+        save_viewport_layer = build_save_preview_viewport(
+            args.frontend_bank)
         for frame_index in range(OPTIONS_SHEET_FRAME_COUNT):
             composed = Image.new(
                 "RGBA", CANVAS_SIZE, (0, 0, 0, 0))
@@ -1494,6 +1558,19 @@ def main():
             if frame_index < len(OPTIONS_ROWS):
                 for row_layer in option_row_layers:
                     composed.alpha_composite(row_layer)
+            if frame_index >= SAVE_SCREEN_FRAME_BASE:
+                # Reproduce the live save-preview viewport path exactly: the live
+                # cell-background quads SKIP the 256x256 ring rect (drawn as four
+                # surrounding quads), so punch the same hole here -- clearing the
+                # rule/list/File-Info under the panel -- then emit the viewport
+                # as the final layer, mirroring the live ring quad drawn last.
+                # This makes the recomposition PIXEL_IDENTICAL to the holed
+                # oracle with no band mask.
+                ox, oy = SAVE_VIEW_RING_ORIGIN
+                composed.paste((0, 0, 0, 0), (ox, oy, ox + 256, oy + 256))
+                composed.alpha_composite(
+                    save_viewport_layer,
+                    SAVE_VIEW_RING_ORIGIN)
             oracle = options.crop((
                 0,
                 frame_index * CANVAS_SIZE[1],
@@ -1501,24 +1578,6 @@ def main():
                 (frame_index + 1) * CANVAS_SIZE[1],
             ))
             recomposition_diff = ImageChops.difference(composed, oracle)
-            if frame_index >= SAVE_SCREEN_FRAME_BASE:
-                # The save-preview viewport (UI_VIEW_RING_SMALL) is static baked
-                # content, not a live-recomposed component. Its semi-transparent
-                # ring edge overlaps the anti-aliased title text, and integer
-                # alpha compositing is not perfectly associative across the baked
-                # (title->viewport) and recomposed (rule->component) paths, so a
-                # few sub-pixel-rounding pixels differ there. The gap can ONLY
-                # occur where the title rule vertically overlaps the viewport --
-                # y in [ring_top, title_rule_bottom) -- so mask exactly that
-                # band, not the whole 256x256 tile. Everything below the title
-                # rule (the ring body and the region minimap) stays a live
-                # recomposition invariant; a full live viewport render remains a
-                # separate task (frontend P0 item 5).
-                ox, oy = SAVE_VIEW_RING_ORIGIN
-                band_bottom = HEADER_RULE_POSITION[1] + title_rule.height
-                ImageDraw.Draw(recomposition_diff).rectangle(
-                    (ox, oy, ox + 256 - 1, band_bottom - 1),
-                    fill=(0, 0, 0, 0))
             if recomposition_diff.getbbox():
                 raise ValueError(
                     "live title/selection/row composition differs from "

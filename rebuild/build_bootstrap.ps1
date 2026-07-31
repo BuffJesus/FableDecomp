@@ -278,6 +278,7 @@ $render2DBatchPlanSource = Join-Path $rebuildRoot 'integration\render2d_batch_pl
 $render2DBatchPlanBehaviorSource = Join-Path $rebuildRoot 'tests\integration\Render2DBatchPlan_test.cpp'
 $render2DDrawListAdapterSource = Join-Path $rebuildRoot 'integration\render2d_draw_list_adapter.cpp'
 $render2DDrawListAdapterBehaviorSource = Join-Path $rebuildRoot 'tests\integration\Render2DDrawListAdapter_test.cpp'
+$saveViewportQuadsBehaviorSource = Join-Path $rebuildRoot 'tests\integration\SaveViewportQuads_test.cpp'
 $attachTextureToStageSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CRenderManagerCore_AttachTextureToStage_009a0cf0.cpp'
 $realiseRenderStateSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderStateManager_RealiseRenderState_00a058c0.cpp'
 $soldStateBlockSource = Join-Path $rebuildRoot 'src\compiled\00\9d\CStateBlockFunctionSold_Apply_009df060.cpp'
@@ -450,6 +451,7 @@ $render2DBatchPlanObject = Join-Path $outDir 'render2d_batch_plan.obj'
 $render2DBatchPlanBehaviorObject = Join-Path $outDir 'render2d_batch_plan_behavior.obj'
 $render2DDrawListAdapterObject = Join-Path $outDir 'render2d_draw_list_adapter.obj'
 $render2DDrawListAdapterBehaviorObject = Join-Path $outDir 'render2d_draw_list_adapter_behavior.obj'
+$saveViewportQuadsBehaviorObject = Join-Path $outDir 'save_viewport_quads_behavior.obj'
 $attachTextureToStageObject = Join-Path $outDir 'attach_texture_to_stage.obj'
 $realiseRenderStateObject = Join-Path $outDir 'realise_render_state.obj'
 $soldStateBlockObject = Join-Path $outDir 'sold_state_block.obj'
@@ -581,6 +583,7 @@ $videoFramePublicationBehaviorExecutable = Join-Path $outDir 'FableTLC-VideoFram
 $frontendStartupSequenceBehaviorExecutable = Join-Path $outDir 'FableTLC-FrontendStartupSequence-Behavior.exe'
 $render2DBatchPlanBehaviorExecutable = Join-Path $outDir 'FableTLC-Render2DBatchPlan-Behavior.exe'
 $render2DDrawListAdapterBehaviorExecutable = Join-Path $outDir 'FableTLC-Render2DDrawListAdapter-Behavior.exe'
+$saveViewportQuadsBehaviorExecutable = Join-Path $outDir 'FableTLC-SaveViewportQuads-Behavior.exe'
 $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
 $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $gfInitialisePassPattern = 'FABLETLC_GFINITIALISE_BEHAVIOR PASS'
@@ -658,6 +661,7 @@ $videoFramePublicationPassPattern = 'FABLETLC_VIDEO_FRAME_PUBLICATION PASS'
 $frontendStartupSequencePassPattern = 'FABLETLC_FRONTEND_STARTUP_SEQUENCE PASS'
 $render2DBatchPlanPassPattern = 'FABLETLC_RENDER2D_BATCH_PLAN PASS'
 $render2DDrawListAdapterPassPattern = 'FABLETLC_RENDER2D_DRAW_LIST_ADAPTER PASS'
+$saveViewportQuadsPassPattern = 'FABLETLC_SAVE_VIEWPORT_ATLAS_RECT PASS'
 $profileEndPassPattern = 'FABLETLC_PROFILE_END_BEHAVIOR PASS'
 $asyncFailureHandlingPassPattern = 'FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS'
 $startupLatchPassPattern = 'FABLETLC_STARTUP_LATCH_BEHAVIOR PASS'
@@ -924,6 +928,7 @@ $required = @(
     $render2DBatchPlanBehaviorSource,
     $render2DDrawListAdapterSource,
     $render2DDrawListAdapterBehaviorSource,
+    $saveViewportQuadsBehaviorSource,
     $attachTextureToStageSource,
     $realiseRenderStateSource,
     $displaySetViewportSource,
@@ -3233,6 +3238,16 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$saveViewportQuadsBehaviorObject" `
+        $saveViewportQuadsBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $saveViewportQuadsBehaviorObject)
+    ) {
+        throw 'Failed to compile the save-preview viewport quad fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$attachTextureToStageObject" $attachTextureToStageSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -4570,6 +4585,48 @@ try {
         (($visualBootOutput -join "`n") -notmatch [regex]::Escape($visualBootPassPattern))
     ) {
         throw "Visual boot fixture failed with exit code $visualBootExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$saveViewportQuadsBehaviorExecutable" `
+        $visualBootObject $visualBootD3D9Object $retailVideoBridgeObject `
+        $videoFrameConversionObject $videoFramePublicationObject `
+        $frontendStartupSequenceObject `
+        $render2DBatchPlanObject $render2DDrawListAdapterObject `
+        $attachTextureToStageObject $realiseRenderStateObject `
+        $soldStateBlockObject `
+        $updatePixelShaderObject `
+        $resetWorldTransformObject `
+        $displaySetViewportObject $displaySetIntegerViewportObject `
+        $postViewportShaderObject $viewportE2Object `
+        $setRenderWindowObject `
+        $clearRender2DVertexQueueObject `
+        $restoreRenderStateCaptureObject `
+        $textureCalcByteLengthObject `
+        $pixelFormatGetColourDepthObject $pixelFormatInitialiseObject `
+        $pixelFormatTableObject $textureInitialisePreallocatedObject `
+        $textureAssignmentObject $textureUninitialiseObject `
+        $saveViewportQuadsBehaviorObject $visualBootResource `
+        user32.lib gdi32.lib d3d9.lib advapi32.lib ole32.lib winmm.lib
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $saveViewportQuadsBehaviorExecutable)
+    ) {
+        throw 'Failed to link the save-preview viewport quad fixture.'
+    }
+
+    $saveViewportQuadsOutput = & $saveViewportQuadsBehaviorExecutable 2>&1
+    $saveViewportQuadsExitCode = $LASTEXITCODE
+    $saveViewportQuadsOutput | Write-Output
+    if (
+        $saveViewportQuadsExitCode -ne 0 -or
+        (($saveViewportQuadsOutput -join "`n") -notmatch `
+            [regex]::Escape($saveViewportQuadsPassPattern))
+    ) {
+        throw (
+            'Save-preview viewport quad fixture failed with exit code ' +
+            "$saveViewportQuadsExitCode."
+        )
     }
 
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `

@@ -122,6 +122,22 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     fable_i32 clientWidth,
     fable_i32 clientHeight);
 
+// Save-preview viewport (UI_VIEW_RING_SMALL) atlas sample rect.  The saved-games
+// preview panel (region minimap + ring ornament, design (314,37), 256x256) is
+// baked into each save cell of the shared g_OptionsTexture atlas and emitted as
+// a live Render2D quad drawn after the title rule.  This helper is the single
+// source of truth for the atlas UV rect the ring quad samples, so the C++ sample
+// and the Python atlas bake can be verified to coincide.  Returns false on
+// invalid inputs (selection >= 4 or non-positive atlas dimensions).
+bool FABLE_FASTCALL FableComputeSaveViewportAtlasRect(
+    fable_u32 saveSelection,
+    fable_i32 optionsAtlasWidth,
+    fable_i32 optionsAtlasHeight,
+    float* outLeftU,
+    float* outTopV,
+    float* outRightU,
+    float* outBottomV);
+
 bool FABLE_FASTCALL FablePresentVisualD3D9Black();
 
 bool FABLE_FASTCALL FableResizeVisualD3D9(
