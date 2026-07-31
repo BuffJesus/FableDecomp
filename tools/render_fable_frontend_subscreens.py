@@ -1507,12 +1507,17 @@ def main():
                 # ring edge overlaps the anti-aliased title text, and integer
                 # alpha compositing is not perfectly associative across the baked
                 # (title->viewport) and recomposed (rule->component) paths, so a
-                # few sub-pixel-rounding pixels differ there. Exclude the static
-                # viewport tile from this live-recomposition invariant; a live
-                # viewport render is a separate task (frontend P0 item 5).
+                # few sub-pixel-rounding pixels differ there. The gap can ONLY
+                # occur where the title rule vertically overlaps the viewport --
+                # y in [ring_top, title_rule_bottom) -- so mask exactly that
+                # band, not the whole 256x256 tile. Everything below the title
+                # rule (the ring body and the region minimap) stays a live
+                # recomposition invariant; a full live viewport render remains a
+                # separate task (frontend P0 item 5).
                 ox, oy = SAVE_VIEW_RING_ORIGIN
+                band_bottom = HEADER_RULE_POSITION[1] + title_rule.height
                 ImageDraw.Draw(recomposition_diff).rectangle(
-                    (ox, oy, ox + 256 - 1, oy + 256 - 1),
+                    (ox, oy, ox + 256 - 1, band_bottom - 1),
                     fill=(0, 0, 0, 0))
             if recomposition_diff.getbbox():
                 raise ValueError(
