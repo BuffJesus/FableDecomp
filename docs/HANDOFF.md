@@ -7044,6 +7044,18 @@ Advancing frontend P0 item 2 (Saved Games parity) in `render_fable_frontend_subs
   minimap is not decoded yet, so the checkpoint shows the starting region
   (Oakvale) as a deterministic asset-backed placeholder.
 
+- **Redefine Keys full action list — decoded, name-gap confirmed blocked.**
+  The retail `UI_FRONTEND_LIST_REDEFINE_KEYS_MENU.ActionOrder` decodes to
+  **31 action ids** (`REDEFINE_FULL_ACTION_ORDER`), not the 9 of the visible
+  first page; action 60 fans out to W/A/S/D. Every id's default key binding
+  is sourced from `FABLE_PC_CONTROL_SCHEME_GDD_WASD`. The blocker for
+  rendering the off-page rows is the **EGameAction integer->display-name**
+  table: retail strips those strings and three sourcing passes have now
+  failed (two binary scans + a web pass — StrategyWiki/GameFAQs 403,
+  fabletlcmod wiki has no id->name table). Off-page rows stay unrendered
+  rather than assumption-labelled. Close via controls_def.hpp/inputkey.h
+  headers or a live in-game binding capture, NOT another binary scan.
+
 - **File Information backdrop.** The File Information panel now renders its
   recovered `UI_TEXT_AREA` (0,254) rule: `UI_TABLE_TEXT_LEFT` (width 287) +
   `UI_TABLE_TEXT_RIGHT` (463, width 40), both `UI_TEXTBOX_MIDDLE` (#122),

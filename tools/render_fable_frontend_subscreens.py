@@ -217,6 +217,23 @@ CONTROL_VALUE_GROUPS = (
 
 # UI_FRONTEND_LIST_REDEFINE_KEYS_MENU.ActionOrder and the shipped
 # FABLE_PC_CONTROL_SCHEME_GDD_WASD records provide this first visible page.
+#
+# The full decoded retail ActionOrder is 31 entries -- action 60 expands into
+# four W/A/S/D movement rows (CRedefinerList::RefreshScriptThings @ 0x00556A40),
+# so the nine visible rows below cover action ids 60(x4),9,7,8,31,45. The
+# remaining 25 ids scroll off the first page:
+#   REDEFINE_FULL_ACTION_ORDER (below). Every id's default *key binding* is
+#   sourced from FABLE_PC_CONTROL_SCHEME_GDD_WASD (see docs/CONTROLLER_ENUMS.md).
+# What is NOT sourced is each id's on-screen *display name*: retail strips the
+# EGameAction integer->name strings (docs/HANDOFF.md "REMAINING GAP"). Three
+# sourcing passes have now failed -- two binary scans and a web pass
+# (StrategyWiki/GameFAQs 403; fabletlcmod wiki carries no id->name table). The
+# off-page rows therefore stay unrendered rather than being labelled with
+# assumed names, per the project's evidence-not-assumption rule. Closing this
+# needs controls_def.hpp/inputkey.h headers or a live in-game binding capture.
+REDEFINE_FULL_ACTION_ORDER = (
+    60, 9, 7, 8, 31, 45, 6, 13, 14, 1, 32, 26, 86, 94, 78, 4, 113, 112, 72,
+    56, 92, 90, 96, 91, 97, 93, 98, 99, 100, 55, 53)
 REDEFINE_ACTION_ORDER = (60, 9, 7, 8, 31, 45, 6, 13, 14)
 REDEFINE_ROWS = (
     ("Move Forward", "W"),

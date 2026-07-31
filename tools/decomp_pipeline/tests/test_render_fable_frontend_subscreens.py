@@ -28,6 +28,7 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     OPTIONS_SHEET_WIDTH,
     OPTIONS_ROWS,
     REDEFINE_ACTION_ORDER,
+    REDEFINE_FULL_ACTION_ORDER,
     REDEFINE_HOVER_HELPER_FRAME,
     REDEFINE_HOVER_STRIP_SIZE,
     REDEFINE_ACTION_TEXT_OFFSET,
@@ -179,6 +180,17 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
                 ("Move Right", "D"),
             ),
             REDEFINE_ROWS[:4])
+
+    def test_full_redefine_action_order_is_the_decoded_31_entry_list(self):
+        # UI_FRONTEND_LIST_REDEFINE_KEYS_MENU.ActionOrder decodes to 31 ids;
+        # the visible first page is its prefix (action 60 fans out to W/A/S/D).
+        # Locks the decoded fact so the off-page name gap is not re-derived.
+        self.assertEqual(31, len(REDEFINE_FULL_ACTION_ORDER))
+        self.assertEqual(
+            REDEFINE_ACTION_ORDER,
+            REDEFINE_FULL_ACTION_ORDER[:len(REDEFINE_ACTION_ORDER)])
+        self.assertEqual(len(set(REDEFINE_FULL_ACTION_ORDER)),
+                         len(REDEFINE_FULL_ACTION_ORDER))
 
     def test_save_browser_geometry_and_order_match_recovered_contract(self):
         self.assertEqual((10, 90), SAVE_LIST_ORIGIN)
