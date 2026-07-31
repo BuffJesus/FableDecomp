@@ -1460,7 +1460,7 @@ CEngineInternalPrimitive2DText	1	1	1	0	0	0	0	0	0	0	0
 CEngineInternalPrimitive2DViewport	10	14	13	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveAnimatedMesh	16	16	16	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveAnimatedMeshFromFile	1	1	1	0	0	1	1	1	0	0	0
-CEngineInternalPrimitiveBase	15	100	98	0	0	56	56	55	1	0	0
+CEngineInternalPrimitiveBase	15	100	98	0	0	57	57	56	1	0	0
 CEngineInternalPrimitiveChanger	16	16	15	0	0	0	0	0	0	0	0
 CEngineInternalPrimitiveDecal	4	4	4	0	0	1	1	1	0	0	0
 CEngineInternalPrimitiveFlareSprite	1	1	1	0	0	0	0	0	0	0	0
@@ -3367,7 +3367,7 @@ CTCInfoDisplay	8	1	1	0	0	0	0	0	0	0	0
 CTCInterestingToVillagers	4	0	0	0	0	0	0	0	0	0	0
 CTCInterface	0	4	0	0	0	0	0	0	0	0	0
 CTCInventory	118	93	90	0	0	1	1	1	0	0	0
-CTCInventoryAbilities	81	100	99	0	0	7	7	6	1	0	0
+CTCInventoryAbilities	81	100	99	0	0	9	9	8	1	0	0
 CTCInventoryBase	140	135	132	0	0	11	11	11	0	0	0
 CTCInventoryClothing	50	37	37	0	0	2	2	2	0	0	0
 CTCInventoryExperience	84	62	58	0	0	3	3	3	0	0	0

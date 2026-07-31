@@ -1,6 +1,6 @@
 # Curated C++ promotion queue
 
-Generated: `2026-07-30T18:03:15-06:00`
+Generated: `2026-07-30T18:18:27-06:00`
 
 Uncompiled auto-RE candidates: **464**. Showing: **100**. Semantic-review quarantine: **90**.
 
