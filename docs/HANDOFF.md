@@ -7044,6 +7044,12 @@ Advancing frontend P0 item 2 (Saved Games parity) in `render_fable_frontend_subs
   minimap is not decoded yet, so the checkpoint shows the starting region
   (Oakvale) as a deterministic asset-backed placeholder.
 
+- **File Information backdrop.** The File Information panel now renders its
+  recovered `UI_TEXT_AREA` (0,254) rule: `UI_TABLE_TEXT_LEFT` (width 287) +
+  `UI_TABLE_TEXT_RIGHT` (463, width 40), both `UI_TEXTBOX_MIDDLE` (#122),
+  composed like the title rule, so the header sits on a framed bar. The
+  header/metadata fields stay a placeholder (runtime `ConstructFileDescription`).
+
 Both are pure baked-atlas layout changes (no C++ — the D3D9 path blits the
 atlas). 22/22 subscreen renderer tests pass (added centering + viewport
 regression guards); builds are pixel-identical across calls.
