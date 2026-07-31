@@ -128,6 +128,12 @@ SAVE_VIEW_RING_SPRITE = "UI_VIEW_RING_SMALL_SPRITE_FE"
 # that field is not recovered yet, so the checkpoint shows the starting region
 # (Oakvale) as a deterministic, asset-backed placeholder.
 SAVE_PREVIEW_MINIMAP = "MINIMAP_STARTOAKVALE_FRONT_END"
+# UI_TEXT_AREA child of the saved-games screen (0,254): the File Information
+# panel. Its UI_TABLE_TEXT_LEFT (width 287) / UI_TABLE_TEXT_RIGHT (463, width 40)
+# frames compose a UI_TEXTBOX_MIDDLE (#122) horizontal rule, same as the title.
+SAVE_TEXT_AREA_ORIGIN = (0, 254)
+SAVE_TEXT_AREA_LEFT_WIDTH = 287
+SAVE_TEXT_AREA_RIGHT = (463, 40)
 SAVE_SCREEN_FRAME_BASE = len(OPTIONS_ROWS) + DETAIL_SCREEN_COUNT
 OPTIONS_SHEET_FRAME_COUNT = SAVE_SCREEN_FRAME_BASE + len(SAVE_BROWSER_ROWS)
 SAVE_COMPONENT_ATLAS_ORIGIN = (
@@ -965,10 +971,26 @@ def build_save_browser_frame(
             ),
             "center")
 
-    # ConstructFileDescription installs these independent children only after
-    # selection metadata has been decoded. Keep this visual checkpoint honest:
-    # it shows the recovered positions and current local profile label, while
-    # the minimap viewport remains the next asset-backed boundary.
+    # File Information text area (UI_TEXT_AREA @ 0,254): a UI_TEXTBOX_MIDDLE rule
+    # framed by UI_TABLE_TEXT_LEFT (width 287) + UI_TABLE_TEXT_RIGHT (463, w 40),
+    # composed exactly like the title rule (#122). Draw the recovered backdrop
+    # segments before the header text.
+    text_area_segment = _decode_named(buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
+    canvas.alpha_composite(
+        _build_table_horizontal(
+            text_area_segment, text_area_segment, text_area_segment,
+            SAVE_TEXT_AREA_LEFT_WIDTH),
+        SAVE_TEXT_AREA_ORIGIN)
+    canvas.alpha_composite(
+        _build_table_horizontal(
+            text_area_segment, text_area_segment, text_area_segment,
+            SAVE_TEXT_AREA_RIGHT[1]),
+        (SAVE_TEXT_AREA_RIGHT[0], SAVE_TEXT_AREA_ORIGIN[1]))
+
+    # ConstructFileDescription installs the header + metadata children only after
+    # selection metadata has been decoded (a runtime boundary not recovered yet).
+    # Keep this visual checkpoint honest: show the recovered File Information
+    # header on its backdrop plus the current local profile label.
     _draw_text(canvas, font, "File Information", (65, 261), "left")
     _draw_text(
         canvas,

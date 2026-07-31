@@ -255,6 +255,18 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         # The ring ornament fills essentially the whole 256x256 tile.
         self.assertEqual((0, 0, 256, 256), bounds)
 
+    def test_save_browser_renders_file_information_backdrop(self):
+        # UI_TEXT_AREA (0,254) frames File Information with a UI_TEXTBOX_MIDDLE
+        # rule (UI_TABLE_TEXT_LEFT width 287 + UI_TABLE_TEXT_RIGHT 463,width 40).
+        # Guard that the left backdrop segment renders at y=254.
+        frame = build_save_browser_frame(self.FRONTEND_BANK, self.FONT_BANK, 0)
+        # A horizontal band at the text-area origin should carry the rule.
+        band = frame.crop((0, 254, 280, 254 + 20)).getchannel("A").getbbox()
+        self.assertIsNotNone(band)
+        # The rule starts at the left edge and spans most of the 287 span.
+        self.assertEqual(0, band[0])
+        self.assertGreater(band[2], 200)
+
     def test_compiled_video_defaults_seed_first_frame(self):
         self.assertEqual(("Resolution", "1024 x 768", 0.0), VIDEO_ROWS[0])
         self.assertEqual(("Anti-Aliasing", "OFF", 0.0), VIDEO_ROWS[2])
