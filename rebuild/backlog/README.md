@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-07-30T18:18:27-06:00`
+Generated: `2026-07-30T18:49:04-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 
@@ -9,7 +9,7 @@ The order favors generated candidate clusters first, then extension of proven mo
 | Rank | Track | Module | Functions | Prototype gaps | Agent candidates | Verified lifts |
 |---:|---|---|---:|---:|---:|---:|
 | 1 | candidate-cluster | `CGameScriptInterface` | 953 | 5 | 440 | 0 |
-| 2 | candidate-cluster | `_global` | 11362 | 9365 | 273 | 0 |
+| 2 | candidate-cluster | `_global` | 11362 | 9365 | 274 | 0 |
 | 3 | candidate-cluster | `CMouseDX` | 24 | 0 | 14 | 10 |
 | 4 | candidate-cluster | `CScriptThing` | 103 | 2 | 15 | 0 |
 | 5 | candidate-cluster | `CMemoryAllocatorFixedSize` | 21 | 0 | 11 | 7 |

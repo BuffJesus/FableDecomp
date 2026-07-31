@@ -2426,7 +2426,7 @@ CMovableResource	1	3	2	0	0	0	0	0	0	0	0
 CMovableResourceMemoryPool	6	5	5	0	0	0	0	0	0	0	0
 CMoveOnCylinder	4	2	2	0	0	0	0	0	0	0	0
 CMoveOnCylinderInit	1	0	0	0	0	0	0	0	0	0	0
-CMovie	9	16	9	0	0	3	3	1	2	0	0
+CMovie	9	16	9	0	0	1	1	0	1	0	0
 CMovieSubtitles	3	1	1	0	0	0	0	0	0	0	0
 CMultiStatBar	5	5	5	0	0	0	0	0	0	0	0
 CMultiStaticMeshDef	2	3	3	0	0	1	1	1	0	0	0
@@ -4505,7 +4505,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11362	1997	268	5	184	184	104	76	0	0
+_global	0	11362	1997	269	5	184	184	104	76	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

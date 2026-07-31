@@ -1,12 +1,12 @@
 # Candidate signature audit
 
-Generated: `2026-07-30T18:18:26-06:00`
+Generated: `2026-07-30T18:49:03-06:00`
 
-Clean: **541 / 845**. Review required: **304**.
+Clean: **541 / 846**. Review required: **305**.
 
 | Issue | Candidates |
 |---|---:|
-| `explicit-parameter-count-mismatch` | 272 |
+| `explicit-parameter-count-mismatch` | 273 |
 | `return-shape-mismatch` | 90 |
 | `duplicate-linkage-signature` | 42 |
 | `method-name-mismatch` | 41 |
@@ -235,6 +235,7 @@ Clean: **541 / 845**. Review required: **304**.
 | `00449050` | `_global` | `Vector_ReallocateAndFill` | `UninitCopyActiveEntityScriptPair` | method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch |
 | `00449130` | `_global` | `Vector_Reallocate` | `Vector_Reallocate` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
 | `00449220` | `_global` | `Heap_BuildFromElements` | `Heap_BuildFromElements` | explicit-parameter-count-mismatch |
+| `00449270` | `_global` | `Heap_OrderAndSort` | `Heap_OrderAndSort` | explicit-parameter-count-mismatch |
 | `004aa9e0` | `CScriptThing` | `CScriptThing::GetCurrentMapName` | `GetCurrentMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aaa10` | `CScriptThing` | `CScriptThing::GetHomeMapName` | `GetHomeMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004abe60` | `CScriptThing` | `CScriptThing::MsgWhoKilledMe` | `` | definition-not-parsed |

@@ -1137,6 +1137,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00449050		lift/reports/wave3/code/00/44/0x00449050_global_Vector_ReallocateAndFill.cpp			rebuild/candidates/snapshots/00/44/0x00449050_global_Vector_ReallocateAndFill.cpp	
 00449130		lift/reports/wave3/code/00/44/0x00449130_global_Vector_Reallocate.cpp			rebuild/candidates/snapshots/00/44/0x00449130_global_Vector_Reallocate.cpp	
 00449220		lift/reports/wave3/code/00/44/0x00449220_global_Heap_BuildFromElements.cpp			rebuild/candidates/snapshots/00/44/0x00449220_global_Heap_BuildFromElements.cpp	
+00449270		lift/reports/wave3/code/00/44/0x00449270_global_Heap_OrderAndSort.cpp			rebuild/candidates/snapshots/00/44/0x00449270_global_Heap_OrderAndSort.cpp	
 00449420	CLandscapeBackgroundPatch		rebuild/src/compiled/00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_00449420.cpp	rebuild/tests/00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_00449420_test.cpp		rebuild/build/candidates-Release/00/44/00449420
 00449630	CGuiVarTransferBool		rebuild/src/compiled/00/44/CGuiVarTransferBool_TransferToGui_00449630.cpp	rebuild/tests/00/44/CGuiVarTransferBool_TransferToGui_00449630_test.cpp		rebuild/build/candidates-Release/00/44/00449630
 00449650	CTCVillage		rebuild/src/compiled/00/44/CTCVillage_OnInitialActivate_00449650.cpp	rebuild/tests/00/44/CTCVillage_OnInitialActivate_00449650_test.cpp		rebuild/build/candidates-Release/00/44/00449650
@@ -2553,8 +2554,8 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 0053cd46	CActiveFile		rebuild/src/compiled/00/53/CActiveFile_OnReadFinished_0053cd46.cpp	rebuild/tests/00/53/CActiveFile_OnReadFinished_0053cd46_test.cpp		rebuild/build/candidates-Release/00/53/0053cd46
 0053cfa6	CLandscapeBackgroundPatch		rebuild/src/compiled/00/53/CLandscapeBackgroundPatch_vectordeletingdestructor_0053cfa6.cpp	rebuild/tests/00/53/CLandscapeBackgroundPatch_vectordeletingdestructor_0053cfa6_test.cpp		rebuild/build/candidates-Release/00/53/0053cfa6
 00547b90	CMovie		rebuild/src/compiled/00/54/CMovie_FreeTextures_00547b90.cpp	rebuild/tests/00/54/CMovie_FreeTextures_00547b90_test.cpp		rebuild/build/candidates-Release/00/54/00547b90
-00548510	CMovie		rebuild/src/compiled/00/54/CMovie_SetMovie_00548510.cpp	rebuild/tests/00/54/CMovie_SetMovie_00548510_test.cpp		rebuild/build/candidates-Release/00/54/00548510
-00548520	CMovie		rebuild/src/compiled/00/54/CMovie_IsPlaying_00548520.cpp	rebuild/tests/00/54/CMovie_IsPlaying_00548520_test.cpp		rebuild/build/candidates-Release/00/54/00548520
+00548510			rebuild/src/compiled/00/54/CMovie_SetMovie_00548510.cpp	rebuild/tests/00/54/CMovie_SetMovie_00548510_test.cpp		rebuild/build/candidates-Release/00/54/00548510
+00548520			rebuild/src/compiled/00/54/CMovie_IsPlaying_00548520.cpp	rebuild/tests/00/54/CMovie_IsPlaying_00548520_test.cpp		rebuild/build/candidates-Release/00/54/00548520
 00548570	CUserProfileManager		rebuild/src/compiled/00/54/CUserProfileManager_IsCameraResetting_00548570.cpp	rebuild/tests/00/54/CUserProfileManager_IsCameraResetting_00548570_test.cpp		rebuild/build/candidates-Release/00/54/00548570
 00548670	CEditControlCentre		rebuild/src/compiled/00/54/CEditControlCentre_PeekConnectedToTrackNode_00548670.cpp	rebuild/tests/00/54/CEditControlCentre_PeekConnectedToTrackNode_00548670_test.cpp		rebuild/build/candidates-Release/00/54/00548670
 005486b0	CEditControlCentre		rebuild/src/compiled/00/54/CEditControlCentre_PeekConnectedToTrackNode_005486b0.cpp	rebuild/tests/00/54/CEditControlCentre_PeekConnectedToTrackNode_005486b0_test.cpp		rebuild/build/candidates-Release/00/54/005486b0

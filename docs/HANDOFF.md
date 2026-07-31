@@ -7024,3 +7024,41 @@ reverse-engineered (`TextWindowBRY=5000` implies a scroll), and the `©` glyph i
 absent from the `ENG_ARIAL_12` atlas. Full pixel parity is still not claimed
 (needs a same-state retail capture + alpha-aware diff), consistent with the
 other subscreen checkpoints.
+
+### Saved Games screen parity — centering + save-preview viewport (2026-07-30, cont.)
+
+Advancing frontend P0 item 2 (Saved Games parity) in `render_fable_frontend_subscreens.py`:
+
+- **Save-name centering fix.** The save-slot labels were centred on
+  `SAVE_LIST_ORIGIN[0]+60 = 70` (the ornament's left-sprite end) while the
+  selection highlight — `_build_table_horizontal(width=120)` →
+  `L(64)+120-inner+R(64)=248px` composited at `SAVE_LIST_ORIGIN[0]=10` — centres
+  on x=134. That 64px gap read as left-aligned text with an off-centre
+  highlight. Now centred on the highlight centre (`origin + selected.width/2`),
+  matching main-menu/Options rows. Measured 70 → 134; confirmed in the live
+  `frontend-saved-games-smoke.png`.
+- **Save-preview viewport.** The empty right side now renders the retail
+  `UI_VIEW_RING_SMALL` child (serialized (314,37)): a 256x256 region minimap
+  (`MINIMAP_*_FRONT_END`) behind the ring ornament
+  (`UI_VIEW_RING_SMALL_SPRITE_FE`). The save-region field that selects the
+  minimap is not decoded yet, so the checkpoint shows the starting region
+  (Oakvale) as a deterministic asset-backed placeholder.
+
+Both are pure baked-atlas layout changes (no C++ — the D3D9 path blits the
+atlas). 22/22 subscreen renderer tests pass (added centering + viewport
+regression guards); builds are pixel-identical across calls.
+
+**Remaining Saved Games gaps (decoded, not yet built):** the File Information
+panel is still approximate — retail `UI_TEXT_AREA` (0,254) frames it with
+`UI_TABLE_TEXT_LEFT` (width 287) / `UI_TABLE_TEXT_RIGHT` (463, width 40) and a
+`UI_TEXT_BOTTOM` at y=404; the `UI_TITLE_AREA` (0,35) title-bar frame
+(left 287 + right 40 with the ring in the gap) and `UI_BOTTOM_BACKDROP` (0,292)
+are also not yet reproduced. Next: correct the File Information text area against
+those records, then the title/bottom frames. Then move to Redefine Keys parity.
+
+**★ Process note (2026-07-30):** the auto-RE batch-land scout (used in an
+earlier detour) overwrote two hand-integrated bootstrap fixtures
+(`CMovie_SetMovie/IsPlaying` 00548510/20) because it only excluded catalog
+addresses, not `build_bootstrap.ps1`-referenced files. Restored + un-landed;
+see memory `autoland-clobbers-bootstrap-fixtures`. The scout must skip
+bootstrap-referenced addresses.

@@ -238,6 +238,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00449050	_global	Vector_ReallocateAndFill	PASS	_global	UninitCopyActiveEntityScriptPair	undefined	static ActiveEntityScriptPairOverlay*	0	4		REVIEW	method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch
 00449130	_global	Vector_Reallocate	PASS	_global	Vector_Reallocate	undefined	void	0	6	004413c0;00449130	REVIEW	explicit-parameter-count-mismatch;duplicate-linkage-signature
 00449220	_global	Heap_BuildFromElements	PASS	_global	Heap_BuildFromElements	undefined	void __fastcall	0	3		REVIEW	explicit-parameter-count-mismatch
+00449270	_global	Heap_OrderAndSort	PASS	_global	Heap_OrderAndSort	undefined	void __fastcall	0	5		REVIEW	explicit-parameter-count-mismatch
 00449b60	CPlayerManager	GetMultiplayerColour	PASS	CPlayerManager	GetMultiplayerColour	CRGBColour	CRGBColour	1	1		PASS	
 00449d20	CPlayerManager	IsMultiplayerGameActive	PASS	CPlayerManager	IsMultiplayerGameActive	bool	bool	0	0		PASS	
 004aa890	CScriptThing	CScriptThing::IsDead	PASS	CScriptThing	IsDead	bool	bool	0	0		PASS	
