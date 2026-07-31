@@ -924,13 +924,20 @@ def build_save_browser_frame(
             SAVE_LIST_ORIGIN[1] +
             selected_index * SAVE_ROW_STEP_Y - 7,
         ))
+    # Centre each save name on the highlight button, exactly as the main-menu
+    # and Options rows centre their labels on their selected ornament. The
+    # ornament is composited at SAVE_LIST_ORIGIN[0] and spans ``selected.width``
+    # (L + inner-span + R), so its centre is origin + width/2. Previously the
+    # text was centred on origin+60 (the left-sprite end), leaving it 64px left
+    # of the highlight centre and reading as left-aligned.
+    save_name_center_x = SAVE_LIST_ORIGIN[0] + selected.width / 2.0
     for row, filename in enumerate(SAVE_BROWSER_ROWS):
         _draw_text(
             canvas,
             row_font,
             filename,
             (
-                SAVE_LIST_ORIGIN[0] + 60,
+                save_name_center_x,
                 SAVE_LIST_ORIGIN[1] + row * SAVE_ROW_STEP_Y,
             ),
             "center")

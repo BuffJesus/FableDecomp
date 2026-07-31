@@ -220,6 +220,24 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
             bounds[3],
             SAVE_LIST_ORIGIN[1] + 3 * SAVE_ROW_STEP_Y + 64)
 
+    def test_save_names_are_centered_on_selection_highlight(self):
+        # Retail centres each save-slot label on its highlight button, exactly
+        # like the main-menu and Options rows. Regression guard for the bug where
+        # the name was centred on the left-sprite end (origin+60), leaving it
+        # 64px left of the highlight centre (read as left-aligned).
+        frame = build_save_browser_frame(self.FRONTEND_BANK, self.FONT_BANK, 1)
+        other = build_save_browser_frame(self.FRONTEND_BANK, self.FONT_BANK, 0)
+        highlight = ImageChops.difference(frame, other).getchannel("A").getbbox()
+        self.assertIsNotNone(highlight)
+        highlight_center = (highlight[0] + highlight[2]) / 2.0
+        # An unselected row (row 3) shares the list column and is free of the
+        # highlight, so its text centre must equal the highlight centre.
+        y = SAVE_LIST_ORIGIN[1] + 3 * SAVE_ROW_STEP_Y
+        band = frame.crop((0, y - 12, 640, y + 16)).getchannel("A").getbbox()
+        self.assertIsNotNone(band)
+        text_center = (band[0] + band[2]) / 2.0
+        self.assertAlmostEqual(text_center, highlight_center, delta=3)
+
     def test_compiled_video_defaults_seed_first_frame(self):
         self.assertEqual(("Resolution", "1024 x 768", 0.0), VIDEO_ROWS[0])
         self.assertEqual(("Anti-Aliasing", "OFF", 0.0), VIDEO_ROWS[2])
