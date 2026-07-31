@@ -38107,20 +38107,6 @@ $catalog = @(
         PassPattern = 'OK_0x00547b90'
     }
     [pscustomobject]@{
-        Address = '00548510'
-        Module = 'CMovie'
-        Source = '00/54/CMovie_SetMovie_00548510.cpp'
-        TestSource = '00/54/CMovie_SetMovie_00548510_test.cpp'
-        PassPattern = 'OK_0x00548510'
-    }
-    [pscustomobject]@{
-        Address = '00548520'
-        Module = 'CMovie'
-        Source = '00/54/CMovie_IsPlaying_00548520.cpp'
-        TestSource = '00/54/CMovie_IsPlaying_00548520_test.cpp'
-        PassPattern = 'OK_0x00548520'
-    }
-    [pscustomobject]@{
         Address = '00548570'
         Module = 'CUserProfileManager'
         Source = '00/54/CUserProfileManager_IsCameraResetting_00548570.cpp'
