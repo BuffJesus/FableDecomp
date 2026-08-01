@@ -47,6 +47,26 @@ fable_u32 FABLE_FASTCALL FablePlanVisualFrontendSaveRows(
     FableUiSaveBrowserRow* rows,
     fable_u32 rowCapacity);
 
+// Real save enumeration: each Fable TLC save is a profile subfolder of
+// <MyDocuments>\My Games\Fable\Saves\ containing an "AutoSave" primary blob (and
+// optional "AutoSave.qs" companion). This walks that directory and reports the
+// on-disk profiles + validity so the Saved Games browser can be driven by the
+// player's actual saves instead of baked placeholders. A profile is
+// primary-valid when its AutoSave file exists and is non-empty; companion-valid
+// when AutoSave.qs likewise exists non-empty. Returns the profile count found
+// (even past outCapacity). names[i] holds the profile folder name (UTF-16).
+struct FableUiSaveProfile
+{
+    wchar_t name[64];
+    bool primaryValid;
+    bool companionValid;
+};
+
+fable_u32 FABLE_FASTCALL FableEnumerateVisualFrontendSaves(
+    const wchar_t* saveDirectory,
+    FableUiSaveProfile* out,
+    fable_u32 outCapacity);
+
 enum FableUiControllerActionMask
 {
     FableUiControllerUp = 1 << 0,

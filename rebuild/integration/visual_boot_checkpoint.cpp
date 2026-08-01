@@ -112,8 +112,55 @@ struct FableWindowClass
     FableIcon smallIcon;
 };
 
+// Minimal Win32 file-enumeration surface. The reconstruction deliberately avoids
+// a blanket <windows.h>; these ABI-exact structs + kernel32 imports declare only
+// what the real Saved-Games directory walk needs (matches the file's existing
+// narrow __declspec(dllimport) style).
+typedef void* FableFindHandle;
+struct FableFileTime
+{
+    FableDword lowDateTime;
+    FableDword highDateTime;
+};
+struct FableWin32FindDataW
+{
+    FableDword attributes;
+    FableFileTime creationTime;
+    FableFileTime lastAccessTime;
+    FableFileTime lastWriteTime;
+    FableDword fileSizeHigh;
+    FableDword fileSizeLow;
+    FableDword reserved0;
+    FableDword reserved1;
+    wchar_t fileName[260];
+    wchar_t alternateFileName[14];
+};
+struct FableWin32FileAttributeData
+{
+    FableDword attributes;
+    FableFileTime creationTime;
+    FableFileTime lastAccessTime;
+    FableFileTime lastWriteTime;
+    FableDword fileSizeHigh;
+    FableDword fileSizeLow;
+};
+const FableDword kFableFileAttributeDirectory = 0x10;
+const int kFableGetFileExInfoStandard = 0;
+
 extern "C"
 {
+    __declspec(dllimport) FableFindHandle FABLE_STDCALL FindFirstFileW(
+        const wchar_t* fileName,
+        FableWin32FindDataW* findData);
+    __declspec(dllimport) FableBool FABLE_STDCALL FindNextFileW(
+        FableFindHandle findHandle,
+        FableWin32FindDataW* findData);
+    __declspec(dllimport) FableBool FABLE_STDCALL FindClose(
+        FableFindHandle findHandle);
+    __declspec(dllimport) FableBool FABLE_STDCALL GetFileAttributesExW(
+        const wchar_t* fileName,
+        int infoLevel,
+        FableWin32FileAttributeData* fileInformation);
     __declspec(dllimport) FableDeviceContext FABLE_STDCALL BeginPaint(
         FableWindow window,
         FablePaint* paint);
@@ -299,6 +346,88 @@ fable_u32 FABLE_FASTCALL FablePlanVisualFrontendSaveRows(
         ++rowCount;
     }
     return rowCount;
+}
+
+namespace
+{
+    // Join <dir>[\]<leaf> into out (UTF-16), inserting a separator only when the
+    // directory does not already end in one.
+    void JoinSavePath(
+        wchar_t* out,
+        size_t capacity,
+        const wchar_t* dir,
+        const wchar_t* leaf)
+    {
+        size_t n = 0;
+        for (; dir[n] != L'\0' && n + 1 < capacity; ++n)
+            out[n] = dir[n];
+        if (n != 0 && out[n - 1] != L'\\' && out[n - 1] != L'/' &&
+            n + 1 < capacity)
+            out[n++] = L'\\';
+        for (size_t i = 0; leaf[i] != L'\0' && n + 1 < capacity; ++i)
+            out[n++] = leaf[i];
+        out[n] = L'\0';
+    }
+
+    // A save part is valid when the file exists, is not a directory, and holds
+    // at least one byte (Fable never writes a zero-length save part).
+    bool SavePartNonEmpty(const wchar_t* profileDir, const wchar_t* leaf)
+    {
+        wchar_t path[520];
+        JoinSavePath(path, 520, profileDir, leaf);
+        FableWin32FileAttributeData info;
+        if (!GetFileAttributesExW(path, kFableGetFileExInfoStandard, &info))
+            return false;
+        if (info.attributes & kFableFileAttributeDirectory)
+            return false;
+        return info.fileSizeHigh != 0 || info.fileSizeLow != 0;
+    }
+}
+
+fable_u32 FABLE_FASTCALL FableEnumerateVisualFrontendSaves(
+    const wchar_t* saveDirectory,
+    FableUiSaveProfile* out,
+    fable_u32 outCapacity)
+{
+    if (saveDirectory == 0 || saveDirectory[0] == L'\0')
+        return 0;
+    wchar_t pattern[520];
+    JoinSavePath(pattern, 520, saveDirectory, L"*");
+    FableWin32FindDataW find;
+    const FableFindHandle handle = FindFirstFileW(pattern, &find);
+    if (handle == reinterpret_cast<FableFindHandle>(static_cast<long>(-1)))
+        return 0;
+    fable_u32 count = 0;
+    do
+    {
+        if ((find.attributes & kFableFileAttributeDirectory) == 0)
+            continue;
+        // Skip "." and ".." pseudo-directories.
+        if (find.fileName[0] == L'.' &&
+            (find.fileName[1] == L'\0' ||
+             (find.fileName[1] == L'.' && find.fileName[2] == L'\0')))
+            continue;
+        wchar_t profileDir[520];
+        JoinSavePath(profileDir, 520, saveDirectory, find.fileName);
+        const bool primary = SavePartNonEmpty(profileDir, L"AutoSave");
+        const bool companion = SavePartNonEmpty(profileDir, L"AutoSave.qs");
+        // Only surface folders that actually hold a save part; a Saves\ folder
+        // can contain unrelated stray directories.
+        if (!primary && !companion)
+            continue;
+        if (out != 0 && count < outCapacity)
+        {
+            fable_u32 i = 0;
+            for (; find.fileName[i] != L'\0' && i < 63; ++i)
+                out[count].name[i] = find.fileName[i];
+            out[count].name[i] = L'\0';
+            out[count].primaryValid = primary;
+            out[count].companionValid = companion;
+        }
+        ++count;
+    } while (FindNextFileW(handle, &find));
+    FindClose(handle);
+    return count;
 }
 
 fable_u32 FABLE_FASTCALL FableMapUiControllerState(

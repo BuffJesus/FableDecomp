@@ -2,6 +2,8 @@
 #include "fable_video_system.h"
 
 #include <stdio.h>
+#include <direct.h>
+#include <wchar.h>
 
 extern "C" __declspec(dllimport)
 FableInstanceHandle FABLE_STDCALL GetModuleHandleA(const char* moduleName);
@@ -1035,6 +1037,49 @@ int main()
         0);
     if (result != 0)
         return static_cast<int>(result);
+
+    // --- Real save enumeration: walk a temp Saves dir with three profiles ---
+    {
+        _wmkdir(L".\\_savetest");
+        _wmkdir(L".\\_savetest\\Alpha");   // AutoSave + companion  -> both valid
+        _wmkdir(L".\\_savetest\\Beta");     // AutoSave only         -> primary only
+        _wmkdir(L".\\_savetest\\Empty");    // no save parts         -> skipped
+        FILE* part = _wfopen(L".\\_savetest\\Alpha\\AutoSave", L"wb");
+        if (part) { fputc('x', part); fclose(part); }
+        part = _wfopen(L".\\_savetest\\Alpha\\AutoSave.qs", L"wb");
+        if (part) { fputc('x', part); fclose(part); }
+        part = _wfopen(L".\\_savetest\\Beta\\AutoSave", L"wb");
+        if (part) { fputc('x', part); fclose(part); }
+
+        FableUiSaveProfile profiles[8] = {};
+        const fable_u32 profileCount =
+            FableEnumerateVisualFrontendSaves(L".\\_savetest", profiles, 8);
+        bool okAlpha = false;
+        bool okBeta = false;
+        bool sawEmpty = false;
+        for (fable_u32 i = 0; i != profileCount; ++i)
+        {
+            if (wcscmp(profiles[i].name, L"Alpha") == 0 &&
+                profiles[i].primaryValid && profiles[i].companionValid)
+                okAlpha = true;
+            if (wcscmp(profiles[i].name, L"Beta") == 0 &&
+                profiles[i].primaryValid && !profiles[i].companionValid)
+                okBeta = true;
+            if (wcscmp(profiles[i].name, L"Empty") == 0)
+                sawEmpty = true;
+        }
+
+        _wremove(L".\\_savetest\\Alpha\\AutoSave");
+        _wremove(L".\\_savetest\\Alpha\\AutoSave.qs");
+        _wremove(L".\\_savetest\\Beta\\AutoSave");
+        _wrmdir(L".\\_savetest\\Alpha");
+        _wrmdir(L".\\_savetest\\Beta");
+        _wrmdir(L".\\_savetest\\Empty");
+        _wrmdir(L".\\_savetest");
+
+        if (profileCount != 2 || !okAlpha || !okBeta || sawEmpty)
+            return 60;
+    }
 
     printf("FABLETLC_VISUAL_BOOT_BEHAVIOR PASS\n");
     return 0;
