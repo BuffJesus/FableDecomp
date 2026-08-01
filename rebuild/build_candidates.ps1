@@ -39499,6 +39499,69 @@ $catalog = @(
         TestSource = '00/99/CCharString_CCharString_0099e4b0_test.cpp'
         PassPattern = 'PASS_CTOR_OK'
     }
+    [pscustomobject]@{
+        Address = '0099af00'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_operatorcharconstptr_0099af00.cpp'
+        TestSource = '00/99/CCharString_operatorcharconstptr_0099af00_test.cpp'
+        PassPattern = 'CCHARSTRING_OPERATOR_CHARPTR_0099AF00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099b220'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_GetLength_0099b220.cpp'
+        TestSource = '00/99/CCharString_GetLength_0099b220_test.cpp'
+        PassPattern = 'CHARSTRING_GETLENGTH_OK'
+    }
+    [pscustomobject]@{
+        Address = '0099efb0'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_operatorassign_0099efb0.cpp'
+        TestSource = '00/99/CCharString_operatorassign_0099efb0_test.cpp'
+        PassPattern = 'TEST_OK_ASSIGN_0099EFB0'
+    }
+    [pscustomobject]@{
+        Address = '00999110'
+        Module = '_global'
+        Source = '00/99/global_ConvertPathToFullPath_00999110.cpp'
+        TestSource = '00/99/global_ConvertPathToFullPath_00999110_test.cpp'
+        PassPattern = 'CONVERTPATH_OK'
+    }
+    [pscustomobject]@{
+        Address = '0099b7d0'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_operatorassign_0099b7d0.cpp'
+        TestSource = '00/99/CWideString_operatorassign_0099b7d0_test.cpp'
+        PassPattern = 'FABLETLC_CWIDESTRING_OPASSIGN_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099e4c0'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_operatorcharconstptrb_0099e4c0.cpp'
+        TestSource = '00/99/CCharString_operatorcharconstptrb_0099e4c0_test.cpp'
+        PassPattern = 'CCHARSTRING_OPERATOR_CHARPTR_0099E4C0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a9bb0'
+        Module = '_global'
+        Source = '00/9a/global_DestvalCCountedPointer_009a9bb0.cpp'
+        TestSource = '00/9a/global_DestvalCCountedPointer_009a9bb0_test.cpp'
+        PassPattern = 'PASS_009a9bb0'
+    }
+    [pscustomobject]@{
+        Address = '009b9530'
+        Module = 'CStringParser'
+        Source = '00/9b/CStringParser_Init_009b9530.cpp'
+        TestSource = '00/9b/CStringParser_Init_009b9530_test.cpp'
+        PassPattern = 'TEST_PASS_INIT_OK'
+    }
+    [pscustomobject]@{
+        Address = '0099ec30'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_CCharStringcopy_0099ec30.cpp'
+        TestSource = '00/99/CCharString_CCharStringcopy_0099ec30_test.cpp'
+        PassPattern = 'COPY_OK_MARKER'
+    }
 )
 
 $requestedAddresses = @(
