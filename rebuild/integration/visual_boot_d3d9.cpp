@@ -1257,10 +1257,11 @@ CSystemManager* FABLE_FASTCALL GFGetSystemManager()
 }
 
 // Shared geometry for the saved-games preview viewport (UI_VIEW_RING_SMALL).
-// The panel is baked into the shared g_OptionsTexture save cells at design
-// (314,37), size 256x256; save cell N lives at atlas column 1024 and frame
-// (4 + selection) of the 8-frame, 480px-tall save band.  Both the cell
-// background split and the live ring quad reference these so the C++ sample and
+// The panel is baked into the shared g_OptionsTexture save base at design
+// (314,37), size 256x256; it lives at atlas column 1024 and the first save
+// frame of the 8-frame, 480px-tall left-side atlas. Save selection is live
+// state, so it must not select duplicate static atlas cells. Both the cell
+// background split and the live ring quad reference this so the C++ sample and
 // the Python atlas bake stay in lockstep.
 const float kSaveViewportDesignLeft = 314.0f;
 const float kSaveViewportDesignTop = 37.0f;
@@ -1293,9 +1294,9 @@ bool FABLE_FASTCALL FableComputeSaveViewportAtlasRect(
         1.0f / static_cast<float>(optionsAtlasWidth);
     const float invHeight =
         1.0f / static_cast<float>(optionsAtlasHeight);
+    (void)saveSelection;
     const float cellTop =
-        static_cast<float>(kSaveAtlasFirstFrame + saveSelection) *
-        kSaveAtlasFrameHeight;
+        static_cast<float>(kSaveAtlasFirstFrame) * kSaveAtlasFrameHeight;
     *outLeftU =
         (kSaveAtlasColumnLeft + kSaveViewportDesignLeft) * invWidth;
     *outTopV =
@@ -1921,7 +1922,8 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         overlayTexture = g_OptionsTexture;
         overlayWidth = 640;
         overlayHeight = 480;
-        overlayFrame = 4 + g_SaveSelection;
+        // The save base is static; selection moves only live components.
+        overlayFrame = kSaveAtlasFirstFrame;
         overlayFrameCount = 8;
     }
     else if (g_DetailScreen != 0)
@@ -2086,8 +2088,7 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             0xFFFFFFFFu);
     }
     if (
-        (g_OptionsMenuActive || g_SaveMenuActive ||
-         g_DetailScreen != 0) &&
+        (g_OptionsMenuActive || g_DetailScreen != 0) &&
         g_TitleSegmentTexture != 0 &&
         g_TitleRuleComponents.size != 0)
     {
@@ -2510,7 +2511,7 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             (atlasTop + 64.0f) / 2880.0f,
             0xFFFFFFFFu);
     }
-    if ((g_OptionsMenuActive || g_SaveMenuActive) &&
+    if ((g_OptionsMenuActive || g_SaveMenuActive || g_AboutMenuActive) &&
         g_HelpersTexture != 0)
     {
         const fable_u32 helperFrame =
@@ -2942,7 +2943,7 @@ void FABLE_FASTCALL FableSetVisualFrontendOptionsSelection(
 
 void FABLE_FASTCALL FableSetVisualFrontendOptionsBackHovered(bool hovered)
 {
-    if (!g_OptionsMenuActive && !g_SaveMenuActive)
+    if (!g_OptionsMenuActive && !g_SaveMenuActive && !g_AboutMenuActive)
         return;
     g_OptionsBackHovered = hovered;
 }

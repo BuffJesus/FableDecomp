@@ -3233,6 +3233,7 @@ namespace
                 !g_VisualMainMenuActive &&
                 !g_VisualOptionsMenuActive &&
                 !g_VisualSaveMenuActive &&
+                !g_VisualAboutMenuActive &&
                 g_VisualDetailScreen == 0 &&
                 !g_VisualQuitPromptActive)
                 break;
@@ -3324,6 +3325,25 @@ namespace
                 {
                     g_VisualSaveSelection = row;
                     FableSetVisualFrontendSaveSelection(row);
+                    RevealVisualFrontend(window);
+                }
+                return 0;
+            }
+            if (g_VisualAboutMenuActive)
+            {
+                // About shares the UI_HELPERS Back button with Options/Save
+                // (same rect + shared g_VisualOptionsBackHovered state); it has
+                // no selectable rows, so only the Back hover is tracked.
+                const bool backHovered =
+                    mouseX >= 20 &&
+                    mouseX < 270 &&
+                    mouseY >= 420 &&
+                    mouseY < 450;
+                if (g_VisualOptionsBackHovered != backHovered)
+                {
+                    g_VisualOptionsBackHovered = backHovered;
+                    FableSetVisualFrontendOptionsBackHovered(
+                        backHovered);
                     RevealVisualFrontend(window);
                 }
                 return 0;

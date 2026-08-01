@@ -7086,3 +7086,76 @@ earlier detour) overwrote two hand-integrated bootstrap fixtures
 addresses, not `build_bootstrap.ps1`-referenced files. Restored + un-landed;
 see memory `autoland-clobbers-bootstrap-fixtures`. The scout must skip
 bootstrap-referenced addresses.
+
+### Saved Games static-frame collapse (2026-08-01)
+
+The four saved-games base frames are now collapsed to one static frame. The
+selection-dependent highlight, row state, and preview viewport remain live
+Render2D components, so duplicating the base once per sample selection was
+unnecessary. `SAVE_BROWSER_FRAME_COUNT` is 1 and the Python oracle now emits
+9 logical frames (8 options/detail frames plus one save base); the embedded
+component atlas remains physically `1664x3840` because its left column carries
+the eight-frame control atlas. `FableRenderVisualD3D9` always samples the
+first save frame, and `FableComputeSaveViewportAtlasRect` asserts the same
+source rect for all four live selections.
+
+Evidence: 27/27 focused subscreen tests, Release `BOOTSTRAP_BUILD`, Stage 3,
+visual checkpoint, and `smoke_visual_checkpoint.ps1 -VerifySubscreens` pass.
+The next saved-games work remains the decoded-but-not-yet-built File
+Information `UI_TEXT_BOTTOM` plus `UI_TITLE_AREA`/`UI_BOTTOM_BACKDROP` frames,
+then Redefine Keys parity.
+
+### Saved Games decoded frame completion (2026-08-01)
+
+The saved base now materializes the exact asymmetric `CTable` records instead
+of substituting a three-middle rule:
+
+- `UI_TITLE_AREA` at `(0,35)` uses `UI_TABLE_TITLE_LEFT` `(287)` and
+  `UI_TABLE_TITLE_RIGHT` `(463,40)`, with the decoded TL/TR corner components;
+- `UI_TEXT_AREA` at `(0,254)` uses the decoded BL/BR corner components and the
+  `UI_TEXT_BOTTOM` horizontal texture at resolved `(0,404)`;
+- `UI_BOTTOM_BACKDROP` resolves graphic 98 (`HUD_TEXTBOX_BACK_FE`) at `(0,292)`
+  with its compiled `160x62` scale.
+
+The component atlas bakes the saved title area, so the D3D9 path no longer
+emits the generic `UI_TABLE_TITLE_WHOLE` live rule while Saved Games is active.
+The static title/detail rule remains live for Options and the three detail
+screens. The compiled parent child order, table sprite maps, graphic indices,
+positions, and scales are now validation gates. 29/29 focused subscreen tests,
+Release bootstrap, and the verified visual smoke pass. The next boundary is
+Redefine Keys parity.
+
+### About screen Back button — hover highlight + hit-region fixed (2026-08-01)
+
+User-reported: the About-screen Back button was "really hard to trigger" and
+"didn't visibly highlight when hovered." Root cause (single underlying divergence):
+About was built with a **baked** Back glyph at design `(20,440)` while Options/Save
+bake **no** Back glyph — theirs comes solely from the live UI_HELPERS helper quad at
+`(20,420)` with an OFF/ON hover swap. So About's visible button sat ~20px below its
+click hit-rect `x[20,270) y[420,450)` (only a ~10px sliver overlapped → "hard to
+trigger"), and About was excluded from every hover path (no highlight).
+
+Fix — unify About with the shared live UI_HELPERS Back (retail-faithful; About shares
+UI_HELPERS #577 / UI_BACK #563 with Options/Save):
+- `visual_boot_checkpoint.cpp` — added `!g_VisualAboutMenuActive` to the
+  `kMessageMouseMove` early-break gate, and a standalone About hover block (shared
+  rect + shared `g_VisualOptionsBackHovered`, no row logic).
+- `visual_boot_d3d9.cpp` — added `g_AboutMenuActive` to the live helper-quad render
+  gate (line ~2514) and widened the `FableSetVisualFrontendOptionsBackHovered` guard
+  (line ~2946) to accept writes during About.
+- `render_fable_frontend_subscreens.py` — removed the baked Back `_draw_helper` from
+  `build_about_frame`; the live quad at `(20,420)` is now the sole glyph, which also
+  re-centers it inside the existing hit-rect (fixes "hard to trigger" with no
+  coordinate change).
+
+Reusing `g_OptionsBackHovered` is safe (About/Options/Save mutually exclusive;
+`FableSetVisualFrontendAboutMenu` already resets it on activation). No new global.
+Approach came from an ultracode investigate→synthesize→adversarial-verify workflow;
+the verify pass caught the synthesizer's initial "keep bake + overlay" plan as a
+double-draw/20px-misalignment and mandated removing the bake.
+
+Verified: `BOOTSTRAP_BUILD PASS`, `VISUAL_BOOT_CHECKPOINT PASS`, all behavior tests
+green; `smoke_visual_checkpoint.ps1 -VerifySubscreens` passes with a NEW About
+hover assertion (`about != about-hover`, e.g. `about=E39EF835CA15
+about-hover=D5495BF0F1EF`) proving the OFF→ON swap, plus unchanged Options/Save/Quit/
+Redefine hover paths. The next boundary remains Redefine Keys parity.

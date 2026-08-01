@@ -1485,6 +1485,19 @@ try {
                     $aboutGraphics.Dispose()
                     $aboutBitmap.Dispose()
                 }
+                # About Back hover: moving the cursor into the shared UI_HELPERS
+                # Back rect (design 20-270 x 420-450) must swap the live helper
+                # glyph OFF->ON and change the frame hash.  Proves the hover
+                # highlight the previously baked-only About panel lacked.
+                Send-DesignMouse 0x0200 120 435
+                Start-Sleep -Milliseconds 200
+                $aboutBackHoverHash = Get-WindowFrameHash
+                if ($aboutBackHoverHash -eq $aboutHash) {
+                    throw 'The About Back helper did not enter its hovered state.'
+                }
+                # Move the cursor off the button before the keyboard Back.
+                Send-DesignMouse 0x0200 320 205
+                Start-Sleep -Milliseconds 200
                 # UI_HELPERS/UI_BACK action 86 returns to the main menu.
                 [void][VisualSmokeNativeMethods]::SendMessage(
                     $process.MainWindowHandle,
@@ -1498,6 +1511,8 @@ try {
                     throw 'About Back action 86 did not return to the menu.'
                 }
                 $frameProof += " about=$($aboutHash.Substring(0, 12))"
+                $frameProof +=
+                    " about-hover=$($aboutBackHoverHash.Substring(0, 12))"
 
                 # Re-enter the prompt and validate action 296 last, because
                 # its retail meaning is to end the application.

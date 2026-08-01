@@ -128,14 +128,22 @@ SAVE_VIEW_RING_SPRITE = "UI_VIEW_RING_SMALL_SPRITE_FE"
 # that field is not recovered yet, so the checkpoint shows the starting region
 # (Oakvale) as a deterministic, asset-backed placeholder.
 SAVE_PREVIEW_MINIMAP = "MINIMAP_STARTOAKVALE_FRONT_END"
-# UI_TEXT_AREA child of the saved-games screen (0,254): the File Information
-# panel. Its UI_TABLE_TEXT_LEFT (width 287) / UI_TABLE_TEXT_RIGHT (463, width 40)
-# frames compose a UI_TEXTBOX_MIDDLE (#122) horizontal rule, same as the title.
+# Saved-games UI_TITLE_AREA and UI_TEXT_AREA are two asymmetric CTable pairs.
+# CTable consumes sprite keys in the order key 0 (corner), key 4 (horizontal
+# edge), key 1 (corner); the table record's Width is the inner edge span.
+SAVE_TITLE_AREA_ORIGIN = (0, 35)
+SAVE_TITLE_AREA_LEFT_WIDTH = 287
+SAVE_TITLE_AREA_RIGHT = (463, 40)
 SAVE_TEXT_AREA_ORIGIN = (0, 254)
 SAVE_TEXT_AREA_LEFT_WIDTH = 287
 SAVE_TEXT_AREA_RIGHT = (463, 40)
+SAVE_TEXT_BOTTOM_ORIGIN = (0, 404)
+SAVE_BOTTOM_BACKDROP_ORIGIN = (0, 292)
 SAVE_SCREEN_FRAME_BASE = len(OPTIONS_ROWS) + DETAIL_SCREEN_COUNT
-OPTIONS_SHEET_FRAME_COUNT = SAVE_SCREEN_FRAME_BASE + len(SAVE_BROWSER_ROWS)
+# Save selection-dependent pieces are live Render2D components. Keep one
+# static save base instead of duplicating it once per sample selection.
+SAVE_BROWSER_FRAME_COUNT = 1
+OPTIONS_SHEET_FRAME_COUNT = SAVE_SCREEN_FRAME_BASE + SAVE_BROWSER_FRAME_COUNT
 SAVE_COMPONENT_ATLAS_ORIGIN = (
     OPTIONS_ROW_ATLAS_ORIGIN_X,
     len(OPTIONS_ROWS) * CANVAS_SIZE[1],
@@ -368,6 +376,113 @@ def validate_compiled_subscreen_layout(game_root, schema_path):
         "Saved-games button table width",
         layout.decoded("UI_BUTTON_FOR_SAVE_NAME")["Width"],
         120.0)
+    save_menu = "UI_FRONTEND_PROFILE_SAVED_GAMES_MENU"
+    require_equal(
+        "Saved-games parent child order",
+        layout.child_names(save_menu),
+        (
+            "UI_TEXT_PROFILE_SAVED_GAMES_MENU_TITLE",
+            "UI_BLENDING_BACKGROUNDS_FORREST",
+            "UI_TITLE_AREA",
+            "UI_HELPERS",
+            "UI_VIEW_RING_SMALL",
+            "UI_TEXT_AREA",
+            "UI_BOTTOM_BACKDROP",
+        ))
+    require_position(
+        "Saved-games title-area origin",
+        layout.initial_position("UI_TITLE_AREA"),
+        SAVE_TITLE_AREA_ORIGIN)
+    require_equal(
+        "Saved-games title-area children",
+        layout.child_names("UI_TITLE_AREA"),
+        ("UI_TABLE_TITLE_LEFT", "UI_TABLE_TITLE_RIGHT"))
+    require_equal(
+        "Saved-games title-left width",
+        layout.decoded("UI_TABLE_TITLE_LEFT")["Width"],
+        float(SAVE_TITLE_AREA_LEFT_WIDTH))
+    require_position(
+        "Saved-games title-right position",
+        layout.initial_position("UI_TABLE_TITLE_RIGHT"),
+        (SAVE_TITLE_AREA_RIGHT[0], 0))
+    require_equal(
+        "Saved-games title-right width",
+        layout.decoded("UI_TABLE_TITLE_RIGHT")["Width"],
+        float(SAVE_TITLE_AREA_RIGHT[1]))
+    require_equal(
+        "Saved-games title-left table sprites",
+        layout.table_sprites("UI_TABLE_TITLE_LEFT"),
+        (
+            (0, 122, "UI_TEXTBOX_MIDDLE"),
+            (1, 297, "UI_TEXTBOX_TL"),
+            (4, 122, "UI_TEXTBOX_MIDDLE"),
+        ))
+    require_equal(
+        "Saved-games title-right table sprites",
+        layout.table_sprites("UI_TABLE_TITLE_RIGHT"),
+        (
+            (0, 298, "UI_TEXTBOX_TR"),
+            (1, 122, "UI_TEXTBOX_MIDDLE"),
+            (4, 122, "UI_TEXTBOX_MIDDLE"),
+        ))
+    require_equal(
+        "Saved-games text-area children",
+        layout.child_names("UI_TEXT_AREA"),
+        ("UI_TABLE_TEXT_LEFT", "UI_TABLE_TEXT_RIGHT", "UI_TEXT_BOTTOM"))
+    require_position(
+        "Saved-games text-area origin",
+        layout.initial_position("UI_TEXT_AREA"),
+        SAVE_TEXT_AREA_ORIGIN)
+    require_equal(
+        "Saved-games text-left table sprites",
+        layout.table_sprites("UI_TABLE_TEXT_LEFT"),
+        (
+            (0, 122, "UI_TEXTBOX_MIDDLE"),
+            (1, 538, "UI_TEXTBOX_BL"),
+            (4, 122, "UI_TEXTBOX_MIDDLE"),
+        ))
+    require_equal(
+        "Saved-games text-right table sprites",
+        layout.table_sprites("UI_TABLE_TEXT_RIGHT"),
+        (
+            (0, 299, "UI_TEXTBOX_BR"),
+            (1, 122, "UI_TEXTBOX_MIDDLE"),
+            (4, 122, "UI_TEXTBOX_MIDDLE"),
+        ))
+    text_bottom = layout.decoded("UI_TEXT_BOTTOM")
+    require_equal(
+        "Saved-games text-bottom graphic",
+        text_bottom["States"][0]["GraphicIndex"],
+        89)
+    require_position(
+        "Saved-games text-bottom resolved position",
+        (
+            layout.initial_position("UI_TEXT_AREA")[0] +
+            text_bottom["States"][0]["PositionX"],
+            layout.initial_position("UI_TEXT_AREA")[1] +
+            text_bottom["States"][0]["PositionY"]),
+        SAVE_TEXT_BOTTOM_ORIGIN)
+    require_equal(
+        "Saved-games text-bottom zoom",
+        (
+            text_bottom["States"][0]["ZoomX"],
+            text_bottom["States"][0]["ZoomY"]),
+        (160.0, 1.0))
+    bottom_backdrop = layout.decoded("UI_BOTTOM_BACKDROP")
+    require_position(
+        "Saved-games bottom-backdrop origin",
+        layout.initial_position("UI_BOTTOM_BACKDROP"),
+        SAVE_BOTTOM_BACKDROP_ORIGIN)
+    require_equal(
+        "Saved-games bottom-backdrop graphic",
+        bottom_backdrop["States"][0]["GraphicIndex"],
+        98)
+    require_equal(
+        "Saved-games bottom-backdrop zoom",
+        (
+            bottom_backdrop["States"][0]["ZoomX"],
+            bottom_backdrop["States"][0]["ZoomY"]),
+        (160.0, 62.0))
     option_text_names = (
         "UI_TEXT_GAME_OPTIONS",
         "UI_OPTIONS_BUTTON_VIDEO_TEXT",
@@ -661,7 +776,13 @@ def _build_stretched(left, middle, right, width):
 
 
 def _build_table_horizontal(left, primary, right, table_width):
-    """Reproduce CTable's horizontal inner-span and corner composition."""
+    """Reproduce CTable key-0/key-4/key-1 horizontal composition.
+
+    ``left`` is sprite key 0, ``primary`` is key 4, and ``right`` is key 1.
+    The slightly non-visual argument order is intentional: it follows
+    ``CTable::ConstructSpritesToDraw`` rather than treating the decoded sprite
+    map as a left/middle/right list.
+    """
     if primary.width <= 0:
         raise ValueError("table primary sprite has no width")
     repeat_count = int(table_width / primary.width)
@@ -717,6 +838,34 @@ def _draw_title(
             title_segment,
             640)
         canvas.alpha_composite(title_rule, HEADER_RULE_POSITION)
+    _draw_text(canvas, font, text, HEADER_TEXT_POSITION, "center")
+
+
+def _draw_save_title(
+        canvas,
+        frontend_bank_data,
+        font,
+        text,
+        include_rule=True):
+    """Draw the saved-games UI_TITLE_AREA from its two retail tables."""
+    if include_rule:
+        buf, parsed = frontend_bank_data
+        middle = _decode_named(
+            buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
+        title_left = _build_table_horizontal(
+            middle,
+            middle,
+            _decode_named(buf, parsed, "UI_TEXTBOX_TL_SPRITE_FE"),
+            SAVE_TITLE_AREA_LEFT_WIDTH)
+        title_right = _build_table_horizontal(
+            _decode_named(buf, parsed, "UI_TEXTBOX_TR_SPRITE_FE"),
+            middle,
+            middle,
+            SAVE_TITLE_AREA_RIGHT[1])
+        canvas.alpha_composite(title_left, SAVE_TITLE_AREA_ORIGIN)
+        canvas.alpha_composite(
+            title_right,
+            (SAVE_TITLE_AREA_RIGHT[0], SAVE_TITLE_AREA_ORIGIN[1]))
     _draw_text(canvas, font, text, HEADER_TEXT_POSITION, "center")
 
 
@@ -950,7 +1099,8 @@ def build_save_browser_frame(
         selected_index=0,
         include_title_rule=True,
         include_viewport=True,
-        include_highlight=True):
+        include_highlight=True,
+        include_title_area=None):
     """Compose the first live save-list page from its recovered definitions."""
     if not 0 <= selected_index < len(SAVE_BROWSER_ROWS):
         raise ValueError("save selection is outside the recovered list")
@@ -960,12 +1110,14 @@ def build_save_browser_frame(
     row_font = load_font(font_bank, "ENG_ARIAL_16")
     assets = _option_assets(buf, parsed)
     canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
-    _draw_title(
+    if include_title_area is None:
+        include_title_area = include_title_rule
+    _draw_save_title(
         canvas,
         (buf, parsed),
         font,
         "Saved Games",
-        include_title_rule)
+        include_title_area)
 
     # The selection highlight is the same TS_BUTTON L/M/R ornament as the
     # Options selected row (total width 64+120+64 = 248).  The live D3D9 path
@@ -1005,21 +1157,32 @@ def build_save_browser_frame(
             ),
             "center")
 
-    # File Information text area (UI_TEXT_AREA @ 0,254): a UI_TEXTBOX_MIDDLE rule
-    # framed by UI_TABLE_TEXT_LEFT (width 287) + UI_TABLE_TEXT_RIGHT (463, w 40),
-    # composed exactly like the title rule (#122). Draw the recovered backdrop
-    # segments before the header text.
-    text_area_segment = _decode_named(buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
+    # File Information text area (UI_TEXT_AREA @ 0,254): use the exact
+    # asymmetric UI_TABLE_TEXT_LEFT/RIGHT sprite maps. CTable's horizontal
+    # edge is key 4; the decoded key-1 corners are BL and BR respectively.
+    text_area_segment = _decode_named(
+        buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
     canvas.alpha_composite(
         _build_table_horizontal(
-            text_area_segment, text_area_segment, text_area_segment,
+            text_area_segment,
+            text_area_segment,
+            _decode_named(buf, parsed, "UI_TEXTBOX_BL_SPRITE_FE"),
             SAVE_TEXT_AREA_LEFT_WIDTH),
         SAVE_TEXT_AREA_ORIGIN)
     canvas.alpha_composite(
         _build_table_horizontal(
-            text_area_segment, text_area_segment, text_area_segment,
+            _decode_named(buf, parsed, "UI_TEXTBOX_BR_SPRITE_FE"),
+            text_area_segment,
+            text_area_segment,
             SAVE_TEXT_AREA_RIGHT[1]),
         (SAVE_TEXT_AREA_RIGHT[0], SAVE_TEXT_AREA_ORIGIN[1]))
+
+    # UI_TEXT_BOTTOM is state-selected by ConstructFileDescription when the
+    # selected save has a description. Its retail graphic is the 8x8 table
+    # test horizontal rule (#89), stretched 160x1 at resolved (0,404).
+    text_bottom = _decode_named(buf, parsed, "UI_TABLE_TEST_H_T_FE")
+    text_bottom = text_bottom.resize((text_bottom.width * 160, text_bottom.height))
+    canvas.alpha_composite(text_bottom, SAVE_TEXT_BOTTOM_ORIGIN)
 
     # ConstructFileDescription installs the header + metadata children only after
     # selection metadata has been decoded (a runtime boundary not recovered yet).
@@ -1033,6 +1196,13 @@ def build_save_browser_frame(
         (95, 293),
         "left")
     _draw_helper(canvas, assets["back"], font, (20, 420), "Back")
+
+    # UI_BOTTOM_BACKDROP is a 4x4 half-alpha black frontend texture (graphic
+    # 98), stretched 160x62 at (0,292). It is the final static child in the
+    # saved-games root at layer 5; the live preview quad still follows it.
+    bottom_backdrop = _decode_named(buf, parsed, "HUD_TEXTBOX_BACK_FE")
+    bottom_backdrop = bottom_backdrop.resize((640, 248))
+    canvas.alpha_composite(bottom_backdrop, SAVE_BOTTOM_BACKDROP_ORIGIN)
 
     # Save-preview viewport (UI_VIEW_RING_SMALL @ 314,37): a region minimap
     # framed by the ring ornament, on the right of the screen.  It is the LAST
@@ -1108,8 +1278,10 @@ def build_about_frame(
                 y += ABOUT_MESSAGE_LINE_STEP
             y += ABOUT_MESSAGE_PARAGRAPH_GAP
 
-    assets = _option_assets(buf, parsed)
-    _draw_helper(canvas, assets["back"], title_font, (20, 440), "Back")
+    # The Back button is NOT baked here.  Like Options/Save, About draws its
+    # UI_HELPERS Back solely from the live D3D9 helper quad (design (20,420),
+    # OFF/ON hover swap), so baking a static glyph here would double-draw a
+    # 20px-misaligned button and defeat the hover highlight.
     return canvas
 
 
@@ -1176,7 +1348,10 @@ def build_options_sheet(
         include_title_rule=True,
         include_selected_button=True,
         include_options_text=True,
-        include_options_row_atlas=False):
+        include_options_row_atlas=False,
+        include_save_title_area=None):
+    if include_save_title_area is None:
+        include_save_title_area = include_title_rule
     frames = [
         build_options_frame(
             frontend_bank,
@@ -1227,8 +1402,9 @@ def build_options_sheet(
             selected,
             include_title_rule,
             include_viewport=not include_options_row_atlas,
-            include_highlight=not include_options_row_atlas)
-        for selected in range(len(SAVE_BROWSER_ROWS)))
+            include_highlight=not include_options_row_atlas,
+            include_title_area=include_save_title_area)
+        for selected in range(SAVE_BROWSER_FRAME_COUNT))
     sheet = Image.new(
         "RGBA",
         (
@@ -1266,7 +1442,7 @@ def build_options_sheet(
         # with whatever ring-free cell content sat under it.
         viewport = build_save_preview_viewport(frontend_bank)
         ox, oy = SAVE_VIEW_RING_ORIGIN
-        for save_row in range(len(SAVE_BROWSER_ROWS)):
+        for save_row in range(SAVE_BROWSER_FRAME_COUNT):
             source_left = SAVE_COMPONENT_ATLAS_ORIGIN[0] + ox
             source_top = (
                 SAVE_COMPONENT_ATLAS_ORIGIN[1] +
@@ -1502,7 +1678,8 @@ def main():
             include_title_rule=False,
             include_selected_button=False,
             include_options_text=False,
-            include_options_row_atlas=True)
+            include_options_row_atlas=True,
+            include_save_title_area=True)
         components.save(args.components_output)
         buf, parsed = load_big(args.frontend_bank)
         title_segment = _decode_named(
@@ -1547,9 +1724,10 @@ def main():
         for frame_index in range(OPTIONS_SHEET_FRAME_COUNT):
             composed = Image.new(
                 "RGBA", CANVAS_SIZE, (0, 0, 0, 0))
-            composed.alpha_composite(
-                title_rule,
-                HEADER_RULE_POSITION)
+            if frame_index < SAVE_SCREEN_FRAME_BASE:
+                composed.alpha_composite(
+                    title_rule,
+                    HEADER_RULE_POSITION)
             if frame_index < len(OPTIONS_ROWS):
                 composed.alpha_composite(
                     selected_button,
@@ -1560,24 +1738,21 @@ def main():
                         7,
                     ))
             if frame_index >= SAVE_SCREEN_FRAME_BASE:
+                save_frame_index = frame_index - SAVE_SCREEN_FRAME_BASE
                 # Live save-list highlight quad: behind the row names (which
-                # arrive with the component crop below), positioned by the save
-                # selection this frame represents.
+                # arrive with the component crop below). The static save base
+                # has one frame; selection is live and is not an atlas index.
                 composed.alpha_composite(
                     save_highlight,
                     (
                         SAVE_LIST_ORIGIN[0],
                         SAVE_LIST_ORIGIN[1] +
-                        (frame_index - SAVE_SCREEN_FRAME_BASE) *
+                        save_frame_index *
                         SAVE_ROW_STEP_Y - 7,
                     ))
             if frame_index >= SAVE_SCREEN_FRAME_BASE:
                 component_left = SAVE_COMPONENT_ATLAS_ORIGIN[0]
-                component_top = (
-                    SAVE_COMPONENT_ATLAS_ORIGIN[1] +
-                    (frame_index - SAVE_SCREEN_FRAME_BASE) *
-                    CANVAS_SIZE[1]
-                )
+                component_top = SAVE_COMPONENT_ATLAS_ORIGIN[1]
             else:
                 component_left = 0
                 component_top = frame_index * CANVAS_SIZE[1]
