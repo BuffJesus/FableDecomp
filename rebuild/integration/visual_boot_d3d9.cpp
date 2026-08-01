@@ -2984,6 +2984,10 @@ void FABLE_FASTCALL FableSetVisualFrontendMainMenu(bool active)
         g_AboutMenuActive = false;
         g_DetailScreen = 0;
         g_QuitPromptActive = false;
+        // AUDIT #3: clear the shared Back-button hover so a Back click made
+        // while hovering it cannot flash a stale ON highlight for one frame
+        // on the next Options/Save/About entry (every Back-exit lands here).
+        g_OptionsBackHovered = false;
     }
     // Both compiled swapping widgets activate from frame zero.
     g_AnimationStartTick = 0;
