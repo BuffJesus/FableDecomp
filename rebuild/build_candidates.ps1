@@ -38734,7 +38734,7 @@ $catalog = @(
         Module = 'COpinionTransientOffset'
         Source = '00/47/COpinionTransientOffset_TransferBinaryIn_004793f8.cpp'
         TestSource = '00/47/COpinionTransientOffset_TransferBinaryIn_004793f8_test.cpp'
-        PassPattern = 'OPINION_TRANSFER_BINARY_IN_TEST PASS'
+        PassPattern = 'OPINION_TRANSFER_BINARY_IN_004793F8_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0047b6c0'
@@ -39141,6 +39141,62 @@ $catalog = @(
         Source = '00/8c/CGameScriptThing_GetHomePos_008cfe30.cpp'
         TestSource = '00/8c/CGameScriptThing_GetHomePos_008cfe30_test.cpp'
         PassPattern = 'GETHOMEPOS_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088e300'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_IsRegionLoaded_0088e300.cpp'
+        TestSource = '00/88/CGameScriptInterface_IsRegionLoaded_0088e300_test.cpp'
+        PassPattern = 'REGION_LOADED_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088f9b0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_GetGuildSealRecallPos_0088f9b0.cpp'
+        TestSource = '00/88/CGameScriptInterface_GetGuildSealRecallPos_0088f9b0_test.cpp'
+        PassPattern = 'GUILD_SEAL_RECALL_POS_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088e380'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_DontPopulateNextLoadedRegion_0088e380.cpp'
+        TestSource = '00/88/CGameScriptInterface_DontPopulateNextLoadedRegion_0088e380_test.cpp'
+        PassPattern = 'DONTPOP_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088df60'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_GetWaterHeightAtPosition_0088df60.cpp'
+        TestSource = '00/88/CGameScriptInterface_GetWaterHeightAtPosition_0088df60_test.cpp'
+        PassPattern = 'WATER_HEIGHT_OK'
+    }
+    [pscustomobject]@{
+        Address = '008907d0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_IsConversationActive_008907d0.cpp'
+        TestSource = '00/89/CGameScriptInterface_IsConversationActive_008907d0_test.cpp'
+        PassPattern = 'ISCONV_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088ff30'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_TransitionToThemeAllInternals_0088ff30.cpp'
+        TestSource = '00/88/CGameScriptInterface_TransitionToThemeAllInternals_0088ff30_test.cpp'
+        PassPattern = 'THEME_TRANSITION_OK'
+    }
+    [pscustomobject]@{
+        Address = '00891310'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_CacheMusicSet_00891310.cpp'
+        TestSource = '00/89/CGameScriptInterface_CacheMusicSet_00891310_test.cpp'
+        PassPattern = 'CACHEMUSICSET_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088e200'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_SetGuildMasterMessages_0088e200.cpp'
+        TestSource = '00/88/CGameScriptInterface_SetGuildMasterMessages_0088e200_test.cpp'
+        PassPattern = 'GUILDMASTER_OK'
     }
 )
 
