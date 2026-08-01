@@ -38680,6 +38680,286 @@ $catalog = @(
         TestSource = '00/5f/CEngineInternalPrimitiveBase_AddChildPrimitive_005f7d41_test.cpp'
         PassPattern = 'OK_0x005f7d41'
     }
+    [pscustomobject]@{
+        Address = '00403d20'
+        Module = 'CCountedPointer<CProgressDisplay>'
+        Source = '00/40/CCountedPointerCProgressDisplay_CCountedPointer_00403d20.cpp'
+        TestSource = '00/40/CCountedPointerCProgressDisplay_CCountedPointer_00403d20_test.cpp'
+        PassPattern = 'FABLETLC_PROGRESS_DISPLAY_COUNTED_CTOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '004720f1'
+        Module = '_global'
+        Source = '00/47/global_GFSerialiseVectorBinaryOutfloat_004720f1.cpp'
+        TestSource = '00/47/global_GFSerialiseVectorBinaryOutfloat_004720f1_test.cpp'
+        PassPattern = 'GFSERIALISE_VECTOR_FLOAT_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004724c2'
+        Module = 'CSpecialAbilitiesDrainLifeDef'
+        Source = '00/47/CSpecialAbilitiesDrainLifeDef_Transfer_004724c2.cpp'
+        TestSource = '00/47/CSpecialAbilitiesDrainLifeDef_Transfer_004724c2_test.cpp'
+        PassPattern = 'CSPECIALABILITIESDRAINLIFEDEF_TRANSFER_004724C2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00473593'
+        Module = 'CEngineLightingManager'
+        Source = '00/47/CEngineLightingManager_UpdateShadowScene_00473593.cpp'
+        TestSource = '00/47/CEngineLightingManager_UpdateShadowScene_00473593_test.cpp'
+        PassPattern = 'UPDATE_SHADOW_SCENE_SWITCH_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00475dc7'
+        Module = '_global'
+        Source = '00/47/global_GFSerialiseVectorBinaryOutC2DVector_00475dc7.cpp'
+        TestSource = '00/47/global_GFSerialiseVectorBinaryOutC2DVector_00475dc7_test.cpp'
+        PassPattern = 'GFSERIALISE_C2DVECTOR_475DC7_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00475e92'
+        Module = 'CArray<std::pair<long'
+        Source = '00/47/CArraystdpairlong_pushback_00475e92.cpp'
+        TestSource = '00/47/CArraystdpairlong_pushback_00475e92_test.cpp'
+        PassPattern = 'CARRAY_PAIR_RESIZE_00475E92_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00479187'
+        Module = 'CEngineLightingManager'
+        Source = '00/47/CEngineLightingManager_UpdateShadowScene_00479187.cpp'
+        TestSource = '00/47/CEngineLightingManager_UpdateShadowScene_00479187_test.cpp'
+        PassPattern = 'UPDATE_SHADOW_SCENE_479187_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004793f8'
+        Module = 'COpinionTransientOffset'
+        Source = '00/47/COpinionTransientOffset_TransferBinaryIn_004793f8.cpp'
+        TestSource = '00/47/COpinionTransientOffset_TransferBinaryIn_004793f8_test.cpp'
+        PassPattern = 'OPINION_TRANSFER_BINARY_IN_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047b6c0'
+        Module = '_global'
+        Source = '00/47/global_Fillnunsignedlongunsignedintunsignedlong_0047b6c0.cpp'
+        TestSource = '00/47/global_Fillnunsignedlongunsignedintunsignedlong_0047b6c0_test.cpp'
+        PassPattern = 'FILL_N_ULONG_TRIPLE_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047c600'
+        Module = '_global'
+        Source = '00/47/global_CSkeletalMorph_0047c600.cpp'
+        TestSource = '00/47/global_CSkeletalMorph_0047c600_test.cpp'
+        PassPattern = 'COPY_IMPL_CSKELETALMORPH_0047C600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047c880'
+        Module = 'CTCCarryable'
+        Source = '00/47/CTCCarryable_OnKill_0047c880.cpp'
+        TestSource = '00/47/CTCCarryable_OnKill_0047c880_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047d5a3'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_PeekGuiDef_0047d5a3.cpp'
+        TestSource = '00/47/CTCInGameMenu_PeekGuiDef_0047d5a3_test.cpp'
+        PassPattern = 'PEEKGUIDEF_0047D5A3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047db73'
+        Module = '_global'
+        Source = '00/47/global_SavedConfirmed_0047db73.cpp'
+        TestSource = '00/47/global_SavedConfirmed_0047db73_test.cpp'
+        PassPattern = 'SAVEDCONFIRMED_0047DB73_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004857e0'
+        Module = 'LTextTreeWalkThrough'
+        Source = '00/48/LTextTreeWalkThrough_BuildTreeArray_004857e0.cpp'
+        TestSource = '00/48/LTextTreeWalkThrough_BuildTreeArray_004857e0_test.cpp'
+        PassPattern = 'LTEXTTREEWALKTHROUGH_BUILDTREEARRAY_004857E0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004721b3'
+        Module = 'CArray<std::pair<long'
+        Source = '00/47/CArraystdpairlong_pushback_004721b3.cpp'
+        TestSource = '00/47/CArraystdpairlong_pushback_004721b3_test.cpp'
+        PassPattern = 'CARRAY_PUSH_BACK_004721B3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00472b9d'
+        Module = 'CArray<std::pair<long'
+        Source = '00/47/CArraystdpairlong_pushback_00472b9d.cpp'
+        TestSource = '00/47/CArraystdpairlong_pushback_00472b9d_test.cpp'
+        PassPattern = 'PUSH_BACK_PAIR_LONG_00472B9D_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004735d6'
+        Module = 'CEngineLightingManager'
+        Source = '00/47/CEngineLightingManager_UpdateShadowScene_004735d6.cpp'
+        TestSource = '00/47/CEngineLightingManager_UpdateShadowScene_004735d6_test.cpp'
+        PassPattern = 'UPDATE_SHADOW_SCENE_004735D6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00476123'
+        Module = 'CArray<std::pair<unsigned_long'
+        Source = '00/47/CArraystdpairunsignedlong_pushback_00476123.cpp'
+        TestSource = '00/47/CArraystdpairunsignedlong_pushback_00476123_test.cpp'
+        PassPattern = 'CARRAY_PUSH_BACK_00476123_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047662a'
+        Module = 'CArray<std::pair<unsigned_long'
+        Source = '00/47/CArraystdpairunsignedlong_pushback_0047662a.cpp'
+        TestSource = '00/47/CArraystdpairunsignedlong_pushback_0047662a_test.cpp'
+        PassPattern = 'CARRAY_PUSH_BACK_0047662A_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00476acf'
+        Module = 'CArray<std::pair<unsigned_long'
+        Source = '00/47/CArraystdpairunsignedlong_pushback_00476acf.cpp'
+        TestSource = '00/47/CArraystdpairunsignedlong_pushback_00476acf_test.cpp'
+        PassPattern = 'CARRAY_PAIR_UL_PUSH_BACK_00476ACF_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00476f4f'
+        Module = 'CArray<std::pair<unsigned_long'
+        Source = '00/47/CArraystdpairunsignedlong_pushback_00476f4f.cpp'
+        TestSource = '00/47/CArraystdpairunsignedlong_pushback_00476f4f_test.cpp'
+        PassPattern = 'CARRAY_PUSH_BACK_00476F4F_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00477dea'
+        Module = 'CArray<std::pair<unsigned_long'
+        Source = '00/47/CArraystdpairunsignedlong_pushback_00477dea.cpp'
+        TestSource = '00/47/CArraystdpairunsignedlong_pushback_00477dea_test.cpp'
+        PassPattern = 'PUSH_BACK_PAIR_STRIDE88_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00478be4'
+        Module = 'CArray<std::pair<unsigned_long'
+        Source = '00/47/CArraystdpairunsignedlong_pushback_00478be4.cpp'
+        TestSource = '00/47/CArraystdpairunsignedlong_pushback_00478be4_test.cpp'
+        PassPattern = 'CARRAY_PUSH_BACK_00478BE4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047922b'
+        Module = 'CEngineLightingManager'
+        Source = '00/47/CEngineLightingManager_UpdateShadowScene_0047922b.cpp'
+        TestSource = '00/47/CEngineLightingManager_UpdateShadowScene_0047922b_test.cpp'
+        PassPattern = 'CEngineLightingManager_0047922b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047931e'
+        Module = 'CPersistTraits<std::list<COpinionTransientOffset'
+        Source = '00/47/CPersistTraitsstdlistCOpinionTransientOffset_TransferBinaryOut_0047931e.cpp'
+        TestSource = '00/47/CPersistTraitsstdlistCOpinionTransientOffset_TransferBinaryOut_0047931e_test.cpp'
+        PassPattern = 'CPERSISTTRAITS_OPINION_TRANSFER_OUT_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00479595'
+        Module = 'CArray<std::pair<unsigned_long'
+        Source = '00/47/CArraystdpairunsignedlong_pushback_00479595.cpp'
+        TestSource = '00/47/CArraystdpairunsignedlong_pushback_00479595_test.cpp'
+        PassPattern = 'CARRAY_PUSH_BACK_00479595_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00479ff3'
+        Module = 'CArray<std::pair<unsigned_long'
+        Source = '00/47/CArraystdpairunsignedlong_pushback_00479ff3.cpp'
+        TestSource = '00/47/CArraystdpairunsignedlong_pushback_00479ff3_test.cpp'
+        PassPattern = 'CARRAY_PUSH_BACK_00479FF3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047a407'
+        Module = 'CArray<std::pair<unsigned_long'
+        Source = '00/47/CArraystdpairunsignedlong_pushback_0047a407.cpp'
+        TestSource = '00/47/CArraystdpairunsignedlong_pushback_0047a407_test.cpp'
+        PassPattern = 'CARRAY_PUSH_BACK_0047A407_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047b670'
+        Module = '_global'
+        Source = '00/47/global_Uninitcopyuintd_0047b670.cpp'
+        TestSource = '00/47/global_Uninitcopyuintd_0047b670_test.cpp'
+        PassPattern = 'UNINIT_COPY_UINT_0047B670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047b710'
+        Module = '_global'
+        Source = '00/47/global_Uninitcopyuinte_0047b710.cpp'
+        TestSource = '00/47/global_Uninitcopyuinte_0047b710_test.cpp'
+        PassPattern = 'UNINIT_COPY_UINT_047B710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047d60d'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_OnCreate_0047d60d.cpp'
+        TestSource = '00/47/CTCInGameMenu_OnCreate_0047d60d_test.cpp'
+        PassPattern = 'INGAMEMENU_ONCREATE_COUNTEDPTR_RELEASE_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048524c'
+        Module = 'CCountedPointer<NUISystem::CAction>'
+        Source = '00/48/CCountedPointerNUISystemCAction_ShareData_0048524c.cpp'
+        TestSource = '00/48/CCountedPointerNUISystemCAction_ShareData_0048524c_test.cpp'
+        PassPattern = 'FRONTEND_0048524c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047280c'
+        Module = 'CEngineLightingManager'
+        Source = '00/47/CEngineLightingManager_UpdateShadowScene_0047280c.cpp'
+        TestSource = '00/47/CEngineLightingManager_UpdateShadowScene_0047280c_test.cpp'
+        PassPattern = 'UPDATE_SHADOW_SCENE_47280C_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00472b63'
+        Module = 'WaypointData'
+        Source = '00/47/WaypointData_WaypointData_00472b63.cpp'
+        TestSource = '00/47/WaypointData_WaypointData_00472b63_test.cpp'
+        PassPattern = 'WAYPOINTDATA_DTOR_TEMP_APPLY_00472B63_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047b880'
+        Module = '_global'
+        Source = '00/47/global_Destvalsymbolinfoa_0047b880.cpp'
+        TestSource = '00/47/global_Destvalsymbolinfoa_0047b880_test.cpp'
+        PassPattern = '_DEST_VAL_0047B880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00485372'
+        Module = '_global'
+        Source = '00/48/global_CopybackwardCHeroMarriageInfoCHeroMarriageInfo_00485372.cpp'
+        TestSource = '00/48/global_CopybackwardCHeroMarriageInfoCHeroMarriageInfo_00485372_test.cpp'
+        PassPattern = 'COPY_BACKWARD_CHEROMARRIAGEINFO_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004799c6'
+        Module = 'CArray<std::pair<unsigned_long'
+        Source = '00/47/CArraystdpairunsignedlong_pushback_004799c6.cpp'
+        TestSource = '00/47/CArraystdpairunsignedlong_pushback_004799c6_test.cpp'
+        PassPattern = 'CARRAY_PUSH_BACK_004799C6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047b5f0'
+        Module = '_global'
+        Source = '00/47/global_Uninitcopyuinta_0047b5f0.cpp'
+        TestSource = '00/47/global_Uninitcopyuinta_0047b5f0_test.cpp'
+        PassPattern = 'UNINIT_COPY_UINT_A_0047B5F0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047b630'
+        Module = '_global'
+        Source = '00/47/global_Fillnunsignedlongunsignedintunsignedlong_0047b630.cpp'
+        TestSource = '00/47/global_Fillnunsignedlongunsignedintunsignedlong_0047b630_test.cpp'
+        PassPattern = 'FILL_N_ELEM12_0047B630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047c290'
+        Module = '_global'
+        Source = '00/47/global_Uninitcopyuintc_0047c290.cpp'
+        TestSource = '00/47/global_Uninitcopyuintc_0047c290_test.cpp'
+        PassPattern = 'UNINIT_COPY_UINT_C_0047C290_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
