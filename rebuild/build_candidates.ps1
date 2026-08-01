@@ -39205,6 +39205,55 @@ $catalog = @(
         TestSource = '00/88/CGameScriptInterface_AreEntitiesEnemies_0088e6f0_test.cpp'
         PassPattern = 'ENEMIES_OK'
     }
+    [pscustomobject]@{
+        Address = '0088e0b0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_SetSoundThemesAsEnabledForRegion_0088e0b0.cpp'
+        TestSource = '00/88/CGameScriptInterface_SetSoundThemesAsEnabledForRegion_0088e0b0_test.cpp'
+        PassPattern = 'SETSOUNDTHEMES_OK'
+    }
+    [pscustomobject]@{
+        Address = '008907e0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_FadeScreenOutUntilNextCallToFadeScreenIn_008907e0.cpp'
+        TestSource = '00/89/CGameScriptInterface_FadeScreenOutUntilNextCallToFadeScreenIn_008907e0_test.cpp'
+        PassPattern = 'FADE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00890200'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_ScreenFilterFadeOut_00890200.cpp'
+        TestSource = '00/89/CGameScriptInterface_ScreenFilterFadeOut_00890200_test.cpp'
+        PassPattern = 'SCREENFADE_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088ece0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_CameraShake_0088ece0.cpp'
+        TestSource = '00/88/CGameScriptInterface_CameraShake_0088ece0_test.cpp'
+        PassPattern = 'CGameScriptInterface_0088ece0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a9320'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_EntityCastForcePush_008a9320.cpp'
+        TestSource = '00/8a/CGameScriptInterface_EntityCastForcePush_008a9320_test.cpp'
+        PassPattern = 'ENTITYCASTFORCEPUSH_OK'
+    }
+    [pscustomobject]@{
+        Address = '006e79e0'
+        Module = 'CGameScriptInterface'
+        Source = '00/6e/CGameScriptInterface_RegisterTimer_006e79e0.cpp'
+        TestSource = '00/6e/CGameScriptInterface_RegisterTimer_006e79e0_test.cpp'
+        PassPattern = 'REGTIMER_OK'
+    }
+    [pscustomobject]@{
+        Address = '00893060'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_AddBoast_00893060.cpp'
+        TestSource = '00/89/CGameScriptInterface_AddBoast_00893060_test.cpp'
+        PassPattern = 'BOAST_OK'
+    }
 )
 
 $requestedAddresses = @(
