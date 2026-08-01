@@ -3,16 +3,14 @@
 // Self-contained behaviour test for
 // CCountedPointer<NUISystem::CAction>::ShareData @ 0x0048524C.
 //
-// The target ShareData is defined in source.obj (compiled with /O2 /Oy) and is
-// pulled in by the source.obj + test.obj fallback link.  We MUST re-declare the
-// exact same class/struct layout and method signature here so the call site
-// emits the identical MSVC-mangled name that source.obj exports.  We also DEFINE
-// stub bodies for the two masked callees that source.obj references, so the
-// combined link resolves with no unresolved / duplicate symbols.
+// ShareData's body lives in source.obj (compiled /O2 /Oy). We re-declare the
+// exact same class/struct layout + method signature so the call site emits the
+// identical MSVC __fastcall-mangled name source.obj exports, and we DEFINE the
+// one masked callee (ReleaseData) so the combined link resolves cleanly.
 
 struct FrontEndActionPointerInfo_0048524c
 {
-    long reference_count;
+    long  reference_count;
     void* destroy_callback;
     void* action;
 };
@@ -20,51 +18,41 @@ struct FrontEndActionPointerInfo_0048524c
 class CCountedPointerNUISystemCAction_0048524c
 {
 public:
-    void* action;
+    void*                              action;
     FrontEndActionPointerInfo_0048524c* pointer_info;
 
-    // Declared, NOT defined here: the body lives in source.obj.
+    void ReleaseData();
+
+    // Declared, NOT defined here: body lives in source.obj.
     void ShareData(
-        void* new_action,
+        void*                               new_action,
         FrontEndActionPointerInfo_0048524c* new_pointer_info);
 };
 
-// ---- Masked callee stubs (defined here so the link resolves) ---------------
-
-static int g_ReleaseCalls;
+// ---- Masked callee definition (so the link resolves) -----------------------
+static int   g_ReleaseCalls;
 static void* g_ActionSeenAtRelease;
 static FrontEndActionPointerInfo_0048524c* g_InfoSeenAtRelease;
 
-extern "C" void __fastcall
-FrontEndCountedActionRelease_0048524c(
-    CCountedPointerNUISystemCAction_0048524c* holder,
-    void*)
+void CCountedPointerNUISystemCAction_0048524c::ReleaseData()
 {
     ++g_ReleaseCalls;
-    g_ActionSeenAtRelease = holder->action;
-    g_InfoSeenAtRelease = holder->pointer_info;
-    holder->action = 0;
-    holder->pointer_info = 0;
-}
-
-// Unreachable adjacent thunk; stub only so the link resolves.
-extern "C" void __stdcall
-FrontEndActionThunkForward_0048524c(void*)
-{
+    g_ActionSeenAtRelease = this->action;
+    g_InfoSeenAtRelease   = this->pointer_info;
 }
 
 static void ResetProbe()
 {
-    g_ReleaseCalls = 0;
+    g_ReleaseCalls        = 0;
     g_ActionSeenAtRelease = 0;
-    g_InfoSeenAtRelease = 0;
+    g_InfoSeenAtRelease   = 0;
 }
 
 int main()
 {
     int failures = 0;
-    int old_action = 11;
-    int new_action = 22;
+    int old_action       = 11;
+    int new_action       = 22;
     int alternate_action = 33;
 
     FrontEndActionPointerInfo_0048524c old_info;
@@ -77,11 +65,10 @@ int main()
     new_info.destroy_callback = 0;
     new_info.action = &new_action;
 
-    // Case 1: identity short-circuit -- new pointer_info == current pointer_info
-    // -> no release, no rebind, no acquire.
+    // Case 1: identity short-circuit (new pointer_info == current) -> no-op.
     ResetProbe();
     CCountedPointerNUISystemCAction_0048524c same_owner;
-    same_owner.action = &old_action;
+    same_owner.action       = &old_action;
     same_owner.pointer_info = &old_info;
     same_owner.ShareData(&alternate_action, &old_info);
     if (g_ReleaseCalls != 0 ||
@@ -93,11 +80,10 @@ int main()
         ++failures;
     }
 
-    // Case 2: release old ownership, install both new fields, then acquire one
-    // reference on the new (non-null) pointer_info.
+    // Case 2: release old ownership, install both new fields, acquire one ref.
     ResetProbe();
     CCountedPointerNUISystemCAction_0048524c replacement;
-    replacement.action = &old_action;
+    replacement.action       = &old_action;
     replacement.pointer_info = &old_info;
     replacement.ShareData(&new_action, &new_info);
     if (g_ReleaseCalls != 1 ||
@@ -111,11 +97,10 @@ int main()
         ++failures;
     }
 
-    // Case 3: rebind to a NULL pointer_info -> release runs, fields install,
-    // but no acquire (null skip).
+    // Case 3: rebind to a NULL pointer_info -> release + install, no acquire.
     ResetProbe();
     CCountedPointerNUISystemCAction_0048524c null_owner;
-    null_owner.action = &new_action;
+    null_owner.action       = &new_action;
     null_owner.pointer_info = &new_info;
     null_owner.ShareData(&alternate_action, 0);
     if (g_ReleaseCalls != 1 ||
@@ -131,9 +116,7 @@ int main()
 
     if (failures != 0)
     {
-        std::printf(
-            "FRONTEND_0048524c_TEST FAIL count=%d\n",
-            failures);
+        std::printf("FRONTEND_0048524c_TEST FAIL count=%d\n", failures);
         return 1;
     }
 

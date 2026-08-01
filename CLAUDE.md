@@ -105,6 +105,14 @@ of a clean PE32 at ImageBase `0x400000`.
   chain and the texture uploads/validates/selects fine but its quads bind nothing and draw FLAT
   WHITE. Pinned the About-screen SPOOKY bg bug this way (2026-07-30); new frontend resource ids need
   a free slot (101-120 were taken; 116-119 are WAVE, so About=120, spooky=121/122).
+- Decomp authoring lane (`verify_and_land.py`): it runs `html.unescape()` on `test_cpp` before
+  compiling, so any `&<word>;` adjacency (e.g. `&marker;`) expands to a Unicode glyph -> VC7.1
+  C3209 "Unicode identifiers not supported". Author tests without `&name;` sequences (rename the
+  var, or take the address into a `void* p = &var;` first). Same file rewrites `__thiscall`->
+  `__fastcall` and strips `static_assert`; never write the literal `__thiscall` keyword (VC7.1
+  rejects it, C4234) — model this-in-ecx methods as real members or free `__fastcall(self,...)`.
+- Workflow `args` arrive in the script as a JSON **string**, not a parsed value — guard with
+  `const items = typeof args === 'string' ? JSON.parse(args) : args` before `.map`/`.length`.
 
 ## Toolchain (see docs/TOOLCHAIN.md for commands)
 - Mario rig gotcha (2026-07-22): `work/mario_hero/stage_bindaxis4` is format-valid and looks

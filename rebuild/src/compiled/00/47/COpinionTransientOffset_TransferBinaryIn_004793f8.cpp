@@ -1,67 +1,62 @@
+#pragma optimize("s",on)
+#include <string.h>
+
 // COpinionTransientOffset::TransferBinaryIn @ 0x004793f8 (81 bytes).
 //
-// __fastcall: this (ecx) = destination buffer (0x18 bytes = 6 dwords);
-// one stack arg [esp+4] = CDataInputStream* stream.
+// Genuine C++ reconstruction. __fastcall member: this (ecx) = destination
+// object (0x18 bytes = 6 dwords), one stack arg = the input stream.
 //
-// Reads 0x18 bytes out of the stream's in-memory source window when the whole
-// record fits contiguously (the classic MSVC inlined fast path with the 64-bit
-// signed <= 0x7FFFFFFF overflow guard), otherwise tail-calls the general
-// windowed reader.  Stream layout (offsets from the disasm):
-//   +0x04 : long  cursor/position       (bumped by 0x18 on the fast path)
-//   +0x0C : void* source read pointer    (bumped by 0x18)
-//   +0x14 : long  bytes left in window   (decremented by 0x18)
-// The slow-path callee (CDataInputStream::ReadWithSrcChunkOverflow-style helper)
-// is reloc-masked, so it is declared extern.
+// The body is the classic MSVC-inlined CDataInputStream fast-path read of a
+// fixed 0x18-byte record.  The engine first validates that advancing the
+// stream read-position by 0x18 keeps a 64-bit signed position in [0,0x7FFFFFFF]
+// (this is why MSVC materialises the 64-bit `xor edx,edx` guard), then, if the
+// current in-memory source window still holds at least 0x18 bytes, copies the
+// record straight out of the window (rep movsd of 6 dwords) and bumps the
+// window pointers; otherwise it defers to the general windowed reader on the
+// stream.  A failed position guard leaves the destination untouched.
+//
+// Stream layout (offsets confirmed from the disasm and the sibling
+// CLandscapeBackgroundPatch stream header):
+//   +0x04 : long  ReadPosition          (advanced by 0x18)
+//   +0x0C : unsigned char* Cursor       (advanced by 0x18)
+//   +0x14 : long  RemainingInSourceChunk(decremented by 0x18)
 
-extern "C" void __fastcall
-OpinionTransferBinaryIn_slowread_0051a8a8(void*, void*, void*, long);
-
-extern "C" __declspec(naked) void __fastcall
-COpinionTransientOffset_TransferBinaryIn_004793f8(void* /*ecx this*/, void* /*edx unused*/, void* /*stream*/)
+struct CDataInputStream
 {
-    __asm
+    long           Pad00;                  // +0x00
+    long           ReadPosition;           // +0x04
+    long           Pad08;                  // +0x08
+    unsigned char* Cursor;                 // +0x0C
+    long           Pad10;                  // +0x10
+    long           RemainingInSourceChunk; // +0x14
+
+    // General windowed reader (reloc-masked): __fastcall member on the stream,
+    // this (ecx) = stream, two stack args (destination, size).
+    void ReadWithSrcChunkOverflow(unsigned char* destination, long size);
+};
+
+struct COpinionTransientOffset
+{
+    unsigned char Bytes[0x18];             // the 6-dword record this reader fills
+
+    void TransferBinaryIn(CDataInputStream* stream);
+};
+
+void COpinionTransientOffset::TransferBinaryIn(CDataInputStream* stream)
+{
+    __int64 nextPosition = (unsigned long)(stream->ReadPosition + 0x18);
+    if (nextPosition >= 0 && nextPosition <= 0x7FFFFFFF)
     {
-        mov     eax, dword ptr [esp + 4]
-        push    edi
-        mov     edi, ecx
-        mov     ecx, dword ptr [eax + 4]
-        add     ecx, 18h
-        xor     edx, edx
-        jl      done
-        jg      high_valid
-        test    ecx, ecx
-        jb      done
-
-    high_valid:
-        test    edx, edx
-        jg      done
-        jl      window_check
-        cmp     ecx, 7FFFFFFFh
-        ja      done
-
-    window_check:
-        cmp     dword ptr [eax + 14h], 18h
-        jl      slow_path
-
-        push    esi
-        mov     esi, dword ptr [eax + 0Ch]
-        push    6
-        pop     ecx
-        rep movsd
-        add     dword ptr [eax + 0Ch], 18h
-        add     dword ptr [eax + 14h], -18h
-        add     dword ptr [eax + 4], 18h
-        pop     esi
-        jmp     done
-
-    slow_path:
-        push    18h
-        push    edi
-        mov     ecx, eax
-        call    OpinionTransferBinaryIn_slowread_0051a8a8
-
-    done:
-        pop     edi
-        ret     4
+        if (stream->RemainingInSourceChunk >= 0x18)
+        {
+            memcpy(this, stream->Cursor, 0x18);
+            stream->Cursor += 0x18;
+            stream->RemainingInSourceChunk -= 0x18;
+            stream->ReadPosition += 0x18;
+        }
+        else
+        {
+            stream->ReadWithSrcChunkOverflow(this->Bytes, 0x18);
+        }
     }
 }

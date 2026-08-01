@@ -1,73 +1,53 @@
-// CArray<std::pair<unsigned_long,...> >::push_back @ 0x00478be4.
+#pragma optimize("s",on)
+// Genuine-C++ reconstruction of retail 0x00478be4:
+// CArray<std::pair<unsigned_long,...> >::push_back -- the manifest labels it
+// "push_back" but the body is the classic std vector-style
+// resize(_Newsize, const T&) dispatch, element stride 0x48 == 72 bytes.
 //
-// __fastcall, 2 stack args (ret 8).  `this` (ecx) holds a {first,last} range of
-// 0x48-byte-stride element slots (std::pair<unsigned_long, ...> whose sizeof is
-// 0x48 = 72):
-//   [ecx+0x00] = first  (begin pointer)
-//   [ecx+0x04] = last   (end pointer)
-// arg0 (index) arrives in [esp+0x10] after the 3 register saves; arg1 (value
-// ptr) in [esp+0x14].
+// this (ecx) is a {first,last} range header:
+//   [ecx+0x00] = _First  (begin pointer)
+//   [ecx+0x04] = _Last   (end pointer)
+// stack args after the 3 register saves: _Newsize @ [esp+0x10], &_Val @ [esp+0x14].
 //
-// The retail body computes count = (last-first)/0x48 (signed idiv) and branches
-// on arg0 vs count:
-//   * index <  count : call InsertAt(first + index*0x48, last)   [callee A]
-//   * index >= count : call AppendFill(last, index - count, arg1)[callee B]
-// 0x48 == 72 == 8*9, so the slot address is built with two LEAs
-// (lea eax,[esi+esi*8] -> index*9 ; lea eax,[edi+eax*8] -> first + index*72)
-// rather than an imul, matching the retail bytes exactly.
+// count() = (_Last - _First) / 0x48  is a signed pointer-difference division.
+// Because 72 is not a power of two, VC7.1 under /O2 would strength-reduce the
+// divide to a reciprocal magic-multiply (imul 0x38e38e39 + shifts).  Retail
+// instead emits a real `push 0x48; cdq; pop reg; idiv reg`, which VC7.1 produces
+// only when size-optimising the divide -- hence the file-scope
+// #pragma optimize("s",on) (the same technique the landed genuine sibling
+// 0x00475e92 uses).  That makes the compiler materialise the 0x48 divisor into a
+// register via push-imm8/pop and do a true signed idiv, matching the retail bytes.
 //
-// Both callees are relocation-masked; declared extern so the call operands mask
-// out.  Modeled as a naked __fastcall so ecx=this, edx unused, matching the
-// exact prologue/epilogue and register usage of the retail bytes.
+// Dispatch:
+//   _Newsize <  size() : erase(begin() + _Newsize, end())           [callee A]
+//   _Newsize >= size() : _Insert_n(end(), _Newsize - size(), _Val)  [callee B]
+// erase / _Insert_n are members of the same container (this in ecx), declared
+// but not defined here, so cl emits the direct relocation-masked calls with ecx
+// preserved as `this`.  The slot address begin()+_Newsize on a 72==9*8 stride is
+// built with the two-LEA chain (lea [esi+esi*8] = *9 ; lea [edi+eax*8] = first +
+// idx*72), exactly as retail.
 
-extern "C" void __fastcall CArray_push_back_00478be4_InsertAt_A(void* slot, void* last);
-extern "C" void __fastcall CArray_push_back_00478be4_AppendFill_B(void* last, long fillcount, void* value);
+struct Elem { char _pad[0x48]; };   // sizeof == 72
 
-extern "C" __declspec(naked) void __fastcall
-CArray_push_back_00478be4(void* /*ecx this*/, void* /*edx*/, long /*index*/, void* /*value*/)
+struct CArrayElem {
+    Elem* _First;   // +0x00
+    Elem* _Last;    // +0x04
+
+    Elem* begin() const { return _First; }
+    Elem* end()   const { return _Last; }
+    unsigned int size() const { return (unsigned int)(_Last - _First); }
+
+    // Out-of-line members -> direct __fastcall calls, ecx = this (kept).
+    void erase(Elem* _F, Elem* _L);
+    void _Insert_n(Elem* _Where, unsigned int _Count, const Elem& _Val);
+
+    void resize(unsigned int _Newsize, const Elem& _Val);
+};
+
+void CArrayElem::resize(unsigned int _Newsize, const Elem& _Val)
 {
-    __asm
-    {
-        push ebx
-        mov  ebx, dword ptr [ecx + 4]
-        push esi
-        push edi
-        mov  edi, dword ptr [ecx]
-        mov  eax, ebx
-        sub  eax, edi
-        push 48h
-        cdq
-        pop  esi
-        idiv esi
-        mov  esi, dword ptr [esp + 10h]
-        cmp  esi, eax
-        jae  append
-
-        lea  eax, [esi + esi*8]
-        push ebx
-        lea  eax, [edi + eax*8]
-        push eax
-        call CArray_push_back_00478be4_InsertAt_A
-        jmp  done
-
-    append:
-        mov  ebx, dword ptr [ecx + 4]
-        push dword ptr [esp + 14h]
-        mov  eax, ebx
-        sub  eax, edi
-        push 48h
-        pop  edi
-        cdq
-        idiv edi
-        sub  esi, eax
-        push esi
-        push ebx
-        call CArray_push_back_00478be4_AppendFill_B
-
-    done:
-        pop  edi
-        pop  esi
-        pop  ebx
-        ret  8
-    }
+    if (_Newsize < size())
+        erase(begin() + _Newsize, end());
+    else
+        _Insert_n(end(), _Newsize - size(), _Val);
 }

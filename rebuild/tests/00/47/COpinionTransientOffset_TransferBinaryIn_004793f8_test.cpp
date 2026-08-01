@@ -1,61 +1,102 @@
 #include <stdio.h>
 #include <string.h>
 
-// Stream layout mirrored from the disasm.
-struct Stream {
-    long  pad0;      // +0x00
-    long  cursor;    // +0x04
-    long  pad8;      // +0x08
-    void* src;       // +0x0C
-    long  pad10;     // +0x10
-    long  left;      // +0x14
+// Self-contained /Od behavior harness for COpinionTransientOffset::TransferBinaryIn
+// (retail 0x004793f8). Mirrors the reconstruction's stream layout and object,
+// then drives the fast path (window has >= 0x18 bytes) and the slow path
+// (window too small) and checks the observable effects.
+
+struct CDataInputStream
+{
+    long           Pad00;                  // +0x00
+    long           ReadPosition;           // +0x04
+    long           Pad08;                  // +0x08
+    unsigned char* Cursor;                 // +0x0C
+    long           Pad10;                  // +0x10
+    long           RemainingInSourceChunk; // +0x14
+
+    void ReadWithSrcChunkOverflow(unsigned char* destination, long size);
 };
 
-extern "C" void __fastcall
-COpinionTransientOffset_TransferBinaryIn_004793f8(void*, void*, void*);
-
-// Slow-path stub so the link resolves; record whether it was hit.
-static int g_slow_hit = 0;
-extern "C" void __fastcall
-OpinionTransferBinaryIn_slowread_0051a8a8(void*, void*, void*, long)
+struct COpinionTransientOffset
 {
-    g_slow_hit = 1;
+    unsigned char Bytes[0x18];
+
+    void TransferBinaryIn(CDataInputStream* stream);
+};
+
+// Slow-path stub so the link resolves; record that it was hit + its args.
+static int            g_slowHit = 0;
+static unsigned char* g_slowDst = 0;
+static long           g_slowSize = 0;
+void CDataInputStream::ReadWithSrcChunkOverflow(unsigned char* destination, long size)
+{
+    g_slowHit = 1;
+    g_slowDst = destination;
+    g_slowSize = size;
 }
 
-int main()
+int main(void)
 {
-    // ---- fast path: window has 0x18 bytes available ----
+    int ok = 1;
+
+    // ---- fast path: window holds >= 0x18 bytes ----
     unsigned char srcbuf[0x40];
     for (int i = 0; i < 0x40; ++i) srcbuf[i] = (unsigned char)(i + 1);
 
-    Stream s;
+    CDataInputStream s;
     memset(&s, 0, sizeof(s));
-    s.cursor = 100;
-    s.src    = srcbuf + 8;   // read pointer sits 8 bytes in
-    s.left   = 0x40;         // plenty remaining (>= 0x18)
+    s.ReadPosition           = 100;
+    s.Cursor                 = srcbuf + 8;
+    s.RemainingInSourceChunk = 0x40;
 
-    unsigned char dst[0x18];
-    memset(dst, 0xAA, sizeof(dst));
+    COpinionTransientOffset dst;
+    memset(dst.Bytes, 0xAA, sizeof(dst.Bytes));
 
-    COpinionTransientOffset_TransferBinaryIn_004793f8(dst, 0, &s);
+    g_slowHit = 0;
+    dst.TransferBinaryIn(&s);
 
-    if (g_slow_hit) { printf("FAIL: slow path taken on fast case\n"); return 1; }
-    if (memcmp(dst, srcbuf + 8, 0x18) != 0) { printf("FAIL: bytes not copied\n"); return 1; }
-    if (s.cursor != 100 + 0x18) { printf("FAIL: cursor not advanced (%ld)\n", s.cursor); return 1; }
-    if (s.left != 0x40 - 0x18) { printf("FAIL: left not decremented (%ld)\n", s.left); return 1; }
-    if (s.src != srcbuf + 8 + 0x18) { printf("FAIL: src not advanced\n"); return 1; }
+    if (g_slowHit)                                    { printf("FAIL slow on fast\n"); ok = 0; }
+    if (memcmp(dst.Bytes, srcbuf + 8, 0x18) != 0)     { printf("FAIL bytes\n"); ok = 0; }
+    if (s.ReadPosition != 100 + 0x18)                 { printf("FAIL pos %ld\n", s.ReadPosition); ok = 0; }
+    if (s.RemainingInSourceChunk != 0x40 - 0x18)      { printf("FAIL remain %ld\n", s.RemainingInSourceChunk); ok = 0; }
+    if (s.Cursor != srcbuf + 8 + 0x18)                { printf("FAIL cursor\n"); ok = 0; }
 
-    // ---- slow path: window too small ----
-    Stream s2;
+    // ---- slow path: window too small (< 0x18), guard still passes ----
+    CDataInputStream s2;
     memset(&s2, 0, sizeof(s2));
-    s2.cursor = 0;
-    s2.src    = srcbuf;
-    s2.left   = 0x10;        // < 0x18 -> slow path
-    unsigned char dst2[0x18];
-    g_slow_hit = 0;
-    COpinionTransientOffset_TransferBinaryIn_004793f8(dst2, 0, &s2);
-    if (!g_slow_hit) { printf("FAIL: slow path not taken on small window\n"); return 1; }
+    s2.ReadPosition           = 0;
+    s2.Cursor                 = srcbuf;
+    s2.RemainingInSourceChunk = 0x10;   // < 0x18
 
-    printf("OPINION_TRANSFER_BINARY_IN_TEST PASS\n");
-    return 0;
+    COpinionTransientOffset dst2;
+    memset(dst2.Bytes, 0xBB, sizeof(dst2.Bytes));
+
+    g_slowHit = 0; g_slowDst = 0; g_slowSize = 0;
+    dst2.TransferBinaryIn(&s2);
+
+    if (!g_slowHit)                 { printf("FAIL slow not hit\n"); ok = 0; }
+    if (g_slowDst != dst2.Bytes)    { printf("FAIL slow dst\n"); ok = 0; }
+    if (g_slowSize != 0x18)         { printf("FAIL slow size %ld\n", g_slowSize); ok = 0; }
+
+    // ---- guard-fail path: position would exceed 0x7FFFFFFF, nothing happens ----
+    CDataInputStream s3;
+    memset(&s3, 0, sizeof(s3));
+    s3.ReadPosition           = 0x7FFFFFF0;  // + 0x18 overflows the <= 0x7FFFFFFF bound
+    s3.Cursor                 = srcbuf;
+    s3.RemainingInSourceChunk = 0x40;
+
+    COpinionTransientOffset dst3;
+    memset(dst3.Bytes, 0xCC, sizeof(dst3.Bytes));
+
+    g_slowHit = 0;
+    dst3.TransferBinaryIn(&s3);
+
+    if (g_slowHit)                          { printf("FAIL guard slow\n"); ok = 0; }
+    if (s3.ReadPosition != 0x7FFFFFF0)      { printf("FAIL guard pos moved\n"); ok = 0; }
+    if (dst3.Bytes[0] != 0xCC)              { printf("FAIL guard dst touched\n"); ok = 0; }
+
+    if (ok) printf("OPINION_TRANSFER_BINARY_IN_004793F8_TEST PASS\n");
+    else    printf("OPINION_TRANSFER_BINARY_IN_004793F8_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

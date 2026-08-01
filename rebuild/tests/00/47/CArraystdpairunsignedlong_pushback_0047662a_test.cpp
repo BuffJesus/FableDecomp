@@ -1,165 +1,122 @@
 #include <cstdio>
 
-// Self-contained behaviour test for CArray<std::pair<unsigned_long,...> >::push_back
-// @ 0x0047662a.  The residue verifier links THIS object file ALONE, so the test
-// must define the target function AND its (masked) callees itself.
+// Self-contained behaviour test for CArray<std::pair<unsigned_long,...> >::resize
+// (manifest "push_back") @ 0x0047662a.  Compiles at /Od, links standalone.
 //
-// The target body below is a byte-for-byte copy of the landed naked-__fastcall
-// source; it is NOT the parity artifact (that lives in source_cpp) -- it is only
-// here so the standalone link resolves and the two dispatch branches can run.
-//
-// The retail callees receive their operands on the STACK (the target `push`es
-// them and cleans nothing itself for them), so the stubs are declared __stdcall
-// (callee-cleans-its-own-stack-args).  Argument order matches the push order:
-//   InsertAt : push last; push slot; call  -> (slot, last)
-//   AppendFill: push value; ...; push count; push last; call -> (last, count, value)
-// Declaring them __fastcall instead would leave the pushed dwords un-popped and
-// corrupt the stack on return -- so __stdcall is load-bearing here.
+// This is a GENUINE-C++ test: it defines the same resize() dispatch as the parity
+// source and stubs the two out-of-line container members (erase / _Insert_n) so
+// the standalone link resolves and both branches can be observed.  Element size
+// is 0x5c (92) bytes; size() == (_Last - _First).
 
-extern "C" void __stdcall CArray_push_back_0047662a_InsertAt_A(void* slot, void* last);
-extern "C" void __stdcall CArray_push_back_0047662a_AppendFill_B(void* last, long fillcount, void* value);
+struct Pair {
+    unsigned long first;        // +0x00
+    char          second[0x58]; // +0x04 .. 0x5b  -> sizeof == 0x5c (92)
+};
 
-extern "C" __declspec(naked) void __fastcall
-CArray_push_back_0047662a(void* /*ecx this*/, void* /*edx*/, long /*index*/, void* /*value*/)
+struct CArrayPair {
+    Pair* _First;  // +0x00
+    Pair* _Last;   // +0x04
+
+    Pair* begin() const { return _First; }
+    Pair* end() const   { return _Last; }
+    unsigned int size() const { return (unsigned int)(_Last - _First); }
+
+    void erase(Pair* _F, Pair* _L);
+    void _Insert_n(Pair* _Where, unsigned int _Count, const Pair& _Val);
+
+    void resize(unsigned int _Newsize, const Pair& _Val);
+};
+
+void CArrayPair::resize(unsigned int _Newsize, const Pair& _Val)
 {
-    __asm
-    {
-        push ebx
-        mov  ebx, dword ptr [ecx + 4]
-        push esi
-        push edi
-        mov  edi, dword ptr [ecx]
-        mov  eax, ebx
-        sub  eax, edi
-        push 5Ch
-        cdq
-        pop  esi
-        idiv esi
-        mov  esi, dword ptr [esp + 10h]
-        cmp  esi, eax
-        jae  append
-
-        imul esi, esi, 5Ch
-        push ebx
-        add  esi, edi
-        push esi
-        call CArray_push_back_0047662a_InsertAt_A
-        jmp  done
-
-    append:
-        mov  ebx, dword ptr [ecx + 4]
-        push dword ptr [esp + 14h]
-        mov  eax, ebx
-        sub  eax, edi
-        push 5Ch
-        pop  edi
-        cdq
-        idiv edi
-        sub  esi, eax
-        push esi
-        push ebx
-        call CArray_push_back_0047662a_AppendFill_B
-
-    done:
-        pop  edi
-        pop  esi
-        pop  ebx
-        ret  8
-    }
+    if (_Newsize < size())
+        erase(begin() + _Newsize, end());
+    else
+        _Insert_n(end(), _Newsize - size(), _Val);
 }
 
-static int   g_InsertCalls;
-static void* g_InsertSlot;
-static void* g_InsertLast;
+static int          g_EraseCalls;
+static const Pair*  g_EraseF;
+static const Pair*  g_EraseL;
 
-static int   g_AppendCalls;
-static void* g_AppendLast;
-static long  g_AppendFillCount;
-static void* g_AppendValue;
+static int          g_InsertCalls;
+static const Pair*  g_InsertWhere;
+static unsigned int g_InsertCount;
+static const Pair*  g_InsertVal;
 
-extern "C" void __stdcall
-CArray_push_back_0047662a_InsertAt_A(void* slot, void* last)
+void CArrayPair::erase(Pair* _F, Pair* _L)
+{
+    ++g_EraseCalls;
+    g_EraseF = _F;
+    g_EraseL = _L;
+}
+
+void CArrayPair::_Insert_n(Pair* _Where, unsigned int _Count, const Pair& _Val)
 {
     ++g_InsertCalls;
-    g_InsertSlot = slot;
-    g_InsertLast = last;
+    g_InsertWhere = _Where;
+    g_InsertCount = _Count;
+    g_InsertVal   = &_Val;
 }
-
-extern "C" void __stdcall
-CArray_push_back_0047662a_AppendFill_B(void* last, long fillcount, void* value)
-{
-    ++g_AppendCalls;
-    g_AppendLast = last;
-    g_AppendFillCount = fillcount;
-    g_AppendValue = value;
-}
-
-struct RangeHdr
-{
-    char* first;
-    char* last;
-};
 
 static void Reset()
 {
-    g_InsertCalls = 0; g_InsertSlot = 0; g_InsertLast = 0;
-    g_AppendCalls = 0; g_AppendLast = 0; g_AppendFillCount = 0; g_AppendValue = 0;
+    g_EraseCalls = 0;  g_EraseF = 0;  g_EraseL = 0;
+    g_InsertCalls = 0; g_InsertWhere = 0; g_InsertCount = 0; g_InsertVal = 0;
 }
 
 int main()
 {
     int failures = 0;
 
-    const long STRIDE = 0x5c;
-    static char storage[0x5c * 4];
-    int valueSentinel = 0x5151;
+    static Pair storage[4];
+    Pair valueSentinel;
+    valueSentinel.first = 0x5151u;
 
-    RangeHdr r;
-    r.first = &storage[0];
-    r.last  = &storage[STRIDE * 4];
+    CArrayPair arr;
+    arr._First = &storage[0];
+    arr._Last  = &storage[4];   // size() == 4
 
-    // count = (last-first)/0x5c = 4.
-
-    // index 2 < count(4) -> INSERT: slot = first + 2*0x5c, last = r.last.
+    // _Newsize 2 < size(4) -> ERASE(begin()+2, end()).
     Reset();
-    CArray_push_back_0047662a(&r, 0, 2, &valueSentinel);
+    arr.resize(2u, valueSentinel);
+    if (g_EraseCalls != 1 ||
+        g_InsertCalls != 0 ||
+        g_EraseF != (arr._First + 2) ||
+        g_EraseL != arr._Last)
+    {
+        std::printf("erase-path failed f=%p l=%p e=%d i=%d\n",
+                    (void*)g_EraseF, (void*)g_EraseL, g_EraseCalls, g_InsertCalls);
+        ++failures;
+    }
+
+    // _Newsize 4 == size(4) -> INSERT(end(), 0, &val)   (jae boundary).
+    Reset();
+    arr.resize(4u, valueSentinel);
     if (g_InsertCalls != 1 ||
-        g_AppendCalls != 0 ||
-        g_InsertSlot != (void*)(r.first + 2 * STRIDE) ||
-        g_InsertLast != (void*)r.last)
+        g_EraseCalls != 0 ||
+        g_InsertWhere != arr._Last ||
+        g_InsertCount != 0u ||
+        g_InsertVal != &valueSentinel)
     {
-        std::printf("insert-path failed slot=%p last=%p ins=%d app=%d\n",
-                    g_InsertSlot, g_InsertLast, g_InsertCalls, g_AppendCalls);
+        std::printf("insert-eq failed w=%p c=%u v=%p e=%d i=%d\n",
+                    (void*)g_InsertWhere, g_InsertCount, (void*)g_InsertVal,
+                    g_EraseCalls, g_InsertCalls);
         ++failures;
     }
 
-    // index 4 == count(4) -> APPEND (jae): last=r.last, fill = 4-4 = 0, value=&sentinel.
+    // _Newsize 7 > size(4) -> INSERT(end(), 3, &val).
     Reset();
-    CArray_push_back_0047662a(&r, 0, 4, &valueSentinel);
-    if (g_AppendCalls != 1 ||
-        g_InsertCalls != 0 ||
-        g_AppendLast != (void*)r.last ||
-        g_AppendFillCount != 0 ||
-        g_AppendValue != (void*)&valueSentinel)
+    arr.resize(7u, valueSentinel);
+    if (g_InsertCalls != 1 ||
+        g_EraseCalls != 0 ||
+        g_InsertWhere != arr._Last ||
+        g_InsertCount != 3u ||
+        g_InsertVal != &valueSentinel)
     {
-        std::printf("append-eq failed last=%p fc=%ld val=%p ins=%d app=%d\n",
-                    g_AppendLast, g_AppendFillCount, g_AppendValue,
-                    g_InsertCalls, g_AppendCalls);
-        ++failures;
-    }
-
-    // index 7 > count(4) -> APPEND: fill = 7-4 = 3.
-    Reset();
-    CArray_push_back_0047662a(&r, 0, 7, &valueSentinel);
-    if (g_AppendCalls != 1 ||
-        g_InsertCalls != 0 ||
-        g_AppendLast != (void*)r.last ||
-        g_AppendFillCount != 3 ||
-        g_AppendValue != (void*)&valueSentinel)
-    {
-        std::printf("append-gt failed last=%p fc=%ld val=%p ins=%d app=%d\n",
-                    g_AppendLast, g_AppendFillCount, g_AppendValue,
-                    g_InsertCalls, g_AppendCalls);
+        std::printf("insert-gt failed w=%p c=%u v=%p e=%d i=%d\n",
+                    (void*)g_InsertWhere, g_InsertCount, (void*)g_InsertVal,
+                    g_EraseCalls, g_InsertCalls);
         ++failures;
     }
 

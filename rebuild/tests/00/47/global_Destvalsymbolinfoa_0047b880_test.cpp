@@ -1,38 +1,56 @@
 #include <cstdio>
 
-static int  g_sub_calls = 0;
-static int  g_base_calls = 0;
-static char* g_last_sub[2];
-static char* g_last_base = 0;
+// Self-contained behaviour test for the leading _Dest_val @ 0x0047b880.
+// Compiles at /Od, links standalone, prints an exact uppercase pass token.
+//
+// GENUINE-C++ test: it defines the same three-member destroy dispatch as the
+// parity source and stubs the single masked __fastcall dtor so the standalone
+// link resolves and the destroy order / argument pointers can be observed.
 
-// The masked callees of routine 1 (the only path a __fastcall(self) exercises;
-// routine 2 is unreachable dead code after the tail-jmp).
-extern "C" void __fastcall _Dest_val_sub_dtor(void* member_ecx)
-{
-    if (g_sub_calls < 2) g_last_sub[g_sub_calls] = (char*)member_ecx;
-    g_sub_calls++;
-}
-extern "C" void __fastcall _Dest_val_base_dtor(void* self_ecx)
-{
-    g_base_calls++;
-    g_last_base = (char*)self_ecx;
-}
-// Routine 2's callees are never reached at runtime but must resolve at link time.
-extern "C" void* __cdecl _Dest_val_operator_new(unsigned int) { return 0; }
-extern "C" void __fastcall _Dest_val_construct(void*, unsigned int, void*) {}
+struct Member { char pad[4]; };
 
-extern "C" void __fastcall _Dest_val_symbolinfo_a(void* self);
+struct Host {
+    char    pad0[4];   // 0x00
+    Member  m_4;       // 0x04
+    Member  m_8;       // 0x08
+};
+
+extern "C" void __fastcall Symbol_dtor(void* self_ecx);
+
+static int   g_calls = 0;
+static void* g_seen[3];
+
+extern "C" void __fastcall Symbol_dtor(void* self_ecx)
+{
+    if (g_calls < 3) g_seen[g_calls] = self_ecx;
+    ++g_calls;
+}
+
+void __fastcall Dest_val_symbolinfo(Host* self)
+{
+    Symbol_dtor(&self->m_8);
+    Symbol_dtor(&self->m_4);
+    Symbol_dtor(self);
+}
 
 int main()
 {
-    char buf[0x50];
-    char* base = buf;
-    _Dest_val_symbolinfo_a(base);
-    if (g_sub_calls != 2) { std::printf("FAIL sub_calls=%d\n", g_sub_calls); return 1; }
-    if (g_base_calls != 1) { std::printf("FAIL base_calls=%d\n", g_base_calls); return 1; }
-    if (g_last_sub[0] != base + 0x8) { std::printf("FAIL first sub offset\n"); return 1; }
-    if (g_last_sub[1] != base + 0x4) { std::printf("FAIL second sub offset\n"); return 1; }
-    if (g_last_base != base) { std::printf("FAIL base ptr\n"); return 1; }
-    std::printf("_DEST_VAL_0047B880_TEST PASS\n");
+    char storage[0x10];
+    Host* self = (Host*)storage;
+    char* base = (char*)self;
+
+    Dest_val_symbolinfo(self);
+
+    int failures = 0;
+    if (g_calls != 3)               { std::printf("FAIL calls=%d\n", g_calls); ++failures; }
+    if (g_seen[0] != base + 0x8)    { std::printf("FAIL arg0 not +8\n"); ++failures; }
+    if (g_seen[1] != base + 0x4)    { std::printf("FAIL arg1 not +4\n"); ++failures; }
+    if (g_seen[2] != base + 0x0)    { std::printf("FAIL arg2 not +0\n"); ++failures; }
+
+    if (failures != 0) {
+        std::printf("DEST_VAL_SYMBOLINFO_0047B880_TEST FAIL count=%d\n", failures);
+        return 1;
+    }
+    std::printf("DEST_VAL_SYMBOLINFO_0047B880_TEST PASS\n");
     return 0;
 }

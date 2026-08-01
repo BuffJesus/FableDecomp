@@ -1,57 +1,54 @@
-#include "rebuild_abi.h"
+#pragma optimize("s", on)
+#pragma optimize("y", off)
 
-// NUISystem::WaypointData::~WaypointData @ 0x00472B63
-// VC7.1, x86, /O2 /Oy.
+// NUISystem WaypointData::~WaypointData  @ 0x00472B63  (__fastcall, ret 4)
 //
-// this-in-ecx dtor taking one stack argument (ret 4).  Body builds a 0x40-byte
-// temporary at [ebp-0x40], constructs it, stamps its head dword with a vtable
-// pointer, invokes a member on `this` (esi) with the temp + the stack argument,
-// then re-stamps the temp head with a second vtable pointer and destructs it.
-// All call rel32 targets and the two immediate vtable addresses are
-// relocation-masked in parity.
+// Retail idiom:
+//   push ebp / mov ebp,esp / sub esp,0x40    -> 0x40-byte stack temporary [ebp-0x40]
+//   push esi / mov esi,ecx                    -> save this
+//   lea ecx,[ebp-0x40] / call <ctor>          -> temp.Construct()   (masked)
+//   push &temp / push [ebp+8] / mov ecx,esi
+//   mov [ebp-0x40],0x123543c                  -> temp.head = &vtblApply
+//   call <apply>                              -> this->Apply(arg, &temp)  (masked, fwd)
+//   lea ecx,[ebp-0x40]
+//   mov [ebp-0x40],0x1230ba0                  -> temp.head = &vtblDestroy
+//   call <dtor>                               -> temp.Destroy()   (masked)
+//   pop esi / leave / ret 4
 //
-// VC7.1 forbids the literal thiscall keyword (C4234), so the callees are
-// declared __fastcall: their first argument arrives in ecx exactly as a
-// this-in-ecx method expects, and the naked body loads ecx explicitly before
-// every call.  The emitted bytes are unaffected by the C-level convention of
-// the externs since the body is hand-written asm.
+// The two immediate stores are the classic MSVC inlined vptr stamps: a local
+// object whose vtable pointer is set after construction (derived table) and
+// re-set before teardown (base table).  Modelled as explicit head-pointer
+// assignments so the compiler emits the two `mov [ebp-0x40], imm32` stores
+// exactly where retail schedules them.  All three callees and the two vtable
+// addresses are relocation-masked in parity, so they are declared extern.
 
-extern "C" void FABLE_FASTCALL
-FableWaypointDataTempConstruct_00472B63(void* temp, void* edx);
+extern void* const WaypointApplyVtbl_0123543c[];    // 0x0123543c
+extern void* const WaypointDestroyVtbl_01230ba0[];  // 0x01230ba0
 
-extern "C" void FABLE_FASTCALL
-FableWaypointDataApply_00472B63(void* self, void* edx, void* stackArg, void* temp);
+// 0x40-byte stack temporary.  head = inlined vptr slot; Construct/Destroy are
+// this-in-ecx members taking no stack args (masked callees).
+struct WaypointTemp {
+    void* head;                 // +0x00  inlined vtable pointer slot
+    char  pad[0x40 - 4];        // pad out to the full 0x40-byte frame temp
+    void Construct();           // lea ecx,[ebp-0x40]; call
+    void Destroy();             // lea ecx,[ebp-0x40]; call
+};
 
-extern "C" void FABLE_FASTCALL
-FableWaypointDataTempDestroy_00472B63(void* temp, void* edx);
+struct WaypointData {
+    // this-in-ecx member taking two stack args (arg, then &temp pushed first):
+    //   push &temp; push arg; mov ecx,this; call
+    void Apply(void* arg, WaypointTemp* temp);
 
-extern "C" void* const FableWaypointDataApplyVtable_00472B63[];
-extern "C" void* const FableWaypointDataDestroyVtable_00472B63[];
+    void Dtor(void* arg);       // the target: ~WaypointData(arg), ret 4
+};
 
-extern "C" __declspec(naked) void FABLE_FASTCALL
-FableWaypointDataDestroy_00472B63(void* /*ecx this*/, void* /*edx unused*/,
-                                  void* /*stack arg @ [ebp+8]*/)
+void WaypointData::Dtor(void* arg)
 {
-    __asm
-    {
-        push ebp
-        mov ebp, esp
-        sub esp, 40h
-        push esi
-        mov esi, ecx
-        lea ecx, [ebp-40h]
-        call FableWaypointDataTempConstruct_00472B63
-        lea eax, [ebp-40h]
-        push eax
-        push dword ptr [ebp+8]
-        mov ecx, esi
-        mov dword ptr [ebp-40h], offset FableWaypointDataApplyVtable_00472B63
-        call FableWaypointDataApply_00472B63
-        lea ecx, [ebp-40h]
-        mov dword ptr [ebp-40h], offset FableWaypointDataDestroyVtable_00472B63
-        call FableWaypointDataTempDestroy_00472B63
-        pop esi
-        leave
-        ret 4
-    }
+    WaypointTemp temp;
+
+    temp.Construct();
+    temp.head = (void*)WaypointApplyVtbl_0123543c;
+    this->Apply(arg, &temp);
+    temp.head = (void*)WaypointDestroyVtbl_01230ba0;
+    temp.Destroy();
 }

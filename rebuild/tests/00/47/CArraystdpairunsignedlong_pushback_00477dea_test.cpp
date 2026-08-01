@@ -1,123 +1,97 @@
-// Self-contained behavior test for CArray_push_back_00477dea.
+// Self-contained behavior test for the resize/push_back dispatch at 0x00477dea.
 //
-// The retail body pushes the callee arguments on the stack (right-to-left) and
-// does NOT clean them up itself, so the two masked callees must be __stdcall-
-// style: they consume the pushed args and balance the stack.  The extern
-// declarations in source_cpp mangle them as __fastcall (@name@N), so to keep
-// the exact same mangled symbol yet still clean the caller's pushed dwords we
-// implement each stub as a naked __fastcall that reads its arguments off the
-// stack and returns with the correct `ret N`.
-//
-// Element stride is 0x88 (136) bytes.  We build a mock {first,last} range with a
-// known element count and verify the branch selection:
-//   * index < count  -> InsertAt(slot=first+index*0x88, last)
-//   * index >= count -> AppendFill(last, fillcount=index-count, value)
+// We instantiate the same struct shape used in source_cpp (element stride 0x88)
+// and provide real definitions for the two out-of-line member callees so the
+// program links and runs at /Od.  The callees record their arguments; the test
+// drives both branches (index < size -> erase; index >= size -> _Insert_n) and
+// verifies the computed slot / grow-count / end pointers, then prints an exact
+// uppercase pass token.
 
 #include <cstdio>
 
-struct Range { unsigned char* first; unsigned char* last; };
+struct Pair {
+    unsigned long first;
+    unsigned char rest[0x84];
+};   // sizeof == 0x88
 
-extern "C" void __fastcall CArray_push_back_00477dea(void* thisp, void* edx, long index, void* value);
+struct CArrayPair {
+    Pair* _First;
+    Pair* _Last;
+
+    Pair* begin() const { return _First; }
+    Pair* end() const   { return _Last; }
+    unsigned int size() const { return (unsigned int)(_Last - _First); }
+
+    void erase(Pair* _F, Pair* _L);
+    void _Insert_n(Pair* _Where, unsigned int _Count, const Pair& _Val);
+
+    void push_back(unsigned int _Newsize, const Pair& _Val);
+};
 
 // ---- recorded callee arguments ---------------------------------------------
-static int   g_insert_called   = 0;
-static void* g_insert_slot     = 0;
-static void* g_insert_last     = 0;
+static int   g_erase_called = 0;
+static Pair* g_erase_first   = 0;
+static Pair* g_erase_last    = 0;
 
-static int   g_append_called   = 0;
-static void* g_append_last     = 0;
-static long  g_append_fill     = 0;
-static void* g_append_value    = 0;
+static int   g_insert_called = 0;
+static Pair* g_insert_where   = 0;
+static unsigned int g_insert_count = 0;
+static const Pair* g_insert_val = 0;
 
-// The retail body calls these with the arguments PUSHED on the stack (not in
-// ecx/edx) and performs no post-call stack cleanup, so each stub must pop the
-// pushed dwords itself (ret 8 / ret 0xC).  Declared __fastcall to keep the
-// @name@N mangled symbol source.obj references; implemented naked so the actual
-// arg passing is stack-based and the stack stays balanced.
-extern "C" __declspec(naked) void __fastcall
-CArray_push_back_00477dea_InsertAt_A(void* /*slot*/, void* /*last*/)
+void CArrayPair::erase(Pair* _F, Pair* _L)
 {
-    // stack on entry: [esp+0]=ret, [esp+4]=slot, [esp+8]=last
-    __asm
-    {
-        mov  eax, dword ptr [esp + 4]
-        mov  g_insert_slot, eax
-        mov  eax, dword ptr [esp + 8]
-        mov  g_insert_last, eax
-        mov  dword ptr g_insert_called, 1
-        ret  8
-    }
+    g_erase_called = 1;
+    g_erase_first  = _F;
+    g_erase_last   = _L;
 }
 
-extern "C" __declspec(naked) void __fastcall
-CArray_push_back_00477dea_AppendFill_B(void* /*last*/, long /*fillcount*/, void* /*value*/)
+void CArrayPair::_Insert_n(Pair* _Where, unsigned int _Count, const Pair& _Val)
 {
-    // stack on entry: [esp+0]=ret, [esp+4]=last, [esp+8]=fillcount, [esp+0xC]=value
-    __asm
-    {
-        mov  eax, dword ptr [esp + 4]
-        mov  g_append_last, eax
-        mov  eax, dword ptr [esp + 8]
-        mov  g_append_fill, eax
-        mov  eax, dword ptr [esp + 0Ch]
-        mov  g_append_value, eax
-        mov  dword ptr g_append_called, 1
-        ret  0Ch
-    }
+    g_insert_called = 1;
+    g_insert_where  = _Where;
+    g_insert_count  = _Count;
+    g_insert_val    = &_Val;
+}
+
+void CArrayPair::push_back(unsigned int _Newsize, const Pair& _Val)
+{
+    if (_Newsize < size())
+        erase(begin() + _Newsize, end());
+    else
+        _Insert_n(end(), _Newsize - size(), _Val);
 }
 
 int main()
 {
-    const long STRIDE = 0x88;
-    const long COUNT  = 4;
+    static Pair buffer[16];
+    const unsigned int COUNT = 4;
 
-    static unsigned char buffer[STRIDE * 16];
-    Range r;
-    r.first = buffer;
-    r.last  = buffer + STRIDE * COUNT;   // 4 elements populated
+    CArrayPair a;
+    a._First = buffer;
+    a._Last  = buffer + COUNT;   // 4 populated elements
 
-    int value = 0x1234;
+    Pair value;
+    value.first = 0x1234;
 
-    // --- Case 1: index < count -> InsertAt --------------------------------
-    g_insert_called = g_append_called = 0;
-    long idx1 = 2;
-    CArray_push_back_00477dea(&r, 0, idx1, &value);
+    // --- Case 1: index < size -> erase ------------------------------------
+    g_erase_called = g_insert_called = 0;
+    unsigned int idx1 = 2;
+    a.push_back(idx1, value);
 
-    if (!g_insert_called || g_append_called) {
-        std::printf("FAIL branch1\n");
-        return 1;
-    }
-    if (g_insert_slot != (void*)(r.first + idx1 * STRIDE)) {
-        std::printf("FAIL slot\n");
-        return 1;
-    }
-    if (g_insert_last != (void*)r.last) {
-        std::printf("FAIL last1\n");
-        return 1;
-    }
+    if (!g_erase_called || g_insert_called) { std::printf("FAIL branch1\n"); return 1; }
+    if (g_erase_first != a._First + idx1)   { std::printf("FAIL efirst\n"); return 1; }
+    if (g_erase_last  != a._Last)           { std::printf("FAIL elast\n");  return 1; }
 
-    // --- Case 2: index >= count -> AppendFill -----------------------------
-    g_insert_called = g_append_called = 0;
-    long idx2 = 7;
-    CArray_push_back_00477dea(&r, 0, idx2, &value);
+    // --- Case 2: index >= size -> _Insert_n -------------------------------
+    g_erase_called = g_insert_called = 0;
+    unsigned int idx2 = 7;
+    a.push_back(idx2, value);
 
-    if (g_insert_called || !g_append_called) {
-        std::printf("FAIL branch2\n");
-        return 1;
-    }
-    if (g_append_last != (void*)r.last) {
-        std::printf("FAIL last2\n");
-        return 1;
-    }
-    if (g_append_fill != (idx2 - COUNT)) {
-        std::printf("FAIL fill\n");
-        return 1;
-    }
-    if (g_append_value != (void*)&value) {
-        std::printf("FAIL value\n");
-        return 1;
-    }
+    if (g_erase_called || !g_insert_called) { std::printf("FAIL branch2\n"); return 1; }
+    if (g_insert_where != a._Last)          { std::printf("FAIL iwhere\n"); return 1; }
+    if (g_insert_count != (idx2 - COUNT))   { std::printf("FAIL icount\n"); return 1; }
+    if (g_insert_val   != &value)           { std::printf("FAIL ival\n");   return 1; }
 
-    std::printf("PUSH_BACK_PAIR_STRIDE88_TEST PASS\n");
+    std::printf("PUSH_BACK_RESIZE_STRIDE88_TEST PASS\n");
     return 0;
 }

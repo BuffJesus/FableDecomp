@@ -1,49 +1,30 @@
 #include <stdio.h>
 #include <string.h>
 
-// ---- Mock list node/container: circular doubly-linked, value at +0x8 ----
+// ---- Mock circular doubly-linked list node/container: value at +0x8 ----
 struct OpinionNode
 {
-    OpinionNode* next;      // +0x0
-    OpinionNode* prev;      // +0x4
-    unsigned char value[0x18]; // +0x8 .. +0x20 (0x18 bytes transferred per node)
+    OpinionNode* next;          // +0x00
+    OpinionNode* prev;          // +0x04
+    unsigned char value[0x18];  // +0x08
 };
 
 struct OpinionList
 {
-    OpinionNode* head;      // sentinel; [list] = head, [head] = first
+    OpinionNode* head;          // +0x00  sentinel pointer
 };
 
-// ---- Mock stream with a vtable whose slot [+0x10] (index 4) is the writer ----
-//
-// The naked target dispatches via `call dword ptr [eax+0x10]` after setting
-// ecx=stream and pushing (src, 0x18).  That is a __fastcall.  VC7.1 rejects the
-// __fastcall keyword on a free function pointer, so we model the same register
-// layout with __fastcall + an explicit (ignored) edx slot:
-//   ecx = self, edx = <unused>, [esp] = src, [esp+4] = len.
-struct StreamVtbl
-{
-    void* slot0;
-    void* slot1;
-    void* slot2;
-    void* slot3;
-    void  (__fastcall* transferBytes)(void* self, void* edx, void* src, int len); // +0x10
-};
-
-struct MockStream
-{
-    StreamVtbl* vptr;       // +0x0
-};
-
+// Recording state for verification.
 namespace
 {
-    const int      MAX_REC = 8;
-    void*          g_recSrc[MAX_REC];
-    int            g_recLen[MAX_REC];
-    int            g_recCount;
-    unsigned int   g_lastCount;
-    void*          g_sizeThis;
-    void*          g_putThis;
+    const int    MAX_REC = 8;
+    const void*  g_recSrc[MAX_REC];
+    int          g_recLen[MAX_REC];
+    int          g_recCount;
+    unsigned int g_lastCount;
+    void*        g_sizeThis;
+    void*        g_putThis;
+    unsigned int g_fakeSize;
 
     void Reset()
     {
@@ -54,13 +35,22 @@ namespace
         g_sizeThis = 0;
         g_putThis = 0;
     }
+}
 
-    unsigned int g_fakeSize;
-
-    void __fastcall TransferBytesImpl(void* self, void* edx, void* src, int len)
+// ---- Stream must match the source's layout and NAME exactly: 5 virtuals
+//      (TransferBytes = slot 4), plus a non-virtual PutCount.  source.obj leaves
+//      OpinionStream::PutCount (?PutCount@OpinionStream@@QAEXI@Z) undefined and
+//      mangles the target's OpinionStream* parameter as PAUOpinionStream@@; giving
+//      this struct the identical name + members makes both the callee definition
+//      and the target's mangled reference resolve on the fallback link. ----
+struct OpinionStream
+{
+    virtual void v0() {}
+    virtual void v1() {}
+    virtual void v2() {}
+    virtual void v3() {}
+    virtual void TransferBytes(const void* src, int len)
     {
-        (void)self;
-        (void)edx;
         if (g_recCount < MAX_REC)
         {
             g_recSrc[g_recCount] = src;
@@ -68,49 +58,42 @@ namespace
         }
         ++g_recCount;
     }
+    // Non-virtual member the source calls directly (reloc-masked rel32 call).
+    // Declared here, DEFINED out-of-line below so it is always emitted into
+    // test.obj (an inline body would be discarded because the test never calls it).
+    void PutCount(unsigned int count);
+};
+
+// Out-of-line so this definition satisfies source.obj's undefined
+// ?PutCount@OpinionStream@@QAEXI@Z even though the test never calls PutCount itself.
+void OpinionStream::PutCount(unsigned int count)
+{
+    g_lastCount = count;
+    g_putThis = this;
 }
 
-// ---- Stubs for the two relocation-masked rel32 callees ----
-extern "C" unsigned int __fastcall
-CPersistTraits_OpinionList_Size_0047931e(void* list_ecx)
+// ---- Reloc-masked helper stub (matches the source's extern "C" __fastcall decl:
+//      undefined symbol @OpinionList_Size_0047931e@4) ----
+extern "C" unsigned int __fastcall OpinionList_Size_0047931e(OpinionList* list)
 {
-    g_sizeThis = list_ecx;
+    g_sizeThis = list;
     return g_fakeSize;
 }
 
-// PutCount: source.obj references this as fastcall @8 (void*, u32), so the C
-// signature MUST stay (void* stream_ecx, unsigned int count) for name matching.
-// BUT the retail/naked call site is really __fastcall: `push eax` puts count on
-// the STACK (not edx) with this=ecx, and the outer function's `ret 8` epilogue
-// only balances if this callee pops that pushed dword.  A plain fastcall(void*,
-// u32) body would `ret 0` and leak 4 bytes -> outer stack skew -> crash.  So we
-// author a naked body that reads count from [esp+4] and returns with `ret 4`.
-//   stack on entry:  [esp] = return addr, [esp+4] = pushed count (eax)
-//   ecx = stream ("this")
-extern "C" __declspec(naked) void __fastcall
-CPersistTraits_OpinionStream_PutCount_0047931e(void* stream_ecx, unsigned int count)
-{
-    (void)stream_ecx; (void)count;
-    __asm
-    {
-        mov  eax, dword ptr [esp+4]   // pushed count
-        mov  g_lastCount, eax
-        mov  g_putThis, ecx           // this = stream
-        ret  4                        // balance the caller's push eax
-    }
-}
-
-extern "C" void __fastcall
+// The function under test is DEFINED in source_cpp, declared there WITHOUT
+// extern "C", so it mangles as
+//   ?CPersistTraits_OpinionList_TransferBinaryOut_0047931e@@YIXPAX0PAUOpinionStream@@PAUOpinionList@@@Z
+// Declare it here with the IDENTICAL C++ signature (plain __fastcall, same struct
+// names) so this reference produces that same mangled symbol and resolves to the
+// source.obj definition on the fallback link.  (No extern "C" here -- that was the
+// LINK_FAIL: it produced @...@16 which source.obj never defines.)
+void __fastcall
 CPersistTraits_OpinionList_TransferBinaryOut_0047931e(
-    void* self_ecx, void* edx, void* stream, void* list);
+    void* self_ecx, void* edx, OpinionStream* stream, OpinionList* list);
 
 int main()
 {
-    StreamVtbl vt;
-    memset(&vt, 0, sizeof(vt));
-    vt.transferBytes = &TransferBytesImpl;
-    MockStream stream;
-    stream.vptr = &vt;
+    OpinionStream stream;
 
     // Populated list: sentinel + two value nodes, circular.
     OpinionNode sentinel, a, b;

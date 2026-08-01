@@ -1,73 +1,70 @@
-// CArray<std::pair<unsigned_long,...> >::push_back @ 0x0047a407.
+#pragma optimize("s",on)
+// Byte-exact reconstruction of retail 0x0047a407
+// CArray<std::pair<unsigned_long,...> >::push_back  (manifest label);
+// the body is the classic resize(_Newsize, const T&) dispatch, identical in
+// shape to the stride-8 sibling 0x00475e92 and byte-for-byte identical to the
+// stride-0x50 sibling 0x00476123 (only the two relocation-masked call rel32
+// operands differ, which are masked in parity).  The 0x50-byte (80-byte)
+// element makes pointer subtraction lower to a signed `idiv 0x50` instead of a
+// `sar`, and the begin()+index address math lower to `lea [esi+esi*4]; shl 4`
+// (index*5*16 == index*0x50).
 //
-// __fastcall, 2 stack args (ret 8).  `this` (ecx) holds a {first,last} range of
-// 0x50-byte-stride element slots (std::pair<unsigned_long, ...> whose sizeof is
-// 0x50 = 80):
-//   [ecx+0x00] = first  (begin pointer)
-//   [ecx+0x04] = last   (end pointer)
-// arg0 (index) arrives in [esp+0x10] after the 3 register saves; arg1 (value
-// ptr) in [esp+0x14].
+// Retail disasm (annotated):
+//   mov ebx,[ecx+4]       ; _Last   (this+0x04)
+//   mov edi,[ecx]         ; _First  (this+0x00)
+//   mov eax,ebx; sub eax,edi ; byte span (_Last-_First)
+//   push 0x50; cdq; pop esi; idiv esi ; size() = span/0x50  (signed idiv)
+//   mov esi,[esp+0x10]    ; _Newsize (stack arg 1)
+//   cmp esi,eax; jae INSERT   ; _Newsize < size() -> ERASE else INSERT
+// ERASE:
+//   lea eax,[esi+esi*4]; shl eax,4 ; _Newsize*0x50
+//   push ebx              ; end()
+//   add eax,edi           ; begin()+_Newsize
+//   push eax
+//   call erase(begin()+_Newsize, end())   ; this in ecx (kept)
+//   jmp END
+// INSERT:
+//   mov ebx,[ecx+4]       ; _Last reloaded (end())
+//   push [esp+0x14]       ; &_Val (const T& reference, one dword)
+//   mov eax,ebx; sub eax,edi
+//   push 0x50; pop edi; cdq; idiv edi ; size() recomputed
+//   sub esi,eax           ; _Newsize - size()
+//   push esi
+//   push ebx              ; end()
+//   call _Insert_n(end(), _Newsize-size(), _Val)  ; this in ecx (kept)
+// END:
+//   pop edi; pop esi; pop ebx; ret 8
 //
-// The retail body computes count = (last-first)/0x50 (signed idiv) and branches
-// on arg0 vs count:
-//   * index <  count : call InsertAt(first + index*0x50, last)   [callee A]
-//   * index >= count : call AppendFill(last, index - count, arg1)[callee B]
-// Because the stride 0x50 = 5*16, the slot offset index*0x50 is materialised by
-// the compiler as lea eax,[esi+esi*4] ; shl eax,4 (not an imul), matching the
-// retail 8d 04 b6 / c1 e0 04 bytes exactly.
-// Both callees are relocation-masked; declared extern so the call operands mask
-// out.  Modeled as a naked __fastcall so ecx=this, edx unused, matching the
-// exact prologue/epilogue and register usage of the retail bytes.
+// Element stride is 0x50 bytes.  _Val is passed by const reference (single dword
+// pushed; ret 8).  erase / _Insert_n are members of the same container (this in
+// ecx), declared but not defined here so cl emits the direct relocation-masked
+// calls with ecx preserved as `this`.
 
-extern "C" void __fastcall CArray_push_back_0047a407_InsertAt_A(void* slot, void* last);
-extern "C" void __fastcall CArray_push_back_0047a407_AppendFill_B(void* last, long fillcount, void* value);
+// 0x50-byte POD element (std::pair<unsigned long, big-payload>).  sizeof == 0x50
+// forces the signed idiv for pointer subtraction and the lea/shl for scaling.
+struct Elem {
+    unsigned long m[20];   // 20 * 4 == 0x50 bytes
+};                         // sizeof == 0x50
 
-extern "C" __declspec(naked) void __fastcall
-CArray_push_back_0047a407(void* /*ecx this*/, void* /*edx*/, long /*index*/, void* /*value*/)
+struct CArrayElem {
+    Elem* _First;  // +0x00
+    Elem* _Last;   // +0x04
+
+    Elem* begin() const { return _First; }
+    Elem* end() const   { return _Last; }
+    unsigned int size() const { return (unsigned int)(_Last - _First); }
+
+    // Out-of-line members -> direct __fastcall calls, ecx = this.
+    void erase(Elem* _F, Elem* _L);
+    void _Insert_n(Elem* _Where, unsigned int _Count, const Elem& _Val);
+
+    void resize(unsigned int _Newsize, const Elem& _Val);
+};
+
+void CArrayElem::resize(unsigned int _Newsize, const Elem& _Val)
 {
-    __asm
-    {
-        push ebx
-        mov  ebx, dword ptr [ecx + 4]
-        push esi
-        push edi
-        mov  edi, dword ptr [ecx]
-        mov  eax, ebx
-        sub  eax, edi
-        push 50h
-        cdq
-        pop  esi
-        idiv esi
-        mov  esi, dword ptr [esp + 10h]
-        cmp  esi, eax
-        jae  append
-
-        lea  eax, [esi + esi*4]
-        shl  eax, 4
-        push ebx
-        add  eax, edi
-        push eax
-        call CArray_push_back_0047a407_InsertAt_A
-        jmp  done
-
-    append:
-        mov  ebx, dword ptr [ecx + 4]
-        push dword ptr [esp + 14h]
-        mov  eax, ebx
-        sub  eax, edi
-        push 50h
-        pop  edi
-        cdq
-        idiv edi
-        sub  esi, eax
-        push esi
-        push ebx
-        call CArray_push_back_0047a407_AppendFill_B
-
-    done:
-        pop  edi
-        pop  esi
-        pop  ebx
-        ret  8
-    }
+    if (_Newsize < size())
+        erase(begin() + _Newsize, end());
+    else
+        _Insert_n(end(), _Newsize - size(), _Val);
 }

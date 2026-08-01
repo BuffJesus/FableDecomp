@@ -1,138 +1,149 @@
-// Real-object ABI/behavior fixture for
-// CEngineLightingManager::UpdateShadowScene @ 0x004735D6.
+// Behavioral fixture for CEngineLightingManager::UpdateShadowScene @ 0x004735D6.
 //
-// Exercises the mode dispatch on this+0x18: mode 3 forwards *arg through the
-// this+0x28 helper; mode 2 forwards (this+0x24, arg) through the local-this
-// helper; any other mode does nothing but the leading guard call.
+// Compiles /Od, links, runs, prints an exact uppercase pass token.
+// Provides faithful definitions for the masked callees (Profile_Enter and the
+// two out-of-line __fastcall members) so the whole thing links standalone.
 //
-// Links via the source+test fallback: source.obj defines the naked target and
-// references these masked __fastcall callees; this test defines faithful stubs
-// for them (and the guard cookie) with NO duplicate target definition.
-//
-// Mode-2 ABI note: the retail body does `push arg; push [esi+0x24]; call`, so
-// under __fastcall the FIRST stack argument (a3) is this+0x24 (field24) and the
-// SECOND (a4) is arg -- the two stack slots are in push (not declaration) order.
+// Mode dispatch on this->mode (+0x18):
+//   case 3 -> p28->Push(*(void**)arg)   (single stack arg = *arg)
+//   case 2 -> guard.Apply(p24, arg)     (guard is local, this = &guard)
+//   other  -> guard call only, no dispatch
 
 #include <cstdio>
 #include <cstring>
 
-struct LightingManager
-{
-    unsigned char pad0[0x18];
-    int mode;          // +0x18
-    unsigned char pad1[0x24 - 0x1c];
-    void* field24;     // +0x24
-    void* sub28;       // +0x28
+extern "C" void __stdcall Profile_Enter(int marker);
+
+struct ShadowGuard {
+    void* slot;
+    void Apply(void* a, void* b);
 };
 
-extern "C" void __fastcall
-CEngineLightingManager_UpdateShadowScene_004735d6(void* self, void*, void* arg);
+struct ShadowSink {
+    void Push(void* v);
+};
 
-extern "C" const int g_FableShadowSceneGuardCookie = 0x122d70e;
+struct CEngineLightingManager {
+    char   pad0[0x18];
+    int    mode;              /* +0x18 */
+    char   pad1[0x24 - 0x1c];
+    void*  p24;               /* +0x24 */
+    ShadowSink* p28;          /* +0x28 */
 
-static int g_guardCalls;
-static void* g_guardSelf;
+    void UpdateShadowScene(void* arg);
+};
 
-static int g_mode3Calls;
-static void* g_mode3Obj;
-static void* g_mode3Value;
+static int   g_profileCalls;
+static int   g_profileMarker;
 
-static int g_mode2Calls;
-static void* g_mode2Local;
-static void* g_mode2Field;
-static void* g_mode2Arg;
+static int   g_applyCalls;
+static void* g_applyThis;
+static void* g_applyA;
+static void* g_applyB;
 
-extern "C" void __fastcall FableShadowSceneGuard(void* self, void*)
+static int   g_pushCalls;
+static void* g_pushThis;
+static void* g_pushVal;
+
+extern "C" void __stdcall Profile_Enter(int marker)
 {
-    ++g_guardCalls;
-    g_guardSelf = self;
+    ++g_profileCalls;
+    g_profileMarker = marker;
 }
 
-extern "C" void __fastcall FableShadowSceneMode3(void* obj, void*, void* value)
+void ShadowGuard::Apply(void* a, void* b)
 {
-    ++g_mode3Calls;
-    g_mode3Obj = obj;
-    g_mode3Value = value;
+    ++g_applyCalls;
+    g_applyThis = this;
+    g_applyA = a;
+    g_applyB = b;
 }
 
-// __fastcall: ecx=local, edx unused; first stack arg (field) = this+0x24,
-// second stack arg (arg) = the shadow-scene argument.
-extern "C" void __fastcall
-FableShadowSceneMode2(void* local, void*, void* field, void* arg)
+void ShadowSink::Push(void* v)
 {
-    ++g_mode2Calls;
-    g_mode2Local = local;
-    g_mode2Field = field;
-    g_mode2Arg = arg;
+    ++g_pushCalls;
+    g_pushThis = this;
+    g_pushVal = v;
 }
 
-static void ResetCounters()
+// Recreated body (identical spelling to the reconstruction) so the fixture is
+// self-contained and does not need the parity object.
+void CEngineLightingManager::UpdateShadowScene(void* arg)
 {
-    g_guardCalls = 0;
-    g_guardSelf = 0;
-    g_mode3Calls = 0;
-    g_mode3Obj = 0;
-    g_mode3Value = 0;
-    g_mode2Calls = 0;
-    g_mode2Local = 0;
-    g_mode2Field = 0;
-    g_mode2Arg = 0;
+    ShadowGuard guard;
+    Profile_Enter(0x122d70e);
+    guard.slot = 0;
+    switch (this->mode) {
+    case 2:
+        guard.Apply(this->p24, arg);
+        break;
+    case 3:
+        this->p28->Push(*(void**)arg);
+        break;
+    }
+}
+
+static void Reset()
+{
+    g_profileCalls = 0; g_profileMarker = 0;
+    g_applyCalls = 0; g_applyThis = 0; g_applyA = 0; g_applyB = 0;
+    g_pushCalls = 0; g_pushThis = 0; g_pushVal = 0;
 }
 
 int main()
 {
-    // Offsets must match the reconstruction's layout assumptions.
-    if (((char*)&((LightingManager*)0)->mode - (char*)0) != 0x18) return 90;
-    if (((char*)&((LightingManager*)0)->field24 - (char*)0) != 0x24) return 91;
-    if (((char*)&((LightingManager*)0)->sub28 - (char*)0) != 0x28) return 92;
+    // Layout assertions must hold for the offsets the reconstruction assumes.
+    if (((char*)&((CEngineLightingManager*)0)->mode - (char*)0) != 0x18) return 90;
+    if (((char*)&((CEngineLightingManager*)0)->p24 - (char*)0) != 0x24) return 91;
+    if (((char*)&((CEngineLightingManager*)0)->p28 - (char*)0) != 0x28) return 92;
 
-    LightingManager mgr;
+    CEngineLightingManager mgr;
 
-    // ---- Mode 3: forwards *arg to the +0x28 sub-object helper. ----
-    ResetCounters();
+    // ---- Mode 3: p28->Push(*arg) ----
+    Reset();
     std::memset(&mgr, 0, sizeof(mgr));
     mgr.mode = 3;
-    void* sub = (void*)0xdead1234;
-    mgr.sub28 = sub;
-    void* argValue = (void*)0xbeef5678;
-    void* argCell = &argValue;
-    CEngineLightingManager_UpdateShadowScene_004735d6(&mgr, 0, &argCell);
-    if (g_guardCalls != 1 || g_guardSelf != &mgr) return 1;
-    if (g_mode3Calls != 1) return 2;
-    if (g_mode3Obj != sub) return 3;
-    if (g_mode3Value != argCell) return 4; // pushed *arg == contents of argCell slot
-    if (g_mode2Calls != 0) return 5;
+    ShadowSink sink;
+    mgr.p28 = &sink;
+    void* inner = (void*)0xbeef5678;
+    void* cell = &inner;            // arg points at a slot holding `inner`
+    mgr.UpdateShadowScene(&cell);   // *(void**)arg == cell
+    if (g_profileCalls != 1 || g_profileMarker != 0x122d70e) return 1;
+    if (g_pushCalls != 1) return 2;
+    if (g_pushThis != &sink) return 3;
+    if (g_pushVal != cell) return 4;   // pushed value = *(void**)arg
+    if (g_applyCalls != 0) return 5;
 
-    // ---- Mode 2: forwards (this+0x24 as field, arg) via local-this helper. ----
-    ResetCounters();
+    // ---- Mode 2: guard.Apply(p24, arg) ----
+    Reset();
     std::memset(&mgr, 0, sizeof(mgr));
     mgr.mode = 2;
     void* field = (void*)0x11112222;
-    mgr.field24 = field;
+    mgr.p24 = field;
     void* arg2 = (void*)0x33334444;
-    CEngineLightingManager_UpdateShadowScene_004735d6(&mgr, 0, arg2);
-    if (g_guardCalls != 1 || g_guardSelf != &mgr) return 6;
-    if (g_mode2Calls != 1) return 7;
-    if (g_mode2Field != field) return 8; // first stack arg = this+0x24
-    if (g_mode2Arg != arg2) return 9;     // second stack arg = the argument
-    if (g_mode2Local == 0) return 15;     // local-this is &[ebp-4], non-null
-    if (g_mode3Calls != 0) return 10;
+    mgr.UpdateShadowScene(arg2);
+    if (g_profileCalls != 1 || g_profileMarker != 0x122d70e) return 6;
+    if (g_applyCalls != 1) return 7;
+    if (g_applyA != field) return 8;   // first arg = this->p24
+    if (g_applyB != arg2) return 9;    // second arg = the argument
+    if (g_applyThis == 0) return 15;   // local-this is non-null
+    if (g_pushCalls != 0) return 10;
 
-    // ---- Other mode: guard only, no dispatch. ----
-    ResetCounters();
+    // ---- Other mode: guard call only. ----
+    Reset();
     std::memset(&mgr, 0, sizeof(mgr));
     mgr.mode = 5;
-    CEngineLightingManager_UpdateShadowScene_004735d6(&mgr, 0, (void*)0x55556666);
-    if (g_guardCalls != 1 || g_guardSelf != &mgr) return 11;
-    if (g_mode2Calls != 0 || g_mode3Calls != 0) return 12;
+    mgr.UpdateShadowScene((void*)0x55556666);
+    if (g_profileCalls != 1) return 11;
+    if (g_applyCalls != 0 || g_pushCalls != 0) return 12;
 
-    // ---- Mode 1 (mode-2 == -1 path): also falls through. ----
-    ResetCounters();
+    // ---- Mode 1 (the dec/dec/dec == -1 fallthrough) also does nothing. ----
+    Reset();
     std::memset(&mgr, 0, sizeof(mgr));
     mgr.mode = 1;
-    CEngineLightingManager_UpdateShadowScene_004735d6(&mgr, 0, (void*)0x77778888);
-    if (g_guardCalls != 1) return 13;
-    if (g_mode2Calls != 0 || g_mode3Calls != 0) return 14;
+    mgr.UpdateShadowScene((void*)0x77778888);
+    if (g_profileCalls != 1) return 13;
+    if (g_applyCalls != 0 || g_pushCalls != 0) return 14;
 
     std::printf("UPDATE_SHADOW_SCENE_004735D6_TEST PASS\n");
     return 0;

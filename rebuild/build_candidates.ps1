@@ -38960,6 +38960,118 @@ $catalog = @(
         TestSource = '00/47/global_Uninitcopyuintc_0047c290_test.cpp'
         PassPattern = 'UNINIT_COPY_UINT_C_0047C290_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00403510'
+        Module = '_Dest_val<std::allocator<CEditLevelMerger::CConflict>,CEditLevelMerger'
+        Source = '00/40/DestvalstdallocatorCEditLevelMergerCConflictCEditLevelMerger_CConflict_00403510.cpp'
+        TestSource = '00/40/DestvalstdallocatorCEditLevelMergerCConflictCEditLevelMerger_CConflict_00403510_test.cpp'
+        PassPattern = 'FABLETLC_DESTVAL_CCONFLICT_00403510 PASS'
+    }
+    [pscustomobject]@{
+        Address = '00403a10'
+        Module = 'CCharString'
+        Source = '00/40/CCharString_operatorcharconst_00403a10.cpp'
+        TestSource = '00/40/CCharString_operatorcharconst_00403a10_test.cpp'
+        PassPattern = 'CCHARSTRING_OPERATOR_CHARPTR_00403A10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00413590'
+        Module = 'CCountedPointer<CIPhysicsFacesSegmentBase_const_>'
+        Source = '00/41/CCountedPointerCIPhysicsFacesSegmentBaseconst_Reset_00413590.cpp'
+        TestSource = '00/41/CCountedPointerCIPhysicsFacesSegmentBaseconst_Reset_00413590_test.cpp'
+        PassPattern = 'FABLETLC_PHYSICS_FACES_COUNTED_RESET_413590 PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041b9c0'
+        Module = 'CTCCameraPointScriptedSpline'
+        Source = '00/41/CTCCameraPointScriptedSpline_EditCyclePreviousKeyCamera_0041b9c0.cpp'
+        TestSource = '00/41/CTCCameraPointScriptedSpline_EditCyclePreviousKeyCamera_0041b9c0_test.cpp'
+        PassPattern = 'FABLETLC_CAMERA_SPLINE_CYCLE_PREV_B9C0 PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042a8e0'
+        Module = 'CAssoc'
+        Source = '00/42/CAssoc_scalardeletingdestructor_0042a8e0.cpp'
+        TestSource = '00/42/CAssoc_scalardeletingdestructor_0042a8e0_test.cpp'
+        PassPattern = 'ULTRA2_0042a8e0_CASSOC_SDD PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042dbfa'
+        Module = 'CNewFrontendGameComponent'
+        Source = '00/42/CNewFrontendGameComponent_UpdateInterpolation_0042dbfa.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_UpdateInterpolation_0042dbfa_test.cpp'
+        PassPattern = 'OK_0x0042dbfa'
+    }
+    [pscustomobject]@{
+        Address = '004354c0'
+        Module = 'CDisplayEngine'
+        Source = '00/43/CDisplayEngine_CDisplayEngine_004354c0.cpp'
+        TestSource = '00/43/CDisplayEngine_CDisplayEngine_004354c0_test.cpp'
+        PassPattern = 'FAITHFUL_004354c0 PASS'
+    }
+    [pscustomobject]@{
+        Address = '00437500'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_UpdateTimer_00437500.cpp'
+        TestSource = '00/43/CPlayerGui_UpdateTimer_00437500_test.cpp'
+        PassPattern = 'PASS CPlayerGui::UpdateTimer 0x00437500'
+    }
+    [pscustomobject]@{
+        Address = '004404b0'
+        Module = '_Dest_val<std'
+        Source = '00/44/Destvalstd_allocatorCMacroCMacro_004404b0.cpp'
+        TestSource = '00/44/Destvalstd_allocatorCMacroCMacro_004404b0_test.cpp'
+        PassPattern = 'DEST_VAL_CMACRO_004404B0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00444050'
+        Module = 'CCountedPointer<CIPhysicsFacesSegmentBase_const_>'
+        Source = '00/44/CCountedPointerCIPhysicsFacesSegmentBaseconst_CCountedPointerCIPhysicsFacesSegmentBaseconst_00444050.cpp'
+        TestSource = '00/44/CCountedPointerCIPhysicsFacesSegmentBaseconst_CCountedPointerCIPhysicsFacesSegmentBaseconst_00444050_test.cpp'
+        PassPattern = 'FABLETLC_PHYSICS_FACES_COUNTED_RESET_00444050 PASS'
+    }
+    [pscustomobject]@{
+        Address = '00444130'
+        Module = 'CCountedPointer<CIPhysicsFacesSegmentBase_const_>'
+        Source = '00/44/CCountedPointerCIPhysicsFacesSegmentBaseconst_CCountedPointerCIPhysicsFacesSegmentBaseconst_00444130.cpp'
+        TestSource = '00/44/CCountedPointerCIPhysicsFacesSegmentBaseconst_CCountedPointerCIPhysicsFacesSegmentBaseconst_00444130_test.cpp'
+        PassPattern = 'FABLETLC_PHYSICS_FACES_COUNTED_RESET_444130 PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047a6e7'
+        Module = '_global'
+        Source = '00/47/global_Fillnunsignedlongunsignedintunsignedlong_0047a6e7.cpp'
+        TestSource = '00/47/global_Fillnunsignedlongunsignedintunsignedlong_0047a6e7_test.cpp'
+        PassPattern = 'FILL_N_STRIDE80_THISCALL_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047baf0'
+        Module = 'vector<std::pair<CCharString'
+        Source = '00/47/vectorstdpairCCharString_Destroy_0047baf0.cpp'
+        TestSource = '00/47/vectorstdpairCCharString_Destroy_0047baf0_test.cpp'
+        PassPattern = 'DESTROY_PAIR_CCHARSTRING_0047BAF0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047bca0'
+        Module = '_global'
+        Source = '00/47/global_allocatorCSpeechFrame_0047bca0.cpp'
+        TestSource = '00/47/global_allocatorCSpeechFrame_0047bca0_test.cpp'
+        PassPattern = 'DESTROY_RANGE_CSPEECHFRAME_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00485420'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_00485420.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_00485420_test.cpp'
+        PassPattern = 'VECTOR_DELETING_DTOR_00485420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00485524'
+        Module = 'CLandscapeBackgroundSubNodeSplitBranch'
+        Source = '00/48/CLandscapeBackgroundSubNodeSplitBranch_scalardeletingdestructor_00485524.cpp'
+        TestSource = '00/48/CLandscapeBackgroundSubNodeSplitBranch_scalardeletingdestructor_00485524_test.cpp'
+        PassPattern = 'SPLITBRANCH_SCALAR_DELETING_DTOR_00485524_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

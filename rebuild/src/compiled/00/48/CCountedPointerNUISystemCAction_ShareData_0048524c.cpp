@@ -1,69 +1,61 @@
-// CCountedPointer<NUISystem::CAction>::ShareData @ 0x0048524C.
+#pragma optimize("s",on)
+// CCountedPointer<NUISystem::CAction>::ShareData @ 0x0048524C  (38 bytes)
 //
-// The retail helper compares pointer-information identity, releases the old
-// ownership before rebinding, and acquires one reference only after both new
-// holder fields have been installed.  The retail oracle bundles an adjacent
-// __fastcall forwarding thunk after ShareData's return: it forwards the stack
-// argument to a masked callee and pops the same eight bytes.
+// Genuine C++ decompilation of the leading function only. The retail oracle
+// slice over-captures: after ShareData's `ret 8` (offset 0x23..0x26) there is a
+// separate, unrelated __fastcall forwarding thunk (push [esp+4]; call; ret 8)
+// starting at 0x26. Only ShareData is reconstructed here; real_len = 0x26 = 38.
+//
+// A counted-pointer holder stores the referenced object plus a pointer to the
+// shared reference-count control block ("pointer info"). ShareData rebinds the
+// holder to a new object/control pair:
+//   * If the control block is already the one we hold, nothing changes.
+//   * Otherwise release the current ownership, install BOTH new holder fields,
+//     and only then acquire a reference on the new control block (if non-null).
+//
+// Retail idiom (this in ecx = esi, edi = new_pointer_info):
+//   if (this->pointer_info == new_pointer_info) return;
+//   this->ReleaseData();                 // __fastcall, no stack args
+//   this->action       = new_action;     // stores happen BEFORE the null test
+//   this->pointer_info = new_pointer_info;// is consumed (test edi,edi is hoisted
+//   if (new_pointer_info)                 //  above the two stores by the sched.)
+//       ++new_pointer_info->reference_count;
 
+// Shared reference-count control block for a counted CAction pointer.
 struct FrontEndActionPointerInfo_0048524c
 {
-    long reference_count;
-    void* destroy_callback;
-    void* action;
+    long  reference_count;   // +0x0  ++'d on acquire
+    void* destroy_callback;  // +0x4
+    void* action;            // +0x8
 };
 
 class CCountedPointerNUISystemCAction_0048524c
 {
 public:
-    void* action;
-    FrontEndActionPointerInfo_0048524c* pointer_info;
+    void*                              action;        // +0x0
+    FrontEndActionPointerInfo_0048524c* pointer_info;  // +0x4
+
+    // Masked callee: releases the currently-held ownership. __fastcall, no
+    // stack arguments (call rel32 with no post-call esp cleanup).
+    void ReleaseData();
 
     void ShareData(
-        void* new_action,
+        void*                               new_action,
         FrontEndActionPointerInfo_0048524c* new_pointer_info);
 };
 
-extern "C" void __fastcall
-FrontEndCountedActionRelease_0048524c(
-    CCountedPointerNUISystemCAction_0048524c* holder,
-    void*);
-
-// Adjacent forwarding thunk bundled after ShareData in the retail oracle.
-extern "C" void __stdcall
-FrontEndActionThunkForward_0048524c(void* arg);
-
-__declspec(naked)
 void CCountedPointerNUISystemCAction_0048524c::ShareData(
-    void*,
-    FrontEndActionPointerInfo_0048524c*)
+    void*                               new_action,
+    FrontEndActionPointerInfo_0048524c* new_pointer_info)
 {
-    __asm
-    {
-        push esi
-        push edi
-        mov edi, dword ptr [esp + 10h]
-        mov esi, ecx
-        cmp dword ptr [esi + 4], edi
-        je done
-        call FrontEndCountedActionRelease_0048524c
-        test edi, edi
-        mov eax, dword ptr [esp + 0ch]
-        mov dword ptr [esi], eax
-        mov dword ptr [esi + 4], edi
-        je done
-        inc dword ptr [edi]
+    if (this->pointer_info == new_pointer_info)
+        return;
 
-    done:
-        pop edi
-        pop esi
-        ret 8
+    this->ReleaseData();
 
-        // The retail symbol/oracle includes this adjacent forwarding thunk
-        // after ShareData's return: forward the stacked argument to a masked
-        // callee and pop the same eight bytes of arguments.
-        push dword ptr [esp + 4]
-        call FrontEndActionThunkForward_0048524c
-        ret 8
-    }
+    this->action       = new_action;
+    this->pointer_info = new_pointer_info;
+
+    if (new_pointer_info)
+        ++new_pointer_info->reference_count;
 }

@@ -1,69 +1,74 @@
-// CArray<std::pair<unsigned_long, ...> >::push_back @ 0x00477dea.
+#pragma optimize("s",on)
+// Genuine C++ decompilation of retail 0x00477dea
+// CArray<std::pair<unsigned_long, ...> >::push_back  (manifest label); the body
+// is the classic MSVC vector resize(_Newsize, const T&) dispatch, identical in
+// shape to the byte-matched sibling 0x00475e92 -- only the element STRIDE differs
+// (0x88 = 136 bytes here vs 8 there), which forces a real signed idiv instead of
+// a sar for size().
 //
-// __fastcall, 2 stack args (ret 8).  `this` (ecx) holds a {first,last} range of
-// 0x88-byte-stride element slots:
-//   [ecx+0x00] = first  (begin pointer)
-//   [ecx+0x04] = last   (end pointer)
-// arg0 (index) arrives at [esp+0x10] after the 3 register saves; arg1 (value
-// ptr) at [esp+0x14].
+// Retail disasm mapped to source:
+//   mov eax,[ecx+4]        ; _Last   (this+0x04)
+//   push ebx
+//   mov ebx,[ecx]          ; _First  (this+0x00)  -> held in ebx across branch
+//   push esi; push edi
+//   sub eax,ebx            ; _Last - _First  (byte span)
+//   mov edi,0x88           ; stride constant
+//   cdq                    ; sign-extend for idiv
+//   mov esi,edi            ; scratch divisor = stride
+//   idiv esi               ; eax = size() = (_Last-_First)/0x88
+//   mov esi,[esp+0x10]     ; _Newsize (stack arg 1)
+//   cmp esi,eax; jae INSERT_N ; _Newsize < size() -> ERASE, else INSERT_N
+// ERASE (index < size):
+//   push [ecx+4]           ; end()
+//   imul esi,esi,0x88      ; _Newsize*0x88
+//   add esi,ebx            ; begin() + _Newsize
+//   push esi
+//   call erase(begin()+_Newsize, end())     ; this in ecx (kept)
+//   jmp END
+// INSERT_N (index >= size):
+//   mov eax,[ecx+4]; sub eax,ebx; cdq; idiv edi ; size() recomputed (edi still 0x88)
+//   push [esp+0x14]        ; &_Val (const T& reference, one dword)
+//   sub esi,eax            ; _Newsize - size()
+//   push esi
+//   push [ecx+4]           ; end()
+//   call _Insert_n(end(), _Newsize-size(), _Val)  ; this in ecx (kept)
+// END:
+//   pop edi; pop esi; pop ebx; ret 8
 //
-// count = (last - first) / 0x88 (signed idiv).  Branch on arg0 vs count:
-//   * index <  count : call InsertAt(first + index*0x88, last)   [callee A]
-//   * index >= count : call AppendFill(last, index - count, arg1)[callee B]
-//
-// This variant differs from the 0x54/0x5c push_back siblings in register
-// allocation: the stride 0x88 is materialized with `mov edi, 0x88` (imm32)
-// rather than push/pop; ebx holds `first`; esi is a scratch copy of the stride
-// for the first idiv; and the append branch reuses edi (still 0x88) as the
-// divisor without reloading `first`.  Both callees are relocation-masked;
-// declared extern so the call operands mask out.  Modeled as a naked __fastcall
-// so ecx=this and edx is unused, reproducing the exact prologue/epilogue and
-// register usage of the retail bytes.
+// The stride 0x88 is materialized as `mov edi,0x88` then copied to esi for the
+// first divisor because cl keeps the constant live in edi to reuse as the second
+// idiv divisor on the insert path (no reload of `first`).  `_First` stays in the
+// callee-saved ebx because it is read in BOTH branches; `_Newsize` stays in esi
+// (also callee-saved) for the same reason.  erase / _Insert_n are out-of-line
+// members of the same container (this in ecx) so cl emits direct,
+// relocation-masked calls with ecx preserved as `this`; declared but not defined
+// here.  _Val is passed by const reference (single dword pushed; ret 8).
 
-extern "C" void __fastcall CArray_push_back_00477dea_InsertAt_A(void* slot, void* last);
-extern "C" void __fastcall CArray_push_back_00477dea_AppendFill_B(void* last, long fillcount, void* value);
+struct Pair {
+    // std::pair<unsigned long, ...>; whole element is 0x88 bytes wide.
+    unsigned long first;   // +0x00
+    unsigned char rest[0x84]; // +0x04 .. +0x87  (payload, opaque here)
+};                          // sizeof == 0x88
 
-extern "C" __declspec(naked) void __fastcall
-CArray_push_back_00477dea(void* /*ecx this*/, void* /*edx*/, long /*index*/, void* /*value*/)
+struct CArrayPair {
+    Pair* _First;  // +0x00
+    Pair* _Last;   // +0x04
+
+    Pair* begin() const { return _First; }
+    Pair* end() const   { return _Last; }
+    unsigned int size() const { return (unsigned int)(_Last - _First); }
+
+    // Out-of-line members -> direct __fastcall calls, ecx = this (masked).
+    void erase(Pair* _F, Pair* _L);
+    void _Insert_n(Pair* _Where, unsigned int _Count, const Pair& _Val);
+
+    void push_back(unsigned int _Newsize, const Pair& _Val);
+};
+
+void CArrayPair::push_back(unsigned int _Newsize, const Pair& _Val)
 {
-    __asm
-    {
-        mov  eax, dword ptr [ecx + 4]
-        push ebx
-        mov  ebx, dword ptr [ecx]
-        push esi
-        sub  eax, ebx
-        push edi
-        mov  edi, 88h
-        cdq
-        mov  esi, edi
-        idiv esi
-        mov  esi, dword ptr [esp + 10h]
-        cmp  esi, eax
-        jae  append
-
-        push dword ptr [ecx + 4]
-        imul esi, esi, 88h
-        add  esi, ebx
-        push esi
-        call CArray_push_back_00477dea_InsertAt_A
-        jmp  done
-
-    append:
-        mov  eax, dword ptr [ecx + 4]
-        sub  eax, ebx
-        cdq
-        idiv edi
-        push dword ptr [esp + 14h]
-        sub  esi, eax
-        push esi
-        push dword ptr [ecx + 4]
-        call CArray_push_back_00477dea_AppendFill_B
-
-    done:
-        pop  edi
-        pop  esi
-        pop  ebx
-        ret  8
-    }
+    if (_Newsize < size())
+        erase(begin() + _Newsize, end());
+    else
+        _Insert_n(end(), _Newsize - size(), _Val);
 }

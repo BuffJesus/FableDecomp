@@ -1,72 +1,45 @@
-#include "rebuild_abi.h"
+#include <new>
 
 // CCountedPointer<CProgressDisplay>::CCountedPointer(CProgressDisplay*) @ 0x00403D20.
 //
-// __fastcall constructor: this in ecx, the single object argument on the
-// stack. The retail body stores the object in this->object, and when the
-// object is non-null allocates a 12-byte reference-control block, seeds it
-// with refcount 1, a masked object-destroy function pointer, and the object,
-// then installs it as this->control. On a null object or a failed allocation
-// this->control is cleared. The constructor returns this in eax and pops the
-// single stack argument (ret 4).
+// Genuine C++ reconstruction of the intrusive-refcount smart-pointer ctor
+// (real statements only, no inline assembly). The single object argument is
+// stored into this->obj;
+// when non-null a 12-byte control block is allocated with ::operator new. On
+// success it is seeded with owners=1, a masked destroy-thunk address
+// (0x00403600), and the object pointer, then installed as this->blk. A null
+// object OR a failed allocation leaves this->blk cleared. The ctor returns
+// this (eax) and pops its single stack argument (ret 4).
+//
+// The two zero-stores differ in the retail bytes and must not be tail-merged:
+// the alloc branch shares "self->blk = r" (xor eax,eax + mov [esi+4],eax when
+// r==0), while the null branch is a distinct literal store (mov [esi+4],0).
+// Expressing them as the nested if/else + separate else preserves that split;
+// no size-optimize pragma (retail uses the 7-byte immediate store, not and,0).
 
-struct FableProgressDisplayControl_00403D20
+struct RefBlock { int count; int vtbl; void* ptr; };
+struct CCountedPtr { void* obj; RefBlock* blk; };
+
+extern "C" CCountedPtr* __fastcall
+CCountedPtr_ctor(CCountedPtr* self, int edxdummy, void* arg)
 {
-    fable_i32 owners;
-    void (FABLE_FASTCALL *destroyObject)(void*, void*);
-    const void* object;
-};
-
-struct FableProgressDisplayCountedPointer_00403D20
-{
-    const void* object;
-    FableProgressDisplayControl_00403D20* control;
-};
-
-extern "C" void* FABLE_CDECL
-FableProgressDisplayControlAllocate_00403D20(fable_u32 size);
-extern "C" void FABLE_FASTCALL
-FableProgressDisplayObjectDelete_00403600(void* object, void*);
-
-extern "C" __declspec(naked) FableProgressDisplayCountedPointer_00403D20* FABLE_FASTCALL
-FableProgressDisplayCountedPointerCtor_00403D20(
-    FableProgressDisplayCountedPointer_00403D20*,
-    void*,
-    const void*)
-{
-    __asm
-    {
-        mov eax, dword ptr [esp + 4]
-        test eax, eax
-        push esi
-        mov esi, ecx
-        mov dword ptr [esi], eax
-        je null_object
-        push 0Ch
-        call FableProgressDisplayControlAllocate_00403D20
-        add esp, 4
-        test eax, eax
-        je allocation_failed
-        mov ecx, dword ptr [esi]
-        mov dword ptr [eax], 1
-        mov dword ptr [eax + 4], offset FableProgressDisplayObjectDelete_00403600
-        mov dword ptr [eax + 8], ecx
-        mov dword ptr [esi + 4], eax
-        mov eax, esi
-        pop esi
-        ret 4
-
-    allocation_failed:
-        xor eax, eax
-        mov dword ptr [esi + 4], eax
-        mov eax, esi
-        pop esi
-        ret 4
-
-    null_object:
-        mov dword ptr [esi + 4], 0
-        mov eax, esi
-        pop esi
-        ret 4
+    void* a = arg;
+    self->obj = a;
+    if (a) {
+        RefBlock* b = (RefBlock*)::operator new(0xc);
+        RefBlock* r;
+        if (b) {
+            void* o = self->obj;
+            b->count = 1;
+            b->vtbl = 0x403600;
+            b->ptr = o;
+            r = b;
+        } else {
+            r = 0;
+        }
+        self->blk = r;
+    } else {
+        self->blk = 0;
     }
+    return self;
 }

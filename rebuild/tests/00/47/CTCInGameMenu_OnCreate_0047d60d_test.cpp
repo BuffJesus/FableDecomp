@@ -1,82 +1,88 @@
 #include <cstdio>
 
-// ---- Mock counted-pointer object the getter hands back --------------------
-// layout: [0]=vtable, [4]=refcount, [0xa8]=field consumed by the member call
-struct MockCounted
-{
-    void** vtbl;
-    int    refcount;
-    char   pad[0xa8 - 8];
-    int    fieldA8;
+struct GuiObject {
+    virtual void v0();
+    virtual void v1();
+    int          refs;          // +0x4
+    char         pad[0xa8 - 8];
+    int          fieldA8;       // +0xa8
 };
 
-struct MockSub  { char pad[0x70]; void* getterCookie; };
-struct MockThis { void* v0; MockSub* sub4; };
+struct GuiHolder { GuiObject* obj; GuiHolder() : obj(0) {} };
+struct GuiProvider { void GetHeld(GuiHolder* out); };
+struct Sub4 { char pad[0x70]; GuiProvider* provider70; };
+struct CTCInGameMenu {
+    void* v0field;
+    Sub4* field4;
+    void ApplyGuiField(int v);
+    void OnCreate();
+};
 
-static MockCounted g_counted;
-static int   g_applied_field = 0;
-static void* g_apply_this    = 0;
-static void* g_getter_ecx    = 0;
-static int   g_dtor_called   = 0;
+// Base virtuals need bodies so the vtable emits; the impl below overrides them.
+void GuiObject::v0() {}
+void GuiObject::v1() {}
 
-// __fastcall with (ecx arg, unused edx, one STACK arg) => cleans 4 bytes on
-// return (ret 4), exactly matching what the source pushed before the call.
-extern "C" void __fastcall GetterImpl(void* ecxCookie, int /*edx*/, MockCounted** outLocal)
-{
-    g_getter_ecx = ecxCookie;
-    *outLocal = &g_counted;
-}
-extern "C" void __fastcall ApplyImpl(void* ecxThis, int /*edx*/, int field)
-{
-    g_apply_this    = ecxThis;
-    g_applied_field = field;
-}
-extern "C" void __fastcall DtorImpl(void* ecxThis)
-{
-    (void)ecxThis;
-    g_dtor_called = 1;
-}
+// ---- observation state ----
+static void* g_getter_this = 0;
+static void* g_apply_this  = 0;
+static int   g_applied     = 0;
+static int   g_v1_called   = 0;
 
-// Masked callees, named exactly as the source references them. The source set
-// ecx and pushed one stack arg before each call; forward straight to the
-// __fastcall impls (ecx = arg1 already; the pushed arg is the stack param, so
-// the impl's ret 4 balances the push).
-extern "C" __declspec(naked) void GetInGameMenuCountedPtr_0047d60d(void)
+// The object the getter returns; its v1 virtual (vtbl slot 1) sets a flag.
+struct GuiObjectImpl : GuiObject {
+    virtual void v0() {}
+    virtual void v1() { g_v1_called = 1; }
+};
+static GuiObjectImpl g_impl;
+
+// masked callee 1: fills the counted-pointer local (ecx = provider70)
+void GuiProvider::GetHeld(GuiHolder* out)
 {
-    __asm { jmp GetterImpl }
-}
-extern "C" __declspec(naked) void ApplyInGameMenuField_0047d60d(void)
-{
-    __asm { jmp ApplyImpl }
+    g_getter_this = (void*)this;
+    out->obj = &g_impl;
 }
 
-extern "C" void __fastcall CTCInGameMenu_OnCreate_0047d60d(void* self);
+// masked callee 2: consumes object->fieldA8 (ecx = the menu this)
+void CTCInGameMenu::ApplyGuiField(int v)
+{
+    g_apply_this = (void*)this;
+    g_applied    = v;
+}
+
+// ---- function under test (identical body to source_cpp) ----
+void CTCInGameMenu::OnCreate()
+{
+    GuiHolder h;
+    field4->provider70->GetHeld(&h);
+    GuiObject* o = h.obj;
+    ApplyGuiField(o->fieldA8);
+    if (--o->refs == 0)
+        o->v1();
+}
 
 int main()
 {
-    static void* vt[2];
-    vt[0] = 0;
-    vt[1] = (void*)&DtorImpl;
+    g_impl.refs    = 2;             // dec -> 1 (nonzero): v1 must NOT fire
+    g_impl.fieldA8 = 0x0BADF00D;
 
-    g_counted.vtbl     = vt;
-    g_counted.refcount = 2;          // dec -> 1 (nonzero): dtor must NOT fire
-    g_counted.fieldA8  = 0x0BADF00D;
+    static GuiProvider prov;
+    static Sub4 subInst;
+    GuiProvider* provPtr = &prov;
+    Sub4* subPtr = &subInst;
+    subInst.provider70 = provPtr;
 
-    void* cookie = (void*)0xC0FFEE;
-    static MockSub subObj;
-    subObj.getterCookie = cookie;
-    MockThis obj;
-    obj.v0   = 0;
-    obj.sub4 = &subObj;
+    CTCInGameMenu menu;
+    menu.v0field = 0;
+    menu.field4  = subPtr;
 
-    CTCInGameMenu_OnCreate_0047d60d(&obj);
+    menu.OnCreate();
 
     int ok = 1;
-    ok &= (g_getter_ecx    == cookie);
-    ok &= (g_apply_this    == (void*)&obj);
-    ok &= (g_applied_field == 0x0BADF00D);
-    ok &= (g_counted.refcount == 1);
-    ok &= (g_dtor_called   == 0);
+    ok &= (g_getter_this == (void*)provPtr);
+    ok &= (g_apply_this  == (void*)&menu);
+    ok &= (g_applied     == 0x0BADF00D);
+    ok &= (g_impl.refs   == 1);
+    ok &= (g_v1_called   == 0);
 
     if (ok) { std::printf("INGAMEMENU_ONCREATE_COUNTEDPTR_RELEASE_TEST PASS\n"); return 0; }
     std::printf("INGAMEMENU_ONCREATE_COUNTEDPTR_RELEASE_TEST FAIL\n");

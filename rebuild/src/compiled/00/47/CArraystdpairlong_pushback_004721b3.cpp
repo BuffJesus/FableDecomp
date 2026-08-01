@@ -1,58 +1,66 @@
-// CArray<std::pair<long,...> >::push_back @ 0x004721b3.
+#pragma optimize("s",on)
+// Byte-exact GENUINE-C++ reconstruction of retail 0x004721b3
+// CArray<T>::resize (manifest labels it "push_back"; the body is the classic
+// resize(_Newsize, const T&) dispatch).  Element stride is 4 bytes here, so
+// T is a single 4-byte word (one `long`) -> pointer arithmetic scales by 4 and
+// the size() shift the compiler emits is `sar edi,2`.
 //
-// __fastcall, 2 stack args (ret 8).  `this` (ecx) holds a {first,last} range of
-// 4-byte-stride element slots:
-//   [ecx+0x00] = first  (begin pointer)
-//   [ecx+0x04] = last   (end pointer)
-// arg0 (index) arrives in [esp+4]; arg1 (value ptr) in the second stack slot.
+// This is the exact same source shape as the already-landed byte-matching
+// sibling 0x00475e92 (which is stride 8, `sar edi,3`); the only change is the
+// element size, which the compiler turns into the /4 stride automatically.
 //
-// The retail body computes count = (last-first)>>2 and branches on
-// arg0 (unsigned) vs count:
-//   * arg0 <  count : call InsertAt(first + arg0*4, last)        [callee A]
-//   * arg0 >= count : call AppendFill(last, arg0 - count, arg1)  [callee B]
-// Both callees are relocation-masked; declared extern so the call operands mask
-// out.  Modeled as a naked __fastcall so ecx=this, edx unused, matching the
-// exact prologue/epilogue and register usage of the retail bytes.
+// Retail disasm:
+//   mov edx,[ecx]          ; _First   (this+0x00)
+//   mov eax,[esp+4]        ; _Newsize (stack arg 1, unsigned)
+//   push esi; push edi
+//   mov esi,[ecx+4]        ; _Last    (this+0x04)
+//   mov edi,esi; sub edi,edx; sar edi,2   ; size() = (_Last-_First)/4
+//   cmp eax,edi; jae INSERT               ; _Newsize < size() -> ERASE, else INSERT
+// ERASE:
+//   push esi               ; end()
+//   lea eax,[edx+eax*4]    ; begin()+_Newsize
+//   push eax
+//   call erase(begin()+_Newsize, end())   ; this in ecx (kept)
+//   jmp END
+// INSERT:
+//   mov esi,[ecx+4]        ; _Last reloaded (end())
+//   push [esp+0x10]        ; &_Val (const T& reference, one dword)
+//   mov edi,esi; sub edi,edx; sar edi,2   ; size() recomputed
+//   sub eax,edi            ; _Newsize - size()
+//   push eax
+//   push esi               ; end()
+//   call _Insert_n(end(), _Newsize-size(), _Val)   ; this in ecx (kept)
+// END:
+//   pop edi; pop esi; ret 8
+//
+// _Val is passed by const reference (single dword pushed; ret 8).  erase /
+// _Insert_n are members of the same container (this in ecx), declared but not
+// defined here so cl emits the direct relocation-masked calls with ecx
+// preserved as `this`.
 
-extern "C" void __fastcall CArray_push_back_004721b3_InsertAt_A(void* slot, void* last);
-extern "C" void __fastcall CArray_push_back_004721b3_AppendFill_B(void* last, long fillcount, void* value);
+struct Elem {
+    long value;   // +0
+};                // sizeof == 4
 
-extern "C" __declspec(naked) void __fastcall
-CArray_push_back_004721b3(void* /*ecx this*/, void* /*edx*/, long /*index*/, void* /*value*/)
+struct CArrayElem {
+    Elem* _First;  // +0x00
+    Elem* _Last;   // +0x04
+
+    Elem* begin() const { return _First; }
+    Elem* end() const   { return _Last; }
+    unsigned int size() const { return (unsigned int)(_Last - _First); }
+
+    // Out-of-line members -> direct __fastcall calls, ecx = this.
+    void erase(Elem* _F, Elem* _L);
+    void _Insert_n(Elem* _Where, unsigned int _Count, const Elem& _Val);
+
+    void resize(unsigned int _Newsize, const Elem& _Val);
+};
+
+void CArrayElem::resize(unsigned int _Newsize, const Elem& _Val)
 {
-    __asm
-    {
-        mov edx, dword ptr [ecx]
-        mov eax, dword ptr [esp + 4]
-        push esi
-        mov esi, dword ptr [ecx + 4]
-        push edi
-        mov edi, esi
-        sub edi, edx
-        sar edi, 2
-        cmp eax, edi
-        jae append
-
-        push esi
-        lea eax, [edx + eax*4]
-        push eax
-        call CArray_push_back_004721b3_InsertAt_A
-        jmp done
-
-    append:
-        mov esi, dword ptr [ecx + 4]
-        push dword ptr [esp + 10h]
-        mov edi, esi
-        sub edi, edx
-        sar edi, 2
-        sub eax, edi
-        push eax
-        push esi
-        call CArray_push_back_004721b3_AppendFill_B
-
-    done:
-        pop edi
-        pop esi
-        ret 8
-    }
+    if (_Newsize < size())
+        erase(begin() + _Newsize, end());
+    else
+        _Insert_n(end(), _Newsize - size(), _Val);
 }

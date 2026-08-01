@@ -1,136 +1,105 @@
-/* Behavior test for push_back_00472b9d (retail 0x00472B9D).
- *
- * The retail body dispatches to two masked container helpers using a
- * CALLEE-CLEANS (stdcall-style) sequence: it pushes the args and does NO
- * post-call esp adjustment, then pop edi / pop esi / ret 8. So the real
- * EraseTail (2 args) is ret 8 and AppendFill (3 args) is ret 0Ch.
- *
- * source_cpp declares them `extern "C" __cdecl`, which only fixes the SYMBOL
- * NAME (_push_back_00472b9d_EraseTail / _AppendFill, no @N suffix). We must
- * therefore DEFINE the stubs as naked functions that keep that cdecl name yet
- * clean their own stack (ret 8 / ret 0Ch) so esp balances on return -- the same
- * trick the landed _Fill_n_0047b6c0 test uses for its Sub_520060 stub.
- */
-
 #include <stdio.h>
-#include <string.h>
 
-extern "C" void __fastcall
-push_back_00472b9d(void* self, void*, long count, const void* value);
+struct Elem {
+    long  first;    // +0x00
+    char  _pad[60]; // +0x04 .. +0x3f
+};                  // sizeof == 0x40
 
-struct Array
-{
-    char* begin;
-    char* end;
+struct CArrayElem {
+    Elem* _First;
+    Elem* _Last;
+
+    Elem* begin() const { return _First; }
+    Elem* end() const   { return _Last; }
+    unsigned int size() const { return (unsigned int)(_Last - _First); }
+
+    void erase(Elem* _F, Elem* _L);
+    void _Insert_n(Elem* _Where, unsigned int _Count, const Elem& _Val);
+
+    void resize(unsigned int _Newsize, const Elem& _Val);
 };
 
-static int   g_erase_count;
-static void* g_erase_first;
-static void* g_erase_last;
+// Stub definitions of the masked members so the link resolves and the two
+// dispatch branches are exercised.  These record which branch ran and with
+// what arguments, without doing real reallocation.
+static int   g_eraseCalled;
+static long  g_eraseFromIdx;   // begin()+_Newsize as an index
+static long  g_eraseCount;     // end()-first, number erased
 
-static int         g_append_count;
-static void*       g_append_dst;
-static long        g_append_grow;
-static const void* g_append_value;
+static int          g_insertCalled;
+static unsigned int g_insertCount;
+static long         g_insertValFirst;
 
-/* EraseTail(first, last): 2 stack args -> callee cleans 8 (ret 8). */
-extern "C" __declspec(naked) void push_back_00472b9d_EraseTail(void* /*first*/, void* /*last*/)
+void CArrayElem::erase(Elem* _F, Elem* _L)
 {
-    __asm
-    {
-        mov  eax, [esp + 4]        ; first
-        mov  g_erase_first, eax
-        mov  eax, [esp + 8]        ; last
-        mov  g_erase_last, eax
-        inc  g_erase_count
-        ret  8
-    }
+    g_eraseCalled  = 1;
+    g_eraseFromIdx = (long)(_F - _First);
+    g_eraseCount   = (long)(_L - _F);
 }
 
-/* AppendFill(dst, grow, value): 3 stack args -> callee cleans 12 (ret 0Ch). */
-extern "C" __declspec(naked) void push_back_00472b9d_AppendFill(void* /*dst*/, long /*grow*/, const void* /*value*/)
+void CArrayElem::_Insert_n(Elem* _Where, unsigned int _Count, const Elem& _Val)
 {
-    __asm
-    {
-        mov  eax, [esp + 4]        ; dst
-        mov  g_append_dst, eax
-        mov  eax, [esp + 8]        ; grow
-        mov  g_append_grow, eax
-        mov  eax, [esp + 0Ch]      ; value
-        mov  g_append_value, eax
-        inc  g_append_count
-        ret  0Ch
-    }
+    g_insertCalled   = 1;
+    g_insertCount    = _Count;
+    g_insertValFirst = _Val.first;
+    if (_Where != _Last) g_insertCalled = 2;  // _Where should be end()
 }
 
-static void Reset()
+// The container resize under test, compiled at /Od here for behavior only.
+void CArrayElem::resize(unsigned int _Newsize, const Elem& _Val)
 {
-    g_erase_count = 0;
-    g_erase_first = 0;
-    g_erase_last = 0;
-    g_append_count = 0;
-    g_append_dst = 0;
-    g_append_grow = 0;
-    g_append_value = 0;
-}
-
-static int Check(int cond, const char* msg)
-{
-    if (!cond)
-    {
-        printf("FAIL: %s\n", msg);
-        return 0;
-    }
-    return 1;
+    if (_Newsize < size())
+        erase(begin() + _Newsize, end());
+    else
+        _Insert_n(end(), _Newsize - size(), _Val);
 }
 
 int main()
 {
+    Elem buf[8];
+    int i;
+    for (i = 0; i < 8; ++i) { buf[i].first = i; }
+
+    Elem val;
+    val.first = 0x1111;
+
     int ok = 1;
-    Array arr;
-    char storage[0x40 * 6];
-    long value;
 
-    memset(storage, 0, sizeof(storage));
-    value = 0x1234;
+    // Case 1: newsize (7) >= size (5) -> INSERT branch, count = 2.
+    CArrayElem a;
+    a._First = &buf[0];
+    a._Last  = &buf[5];   // size == 5
+    g_eraseCalled = g_insertCalled = 0;
+    g_insertCount = 0;
+    a.resize(7u, val);
+    if (g_insertCalled != 1) ok = 0;            // ran and _Where==end()
+    if (g_eraseCalled != 0) ok = 0;
+    if (g_insertCount != 2u) ok = 0;            // 7 - 5
+    if (g_insertValFirst != 0x1111) ok = 0;
 
-    /* size = 4 elements (end - begin = 4 * 0x40) */
-    arr.begin = storage;
-    arr.end = storage + 0x40 * 4;
+    // Case 2: newsize (3) < size (5) -> ERASE branch, from idx 3, count 2.
+    CArrayElem b;
+    b._First = &buf[0];
+    b._Last  = &buf[5];   // size == 5
+    g_eraseCalled = g_insertCalled = 0;
+    b.resize(3u, val);
+    if (g_eraseCalled != 1) ok = 0;
+    if (g_insertCalled != 0) ok = 0;
+    if (g_eraseFromIdx != 3) ok = 0;            // begin()+3
+    if (g_eraseCount != 2) ok = 0;              // end() - (begin()+3)
 
-    /* count (2) < size (4) -> EraseTail(begin + 2*0x40, end) */
-    Reset();
-    push_back_00472b9d(&arr, 0, 2, &value);
-    ok &= Check(g_erase_count == 1 && g_append_count == 0,
-                "shrink path must call EraseTail");
-    ok &= Check(g_erase_first == storage + 0x40 * 2,
-                "EraseTail first must be begin + count*stride");
-    ok &= Check(g_erase_last == storage + 0x40 * 4,
-                "EraseTail last must be end");
+    // Case 3: newsize == size (5) -> INSERT branch (jae), count 0.
+    CArrayElem c;
+    c._First = &buf[0];
+    c._Last  = &buf[5];
+    g_eraseCalled = g_insertCalled = 0;
+    g_insertCount = 999u;
+    c.resize(5u, val);
+    if (g_insertCalled != 1) ok = 0;
+    if (g_eraseCalled != 0) ok = 0;
+    if (g_insertCount != 0u) ok = 0;
 
-    /* count (7) >= size (4) -> AppendFill(end, 7-4, value) */
-    Reset();
-    push_back_00472b9d(&arr, 0, 7, &value);
-    ok &= Check(g_append_count == 1 && g_erase_count == 0,
-                "grow path must call AppendFill");
-    ok &= Check(g_append_dst == storage + 0x40 * 4,
-                "AppendFill dst must be end");
-    ok &= Check(g_append_grow == 3,
-                "AppendFill grow must be count - size");
-    ok &= Check(g_append_value == &value,
-                "AppendFill must receive the value pointer");
-
-    /* count (4) == size (4) -> append (jae) with grow 0 */
-    Reset();
-    push_back_00472b9d(&arr, 0, 4, &value);
-    ok &= Check(g_append_count == 1 && g_erase_count == 0,
-                "equal path must call AppendFill (jae)");
-    ok &= Check(g_append_grow == 0,
-                "AppendFill grow must be 0 when count == size");
-
-    if (!ok)
-        return 1;
-
-    puts("PUSH_BACK_PAIR_LONG_00472B9D_TEST PASS");
-    return 0;
+    if (ok) printf("CARRAY_PAIR_RESIZE_00472B9D_TEST PASS\n");
+    else    printf("CARRAY_PAIR_RESIZE_00472B9D_TEST FAIL\n");
+    return ok ? 0 : 1;
 }

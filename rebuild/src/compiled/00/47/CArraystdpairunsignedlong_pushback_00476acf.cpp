@@ -1,64 +1,60 @@
-// CArray<std::pair<unsigned_long,...> >::push_back(index, value)  @ 0x00476acf
+#pragma optimize("s",on)
+// Byte-exact GENUINE-C++ reconstruction of retail 0x00476acf.
 //
-// this in ecx: { _Myfirst @ +0x00, _Mylast @ +0x04 }, element stride 0x4c (76).
-//   size = (_Mylast - _Myfirst) / 0x4c
-//   arg0 = [esp+0x10] after 3 pushes  (a slot index)
-//   arg1 = [esp+0x14] after 3 pushes  (source element ptr)
-// If arg0 >= size: HelperA(first + arg0*0x4c, _Mylast)   (construct-at-end path)
-// else:            HelperB(_Mylast, arg0 - size, arg1)    (grow/insert path)
+// The manifest labels this "push_back", but the body is the classic
+// CArray<T>::resize(_Newsize, const T&) dispatch -- identical in shape to the
+// already-landed byte-matching sibling 0x00475e92
+// (CArraystdpairlong_pushback_00475e92.cpp), only the element STRIDE differs:
+// here sizeof(T) == 0x4c (76) instead of 8, so the compiler cannot fold the
+// element-count division into a `sar` and emits a real signed `idiv 0x4c`.
 //
-// Two distinct masked external callees; frame-pointer-omitted (/Oy) so args are
-// referenced via [esp+N].  Naked asm reproduces the exact retail byte stream,
-// mirroring the landed ByteVector_InsertFill_00485f3a / Vector_InsertValue_0066eda6
-// naked idioms that already RELOCATION_MATCH.
+// Retail disasm mapping (this in ecx: _First @ +0x00, _Last @ +0x04):
+//   mov ebx,[ecx+4]        ; _Last (end())
+//   mov edi,[ecx]          ; _First (begin())
+//   eax = _Last - _First ; cdq ; idiv 0x4c   ; size() = (_Last-_First)/0x4c
+//   mov esi,[esp+0x10]     ; _Newsize (stack arg 1, /Oy frame-pointer omitted)
+//   cmp esi,eax ; jae INSERT                  ; _Newsize >= size() -> INSERT
+// ERASE (_Newsize < size()):
+//   imul esi,esi,0x4c ; add esi,edi           ; begin() + _Newsize
+//   push _Last(ebx) ; push esi ; call erase    ; ecx (this) preserved
+//   jmp END
+// INSERT:
+//   mov ebx,[ecx+4]        ; _Last reloaded (end())
+//   push [esp+0x14]        ; &_Val (const T& -> one dword)
+//   eax = _Last - _First ; cdq ; idiv 0x4c     ; size() recomputed
+//   sub esi,eax           ; _Newsize - size()
+//   push esi ; push _Last(ebx) ; call _Insert_n ; ecx (this) preserved
+// END:
+//   pop edi ; pop esi ; pop ebx ; ret 8
+//
+// erase / _Insert_n are out-of-line members of the same container (this in ecx),
+// declared but not defined here, so cl emits the direct relocation-masked calls
+// with ecx kept as `this`.  _Val is a const reference (single dword pushed;
+// ret 8 cleans the two stack args _Newsize and &_Val).
 
-extern "C" void __fastcall CArray_pair_ul_push_back_00476acf_HelperA(void*, void*);
-extern "C" void __fastcall CArray_pair_ul_push_back_00476acf_HelperB(void*, void*, void*);
+struct Elem {
+    char raw[0x4c];   // sizeof == 76 (0x4c) -> forces idiv, not sar
+};
 
-extern "C" __declspec(naked) void __fastcall
-CArray_pair_ul_push_back_00476acf(void* /*ecx this*/, void* /*edx*/, void* /*arg0*/, void* /*arg1*/)
+struct CArrayPair {
+    Elem* _First;  // +0x00
+    Elem* _Last;   // +0x04
+
+    Elem* begin() const { return _First; }
+    Elem* end() const   { return _Last; }
+    unsigned int size() const { return (unsigned int)(_Last - _First); }
+
+    // Out-of-line members -> direct __fastcall calls, ecx = this.
+    void erase(Elem* _F, Elem* _L);
+    void _Insert_n(Elem* _Where, unsigned int _Count, const Elem& _Val);
+
+    void resize(unsigned int _Newsize, const Elem& _Val);
+};
+
+void CArrayPair::resize(unsigned int _Newsize, const Elem& _Val)
 {
-    __asm
-    {
-        push ebx
-        mov  ebx, dword ptr [ecx + 4]
-        push esi
-        push edi
-        mov  edi, dword ptr [ecx]
-        mov  eax, ebx
-        sub  eax, edi
-        push 4Ch
-        cdq
-        pop  esi
-        idiv esi
-        mov  esi, dword ptr [esp + 10h]
-        cmp  esi, eax
-        jae  grow_path
-        imul esi, esi, 4Ch
-        push ebx
-        add  esi, edi
-        push esi
-        call CArray_pair_ul_push_back_00476acf_HelperA
-        jmp  done
-
-    grow_path:
-        mov  ebx, dword ptr [ecx + 4]
-        push dword ptr [esp + 14h]
-        mov  eax, ebx
-        sub  eax, edi
-        push 4Ch
-        pop  edi
-        cdq
-        idiv edi
-        sub  esi, eax
-        push esi
-        push ebx
-        call CArray_pair_ul_push_back_00476acf_HelperB
-
-    done:
-        pop  edi
-        pop  esi
-        pop  ebx
-        ret  8
-    }
+    if (_Newsize < size())
+        erase(begin() + _Newsize, end());
+    else
+        _Insert_n(end(), _Newsize - size(), _Val);
 }
