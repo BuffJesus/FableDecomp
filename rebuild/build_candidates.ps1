@@ -39387,6 +39387,118 @@ $catalog = @(
         TestSource = '00/9a/CDefinitionManager_GetPDefFromGlobalIndexb_009ada10_test.cpp'
         PassPattern = 'GETPDEFFROMGLOBALINDEX_B_009ADA10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009b9880'
+        Module = 'CModeBlock'
+        Source = '00/9b/CModeBlock_GetAnimFilter_009b9880.cpp'
+        TestSource = '00/9b/CModeBlock_GetAnimFilter_009b9880_test.cpp'
+        PassPattern = 'GETANIMFILTER_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bfea0e'
+        Module = '_global'
+        Source = '00/bf/global_malloc_00bfea0e.cpp'
+        TestSource = '00/bf/global_malloc_00bfea0e_test.cpp'
+        PassPattern = 'MALLOC_THUNK_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bfea14'
+        Module = '_global'
+        Source = '00/bf/global_free_00bfea14.cpp'
+        TestSource = '00/bf/global_free_00bfea14_test.cpp'
+        PassPattern = 'FREE_THUNK_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bfea1a'
+        Module = '_global'
+        Source = '00/bf/global_operatornew_00bfea1a.cpp'
+        TestSource = '00/bf/global_operatornew_00bfea1a_test.cpp'
+        PassPattern = 'OPNEW_THUNK_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bfeae6'
+        Module = '_global'
+        Source = '00/bf/global_memmove_00bfeae6.cpp'
+        TestSource = '00/bf/global_memmove_00bfeae6_test.cpp'
+        PassPattern = 'MEMMOVE_THUNK_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bfeaf2'
+        Module = '_global'
+        Source = '00/bf/global_puts_00bfeaf2.cpp'
+        TestSource = '00/bf/global_puts_00bfeaf2_test.cpp'
+        PassPattern = 'PASS_MARK'
+    }
+    [pscustomobject]@{
+        Address = '00bfed16'
+        Module = '_global'
+        Source = '00/bf/global_toupper_00bfed16.cpp'
+        TestSource = '00/bf/global_toupper_00bfed16_test.cpp'
+        PassPattern = 'TOUPPER_THUNK_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bfeb1c'
+        Module = '_global'
+        Source = '00/bf/global_operatordeletearray_00bfeb1c.cpp'
+        TestSource = '00/bf/global_operatordeletearray_00bfeb1c_test.cpp'
+        PassPattern = 'OK_ARRAY_DELETE_THUNK'
+    }
+    [pscustomobject]@{
+        Address = '00bfeb22'
+        Module = '_global'
+        Source = '00/bf/global_operatornewarray_00bfeb22.cpp'
+        TestSource = '00/bf/global_operatornewarray_00bfeb22_test.cpp'
+        PassPattern = 'OAB_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bfeb3a'
+        Module = '_global'
+        Source = '00/bf/global_strstr_00bfeb3a.cpp'
+        TestSource = '00/bf/global_strstr_00bfeb3a_test.cpp'
+        PassPattern = 'STRSTR_TEST_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfed40'
+        Module = '_global'
+        Source = '00/bf/global_wgetcwd_00bfed40.cpp'
+        TestSource = '00/bf/global_wgetcwd_00bfed40_test.cpp'
+        PassPattern = 'WGETCWD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bfed4c'
+        Module = '_global'
+        Source = '00/bf/global_wsplitpath_00bfed4c.cpp'
+        TestSource = '00/bf/global_wsplitpath_00bfed4c_test.cpp'
+        PassPattern = 'WSPLITPATH_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bfe9bc'
+        Module = '_global'
+        Source = '00/bf/global_operatordelete_00bfe9bc.cpp'
+        TestSource = '00/bf/global_operatordelete_00bfe9bc_test.cpp'
+        PassPattern = 'OPDEL_OK'
+    }
+    [pscustomobject]@{
+        Address = '0099a2f0'
+        Module = 'CBase'
+        Source = '00/99/CBase_CBase_0099a2f0.cpp'
+        TestSource = '00/99/CBase_CBase_0099a2f0_test.cpp'
+        PassPattern = 'CBASE_CTOR_TEST_OK'
+    }
+    [pscustomobject]@{
+        Address = '00993b10'
+        Module = 'CChunkedFileChunk'
+        Source = '00/99/CChunkedFileChunk_CChunkedFileChunk_00993b10.cpp'
+        TestSource = '00/99/CChunkedFileChunk_CChunkedFileChunk_00993b10_test.cpp'
+        PassPattern = 'marker_dtor_ok'
+    }
+    [pscustomobject]@{
+        Address = '0099e4b0'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_CCharString_0099e4b0.cpp'
+        TestSource = '00/99/CCharString_CCharString_0099e4b0_test.cpp'
+        PassPattern = 'PASS_CTOR_OK'
+    }
 )
 
 $requestedAddresses = @(
