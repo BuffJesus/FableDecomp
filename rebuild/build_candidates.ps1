@@ -39072,6 +39072,76 @@ $catalog = @(
         TestSource = '00/48/CLandscapeBackgroundSubNodeSplitBranch_scalardeletingdestructor_00485524_test.cpp'
         PassPattern = 'SPLITBRANCH_SCALAR_DELETING_DTOR_00485524_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0088de10'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_GiveThingItemInHand_0088de10.cpp'
+        TestSource = '00/88/CGameScriptInterface_GiveThingItemInHand_0088de10_test.cpp'
+        PassPattern = 'OK_GIVEHAND'
+    }
+    [pscustomobject]@{
+        Address = '0088e130'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_GiveHeroWeapon_0088e130.cpp'
+        TestSource = '00/88/CGameScriptInterface_GiveHeroWeapon_0088e130_test.cpp'
+        PassPattern = 'GIVEHEROWEAPON_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088f400'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_SetCreatureGeneratorsCreatureGroupAsEnabled_0088f400.cpp'
+        TestSource = '00/88/CGameScriptInterface_SetCreatureGeneratorsCreatureGroupAsEnabled_0088f400_test.cpp'
+        PassPattern = 'THUNK_FORWARD_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088f8d0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_StartCountdownTimer_0088f8d0.cpp'
+        TestSource = '00/88/CGameScriptInterface_StartCountdownTimer_0088f8d0_test.cpp'
+        PassPattern = 'ROUND_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088f910'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_AutoSaveCheckPoint_0088f910.cpp'
+        TestSource = '00/88/CGameScriptInterface_AutoSaveCheckPoint_0088f910_test.cpp'
+        PassPattern = 'AUTOSAVE_FWD_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088f920'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_AutoSaveQuestStart_0088f920.cpp'
+        TestSource = '00/88/CGameScriptInterface_AutoSaveQuestStart_0088f920_test.cpp'
+        PassPattern = 'AUTOSAVEQUESTSTART_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088f970'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_ResetToFrontEnd_0088f970.cpp'
+        TestSource = '00/88/CGameScriptInterface_ResetToFrontEnd_0088f970_test.cpp'
+        PassPattern = 'RESET_FRONTEND_OK'
+    }
+    [pscustomobject]@{
+        Address = '00891330'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_IsDangerMusicEnabled_00891330.cpp'
+        TestSource = '00/89/CGameScriptInterface_IsDangerMusicEnabled_00891330_test.cpp'
+        PassPattern = 'DANGER_MUSIC_OK'
+    }
+    [pscustomobject]@{
+        Address = '008a9e60'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_AddGossipFactionToCategory_008a9e60.cpp'
+        TestSource = '00/8a/CGameScriptInterface_AddGossipFactionToCategory_008a9e60_test.cpp'
+        PassPattern = 'GOSSIP_ADD_OK'
+    }
+    [pscustomobject]@{
+        Address = '008cfe30'
+        Module = 'CGameScriptThing'
+        Source = '00/8c/CGameScriptThing_GetHomePos_008cfe30.cpp'
+        TestSource = '00/8c/CGameScriptThing_GetHomePos_008cfe30_test.cpp'
+        PassPattern = 'GETHOMEPOS_OK'
+    }
 )
 
 $requestedAddresses = @(
