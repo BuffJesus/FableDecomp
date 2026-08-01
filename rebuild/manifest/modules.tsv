@@ -391,7 +391,7 @@ CActiveDialogueInfo	0	4	0	0	0	0	0	0	0	0	0
 CActiveEntity	0	1	0	0	0	0	0	0	0	0	0
 CActiveEntityScript<NScript::CQ_HangingTreeEvilScript>	0	120	120	0	0	0	0	0	0	0	0
 CActiveEntityScriptBase	3	1	0	0	0	0	0	0	0	0	0
-CActiveFile	4	433	398	0	0	126	126	23	103	0	0
+CActiveFile	4	433	398	0	0	126	126	22	104	0	0
 CActiveQuest	4	1	0	0	0	0	0	0	0	0	0
 CActivity	1	1	1	0	0	0	0	0	0	0	0
 CAnimComponentCombatComboChain	6	7	7	0	0	1	1	1	0	0	0
@@ -601,7 +601,7 @@ CCardDef	2	4	3	0	0	1	1	1	0	0	0
 CCardPositionsDef	1	10	3	0	0	1	1	1	0	0	0
 CCardinalSpline	1	1	1	0	0	0	0	0	0	0	0
 CCarriedReadableDef	2	15	3	0	0	1	1	1	0	0	0
-CCarrySlotDef	2	3	3	0	0	3	3	2	1	0	0
+CCarrySlotDef	2	3	3	0	0	3	3	1	1	0	0
 CCarryableDef	2	3	3	0	0	1	1	1	0	0	0
 CCarryingDef	2	3	3	0	0	1	1	1	0	0	0
 CCategory	45	52	48	0	0	9	9	7	2	0	0
@@ -1788,7 +1788,7 @@ CGameMap	6	6	5	0	0	0	0	0	0	0	0
 CGameMapCell	2	1	1	0	0	0	0	0	0	0	0
 CGameNavigatorManagerExternalInterface	2	2	2	0	0	0	0	0	0	0	0
 CGamePlayerInterface	41	24	23	0	0	13	13	13	0	0	0
-CGameScriptInterface	935	953	948	438	2	302	302	46	254	0	0
+CGameScriptInterface	935	953	948	438	2	302	302	46	256	0	0
 CGameScriptThing	81	91	88	3	0	6	6	3	3	0	0
 CGameScriptThingManager	5	6	5	0	0	0	0	0	0	0	0
 CGameTimeManager	27	13	13	0	0	0	0	0	0	0	0
@@ -1991,7 +1991,7 @@ CIndexBuffer	8	53	36	0	0	4	4	4	0	0	0
 CIndexList	4	0	0	0	0	0	0	0	0	0	0
 CInfectedBalverine	2	2	2	0	0	0	0	0	0	0	0
 CIngredientOwner	5	1	1	0	0	0	0	0	0	0	0
-CInitBaseClass	7	8	7	0	0	2	2	2	0	0	0
+CInitBaseClass	7	8	7	0	0	2	2	1	1	0	0
 CInitRumble	0	1	0	0	0	0	0	0	0	0	0
 CInitialQuestsDialog	4	0	0	0	0	0	0	0	0	0	0
 CInitialScreamerPoint	2	1	1	0	0	0	0	0	0	0	0
@@ -2562,7 +2562,7 @@ CPackedBlockAllocator	0	1	0	0	0	0	0	0	0	0	0
 CPackedUIntArray	8	11	10	0	0	0	0	0	0	0	0
 CPaintMapDialog	43	5	5	0	0	0	0	0	0	0	0
 CPair	0	3	3	0	0	1	1	1	0	0	0
-CParentDefClassBase	9	84	13	0	0	5	5	4	0	0	0
+CParentDefClassBase	9	84	13	0	0	5	5	5	0	0	0
 CParsedItem	10	3	3	0	0	0	0	0	0	0	0
 CParticle	1	4	3	0	0	0	0	0	0	0	0
 CParticleAttacherDef	2	3	3	0	0	1	1	1	0	0	0
@@ -2852,7 +2852,7 @@ CReactionMatch_Sphere	3	5	4	0	0	0	0	0	0	0	0
 CReadableDef	2	3	3	0	0	1	1	1	0	0	0
 CRedBlackTree	0	4	0	0	0	0	0	0	0	0	0
 CRedefinerList	18	9	7	0	0	0	0	0	0	0	0
-CRegion	15	72	71	0	0	12	12	9	3	0	0
+CRegion	15	72	71	0	0	12	12	8	4	0	0
 CRegionConnectionGraph	4	1	1	0	0	0	0	0	0	0	0
 CRegionConnectionNode	3	0	0	0	0	0	0	0	0	0	0
 CRegionDef	2	6	3	0	0	1	1	1	0	0	0
@@ -2954,7 +2954,7 @@ CScriptModuleUseLamp	2	1	1	0	0	0	0	0	0	0	0
 CScriptObjectMap	0	1	0	0	0	0	0	0	0	0	0
 CScriptThing	78	103	101	15	0	16	16	13	3	0	0
 CScriptedControl	8	2	2	0	0	0	0	0	0	0	0
-CScriptedMapBrush	19	8	7	3	0	3	3	0	0	0	0
+CScriptedMapBrush	19	8	7	3	0	3	3	1	0	0	0
 CScrollBar	12	3	1	0	0	0	0	0	0	0	0
 CScrollBarOutside	5	5	1	0	0	0	0	0	0	0	0
 CScrollableList	9	9	8	0	0	0	0	0	0	0	0
@@ -3588,7 +3588,7 @@ CTexture	33	32	29	0	0	4	4	2	1	0	0
 CTextureManager	15	10	9	0	0	0	0	0	0	0	0
 CTextureMorphs	4	4	4	0	0	0	0	0	0	0	0
 CTextureRenderer	0	5	1	0	0	0	0	0	0	0	0
-CTextureReplacementDef	2	5	3	0	0	2	2	1	1	0	0
+CTextureReplacementDef	2	5	3	0	0	2	2	0	1	0	0
 CTheKraken	2	0	0	0	0	0	0	0	0	0	0
 CTheRealGuildmaster	14	1	1	0	0	0	0	0	0	0	0
 CTheme2MapDialog	22	0	0	0	0	0	0	0	0	0	0
@@ -4286,7 +4286,7 @@ _Copy_impl<std::pair<unsigned_long,C3DDummyObject>*,std	0	2	2	0	0	0	0	0	0	0	0
 _Count_if<std::_List_unchecked_const_iterator<std::_List_val<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>,std	0	2	2	0	0	0	0	0	0	0	0
 _Count_if<std::_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThingAICreature>,std	0	1	1	0	0	0	0	0	0	0	0
 _Dest_val<std	0	38	38	0	0	4	4	2	2	0	0
-_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	0	826	826	0	0	111	111	106	5	0	0
+_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	0	826	826	0	0	111	111	104	7	0	0
 _Dest_val<std::allocator<CEditLevelMerger::CConflict>,CEditLevelMerger	0	9	9	0	0	0	0	0	0	0	0
 _Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	0	611	611	0	0	391	391	391	0	0	0
 _Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification	0	20	20	0	0	0	0	0	0	0	0
@@ -4505,7 +4505,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11362	1997	269	5	184	184	104	76	0	0
+_global	0	11362	1997	273	5	184	184	105	76	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

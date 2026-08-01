@@ -18,9 +18,5 @@ extern "C" __declspec(naked) void candidate_00429403(void)
         _emit 0xc6
         _emit 0x5e
         _emit 0xc3
-        _emit 0xc3
-        _emit 0xc3
-        _emit 0xc3
-        _emit 0xc3
     }
 }

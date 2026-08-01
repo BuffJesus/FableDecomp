@@ -24,19 +24,5 @@ extern "C" __declspec(naked) void fn_0041cc2b(void)
         _emit 0x37
         _emit 0x01
         _emit 0xc3
-        _emit 0x8a
-        _emit 0x41
-        _emit 0x09
-        _emit 0xc3
-        _emit 0x8a
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0x88
-        _emit 0x41
-        _emit 0x04
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
     }
 }

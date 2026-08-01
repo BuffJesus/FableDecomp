@@ -16,9 +16,5 @@ __declspec(naked) int __fastcall IsBinary(void *ecx_this)
     L0:
         xor  eax, eax
         ret
-        xor  eax, eax
-        cmp  dword ptr [ecx+0x104], eax
-        setne al
-        ret
     }
 }

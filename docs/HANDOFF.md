@@ -6979,7 +6979,9 @@ Verified: full VC7.1 Release build green (`BOOTSTRAP_BUILD PASS`,
 frame differs from main-menu/options/quit, saves `frontend-about-smoke.png`,
 and Back returns to the menu (`about=49A791F0021F`). The screenshot shows the
 "About Fable" title rule, the full legal-notice message, and the Back button
-composited over the frontend background — live visual parity for the panel.
+composited over the frontend background. (This is a live render matching the
+authored bake; retail-pixel parity is NOT claimed — see the deferred
+message line-break note below and the `bake_selfcheck` self-consistency metric.)
 
 ### SPOOKY animated background wired LIVE (2026-07-30, cont.)
 

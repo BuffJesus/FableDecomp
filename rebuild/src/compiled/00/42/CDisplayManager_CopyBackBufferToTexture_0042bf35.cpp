@@ -26,30 +26,5 @@ extern "C" __declspec(naked) void candidate_0042bf35(void)
         _emit 0x5e
         _emit 0xc9
         _emit 0xc3
-        _emit 0xe9
-        _emit 0x02
-        _emit 0xf8
-        _emit 0xff
-        _emit 0xff
-        _emit 0xff
-        _emit 0x74
-        _emit 0x24
-        _emit 0x08
-        _emit 0xe8
-        _emit 0x97
-        _emit 0xf5
-        _emit 0xff
-        _emit 0xff
-        _emit 0x8b
-        _emit 0x4c
-        _emit 0x24
-        _emit 0x04
-        _emit 0x89
-        _emit 0x01
-        _emit 0x8b
-        _emit 0xc1
-        _emit 0xc2
-        _emit 0x08
-        _emit 0x00
     }
 }

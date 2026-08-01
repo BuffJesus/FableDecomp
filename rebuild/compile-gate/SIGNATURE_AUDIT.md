@@ -1,12 +1,12 @@
 # Candidate signature audit
 
-Generated: `2026-07-30T18:49:03-06:00`
+Generated: `2026-07-31T18:18:12-06:00`
 
-Clean: **541 / 846**. Review required: **305**.
+Clean: **541 / 850**. Review required: **309**.
 
 | Issue | Candidates |
 |---|---:|
-| `explicit-parameter-count-mismatch` | 273 |
+| `explicit-parameter-count-mismatch` | 277 |
 | `return-shape-mismatch` | 90 |
 | `duplicate-linkage-signature` | 42 |
 | `method-name-mismatch` | 41 |
@@ -236,6 +236,10 @@ Clean: **541 / 846**. Review required: **305**.
 | `00449130` | `_global` | `Vector_Reallocate` | `Vector_Reallocate` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
 | `00449220` | `_global` | `Heap_BuildFromElements` | `Heap_BuildFromElements` | explicit-parameter-count-mismatch |
 | `00449270` | `_global` | `Heap_OrderAndSort` | `Heap_OrderAndSort` | explicit-parameter-count-mismatch |
+| `00449320` | `_global` | `CList_PushBack` | `CList_PushBack` | explicit-parameter-count-mismatch |
+| `00449440` | `_global` | `Vector_InsertElement` | `Vector_InsertElement` | explicit-parameter-count-mismatch |
+| `004494d0` | `_global` | `Heap_SiftDown` | `Heap_SiftDown` | explicit-parameter-count-mismatch |
+| `004495d0` | `_global` | `SoundPair_MakeHeap` | `SoundPair_MakeHeap` | explicit-parameter-count-mismatch |
 | `004aa9e0` | `CScriptThing` | `CScriptThing::GetCurrentMapName` | `GetCurrentMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aaa10` | `CScriptThing` | `CScriptThing::GetHomeMapName` | `GetHomeMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004abe60` | `CScriptThing` | `CScriptThing::MsgWhoKilledMe` | `` | definition-not-parsed |

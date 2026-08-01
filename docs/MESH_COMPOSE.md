@@ -251,6 +251,28 @@ Blender end-to-end: see §5.
   (0x06/0x16), no repeated-instancing (Reps>1), no cloth (goblin prim0's
   cloth primitive is dropped on recompose), no helpers/dummies/volumes/
   generators/packed-names.
+
+## EgoCore corroboration + extensions (2026-07-31, see docs/EGOCORE_ASSESSMENT_20260731.md)
+
+EgoCore (open-source) independently confirms our ghost-LOD, DegenerateTriangles-sentinel,
+`LODSizes[]=byte-sizes`, and skinning contract (weights sum 255 via remainder→`fw[0]`,
+joint=palette×3, max 3 influences, raw 60B bone clone). Two things it EXTENDS beyond our
+retail-verified type-1/type-5 work — treat as EgoCore-sourced, verify against a retail diff
+before relying on for a shipped mod:
+
+* **Ghost LOD applies to types 1/2/4/5, not just 1/5.** Our doc/§1 cites the *stale*
+  `MeshCompiler::CompileForExport` (2/5-only). EgoCore's authoritative bank-write path
+  (`Banks/BankEditor.h::FlushStagedEntries`) appends one uncounted empty ghost LOD (full
+  header/skeleton, zero materials+prims) after the last real LOD for **1, 2, 4, and 5** — a
+  defensive crash-guard (the author's own comment: static meshes "didn't crash before... TO
+  INVESTIGATE"). We retail-verified 1 and 5; **2 and 4 are to-verify.**
+* **Full mesh-type map** (`Utilities/Utils.h`): 1=static, **2=static-repeated/instanced**,
+  **3=physics (CMESH/BBM collision, separate `3DMF` writer, wired via Info-blob `PhysicsIndex`)**,
+  **4=particle**, 5=skinned. Type-2 instancing = type-1 geometry + `RepeatingMeshReps` with a
+  **third static vertex layout (stride 36, uncompressed pos)** and index/vertex buffers tiled
+  ×reps (cap 65535). Types 2/4 compile via the same `CompileSingleLOD` grammar we already emit;
+  adding them is a modest extension. Type-3 is the collision path (we emit `PhysicsIndex=0`;
+  a collidable custom prop needs a paired type-3 BBM entry).
 * Skin: max 3 influences/vertex (`BonesPerVertex=3`, retail-wide fact),
   palette cap 16 bones per animated block (EgoCore's proven emit; retail
   reaches 18; hard grammar limit is 85 since joint byte = paletteIndex*3).

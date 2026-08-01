@@ -8009,6 +8009,46 @@
       "verdict": "PASS",
       "parity_status": "yellow",
       "timestamp": "2026-07-30T18:27:16"
+    },
+    "00449320": {
+      "address": "0x00449320",
+      "class_name": "",
+      "function_name": "CList_PushBack",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-31T15:25:55"
+    },
+    "00449440": {
+      "address": "0x00449440",
+      "class_name": "",
+      "function_name": "Vector_InsertElement",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-31T15:29:08"
+    },
+    "004494d0": {
+      "address": "0x004494D0",
+      "class_name": "",
+      "function_name": "Heap_SiftDown",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-31T15:35:31"
+    },
+    "004495d0": {
+      "address": "0x004495D0",
+      "class_name": "",
+      "function_name": "SoundPair_MakeHeap",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-31T15:36:28"
     }
   },
   "runs": [
@@ -16761,6 +16801,46 @@
       "verdict": "PASS",
       "parity_status": "yellow",
       "timestamp": "2026-07-30T18:27:16"
+    },
+    {
+      "address": "0x00449320",
+      "class_name": "",
+      "function_name": "CList_PushBack",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-07-31T15:25:55"
+    },
+    {
+      "address": "0x00449440",
+      "class_name": "",
+      "function_name": "Vector_InsertElement",
+      "success": true,
+      "rounds_used": 3,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-31T15:29:08"
+    },
+    {
+      "address": "0x004494D0",
+      "class_name": "",
+      "function_name": "Heap_SiftDown",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-31T15:35:31"
+    },
+    {
+      "address": "0x004495D0",
+      "class_name": "",
+      "function_name": "SoundPair_MakeHeap",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-07-31T15:36:28"
     }
   ]
 }

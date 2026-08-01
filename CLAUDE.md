@@ -58,9 +58,12 @@ of a clean PE32 at ImageBase `0x400000`.
   the CScriptBase ctor, not "CHeroMorphDef"; 0x00CBFAB8 is SetScriptActiveStatus).
 - 3DAF anim payload = `u32 decompSize` + ONE raw LZO1X stream (no `[u16 clen]` frames — that's
   the texture/mesh framing); decompressed chunks are plain `[fourcc][u32 size]`, one XSEQ per
-  bone track. EgoCore (`C:\Users\Cornelio\Documents\EgoCoreInspect\EgoCore-master`)
-  AnimParser/AnimCompiler/LipSyncParser are the anim+lipsync answer key — check EgoCore BEFORE
-  byte-RE. See `docs/BIG_ANIM_FORMAT.md` §9, `docs/DEMON_DOOR_FACE.md`.
+  bone track. EgoCore (`C:\Users\Cornelio\Documents\EgoCoreInspect\EgoCore-master`) is the whole-format
+  answer key (defs/crc0, meshes, anim, lipsync, banks) — went STABLE 31.7.26; check it BEFORE byte-RE.
+  See `docs/BIG_ANIM_FORMAT.md` §9, `docs/DEMON_DOOR_FACE.md`, and `docs/EGOCORE_ASSESSMENT_20260731.md`
+  (full cross-ref: confirms crc0/3DAF/skinning, unblocks Mario-rig via `GltfAnimImporter`, adds
+  `SpeechAnalyzer` WAV→lipsync; DO NOT copy EgoCore's `CDefStringTable::GetCRC` (std-CRC+tolower, wrong)
+  or its `classIndex=0` — trust our byte-proven crc0 + dense index; filed EgoCore issue #4).
 - Texture payloads: only MIP 0 is chunked-LZO; mips 1..n-1 are stored RAW. Info+24 (MipSize0) =
   on-disk mip-0 region size, 0 = all-raw payload (loader-accepted). DXT3 Info tail is `02 08`,
   not `03 04`. Writer: `tools/texture_build.py`; recipe: `docs/TEXTURE_WRITER.md`.
@@ -70,6 +73,9 @@ of a clean PE32 at ImageBase `0x400000`.
   New-mesh composer: `mesh_rw.compose_mesh` + `big_write.rebuild(adds=)`; SKINNED type-5
   via `skeleton=mesh_rw.clone_skeleton(donor)` (bone blocks cloned raw; weight bytes sum
   exactly 255 retail-wide, max 3 influences); recipe: `docs/MESH_COMPOSE.md`.
+  (EgoCore 2026-07-31: ghost LOD actually applies to types 1/2/4/5 — we retail-verified 1/5, 2/4
+  to-verify; mesh types = 1 static / 2 instanced (stride-36) / 3 physics-BBM-via-PhysicsIndex /
+  4 particle / 5 skinned. See `docs/MESH_COMPOSE.md` EgoCore section.)
 
 - Fable name hash = **crc0** = reflected CRC-32 poly 0xEDB88320, **seed 0, NO final inversion**
   (`CCharString::ComputeCRC32` 0x00404310) — keys names.bin CRCs, game.bin field tags, and the

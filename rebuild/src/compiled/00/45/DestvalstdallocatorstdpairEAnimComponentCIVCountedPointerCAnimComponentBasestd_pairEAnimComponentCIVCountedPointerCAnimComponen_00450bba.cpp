@@ -15,12 +15,5 @@ extern "C" void __declspec(naked) __fastcall Dest_val()
     L1:
         pop  esi
         ret
-        // folded default-construct helper
-        mov  eax, ecx
-        and  dword ptr [eax], 0
-        and  dword ptr [eax+0x04], 0
-        ret
-        // folded tail thunk (target relocation-masked)
-        jmp  Dest_val
     }
 }

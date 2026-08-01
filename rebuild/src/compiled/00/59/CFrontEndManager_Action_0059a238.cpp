@@ -2,15 +2,22 @@
 // VC7.1, x86, PDB signature:
 //   void __thiscall Action(CCountedPointer<CAction>&)
 //
-// Behavior-proven startup/frontend dispatcher boundary.
+// GRADE: behavior-slice (NOT byte-identical). Do NOT count as decomp.
+//   This file is an address-isolated behavioral reconstruction: the 1,486-byte
+//   retail function's profile deletion/loading, trophy setup, localized
+//   invalid-save/delete-profile string construction, and virtual-keyboard
+//   payload traversal are all pushed behind narrowly named `extern` ABI
+//   helpers rather than decomposed inline, so it CANNOT recompile to the retail
+//   .text bytes. It reproduces the observable initial frontend routes (entry
+//   clock/installer side effects, used-key lookup before forward navigation,
+//   Back, Press Start, quit, invalid-save ordering) only.
 //
-// The 1,486-byte retail function also owns profile deletion/loading, trophy
-// setup, localized invalid-save string construction, and virtual-keyboard
-// payload traversal.  Those object graphs are not represented in this
-// address-isolated slice.  The initial frontend routes are recovered here,
-// including the entry clock/installer side effects, used-key lookup before
-// forward navigation, Back, Press Start, quit, and invalid-save ordering.
-// Complex branches are kept behind narrowly named ABI helpers.
+// Byte-match oracle (captured 2026-07-31, full body): the exact retail bytes
+// are in  rebuild/oracles/cfrontendmanager_action.expected.tsv  and the
+// complete Ghidra decompilation (every hidden branch) is in
+// rebuild/oracles/cfrontendmanager_action.decomp.txt. A byte-identical
+// candidate is being authored separately; until it lands and diffs EXACT/RELOC,
+// this slice must not be presented as exact decompilation.
 
 struct CFrontEndAction
 {

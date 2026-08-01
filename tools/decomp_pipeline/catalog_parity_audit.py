@@ -3,6 +3,13 @@
 the retail oracle. Finds functions that landed (passed behavior) but do NOT
 actually byte-match retail -- the Std_Move_Backward class of false byte-matches.
 
+Retail was NOT built with one global optimization flag: some TUs omit the frame
+pointer (/O2 /Oy) and some keep it (/O2 /Oy-). A parity tool that only builds one
+of the two variants STRUCTURALLY cannot byte-match the other class of TU. So every
+candidate is compiled+classified under BOTH /O2 /Oy AND /O2 /Oy-, and the BETTER
+verdict is kept (EXACT > RELOC > DIFFER). On a tie /Oy wins (historical default).
+The winning flag is recorded in a 4th 'flag' column (Oy | Oy-).
+
 Usage: python catalog_parity_audit.py [--jobs N]
 Writes rebuild/compile-gate/parity_audit.tsv and prints a summary + the DIFFER list.
 """
@@ -16,6 +23,20 @@ SP = Path(r"C:\Users\Cornelio\AppData\Local\Temp\claude\D--Documents-FableTLC\d8
 OBJDUMP = r"C:\Users\Cornelio\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\objdump.exe"
 DS = re.compile(r"^\s*[0-9a-fA-F]+\s+<(.+)>:$"); DB = re.compile(r"^\s*[0-9a-fA-F]+:\s+((?:[0-9a-fA-F]{2}\s+)+)")
 RL = re.compile(r"^([0-9a-fA-F]{8})\s+\S+\s+.+$")
+
+# Frame-pointer variants to try. /Oy omits the frame pointer, /Oy- keeps it.
+# Order matters: on a verdict tie the FIRST-listed flag wins, so /Oy is the
+# historical default and stays first.
+# Per-TU flag variants, tried in order (primary first). Retail Fable was NOT built
+# with one global flag: most TUs are /Oy (frame omitted, e.g. cmouse), but some keep
+# frames (/Oy-, e.g. the NUISystem/CFrontEndManager TU at 0x0059xxxx) and need /G7
+# (Pentium-4 scheduling) too. classify() short-circuits on the first EXACT/RELOC, so
+# most files pay ONE compile; only genuine non-matches try all three.
+FLAG_VARIANTS = [("Oy", ["/Oy"]), ("Oy-", ["/Oy-"]), ("Oy-G7", ["/Oy-", "/G7"]),
+                 ("Os", ["/Os"])]  # /Os: size-opt TUs (e.g. vtable GetSizeofClass push/pop thunks)
+# Verdict precedence for picking the better of the two builds (higher = better).
+VERDICT_RANK = {"EXACT": 3, "RELOC": 2}  # DIFFER/SRC_FAIL/etc fall through to 0
+
 
 def env():
     e = dict(os.environ); e["PATH"] = str(VC / "bin") + ";" + e["PATH"]
@@ -61,25 +82,49 @@ def mask(p, offs):
         for i in range(o, min(o + 4, len(r))): r[i] = 0
     return bytes(r)
 
-def classify(cpppath, oracle):
-    addr = os.path.basename(cpppath).split("_")[-1].replace(".cpp", "").lower()
-    o = oracle.get(addr)
-    if not o: return (addr, "NO_ORACLE", os.path.basename(cpppath))
-    retail = bytes.fromhex(o["bytes"]); leaf = o["name"].rsplit("::", 1)[-1]
-    wd = SP / addr; wd.mkdir(parents=True, exist_ok=True)
+
+def _build_and_verdict(cpppath, retail, leaf, addr, fkey, fflags):
+    """Compile cpppath under /O2 + fflags (a list) and return a verdict string
+    (EXACT / RELOC / DIFFER(...) / SRC_FAIL / OBJDUMP_ERR). No oracle lookup here."""
+    wd = SP / addr / fkey; wd.mkdir(parents=True, exist_ok=True)
     obj = wd / "a.obj"
     if obj.exists(): obj.unlink()
-    cp = subprocess.run([str(VC / "bin" / "cl.exe"), "/nologo", "/c", "/O2", "/Oy", "/w",
+    cp = subprocess.run([str(VC / "bin" / "cl.exe"), "/nologo", "/c", "/O2", *fflags, "/w",
                          f"/Fo{obj}", str(cpppath)], capture_output=True, text=True, env=E, cwd=str(wd))
-    if cp.returncode or not obj.exists(): return (addr, "SRC_FAIL", os.path.basename(cpppath))
+    if cp.returncode or not obj.exists(): return "SRC_FAIL"
     try:
         built, sec = obj_text(obj, leaf)
     except Exception:
-        return (addr, "OBJDUMP_ERR", os.path.basename(cpppath))
-    if built == retail: return (addr, "EXACT", os.path.basename(cpppath))
+        return "OBJDUMP_ERR"
+    if built == retail: return "EXACT"
     rel = obj_relocs(obj, sec)
-    if mask(retail, rel) == mask(built, rel): return (addr, "RELOC", os.path.basename(cpppath))
-    return (addr, f"DIFFER({len(built)}v{len(retail)})", os.path.basename(cpppath))
+    if mask(retail, rel) == mask(built, rel): return "RELOC"
+    return f"DIFFER({len(built)}v{len(retail)})"
+
+
+def classify(cpppath, oracle):
+    """Compile under BOTH /Oy and /Oy-, keep the better verdict (EXACT>RELOC>DIFFER),
+    and record which flag won. Returns (addr, verdict, file, flag)."""
+    addr = os.path.basename(cpppath).split("_")[-1].replace(".cpp", "").lower()
+    o = oracle.get(addr)
+    fn = os.path.basename(cpppath)
+    if not o: return (addr, "NO_ORACLE", fn, "")
+    retail = bytes.fromhex(o["bytes"]); leaf = o["name"].rsplit("::", 1)[-1]
+
+    # Build under every flag variant; keep the best-ranked verdict. FLAG_VARIANTS
+    # is ordered so that on a rank tie the first (Oy) is retained as the winner.
+    # Fast path with fallback: try /Oy first (correct for most TUs). Break on the
+    # first EXACT/RELOC so most files compile ONCE; only genuine non-matches retry
+    # the frame-kept variants /Oy- then /Oy- /G7. (A rare RELOC-under-/Oy that could
+    # be EXACT under /Oy- is accepted as RELOC -- not worth 3x-ing every file.)
+    best_v, best_flag = None, ""
+    for fkey, fflags in FLAG_VARIANTS:
+        v = _build_and_verdict(cpppath, retail, leaf, addr, fkey, fflags)
+        if best_v is None or VERDICT_RANK.get(v, 0) > VERDICT_RANK.get(best_v, 0):
+            best_v, best_flag = v, fkey
+        if VERDICT_RANK.get(v, 0) >= 2:  # EXACT or RELOC -> matched; stop early
+            break
+    return (addr, best_v, fn, best_flag)
 
 def main():
     jobs = int(sys.argv[sys.argv.index("--jobs") + 1]) if "--jobs" in sys.argv else 6
@@ -92,16 +137,21 @@ def main():
             results.append(r)
     out = ROOT / "rebuild/compile-gate/parity_audit.tsv"
     with open(out, "w", encoding="utf-8", newline="") as f:
-        w = csv.writer(f, delimiter="\t", lineterminator="\n"); w.writerow(["address", "verdict", "file"])
+        w = csv.writer(f, delimiter="\t", lineterminator="\n"); w.writerow(["address", "verdict", "file", "flag"])
         for r in sorted(results): w.writerow(r)
     from collections import Counter
     tally = Counter(r[1].split("(")[0] for r in results)
     print(f"AUDIT of {len(results)} landed functions:")
     for k in ("EXACT", "RELOC", "DIFFER", "SRC_FAIL", "OBJDUMP_ERR", "NO_ORACLE"):
         if tally.get(k): print(f"  {k:12} {tally[k]}")
+    # Breakdown of EXACT/RELOC matches by winning flag (frame-kept TUs show up as
+    # Oy- / Oy-G7 -- these would be false DIFFERs under a single global /Oy).
+    oym = Counter(r[3] for r in results if r[1].split("(")[0] in ("EXACT", "RELOC"))
+    print("  (matches by winning flag: " +
+          "  ".join(f"{k or 'n/a'}={oym[k]}" for k in sorted(oym)) + ")")
     bad = [r for r in results if r[1].startswith(("DIFFER", "SRC_FAIL", "OBJDUMP_ERR", "NO_ORACLE"))]
     print(f"\nNON-MATCHING landed functions ({len(bad)}):")
-    for a, v, fn in sorted(bad): print(f"  {a}  {v:14} {fn}")
+    for a, v, fn, fl in sorted(bad): print(f"  {a}  {v:14} {fn}")
     print(f"\n-> {out}")
 
 if __name__ == "__main__":

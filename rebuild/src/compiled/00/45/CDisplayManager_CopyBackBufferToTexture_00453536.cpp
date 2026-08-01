@@ -32,10 +32,5 @@ extern "C" __declspec(naked) void CDisplayManager_CopyBackBufferToTexture(void)
         _emit 0x5e
         _emit 0xc9
         _emit 0xc3
-        _emit 0xe9
-        _emit 0x31
-        _emit 0xe5
-        _emit 0xff
-        _emit 0xff
     }
 }

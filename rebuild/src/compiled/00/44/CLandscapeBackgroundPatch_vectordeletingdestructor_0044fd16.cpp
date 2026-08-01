@@ -1,7 +1,5 @@
 extern "C" void CLBP_dtor(void);
 extern "C" void op_delete(void);
-extern "C" void op_new(void);
-extern "C" void CLBP_ctor(void);
 extern int g_vtbl0;
 extern int g_vtbl28;
 __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(void* self, int flags) {
@@ -20,15 +18,5 @@ __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_des
         mov eax, esi
         pop esi
         ret 4
-        push 0x48
-        call op_new
-        test eax, eax
-        pop ecx
-        je zret
-        mov ecx, eax
-        jmp CLBP_ctor
-    zret:
-        xor eax, eax
-        ret
     }
 }

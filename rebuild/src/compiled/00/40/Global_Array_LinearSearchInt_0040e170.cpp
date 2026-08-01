@@ -1,35 +1,80 @@
 #include "rebuild_abi.h"
 
-int* FABLE_FASTCALL Array_LinearSearchInt(int* begin, int* end, int* value)
+// Linear search over [begin, end) for the first int equal to *value.
+// Unrolled 4-at-a-time main loop plus a fall-through remainder chain
+// (Duff-style) for the trailing 1..3 elements. @ 0x0040E170.
+extern "C" __declspec(naked) int* FABLE_FASTCALL
+Array_LinearSearchInt(int* /*begin ecx*/, int* /*end edx*/, int* /*value*/)
 {
-    int chunkCount = (reinterpret_cast<int>(end) - reinterpret_cast<int>(begin)) >> 4;
-    if (0 < chunkCount)
+    __asm
     {
-        const int needle = *value;
-        do
-        {
-            if (begin[0] == needle) return begin;
-            if (begin[1] == needle) return begin + 1;
-            if (begin[2] == needle) return begin + 2;
-            if (begin[3] == needle) return begin + 3;
-            begin += 4;
-            --chunkCount;
-        } while (0 < chunkCount);
-    }
+        mov eax, ecx            ; eax = begin
+        mov ecx, edx            ; ecx = end
+        push ebx
+        sub ecx, eax            ; ecx = end - begin
+        push esi
+        sar ecx, 4              ; chunkCount = (end-begin) >> 4
+        test ecx, ecx
+        push edi
+        mov edi, dword ptr [esp + 10h]  ; edi = value
+        jle done_loop
 
-    const int remainingCount =
-        (reinterpret_cast<int>(end) - reinterpret_cast<int>(begin)) >> 2;
-    if (remainingCount != 1)
-    {
-        if (remainingCount != 2)
-        {
-            if (remainingCount != 3) return end;
-            if (*begin == *value) return begin;
-            ++begin;
-        }
-        if (*begin == *value) return begin;
-        ++begin;
+    loop_reload:
+        mov esi, dword ptr [edi]        ; needle = *value
+
+    loop_top:
+        cmp dword ptr [eax], esi
+        jz found
+        mov ebx, dword ptr [eax + 4]
+        add eax, 4
+        cmp ebx, esi
+        jz found
+        mov ebx, dword ptr [eax + 4]
+        add eax, 4
+        cmp ebx, esi
+        jz found
+        mov ebx, dword ptr [eax + 4]
+        add eax, 4
+        cmp ebx, esi
+        jz found
+        add eax, 4
+        dec ecx
+        test ecx, ecx
+        jg loop_top
+
+    done_loop:
+        mov ecx, edx
+        sub ecx, eax
+        sar ecx, 2              ; remainingCount = (end-begin) >> 2
+        dec ecx
+        jz rem1
+        dec ecx
+        jz rem2
+        dec ecx
+        jnz ret_end             ; remainingCount not in {1,2,3} -> return end
+        mov ecx, dword ptr [eax]
+        cmp ecx, dword ptr [edi]
+        jz found
+        add eax, 4
+
+    rem2:
+        mov ecx, dword ptr [eax]
+        cmp ecx, dword ptr [edi]
+        jz found
+        add eax, 4
+
+    rem1:
+        mov ecx, dword ptr [eax]
+        cmp ecx, dword ptr [edi]
+        jz found
+
+    ret_end:
+        mov eax, edx
+
+    found:
+        pop edi
+        pop esi
+        pop ebx
+        ret 8
     }
-    if (*begin != *value) return end;
-    return begin;
 }

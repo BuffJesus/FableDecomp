@@ -61,13 +61,13 @@ working memory and exact resume point are always at the top of
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Verified functional or matching reconstruction | **5,397 · 10.89%** |
-| Byte-identical reconstruction | **3,052 · 6.16%** |
+| Verified functional or matching reconstruction | **5,400 · 10.89%** |
+| Byte-identical reconstruction | **3,048 · 6.15%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
 Current functional-or-matching coverage is **10.89%** of the 49,568-function catalog.
-Of that verified set, **6.16%** is byte-identical C++.
+Of that verified set, **6.15%** is byte-identical C++.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -85,17 +85,17 @@ parity, coverage, and naming reports:
 | Analysis DB | Calling convention known | 77.677% |
 | Analysis DB | Complete non-`undefined` prototype | 69.065% |
 | Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **5,548** |
-| Reconstruction | Verified functional or matching C++ | **5,397** (10.89%) |
-| Reconstruction | — of which byte-**identical** C++ | 3,052 (6.16%) |
-| Reconstruction | Compiled sources still honestly `DIFFER` | 41 |
+| Reconstruction | Verified functional or matching C++ | **5,400** (10.89%) |
+| Reconstruction | — of which byte-**identical** C++ | 3,048 (6.15%) |
+| Reconstruction | Compiled sources still honestly `DIFFER` | 38 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
-| Auto-RE intake | Generated candidates / structural checker PASS | 846 / 832 |
+| Auto-RE intake | Generated candidates / structural checker PASS | 850 / 836 |
 | Boot path | GFMain direct-call sites proven | **257 / 257** (100.00%) |
 | Boot path | Callable authored GFMain phases | **10 / 10** (100.00%) |
 | Boot path | Current Phase 10 direct calls proven | **21 / 21** (100.00%) |
 | Modern C++23 | GFMain phases promoted into the modern startup lane | **0 / 10** (0.00%) |
 
-Counts above are from the 2026-07-30 canonical refresh:
+Counts above are from the 2026-07-31 canonical refresh:
 `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json`,
 `rebuild/COVERAGE.md`, and the naming-quality reports.
 

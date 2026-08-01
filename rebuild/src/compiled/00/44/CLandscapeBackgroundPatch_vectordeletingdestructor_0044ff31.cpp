@@ -35,41 +35,5 @@ __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_des
         _emit 0xc2
         _emit 0x04
         _emit 0x00
-        _emit 0x56
-        _emit 0x6a
-        _emit 0x2c
-        _emit 0xe8
-        _emit 0xbf
-        _emit 0xea
-        _emit 0x7a
-        _emit 0x00
-        _emit 0x8b
-        _emit 0xf0
-        _emit 0x85
-        _emit 0xf6
-        _emit 0x59
-        _emit 0x74
-        _emit 0x11
-        _emit 0x8b
-        _emit 0xce
-        _emit 0xe8
-        _emit 0x57
-        _emit 0xc1
-        _emit 0xff
-        _emit 0xff
-        _emit 0xc7
-        _emit 0x06
-        _emit 0xe4
-        _emit 0x28
-        _emit 0x23
-        _emit 0x01
-        _emit 0x8b
-        _emit 0xc6
-        _emit 0x5e
-        _emit 0xc3
-        _emit 0x33
-        _emit 0xc0
-        _emit 0x5e
-        _emit 0xc3
     }
 }

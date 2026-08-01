@@ -1,8 +1,6 @@
 struct CInner { int x; };
 extern "C" void __fastcall CInner_dtor(void* self);
 extern "C" void __cdecl engine_delete(void* p);
-extern "C" void* __cdecl engine_new(unsigned int sz);
-extern "C" void __fastcall CLandscapeBackgroundPatch_ctor(void* self);
 extern void* const CLandscapeBackgroundPatch_vftable[];
 
 struct CLandscapeBackgroundPatch { void* vtbl; };
@@ -23,15 +21,5 @@ __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_des
         mov  eax, esi
         pop  esi
         ret  4
-        push 0x38
-        call engine_new
-        test eax, eax
-        pop  ecx
-        je   L2
-        mov  ecx, eax
-        jmp  CLandscapeBackgroundPatch_ctor
-    L2:
-        xor  eax, eax
-        ret
     }
 }

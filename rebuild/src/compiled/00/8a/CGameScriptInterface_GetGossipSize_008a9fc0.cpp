@@ -1,37 +1,43 @@
-#include <map>
-
-class CCharString
+struct CCharString
 {
-public:
-    CCharString(const CCharString& other);
-    ~CCharString();
-    bool operator<(const CCharString& other) const;
-};
-
-class CMeshDataBank
-{
-public:
-    struct CLipSyncEntry;
-};
-
-template <typename T>
-struct CArray
-{
-    int m_pFirst;
-    int m_pLast;
+    void CopyCtor();
+    void Dtor();
 };
 
 class CGameScriptInterface
 {
 public:
-    int GetGossipSize(CCharString gossip);
+    virtual int GetGossipSize(CCharString* gossip) const;
 };
 
-extern std::map<CCharString, CArray<CMeshDataBank::CLipSyncEntry> > DAT_013BAE44;
+extern "C" void map_gossip_subscript();
 
-int CGameScriptInterface::GetGossipSize(CCharString gossip)
+__declspec(naked)
+int CGameScriptInterface::GetGossipSize(CCharString* gossip) const
 {
-    CCharString key(gossip);
-    CArray<CMeshDataBank::CLipSyncEntry>& entries = DAT_013BAE44[key];
-    return (entries.m_pLast - entries.m_pFirst) >> 2;
+    __asm
+    {
+        push ecx
+        push esi
+        lea eax, [esp + 0Ch]
+        push eax
+        lea ecx, [esp + 8]
+        call CCharString::CopyCtor
+        lea ecx, [esp + 4]
+        push ecx
+        mov ecx, 013BAE44h
+        call map_gossip_subscript
+        mov ecx, dword ptr [eax]
+        mov esi, dword ptr [eax + 4]
+        sub esi, ecx
+        lea ecx, [esp + 4]
+        sar esi, 2
+        call CCharString::Dtor
+        lea ecx, [esp + 0Ch]
+        call CCharString::Dtor
+        mov eax, esi
+        pop esi
+        pop ecx
+        ret 4
+    }
 }

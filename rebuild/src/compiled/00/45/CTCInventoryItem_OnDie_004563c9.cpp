@@ -1,7 +1,5 @@
 extern "C" void freex(void*);
-extern "C" void* newx(unsigned int);
 extern "C" void basedie(void);
-extern "C" void thingctor(void);
 extern "C" void* g_vtbl;
 
 __declspec(naked) void __fastcall CTCInventoryItem_OnDie(void* self)
@@ -20,15 +18,5 @@ __declspec(naked) void __fastcall CTCInventoryItem_OnDie(void* self)
         mov ecx, esi
         pop esi
         jmp basedie
-        push 0x70
-        call newx
-        test eax, eax
-        pop ecx
-        je short L2
-        mov ecx, eax
-        jmp thingctor
-    L2:
-        xor eax, eax
-        ret
     }
 }

@@ -1621,7 +1621,7 @@ def main():
         button_right.save(args.button_right_output)
         component_output = (
             " components=%dx%d title=%dx%d button=%dx%d+%dx%d+%dx%d "
-            "oracle=PIXEL_IDENTICAL outputs=%s,%s,%s,%s,%s" %
+            "bake_selfcheck=BAKE_SELF_CONSISTENT outputs=%s,%s,%s,%s,%s" %
             (
                 components.width,
                 components.height,

@@ -1,8 +1,8 @@
 # Curated C++ promotion queue
 
-Generated: `2026-07-30T18:49:04-06:00`
+Generated: `2026-07-31T18:18:13-06:00`
 
-Uncompiled auto-RE candidates: **465**. Showing: **100**. Semantic-review quarantine: **90**.
+Uncompiled auto-RE candidates: **469**. Showing: **100**. Semantic-review quarantine: **90**.
 
 Ranking favors checker/integrity/signature PASS and candidates without known source-level hazards, then the smallest declaration, dependency, VC7.1, and source-size repair surface. Structural fidelity does not by itself make an unsafe C++ expression promotable; every promotion still needs semantic review, a focused behavior oracle, and retail comparison.
 

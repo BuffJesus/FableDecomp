@@ -3,12 +3,11 @@ struct CActiveFile { void* p; };
 extern "C" void __cdecl CActiveFile_BaseCall(void);
 extern "C" void __cdecl CActiveFile_FreeBuf(void);
 
-// Byte-exact reconstruction of OnReadFinished (+ 3 trailing reset thunks the
-// oracle captured contiguously). rel32 call targets are relocation-masked.
+// Byte-exact reconstruction of OnReadFinished. rel32 call targets are
+// relocation-masked. Trailing reset thunks were over-captured; dropped.
 __declspec(naked) void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     __asm {
-        // OnReadFinished
         push esi
         mov  esi, ecx
         call CActiveFile_BaseCall     // e8 rel32
@@ -21,29 +20,5 @@ __declspec(naked) void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
     skip:
         pop  esi
         ret
-
-        // reset thunk A
-        mov  eax, ecx
-        xor  ecx, ecx
-        mov  dword ptr [eax], ecx
-        mov  dword ptr [eax+4], ecx
-        mov  dword ptr [eax+8], ecx
-        ret  4
-
-        // reset thunk B
-        mov  eax, ecx
-        xor  ecx, ecx
-        mov  dword ptr [eax], ecx
-        mov  dword ptr [eax+4], ecx
-        mov  dword ptr [eax+8], ecx
-        ret  4
-
-        // reset thunk C
-        mov  eax, ecx
-        xor  ecx, ecx
-        mov  dword ptr [eax], ecx
-        mov  dword ptr [eax+4], ecx
-        mov  dword ptr [eax+8], ecx
-        ret  4
     }
 }

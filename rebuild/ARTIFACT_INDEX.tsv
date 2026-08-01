@@ -1138,7 +1138,11 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00449130		lift/reports/wave3/code/00/44/0x00449130_global_Vector_Reallocate.cpp			rebuild/candidates/snapshots/00/44/0x00449130_global_Vector_Reallocate.cpp	
 00449220		lift/reports/wave3/code/00/44/0x00449220_global_Heap_BuildFromElements.cpp			rebuild/candidates/snapshots/00/44/0x00449220_global_Heap_BuildFromElements.cpp	
 00449270		lift/reports/wave3/code/00/44/0x00449270_global_Heap_OrderAndSort.cpp			rebuild/candidates/snapshots/00/44/0x00449270_global_Heap_OrderAndSort.cpp	
+00449320		lift/reports/wave3/code/00/44/0x00449320_global_CList_PushBack.cpp			rebuild/candidates/snapshots/00/44/0x00449320_global_CList_PushBack.cpp	
 00449420	CLandscapeBackgroundPatch		rebuild/src/compiled/00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_00449420.cpp	rebuild/tests/00/44/CLandscapeBackgroundPatch_vectordeletingdestructor_00449420_test.cpp		rebuild/build/candidates-Release/00/44/00449420
+00449440		lift/reports/wave3/code/00/44/0x00449440_global_Vector_InsertElement.cpp			rebuild/candidates/snapshots/00/44/0x00449440_global_Vector_InsertElement.cpp	
+004494d0		lift/reports/wave3/code/00/44/0x004494D0_global_Heap_SiftDown.cpp			rebuild/candidates/snapshots/00/44/0x004494D0_global_Heap_SiftDown.cpp	
+004495d0		lift/reports/wave3/code/00/44/0x004495D0_global_SoundPair_MakeHeap.cpp			rebuild/candidates/snapshots/00/44/0x004495D0_global_SoundPair_MakeHeap.cpp	
 00449630	CGuiVarTransferBool		rebuild/src/compiled/00/44/CGuiVarTransferBool_TransferToGui_00449630.cpp	rebuild/tests/00/44/CGuiVarTransferBool_TransferToGui_00449630_test.cpp		rebuild/build/candidates-Release/00/44/00449630
 00449650	CTCVillage		rebuild/src/compiled/00/44/CTCVillage_OnInitialActivate_00449650.cpp	rebuild/tests/00/44/CTCVillage_OnInitialActivate_00449650_test.cpp		rebuild/build/candidates-Release/00/44/00449650
 004496b0	CAIStateGroup_IdleAtHome		rebuild/src/compiled/00/44/CAIStateGroupIdleAtHome_InitCreaturePosition_004496b0.cpp	rebuild/tests/00/44/CAIStateGroupIdleAtHome_InitCreaturePosition_004496b0_test.cpp		rebuild/build/candidates-Release/00/44/004496b0
@@ -2664,7 +2668,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00597bf2	CFrontEndManager		rebuild/src/compiled/00/59/CFrontEndManager_GotoPreviousScreen_00597bf2.cpp	rebuild/tests/00/59/CFrontEndManager_GotoPreviousScreen_00597bf2_test.cpp		rebuild/build/candidates-Release/00/59/00597bf2
 0059899a	CFrontEndManager		rebuild/src/compiled/00/59/CFrontEndManager_LoadProfile_0059899a.cpp	rebuild/tests/00/59/CFrontEndManager_LoadProfile_0059899a_test.cpp		rebuild/build/candidates-Release/00/59/0059899a
 00599d5c	CFrontEndManager		rebuild/src/compiled/00/59/CFrontEndManager_DoPressStart_00599d5c.cpp	rebuild/tests/00/59/CFrontEndManager_DoPressStart_00599d5c_test.cpp		rebuild/build/candidates-Release/00/59/00599d5c
-0059a238			rebuild/src/compiled/00/59/CFrontEndManager_Action_0059a238.cpp	rebuild/tests/00/59/CFrontEndManager_Action_0059a238_test.cpp		
+0059a238			rebuild/src/compiled/00/59/CFrontEndManager_Action_0059a238_match.cpp	rebuild/tests/00/59/CFrontEndManager_Action_0059a238_test.cpp		
 0059a8f3	CFrontEndManager		rebuild/src/compiled/00/59/FrontEndDequeIterator_Distance_0059a8f3.cpp	rebuild/tests/00/59/FrontEndDequeIterator_Distance_0059a8f3_test.cpp		rebuild/build/candidates-Release/00/59/0059a8f3
 0059a959	CFrontEndManager		rebuild/src/compiled/00/59/FrontEndHistoryDequeIterator_SetNode_0059a959.cpp	rebuild/tests/00/59/FrontEndHistoryDequeIterator_SetNode_0059a959_test.cpp		rebuild/build/candidates-Release/00/59/0059a959
 0059a970	CFrontEndManager		rebuild/src/compiled/00/59/FrontEndHistoryDequeIterator_BlockEndSlot_0059a970.cpp	rebuild/tests/00/59/FrontEndHistoryDequeIterator_BlockEndSlot_0059a970_test.cpp		rebuild/build/candidates-Release/00/59/0059a970

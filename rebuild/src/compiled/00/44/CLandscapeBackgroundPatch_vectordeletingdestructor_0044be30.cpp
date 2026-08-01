@@ -1,54 +1,33 @@
-// `vector_deleting_destructor' for CLandscapeBackgroundPatch
-// Retail slices two adjacent COMDATs (the scalar-deleting-destructor thunk +
-// an inlined container tidy helper) into one 73-byte region. Reproduced as a
-// single naked function so the whole 73-byte span matches byte-for-byte;
-// the three call sites are real relocations so the parity mask handles them.
+// CLandscapeBackgroundPatch::`vector deleting destructor' @ 0x0044BE30
+// Retail = 30 bytes: a compiler-generated scalar/vector deleting destructor
+//   push esi; mov esi,ecx; call <base dtor>; test byte[esp+8],1; je +9;
+//   push esi; call <operator delete>; add esp,4; mov eax,esi; pop esi; ret 4
+// A deleting destructor is compiler glue with no direct C++ source, so it is
+// reconstructed as minimal naked asm; the two call targets are real relocations
+// (parity masks them) -> RELOC match. This is the genuine function, correctly bounded.
+//
+// RE-BOUNDED 2026-07-31 (audit slice-family remediation): the prior candidate
+// OVER-CAPTURED, appending 0xcc padding AND a whole second, unrelated function
+// (a container-tidy helper) to reach 73 bytes -> DIFFER(73v30). Fusing an adjacent
+// COMDAT into this symbol to line the bytes up is the shortcut this pass removes.
+// The dropped helper, if wanted, is its own separate target.
 
-extern "C" void __cdecl cbp_dtor(void);       // 0x3c1f0
-extern "C" void __cdecl cbp_free(void);       // 0x7b2b8c
-extern "C" void __cdecl cbp_realloc(void);    // 0x7b2cb6
+extern "C" void __cdecl cbp_base_dtor(void);       // element/base destructor (masked reloc)
+extern "C" void __cdecl cbp_operator_delete(void); // operator delete            (masked reloc)
 
 __declspec(naked) void* CLandscapeBackgroundPatch_vector_deleting_destructor(void) {
     __asm {
-        // ---- func1: scalar deleting destructor (this=ecx, flags @ [esp+8]) ----
         push esi
         mov  esi, ecx
-        call cbp_dtor
+        call cbp_base_dtor
         test byte ptr [esp+8], 1
         je   skip_free
         push esi
-        call cbp_free
+        call cbp_operator_delete
         add  esp, 4
     skip_free:
         mov  eax, esi
         pop  esi
         ret  4
-        // ---- padding ----
-        _emit 0xcc
-        _emit 0xcc
-        // ---- func2: container tidy helper (this=ecx) ----
-        push edi
-        mov  edi, ecx
-        mov  eax, [edi+4]
-        cmp  eax, eax
-        mov  ecx, [edi]
-        jne  do_realloc
-        mov  [edi+4], ecx
-        pop  edi
-        ret
-    do_realloc:
-        push esi
-        mov  esi, eax
-        sub  esi, eax
-        push esi
-        push eax
-        push ecx
-        call cbp_realloc
-        add  esp, 0Ch
-        add  eax, esi
-        pop  esi
-        mov  [edi+4], eax
-        pop  edi
-        ret
     }
 }

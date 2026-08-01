@@ -88,7 +88,7 @@ def main() -> int:
         "",
         "The reverse-engineering database is near complete, while functional source reconstruction remains at proof-of-pipeline scale. Auto-RE output is deliberately not counted as reconstructed source until it compiles.",
         "",
-        "The clean-decompile sweep predates later function discovery, so its denominator is 49,082 while the current catalog contains 49,553 functions. The dashboard does not silently extrapolate the missing 471 measurements.",
+        f"The clean-decompile sweep predates later function discovery, so its denominator is {status['clean_decompile_measured']:,} while the current catalog contains {total:,} functions. The dashboard does not silently extrapolate the missing {total - status['clean_decompile_measured']:,} measurements.",
         "",
         "## Current gates",
         "",

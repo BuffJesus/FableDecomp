@@ -8,7 +8,7 @@ to structural review; it cannot set `hookApproved`.
 - Unique retail target addresses: 476
 - Needs reversal: 2
 - Agent reviewed: 183
-- Implementation verified: 289
+- Implementation verified: 291
 - Hook approved: 0
 - Direct wrapper/retail signatures: 171
 - Wrapper adapters required: 279
