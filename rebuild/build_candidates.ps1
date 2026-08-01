@@ -39254,6 +39254,90 @@ $catalog = @(
         TestSource = '00/89/CGameScriptInterface_AddBoast_00893060_test.cpp'
         PassPattern = 'BOAST_OK'
     }
+    [pscustomobject]@{
+        Address = '0088f960'
+        Module = '_global'
+        Source = '00/88/global_SetSaveGameMarkerPos_0088f960.cpp'
+        TestSource = '00/88/global_SetSaveGameMarkerPos_0088f960_test.cpp'
+        PassPattern = 'TEST_PASS_MARKER_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088fe30'
+        Module = '_global'
+        Source = '00/88/global_GetTimeOfDay_0088fe30.cpp'
+        TestSource = '00/88/global_GetTimeOfDay_0088fe30_test.cpp'
+        PassPattern = 'TEST_PASS_GETTIMEOFDAY_0088FE30'
+    }
+    [pscustomobject]@{
+        Address = '0088fe40'
+        Module = '_global'
+        Source = '00/88/global_IsTimeOfDayBetween_0088fe40.cpp'
+        TestSource = '00/88/global_IsTimeOfDayBetween_0088fe40_test.cpp'
+        PassPattern = 'MARKER_OK_IsTimeOfDayBetween'
+    }
+    [pscustomobject]@{
+        Address = '0088fe80'
+        Module = '_global'
+        Source = '00/88/global_SetTimeAsStopped_0088fe80.cpp'
+        TestSource = '00/88/global_SetTimeAsStopped_0088fe80_test.cpp'
+        PassPattern = 'SET_TIME_AS_STOPPED_OK'
+    }
+    [pscustomobject]@{
+        Address = '008907c0'
+        Module = '_global'
+        Source = '00/89/global_RemoveConversation_008907c0.cpp'
+        TestSource = '00/89/global_RemoveConversation_008907c0_test.cpp'
+        PassPattern = 'RemoveConversation_PASS_FIELD7C'
+    }
+    [pscustomobject]@{
+        Address = '00892d70'
+        Module = '_global'
+        Source = '00/89/global_SetCreatureGeneratorsEnabledDuringScript_00892d70.cpp'
+        TestSource = '00/89/global_SetCreatureGeneratorsEnabledDuringScript_00892d70_test.cpp'
+        PassPattern = 'SETCREATUREGEN_OK'
+    }
+    [pscustomobject]@{
+        Address = '008901a0'
+        Module = '_global'
+        Source = '00/89/global_RadialBlurSetCenterWorldPos_008901a0.cpp'
+        TestSource = '00/89/global_RadialBlurSetCenterWorldPos_008901a0_test.cpp'
+        PassPattern = 'RADIALBLUR_CENTER_CHASE_OK'
+    }
+    [pscustomobject]@{
+        Address = '008a9dd0'
+        Module = '_global'
+        Source = '00/8a/global_AddNewRumourToCategory_008a9dd0.cpp'
+        TestSource = '00/8a/global_AddNewRumourToCategory_008a9dd0_test.cpp'
+        PassPattern = 'PASS_ADDRUMOUR_9DD0'
+    }
+    [pscustomobject]@{
+        Address = '008a9e30'
+        Module = '_global'
+        Source = '00/8a/global_AddGossipVillage_008a9e30.cpp'
+        TestSource = '00/8a/global_AddGossipVillage_008a9e30_test.cpp'
+        PassPattern = 'CGameScriptInterface_008A9E30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008915b0'
+        Module = '_global'
+        Source = '00/89/global_SetBoastAsFailed_008915b0.cpp'
+        TestSource = '00/89/global_SetBoastAsFailed_008915b0_test.cpp'
+        PassPattern = 'TEST_PASS_SETBOASTASFAILED'
+    }
+    [pscustomobject]@{
+        Address = '009f16f0'
+        Module = '_global'
+        Source = '00/9f/global_AddPackage_009f16f0.cpp'
+        TestSource = '00/9f/global_AddPackage_009f16f0_test.cpp'
+        PassPattern = 'BEHAVIOR_TEST_PASS_009F16F0'
+    }
+    [pscustomobject]@{
+        Address = '0088fc60'
+        Module = '_global'
+        Source = '00/88/global_GiveHeroExpression_0088fc60.cpp'
+        TestSource = '00/88/global_GiveHeroExpression_0088fc60_test.cpp'
+        PassPattern = 'GIVEHEROEXPRESSION_TEST_OK'
+    }
 )
 
 $requestedAddresses = @(
