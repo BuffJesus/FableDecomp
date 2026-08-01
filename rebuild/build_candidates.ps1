@@ -39338,6 +39338,55 @@ $catalog = @(
         TestSource = '00/88/global_GiveHeroExpression_0088fc60_test.cpp'
         PassPattern = 'GIVEHEROEXPRESSION_TEST_OK'
     }
+    [pscustomobject]@{
+        Address = '00a026d0'
+        Module = 'CDefinitionManager'
+        Source = '00/a0/CDefinitionManager_GetDefClassIndexFromGlobalIndex_00a026d0.cpp'
+        TestSource = '00/a0/CDefinitionManager_GetDefClassIndexFromGlobalIndex_00a026d0_test.cpp'
+        PassPattern = 'GETDEFCLASSINDEX_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c96430'
+        Module = 'CDefinitionManager'
+        Source = '00/c9/CDefinitionManager_GetPDefFromClassIndex_00c96430.cpp'
+        TestSource = '00/c9/CDefinitionManager_GetPDefFromClassIndex_00c96430_test.cpp'
+        PassPattern = 'PDEF_CLASSIDX_OK'
+    }
+    [pscustomobject]@{
+        Address = '009acce0'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_GetDefClassTypeNameFromGlobalIndex_009acce0.cpp'
+        TestSource = '00/9a/CDefinitionManager_GetDefClassTypeNameFromGlobalIndex_009acce0_test.cpp'
+        PassPattern = 'TESTOK_009ACCE0'
+    }
+    [pscustomobject]@{
+        Address = '009accc0'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_GetDefNameFromGlobalIndex_009accc0.cpp'
+        TestSource = '00/9a/CDefinitionManager_GetDefNameFromGlobalIndex_009accc0_test.cpp'
+        PassPattern = 'TEST_PASS_GETDEFNAME_9ACCC0'
+    }
+    [pscustomobject]@{
+        Address = '009d4a20'
+        Module = 'CDefStringTable'
+        Source = '00/9d/CDefStringTable_GetStringCRC_009d4a20.cpp'
+        TestSource = '00/9d/CDefStringTable_GetStringCRC_009d4a20_test.cpp'
+        PassPattern = 'GETSTRINGCRC_OK'
+    }
+    [pscustomobject]@{
+        Address = '009d49f0'
+        Module = 'CDefStringTable'
+        Source = '00/9d/CDefStringTable_GetStringAsCharArray_009d49f0.cpp'
+        TestSource = '00/9d/CDefStringTable_GetStringAsCharArray_009d49f0_test.cpp'
+        PassPattern = 'GETSTRINGASCHARARRAY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009ada10'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_GetPDefFromGlobalIndexb_009ada10.cpp'
+        TestSource = '00/9a/CDefinitionManager_GetPDefFromGlobalIndexb_009ada10_test.cpp'
+        PassPattern = 'GETPDEFFROMGLOBALINDEX_B_009ADA10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
