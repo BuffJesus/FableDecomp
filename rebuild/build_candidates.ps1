@@ -39198,6 +39198,13 @@ $catalog = @(
         TestSource = '00/88/CGameScriptInterface_SetGuildMasterMessages_0088e200_test.cpp'
         PassPattern = 'GUILDMASTER_OK'
     }
+    [pscustomobject]@{
+        Address = '0088e6f0'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_AreEntitiesEnemies_0088e6f0.cpp'
+        TestSource = '00/88/CGameScriptInterface_AreEntitiesEnemies_0088e6f0_test.cpp'
+        PassPattern = 'ENEMIES_OK'
+    }
 )
 
 $requestedAddresses = @(
