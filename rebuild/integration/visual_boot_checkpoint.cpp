@@ -2,6 +2,7 @@
 #include "fable_visual_d3d9.h"
 #include "frontend_startup_sequence.h"
 #include "retail_video_bridge.h"
+#include "detail_screen_tables.h"
 
 #include <string.h>
 
@@ -1922,25 +1923,21 @@ namespace
     bool g_VisualAboutMenuActive = false;
     unsigned int g_VisualDetailScreen = 0;
     unsigned int g_VisualDetailSelection = 0;
-    const unsigned int kVisualDetailRowCounts[3] = {10, 3, 10};
-    const unsigned int kVisualDetailValueCounts[3][10] = {
-        {2, 2, 2, 10, 2, 16, 2, 2, 2, 2},
-        {11, 11, 11, 0, 0, 0, 0, 0, 0, 0},
-        {3, 4, 3, 4, 4, 4, 18, 2, 4, 3}
-    };
-    const int kVisualDetailRowY[3][10] = {
-        {90, 120, 150, 180, 210, 240, 270, 300, 330, 360},
-        {130, 190, 250, 0, 0, 0, 0, 0, 0, 0},
-        {90, 120, 150, 180, 210, 240, 270, 300, 330, 360}
-    };
+    // audit #4: bound to the shared source of truth (detail_screen_tables.h)
+    // so the input hit-test geometry cannot drift from the render side.
+    const unsigned int (&kVisualDetailRowCounts)[3] =
+        fable_detail_tables::kRowCounts;
+    const unsigned int (&kVisualDetailValueCounts)[3][10] =
+        fable_detail_tables::kValueCounts;
+    const int (&kVisualDetailRowY)[3][10] =
+        fable_detail_tables::kRowY;
     const unsigned int kVisualDetailDefaults[3][10] = {
         {0, 0, 1, 4, 1, 15, 1, 1, 1, 1},
         {6, 8, 9, 0, 0, 0, 0, 0, 0, 0},
         {1, 0, 0, 1, 1, 1, 2, 0, 1, 0}
     };
-    const unsigned int kVisualRedefineDefaults[9] = {
-        31, 27, 9, 12, 1, 2, 3, 3, 3
-    };
+    const unsigned int (&kVisualRedefineDefaults)[9] =
+        fable_detail_tables::kRedefineDefaults;
     const unsigned int kVisualRedefineArrowDefaults[9] = {
         41, 42, 43, 44, 1, 2, 3, 3, 3
     };

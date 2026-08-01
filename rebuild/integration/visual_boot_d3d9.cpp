@@ -1,4 +1,5 @@
 #include "fable_visual_d3d9.h"
+#include "detail_screen_tables.h"
 #include "fable_render_state.h"
 #include "fable_render2d_vertex_queue.h"
 #include "fable_render_capture.h"
@@ -167,17 +168,14 @@ namespace
     const fable_i32 kMainMenuRowYOffsets[7] = {
         0, 30, 60, 120, 180, 210, 240
     };
-    const fable_u32 kDetailRowCounts[3] = {10, 3, 10};
-    const fable_u32 kDetailValueCounts[3][10] = {
-        {2, 2, 2, 10, 2, 16, 2, 2, 2, 2},
-        {11, 11, 11, 0, 0, 0, 0, 0, 0, 0},
-        {3, 4, 3, 4, 4, 4, 18, 2, 4, 3}
-    };
-    const fable_i32 kDetailRowY[3][10] = {
-        {90, 120, 150, 180, 210, 240, 270, 300, 330, 360},
-        {130, 190, 250, 0, 0, 0, 0, 0, 0, 0},
-        {90, 120, 150, 180, 210, 240, 270, 300, 330, 360}
-    };
+    // audit #4: bound to the shared source of truth (detail_screen_tables.h)
+    // so the render geometry cannot drift from the input hit-test side.
+    const fable_u32 (&kDetailRowCounts)[3] =
+        fable_detail_tables::kRowCounts;
+    const fable_u32 (&kDetailValueCounts)[3][10] =
+        fable_detail_tables::kValueCounts;
+    const fable_i32 (&kDetailRowY)[3][10] =
+        fable_detail_tables::kRowY;
     // Detail-screen hover overlay atlas origins (mirror of the Python
     // DETAIL_*_ATLAS_* constants in tools/render_fable_frontend_subscreens.py).
     // All in the OPTIONS component-atlas free region x>=1016; keep in lock-step
@@ -201,9 +199,8 @@ namespace
     const fable_i32 kDetailFooterHoverApplyDesignX = 362;
     const fable_i32 kDetailFooterHoverApplyDesignY = 424;
     const fable_u32 kRedefineKeyValueCount = 55;
-    const fable_u32 kRedefineDefaultKeyValues[9] = {
-        31, 27, 9, 12, 1, 2, 3, 3, 3
-    };
+    const fable_u32 (&kRedefineDefaultKeyValues)[9] =
+        fable_detail_tables::kRedefineDefaults;
 
     FableD3D9* g_Direct3D = 0;
     FableD3DDevice9* g_Device = 0;
