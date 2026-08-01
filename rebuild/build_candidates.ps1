@@ -39562,6 +39562,76 @@ $catalog = @(
         TestSource = '00/99/CCharString_CCharStringcopy_0099ec30_test.cpp'
         PassPattern = 'COPY_OK_MARKER'
     }
+    [pscustomobject]@{
+        Address = '0099af10'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_operatorcharconstptr2_0099af10.cpp'
+        TestSource = '00/99/CCharString_operatorcharconstptr2_0099af10_test.cpp'
+        PassPattern = 'CCHARSTRING_OP_2_OK'
+    }
+    [pscustomobject]@{
+        Address = '0099b4d0'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_UnassignString_0099b4d0.cpp'
+        TestSource = '00/99/CWideString_UnassignString_0099b4d0_test.cpp'
+        PassPattern = 'UNASSIGN_STRING_OK'
+    }
+    [pscustomobject]@{
+        Address = '009aad60'
+        Module = '_global'
+        Source = '00/9a/global_TreeLbound_009aad60.cpp'
+        TestSource = '00/9a/global_TreeLbound_009aad60_test.cpp'
+        PassPattern = 'TREE_LBOUND_OK'
+    }
+    [pscustomobject]@{
+        Address = '0099b510'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_destructor_0099b510.cpp'
+        TestSource = '00/99/CWideString_destructor_0099b510_test.cpp'
+        PassPattern = 'FABLETLC_WIDE_STRING_DESTRUCTOR_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfeed8'
+        Module = '_global'
+        Source = '00/bf/global_ehvectordestructoriterator_00bfeed8.cpp'
+        TestSource = '00/bf/global_ehvectordestructoriterator_00bfeed8_test.cpp'
+        PassPattern = 'PASS_00BFEED8_OK'
+    }
+    [pscustomobject]@{
+        Address = '009a0590'
+        Module = 'CCharString'
+        Source = '00/9a/CCharString_InitFromCStr_009a0590.cpp'
+        TestSource = '00/9a/CCharString_InitFromCStr_009a0590_test.cpp'
+        PassPattern = 'TEST_PASS_marker_InitFromCStr'
+    }
+    [pscustomobject]@{
+        Address = '009a9bf0'
+        Module = 'CCountedPointer'
+        Source = '00/9a/CCountedPointer_CCountedPointeroperatorassign_009a9bf0.cpp'
+        TestSource = '00/9a/CCountedPointer_CCountedPointeroperatorassign_009a9bf0_test.cpp'
+        PassPattern = 'PASS_009a9bf0'
+    }
+    [pscustomobject]@{
+        Address = '009a9d10'
+        Module = 'CCountedPointer'
+        Source = '00/9a/CCountedPointer_CCountedPointerCFileInfoconstructa_009a9d10.cpp'
+        TestSource = '00/9a/CCountedPointer_CCountedPointerCFileInfoconstructa_009a9d10_test.cpp'
+        PassPattern = 'FABLETLC_FILEINFO_COUNTED_CTOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00993bc0'
+        Module = 'CDataInputStream'
+        Source = '00/99/CDataInputStream_SetPosition_00993bc0.cpp'
+        TestSource = '00/99/CDataInputStream_SetPosition_00993bc0_test.cpp'
+        PassPattern = 'SETPOSITION_OK'
+    }
+    [pscustomobject]@{
+        Address = '009b9ba0'
+        Module = 'CThingCreatureBase'
+        Source = '00/9b/CThingCreatureBase_SerialiseGameState_009b9ba0.cpp'
+        TestSource = '00/9b/CThingCreatureBase_SerialiseGameState_009b9ba0_test.cpp'
+        PassPattern = 'SERIALISE_GAMESTATE_OK'
+    }
 )
 
 $requestedAddresses = @(

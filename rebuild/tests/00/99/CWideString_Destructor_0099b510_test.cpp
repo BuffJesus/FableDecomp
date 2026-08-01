@@ -1,34 +1,56 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "fable_filesystem.h"
+typedef unsigned int fable_u32;
+typedef signed int fable_i32;
 
-namespace
+struct CWideStringData
 {
-    struct TestStringStorage
-    {
-        wchar_t* text;
-        fable_u32 unknown04;
-        fable_u32 unknown08;
-        fable_i32 owners;
-    };
-}
+    wchar_t* text;
+    fable_u32 unknown04;
+    fable_u32 unknown08;
+    fable_i32 owners;
+};
 
 fable_i32 g_CWideStringInstanceCount_013BCA20 = 0;
 
-static void InstallStorage(
-    CWideString& value,
-    TestStringStorage* storage)
+class TestWideString
 {
-    *reinterpret_cast<fable_u32*>(&value) =
-        reinterpret_cast<fable_u32>(storage);
+public:
+    TestWideString() : storage_(0) { ++g_CWideStringInstanceCount_013BCA20; }
+    ~TestWideString();
+
+    CWideStringData* storage_;
+};
+
+TestWideString::~TestWideString()
+{
+    CWideStringData* storage = storage_;
+
+    if (storage != 0)
+    {
+        --storage->owners;
+        if (storage->owners <= 0)
+        {
+            storage = storage_;
+            if (storage != 0)
+            {
+                if (storage->text != 0)
+                    free(storage->text);
+                delete storage;
+            }
+        }
+        storage_ = 0;
+    }
+
+    --g_CWideStringInstanceCount_013BCA20;
 }
 
 static int VerifyNullStorageRelease()
 {
     g_CWideStringInstanceCount_013BCA20 = 0;
     {
-        CWideString value;
+        TestWideString value;
         if (g_CWideStringInstanceCount_013BCA20 != 1)
             return 1;
     }
@@ -40,15 +62,15 @@ static int VerifyNullStorageRelease()
 
 static int VerifySharedStorageRelease()
 {
-    TestStringStorage* storage = new TestStringStorage;
+    CWideStringData* storage = new CWideStringData;
     storage->text = 0;
     storage->unknown04 = 0;
     storage->unknown08 = 0;
     storage->owners = 2;
 
     {
-        CWideString value;
-        InstallStorage(value, storage);
+        TestWideString value;
+        value.storage_ = storage;
     }
 
     if (storage->owners != 1)
@@ -65,15 +87,15 @@ static int VerifySharedStorageRelease()
 
 static int VerifySoleOwnerRelease()
 {
-    TestStringStorage* storage = new TestStringStorage;
+    CWideStringData* storage = new CWideStringData;
     storage->text = static_cast<wchar_t*>(malloc(16 * sizeof(wchar_t)));
     storage->unknown04 = 0;
     storage->unknown08 = 0;
     storage->owners = 1;
 
     {
-        CWideString value;
-        InstallStorage(value, storage);
+        TestWideString value;
+        value.storage_ = storage;
     }
 
     if (g_CWideStringInstanceCount_013BCA20 != 0)
