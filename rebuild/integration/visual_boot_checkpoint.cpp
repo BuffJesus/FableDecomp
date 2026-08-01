@@ -1949,6 +1949,13 @@ namespace
     unsigned int g_VisualDetailSavedValues[3][10] = {};
     unsigned int g_VisualRedefineHover = 0;
     unsigned int g_VisualRedefineResetHover = 0;
+    // Detail-screen (Gameplay/Video/Audio) footer + arrow hover mirrors.
+    // g_VisualDetailButtonHover: 0=none, 1=Cancel, 2=Defaults, 3=Apply.
+    // g_VisualDetailArrowHoverSide: 0=none, 1=left arrow, 2=right arrow;
+    // g_VisualDetailArrowHoverRow: the value row under the hovered arrow.
+    unsigned int g_VisualDetailButtonHover = 0;
+    unsigned int g_VisualDetailArrowHoverRow = 0;
+    unsigned int g_VisualDetailArrowHoverSide = 0;
     unsigned int g_VisualRedefineSelection = 0;
     unsigned int g_VisualRedefineKeys[9] = {};
     unsigned int g_VisualRedefineEntryKeys[9] = {};
@@ -3089,6 +3096,9 @@ namespace
                         g_VisualDetailScreen = 0;
                         g_VisualRedefineHover = 0;
                         g_VisualRedefineResetHover = 0;
+                        g_VisualDetailButtonHover = 0;
+                        g_VisualDetailArrowHoverRow = 0;
+                        g_VisualDetailArrowHoverSide = 0;
                         g_VisualOptionsMenuActive = true;
                         FableSetVisualFrontendDetailScreen(0);
                         FableSetVisualFrontendOptionsMenu(true);
@@ -3108,6 +3118,9 @@ namespace
                         g_VisualDetailScreen = 0;
                         g_VisualRedefineHover = 0;
                         g_VisualRedefineResetHover = 0;
+                        g_VisualDetailButtonHover = 0;
+                        g_VisualDetailArrowHoverRow = 0;
+                        g_VisualDetailArrowHoverSide = 0;
                         g_VisualOptionsMenuActive = true;
                         FableSetVisualFrontendDetailScreen(0);
                         FableSetVisualFrontendOptionsMenu(true);
@@ -3363,12 +3376,95 @@ namespace
                         RevealVisualFrontend(window);
                     }
                     unsigned int resetHover = 0;
-                    if (mouseY >= 389 && mouseY < 453)
+                    // AUDIT #2: the reset hover band was [389,453) while its
+                    // click band is [389,429) -- a 24px dead strip that lit
+                    // but did not click.  Match the click rect so highlight ==
+                    // clickable.
+                    if (mouseY >= 389 && mouseY < 429)
                         resetHover = mouseX < 320 ? 1 : 2;
                     if (g_VisualRedefineResetHover != resetHover)
                     {
                         g_VisualRedefineResetHover = resetHover;
                         FableSetVisualFrontendRedefineResetHover(resetHover);
+                        RevealVisualFrontend(window);
+                    }
+                }
+                // Footer button hover.  The click handler footer rects for
+                // Cancel/Apply are gated only by g_VisualDetailScreen!=0, so
+                // they also fire on Redefine (screen 4) -- AUDIT #1: track the
+                // Cancel/Apply hover on screens 1-4 so Redefine's footer lights
+                // too, but keep Defaults gated to 1-3 (no screen-4 art/rect).
+                unsigned int buttonHover = 0;
+                if (
+                    mouseX >= 20 &&
+                    mouseX < 276 &&
+                    mouseY >= 424 &&
+                    mouseY < 480)
+                {
+                    buttonHover = 1;
+                }
+                else if (
+                    mouseX >= 362 &&
+                    mouseX < 618 &&
+                    mouseY >= 424 &&
+                    mouseY < 480)
+                {
+                    buttonHover = 3;
+                }
+                else if (
+                    g_VisualDetailScreen <= 3 &&
+                    mouseX >= 192 &&
+                    mouseX < 448 &&
+                    mouseY >= 384 &&
+                    mouseY < 424)
+                {
+                    buttonHover = 2;
+                }
+                if (g_VisualDetailButtonHover != buttonHover)
+                {
+                    g_VisualDetailButtonHover = buttonHover;
+                    FableSetVisualFrontendDetailButtonHover(buttonHover);
+                    RevealVisualFrontend(window);
+                }
+                if (g_VisualDetailScreen >= 1 && g_VisualDetailScreen <= 3)
+                {
+                    // Arrow hover mirrors AdjustVisualDetailControl's row scan:
+                    // only rows < kVisualDetailRowCounts are valid (Video has 3;
+                    // rows 3-9 have rowY 0), so phantom rows never highlight.
+                    const unsigned int screenIndex =
+                        g_VisualDetailScreen - 1;
+                    unsigned int arrowRow = 0;
+                    unsigned int arrowSide = 0;
+                    for (
+                        unsigned int detailRow = 0;
+                        detailRow != kVisualDetailRowCounts[screenIndex];
+                        ++detailRow)
+                    {
+                        const int rowTop =
+                            kVisualDetailRowY[screenIndex][detailRow] - 3;
+                        if (mouseY < rowTop || mouseY >= rowTop + 30)
+                            continue;
+                        if (mouseX >= 300 && mouseX < 340)
+                        {
+                            arrowRow = detailRow;
+                            arrowSide = 1;
+                        }
+                        else if (mouseX >= 462 && mouseX < 502)
+                        {
+                            arrowRow = detailRow;
+                            arrowSide = 2;
+                        }
+                        break;
+                    }
+                    if (
+                        g_VisualDetailArrowHoverRow != arrowRow ||
+                        g_VisualDetailArrowHoverSide != arrowSide)
+                    {
+                        g_VisualDetailArrowHoverRow = arrowRow;
+                        g_VisualDetailArrowHoverSide = arrowSide;
+                        FableSetVisualFrontendDetailArrowHover(
+                            arrowRow,
+                            arrowSide);
                         RevealVisualFrontend(window);
                     }
                 }

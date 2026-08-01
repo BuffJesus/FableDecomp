@@ -110,6 +110,11 @@ void FABLE_FASTCALL FableSetVisualFrontendDetailOptionValue(
 void FABLE_FASTCALL FableSetVisualFrontendRedefineHover(fable_u32 hover);
 void FABLE_FASTCALL FableSetVisualFrontendRedefineResetHover(
     fable_u32 hover);
+void FABLE_FASTCALL FableSetVisualFrontendDetailButtonHover(
+    fable_u32 hover);
+void FABLE_FASTCALL FableSetVisualFrontendDetailArrowHover(
+    fable_u32 row,
+    fable_u32 side);
 void FABLE_FASTCALL FableSetVisualFrontendRedefineSelection(
     fable_u32 selection);
 void FABLE_FASTCALL FableSetVisualFrontendRedefineKey(

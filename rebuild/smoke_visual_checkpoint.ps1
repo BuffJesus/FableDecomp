@@ -1093,7 +1093,8 @@ try {
                         [int]$RowY,
                         [string]$PreviousHash,
                         [string]$ScreenshotName = '',
-                        [bool]$UseCancel = $false
+                        [bool]$UseCancel = $false,
+                        [int]$FirstArrowY = 95
                     )
                     Send-DesignMouse 0x0200 320 $RowY
                     Start-Sleep -Milliseconds 80
@@ -1177,6 +1178,81 @@ try {
                             )
                         }
                         $detailHash = $redefineResetHoverHash
+                    }
+                    else {
+                        # Detail-screen (Gameplay/Video/Audio) hover proofs.
+                        # The footer buttons (Cancel/Defaults/Apply) and the
+                        # per-row value arrows must now swap their baked OFF art
+                        # for the ON/HOVERED overlay while the cursor is over
+                        # them, exactly like the Options/About Back helper.
+                        # Move onto Cancel (design 120,450), assert the frame
+                        # changed, then onto Defaults (320,405), Apply
+                        # (490,450), and finally a left value arrow
+                        # (design x 320 in [300,340), the first row band), each
+                        # producing a distinct frame hash from the last.
+                        Send-DesignMouse 0x0200 120 450
+                        Start-Sleep -Milliseconds 150
+                        $detailCancelHoverHash = Get-WindowFrameHash
+                        if ($detailCancelHoverHash -eq $detailHash) {
+                            throw (
+                                "The $Name Cancel footer button did not " +
+                                'enter its recovered ON hover state.'
+                            )
+                        }
+                        Send-DesignMouse 0x0200 320 405
+                        Start-Sleep -Milliseconds 150
+                        $detailDefaultsHoverHash = Get-WindowFrameHash
+                        if ($detailDefaultsHoverHash -eq $detailCancelHoverHash) {
+                            throw (
+                                "The $Name Defaults footer button did not " +
+                                'enter its recovered ON hover state.'
+                            )
+                        }
+                        Send-DesignMouse 0x0200 490 450
+                        Start-Sleep -Milliseconds 150
+                        $detailApplyHoverHash = Get-WindowFrameHash
+                        if ($detailApplyHoverHash -eq $detailDefaultsHoverHash) {
+                            throw (
+                                "The $Name Apply footer button did not " +
+                                'enter its recovered ON hover state.'
+                            )
+                        }
+                        # A value arrow: hover the first row's left arrow
+                        # (design x 320 in [300,340), y $RowY-ish in the first
+                        # row band), then move off it and assert both
+                        # transitions change the frame hash.
+                        Send-DesignMouse 0x0200 320 $FirstArrowY
+                        Start-Sleep -Milliseconds 150
+                        $detailArrowHoverHash = Get-WindowFrameHash
+                        if ($detailArrowHoverHash -eq $detailApplyHoverHash) {
+                            throw (
+                                "The $Name row value arrow did not enter " +
+                                'its recovered HOVERED overlay state.'
+                            )
+                        }
+                        # Move the cursor into dead space; the arrow overlay
+                        # must clear (frame changes back away from the hovered
+                        # frame), proving the hover is not sticky.
+                        Send-DesignMouse 0x0200 320 205
+                        Start-Sleep -Milliseconds 150
+                        $detailArrowClearHash = Get-WindowFrameHash
+                        if ($detailArrowClearHash -eq $detailArrowHoverHash) {
+                            throw (
+                                "The $Name row value arrow hover did not " +
+                                'clear when the cursor left it.'
+                            )
+                        }
+                        $script:detailHoverProof = (
+                            " detail-cancel-hover=" +
+                            "$($detailCancelHoverHash.Substring(0, 12))" +
+                            " detail-defaults-hover=" +
+                            "$($detailDefaultsHoverHash.Substring(0, 12))" +
+                            " detail-apply-hover=" +
+                            "$($detailApplyHoverHash.Substring(0, 12))" +
+                            " detail-arrow-hover=" +
+                            "$($detailArrowHoverHash.Substring(0, 12))"
+                        )
+                        $detailHash = $detailArrowClearHash
                     }
                     if ($ScreenshotName) {
                         $detailBitmap =
@@ -1330,11 +1406,12 @@ try {
                 Send-DesignMouse 0x0202 490 450
                 Start-Sleep -Milliseconds 200
 
+                $script:detailHoverProof = ''
                 $gameplayHash = Test-FrontendDetailScreen `
                     'Gameplay Options' 155 $optionsHoverHash `
                     'frontend-gameplay-options-smoke.png'
                 $videoHash = Test-FrontendDetailScreen `
-                    'Video Options' 185 $gameplayHash
+                    'Video Options' 185 $gameplayHash '' $false 131
                 $audioHash = Test-FrontendDetailScreen `
                     'Audio Options' 215 $videoHash
                 $redefineHash = Test-FrontendDetailScreen `
@@ -1432,6 +1509,8 @@ try {
                     " audio=$($audioHash.Substring(0, 12))" +
                     " redefine=$($redefineHash.Substring(0, 12))" +
                     " redefine-hover=state3" +
+                    $script:detailHoverProof +
+                    " detail-hover=cancel-defaults-apply-arrow" +
                     " back-hover=$($optionsBackHoverHash.Substring(0, 12))" +
                     " quit=$($quitHash.Substring(0, 12))" +
                     " no-hover=$($quitNoHoverHash.Substring(0, 12))" +

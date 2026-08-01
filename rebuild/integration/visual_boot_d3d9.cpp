@@ -178,6 +178,28 @@ namespace
         {130, 190, 250, 0, 0, 0, 0, 0, 0, 0},
         {90, 120, 150, 180, 210, 240, 270, 300, 330, 360}
     };
+    // Detail-screen hover overlay atlas origins (mirror of the Python
+    // DETAIL_*_ATLAS_* constants in tools/render_fable_frontend_subscreens.py).
+    // All in the OPTIONS component-atlas free region x>=1016; keep in lock-step
+    // with the bake or the overlays sample the wrong pixels.
+    const fable_i32 kDetailHoverAtlasOriginX = 1024;
+    const fable_i32 kDetailHoverAtlasOriginY = 2400;
+    const fable_i32 kDetailArrowHoverTileWidth = 200;
+    const fable_i32 kDetailArrowHoverTileHeight = 30;
+    const fable_i32 kDetailArrowHoverLeftAtlasY = 2400;
+    const fable_i32 kDetailArrowHoverRightAtlasY = 2430;
+    const fable_i32 kDetailFooterHoverTileWidth = 256;
+    const fable_i32 kDetailFooterHoverTileHeight = 64;
+    // Per-button atlas Y and design top-left (== glyph top-left, parent_y-16).
+    const fable_i32 kDetailFooterHoverCancelAtlasY = 2464;
+    const fable_i32 kDetailFooterHoverDefaultsAtlasY = 2528;
+    const fable_i32 kDetailFooterHoverApplyAtlasY = 2592;
+    const fable_i32 kDetailFooterHoverCancelDesignX = 20;
+    const fable_i32 kDetailFooterHoverCancelDesignY = 424;
+    const fable_i32 kDetailFooterHoverDefaultsDesignX = 192;
+    const fable_i32 kDetailFooterHoverDefaultsDesignY = 384;
+    const fable_i32 kDetailFooterHoverApplyDesignX = 362;
+    const fable_i32 kDetailFooterHoverApplyDesignY = 424;
     const fable_u32 kRedefineKeyValueCount = 55;
     const fable_u32 kRedefineDefaultKeyValues[9] = {
         31, 27, 9, 12, 1, 2, 3, 3, 3
@@ -269,6 +291,11 @@ namespace
     fable_u32 g_DetailOptionValues[3][10] = {};
     fable_u32 g_RedefineHover = 0;
     fable_u32 g_RedefineResetHover = 0;
+    // Detail-screen footer/arrow hover render state (mirrors the checkpoint's
+    // g_VisualDetail*Hover).  Button: 0=none,1=Cancel,2=Defaults,3=Apply.
+    fable_u32 g_DetailButtonHover = 0;
+    fable_u32 g_DetailArrowHoverRow = 0;
+    fable_u32 g_DetailArrowHoverSide = 0;
     fable_u32 g_RedefineSelection = 0;
     fable_u32 g_RedefineKeyValues[9] = {};
     fable_u32 g_QuitHover = 0;
@@ -1800,6 +1827,9 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     memset(g_DetailOptionValues, 0, sizeof(g_DetailOptionValues));
     g_RedefineHover = 0;
     g_RedefineResetHover = 0;
+    g_DetailButtonHover = 0;
+    g_DetailArrowHoverRow = 0;
+    g_DetailArrowHoverSide = 0;
     g_RedefineSelection = 0;
     memcpy(
         g_RedefineKeyValues,
@@ -2437,6 +2467,110 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
                 0xFFFFFFFFu);
         }
     }
+    // Detail-screen ARROW hover overlay (screens 1-3).  The HOVERED sprite is
+    // baked into a full 200x30 control tile at the arrow's control-tile-local
+    // offset, so drawing that tile over the SAME design rect as the control
+    // tile (x=300, width 200) pixel-aligns it with the baked OFF arrow.  Row is
+    // bound-checked (Video phantom rows 3-9 have rowY 0) before indexing.
+    if (
+        g_DetailScreen >= 1 &&
+        g_DetailScreen <= 3 &&
+        g_DetailArrowHoverSide != 0 &&
+        g_OptionsTexture != 0)
+    {
+        const fable_u32 screenIndex = g_DetailScreen - 1;
+        if (g_DetailArrowHoverRow < kDetailRowCounts[screenIndex])
+        {
+            const fable_i32 tileAtlasY =
+                g_DetailArrowHoverSide == 1
+                    ? kDetailArrowHoverLeftAtlasY
+                    : kDetailArrowHoverRightAtlasY;
+            const float controlLeft =
+                left + 300.0f * designScaleX;
+            const float controlTop =
+                top +
+                static_cast<float>(
+                    kDetailRowY[screenIndex][g_DetailArrowHoverRow] - 3) *
+                designScaleY;
+            AppendVisualQuad(
+                vertices, vertexCount, records, recordCount,
+                g_OptionsTexture,
+                controlLeft,
+                controlTop,
+                controlLeft +
+                    static_cast<float>(kDetailArrowHoverTileWidth) *
+                    designScaleX,
+                controlTop +
+                    static_cast<float>(kDetailArrowHoverTileHeight) *
+                    designScaleY,
+                static_cast<float>(kDetailHoverAtlasOriginX) /
+                    static_cast<float>(g_OptionsWidth),
+                static_cast<float>(tileAtlasY) /
+                    static_cast<float>(g_OptionsHeight),
+                static_cast<float>(
+                    kDetailHoverAtlasOriginX +
+                    kDetailArrowHoverTileWidth) /
+                    static_cast<float>(g_OptionsWidth),
+                static_cast<float>(
+                    tileAtlasY + kDetailArrowHoverTileHeight) /
+                    static_cast<float>(g_OptionsHeight),
+                0xFFFFFFFFu);
+        }
+    }
+    // Detail-screen FOOTER hover overlay.  Cancel(1)/Apply(3) apply on screens
+    // 1-4 (AUDIT #1); Defaults(2) on 1-3.  The ON tile reproduces the baked OFF
+    // glyph+label and is drawn over the OFF glyph's design rect so it fully
+    // covers it (no OFF label shows through).
+    if (
+        g_DetailScreen >= 1 &&
+        g_DetailScreen <= 4 &&
+        g_DetailButtonHover >= 1 &&
+        g_DetailButtonHover <= 3 &&
+        !(g_DetailScreen == 4 && g_DetailButtonHover == 2) &&
+        g_OptionsTexture != 0)
+    {
+        fable_i32 footerAtlasY = kDetailFooterHoverCancelAtlasY;
+        fable_i32 footerDesignX = kDetailFooterHoverCancelDesignX;
+        fable_i32 footerDesignY = kDetailFooterHoverCancelDesignY;
+        if (g_DetailButtonHover == 2)
+        {
+            footerAtlasY = kDetailFooterHoverDefaultsAtlasY;
+            footerDesignX = kDetailFooterHoverDefaultsDesignX;
+            footerDesignY = kDetailFooterHoverDefaultsDesignY;
+        }
+        else if (g_DetailButtonHover == 3)
+        {
+            footerAtlasY = kDetailFooterHoverApplyAtlasY;
+            footerDesignX = kDetailFooterHoverApplyDesignX;
+            footerDesignY = kDetailFooterHoverApplyDesignY;
+        }
+        const float footerLeft =
+            left + static_cast<float>(footerDesignX) * designScaleX;
+        const float footerTop =
+            top + static_cast<float>(footerDesignY) * designScaleY;
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            footerLeft,
+            footerTop,
+            footerLeft +
+                static_cast<float>(kDetailFooterHoverTileWidth) *
+                designScaleX,
+            footerTop +
+                static_cast<float>(kDetailFooterHoverTileHeight) *
+                designScaleY,
+            static_cast<float>(kDetailHoverAtlasOriginX) /
+                static_cast<float>(g_OptionsWidth),
+            static_cast<float>(footerAtlasY) /
+                static_cast<float>(g_OptionsHeight),
+            static_cast<float>(
+                kDetailHoverAtlasOriginX + kDetailFooterHoverTileWidth) /
+                static_cast<float>(g_OptionsWidth),
+            static_cast<float>(
+                footerAtlasY + kDetailFooterHoverTileHeight) /
+                static_cast<float>(g_OptionsHeight),
+            0xFFFFFFFFu);
+    }
     if (
         g_DetailScreen == 4 &&
         g_RedefineHover >= 1 &&
@@ -2991,6 +3125,9 @@ void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen)
     g_DetailScreen = screen;
     g_RedefineHover = 0;
     g_RedefineResetHover = 0;
+    g_DetailButtonHover = 0;
+    g_DetailArrowHoverRow = 0;
+    g_DetailArrowHoverSide = 0;
     g_RedefineSelection = 0;
     if (screen != 0)
     {
@@ -3032,6 +3169,34 @@ void FABLE_FASTCALL FableSetVisualFrontendRedefineResetHover(
     if (g_DetailScreen != 4 || hover > 2)
         return;
     g_RedefineResetHover = hover;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendDetailButtonHover(
+    fable_u32 hover)
+{
+    // Footer hover (1=Cancel,2=Defaults,3=Apply).  Cancel/Apply exist on the
+    // detail screens (1-3) AND Redefine (4) -- AUDIT #1; Defaults is 1-3 only.
+    if (g_DetailScreen < 1 || g_DetailScreen > 4 || hover > 3)
+        return;
+    if (g_DetailScreen == 4 && hover == 2)
+        return;
+    g_DetailButtonHover = hover;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendDetailArrowHover(
+    fable_u32 row,
+    fable_u32 side)
+{
+    // Value arrows only exist on Gameplay/Video/Audio (screens 1-3).  Reject
+    // Options (0) and Redefine (4), and range-check row against the screen's
+    // real row count so a Video phantom row (3-9) can never be stored.
+    if (g_DetailScreen < 1 || g_DetailScreen > 3 || side > 2)
+        return;
+    const fable_u32 screenIndex = g_DetailScreen - 1;
+    if (row >= kDetailRowCounts[screenIndex])
+        return;
+    g_DetailArrowHoverRow = row;
+    g_DetailArrowHoverSide = side;
 }
 
 void FABLE_FASTCALL FableSetVisualFrontendRedefineSelection(

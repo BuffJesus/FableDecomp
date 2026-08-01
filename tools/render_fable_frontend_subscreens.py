@@ -100,6 +100,33 @@ HELPER_SHEET_FRAME_COUNT = 6
 REDEFINE_HOVER_HELPER_FRAME = 5
 REDEFINE_HOVER_STRIP_SIZE = (588, 35)
 REDEFINE_RESET_HOVER_ATLAS_Y = 320
+# Detail-screen (Gameplay/Video/Audio) hover overlays live in the OPTIONS
+# component-atlas (1664 wide, 3840 tall) genuinely-free region x[1024,1664),
+# y>=2400: option-row layers occupy the row-atlas column only for y[0,1920),
+# the save component for y[1920,2400), and the control/redefine columns end
+# well left of x=1024.  These origins are MIRRORED as C++ constants in
+# visual_boot_d3d9.cpp (kDetailHoverAtlasOriginX / kDetailArrowHover* /
+# kDetailFooterHover*) -- keep the two in lock-step.
+DETAIL_HOVER_ATLAS_ORIGIN_X = 1024
+DETAIL_HOVER_ATLAS_ORIGIN_Y = 2400
+# Arrow HOVERED tiles are full 200x30 control tiles so the hovered arrow sits
+# at the IDENTICAL control-tile-local offset (left x=8, right x=162) as the
+# baked arrow and renders over the same design rect (x=300, width 200).
+DETAIL_ARROW_HOVER_TILE_SIZE = CONTROL_TILE_SIZE  # (200, 30)
+DETAIL_ARROW_HOVER_LEFT_ATLAS_Y = DETAIL_HOVER_ATLAS_ORIGIN_Y          # 2400
+DETAIL_ARROW_HOVER_RIGHT_ATLAS_Y = DETAIL_HOVER_ATLAS_ORIGIN_Y + 30    # 2430
+# Footer ON tiles reproduce _draw_helper's 256x64 GLYPH (local 0,0) + the same
+# LABEL so the ON overlay fully covers the baked OFF glyph+label.  Local origin
+# of each tile == design (parent_x, parent_y-16).
+DETAIL_FOOTER_HOVER_TILE_SIZE = (256, 64)
+DETAIL_FOOTER_HOVER_CANCEL_ATLAS_Y = DETAIL_HOVER_ATLAS_ORIGIN_Y + 64      # 2464
+DETAIL_FOOTER_HOVER_DEFAULTS_ATLAS_Y = DETAIL_HOVER_ATLAS_ORIGIN_Y + 128   # 2528
+DETAIL_FOOTER_HOVER_APPLY_ATLAS_Y = DETAIL_HOVER_ATLAS_ORIGIN_Y + 192      # 2592
+# Design rects the footer ON overlays are rendered at (origin = glyph top-left
+# = parent_y-16), mirrored in the C++ render side.
+DETAIL_FOOTER_HOVER_CANCEL_DESIGN = (20, 424)
+DETAIL_FOOTER_HOVER_DEFAULTS_DESIGN = (192, 384)
+DETAIL_FOOTER_HOVER_APPLY_DESIGN = (362, 424)
 REDEFINE_RESET_HOVER_SIZE = (320, 64)
 OPTIONS_LIST_ORIGIN = (200, 150)
 OPTIONS_ROWS = (
@@ -936,6 +963,19 @@ def _option_assets(buf, parsed):
         "back": _decode_named(buf, parsed, "FE_BUTTON_BACK_OFF"),
         "accept": _decode_named(buf, parsed, "FE_BUTTON_ACCEPT_OFF"),
         "button": _decode_named(buf, parsed, "FE_BUTTON_OFF"),
+        # ON/hover art for the detail-screen footer + value arrows.  Routed
+        # through the OPTIONS component atlas free region (x>=1016) so the
+        # 6-frame helper sheet UV math (/6.0, height 2880) stays untouched.
+        # IDs resolve by name in _decode_named; the ON footer glyphs are
+        # FE_BUTTON_BACK_ON/ACCEPT_ON/ON, arrow hover is the SCROLL HOVERED
+        # sprites (same names the About/Redefine/Quit hover art already uses).
+        "back_on": _decode_named(buf, parsed, "FE_BUTTON_BACK_ON"),
+        "accept_on": _decode_named(buf, parsed, "FE_BUTTON_ACCEPT_ON"),
+        "button_on": _decode_named(buf, parsed, "FE_BUTTON_ON"),
+        "left_arrow_hover": _decode_named(
+            buf, parsed, "FE_SCROLL_DOWN_HOVERED_SPRITE"),
+        "right_arrow_hover": _decode_named(
+            buf, parsed, "FE_SCROLL_UP_HOVERED_SPRITE"),
     }
 
 
@@ -1505,6 +1545,13 @@ def build_options_sheet(
                 key_index * REDEFINE_KEY_TILE_SIZE[1],
             ))
 
+    # Detail-screen hover overlays live in the OPTIONS COMPONENT atlas free
+    # region (x>=1016, only exists in the 1664-wide component sheet).  The
+    # 1024-wide oracle sheet has no room there, and the live loader only ever
+    # binds the component sheet (g_OptionsWidth==1664), so gate the bake to it.
+    if include_options_row_atlas:
+        _bake_detail_hover_overlays(sheet, font, assets)
+
     if include_options_row_atlas:
         for row, row_layer in enumerate(
                 build_options_row_layers(font_bank)):
@@ -1516,6 +1563,57 @@ def build_options_sheet(
                 ))
 
     return sheet
+
+
+def _bake_detail_hover_overlays(sheet, font, assets):
+    # Arrows: full 200x30 control tiles carrying only the HOVERED arrow at the
+    # SAME local offset as the baked control-tile arrow (left 8, right 162), so
+    # the overlay pixel-aligns with the OFF arrow when drawn over design x=300.
+    left_hover_tile = Image.new(
+        "RGBA", DETAIL_ARROW_HOVER_TILE_SIZE, (0, 0, 0, 0))
+    left_hover_tile.alpha_composite(assets["left_arrow_hover"], (8, 0))
+    sheet.alpha_composite(
+        left_hover_tile,
+        (DETAIL_HOVER_ATLAS_ORIGIN_X, DETAIL_ARROW_HOVER_LEFT_ATLAS_Y))
+    right_hover_tile = Image.new(
+        "RGBA", DETAIL_ARROW_HOVER_TILE_SIZE, (0, 0, 0, 0))
+    right_hover_tile.alpha_composite(assets["right_arrow_hover"], (162, 0))
+    sheet.alpha_composite(
+        right_hover_tile,
+        (DETAIL_HOVER_ATLAS_ORIGIN_X, DETAIL_ARROW_HOVER_RIGHT_ATLAS_Y))
+
+    # Footer ON tiles: bake the ON glyph+label with the EXACT _draw_helper the
+    # OFF footer uses (same glyph position, same render_line/align for the
+    # label), onto a full design canvas at the OFF parent, then crop the tile
+    # rect (top-left == (parent_x, parent_y-16)).  This makes the ON overlay a
+    # pixel-for-pixel superset of the baked OFF glyph AND its separate text
+    # label, so no OFF label shows through beside the ON glyph.
+    footer_specs = (
+        (assets["back_on"], "Cancel",
+            DETAIL_FOOTER_HOVER_CANCEL_DESIGN,
+            DETAIL_FOOTER_HOVER_CANCEL_ATLAS_Y),
+        (assets["button_on"], "Defaults",
+            DETAIL_FOOTER_HOVER_DEFAULTS_DESIGN,
+            DETAIL_FOOTER_HOVER_DEFAULTS_ATLAS_Y),
+        (assets["accept_on"], "Apply",
+            DETAIL_FOOTER_HOVER_APPLY_DESIGN,
+            DETAIL_FOOTER_HOVER_APPLY_ATLAS_Y),
+    )
+    fw, fh = DETAIL_FOOTER_HOVER_TILE_SIZE
+    for glyph, label, design_origin, atlas_y in footer_specs:
+        # design_origin == glyph top-left == (parent_x, parent_y-16).
+        parent = (design_origin[0], design_origin[1] + 16)
+        footer_canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
+        _draw_helper(footer_canvas, glyph, font, parent, label)
+        footer_tile = footer_canvas.crop((
+            design_origin[0],
+            design_origin[1],
+            design_origin[0] + fw,
+            design_origin[1] + fh,
+        ))
+        sheet.alpha_composite(
+            footer_tile,
+            (DETAIL_HOVER_ATLAS_ORIGIN_X, atlas_y))
 
 
 def _draw_helper(canvas, image, font, parent, text):
