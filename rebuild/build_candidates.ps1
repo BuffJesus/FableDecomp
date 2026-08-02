@@ -39772,6 +39772,167 @@ $catalog = @(
         TestSource = '00/98/CThreadedFile_CThreadedFile_0098dfd0_test.cpp'
         PassPattern = 'FABLETLC_CTHREADEDFILE_CTOR_0098DFD0 PASS'
     }
+    [pscustomobject]@{
+        Address = '004df3eb'
+        Module = 'CObstacleNavigatorExternalInterface'
+        Source = '00/4d/CObstacleNavigatorExternalInterface_CObstacleNavigatorExternalInterfacePeekNavigator_004df3eb.cpp'
+        TestSource = '00/4d/CObstacleNavigatorExternalInterface_CObstacleNavigatorExternalInterfacePeekNavigator_004df3eb_test.cpp'
+        PassPattern = 'PEEK_RADIUS_OK 12.500000'
+    }
+    [pscustomobject]@{
+        Address = '0057463b'
+        Module = 'std'
+        Source = '00/57/std_vectorbooldtor_0057463b.cpp'
+        TestSource = '00/57/std_vectorbooldtor_0057463b_test.cpp'
+        PassPattern = 'FABLETLC_VECTOR_BOOL_DTOR_0057463B PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bc6ed'
+        Module = 'std'
+        Source = '00/5b/std_Destvalpairmusic_005bc6ed.cpp'
+        TestSource = '00/5b/std_Destvalpairmusic_005bc6ed_test.cpp'
+        PassPattern = 'DEST_VAL_PAIR_MUSIC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00625920'
+        Module = 'CTCCreditsUI'
+        Source = '00/62/CTCCreditsUI_CTCCreditsUIDeactivate_00625920.cpp'
+        TestSource = '00/62/CTCCreditsUI_CTCCreditsUIDeactivate_00625920_test.cpp'
+        PassPattern = 'DEACTIVATE_TEST_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00662160'
+        Module = 'CVertexBufferWin32'
+        Source = '00/66/CVertexBufferWin32_CVertexBufferWin32DoSizeof_00662160.cpp'
+        TestSource = '00/66/CVertexBufferWin32_CVertexBufferWin32DoSizeof_00662160_test.cpp'
+        PassPattern = 'PASS_DOSIZEOF_12345'
+    }
+    [pscustomobject]@{
+        Address = '00686d70'
+        Module = 'CAnimateThing'
+        Source = '00/68/CAnimateThing_CAnimateThingGetMeshBank_00686d70.cpp'
+        TestSource = '00/68/CAnimateThing_CAnimateThingGetMeshBank_00686d70_test.cpp'
+        PassPattern = 'PASS_GETMESHBANK_00686d70'
+    }
+    [pscustomobject]@{
+        Address = '0068d830'
+        Module = 'CInputProcessControlCreatureRightStick'
+        Source = '00/68/CInputProcessControlCreatureRightStick_CInputProcessControlCreatureRightStickInit_0068d830.cpp'
+        TestSource = '00/68/CInputProcessControlCreatureRightStick_CInputProcessControlCreatureRightStickInit_0068d830_test.cpp'
+        PassPattern = 'CAND_INIT_ZERO_OK'
+    }
+    [pscustomobject]@{
+        Address = '0068eae0'
+        Module = 'CInputProcessWatchForRangedWeaponThirdPersonModeTermination'
+        Source = '00/68/CInputProcessWatchForRangedWeaponThirdPersonModeTermination_AddToInterface_0068eae0.cpp'
+        TestSource = '00/68/CInputProcessWatchForRangedWeaponThirdPersonModeTermination_AddToInterface_0068eae0_test.cpp'
+        PassPattern = 'RESULT_PASS_MARKER'
+    }
+    [pscustomobject]@{
+        Address = '0068eaf0'
+        Module = 'CInputProcessWatchForWillChargeUpThirdPersonModeTermination'
+        Source = '00/68/CInputProcessWatchForWillChargeUpThirdPersonModeTermination_WillChargeUpTerminationAddToInterface_0068eaf0.cpp'
+        TestSource = '00/68/CInputProcessWatchForWillChargeUpThirdPersonModeTermination_WillChargeUpTerminationAddToInterface_0068eaf0_test.cpp'
+        PassPattern = 'PASS_0068eaf0'
+    }
+    [pscustomobject]@{
+        Address = '006a7140'
+        Module = 'std'
+        Source = '00/6a/std_Consvalpairmorpha_006a7140.cpp'
+        TestSource = '00/6a/std_Consvalpairmorpha_006a7140_test.cpp'
+        PassPattern = 'CONS_VAL_PAIR_MORPH_A_OK'
+    }
+    [pscustomobject]@{
+        Address = '006a73f0'
+        Module = 'std'
+        Source = '00/6a/std_Consvalpairmorphb_006a73f0.cpp'
+        TestSource = '00/6a/std_Consvalpairmorphb_006a73f0_test.cpp'
+        PassPattern = 'CONS_VAL_PAIR_MORPH_B_OK'
+    }
+    [pscustomobject]@{
+        Address = '006a7400'
+        Module = 'std'
+        Source = '00/6a/std_Consvalpairmorphc_006a7400.cpp'
+        TestSource = '00/6a/std_Consvalpairmorphc_006a7400_test.cpp'
+        PassPattern = 'THUNK_FORWARD_OK'
+    }
+    [pscustomobject]@{
+        Address = '006a7580'
+        Module = 'std'
+        Source = '00/6a/std_Consvalpairmorphd_006a7580.cpp'
+        TestSource = '00/6a/std_Consvalpairmorphd_006a7580_test.cpp'
+        PassPattern = 'THUNK_FORWARD_OK'
+    }
+    [pscustomobject]@{
+        Address = '006af620'
+        Module = 'CThingTrackNode'
+        Source = '00/6a/CThingTrackNode_DrawIsDrawable_006af620.cpp'
+        TestSource = '00/6a/CThingTrackNode_DrawIsDrawable_006af620_test.cpp'
+        PassPattern = 'DRAWISDRAWABLE_FORWARD_OK'
+    }
+    [pscustomobject]@{
+        Address = '006af630'
+        Module = 'CThingTrackNode'
+        Source = '00/6a/CThingTrackNode_CThingTrackNodeDrawIsDrawableb_006af630.cpp'
+        TestSource = '00/6a/CThingTrackNode_CThingTrackNodeDrawIsDrawableb_006af630_test.cpp'
+        PassPattern = 'DRAWISDRAWABLE_THUNK_OK'
+    }
+    [pscustomobject]@{
+        Address = '006f06e0'
+        Module = 'CCombatSequenceBase'
+        Source = '00/6f/CCombatSequenceBase_CCombatSequenceBaseIsInterruptable_006f06e0.cpp'
+        TestSource = '00/6f/CCombatSequenceBase_CCombatSequenceBaseIsInterruptable_006f06e0_test.cpp'
+        PassPattern = 'PASS_006f06e0_marker'
+    }
+    [pscustomobject]@{
+        Address = '006f0700'
+        Module = 'CCombatSequenceBase'
+        Source = '00/6f/CCombatSequenceBase_CCombatSequenceBaseIsMeleeSequence_006f0700.cpp'
+        TestSource = '00/6f/CCombatSequenceBase_CCombatSequenceBaseIsMeleeSequence_006f0700_test.cpp'
+        PassPattern = 'MELEE_SEQ_TEST_OK'
+    }
+    [pscustomobject]@{
+        Address = '006f0740'
+        Module = 'CCombatSequenceBase'
+        Source = '00/6f/CCombatSequenceBase_CCombatSequenceBaseIsAllowedOnOuterRing_006f0740.cpp'
+        TestSource = '00/6f/CCombatSequenceBase_CCombatSequenceBaseIsAllowedOnOuterRing_006f0740_test.cpp'
+        PassPattern = 'CCombatSequenceBase_IsAllowedOnOuterRing_TEST_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070c0d0'
+        Module = 'CAnimateThing'
+        Source = '00/70/CAnimateThing_CAnimateThingGetMeshBank2_0070c0d0.cpp'
+        TestSource = '00/70/CAnimateThing_CAnimateThingGetMeshBank2_0070c0d0_test.cpp'
+        PassPattern = 'TEST_PASS_GETMESHBANK2'
+    }
+    [pscustomobject]@{
+        Address = '00787c0c'
+        Module = 'CTCTrapBase'
+        Source = '00/78/CTCTrapBase_ManualReset_00787c0c.cpp'
+        TestSource = '00/78/CTCTrapBase_ManualReset_00787c0c_test.cpp'
+        PassPattern = 'MANUALRESET_GUARD_OK'
+    }
+    [pscustomobject]@{
+        Address = '007a7d10'
+        Module = 'CWorldMap'
+        Source = '00/7a/CWorldMap_PrepareForLoad_007a7d10.cpp'
+        TestSource = '00/7a/CWorldMap_PrepareForLoad_007a7d10_test.cpp'
+        PassPattern = 'PREPAREFORLOAD_OK'
+    }
+    [pscustomobject]@{
+        Address = '007df3d0'
+        Module = 'CTCCameraCollision'
+        Source = '00/7d/CTCCameraCollision_CTCCameraCollisionHasCameraPhysicsMeshObject_007df3d0.cpp'
+        TestSource = '00/7d/CTCCameraCollision_CTCCameraCollisionHasCameraPhysicsMeshObject_007df3d0_test.cpp'
+        PassPattern = 'TESTOK_HASCAMPHYSMESH'
+    }
+    [pscustomobject]@{
+        Address = '007e3010'
+        Module = 'CTCCameraCollision'
+        Source = '00/7e/CTCCameraCollision_CTCCameraCollisionHasCameraPhysicsMeshObject2_007e3010.cpp'
+        TestSource = '00/7e/CTCCameraCollision_CTCCameraCollisionHasCameraPhysicsMeshObject2_007e3010_test.cpp'
+        PassPattern = 'CAMPHYSMESH_OK'
+    }
 )
 
 $requestedAddresses = @(

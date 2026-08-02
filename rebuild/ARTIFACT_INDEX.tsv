@@ -4991,7 +4991,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 0098b930	CShaderRenderManager		rebuild/src/compiled/00/98/CShaderRenderManager_SetVSConstants_0098b930.cpp	rebuild/tests/00/98/CShaderRenderManager_SetVSConstants_0098b930_test.cpp		rebuild/build/candidates-Release/00/98/0098b930
 0098ba10	_global		rebuild/src/compiled/00/98/global_DeleteData_0098ba10.cpp	rebuild/tests/00/98/global_DeleteData_0098ba10_test.cpp		rebuild/build/candidates-Release/00/98/0098ba10
 0098cbb0	CEngineSubPrimitiveText		rebuild/src/compiled/00/98/CEngineSubPrimitiveText_scalardeletingdestructor_0098cbb0.cpp	rebuild/tests/00/98/CEngineSubPrimitiveText_scalardeletingdestructor_0098cbb0_test.cpp		rebuild/build/candidates-Release/00/98/0098cbb0
-0098dfd0			rebuild/src/compiled/00/98/CThreadedFile_Constructor_0098dfd0.cpp	rebuild/tests/00/98/CThreadedFile_Constructor_0098dfd0_test.cpp		
+0098dfd0			rebuild/src/compiled/00/98/CThreadedFile_CThreadedFile_0098dfd0.cpp	rebuild/tests/00/98/CThreadedFile_CThreadedFile_0098dfd0_test.cpp		
 0098e1e0			rebuild/src/compiled/00/98/CThreadedFile_Open_0098e1e0.cpp	rebuild/tests/00/98/CThreadedFile_Open_0098e1e0_test.cpp		
 0098f0e0	_global		rebuild/src/compiled/00/98/global_GlobalMethodTailThunk0098f0e0_0098f0e0.cpp	rebuild/tests/00/98/global_GlobalMethodTailThunk0098f0e0_0098f0e0_test.cpp		rebuild/build/candidates-Release/00/98/0098f0e0
 0098f370	_global		rebuild/src/compiled/00/98/global_GlobalMethodTailThunk0098f370_0098f370.cpp	rebuild/tests/00/98/global_GlobalMethodTailThunk0098f370_0098f370_test.cpp		rebuild/build/candidates-Release/00/98/0098f370
