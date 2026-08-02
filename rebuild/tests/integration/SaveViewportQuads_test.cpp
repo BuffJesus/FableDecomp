@@ -11,7 +11,8 @@
 // The live render path itself needs a Direct3D9 device, so this fixture guards
 // the load-bearing, device-independent contract instead: the atlas UV rect the
 // C++ ring quad samples (FableComputeSaveViewportAtlasRect) must coincide,
-// pixel-for-pixel, with the atlas location the Python bake writes the panel to.
+// pixel-for-pixel, with the single static save-base atlas location the Python
+// bake writes the panel to. Selection remains live visual state.
 // If either side's geometry drifts, the ring quad binds the wrong pixels (or a
 // neighbouring cell) and this fixture fails before the flat-white/regression
 // shows up only in the runtime smoke image.
@@ -34,7 +35,6 @@ const int kAtlasWidth = 1664;
 const int kAtlasHeight = 3840;
 const int kAtlasColumnLeft = 1024;
 const int kSaveBandTop = 1920;
-const int kCellHeight = 480;
 const int kRingOriginX = 314;
 const int kRingOriginY = 37;
 const int kRingSize = 256;
@@ -61,8 +61,8 @@ bool NearlyEqualTexels(float actual, float expected)
 int main()
 {
     // (1) The atlas sample rect must equal the baked panel location for every
-    // save selection (0..3).  Left/right span the 256px ring width; top/bottom
-    // span its 256px height inside save cell (4 + selection).
+    // save selection (0..3). Left/right span the 256px ring width; top/bottom
+    // span its 256px height inside the static save cell (4).
     for (fable_u32 selection = 0; selection < 4; ++selection)
     {
         float leftU = -1.0f;
@@ -83,8 +83,7 @@ int main()
             return 1;
         }
 
-        const int cellTop = kSaveBandTop + static_cast<int>(selection) *
-                                               kCellHeight;
+        const int cellTop = kSaveBandTop;
         const float expectedLeftU =
             static_cast<float>(kAtlasColumnLeft + kRingOriginX) /
             static_cast<float>(kAtlasWidth);
@@ -129,8 +128,7 @@ int main()
             return 3;
         }
 
-        // Consecutive selections must advance by exactly one 480px cell, so no
-        // two selections sample the same rect and none escapes the save band.
+        // Every live selection must sample the one static save-base rect.
         if (selection > 0)
         {
             float prevTopV = 0.0f;
@@ -140,14 +138,14 @@ int main()
             FableComputeSaveViewportAtlasRect(
                 selection - 1, kAtlasWidth, kAtlasHeight,
                 &prevA, &prevTopV, &prevB, &prevC);
-            const float stepTexels =
+            const float sourceDeltaTexels =
                 (topV - prevTopV) * static_cast<float>(kAtlasHeight);
-            if (!NearlyEqualTexels(stepTexels, static_cast<float>(kCellHeight)))
+            if (!NearlyEqualTexels(sourceDeltaTexels, 0.0f))
             {
                 printf(
                     "FABLETLC_SAVE_VIEWPORT_ATLAS_RECT FAIL code=4 sel=%u "
-                    "step=%.3f\n",
-                    selection, stepTexels);
+                    "source-delta=%.3f\n",
+                    selection, sourceDeltaTexels);
                 return 4;
             }
         }

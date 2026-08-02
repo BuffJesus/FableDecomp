@@ -452,8 +452,8 @@ CArmourDef	3	3	3	0	0	2	2	2	0	0	0
 CArray<CArray<C2DCoordI>_>	0	1	1	0	0	0	0	0	0	0	0
 CArray<CCharString>	0	1	1	0	0	0	0	0	0	0	0
 CArray<std::pair<CCharString	0	6	6	0	0	0	0	0	0	0	0
-CArray<std::pair<long	0	24	24	0	0	1	1	1	0	0	0
-CArray<std::pair<unsigned_long	0	40	40	0	0	0	0	0	0	0	0
+CArray<std::pair<long	0	24	24	0	0	4	4	1	3	0	0
+CArray<std::pair<unsigned_long	0	40	40	0	0	10	10	0	10	0	0
 CArray<unsigned_char>	0	3	3	0	0	0	0	0	0	0	0
 CArray<unsigned_short>	0	7	7	0	0	0	0	0	0	0	0
 CArray_BodyPartMesh	0	2	0	0	0	0	0	0	0	0	0
@@ -805,12 +805,12 @@ CCountedPointer<CDiskFileWin32>	0	14	14	0	0	0	0	0	0	0	0
 CCountedPointer<CFileInstaller	0	30	0	0	0	0	0	0	0	0	0
 CCountedPointer<CIPhysicsFacesSegmentBase const>	0	1	1	0	0	0	0	0	0	0	0
 CCountedPointer<CIPhysicsFacesSegmentBase_const_>	0	196	196	0	0	0	0	0	0	0	0
-CCountedPointer<CProgressDisplay>	0	1	1	0	0	0	0	0	0	0	0
+CCountedPointer<CProgressDisplay>	0	1	1	0	0	1	1	0	1	0	0
 CCountedPointer<CScriptThing>	0	149	149	0	0	0	0	0	0	0	0
 CCountedPointer<CTexture>	0	8	8	0	0	5	5	5	0	0	0
 CCountedPointer<CThreadedFile>	0	1	1	0	0	0	0	0	0	0	0
 CCountedPointer<NUISystem	0	15	0	0	0	0	0	0	0	0	0
-CCountedPointer<NUISystem::CAction>	0	18	18	0	0	10	10	9	1	0	0
+CCountedPointer<NUISystem::CAction>	0	18	18	0	0	11	11	9	2	0	0
 CCountedPointer<std::vector<CCharString	0	15	15	0	0	8	8	7	1	0	0
 CCounter	1	4	4	0	0	0	0	0	0	0	0
 CCrate1	2	0	0	0	0	0	0	0	0	0	0
@@ -1503,7 +1503,7 @@ CEngineLandscapeMeshBuilder	10	3	2	0	0	0	0	0	0	0	0
 CEngineLandscapePatch	28	28	26	6	3	7	7	1	1	0	0
 CEngineLandscapeRenderer	39	33	33	8	0	9	9	7	1	0	0
 CEngineLayerRenderer	2	1	1	0	0	0	0	0	0	0	0
-CEngineLightingManager	35	134	134	0	0	30	30	7	23	0	0
+CEngineLightingManager	35	134	134	0	0	35	35	7	28	0	0
 CEngineLocalDetailGenerator	25	8	8	0	0	0	0	0	0	0	0
 CEngineLocalDetailGeneratorDef	2	3	3	0	0	1	1	1	0	0	0
 CEngineLocalDetailLayerDef	1	5	3	0	0	1	1	1	0	0	0
@@ -2524,7 +2524,7 @@ COpinionReactionManagerDef	3	4	3	0	0	0	0	0	0	0	0
 COpinionReactionMaskDef	2	3	3	0	0	2	2	2	0	0	0
 COpinionSet	1	0	0	0	0	0	0	0	0	0	0
 COpinionSourceDef	3	4	3	0	0	1	1	1	0	0	0
-COpinionTransientOffset	1	6	3	0	0	0	0	0	0	0	0
+COpinionTransientOffset	1	6	3	0	0	1	1	0	1	0	0
 COptimisedFace	6	1	1	0	0	0	0	0	0	0	0
 COptimisedMesh	5	3	2	0	0	0	0	0	0	0	0
 COptimisedPrimitive	31	21	19	0	0	0	0	0	0	0	0
@@ -2655,7 +2655,7 @@ CPersistTraits<double>	0	1	1	0	0	0	0	0	0	0	0
 CPersistTraits<float>	0	40	39	0	0	0	0	0	0	0	0
 CPersistTraits<long>	0	6	6	0	0	0	0	0	0	0	0
 CPersistTraits<short>	0	1	1	0	0	0	0	0	0	0	0
-CPersistTraits<std::list<COpinionTransientOffset	0	18	18	0	0	0	0	0	0	0	0
+CPersistTraits<std::list<COpinionTransientOffset	0	18	18	0	0	1	1	0	1	0	0
 CPersistTraits<std::list<CReactionMatch*	0	3	3	0	0	0	0	0	0	0	0
 CPersistTraits<std::pair<CCharString	0	2	2	0	0	0	0	0	0	0	0
 CPersistTraits<std::pair<long	0	2	2	0	0	0	0	0	0	0	0
@@ -3053,7 +3053,7 @@ CSpecialAbilitiesBurntEffectDef	2	3	3	0	0	2	2	2	0	0	0
 CSpecialAbilitiesCreatureTintDef	2	3	3	0	0	2	2	2	0	0	0
 CSpecialAbilitiesDivineWrathDef	1	6	4	0	0	1	1	1	0	0	0
 CSpecialAbilitiesDrainLifeDataDef	2	3	3	0	0	3	3	1	2	0	0
-CSpecialAbilitiesDrainLifeDef	2	4	4	0	0	2	2	2	0	0	0
+CSpecialAbilitiesDrainLifeDef	2	4	4	0	0	3	3	2	1	0	0
 CSpecialAbilitiesDrunkennessDef	3	3	3	0	0	2	2	2	0	0	0
 CSpecialAbilitiesElectrocutedEffectDef	2	3	3	0	0	2	2	2	0	0	0
 CSpecialAbilitiesEnflameDef	3	3	3	0	0	2	2	2	0	0	0
@@ -3233,7 +3233,7 @@ CTCCarriedActionUseShow	3	0	0	0	0	0	0	0	0	0	0
 CTCCarriedActionUseSpade	5	0	0	0	0	0	0	0	0	0	0
 CTCCarriedActionUseTrophy	5	2	1	0	0	0	0	0	0	0	0
 CTCCarriedActionUseWallMount	3	0	0	0	0	0	0	0	0	0	0
-CTCCarryable	16	258	239	0	0	58	58	7	51	0	0
+CTCCarryable	16	258	239	0	0	59	59	7	52	0	0
 CTCCarrying	31	18	17	0	0	0	0	0	0	0	0
 CTCChest	14	11	7	0	0	0	0	0	0	0	0
 CTCClock	9	3	3	0	0	0	0	0	0	0	0
@@ -3362,7 +3362,7 @@ CTCHighlightItem	10	4	4	0	0	0	0	0	0	0	0
 CTCHitLocations	15	8	6	0	0	0	0	0	0	0	0
 CTCHitOnCollision	4	1	1	0	0	0	0	0	0	0	0
 CTCIdleScheduler	7	8	8	0	0	0	0	0	0	0	0
-CTCInGameMenu	38	28	26	0	0	0	0	0	0	0	0
+CTCInGameMenu	38	28	26	0	0	2	2	0	2	0	0
 CTCInfoDisplay	8	1	1	0	0	0	0	0	0	0	0
 CTCInterestingToVillagers	4	0	0	0	0	0	0	0	0	0	0
 CTCInterface	0	4	0	0	0	0	0	0	0	0	0
@@ -4050,7 +4050,7 @@ LTextBinTree	0	3	0	0	0	0	0	0	0	0	0
 LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	0	2	0	0	0	0	0	0	0	0	0
 LTextSymbol	0	2	2	0	0	0	0	0	0	0	0
 LTextSystem	0	2	2	0	0	0	0	0	0	0	0
-LTextTreeWalkThrough	0	171	140	0	0	44	44	6	38	0	0
+LTextTreeWalkThrough	0	171	140	0	0	45	45	6	39	0	0
 LandscapeLayerList	0	1	0	0	0	0	0	0	0	0	0
 LinkedList	0	1	0	0	0	0	0	0	0	0	0
 LoadVerts<CPatchTesselationEdgeStrip	0	4	4	0	0	0	0	0	0	0	0
@@ -4149,7 +4149,7 @@ StrPtr	0	1	1	0	0	0	0	0	0	0	0
 StreamReader	0	1	0	0	0	0	0	0	0	0	0
 TeleportData	0	5	3	0	0	0	0	0	0	0	0
 TransferVectorOfSubComponents<NSpeechGainManager	0	1	1	0	0	0	0	0	0	0	0
-WaypointData	0	9	7	0	0	0	0	0	0	0	0
+WaypointData	0	9	7	0	0	1	1	0	1	0	0
 WordWrap_String	0	2	2	0	0	0	0	0	0	0	0
 _Adjust_heap<CAnimationEntry_const**,int,CAnimationEntry_const*,_anon_37766AE9	0	1	1	0	0	0	0	0	0	0	0
 _Adjust_heap<CIntelligentPointer<CThing>*,int,CIntelligentPointer<class_CThing>,_anon_58ED6966	0	1	1	0	0	0	0	0	0	0	0
@@ -4274,7 +4274,7 @@ _Copy_if<std::_List_unchecked_const_iterator<std::_List_val<CIntelligentPointer<
 _Copy_impl<C3DAnimationSequenceData::C3DVectorWord*,C3DAnimationSequenceData	0	3	3	0	0	0	0	0	0	0	0
 _Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics	0	1	1	0	0	0	0	0	0	0	0
 _Copy_impl<CArray<CRandomAppearanceMorph::CBodyPartMesh>*,CArray<class_CRandomAppearanceMorph	0	14	14	0	0	1	1	1	0	0	0
-_Copy_impl<CTCSkeletalMorph::CSkeletalMorph*,CTCSkeletalMorph	0	15	15	0	0	0	0	0	0	0	0
+_Copy_impl<CTCSkeletalMorph::CSkeletalMorph*,CTCSkeletalMorph	0	15	15	0	0	1	1	0	1	0	0
 _Copy_impl<CTCSmokeGenerator::CGenerationPos*,CTCSmokeGenerator	0	18	18	0	0	0	0	0	0	0	0
 _Copy_impl<NPlayerTargeting::CTargetPoint*,NPlayerTargeting	0	14	14	0	0	0	0	0	0	0	0
 _Copy_impl<std::_List_unchecked_iterator<std::_List_val<CHeroMarriageInfo,std::allocator<CHeroMarriageInfo>_>_>,std::back_insert_iterator<std::vector<CHeroMarriageInfo,std	0	2	2	0	0	0	0	0	0	0	0
@@ -4293,7 +4293,7 @@ _Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotificat
 _Dest_val<std::allocator<NScript::CQ_BountyHuntScript::TeleportData>,NScript::CQ_BountyHuntScript	0	2	2	0	0	0	0	0	0	0	0
 _Dest_val<std::allocator<std::pair<CCharString,C3DMeshVolume>_>,std	0	2	2	0	0	0	0	0	0	0	0
 _Dest_val<std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	39	39	0	0	0	0	0	0	0	0
-_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	0	67	67	0	0	1	1	0	1	0	0
+_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	0	67	67	0	0	2	2	0	2	0	0
 _Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	0	34	34	0	0	0	0	0	0	0	0
 _Dest_val<std::allocator<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_>,std	0	19	19	0	0	1	1	1	0	0	0
 _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager	0	173	173	0	0	8	8	7	1	0	0
@@ -4500,12 +4500,12 @@ _Uninit_copy<CArray<CRandomAppearanceMorph::CBodyPartMesh>*,CArray<class_CRandom
 _Uninit_copy<CFeatDef*,CFeatDef*,std	0	49	49	0	0	1	1	1	0	0	0
 _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<CScriptThing,std::allocator<CScriptThing>_>_>,CScriptThing*,std	0	6	6	0	0	1	1	1	0	0	0
 _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std	0	58	58	0	0	2	2	2	0	0	0
-_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std	0	153	153	0	0	0	0	0	0	0	0
+_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std	0	153	153	0	0	4	4	0	4	0	0
 _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11362	1997	273	5	184	184	105	76	0	0
+_global	0	11362	1997	273	5	190	190	106	81	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0

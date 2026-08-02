@@ -5428,7 +5428,7 @@
       "rounds_used": 4,
       "verdict": "FAIL",
       "parity_status": "red",
-      "timestamp": "2026-07-30T08:33:19"
+      "timestamp": "2026-08-01T09:14:07"
     },
     "0089f300": {
       "address": "0x0089F300",
@@ -5498,7 +5498,7 @@
       "rounds_used": 4,
       "verdict": "FAIL",
       "parity_status": "red",
-      "timestamp": "2026-07-30T08:51:27"
+      "timestamp": "2026-08-01T09:29:49"
     },
     "008a9c40": {
       "address": "0x008A9C40",
@@ -16841,6 +16841,46 @@
       "verdict": "PASS",
       "parity_status": "yellow",
       "timestamp": "2026-07-31T15:36:28"
+    },
+    {
+      "address": "0x008A9100",
+      "class_name": "",
+      "function_name": "?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-01T09:04:38"
+    },
+    {
+      "address": "0x008A9100",
+      "class_name": "",
+      "function_name": "?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-01T09:14:07"
+    },
+    {
+      "address": "0x008A86C0",
+      "class_name": "",
+      "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-01T09:22:13"
+    },
+    {
+      "address": "0x008A86C0",
+      "class_name": "",
+      "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-01T09:29:49"
     }
   ]
 }

@@ -1,6 +1,6 @@
 # Auto-RE candidate compile gate
 
-Generated: `2026-07-31T18:17:34-06:00`
+Generated: `2026-08-01T18:32:47-06:00`
 
 | Gate | Passing | Total |
 |---|---:|---:|
@@ -17,7 +17,7 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 |---|---:|
 | `offsetof` | 61 |
 | `class CGameScriptInterface` | 40 |
-| `CCharString` | 29 |
+| `CCharString` | 30 |
 | `CGameScriptInterface` | 23 |
 | `mov` | 15 |
 | `std` | 13 |
@@ -28,14 +28,14 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 | `CMouseDX` | 12 |
 | `self` | 11 |
 | `CMemoryAllocatorFixedSize` | 11 |
+| `CScriptThing` | 10 |
 | `CNavQuadTree` | 10 |
 | `CWideString` | 9 |
-| `CScriptThing` | 9 |
 | `CDefinitionManager` | 8 |
+| `C3DVector` | 8 |
 | `EThemePaintType` | 8 |
 | `CVectorMap` | 7 |
 | `class CScriptThing` | 7 |
-| `C3DVector` | 7 |
 | `CEngineLandscapeMap` | 7 |
 | `CGraphicInfoFrame` | 7 |
 | `CGameEvent` | 6 |

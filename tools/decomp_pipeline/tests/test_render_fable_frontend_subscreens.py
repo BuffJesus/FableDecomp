@@ -45,9 +45,14 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     REDEFINE_ROWS,
     SAVE_BROWSER_ROWS,
     SAVE_COMPONENT_ATLAS_ORIGIN,
+    SAVE_BROWSER_FRAME_COUNT,
+    SAVE_BOTTOM_BACKDROP_ORIGIN,
     SAVE_LIST_HEIGHT,
     SAVE_LIST_ORIGIN,
     SAVE_ROW_STEP_Y,
+    SAVE_TEXT_BOTTOM_ORIGIN,
+    SAVE_TEXT_AREA_ORIGIN,
+    SAVE_TITLE_AREA_ORIGIN,
     SAVE_VIEW_RING_ORIGIN,
     SAVE_SCREEN_FRAME_BASE,
     VIDEO_CONTROL_VALUES,
@@ -199,7 +204,8 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         self.assertEqual(30, SAVE_ROW_STEP_Y)
         self.assertEqual(150, SAVE_LIST_HEIGHT)
         self.assertEqual(8, SAVE_SCREEN_FRAME_BASE)
-        self.assertEqual(12, OPTIONS_SHEET_FRAME_COUNT)
+        self.assertEqual(1, SAVE_BROWSER_FRAME_COUNT)
+        self.assertEqual(9, OPTIONS_SHEET_FRAME_COUNT)
         self.assertEqual((1024, 1920), SAVE_COMPONENT_ATLAS_ORIGIN)
         self.assertEqual(
             (
@@ -282,6 +288,60 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         self.assertGreater(band[2], 200)
 
     @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK),
+        "retail frontend bank is not installed")
+    def test_save_tables_use_decoded_asymmetric_corner_slots(self):
+        buf, parsed = load_big(self.FRONTEND_BANK)
+        middle = _decode_named(
+            buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
+        title_left = _build_table_horizontal(
+            middle,
+            middle,
+            _decode_named(buf, parsed, "UI_TEXTBOX_TL_SPRITE_FE"),
+            287)
+        title_right = _build_table_horizontal(
+            _decode_named(buf, parsed, "UI_TEXTBOX_TR_SPRITE_FE"),
+            middle,
+            middle,
+            40)
+        text_left = _build_table_horizontal(
+            middle,
+            middle,
+            _decode_named(buf, parsed, "UI_TEXTBOX_BL_SPRITE_FE"),
+            287)
+        text_right = _build_table_horizontal(
+            _decode_named(buf, parsed, "UI_TEXTBOX_BR_SPRITE_FE"),
+            middle,
+            middle,
+            40)
+        # CTable repeats key 4 by Width/8, then places the natural-size key 0
+        # and key 1 corners around that span: 8 + 35*8 + 128 and
+        # 128 + 5*8 + 8 respectively.
+        self.assertEqual((416, 64), title_left.size)
+        self.assertEqual((176, 64), title_right.size)
+        self.assertEqual((416, 64), text_left.size)
+        self.assertEqual((176, 64), text_right.size)
+        self.assertEqual((0, 35), SAVE_TITLE_AREA_ORIGIN)
+        self.assertEqual((0, 254), SAVE_TEXT_AREA_ORIGIN)
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_save_bottom_records_are_materialized_at_decoded_positions(self):
+        frame = build_save_browser_frame(
+            self.FRONTEND_BANK,
+            self.FONT_BANK,
+            0,
+            include_viewport=False)
+        # The 160x1 UI_TEXT_BOTTOM rule resolves to y=254+150=404. The
+        # half-alpha 4x4 HUD_TEXTBOX_BACK_FE backdrop resolves to 640x248 at
+        # (0,292), so both decoded regions must be occupied in the bake.
+        self.assertEqual((0, 404), SAVE_TEXT_BOTTOM_ORIGIN)
+        self.assertEqual((0, 292), SAVE_BOTTOM_BACKDROP_ORIGIN)
+        self.assertIsNotNone(frame.crop((0, 404, 640, 412)).getbbox())
+        self.assertIsNotNone(frame.crop((0, 292, 640, 480)).getbbox())
+
+    @unittest.skipUnless(
         os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
         "retail frontend/font banks are not installed")
     def test_save_preview_viewport_is_256_panel(self):
@@ -318,10 +378,11 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
         "retail frontend/font banks are not installed")
     def test_component_atlas_bakes_ring_source_but_cell_is_ring_free(self):
-        # The component/atlas sheet keeps the ring ONLY inside each save cell's
-        # 256x256 source rect (so the live ring quad has pixels to sample) while
-        # the rest of the cell is ring-free (so the live cell-background quads,
-        # which surround that rect, never double-draw the ring).
+        # The component/atlas sheet keeps the ring ONLY inside the one static
+        # save cell's 256x256 source rect (so the live ring quad has pixels to
+        # sample) while the rest of that cell is ring-free (so the live
+        # cell-background quads, which surround that rect, never double-draw
+        # the ring).
         components = build_options_sheet(
             self.FRONTEND_BANK,
             self.FONT_BANK,
@@ -332,7 +393,7 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         panel = build_save_preview_viewport(self.FRONTEND_BANK)
         ax, ay = SAVE_COMPONENT_ATLAS_ORIGIN
         ox, oy = SAVE_VIEW_RING_ORIGIN
-        for save_row in range(len(SAVE_BROWSER_ROWS)):
+        for save_row in range(SAVE_BROWSER_FRAME_COUNT):
             cell_top = ay + save_row * 480
             ring_box = (
                 ax + ox,

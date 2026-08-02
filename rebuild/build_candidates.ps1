@@ -39688,6 +39688,27 @@ $catalog = @(
         TestSource = '00/9a/global_CBasicStringCharAppendData_009a04e0_test.cpp'
         PassPattern = 'APPENDDATA_TEST_OK'
     }
+    [pscustomobject]@{
+        Address = '00999230'
+        Module = '_global'
+        Source = '00/99/global_PathExists_00999230.cpp'
+        TestSource = '00/99/global_PathExists_00999230_test.cpp'
+        PassPattern = 'FABLETLC_PATH_EXISTS_00999230 PASS'
+    }
+    [pscustomobject]@{
+        Address = '004115a0'
+        Module = 'CBasicString<char>'
+        Source = '00/41/CBasicStringchar_CBasicStringCharoperatorequals_004115a0.cpp'
+        TestSource = '00/41/CBasicStringchar_CBasicStringCharoperatorequals_004115a0_test.cpp'
+        PassPattern = 'PASS_OP_EQ_004115A0'
+    }
+    [pscustomobject]@{
+        Address = '009a0300'
+        Module = '_global'
+        Source = '00/9a/global_CBasicStringCharAssignFromData_009a0300.cpp'
+        TestSource = '00/9a/global_CBasicStringCharAssignFromData_009a0300_test.cpp'
+        PassPattern = 'ASSIGNFROMDATA_TEST_OK'
+    }
 )
 
 $requestedAddresses = @(
