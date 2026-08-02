@@ -39709,6 +39709,48 @@ $catalog = @(
         TestSource = '00/9a/global_CBasicStringCharAssignFromData_009a0300_test.cpp'
         PassPattern = 'ASSIGNFROMDATA_TEST_OK'
     }
+    [pscustomobject]@{
+        Address = '009b9570'
+        Module = 'CStringParser'
+        Source = '00/9b/CStringParser_CalcInQuotes_009b9570.cpp'
+        TestSource = '00/9b/CStringParser_CalcInQuotes_009b9570_test.cpp'
+        PassPattern = 'ALL_PASS_CALCINQUOTES'
+    }
+    [pscustomobject]@{
+        Address = '00404720'
+        Module = 'CStringParser'
+        Source = '00/40/CStringParser_CStringParser_00404720.cpp'
+        TestSource = '00/40/CStringParser_CStringParser_00404720_test.cpp'
+        PassPattern = 'STRINGPARSER_CTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00995d30'
+        Module = 'CMemoryDataInputStream'
+        Source = '00/99/CMemoryDataInputStream_ReadNullTerminatedString_00995d30.cpp'
+        TestSource = '00/99/CMemoryDataInputStream_ReadNullTerminatedString_00995d30_test.cpp'
+        PassPattern = 'FABLETLC_READ_NULL_TERM_STRING_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099ec70'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_GetSubString_0099ec70.cpp'
+        TestSource = '00/99/CCharString_GetSubString_0099ec70_test.cpp'
+        PassPattern = 'GETSUBSTRING_OK'
+    }
+    [pscustomobject]@{
+        Address = '009a0390'
+        Module = 'CBasicString<char>'
+        Source = '00/9a/CBasicStringchar_SetString_009a0390.cpp'
+        TestSource = '00/9a/CBasicStringchar_SetString_009a0390_test.cpp'
+        PassPattern = 'SETSTRING_TEST_OK'
+    }
+    [pscustomobject]@{
+        Address = '0042955b'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/42/CMemoryAllocatorVariableSize_RotateLeft_0042955b.cpp'
+        TestSource = '00/42/CMemoryAllocatorVariableSize_RotateLeft_0042955b_test.cpp'
+        PassPattern = 'ROTATE_LEFT_OK'
+    }
 )
 
 $requestedAddresses = @(

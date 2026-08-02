@@ -148,6 +148,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00410f30		lift/reports/wave3/code/00/41/0x00410F30_global_Buffer_AllocateAndZero.cpp			rebuild/candidates/snapshots/00/41/0x00410F30_global_Buffer_AllocateAndZero.cpp	
 004110d0		lift/reports/wave3/code/00/41/0x004110D0_global_CString_FillRange.cpp			rebuild/candidates/snapshots/00/41/0x004110D0_global_CString_FillRange.cpp	
 00411570	_global		rebuild/src/compiled/00/41/global_global_00411570.cpp	rebuild/tests/00/41/global_global_00411570_test.cpp		rebuild/build/candidates-Release/00/41/00411570
+004115a0			rebuild/src/compiled/00/41/CBasicStringchar_CBasicStringCharoperatorequals_004115a0.cpp	rebuild/tests/00/41/CBasicStringchar_CBasicStringCharoperatorequals_004115a0_test.cpp		
 00411600			rebuild/src/compiled/00/41/global_sub00411600_00411600.cpp	rebuild/tests/00/41/global_sub00411600_00411600_test.cpp		rebuild/build/candidates-Release/00/41/00411600
 00411630		lift/reports/wave3/code/00/41/0x00411630_global_Std_Deque_Resize_WithGap.cpp			rebuild/candidates/snapshots/00/41/0x00411630_global_Std_Deque_Resize_WithGap.cpp	
 004117c0		lift/reports/wave3/code/00/41/0x004117C0_global_Std_Vector_Insert_Range.cpp			rebuild/candidates/snapshots/00/41/0x004117C0_global_Std_Vector_Insert_Range.cpp	
@@ -5014,7 +5015,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00997510			rebuild/src/compiled/00/99/CAFile_GetProjectPath_00997510.cpp	rebuild/tests/00/99/CAFile_GetProjectPath_00997510_test.cpp		
 00997b30	_global		rebuild/src/compiled/00/99/global_AddChildPrimitive_00997b30.cpp	rebuild/tests/00/99/global_AddChildPrimitive_00997b30_test.cpp		rebuild/build/candidates-Release/00/99/00997b30
 00999110			rebuild/src/compiled/00/99/global_ConvertPathToFullPath_00999110.cpp	rebuild/tests/00/99/global_ConvertPathToFullPath_00999110_test.cpp		
-00999230			rebuild/src/compiled/00/99/CAFile_PathExists_00999230.cpp	rebuild/tests/00/99/CAFile_PathExists_00999230_test.cpp		
+00999230			rebuild/src/compiled/00/99/global_PathExists_00999230.cpp	rebuild/tests/00/99/global_PathExists_00999230_test.cpp		
 0099a2d0	CBase		rebuild/src/compiled/00/99/CBase_CBase_0099a2d0.cpp	rebuild/tests/00/99/CBase_CBase_0099a2d0_test.cpp		rebuild/build/candidates-Release/00/99/0099a2d0
 0099a2e0	NHeroInformationScreens::CBase		rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a2e0.cpp	rebuild/tests/00/99/CBase_RestoreVTable_0099a2e0_test.cpp		rebuild/build/candidates-Release/00/99/0099a2e0
 0099a2f0			rebuild/src/compiled/00/99/CBase_CBase_0099a2f0.cpp	rebuild/tests/00/99/CBase_CBase_0099a2f0_test.cpp		
@@ -5053,6 +5054,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 0099efb0			rebuild/src/compiled/00/99/CCharString_operatorassign_0099efb0.cpp	rebuild/tests/00/99/CCharString_operatorassign_0099efb0_test.cpp		
 0099f0a0			rebuild/src/compiled/00/99/CCharString_CCharStringoperatorplusequals_0099f0a0.cpp	rebuild/tests/00/99/CCharString_CCharStringoperatorplusequals_0099f0a0_test.cpp		
 0099f2e0			rebuild/src/compiled/00/99/CCharString_LoadFromFile_0099f2e0.cpp	rebuild/tests/00/99/CCharString_LoadFromFile_0099f2e0_test.cpp		
+009a0300			rebuild/src/compiled/00/9a/global_CBasicStringCharAssignFromData_009a0300.cpp	rebuild/tests/00/9a/global_CBasicStringCharAssignFromData_009a0300_test.cpp		
 009a04e0			rebuild/src/compiled/00/9a/global_CBasicStringCharAppendData_009a04e0.cpp	rebuild/tests/00/9a/global_CBasicStringCharAppendData_009a04e0_test.cpp		
 009a0590			rebuild/src/compiled/00/9a/CCharString_InitFromCStr_009a0590.cpp	rebuild/tests/00/9a/CCharString_InitFromCStr_009a0590_test.cpp		
 009a0cf0	CRenderManagerCore		rebuild/src/compiled/00/9a/CRenderManagerCore_AttachTextureToStage_009a0cf0.cpp	rebuild/tests/00/9a/CRenderManagerCore_AttachTextureToStage_009a0cf0_test.cpp		rebuild/build/candidates-Release/00/9a/009a0cf0
