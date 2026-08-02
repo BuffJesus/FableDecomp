@@ -40122,6 +40122,209 @@ $catalog = @(
         TestSource = '00/c0/std_Consvalpairmorphh_00c08d10_test.cpp'
         PassPattern = 'PASS_00c08d10_cons_val_pair_morph'
     }
+    [pscustomobject]@{
+        Address = '00c1b460'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/c1/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointa_00c1b460.cpp'
+        TestSource = '00/c1/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointa_00c1b460_test.cpp'
+        PassPattern = 'HHQNEXTPT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1bbc0'
+        Module = 'CThing'
+        Source = '00/c1/CThing_CThingSetCurrentMapNumbera_00c1bbc0.cpp'
+        TestSource = '00/c1/CThing_CThingSetCurrentMapNumbera_00c1bbc0_test.cpp'
+        PassPattern = 'PASS_MAPNUM_SET'
+    }
+    [pscustomobject]@{
+        Address = '00c1bbd0'
+        Module = 'CThing'
+        Source = '00/c1/CThing_CThingSetCurrentMapNumberb_00c1bbd0.cpp'
+        TestSource = '00/c1/CThing_CThingSetCurrentMapNumberb_00c1bbd0_test.cpp'
+        PassPattern = 'OK_0x00c1bbd0'
+    }
+    [pscustomobject]@{
+        Address = '00c1bbe0'
+        Module = 'CThing'
+        Source = '00/c1/CThing_CThingSetCurrentMapNumberc_00c1bbe0.cpp'
+        TestSource = '00/c1/CThing_CThingSetCurrentMapNumberc_00c1bbe0_test.cpp'
+        PassPattern = 'TESTOK_SETCURRENTMAPNUMBER'
+    }
+    [pscustomobject]@{
+        Address = '00c1bc00'
+        Module = 'CThing'
+        Source = '00/c1/CThing_CThingSetCurrentMapNumberd_00c1bc00.cpp'
+        TestSource = '00/c1/CThing_CThingSetCurrentMapNumberd_00c1bc00_test.cpp'
+        PassPattern = 'PASS_SETMAPNUM_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c23c00'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/c2/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointb_00c23c00.cpp'
+        TestSource = '00/c2/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointb_00c23c00_test.cpp'
+        PassPattern = 'TESTOK_HHQ_CIRCLE'
+    }
+    [pscustomobject]@{
+        Address = '00c23df0'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/c2/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointc_00c23df0.cpp'
+        TestSource = '00/c2/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointc_00c23df0_test.cpp'
+        PassPattern = 'CIRCLEPOINT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c24040'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/c2/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointd_00c24040.cpp'
+        TestSource = '00/c2/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointd_00c24040_test.cpp'
+        PassPattern = 'HOVERHORNET_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c242a0'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/c2/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointe_00c242a0.cpp'
+        TestSource = '00/c2/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointe_00c242a0_test.cpp'
+        PassPattern = 'HORNETQUEEN_CIRCLE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c27b90'
+        Module = 'CGenericVertex_LandscapeBg'
+        Source = '00/c2/CGenericVertexLandscapeBg_GenericVertexGetU1_00c27b90.cpp'
+        TestSource = '00/c2/CGenericVertexLandscapeBg_GenericVertexGetU1_00c27b90_test.cpp'
+        PassPattern = 'GENVTX_U1_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c2f4d0'
+        Module = 'CManager'
+        Source = '00/c2/CManager_CManagerUpdateErrorMessagea_00c2f4d0.cpp'
+        TestSource = '00/c2/CManager_CManagerUpdateErrorMessagea_00c2f4d0_test.cpp'
+        PassPattern = 'PASS_UPDATE_ERROR_MSG_FORWARD'
+    }
+    [pscustomobject]@{
+        Address = '00c2f5e0'
+        Module = 'CManager'
+        Source = '00/c2/CManager_CManagerUpdateErrorMessageb_00c2f5e0.cpp'
+        TestSource = '00/c2/CManager_CManagerUpdateErrorMessageb_00c2f5e0_test.cpp'
+        PassPattern = 'PASS_MARKER_UEM_B'
+    }
+    [pscustomobject]@{
+        Address = '00c2f6f0'
+        Module = 'CManager'
+        Source = '00/c2/CManager_CManagerUpdateErrorMessagec_00c2f6f0.cpp'
+        TestSource = '00/c2/CManager_CManagerUpdateErrorMessagec_00c2f6f0_test.cpp'
+        PassPattern = 'UEM_FORWARD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c3a9c0'
+        Module = 'CV_MurderTwistScript'
+        Source = '00/c3/CVMurderTwistScript_CVMurderTwistScriptInita_00c3a9c0.cpp'
+        TestSource = '00/c3/CVMurderTwistScript_CVMurderTwistScriptInita_00c3a9c0_test.cpp'
+        PassPattern = 'INIT_OK_ZEROED_70_74_78'
+    }
+    [pscustomobject]@{
+        Address = '00c3c360'
+        Module = 'CTCHeroStats'
+        Source = '00/c3/CTCHeroStats_CTCHeroStatsInformOfEventa_00c3c360.cpp'
+        TestSource = '00/c3/CTCHeroStats_CTCHeroStatsInformOfEventa_00c3c360_test.cpp'
+        PassPattern = 'INFORMOFEVENT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c3c370'
+        Module = 'CTCHeroStats'
+        Source = '00/c3/CTCHeroStats_CTCHeroStatsInformOfEventb_00c3c370.cpp'
+        TestSource = '00/c3/CTCHeroStats_CTCHeroStatsInformOfEventb_00c3c370_test.cpp'
+        PassPattern = 'INFORMOFEVENT_B_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c3c5f0'
+        Module = 'CItem'
+        Source = '00/c3/CItem_CItemSetQuestPersistentFlag_00c3c5f0.cpp'
+        TestSource = '00/c3/CItem_CItemSetQuestPersistentFlag_00c3c5f0_test.cpp'
+        PassPattern = 'CITEM_SETQUESTPERSISTENTFLAG_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c42ab0'
+        Module = 'CSmallVector_CANavQuadTreeNode'
+        Source = '00/c4/CSmallVectorCANavQuadTreeNode_CSmallVectorNavNodeindexa_00c42ab0.cpp'
+        TestSource = '00/c4/CSmallVectorCANavQuadTreeNode_CSmallVectorNavNodeindexa_00c42ab0_test.cpp'
+        PassPattern = 'INDEX_A_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c442c0'
+        Module = 'CSmallVector_CANavQuadTreeNode'
+        Source = '00/c4/CSmallVectorCANavQuadTreeNode_CSmallVectorNavNodeindexb_00c442c0.cpp'
+        TestSource = '00/c4/CSmallVectorCANavQuadTreeNode_CSmallVectorNavNodeindexb_00c442c0_test.cpp'
+        PassPattern = 'INDEX_B_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c48f20'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/c4/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointf_00c48f20.cpp'
+        TestSource = '00/c4/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointf_00c48f20_test.cpp'
+        PassPattern = 'HOVERHORNET_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c49fe0'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/c4/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointg_00c49fe0.cpp'
+        TestSource = '00/c4/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointg_00c49fe0_test.cpp'
+        PassPattern = 'HOVERHORNET_QUEEN_CIRCLE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c4bf80'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/c4/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointh_00c4bf80.cpp'
+        TestSource = '00/c4/CAIStateGroupHoverHornetQueen_HoverHornetQueenGetNextCirclePointh_00c4bf80_test.cpp'
+        PassPattern = 'OK_HHQ_CIRCLE_TEST'
+    }
+    [pscustomobject]@{
+        Address = '00c5cea0'
+        Module = 'CV_MurderTwistScript'
+        Source = '00/c5/CVMurderTwistScript_CVMurderTwistScriptInitb_00c5cea0.cpp'
+        TestSource = '00/c5/CVMurderTwistScript_CVMurderTwistScriptInitb_00c5cea0_test.cpp'
+        PassPattern = 'INIT_B_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c8db10'
+        Module = 'std'
+        Source = '00/c8/std_DestvalCFlasha_00c8db10.cpp'
+        TestSource = '00/c8/std_DestvalCFlasha_00c8db10_test.cpp'
+        PassPattern = 'DEST_VAL_CFLASH_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cb5ac0'
+        Module = 'std'
+        Source = '00/cb/std_Consvalpairmorphi_00cb5ac0.cpp'
+        TestSource = '00/cb/std_Consvalpairmorphi_00cb5ac0_test.cpp'
+        PassPattern = 'PASS_CONS_VAL_PAIR_MORPH_I'
+    }
+    [pscustomobject]@{
+        Address = '00cd3f40'
+        Module = '_global'
+        Source = '00/cd/global_operatornewvariant_00cd3f40.cpp'
+        TestSource = '00/cd/global_operatornewvariant_00cd3f40_test.cpp'
+        PassPattern = 'PASS_OPERATOR_NEW_VARIANT'
+    }
+    [pscustomobject]@{
+        Address = '00f35b30'
+        Module = 'CCreatureAction_TrollWhackGroundBase'
+        Source = '00/f3/CCreatureActionTrollWhackGroundBase_Initialise_00f35b30.cpp'
+        TestSource = '00/f3/CCreatureActionTrollWhackGroundBase_Initialise_00f35b30_test.cpp'
+        PassPattern = 'TROLLWHACK_INIT_OK'
+    }
+    [pscustomobject]@{
+        Address = '004167cd'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_CMainGameComponentGetCurrentFrameFinishTimeAppro_004167cd.cpp'
+        TestSource = '00/41/CMainGameComponent_CMainGameComponentGetCurrentFrameFinishTimeAppro_004167cd_test.cpp'
+        PassPattern = 'PASS_MARKER_004167CD'
+    }
+    [pscustomobject]@{
+        Address = '0049d8b0'
+        Module = 'CObservable'
+        Source = '00/49/CObservable_CObservableAddExclusiveObserver_0049d8b0.cpp'
+        TestSource = '00/49/CObservable_CObservableAddExclusiveObserver_0049d8b0_test.cpp'
+        PassPattern = 'OBSERVER_SET_OK'
+    }
 )
 
 $requestedAddresses = @(
