@@ -7187,7 +7187,8 @@ complete prototype + known CC (pool ≈17,000). Feed to workflow
 append attempted addrs to `scratchpad/gen_tried.txt`. gen_batch1: 23/24, gen_batch2:
 27/28 landed.
 
-**IN FLIGHT at snapshot: gen_batch3 (30 targets, task `wmwiqclea`).** To resume:
+gen_batch1: 23/24, gen_batch2: 27/28, gen_batch3: 29/30 all LANDED (catalog 5816).
+**To continue the crawl:**
 ```
 python <scratch>/land_gen.py wmwiqclea gen_batch3     # builds land.json + updates gen_tried
 python tools/decomp_pipeline/verify_and_land.py <scratch>/gen_batch3_land.json \
