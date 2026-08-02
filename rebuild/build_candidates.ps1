@@ -39765,6 +39765,13 @@ $catalog = @(
         TestSource = '00/99/CCharString_SetSubstring_0099bdb0_test.cpp'
         PassPattern = 'SETSUBSTRING_OK'
     }
+    [pscustomobject]@{
+        Address = '0098dfd0'
+        Module = 'CThreadedFile'
+        Source = '00/98/CThreadedFile_CThreadedFile_0098dfd0.cpp'
+        TestSource = '00/98/CThreadedFile_CThreadedFile_0098dfd0_test.cpp'
+        PassPattern = 'FABLETLC_CTHREADEDFILE_CTOR_0098DFD0 PASS'
+    }
 )
 
 $requestedAddresses = @(

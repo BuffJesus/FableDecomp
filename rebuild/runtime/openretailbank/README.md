@@ -27,11 +27,17 @@ source). The thunk→address mapping is derived by pairing the ordered `__asm ca
 symbols in the anchor with the ordered E8 targets in the retail bytes (see
 `tools/` scratch `pair_thunks.py`). Status split at time of writing:
 
+**Ring is 27/27 reconstructed.**
+
 | status | count | meaning |
 |--------|-------|---------|
-| landed byte-exact | 16 | already in `rebuild/src/compiled` catalog, MATCH/RELOCATION_MATCH |
-| faithful behavior | 9 | staged under `faithful/`, behavior-PASS, DIFFER on bytes (RTM-3077 vs retail QFE-4035 codegen wall) — execute identically |
-| MISSING | 2 | `CThreadedFile::CThreadedFile` (0098dfd0) + `CThreadedFile::Open` (0098e1e0) |
+| landed byte-exact | 17 | in `rebuild/src/compiled` catalog, MATCH/RELOCATION_MATCH |
+| faithful behavior | 10 | staged under `faithful/`, behavior-PASS, DIFFER on bytes (RTM-3077 vs retail QFE-4035 codegen wall) — execute identically |
+
+`CThreadedFile::CThreadedFile` (0098dfd0) landed byte-exact; `CThreadedFile::Open`
+(0098e1e0) is faithful (307 vs 310 bytes — a 2-dword stack-slot layout gap, behavior
+verified across both drive branches, both caching flags, and the CreateFileW-fails
+path).
 
 Note: `faithful/CharConstruct_0099aed0.cpp` is actually RELOCATION_MATCH (byte-exact)
 — it was mis-deferred during the leaf crawl and can be promoted to the byte-parity

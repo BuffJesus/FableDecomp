@@ -5040,6 +5040,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 0099b7d0			rebuild/src/compiled/00/99/CWideString_operatorassign_0099b7d0.cpp	rebuild/tests/00/99/CWideString_operatorassign_0099b7d0_test.cpp		
 0099b800			rebuild/src/compiled/00/99/CWideString_operatorwchartconst_0099b800.cpp	rebuild/tests/00/99/CWideString_operatorwchartconst_0099b800_test.cpp		
 0099b940			rebuild/src/compiled/00/99/CWideString_operatorplusequalswchar_0099b940.cpp	rebuild/tests/00/99/CWideString_operatorplusequalswchar_0099b940_test.cpp		
+0099bdb0			rebuild/src/compiled/00/99/CCharString_SetSubstring_0099bdb0.cpp	rebuild/tests/00/99/CCharString_SetSubstring_0099bdb0_test.cpp		
 0099be70			rebuild/src/compiled/00/99/CWideString_AddWideStrings_0099be70.cpp	rebuild/tests/00/99/CWideString_AddWideStrings_0099be70_test.cpp		
 0099bf30			rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp	rebuild/tests/00/99/CWideString_AddWideStringAndLiteral_0099bf30_test.cpp		
 0099bff0			rebuild/src/compiled/00/99/CWideString_AddLiteralAndWideString_0099bff0.cpp	rebuild/tests/00/99/CWideString_AddLiteralAndWideString_0099bff0_test.cpp		
@@ -5050,6 +5051,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 0099e4b0			rebuild/src/compiled/00/99/CCharString_DefaultConstructor_0099e4b0.cpp	rebuild/tests/00/99/CCharString_DefaultConstructor_0099e4b0_test.cpp		
 0099e4c0			rebuild/src/compiled/00/99/CCharString_operatorcharconstptrb_0099e4c0.cpp	rebuild/tests/00/99/CCharString_operatorcharconstptrb_0099e4c0_test.cpp		
 0099e900	CCharString		rebuild/src/compiled/00/99/CCharString_NotEqual_0099e900.cpp	rebuild/tests/00/99/CCharString_NotEqual_0099e900_test.cpp		rebuild/build/candidates-Release/00/99/0099e900
+0099e9b0			rebuild/src/compiled/00/99/CCharString_UnassignString_0099e9b0.cpp	rebuild/tests/00/99/CCharString_UnassignString_0099e9b0_test.cpp		
 0099eae0	CCharString		rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp	rebuild/tests/00/99/CCharString_Destructor_0099eae0_test.cpp		rebuild/build/candidates-Release/00/99/0099eae0
 0099ebf0	CCharString		rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp	rebuild/tests/00/99/CCharString_Constructor_0099ebf0_test.cpp		rebuild/build/candidates-Release/00/99/0099ebf0
 0099ec30			rebuild/src/compiled/00/99/CCharString_CCharStringcopy_0099ec30.cpp	rebuild/tests/00/99/CCharString_CCharStringcopy_0099ec30_test.cpp		
