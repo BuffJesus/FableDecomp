@@ -7159,3 +7159,46 @@ green; `smoke_visual_checkpoint.ps1 -VerifySubscreens` passes with a NEW About
 hover assertion (`about != about-hover`, e.g. `about=E39EF835CA15
 about-hover=D5495BF0F1EF`) proving the OFF→ON swap, plus unchanged Options/Save/Quit/
 Redefine hover paths. The next boundary remains Redefine Keys parity.
+
+---
+
+## Session 2026-08-01 (late): binary-wide parity crawl + OpenRetailBank runtime module
+
+**Catalog now 5787 entries** (was ~5588). This session landed **+63 byte-exact
+functions** and opened two durable lanes.
+
+### Lane A — OpenRetailBank runtime module (`rebuild/runtime/openretailbank/`)
+User chose "link the runtime module" (run Fable.exe's OWN bank-open code).
+- **Anchor `CBankFileManager::OpenRetailBank` @0x009A8840 verified RELOCATION_MATCH,
+  1565/1565 bytes** (`verify_anchor.py`).
+- **Direct-callee ring closed 27/27**: 17 byte-exact (catalog) + 10 faithful
+  (`faithful/`). Map in `thunk_map.json` / `link_manifest.tsv`.
+- **NEXT = `LINK_WORKLIST.md`** (from `link_smoke.py`): 27 thunk adapters
+  (mechanical jmp-forwarders) + 32 second-layer helper fns + 12 data globals
+  (vtables, L"D:\\", magic, Win32 IAT ptrs) → then link `oab_ring.dll`, diff parse
+  vs `rebuild/integration/fable_bank_reader.h`.
+- Note: `faithful/CharConstruct_0099aed0.cpp` is actually byte-exact (promote it);
+  `faithful/ContainedBankIndex_009ac530.cpp` test LINK_FAILed (re-verify).
+
+### Lane B — binary-wide parity crawl (HIGH YIELD, ~96% win)
+`scratchpad/next_smallest.py <N> <prefix>` → smallest un-landed manifest fns with
+complete prototype + known CC (pool ≈17,000). Feed to workflow
+`decomp-byte-match-batch-wf_702fd395-6d6.js`, land with `verify_and_land.py`,
+append attempted addrs to `scratchpad/gen_tried.txt`. gen_batch1: 23/24, gen_batch2:
+27/28 landed.
+
+**IN FLIGHT at snapshot: gen_batch3 (30 targets, task `wmwiqclea`).** To resume:
+```
+python <scratch>/land_gen.py wmwiqclea gen_batch3     # builds land.json + updates gen_tried
+python tools/decomp_pipeline/verify_and_land.py <scratch>/gen_batch3_land.json \
+       <scratch>/gen_batch3_land_oracle.tsv --land
+git add -A && git commit    # then: next_smallest.py 30 gen_batch4; repeat
+```
+(land_gen.py helper is in the session scratchpad; re-create from gen_batch1 pattern
+if gone: filter WIN candidates, trim over-captured oracles at first `cccccccc` run,
+call verify_and_land.)
+
+### Pipeline improvement
+`verify_and_land.py` + `build_candidates.ps1` now sweep `/GS` and `/Oa` flag variants
+(retail QFE-4035 codegen) and record winners as a per-entry `CompilerFlags` catalog
+prop. Base flags tried first (a flag win only upgrades a DIFFER).
