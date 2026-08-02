@@ -2,6 +2,14 @@
 
 #include "rebuild_abi.h"
 
+// UI_FRONTEND_LIST_FOR_PROFILES serializes PositionOffsetY=28.  Keep the
+// runtime hit-test and glyph renderer on the same authored row cadence.
+enum FableFrontendProfileLayout
+{
+    FableFrontendProfileRowStep = 28,
+    FableFrontendProfileListHeight = 260
+};
+
 bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     void* window,
     fable_i32 backBufferWidth,
@@ -76,6 +84,16 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     fable_i32 aboutPitch,
     fable_u32 aboutBitsPerPixel,
     const void* aboutPixels,
+    fable_i32 creditsWidth,
+    fable_i32 creditsHeight,
+    fable_i32 creditsPitch,
+    fable_u32 creditsBitsPerPixel,
+    const void* creditsPixels,
+    fable_i32 profilesWidth,
+    fable_i32 profilesHeight,
+    fable_i32 profilesPitch,
+    fable_u32 profilesBitsPerPixel,
+    const void* profilesPixels,
     fable_i32 spookyWidth,
     fable_i32 spookyHeight,
     fable_i32 spookyPitch,
@@ -102,6 +120,13 @@ void FABLE_FASTCALL FableSetVisualFrontendSaveMenu(bool active);
 void FABLE_FASTCALL FableSetVisualFrontendSaveSelection(
     fable_u32 selection);
 void FABLE_FASTCALL FableSetVisualFrontendAboutMenu(bool active);
+void FABLE_FASTCALL FableSetVisualFrontendCreditsMenu(bool active);
+void FABLE_FASTCALL FableSetVisualFrontendProfilesMenu(
+    bool active,
+    const char* const* names,
+    fable_u32 count);
+void FABLE_FASTCALL FableSetVisualFrontendProfilesSelection(
+    fable_u32 selection);
 void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen);
 void FABLE_FASTCALL FableSetVisualFrontendDetailOptionValue(
     fable_u32 screen,

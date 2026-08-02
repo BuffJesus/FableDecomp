@@ -4,6 +4,30 @@ Two tracks in flight: (A) background decomp/byte-match loop, (B) foreground cust
 `docs/HANDOFF.md` (automation-maintained) has the canonical decomp resume; this file adds the
 in-flight session state + the quest-card task the automation does NOT track.
 
+## UI continuation — 2026-08-02
+
+The frontend visual checkpoint now has a sourced Credits entry path. Its
+compiled layout oracle is green, its initial frame preserves the retail scroll
+start at y=480, action 67 enters it, and the shared Back helper/Escape returns
+to the main menu. The focused frontend suite is 34/34; the complete visual
+smoke includes Credits and its hover proof. Change Profile's normal runtime
+list now refreshes the user's profile directories and renders their names
+through the retail font atlas; delete-mode, the empty-profile branch, and
+new-profile editing remain separate boundaries. Full Credits text scrolling
+remains a separate live-component boundary.
+
+The focused suite also extracts all six authored `TEXT_GUI_CRE_*` groups
+from `text.big` without flattening or reordering their member IDs. Geometry
+and runtime promotion remain gated until the retail text layout and scroll
+timing are measured.
+
+The Change Profile validator deliberately requires both Type-43 profile lists
+to have no serialized children: their rows are runtime data and are supplied
+to the normal route from the user's profile store rather than replaced with
+hardcoded names or a baked sample surface. The normal list's decoded
+`PositionOffsetY=28` is also the single row-step used by runtime placement and
+mouse hit-testing.
+
 **Current prioritized queue:** `docs/ACTIVE_TASK_LIST.md`. Its generated address lists are
 `rebuild/backlog/active_candidate_queue.tsv`, `fse2_remaining_ranked.tsv`, and
 `pending_batch_status.tsv`. Use that queue instead of the older candidate ordering below.
@@ -143,3 +167,23 @@ client/host `CGameEventPackage` replication + `CPlayerManager` multi-controller 
 (`IsMultiplayerGameActive` 0x449d20, `InitialiseAsNetworkHost` ~0x4ae940, `GetLocalGameEventPackageSet`
 0x4aeaa0, `ProcessEventPackage` 0x416670, `CTCCoopSpirit::Construct` 0x4d55d0) to gauge how gated vs
 gutted the path is.
+
+---
+
+## Session addendum — 2026-08-02: OpenRetailBank runtime parity
+
+The standalone OpenRetailBank runtime lane under
+`rebuild/runtime/openretailbank/` now has evidence beyond structural linking:
+
+- `verify_anchor.py`: `CBankFileManager::OpenRetailBank @ 0x009A8840` remains
+  1565/1565 bytes with 44 relocations, `RELOCATION_MATCH`.
+- `link_smoke.py`: 32/32 objects compile and strict DLL link has 0 unresolved
+  externals.
+- `runtime_probe.py` opens installed `fonts.big`, matches 3/3 contained-bank
+  records and all five values per record, then reads all 26 oracle entry payloads
+  through the reconstructed threaded handle.
+- Payload result: 26/26 entries, 53,794,802 bytes, byte-for-byte equal.
+
+The raw anchor remains untouched. Remaining OpenRetailBank work is engine-level
+entry-metadata consumption/API coverage; bank-open, contained-bank, threaded-handle,
+and payload parity are verified.

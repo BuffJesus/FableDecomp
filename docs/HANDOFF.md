@@ -6889,8 +6889,9 @@ The full VC7.1 build passes. The complete subscreen smoke now uses Enter for
 press-start, main-menu Options entry, and all four Options destinations; its
 retail result reports `keys=enter-up-wrap-down`. The BuffJesus variant reports
 the same input proof, and maximized scaling remains green. This does not claim
-the retail controller polling/update path or the unimplemented Continue,
-profile, LIVE-aware, credits, and About actions.
+the retail controller polling/update path or the unimplemented Continue and
+LIVE-aware actions. Profile, Credits, and About routing have newer verified
+addenda below.
 
 ## Remaining main-menu routes recovered + About screen wired (2026-07-30)
 
@@ -7203,3 +7204,74 @@ call verify_and_land.)
 `verify_and_land.py` + `build_candidates.ps1` now sweep `/GS` and `/Oa` flag variants
 (retail QFE-4035 codegen) and record winners as a per-entry `CompilerFlags` catalog
 prop. Base flags tried first (a flag win only upgrades a DIFFER).
+
+---
+
+## Session 2026-08-02 (continued): OpenRetailBank runtime parity
+
+The OpenRetailBank runtime lane now has a strict standalone link and a real-file
+execution gate under `rebuild/runtime/openretailbank/`.
+
+- `verify_anchor.py`: `CBankFileManager::OpenRetailBank @ 0x009A8840` remains
+  **RELOCATION_MATCH**, 1565/1565 bytes with 44 relocations.
+- `link_smoke.py`: 32/32 objects compile and the strict DLL link reports 0 unresolved
+  externals.
+- `runtime_probe.py` opens the installed `fonts.big` (53,822,286 bytes), confirms
+  3/3 contained-bank records and all five stored values per record against
+  `fable_bank_reader.h`.
+- The reconstructed threaded handle reports the exact bank length and reads every
+  oracle entry payload: **26/26 entries, 53,794,802 bytes, byte-for-byte equal**.
+- The previously deferred faithful `CContainedBankMap::operator[]` fixture now passes
+  under VC7.1 (`FABLETLC_CONTAINED_BANK_MAP_INDEX PASS`); its runtime map output also
+  matches all three real-bank records and their five stored values.
+- The `0x0099AED0` `CWideString` ring edge is now promoted in `link_manifest.tsv` to
+  the canonical `rebuild/src/compiled` source (`RELOCATION_MATCH`); the ring split is
+  18 byte-exact / 9 faithful.
+- The `0x009AC530` `CContainedBankMap::operator[]` edge is likewise promoted after
+  its canonical object gate (`156/156`, 5 relocations) and behavior fixture passed;
+  the ring split is now 19 byte-exact / 8 faithful.
+- The `0x009A9C80` counted-threaded-file reset edge is promoted after its canonical
+  object gate (`103/103`, 3 relocations) and ownership fixture passed; the ring split
+  is now 20 byte-exact / 7 faithful.
+
+The anchor source remains untouched and byte-pure. Host adaptations are isolated in
+`ring_thunks.cpp`, `runtime_globals.cpp`, and `runtime_helpers.cpp`; the link-only
+CRT shim is `link_only_main.cpp`. Remaining work is engine-level entry-metadata
+consumption/API coverage, not bank-open or threaded-file payload parity.
+
+---
+
+## Session addendum — 2026-08-02: Credits route parity boundary
+
+The visual checkpoint now carries the recovered Credits action through the
+frontend route. `UI_FRONTEND_CREDITS_MENU` is structurally gated from shipped
+`frontend.bin` (child order, `(0,480)` scroll start, 180-second transition,
+title children, widescreen bars, and the shared Back helper). Graphic 334
+resolves to `UI_TABLE_BACK_SPRITE_FOR_DIALOG_FE`; the initial 640x480 frame
+uses that exact bar and the existing retail title sprites. Credit text remains
+below the initial viewport at y=480, preserving the compiled activation
+boundary rather than inventing an early text position.
+
+Action 67 now enters Credits; Escape/Back and the helper hover return to the
+main menu. Focused renderer coverage is 34/34 tests green, and the complete
+visual smoke records both the route and hover proof. Continuous Credits text
+scrolling and same-state retail pixel diff remain open.
+
+The Change Profile boundary is also now structurally gated from `frontend.bin`:
+the normal/delete Type-43 lists, Type-11 row template, arrow bindings, title
+rule, helper branches, no-profile message, and Type-12 new-profile menu all
+match the shipped graph. The normal route now enumerates the user's profile
+directories, sorts/display-converts their names, and emits them through the
+retail `ENG_ARIAL_16` atlas; the decoded normal-list row step is 28px and is
+shared by rendering and hit-testing. Delete-mode, empty-profile, and new-profile
+editing remain open rather than being filled with guessed behavior.
+
+The renderer now has a byte-preserving extraction oracle for all six
+`TEXT_GUI_CRE_*` type-1 groups: it follows the compiled `TextValue` symbols,
+retains member IDs/order, and preserves explicit single-space rows. No guessed
+line spacing or unverified runtime scroll surface has been promoted.
+
+The normal bootstrap was stopped by the pre-existing `CThreadedFile::Open`
+leaf gate (`retail=310`, `built=307`) before integration compilation. The
+visual objects/resource were compiled and linked against the already-gated
+runtime object set for this smoke; the byte gate itself was not weakened.

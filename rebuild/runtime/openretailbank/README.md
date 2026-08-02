@@ -31,19 +31,23 @@ symbols in the anchor with the ordered E8 targets in the retail bytes (see
 
 | status | count | meaning |
 |--------|-------|---------|
-| landed byte-exact | 17 | in `rebuild/src/compiled` catalog, MATCH/RELOCATION_MATCH |
-| faithful behavior | 10 | staged under `faithful/`, behavior-PASS, DIFFER on bytes (RTM-3077 vs retail QFE-4035 codegen wall) — execute identically |
+| landed byte-exact | 20 | in `rebuild/src/compiled` catalog, MATCH/RELOCATION_MATCH |
+| faithful behavior | 7 | staged under `faithful/`, behavior-PASS, DIFFER on bytes (RTM-3077 vs retail QFE-4035 codegen wall) — execute identically |
 
 `CThreadedFile::CThreadedFile` (0098dfd0) landed byte-exact; `CThreadedFile::Open`
 (0098e1e0) is faithful (307 vs 310 bytes — a 2-dword stack-slot layout gap, behavior
 verified across both drive branches, both caching flags, and the CreateFileW-fails
 path).
 
-Note: `faithful/CharConstruct_0099aed0.cpp` is actually RELOCATION_MATCH (byte-exact)
-— it was mis-deferred during the leaf crawl and can be promoted to the byte-parity
-catalog. `faithful/ContainedBankIndex_009ac530.cpp` is the one soft spot: its authored
-test LINK_FAILed, so its behavior is not yet independently verified — re-verify before
-trusting the runtime parse.
+`CWideString::CWideString` (0099aed0),
+`CContainedBankMap::operator[]` (009ac530), and
+`CCountedPointer<CThreadedFile>::Reset` (009a9c80) are now wired through their canonical
+`rebuild/src/compiled` byte-parity sources; the old faithful copies remain only as
+traceability. Both canonical behavior fixtures pass, and the real-bank probe also
+verifies the resulting key/value map against the clean-room oracle.
+
+The runtime host adapter is now verified against a real bank: all three contained-bank
+keys and all five stored values agree with the clean-room oracle.
 
 ## Linking (next step)
 
@@ -60,3 +64,24 @@ vtable, the bank-manager singleton, and the global allocators wired up. The ring
 `fable_bank_reader.h` (clean-room BIGB reader, already proven to byte-match Python on
 real 53 MB banks) is the oracle: drive the linked module on the same `.big` and diff
 its parsed TOC / entry table against the clean-room reader's output.
+
+## Current runtime milestone (2026-08-02)
+
+The 27 ABI-transparent forwarders are now supplied by `ring_thunks.cpp`. The
+standalone link closure is represented by `runtime_globals.cpp` and
+`runtime_helpers.cpp`, and `link_smoke.py` compiles the 31 functional ring
+objects plus one link-only CRT shim and performs a strict DLL link with
+**zero unresolved externals**.
+
+`runtime_probe.py` now links the same x86 ring as a console executable and runs
+the raw `OpenRetailBank` body against the installed `fonts.big`. The probe
+passes: `fable_bank::Open` reports 3 subbanks and the reconstructed
+`CRetailBank::containedBankCount_` is also 3.
+
+The host layer now has working disk seek/refill, buffered-stream ABI handling,
+memory-stream setup, path conversion, safe counted disk ownership, and the
+contained-bank map insertion/ownership path. The probe compares the header/footer
+subbank count plus every contained-bank key and its five stored values. The standalone
+`FableBankReader_test.cpp` remains the TOC metadata oracle. The threaded handle
+state and all 26 oracle entry payloads now match byte-for-byte; the remaining
+boundary is engine-level entry-metadata consumption rather than file-read parity.

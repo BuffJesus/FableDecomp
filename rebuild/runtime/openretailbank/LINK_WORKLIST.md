@@ -1,8 +1,26 @@
 # OpenRetailBank link worklist
 
 Authoritative unresolved-externals from the ring link smoke-test
-(`link_smoke.py`: anchor + 27 ring objects linked with /FORCE:UNRESOLVED).
+(`link_smoke.py`: anchor + 27 ring objects plus host closure, strict link).
 These three buckets are everything between "ring reconstructed" and "module runs".
+
+### Status as of 2026-08-02
+
+- Bucket 1 (27 ABI-transparent ring thunks): **complete** in `ring_thunks.cpp`.
+- Bucket 2: **runtime-open boundary complete** for disk seek/refill,
+  buffered-stream ABI, memory-stream setup, path conversion, counted disk
+  ownership, contained-bank map key/value parity, and full threaded payload
+  parity.
+- Bucket 3: **link closure complete** in `runtime_globals.cpp`; threaded-file
+  callbacks remain host adapters rather than byte-parity engine globals.
+- Strict `link_smoke.py`: **32/32 objects compile, 0 unresolved externals**
+  (31 functional objects plus one link-only CRT shim).
+
+The DLL produced by that smoke is a structural link artifact. The separate
+`runtime_probe.py` is the executable evidence that a real `.big` is opened;
+its oracle comparison covers the header/footer subbank count and each contained-bank
+key plus five stored values, then reads all 26 entry payloads through the reconstructed
+threaded handle.
 
 ## 1. Ring thunk adapters — forward each to its reconstruction (mechanical) (27)
 
@@ -99,6 +117,6 @@ behavior-faithful stub (the module still runs identically for bank-open).
   `_g_FableGetFileAttributesW`): point at the real Win32 exports so file reads actually happen.
 - `_g_FableThreadedPhysicalSortKey_013BC9EC`: a global monotonic file-id counter (init 0).
 
-Once buckets 1+3 are defined and bucket 2 is stubbed/reconstructed, link into
-`oab_ring.dll`/`.lib` and drive it on a real `.big`, diffing the parse against
-`fable_bank_reader.h`.
+The raw open path now links into `oab_ring.dll` and is also driven by
+`runtime_probe.py` on a real `.big`. Threaded handle and full payload parity are
+verified; the remaining increment is engine-level entry-metadata consumption.

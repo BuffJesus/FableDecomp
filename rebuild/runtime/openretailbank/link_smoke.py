@@ -9,6 +9,10 @@ import shutil; shutil.rmtree(work, ignore_errors=True); work.mkdir(parents=True,
 ROOT=Path(r'D:/Documents/FableTLC')
 # gather ring sources: anchor + 17 landed (from manifest) + 10 faithful
 srcs=[ROOT/'rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.cpp']
+srcs += [ROOT/'rebuild/runtime/openretailbank/ring_thunks.cpp',
+         ROOT/'rebuild/runtime/openretailbank/runtime_globals.cpp',
+         ROOT/'rebuild/runtime/openretailbank/runtime_helpers.cpp',
+         ROOT/'rebuild/runtime/openretailbank/link_only_main.cpp']
 man=open(ROOT/'rebuild/runtime/openretailbank/link_manifest.tsv',encoding='utf-8').read().splitlines()[1:]
 for ln in man:
     f=ln.split('\t')
@@ -26,9 +30,19 @@ print(f"compiled {len(objs)}/{len(srcs)} objs; {len(failed)} failed")
 for n,why in failed: print('  FAIL', n, why[:200])
 # attempt link into a DLL (noentry) to force unresolved-externals report
 exe=work/'oab_ring.dll'
-lk=subprocess.run([str(V.VC/'bin'/'link.exe'),'/nologo','/DLL','/NOENTRY','/FORCE:UNRESOLVED',
+lk=subprocess.run([str(V.VC/'bin'/'link.exe'),'/nologo','/DLL','/ENTRY:FableOabDllEntry@12',
     f'/out:{exe}']+[str(o) for o in objs],capture_output=True,text=True,env=e)
-un=sorted(set(re.findall(r'unresolved external symbol (\S+)', lk.stdout)))
+link_output=(lk.stdout or '')+'\n'+(lk.stderr or '')
+un=sorted(set(re.findall(r'unresolved external symbol (\S+)', link_output)))
 print(f"\n=== unresolved externals: {len(un)} ===")
 for u in un: print(' ', u)
+if un:
+    print("\n=== raw unresolved lines ===")
+    for line in link_output.splitlines():
+        if 'unresolved external symbol' in line:
+            print(line)
 open(r'C:/Users/Cornelio/AppData/Local/Temp/oab_unresolved.txt','w').write('\n'.join(un))
+if lk.returncode != 0:
+    print("\n=== link failure ===")
+    print(link_output)
+    raise SystemExit(lk.returncode)

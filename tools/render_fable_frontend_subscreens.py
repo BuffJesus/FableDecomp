@@ -48,9 +48,22 @@ from render_fable_static_font import (  # noqa: E402
     text_advance,
 )
 from texture_build import load_big  # noqa: E402
+from text_build import TextBank  # noqa: E402
 
 
 CANVAS_SIZE = (640, 480)
+
+# These are the six text widgets in UI_CREDITS_CONTAINER.  Keep this table
+# beside the compiled-layout validator so a future live text renderer cannot
+# silently substitute literals or reorder the retail groups.
+CREDITS_TEXT_GROUPS = (
+    ("UI_CREDITS_TEXT_MAIN1", "TEXT_GUI_CRE_MAIN1", "ENG_ARIAL_24"),
+    ("UI_CREDITS_TEXT_MAIN2", "TEXT_GUI_CRE_MAIN2", "ENG_ARIAL_24"),
+    ("UI_CREDITS_TEXT_TESTSUP", "TEXT_GUI_CRE_TESTSUP", "ENG_ARIAL_24"),
+    ("UI_CREDITS_TEXT_MICROSOFT", "TEXT_GUI_CRE_MICROSOFT", "ENG_ARIAL_24"),
+    ("UI_CREDITS_TEXT_TEST", "TEXT_GUI_CRE_TEST", "ENG_ARIAL_12"),
+    ("UI_CREDITS_TEXT_THANKS", "TEXT_GUI_CRE_THANKS", "ENG_ARIAL_12"),
+)
 HEADER_RULE_POSITION = (0, 35)
 HEADER_TEXT_POSITION = (CANVAS_SIZE[0] // 2, 44)
 
@@ -175,6 +188,12 @@ SAVE_COMPONENT_ATLAS_ORIGIN = (
     OPTIONS_ROW_ATLAS_ORIGIN_X,
     len(OPTIONS_ROWS) * CANVAS_SIZE[1],
 )
+# The component sheet's free tail is used for runtime profile-name glyphs.
+# ENG_ARIAL_16 is the compiled UI_FRONTEND_BUTTON_FOR_PROFILES_LIST font;
+# copying its authored atlas here keeps the later C++ glyph quads sourced from
+# fonts.big rather than from a platform font.
+PROFILE_GLYPH_ATLAS_ORIGIN = (1024, 2704)
+PROFILE_ROW_STEP = 28
 
 GAMEPLAY_ROWS = (
     ("Game Camera", "Normal", 0.0),
@@ -785,6 +804,271 @@ def validate_compiled_about_layout(game_root, schema_path):
         ))
 
 
+def validate_compiled_credits_layout(game_root, schema_path):
+    """Gate the recovered Credits screen structure against frontend.bin.
+
+    The Credits route is a scrolling screen, not a static title panel.  Keep
+    its authored child order, scroll transition, source text groups, and
+    shared Back/widescreen helpers explicit before wiring a runtime surface.
+    """
+    layout = FrontendLayoutOracle(game_root, schema_path)
+    credits_menu = "UI_FRONTEND_CREDITS_MENU"
+    require_equal(
+        "Credits screen type",
+        layout.decoded(credits_menu)["Type"],
+        10)
+    require_equal(
+        "Credits child order",
+        layout.child_names(credits_menu),
+        (
+            "UI_BLENDING_BACKGROUNDS_FORREST",
+            "UI_SCROLLING_TEST",
+            "UI_HELPERS_CREDITS",
+            "UI_WIDESCREEN_BAR_TOP",
+            "UI_WIDESCREEN_BAR_BOTTOM",
+        ))
+
+    require_equal(
+        "Credits background swap children",
+        layout.child_names("UI_BLENDING_BACKGROUNDS_FORREST"),
+        (
+            "UI_SWAPPING_FORREST_SUNBEAM",
+            "UI_SWAPPING_FORREST",
+        ))
+    scrolling = layout.decoded("UI_SCROLLING_TEST")
+    require_equal("Credits scrolling type", scrolling["Type"], 19)
+    require_position(
+        "Credits scroll start",
+        layout.initial_position("UI_SCROLLING_TEST"),
+        (0, 480))
+    require_equal(
+        "Credits scroll transition",
+        [(state["PositionX"], state["PositionY"], state["UpdateTime"])
+         for state in scrolling["States"][:4]],
+        [
+            (0.0, 480.0, 0.0),
+            (0.0, 480.0, 0.0),
+            (0.0, 480.0, 0.0),
+            (0.0, 0.0, 180.0),
+        ])
+
+    require_equal(
+        "Credits container children",
+        layout.child_names("UI_CREDITS_CONTAINER"),
+        (
+            "UI_TITLE",
+            "UI_CREDITS_TEXT_EMPTY",
+            "UI_CREDITS_TEXT_EMPTY",
+            "UI_CREDITS_TEXT_EMPTY",
+            "UI_CREDITS_MAIN1",
+            "UI_CREDITS_MAIN2",
+            "UI_CREDITS_TESTSUP",
+            "UI_CREDITS_MICROSOFT",
+            "UI_CREDITS_TEST",
+            "UI_CREDITS_THANKS",
+        ))
+    require_equal(
+        "Credits title children",
+        layout.child_names("UI_TITLE"),
+        ("UI_TITLE_01", "UI_TITLE_02"))
+    require_position(
+        "Credits title origin",
+        layout.initial_position("UI_TITLE"),
+        (70, 30))
+
+    for name, symbol, font in CREDITS_TEXT_GROUPS:
+        values = layout.decoded(name)
+        require_equal("%s text symbol" % name, values["TextValue"], symbol)
+        require_equal("%s font" % name, values["Font"], font)
+        require_position("%s serialized position" % name,
+                         layout.initial_position(name), (75, 0))
+
+    require_equal(
+        "Credits helper child",
+        layout.child_names("UI_HELPERS_CREDITS"),
+        ("UI_BACK",))
+    require_equal(
+        "Credits top bar graphic",
+        layout.decoded("UI_WIDESCREEN_BAR_TOP")["States"][0]["GraphicIndex"],
+        334)
+    require_equal(
+        "Credits bottom bar origin",
+        layout.initial_position("UI_WIDESCREEN_BAR_BOTTOM"),
+        (0, 408))
+
+
+def validate_compiled_profiles_layout(game_root, schema_path):
+    """Gate the shipped Change Profile graph against ``frontend.bin``.
+
+    Profile rows are populated by the game at runtime.  The compiled list
+    records therefore intentionally have no serialized children; this oracle
+    locks the container/template contract and the two authored empty-profile
+    branches without inventing profile names or row pixels.
+    """
+    layout = FrontendLayoutOracle(game_root, schema_path)
+
+    require_equal(
+        "Profiles screen type",
+        layout.decoded("UI_FRONTEND_PROFILES_MENU")["Type"],
+        10)
+    require_equal(
+        "Profiles screen child order",
+        layout.child_names("UI_FRONTEND_PROFILES_MENU"),
+        (
+            "UI_TEXT_PROFILES_MENU_TITLE",
+            "UI_BLENDING_BACKGROUNDS_COASTAL",
+            "UI_TABLE_TITLE_WHOLE",
+            "UI_HELPERS_PROFILE_DELETE",
+        ))
+    require_equal(
+        "Profiles delete screen child order",
+        layout.child_names("UI_FRONTEND_PROFILES_MENU_E3"),
+        (
+            "UI_TEXT_PROFILES_MENU_TITLE",
+            "UI_BLENDING_BACKGROUNDS_SPOOKY",
+            "UI_TABLE_TITLE_WHOLE",
+            "UI_HELPERS",
+        ))
+
+    title = layout.decoded("UI_TEXT_PROFILES_MENU_TITLE")
+    require_equal(
+        "Profiles title symbol",
+        title["TextValue"],
+        "TEXT_GUI_MENU_SELECT_PROFILE")
+    require_equal("Profiles title font", title["Font"], "ENG_ARIAL_24")
+    require_position(
+        "Profiles title serialized position",
+        layout.initial_position("UI_TEXT_PROFILES_MENU_TITLE"),
+        (65, 44))
+
+    profile_list = layout.decoded("UI_FRONTEND_LIST_FOR_PROFILES")
+    require_equal("Profiles list type", profile_list["Type"], 43)
+    require_equal("Profiles list serialized children", profile_list["Children"], [])
+    require_position(
+        "Profiles list origin",
+        layout.initial_position("UI_FRONTEND_LIST_FOR_PROFILES"),
+        (200, 120))
+    require_equal("Profiles list height", profile_list["Height"], 260.0)
+    require_equal(
+        "Profiles list row step",
+        profile_list["PositionOffsetY"],
+        float(PROFILE_ROW_STEP))
+    require_equal("Profiles list layer", profile_list["Layer"], 7)
+    require_equal("Profiles list up arrow", profile_list["UpArrow"], 426)
+    require_equal("Profiles list down arrow", profile_list["DownArrow"], 423)
+    require_equal("Profiles list scrolling", profile_list["Scrolling"], True)
+
+    delete_list = layout.decoded("UI_FRONTEND_LIST_FOR_PROFILES_FOR_DELETE")
+    require_equal("Profiles delete list type", delete_list["Type"], 43)
+    require_equal(
+        "Profiles delete list serialized children",
+        delete_list["Children"],
+        [])
+    require_position(
+        "Profiles delete list origin",
+        layout.initial_position("UI_FRONTEND_LIST_FOR_PROFILES_FOR_DELETE"),
+        (200, 180))
+    require_equal("Profiles delete list height", delete_list["Height"], 210.0)
+    require_equal("Profiles delete list layer", delete_list["Layer"], 7)
+    require_equal("Profiles delete list up arrow", delete_list["UpArrow"], 427)
+    require_equal("Profiles delete list down arrow", delete_list["DownArrow"], 424)
+    require_equal("Profiles delete list scrolling", delete_list["Scrolling"], True)
+
+    require_equal(
+        "Profiles button template type",
+        layout.decoded("UI_FRONTEND_BUTTON_FOR_PROFILES_LIST")["Type"],
+        11)
+    require_equal(
+        "Profiles helper children",
+        layout.child_names("UI_HELPERS_PROFILE_DELETE"),
+        ("UI_DELETE", "UI_BACK"))
+    require_equal(
+        "Profiles shared helper children",
+        layout.child_names("UI_HELPERS"),
+        ("UI_BACK",))
+
+    title_rule = layout.decoded("UI_TABLE_TITLE_WHOLE")
+    require_equal("Profiles title rule type", title_rule["Type"], 2)
+    require_equal("Profiles title rule width", title_rule["Width"], 640.0)
+    require_equal("Profiles title rule layer", title_rule["Layer"], 6)
+    require_position(
+        "Profiles title rule origin",
+        layout.initial_position("UI_TABLE_TITLE_WHOLE"),
+        (0, 35))
+
+    require_equal(
+        "No-profile screen child order",
+        layout.child_names("UI_FRONTEND_NO_PROFILES_MENU"),
+        (
+            "UI_TEXT_NO_PROFILES_MENU_TITLE",
+            "UI_BLENDING_BACKGROUNDS_FORREST",
+            "UI_TABLE_TITLE_WHOLE",
+            "UI_HELPERS",
+            "UI_NO_PROFILES_TEXT",
+        ))
+    no_profiles = layout.decoded("UI_NO_PROFILES_TEXT")
+    require_equal(
+        "No-profile message symbol",
+        no_profiles["TextValue"],
+        "TEXT_GUI_MENU_NEED_NEW_PROFILE")
+    require_equal("No-profile message font", no_profiles["Font"], "ENG_ARIAL_24")
+    require_position(
+        "No-profile message origin",
+        layout.initial_position("UI_NO_PROFILES_TEXT"),
+        (320, 200))
+
+    require_equal(
+        "New-profile screen child order",
+        layout.child_names("UI_FRONTEND_NEW_PROFILE_SCREEN"),
+        (
+            "UI_TEXT_NEW_PROFILE_MENU_TITLE",
+            "UI_BLENDING_BACKGROUNDS_COASTAL",
+            "UI_TABLE_TITLE_WHOLE",
+            "UI_NEW_PROFILE_MENU",
+            "UI_HELPERS_NEW_PROFILE",
+        ))
+    new_profile = layout.decoded("UI_NEW_PROFILE_MENU")
+    require_equal("New-profile menu type", new_profile["Type"], 12)
+    require_position(
+        "New-profile menu origin",
+        layout.initial_position("UI_NEW_PROFILE_MENU"),
+        (40, 150))
+
+
+def extract_credits_text_stream(text_bank):
+    """Return the authored Credits groups without flattening or rewriting.
+
+    ``TextValue`` points at type-1 groups in ``text.big``.  Keeping the
+    member IDs and decoded strings together is deliberate: a future live
+    renderer must preserve the retail group order, including the explicit
+    single-space entries used as blank rows.  This helper is an extraction
+    oracle only; it does not guess line spacing or scroll timing.
+    """
+    bank = TextBank(text_bank)
+    result = []
+    for widget, symbol, font in CREDITS_TEXT_GROUPS:
+        group = bank.decode(symbol)
+        if group["type"] != 1:
+            raise ValueError("Credits text symbol is not a group: %s" % symbol)
+        members = []
+        for member_id in group["members"]:
+            member = bank.by_id.get(member_id)
+            if member is None or member["type"] != 0:
+                raise ValueError(
+                    "Credits group member is not a string: %s[%d]" %
+                    (symbol, member_id))
+            decoded = bank.decode(member["name"])
+            members.append(decoded["content"])
+        result.append({
+            "widget": widget,
+            "symbol": symbol,
+            "font": font,
+            "member_ids": tuple(group["members"]),
+            "members": tuple(members),
+        })
+    return tuple(result)
+
+
 def _build_stretched(left, middle, right, width):
     """Assemble one retail three-piece horizontal sprite."""
     if width < left.width + right.width:
@@ -1325,6 +1609,58 @@ def build_about_frame(
     return canvas
 
 
+def build_credits_frame(frontend_bank):
+    """Compose the authored initial Credits viewport.
+
+    ``UI_FRONTEND_CREDITS_MENU`` starts its scrolling container at (0, 480),
+    so the first presented frame contains the title and the two widescreen
+    bars while the first credit line is still below the viewport.  Keep this
+    frame sourced entirely from frontend.big: graphic 334 is the compiled
+    ``UI_WIDESCREEN_BAR_*`` asset and the title children are graphics 3/4.
+    The scrolling text is intentionally a later live state; baking it into
+    this frame would change the retail activation boundary.
+    """
+    buf, parsed = load_big(frontend_bank)
+    canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
+    title_left = _decode_named(buf, parsed, "FRONTEND_TITLE_01_SPRITE")
+    title_right = _decode_named(buf, parsed, "FRONTEND_TITLE_02_SPRITE")
+    canvas.alpha_composite(title_left, (70, 30))
+    canvas.alpha_composite(title_right, (70 + title_left.width, 30))
+
+    # UI_WIDESCREEN_BAR_TOP/BOTTOM use graphic 334 with Zoom=(180,18).
+    # The source is a 4x4 solid bar; its authored width is 720 and the
+    # 640x480 view clips the rightmost 80 pixels exactly as the retail view.
+    bar = _decode_named(
+        buf, parsed, "UI_TABLE_BACK_SPRITE_FOR_DIALOG_FE")
+    bar = bar.resize((720, 18), Image.Resampling.NEAREST)
+    canvas.alpha_composite(bar.crop((0, 0, CANVAS_SIZE[0], 18)), (0, 0))
+    canvas.alpha_composite(
+        bar.crop((0, 0, CANVAS_SIZE[0], 18)),
+        (0, 408))
+    return canvas
+
+
+def build_profiles_frame(frontend_bank, font_bank):
+    """Compose the static Select Profile surface.
+
+    ``UI_FRONTEND_LIST_FOR_PROFILES`` is a dynamic Type-43 list, so profile
+    names and selection ornaments are intentionally left to the runtime.  The
+    title rule and title are the authored static portion of the normal profile
+    screen; the coastal background and Back helper remain live layers.
+    """
+    buf, parsed = load_big(frontend_bank)
+    canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
+    title_segment = _decode_named(
+        buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
+    canvas.alpha_composite(
+        _build_table_horizontal(
+            title_segment, title_segment, title_segment, CANVAS_SIZE[0]),
+        HEADER_RULE_POSITION)
+    title_font = load_font(font_bank, "ENG_ARIAL_24")
+    _draw_text(canvas, title_font, "Select Profile", HEADER_TEXT_POSITION)
+    return canvas
+
+
 def build_options_frame(
         frontend_bank,
         font_bank,
@@ -1561,6 +1897,14 @@ def build_options_sheet(
                     OPTIONS_ROW_ATLAS_ORIGIN_X,
                     row * CANVAS_SIZE[1],
                 ))
+        profile_font = load_font(font_bank, "ENG_ARIAL_16")
+        profile_atlas = profile_font["atlas"]
+        expected_origin = PROFILE_GLYPH_ATLAS_ORIGIN
+        if (
+                expected_origin[0] + profile_atlas.width > sheet.width or
+                expected_origin[1] + profile_atlas.height > sheet.height):
+            raise ValueError("profile glyph atlas does not fit component sheet")
+        sheet.alpha_composite(profile_atlas, expected_origin)
 
     return sheet
 
@@ -1737,6 +2081,8 @@ def main():
     parser.add_argument("options_output")
     parser.add_argument("helpers_output")
     parser.add_argument("--about-output")
+    parser.add_argument("--credits-output")
+    parser.add_argument("--profiles-output")
     parser.add_argument("--components-output")
     parser.add_argument("--title-segment-output")
     parser.add_argument("--button-left-output")
@@ -1760,6 +2106,8 @@ def main():
             "all component output arguments must be supplied together")
     if args.game_root:
         validate_compiled_subscreen_layout(args.game_root, args.schema)
+        validate_compiled_credits_layout(args.game_root, args.schema)
+        validate_compiled_profiles_layout(args.game_root, args.schema)
 
     options = build_options_sheet(args.frontend_bank, args.font_bank)
     helpers = build_helper_sheet(args.frontend_bank, args.font_bank)
@@ -1768,6 +2116,12 @@ def main():
     if args.about_output:
         about = build_about_frame(args.frontend_bank, args.font_bank)
         about.save(args.about_output)
+    if args.credits_output:
+        credits = build_credits_frame(args.frontend_bank)
+        credits.save(args.credits_output)
+    if args.profiles_output:
+        profiles = build_profiles_frame(args.frontend_bank, args.font_bank)
+        profiles.save(args.profiles_output)
     component_output = ""
     if args.components_output:
         components = build_options_sheet(

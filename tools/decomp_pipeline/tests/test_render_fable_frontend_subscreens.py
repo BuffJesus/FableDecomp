@@ -27,6 +27,7 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     OPTIONS_SHEET_FRAME_COUNT,
     OPTIONS_SHEET_WIDTH,
     OPTIONS_ROWS,
+    PROFILE_GLYPH_ATLAS_ORIGIN,
     REDEFINE_ACTION_ORDER,
     REDEFINE_FULL_ACTION_ORDER,
     REDEFINE_HOVER_HELPER_FRAME,
@@ -65,7 +66,12 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     build_save_browser_frame,
     build_save_preview_viewport,
     build_about_frame,
+    build_credits_frame,
+    build_profiles_frame,
+    extract_credits_text_stream,
     validate_compiled_about_layout,
+    validate_compiled_credits_layout,
+    validate_compiled_profiles_layout,
     validate_compiled_subscreen_layout,
 )
 from render_fable_static_font import (  # noqa: E402
@@ -571,6 +577,69 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
             self.SCHEMA)
 
     @unittest.skipUnless(
+        os.path.isfile(os.path.join(
+            RETAIL_ROOT, "data", "CompiledDefs", "frontend.bin")),
+        "retail frontend.bin is not installed")
+    def test_credits_screen_matches_shipped_frontend_bin(self):
+        validate_compiled_credits_layout(
+            self.RETAIL_ROOT,
+            self.SCHEMA)
+
+    @unittest.skipUnless(
+        os.path.isfile(os.path.join(
+            RETAIL_ROOT, "data", "CompiledDefs", "frontend.bin")),
+        "retail frontend.bin is not installed")
+    def test_profiles_screen_matches_shipped_frontend_bin(self):
+        validate_compiled_profiles_layout(
+            self.RETAIL_ROOT,
+            self.SCHEMA)
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend.big/fonts.big are not installed")
+    def test_profiles_static_frame_and_glyph_atlas_are_sourced(self):
+        frame = build_profiles_frame(self.FRONTEND_BANK, self.FONT_BANK)
+        self.assertEqual(frame.size, (640, 480))
+        self.assertIsNotNone(frame.crop((0, 35, 640, 70)).getbbox())
+        components = build_options_sheet(
+            self.FRONTEND_BANK,
+            self.FONT_BANK,
+            include_options_row_atlas=True)
+        left, top = PROFILE_GLYPH_ATLAS_ORIGIN
+        self.assertIsNotNone(
+            components.crop((left, top, left + 128, top + 256)).getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(os.path.join(
+            RETAIL_ROOT, "data", "lang", "English", "text.big")),
+        "retail text.big is not installed")
+    def test_credits_stream_consumes_authored_text_groups_in_order(self):
+        stream = extract_credits_text_stream(
+            os.path.join(
+                self.RETAIL_ROOT, "data", "lang", "English", "text.big"))
+        self.assertEqual(
+            [(item["symbol"], item["font"], len(item["members"]))
+             for item in stream],
+            [
+                ("TEXT_GUI_CRE_MAIN1", "ENG_ARIAL_24", 133),
+                ("TEXT_GUI_CRE_MAIN2", "ENG_ARIAL_24", 125),
+                ("TEXT_GUI_CRE_TESTSUP", "ENG_ARIAL_24", 143),
+                ("TEXT_GUI_CRE_MICROSOFT", "ENG_ARIAL_24", 152),
+                ("TEXT_GUI_CRE_TEST", "ENG_ARIAL_12", 132),
+                ("TEXT_GUI_CRE_THANKS", "ENG_ARIAL_12", 13),
+            ])
+        self.assertEqual(stream[0]["members"][:4],
+                         ("CODING", " ", "Lead", "Simon Carter"))
+        self.assertEqual(
+            stream[-1]["members"][-1],
+            "the maximum extent possible under the law.")
+        # Explicit blank members are part of the retail group payload and
+        # must survive extraction; dropping them changes the later layout.
+        self.assertGreater(
+            sum(member == " " for item in stream for member in item["members"]),
+            10)
+
+    @unittest.skipUnless(
         os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
         "retail frontend.big/fonts.big are not installed")
     def test_about_frame_composes_title_message_and_back(self):
@@ -581,16 +650,27 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
             return frame.crop(box).getbbox() is not None
 
         # Title rule + "About Fable" occupy the raised header band (y 5..30);
-        # the legal-notice message body sits just below (y 55..220); the Back
-        # helper renders near the bottom (y 420..475).
+        # the legal-notice message body sits just below (y 55..220). Back is
+        # a live UI_HELPERS component and is not baked into this panel.
         self.assertTrue(region_has_pixels((0, 5, 640, 32)), "title band empty")
         self.assertTrue(
             region_has_pixels((0, 55, 640, 220)), "message body empty")
-        self.assertTrue(
-            region_has_pixels((0, 420, 300, 475)), "Back helper empty")
         # Composition is deterministic (same banks -> identical bytes).
         again = build_about_frame(self.FRONTEND_BANK, self.FONT_BANK)
         self.assertEqual(frame.tobytes(), again.tobytes())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK),
+        "retail frontend.big is not installed")
+    def test_credits_initial_frame_preserves_authored_scroll_start(self):
+        frame = build_credits_frame(self.FRONTEND_BANK)
+        self.assertEqual(frame.size, (640, 480))
+        self.assertIsNotNone(frame.crop((70, 30, 582, 160)).getbbox())
+        # The compiled scrolling child starts at y=480; no credit text is
+        # allowed to leak into the initial viewport.
+        self.assertIsNone(frame.crop((0, 160, 640, 408)).getbbox())
+        self.assertEqual(
+            frame.tobytes(), build_credits_frame(self.FRONTEND_BANK).tobytes())
 
 
 if __name__ == "__main__":

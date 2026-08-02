@@ -4,9 +4,10 @@
 typedef unsigned char fable_u8;
 typedef unsigned long fable_u32;
 
-// Minimal base object with its own vtable-setting constructor; retail calls
-// this base subobject constructor first (ecx==this), then the derived
-// constructor overwrites the vtable pointer with the derived vtable.
+// Minimal base object declaration.  The exact catalog constructor at
+// 0x0099A2F0 supplies the definition; keeping only the declaration here avoids
+// emitting a second copy when this faithful derived-constructor TU is linked
+// into the OpenRetailBank ring.
 class CBase
 {
 public:
@@ -14,13 +15,6 @@ public:
 
     fable_u32 vtable_;
 };
-
-extern "C" fable_u8 g_CBaseVTable_009AC4D0;
-
-__declspec(noinline) CBase::CBase()
-{
-    vtable_ = reinterpret_cast<fable_u32>(&g_CBaseVTable_009AC4D0);
-}
 
 // Minimal narrow-string value type matching retail CCharString: a single
 // storage pointer, default-constructed to null.

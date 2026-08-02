@@ -67,6 +67,21 @@ fable_u32 FABLE_FASTCALL FableEnumerateVisualFrontendSaves(
     FableUiSaveProfile* out,
     fable_u32 outCapacity);
 
+// Runtime profile-directory enumeration for the Change Profile screen. Unlike
+// save enumeration, this includes profile folders even when they contain no
+// AutoSave blob; the frontend decides separately whether to show the empty
+// profile branch. Names are returned in the same sorted, display-ready ASCII
+// form consumed by the checkpoint's retail glyph path.
+struct FableUiProfileName
+{
+    char name[64];
+};
+
+fable_u32 FABLE_FASTCALL FableEnumerateVisualFrontendProfiles(
+    const wchar_t* saveDirectory,
+    FableUiProfileName* out,
+    fable_u32 outCapacity);
+
 enum FableUiControllerActionMask
 {
     FableUiControllerUp = 1 << 0,

@@ -10,6 +10,7 @@
 #include "fable_texture_lifecycle.h"
 #include "render2d_batch_plan.h"
 #include "render2d_draw_list_adapter.h"
+#include "frontend_profile_glyph_metrics.h"
 
 #include <string.h>
 
@@ -215,6 +216,8 @@ namespace
     FableD3DTexture9* g_OptionsTexture = 0;
     FableD3DTexture9* g_HelpersTexture = 0;
     FableD3DTexture9* g_AboutTexture = 0;
+    FableD3DTexture9* g_CreditsTexture = 0;
+    FableD3DTexture9* g_ProfilesTexture = 0;
     FableD3DTexture9* g_SpookyTexture = 0;
     FableD3DTexture9* g_SpookySunbeamTexture = 0;
     FableD3DTexture9* g_TitleSegmentTexture = 0;
@@ -300,6 +303,11 @@ namespace
     bool g_OptionsMenuActive = false;
     bool g_SaveMenuActive = false;
     bool g_AboutMenuActive = false;
+    bool g_CreditsMenuActive = false;
+    bool g_ProfilesMenuActive = false;
+    const char* g_ProfileNames[32] = {};
+    fable_u32 g_ProfileNameCount = 0;
+    fable_u32 g_ProfileSelection = 0;
     bool g_OptionsBackHovered = false;
     bool g_QuitPromptActive = false;
     bool g_Presented = false;
@@ -606,6 +614,92 @@ namespace
             reinterpret_cast<fable_u32>(texture);
         first.payload.normal.stateBlock = 1;
         records[recordCount++] = first;
+    }
+
+    void AppendProfileNameText(
+        FableVisualVertex* vertices,
+        fable_u32& vertexCount,
+        FableRender2DPlanRecord* records,
+        fable_u32& recordCount,
+        const char* text,
+        float centerX,
+        float top,
+        float originX,
+        float originY,
+        float scaleX,
+        float scaleY)
+    {
+        if (
+            text == 0 ||
+            g_OptionsTexture == 0 ||
+            g_OptionsWidth <= 0 ||
+            g_OptionsHeight <= 0)
+        {
+            return;
+        }
+        int advance = 0;
+        for (const unsigned char* cursor =
+                 reinterpret_cast<const unsigned char*>(text);
+             *cursor != 0;
+             ++cursor)
+        {
+            const int code = static_cast<int>(*cursor);
+            if (
+                code < kFableProfileGlyphFirst ||
+                code >= kFableProfileGlyphFirst +
+                    kFableProfileGlyphCount)
+            {
+                continue;
+            }
+            advance += kFableProfileGlyphMetrics[
+                code - kFableProfileGlyphFirst].advance;
+        }
+        float pen = centerX - static_cast<float>(advance) * 0.5f;
+        for (const unsigned char* cursor =
+                 reinterpret_cast<const unsigned char*>(text);
+             *cursor != 0;
+             ++cursor)
+        {
+            const int code = static_cast<int>(*cursor);
+            if (
+                code < kFableProfileGlyphFirst ||
+                code >= kFableProfileGlyphFirst +
+                    kFableProfileGlyphCount)
+            {
+                continue;
+            }
+            const FableProfileGlyphMetric& glyph =
+                kFableProfileGlyphMetrics[
+                    code - kFableProfileGlyphFirst];
+            const float glyphLeft =
+                pen + static_cast<float>(glyph.xOffset);
+            AppendVisualQuad(
+                vertices,
+                vertexCount,
+                records,
+                recordCount,
+                g_OptionsTexture,
+                originX + glyphLeft * scaleX,
+                originY + top * scaleY,
+                originX + (glyphLeft + glyph.width) * scaleX,
+                originY + (top + glyph.height) * scaleY,
+                static_cast<float>(
+                    kFableProfileGlyphAtlasOriginX + glyph.atlasX) /
+                    static_cast<float>(g_OptionsWidth),
+                static_cast<float>(
+                    kFableProfileGlyphAtlasOriginY + glyph.atlasY) /
+                    static_cast<float>(g_OptionsHeight),
+                static_cast<float>(
+                    kFableProfileGlyphAtlasOriginX + glyph.atlasX +
+                    glyph.width) /
+                    static_cast<float>(g_OptionsWidth),
+                static_cast<float>(
+                    kFableProfileGlyphAtlasOriginY + glyph.atlasY +
+                    glyph.height) /
+                    static_cast<float>(g_OptionsHeight),
+                0xFFFFFFFFu);
+            pen += static_cast<float>(glyph.advance);
+        }
     }
 
     fable_u32 ChooseNextAnimationFrame(
@@ -1109,6 +1203,18 @@ namespace
                 }
                 else if (
                     argument1 ==
+                    reinterpret_cast<fable_u32>(g_CreditsTexture))
+                {
+                    selectedTexture = g_CreditsTexture;
+                }
+                else if (
+                    argument1 ==
+                    reinterpret_cast<fable_u32>(g_ProfilesTexture))
+                {
+                    selectedTexture = g_ProfilesTexture;
+                }
+                else if (
+                    argument1 ==
                     reinterpret_cast<fable_u32>(g_SpookyTexture))
                 {
                     selectedTexture = g_SpookyTexture;
@@ -1406,6 +1512,16 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     fable_i32 aboutPitch,
     fable_u32 aboutBitsPerPixel,
     const void* aboutPixels,
+    fable_i32 creditsWidth,
+    fable_i32 creditsHeight,
+    fable_i32 creditsPitch,
+    fable_u32 creditsBitsPerPixel,
+    const void* creditsPixels,
+    fable_i32 profilesWidth,
+    fable_i32 profilesHeight,
+    fable_i32 profilesPitch,
+    fable_u32 profilesBitsPerPixel,
+    const void* profilesPixels,
     fable_i32 spookyWidth,
     fable_i32 spookyHeight,
     fable_i32 spookyPitch,
@@ -1610,6 +1726,30 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 aboutPitch,
                 aboutBitsPerPixel,
                 aboutPixels,
+                true,
+                true)
+        ) ||
+        (
+            creditsPixels != 0 &&
+            !UploadArtwork(
+                g_CreditsTexture,
+                creditsWidth,
+                creditsHeight,
+                creditsPitch,
+                creditsBitsPerPixel,
+                creditsPixels,
+                true,
+                true)
+        ) ||
+        (
+            profilesPixels != 0 &&
+            !UploadArtwork(
+                g_ProfilesTexture,
+                profilesWidth,
+                profilesHeight,
+                profilesPitch,
+                profilesBitsPerPixel,
+                profilesPixels,
                 true,
                 true)
         ) ||
@@ -1819,6 +1959,9 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     InitialiseMainMenuRowStates();
     g_OptionsSelection = 0;
     g_SaveSelection = 0;
+    g_ProfileSelection = 0;
+    g_ProfileNameCount = 0;
+    memset(g_ProfileNames, 0, sizeof(g_ProfileNames));
     InitialiseOptionsRowStates();
     g_DetailScreen = 0;
     memset(g_DetailOptionValues, 0, sizeof(g_DetailOptionValues));
@@ -1836,7 +1979,9 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     g_MainMenuActive = false;
     g_OptionsMenuActive = false;
     g_SaveMenuActive = false;
+    g_ProfilesMenuActive = false;
     g_AboutMenuActive = false;
+    g_CreditsMenuActive = false;
     g_OptionsBackHovered = false;
     g_QuitPromptActive = false;
     g_AnimationStartTick = 0;
@@ -1981,6 +2126,27 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         overlayFrame = 0;
         overlayFrameCount = 1;
     }
+    else if (g_CreditsMenuActive)
+    {
+        // UI_FRONTEND_CREDITS_MENU starts with its scrolling container at
+        // y=480.  The initial overlay is therefore just the authored title
+        // and widescreen bars; later scrolling text remains a live follow-up.
+        overlayTexture = g_CreditsTexture;
+        overlayWidth = g_CreditsTexture != 0 ? 640 : 0;
+        overlayHeight = g_CreditsTexture != 0 ? 480 : 0;
+        overlayFrame = 0;
+        overlayFrameCount = 1;
+    }
+    else if (g_ProfilesMenuActive)
+    {
+        // Static Select Profile title surface; runtime profile names are
+        // rendered below from the enumerated profile store.
+        overlayTexture = g_ProfilesTexture;
+        overlayWidth = g_ProfilesTexture != 0 ? 640 : 0;
+        overlayHeight = g_ProfilesTexture != 0 ? 480 : 0;
+        overlayFrame = 0;
+        overlayFrameCount = 1;
+    }
     const bool titleUsesDesignCanvas =
         overlayWidth == g_ArtworkWidth &&
         overlayHeight == g_ArtworkHeight;
@@ -1993,12 +2159,12 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     const float titleBottom =
         titleTop + overlayHeight * designScaleY;
 
-    FableVisualVertex vertices[128];
-    FableRender2DPlanRecord records[48];
+    FableVisualVertex vertices[4096];
+    FableRender2DPlanRecord records[2048];
     fable_u32 vertexCount = 0;
     fable_u32 recordCount = 0;
     const bool coastalBackground =
-        g_MainMenuActive || g_DetailScreen == 2;
+        g_MainMenuActive || g_DetailScreen == 2 || g_ProfilesMenuActive;
     // UI_FRONTEND_ABOUT_MENU owns the SPOOKY graveyard background
     // (UI_BLENDING_BACKGROUNDS_SPOOKY: 4 BG frames + 3 sunbeam frames),
     // animated by the same swap/blend path as forest/coastal.
@@ -2642,7 +2808,43 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             (atlasTop + 64.0f) / 2880.0f,
             0xFFFFFFFFu);
     }
-    if ((g_OptionsMenuActive || g_SaveMenuActive || g_AboutMenuActive) &&
+    if (
+        g_ProfilesMenuActive &&
+        g_OptionsTexture != 0 &&
+        g_OptionsWidth == 1664)
+    {
+        // UI_FRONTEND_LIST_FOR_PROFILES is a Type-43 runtime list. Its
+        // frontend.bin serializes PositionOffsetY=28 for this Type-43 list;
+        // names remain supplied by the profile store.
+        // The authored list viewport is 260px high, so only nine rows may be
+        // emitted. Keep the selected row in view as the list scrolls rather
+        // than appending off-screen glyph records for every stored profile.
+        const fable_u32 visibleRows = 9;
+        fable_u32 firstRow = 0;
+        if (g_ProfileSelection >= visibleRows)
+            firstRow = g_ProfileSelection - visibleRows + 1;
+        for (fable_u32 displayRow = 0; displayRow != visibleRows; ++displayRow)
+        {
+            const fable_u32 row = firstRow + displayRow;
+            if (row >= g_ProfileNameCount)
+                break;
+            AppendProfileNameText(
+                vertices,
+                vertexCount,
+                records,
+                recordCount,
+                g_ProfileNames[row],
+                320.0f,
+                120.0f + static_cast<float>(
+                    displayRow * FableFrontendProfileRowStep),
+                left,
+                top,
+                designScaleX,
+                designScaleY);
+        }
+    }
+    if ((g_OptionsMenuActive || g_SaveMenuActive || g_AboutMenuActive ||
+         g_CreditsMenuActive || g_ProfilesMenuActive) &&
         g_HelpersTexture != 0)
     {
         const fable_u32 helperFrame =
@@ -2708,10 +2910,10 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
                 0xFFFFFFFFu);
         }
     }
-    FableRender2DPlanEvent planEvents[68];
+    FableRender2DPlanEvent planEvents[2048];
     FableRender2DPlanOutput plan = {
         planEvents,
-        68,
+        2048,
         0,
         false
     };
@@ -2901,6 +3103,8 @@ void FABLE_FASTCALL FableShutdownVisualD3D9()
     ReleaseObject(g_SpookySunbeamTexture);
     ReleaseObject(g_SpookyTexture);
     ReleaseObject(g_AboutTexture);
+    ReleaseObject(g_CreditsTexture);
+    ReleaseObject(g_ProfilesTexture);
     ReleaseObject(g_HelpersTexture);
     ReleaseObject(g_OptionsTexture);
     ReleaseObject(g_CoastalSunbeamTexture);
@@ -2979,6 +3183,8 @@ void FABLE_FASTCALL FableSetVisualFrontendMainMenu(bool active)
         g_OptionsMenuActive = false;
         g_SaveMenuActive = false;
         g_AboutMenuActive = false;
+        g_CreditsMenuActive = false;
+        g_ProfilesMenuActive = false;
         g_DetailScreen = 0;
         g_QuitPromptActive = false;
         // AUDIT #3: clear the shared Back-button hover so a Back click made
@@ -3055,6 +3261,8 @@ void FABLE_FASTCALL FableSetVisualFrontendOptionsMenu(bool active)
         g_MainMenuActive = false;
         g_SaveMenuActive = false;
         g_AboutMenuActive = false;
+        g_CreditsMenuActive = false;
+        g_ProfilesMenuActive = false;
         g_DetailScreen = 0;
         g_QuitPromptActive = false;
         g_OptionsSelection = 0;
@@ -3078,7 +3286,9 @@ void FABLE_FASTCALL FableSetVisualFrontendOptionsSelection(
 
 void FABLE_FASTCALL FableSetVisualFrontendOptionsBackHovered(bool hovered)
 {
-    if (!g_OptionsMenuActive && !g_SaveMenuActive && !g_AboutMenuActive)
+    if (!g_OptionsMenuActive && !g_SaveMenuActive &&
+        !g_AboutMenuActive && !g_CreditsMenuActive &&
+        !g_ProfilesMenuActive)
         return;
     g_OptionsBackHovered = hovered;
 }
@@ -3101,6 +3311,8 @@ void FABLE_FASTCALL FableSetVisualFrontendSaveMenu(bool active)
         g_MainMenuActive = false;
         g_OptionsMenuActive = false;
         g_AboutMenuActive = false;
+        g_CreditsMenuActive = false;
+        g_ProfilesMenuActive = false;
         g_DetailScreen = 0;
         g_QuitPromptActive = false;
         g_SaveSelection = 0;
@@ -3236,6 +3448,7 @@ void FABLE_FASTCALL FableSetVisualFrontendQuitPrompt(bool active)
         g_OptionsMenuActive = false;
         g_SaveMenuActive = false;
         g_AboutMenuActive = false;
+        g_CreditsMenuActive = false;
         g_DetailScreen = 0;
         g_QuitHover = 0;
     }
@@ -3258,11 +3471,75 @@ void FABLE_FASTCALL FableSetVisualFrontendAboutMenu(bool active)
         g_MainMenuActive = false;
         g_OptionsMenuActive = false;
         g_SaveMenuActive = false;
+        g_CreditsMenuActive = false;
+        g_ProfilesMenuActive = false;
         g_DetailScreen = 0;
         g_QuitPromptActive = false;
         g_OptionsBackHovered = false;
     }
     g_AnimationStartTick = 0;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendCreditsMenu(bool active)
+{
+    if (g_CreditsMenuActive == active)
+        return;
+    if (active && (g_CreditsTexture == 0 || g_HelpersTexture == 0))
+        return;
+    g_CreditsMenuActive = active;
+    if (active)
+    {
+        g_MainMenuActive = false;
+        g_OptionsMenuActive = false;
+        g_SaveMenuActive = false;
+        g_AboutMenuActive = false;
+        g_ProfilesMenuActive = false;
+        g_DetailScreen = 0;
+        g_QuitPromptActive = false;
+        g_OptionsBackHovered = false;
+    }
+    g_AnimationStartTick = 0;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendProfilesMenu(
+    bool active,
+    const char* const* names,
+    fable_u32 count)
+{
+    if (g_ProfilesMenuActive == active && !active)
+        return;
+    if (active && (g_ProfilesTexture == 0 || g_HelpersTexture == 0))
+        return;
+    g_ProfilesMenuActive = active;
+    if (active)
+    {
+        g_MainMenuActive = false;
+        g_OptionsMenuActive = false;
+        g_SaveMenuActive = false;
+        g_AboutMenuActive = false;
+        g_CreditsMenuActive = false;
+        g_DetailScreen = 0;
+        g_QuitPromptActive = false;
+        g_OptionsBackHovered = false;
+        g_ProfileNameCount = count > 32 ? 32 : count;
+        for (fable_u32 i = 0; i != g_ProfileNameCount; ++i)
+            g_ProfileNames[i] = names != 0 ? names[i] : 0;
+        g_ProfileSelection = 0;
+    }
+    else
+    {
+        g_ProfileNameCount = 0;
+        g_ProfileSelection = 0;
+    }
+    g_AnimationStartTick = 0;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendProfilesSelection(
+    fable_u32 selection)
+{
+    if (!g_ProfilesMenuActive || selection >= g_ProfileNameCount)
+        return;
+    g_ProfileSelection = selection;
 }
 
 void FABLE_FASTCALL FableSetVisualFrontendQuitHover(fable_u32 hover)

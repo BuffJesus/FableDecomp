@@ -1593,6 +1593,109 @@ try {
                 $frameProof +=
                     " about-hover=$($aboutBackHoverHash.Substring(0, 12))"
 
+                # Enter Credits: main-menu row 4 dispatches action 67 to the
+                # compiled UI_FRONTEND_CREDITS_MENU.  Its initial scrolling
+                # state is intentionally title + widescreen bars only; the
+                # credit text container starts at y=480 in frontend.bin.
+                Send-DesignMouse 0x0200 320 380
+                Start-Sleep -Milliseconds 100
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x0D),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 350
+                $creditsHash = Get-WindowFrameHash
+                if (
+                    $creditsHash -eq $mainMenuHash -or
+                    $creditsHash -eq $optionsHash -or
+                    $creditsHash -eq $aboutHash
+                ) {
+                    throw (
+                        'Retail action 67 did not activate the recovered ' +
+                        'UI_FRONTEND_CREDITS_MENU frame.'
+                    )
+                }
+                $creditsBitmap =
+                    New-Object System.Drawing.Bitmap $width, $height
+                $creditsGraphics =
+                    [System.Drawing.Graphics]::FromImage($creditsBitmap)
+                try {
+                    $creditsGraphics.CopyFromScreen(
+                        $bounds.Left,
+                        $bounds.Top,
+                        0,
+                        0,
+                        $creditsBitmap.Size
+                    )
+                    $creditsBitmap.Save(
+                        (Join-Path (
+                            Split-Path -Parent $Executable
+                        ) 'frontend-credits-smoke.png'),
+                        [System.Drawing.Imaging.ImageFormat]::Png
+                    )
+                } finally {
+                    $creditsGraphics.Dispose()
+                    $creditsBitmap.Dispose()
+                }
+                Send-DesignMouse 0x0200 120 435
+                Start-Sleep -Milliseconds 200
+                $creditsBackHoverHash = Get-WindowFrameHash
+                if ($creditsBackHoverHash -eq $creditsHash) {
+                    throw 'The Credits Back helper did not enter its hovered state.'
+                }
+                Send-FrontendEscape
+                Start-Sleep -Milliseconds 300
+                $creditsReturnHash = Get-WindowFrameHash
+                if ($creditsReturnHash -eq $creditsBackHoverHash) {
+                    throw 'Credits Back action 86 did not return to the menu.'
+                }
+                $frameProof +=
+                    " credits=$($creditsHash.Substring(0, 12))"
+                $frameProof +=
+                    " credits-hover=$($creditsBackHoverHash.Substring(0, 12))"
+
+                # Change Profile: action 16 refreshes the runtime profile
+                # directory and enters the authored Type-43 list surface.
+                # The row names are data-driven; the smoke proves the route
+                # and shared Back helper without assuming a fixed profile set.
+                Send-DesignMouse 0x0200 320 230
+                Start-Sleep -Milliseconds 100
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x0D),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 350
+                $profilesHash = Get-WindowFrameHash
+                if (
+                    $profilesHash -eq $mainMenuHash -or
+                    $profilesHash -eq $creditsHash
+                ) {
+                    throw (
+                        'Retail action 16 did not activate the recovered ' +
+                        'UI_FRONTEND_PROFILES_MENU surface.'
+                    )
+                }
+                Send-DesignMouse 0x0200 120 435
+                Start-Sleep -Milliseconds 200
+                $profilesBackHoverHash = Get-WindowFrameHash
+                if ($profilesBackHoverHash -eq $profilesHash) {
+                    throw 'The Profile Back helper did not enter its hovered state.'
+                }
+                Send-FrontendEscape
+                Start-Sleep -Milliseconds 300
+                $profilesReturnHash = Get-WindowFrameHash
+                if ($profilesReturnHash -eq $profilesBackHoverHash) {
+                    throw 'Profile Back action 86 did not return to the menu.'
+                }
+                $frameProof +=
+                    " profiles=$($profilesHash.Substring(0, 12))"
+                $frameProof +=
+                    " profiles-hover=$($profilesBackHoverHash.Substring(0, 12))"
+
                 # Re-enter the prompt and validate action 296 last, because
                 # its retail meaning is to end the application.
                 Send-DesignMouse 0x0200 320 440

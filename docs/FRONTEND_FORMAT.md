@@ -197,9 +197,48 @@ separate boundary.
 The decoded seven-row main-menu action order is now locked in the runtime
 adapter and focused test as `(66,16,297,10,67,321,314)`: Continue Game,
 Change Profile, Options, Games for Windows - LIVE, Credits, About, and Quit.
-Continue Game, Options, and Quit are live; the other four identifiers are
-retained explicitly for their next recovered screen/action implementations
-instead of relying on row-index guesses.
+Continue Game, Options, Quit, the initial Credits route, and the normal
+Change Profile list route are live; the PC LIVE no-op remains an explicit
+runtime boundary. The recovered action identifiers stay attached to their
+authored rows instead of relying on row-index guesses.
+
+### Change Profile graph (`UI_FRONTEND_PROFILES_MENU`)
+
+The shipped profile-management graph is now structurally gated against
+`frontend.bin`. The normal profile screen uses the coastal blend, the 640px
+title rule, `UI_HELPERS_PROFILE_DELETE`, and the dynamic
+`UI_FRONTEND_LIST_FOR_PROFILES` container at `(200,120)` with height 260.
+Its authored `PositionOffsetY=28` is the runtime row cadence; the renderer
+uses that decoded value for visible-row placement and hit-testing.
+The delete list is a separate dynamic Type-43 container at `(200,180)` with
+height 210; their authored up/down arrow bindings and Type-11 row template are
+preserved. Both list records have zero serialized children because rows are
+created from runtime profile data.
+
+The same gate covers the delete-screen variant, the no-profiles message at
+`(320,200)`, and the Type-12 new-profile menu at `(40,150)`. The normal route
+now refreshes profile directories from the user save root and renders their
+names through the authored `ENG_ARIAL_16` atlas; names are not compiled into
+the visual checkpoint. Delete-mode, the empty-profile branch, and new-profile
+editing remain separate runtime boundaries.
+
+### Credits screen (`UI_FRONTEND_CREDITS_MENU`)
+
+The shipped Credits root is a Type-10 screen with children `FOREST`,
+`UI_SCROLLING_TEST`, `UI_HELPERS_CREDITS`, and the two widescreen bars. Its
+scrolling child starts at `(0,480)` and transitions to `(0,0)` over 180
+seconds. The initial checkpoint frame therefore contains the retail title
+sprites and graphic 334 bars while credit text is still below the viewport.
+The renderer validates this authored boundary against `frontend.bin`, and the
+runtime routes action 67 into the frame with the shared Back helper live.
+This proves routing and initial composition; continuous text scrolling and a
+same-state retail pixel diff remain open.
+
+The renderer now also consumes the six authored `TEXT_GUI_CRE_*` type-1
+groups directly from `text.big`, preserving member IDs, order, and explicit
+single-space rows. This is an extraction oracle for the future live text
+component; it does not invent line spacing or promote an unverified baked
+scroll surface into the runtime.
 
 The remaining four routes are now fully recovered from the same
 `CFrontEndManager::Action @ 0x0059A238` decompilation:

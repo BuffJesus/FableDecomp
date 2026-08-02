@@ -499,6 +499,8 @@ $visualBootRetailButtonRight =
     Join-Path $outDir 'frontend_options_button_right.png'
 $visualBootRetailHelpers = Join-Path $outDir 'frontend_helpers.png'
 $visualBootRetailAbout = Join-Path $outDir 'frontend_about_menu.png'
+$visualBootRetailCredits = Join-Path $outDir 'frontend_credits_menu.png'
+$visualBootRetailProfiles = Join-Path $outDir 'frontend_profiles_menu.png'
 $visualBootRetailCoastalSheet = Join-Path $outDir 'frontend_coastal_sheet.png'
 $visualBootRetailCoastalSunbeamSheet =
     Join-Path $outDir 'frontend_coastal_sunbeam_sheet.png'
@@ -523,6 +525,8 @@ $visualBootButtonRightBitmap =
     Join-Path $outDir 'visual_boot_options_button_right.bmp'
 $visualBootHelpersBitmap = Join-Path $outDir 'visual_boot_helpers.bmp'
 $visualBootAboutBitmap = Join-Path $outDir 'visual_boot_about_menu.bmp'
+$visualBootCreditsBitmap = Join-Path $outDir 'visual_boot_credits_menu.bmp'
+$visualBootProfilesBitmap = Join-Path $outDir 'visual_boot_profiles_menu.bmp'
 $visualBootCoastalBitmap = Join-Path $outDir 'visual_boot_coastal.bmp'
 $visualBootCoastalSunbeamBitmap =
     Join-Path $outDir 'visual_boot_coastal_sunbeam.bmp'
@@ -1300,6 +1304,10 @@ if ($selectedRetailFrontendBank) {
                         $visualBootRetailButtonRight `
                         --about-output `
                         $visualBootRetailAbout `
+                        --credits-output `
+                        $visualBootRetailCredits `
+                        --profiles-output `
+                        $visualBootRetailProfiles `
                         @frontendLayoutArguments
                     if (
                         $LASTEXITCODE -eq 0 -and
@@ -1315,6 +1323,8 @@ if ($selectedRetailFrontendBank) {
                         (Test-Path -LiteralPath `
                             $visualBootRetailButtonRight) -and
                         (Test-Path -LiteralPath $visualBootRetailAbout) -and
+                        (Test-Path -LiteralPath $visualBootRetailCredits) -and
+                        (Test-Path -LiteralPath $visualBootRetailProfiles) -and
                         (Test-Path -LiteralPath $visualBootRetailHelpers)
                     ) {
                         $visualBootUsesRetailSubscreens = $true
@@ -3678,6 +3688,18 @@ try {
                     Bmp = $visualBootAboutBitmap
                     Width = 640
                     Height = 480
+                },
+                @{
+                    Png = $visualBootRetailCredits
+                    Bmp = $visualBootCreditsBitmap
+                    Width = 640
+                    Height = 480
+                },
+                @{
+                    Png = $visualBootRetailProfiles
+                    Bmp = $visualBootProfilesBitmap
+                    Width = 640
+                    Height = 480
                 }
             )
         }
@@ -3783,12 +3805,20 @@ try {
             $visualBootButtonRightBitmap.Replace('\', '/')
         $resourceAboutBitmapPath =
             $visualBootAboutBitmap.Replace('\', '/')
+        $resourceCreditsBitmapPath =
+            $visualBootCreditsBitmap.Replace('\', '/')
+        $resourceProfilesBitmapPath =
+            $visualBootProfilesBitmap.Replace('\', '/')
         $resourceLines +=
             "109 BITMAP `"$resourceOptionsBitmapPath`""
         $resourceLines +=
             "110 BITMAP `"$resourceHelpersBitmapPath`""
         $resourceLines +=
             "120 BITMAP `"$resourceAboutBitmapPath`""
+        $resourceLines +=
+            "123 BITMAP `"$resourceCreditsBitmapPath`""
+        $resourceLines +=
+            "124 BITMAP `"$resourceProfilesBitmapPath`""
         $resourceLines +=
             "112 BITMAP `"$resourceTitleSegmentBitmapPath`""
         $resourceLines +=
