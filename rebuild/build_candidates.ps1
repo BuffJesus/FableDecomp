@@ -39632,6 +39632,62 @@ $catalog = @(
         TestSource = '00/9b/CThingCreatureBase_SerialiseGameState_009b9ba0_test.cpp'
         PassPattern = 'SERIALISE_GAMESTATE_OK'
     }
+    [pscustomobject]@{
+        Address = '00994300'
+        Module = 'CFileDataInputStream'
+        Source = '00/99/CFileDataInputStream_Close_00994300.cpp'
+        TestSource = '00/99/CFileDataInputStream_Close_00994300_test.cpp'
+        PassPattern = 'CLOSE_TEST_OK'
+    }
+    [pscustomobject]@{
+        Address = '0099b800'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_operatorwchartconst_0099b800.cpp'
+        TestSource = '00/99/CWideString_operatorwchartconst_0099b800_test.cpp'
+        PassPattern = 'FABLETLC_WIDE_ASSIGN_LITERAL_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfee7a'
+        Module = '_global'
+        Source = '00/bf/global_ArrayUnwind_00bfee7a.cpp'
+        TestSource = '00/bf/global_ArrayUnwind_00bfee7a_test.cpp'
+        PassPattern = 'PASS_00BFEE7A_OK'
+    }
+    [pscustomobject]@{
+        Address = '009ba110'
+        Module = 'CStringParser'
+        Source = '00/9b/CStringParser_ReadAsStringUntilString_009ba110.cpp'
+        TestSource = '00/9b/CStringParser_ReadAsStringUntilString_009ba110_test.cpp'
+        PassPattern = 'TEST_OK_READASSTRINGUNTILSTRING'
+    }
+    [pscustomobject]@{
+        Address = '0099b940'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_operatorplusequalswchar_0099b940.cpp'
+        TestSource = '00/99/CWideString_operatorplusequalswchar_0099b940_test.cpp'
+        PassPattern = 'FABLETLC_WIDESTRING_APPEND_LITERAL PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099f0a0'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_CCharStringoperatorplusequals_0099f0a0.cpp'
+        TestSource = '00/99/CCharString_CCharStringoperatorplusequals_0099f0a0_test.cpp'
+        PassPattern = 'CCHARSTRING_OPERATOR_PLUSEQUALS_0099F0A0 PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099b6b0'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_CWideStringfromLiteral_0099b6b0.cpp'
+        TestSource = '00/99/CWideString_CWideStringfromLiteral_0099b6b0_test.cpp'
+        PassPattern = 'FABLETLC_WIDE_LITERAL_CONSTRUCTOR_BEHAVIOR PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a04e0'
+        Module = '_global'
+        Source = '00/9a/global_CBasicStringCharAppendData_009a04e0.cpp'
+        TestSource = '00/9a/global_CBasicStringCharAppendData_009a04e0_test.cpp'
+        PassPattern = 'APPENDDATA_TEST_OK'
+    }
 )
 
 $requestedAddresses = @(
