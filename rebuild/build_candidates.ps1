@@ -39751,6 +39751,20 @@ $catalog = @(
         TestSource = '00/42/CMemoryAllocatorVariableSize_RotateLeft_0042955b_test.cpp'
         PassPattern = 'ROTATE_LEFT_OK'
     }
+    [pscustomobject]@{
+        Address = '0099e9b0'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_UnassignString_0099e9b0.cpp'
+        TestSource = '00/99/CCharString_UnassignString_0099e9b0_test.cpp'
+        PassPattern = 'UNASSIGN_STRING_OK'
+    }
+    [pscustomobject]@{
+        Address = '0099bdb0'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_SetSubstring_0099bdb0.cpp'
+        TestSource = '00/99/CCharString_SetSubstring_0099bdb0_test.cpp'
+        PassPattern = 'SETSUBSTRING_OK'
+    }
 )
 
 $requestedAddresses = @(
@@ -39835,7 +39849,14 @@ try {
             continue
         }
         Remove-Item -LiteralPath $object -Force -ErrorAction SilentlyContinue
-        $output = & (Join-Path $vcRoot 'bin\cl.exe') /nologo /c /O2 /Oy /W3 /Fo$object $source 2>&1
+        # Per-entry compiler flags: retail was built by VC7.1 QFE 4035 whose /GS and
+        # aliasing (/Oa) codegen differs from our RTM 3077. A few functions only reach
+        # byte-parity with those extra flags; the catalog records them per-entry so the
+        # build reproduces the exact retail bytes. Default stays /O2 /Oy /W3.
+        $entryFlags = if ($entry.PSObject.Properties['CompilerFlags'] -and $entry.CompilerFlags) {
+            $entry.CompilerFlags -split '\s+'
+        } else { @('/O2','/Oy','/W3') }
+        $output = & (Join-Path $vcRoot 'bin\cl.exe') /nologo /c @entryFlags /Fo$object $source 2>&1
         $exitCode = $LASTEXITCODE
         $output | Set-Content -LiteralPath $log -Encoding UTF8
         $passed = $exitCode -eq 0 -and (Test-Path -LiteralPath $object)

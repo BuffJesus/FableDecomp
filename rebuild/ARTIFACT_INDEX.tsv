@@ -47,7 +47,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00404690	_global	lift/reports/wave3/code/00/40/0x00404690_global_std_list_node_Init.cpp	rebuild/src/compiled/00/40/Global_StdListNodeInit_00404690.cpp	rebuild/tests/00/40/Global_StdListNodeInit_00404690_test.cpp	rebuild/candidates/snapshots/00/40/0x00404690_global_std_list_node_Init.cpp	rebuild/build/candidates-Release/00/40/00404690
 004046b0			rebuild/src/compiled/00/40/CStringParserCommentList_Destructor_004046b0.cpp	rebuild/tests/00/40/CStringParserCommentList_Destructor_004046b0_test.cpp		
 004046f0	_global	lift/reports/wave3/code/00/40/0x004046F0_global_ListNode_Create_Circular.cpp	rebuild/src/compiled/00/40/Global_ListNodeCreateCircular_004046f0.cpp	rebuild/tests/00/40/Global_ListNodeCreateCircular_004046f0_test.cpp	rebuild/candidates/snapshots/00/40/0x004046F0_global_ListNode_Create_Circular.cpp	rebuild/build/candidates-Release/00/40/004046f0
-00404720			rebuild/src/compiled/00/40/CStringParser_Constructor_00404720.cpp	rebuild/tests/00/40/CStringParser_Constructor_00404720_test.cpp		
+00404720			rebuild/src/compiled/00/40/CStringParser_CStringParser_00404720.cpp	rebuild/tests/00/40/CStringParser_CStringParser_00404720_test.cpp		
 004047a0	_Dest_val<std		rebuild/src/compiled/00/40/Destvalstd_allocatorCMacroCMacro_004047a0.cpp	rebuild/tests/00/40/Destvalstd_allocatorCMacroCMacro_004047a0_test.cpp		rebuild/build/candidates-Release/00/40/004047a0
 004047d0	CLandscapeBackgroundPatch		rebuild/src/compiled/00/40/CLandscapeBackgroundPatch_vectordeletingdestructor_004047d0.cpp	rebuild/tests/00/40/CLandscapeBackgroundPatch_vectordeletingdestructor_004047d0_test.cpp		rebuild/build/candidates-Release/00/40/004047d0
 00404860			rebuild/src/compiled/00/40/global_sub00404860_00404860.cpp	rebuild/tests/00/40/global_sub00404860_00404860_test.cpp		rebuild/build/candidates-Release/00/40/00404860
@@ -418,6 +418,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 00429486	CCountedPointer<NUISystem::CAction>		rebuild/src/compiled/00/42/CCountedPointerNUISystemCAction_ShareData_00429486.cpp	rebuild/tests/00/42/CCountedPointerNUISystemCAction_ShareData_00429486_test.cpp		rebuild/build/candidates-Release/00/42/00429486
 004294ac	_Find<std::_List_unchecked_iterator<std::_List_val<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>,NUISystem		rebuild/src/compiled/00/42/FindstdListuncheckediteratorstdListvalNUISystemCComponentstdallocatorNUISystemCComponentNUISystem_CComponent_004294ac.cpp	rebuild/tests/00/42/FindstdListuncheckediteratorstdListvalNUISystemCComponentstdallocatorNUISystemCComponentNUISystem_CComponent_004294ac_test.cpp		rebuild/build/candidates-Release/00/42/004294ac
 0042951b	CMemoryAllocatorVariableSize		rebuild/src/compiled/00/42/CMemoryAllocatorVariableSize_RotateLeft_0042951b.cpp	rebuild/tests/00/42/CMemoryAllocatorVariableSize_RotateLeft_0042951b_test.cpp		rebuild/build/candidates-Release/00/42/0042951b
+0042955b			rebuild/src/compiled/00/42/CMemoryAllocatorVariableSize_RotateLeft_0042955b.cpp	rebuild/tests/00/42/CMemoryAllocatorVariableSize_RotateLeft_0042955b_test.cpp		
 004298f3	CLandscapeBackgroundPatch		rebuild/src/compiled/00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_004298f3.cpp	rebuild/tests/00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_004298f3_test.cpp		rebuild/build/candidates-Release/00/42/004298f3
 0042990f	CLandscapeBackgroundPatch		rebuild/src/compiled/00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042990f.cpp	rebuild/tests/00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042990f_test.cpp		rebuild/build/candidates-Release/00/42/0042990f
 0042992b	CLandscapeBackgroundPatch		rebuild/src/compiled/00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042992b.cpp	rebuild/tests/00/42/CLandscapeBackgroundPatch_vectordeletingdestructor_0042992b_test.cpp		rebuild/build/candidates-Release/00/42/0042992b
@@ -5010,6 +5011,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 009945c0	CMemoryDataOutputStream		rebuild/src/compiled/00/99/CMemoryDataOutputStream_Close_009945c0.cpp	rebuild/tests/00/99/CMemoryDataOutputStream_Close_009945c0_test.cpp		rebuild/build/candidates-Release/00/99/009945c0
 00994700	CFileDataInputStream		rebuild/src/compiled/00/99/CFileDataInputStream_CFileDataInputStream_00994700.cpp	rebuild/tests/00/99/CFileDataInputStream_CFileDataInputStream_00994700_test.cpp		rebuild/build/candidates-Release/00/99/00994700
 00994780	CFileDataInputStream		rebuild/src/compiled/00/99/CFileDataInputStream_dtor_00994780.cpp	rebuild/tests/00/99/CFileDataInputStream_dtor_00994780_test.cpp		rebuild/build/candidates-Release/00/99/00994780
+00995d30			rebuild/src/compiled/00/99/CMemoryDataInputStream_ReadNullTerminatedString_00995d30.cpp	rebuild/tests/00/99/CMemoryDataInputStream_ReadNullTerminatedString_00995d30_test.cpp		
 00996230	CDataInputStream		rebuild/src/compiled/00/99/CDataInputStream_ReadZlibCompressed_00996230.cpp	rebuild/tests/00/99/CDataInputStream_ReadZlibCompressed_00996230_test.cpp		rebuild/build/candidates-Release/00/99/00996230
 009974f0			rebuild/src/compiled/00/99/CAFile_SetCurrentPath_009974f0.cpp	rebuild/tests/00/99/CAFile_SetCurrentPath_009974f0_test.cpp		
 00997510			rebuild/src/compiled/00/99/CAFile_GetProjectPath_00997510.cpp	rebuild/tests/00/99/CAFile_GetProjectPath_00997510_test.cpp		
@@ -5051,10 +5053,12 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 0099eae0	CCharString		rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp	rebuild/tests/00/99/CCharString_Destructor_0099eae0_test.cpp		rebuild/build/candidates-Release/00/99/0099eae0
 0099ebf0	CCharString		rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp	rebuild/tests/00/99/CCharString_Constructor_0099ebf0_test.cpp		rebuild/build/candidates-Release/00/99/0099ebf0
 0099ec30			rebuild/src/compiled/00/99/CCharString_CCharStringcopy_0099ec30.cpp	rebuild/tests/00/99/CCharString_CCharStringcopy_0099ec30_test.cpp		
+0099ec70			rebuild/src/compiled/00/99/CCharString_GetSubString_0099ec70.cpp	rebuild/tests/00/99/CCharString_GetSubString_0099ec70_test.cpp		
 0099efb0			rebuild/src/compiled/00/99/CCharString_operatorassign_0099efb0.cpp	rebuild/tests/00/99/CCharString_operatorassign_0099efb0_test.cpp		
 0099f0a0			rebuild/src/compiled/00/99/CCharString_CCharStringoperatorplusequals_0099f0a0.cpp	rebuild/tests/00/99/CCharString_CCharStringoperatorplusequals_0099f0a0_test.cpp		
 0099f2e0			rebuild/src/compiled/00/99/CCharString_LoadFromFile_0099f2e0.cpp	rebuild/tests/00/99/CCharString_LoadFromFile_0099f2e0_test.cpp		
 009a0300			rebuild/src/compiled/00/9a/global_CBasicStringCharAssignFromData_009a0300.cpp	rebuild/tests/00/9a/global_CBasicStringCharAssignFromData_009a0300_test.cpp		
+009a0390			rebuild/src/compiled/00/9a/CBasicStringchar_SetString_009a0390.cpp	rebuild/tests/00/9a/CBasicStringchar_SetString_009a0390_test.cpp		
 009a04e0			rebuild/src/compiled/00/9a/global_CBasicStringCharAppendData_009a04e0.cpp	rebuild/tests/00/9a/global_CBasicStringCharAppendData_009a04e0_test.cpp		
 009a0590			rebuild/src/compiled/00/9a/CCharString_InitFromCStr_009a0590.cpp	rebuild/tests/00/9a/CCharString_InitFromCStr_009a0590_test.cpp		
 009a0cf0	CRenderManagerCore		rebuild/src/compiled/00/9a/CRenderManagerCore_AttachTextureToStage_009a0cf0.cpp	rebuild/tests/00/9a/CRenderManagerCore_AttachTextureToStage_009a0cf0_test.cpp		rebuild/build/candidates-Release/00/9a/009a0cf0
@@ -5081,6 +5085,7 @@ address	module	agent_sources	compiled_source	test_source	snapshot	build_director
 009ad950	CDefinitionManager		rebuild/src/compiled/00/9a/CDefinitionManager_ClearInstantiatedDefs_009ad950.cpp	rebuild/tests/00/9a/CDefinitionManager_ClearInstantiatedDefs_009ad950_test.cpp		rebuild/build/candidates-Release/00/9a/009ad950
 009ada10			rebuild/src/compiled/00/9a/CDefinitionManager_GetPDefFromGlobalIndexb_009ada10.cpp	rebuild/tests/00/9a/CDefinitionManager_GetPDefFromGlobalIndexb_009ada10_test.cpp		
 009b9530			rebuild/src/compiled/00/9b/CStringParser_Init_009b9530.cpp	rebuild/tests/00/9b/CStringParser_Init_009b9530_test.cpp		
+009b9570			rebuild/src/compiled/00/9b/CStringParser_CalcInQuotes_009b9570.cpp	rebuild/tests/00/9b/CStringParser_CalcInQuotes_009b9570_test.cpp		
 009b9880			rebuild/src/compiled/00/9b/CModeBlock_GetAnimFilter_009b9880.cpp	rebuild/tests/00/9b/CModeBlock_GetAnimFilter_009b9880_test.cpp		
 009b9890	_global		rebuild/src/compiled/00/9b/global_DrawGetEnvironment_009b9890.cpp	rebuild/tests/00/9b/global_DrawGetEnvironment_009b9890_test.cpp		rebuild/build/candidates-Release/00/9b/009b9890
 009b9ba0			rebuild/src/compiled/00/9b/CThingCreatureBase_SerialiseGameState_009b9ba0.cpp	rebuild/tests/00/9b/CThingCreatureBase_SerialiseGameState_009b9ba0_test.cpp		

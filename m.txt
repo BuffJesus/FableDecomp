@@ -1,0 +1,66 @@
+
+m.bin:     file format binary
+
+
+Disassembly of section .data:
+
+00000000 <.data>:
+   0:	51                   	push   ecx
+   1:	56                   	push   esi
+   2:	57                   	push   edi
+   3:	8b 3d 00 00 00 00    	mov    edi,DWORD PTR ds:0x0
+   9:	47                   	inc    edi
+   a:	8d 44 24 08          	lea    eax,[esp+0x8]
+   e:	3b d0                	cmp    edx,eax
+  10:	8b f1                	mov    esi,ecx
+  12:	c7 44 24 08 00 00 00 	mov    DWORD PTR [esp+0x8],0x0
+  19:	00 
+  1a:	89 3d 00 00 00 00    	mov    DWORD PTR ds:0x0,edi
+  20:	74 0d                	je     0x2f
+  22:	8b 12                	mov    edx,DWORD PTR [edx]
+  24:	85 d2                	test   edx,edx
+  26:	74 07                	je     0x2f
+  28:	89 54 24 08          	mov    DWORD PTR [esp+0x8],edx
+  2c:	ff 42 0c             	inc    DWORD PTR [edx+0xc]
+  2f:	8b 4c 24 10          	mov    ecx,DWORD PTR [esp+0x10]
+  33:	51                   	push   ecx
+  34:	8d 4c 24 0c          	lea    ecx,[esp+0xc]
+  38:	e8 00 00 00 00       	call   0x3d
+  3d:	8b 44 24 08          	mov    eax,DWORD PTR [esp+0x8]
+  41:	c7 06 00 00 00 00    	mov    DWORD PTR [esi],0x0
+  47:	8b 0d 00 00 00 00    	mov    ecx,DWORD PTR ds:0x0
+  4d:	41                   	inc    ecx
+  4e:	8d 54 24 08          	lea    edx,[esp+0x8]
+  52:	3b d6                	cmp    edx,esi
+  54:	89 0d 00 00 00 00    	mov    DWORD PTR ds:0x0,ecx
+  5a:	74 0d                	je     0x69
+  5c:	85 c0                	test   eax,eax
+  5e:	74 09                	je     0x69
+  60:	89 06                	mov    DWORD PTR [esi],eax
+  62:	ff 40 0c             	inc    DWORD PTR [eax+0xc]
+  65:	8b 44 24 08          	mov    eax,DWORD PTR [esp+0x8]
+  69:	85 c0                	test   eax,eax
+  6b:	8b f8                	mov    edi,eax
+  6d:	74 27                	je     0x96
+  6f:	8b 50 0c             	mov    edx,DWORD PTR [eax+0xc]
+  72:	83 c0 0c             	add    eax,0xc
+  75:	4a                   	dec    edx
+  76:	8b ca                	mov    ecx,edx
+  78:	85 c9                	test   ecx,ecx
+  7a:	89 10                	mov    DWORD PTR [eax],edx
+  7c:	7f 18                	jg     0x96
+  7e:	8b 07                	mov    eax,DWORD PTR [edi]
+  80:	85 c0                	test   eax,eax
+  82:	74 09                	je     0x8d
+  84:	50                   	push   eax
+  85:	e8 00 00 00 00       	call   0x8a
+  8a:	83 c4 04             	add    esp,0x4
+  8d:	57                   	push   edi
+  8e:	e8 00 00 00 00       	call   0x93
+  93:	83 c4 04             	add    esp,0x4
+  96:	ff 0d 00 00 00 00    	dec    DWORD PTR ds:0x0
+  9c:	5f                   	pop    edi
+  9d:	8b c6                	mov    eax,esi
+  9f:	5e                   	pop    esi
+  a0:	59                   	pop    ecx
+  a1:	c2 04 00             	ret    0x4
