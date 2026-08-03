@@ -1,8 +1,6 @@
 struct CLandscapeBackgroundPatch { void* vtbl; };
 extern "C" void __fastcall eng_dtor(void*);
 extern "C" void __cdecl eng_delete(void*);
-extern "C" void* __cdecl eng_new(unsigned int);
-extern "C" void __fastcall eng_ctor(void*);
 extern void* g_vtbl;
 
 __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int, unsigned char flags)
@@ -21,15 +19,5 @@ __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_des
         mov  eax, esi
         pop  esi
         ret  4
-        push 60h
-        call eng_new
-        test eax, eax
-        pop  ecx
-        je   zero
-        mov  ecx, eax
-        jmp  eng_ctor
-    zero:
-        xor  eax, eax
-        ret
     }
 }

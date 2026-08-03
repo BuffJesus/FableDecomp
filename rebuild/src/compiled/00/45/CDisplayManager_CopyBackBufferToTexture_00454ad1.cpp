@@ -9,7 +9,6 @@ struct CDisplayManager {
 };
 
 extern void DM_Helper(void);
-extern void DM_Tail(void);
 
 __declspec(naked) CTexture* __fastcall CDisplayManager_CopyBackBufferToTexture(CDisplayManager* self)
 {
@@ -28,6 +27,5 @@ __declspec(naked) CTexture* __fastcall CDisplayManager_CopyBackBufferToTexture(C
         pop  esi
         leave
         ret
-        jmp  DM_Tail
     }
 }

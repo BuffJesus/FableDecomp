@@ -27,7 +27,9 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     OPTIONS_SHEET_FRAME_COUNT,
     OPTIONS_SHEET_WIDTH,
     OPTIONS_ROWS,
+    PROFILE_GLYPH_ATLAS_ORIGIN,
     REDEFINE_ACTION_ORDER,
+    REDEFINE_FULL_ACTION_ORDER,
     REDEFINE_HOVER_HELPER_FRAME,
     REDEFINE_HOVER_STRIP_SIZE,
     REDEFINE_ACTION_TEXT_OFFSET,
@@ -44,9 +46,15 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     REDEFINE_ROWS,
     SAVE_BROWSER_ROWS,
     SAVE_COMPONENT_ATLAS_ORIGIN,
+    SAVE_BROWSER_FRAME_COUNT,
+    SAVE_BOTTOM_BACKDROP_ORIGIN,
     SAVE_LIST_HEIGHT,
     SAVE_LIST_ORIGIN,
     SAVE_ROW_STEP_Y,
+    SAVE_TEXT_BOTTOM_ORIGIN,
+    SAVE_TEXT_AREA_ORIGIN,
+    SAVE_TITLE_AREA_ORIGIN,
+    SAVE_VIEW_RING_ORIGIN,
     SAVE_SCREEN_FRAME_BASE,
     VIDEO_CONTROL_VALUES,
     VIDEO_ROWS,
@@ -54,7 +62,16 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     _build_stretched,
     _build_table_horizontal,
     build_options_row_layers,
+    build_options_sheet,
     build_save_browser_frame,
+    build_save_preview_viewport,
+    build_about_frame,
+    build_credits_frame,
+    build_profiles_frame,
+    extract_credits_text_stream,
+    validate_compiled_about_layout,
+    validate_compiled_credits_layout,
+    validate_compiled_profiles_layout,
     validate_compiled_subscreen_layout,
 )
 from render_fable_static_font import (  # noqa: E402
@@ -177,12 +194,24 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
             ),
             REDEFINE_ROWS[:4])
 
+    def test_full_redefine_action_order_is_the_decoded_31_entry_list(self):
+        # UI_FRONTEND_LIST_REDEFINE_KEYS_MENU.ActionOrder decodes to 31 ids;
+        # the visible first page is its prefix (action 60 fans out to W/A/S/D).
+        # Locks the decoded fact so the off-page name gap is not re-derived.
+        self.assertEqual(31, len(REDEFINE_FULL_ACTION_ORDER))
+        self.assertEqual(
+            REDEFINE_ACTION_ORDER,
+            REDEFINE_FULL_ACTION_ORDER[:len(REDEFINE_ACTION_ORDER)])
+        self.assertEqual(len(set(REDEFINE_FULL_ACTION_ORDER)),
+                         len(REDEFINE_FULL_ACTION_ORDER))
+
     def test_save_browser_geometry_and_order_match_recovered_contract(self):
         self.assertEqual((10, 90), SAVE_LIST_ORIGIN)
         self.assertEqual(30, SAVE_ROW_STEP_Y)
         self.assertEqual(150, SAVE_LIST_HEIGHT)
         self.assertEqual(8, SAVE_SCREEN_FRAME_BASE)
-        self.assertEqual(12, OPTIONS_SHEET_FRAME_COUNT)
+        self.assertEqual(1, SAVE_BROWSER_FRAME_COUNT)
+        self.assertEqual(9, OPTIONS_SHEET_FRAME_COUNT)
         self.assertEqual((1024, 1920), SAVE_COMPONENT_ATLAS_ORIGIN)
         self.assertEqual(
             (
@@ -217,6 +246,172 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         self.assertLessEqual(
             bounds[3],
             SAVE_LIST_ORIGIN[1] + 3 * SAVE_ROW_STEP_Y + 64)
+
+    def test_save_names_are_centered_on_selection_highlight(self):
+        # Retail centres each save-slot label on its highlight button, exactly
+        # like the main-menu and Options rows. Regression guard for the bug where
+        # the name was centred on the left-sprite end (origin+60), leaving it
+        # 64px left of the highlight centre (read as left-aligned).
+        frame = build_save_browser_frame(self.FRONTEND_BANK, self.FONT_BANK, 1)
+        other = build_save_browser_frame(self.FRONTEND_BANK, self.FONT_BANK, 0)
+        # Scope to the list column (x < 300); the save-preview viewport on the
+        # right (x >= 314) is a separate element and would skew the bbox.
+        LIST_W = 300
+        highlight = ImageChops.difference(frame, other).crop(
+            (0, 0, LIST_W, 480)).getchannel("A").getbbox()
+        self.assertIsNotNone(highlight)
+        highlight_center = (highlight[0] + highlight[2]) / 2.0
+        # An unselected row (row 3) shares the list column and is free of the
+        # highlight, so its text centre must equal the highlight centre.
+        y = SAVE_LIST_ORIGIN[1] + 3 * SAVE_ROW_STEP_Y
+        band = frame.crop((0, y - 12, LIST_W, y + 16)).getchannel("A").getbbox()
+        self.assertIsNotNone(band)
+        text_center = (band[0] + band[2]) / 2.0
+        self.assertAlmostEqual(text_center, highlight_center, delta=3)
+
+    def test_save_browser_renders_preview_viewport_ring(self):
+        # UI_VIEW_RING_SMALL (serialized at 314,37) frames a region minimap in
+        # the save-preview viewport on the right. Guard that the 256x256 region
+        # is rendered (previously empty background).
+        frame = build_save_browser_frame(self.FRONTEND_BANK, self.FONT_BANK, 0)
+        ox, oy = SAVE_VIEW_RING_ORIGIN
+        region = frame.crop((ox, oy, ox + 256, oy + 256)).getchannel("A")
+        bounds = region.getbbox()
+        self.assertIsNotNone(bounds)
+        # The ring ornament fills essentially the whole 256x256 tile.
+        self.assertEqual((0, 0, 256, 256), bounds)
+
+    def test_save_browser_renders_file_information_backdrop(self):
+        # UI_TEXT_AREA (0,254) frames File Information with a UI_TEXTBOX_MIDDLE
+        # rule (UI_TABLE_TEXT_LEFT width 287 + UI_TABLE_TEXT_RIGHT 463,width 40).
+        # Guard that the left backdrop segment renders at y=254.
+        frame = build_save_browser_frame(self.FRONTEND_BANK, self.FONT_BANK, 0)
+        # A horizontal band at the text-area origin should carry the rule.
+        band = frame.crop((0, 254, 280, 254 + 20)).getchannel("A").getbbox()
+        self.assertIsNotNone(band)
+        # The rule starts at the left edge and spans most of the 287 span.
+        self.assertEqual(0, band[0])
+        self.assertGreater(band[2], 200)
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK),
+        "retail frontend bank is not installed")
+    def test_save_tables_use_decoded_asymmetric_corner_slots(self):
+        buf, parsed = load_big(self.FRONTEND_BANK)
+        middle = _decode_named(
+            buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
+        title_left = _build_table_horizontal(
+            middle,
+            middle,
+            _decode_named(buf, parsed, "UI_TEXTBOX_TL_SPRITE_FE"),
+            287)
+        title_right = _build_table_horizontal(
+            _decode_named(buf, parsed, "UI_TEXTBOX_TR_SPRITE_FE"),
+            middle,
+            middle,
+            40)
+        text_left = _build_table_horizontal(
+            middle,
+            middle,
+            _decode_named(buf, parsed, "UI_TEXTBOX_BL_SPRITE_FE"),
+            287)
+        text_right = _build_table_horizontal(
+            _decode_named(buf, parsed, "UI_TEXTBOX_BR_SPRITE_FE"),
+            middle,
+            middle,
+            40)
+        # CTable repeats key 4 by Width/8, then places the natural-size key 0
+        # and key 1 corners around that span: 8 + 35*8 + 128 and
+        # 128 + 5*8 + 8 respectively.
+        self.assertEqual((416, 64), title_left.size)
+        self.assertEqual((176, 64), title_right.size)
+        self.assertEqual((416, 64), text_left.size)
+        self.assertEqual((176, 64), text_right.size)
+        self.assertEqual((0, 35), SAVE_TITLE_AREA_ORIGIN)
+        self.assertEqual((0, 254), SAVE_TEXT_AREA_ORIGIN)
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_save_bottom_records_are_materialized_at_decoded_positions(self):
+        frame = build_save_browser_frame(
+            self.FRONTEND_BANK,
+            self.FONT_BANK,
+            0,
+            include_viewport=False)
+        # The 160x1 UI_TEXT_BOTTOM rule resolves to y=254+150=404. The
+        # half-alpha 4x4 HUD_TEXTBOX_BACK_FE backdrop resolves to 640x248 at
+        # (0,292), so both decoded regions must be occupied in the bake.
+        self.assertEqual((0, 404), SAVE_TEXT_BOTTOM_ORIGIN)
+        self.assertEqual((0, 292), SAVE_BOTTOM_BACKDROP_ORIGIN)
+        self.assertIsNotNone(frame.crop((0, 404, 640, 412)).getbbox())
+        self.assertIsNotNone(frame.crop((0, 292, 640, 480)).getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_save_preview_viewport_is_256_panel(self):
+        # The live D3D9 ring quad samples a 256x256 rect; the panel it draws must
+        # be exactly that size (minimap composited under the ring ornament).
+        panel = build_save_preview_viewport(self.FRONTEND_BANK)
+        self.assertEqual((256, 256), panel.size)
+        # The ring ornament reaches every tile edge.
+        self.assertEqual(
+            (0, 0, 256, 256), panel.getchannel("A").getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_oracle_save_frame_punches_hole_before_viewport(self):
+        # The live cell-background quads skip the ring rect; the oracle must
+        # match by clearing that rect before compositing the panel on top, so
+        # the viewport is the ONLY content there (rule/list/File-Info under it
+        # are removed, exactly as the live 4-quad split leaves them).
+        oracle = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0, include_viewport=True)
+        holed = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0, include_viewport=False)
+        ox, oy = SAVE_VIEW_RING_ORIGIN
+        holed = holed.copy()
+        holed.paste((0, 0, 0, 0), (ox, oy, ox + 256, oy + 256))
+        holed.alpha_composite(
+            build_save_preview_viewport(self.FRONTEND_BANK),
+            SAVE_VIEW_RING_ORIGIN)
+        self.assertIsNone(
+            ImageChops.difference(oracle, holed).getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_component_atlas_bakes_ring_source_but_cell_is_ring_free(self):
+        # The component/atlas sheet keeps the ring ONLY inside the one static
+        # save cell's 256x256 source rect (so the live ring quad has pixels to
+        # sample) while the rest of that cell is ring-free (so the live
+        # cell-background quads, which surround that rect, never double-draw
+        # the ring).
+        components = build_options_sheet(
+            self.FRONTEND_BANK,
+            self.FONT_BANK,
+            include_title_rule=False,
+            include_selected_button=False,
+            include_options_text=False,
+            include_options_row_atlas=True)
+        panel = build_save_preview_viewport(self.FRONTEND_BANK)
+        ax, ay = SAVE_COMPONENT_ATLAS_ORIGIN
+        ox, oy = SAVE_VIEW_RING_ORIGIN
+        for save_row in range(SAVE_BROWSER_FRAME_COUNT):
+            cell_top = ay + save_row * 480
+            ring_box = (
+                ax + ox,
+                cell_top + oy,
+                ax + ox + 256,
+                cell_top + oy + 256,
+            )
+            baked = components.crop(ring_box)
+            self.assertIsNone(
+                ImageChops.difference(baked, panel).getbbox(),
+                "save cell %d ring source rect must match the panel"
+                % save_row)
 
     def test_compiled_video_defaults_seed_first_frame(self):
         self.assertEqual(("Resolution", "1024 x 768", 0.0), VIDEO_ROWS[0])
@@ -371,6 +566,111 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         validate_compiled_subscreen_layout(
             self.RETAIL_ROOT,
             self.SCHEMA)
+
+    @unittest.skipUnless(
+        os.path.isfile(os.path.join(
+            RETAIL_ROOT, "data", "CompiledDefs", "frontend.bin")),
+        "retail frontend.bin is not installed")
+    def test_about_screen_matches_shipped_frontend_bin(self):
+        validate_compiled_about_layout(
+            self.RETAIL_ROOT,
+            self.SCHEMA)
+
+    @unittest.skipUnless(
+        os.path.isfile(os.path.join(
+            RETAIL_ROOT, "data", "CompiledDefs", "frontend.bin")),
+        "retail frontend.bin is not installed")
+    def test_credits_screen_matches_shipped_frontend_bin(self):
+        validate_compiled_credits_layout(
+            self.RETAIL_ROOT,
+            self.SCHEMA)
+
+    @unittest.skipUnless(
+        os.path.isfile(os.path.join(
+            RETAIL_ROOT, "data", "CompiledDefs", "frontend.bin")),
+        "retail frontend.bin is not installed")
+    def test_profiles_screen_matches_shipped_frontend_bin(self):
+        validate_compiled_profiles_layout(
+            self.RETAIL_ROOT,
+            self.SCHEMA)
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend.big/fonts.big are not installed")
+    def test_profiles_static_frame_and_glyph_atlas_are_sourced(self):
+        frame = build_profiles_frame(self.FRONTEND_BANK, self.FONT_BANK)
+        self.assertEqual(frame.size, (640, 480))
+        self.assertIsNotNone(frame.crop((0, 35, 640, 70)).getbbox())
+        components = build_options_sheet(
+            self.FRONTEND_BANK,
+            self.FONT_BANK,
+            include_options_row_atlas=True)
+        left, top = PROFILE_GLYPH_ATLAS_ORIGIN
+        self.assertIsNotNone(
+            components.crop((left, top, left + 128, top + 256)).getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(os.path.join(
+            RETAIL_ROOT, "data", "lang", "English", "text.big")),
+        "retail text.big is not installed")
+    def test_credits_stream_consumes_authored_text_groups_in_order(self):
+        stream = extract_credits_text_stream(
+            os.path.join(
+                self.RETAIL_ROOT, "data", "lang", "English", "text.big"))
+        self.assertEqual(
+            [(item["symbol"], item["font"], len(item["members"]))
+             for item in stream],
+            [
+                ("TEXT_GUI_CRE_MAIN1", "ENG_ARIAL_24", 133),
+                ("TEXT_GUI_CRE_MAIN2", "ENG_ARIAL_24", 125),
+                ("TEXT_GUI_CRE_TESTSUP", "ENG_ARIAL_24", 143),
+                ("TEXT_GUI_CRE_MICROSOFT", "ENG_ARIAL_24", 152),
+                ("TEXT_GUI_CRE_TEST", "ENG_ARIAL_12", 132),
+                ("TEXT_GUI_CRE_THANKS", "ENG_ARIAL_12", 13),
+            ])
+        self.assertEqual(stream[0]["members"][:4],
+                         ("CODING", " ", "Lead", "Simon Carter"))
+        self.assertEqual(
+            stream[-1]["members"][-1],
+            "the maximum extent possible under the law.")
+        # Explicit blank members are part of the retail group payload and
+        # must survive extraction; dropping them changes the later layout.
+        self.assertGreater(
+            sum(member == " " for item in stream for member in item["members"]),
+            10)
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend.big/fonts.big are not installed")
+    def test_about_frame_composes_title_message_and_back(self):
+        frame = build_about_frame(self.FRONTEND_BANK, self.FONT_BANK)
+        self.assertEqual(frame.size, (640, 480))
+
+        def region_has_pixels(box):
+            return frame.crop(box).getbbox() is not None
+
+        # Title rule + "About Fable" occupy the raised header band (y 5..30);
+        # the legal-notice message body sits just below (y 55..220). Back is
+        # a live UI_HELPERS component and is not baked into this panel.
+        self.assertTrue(region_has_pixels((0, 5, 640, 32)), "title band empty")
+        self.assertTrue(
+            region_has_pixels((0, 55, 640, 220)), "message body empty")
+        # Composition is deterministic (same banks -> identical bytes).
+        again = build_about_frame(self.FRONTEND_BANK, self.FONT_BANK)
+        self.assertEqual(frame.tobytes(), again.tobytes())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK),
+        "retail frontend.big is not installed")
+    def test_credits_initial_frame_preserves_authored_scroll_start(self):
+        frame = build_credits_frame(self.FRONTEND_BANK)
+        self.assertEqual(frame.size, (640, 480))
+        self.assertIsNotNone(frame.crop((70, 30, 582, 160)).getbbox())
+        # The compiled scrolling child starts at y=480; no credit text is
+        # allowed to leak into the initial viewport.
+        self.assertIsNone(frame.crop((0, 160, 640, 408)).getbbox())
+        self.assertEqual(
+            frame.tobytes(), build_credits_frame(self.FRONTEND_BANK).tobytes())
 
 
 if __name__ == "__main__":

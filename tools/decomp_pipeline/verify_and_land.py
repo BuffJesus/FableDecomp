@@ -179,10 +179,18 @@ def main():
     if prune:
         prune_outside_manifest(outside_manifest, catp)
     landed_addrs = cataloged_addresses(catp)
-    def parity_of(srctext, addr, leaf, retail, work):
+    BASE_FLAGS=["/O2","/Oy","/W3"]
+    # Extra flag variants tried when the base flags miss. Retail Fable.exe was built
+    # by VC7.1 QFE 4035, whose /GS stack-cookie and /Oa (assume-no-aliasing) codegen
+    # differ from our RTM 3077. Several functions only reach byte-parity with these;
+    # BASE_FLAGS is always tried first so a win here can only upgrade a DIFFER, never
+    # regress an existing match. The winning extra flags are recorded per-catalog-entry
+    # (CompilerFlags) so the real build reproduces the exact retail bytes.
+    EXTRA_FLAGSETS=[[], ["/GS"], ["/Oa"], ["/GS","/Oa"]]
+    def parity_of(srctext, addr, leaf, retail, work, extra=()):
         sp=work/f"{addr}.cpp"; sp.write_text(srctext,encoding="utf-8")
         obj=work/f"{addr}.obj"; obj.unlink(missing_ok=True)
-        cp=cl(["/nologo","/c","/O2","/Oy","/W3",f"/Fo{obj}",str(sp)],e)
+        cp=cl(["/nologo","/c"]+BASE_FLAGS+list(extra)+[f"/Fo{obj}",str(sp)],e)
         if cp.returncode or not obj.exists(): return "SRC_FAIL",None,None
         try: built,sec,_=obj_text(obj,leaf)
         except Exception: return "OBJDUMP_ERR",None,None
@@ -204,14 +212,24 @@ def main():
         src0=vc71(c["source_cpp"]); tst=vc71(c["test_cpp"]); patt=c["pass_pattern"]; mod=c.get("module","_global")
         tp=work/f"{addr}.test.cpp"; tp.write_text(tst,encoding="utf-8")
         retail=bytes.fromhex(o["bytes"])
-        # try base source, then a pragma sweep (permuter flag-sweep integrated)
-        src=src0; st,_,_=parity_of(src, addr, leaf, retail, work)
+        # try base source/flags, then a pragma x extra-flag sweep (permuter integrated).
+        src=src0; winflags=[]; st,_,_=parity_of(src, addr, leaf, retail, work)
         if not st.startswith(("MATCH","RELOCATION")):
-            for P in PRAGMAS[1:]:
-                cand=P+"\n"+src0
-                st2,_,_=parity_of(cand, addr, leaf, retail, work)
-                if st2.startswith(("MATCH","RELOCATION")):
-                    src=cand; st=st2+f"[{P.split('(')[1].split(',')[0]}]"; break
+            done=False
+            for xf in EXTRA_FLAGSETS:
+                for P in PRAGMAS:
+                    if not xf and not P: continue  # already tried base above
+                    cand=(P+"\n"+src0) if P else src0
+                    st2,_,_=parity_of(cand, addr, leaf, retail, work, extra=xf)
+                    if st2.startswith(("MATCH","RELOCATION")):
+                        src=cand; winflags=xf
+                        tag=(P.split('(')[1].split(',')[0] if P else "")
+                        if xf: tag=(tag+" "+" ".join(xf)).strip()
+                        st=st2+(f"[{tag}]" if tag else ""); done=True; break
+                if done: break
+        # recompile the winning (src, winflags) last so sobj holds the winning object
+        if st.startswith(("MATCH","RELOCATION")):
+            parity_of(src, addr, leaf, retail, work, extra=winflags)
         tobj=work/f"{addr}.t.obj"; exe=work/f"{addr}.exe"; tobj.unlink(missing_ok=True); exe.unlink(missing_ok=True)
         sobj=work/f"{addr}.obj"  # source object from the last parity_of(src) compile
         beh="TCC_FAIL"
@@ -238,7 +256,7 @@ def main():
         if st.startswith(("MATCH","RELOCATION_MATCH")) and beh=="PASS":
             base=make_base(mod, leaf, addr)
             wins.append({"addr":addr,"name":name,"leaf":leaf,"module":mod,"status":st,"pass":patt,"base":base,
-                         "src":src,"test":tst,"oracle_row":o})
+                         "src":src,"test":tst,"oracle_row":o,"flags":list(winflags)})
     print(f"\nWINS: {len(wins)}")
     for w in wins: print(f"  {w['addr']} {w['status']} {w['module']}::{w['leaf']}")
     if land and wins:
@@ -251,10 +269,13 @@ def main():
             test_rel=f"{w['addr'][:2]}/{w['addr'][2:4]}/{w['base']}_test.cpp"
             (srcdir/source_rel).write_text(w["src"],encoding="utf-8")
             (tdir/test_rel).write_text(w["test"],encoding="utf-8")
+            flagline=""
+            if w.get("flags"):
+                flagline=f"        CompilerFlags = '{' '.join(BASE_FLAGS+w['flags'])}'\n"
             entries.append("    [pscustomobject]@{\n"
                 f"        Address = '{w['addr']}'\n        Module = '{w['module']}'\n"
                 f"        Source = '{source_rel}'\n        TestSource = '{test_rel}'\n"
-                f"        PassPattern = '{w['pass']}'\n    }}")
+                f"{flagline}        PassPattern = '{w['pass']}'\n    }}")
         # Insert into the $catalog array itself.  The build driver declares
         # other arrays after the catalog, so searching backwards from a later
         # marker can accidentally splice entries into $requestedAddresses.

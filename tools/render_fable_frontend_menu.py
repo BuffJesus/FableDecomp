@@ -454,10 +454,13 @@ def main():
             button_right,
             menu_rows)
         component_image.save(args.component_output)
-        oracle_status = "PIXEL_IDENTICAL"
+        # Self-consistency verdict: the live component recomposition reproduces
+        # this tool's OWN baked sheet pixel-for-pixel. It is NOT a retail-pixel
+        # parity oracle (no retail frame is loaded); named accordingly.
+        oracle_status = "BAKE_SELF_CONSISTENT"
     print(
         "FABLE_FRONTEND_MENU PASS sheet=%dx%d frames=%d variant=%s "
-        "oracle=%s output=%s components=%s" %
+        "bake_selfcheck=%s output=%s components=%s" %
         (
             image.width,
             image.height,

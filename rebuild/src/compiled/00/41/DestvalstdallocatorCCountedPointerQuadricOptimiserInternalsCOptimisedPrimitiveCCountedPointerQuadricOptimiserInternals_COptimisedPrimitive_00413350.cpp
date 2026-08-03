@@ -55,17 +55,5 @@ extern "C" __declspec(naked) void F_00413350(void)
         _emit 0x00
         _emit 0x5e
         _emit 0xc3
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xc3
     }
 }

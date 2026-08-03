@@ -2,11 +2,8 @@
 // Reconstructed as a naked thunk to hit the exact retail byte layout.
 extern "C" void __fastcall CLandscapeBackgroundPatch_dtor_inner(void*); // 0x5acef6
 extern "C" void  __cdecl   CLBP_op_delete(void*);                        // operator delete
-extern "C" void* __cdecl   CLBP_op_new(unsigned int);                    // operator new
-extern "C" void __fastcall CLandscapeBackgroundPatch_ctor(void*);        // 0xffca66 target
 
 extern void* CLBP_vftable_A; // 0x1230ba0
-extern void* CLBP_vftable_B; // 0x1231e34
 
 __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(void* self, unsigned int flags)
 {
@@ -25,23 +22,5 @@ __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_des
         mov  eax, esi
         pop  esi
         ret  4
-        // second compiler-emitted thunk body (default constructor closure)
-        push esi
-        push 44h
-        call CLBP_op_new
-        mov  esi, eax
-        test esi, esi
-        pop  ecx
-        je   L_null
-        mov  ecx, esi
-        call CLandscapeBackgroundPatch_ctor
-        mov  dword ptr [esi], offset CLBP_vftable_B
-        mov  eax, esi
-        pop  esi
-        ret
-    L_null:
-        xor  eax, eax
-        pop  esi
-        ret
     }
 }

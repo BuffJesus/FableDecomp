@@ -1,13 +1,17 @@
-// CLandscapeBackgroundPatch `vector deleting destructor' (slot spans dtor thunk + adjacent creator)
-// Emitted as a single naked routine; absolute callee/global operands are relocation-masked in parity.
+// CLandscapeBackgroundPatch::`vector deleting destructor' @ 0x0044FE5F
+// Retail = 34 bytes: a scalar/vector deleting destructor (stores vtable, runs base
+// dtor, conditionally frees) -- same shape as the 0044F90F sibling, different call
+// targets. Compiler glue with no direct C++ source -> minimal naked asm; the vtable
+// global + two call targets are relocations (parity masks them) -> RELOC.
+//
+// RE-BOUNDED 2026-07-31 (audit slice-family remediation): the prior candidate
+// OVER-CAPTURED, appending an adjacent allocating-creator thunk to reach 70 bytes
+// -> DIFFER(70v34). This is now JUST the real function, correctly bounded.
 struct CLandscapeBackgroundPatch { void* vptr; };
 
-extern "C" void __cdecl CLandscapeBackgroundPatch_dtor(void);   // 0x5ac6f1
-extern "C" void __cdecl CLandscapeBackgroundPatch_delete(void); // 0x7aeb5d (operator delete)
-extern "C" void __cdecl CLandscapeBackgroundPatch_new(void);    // 0x7aebbb (operator new)
-extern "C" void __cdecl CLandscapeBackgroundPatch_ctor(void);   // inner ctor
-extern int g_vtblA;   // 0x1230ba0
-extern int g_vtblB;   // 0x12327ac
+extern "C" void __cdecl CLandscapeBackgroundPatch_dtor(void);   // 0x5ac6f1  base destructor
+extern "C" void __cdecl CLandscapeBackgroundPatch_delete(void); // 0x7aeb5d  operator delete
+extern int g_vtblA;   // 0x1230ba0  vtable
 
 __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self)
 {
@@ -25,24 +29,5 @@ __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_des
         mov     eax, esi
         pop     esi
         ret     4
-
-        // adjacent creator thunk folded into same 70-byte slot
-        push    esi
-        push    38h
-        call    CLandscapeBackgroundPatch_new
-        mov     esi, eax
-        test    esi, esi
-        pop     ecx
-        je      L_null
-        mov     ecx, esi
-        call    CLandscapeBackgroundPatch_ctor
-        mov     dword ptr [esi], offset g_vtblB
-        mov     eax, esi
-        pop     esi
-        ret
-    L_null:
-        xor     eax, eax
-        pop     esi
-        ret
     }
 }

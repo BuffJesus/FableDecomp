@@ -1,4 +1,5 @@
 #include "fable_visual_d3d9.h"
+#include "detail_screen_tables.h"
 #include "fable_render_state.h"
 #include "fable_render2d_vertex_queue.h"
 #include "fable_render_capture.h"
@@ -9,6 +10,7 @@
 #include "fable_texture_lifecycle.h"
 #include "render2d_batch_plan.h"
 #include "render2d_draw_list_adapter.h"
+#include "frontend_profile_glyph_metrics.h"
 
 #include <string.h>
 
@@ -167,21 +169,39 @@ namespace
     const fable_i32 kMainMenuRowYOffsets[7] = {
         0, 30, 60, 120, 180, 210, 240
     };
-    const fable_u32 kDetailRowCounts[3] = {10, 3, 10};
-    const fable_u32 kDetailValueCounts[3][10] = {
-        {2, 2, 2, 10, 2, 16, 2, 2, 2, 2},
-        {11, 11, 11, 0, 0, 0, 0, 0, 0, 0},
-        {3, 4, 3, 4, 4, 4, 18, 2, 4, 3}
-    };
-    const fable_i32 kDetailRowY[3][10] = {
-        {90, 120, 150, 180, 210, 240, 270, 300, 330, 360},
-        {130, 190, 250, 0, 0, 0, 0, 0, 0, 0},
-        {90, 120, 150, 180, 210, 240, 270, 300, 330, 360}
-    };
+    // audit #4: bound to the shared source of truth (detail_screen_tables.h)
+    // so the render geometry cannot drift from the input hit-test side.
+    const fable_u32 (&kDetailRowCounts)[3] =
+        fable_detail_tables::kRowCounts;
+    const fable_u32 (&kDetailValueCounts)[3][10] =
+        fable_detail_tables::kValueCounts;
+    const fable_i32 (&kDetailRowY)[3][10] =
+        fable_detail_tables::kRowY;
+    // Detail-screen hover overlay atlas origins (mirror of the Python
+    // DETAIL_*_ATLAS_* constants in tools/render_fable_frontend_subscreens.py).
+    // All in the OPTIONS component-atlas free region x>=1016; keep in lock-step
+    // with the bake or the overlays sample the wrong pixels.
+    const fable_i32 kDetailHoverAtlasOriginX = 1024;
+    const fable_i32 kDetailHoverAtlasOriginY = 2400;
+    const fable_i32 kDetailArrowHoverTileWidth = 200;
+    const fable_i32 kDetailArrowHoverTileHeight = 30;
+    const fable_i32 kDetailArrowHoverLeftAtlasY = 2400;
+    const fable_i32 kDetailArrowHoverRightAtlasY = 2430;
+    const fable_i32 kDetailFooterHoverTileWidth = 256;
+    const fable_i32 kDetailFooterHoverTileHeight = 64;
+    // Per-button atlas Y and design top-left (== glyph top-left, parent_y-16).
+    const fable_i32 kDetailFooterHoverCancelAtlasY = 2464;
+    const fable_i32 kDetailFooterHoverDefaultsAtlasY = 2528;
+    const fable_i32 kDetailFooterHoverApplyAtlasY = 2592;
+    const fable_i32 kDetailFooterHoverCancelDesignX = 20;
+    const fable_i32 kDetailFooterHoverCancelDesignY = 424;
+    const fable_i32 kDetailFooterHoverDefaultsDesignX = 192;
+    const fable_i32 kDetailFooterHoverDefaultsDesignY = 384;
+    const fable_i32 kDetailFooterHoverApplyDesignX = 362;
+    const fable_i32 kDetailFooterHoverApplyDesignY = 424;
     const fable_u32 kRedefineKeyValueCount = 55;
-    const fable_u32 kRedefineDefaultKeyValues[9] = {
-        31, 27, 9, 12, 1, 2, 3, 3, 3
-    };
+    const fable_u32 (&kRedefineDefaultKeyValues)[9] =
+        fable_detail_tables::kRedefineDefaults;
 
     FableD3D9* g_Direct3D = 0;
     FableD3DDevice9* g_Device = 0;
@@ -195,6 +215,11 @@ namespace
     FableD3DTexture9* g_CoastalSunbeamTexture = 0;
     FableD3DTexture9* g_OptionsTexture = 0;
     FableD3DTexture9* g_HelpersTexture = 0;
+    FableD3DTexture9* g_AboutTexture = 0;
+    FableD3DTexture9* g_CreditsTexture = 0;
+    FableD3DTexture9* g_ProfilesTexture = 0;
+    FableD3DTexture9* g_SpookyTexture = 0;
+    FableD3DTexture9* g_SpookySunbeamTexture = 0;
     FableD3DTexture9* g_TitleSegmentTexture = 0;
     FableD3DTexture9* g_ButtonLeftTexture = 0;
     FableD3DTexture9* g_ButtonMiddleTexture = 0;
@@ -222,6 +247,17 @@ namespace
         0,
         3,
         &g_MainMenuBigButtonLifetime
+    };
+    // Saved-games list highlight: the same TS_BUTTON L/M/R ornament as the
+    // Options selected row, composed to the recovered 248px save-row total
+    // width (64 + 120 inner + 64), emitted live at the selected save row.
+    FableUiCountedComponent g_SaveButtonComponentStorage[3] = {};
+    FableUiComponentLifetimeCounters g_SaveButtonLifetime = {};
+    FableUiGeneratedComponentVector g_SaveButtonComponents = {
+        g_SaveButtonComponentStorage,
+        0,
+        3,
+        &g_SaveButtonLifetime
     };
     FableUiRuntimeListChild g_MainMenuRowChildren[7] = {};
     FableUiRuntimeListChild g_OptionsRowChildren[4] = {};
@@ -255,12 +291,23 @@ namespace
     fable_u32 g_DetailOptionValues[3][10] = {};
     fable_u32 g_RedefineHover = 0;
     fable_u32 g_RedefineResetHover = 0;
+    // Detail-screen footer/arrow hover render state (mirrors the checkpoint's
+    // g_VisualDetail*Hover).  Button: 0=none,1=Cancel,2=Defaults,3=Apply.
+    fable_u32 g_DetailButtonHover = 0;
+    fable_u32 g_DetailArrowHoverRow = 0;
+    fable_u32 g_DetailArrowHoverSide = 0;
     fable_u32 g_RedefineSelection = 0;
     fable_u32 g_RedefineKeyValues[9] = {};
     fable_u32 g_QuitHover = 0;
     bool g_MainMenuActive = false;
     bool g_OptionsMenuActive = false;
     bool g_SaveMenuActive = false;
+    bool g_AboutMenuActive = false;
+    bool g_CreditsMenuActive = false;
+    bool g_ProfilesMenuActive = false;
+    const char* g_ProfileNames[32] = {};
+    fable_u32 g_ProfileNameCount = 0;
+    fable_u32 g_ProfileSelection = 0;
     bool g_OptionsBackHovered = false;
     bool g_QuitPromptActive = false;
     bool g_Presented = false;
@@ -567,6 +614,92 @@ namespace
             reinterpret_cast<fable_u32>(texture);
         first.payload.normal.stateBlock = 1;
         records[recordCount++] = first;
+    }
+
+    void AppendProfileNameText(
+        FableVisualVertex* vertices,
+        fable_u32& vertexCount,
+        FableRender2DPlanRecord* records,
+        fable_u32& recordCount,
+        const char* text,
+        float centerX,
+        float top,
+        float originX,
+        float originY,
+        float scaleX,
+        float scaleY)
+    {
+        if (
+            text == 0 ||
+            g_OptionsTexture == 0 ||
+            g_OptionsWidth <= 0 ||
+            g_OptionsHeight <= 0)
+        {
+            return;
+        }
+        int advance = 0;
+        for (const unsigned char* cursor =
+                 reinterpret_cast<const unsigned char*>(text);
+             *cursor != 0;
+             ++cursor)
+        {
+            const int code = static_cast<int>(*cursor);
+            if (
+                code < kFableProfileGlyphFirst ||
+                code >= kFableProfileGlyphFirst +
+                    kFableProfileGlyphCount)
+            {
+                continue;
+            }
+            advance += kFableProfileGlyphMetrics[
+                code - kFableProfileGlyphFirst].advance;
+        }
+        float pen = centerX - static_cast<float>(advance) * 0.5f;
+        for (const unsigned char* cursor =
+                 reinterpret_cast<const unsigned char*>(text);
+             *cursor != 0;
+             ++cursor)
+        {
+            const int code = static_cast<int>(*cursor);
+            if (
+                code < kFableProfileGlyphFirst ||
+                code >= kFableProfileGlyphFirst +
+                    kFableProfileGlyphCount)
+            {
+                continue;
+            }
+            const FableProfileGlyphMetric& glyph =
+                kFableProfileGlyphMetrics[
+                    code - kFableProfileGlyphFirst];
+            const float glyphLeft =
+                pen + static_cast<float>(glyph.xOffset);
+            AppendVisualQuad(
+                vertices,
+                vertexCount,
+                records,
+                recordCount,
+                g_OptionsTexture,
+                originX + glyphLeft * scaleX,
+                originY + top * scaleY,
+                originX + (glyphLeft + glyph.width) * scaleX,
+                originY + (top + glyph.height) * scaleY,
+                static_cast<float>(
+                    kFableProfileGlyphAtlasOriginX + glyph.atlasX) /
+                    static_cast<float>(g_OptionsWidth),
+                static_cast<float>(
+                    kFableProfileGlyphAtlasOriginY + glyph.atlasY) /
+                    static_cast<float>(g_OptionsHeight),
+                static_cast<float>(
+                    kFableProfileGlyphAtlasOriginX + glyph.atlasX +
+                    glyph.width) /
+                    static_cast<float>(g_OptionsWidth),
+                static_cast<float>(
+                    kFableProfileGlyphAtlasOriginY + glyph.atlasY +
+                    glyph.height) /
+                    static_cast<float>(g_OptionsHeight),
+                0xFFFFFFFFu);
+            pen += static_cast<float>(glyph.advance);
+        }
     }
 
     fable_u32 ChooseNextAnimationFrame(
@@ -1064,6 +1197,37 @@ namespace
                 }
                 else if (
                     argument1 ==
+                    reinterpret_cast<fable_u32>(g_AboutTexture))
+                {
+                    selectedTexture = g_AboutTexture;
+                }
+                else if (
+                    argument1 ==
+                    reinterpret_cast<fable_u32>(g_CreditsTexture))
+                {
+                    selectedTexture = g_CreditsTexture;
+                }
+                else if (
+                    argument1 ==
+                    reinterpret_cast<fable_u32>(g_ProfilesTexture))
+                {
+                    selectedTexture = g_ProfilesTexture;
+                }
+                else if (
+                    argument1 ==
+                    reinterpret_cast<fable_u32>(g_SpookyTexture))
+                {
+                    selectedTexture = g_SpookyTexture;
+                }
+                else if (
+                    argument1 ==
+                    reinterpret_cast<fable_u32>(
+                        g_SpookySunbeamTexture))
+                {
+                    selectedTexture = g_SpookySunbeamTexture;
+                }
+                else if (
+                    argument1 ==
                     reinterpret_cast<fable_u32>(
                         g_TitleSegmentTexture))
                 {
@@ -1222,6 +1386,58 @@ CSystemManager* FABLE_FASTCALL GFGetSystemManager()
     return reinterpret_cast<CSystemManager*>(g_SystemManagerStorage);
 }
 
+// Shared geometry for the saved-games preview viewport (UI_VIEW_RING_SMALL).
+// The panel is baked into the shared g_OptionsTexture save base at design
+// (314,37), size 256x256; it lives at atlas column 1024 and the first save
+// frame of the 8-frame, 480px-tall left-side atlas. Save selection is live
+// state, so it must not select duplicate static atlas cells. Both the cell
+// background split and the live ring quad reference this so the C++ sample and
+// the Python atlas bake stay in lockstep.
+const float kSaveViewportDesignLeft = 314.0f;
+const float kSaveViewportDesignTop = 37.0f;
+const float kSaveViewportDesignRight = 570.0f;
+const float kSaveViewportDesignBottom = 293.0f;
+const float kSaveAtlasColumnLeft = 1024.0f;
+const float kSaveAtlasFrameHeight = 480.0f;
+const fable_u32 kSaveAtlasFirstFrame = 4;
+
+bool FABLE_FASTCALL FableComputeSaveViewportAtlasRect(
+    fable_u32 saveSelection,
+    fable_i32 optionsAtlasWidth,
+    fable_i32 optionsAtlasHeight,
+    float* outLeftU,
+    float* outTopV,
+    float* outRightU,
+    float* outBottomV)
+{
+    if (saveSelection >= 4 ||
+        optionsAtlasWidth <= 0 ||
+        optionsAtlasHeight <= 0 ||
+        outLeftU == 0 ||
+        outTopV == 0 ||
+        outRightU == 0 ||
+        outBottomV == 0)
+    {
+        return false;
+    }
+    const float invWidth =
+        1.0f / static_cast<float>(optionsAtlasWidth);
+    const float invHeight =
+        1.0f / static_cast<float>(optionsAtlasHeight);
+    (void)saveSelection;
+    const float cellTop =
+        static_cast<float>(kSaveAtlasFirstFrame) * kSaveAtlasFrameHeight;
+    *outLeftU =
+        (kSaveAtlasColumnLeft + kSaveViewportDesignLeft) * invWidth;
+    *outTopV =
+        (cellTop + kSaveViewportDesignTop) * invHeight;
+    *outRightU =
+        (kSaveAtlasColumnLeft + kSaveViewportDesignRight) * invWidth;
+    *outBottomV =
+        (cellTop + kSaveViewportDesignBottom) * invHeight;
+    return true;
+}
+
 bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     void* window,
     fable_i32 backBufferWidth,
@@ -1290,7 +1506,32 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     fable_i32 buttonRightHeight,
     fable_i32 buttonRightPitch,
     fable_u32 buttonRightBitsPerPixel,
-    const void* buttonRightPixels)
+    const void* buttonRightPixels,
+    fable_i32 aboutWidth,
+    fable_i32 aboutHeight,
+    fable_i32 aboutPitch,
+    fable_u32 aboutBitsPerPixel,
+    const void* aboutPixels,
+    fable_i32 creditsWidth,
+    fable_i32 creditsHeight,
+    fable_i32 creditsPitch,
+    fable_u32 creditsBitsPerPixel,
+    const void* creditsPixels,
+    fable_i32 profilesWidth,
+    fable_i32 profilesHeight,
+    fable_i32 profilesPitch,
+    fable_u32 profilesBitsPerPixel,
+    const void* profilesPixels,
+    fable_i32 spookyWidth,
+    fable_i32 spookyHeight,
+    fable_i32 spookyPitch,
+    fable_u32 spookyBitsPerPixel,
+    const void* spookyPixels,
+    fable_i32 spookySunbeamWidth,
+    fable_i32 spookySunbeamHeight,
+    fable_i32 spookySunbeamPitch,
+    fable_u32 spookySunbeamBitsPerPixel,
+    const void* spookySunbeamPixels)
 {
     FableShutdownVisualD3D9();
     g_DeviceWindow = window;
@@ -1475,6 +1716,66 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 buttonRightPixels,
                 true,
                 true)
+        ) ||
+        (
+            aboutPixels != 0 &&
+            !UploadArtwork(
+                g_AboutTexture,
+                aboutWidth,
+                aboutHeight,
+                aboutPitch,
+                aboutBitsPerPixel,
+                aboutPixels,
+                true,
+                true)
+        ) ||
+        (
+            creditsPixels != 0 &&
+            !UploadArtwork(
+                g_CreditsTexture,
+                creditsWidth,
+                creditsHeight,
+                creditsPitch,
+                creditsBitsPerPixel,
+                creditsPixels,
+                true,
+                true)
+        ) ||
+        (
+            profilesPixels != 0 &&
+            !UploadArtwork(
+                g_ProfilesTexture,
+                profilesWidth,
+                profilesHeight,
+                profilesPitch,
+                profilesBitsPerPixel,
+                profilesPixels,
+                true,
+                true)
+        ) ||
+        (
+            spookyPixels != 0 &&
+            !UploadArtwork(
+                g_SpookyTexture,
+                spookyWidth,
+                spookyHeight,
+                spookyPitch,
+                spookyBitsPerPixel,
+                spookyPixels,
+                true,
+                false)
+        ) ||
+        (
+            spookySunbeamPixels != 0 &&
+            !UploadArtwork(
+                g_SpookySunbeamTexture,
+                spookySunbeamWidth,
+                spookySunbeamHeight,
+                spookySunbeamPitch,
+                spookySunbeamBitsPerPixel,
+                spookySunbeamPixels,
+                true,
+                false)
         ))
     {
         FableShutdownVisualD3D9();
@@ -1504,6 +1805,21 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 (forestHeight != 1920 && forestHeight != -1920) ||
                 sunbeamWidth != 640 ||
                 (sunbeamHeight != 1440 && sunbeamHeight != -1440)
+            )
+        ))
+    {
+        FableShutdownVisualD3D9();
+        return false;
+    }
+    if (
+        (g_SpookyTexture == 0) != (g_SpookySunbeamTexture == 0) ||
+        (
+            g_SpookyTexture != 0 &&
+            (
+                spookyWidth != 640 ||
+                (spookyHeight != 1920 && spookyHeight != -1920) ||
+                spookySunbeamWidth != 640 ||
+                (spookySunbeamHeight != 1440 && spookySunbeamHeight != -1440)
             )
         ))
     {
@@ -1616,6 +1932,23 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 buttonRightWidth,
                 buttonRightHeight < 0
                     ? -buttonRightHeight
+                    : buttonRightHeight) ||
+            !InitialiseButtonComponents(
+                248,
+                g_SaveButtonComponentStorage,
+                &g_SaveButtonLifetime,
+                &g_SaveButtonComponents,
+                buttonLeftWidth,
+                buttonLeftHeight < 0
+                    ? -buttonLeftHeight
+                    : buttonLeftHeight,
+                buttonMiddleWidth,
+                buttonMiddleHeight < 0
+                    ? -buttonMiddleHeight
+                    : buttonMiddleHeight,
+                buttonRightWidth,
+                buttonRightHeight < 0
+                    ? -buttonRightHeight
                     : buttonRightHeight))
         {
             FableShutdownVisualD3D9();
@@ -1626,11 +1959,17 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     InitialiseMainMenuRowStates();
     g_OptionsSelection = 0;
     g_SaveSelection = 0;
+    g_ProfileSelection = 0;
+    g_ProfileNameCount = 0;
+    memset(g_ProfileNames, 0, sizeof(g_ProfileNames));
     InitialiseOptionsRowStates();
     g_DetailScreen = 0;
     memset(g_DetailOptionValues, 0, sizeof(g_DetailOptionValues));
     g_RedefineHover = 0;
     g_RedefineResetHover = 0;
+    g_DetailButtonHover = 0;
+    g_DetailArrowHoverRow = 0;
+    g_DetailArrowHoverSide = 0;
     g_RedefineSelection = 0;
     memcpy(
         g_RedefineKeyValues,
@@ -1640,6 +1979,9 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     g_MainMenuActive = false;
     g_OptionsMenuActive = false;
     g_SaveMenuActive = false;
+    g_ProfilesMenuActive = false;
+    g_AboutMenuActive = false;
+    g_CreditsMenuActive = false;
     g_OptionsBackHovered = false;
     g_QuitPromptActive = false;
     g_AnimationStartTick = 0;
@@ -1752,7 +2094,8 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         overlayTexture = g_OptionsTexture;
         overlayWidth = 640;
         overlayHeight = 480;
-        overlayFrame = 4 + g_SaveSelection;
+        // The save base is static; selection moves only live components.
+        overlayFrame = kSaveAtlasFirstFrame;
         overlayFrameCount = 8;
     }
     else if (g_DetailScreen != 0)
@@ -1769,6 +2112,41 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         overlayWidth = 0;
         overlayHeight = 0;
     }
+    else if (g_AboutMenuActive)
+    {
+        // UI_FRONTEND_ABOUT_MENU (#449): the baked About panel (WHOLE_ABOUT
+        // title rule + "About Fable" title + legal-notice message + Back) is a
+        // single 640x480 frame.  The SPOOKY animated background is still a
+        // pending live layer; until it is wired the forest background shows
+        // behind the panel.  If g_AboutTexture failed to load, overlayTexture
+        // stays 0 and only the background/helpers render.
+        overlayTexture = g_AboutTexture;
+        overlayWidth = g_AboutTexture != 0 ? 640 : 0;
+        overlayHeight = g_AboutTexture != 0 ? 480 : 0;
+        overlayFrame = 0;
+        overlayFrameCount = 1;
+    }
+    else if (g_CreditsMenuActive)
+    {
+        // UI_FRONTEND_CREDITS_MENU starts with its scrolling container at
+        // y=480.  The initial overlay is therefore just the authored title
+        // and widescreen bars; later scrolling text remains a live follow-up.
+        overlayTexture = g_CreditsTexture;
+        overlayWidth = g_CreditsTexture != 0 ? 640 : 0;
+        overlayHeight = g_CreditsTexture != 0 ? 480 : 0;
+        overlayFrame = 0;
+        overlayFrameCount = 1;
+    }
+    else if (g_ProfilesMenuActive)
+    {
+        // Static Select Profile title surface; runtime profile names are
+        // rendered below from the enumerated profile store.
+        overlayTexture = g_ProfilesTexture;
+        overlayWidth = g_ProfilesTexture != 0 ? 640 : 0;
+        overlayHeight = g_ProfilesTexture != 0 ? 480 : 0;
+        overlayFrame = 0;
+        overlayFrameCount = 1;
+    }
     const bool titleUsesDesignCanvas =
         overlayWidth == g_ArtworkWidth &&
         overlayHeight == g_ArtworkHeight;
@@ -1781,18 +2159,26 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     const float titleBottom =
         titleTop + overlayHeight * designScaleY;
 
-    FableVisualVertex vertices[128];
-    FableRender2DPlanRecord records[48];
+    FableVisualVertex vertices[4096];
+    FableRender2DPlanRecord records[2048];
     fable_u32 vertexCount = 0;
     fable_u32 recordCount = 0;
     const bool coastalBackground =
-        g_MainMenuActive || g_DetailScreen == 2;
+        g_MainMenuActive || g_DetailScreen == 2 || g_ProfilesMenuActive;
+    // UI_FRONTEND_ABOUT_MENU owns the SPOOKY graveyard background
+    // (UI_BLENDING_BACKGROUNDS_SPOOKY: 4 BG frames + 3 sunbeam frames),
+    // animated by the same swap/blend path as forest/coastal.
+    const bool spookyBackground = g_AboutMenuActive;
     FableD3DTexture9* backgroundTexture =
-        coastalBackground ? g_CoastalTexture : g_ForestTexture;
+        spookyBackground
+            ? g_SpookyTexture
+            : (coastalBackground ? g_CoastalTexture : g_ForestTexture);
     FableD3DTexture9* sunbeamTexture =
-        coastalBackground
-            ? g_CoastalSunbeamTexture
-            : g_SunbeamTexture;
+        spookyBackground
+            ? g_SpookySunbeamTexture
+            : (coastalBackground
+                ? g_CoastalSunbeamTexture
+                : g_SunbeamTexture);
     if (
         !g_QuitPromptActive &&
         backgroundTexture != 0 &&
@@ -1895,8 +2281,7 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             0xFFFFFFFFu);
     }
     if (
-        (g_OptionsMenuActive || g_SaveMenuActive ||
-         g_DetailScreen != 0) &&
+        (g_OptionsMenuActive || g_DetailScreen != 0) &&
         g_TitleSegmentTexture != 0 &&
         g_TitleRuleComponents.size != 0)
     {
@@ -1957,6 +2342,17 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         selectedButtonY =
             static_cast<float>(143 + g_OptionsSelection * 30);
     }
+    else if (g_SaveMenuActive && g_SaveSelection < 4)
+    {
+        // Saved-games list highlight (SAVE_LIST_ORIGIN (10,90),
+        // SAVE_ROW_STEP_Y 30, -7 to align the 44px ornament on the 30px row).
+        // Emitted before the name-bearing save cell overlay so the highlight
+        // sits behind the row text, matching the baked composite order.
+        selectedButtonComponents = &g_SaveButtonComponents;
+        selectedButtonX = 10.0f;
+        selectedButtonY =
+            static_cast<float>(90 + g_SaveSelection * 30 - 7);
+    }
     if (
         selectedButtonComponents != 0 &&
         g_ButtonLeftTexture != 0 &&
@@ -2014,9 +2410,13 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     }
     if (overlayTexture != 0)
     {
+        // Must share the exact activation condition of the ring-fill quad
+        // below (g_OptionsWidth == 1664); otherwise the hole-punch surround
+        // quads would leave a transparent ring rect that nothing fills.
         const bool saveAtlasColumn =
             g_SaveMenuActive &&
-            overlayTexture == g_OptionsTexture;
+            overlayTexture == g_OptionsTexture &&
+            g_OptionsWidth == 1664;
         const float overlayU0 =
             saveAtlasColumn
                 ? 1024.0f /
@@ -2043,15 +2443,76 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         const float overlayV1 =
             static_cast<float>(overlayFrame + 1) /
             static_cast<float>(overlayFrameCount);
-        AppendVisualQuad(
-            vertices, vertexCount, records, recordCount,
-            overlayTexture,
-            titleLeft, titleTop, titleRight, titleBottom,
-            overlayU0,
-            overlayV0,
-            overlayU1,
-            overlayV1,
-            0xFFFFFFFFu);
+        if (saveAtlasColumn)
+        {
+            // The save cell bakes the UI_VIEW_RING_SMALL preview viewport at
+            // design (314,37), size 256x256.  Retail draws that viewport as a
+            // panel that sits ON TOP of everything else on the saved-games
+            // screen, so it must be emitted as its own live Render2D quad AFTER
+            // the title rule / list / helpers rather than inline with the cell
+            // background.  Emit the cell background here as four quads that
+            // surround the ring rect (top slab, bottom slab, mid-left,
+            // mid-right); the ring itself is re-emitted last, further below,
+            // sampling the same baked pixels exactly once.  Screen position and
+            // atlas UV are both affine in the cell's 640x480 design space, so
+            // each sub-quad interpolates titleLeft/titleTop + design*scale for
+            // its screen rect and (1024+dx)/W, (cellTop+dy)/H for its UV.
+            const float saveCellScaleX =
+                (titleRight - titleLeft) / 640.0f;
+            const float saveCellScaleY =
+                (titleBottom - titleTop) / 480.0f;
+            const float saveCellTop =
+                static_cast<float>(overlayFrame) * 480.0f;
+            const float saveInvW =
+                1.0f / static_cast<float>(g_OptionsWidth);
+            const float saveInvH =
+                1.0f / static_cast<float>(g_OptionsHeight);
+            const float ringDesignLeft = kSaveViewportDesignLeft;
+            const float ringDesignTop = kSaveViewportDesignTop;
+            const float ringDesignRight = kSaveViewportDesignRight;
+            const float ringDesignBottom = kSaveViewportDesignBottom;
+            struct SaveCellRect
+            {
+                float dx0;
+                float dy0;
+                float dx1;
+                float dy1;
+            };
+            const SaveCellRect surroundRects[4] = {
+                {0.0f, 0.0f, 640.0f, ringDesignTop},
+                {0.0f, ringDesignBottom, 640.0f, 480.0f},
+                {0.0f, ringDesignTop, ringDesignLeft, ringDesignBottom},
+                {ringDesignRight, ringDesignTop, 640.0f, ringDesignBottom}
+            };
+            for (fable_u32 rect = 0; rect != 4; ++rect)
+            {
+                const SaveCellRect& band = surroundRects[rect];
+                AppendVisualQuad(
+                    vertices, vertexCount, records, recordCount,
+                    overlayTexture,
+                    titleLeft + band.dx0 * saveCellScaleX,
+                    titleTop + band.dy0 * saveCellScaleY,
+                    titleLeft + band.dx1 * saveCellScaleX,
+                    titleTop + band.dy1 * saveCellScaleY,
+                    (1024.0f + band.dx0) * saveInvW,
+                    (saveCellTop + band.dy0) * saveInvH,
+                    (1024.0f + band.dx1) * saveInvW,
+                    (saveCellTop + band.dy1) * saveInvH,
+                    0xFFFFFFFFu);
+            }
+        }
+        else
+        {
+            AppendVisualQuad(
+                vertices, vertexCount, records, recordCount,
+                overlayTexture,
+                titleLeft, titleTop, titleRight, titleBottom,
+                overlayU0,
+                overlayV0,
+                overlayU1,
+                overlayV1,
+                0xFFFFFFFFu);
+        }
     }
     if (
         g_MainMenuActive &&
@@ -2169,6 +2630,110 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
                 0xFFFFFFFFu);
         }
     }
+    // Detail-screen ARROW hover overlay (screens 1-3).  The HOVERED sprite is
+    // baked into a full 200x30 control tile at the arrow's control-tile-local
+    // offset, so drawing that tile over the SAME design rect as the control
+    // tile (x=300, width 200) pixel-aligns it with the baked OFF arrow.  Row is
+    // bound-checked (Video phantom rows 3-9 have rowY 0) before indexing.
+    if (
+        g_DetailScreen >= 1 &&
+        g_DetailScreen <= 3 &&
+        g_DetailArrowHoverSide != 0 &&
+        g_OptionsTexture != 0)
+    {
+        const fable_u32 screenIndex = g_DetailScreen - 1;
+        if (g_DetailArrowHoverRow < kDetailRowCounts[screenIndex])
+        {
+            const fable_i32 tileAtlasY =
+                g_DetailArrowHoverSide == 1
+                    ? kDetailArrowHoverLeftAtlasY
+                    : kDetailArrowHoverRightAtlasY;
+            const float controlLeft =
+                left + 300.0f * designScaleX;
+            const float controlTop =
+                top +
+                static_cast<float>(
+                    kDetailRowY[screenIndex][g_DetailArrowHoverRow] - 3) *
+                designScaleY;
+            AppendVisualQuad(
+                vertices, vertexCount, records, recordCount,
+                g_OptionsTexture,
+                controlLeft,
+                controlTop,
+                controlLeft +
+                    static_cast<float>(kDetailArrowHoverTileWidth) *
+                    designScaleX,
+                controlTop +
+                    static_cast<float>(kDetailArrowHoverTileHeight) *
+                    designScaleY,
+                static_cast<float>(kDetailHoverAtlasOriginX) /
+                    static_cast<float>(g_OptionsWidth),
+                static_cast<float>(tileAtlasY) /
+                    static_cast<float>(g_OptionsHeight),
+                static_cast<float>(
+                    kDetailHoverAtlasOriginX +
+                    kDetailArrowHoverTileWidth) /
+                    static_cast<float>(g_OptionsWidth),
+                static_cast<float>(
+                    tileAtlasY + kDetailArrowHoverTileHeight) /
+                    static_cast<float>(g_OptionsHeight),
+                0xFFFFFFFFu);
+        }
+    }
+    // Detail-screen FOOTER hover overlay.  Cancel(1)/Apply(3) apply on screens
+    // 1-4 (AUDIT #1); Defaults(2) on 1-3.  The ON tile reproduces the baked OFF
+    // glyph+label and is drawn over the OFF glyph's design rect so it fully
+    // covers it (no OFF label shows through).
+    if (
+        g_DetailScreen >= 1 &&
+        g_DetailScreen <= 4 &&
+        g_DetailButtonHover >= 1 &&
+        g_DetailButtonHover <= 3 &&
+        !(g_DetailScreen == 4 && g_DetailButtonHover == 2) &&
+        g_OptionsTexture != 0)
+    {
+        fable_i32 footerAtlasY = kDetailFooterHoverCancelAtlasY;
+        fable_i32 footerDesignX = kDetailFooterHoverCancelDesignX;
+        fable_i32 footerDesignY = kDetailFooterHoverCancelDesignY;
+        if (g_DetailButtonHover == 2)
+        {
+            footerAtlasY = kDetailFooterHoverDefaultsAtlasY;
+            footerDesignX = kDetailFooterHoverDefaultsDesignX;
+            footerDesignY = kDetailFooterHoverDefaultsDesignY;
+        }
+        else if (g_DetailButtonHover == 3)
+        {
+            footerAtlasY = kDetailFooterHoverApplyAtlasY;
+            footerDesignX = kDetailFooterHoverApplyDesignX;
+            footerDesignY = kDetailFooterHoverApplyDesignY;
+        }
+        const float footerLeft =
+            left + static_cast<float>(footerDesignX) * designScaleX;
+        const float footerTop =
+            top + static_cast<float>(footerDesignY) * designScaleY;
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            footerLeft,
+            footerTop,
+            footerLeft +
+                static_cast<float>(kDetailFooterHoverTileWidth) *
+                designScaleX,
+            footerTop +
+                static_cast<float>(kDetailFooterHoverTileHeight) *
+                designScaleY,
+            static_cast<float>(kDetailHoverAtlasOriginX) /
+                static_cast<float>(g_OptionsWidth),
+            static_cast<float>(footerAtlasY) /
+                static_cast<float>(g_OptionsHeight),
+            static_cast<float>(
+                kDetailHoverAtlasOriginX + kDetailFooterHoverTileWidth) /
+                static_cast<float>(g_OptionsWidth),
+            static_cast<float>(
+                footerAtlasY + kDetailFooterHoverTileHeight) /
+                static_cast<float>(g_OptionsHeight),
+            0xFFFFFFFFu);
+    }
     if (
         g_DetailScreen == 4 &&
         g_RedefineHover >= 1 &&
@@ -2243,7 +2808,43 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             (atlasTop + 64.0f) / 2880.0f,
             0xFFFFFFFFu);
     }
-    if ((g_OptionsMenuActive || g_SaveMenuActive) &&
+    if (
+        g_ProfilesMenuActive &&
+        g_OptionsTexture != 0 &&
+        g_OptionsWidth == 1664)
+    {
+        // UI_FRONTEND_LIST_FOR_PROFILES is a Type-43 runtime list. Its
+        // frontend.bin serializes PositionOffsetY=28 for this Type-43 list;
+        // names remain supplied by the profile store.
+        // The authored list viewport is 260px high, so only nine rows may be
+        // emitted. Keep the selected row in view as the list scrolls rather
+        // than appending off-screen glyph records for every stored profile.
+        const fable_u32 visibleRows = 9;
+        fable_u32 firstRow = 0;
+        if (g_ProfileSelection >= visibleRows)
+            firstRow = g_ProfileSelection - visibleRows + 1;
+        for (fable_u32 displayRow = 0; displayRow != visibleRows; ++displayRow)
+        {
+            const fable_u32 row = firstRow + displayRow;
+            if (row >= g_ProfileNameCount)
+                break;
+            AppendProfileNameText(
+                vertices,
+                vertexCount,
+                records,
+                recordCount,
+                g_ProfileNames[row],
+                320.0f,
+                120.0f + static_cast<float>(
+                    displayRow * FableFrontendProfileRowStep),
+                left,
+                top,
+                designScaleX,
+                designScaleY);
+        }
+    }
+    if ((g_OptionsMenuActive || g_SaveMenuActive || g_AboutMenuActive ||
+         g_CreditsMenuActive || g_ProfilesMenuActive) &&
         g_HelpersTexture != 0)
     {
         const fable_u32 helperFrame =
@@ -2271,10 +2872,48 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             static_cast<float>(helperFrame + 1) / 6.0f,
             0xFFFFFFFFu);
     }
-    FableRender2DPlanEvent planEvents[68];
+    // Save-preview viewport (UI_VIEW_RING_SMALL, design (314,37), 256x256):
+    // emitted LAST so the ring+region-minimap panel draws on top of the whole
+    // saved-games screen, matching retail composite order.  It reuses the
+    // already-attached g_OptionsTexture (no new texture, no attach-chain or
+    // FableInitialiseVisualD3D9 signature change), sampling the ring pixels
+    // baked into the selected save cell -- the exact rect the four cell
+    // background quads above deliberately skip, so the ring is drawn once.
+    if (g_SaveMenuActive &&
+        g_OptionsTexture != 0 &&
+        g_OptionsWidth == 1664)
+    {
+        float ringU0 = 0.0f;
+        float ringV0 = 0.0f;
+        float ringU1 = 0.0f;
+        float ringV1 = 0.0f;
+        if (FableComputeSaveViewportAtlasRect(
+                g_SaveSelection,
+                g_OptionsWidth,
+                g_OptionsHeight,
+                &ringU0,
+                &ringV0,
+                &ringU1,
+                &ringV1))
+        {
+            AppendVisualQuad(
+                vertices, vertexCount, records, recordCount,
+                g_OptionsTexture,
+                titleLeft + kSaveViewportDesignLeft * designScaleX,
+                titleTop + kSaveViewportDesignTop * designScaleY,
+                titleLeft + kSaveViewportDesignRight * designScaleX,
+                titleTop + kSaveViewportDesignBottom * designScaleY,
+                ringU0,
+                ringV0,
+                ringU1,
+                ringV1,
+                0xFFFFFFFFu);
+        }
+    }
+    FableRender2DPlanEvent planEvents[2048];
     FableRender2DPlanOutput plan = {
         planEvents,
-        68,
+        2048,
         0,
         false
     };
@@ -2451,6 +3090,8 @@ bool FABLE_FASTCALL FableResizeVisualD3D9(
 void FABLE_FASTCALL FableShutdownVisualD3D9()
 {
     FableReleaseUiGeneratedComponents(
+        &g_SaveButtonComponents);
+    FableReleaseUiGeneratedComponents(
         &g_MainMenuBigButtonComponents);
     FableReleaseUiGeneratedComponents(
         &g_OptionsButtonComponents);
@@ -2459,6 +3100,11 @@ void FABLE_FASTCALL FableShutdownVisualD3D9()
     ReleaseObject(g_ButtonMiddleTexture);
     ReleaseObject(g_ButtonLeftTexture);
     ReleaseObject(g_TitleSegmentTexture);
+    ReleaseObject(g_SpookySunbeamTexture);
+    ReleaseObject(g_SpookyTexture);
+    ReleaseObject(g_AboutTexture);
+    ReleaseObject(g_CreditsTexture);
+    ReleaseObject(g_ProfilesTexture);
     ReleaseObject(g_HelpersTexture);
     ReleaseObject(g_OptionsTexture);
     ReleaseObject(g_CoastalSunbeamTexture);
@@ -2536,8 +3182,15 @@ void FABLE_FASTCALL FableSetVisualFrontendMainMenu(bool active)
         InitialiseMainMenuRowStates();
         g_OptionsMenuActive = false;
         g_SaveMenuActive = false;
+        g_AboutMenuActive = false;
+        g_CreditsMenuActive = false;
+        g_ProfilesMenuActive = false;
         g_DetailScreen = 0;
         g_QuitPromptActive = false;
+        // AUDIT #3: clear the shared Back-button hover so a Back click made
+        // while hovering it cannot flash a stale ON highlight for one frame
+        // on the next Options/Save/About entry (every Back-exit lands here).
+        g_OptionsBackHovered = false;
     }
     // Both compiled swapping widgets activate from frame zero.
     g_AnimationStartTick = 0;
@@ -2607,6 +3260,9 @@ void FABLE_FASTCALL FableSetVisualFrontendOptionsMenu(bool active)
     {
         g_MainMenuActive = false;
         g_SaveMenuActive = false;
+        g_AboutMenuActive = false;
+        g_CreditsMenuActive = false;
+        g_ProfilesMenuActive = false;
         g_DetailScreen = 0;
         g_QuitPromptActive = false;
         g_OptionsSelection = 0;
@@ -2630,7 +3286,9 @@ void FABLE_FASTCALL FableSetVisualFrontendOptionsSelection(
 
 void FABLE_FASTCALL FableSetVisualFrontendOptionsBackHovered(bool hovered)
 {
-    if (!g_OptionsMenuActive && !g_SaveMenuActive)
+    if (!g_OptionsMenuActive && !g_SaveMenuActive &&
+        !g_AboutMenuActive && !g_CreditsMenuActive &&
+        !g_ProfilesMenuActive)
         return;
     g_OptionsBackHovered = hovered;
 }
@@ -2652,6 +3310,9 @@ void FABLE_FASTCALL FableSetVisualFrontendSaveMenu(bool active)
     {
         g_MainMenuActive = false;
         g_OptionsMenuActive = false;
+        g_AboutMenuActive = false;
+        g_CreditsMenuActive = false;
+        g_ProfilesMenuActive = false;
         g_DetailScreen = 0;
         g_QuitPromptActive = false;
         g_SaveSelection = 0;
@@ -2677,6 +3338,9 @@ void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen)
     g_DetailScreen = screen;
     g_RedefineHover = 0;
     g_RedefineResetHover = 0;
+    g_DetailButtonHover = 0;
+    g_DetailArrowHoverRow = 0;
+    g_DetailArrowHoverSide = 0;
     g_RedefineSelection = 0;
     if (screen != 0)
     {
@@ -2720,6 +3384,34 @@ void FABLE_FASTCALL FableSetVisualFrontendRedefineResetHover(
     g_RedefineResetHover = hover;
 }
 
+void FABLE_FASTCALL FableSetVisualFrontendDetailButtonHover(
+    fable_u32 hover)
+{
+    // Footer hover (1=Cancel,2=Defaults,3=Apply).  Cancel/Apply exist on the
+    // detail screens (1-3) AND Redefine (4) -- AUDIT #1; Defaults is 1-3 only.
+    if (g_DetailScreen < 1 || g_DetailScreen > 4 || hover > 3)
+        return;
+    if (g_DetailScreen == 4 && hover == 2)
+        return;
+    g_DetailButtonHover = hover;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendDetailArrowHover(
+    fable_u32 row,
+    fable_u32 side)
+{
+    // Value arrows only exist on Gameplay/Video/Audio (screens 1-3).  Reject
+    // Options (0) and Redefine (4), and range-check row against the screen's
+    // real row count so a Video phantom row (3-9) can never be stored.
+    if (g_DetailScreen < 1 || g_DetailScreen > 3 || side > 2)
+        return;
+    const fable_u32 screenIndex = g_DetailScreen - 1;
+    if (row >= kDetailRowCounts[screenIndex])
+        return;
+    g_DetailArrowHoverRow = row;
+    g_DetailArrowHoverSide = side;
+}
+
 void FABLE_FASTCALL FableSetVisualFrontendRedefineSelection(
     fable_u32 selection)
 {
@@ -2755,10 +3447,99 @@ void FABLE_FASTCALL FableSetVisualFrontendQuitPrompt(bool active)
         g_MainMenuActive = false;
         g_OptionsMenuActive = false;
         g_SaveMenuActive = false;
+        g_AboutMenuActive = false;
+        g_CreditsMenuActive = false;
         g_DetailScreen = 0;
         g_QuitHover = 0;
     }
     g_AnimationStartTick = 0;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendAboutMenu(bool active)
+{
+    if (g_AboutMenuActive == active)
+        return;
+    // The About screen shares the UI_HELPERS bar (#577) with the other
+    // subscreens; require it before activating.  A dedicated baked frame for
+    // the SPOOKY background/title/message is not composed yet, so the live
+    // overlay currently draws no atlas panel (see the overlay selection).
+    if (active && g_HelpersTexture == 0)
+        return;
+    g_AboutMenuActive = active;
+    if (active)
+    {
+        g_MainMenuActive = false;
+        g_OptionsMenuActive = false;
+        g_SaveMenuActive = false;
+        g_CreditsMenuActive = false;
+        g_ProfilesMenuActive = false;
+        g_DetailScreen = 0;
+        g_QuitPromptActive = false;
+        g_OptionsBackHovered = false;
+    }
+    g_AnimationStartTick = 0;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendCreditsMenu(bool active)
+{
+    if (g_CreditsMenuActive == active)
+        return;
+    if (active && (g_CreditsTexture == 0 || g_HelpersTexture == 0))
+        return;
+    g_CreditsMenuActive = active;
+    if (active)
+    {
+        g_MainMenuActive = false;
+        g_OptionsMenuActive = false;
+        g_SaveMenuActive = false;
+        g_AboutMenuActive = false;
+        g_ProfilesMenuActive = false;
+        g_DetailScreen = 0;
+        g_QuitPromptActive = false;
+        g_OptionsBackHovered = false;
+    }
+    g_AnimationStartTick = 0;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendProfilesMenu(
+    bool active,
+    const char* const* names,
+    fable_u32 count)
+{
+    if (g_ProfilesMenuActive == active && !active)
+        return;
+    if (active && (g_ProfilesTexture == 0 || g_HelpersTexture == 0))
+        return;
+    g_ProfilesMenuActive = active;
+    if (active)
+    {
+        g_MainMenuActive = false;
+        g_OptionsMenuActive = false;
+        g_SaveMenuActive = false;
+        g_AboutMenuActive = false;
+        g_CreditsMenuActive = false;
+        g_DetailScreen = 0;
+        g_QuitPromptActive = false;
+        g_OptionsBackHovered = false;
+        g_ProfileNameCount = count > 32 ? 32 : count;
+        for (fable_u32 i = 0; i != g_ProfileNameCount; ++i)
+            g_ProfileNames[i] = names != 0 ? names[i] : 0;
+        g_ProfileSelection = 0;
+    }
+    else
+    {
+        g_ProfileNameCount = 0;
+        g_ProfileSelection = 0;
+    }
+    g_AnimationStartTick = 0;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendProfilesSelection(
+    fable_u32 selection)
+{
+    if (!g_ProfilesMenuActive || selection >= g_ProfileNameCount)
+        return;
+    g_ProfileSelection = selection;
 }
 
 void FABLE_FASTCALL FableSetVisualFrontendQuitHover(fable_u32 hover)

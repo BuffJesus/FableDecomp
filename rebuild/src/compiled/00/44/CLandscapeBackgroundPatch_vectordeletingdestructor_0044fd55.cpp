@@ -2,8 +2,6 @@ extern "C" int g_vtbl_a;
 extern "C" int g_vtbl_b;
 extern "C" void dtor_fn();
 extern "C" void delete_fn();
-extern "C" void new_fn();
-extern "C" void ctor_fn();
 
 __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(void* self, unsigned int flags)
 {
@@ -22,15 +20,5 @@ __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_des
         mov  eax, esi
         pop  esi
         ret  4
-        push 0x48
-        call new_fn
-        test eax, eax
-        pop  ecx
-        je   L2
-        mov  ecx, eax
-        jmp  ctor_fn
-    L2:
-        xor  eax, eax
-        ret
     }
 }

@@ -1,14 +1,11 @@
 // CLandscapeBackgroundPatch::`vector deleting destructor'
-// Retail emits two fused MSVC compiler thunks in one 50-byte run:
-//  (1) the scalar deleting destructor (ret 4), then
-//  (2) an operator-new allocating/constructing creator (tail-jmp to ctor, ret 0).
-// The two blocks have incompatible epilogues (ret 4 vs ret 0), so no single
-// natural C++ function compiles to both; reproduced verbatim via a naked thunk.
+// Real retail function is 28 bytes: the scalar deleting destructor thunk
+// (call dtor; optional operator delete when flag&1; return this; ret 4).
+// A fused operator-new creator block that followed it in the over-captured
+// slice has been dropped.
 struct CLandscapeBackgroundPatch { void* vtbl; };
 extern void __fastcall CLandscapeBackgroundPatch_dtor(CLandscapeBackgroundPatch* self);
-extern void __fastcall CLandscapeBackgroundPatch_ctor(CLandscapeBackgroundPatch* self);
 extern void __cdecl op_delete(void* p);
-extern void* __cdecl op_new(unsigned int n);
 
 __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch*, int, unsigned int)
 {
@@ -25,15 +22,5 @@ __declspec(naked) void* __fastcall CLandscapeBackgroundPatch_vector_deleting_des
         mov  eax, esi
         pop  esi
         ret  4
-        push 0x58
-        call op_new
-        test eax, eax
-        pop  ecx
-        je   L2
-        mov  ecx, eax
-        jmp  CLandscapeBackgroundPatch_ctor
-    L2:
-        xor  eax, eax
-        ret
     }
 }

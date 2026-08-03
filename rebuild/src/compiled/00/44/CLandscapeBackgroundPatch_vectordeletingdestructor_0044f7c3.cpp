@@ -1,9 +1,6 @@
-// CLandscapeBackgroundPatch scalar-deleting-destructor + creator, laid out as one
-// contiguous code region exactly as retail emitted them.
+// CLandscapeBackgroundPatch vector-deleting-destructor (34 bytes retail).
 extern "C" void __fastcall CLBP_realdtor(void* self);
 extern "C" void __cdecl CLBP_opdelete(void* p);
-extern "C" void* __cdecl CLBP_opnew(unsigned int n);
-extern "C" void __fastcall CLBP_ctor(void* self);
 
 __declspec(naked) void* __fastcall vector_deleting_destructor(void* self, int edx_dummy, unsigned char flags)
 {
@@ -21,16 +18,5 @@ __declspec(naked) void* __fastcall vector_deleting_destructor(void* self, int ed
         mov     eax, esi
         pop     esi
         ret     4
-        // ---- creator (contiguous follow-on function) ----
-        push    0C8h
-        call    CLBP_opnew
-        test    eax, eax
-        pop     ecx
-        je      new_failed
-        mov     ecx, eax
-        jmp     CLBP_ctor
-    new_failed:
-        xor     eax, eax
-        ret
     }
 }

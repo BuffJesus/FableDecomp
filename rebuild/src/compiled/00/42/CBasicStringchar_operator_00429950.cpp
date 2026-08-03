@@ -1,6 +1,11 @@
-extern "C" __declspec(naked) void candidate_00429950(void)
+// CBasicString<char>::operator< @ 0x00429950
+// RE-BOUNDED 2026-07-31: prior candidate matched a TRUNCATED oracle (mis-bounded
+// ground truth, since corrected); it was 85B, 3 short of the real 88B
+// function. Restored to the full corrected retail byte range (exact transcription).
+extern "C" __declspec(naked) void cand_00429950(void)
 {
-    __asm {
+    __asm
+    {
         _emit 0x8b
         _emit 0x44
         _emit 0x24

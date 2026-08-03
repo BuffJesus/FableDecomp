@@ -12,6 +12,5 @@ extern "C" __declspec(naked) void candidate_0042dbee(void)
         _emit 0x1c
         _emit 0x20
         _emit 0x00
-        _emit 0xc3
     }
 }

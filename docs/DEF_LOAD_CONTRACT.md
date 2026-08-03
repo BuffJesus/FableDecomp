@@ -123,5 +123,27 @@ all verified by diffing base vs forge output (13593→13594, 14761→14763 for a
   seed-0 CRC trailer); forge round-trips game.bin edits in other subsystems, so believed absent but
   not explicitly ruled out.
 
+## EgoCore cross-reference (2026-07-31, see docs/EGOCORE_ASSESSMENT_20260731.md)
+
+EgoCore (open-source) independently corroborates the crc0 hash (its `CalculateFableCRC32` = seed 0,
+no invert, poly 0xEDB88320), the crc0-keyed class registry (`map<u32, DefClassInfo>`), the header
+layout, and the chunk offset-bias (`nInChunk*2`). Three things it adds that are worth acting on:
+
+- **A/B/C test now has a ground-truth oracle.** EgoCore's production def path does NOT append — it
+  deletes game.bin/names.bin/frontend.bin/script.bin and regenerates them by driving `Fable.exe`
+  headless (`dbugst.ini`: `AllowDataGeneration TRUE; UseCompiledDefs TRUE; BuildRetailStaticMaps TRUE`;
+  one-byte force-patch at IDA VA `0x00C90613+6`). This gives us a byte-exact generator to diff our
+  appended bins against — the cleanest way to settle the "which field the engine matches" open question.
+- **Two byte-exact game.bin parity details we don't document** (verify in retail before relying):
+  (a) the compressed stream is **zlib deflate level 1, fed one byte at a time**, to bit-match Lionhead;
+  (b) game.bin carries a **`dependencyCRC = 0xE86E4CDE`** immediately after the safeBool byte, before
+  randomID; (c) EgoCore emits a per-class **`NULLDEF_<name>`** string + null instance — check whether
+  retail names.bin carries these and whether our append tool must preserve them.
+- **Do NOT adopt two EgoCore choices** (they contradict our byte-proven data): its standalone
+  `CDefStringTable::GetCRC` uses standard CRC-32 + `tolower` (wrong for names.bin — we verified 13,593/
+  13,593 as crc0, case-sensitive; filed as EgoCore issue #4), and its standalone writer emits
+  `classIndex = 0` for every entry (contradicts our dense per-class `indexInDefinition`). Keep crc0 +
+  the dense counter in FableForge.
+
 *Source artifacts: `work/def_load_re/` (bundles, `manifest.json`, `contract_md.txt`,
 `fix_recipe_md.txt`); full workflow result in the task output journal.*

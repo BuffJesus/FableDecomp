@@ -1,5 +1,7 @@
 #include <cstddef>
 #include <cstdlib>
+#include <new>
+#include <utility>
 #include <vector>
 
 class CCharString;
@@ -15,121 +17,117 @@ struct CFilter_Bind3;
 
 namespace
 {
-struct MsgOnBoastsMade_ManagerOwnerOverlay
+struct CGameScriptInterface_MsgOnBoastsMade_ContextOverlay
 {
-    std::byte pad[0x60];
-    CMessageEventManager* messageEventManager;
+    std::byte pad_00[0x60];
+    CMessageEventManager* messageEventManager; // +0x60
 };
-static_assert(offsetof(MsgOnBoastsMade_ManagerOwnerOverlay, messageEventManager) == 0x60);
+static_assert(offsetof(CGameScriptInterface_MsgOnBoastsMade_ContextOverlay, messageEventManager) == 0x60);
 
-struct MsgOnBoastsMade_ScriptInterfaceOverlay
+struct CGameScriptInterface_MsgOnBoastsMade_SelfOverlay
 {
-    std::byte pad[0x04];
-    MsgOnBoastsMade_ManagerOwnerOverlay* owner;
+    std::byte pad_00[0x04];
+    CGameScriptInterface_MsgOnBoastsMade_ContextOverlay* context; // +0x04
 };
-static_assert(offsetof(MsgOnBoastsMade_ScriptInterfaceOverlay, owner) == 0x04);
+static_assert(offsetof(CGameScriptInterface_MsgOnBoastsMade_SelfOverlay, context) == 0x04);
 
-struct MsgOnBoastsMade_EventPayloadOverlay
+struct CGameScriptInterface_MsgOnBoastsMade_ExtraDataOverlay
 {
-    long boastId;
-    std::byte pad[0x08];
-    CCharString boastText;
+    long boastId;          // +0x00
+    std::byte pad_04[0x08];
+    CCharString boastText; // +0x0C
 };
-static_assert(offsetof(MsgOnBoastsMade_EventPayloadOverlay, boastText) == 0x0C);
+static_assert(offsetof(CGameScriptInterface_MsgOnBoastsMade_ExtraDataOverlay, boastText) == 0x0C);
 
-struct MsgOnBoastsMade_MessageEventOverlay
+struct CGameScriptInterface_MsgOnBoastsMade_MessageEventOverlay
 {
-    std::byte pad[0x3C];
-    MsgOnBoastsMade_EventPayloadOverlay* payload;
+    std::byte pad_00[0x3C];
+    CGameScriptInterface_MsgOnBoastsMade_ExtraDataOverlay* extraData; // +0x3C
 };
-static_assert(offsetof(MsgOnBoastsMade_MessageEventOverlay, payload) == 0x3C);
+static_assert(offsetof(CGameScriptInterface_MsgOnBoastsMade_MessageEventOverlay, extraData) == 0x3C);
 
-struct MsgOnBoastsMade_ResultNode
+struct CGameScriptInterface_MsgOnBoastsMade_ListNodeOverlay
 {
-    MsgOnBoastsMade_ResultNode* next;
-    MsgOnBoastsMade_ResultNode* prev;
-    MsgOnBoastsMade_MessageEventOverlay* messageEvent;
+    CGameScriptInterface_MsgOnBoastsMade_ListNodeOverlay* next; // +0x00
+    CGameScriptInterface_MsgOnBoastsMade_ListNodeOverlay* prev; // +0x04
+    CGameScriptInterface_MsgOnBoastsMade_MessageEventOverlay* messageEvent; // +0x08
 };
-static_assert(sizeof(MsgOnBoastsMade_ResultNode) == 0x0C);
-static_assert(offsetof(MsgOnBoastsMade_ResultNode, messageEvent) == 0x08);
+static_assert(offsetof(CGameScriptInterface_MsgOnBoastsMade_ListNodeOverlay, messageEvent) == 0x08);
+static_assert(sizeof(CGameScriptInterface_MsgOnBoastsMade_ListNodeOverlay) == 0x0C);
 
-struct MsgOnBoastsMade_TypeAndExtraDataFilterStorage
+struct CGameScriptInterface_MsgOnBoastsMade_TypeAndExtraDataFilterStorage
 {
-    int messageType;
-    MsgOnBoastsMade_ResultNode* resultList;
+    long messageType;                                                 // +0x00
+    CGameScriptInterface_MsgOnBoastsMade_ListNodeOverlay* resultList; // +0x04
 };
-static_assert(sizeof(MsgOnBoastsMade_TypeAndExtraDataFilterStorage) == 0x08);
-static_assert(offsetof(MsgOnBoastsMade_TypeAndExtraDataFilterStorage, resultList) == 0x04);
+static_assert(offsetof(CGameScriptInterface_MsgOnBoastsMade_TypeAndExtraDataFilterStorage, resultList) == 0x04);
+static_assert(sizeof(CGameScriptInterface_MsgOnBoastsMade_TypeAndExtraDataFilterStorage) == 0x08);
 
-struct MsgOnBoastsMade_OccuredBetweenFilterStorage
+struct CGameScriptInterface_MsgOnBoastsMade_OccuredBetweenFilterStorage
 {
-    long minFrame;
-    long maxFrame;
+    long minFrame; // +0x00
+    long maxFrame; // +0x04
 };
-static_assert(sizeof(MsgOnBoastsMade_OccuredBetweenFilterStorage) == 0x08);
-static_assert(offsetof(MsgOnBoastsMade_OccuredBetweenFilterStorage, maxFrame) == 0x04);
+static_assert(offsetof(CGameScriptInterface_MsgOnBoastsMade_OccuredBetweenFilterStorage, maxFrame) == 0x04);
+static_assert(sizeof(CGameScriptInterface_MsgOnBoastsMade_OccuredBetweenFilterStorage) == 0x08);
 
-struct MsgOnBoastsMade_FilterBind3Overlay
+struct CGameScriptInterface_MsgOnBoastsMade_FilterBind3Overlay
 {
-    MsgOnBoastsMade_TypeAndExtraDataFilterStorage* typeAndExtraData;
-    MsgOnBoastsMade_OccuredBetweenFilterStorage* occuredBetween;
+    CGameScriptInterface_MsgOnBoastsMade_TypeAndExtraDataFilterStorage* typeAndExtraData; // +0x00
+    CGameScriptInterface_MsgOnBoastsMade_OccuredBetweenFilterStorage* occuredBetween;      // +0x04
 };
-static_assert(sizeof(MsgOnBoastsMade_FilterBind3Overlay) == 0x08);
-static_assert(offsetof(MsgOnBoastsMade_FilterBind3Overlay, occuredBetween) == 0x04);
+static_assert(offsetof(CGameScriptInterface_MsgOnBoastsMade_FilterBind3Overlay, occuredBetween) == 0x04);
+static_assert(sizeof(CGameScriptInterface_MsgOnBoastsMade_FilterBind3Overlay) == 0x08);
 
-struct MsgOnBoastsMade_AppendedValueOverlay
+using MsgOnBoastsMade_Pair = std::pair<long, CCharString>;
+
+struct CGameScriptInterface_MsgOnBoastsMade_VectorOverlay
 {
-    long boastId;
-    CCharString boastText;
+    MsgOnBoastsMade_Pair* first; // +0x00
+    MsgOnBoastsMade_Pair* last;  // +0x04
+    MsgOnBoastsMade_Pair* end;   // +0x08
 };
-static_assert(offsetof(MsgOnBoastsMade_AppendedValueOverlay, boastText) == 0x04);
-static_assert(sizeof(MsgOnBoastsMade_AppendedValueOverlay) == 0x08);
+static_assert(offsetof(CGameScriptInterface_MsgOnBoastsMade_VectorOverlay, first) == 0x00);
+static_assert(offsetof(CGameScriptInterface_MsgOnBoastsMade_VectorOverlay, last) == 0x04);
+static_assert(offsetof(CGameScriptInterface_MsgOnBoastsMade_VectorOverlay, end) == 0x08);
 
-struct MsgOnBoastsMade_VectorOverlay
+struct CGameScriptInterface_MsgOnBoastsMade_LocalSourceRange
 {
-    MsgOnBoastsMade_AppendedValueOverlay* begin;
-    MsgOnBoastsMade_AppendedValueOverlay* finish;
-    MsgOnBoastsMade_AppendedValueOverlay* endOfStorage;
+    long boastId;          // matches local_20
+    CCharString boastText; // matches local_1c
+    std::byte sentinel;    // matches local_29
 };
-static_assert(offsetof(MsgOnBoastsMade_VectorOverlay, finish) == 0x04);
-static_assert(offsetof(MsgOnBoastsMade_VectorOverlay, endOfStorage) == 0x08);
-}
+static_assert(offsetof(CGameScriptInterface_MsgOnBoastsMade_LocalSourceRange, boastText) == 0x04);
 
-extern MsgOnBoastsMade_AppendedValueOverlay* std__vector_InsertRangeWithCopy(
-    MsgOnBoastsMade_AppendedValueOverlay* insertAt,
+extern MsgOnBoastsMade_Pair* std__vector_InsertRangeWithCopy(
+    MsgOnBoastsMade_Pair* insertAt,
     const void* first,
     const void* last,
-    int constructForward,
-    int copyRange);
-
-extern MsgOnBoastsMade_AppendedValueOverlay* CCharString__CopyConstruct_ReturnsEDX(
-    CCharString* destination,
-    const CCharString* source);
-
-extern void std___Cons_val__allocator_pair_long_CCharString___pair_long_CCharString___const_ref(
-    void* allocatorLike,
-    MsgOnBoastsMade_AppendedValueOverlay* constructedPair,
-    const void* unaff_EDI);
+    int count,
+    int copyConstruct);
+} // namespace
 
 bool CGameScriptInterface::MsgOnBoastsMade(std::vector<std::pair<long, CCharString>>& outBoasts) const
 {
-    const long minFrame = CGameScriptInterface::GetMaxWorldFrameForMessages();
-    const long maxFrame = CGameScriptInterface::GetMaxWorldFrameForMessages();
+    const long minFrame = this->GetMaxWorldFrameForMessages();
+    const long maxFrame = this->GetMaxWorldFrameForMessages();
 
-    const auto* const thisOverlay = reinterpret_cast<const MsgOnBoastsMade_ScriptInterfaceOverlay*>(this);
-    CMessageEventManager* const messageEventManager = thisOverlay->owner->messageEventManager;
+    const auto* const self =
+        reinterpret_cast<const CGameScriptInterface_MsgOnBoastsMade_SelfOverlay*>(this);
+    CMessageEventManager* const messageEventManager = self->context->messageEventManager;
 
-    auto* const sentinel =
-        static_cast<MsgOnBoastsMade_ResultNode*>(std::malloc(sizeof(MsgOnBoastsMade_ResultNode)));
-    sentinel->next = sentinel;
-    sentinel->prev = sentinel;
+    auto* const listHead =
+        static_cast<CGameScriptInterface_MsgOnBoastsMade_ListNodeOverlay*>(
+            std::malloc(sizeof(CGameScriptInterface_MsgOnBoastsMade_ListNodeOverlay)));
+    listHead->next = listHead;
+    listHead->prev = listHead;
 
-    MsgOnBoastsMade_TypeAndExtraDataFilterStorage typeAndExtraData;
-    MsgOnBoastsMade_OccuredBetweenFilterStorage occuredBetween;
-    MsgOnBoastsMade_FilterBind3Overlay filter;
+    CGameScriptInterface_MsgOnBoastsMade_TypeAndExtraDataFilterStorage typeAndExtraData;
+    CGameScriptInterface_MsgOnBoastsMade_OccuredBetweenFilterStorage occuredBetween;
+    CGameScriptInterface_MsgOnBoastsMade_FilterBind3Overlay filter;
 
     typeAndExtraData.messageType = 0x29;
-    typeAndExtraData.resultList = sentinel;
+    typeAndExtraData.resultList = listHead;
     occuredBetween.minFrame = minFrame;
     occuredBetween.maxFrame = maxFrame;
     filter.typeAndExtraData = &typeAndExtraData;
@@ -145,52 +143,48 @@ bool CGameScriptInterface::MsgOnBoastsMade(std::vector<std::pair<long, CCharStri
             CMessageEventFilter_HasExtraData,
             CMessageEventFilter_OccuredBetween>*>(&filter));
 
-    void* unaff_EDI; // incoming EDI-backed value observed by the decompilation
+    auto& outOverlay =
+        reinterpret_cast<CGameScriptInterface_MsgOnBoastsMade_VectorOverlay&>(outBoasts);
 
-    for (auto* node = sentinel->next; node != sentinel; node = node->next)
+    for (auto* node = listHead->next; node != listHead; node = node->next)
     {
-        MsgOnBoastsMade_AppendedValueOverlay appendedValue;
-        MsgOnBoastsMade_AppendedValueOverlay* ppVar6;
+        auto* const extraData = node->messageEvent->extraData;
 
-        appendedValue.boastId = node->messageEvent->payload->boastId;
-        CCharString::CCharString(&appendedValue.boastText, &node->messageEvent->payload->boastText);
+        alignas(CGameScriptInterface_MsgOnBoastsMade_LocalSourceRange)
+            std::byte localSourceStorage[sizeof(CGameScriptInterface_MsgOnBoastsMade_LocalSourceRange)];
+        auto* const localSource =
+            reinterpret_cast<CGameScriptInterface_MsgOnBoastsMade_LocalSourceRange*>(localSourceStorage);
 
-        auto& outOverlay = reinterpret_cast<MsgOnBoastsMade_VectorOverlay&>(outBoasts);
-        MsgOnBoastsMade_AppendedValueOverlay* const finish = outOverlay.finish;
+        localSource->boastId = extraData->boastId;
+        ::new (static_cast<void*>(std::addressof(localSource->boastText))) CCharString(extraData->boastText);
 
-        if (finish == outOverlay.endOfStorage)
+        MsgOnBoastsMade_Pair* const finish = outOverlay.last;
+        if (finish == outOverlay.end)
         {
-            ppVar6 = std__vector_InsertRangeWithCopy(
+            std__vector_InsertRangeWithCopy(
                 finish,
-                &appendedValue.boastId,
-                reinterpret_cast<const std::byte*>(&appendedValue.boastId) + 0x08,
+                std::addressof(localSource->boastId),
+                std::addressof(localSource->sentinel),
                 1,
                 1);
         }
         else
         {
-            ppVar6 = reinterpret_cast<MsgOnBoastsMade_AppendedValueOverlay*>(finish);
-
             if (finish != nullptr)
             {
-                finish->boastId = appendedValue.boastId;
-                ppVar6 = CCharString__CopyConstruct_ReturnsEDX(
-                    &finish->boastText,
-                    &appendedValue.boastText);
+                finish->first = localSource->boastId;
+                ::new (static_cast<void*>(std::addressof(finish->second))) CCharString(localSource->boastText);
             }
 
-            outOverlay.finish = reinterpret_cast<MsgOnBoastsMade_AppendedValueOverlay*>(
-                reinterpret_cast<std::byte*>(outOverlay.finish) + 0x08);
+            outOverlay.last = reinterpret_cast<MsgOnBoastsMade_Pair*>(
+                reinterpret_cast<std::byte*>(outOverlay.last) + 0x08);
         }
 
-        std___Cons_val__allocator_pair_long_CCharString___pair_long_CCharString___const_ref(
-            &appendedValue.boastText,
-            ppVar6,
-            unaff_EDI);
+        localSource->boastText.~CCharString();
     }
 
-    auto* node = sentinel->next;
-    if (node != sentinel)
+    auto* node = listHead->next;
+    if (node != listHead)
     {
         int count = 0;
         auto* scan = node;
@@ -198,33 +192,33 @@ bool CGameScriptInterface::MsgOnBoastsMade(std::vector<std::pair<long, CCharStri
         {
             scan = scan->next;
             ++count;
-        } while (scan != sentinel);
+        } while (scan != listHead);
 
         if (count != 0)
         {
-            while (node != sentinel)
+            while (node != listHead)
             {
                 auto* const next = node->next;
                 std::free(node);
                 node = next;
             }
 
-            sentinel->next = sentinel;
-            sentinel->prev = sentinel;
-            std::free(sentinel);
+            listHead->next = listHead;
+            listHead->prev = listHead;
+            std::free(listHead);
             return true;
         }
     }
 
-    while (node != sentinel)
+    while (node != listHead)
     {
         auto* const next = node->next;
         std::free(node);
         node = next;
     }
 
-    sentinel->next = sentinel;
-    sentinel->prev = sentinel;
-    std::free(sentinel);
+    listHead->next = listHead;
+    listHead->prev = listHead;
+    std::free(listHead);
     return false;
 }

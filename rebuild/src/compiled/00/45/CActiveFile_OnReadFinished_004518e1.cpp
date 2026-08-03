@@ -15,17 +15,5 @@ extern "C" __declspec(naked) void __fastcall CActiveFile_OnReadFinished(void* se
     done:
         pop esi
         ret
-        mov eax, ecx
-        xor ecx, ecx
-        mov dword ptr [eax], ecx
-        mov dword ptr [eax+4], ecx
-        mov dword ptr [eax+8], ecx
-        ret 4
-        mov eax, ecx
-        xor ecx, ecx
-        mov dword ptr [eax], ecx
-        mov dword ptr [eax+4], ecx
-        mov dword ptr [eax+8], ecx
-        ret 4
     }
 }

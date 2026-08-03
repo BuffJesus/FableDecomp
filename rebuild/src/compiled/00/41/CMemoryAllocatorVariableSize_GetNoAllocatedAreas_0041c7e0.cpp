@@ -1,3 +1,7 @@
+// CMemoryAllocatorVariableSize::GetNoAllocatedAreas @ 0x0041C7E0
+// RE-BOUNDED 2026-07-31: prior candidate matched a TRUNCATED oracle (mis-bounded
+// ground truth, since corrected); it was 23B, 3 short of the real 26B
+// function. Restored to the full corrected retail byte range (exact transcription).
 extern "C" __declspec(naked) void cand_0041c7e0(void)
 {
     __asm

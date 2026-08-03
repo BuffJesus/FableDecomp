@@ -1,15 +1,15 @@
 # Candidate signature audit
 
-Generated: `2026-07-29T22:12:07-06:00`
+Generated: `2026-07-31T21:52:45-06:00`
 
-Clean: **541 / 840**. Review required: **299**.
+Clean: **541 / 850**. Review required: **309**.
 
 | Issue | Candidates |
 |---|---:|
-| `explicit-parameter-count-mismatch` | 267 |
-| `return-shape-mismatch` | 88 |
-| `method-name-mismatch` | 40 |
-| `duplicate-linkage-signature` | 40 |
+| `explicit-parameter-count-mismatch` | 277 |
+| `return-shape-mismatch` | 90 |
+| `duplicate-linkage-signature` | 42 |
+| `method-name-mismatch` | 41 |
 | `definition-not-parsed` | 13 |
 | `owner-mismatch` | 8 |
 
@@ -195,7 +195,7 @@ Clean: **541 / 840**. Review required: **299**.
 | `00440d70` | `_global` | `Vector_EraseRange` | `Vector_EraseRange` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `00440e00` | `_global` | `Vector_CopyElements` | `Vector_CopyElements` | explicit-parameter-count-mismatch |
 | `00441020` | `_global` | `vector_insert_with_fill` | `vector_insert_with_fill` | explicit-parameter-count-mismatch |
-| `004413c0` | `_global` | `Vector_Reallocate` | `Vector_Reallocate` | explicit-parameter-count-mismatch |
+| `004413c0` | `_global` | `Vector_Reallocate` | `Vector_Reallocate` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
 | `004416e0` | `_global` | `VectorReallocateDouble` | `VectorReallocateDouble` | explicit-parameter-count-mismatch |
 | `00441800` | `_global` | `Catch@0047e8cc` | `Catch_0047e8cc` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
 | `00441870` | `_global` | `List_DestroyElements` | `List_DestroyElements` | explicit-parameter-count-mismatch |
@@ -230,6 +230,16 @@ Clean: **541 / 840**. Review required: **299**.
 | `00447390` | `_global` | `Catch@0040d959` | `Catch_0040d959` | method-name-mismatch;explicit-parameter-count-mismatch |
 | `00448520` | `_global` | `Vector_DestroyRange` | `Vector_DestroyRange` | explicit-parameter-count-mismatch |
 | `00448ab0` | `_global` | `Heap_SiftDown_ContainmentVolume` | `Heap_SiftDown_ContainmentVolume` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00448be0` | `_global` | `Heap_MakeHeap_NavConnector` | `Heap_MakeHeap_NavConnector` | explicit-parameter-count-mismatch |
+| `00448e90` | `_global` | `Vector_InsertWithMove` | `Vector_InsertWithMove` | explicit-parameter-count-mismatch |
+| `00449050` | `_global` | `Vector_ReallocateAndFill` | `UninitCopyActiveEntityScriptPair` | method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00449130` | `_global` | `Vector_Reallocate` | `Vector_Reallocate` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00449220` | `_global` | `Heap_BuildFromElements` | `Heap_BuildFromElements` | explicit-parameter-count-mismatch |
+| `00449270` | `_global` | `Heap_OrderAndSort` | `Heap_OrderAndSort` | explicit-parameter-count-mismatch |
+| `00449320` | `_global` | `CList_PushBack` | `CList_PushBack` | explicit-parameter-count-mismatch |
+| `00449440` | `_global` | `Vector_InsertElement` | `Vector_InsertElement` | explicit-parameter-count-mismatch |
+| `004494d0` | `_global` | `Heap_SiftDown` | `Heap_SiftDown` | explicit-parameter-count-mismatch |
+| `004495d0` | `_global` | `SoundPair_MakeHeap` | `SoundPair_MakeHeap` | explicit-parameter-count-mismatch |
 | `004aa9e0` | `CScriptThing` | `CScriptThing::GetCurrentMapName` | `GetCurrentMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aaa10` | `CScriptThing` | `CScriptThing::GetHomeMapName` | `GetHomeMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004abe60` | `CScriptThing` | `CScriptThing::MsgWhoKilledMe` | `` | definition-not-parsed |
@@ -264,6 +274,7 @@ Clean: **541 / 840**. Review required: **299**.
 | `0089fc80` | `CGameScriptInterface` | `CGameScriptInterface::CreateExplosion` | `CreateExplosion` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `0089fd20` | `CGameScriptInterface` | `CGameScriptInterface::CreatePhysicalBarrier` | `CreatePhysicalBarrier` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `0089fda0` | `CGameScriptInterface` | `CGameScriptInterface::CreateRumble` | `CreateRumble` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `008a9100` | `CGameScriptInterface` | `CGameScriptInterface::CreateCreature` | `CreateCreature` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `008ae890` | `CGameScriptInterface` | `CGameScriptInterface::_AddGossipVillages_impl` | `_AddGossipVillages_impl` | explicit-parameter-count-mismatch |
 | `008aeac0` | `CGameScriptInterface` | `CGameScriptInterface::_AddGossipFactions_impl` | `_AddGossipFactions_impl` | explicit-parameter-count-mismatch |
 | `008d1890` | `CGameScriptThing` | `CGameScriptThing::MsgWhoHitMe` | `MsgWhoHitMe` | explicit-parameter-count-mismatch;return-shape-mismatch |
@@ -297,7 +308,6 @@ Clean: **541 / 840**. Review required: **299**.
 | `00c62a30` | `_global` | `StreamBuffer_AdvancePosition` | `StreamBuffer_AdvancePosition` | explicit-parameter-count-mismatch |
 | `00c88e60` | `_global` | `Audio_ProcessFilter4Channel` | `Audio_ProcessFilter4Channel` | explicit-parameter-count-mismatch |
 | `00c8bae0` | `_global` | `Script_GetEntryPointer` | `Script_GetEntryPointer` | explicit-parameter-count-mismatch |
-| `00c8c730` | `_global` | `Batch_InvokeWithStackArgs_c8c730` | `Batch_InvokeWithStackArgs_c8c730` | explicit-parameter-count-mismatch |
 | `00c92f10` | `_global` | `DSP_ComputeRunningMinEnvelope` | `DSP_ComputeRunningMinEnvelope` | explicit-parameter-count-mismatch |
 | `00c93080` | `_global` | `FFT_ComputeWaveformEnvelope` | `FFT_ComputeWaveformEnvelope` | explicit-parameter-count-mismatch |
 | `00c93b30` | `_global` | `Audio_ApplyGainTableToBuffer` | `Audio_ApplyGainTableToBuffer` | explicit-parameter-count-mismatch |

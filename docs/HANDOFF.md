@@ -6889,5 +6889,389 @@ The full VC7.1 build passes. The complete subscreen smoke now uses Enter for
 press-start, main-menu Options entry, and all four Options destinations; its
 retail result reports `keys=enter-up-wrap-down`. The BuffJesus variant reports
 the same input proof, and maximized scaling remains green. This does not claim
-the retail controller polling/update path or the unimplemented Continue,
-profile, LIVE-aware, credits, and About actions.
+the retail controller polling/update path or the unimplemented Continue and
+LIVE-aware actions. Profile, Credits, and About routing have newer verified
+addenda below.
+
+## Remaining main-menu routes recovered + About screen wired (2026-07-30)
+
+The four previously-deferred main-menu routes are now fully recovered from
+`CFrontEndManager::Action @ 0x0059A238` (raw decomp in
+`work/frontend_re/CFrontEndManager_Action_0059A238.txt`) and documented in
+`docs/FRONTEND_FORMAT.md`:
+
+- **Change Profile (16)** -> `GotoProfileMenu @ 0x00597b20` (profile subsystem).
+- **Games for Windows - LIVE (10)** has **no `Action()` case** -> the switch
+  falls to the default `return`, so the row is a retail no-op with no forward
+  sound. The visual checkpoint now consumes it as an explicit no-op.
+- **Credits (67)** -> used key `0x09` -> `GotoNextScreen` (screen binding
+  inferred as `UI_FRONTEND_CREDITS_MENU`; Init2 confirmation pending).
+- **About (321)** -> used key `0x1c` -> `GotoNextScreen` (screen
+  `UI_FRONTEND_ABOUT_MENU`). Action->key is proven from the decomp; the
+  key->screen Init2 binding is inferred from the sole ABOUT screen def.
+
+The **About screen (`UI_FRONTEND_ABOUT_MENU`, #449)** is decoded and wired:
+
+- **Data oracle**: `validate_compiled_about_layout` (in
+  `tools/render_fable_frontend_subscreens.py`) locks the decoded child order
+  `[ABOUT_MESSAGE, ABOUT_MENU_TITLE, BLENDING_BACKGROUNDS_SPOOKY,
+  TABLE_TITLE_WHOLE_ABOUT, HELPERS]`, the title
+  (`TEXT_GUI_MENU_ABOUT_TITLE`, ENG_ARIAL_24, serialized `(65,14)`) and
+  message (`TEXT_GUI_MENU_ABOUT_MESSAGE`, ENG_ARIAL_12, `(320,60)`, text
+  window BR `(700,5000)`), the 640-wide title rule (comp 122), and the SPOOKY
+  swap children (`UI_SWAPPING_SPOOKY_SUNBEAM`/`UI_SWAPPING_SPOOKY`). Gated by
+  `test_about_screen_matches_shipped_frontend_bin`; passes against retail
+  `frontend.bin`.
+- **Runtime state machine**: `g_VisualAboutMenuActive`
+  (`visual_boot_checkpoint.cpp`) + `g_AboutMenuActive` /
+  `FableSetVisualFrontendAboutMenu` (`visual_boot_d3d9.cpp`). Enter/mouse on
+  the About row routes action 321 into the screen; Esc/Back (action 86) and a
+  UI_HELPERS Back-button click both return to the main menu. Mutual-exclusion,
+  press-start guards, and the reset path all include About.
+
+Proven here: the recovered dispatch mappings, the decoded About structure, and
+the route/back state machine (built green under VC7.1).
+
+### About baked panel — visual content recovered (2026-07-30, cont.)
+
+`build_about_frame` (`tools/render_fable_frontend_subscreens.py`) composes the
+640x480 About overlay panel through the exact Options helper pipeline
+(`_build_table_horizontal` title rule, `_draw_text`, `_draw_helper`):
+
+- Title rule (shared `UI_TEXTBOX_MIDDLE_FE_SPRITE`) at `(0,5)` + centred title
+  **"About Fable"** — the real string resolved from retail `text.big`
+  (`TEXT_GUI_MENU_ABOUT_TITLE`); `TEXT_GUI_MENU_OPTIONS`="Options" confirms the
+  renderer's literal-string convention is text-bank-faithful.
+- The legal-notice **message body** is the real text from the two `text.big`
+  groups `TEXT_GUI_MENU_ABOUT_MESSAGE_PART_1` (© Lionhead / Microsoft / DirectX,
+  3 member lines) and `_PART_2` (copyright warning), greedy-wrapped in the
+  700px window at `(320,60)`.
+- Single `UI_HELPERS` Back button.
+
+New CLI `--about-output`; structural oracle
+`test_about_frame_composes_title_message_and_back` (title/message/Back regions
+non-empty + deterministic) passes; 20/20 renderer tests green. Rendered proof
+reads as a genuine Fable About screen. NOTE: content is parity-faithful; the
+retail line-break/scroll positions are not yet reverse-engineered (the message
+scrolls, `TextWindowBRY=5000`), and the `©` glyph is absent from the
+`ENG_ARIAL_12` atlas.
+
+### About panel wired LIVE in D3D9 (2026-07-30, cont.)
+
+The baked panel is now drawn in-game. It is embedded as **resource 120**
+(`kBootAboutResource`), loaded into `g_AboutTexture`, and blitted by the
+`g_AboutMenuActive` overlay branch (`overlayFrameCount=1`). End-to-end wiring:
+
+- `build_bootstrap.ps1`: `$visualBootRetailAbout`/`$visualBootAboutBitmap`,
+  `--about-output` on the renderer call, an About entry in the RetailSubscreens
+  `$animationSheets` (640x480), and `.rc` line `120 BITMAP` (116-119 are WAVE,
+  so 120 is the first free id).
+- `visual_boot_checkpoint.cpp`: `kBootAboutResource=120`, `g_BootAboutArtwork`
+  + info, `LoadImageA`/`GetObjectA`, 5 about params appended to the single
+  `FableInitialiseVisualD3D9` call.
+- `fable_visual_d3d9.h` / `visual_boot_d3d9.cpp`: 5 `about*` params appended at
+  the END of the init signature (existing positional args unaffected);
+  `g_AboutTexture` global + `UploadArtwork` + overlay select + shutdown release
+  + Render2D attach-chain branch.
+
+Verified: full VC7.1 Release build green (`BOOTSTRAP_BUILD PASS`,
+`VISUAL_BOOT_CHECKPOINT PASS`, `FABLETLC_VISUAL_BOOT_BEHAVIOR PASS`); the
+`-VerifySubscreens` smoke now enters About (row 5 -> action 321), asserts the
+frame differs from main-menu/options/quit, saves `frontend-about-smoke.png`,
+and Back returns to the menu (`about=49A791F0021F`). The screenshot shows the
+"About Fable" title rule, the full legal-notice message, and the Back button
+composited over the frontend background. (This is a live render matching the
+authored bake; retail-pixel parity is NOT claimed — see the deferred
+message line-break note below and the `bake_selfcheck` self-consistency metric.)
+
+### SPOOKY animated background wired LIVE (2026-07-30, cont.)
+
+The About screen now renders its own SPOOKY graveyard background (misty
+cemetery, stone angel, iron fences, moonlit fog) instead of the forest
+placeholder. `render_fable_frontend_animation.py --theme spooky` already
+supported the theme; it stitches `UI_FRONTEND_BG_SPOOKY_N_M` into a 640x1920
+4-frame sheet + `UI_FRONTEND_BG_SPOOKY_SUNBEAM_N_M` into a 640x1440 3-frame
+sheet. Wiring mirrors coastal exactly:
+
+- `build_bootstrap.ps1`: spooky sheet/BMP vars, a `--theme spooky` animation
+  invocation gated by `$spookyAnimationReady`, two `$animationSheets` BMP
+  entries, and `.rc` lines `121 BITMAP`/`122 BITMAP`.
+- `visual_boot_checkpoint.cpp`: `kBootSpookyResource=121`/`122`,
+  `g_BootSpooky*Artwork` + info, LoadImage/GetObject pair guard, and 10 spooky
+  args appended to the init call (after the about group).
+- `fable_visual_d3d9.h` / `visual_boot_d3d9.cpp`: 10 `spooky*` params appended
+  after `about*`; `g_SpookyTexture`/`g_SpookySunbeamTexture` globals; two
+  UploadArtwork calls (`preserveAlpha=true, unpremultiply=false` like coastal);
+  a spooky dimension-validation guard; `spookyBackground = g_AboutMenuActive`
+  selecting spooky BG+sunbeam through the existing 4/3-frame swap-blend path;
+  shutdown releases; **and the Render2D attach-chain entries** (see gotcha).
+
+Verified: full VC7.1 Release build green; the `-VerifySubscreens` smoke enters
+About and captures `frontend-about-smoke.png` showing the graveyard behind the
+title/message/Back (`about=F735628A68BA`).
+
+**★ Gotcha (2026-07-30):** every new D3D9 frontend texture must be registered in
+BOTH places — the `FableInitialiseVisualD3D9` upload chain AND the
+`VisualRender2DAdapter` `RENDER2D_ADAPTER_ATTACH_TEXTURE` handler's
+pointer→`selectedTexture` chain (visual_boot_d3d9.cpp ~1024-1101). Miss the
+attach chain and the texture uploads fine, validates, and is selected as
+`backgroundTexture`, but its quads bind no texture and draw as a flat white
+fill. Symptom that pinned it: the About panel drew correctly (its texture WAS
+in the chain) while the spooky background quads rendered pure white
+(255,255,255) — a runtime file-diagnostic confirmed the artwork loaded
+(`S1 SB1 W640 P1`), isolating the fault to the missing attach-chain entry.
+
+**Deferred — message line-breaks.** The message body content is parity-faithful
+(real text.big strings) but its retail line-break/scroll positions are not yet
+reverse-engineered (`TextWindowBRY=5000` implies a scroll), and the `©` glyph is
+absent from the `ENG_ARIAL_12` atlas. Full pixel parity is still not claimed
+(needs a same-state retail capture + alpha-aware diff), consistent with the
+other subscreen checkpoints.
+
+### Saved Games screen parity — centering + save-preview viewport (2026-07-30, cont.)
+
+Advancing frontend P0 item 2 (Saved Games parity) in `render_fable_frontend_subscreens.py`:
+
+- **Save-name centering fix.** The save-slot labels were centred on
+  `SAVE_LIST_ORIGIN[0]+60 = 70` (the ornament's left-sprite end) while the
+  selection highlight — `_build_table_horizontal(width=120)` →
+  `L(64)+120-inner+R(64)=248px` composited at `SAVE_LIST_ORIGIN[0]=10` — centres
+  on x=134. That 64px gap read as left-aligned text with an off-centre
+  highlight. Now centred on the highlight centre (`origin + selected.width/2`),
+  matching main-menu/Options rows. Measured 70 → 134; confirmed in the live
+  `frontend-saved-games-smoke.png`.
+- **Save-preview viewport.** The empty right side now renders the retail
+  `UI_VIEW_RING_SMALL` child (serialized (314,37)): a 256x256 region minimap
+  (`MINIMAP_*_FRONT_END`) behind the ring ornament
+  (`UI_VIEW_RING_SMALL_SPRITE_FE`). The save-region field that selects the
+  minimap is not decoded yet, so the checkpoint shows the starting region
+  (Oakvale) as a deterministic asset-backed placeholder.
+
+- **Save-list selection highlight is now a LIVE Render2D component (frontend P0 item 5, second family).** The TS_BUTTON L/M/R highlight under the selected save row is emitted by `FableRenderVisualD3D9` via the same generated-component button path as the Options selected row: a new `g_SaveButtonComponents` built at the recovered 248px save-row total width (`InitialiseButtonComponents(248)` = 64 + 120 inner + 64), positioned by `g_SaveSelection` at (10, 90 + sel*30 - 7), reusing the already-attached `g_ButtonLeft/Middle/Right` TS_BUTTON textures (no new texture, no signature change). Emitted BEFORE the name-bearing save cell overlay so it sits behind the row text. Python omits it from the component sheet (`include_highlight=False`) and the recomposition re-adds it as an under-names layer -> zero-mask PIXEL_IDENTICAL. Commit d8f5387.
+- **NEXT (unlocked, verified): collapse the 4 baked save frames to 1.** With the viewport AND highlight both live, the four save base frames are now pixel-identical (verified 2026-07-30). Collapsing them (build one save base instead of `range(len(SAVE_BROWSER_ROWS))`, drop the atlas frames 9-11, set the C++ save `overlayFrame` to the single base instead of `4 + g_SaveSelection`, adjust `SAVE_SCREEN_FRAME_BASE`/frame count/recomposition loop) removes 3 redundant frames and shrinks the 1664x3840 atlas. Structural frame-index change across visual_boot_d3d9.cpp + render_fable_frontend_subscreens.py; start it fresh. Other item-5 families still baked: save row NAMES (-> live text like item 17/19), File Information backdrop (-> reuse the title-segment rule path), Redefine/Gameplay option rows.
+- **Save-preview viewport is now a LIVE Render2D component (frontend P0 item 5, first migration).** The saved-games preview panel (UI_VIEW_RING_SMALL ring + region minimap, design (314,37), 256x256) no longer bakes into the frontend sheet as a static masked tile. `FableRenderVisualD3D9` emits it as a standalone quad drawn AFTER the title rule (retail panel-on-top order), reusing the already uploaded+attached `g_OptionsTexture` -- NO new texture, NO `FableInitialiseVisualD3D9` signature change, so the flat-white dual-chain gotcha cannot occur. Four save-cell background quads skip the 256x256 ring rect; the ring quad fills it once from the selected cell (both gated `g_OptionsWidth==1664`). The Python renderer bakes the oracle with the same punch-hole-then-composite-on-top order, builds the component sheet ring-free, and re-adds the panel as its own final recomposition layer, so the old title-overlap BAND-MASK is DELETED -> the ring body and minimap are a ZERO-MASK PIXEL_IDENTICAL invariant. `FableComputeSaveViewportAtlasRect` (fable_visual_d3d9.h) is the single source of truth for the atlas UV rect; SaveViewportQuads_test.cpp (FABLETLC_SAVE_VIEWPORT_ATLAS_RECT PASS) proves the C++ sample rect == the Python bake for all four selections. Commit 2f3c822; authored via a scout->design->implement->adversarial-review workflow. Next item-5 families: Redefine/Gameplay rows, or the save list itself.
+
+- **Redefine Keys full action list — decoded, name-gap confirmed blocked.**
+  The retail `UI_FRONTEND_LIST_REDEFINE_KEYS_MENU.ActionOrder` decodes to
+  **31 action ids** (`REDEFINE_FULL_ACTION_ORDER`), not the 9 of the visible
+  first page; action 60 fans out to W/A/S/D. Every id's default key binding
+  is sourced from `FABLE_PC_CONTROL_SCHEME_GDD_WASD`. The blocker for
+  rendering the off-page rows is the **EGameAction integer->display-name**
+  table: retail strips those strings and three sourcing passes have now
+  failed (two binary scans + a web pass — StrategyWiki/GameFAQs 403,
+  fabletlcmod wiki has no id->name table). Off-page rows stay unrendered
+  rather than assumption-labelled. Close via controls_def.hpp/inputkey.h
+  headers or a live in-game binding capture, NOT another binary scan.
+
+- **File Information backdrop.** The File Information panel now renders its
+  recovered `UI_TEXT_AREA` (0,254) rule: `UI_TABLE_TEXT_LEFT` (width 287) +
+  `UI_TABLE_TEXT_RIGHT` (463, width 40), both `UI_TEXTBOX_MIDDLE` (#122),
+  composed like the title rule, so the header sits on a framed bar. The
+  header/metadata fields stay a placeholder (runtime `ConstructFileDescription`).
+
+Both are pure baked-atlas layout changes (no C++ — the D3D9 path blits the
+atlas). 22/22 subscreen renderer tests pass (added centering + viewport
+regression guards); builds are pixel-identical across calls.
+
+**Remaining Saved Games gaps (decoded, not yet built):** the File Information
+panel is still approximate — retail `UI_TEXT_AREA` (0,254) frames it with
+`UI_TABLE_TEXT_LEFT` (width 287) / `UI_TABLE_TEXT_RIGHT` (463, width 40) and a
+`UI_TEXT_BOTTOM` at y=404; the `UI_TITLE_AREA` (0,35) title-bar frame
+(left 287 + right 40 with the ring in the gap) and `UI_BOTTOM_BACKDROP` (0,292)
+are also not yet reproduced. Next: correct the File Information text area against
+those records, then the title/bottom frames. Then move to Redefine Keys parity.
+
+**★ Process note (2026-07-30):** the auto-RE batch-land scout (used in an
+earlier detour) overwrote two hand-integrated bootstrap fixtures
+(`CMovie_SetMovie/IsPlaying` 00548510/20) because it only excluded catalog
+addresses, not `build_bootstrap.ps1`-referenced files. Restored + un-landed;
+see memory `autoland-clobbers-bootstrap-fixtures`. The scout must skip
+bootstrap-referenced addresses.
+
+### Saved Games static-frame collapse (2026-08-01)
+
+The four saved-games base frames are now collapsed to one static frame. The
+selection-dependent highlight, row state, and preview viewport remain live
+Render2D components, so duplicating the base once per sample selection was
+unnecessary. `SAVE_BROWSER_FRAME_COUNT` is 1 and the Python oracle now emits
+9 logical frames (8 options/detail frames plus one save base); the embedded
+component atlas remains physically `1664x3840` because its left column carries
+the eight-frame control atlas. `FableRenderVisualD3D9` always samples the
+first save frame, and `FableComputeSaveViewportAtlasRect` asserts the same
+source rect for all four live selections.
+
+Evidence: 27/27 focused subscreen tests, Release `BOOTSTRAP_BUILD`, Stage 3,
+visual checkpoint, and `smoke_visual_checkpoint.ps1 -VerifySubscreens` pass.
+The next saved-games work remains the decoded-but-not-yet-built File
+Information `UI_TEXT_BOTTOM` plus `UI_TITLE_AREA`/`UI_BOTTOM_BACKDROP` frames,
+then Redefine Keys parity.
+
+### Saved Games decoded frame completion (2026-08-01)
+
+The saved base now materializes the exact asymmetric `CTable` records instead
+of substituting a three-middle rule:
+
+- `UI_TITLE_AREA` at `(0,35)` uses `UI_TABLE_TITLE_LEFT` `(287)` and
+  `UI_TABLE_TITLE_RIGHT` `(463,40)`, with the decoded TL/TR corner components;
+- `UI_TEXT_AREA` at `(0,254)` uses the decoded BL/BR corner components and the
+  `UI_TEXT_BOTTOM` horizontal texture at resolved `(0,404)`;
+- `UI_BOTTOM_BACKDROP` resolves graphic 98 (`HUD_TEXTBOX_BACK_FE`) at `(0,292)`
+  with its compiled `160x62` scale.
+
+The component atlas bakes the saved title area, so the D3D9 path no longer
+emits the generic `UI_TABLE_TITLE_WHOLE` live rule while Saved Games is active.
+The static title/detail rule remains live for Options and the three detail
+screens. The compiled parent child order, table sprite maps, graphic indices,
+positions, and scales are now validation gates. 29/29 focused subscreen tests,
+Release bootstrap, and the verified visual smoke pass. The next boundary is
+Redefine Keys parity.
+
+### About screen Back button — hover highlight + hit-region fixed (2026-08-01)
+
+User-reported: the About-screen Back button was "really hard to trigger" and
+"didn't visibly highlight when hovered." Root cause (single underlying divergence):
+About was built with a **baked** Back glyph at design `(20,440)` while Options/Save
+bake **no** Back glyph — theirs comes solely from the live UI_HELPERS helper quad at
+`(20,420)` with an OFF/ON hover swap. So About's visible button sat ~20px below its
+click hit-rect `x[20,270) y[420,450)` (only a ~10px sliver overlapped → "hard to
+trigger"), and About was excluded from every hover path (no highlight).
+
+Fix — unify About with the shared live UI_HELPERS Back (retail-faithful; About shares
+UI_HELPERS #577 / UI_BACK #563 with Options/Save):
+- `visual_boot_checkpoint.cpp` — added `!g_VisualAboutMenuActive` to the
+  `kMessageMouseMove` early-break gate, and a standalone About hover block (shared
+  rect + shared `g_VisualOptionsBackHovered`, no row logic).
+- `visual_boot_d3d9.cpp` — added `g_AboutMenuActive` to the live helper-quad render
+  gate (line ~2514) and widened the `FableSetVisualFrontendOptionsBackHovered` guard
+  (line ~2946) to accept writes during About.
+- `render_fable_frontend_subscreens.py` — removed the baked Back `_draw_helper` from
+  `build_about_frame`; the live quad at `(20,420)` is now the sole glyph, which also
+  re-centers it inside the existing hit-rect (fixes "hard to trigger" with no
+  coordinate change).
+
+Reusing `g_OptionsBackHovered` is safe (About/Options/Save mutually exclusive;
+`FableSetVisualFrontendAboutMenu` already resets it on activation). No new global.
+Approach came from an ultracode investigate→synthesize→adversarial-verify workflow;
+the verify pass caught the synthesizer's initial "keep bake + overlay" plan as a
+double-draw/20px-misalignment and mandated removing the bake.
+
+Verified: `BOOTSTRAP_BUILD PASS`, `VISUAL_BOOT_CHECKPOINT PASS`, all behavior tests
+green; `smoke_visual_checkpoint.ps1 -VerifySubscreens` passes with a NEW About
+hover assertion (`about != about-hover`, e.g. `about=E39EF835CA15
+about-hover=D5495BF0F1EF`) proving the OFF→ON swap, plus unchanged Options/Save/Quit/
+Redefine hover paths. The next boundary remains Redefine Keys parity.
+
+---
+
+## Session 2026-08-01 (late): binary-wide parity crawl + OpenRetailBank runtime module
+
+**Catalog now 5787 entries** (was ~5588). This session landed **+63 byte-exact
+functions** and opened two durable lanes.
+
+### Lane A — OpenRetailBank runtime module (`rebuild/runtime/openretailbank/`)
+User chose "link the runtime module" (run Fable.exe's OWN bank-open code).
+- **Anchor `CBankFileManager::OpenRetailBank` @0x009A8840 verified RELOCATION_MATCH,
+  1565/1565 bytes** (`verify_anchor.py`).
+- **Direct-callee ring closed 27/27**: 17 byte-exact (catalog) + 10 faithful
+  (`faithful/`). Map in `thunk_map.json` / `link_manifest.tsv`.
+- **NEXT = `LINK_WORKLIST.md`** (from `link_smoke.py`): 27 thunk adapters
+  (mechanical jmp-forwarders) + 32 second-layer helper fns + 12 data globals
+  (vtables, L"D:\\", magic, Win32 IAT ptrs) → then link `oab_ring.dll`, diff parse
+  vs `rebuild/integration/fable_bank_reader.h`.
+- Note: `faithful/CharConstruct_0099aed0.cpp` is actually byte-exact (promote it);
+  `faithful/ContainedBankIndex_009ac530.cpp` test LINK_FAILed (re-verify).
+
+### Lane B — binary-wide parity crawl (HIGH YIELD, ~96% win)
+`scratchpad/next_smallest.py <N> <prefix>` → smallest un-landed manifest fns with
+complete prototype + known CC (pool ≈17,000). Feed to workflow
+`decomp-byte-match-batch-wf_702fd395-6d6.js`, land with `verify_and_land.py`,
+append attempted addrs to `scratchpad/gen_tried.txt`. gen_batch1: 23/24, gen_batch2:
+27/28 landed.
+
+gen_batch1: 23/24, gen_batch2: 27/28, gen_batch3: 29/30 all LANDED (catalog 5816).
+**To continue the crawl:**
+```
+python <scratch>/land_gen.py wmwiqclea gen_batch3     # builds land.json + updates gen_tried
+python tools/decomp_pipeline/verify_and_land.py <scratch>/gen_batch3_land.json \
+       <scratch>/gen_batch3_land_oracle.tsv --land
+git add -A && git commit    # then: next_smallest.py 30 gen_batch4; repeat
+```
+(land_gen.py helper is in the session scratchpad; re-create from gen_batch1 pattern
+if gone: filter WIN candidates, trim over-captured oracles at first `cccccccc` run,
+call verify_and_land.)
+
+### Pipeline improvement
+`verify_and_land.py` + `build_candidates.ps1` now sweep `/GS` and `/Oa` flag variants
+(retail QFE-4035 codegen) and record winners as a per-entry `CompilerFlags` catalog
+prop. Base flags tried first (a flag win only upgrades a DIFFER).
+
+---
+
+## Session 2026-08-02 (continued): OpenRetailBank runtime parity
+
+The OpenRetailBank runtime lane now has a strict standalone link and a real-file
+execution gate under `rebuild/runtime/openretailbank/`.
+
+- `verify_anchor.py`: `CBankFileManager::OpenRetailBank @ 0x009A8840` remains
+  **RELOCATION_MATCH**, 1565/1565 bytes with 44 relocations.
+- `link_smoke.py`: 32/32 objects compile and the strict DLL link reports 0 unresolved
+  externals.
+- `runtime_probe.py` opens the installed `fonts.big` (53,822,286 bytes), confirms
+  3/3 contained-bank records and all five stored values per record against
+  `fable_bank_reader.h`.
+- The reconstructed threaded handle reports the exact bank length and reads every
+  oracle entry payload: **26/26 entries, 53,794,802 bytes, byte-for-byte equal**.
+- The previously deferred faithful `CContainedBankMap::operator[]` fixture now passes
+  under VC7.1 (`FABLETLC_CONTAINED_BANK_MAP_INDEX PASS`); its runtime map output also
+  matches all three real-bank records and their five stored values.
+- The `0x0099AED0` `CWideString` ring edge is now promoted in `link_manifest.tsv` to
+  the canonical `rebuild/src/compiled` source (`RELOCATION_MATCH`); the ring split is
+  18 byte-exact / 9 faithful.
+- The `0x009AC530` `CContainedBankMap::operator[]` edge is likewise promoted after
+  its canonical object gate (`156/156`, 5 relocations) and behavior fixture passed;
+  the ring split is now 19 byte-exact / 8 faithful.
+- The `0x009A9C80` counted-threaded-file reset edge is promoted after its canonical
+  object gate (`103/103`, 3 relocations) and ownership fixture passed; the ring split
+  is now 20 byte-exact / 7 faithful.
+
+The anchor source remains untouched and byte-pure. Host adaptations are isolated in
+`ring_thunks.cpp`, `runtime_globals.cpp`, and `runtime_helpers.cpp`; the link-only
+CRT shim is `link_only_main.cpp`. Remaining work is engine-level entry-metadata
+consumption/API coverage, not bank-open or threaded-file payload parity.
+
+---
+
+## Session addendum — 2026-08-02: Credits route parity boundary
+
+The visual checkpoint now carries the recovered Credits action through the
+frontend route. `UI_FRONTEND_CREDITS_MENU` is structurally gated from shipped
+`frontend.bin` (child order, `(0,480)` scroll start, 180-second transition,
+title children, widescreen bars, and the shared Back helper). Graphic 334
+resolves to `UI_TABLE_BACK_SPRITE_FOR_DIALOG_FE`; the initial 640x480 frame
+uses that exact bar and the existing retail title sprites. Credit text remains
+below the initial viewport at y=480, preserving the compiled activation
+boundary rather than inventing an early text position.
+
+Action 67 now enters Credits; Escape/Back and the helper hover return to the
+main menu. Focused renderer coverage is 34/34 tests green, and the complete
+visual smoke records both the route and hover proof. Continuous Credits text
+scrolling and same-state retail pixel diff remain open.
+
+The Change Profile boundary is also now structurally gated from `frontend.bin`:
+the normal/delete Type-43 lists, Type-11 row template, arrow bindings, title
+rule, helper branches, no-profile message, and Type-12 new-profile menu all
+match the shipped graph. The normal route now enumerates the user's profile
+directories, sorts/display-converts their names, and emits them through the
+retail `ENG_ARIAL_16` atlas; the decoded normal-list row step is 28px and is
+shared by rendering and hit-testing. Delete-mode, empty-profile, and new-profile
+editing remain open rather than being filled with guessed behavior.
+
+The renderer now has a byte-preserving extraction oracle for all six
+`TEXT_GUI_CRE_*` type-1 groups: it follows the compiled `TextValue` symbols,
+retains member IDs/order, and preserves explicit single-space rows. No guessed
+line spacing or unverified runtime scroll surface has been promoted.
+
+The normal bootstrap was stopped by the pre-existing `CThreadedFile::Open`
+leaf gate (`retail=310`, `built=307`) before integration compilation. The
+visual objects/resource were compiled and linked against the already-gated
+runtime object set for this smoke; the byte gate itself was not weakened.

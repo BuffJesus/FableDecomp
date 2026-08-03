@@ -2,6 +2,14 @@
 
 #include "rebuild_abi.h"
 
+// UI_FRONTEND_LIST_FOR_PROFILES serializes PositionOffsetY=28.  Keep the
+// runtime hit-test and glyph renderer on the same authored row cadence.
+enum FableFrontendProfileLayout
+{
+    FableFrontendProfileRowStep = 28,
+    FableFrontendProfileListHeight = 260
+};
+
 bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     void* window,
     fable_i32 backBufferWidth,
@@ -70,7 +78,32 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     fable_i32 buttonRightHeight,
     fable_i32 buttonRightPitch,
     fable_u32 buttonRightBitsPerPixel,
-    const void* buttonRightPixels);
+    const void* buttonRightPixels,
+    fable_i32 aboutWidth,
+    fable_i32 aboutHeight,
+    fable_i32 aboutPitch,
+    fable_u32 aboutBitsPerPixel,
+    const void* aboutPixels,
+    fable_i32 creditsWidth,
+    fable_i32 creditsHeight,
+    fable_i32 creditsPitch,
+    fable_u32 creditsBitsPerPixel,
+    const void* creditsPixels,
+    fable_i32 profilesWidth,
+    fable_i32 profilesHeight,
+    fable_i32 profilesPitch,
+    fable_u32 profilesBitsPerPixel,
+    const void* profilesPixels,
+    fable_i32 spookyWidth,
+    fable_i32 spookyHeight,
+    fable_i32 spookyPitch,
+    fable_u32 spookyBitsPerPixel,
+    const void* spookyPixels,
+    fable_i32 spookySunbeamWidth,
+    fable_i32 spookySunbeamHeight,
+    fable_i32 spookySunbeamPitch,
+    fable_u32 spookySunbeamBitsPerPixel,
+    const void* spookySunbeamPixels);
 
 void FABLE_FASTCALL FableSetVisualFrontendMainMenu(bool active);
 void FABLE_FASTCALL FableSetVisualFrontendMainMenuSelection(
@@ -86,6 +119,14 @@ void FABLE_FASTCALL FableSetVisualFrontendOptionsBackHovered(bool hovered);
 void FABLE_FASTCALL FableSetVisualFrontendSaveMenu(bool active);
 void FABLE_FASTCALL FableSetVisualFrontendSaveSelection(
     fable_u32 selection);
+void FABLE_FASTCALL FableSetVisualFrontendAboutMenu(bool active);
+void FABLE_FASTCALL FableSetVisualFrontendCreditsMenu(bool active);
+void FABLE_FASTCALL FableSetVisualFrontendProfilesMenu(
+    bool active,
+    const char* const* names,
+    fable_u32 count);
+void FABLE_FASTCALL FableSetVisualFrontendProfilesSelection(
+    fable_u32 selection);
 void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen);
 void FABLE_FASTCALL FableSetVisualFrontendDetailOptionValue(
     fable_u32 screen,
@@ -94,6 +135,11 @@ void FABLE_FASTCALL FableSetVisualFrontendDetailOptionValue(
 void FABLE_FASTCALL FableSetVisualFrontendRedefineHover(fable_u32 hover);
 void FABLE_FASTCALL FableSetVisualFrontendRedefineResetHover(
     fable_u32 hover);
+void FABLE_FASTCALL FableSetVisualFrontendDetailButtonHover(
+    fable_u32 hover);
+void FABLE_FASTCALL FableSetVisualFrontendDetailArrowHover(
+    fable_u32 row,
+    fable_u32 side);
 void FABLE_FASTCALL FableSetVisualFrontendRedefineSelection(
     fable_u32 selection);
 void FABLE_FASTCALL FableSetVisualFrontendRedefineKey(
@@ -105,6 +151,22 @@ void FABLE_FASTCALL FableSetVisualFrontendQuitHover(fable_u32 hover);
 bool FABLE_FASTCALL FableRenderVisualD3D9(
     fable_i32 clientWidth,
     fable_i32 clientHeight);
+
+// Save-preview viewport (UI_VIEW_RING_SMALL) atlas sample rect.  The saved-games
+// preview panel (region minimap + ring ornament, design (314,37), 256x256) is
+// baked into each save cell of the shared g_OptionsTexture atlas and emitted as
+// a live Render2D quad drawn after the title rule.  This helper is the single
+// source of truth for the atlas UV rect the ring quad samples, so the C++ sample
+// and the Python atlas bake can be verified to coincide.  Returns false on
+// invalid inputs (selection >= 4 or non-positive atlas dimensions).
+bool FABLE_FASTCALL FableComputeSaveViewportAtlasRect(
+    fable_u32 saveSelection,
+    fable_i32 optionsAtlasWidth,
+    fable_i32 optionsAtlasHeight,
+    float* outLeftU,
+    float* outTopV,
+    float* outRightU,
+    float* outBottomV);
 
 bool FABLE_FASTCALL FablePresentVisualD3D9Black();
 

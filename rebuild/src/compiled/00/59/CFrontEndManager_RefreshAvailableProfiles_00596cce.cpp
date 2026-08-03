@@ -1,11 +1,19 @@
 // NUISystem::CFrontEndManager::RefreshAvailableProfiles @ 0x00596CCE
-// VC7.1-compatible behavioral recovery.
 //
-// Retail is an 824-byte inlined construction pipeline containing vector,
-// CCountedPointer<CComponent>, CCountedPointer<CAction>, CActionParamString,
-// and CCharString temporary lifetimes.  This address-isolated source keeps
-// the complete observable profile-list contract while naming those object
-// construction/ownership boundaries explicitly.
+// GRADE: behavior-slice (NOT byte-identical). Status NO_ORACLE (never diffed).
+//   Retail is an 824-byte inlined construction pipeline (vector,
+//   CCountedPointer<CComponent>, CCountedPointer<CAction>, CActionParamString,
+//   CCharString temporary lifetimes). This source keeps the complete OBSERVABLE
+//   profile-list contract but pushes all of that inlined object
+//   construction/ownership behind 11 named `extern` boundaries
+//   (FableRefreshProfiles*), so it CANNOT recompile to the retail .text. It is a
+//   faithful behavioral reconstruction, not exact decomp -- do not count it as
+//   byte-identical.
+//   To reach EXACT/RELOC: capture the retail oracle for 0x00596CCE (Ghidra
+//   DumpFuncBytesAndC), then decompose the 11 construction boundaries inline
+//   (model the real vector/CCountedPointer/CCharString ctors/dtors) so the
+//   inlined bytes are present. Same TU as CFrontEndManager::Action, so the
+//   per-TU flag is /O2 /Oy- (/G7); frame-kept. Large effort; not attempted here.
 
 struct FableRefreshProfilesWideString
 {

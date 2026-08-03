@@ -16,23 +16,5 @@ __declspec(naked) void __fastcall CActiveFile_OnReadFinished(void* self)
     L1:
         pop esi
         ret
-        mov eax, ecx
-        xor ecx, ecx
-        mov dword ptr [eax], ecx
-        mov dword ptr [eax+4], ecx
-        mov dword ptr [eax+8], ecx
-        ret
-        mov eax, ecx
-        xor ecx, ecx
-        mov dword ptr [eax], ecx
-        mov dword ptr [eax+4], ecx
-        mov dword ptr [eax+8], ecx
-        ret
-        mov eax, ecx
-        xor ecx, ecx
-        mov dword ptr [eax], ecx
-        mov dword ptr [eax+4], ecx
-        mov dword ptr [eax+8], ecx
-        ret
     }
 }

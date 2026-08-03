@@ -1,0 +1,432 @@
+==== NUISystem::CFrontEndManager::Action @ 0059a238 len=1486 ==== (GhidraScript)  
+---C---
+
+/* [bsim sim=0.9539250258657788 <- ego_r]
+   public: virtual void __thiscall NUISystem::CFrontEndManager::Action(class CCountedPointer<class
+   NUISystem::CAction> &) */
+
+void __thiscall
+NUISystem::CFrontEndManager::Action
+          (CFrontEndManager *this,CCountedPointer<NUISystem::CAction> *param_1)
+
+{
+  int iVar1;
+  char cVar2;
+  CCodeSectionManager *pCVar3;
+  undefined4 *extraout_EAX;
+  int *piVar4;
+  undefined4 uVar5;
+  long lVar6;
+  undefined4 *extraout_EAX_00;
+  long *plVar7;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_00;
+  pair<EHeroMorphType,CParticleMorphs::CEntry> *extraout_EDX_01;
+  CThing *unaff_EDI;
+  double dVar8;
+  CWideString *pCVar9;
+  undefined4 uVar10;
+  CCharString CVar11;
+  CFrontEndManager *pCVar12;
+  CCharString local_18 [4];
+  CCharString local_14 [4];
+  CWideString *local_10;
+  CCharString local_c [4];
+  CCharString local_8 [4];
+  
+  dVar8 = GFGetTime();
+  *(double *)(this + 0xd0) = dVar8;
+  if (((this[0xd8] == (CFrontEndManager)0x0) && (this[0xd9] == (CFrontEndManager)0x0)) &&
+     (DAT_013ca818 != 0)) {
+    pCVar3 = CTBaseSingleton<CCodeSectionManager>::Get();
+    CFileInstaller::Pause((CFileInstaller *)pCVar3);
+    this[0xd8] = (CFrontEndManager)0x1;
+  }
+  piVar4 = *(int **)param_1;
+  iVar1 = *piVar4;
+  if (iVar1 < 0xdd) {
+    if (iVar1 == 0xdc) {
+      if (*(int **)piVar4[1] != (int *)piVar4[1]) {
+        local_10 = (CWideString *)&DAT_00000010;
+        plVar7 = std::
+                 map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                 ::operator[]((map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                               *)(this + 0x54),(EUsedKeys *)&local_10);
+        iVar1 = *(int *)*plVar7;
+        CCharString::CCharString((CCharString *)&stack0xffffffd8,"UI_INVALID_SAVE_TEXT",-1);
+        piVar4 = (int *)(**(code **)(iVar1 + 0xc))();
+        iVar1 = *(int *)(**(int **)(*(int *)param_1 + 4) + 8);
+        if ((piVar4 != (int *)0x0) && (iVar1 != 0)) {
+          CCharString::CCharString(local_c,"TEXT_GUI_MENU_INVALID_SAVE",-1);
+          NGameText::CDataBank::GetTextBySymbol
+                    (*(CDataBank **)(DAT_013b871c + 0x60),(CCharString *)&param_1);
+          std::
+          _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                    ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)local_c,
+                     extraout_EDX_01,
+                     (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)unaff_EDI);
+          NGameText::ConstructString((CWideString *)&param_1,(CWideString *)(iVar1 + 8));
+          (**(code **)(*piVar4 + 0x240))(&param_1,1);
+          CCharString::~CCharString((CCharString *)&param_1);
+        }
+      }
+      param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_00000010;
+    }
+    else if (iVar1 < 0x12) {
+      if (iVar1 == 0x11) {
+        piVar4 = (int *)piVar4[1];
+        if ((int *)*piVar4 == piVar4) {
+          return;
+        }
+        iVar1 = *(int *)(piVar4[1] + 8);
+        CTCTrophy::OnShowTrophyInitialise((CTCTrophy *)(this + 0x20),unaff_EDI);
+        piVar4 = (int *)*extraout_EAX;
+        *(int **)(this + 0xa8) = piVar4;
+        (**(code **)(*piVar4 + 0xc0))();
+        CWideString::operator=((CWideString *)(this + 0xac),(CWideString *)(iVar1 + 8));
+        return;
+      }
+      if (iVar1 == 9) {
+        param_1 = (CCountedPointer<NUISystem::CAction> *)0x1;
+      }
+      else if (iVar1 == 0xb) {
+        param_1 = (CCountedPointer<NUISystem::CAction> *)0x3;
+      }
+      else if (iVar1 == 0xc) {
+        param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_00000004;
+      }
+      else if (iVar1 == 0xd) {
+        param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_00000005;
+      }
+      else {
+        if (iVar1 != 0xe) {
+          if (iVar1 == 0xf) {
+            if ((this[0xd8] != (CFrontEndManager)0x0) && (DAT_013ca818 != 0)) {
+              pCVar3 = CTBaseSingleton<CCodeSectionManager>::Get();
+              CFileInstaller::Unpause((CFileInstaller *)pCVar3);
+              this[0xd8] = (CFrontEndManager)0x0;
+              this[0xd9] = (CFrontEndManager)0x1;
+            }
+            piVar4 = *(int **)(this + 0x1c);
+            (**(code **)(*piVar4 + 0x10))();
+            *(undefined1 *)((int)piVar4 + 0x29) = 1;
+            return;
+          }
+          if (iVar1 != 0x10) {
+            return;
+          }
+          GotoProfileMenu(this);
+          return;
+        }
+        param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_00000006;
+      }
+    }
+    else if (iVar1 == 0x42) {
+      lVar6 = RefreshAvailableSavedGamesForProfile(this);
+      if ((lVar6 == 0) && (*(int *)(this + 0xbc) == 0)) {
+        this[100] = (CFrontEndManager)0x1;
+        pCVar3 = CTBaseSingleton<CCodeSectionManager>::Get();
+        CUserProfileManager::Save((CUserProfileManager *)pCVar3);
+        CTCTrophy::OnShowTrophyInitialise((CTCTrophy *)(this + 0x20),unaff_EDI);
+        piVar4 = (int *)*extraout_EAX_00;
+        *(int **)(this + 0xa4) = piVar4;
+        (**(code **)(*piVar4 + 0xc0))();
+        return;
+      }
+      param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_00000008;
+    }
+    else if (iVar1 == 0x43) {
+      param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_00000009;
+    }
+    else {
+      if (iVar1 == 0x56) {
+        GotoPreviousScreen(this,false);
+        return;
+      }
+      if (iVar1 == 0xd6) {
+        param_1 = (CCountedPointer<NUISystem::CAction> *)((uint)param_1 & 0xffffff);
+        pCVar3 = CTBaseSingleton<CCodeSectionManager>::Get();
+        if (pCVar3[0xc] == (CCodeSectionManager)0x0) {
+          pCVar3 = CTBaseSingleton<CCodeSectionManager>::Get();
+          iVar1 = *(int *)(pCVar3 + 8);
+          if (iVar1 != *(int *)(this + 0xb0)) {
+            if ((iVar1 == 0) || (*(int *)(this + 0xb0) == 0)) {
+              cVar2 = '\0';
+            }
+            else {
+              cVar2 = Compare_Unsigned16Array(iVar1);
+            }
+            if (cVar2 == '\0') goto LAB_0059a4f1;
+          }
+          param_1 = (CCountedPointer<NUISystem::CAction> *)CONCAT13(1,param_1._0_3_);
+        }
+LAB_0059a4f1:
+        pCVar12 = this + 0xb0;
+        pCVar3 = CTBaseSingleton<CCodeSectionManager>::Get();
+        CUserProfileManager::DeleteProfile((CUserProfileManager *)pCVar3,(CWideString *)pCVar12);
+        lVar6 = RefreshAvailableProfiles(this);
+        if ((param_1._3_1_ == '\0') && (lVar6 != 0)) {
+          param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_00000007;
+          plVar7 = std::
+                   map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                   ::operator[]((map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                                 *)(this + 0x54),(EUsedKeys *)&param_1);
+          GotoSpecificPreviousScreen(this,(CComponent *)*plVar7);
+          return;
+        }
+        param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_00000014;
+        plVar7 = std::
+                 map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                 ::operator[]((map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                               *)(this + 0x54),(EUsedKeys *)&param_1);
+        GotoNextScreen(this,(CComponent *)*plVar7,true);
+        std::
+        _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                  (DAT_013b871c,extraout_EDX_00,
+                   (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)unaff_EDI);
+        if (lVar6 < 1) {
+          return;
+        }
+        uVar5 = *(undefined4 *)(this + 0x98);
+        param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_00000007;
+        plVar7 = std::
+                 map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                 ::operator[]((map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                               *)(this + 0x54),(EUsedKeys *)&param_1);
+        GotoNextScreen(this,(CComponent *)*plVar7,false);
+        *(undefined4 *)(this + 0x98) = uVar5;
+        return;
+      }
+      if (iVar1 == 0xd7) {
+        piVar4 = (int *)piVar4[1];
+        if ((int *)*piVar4 == piVar4) {
+          return;
+        }
+        local_10 = (CWideString *)(*(int *)(piVar4[1] + 8) + 8);
+        CWideString::operator=((CWideString *)(this + 0xb0),local_10);
+        param_1 = (CCountedPointer<NUISystem::CAction> *)0xa;
+        plVar7 = std::
+                 map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                 ::operator[]((map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                               *)(this + 0x54),(EUsedKeys *)&param_1);
+        iVar1 = *(int *)*plVar7;
+        CCharString::CCharString
+                  ((CCharString *)&stack0xffffffd8,"UI_TEXT_DELETE_PROFILE_MENU_TITLE",-1);
+        piVar4 = (int *)(**(code **)(iVar1 + 0xc))();
+        if (piVar4 != (int *)0x0) {
+          CCharString::CCharString(local_8,"TEXT_GUI_MENU_DELETE_PROFILE",-1);
+          NGameText::CDataBank::GetTextBySymbol
+                    (*(CDataBank **)(DAT_013b871c + 0x60),(CCharString *)&param_1);
+          std::
+          _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>
+                    ((allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *)local_8,
+                     extraout_EDX,
+                     (pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *)unaff_EDI);
+          iVar1 = *piVar4;
+          uVar10 = 1;
+          pCVar9 = local_10;
+          CCharString__AssignFromValue(&DAT_0122d820);
+          uVar5 = CCharString__AssignFromData(pCVar9);
+          (**(code **)(iVar1 + 0x240))(uVar5,uVar10);
+          CCharString::~CCharString(local_14);
+          CCharString::~CCharString(local_18);
+          CCharString::~CCharString((CCharString *)&param_1);
+        }
+        param_1 = (CCountedPointer<NUISystem::CAction> *)0xa;
+        plVar7 = std::
+                 map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                 ::operator[]((map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                               *)(this + 0x54),(EUsedKeys *)&param_1);
+        CVar11 = (CCharString)0x0;
+        goto LAB_0059a768;
+      }
+      if (iVar1 != 0xdb) {
+        return;
+      }
+      param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_0000000f;
+    }
+  }
+  else if (iVar1 < 0x128) {
+    if (iVar1 == 0x127) {
+      if (*(CVirtualKeyboard **)(this + 0x60) == (CVirtualKeyboard *)0x0) {
+        return;
+      }
+      CVirtualKeyboard::Cancel(*(CVirtualKeyboard **)(this + 0x60));
+      return;
+    }
+    if (iVar1 == 0xe5) {
+      DoPressStart(this);
+      return;
+    }
+    if (iVar1 == 0xfa) {
+      lVar6 = RefreshAvailableProfilesForDelete(this);
+      if (lVar6 == 0) {
+        param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_0000000c;
+      }
+      else {
+        param_1 = (CCountedPointer<NUISystem::CAction> *)0x15;
+      }
+    }
+    else {
+      if (iVar1 != 0x11b) {
+        if (iVar1 != 0x124) {
+          if (iVar1 == 0x125) {
+            pCVar3 = CTBaseSingleton<CCodeSectionManager>::Get();
+            CUserProfileManager::SetDefaultValuesForNewProfile((CUserProfileManager *)pCVar3);
+            GotoNewProfileScreen(this);
+            return;
+          }
+          if (iVar1 != 0x126) {
+            return;
+          }
+          if (*(CVirtualKeyboard **)(this + 0x60) == (CVirtualKeyboard *)0x0) {
+            return;
+          }
+          CVirtualKeyboard::Confirm(*(CVirtualKeyboard **)(this + 0x60));
+          return;
+        }
+        piVar4 = (int *)piVar4[1];
+        if ((int *)*piVar4 != piVar4) {
+          LoadProfile(this,(CWideString *)(*(int *)(piVar4[1] + 8) + 8));
+        }
+        param_1 = (CCountedPointer<NUISystem::CAction> *)0x0;
+        plVar7 = std::
+                 map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                 ::operator[]((map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                               *)(this + 0x54),(EUsedKeys *)&param_1);
+        CVar11 = (CCharString)0x1;
+        goto LAB_0059a768;
+      }
+      param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_00000016;
+    }
+  }
+  else {
+    if (iVar1 == 0x128) {
+      (**(code **)(*(int *)DAT_013b871c + 0x10))();
+      return;
+    }
+    if (iVar1 == 0x129) {
+      param_1 = (CCountedPointer<NUISystem::CAction> *)0x18;
+    }
+    else if (iVar1 == 0x138) {
+      SetScoreboardOptionsFromProfile(this);
+      param_1 = (CCountedPointer<NUISystem::CAction> *)0x19;
+    }
+    else if (iVar1 == 0x13a) {
+      param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_0000001a;
+    }
+    else if (iVar1 == 0x141) {
+      param_1 = (CCountedPointer<NUISystem::CAction> *)0x1c;
+    }
+    else {
+      if (iVar1 != 0xbd1) {
+        return;
+      }
+      param_1 = (CCountedPointer<NUISystem::CAction> *)&DAT_00000014;
+    }
+  }
+  plVar7 = std::
+           map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+           ::operator[]((map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_>
+                         *)(this + 0x54),(EUsedKeys *)&param_1);
+  CVar11 = (CCharString)0x0;
+LAB_0059a768:
+  GotoNextScreen(this,(CComponent *)*plVar7,(bool)CVar11);
+  return;
+}
+
+ (GhidraScript)  
+---BYTES---
+55 8b ec 83 ec 14 53 56 57 8b f1 e8 78 79 44 00
+dd 9e d0 00 00 00 80 be d8 00 00 00 00 75 28 80
+be d9 00 00 00 00 75 1f 33 db 39 1d 18 a8 3c 01
+74 17 e8 d1 a1 e6 ff 8b c8 e8 6a 8f 42 00 c6 86
+d8 00 00 00 01 eb 02 33 db 8b 45 08 8b 00 8b 08
+ba dc 00 00 00 3b ca 0f 8f 16 04 00 00 0f 84 64
+03 00 00 83 f9 11 0f 8f f0 00 00 00 0f 84 aa 00
+00 00 83 e9 09 0f 84 95 00 00 00 49 49 0f 84 81
+00 00 00 49 74 72 49 74 63 49 74 54 49 74 13 49
+0f 85 31 05 00 00 8b ce e8 4b d8 ff ff e9 25 05
+00 00 80 be d8 00 00 00 00 74 22 39 1d 18 a8 3c
+01 74 1a e8 50 a1 e6 ff 8b c8 e8 59 8f 42 00 c6
+86 d8 00 00 00 00 c6 86 d9 00 00 00 01 8b 76 1c
+8b 06 8b ce ff 50 10 c6 46 29 01 e9 e7 04 00 00
+c7 45 08 06 00 00 00 e9 ae 04 00 00 c7 45 08 05
+00 00 00 e9 a2 04 00 00 c7 45 08 04 00 00 00 e9
+96 04 00 00 c7 45 08 03 00 00 00 e9 8a 04 00 00
+c7 45 08 01 00 00 00 e9 7e 04 00 00 8b 48 04 39
+09 0f 84 a0 04 00 00 8b c1 8b 40 04 8b 78 08 8d
+4e 20 e8 ca 0c 00 00 8b 08 89 8e a8 00 00 00 8b
+01 53 ff 90 c0 00 00 00 83 c7 08 57 8d 8e ac 00
+00 00 e8 41 14 40 00 e9 6b 04 00 00 83 e9 42 0f
+84 15 02 00 00 49 0f 84 02 02 00 00 83 e9 13 0f
+84 ec 01 00 00 81 e9 80 00 00 00 0f 84 f8 00 00
+00 49 74 15 83 e9 04 0f 85 3a 04 00 00 c7 45 08
+0f 00 00 00 e9 01 04 00 00 8b 48 04 39 09 0f 84
+23 04 00 00 8b c1 8b 40 04 8b 40 08 83 c0 08 50
+8d 8e b0 00 00 00 89 45 f4 e8 da 13 40 00 8d 45
+08 8d 4e 54 50 c7 45 08 0a 00 00 00 e8 ce 11 00
+00 8b 38 8b 1f 51 8b cc 6a ff 68 04 2a 25 01 e8
+d4 47 40 00 8b cf ff 53 0c 8b f8 85 ff 74 70 6a
+ff 68 e4 29 25 01 8d 4d fc e8 ba 47 40 00 8d 45
+fc 50 8d 45 08 50 a1 1c 87 3b 01 8b 48 60 e8 95
+f1 42 00 8d 4d fc e8 8d 46 40 00 8b 1f 6a 01 6a
+01 ff 75 f4 8d 55 08 68 20 d8 22 01 8d 4d ec e8
+c4 1a 40 00 8b d0 8d 4d f0 e8 fa 19 40 00 50 8b
+cf ff 93 40 02 00 00 8d 4d f0 e8 89 10 40 00 8d
+4d ec e8 81 10 40 00 8d 4d 08 e8 79 10 40 00 8d
+45 08 50 8d 4e 54 c7 45 08 0a 00 00 00 e8 2d 11
+00 00 6a 00 e9 b7 02 00 00 c6 45 0b 00 e8 e6 2d
+e7 ff 80 78 0c 00 75 31 e8 db 2d e7 ff 8b 8e b0
+00 00 00 83 c0 08 8b 00 3b c1 74 19 3b c3 74 0f
+3b cb 74 0b 51 50 e8 bd 4b e7 ff 59 59 eb 02 32
+c0 84 c0 74 04 c6 45 0b 01 8d 86 b0 00 00 00 50
+e8 a3 2d e7 ff 8b c8 e8 3c cb e6 ff 8b ce e8 c3
+c7 ff ff 80 7d 0b 00 8b f8 75 25 3b fb 74 21 8d
+45 08 50 8d 4e 54 c7 45 08 07 00 00 00 e8 ad 10
+00 00 ff 30 8b ce e8 3a c3 ff ff e9 c7 02 00 00
+8d 45 08 8d 5e 54 50 8b cb c7 45 08 14 00 00 00
+e8 8a 10 00 00 6a 01 ff 30 8b ce e8 0b c2 ff ff
+8b 0d 1c 87 3b 01 e8 8b 36 e9 ff 85 ff 0f 8e 94
+02 00 00 8b be 98 00 00 00 8d 45 08 50 8b cb c7
+45 08 07 00 00 00 e8 54 10 00 00 6a 00 ff 30 8b
+ce e8 d5 c1 ff ff 89 be 98 00 00 00 e9 66 02 00
+00 53 8b ce e8 51 d6 ff ff e9 59 02 00 00 c7 45
+08 09 00 00 00 e9 20 02 00 00 8b ce e8 aa de ff
+ff 85 c0 75 36 39 9e bc 00 00 00 77 2e c6 46 64
+01 e8 d2 2c e7 ff 8b c8 e8 6b 01 e7 ff 8d 4e 20
+e8 5c 0a 00 00 8b 08 89 8e a4 00 00 00 8b 01 53
+ff 90 c0 00 00 00 e9 0c 02 00 00 c7 45 08 08 00
+00 00 e9 d3 01 00 00 8b 40 04 39 00 0f 84 95 00
+00 00 8d 45 f4 50 8d 4e 54 c7 45 f4 10 00 00 00
+e8 ba 0f 00 00 8b 38 8b 1f 51 8b cc 6a ff 68 cc
+29 25 01 e8 c0 45 40 00 8b cf ff 53 0c 8b d8 85
+db 8b 45 08 8b 00 8b 40 04 8b 00 8b 78 08 74 55
+85 ff 74 51 6a ff 68 1c 6a 23 01 8d 4d f8 e8 95
+45 40 00 8d 45 f8 50 8d 45 08 50 a1 1c 87 3b 01
+8b 48 60 e8 70 ef 42 00 8d 4d f8 e8 68 44 40 00
+8d 57 08 8d 4d 08 e8 fd d2 42 00 8b 03 6a 01 6a
+01 8d 4d 08 51 8b cb ff 90 40 02 00 00 8d 4d 08
+e8 73 0e 40 00 33 db c7 45 08 10 00 00 00 e9 27
+01 00 00 ba 27 01 00 00 3b ca 0f 8f e0 00 00 00
+0f 84 ca 00 00 00 81 e9 e5 00 00 00 0f 84 b5 00
+00 00 6a 15 5f 2b cf 74 7c 83 e9 21 74 6b 83 e9
+09 74 39 49 74 1e 49 0f 85 1a 01 00 00 8b 76 60
+3b f3 0f 84 0f 01 00 00 8b ce e8 29 72 2b 00 e9
+03 01 00 00 e8 9f 2b e7 ff 8b c8 e8 68 f4 e6 ff
+8b ce e8 36 b1 ff ff e9 eb 00 00 00 8b 48 04 39
+09 74 13 8b c1 8b 40 04 8b 40 08 83 c0 08 50 8b
+ce e8 6c e2 ff ff 8d 45 08 50 8d 4e 54 89 5d 08
+e8 9a 0e 00 00 6a 01 eb 27 c7 45 08 16 00 00 00
+e9 85 00 00 00 8b ce e8 b2 c8 ff ff 85 c0 8d 45
+08 8d 4e 54 50 74 17 89 7d 08 e8 70 0e 00 00 53
+ff 30 8b ce e8 f2 bf ff ff e9 89 00 00 00 c7 45
+08 0c 00 00 00 eb e3 8b ce e8 d6 f5 ff ff eb 77
+8b 76 60 3b f3 74 70 8b ce e8 ca 70 2b 00 eb 67
+81 e9 28 01 00 00 74 54 49 74 48 83 e9 0f 74 33
+49 49 74 1f 83 e9 07 74 11 81 e9 90 0a 00 00 75
+46 c7 45 08 14 00 00 00 eb 10 c7 45 08 1c 00 00
+00 eb 07 c7 45 08 1a 00 00 00 8d 45 08 50 8d 4e
+54 eb 87 8b ce e8 f9 bb ff ff c7 45 08 19 00 00
+00 eb e7 c7 45 08 18 00 00 00 eb de 8b 0d 1c 87
+3b 01 8b 01 ff 50 10 5f 5e 5b c9 c2 04 00  (GhidraScript)  

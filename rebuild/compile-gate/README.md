@@ -1,13 +1,13 @@
 # Auto-RE candidate compile gate
 
-Generated: `2026-07-29T21:34:49-06:00`
+Generated: `2026-08-02T17:49:13-06:00`
 
 | Gate | Passing | Total |
 |---|---:|---:|
-| Source integrity | 840 | 840 |
-| 32-bit host C++20 syntax | 394 | 840 |
-| No detected VC7.1 language blockers | 67 | 840 |
-| Ready for VC7.1 module compilation | 41 | 840 |
+| Source integrity | 850 | 850 |
+| 32-bit host C++20 syntax | 401 | 850 |
+| No detected VC7.1 language blockers | 69 | 850 |
+| Ready for VC7.1 module compilation | 41 | 850 |
 
 A checker PASS is not a compiler PASS. The host syntax gate supplies only standard-library and calling-convention compatibility; missing engine declarations must be resolved through real module headers.
 
@@ -19,14 +19,14 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 | `class CGameScriptInterface` | 40 |
 | `CCharString` | 30 |
 | `CGameScriptInterface` | 23 |
-| `mov` | 16 |
+| `mov` | 15 |
 | `std` | 13 |
 | `CTCBase` | 13 |
 | `C2DVector` | 13 |
+| `CKeyPairCompareLess` | 12 |
 | `ETCInterfaceType` | 12 |
 | `CMouseDX` | 12 |
 | `self` | 11 |
-| `CKeyPairCompareLess` | 11 |
 | `CMemoryAllocatorFixedSize` | 11 |
 | `CScriptThing` | 10 |
 | `CNavQuadTree` | 10 |
@@ -41,9 +41,9 @@ A checker PASS is not a compiler PASS. The host syntax gate supplies only standa
 | `CGameEvent` | 6 |
 | `next` | 6 |
 | `CTCCoopSpirit` | 6 |
-| `CWorldMap` | 6 |
 | `CQuestManager` | 6 |
 | `CANavQuadTreeNode` | 6 |
 | `CEngineLandscapePatch` | 6 |
+| `CMemoryAllocatorVariableSize` | 5 |
 
 Full per-candidate results are in `candidates.tsv`.

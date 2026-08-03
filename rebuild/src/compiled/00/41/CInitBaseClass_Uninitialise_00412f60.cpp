@@ -1,50 +1,8 @@
+extern "C" void fn_0069a360(void);
+
 extern "C" __declspec(naked) void fn_00412f60(void)
 {
     __asm {
-        _emit 0xe9
-        _emit 0xfb
-        _emit 0x73
-        _emit 0x58
-        _emit 0x00
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0x8b
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0x89
-        _emit 0x41
-        _emit 0x08
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0x8a
-        _emit 0x44
-        _emit 0x24
-        _emit 0x04
-        _emit 0x88
-        _emit 0x81
-        _emit 0x0c
-        _emit 0x02
-        _emit 0x00
-        _emit 0x00
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
+        jmp fn_0069a360
     }
 }

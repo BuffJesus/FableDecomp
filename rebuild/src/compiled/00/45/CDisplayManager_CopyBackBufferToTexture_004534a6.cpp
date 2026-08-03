@@ -1,7 +1,6 @@
 struct CTexture;
 struct CDisplayManager;
 extern "C" void __fastcall DM_Grab(void);
-extern "C" void __fastcall DM_Tail(void);
 __declspec(naked) CTexture* __fastcall CDisplayManager_CopyBackBufferToTexture(CDisplayManager* self)
 {
     __asm {
@@ -19,6 +18,5 @@ __declspec(naked) CTexture* __fastcall CDisplayManager_CopyBackBufferToTexture(C
         pop esi
         leave
         ret
-        jmp DM_Tail
     }
 }

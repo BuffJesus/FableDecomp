@@ -1093,7 +1093,8 @@ try {
                         [int]$RowY,
                         [string]$PreviousHash,
                         [string]$ScreenshotName = '',
-                        [bool]$UseCancel = $false
+                        [bool]$UseCancel = $false,
+                        [int]$FirstArrowY = 95
                     )
                     Send-DesignMouse 0x0200 320 $RowY
                     Start-Sleep -Milliseconds 80
@@ -1177,6 +1178,81 @@ try {
                             )
                         }
                         $detailHash = $redefineResetHoverHash
+                    }
+                    else {
+                        # Detail-screen (Gameplay/Video/Audio) hover proofs.
+                        # The footer buttons (Cancel/Defaults/Apply) and the
+                        # per-row value arrows must now swap their baked OFF art
+                        # for the ON/HOVERED overlay while the cursor is over
+                        # them, exactly like the Options/About Back helper.
+                        # Move onto Cancel (design 120,450), assert the frame
+                        # changed, then onto Defaults (320,405), Apply
+                        # (490,450), and finally a left value arrow
+                        # (design x 320 in [300,340), the first row band), each
+                        # producing a distinct frame hash from the last.
+                        Send-DesignMouse 0x0200 120 450
+                        Start-Sleep -Milliseconds 150
+                        $detailCancelHoverHash = Get-WindowFrameHash
+                        if ($detailCancelHoverHash -eq $detailHash) {
+                            throw (
+                                "The $Name Cancel footer button did not " +
+                                'enter its recovered ON hover state.'
+                            )
+                        }
+                        Send-DesignMouse 0x0200 320 405
+                        Start-Sleep -Milliseconds 150
+                        $detailDefaultsHoverHash = Get-WindowFrameHash
+                        if ($detailDefaultsHoverHash -eq $detailCancelHoverHash) {
+                            throw (
+                                "The $Name Defaults footer button did not " +
+                                'enter its recovered ON hover state.'
+                            )
+                        }
+                        Send-DesignMouse 0x0200 490 450
+                        Start-Sleep -Milliseconds 150
+                        $detailApplyHoverHash = Get-WindowFrameHash
+                        if ($detailApplyHoverHash -eq $detailDefaultsHoverHash) {
+                            throw (
+                                "The $Name Apply footer button did not " +
+                                'enter its recovered ON hover state.'
+                            )
+                        }
+                        # A value arrow: hover the first row's left arrow
+                        # (design x 320 in [300,340), y $RowY-ish in the first
+                        # row band), then move off it and assert both
+                        # transitions change the frame hash.
+                        Send-DesignMouse 0x0200 320 $FirstArrowY
+                        Start-Sleep -Milliseconds 150
+                        $detailArrowHoverHash = Get-WindowFrameHash
+                        if ($detailArrowHoverHash -eq $detailApplyHoverHash) {
+                            throw (
+                                "The $Name row value arrow did not enter " +
+                                'its recovered HOVERED overlay state.'
+                            )
+                        }
+                        # Move the cursor into dead space; the arrow overlay
+                        # must clear (frame changes back away from the hovered
+                        # frame), proving the hover is not sticky.
+                        Send-DesignMouse 0x0200 320 205
+                        Start-Sleep -Milliseconds 150
+                        $detailArrowClearHash = Get-WindowFrameHash
+                        if ($detailArrowClearHash -eq $detailArrowHoverHash) {
+                            throw (
+                                "The $Name row value arrow hover did not " +
+                                'clear when the cursor left it.'
+                            )
+                        }
+                        $script:detailHoverProof = (
+                            " detail-cancel-hover=" +
+                            "$($detailCancelHoverHash.Substring(0, 12))" +
+                            " detail-defaults-hover=" +
+                            "$($detailDefaultsHoverHash.Substring(0, 12))" +
+                            " detail-apply-hover=" +
+                            "$($detailApplyHoverHash.Substring(0, 12))" +
+                            " detail-arrow-hover=" +
+                            "$($detailArrowHoverHash.Substring(0, 12))"
+                        )
+                        $detailHash = $detailArrowClearHash
                     }
                     if ($ScreenshotName) {
                         $detailBitmap =
@@ -1330,11 +1406,12 @@ try {
                 Send-DesignMouse 0x0202 490 450
                 Start-Sleep -Milliseconds 200
 
+                $script:detailHoverProof = ''
                 $gameplayHash = Test-FrontendDetailScreen `
                     'Gameplay Options' 155 $optionsHoverHash `
                     'frontend-gameplay-options-smoke.png'
                 $videoHash = Test-FrontendDetailScreen `
-                    'Video Options' 185 $gameplayHash
+                    'Video Options' 185 $gameplayHash '' $false 131
                 $audioHash = Test-FrontendDetailScreen `
                     'Audio Options' 215 $videoHash
                 $redefineHash = Test-FrontendDetailScreen `
@@ -1432,11 +1509,192 @@ try {
                     " audio=$($audioHash.Substring(0, 12))" +
                     " redefine=$($redefineHash.Substring(0, 12))" +
                     " redefine-hover=state3" +
+                    $script:detailHoverProof +
+                    " detail-hover=cancel-defaults-apply-arrow" +
                     " back-hover=$($optionsBackHoverHash.Substring(0, 12))" +
                     " quit=$($quitHash.Substring(0, 12))" +
                     " no-hover=$($quitNoHoverHash.Substring(0, 12))" +
                     " subscreens=verified"
                 )
+
+                # Enter the About screen: main-menu row 5 dispatches retail
+                # action 321 -> used key 0x1c -> UI_FRONTEND_ABOUT_MENU, whose
+                # recovered g_AboutTexture panel ("About Fable" title rule +
+                # legal-notice message + Back) is a single 640x480 overlay.
+                Send-DesignMouse 0x0200 320 410
+                Start-Sleep -Milliseconds 100
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x0D),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 350
+                $aboutHash = Get-WindowFrameHash
+                if (
+                    $aboutHash -eq $mainMenuHash -or
+                    $aboutHash -eq $optionsHash -or
+                    $aboutHash -eq $quitHash
+                ) {
+                    throw (
+                        'Retail action 321 did not activate the recovered ' +
+                        'UI_FRONTEND_ABOUT_MENU panel.'
+                    )
+                }
+                $aboutBitmap =
+                    New-Object System.Drawing.Bitmap $width, $height
+                $aboutGraphics =
+                    [System.Drawing.Graphics]::FromImage($aboutBitmap)
+                try {
+                    $aboutGraphics.CopyFromScreen(
+                        $bounds.Left,
+                        $bounds.Top,
+                        0,
+                        0,
+                        $aboutBitmap.Size
+                    )
+                    $aboutScreenshot = Join-Path (
+                        Split-Path -Parent $Executable
+                    ) 'frontend-about-smoke.png'
+                    $aboutBitmap.Save(
+                        $aboutScreenshot,
+                        [System.Drawing.Imaging.ImageFormat]::Png
+                    )
+                } finally {
+                    $aboutGraphics.Dispose()
+                    $aboutBitmap.Dispose()
+                }
+                # About Back hover: moving the cursor into the shared UI_HELPERS
+                # Back rect (design 20-270 x 420-450) must swap the live helper
+                # glyph OFF->ON and change the frame hash.  Proves the hover
+                # highlight the previously baked-only About panel lacked.
+                Send-DesignMouse 0x0200 120 435
+                Start-Sleep -Milliseconds 200
+                $aboutBackHoverHash = Get-WindowFrameHash
+                if ($aboutBackHoverHash -eq $aboutHash) {
+                    throw 'The About Back helper did not enter its hovered state.'
+                }
+                # Move the cursor off the button before the keyboard Back.
+                Send-DesignMouse 0x0200 320 205
+                Start-Sleep -Milliseconds 200
+                # UI_HELPERS/UI_BACK action 86 returns to the main menu.
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x1B),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 300
+                $aboutReturnHash = Get-WindowFrameHash
+                if ($aboutReturnHash -eq $aboutHash) {
+                    throw 'About Back action 86 did not return to the menu.'
+                }
+                $frameProof += " about=$($aboutHash.Substring(0, 12))"
+                $frameProof +=
+                    " about-hover=$($aboutBackHoverHash.Substring(0, 12))"
+
+                # Enter Credits: main-menu row 4 dispatches action 67 to the
+                # compiled UI_FRONTEND_CREDITS_MENU.  Its initial scrolling
+                # state is intentionally title + widescreen bars only; the
+                # credit text container starts at y=480 in frontend.bin.
+                Send-DesignMouse 0x0200 320 380
+                Start-Sleep -Milliseconds 100
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x0D),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 350
+                $creditsHash = Get-WindowFrameHash
+                if (
+                    $creditsHash -eq $mainMenuHash -or
+                    $creditsHash -eq $optionsHash -or
+                    $creditsHash -eq $aboutHash
+                ) {
+                    throw (
+                        'Retail action 67 did not activate the recovered ' +
+                        'UI_FRONTEND_CREDITS_MENU frame.'
+                    )
+                }
+                $creditsBitmap =
+                    New-Object System.Drawing.Bitmap $width, $height
+                $creditsGraphics =
+                    [System.Drawing.Graphics]::FromImage($creditsBitmap)
+                try {
+                    $creditsGraphics.CopyFromScreen(
+                        $bounds.Left,
+                        $bounds.Top,
+                        0,
+                        0,
+                        $creditsBitmap.Size
+                    )
+                    $creditsBitmap.Save(
+                        (Join-Path (
+                            Split-Path -Parent $Executable
+                        ) 'frontend-credits-smoke.png'),
+                        [System.Drawing.Imaging.ImageFormat]::Png
+                    )
+                } finally {
+                    $creditsGraphics.Dispose()
+                    $creditsBitmap.Dispose()
+                }
+                Send-DesignMouse 0x0200 120 435
+                Start-Sleep -Milliseconds 200
+                $creditsBackHoverHash = Get-WindowFrameHash
+                if ($creditsBackHoverHash -eq $creditsHash) {
+                    throw 'The Credits Back helper did not enter its hovered state.'
+                }
+                Send-FrontendEscape
+                Start-Sleep -Milliseconds 300
+                $creditsReturnHash = Get-WindowFrameHash
+                if ($creditsReturnHash -eq $creditsBackHoverHash) {
+                    throw 'Credits Back action 86 did not return to the menu.'
+                }
+                $frameProof +=
+                    " credits=$($creditsHash.Substring(0, 12))"
+                $frameProof +=
+                    " credits-hover=$($creditsBackHoverHash.Substring(0, 12))"
+
+                # Change Profile: action 16 refreshes the runtime profile
+                # directory and enters the authored Type-43 list surface.
+                # The row names are data-driven; the smoke proves the route
+                # and shared Back helper without assuming a fixed profile set.
+                Send-DesignMouse 0x0200 320 230
+                Start-Sleep -Milliseconds 100
+                [void][VisualSmokeNativeMethods]::SendMessage(
+                    $process.MainWindowHandle,
+                    0x0100,
+                    [UIntPtr]::new(0x0D),
+                    [IntPtr]::Zero
+                )
+                Start-Sleep -Milliseconds 350
+                $profilesHash = Get-WindowFrameHash
+                if (
+                    $profilesHash -eq $mainMenuHash -or
+                    $profilesHash -eq $creditsHash
+                ) {
+                    throw (
+                        'Retail action 16 did not activate the recovered ' +
+                        'UI_FRONTEND_PROFILES_MENU surface.'
+                    )
+                }
+                Send-DesignMouse 0x0200 120 435
+                Start-Sleep -Milliseconds 200
+                $profilesBackHoverHash = Get-WindowFrameHash
+                if ($profilesBackHoverHash -eq $profilesHash) {
+                    throw 'The Profile Back helper did not enter its hovered state.'
+                }
+                Send-FrontendEscape
+                Start-Sleep -Milliseconds 300
+                $profilesReturnHash = Get-WindowFrameHash
+                if ($profilesReturnHash -eq $profilesBackHoverHash) {
+                    throw 'Profile Back action 86 did not return to the menu.'
+                }
+                $frameProof +=
+                    " profiles=$($profilesHash.Substring(0, 12))"
+                $frameProof +=
+                    " profiles-hover=$($profilesBackHoverHash.Substring(0, 12))"
 
                 # Re-enter the prompt and validate action 296 last, because
                 # its retail meaning is to end the application.

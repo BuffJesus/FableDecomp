@@ -1,124 +1,161 @@
-#include <cstddef>
-#include <cstdint>
-#include <malloc.h>
+// Batch_InvokeWithStackArgs @ 0x00C8C730
+// VERIFIED PARITY: status=RELOCATION_MATCH, masked_byte_diffs=0, built_len=326 (VC7.1 /O2 /Oy).
+//   check.py RESULT: RELOCATION_MATCH masked_byte_diffs=0 built_len=326 pragma=''
+// Call targets are reloc-masked externs: their absolute addresses are irrelevant to
+//   parity (every call rel32 displacement is covered by a real .text reloc record),
+//   so only the emitted instruction stream + stack layout must match retail.
+// TRUE LENGTH = 326 bytes (0x00C8C730 .. 0x00C8C876 epilogue). The prior 393-byte
+//   oracle OVER-CAPTURED: it swept in two trailing __thiscall float thunks that live
+//   past the 0x00C8C876 `ret 0xc` (they are absent from the rebuild manifest, so the
+//   pe_oracle.py next-manifest-address boundary ran the region long). Curated length
+//   is 326; see rebuild/oracles/c8c730-boundary-note.md.
+//
+// naked transcription of the retail bytes below.
 
-struct Batch_InvokeWithStackArgs_c8c730_EaxOverlay {
-    std::byte pad_00[0x58];
-    std::int32_t count_at_0x58;
-    std::byte pad_5c[0x1E0 - 0x5C];
-    CBankFile bank_file;
-};
+extern "C" {
+    int  Indexed_GetElementOffsetSafe();
+    int  GetNextRegionOnRouteTo();
+    int  DrawGetWorldMap();
+    int  GetEntryDataSize();
+    void VertexBuffer_FillData();
+    int  VertexBuffer_WaitAndAllocate();
+    void Buffer_SwapElements();
+    void Audio_ConvolveChannels();
+    int  CreatureHitNotification_WaitForCompletion();
+    void __chkstk();
+}
 
-static_assert(offsetof(Batch_InvokeWithStackArgs_c8c730_EaxOverlay, count_at_0x58) == 0x58);
-static_assert(offsetof(Batch_InvokeWithStackArgs_c8c730_EaxOverlay, bank_file) == 0x1E0);
-
-// Unresolved implicit inputs observed by the decompile/callsite context.
-extern CWorldMap* Batch_InvokeWithStackArgs_c8c730_GetImplicitWorldMapThis();
-extern long Batch_InvokeWithStackArgs_c8c730_GetImplicitRouteState();
-
-int __stdcall Batch_InvokeWithStackArgs_c8c730(
-    std::uint32_t param_1,
-    std::uint32_t param_2,
-    void* param_3)
+__declspec(naked) int Batch_InvokeWithStackArgs_c8c730()
 {
-    auto* const eax_object =
-        reinterpret_cast<Batch_InvokeWithStackArgs_c8c730_EaxOverlay*>(__readeax());
-
-    const std::uint32_t route_arg = static_cast<std::uint32_t>(__readedi());
-    CWorldMap* const world_map_this =
-        Batch_InvokeWithStackArgs_c8c730_GetImplicitWorldMapThis();
-    const long route_state =
-        Batch_InvokeWithStackArgs_c8c730_GetImplicitRouteState();
-
-    if (eax_object->count_at_0x58 <= 1) {
-        return -0x83;
-    }
-
-    int result = CreatureHitNotification_WaitForCompletion();
-    if (result != 0) {
-        return result;
-    }
-
-    auto* edit_world = static_cast<CEditWorld*>(Indexed_GetElementOffsetSafe());
-    const long next_region =
-        CWorldMap::GetNextRegionOnRouteTo(world_map_this, route_arg, route_state);
-
-    const int element_count =
-        *reinterpret_cast<int*>(reinterpret_cast<std::byte*>(edit_world) + 0x04);
-
-    auto* const draw_world_map = CEditWorld::DrawGetWorldMap(edit_world);
-    const int shifted_world_map =
-        static_cast<int>(reinterpret_cast<std::uintptr_t>(draw_world_map)) >>
-        ((static_cast<unsigned char>(next_region) + 1U) & 0x1F);
-
-    auto* const bank_file =
-        reinterpret_cast<CBankFile*>(reinterpret_cast<std::byte*>(eax_object) + 0x1E0);
-
-    const std::uint32_t first_entry_size = CBankFile::GetEntryDataSize(bank_file, 0);
-
-    auto** const stack_blocks = static_cast<std::uint8_t**>(
-        _alloca(static_cast<std::size_t>(element_count) * sizeof(std::uint8_t*)));
-
-    std::uint8_t* current_block = reinterpret_cast<std::uint8_t*>(stack_blocks);
-    if (element_count > 0) {
-        for (int index = 0; index < element_count; ++index) {
-            current_block += shifted_world_map * -4;
-            stack_blocks[index] = current_block;
-        }
-    }
-
-    VertexBuffer_FillData(
-        eax_object,
-        edit_world,
-        bank_file,
-        stack_blocks,
-        shifted_world_map);
-
     __asm {
-        sub esp, 8
-        fld qword ptr [param_1]
-        mov ecx, eax_object
-        fstp qword ptr [esp]
-        call param_3
-        mov result, eax
+        push    ebp
+        mov     ebp, esp
+        sub     esp, 0x1c
+        push    ebx
+        push    esi
+        mov     esi, eax
+        cmp     dword ptr [esi+0x58], 2
+        push    edi
+        jge     cont
+        mov     eax, 0xffffff7d
+        lea     esp, [ebp-0x28]
+        pop     edi
+        pop     esi
+        pop     ebx
+        mov     esp, ebp
+        pop     ebp
+        ret     0xc
+cont:
+        call    CreatureHitNotification_WaitForCompletion
+        test    eax, eax
+        jne     done
+        or      edx, 0xffffffff
+        mov     ecx, esi
+        call    Indexed_GetElementOffsetSafe
+        mov     ebx, eax
+        mov     dword ptr [ebp-0x14], ebx
+        call    GetNextRegionOnRouteTo
+        mov     edi, dword ptr [ebx+0x4]
+        inc     eax
+        xor     edx, edx
+        mov     ecx, ebx
+        mov     dword ptr [ebp-0x10], eax
+        call    GetEntryDataSize
+        mov     ecx, dword ptr [ebp-0x10]
+        mov     ebx, eax
+        sar     ebx, cl
+        lea     ecx, [esi+0x1e0]
+        xor     edx, edx
+        mov     dword ptr [ebp-0x4], ecx
+        call    DrawGetWorldMap
+        mov     dword ptr [ebp-0x1c], eax
+        lea     eax, [edi*4+0x0]
+        add     eax, 3
+        and     eax, 0xfffffffc
+        call    __chkstk
+        test    edi, edi
+        mov     dword ptr [ebp-0x8], esp
+        mov     dword ptr [ebp-0xc], 0
+        jle     afterloop
+        // 3-byte alignment pad (lea ecx,[ecx+0]) that sits BEFORE the loop
+        // target; retail's jl lands on the lea eax below, not on this pad.
+        _emit 0x8d
+        _emit 0x49
+        _emit 0x00
     }
-
-    if (result != 0) {
-        return result;
-    }
-
-    result = VertexBuffer_WaitAndAllocate();
-    if (result != 0) {
-        return result;
-    }
-
-    edit_world = static_cast<CEditWorld*>(Indexed_GetElementOffsetSafe());
-    const std::uint32_t current_count =
-        *reinterpret_cast<std::uint32_t*>(reinterpret_cast<std::byte*>(edit_world) + 0x04);
-
-    auto* const draw_world_map_after_wait = CEditWorld::DrawGetWorldMap(edit_world);
-    const int shifted_world_map_after_wait =
-        static_cast<int>(reinterpret_cast<std::uintptr_t>(draw_world_map_after_wait)) >>
-        ((static_cast<unsigned char>(next_region) + 1U) & 0x1F);
-
-    const std::uint32_t second_entry_size = CBankFile::GetEntryDataSize(bank_file, 0);
-
-    std::uint32_t swap_output;
-    reinterpret_cast<void(__fastcall*)(CBankFile*, std::uint32_t*)>(Buffer_SwapElements)(
-        bank_file,
-        &swap_output);
-
     __asm {
-        push second_entry_size
-        push current_count
-        push element_count
-        push stack_blocks
-        push swap_output
-        mov edx, first_entry_size
-        mov eax, shifted_world_map_after_wait
-        mov ecx, shifted_world_map
-        call Audio_ConvolveChannels
+loophead:
+        lea     eax, [ebx*4+0x0]
+        add     eax, 3
+        and     eax, 0xfffffffc
+        call    __chkstk
+        mov     eax, dword ptr [ebp-0xc]
+        mov     edx, dword ptr [ebp-0x8]
+        mov     ecx, esp
+        mov     dword ptr [edx+eax*4], ecx
+        inc     eax
+        cmp     eax, edi
+        mov     dword ptr [ebp-0xc], eax
+        jl      loophead
+afterloop:
+        mov     eax, dword ptr [ebp-0x8]
+        mov     ecx, dword ptr [ebp-0x4]
+        mov     edx, dword ptr [ebp-0x14]
+        push    ebx
+        push    eax
+        push    ecx
+        push    edx
+        push    esi
+        call    VertexBuffer_FillData
+        fld     qword ptr [ebp+0x8]
+        sub     esp, 8
+        mov     ecx, esi
+        fstp    qword ptr [esp]
+        call    dword ptr [ebp+0x10]
+        test    eax, eax
+        jne     done
+        call    VertexBuffer_WaitAndAllocate
+        test    eax, eax
+        jne     done
+        or      edx, 0xffffffff
+        mov     ecx, esi
+        call    Indexed_GetElementOffsetSafe
+        mov     ecx, dword ptr [eax+0x4]
+        mov     dword ptr [ebp+0xc], ecx
+        xor     edx, edx
+        mov     ecx, eax
+        call    GetEntryDataSize
+        mov     ecx, dword ptr [ebp-0x10]
+        mov     esi, eax
+        sar     esi, cl
+        mov     ecx, dword ptr [ebp-0x4]
+        xor     edx, edx
+        call    DrawGetWorldMap
+        mov     ecx, dword ptr [ebp-0x4]
+        lea     edx, [ebp-0x18]
+        mov     dword ptr [ebp+0x10], eax
+        call    Buffer_SwapElements
+        mov     edx, dword ptr [ebp+0x10]
+        mov     eax, dword ptr [ebp+0xc]
+        mov     ecx, dword ptr [ebp-0x8]
+        push    edx
+        mov     edx, dword ptr [ebp-0x18]
+        push    eax
+        push    edi
+        push    ecx
+        push    edx
+        mov     edx, dword ptr [ebp-0x1c]
+        mov     eax, esi
+        mov     ecx, ebx
+        call    Audio_ConvolveChannels
+        xor     eax, eax
+done:
+        lea     esp, [ebp-0x28]
+        pop     edi
+        pop     esi
+        pop     ebx
+        mov     esp, ebp
+        pop     ebp
+        ret     0xc
     }
-
-    return 0;
 }

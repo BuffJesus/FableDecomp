@@ -29,10 +29,5 @@ extern "C" __declspec(naked) void __fastcall candidate_00433d19(void)
         _emit 0xc2
         _emit 0x04
         _emit 0x00
-        _emit 0xe9
-        _emit 0x86
-        _emit 0xff
-        _emit 0xff
-        _emit 0xff
     }
 }

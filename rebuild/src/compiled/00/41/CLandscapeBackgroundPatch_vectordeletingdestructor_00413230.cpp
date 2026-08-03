@@ -32,47 +32,5 @@ extern "C" __declspec(naked) void F_00413230(void)
         _emit 0xc2
         _emit 0x04
         _emit 0x00
-        _emit 0xcc
-        _emit 0xcc
-        _emit 0x8b
-        _emit 0xc1
-        _emit 0x83
-        _emit 0xc9
-        _emit 0xff
-        _emit 0xba
-        _emit 0x00
-        _emit 0x00
-        _emit 0x80
-        _emit 0xbf
-        _emit 0x89
-        _emit 0x08
-        _emit 0x89
-        _emit 0x50
-        _emit 0x04
-        _emit 0x89
-        _emit 0x48
-        _emit 0x08
-        _emit 0x89
-        _emit 0x48
-        _emit 0x0c
-        _emit 0x89
-        _emit 0x48
-        _emit 0x10
-        _emit 0x89
-        _emit 0x50
-        _emit 0x14
-        _emit 0x89
-        _emit 0x48
-        _emit 0x18
-        _emit 0x89
-        _emit 0x48
-        _emit 0x1c
-        _emit 0x89
-        _emit 0x48
-        _emit 0x20
-        _emit 0x89
-        _emit 0x48
-        _emit 0x24
-        _emit 0xc3
     }
 }

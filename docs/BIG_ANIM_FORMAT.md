@@ -308,3 +308,9 @@ python tools/parse_anim_xseq.py <graphics.big> --validate      # full-bank invar
 - TOC **Type 9 = single-frame phoneme/viseme POSE anims** (frameCount=1, duration 0, AMSK
   face mask) blended by lipsync viseme weights; Type 6 = normal clips; Type 7 = same 3DAF
   form (subset TBD). End-to-end demon-door case study: `docs/DEMON_DOOR_FACE.md`.
+  - **Reconcile (EgoCore, 2026-07-31):** EgoCore's primary discriminator for Type 9 is the
+    presence of an **AMSK partial-body mask**, not frameCount==1 — i.e. Type 9 = "masked/partial
+    anim" generally (a viseme face pose is one case). **Type 7 = DELTA (bind-relative) animation.**
+    Also: BoneIndex sentinel **`31450`** = "no global rig ID" for a track. See
+    `docs/EGOCORE_ASSESSMENT_20260731.md`. The GLTF-anim retargeter (`GltfAnimImporter.h`) is the
+    reference for the Mario-rig parent-relative-bind-translation retarget (port target).

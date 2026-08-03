@@ -278,6 +278,7 @@ $render2DBatchPlanSource = Join-Path $rebuildRoot 'integration\render2d_batch_pl
 $render2DBatchPlanBehaviorSource = Join-Path $rebuildRoot 'tests\integration\Render2DBatchPlan_test.cpp'
 $render2DDrawListAdapterSource = Join-Path $rebuildRoot 'integration\render2d_draw_list_adapter.cpp'
 $render2DDrawListAdapterBehaviorSource = Join-Path $rebuildRoot 'tests\integration\Render2DDrawListAdapter_test.cpp'
+$saveViewportQuadsBehaviorSource = Join-Path $rebuildRoot 'tests\integration\SaveViewportQuads_test.cpp'
 $attachTextureToStageSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CRenderManagerCore_AttachTextureToStage_009a0cf0.cpp'
 $realiseRenderStateSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderStateManager_RealiseRenderState_00a058c0.cpp'
 $soldStateBlockSource = Join-Path $rebuildRoot 'src\compiled\00\9d\CStateBlockFunctionSold_Apply_009df060.cpp'
@@ -450,6 +451,7 @@ $render2DBatchPlanObject = Join-Path $outDir 'render2d_batch_plan.obj'
 $render2DBatchPlanBehaviorObject = Join-Path $outDir 'render2d_batch_plan_behavior.obj'
 $render2DDrawListAdapterObject = Join-Path $outDir 'render2d_draw_list_adapter.obj'
 $render2DDrawListAdapterBehaviorObject = Join-Path $outDir 'render2d_draw_list_adapter_behavior.obj'
+$saveViewportQuadsBehaviorObject = Join-Path $outDir 'save_viewport_quads_behavior.obj'
 $attachTextureToStageObject = Join-Path $outDir 'attach_texture_to_stage.obj'
 $realiseRenderStateObject = Join-Path $outDir 'realise_render_state.obj'
 $soldStateBlockObject = Join-Path $outDir 'sold_state_block.obj'
@@ -496,9 +498,15 @@ $visualBootRetailButtonMiddle =
 $visualBootRetailButtonRight =
     Join-Path $outDir 'frontend_options_button_right.png'
 $visualBootRetailHelpers = Join-Path $outDir 'frontend_helpers.png'
+$visualBootRetailAbout = Join-Path $outDir 'frontend_about_menu.png'
+$visualBootRetailCredits = Join-Path $outDir 'frontend_credits_menu.png'
+$visualBootRetailProfiles = Join-Path $outDir 'frontend_profiles_menu.png'
 $visualBootRetailCoastalSheet = Join-Path $outDir 'frontend_coastal_sheet.png'
 $visualBootRetailCoastalSunbeamSheet =
     Join-Path $outDir 'frontend_coastal_sunbeam_sheet.png'
+$visualBootRetailSpookySheet = Join-Path $outDir 'frontend_spooky_sheet.png'
+$visualBootRetailSpookySunbeamSheet =
+    Join-Path $outDir 'frontend_spooky_sunbeam_sheet.png'
 $visualBootBitmap = Join-Path $outDir 'visual_boot_artwork.bmp'
 $visualBootTitleBitmap = Join-Path $outDir 'visual_boot_title.bmp'
 $visualBootForestBitmap = Join-Path $outDir 'visual_boot_forest.bmp'
@@ -516,9 +524,15 @@ $visualBootButtonMiddleBitmap =
 $visualBootButtonRightBitmap =
     Join-Path $outDir 'visual_boot_options_button_right.bmp'
 $visualBootHelpersBitmap = Join-Path $outDir 'visual_boot_helpers.bmp'
+$visualBootAboutBitmap = Join-Path $outDir 'visual_boot_about_menu.bmp'
+$visualBootCreditsBitmap = Join-Path $outDir 'visual_boot_credits_menu.bmp'
+$visualBootProfilesBitmap = Join-Path $outDir 'visual_boot_profiles_menu.bmp'
 $visualBootCoastalBitmap = Join-Path $outDir 'visual_boot_coastal.bmp'
 $visualBootCoastalSunbeamBitmap =
     Join-Path $outDir 'visual_boot_coastal_sunbeam.bmp'
+$visualBootSpookyBitmap = Join-Path $outDir 'visual_boot_spooky.bmp'
+$visualBootSpookySunbeamBitmap =
+    Join-Path $outDir 'visual_boot_spooky_sunbeam.bmp'
 $visualBootSoundUpDown = Join-Path $outDir 'visual_boot_gui_updown.wav'
 $visualBootSoundError = Join-Path $outDir 'visual_boot_gui_error.wav'
 $visualBootSoundBack = Join-Path $outDir 'visual_boot_gui_back.wav'
@@ -573,6 +587,7 @@ $videoFramePublicationBehaviorExecutable = Join-Path $outDir 'FableTLC-VideoFram
 $frontendStartupSequenceBehaviorExecutable = Join-Path $outDir 'FableTLC-FrontendStartupSequence-Behavior.exe'
 $render2DBatchPlanBehaviorExecutable = Join-Path $outDir 'FableTLC-Render2DBatchPlan-Behavior.exe'
 $render2DDrawListAdapterBehaviorExecutable = Join-Path $outDir 'FableTLC-Render2DDrawListAdapter-Behavior.exe'
+$saveViewportQuadsBehaviorExecutable = Join-Path $outDir 'FableTLC-SaveViewportQuads-Behavior.exe'
 $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
 $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $gfInitialisePassPattern = 'FABLETLC_GFINITIALISE_BEHAVIOR PASS'
@@ -650,6 +665,7 @@ $videoFramePublicationPassPattern = 'FABLETLC_VIDEO_FRAME_PUBLICATION PASS'
 $frontendStartupSequencePassPattern = 'FABLETLC_FRONTEND_STARTUP_SEQUENCE PASS'
 $render2DBatchPlanPassPattern = 'FABLETLC_RENDER2D_BATCH_PLAN PASS'
 $render2DDrawListAdapterPassPattern = 'FABLETLC_RENDER2D_DRAW_LIST_ADAPTER PASS'
+$saveViewportQuadsPassPattern = 'FABLETLC_SAVE_VIEWPORT_ATLAS_RECT PASS'
 $profileEndPassPattern = 'FABLETLC_PROFILE_END_BEHAVIOR PASS'
 $asyncFailureHandlingPassPattern = 'FABLETLC_ASYNC_FAILURE_HANDLING_BEHAVIOR PASS'
 $startupLatchPassPattern = 'FABLETLC_STARTUP_LATCH_BEHAVIOR PASS'
@@ -916,6 +932,7 @@ $required = @(
     $render2DBatchPlanBehaviorSource,
     $render2DDrawListAdapterSource,
     $render2DDrawListAdapterBehaviorSource,
+    $saveViewportQuadsBehaviorSource,
     $attachTextureToStageSource,
     $realiseRenderStateSource,
     $displaySetViewportSource,
@@ -1132,6 +1149,15 @@ if ($selectedRetailFrontendBank) {
             $LASTEXITCODE -eq 0 -and
             (Test-Path -LiteralPath $visualBootRetailCoastalSheet) -and
             (Test-Path -LiteralPath $visualBootRetailCoastalSunbeamSheet)
+        & python $frontendAnimationRenderer `
+            $selectedRetailFrontendBank `
+            $visualBootRetailSpookySheet `
+            $visualBootRetailSpookySunbeamSheet `
+            --theme spooky
+        $spookyAnimationReady =
+            $LASTEXITCODE -eq 0 -and
+            (Test-Path -LiteralPath $visualBootRetailSpookySheet) -and
+            (Test-Path -LiteralPath $visualBootRetailSpookySunbeamSheet)
         $retailDataRoot = Split-Path -Parent (
             Split-Path -Parent (
                 Split-Path -Parent $selectedRetailFrontendBank
@@ -1276,6 +1302,12 @@ if ($selectedRetailFrontendBank) {
                         $visualBootRetailButtonMiddle `
                         --button-right-output `
                         $visualBootRetailButtonRight `
+                        --about-output `
+                        $visualBootRetailAbout `
+                        --credits-output `
+                        $visualBootRetailCredits `
+                        --profiles-output `
+                        $visualBootRetailProfiles `
                         @frontendLayoutArguments
                     if (
                         $LASTEXITCODE -eq 0 -and
@@ -1290,6 +1322,9 @@ if ($selectedRetailFrontendBank) {
                             $visualBootRetailButtonMiddle) -and
                         (Test-Path -LiteralPath `
                             $visualBootRetailButtonRight) -and
+                        (Test-Path -LiteralPath $visualBootRetailAbout) -and
+                        (Test-Path -LiteralPath $visualBootRetailCredits) -and
+                        (Test-Path -LiteralPath $visualBootRetailProfiles) -and
                         (Test-Path -LiteralPath $visualBootRetailHelpers)
                     ) {
                         $visualBootUsesRetailSubscreens = $true
@@ -3213,6 +3248,16 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$saveViewportQuadsBehaviorObject" `
+        $saveViewportQuadsBehaviorSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $saveViewportQuadsBehaviorObject)
+    ) {
+        throw 'Failed to compile the save-preview viewport quad fixture.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$attachTextureToStageObject" $attachTextureToStageSource
     if (
         $LASTEXITCODE -ne 0 -or
@@ -3584,6 +3629,22 @@ try {
                 }
             }
         }
+        if ($spookyAnimationReady) {
+            $animationSheets += @(
+                @{
+                    Png = $visualBootRetailSpookySheet
+                    Bmp = $visualBootSpookyBitmap
+                    Width = 640
+                    Height = 1920
+                },
+                @{
+                    Png = $visualBootRetailSpookySunbeamSheet
+                    Bmp = $visualBootSpookySunbeamBitmap
+                    Width = 640
+                    Height = 1440
+                }
+            )
+        }
         if ($visualBootUsesRetailSubscreens) {
             $animationSheets += @(
                 @{
@@ -3621,6 +3682,24 @@ try {
                     Bmp = $visualBootHelpersBitmap
                     Width = 640
                     Height = 2880
+                },
+                @{
+                    Png = $visualBootRetailAbout
+                    Bmp = $visualBootAboutBitmap
+                    Width = 640
+                    Height = 480
+                },
+                @{
+                    Png = $visualBootRetailCredits
+                    Bmp = $visualBootCreditsBitmap
+                    Width = 640
+                    Height = 480
+                },
+                @{
+                    Png = $visualBootRetailProfiles
+                    Bmp = $visualBootProfilesBitmap
+                    Width = 640
+                    Height = 480
                 }
             )
         }
@@ -3701,6 +3780,16 @@ try {
                 "111 BITMAP `"$resourceBuffJesusMenuBitmapPath`""
         }
     }
+    if ($spookyAnimationReady) {
+        $resourceSpookyBitmapPath =
+            $visualBootSpookyBitmap.Replace('\', '/')
+        $resourceSpookySunbeamBitmapPath =
+            $visualBootSpookySunbeamBitmap.Replace('\', '/')
+        $resourceLines +=
+            "121 BITMAP `"$resourceSpookyBitmapPath`""
+        $resourceLines +=
+            "122 BITMAP `"$resourceSpookySunbeamBitmapPath`""
+    }
     if ($visualBootUsesRetailSubscreens) {
         $resourceOptionsBitmapPath =
             $visualBootOptionsBitmap.Replace('\', '/')
@@ -3714,10 +3803,22 @@ try {
             $visualBootButtonMiddleBitmap.Replace('\', '/')
         $resourceButtonRightBitmapPath =
             $visualBootButtonRightBitmap.Replace('\', '/')
+        $resourceAboutBitmapPath =
+            $visualBootAboutBitmap.Replace('\', '/')
+        $resourceCreditsBitmapPath =
+            $visualBootCreditsBitmap.Replace('\', '/')
+        $resourceProfilesBitmapPath =
+            $visualBootProfilesBitmap.Replace('\', '/')
         $resourceLines +=
             "109 BITMAP `"$resourceOptionsBitmapPath`""
         $resourceLines +=
             "110 BITMAP `"$resourceHelpersBitmapPath`""
+        $resourceLines +=
+            "120 BITMAP `"$resourceAboutBitmapPath`""
+        $resourceLines +=
+            "123 BITMAP `"$resourceCreditsBitmapPath`""
+        $resourceLines +=
+            "124 BITMAP `"$resourceProfilesBitmapPath`""
         $resourceLines +=
             "112 BITMAP `"$resourceTitleSegmentBitmapPath`""
         $resourceLines +=
@@ -4514,6 +4615,48 @@ try {
         (($visualBootOutput -join "`n") -notmatch [regex]::Escape($visualBootPassPattern))
     ) {
         throw "Visual boot fixture failed with exit code $visualBootExitCode."
+    }
+
+    & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `
+        "/out:$saveViewportQuadsBehaviorExecutable" `
+        $visualBootObject $visualBootD3D9Object $retailVideoBridgeObject `
+        $videoFrameConversionObject $videoFramePublicationObject `
+        $frontendStartupSequenceObject `
+        $render2DBatchPlanObject $render2DDrawListAdapterObject `
+        $attachTextureToStageObject $realiseRenderStateObject `
+        $soldStateBlockObject `
+        $updatePixelShaderObject `
+        $resetWorldTransformObject `
+        $displaySetViewportObject $displaySetIntegerViewportObject `
+        $postViewportShaderObject $viewportE2Object `
+        $setRenderWindowObject `
+        $clearRender2DVertexQueueObject `
+        $restoreRenderStateCaptureObject `
+        $textureCalcByteLengthObject `
+        $pixelFormatGetColourDepthObject $pixelFormatInitialiseObject `
+        $pixelFormatTableObject $textureInitialisePreallocatedObject `
+        $textureAssignmentObject $textureUninitialiseObject `
+        $saveViewportQuadsBehaviorObject $visualBootResource `
+        user32.lib gdi32.lib d3d9.lib advapi32.lib ole32.lib winmm.lib
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $saveViewportQuadsBehaviorExecutable)
+    ) {
+        throw 'Failed to link the save-preview viewport quad fixture.'
+    }
+
+    $saveViewportQuadsOutput = & $saveViewportQuadsBehaviorExecutable 2>&1
+    $saveViewportQuadsExitCode = $LASTEXITCODE
+    $saveViewportQuadsOutput | Write-Output
+    if (
+        $saveViewportQuadsExitCode -ne 0 -or
+        (($saveViewportQuadsOutput -join "`n") -notmatch `
+            [regex]::Escape($saveViewportQuadsPassPattern))
+    ) {
+        throw (
+            'Save-preview viewport quad fixture failed with exit code ' +
+            "$saveViewportQuadsExitCode."
+        )
     }
 
     & (Join-Path $vcRoot 'bin\link.exe') /nologo /subsystem:console `

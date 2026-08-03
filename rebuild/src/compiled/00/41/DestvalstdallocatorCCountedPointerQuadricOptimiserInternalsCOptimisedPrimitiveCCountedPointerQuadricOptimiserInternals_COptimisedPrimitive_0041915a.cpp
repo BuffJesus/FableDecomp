@@ -1,3 +1,5 @@
+extern "C" void F_ext_call_0041915a(void);
+
 extern "C" __declspec(naked) void F_0041915a(void)
 {
     __asm
@@ -31,11 +33,7 @@ extern "C" __declspec(naked) void F_0041915a(void)
         _emit 0xff
         _emit 0x76
         _emit 0x04
-        _emit 0xe8
-        _emit 0x40
-        _emit 0x58
-        _emit 0x7e
-        _emit 0x00
+        call F_ext_call_0041915a
         _emit 0x59
         _emit 0x83
         _emit 0x26
@@ -45,28 +43,6 @@ extern "C" __declspec(naked) void F_0041915a(void)
         _emit 0x04
         _emit 0x00
         _emit 0x5e
-        _emit 0xc3
-        _emit 0x8b
-        _emit 0x01
-        _emit 0x3b
-        _emit 0x02
-        _emit 0x8b
-        _emit 0xc2
-        _emit 0x7c
-        _emit 0x02
-        _emit 0x8b
-        _emit 0xc1
-        _emit 0xc3
-        _emit 0x8b
-        _emit 0x02
-        _emit 0x3b
-        _emit 0x01
-        _emit 0x8b
-        _emit 0xc2
-        _emit 0x72
-        _emit 0x02
-        _emit 0x8b
-        _emit 0xc1
         _emit 0xc3
     }
 }

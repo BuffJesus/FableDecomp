@@ -61,13 +61,13 @@ working memory and exact resume point are always at the top of
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Verified functional or matching reconstruction | **5,205 · 10.50%** |
-| Byte-identical reconstruction | **2,900 · 5.85%** |
+| Verified functional or matching reconstruction | **5,440 · 10.97%** |
+| Byte-identical reconstruction | **3,049 · 6.15%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
-Current functional-or-matching coverage is **10.50%** of the 49,568-function catalog.
-Of that verified set, **5.85%** is byte-identical C++.
+Current functional-or-matching coverage is **10.97%** of the 49,568-function catalog.
+Of that verified set, **6.15%** is byte-identical C++.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -84,23 +84,23 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.677% |
 | Analysis DB | Complete non-`undefined` prototype | 69.065% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **5,355** |
-| Reconstruction | Verified functional or matching C++ | **5,205** (10.50%) |
-| Reconstruction | — of which byte-**identical** C++ | 2,900 (5.85%) |
-| Reconstruction | Compiled sources still honestly `DIFFER` | 40 |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **5,588** |
+| Reconstruction | Verified functional or matching C++ | **5,440** (10.97%) |
+| Reconstruction | — of which byte-**identical** C++ | 3,049 (6.15%) |
+| Reconstruction | Compiled sources still honestly `DIFFER` | 38 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
-| Auto-RE intake | Generated candidates / structural checker PASS | 840 / 825 |
+| Auto-RE intake | Generated candidates / structural checker PASS | 850 / 836 |
 | Boot path | GFMain direct-call sites proven | **257 / 257** (100.00%) |
 | Boot path | Callable authored GFMain phases | **10 / 10** (100.00%) |
 | Boot path | Current Phase 10 direct calls proven | **21 / 21** (100.00%) |
 | Modern C++23 | GFMain phases promoted into the modern startup lane | **0 / 10** (0.00%) |
 
-Counts above are from the 2026-07-29 canonical refresh:
+Counts above are from the 2026-07-31 canonical refresh:
 `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json`,
 `rebuild/COVERAGE.md`, and the naming-quality reports.
 
 Generated agent output is tracked separately and is never counted merely
-because a structural checker accepted it. The 10.50% figure is intentionally the strict,
+because a structural checker accepted it. The 10.97% figure is intentionally the strict,
 whole-executable denominator. Boot-path figures are a separate view of
 the 3,952-byte `GFMain` coordinator, not an estimate of total engineering time.
 The C++23 startup figure is deliberately separate too: exact x86 parity and

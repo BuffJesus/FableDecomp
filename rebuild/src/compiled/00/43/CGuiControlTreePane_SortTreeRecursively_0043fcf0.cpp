@@ -64,21 +64,5 @@ extern "C" __declspec(naked) void cand_0043fcf0(void)
         _emit 0x5F
         _emit 0x5E
         _emit 0xC3
-        _emit 0xCC
-        _emit 0xCC
-        _emit 0x8B
-        _emit 0x01
-        _emit 0x85
-        _emit 0xC0
-        _emit 0x74
-        _emit 0x07
-        _emit 0x50
-        _emit 0xE8
-        _emit 0xD8
-        _emit 0xEC
-        _emit 0x7B
-        _emit 0x00
-        _emit 0x59
-        _emit 0xC3
     }
 }

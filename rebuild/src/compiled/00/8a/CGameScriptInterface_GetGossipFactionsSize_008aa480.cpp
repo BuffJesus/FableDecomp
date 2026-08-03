@@ -24,7 +24,7 @@ struct CArray
 class CGameScriptInterface
 {
 public:
-    int GetGossipFactionsSize(CCharString gossipFactions);
+    virtual int GetGossipFactionsSize(CCharString gossipFactions);
 };
 
 extern std::map<CCharString, CArray<CMeshDataBank::CLipSyncEntry> > DAT_013BAE5C;

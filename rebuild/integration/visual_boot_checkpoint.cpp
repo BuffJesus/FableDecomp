@@ -2,6 +2,7 @@
 #include "fable_visual_d3d9.h"
 #include "frontend_startup_sequence.h"
 #include "retail_video_bridge.h"
+#include "detail_screen_tables.h"
 
 #include <string.h>
 
@@ -111,8 +112,59 @@ struct FableWindowClass
     FableIcon smallIcon;
 };
 
+// Minimal Win32 file-enumeration surface. The reconstruction deliberately avoids
+// a blanket <windows.h>; these ABI-exact structs + kernel32 imports declare only
+// what the real Saved-Games directory walk needs (matches the file's existing
+// narrow __declspec(dllimport) style).
+typedef void* FableFindHandle;
+struct FableFileTime
+{
+    FableDword lowDateTime;
+    FableDword highDateTime;
+};
+struct FableWin32FindDataW
+{
+    FableDword attributes;
+    FableFileTime creationTime;
+    FableFileTime lastAccessTime;
+    FableFileTime lastWriteTime;
+    FableDword fileSizeHigh;
+    FableDword fileSizeLow;
+    FableDword reserved0;
+    FableDword reserved1;
+    wchar_t fileName[260];
+    wchar_t alternateFileName[14];
+};
+struct FableWin32FileAttributeData
+{
+    FableDword attributes;
+    FableFileTime creationTime;
+    FableFileTime lastAccessTime;
+    FableFileTime lastWriteTime;
+    FableDword fileSizeHigh;
+    FableDword fileSizeLow;
+};
+const FableDword kFableFileAttributeDirectory = 0x10;
+const int kFableGetFileExInfoStandard = 0;
+
 extern "C"
 {
+    __declspec(dllimport) FableFindHandle FABLE_STDCALL FindFirstFileW(
+        const wchar_t* fileName,
+        FableWin32FindDataW* findData);
+    __declspec(dllimport) FableBool FABLE_STDCALL FindNextFileW(
+        FableFindHandle findHandle,
+        FableWin32FindDataW* findData);
+    __declspec(dllimport) FableBool FABLE_STDCALL FindClose(
+        FableFindHandle findHandle);
+    __declspec(dllimport) FableDword FABLE_STDCALL GetEnvironmentVariableW(
+        const wchar_t* name,
+        wchar_t* value,
+        FableDword capacity);
+    __declspec(dllimport) FableBool FABLE_STDCALL GetFileAttributesExW(
+        const wchar_t* fileName,
+        int infoLevel,
+        FableWin32FileAttributeData* fileInformation);
     __declspec(dllimport) FableDeviceContext FABLE_STDCALL BeginPaint(
         FableWindow window,
         FablePaint* paint);
@@ -298,6 +350,177 @@ fable_u32 FABLE_FASTCALL FablePlanVisualFrontendSaveRows(
         ++rowCount;
     }
     return rowCount;
+}
+
+namespace
+{
+    // Join <dir>[\]<leaf> into out (UTF-16), inserting a separator only when the
+    // directory does not already end in one.
+    void JoinSavePath(
+        wchar_t* out,
+        size_t capacity,
+        const wchar_t* dir,
+        const wchar_t* leaf)
+    {
+        size_t n = 0;
+        for (; dir[n] != L'\0' && n + 1 < capacity; ++n)
+            out[n] = dir[n];
+        if (n != 0 && out[n - 1] != L'\\' && out[n - 1] != L'/' &&
+            n + 1 < capacity)
+            out[n++] = L'\\';
+        for (size_t i = 0; leaf[i] != L'\0' && n + 1 < capacity; ++i)
+            out[n++] = leaf[i];
+        out[n] = L'\0';
+    }
+
+    // A save part is valid when the file exists, is not a directory, and holds
+    // at least one byte (Fable never writes a zero-length save part).
+    bool SavePartNonEmpty(const wchar_t* profileDir, const wchar_t* leaf)
+    {
+        wchar_t path[520];
+        JoinSavePath(path, 520, profileDir, leaf);
+        FableWin32FileAttributeData info;
+        if (!GetFileAttributesExW(path, kFableGetFileExInfoStandard, &info))
+            return false;
+        if (info.attributes & kFableFileAttributeDirectory)
+            return false;
+        return info.fileSizeHigh != 0 || info.fileSizeLow != 0;
+    }
+}
+
+fable_u32 FABLE_FASTCALL FableEnumerateVisualFrontendSaves(
+    const wchar_t* saveDirectory,
+    FableUiSaveProfile* out,
+    fable_u32 outCapacity)
+{
+    if (saveDirectory == 0 || saveDirectory[0] == L'\0')
+        return 0;
+    wchar_t pattern[520];
+    JoinSavePath(pattern, 520, saveDirectory, L"*");
+    FableWin32FindDataW find;
+    const FableFindHandle handle = FindFirstFileW(pattern, &find);
+    if (handle == reinterpret_cast<FableFindHandle>(static_cast<long>(-1)))
+        return 0;
+    fable_u32 count = 0;
+    do
+    {
+        if ((find.attributes & kFableFileAttributeDirectory) == 0)
+            continue;
+        // Skip "." and ".." pseudo-directories.
+        if (find.fileName[0] == L'.' &&
+            (find.fileName[1] == L'\0' ||
+             (find.fileName[1] == L'.' && find.fileName[2] == L'\0')))
+            continue;
+        wchar_t profileDir[520];
+        JoinSavePath(profileDir, 520, saveDirectory, find.fileName);
+        const bool primary = SavePartNonEmpty(profileDir, L"AutoSave");
+        const bool companion = SavePartNonEmpty(profileDir, L"AutoSave.qs");
+        // Only surface folders that actually hold a save part; a Saves\ folder
+        // can contain unrelated stray directories.
+        if (!primary && !companion)
+            continue;
+        if (out != 0 && count < outCapacity)
+        {
+            fable_u32 i = 0;
+            for (; find.fileName[i] != L'\0' && i < 63; ++i)
+                out[count].name[i] = find.fileName[i];
+            out[count].name[i] = L'\0';
+            out[count].primaryValid = primary;
+            out[count].companionValid = companion;
+        }
+        ++count;
+    } while (FindNextFileW(handle, &find));
+    FindClose(handle);
+    return count;
+}
+
+fable_u32 FABLE_FASTCALL FableEnumerateVisualFrontendProfiles(
+    const wchar_t* saveDirectory,
+    FableUiProfileName* out,
+    fable_u32 outCapacity)
+{
+    if (saveDirectory == 0 || saveDirectory[0] == L'\0')
+        return 0;
+    wchar_t pattern[520];
+    JoinSavePath(pattern, 520, saveDirectory, L"*");
+    FableWin32FindDataW find;
+    const FableFindHandle handle = FindFirstFileW(pattern, &find);
+    if (handle == reinterpret_cast<FableFindHandle>(static_cast<long>(-1)))
+        return 0;
+
+    fable_u32 count = 0;
+    do
+    {
+        if ((find.attributes & kFableFileAttributeDirectory) == 0)
+            continue;
+        if (find.fileName[0] == L'.' &&
+            (find.fileName[1] == L'\0' ||
+             (find.fileName[1] == L'.' && find.fileName[2] == L'\0')))
+            continue;
+        if (out != 0 && count < outCapacity)
+        {
+            fable_u32 i = 0;
+            for (; find.fileName[i] != L'\0' && i < 63; ++i)
+            {
+                const wchar_t character = find.fileName[i];
+                out[count].name[i] =
+                    character <= 0x7F
+                        ? static_cast<char>(character)
+                        : '?';
+            }
+            out[count].name[i] = '\0';
+        }
+        ++count;
+    } while (FindNextFileW(handle, &find));
+    FindClose(handle);
+
+    const fable_u32 stored =
+        outCapacity < count ? outCapacity : count;
+    for (fable_u32 i = 0; i < stored; ++i)
+    {
+        for (fable_u32 j = i + 1; j < stored; ++j)
+        {
+            const char* left = out[i].name;
+            const char* right = out[j].name;
+            fable_u32 k = 0;
+            while (left[k] != '\0' && right[k] != '\0')
+            {
+                char leftCharacter = left[k];
+                char rightCharacter = right[k];
+                if (leftCharacter >= 'A' && leftCharacter <= 'Z')
+                    leftCharacter = static_cast<char>(leftCharacter + 32);
+                if (rightCharacter >= 'A' && rightCharacter <= 'Z')
+                    rightCharacter = static_cast<char>(rightCharacter + 32);
+                if (leftCharacter != rightCharacter)
+                    break;
+                ++k;
+            }
+            if (left[k] == '\0' || right[k] == '\0')
+            {
+                if (left[k] == '\0' && right[k] != '\0')
+                    continue;
+                if (left[k] != '\0' && right[k] == '\0')
+                    ;
+                else
+                    continue;
+            }
+            else
+            {
+                char leftCharacter = left[k];
+                char rightCharacter = right[k];
+                if (leftCharacter >= 'A' && leftCharacter <= 'Z')
+                    leftCharacter = static_cast<char>(leftCharacter + 32);
+                if (rightCharacter >= 'A' && rightCharacter <= 'Z')
+                    rightCharacter = static_cast<char>(rightCharacter + 32);
+                if (leftCharacter < rightCharacter)
+                    continue;
+            }
+            FableUiProfileName temporary = out[i];
+            out[i] = out[j];
+            out[j] = temporary;
+        }
+    }
+    return count;
 }
 
 fable_u32 FABLE_FASTCALL FableMapUiControllerState(
@@ -1764,6 +1987,11 @@ namespace
     const int kBootCoastalSunbeamResource = 108;
     const int kBootOptionsResource = 109;
     const int kBootHelpersResource = 110;
+    const int kBootAboutResource = 120;
+    const int kBootCreditsResource = 123;
+    const int kBootProfilesResource = 124;
+    const int kBootSpookyResource = 121;
+    const int kBootSpookySunbeamResource = 122;
     const int kBootBuffJesusMenuResource = 111;
     const int kBootTitleSegmentResource = 112;
     const int kBootButtonLeftResource = 113;
@@ -1884,6 +2112,16 @@ namespace
     FableBitmapInfo g_BootOptionsArtworkInfo = {};
     FableBitmap g_BootHelpersArtwork = 0;
     FableBitmapInfo g_BootHelpersArtworkInfo = {};
+    FableBitmap g_BootAboutArtwork = 0;
+    FableBitmapInfo g_BootAboutArtworkInfo = {};
+    FableBitmap g_BootCreditsArtwork = 0;
+    FableBitmapInfo g_BootCreditsArtworkInfo = {};
+    FableBitmap g_BootProfilesArtwork = 0;
+    FableBitmapInfo g_BootProfilesArtworkInfo = {};
+    FableBitmap g_BootSpookyArtwork = 0;
+    FableBitmapInfo g_BootSpookyArtworkInfo = {};
+    FableBitmap g_BootSpookySunbeamArtwork = 0;
+    FableBitmapInfo g_BootSpookySunbeamArtworkInfo = {};
     FableBitmap g_BootTitleSegmentArtwork = 0;
     FableBitmapInfo g_BootTitleSegmentArtworkInfo = {};
     FableBitmap g_BootButtonLeftArtwork = 0;
@@ -1910,27 +2148,30 @@ namespace
     bool g_VisualOptionsBackHovered = false;
     bool g_VisualSaveMenuActive = false;
     unsigned int g_VisualSaveSelection = 0;
+    bool g_VisualAboutMenuActive = false;
+    bool g_VisualCreditsMenuActive = false;
+    bool g_VisualProfilesMenuActive = false;
+    FableUiProfileName g_VisualProfileNames[32] = {};
+    const char* g_VisualProfileNamePointers[32] = {};
+    unsigned int g_VisualProfileNameCount = 0;
+    unsigned int g_VisualProfileSelection = 0;
     unsigned int g_VisualDetailScreen = 0;
     unsigned int g_VisualDetailSelection = 0;
-    const unsigned int kVisualDetailRowCounts[3] = {10, 3, 10};
-    const unsigned int kVisualDetailValueCounts[3][10] = {
-        {2, 2, 2, 10, 2, 16, 2, 2, 2, 2},
-        {11, 11, 11, 0, 0, 0, 0, 0, 0, 0},
-        {3, 4, 3, 4, 4, 4, 18, 2, 4, 3}
-    };
-    const int kVisualDetailRowY[3][10] = {
-        {90, 120, 150, 180, 210, 240, 270, 300, 330, 360},
-        {130, 190, 250, 0, 0, 0, 0, 0, 0, 0},
-        {90, 120, 150, 180, 210, 240, 270, 300, 330, 360}
-    };
+    // audit #4: bound to the shared source of truth (detail_screen_tables.h)
+    // so the input hit-test geometry cannot drift from the render side.
+    const unsigned int (&kVisualDetailRowCounts)[3] =
+        fable_detail_tables::kRowCounts;
+    const unsigned int (&kVisualDetailValueCounts)[3][10] =
+        fable_detail_tables::kValueCounts;
+    const int (&kVisualDetailRowY)[3][10] =
+        fable_detail_tables::kRowY;
     const unsigned int kVisualDetailDefaults[3][10] = {
         {0, 0, 1, 4, 1, 15, 1, 1, 1, 1},
         {6, 8, 9, 0, 0, 0, 0, 0, 0, 0},
         {1, 0, 0, 1, 1, 1, 2, 0, 1, 0}
     };
-    const unsigned int kVisualRedefineDefaults[9] = {
-        31, 27, 9, 12, 1, 2, 3, 3, 3
-    };
+    const unsigned int (&kVisualRedefineDefaults)[9] =
+        fable_detail_tables::kRedefineDefaults;
     const unsigned int kVisualRedefineArrowDefaults[9] = {
         41, 42, 43, 44, 1, 2, 3, 3, 3
     };
@@ -1939,6 +2180,13 @@ namespace
     unsigned int g_VisualDetailSavedValues[3][10] = {};
     unsigned int g_VisualRedefineHover = 0;
     unsigned int g_VisualRedefineResetHover = 0;
+    // Detail-screen (Gameplay/Video/Audio) footer + arrow hover mirrors.
+    // g_VisualDetailButtonHover: 0=none, 1=Cancel, 2=Defaults, 3=Apply.
+    // g_VisualDetailArrowHoverSide: 0=none, 1=left arrow, 2=right arrow;
+    // g_VisualDetailArrowHoverRow: the value row under the hovered arrow.
+    unsigned int g_VisualDetailButtonHover = 0;
+    unsigned int g_VisualDetailArrowHoverRow = 0;
+    unsigned int g_VisualDetailArrowHoverSide = 0;
     unsigned int g_VisualRedefineSelection = 0;
     unsigned int g_VisualRedefineKeys[9] = {};
     unsigned int g_VisualRedefineEntryKeys[9] = {};
@@ -2141,6 +2389,59 @@ namespace
             PlayVisualFrontendResourceSound(kBootSoundUpDownResource);
         else if (request == FableUiFrontEndSoundError)
             PlayVisualFrontendResourceSound(kBootSoundErrorResource);
+    }
+
+    bool RefreshVisualProfileNames()
+    {
+        wchar_t userProfile[260] = {};
+        if (
+            GetEnvironmentVariableW(
+                L"USERPROFILE",
+                userProfile,
+                sizeof(userProfile) / sizeof(userProfile[0])) == 0)
+        {
+            return false;
+        }
+        wchar_t documents[520];
+        JoinSavePath(
+            documents,
+            sizeof(documents) / sizeof(documents[0]),
+            userProfile,
+            L"Documents");
+        wchar_t games[520];
+        JoinSavePath(
+            games,
+            sizeof(games) / sizeof(games[0]),
+            documents,
+            L"My Games");
+        wchar_t fable[520];
+        JoinSavePath(
+            fable,
+            sizeof(fable) / sizeof(fable[0]),
+            games,
+            L"Fable");
+        wchar_t saves[520];
+        JoinSavePath(
+            saves,
+            sizeof(saves) / sizeof(saves[0]),
+            fable,
+            L"Saves");
+
+        memset(g_VisualProfileNames, 0, sizeof(g_VisualProfileNames));
+        g_VisualProfileNameCount = FableEnumerateVisualFrontendProfiles(
+            saves,
+            g_VisualProfileNames,
+            sizeof(g_VisualProfileNames) / sizeof(g_VisualProfileNames[0]));
+        if (g_VisualProfileNameCount >
+            sizeof(g_VisualProfileNames) / sizeof(g_VisualProfileNames[0]))
+        {
+            g_VisualProfileNameCount =
+                sizeof(g_VisualProfileNames) /
+                sizeof(g_VisualProfileNames[0]);
+        }
+        for (unsigned int i = 0; i != g_VisualProfileNameCount; ++i)
+            g_VisualProfileNamePointers[i] = g_VisualProfileNames[i].name;
+        return g_VisualProfileNameCount != 0;
     }
 
     void PaintBootArtwork(FableWindow window)
@@ -2516,6 +2817,25 @@ namespace
             RevealVisualFrontend(window);
             return true;
         }
+        if (action == 16)
+        {
+            // GotoProfileMenu refreshes the runtime profile range before
+            // entering UI_FRONTEND_LIST_FOR_PROFILES. Keep the names sourced
+            // from the user's Saves directory and let the D3D9 row renderer
+            // consume that range.
+            RefreshVisualProfileNames();
+            g_VisualMainMenuActive = false;
+            g_VisualProfilesMenuActive = true;
+            g_VisualProfileSelection = 0;
+            g_VisualOptionsBackHovered = false;
+            FableSetVisualFrontendProfilesMenu(
+                true,
+                g_VisualProfileNamePointers,
+                g_VisualProfileNameCount);
+            PlayVisualFrontendResourceSound(kBootSoundForwardResource);
+            RevealVisualFrontend(window);
+            return true;
+        }
         if (action == 297)
         {
             // Action 297 -> used-key 0x18 ->
@@ -2537,6 +2857,42 @@ namespace
             g_VisualQuitPromptActive = true;
             g_VisualQuitHover = 0;
             FableSetVisualFrontendQuitPrompt(true);
+            PlayVisualFrontendResourceSound(kBootSoundForwardResource);
+            RevealVisualFrontend(window);
+            return true;
+        }
+        if (action == 10)
+        {
+            // Games for Windows - LIVE.  Retail
+            // CFrontEndManager::Action @ 0x0059A238 has NO case for action
+            // 0xa: the switch falls straight to the default `return`, so the
+            // row is dispatched but leaves the main menu unchanged with no
+            // forward sound.  Consume the activation here so the input is
+            // treated as handled (retail-faithful no-op) instead of falling
+            // through to the press-start/options activators.
+            return true;
+        }
+        if (action == 321)
+        {
+            // Action 321 (0x141) -> used key 0x1c ->
+            // GotoNextScreen -> UI_FRONTEND_ABOUT_MENU (#449).
+            g_VisualMainMenuActive = false;
+            g_VisualAboutMenuActive = true;
+            g_VisualOptionsBackHovered = false;
+            FableSetVisualFrontendAboutMenu(true);
+            PlayVisualFrontendResourceSound(kBootSoundForwardResource);
+            RevealVisualFrontend(window);
+            return true;
+        }
+        if (action == 67)
+        {
+            // Action 67 (0x43) -> UI_FRONTEND_CREDITS_MENU.  Its compiled
+            // scrolling container starts at y=480; the D3D9 route presents
+            // that authored initial frame and leaves Back as action 86.
+            g_VisualMainMenuActive = false;
+            g_VisualCreditsMenuActive = true;
+            g_VisualOptionsBackHovered = false;
+            FableSetVisualFrontendCreditsMenu(true);
             PlayVisualFrontendResourceSound(kBootSoundForwardResource);
             RevealVisualFrontend(window);
             return true;
@@ -2581,6 +2937,9 @@ namespace
             g_VisualMainMenuActive ||
             g_VisualOptionsMenuActive ||
             g_VisualSaveMenuActive ||
+            g_VisualAboutMenuActive ||
+            g_VisualCreditsMenuActive ||
+            g_VisualProfilesMenuActive ||
             g_VisualDetailScreen != 0 ||
             g_VisualQuitPromptActive ||
             FableIsRetailVideoActive())
@@ -2765,6 +3124,29 @@ namespace
                     }
                     return 0;
                 }
+                if (g_VisualProfilesMenuActive)
+                {
+                    FableUiFrontEndListScrollPlan plan = {};
+                    FablePlanUiFrontEndListScroll(
+                        scrollDown,
+                        static_cast<long>(g_VisualProfileNameCount),
+                        static_cast<long>(g_VisualProfileSelection),
+                        false,
+                        0,
+                        0,
+                        0,
+                        &plan);
+                    PlayVisualFrontendListSound(plan.soundRequest);
+                    if (plan.moved)
+                    {
+                        g_VisualProfileSelection =
+                            static_cast<unsigned int>(plan.selectedChild);
+                        FableSetVisualFrontendProfilesSelection(
+                            g_VisualProfileSelection);
+                        RevealVisualFrontend(window);
+                    }
+                    return 0;
+                }
                 if (
                     g_VisualDetailScreen >= 1 &&
                     g_VisualDetailScreen <= 3)
@@ -2894,6 +3276,44 @@ namespace
                     RevealVisualFrontend(window);
                     return 0;
                 }
+                if (g_VisualProfilesMenuActive)
+                {
+                    g_VisualProfilesMenuActive = false;
+                    g_VisualMainMenuActive = true;
+                    FableSetVisualFrontendProfilesMenu(false, 0, 0);
+                    FableSetVisualFrontendMainMenu(true);
+                    PlayVisualFrontendResourceSound(
+                        kBootSoundBackResource);
+                    RevealVisualFrontend(window);
+                    return 0;
+                }
+                if (g_VisualAboutMenuActive)
+                {
+                    // About screen has no selectable rows; UI_HELPERS/UI_BACK
+                    // (#563) dispatches retail action 86 -> GotoPreviousScreen
+                    // back to UI_FRONTEND_MAIN_MENU.
+                    g_VisualAboutMenuActive = false;
+                    g_VisualMainMenuActive = true;
+                    FableSetVisualFrontendAboutMenu(false);
+                    FableSetVisualFrontendMainMenu(true);
+                    PlayVisualFrontendResourceSound(
+                        kBootSoundBackResource);
+                    RevealVisualFrontend(window);
+                    return 0;
+                }
+                if (g_VisualCreditsMenuActive)
+                {
+                    // Credits uses UI_HELPERS_CREDITS/UI_BACK, whose retail
+                    // action is the same 86 previous-screen dispatch.
+                    g_VisualCreditsMenuActive = false;
+                    g_VisualMainMenuActive = true;
+                    FableSetVisualFrontendCreditsMenu(false);
+                    FableSetVisualFrontendMainMenu(true);
+                    PlayVisualFrontendResourceSound(
+                        kBootSoundBackResource);
+                    RevealVisualFrontend(window);
+                    return 0;
+                }
             }
             break;
 
@@ -2935,6 +3355,9 @@ namespace
                 (g_VisualMainMenuActive ||
                  g_VisualOptionsMenuActive ||
                  g_VisualSaveMenuActive ||
+                 g_VisualProfilesMenuActive ||
+                 g_VisualAboutMenuActive ||
+                 g_VisualCreditsMenuActive ||
                  g_VisualDetailScreen != 0 ||
                  g_VisualQuitPromptActive))
             {
@@ -3004,6 +3427,81 @@ namespace
                         return 0;
                     }
                 }
+                else if (g_VisualProfilesMenuActive)
+                {
+                    if (
+                        mouseX >= 20 &&
+                        mouseX < 270 &&
+                        mouseY >= 420 &&
+                        mouseY < 450)
+                    {
+                        g_VisualProfilesMenuActive = false;
+                        g_VisualMainMenuActive = true;
+                        FableSetVisualFrontendProfilesMenu(false, 0, 0);
+                        FableSetVisualFrontendMainMenu(true);
+                        PlayVisualFrontendResourceSound(
+                            kBootSoundBackResource);
+                        RevealVisualFrontend(window);
+                        return 0;
+                    }
+                    if (
+                        mouseX >= 200 &&
+                        mouseX < 440 &&
+                        mouseY >= 120 &&
+                        mouseY < 120 + FableFrontendProfileListHeight)
+                    {
+                        const unsigned int row = static_cast<unsigned int>(
+                            (mouseY - 120) /
+                            FableFrontendProfileRowStep);
+                        if (row < g_VisualProfileNameCount)
+                        {
+                            g_VisualProfileSelection = row;
+                            FableSetVisualFrontendProfilesSelection(row);
+                            RevealVisualFrontend(window);
+                            return 0;
+                        }
+                    }
+                }
+                else if (g_VisualAboutMenuActive)
+                {
+                    // About shares the UI_HELPERS Back button region with the
+                    // other subscreens; a click there dispatches retail action
+                    // 86 -> GotoPreviousScreen back to the main menu.  The
+                    // screen has no selectable rows.
+                    if (
+                        mouseX >= 20 &&
+                        mouseX < 270 &&
+                        mouseY >= 420 &&
+                        mouseY < 450)
+                    {
+                        g_VisualAboutMenuActive = false;
+                        g_VisualMainMenuActive = true;
+                        FableSetVisualFrontendAboutMenu(false);
+                        FableSetVisualFrontendMainMenu(true);
+                        PlayVisualFrontendResourceSound(
+                            kBootSoundBackResource);
+                        RevealVisualFrontend(window);
+                        return 0;
+                    }
+                }
+                else if (g_VisualCreditsMenuActive)
+                {
+                    if (
+                        mouseX >= 20 &&
+                        mouseX < 270 &&
+                        mouseY >= 420 &&
+                        mouseY < 450)
+                    {
+                        g_VisualCreditsMenuActive = false;
+                        g_VisualMainMenuActive = true;
+                        FableSetVisualFrontendCreditsMenu(false);
+                        FableSetVisualFrontendMainMenu(true);
+                        PlayVisualFrontendResourceSound(
+                            kBootSoundBackResource);
+                        RevealVisualFrontend(window);
+                        return 0;
+                    }
+                }
                 else if (g_VisualDetailScreen != 0)
                 {
                     if (
@@ -3018,6 +3516,9 @@ namespace
                         g_VisualDetailScreen = 0;
                         g_VisualRedefineHover = 0;
                         g_VisualRedefineResetHover = 0;
+                        g_VisualDetailButtonHover = 0;
+                        g_VisualDetailArrowHoverRow = 0;
+                        g_VisualDetailArrowHoverSide = 0;
                         g_VisualOptionsMenuActive = true;
                         FableSetVisualFrontendDetailScreen(0);
                         FableSetVisualFrontendOptionsMenu(true);
@@ -3037,6 +3538,9 @@ namespace
                         g_VisualDetailScreen = 0;
                         g_VisualRedefineHover = 0;
                         g_VisualRedefineResetHover = 0;
+                        g_VisualDetailButtonHover = 0;
+                        g_VisualDetailArrowHoverRow = 0;
+                        g_VisualDetailArrowHoverSide = 0;
                         g_VisualOptionsMenuActive = true;
                         FableSetVisualFrontendDetailScreen(0);
                         FableSetVisualFrontendOptionsMenu(true);
@@ -3162,6 +3666,9 @@ namespace
                 !g_VisualMainMenuActive &&
                 !g_VisualOptionsMenuActive &&
                 !g_VisualSaveMenuActive &&
+                !g_VisualProfilesMenuActive &&
+                !g_VisualAboutMenuActive &&
+                !g_VisualCreditsMenuActive &&
                 g_VisualDetailScreen == 0 &&
                 !g_VisualQuitPromptActive)
                 break;
@@ -3257,6 +3764,76 @@ namespace
                 }
                 return 0;
             }
+            if (g_VisualProfilesMenuActive)
+            {
+                const bool backHovered =
+                    mouseX >= 20 &&
+                    mouseX < 270 &&
+                    mouseY >= 420 &&
+                    mouseY < 450;
+                if (g_VisualOptionsBackHovered != backHovered)
+                {
+                    g_VisualOptionsBackHovered = backHovered;
+                    FableSetVisualFrontendOptionsBackHovered(
+                        backHovered);
+                    RevealVisualFrontend(window);
+                }
+                if (
+                    mouseX >= 200 &&
+                    mouseX < 440 &&
+                    mouseY >= 120 &&
+                        mouseY < 120 + FableFrontendProfileListHeight)
+                    {
+                        const unsigned int row = static_cast<unsigned int>(
+                            (mouseY - 120) /
+                            FableFrontendProfileRowStep);
+                    if (
+                        row < g_VisualProfileNameCount &&
+                        g_VisualProfileSelection != row)
+                    {
+                        g_VisualProfileSelection = row;
+                        FableSetVisualFrontendProfilesSelection(row);
+                        RevealVisualFrontend(window);
+                    }
+                }
+                return 0;
+            }
+            if (g_VisualAboutMenuActive)
+            {
+                // About shares the UI_HELPERS Back button with Options/Save
+                // (same rect + shared g_VisualOptionsBackHovered state); it has
+                // no selectable rows, so only the Back hover is tracked.
+                const bool backHovered =
+                    mouseX >= 20 &&
+                    mouseX < 270 &&
+                    mouseY >= 420 &&
+                    mouseY < 450;
+                if (g_VisualOptionsBackHovered != backHovered)
+                {
+                    g_VisualOptionsBackHovered = backHovered;
+                    FableSetVisualFrontendOptionsBackHovered(
+                        backHovered);
+                    RevealVisualFrontend(window);
+                }
+                return 0;
+            }
+            if (g_VisualCreditsMenuActive)
+            {
+                // Credits shares the same live Back helper geometry.
+                const bool backHovered =
+                    mouseX >= 20 &&
+                    mouseX < 270 &&
+                    mouseY >= 420 &&
+                    mouseY < 450;
+                if (g_VisualOptionsBackHovered != backHovered)
+                {
+                    g_VisualOptionsBackHovered = backHovered;
+                    FableSetVisualFrontendOptionsBackHovered(
+                        backHovered);
+                    RevealVisualFrontend(window);
+                }
+                return 0;
+            }
             if (g_VisualDetailScreen != 0)
             {
                 if (g_VisualDetailScreen == 4)
@@ -3272,12 +3849,95 @@ namespace
                         RevealVisualFrontend(window);
                     }
                     unsigned int resetHover = 0;
-                    if (mouseY >= 389 && mouseY < 453)
+                    // AUDIT #2: the reset hover band was [389,453) while its
+                    // click band is [389,429) -- a 24px dead strip that lit
+                    // but did not click.  Match the click rect so highlight ==
+                    // clickable.
+                    if (mouseY >= 389 && mouseY < 429)
                         resetHover = mouseX < 320 ? 1 : 2;
                     if (g_VisualRedefineResetHover != resetHover)
                     {
                         g_VisualRedefineResetHover = resetHover;
                         FableSetVisualFrontendRedefineResetHover(resetHover);
+                        RevealVisualFrontend(window);
+                    }
+                }
+                // Footer button hover.  The click handler footer rects for
+                // Cancel/Apply are gated only by g_VisualDetailScreen!=0, so
+                // they also fire on Redefine (screen 4) -- AUDIT #1: track the
+                // Cancel/Apply hover on screens 1-4 so Redefine's footer lights
+                // too, but keep Defaults gated to 1-3 (no screen-4 art/rect).
+                unsigned int buttonHover = 0;
+                if (
+                    mouseX >= 20 &&
+                    mouseX < 276 &&
+                    mouseY >= 424 &&
+                    mouseY < 480)
+                {
+                    buttonHover = 1;
+                }
+                else if (
+                    mouseX >= 362 &&
+                    mouseX < 618 &&
+                    mouseY >= 424 &&
+                    mouseY < 480)
+                {
+                    buttonHover = 3;
+                }
+                else if (
+                    g_VisualDetailScreen <= 3 &&
+                    mouseX >= 192 &&
+                    mouseX < 448 &&
+                    mouseY >= 384 &&
+                    mouseY < 424)
+                {
+                    buttonHover = 2;
+                }
+                if (g_VisualDetailButtonHover != buttonHover)
+                {
+                    g_VisualDetailButtonHover = buttonHover;
+                    FableSetVisualFrontendDetailButtonHover(buttonHover);
+                    RevealVisualFrontend(window);
+                }
+                if (g_VisualDetailScreen >= 1 && g_VisualDetailScreen <= 3)
+                {
+                    // Arrow hover mirrors AdjustVisualDetailControl's row scan:
+                    // only rows < kVisualDetailRowCounts are valid (Video has 3;
+                    // rows 3-9 have rowY 0), so phantom rows never highlight.
+                    const unsigned int screenIndex =
+                        g_VisualDetailScreen - 1;
+                    unsigned int arrowRow = 0;
+                    unsigned int arrowSide = 0;
+                    for (
+                        unsigned int detailRow = 0;
+                        detailRow != kVisualDetailRowCounts[screenIndex];
+                        ++detailRow)
+                    {
+                        const int rowTop =
+                            kVisualDetailRowY[screenIndex][detailRow] - 3;
+                        if (mouseY < rowTop || mouseY >= rowTop + 30)
+                            continue;
+                        if (mouseX >= 300 && mouseX < 340)
+                        {
+                            arrowRow = detailRow;
+                            arrowSide = 1;
+                        }
+                        else if (mouseX >= 462 && mouseX < 502)
+                        {
+                            arrowRow = detailRow;
+                            arrowSide = 2;
+                        }
+                        break;
+                    }
+                    if (
+                        g_VisualDetailArrowHoverRow != arrowRow ||
+                        g_VisualDetailArrowHoverSide != arrowSide)
+                    {
+                        g_VisualDetailArrowHoverRow = arrowRow;
+                        g_VisualDetailArrowHoverSide = arrowSide;
+                        FableSetVisualFrontendDetailArrowHover(
+                            arrowRow,
+                            arrowSide);
                         RevealVisualFrontend(window);
                     }
                 }
@@ -3628,6 +4288,13 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     g_VisualOptionsBackHovered = false;
     g_VisualSaveMenuActive = false;
     g_VisualSaveSelection = 0;
+    g_VisualAboutMenuActive = false;
+    g_VisualCreditsMenuActive = false;
+    g_VisualProfilesMenuActive = false;
+    memset(g_VisualProfileNames, 0, sizeof(g_VisualProfileNames));
+    memset(g_VisualProfileNamePointers, 0, sizeof(g_VisualProfileNamePointers));
+    g_VisualProfileNameCount = 0;
+    g_VisualProfileSelection = 0;
     g_VisualDetailScreen = 0;
     g_VisualRedefineHover = 0;
     g_VisualRedefineResetHover = 0;
@@ -3809,6 +4476,43 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         g_BootBuffJesusMenuArtwork = 0;
         g_BootMenuArtwork = 0;
     }
+    // SPOOKY graveyard background for UI_FRONTEND_ABOUT_MENU: a 640x1920
+    // 4-frame sheet + 640x1440 3-frame sunbeam, animated like forest/coastal.
+    g_BootSpookyArtwork = static_cast<FableBitmap>(LoadImageA(
+        instance,
+        IntegerResource(kBootSpookyResource),
+        kImageBitmap,
+        0,
+        0,
+        kLoadCreatedDibSection));
+    g_BootSpookySunbeamArtwork =
+        static_cast<FableBitmap>(LoadImageA(
+            instance,
+            IntegerResource(kBootSpookySunbeamResource),
+            kImageBitmap,
+            0,
+            0,
+            kLoadCreatedDibSection));
+    if (
+        g_BootSpookyArtwork != 0 &&
+        g_BootSpookySunbeamArtwork != 0)
+    {
+        GetObjectA(
+            g_BootSpookyArtwork,
+            sizeof(g_BootSpookyArtworkInfo),
+            &g_BootSpookyArtworkInfo);
+        GetObjectA(
+            g_BootSpookySunbeamArtwork,
+            sizeof(g_BootSpookySunbeamArtworkInfo),
+            &g_BootSpookySunbeamArtworkInfo);
+    }
+    else
+    {
+        DeleteObject(g_BootSpookySunbeamArtwork);
+        DeleteObject(g_BootSpookyArtwork);
+        g_BootSpookySunbeamArtwork = 0;
+        g_BootSpookyArtwork = 0;
+    }
 #if defined(FABLETLC_RETAIL_FRONTEND_SUBSCREENS)
     g_BootOptionsArtwork = static_cast<FableBitmap>(LoadImageA(
         instance,
@@ -3852,13 +4556,37 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         0,
         0,
         kLoadCreatedDibSection));
+    g_BootAboutArtwork = static_cast<FableBitmap>(LoadImageA(
+        instance,
+        IntegerResource(kBootAboutResource),
+        kImageBitmap,
+        0,
+        0,
+        kLoadCreatedDibSection));
+    g_BootCreditsArtwork = static_cast<FableBitmap>(LoadImageA(
+        instance,
+        IntegerResource(kBootCreditsResource),
+        kImageBitmap,
+        0,
+        0,
+        kLoadCreatedDibSection));
+    g_BootProfilesArtwork = static_cast<FableBitmap>(LoadImageA(
+        instance,
+        IntegerResource(kBootProfilesResource),
+        kImageBitmap,
+        0,
+        0,
+        kLoadCreatedDibSection));
     if (
         g_BootOptionsArtwork != 0 &&
         g_BootHelpersArtwork != 0 &&
         g_BootTitleSegmentArtwork != 0 &&
         g_BootButtonLeftArtwork != 0 &&
         g_BootButtonMiddleArtwork != 0 &&
-        g_BootButtonRightArtwork != 0)
+        g_BootButtonRightArtwork != 0 &&
+        g_BootAboutArtwork != 0 &&
+        g_BootCreditsArtwork != 0 &&
+        g_BootProfilesArtwork != 0)
     {
         GetObjectA(
             g_BootOptionsArtwork,
@@ -3884,15 +4612,33 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
             g_BootButtonRightArtwork,
             sizeof(g_BootButtonRightArtworkInfo),
             &g_BootButtonRightArtworkInfo);
+        GetObjectA(
+            g_BootAboutArtwork,
+            sizeof(g_BootAboutArtworkInfo),
+            &g_BootAboutArtworkInfo);
+        GetObjectA(
+            g_BootCreditsArtwork,
+            sizeof(g_BootCreditsArtworkInfo),
+            &g_BootCreditsArtworkInfo);
+        GetObjectA(
+            g_BootProfilesArtwork,
+            sizeof(g_BootProfilesArtworkInfo),
+            &g_BootProfilesArtworkInfo);
     }
     else
     {
+        DeleteObject(g_BootCreditsArtwork);
+        DeleteObject(g_BootProfilesArtwork);
+        DeleteObject(g_BootAboutArtwork);
         DeleteObject(g_BootButtonRightArtwork);
         DeleteObject(g_BootButtonMiddleArtwork);
         DeleteObject(g_BootButtonLeftArtwork);
         DeleteObject(g_BootTitleSegmentArtwork);
         DeleteObject(g_BootHelpersArtwork);
         DeleteObject(g_BootOptionsArtwork);
+        g_BootAboutArtwork = 0;
+        g_BootCreditsArtwork = 0;
+        g_BootProfilesArtwork = 0;
         g_BootButtonRightArtwork = 0;
         g_BootButtonMiddleArtwork = 0;
         g_BootButtonLeftArtwork = 0;
@@ -3991,7 +4737,32 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
             g_BootButtonRightArtworkInfo.height,
             g_BootButtonRightArtworkInfo.widthBytes,
             g_BootButtonRightArtworkInfo.bitsPerPixel,
-            g_BootButtonRightArtworkInfo.pixels))
+            g_BootButtonRightArtworkInfo.pixels,
+            g_BootAboutArtworkInfo.width,
+            g_BootAboutArtworkInfo.height,
+            g_BootAboutArtworkInfo.widthBytes,
+            g_BootAboutArtworkInfo.bitsPerPixel,
+            g_BootAboutArtworkInfo.pixels,
+            g_BootCreditsArtworkInfo.width,
+            g_BootCreditsArtworkInfo.height,
+            g_BootCreditsArtworkInfo.widthBytes,
+            g_BootCreditsArtworkInfo.bitsPerPixel,
+            g_BootCreditsArtworkInfo.pixels,
+            g_BootProfilesArtworkInfo.width,
+            g_BootProfilesArtworkInfo.height,
+            g_BootProfilesArtworkInfo.widthBytes,
+            g_BootProfilesArtworkInfo.bitsPerPixel,
+            g_BootProfilesArtworkInfo.pixels,
+            g_BootSpookyArtworkInfo.width,
+            g_BootSpookyArtworkInfo.height,
+            g_BootSpookyArtworkInfo.widthBytes,
+            g_BootSpookyArtworkInfo.bitsPerPixel,
+            g_BootSpookyArtworkInfo.pixels,
+            g_BootSpookySunbeamArtworkInfo.width,
+            g_BootSpookySunbeamArtworkInfo.height,
+            g_BootSpookySunbeamArtworkInfo.widthBytes,
+            g_BootSpookySunbeamArtworkInfo.bitsPerPixel,
+            g_BootSpookySunbeamArtworkInfo.pixels))
     {
 #if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
         SetWindowTextA(

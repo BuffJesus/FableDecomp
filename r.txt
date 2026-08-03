@@ -1,0 +1,72 @@
+
+r.bin:     file format binary
+
+
+Disassembly of section .data:
+
+00000000 <.data>:
+   0:	51                   	push   ecx
+   1:	56                   	push   esi
+   2:	8b 35 20 ca 3b 01    	mov    esi,DWORD PTR ds:0x13bca20
+   8:	46                   	inc    esi
+   9:	8d 44 24 04          	lea    eax,[esp+0x4]
+   d:	3b d0                	cmp    edx,eax
+   f:	57                   	push   edi
+  10:	8b f9                	mov    edi,ecx
+  12:	c7 44 24 08 00 00 00 	mov    DWORD PTR [esp+0x8],0x0
+  19:	00 
+  1a:	89 35 20 ca 3b 01    	mov    DWORD PTR ds:0x13bca20,esi
+  20:	74 11                	je     0x33
+  22:	8b 12                	mov    edx,DWORD PTR [edx]
+  24:	85 d2                	test   edx,edx
+  26:	74 0b                	je     0x33
+  28:	8b 42 0c             	mov    eax,DWORD PTR [edx+0xc]
+  2b:	40                   	inc    eax
+  2c:	89 54 24 08          	mov    DWORD PTR [esp+0x8],edx
+  30:	89 42 0c             	mov    DWORD PTR [edx+0xc],eax
+  33:	8b 4c 24 10          	mov    ecx,DWORD PTR [esp+0x10]
+  37:	51                   	push   ecx
+  38:	8d 4c 24 0c          	lea    ecx,[esp+0xc]
+  3c:	e8 1f fa ff ff       	call   0xfffffa60
+  41:	8b 74 24 08          	mov    esi,DWORD PTR [esp+0x8]
+  45:	c7 07 00 00 00 00    	mov    DWORD PTR [edi],0x0
+  4b:	8b 0d 20 ca 3b 01    	mov    ecx,DWORD PTR ds:0x13bca20
+  51:	41                   	inc    ecx
+  52:	8d 54 24 08          	lea    edx,[esp+0x8]
+  56:	3b d7                	cmp    edx,edi
+  58:	89 0d 20 ca 3b 01    	mov    DWORD PTR ds:0x13bca20,ecx
+  5e:	74 1a                	je     0x7a
+  60:	8b 07                	mov    eax,DWORD PTR [edi]
+  62:	3b f0                	cmp    esi,eax
+  64:	74 14                	je     0x7a
+  66:	85 c0                	test   eax,eax
+  68:	74 07                	je     0x71
+  6a:	8b cf                	mov    ecx,edi
+  6c:	e8 ef f5 ff ff       	call   0xfffff660
+  71:	85 f6                	test   esi,esi
+  73:	74 2e                	je     0xa3
+  75:	89 37                	mov    DWORD PTR [edi],esi
+  77:	ff 46 0c             	inc    DWORD PTR [esi+0xc]
+  7a:	85 f6                	test   esi,esi
+  7c:	74 25                	je     0xa3
+  7e:	8b 4e 0c             	mov    ecx,DWORD PTR [esi+0xc]
+  81:	49                   	dec    ecx
+  82:	8b c1                	mov    eax,ecx
+  84:	85 c0                	test   eax,eax
+  86:	89 4e 0c             	mov    DWORD PTR [esi+0xc],ecx
+  89:	7f 18                	jg     0xa3
+  8b:	8b 06                	mov    eax,DWORD PTR [esi]
+  8d:	85 c0                	test   eax,eax
+  8f:	74 09                	je     0x9a
+  91:	50                   	push   eax
+  92:	e8 0d 2b 26 00       	call   0x262ba4
+  97:	83 c4 04             	add    esp,0x4
+  9a:	56                   	push   esi
+  9b:	e8 ac 2a 26 00       	call   0x262b4c
+  a0:	83 c4 04             	add    esp,0x4
+  a3:	ff 0d 20 ca 3b 01    	dec    DWORD PTR ds:0x13bca20
+  a9:	8b c7                	mov    eax,edi
+  ab:	5f                   	pop    edi
+  ac:	5e                   	pop    esi
+  ad:	59                   	pop    ecx
+  ae:	c2 04 00             	ret    0x4

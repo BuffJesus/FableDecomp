@@ -198,7 +198,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00440d70	_global	Vector_EraseRange	PASS	_global	Vector_EraseRange	undefined	CEnginePrimitiveHandleOverlay* __thiscall	0	3		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
 00440e00	_global	Vector_CopyElements	PASS	_global	Vector_CopyElements	undefined	void __thiscall	0	3		REVIEW	explicit-parameter-count-mismatch
 00441020	_global	vector_insert_with_fill	PASS	_global	vector_insert_with_fill	undefined	void __thiscall	0	4		REVIEW	explicit-parameter-count-mismatch
-004413c0	_global	Vector_Reallocate	PASS	_global	Vector_Reallocate	undefined	void __thiscall	0	6		REVIEW	explicit-parameter-count-mismatch
+004413c0	_global	Vector_Reallocate	PASS	_global	Vector_Reallocate	undefined	void __thiscall	0	6	004413c0;00449130	REVIEW	explicit-parameter-count-mismatch;duplicate-linkage-signature
 004416e0	_global	VectorReallocateDouble	PASS	_global	VectorReallocateDouble	undefined	void __thiscall	0	6		REVIEW	explicit-parameter-count-mismatch
 00441800	_global	Catch@0047e8cc	PASS	_global	Catch_0047e8cc	undefined	void __fastcall	0	1	00441800;00441b90;00442190;00442280;00442d50;00442e60;004430f0;00443540;004437e0;004438b0;00443980;004439e0;00443ac0;00443b20	REVIEW	method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature
 00441870	_global	List_DestroyElements	PASS	_global	List_DestroyElements	undefined	void __fastcall	0	1		REVIEW	explicit-parameter-count-mismatch
@@ -233,6 +233,16 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00447390	_global	Catch@0040d959	PASS	_global	Catch_0040d959	undefined	void __fastcall	0	1		REVIEW	method-name-mismatch;explicit-parameter-count-mismatch
 00448520	_global	Vector_DestroyRange	PASS	_global	Vector_DestroyRange	undefined	void	0	4		REVIEW	explicit-parameter-count-mismatch
 00448ab0	_global	Heap_SiftDown_ContainmentVolume	PASS	_global	Heap_SiftDown_ContainmentVolume	undefined	CCountedPointer_CContainmentVolume_* __fastcall	0	5		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
+00448be0	_global	Heap_MakeHeap_NavConnector	PASS	_global	Heap_MakeHeap_NavConnector	undefined	void __fastcall	0	3		REVIEW	explicit-parameter-count-mismatch
+00448e90	_global	Vector_InsertWithMove	PASS	_global	Vector_InsertWithMove	undefined	void __fastcall	0	6		REVIEW	explicit-parameter-count-mismatch
+00449050	_global	Vector_ReallocateAndFill	PASS	_global	UninitCopyActiveEntityScriptPair	undefined	static ActiveEntityScriptPairOverlay*	0	4		REVIEW	method-name-mismatch;explicit-parameter-count-mismatch;return-shape-mismatch
+00449130	_global	Vector_Reallocate	PASS	_global	Vector_Reallocate	undefined	void	0	6	004413c0;00449130	REVIEW	explicit-parameter-count-mismatch;duplicate-linkage-signature
+00449220	_global	Heap_BuildFromElements	PASS	_global	Heap_BuildFromElements	undefined	void __fastcall	0	3		REVIEW	explicit-parameter-count-mismatch
+00449270	_global	Heap_OrderAndSort	PASS	_global	Heap_OrderAndSort	undefined	void __fastcall	0	5		REVIEW	explicit-parameter-count-mismatch
+00449320	_global	CList_PushBack	PASS	_global	CList_PushBack	undefined	void __thiscall	0	2		REVIEW	explicit-parameter-count-mismatch
+00449440	_global	Vector_InsertElement	PASS	_global	Vector_InsertElement	undefined	void __thiscall	0	3		REVIEW	explicit-parameter-count-mismatch
+004494d0	_global	Heap_SiftDown	PASS	_global	Heap_SiftDown	undefined	void __fastcall	0	5		REVIEW	explicit-parameter-count-mismatch
+004495d0	_global	SoundPair_MakeHeap	PASS	_global	SoundPair_MakeHeap	undefined	void __fastcall	0	3		REVIEW	explicit-parameter-count-mismatch
 00449b60	CPlayerManager	GetMultiplayerColour	PASS	CPlayerManager	GetMultiplayerColour	CRGBColour	CRGBColour	1	1		PASS	
 00449d20	CPlayerManager	IsMultiplayerGameActive	PASS	CPlayerManager	IsMultiplayerGameActive	bool	bool	0	0		PASS	
 004aa890	CScriptThing	CScriptThing::IsDead	PASS	CScriptThing	IsDead	bool	bool	0	0		PASS	
@@ -698,14 +708,14 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 008a8e40	CGameScriptInterface	CGameScriptInterface::EntityDecapitate	PASS	CGameScriptInterface	EntityDecapitate	void	void __thiscall	1	1		PASS	
 008a8eb0	CGameScriptInterface	CGameScriptInterface::EntitySetAttackThingImmediately	PASS	CGameScriptInterface	EntitySetAttackThingImmediately	void	void __thiscall	4	4		PASS	
 008a8f20	CGameScriptInterface	CGameScriptInterface::GetItemDefNamesFromContainer	PASS	CGameScriptInterface	GetItemDefNamesFromContainer	void	void	2	2		PASS	
-008a9100	CGameScriptInterface	CGameScriptInterface::CreateCreature	FAIL	CGameScriptInterface	CreateCreature	CScriptThing	CScriptThing	4	4		PASS	
+008a9100	CGameScriptInterface	CGameScriptInterface::CreateCreature	FAIL	CGameScriptInterface	CreateCreature	CScriptThing	CScriptThing* __thiscall	4	5		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
 008a9320	CGameScriptInterface	CGameScriptInterface::EntityCastForcePush	PASS	CGameScriptInterface	EntityCastForcePush	bool	bool __thiscall	2	2		PASS	
 008a93a0	CGameScriptInterface	CGameScriptInterface::EntityWillTeleportToArea	PASS	CGameScriptInterface	EntityWillTeleportToArea	bool	bool __thiscall	4	4		PASS	
 008a9610	CGameScriptInterface	CGameScriptInterface::SetThingAsConscious	PASS	CGameScriptInterface	SetThingAsConscious	void	void __thiscall	3	3		PASS	
 008a96c0	CGameScriptInterface	CGameScriptInterface::SetCategoryActivity	PASS	CGameScriptInterface	SetCategoryActivity	void	void __thiscall	2	2		PASS	
 008a9720	CGameScriptInterface	CGameScriptInterface::SetActiveGossipCategories	PASS	CGameScriptInterface	SetActiveGossipCategories	void	void __thiscall	2	2		PASS	
 008a99f0	CGameScriptInterface	CGameScriptInterface::SetThingAndCarriedItemsNotAffectedByScreenFilter	PASS	CGameScriptInterface	SetThingAndCarriedItemsNotAffectedByScreenFilter	void	void __thiscall	2	2		PASS	
-008a9ae0	CGameScriptInterface	CGameScriptInterface::MsgOnBoastsMade	FAIL	CGameScriptInterface	MsgOnBoastsMade	bool	bool	1	1		PASS	
+008a9ae0	CGameScriptInterface	CGameScriptInterface::MsgOnBoastsMade	PASS	CGameScriptInterface	MsgOnBoastsMade	bool	bool	1	1		PASS	
 008a9c40	CGameScriptInterface	CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom	PASS	CGameScriptInterface	GetAllThingsWithDefNameByDistanceFrom	long	int	3	3		PASS	
 008a9db0	CGameScriptInterface	CGameScriptInterface::AddRumourCategory	PASS	CGameScriptInterface	AddRumourCategory	void	void __thiscall	1	1		PASS	
 008a9dd0	CGameScriptInterface	CGameScriptInterface::AddNewRumourToCategory	PASS	CGameScriptInterface	AddNewRumourToCategory	void	void __thiscall	2	2		PASS	
@@ -820,7 +830,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00c62a30	_global	StreamBuffer_AdvancePosition	PASS	_global	StreamBuffer_AdvancePosition	undefined	void __thiscall	0	2		REVIEW	explicit-parameter-count-mismatch
 00c88e60	_global	Audio_ProcessFilter4Channel	PASS	_global	Audio_ProcessFilter4Channel	undefined	void __cdecl	0	5		REVIEW	explicit-parameter-count-mismatch
 00c8bae0	_global	Script_GetEntryPointer	PASS	_global	Script_GetEntryPointer	undefined	std::int32_t __fastcall	0	2		REVIEW	explicit-parameter-count-mismatch
-00c8c730	_global	Batch_InvokeWithStackArgs_c8c730	FAIL	_global	Batch_InvokeWithStackArgs_c8c730	undefined	int __stdcall	0	3		REVIEW	explicit-parameter-count-mismatch
+00c8c730	_global	Batch_InvokeWithStackArgs_c8c730	FAIL	_global	Batch_InvokeWithStackArgs_c8c730	undefined	int	0	0		PASS	
 00c92f10	_global	DSP_ComputeRunningMinEnvelope	PASS	_global	DSP_ComputeRunningMinEnvelope	undefined	void __cdecl	0	3		REVIEW	explicit-parameter-count-mismatch
 00c93080	_global	FFT_ComputeWaveformEnvelope	PASS	_global	FFT_ComputeWaveformEnvelope	undefined	void	0	2		REVIEW	explicit-parameter-count-mismatch
 00c93b30	_global	Audio_ApplyGainTableToBuffer	PASS	_global	Audio_ApplyGainTableToBuffer	undefined	void __fastcall	0	5		REVIEW	explicit-parameter-count-mismatch
