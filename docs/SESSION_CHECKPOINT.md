@@ -9,12 +9,14 @@ in-flight session state + the quest-card task the automation does NOT track.
 The frontend visual checkpoint now has a sourced Credits entry path. Its
 compiled layout oracle is green, its initial frame preserves the retail scroll
 start at y=480, action 67 enters it, and the shared Back helper/Escape returns
-to the main menu. The focused frontend suite is 34/34; the complete visual
+to the main menu. The focused frontend suite is 35/35; the complete visual
 smoke includes Credits and its hover proof. Change Profile's normal runtime
-list now refreshes the user's profile directories and renders their names
-through the retail font atlas; delete-mode, the empty-profile branch, and
-new-profile editing remain separate boundaries. Full Credits text scrolling
-remains a separate live-component boundary.
+list refreshes the user's profile directories and renders their names through
+the retail font atlas. Delete mode now enters the retail-pipeline confirmation
+frame, the empty-profile branch reaches the authored New Profile route, and
+new-profile editing follows the recovered 128-byte text-input contract. Native
+delete/create/load/refresh persistence remains an explicit manager link boundary.
+Full Credits text scrolling remains a separate live-component boundary.
 
 The focused suite also extracts all six authored `TEXT_GUI_CRE_*` groups
 from `text.big` without flattening or reordering their member IDs. Geometry

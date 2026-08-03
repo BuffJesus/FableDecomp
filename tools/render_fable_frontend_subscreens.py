@@ -8,9 +8,8 @@ The layout is taken directly from the shipped ``frontend.bin`` records:
 * ``UI_FRONTEND_QUIT_PROMPT`` (#631)
 * ``UI_FRONTEND_QUIT_YES/NO`` (#595/#596)
 
-Final screen-title composition uses the shared 640-pixel header center x=320.
-The serialized x=65/left-aligned title child remains a table-local record and
-is not treated as the final flat-surface text origin.
+Final screen-title composition uses the serialized x=65 left-aligned title
+child from the shipped frontend layout.
 
 The primary output consists of two vertical sheets.  The Options sheet has
 one 640x480 frame per selected row followed by the Gameplay, Audio, Video,
@@ -65,13 +64,13 @@ CREDITS_TEXT_GROUPS = (
     ("UI_CREDITS_TEXT_THANKS", "TEXT_GUI_CRE_THANKS", "ENG_ARIAL_12"),
 )
 HEADER_RULE_POSITION = (0, 35)
-HEADER_TEXT_POSITION = (CANVAS_SIZE[0] // 2, 44)
+HEADER_TEXT_POSITION = (65, 44)
 
 # UI_FRONTEND_ABOUT_MENU (#449) header sits 30px higher than the Options
 # header: UI_TABLE_TITLE_WHOLE_ABOUT (#121) is serialized at (0,5) and
-# UI_TEXT_ABOUT_MENU_TITLE (#450) at (65,14) -> resolved centre x=320.
+# UI_TEXT_ABOUT_MENU_TITLE (#450) at (65,14).
 ABOUT_RULE_POSITION = (0, 5)
-ABOUT_TITLE_TEXT_POSITION = (CANVAS_SIZE[0] // 2, 14)
+ABOUT_TITLE_TEXT_POSITION = (65, 14)
 # UI_FRONTEND_ABOUT_MESSAGE (#451): ENG_ARIAL_12, serialized (320,60), text
 # window BR (700,5000).  The screen scrolls, so a baked still shows the
 # message at its initial (top) scroll position.
@@ -415,6 +414,26 @@ def validate_compiled_subscreen_layout(game_root, schema_path):
         save_values["Wrapping"],
         True)
     require_equal(
+        "Saved-games list scrolling",
+        save_values["Scrolling"],
+        True)
+    require_equal(
+        "Saved-games list up arrow",
+        save_values["UpArrow"],
+        428)
+    require_equal(
+        "Saved-games list down arrow",
+        save_values["DownArrow"],
+        425)
+    require_position(
+        "Saved-games up-arrow position",
+        layout.initial_position("UI_SAVE_LIST_ARROW_UP"),
+        (270, 80))
+    require_position(
+        "Saved-games down-arrow position",
+        layout.initial_position("UI_SAVE_LIST_ARROW_DOWN"),
+        (270, 220))
+    require_equal(
         "Saved-games button child",
         layout.child_names("UI_FRONTEND_BUTTON_FOR_SAVE_LIST"),
         ("UI_BUTTON_MOUSE_AREA_SAVE_GAME",))
@@ -620,12 +639,6 @@ def validate_compiled_subscreen_layout(game_root, schema_path):
                 "UI_FRONTEND_BUTTON_M",
             )),
         (364, 366, 365))
-    require_equal(
-        "resolved screen-title center",
-        HEADER_TEXT_POSITION[0],
-        int(
-            layout.initial_position(title_rule)[0] +
-            layout.decoded(title_rule)["Width"] / 2))
     for name in (
             "UI_TEXT_OPTIONS_MENU_TITLE",
             "UI_TEXT_GAME_OPTIONS_MENU_TITLE",
@@ -656,6 +669,26 @@ def validate_compiled_subscreen_layout(game_root, schema_path):
         "Redefine visible height",
         redefine_values["Height"],
         250.0)
+    require_equal(
+        "Redefine list up arrow",
+        redefine_values["UpArrow"],
+        417)
+    require_equal(
+        "Redefine list down arrow",
+        redefine_values["DownArrow"],
+        420)
+    require_equal(
+        "Redefine list scrolling",
+        redefine_values["Scrolling"],
+        True)
+    require_position(
+        "Redefine up-arrow position",
+        layout.initial_position("UI_REDEFINER_LIST_ARROW_UP"),
+        (304, 80))
+    require_position(
+        "Redefine down-arrow position",
+        layout.initial_position("UI_REDEFINER_LIST_ARROW_DOWN"),
+        (304, 350))
     require_equal(
         "Redefine action order",
         tuple(redefine_values["ActionOrder"][:len(REDEFINE_ACTION_ORDER)]),
@@ -930,6 +963,67 @@ def validate_compiled_profiles_layout(game_root, schema_path):
             "UI_HELPERS",
         ))
 
+    delete_confirm = layout.decoded("UI_FRONTEND_DELETE_PROFILE_MENU")
+    require_equal(
+        "Delete confirmation child order",
+        layout.child_names("UI_FRONTEND_DELETE_PROFILE_MENU"),
+        (
+            "UI_TEXT_DELETE_PROFILE_MENU_TITLE",
+            "UI_BLENDING_BACKGROUNDS_SPOOKY",
+            "UI_TABLE_TITLE_WHOLE",
+            "UI_FRONTEND_DELETE_PROFILE_YES",
+            "UI_FRONTEND_DELETE_PROFILE_NO",
+            "UI_DELETE_PROFILE_TEXT",
+        ))
+    require_equal(
+        "Delete confirmation type",
+        delete_confirm["Type"],
+        10)
+    require_equal(
+        "Delete confirmation title text",
+        layout.decoded("UI_TEXT_DELETE_PROFILE_MENU_TITLE")["TextValue"],
+        "TEXT_GUI_MENU_DELETE_PROFILE")
+    require_equal(
+        "Delete confirmation prompt text",
+        layout.decoded("UI_TEXT_DELETE_PROFILE_PROMPT")["TextValue"],
+        "TEXT_GUI_MENU_DELETE_PROFILE_PROMPT")
+    require_equal(
+        "Delete confirmation explanation text",
+        layout.decoded("UI_DELETE_PROFILE_TEXT")["TextValue"],
+        "TEXT_GUI_MENU_DELETE_PROFILE_EXPLANATION")
+    require_equal(
+        "Delete confirmation title font",
+        layout.decoded("UI_TEXT_DELETE_PROFILE_MENU_TITLE")["Font"],
+        "ENG_ARIAL_24")
+    require_equal(
+        "Delete confirmation prompt font",
+        layout.decoded("UI_TEXT_DELETE_PROFILE_PROMPT")["Font"],
+        "ENG_ARIAL_24")
+    require_equal(
+        "Delete confirmation explanation font",
+        layout.decoded("UI_DELETE_PROFILE_TEXT")["Font"],
+        "ENG_ARIAL_24")
+    require_position(
+        "Delete confirmation title position",
+        layout.initial_position("UI_TEXT_DELETE_PROFILE_MENU_TITLE"),
+        (65, 44))
+    require_position(
+        "Delete confirmation prompt position",
+        layout.initial_position("UI_TEXT_DELETE_PROFILE_PROMPT"),
+        (320, 100))
+    require_position(
+        "Delete confirmation explanation position",
+        layout.initial_position("UI_DELETE_PROFILE_TEXT"),
+        (320, 240))
+    require_position(
+        "Delete confirmation yes position",
+        layout.initial_position("UI_FRONTEND_DELETE_PROFILE_YES"),
+        (362, 405))
+    require_position(
+        "Delete confirmation no position",
+        layout.initial_position("UI_FRONTEND_DELETE_PROFILE_NO"),
+        (20, 405))
+
     title = layout.decoded("UI_TEXT_PROFILES_MENU_TITLE")
     require_equal(
         "Profiles title symbol",
@@ -957,6 +1051,14 @@ def validate_compiled_profiles_layout(game_root, schema_path):
     require_equal("Profiles list up arrow", profile_list["UpArrow"], 426)
     require_equal("Profiles list down arrow", profile_list["DownArrow"], 423)
     require_equal("Profiles list scrolling", profile_list["Scrolling"], True)
+    require_position(
+        "Profiles up-arrow position",
+        layout.initial_position("UI_PROFILE_LIST_ARROW_UP"),
+        (304, 80))
+    require_position(
+        "Profiles down-arrow position",
+        layout.initial_position("UI_PROFILE_LIST_ARROW_DOWN"),
+        (304, 380))
 
     delete_list = layout.decoded("UI_FRONTEND_LIST_FOR_PROFILES_FOR_DELETE")
     require_equal("Profiles delete list type", delete_list["Type"], 43)
@@ -973,6 +1075,14 @@ def validate_compiled_profiles_layout(game_root, schema_path):
     require_equal("Profiles delete list up arrow", delete_list["UpArrow"], 427)
     require_equal("Profiles delete list down arrow", delete_list["DownArrow"], 424)
     require_equal("Profiles delete list scrolling", delete_list["Scrolling"], True)
+    require_position(
+        "Profiles delete up-arrow position",
+        layout.initial_position("UI_DELETE_LIST_ARROW_UP"),
+        (304, 140))
+    require_position(
+        "Profiles delete down-arrow position",
+        layout.initial_position("UI_DELETE_LIST_ARROW_DOWN"),
+        (304, 380))
 
     require_equal(
         "Profiles button template type",
@@ -1149,7 +1259,7 @@ def _draw_title(
             title_segment,
             640)
         canvas.alpha_composite(title_rule, HEADER_RULE_POSITION)
-    _draw_text(canvas, font, text, HEADER_TEXT_POSITION, "center")
+    _draw_text(canvas, font, text, HEADER_TEXT_POSITION, "left")
 
 
 def _draw_save_title(
@@ -1177,7 +1287,7 @@ def _draw_save_title(
         canvas.alpha_composite(
             title_right,
             (SAVE_TITLE_AREA_RIGHT[0], SAVE_TITLE_AREA_ORIGIN[1]))
-    _draw_text(canvas, font, text, HEADER_TEXT_POSITION, "center")
+    _draw_text(canvas, font, text, HEADER_TEXT_POSITION, "left")
 
 
 def _draw_option_row(
@@ -1572,7 +1682,7 @@ def build_about_frame(
     """Compose the UI_FRONTEND_ABOUT_MENU overlay panel (transparent).
 
     Mirrors the Options/Settings composition: shared UI_TEXTBOX_MIDDLE title
-    rule + centred title, then the static legal-notice message, then the single
+    rule + serialized left-aligned title, then the static legal-notice message, then the single
     UI_HELPERS Back button.  The SPOOKY background is a live D3D9 layer (drawn
     behind this panel), not part of the baked frame -- matching how the retail
     forest/coastal backgrounds are composited at runtime rather than baked.
@@ -1659,6 +1769,50 @@ def build_profiles_frame(frontend_bank, font_bank):
     title_font = load_font(font_bank, "ENG_ARIAL_24")
     _draw_text(canvas, title_font, "Select Profile", HEADER_TEXT_POSITION)
     return canvas
+
+
+def build_delete_profile_confirmation_frame(
+        frontend_bank,
+        font_bank):
+    """Compose the authored delete-profile confirmation surface."""
+    buf, parsed = load_big(frontend_bank)
+    canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
+    title_segment = _decode_named(
+        buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
+    canvas.alpha_composite(
+        _build_table_horizontal(
+            title_segment, title_segment, title_segment, CANVAS_SIZE[0]),
+        HEADER_RULE_POSITION)
+    title_font = load_font(font_bank, "ENG_ARIAL_24")
+    _draw_text(canvas, title_font, "Delete Profile", (65, 44), "left")
+    _draw_text(
+        canvas,
+        title_font,
+        "Select the profile you wish to delete:",
+        (320, 100))
+    _draw_text(
+        canvas,
+        title_font,
+        "By deleting a profile you will lose any saved games associated with it.",
+        (320, 240))
+    assets = _option_assets(buf, parsed)
+    _draw_helper(canvas, assets["back"], title_font, (20, 405), "NO")
+    _draw_helper(canvas, assets["accept"], title_font, (362, 405), "YES")
+    return canvas
+
+
+def build_profiles_screen_sheet(frontend_bank, font_bank):
+    """Return normal profiles plus the recovered delete-confirmation frame."""
+    normal = build_profiles_frame(frontend_bank, font_bank)
+    confirmation = build_delete_profile_confirmation_frame(
+        frontend_bank, font_bank)
+    sheet = Image.new(
+        "RGBA",
+        (CANVAS_SIZE[0], CANVAS_SIZE[1] * 2),
+        (0, 0, 0, 0))
+    sheet.alpha_composite(normal, (0, 0))
+    sheet.alpha_composite(confirmation, (0, CANVAS_SIZE[1]))
+    return sheet
 
 
 def build_options_frame(
@@ -2120,7 +2274,8 @@ def main():
         credits = build_credits_frame(args.frontend_bank)
         credits.save(args.credits_output)
     if args.profiles_output:
-        profiles = build_profiles_frame(args.frontend_bank, args.font_bank)
+        profiles = build_profiles_screen_sheet(
+            args.frontend_bank, args.font_bank)
         profiles.save(args.profiles_output)
     component_output = ""
     if args.components_output:

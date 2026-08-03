@@ -3699,7 +3699,7 @@ try {
                     Png = $visualBootRetailProfiles
                     Bmp = $visualBootProfilesBitmap
                     Width = 640
-                    Height = 480
+                    Height = 960
                 }
             )
         }

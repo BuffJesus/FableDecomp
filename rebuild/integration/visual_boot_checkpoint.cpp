@@ -3,6 +3,8 @@
 #include "frontend_startup_sequence.h"
 #include "retail_video_bridge.h"
 #include "detail_screen_tables.h"
+#include "frontend_list_layout.h"
+#include "frontend_input_dispatch.h"
 
 #include <string.h>
 
@@ -178,6 +180,9 @@ extern "C"
     __declspec(dllimport) FableBool FABLE_STDCALL GetClientRect(
         FableWindow window,
         FableRectangle* rectangle);
+    __declspec(dllimport) FableBool FABLE_STDCALL ScreenToClient(
+        FableWindow window,
+        FablePoint* point);
     __declspec(dllimport) void* FABLE_STDCALL LoadImageA(
         FableInstanceHandle instance,
         const char* name,
@@ -295,10 +300,10 @@ extern "C"
 fable_u32 FABLE_FASTCALL FableGetVisualFrontendMainMenuAction(
     fable_u32 row)
 {
-    const fable_u32 actions[7] = {
-        66, 16, 297, 10, 67, 321, 314
+    const fable_u32 actions[FableFrontendMainMenuVisibleRows] = {
+        66, 16, 297, 67, 321, 314
     };
-    return row < 7 ? actions[row] : 0;
+    return row < FableFrontendMainMenuVisibleRows ? actions[row] : 0;
 }
 
 fable_u32 FABLE_FASTCALL FablePlanVisualFrontendSaveRows(
@@ -521,6 +526,80 @@ fable_u32 FABLE_FASTCALL FableEnumerateVisualFrontendProfiles(
         }
     }
     return count;
+}
+
+void FABLE_FASTCALL FablePlanVisualFrontendProfileAction(
+    fable_u32 mode,
+    fable_u32 selection,
+    fable_u32 profileCount,
+    fable_u32 input,
+    FableUiFrontendProfileActionPlan* plan)
+{
+    if (plan == 0)
+        return;
+    plan->action = 0;
+    plan->dispatch = false;
+
+    switch (input)
+    {
+    case FableUiFrontendProfileInputDeleteList:
+        plan->action = FableRetailFrontendManagerActionDeleteListRefresh;
+        plan->dispatch = true;
+        return;
+    case FableUiFrontendProfileInputDeleteConfirm:
+        plan->action = FableRetailFrontendManagerActionDeleteConfirm;
+        plan->dispatch = true;
+        return;
+    case FableUiFrontendProfileInputKeyboardCancel:
+        plan->action = FableRetailFrontendManagerActionKeyboardCancel;
+        plan->dispatch = true;
+        return;
+    case FableUiFrontendProfileInputKeyboardConfirm:
+        plan->action = FableRetailFrontendManagerActionKeyboardConfirm;
+        plan->dispatch = true;
+        return;
+    case FableUiFrontendProfileInputActivate:
+        break;
+    default:
+        return;
+    }
+
+    if (mode == FableUiFrontendProfileModeEmpty)
+    {
+        plan->action = FableRetailFrontendManagerActionNewProfile;
+        plan->dispatch = true;
+    }
+    else if (mode == FableUiFrontendProfileModeNew)
+    {
+        plan->action = FableRetailFrontendManagerActionKeyboardConfirm;
+        plan->dispatch = true;
+    }
+    else if (mode == FableUiFrontendProfileModeDeleteConfirm)
+    {
+        plan->action = FableRetailFrontendManagerActionDeleteConfirm;
+        plan->dispatch = true;
+    }
+    else if (
+        mode == FableUiFrontendProfileModeNormal &&
+        selection == 0)
+    {
+        plan->action = FableRetailFrontendManagerActionNewProfile;
+        plan->dispatch = true;
+    }
+    else if (
+        mode == FableUiFrontendProfileModeNormal &&
+        selection <= profileCount)
+    {
+        plan->action = FableRetailFrontendManagerActionLoadProfile;
+        plan->dispatch = true;
+    }
+    else if (
+        mode == FableUiFrontendProfileModeDelete &&
+        selection < profileCount)
+    {
+        plan->action = FableRetailFrontendManagerActionDeleteRow;
+        plan->dispatch = true;
+    }
 }
 
 fable_u32 FABLE_FASTCALL FableMapUiControllerState(
@@ -1889,6 +1968,102 @@ void FABLE_FASTCALL FablePlanUiFrontEndListScroll(
     }
 }
 
+struct FablePlanUiFrontEndListEventTarget
+{
+    FableRetailFrontendListProcessContext context;
+    unsigned int dispatchedEvent;
+};
+
+bool FablePlanUiFrontEndListEventCondition(
+    void* component,
+    unsigned int event)
+{
+    if (component == 0)
+        return false;
+    const FablePlanUiFrontEndListEventTarget* target =
+        static_cast<const FablePlanUiFrontEndListEventTarget*>(component);
+    if (!target->context.viewportConditionPasses ||
+        !target->context.hoverConditionPasses ||
+        !target->context.managerActionConditionPasses ||
+        !target->context.componentConditionPasses)
+    {
+        return false;
+    }
+    return event == FableRetailFrontendListEventUp ||
+        event == FableRetailFrontendListEventDown;
+}
+
+void FablePlanUiFrontEndListEventProcess(
+    void* component,
+    unsigned int event)
+{
+    FablePlanUiFrontEndListEventTarget* target =
+        static_cast<FablePlanUiFrontEndListEventTarget*>(component);
+    if (target == 0)
+        return;
+    unsigned int dispatchedEvent = 0;
+    if (FableRetailFrontendListProcessEvent(
+            event,
+            target->context,
+            &dispatchedEvent))
+    {
+        target->dispatchedEvent = dispatchedEvent;
+    }
+}
+
+void FABLE_FASTCALL FablePlanUiFrontEndListProcessEvent(
+    unsigned int event,
+    unsigned int childCount,
+    long selectedChild,
+    bool stopsAtEnds,
+    unsigned char alphaFalloff,
+    unsigned char* childAlphaOutput,
+    unsigned int childAlphaCapacity,
+    FableUiFrontEndListScrollPlan* plan)
+{
+    if (plan == 0)
+        return;
+
+    // The visual adapter does not yet own a live NUISystem::CList object, so
+    // it presents the visible list as the current component at the proven
+    // CManager::ProcessEvent boundary.  This preserves the native manager
+    // ordering (current component first, condition then process) while the
+    // native object connection remains an explicit integration boundary.
+    const FableRetailFrontendListProcessContext context = {
+        true,
+        true,
+        true,
+        true};
+    FablePlanUiFrontEndListEventTarget target = {
+        context,
+        0};
+    const FableRetailFrontendManagerEventTarget managerTarget = {
+        &target,
+        FablePlanUiFrontEndListEventCondition,
+        FablePlanUiFrontEndListEventProcess};
+    if (FableRetailFrontendManagerProcessEvent(
+            &managerTarget,
+            0,
+            0,
+            event) == 0)
+    {
+        *plan = FableUiFrontEndListScrollPlan();
+        plan->previousSelectedChild = selectedChild;
+        plan->selectedChild = selectedChild;
+        return;
+    }
+
+    FablePlanUiFrontEndListScroll(
+        target.dispatchedEvent == FableUiFrontEndListEventDown,
+        childCount,
+        selectedChild,
+        stopsAtEnds,
+        alphaFalloff,
+        childAlphaOutput,
+        childAlphaCapacity,
+        plan);
+}
+
 bool FABLE_FASTCALL FableApplyUiFrontEndListScroll(
     bool scrollDown,
     bool wrapping,
@@ -2057,11 +2232,14 @@ namespace
     const FableUint kMessageEraseBackground = 0x0014;
     const FableUint kMessageKeyDown = 0x0100;
     const FableUint kMessageKeyUp = 0x0101;
+    const FableUint kMessageChar = 0x0102;
     const FableUint kMessageTimer = 0x0113;
     const FableUint kMessageMouseMove = 0x0200;
+    const FableUint kMessageLeftButtonDown = 0x0201;
     const FableUint kMessageLeftButtonUp = 0x0202;
     const FableUint kMessageRightButtonUp = 0x0205;
     const FableUint kMessageMiddleButtonUp = 0x0208;
+    const FableUint kMessageMouseWheel = 0x020A;
     const FableWordParameter kRetailVideoTimer = 1;
     const FableWordParameter kFrontendAnimationTimer = 2;
     const FableWordParameter kEscapeKey = 0x1B;
@@ -2151,10 +2329,13 @@ namespace
     bool g_VisualAboutMenuActive = false;
     bool g_VisualCreditsMenuActive = false;
     bool g_VisualProfilesMenuActive = false;
+    unsigned int g_VisualProfilesMode = FableFrontendProfilesNormal;
     FableUiProfileName g_VisualProfileNames[32] = {};
     const char* g_VisualProfileNamePointers[32] = {};
     unsigned int g_VisualProfileNameCount = 0;
     unsigned int g_VisualProfileSelection = 0;
+    char g_VisualProfileEditText[128] = {};
+    unsigned int g_VisualProfileEditLength = 0;
     unsigned int g_VisualDetailScreen = 0;
     unsigned int g_VisualDetailSelection = 0;
     // audit #4: bound to the shared source of truth (detail_screen_tables.h)
@@ -2188,6 +2369,10 @@ namespace
     unsigned int g_VisualDetailArrowHoverRow = 0;
     unsigned int g_VisualDetailArrowHoverSide = 0;
     unsigned int g_VisualRedefineSelection = 0;
+    // CRedefinerList owns a 31-entry authored ActionOrder while only nine
+    // rows are visible at once.  Keep the logical child separate from the
+    // active key-capture row (which is still the 1..9 UI selection above).
+    unsigned int g_VisualRedefineListSelection = 0;
     unsigned int g_VisualRedefineKeys[9] = {};
     unsigned int g_VisualRedefineEntryKeys[9] = {};
     unsigned int g_VisualRedefineSavedKeys[9] = {};
@@ -2232,15 +2417,86 @@ namespace
             &trueOrigin);
     }
 
+    unsigned int VisualProfileItemCount()
+    {
+        if (g_VisualProfilesMode == FableFrontendProfilesNormal)
+            return g_VisualProfileNameCount + 1;
+        if (g_VisualProfilesMode == FableFrontendProfilesDelete)
+            return g_VisualProfileNameCount;
+        return 0;
+    }
+
+    int VisualProfileItemY(unsigned int item)
+    {
+        if (g_VisualProfilesMode == FableFrontendProfilesNormal)
+        {
+            if (item == 0)
+                return 120;
+            return 170 + static_cast<int>(
+                (item - 1) * FableFrontendProfileSpacing);
+        }
+        return 180 + static_cast<int>(
+            item * FableFrontendProfileSpacing);
+    }
+
+    int VisualProfileVisibleItemY(
+        unsigned int item,
+        unsigned int firstRow)
+    {
+        const int viewportTop =
+            g_VisualProfilesMode == FableFrontendProfilesDelete
+                ? 180
+                : 120;
+        return viewportTop +
+            VisualProfileItemY(item) - VisualProfileItemY(firstRow);
+    }
+
+    bool FindVisualProfileRow(
+        int mouseX,
+        int mouseY,
+        unsigned int* rowFound)
+    {
+        const unsigned int count = VisualProfileItemCount();
+        const unsigned int visibleRows =
+            g_VisualProfilesMode == FableFrontendProfilesDelete ? 7 : 9;
+        unsigned int firstRow = 0;
+        if (g_VisualProfileSelection >= visibleRows)
+            firstRow = g_VisualProfileSelection - visibleRows + 1;
+        for (
+            unsigned int displayRow = 0;
+            displayRow != visibleRows;
+            ++displayRow)
+        {
+            const unsigned int row = firstRow + displayRow;
+            if (row >= count)
+                break;
+            const int rowTop =
+                VisualProfileVisibleItemY(row, firstRow) - 7;
+            if (
+                mouseX >= 180 &&
+                mouseX < 460 &&
+                mouseY >= rowTop &&
+                mouseY < rowTop + 30)
+            {
+                *rowFound = row;
+                return true;
+            }
+        }
+        return false;
+    }
+
     bool FindVisualMainMenuRow(
         int mouseX,
         int mouseY,
         unsigned int* rowFound)
     {
-        static const int rowOffsets[7] = {
-            0, 30, 60, 120, 180, 210, 240
+        static const int rowOffsets[FableFrontendMainMenuVisibleRows] = {
+            0, 30, 60, 180, 210, 240
         };
-        for (unsigned int row = 0; row != 7; ++row)
+        for (
+            unsigned int row = 0;
+            row != FableFrontendMainMenuVisibleRows;
+            ++row)
         {
             // frontend.bin roots the list at (200,200). UI_BUTTON_BIG and
             // UI_BUTTON tables are (-140,-7) and (-80,-7); the horizontal
@@ -2536,6 +2792,350 @@ namespace
         UpdateWindow(window);
     }
 
+    const unsigned int kVisualRedefineListChildCount = 31;
+    const unsigned int kVisualRedefineListVisibleRows = 9;
+
+    enum VisualFrontendScrollTarget
+    {
+        VisualFrontendScrollNone = 0,
+        VisualFrontendScrollMain = 1,
+        VisualFrontendScrollOptions = 2,
+        VisualFrontendScrollSaves = 3,
+        VisualFrontendScrollProfiles = 4,
+        VisualFrontendScrollRedefine = 5
+    };
+
+    // Retail CClickable stores left-button state between events 0x1A and
+    // 0x1C. Keep this platform-bridge state separate from list selection so
+    // release cannot synthesize a second scroll.
+    bool g_VisualFrontendScrollArrowPressed = false;
+    VisualFrontendScrollTarget g_VisualFrontendScrollArrowTarget =
+        VisualFrontendScrollNone;
+
+    // The retail ego_r path is recovered: CMouseDX::ConvertMouseEventToInputEvent
+    // @ 0x00c55d20 handles mouse event type 10 by calling
+    // CInputEvent::SetAsMouseWheelMovement @ 0x00b6eb00; the game input
+    // process then reads it through GetMouseWheelMovement @ 0x00442d70 /
+    // 0x006b2e50.  Win32 is still only the platform ingress here, but its
+    // payload is passed through the same one-event, signed-delta semantics.
+    int SignedMouseWord(unsigned long value)
+    {
+        const unsigned int word =
+            static_cast<unsigned int>(value & 0xFFFFUL);
+        return word >= 0x8000U
+            ? static_cast<int>(word) - 0x10000
+            : static_cast<int>(word);
+    }
+
+    bool GetVisualDesignMousePosition(
+        FableWindow window,
+        FableLongParameter longParameter,
+        bool screenPosition,
+        int* mouseX,
+        int* mouseY)
+    {
+        FableRectangle client = {};
+        if (!GetClientRect(window, &client))
+            return false;
+        const int clientWidth = client.right - client.left;
+        const int clientHeight = client.bottom - client.top;
+        if (clientWidth <= 0 || clientHeight <= 0)
+            return false;
+
+        FablePoint point = {};
+        point.x = SignedMouseWord(
+            static_cast<unsigned long>(longParameter));
+        point.y = SignedMouseWord(
+            static_cast<unsigned long>(longParameter) >> 16);
+        if (
+            screenPosition &&
+            window != 0 &&
+            !ScreenToClient(window, &point))
+        {
+            return false;
+        }
+        *mouseX = static_cast<int>(point.x) * 640 / clientWidth;
+        *mouseY = static_cast<int>(point.y) * 480 / clientHeight;
+        return true;
+    }
+
+    bool IsVisualFrontendScrollArea(
+        VisualFrontendScrollTarget target,
+        int mouseX,
+        int mouseY)
+    {
+        const FableFrontendListArrowLayout* layout = 0;
+        switch (target)
+        {
+        case VisualFrontendScrollSaves:
+            layout = &kFableFrontendSaveListArrowLayout;
+            break;
+        case VisualFrontendScrollProfiles:
+            layout = g_VisualProfilesMode == FableFrontendProfilesDelete
+                ? &kFableFrontendDeleteListArrowLayout
+                : &kFableFrontendProfilesListArrowLayout;
+            break;
+        case VisualFrontendScrollRedefine:
+            layout = &kFableFrontendRedefineListArrowLayout;
+            break;
+        default:
+            return false;
+        }
+
+        const int top = layout->listY < layout->upY
+            ? layout->listY
+            : layout->upY;
+        const int listBottom = layout->listY + layout->listHeight;
+        const int arrowBottom = layout->downY + layout->arrowHeight;
+        const int bottom = listBottom > arrowBottom
+            ? listBottom
+            : arrowBottom;
+        return mouseX >= layout->listX &&
+            mouseX < layout->arrowX + layout->arrowWidth &&
+            mouseY >= top && mouseY < bottom;
+    }
+
+    bool FindVisualFrontendScrollArrow(
+        VisualFrontendScrollTarget target,
+        int mouseX,
+        int mouseY,
+        bool* scrollDown)
+    {
+        const FableFrontendListArrowLayout* layout = 0;
+        switch (target)
+        {
+        case VisualFrontendScrollSaves:
+            layout = &kFableFrontendSaveListArrowLayout;
+            break;
+        case VisualFrontendScrollProfiles:
+            layout = g_VisualProfilesMode == FableFrontendProfilesDelete
+                ? &kFableFrontendDeleteListArrowLayout
+                : &kFableFrontendProfilesListArrowLayout;
+            break;
+        case VisualFrontendScrollRedefine:
+            layout = &kFableFrontendRedefineListArrowLayout;
+            break;
+        default:
+            return false;
+        }
+        if (
+            mouseX < layout->arrowX ||
+            mouseX >= layout->arrowX + layout->arrowWidth)
+        {
+            return false;
+        }
+        if (
+            mouseY >= layout->upY &&
+            mouseY < layout->upY + layout->arrowHeight)
+        {
+            *scrollDown = false;
+            return true;
+        }
+        if (
+            mouseY >= layout->downY &&
+            mouseY < layout->downY + layout->arrowHeight)
+        {
+            *scrollDown = true;
+            return true;
+        }
+        return false;
+    }
+
+    VisualFrontendScrollTarget ActiveVisualFrontendScrollTarget()
+    {
+        // The authored main/options lists have no UpArrow/DownArrow bindings
+        // and serialize Scrolling=false. Mouse-wheel/arrow ingress is only
+        // exposed for the arrow-bearing lists below; keyboard/controller
+        // navigation keeps its separate authored paths.
+        if (g_VisualSaveMenuActive)
+            return VisualFrontendScrollSaves;
+        if (g_VisualProfilesMenuActive)
+        {
+            return g_VisualProfilesMode == FableFrontendProfilesNormal ||
+                   g_VisualProfilesMode == FableFrontendProfilesDelete
+                ? VisualFrontendScrollProfiles
+                : VisualFrontendScrollNone;
+        }
+        if (g_VisualDetailScreen == 4)
+            return VisualFrontendScrollRedefine;
+        return VisualFrontendScrollNone;
+    }
+
+    bool ScrollVisualFrontendList(
+        FableWindow window,
+        VisualFrontendScrollTarget target,
+        bool scrollDown);
+
+    bool DispatchVisualFrontendScrollArrowPress(
+        FableWindow window,
+        FableLongParameter longParameter,
+        bool screenPosition)
+    {
+        if (
+            !g_VisualFrontendVisible ||
+            FableIsRetailVideoActive())
+        {
+            return false;
+        }
+        const VisualFrontendScrollTarget target =
+            ActiveVisualFrontendScrollTarget();
+        if (target == VisualFrontendScrollNone)
+            return false;
+        int mouseX = 0;
+        int mouseY = 0;
+        if (
+            !GetVisualDesignMousePosition(
+                window,
+                longParameter,
+                screenPosition,
+                &mouseX,
+                &mouseY))
+        {
+            return false;
+        }
+        bool scrollDown = false;
+        if (!FindVisualFrontendScrollArrow(
+                target,
+                mouseX,
+                mouseY,
+                &scrollDown))
+        {
+            return false;
+        }
+
+        // Retail CClickable::ProcessEvent @ 0x0055ad60 dispatches event
+        // 0x1a on button press; the list arrow therefore scrolls on the
+        // down edge, not on the later unclicked/release edge.
+        if (!FableRetailFrontendClickableProcessEvent(
+                FableRetailFrontendClickableLeftClicked,
+                true,
+                &g_VisualFrontendScrollArrowPressed))
+        {
+            return false;
+        }
+        g_VisualFrontendScrollArrowTarget = target;
+        ScrollVisualFrontendList(window, target, scrollDown);
+        return true;
+    }
+
+    bool DispatchVisualFrontendScrollArrowRelease()
+    {
+        if (g_VisualFrontendScrollArrowTarget == VisualFrontendScrollNone)
+            return false;
+        if (!FableRetailFrontendClickableProcessEvent(
+                FableRetailFrontendClickableLeftUnclicked,
+                true,
+                &g_VisualFrontendScrollArrowPressed))
+        {
+            return false;
+        }
+        // The retail unclicked callback releases the component state; the
+        // arrow's scroll callback already ran on event 0x1A.
+        g_VisualFrontendScrollArrowTarget = VisualFrontendScrollNone;
+        return true;
+    }
+
+    bool ScrollVisualFrontendList(
+        FableWindow window,
+        VisualFrontendScrollTarget target,
+        bool scrollDown)
+    {
+        if (target == VisualFrontendScrollMain)
+        {
+            fable_u32 selected = g_VisualMainMenuSelection;
+            fable_u32 soundRequest = FableUiFrontEndSoundNone;
+            const bool moved = FableScrollVisualFrontendMainMenu(
+                scrollDown,
+                &selected,
+                &soundRequest);
+            PlayVisualFrontendListSound(soundRequest);
+            if (moved)
+            {
+                g_VisualMainMenuSelection = selected;
+                RevealVisualFrontend(window);
+            }
+            return moved;
+        }
+
+        FableUiFrontEndListScrollPlan plan = {};
+        unsigned int childCount = 0;
+        long selectedChild = 0;
+        bool stopsAtEnds = false;
+        switch (target)
+        {
+        case VisualFrontendScrollOptions:
+            childCount = 4;
+            selectedChild = static_cast<long>(g_VisualOptionsSelection);
+            break;
+        case VisualFrontendScrollSaves:
+            childCount = 4;
+            selectedChild = static_cast<long>(g_VisualSaveSelection);
+            break;
+        case VisualFrontendScrollProfiles:
+            childCount = VisualProfileItemCount();
+            selectedChild = static_cast<long>(g_VisualProfileSelection);
+            // Both authored profile Type-43 lists are Scrolling=true and
+            // Wrapping=false.  Preserve the retail end error sound.
+            stopsAtEnds = true;
+            break;
+        case VisualFrontendScrollRedefine:
+            if (g_VisualRedefineSelection != 0)
+                return false;
+            childCount = kVisualRedefineListChildCount;
+            selectedChild = static_cast<long>(
+                g_VisualRedefineListSelection);
+            stopsAtEnds = true;
+            break;
+        default:
+            return false;
+        }
+
+        FablePlanUiFrontEndListProcessEvent(
+            scrollDown
+                ? FableUiFrontEndListEventDown
+                : FableUiFrontEndListEventUp,
+            childCount,
+            selectedChild,
+            stopsAtEnds,
+            0,
+            0,
+            0,
+            &plan);
+        PlayVisualFrontendListSound(plan.soundRequest);
+        if (!plan.moved)
+            return false;
+
+        switch (target)
+        {
+        case VisualFrontendScrollOptions:
+            g_VisualOptionsSelection = static_cast<unsigned int>(
+                plan.selectedChild);
+            FableSetVisualFrontendOptionsSelection(
+                g_VisualOptionsSelection);
+            break;
+        case VisualFrontendScrollSaves:
+            g_VisualSaveSelection = static_cast<unsigned int>(
+                plan.selectedChild);
+            FableSetVisualFrontendSaveSelection(
+                g_VisualSaveSelection);
+            break;
+        case VisualFrontendScrollProfiles:
+            g_VisualProfileSelection = static_cast<unsigned int>(
+                plan.selectedChild);
+            FableSetVisualFrontendProfilesSelection(
+                g_VisualProfileSelection);
+            break;
+        case VisualFrontendScrollRedefine:
+            g_VisualRedefineListSelection = static_cast<unsigned int>(
+                plan.selectedChild);
+            break;
+        default:
+            break;
+        }
+        RevealVisualFrontend(window);
+        return true;
+    }
+
     void CopyVisualDetailValues(
         unsigned int destination[3][10],
         const unsigned int source[3][10])
@@ -2574,6 +3174,7 @@ namespace
                 ? kVisualRedefineDefaults
                 : kVisualRedefineArrowDefaults);
         g_VisualRedefineSelection = 0;
+        g_VisualRedefineListSelection = 0;
         SyncVisualRedefineKeys();
     }
 
@@ -2616,6 +3217,7 @@ namespace
                 g_VisualRedefineEntryKeys,
                 g_VisualRedefineKeys);
             g_VisualRedefineSelection = 0;
+            g_VisualRedefineListSelection = 0;
             SyncVisualRedefineKeys();
         }
     }
@@ -2635,6 +3237,7 @@ namespace
                 g_VisualRedefineKeys,
                 g_VisualRedefineEntryKeys);
             g_VisualRedefineSelection = 0;
+            g_VisualRedefineListSelection = 0;
             SyncVisualRedefineKeys();
         }
     }
@@ -2653,6 +3256,7 @@ namespace
                 g_VisualRedefineSavedKeys,
                 g_VisualRedefineKeys);
             g_VisualRedefineSelection = 0;
+            g_VisualRedefineListSelection = 0;
             FableSetVisualFrontendRedefineSelection(0);
         }
     }
@@ -2826,12 +3430,17 @@ namespace
             RefreshVisualProfileNames();
             g_VisualMainMenuActive = false;
             g_VisualProfilesMenuActive = true;
+            g_VisualProfilesMode =
+                g_VisualProfileNameCount == 0
+                    ? FableFrontendProfilesEmpty
+                    : FableFrontendProfilesNormal;
             g_VisualProfileSelection = 0;
             g_VisualOptionsBackHovered = false;
             FableSetVisualFrontendProfilesMenu(
                 true,
                 g_VisualProfileNamePointers,
                 g_VisualProfileNameCount);
+            FableSetVisualFrontendProfilesMode(g_VisualProfilesMode);
             PlayVisualFrontendResourceSound(kBootSoundForwardResource);
             RevealVisualFrontend(window);
             return true;
@@ -2898,6 +3507,147 @@ namespace
             return true;
         }
         return false;
+    }
+
+    bool ActivateVisualProfileSelection(FableWindow window)
+    {
+        if (!g_VisualProfilesMenuActive)
+            return false;
+        FableUiFrontendProfileActionPlan actionPlan = {};
+        FablePlanVisualFrontendProfileAction(
+            g_VisualProfilesMode,
+            g_VisualProfileSelection,
+            g_VisualProfileNameCount,
+            FableUiFrontendProfileInputActivate,
+            &actionPlan);
+        if (g_VisualProfilesMode == FableFrontendProfilesEmpty)
+        {
+            // Empty-profile definition action 0x125 is the same
+            // SetDefaultValuesForNewProfile -> GotoNewProfileScreen route as
+            // the normal list's New Profile row.
+            if (!actionPlan.dispatch ||
+                actionPlan.action != FableRetailFrontendManagerActionNewProfile)
+                return true;
+            g_VisualProfilesMode = FableFrontendProfilesNew;
+            memset(g_VisualProfileEditText, 0, sizeof(g_VisualProfileEditText));
+            g_VisualProfileEditLength = 0;
+            FableSetVisualFrontendProfilesMode(
+                FableFrontendProfilesNew);
+            PlayVisualFrontendResourceSound(kBootSoundForwardResource);
+            RevealVisualFrontend(window);
+            return true;
+        }
+        if (g_VisualProfilesMode == FableFrontendProfilesNew)
+        {
+            // Action 0x126 is owned by CFrontEndManager::Action and forwards
+            // to CVirtualKeyboard::Confirm.  The checkpoint has no live
+            // manager/keyboard object, so dispatch stops at this verified
+            // action boundary; it must not fabricate a profile write.
+            (void)actionPlan;
+            return true;
+        }
+        if (g_VisualProfilesMode == FableFrontendProfilesDeleteConfirm)
+        {
+            // Action 0xd6 is the retail delete confirmation callback.  The
+            // native manager owns DeleteProfile, list refresh, and the
+            // resulting screen transition; keep this visual checkpoint at
+            // that exact boundary until its live manager is connected.
+            if (!actionPlan.dispatch ||
+                actionPlan.action !=
+                    FableRetailFrontendManagerActionDeleteConfirm)
+                return true;
+            return true;
+        }
+        if (
+            g_VisualProfilesMode == FableFrontendProfilesNormal &&
+            g_VisualProfileSelection == 0)
+        {
+            if (!actionPlan.dispatch ||
+                actionPlan.action != FableRetailFrontendManagerActionNewProfile)
+                return true;
+            g_VisualProfilesMode = FableFrontendProfilesNew;
+            memset(g_VisualProfileEditText, 0, sizeof(g_VisualProfileEditText));
+            g_VisualProfileEditLength = 0;
+            FableSetVisualFrontendProfilesMode(
+                FableFrontendProfilesNew);
+            PlayVisualFrontendResourceSound(kBootSoundForwardResource);
+            RevealVisualFrontend(window);
+            return true;
+        }
+        if (
+            g_VisualProfilesMode == FableFrontendProfilesNormal &&
+            g_VisualProfileSelection < VisualProfileItemCount())
+        {
+            if (!actionPlan.dispatch ||
+                actionPlan.action != FableRetailFrontendManagerActionLoadProfile)
+                return true;
+            // Action 0x124 is LoadProfile.  Until the exact CUserProfileManager
+            // instance is connected to this checkpoint, preserve the route
+            // boundary and return to the main frontend without fabricating a
+            // save/profile write.
+            g_VisualProfilesMenuActive = false;
+            g_VisualMainMenuActive = true;
+            FableSetVisualFrontendProfilesMenu(false, 0, 0);
+            FableSetVisualFrontendMainMenu(true);
+            PlayVisualFrontendResourceSound(kBootSoundForwardResource);
+            RevealVisualFrontend(window);
+            return true;
+        }
+        if (g_VisualProfilesMode == FableFrontendProfilesDelete)
+        {
+            // Delete-list rows dispatch action 0xd7.  Its exact manager body
+            // prepares the confirmation title and enters the delete-profile
+            // screen; persistence remains at the native manager boundary.
+            if (
+                actionPlan.dispatch &&
+                actionPlan.action ==
+                    FableRetailFrontendManagerActionDeleteRow)
+            {
+                g_VisualProfilesMode =
+                    FableFrontendProfilesDeleteConfirm;
+                FableSetVisualFrontendProfilesMode(
+                    FableFrontendProfilesDeleteConfirm);
+                PlayVisualFrontendResourceSound(
+                    kBootSoundForwardResource);
+                RevealVisualFrontend(window);
+            }
+            return true;
+        }
+        return true;
+    }
+
+    void AppendVisualProfileEditCharacter(unsigned int character)
+    {
+        if (
+            !g_VisualProfilesMenuActive ||
+            g_VisualProfilesMode != FableFrontendProfilesNew)
+        {
+            return;
+        }
+        if (FableRetailFrontendProcessTextInputCharacter(
+                static_cast<unsigned short>(character),
+                g_VisualProfileEditText,
+                &g_VisualProfileEditLength))
+        {
+            FableSetVisualFrontendProfileEditText(g_VisualProfileEditText);
+        }
+    }
+
+    void RemoveVisualProfileEditCharacter()
+    {
+        if (
+            !g_VisualProfilesMenuActive ||
+            g_VisualProfilesMode != FableFrontendProfilesNew)
+        {
+            return;
+        }
+        if (FableRetailFrontendProcessTextInputCharacter(
+                8,
+                g_VisualProfileEditText,
+                &g_VisualProfileEditLength))
+        {
+            FableSetVisualFrontendProfileEditText(g_VisualProfileEditText);
+        }
     }
 
     bool ActivateVisualOptionsSelection(FableWindow window)
@@ -3020,6 +3770,53 @@ namespace
                 PaintBootArtwork(window);
             return 0;
 
+        case kMessageMouseWheel:
+        {
+            if (FableIsRetailVideoActive())
+                break;
+            const VisualFrontendScrollTarget target =
+                ActiveVisualFrontendScrollTarget();
+            if (target == VisualFrontendScrollNone)
+                break;
+            int mouseX = 0;
+            int mouseY = 0;
+            if (
+                !GetVisualDesignMousePosition(
+                    window,
+                    longParameter,
+                    true,
+                    &mouseX,
+                    &mouseY) ||
+                !IsVisualFrontendScrollArea(target, mouseX, mouseY))
+            {
+                break;
+            }
+            const int wheelDelta = static_cast<short>(
+                (static_cast<unsigned long>(wordParameter) >> 16) &
+                0xFFFFUL);
+            if (wheelDelta == 0)
+                break;
+            // CMouseDX emits one CInputEvent per mouse event. Its recovered
+            // event reader stores the signed payload in thousandths before
+            // CNewFrontendGameComponent maps type 0x0e to action 0x24 or
+            // 0x25 by +/-0.0001; it does not turn a larger delta into
+            // repeated list events.
+            const float wheelMovement =
+                FableRetailFrontendMouseWheelMovementFromRaw(
+                    static_cast<short>(wheelDelta));
+            unsigned int action = 0;
+            if (!FableRetailFrontendWheelAction(wheelMovement, &action))
+                break;
+            unsigned int listEvent = 0;
+            if (!FableRetailFrontendListEventFromAction(action, &listEvent))
+                break;
+            ScrollVisualFrontendList(
+                window,
+                target,
+                listEvent == FableRetailFrontendListEventDown);
+            return 0;
+        }
+
         case kMessageKeyDown:
             if (
                 wordParameter == kEscapeKey &&
@@ -3078,8 +3875,10 @@ namespace
                 if (g_VisualOptionsMenuActive)
                 {
                     FableUiFrontEndListScrollPlan plan = {};
-                    FablePlanUiFrontEndListScroll(
-                        scrollDown,
+                    FablePlanUiFrontEndListProcessEvent(
+                        scrollDown
+                            ? FableUiFrontEndListEventDown
+                            : FableUiFrontEndListEventUp,
                         4,
                         static_cast<long>(
                             g_VisualOptionsSelection),
@@ -3103,8 +3902,10 @@ namespace
                 if (g_VisualSaveMenuActive)
                 {
                     FableUiFrontEndListScrollPlan plan = {};
-                    FablePlanUiFrontEndListScroll(
-                        scrollDown,
+                    FablePlanUiFrontEndListProcessEvent(
+                        scrollDown
+                            ? FableUiFrontEndListEventDown
+                            : FableUiFrontEndListEventUp,
                         4,
                         static_cast<long>(g_VisualSaveSelection),
                         false,
@@ -3127,11 +3928,13 @@ namespace
                 if (g_VisualProfilesMenuActive)
                 {
                     FableUiFrontEndListScrollPlan plan = {};
-                    FablePlanUiFrontEndListScroll(
-                        scrollDown,
-                        static_cast<long>(g_VisualProfileNameCount),
+                    FablePlanUiFrontEndListProcessEvent(
+                        scrollDown
+                            ? FableUiFrontEndListEventDown
+                            : FableUiFrontEndListEventUp,
+                        static_cast<long>(VisualProfileItemCount()),
                         static_cast<long>(g_VisualProfileSelection),
-                        false,
+                        true,
                         0,
                         0,
                         0,
@@ -3148,14 +3951,43 @@ namespace
                     return 0;
                 }
                 if (
+                    g_VisualDetailScreen == 4 &&
+                    g_VisualRedefineSelection == 0)
+                {
+                    FableUiFrontEndListScrollPlan plan = {};
+                    FablePlanUiFrontEndListProcessEvent(
+                        scrollDown
+                            ? FableUiFrontEndListEventDown
+                            : FableUiFrontEndListEventUp,
+                        kVisualRedefineListChildCount,
+                        static_cast<long>(
+                            g_VisualRedefineListSelection),
+                        true,
+                        0,
+                        0,
+                        0,
+                        &plan);
+                    PlayVisualFrontendListSound(plan.soundRequest);
+                    if (plan.moved)
+                    {
+                        g_VisualRedefineListSelection =
+                            static_cast<unsigned int>(
+                                plan.selectedChild);
+                        RevealVisualFrontend(window);
+                    }
+                    return 0;
+                }
+                if (
                     g_VisualDetailScreen >= 1 &&
                     g_VisualDetailScreen <= 3)
                 {
                     const unsigned int screenIndex =
                         g_VisualDetailScreen - 1;
                     FableUiFrontEndListScrollPlan plan = {};
-                    FablePlanUiFrontEndListScroll(
-                        scrollDown,
+                    FablePlanUiFrontEndListProcessEvent(
+                        scrollDown
+                            ? FableUiFrontEndListEventDown
+                            : FableUiFrontEndListEventUp,
                         static_cast<long>(
                             kVisualDetailRowCounts[screenIndex]),
                         static_cast<long>(
@@ -3174,6 +4006,16 @@ namespace
                     }
                     return 0;
                 }
+            }
+            if (
+                !FableIsRetailVideoActive() &&
+                g_VisualProfilesMenuActive &&
+                g_VisualProfilesMode == FableFrontendProfilesNew &&
+                wordParameter == 0x08)
+            {
+                RemoveVisualProfileEditCharacter();
+                RevealVisualFrontend(window);
+                return 0;
             }
             if (
                 !FableIsRetailVideoActive() &&
@@ -3215,6 +4057,7 @@ namespace
                 !FableIsRetailVideoActive() &&
                 (
                     ActivateVisualMainMenuSelection(window) ||
+                    ActivateVisualProfileSelection(window) ||
                     ActivateVisualOptionsSelection(window) ||
                     ActivateVisualPressStart(window)
                 ))
@@ -3278,6 +4121,43 @@ namespace
                 }
                 if (g_VisualProfilesMenuActive)
                 {
+                    if (
+                        g_VisualProfilesMode ==
+                            FableFrontendProfilesDeleteConfirm)
+                    {
+                        g_VisualProfilesMode = FableFrontendProfilesDelete;
+                        FableSetVisualFrontendProfilesMode(
+                            FableFrontendProfilesDelete);
+                        RevealVisualFrontend(window);
+                        return 0;
+                    }
+                    if (g_VisualProfilesMode == FableFrontendProfilesNew)
+                    {
+                        FableUiFrontendProfileActionPlan actionPlan = {};
+                        FablePlanVisualFrontendProfileAction(
+                            FableUiFrontendProfileModeNew,
+                            0,
+                            g_VisualProfileNameCount,
+                            FableUiFrontendProfileInputKeyboardCancel,
+                            &actionPlan);
+                        if (!actionPlan.dispatch ||
+                            actionPlan.action !=
+                                FableRetailFrontendManagerActionKeyboardCancel)
+                            return 0;
+                        g_VisualProfilesMode =
+                            g_VisualProfileNameCount == 0
+                                ? FableFrontendProfilesEmpty
+                                : FableFrontendProfilesNormal;
+                        memset(
+                            g_VisualProfileEditText,
+                            0,
+                            sizeof(g_VisualProfileEditText));
+                        g_VisualProfileEditLength = 0;
+                        FableSetVisualFrontendProfilesMode(
+                            g_VisualProfilesMode);
+                        RevealVisualFrontend(window);
+                        return 0;
+                    }
                     g_VisualProfilesMenuActive = false;
                     g_VisualMainMenuActive = true;
                     FableSetVisualFrontendProfilesMenu(false, 0, 0);
@@ -3317,6 +4197,19 @@ namespace
             }
             break;
 
+        case kMessageChar:
+            if (
+                !FableIsRetailVideoActive() &&
+                g_VisualProfilesMenuActive &&
+                g_VisualProfilesMode == FableFrontendProfilesNew)
+            {
+                AppendVisualProfileEditCharacter(
+                    static_cast<unsigned int>(wordParameter));
+                RevealVisualFrontend(window);
+                return 0;
+            }
+            break;
+
         case kMessageKeyUp:
             if (wordParameter == kEscapeKey)
             {
@@ -3339,7 +4232,23 @@ namespace
             }
             break;
 
+        case kMessageLeftButtonDown:
+            if (DispatchVisualFrontendScrollArrowPress(
+                    window,
+                    longParameter,
+                    false))
+            {
+                return 0;
+            }
+            break;
+
         case kMessageLeftButtonUp:
+            if (
+                !FableIsRetailVideoActive() &&
+                DispatchVisualFrontendScrollArrowRelease())
+            {
+                return 0;
+            }
             if (
                 !FableIsRetailVideoActive() &&
                 g_VisualDetailScreen == 4 &&
@@ -3430,6 +4339,67 @@ namespace
                 else if (g_VisualProfilesMenuActive)
                 {
                     if (
+                        g_VisualProfilesMode ==
+                            FableFrontendProfilesDeleteConfirm)
+                    {
+                        if (
+                            mouseX >= 362 &&
+                            mouseX < 618 &&
+                            mouseY >= 405 &&
+                            mouseY < 440)
+                        {
+                            // The retail YES control dispatches 0xd6.  The
+                            // manager owns the destructive operation; this
+                            // call intentionally stops at that boundary.
+                            ActivateVisualProfileSelection(window);
+                            return 0;
+                        }
+                        if (
+                            mouseX >= 20 &&
+                            mouseX < 276 &&
+                            mouseY >= 405 &&
+                            mouseY < 440)
+                        {
+                            g_VisualProfilesMode =
+                                FableFrontendProfilesDelete;
+                            FableSetVisualFrontendProfilesMode(
+                                FableFrontendProfilesDelete);
+                            RevealVisualFrontend(window);
+                            return 0;
+                        }
+                        return 0;
+                    }
+                    if (
+                        g_VisualProfilesMode == FableFrontendProfilesNormal &&
+                        mouseX >= 362 &&
+                        mouseX < 618 &&
+                        mouseY >= 420 &&
+                        mouseY < 450 &&
+                        g_VisualProfileNameCount != 0)
+                    {
+                        FableUiFrontendProfileActionPlan actionPlan = {};
+                        FablePlanVisualFrontendProfileAction(
+                            FableUiFrontendProfileModeNormal,
+                            0,
+                            g_VisualProfileNameCount,
+                            FableUiFrontendProfileInputDeleteList,
+                            &actionPlan);
+                        if (!actionPlan.dispatch ||
+                            actionPlan.action !=
+                                FableRetailFrontendManagerActionDeleteListRefresh)
+                            return 0;
+                        // UI_DELETE in UI_HELPERS_PROFILE_DELETE enters the
+                        // separate delete-list definition.
+                        g_VisualProfilesMode = FableFrontendProfilesDelete;
+                        g_VisualProfileSelection = 0;
+                        FableSetVisualFrontendProfilesMode(
+                            FableFrontendProfilesDelete);
+                        PlayVisualFrontendResourceSound(
+                            kBootSoundForwardResource);
+                        RevealVisualFrontend(window);
+                        return 0;
+                    }
+                    if (
                         mouseX >= 20 &&
                         mouseX < 270 &&
                         mouseY >= 420 &&
@@ -3447,16 +4417,28 @@ namespace
                     if (
                         mouseX >= 200 &&
                         mouseX < 440 &&
-                        mouseY >= 120 &&
-                        mouseY < 120 + FableFrontendProfileListHeight)
+                        mouseY >= 113 &&
+                        mouseY < 113 + FableFrontendProfileListHeight)
                     {
-                        const unsigned int row = static_cast<unsigned int>(
-                            (mouseY - 120) /
-                            FableFrontendProfileRowStep);
-                        if (row < g_VisualProfileNameCount)
+                        unsigned int row = 0;
+                        if (FindVisualProfileRow(mouseX, mouseY, &row))
                         {
                             g_VisualProfileSelection = row;
                             FableSetVisualFrontendProfilesSelection(row);
+                            if (
+                                g_VisualProfilesMode ==
+                                    FableFrontendProfilesNormal)
+                            {
+                                ActivateVisualProfileSelection(window);
+                                return 0;
+                            }
+                            if (
+                                g_VisualProfilesMode ==
+                                FableFrontendProfilesDelete)
+                            {
+                                ActivateVisualProfileSelection(window);
+                                return 0;
+                            }
                             RevealVisualFrontend(window);
                             return 0;
                         }
@@ -3596,6 +4578,7 @@ namespace
                             // CKeyRedefiner::OnLeftUnclicked installs the
                             // one active capture target and replaces this
                             // row's value with TEXT_GUI_PRESS_CONTROL.
+                            g_VisualRedefineListSelection = row;
                             g_VisualRedefineSelection = row + 1;
                             FableSetVisualFrontendRedefineSelection(
                                 g_VisualRedefineSelection);
@@ -3779,16 +4762,16 @@ namespace
                     RevealVisualFrontend(window);
                 }
                 if (
-                    mouseX >= 200 &&
-                    mouseX < 440 &&
-                    mouseY >= 120 &&
-                        mouseY < 120 + FableFrontendProfileListHeight)
+                    mouseX >= 180 &&
+                    mouseX < 460 &&
+                    mouseY >= 113 &&
+                        mouseY < 113 + FableFrontendProfileListHeight)
                     {
-                        const unsigned int row = static_cast<unsigned int>(
-                            (mouseY - 120) /
-                            FableFrontendProfileRowStep);
+                        unsigned int row = 0;
+                        if (!FindVisualProfileRow(mouseX, mouseY, &row))
+                            return 0;
                     if (
-                        row < g_VisualProfileNameCount &&
+                        row < VisualProfileItemCount() &&
                         g_VisualProfileSelection != row)
                     {
                         g_VisualProfileSelection = row;
@@ -4291,14 +5274,18 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     g_VisualAboutMenuActive = false;
     g_VisualCreditsMenuActive = false;
     g_VisualProfilesMenuActive = false;
+    g_VisualProfilesMode = FableFrontendProfilesNormal;
     memset(g_VisualProfileNames, 0, sizeof(g_VisualProfileNames));
     memset(g_VisualProfileNamePointers, 0, sizeof(g_VisualProfileNamePointers));
     g_VisualProfileNameCount = 0;
     g_VisualProfileSelection = 0;
+    memset(g_VisualProfileEditText, 0, sizeof(g_VisualProfileEditText));
+    g_VisualProfileEditLength = 0;
     g_VisualDetailScreen = 0;
     g_VisualRedefineHover = 0;
     g_VisualRedefineResetHover = 0;
     g_VisualRedefineSelection = 0;
+    g_VisualRedefineListSelection = 0;
     CopyVisualRedefineKeys(
         g_VisualRedefineKeys,
         kVisualRedefineDefaults);

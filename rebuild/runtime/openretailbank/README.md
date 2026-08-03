@@ -35,9 +35,11 @@ symbols in the anchor with the ordered E8 targets in the retail bytes (see
 | faithful behavior | 7 | staged under `faithful/`, behavior-PASS, DIFFER on bytes (RTM-3077 vs retail QFE-4035 codegen wall) — execute identically |
 
 `CThreadedFile::CThreadedFile` (0098dfd0) landed byte-exact; `CThreadedFile::Open`
-(0098e1e0) is faithful (307 vs 310 bytes — a 2-dword stack-slot layout gap, behavior
+(0098e1e0) now compiles to the full 310-byte retail-sized body and its behavior is
 verified across both drive branches, both caching flags, and the CreateFileW-fails
-path).
+path. The strict object gate still reports two compiler scheduling residues in the
+`memcmp` setup and physical-sort cleanup address calculation; those residues remain
+visible and are not masked or accepted by the canonical build.
 
 `CWideString::CWideString` (0099aed0),
 `CContainedBankMap::operator[]` (009ac530), and

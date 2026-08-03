@@ -1,17 +1,18 @@
 # Active task list — decomp, frontend parity, and downstream tools
 
-*Refreshed 2026-07-29 from the canonical rebuild and visual parity gates.*
+*Reconciled 2026-08-02 from the canonical rebuild, focused frontend tests, and
+strict visual/retail parity gates.*
 
 ## Current verified state
 
-- Curated reconstruction: **5,355 / 5,355** VC7.1 compile + behavior PASS.
-- Whole-project verified functional or matching C++: **5,205 / 49,568**
-  (**10.50%**), including **2,900 byte-identical** functions (**5.85%**).
-- Candidate retail parity: **5,187**
-  (`2,884 EXACT + 2,303 RELOCATION_MATCH`), with `40 DIFFER` and
+- Curated reconstruction: **5,588 / 5,588** VC7.1 compile + behavior PASS.
+- Whole-project verified functional or matching C++: **5,440 / 49,568**
+  (**10.97%**), including **3,049 byte-identical** functions (**6.15%**).
+- Candidate retail parity: **5,422**
+  (`3,033 EXACT + 2,389 RELOCATION_MATCH`), with `38 DIFFER` and
   `128 ORACLE_MISSING`; the whole-project totals additionally include 18
   independently lifted matching/functional functions.
-- Auto-RE intake: **840 generated / 825 structural PASS**.
+- Auto-RE intake: **850 generated / 836 structural PASS**.
 - GFMain evidence/control-flow closure: **257 / 257 direct calls** and
   **10 / 10 authored phases**; the separate modern C++23 startup pass remains
   **0 / 10 phases**.
@@ -22,6 +23,35 @@
   Options/Redefine/Quit interaction smoke pass. The scheduled auto-RE queue is
   exhausted apart from five cooldown-deferred hard targets and will retry them
   automatically.
+- The profile runtime now follows the recovered retail branches: normal mode
+  inserts action `0x125` New Profile before the 30px profile rows, delete mode
+  uses the separate 210px list/action `0xD7`, zero profiles enter the authored
+  empty-profile branch, and the new-profile editor accepts live text through
+  the retail glyph atlas. The adapter also routes the recovered `0xFA`,
+  `0x124`, `0x126`, `0x127`, and `0xD6` action boundaries. The exact
+  `CreateNewProfile`/profile-manager commit remains an explicit link boundary;
+  no synthetic save writer was added.
+- The visual checkpoint projects the optional compiled LIVE child out of the
+  offline main-menu presentation, preserving the retail 60px gap and atlas
+  frames seen in the supplied retail capture. The seven-child `frontend.bin`
+  oracle remains unchanged.
+- Authored arrow-bearing lists now accept WM_MOUSEWHEEL over their list area
+  and left-clicks on the decoded 32x32 up/down arrow components. Wheel deltas
+  and arrow clicks share the recovered `FablePlanUiFrontEndListScroll` path
+  and list sound/state transitions; profile, delete, saves, and Redefine
+  records preserve their compiled scrolling/wrapping contracts. Main/options
+  lists have no authored arrow bindings and serialize `Scrolling=false`, so
+  they are not given inferred mouse-wheel ingress. Redefine's off-page
+  action-name materialization remains blocked by the documented stripped
+  EGameAction name table, so no guessed labels are emitted.
+- The delete-confirmation frame is now sourced from the retail definition/text
+  pipeline and paired with the normal profile frame in the 640x960 resource
+  sheet. `0xD7` enters confirmation and YES dispatches native `0xD6`; the
+  checkpoint still stops before native deletion, refresh, and persistence.
+- Focused frontend verification is **35/35** Python tests. The full Release
+  bootstrap remains intentionally blocked by the strict
+  `CThreadedFile::Open @ 0x0098E1E0` non-relocation-byte mismatch; the gate has
+  not been weakened and this status is not a frontend pass claim.
 
 Generated queues:
 
@@ -39,11 +69,12 @@ Completed in the current checkpoint:
 2. `CTable::Draw @ 0x00550DC0` ordinary/true transform propagation and generated
    child positioning are promoted into VC7.1 runtime code and behavior tests.
    Main-menu, Options, and Redefine hit regions use that transform chain.
-3. Screen headers resolve to the full 640-pixel title-rule center. Their table
-   now uses the exact `UI_TABLE_TITLE_WHOLE` mapping: all three horizontal
-   roles reference `UI_TEXTBOX_MIDDLE` (#122), producing one continuous retail
-   gold-edged/blue-filled rule instead of substituted selected-button pieces.
-   The build still prefers the pristine installed `frontend.big`.
+3. Screen headers preserve the serialized left-aligned text origin `(65,y)`
+   measured in the retail captures. Their table now uses the exact
+   `UI_TABLE_TITLE_WHOLE` mapping: all three horizontal roles reference
+   `UI_TEXTBOX_MIDDLE` (#122), producing one continuous retail gold-edged/
+   blue-filled rule instead of substituted selected-button pieces. The build
+   still prefers the pristine installed `frontend.big`.
 4. Plain `--buff-jesus` includes the three retail boot movies; the explicit
    `--skip-boot-videos` developer override and retail/BuffJesus smokes pass.
 5. The horizontal/vertical `CTable` line geometry is promoted from retail and
@@ -251,10 +282,10 @@ Next work, in order:
    path as mouse controls. Held direction input now mirrors the recovered
    `CFrontendGameComponent::ChangeSelection @ 0x00494380` state machine:
    immediate direction changes, a 500 ms initial delay, then 100 ms repeats.
-   Implement the remaining main-menu actions; connect validated save-row action
-   `0x11` to the recovered main-game load chain only after that ownership
-   boundary is ready. Recover mouse-hover and remaining
-   action sound dispatch separately before enabling it.
+   The offline main-menu projection now covers the six visible retail actions;
+   connect validated save-row action `0x11` to the recovered main-game load
+   chain only after that ownership boundary is ready. Recover any remaining
+   mouse-hover and action sound dispatch separately before enabling it.
 2. Capture identical retail and reconstructed Saved Games and Redefine Keys
    states. Produce alpha-aware image diffs and correct measured text,
    highlight, metadata, and background discrepancies.
@@ -337,8 +368,10 @@ Next work, in order:
 
 ## P0 — review the current Quest-wrapper tail
 
-The organized-tree full build and parity refresh are complete. Review these generated wrappers
-before any promotion:
+The organized-tree source/parity refresh is complete for its recorded ledger;
+the current full bootstrap is still stopped by the strict
+`CThreadedFile::Open @ 0x0098E1E0` non-relocation-byte gate. Review these
+generated wrappers before any promotion:
 
 1. Reconstruct the failed lookup paths in `DisplayTutorial @ 0x0089E710`,
    `EnableGuards @ 0x00896270`, `EnableVillagerDefTypes @ 0x008962D0`, and

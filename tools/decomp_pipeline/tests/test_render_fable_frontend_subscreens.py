@@ -68,6 +68,7 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     build_about_frame,
     build_credits_frame,
     build_profiles_frame,
+    build_profiles_screen_sheet,
     extract_credits_text_stream,
     validate_compiled_about_layout,
     validate_compiled_credits_layout,
@@ -102,14 +103,14 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
             ),
             OPTIONS_ROWS)
 
-    def test_screen_headers_share_the_design_canvas_center(self):
+    def test_screen_headers_use_the_serialized_left_origin(self):
         self.assertEqual((0, 35), HEADER_RULE_POSITION)
-        self.assertEqual((320, 44), HEADER_TEXT_POSITION)
+        self.assertEqual((65, 44), HEADER_TEXT_POSITION)
 
     @unittest.skipUnless(
         os.path.isfile(FONT_BANK),
         "retail font bank is not installed")
-    def test_every_detail_header_is_pixel_centered(self):
+    def test_every_detail_header_is_pixel_left_aligned(self):
         font = load_font(self.FONT_BANK, "ENG_ARIAL_24")
         for title in (
                 "Options",
@@ -123,17 +124,16 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
                     title,
                     (640, 480),
                     HEADER_TEXT_POSITION,
-                    "center",
+                    "left",
                     2.0 / 3.0),
                 1)
             bounds = line.getchannel("A").getbbox()
             self.assertIsNotNone(bounds, title)
-            # Odd-width glyph runs necessarily land half a pixel either side
-            # of x=320; no title may be farther away than that.
-            self.assertLessEqual(
-                abs((bounds[0] + bounds[2]) - 640),
-                1,
-                title)
+            # The retail text child is serialized at x=65 and rendered from
+            # that left origin; font bearings may extend the ink a few pixels
+            # to the left, but it must not be centered on the canvas.
+            self.assertLessEqual(bounds[0], 65, title)
+            self.assertGreater(bounds[2], 65, title)
 
     def test_title_rule_tiles_middle_to_compiled_width(self):
         left = Image.new("RGBA", (128, 64), (1, 0, 0, 255))
@@ -608,6 +608,14 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         left, top = PROFILE_GLYPH_ATLAS_ORIGIN
         self.assertIsNotNone(
             components.crop((left, top, left + 128, top + 256)).getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend.big/fonts.big are not installed")
+    def test_profiles_sheet_contains_delete_confirmation_surface(self):
+        sheet = build_profiles_screen_sheet(self.FRONTEND_BANK, self.FONT_BANK)
+        self.assertEqual(sheet.size, (640, 960))
+        self.assertIsNotNone(sheet.crop((0, 480, 640, 960)).getbbox())
 
     @unittest.skipUnless(
         os.path.isfile(os.path.join(

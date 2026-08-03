@@ -1,9 +1,91 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-07-29 (GFMain 257/257 direct calls proven; all ten
+*Last updated: 2026-08-02 (GFMain 257/257 direct calls proven; all ten
 phases have every observed direct call closed; Phase 5 65/65; Phase 6
 61/61; all phases callable through final return; D3D9 visual checkpoint
 green).*
+
+## Current frontend parity continuation
+
+- Profile rendering/input now follows the recovered retail contracts: normal
+  profile selection inserts New Profile at action `0x125`, existing rows use
+  the recovered 30px runtime spacing, delete has its own list branch/action
+  `0xD7`, and zero profiles enter the authored empty-profile route.
+- New-profile text is live and uses the retail glyph atlas. The final confirm
+  still stops at the exact `CreateNewProfile`/`CUserProfileManager` boundary;
+  the checkpoint intentionally does not invent a save format or claim a
+  persisted profile until that manager is linked.
+- The offline main-menu projection hides the optional LIVE child while keeping
+  the compiled seven-child oracle intact; visible rows map to retail atlas
+  frames `0,1,2,4,5,6` and retain the authored gap.
+- Focused verification after this continuation: Python frontend suite 35/35,
+  both VC7.1 visual sources compile, the threaded-file behavior fixture passes,
+  and the raw OpenRetailBank anchor remains untouched. The full bootstrap remains
+  blocked by the strict `CThreadedFile::Open @ 0x0098E1E0` gate: the candidate is
+  now retail-sized at 310 bytes, but two non-relocation compiler scheduling
+  residues remain visible and unaccepted.
+- The retail virtual-keyboard boundary is now source-backed as well:
+  `CVirtualKeyboard::Cancel @ 0x00851860` (46 bytes) and `Confirm @
+  0x00851920` (121 bytes) reproduce the captured retail instruction bodies,
+  with only the documented engine-call relocations isolated. Focused VC7.1
+  fixtures cover their flag, profile-name, IME, and cleanup behavior. These
+  bodies are indexed but are not substituted into the visual checkpoint until
+  the underlying `CFrontEndManager`/IME objects are linked; the checkpoint
+  still stops at the exact profile action IDs and does not synthesize a save.
+- Mouse-wheel list ingress is now tied to the recovered retail path. In
+  `ego_r`, `CMouseDX::ConvertMouseEventToInputEvent @ 0x00C55D20` handles
+  mouse event type `10` with `CInputEvent::SetAsMouseWheelMovement @
+  0x00B6EB00`; `CInputProcessGameBase::GetMouseWheelMovement @ 0x006B2E50`
+  forwards through `CGamePlayerInterface::GetMouseWheelMovement @
+  0x00442D70` to `CInputEvent::GetMouseWheelMovement @ 0x00B6E670`.
+  `GetInputProcessEvent @ 0x00443310` supplies the event scan, and
+  `CList::ProcessEvent @ 0x005AF56D` / `CScrollableList::ProcessEvent @
+  0x005CEFF0` supply the Up/Down list path. The checkpoint’s Win32 message
+  is only the platform ingress; it preserves the retail one-event signed
+  delta and `+/-0.0001` classification instead of inventing notch repeats.
+- The arrow hit areas are resource-backed, not screenshot estimates: retail
+  `frontend.big` entries 379–382 are `FE_SCROLL_UP/DOWN_SPRITE` and hovered
+  variants, each exact 32x32 A8R8G8B8, matching the Type-38 arrow children
+  bound at the serialized profile/delete/save/redefine positions.
+
+## Frontend input semantic bridge
+
+- Retail `CNewFrontendGameComponent::Input @ 0x0042E3EE` maps type `0x0E`
+  wheel movement to actions `0x24`/`0x25` using the strict `+/-0.0001`
+  threshold. `CList::ProcessEvent @ 0x0053673B` maps list events `0`/`1`
+  to up/down, and `CClickable::ProcessEvent @ 0x0055AD60` maps left
+  press/release to `0x1A`/`0x1C`. The checkpoint boundary carries these
+  recovered IDs in `rebuild/integration/frontend_input_dispatch.h`, retains
+  the clickable pressed state across the two events, and dispatches the
+  arrow callback only on `0x1A`. Its list boundary preserves the four
+  decompiled `CList::ProcessEvent` condition results without guessing names
+  for opaque UI fields; the current visual adapter supplies all four as true
+  for its normal visible-list path because it is not yet a live `CList`
+  object. Focused fixture coverage locks the threshold, list-event mapping,
+  all list guard rejections, and press/release state machine.
+
+- The manager call in that input function is the generic frontend singleton
+  `CFrontEndManager::GetInstance @ 0x0041E5F2`, not the separate
+  `0x00595582` manager instance. Its vtable slot 0 is
+  `CManager::ProcessEvent @ 0x0055CB10`: current component first; otherwise a
+  copied registered-component list; condition (`vtable +8`) then process
+  (`vtable +4`) for each passing target. The visual checkpoint now uses this
+  recovered ordering at its explicit callback boundary and keeps the absence
+  of a live native `CManager` object visible.
+
+- Delete mode now follows the recovered manager graph through the visual
+  confirmation screen: profile-row action `0xD7` selects the native delete
+  confirmation definition, whose exact `frontend.bin`/`text.big` composition
+  is the second frame of the profile resource sheet. YES dispatches `0xD6`
+  and intentionally stops at the native `DeleteProfile` callback boundary;
+  NO returns to the delete list. No local deletion or guessed persistence is
+  performed.
+
+- New-profile editing now follows `CFrontendGameComponent::ProcessTextInputCharacter
+  @ 0x004944E0`: 128-byte storage, 127-character limit, low-byte character
+  storage, and backspace `0x08` in the same helper. The adapter still stops at
+  the recovered `CVirtualKeyboard::Confirm @ 0x00851920` /
+  `CFrontEndManager::Action` callback boundary for validation and persistence.
 
 ## Repository-history repair (2026-07-28)
 
@@ -6938,7 +7020,8 @@ the route/back state machine (built green under VC7.1).
 640x480 About overlay panel through the exact Options helper pipeline
 (`_build_table_horizontal` title rule, `_draw_text`, `_draw_helper`):
 
-- Title rule (shared `UI_TEXTBOX_MIDDLE_FE_SPRITE`) at `(0,5)` + centred title
+- Title rule (shared `UI_TEXTBOX_MIDDLE_FE_SPRITE`) at `(0,5)` + the serialized
+  left-aligned title origin `(65,14)`
   **"About Fable"** — the real string resolved from retail `text.big`
   (`TEXT_GUI_MENU_ABOUT_TITLE`); `TEXT_GUI_MENU_OPTIONS`="Options" confirms the
   renderer's literal-string convention is text-bank-faithful.
@@ -7266,12 +7349,43 @@ retail `ENG_ARIAL_16` atlas; the decoded normal-list row step is 28px and is
 shared by rendering and hit-testing. Delete-mode, empty-profile, and new-profile
 editing remain open rather than being filled with guessed behavior.
 
+Latest parity correction: the checkpoint no longer treats those controls as
+an inferred state machine. It maps the authored controls through the exact
+`CFrontEndManager::Action` IDs recovered at `0x0059A238`: `0xFA` enters the
+delete list, `0xD7` selects a delete row, `0xD6` confirms deletion, `0x125`
+enters New Profile (including the empty-profile route), `0x124` loads a
+profile, and `0x126`/`0x127` confirm/cancel the virtual keyboard. The native
+manager/profile service still owns the side effects; the checkpoint stops at
+that link boundary and does not synthesize persistence.
+
 The renderer now has a byte-preserving extraction oracle for all six
 `TEXT_GUI_CRE_*` type-1 groups: it follows the compiled `TextValue` symbols,
 retains member IDs/order, and preserves explicit single-space rows. No guessed
 line spacing or unverified runtime scroll surface has been promoted.
 
-The normal bootstrap was stopped by the pre-existing `CThreadedFile::Open`
-leaf gate (`retail=310`, `built=307`) before integration compilation. The
-visual objects/resource were compiled and linked against the already-gated
-runtime object set for this smoke; the byte gate itself was not weakened.
+The normal bootstrap was stopped by the strict `CThreadedFile::Open` leaf
+gate (`retail=310`, built=310 but non-relocation bytes differ) before
+integration compilation. The visual objects/resources were regenerated from
+the retail asset pipeline, and the byte gate was not weakened.
+
+## Session addendum — 2026-08-02: authored list wheel/arrow input
+
+The frontend checkpoint now handles `WM_MOUSEWHEEL` over the authored
+arrow-bearing list areas and left-clicks on the decoded 32x32 list arrows. Wheel screen
+coordinates are converted through the actual client rectangle before the
+640x480 design hit-test; each signed wheel event uses one recovered list-scroll
+transition, including the retail up/down sound request. Arrow
+clicks enter that same planner, so mouse, keyboard, and controller movement
+share the list state path.
+
+The main/options lists are excluded from this host ingress because their
+frontend.bin records have no UpArrow/DownArrow binding and serialize
+`Scrolling=false`.
+
+The compiled semantics are retained: profiles and Redefine Keys use their
+retail `Scrolling=true, Wrapping=false` end boundaries; save lists retain
+their authored wrapping behavior. Redefine navigation tracks the full decoded
+31-child `ActionOrder` separately from the nine-row active key-capture state.
+The renderer still deliberately stops at the verified first nine Redefine
+labels because the retail EGameAction integer-to-display-name table remains
+stripped; no off-page names were guessed or baked.

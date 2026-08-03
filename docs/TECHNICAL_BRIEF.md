@@ -35,9 +35,9 @@ Evidence grades must remain distinct:
 The canonical generated metrics currently report:
 
 - 49,568 catalogued retail functions;
-- 5,355 curated VC7.1-compiled and behavior-gated sources;
-- 5,205 verified functional or matching reconstructions (10.50%);
-- 2,900 byte-identical reconstructions (5.85%);
+- 5,588 curated VC7.1-compiled and behavior-gated sources;
+- 5,440 verified functional or matching reconstructions (10.97%);
+- 3,049 byte-identical reconstructions (6.15%);
 - 257/257 observed `GFMain` direct-call sites proven;
 - 10/10 authored `GFMain` phases callable.
 - 0/10 `GFMain` phases promoted into a modern C++23 startup target; that pass
@@ -125,6 +125,10 @@ and full eight-allocation success routes.
 - `visual_boot_checkpoint.cpp` is an authored standalone Win32 interaction
   harness, not the recovered retail frontend parent.
 - `visual_boot_d3d9.cpp` presents retail-derived local assets through D3D9.
+- Frontend wheel/list/click input and manager condition/process ordering are
+  recovered at an explicit callback boundary; the delete-confirmation frame is
+  composed from retail banks/definitions, while native profile persistence is
+  still deliberately unlinked.
 - `retail_video_bridge.cpp` uses DirectShow and can select an explicitly
   generated local upscaled-video cache.
 - `frontend_startup_sequence.cpp` is an authored seam for a recovered

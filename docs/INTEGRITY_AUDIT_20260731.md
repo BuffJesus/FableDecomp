@@ -1,5 +1,24 @@
 # Integrity audit — exact-decomp honesty pass (2026-07-31)
 
+## Current reconciliation addendum (2026-08-02)
+
+The historical audit below is retained as evidence and is not silently
+rewritten. Current canonical metrics are 5,588 compiled/behavior-gated
+sources, 3,033 exact plus 2,389 relocation matches, 38 `DIFFER`, and 128
+`ORACLE_MISSING`; the whole-project verified functional/matching total is
+5,440/49,568, with 3,049 byte-identical functions. The focused frontend
+Python suite is 35/35.
+
+Frontend progress remains explicitly bounded: wheel and arrow input use the
+recovered retail action/event IDs and generic manager dispatch ordering at a
+callback boundary; delete confirmation is composed from retail
+`frontend.bin`/`frontend.big`/`text.big`/`fonts.big` data; and new-profile text
+uses the recovered 128-byte/127-character/low-byte/backspace contract. The
+visual adapter does not claim native manager/list ownership and does not write
+profiles or delete data. The full bootstrap is still blocked by the strict
+`CThreadedFile::Open @ 0x0098E1E0` non-relocation-byte mismatch. No parity gate,
+oracle, or asset-purity rule was weakened.
+
 Read-only fan-out audit + adversarial verification across 7 dimensions, triggered by
 "do a pass over the rest to ensure we didn't hack our way through." 37 candidate findings,
 **32 confirmed/plausible, 5 refuted**. This doc is the durable ledger + live remediation state.

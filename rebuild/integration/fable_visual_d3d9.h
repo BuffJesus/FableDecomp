@@ -7,7 +7,27 @@
 enum FableFrontendProfileLayout
 {
     FableFrontendProfileRowStep = 28,
-    FableFrontendProfileListHeight = 260
+    FableFrontendProfileListHeight = 260,
+    FableFrontendProfileSpacing = 30
+};
+
+enum FableFrontendMainMenuLayout
+{
+    // The compiled list has seven children; the offline retail route hides
+    // the optional LIVE child while retaining the authored 60px gap.
+    FableFrontendMainMenuVisibleRows = 6
+};
+
+// These are the four authored frontend profile branches.  The normal and
+// delete lists are different retail Type-43 instances; empty/new are separate
+// screen definitions, not alternate baked frames of the normal list.
+enum FableFrontendProfilesMode
+{
+    FableFrontendProfilesNormal = 0,
+    FableFrontendProfilesDelete = 1,
+    FableFrontendProfilesEmpty = 2,
+    FableFrontendProfilesNew = 3,
+    FableFrontendProfilesDeleteConfirm = 4
 };
 
 bool FABLE_FASTCALL FableInitialiseVisualD3D9(
@@ -127,6 +147,10 @@ void FABLE_FASTCALL FableSetVisualFrontendProfilesMenu(
     fable_u32 count);
 void FABLE_FASTCALL FableSetVisualFrontendProfilesSelection(
     fable_u32 selection);
+void FABLE_FASTCALL FableSetVisualFrontendProfilesMode(
+    fable_u32 mode);
+void FABLE_FASTCALL FableSetVisualFrontendProfileEditText(
+    const char* text);
 void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen);
 void FABLE_FASTCALL FableSetVisualFrontendDetailOptionValue(
     fable_u32 screen,

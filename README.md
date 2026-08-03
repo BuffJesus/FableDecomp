@@ -155,10 +155,10 @@ runtime boundary, see [rebuild/RUNNABLE.md](rebuild/RUNNABLE.md).
 | Area | Verified state | Major remaining boundary |
 |---|---|---|
 | Analysis database | Nearly complete navigation-quality names with recovered prototypes and calling conventions | Resolve the remaining ambiguous types, function starts, and hard naming stragglers |
-| Function reconstruction | 5,355 VC7.1-compiled and behavior-gated sources; 5,205 verified functional/matching | Continue strict promotion without counting structural-only generated code |
+| Function reconstruction | 5,588 VC7.1-compiled and behavior-gated sources; 5,440 verified functional/matching | Continue strict promotion without counting structural-only generated code |
 | Startup | Retail-matched `WinMain`, all ten authored GFMain phases callable, connected exact `GFInitialise`, progress-display ownership | Replace the remaining GFMain dependency boundaries and pursue whole-coordinator retail parity |
-| Frontend | Boot movies, interactive menus, live generated title-rule and selection components, CUIState-driven main-menu/Save/Options rows, keyboard/mouse navigation, Continue-to-Saved-Games routing, and retail list/transition sounds | Visual sign-off is still open: measure reconstructed screens against identical retail captures before calling them presentation-parity; then connect validated save action `0x11` to the reconstructed main-game load boundary |
-| Controls | Interactive capture/cancel/apply, duplicate clearing, W/S/A/D movement expansion, arrow/WASD reset actions | Full 31-action scrolling, filtering, coexistence, and profile persistence |
+| Frontend | Boot movies, retail-data-driven interactive menus, CUIState-driven main-menu/Save/Options rows, keyboard/mouse/controller navigation, Credits routing, profile/delete/new-profile branches, Continue-to-Saved-Games routing, and retail list/transition sounds | Visual sign-off is still open: compare identical retail/reconstruction captures; link native profile persistence and validated save action `0x11` only at their recovered manager/game boundaries |
+| Controls | Interactive capture/cancel/apply, duplicate clearing, W/S/A/D movement expansion, arrow/WASD reset actions, and recovered wheel/arrow ingress for authored scrolling lists | Full 31-action Redefine materialization/filtering/coexistence, profile persistence, and remaining controller/action ownership |
 | Video | Retail movie order, end-of-stream advancement, Escape skip, and D3D9 texture publication | Replace the compatibility presentation seam with reconstructed `CTexture`/`CMovie::Draw` submission |
 | Particles and lighting | Asset reports, billboard/crossed-sprite contracts, blend state, shader assembly, environment/RSA lookup, sky inputs | Recover constant semantics, signed/special passes, shadows, and golden viewer captures |
 | Modding research | Broad readers/writers for definitions, levels, terrain, meshes, animation, audio, text, quests, and saves | Consolidate them behind safe product workflows and runtime validation |
@@ -178,6 +178,9 @@ and the subsystem documents below.
 
 - Finish live `CTable`, `CList`, and `CKeyRedefiner` ownership and state flow,
   including detail-row extraction, controller input, and remaining actions.
+- Keep recovered wheel/list/click/manager dispatch IDs at their explicit retail
+  callback boundary; do not replace them with guessed host-side state or local
+  profile/delete writers.
 - Add deterministic retail-vs-reconstruction screenshot comparisons.
 - Replace the remaining ownership-heavy GFMain dependency seams in Phases 3
   and 5, plus Phase 6 font/text/display ownership. Phase 6 definition-table

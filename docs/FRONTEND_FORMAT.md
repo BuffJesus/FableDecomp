@@ -1,5 +1,12 @@
 # FRONTEND / GUI data — formats, asset chain, editability
 
+> **Current status (2026-08-02):** The authored frontend checkpoint has
+> recovered retail wheel/list/click dispatch semantics, the generic manager's
+> condition/process ordering, and the source-pipeline delete-confirmation
+> frame. These are verified data/behavior boundaries, not claims that the
+> visual adapter owns native `CList`, `CManager`, or profile persistence
+> objects. The strict bootstrap gate remains active.
+
 *Empirical pass 2026-07-20 (Ghidra lock held by another agent — no new decompilation used;
 engine-behaviour claims below are data-side evidence only). Install READ-ONLY; all
 experiments staged under `work/frontend_re/`.*
@@ -215,12 +222,79 @@ height 210; their authored up/down arrow bindings and Type-11 row template are
 preserved. Both list records have zero serialized children because rows are
 created from runtime profile data.
 
+Authored list arrows are input affordances, not decorative sprites. The
+retail `frontend.big` bank identifies graphic entries 379–382 as the four
+32x32 `FE_SCROLL_*_SPRITE`/hovered variants bound by these Type-38 children.
+The checkpoint maps one signed mouse-wheel event over each list viewport and
+left-clicks on those decoded 32x32 arrow children into the same recovered
+`CFrontEndList::ScrollUp/ScrollDown` planner used by keyboard/controller
+navigation. The profile and Redefine records retain their serialized
+`Scrolling=true, Wrapping=false` boundary behavior; the save list retains its
+serialized wrapping behavior. Redefine's first nine labels remain the only
+rendered page until the stripped EGameAction display-name table is recovered.
+
+The list planner and retail mouse-wheel input classes are decompiled and
+verified. The retail `ego_r` `CMouseDX::ConvertMouseEventToInputEvent`
+(`0x00C55D20`) handles event type `10` with
+`CInputEvent::SetAsMouseWheelMovement` (`0x00B6EB00`), and the game input
+process reads that delta through the recovered `GetMouseWheelMovement`
+forwarders. The retail `CNewFrontendGameComponent::Input` (`0x0042E3EE`)
+then maps input type `0x0E` to action `0x24` for positive movement or
+`0x25` for negative movement, using the strict `+/-0.0001` threshold.
+`CList::ProcessEvent` (`0x0053673B`) consumes list events `0`/`1` as
+up/down, and `CClickable::ProcessEvent` (`0x0055AD60`) consumes
+`0x1A`/`0x1C` for left clicked/unclicked, retaining the component's pressed
+state between the two events. The current Win32 message is only the platform
+ingress; the checkpoint routes through those recovered action/event IDs,
+dispatches the arrow callback on press, clears the pressed state on release,
+and does not expand a larger delta into repeated list events. The list event
+boundary also preserves the four decompiled `CList::ProcessEvent` condition
+results, but the visual adapter supplies the normal visible-list results
+because it does not yet own a live `NUISystem::CList` object; it does not
+assign guessed meanings to the opaque guard fields.
+
+The manager handoff is also recovered: this input path calls the generic
+frontend singleton `CFrontEndManager::GetInstance @ 0x0041E5F2`, whose vtable
+slot 0 is `CManager::ProcessEvent @ 0x0055CB10`. That dispatcher prefers its
+current component; when there is no current component it snapshots the
+registered component list, evaluates each component condition, and processes
+every component whose condition passes. The checkpoint represents that exact
+condition-then-process ordering with a callback target in
+`frontend_input_dispatch.h`; it does not fabricate a native manager object.
+
 The same gate covers the delete-screen variant, the no-profiles message at
 `(320,200)`, and the Type-12 new-profile menu at `(40,150)`. The normal route
 now refreshes profile directories from the user save root and renders their
 names through the authored `ENG_ARIAL_16` atlas; names are not compiled into
-the visual checkpoint. Delete-mode, the empty-profile branch, and new-profile
-editing remain separate runtime boundaries.
+the visual checkpoint. The adapter now preserves the recovered manager action
+boundary for delete-list entry (`0xFA`), delete-row selection (`0xD7`), empty
+and normal New Profile (`0x125`), profile load (`0x124`), keyboard confirm
+(`0x126`), and keyboard cancel (`0x127`). The native
+`CreateNewProfile`/`LoadProfile`/delete-manager bodies remain the only owners
+of persistence and are not replaced by a checkpoint-side writer; until that
+manager instance is linked, the visual harness stops at those exact action
+boundaries.
+
+The delete-confirmation graph is locked by the retail layout oracle and now
+has a source-pipeline composition: `UI_FRONTEND_DELETE_PROFILE_MENU` children are title,
+spooky background, title rule, YES, NO, and explanation. The recovered text
+symbols are `TEXT_GUI_MENU_DELETE_PROFILE`,
+`TEXT_GUI_MENU_DELETE_PROFILE_PROMPT`, and
+`TEXT_GUI_MENU_DELETE_PROFILE_EXPLANATION`, at `(65,44)`, `(320,100)`, and
+`(320,240)`, with YES/NO controls at `(362,405)` and `(20,405)`. The English
+text bank resolves the exact prompt and explanation strings. The profiles
+resource sheet now carries the authored normal frame plus the confirmation
+frame from those retail definitions. Row action `0xD7` enters it; YES stops at
+native action `0xD6`, whose manager callback still owns deletion, refresh, and
+persistence. No checkpoint-side delete writer has been added.
+
+New-profile text input is likewise source-backed: retail
+`CFrontendGameComponent::ProcessTextInputCharacter` (`0x004944E0`) uses a
+128-byte buffer, accepts the low byte of each input character while the
+logical length is below 127, and handles character `8` as backspace. The
+checkpoint now uses that exact buffer/limit/backspace contract; the native
+`CVirtualKeyboard::Confirm` and `CFrontEndManager::Action` callbacks still own
+validation and profile creation.
 
 ### Credits screen (`UI_FRONTEND_CREDITS_MENU`)
 
@@ -417,10 +491,10 @@ The shared title rule exposed the same local/final distinction. Options,
 Gameplay, Audio, Video, and Redefine serialize their title text child at
 `(65,44)` with left alignment, but treating that child state as the final
 surface coordinate left every title visibly stranded at the rule's left end.
-The checkpoint now preserves y=44 and the decoded font/outline while resolving
-all five final title anchors to the 640-pixel rule center x=320. The Options
-submenu and every detail frame call the same `_draw_title` path, and a focused
-test locks `(320,44)` as the final header-text coordinate. The table rule
+ The checkpoint now preserves the decoded left origin `(65,44)` and the decoded
+ font/outline. The Options submenu and every detail frame call the same
+ `_draw_title` path, and a focused test locks the left-aligned header origin.
+ The table rule
 itself is now live: its three owned definition-122 children are adapted into
 clipped/scaled Render2D quads, while a retained baked oracle proves the
 no-rule sheet plus those components recompose pixel-identically. Header text

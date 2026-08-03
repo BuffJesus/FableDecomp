@@ -166,9 +166,19 @@ namespace
     const FableD3DDword kD3DClearTarget = 1;
     const FableD3DDword kD3DClearZBuffer = 2;
     const FableD3DDword kD3DFvfXyzRhwColourTexture1 = 0x1C4;
-    const fable_i32 kMainMenuRowYOffsets[7] = {
-        0, 30, 60, 120, 180, 210, 240
+    const fable_i32 kMainMenuRowYOffsets[
+        FableFrontendMainMenuVisibleRows] = {
+        0, 30, 60, 180, 210, 240
     };
+    const fable_u32 kMainMenuAtlasFrames[
+        FableFrontendMainMenuVisibleRows] = {
+        0, 1, 2, 4, 5, 6
+    };
+
+    fable_u32 MainMenuRetailChild(fable_u32 visibleRow)
+    {
+        return visibleRow >= 3 ? visibleRow + 1 : visibleRow;
+    }
     // audit #4: bound to the shared source of truth (detail_screen_tables.h)
     // so the render geometry cannot drift from the input hit-test side.
     const fable_u32 (&kDetailRowCounts)[3] =
@@ -305,9 +315,11 @@ namespace
     bool g_AboutMenuActive = false;
     bool g_CreditsMenuActive = false;
     bool g_ProfilesMenuActive = false;
+    fable_u32 g_ProfilesMode = FableFrontendProfilesNormal;
     const char* g_ProfileNames[32] = {};
     fable_u32 g_ProfileNameCount = 0;
     fable_u32 g_ProfileSelection = 0;
+    char g_ProfileEditText[128] = {};
     bool g_OptionsBackHovered = false;
     bool g_QuitPromptActive = false;
     bool g_Presented = false;
@@ -700,6 +712,46 @@ namespace
                 0xFFFFFFFFu);
             pen += static_cast<float>(glyph.advance);
         }
+    }
+
+    // TEXT_GUI_MENU_NEW_PROFILE is the label supplied by the retail text
+    // bank to the first action-0x125 profile button.  It is kept in the same
+    // ENG_ARIAL_16 glyph path as runtime profile names; this is a component
+    // label, not a precomposed screen surface.
+    const char kRetailNewProfileLabel[] = "New Profile";
+
+    fable_u32 ProfileListItemCount()
+    {
+        if (g_ProfilesMode == FableFrontendProfilesNormal)
+            return g_ProfileNameCount + 1;
+        if (g_ProfilesMode == FableFrontendProfilesDelete)
+            return g_ProfileNameCount;
+        return 0;
+    }
+
+    float ProfileListItemY(fable_u32 item)
+    {
+        if (g_ProfilesMode == FableFrontendProfilesNormal)
+        {
+            if (item == 0)
+                return 120.0f;
+            return 170.0f + static_cast<float>(
+                (item - 1) * FableFrontendProfileSpacing);
+        }
+        return 180.0f + static_cast<float>(
+            item * FableFrontendProfileSpacing);
+    }
+
+    float ProfileListVisibleItemY(
+        fable_u32 item,
+        fable_u32 firstRow)
+    {
+        const float viewportTop =
+            g_ProfilesMode == FableFrontendProfilesDelete
+                ? 180.0f
+                : 120.0f;
+        return viewportTop +
+            ProfileListItemY(item) - ProfileListItemY(firstRow);
     }
 
     fable_u32 ChooseNextAnimationFrame(
@@ -1959,9 +2011,11 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     InitialiseMainMenuRowStates();
     g_OptionsSelection = 0;
     g_SaveSelection = 0;
+    g_ProfilesMode = FableFrontendProfilesNormal;
     g_ProfileSelection = 0;
     g_ProfileNameCount = 0;
     memset(g_ProfileNames, 0, sizeof(g_ProfileNames));
+    memset(g_ProfileEditText, 0, sizeof(g_ProfileEditText));
     InitialiseOptionsRowStates();
     g_DetailScreen = 0;
     memset(g_DetailOptionValues, 0, sizeof(g_DetailOptionValues));
@@ -2078,7 +2132,10 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         overlayTexture = g_MenuTexture;
         overlayWidth = 640;
         overlayHeight = 480;
-        overlayFrame = g_MainMenuSelection;
+        overlayFrame =
+            g_MainMenuSelection < FableFrontendMainMenuVisibleRows
+                ? kMainMenuAtlasFrames[g_MainMenuSelection]
+                : 0;
         overlayFrameCount = 7;
     }
     else if (g_OptionsMenuActive)
@@ -2139,13 +2196,22 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     }
     else if (g_ProfilesMenuActive)
     {
-        // Static Select Profile title surface; runtime profile names are
-        // rendered below from the enumerated profile store.
-        overlayTexture = g_ProfilesTexture;
-        overlayWidth = g_ProfilesTexture != 0 ? 640 : 0;
-        overlayHeight = g_ProfilesTexture != 0 ? 480 : 0;
-        overlayFrame = 0;
-        overlayFrameCount = 1;
+        // The normal and delete definitions share the authored Select Profile
+        // title child.  Empty/new are separate frontend definitions; their
+        // title/message/edit children are emitted by the live branch below.
+        overlayTexture =
+            g_ProfilesMode == FableFrontendProfilesNormal ||
+            g_ProfilesMode == FableFrontendProfilesDelete ||
+            g_ProfilesMode == FableFrontendProfilesDeleteConfirm
+                ? g_ProfilesTexture
+                : 0;
+        overlayWidth = overlayTexture != 0 ? 640 : 0;
+        overlayHeight = overlayTexture != 0 ? 480 : 0;
+        overlayFrame =
+            g_ProfilesMode == FableFrontendProfilesDeleteConfirm
+                ? 1
+                : 0;
+        overlayFrameCount = 2;
     }
     const bool titleUsesDesignCanvas =
         overlayWidth == g_ArtworkWidth &&
@@ -2164,11 +2230,19 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     fable_u32 vertexCount = 0;
     fable_u32 recordCount = 0;
     const bool coastalBackground =
-        g_MainMenuActive || g_DetailScreen == 2 || g_ProfilesMenuActive;
+        g_MainMenuActive ||
+        (g_DetailScreen >= 1 && g_DetailScreen <= 2) ||
+        (g_ProfilesMenuActive &&
+            (g_ProfilesMode == FableFrontendProfilesNormal ||
+             g_ProfilesMode == FableFrontendProfilesNew));
     // UI_FRONTEND_ABOUT_MENU owns the SPOOKY graveyard background
     // (UI_BLENDING_BACKGROUNDS_SPOOKY: 4 BG frames + 3 sunbeam frames),
     // animated by the same swap/blend path as forest/coastal.
-    const bool spookyBackground = g_AboutMenuActive;
+    const bool spookyBackground =
+        g_AboutMenuActive ||
+        (g_ProfilesMenuActive &&
+            (g_ProfilesMode == FableFrontendProfilesDelete ||
+             g_ProfilesMode == FableFrontendProfilesDeleteConfirm));
     FableD3DTexture9* backgroundTexture =
         spookyBackground
             ? g_SpookyTexture
@@ -2281,7 +2355,10 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             0xFFFFFFFFu);
     }
     if (
-        (g_OptionsMenuActive || g_DetailScreen != 0) &&
+        (g_OptionsMenuActive || g_DetailScreen != 0 ||
+         (g_ProfilesMenuActive &&
+          (g_ProfilesMode == FableFrontendProfilesEmpty ||
+           g_ProfilesMode == FableFrontendProfilesNew))) &&
         g_TitleSegmentTexture != 0 &&
         g_TitleRuleComponents.size != 0)
     {
@@ -2323,7 +2400,9 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     const FableUiGeneratedComponentVector* selectedButtonComponents = 0;
     float selectedButtonX = 0.0f;
     float selectedButtonY = 0.0f;
-    if (g_MainMenuActive && g_MainMenuSelection < 7)
+    if (
+        g_MainMenuActive &&
+        g_MainMenuSelection < FableFrontendMainMenuVisibleRows)
     {
         selectedButtonComponents =
             g_MainMenuSelection == 0
@@ -2352,6 +2431,26 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         selectedButtonX = 10.0f;
         selectedButtonY =
             static_cast<float>(90 + g_SaveSelection * 30 - 7);
+    }
+    else if (
+        g_ProfilesMenuActive &&
+        (g_ProfilesMode == FableFrontendProfilesNormal ||
+         g_ProfilesMode == FableFrontendProfilesDelete) &&
+        g_ProfileSelection < ProfileListItemCount())
+    {
+        // UI_FRONTEND_BUTTON_FOR_PROFILES_LIST is the same 280px table
+        // template used by the authored profile Type-43 rows.  Its parent
+        // list origins are (200,120) and (200,180); the runtime row y values
+        // are supplied by RefreshAvailableProfiles*.
+        selectedButtonComponents = &g_OptionsButtonComponents;
+        selectedButtonX = 180.0f;
+        const fable_u32 visibleRows =
+            g_ProfilesMode == FableFrontendProfilesDelete ? 7 : 9;
+        fable_u32 firstRow = 0;
+        if (g_ProfileSelection >= visibleRows)
+            firstRow = g_ProfileSelection - visibleRows + 1;
+        selectedButtonY =
+            ProfileListVisibleItemY(g_ProfileSelection, firstRow) - 7.0f;
     }
     if (
         selectedButtonComponents != 0 &&
@@ -2813,38 +2912,76 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         g_OptionsTexture != 0 &&
         g_OptionsWidth == 1664)
     {
-        // UI_FRONTEND_LIST_FOR_PROFILES is a Type-43 runtime list. Its
-        // frontend.bin serializes PositionOffsetY=28 for this Type-43 list;
-        // names remain supplied by the profile store.
-        // The authored list viewport is 260px high, so only nine rows may be
-        // emitted. Keep the selected row in view as the list scrolls rather
-        // than appending off-screen glyph records for every stored profile.
-        const fable_u32 visibleRows = 9;
+        // The normal list is materialised by RefreshAvailableProfiles:
+        // action 0x125/New Profile at y=0, followed by profile buttons at
+        // y=50, +30.  Delete uses the separate list rooted at y=180 and its
+        // FrontEndProfileSpacing value.  Keep names as live glyph quads.
+        const fable_u32 itemCount = ProfileListItemCount();
+        const fable_u32 visibleRows =
+            g_ProfilesMode == FableFrontendProfilesDelete ? 7 : 9;
         fable_u32 firstRow = 0;
         if (g_ProfileSelection >= visibleRows)
             firstRow = g_ProfileSelection - visibleRows + 1;
         for (fable_u32 displayRow = 0; displayRow != visibleRows; ++displayRow)
         {
-            const fable_u32 row = firstRow + displayRow;
-            if (row >= g_ProfileNameCount)
+            const fable_u32 item = firstRow + displayRow;
+            if (item >= itemCount)
                 break;
+            const char* rowText = 0;
+            if (
+            g_ProfilesMode == FableFrontendProfilesNormal &&
+                item == 0)
+            {
+                rowText = kRetailNewProfileLabel;
+            }
+            else
+            {
+                const fable_u32 profileIndex =
+                    g_ProfilesMode == FableFrontendProfilesNormal
+                        ? item - 1
+                        : item;
+                rowText = g_ProfileNames[profileIndex];
+            }
             AppendProfileNameText(
                 vertices,
                 vertexCount,
                 records,
                 recordCount,
-                g_ProfileNames[row],
+                rowText,
                 320.0f,
-                120.0f + static_cast<float>(
-                    displayRow * FableFrontendProfileRowStep),
+                ProfileListVisibleItemY(item, firstRow),
                 left,
                 top,
                 designScaleX,
                 designScaleY);
         }
     }
+    if (
+        g_ProfilesMenuActive &&
+        g_OptionsTexture != 0 &&
+        g_OptionsWidth == 1664 &&
+        g_ProfilesMode == FableFrontendProfilesNew)
+    {
+        // UI_NEW_PROFILE_TEXT is the authored edit child.  The keyboard owns
+        // the string; this quad only exposes that runtime value through the
+        // retail font atlas while the virtual-keyboard route is active.
+        AppendProfileNameText(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            g_ProfileEditText,
+            320.0f,
+            200.0f,
+            left,
+            top,
+            designScaleX,
+            designScaleY);
+    }
     if ((g_OptionsMenuActive || g_SaveMenuActive || g_AboutMenuActive ||
-         g_CreditsMenuActive || g_ProfilesMenuActive) &&
+         g_CreditsMenuActive ||
+         (g_ProfilesMenuActive &&
+          g_ProfilesMode != FableFrontendProfilesDeleteConfirm)) &&
         g_HelpersTexture != 0)
     {
         const fable_u32 helperFrame =
@@ -3199,12 +3336,12 @@ void FABLE_FASTCALL FableSetVisualFrontendMainMenu(bool active)
 void FABLE_FASTCALL FableSetVisualFrontendMainMenuSelection(
     fable_u32 selection)
 {
-    if (!g_MainMenuActive || selection >= 7)
+    if (!g_MainMenuActive || selection >= FableFrontendMainMenuVisibleRows)
         return;
     if (selection == g_MainMenuSelection)
         return;
-    ApplyMainMenuRowState(g_MainMenuSelection, 4);
-    ApplyMainMenuRowState(selection, 3);
+    ApplyMainMenuRowState(MainMenuRetailChild(g_MainMenuSelection), 4);
+    ApplyMainMenuRowState(MainMenuRetailChild(selection), 3);
     g_MainMenuSelection = selection;
 }
 
@@ -3221,14 +3358,14 @@ bool FABLE_FASTCALL FableScrollVisualFrontendMainMenu(
         g_MainMenuSelection;
     FableUiFrontEndListScrollPlan plan = {};
     const bool moved = FableApplyUiFrontEndListScroll(
-            scrollDown,
-            true,
-            0,
-            g_MainMenuRowChildren,
-            7,
-            7,
-            static_cast<long>(g_MainMenuSelection),
-            &plan);
+        scrollDown,
+        true,
+        0,
+        g_MainMenuRowChildren,
+        FableFrontendMainMenuVisibleRows,
+        FableFrontendMainMenuVisibleRows,
+        static_cast<long>(g_MainMenuSelection),
+        &plan);
     if (soundRequest != 0)
         *soundRequest = static_cast<fable_u32>(plan.soundRequest);
     if (!moved)
@@ -3237,8 +3374,10 @@ bool FABLE_FASTCALL FableScrollVisualFrontendMainMenu(
     }
     g_MainMenuSelection =
         static_cast<fable_u32>(plan.selectedChild);
-    ApplyMainMenuRowState(previousSelection, 4);
-    ApplyMainMenuRowState(g_MainMenuSelection, 3);
+    ApplyMainMenuRowState(MainMenuRetailChild(previousSelection), 4);
+    ApplyMainMenuRowState(
+        MainMenuRetailChild(g_MainMenuSelection),
+        3);
     *selected = g_MainMenuSelection;
     return true;
 }
@@ -3525,11 +3664,18 @@ void FABLE_FASTCALL FableSetVisualFrontendProfilesMenu(
         for (fable_u32 i = 0; i != g_ProfileNameCount; ++i)
             g_ProfileNames[i] = names != 0 ? names[i] : 0;
         g_ProfileSelection = 0;
+        g_ProfilesMode =
+            g_ProfileNameCount == 0
+                ? FableFrontendProfilesEmpty
+                : FableFrontendProfilesNormal;
+        memset(g_ProfileEditText, 0, sizeof(g_ProfileEditText));
     }
     else
     {
         g_ProfileNameCount = 0;
         g_ProfileSelection = 0;
+        g_ProfilesMode = FableFrontendProfilesNormal;
+        memset(g_ProfileEditText, 0, sizeof(g_ProfileEditText));
     }
     g_AnimationStartTick = 0;
 }
@@ -3537,9 +3683,38 @@ void FABLE_FASTCALL FableSetVisualFrontendProfilesMenu(
 void FABLE_FASTCALL FableSetVisualFrontendProfilesSelection(
     fable_u32 selection)
 {
-    if (!g_ProfilesMenuActive || selection >= g_ProfileNameCount)
+    if (!g_ProfilesMenuActive || selection >= ProfileListItemCount())
         return;
     g_ProfileSelection = selection;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendProfilesMode(
+    fable_u32 mode)
+{
+    if (!g_ProfilesMenuActive || mode > FableFrontendProfilesDeleteConfirm)
+        return;
+    g_ProfilesMode = mode;
+    g_ProfileSelection = 0;
+    g_AnimationStartTick = 0;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendProfileEditText(
+    const char* text)
+{
+    if (!g_ProfilesMenuActive ||
+        g_ProfilesMode != FableFrontendProfilesNew)
+    {
+        return;
+    }
+    memset(g_ProfileEditText, 0, sizeof(g_ProfileEditText));
+    if (text == 0)
+        return;
+    for (fable_u32 i = 0; i + 1 < sizeof(g_ProfileEditText) && text[i] != 0; ++i)
+    {
+        const unsigned char character =
+            static_cast<unsigned char>(text[i]);
+        g_ProfileEditText[i] = static_cast<char>(character);
+    }
 }
 
 void FABLE_FASTCALL FableSetVisualFrontendQuitHover(fable_u32 hover)
