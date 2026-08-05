@@ -1,6 +1,14 @@
 #include <cstdio>
 
-#include "../../../src/compiled/00/59/FrontEndHistoryDequeIterator_Current_0059aae0.cpp"
+struct FrontEndHistoryDequeIterator_0059aae0
+{
+    void** current;
+    void** first;
+    void** last;
+    void*** node;
+
+    void** Current() const;
+};
 
 int main()
 {

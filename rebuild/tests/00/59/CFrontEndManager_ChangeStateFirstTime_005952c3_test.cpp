@@ -20,7 +20,7 @@ static int g_topCalls;
 static void* g_vtable[0xc4 / 4];
 
 extern "C" void** __fastcall
-FableFrontEndFirstStateStackTop(void* stack, void*)
+FableFrontEndFirstStateStackTop(void* stack)
 {
     if (stack == g_expectedStack)
         ++g_topCalls;

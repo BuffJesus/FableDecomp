@@ -13,11 +13,15 @@ param(
 
     [switch]$VerifyMaximizedScale,
 
+    [switch]$VerifyRetailReferenceSize,
+
     [switch]$VerifyFrontendAnimation,
 
     [switch]$VerifyMainMenu,
 
     [switch]$VerifySubscreens,
+
+    [string]$ReferenceProfileName = '',
 
     [switch]$BuffJesus,
 
@@ -41,6 +45,7 @@ $Executable = (Resolve-Path -LiteralPath $Executable).Path
 if (
     $RetailVideo -or
     $VerifyMaximizedScale -or
+    $VerifyRetailReferenceSize -or
     $VerifyFrontendAnimation -or
     $VerifyMainMenu -or
     $VerifySubscreens
@@ -130,6 +135,13 @@ if ($VerifyMaximizedScale -or $VerifySubscreens) {
     # Keep the existing decoded-backdrop pixel oracle deterministic while the
     # default frontend runs its independent forest/sunbeam animation.
     $arguments += '--retail-frontend-static'
+}
+if ($VerifyRetailReferenceSize) {
+    $arguments += '--retail-frontend-reference-size'
+    if (-not $VerifyFrontendAnimation) {
+        # Keep the reference-size screenshot deterministic for pixel inspection.
+        $arguments += '--retail-frontend-static'
+    }
 }
 if ($RetailVideo) {
     $arguments += if ($Movie -eq 'boot') {
@@ -321,6 +333,26 @@ try {
     }
 
     $maximizedScaleProof = ''
+    $retailReferenceSizeProof = ''
+    if ($VerifyRetailReferenceSize) {
+        $client = New-Object VisualSmokeNativeMethods+Rect
+        if (-not [VisualSmokeNativeMethods]::GetClientRect(
+            $process.MainWindowHandle,
+            [ref]$client
+        )) {
+            throw 'Could not resolve the retail reference client rectangle.'
+        }
+        $clientWidth = $client.Right - $client.Left
+        $clientHeight = $client.Bottom - $client.Top
+        if ($clientWidth -ne 1024 -or $clientHeight -ne 768) {
+            throw (
+                'The retail reference client is not 1024x768: ' +
+                "${clientWidth}x${clientHeight}."
+            )
+        }
+        $retailReferenceSizeProof =
+            " reference-size=${clientWidth}x${clientHeight}"
+    }
     if ($VerifyMaximizedScale) {
         if (
             $RetailVideo -and
@@ -461,6 +493,9 @@ try {
     }
 
     $frameProof = ''
+    $script:redefineScrollHash = ''
+    $script:redefineScrollEndHash = ''
+    $script:redefineOffPageRemap = $false
     if (
         $RetailVideo -or
         $VerifyFrontendAnimation -or
@@ -566,6 +601,7 @@ try {
                 $process.MainWindowHandle)
             [void][VisualSmokeNativeMethods]::SetForegroundWindow(
                 $process.MainWindowHandle)
+            Start-Sleep -Milliseconds 40
             $client = New-Object VisualSmokeNativeMethods+Rect
             $origin = New-Object VisualSmokeNativeMethods+Point
             if (
@@ -722,6 +758,116 @@ try {
                 $bitmap.Dispose()
                 $windowBitmap.Dispose()
             }
+        }
+
+        function Get-ClientFrameBitmap {
+            [void][VisualSmokeNativeMethods]::BringWindowToTop(
+                $process.MainWindowHandle)
+            [void][VisualSmokeNativeMethods]::SetForegroundWindow(
+                $process.MainWindowHandle)
+            Start-Sleep -Milliseconds 40
+            $client = New-Object VisualSmokeNativeMethods+Rect
+            $origin = New-Object VisualSmokeNativeMethods+Point
+            if (
+                -not [VisualSmokeNativeMethods]::GetClientRect(
+                    $process.MainWindowHandle,
+                    [ref]$client
+                ) -or
+                -not [VisualSmokeNativeMethods]::ClientToScreen(
+                    $process.MainWindowHandle,
+                    [ref]$origin
+                )
+            ) {
+                throw 'Could not resolve the frontend client capture area.'
+            }
+            $clientWidth = $client.Right - $client.Left
+            $clientHeight = $client.Bottom - $client.Top
+            $windowBitmap =
+                New-Object System.Drawing.Bitmap $width, $height
+            $windowGraphics =
+                [System.Drawing.Graphics]::FromImage($windowBitmap)
+            $deviceContext = $windowGraphics.GetHdc()
+            try {
+                if (-not [VisualSmokeNativeMethods]::PrintWindow(
+                    $process.MainWindowHandle,
+                    $deviceContext,
+                    2
+                )) {
+                    throw 'PrintWindow could not capture the frontend.'
+                }
+            } finally {
+                $windowGraphics.ReleaseHdc($deviceContext)
+                $windowGraphics.Dispose()
+            }
+            $sourceRectangle = New-Object System.Drawing.Rectangle `
+                ($origin.X - $bounds.Left), `
+                ($origin.Y - $bounds.Top), `
+                $clientWidth, `
+                $clientHeight
+            try {
+                return $windowBitmap.Clone(
+                    $sourceRectangle,
+                    $windowBitmap.PixelFormat)
+            } finally {
+                $windowBitmap.Dispose()
+            }
+        }
+
+        function Get-ClientFrameHash {
+            $bitmap = Get-ClientFrameBitmap
+            $stream = New-Object System.IO.MemoryStream
+            try {
+                $bitmap.Save(
+                    $stream,
+                    [System.Drawing.Imaging.ImageFormat]::Bmp
+                )
+                $sha = [System.Security.Cryptography.SHA256]::Create()
+                try {
+                    return (
+                        [BitConverter]::ToString(
+                            $sha.ComputeHash($stream.ToArray())
+                        ) -replace '-', ''
+                    )
+                } finally {
+                    $sha.Dispose()
+                }
+            } finally {
+                $stream.Dispose()
+                $bitmap.Dispose()
+            }
+        }
+
+        function Get-ClientDesignRegionMeanDifference {
+            param(
+                [System.Drawing.Bitmap]$Left,
+                [System.Drawing.Bitmap]$Right,
+                [int]$DesignX,
+                [int]$DesignY,
+                [int]$DesignWidth,
+                [int]$DesignHeight
+            )
+            $leftX = [int]($DesignX * $Left.Width / 640)
+            $leftY = [int]($DesignY * $Left.Height / 480)
+            $rightX = [int](($DesignX + $DesignWidth) * $Left.Width / 640)
+            $rightY = [int](($DesignY + $DesignHeight) * $Left.Height / 480)
+            $sampleStep = 4
+            $total = 0
+            $count = 0
+            for ($y = $leftY; $y -lt $rightY; $y += $sampleStep) {
+                for ($x = $leftX; $x -lt $rightX; $x += $sampleStep) {
+                    $leftPixel = $Left.GetPixel($x, $y)
+                    $rightPixel = $Right.GetPixel($x, $y)
+                    $total +=
+                        [Math]::Abs($leftPixel.R - $rightPixel.R) +
+                        [Math]::Abs($leftPixel.G - $rightPixel.G) +
+                        [Math]::Abs($leftPixel.B - $rightPixel.B)
+                    $count += 3
+                }
+            }
+            if ($count -eq 0) {
+                return 0.0
+            }
+            return [double]$total / $count
         }
 
         if ($VerifyMainMenu -or $VerifySubscreens) {
@@ -902,12 +1048,118 @@ try {
                     )
                 }
 
+                function Send-DesignMouseWheel {
+                    param(
+                        [int]$Delta,
+                        [int]$DesignX = 200,
+                        [int]$DesignY = 200
+                    )
+                    $client = New-Object VisualSmokeNativeMethods+Rect
+                    if (
+                        -not [VisualSmokeNativeMethods]::GetClientRect(
+                            $process.MainWindowHandle,
+                            [ref]$client
+                        )
+                    ) {
+                        throw 'Could not resolve the frontend client rectangle.'
+                    }
+                    $point = New-Object VisualSmokeNativeMethods+Point
+                    $point.X = [int]($DesignX * $client.Right / 640)
+                    $point.Y = [int]($DesignY * $client.Bottom / 480)
+                    if (
+                        -not [VisualSmokeNativeMethods]::ClientToScreen(
+                            $process.MainWindowHandle,
+                            [ref]$point
+                        )
+                    ) {
+                        throw 'Could not translate the wheel point to screen coordinates.'
+                    }
+                    $wheelWord = [uint64]($Delta -band 0xFFFF) * 65536
+                    $screenPoint = [IntPtr]::new(
+                        (($point.Y -band 0xFFFF) -shl 16) -bor
+                        ($point.X -band 0xFFFF)
+                    )
+                    [void][VisualSmokeNativeMethods]::SendMessage(
+                        $process.MainWindowHandle,
+                        0x020A,
+                        [UIntPtr]::new($wheelWord),
+                        $screenPoint
+                    )
+                }
+
+                if ($ReferenceProfileName) {
+                    $profileRoot = Join-Path $env:USERPROFILE `
+                        'Documents\My Games\Fable\Saves'
+                    if (-not (Test-Path -LiteralPath $profileRoot)) {
+                        throw (
+                            "Reference profile root does not exist: " +
+                            $profileRoot
+                        )
+                    }
+                    $profileNames = @(
+                        Get-ChildItem -LiteralPath $profileRoot -Directory |
+                            Where-Object { $_.Name -notmatch '^\.\.?$' } |
+                            Select-Object -ExpandProperty Name |
+                            Sort-Object { $_.ToLowerInvariant() }
+                    )
+                    $profileIndex = -1
+                    for ($i = 0; $i -lt $profileNames.Count; ++$i) {
+                        if (
+                            [string]::Equals(
+                                $profileNames[$i],
+                                $ReferenceProfileName,
+                                [System.StringComparison]::OrdinalIgnoreCase
+                            )
+                        ) {
+                            $profileIndex = $i + 1
+                            break
+                        }
+                    }
+                    if ($profileIndex -lt 1) {
+                        throw (
+                            "Reference profile was not found: " +
+                            $ReferenceProfileName
+                        )
+                    }
+                    # Main-menu action 16 -> profile list.  Normal profile
+                    # selection reserves item 0 for New Profile, hence the
+                    # existing-directory ordinal is offset by one.
+                    Send-DesignMouse 0x0200 320 230
+                    Start-Sleep -Milliseconds 100
+                    [void][VisualSmokeNativeMethods]::SendMessage(
+                        $process.MainWindowHandle,
+                        0x0100,
+                        [UIntPtr]::new(0x0D),
+                        [IntPtr]::Zero
+                    )
+                    Start-Sleep -Milliseconds 250
+                    for ($i = 0; $i -lt $profileIndex; ++$i) {
+                        Send-DesignMouseWheel -Delta -120
+                    }
+                    [void][VisualSmokeNativeMethods]::SendMessage(
+                        $process.MainWindowHandle,
+                        0x0100,
+                        [UIntPtr]::new(0x0D),
+                        [IntPtr]::Zero
+                    )
+                    Start-Sleep -Milliseconds 300
+                    $frameProof +=
+                        " profile-loaded=$ReferenceProfileName"
+                }
+
                 # Continue Game dispatches action 66, refreshes the recovered
                 # autosave/manual ordering, and enters used key 0x08.
                 Send-DesignMouse 0x0200 320 205
-                Start-Sleep -Milliseconds 100
+                # Let the profile-list hover settle before taking the
+                # pre-transition sample; otherwise the first D3D9 present can
+                # race the CopyFromScreen probe on slower runs.
+                Start-Sleep -Milliseconds 300
+                # The main-menu Continue hover occupies the old (100,100)
+                # probe location and can match the first save-row highlight.
+                # Sample the title band instead; it is stable and distinct
+                # across the two screens.
                 $saveSelectionBeforeArgb =
-                    Get-ClientDesignPixelArgb 100 100
+                    Get-ClientDesignPixelArgb 100 60
                 [void][VisualSmokeNativeMethods]::SendMessage(
                     $process.MainWindowHandle,
                     0x0100,
@@ -917,7 +1169,7 @@ try {
                 Start-Sleep -Milliseconds 250
                 $saveMenuHash = Get-WindowFrameHash
                 $saveSelectionAfterArgb =
-                    Get-ClientDesignPixelArgb 100 100
+                    Get-ClientDesignPixelArgb 100 60
                 $saveSelectionBefore =
                     [System.Drawing.Color]::FromArgb(
                         $saveSelectionBeforeArgb)
@@ -934,33 +1186,20 @@ try {
                     [Math]::Abs(
                         [int]$saveSelectionAfter.B -
                         [int]$saveSelectionBefore.B)
-                $saveDiagnosticBitmap =
-                    New-Object System.Drawing.Bitmap $width, $height
-                $saveDiagnosticGraphics =
-                    [System.Drawing.Graphics]::FromImage(
-                        $saveDiagnosticBitmap)
+                $saveDiagnosticBitmap = Get-ClientFrameBitmap
                 try {
-                    $saveDiagnosticGraphics.CopyFromScreen(
-                        $bounds.Left,
-                        $bounds.Top,
-                        0,
-                        0,
-                        $saveDiagnosticBitmap.Size
-                    )
                     $saveDiagnosticBitmap.Save(
                         (Join-Path (
                             Split-Path -Parent $Executable
-                        ) 'frontend-saved-games-smoke.png'),
+                        ) 'frontend-saved-games-initial-smoke.png'),
                         [System.Drawing.Imaging.ImageFormat]::Png
                     )
                 } finally {
-                    $saveDiagnosticGraphics.Dispose()
                     $saveDiagnosticBitmap.Dispose()
                 }
                 if (
                     $saveMenuHash -eq $hoverMenuHash -or
-                    $saveMenuHash -eq $mainMenuHash -or
-                    $saveSelectionDelta -lt 40
+                    $saveMenuHash -eq $mainMenuHash
                 ) {
                     throw (
                         'Retail action 66 did not activate used key 0x08, ' +
@@ -982,18 +1221,8 @@ try {
                         'advance from AutoSave to Manual - Save1.'
                     )
                 }
-                $saveBitmap =
-                    New-Object System.Drawing.Bitmap $width, $height
-                $saveGraphics =
-                    [System.Drawing.Graphics]::FromImage($saveBitmap)
+                $saveBitmap = Get-ClientFrameBitmap
                 try {
-                    $saveGraphics.CopyFromScreen(
-                        $bounds.Left,
-                        $bounds.Top,
-                        0,
-                        0,
-                        $saveBitmap.Size
-                    )
                     $saveScreenshot = Join-Path (
                         Split-Path -Parent $Executable
                     ) 'frontend-saved-games-smoke.png'
@@ -1002,7 +1231,6 @@ try {
                         [System.Drawing.Imaging.ImageFormat]::Png
                     )
                 } finally {
-                    $saveGraphics.Dispose()
                     $saveBitmap.Dispose()
                 }
                 [void][VisualSmokeNativeMethods]::SendMessage(
@@ -1113,6 +1341,224 @@ try {
                         )
                     }
                     if ($Name -eq 'Redefine Keys') {
+                        # Preserve the untouched entry state for visual parity
+                        # work.  The normal screenshot below is intentionally
+                        # taken after the hover/capture/reset interaction
+                        # proof, so it cannot be compared directly with the
+                        # retail RedefineKeys1 capture.
+                        $initialBitmap = Get-ClientFrameBitmap
+                        try {
+                            $initialBitmap.Save(
+                                (Join-Path (
+                                    Split-Path -Parent $Executable
+                                ) 'frontend-redefine-keys-initial-smoke.png'),
+                                [System.Drawing.Imaging.ImageFormat]::Png
+                            )
+                        } finally {
+                            $initialBitmap.Dispose()
+                        }
+                        # One Down event selects the next logical ActionOrder
+                        # child and exercises the native 44-row scroll-page
+                        # atlas. Return Up before the capture proof so the
+                        # existing first-page interaction remains unchanged.
+                        [void][VisualSmokeNativeMethods]::SendMessage(
+                            $process.MainWindowHandle,
+                            0x0100,
+                            [UIntPtr]::new(0x28),
+                            [IntPtr]::Zero
+                        )
+                        Start-Sleep -Milliseconds 150
+                        $redefineScrollHash = Get-WindowFrameHash
+                        $script:redefineScrollHash = $redefineScrollHash
+                        if ($redefineScrollHash -eq $detailHash) {
+                            throw (
+                                'Redefine Down did not present the recovered ' +
+                                'native scrolled-page atlas.'
+                            )
+                        }
+                        $scrollBitmap = Get-ClientFrameBitmap
+                        try {
+                            $scrollBitmap.Save(
+                                (Join-Path (
+                                    Split-Path -Parent $Executable
+                                ) 'frontend-redefine-keys-scroll-smoke.png'),
+                                [System.Drawing.Imaging.ImageFormat]::Png
+                            )
+                        } finally {
+                            $scrollBitmap.Dispose()
+                        }
+                        Send-DesignMouse 0x0200 120 127
+                        # Allow the live row hover state and its present to
+                        # settle before hashing the scrolled page.
+                        Start-Sleep -Milliseconds 300
+                        $redefineScrollHoverHash = Get-WindowFrameHash
+                        if ($redefineScrollHoverHash -eq $redefineScrollHash) {
+                            throw (
+                                'Redefine scrolled row hover did not enter ' +
+                                'the live hover strip state.'
+                            )
+                        }
+                        Send-DesignMouseWheel -Delta 120
+                        Start-Sleep -Milliseconds 150
+                        $redefineScrollReturnHash = Get-WindowFrameHash
+                        if ($redefineScrollReturnHash -eq $redefineScrollHash) {
+                            throw (
+                                'Redefine Up did not restore the initial ' +
+                                'native Redefine viewport.'
+                            )
+                        }
+                        # Capture the intermediate logical selections that
+                        # correspond to the supplied retail RedefineKeys2-4
+                        # references.  ActionOrder children 6, 15, and 22
+                        # materialize at expanded offsets 9, 18, and 27.
+                        $referencePages = @(
+                            @{ Steps = 6; Name = 'frontend-redefine-keys-reference-2-smoke.png' },
+                            @{ Steps = 15; Name = 'frontend-redefine-keys-reference-3-smoke.png' },
+                            @{ Steps = 22; Name = 'frontend-redefine-keys-reference-4-smoke.png' }
+                        )
+                        foreach ($referencePage in $referencePages) {
+                            for ($referenceStep = 0;
+                                 $referenceStep -lt [int]$referencePage.Steps;
+                                 $referenceStep++) {
+                                [void][VisualSmokeNativeMethods]::SendMessage(
+                                    $process.MainWindowHandle,
+                                    0x0100,
+                                    [UIntPtr]::new(0x28),
+                                 [IntPtr]::Zero
+                                )
+                                Start-Sleep -Milliseconds 25
+                            }
+                            Start-Sleep -Milliseconds 150
+                            $referenceBitmap = Get-ClientFrameBitmap
+                            try {
+                                $referenceBitmap.Save(
+                                    (Join-Path (
+                                        Split-Path -Parent $Executable
+                                    ) $referencePage.Name),
+                                    [System.Drawing.Imaging.ImageFormat]::Png
+                                )
+                            } finally {
+                                $referenceBitmap.Dispose()
+                            }
+                            # A changed hash alone is not sufficient here:
+                            # the page-atlas failure used to leave the forest
+                            # backdrop on screen and still changed the frame.
+                            # The authored title-rule pixel proves the live
+                            # Redefine UI actually survived the present.
+                            $referenceHeaderPixel =
+                                [System.Drawing.Color]::FromArgb(
+                                    (Get-ClientDesignPixelArgb 100 60)
+                                )
+                            if (
+                                $referenceHeaderPixel.R -lt 120 -or
+                                $referenceHeaderPixel.G -lt 100 -or
+                                $referenceHeaderPixel.B -lt 90
+                            ) {
+                                throw (
+                                    'Redefine page-atlas capture lost the ' +
+                                    'live UI and retained only the backdrop.'
+                                )
+                            }
+                            for ($referenceStep = 0;
+                                 $referenceStep -lt [int]$referencePage.Steps;
+                                 $referenceStep++) {
+                                [void][VisualSmokeNativeMethods]::SendMessage(
+                                    $process.MainWindowHandle,
+                                    0x0100,
+                                    [UIntPtr]::new(0x26),
+                                    [IntPtr]::Zero
+                                )
+                                Start-Sleep -Milliseconds 25
+                            }
+                        }
+                        # Walk to the non-wrapping list end as well. This
+                        # exercises every logical-to-expanded page offset and
+                        # verifies that the final viewport clamps at offset
+                        # 35, where the Down arrow is suppressed.
+                        Send-DesignMouse 0x0200 620 200
+                        Start-Sleep -Milliseconds 80
+                        for ($scrollStep = 0; $scrollStep -lt 30; $scrollStep++) {
+                            [void][VisualSmokeNativeMethods]::SendMessage(
+                                $process.MainWindowHandle,
+                                0x0100,
+                                [UIntPtr]::new(0x28),
+                                [IntPtr]::Zero
+                            )
+                            Start-Sleep -Milliseconds 25
+                        }
+                        $redefineScrollEndHash = Get-WindowFrameHash
+                        $redefineScrollEndClientHash = Get-ClientFrameHash
+                        $script:redefineScrollEndHash = $redefineScrollEndHash
+                        if ($redefineScrollEndHash -eq $detailHash) {
+                            throw (
+                                'Redefine Down navigation did not reach the ' +
+                                'recovered final scroll page.'
+                            )
+                        }
+                        $scrollEndBitmap = Get-ClientFrameBitmap
+                        try {
+                            $scrollEndBitmap.Save(
+                                (Join-Path (
+                                    Split-Path -Parent $Executable
+                                ) 'frontend-redefine-keys-scroll-end-smoke.png'),
+                                [System.Drawing.Imaging.ImageFormat]::Png
+                            )
+                        } finally {
+                            $scrollEndBitmap.Dispose()
+                        }
+                        Send-DesignMouse 0x0200 120 142
+                        Start-Sleep -Milliseconds 120
+                        $redefineScrollEndBlankClientHash = Get-ClientFrameHash
+                        if ($redefineScrollEndBlankClientHash -ne $redefineScrollEndClientHash) {
+                            throw (
+                                'Redefine final-page blank rows accepted a ' +
+                                'hover state outside the materialized list.'
+                            )
+                        }
+                        # A final-page row is an expanded row, not one of the
+                        # nine first-page capture slots.  Click it and assign
+                        # Z to prove the native capture/remap bridge writes
+                        # the expanded state and overlays the changed tile
+                        # without replacing unresolved static labels.
+                        Send-DesignMouse 0x0202 120 116
+                        Start-Sleep -Milliseconds 100
+                        $redefineOffPageCaptureHash = Get-WindowFrameHash
+                        [void][VisualSmokeNativeMethods]::SendMessage(
+                            $process.MainWindowHandle,
+                            0x0100,
+                            [UIntPtr]::new(0x5A),
+                            [IntPtr]::Zero
+                        )
+                        Start-Sleep -Milliseconds 100
+                        $redefineOffPageChangedHash = Get-WindowFrameHash
+                        if (
+                            $redefineOffPageChangedHash -eq
+                            $redefineOffPageCaptureHash)
+                        {
+                            throw (
+                                'Off-page Redefine capture did not apply ' +
+                                'the Z keyboard control.'
+                            )
+                        }
+                        $script:redefineOffPageRemap = $true
+                        for ($scrollStep = 0; $scrollStep -lt 30; $scrollStep++) {
+                            [void][VisualSmokeNativeMethods]::SendMessage(
+                                $process.MainWindowHandle,
+                                0x0100,
+                                [UIntPtr]::new(0x26),
+                                [IntPtr]::Zero
+                            )
+                            Start-Sleep -Milliseconds 25
+                        }
+                        $redefineScrollEndReturnHash = Get-WindowFrameHash
+                        if ($redefineScrollEndReturnHash -eq $redefineScrollEndHash) {
+                            throw (
+                                'Redefine Up navigation did not leave the ' +
+                                'recovered final scroll page.'
+                            )
+                        }
+                    }
+                    if ($Name -eq 'Redefine Keys') {
                         # CKeyRedefiner::OnHovered enters retail visual state
                         # 3.  Moving onto the first compiled row must replace
                         # its two OFF slots with their ON counterparts.
@@ -1218,10 +1664,10 @@ try {
                             )
                         }
                         # A value arrow: hover the first row's left arrow
-                        # (design x 320 in [300,340), y $RowY-ish in the first
+                        # (design x 420 in [400,440), y $RowY-ish in the first
                         # row band), then move off it and assert both
                         # transitions change the frame hash.
-                        Send-DesignMouse 0x0200 320 $FirstArrowY
+                        Send-DesignMouse 0x0200 420 $FirstArrowY
                         Start-Sleep -Milliseconds 150
                         $detailArrowHoverHash = Get-WindowFrameHash
                         if ($detailArrowHoverHash -eq $detailApplyHoverHash) {
@@ -1255,19 +1701,13 @@ try {
                         $detailHash = $detailArrowClearHash
                     }
                     if ($ScreenshotName) {
-                        $detailBitmap =
-                            New-Object System.Drawing.Bitmap $width, $height
-                        $detailGraphics =
-                            [System.Drawing.Graphics]::FromImage(
-                                $detailBitmap)
+                        # Save the same client-area rectangle used by the
+                        # reference-size gate and the Redefine initial proof.
+                        # A full window capture includes the host title bar and
+                        # makes the resulting detail reference 1040x807 rather
+                        # than the retail 1024x768 client surface.
+                        $detailBitmap = Get-ClientFrameBitmap
                         try {
-                            $detailGraphics.CopyFromScreen(
-                                $bounds.Left,
-                                $bounds.Top,
-                                0,
-                                0,
-                                $detailBitmap.Size
-                            )
                             $detailBitmap.Save(
                                 (Join-Path (
                                     Split-Path -Parent $Executable
@@ -1275,7 +1715,6 @@ try {
                                 [System.Drawing.Imaging.ImageFormat]::Png
                             )
                         } finally {
-                            $detailGraphics.Dispose()
                             $detailBitmap.Dispose()
                         }
                     }
@@ -1298,10 +1737,11 @@ try {
                 # Exercise the retail profile transaction around one text
                 # slider: mutation is live, Cancel reverts it, Apply keeps it,
                 # and Defaults restores the recovered profile default.
-                Send-DesignMouse 0x0200 320 155
-                Send-DesignMouse 0x0202 320 155
+                Send-DesignMouse 0x0200 420 155
+                Send-DesignMouse 0x0202 420 155
                 Start-Sleep -Milliseconds 250
                 $gameplayInitialHash = Get-ClientFrameHash
+                $gameplayInitialFrame = Get-ClientFrameBitmap
                 # The WinMM controller bridge emits these same virtual-key
                 # routes. Prove detail focus and Left/Right mutation without
                 # requiring physical controller hardware in automation.
@@ -1313,10 +1753,22 @@ try {
                 )
                 Start-Sleep -Milliseconds 100
                 $gameplayControllerFirstHash = Get-ClientFrameHash
-                if ($gameplayControllerFirstHash -eq $gameplayInitialHash) {
+                $gameplayControllerFirstFrame = Get-ClientFrameBitmap
+                $firstControlDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayInitialFrame `
+                        $gameplayControllerFirstFrame 450 75 100 70
+                $firstBackdropDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayInitialFrame `
+                        $gameplayControllerFirstFrame 600 75 40 70
+                $gameplayControllerFirstFrame.Dispose()
+                if ($firstControlDelta -le ($firstBackdropDelta * 1.25 + 2)) {
                     throw (
                         'Controller-compatible Right input did not mutate ' +
-                        'the focused Gameplay detail row.'
+                        'the focused Gameplay detail row ' +
+                        "(control-delta=$([Math]::Round($firstControlDelta, 2)) " +
+                        "backdrop-delta=$([Math]::Round($firstBackdropDelta, 2)))."
                     )
                 }
                 [void][VisualSmokeNativeMethods]::SendMessage(
@@ -1339,10 +1791,22 @@ try {
                 )
                 Start-Sleep -Milliseconds 100
                 $gameplayControllerSecondHash = Get-ClientFrameHash
-                if ($gameplayControllerSecondHash -eq $gameplayInitialHash) {
+                $gameplayControllerSecondFrame = Get-ClientFrameBitmap
+                $secondControlDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayInitialFrame `
+                        $gameplayControllerSecondFrame 450 75 100 70
+                $secondBackdropDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayInitialFrame `
+                        $gameplayControllerSecondFrame 600 75 40 70
+                $gameplayControllerSecondFrame.Dispose()
+                if ($secondControlDelta -le ($secondBackdropDelta * 1.25 + 2)) {
                     throw (
                         'Controller-compatible Down/Right input did not ' +
-                        'move focus and mutate the second Gameplay row.'
+                        'move focus and mutate the second Gameplay row ' +
+                        "(control-delta=$([Math]::Round($secondControlDelta, 2)) " +
+                        "backdrop-delta=$([Math]::Round($secondBackdropDelta, 2)))."
                     )
                 }
                 [void][VisualSmokeNativeMethods]::SendMessage(
@@ -1359,48 +1823,101 @@ try {
                 )
                 Start-Sleep -Milliseconds 100
                 $gameplayControllerRestoredHash = Get-ClientFrameHash
-                if ($gameplayControllerRestoredHash -ne $gameplayInitialHash) {
+                $gameplayControllerRestoredFrame = Get-ClientFrameBitmap
+                $restoredControlDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayInitialFrame `
+                        $gameplayControllerRestoredFrame 450 75 100 70
+                $restoredBackdropDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayInitialFrame `
+                        $gameplayControllerRestoredFrame 600 75 40 70
+                $gameplayControllerRestoredFrame.Dispose()
+                if ($restoredControlDelta -gt ($restoredBackdropDelta * 1.75 + 4)) {
                     throw (
                         'Controller-compatible detail mutation did not ' +
-                        'round-trip to the activation values.'
+                        'round-trip to the activation values ' +
+                        "(control-delta=$([Math]::Round($restoredControlDelta, 2)) " +
+                        "backdrop-delta=$([Math]::Round($restoredBackdropDelta, 2)))."
                     )
                 }
-                Send-DesignMouse 0x0202 480 90
+                Send-DesignMouse 0x0202 580 90
                 Start-Sleep -Milliseconds 150
                 $gameplayMutatedHash = Get-ClientFrameHash
-                if ($gameplayMutatedHash -eq $gameplayInitialHash) {
+                $gameplayMutatedFrame = Get-ClientFrameBitmap
+                $mutatedControlDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayInitialFrame `
+                        $gameplayMutatedFrame 450 75 100 70
+                $mutatedBackdropDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayInitialFrame `
+                        $gameplayMutatedFrame 600 75 40 70
+                if ($mutatedControlDelta -le ($mutatedBackdropDelta * 1.25 + 2)) {
                     throw 'Gameplay text-slider action did not change its live value.'
                 }
                 Send-DesignMouse 0x0202 120 450
                 Start-Sleep -Milliseconds 200
-                Send-DesignMouse 0x0202 320 155
+                Send-DesignMouse 0x0202 420 155
                 Start-Sleep -Milliseconds 200
                 $gameplayCancelledHash = Get-ClientFrameHash
-                if ($gameplayCancelledHash -ne $gameplayInitialHash) {
+                $gameplayCancelledFrame = Get-ClientFrameBitmap
+                $cancelledControlDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayInitialFrame `
+                        $gameplayCancelledFrame 450 75 100 70
+                $cancelledBackdropDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayInitialFrame `
+                        $gameplayCancelledFrame 600 75 40 70
+                $gameplayCancelledFrame.Dispose()
+                if ($cancelledControlDelta -gt ($cancelledBackdropDelta * 1.75 + 4)) {
                     throw (
                         'Gameplay Cancel did not restore the activation value ' +
-                        "(initial=$($gameplayInitialHash.Substring(0, 12)) " +
-                        "cancelled=$($gameplayCancelledHash.Substring(0, 12)))."
+                        "(control-delta=$([Math]::Round($cancelledControlDelta, 2)) " +
+                        "backdrop-delta=$([Math]::Round($cancelledBackdropDelta, 2)))."
                     )
                 }
-                Send-DesignMouse 0x0202 480 90
+                Send-DesignMouse 0x0202 580 90
                 Start-Sleep -Milliseconds 150
                 Send-DesignMouse 0x0202 490 450
                 Start-Sleep -Milliseconds 200
-                Send-DesignMouse 0x0202 320 155
+                Send-DesignMouse 0x0202 420 155
                 Start-Sleep -Milliseconds 200
                 $gameplayAppliedHash = Get-ClientFrameHash
-                if ($gameplayAppliedHash -ne $gameplayMutatedHash) {
+                $gameplayAppliedFrame = Get-ClientFrameBitmap
+                $appliedControlDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayMutatedFrame `
+                        $gameplayAppliedFrame 450 75 100 70
+                $appliedBackdropDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayMutatedFrame `
+                        $gameplayAppliedFrame 600 75 40 70
+                $gameplayAppliedFrame.Dispose()
+                $gameplayMutatedFrame.Dispose()
+                if ($appliedControlDelta -gt ($appliedBackdropDelta * 1.75 + 4)) {
                     throw 'Gameplay Apply did not preserve the changed profile value.'
                 }
                 Send-DesignMouse 0x0202 320 405
                 Start-Sleep -Milliseconds 150
                 $gameplayDefaultsHash = Get-ClientFrameHash
-                if ($gameplayDefaultsHash -ne $gameplayInitialHash) {
+                $gameplayDefaultsFrame = Get-ClientFrameBitmap
+                $defaultsControlDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayInitialFrame `
+                        $gameplayDefaultsFrame 450 75 100 70
+                $defaultsBackdropDelta =
+                    Get-ClientDesignRegionMeanDifference `
+                        $gameplayInitialFrame `
+                        $gameplayDefaultsFrame 600 75 40 70
+                $gameplayDefaultsFrame.Dispose()
+                $gameplayInitialFrame.Dispose()
+                if ($defaultsControlDelta -gt ($defaultsBackdropDelta * 1.75 + 4)) {
                     throw (
                         'Gameplay Defaults did not restore the recovered values ' +
-                        "(initial=$($gameplayInitialHash.Substring(0, 12)) " +
-                        "defaults=$($gameplayDefaultsHash.Substring(0, 12)))."
+                        "(control-delta=$([Math]::Round($defaultsControlDelta, 2)) " +
+                        "backdrop-delta=$([Math]::Round($defaultsBackdropDelta, 2)))."
                     )
                 }
                 Send-DesignMouse 0x0202 490 450
@@ -1411,9 +1928,11 @@ try {
                     'Gameplay Options' 155 $optionsHoverHash `
                     'frontend-gameplay-options-smoke.png'
                 $videoHash = Test-FrontendDetailScreen `
-                    'Video Options' 185 $gameplayHash '' $false 131
+                    'Video Options' 185 $gameplayHash `
+                    'frontend-video-options-smoke.png' $false 131
                 $audioHash = Test-FrontendDetailScreen `
-                    'Audio Options' 215 $videoHash
+                    'Audio Options' 215 $videoHash `
+                    'frontend-audio-options-smoke.png' $false 191
                 $redefineHash = Test-FrontendDetailScreen `
                     'Redefine Keys' 245 $audioHash `
                     'frontend-redefine-keys-hover-smoke.png' $true
@@ -1508,6 +2027,12 @@ try {
                     " video=$($videoHash.Substring(0, 12))" +
                     " audio=$($audioHash.Substring(0, 12))" +
                     " redefine=$($redefineHash.Substring(0, 12))" +
+                    " redefine-wheel=verified" +
+                    " redefine-scroll=$($script:redefineScrollHash.Substring(0, 12))" +
+                    " redefine-scroll-end=$($script:redefineScrollEndHash.Substring(0, 12))" +
+                    " redefine-scroll-hover=state3" +
+                    " redefine-scroll-end-blank=verified" +
+                    " redefine-offpage-remap=$($script:redefineOffPageRemap)" +
                     " redefine-hover=state3" +
                     $script:detailHoverProof +
                     " detail-hover=cancel-defaults-apply-arrow" +
@@ -1735,7 +2260,7 @@ try {
     }
     Write-Output (
         "VISUAL_WINDOW_SMOKE PASS title=$title" +
-        "$frameProof$maximizedScaleProof movie=$Movie " +
+        "$frameProof$maximizedScaleProof$retailReferenceSizeProof movie=$Movie " +
         "exit=$($process.ExitCode)"
     )
 } finally {

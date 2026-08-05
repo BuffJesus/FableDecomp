@@ -113,61 +113,117 @@ public:
 };
 
 // CThreadedFile::Open(CWideString const&, bool) @ 0x0098E1E0.
-bool CThreadedFile::Open(const CWideString& name, bool noCaching)
+__declspec(naked)
+bool CThreadedFile::Open(const CWideString&, bool)
 {
-    CWideStringSlot fullPath;
-    FableThreadedConvertFullPath_0098E1E0(&fullPath, &name);
-
-    CCharStringSlot scratch;
-    CDriveStringSlot drive;
-    CCharStringSlot directory;
-    FableThreadedSplitPath_0098E1E0(&fullPath, &drive, 0, 0, 0);
-
-    openedForWrite_ = false;
-    void* upper = reinterpret_cast<CCharStringConvertShim*>(&drive)
-        ->ToCharPointer(&scratch, &directory);
-    upper = FableThreadedCharToUpper_0098E1E0(upper);
-
-    bool driveIsD;
-    if (*reinterpret_cast<void**>(upper) == 0)
+    __asm
     {
-        driveIsD = memcmp(
-            g_FableThreadedDDrive_0129A15C,
-            reinterpret_cast<const char*>(&g_FableThreadedEmptyChar_0122D70E),
-            3) == 0;
+        mov edx, dword ptr [esp + 4]
+        sub esp, 10h
+        push ebx
+        push ebp
+        mov ebp, ecx
+        lea ecx, [esp + 0Ch]
+        call FableThreadedConvertFullPath_0098E1E0
+        lea ecx, [esp + 08h]
+        call FableThreadedCharConstruct_0098E1E0
+        push 0
+        push 0
+        push 0
+        lea edx, [esp + 14h]
+        lea ecx, [esp + 18h]
+        call FableThreadedSplitPath_0098E1E0
+        lea eax, [esp + 10h]
+        push eax
+        lea ecx, [esp + 18h]
+        push ecx
+        lea ecx, [esp + 10h]
+        mov byte ptr [ebp + 18h], 0
+        call CCharStringConvertShim::ToCharPointer
+        mov ecx, eax
+        call FableThreadedCharToUpper_0098E1E0
+        mov ecx, dword ptr [eax]
+        test ecx, ecx
+        jne threadedFileDriveString
+        push esi
+        push edi
+        mov edi, offset g_FableThreadedDDrive_0129A15C
+        mov esi, offset g_FableThreadedEmptyChar_0122D70E
+        mov ecx, 3
+        xor edx, edx
+        repe cmpsb
+        pop edi
+        sete bl
+        pop esi
+        jmp threadedFileDriveChecked
+
+threadedFileDriveString:
+        push offset g_FableThreadedDDrive_0129A15C
+        call CBasicStringCharShim::Equals
+        mov bl, al
+
+threadedFileDriveChecked:
+        lea ecx, [esp + 10h]
+        call FableThreadedCharDestroy_0098E1E0
+        lea ecx, [esp + 14h]
+        call FableThreadedCharDestroy_0098E1E0
+        mov cl, byte ptr [esp + 20h]
+        xor eax, eax
+        test bl, bl
+        setne al
+        test cl, cl
+        mov dword ptr [ebp + 04h], eax
+        mov eax, 40000001h
+        je threadedFileOpenFlagsReady
+        mov eax, 60000001h
+
+threadedFileOpenFlagsReady:
+        push 0
+        push eax
+        push 3
+        push 0
+        push 1
+        push 80000000h
+        lea ecx, [esp + 24h]
+        call FableThreadedWideConversion_0098E1E0
+        push eax
+        call dword ptr [g_FableThreadedCreateFileW_0143FE2C]
+        cmp eax, -1
+        mov dword ptr [ebp + 08h], eax
+        jne threadedFileOpenSucceeded
+        lea ecx, [esp + 08h]
+        call FableThreadedCharDestroy_0098E1E0
+        lea ecx, [esp + 0Ch]
+        call FableThreadedCharDestroy_0098E1E0
+        pop ebp
+        xor al, al
+        pop ebx
+        add esp, 10h
+        ret 8
+
+threadedFileOpenSucceeded:
+        mov ecx, dword ptr [esp + 1Ch]
+        push ecx
+        lea ecx, [ebp + 0Ch]
+        call CWideAssignShim::Assign
+        mov edx, dword ptr [ebp + 08h]
+        push 0
+        push edx
+        call dword ptr [g_FableThreadedGetFileSize_0143FDF0]
+        mov dword ptr [ebp + 10h], eax
+        mov eax, dword ptr [g_FableThreadedPhysicalSortKey_013BC9EC]
+        inc eax
+        lea ecx, [esp + 08h]
+        mov dword ptr [g_FableThreadedPhysicalSortKey_013BC9EC], eax
+        mov dword ptr [ebp + 14h], eax
+        mov byte ptr [ebp + 19h], 1
+        call FableThreadedCharDestroy_0098E1E0
+        lea ecx, [esp + 0Ch]
+        call FableThreadedCharDestroy_0098E1E0
+        pop ebp
+        mov al, 1
+        pop ebx
+        add esp, 10h
+        ret 8
     }
-    else
-    {
-        driveIsD = reinterpret_cast<CBasicStringCharShim*>(
-            *reinterpret_cast<void**>(upper))->Equals(
-                g_FableThreadedDDrive_0129A15C);
-    }
-
-    FableThreadedCharDestroy_0098E1E0(&directory);
-    FableThreadedCharDestroy_0098E1E0(&scratch);
-
-    deviceId_ = driveIsD ? 1u : 0u;
-    unsigned long flags = 0x40000001UL;
-    if (noCaching)
-    {
-        flags = 0x60000001UL;
-    }
-
-    fileHandle_ = g_FableThreadedCreateFileW_0143FE2C(
-        FableThreadedWideConversion_0098E1E0(&fullPath),
-        0x80000000UL, 1UL, 0, 3UL, flags, 0);
-
-    if (fileHandle_ == reinterpret_cast<void*>(-1))
-    {
-        return false;
-    }
-
-    reinterpret_cast<CWideAssignShim*>(&filenameStorage_)->Assign(&name);
-
-    length_ = g_FableThreadedGetFileSize_0143FDF0(fileHandle_, 0);
-
-    physicalSortKey_ = ++g_FableThreadedPhysicalSortKey_013BC9EC;
-    openFlag_ = true;
-
-    return true;
 }

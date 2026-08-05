@@ -25,6 +25,75 @@ $newestDependencyWrite = if ($dependencyFiles.Count -gt 0) {
 
 $catalog = @(
     [pscustomobject]@{
+        Address = '008a1c50'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_RepopulateVillage_008a1c50.cpp'
+        TestSource = '00/8a/CGameScriptInterface_RepopulateVillage_008a1c50_test.cpp'
+        PassPattern = 'FSE2_008a1c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089ad90'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_IsQuestStartScreenActive_0089ad90.cpp'
+        TestSource = '00/89/CGameScriptInterface_IsQuestStartScreenActive_0089ad90_test.cpp'
+        PassPattern = 'FSE2_0089ad90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00896df0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_KickOffCreditsScreen_00896df0.cpp'
+        TestSource = '00/89/CGameScriptInterface_KickOffCreditsScreen_00896df0_test.cpp'
+        PassPattern = 'FSE2_00896df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00536b4f'; Module = 'CList'; Source = '00/53/CList_InitialiseOffsets_00536b4f.cpp'
+        TestSource = '00/53/CList_InitialiseOffsets_00536b4f_test.cpp'; PassPattern = 'CList_InitialiseOffsets_00536b4f_test PASS'
+    },
+    [pscustomobject]@{
+        Address = '0053c332'; Module = 'CList'; Source = '00/53/CList_DoRecomputeOffsets_0053c332.cpp'
+        TestSource = '00/53/CList_DoRecomputeOffsets_0053c332_test.cpp'; PassPattern = 'CList_DoRecomputeOffsets_0053c332_test PASS'
+    },
+    [pscustomobject]@{
+        Address = '005360b1'; Module = 'CList'; Source = '00/53/CList_SetSelectedChild_005360b1.cpp'
+        TestSource = '00/53/CList_SetSelectedChild_005360b1_test.cpp'; PassPattern = 'CList_SetSelectedChild_005360b1_test PASS'
+    },
+    [pscustomobject]@{
+        Address = '0053673b'; Module = 'CList'; Source = '00/53/CList_ProcessEvent_0053673b.cpp'
+        TestSource = '00/53/CList_ProcessEvent_0053673b_test.cpp'; PassPattern = 'CList_ProcessEvent_0053673b_test PASS'
+    },
+    [pscustomobject]@{
+        Address = '0041e5f2'; Module = 'CFrontEndManager'; Source = '00/41/CFrontEndManager_GetInstance_0041e5f2.cpp'
+        TestSource = '00/41/CFrontEndManager_GetInstance_0041e5f2_test.cpp'; PassPattern = 'CFrontEndManager_GetInstance_0041e5f2_test PASS'
+    },
+    [pscustomobject]@{
+        Address = '00597b20'; Module = 'CFrontEndManager'; Source = '00/59/CFrontEndManager_GotoProfileMenu_00597b20.cpp'
+        TestSource = '00/59/CFrontEndManager_GotoProfileMenu_00597b20_test.cpp'; PassPattern = 'CFrontEndManager_GotoProfileMenu_00597b20_test PASS'
+    },
+    [pscustomobject]@{
+        Address = '005955ab'; Module = 'CFrontEndManager'; Source = '00/59/CFrontEndManager_GetProfileNames_005955ab.cpp'
+        TestSource = '00/59/CFrontEndManager_GetProfileNames_005955ab_test.cpp'; PassPattern = 'GET_PROFILE_NAMES_005955AB_TEST PASS'
+    },
+    [pscustomobject]@{
+        Address = '0042df9e'; Module = 'CNewFrontendGameComponent'; Source = '00/42/CNewFrontendGameComponent_Draw_0042df9e.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_Draw_0042df9e_test.cpp'; PassPattern = 'FRONTEND_DRAW_0042DF9E_TEST PASS'
+    },
+    [pscustomobject]@{
+        Address = '0042e98f'; Module = 'CNewFrontendGameComponent'; Source = '00/42/CNewFrontendGameComponent_Init2_0042e98f.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_Init2_0042e98f_test.cpp'; PassPattern = 'INIT2_0042E98F_TEST PASS'
+    },
+    [pscustomobject]@{
+        Address = '0042e204'; Module = 'CNewFrontendGameComponent'; Source = '00/42/CNewFrontendGameComponent_InitialiseEngine_0042e204.cpp'
+        TestSource = '00/42/CNewFrontendGameComponent_InitialiseEngine_0042e204_test.cpp'; PassPattern = 'INITIALISE_ENGINE_0042E204_TEST PASS'
+    },
+    [pscustomobject]@{
+        Address = '00551340'; Module = 'CTable'; Source = '00/55/CTable_GetDataFromDef_00551340.cpp'
+        TestSource = '00/55/CTable_GetDataFromDef_00551340_test.cpp'; PassPattern = 'CTable_GetDataFromDef_00551340_test PASS'
+    },
+    [pscustomobject]@{
+        Address = '00550c60'; Module = 'CTable'; Source = '00/55/CTable_Initialise_00550c60.cpp'
+        TestSource = '00/55/CTable_Initialise_00550c60_test.cpp'; PassPattern = 'CTable_Initialise_00550c60_test PASS'
+    },
+    [pscustomobject]@{
         Address = '00401f30'; Module = '_global'; Source = '00/40/Global_GFGetBuildNumber2_00401f30.cpp'
         TestSource = '00/40/Global_GFGetBuildNumber2_00401f30_test.cpp'; PassPattern = 'GF_GET_BUILD_NUMBER_2_TEST PASS'
     },
@@ -770,13 +839,6 @@ $catalog = @(
         Source = '00/b2/CIEngine_GetStaticMapUpdatePassCountCIEngineU_00b23470.cpp'
         TestSource = '00/b2/CIEngine_GetStaticMapUpdatePassCountCIEngineU_00b23470_test.cpp'
         PassPattern = 'CIENGINE_00b23470_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '0041e5f2'
-        Module = '_global'
-        Source = '00/41/global_GetInstance_0041e5f2.cpp'
-        TestSource = '00/41/global_GetInstance_0041e5f2_test.cpp'
-        PassPattern = 'GLOBAL_0041e5f2_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00419603'
@@ -12707,6 +12769,20 @@ $catalog = @(
         PassPattern = 'FRONTEND_00596a68_TEST PASS'
     }
     [pscustomobject]@{
+        Address = '00596cce'
+        Module = 'CFrontEndManager'
+        Source = '00/59/CFrontEndManager_RefreshAvailableProfiles_00596cce.cpp'
+        TestSource = '00/59/CFrontEndManager_RefreshAvailableProfiles_00596cce_test.cpp'
+        PassPattern = 'FSE2_00596CCE_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059a238'
+        Module = 'CFrontEndManager'
+        Source = '00/59/CFrontEndManager_Action_0059a238.cpp'
+        TestSource = '00/59/CFrontEndManager_Action_0059a238_test.cpp'
+        PassPattern = 'FRONTEND_ACTION_0059A238_TEST PASS'
+    }
+    [pscustomobject]@{
         Address = '00597006'
         Module = 'CFrontEndManager'
         Source = '00/59/CFrontEndManager_RefreshAvailableProfilesForDelete_00597006.cpp'
@@ -12859,13 +12935,6 @@ $catalog = @(
         Source = '00/59/CFrontEndManager_GotoPreviousScreen_00597bf2.cpp'
         TestSource = '00/59/CFrontEndManager_GotoPreviousScreen_00597bf2_test.cpp'
         PassPattern = 'FSE2_00597bf2_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00597b20'
-        Module = 'CFrontEndManager'
-        Source = '00/59/CFrontEndManager_GotoProfileMenu_00597b20.cpp'
-        TestSource = '00/59/CFrontEndManager_GotoProfileMenu_00597b20_test.cpp'
-        PassPattern = 'FSE2_00597b20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008912a0'
@@ -38790,7 +38859,7 @@ $catalog = @(
         Module = 'CArray<std::pair<long'
         Source = '00/47/CArraystdpairlong_pushback_00472b9d.cpp'
         TestSource = '00/47/CArraystdpairlong_pushback_00472b9d_test.cpp'
-        PassPattern = 'PUSH_BACK_PAIR_LONG_00472B9D_TEST PASS'
+        PassPattern = 'CARRAY_PAIR_RESIZE_00472B9D_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004735d6'
@@ -38832,7 +38901,7 @@ $catalog = @(
         Module = 'CArray<std::pair<unsigned_long'
         Source = '00/47/CArraystdpairunsignedlong_pushback_00477dea.cpp'
         TestSource = '00/47/CArraystdpairunsignedlong_pushback_00477dea_test.cpp'
-        PassPattern = 'PUSH_BACK_PAIR_STRIDE88_TEST PASS'
+        PassPattern = 'PUSH_BACK_RESIZE_STRIDE88_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00478be4'
@@ -38923,7 +38992,7 @@ $catalog = @(
         Module = '_global'
         Source = '00/47/global_Destvalsymbolinfoa_0047b880.cpp'
         TestSource = '00/47/global_Destvalsymbolinfoa_0047b880_test.cpp'
-        PassPattern = '_DEST_VAL_0047B880_TEST PASS'
+        PassPattern = 'DEST_VAL_SYMBOLINFO_0047B880_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00485372'
@@ -39400,6 +39469,7 @@ $catalog = @(
         Source = '00/bf/global_malloc_00bfea0e.cpp'
         TestSource = '00/bf/global_malloc_00bfea0e_test.cpp'
         PassPattern = 'MALLOC_THUNK_OK'
+        BehaviorTestSourceOnly = $true
     }
     [pscustomobject]@{
         Address = '00bfea14'
@@ -39456,6 +39526,7 @@ $catalog = @(
         Source = '00/bf/global_strstr_00bfeb3a.cpp'
         TestSource = '00/bf/global_strstr_00bfeb3a_test.cpp'
         PassPattern = 'STRSTR_TEST_PASS'
+        BehaviorTestSourceOnly = $true
     }
     [pscustomobject]@{
         Address = '00bfed40'
@@ -40428,7 +40499,12 @@ try {
         if ($testCompileExit -ne 0 -or -not (Test-Path -LiteralPath $testObject)) {
             throw "Candidate test compile failed: $($entry.Address)"
         }
-        $linkOutput = & (Join-Path $vcRoot 'bin\link.exe') /nologo /out:$testExe $object $testObject 2>&1
+        $linkObjects = if ($entry.PSObject.Properties['BehaviorTestSourceOnly'] -and $entry.BehaviorTestSourceOnly) {
+            @($testObject)
+        } else {
+            @($object, $testObject)
+        }
+        $linkOutput = & (Join-Path $vcRoot 'bin\link.exe') /nologo /out:$testExe $linkObjects 2>&1
         $linkExit = $LASTEXITCODE
         $linkOutput | Add-Content -LiteralPath $testCompileLog -Encoding UTF8
         if ($linkExit -ne 0 -or -not (Test-Path -LiteralPath $testExe)) {

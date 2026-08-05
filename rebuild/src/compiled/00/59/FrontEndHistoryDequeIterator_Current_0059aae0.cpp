@@ -13,12 +13,9 @@ struct FrontEndHistoryDequeIterator_0059aae0
     void** Current() const;
 };
 
-__declspec(naked)
+#pragma optimize("s", on)
 void** FrontEndHistoryDequeIterator_0059aae0::Current() const
 {
-    __asm
-    {
-        mov eax, dword ptr [ecx]
-        ret
-    }
+    return current;
 }
+#pragma optimize("s", off)

@@ -1,6 +1,10 @@
 #include <cstdio>
 
-#include "../../../src/compiled/00/59/FrontEndHistoryDequeMapAllocator_Allocate_0059a9e0.cpp"
+class FrontEndHistoryDequeMapAllocator_0059a9e0
+{
+public:
+    void** Allocate(unsigned long count, const void* hint);
+};
 
 static int g_AllocateCalls;
 static unsigned long g_LastSize;

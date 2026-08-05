@@ -357,6 +357,22 @@ fable_u32 FABLE_FASTCALL FablePlanVisualFrontendSaveRows(
     return rowCount;
 }
 
+void FABLE_FASTCALL FablePlanVisualFrontendSaveAction(
+    const FableUiSaveBrowserRow* rows,
+    fable_u32 rowCount,
+    fable_u32 selection,
+    FableUiSaveBrowserActionPlan* plan)
+{
+    if (plan == 0)
+        return;
+    plan->action = FableUiSaveBrowserInvalidAction;
+    plan->dispatch = false;
+    if (rows == 0 || selection >= rowCount)
+        return;
+    plan->action = rows[selection].action;
+    plan->dispatch = plan->action == FableUiSaveBrowserLoadAction;
+}
+
 namespace
 {
     // Join <dir>[\]<leaf> into out (UTF-16), inserting a separator only when the
@@ -2162,6 +2178,7 @@ namespace
     const int kBootCoastalSunbeamResource = 108;
     const int kBootOptionsResource = 109;
     const int kBootHelpersResource = 110;
+    const int kBootRedefineScrollPagesResource = 125;
     const int kBootAboutResource = 120;
     const int kBootCreditsResource = 123;
     const int kBootProfilesResource = 124;
@@ -2290,6 +2307,8 @@ namespace
     FableBitmapInfo g_BootOptionsArtworkInfo = {};
     FableBitmap g_BootHelpersArtwork = 0;
     FableBitmapInfo g_BootHelpersArtworkInfo = {};
+    FableBitmap g_BootRedefineScrollPagesArtwork = 0;
+    FableBitmapInfo g_BootRedefineScrollPagesArtworkInfo = {};
     FableBitmap g_BootAboutArtwork = 0;
     FableBitmapInfo g_BootAboutArtworkInfo = {};
     FableBitmap g_BootCreditsArtwork = 0;
@@ -2338,23 +2357,26 @@ namespace
     unsigned int g_VisualProfileEditLength = 0;
     unsigned int g_VisualDetailScreen = 0;
     unsigned int g_VisualDetailSelection = 0;
-    // audit #4: bound to the shared source of truth (detail_screen_tables.h)
-    // so the input hit-test geometry cannot drift from the render side.
-    const unsigned int (&kVisualDetailRowCounts)[3] =
-        fable_detail_tables::kRowCounts;
-    const unsigned int (&kVisualDetailValueCounts)[3][10] =
-        fable_detail_tables::kValueCounts;
-    const int (&kVisualDetailRowY)[3][10] =
-        fable_detail_tables::kRowY;
-    const unsigned int kVisualDetailDefaults[3][10] = {
-        {0, 0, 1, 4, 1, 15, 1, 1, 1, 1},
-        {6, 8, 9, 0, 0, 0, 0, 0, 0, 0},
-        {1, 0, 0, 1, 1, 1, 2, 0, 1, 0}
+    // Detail input uses the same decoded records as the render bridge.
+    const fable_detail_tables::DetailScreenDefinition (&kVisualDetailScreens)[3] =
+        fable_detail_tables::kScreens;
+    const unsigned int kVisualRedefineExpandedRowCount = 44;
+    const unsigned int (&kVisualRedefineDefaults)[44] =
+        fable_detail_tables::kRedefineExpandedDefaults;
+    const unsigned int kVisualRedefineUnresolved =
+        fable_detail_tables::kRedefineUnresolved;
+    const unsigned int kVisualRedefineArrowDefaults[44] = {
+        41, 42, 43, 44, 1, 2, 3, 3, 3,
+        4, 5, 6, 35, 55, 36, 36, 23, 15,
+        21, 26, 16, 39, 56, 57, 58, 59, 60, 61,
+        62, 63, 64, 65, 66, 67, 46, 47, 48, 49,
+        50, 51, 52, 53, 54, 68
     };
-    const unsigned int (&kVisualRedefineDefaults)[9] =
-        fable_detail_tables::kRedefineDefaults;
-    const unsigned int kVisualRedefineArrowDefaults[9] = {
-        41, 42, 43, 44, 1, 2, 3, 3, 3
+    const unsigned int kVisualRedefineActionIds[44] = {
+        60, 60, 60, 60, 9, 7, 8, 31, 45,
+        6, 13, 14, 1, 32, 26, 86, 94, 78, 4, 113, 112,
+        72, 56, 56, 56, 92, 90, 96, 91, 97, 93, 98, 99,
+        100, 55, 55, 55, 55, 55, 55, 55, 55, 55, 53
     };
     unsigned int g_VisualDetailValues[3][10] = {};
     unsigned int g_VisualDetailEntryValues[3][10] = {};
@@ -2373,9 +2395,10 @@ namespace
     // rows are visible at once.  Keep the logical child separate from the
     // active key-capture row (which is still the 1..9 UI selection above).
     unsigned int g_VisualRedefineListSelection = 0;
-    unsigned int g_VisualRedefineKeys[9] = {};
-    unsigned int g_VisualRedefineEntryKeys[9] = {};
-    unsigned int g_VisualRedefineSavedKeys[9] = {};
+    unsigned int g_VisualRedefineKeys[44] = {};
+    unsigned int g_VisualRedefineEntryKeys[44] = {};
+    unsigned int g_VisualRedefineSavedKeys[44] = {};
+    unsigned int g_VisualRedefineCaptureRow = 0;
     bool g_VisualQuitPromptActive = false;
     unsigned int g_VisualQuitHover = 0;
     unsigned long g_FrontendPostMovieStepMask = 0;
@@ -2578,32 +2601,34 @@ namespace
         return false;
     }
 
+    unsigned int VisualRedefineVisibleRowCount();
+
     bool FindVisualRedefineRow(
         int mouseX,
         int mouseY,
         unsigned int* rowFound)
     {
-        // UI_FRONTEND_LIST_REDEFINE_KEYS_MENU is rooted at (40,115).
-        // Its generated UI_REDEFINER_MOUSE_AREA child is (-40,0),
-        // 600x24, with the list's exact 26-pixel vertical step.
-        for (unsigned int row = 0; row != 9; ++row)
+        const fable_detail_tables::RedefineListDefinition& list =
+            fable_detail_tables::kRedefineList;
+        const unsigned int visibleRows = VisualRedefineVisibleRowCount();
+        for (unsigned int row = 0; row != visibleRows; ++row)
         {
             FableUiVector2 origin = {};
             ResolveVisualGeneratedChildOrigin(
-                40.0f,
-                115.0f,
+                static_cast<float>(list.rootX),
+                static_cast<float>(list.rootY),
                 0.0f,
-                static_cast<float>(row * 26),
-                -40.0f,
-                0.0f,
+                static_cast<float>(row * list.rowStep),
+                static_cast<float>(list.hitOffsetX),
+                static_cast<float>(list.hitOffsetY),
                 &origin);
             const int rowLeft = static_cast<int>(origin.x);
             const int rowTop = static_cast<int>(origin.y);
             if (
                 mouseX >= rowLeft &&
-                mouseX < rowLeft + 600 &&
+                mouseX < rowLeft + list.hitWidth &&
                 mouseY >= rowTop &&
-                mouseY < rowTop + 24)
+                mouseY < rowTop + list.hitHeight)
             {
                 *rowFound = row;
                 return true;
@@ -2794,6 +2819,31 @@ namespace
 
     const unsigned int kVisualRedefineListChildCount = 31;
     const unsigned int kVisualRedefineListVisibleRows = 9;
+    const unsigned int kVisualRedefineMaterializedRowCount = 44;
+    const unsigned int kVisualRedefineMaterializedOffsets[31] = {
+        0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+        19, 20, 21, 22, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 43
+    };
+
+    unsigned int VisualRedefineVisibleRowCount()
+    {
+        const unsigned int offset =
+            kVisualRedefineMaterializedOffsets[
+                g_VisualRedefineListSelection];
+        const unsigned int remaining =
+            kVisualRedefineMaterializedRowCount - offset;
+        return remaining < kVisualRedefineListVisibleRows
+            ? remaining
+            : kVisualRedefineListVisibleRows;
+    }
+
+    unsigned int VisualRedefineMaterializedOffset()
+    {
+        const unsigned int offset =
+            kVisualRedefineMaterializedOffsets[
+                g_VisualRedefineListSelection];
+        return offset > 35 ? 35 : offset;
+    }
 
     enum VisualFrontendScrollTarget
     {
@@ -3128,6 +3178,8 @@ namespace
         case VisualFrontendScrollRedefine:
             g_VisualRedefineListSelection = static_cast<unsigned int>(
                 plan.selectedChild);
+            FableSetVisualFrontendRedefineListSelection(
+                g_VisualRedefineListSelection);
             break;
         default:
             break;
@@ -3143,16 +3195,32 @@ namespace
         memcpy(destination, source, sizeof(g_VisualDetailValues));
     }
 
+    void LoadVisualDetailDefaults(unsigned int destination[3][10])
+    {
+        memset(destination, 0, sizeof(g_VisualDetailValues));
+        for (unsigned int screen = 0; screen != 3; ++screen)
+        {
+            for (
+                unsigned int row = 0;
+                row != kVisualDetailScreens[screen].rowCount;
+                ++row)
+            {
+                destination[screen][row] =
+                    kVisualDetailScreens[screen].rows[row].defaultValue;
+            }
+        }
+    }
+
     void CopyVisualRedefineKeys(
-        unsigned int destination[9],
-        const unsigned int source[9])
+        unsigned int destination[44],
+        const unsigned int source[44])
     {
         memcpy(destination, source, sizeof(g_VisualRedefineKeys));
     }
 
     void SyncVisualRedefineKeys()
     {
-        for (unsigned int row = 0; row != 9; ++row)
+        for (unsigned int row = 0; row != kVisualRedefineExpandedRowCount; ++row)
         {
             FableSetVisualFrontendRedefineKey(
                 row,
@@ -3160,6 +3228,22 @@ namespace
         }
         FableSetVisualFrontendRedefineSelection(
             g_VisualRedefineSelection);
+        FableSetVisualFrontendRedefineListSelection(
+            g_VisualRedefineListSelection);
+        bool changed = false;
+        for (unsigned int row = 0;
+             row != kVisualRedefineExpandedRowCount;
+             ++row)
+        {
+            if (
+                g_VisualRedefineKeys[row] !=
+                g_VisualRedefineEntryKeys[row])
+            {
+                changed = true;
+                break;
+            }
+        }
+        FableSetVisualFrontendDetailApplyEnabled(changed);
     }
 
     void ResetVisualRedefineKeys(bool wasd)
@@ -3174,6 +3258,7 @@ namespace
                 ? kVisualRedefineDefaults
                 : kVisualRedefineArrowDefaults);
         g_VisualRedefineSelection = 0;
+        g_VisualRedefineCaptureRow = 0;
         g_VisualRedefineListSelection = 0;
         SyncVisualRedefineKeys();
     }
@@ -3185,7 +3270,7 @@ namespace
         const unsigned int screenIndex = screen - 1;
         for (
             unsigned int row = 0;
-            row != kVisualDetailRowCounts[screenIndex];
+            row != kVisualDetailScreens[screenIndex].rowCount;
             ++row)
         {
             FableSetVisualFrontendDetailOptionValue(
@@ -3193,6 +3278,21 @@ namespace
                 row,
                 g_VisualDetailValues[screenIndex][row]);
         }
+        bool changed = false;
+        for (
+            unsigned int row = 0;
+            row != kVisualDetailScreens[screenIndex].rowCount;
+            ++row)
+        {
+            if (
+                g_VisualDetailValues[screenIndex][row] !=
+                g_VisualDetailEntryValues[screenIndex][row])
+            {
+                changed = true;
+                break;
+            }
+        }
+        FableSetVisualFrontendDetailApplyEnabled(changed);
     }
 
     void BeginVisualDetailScreen(unsigned int screen)
@@ -3217,6 +3317,7 @@ namespace
                 g_VisualRedefineEntryKeys,
                 g_VisualRedefineKeys);
             g_VisualRedefineSelection = 0;
+            g_VisualRedefineCaptureRow = 0;
             g_VisualRedefineListSelection = 0;
             SyncVisualRedefineKeys();
         }
@@ -3237,6 +3338,7 @@ namespace
                 g_VisualRedefineKeys,
                 g_VisualRedefineEntryKeys);
             g_VisualRedefineSelection = 0;
+            g_VisualRedefineCaptureRow = 0;
             g_VisualRedefineListSelection = 0;
             SyncVisualRedefineKeys();
         }
@@ -3256,61 +3358,145 @@ namespace
                 g_VisualRedefineSavedKeys,
                 g_VisualRedefineKeys);
             g_VisualRedefineSelection = 0;
+            g_VisualRedefineCaptureRow = 0;
             g_VisualRedefineListSelection = 0;
             FableSetVisualFrontendRedefineSelection(0);
+        }
+    }
+
+    bool VisualPointInDetailRect(
+        int mouseX,
+        int mouseY,
+        const fable_detail_tables::DetailRect& rect)
+    {
+        return mouseX >= rect.left && mouseX < rect.right &&
+            mouseY >= rect.top && mouseY < rect.bottom;
+    }
+
+    bool VisualPointInDetailFooter(
+        unsigned int button,
+        int mouseX,
+        int mouseY)
+    {
+        if (button < 1 || button > 3)
+            return false;
+        return VisualPointInDetailRect(
+            mouseX,
+            mouseY,
+            fable_detail_tables::kFooter[button - 1].hit);
+    }
+
+    bool VisualPointInRedefineReset(
+        unsigned int column,
+        int mouseX,
+        int mouseY)
+    {
+        if (column >= 2)
+            return false;
+        return VisualPointInDetailRect(
+            mouseX,
+            mouseY,
+            fable_detail_tables::kRedefineReset[column].hit);
+    }
+
+    bool VisualIsRedefinableKeyValue(unsigned int keyValue)
+    {
+        // CKeyRedefiner::IsRedefinableKey @ 0x022B3C70 evaluates the
+        // DirectInput scan-code enum. Keep the retail exclusions exact even
+        // though the current routed Win32 subset does not synthesize all of
+        // these opaque scan-code records.
+        switch (keyValue)
+        {
+        case 0x01:
+        case 0x59:
+        case 0x5A:
+        case 0x5B:
+        case 0x62:
+        case 0x76:
+        case 0x77:
+            return false;
+        default:
+            return true;
         }
     }
 
     unsigned int VisualVirtualKeyToRedefineValue(
         FableWordParameter virtualKey)
     {
+        unsigned int keyValue = 0xFFFFFFFFu;
         if (virtualKey >= 'A' && virtualKey <= 'Z')
         {
             if (virtualKey == 'Q')
-                return 5;
-            if (virtualKey == 'E')
-                return 6;
-            return 9 + static_cast<unsigned int>(virtualKey - 'A');
+                keyValue = 5;
+            else if (virtualKey == 'E')
+                keyValue = 6;
+            else
+                keyValue = 9 + static_cast<unsigned int>(virtualKey - 'A');
         }
-        if (virtualKey >= '0' && virtualKey <= '9')
-            return 45 + static_cast<unsigned int>(virtualKey - '0');
-        switch(virtualKey)
+        else if (virtualKey >= '0' && virtualKey <= '9')
+            keyValue = 45 + static_cast<unsigned int>(virtualKey - '0');
+        else switch(virtualKey)
         {
         case 0x09:
-            return 4;
+            keyValue = 4;
+            break;
         case 0x20:
-            return 35;
+            keyValue = 35;
+            break;
         case 0x10:
-            return 36;
+            keyValue = 36;
+            break;
         case 0x11:
-            return 37;
+            keyValue = 37;
+            break;
         case 0x12:
-            return 38;
+            keyValue = 38;
+            break;
         case 0x0D:
-            return 39;
+            keyValue = 39;
+            break;
         case 0x08:
-            return 40;
+            keyValue = 40;
+            break;
         case 0x26:
-            return 41;
+            keyValue = 41;
+            break;
         case 0x28:
-            return 42;
+            keyValue = 42;
+            break;
         case 0x25:
-            return 43;
+            keyValue = 43;
+            break;
         case 0x27:
-            return 44;
+            keyValue = 44;
+            break;
         }
-        return 0xFFFFFFFFu;
+        if (!VisualIsRedefinableKeyValue(keyValue))
+            return 0xFFFFFFFFu;
+        return keyValue;
     }
 
     bool VisualRedefineRowsMayShare(
         unsigned int first,
         unsigned int second)
     {
-        // Retail AreAllowedToCoexist permits the Flourish, Run, and
-        // first-person-targeting actions to share a control.  Movement action
-        // 60 expands into four CKeyRedefiner rows ahead of these actions.
-        return first >= 6 && first <= 8 &&
-            second >= 6 && second <= 8;
+        if (
+            first >= kVisualRedefineExpandedRowCount ||
+            second >= kVisualRedefineExpandedRowCount)
+        {
+            return false;
+        }
+        // Retail AreAllowedToCoexist @ 0x005578A0 has two exact groups:
+        // {8,31,45} and {26,86}.
+        const unsigned int firstAction = kVisualRedefineActionIds[first];
+        const unsigned int secondAction = kVisualRedefineActionIds[second];
+        const bool firstGroup =
+            (firstAction == 8 || firstAction == 31 || firstAction == 45) &&
+            (secondAction == 8 || secondAction == 31 || secondAction == 45);
+        const bool secondGroup =
+            (firstAction == 26 || firstAction == 86) &&
+            (secondAction == 26 || secondAction == 86);
+        return firstGroup || secondGroup;
     }
 
     bool ApplyVisualRedefinition(unsigned int keyValue)
@@ -3318,15 +3504,17 @@ namespace
         if (
             g_VisualDetailScreen != 4 ||
             g_VisualRedefineSelection == 0 ||
-            g_VisualRedefineSelection > 9 ||
-            keyValue >= 55 ||
+            g_VisualRedefineCaptureRow >=
+                kVisualRedefineExpandedRowCount ||
+            keyValue >= 69 ||
             keyValue == 7)
         {
             return false;
         }
-        const unsigned int selected =
-            g_VisualRedefineSelection - 1;
-        for (unsigned int row = 0; row != 9; ++row)
+        const unsigned int selected = g_VisualRedefineCaptureRow;
+        for (unsigned int row = 0;
+             row != kVisualRedefineExpandedRowCount;
+             ++row)
         {
             if (
                 row != selected &&
@@ -3342,7 +3530,9 @@ namespace
         g_VisualRedefineKeys[selected] = keyValue;
         FableSetVisualFrontendRedefineKey(selected, keyValue);
         g_VisualRedefineSelection = 0;
+        g_VisualRedefineCaptureRow = 0;
         FableSetVisualFrontendRedefineSelection(0);
+        FableSetVisualFrontendDetailApplyEnabled(true);
         return true;
     }
 
@@ -3356,34 +3546,44 @@ namespace
         const unsigned int screenIndex = screen - 1;
         for (
             unsigned int row = 0;
-            row != kVisualDetailRowCounts[screenIndex];
-            ++row)
+            row != kVisualDetailScreens[screenIndex].rowCount;
+        ++row)
         {
-            const int rowTop = kVisualDetailRowY[screenIndex][row] - 3;
+            const int rowTop =
+                kVisualDetailScreens[screenIndex].rows[row].y +
+                fable_detail_tables::kArrow.controlTopOffset;
             if (mouseY < rowTop || mouseY >= rowTop + 30)
                 continue;
             unsigned int& value =
                 g_VisualDetailValues[screenIndex][row];
             const unsigned int valueCount =
-                kVisualDetailValueCounts[screenIndex][row];
+                kVisualDetailScreens[screenIndex].rows[row].valueCount;
             const unsigned int previousValue = value;
-            if (mouseX >= 300 && mouseX < 340)
+            if (
+                mouseX >= fable_detail_tables::kArrow.leftHit.left &&
+                mouseX < fable_detail_tables::kArrow.leftHit.right)
             {
                 if (value != 0)
                     --value;
             }
-            else if (mouseX >= 462 && mouseX < 502)
+            else if (
+                mouseX >= fable_detail_tables::kArrow.rightHit.left &&
+                mouseX < fable_detail_tables::kArrow.rightHit.right)
             {
-                if (value + 1 < valueCount)
-                    ++value;
+                // The retail slider's right action advances through the
+                // value list cyclically.  Keep mouse arrows consistent with
+                // the recovered keyboard/controller path below, which uses
+                // the same modulo transition.
+                if (valueCount > 1)
+                    value = (value + 1) % valueCount;
             }
             else if (
-                mouseX >= 340 &&
-                mouseX < 462 &&
+                mouseX >= fable_detail_tables::kArrow.leftHit.right &&
+                mouseX < fable_detail_tables::kArrow.rightHit.left &&
                 valueCount > 1)
             {
                 value = static_cast<unsigned int>(
-                    (mouseX - 340) * (valueCount - 1) / 121);
+                    (mouseX - 440) * (valueCount - 1) / 121);
             }
             else
             {
@@ -3581,6 +3781,8 @@ namespace
             if (!actionPlan.dispatch ||
                 actionPlan.action != FableRetailFrontendManagerActionLoadProfile)
                 return true;
+            FableSetVisualFrontendActiveProfile(
+                g_VisualProfileNames[g_VisualProfileSelection - 1].name);
             // Action 0x124 is LoadProfile.  Until the exact CUserProfileManager
             // instance is connected to this checkpoint, preserve the route
             // boundary and return to the main frontend without fabricating a
@@ -3837,6 +4039,7 @@ namespace
                     // Retail event 0x21 with Escape selected calls
                     // CKeyRedefiner::CancelSelection.
                     g_VisualRedefineSelection = 0;
+                    g_VisualRedefineCaptureRow = 0;
                     FableSetVisualFrontendRedefineSelection(0);
                     RevealVisualFrontend(window);
                     return 0;
@@ -3973,6 +4176,8 @@ namespace
                         g_VisualRedefineListSelection =
                             static_cast<unsigned int>(
                                 plan.selectedChild);
+                        FableSetVisualFrontendRedefineListSelection(
+                            g_VisualRedefineListSelection);
                         RevealVisualFrontend(window);
                     }
                     return 0;
@@ -3989,7 +4194,7 @@ namespace
                             ? FableUiFrontEndListEventDown
                             : FableUiFrontEndListEventUp,
                         static_cast<long>(
-                            kVisualDetailRowCounts[screenIndex]),
+                            kVisualDetailScreens[screenIndex].rowCount),
                         static_cast<long>(
                             g_VisualDetailSelection),
                         false,
@@ -4028,7 +4233,7 @@ namespace
                 const unsigned int row =
                     g_VisualDetailSelection;
                 const unsigned int valueCount =
-                    kVisualDetailValueCounts[screenIndex][row];
+                    kVisualDetailScreens[screenIndex].rows[row].valueCount;
                 if (valueCount != 0)
                 {
                     unsigned int value =
@@ -4486,11 +4691,7 @@ namespace
                 }
                 else if (g_VisualDetailScreen != 0)
                 {
-                    if (
-                        mouseX >= 362 &&
-                        mouseX < 618 &&
-                        mouseY >= 424 &&
-                        mouseY < 480)
+                    if (VisualPointInDetailFooter(3, mouseX, mouseY))
                     {
                         // UI_ACCEPT action 87 saves the current profile and
                         // returns to the previous screen.
@@ -4509,11 +4710,7 @@ namespace
                         RevealVisualFrontend(window);
                         return 0;
                     }
-                    if (
-                        mouseX >= 20 &&
-                        mouseX < 276 &&
-                        mouseY >= 424 &&
-                        mouseY < 480)
+                    if (VisualPointInDetailFooter(1, mouseX, mouseY))
                     {
                         // UI_CANCEL action 86 restores activation values.
                         CancelVisualDetailScreen();
@@ -4533,10 +4730,7 @@ namespace
                     }
                     if (
                         g_VisualDetailScreen <= 3 &&
-                        mouseX >= 192 &&
-                        mouseX < 448 &&
-                        mouseY >= 384 &&
-                        mouseY < 424)
+                        VisualPointInDetailFooter(2, mouseX, mouseY))
                     {
                         // Actions 324/325/326 set the profile group defaults
                         // and reset each active slider from that profile.
@@ -4544,11 +4738,12 @@ namespace
                             g_VisualDetailScreen - 1;
                         for (
                             unsigned int row = 0;
-                            row != kVisualDetailRowCounts[screenIndex];
+                            row != kVisualDetailScreens[screenIndex].rowCount;
                             ++row)
                         {
                             g_VisualDetailValues[screenIndex][row] =
-                                kVisualDetailDefaults[screenIndex][row];
+                                kVisualDetailScreens[screenIndex]
+                                    .rows[row].defaultValue;
                         }
                         SyncVisualDetailScreen(g_VisualDetailScreen);
                         RevealVisualFrontend(window);
@@ -4557,8 +4752,9 @@ namespace
                     if (g_VisualDetailScreen == 4)
                     {
                         if (
-                            mouseY >= 389 &&
-                            mouseY < 429)
+                            g_VisualRedefineListSelection == 0 &&
+                            (VisualPointInRedefineReset(0, mouseX, mouseY) ||
+                             VisualPointInRedefineReset(1, mouseX, mouseY)))
                         {
                             // UI_HELPERS_REDEFINE contributes parent y=20.
                             // Its reset controls are at local (0/320,385);
@@ -4578,7 +4774,8 @@ namespace
                             // CKeyRedefiner::OnLeftUnclicked installs the
                             // one active capture target and replaces this
                             // row's value with TEXT_GUI_PRESS_CONTROL.
-                            g_VisualRedefineListSelection = row;
+                            g_VisualRedefineCaptureRow =
+                                VisualRedefineMaterializedOffset() + row;
                             g_VisualRedefineSelection = row + 1;
                             FableSetVisualFrontendRedefineSelection(
                                 g_VisualRedefineSelection);
@@ -4823,6 +5020,10 @@ namespace
                 {
                     unsigned int row = 0;
                     unsigned int hover = 0;
+                    // The page atlas owns all nonzero list positions.  The
+                    // live hover strip is only valid on the initial page;
+                    // do not retain a hidden row hover while the list is
+                    // scrolled, or it can reappear when page zero returns.
                     if (FindVisualRedefineRow(mouseX, mouseY, &row))
                         hover = row + 1;
                     if (g_VisualRedefineHover != hover)
@@ -4836,8 +5037,14 @@ namespace
                     // click band is [389,429) -- a 24px dead strip that lit
                     // but did not click.  Match the click rect so highlight ==
                     // clickable.
-                    if (mouseY >= 389 && mouseY < 429)
-                        resetHover = mouseX < 320 ? 1 : 2;
+                    if (
+                        g_VisualRedefineListSelection == 0 &&
+                        VisualPointInRedefineReset(0, mouseX, mouseY))
+                        resetHover = 1;
+                    else if (
+                        g_VisualRedefineListSelection == 0 &&
+                        VisualPointInRedefineReset(1, mouseX, mouseY))
+                        resetHover = 2;
                     if (g_VisualRedefineResetHover != resetHover)
                     {
                         g_VisualRedefineResetHover = resetHover;
@@ -4851,28 +5058,17 @@ namespace
                 // Cancel/Apply hover on screens 1-4 so Redefine's footer lights
                 // too, but keep Defaults gated to 1-3 (no screen-4 art/rect).
                 unsigned int buttonHover = 0;
-                if (
-                    mouseX >= 20 &&
-                    mouseX < 276 &&
-                    mouseY >= 424 &&
-                    mouseY < 480)
+                if (VisualPointInDetailFooter(1, mouseX, mouseY))
                 {
                     buttonHover = 1;
                 }
-                else if (
-                    mouseX >= 362 &&
-                    mouseX < 618 &&
-                    mouseY >= 424 &&
-                    mouseY < 480)
+                else if (VisualPointInDetailFooter(3, mouseX, mouseY))
                 {
                     buttonHover = 3;
                 }
                 else if (
                     g_VisualDetailScreen <= 3 &&
-                    mouseX >= 192 &&
-                    mouseX < 448 &&
-                    mouseY >= 384 &&
-                    mouseY < 424)
+                    VisualPointInDetailFooter(2, mouseX, mouseY))
                 {
                     buttonHover = 2;
                 }
@@ -4885,7 +5081,7 @@ namespace
                 if (g_VisualDetailScreen >= 1 && g_VisualDetailScreen <= 3)
                 {
                     // Arrow hover mirrors AdjustVisualDetailControl's row scan:
-                    // only rows < kVisualDetailRowCounts are valid (Video has 3;
+                    // only rows < the decoded screen row count are valid (Video has 3;
                     // rows 3-9 have rowY 0), so phantom rows never highlight.
                     const unsigned int screenIndex =
                         g_VisualDetailScreen - 1;
@@ -4893,19 +5089,30 @@ namespace
                     unsigned int arrowSide = 0;
                     for (
                         unsigned int detailRow = 0;
-                        detailRow != kVisualDetailRowCounts[screenIndex];
+                        detailRow !=
+                            kVisualDetailScreens[screenIndex].rowCount;
                         ++detailRow)
                     {
                         const int rowTop =
-                            kVisualDetailRowY[screenIndex][detailRow] - 3;
+                            kVisualDetailScreens[screenIndex]
+                                .rows[detailRow].y +
+                            fable_detail_tables::kArrow.controlTopOffset;
                         if (mouseY < rowTop || mouseY >= rowTop + 30)
                             continue;
-                        if (mouseX >= 300 && mouseX < 340)
+                        if (
+                            mouseX >=
+                                fable_detail_tables::kArrow.leftHit.left &&
+                            mouseX <
+                                fable_detail_tables::kArrow.leftHit.right)
                         {
                             arrowRow = detailRow;
                             arrowSide = 1;
                         }
-                        else if (mouseX >= 462 && mouseX < 502)
+                        else if (
+                            mouseX >=
+                                fable_detail_tables::kArrow.rightHit.left &&
+                            mouseX <
+                                fable_detail_tables::kArrow.rightHit.right)
                         {
                             arrowRow = detailRow;
                             arrowSide = 2;
@@ -5285,6 +5492,7 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     g_VisualRedefineHover = 0;
     g_VisualRedefineResetHover = 0;
     g_VisualRedefineSelection = 0;
+    g_VisualRedefineCaptureRow = 0;
     g_VisualRedefineListSelection = 0;
     CopyVisualRedefineKeys(
         g_VisualRedefineKeys,
@@ -5295,15 +5503,9 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     CopyVisualRedefineKeys(
         g_VisualRedefineSavedKeys,
         kVisualRedefineDefaults);
-    CopyVisualDetailValues(
-        g_VisualDetailValues,
-        kVisualDetailDefaults);
-    CopyVisualDetailValues(
-        g_VisualDetailEntryValues,
-        kVisualDetailDefaults);
-    CopyVisualDetailValues(
-        g_VisualDetailSavedValues,
-        kVisualDetailDefaults);
+    LoadVisualDetailDefaults(g_VisualDetailValues);
+    LoadVisualDetailDefaults(g_VisualDetailEntryValues);
+    LoadVisualDetailDefaults(g_VisualDetailSavedValues);
     g_VisualQuitPromptActive = false;
     g_VisualQuitHover = 0;
 
@@ -5345,7 +5547,22 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         return 2;
     }
 
-    FableRectangle windowBounds = {0, 0, 1280, 720};
+    // The authored frontend is laid out in a 640x480 design space and the
+    // retail reference captures are 1024x768. Keep the existing 1280x720
+    // developer window as the default, but make the reference capture size
+    // an explicit launch contract instead of relying on an external resize.
+    const bool retailFrontendReferenceSize =
+        commandLine != 0 &&
+        strstr(commandLine, "--retail-frontend-reference-size") != 0;
+    const int frontendClientWidth =
+        retailFrontendReferenceSize ? 1024 : 1280;
+    const int frontendClientHeight =
+        retailFrontendReferenceSize ? 768 : 720;
+    FableRectangle windowBounds = {
+        0,
+        0,
+        frontendClientWidth,
+        frontendClientHeight};
     AdjustWindowRectEx(
         &windowBounds,
         kOverlappedWindow,
@@ -5515,6 +5732,14 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         0,
         0,
         kLoadCreatedDibSection));
+    g_BootRedefineScrollPagesArtwork =
+        static_cast<FableBitmap>(LoadImageA(
+            instance,
+            IntegerResource(kBootRedefineScrollPagesResource),
+            kImageBitmap,
+            0,
+            0,
+            kLoadCreatedDibSection));
     g_BootTitleSegmentArtwork = static_cast<FableBitmap>(LoadImageA(
         instance,
         IntegerResource(kBootTitleSegmentResource),
@@ -5567,6 +5792,7 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     if (
         g_BootOptionsArtwork != 0 &&
         g_BootHelpersArtwork != 0 &&
+        g_BootRedefineScrollPagesArtwork != 0 &&
         g_BootTitleSegmentArtwork != 0 &&
         g_BootButtonLeftArtwork != 0 &&
         g_BootButtonMiddleArtwork != 0 &&
@@ -5583,6 +5809,10 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
             g_BootHelpersArtwork,
             sizeof(g_BootHelpersArtworkInfo),
             &g_BootHelpersArtworkInfo);
+        GetObjectA(
+            g_BootRedefineScrollPagesArtwork,
+            sizeof(g_BootRedefineScrollPagesArtworkInfo),
+            &g_BootRedefineScrollPagesArtworkInfo);
         GetObjectA(
             g_BootTitleSegmentArtwork,
             sizeof(g_BootTitleSegmentArtworkInfo),
@@ -5622,6 +5852,7 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         DeleteObject(g_BootButtonLeftArtwork);
         DeleteObject(g_BootTitleSegmentArtwork);
         DeleteObject(g_BootHelpersArtwork);
+        DeleteObject(g_BootRedefineScrollPagesArtwork);
         DeleteObject(g_BootOptionsArtwork);
         g_BootAboutArtwork = 0;
         g_BootCreditsArtwork = 0;
@@ -5631,6 +5862,7 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         g_BootButtonLeftArtwork = 0;
         g_BootTitleSegmentArtwork = 0;
         g_BootHelpersArtwork = 0;
+        g_BootRedefineScrollPagesArtwork = 0;
         g_BootOptionsArtwork = 0;
     }
 #endif
@@ -5640,12 +5872,15 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     const bool useFrontendAnimation =
         commandLine == 0 ||
         strstr(commandLine, "--retail-frontend-static") == 0;
+    const bool haveFrontendAnimation =
+        g_BootForestArtworkInfo.pixels != 0 &&
+        g_BootSunbeamArtworkInfo.pixels != 0;
     const FableBitmapInfo& forestArtworkInfo =
-        useFrontendAnimation
+        haveFrontendAnimation
             ? g_BootForestArtworkInfo
             : emptyAnimationArtwork;
     const FableBitmapInfo& sunbeamArtworkInfo =
-        useFrontendAnimation
+        haveFrontendAnimation
             ? g_BootSunbeamArtworkInfo
             : emptyAnimationArtwork;
     const bool useBuffJesusMenu =
@@ -5658,8 +5893,8 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
             : g_BootMenuArtworkInfo;
     if (FableInitialiseVisualD3D9(
             window,
-            1280,
-            720,
+            frontendClientWidth,
+            frontendClientHeight,
             g_BootArtworkInfo.width,
             g_BootArtworkInfo.height,
             g_BootArtworkInfo.widthBytes,
@@ -5749,7 +5984,12 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
             g_BootSpookySunbeamArtworkInfo.height,
             g_BootSpookySunbeamArtworkInfo.widthBytes,
             g_BootSpookySunbeamArtworkInfo.bitsPerPixel,
-            g_BootSpookySunbeamArtworkInfo.pixels))
+            g_BootSpookySunbeamArtworkInfo.pixels,
+            g_BootRedefineScrollPagesArtworkInfo.width,
+            g_BootRedefineScrollPagesArtworkInfo.height,
+            g_BootRedefineScrollPagesArtworkInfo.widthBytes,
+            g_BootRedefineScrollPagesArtworkInfo.bitsPerPixel,
+            g_BootRedefineScrollPagesArtworkInfo.pixels))
     {
 #if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
         SetWindowTextA(
@@ -5765,6 +6005,9 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
                 : kD3DCheckpointReadyWindowTitle);
 #endif
     }
+
+    FableSetVisualFrontendAnimationStatic(
+        !useFrontendAnimation && haveFrontendAnimation);
 
     ShowWindow(window, showCommand == 0 ? kShowNormal : showCommand);
     UpdateWindow(window);
@@ -5878,12 +6121,14 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     DeleteObject(g_BootButtonLeftArtwork);
     DeleteObject(g_BootTitleSegmentArtwork);
     DeleteObject(g_BootHelpersArtwork);
+    DeleteObject(g_BootRedefineScrollPagesArtwork);
     DeleteObject(g_BootOptionsArtwork);
     g_BootButtonRightArtwork = 0;
     g_BootButtonMiddleArtwork = 0;
     g_BootButtonLeftArtwork = 0;
     g_BootTitleSegmentArtwork = 0;
     g_BootHelpersArtwork = 0;
+    g_BootRedefineScrollPagesArtwork = 0;
     g_BootOptionsArtwork = 0;
 #endif
     DeleteObject(g_BootCoastalSunbeamArtwork);

@@ -19,7 +19,7 @@
 // reorders the spills and lands at 81 bytes (DIFFER); emit the exact retail
 // instruction stream as naked asm.  All branches are internal, no externs.
 
-__declspec(naked) unsigned long CScriptedMapBrush_GetTheme()
+extern "C" __declspec(naked) unsigned long CScriptedMapBrush_GetTheme()
 {
     __asm {
         mov     edx, dword ptr [esp+4]      // x

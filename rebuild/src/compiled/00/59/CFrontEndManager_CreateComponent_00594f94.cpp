@@ -1,31 +1,34 @@
 // NUISystem::CFrontEndManager::CreateComponent @ 0x00594F94
-// VC7.1, x86, /O2 /Oy.
 //
-// This overload forwards the requested definition name to the singleton
-// manager's generic component factory with the front-end creation flag set.
+// Ghidra confirms this is a one-argument __thiscall wrapper around the base
+// manager factory.  Size optimization preserves the retail push order and
+// stack cleanup without an assembly shim.
 
-extern "C" void* __cdecl
-FableFrontEndCreateComponentGetManager();
-extern "C" void* __fastcall
-FableFrontEndCreateComponentFromDefinition(
-    void* manager,
-    void*,
-    const void* definition,
-    long frontEnd);
+#pragma optimize("s", on)
 
-extern "C" __declspec(naked) void* __fastcall
-CFrontEndManager_CreateComponent_00594f94(
-    void*,
-    void*,
-    const void*)
+class CCharString;
+
+namespace NUISystem
 {
-    __asm
-    {
-        push 1
-        push dword ptr [esp + 8]
-        call FableFrontEndCreateComponentGetManager
-        mov ecx, eax
-        call FableFrontEndCreateComponentFromDefinition
-        ret 4
-    }
+class CComponent;
+
+class CManager
+{
+public:
+    CComponent* CreateComponent(CCharString* definition, bool frontEnd);
+};
+
+class CFrontEndManager : public CManager
+{
+public:
+    static CFrontEndManager* GetInstance();
+    CComponent* CreateComponent(CCharString* definition);
+};
+
+CComponent* CFrontEndManager::CreateComponent(CCharString* definition)
+{
+    return GetInstance()->CManager::CreateComponent(definition, true);
 }
+}
+
+#pragma optimize("s", off)

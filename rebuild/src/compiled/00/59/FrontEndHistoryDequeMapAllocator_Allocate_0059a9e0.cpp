@@ -13,6 +13,7 @@ public:
     void** Allocate(unsigned long count, const void* hint);
 };
 
+#pragma optimize("s", on)
 __declspec(naked)
 void** FrontEndHistoryDequeMapAllocator_0059a9e0::Allocate(
     unsigned long,
@@ -36,3 +37,4 @@ void** FrontEndHistoryDequeMapAllocator_0059a9e0::Allocate(
         ret 8
     }
 }
+#pragma optimize("s", off)

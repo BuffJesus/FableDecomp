@@ -1,6 +1,16 @@
 #include <cstdio>
 
-#include "../../../src/compiled/00/59/FrontEndHistoryDequeIterator_BlockEndSlot_0059a970.cpp"
+struct FrontEndHistoryDequeIterator_0059a970
+{
+    void** current;
+    void** first;
+    void** last;
+    void*** node;
+};
+
+extern "C" void*** __cdecl
+FrontEndHistoryDequeIterator_BlockEndSlot_0059a970(
+    FrontEndHistoryDequeIterator_0059a970*);
 
 int main()
 {

@@ -1,6 +1,14 @@
 #include <cstdio>
 
-#include "../../../src/compiled/00/59/FrontEndHistoryDequeIterator_SetNode_0059a959.cpp"
+struct FrontEndHistoryDequeIterator_0059a959
+{
+    void** current;
+    void** first;
+    void** last;
+    void*** node;
+
+    void SetNode(void*** new_node);
+};
 
 int main()
 {

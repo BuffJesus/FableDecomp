@@ -1,6 +1,22 @@
 #include <cstdio>
 
-#include "../../../src/compiled/00/59/FrontEndHistoryDeque_EndIterator_0059aa15.cpp"
+struct FrontEndHistoryDequeIterator_0059aa15
+{
+    void** current;
+    void** first;
+    void** last;
+    void*** node;
+};
+
+struct FrontEndHistoryDeque_0059aa15
+{
+    FrontEndHistoryDequeIterator_0059aa15 begin;
+    FrontEndHistoryDequeIterator_0059aa15 end;
+};
+
+extern "C" FrontEndHistoryDequeIterator_0059aa15* __cdecl
+FrontEndHistoryDeque_EndIterator_0059aa15(
+    FrontEndHistoryDeque_0059aa15*);
 
 int main()
 {

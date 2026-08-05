@@ -1,6 +1,16 @@
 #include <cstdio>
 
-#include "../../../src/compiled/00/59/FrontEndHistoryDequeIterator_Equal_0059a9c0.cpp"
+struct FrontEndHistoryDequeIterator_0059a9c0
+{
+    void** current;
+    void** first;
+    void** last;
+    void*** node;
+};
+
+extern "C" bool __cdecl FrontEndHistoryDequeIterator_Equal_0059a9c0(
+    const FrontEndHistoryDequeIterator_0059a9c0*,
+    const FrontEndHistoryDequeIterator_0059a9c0*);
 
 static FrontEndHistoryDequeIterator_0059a9c0 MakeIterator(
     void** current,

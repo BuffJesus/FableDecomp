@@ -74,7 +74,7 @@ C3DMeshFileXTextureIndexChunk	0	5	5	0	0	0	0	0	0	0	0
 C3DMeshFileXTriangleStripChunk	0	6	6	0	0	0	0	0	0	0	0
 C3DMeshFileXUVTangentChunk	0	5	5	0	0	0	0	0	0	0	0
 C3DMeshFileXVertexDataChunk	0	4	4	0	0	0	0	0	0	0	0
-C3DMeshInfo	0	22	21	0	0	1	1	1	0	0	0
+C3DMeshInfo	0	22	21	0	0	2	2	2	0	0	0
 C3DMeshLODInfo	0	16	15	0	0	0	0	0	0	0	0
 C3DMeshMaterial	0	10	4	0	0	0	0	0	0	0	0
 C3DMeshObject	0	17	12	0	0	0	0	0	0	0	0
@@ -112,7 +112,7 @@ CAIStateGroup_BalverineJumpAtFleeingEnemy	4	4	4	0	0	0	0	0	0	0	0
 CAIStateGroup_BalverineWander	2	1	1	0	0	0	0	0	0	0	0
 CAIStateGroup_BanditGossip	5	5	5	0	0	3	3	3	0	0	0
 CAIStateGroup_BanditKingCharge	3	3	3	0	0	0	0	0	0	0	0
-CAIStateGroup_BanditKingLunge	5	5	5	0	0	0	0	0	0	0	0
+CAIStateGroup_BanditKingLunge	5	5	5	0	0	1	1	0	1	0	0
 CAIStateGroup_BanditKingThrowWeapons	3	3	3	0	0	0	0	0	0	0	0
 CAIStateGroup_BanditPlayDice	8	8	8	0	0	0	0	0	0	0	0
 CAIStateGroup_BanditPlot	4	4	4	0	0	1	1	1	0	0	0
@@ -122,7 +122,7 @@ CAIStateGroup_BirdFlyToFood	4	7	7	0	0	0	0	0	0	0	0
 CAIStateGroup_BirdGroundWander	5	4	4	0	0	0	0	0	0	0	0
 CAIStateGroup_BirdStartled	3	2	2	0	0	0	0	0	0	0	0
 CAIStateGroup_BoastingCrowdMember	5	4	4	0	0	0	0	0	0	0	0
-CAIStateGroup_BriarRose	7	10	10	0	0	0	0	0	0	0	0
+CAIStateGroup_BriarRose	7	10	10	0	0	1	1	0	1	0	0
 CAIStateGroup_BriarRoseWillUse	5	5	5	0	0	0	0	0	0	0	0
 CAIStateGroup_ButterflyWander	3	2	2	0	0	0	0	0	0	0	0
 CAIStateGroup_BuyFromSeller	7	16	15	0	0	0	0	0	0	0	0
@@ -142,7 +142,7 @@ CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets	4	4	4	0	0	1	1	1	0	0	0
 CAIStateGroup_CreatureRangedCombatUseWillShield	3	3	3	0	0	0	0	0	0	0	0
 CAIStateGroup_CreatureSeekEnemyUnderground	6	4	4	0	0	0	0	0	0	0	0
 CAIStateGroup_CreatureTakeCover	9	10	10	0	0	3	3	3	0	0	0
-CAIStateGroup_CreatureUseCoverBase	18	30	29	0	0	2	2	1	1	0	0
+CAIStateGroup_CreatureUseCoverBase	18	30	29	0	0	3	3	2	1	0	0
 CAIStateGroup_DeedReactionRoot	7	6	6	0	0	0	0	0	0	0	0
 CAIStateGroup_DeedReactionRootFromSleep	2	1	1	0	0	0	0	0	0	0	0
 CAIStateGroup_Drunk	8	7	7	0	0	0	0	0	0	0	0
@@ -169,7 +169,7 @@ CAIStateGroup_HoverAllAroundTest	2	1	1	0	0	0	0	0	0	0	0
 CAIStateGroup_HoverAttack	3	4	4	0	0	1	1	1	0	0	0
 CAIStateGroup_HoverAttackArea	3	4	4	0	0	1	1	1	0	0	0
 CAIStateGroup_HoverAttackUnlessTargetIsFleeing	2	3	3	0	0	1	1	1	0	0	0
-CAIStateGroup_HoverHornetQueen	27	57	40	0	0	1	1	1	0	0	0
+CAIStateGroup_HoverHornetQueen	27	57	40	0	0	9	9	9	0	0	0
 CAIStateGroup_HoverHornetQueenTakeDamage	6	7	7	0	0	1	1	1	0	0	0
 CAIStateGroup_HoverKeepInArea	4	4	4	0	0	1	1	1	0	0	0
 CAIStateGroup_HoverMovementBase	3	3	3	0	0	0	0	0	0	0	0
@@ -212,7 +212,7 @@ CAIStateGroup_MeleeCombatNearbyBase	9	12	12	0	0	1	1	1	0	0	0
 CAIStateGroup_MinionBehaviourCrowdBase	5	7	7	0	0	0	0	0	0	0	0
 CAIStateGroup_MinionBehaviourGreetCreature	3	2	2	0	0	0	0	0	0	0	0
 CAIStateGroup_MinionBehaviourPodiumEmoteNeutral	6	5	5	0	0	1	1	1	0	0	0
-CAIStateGroup_MinionBehaviourSad	7	8	8	0	0	0	0	0	0	0	0
+CAIStateGroup_MinionBehaviourSad	7	8	8	0	0	1	1	1	0	0	0
 CAIStateGroup_MinionCuriosity	5	4	4	0	0	0	0	0	0	0	0
 CAIStateGroup_MinionFaceHero	5	4	4	0	0	0	0	0	0	0	0
 CAIStateGroup_MinionFindPersonalSpace	4	3	3	0	0	0	0	0	0	0	0
@@ -229,7 +229,7 @@ CAIStateGroup_MinionGuardReactToPlayerWithWeapon	8	6	6	0	0	0	0	0	0	0	0
 CAIStateGroup_MinionHasInformation	6	7	7	0	0	0	0	0	0	0	0
 CAIStateGroup_MinionHawkingFromStall	5	4	4	0	0	0	0	0	0	0	0
 CAIStateGroup_MinionKidAnnoy	3	2	2	0	0	1	1	1	0	0	0
-CAIStateGroup_MinionKidCalledToMother	4	3	3	0	0	0	0	0	0	0	0
+CAIStateGroup_MinionKidCalledToMother	4	3	3	0	0	1	1	0	1	0	0
 CAIStateGroup_MinionKidGroupTag	10	9	9	0	0	0	0	0	0	0	0
 CAIStateGroup_MinionLeaveRegion	3	2	2	0	0	1	1	1	0	0	0
 CAIStateGroup_MinionListenToStory	6	4	4	0	0	0	0	0	0	0	0
@@ -246,13 +246,13 @@ CAIStateGroup_MinionReactToCriminal	8	7	7	0	0	0	0	0	0	0	0
 CAIStateGroup_MinionReactToEnemy	3	2	2	0	0	0	0	0	0	0	0
 CAIStateGroup_MinionReactToNoise	10	7	7	0	0	0	0	0	0	0	0
 CAIStateGroup_MinionReactToPlayerInteraction	12	12	12	0	0	1	1	1	0	0	0
-CAIStateGroup_MinionReactToTrespassing	7	6	6	0	0	0	0	0	0	0	0
+CAIStateGroup_MinionReactToTrespassing	7	6	6	0	0	1	1	0	1	0	0
 CAIStateGroup_MinionReactToUnconsciousPerson	5	4	4	0	0	0	0	0	0	0	0
 CAIStateGroup_MinionSitAtHome	6	6	6	0	0	1	1	1	0	0	0
 CAIStateGroup_MinionSitAtInn	3	3	3	0	0	1	1	1	0	0	0
 CAIStateGroup_MinionSitAtSchool	7	6	6	0	0	0	0	0	0	0	0
 CAIStateGroup_MinionSitAtWork	3	2	2	0	0	0	0	0	0	0	0
-CAIStateGroup_MinionSitOnSeat	5	4	4	0	0	0	0	0	0	0	0
+CAIStateGroup_MinionSitOnSeat	5	4	4	0	0	1	1	1	0	0	0
 CAIStateGroup_MinionSitOnSeatBase	5	6	6	0	0	2	2	2	0	0	0
 CAIStateGroup_MinionSitOutside	5	5	5	0	0	1	1	1	0	0	0
 CAIStateGroup_MinionSleep	8	6	6	0	0	1	1	1	0	0	0
@@ -327,7 +327,7 @@ CAIStateGroup_WorkHammerAnvil	7	6	6	0	0	0	0	0	0	0	0
 CAIStateGroup_WorkInWarehouse	6	5	5	0	0	0	0	0	0	0	0
 CAIStateGroup_WorkSawingWood	7	6	6	0	0	0	0	0	0	0	0
 CAInputProcess	2	23	22	0	0	4	4	4	0	0	0
-CANavQuadTreeNode	4	16	15	0	0	9	9	9	0	0	0
+CANavQuadTreeNode	4	16	15	0	0	10	10	9	1	0	0
 CAProgressDisplay	0	2	2	0	0	1	1	1	0	0	0
 CAS_Ambusher	3	2	2	0	0	0	0	0	0	0	0
 CAS_Buddy	4	1	1	0	0	0	0	0	0	0	0
@@ -416,7 +416,7 @@ CAnimFilterOfGroup	1	2	2	0	0	0	0	0	0	0	0
 CAnimFromFileInfo	2	0	0	0	0	0	0	0	0	0	0
 CAnimInit	2	1	1	0	0	0	0	0	0	0	0
 CAnimSet	29	19	11	0	0	0	0	0	0	0	0
-CAnimateThing	33	30	27	0	0	4	4	1	3	0	0
+CAnimateThing	33	30	27	0	0	6	6	1	5	0	0
 CAnimatedBlock	7	8	8	0	0	0	0	0	0	0	0
 CAnimatedBlockArray	0	1	0	0	0	0	0	0	0	0	0
 CAnimatingObjectDef	2	3	3	0	0	1	1	1	0	0	0
@@ -464,7 +464,7 @@ CAssassin2	3	2	2	0	0	0	0	0	0	0	0
 CAssassin3	2	0	0	0	0	0	0	0	0	0	0
 CAssassinChest	2	0	0	0	0	0	0	0	0	0	0
 CAssassinMarker	2	0	0	0	0	0	0	0	0	0	0
-CAssoc	0	138	138	0	0	132	132	1	131	0	0
+CAssoc	0	138	138	0	0	133	133	1	132	0	0
 CAsyncLoadingMemoryPool	3	0	0	0	0	0	0	0	0	0	0
 CAsyncThreadLauncher	0	1	0	0	0	0	0	0	0	0	0
 CAtmosProcess	7	2	1	0	0	0	0	0	0	0	0
@@ -521,13 +521,13 @@ CBankFileDependencies	8	0	0	0	0	0	0	0	0	0	0
 CBankFileEntryDependencies	1	0	0	0	0	0	0	0	0	0	0
 CBankFileEntryUpdateData	5	7	7	0	0	0	0	0	0	0	0
 CBankFileManager	21	9	9	0	0	0	0	0	0	0	0
-CBase	38	212	11	0	0	2	2	0	2	0	0
+CBase	38	212	11	0	0	3	3	0	3	0	0
 CBaseBlock	2	2	2	0	0	0	0	0	0	0	0
 CBaseInit	1	1	1	0	0	0	0	0	0	0	0
 CBaseIntelligentPointer	4	20	6	0	0	0	0	0	0	0	0
 CBaseObject	3	2	1	0	0	1	1	1	0	0	0
 CBasicShape	2	2	1	0	0	0	0	0	0	0	0
-CBasicString<char>	0	10	7	0	0	1	1	1	0	0	0
+CBasicString<char>	0	10	7	0	0	3	3	2	1	0	0
 CBattleGuard	3	1	1	0	0	0	0	0	0	0	0
 CBattleMinion	2	0	0	0	0	0	0	0	0	0	0
 CBedDef	2	9	3	0	0	1	1	1	0	0	0
@@ -613,7 +613,7 @@ CCham	3	7	7	0	0	0	0	0	0	0	0
 CChangeText	0	2	0	0	0	0	0	0	0	0	0
 CChangingStateComponent	29	17	16	0	0	0	0	0	0	0	0
 CCharMap	0	1	0	0	0	0	0	0	0	0	0
-CCharString	31	66	38	0	0	3	3	1	2	0	0
+CCharString	31	66	38	0	0	15	15	2	13	0	0
 CCharStringData	1	2	0	0	0	0	0	0	0	0	0
 CCharStringMap	0	3	0	0	0	0	0	0	0	0	0
 CCharStringPairVector	0	1	0	0	0	0	0	0	0	0	0
@@ -629,7 +629,7 @@ CChickenMaster	3	0	0	0	0	0	0	0	0	0	0
 CChickenSign	3	3	3	0	0	0	0	0	0	0	0
 CChunkCollectionIndicator	3	3	3	0	0	1	1	1	0	0	0
 CChunkedFile	0	7	6	0	0	0	0	0	0	0	0
-CChunkedFileChunk	9	38	36	0	0	3	3	3	0	0	0
+CChunkedFileChunk	9	38	36	0	0	4	4	3	1	0	0
 CChunkedFileLoader	1	2	1	0	0	0	0	0	0	0	0
 CChunkedFileRawDataChunk	6	9	9	0	0	0	0	0	0	0	0
 CChunkedFileSaver	1	1	1	0	0	0	0	0	0	0	0
@@ -662,7 +662,7 @@ CCombatAbilityProjectileAttackData	1	5	1	0	0	0	0	0	0	0	0
 CCombatAbilityStrafeDef	2	8	3	0	0	3	3	2	1	0	0
 CCombatAbilityStrafingData	0	1	1	0	0	0	0	0	0	0	0
 CCombatAbilityUseProjectileWeaponDef	2	9	3	0	0	3	3	2	1	0	0
-CCombatActionBase	85	72	68	0	0	16	16	16	0	0	0
+CCombatActionBase	85	72	68	0	0	18	18	18	0	0	0
 CCombatAction_ControlledStrafeJump	6	12	9	0	0	1	1	1	0	0	0
 CCombatAction_EpicSpellHitResponse	2	0	0	0	0	0	0	0	0	0	0
 CCombatAction_FallStunned	2	4	3	0	0	0	0	0	0	0	0
@@ -674,7 +674,7 @@ CCombatAction_GenericStrikeResponse	1	5	1	0	0	0	0	0	0	0	0
 CCombatAction_GenericStrikeResponseBase	11	15	13	0	0	1	1	1	0	0	0
 CCombatAction_GenericStrikeResponseKnockdown	5	12	9	0	0	4	4	4	0	0	0
 CCombatAction_GenericStrikeResponseKnockdownRecover	1	1	1	0	0	0	0	0	0	0	0
-CCombatAction_GenericStrikeResponseKnockdownRecoverBase	7	10	8	0	0	1	1	1	0	0	0
+CCombatAction_GenericStrikeResponseKnockdownRecoverBase	7	10	8	0	0	2	2	2	0	0	0
 CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath	2	3	3	0	0	1	1	1	0	0	0
 CCombatAction_Guildmaster_HealFollowersInto	2	16	2	0	0	0	0	0	0	0	0
 CCombatAction_Guildmaster_HealFollowersRelease	3	4	4	0	0	0	0	0	0	0	0
@@ -700,7 +700,7 @@ CCombatManager	70	33	31	0	0	0	0	0	0	0	0
 CCombatRenderer	0	2	0	0	0	0	0	0	0	0	0
 CCombatRing	15	8	7	0	0	0	0	0	0	0	0
 CCombatSequence2StrikeCombo	3	4	4	0	0	2	2	2	0	0	0
-CCombatSequenceBase	17	25	23	0	0	6	6	6	0	0	0
+CCombatSequenceBase	17	25	23	0	0	9	9	9	0	0	0
 CCombatSequenceDef	2	3	3	0	0	2	2	2	0	0	0
 CCombatSequenceGeneric	11	12	12	0	0	0	0	0	0	0	0
 CCombatSequenceJacksCombo	3	4	4	0	0	2	2	2	0	0	0
@@ -801,10 +801,10 @@ CCoopSpiritDef	2	3	3	0	0	3	3	2	1	0	0
 CCopyPasteDialog	11	0	0	0	0	0	0	0	0	0	0
 CCorneredGuard	2	1	1	0	0	0	0	0	0	0	0
 CCountedPointer<CBankFileAsyncEntry>	0	30	0	0	0	0	0	0	0	0	0
-CCountedPointer<CDiskFileWin32>	0	14	14	0	0	0	0	0	0	0	0
-CCountedPointer<CFileInstaller	0	30	0	0	0	0	0	0	0	0	0
+CCountedPointer<CDiskFileWin32>	0	14	14	0	0	1	1	0	1	0	0
+CCountedPointer<CFileInstaller	0	30	0	0	0	1	1	0	1	0	0
 CCountedPointer<CIPhysicsFacesSegmentBase const>	0	1	1	0	0	0	0	0	0	0	0
-CCountedPointer<CIPhysicsFacesSegmentBase_const_>	0	196	196	0	0	0	0	0	0	0	0
+CCountedPointer<CIPhysicsFacesSegmentBase_const_>	0	196	196	0	0	3	3	0	3	0	0
 CCountedPointer<CProgressDisplay>	0	1	1	0	0	1	1	0	1	0	0
 CCountedPointer<CScriptThing>	0	149	149	0	0	0	0	0	0	0	0
 CCountedPointer<CTexture>	0	8	8	0	0	5	5	5	0	0	0
@@ -1144,7 +1144,7 @@ CCreatureAction_SpiritAttack	7	7	6	0	0	0	0	0	0	0	0
 CCreatureAction_SpiritHitResponse	2	5	4	0	0	2	2	2	0	0	0
 CCreatureAction_SpiritReturnToHero	3	3	3	0	0	0	0	0	0	0	0
 CCreatureAction_StabbedToDeath	4	8	6	0	0	2	2	2	0	0	0
-CCreatureAction_StartBlocking	5	6	6	0	0	2	2	2	0	0	0
+CCreatureAction_StartBlocking	5	6	6	0	0	3	3	2	1	0	0
 CCreatureAction_StartEatingAtTable	1	1	1	0	0	0	0	0	0	0	0
 CCreatureAction_StartFillingTankard	2	2	2	0	0	0	0	0	0	0	0
 CCreatureAction_StartSneaking	2	4	4	0	0	2	2	2	0	0	0
@@ -1194,7 +1194,7 @@ CCreatureAction_TrollThrowProjectile	5	12	9	0	0	3	3	3	0	0	0
 CCreatureAction_TrollTunnel	2	4	4	0	0	1	1	1	0	0	0
 CCreatureAction_TrollVulnerableInto	1	1	1	0	0	0	0	0	0	0	0
 CCreatureAction_TrollVulnerableOutOf	1	1	1	0	0	0	0	0	0	0	0
-CCreatureAction_TrollWhackGroundBase	3	11	8	0	0	2	2	2	0	0	0
+CCreatureAction_TrollWhackGroundBase	3	11	8	0	0	3	3	2	1	0	0
 CCreatureAction_TurnCandleOnOrOff	1	0	0	0	0	0	0	0	0	0	0
 CCreatureAction_TurnStrikeLeft	2	2	2	0	0	0	0	0	0	0	0
 CCreatureAction_TurnStrikeRight	2	2	2	0	0	0	0	0	0	0	0
@@ -1268,7 +1268,7 @@ CData	5	1	1	0	0	0	0	0	0	0	0
 CDataBank	21	9	9	0	0	0	0	0	0	0	0
 CDataBankGroupEntry	4	6	6	0	0	0	0	0	0	0	0
 CDataBankTextEntry	4	1	1	0	0	0	0	0	0	0	0
-CDataInputStream	28	30	24	0	0	6	6	3	3	0	0
+CDataInputStream	28	30	24	0	0	7	7	4	3	0	0
 CDataOutputStream	30	28	27	0	0	0	0	0	0	0	0
 CDateAndTime	6	31	6	0	0	2	2	2	0	0	0
 CDead	1	0	0	0	0	0	0	0	0	0	0
@@ -1282,10 +1282,10 @@ CDeedManager	0	1	0	0	0	0	0	0	0	0	0
 CDefClassBase	5	168	166	0	0	10	10	10	0	0	0
 CDefPointer<CHeroAbilityDef_const_>	0	18	18	0	0	0	0	0	0	0	0
 CDefString	4	12	12	0	0	2	2	2	0	0	0
-CDefStringTable	10	10	8	0	0	0	0	0	0	0	0
+CDefStringTable	10	10	8	0	0	2	2	0	2	0	0
 CDefaultEngineMemoryInit	1	3	2	0	0	1	1	1	0	0	0
 CDefendingCombatantInfo	0	4	0	0	0	0	0	0	0	0	0
-CDefinitionManager	45	144	141	0	0	2	2	1	1	0	0
+CDefinitionManager	45	144	141	0	0	7	7	4	3	0	0
 CDegradableDef	2	3	3	0	0	2	2	2	0	0	0
 CDemonDoorFace	3	1	1	0	0	0	0	0	0	0	0
 CDeviceIndependent	6	4	3	0	0	0	0	0	0	0	0
@@ -1294,7 +1294,7 @@ CDirtyDiscError	2	0	0	0	0	0	0	0	0	0	0
 CDiskFileWin32	13	16	13	0	0	4	4	2	2	0	0
 CDisplacedTrader	4	0	0	0	0	0	0	0	0	0	0
 CDisplacementProcess	2	1	1	0	0	0	0	0	0	0	0
-CDisplayEngine	41	14	12	0	0	4	4	4	0	0	0
+CDisplayEngine	41	14	12	0	0	5	5	4	1	0	0
 CDisplayEngineInit	0	2	0	0	0	1	1	1	0	0	0
 CDisplayManager	62	112	112	0	0	20	20	8	12	0	0
 CDisplayManagerInit	0	1	0	0	0	0	0	0	0	0	0
@@ -1431,7 +1431,7 @@ CEndGameThunder	2	1	1	0	0	0	0	0	0	0	0
 CEndScythe	2	0	0	0	0	0	0	0	0	0	0
 CEndTrader	4	0	0	0	0	0	0	0	0	0	0
 CEnemyDef	2	3	3	0	0	1	1	1	0	0	0
-CEngine	99	157	146	0	0	16	16	12	4	0	0
+CEngine	99	157	146	0	0	17	17	13	4	0	0
 CEngineBillboardGenerator	2	5	3	0	0	0	0	0	0	0	0
 CEngineCamera	16	9	9	0	0	1	1	1	0	0	0
 CEngineCameraDesc	0	2	0	0	0	0	0	0	0	0	0
@@ -1716,7 +1716,7 @@ CFader	2	1	1	0	0	0	0	0	0	0	0
 CFanMarker	2	0	0	0	0	0	0	0	0	0	0
 CFarmRearEntrance	2	0	0	0	0	0	0	0	0	0	0
 CFeatDef	2	2	1	0	0	0	0	0	0	0	0
-CFileDataInputStream	4	7	6	0	0	2	2	0	2	0	0
+CFileDataInputStream	4	7	6	0	0	3	3	0	3	0	0
 CFileDataOutputStream	4	5	4	0	0	1	1	1	0	0	0
 CFileFormatMapHeader	1	0	0	0	0	0	0	0	0	0	0
 CFileFormatThingBrushInfo	1	0	0	0	0	0	0	0	0	0	0
@@ -1767,7 +1767,7 @@ CFrameRateSmoother	5	2	2	0	0	0	0	0	0	0	0
 CFrontEndButton	12	0	0	0	0	0	0	0	0	0	0
 CFrontEndDef	3	3	3	0	0	3	3	3	0	0	0
 CFrontEndList	8	4	4	0	0	3	3	1	2	0	0
-CFrontEndManager	44	40	37	0	0	28	28	0	28	0	0
+CFrontEndManager	44	40	37	0	0	31	31	0	31	0	0
 CFrontEndScreen	4	8	7	0	0	8	8	0	8	0	0
 CFrontendGameComponent	35	21	20	0	0	17	17	9	8	0	0
 CGPUScratchBufferTextureManager	15	12	10	0	0	0	0	0	0	0	0
@@ -1782,14 +1782,14 @@ CGameDefinitionManager	6	4	3	0	0	1	1	0	1	0	0
 CGameEvent	6	14	13	2	0	1	1	1	0	0	0
 CGameEventDataPackage	1	0	0	0	0	0	0	0	0	0	0
 CGameEventPackage	4	15	13	0	0	1	1	1	0	0	0
-CGameEventPackageSet	6	4	3	3	0	0	0	0	0	0	0
+CGameEventPackageSet	6	4	3	3	0	1	1	1	0	0	0
 CGameJoystickManager	4	11	1	0	0	1	1	1	0	0	0
 CGameMap	6	6	5	0	0	0	0	0	0	0	0
 CGameMapCell	2	1	1	0	0	0	0	0	0	0	0
 CGameNavigatorManagerExternalInterface	2	2	2	0	0	0	0	0	0	0	0
 CGamePlayerInterface	41	24	23	0	0	13	13	13	0	0	0
-CGameScriptInterface	935	953	948	438	2	302	302	46	256	0	0
-CGameScriptThing	81	91	88	3	0	6	6	3	3	0	0
+CGameScriptInterface	935	953	948	439	1	341	341	51	288	0	0
+CGameScriptThing	81	91	88	3	0	7	7	3	3	0	0
 CGameScriptThingManager	5	6	5	0	0	0	0	0	0	0	0
 CGameTimeManager	27	13	13	0	0	0	0	0	0	0	0
 CGameflowAssistanceScript	9	7	7	0	0	0	0	0	0	0	0
@@ -1803,7 +1803,7 @@ CGatewayUndead	2	0	0	0	0	0	0	0	0	0	0
 CGeneralCircle	0	1	0	0	0	0	0	0	0	0	0
 CGenericVar	13	10	10	0	0	0	0	0	0	0	0
 CGenericVarRef	6	6	6	0	0	0	0	0	0	0	0
-CGenericVertex<CTVertexLandscapeBackgroundBase>	0	2	2	0	0	0	0	0	0	0	0
+CGenericVertex<CTVertexLandscapeBackgroundBase>	0	2	2	0	0	1	1	1	0	0	0
 CGetBestAttackerForProng	0	1	1	0	0	0	0	0	0	0	0
 CGetBestIciclePointForTarget	1	2	1	0	0	0	0	0	0	0	0
 CGetBestTargetInDirection	0	2	1	0	0	0	0	0	0	0	0
@@ -1978,7 +1978,7 @@ CHoverState	1	0	0	0	0	0	0	0	0	0	0
 CHoverable	15	11	10	0	0	1	1	1	0	0	0
 CHybridMultifractal	1	1	1	0	0	0	0	0	0	0	0
 CIDrawMap	1	3	3	0	0	0	0	0	0	0	0
-CIEngine	11	74	74	0	0	60	60	59	1	0	0
+CIEngine	11	74	74	0	0	61	61	59	2	0	0
 CIME	21	8	8	0	0	3	3	0	3	0	0
 CIMEFont	6	2	2	0	0	0	0	0	0	0	0
 CIPhysicsFacesSegmentBase	4	1	1	0	0	0	0	0	0	0	0
@@ -2011,7 +2011,7 @@ CInputProcessConsole	1	2	2	0	0	1	1	1	0	0	0
 CInputProcessControlCreature	2	2	2	0	0	0	0	0	0	0	0
 CInputProcessControlCreatureActivateZTarget	1	1	1	0	0	0	0	0	0	0	0
 CInputProcessControlCreatureActivateZTargetOnPress	1	1	1	0	0	0	0	0	0	0	0
-CInputProcessControlCreatureRightStick	3	3	3	0	0	0	0	0	0	0	0
+CInputProcessControlCreatureRightStick	3	3	3	0	0	1	1	1	0	0	0
 CInputProcessControlFreeCamera	3	3	3	0	0	0	0	0	0	0	0
 CInputProcessControlSpirit	4	10	3	0	0	1	1	1	0	0	0
 CInputProcessCreatureMovement	2	2	2	0	0	0	0	0	0	0	0
@@ -2066,8 +2066,8 @@ CInputProcessToggleViewHeroMode	1	1	1	0	0	0	0	0	0	0	0
 CInputProcessUseEnvironment	1	1	1	0	0	0	0	0	0	0	0
 CInputProcessUseRangedWeapon	2	2	2	0	0	0	0	0	0	0	0
 CInputProcessUseRangedWeaponZLock	2	2	2	0	0	1	1	1	0	0	0
-CInputProcessWatchForRangedWeaponThirdPersonModeTermination	2	3	3	0	0	0	0	0	0	0	0
-CInputProcessWatchForWillChargeUpThirdPersonModeTermination	2	3	3	0	0	0	0	0	0	0	0
+CInputProcessWatchForRangedWeaponThirdPersonModeTermination	2	3	3	0	0	1	1	0	1	0	0
+CInputProcessWatchForWillChargeUpThirdPersonModeTermination	2	3	3	0	0	1	1	0	1	0	0
 CInputProcessYesNoQuestion	1	2	2	0	0	0	0	0	0	0	0
 CInputProcessZTarget	4	4	4	0	0	0	0	0	0	0	0
 CInputTypeKeyboardKeyEvent	4	9	9	0	0	8	8	6	2	0	0
@@ -2115,7 +2115,7 @@ CIsThingConscious	1	2	2	0	0	0	0	0	0	0	0
 CIsUsableIciclePoint	0	1	1	0	0	0	0	0	0	0	0
 CIsVariableFalse	1	1	1	0	0	0	0	0	0	0	0
 CIsVeryCloseMotionlessCreature	0	1	1	0	0	0	0	0	0	0	0
-CItem	20	32	29	0	0	4	4	4	0	0	0
+CItem	20	32	29	0	0	5	5	5	0	0	0
 CJackDragonDef	2	3	3	0	0	2	2	2	0	0	0
 CJackOfBladesBattleDef	2	3	3	0	0	1	1	1	0	0	0
 CJames	4	0	0	0	0	0	0	0	0	0	0
@@ -2151,9 +2151,9 @@ CLadyGreyWifeManagerScript	4	4	3	0	0	0	0	0	0	0	0
 CLadyGreysBed	2	1	1	0	0	0	0	0	0	0	0
 CLandscapeBackgroundDynamicBuildTemplate	6	1	0	0	0	0	0	0	0	0	0
 CLandscapeBackgroundLoadTask	1	43	43	0	0	0	0	0	0	0	0
-CLandscapeBackgroundPatch	36	3019	3019	2	1	493	493	42	448	0	0
+CLandscapeBackgroundPatch	36	3019	3019	2	1	494	494	42	449	0	0
 CLandscapeBackgroundSubNodeBase	0	4	4	0	0	3	3	3	0	0	0
-CLandscapeBackgroundSubNodeSplitBranch	7	54	53	0	0	2	2	2	0	0	0
+CLandscapeBackgroundSubNodeSplitBranch	7	54	53	0	0	3	3	2	1	0	0
 CLandscapeBackgroundTreeNode	59	29	29	3	0	4	4	2	0	0	0
 CLandscapeGPUUpdateQueue	2	1	1	0	0	0	0	0	0	0	0
 CLandscapeLayerMesh	14	9	6	4	0	4	4	1	2	0	0
@@ -2179,7 +2179,7 @@ CLipSyncFrameData	2	1	1	0	0	0	0	0	0	0	0
 CLipSyncPhonemeSample	2	1	1	0	0	0	0	0	0	0	0
 CLipSyncPhonemeSampleSet	2	0	0	0	0	0	0	0	0	0	0
 CLipSyncSampleData	4	4	4	0	0	0	0	0	0	0	0
-CList	61	43	41	0	0	0	0	0	0	0	0
+CList	61	43	41	0	0	4	4	0	4	0	0
 CListArrow	5	1	1	0	0	0	0	0	0	0	0
 CLoadingMemoryFailureHandler	3	3	1	0	0	0	0	0	0	0	0
 CLocalDetailCacheMap	14	8	8	1	0	1	1	0	0	0	0
@@ -2238,13 +2238,13 @@ CMadame	3	0	0	0	0	0	0	0	0	0	0
 CMagicBarrier	5	2	2	0	0	0	0	0	0	0	0
 CMagicBarrierGraveyard	2	2	2	0	0	0	0	0	0	0	0
 CMagicman	4	0	0	0	0	0	0	0	0	0	0
-CMainGameComponent	69	64	63	6	0	24	24	24	0	0	0
+CMainGameComponent	69	64	63	6	0	25	25	24	1	0	0
 CMainGameComponentInit	0	3	0	0	0	2	2	0	2	0	0
 CManInLove	5	0	0	0	0	0	0	0	0	0	0
 CManWithDoorName	2	0	0	0	0	0	0	0	0	0	0
 CManagedTexture	2	1	1	0	0	0	0	0	0	0	0
 CManagedTextureData	7	6	5	0	0	0	0	0	0	0	0
-CManager	112	73	71	0	0	19	19	7	12	0	0
+CManager	112	73	71	0	0	22	22	10	12	0	0
 CManagerLocalLight	1	0	0	0	0	0	0	0	0	0	0
 CManagerShadowedSpotLight	1	2	0	0	0	0	0	0	0	0	0
 CMansLover	5	2	2	0	0	0	0	0	0	0	0
@@ -2276,12 +2276,12 @@ CMeleeThunder	2	2	2	0	0	0	0	0	0	0	0
 CMemoryAllocator	51	17	16	0	0	0	0	0	0	0	0
 CMemoryAllocatorBase	0	2	1	0	0	0	0	0	0	0	0
 CMemoryAllocatorFixedSize	23	21	21	11	0	10	10	10	0	5	2
-CMemoryAllocatorVariableSize	29	61	27	0	0	4	4	4	0	0	0
+CMemoryAllocatorVariableSize	29	61	27	0	0	5	5	5	0	0	0
 CMemoryArea	2	0	0	0	0	0	0	0	0	0	0
 CMemoryAreaChunk	14	6	6	0	0	0	0	0	0	0	0
 CMemoryBlock	0	4	3	0	0	0	0	0	0	0	0
 CMemoryBuffer	0	1	0	0	0	0	0	0	0	0	0
-CMemoryDataInputStream	5	11	7	0	0	1	1	1	0	0	0
+CMemoryDataInputStream	5	11	7	0	0	2	2	1	1	0	0
 CMemoryDataOutputStream	9	16	14	0	0	2	2	2	0	0	0
 CMemoryFile	17	19	17	0	0	3	3	2	1	0	0
 CMenu	7	0	0	0	0	0	0	0	0	0	0
@@ -2323,7 +2323,7 @@ CModeBase	12	6	5	0	0	0	0	0	0	0	0
 CModeBasic	1	0	0	0	0	0	0	0	0	0	0
 CModeBattleCharge	2	0	0	0	0	0	0	0	0	0	0
 CModeBerserk	3	1	1	0	0	0	0	0	0	0	0
-CModeBlock	6	17	17	0	0	1	1	1	0	0	0
+CModeBlock	6	17	17	0	0	2	2	2	0	0	0
 CModeBriarRoseConcentrate	8	7	5	0	0	0	0	0	0	0	0
 CModeBriarRoseTeleportIntangible	4	3	2	0	0	0	0	0	0	0	0
 CModeBriarRoseTeleportInvulnerable	3	4	2	0	0	0	0	0	0	0	0
@@ -2423,7 +2423,7 @@ CMouse	10	6	6	0	0	1	1	1	0	0	0
 CMouseCursor	9	8	6	0	0	0	0	0	0	0	0
 CMouseDX	25	24	24	13	1	13	13	11	1	10	0
 CMovableResource	1	3	2	0	0	0	0	0	0	0	0
-CMovableResourceMemoryPool	6	5	5	0	0	0	0	0	0	0	0
+CMovableResourceMemoryPool	6	5	5	0	0	1	1	1	0	0	0
 CMoveOnCylinder	4	2	2	0	0	0	0	0	0	0	0
 CMoveOnCylinderInit	1	0	0	0	0	0	0	0	0	0	0
 CMovie	9	16	9	0	0	1	1	0	1	0	0
@@ -2484,7 +2484,7 @@ CNecropolisGate	2	1	1	0	0	0	0	0	0	0	0
 CNecropolisGhost	4	0	0	0	0	0	0	0	0	0	0
 CNeedle	3	0	0	0	0	0	0	0	0	0	0
 CNetworkClient	14	6	6	5	0	4	4	1	3	0	0
-CNewFrontendGameComponent	26	23	22	0	0	9	9	8	1	0	0
+CNewFrontendGameComponent	26	23	22	0	0	13	13	7	5	0	0
 CNoise	2	4	2	0	0	0	0	0	0	0	0
 CNostro	3	2	2	0	0	0	0	0	0	0	0
 CNotForODG	3	0	0	0	0	0	0	0	0	0	0
@@ -2502,9 +2502,9 @@ CObjectCacheGroupCollection	16	8	8	0	0	0	0	0	0	0	0
 CObjectFamilyDef	3	4	4	1	0	2	2	1	0	0	0
 CObjectTypeCollection	12	4	4	0	0	0	0	0	0	0	0
 CObjectTypeCollectionPalette	3	2	2	0	0	0	0	0	0	0	0
-CObservable	11	46	45	0	0	13	13	13	0	0	0
+CObservable	11	46	45	0	0	14	14	14	0	0	0
 CObserver	6	2	2	0	0	1	1	0	1	0	0
-CObstacleNavigatorExternalInterface	14	24	24	0	0	8	8	3	5	0	0
+CObstacleNavigatorExternalInterface	14	24	24	0	0	9	9	4	5	0	0
 COccupiableDef	2	3	3	0	0	1	1	1	0	0	0
 COk	3	0	0	0	0	0	0	0	0	0	0
 COldFileFormatMapHeader8	1	0	0	0	0	0	0	0	0	0	0
@@ -2601,7 +2601,7 @@ CPersistContext_TransferableComponent<EHeroAbility>	0	2	2	0	0	0	0	0	0	0	0
 CPersistContext_TransferableComponent<NUISystem::ETextAlignement>	0	1	1	0	0	0	0	0	0	0	0
 CPersistContext_TransferableComponent<float>	0	9	9	0	0	0	0	0	0	0	0
 CPersistContext_TransferableComponent<signed_char>	0	1	1	0	0	0	0	0	0	0	0
-CPersistContext_TransferableSubComponent<CCreatureStatsDef>	0	2	2	0	0	0	0	0	0	0	0
+CPersistContext_TransferableSubComponent<CCreatureStatsDef>	0	2	2	0	0	1	1	1	0	0	0
 CPersistContext_TransferableVector<CCharString>	0	1	1	0	0	0	0	0	0	0	0
 CPersistContext_TransferableVector<CCrimeWaitingForBribe>	0	2	2	0	0	0	0	0	0	0	0
 CPersistContext_TransferableVector<CHeroLogBook::CHeroLogBookEntry::ECategory>	0	1	1	0	0	0	0	0	0	0	0
@@ -2694,7 +2694,7 @@ CPixelShaderData	0	4	3	0	0	0	0	0	0	0	0
 CPlane	7	4	4	0	0	0	0	0	0	0	0
 CPlayer	148	74	68	0	0	2	2	1	1	0	0
 CPlayerDef	2	3	3	0	0	1	1	1	0	0	0
-CPlayerGui	91	41	40	0	0	16	16	15	1	0	0
+CPlayerGui	91	41	40	0	0	17	17	15	2	0	0
 CPlayerGuiDef	3	4	3	0	0	2	2	2	0	0	0
 CPlayerInventoryDef	2	3	3	0	0	2	2	2	0	0	0
 CPlayerManager	40	21	19	2	0	6	6	6	0	0	0
@@ -3022,7 +3022,7 @@ CSkyDef	2	3	3	0	0	2	2	2	0	0	0
 CSlider	14	10	8	0	0	0	0	0	0	0	0
 CSliderAnimator	2	2	2	0	0	0	0	0	0	0	0
 CSmallVector	0	1	0	0	0	0	0	0	0	0	0
-CSmallVector<CANavQuadTreeNode_const*	0	10	10	0	0	2	2	2	0	0	0
+CSmallVector<CANavQuadTreeNode_const*	0	10	10	0	0	4	4	4	0	0	0
 CSmallVector<CCharString	0	1	1	0	0	0	0	0	0	0	0
 CSmallVector<CThingComponentSet::CEntry	0	4	4	0	0	0	0	0	0	0	0
 CSmallVector<NAnimationEvents::CEvent	0	5	5	0	0	0	0	0	0	0	0
@@ -3114,7 +3114,7 @@ CStringAndCage	5	3	0	0	0	0	0	0	0	0	0
 CStringAndCageBase	12	6	6	0	0	0	0	0	0	0	0
 CStringAndCageInit	1	0	0	0	0	0	0	0	0	0	0
 CStringMap	0	2	0	0	0	0	0	0	0	0	0
-CStringParser	43	34	30	0	0	0	0	0	0	0	0
+CStringParser	43	34	30	0	0	4	4	1	3	0	0
 CSubPatchTreeLODLockElement	4	0	0	0	0	0	0	0	0	0	0
 CSubPrimitiveList	0	1	0	0	0	0	0	0	0	0	0
 CSubdivisionTriangle	2	2	2	0	0	0	0	0	0	0	0
@@ -3203,7 +3203,7 @@ CTCBoss	21	14	12	0	0	0	0	0	0	0	0
 CTCBulletTime	23	17	15	0	0	0	0	0	0	0	0
 CTCBurntEffect	8	7	3	0	0	0	0	0	0	0	0
 CTCBuyableHouse	40	34	32	0	0	0	0	0	0	0	0
-CTCCameraCollision	7	17	3	0	0	0	0	0	0	0	0
+CTCCameraCollision	7	17	3	0	0	2	2	2	0	0	0
 CTCCameraPointBuilding	8	2	2	0	0	0	0	0	0	0	0
 CTCCameraPointDead	3	0	0	0	0	0	0	0	0	0	0
 CTCCameraPointDefinitionBase	19	14	14	0	0	0	0	0	0	0	0
@@ -3211,7 +3211,7 @@ CTCCameraPointFixedDolly	3	0	0	0	0	0	0	0	0	0	0
 CTCCameraPointFixedPoint	6	2	2	0	0	0	0	0	0	0	0
 CTCCameraPointGeneralCase	5	0	0	0	0	0	0	0	0	0	0
 CTCCameraPointScripted	14	24	24	0	0	0	0	0	0	0	0
-CTCCameraPointScriptedSpline	26	18	18	0	0	0	0	0	0	0	0
+CTCCameraPointScriptedSpline	26	18	18	0	0	1	1	0	1	0	0
 CTCCameraPointShapeActivationBase	1	0	0	0	0	0	0	0	0	0	0
 CTCCameraPointTrack	8	3	1	0	0	0	0	0	0	0	0
 CTCCarriedActionUseAbility	3	0	0	0	0	0	0	0	0	0	0
@@ -3262,7 +3262,7 @@ CTCCreatureModeManager::CModeBase	0	2	0	0	0	0	0	0	0	0	0
 CTCCreatureNavigation	34	170	142	0	0	3	3	1	2	0	0
 CTCCreatureOpinionOfHero	43	30	30	0	0	1	1	0	1	0	0
 CTCCreatureTintEffect	9	3	3	0	0	0	0	0	0	0	0
-CTCCreditsUI	8	7	5	0	0	1	1	1	0	0	0
+CTCCreditsUI	8	7	5	0	0	3	3	3	0	0	0
 CTCCupboard	8	2	2	0	0	0	0	0	0	0	0
 CTCDCameraPoint	8	8	8	0	0	0	0	0	0	0	0
 CTCDExperienceOrb	13	6	6	0	0	0	0	0	0	0	0
@@ -3357,7 +3357,7 @@ CTCHeroRangedAttacks	28	19	13	0	0	0	0	0	0	0	0
 CTCHeroReceiveItems	12	5	5	0	0	0	0	0	0	0	0
 CTCHeroRememberCrimes	8	1	1	0	0	0	0	0	0	0	0
 CTCHeroSpecialMovement	9	3	3	0	0	0	0	0	0	0	0
-CTCHeroStats	82	100	77	0	0	7	7	2	5	0	0
+CTCHeroStats	82	100	77	0	0	9	9	2	7	0	0
 CTCHighlightItem	10	4	4	0	0	0	0	0	0	0	0
 CTCHitLocations	15	8	6	0	0	0	0	0	0	0	0
 CTCHitOnCollision	4	1	1	0	0	0	0	0	0	0	0
@@ -3415,7 +3415,7 @@ CTCPhysicsControlled	17	9	8	0	0	0	0	0	0	0	0
 CTCPhysicsLight	8	5	4	0	0	0	0	0	0	0	0
 CTCPhysicsNavigator	15	23	23	0	0	5	5	4	1	0	0
 CTCPhysicsRigidBody	29	25	23	0	0	1	1	0	1	0	0
-CTCPhysicsStandard	65	41	41	0	0	4	4	2	2	0	0
+CTCPhysicsStandard	65	41	41	0	0	7	7	5	2	0	0
 CTCPlot	3	0	0	0	0	0	0	0	0	0	0
 CTCPreCalculatedNavigationRoute	11	11	9	0	0	0	0	0	0	0	0
 CTCProjectileTrap	5	4	2	0	0	0	0	0	0	0	0
@@ -3494,7 +3494,7 @@ CTCTextureDecal	7	3	3	0	0	0	0	0	0	0	0
 CTCThingOwner	14	4	4	0	0	0	0	0	0	0	0
 CTCThingUIDDummyForSerialisation	4	0	0	0	0	0	0	0	0	0	0
 CTCTimeAppearanceFade	4	1	1	0	0	0	0	0	0	0	0
-CTCTrapBase	20	13	12	0	0	1	1	0	1	0	0
+CTCTrapBase	20	13	12	0	0	2	2	0	2	0	0
 CTCTrespassable	3	0	0	0	0	0	0	0	0	0	0
 CTCTrespasser	10	6	6	0	0	0	0	0	0	0	0
 CTCTrophy	20	17	17	0	0	0	0	0	0	0	0
@@ -3543,7 +3543,7 @@ CTH_Trigger_Oakvale_Gossip	2	0	0	0	0	0	0	0	0	0	0
 CTH_Whisper	2	0	0	0	0	0	0	0	0	0	0
 CTOL_AcolyteGood	3	1	1	0	0	0	0	0	0	0	0
 CTOL_AltarGood	2	0	0	0	0	0	0	0	0	0	0
-CTable	8	3	3	0	0	0	0	0	0	0	0
+CTable	8	3	3	0	0	2	2	0	2	0	0
 CTalkingTrader1	3	2	2	0	0	0	0	0	0	0	0
 CTalkingTrader2	2	0	0	0	0	0	0	0	0	0	0
 CTargetForKey	4	1	1	0	0	0	0	0	0	0	0
@@ -3593,7 +3593,7 @@ CTheKraken	2	0	0	0	0	0	0	0	0	0	0
 CTheRealGuildmaster	14	1	1	0	0	0	0	0	0	0	0
 CTheme2MapDialog	22	0	0	0	0	0	0	0	0	0	0
 CThemeChannel	0	1	0	0	0	0	0	0	0	0	0
-CThing	118	80	76	0	0	9	9	6	3	0	0
+CThing	118	80	76	0	0	13	13	10	3	0	0
 CThingAICreature	82	28	27	0	0	0	0	0	0	0	0
 CThingAICreatureInit	0	1	0	0	0	0	0	0	0	0	0
 CThingAnimatable	0	1	0	0	0	0	0	0	0	0	0
@@ -3608,7 +3608,7 @@ CThingCompare_InDirectionOfAndNearestToHeuristicBitch	0	2	2	0	0	0	0	0	0	0	0
 CThingCompare_Nearest	0	18	18	0	0	0	0	0	0	0	0
 CThingCompare_NearestGroupByMember	0	1	1	0	0	0	0	0	0	0	0
 CThingComponentSet	6	11	11	0	0	3	3	0	3	0	0
-CThingCreatureBase	164	96	94	0	0	5	5	2	3	0	0
+CThingCreatureBase	164	96	94	0	0	6	6	2	4	0	0
 CThingCreatureDef	4	5	4	0	0	1	1	1	0	0	0
 CThingDeadCreature	14	10	9	0	0	0	0	0	0	0	0
 CThingDialog	15	0	0	0	0	0	0	0	0	0	0
@@ -3713,11 +3713,11 @@ CThingShotDef	2	3	3	0	0	1	1	1	0	0	0
 CThingSoundEmitter	14	2	1	0	0	0	0	0	0	0	0
 CThingSwitch	23	215	215	0	0	127	127	0	127	0	0
 CThingSwitchDef	4	3	3	0	0	2	2	1	1	0	0
-CThingTrackNode	27	57	57	0	0	3	3	1	2	0	0
+CThingTrackNode	27	57	57	0	0	5	5	1	4	0	0
 CThingVillage	10	2	2	0	0	0	0	0	0	0	0
 CThingVillageDef	2	3	3	0	0	2	2	1	1	0	0
 CThreadMessage	0	2	0	0	0	0	0	0	0	0	0
-CThreadedFile	12	8	8	0	0	0	0	0	0	0	0
+CThreadedFile	12	8	8	0	0	1	1	0	1	0	0
 CThreadedFileManager	22	9	8	0	0	0	0	0	0	0	0
 CThreadedManager	0	1	0	0	0	0	0	0	0	0	0
 CThunder	3	1	1	0	0	0	0	0	0	0	0
@@ -3808,7 +3808,7 @@ CV_LostTraderScript	8	5	5	0	0	0	0	0	0	0	0
 CV_MayorsInvitationScript	10	5	5	0	0	0	0	0	0	0	0
 CV_MazeResearchScript	5	0	0	0	0	0	0	0	0	0	0
 CV_MurderTwistFinalScript	9	9	4	0	0	0	0	0	0	0	0
-CV_MurderTwistScript	7	6	6	0	0	0	0	0	0	0	0
+CV_MurderTwistScript	7	6	6	0	0	2	2	2	0	0	0
 CV_OracleScript	3	0	0	0	0	0	0	0	0	0	0
 CV_ParanoidWhispersScript	6	1	1	0	0	0	0	0	0	0	0
 CV_PicnicAreaAfterWaspBossScript	3	0	0	0	0	0	0	0	0	0	0
@@ -3837,7 +3837,7 @@ CVectorMap<unsigned_long	0	24	24	0	0	0	0	0	0	0	0
 CVectorMap_EntryScriptBase	0	2	0	0	0	0	0	0	0	0	0
 CVersion	1	1	0	0	0	0	0	0	0	0	0
 CVertexBufferBase	4	0	0	0	0	0	0	0	0	0	0
-CVertexBufferWin32	6	28	26	0	0	4	4	4	0	0	0
+CVertexBufferWin32	6	28	26	0	0	5	5	5	0	0	0
 CVertexCache	2	0	0	0	0	0	0	0	0	0	0
 CVertexGroupBlock	9	12	11	0	0	0	0	0	0	0	0
 CVertexGroupBlockList	4	2	2	0	0	0	0	0	0	0	0
@@ -3916,7 +3916,7 @@ CWhisperAlly	2	0	0	0	0	0	0	0	0	0	0
 CWhisperBattleDef	2	3	3	0	0	1	1	1	0	0	0
 CWhispie	2	1	1	0	0	0	0	0	0	0	0
 CWideScreenMagicPauseEntities	0	2	1	0	0	0	0	0	0	0	0
-CWideString	26	15	14	0	0	2	2	0	2	0	0
+CWideString	26	15	14	0	0	8	8	0	8	0	0
 CWideStringData	1	0	0	0	0	0	0	0	0	0	0
 CWifeDef	2	3	3	0	0	1	1	1	0	0	0
 CWillApprentice	2	0	0	0	0	0	0	0	0	0	0
@@ -3931,7 +3931,7 @@ CWitnessesSearchingDeed	0	1	0	0	0	0	0	0	0	0	0
 CWomanToAttract	6	4	4	0	0	0	0	0	0	0	0
 CWorld	206	154	150	1	0	49	49	44	5	0	0
 CWorldManager	0	3	0	0	0	0	0	0	0	0	0
-CWorldMap	200	186	183	5	0	15	15	9	6	0	0
+CWorldMap	200	186	183	5	0	16	16	9	7	0	0
 CWorldMapPlacementDialog	2	0	0	0	0	0	0	0	0	0	0
 CWorldMapPlacementPopupDialog	9	0	0	0	0	0	0	0	0	0	0
 CWound	7	17	17	0	0	1	1	1	0	0	0
@@ -4241,7 +4241,7 @@ _Cons_val<std::allocator<std::pair<CSkeletalMorphs::CEntry,float>_>,std::pair<CS
 _Cons_val<std::allocator<std::pair<CWideString_const_,CChecksumCacheFile::CEntry>_>,std::pair<CWideString_const_,CChecksumCacheFile::CEntry>,std::pair<class_CWideString_const_,struct_CChecksumCacheFile	0	3	3	0	0	0	0	0	0	0	0
 _Cons_val<std::allocator<std::pair<CWideString_const_,float>_>,std::pair<CWideString_const_,float>,std	0	12	12	0	0	1	1	0	1	0	0
 _Cons_val<std::allocator<std::pair<EClothingSuitPart_const_,long>_>,std::pair<EClothingSuitPart_const_,long>,std	0	1	1	0	0	0	0	0	0	0	0
-_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	0	477	477	0	0	331	331	34	297	0	0
+_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	0	477	477	0	0	340	340	34	306	0	0
 _Cons_val<std::allocator<std::pair<long_const_,CShopItem>_>,std::pair<long_const_,CShopItem>,std	0	5	5	0	0	0	0	0	0	0	0
 _Cons_val<std::allocator<std::pair<long_const_,NProfileTimer::CProfilingInfo>_>,std::pair<long_const_,NProfileTimer::CProfilingInfo>,std::pair<long_const_,class_NProfileTimer	0	1	1	0	0	0	0	0	0	0	0
 _Cons_val<std::allocator<std::pair<unsigned___int64_const_,CGroupMemberData>_>,std::pair<unsigned___int64_const_,CGroupMemberData>,std	0	3	3	0	0	0	0	0	0	0	0
@@ -4285,22 +4285,22 @@ _Copy_impl<std::pair<float,EConversationAttitude>*,std	0	30	30	0	0	0	0	0	0	0	0
 _Copy_impl<std::pair<unsigned_long,C3DDummyObject>*,std	0	2	2	0	0	0	0	0	0	0	0
 _Count_if<std::_List_unchecked_const_iterator<std::_List_val<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>,std	0	2	2	0	0	0	0	0	0	0	0
 _Count_if<std::_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThingAICreature>,std	0	1	1	0	0	0	0	0	0	0	0
-_Dest_val<std	0	38	38	0	0	4	4	2	2	0	0
-_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	0	826	826	0	0	111	111	104	7	0	0
-_Dest_val<std::allocator<CEditLevelMerger::CConflict>,CEditLevelMerger	0	9	9	0	0	0	0	0	0	0	0
+_Dest_val<std	0	38	38	0	0	5	5	2	3	0	0
+_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	0	826	826	0	0	112	112	104	8	0	0
+_Dest_val<std::allocator<CEditLevelMerger::CConflict>,CEditLevelMerger	0	9	9	0	0	1	1	0	1	0	0
 _Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	0	611	611	0	0	391	391	391	0	0	0
-_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification	0	20	20	0	0	0	0	0	0	0	0
+_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification	0	20	20	0	0	2	2	0	2	0	0
 _Dest_val<std::allocator<NScript::CQ_BountyHuntScript::TeleportData>,NScript::CQ_BountyHuntScript	0	2	2	0	0	0	0	0	0	0	0
 _Dest_val<std::allocator<std::pair<CCharString,C3DMeshVolume>_>,std	0	2	2	0	0	0	0	0	0	0	0
 _Dest_val<std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	39	39	0	0	0	0	0	0	0	0
 _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	0	67	67	0	0	2	2	0	2	0	0
 _Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	0	34	34	0	0	0	0	0	0	0	0
 _Dest_val<std::allocator<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_>,std	0	19	19	0	0	1	1	1	0	0	0
-_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager	0	173	173	0	0	8	8	7	1	0	0
+_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager	0	173	173	0	0	9	9	7	2	0	0
 _Dest_val<std::allocator<std::pair<std::pair<long,long>,CEngineTextureDecal>_>,std::pair<std	0	1	1	0	0	0	0	0	0	0	0
 _Dest_val<std::allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_>,std	0	74	74	0	0	2	2	1	1	0	0
 _Dest_val<std::allocator<std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>_>,std::pair<unsigned_long,CSmallVector<NAnimationEvents	0	3	3	0	0	0	0	0	0	0	0
-_Destroy_range<std	0	31	31	0	0	3	3	3	0	0	0
+_Destroy_range<std	0	31	31	0	0	4	4	3	1	0	0
 _Destroy_range<std::allocator<CFileInstaller	0	1	1	0	0	0	0	0	0	0	0
 _Destroy_range<std::allocator<NCreatureHitNotification	0	11	11	0	0	0	0	0	0	0	0
 _Destroy_range<std::allocator<std	0	60	60	0	0	2	2	2	0	0	0
@@ -4486,7 +4486,7 @@ _Sort_heap<std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>*,
 _Sort_heap<std::pair<unsigned_long,NParticleEngine::CParticleUpdateParamDesc<unsigned_long,unsigned_long>_>*,NParticleEngine::CParticleUpdateParameters<unsigned_long,unsigned_long>	0	1	1	0	0	0	0	0	0	0	0
 _Transform<CThing**,std::back_insert_iterator<std::vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>_>,_anon_58ED6966	0	1	1	0	0	0	0	0	0	0	0
 _Transform<std::pair<CIntelligentPointer<CThing>,long>*,std::back_insert_iterator<std::vector<CThing_const*,std::allocator<CThing_const*>_>_>,_anon_EDF0DD2A	0	2	2	0	0	0	0	0	0	0	0
-_Tree<std::_Tmap_traits<CCharString	0	19	19	0	0	0	0	0	0	0	0
+_Tree<std::_Tmap_traits<CCharString	0	19	19	0	0	1	1	0	1	0	0
 _Tree<std::_Tmap_traits<CThreadedFileManager::CPendingObjectSortKey	0	3	3	0	0	0	0	0	0	0	0
 _Tree<std::_Tmap_traits<long	0	2	2	0	0	0	0	0	0	0	0
 _Tree<std::_Tmap_traits<long,CCharString,std::less<long>,std::allocator<std	0	1	0	0	0	0	0	0	0	0	0
@@ -4505,7 +4505,7 @@ _Uninit_fill_n<CCamera*,unsigned_int,CCamera,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<CCharString,CScriptInfo>*,unsigned_int,std::pair<class_CCharString,class_CScriptInfo>,std::allocator<std::pair<CCharString,CScriptInfo>_>,std	0	1	1	0	0	0	0	0	0	0	0
 _Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	0	61	61	0	0	2	2	2	0	0	0
 _Vb_iterator<std::allocator<bool>_>	0	1	1	0	0	0	0	0	0	0	0
-_global	0	11362	1997	273	5	190	190	106	81	0	0
+_global	0	11362	1997	311	5	212	212	110	99	0	0
 `anonymous_namespace'	0	5	0	0	0	0	0	0	0	0	0
 `dynamic_atexit_destructor_for_'CCharString	0	1	0	0	0	0	0	0	0	0	0
 allocator<CScriptGameResourceObjectScriptedThingBase>	0	1	1	0	0	0	0	0	0	0	0
@@ -4658,7 +4658,7 @@ vector<bool,std	0	2	0	0	0	0	0	0	0	0	0
 vector<char	0	1	1	0	0	0	0	0	0	0	0
 vector<float	0	3	3	0	0	0	0	0	0	0	0
 vector<long,std	0	4	0	0	0	0	0	0	0	0	0
-vector<std::pair<CCharString	0	44	44	0	0	1	1	1	0	0	0
+vector<std::pair<CCharString	0	44	44	0	0	2	2	1	1	0	0
 vector<std::pair<NHitLocations::CHitLocation	0	1	1	0	0	0	0	0	0	0	0
 vector<std::pair<long	0	6	6	0	0	0	0	0	0	0	0
 vector<std::pair<unsigned_long	0	2	2	0	0	0	0	0	0	0	0
@@ -4674,4 +4674,4 @@ vector<unsigned_short	0	1	1	0	0	0	0	0	0	0	0
 ~CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript	0	1	1	0	0	0	0	0	0	0	0
 ~list<CMessageEvent_const*,std	0	3	3	0	0	0	0	0	0	0	0
 ~vector<CConversation,std	0	29	29	0	0	3	3	3	0	0	0
-~vector<bool,std	0	3	3	0	0	0	0	0	0	0	0
+~vector<bool,std	0	3	3	0	0	1	1	0	1	0	0

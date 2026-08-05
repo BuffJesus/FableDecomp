@@ -1,21 +1,23 @@
-extern "C" __declspec(naked) void __fastcall candidate_0042dec5(void)
+// CNewFrontendGameComponent::InitialiseInput @ 0x0042DEC5
+// VC7.1, x86, /O2 /Oy.
+//
+// Retail creates/attaches the input primitive through the engine primitive
+// chain and publishes the returned input object at component offset 0x68.
+
+extern "C" unsigned long __fastcall
+FableNewFrontendInitialiseInputAddChildPrimitive(void*, void*);
+
+extern "C" __declspec(naked) void __fastcall
+CNewFrontendGameComponent_InitialiseInput_0042dec5(void*, void*)
 {
-    __asm {
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0xe8
-        _emit 0xf3
-        _emit 0x6f
-        _emit 0x57
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x40
-        _emit 0x58
-        _emit 0x89
-        _emit 0x46
-        _emit 0x68
-        _emit 0x5e
-        _emit 0xc3
+    __asm
+    {
+        push esi
+        mov esi, ecx
+        call FableNewFrontendInitialiseInputAddChildPrimitive
+        mov eax, dword ptr [eax + 58h]
+        mov dword ptr [esi + 68h], eax
+        pop esi
+        ret
     }
 }

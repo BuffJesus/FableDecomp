@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-02T21:49:43-06:00",
+  "generated_at": "2026-08-05T11:04:02-06:00",
   "compiler": "C:\\Users\\Cornelio\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.EXE",
-  "candidates": 850,
-  "integrity_pass": 850,
-  "host_cpp20_syntax_pass": 401,
+  "candidates": 888,
+  "integrity_pass": 888,
+  "host_cpp20_syntax_pass": 435,
   "vc71_compatible": 69,
   "compile_ready": 41,
   "semantic_quarantine": 145,
-  "unique_missing_dependencies": 531
+  "unique_missing_dependencies": 526
 }

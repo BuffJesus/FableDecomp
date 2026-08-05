@@ -1,6 +1,6 @@
 rank	track	module	score	catalog_functions	prototype_complete	prototype_gaps	calling_convention_unknown	naming_review	agent_candidates	verified_lifts
 1	candidate-cluster	CGameScriptInterface	1279995	953	948	5	4	0	440	0
-2	candidate-cluster	_global	946635	11362	1997	9365	9312	391	278	0
+2	candidate-cluster	_global	1022635	11362	1997	9365	9312	391	316	0
 3	candidate-cluster	CMouseDX	433000	24	24	0	0	0	14	10
 4	candidate-cluster	CScriptThing	429998	103	101	2	0	0	15	0
 5	candidate-cluster	CMemoryAllocatorFixedSize	425500	21	21	0	0	0	11	7

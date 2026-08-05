@@ -82,6 +82,40 @@ $containedBankMapIndexSource = Join-Path $rebuildRoot 'src\compiled\00\9a\NBankF
 $containedBankMapIndexBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\NBankFileManager_CContainedBankMap_Index_009ac530_test.cpp'
 $openRetailBankSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CBankFileManager_OpenRetailBank_009a8840.cpp'
 $openRetailBankBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\CBankFileManager_OpenRetailBank_009a8840_test.cpp'
+$newFrontendInitialiseInputSource = Join-Path $rebuildRoot 'src\compiled\00\42\CNewFrontendGameComponent_InitialiseInput_0042dec5.cpp'
+$newFrontendInitialiseInputBehaviorSource = Join-Path $rebuildRoot 'tests\00\42\CNewFrontendGameComponent_InitialiseInput_0042dec5_test.cpp'
+$frontEndChangeStateFirstTimeSource = Join-Path $rebuildRoot 'src\compiled\00\59\CFrontEndManager_ChangeStateFirstTime_005952c3.cpp'
+$frontEndChangeStateFirstTimeBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\CFrontEndManager_ChangeStateFirstTime_005952c3_test.cpp'
+$frontEndGetInstanceSource = Join-Path $rebuildRoot 'src\compiled\00\59\CFrontEndManager_GetInstance_00595582.cpp'
+$frontEndGetInstanceBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\CFrontEndManager_GetInstance_00595582_test.cpp'
+$frontEndCreateComponentSource = Join-Path $rebuildRoot 'src\compiled\00\59\CFrontEndManager_CreateComponent_00594f94.cpp'
+$frontEndCreateComponentBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\CFrontEndManager_CreateComponent_00594f94_test.cpp'
+$newFrontendLoadGameSource = Join-Path $rebuildRoot 'src\compiled\00\59\CNewFrontendGameComponent_LoadGame_00594f36.cpp'
+$newFrontendLoadGameBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\CNewFrontendGameComponent_LoadGame_00594f36_test.cpp'
+$frontEndHistoryBlockSizeSource = Join-Path $rebuildRoot 'src\compiled\00\59\FrontEndHistoryDeque_BlockSize_0059a9dc.cpp'
+$frontEndHistoryBlockSizeBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\FrontEndHistoryDeque_BlockSize_0059a9dc_test.cpp'
+$frontEndHistoryIteratorCurrentSource = Join-Path $rebuildRoot 'src\compiled\00\59\FrontEndHistoryDequeIterator_Current_0059aae0.cpp'
+$frontEndHistoryIteratorCurrentBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\FrontEndHistoryDequeIterator_Current_0059aae0_test.cpp'
+$frontEndHistoryBlockEndSlotSource = Join-Path $rebuildRoot 'src\compiled\00\59\FrontEndHistoryDequeIterator_BlockEndSlot_0059a970.cpp'
+$frontEndHistoryBlockEndSlotBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\FrontEndHistoryDequeIterator_BlockEndSlot_0059a970_test.cpp'
+$frontEndHistoryNodeSlotSource = Join-Path $rebuildRoot 'src\compiled\00\59\FrontEndHistoryDequeIterator_NodeSlot_0059a978.cpp'
+$frontEndHistoryNodeSlotBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\FrontEndHistoryDequeIterator_NodeSlot_0059a978_test.cpp'
+$frontEndHistoryEndIteratorSource = Join-Path $rebuildRoot 'src\compiled\00\59\FrontEndHistoryDeque_EndIterator_0059a985.cpp'
+$frontEndHistoryEndIteratorBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\FrontEndHistoryDeque_EndIterator_0059a985_test.cpp'
+$frontEndHistoryBlockBeginSource = Join-Path $rebuildRoot 'src\compiled\00\59\FrontEndHistoryDequeIterator_BlockBegin_0059aa1d.cpp'
+$frontEndHistoryBlockBeginBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\FrontEndHistoryDequeIterator_BlockBegin_0059aa1d_test.cpp'
+$frontEndHistoryIteratorEqualSource = Join-Path $rebuildRoot 'src\compiled\00\59\FrontEndHistoryDequeIterator_Equal_0059a9c0.cpp'
+$frontEndHistoryIteratorEqualBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\FrontEndHistoryDequeIterator_Equal_0059a9c0_test.cpp'
+$frontEndHistoryIteratorSetNodeSource = Join-Path $rebuildRoot 'src\compiled\00\59\FrontEndHistoryDequeIterator_SetNode_0059a959.cpp'
+$frontEndHistoryIteratorSetNodeBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\FrontEndHistoryDequeIterator_SetNode_0059a959_test.cpp'
+$frontEndHistoryNodeSlotDuplicateSource = Join-Path $rebuildRoot 'src\compiled\00\59\FrontEndHistoryDequeIterator_NodeSlot_0059aa0d.cpp'
+$frontEndHistoryNodeSlotDuplicateBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\FrontEndHistoryDequeIterator_NodeSlot_0059aa0d_test.cpp'
+$frontEndHistoryEndIteratorDuplicateSource = Join-Path $rebuildRoot 'src\compiled\00\59\FrontEndHistoryDeque_EndIterator_0059aa15.cpp'
+$frontEndHistoryEndIteratorDuplicateBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\FrontEndHistoryDeque_EndIterator_0059aa15_test.cpp'
+$frontEndHistoryMapAllocateSource = Join-Path $rebuildRoot 'src\compiled\00\59\FrontEndHistoryDequeMapAllocator_Allocate_0059a9e0.cpp'
+$frontEndHistoryMapAllocateBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\FrontEndHistoryDequeMapAllocator_Allocate_0059a9e0_test.cpp'
+$frontEndHistoryMapDeallocateSource = Join-Path $rebuildRoot 'src\compiled\00\59\FrontEndHistoryDequeMapAllocator_Deallocate_0059a9f9.cpp'
+$frontEndHistoryMapDeallocateBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\FrontEndHistoryDequeMapAllocator_Deallocate_0059a9f9_test.cpp'
 $openIniFileSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CBankFileManager_OpenIniFile_009a8170.cpp'
 $openIniFileBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\CBankFileManager_OpenIniFile_009a8170_test.cpp'
 $userProfileSingletonGetSource = Join-Path $rebuildRoot 'src\compiled\00\40\CUserProfileManagerSingleton_Get_0040d2a0.cpp'
@@ -498,6 +532,8 @@ $visualBootRetailButtonMiddle =
 $visualBootRetailButtonRight =
     Join-Path $outDir 'frontend_options_button_right.png'
 $visualBootRetailHelpers = Join-Path $outDir 'frontend_helpers.png'
+$visualBootRetailRedefineScrollPages =
+    Join-Path $outDir 'frontend_redefine_scroll_pages.png'
 $visualBootRetailAbout = Join-Path $outDir 'frontend_about_menu.png'
 $visualBootRetailCredits = Join-Path $outDir 'frontend_credits_menu.png'
 $visualBootRetailProfiles = Join-Path $outDir 'frontend_profiles_menu.png'
@@ -524,6 +560,8 @@ $visualBootButtonMiddleBitmap =
 $visualBootButtonRightBitmap =
     Join-Path $outDir 'visual_boot_options_button_right.bmp'
 $visualBootHelpersBitmap = Join-Path $outDir 'visual_boot_helpers.bmp'
+$visualBootRedefineScrollPagesBitmap =
+    Join-Path $outDir 'visual_boot_redefine_scroll_pages.bmp'
 $visualBootAboutBitmap = Join-Path $outDir 'visual_boot_about_menu.bmp'
 $visualBootCreditsBitmap = Join-Path $outDir 'visual_boot_credits_menu.bmp'
 $visualBootProfilesBitmap = Join-Path $outDir 'visual_boot_profiles_menu.bmp'
@@ -622,6 +660,23 @@ $threadedFileCountedResetPassPattern = 'FABLETLC_THREADED_FILE_COUNTED_RESET PAS
 $threadedFileOpenPassPattern = 'FABLETLC_THREADED_FILE_OPEN PASS'
 $containedBankMapIndexPassPattern = 'FABLETLC_CONTAINED_BANK_MAP_INDEX PASS'
 $openRetailBankPassPattern = 'FABLETLC_OPEN_RETAIL_BANK PASS'
+$newFrontendInitialiseInputPassPattern = 'FABLETLC_NEW_FRONTEND_INITIALISE_INPUT PASS'
+$frontEndChangeStateFirstTimePassPattern = 'FSE2_005952c3_TEST PASS'
+$frontEndGetInstancePassPattern = 'FSE2_00595582_TEST PASS'
+$frontEndCreateComponentPassPattern = 'FSE2_00594f94_TEST PASS'
+$newFrontendLoadGamePassPattern = 'FRONTEND_00594f36_TEST PASS'
+$frontEndHistoryBlockSizePassPattern = 'FRONTEND_0059a9dc_TEST PASS'
+$frontEndHistoryIteratorCurrentPassPattern = 'FRONTEND_0059aae0_TEST PASS'
+$frontEndHistoryBlockEndSlotPassPattern = 'FRONTEND_0059a970_TEST PASS'
+$frontEndHistoryNodeSlotPassPattern = 'FRONTEND_0059a978_TEST PASS'
+$frontEndHistoryEndIteratorPassPattern = 'FRONTEND_0059a985_TEST PASS'
+$frontEndHistoryBlockBeginPassPattern = 'FRONTEND_0059aa1d_TEST PASS'
+$frontEndHistoryIteratorEqualPassPattern = 'FRONTEND_0059a9c0_TEST PASS'
+$frontEndHistoryIteratorSetNodePassPattern = 'FRONTEND_0059a959_TEST PASS'
+$frontEndHistoryNodeSlotDuplicatePassPattern = 'FRONTEND_0059aa0d_TEST PASS'
+$frontEndHistoryEndIteratorDuplicatePassPattern = 'FRONTEND_0059aa15_TEST PASS'
+$frontEndHistoryMapAllocatePassPattern = 'FRONTEND_0059a9e0_TEST PASS'
+$frontEndHistoryMapDeallocatePassPattern = 'FRONTEND_0059a9f9_TEST PASS'
 $openIniFilePassPattern = 'FABLETLC_OPEN_INI_FILE PASS'
 $userProfileSingletonGetPassPattern = 'FABLETLC_USER_PROFILE_SINGLETON_GET_BEHAVIOR PASS'
 $userProfileSetProfileNamePassPattern = 'FABLETLC_USER_PROFILE_SET_PROFILE_NAME_BEHAVIOR PASS'
@@ -1308,6 +1363,8 @@ if ($selectedRetailFrontendBank) {
                         $visualBootRetailCredits `
                         --profiles-output `
                         $visualBootRetailProfiles `
+                        --redefine-scroll-pages-output `
+                        $visualBootRetailRedefineScrollPages `
                         @frontendLayoutArguments
                     if (
                         $LASTEXITCODE -eq 0 -and
@@ -1325,7 +1382,9 @@ if ($selectedRetailFrontendBank) {
                         (Test-Path -LiteralPath $visualBootRetailAbout) -and
                         (Test-Path -LiteralPath $visualBootRetailCredits) -and
                         (Test-Path -LiteralPath $visualBootRetailProfiles) -and
-                        (Test-Path -LiteralPath $visualBootRetailHelpers)
+                        (Test-Path -LiteralPath $visualBootRetailHelpers) -and
+                        (Test-Path -LiteralPath `
+                            $visualBootRetailRedefineScrollPages)
                     ) {
                         $visualBootUsesRetailSubscreens = $true
                     } else {
@@ -1789,6 +1848,142 @@ try {
         -BehaviorSource $openRetailBankBehaviorSource `
         -OutputStem 'open-retail-bank' `
         -PassPattern $openRetailBankPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0042dec5' `
+        -Description 'frontend input primitive publication' `
+        -Source $newFrontendInitialiseInputSource `
+        -BehaviorSource $newFrontendInitialiseInputBehaviorSource `
+        -OutputStem 'new-frontend-initialise-input' `
+        -PassPattern $newFrontendInitialiseInputPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '005952c3' `
+        -Description 'frontend first-state transition' `
+        -Source $frontEndChangeStateFirstTimeSource `
+        -BehaviorSource $frontEndChangeStateFirstTimeBehaviorSource `
+        -OutputStem 'frontend-change-state-first-time' `
+        -PassPattern $frontEndChangeStateFirstTimePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00595582' `
+        -Description 'frontend manager singleton getter' `
+        -Source $frontEndGetInstanceSource `
+        -BehaviorSource $frontEndGetInstanceBehaviorSource `
+        -OutputStem 'frontend-get-instance' `
+        -PassPattern $frontEndGetInstancePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00594f94' `
+        -Description 'frontend manager component factory wrapper' `
+        -Source $frontEndCreateComponentSource `
+        -BehaviorSource $frontEndCreateComponentBehaviorSource `
+        -OutputStem 'frontend-create-component' `
+        -PassPattern $frontEndCreateComponentPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00594f36' `
+        -Description 'frontend load-game state and name update' `
+        -Source $newFrontendLoadGameSource `
+        -BehaviorSource $newFrontendLoadGameBehaviorSource `
+        -OutputStem 'new-frontend-load-game' `
+        -PassPattern $newFrontendLoadGamePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0059a9dc' `
+        -Description 'frontend history deque block-size query' `
+        -Source $frontEndHistoryBlockSizeSource `
+        -BehaviorSource $frontEndHistoryBlockSizeBehaviorSource `
+        -OutputStem 'frontend-history-block-size' `
+        -PassPattern $frontEndHistoryBlockSizePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0059aae0' `
+        -Description 'frontend history deque current-slot query' `
+        -Source $frontEndHistoryIteratorCurrentSource `
+        -BehaviorSource $frontEndHistoryIteratorCurrentBehaviorSource `
+        -OutputStem 'frontend-history-iterator-current' `
+        -PassPattern $frontEndHistoryIteratorCurrentPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0059a970' `
+        -Description 'frontend history iterator block-end slot query' `
+        -Source $frontEndHistoryBlockEndSlotSource `
+        -BehaviorSource $frontEndHistoryBlockEndSlotBehaviorSource `
+        -OutputStem 'frontend-history-block-end-slot' `
+        -PassPattern $frontEndHistoryBlockEndSlotPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0059a978' `
+        -Description 'frontend history iterator node slot query' `
+        -Source $frontEndHistoryNodeSlotSource `
+        -BehaviorSource $frontEndHistoryNodeSlotBehaviorSource `
+        -OutputStem 'frontend-history-node-slot' `
+        -PassPattern $frontEndHistoryNodeSlotPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0059a985' `
+        -Description 'frontend history deque end iterator query' `
+        -Source $frontEndHistoryEndIteratorSource `
+        -BehaviorSource $frontEndHistoryEndIteratorBehaviorSource `
+        -OutputStem 'frontend-history-end-iterator' `
+        -PassPattern $frontEndHistoryEndIteratorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0059aa1d' `
+        -Description 'frontend history iterator block-begin query' `
+        -Source $frontEndHistoryBlockBeginSource `
+        -BehaviorSource $frontEndHistoryBlockBeginBehaviorSource `
+        -OutputStem 'frontend-history-block-begin' `
+        -PassPattern $frontEndHistoryBlockBeginPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0059a9c0' `
+        -Description 'frontend history iterator equality query' `
+        -Source $frontEndHistoryIteratorEqualSource `
+        -BehaviorSource $frontEndHistoryIteratorEqualBehaviorSource `
+        -OutputStem 'frontend-history-iterator-equal' `
+        -PassPattern $frontEndHistoryIteratorEqualPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0059a959' `
+        -Description 'frontend history iterator node binding' `
+        -Source $frontEndHistoryIteratorSetNodeSource `
+        -BehaviorSource $frontEndHistoryIteratorSetNodeBehaviorSource `
+        -OutputStem 'frontend-history-iterator-set-node' `
+        -PassPattern $frontEndHistoryIteratorSetNodePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0059aa0d' `
+        -Description 'frontend history duplicate node slot query' `
+        -Source $frontEndHistoryNodeSlotDuplicateSource `
+        -BehaviorSource $frontEndHistoryNodeSlotDuplicateBehaviorSource `
+        -OutputStem 'frontend-history-node-slot-duplicate' `
+        -PassPattern $frontEndHistoryNodeSlotDuplicatePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0059aa15' `
+        -Description 'frontend history duplicate end iterator query' `
+        -Source $frontEndHistoryEndIteratorDuplicateSource `
+        -BehaviorSource $frontEndHistoryEndIteratorDuplicateBehaviorSource `
+        -OutputStem 'frontend-history-end-iterator-duplicate' `
+        -PassPattern $frontEndHistoryEndIteratorDuplicatePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0059a9e0' `
+        -Description 'frontend history map-slot allocation' `
+        -Source $frontEndHistoryMapAllocateSource `
+        -BehaviorSource $frontEndHistoryMapAllocateBehaviorSource `
+        -OutputStem 'frontend-history-map-allocate' `
+        -PassPattern $frontEndHistoryMapAllocatePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0059a9f9' `
+        -Description 'frontend history map-slot deallocation' `
+        -Source $frontEndHistoryMapDeallocateSource `
+        -BehaviorSource $frontEndHistoryMapDeallocateBehaviorSource `
+        -OutputStem 'frontend-history-map-deallocate' `
+        -PassPattern $frontEndHistoryMapDeallocatePassPattern
 
     Invoke-VerifiedLeaf `
         -Address '009a8170' `
@@ -3684,6 +3879,12 @@ try {
                     Height = 2880
                 },
                 @{
+                    Png = $visualBootRetailRedefineScrollPages
+                    Bmp = $visualBootRedefineScrollPagesBitmap
+                    Width = 3200
+                    Height = 3360
+                },
+                @{
                     Png = $visualBootRetailAbout
                     Bmp = $visualBootAboutBitmap
                     Width = 640
@@ -3795,6 +3996,8 @@ try {
             $visualBootOptionsBitmap.Replace('\', '/')
         $resourceHelpersBitmapPath =
             $visualBootHelpersBitmap.Replace('\', '/')
+        $resourceRedefineScrollPagesBitmapPath =
+            $visualBootRedefineScrollPagesBitmap.Replace('\', '/')
         $resourceTitleSegmentBitmapPath =
             $visualBootTitleSegmentBitmap.Replace('\', '/')
         $resourceButtonLeftBitmapPath =
@@ -3813,6 +4016,8 @@ try {
             "109 BITMAP `"$resourceOptionsBitmapPath`""
         $resourceLines +=
             "110 BITMAP `"$resourceHelpersBitmapPath`""
+        $resourceLines +=
+            "125 BITMAP `"$resourceRedefineScrollPagesBitmapPath`""
         $resourceLines +=
             "120 BITMAP `"$resourceAboutBitmapPath`""
         $resourceLines +=

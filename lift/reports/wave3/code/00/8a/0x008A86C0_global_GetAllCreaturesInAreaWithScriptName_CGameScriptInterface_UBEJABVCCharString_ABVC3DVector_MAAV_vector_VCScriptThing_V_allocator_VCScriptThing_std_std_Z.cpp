@@ -1,105 +1,172 @@
-#include <cstddef>
-#include <cstdint>
-#include <new>
-#include <vector>
+struct C2DBoxI
+{
+    int left;
+    int top;
+    int right;
+    int bottom;
+};
 
-struct CGameScriptInterface_SearchRootOverlay
+class CThingSearchTools;
+class CThingCreatureBase;
+class CCharString;
+class C3DVector;
+class CScriptThing;
+
+template <typename T>
+class CBasicString;
+
+namespace NHeroInformationScreens
+{
+class CBase;
+}
+
+namespace NScript
+{
+class CIsThingAlive;
+
+template <typename TPredicate, typename TThing>
+TThing* GFPredicateAnd(TThing* thing, CIsThingAlive* outValue);
+}
+
+extern "C" int __cdecl __ftol2(float);
+extern void* PTR__scalar_deleting_destructor__01238c8c;
+
+namespace
+{
+#pragma pack(push, 1)
+
+struct CGameScriptInterface_OuterOverlay
 {
     std::byte pad_00[0x20];
-    CThingSearchTools* pThingSearchTools;
+    CThingSearchTools* thingSearchTools;
 };
-static_assert(offsetof(CGameScriptInterface_SearchRootOverlay, pThingSearchTools) == 0x20);
+static_assert(offsetof(CGameScriptInterface_OuterOverlay, thingSearchTools) == 0x20);
 
 struct CGameScriptInterface_Overlay
 {
     std::byte pad_00[0x04];
-    CGameScriptInterface_SearchRootOverlay* pSearchRoot;
+    CGameScriptInterface_OuterOverlay* outer;
 };
-static_assert(offsetof(CGameScriptInterface_Overlay, pSearchRoot) == 0x04);
+static_assert(offsetof(CGameScriptInterface_Overlay, outer) == 0x04);
 
-struct CCharString_Overlay
+struct IntrusiveSharedOverlay
 {
-    CBasicString<char>* pBasicString;
+    int refCount;
+    void (__thiscall* destroy)(IntrusiveSharedOverlay*);
 };
-static_assert(offsetof(CCharString_Overlay, pBasicString) == 0x00);
+static_assert(offsetof(IntrusiveSharedOverlay, destroy) == 0x04);
 
-struct CScriptThing_Overlay
+struct CScriptThingStackFields
 {
-    void* pScalarDeletingDestructor;
-    int value_04;
-    int* pShared;
+    void* scalarDeletingDtor;
+    int field_04;
+    IntrusiveSharedOverlay* shared;
 };
-static_assert(offsetof(CScriptThing_Overlay, pScalarDeletingDestructor) == 0x00);
-static_assert(offsetof(CScriptThing_Overlay, value_04) == 0x04);
-static_assert(offsetof(CScriptThing_Overlay, pShared) == 0x08);
-static_assert(sizeof(CScriptThing_Overlay) == 0x0C);
+static_assert(sizeof(CScriptThingStackFields) == 0x0C);
+static_assert(offsetof(CScriptThingStackFields, scalarDeletingDtor) == 0x00);
+static_assert(offsetof(CScriptThingStackFields, field_04) == 0x04);
+static_assert(offsetof(CScriptThingStackFields, shared) == 0x08);
 
-struct StdVector_CScriptThing_Overlay
+struct RawThingBuffer
 {
-    CScriptThing_Overlay* pBegin;
-    CScriptThing_Overlay* pEnd;
-    CScriptThing_Overlay* pCapacityEnd;
+    CThingCreatureBase** first;
+    CThingCreatureBase** last;
+    CThingCreatureBase** capacity;
 };
-static_assert(offsetof(StdVector_CScriptThing_Overlay, pBegin) == 0x00);
-static_assert(offsetof(StdVector_CScriptThing_Overlay, pEnd) == 0x04);
-static_assert(offsetof(StdVector_CScriptThing_Overlay, pCapacityEnd) == 0x08);
-static_assert(sizeof(StdVector_CScriptThing_Overlay) == 0x0C);
+static_assert(sizeof(RawThingBuffer) == 0x0C);
 
-extern void* PTR__scalar_deleting_destructor__01238c8c;
+union Local1COverlay
+{
+    RawThingBuffer roughSearchResults;
+    CScriptThingStackFields scriptThingTemp;
+};
+static_assert(sizeof(Local1COverlay) == 0x0C);
 
-extern void std__vector___Reserve(std::vector<CScriptThing>& vec, int count);
-extern void std__vector_InsertRange(
-    void* insertAt,
-    int constructedThing,
-    void* stackSpill,
-    int count,
-    int one);
+struct ReusedParam3Param4Stack
+{
+    std::byte raw[0x0C];
+};
+static_assert(sizeof(ReusedParam3Param4Stack) == 0x0C);
 
-int CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(
+struct StdVectorScriptThingOverlay
+{
+    CScriptThingStackFields* first;
+    CScriptThingStackFields* last;
+    CScriptThingStackFields* end;
+};
+static_assert(sizeof(StdVectorScriptThingOverlay) == 0x0C);
+
+#pragma pack(pop)
+
+template <typename TFilter, typename TCompare, typename TThing>
+extern void __thiscall GetPBestThingInRoughArea(
+    CThingSearchTools* self,
+    const C2DBoxI* roughArea,
+    TFilter* filter,
+    TCompare* compare);
+
+extern void __thiscall std___Cons_val(
+    ReusedParam3Param4Stack* reusedParam3Stack,
+    void* extraout_edx_unknown,
+    void* unaff_edi_unknown);
+
+extern void __thiscall std__vector___Reserve(StdVectorScriptThingOverlay* self, int count);
+
+extern void __thiscall std__vector_InsertRange(
+    StdVectorScriptThingOverlay* self,
+    CScriptThingStackFields* insertAt,
+    const CScriptThingStackFields* sourceThing,
+    const ReusedParam3Param4Stack* reusedParam3Stack,
+    int oneA,
+    int oneB);
+
+extern void __thiscall CBase_CBase(NHeroInformationScreens::CBase* self);
+
+template <typename T>
+inline T*& UnderlyingBasicStringPtr(const CCharString& value)
+{
+    return *reinterpret_cast<T**>(const_cast<CCharString*>(&value));
+}
+
+} // namespace
+
+long __thiscall CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(
     const CCharString& scriptName,
     const C3DVector& position,
     float radius,
     std::vector<CScriptThing>& outThings) const
 {
-    const int x = __ftol2(position.x);
-    const int y = __ftol2(position.y);
-    int r = __ftol2(radius);
+    const int xInt = __ftol2(position.x);
+    const int yInt = __ftol2(position.y);
+    int radiusInt = __ftol2(radius);
 
-    C2DBoxI roughArea{};
-    roughArea.left = x - r;
-    roughArea.top = y - r;
-    roughArea.right = x + r;
-    roughArea.bottom = y + r;
+    C2DBoxI roughArea;
+    roughArea.left = xInt - radiusInt;
+    roughArea.top = yInt - radiusInt;
+    roughArea.right = xInt + radiusInt;
+    roughArea.bottom = yInt + radiusInt;
 
-    std::vector<CThingCreatureBase*> roughMatches;
-    CScriptThing_Overlay tempThing{};
-    tempThing.pScalarDeletingDestructor = nullptr;
-    tempThing.value_04 = 0;
-    tempThing.pShared = nullptr;
+    Local1COverlay local1c{};
+    ReusedParam3Param4Stack reusedParam3Stack{};
 
-    alignas(CCharString) std::byte stackSpill[sizeof(CCharString)]{};
+    auto* const selfOverlay = reinterpret_cast<const CGameScriptInterface_Overlay*>(this);
+    CThingSearchTools* const thingSearchTools = selfOverlay->outer->thingSearchTools;
 
-    const auto* const self = reinterpret_cast<const CGameScriptInterface_Overlay*>(this);
-    CThingSearchTools* const pThingSearchTools = self->pSearchRoot->pThingSearchTools;
-
-    CBasicString<char>* const pBasicString =
-        reinterpret_cast<const CCharString_Overlay*>(&scriptName)->pBasicString;
-
-    if (pBasicString == nullptr)
+    if (UnderlyingBasicStringPtr<CBasicString<char>>(scriptName) == nullptr)
     {
-        int compareCount = 1;
+        int remaining = 1;
         bool equal = true;
         const char* lhs = "";
         const char* rhs = "";
 
         do
         {
-            if (compareCount == 0)
+            if (remaining == 0)
             {
                 break;
             }
 
-            --compareCount;
+            --remaining;
             equal = (*lhs == *rhs);
             ++lhs;
             ++rhs;
@@ -107,128 +174,123 @@ int CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(
 
         if (equal)
         {
-            pThingSearchTools->GetPBestThingInRoughArea<
+            GetPBestThingInRoughArea<
                 CThingFilter_IsPotentialCustomer,
                 CThingCompare_Nearest,
                 CThingCreatureBase>(
-                    roughArea,
-                    reinterpret_cast<const CThingFilter_IsPotentialCustomer*>(&position),
-                    reinterpret_cast<CThingCompare_Nearest*>(&roughMatches));
-            goto build_results;
+                thingSearchTools,
+                &roughArea,
+                reinterpret_cast<CThingFilter_IsPotentialCustomer*>(const_cast<C3DVector*>(&position)),
+                reinterpret_cast<CThingCompare_Nearest*>(&local1c));
+            goto after_search;
         }
     }
-    else
+    else if (CBasicString<char>::operator==(UnderlyingBasicStringPtr<CBasicString<char>>(scriptName), ""))
     {
-        if (pBasicString->operator==(""))
-        {
-            pThingSearchTools->GetPBestThingInRoughArea<
-                CThingFilter_IsPotentialCustomer,
-                CThingCompare_Nearest,
-                CThingCreatureBase>(
-                    roughArea,
-                    reinterpret_cast<const CThingFilter_IsPotentialCustomer*>(&position),
-                    reinterpret_cast<CThingCompare_Nearest*>(&roughMatches));
-            goto build_results;
-        }
-    }
-
-    {
-        CCharString* const scriptNameCopy = new (stackSpill) CCharString(scriptName);
-
-        pThingSearchTools->GetPBestThingInRoughArea<
-            CFilter_Bind2<CThingFilter_IsNot, CIsVeryCloseMotionlessCreature>,
+        GetPBestThingInRoughArea<
+            CThingFilter_IsPotentialCustomer,
             CThingCompare_Nearest,
             CThingCreatureBase>(
-                roughArea,
-                reinterpret_cast<const CFilter_Bind2<CThingFilter_IsNot, CIsVeryCloseMotionlessCreature>*>(scriptNameCopy),
-                reinterpret_cast<CThingCompare_Nearest*>(&roughMatches));
-
-        scriptNameCopy->~CCharString();
+            thingSearchTools,
+            &roughArea,
+            reinterpret_cast<CThingFilter_IsPotentialCustomer*>(const_cast<C3DVector*>(&position)),
+            reinterpret_cast<CThingCompare_Nearest*>(&local1c));
+        goto after_search;
     }
 
-build_results:
+    CCharString::CCharString(reinterpret_cast<CCharString*>(&reusedParam3Stack), &scriptName);
+    GetPBestThingInRoughArea<
+        CFilter_Bind2<CThingFilter_IsNot, CIsVeryCloseMotionlessCreature>,
+        CThingCompare_Nearest,
+        CThingCreatureBase>(
+        thingSearchTools,
+        &roughArea,
+        reinterpret_cast<CFilter_Bind2<CThingFilter_IsNot, CIsVeryCloseMotionlessCreature>*>(&reusedParam3Stack),
+        reinterpret_cast<CThingCompare_Nearest*>(&local1c));
+    std___Cons_val(
+        &reusedParam3Stack,
+        nullptr,   // extraout_EDX register-carried operand is present in Ghidra but not proven from source context
+        nullptr);  // unaff_EDI register-carried operand is present in Ghidra but not proven from source context
+
+after_search:
+    CThingCreatureBase** const memory = local1c.roughSearchResults.first;
+    CThingCreatureBase** const finish = local1c.roughSearchResults.last;
+    auto* const outOverlay = reinterpret_cast<StdVectorScriptThingOverlay*>(&outThings);
+
+    if (memory == finish)
     {
-        CThingCreatureBase** const pMatchBegin = roughMatches.data();
-        CThingCreatureBase** const pMatchEnd = pMatchBegin + roughMatches.size();
-        auto* const outOverlay = reinterpret_cast<StdVector_CScriptThing_Overlay*>(&outThings);
-
-        if (pMatchBegin == pMatchEnd)
+        if (memory != nullptr)
         {
-            return 0;
+            free(memory);
         }
+        return 0;
+    }
 
-        std__vector___Reserve(outThings, static_cast<int>(pMatchEnd - pMatchBegin));
+    std__vector___Reserve(outOverlay, static_cast<int>((reinterpret_cast<std::uintptr_t>(finish) - reinterpret_cast<std::uintptr_t>(memory)) >> 2));
 
-        CThingCreatureBase** pCurrent = pMatchBegin;
-        do
-        {
-            const int constructedThing = NScript::GFPredicateAnd<
+    for (CThingCreatureBase** it = memory; it != finish; ++it)
+    {
+        auto* const producedThing = reinterpret_cast<CScriptThingStackFields*>(
+            NScript::GFPredicateAnd<
                 NScript::CPredicate_And<
                     NScript::CPredicate_And<
                         NScript::CPredicate_And<
                             NScript::CPredicate_And<NScript::CIsThingAlive, NScript::CIsThingAlive>,
                             NScript::CIsThingAlive>,
                         NScript::CIsThingAlive>,
-                    NScript::CIsThingAlive>>(
-                        *pCurrent,
-                        reinterpret_cast<NScript::CIsThingAlive*>(&tempThing));
+                    NScript::CIsThingAlive>,
+                CThingCreatureBase>(
+                *it,
+                reinterpret_cast<NScript::CIsThingAlive*>(&local1c)));
 
-            CScriptThing_Overlay* const pEnd = outOverlay->pEnd;
-            if (pEnd == outOverlay->pCapacityEnd)
+        CScriptThingStackFields* const insertAt = outOverlay->last;
+        if (insertAt == outOverlay->end)
+        {
+            std__vector_InsertRange(
+                outOverlay,
+                insertAt,
+                producedThing,
+                &reusedParam3Stack,
+                1,
+                1);
+        }
+        else
+        {
+            if (insertAt != nullptr)
             {
-                std__vector_InsertRange(
-                    pEnd,
-                    constructedThing,
-                    stackSpill,
-                    1,
-                    1);
-            }
-            else
-            {
-                if (pEnd != nullptr)
+                insertAt->scalarDeletingDtor = PTR__scalar_deleting_destructor__01238c8c;
+                insertAt->field_04 = producedThing->field_04;
+                insertAt->shared = producedThing->shared;
+                if (insertAt->shared != nullptr)
                 {
-                    const auto* const pConstructedThing =
-                        reinterpret_cast<const CScriptThing_Overlay*>(constructedThing);
-
-                    pEnd->pScalarDeletingDestructor = PTR__scalar_deleting_destructor__01238c8c;
-                    pEnd->value_04 = pConstructedThing->value_04;
-                    pEnd->pShared = pConstructedThing->pShared;
-
-                    if (pConstructedThing->pShared != nullptr)
-                    {
-                        ++*pConstructedThing->pShared;
-                    }
-                }
-
-                outOverlay->pEnd = reinterpret_cast<CScriptThing_Overlay*>(
-                    reinterpret_cast<std::byte*>(outOverlay->pEnd) + sizeof(CScriptThing_Overlay));
-            }
-
-            tempThing.pScalarDeletingDestructor = PTR__scalar_deleting_destructor__01238c8c;
-            if (tempThing.pShared != nullptr)
-            {
-                --*tempThing.pShared;
-                if (*tempThing.pShared == 0)
-                {
-                    const auto destroy =
-                        reinterpret_cast<void(__thiscall*)(void*)>(
-                            reinterpret_cast<void**>(tempThing.pShared)[1]);
-                    destroy(tempThing.pShared);
-                    operator delete(tempThing.pShared);
+                    ++insertAt->shared->refCount;
                 }
             }
+            outOverlay->last = reinterpret_cast<CScriptThingStackFields*>(reinterpret_cast<std::byte*>(outOverlay->last) + 0x0C);
+        }
 
-            tempThing.value_04 = 0;
-            tempThing.pShared = nullptr;
-            NHeroInformationScreens::CBase::CBase(
-                reinterpret_cast<NHeroInformationScreens::CBase*>(&tempThing));
-
-            ++pCurrent;
-        } while (pCurrent != pMatchEnd);
+        local1c.scriptThingTemp.scalarDeletingDtor = PTR__scalar_deleting_destructor__01238c8c;
+        if (local1c.scriptThingTemp.shared != nullptr)
+        {
+            --local1c.scriptThingTemp.shared->refCount;
+            if (local1c.scriptThingTemp.shared->refCount == 0)
+            {
+                local1c.scriptThingTemp.shared->destroy(local1c.scriptThingTemp.shared);
+                operator delete(local1c.scriptThingTemp.shared);
+            }
+        }
+        local1c.scriptThingTemp.field_04 = 0;
+        local1c.scriptThingTemp.shared = nullptr;
+        CBase_CBase(reinterpret_cast<NHeroInformationScreens::CBase*>(&local1c));
     }
 
-    return static_cast<int>(
-        (reinterpret_cast<const std::byte*>(reinterpret_cast<const StdVector_CScriptThing_Overlay*>(&outThings)->pEnd) -
-         reinterpret_cast<const std::byte*>(reinterpret_cast<const StdVector_CScriptThing_Overlay*>(&outThings)->pBegin)) /
-        sizeof(CScriptThing_Overlay));
+    const long result = static_cast<long>(
+        (reinterpret_cast<std::uintptr_t>(outOverlay->last) - reinterpret_cast<std::uintptr_t>(outOverlay->first)) / 0x0C);
+
+    if (memory != nullptr)
+    {
+        free(memory);
+    }
+
+    return result;
 }

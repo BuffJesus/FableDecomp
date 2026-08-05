@@ -116,7 +116,7 @@ task #13). Every gain verified by the parity tool; the oracles it grades against
 | 0044fe5f | CLandscapeBackgroundPatch dtor | DIFFER(70v34) | ⚠ over-capture |
 | 0044c2e2 | CHeroMarriageDef::GetSizeofClass | DIFFER(31v6) | ⚠ over-capture (GetSizeofClass fused w/ factory thunk) |
 | 0044c1f6 | CCarrySlotDef::GetSizeofClass | DIFFER(29v4) | ⚠ over-capture (29B blob for a ~4B fn) |
-| 00596cce | RefreshAvailableProfiles | NO_ORACLE | ⚠ ungraded 824B inlined-construction slice; needs oracle |
+| 00596cce | RefreshAvailableProfiles | RELOCATION_MATCH | 824B exact retail oracle; 54 relocation sites aligned; focused ownership/dispatch fixture passes |
 
 **Corrected picture:** of the 12, **5 are legitimate byte matches** (RELOC; only naming gaps), **6 are
 genuine DIFFER slices whose common root cause is boundary OVER-CAPTURE** (candidate spans MORE bytes
@@ -136,13 +136,19 @@ Each prior candidate was a `__declspec(naked)` blob that fused 2–3 functions t
 line up — the "hack our way through" pattern — now replaced by the correctly-bounded real function.
 Added an `/Os` size-opt variant to `catalog_parity_audit.py` (vtable GetSizeofClass thunks).
 
-`00596cce` RefreshAvailableProfiles (NO_ORACLE): honestly **graded** as a behavior-slice in its header
-(824-byte inlined construction behind 11 `extern` boundaries → cannot byte-match as-is; not counted as
-byte-identical). Byte-match left as documented future work (decompose the construction; same `/Oy-`(/G7) TU).
+`00596cce` RefreshAvailableProfiles is now graded as a complete retail
+reconstruction: the 824-byte oracle matches after relocation masking, with the
+inlined construction sequence and native vtable dispatches retained in the
+same `/Oy-`(/G7) VC7.1-shaped TU.
 
 **Final slice-family state (verified via parity tool):** 11/12 are byte-level matches (2 EXACT + 9 RELOC),
 1 is an honestly-graded behavior-slice. Only low-priority residual: resolve placeholder callee NAMES on
 the 5 originally-legit RELOC files (semantic, not byte fidelity).
+
+**Update 2026-08-03:** `00596cce` has since been promoted to the exact
+824-byte relocation-normalized candidate described above. The current slice
+family is therefore 12/12 at byte level; the historical 11/12 sentence above
+is retained as the audit-at-publication snapshot.
 
 ## Remediation ledger
 

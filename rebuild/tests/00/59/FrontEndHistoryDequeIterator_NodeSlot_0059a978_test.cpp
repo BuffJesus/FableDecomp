@@ -1,6 +1,16 @@
 #include <cstdio>
 
-#include "../../../src/compiled/00/59/FrontEndHistoryDequeIterator_NodeSlot_0059a978.cpp"
+struct FrontEndHistoryDequeIterator_0059a978
+{
+    void** current;
+    void** first;
+    void** last;
+    void*** node;
+};
+
+extern "C" void**** __cdecl
+FrontEndHistoryDequeIterator_NodeSlot_0059a978(
+    FrontEndHistoryDequeIterator_0059a978*);
 
 int main()
 {

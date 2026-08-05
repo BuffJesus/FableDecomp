@@ -2,12 +2,22 @@
 #include <string.h>
 
 struct CScriptedMapBrush;
-unsigned long __fastcall CScriptedMapBrush_GetTheme(
-    const CScriptedMapBrush* self,
-    int,
-    long x,
-    long y,
-    unsigned long layer);
+extern "C" unsigned long CScriptedMapBrush_GetTheme();
+
+extern "C" __declspec(naked) unsigned long CallGetTheme(
+    const CScriptedMapBrush*, long, long, unsigned long)
+{
+    __asm {
+        mov ecx, dword ptr [esp+4]
+        mov eax, dword ptr [esp+8]
+        mov edx, dword ptr [esp+12]
+        push dword ptr [esp+16]
+        push edx
+        push eax
+        call CScriptedMapBrush_GetTheme
+        ret
+    }
+}
 
 struct BrushFixture
 {
@@ -27,9 +37,12 @@ int main()
     fixture.cells[1 + 2 + (((21 - 20) * 3 - 10 + 11) * 5)] = 0xA1B2C3D4UL;
     const CScriptedMapBrush* brush =
         reinterpret_cast<const CScriptedMapBrush*>(fixture.object);
-    if (CScriptedMapBrush_GetTheme(brush, 0, 11, 21, 2) != 0xA1B2C3D4UL) return 1;
-    if (CScriptedMapBrush_GetTheme(brush, 0, 9, 21, 2) != 0) return 2;
-    if (CScriptedMapBrush_GetTheme(brush, 0, 13, 21, 2) != 0) return 3;
+    unsigned long inside = CallGetTheme(brush, 11, 21, 2);
+    unsigned long low = CallGetTheme(brush, 9, 21, 2);
+    unsigned long high = CallGetTheme(brush, 13, 21, 2);
+    if (inside != 0xA1B2C3D4UL) return 1;
+    if (low != 0) return 2;
+    if (high != 0) return 3;
     printf("SCRIPTED_BRUSH_GET_THEME_TEST PASS\n");
     return 0;
 }

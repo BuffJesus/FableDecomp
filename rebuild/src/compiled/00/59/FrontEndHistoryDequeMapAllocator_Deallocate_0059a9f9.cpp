@@ -13,20 +13,14 @@ public:
     void Deallocate(void** allocation, unsigned long count);
 };
 
-__declspec(naked)
+#pragma optimize("s", on)
 void FrontEndHistoryDequeMapAllocator_0059a9f9::Deallocate(
-    void**,
+    void** allocation,
     unsigned long)
 {
-    __asm
+    if (allocation != 0)
     {
-        cmp dword ptr [esp + 4], 0
-        je done
-        push dword ptr [esp + 4]
-        call FrontEndHistoryDequeMapDelete_0059a9f9
-        pop ecx
-
-    done:
-        ret 8
+        FrontEndHistoryDequeMapDelete_0059a9f9(allocation);
     }
 }
+#pragma optimize("s", off)

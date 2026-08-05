@@ -14,12 +14,9 @@ struct FrontEndHistoryDequeIterator_0059aa1d
     void** BlockBegin() const;
 };
 
-__declspec(naked)
+#pragma optimize("s", on)
 void** FrontEndHistoryDequeIterator_0059aa1d::BlockBegin() const
 {
-    __asm
-    {
-        mov eax, dword ptr [ecx + 4]
-        ret
-    }
+    return first;
 }
+#pragma optimize("s", off)

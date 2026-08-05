@@ -123,7 +123,8 @@ DETAIL_HOVER_ATLAS_ORIGIN_X = 1024
 DETAIL_HOVER_ATLAS_ORIGIN_Y = 2400
 # Arrow HOVERED tiles are full 200x30 control tiles so the hovered arrow sits
 # at the IDENTICAL control-tile-local offset (left x=8, right x=162) as the
-# baked arrow and renders over the same design rect (x=300, width 200).
+# baked arrow and renders over the same design rect (x=400, width 200) after
+# the recovered UI_FRONTEND_LIST parent translation is applied.
 DETAIL_ARROW_HOVER_TILE_SIZE = CONTROL_TILE_SIZE  # (200, 30)
 DETAIL_ARROW_HOVER_LEFT_ATLAS_Y = DETAIL_HOVER_ATLAS_ORIGIN_Y          # 2400
 DETAIL_ARROW_HOVER_RIGHT_ATLAS_Y = DETAIL_HOVER_ATLAS_ORIGIN_Y + 30    # 2430
@@ -193,6 +194,26 @@ SAVE_COMPONENT_ATLAS_ORIGIN = (
 # fonts.big rather than from a platform font.
 PROFILE_GLYPH_ATLAS_ORIGIN = (1024, 2704)
 PROFILE_ROW_STEP = 28
+# Small static save-screen sources promoted into the component atlas free tail
+# so the live D3D9 path can submit their authored quads without another
+# texture/resource attachment.
+SAVE_BOTTOM_BACKDROP_ATLAS_ORIGIN = (1024, 2960)
+SAVE_TEXT_BOTTOM_ATLAS_ORIGIN = (1032, 2960)
+SAVE_TEXT_AREA_MIDDLE_ATLAS_ORIGIN = (1040, 2960)
+SAVE_TEXT_AREA_BL_ATLAS_ORIGIN = (1048, 2960)
+SAVE_TEXT_AREA_BR_ATLAS_ORIGIN = (1176, 2960)
+SAVE_TITLE_AREA_TL_ATLAS_ORIGIN = (1304, 2960)
+SAVE_TITLE_AREA_TR_ATLAS_ORIGIN = (1432, 2960)
+# Detail title text is authored as ENG_ARIAL_24 in frontend.bin.  Keep its
+# runtime atlas separate from the ENG_ARIAL_16 profile-row atlas above; both
+# are copied into the component texture's otherwise-unused right-hand tail.
+DETAIL_TITLE_GLYPH_ATLAS_ORIGIN = (1024, 3328)
+DETAIL_TITLE_GLYPH_ATLAS_SIZE = (256, 256)
+# Redefine row children are authored with ENG_ARIAL_12, not the ENG_ARIAL_24
+# title font.  Keep this small atlas beside the title atlas in the component
+# texture so the live row labels and key values can use their retail metrics.
+REDEFINE_GLYPH_ATLAS_ORIGIN = (1536, 3328)
+REDEFINE_GLYPH_ATLAS_SIZE = (128, 128)
 
 GAMEPLAY_ROWS = (
     ("Game Camera", "Normal", 0.0),
@@ -217,13 +238,13 @@ AUDIO_ROWS = (
 # The remaining initial text values are the first entries in their compiled
 # text-slider children.
 VIDEO_ROWS = (
-    ("Resolution", "1024 x 768", 0.0),
-    ("Refresh Rate", "60 Hz", 0.0),
-    ("Anti-Aliasing", "OFF", 0.0),
-    ("Texture Detail", None, 1.0 / 3.0),
-    ("Mesh Detail", None, 1.0 / 3.0),
-    ("Shadow Detail", None, 1.0 / 3.0),
-    ("Brightness", None, 0.5),
+    ("Resolution", "2560X1440X32", 1.0 / 3.0),
+    ("Refresh Rate", "100 Hz", 0.0),
+    ("Anti-Aliasing", "8X", 0.0),
+    ("Texture Detail", None, 1.0),
+    ("Mesh Detail", None, 1.0),
+    ("Shadow Detail", None, 1.0),
+    ("Brightness", None, 1.0 / 17.0),
     ("Vertical Sync", "OFF", 0.0),
     ("Effects Detail", None, 1.0 / 3.0),
     ("Screen Aspect Ratio", "Auto", 0.0),
@@ -251,9 +272,9 @@ AUDIO_CONTROL_VALUES = (
     tuple(0.1 * value for value in range(11)),
 )
 VIDEO_CONTROL_VALUES = (
-    ("800 x 600", "1024 x 768", "1280 x 720"),
-    ("60 Hz", "75 Hz", "85 Hz", "100 Hz"),
-    ("OFF", "2x", "4x"),
+    ("1920X1080X32", "2560X1440X32", "3840X2160X32"),
+    ("100 Hz", "60 Hz", "75 Hz", "85 Hz"),
+    ("8X", "OFF", "4X"),
     tuple(value / 3.0 for value in range(4)),
     tuple(value / 3.0 for value in range(4)),
     tuple(value / 3.0 for value in range(4)),
@@ -277,41 +298,289 @@ CONTROL_VALUE_GROUPS = (
 # remaining 25 ids scroll off the first page:
 #   REDEFINE_FULL_ACTION_ORDER (below). Every id's default *key binding* is
 #   sourced from FABLE_PC_CONTROL_SCHEME_GDD_WASD (see docs/CONTROLLER_ENUMS.md).
-# What is NOT sourced is each id's on-screen *display name*: retail strips the
-# EGameAction integer->name strings (docs/HANDOFF.md "REMAINING GAP"). Three
-# sourcing passes have now failed -- two binary scans and a web pass
-# (StrategyWiki/GameFAQs 403; fabletlcmod wiki carries no id->name table). The
-# off-page rows therefore stay unrendered rather than being labelled with
-# assumed names, per the project's evidence-not-assumption rule. Closing this
-# needs controls_def.hpp/inputkey.h headers or a live in-game binding capture.
+# The debug FableWin.pdb preserves the authoritative EGameAction enum names
+# and values. Every ActionOrder entry also has a direct TEXT_GUI_ACTION_* entry
+# in the shipped English text.big; keep the decoded localized wording beside
+# the enum so later off-page materialization does not need guessed labels. The
+# first-page strings remain the exact retail wording recovered from the capture.
 REDEFINE_FULL_ACTION_ORDER = (
     60, 9, 7, 8, 31, 45, 6, 13, 14, 1, 32, 26, 86, 94, 78, 4, 113, 112, 72,
     56, 92, 90, 96, 91, 97, 93, 98, 99, 100, 55, 53)
+# Recovered from debug_build/FableWin.pdb with DIA (EGameAction). These are
+# enum identifiers recovered from the PDB.
+REDEFINE_ACTION_ENUM_NAMES = {
+    60: "GAME_ACTION_MOVEMENT",
+    9: "GAME_ACTION_ATTACK",
+    7: "GAME_ACTION_BLOCK",
+    8: "GAME_ACTION_SPECIAL_ATTACK",
+    31: "GAME_ACTION_RUN",
+    45: "GAME_ACTION_TOGGLE_FIRST_PERSON_TARGETING",
+    6: "GAME_ACTION_INTERACT",
+    13: "GAME_ACTION_UNSHEATHE_MELEE_WEAPON",
+    14: "GAME_ACTION_UNSHEATHE_RANGED_WEAPON",
+    1: "GAME_ACTION_LOCK_TARGET",
+    32: "GAME_ACTION_SNEAK",
+    26: "GAME_ACTION_ATTRACT_EXPERIENCE_ORBS",
+    86: "GAME_ACTION_ACTIVATE_SPELL_MODE",
+    94: "GAME_ACTION_CYCLE_THROUGH_SPELLS_KEYBOARD",
+    78: "GAME_ACTION_CHARGE_GUILD_SEAL",
+    4: "GAME_ACTION_TOGGLE_MINI_MAP",
+    113: "GAME_ACTION_CENTRE_CAMERA",
+    112: "GAME_ACTION_TOGGLE_VIEW_HERO_MODE",
+    72: "GAME_ACTION_TOGGLE_LIVE_GUI",
+    56: "GAME_ACTION_CONTEXT_SENSITIVE_ITEM",
+    92: "GAME_ACTION_OPEN_ITEMS_MENU",
+    90: "GAME_ACTION_OPEN_WEAPONS_MENU",
+    96: "GAME_ACTION_OPEN_MAGIC_MENU",
+    91: "GAME_ACTION_OPEN_CLOTHING_MENU",
+    97: "GAME_ACTION_OPEN_EXPRESSIONS_MENU",
+    93: "GAME_ACTION_OPEN_CURRENT_QUESTS_MENU",
+    98: "GAME_ACTION_OPEN_PERSONALITY_MENU",
+    99: "GAME_ACTION_OPEN_LOGBOOK_MENU",
+    100: "GAME_ACTION_OPEN_MAP_MENU",
+    55: "GAME_ACTION_QUICK_ACCESS_ITEM",
+    53: "GAME_ACTION_TAKE_PHOTO_FOR_PHOTOJOURNAL",
+}
+REDEFINE_ACTION_DISPLAY_TEXT = {
+    60: "Movement",
+    9: "Attack",
+    7: "Block",
+    8: "Flourish",
+    31: "Run",
+    45: "Toggle First-Person Targeting",
+    6: "Interact",
+    13: "Unsheathe Melee Weapon",
+    14: "Unsheathe Ranged Weapon",
+    1: "Toggle Target Lock",
+    32: "Toggle Sneak Mode",
+    26: "Suck Experience Orbs",
+    86: "Activate Spell Mode",
+    94: "Cycle Spells (Alternative To Mouse Wheel)",
+    78: "Charge Guild Seal",
+    4: "Toggle Minimap Display",
+    113: "Reset Camera",
+    112: "Toggle View Hero Mode",
+    72: "Toggle In-Game Menu",
+    56: "Use Context Sensitive Item",
+    92: "Shortcut: Items Inventory",
+    90: "Shortcut: Weapons Inventory",
+    96: "Shortcut: Magic Menu",
+    91: "Shortcut: Clothing Inventory",
+    97: "Shortcut: Expressions Menu",
+    93: "Shortcut: Current Quests Screen",
+    98: "Shortcut: Personality Screen",
+    99: "Shortcut: Logbook",
+    100: "Shortcut: Map Screen",
+    55: "Use Hotbar Item",
+    53: "Take Photojournal Photo",
+}
+# Raw default controls from FABLE_PC_CONTROL_SCHEME_GDD_WASD.  These retain
+# the source notation where the retail record has multiple bindings or an
+# input key that is not yet assigned a localized tile label.  The first-page
+# capture remains the display oracle for mouse-button wording; the raw tuples
+# preserve the complete off-page binding evidence for the live renderer.
+REDEFINE_ACTION_DEFAULT_INPUTS = {
+    60: ("K:W<0,+1>", "K:A<-1,0>", "K:S<0,-1>", "K:D<+1,0>"),
+    9: ("M1",),
+    7: ("M2",),
+    8: ("M3",),
+    31: ("M2",),
+    45: ("M2",),
+    6: ("K:5",),
+    13: ("K:Q",),
+    14: ("K:E",),
+    1: ("K:SPACE",),
+    32: ("K:CAPS",),
+    26: ("K:BSLASH",),
+    86: ("K:LSHIFT/BSLASH",),
+    94: ("K:O",),
+    78: ("K:G",),
+    4: ("K:M",),
+    113: ("K:R",),
+    112: ("K:H",),
+    72: ("K:RETURN", "K:ESC"),
+    56: ("K:0x00,F1,F2,F3",),
+    92: ("K:F4",),
+    90: ("K:F5",),
+    96: ("K:F6",),
+    91: ("K:F7",),
+    97: ("K:F8",),
+    93: ("K:F9",),
+    98: ("K:F10",),
+    99: ("K:0x54",),
+    100: ("K:0x55",),
+    55: ("K:1..9 (0x02..0x0A)",),
+    53: ("K:PRNT SCRN",),
+}
+# Retail-facing labels for bindings whose DirectInput or mouse records have a
+# stable display spelling. Keep the raw map above as the evidence source and
+# leave opaque/reserved records in source notation instead of guessing.
+REDEFINE_ACTION_DISPLAY_INPUTS = {
+    9: "LEFT MOUSE BUTTON",
+    7: "MIDDLE MOUSE BUTTON",
+    8: "RIGHT MOUSE BUTTON",
+    31: "RIGHT MOUSE BUTTON",
+    45: "RIGHT MOUSE BUTTON",
+    6: "TAB",
+    13: "Q",
+    14: "E",
+    1: "SPACE",
+    32: "CAPS LOCK",
+    26: "LEFT SHIFT",
+    86: "LEFT SHIFT",
+    94: "O",
+    78: "G",
+    4: "M",
+    113: "R",
+    112: "H",
+    72: "ENTER",
+    92: "F4",
+    90: "F5",
+    96: "F6",
+    91: "F7",
+    97: "F8",
+    93: "F9",
+    98: "F10",
+    53: "PRNT SCRN",
+}
 REDEFINE_ACTION_ORDER = (60, 9, 7, 8, 31, 45, 6, 13, 14)
 REDEFINE_ROWS = (
     ("Move Forward", "W"),
-    ("Move Back", "S"),
     ("Move Left", "A"),
+    ("Move Backward", "S"),
     ("Move Right", "D"),
-    ("Attack", "Mouse 1"),
-    ("Block", "Mouse 3"),
-    ("Flourish", "Mouse 2"),
-    ("Run", "Mouse 2"),
-    ("Toggle First Person Targeting", "Mouse 2"),
+    ("Attack", "LEFT MOUSE BUTTON"),
+    ("Block", "MIDDLE MOUSE BUTTON"),
+    ("Flourish", "RIGHT MOUSE BUTTON"),
+    ("Run", "RIGHT MOUSE BUTTON"),
+    ("Toggle First-Person Targeting", "RIGHT MOUSE BUTTON"),
 )
+# Logical rows after expanding the authored movement action. The first nine
+# entries are the capture-backed initial viewport above; the remaining rows
+# are the exact localized labels recovered from text.big. Keep the action id
+# beside each label so the live scroll renderer can later bind the row to its
+# control record without re-parsing the source tables.
+REDEFINE_MATERIALIZED_ROWS = (
+    (60, "Move Forward"),
+    (60, "Move Left"),
+    (60, "Move Backward"),
+    (60, "Move Right"),
+    (9, "Attack"),
+    (7, "Block"),
+    (8, "Flourish"),
+    (31, "Run"),
+    (45, "Toggle First-Person Targeting"),
+    (6, "Interact"),
+    (13, "Unsheathe Melee Weapon"),
+    (14, "Unsheathe Ranged Weapon"),
+    (1, "Toggle Target Lock"),
+    (32, "Toggle Sneak Mode"),
+    (26, "Suck Experience Orbs"),
+    (86, "Activate Spell Mode"),
+    (94, "Cycle Spells (Alternative To Mouse Wheel)"),
+    (78, "Charge Guild Seal"),
+    (4, "Toggle Minimap Display"),
+    (113, "Reset Camera"),
+    (112, "Toggle View Hero Mode"),
+    (72, "Toggle In-Game Menu"),
+    (56, "Use Context Sensitive Item 1"),
+    (56, "Use Context Sensitive Item 2"),
+    (56, "Use Context Sensitive Item 3"),
+    (92, "Shortcut: Items Inventory"),
+    (90, "Shortcut: Weapons Inventory"),
+    (96, "Shortcut: Magic Menu"),
+    (91, "Shortcut: Clothing Inventory"),
+    (97, "Shortcut: Expressions Menu"),
+    (93, "Shortcut: Current Quests Screen"),
+    (98, "Shortcut: Personality Screen"),
+    (99, "Shortcut: Logbook"),
+    (100, "Shortcut: Map Screen"),
+    (55, "Use Hotbar Item 1"),
+    (55, "Use Hotbar Item 2"),
+    (55, "Use Hotbar Item 3"),
+    (55, "Use Hotbar Item 4"),
+    (55, "Use Hotbar Item 5"),
+    (55, "Use Hotbar Item 6"),
+    (55, "Use Hotbar Item 7"),
+    (55, "Use Hotbar Item 8"),
+    (55, "Use Hotbar Item 9"),
+    (53, "Take Photojournal Photo"),
+)
+# The list planner selects authored ActionOrder children, while rendering
+# consumes the movement-expanded row stream. ActionOrder child zero owns the
+# first four visual rows; every later child starts one row farther on.
+REDEFINE_ACTION_MATERIALIZED_OFFSETS = (
+    0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+    19, 20, 21, 22, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 43)
+REDEFINE_SCROLL_PAGE_OFFSETS = tuple(range(1, 36))
+REDEFINE_SCROLL_PAGE_COLUMNS = 5
+REDEFINE_SCROLL_PAGE_ATLAS_SIZE = (3200, 3360)
+
+
+def redefine_materialized_row_offset(action_index):
+    """Return the expanded visual-row offset for a logical ActionOrder child."""
+    if not 0 <= action_index < len(REDEFINE_FULL_ACTION_ORDER):
+        raise ValueError("redefine action index is outside ActionOrder")
+    return REDEFINE_ACTION_MATERIALIZED_OFFSETS[action_index]
+
+
+def redefine_scrolled_rows(materialized_row_offset):
+    """Return one nine-row Redefine viewport from the expanded row stream."""
+    max_offset = len(REDEFINE_MATERIALIZED_ROWS) - len(REDEFINE_ROWS)
+    if not 0 <= materialized_row_offset <= max_offset:
+        raise ValueError("redefine viewport offset is outside the list")
+    return REDEFINE_MATERIALIZED_ROWS[
+        materialized_row_offset:materialized_row_offset + len(REDEFINE_ROWS)]
+
+
+def build_redefine_scroll_pages(frontend_bank, font_bank):
+    """Pack every nonzero Redefine viewport into a D3D9-sized page atlas."""
+    atlas = Image.new("RGBA", REDEFINE_SCROLL_PAGE_ATLAS_SIZE, (0, 0, 0, 0))
+    page_width, page_height = CANVAS_SIZE
+    for page_index, row_offset in enumerate(REDEFINE_SCROLL_PAGE_OFFSETS):
+        frame = build_redefine_frame(
+            frontend_bank,
+            font_bank,
+            include_title_rule=False,
+            include_title_text=False,
+            include_key_text=False,
+            include_action_text=False,
+            materialized_row_offset=row_offset)
+        column = page_index % REDEFINE_SCROLL_PAGE_COLUMNS
+        row = page_index // REDEFINE_SCROLL_PAGE_COLUMNS
+        atlas.alpha_composite(
+            frame,
+            (column * page_width, row * page_height))
+    return atlas
+
+
+def _redefine_materialized_key_text(row_index, action_id):
+    if action_id == 60:
+        return ("W", "A", "S", "D")[row_index]
+    if action_id == 56:
+        return ("F1", "F2", "F3")[row_index - 24]
+    if action_id == 55:
+        # Expanded row 34 is Hotbar 1; convert its zero-based row index to
+        # the one-based hotbar value.
+        return str(row_index - 33)
+    if action_id in REDEFINE_ACTION_DISPLAY_INPUTS:
+        return REDEFINE_ACTION_DISPLAY_INPUTS[action_id]
+    return " / ".join(REDEFINE_ACTION_DEFAULT_INPUTS[action_id])
+
+
 REDEFINE_KEY_VALUES = (
     "W / A / S / D",
-    "Mouse 1",
-    "Mouse 3",
-    "Mouse 2",
-    "Tab",
+    "LEFT MOUSE BUTTON",
+    "MIDDLE MOUSE BUTTON",
+    "RIGHT MOUSE BUTTON",
+    "TAB",
     "Q",
     "E",
     "PRESS CONTROL",
     "UNDEFINED",
 ) + tuple(chr(code) for code in range(ord("A"), ord("Z") + 1)) + (
-    "Space",
-    "Left Shift",
+    "SPACE",
+    "LEFT SHIFT",
     "Left Ctrl",
     "Left Alt",
     "Enter",
@@ -320,7 +589,11 @@ REDEFINE_KEY_VALUES = (
     "Down",
     "Left",
     "Right",
-) + tuple(str(value) for value in range(10))
+) + tuple(str(value) for value in range(10)) + (
+    "CAPS LOCK",
+    "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10",
+    "F11", "F12", "PRNT SCRN",
+)
 
 # Serialized component transforms:
 # list #217 (40,115), table #91 (-32,-2), right table child #470
@@ -331,6 +604,11 @@ REDEFINE_TABLE_OFFSET = (-32, -2)
 REDEFINE_RIGHT_SLOT_OFFSET = (368, -3)
 REDEFINE_ACTION_TEXT_OFFSET = (0, 3)
 REDEFINE_KEY_TEXT_OFFSET = (380, 3)
+# The compiled child retains its authored position/Zoom values, but the
+# supplied retail Redefine capture measures action-name advances at roughly
+# 9/8 of the raw ENG_ARIAL_12 bake. Keep the key-value tiles at native scale;
+# this correction applies only to the action-name atlas layer.
+REDEFINE_ACTION_TEXT_SCALE = 9.0 / 8.0
 # CText::Draw rounds and forwards the serialized y origin unchanged. Text
 # alignment adjusts x only; the static renderer must not invent vertical
 # centering on either table primitive.
@@ -1225,14 +1503,25 @@ def _build_table_horizontal(left, primary, right, table_width):
     return result
 
 
-def _draw_text(canvas, font, text, position, align="center"):
+def _draw_text(
+        canvas,
+        font,
+        text,
+        position,
+        align="center",
+        scale=2.0 / 3.0,
+        colour=None):
     line = render_line(
         font,
         text,
         CANVAS_SIZE,
         position,
         align,
-        2.0 / 3.0)
+        scale)
+    if colour is not None:
+        tinted = Image.new("RGBA", line.size, colour)
+        tinted.putalpha(line.getchannel("A"))
+        line = tinted
     canvas.alpha_composite(add_outline(line, 1))
 
 
@@ -1241,7 +1530,8 @@ def _draw_title(
         frontend_bank_data,
         font,
         text,
-        include_rule=True):
+        include_rule=True,
+        include_text=True):
     buf, parsed = frontend_bank_data
     # UI_TABLE_TITLE_WHOLE maps TOP_LEFT, TOP_RIGHT, and HORIZONTAL_TOP to
     # the same UI_TEXTBOX_MIDDLE component (#122). Its GraphicIndex resolves
@@ -1259,7 +1549,8 @@ def _draw_title(
             title_segment,
             640)
         canvas.alpha_composite(title_rule, HEADER_RULE_POSITION)
-    _draw_text(canvas, font, text, HEADER_TEXT_POSITION, "left")
+    if include_text:
+        _draw_text(canvas, font, text, HEADER_TEXT_POSITION, "left")
 
 
 def _draw_save_title(
@@ -1267,7 +1558,8 @@ def _draw_save_title(
         frontend_bank_data,
         font,
         text,
-        include_rule=True):
+        include_rule=True,
+        include_text=True):
     """Draw the saved-games UI_TITLE_AREA from its two retail tables."""
     if include_rule:
         buf, parsed = frontend_bank_data
@@ -1287,7 +1579,8 @@ def _draw_save_title(
         canvas.alpha_composite(
             title_right,
             (SAVE_TITLE_AREA_RIGHT[0], SAVE_TITLE_AREA_ORIGIN[1]))
-    _draw_text(canvas, font, text, HEADER_TEXT_POSITION, "left")
+    if include_text:
+        _draw_text(canvas, font, text, HEADER_TEXT_POSITION, "left")
 
 
 def _draw_option_row(
@@ -1318,12 +1611,14 @@ def _draw_option_label(canvas, font, label, y):
     _draw_text(canvas, font, label, (32, y + 2), "left")
 
 
-def _build_control_tile(font, assets, value):
+def _build_control_tile(font, assets, value, include_text=True):
     width, height = CONTROL_TILE_SIZE
     tile = Image.new("RGBA", CONTROL_TILE_SIZE, (0, 0, 0, 0))
     tile.alpha_composite(assets["left_arrow"], (8, 0))
     tile.alpha_composite(assets["right_arrow"], (162, 0))
     if isinstance(value, str):
+        if not include_text:
+            return tile
         line = render_line(
             font,
             value,
@@ -1344,12 +1639,39 @@ def _build_control_tile(font, assets, value):
     return tile
 
 
+def _apply_compiled_graphic_angle(image, angle_turns):
+    """Apply the serialized frontend Graphic.Angle to a bank sprite.
+
+    The frontend records store angles as turns, not degrees.  The option
+    arrow graphic records both carry Angle=-0.25, so the bank's vertical
+    FE_SCROLL sprites are rendered with the exact quarter-turn used by the
+    retail UI.  Keep the canvas fixed at the bank sprite dimensions: the
+    retail sprite primitive rotates around its own centre.
+    """
+    if not angle_turns:
+        return image
+    return image.rotate(
+        float(angle_turns) * 360.0,
+        resample=Image.Resampling.BILINEAR,
+        expand=False)
+
+
 def _option_assets(buf, parsed):
+    # LEFT_ARROW_GRAPHIC and RIGHT_ARROW_GRAPHIC in frontend.bin resolve to
+    # GraphicIndex 380/379 and both serialize Angle=-0.25.  The corresponding
+    # bank names are FE_SCROLL_DOWN/UP_SPRITE; resolve those names from the
+    # retail bank, then apply the compiled transform before composition.
+    left_arrow = _apply_compiled_graphic_angle(
+        _decode_named(buf, parsed, "FE_SCROLL_DOWN_SPRITE"), -0.25)
+    right_arrow = _apply_compiled_graphic_angle(
+        _decode_named(buf, parsed, "FE_SCROLL_UP_SPRITE"), -0.25)
+    left_arrow_hover = _apply_compiled_graphic_angle(
+        _decode_named(buf, parsed, "FE_SCROLL_DOWN_HOVERED_SPRITE"), -0.25)
+    right_arrow_hover = _apply_compiled_graphic_angle(
+        _decode_named(buf, parsed, "FE_SCROLL_UP_HOVERED_SPRITE"), -0.25)
     return {
-        "left_arrow": _decode_named(
-            buf, parsed, "FE_SCROLL_DOWN_SPRITE"),
-        "right_arrow": _decode_named(
-            buf, parsed, "FE_SCROLL_UP_SPRITE"),
+        "left_arrow": left_arrow,
+        "right_arrow": right_arrow,
         "bar": _decode_named(
             buf, parsed, "FE_OPTIONS_HORIZONTAL_BAR_SPRITE"),
         "slider": _decode_named(
@@ -1366,18 +1688,71 @@ def _option_assets(buf, parsed):
         "back_on": _decode_named(buf, parsed, "FE_BUTTON_BACK_ON"),
         "accept_on": _decode_named(buf, parsed, "FE_BUTTON_ACCEPT_ON"),
         "button_on": _decode_named(buf, parsed, "FE_BUTTON_ON"),
-        "left_arrow_hover": _decode_named(
-            buf, parsed, "FE_SCROLL_DOWN_HOVERED_SPRITE"),
-        "right_arrow_hover": _decode_named(
-            buf, parsed, "FE_SCROLL_UP_HOVERED_SPRITE"),
+        # These are the actual CTable pieces used by the detail-screen
+        # option rows and by the Redefine list.  The compiled table Width is
+        # the repeat span; it is not the final rendered width.
+        "slot_left": _decode_named(buf, parsed, "FE_SLOT_TEST_L_OFF"),
+        "slot_middle": _decode_named(buf, parsed, "FE_SLOT_TEST_M_OFF"),
+        "slot_right": _decode_named(buf, parsed, "FE_SLOT_TEST_R_OFF"),
+        "left_arrow_hover": left_arrow_hover,
+        "right_arrow_hover": right_arrow_hover,
     }
 
 
-def _draw_detail_helpers(canvas, font, assets):
+def _draw_detail_helpers(canvas, font, assets, include_text=True):
     # UI_HELPERS_* contributes a parent y offset of 20.
-    _draw_helper(canvas, assets["back"], font, (20, 440), "Cancel")
-    _draw_helper(canvas, assets["accept"], font, (362, 440), "Apply")
-    _draw_helper(canvas, assets["button"], font, (192, 400), "Defaults")
+    _draw_helper(
+        canvas,
+        assets["back"],
+        font,
+        (20, 440),
+        "Cancel",
+        include_text=include_text)
+    # The initial detail transaction has no pending profile changes, so the
+    # retail Apply child is disabled (gray) until a value/key is mutated.
+    _draw_helper(
+        canvas,
+        assets["accept"],
+        font,
+        (362, 440),
+        "Apply",
+        (128, 128, 128, 255),
+        include_text=include_text)
+    _draw_helper(
+        canvas,
+        assets["button"],
+        font,
+        (192, 400),
+        "Defaults",
+        include_text=include_text)
+
+
+def _draw_detail_row_tables(canvas, assets, row_ys):
+    """Materialise the two serialized option-row CTable children.
+
+    ``UI_BUTTON_OPTIONS_LEFT`` has Width=180 and
+    ``UI_BUTTON_OPTIONS_RIGHT`` has Width=120.  CTable repeats the middle
+    sprite across those spans and then places the natural-size corner pieces;
+    passing either Width as the final bitmap width silently produces the
+    undersized backgrounds seen in the transitional renderer.
+    """
+    left_table = _build_table_horizontal(
+        assets["slot_left"],
+        assets["slot_middle"],
+        assets["slot_right"],
+        180)
+    right_table = _build_table_horizontal(
+        assets["bar"],
+        assets["bar"],
+        assets["bar"],
+        120)
+    for row_y in row_ys:
+        # UI_FRONTEND_LIST_* owns the (100, screen_y) parent origin.  The
+        # slider child records are local (-100, 0), so their resolved table
+        # origin is x=100, not the canvas edge.  Preserve that transform here
+        # rather than silently flattening the list hierarchy.
+        canvas.alpha_composite(left_table, (100, row_y))
+        canvas.alpha_composite(right_table, (431, row_y - 3))
 
 
 def build_settings_frame(
@@ -1386,7 +1761,10 @@ def build_settings_frame(
         title,
         rows,
         row_ys,
-        include_title_rule=True):
+        include_title_rule=True,
+        include_title_text=True,
+        include_row_text=True,
+        include_helper_text=True):
     buf, parsed = load_big(frontend_bank)
     font = load_font(font_bank, "ENG_ARIAL_24")
     assets = _option_assets(buf, parsed)
@@ -1396,10 +1774,17 @@ def build_settings_frame(
         (buf, parsed),
         font,
         title,
-        include_title_rule)
-    for row, y in zip(rows, row_ys):
-        _draw_option_label(canvas, font, row[0], y)
-    _draw_detail_helpers(canvas, font, assets)
+        include_title_rule,
+        include_title_text)
+    _draw_detail_row_tables(canvas, assets, row_ys)
+    if include_row_text:
+        for row, y in zip(rows, row_ys):
+            _draw_text(canvas, font, row[0], (132, y + 2), "left")
+    _draw_detail_helpers(
+        canvas,
+        font,
+        assets,
+        include_text=include_helper_text)
     return canvas
 
 
@@ -1408,8 +1793,24 @@ def build_redefine_frame(
         font_bank,
         hovered_index=None,
         include_key_text=True,
-        include_title_rule=True):
-    if hovered_index is not None and not 0 <= hovered_index < len(REDEFINE_ROWS):
+        include_action_text=True,
+        include_title_rule=True,
+        include_title_text=True,
+        materialized_row_offset=0,
+        include_helper_text=True):
+    visible_rows = REDEFINE_ROWS
+    materialized_rows = None
+    if materialized_row_offset:
+        materialized_rows = redefine_scrolled_rows(materialized_row_offset)
+        visible_rows = tuple(
+            (
+                label,
+                _redefine_materialized_key_text(
+                    materialized_row_offset + row_index,
+                    action_id),
+            )
+            for row_index, (action_id, label) in enumerate(materialized_rows))
+    if hovered_index is not None and not 0 <= hovered_index < len(visible_rows):
         raise ValueError("redefine hover is outside the compiled list")
 
     buf, parsed = load_big(frontend_bank)
@@ -1429,8 +1830,8 @@ def build_redefine_frame(
         slot_right = _decode_named(
             buf, parsed, "FE_SLOT_TEST_R_" + state)
         slots[state] = (
-            _build_stretched(slot_left, slot_middle, slot_right, 280),
-            right_slot,
+            _build_table_horizontal(slot_left, slot_middle, slot_right, 280),
+            _build_table_horizontal(right_bar, right_bar, right_bar, 220),
         )
 
     canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
@@ -1439,8 +1840,9 @@ def build_redefine_frame(
         (buf, parsed),
         font,
         "Redefine Keys",
-        include_title_rule)
-    for index, (label, key) in enumerate(REDEFINE_ROWS):
+        include_title_rule,
+        include_title_text)
+    for index, (label, key) in enumerate(visible_rows):
         base_x = REDEFINE_LIST_ORIGIN[0]
         base_y = (
             REDEFINE_LIST_ORIGIN[1] +
@@ -1449,25 +1851,32 @@ def build_redefine_frame(
         table_x = base_x + REDEFINE_TABLE_OFFSET[0]
         table_y = base_y + REDEFINE_TABLE_OFFSET[1]
         state = "ON" if index == hovered_index else "OFF"
-        canvas.alpha_composite(
-            slots[state][0],
-            (table_x, table_y))
+        # The decoded left table has a natural width larger than its authored
+        # child span.  Retail submits the right value table first and the left
+        # rounded table second, so the left table owns the overlap instead of
+        # exposing a dark value-bar strip through its right cap.
         canvas.alpha_composite(
             slots[state][1],
             (
                 table_x + REDEFINE_RIGHT_SLOT_OFFSET[0],
                 table_y + REDEFINE_RIGHT_SLOT_OFFSET[1],
             ))
-        _draw_text(
-            canvas,
-            row_font,
-            label,
-            (
-                base_x + REDEFINE_ACTION_TEXT_OFFSET[0],
-                base_y + REDEFINE_ACTION_TEXT_OFFSET[1] +
-                REDEFINE_TEXT_RENDER_Y_BIAS,
-            ),
-            "left")
+        canvas.alpha_composite(
+            slots[state][0],
+            (table_x, table_y))
+        if include_action_text:
+            _draw_text(
+                canvas,
+                row_font,
+                label,
+                (
+                    base_x + REDEFINE_ACTION_TEXT_OFFSET[0],
+                    base_y + REDEFINE_ACTION_TEXT_OFFSET[1] +
+                    REDEFINE_TEXT_RENDER_Y_BIAS,
+                ),
+                "left",
+                REDEFINE_ACTION_TEXT_SCALE,
+                (255, 255, 255, 255))
         if include_key_text:
             _draw_text(
                 canvas,
@@ -1480,21 +1889,36 @@ def build_redefine_frame(
                 ),
                 "left")
 
-    canvas.alpha_composite(
-        _decode_named(buf, parsed, "FE_SCROLL_UP_SPRITE"),
-        (304, 80))
-    canvas.alpha_composite(
-        _decode_named(buf, parsed, "FE_SCROLL_DOWN_SPRITE"),
-        (304, 350))
-    _draw_text(
-        canvas,
-        font,
-        "Warning: Some controls are undefined",
-        (320, 380))
+    # The initial viewport is at the top of the non-wrapping list, so retail
+    # suppresses the UpArrow until the list has scrolled.  The live checkpoint
+    # owns that state transition; this authored frame is the initial surface.
+    if materialized_row_offset:
+        canvas.alpha_composite(
+            _decode_named(buf, parsed, "FE_SCROLL_UP_SPRITE"),
+            (304, 80))
+    if materialized_row_offset + len(visible_rows) < len(REDEFINE_MATERIALIZED_ROWS):
+        canvas.alpha_composite(
+            _decode_named(buf, parsed, "FE_SCROLL_DOWN_SPRITE"),
+            (304, 350))
+    # All nine initial bindings are defined by the WASD profile, so the
+    # undefined-control warning is state-suppressed in the retail capture.
 
     # UI_HELPERS_REDEFINE contains Apply/Cancel and two 320-wide reset rows.
-    _draw_helper(canvas, assets["back"], font, (20, 440), "Cancel")
-    _draw_helper(canvas, assets["accept"], font, (362, 440), "Apply")
+    _draw_helper(
+        canvas,
+        assets["back"],
+        font,
+        (20, 440),
+        "Cancel",
+        include_text=include_helper_text)
+    _draw_helper(
+        canvas,
+        assets["accept"],
+        font,
+        (362, 440),
+        "Apply",
+        (128, 128, 128, 255),
+        include_text=include_helper_text)
     reset = _build_stretched(
         _decode_named(buf, parsed, "FE_BUTTON_OFF_L"),
         _decode_named(buf, parsed, "FE_BUTTON_OFF_M"),
@@ -1520,6 +1944,15 @@ def build_save_preview_viewport(frontend_bank):
     try:
         minimap = _decode_named(buf, parsed, SAVE_PREVIEW_MINIMAP)
         if minimap.size == ring.size:
+            # MINIMAP_STARTOAKVALE_FRONT_END is a square map texture, while
+            # the retail viewport clips it to the opaque footprint of
+            # UI_VIEW_RING_SMALL before drawing the ring on top.  Compositing
+            # the raw map directly leaves a visible rectangular halo outside
+            # the circular frame.
+            minimap = minimap.copy()
+            minimap.putalpha(ImageChops.multiply(
+                minimap.getchannel("A"),
+                ring.getchannel("A")))
             panel.alpha_composite(minimap)
     except ValueError:
         pass
@@ -1534,6 +1967,12 @@ def build_save_browser_frame(
         include_title_rule=True,
         include_viewport=True,
         include_highlight=True,
+        include_save_text=True,
+        include_save_info_text=True,
+        include_bottom_backdrop=True,
+        include_text_bottom=True,
+        include_text_area=True,
+        include_save_title_text=True,
         include_title_area=None):
     """Compose the first live save-list page from its recovered definitions."""
     if not 0 <= selected_index < len(SAVE_BROWSER_ROWS):
@@ -1551,7 +1990,8 @@ def build_save_browser_frame(
         (buf, parsed),
         font,
         "Saved Games",
-        include_title_area)
+        include_title_area,
+        include_save_title_text)
 
     # The selection highlight is the same TS_BUTTON L/M/R ornament as the
     # Options selected row (total width 64+120+64 = 248).  The live D3D9 path
@@ -1580,63 +2020,70 @@ def build_save_browser_frame(
     # text was centred on origin+60 (the left-sprite end), leaving it 64px left
     # of the highlight centre and reading as left-aligned.
     save_name_center_x = SAVE_LIST_ORIGIN[0] + selected.width / 2.0
-    for row, filename in enumerate(SAVE_BROWSER_ROWS):
-        _draw_text(
-            canvas,
-            row_font,
-            filename,
-            (
-                save_name_center_x,
-                SAVE_LIST_ORIGIN[1] + row * SAVE_ROW_STEP_Y,
-            ),
-            "center")
+    if include_save_text:
+        for row, filename in enumerate(SAVE_BROWSER_ROWS):
+            _draw_text(
+                canvas,
+                row_font,
+                filename,
+                (
+                    save_name_center_x,
+                    SAVE_LIST_ORIGIN[1] + row * SAVE_ROW_STEP_Y,
+                ),
+                "center")
 
     # File Information text area (UI_TEXT_AREA @ 0,254): use the exact
     # asymmetric UI_TABLE_TEXT_LEFT/RIGHT sprite maps. CTable's horizontal
     # edge is key 4; the decoded key-1 corners are BL and BR respectively.
-    text_area_segment = _decode_named(
-        buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
-    canvas.alpha_composite(
-        _build_table_horizontal(
-            text_area_segment,
-            text_area_segment,
-            _decode_named(buf, parsed, "UI_TEXTBOX_BL_SPRITE_FE"),
-            SAVE_TEXT_AREA_LEFT_WIDTH),
-        SAVE_TEXT_AREA_ORIGIN)
-    canvas.alpha_composite(
-        _build_table_horizontal(
-            _decode_named(buf, parsed, "UI_TEXTBOX_BR_SPRITE_FE"),
-            text_area_segment,
-            text_area_segment,
-            SAVE_TEXT_AREA_RIGHT[1]),
-        (SAVE_TEXT_AREA_RIGHT[0], SAVE_TEXT_AREA_ORIGIN[1]))
+    if include_text_area:
+        text_area_segment = _decode_named(
+            buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
+        canvas.alpha_composite(
+            _build_table_horizontal(
+                text_area_segment,
+                text_area_segment,
+                _decode_named(buf, parsed, "UI_TEXTBOX_BL_SPRITE_FE"),
+                SAVE_TEXT_AREA_LEFT_WIDTH),
+            SAVE_TEXT_AREA_ORIGIN)
+        canvas.alpha_composite(
+            _build_table_horizontal(
+                _decode_named(buf, parsed, "UI_TEXTBOX_BR_SPRITE_FE"),
+                text_area_segment,
+                text_area_segment,
+                SAVE_TEXT_AREA_RIGHT[1]),
+            (SAVE_TEXT_AREA_RIGHT[0], SAVE_TEXT_AREA_ORIGIN[1]))
 
     # UI_TEXT_BOTTOM is state-selected by ConstructFileDescription when the
     # selected save has a description. Its retail graphic is the 8x8 table
     # test horizontal rule (#89), stretched 160x1 at resolved (0,404).
-    text_bottom = _decode_named(buf, parsed, "UI_TABLE_TEST_H_T_FE")
-    text_bottom = text_bottom.resize((text_bottom.width * 160, text_bottom.height))
-    canvas.alpha_composite(text_bottom, SAVE_TEXT_BOTTOM_ORIGIN)
+    if include_text_bottom:
+        text_bottom = _decode_named(buf, parsed, "UI_TABLE_TEST_H_T_FE")
+        text_bottom = text_bottom.resize((text_bottom.width * 160, text_bottom.height))
+        canvas.alpha_composite(text_bottom, SAVE_TEXT_BOTTOM_ORIGIN)
 
     # ConstructFileDescription installs the header + metadata children only after
     # selection metadata has been decoded (a runtime boundary not recovered yet).
     # Keep this visual checkpoint honest: show the recovered File Information
-    # header on its backdrop plus the current local profile label.
-    _draw_text(canvas, font, "File Information", (65, 261), "left")
-    _draw_text(
-        canvas,
-        row_font,
-        "Cornelio",
-        (95, 293),
-        "left")
+    # header on its backdrop plus the current local profile label.  The
+    # component/atlas route leaves these runtime strings transparent so the
+    # executable can submit the active profile value live.
+    if include_save_info_text:
+        _draw_text(canvas, font, "File Information", (65, 261), "left")
+        _draw_text(
+            canvas,
+            row_font,
+            "Cornelio",
+            (95, 293),
+            "left")
     _draw_helper(canvas, assets["back"], font, (20, 420), "Back")
 
     # UI_BOTTOM_BACKDROP is a 4x4 half-alpha black frontend texture (graphic
     # 98), stretched 160x62 at (0,292). It is the final static child in the
     # saved-games root at layer 5; the live preview quad still follows it.
-    bottom_backdrop = _decode_named(buf, parsed, "HUD_TEXTBOX_BACK_FE")
-    bottom_backdrop = bottom_backdrop.resize((640, 248))
-    canvas.alpha_composite(bottom_backdrop, SAVE_BOTTOM_BACKDROP_ORIGIN)
+    if include_bottom_backdrop:
+        bottom_backdrop = _decode_named(buf, parsed, "HUD_TEXTBOX_BACK_FE")
+        bottom_backdrop = bottom_backdrop.resize((640, 248))
+        canvas.alpha_composite(bottom_backdrop, SAVE_BOTTOM_BACKDROP_ORIGIN)
 
     # Save-preview viewport (UI_VIEW_RING_SMALL @ 314,37): a region minimap
     # framed by the ring ornament, on the right of the screen.  It is the LAST
@@ -1879,7 +2326,8 @@ def build_options_sheet(
         include_selected_button=True,
         include_options_text=True,
         include_options_row_atlas=False,
-        include_save_title_area=None):
+        include_save_title_area=None,
+        include_detail_title_text=True):
     if include_save_title_area is None:
         include_save_title_area = include_title_rule
     frames = [
@@ -1899,26 +2347,38 @@ def build_options_sheet(
             "Gameplay Options",
             GAMEPLAY_ROWS,
             tuple(90 + row * 30 for row in range(len(GAMEPLAY_ROWS))),
-            include_title_rule),
+            include_title_rule,
+            include_detail_title_text,
+            not include_options_row_atlas,
+            not include_options_row_atlas),
         build_settings_frame(
             frontend_bank,
             font_bank,
             "Audio Options",
             AUDIO_ROWS,
-            (130, 190, 250),
-            include_title_rule),
+            (180, 210, 240),
+            include_title_rule,
+            include_detail_title_text,
+            not include_options_row_atlas,
+            not include_options_row_atlas),
         build_settings_frame(
             frontend_bank,
             font_bank,
             "Video Options",
             VIDEO_ROWS,
             tuple(90 + row * 30 for row in range(len(VIDEO_ROWS))),
-            include_title_rule),
+            include_title_rule,
+            include_detail_title_text,
+            not include_options_row_atlas,
+            not include_options_row_atlas),
         build_redefine_frame(
             frontend_bank,
             font_bank,
             include_key_text=False,
-            include_title_rule=include_title_rule),
+            include_action_text=not include_options_row_atlas,
+            include_title_rule=include_title_rule,
+            include_title_text=include_detail_title_text,
+            include_helper_text=not include_options_row_atlas),
     ))
     # The oracle sheet (include_options_row_atlas=False) bakes the preview
     # viewport into each save frame as ground truth.  The component/atlas sheet
@@ -1933,7 +2393,14 @@ def build_options_sheet(
             include_title_rule,
             include_viewport=not include_options_row_atlas,
             include_highlight=not include_options_row_atlas,
-            include_title_area=include_save_title_area)
+            include_save_text=not include_options_row_atlas,
+            include_save_info_text=not include_options_row_atlas,
+            include_bottom_backdrop=not include_options_row_atlas,
+            include_text_bottom=not include_options_row_atlas,
+            include_text_area=not include_options_row_atlas,
+            include_save_title_text=not include_options_row_atlas,
+            include_title_area=(
+                include_save_title_area and not include_options_row_atlas))
         for selected in range(SAVE_BROWSER_FRAME_COUNT))
     sheet = Image.new(
         "RGBA",
@@ -1992,6 +2459,56 @@ def build_options_sheet(
     buf, parsed = load_big(frontend_bank)
     font = load_font(font_bank, "ENG_ARIAL_24")
     assets = _option_assets(buf, parsed)
+    if include_options_row_atlas:
+        bottom_backdrop_source = _decode_named(
+            buf, parsed, "HUD_TEXTBOX_BACK_FE")
+        source_x, source_y = SAVE_BOTTOM_BACKDROP_ATLAS_ORIGIN
+        if (
+                source_x + bottom_backdrop_source.width > sheet.width or
+                source_y + bottom_backdrop_source.height > sheet.height):
+            raise ValueError("save bottom-backdrop source does not fit component sheet")
+        sheet.alpha_composite(
+            bottom_backdrop_source,
+            SAVE_BOTTOM_BACKDROP_ATLAS_ORIGIN)
+        text_bottom_source = _decode_named(
+            buf, parsed, "UI_TABLE_TEST_H_T_FE")
+        source_x, source_y = SAVE_TEXT_BOTTOM_ATLAS_ORIGIN
+        if (
+                source_x + text_bottom_source.width > sheet.width or
+                source_y + text_bottom_source.height > sheet.height):
+            raise ValueError("save text-bottom source does not fit component sheet")
+        sheet.alpha_composite(
+            text_bottom_source,
+            SAVE_TEXT_BOTTOM_ATLAS_ORIGIN)
+        text_area_middle = _decode_named(
+            buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
+        text_area_bl = _decode_named(
+            buf, parsed, "UI_TEXTBOX_BL_SPRITE_FE")
+        text_area_br = _decode_named(
+            buf, parsed, "UI_TEXTBOX_BR_SPRITE_FE")
+        for source, origin in (
+                (text_area_middle, SAVE_TEXT_AREA_MIDDLE_ATLAS_ORIGIN),
+                (text_area_bl, SAVE_TEXT_AREA_BL_ATLAS_ORIGIN),
+                (text_area_br, SAVE_TEXT_AREA_BR_ATLAS_ORIGIN)):
+            source_x, source_y = origin
+            if (
+                    source_x + source.width > sheet.width or
+                    source_y + source.height > sheet.height):
+                raise ValueError("save text-area source does not fit component sheet")
+            sheet.alpha_composite(source, origin)
+        title_area_tl = _decode_named(
+            buf, parsed, "UI_TEXTBOX_TL_SPRITE_FE")
+        title_area_tr = _decode_named(
+            buf, parsed, "UI_TEXTBOX_TR_SPRITE_FE")
+        for source, origin in (
+                (title_area_tl, SAVE_TITLE_AREA_TL_ATLAS_ORIGIN),
+                (title_area_tr, SAVE_TITLE_AREA_TR_ATLAS_ORIGIN)):
+            source_x, source_y = origin
+            if (
+                    source_x + source.width > sheet.width or
+                    source_y + source.height > sheet.height):
+                raise ValueError("save title-area source does not fit component sheet")
+            sheet.alpha_composite(source, origin)
     tile_index = 0
     for screen_values in CONTROL_VALUE_GROUPS:
         for row_values in screen_values:
@@ -1999,7 +2516,11 @@ def build_options_sheet(
                 column = tile_index % CONTROL_ATLAS_COLUMNS
                 tile_row = tile_index // CONTROL_ATLAS_COLUMNS
                 sheet.alpha_composite(
-                    _build_control_tile(font, assets, value),
+                    _build_control_tile(
+                        font,
+                        assets,
+                        value,
+                        include_text=not include_options_row_atlas),
                     (
                         CONTROL_ATLAS_ORIGIN_X +
                         column * CONTROL_TILE_SIZE[0],
@@ -2021,12 +2542,14 @@ def build_options_sheet(
                 REDEFINE_TEXT_RENDER_Y_BIAS,
             ),
             "left",
-            2.0 / 3.0)
-        if key_index == 7:
-            alpha = line.getchannel("A")
-            line = Image.new(
-                "RGBA", REDEFINE_KEY_TILE_SIZE, (255, 255, 0, 0))
-            line.putalpha(alpha)
+            1.0)
+        alpha = line.getchannel("A")
+        line = Image.new(
+            "RGBA",
+            REDEFINE_KEY_TILE_SIZE,
+            (255, 255, 0, 0) if key_index == 7 else (255, 255, 255, 0),
+        )
+        line.putalpha(alpha)
         key_tile.alpha_composite(add_outline(line, 1))
         sheet.alpha_composite(
             key_tile,
@@ -2059,6 +2582,30 @@ def build_options_sheet(
                 expected_origin[1] + profile_atlas.height > sheet.height):
             raise ValueError("profile glyph atlas does not fit component sheet")
         sheet.alpha_composite(profile_atlas, expected_origin)
+        title_font = load_font(font_bank, "ENG_ARIAL_24")
+        title_atlas = title_font["atlas"]
+        title_origin = DETAIL_TITLE_GLYPH_ATLAS_ORIGIN
+        if title_atlas.size != DETAIL_TITLE_GLYPH_ATLAS_SIZE:
+            raise ValueError(
+                "detail title glyph atlas has unexpected dimensions: %r" %
+                (title_atlas.size,))
+        if (
+                title_origin[0] + title_atlas.width > sheet.width or
+                title_origin[1] + title_atlas.height > sheet.height):
+            raise ValueError("detail title glyph atlas does not fit component sheet")
+        sheet.alpha_composite(title_atlas, title_origin)
+        redefine_font = load_font(font_bank, "ENG_ARIAL_12")
+        redefine_atlas = redefine_font["atlas"]
+        redefine_origin = REDEFINE_GLYPH_ATLAS_ORIGIN
+        if redefine_atlas.size != REDEFINE_GLYPH_ATLAS_SIZE:
+            raise ValueError(
+                "Redefine glyph atlas has unexpected dimensions: %r" %
+                (redefine_atlas.size,))
+        if (
+                redefine_origin[0] + redefine_atlas.width > sheet.width or
+                redefine_origin[1] + redefine_atlas.height > sheet.height):
+            raise ValueError("Redefine glyph atlas does not fit component sheet")
+        sheet.alpha_composite(redefine_atlas, redefine_origin)
 
     return sheet
 
@@ -2066,7 +2613,7 @@ def build_options_sheet(
 def _bake_detail_hover_overlays(sheet, font, assets):
     # Arrows: full 200x30 control tiles carrying only the HOVERED arrow at the
     # SAME local offset as the baked control-tile arrow (left 8, right 162), so
-    # the overlay pixel-aligns with the OFF arrow when drawn over design x=300.
+    # the overlay pixel-aligns with the OFF arrow when drawn over design x=400.
     left_hover_tile = Image.new(
         "RGBA", DETAIL_ARROW_HOVER_TILE_SIZE, (0, 0, 0, 0))
     left_hover_tile.alpha_composite(assets["left_arrow_hover"], (8, 0))
@@ -2100,9 +2647,11 @@ def _bake_detail_hover_overlays(sheet, font, assets):
     fw, fh = DETAIL_FOOTER_HOVER_TILE_SIZE
     for glyph, label, design_origin, atlas_y in footer_specs:
         # design_origin == glyph top-left == (parent_x, parent_y-16).
-        parent = (design_origin[0], design_origin[1] + 16)
         footer_canvas = Image.new("RGBA", CANVAS_SIZE, (0, 0, 0, 0))
-        _draw_helper(footer_canvas, glyph, font, parent, label)
+        # The label is emitted by the live component text path. Keep this
+        # hover overlay to the ON-state glyph so the label cannot be doubled
+        # when the pointer enters the helper.
+        footer_canvas.alpha_composite(glyph, design_origin)
         footer_tile = footer_canvas.crop((
             design_origin[0],
             design_origin[1],
@@ -2114,13 +2663,22 @@ def _bake_detail_hover_overlays(sheet, font, assets):
             (DETAIL_HOVER_ATLAS_ORIGIN_X, atlas_y))
 
 
-def _draw_helper(canvas, image, font, parent, text):
-    canvas.alpha_composite(image, (parent[0], parent[1] - 16))
-    _draw_text(
+def _draw_helper(
         canvas,
+        image,
         font,
+        parent,
         text,
-        (parent[0] + 128, parent[1] + 5))
+        text_colour=None,
+        include_text=True):
+    canvas.alpha_composite(image, (parent[0], parent[1] - 16))
+    if include_text:
+        _draw_text(
+            canvas,
+            font,
+            text,
+            (parent[0] + 128, parent[1] + 5),
+            colour=text_colour)
 
 
 def build_helper_sheet(frontend_bank, font_bank):
@@ -2180,7 +2738,8 @@ def build_helper_sheet(frontend_bank, font_bank):
             frontend_bank,
             font_bank,
             hovered_index=row,
-            include_key_text=False)
+            include_key_text=False,
+            include_action_text=False)
         base_y = REDEFINE_LIST_ORIGIN[1] + row * REDEFINE_ROW_STEP_Y
         strip_top = (
             base_y +
@@ -2238,6 +2797,7 @@ def main():
     parser.add_argument("--credits-output")
     parser.add_argument("--profiles-output")
     parser.add_argument("--components-output")
+    parser.add_argument("--redefine-scroll-pages-output")
     parser.add_argument("--title-segment-output")
     parser.add_argument("--button-left-output")
     parser.add_argument("--button-middle-output")
@@ -2277,6 +2837,10 @@ def main():
         profiles = build_profiles_screen_sheet(
             args.frontend_bank, args.font_bank)
         profiles.save(args.profiles_output)
+    if args.redefine_scroll_pages_output:
+        scroll_pages = build_redefine_scroll_pages(
+            args.frontend_bank, args.font_bank)
+        scroll_pages.save(args.redefine_scroll_pages_output)
     component_output = ""
     if args.components_output:
         components = build_options_sheet(
@@ -2286,7 +2850,8 @@ def main():
             include_selected_button=False,
             include_options_text=False,
             include_options_row_atlas=True,
-            include_save_title_area=True)
+            include_save_title_area=True,
+            include_detail_title_text=False)
         components.save(args.components_output)
         buf, parsed = load_big(args.frontend_bank)
         title_segment = _decode_named(
@@ -2328,6 +2893,30 @@ def main():
             button_middle,
             button_right,
             120)
+        save_row_font = load_font(args.font_bank, "ENG_ARIAL_16")
+        save_title_font = load_font(args.font_bank, "ENG_ARIAL_24")
+        text_area_middle = _decode_named(
+            buf, parsed, "UI_TEXTBOX_MIDDLE_FE_SPRITE")
+        text_area_left = _build_table_horizontal(
+            text_area_middle,
+            text_area_middle,
+            _decode_named(buf, parsed, "UI_TEXTBOX_BL_SPRITE_FE"),
+            SAVE_TEXT_AREA_LEFT_WIDTH)
+        text_area_right = _build_table_horizontal(
+            _decode_named(buf, parsed, "UI_TEXTBOX_BR_SPRITE_FE"),
+            text_area_middle,
+            text_area_middle,
+            SAVE_TEXT_AREA_RIGHT[1])
+        title_area_left = _build_table_horizontal(
+            text_area_middle,
+            text_area_middle,
+            _decode_named(buf, parsed, "UI_TEXTBOX_TL_SPRITE_FE"),
+            SAVE_TITLE_AREA_LEFT_WIDTH)
+        title_area_right = _build_table_horizontal(
+            _decode_named(buf, parsed, "UI_TEXTBOX_TR_SPRITE_FE"),
+            text_area_middle,
+            text_area_middle,
+            SAVE_TITLE_AREA_RIGHT[1])
         for frame_index in range(OPTIONS_SHEET_FRAME_COUNT):
             composed = Image.new(
                 "RGBA", CANVAS_SIZE, (0, 0, 0, 0))
@@ -2369,9 +2958,126 @@ def main():
                 component_left + CANVAS_SIZE[0],
                 component_top + CANVAS_SIZE[1],
             )))
+            if frame_index >= SAVE_SCREEN_FRAME_BASE:
+                # The title frame is a separate asymmetric table family; both
+                # its table artwork and Saved Games text are recomposed as
+                # live geometry in the executable path.
+                composed.alpha_composite(
+                    title_area_left,
+                    SAVE_TITLE_AREA_ORIGIN)
+                composed.alpha_composite(
+                    title_area_right,
+                    (SAVE_TITLE_AREA_RIGHT[0], SAVE_TITLE_AREA_ORIGIN[1]))
+                _draw_text(
+                    composed,
+                    save_title_font,
+                    "Saved Games",
+                    HEADER_TEXT_POSITION,
+                    "left")
+                # UI_TEXT_AREA is a live table family in the executable; add
+                # its asymmetric left/right surfaces before runtime text.
+                composed.alpha_composite(
+                    text_area_left,
+                    SAVE_TEXT_AREA_ORIGIN)
+                composed.alpha_composite(
+                    text_area_right,
+                    (SAVE_TEXT_AREA_RIGHT[0], SAVE_TEXT_AREA_ORIGIN[1]))
+                # Save row labels are live ENG_ARIAL_16 glyph quads in the
+                # executable; mirror that layer in the atlas recomposition
+                # proof after the static component cell is attached.
+                save_name_center_x = (
+                    SAVE_LIST_ORIGIN[0] + save_highlight.width / 2.0)
+                for row, filename in enumerate(SAVE_BROWSER_ROWS):
+                    _draw_text(
+                        composed,
+                        save_row_font,
+                        filename,
+                        (
+                            save_name_center_x,
+                            SAVE_LIST_ORIGIN[1] + row * SAVE_ROW_STEP_Y,
+                        ),
+                        "center")
+                # File Information and the active profile line are runtime
+                # strings as well; mirror their live glyph layer here so the
+                # component recomposition remains an exact oracle proof.
+                _draw_text(
+                    composed,
+                    save_title_font,
+                    "File Information",
+                    (65, 261),
+                    "left")
+                _draw_text(
+                    composed,
+                    save_row_font,
+                    "Cornelio",
+                    (95, 293),
+                    "left")
+                text_bottom = _decode_named(
+                    buf, parsed, "UI_TABLE_TEST_H_T_FE")
+                text_bottom = text_bottom.resize(
+                    (text_bottom.width * 160, text_bottom.height))
+                composed.alpha_composite(
+                    text_bottom,
+                    SAVE_TEXT_BOTTOM_ORIGIN)
+                bottom_backdrop = _decode_named(
+                    buf, parsed, "HUD_TEXTBOX_BACK_FE").resize((640, 248))
+                composed.alpha_composite(
+                    bottom_backdrop,
+                    SAVE_BOTTOM_BACKDROP_ORIGIN)
             if frame_index < len(OPTIONS_ROWS):
                 for row_layer in option_row_layers:
                     composed.alpha_composite(row_layer)
+            if 4 <= frame_index < SAVE_SCREEN_FRAME_BASE:
+                # Detail titles are deliberately live in the component atlas
+                # path.  Re-add the profile-less retail title here for the
+                # zero-dynamic-state recomposition proof; the executable adds
+                # the active profile prefix through its runtime glyph path.
+                title_font = load_font(args.font_bank, "ENG_ARIAL_24")
+                _draw_text(
+                    composed,
+                    title_font,
+                    ("Gameplay Options", "Audio Options", "Video Options",
+                     "Redefine Keys")[frame_index - 4],
+                    HEADER_TEXT_POSITION,
+                    "left")
+                if frame_index < 7:
+                    detail_rows = (
+                        GAMEPLAY_ROWS,
+                        AUDIO_ROWS,
+                        VIDEO_ROWS,
+                    )[frame_index - 4]
+                    detail_y = (
+                        tuple(90 + row * 30 for row in range(len(GAMEPLAY_ROWS))),
+                        (180, 210, 240),
+                        tuple(90 + row * 30 for row in range(len(VIDEO_ROWS))),
+                    )[frame_index - 4]
+                    for row, y in zip(detail_rows, detail_y):
+                        _draw_text(
+                            composed,
+                            title_font,
+                            row[0],
+                            (132, y + 2),
+                            "left")
+                _draw_text(
+                    composed,
+                    title_font,
+                    "Cancel",
+                    (148, 445),
+                    "center")
+                if frame_index != 7:
+                    _draw_text(
+                        composed,
+                        title_font,
+                        "Defaults",
+                        (320, 405),
+                        "center")
+                _draw_text(
+                    composed,
+                    title_font,
+                    "Apply",
+                    (490, 445),
+                    "center",
+                    colour=(128, 128, 128, 255))
             if frame_index >= SAVE_SCREEN_FRAME_BASE:
                 # Reproduce the live save-preview viewport path exactly: the live
                 # cell-background quads SKIP the 256x256 ring rect (drawn as four

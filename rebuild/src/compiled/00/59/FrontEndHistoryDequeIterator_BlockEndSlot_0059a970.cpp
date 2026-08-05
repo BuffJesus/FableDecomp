@@ -11,14 +11,9 @@ struct FrontEndHistoryDequeIterator_0059a970
     void*** node;
 };
 
-extern "C" __declspec(naked)
+extern "C"
 void*** __cdecl FrontEndHistoryDequeIterator_BlockEndSlot_0059a970(
-    FrontEndHistoryDequeIterator_0059a970*)
+    FrontEndHistoryDequeIterator_0059a970* iterator)
 {
-    __asm
-    {
-        mov eax, dword ptr [esp + 4]
-        add eax, 8
-        ret
-    }
+    return &iterator->last;
 }

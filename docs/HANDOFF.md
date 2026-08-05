@@ -1,9 +1,306 @@
 # HANDOFF — resume here
 
-*Last updated: 2026-08-02 (GFMain 257/257 direct calls proven; all ten
+## Resume checkpoint — retail frontend visual pass (2026-08-05)
+
+This is the exact state to resume from tomorrow. The retail reference set is
+`resources/UIScreenshots(Retail)` at 1024x768. The default smoke harness opens
+a maximized 1280x720 client window for interaction coverage; adding
+`-VerifyRetailReferenceSize` switches to a 1024x768 client and saves detail
+screenshots as client-area PNGs suitable for direct layout comparison.
+
+### Latest parity checkpoint — 2026-08-05
+
+The latest state-matched pass made four targeted visual corrections:
+
+- Redefine submits the right value table before the wider left rounded table,
+  so the left cap owns the intentional overlap instead of bleeding into the
+  right field.
+- Live detail glyphs now receive the missing dark retail-style halo. The live
+  path uses a bounded two-quad approximation because the full eight-neighbor
+  version exceeds the fixed Render2D scratch queue; this remains a visual
+  approximation, not a final font-purity claim.
+- Saved Games multiplies the raw minimap alpha by the decoded ring alpha before
+  compositing, removing the square source-texture halo outside the circular
+  viewport.
+- Saved Games row names now follow the live ENG_ARIAL_16 glyph path. The
+  1664-wide component save cell leaves AutoSave and Manual - Save1..3
+  transparent; D3D9 submits them centered at `(134,90 + row*30)`, while the
+  1024-wide fallback retains the baked labels. The Python component
+  recomposition remains pixel-identical.
+- The Saved Games File Information header and active-profile line now use the
+  live ENG_ARIAL_24/16 glyph paths as well. Native save-description metadata
+  remains outside this visual checkpoint's ownership boundary.
+- The authored 4x4 `HUD_TEXTBOX_BACK_FE` bottom backdrop is now sampled from
+  the component-atlas tail and emitted as a live 640x248 Render2D quad; its
+  static fallback remains intact in the 1024-wide oracle.
+- The authored `UI_TABLE_TEST_H_T_FE` 8x8 rule is also sampled from the atlas
+  tail and emitted live as the 160x1 line at design `(0,404)`.
+- The asymmetric `UI_TEXT_AREA` tables now use six live atlas quads matching
+  the recovered left/right sprite spans; the live viewport still covers the
+  same ring region last.
+- Redefine scrolled-page presents now use expanded D3D9 vertex/record staging
+  queues. Previously the page-atlas transition could clear the backbuffer and
+  leave only the forest backdrop in the saved reference capture; the full
+  1024x768 page set now presents the page UI before comparison.
+- The `UI_TITLE_AREA` frame now follows the same six-quad live path with its
+  recovered TL/TR corner sprites; the “Saved Games” title now follows the live
+  ENG_ARIAL_24 glyph path as well.
+- Redefine row labels and key values now use the recovered ENG_ARIAL_12
+  atlas/metrics in the live component texture; the title and footer remain
+  on ENG_ARIAL_24. Reference-size RGB MAE improved to 9.44 on the initial
+  page and 13.81 on the clamped final page.
+
+Verified after those changes: focused frontend renderer suite **50/50**,
+full decomp/render discovery **109/109**, and Release bootstrap/visual
+checkpoint pass. The full reference-size interaction smoke now passes all
+routes, including `save-highlight-delta`, Redefine page hover/off-page remap,
+and the detail footer/arrow paths. The latest captures are in
+`rebuild/build/bootstrap-Release/`, including
+`frontend-saved-games-initial-smoke.png`.
+
+Resume visual work with slider placement, remaining exact font filtering, and
+same-state retail captures. Fullscreen ownership, normal backdrop timing, and
+promotion from the authored D3D9/component bridge remain explicit purity
+boundaries.
+
+- Retail bank/layout inspection confirmed the option arrows are frontend
+  `GraphicIndex` 380/379, resolving to `FE_SCROLL_DOWN/UP_SPRITE`, with the
+  compiled child `Angle=-0.25`. The renderer now applies that serialized
+  quarter-turn; Gameplay/Audio/Video value arrows are visibly left/right like
+  retail. Hover variants use the corresponding 381/382 bank entries.
+- Retail option CTable geometry is now source-backed: detail left final size
+  `64 + 180 + 64 = 304x32`, detail right `16 + 120 + 16 = 144x32`, Redefine
+  left `408x32`, and Redefine right `240x32`. The detail list parent `(100,y)`
+  transform is preserved in the Python renderer and live x=400 control origin.
+- The Release build passes after the arrow/title/text-state work. Focused
+  renderer/comparison tests are now **50/50**; the full decomp/render test
+  discovery is **109/109**. The Render2D submission now reserves 16 texture
+  flushes and 4096 batch-plan events, allowing the scrolled Redefine atlas to
+  coexist with live helper/text batches. The save highlight is emitted after
+  the save-cell backdrop so its state delta remains visible.
+- Redefine's recovered 44-row expanded metadata is now packed into a dedicated
+  3200x3360 atlas, embedded as resource 125, uploaded through its own D3D9
+  texture, and selected from the native render path for logical list positions
+  1..30. The smoke harness now walks both the first scroll page and the
+  clamped final page, verifies the final Down arrow is suppressed, and sends
+  a real WM_MOUSEWHEEL event through the Redefine list viewport. The first
+  page remains the existing live path. The scrolled atlas is
+  an explicitly diagnostic bridge: stable recovered keys and mouse controls use
+  retail-facing labels, while unresolved OEM/reserved records retain
+  `K:...` notation. Scrolled row hover now remains live over the atlas, but
+  final-page transparent rows are excluded from hit-testing; this does not yet
+  claim complete localized retail binding parity. Native capture/remapping now
+  uses the full 44-row transaction state, maps logical ActionOrder children to
+  expanded rows, and overlays changed supported key tiles over scrolled pages;
+  unresolved OEM/reserved labels remain static.
+- The expanded redefine bridge now matches the retail `AreAllowedToCoexist`
+  groups `{8,31,45}` and `{26,86}` and applies the recovered
+  `IsRedefinableKey` filter for routed inputs. Profile persistence remains an
+  explicit manager boundary.
+- Saved-row activation now has a tested boundary resolver for the recovered
+  `0x11` load and `0xDC` invalid actions. The visual checkpoint intentionally
+  stops before world loading and does not synthesize a manager transition.
+- Detail-screen and Redefine helper geometry now comes from shared decoded
+  definition records: rows/defaults, arrow caps, footer ON tiles, reset
+  controls, list mouse area, value overlays, and hover strips. The checkpoint
+  hit-tests and D3D9 overlays consume those records directly, preventing
+  drawn/clickable geometry drift.
+- The first detail text family is now live in the component path. Gameplay,
+  Audio, and Video row labels are carried by the shared decoded row records;
+  the 1664-wide component atlas leaves them transparent, and D3D9 emits
+  ENG_ARIAL_24 glyph quads from the recovered title atlas at the serialized
+  `(132,y+2)` origins. The 1024-wide fallback still uses the retained baked
+  labels. Focused generator recomposition, Release build, normal subscreen
+  smoke, and 1024x768 reference-size smoke pass.
+- String-valued Gameplay and Video control values now follow the same live
+  glyph path at the serialized control centre `(500,y)`. Component control
+  tiles retain their arrows and numeric slider/bar art but omit baked string
+  values; the fallback control atlas remains unchanged. Focused component
+  tests, Release build, normal subscreen smoke, and reference-size smoke pass.
+- Detail footer labels now use live glyph quads too: Cancel `(148,445)`,
+  Defaults `(320,405)`, and Apply `(490,445)`. Apply carries the decoded
+  disabled gray state until the detail transaction changes. Component hover
+  overlays now contain only the ON helper glyph, while the retained fallback
+  sheet keeps its composed labels. Both smoke modes and the Release build pass.
+- The detail-title regression is resolved at the source-backed atlas boundary.
+  Detail titles now use the serialized `ENG_ARIAL_24` font and a separate
+  256x256 atlas/metric table rendered at the authored two-thirds destination
+  scale; profile rows remain on `ENG_ARIAL_16`. A targeted
+  Change Profile -> load-profile -> Options proof renders the recovered
+  `<profile> - Gameplay Options` prefix, and the generated atlas UV/metric
+  contract is checked by the focused renderer suite. No baked title or
+  screenshot/bitmap workaround was added.
+- The visual checkpoint now has an explicit `--retail-frontend-reference-size`
+  launch contract and `-VerifyRetailReferenceSize` gate; it creates a 1024x768
+  client window for reference captures while preserving the 1280x720 default.
+- The smoke harness now saves the untouched client-area Redefine entry state as
+  `frontend-redefine-keys-initial-smoke.png` before hover/capture/reset proof;
+  the Gameplay/Video/Audio detail screenshot path now uses the same client-area
+  capture, so `frontend-gameplay-options-smoke.png` is also 1024x768 in
+  reference-size mode.
+  The same pass now emits `frontend-video-options-smoke.png` and
+  `frontend-audio-options-smoke.png` for direct screen-specific comparison.
+  Saved Games now emits client-area captures for both the initial AutoSave
+  state (`frontend-saved-games-initial-smoke.png`) and the first manual-save
+  state (`frontend-saved-games-smoke.png`).
+  Redefine now emits settled client-area captures for the intermediate
+  ActionOrder selections corresponding to retail `RedefineKeys2-4`, in
+  addition to the initial and clamped-final pages, enabling direct
+  alpha-aware comparison across the complete supplied five-image set.
+  `tools/compare_frontend_screenshots.py` now provides premultiplied-alpha
+  RGB/alpha metrics and optional heatmaps; the current reference-size RGB MAE
+  baseline is Redefine 17.22, Gameplay 16.96, Video 20.42, and Audio 27.36.
+  The shared Video control-atlas counts now match the authored value groups
+  (`3,4,3,4,4,4,18,2,4,3`), restoring the live Refresh Rate, Anti-Aliasing,
+  VSync, Effects, and Aspect Ratio labels instead of indexing later rows into
+  the wrong slider tiles.
+  Retail Resolution and Anti-Aliasing values are runtime text-slider state;
+  the supplied reference's 2560x1440/100 Hz/8X values therefore remain a
+  profile/display-state difference from the checkpoint's recovered
+  1024x768/60 Hz/OFF defaults, not a geometry mismatch.
+  That state comparison found and corrected the retail-disabled gray Apply
+  label. Reference-size mode now retains the decoded animation sheets while
+  selecting stable retail reference frames per detail screen (forest frame 3
+  for Gameplay/Video, forest frame 1 for Redefine, and coastal frame 0 for
+  Audio); the normal animated path is unchanged. Remaining capture differences
+  are profile/display state and native presentation ownership, not backdrop
+  timing noise or Redefine row geometry.
+   A component-atlas comparison then measured the Redefine action-name glyph
+   advances at approximately 9/8 of the raw static ENG_ARIAL_12 bake. The
+   component atlas now leaves those action labels transparent and the D3D9
+   path emits them from the recovered ENG_ARIAL_24 atlas at a measured 0.55
+   scale; the normal key-value slots now use the same live glyph path, while
+   the compact atlas remains available for unresolved bindings. This brings
+   the first and scrolled Redefine pages onto one live text path.
+   Focused tests (49/49), full discovery (108/108), Release build, and the
+   reference-size smoke pass after rebuild.
+- `-ReferenceProfileName <name>` now drives the recovered profile-list load
+  route before subscreen capture. For the supplied retail references, use
+  `-ReferenceProfileName Cornelio`; the row-0 New Profile entry is correctly
+  excluded from the loaded-directory index.
+- Remaining known parity blockers: fullscreen ownership/presentation, exact
+  timing parity for the normal animated backdrop, and promotion from the transitional
+  authored D3D9/component-atlas bridge
+  to native `CFrontEndManager`/`CNewFrontendGameComponent`/bank ownership.
+  The recovered `Init2` candidate proves retail 1024x768 but remains isolated;
+  do not claim native frontend purity until that ownership chain is linked.
+
+Useful resume commands:
+
+```powershell
+python -m unittest tools.decomp_pipeline.tests.test_render_fable_frontend_subscreens
+& .\rebuild\build_bootstrap.ps1 -Configuration Release
+& .\rebuild\smoke_visual_checkpoint.ps1 -VerifySubscreens
+& .\rebuild\smoke_visual_checkpoint.ps1 -VerifyRetailReferenceSize
+```
+
+Relevant files: `tools/render_fable_frontend_subscreens.py`,
+`rebuild/integration/visual_boot_d3d9.cpp`,
+`rebuild/integration/visual_boot_checkpoint.cpp`,
+`rebuild/integration/fable_visual_d3d9.h`, and
+`rebuild/smoke_visual_checkpoint.ps1`. Preserve the dirty worktree and do not
+reset unrelated changes.
+
+*Last updated: 2026-08-05 (Saved Games labels, title text, File Information
+text, backdrop/table layers, and post-cell highlight moved to live paths;
+canonical frontend refresh
+completed 21:05;
+GFMain 257/257 direct calls proven; all ten
 phases have every observed direct call closed; Phase 5 65/65; Phase 6
 61/61; all phases callable through final return; D3D9 visual checkpoint
 green).*
+
+## Canonical refresh checkpoint (2026-08-03)
+
+- The last completed generated dashboard reports 49,568 catalogued
+  functions, 5,643 verified functional or matching (11.384%), 3,112 exact
+  byte matches (6.278%), and 99.211% accepted analysis naming quality. These
+  figures are generated in `rebuild/COVERAGE.md` and published to `README.md`;
+  do not hand-edit the percentages.
+- The scheduled canonical refresh completed at 21:05 after prototype
+  recovery, candidate compilation, VC7.1 behavior tests, retail oracle export,
+  parity comparison, manifest rebuild, and generated README publication. The
+  former 0042DEC5 behavior-gate failure was only a standardized test-marker
+  mismatch; the candidate now passes with `PASS_0042dec5` and remains a
+  16/16-byte relocation-normalized match.
+- The refreshed candidate wave adds `CFrontEndManager::GetProfileNames @
+  0x005955AB` as a 558/558-byte relocation-normalized match with a passing
+  VC7.1 behavior gate. It remains isolated from the visual executable: the
+  body still depends on opaque retail string/file helper contracts and its
+  exact candidate is naked assembly. A typed free-function `__thiscall`
+  fixture was attempted and rejected by VC7.1 (`C4234`); no ABI shim or
+  guessed profile-manager integration was retained.
+- The exact profile enumeration contract is now recorded in
+  `work/frontend_re/CFrontEndManager_GetProfileNames_005955ab_contract.md`
+  and checked by `tools/validate_frontend_profile_names_contract.py`. The
+  retail body proves save-root `*` enumeration, `IsPathFile` rejection,
+  nested `*.bin` enumeration, `SplitPath`, and vector insertion; it does not
+  prove that the transitional visual bridge may substitute folder names.
+- The retail `CNewFrontendGameComponent::Draw @ 0x0042DF9E` coordinator is now
+  reconstructed as an isolated 478-byte VC7.1 candidate. Its relocation-
+  normalized object bytes match retail exactly, including both conditional
+  registration branches, and `FRONTEND_DRAW_0042DF9E_TEST PASS` verifies the
+  manager/Render2D/IME/display call order. It is intentionally not linked into
+  the visual executable yet: the native manager, component, definition-bank,
+  font-bank, and display lifetimes remain the promotion boundary.
+- `CNewFrontendGameComponent::Init2 @ 0x0042E98F` is also now an isolated
+  256-byte VC7.1 candidate with exact relocation-normalized parity. Its focused
+  gate verifies manager ownership/back-link, frontend-mode flag, graphics /
+  sound / input order, compressed font-bank stream setup, both bank-pointer
+  constructor seams, manager Init/Init2, and the retail 1024x768 display mode.
+  It remains isolated for the same lifetime reason; no synthetic manager or
+  bank object was introduced into the live checkpoint.
+- `CNewFrontendGameComponent::InitialiseEngine @ 0x0042E204` is now an
+  isolated 458-byte VC7.1 candidate with exact relocation-normalized parity.
+  Its fixture verifies primitive creation/reset, the `ENGINE` environment
+  definition, four autosave-name reads, writable engine-cache publication,
+  engine defaults/flags, and the three native primitive virtual calls. It is
+  not linked into the checkpoint until the shared native ownership chain is
+  present.
+- No runtime screenshot assets, synthetic bank state, or visual quads were
+  added in this pass. The live visual frontend remains an explicitly marked
+  transitional route until the recovered manager/component/bank lifetimes are
+  linked into the executable.
+- A typed C++ probe for `FrontEnd_FrameUpdate @ 0x0059672A` was deliberately
+  rejected: VC7.1 emitted 60 bytes versus retail's 57, with different register
+  allocation and null-mask instructions. The existing 57-byte byte-pure body
+  remains canonical; no compiler-shaped residue was promoted.
+- The purity audit confirms zero `__asm` occurrences in the promoted frontend
+  leaf set. It also confirms the live D3D9 checkpoint still contains the
+  explicitly transitional `AppendVisualQuad`/authored composite path and
+  comments referring to baked control composites; these remain the next
+  replacement boundary, not a claim of retail manager/component parity.
+- `CFrontEndManager::Init2 @ 0x00598A1C` now has a second source-backed
+  manifest at `work/frontend_re/manager_init2_used_key_manifest.tsv`. It
+  records all 24 recovered definitions in construction order with their exact
+  used keys and distinguishes direct components from screen children. The
+  names match the original 24-entry manifest; shared keys `0x05` and `0x16`
+  occur only where the retail decomp shows a component plus a child lookup.
+  `tools/validate_frontend_init2_manifest.py` passes and is now part of the
+  scheduled rebuild refresh gate. The companion
+  `manager_init2_resource_manifest.tsv` maps every definition to its installed
+  `frontend.bin` entry index, payload size, and definition-local index; the
+  validator currently passes all 24 retail-bank lookups.
+- `manager_init2_screen_children.tsv` records the decoded `Children` vectors
+  for the same 24 entries. The installed retail parser validates all 24
+  vectors, including the exact profiles, delete-profile, redefine-keys,
+  video-options, options, saved-games, quit, and About component graphs.
+- Foreground `smoke_visual_checkpoint.ps1 -VerifySubscreens` now passes
+  end-to-end after the controller-detail round-trip gate was corrected to
+  compare the state-bearing control band against a nearby animated-backdrop
+  band. Full-frame byte equality was invalid for this retail screen because
+  the forest/sunbeam layer is intentionally time-varying; the runtime route
+  was not changed. The pass covers controller row mutation and restoration,
+  Gameplay Cancel/Apply/Defaults, all detail-screen hover overlays, profiles,
+  About/Credits, quit, and boot exit.
+- The refreshed Release executable was rerun after the candidate wave and
+  passed the same complete visual smoke; the repository Python test suite is
+  also green at **90/90**.
+- The current read-only capture diagnostics confirm that visual sign-off is
+  still open: `options-diff.json` reports 613,453 / 786,432 pixels changed
+  (78.005%), and `redefine-diff.json` reports 583,526 / 786,432 (74.199%).
+  These are routing/presentation diagnostics, not acceptance results; the
+  authored `AppendVisualQuad` path remains blocked from parity sign-off.
 
 ## Current frontend parity continuation
 
@@ -18,7 +315,7 @@ green).*
 - The offline main-menu projection hides the optional LIVE child while keeping
   the compiled seven-child oracle intact; visible rows map to retail atlas
   frames `0,1,2,4,5,6` and retain the authored gap.
-- Focused verification after this continuation: Python frontend suite 35/35,
+- Focused verification after this continuation: Python frontend suite 37/37,
   both VC7.1 visual sources compile, the threaded-file behavior fixture passes,
   and the raw OpenRetailBank anchor remains untouched. The full bootstrap remains
   blocked by the strict `CThreadedFile::Open @ 0x0098E1E0` gate: the candidate is
@@ -622,13 +919,16 @@ green).*
   This public path includes the Lionhead/Microsoft/intro sequence;
   `--skip-boot-videos` is only the fast developer override.
 - The initial Redefine viewport is now generated like retail. Action 60
-  expands into Move Forward/Back/Left/Right with W/S/A/D before Attack,
+   expands into Move Forward/Left/Backward/Right with W/A/S/D before Attack,
   Block, Flourish, Run, and first-person targeting. Manual key capture,
   duplicate clearing, Cancel/Apply snapshots, action-284 arrow reset, and
   action-311 WASD reset are live.
 - Header rules use the single compiled `UI_TEXTBOX_MIDDLE` mapping; header
   text, key text, row highlights, and both 320x64 reset hover tables are
   centered and smoke-gated.
+- Initial detail/Redefine frames now tint the baked Apply label to the retail
+  disabled gray; the existing live Apply hover overlay remains white for the
+  enabled interaction state.
 - Particle/viewer evidence is consolidated in
   `docs/PARTICLE_LIGHTING_VIEWER_HANDOFF.md`: crossed billboards, padded UVs,
   blend state, shader-model 1.1 assembly, environment/RSA lookup rows, sky
@@ -938,15 +1238,20 @@ green).*
   `UI_FRONTEND_LIST_REDEFINE_KEYS_MENU.ActionMap/ActionOrder`, with bindings
   decoded from `FABLE_PC_CONTROL_SCHEME_GDD_WASD`. Its 280-pixel rounded
   action-name column, 220-pixel horizontal-bar key-value column, 26-pixel
-  rows, scroll arrows, undefined-control warning, and reset helpers come from
-  the compiled tree. The right component repeats
+  rows, state-dependent scroll arrows, undefined-control warning, and reset
+  helpers come from the compiled tree. The initial non-wrapping viewport hides
+  the UpArrow and warning when the nine WASD bindings are defined. The right
+  component repeats
   `FE_OPTIONS_HORIZONTAL_BAR_SPRITE`; it is not another `FE_SLOT_TEST_*`
   table. The generated row children use `ENG_ARIAL_12` at the serialized
   `(0,3)`/`(380,3)` offsets, the right table retains its `-3` y offset, and
   no extra vertical-centering bias is applied. `CText::Draw @ 0x0054EF00`
   rounds x/y independently, changes x only for alignment, and forwards y
   unchanged to `CEnginePrimitive2DText`; the static font renderer mirrors that
-  serialized top-origin contract. Hover swaps one complete 588x35 ON strip.
+  serialized top-origin contract. The action-name `ENG_ARIAL_12` atlas is
+  emitted at native geometry and white colour; the key values remain the live
+  control-tile atlas path with the same native geometry and white colour (the
+  capture prompt stays yellow). Hover swaps one complete 588x35 ON strip.
   Focused tests gate the component routing and both columns' retail text
   origins.
 - `-VerifySubscreens` now enters all four screens, verifies distinct live
@@ -958,11 +1263,10 @@ green).*
   `rebuild/build/bootstrap-Release/frontend-gameplay-options-smoke.png`.
 - The apparent first `Movement` action is a generated-row container, not one
   composite binding. `CRedefinerList::RefreshScriptThings @ 0x00556A40`
-  expands action 60 into subtypes 10–13, and `GetMovementActionText
-  @ 0x00558170` labels them Move Forward/Back/Left/Right. The live initial
-  viewport now uses W/S/A/D for those four rows before Attack, Block,
-  Flourish, Run, and Toggle First Person Targeting. This also moves retail's
-  allowed Mouse-2 coexistence group to generated rows 6–8. The two compiled
+  expands action 60 into four generated rows. The state-matched retail capture
+  orders them Move Forward/Left/Backward/Right with W/A/S/D, then shows the
+  full localized mouse labels `LEFT MOUSE BUTTON`, `MIDDLE MOUSE BUTTON`, and
+  `RIGHT MOUSE BUTTON`. The two compiled
   reset helpers are live as well: action 284 restores Up/Down/Left/Right and
   action 311 restores W/S/A/D, both within the Apply/Cancel transaction. Their
   320x64 ON tables are shown on hover with centered retail-font labels.
@@ -7134,17 +7438,17 @@ Advancing frontend P0 item 2 (Saved Games parity) in `render_fable_frontend_subs
 - **NEXT (unlocked, verified): collapse the 4 baked save frames to 1.** With the viewport AND highlight both live, the four save base frames are now pixel-identical (verified 2026-07-30). Collapsing them (build one save base instead of `range(len(SAVE_BROWSER_ROWS))`, drop the atlas frames 9-11, set the C++ save `overlayFrame` to the single base instead of `4 + g_SaveSelection`, adjust `SAVE_SCREEN_FRAME_BASE`/frame count/recomposition loop) removes 3 redundant frames and shrinks the 1664x3840 atlas. Structural frame-index change across visual_boot_d3d9.cpp + render_fable_frontend_subscreens.py; start it fresh. Other item-5 families still baked: save row NAMES (-> live text like item 17/19), File Information backdrop (-> reuse the title-segment rule path), Redefine/Gameplay option rows.
 - **Save-preview viewport is now a LIVE Render2D component (frontend P0 item 5, first migration).** The saved-games preview panel (UI_VIEW_RING_SMALL ring + region minimap, design (314,37), 256x256) no longer bakes into the frontend sheet as a static masked tile. `FableRenderVisualD3D9` emits it as a standalone quad drawn AFTER the title rule (retail panel-on-top order), reusing the already uploaded+attached `g_OptionsTexture` -- NO new texture, NO `FableInitialiseVisualD3D9` signature change, so the flat-white dual-chain gotcha cannot occur. Four save-cell background quads skip the 256x256 ring rect; the ring quad fills it once from the selected cell (both gated `g_OptionsWidth==1664`). The Python renderer bakes the oracle with the same punch-hole-then-composite-on-top order, builds the component sheet ring-free, and re-adds the panel as its own final recomposition layer, so the old title-overlap BAND-MASK is DELETED -> the ring body and minimap are a ZERO-MASK PIXEL_IDENTICAL invariant. `FableComputeSaveViewportAtlasRect` (fable_visual_d3d9.h) is the single source of truth for the atlas UV rect; SaveViewportQuads_test.cpp (FABLETLC_SAVE_VIEWPORT_ATLAS_RECT PASS) proves the C++ sample rect == the Python bake for all four selections. Commit 2f3c822; authored via a scout->design->implement->adversarial-review workflow. Next item-5 families: Redefine/Gameplay rows, or the save list itself.
 
-- **Redefine Keys full action list — decoded, name-gap confirmed blocked.**
+- **Redefine Keys full action list — decoded; scroll materialization remains.**
   The retail `UI_FRONTEND_LIST_REDEFINE_KEYS_MENU.ActionOrder` decodes to
   **31 action ids** (`REDEFINE_FULL_ACTION_ORDER`), not the 9 of the visible
   first page; action 60 fans out to W/A/S/D. Every id's default key binding
-  is sourced from `FABLE_PC_CONTROL_SCHEME_GDD_WASD`. The blocker for
-  rendering the off-page rows is the **EGameAction integer->display-name**
-  table: retail strips those strings and three sourcing passes have now
-  failed (two binary scans + a web pass — StrategyWiki/GameFAQs 403,
-  fabletlcmod wiki has no id->name table). Off-page rows stay unrendered
-  rather than assumption-labelled. Close via controls_def.hpp/inputkey.h
-  headers or a live in-game binding capture, NOT another binary scan.
+  is sourced from `FABLE_PC_CONTROL_SCHEME_GDD_WASD`. The local debug PDB
+  supplies the authoritative enum identifiers and the shipped English
+  `text.big` supplies every `TEXT_GUI_ACTION_*` display string, now recorded
+  in `REDEFINE_ACTION_ENUM_NAMES`, `REDEFINE_ACTION_DISPLAY_TEXT`, and the
+  34-row movement-expanded `REDEFINE_MATERIALIZED_ROWS` metadata.
+  The remaining work is rendering and masking those rows during live scrolling;
+  the initial nine-row capture remains the signed-off surface.
 
 - **File Information backdrop.** The File Information panel now renders its
   recovered `UI_TEXT_AREA` (0,254) rule: `UI_TABLE_TEXT_LEFT` (width 287) +
@@ -7299,23 +7603,21 @@ execution gate under `rebuild/runtime/openretailbank/`.
   **RELOCATION_MATCH**, 1565/1565 bytes with 44 relocations.
 - `link_smoke.py`: 32/32 objects compile and the strict DLL link reports 0 unresolved
   externals.
-- `runtime_probe.py` opens the installed `fonts.big` (53,822,286 bytes), confirms
-  3/3 contained-bank records and all five stored values per record against
+- `runtime_probe.py` opens the installed `frontend.big` (13,794,357 bytes), confirms
+  the single contained-bank record and all five stored values against
   `fable_bank_reader.h`.
 - The reconstructed threaded handle reports the exact bank length and reads every
-  oracle entry payload: **26/26 entries, 53,794,802 bytes, byte-for-byte equal**.
+  oracle entry payload: **394/394 entries, 13,287,366 bytes, byte-for-byte equal**.
 - The previously deferred faithful `CContainedBankMap::operator[]` fixture now passes
   under VC7.1 (`FABLETLC_CONTAINED_BANK_MAP_INDEX PASS`); its runtime map output also
-  matches all three real-bank records and their five stored values.
+  matches the `frontend.big` contained-bank record and its five stored values.
 - The `0x0099AED0` `CWideString` ring edge is now promoted in `link_manifest.tsv` to
   the canonical `rebuild/src/compiled` source (`RELOCATION_MATCH`); the ring split is
-  18 byte-exact / 9 faithful.
+  20 byte-exact / 7 faithful after the threaded-open promotion.
 - The `0x009AC530` `CContainedBankMap::operator[]` edge is likewise promoted after
   its canonical object gate (`156/156`, 5 relocations) and behavior fixture passed;
-  the ring split is now 19 byte-exact / 8 faithful.
 - The `0x009A9C80` counted-threaded-file reset edge is promoted after its canonical
-  object gate (`103/103`, 3 relocations) and ownership fixture passed; the ring split
-  is now 20 byte-exact / 7 faithful.
+  object gate (`103/103`, 3 relocations) and ownership fixture passed.
 
 The anchor source remains untouched and byte-pure. Host adaptations are isolated in
 `ring_thunks.cpp`, `runtime_globals.cpp`, and `runtime_helpers.cpp`; the link-only
@@ -7387,5 +7689,57 @@ retail `Scrolling=true, Wrapping=false` end boundaries; save lists retain
 their authored wrapping behavior. Redefine navigation tracks the full decoded
 31-child `ActionOrder` separately from the nine-row active key-capture state.
 The renderer still deliberately stops at the verified first nine Redefine
-labels because the retail EGameAction integer-to-display-name table remains
-stripped; no off-page names were guessed or baked.
+labels because the live scrolled viewport has not yet been materialized; no
+off-page names are guessed or baked.
+
+## Session addendum — 2026-08-03: frontend ABI readability gate
+
+`CFrontEndManager::ChangeStateFirstTime @ 0x005952C3` is now promoted as
+human-readable VC7.1 C++ rather than a naked function. The recovered vtable
+prefix places `SetState(long)` at slot `0xC0`; the compiled Release object is
+21 bytes with one relocation and matches the installed retail body exactly.
+Its real-object behavior fixture passes (`FSE2_005952c3_TEST PASS`), and the
+canonical bootstrap passes the relocation, startup, and render gates.
+
+`CFrontEndManager::GetInstance @ 0x00595582` is now promoted as readable C++
+too. Local size optimization plus an explicit failure branch makes VC7.1 emit
+retail's `pop ecx`, `jmp`, and `xor eax,eax` sequence exactly: 41 bytes and
+four relocations, with `FSE2_00595582_TEST PASS` in the canonical build. The
+decompiled `CFrontEndManager::CreateComponent @ 0x00594F94` wrapper is also
+promoted as a real typed `__thiscall` member over `CManager::CreateComponent`:
+21 bytes, two relocations, and `FSE2_00594f94_TEST PASS`. The
+`CNewFrontendGameComponent::LoadGame @ 0x00594F36` leaf is likewise typed C++:
+the virtual prepare, `+0x29` pending flag, and `+0x84` wide-string assignment
+match in 31 bytes with one relocation, and `FRONTEND_00594f36_TEST PASS`.
+The history deque `BlockSize @ 0x0059A9DC` and iterator `Current @ 0x0059AAE0`
+accessors are now readable C++ too: exact 4-byte and 3-byte retail bodies,
+zero relocations, and passing behavior fixtures. The adjacent `BlockEndSlot`,
+`NodeSlot`, `EndIterator`, and `BlockBegin` leaves are now typed field/address
+expressions as well, with their exact retail byte bodies gated in the
+canonical build. The live visual checkpoint is still explicitly
+authored/transitional and is not being called retail-pure until the recovered
+manager/component/bank lifetimes are wired.
+`Equal` and `SetNode` are now promoted through typed pointer comparison and
+field assignment as well: exact 18-byte and 23-byte retail bodies, zero
+relocations, and passing behavior fixtures. Ghidra decompilation confirms
+the next retail `Run` steps are frontend/text/shader bank opens followed by
+Init2, engine/frontend initialization, clear/swap, and state change. The
+verified OpenRetailBank closure remains isolated in its standalone runtime
+lane until that full dependency closure can be linked into the visual path
+without host substitutions.
+The duplicate template leaves `NodeSlot @ 0x0059AA0D` and `EndIterator @
+0x0059AA15` are also promoted as typed address expressions with exact 8-byte
+zero-relocation bodies and behavior gates.
+The deque map allocator cluster is now covered too: `Deallocate @ 0x0059A9F9`
+is exact readable C++ (20 bytes, one helper relocation), while `Allocate @
+0x0059A9E0` retains only its exact 25-byte assembly control-flow shape because
+VC7.1 folds equivalent readable C++ return paths and removes retail's explicit
+`eb 02` jump. Both behavior fixtures and the full Release gate pass.
+The recovered `Init2 @ 0x00598A1C` component-definition literals are recorded
+in `work/frontend_re/manager_init2_component_manifest.tsv`; a source check
+passes for all 24 entries against the Ghidra decompilation, including the
+retail `UI_FRONTEND_SCREEN_REDEFINE_KEYS_PC` definition.
+The `CCountedPointer<NUISystem::CAction>::Release @ 0x0059A994` probe recovered
+the real `CCPPointerInfo` callback dispatch (`+4` member-function address,
+action object at `+8` in ECX), but VC7.1 emits different clear and stack-cleanup
+instructions; it remains exact assembly and is not falsely promoted.

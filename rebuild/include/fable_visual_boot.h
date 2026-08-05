@@ -49,6 +49,22 @@ fable_u32 FABLE_FASTCALL FablePlanVisualFrontendSaveRows(
     FableUiSaveBrowserRow* rows,
     fable_u32 rowCapacity);
 
+struct FableUiSaveBrowserActionPlan
+{
+    fable_u32 action;
+    bool dispatch;
+};
+
+// Resolves the selected save row to its recovered CFrontEndManager action.
+// This is deliberately only an action-boundary helper: the validated 0x11
+// load action is reported but does not cross into world loading here, while
+// invalid rows retain the 0xdc action for the frontend error path.
+void FABLE_FASTCALL FablePlanVisualFrontendSaveAction(
+    const FableUiSaveBrowserRow* rows,
+    fable_u32 rowCount,
+    fable_u32 selection,
+    FableUiSaveBrowserActionPlan* plan);
+
 // Real save enumeration: each Fable TLC save is a profile subfolder of
 // <MyDocuments>\My Games\Fable\Saves\ containing an "AutoSave" primary blob (and
 // optional "AutoSave.qs" companion). This walks that directory and reports the

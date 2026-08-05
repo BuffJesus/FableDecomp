@@ -38,6 +38,7 @@ void FrontendManagerDispatchTestProcess(void* component, unsigned int event)
 
 int main()
 {
+    const float wheelTolerance = 0.000001f;
     unsigned int action = 0;
     unsigned int listEvent = 0;
     if (
@@ -57,9 +58,18 @@ int main()
     }
 
     if (
-        FableRetailFrontendMouseWheelMovementFromRaw(120) != 0.12f ||
-        FableRetailFrontendMouseWheelMovementFromRaw(-120) != -0.12f ||
-        FableRetailFrontendMouseWheelMovementFromRaw(1) != 0.001f ||
+        (FableRetailFrontendMouseWheelMovementFromRaw(120) - 0.12f >
+             wheelTolerance) ||
+        (FableRetailFrontendMouseWheelMovementFromRaw(120) - 0.12f <
+             -wheelTolerance) ||
+        (FableRetailFrontendMouseWheelMovementFromRaw(-120) + 0.12f >
+             wheelTolerance) ||
+        (FableRetailFrontendMouseWheelMovementFromRaw(-120) + 0.12f <
+             -wheelTolerance) ||
+        (FableRetailFrontendMouseWheelMovementFromRaw(1) - 0.001f >
+             wheelTolerance) ||
+        (FableRetailFrontendMouseWheelMovementFromRaw(1) - 0.001f <
+             -wheelTolerance) ||
         !FableRetailFrontendWheelAction(
             FableRetailFrontendMouseWheelMovementFromRaw(1),
             &action) ||
@@ -1353,6 +1363,41 @@ int main()
             0) != 3)
     {
         return 36;
+    }
+
+    FableUiSaveBrowserActionPlan saveAction = {};
+    FablePlanVisualFrontendSaveAction(
+        saveRows,
+        3,
+        0,
+        &saveAction);
+    if (
+        saveAction.action != FableUiSaveBrowserLoadAction ||
+        !saveAction.dispatch)
+    {
+        return 43;
+    }
+    FablePlanVisualFrontendSaveAction(
+        saveRows,
+        3,
+        2,
+        &saveAction);
+    if (
+        saveAction.action != FableUiSaveBrowserInvalidAction ||
+        saveAction.dispatch)
+    {
+        return 43;
+    }
+    FablePlanVisualFrontendSaveAction(
+        saveRows,
+        3,
+        3,
+        &saveAction);
+    if (
+        saveAction.action != FableUiSaveBrowserInvalidAction ||
+        saveAction.dispatch)
+    {
+        return 43;
     }
 
     fable_u32 previousControllerState = 0;

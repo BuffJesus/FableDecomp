@@ -3,12 +3,9 @@
 
 #include "fable_string.h"
 
-// --- Begin embedded copy of the authored candidate ------------------------
-// Kept in sync with
-// rebuild/src/compiled/00/98/CThreadedFile_Open_0098e1e0.cpp; the pipeline
-// harness links only this test translation unit, so the candidate body is
-// embedded directly instead of relying on a relative #include that would not
-// resolve once this file is copied into an isolated work directory.
+// The behavior fixture links the actual candidate object. These declarations
+// provide only the retail seams and test doubles; the Open body is not copied
+// into the fixture.
 
 #include "fable_threaded_file.h"
 
@@ -102,6 +99,7 @@ public:
 };
 
 // CThreadedFile::Open(CWideString const&, bool) @ 0x0098E1E0.
+#if 0
 bool CThreadedFile::Open(const CWideString& name, bool noCaching)
 {
     CWideStringSlot fullPath;
@@ -127,8 +125,8 @@ bool CThreadedFile::Open(const CWideString& name, bool noCaching)
     else
     {
         driveIsD = memcmp(
-            g_FableThreadedDDrive_0129A15C,
             &g_FableThreadedEmptyChar_0122D70E,
+            g_FableThreadedDDrive_0129A15C,
             3) == 0;
     }
 
@@ -160,7 +158,7 @@ bool CThreadedFile::Open(const CWideString& name, bool noCaching)
 
     return true;
 }
-// --- End embedded copy of the authored candidate --------------------------
+#endif
 
 namespace
 {
