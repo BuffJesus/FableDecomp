@@ -7953,3 +7953,63 @@ SCR still points at the `fd03f1b5` scratchpad, which persists; repoint if gone).
 Batch build templates: `build_batch8*.py`/`build_batch9*.py` in that scratchpad.
 Frontend/backdrop status unchanged (coastal structural boundary; see prior
 2026-08-06 addenda).
+
+---
+
+## 2026-08-07 — Gamepad-redefine patch groundwork + jump-table lander + crawl to batch61
+
+**Crawl.** Continued the binary-wide parity crawl through gen_batch61 (background
+agents). Batches 47-51 (+89), 52-56 (+82). Session decomp total ≈ 797+ landed
+byte-exact functions. gen_batch57-61 running (agent equipped to use the new
+jump-table lander). Ledger `tools/decomp_pipeline/crawl/gen_tried.txt` ≈ 1050
+addrs. The pure `CActionDoCreatureAction::GetActionName` ctor run is thinning;
+expect more `_Dest_val` tail-jmp forwarders, stdcall frame wrappers, real-member
+thiscall forwarders, bitfield getters (templates in the batch reports).
+
+**NEW TOOL — `tools/decomp_pipeline/verify_land_jumptable.py`.** Unblocks the
+embedded-jump-table class (dense `switch` -> `movzx idx,[bytetab]; jmp
+[eax*4+jmptab]` inline in .text). `verify_and_land` fails these two ways: objdump
+`-d` splits the body at every `$Lxxx` local label (leaf block = pre-`jmp` head
+only, e.g. `DIFFER(37v120)`) and elides relocated-to-zero table dwords as `...`.
+The new tool imports verify_and_land and swaps ONLY `obj_text` for a raw-COFF
+section extractor (reads .text symbol bytes start->next-non-`$`-symbol); the whole
+flag-sweep/mask/behavior/land flow is the untouched shared harness, so a crawl can
+keep using verify_and_land concurrently. Same CLI. Assumes function at .text
+offset 0 (true for single-fn objs). See CLAUDE.md gotcha.
+
+**Redefine reconstruction (Phase 2, byte-pure).** Landed RELOCATION_MATCH + PASS:
+- Earlier this session: OnLeftClicked 0x557850, OnHovered 0x557860, OnUnhovered
+  0x557880, OnDeactivate 0x556580, CancelSelection 0x557bd0.
+- Jump-table lane (via new tool): `CKeyRedefiner::GetSubTypeForAction` 0x557CA0
+  (device-type dispatch: 0x37/0x38 counter classes, 0x3c analog subtypes
+  0x0A-0x0D) and `AreAllowedToCoexist` 0x5578A0 (key-coexistence rule: actions
+  {0x08,0x1f,0x2d} share, {0x1a,0x56} share; else no). AAC needed `char` return +
+  `if(...)return 1;return 0;` per case to get retail's `mov al,1`x2 (byte) instead
+  of a merged `mov eax,1` (dword) — 4-byte diff otherwise.
+- `ClearList` 0x5567B0 DEFERRED — count-divide codegen finicky (8-byte element
+  `sub;sar 3` vs my earlier `void**` signed `/2`) AND the 64-virtual test struct;
+  low value, revisit later.
+- Remaining redefine targets (mostly jump-table, use the new lander): ChangeState
+  0x557C10 (state machine: calls 0x52cf40, 7-state jump table, vtable event
+  dispatch to global 0x13b8ac8, one state tail-jmps to CancelSelection+vfn),
+  UpdateKeyText 0x557A10, ClearDuplicateDefinitions 0x5580B0, OnLeftUnclicked
+  0x557AF0, GetSubTypeForAction siblings. Task #10 binding fns (larger, non-jump-
+  table): GetAssignedInputForAction 0x408C90 (imul /28 linear search),
+  ResetAssignedInputs 0x4085F0 / WASD 0x408820 (named-scheme apply), etc.
+
+**Gamepad-redefine patch (task 12) — groundwork committed.** `docs/
+GAMEPAD_REDEFINE_PATCH.md` = full design: menu split (retail "Redefine Keys" ->
+"Redefine Keys (Keyboard)" screen 4 + new "Redefine Keys (Gamepad)" screen 5),
+UE FKey name table (Face Button Bottom/Right/Left/Top, D-Pad, shoulders, triggers,
+thumbsticks, stick directions) mapped to XInput bits + the engine's 0x3c analog
+subtypes 0x0A-0x0D, capture/scheme/hotbar plan, 8-step build order. In
+`rebuild/integration/visual_boot_d3d9.cpp`: added `kGamepadKeyValueLabels[24]` /
+`kGamepadKeyValues[24]` and split the detail title (screen 4 "(Keyboard)", new
+screen 5 "(Gamepad)"; parens verified present in the detail-title glyph metrics).
+Remaining: menu row duplication (options-list builder) + authored gamepad list
+over the redefine backdrop (screen 5) + one x32dbg capture session to fill the
+per-input record encoding, then the base-game detour patch.
+
+Scratchpad (`fd03f1b5` session dir): `rawland.py` (now promoted to the tool),
+`disfn.py` (VA disassembler), `oracle_for.py` (explicit-addr oracle builder),
+`build_t9a.py`/`build_t9b.py` (redefine authoring), `build_redef1/2.py`.
