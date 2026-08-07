@@ -45947,6 +45947,90 @@ $catalog = @(
         TestSource = '00/65/std_Umove_006556f2_test.cpp'
         PassPattern = 'UMOVE_006556f2_OK'
     }
+    [pscustomobject]@{
+        Address = '0065571a'
+        Module = 'std'
+        Source = '00/65/std_Umove_0065571a.cpp'
+        TestSource = '00/65/std_Umove_0065571a_test.cpp'
+        PassPattern = 'UMOVE_0065571a_OK'
+    }
+    [pscustomobject]@{
+        Address = '0065574c'
+        Module = 'std'
+        Source = '00/65/std_Umove_0065574c.cpp'
+        TestSource = '00/65/std_Umove_0065574c_test.cpp'
+        PassPattern = 'UMOVE_0065574c_OK'
+    }
+    [pscustomobject]@{
+        Address = '0065e5a4'
+        Module = 'std'
+        Source = '00/65/std_Umove_0065e5a4.cpp'
+        TestSource = '00/65/std_Umove_0065e5a4_test.cpp'
+        PassPattern = 'UMOVE_0065e5a4_OK'
+    }
+    [pscustomobject]@{
+        Address = '00661e80'
+        Module = 'CText'
+        Source = '00/66/CText_GetAlignment_00661e80.cpp'
+        TestSource = '00/66/CText_GetAlignment_00661e80_test.cpp'
+        PassPattern = 'GETALIGN_00661e80_OK'
+    }
+    [pscustomobject]@{
+        Address = '006a2520'
+        Module = 'CTCCarrying'
+        Source = '00/6a/CTCCarrying_SetAllCarriedThingsAsBypassFilter_006a2520.cpp'
+        TestSource = '00/6a/CTCCarrying_SetAllCarriedThingsAsBypassFilter_006a2520_test.cpp'
+        PassPattern = 'SETCARRY_006a2520_OK'
+    }
+    [pscustomobject]@{
+        Address = '006d6810'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_ModifyTrainableStatLevel_006d6810.cpp'
+        TestSource = '00/6d/CTCHeroExperience_ModifyTrainableStatLevel_006d6810_test.cpp'
+        PassPattern = 'MODTRAIN_006d6810_OK'
+    }
+    [pscustomobject]@{
+        Address = '00765d20'
+        Module = 'std'
+        Source = '00/76/std_Destval_00765d20.cpp'
+        TestSource = '00/76/std_Destval_00765d20_test.cpp'
+        PassPattern = 'DESTVAL_00765d20_OK'
+    }
+    [pscustomobject]@{
+        Address = '00768ba0'
+        Module = 'std'
+        Source = '00/76/std_Destval_00768ba0.cpp'
+        TestSource = '00/76/std_Destval_00768ba0_test.cpp'
+        PassPattern = 'DESTVAL_00768ba0_OK'
+    }
+    [pscustomobject]@{
+        Address = '007723d0'
+        Module = '_global'
+        Source = '00/77/global_atexit_007723d0.cpp'
+        TestSource = '00/77/global_atexit_007723d0_test.cpp'
+        PassPattern = 'ATEXIT_007723d0_OK'
+    }
+    [pscustomobject]@{
+        Address = '007d2900'
+        Module = 'CGameScriptInterface'
+        Source = '00/7d/CGameScriptInterface_EndCutFade_007d2900.cpp'
+        TestSource = '00/7d/CGameScriptInterface_EndCutFade_007d2900_test.cpp'
+        PassPattern = 'ENDCUT_007d2900_OK'
+    }
+    [pscustomobject]@{
+        Address = '007f81c0'
+        Module = 'CGameScriptInterface'
+        Source = '00/7f/CGameScriptInterface_EndCutFade_007f81c0.cpp'
+        TestSource = '00/7f/CGameScriptInterface_EndCutFade_007f81c0_test.cpp'
+        PassPattern = 'ENDCUT_007f81c0_OK'
+    }
+    [pscustomobject]@{
+        Address = '0082e4e0'
+        Module = 'CSurface'
+        Source = '00/82/CSurface_GetHeight_0082e4e0.cpp'
+        TestSource = '00/82/CSurface_GetHeight_0082e4e0_test.cpp'
+        PassPattern = 'GETHEIGHT_0082e4e0_OK'
+    }
 )
 
 $requestedAddresses = @(
