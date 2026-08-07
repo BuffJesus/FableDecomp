@@ -7840,15 +7840,30 @@ structural boundary (see the two prior 2026-08-06 addenda + memory
 [[audiooptions-backdrop-not-sunbeam]]); needs native backdrop ownership, not a
 compositing tweak.
 
-## Session addendum — 2026-08-07: crawl gen_batch8..15 = 136 landed
+## Session addendum — 2026-08-07: crawl gen_batch8..20 = 214 landed
 
-Binary-wide parity crawl continued (the high-yield small-fn tail). Eight full
-batches, byte-exact/RELOCATION_MATCH, all behavior-gated: batch8 16/16
+Binary-wide parity crawl continued (the high-yield small-fn tail). Thirteen
+full batches, byte-exact/RELOCATION_MATCH, all behavior-gated: batch8 16/16
 (`d1c790c`), batch9 16/16 (`fa6ff3c`), batch10 18/18 (`44bb055`), batch11
 16/18 (`38d8577`), batch12 18/18 (`1845072`), batch13 18/18 (`7fa5707`),
-batch14 18/18 (`744f64f`), batch15 16/18 (`35ed497`). Tried ledger
-`tools/decomp_pipeline/crawl/gen_tried.txt` now **308 addrs** (incl. 4 honest
+batch14 18/18 (`744f64f`), batch15 16/18 (`35ed497`), batch16 14/18
+(`d690c4d`), batch17 18/18 (`e065852`), batch18 18/18 (`6b5f085`), batch19
+18/18 (`4dfcb74`), batch20 10/18 (`7c87da3`). Tried ledger
+`tools/decomp_pipeline/crawl/gen_tried.txt` now **398 addrs** (incl. ~20 honest
 defers); eligible pool still ~16.8k.
+
+Batch16-20 added large repeated families that generate cleanly: **~30 Def::
+Transfer** members (`ctx->Xfer(this+off)` = add ecx,off; push; mov ecx,[esp+8];
+call; ret4), **7 CAnimComponent Clone** (`p=vtbl[4](this); p->f8=this->f8;
+return p`, esi-saved), **8 TransferBinaryOut** (`s->Write(this->f8)`), plus more
+_Dest_val/_Cons_val tail-call variants, filter operator() (`f0!=t`, `f0<a->f40`
+via **real member so the arg lands on the stack** — a free __fastcall puts it in
+edx and diverges), and vtable-compare bools. New defer classes this run (all
+harness /O2-sweep codegen limits, not source bugs): VC71 arg-eval order
+(`mov reg;push` vs retail `push [mem]`, Umove x5); VC tail-call-collapsing a
+perfect tail position retail kept as a call (operator_new); register-allocation
+mirror (which operand is materialized vs kept in memory); the earlier /O1
+size-trick and MI-thunk defers still stand.
 
 Batch13-15 highlights: two large virtual-forwarder families on the
 CScriptGameResourceObjectScriptedThingBase vtable — void (with N stack args,
