@@ -42398,6 +42398,132 @@ $catalog = @(
         TestSource = '00/88/CGameScriptInterface_SetHeroGuideToShowQuestCardsWhenSpokenTo_0088ec60_test.cpp'
         PassPattern = '0088ec60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009f9de0'
+        Module = 'CTexture'
+        Source = '00/9f/CTexture_Unlock_009f9de0.cpp'
+        TestSource = '00/9f/CTexture_Unlock_009f9de0_test.cpp'
+        PassPattern = '009f9de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fc440'
+        Module = 'CTCActivationTrigger'
+        Source = '00/9f/CTCActivationTrigger_OnKill_009fc440.cpp'
+        TestSource = '00/9f/CTCActivationTrigger_OnKill_009fc440_test.cpp'
+        PassPattern = '009fc440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a10e10'
+        Module = 'CRenderTarget'
+        Source = '00/a1/CRenderTarget_DetachTarget_00a10e10.cpp'
+        TestSource = '00/a1/CRenderTarget_DetachTarget_00a10e10_test.cpp'
+        PassPattern = '00a10e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a10e20'
+        Module = 'CRenderTarget'
+        Source = '00/a1/CRenderTarget_DetachTarget_00a10e20.cpp'
+        TestSource = '00/a1/CRenderTarget_DetachTarget_00a10e20_test.cpp'
+        PassPattern = '00a10e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24250'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a24250.cpp'
+        TestSource = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a24250_test.cpp'
+        PassPattern = '00a24250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24260'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a24260.cpp'
+        TestSource = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a24260_test.cpp'
+        PassPattern = '00a24260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24270'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a24270.cpp'
+        TestSource = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a24270_test.cpp'
+        PassPattern = '00a24270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24280'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a24280.cpp'
+        TestSource = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a24280_test.cpp'
+        PassPattern = '00a24280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24290'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a24290.cpp'
+        TestSource = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a24290_test.cpp'
+        PassPattern = '00a24290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a242a0'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a242a0.cpp'
+        TestSource = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a242a0_test.cpp'
+        PassPattern = '00a242a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a242b0'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a242b0.cpp'
+        TestSource = '00/a2/CTCInventoryAbilities_GetAbilityLevel_00a242b0_test.cpp'
+        PassPattern = '00a242b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5f090'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a5/CTCInventoryAbilities_GetAbilityLevel_00a5f090.cpp'
+        TestSource = '00/a5/CTCInventoryAbilities_GetAbilityLevel_00a5f090_test.cpp'
+        PassPattern = '00a5f090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5f0a0'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a5/CTCInventoryAbilities_GetAbilityLevel_00a5f0a0.cpp'
+        TestSource = '00/a5/CTCInventoryAbilities_GetAbilityLevel_00a5f0a0_test.cpp'
+        PassPattern = '00a5f0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24a70'
+        Module = 'C3DMeshInfo'
+        Source = '00/a2/C3DMeshInfo_PeekPhysicsMesh_00a24a70.cpp'
+        TestSource = '00/a2/C3DMeshInfo_PeekPhysicsMesh_00a24a70_test.cpp'
+        PassPattern = '00a24a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a26c50'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_CloseCMeshDataBankUAEXXZ_00a26c50.cpp'
+        TestSource = '00/a2/CMeshDataBank_CloseCMeshDataBankUAEXXZ_00a26c50_test.cpp'
+        PassPattern = '00a26c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2e900'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a2/CTCInventoryAbilities_AddLearnedExpression_00a2e900.cpp'
+        TestSource = '00/a2/CTCInventoryAbilities_AddLearnedExpression_00a2e900_test.cpp'
+        PassPattern = '00a2e900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2e910'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a2/CTCInventoryAbilities_AddLearnedExpression_00a2e910.cpp'
+        TestSource = '00/a2/CTCInventoryAbilities_AddLearnedExpression_00a2e910_test.cpp'
+        PassPattern = '00a2e910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2e960'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a2/CTCInventoryAbilities_AddLearnedExpression_00a2e960.cpp'
+        TestSource = '00/a2/CTCInventoryAbilities_AddLearnedExpression_00a2e960_test.cpp'
+        PassPattern = '00a2e960_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
