@@ -4624,6 +4624,21 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         return false;
     }
 
+    // The retail frontend maps its 640x480-class artwork onto the full display
+    // (designScaleX/Y are non-uniform and non-integer at 1280x720). D3D9's
+    // default POINT sampler duplicates texel columns/rows under that stretch,
+    // which shows up as a doubled/ghosted echo on every glyph. Retail samples
+    // the frontend bilinearly, so force LINEAR min/mag filtering on stage 0 to
+    // reproduce its smooth scale and kill the text ghosting.
+    // D3DSAMP_MAGFILTER=5, D3DSAMP_MINFILTER=6, D3DTEXF_LINEAR=2.
+    {
+        FableD3DSetStageState setSamplerState =
+            reinterpret_cast<FableD3DSetStageState>(
+                g_Device->vtable[69]);
+        setSamplerState(g_Device, 0, 5, 2);
+        setSamplerState(g_Device, 0, 6, 2);
+    }
+
     // Redefine's scrolled page atlas introduces an additional texture between
     // helper and live-text batches. Keep enough flush slots for that page
     // path instead of aborting after the target has already been cleared.
