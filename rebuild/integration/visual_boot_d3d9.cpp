@@ -214,6 +214,37 @@ namespace
         "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9",
         "F10", "F11", "F12", "PRNT SCRN"
     };
+    // Gamepad-redefine patch (docs/GAMEPAD_REDEFINE_PATCH.md): Unreal-Engine
+    // key names for the controller binding screen (detail screen 5).  These are
+    // the DISPLAY layer; the stored record keeps the engine's native
+    // 0x37/0x38 (button) and 0x3C (analog, subtypes 0x0A-0x0D) types.  Index
+    // order matches kGamepadKeyValues so a captured input code maps to a label.
+    const char* const kGamepadKeyValueLabels[24] = {
+        "Face Button Bottom", "Face Button Right",
+        "Face Button Left", "Face Button Top",
+        "D-Pad Up", "D-Pad Down", "D-Pad Left", "D-Pad Right",
+        "Left Shoulder", "Right Shoulder",
+        "Left Trigger", "Right Trigger",
+        "Left Thumbstick Button", "Right Thumbstick Button",
+        "Special Left", "Special Right",
+        "Left Stick Up", "Left Stick Down",
+        "Left Stick Left", "Left Stick Right",
+        "Right Stick Up", "Right Stick Down",
+        "Right Stick Left", "Right Stick Right"
+    };
+    // XInput bitmask / axis id per label (see design doc table).  The four
+    // Left-Stick directions carry the engine analog subtypes 0x0A-0x0D so the
+    // capture path can write a native 0x3C record; buttons use their XInput bit.
+    const fable_u32 kGamepadKeyValues[24] = {
+        0x1000, 0x2000, 0x4000, 0x8000,          // A B X Y
+        0x0001, 0x0002, 0x0004, 0x0008,          // D-Pad U D L R
+        0x0100, 0x0200,                          // LB RB
+        0x00010000, 0x00020000,                  // LT RT (axis, high bits)
+        0x0040, 0x0080,                          // L3 R3
+        0x0020, 0x0010,                          // Back Start
+        0x0000000A, 0x0000000B, 0x0000000C, 0x0000000D,  // LS U D L R (0x3C subtypes)
+        0x0004000A, 0x0004000B, 0x0004000C, 0x0004000D   // RS U D L R
+    };
     // Saved-game slot names use the same ENG_ARIAL_16 runtime glyph path as
     // profile names.  The component sheet deliberately leaves these four
     // labels transparent so the active save list can submit them live.
@@ -1214,11 +1245,15 @@ namespace
     {
         if (
             screen < 1 ||
-            screen > 4 ||
+            screen > 5 ||
             g_OptionsTexture == 0)
         {
             return;
         }
+        // Gamepad-redefine patch: screen 4 is the keyboard redefine screen,
+        // screen 5 the new controller redefine screen (docs/
+        // GAMEPAD_REDEFINE_PATCH.md).  Retail's single "Redefine Keys" becomes
+        // the qualified "(Keyboard)" so the two entries read distinctly.
         const char* baseTitle =
             screen == 1
                 ? "Gameplay Options"
@@ -1226,7 +1261,9 @@ namespace
                     ? "Audio Options"
                     : (screen == 3
                         ? "Video Options"
-                        : "Redefine Keys"));
+                        : (screen == 4
+                            ? "Redefine Keys (Keyboard)"
+                            : "Redefine Keys (Gamepad)")));
         char title[128] = {};
         if (g_ActiveProfileName[0] != 0)
         {
