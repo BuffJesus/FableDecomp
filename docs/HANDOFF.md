@@ -7983,19 +7983,24 @@ offset 0 (true for single-fn objs). See CLAUDE.md gotcha.
 - Jump-table lane (via new tool): `CKeyRedefiner::GetSubTypeForAction` 0x557CA0
   (device-type dispatch: 0x37/0x38 counter classes, 0x3c analog subtypes
   0x0A-0x0D) and `AreAllowedToCoexist` 0x5578A0 (key-coexistence rule: actions
-  {0x08,0x1f,0x2d} share, {0x1a,0x56} share; else no). AAC needed `char` return +
-  `if(...)return 1;return 0;` per case to get retail's `mov al,1`x2 (byte) instead
-  of a merged `mov eax,1` (dword) — 4-byte diff otherwise.
+  {0x08,0x1f,0x2d} share, {0x1a,0x56} share; else no), and `ChangeState` 0x557C10
+  (7-state machine: base ChangeState then switch — {0,6} CancelSelection+tail-jmp
+  sub.vfn(0x19); {1,5} redefiner-singleton event dispatch guarded by g_active
+  0x13b8ac8; {2,3,4}/default no-op). AAC needed `char` return + `if(...)return 1;
+  return 0;` per case for retail's `mov al,1`x2 (byte) not a merged `mov eax,1`
+  (dword). ChangeState needed the {1,5} case body written BEFORE {0,6} to match
+  retail's physical body layout (VC lays case bodies in source order).
 - `ClearList` 0x5567B0 DEFERRED — count-divide codegen finicky (8-byte element
   `sub;sar 3` vs my earlier `void**` signed `/2`) AND the 64-virtual test struct;
   low value, revisit later.
-- Remaining redefine targets (mostly jump-table, use the new lander): ChangeState
-  0x557C10 (state machine: calls 0x52cf40, 7-state jump table, vtable event
-  dispatch to global 0x13b8ac8, one state tail-jmps to CancelSelection+vfn),
-  UpdateKeyText 0x557A10, ClearDuplicateDefinitions 0x5580B0, OnLeftUnclicked
-  0x557AF0, GetSubTypeForAction siblings. Task #10 binding fns (larger, non-jump-
-  table): GetAssignedInputForAction 0x408C90 (imul /28 linear search),
-  ResetAssignedInputs 0x4085F0 / WASD 0x408820 (named-scheme apply), etc.
+- Remaining redefine targets: UpdateKeyText 0x557A10 (219B), ClearDuplicateDefinitions
+  0x5580B0 (189B), OnLeftUnclicked 0x557AF0 (222B) — these are LARGER, with
+  CWideString temporaries (0x99EBF0 ctor / 0x99EAE0 dtor), stack color-struct
+  byte-packing, and multiple vtable calls (`[eax+0x244]`, `[eax+0x34]`); higher
+  iteration cost, not a quick win. Task #10 binding fns (larger, non-jump-table):
+  GetAssignedInputForAction 0x408C90 (imul /28 linear search), ResetAssignedInputs
+  0x4085F0 / WASD 0x408820 (named-scheme apply), etc. Use verify_land_jumptable
+  only for the jump-table ones; the rest go through plain verify_and_land.
 
 **Gamepad-redefine patch (task 12) — groundwork committed.** `docs/
 GAMEPAD_REDEFINE_PATCH.md` = full design: menu split (retail "Redefine Keys" ->
