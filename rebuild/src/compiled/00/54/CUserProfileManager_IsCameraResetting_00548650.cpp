@@ -1,0 +1,1 @@
+char __fastcall fn_00548650(char* self){ if(self[0xc]) return self[0xf1]; return self[0x32]; }

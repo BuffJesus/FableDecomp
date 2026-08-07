@@ -43399,6 +43399,111 @@ $catalog = @(
         TestSource = '00/54/CUserProfileManager_IsCameraResetting_00548610_test.cpp'
         PassPattern = '00548610_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00548630'
+        Module = 'CUserProfileManager'
+        Source = '00/54/CUserProfileManager_IsCameraResetting_00548630.cpp'
+        TestSource = '00/54/CUserProfileManager_IsCameraResetting_00548630_test.cpp'
+        PassPattern = '00548630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548650'
+        Module = 'CUserProfileManager'
+        Source = '00/54/CUserProfileManager_IsCameraResetting_00548650.cpp'
+        TestSource = '00/54/CUserProfileManager_IsCameraResetting_00548650_test.cpp'
+        PassPattern = '00548650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548690'
+        Module = 'CUserProfileManager'
+        Source = '00/54/CUserProfileManager_IsCameraResetting_00548690.cpp'
+        TestSource = '00/54/CUserProfileManager_IsCameraResetting_00548690_test.cpp'
+        PassPattern = '00548690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054a4f0'
+        Module = 'CUserProfileManager'
+        Source = '00/54/CUserProfileManager_GetCameraSensitivity_0054a4f0.cpp'
+        TestSource = '00/54/CUserProfileManager_GetCameraSensitivity_0054a4f0_test.cpp'
+        PassPattern = '0054a4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054a570'
+        Module = 'CUserProfileManager'
+        Source = '00/54/CUserProfileManager_GetCameraSensitivity_0054a570.cpp'
+        TestSource = '00/54/CUserProfileManager_GetCameraSensitivity_0054a570_test.cpp'
+        PassPattern = '0054a570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00594de2'
+        Module = '_global'
+        Source = '00/59/global_ConstructString_00594de2.cpp'
+        TestSource = '00/59/global_ConstructString_00594de2_test.cpp'
+        PassPattern = '00594de2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fa0c3'
+        Module = '_global'
+        Source = '00/5f/global_ConstructString_005fa0c3.cpp'
+        TestSource = '00/5f/global_ConstructString_005fa0c3_test.cpp'
+        PassPattern = '005fa0c3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fa0d5'
+        Module = '_global'
+        Source = '00/5f/global_ConstructString_005fa0d5.cpp'
+        TestSource = '00/5f/global_ConstructString_005fa0d5_test.cpp'
+        PassPattern = '005fa0d5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b4ea8'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_AddClothingToMannequin_005b4ea8.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_AddClothingToMannequin_005b4ea8_test.cpp'
+        PassPattern = '005b4ea8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dc1d0'
+        Module = 'CCombatActionBase'
+        Source = '00/5d/CCombatActionBase_GetAnimationTransitionInTime_005dc1d0.cpp'
+        TestSource = '00/5d/CCombatActionBase_GetAnimationTransitionInTime_005dc1d0_test.cpp'
+        PassPattern = '005dc1d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dc1f0'
+        Module = 'CCombatActionBase'
+        Source = '00/5d/CCombatActionBase_GetAnimationTransitionInTime_005dc1f0.cpp'
+        TestSource = '00/5d/CCombatActionBase_GetAnimationTransitionInTime_005dc1f0_test.cpp'
+        PassPattern = '005dc1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dc210'
+        Module = 'CCombatActionBase'
+        Source = '00/5d/CCombatActionBase_GetAnimationTransitionInTime_005dc210.cpp'
+        TestSource = '00/5d/CCombatActionBase_GetAnimationTransitionInTime_005dc210_test.cpp'
+        PassPattern = '005dc210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00643fe4'
+        Module = 'CDrawQuickAccessIcons'
+        Source = '00/64/CDrawQuickAccessIcons_ToggleFlash_00643fe4.cpp'
+        TestSource = '00/64/CDrawQuickAccessIcons_ToggleFlash_00643fe4_test.cpp'
+        PassPattern = '00643fe4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0064da5c'
+        Module = 'CDrawQuickAccessIcons'
+        Source = '00/64/CDrawQuickAccessIcons_OnHeroHit_0064da5c.cpp'
+        TestSource = '00/64/CDrawQuickAccessIcons_OnHeroHit_0064da5c_test.cpp'
+        PassPattern = '0064da5c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065bfbc'
+        Module = 'CInputProcessGameBase'
+        Source = '00/65/CInputProcessGameBase_AddToInterface_0065bfbc.cpp'
+        TestSource = '00/65/CInputProcessGameBase_AddToInterface_0065bfbc_test.cpp'
+        PassPattern = '0065bfbc_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
