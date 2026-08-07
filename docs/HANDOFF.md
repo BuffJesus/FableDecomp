@@ -7743,3 +7743,37 @@ The `CCountedPointer<NUISystem::CAction>::Release @ 0x0059A994` probe recovered
 the real `CCPPointerInfo` callback dispatch (`+4` member-function address,
 action object at `+8` in ECX), but VC7.1 emits different clear and stack-cleanup
 instructions; it remains exact assembly and is not falsely promoted.
+
+## Session addendum — 2026-08-06: crawl gen_batch4 + AudioOptions backdrop root-cause
+
+Binary-wide parity crawl gen_batch4 landed **12 byte-exact functions** (commit
+`b5c2158`): 7x `CPixelShader::CountReferences`, `CTCPhysicsBase::GetAirResistance`
+(float `fld`), `CPlayer::GetCurrentMode` (triple pointer-chain load),
+`CComponent::CanMove` (8-byte struct copy returning `this`), and 2x
+`CObservable::AddExclusiveObserver` (field store, `ret 4`). `0066e799`'s oracle
+was trimmed 13->10 bytes (trailing `33c0 c3` is the next function). Four batch
+members were deferred to the tried ledger as fragment/reloc-forwarders
+(`005eb080` no terminating ret; `00643bef` operator&& reloc tail; `00688a60`
+tail `jmp`; `0068c6d0` arg-forward call). Ledger now 98 addrs; eligible pool
+still ~16.9k. Also fixed `next_smallest.py`'s stale scratchpad path, and
+re-confirmed the test-author gotcha: a local named `in` makes verify's
+`html.unescape` turn `&in;` into U+2208 (rename the var).
+
+**Frontend visual — AudioOptions MAE root-caused (overturns the sunbeam
+hypothesis).** Full-frame retail-vs-recon RGB MAE for AudioOptions is 23.40
+(worst state). Per-region measurement shows it is entirely a **backdrop**
+problem, not UI: dark-right backdrop matches (MAE 2.37) while left-center is far
+off (left-tower 40, pool 44, upper band 32). The natural guess — the static
+coastal sunbeam alpha of 32 (`visual_boot_d3d9.cpp` ~L3214) is too faint — is
+**wrong**: an offline sweep of sunbeam frame (0/1/2) x alpha (0..255) x blend
+(over/additive) cannot beat MAE 44.40 on the bright regions, and the optimum is
+V=0 (no sunbeam). The real cause is the **coastal base frame itself is ~2x too
+bright in the left-center**: retail pool RGB ~[93,67,69] vs recon ~[160,97,100];
+retail left-tower ~[52,35,26] vs ~[108,70,55]; dark-right matches. It is not a
+uniform tint or ratio (dark-right is unaffected) — retail has a structured
+center-bottom-left darkening/vignette the decoded coastal sheet lacks. This is
+the same open "exact normal-mode retail backdrop" purity boundary; do NOT
+rebuild to tweak the sunbeam alpha (offline evidence says it can't help). Next:
+re-derive the coastal backdrop levels/vignette (or take native backdrop
+ownership) before re-measuring Options MAE. Offline analysis scripts are in the
+session scratchpad (`build_batch4.py` and the compositing sweeps).
