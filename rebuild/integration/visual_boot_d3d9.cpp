@@ -4269,7 +4269,9 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
             0xFFFFFFFFu);
         // Retail titles this screen "<profile> - Load Game" (matching the
-        // "<profile> - Gameplay Options" detail titles), not "Saved Games".
+        // "<profile> - Gameplay Options" detail titles), not "Saved Games". The
+        // prefix appears once a profile has been selected after the title screen
+        // (retail's flow); with no active profile it is just "Load Game".
         char saveTitle[128] = {};
         if (g_ActiveProfileName[0] != 0)
         {
