@@ -8022,3 +8022,26 @@ per-input record encoding, then the base-game detour patch.
 Scratchpad (`fd03f1b5` session dir): `rawland.py` (now promoted to the tool),
 `disfn.py` (VA disassembler), `oracle_for.py` (explicit-addr oracle builder),
 `build_t9a.py`/`build_t9b.py` (redefine authoring), `build_redef1/2.py`.
+
+### 2026-08-07 addendum — over-capture auto-trim tool + 6 recoveries
+
+NEW TOOL `tools/decomp_pipeline/trim_overcapture.py`: auto-fixes the manifest
+boundary OVER-CAPTURE defer class (oracle span [addr,next_manifest_addr) swallows
+inter-fn 0xCC int3 padding + the next fn's head when the real next fn isn't in the
+manifest). Cuts at the first standalone int3 after a terminator (ret/tail-jmp).
+Modes: `trim_overcapture.py 0x<addr> ...` (print trimmed len+bytes) or
+`--oracle <tsv>` (rewrite over-captured rows in place; clean rows untouched).
+Verified: Clear 0xa14e20 19B->8B, dtors 11B, DoSizeof 7B, etc.
+
+Recovered 6 previously-deferred over-captures (4 exact MATCH + 2 RELOCATION_MATCH,
+all behavior PASS), commit 4800941: CGameEventPackage::Clear 0xa14e20,
+CEngineInternalPrimitiveBase::AddChildPrimitive 0x7b2990, CVertexBufferWin32::
+DoSizeof 0x84d080, CCreatureAction_StabbedToDeath::GetAnimationTransitionInTime
+0x87fe60, and 2x CChunkedFileChunk::~CChunkedFileChunk (0x686830/0x83b390,
+vtbl-set + tail-jmp base dtor modeled as `*(void**)self=&extern_vtbl; base(self)`).
+
+CRAWL INTEGRATION (do on next relaunch): have each crawl agent run
+`trim_overcapture.py --oracle <its batch oracle.tsv>` right after building the
+oracle and BEFORE verify — over-captures then verify byte-exact instead of being
+deferred. Remaining known over-capture defer needing more than a trim:
+0x5bc65c ProcessButtonAReleased (also needs a virtual at vtbl+0xb8).
