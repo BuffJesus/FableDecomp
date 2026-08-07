@@ -48747,6 +48747,62 @@ $catalog = @(
         TestSource = '00/8e/CCreatureActionIceTrollIcicleAssaultLoop_IsStrikeAction_008e4540_test.cpp'
         PassPattern = 'RB_8e4540_OK'
     }
+    [pscustomobject]@{
+        Address = '00c60fe0'
+        Module = 'CShaderRenderManager'
+        Source = '00/c6/CShaderRenderManager_OnPostViewportChanged_00c60fe0.cpp'
+        TestSource = '00/c6/CShaderRenderManager_OnPostViewportChanged_00c60fe0_test.cpp'
+        PassPattern = 'RB_c60fe0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a23c20'
+        Module = 'C3DMeshLODInfo'
+        Source = '00/a2/C3DMeshLODInfo_CanAbortResourceLoad_00a23c20.cpp'
+        TestSource = '00/a2/C3DMeshLODInfo_CanAbortResourceLoad_00a23c20_test.cpp'
+        PassPattern = 'RB_a23c20_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bb6dc0'
+        Module = 'CEngineInternalPrimitiveParticleDecalGroup'
+        Source = '00/bb/CEngineInternalPrimitiveParticleDecalGroup_PrimTypeMatchesGroup_00bb6dc0.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleDecalGroup_PrimTypeMatchesGroup_00bb6dc0_test.cpp'
+        PassPattern = 'RB_bb6dc0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c623f0'
+        Module = '_List_const_iterator<std::_List_val<CVsyncCallbackTimer::CPendingQuery'
+        Source = '00/c6/ListconstiteratorstdListvalCVsyncCallbackTimerCPendingQuery_operator_00c623f0.cpp'
+        TestSource = '00/c6/ListconstiteratorstdListvalCVsyncCallbackTimerCPendingQuery_operator_00c623f0_test.cpp'
+        PassPattern = 'RB_c623f0_OK'
+    }
+    [pscustomobject]@{
+        Address = '0085b8a0'
+        Module = 'CCreatureActionHeroJump'
+        Source = '00/85/CCreatureActionHeroJump_IsPreventingNormalMovement_0085b8a0.cpp'
+        TestSource = '00/85/CCreatureActionHeroJump_IsPreventingNormalMovement_0085b8a0_test.cpp'
+        PassPattern = 'RB_85b8a0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ca3b10'
+        Module = '_global'
+        Source = '00/ca/global_FtoL_00ca3b10.cpp'
+        TestSource = '00/ca/global_FtoL_00ca3b10_test.cpp'
+        PassPattern = 'RB_ca3b10_OK'
+    }
+    [pscustomobject]@{
+        Address = '00922fa0'
+        Module = 'CAIStateGroup_ServeFood'
+        Source = '00/92/CAIStateGroupServeFood_InitStateGroup_00922fa0.cpp'
+        TestSource = '00/92/CAIStateGroupServeFood_InitStateGroup_00922fa0_test.cpp'
+        PassPattern = 'RB_922fa0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c3b690'
+        Module = 'CWADFile'
+        Source = '00/c3/CWADFile_Close_00c3b690.cpp'
+        TestSource = '00/c3/CWADFile_Close_00c3b690_test.cpp'
+        PassPattern = 'RB_c3b690_OK'
+    }
 )
 
 $requestedAddresses = @(
