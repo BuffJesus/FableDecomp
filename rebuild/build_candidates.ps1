@@ -42755,6 +42755,111 @@ $catalog = @(
         TestSource = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a410_test.cpp'
         PassPattern = '0041a410_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004aaa70'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_GetPThingUniqueID_004aaa70.cpp'
+        TestSource = '00/4a/CScriptThing_GetPThingUniqueID_004aaa70_test.cpp'
+        PassPattern = '004aaa70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aaad0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsTriggeredBy_004aaad0.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsTriggeredBy_004aaad0_test.cpp'
+        PassPattern = '004aaad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aaaf0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsKilledBy_004aaaf0.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsKilledBy_004aaaf0_test.cpp'
+        PassPattern = '004aaaf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aab10'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsUsedBy_004aab10.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsUsedBy_004aab10_test.cpp'
+        PassPattern = '004aab10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aab30'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsHitBy_004aab30.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsHitBy_004aab30_test.cpp'
+        PassPattern = '004aab30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aab50'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsHitByWithFlourish_004aab50.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsHitByWithFlourish_004aab50_test.cpp'
+        PassPattern = '004aab50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aab70'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsHitByWithDecapitate_004aab70.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsHitByWithDecapitate_004aab70_test.cpp'
+        PassPattern = '004aab70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aab90'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsHitByWithWeapon_004aab90.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsHitByWithWeapon_004aab90_test.cpp'
+        PassPattern = '004aab90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aabb0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsHitByWithProjectileWeapon_004aabb0.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsHitByWithProjectileWeapon_004aabb0_test.cpp'
+        PassPattern = '004aabb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aabd0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsTalkedToBy_004aabd0.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsTalkedToBy_004aabd0_test.cpp'
+        PassPattern = '004aabd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aabf0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgExpressionPerformedTo_004aabf0.cpp'
+        TestSource = '00/4a/CScriptThing_MsgExpressionPerformedTo_004aabf0_test.cpp'
+        PassPattern = '004aabf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fce00'
+        Module = 'CEditWorldMap'
+        Source = '00/4f/CEditWorldMap_GetEditMap_004fce00.cpp'
+        TestSource = '00/4f/CEditWorldMap_GetEditMap_004fce00_test.cpp'
+        PassPattern = '004fce00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fcfc0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetLevelScriptName_004fcfc0.cpp'
+        TestSource = '00/4f/CWorldMap_GetLevelScriptName_004fcfc0_test.cpp'
+        PassPattern = '004fcfc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fd000'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_IsMapLoadedOnPlayerProximity_004fd000.cpp'
+        TestSource = '00/4f/CWorldMap_IsMapLoadedOnPlayerProximity_004fd000_test.cpp'
+        PassPattern = '004fd000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054c250'
+        Module = 'CEngine'
+        Source = '00/54/CEngine_ChangeCameraAngle_0054c250.cpp'
+        TestSource = '00/54/CEngine_ChangeCameraAngle_0054c250_test.cpp'
+        PassPattern = '0054c250_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
