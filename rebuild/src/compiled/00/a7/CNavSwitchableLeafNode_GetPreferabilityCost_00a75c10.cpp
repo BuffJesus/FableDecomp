@@ -1,0 +1,2 @@
+struct S { char pad[0xF]; unsigned char b0f; char pad2[0xC]; unsigned char b1c; };
+unsigned char __fastcall GetPreferabilityCost(S* self){ if(!self->b0f) return self->b1c; return (unsigned char)0xFF; }

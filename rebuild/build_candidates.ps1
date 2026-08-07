@@ -41012,6 +41012,132 @@ $catalog = @(
         TestSource = '00/89/CSubtitleRenderer_SetCutsceneActionMode_008922c0_test.cpp'
         PassPattern = '008922c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00958760'
+        Module = 'CAIStateGroup_MinionReactToCrime'
+        Source = '00/95/CAIStateGroupMinionReactToCrime_InitStateGroup_00958760.cpp'
+        TestSource = '00/95/CAIStateGroupMinionReactToCrime_InitStateGroup_00958760_test.cpp'
+        PassPattern = '00958760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095ede0'
+        Module = 'CAIStateGroup_OpinionReactionRoot'
+        Source = '00/95/CAIStateGroupOpinionReactionRoot_GetDebugText_0095ede0.cpp'
+        TestSource = '00/95/CAIStateGroupOpinionReactionRoot_GetDebugText_0095ede0_test.cpp'
+        PassPattern = '0095ede0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f16d0'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_GetBlankTexture_009f16d0.cpp'
+        TestSource = '00/9f/CGraphicDataBank_GetBlankTexture_009f16d0_test.cpp'
+        PassPattern = '009f16d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0d3c0'
+        Module = 'CGraphicDataBank'
+        Source = '00/a0/CGraphicDataBank_GetBlankTexture_00a0d3c0.cpp'
+        TestSource = '00/a0/CGraphicDataBank_GetBlankTexture_00a0d3c0_test.cpp'
+        PassPattern = '00a0d3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fd150'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_GetBlankTexture_009fd150.cpp'
+        TestSource = '00/9f/CGraphicDataBank_GetBlankTexture_009fd150_test.cpp'
+        PassPattern = '009fd150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a39e10'
+        Module = 'C2DBoxI'
+        Source = '00/a3/C2DBoxI_ExtendBordersBy_00a39e10.cpp'
+        TestSource = '00/a3/C2DBoxI_ExtendBordersBy_00a39e10_test.cpp'
+        PassPattern = '00a39e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66b60'
+        Module = 'CMouse'
+        Source = '00/a6/CMouse_GetEventFromStore_00a66b60.cpp'
+        TestSource = '00/a6/CMouse_GetEventFromStore_00a66b60_test.cpp'
+        PassPattern = '00a66b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b244f0'
+        Module = 'CTextureManager'
+        Source = '00/b2/CTextureManager_GetPoolTextureSize_00b244f0.cpp'
+        TestSource = '00/b2/CTextureManager_GetPoolTextureSize_00b244f0_test.cpp'
+        PassPattern = '00b244f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b4a6a0'
+        Module = 'CEnginePrimitiveRenderer2D'
+        Source = '00/b4/CEnginePrimitiveRenderer2D_Layer2DToDistance_00b4a6a0.cpp'
+        TestSource = '00/b4/CEnginePrimitiveRenderer2D_Layer2DToDistance_00b4a6a0_test.cpp'
+        PassPattern = '00b4a6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b4a6b0'
+        Module = 'CEnginePrimitiveRenderer2D'
+        Source = '00/b4/CEnginePrimitiveRenderer2D_Layer2DToDistance_00b4a6b0.cpp'
+        TestSource = '00/b4/CEnginePrimitiveRenderer2D_Layer2DToDistance_00b4a6b0_test.cpp'
+        PassPattern = '00b4a6b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1c810'
+        Module = '_global'
+        Source = '00/c1/global_opand_00c1c810.cpp'
+        TestSource = '00/c1/global_opand_00c1c810_test.cpp'
+        PassPattern = '00c1c810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c271e0'
+        Module = '_global'
+        Source = '00/c2/global_Consval_00c271e0.cpp'
+        TestSource = '00/c2/global_Consval_00c271e0_test.cpp'
+        PassPattern = '00c271e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2a2d0'
+        Module = 'CChunkedFileChunk'
+        Source = '00/c2/CChunkedFileChunk_Dtor_00c2a2d0.cpp'
+        TestSource = '00/c2/CChunkedFileChunk_Dtor_00c2a2d0_test.cpp'
+        PassPattern = '00c2a2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c38840'
+        Module = 'CAnimFilterNoGroup'
+        Source = '00/c3/CAnimFilterNoGroup_opcall_00c38840.cpp'
+        TestSource = '00/c3/CAnimFilterNoGroup_opcall_00c38840_test.cpp'
+        PassPattern = '00c38840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3eba0'
+        Module = 'C3DMeshInfo'
+        Source = '00/c3/C3DMeshInfo_HasPhysicsMesh_00c3eba0.cpp'
+        TestSource = '00/c3/C3DMeshInfo_HasPhysicsMesh_00c3eba0_test.cpp'
+        PassPattern = '00c3eba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00944cd0'
+        Module = 'CAIStateGroup_WorkHammerAnvil'
+        Source = '00/94/CAIStateGroupWorkHammerAnvil_InitStateGroup_00944cd0.cpp'
+        TestSource = '00/94/CAIStateGroupWorkHammerAnvil_InitStateGroup_00944cd0_test.cpp'
+        PassPattern = '00944cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a75c00'
+        Module = 'CNavSwitchableLeafNode'
+        Source = '00/a7/CNavSwitchableLeafNode_GetRegion_00a75c00.cpp'
+        TestSource = '00/a7/CNavSwitchableLeafNode_GetRegion_00a75c00_test.cpp'
+        PassPattern = '00a75c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a75c10'
+        Module = 'CNavSwitchableLeafNode'
+        Source = '00/a7/CNavSwitchableLeafNode_GetPreferabilityCost_00a75c10.cpp'
+        TestSource = '00/a7/CNavSwitchableLeafNode_GetPreferabilityCost_00a75c10_test.cpp'
+        PassPattern = '00a75c10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

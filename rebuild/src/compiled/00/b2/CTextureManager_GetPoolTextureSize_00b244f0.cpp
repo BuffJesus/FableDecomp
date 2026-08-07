@@ -1,0 +1,2 @@
+struct CTextureManager { unsigned long GetPoolTextureSize(unsigned long i); };
+unsigned long CTextureManager::GetPoolTextureSize(unsigned long i){ return *(unsigned long*)((char*)this + i*4 + 0x120); }
