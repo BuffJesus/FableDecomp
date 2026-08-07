@@ -42650,6 +42650,111 @@ $catalog = @(
         TestSource = '00/c3/global_operatornew_00c36080_test.cpp'
         PassPattern = '00c36080_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c3c380'
+        Module = '_global'
+        Source = '00/c3/global_operatornew_00c3c380.cpp'
+        TestSource = '00/c3/global_operatornew_00c3c380_test.cpp'
+        PassPattern = '00c3c380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c49640'
+        Module = 'CTCTrophy'
+        Source = '00/c4/CTCTrophy_OnShowTrophyInitialise_00c49640.cpp'
+        TestSource = '00/c4/CTCTrophy_OnShowTrophyInitialise_00c49640_test.cpp'
+        PassPattern = '00c49640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb8220'
+        Module = '_Dest_val'
+        Source = '00/cb/Destval_CRegisteredMusicEntry_00cb8220.cpp'
+        TestSource = '00/cb/Destval_CRegisteredMusicEntry_00cb8220_test.cpp'
+        PassPattern = '00cb8220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00406800'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_OnPostDeviceReset_00406800.cpp'
+        TestSource = '00/40/CUserProfileManager_OnPostDeviceReset_00406800_test.cpp'
+        PassPattern = '00406800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041a060'
+        Module = 'CUserProfileManager'
+        Source = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a060.cpp'
+        TestSource = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a060_test.cpp'
+        PassPattern = '0041a060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041a080'
+        Module = 'CUserProfileManager'
+        Source = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a080.cpp'
+        TestSource = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a080_test.cpp'
+        PassPattern = '0041a080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041a1c0'
+        Module = 'CUserProfileManager'
+        Source = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a1c0.cpp'
+        TestSource = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a1c0_test.cpp'
+        PassPattern = '0041a1c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041a200'
+        Module = 'CUserProfileManager'
+        Source = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a200.cpp'
+        TestSource = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a200_test.cpp'
+        PassPattern = '0041a200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041a290'
+        Module = 'CUserProfileManager'
+        Source = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a290.cpp'
+        TestSource = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a290_test.cpp'
+        PassPattern = '0041a290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041a2b0'
+        Module = 'CUserProfileManager'
+        Source = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a2b0.cpp'
+        TestSource = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a2b0_test.cpp'
+        PassPattern = '0041a2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041a390'
+        Module = 'CUserProfileManager'
+        Source = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a390.cpp'
+        TestSource = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a390_test.cpp'
+        PassPattern = '0041a390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041a3b0'
+        Module = 'CUserProfileManager'
+        Source = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a3b0.cpp'
+        TestSource = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a3b0_test.cpp'
+        PassPattern = '0041a3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041a3d0'
+        Module = 'CUserProfileManager'
+        Source = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a3d0.cpp'
+        TestSource = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a3d0_test.cpp'
+        PassPattern = '0041a3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041a3f0'
+        Module = 'CUserProfileManager'
+        Source = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a3f0.cpp'
+        TestSource = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a3f0_test.cpp'
+        PassPattern = '0041a3f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041a410'
+        Module = 'CUserProfileManager'
+        Source = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a410.cpp'
+        TestSource = '00/41/CUserProfileManager_GetAutoSaveFileName_0041a410_test.cpp'
+        PassPattern = '0041a410_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
