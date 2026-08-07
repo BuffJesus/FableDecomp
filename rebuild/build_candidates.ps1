@@ -49055,6 +49055,41 @@ $catalog = @(
         TestSource = '00/c1/CDataOutputStream_WriteCBYTE_00c10140_test.cpp'
         PassPattern = 'RB_c10140_OK'
     }
+    [pscustomobject]@{
+        Address = '00c10120'
+        Module = 'CIsThingAlive'
+        Source = '00/c1/CIsThingAlive_operator_00c10120.cpp'
+        TestSource = '00/c1/CIsThingAlive_operator_00c10120_test.cpp'
+        PassPattern = 'RB_c10120_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c10100'
+        Module = 'CScriptBase'
+        Source = '00/c1/CScriptBase_Activate_00c10100.cpp'
+        TestSource = '00/c1/CScriptBase_Activate_00c10100_test.cpp'
+        PassPattern = 'RB_c10100_OK'
+    }
+    [pscustomobject]@{
+        Address = '00caf070'
+        Module = 'CRenderManager2D'
+        Source = '00/ca/CRenderManager2D_AddLineToDrawBuffer_00caf070.cpp'
+        TestSource = '00/ca/CRenderManager2D_AddLineToDrawBuffer_00caf070_test.cpp'
+        PassPattern = 'RB_caf070_OK'
+    }
+    [pscustomobject]@{
+        Address = '009fc540'
+        Module = 'CResourceList'
+        Source = '00/9f/CResourceList_HandleFailedAllocation_009fc540.cpp'
+        TestSource = '00/9f/CResourceList_HandleFailedAllocation_009fc540_test.cpp'
+        PassPattern = 'RB_9fc540_OK'
+    }
+    [pscustomobject]@{
+        Address = '009fc520'
+        Module = 'CInputProcessGameBase'
+        Source = '00/9f/CInputProcessGameBase_AddToInterface_009fc520.cpp'
+        TestSource = '00/9f/CInputProcessGameBase_AddToInterface_009fc520_test.cpp'
+        PassPattern = 'RB_9fc520_OK'
+    }
 )
 
 $requestedAddresses = @(
