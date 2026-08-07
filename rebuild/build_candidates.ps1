@@ -42090,6 +42090,132 @@ $catalog = @(
         TestSource = '00/5d/CAnimComponentFlags_Clone_005db1d0_test.cpp'
         PassPattern = '005db1d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005db200'
+        Module = 'CAnimComponentTransitionInTime'
+        Source = '00/5d/CAnimComponentTransitionInTime_Clone_005db200.cpp'
+        TestSource = '00/5d/CAnimComponentTransitionInTime_Clone_005db200_test.cpp'
+        PassPattern = '005db200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db230'
+        Module = 'CAnimComponentDelayTime'
+        Source = '00/5d/CAnimComponentDelayTime_Clone_005db230.cpp'
+        TestSource = '00/5d/CAnimComponentDelayTime_Clone_005db230_test.cpp'
+        PassPattern = '005db230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db320'
+        Module = 'CAnimComponentCombatRecoil'
+        Source = '00/5d/CAnimComponentCombatRecoil_Clone_005db320.cpp'
+        TestSource = '00/5d/CAnimComponentCombatRecoil_Clone_005db320_test.cpp'
+        PassPattern = '005db320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db400'
+        Module = 'CAnimComponentFollowingOnAnim'
+        Source = '00/5d/CAnimComponentFollowingOnAnim_Clone_005db400.cpp'
+        TestSource = '00/5d/CAnimComponentFollowingOnAnim_Clone_005db400_test.cpp'
+        PassPattern = '005db400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db430'
+        Module = 'CAnimComponentSetCreatureMode'
+        Source = '00/5d/CAnimComponentSetCreatureMode_Clone_005db430.cpp'
+        TestSource = '00/5d/CAnimComponentSetCreatureMode_Clone_005db430_test.cpp'
+        PassPattern = '005db430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db460'
+        Module = 'CAnimComponentFollowingOnAnimFilter'
+        Source = '00/5d/CAnimComponentFollowingOnAnimFilter_Clone_005db460.cpp'
+        TestSource = '00/5d/CAnimComponentFollowingOnAnimFilter_Clone_005db460_test.cpp'
+        PassPattern = '005db460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db470'
+        Module = 'CAnimComponentStrikeSpeedMultiplier'
+        Source = '00/5d/CAnimComponentStrikeSpeedMultiplier_Clone_005db470.cpp'
+        TestSource = '00/5d/CAnimComponentStrikeSpeedMultiplier_Clone_005db470_test.cpp'
+        PassPattern = '005db470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db1e0'
+        Module = 'CAnimComponentFlags'
+        Source = '00/5d/CAnimComponentFlags_TransferBinaryOut_005db1e0.cpp'
+        TestSource = '00/5d/CAnimComponentFlags_TransferBinaryOut_005db1e0_test.cpp'
+        PassPattern = '005db1e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db210'
+        Module = 'CAnimComponentTransitionInTime'
+        Source = '00/5d/CAnimComponentTransitionInTime_TransferBinaryOut_005db210.cpp'
+        TestSource = '00/5d/CAnimComponentTransitionInTime_TransferBinaryOut_005db210_test.cpp'
+        PassPattern = '005db210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db240'
+        Module = 'CAnimComponentDelayTime'
+        Source = '00/5d/CAnimComponentDelayTime_TransferBinaryOut_005db240.cpp'
+        TestSource = '00/5d/CAnimComponentDelayTime_TransferBinaryOut_005db240_test.cpp'
+        PassPattern = '005db240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db330'
+        Module = 'CAnimComponentCombatRecoil'
+        Source = '00/5d/CAnimComponentCombatRecoil_TransferBinaryOut_005db330.cpp'
+        TestSource = '00/5d/CAnimComponentCombatRecoil_TransferBinaryOut_005db330_test.cpp'
+        PassPattern = '005db330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db440'
+        Module = 'CAnimComponentSetCreatureMode'
+        Source = '00/5d/CAnimComponentSetCreatureMode_TransferBinaryOut_005db440.cpp'
+        TestSource = '00/5d/CAnimComponentSetCreatureMode_TransferBinaryOut_005db440_test.cpp'
+        PassPattern = '005db440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db480'
+        Module = 'CAnimComponentStrikeSpeedMultiplier'
+        Source = '00/5d/CAnimComponentStrikeSpeedMultiplier_TransferBinaryOut_005db480.cpp'
+        TestSource = '00/5d/CAnimComponentStrikeSpeedMultiplier_TransferBinaryOut_005db480_test.cpp'
+        PassPattern = '005db480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db520'
+        Module = 'CAnimComponentFollowingOnAnim'
+        Source = '00/5d/CAnimComponentFollowingOnAnim_TransferBinaryOut_005db520.cpp'
+        TestSource = '00/5d/CAnimComponentFollowingOnAnim_TransferBinaryOut_005db520_test.cpp'
+        PassPattern = '005db520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db590'
+        Module = 'CAnimComponentFollowingOnAnimFilter'
+        Source = '00/5d/CAnimComponentFollowingOnAnimFilter_TransferBinaryOut_005db590.cpp'
+        TestSource = '00/5d/CAnimComponentFollowingOnAnimFilter_TransferBinaryOut_005db590_test.cpp'
+        PassPattern = '005db590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ee136'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_GetAbilityLevel_005ee136.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_GetAbilityLevel_005ee136_test.cpp'
+        PassPattern = '005ee136_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f93c1'
+        Module = '_global'
+        Source = '00/5f/global_operatordelete_005f93c1.cpp'
+        TestSource = '00/5f/global_operatordelete_005f93c1_test.cpp'
+        PassPattern = '005f93c1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005f93e6'
+        Module = '_global'
+        Source = '00/5f/global_operatordelete_005f93e6.cpp'
+        TestSource = '00/5f/global_operatordelete_005f93e6_test.cpp'
+        PassPattern = '005f93e6_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
