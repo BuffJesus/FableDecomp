@@ -42216,6 +42216,76 @@ $catalog = @(
         TestSource = '00/5f/global_operatordelete_005f93e6_test.cpp'
         PassPattern = '005f93e6_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005fe830'
+        Module = '_global'
+        Source = '00/5f/global_Destval_005fe830.cpp'
+        TestSource = '00/5f/global_Destval_005fe830_test.cpp'
+        PassPattern = '005fe830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00744f70'
+        Module = '_global'
+        Source = '00/74/global_Destval_00744f70.cpp'
+        TestSource = '00/74/global_Destval_00744f70_test.cpp'
+        PassPattern = '00744f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066c7a0'
+        Module = 'CRenderTarget'
+        Source = '00/66/CRenderTarget_DetachTarget_0066c7a0.cpp'
+        TestSource = '00/66/CRenderTarget_DetachTarget_0066c7a0_test.cpp'
+        PassPattern = '0066c7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00687a70'
+        Module = 'CInputProcessGameBase'
+        Source = '00/68/CInputProcessGameBase_AddToInterface_00687a70.cpp'
+        TestSource = '00/68/CInputProcessGameBase_AddToInterface_00687a70_test.cpp'
+        PassPattern = '00687a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006978c0'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/69/CScriptGameResourceObjectScriptedThingBase_AskHeroQuestion_006978c0.cpp'
+        TestSource = '00/69/CScriptGameResourceObjectScriptedThingBase_AskHeroQuestion_006978c0_test.cpp'
+        PassPattern = '006978c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a7380'
+        Module = '_global'
+        Source = '00/6a/global_Consval_006a7380.cpp'
+        TestSource = '00/6a/global_Consval_006a7380_test.cpp'
+        PassPattern = '006a7380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f0730'
+        Module = 'CCombatSequenceBase'
+        Source = '00/6f/CCombatSequenceBase_IsOuterRingSequence_006f0730.cpp'
+        TestSource = '00/6f/CCombatSequenceBase_IsOuterRingSequence_006f0730_test.cpp'
+        PassPattern = '006f0730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00731be0'
+        Module = 'CTCSpotLight'
+        Source = '00/73/CTCSpotLight_SetAngle_00731be0.cpp'
+        TestSource = '00/73/CTCSpotLight_SetAngle_00731be0_test.cpp'
+        PassPattern = '00731be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006cec80'
+        Module = 'CTCWife'
+        Source = '00/6c/CTCWife_IsMarriedToThePlayer_006cec80.cpp'
+        TestSource = '00/6c/CTCWife_IsMarriedToThePlayer_006cec80_test.cpp'
+        PassPattern = '006cec80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a76a0'
+        Module = 'CThingFilter_IsNot'
+        Source = '00/6a/CThingFilterIsNot_opcall_006a76a0.cpp'
+        TestSource = '00/6a/CThingFilterIsNot_opcall_006a76a0_test.cpp'
+        PassPattern = '006a76a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
