@@ -48180,6 +48180,104 @@ $catalog = @(
         TestSource = '00/91/CAIStateGroupMinionReactToNoise_Initialise_0091cc90_test.cpp'
         PassPattern = 'REACTINIT_OK'
     }
+    [pscustomobject]@{
+        Address = '00abc420'
+        Module = 'C3DMeshFileGroupChunk'
+        Source = '00/ab/C3DMeshFileGroupChunk_GetList_00abc420.cpp'
+        TestSource = '00/ab/C3DMeshFileGroupChunk_GetList_00abc420_test.cpp'
+        PassPattern = 'GL_abc420_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ac4080'
+        Module = 'C3DMeshFileGroupChunk'
+        Source = '00/ac/C3DMeshFileGroupChunk_GetList_00ac4080.cpp'
+        TestSource = '00/ac/C3DMeshFileGroupChunk_GetList_00ac4080_test.cpp'
+        PassPattern = 'GL_ac4080_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ac40a0'
+        Module = 'C3DMeshFileGroupChunk'
+        Source = '00/ac/C3DMeshFileGroupChunk_GetList_00ac40a0.cpp'
+        TestSource = '00/ac/C3DMeshFileGroupChunk_GetList_00ac40a0_test.cpp'
+        PassPattern = 'GL_ac40a0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b23a50'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_ChangeCameraAngleCEngineUAEXXZ_00b23a50.cpp'
+        TestSource = '00/b2/CEngine_ChangeCameraAngleCEngineUAEXXZ_00b23a50_test.cpp'
+        PassPattern = 'CA_b23a50_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b23a70'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_IsPreloaded_00b23a70.cpp'
+        TestSource = '00/b2/CEngine_IsPreloaded_00b23a70_test.cpp'
+        PassPattern = 'PL_b23a70_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b59730'
+        Module = 'CEngineComponent'
+        Source = '00/b5/CEngineComponent_CEngineComponent_00b59730.cpp'
+        TestSource = '00/b5/CEngineComponent_CEngineComponent_00b59730_test.cpp'
+        PassPattern = 'EC_b59730_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b59760'
+        Module = 'CAIGameCameraBase'
+        Source = '00/b5/CAIGameCameraBase_GetControlAngleXY_00b59760.cpp'
+        TestSource = '00/b5/CAIGameCameraBase_GetControlAngleXY_00b59760_test.cpp'
+        PassPattern = 'CT_b59760_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b67780'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/b6/CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation_00b67780.cpp'
+        TestSource = '00/b6/CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation_00b67780_test.cpp'
+        PassPattern = 'ZS_b67780_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b847b0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/b8/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00b847b0.cpp'
+        TestSource = '00/b8/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00b847b0_test.cpp'
+        PassPattern = 'CN_b847b0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ba8010'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/ba/CEngineInternalPrimitiveMeshBase_GetBoundingSphereRadiusWorldSpace_00ba8010.cpp'
+        TestSource = '00/ba/CEngineInternalPrimitiveMeshBase_GetBoundingSphereRadiusWorldSpace_00ba8010_test.cpp'
+        PassPattern = 'BS_ba8010_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c10a10'
+        Module = 'CChunkedFileChunk'
+        Source = '00/c1/CChunkedFileChunk_CChunkedFileChunk_00c10a10.cpp'
+        TestSource = '00/c1/CChunkedFileChunk_CChunkedFileChunk_00c10a10_test.cpp'
+        PassPattern = 'DT_c10a10_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c19680'
+        Module = '_Cons_val<std::allocator<std::pair<EClothingSuitPart_const_,long>_>,std::pair<EClothingSuitPart_const_,long>,std'
+        Source = '00/c1/ConsvalstdallocatorstdpairEClothingSuitPartconstlongstdpairEClothingSuitPartcons_pairEClothingSuitPartlong_00c19680.cpp'
+        TestSource = '00/c1/ConsvalstdallocatorstdpairEClothingSuitPartconstlongstdpairEClothingSuitPartcons_pairEClothingSuitPartlong_00c19680_test.cpp'
+        PassPattern = 'CV_c19680_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c3ea60'
+        Module = 'CGuiControlListBox'
+        Source = '00/c3/CGuiControlListBox_GetCurrentSelectedEntryData_00c3ea60.cpp'
+        TestSource = '00/c3/CGuiControlListBox_GetCurrentSelectedEntryData_00c3ea60_test.cpp'
+        PassPattern = 'LB_c3ea60_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c49620'
+        Module = 'CScriptModuleSelfTerminateBase'
+        Source = '00/c4/CScriptModuleSelfTerminateBase_IsFinished_00c49620.cpp'
+        TestSource = '00/c4/CScriptModuleSelfTerminateBase_IsFinished_00c49620_test.cpp'
+        PassPattern = 'IF_c49620_OK'
+    }
 )
 
 $requestedAddresses = @(
