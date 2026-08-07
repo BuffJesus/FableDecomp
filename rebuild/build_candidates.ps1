@@ -48803,6 +48803,55 @@ $catalog = @(
         TestSource = '00/c3/CWADFile_Close_00c3b690_test.cpp'
         PassPattern = 'RB_c3b690_OK'
     }
+    [pscustomobject]@{
+        Address = '00a00940'
+        Module = 'CGraphicBankStateBlock'
+        Source = '00/a0/CGraphicBankStateBlock_CreateCRC_00a00940.cpp'
+        TestSource = '00/a0/CGraphicBankStateBlock_CreateCRC_00a00940_test.cpp'
+        PassPattern = 'RB_a00940_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c36210'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/c3/CTCInventoryAbilities_AddLearnedExpression_00c36210.cpp'
+        TestSource = '00/c3/CTCInventoryAbilities_AddLearnedExpression_00c36210_test.cpp'
+        PassPattern = 'RB_c36210_OK'
+    }
+    [pscustomobject]@{
+        Address = '00beb540'
+        Module = '_global'
+        Source = '00/be/global_operatornew_00beb540.cpp'
+        TestSource = '00/be/global_operatornew_00beb540_test.cpp'
+        PassPattern = 'RB_beb540_OK'
+    }
+    [pscustomobject]@{
+        Address = '009a76a0'
+        Module = 'CUserProfileManager'
+        Source = '00/9a/CUserProfileManager_GetAutoSaveFileName_009a76a0.cpp'
+        TestSource = '00/9a/CUserProfileManager_GetAutoSaveFileName_009a76a0_test.cpp'
+        PassPattern = 'RB_9a76a0_OK'
+    }
+    [pscustomobject]@{
+        Address = '0096f030'
+        Module = 'CAIStateGroup_MinionBehaviourSad'
+        Source = '00/96/CAIStateGroupMinionBehaviourSad_CleanupLeafCAIStateGroupMinionBehaviourSadUAEXXZ_0096f030.cpp'
+        TestSource = '00/96/CAIStateGroupMinionBehaviourSad_CleanupLeafCAIStateGroupMinionBehaviourSadUAEXXZ_0096f030_test.cpp'
+        PassPattern = 'RB_96f030_OK'
+    }
+    [pscustomobject]@{
+        Address = '00657280'
+        Module = 'CAIStateGroup_BuyFromSeller'
+        Source = '00/65/CAIStateGroupBuyFromSeller_BoughtSomething_00657280.cpp'
+        TestSource = '00/65/CAIStateGroupBuyFromSeller_BoughtSomething_00657280_test.cpp'
+        PassPattern = 'RB_657280_OK'
+    }
+    [pscustomobject]@{
+        Address = '00908de0'
+        Module = 'CCombatSequence_BattleCharge'
+        Source = '00/90/CCombatSequenceBattleCharge_OnStartCCombatSequenceBattleChargeUAEXXZ_00908de0.cpp'
+        TestSource = '00/90/CCombatSequenceBattleCharge_OnStartCCombatSequenceBattleChargeUAEXXZ_00908de0_test.cpp'
+        PassPattern = 'RB_908de0_OK'
+    }
 )
 
 $requestedAddresses = @(
