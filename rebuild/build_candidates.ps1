@@ -40900,6 +40900,118 @@ $catalog = @(
         TestSource = '00/69/CCreatureActionBase_IsPreventingLookTurning_00692670_test.cpp'
         PassPattern = '00692670_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00751a70'
+        Module = 'CThingPlayerCreature'
+        Source = '00/75/CThingPlayerCreature_EditWorldUpdate_00751a70.cpp'
+        TestSource = '00/75/CThingPlayerCreature_EditWorldUpdate_00751a70_test.cpp'
+        PassPattern = '00751a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c3e90'
+        Module = '_global'
+        Source = '00/7c/global_Destval_007c3e90.cpp'
+        TestSource = '00/7c/global_Destval_007c3e90_test.cpp'
+        PassPattern = '007c3e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cc9b0'
+        Module = '_global'
+        Source = '00/7c/global_Destval_007cc9b0.cpp'
+        TestSource = '00/7c/global_Destval_007cc9b0_test.cpp'
+        PassPattern = '007cc9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c66e0'
+        Module = 'CTCTurncoatSpell'
+        Source = '00/7c/CTCTurncoatSpell_SetAICast_007c66e0.cpp'
+        TestSource = '00/7c/CTCTurncoatSpell_SetAICast_007c66e0_test.cpp'
+        PassPattern = '007c66e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083f640'
+        Module = 'LHHttpHeaderStatus'
+        Source = '00/83/LHHttpHeaderStatus_GetLocationPort_0083f640.cpp'
+        TestSource = '00/83/LHHttpHeaderStatus_GetLocationPort_0083f640_test.cpp'
+        PassPattern = '0083f640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00860fc0'
+        Module = 'CVillageTaskSecuritySweep'
+        Source = '00/86/CVillageTaskSecuritySweep_IsTaskAvailable_00860fc0.cpp'
+        TestSource = '00/86/CVillageTaskSecuritySweep_IsTaskAvailable_00860fc0_test.cpp'
+        PassPattern = '00860fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00861020'
+        Module = 'CVillageTaskCarryCrate'
+        Source = '00/86/CVillageTaskCarryCrate_IsTaskAvailable_00861020.cpp'
+        TestSource = '00/86/CVillageTaskCarryCrate_IsTaskAvailable_00861020_test.cpp'
+        PassPattern = '00861020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088b7d0'
+        Module = 'CEditWorld'
+        Source = '00/88/CEditWorld_DrawGetWorldMap_0088b7d0.cpp'
+        TestSource = '00/88/CEditWorld_DrawGetWorldMap_0088b7d0_test.cpp'
+        PassPattern = '0088b7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b86c0'
+        Module = 'CCreatureAction_LeapLong'
+        Source = '00/8b/CCreatureActionLeapLong_IsToEvadeAllHits_008b86c0.cpp'
+        TestSource = '00/8b/CCreatureActionLeapLong_IsToEvadeAllHits_008b86c0_test.cpp'
+        PassPattern = '008b86c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00925f80'
+        Module = 'CAIStateGroup_WifeGiveYouGift'
+        Source = '00/92/CAIStateGroupWifeGiveYouGift_InitStateGroup_00925f80.cpp'
+        TestSource = '00/92/CAIStateGroupWifeGiveYouGift_InitStateGroup_00925f80_test.cpp'
+        PassPattern = '00925f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00932980'
+        Module = 'CAIStateGroup_MinionGuardReactToCriminal'
+        Source = '00/93/CAIStateGroupMinionGuardReactToCriminal_IsStillValid_00932980.cpp'
+        TestSource = '00/93/CAIStateGroupMinionGuardReactToCriminal_IsStillValid_00932980_test.cpp'
+        PassPattern = '00932980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ea280'
+        Module = 'CScriptBase'
+        Source = '00/7e/CScriptBase_IsActiveThreadTerminating_007ea280.cpp'
+        TestSource = '00/7e/CScriptBase_IsActiveThreadTerminating_007ea280_test.cpp'
+        PassPattern = '007ea280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00890b90'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_SetEnvironmentalEffectsAlwaysUpdate_00890b90.cpp'
+        TestSource = '00/89/CGameScriptInterface_SetEnvironmentalEffectsAlwaysUpdate_00890b90_test.cpp'
+        PassPattern = '00890b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00908d80'
+        Module = 'CCombatSequenceWhisperAttackBigCombo'
+        Source = '00/90/CCombatSequenceWhisperAttackBigCombo_IsValid_00908d80.cpp'
+        TestSource = '00/90/CCombatSequenceWhisperAttackBigCombo_IsValid_00908d80_test.cpp'
+        PassPattern = '00908d80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00908d90'
+        Module = 'CCombatSequenceWhisperAttack360'
+        Source = '00/90/CCombatSequenceWhisperAttack360_IsValid_00908d90.cpp'
+        TestSource = '00/90/CCombatSequenceWhisperAttack360_IsValid_00908d90_test.cpp'
+        PassPattern = '00908d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008922c0'
+        Module = 'CSubtitleRenderer'
+        Source = '00/89/CSubtitleRenderer_SetCutsceneActionMode_008922c0.cpp'
+        TestSource = '00/89/CSubtitleRenderer_SetCutsceneActionMode_008922c0_test.cpp'
+        PassPattern = '008922c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
