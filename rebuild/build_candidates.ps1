@@ -43175,6 +43175,118 @@ $catalog = @(
         TestSource = '00/c9/CPlayer_GetCurrentMode_00c9cfd0_test.cpp'
         PassPattern = '00c9cfd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00f36ee0'
+        Module = 'CGPUScratchBufferTextureManager'
+        Source = '00/f3/CGPUScratchBufferTextureManager_StartSurfaceUse_00f36ee0.cpp'
+        TestSource = '00/f3/CGPUScratchBufferTextureManager_StartSurfaceUse_00f36ee0_test.cpp'
+        PassPattern = '00f36ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f36f10'
+        Module = 'CGPUScratchBufferTextureManager'
+        Source = '00/f3/CGPUScratchBufferTextureManager_StartSurfaceUse_00f36f10.cpp'
+        TestSource = '00/f3/CGPUScratchBufferTextureManager_StartSurfaceUse_00f36f10_test.cpp'
+        PassPattern = '00f36f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0042d191'
+        Module = 'NScript'
+        Source = '00/42/NScript_operatorandCPredicateAnd_0042d191.cpp'
+        TestSource = '00/42/NScript_operatorandCPredicateAnd_0042d191_test.cpp'
+        PassPattern = '0042d191_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049d910'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_IsCreatureGenerationEnabledForGroup_0049d910.cpp'
+        TestSource = '00/49/CWorld_IsCreatureGenerationEnabledForGroup_0049d910_test.cpp'
+        PassPattern = '0049d910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aa8b0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_GetName_004aa8b0.cpp'
+        TestSource = '00/4a/CScriptThing_GetName_004aa8b0_test.cpp'
+        PassPattern = '004aa8b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aa980'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_GetPos_004aa980.cpp'
+        TestSource = '00/4a/CScriptThing_GetPos_004aa980_test.cpp'
+        PassPattern = '004aa980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aac80'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgReceivedInventoryItem_004aac80.cpp'
+        TestSource = '00/4a/CScriptThing_MsgReceivedInventoryItem_004aac80_test.cpp'
+        PassPattern = '004aac80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aadc0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgHitEnemyWithMeleeWeapon_004aadc0.cpp'
+        TestSource = '00/4a/CScriptThing_MsgHitEnemyWithMeleeWeapon_004aadc0_test.cpp'
+        PassPattern = '004aadc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aade0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgHitFriendWithMeleeWeapon_004aade0.cpp'
+        TestSource = '00/4a/CScriptThing_MsgHitFriendWithMeleeWeapon_004aade0_test.cpp'
+        PassPattern = '004aade0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aae00'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgHitEnemyWithRangedWeapon_004aae00.cpp'
+        TestSource = '00/4a/CScriptThing_MsgHitEnemyWithRangedWeapon_004aae00_test.cpp'
+        PassPattern = '004aae00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aae20'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgHitFriendWithRangedWeapon_004aae20.cpp'
+        TestSource = '00/4a/CScriptThing_MsgHitFriendWithRangedWeapon_004aae20_test.cpp'
+        PassPattern = '004aae20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aae40'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgHitEnemyWithBareHands_004aae40.cpp'
+        TestSource = '00/4a/CScriptThing_MsgHitEnemyWithBareHands_004aae40_test.cpp'
+        PassPattern = '004aae40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aae60'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgHitFriendWithBareHands_004aae60.cpp'
+        TestSource = '00/4a/CScriptThing_MsgHitFriendWithBareHands_004aae60_test.cpp'
+        PassPattern = '004aae60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aae80'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgAttackedWithMeleeWeaponWithoutHittingAnything_004aae80.cpp'
+        TestSource = '00/4a/CScriptThing_MsgAttackedWithMeleeWeaponWithoutHittingAnything_004aae80_test.cpp'
+        PassPattern = '004aae80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aaea0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgAttackedWithBareHandsWithoutHittingAnything_004aaea0.cpp'
+        TestSource = '00/4a/CScriptThing_MsgAttackedWithBareHandsWithoutHittingAnything_004aaea0_test.cpp'
+        PassPattern = '004aaea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aaec0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgTalkedToAnyone_004aaec0.cpp'
+        TestSource = '00/4a/CScriptThing_MsgTalkedToAnyone_004aaec0_test.cpp'
+        PassPattern = '004aaec0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
