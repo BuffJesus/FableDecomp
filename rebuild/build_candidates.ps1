@@ -48628,6 +48628,125 @@ $catalog = @(
         TestSource = '00/9c/global_ConstructString_009c7b70_test.cpp'
         PassPattern = '009c7b70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00816aa0'
+        Module = 'CTCHitLocations'
+        Source = '00/81/CTCHitLocations_GetPCombatFirstHitLocationIntersectionWithFinite_00816aa0.cpp'
+        TestSource = '00/81/CTCHitLocations_GetPCombatFirstHitLocationIntersectionWithFinite_00816aa0_test.cpp'
+        PassPattern = 'TH_816aa0_OK'
+    }
+    [pscustomobject]@{
+        Address = '008571a0'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_GetAnimationTransitionInTime_008571a0.cpp'
+        TestSource = '00/85/CCombatActionBase_GetAnimationTransitionInTime_008571a0_test.cpp'
+        PassPattern = 'GA_8571a0_OK'
+    }
+    [pscustomobject]@{
+        Address = '008601d0'
+        Module = 'CCreatureAction_GetUpFromSitting'
+        Source = '00/86/CCreatureActionGetUpFromSitting_IsMovementUsingPhysics_008601d0.cpp'
+        TestSource = '00/86/CCreatureActionGetUpFromSitting_IsMovementUsingPhysics_008601d0_test.cpp'
+        PassPattern = 'RB_8601d0_OK'
+    }
+    [pscustomobject]@{
+        Address = '008659e0'
+        Module = 'CCreatureAction_BeStunned'
+        Source = '00/86/CCreatureActionBeStunned_GetAnimDelayTime_008659e0.cpp'
+        TestSource = '00/86/CCreatureActionBeStunned_GetAnimDelayTime_008659e0_test.cpp'
+        PassPattern = 'RI_8659e0_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088b760'
+        Module = 'CAIBrain'
+        Source = '00/88/CAIBrain_GetCurrentStateGroupScriptPriority_0088b760.cpp'
+        TestSource = '00/88/CAIBrain_GetCurrentStateGroupScriptPriority_0088b760_test.cpp'
+        PassPattern = 'GP_88b760_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b6530'
+        Module = 'CCreatureAction_GetUpFromSitting'
+        Source = '00/8b/CCreatureActionGetUpFromSitting_OnAnimationLoadedCCreatureActionGetUpFromSitting_008b6530.cpp'
+        TestSource = '00/8b/CCreatureActionGetUpFromSitting_OnAnimationLoadedCCreatureActionGetUpFromSitting_008b6530_test.cpp'
+        PassPattern = 'OA_8b6530_OK'
+    }
+    [pscustomobject]@{
+        Address = '008c3890'
+        Module = 'CCreatureAction_JackGetUp'
+        Source = '00/8c/CCreatureActionJackGetUp_IsToEvadeAllHits_008c3890.cpp'
+        TestSource = '00/8c/CCreatureActionJackGetUp_IsToEvadeAllHits_008c3890_test.cpp'
+        PassPattern = 'RB_8c3890_OK'
+    }
+    [pscustomobject]@{
+        Address = '008c3910'
+        Module = 'CCombatAction_WillForcePushInto'
+        Source = '00/8c/CCombatActionWillForcePushInto_IsToFaceTarget_008c3910.cpp'
+        TestSource = '00/8c/CCombatActionWillForcePushInto_IsToFaceTarget_008c3910_test.cpp'
+        PassPattern = 'RB_8c3910_OK'
+    }
+    [pscustomobject]@{
+        Address = '008c5b70'
+        Module = 'CCreatureAction_WaspQueenDie'
+        Source = '00/8c/CCreatureActionWaspQueenDie_HasFrameUpdate_008c5b70.cpp'
+        TestSource = '00/8c/CCreatureActionWaspQueenDie_HasFrameUpdate_008c5b70_test.cpp'
+        PassPattern = 'RB_8c5b70_OK'
+    }
+    [pscustomobject]@{
+        Address = '008c94b0'
+        Module = 'CCreatureAction_BanditKingAttack'
+        Source = '00/8c/CCreatureActionBanditKingAttack_IsToFaceTarget_008c94b0.cpp'
+        TestSource = '00/8c/CCreatureActionBanditKingAttack_IsToFaceTarget_008c94b0_test.cpp'
+        PassPattern = 'FT_8c94b0_OK'
+    }
+    [pscustomobject]@{
+        Address = '008c9dd0'
+        Module = 'CCreatureAction_NymphGetHit'
+        Source = '00/8c/CCreatureActionNymphGetHit_OnAnimationLoadedCCreatureActionNymphGetHitUAEXX_008c9dd0.cpp'
+        TestSource = '00/8c/CCreatureActionNymphGetHit_OnAnimationLoadedCCreatureActionNymphGetHitUAEXX_008c9dd0_test.cpp'
+        PassPattern = 'OA_8c9dd0_OK'
+    }
+    [pscustomobject]@{
+        Address = '008cf970'
+        Module = 'CCreatureAction_TentacleIdle'
+        Source = '00/8c/CCreatureActionTentacleIdle_IsMovementUsingPhysics_008cf970.cpp'
+        TestSource = '00/8c/CCreatureActionTentacleIdle_IsMovementUsingPhysics_008cf970_test.cpp'
+        PassPattern = 'RB_8cf970_OK'
+    }
+    [pscustomobject]@{
+        Address = '008cf9f0'
+        Module = 'CCreatureAction_TentacleStrikeLoop'
+        Source = '00/8c/CCreatureActionTentacleStrikeLoop_IsMovementUsingPhysics_008cf9f0.cpp'
+        TestSource = '00/8c/CCreatureActionTentacleStrikeLoop_IsMovementUsingPhysics_008cf9f0_test.cpp'
+        PassPattern = 'RB_8cf9f0_OK'
+    }
+    [pscustomobject]@{
+        Address = '008cfa80'
+        Module = 'CCreatureAction_TentacleStrikeOutOf'
+        Source = '00/8c/CCreatureActionTentacleStrikeOutOf_IsOverrideableByActionOfSamePriority_008cfa80.cpp'
+        TestSource = '00/8c/CCreatureActionTentacleStrikeOutOf_IsOverrideableByActionOfSamePriority_008cfa80_test.cpp'
+        PassPattern = 'RB_8cfa80_OK'
+    }
+    [pscustomobject]@{
+        Address = '008cff40'
+        Module = 'operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript'
+        Source = '00/8c/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_008cff40.cpp'
+        TestSource = '00/8c/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_008cff40_test.cpp'
+        PassPattern = 'AND_8cff40_OK'
+    }
+    [pscustomobject]@{
+        Address = '008e4400'
+        Module = 'CCombatAction_RecoverFromDazed'
+        Source = '00/8e/CCombatActionRecoverFromDazed_IsOverrideableByActionOfSamePriority_008e4400.cpp'
+        TestSource = '00/8e/CCombatActionRecoverFromDazed_IsOverrideableByActionOfSamePriority_008e4400_test.cpp'
+        PassPattern = 'RB_8e4400_OK'
+    }
+    [pscustomobject]@{
+        Address = '008e4540'
+        Module = 'CCreatureAction_IceTrollIcicleAssaultLoop'
+        Source = '00/8e/CCreatureActionIceTrollIcicleAssaultLoop_IsStrikeAction_008e4540.cpp'
+        TestSource = '00/8e/CCreatureActionIceTrollIcicleAssaultLoop_IsStrikeAction_008e4540_test.cpp'
+        PassPattern = 'RB_8e4540_OK'
+    }
 )
 
 $requestedAddresses = @(
