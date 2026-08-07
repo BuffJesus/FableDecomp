@@ -49090,6 +49090,132 @@ $catalog = @(
         TestSource = '00/9f/CInputProcessGameBase_AddToInterface_009fc520_test.cpp'
         PassPattern = 'RB_9fc520_OK'
     }
+    [pscustomobject]@{
+        Address = '008e4750'
+        Module = 'CCreatureAction_ScorpionSummon'
+        Source = '00/8e/CCreatureActionScorpionSummon_IsToEvadeAllHits_008e4750.cpp'
+        TestSource = '00/8e/CCreatureActionScorpionSummon_IsToEvadeAllHits_008e4750_test.cpp'
+        PassPattern = 'RB_8e4750_OK'
+    }
+    [pscustomobject]@{
+        Address = '008e4a40'
+        Module = 'CCreatureAction_SnapDragonOutOf'
+        Source = '00/8e/CCreatureActionSnapDragonOutOf_IsToFaceMovementDirection_008e4a40.cpp'
+        TestSource = '00/8e/CCreatureActionSnapDragonOutOf_IsToFaceMovementDirection_008e4a40_test.cpp'
+        PassPattern = 'RB_8e4a40_OK'
+    }
+    [pscustomobject]@{
+        Address = '008e4bc0'
+        Module = 'CCreatureAction_SummonerDead'
+        Source = '00/8e/CCreatureActionSummonerDead_IsToEvadeAllHits_008e4bc0.cpp'
+        TestSource = '00/8e/CCreatureActionSummonerDead_IsToEvadeAllHits_008e4bc0_test.cpp'
+        PassPattern = 'RB_8e4bc0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00915860'
+        Module = 'CCreatureAction_PutGoodsDown'
+        Source = '00/91/CCreatureActionPutGoodsDown_GetAnimExtraFlags_00915860.cpp'
+        TestSource = '00/91/CCreatureActionPutGoodsDown_GetAnimExtraFlags_00915860_test.cpp'
+        PassPattern = 'RB_915860_OK'
+    }
+    [pscustomobject]@{
+        Address = '009252a0'
+        Module = 'CCreatureAction_TentacleRise'
+        Source = '00/92/CCreatureActionTentacleRise_IsMovementUsingPhysics_009252a0.cpp'
+        TestSource = '00/92/CCreatureActionTentacleRise_IsMovementUsingPhysics_009252a0_test.cpp'
+        PassPattern = 'RB_9252a0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00925310'
+        Module = 'CCreatureAction_TentacleStrikeInto'
+        Source = '00/92/CCreatureActionTentacleStrikeInto_IsMovementUsingPhysics_00925310.cpp'
+        TestSource = '00/92/CCreatureActionTentacleStrikeInto_IsMovementUsingPhysics_00925310_test.cpp'
+        PassPattern = 'RB_925310_OK'
+    }
+    [pscustomobject]@{
+        Address = '00938ed0'
+        Module = 'CAIStateGroup_MinionSitAtHome'
+        Source = '00/93/CAIStateGroupMinionSitAtHome_IsStateGroupStillValidCAIStateGroupMinionSitAtHo_00938ed0.cpp'
+        TestSource = '00/93/CAIStateGroupMinionSitAtHome_IsStateGroupStillValidCAIStateGroupMinionSitAtHo_00938ed0_test.cpp'
+        PassPattern = 'RB_938ed0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00940bd0'
+        Module = 'CAIStateGroup_KidWatchHopscotch'
+        Source = '00/94/CAIStateGroupKidWatchHopscotch_OnActivateCAIStateGroupKidWatchHopscotchMAEXXZ_00940bd0.cpp'
+        TestSource = '00/94/CAIStateGroupKidWatchHopscotch_OnActivateCAIStateGroupKidWatchHopscotchMAEXXZ_00940bd0_test.cpp'
+        PassPattern = 'RB_940bd0_OK'
+    }
+    [pscustomobject]@{
+        Address = '0094b330'
+        Module = 'CVillageTaskCarryCrate'
+        Source = '00/94/CVillageTaskCarryCrate_IsCreatureAssignedToTask_0094b330.cpp'
+        TestSource = '00/94/CVillageTaskCarryCrate_IsCreatureAssignedToTask_0094b330_test.cpp'
+        PassPattern = 'RB_94b330_OK'
+    }
+    [pscustomobject]@{
+        Address = '0094c7b0'
+        Module = 'CAIStateGroup_GameMaster'
+        Source = '00/94/CAIStateGroupGameMaster_OnActivate_0094c7b0.cpp'
+        TestSource = '00/94/CAIStateGroupGameMaster_OnActivate_0094c7b0_test.cpp'
+        PassPattern = 'RB_94c7b0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00953240'
+        Module = 'CCreatureAction_SnapDragon'
+        Source = '00/95/CCreatureActionSnapDragon_IsToFaceMovementDirection_00953240.cpp'
+        TestSource = '00/95/CCreatureActionSnapDragon_IsToFaceMovementDirection_00953240_test.cpp'
+        PassPattern = 'RB_953240_OK'
+    }
+    [pscustomobject]@{
+        Address = '009532e0'
+        Module = 'CCreatureAction_SnapDragonFast'
+        Source = '00/95/CCreatureActionSnapDragonFast_IsToFaceMovementDirection_009532e0.cpp'
+        TestSource = '00/95/CCreatureActionSnapDragonFast_IsToFaceMovementDirection_009532e0_test.cpp'
+        PassPattern = 'RB_9532e0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00953590'
+        Module = 'CCreatureAction_DragonHoverOutOf'
+        Source = '00/95/CCreatureActionDragonHoverOutOf_IsMovementUsingPhysics_00953590.cpp'
+        TestSource = '00/95/CCreatureActionDragonHoverOutOf_IsMovementUsingPhysics_00953590_test.cpp'
+        PassPattern = 'RB_953590_OK'
+    }
+    [pscustomobject]@{
+        Address = '00954130'
+        Module = 'CAIStateGroup_MazeBase'
+        Source = '00/95/CAIStateGroupMazeBase_HasEnemyBeenKnockedDown_00954130.cpp'
+        TestSource = '00/95/CAIStateGroupMazeBase_HasEnemyBeenKnockedDown_00954130_test.cpp'
+        PassPattern = 'RB_954130_OK'
+    }
+    [pscustomobject]@{
+        Address = '009567d0'
+        Module = 'CCombatAction_WillShieldInto'
+        Source = '00/95/CCombatActionWillShieldInto_IsToFaceTarget_009567d0.cpp'
+        TestSource = '00/95/CCombatActionWillShieldInto_IsToFaceTarget_009567d0_test.cpp'
+        PassPattern = 'RB_9567d0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00956850'
+        Module = 'CCombatAction_WillEnflameInto'
+        Source = '00/95/CCombatActionWillEnflameInto_IsToFaceTarget_00956850.cpp'
+        TestSource = '00/95/CCombatActionWillEnflameInto_IsToFaceTarget_00956850_test.cpp'
+        PassPattern = 'RB_956850_OK'
+    }
+    [pscustomobject]@{
+        Address = '009571f0'
+        Module = 'CCreatureAction_BriarRoseShotFarInto'
+        Source = '00/95/CCreatureActionBriarRoseShotFarInto_IsToFaceTarget_009571f0.cpp'
+        TestSource = '00/95/CCreatureActionBriarRoseShotFarInto_IsToFaceTarget_009571f0_test.cpp'
+        PassPattern = 'RB_9571f0_OK'
+    }
+    [pscustomobject]@{
+        Address = '0095caa0'
+        Module = 'CCreatureAction_WaspQueenPrimaryAttack'
+        Source = '00/95/CCreatureActionWaspQueenPrimaryAttack_IsMovementUsingPhysics_0095caa0.cpp'
+        TestSource = '00/95/CCreatureActionWaspQueenPrimaryAttack_IsMovementUsingPhysics_0095caa0_test.cpp'
+        PassPattern = 'RB_95caa0_OK'
+    }
 )
 
 $requestedAddresses = @(
