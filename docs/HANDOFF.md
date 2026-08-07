@@ -7840,12 +7840,35 @@ structural boundary (see the two prior 2026-08-06 addenda + memory
 [[audiooptions-backdrop-not-sunbeam]]); needs native backdrop ownership, not a
 compositing tweak.
 
-## Session addendum — 2026-08-07: crawl gen_batch8 + gen_batch9 = 32 landed
+## Session addendum — 2026-08-07: crawl gen_batch8..12 = 84 landed
 
-Binary-wide parity crawl continued (the high-yield small-fn tail). Two full
-batches, **both 16/16 byte-exact/RELOCATION_MATCH, all behavior-gated**
-(commits `d1c790c`, `fa6ff3c`). Tried ledger `tools/decomp_pipeline/crawl/
-gen_tried.txt` now **200 addrs**; eligible pool still ~16.8k.
+Binary-wide parity crawl continued (the high-yield small-fn tail). Five full
+batches, byte-exact/RELOCATION_MATCH, all behavior-gated: batch8 16/16
+(`d1c790c`), batch9 16/16 (`fa6ff3c`), batch10 18/18 (`44bb055`), batch11
+16/18 (`38d8577`), batch12 18/18 (`1845072`). Tried ledger
+`tools/decomp_pipeline/crawl/gen_tried.txt` now **254 addrs** (incl. 2 honest
+defers, below); eligible pool still ~16.8k.
+
+Additional patterns proven in batch10-12: real-member LEA/IMUL element
+indexing (`this + i*40 + 8`, `base + i*0x58`, `fld` float tables); global-array
+LEA index with reloc; esi-saved indirect-stdcall returning this; dtor
+vtable-store/field-set + `add ecx,N` + tail-jmp; a 7-member CScriptThing
+virtual-forwarder family (`p=this->f4; if(!p) return dflt; return p->virt(slot)`
+via N dummy virtuals, tail-called); a 6-member `_Dest_val` family
+(`h2(h1(this+8))` = add ecx,8; call; mov ecx,eax; jmp); indirect-stdcall
+notify through a global fn-ptr (`ff15`); `probe()!=0` neg;sbb;neg vs `==0`
+neg;sbb;inc; **`(unsigned)x>>n` → `shr` but signed `int` → `sar`** (match the
+retail shift by choosing probe signedness); **invert the `if` condition to
+match VC71's JNE branch layout** (VC canonicalizes the cheap return to the
+fall-through, so `if(!cond) return member; return dflt;` yields JNE-to-member).
+
+Two honest defers in the ledger (irreducible under the harness, not source
+bugs): `00c623f0` `_List_const_iterator::operator--` (triple-deref, operates
+only on its stack arg, `this` unused — shape didn't reduce); `0044c1cd`
+`CTCNoiseDef::GetSizeofClass` (retail is the `/O1` size trick
+`6a34 58 c3` = push imm8/pop eax; the harness sweeps only `/O2`+pragmas so it
+emits `mov eax,0x34; ret`, and the manifest oracle over-captures 15B vs the
+real 4B body — the next fn starts at +4).
 
 New reusable authoring patterns proven this session (VC7.1, verify_and_land):
 - **Real member function for stack-passed args.** thiscall methods whose args
