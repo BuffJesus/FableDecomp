@@ -40396,6 +40396,90 @@ $catalog = @(
         TestSource = '00/49/CObservable_CObservableAddExclusiveObserver_0049d8b0_test.cpp'
         PassPattern = 'OBSERVER_SET_OK'
     }
+    [pscustomobject]@{
+        Address = '006588cf'
+        Module = 'CPixelShader'
+        Source = '00/65/CPixelShader_CountReferences_006588cf.cpp'
+        TestSource = '00/65/CPixelShader_CountReferences_006588cf_test.cpp'
+        PassPattern = '006588cf_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00661ee0'
+        Module = 'CPixelShader'
+        Source = '00/66/CPixelShader_CountReferences_00661ee0.cpp'
+        TestSource = '00/66/CPixelShader_CountReferences_00661ee0_test.cpp'
+        PassPattern = '00661ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00661ff0'
+        Module = 'CPixelShader'
+        Source = '00/66/CPixelShader_CountReferences_00661ff0.cpp'
+        TestSource = '00/66/CPixelShader_CountReferences_00661ff0_test.cpp'
+        PassPattern = '00661ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00662000'
+        Module = 'CPixelShader'
+        Source = '00/66/CPixelShader_CountReferences_00662000.cpp'
+        TestSource = '00/66/CPixelShader_CountReferences_00662000_test.cpp'
+        PassPattern = '00662000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00662010'
+        Module = 'CPixelShader'
+        Source = '00/66/CPixelShader_CountReferences_00662010.cpp'
+        TestSource = '00/66/CPixelShader_CountReferences_00662010_test.cpp'
+        PassPattern = '00662010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006623f0'
+        Module = 'CPixelShader'
+        Source = '00/66/CPixelShader_CountReferences_006623f0.cpp'
+        TestSource = '00/66/CPixelShader_CountReferences_006623f0_test.cpp'
+        PassPattern = '006623f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00662400'
+        Module = 'CPixelShader'
+        Source = '00/66/CPixelShader_CountReferences_00662400.cpp'
+        TestSource = '00/66/CPixelShader_CountReferences_00662400_test.cpp'
+        PassPattern = '00662400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006620e0'
+        Module = 'CTCPhysicsBase'
+        Source = '00/66/CTCPhysicsBase_GetAirResistance_006620e0.cpp'
+        TestSource = '00/66/CTCPhysicsBase_GetAirResistance_006620e0_test.cpp'
+        PassPattern = '006620e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00633be0'
+        Module = 'CPlayer'
+        Source = '00/63/CPlayer_GetCurrentMode_00633be0.cpp'
+        TestSource = '00/63/CPlayer_GetCurrentMode_00633be0_test.cpp'
+        PassPattern = '00633be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00643be2'
+        Module = 'CComponent'
+        Source = '00/64/CComponent_CanMove_00643be2.cpp'
+        TestSource = '00/64/CComponent_CanMove_00643be2_test.cpp'
+        PassPattern = '00643be2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bc4cb'
+        Module = 'CObservable'
+        Source = '00/5b/CObservable_AddExclusiveObserver_005bc4cb.cpp'
+        TestSource = '00/5b/CObservable_AddExclusiveObserver_005bc4cb_test.cpp'
+        PassPattern = '005bc4cb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066e799'
+        Module = 'CObservable'
+        Source = '00/66/CObservable_AddExclusiveObserver_0066e799.cpp'
+        TestSource = '00/66/CObservable_AddExclusiveObserver_0066e799_test.cpp'
+        PassPattern = '0066e799_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
