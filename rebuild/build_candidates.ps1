@@ -40480,6 +40480,111 @@ $catalog = @(
         TestSource = '00/66/CObservable_AddExclusiveObserver_0066e799_test.cpp'
         PassPattern = '0066e799_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006d64a0'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/6d/CTCInventoryAbilities_GetAbilityLevel_006d64a0.cpp'
+        TestSource = '00/6d/CTCInventoryAbilities_GetAbilityLevel_006d64a0_test.cpp'
+        PassPattern = '006d64a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d6510'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/6d/CTCInventoryAbilities_GetAbilityLevel_006d6510.cpp'
+        TestSource = '00/6d/CTCInventoryAbilities_GetAbilityLevel_006d6510_test.cpp'
+        PassPattern = '006d6510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d6520'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/6d/CTCInventoryAbilities_GetAbilityLevel_006d6520.cpp'
+        TestSource = '00/6d/CTCInventoryAbilities_GetAbilityLevel_006d6520_test.cpp'
+        PassPattern = '006d6520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cbf50'
+        Module = 'CTCDivineWrath'
+        Source = '00/7c/CTCDivineWrath_GetDamageMultiplier_007cbf50.cpp'
+        TestSource = '00/7c/CTCDivineWrath_GetDamageMultiplier_007cbf50_test.cpp'
+        PassPattern = '007cbf50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00842c20'
+        Module = 'CCreatureAction_PerformExpression'
+        Source = '00/84/CCreatureActionPerformExpression_IsToHaveEmptyHands_00842c20.cpp'
+        TestSource = '00/84/CCreatureActionPerformExpression_IsToHaveEmptyHands_00842c20_test.cpp'
+        PassPattern = '00842c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00842c30'
+        Module = 'CCreatureAction_PerformExpression'
+        Source = '00/84/CCreatureActionPerformExpression_IsToReplaceItemIfRemoved_00842c30.cpp'
+        TestSource = '00/84/CCreatureActionPerformExpression_IsToReplaceItemIfRemoved_00842c30_test.cpp'
+        PassPattern = '00842c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00842c40'
+        Module = 'CCreatureAction_PerformExpression'
+        Source = '00/84/CCreatureActionPerformExpression_IsToReplaceItemIfRemovedExt_00842c40.cpp'
+        TestSource = '00/84/CCreatureActionPerformExpression_IsToReplaceItemIfRemovedExt_00842c40_test.cpp'
+        PassPattern = '00842c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00810f50'
+        Module = 'CIsHitEventBlocked'
+        Source = '00/81/CIsHitEventBlocked_operator_00810f50.cpp'
+        TestSource = '00/81/CIsHitEventBlocked_operator_00810f50_test.cpp'
+        PassPattern = '00810f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00746810'
+        Module = 'CMeleeApprentice'
+        Source = '00/74/CMeleeApprentice_Init_00746810.cpp'
+        TestSource = '00/74/CMeleeApprentice_Init_00746810_test.cpp'
+        PassPattern = '00746810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7360'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_ClearCommands_007e7360.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_ClearCommands_007e7360_test.cpp'
+        PassPattern = '007e7360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7370'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_WaitWhilePerformingTasks_007e7370.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_WaitWhilePerformingTasks_007e7370_test.cpp'
+        PassPattern = '007e7370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7400'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_ClearAllActions_007e7400.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_ClearAllActions_007e7400_test.cpp'
+        PassPattern = '007e7400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7410'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_ClearAllActionsIncludingLoopingAnimations_007e7410.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_ClearAllActionsIncludingLoopingAnimations_007e7410_test.cpp'
+        PassPattern = '007e7410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7430'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_DropGenericBox_007e7430.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_DropGenericBox_007e7430_test.cpp'
+        PassPattern = '007e7430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7440'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_UnsheatheWeapons_007e7440.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_UnsheatheWeapons_007e7440_test.cpp'
+        PassPattern = '007e7440_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
