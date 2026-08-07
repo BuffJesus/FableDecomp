@@ -131,6 +131,12 @@ of a clean PE32 at ImageBase `0x400000`.
   `tools/decomp_pipeline/trim_overcapture.py 0x<addr> ...` (prints trimmed len+bytes) or
   `--oracle <tsv>` (rewrites over-captured rows in place); it cuts at the first standalone int3 that
   follows a terminator (ret/tail-jmp), leaving clean rows untouched. Then author the single fn.
+  TAIL-CALL CAVEAT authoring recovered forwarders: a VALUE-returning member forwarder
+  (`return this->f4->M(this->f8);`) or cdecl-cleanup forwarder (`helper(a,b,-1);` w/ `add esp,N`)
+  keeps retail's `call;ret` and recovers byte-exact; a VOID member forwarder (`sub->M(x);` as the whole
+  body) gets tail-call-optimized to `jmp` by VC7.1 while retail kept `push;call;ret` — DIFFER(NvN)
+  same-length, not recoverable. Backlog of the 84 deferred over-captures (by shape) is
+  rebuild/backlog/overcapture-recovery-worklist.tsv; ~11 recovered so far this pass.
 
 ## Toolchain (see docs/TOOLCHAIN.md for commands)
 - Mario rig gotcha (2026-07-22): `work/mario_hero/stage_bindaxis4` is format-valid and looks
