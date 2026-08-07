@@ -6843,3 +6843,5 @@ address	name	length	bytes
 007adb30	SetMiniMapRegionExitTextOffsetX	21	8b44240850e856f1ffff8b4c240489018bc1c20800
 007cc9c0	CancelForCutscene	21	8a411484c0740d8b49046887000000e86ccecfffc3
 00814bf0	DrawGetEnvironment	4	8b4118c3
+00a39c20	GetLength	13	8b41088b490450e81426f9ffc3
+009c7b70	ConstructString	13	6aff5251e8e7feffff83c40cc3

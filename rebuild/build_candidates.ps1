@@ -48614,6 +48614,20 @@ $catalog = @(
         TestSource = '00/81/CWorld_DrawGetEnvironment_00814bf0_test.cpp'
         PassPattern = 'DE_814bf0_OK'
     }
+    [pscustomobject]@{
+        Address = '00a39c20'
+        Module = 'CWADFile'
+        Source = '00/a3/CWADFile_GetLength_00a39c20.cpp'
+        TestSource = '00/a3/CWADFile_GetLength_00a39c20_test.cpp'
+        PassPattern = '00a39c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c7b70'
+        Module = '_global'
+        Source = '00/9c/global_ConstructString_009c7b70.cpp'
+        TestSource = '00/9c/global_ConstructString_009c7b70_test.cpp'
+        PassPattern = '009c7b70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
