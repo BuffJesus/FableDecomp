@@ -42930,6 +42930,76 @@ $catalog = @(
         TestSource = '00/57/Destval_CFlash_0057a5a5_test.cpp'
         PassPattern = '0057a5a5_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006621a0'
+        Module = 'CPersistContext_TransferableSubComponent<CCreatureStatsDef>'
+        Source = '00/66/CPersistContextTransferableSubComponentCCreatureStatsDef_AreDefaultValsApplied_006621a0.cpp'
+        TestSource = '00/66/CPersistContextTransferableSubComponentCCreatureStatsDef_AreDefaultValsApplied_006621a0_test.cpp'
+        PassPattern = '006621a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0068cb70'
+        Module = 'CInputProcessControlFreeCamera'
+        Source = '00/68/CInputProcessControlFreeCamera_Init_0068cb70.cpp'
+        TestSource = '00/68/CInputProcessControlFreeCamera_Init_0068cb70_test.cpp'
+        PassPattern = '0068cb70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692890'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_AllowsCombinationAnims_00692890.cpp'
+        TestSource = '00/69/CCreatureActionBase_AllowsCombinationAnims_00692890_test.cpp'
+        PassPattern = '00692890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006af1a0'
+        Module = 'CMessageEventFilter_HasExtraData'
+        Source = '00/6a/CMessageEventFilterHasExtraData_operator_006af1a0.cpp'
+        TestSource = '00/6a/CMessageEventFilterHasExtraData_operator_006af1a0_test.cpp'
+        PassPattern = '006af1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006af1c0'
+        Module = 'CMessageEventFilter_HasExtraData'
+        Source = '00/6a/CMessageEventFilterHasExtraData_operator_006af1c0.cpp'
+        TestSource = '00/6a/CMessageEventFilterHasExtraData_operator_006af1c0_test.cpp'
+        PassPattern = '006af1c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d65c0'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/6d/CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation_006d65c0.cpp'
+        TestSource = '00/6d/CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation_006d65c0_test.cpp'
+        PassPattern = '006d65c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070d920'
+        Module = '_global'
+        Source = '00/70/global_operatordelete_0070d920.cpp'
+        TestSource = '00/70/global_operatordelete_0070d920_test.cpp'
+        PassPattern = '0070d920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00733340'
+        Module = 'CCombatAbility'
+        Source = '00/73/CCombatAbility_IsUsable_00733340.cpp'
+        TestSource = '00/73/CCombatAbility_IsUsable_00733340_test.cpp'
+        PassPattern = '00733340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00799120'
+        Module = 'CTCDParticleEmitter'
+        Source = '00/79/CTCDParticleEmitter_OnDie_00799120.cpp'
+        TestSource = '00/79/CTCDParticleEmitter_OnDie_00799120_test.cpp'
+        PassPattern = '00799120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7340'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_IsFollowActionRunning_007e7340.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_IsFollowActionRunning_007e7340_test.cpp'
+        PassPattern = '007e7340_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
