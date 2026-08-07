@@ -7777,3 +7777,30 @@ rebuild to tweak the sunbeam alpha (offline evidence says it can't help). Next:
 re-derive the coastal backdrop levels/vignette (or take native backdrop
 ownership) before re-measuring Options MAE. Offline analysis scripts are in the
 session scratchpad (`build_batch4.py` and the compositing sweeps).
+
+## Session addendum — 2026-08-06 (cont.): coastal backdrop is structural, not levels
+
+Correction/refinement to the AudioOptions finding above and second crawl batch.
+
+Crawl **gen_batch5** landed **15 more byte-exact functions** (commit `3eba78c`;
+session total 27): 3x GetAbilityLevel (arr[index]), GetDamageMultiplier,
+3x CCreatureAction IsTo* (byte double-load), operator() deref, Init, an
+`a+1<b` setl compare, and a clean family of 6
+`CScriptGameResourceObjectScriptedThingBase` vtable tail-call forwarders
+(inner-at-+8, pure indirect calls). Deferred at the 2-attempt cap:
+`GetAirResistance` (VC7.1 fmul commutes the global into st0 first; retail loads
+the member first), `Cleanup` (VC7.1 hoists the vtbl load ahead of the two byte
+stores), plus two reloc forwarders. Ledger 118 addrs.
+
+**Backdrop, corrected:** the earlier "coastal base ~2x too bright / vignette"
+read was imprecise. Over the discrepancy regions the coastal frame-0 **mean RGB
+matches retail** ([84,55,55] vs [81,58,55]) while MAE stays 44 — correct overall
+color, wrong spatial distribution of the bright light-glow. Ruled out
+exhaustively offline: not sunbeam (frame x alpha x blend can't beat 44.40,
+optimum V=0), not a wrong coastal frame (0-3 all >=44), not a pan (best x/y roll
+44.40->41.74), not levels (mean matches). Forest screens decode via the SAME
+build_sheet and match well (Gameplay/Video left-mid 1.2/3.0), so it is
+coastal-specific and **structural**: retail's displayed coastal (main-menu) scene
+differs from the decoded COASTAL frame in a way only native backdrop
+scene/animation ownership can close. Do not spend rebuilds on sunbeam/frame/pan/
+levels for Options parity.
