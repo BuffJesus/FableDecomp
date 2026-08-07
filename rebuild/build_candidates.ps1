@@ -41628,6 +41628,118 @@ $catalog = @(
         TestSource = '00/86/CCombatActionGenericStrikeResponseKnockdown_IsToCauseRecoil_00865e10_test.cpp'
         PassPattern = '00865e10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00993e80'
+        Module = 'CDataOutputStream'
+        Source = '00/99/CDataOutputStream_WriteCBYTE_00993e80.cpp'
+        TestSource = '00/99/CDataOutputStream_WriteCBYTE_00993e80_test.cpp'
+        PassPattern = '00993e80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00993e90'
+        Module = 'CDataOutputStream'
+        Source = '00/99/CDataOutputStream_WriteCBYTE_00993e90.cpp'
+        TestSource = '00/99/CDataOutputStream_WriteCBYTE_00993e90_test.cpp'
+        PassPattern = '00993e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00993ea0'
+        Module = 'CDataOutputStream'
+        Source = '00/99/CDataOutputStream_WriteCBYTE_00993ea0.cpp'
+        TestSource = '00/99/CDataOutputStream_WriteCBYTE_00993ea0_test.cpp'
+        PassPattern = '00993ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00993eb0'
+        Module = 'CDataOutputStream'
+        Source = '00/99/CDataOutputStream_WriteCBYTE_00993eb0.cpp'
+        TestSource = '00/99/CDataOutputStream_WriteCBYTE_00993eb0_test.cpp'
+        PassPattern = '00993eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e4ad0'
+        Module = 'CDriveManager'
+        Source = '00/9e/CDriveManager_Initialise_009e4ad0.cpp'
+        TestSource = '00/9e/CDriveManager_Initialise_009e4ad0_test.cpp'
+        PassPattern = '009e4ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fc160'
+        Module = 'CTCCoopSpirit'
+        Source = '00/9f/CTCCoopSpirit_AddExperience_009fc160.cpp'
+        TestSource = '00/9f/CTCCoopSpirit_AddExperience_009fc160_test.cpp'
+        PassPattern = '009fc160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a39c00'
+        Module = 'CWADFile'
+        Source = '00/a3/CWADFile_MovePosition_00a39c00.cpp'
+        TestSource = '00/a3/CWADFile_MovePosition_00a39c00_test.cpp'
+        PassPattern = '00a39c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0d390'
+        Module = 'CWomanToAttract'
+        Source = '00/a0/CWomanToAttract_Init_00a0d390.cpp'
+        TestSource = '00/a0/CWomanToAttract_Init_00a0d390_test.cpp'
+        PassPattern = '00a0d390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a12890'
+        Module = 'CMainGameComponent'
+        Source = '00/a1/CMainGameComponent_BeginInputLoading_00a12890.cpp'
+        TestSource = '00/a1/CMainGameComponent_BeginInputLoading_00a12890_test.cpp'
+        PassPattern = '00a12890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a36f80'
+        Module = 'CThingFilter_IsValid'
+        Source = '00/a3/CThingFilterIsValid_opcall_00a36f80.cpp'
+        TestSource = '00/a3/CThingFilterIsValid_opcall_00a36f80_test.cpp'
+        PassPattern = '00a36f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66750'
+        Module = '_global'
+        Source = '00/a6/global_operatordelete_00a66750.cpp'
+        TestSource = '00/a6/global_operatordelete_00a66750_test.cpp'
+        PassPattern = '00a66750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbddb0'
+        Module = 'CEngineInternalPrimitiveParticleSpriteTrailGroup'
+        Source = '00/bb/CEngineInternalPrimitiveParticleSpriteTrailGroup_PrimTypeMatchesGroup_00bbddb0.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleSpriteTrailGroup_PrimTypeMatchesGroup_00bbddb0_test.cpp'
+        PassPattern = '00bbddb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbf360'
+        Module = 'CEngineInternalPrimitiveParticleSpriteGroup'
+        Source = '00/bb/CEngineInternalPrimitiveParticleSpriteGroup_PrimTypeMatchesGroup_00bbf360.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleSpriteGroup_PrimTypeMatchesGroup_00bbf360_test.cpp'
+        PassPattern = '00bbf360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc2460'
+        Module = 'CEngineInternalPrimitiveParticleMeshGroup'
+        Source = '00/bc/CEngineInternalPrimitiveParticleMeshGroup_PrimTypeMatchesGroup_00bc2460.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveParticleMeshGroup_PrimTypeMatchesGroup_00bc2460_test.cpp'
+        PassPattern = '00bc2460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc3df0'
+        Module = 'CEngineInternalPrimitiveParticleLineGroup'
+        Source = '00/bc/CEngineInternalPrimitiveParticleLineGroup_PrimTypeMatchesGroup_00bc3df0.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveParticleLineGroup_PrimTypeMatchesGroup_00bc3df0_test.cpp'
+        PassPattern = '00bc3df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5b200'
+        Module = 'CCachedFile'
+        Source = '00/a5/CCachedFile_GetLength_00a5b200.cpp'
+        TestSource = '00/a5/CCachedFile_GetLength_00a5b200_test.cpp'
+        PassPattern = '00a5b200_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
