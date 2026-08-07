@@ -1117,15 +1117,14 @@ namespace
             }
             if (outline)
             {
-                // Retail frontend glyphs carry a 1px MaxFilter-style outline
-                // (matched in the authored bake via add_outline()).  The live
-                // path approximates it with four CARDINAL offsets: a symmetric
-                // outline that covers every stroke edge, unlike the previous
-                // two-diagonal samples which left the cardinal edges bare and
-                // read as a diagonal double-image ("ghosting").  The full
-                // eight-neighbour version overflows the fixed vertex scratch on
-                // text-heavy screens, so the corner samples are omitted and the
-                // append is capacity-guarded.
+                // Retail frontend glyphs carry a 1px DROP SHADOW offset toward
+                // the bottom-right, not a symmetric outline: measuring
+                // GameplayOptions.png, the dark edge around white text is
+                // ~1.2px thick on the bottom and ~1.0px on the right but ~0 on
+                // the top and left.  A single down-right offset reproduces that
+                // exactly and removes the spurious top/left edges the earlier
+                // symmetric cardinal outline added (the residual "glyph
+                // artifacts").  One quad per glyph, capacity-guarded.
                 const float outlineStep = 1.0f;
                 const fable_u32 outlineColour = 0xFF000000u;
                 const float outlineU0 = static_cast<float>(
@@ -1144,11 +1143,10 @@ namespace
                     static_cast<float>(glyph.width) * glyphScale;
                 const float outlineGlyphH =
                     static_cast<float>(glyph.height) * glyphScale;
-                static const float kOutlineOffsets[4][2] = {
-                    { 0.0f, -1.0f}, { 0.0f, 1.0f},
-                    {-1.0f, 0.0f}, { 1.0f, 0.0f}
+                static const float kOutlineOffsets[1][2] = {
+                    { 1.0f, 1.0f }
                 };
-                for (int outlineIndex = 0; outlineIndex < 4; ++outlineIndex)
+                for (int outlineIndex = 0; outlineIndex < 1; ++outlineIndex)
                 {
                     if (vertexCount + 6u > 8192u || recordCount + 1u > 4096u)
                     {
