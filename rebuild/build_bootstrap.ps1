@@ -2,7 +2,13 @@ param(
     [ValidateSet('Debug', 'Release')]
     [string]$Configuration = 'Release',
 
-    [string]$RetailFrontendBank = ''
+    [string]$RetailFrontendBank = '',
+
+    # Install-time asset extraction mode: decode the frontend atlases from the
+    # base game into <outDir>/data/frontend and exit before compiling.  Drives
+    # tools/extract_frontend_assets.ps1 so the loose assets can be produced
+    # without a full reconstruction build.
+    [switch]$ExtractAssetsOnly
 )
 
 $ErrorActionPreference = 'Stop'
@@ -3975,6 +3981,14 @@ try {
                 -Force
         }
     }
+    if ($ExtractAssetsOnly) {
+        $extractedCount =
+            (Get-ChildItem $looseFrontendDir -Filter '*.bmp' -ErrorAction SilentlyContinue).Count
+        Write-Host (
+            "FRONTEND_ASSET_EXTRACTION PASS dir=$looseFrontendDir " +
+            "atlases=$extractedCount")
+        exit 0
+    }
 
     $resourceBitmapPath = $visualBootBitmap.Replace('\', '/')
     $resourceLines = @("101 BITMAP `"$resourceBitmapPath`"")
@@ -4087,6 +4101,20 @@ try {
             "118 WAVE `"$resourceSoundBackPath`""
         $resourceLines +=
             "119 WAVE `"$resourceSoundForwardPath`""
+    }
+    # Asset-free exe: the 19 retail-derived frontend atlases are served at
+    # runtime from loose files under data/frontend/ (install-time extraction),
+    # so drop their BITMAP resources from the embed.  Keep 101 (our own boot
+    # concept art), 105 (CURSOR), and 116-119 (WAVE sounds).
+    $embeddedFrontendAtlasIds = @(
+        102, 103, 104, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115,
+        120, 121, 122, 123, 124, 125)
+    $resourceLines = $resourceLines | Where-Object {
+        if ($_ -match '^\s*(\d+)\s+BITMAP\b') {
+            -not ($embeddedFrontendAtlasIds -contains [int]$Matches[1])
+        } else {
+            $true
+        }
     }
     Set-Content -LiteralPath $visualBootResourceSource `
         -Value $resourceLines `
