@@ -41250,6 +41250,132 @@ $catalog = @(
         TestSource = '00/4a/CScriptThing_SetDataString_004aa930_test.cpp'
         PassPattern = '004aa930_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0057462c'
+        Module = 'vector_bool'
+        Source = '00/57/vectorbool_Dtor_0057462c.cpp'
+        TestSource = '00/57/vectorbool_Dtor_0057462c_test.cpp'
+        PassPattern = '0057462c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db250'
+        Module = 'CWADFile'
+        Source = '00/5d/CWADFile_SetDefaultValue_005db250.cpp'
+        TestSource = '00/5d/CWADFile_SetDefaultValue_005db250_test.cpp'
+        PassPattern = '005db250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db2b0'
+        Module = 'CWADFile'
+        Source = '00/5d/CWADFile_SetDefaultValue_005db2b0.cpp'
+        TestSource = '00/5d/CWADFile_SetDefaultValue_005db2b0_test.cpp'
+        PassPattern = '005db2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005fad30'
+        Module = 'CWADFile'
+        Source = '00/5f/CWADFile_Close_005fad30.cpp'
+        TestSource = '00/5f/CWADFile_Close_005fad30_test.cpp'
+        PassPattern = '005fad30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00643ea2'
+        Module = 'CMeleeApprentice'
+        Source = '00/64/CMeleeApprentice_Init_00643ea2.cpp'
+        TestSource = '00/64/CMeleeApprentice_Init_00643ea2_test.cpp'
+        PassPattern = '00643ea2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006463f0'
+        Module = 'CRenderTarget'
+        Source = '00/64/CRenderTarget_DetachTarget_006463f0.cpp'
+        TestSource = '00/64/CRenderTarget_DetachTarget_006463f0_test.cpp'
+        PassPattern = '006463f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065ed8e'
+        Module = 'CVillageTask'
+        Source = '00/65/CVillageTask_f_0065ed8e.cpp'
+        TestSource = '00/65/CVillageTask_f_0065ed8e_test.cpp'
+        PassPattern = '0065ed8e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065ed9d'
+        Module = 'CVillageTask'
+        Source = '00/65/CVillageTask_f_0065ed9d.cpp'
+        TestSource = '00/65/CVillageTask_f_0065ed9d_test.cpp'
+        PassPattern = '0065ed9d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065ee41'
+        Module = 'CVillageTask'
+        Source = '00/65/CVillageTask_f_0065ee41.cpp'
+        TestSource = '00/65/CVillageTask_f_0065ee41_test.cpp'
+        PassPattern = '0065ee41_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00664670'
+        Module = '_global'
+        Source = '00/66/global_Consval_00664670.cpp'
+        TestSource = '00/66/global_Consval_00664670_test.cpp'
+        PassPattern = '00664670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692450'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_ReinitialiseActionID_00692450.cpp'
+        TestSource = '00/69/CCreatureActionBase_ReinitialiseActionID_00692450_test.cpp'
+        PassPattern = '00692450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692910'
+        Module = '_global'
+        Source = '00/69/global_Destval_00692910.cpp'
+        TestSource = '00/69/global_Destval_00692910_test.cpp'
+        PassPattern = '00692910_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692920'
+        Module = '_global'
+        Source = '00/69/global_Destval_00692920.cpp'
+        TestSource = '00/69/global_Destval_00692920_test.cpp'
+        PassPattern = '00692920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692930'
+        Module = '_global'
+        Source = '00/69/global_Destval_00692930.cpp'
+        TestSource = '00/69/global_Destval_00692930_test.cpp'
+        PassPattern = '00692930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692940'
+        Module = '_global'
+        Source = '00/69/global_Destval_00692940.cpp'
+        TestSource = '00/69/global_Destval_00692940_test.cpp'
+        PassPattern = '00692940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692950'
+        Module = '_global'
+        Source = '00/69/global_Destval_00692950.cpp'
+        TestSource = '00/69/global_Destval_00692950_test.cpp'
+        PassPattern = '00692950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692990'
+        Module = '_global'
+        Source = '00/69/global_Destval_00692990.cpp'
+        TestSource = '00/69/global_Destval_00692990_test.cpp'
+        PassPattern = '00692990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692880'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_OverrideFaceWithDefault_00692880.cpp'
+        TestSource = '00/69/CCreatureActionBase_OverrideFaceWithDefault_00692880_test.cpp'
+        PassPattern = '00692880_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
