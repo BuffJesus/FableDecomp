@@ -7840,7 +7840,14 @@ structural boundary (see the two prior 2026-08-06 addenda + memory
 [[audiooptions-backdrop-not-sunbeam]]); needs native backdrop ownership, not a
 compositing tweak.
 
-## Session addendum — 2026-08-07: crawl gen_batch8..20 = 214 landed
+## Session addendum — 2026-08-07: crawl gen_batch8..21 = 230 landed
+
+Binary-wide parity crawl continued (the high-yield small-fn tail). Fourteen
+full batches, byte-exact/RELOCATION_MATCH, all behavior-gated (batch21 16/18,
+`9a8ac4c`); ledger now **416 addrs** (~24 honest defers). Adds a 5x esi-saved
+_Dest_val/FinishAction group, 3x GetDamageMultiplier (`f0c->arr[idx]` fld),
+`fild global * arg`, esi-saved `fmul`/`fsub`-by-member, and more field/vtable
+leaves. Below is the batch8..20 detail:
 
 Binary-wide parity crawl continued (the high-yield small-fn tail). Thirteen
 full batches, byte-exact/RELOCATION_MATCH, all behavior-gated: batch8 16/16
