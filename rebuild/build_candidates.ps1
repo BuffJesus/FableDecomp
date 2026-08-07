@@ -42286,6 +42286,118 @@ $catalog = @(
         TestSource = '00/6a/CThingFilterIsNot_opcall_006a76a0_test.cpp'
         PassPattern = '006a76a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00744f80'
+        Module = '_global'
+        Source = '00/74/global_Destval_00744f80.cpp'
+        TestSource = '00/74/global_Destval_00744f80_test.cpp'
+        PassPattern = '00744f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fb230'
+        Module = '_global'
+        Source = '00/7f/global_Destval_007fb230.cpp'
+        TestSource = '00/7f/global_Destval_007fb230_test.cpp'
+        PassPattern = '007fb230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099f560'
+        Module = '_global'
+        Source = '00/99/global_Destval_0099f560.cpp'
+        TestSource = '00/99/global_Destval_0099f560_test.cpp'
+        PassPattern = '0099f560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c52b0'
+        Module = 'CCreatureAction_ScorpionSummon'
+        Source = '00/8c/CCreatureActionScorpionSummon_FinishAction_008c52b0.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionSummon_FinishAction_008c52b0_test.cpp'
+        PassPattern = '008c52b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d5960'
+        Module = 'CCreatureAction_FireMissileWeapon'
+        Source = '00/8d/CCreatureActionFireMissileWeapon_FinishAction_008d5960.cpp'
+        TestSource = '00/8d/CCreatureActionFireMissileWeapon_FinishAction_008d5960_test.cpp'
+        PassPattern = '008d5960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078be60'
+        Module = 'CTCBerserk'
+        Source = '00/78/CTCBerserk_SetAnimationTime_0078be60.cpp'
+        TestSource = '00/78/CTCBerserk_SetAnimationTime_0078be60_test.cpp'
+        PassPattern = '0078be60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078e7b0'
+        Module = 'CTCDivineWrath'
+        Source = '00/78/CTCDivineWrath_GetDamageMultiplier_0078e7b0.cpp'
+        TestSource = '00/78/CTCDivineWrath_GetDamageMultiplier_0078e7b0_test.cpp'
+        PassPattern = '0078e7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00793cb0'
+        Module = 'CTCDivineWrath'
+        Source = '00/79/CTCDivineWrath_GetDamageMultiplier_00793cb0.cpp'
+        TestSource = '00/79/CTCDivineWrath_GetDamageMultiplier_00793cb0_test.cpp'
+        PassPattern = '00793cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f2c60'
+        Module = 'CMainGameComponent'
+        Source = '00/8f/CMainGameComponent_GetCurrentFrameFinishTimeApproximation_008f2c60.cpp'
+        TestSource = '00/8f/CMainGameComponent_GetCurrentFrameFinishTimeApproximation_008f2c60_test.cpp'
+        PassPattern = '008f2c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009076a0'
+        Module = 'CScriptModuleSelfTerminating'
+        Source = '00/90/CScriptModuleSelfTerminating_IsValid_009076a0.cpp'
+        TestSource = '00/90/CScriptModuleSelfTerminating_IsValid_009076a0_test.cpp'
+        PassPattern = '009076a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009454b0'
+        Module = 'CAIStateGroup_SitForMeal'
+        Source = '00/94/CAIStateGroupSitForMeal_InitStateGroup_009454b0.cpp'
+        TestSource = '00/94/CAIStateGroupSitForMeal_InitStateGroup_009454b0_test.cpp'
+        PassPattern = '009454b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d68a0'
+        Module = '_global'
+        Source = '00/9d/global_DiscardAsyncData_009d68a0.cpp'
+        TestSource = '00/9d/global_DiscardAsyncData_009d68a0_test.cpp'
+        PassPattern = '009d68a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e37f0'
+        Module = 'CPixelFormat'
+        Source = '00/9e/CPixelFormat_IsEquivalent_009e37f0.cpp'
+        TestSource = '00/9e/CPixelFormat_IsEquivalent_009e37f0_test.cpp'
+        PassPattern = '009e37f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e41c0'
+        Module = 'CJoystick'
+        Source = '00/9e/CJoystick_EventScanEnd_009e41c0.cpp'
+        TestSource = '00/9e/CJoystick_EventScanEnd_009e41c0_test.cpp'
+        PassPattern = '009e41c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cca80'
+        Module = 'CTCDivineWrath'
+        Source = '00/7c/CTCDivineWrath_GetDamageMultiplier_007cca80.cpp'
+        TestSource = '00/7c/CTCDivineWrath_GetDamageMultiplier_007cca80_test.cpp'
+        PassPattern = '007cca80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ec60'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_SetHeroGuideToShowQuestCardsWhenSpokenTo_0088ec60.cpp'
+        TestSource = '00/88/CGameScriptInterface_SetHeroGuideToShowQuestCardsWhenSpokenTo_0088ec60_test.cpp'
+        PassPattern = '0088ec60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
