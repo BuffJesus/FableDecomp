@@ -44918,6 +44918,153 @@ $catalog = @(
         TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d4e40_test.cpp'
         PassPattern = 'GETACTIONNAME_004d4e40_OK'
     }
+    [pscustomobject]@{
+        Address = '00557850'
+        Module = 'CKeyRedefiner'
+        Source = '00/55/CKeyRedefiner_OnLeftClicked_00557850.cpp'
+        TestSource = '00/55/CKeyRedefiner_OnLeftClicked_00557850_test.cpp'
+        PassPattern = '00557850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557860'
+        Module = 'CKeyRedefiner'
+        Source = '00/55/CKeyRedefiner_OnHovered_00557860.cpp'
+        TestSource = '00/55/CKeyRedefiner_OnHovered_00557860_test.cpp'
+        PassPattern = '00557860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557880'
+        Module = 'CKeyRedefiner'
+        Source = '00/55/CKeyRedefiner_OnUnhovered_00557880.cpp'
+        TestSource = '00/55/CKeyRedefiner_OnUnhovered_00557880_test.cpp'
+        PassPattern = '00557880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d4e53'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d4e53.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d4e53_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d4e53_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d4e99'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d4e99.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d4e99_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d4e99_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d4ec9'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d4ec9.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d4ec9_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d4ec9_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d4edc'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d4edc.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d4edc_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d4edc_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d4f3e'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d4f3e.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d4f3e_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d4f3e_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d4f6e'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d4f6e.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d4f6e_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d4f6e_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d4f81'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d4f81.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d4f81_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d4f81_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d4fea'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d4fea.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d4fea_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d4fea_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d5030'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d5030.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d5030_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d5030_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d5043'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d5043.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d5043_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d5043_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d508d'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d508d.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d508d_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d508d_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d50d3'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d50d3.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d50d3_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d50d3_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d5103'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d5103.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d5103_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d5103_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d515f'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d515f.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d515f_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d515f_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d518f'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d518f.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d518f_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d518f_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d51a2'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d51a2.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d51a2_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d51a2_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d51b5'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d51b5.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d51b5_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d51b5_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d5232'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d5232.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d5232_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d5232_OK'
+    }
 )
 
 $requestedAddresses = @(
