@@ -48943,6 +48943,118 @@ $catalog = @(
         TestSource = '00/c2/CIsThingAlive_operator_00c21ea0_test.cpp'
         PassPattern = 'RB_c21ea0_OK'
     }
+    [pscustomobject]@{
+        Address = '00784b20'
+        Module = 'CRenderTarget'
+        Source = '00/78/CRenderTarget_DetachTarget_00784b20.cpp'
+        TestSource = '00/78/CRenderTarget_DetachTarget_00784b20_test.cpp'
+        PassPattern = 'RB_784b20_OK'
+    }
+    [pscustomobject]@{
+        Address = '006cb5f0'
+        Module = 'CGroundNavigatorExternalInterface'
+        Source = '00/6c/CGroundNavigatorExternalInterface_IsPlayer_006cb5f0.cpp'
+        TestSource = '00/6c/CGroundNavigatorExternalInterface_IsPlayer_006cb5f0_test.cpp'
+        PassPattern = 'RB_6cb5f0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bfd390'
+        Module = 'CEngineWaterBackgroundSubPatch'
+        Source = '00/bf/CEngineWaterBackgroundSubPatch_CanRelocateData_00bfd390.cpp'
+        TestSource = '00/bf/CEngineWaterBackgroundSubPatch_CanRelocateData_00bfd390_test.cpp'
+        PassPattern = 'RB_bfd390_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bfddb0'
+        Module = 'CLandscapeLayerMesh'
+        Source = '00/bf/CLandscapeLayerMesh_CanRelocateData_00bfddb0.cpp'
+        TestSource = '00/bf/CLandscapeLayerMesh_CanRelocateData_00bfddb0_test.cpp'
+        PassPattern = 'RB_bfddb0_OK'
+    }
+    [pscustomobject]@{
+        Address = '007febf0'
+        Module = 'CTCUserActionPointBase'
+        Source = '00/7f/CTCUserActionPointBase_IsActionPointFree_007febf0.cpp'
+        TestSource = '00/7f/CTCUserActionPointBase_IsActionPointFree_007febf0_test.cpp'
+        PassPattern = 'RB_7febf0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c06050'
+        Module = '_global'
+        Source = '00/c0/global_operatornew_00c06050.cpp'
+        TestSource = '00/c0/global_operatornew_00c06050_test.cpp'
+        PassPattern = 'RB_c06050_OK'
+    }
+    [pscustomobject]@{
+        Address = '004874d0'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_IsFirstPersonTargeting_004874d0.cpp'
+        TestSource = '00/48/CPlayer_IsFirstPersonTargeting_004874d0_test.cpp'
+        PassPattern = 'RB_4874d0_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b0640'
+        Module = 'CCombatSequenceBase'
+        Source = '00/8b/CCombatSequenceBase_Stop_008b0640.cpp'
+        TestSource = '00/8b/CCombatSequenceBase_Stop_008b0640_test.cpp'
+        PassPattern = 'RB_8b0640_OK'
+    }
+    [pscustomobject]@{
+        Address = '007e35f0'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_AskHeroQuestion_007e35f0.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_AskHeroQuestion_007e35f0_test.cpp'
+        PassPattern = 'RB_7e35f0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c8df60'
+        Module = 'CEditWorld'
+        Source = '00/c8/CEditWorld_DrawGetWorldMap_00c8df60.cpp'
+        TestSource = '00/c8/CEditWorld_DrawGetWorldMap_00c8df60_test.cpp'
+        PassPattern = 'RB_c8df60_OK'
+    }
+    [pscustomobject]@{
+        Address = '00946630'
+        Module = 'CAIStateGroup_LightWorkCandle'
+        Source = '00/94/CAIStateGroupLightWorkCandle_ShouldBeLit_00946630.cpp'
+        TestSource = '00/94/CAIStateGroupLightWorkCandle_ShouldBeLit_00946630_test.cpp'
+        PassPattern = 'RB_946630_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c2a620'
+        Module = 'CTCPhysicsNavigator'
+        Source = '00/c2/CTCPhysicsNavigator_EnableNavigator_00c2a620.cpp'
+        TestSource = '00/c2/CTCPhysicsNavigator_EnableNavigator_00c2a620_test.cpp'
+        PassPattern = 'RB_c2a620_OK'
+    }
+    [pscustomobject]@{
+        Address = '0092bf30'
+        Module = 'CAIStateGroup_MinionWander'
+        Source = '00/92/CAIStateGroupMinionWander_IsRunnable_0092bf30.cpp'
+        TestSource = '00/92/CAIStateGroupMinionWander_IsRunnable_0092bf30_test.cpp'
+        PassPattern = 'RB_92bf30_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1eb10'
+        Module = '_global'
+        Source = '00/c1/global_operatornew_00c1eb10.cpp'
+        TestSource = '00/c1/global_operatornew_00c1eb10_test.cpp'
+        PassPattern = 'RB_c1eb10_OK'
+    }
+    [pscustomobject]@{
+        Address = '009e9f90'
+        Module = '_global'
+        Source = '00/9e/global_SetToDisplayText_009e9f90.cpp'
+        TestSource = '00/9e/global_SetToDisplayText_009e9f90_test.cpp'
+        PassPattern = 'RB_9e9f90_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c10140'
+        Module = 'CDataOutputStream'
+        Source = '00/c1/CDataOutputStream_WriteCBYTE_00c10140.cpp'
+        TestSource = '00/c1/CDataOutputStream_WriteCBYTE_00c10140_test.cpp'
+        PassPattern = 'RB_c10140_OK'
+    }
 )
 
 $requestedAddresses = @(
