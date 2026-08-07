@@ -137,6 +137,18 @@ of a clean PE32 at ImageBase `0x400000`.
   body) gets tail-call-optimized to `jmp` by VC7.1 while retail kept `push;call;ret` — DIFFER(NvN)
   same-length, not recoverable. Backlog of the 84 deferred over-captures (by shape) is
   rebuild/backlog/overcapture-recovery-worklist.tsv; ~11 recovered so far this pass.
+- Frontend visual QA can be DRIVEN headlessly: build via `rebuild/build_bootstrap.ps1
+  -RetailFrontendBank <frontend.big>`, launch FableTLC-Reconstruction-VisualCheckpoint.exe (client
+  1280x720, asset-free, loads data/frontend/*.bmp), then synth-click with SetForegroundWindow+
+  SetCursorPos+mouse_event and screenshot with Graphics.CopyFromScreen (crop+3x NearestNeighbor to
+  inspect glyphs). `$PID` is read-only in PS — use another var. Full recipe + menu map + current
+  fixed/open state in docs/VISUAL_PARITY_STATUS.md.
+- OPEN visual bug: the profile-name font (`AppendProfileNameText`, ENG_ARIAL save rows/profile names/
+  File Information) renders DOUBLED/ghosted vs retail's smooth AA. NOT a double-draw (one quad/glyph)
+  and NOT fixed by fixed-function SetSamplerState LINEAR (no effect). Leading theory: the frontend
+  samples the atlas via a PIXEL SHADER (window title `...PixelShader...`), so API sampler state is
+  bypassed — investigate the Render2D PS sampler + ENG_ARIAL atlas cell packing (half-texel inset).
+  The detail-title font IS clean (LINEAR after BeginScene, commit 352a684). See VISUAL_PARITY_STATUS.md.
 
 ## Toolchain (see docs/TOOLCHAIN.md for commands)
 - Mario rig gotcha (2026-07-22): `work/mario_hero/stage_bindaxis4` is format-valid and looks

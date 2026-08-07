@@ -8067,3 +8067,33 @@ pass over this worklist (author recoverable shapes, skip void-tail-jmp/reg-alloc
 then continues normal batches 77-81. The crawl also has trim_overcapture integrated
 inline now (recovered 21 auto in batches 72-76), so NEW over-captures land directly.
 gen_tried.txt at ~1406. Session decomp total ~1177 + recoveries.
+
+### 2026-08-07 addendum 3 — VISUAL PARITY session (resume here for visuals)
+
+Full status + headless UI-driving recipe: **docs/VISUAL_PARITY_STATUS.md** (read
+it first for the visual lane). Summary:
+
+FIXED + verified on-screen (via synth-click + framebuffer screenshots):
+- Detail-title font ghosting: forced LINEAR min/mag sampler after BeginScene
+  (visual_boot_d3d9.cpp, commit 352a684). Audio/Video Options titles + option rows
+  clean at 3x.
+- Sliders: single clean pill+knob (no stacked double-texture band).
+- Load Game title "<profile> - Load Game" via retail flow (title→Change Profile→
+  select→Continue); no hardcoded fallback (commit e00b614). Verified
+  "112121212 - Load Game".
+- Save row names AutoSave/Save 1/2/3; title screen + main menu match retail.
+
+OPEN — NOT FIXED (top priority next visual session): the profile-name font
+(`AppendProfileNameText` — ENG_ARIAL save rows, profile names, File Information)
+renders DOUBLED/ghosted vs retail's smooth AA (compare live Continue→Load Game to
+resources/UIScreenshots(Retail)/ContinueGameScreen.png). Ruled out: double-draw
+(one quad/glyph) and fixed-function SetSamplerState LINEAR (no effect, per-batch
+attempt reverted as no-op). LEADING THEORY: atlas sampled via a PIXEL SHADER
+(window title `...PixelShaderAndWorldTransformState`) so API sampler state is
+bypassed — investigate the Render2D PS sampler register + ENG_ARIAL atlas cell
+packing (tight per the space-abuts-'!' fix → may need half-texel UV inset). Full
+diagnosis + next steps in VISUAL_PARITY_STATUS.md "OPEN" section.
+
+Crawl note: a background recovery+crawl agent (Phase A over
+rebuild/backlog/overcapture-recovery-worklist.tsv, then batches 77-81) was running
+at session end — check its commits and relaunch from the next gen_batch.
