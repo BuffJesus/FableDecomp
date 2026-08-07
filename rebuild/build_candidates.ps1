@@ -42860,6 +42860,76 @@ $catalog = @(
         TestSource = '00/54/CEngine_ChangeCameraAngle_0054c250_test.cpp'
         PassPattern = '0054c250_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00578df1'
+        Module = 'CRegion'
+        Source = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_00578df1.cpp'
+        TestSource = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_00578df1_test.cpp'
+        PassPattern = '00578df1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005925ca'
+        Module = 'CRegion'
+        Source = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_005925ca.cpp'
+        TestSource = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_005925ca_test.cpp'
+        PassPattern = '005925ca_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005925db'
+        Module = 'CRegion'
+        Source = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_005925db.cpp'
+        TestSource = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_005925db_test.cpp'
+        PassPattern = '005925db_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059299d'
+        Module = 'CRegion'
+        Source = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_0059299d.cpp'
+        TestSource = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_0059299d_test.cpp'
+        PassPattern = '0059299d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005929df'
+        Module = 'CRegion'
+        Source = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_005929df.cpp'
+        TestSource = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_005929df_test.cpp'
+        PassPattern = '005929df_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0059aa21'
+        Module = 'CRegion'
+        Source = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_0059aa21.cpp'
+        TestSource = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_0059aa21_test.cpp'
+        PassPattern = '0059aa21_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b16ff'
+        Module = 'CRegion'
+        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b16ff.cpp'
+        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b16ff_test.cpp'
+        PassPattern = '005b16ff_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ba50e'
+        Module = 'CRegion'
+        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005ba50e.cpp'
+        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005ba50e_test.cpp'
+        PassPattern = '005ba50e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ba539'
+        Module = 'CRegion'
+        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005ba539.cpp'
+        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005ba539_test.cpp'
+        PassPattern = '005ba539_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057a5a5'
+        Module = '_Dest_val'
+        Source = '00/57/Destval_CFlash_0057a5a5.cpp'
+        TestSource = '00/57/Destval_CFlash_0057a5a5_test.cpp'
+        PassPattern = '0057a5a5_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
