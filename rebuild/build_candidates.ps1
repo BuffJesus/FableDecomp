@@ -41838,6 +41838,132 @@ $catalog = @(
         TestSource = '00/41/CMainGameComponent_GetCurrentGameTime_00416258_test.cpp'
         PassPattern = '00416258_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00469c2e'
+        Module = 'CTextureReplacementDef'
+        Source = '00/46/CTextureReplacementDef_Transfer_00469c2e.cpp'
+        TestSource = '00/46/CTextureReplacementDef_Transfer_00469c2e_test.cpp'
+        PassPattern = '00469c2e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046c284'
+        Module = 'CAttackPatternDef'
+        Source = '00/46/CAttackPatternDef_Transfer_0046c284.cpp'
+        TestSource = '00/46/CAttackPatternDef_Transfer_0046c284_test.cpp'
+        PassPattern = '0046c284_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046c294'
+        Module = 'CObjectFamilyDef'
+        Source = '00/46/CObjectFamilyDef_Transfer_0046c294.cpp'
+        TestSource = '00/46/CObjectFamilyDef_Transfer_0046c294_test.cpp'
+        PassPattern = '0046c294_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0046c6e0'
+        Module = 'CHitLocationsDef'
+        Source = '00/46/CHitLocationsDef_Transfer_0046c6e0.cpp'
+        TestSource = '00/46/CHitLocationsDef_Transfer_0046c6e0_test.cpp'
+        PassPattern = '0046c6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047989b'
+        Module = 'CEngineLocalDetailGeneratorDef'
+        Source = '00/47/CEngineLocalDetailGeneratorDef_Transfer_0047989b.cpp'
+        TestSource = '00/47/CEngineLocalDetailGeneratorDef_Transfer_0047989b_test.cpp'
+        PassPattern = '0047989b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047e186'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/47/CTCInventoryAbilities_AddLearnedExpression_0047e186.cpp'
+        TestSource = '00/47/CTCInventoryAbilities_AddLearnedExpression_0047e186_test.cpp'
+        PassPattern = '0047e186_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dd989'
+        Module = 'CVillageMemberDef'
+        Source = '00/4d/CVillageMemberDef_Transfer_004dd989.cpp'
+        TestSource = '00/4d/CVillageMemberDef_Transfer_004dd989_test.cpp'
+        PassPattern = '004dd989_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ddb56'
+        Module = 'CBuyHouseDef'
+        Source = '00/4d/CBuyHouseDef_Transfer_004ddb56.cpp'
+        TestSource = '00/4d/CBuyHouseDef_Transfer_004ddb56_test.cpp'
+        PassPattern = '004ddb56_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ddb66'
+        Module = 'CWifeDef'
+        Source = '00/4d/CWifeDef_Transfer_004ddb66.cpp'
+        TestSource = '00/4d/CWifeDef_Transfer_004ddb66_test.cpp'
+        PassPattern = '004ddb66_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004de33e'
+        Module = 'CEnemyDef'
+        Source = '00/4d/CEnemyDef_Transfer_004de33e.cpp'
+        TestSource = '00/4d/CEnemyDef_Transfer_004de33e_test.cpp'
+        PassPattern = '004de33e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004de772'
+        Module = 'CBoastingPodiumDef'
+        Source = '00/4d/CBoastingPodiumDef_Transfer_004de772.cpp'
+        TestSource = '00/4d/CBoastingPodiumDef_Transfer_004de772_test.cpp'
+        PassPattern = '004de772_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004de881'
+        Module = 'CExpressionSubDef'
+        Source = '00/4d/CExpressionSubDef_Transfer_004de881.cpp'
+        TestSource = '00/4d/CExpressionSubDef_Transfer_004de881_test.cpp'
+        PassPattern = '004de881_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004de8b2'
+        Module = 'COccupiableDef'
+        Source = '00/4d/COccupiableDef_Transfer_004de8b2.cpp'
+        TestSource = '00/4d/COccupiableDef_Transfer_004de8b2_test.cpp'
+        PassPattern = '004de8b2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004de916'
+        Module = 'CInterestingToVillagersDef'
+        Source = '00/4d/CInterestingToVillagersDef_Transfer_004de916.cpp'
+        TestSource = '00/4d/CInterestingToVillagersDef_Transfer_004de916_test.cpp'
+        PassPattern = '004de916_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004de9f3'
+        Module = 'CTavernDef'
+        Source = '00/4d/CTavernDef_Transfer_004de9f3.cpp'
+        TestSource = '00/4d/CTavernDef_Transfer_004de9f3_test.cpp'
+        PassPattern = '004de9f3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dea03'
+        Module = 'CFireballSpellLevelDef'
+        Source = '00/4d/CFireballSpellLevelDef_Transfer_004dea03.cpp'
+        TestSource = '00/4d/CFireballSpellLevelDef_Transfer_004dea03_test.cpp'
+        PassPattern = '004dea03_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004debc4'
+        Module = 'CGoldDef'
+        Source = '00/4d/CGoldDef_Transfer_004debc4.cpp'
+        TestSource = '00/4d/CGoldDef_Transfer_004debc4_test.cpp'
+        PassPattern = '004debc4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0048e062'
+        Module = '_global'
+        Source = '00/48/global_operatornew_0048e062.cpp'
+        TestSource = '00/48/global_operatornew_0048e062_test.cpp'
+        PassPattern = '0048e062_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
