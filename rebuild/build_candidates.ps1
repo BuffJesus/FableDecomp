@@ -40788,6 +40788,118 @@ $catalog = @(
         TestSource = '00/59/CProcess_SuspendableProcess_00594f28_test.cpp'
         PassPattern = '00594f28_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006715f0'
+        Module = 'CActiveFile'
+        Source = '00/67/CActiveFile_OnReadFinished_006715f0.cpp'
+        TestSource = '00/67/CActiveFile_OnReadFinished_006715f0_test.cpp'
+        PassPattern = '006715f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ce220'
+        Module = 'CActiveFile'
+        Source = '00/6c/CActiveFile_OnReadFinished_006ce220.cpp'
+        TestSource = '00/6c/CActiveFile_OnReadFinished_006ce220_test.cpp'
+        PassPattern = '006ce220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ce2a0'
+        Module = 'CActiveFile'
+        Source = '00/6c/CActiveFile_OnReadFinished_006ce2a0.cpp'
+        TestSource = '00/6c/CActiveFile_OnReadFinished_006ce2a0_test.cpp'
+        PassPattern = '006ce2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006928b0'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_CanAnimationTransitionOut_006928b0.cpp'
+        TestSource = '00/69/CCreatureActionBase_CanAnimationTransitionOut_006928b0_test.cpp'
+        PassPattern = '006928b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692980'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_GetThingManager_00692980.cpp'
+        TestSource = '00/69/CCreatureActionBase_GetThingManager_00692980_test.cpp'
+        PassPattern = '00692980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00705170'
+        Module = 'CGuiControlListBox'
+        Source = '00/70/CGuiControlListBox_GetCurrentSelectedEntryData_00705170.cpp'
+        TestSource = '00/70/CGuiControlListBox_GetCurrentSelectedEntryData_00705170_test.cpp'
+        PassPattern = '00705170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00705180'
+        Module = 'CGuiControlListBox'
+        Source = '00/70/CGuiControlListBox_GetCurrentSelectedEntryData_00705180.cpp'
+        TestSource = '00/70/CGuiControlListBox_GetCurrentSelectedEntryData_00705180_test.cpp'
+        PassPattern = '00705180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a7570'
+        Module = '_global'
+        Source = '00/6a/global_Consval_006a7570.cpp'
+        TestSource = '00/6a/global_Consval_006a7570_test.cpp'
+        PassPattern = '006a7570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a7600'
+        Module = '_global'
+        Source = '00/6a/global_Consval_006a7600.cpp'
+        TestSource = '00/6a/global_Consval_006a7600_test.cpp'
+        PassPattern = '006a7600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065eef1'
+        Module = 'CVillageTaskPatrol'
+        Source = '00/65/CVillageTaskPatrol_IsTaskAvailable_0065eef1.cpp'
+        TestSource = '00/65/CVillageTaskPatrol_IsTaskAvailable_0065eef1_test.cpp'
+        PassPattern = '0065eef1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0065ef86'
+        Module = 'CVillageTaskPickCrops'
+        Source = '00/65/CVillageTaskPickCrops_IsTaskAvailable_0065ef86.cpp'
+        TestSource = '00/65/CVillageTaskPickCrops_IsTaskAvailable_0065ef86_test.cpp'
+        PassPattern = '0065ef86_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00686db0'
+        Module = 'CTCBase'
+        Source = '00/68/CTCBase_GetPLocalSeed_00686db0.cpp'
+        TestSource = '00/68/CTCBase_GetPLocalSeed_00686db0_test.cpp'
+        PassPattern = '00686db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f06f0'
+        Module = 'CCombatSequenceBase'
+        Source = '00/6f/CCombatSequenceBase_IsInterruptableDueToZoneChange_006f06f0.cpp'
+        TestSource = '00/6f/CCombatSequenceBase_IsInterruptableDueToZoneChange_006f06f0_test.cpp'
+        PassPattern = '006f06f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f0710'
+        Module = 'CCombatSequenceBase'
+        Source = '00/6f/CCombatSequenceBase_IsBreakIntoMeleeSequence_006f0710.cpp'
+        TestSource = '00/6f/CCombatSequenceBase_IsBreakIntoMeleeSequence_006f0710_test.cpp'
+        PassPattern = '006f0710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f0720'
+        Module = 'CCombatSequenceBase'
+        Source = '00/6f/CCombatSequenceBase_IsBoastSequence_006f0720.cpp'
+        TestSource = '00/6f/CCombatSequenceBase_IsBoastSequence_006f0720_test.cpp'
+        PassPattern = '006f0720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692670'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_IsPreventingLookTurning_00692670.cpp'
+        TestSource = '00/69/CCreatureActionBase_IsPreventingLookTurning_00692670_test.cpp'
+        PassPattern = '00692670_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
