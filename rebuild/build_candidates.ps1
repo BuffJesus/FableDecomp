@@ -42524,6 +42524,132 @@ $catalog = @(
         TestSource = '00/a2/CTCInventoryAbilities_AddLearnedExpression_00a2e960_test.cpp'
         PassPattern = '00a2e960_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a5f420'
+        Module = 'CStreamingFontDataBank'
+        Source = '00/a5/CStreamingFontDataBank_CloseCStreamingFontDataBankUAEXXZ_00a5f420.cpp'
+        TestSource = '00/a5/CStreamingFontDataBank_CloseCStreamingFontDataBankUAEXXZ_00a5f420_test.cpp'
+        PassPattern = '00a5f420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a62110'
+        Module = 'CShaderDataBank'
+        Source = '00/a6/CShaderDataBank_CloseCShaderDataBankUAEXXZ_00a62110.cpp'
+        TestSource = '00/a6/CShaderDataBank_CloseCShaderDataBankUAEXXZ_00a62110_test.cpp'
+        PassPattern = '00a62110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a635c0'
+        Module = 'CFontDataBank'
+        Source = '00/a6/CFontDataBank_CloseCFontDataBankUAEXXZ_00a635c0.cpp'
+        TestSource = '00/a6/CFontDataBank_CloseCFontDataBankUAEXXZ_00a635c0_test.cpp'
+        PassPattern = '00a635c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab78d0'
+        Module = 'CJoystickDX'
+        Source = '00/ab/CJoystickDX_UpdateCJoystickDXUAEXXZ_00ab78d0.cpp'
+        TestSource = '00/ab/CJoystickDX_UpdateCJoystickDXUAEXXZ_00ab78d0_test.cpp'
+        PassPattern = '00ab78d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af5890'
+        Module = '_Dest_val'
+        Source = '00/af/Destval_CRegisteredMusicEntry_00af5890.cpp'
+        TestSource = '00/af/Destval_CRegisteredMusicEntry_00af5890_test.cpp'
+        PassPattern = '00af5890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b94a30'
+        Module = '_Dest_val'
+        Source = '00/b9/Destval_CRegisteredMusicEntry_00b94a30.cpp'
+        TestSource = '00/b9/Destval_CRegisteredMusicEntry_00b94a30_test.cpp'
+        PassPattern = '00b94a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a61fa0'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a6/CTCInventoryAbilities_GetAbilityLevel_00a61fa0.cpp'
+        TestSource = '00/a6/CTCInventoryAbilities_GetAbilityLevel_00a61fa0_test.cpp'
+        PassPattern = '00a61fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a61fb0'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a6/CTCInventoryAbilities_GetAbilityLevel_00a61fb0.cpp'
+        TestSource = '00/a6/CTCInventoryAbilities_GetAbilityLevel_00a61fb0_test.cpp'
+        PassPattern = '00a61fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a635d0'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a6/CTCInventoryAbilities_GetAbilityLevel_00a635d0.cpp'
+        TestSource = '00/a6/CTCInventoryAbilities_GetAbilityLevel_00a635d0_test.cpp'
+        PassPattern = '00a635d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a635e0'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/a6/CTCInventoryAbilities_GetAbilityLevel_00a635e0.cpp'
+        TestSource = '00/a6/CTCInventoryAbilities_GetAbilityLevel_00a635e0_test.cpp'
+        PassPattern = '00a635e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66850'
+        Module = 'CInputManager'
+        Source = '00/a6/CInputManager_EventScanEnd_00a66850.cpp'
+        TestSource = '00/a6/CInputManager_EventScanEnd_00a66850_test.cpp'
+        PassPattern = '00a66850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66b00'
+        Module = 'CInputManager'
+        Source = '00/a6/CInputManager_EventScanEnd_00a66b00.cpp'
+        TestSource = '00/a6/CInputManager_EventScanEnd_00a66b00_test.cpp'
+        PassPattern = '00a66b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6cbb0'
+        Module = 'CEngineInternalPrimitive'
+        Source = '00/a6/CEngineInternalPrimitive_AddChildPrimitive_00a6cbb0.cpp'
+        TestSource = '00/a6/CEngineInternalPrimitive_AddChildPrimitive_00a6cbb0_test.cpp'
+        PassPattern = '00a6cbb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa4af0'
+        Module = 'C3DMeshFileXTextureIndex'
+        Source = '00/aa/C3DMeshFileXTextureIndex_WriteToFile_00aa4af0.cpp'
+        TestSource = '00/aa/C3DMeshFileXTextureIndex_WriteToFile_00aa4af0_test.cpp'
+        PassPattern = '00aa4af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac2920'
+        Module = 'C3DMeshFilePartitionChun'
+        Source = '00/ac/C3DMeshFilePartitionChun_WriteToFile_00ac2920.cpp'
+        TestSource = '00/ac/C3DMeshFilePartitionChun_WriteToFile_00ac2920_test.cpp'
+        PassPattern = '00ac2920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2aee0'
+        Module = 'CEngineSurfaceCompositio'
+        Source = '00/b2/CEngineSurfaceCompositio_LoadNewScene_00b2aee0.cpp'
+        TestSource = '00/b2/CEngineSurfaceCompositio_LoadNewScene_00b2aee0_test.cpp'
+        PassPattern = '00b2aee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c100f0'
+        Module = 'CScriptBase'
+        Source = '00/c1/CScriptBase_Activate_00c100f0.cpp'
+        TestSource = '00/c1/CScriptBase_Activate_00c100f0_test.cpp'
+        PassPattern = '00c100f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c36080'
+        Module = '_global'
+        Source = '00/c3/global_operatornew_00c36080.cpp'
+        TestSource = '00/c3/global_operatornew_00c36080_test.cpp'
+        PassPattern = '00c36080_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
