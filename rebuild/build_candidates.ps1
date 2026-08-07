@@ -40585,6 +40585,90 @@ $catalog = @(
         TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_UnsheatheWeapons_007e7440_test.cpp'
         PassPattern = '007e7440_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00988630'
+        Module = 'CObservable'
+        Source = '00/98/CObservable_AddExclusiveObserver_00988630.cpp'
+        TestSource = '00/98/CObservable_AddExclusiveObserver_00988630_test.cpp'
+        PassPattern = '00988630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fd0f0'
+        Module = 'CObservable'
+        Source = '00/9f/CObservable_AddExclusiveObserver_009fd0f0.cpp'
+        TestSource = '00/9f/CObservable_AddExclusiveObserver_009fd0f0_test.cpp'
+        PassPattern = '009fd0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0d330'
+        Module = 'CObservable'
+        Source = '00/a0/CObservable_AddExclusiveObserver_00a0d330.cpp'
+        TestSource = '00/a0/CObservable_AddExclusiveObserver_00a0d330_test.cpp'
+        PassPattern = '00a0d330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a23b50'
+        Module = 'CObservable'
+        Source = '00/a2/CObservable_AddExclusiveObserver_00a23b50.cpp'
+        TestSource = '00/a2/CObservable_AddExclusiveObserver_00a23b50_test.cpp'
+        PassPattern = '00a23b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009886f0'
+        Module = 'CNavigator'
+        Source = '00/98/CNavigator_EnableNavigator_009886f0.cpp'
+        TestSource = '00/98/CNavigator_EnableNavigator_009886f0_test.cpp'
+        PassPattern = '009886f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f4ac0'
+        Module = 'CEventScanner'
+        Source = '00/9f/CEventScanner_EventScanEnd_009f4ac0.cpp'
+        TestSource = '00/9f/CEventScanner_EventScanEnd_009f4ac0_test.cpp'
+        PassPattern = '009f4ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a86100'
+        Module = 'CPhysicsFacesSegmentLeaf'
+        Source = '00/a8/CPhysicsFacesSegmentLeaf_Sizeof_00a86100.cpp'
+        TestSource = '00/a8/CPhysicsFacesSegmentLeaf_Sizeof_00a86100_test.cpp'
+        PassPattern = '00a86100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdc140'
+        Module = 'CEngineLandscapeMap'
+        Source = '00/bd/CEngineLandscapeMap_CanRelocateData_00bdc140.cpp'
+        TestSource = '00/bd/CEngineLandscapeMap_CanRelocateData_00bdc140_test.cpp'
+        PassPattern = '00bdc140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00906fc0'
+        Module = 'CCombatSequence'
+        Source = '00/90/CCombatSequence_OnStart_00906fc0.cpp'
+        TestSource = '00/90/CCombatSequence_OnStart_00906fc0_test.cpp'
+        PassPattern = '00906fc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00919a30'
+        Module = 'CCombatSequence'
+        Source = '00/91/CCombatSequence_BoughtSomething_00919a30.cpp'
+        TestSource = '00/91/CCombatSequence_BoughtSomething_00919a30_test.cpp'
+        PassPattern = '00919a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091ccb0'
+        Module = 'CCombatSequence'
+        Source = '00/91/CCombatSequence_OnReplace_0091ccb0.cpp'
+        TestSource = '00/91/CCombatSequence_OnReplace_0091ccb0_test.cpp'
+        PassPattern = '0091ccb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009340f0'
+        Module = 'CCombatSequence'
+        Source = '00/93/CCombatSequence_OnReplaceKidGroup_009340f0.cpp'
+        TestSource = '00/93/CCombatSequence_OnReplaceKidGroup_009340f0_test.cpp'
+        PassPattern = '009340f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
