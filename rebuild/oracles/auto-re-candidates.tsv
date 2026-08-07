@@ -6703,3 +6703,17 @@ address	name	length	bytes
 00c1bb00	CGraphicFrameData::GetFloatTLX	19	510fb7410e890424db0424d80d30322b0159c3
 00a427c0	CLipSyncDataBank::IsDiskFile	5	32c0c20800
 00bb6de0	CEnginePrimitiveManagerParticleDecalGroup::RenderPrimitive	5	33c0c20c00
+00cb6400	_Dest_val<std::allocator<std::pair>,std::pair>::~_Dest_val	19	568bf18d4e0ce8d586ceff8bce5ee9cd86ceff
+00cd27b4	_Dest_val<std::allocator<std::pair>,std::pair>::~_Dest_val	19	568bf18d4e04e8114db1ff8bce5ee919c3ccff
+00cd44e0	_Dest_val<std::allocator<std::pair>,std::pair>::~_Dest_val	19	568bf18d4e04e8f5a5ccff8bce5ee9eda5ccff
+00cd45c0	_Dest_val<std::allocator<std::pair>,std::pair>::~_Dest_val	19	568bf18d4e04e815a5ccff8bce5ee90da5ccff
+00cd4fd0	_Dest_val<std::allocator<std::pair>,std::pair>::~_Dest_val	19	568bf18d4e04e8059bccff8bce5ee9fd9accff
+00c29ec0	CEngineInternalPrimitive::Update	19	8b4424048948308b5108895034894108c20400
+00c307c0	CTCInventoryBase::GetCanItemBeQuickAssigned	4	8a4130c3
+00c31d90	CChangingStateComponent::AddChildDynamically	12	8b0985c974058b01ff600cc3
+00c463e0	CTCInventoryAbilities::GetAbilityLevel	15	8b4424048b49088d04408b0481c20400
+00c4bfa0	CBankFile::IsAligned	19	8b44240433d2f7710c8bc2f7d81bc040c20400
+00c61cf0	CRegion::SetMiniMapRegionExitTextOffsetY	19	8b44240450e8e6ffffff8b48048b4138c20400
+00c62440	CRegion::SetMiniMapRegionExitTextOffsetY	19	8b44240450e8a6ffffff8b48048b4138c20400
+00c628a0	CAIBrain::GetCurrentStateGroupDebugText	19	8b410485c0750483c8ffc38b49048b01ff6004
+00c628d0	CAIBrain::GetCurrentStateGroupDebugText	19	8b410485c0750483c8ffc38b49048b01ff6010

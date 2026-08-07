@@ -47718,6 +47718,104 @@ $catalog = @(
         TestSource = '00/bb/CEnginePrimitiveManagerParticleDecalGroup_RenderPrimitive_00bb6de0_test.cpp'
         PassPattern = 'RENDPRIM_OK'
     }
+    [pscustomobject]@{
+        Address = '00cb6400'
+        Module = '_global'
+        Source = '00/cb/global_Destval_00cb6400.cpp'
+        TestSource = '00/cb/global_Destval_00cb6400_test.cpp'
+        PassPattern = 'DESTVAL_00cb6400_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cd27b4'
+        Module = '_global'
+        Source = '00/cd/global_Destval_00cd27b4.cpp'
+        TestSource = '00/cd/global_Destval_00cd27b4_test.cpp'
+        PassPattern = 'DESTVAL_00cd27b4_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cd44e0'
+        Module = '_global'
+        Source = '00/cd/global_Destval_00cd44e0.cpp'
+        TestSource = '00/cd/global_Destval_00cd44e0_test.cpp'
+        PassPattern = 'DESTVAL_00cd44e0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cd45c0'
+        Module = '_global'
+        Source = '00/cd/global_Destval_00cd45c0.cpp'
+        TestSource = '00/cd/global_Destval_00cd45c0_test.cpp'
+        PassPattern = 'DESTVAL_00cd45c0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cd4fd0'
+        Module = '_global'
+        Source = '00/cd/global_Destval_00cd4fd0.cpp'
+        TestSource = '00/cd/global_Destval_00cd4fd0_test.cpp'
+        PassPattern = 'DESTVAL_00cd4fd0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c29ec0'
+        Module = 'CEngineInternalPrimitive'
+        Source = '00/c2/CEngineInternalPrimitive_Update_00c29ec0.cpp'
+        TestSource = '00/c2/CEngineInternalPrimitive_Update_00c29ec0_test.cpp'
+        PassPattern = 'UPDATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c307c0'
+        Module = 'CTCInventoryBase'
+        Source = '00/c3/CTCInventoryBase_GetCanItemBeQuickAssigned_00c307c0.cpp'
+        TestSource = '00/c3/CTCInventoryBase_GetCanItemBeQuickAssigned_00c307c0_test.cpp'
+        PassPattern = 'QUICKASSIGN_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c31d90'
+        Module = 'CChangingStateComponent'
+        Source = '00/c3/CChangingStateComponent_AddChildDynamically_00c31d90.cpp'
+        TestSource = '00/c3/CChangingStateComponent_AddChildDynamically_00c31d90_test.cpp'
+        PassPattern = 'ADDCHILD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c463e0'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/c4/CTCInventoryAbilities_GetAbilityLevel_00c463e0.cpp'
+        TestSource = '00/c4/CTCInventoryAbilities_GetAbilityLevel_00c463e0_test.cpp'
+        PassPattern = 'ABILITYLVL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c4bfa0'
+        Module = 'CBankFile'
+        Source = '00/c4/CBankFile_IsAligned_00c4bfa0.cpp'
+        TestSource = '00/c4/CBankFile_IsAligned_00c4bfa0_test.cpp'
+        PassPattern = 'ISALIGNED_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c61cf0'
+        Module = 'CRegion'
+        Source = '00/c6/CRegion_SetMiniMapRegionExitTextOffsetY_00c61cf0.cpp'
+        TestSource = '00/c6/CRegion_SetMiniMapRegionExitTextOffsetY_00c61cf0_test.cpp'
+        PassPattern = 'REGION1CF0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c62440'
+        Module = 'CRegion'
+        Source = '00/c6/CRegion_SetMiniMapRegionExitTextOffsetY_00c62440.cpp'
+        TestSource = '00/c6/CRegion_SetMiniMapRegionExitTextOffsetY_00c62440_test.cpp'
+        PassPattern = 'REGION2440_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c628a0'
+        Module = 'CAIBrain'
+        Source = '00/c6/CAIBrain_GetCurrentStateGroupDebugText_00c628a0.cpp'
+        TestSource = '00/c6/CAIBrain_GetCurrentStateGroupDebugText_00c628a0_test.cpp'
+        PassPattern = 'AIDBG28A0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c628d0'
+        Module = 'CAIBrain'
+        Source = '00/c6/CAIBrain_GetCurrentStateGroupDebugText_00c628d0.cpp'
+        TestSource = '00/c6/CAIBrain_GetCurrentStateGroupDebugText_00c628d0_test.cpp'
+        PassPattern = 'AIDBG28D0_OK'
+    }
 )
 
 $requestedAddresses = @(
