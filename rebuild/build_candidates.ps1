@@ -43504,6 +43504,97 @@ $catalog = @(
         TestSource = '00/65/CInputProcessGameBase_AddToInterface_0065bfbc_test.cpp'
         PassPattern = '0065bfbc_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006a7100'
+        Module = 'CThingFilter_IsOfType'
+        Source = '00/6a/CThingFilterIsOfType_operator_006a7100.cpp'
+        TestSource = '00/6a/CThingFilterIsOfType_operator_006a7100_test.cpp'
+        PassPattern = '006a7100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f5700'
+        Module = 'CCombatAction_GenericStr'
+        Source = '00/6f/CCombatActionGenericStr_IsUsingAnimationMovement_006f5700.cpp'
+        TestSource = '00/6f/CCombatActionGenericStr_IsUsingAnimationMovement_006f5700_test.cpp'
+        PassPattern = '006f5700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007332d0'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_OnHit_007332d0.cpp'
+        TestSource = '00/73/CTCCombat_OnHit_007332d0_test.cpp'
+        PassPattern = '007332d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00787c23'
+        Module = 'C3DAnimation2'
+        Source = '00/78/C3DAnimation2_CanRelocateData_00787c23.cpp'
+        TestSource = '00/78/C3DAnimation2_CanRelocateData_00787c23_test.cpp'
+        PassPattern = '00787c23_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00788388'
+        Module = 'CTCTrapBase'
+        Source = '00/78/CTCTrapBase_ManualTrigger_00788388.cpp'
+        TestSource = '00/78/CTCTrapBase_ManualTrigger_00788388_test.cpp'
+        PassPattern = '00788388_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079c640'
+        Module = 'CTCBulletTime'
+        Source = '00/79/CTCBulletTime_CancelMove_0079c640.cpp'
+        TestSource = '00/79/CTCBulletTime_CancelMove_0079c640_test.cpp'
+        PassPattern = '0079c640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008645e0'
+        Module = 'CMainGameComponent'
+        Source = '00/86/CMainGameComponent_BeginInputLoading_008645e0.cpp'
+        TestSource = '00/86/CMainGameComponent_BeginInputLoading_008645e0_test.cpp'
+        PassPattern = '008645e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00864600'
+        Module = 'CMainGameComponent'
+        Source = '00/86/CMainGameComponent_BeginInputLoading_00864600.cpp'
+        TestSource = '00/86/CMainGameComponent_BeginInputLoading_00864600_test.cpp'
+        PassPattern = '00864600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e930'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_SetToDisplayTutorialsDuringCutscenes_0088e930.cpp'
+        TestSource = '00/88/CGameScriptInterface_SetToDisplayTutorialsDuringCutscenes_0088e930_test.cpp'
+        PassPattern = '0088e930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088e950'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_StartProgressDisplay_0088e950.cpp'
+        TestSource = '00/88/CGameScriptInterface_StartProgressDisplay_0088e950_test.cpp'
+        PassPattern = '0088e950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009143c0'
+        Module = 'CAIStateGroup_BirdGround'
+        Source = '00/91/CAIStateGroupBirdGround_Cleanup_009143c0.cpp'
+        TestSource = '00/91/CAIStateGroupBirdGround_Cleanup_009143c0_test.cpp'
+        PassPattern = '009143c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00920710'
+        Module = 'CAIStateGroup_CreatureGo'
+        Source = '00/92/CAIStateGroupCreatureGo_IsRunnable_00920710.cpp'
+        TestSource = '00/92/CAIStateGroupCreatureGo_IsRunnable_00920710_test.cpp'
+        PassPattern = '00920710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00993c80'
+        Module = 'CDataInputStream'
+        Source = '00/99/CDataInputStream_Close_00993c80.cpp'
+        TestSource = '00/99/CDataInputStream_Close_00993c80_test.cpp'
+        PassPattern = '00993c80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
