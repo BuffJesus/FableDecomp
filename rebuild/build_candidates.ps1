@@ -41138,6 +41138,118 @@ $catalog = @(
         TestSource = '00/a7/CNavSwitchableLeafNode_GetPreferabilityCost_00a75c10_test.cpp'
         PassPattern = '00a75c10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c628c0'
+        Module = 'CEditWorld'
+        Source = '00/c6/CEditWorld_DrawGetWorldMap_00c628c0.cpp'
+        TestSource = '00/c6/CEditWorld_DrawGetWorldMap_00c628c0_test.cpp'
+        PassPattern = '00c628c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca4860'
+        Module = '_global'
+        Source = '00/ca/global_opand_00ca4860.cpp'
+        TestSource = '00/ca/global_opand_00ca4860_test.cpp'
+        PassPattern = '00ca4860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb01b0'
+        Module = 'CActiveFile'
+        Source = '00/cb/CActiveFile_OnReadFinished_00cb01b0.cpp'
+        TestSource = '00/cb/CActiveFile_OnReadFinished_00cb01b0_test.cpp'
+        PassPattern = '00cb01b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f35a00'
+        Module = 'CSpawnedFuncBase'
+        Source = '00/f3/CSpawnedFuncBase_TestPredicate_00f35a00.cpp'
+        TestSource = '00/f3/CSpawnedFuncBase_TestPredicate_00f35a00_test.cpp'
+        PassPattern = '00f35a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fb490'
+        Module = 'CTCInventoryBase'
+        Source = '00/4f/CTCInventoryBase_GetCategoryWithIndex_004fb490.cpp'
+        TestSource = '00/4f/CTCInventoryBase_GetCategoryWithIndex_004fb490_test.cpp'
+        PassPattern = '004fb490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fc180'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetRegion_004fc180.cpp'
+        TestSource = '00/4f/CWorldMap_GetRegion_004fc180_test.cpp'
+        PassPattern = '004fc180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ff560'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_PrepareForLoad_004ff560.cpp'
+        TestSource = '00/4f/CWorldMap_PrepareForLoad_004ff560_test.cpp'
+        PassPattern = '004ff560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005063d0'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_ForceLoad_005063d0.cpp'
+        TestSource = '00/50/CWorldMap_ForceLoad_005063d0_test.cpp'
+        PassPattern = '005063d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb7940'
+        Module = 'CScriptBase'
+        Source = '00/cb/CScriptBase_IsActiveThreadTerminating_00cb7940.cpp'
+        TestSource = '00/cb/CScriptBase_IsActiveThreadTerminating_00cb7940_test.cpp'
+        PassPattern = '00cb7940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aaa60'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_GetPThing_004aaa60.cpp'
+        TestSource = '00/4a/CScriptThing_GetPThing_004aaa60_test.cpp'
+        PassPattern = '004aaa60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aaa90'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_GetCurrentStateGroupType_004aaa90.cpp'
+        TestSource = '00/4a/CScriptThing_GetCurrentStateGroupType_004aaa90_test.cpp'
+        PassPattern = '004aaa90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aaaa0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_GetCurrentScriptPriority_004aaaa0.cpp'
+        TestSource = '00/4a/CScriptThing_GetCurrentScriptPriority_004aaaa0_test.cpp'
+        PassPattern = '004aaaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aaab0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_IsSneaking_004aaab0.cpp'
+        TestSource = '00/4a/CScriptThing_IsSneaking_004aaab0_test.cpp'
+        PassPattern = '004aaab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aaac0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_IsAwareOfHero_004aaac0.cpp'
+        TestSource = '00/4a/CScriptThing_IsAwareOfHero_004aaac0_test.cpp'
+        PassPattern = '004aaac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aac10'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgHowLongWasExpressionPerformed_004aac10.cpp'
+        TestSource = '00/4a/CScriptThing_MsgHowLongWasExpressionPerformed_004aac10_test.cpp'
+        PassPattern = '004aac10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aa930'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_SetDataString_004aa930.cpp'
+        TestSource = '00/4a/CScriptThing_SetDataString_004aa930_test.cpp'
+        PassPattern = '004aa930_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
