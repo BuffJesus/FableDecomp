@@ -7839,3 +7839,46 @@ Frontend/backdrop status unchanged: AudioOptions MAE is the coastal-scene
 structural boundary (see the two prior 2026-08-06 addenda + memory
 [[audiooptions-backdrop-not-sunbeam]]); needs native backdrop ownership, not a
 compositing tweak.
+
+## Session addendum — 2026-08-07: crawl gen_batch8 + gen_batch9 = 32 landed
+
+Binary-wide parity crawl continued (the high-yield small-fn tail). Two full
+batches, **both 16/16 byte-exact/RELOCATION_MATCH, all behavior-gated**
+(commits `d1c790c`, `fa6ff3c`). Tried ledger `tools/decomp_pipeline/crawl/
+gen_tried.txt` now **200 addrs**; eligible pool still ~16.8k.
+
+New reusable authoring patterns proven this session (VC7.1, verify_and_land):
+- **Real member function for stack-passed args.** thiscall methods whose args
+  arrive on the stack (retail `mov eax,[esp+4]` / `ret N`) CANNOT be modeled as
+  free `__fastcall(self,arg)` — that puts arg in edx. Author a real `struct C {
+  void M(args); }; void C::M(args){...}` (the `__thiscall` keyword never appears,
+  so the harness's `__thiscall`->`__fastcall` rewrite leaves it alone). Covers
+  field-store setters (`ret 4`), zero-init `InitStateGroup` (`ret 8` from 2 ref
+  params), and `_Dest_val` `push <size>; call dtor` (member call `sub->Dtor(sz)`).
+- **Bool codegen is shape-specific under VC7.1** (all size-14 leaves):
+  - `!probe(...)` == `neg;sbb;inc` -> author `probe(...) == 0` (NOT `!= 0`, which
+    emits `neg;sbb;neg`).
+  - `test eax,eax; setne al` (int, 85c0) -> author `probe(...) ? true : false`.
+  - `test al,al; setne al` (byte, 84c0) -> byte-typed vfn/probe + `? true : false`.
+  - `xor eax,eax; test dl,dl; sete al` -> `return byteField == 0`.
+  - raw byte return (`xor al,al` / `mov al,[..]`, no normalize) -> return type
+    `char`, `return field;` (bool return type would re-normalize).
+- **Force 8-bit ops** (`mov al`/`shr al`/`not al`/`and al` vs dword+movzx): write
+  explicit byte-typed statements `unsigned char b=...; b>>=5; b=~b; b&=1; return b;`
+  — a single `(~(x>>5))&1` expression promotes to int and emits `movzbl`+dword.
+- **vtable call-and-compare**: typed fn-ptr ARRAY field `struct S { int(__fastcall
+  **vtbl)(S*); }` + `self->vtbl[slot](self) == N` gives `mov eax,[ecx]; call
+  [eax+disp]` (materializing via a `VFn fn=...` local adds a `mov`).
+- **pointer-chain virtual tail-call** and **global-load + add + tail-jmp** both
+  reproduce as real members forwarding stack args (`->SetX(b)` / `((Inner*)((char*)
+  g+0x18))->M(a,b)`), emitting the retail `jmp *[reg+disp]` / `jmp rel`.
+- Recurring gotcha bit twice: a test local named `in` or `target` -> `&in;`/`&target;`
+  are real HTML entities that verify's `html.unescape` turns into U+2208/U+2316
+  (C3209). Rename test locals (`inr`, `tgt`).
+
+Resume the crawl: `cp tools/decomp_pipeline/crawl/gen_tried.txt <scratchpad>/`,
+`python tools/decomp_pipeline/crawl/next_smallest.py 16 gen_batchN` (its hardcoded
+SCR still points at the `fd03f1b5` scratchpad, which persists; repoint if gone).
+Batch build templates: `build_batch8*.py`/`build_batch9*.py` in that scratchpad.
+Frontend/backdrop status unchanged (coastal structural boundary; see prior
+2026-08-06 addenda).
