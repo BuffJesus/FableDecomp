@@ -45814,6 +45814,139 @@ $catalog = @(
         TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d673a_test.cpp'
         PassPattern = 'GETACTIONNAME_004d673a_OK'
     }
+    [pscustomobject]@{
+        Address = '00556580'
+        Module = 'CRedefinerList'
+        Source = '00/55/CRedefinerList_OnDeactivate_00556580.cpp'
+        TestSource = '00/55/CRedefinerList_OnDeactivate_00556580_test.cpp'
+        PassPattern = '00556580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00557bd0'
+        Module = 'CKeyRedefiner'
+        Source = '00/55/CKeyRedefiner_CancelSelection_00557bd0.cpp'
+        TestSource = '00/55/CKeyRedefiner_CancelSelection_00557bd0_test.cpp'
+        PassPattern = '00557bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d674d'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d674d.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d674d_test.cpp'
+        PassPattern = 'GETACTIONNAME_004d674d_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d6902'
+        Module = 'std'
+        Source = '00/4d/std_Destval_004d6902.cpp'
+        TestSource = '00/4d/std_Destval_004d6902_test.cpp'
+        PassPattern = 'DESTVAL_004d6902_OK'
+    }
+    [pscustomobject]@{
+        Address = '004de6ed'
+        Module = 'std'
+        Source = '00/4d/std_Destval_004de6ed.cpp'
+        TestSource = '00/4d/std_Destval_004de6ed_test.cpp'
+        PassPattern = 'DESTVAL_004de6ed_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e0a1f'
+        Module = 'std'
+        Source = '00/4e/std_Destval_004e0a1f.cpp'
+        TestSource = '00/4e/std_Destval_004e0a1f_test.cpp'
+        PassPattern = 'DESTVAL_004e0a1f_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e0ae8'
+        Module = 'std'
+        Source = '00/4e/std_Destval_004e0ae8.cpp'
+        TestSource = '00/4e/std_Destval_004e0ae8_test.cpp'
+        PassPattern = 'DESTVAL_004e0ae8_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e5c71'
+        Module = 'std'
+        Source = '00/4e/std_Destval_004e5c71.cpp'
+        TestSource = '00/4e/std_Destval_004e5c71_test.cpp'
+        PassPattern = 'DESTVAL_004e5c71_OK'
+    }
+    [pscustomobject]@{
+        Address = '0055ac90'
+        Module = 'CClickable'
+        Source = '00/55/CClickable_Initialise_0055ac90.cpp'
+        TestSource = '00/55/CClickable_Initialise_0055ac90_test.cpp'
+        PassPattern = 'CLICKINIT_0055ac90_OK'
+    }
+    [pscustomobject]@{
+        Address = '0059387c'
+        Module = 'std'
+        Source = '00/59/std_Umove_0059387c.cpp'
+        TestSource = '00/59/std_Umove_0059387c_test.cpp'
+        PassPattern = 'UMOVE_0059387c_OK'
+    }
+    [pscustomobject]@{
+        Address = '005ba765'
+        Module = 'std'
+        Source = '00/5b/std_Umove_005ba765.cpp'
+        TestSource = '00/5b/std_Umove_005ba765_test.cpp'
+        PassPattern = 'UMOVE_005ba765_OK'
+    }
+    [pscustomobject]@{
+        Address = '005ba778'
+        Module = 'std'
+        Source = '00/5b/std_Umove_005ba778.cpp'
+        TestSource = '00/5b/std_Umove_005ba778_test.cpp'
+        PassPattern = 'UMOVE_005ba778_OK'
+    }
+    [pscustomobject]@{
+        Address = '005c08c0'
+        Module = 'std'
+        Source = '00/5c/std_Umove_005c08c0.cpp'
+        TestSource = '00/5c/std_Umove_005c08c0_test.cpp'
+        PassPattern = 'UMOVE_005c08c0_OK'
+    }
+    [pscustomobject]@{
+        Address = '005c08d3'
+        Module = 'std'
+        Source = '00/5c/std_Umove_005c08d3.cpp'
+        TestSource = '00/5c/std_Umove_005c08d3_test.cpp'
+        PassPattern = 'UMOVE_005c08d3_OK'
+    }
+    [pscustomobject]@{
+        Address = '005c0c86'
+        Module = 'std'
+        Source = '00/5c/std_Umove_005c0c86.cpp'
+        TestSource = '00/5c/std_Umove_005c0c86_test.cpp'
+        PassPattern = 'UMOVE_005c0c86_OK'
+    }
+    [pscustomobject]@{
+        Address = '005c1140'
+        Module = 'std'
+        Source = '00/5c/std_Umove_005c1140.cpp'
+        TestSource = '00/5c/std_Umove_005c1140_test.cpp'
+        PassPattern = 'UMOVE_005c1140_OK'
+    }
+    [pscustomobject]@{
+        Address = '005eedcf'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_AddLearnedExpression_005eedcf.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_AddLearnedExpression_005eedcf_test.cpp'
+        PassPattern = 'ADDLEARNED_005eedcf_OK'
+    }
+    [pscustomobject]@{
+        Address = '005f9a29'
+        Module = 'std'
+        Source = '00/5f/std_Umove_005f9a29.cpp'
+        TestSource = '00/5f/std_Umove_005f9a29_test.cpp'
+        PassPattern = 'UMOVE_005f9a29_OK'
+    }
+    [pscustomobject]@{
+        Address = '006556f2'
+        Module = 'std'
+        Source = '00/65/std_Umove_006556f2.cpp'
+        TestSource = '00/65/std_Umove_006556f2_test.cpp'
+        PassPattern = 'UMOVE_006556f2_OK'
+    }
 )
 
 $requestedAddresses = @(
