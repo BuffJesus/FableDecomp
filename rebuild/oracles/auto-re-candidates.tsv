@@ -6877,3 +6877,11 @@ address	name	length	bytes
 0096f030	?CleanupLeaf@CAIStateGroup_MinionBehaviourSad@@UAEXXZ	19	568bf18b4e246a14e863bbdcffc6463c005ec3
 00657280	BoughtSomething	19	568bf18b0da0863b01e83af5dbff89462c5ec3
 00908de0	?OnStart@CCombatSequence_BattleCharge@@UAEXXZ	19	568bf18b0da0863b01e8dad9b0ff8946285ec3
+00c0dec0	operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	13	56528bf1e877feffff8bc65ec3
+00c0def0	operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	13	56528bf1e807ffffff8bc65ec3
+00c0df00	operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	13	56528bf1e8a7feffff8bc65ec3
+00c0df10	operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	13	56528bf1e8e7feffff8bc65ec3
+0068c6d0	CInputProcessHeroInformationScreens::ProcessInput	13	8b44240450e8b6b3ffffc20800
+005e9a60	_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>	14	8b4c24046a01e81501eeffc20400
+00c35af0	operator_new	17	8b4424088b4c240450e852d40000c20800
+00c35b10	operator_new	17	8b4424088b4c240450e8c2d40000c20800

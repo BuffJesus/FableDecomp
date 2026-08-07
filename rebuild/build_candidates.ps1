@@ -48852,6 +48852,62 @@ $catalog = @(
         TestSource = '00/90/CCombatSequenceBattleCharge_OnStartCCombatSequenceBattleChargeUAEXXZ_00908de0_test.cpp'
         PassPattern = 'RB_908de0_OK'
     }
+    [pscustomobject]@{
+        Address = '00c0dec0'
+        Module = 'operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript'
+        Source = '00/c0/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_00c0dec0.cpp'
+        TestSource = '00/c0/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_00c0dec0_test.cpp'
+        PassPattern = 'RB_c0dec0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c0def0'
+        Module = 'operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript'
+        Source = '00/c0/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_00c0def0.cpp'
+        TestSource = '00/c0/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_00c0def0_test.cpp'
+        PassPattern = 'RB_c0def0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c0df00'
+        Module = 'operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript'
+        Source = '00/c0/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_00c0df00.cpp'
+        TestSource = '00/c0/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_00c0df00_test.cpp'
+        PassPattern = 'RB_c0df00_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c0df10'
+        Module = 'operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript'
+        Source = '00/c0/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_00c0df10.cpp'
+        TestSource = '00/c0/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_00c0df10_test.cpp'
+        PassPattern = 'RB_c0df10_OK'
+    }
+    [pscustomobject]@{
+        Address = '0068c6d0'
+        Module = 'CInputProcessHeroInformationScreens'
+        Source = '00/68/CInputProcessHeroInformationScreens_ProcessInput_0068c6d0.cpp'
+        TestSource = '00/68/CInputProcessHeroInformationScreens_ProcessInput_0068c6d0_test.cpp'
+        PassPattern = 'RB_68c6d0_OK'
+    }
+    [pscustomobject]@{
+        Address = '005e9a60'
+        Module = '_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification'
+        Source = '00/5e/DestvalstdallocatorNCreatureHitNotificationCFlashNCreatureHitNotification_CFlash_005e9a60.cpp'
+        TestSource = '00/5e/DestvalstdallocatorNCreatureHitNotificationCFlashNCreatureHitNotification_CFlash_005e9a60_test.cpp'
+        PassPattern = 'RB_5e9a60_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c35af0'
+        Module = '_global'
+        Source = '00/c3/global_operatornew_00c35af0.cpp'
+        TestSource = '00/c3/global_operatornew_00c35af0_test.cpp'
+        PassPattern = 'RB_c35af0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c35b10'
+        Module = '_global'
+        Source = '00/c3/global_operatornew_00c35b10.cpp'
+        TestSource = '00/c3/global_operatornew_00c35b10_test.cpp'
+        PassPattern = 'RB_c35b10_OK'
+    }
 )
 
 $requestedAddresses = @(
