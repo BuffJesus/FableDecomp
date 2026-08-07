@@ -48278,6 +48278,97 @@ $catalog = @(
         TestSource = '00/c4/CScriptModuleSelfTerminateBase_IsFinished_00c49620_test.cpp'
         PassPattern = 'IF_c49620_OK'
     }
+    [pscustomobject]@{
+        Address = '00c54170'
+        Module = 'CEngine'
+        Source = '00/c5/CEngine_ChangeCameraAngle_00c54170.cpp'
+        TestSource = '00/c5/CEngine_ChangeCameraAngle_00c54170_test.cpp'
+        PassPattern = 'CA_c54170_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c8d4f0'
+        Module = 'CTCInventoryBase'
+        Source = '00/c8/CTCInventoryBase_GetSelectedCategory_00c8d4f0.cpp'
+        TestSource = '00/c8/CTCInventoryBase_GetSelectedCategory_00c8d4f0_test.cpp'
+        PassPattern = 'GS_c8d4f0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cb0e90'
+        Module = 'CWorldMap'
+        Source = '00/cb/CWorldMap_PrepareForLoad_00cb0e90.cpp'
+        TestSource = '00/cb/CWorldMap_PrepareForLoad_00cb0e90_test.cpp'
+        PassPattern = 'PF_cb0e90_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cd4470'
+        Module = 'CTimer'
+        Source = '00/cd/CTimer_CTimer_00cd4470.cpp'
+        TestSource = '00/cd/CTimer_CTimer_00cd4470_test.cpp'
+        PassPattern = 'TM_cd4470_OK'
+    }
+    [pscustomobject]@{
+        Address = '00f14250'
+        Module = 'CWorld'
+        Source = '00/f1/CWorld_DrawGetEnvironment_00f14250.cpp'
+        TestSource = '00/f1/CWorld_DrawGetEnvironment_00f14250_test.cpp'
+        PassPattern = 'DE_f14250_OK'
+    }
+    [pscustomobject]@{
+        Address = '01228ed8'
+        Module = 'CDebugManager'
+        Source = '01/22/CDebugManager_ThrowException_01228ed8.cpp'
+        TestSource = '01/22/CDebugManager_ThrowException_01228ed8_test.cpp'
+        PassPattern = 'TE_1228ed8_OK'
+    }
+    [pscustomobject]@{
+        Address = '0049d8f0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_SetAsPaused_0049d8f0.cpp'
+        TestSource = '00/49/CWorld_SetAsPaused_0049d8f0_test.cpp'
+        PassPattern = 'SP_49d8f0_OK'
+    }
+    [pscustomobject]@{
+        Address = '004baa30'
+        Module = 'CRegion'
+        Source = '00/4b/CRegion_SetMiniMapRegionExitTextOffsetX_004baa30.cpp'
+        TestSource = '00/4b/CRegion_SetMiniMapRegionExitTextOffsetX_004baa30_test.cpp'
+        PassPattern = 'MM_baa30_OK'
+    }
+    [pscustomobject]@{
+        Address = '004c7e30'
+        Module = 'CThing'
+        Source = '00/4c/CThing_GetTypeName_004c7e30.cpp'
+        TestSource = '00/4c/CThing_GetTypeName_004c7e30_test.cpp'
+        PassPattern = 'TN_4c7e30_OK'
+    }
+    [pscustomobject]@{
+        Address = '004fcfe0'
+        Module = 'CEditWorldMap'
+        Source = '00/4f/CEditWorldMap_SetMapAsChanged_004fcfe0.cpp'
+        TestSource = '00/4f/CEditWorldMap_SetMapAsChanged_004fcfe0_test.cpp'
+        PassPattern = 'MC_4fcfe0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00515700'
+        Module = 'CRegion'
+        Source = '00/51/CRegion_SetMiniMapRegionExitTextOffsetX_00515700.cpp'
+        TestSource = '00/51/CRegion_SetMiniMapRegionExitTextOffsetX_00515700_test.cpp'
+        PassPattern = 'MM_515700_OK'
+    }
+    [pscustomobject]@{
+        Address = '0059d9ad'
+        Module = 'CMemoryAllocator'
+        Source = '00/59/CMemoryAllocator_ClearPerformanceStats_0059d9ad.cpp'
+        TestSource = '00/59/CMemoryAllocator_ClearPerformanceStats_0059d9ad_test.cpp'
+        PassPattern = 'CP_59d9ad_OK'
+    }
+    [pscustomobject]@{
+        Address = '005c05c0'
+        Module = '_global'
+        Source = '00/5c/global_ISTHINGALIVECThingBuilding_005c05c0.cpp'
+        TestSource = '00/5c/global_ISTHINGALIVECThingBuilding_005c05c0_test.cpp'
+        PassPattern = 'IA_5c05c0_OK'
+    }
 )
 
 $requestedAddresses = @(
