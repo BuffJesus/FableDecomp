@@ -190,6 +190,10 @@ extern "C"
         int desiredWidth,
         int desiredHeight,
         FableUint loadFlags);
+    __declspec(dllimport) FableDword FABLE_STDCALL GetModuleFileNameA(
+        FableInstanceHandle module,
+        char* filename,
+        FableDword size);
     __declspec(dllimport) FableCursor FABLE_STDCALL LoadCursorA(
         FableInstanceHandle instance,
         const char* name);
@@ -2239,6 +2243,7 @@ namespace
 
     const FableUint kImageBitmap = 0;
     const FableUint kLoadCreatedDibSection = 0x00002000;
+    const FableUint kLoadFromFile = 0x00000010;
     const int kBlackBrush = 4;
     const int kArrowCursor = 32512;
     const FableUint kClassRedrawHorizontal = 0x0002;
@@ -2650,6 +2655,60 @@ namespace
     {
         return reinterpret_cast<const char*>(
             static_cast<unsigned long>(identifier));
+    }
+
+    // Install-time-extraction asset model (recomp-style, e.g. Sonic Unleashed
+    // Recompiled / the Zelda decomps): frontend artwork is extracted from the
+    // player's own base-game .big files into loose files alongside the exe, and
+    // loaded from disk at runtime.  This lets a finished install ship
+    // asset-free and load only from the base game the player supplied.
+    //
+    // Prefer the loose extracted .bmp (LR_LOADFROMFILE); fall back to the
+    // embedded resource so a build without an extraction step still runs.  We
+    // read the raw DIB bytes downstream, so a 32-bit BGRA .bmp preserves alpha
+    // exactly through the same GetObjectA/DIB path the embedded resources use.
+    FableBitmap LoadFrontendArtwork(
+        FableInstanceHandle instance,
+        int resourceId,
+        const char* looseFileName)
+    {
+        if (looseFileName != 0)
+        {
+            char path[600];
+            const FableDword written =
+                GetModuleFileNameA(0, path, 512);
+            if (written > 0 && written < 512)
+            {
+                int cut = static_cast<int>(written);
+                while (cut > 0 &&
+                       path[cut - 1] != '\\' &&
+                       path[cut - 1] != '/')
+                {
+                    --cut;
+                }
+                path[cut] = '\0';
+                strcat(path, "data\\frontend\\");
+                strcat(path, looseFileName);
+                FableBitmap loose = static_cast<FableBitmap>(LoadImageA(
+                    0,
+                    path,
+                    kImageBitmap,
+                    0,
+                    0,
+                    kLoadFromFile | kLoadCreatedDibSection));
+                if (loose != 0)
+                {
+                    return loose;
+                }
+            }
+        }
+        return static_cast<FableBitmap>(LoadImageA(
+            instance,
+            IntegerResource(resourceId),
+            kImageBitmap,
+            0,
+            0,
+            kLoadCreatedDibSection));
     }
 
     void PlayVisualFrontendResourceSound(int resource)
@@ -5718,20 +5777,14 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         g_BootSpookyArtwork = 0;
     }
 #if defined(FABLETLC_RETAIL_FRONTEND_SUBSCREENS)
-    g_BootOptionsArtwork = static_cast<FableBitmap>(LoadImageA(
+    g_BootOptionsArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootOptionsResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
-    g_BootHelpersArtwork = static_cast<FableBitmap>(LoadImageA(
+        kBootOptionsResource,
+        "visual_boot_options_menu.bmp");
+    g_BootHelpersArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootHelpersResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
+        kBootHelpersResource,
+        "visual_boot_helpers.bmp");
     g_BootRedefineScrollPagesArtwork =
         static_cast<FableBitmap>(LoadImageA(
             instance,

@@ -3939,6 +3939,24 @@ try {
         }
     }
 
+    # Install-time-extraction model (recomp-style): stage the frontend atlases
+    # as loose files under <outDir>/data/frontend so the runtime can load them
+    # from disk instead of an embedded resource.  The build performs this
+    # extraction today; a finished installer would run the same decode against
+    # the player's base-game directory.  The .res embedding is retained as a
+    # fallback until every atlas is served from loose files.
+    if ($visualBootUsesRetailSubscreens) {
+        $looseFrontendDir = Join-Path $outDir 'data\frontend'
+        New-Item -ItemType Directory -Force $looseFrontendDir | Out-Null
+        foreach ($looseBmp in @($visualBootOptionsBitmap, $visualBootHelpersBitmap)) {
+            if (Test-Path $looseBmp) {
+                Copy-Item $looseBmp `
+                    (Join-Path $looseFrontendDir (Split-Path $looseBmp -Leaf)) `
+                    -Force
+            }
+        }
+    }
+
     $resourceBitmapPath = $visualBootBitmap.Replace('\', '/')
     $resourceLines = @("101 BITMAP `"$resourceBitmapPath`"")
     if ($visualBootUsesRetailAsset) {
