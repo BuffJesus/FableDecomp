@@ -48502,6 +48502,118 @@ $catalog = @(
         TestSource = '00/96/CAIStateGroupWhisperRetreat_Initialise_0096a250_test.cpp'
         PassPattern = '0096a250_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0065d624'
+        Module = '_global'
+        Source = '00/65/global_ISTHINGALIVECThingBuilding_0065d624.cpp'
+        TestSource = '00/65/global_ISTHINGALIVECThingBuilding_0065d624_test.cpp'
+        PassPattern = 'IA_65d624_OK'
+    }
+    [pscustomobject]@{
+        Address = '00662410'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/66/C3DAnimationBlendState_AddCombinationBlend_00662410.cpp'
+        TestSource = '00/66/C3DAnimationBlendState_AddCombinationBlend_00662410_test.cpp'
+        PassPattern = 'AC_662410_OK'
+    }
+    [pscustomobject]@{
+        Address = '00662430'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/66/C3DAnimationBlendState_AddCombinationBlend_00662430.cpp'
+        TestSource = '00/66/C3DAnimationBlendState_AddCombinationBlend_00662430_test.cpp'
+        PassPattern = 'AC_662430_OK'
+    }
+    [pscustomobject]@{
+        Address = '0067cdb0'
+        Module = 'CBlurredAttitudesDef'
+        Source = '00/67/CBlurredAttitudesDef_Transfer_0067cdb0.cpp'
+        TestSource = '00/67/CBlurredAttitudesDef_Transfer_0067cdb0_test.cpp'
+        PassPattern = 'XF_67cdb0_OK'
+    }
+    [pscustomobject]@{
+        Address = '0066a6d0'
+        Module = 'CCombatAction_GenericResponseToDrain'
+        Source = '00/66/CCombatActionGenericResponseToDrain_IsAbleToBeAttacked_0066a6d0.cpp'
+        TestSource = '00/66/CCombatActionGenericResponseToDrain_IsAbleToBeAttacked_0066a6d0_test.cpp'
+        PassPattern = 'RB_66a6d0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00690df0'
+        Module = 'CCombatAction_GenericBreakOffDrain'
+        Source = '00/69/CCombatActionGenericBreakOffDrain_IsAbleToBeAttacked_00690df0.cpp'
+        TestSource = '00/69/CCombatActionGenericBreakOffDrain_IsAbleToBeAttacked_00690df0_test.cpp'
+        PassPattern = 'RB_690df0_OK'
+    }
+    [pscustomobject]@{
+        Address = '006a73c0'
+        Module = 'CThingFilter_IsInCreatureFOV'
+        Source = '00/6a/CThingFilterIsInCreatureFOV_operator_006a73c0.cpp'
+        TestSource = '00/6a/CThingFilterIsInCreatureFOV_operator_006a73c0_test.cpp'
+        PassPattern = 'OP_6a73c0_OK'
+    }
+    [pscustomobject]@{
+        Address = '0071ba40'
+        Module = 'CTCHeroMorph'
+        Source = '00/71/CTCHeroMorph_SetAsTeenager_0071ba40.cpp'
+        TestSource = '00/71/CTCHeroMorph_SetAsTeenager_0071ba40_test.cpp'
+        PassPattern = 'ST_71ba40_OK'
+    }
+    [pscustomobject]@{
+        Address = '00739a50'
+        Module = 'CCreatureAction_BlockBroken'
+        Source = '00/73/CCreatureActionBlockBroken_IsToFaceTargetAtStart_00739a50.cpp'
+        TestSource = '00/73/CCreatureActionBlockBroken_IsToFaceTargetAtStart_00739a50_test.cpp'
+        PassPattern = 'RB_739a50_OK'
+    }
+    [pscustomobject]@{
+        Address = '0074db90'
+        Module = 'CCreatureAction_RiseUp'
+        Source = '00/74/CCreatureActionRiseUp_IsOverrideableByActionOfSamePriority_0074db90.cpp'
+        TestSource = '00/74/CCreatureActionRiseUp_IsOverrideableByActionOfSamePriority_0074db90_test.cpp'
+        PassPattern = 'RB_74db90_OK'
+    }
+    [pscustomobject]@{
+        Address = '0074dd70'
+        Module = 'CCreatureAction_UndeadIdleUnderground'
+        Source = '00/74/CCreatureActionUndeadIdleUnderground_GetAnimationTransitionInTime_0074dd70.cpp'
+        TestSource = '00/74/CCreatureActionUndeadIdleUnderground_GetAnimationTransitionInTime_0074dd70_test.cpp'
+        PassPattern = 'RI_74dd70_OK'
+    }
+    [pscustomobject]@{
+        Address = '00788198'
+        Module = 'CEngine'
+        Source = '00/78/CEngine_ChangeCameraAngle_00788198.cpp'
+        TestSource = '00/78/CEngine_ChangeCameraAngle_00788198_test.cpp'
+        PassPattern = 'CA_788198_OK'
+    }
+    [pscustomobject]@{
+        Address = '0079e500'
+        Module = 'CSystemManager'
+        Source = '00/79/CSystemManager_UninitWindow_0079e500.cpp'
+        TestSource = '00/79/CSystemManager_UninitWindow_0079e500_test.cpp'
+        PassPattern = 'UW_79e500_OK'
+    }
+    [pscustomobject]@{
+        Address = '007adb30'
+        Module = 'CRegion'
+        Source = '00/7a/CRegion_SetMiniMapRegionExitTextOffsetX_007adb30.cpp'
+        TestSource = '00/7a/CRegion_SetMiniMapRegionExitTextOffsetX_007adb30_test.cpp'
+        PassPattern = 'MM_7adb30_OK'
+    }
+    [pscustomobject]@{
+        Address = '007cc9c0'
+        Module = 'CTCMultiStrike'
+        Source = '00/7c/CTCMultiStrike_CancelForCutscene_007cc9c0.cpp'
+        TestSource = '00/7c/CTCMultiStrike_CancelForCutscene_007cc9c0_test.cpp'
+        PassPattern = 'CF_7cc9c0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00814bf0'
+        Module = 'CWorld'
+        Source = '00/81/CWorld_DrawGetEnvironment_00814bf0.cpp'
+        TestSource = '00/81/CWorld_DrawGetEnvironment_00814bf0_test.cpp'
+        PassPattern = 'DE_814bf0_OK'
+    }
 )
 
 $requestedAddresses = @(
