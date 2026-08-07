@@ -46402,6 +46402,20 @@ $catalog = @(
         TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd7b4_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd7b4_OK'
     }
+    [pscustomobject]@{
+        Address = '00557ca0'
+        Module = 'CKeyRedefiner'
+        Source = '00/55/CKeyRedefiner_GetSubTypeForAction_00557ca0.cpp'
+        TestSource = '00/55/CKeyRedefiner_GetSubTypeForAction_00557ca0_test.cpp'
+        PassPattern = '00557ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005578a0'
+        Module = 'CKeyRedefiner'
+        Source = '00/55/CKeyRedefiner_AreAllowedToCoexist_005578a0.cpp'
+        TestSource = '00/55/CKeyRedefiner_AreAllowedToCoexist_005578a0_test.cpp'
+        PassPattern = '005578a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
