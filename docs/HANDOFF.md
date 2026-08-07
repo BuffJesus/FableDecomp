@@ -7804,3 +7804,38 @@ coastal-specific and **structural**: retail's displayed coastal (main-menu) scen
 differs from the decoded COASTAL frame in a way only native backdrop
 scene/animation ownership can close. Do not spend rebuilds on sunbeam/frame/pan/
 levels for Options parity.
+
+## Session addendum — 2026-08-06 (final): crawl batches 4-7 = 56 landed
+
+Session totals for the binary-wide parity crawl (the high-yield small-fn tail):
+**56 byte-exact/RELOCATION_MATCH functions landed** across gen_batch4-7
+(commits b5c2158, 3eba78c, b2634c9, 893b778), all behavior-gated. Tried ledger
+`tools/decomp_pipeline/crawl/gen_tried.txt` now 168 addrs; eligible pool still
+~16.9k, so the lane has large runway.
+
+Reusable authoring patterns proven this session (all free __fastcall(self,...),
+VC7.1, verify_and_land): field load/store (dword+ret4, byte, word); double/triple
+pointer-chain loads (int/float/byte, `fld` for float); array index
+`this->arr[i]` (ret 4); struct copy returning this; `a+1<b`/`x==0` setcc bools;
+short-vector `Sizeof` (n*2+12); read-and-clear byte; "call helper, store eax to
+this+off" (esi-saved, reloc-masked); cdecl `if(*this) notify(*this)` with pop-ecx
+cleanup; and vtable tail-call forwarders (inner-at-+8, or vtable[slot](this)
+then a field write) as pure indirect calls needing no external symbol.
+
+Recurring rejects (deferred to ledger, not worth fighting): reloc/global
+forwarders that push args to a cdecl/stdcall/thiscall helper needing an edx the
+model can't suppress; vtable tail-calls with a *preceding* store (VC7.1 hoists
+the vtbl load); fmul-by-global (VC7.1 loads the global into st0 first, retail
+loads the member); mid-function fragments with no terminating ret.
+
+To resume the crawl: `cp tools/decomp_pipeline/crawl/gen_tried.txt <scratchpad>/`,
+then `python tools/decomp_pipeline/crawl/next_smallest.py N gen_batchM`
+(SCR path in that script is now the current session's; repoint if the scratchpad
+changes), author from the oracle, `verify_and_land.py ... --land`, update the
+durable ledger with ALL attempted addrs, commit. Batch builder scripts
+(build_batch4-7.py) are in the session scratchpad as templates.
+
+Frontend/backdrop status unchanged: AudioOptions MAE is the coastal-scene
+structural boundary (see the two prior 2026-08-06 addenda + memory
+[[audiooptions-backdrop-not-sunbeam]]); needs native backdrop ownership, not a
+compositing tweak.
