@@ -47921,6 +47921,118 @@ $catalog = @(
         TestSource = '00/4a/CEngine_ChangeCameraAngle_004afdb0_test.cpp'
         PassPattern = 'CAMANGLE_OK'
     }
+    [pscustomobject]@{
+        Address = '0065ed7a'
+        Module = 'CVillageTaskTorch'
+        Source = '00/65/CVillageTaskTorch_IsCreatureAssignedToTask_0065ed7a.cpp'
+        TestSource = '00/65/CVillageTaskTorch_IsCreatureAssignedToTask_0065ed7a_test.cpp'
+        PassPattern = 'EQ_65ed7a_OK'
+    }
+    [pscustomobject]@{
+        Address = '0065ee2d'
+        Module = 'CVillageTaskHorn'
+        Source = '00/65/CVillageTaskHorn_IsCreatureAssignedToTask_0065ee2d.cpp'
+        TestSource = '00/65/CVillageTaskHorn_IsCreatureAssignedToTask_0065ee2d_test.cpp'
+        PassPattern = 'EQ_65ee2d_OK'
+    }
+    [pscustomobject]@{
+        Address = '0065eedd'
+        Module = 'CVillageTaskPatrol'
+        Source = '00/65/CVillageTaskPatrol_IsCreatureAssignedToTask_0065eedd.cpp'
+        TestSource = '00/65/CVillageTaskPatrol_IsCreatureAssignedToTask_0065eedd_test.cpp'
+        PassPattern = 'EQ_65eedd_OK'
+    }
+    [pscustomobject]@{
+        Address = '0065ef72'
+        Module = 'CVillageTaskPickCrops'
+        Source = '00/65/CVillageTaskPickCrops_IsCreatureAssignedToTask_0065ef72.cpp'
+        TestSource = '00/65/CVillageTaskPickCrops_IsCreatureAssignedToTask_0065ef72_test.cpp'
+        PassPattern = 'EQ_65ef72_OK'
+    }
+    [pscustomobject]@{
+        Address = '00860410'
+        Module = 'CVillageTaskSecuritySweep'
+        Source = '00/86/CVillageTaskSecuritySweep_IsThingInvolved_00860410.cpp'
+        TestSource = '00/86/CVillageTaskSecuritySweep_IsThingInvolved_00860410_test.cpp'
+        PassPattern = 'EQ_860410_OK'
+    }
+    [pscustomobject]@{
+        Address = '005ee01a'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/5e/CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation_005ee01a.cpp'
+        TestSource = '00/5e/CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation_005ee01a_test.cpp'
+        PassPattern = 'ZSORT_OK'
+    }
+    [pscustomobject]@{
+        Address = '007305f0'
+        Module = 'CTCDoor'
+        Source = '00/73/CTCDoor_PostVandalismCrimeIfDestroyed_007305f0.cpp'
+        TestSource = '00/73/CTCDoor_PostVandalismCrimeIfDestroyed_007305f0_test.cpp'
+        PassPattern = 'VANDAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00733210'
+        Module = 'CWADFile'
+        Source = '00/73/CWADFile_Close_00733210.cpp'
+        TestSource = '00/73/CWADFile_Close_00733210_test.cpp'
+        PassPattern = 'WADCLOSE733_OK'
+    }
+    [pscustomobject]@{
+        Address = '005540f0'
+        Module = 'CMemoryDataOutputStream'
+        Source = '00/55/CMemoryDataOutputStream_Clear_005540f0.cpp'
+        TestSource = '00/55/CMemoryDataOutputStream_Clear_005540f0_test.cpp'
+        PassPattern = 'MEMCLEAR_OK'
+    }
+    [pscustomobject]@{
+        Address = '005b1546'
+        Module = 'CRegion'
+        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b1546.cpp'
+        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b1546_test.cpp'
+        PassPattern = 'REGIONX_OK'
+    }
+    [pscustomobject]@{
+        Address = '006a4dd0'
+        Module = 'CSpellContainerList'
+        Source = '00/6a/CSpellContainerList_AddChild_006a4dd0.cpp'
+        TestSource = '00/6a/CSpellContainerList_AddChild_006a4dd0_test.cpp'
+        PassPattern = 'ADDCHILD6A_OK'
+    }
+    [pscustomobject]@{
+        Address = '00842c00'
+        Module = 'CCreatureAction_PerformExpression'
+        Source = '00/84/CCreatureActionPerformExpression_PreventExpression_00842c00.cpp'
+        TestSource = '00/84/CCreatureActionPerformExpression_PreventExpression_00842c00_test.cpp'
+        PassPattern = 'EXPR842C00_OK'
+    }
+    [pscustomobject]@{
+        Address = '00842c50'
+        Module = 'CCreatureAction_PerformExpressionExtended'
+        Source = '00/84/CCreatureActionPerformExpressionExtended_PreventExpression_00842c50.cpp'
+        TestSource = '00/84/CCreatureActionPerformExpressionExtended_PreventExpression_00842c50_test.cpp'
+        PassPattern = 'EXPR842C50_OK'
+    }
+    [pscustomobject]@{
+        Address = '00550a00'
+        Module = '_global'
+        Source = '00/55/global_Destval_00550a00.cpp'
+        TestSource = '00/55/global_Destval_00550a00_test.cpp'
+        PassPattern = 'DUALDV550A_OK'
+    }
+    [pscustomobject]@{
+        Address = '006568bb'
+        Module = '_global'
+        Source = '00/65/global_Destval_006568bb.cpp'
+        TestSource = '00/65/global_Destval_006568bb_test.cpp'
+        PassPattern = 'DUALDV6568_OK'
+    }
+    [pscustomobject]@{
+        Address = '005edcf0'
+        Module = '_global'
+        Source = '00/5e/global_Destval_005edcf0.cpp'
+        TestSource = '00/5e/global_Destval_005edcf0_test.cpp'
+        PassPattern = 'DVCHAIN_OK'
+    }
 )
 
 $requestedAddresses = @(
