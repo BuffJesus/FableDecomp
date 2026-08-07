@@ -48033,6 +48033,48 @@ $catalog = @(
         TestSource = '00/5e/global_Destval_005edcf0_test.cpp'
         PassPattern = 'DVCHAIN_OK'
     }
+    [pscustomobject]@{
+        Address = '00a14e20'
+        Module = 'CGameEventPackage'
+        Source = '00/a1/CGameEventPackage_Clear_00a14e20.cpp'
+        TestSource = '00/a1/CGameEventPackage_Clear_00a14e20_test.cpp'
+        PassPattern = '00a14e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b2990'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/7b/CEngineInternalPrimitiveBase_AddChildPrimitive_007b2990.cpp'
+        TestSource = '00/7b/CEngineInternalPrimitiveBase_AddChildPrimitive_007b2990_test.cpp'
+        PassPattern = '007b2990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084d080'
+        Module = 'CVertexBufferWin32'
+        Source = '00/84/CVertexBufferWin32_DoSizeof_0084d080.cpp'
+        TestSource = '00/84/CVertexBufferWin32_DoSizeof_0084d080_test.cpp'
+        PassPattern = '0084d080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087fe60'
+        Module = 'CCreatureAction_StabbedToDeath'
+        Source = '00/87/CCreatureActionStabbedToDeath_GetAnimationTransitionInTime_0087fe60.cpp'
+        TestSource = '00/87/CCreatureActionStabbedToDeath_GetAnimationTransitionInTime_0087fe60_test.cpp'
+        PassPattern = '0087fe60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00686830'
+        Module = 'CChunkedFileChunk'
+        Source = '00/68/CChunkedFileChunk_CChunkedFileChunk_00686830.cpp'
+        TestSource = '00/68/CChunkedFileChunk_CChunkedFileChunk_00686830_test.cpp'
+        PassPattern = '00686830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083b390'
+        Module = 'CChunkedFileChunk'
+        Source = '00/83/CChunkedFileChunk_CChunkedFileChunk_0083b390.cpp'
+        TestSource = '00/83/CChunkedFileChunk_CChunkedFileChunk_0083b390_test.cpp'
+        PassPattern = '0083b390_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
