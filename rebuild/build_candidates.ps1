@@ -48908,6 +48908,41 @@ $catalog = @(
         TestSource = '00/c3/global_operatornew_00c35b10_test.cpp'
         PassPattern = 'RB_c35b10_OK'
     }
+    [pscustomobject]@{
+        Address = '009ff8b0'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_NotifyBankSize_009ff8b0.cpp'
+        TestSource = '00/9f/CGraphicDataBank_NotifyBankSize_009ff8b0_test.cpp'
+        PassPattern = 'RB_9ff8b0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a4eae0'
+        Module = 'CRegion'
+        Source = '00/a4/CRegion_SetMiniMapRegionExitTextOffsetY_00a4eae0.cpp'
+        TestSource = '00/a4/CRegion_SetMiniMapRegionExitTextOffsetY_00a4eae0_test.cpp'
+        PassPattern = 'RB_a4eae0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c465b0'
+        Module = 'CIsThingAlive'
+        Source = '00/c4/CIsThingAlive_operator_00c465b0.cpp'
+        TestSource = '00/c4/CIsThingAlive_operator_00c465b0_test.cpp'
+        PassPattern = 'RB_c465b0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c21e90'
+        Module = 'CIsThingAlive'
+        Source = '00/c2/CIsThingAlive_operator_00c21e90.cpp'
+        TestSource = '00/c2/CIsThingAlive_operator_00c21e90_test.cpp'
+        PassPattern = 'RB_c21e90_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c21ea0'
+        Module = 'CIsThingAlive'
+        Source = '00/c2/CIsThingAlive_operator_00c21ea0.cpp'
+        TestSource = '00/c2/CIsThingAlive_operator_00c21ea0_test.cpp'
+        PassPattern = 'RB_c21ea0_OK'
+    }
 )
 
 $requestedAddresses = @(

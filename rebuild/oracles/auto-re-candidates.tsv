@@ -6885,3 +6885,8 @@ address	name	length	bytes
 005e9a60	_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>	14	8b4c24046a01e81501eeffc20400
 00c35af0	operator_new	17	8b4424088b4c240450e852d40000c20800
 00c35b10	operator_new	17	8b4424088b4c240450e8c2d40000c20800
+009ff8b0	CGraphicDataBank::NotifyBankSize	19	8b4424045081c1e0010000e8601f0000c20800
+00a4eae0	SetMiniMapRegionExitTextOffsetY	19	8b4424045083c120e823580000d94014c20400
+00c465b0	operator()	9	8b410483c104ff6028
+00c21e90	operator()	15	8b812802000081c128020000ff6024
+00c21ea0	operator()	15	8b812802000081c128020000ff6020
