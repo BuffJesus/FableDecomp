@@ -48075,6 +48075,111 @@ $catalog = @(
         TestSource = '00/83/CChunkedFileChunk_CChunkedFileChunk_0083b390_test.cpp'
         PassPattern = '0083b390_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00860500'
+        Module = 'CVillageTaskCarryCrate'
+        Source = '00/86/CVillageTaskCarryCrate_IsCreatureAssignedToTask_00860500.cpp'
+        TestSource = '00/86/CVillageTaskCarryCrate_IsCreatureAssignedToTask_00860500_test.cpp'
+        PassPattern = 'EQ_860500_OK'
+    }
+    [pscustomobject]@{
+        Address = '00860fa0'
+        Module = 'CVillageTaskSecuritySweep'
+        Source = '00/86/CVillageTaskSecuritySweep_IsCreatureAssignedToTask_00860fa0.cpp'
+        TestSource = '00/86/CVillageTaskSecuritySweep_IsCreatureAssignedToTask_00860fa0_test.cpp'
+        PassPattern = 'EQ_860fa0_OK'
+    }
+    [pscustomobject]@{
+        Address = '009c1ac0'
+        Module = '_global'
+        Source = '00/9c/global_Destval_009c1ac0.cpp'
+        TestSource = '00/9c/global_Destval_009c1ac0_test.cpp'
+        PassPattern = 'DUALDV9C1A_OK'
+    }
+    [pscustomobject]@{
+        Address = '009c2520'
+        Module = '_global'
+        Source = '00/9c/global_Destval_009c2520.cpp'
+        TestSource = '00/9c/global_Destval_009c2520_test.cpp'
+        PassPattern = 'DUALDV9C25_OK'
+    }
+    [pscustomobject]@{
+        Address = '00880200'
+        Module = 'CSpellContainerList'
+        Source = '00/88/CSpellContainerList_AddChild_00880200.cpp'
+        TestSource = '00/88/CSpellContainerList_AddChild_00880200_test.cpp'
+        PassPattern = 'ADDCHILD880_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a5d4f0'
+        Module = 'CObservable'
+        Source = '00/a5/CObservable_AddExclusiveObserver_00a5d4f0.cpp'
+        TestSource = '00/a5/CObservable_AddExclusiveObserver_00a5d4f0_test.cpp'
+        PassPattern = 'ADDOBS_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a0beb0'
+        Module = 'CMap'
+        Source = '00/a0/CMap_DrawGetSeaLevel_00a0beb0.cpp'
+        TestSource = '00/a0/CMap_DrawGetSeaLevel_00a0beb0_test.cpp'
+        PassPattern = 'SEALVL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa7740'
+        Module = 'CChunkedFileRawDataChunk'
+        Source = '00/aa/CChunkedFileRawDataChunk_IsUnknownType_00aa7740.cpp'
+        TestSource = '00/aa/CChunkedFileRawDataChunk_IsUnknownType_00aa7740_test.cpp'
+        PassPattern = 'ISUNK_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a23f30'
+        Module = 'C3DAnimationInfo'
+        Source = '00/a2/C3DAnimationInfo_IsLoading_00a23f30.cpp'
+        TestSource = '00/a2/C3DAnimationInfo_IsLoading_00a23f30_test.cpp'
+        PassPattern = 'ISLOADING_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a75be0'
+        Module = 'CNavSwitchableLeafNode'
+        Source = '00/a7/CNavSwitchableLeafNode_GetRegionID_00a75be0.cpp'
+        TestSource = '00/a7/CNavSwitchableLeafNode_GetRegionID_00a75be0_test.cpp'
+        PassPattern = 'REGIONID_OK'
+    }
+    [pscustomobject]@{
+        Address = '008f5ee0'
+        Module = 'CGameMap'
+        Source = '00/8f/CGameMap_GetMemoryFootprint_008f5ee0.cpp'
+        TestSource = '00/8f/CGameMap_GetMemoryFootprint_008f5ee0_test.cpp'
+        PassPattern = 'FOOTPRINT_OK'
+    }
+    [pscustomobject]@{
+        Address = '009c7b80'
+        Module = '_global'
+        Source = '00/9c/global_ConstructString_009c7b80.cpp'
+        TestSource = '00/9c/global_ConstructString_009c7b80_test.cpp'
+        PassPattern = 'CONSTRSTR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00890670'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_IsHeroInProjectile_00890670.cpp'
+        TestSource = '00/89/CGameScriptInterface_IsHeroInProjectile_00890670_test.cpp'
+        PassPattern = 'HEROPROJ_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088df80'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_HeroGoDigging_0088df80.cpp'
+        TestSource = '00/88/CGameScriptInterface_HeroGoDigging_0088df80_test.cpp'
+        PassPattern = 'DIGGING_OK'
+    }
+    [pscustomobject]@{
+        Address = '0091cc90'
+        Module = 'CAIStateGroup_MinionReactToNoise'
+        Source = '00/91/CAIStateGroupMinionReactToNoise_Initialise_0091cc90.cpp'
+        TestSource = '00/91/CAIStateGroupMinionReactToNoise_Initialise_0091cc90_test.cpp'
+        PassPattern = 'REACTINIT_OK'
+    }
 )
 
 $requestedAddresses = @(
