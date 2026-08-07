@@ -47816,6 +47816,111 @@ $catalog = @(
         TestSource = '00/c6/CAIBrain_GetCurrentStateGroupDebugText_00c628d0_test.cpp'
         PassPattern = 'AIDBG28D0_OK'
     }
+    [pscustomobject]@{
+        Address = '004aac20'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsKnockedOutBy_004aac20.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsKnockedOutBy_004aac20_test.cpp'
+        PassPattern = 'MSG_4aac20_OK'
+    }
+    [pscustomobject]@{
+        Address = '004aac40'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgReceivedMoney_004aac40.cpp'
+        TestSource = '00/4a/CScriptThing_MsgReceivedMoney_004aac40_test.cpp'
+        PassPattern = 'MSG_4aac40_OK'
+    }
+    [pscustomobject]@{
+        Address = '004aac60'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsPresentedWithItem_004aac60.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsPresentedWithItem_004aac60_test.cpp'
+        PassPattern = 'MSG_4aac60_OK'
+    }
+    [pscustomobject]@{
+        Address = '004aaca0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgPerformedSpecialAbility_004aaca0.cpp'
+        TestSource = '00/4a/CScriptThing_MsgPerformedSpecialAbility_004aaca0_test.cpp'
+        PassPattern = 'MSG_4aaca0_OK'
+    }
+    [pscustomobject]@{
+        Address = '004aad20'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsHitBySpecialAbilityFrom_004aad20.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsHitBySpecialAbilityFrom_004aad20_test.cpp'
+        PassPattern = 'MSG_4aad20_OK'
+    }
+    [pscustomobject]@{
+        Address = '004aad40'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsHitByAnySpecialAbility_004aad40.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsHitByAnySpecialAbility_004aad40_test.cpp'
+        PassPattern = 'MSG_4aad40_OK'
+    }
+    [pscustomobject]@{
+        Address = '004aad60'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsHitByAnyAggressiveSpecial_004aad60.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsHitByAnyAggressiveSpecial_004aad60_test.cpp'
+        PassPattern = 'MSG_4aad60_OK'
+    }
+    [pscustomobject]@{
+        Address = '004aad80'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgIsHitByAnyNonAggressive_004aad80.cpp'
+        TestSource = '00/4a/CScriptThing_MsgIsHitByAnyNonAggressive_004aad80_test.cpp'
+        PassPattern = 'MSG_4aad80_OK'
+    }
+    [pscustomobject]@{
+        Address = '004aaee0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgGetThingsKilled_004aaee0.cpp'
+        TestSource = '00/4a/CScriptThing_MsgGetThingsKilled_004aaee0_test.cpp'
+        PassPattern = 'MSG_4aaee0_OK'
+    }
+    [pscustomobject]@{
+        Address = '004aaf40'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgOnMoralityChanged_004aaf40.cpp'
+        TestSource = '00/4a/CScriptThing_MsgOnMoralityChanged_004aaf40_test.cpp'
+        PassPattern = 'MSG_4aaf40_OK'
+    }
+    [pscustomobject]@{
+        Address = '004aaf60'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgOnCutSceneAnimEvent_004aaf60.cpp'
+        TestSource = '00/4a/CScriptThing_MsgOnCutSceneAnimEvent_004aaf60_test.cpp'
+        PassPattern = 'MSG_4aaf60_OK'
+    }
+    [pscustomobject]@{
+        Address = '004aafe0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_IsBeingCarriedBy_004aafe0.cpp'
+        TestSource = '00/4a/CScriptThing_IsBeingCarriedBy_004aafe0_test.cpp'
+        PassPattern = 'MSG_4aafe0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00e566d0'
+        Module = 'CSpawnedFunc1'
+        Source = '00/e5/CSpawnedFunc1_SuspendableProcess_00e566d0.cpp'
+        TestSource = '00/e5/CSpawnedFunc1_SuspendableProcess_00e566d0_test.cpp'
+        PassPattern = 'SUSPEND66D0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00e76c80'
+        Module = 'CSpawnedFunc1'
+        Source = '00/e7/CSpawnedFunc1_SuspendableProcess_00e76c80.cpp'
+        TestSource = '00/e7/CSpawnedFunc1_SuspendableProcess_00e76c80_test.cpp'
+        PassPattern = 'SUSPEND6C80_OK'
+    }
+    [pscustomobject]@{
+        Address = '004afdb0'
+        Module = 'CEngine'
+        Source = '00/4a/CEngine_ChangeCameraAngle_004afdb0.cpp'
+        TestSource = '00/4a/CEngine_ChangeCameraAngle_004afdb0_test.cpp'
+        PassPattern = 'CAMANGLE_OK'
+    }
 )
 
 $requestedAddresses = @(
