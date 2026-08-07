@@ -119,9 +119,11 @@ of a clean PE32 at ImageBase `0x400000`.
   just the pre-`jmp` head → reports `DIFFER(37v120)`; (2) the relocated table dwords are all-zero in
   the fresh .obj so objdump elides them as `...`, dropping 4·N bytes. Verify these by RAW COFF
   extraction (read .text section bytes start→next-non-`$`-symbol, mask reloc slots) + behavior test,
-  NOT the harness. Proven example: `CKeyRedefiner::GetSubTypeForAction` 0x557CA0 (RELOCATION_MATCH
-  120/120, source in docs/REDEFINE_INPUT_SYSTEM.md). A real obj_text fix = raw-section extract, but
-  don't edit the shared harness while a background crawl is running.
+  NOT the harness. Proven: `CKeyRedefiner::GetSubTypeForAction` 0x557CA0 (RELOCATION_MATCH 120/120,
+  source in docs/REDEFINE_INPUT_SYSTEM.md) + `AreAllowedToCoexist` 0x5578A0 (147/147). USE
+  `tools/decomp_pipeline/verify_land_jumptable.py <land.json> <oracle.tsv> [--land]` — same interface
+  as verify_and_land, imports it and swaps ONLY obj_text for the raw-COFF extractor (shared harness
+  untouched, so a background crawl keeps using verify_and_land concurrently).
 
 ## Toolchain (see docs/TOOLCHAIN.md for commands)
 - Mario rig gotcha (2026-07-22): `work/mario_hero/stage_bindaxis4` is format-valid and looks
