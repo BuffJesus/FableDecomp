@@ -1,5 +1,24 @@
 # Integrity audit — exact-decomp honesty pass (2026-07-31)
 
+## Current reconciliation addendum (2026-08-02)
+
+The historical audit below is retained as evidence and is not silently
+rewritten. Current canonical metrics are 5,588 compiled/behavior-gated
+sources, 3,033 exact plus 2,389 relocation matches, 38 `DIFFER`, and 128
+`ORACLE_MISSING`; the whole-project verified functional/matching total is
+5,440/49,568, with 3,049 byte-identical functions. The focused frontend
+Python suite is 35/35.
+
+Frontend progress remains explicitly bounded: wheel and arrow input use the
+recovered retail action/event IDs and generic manager dispatch ordering at a
+callback boundary; delete confirmation is composed from retail
+`frontend.bin`/`frontend.big`/`text.big`/`fonts.big` data; and new-profile text
+uses the recovered 128-byte/127-character/low-byte/backspace contract. The
+visual adapter does not claim native manager/list ownership and does not write
+profiles or delete data. The full bootstrap is still blocked by the strict
+`CThreadedFile::Open @ 0x0098E1E0` non-relocation-byte mismatch. No parity gate,
+oracle, or asset-purity rule was weakened.
+
 Read-only fan-out audit + adversarial verification across 7 dimensions, triggered by
 "do a pass over the rest to ensure we didn't hack our way through." 37 candidate findings,
 **32 confirmed/plausible, 5 refuted**. This doc is the durable ledger + live remediation state.
@@ -97,7 +116,7 @@ task #13). Every gain verified by the parity tool; the oracles it grades against
 | 0044fe5f | CLandscapeBackgroundPatch dtor | DIFFER(70v34) | ⚠ over-capture |
 | 0044c2e2 | CHeroMarriageDef::GetSizeofClass | DIFFER(31v6) | ⚠ over-capture (GetSizeofClass fused w/ factory thunk) |
 | 0044c1f6 | CCarrySlotDef::GetSizeofClass | DIFFER(29v4) | ⚠ over-capture (29B blob for a ~4B fn) |
-| 00596cce | RefreshAvailableProfiles | NO_ORACLE | ⚠ ungraded 824B inlined-construction slice; needs oracle |
+| 00596cce | RefreshAvailableProfiles | RELOCATION_MATCH | 824B exact retail oracle; 54 relocation sites aligned; focused ownership/dispatch fixture passes |
 
 **Corrected picture:** of the 12, **5 are legitimate byte matches** (RELOC; only naming gaps), **6 are
 genuine DIFFER slices whose common root cause is boundary OVER-CAPTURE** (candidate spans MORE bytes
@@ -117,13 +136,19 @@ Each prior candidate was a `__declspec(naked)` blob that fused 2–3 functions t
 line up — the "hack our way through" pattern — now replaced by the correctly-bounded real function.
 Added an `/Os` size-opt variant to `catalog_parity_audit.py` (vtable GetSizeofClass thunks).
 
-`00596cce` RefreshAvailableProfiles (NO_ORACLE): honestly **graded** as a behavior-slice in its header
-(824-byte inlined construction behind 11 `extern` boundaries → cannot byte-match as-is; not counted as
-byte-identical). Byte-match left as documented future work (decompose the construction; same `/Oy-`(/G7) TU).
+`00596cce` RefreshAvailableProfiles is now graded as a complete retail
+reconstruction: the 824-byte oracle matches after relocation masking, with the
+inlined construction sequence and native vtable dispatches retained in the
+same `/Oy-`(/G7) VC7.1-shaped TU.
 
 **Final slice-family state (verified via parity tool):** 11/12 are byte-level matches (2 EXACT + 9 RELOC),
 1 is an honestly-graded behavior-slice. Only low-priority residual: resolve placeholder callee NAMES on
 the 5 originally-legit RELOC files (semantic, not byte fidelity).
+
+**Update 2026-08-03:** `00596cce` has since been promoted to the exact
+824-byte relocation-normalized candidate described above. The current slice
+family is therefore 12/12 at byte level; the historical 11/12 sentence above
+is retained as the audit-at-publication snapshot.
 
 ## Remediation ledger
 

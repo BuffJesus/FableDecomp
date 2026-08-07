@@ -17,15 +17,10 @@ struct FrontEndHistoryDeque_0059a985
     FrontEndHistoryDequeIterator_0059a985 end;
 };
 
-extern "C" __declspec(naked)
+extern "C"
 FrontEndHistoryDequeIterator_0059a985* __cdecl
 FrontEndHistoryDeque_EndIterator_0059a985(
-    FrontEndHistoryDeque_0059a985*)
+    FrontEndHistoryDeque_0059a985* history)
 {
-    __asm
-    {
-        mov eax, dword ptr [esp + 4]
-        add eax, 10h
-        ret
-    }
+    return &history->end;
 }

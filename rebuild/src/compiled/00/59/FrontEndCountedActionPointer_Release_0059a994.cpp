@@ -24,6 +24,10 @@ public:
 extern "C" void __cdecl
 FrontEndCountedPointerDelete_0059a994(void* allocation);
 
+// The callback at CPointerInfo + 4 is a single-inheritance member-function
+// address invoked with the action object at +8 in ECX.  VC7.1 can model that
+// dispatch, but it changes retail's exact clear/stack-cleanup instructions;
+// the naked body below remains the byte-pure ABI surface.
 __declspec(naked)
 void FrontEndCountedActionPointer_0059a994::Release()
 {

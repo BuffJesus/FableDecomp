@@ -240,6 +240,38 @@ void FABLE_FASTCALL FableBuildRender2DBatchPlan(
         vertexIndex);
 }
 
+bool FABLE_FASTCALL FableBuildRender2DBatchPlanFromNativeQueue(
+    const CRenderManager2DQueueView* manager,
+    FableRender2DPlanOutput& output)
+{
+    if (manager == 0)
+    {
+        output.count = 0;
+        output.overflow = false;
+        return false;
+    }
+
+    const fable_u8* begin =
+        reinterpret_cast<const fable_u8*>(manager->infoBegin3e94);
+    const fable_u8* end =
+        reinterpret_cast<const fable_u8*>(manager->infoEnd3e98);
+    if (end < begin || ((end - begin) % sizeof(Render2DQuickDrawInfoView)) != 0)
+    {
+        output.count = 0;
+        output.overflow = false;
+        return false;
+    }
+
+    const fable_u32 count = static_cast<fable_u32>(
+        (end - begin) / sizeof(Render2DQuickDrawInfoView));
+    FableBuildRender2DBatchPlan(
+        reinterpret_cast<const FableRender2DPlanRecord*>(
+            manager->infoBegin3e94),
+        count,
+        output);
+    return true;
+}
+
 bool FABLE_FASTCALL FableAppendUiGeneratedComponentsToRender2D(
     const FableUiGeneratedComponentVector* generated,
     const FableUiRender2DBinding* bindings,

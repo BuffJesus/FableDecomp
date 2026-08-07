@@ -1,5 +1,12 @@
 # FRONTEND / GUI data — formats, asset chain, editability
 
+> **Current status (2026-08-02):** The authored frontend checkpoint has
+> recovered retail wheel/list/click dispatch semantics, the generic manager's
+> condition/process ordering, and the source-pipeline delete-confirmation
+> frame. These are verified data/behavior boundaries, not claims that the
+> visual adapter owns native `CList`, `CManager`, or profile persistence
+> objects. The strict bootstrap gate remains active.
+
 *Empirical pass 2026-07-20 (Ghidra lock held by another agent — no new decompilation used;
 engine-behaviour claims below are data-side evidence only). Install READ-ONLY; all
 experiments staged under `work/frontend_re/`.*
@@ -120,7 +127,9 @@ bank pass, crops the right/bottom edge tiles to the 640x480 view, and builds
 four-frame and three-frame texture sheets. The runnable D3D9 checkpoint
 selects non-repeating randomized targets and alpha-blends them with the decoded
 8/8/8/2-second and 2-second durations. Its focused seam test and changing
-window-hash smoke pass.
+window-hash smoke pass. The explicit reference-size capture mode retains these
+decoded sheets but selects stable retail reference frames per screen; it does
+not alter the ordinary animated path.
 
 The next screen is decoded and live too. `UI_FRONTEND_PRESS_START_MENU`
 (#620) contains list #624 and invisible PC button #625; the button's `Action`
@@ -215,12 +224,86 @@ height 210; their authored up/down arrow bindings and Type-11 row template are
 preserved. Both list records have zero serialized children because rows are
 created from runtime profile data.
 
+Authored list arrows are input affordances, not decorative sprites. The
+retail `frontend.big` bank identifies graphic entries 379–382 as the four
+32x32 `FE_SCROLL_*_SPRITE`/hovered variants bound by these Type-38 children.
+The checkpoint maps one signed mouse-wheel event over each list viewport and
+left-clicks on those decoded 32x32 arrow children into the same recovered
+`CFrontEndList::ScrollUp/ScrollDown` planner used by keyboard/controller
+navigation. The profile and Redefine records retain their serialized
+`Scrolling=true, Wrapping=false` boundary behavior; the save list retains its
+serialized wrapping behavior. `debug_build/FableWin.pdb` resolves all 31 `ActionOrder`
+ids, and the renderer records both layers in `REDEFINE_ACTION_ENUM_NAMES` and
+`REDEFINE_ACTION_DISPLAY_TEXT`, plus the 44-row movement-expanded metadata,
+without replacing capture-backed first-page wording. That metadata is now
+rendered into a dedicated 3200x3360 diagnostic atlas and selected by the native
+D3D9 bridge for logical scrolled positions. Exact localized binding parity remains
+open because unresolved atlas records still use source-binding notation; row-hover
+strips are live, and supported native off-page capture remapping now overlays changed
+key tiles without replacing those labels.
+
+The list planner and retail mouse-wheel input classes are decompiled and
+verified. The retail `ego_r` `CMouseDX::ConvertMouseEventToInputEvent`
+(`0x00C55D20`) handles event type `10` with
+`CInputEvent::SetAsMouseWheelMovement` (`0x00B6EB00`), and the game input
+process reads that delta through the recovered `GetMouseWheelMovement`
+forwarders. The retail `CNewFrontendGameComponent::Input` (`0x0042E3EE`)
+then maps input type `0x0E` to action `0x24` for positive movement or
+`0x25` for negative movement, using the strict `+/-0.0001` threshold.
+`CList::ProcessEvent` (`0x0053673B`) consumes list events `0`/`1` as
+up/down, and `CClickable::ProcessEvent` (`0x0055AD60`) consumes
+`0x1A`/`0x1C` for left clicked/unclicked, retaining the component's pressed
+state between the two events. The current Win32 message is only the platform
+ingress; the checkpoint routes through those recovered action/event IDs,
+dispatches the arrow callback on press, clears the pressed state on release,
+and does not expand a larger delta into repeated list events. The list event
+boundary also preserves the four decompiled `CList::ProcessEvent` condition
+results, but the visual adapter supplies the normal visible-list results
+because it does not yet own a live `NUISystem::CList` object; it does not
+assign guessed meanings to the opaque guard fields.
+
+The manager handoff is also recovered: this input path calls the generic
+frontend singleton `CFrontEndManager::GetInstance @ 0x0041E5F2`, whose vtable
+slot 0 is `CManager::ProcessEvent @ 0x0055CB10`. That dispatcher prefers its
+current component; when there is no current component it snapshots the
+registered component list, evaluates each component condition, and processes
+every component whose condition passes. The checkpoint represents that exact
+condition-then-process ordering with a callback target in
+`frontend_input_dispatch.h`; it does not fabricate a native manager object.
+
 The same gate covers the delete-screen variant, the no-profiles message at
 `(320,200)`, and the Type-12 new-profile menu at `(40,150)`. The normal route
 now refreshes profile directories from the user save root and renders their
 names through the authored `ENG_ARIAL_16` atlas; names are not compiled into
-the visual checkpoint. Delete-mode, the empty-profile branch, and new-profile
-editing remain separate runtime boundaries.
+the visual checkpoint. The adapter now preserves the recovered manager action
+boundary for delete-list entry (`0xFA`), delete-row selection (`0xD7`), empty
+and normal New Profile (`0x125`), profile load (`0x124`), keyboard confirm
+(`0x126`), and keyboard cancel (`0x127`). The native
+`CreateNewProfile`/`LoadProfile`/delete-manager bodies remain the only owners
+of persistence and are not replaced by a checkpoint-side writer; until that
+manager instance is linked, the visual harness stops at those exact action
+boundaries.
+
+The delete-confirmation graph is locked by the retail layout oracle and now
+has a source-pipeline composition: `UI_FRONTEND_DELETE_PROFILE_MENU` children are title,
+spooky background, title rule, YES, NO, and explanation. The recovered text
+symbols are `TEXT_GUI_MENU_DELETE_PROFILE`,
+`TEXT_GUI_MENU_DELETE_PROFILE_PROMPT`, and
+`TEXT_GUI_MENU_DELETE_PROFILE_EXPLANATION`, at `(65,44)`, `(320,100)`, and
+`(320,240)`, with YES/NO controls at `(362,405)` and `(20,405)`. The English
+text bank resolves the exact prompt and explanation strings. The profiles
+resource sheet now carries the authored normal frame plus the confirmation
+frame from those retail definitions. Row action `0xD7` enters it; YES stops at
+native action `0xD6`, whose manager callback still owns deletion, refresh, and
+persistence. No checkpoint-side delete writer has been added.
+
+New-profile text input is likewise source-backed: retail
+`CFrontendGameComponent::ProcessTextInputCharacter` (`0x004944E0`) uses a
+128-byte buffer, accepts the low byte of each input character while the
+logical length is below 127, and handles character `8` as backspace. The
+checkpoint now uses that exact buffer/limit/backspace contract; the native
+`CVirtualKeyboard::Confirm` and `CFrontEndManager::Action` callbacks still own
+validation and profile creation.
 
 ### Credits screen (`UI_FRONTEND_CREDITS_MENU`)
 
@@ -311,11 +394,31 @@ pixel-level smoke requires a visible selection delta and a distinct hash after
 scrolling. Enter on action `0x11` remains intentionally disabled until the
 main-game/world-load ownership boundary is connected.
 
+The 1664-wide component save cell deliberately leaves the four row names
+transparent. The live renderer submits `AutoSave` and `Manual - Save1..3`
+through the recovered ENG_ARIAL_16 glyph atlas, centered at `(134,90 + row*30)`;
+the 1024-wide fallback sheet retains the baked labels for compatibility.
+The same component cell leaves the File Information header and active-profile
+line transparent; those strings are submitted live from the ENG_ARIAL_24 and
+ENG_ARIAL_16 atlases, while native save-description metadata remains deferred.
+The authored 4x4 `HUD_TEXTBOX_BACK_FE` source is likewise retained in the
+component-atlas tail and emitted live at `(0,292)` with its 640x248 scale.
+The `UI_TABLE_TEST_H_T_FE` 8x8 rule is likewise retained in the tail and emitted
+live as a 160x1 line at `(0,404)`.
+The `UI_TITLE_AREA` frame uses the corresponding TL/TR corner sprites in the
+same atlas tail and is emitted live as six quads at design `(0,35)`; the
+“Saved Games” title is emitted from the live `ENG_ARIAL_24` glyph path at the
+same title origin.
+
 Those gates prove routing, decoded structural geometry, and visible state
-change; they do not prove final screenshot parity. User review of the current
-Saved Games/Redefine presentation remains negative. A same-state retail
-capture and alpha-aware diff is required before changing or signing off text
-scale/baselines, highlight placement, metadata composition, or the background.
+change; they do not prove final screenshot parity. The latest state-matched
+pass corrected the Redefine left/right table draw order and alpha-clipped the
+Saved Games minimap to the decoded ring footprint, removing the square source
+halo. Live detail text also has a bounded dark halo, but its exact font
+weight/filtering remains open because the full MaxFilter equivalent exceeds the
+fixed Render2D queue. Same-state retail captures and alpha-aware diffs remain
+required before signing off slider placement, text rendering, metadata
+composition, or presentation ownership.
 
 `AddRegionAndTimeInfo @ 0x00597228` supplies the corresponding row metadata.
 It always appends one synchronized region-name, minimap-graphic, and
@@ -353,7 +456,7 @@ their retail dispatch paths are recovered.
 | Press-start and main menu | Retail definitions/assets; all 14 retail/BuffJesus frames recompose pixel-identically | Live component adapters; not whole-function byte parity |
 | Options and detail frames | All eight frames recompose pixel-identically; Enter/mouse routes and Cancel/Apply/default behavior are smoke-gated | Several rows and controls still originate in component atlases |
 | Main/Options list state | Exact 0x24-byte `CUIState` layout, decoded state maps, wrapping, and old/new state changes | `InitialiseOffsets` is exact 57/57, `ScrollUp` is 834/834, and `ScrollDown` is 977/977; both scroll bodies are complete-symbol relocation matches |
-| Manager transitions/profile/save loading | Constructor/singleton/init layout, stack ownership, used-key lookup, transition fields, menu/title replacement, scoreboard profile round-trip, virtual-keyboard allocation, profile creation, component creation, button composition, press-start, load, draw, frame update, edit-box recursion, slider reset, delete-list paths, and the complete saved-game row-construction contract are recovered | Twenty-nine manager bodies match complete retail symbols; the large saved-game refresh body is decomp-backed while `RefreshAvailableProfiles` remains behavior-only |
+| Manager transitions/profile/save loading | Constructor/singleton/init layout, stack ownership, used-key lookup, transition fields, menu/title replacement, scoreboard profile round-trip, virtual-keyboard allocation, profile creation, component creation, button composition, profile-list refresh, press-start, load, draw, frame update, edit-box recursion, slider reset, delete-list paths, and the complete saved-game row-construction contract are recovered | Thirty manager bodies match complete retail symbols; the large saved-game refresh body and `RefreshAvailableProfiles` are now exact relocation-normalized reconstructions |
 | Frontend sound | Exact criteria mapping and byte-identical RIFF resources from `Frontend.lug` | Playback is a Win32 resource bridge, not the recovered retail sound manager |
 | Controller/full actions | Keyboard/mouse plus WinMM navigation, retail-timed held-direction repeat, detail-row focus/Left/Right, accept, and back cover the implemented initial routes | Remaining main-menu actions are incomplete |
 
@@ -417,10 +520,10 @@ The shared title rule exposed the same local/final distinction. Options,
 Gameplay, Audio, Video, and Redefine serialize their title text child at
 `(65,44)` with left alignment, but treating that child state as the final
 surface coordinate left every title visibly stranded at the rule's left end.
-The checkpoint now preserves y=44 and the decoded font/outline while resolving
-all five final title anchors to the 640-pixel rule center x=320. The Options
-submenu and every detail frame call the same `_draw_title` path, and a focused
-test locks `(320,44)` as the final header-text coordinate. The table rule
+ The checkpoint now preserves the decoded left origin `(65,44)` and the decoded
+ font/outline. The Options submenu and every detail frame call the same
+ `_draw_title` path, and a focused test locks the left-aligned header origin.
+ The table rule
 itself is now live: its three owned definition-122 children are adapted into
 clipped/scaled Render2D quads, while a retained baked oracle proves the
 no-rule sheet plus those components recompose pixel-identically. Header text
@@ -486,21 +589,33 @@ list #217 with 31-action `ActionMap`/`ActionOrder`, 26-pixel row spacing, and
 from the 123 records in `FABLE_PC_CONTROL_SCHEME_GDD_WASD`.
 Action 60 is not one displayed row: `CRedefinerList::RefreshScriptThings
 @ 0x00556A40` expands its movement container into four `CKeyRedefiner`
-children. `GetMovementActionText @ 0x00558170` maps subtypes 10–13 to Move
-Forward, Move Back, Move Left, and Move Right, while the WASD scheme supplies
-W, S, A, and D respectively. The first complete nine-row viewport is therefore
-those four movement rows followed by Attack, Block, Flourish, Run, and Toggle
-First Person Targeting. Interact and the unsheathe actions are below that
+children. The retail reference surface orders them Move Forward, Move Left,
+Move Backward, and Move Right, with W, A, S, and D respectively. The first
+complete nine-row viewport is therefore those four movement rows followed by
+Attack, Block, Flourish, Run, and Toggle First-Person Targeting. Interact and
+the unsheathe actions are below that
 viewport, not substitutes for the generated movement children.
+The initial non-wrapping viewport suppresses the UpArrow at list offset zero;
+the DownArrow remains visible. The undefined-control warning is likewise
+conditional and is absent when the visible nine rows have defined bindings.
+The renderer now exposes an opt-in `materialized_row_offset` path for those
+expanded pages. It emits the recovered `TEXT_GUI_ACTION_*` labels, the raw
+WASD control records, and the serialized up/down arrow boundary; offset zero
+continues to use the capture-backed nine-row surface. This is an offline
+visualization and source-validation path while the native D3D9 text/quad
+materialization remains open.
 The two reset helpers are also decoded rather than decorative:
 `UI_RESET_WASD` is action 311 at local `(0,385)` and dispatches
 `ResetAssignedInputsWASD @ 0x00408820`; `UI_RESET` is action 284 at
 `(320,385)` and dispatches `ResetAssignedInputs @ 0x004085F0`. The checkpoint
-keeps the resulting W/S/A/D or Up/Down/Left/Right values inside the same
+keeps the resulting W/A/S/D or Up/Left/Down/Right values inside the same
 Apply/Cancel transaction as manual key capture. Their complete 320x64 retail
 ON tables and centered `ENG_ARIAL_24` labels are packed into the unused tail
 of the Redefine hover atlas and replace the matching OFF button on pointer
 entry.
+The initial detail transaction has no pending changes, so the baked Apply
+label is the retail disabled gray; the live/hovered Apply overlay retains the
+enabled white label when the transaction can be accepted.
 The generated row geometry is now materialized directly from the component
  records: list origin `(40,115)`, table offset `(-32,-2)`, right-table offset
  `(368,-3)`, and action/key text offsets `(0,3)`/`(380,3)`. Both dynamic text
@@ -511,17 +626,26 @@ The generated row geometry is now materialized directly from the component
  its alignment branch changes only x. There is no separate runtime vertical
  centering adjustment, scale never modifies the origin, and
  `CEnginePrimitive2DText` stores y unchanged. Consequently the serialized
- `+3` y origin plus the retail `ENG_ARIAL_12` glyph offsets is the key/action
- baseline oracle, rather than a visually estimated center of either table
- primitive.
+`+3` y origin plus the retail `ENG_ARIAL_12` glyph offsets is the key/action
+baseline oracle, rather than a visually estimated center of either table
+primitive. The action-name atlas is emitted at its native geometry and white
+text colour; the prior shared two-thirds static-font scale produced visibly
+undersized dark labels against the supplied 1024x768 retail capture. Key
+values remain the live control-tile atlas path, using native `ENG_ARIAL_12`
+geometry and white text (with the capture prompt retaining its retail yellow).
+The profile-qualified detail title uses the separate `ENG_ARIAL_24` atlas at
+the authored two-thirds destination scale; native atlas sampling alone made
+the loaded `<profile> - <title>` header visibly oversized.
 The two 22-byte `CKeyRedefiner::OnHovered` routines at `0x00557860` and
 `0x00557880` both call `CClickable::OnHovered` and then dispatch virtual slot
 `0xC0` with state 3 or 4. The checkpoint mirrors those entry/exit states: the
 full 588-pixel compiled row region selects the retail ON slots under the
 pointer and restores OFF when the pointer leaves.
 `CONFIG_OPTIONS_DEFAULTS_DEF_INSTANCE` seeds Video at 1024x768, AA off, and
-1/3 detail. Recovered profile methods seed Gameplay at sensitivity 0.5 and
-opacity 1.0, and Audio at music 0.6, sound 0.8, and dialogue 0.9.
+1/3 detail. The resolution text uses the retail display-mode format
+`WIDTHXHEIGHTX32` (the checkpoint default is `1024X768X32`). Recovered profile
+methods seed Gameplay at sensitivity 0.5 and opacity 1.0, and Audio at music
+0.6, sound 0.8, and dialogue 0.9.
 
 The generic manager, rather than `CFrontEndManager::Action`, dispatches the
 control actions. Text/numeric setters apply the in-memory profile immediately;

@@ -55,6 +55,36 @@ int main()
         return 1;
     }
 
+    Render2DQuickDrawInfoView nativeRecord = {};
+    nativeRecord.window04.left = 10.0f;
+    nativeRecord.window04.top = 20.0f;
+    nativeRecord.window04.right = 630.0f;
+    nativeRecord.window04.bottom = 460.0f;
+    nativeRecord.payload20.renderState20 = 1;
+    CRenderManager2DQueueView nativeQueue = {};
+    nativeQueue.infoBegin3e94 = &nativeRecord;
+    nativeQueue.infoEnd3e98 = &nativeRecord + 1;
+    nativeQueue.infoCapacity3e9c = &nativeRecord + 1;
+    if (
+        !FableBuildRender2DBatchPlanFromNativeQueue(&nativeQueue, output) ||
+        output.count != 2 ||
+        !IsEvent(
+            events[0],
+            FABLE_RENDER2D_PLAN_SET_WINDOW,
+            0,
+            0,
+            0) ||
+        !IsEvent(
+            events[1],
+            FABLE_RENDER2D_PLAN_FLUSH,
+            4,
+            1,
+            0))
+    {
+        printf("FABLETLC_RENDER2D_BATCH_PLAN FAIL code=12\n");
+        return 12;
+    }
+
     FableRender2DPlanRecord stable[3];
     for (fable_u32 index = 0; index < 3; ++index)
     {

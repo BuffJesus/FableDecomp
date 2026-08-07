@@ -10,6 +10,7 @@
 #include "fable_texture_lifecycle.h"
 #include "render2d_batch_plan.h"
 #include "render2d_draw_list_adapter.h"
+#include "frontend_glyph_metrics.h"
 #include "frontend_profile_glyph_metrics.h"
 
 #include <string.h>
@@ -166,42 +167,129 @@ namespace
     const FableD3DDword kD3DClearTarget = 1;
     const FableD3DDword kD3DClearZBuffer = 2;
     const FableD3DDword kD3DFvfXyzRhwColourTexture1 = 0x1C4;
-    const fable_i32 kMainMenuRowYOffsets[7] = {
-        0, 30, 60, 120, 180, 210, 240
+    const fable_i32 kMainMenuRowYOffsets[
+        FableFrontendMainMenuVisibleRows] = {
+        0, 30, 60, 180, 210, 240
     };
-    // audit #4: bound to the shared source of truth (detail_screen_tables.h)
-    // so the render geometry cannot drift from the input hit-test side.
-    const fable_u32 (&kDetailRowCounts)[3] =
-        fable_detail_tables::kRowCounts;
-    const fable_u32 (&kDetailValueCounts)[3][10] =
-        fable_detail_tables::kValueCounts;
-    const fable_i32 (&kDetailRowY)[3][10] =
-        fable_detail_tables::kRowY;
+    const fable_u32 kMainMenuAtlasFrames[
+        FableFrontendMainMenuVisibleRows] = {
+        0, 1, 2, 4, 5, 6
+    };
+
+    fable_u32 MainMenuRetailChild(fable_u32 visibleRow)
+    {
+        return visibleRow >= 3 ? visibleRow + 1 : visibleRow;
+    }
+    // Detail rendering consumes the same decoded screen records as input.
+    const fable_detail_tables::DetailScreenDefinition (&kDetailScreens)[3] =
+        fable_detail_tables::kScreens;
     // Detail-screen hover overlay atlas origins (mirror of the Python
     // DETAIL_*_ATLAS_* constants in tools/render_fable_frontend_subscreens.py).
     // All in the OPTIONS component-atlas free region x>=1016; keep in lock-step
     // with the bake or the overlays sample the wrong pixels.
-    const fable_i32 kDetailHoverAtlasOriginX = 1024;
-    const fable_i32 kDetailHoverAtlasOriginY = 2400;
-    const fable_i32 kDetailArrowHoverTileWidth = 200;
-    const fable_i32 kDetailArrowHoverTileHeight = 30;
-    const fable_i32 kDetailArrowHoverLeftAtlasY = 2400;
-    const fable_i32 kDetailArrowHoverRightAtlasY = 2430;
-    const fable_i32 kDetailFooterHoverTileWidth = 256;
-    const fable_i32 kDetailFooterHoverTileHeight = 64;
-    // Per-button atlas Y and design top-left (== glyph top-left, parent_y-16).
-    const fable_i32 kDetailFooterHoverCancelAtlasY = 2464;
-    const fable_i32 kDetailFooterHoverDefaultsAtlasY = 2528;
-    const fable_i32 kDetailFooterHoverApplyAtlasY = 2592;
-    const fable_i32 kDetailFooterHoverCancelDesignX = 20;
-    const fable_i32 kDetailFooterHoverCancelDesignY = 424;
-    const fable_i32 kDetailFooterHoverDefaultsDesignX = 192;
-    const fable_i32 kDetailFooterHoverDefaultsDesignY = 384;
-    const fable_i32 kDetailFooterHoverApplyDesignX = 362;
-    const fable_i32 kDetailFooterHoverApplyDesignY = 424;
-    const fable_u32 kRedefineKeyValueCount = 55;
-    const fable_u32 (&kRedefineDefaultKeyValues)[9] =
-        fable_detail_tables::kRedefineDefaults;
+    const fable_i32 kDetailHoverAtlasOriginX =
+        fable_detail_tables::kHoverAtlasOriginX;
+    const fable_u32 kRedefineKeyValueCount = 69;
+    const fable_u32 kRedefineExpandedRowCount = 44;
+    const fable_u32 (&kRedefineDefaultKeyValues)[44] =
+        fable_detail_tables::kRedefineExpandedDefaults;
+    const fable_u32 (&kRedefineUnresolvedKeyValue) =
+        fable_detail_tables::kRedefineUnresolved;
+    // Display labels for the compact key-value atlas indices.  Redefine
+    // rows submit these through the recovered ENG_ARIAL_12 glyph path; the
+    // numeric indices remain the capture/persistence ABI.
+    const char* const kRedefineKeyValueLabels[69] = {
+        "W / A / S / D",
+        "LEFT MOUSE BUTTON",
+        "MIDDLE MOUSE BUTTON",
+        "RIGHT MOUSE BUTTON",
+        "TAB", "Q", "E", "PRESS CONTROL", "UNDEFINED",
+        "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+        "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
+        "U", "V", "W", "X", "Y", "Z",
+        "SPACE", "LEFT SHIFT", "Left Ctrl", "Left Alt", "Enter",
+        "Backspace", "Up", "Down", "Left", "Right",
+        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+        "CAPS LOCK",
+        "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9",
+        "F10", "F11", "F12", "PRNT SCRN"
+    };
+    // Gamepad-redefine patch (docs/GAMEPAD_REDEFINE_PATCH.md): Unreal-Engine
+    // key names for the controller binding screen (detail screen 5).  These are
+    // the DISPLAY layer; the stored record keeps the engine's native
+    // 0x37/0x38 (button) and 0x3C (analog, subtypes 0x0A-0x0D) types.  Index
+    // order matches kGamepadKeyValues so a captured input code maps to a label.
+    const char* const kGamepadKeyValueLabels[24] = {
+        "Face Button Bottom", "Face Button Right",
+        "Face Button Left", "Face Button Top",
+        "D-Pad Up", "D-Pad Down", "D-Pad Left", "D-Pad Right",
+        "Left Shoulder", "Right Shoulder",
+        "Left Trigger", "Right Trigger",
+        "Left Thumbstick Button", "Right Thumbstick Button",
+        "Special Left", "Special Right",
+        "Left Stick Up", "Left Stick Down",
+        "Left Stick Left", "Left Stick Right",
+        "Right Stick Up", "Right Stick Down",
+        "Right Stick Left", "Right Stick Right"
+    };
+    // XInput bitmask / axis id per label (see design doc table).  The four
+    // Left-Stick directions carry the engine analog subtypes 0x0A-0x0D so the
+    // capture path can write a native 0x3C record; buttons use their XInput bit.
+    const fable_u32 kGamepadKeyValues[24] = {
+        0x1000, 0x2000, 0x4000, 0x8000,          // A B X Y
+        0x0001, 0x0002, 0x0004, 0x0008,          // D-Pad U D L R
+        0x0100, 0x0200,                          // LB RB
+        0x00010000, 0x00020000,                  // LT RT (axis, high bits)
+        0x0040, 0x0080,                          // L3 R3
+        0x0020, 0x0010,                          // Back Start
+        0x0000000A, 0x0000000B, 0x0000000C, 0x0000000D,  // LS U D L R (0x3C subtypes)
+        0x0004000A, 0x0004000B, 0x0004000C, 0x0004000D   // RS U D L R
+    };
+    // Saved-game slot names use the same ENG_ARIAL_16 runtime glyph path as
+    // profile names.  The component sheet deliberately leaves these four
+    // labels transparent so the active save list can submit them live.
+    const char* const kVisualSaveRowNames[4] = {
+        "AutoSave",
+        "Save 1",
+        "Save 2",
+        "Save 3"
+    };
+    const fable_i32 kSaveBottomBackdropAtlasX = 1024;
+    const fable_i32 kSaveBottomBackdropAtlasY = 2960;
+    const fable_i32 kSaveTextBottomAtlasX = 1032;
+    const fable_i32 kSaveTextBottomAtlasY = 2960;
+    const fable_i32 kSaveTextAreaMiddleAtlasX = 1040;
+    const fable_i32 kSaveTextAreaBlAtlasX = 1048;
+    const fable_i32 kSaveTextAreaBrAtlasX = 1176;
+    const fable_i32 kSaveTextAreaAtlasY = 2960;
+    const fable_i32 kSaveTitleAreaTlAtlasX = 1304;
+    const fable_i32 kSaveTitleAreaTrAtlasX = 1432;
+    const fable_i32 kFableRedefineGlyphAtlasOriginX = 1536;
+    const fable_i32 kFableRedefineGlyphAtlasOriginY = 3328;
+    const fable_u32 kRedefineScrollPageAtlasWidth = 3200;
+    const fable_u32 kRedefineScrollPageAtlasHeight = 3360;
+    const fable_u32 kRedefineScrollPageWidth = 640;
+    const fable_u32 kRedefineScrollPageHeight = 480;
+    const fable_u32 kRedefineScrollPageColumns = 5;
+    const fable_u32 kRedefineScrollArrowDesignX = 304;
+    const fable_u32 kRedefineScrollArrowDesignY = 350;
+    const fable_u32 kRedefineScrollArrowWidth = 32;
+    const fable_u32 kRedefineScrollArrowHeight = 32;
+    // The first logical action expands to four movement rows in the retail
+    // viewport.  These are the recovered materialized-row offsets for the
+    // 31 logical ActionOrder children.
+    const fable_u32 kRedefineScrollPageOffsets[31] = {
+        0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+        19, 20, 21, 22, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 43
+    };
+
+    fable_u32 RedefineScrollPageOffset(fable_u32 selection)
+    {
+        if (selection >= 31)
+            return 35;
+        const fable_u32 offset = kRedefineScrollPageOffsets[selection];
+        return offset > 35 ? 35 : offset;
+    }
 
     FableD3D9* g_Direct3D = 0;
     FableD3DDevice9* g_Device = 0;
@@ -215,6 +303,7 @@ namespace
     FableD3DTexture9* g_CoastalSunbeamTexture = 0;
     FableD3DTexture9* g_OptionsTexture = 0;
     FableD3DTexture9* g_HelpersTexture = 0;
+    FableD3DTexture9* g_RedefineScrollPagesTexture = 0;
     FableD3DTexture9* g_AboutTexture = 0;
     FableD3DTexture9* g_CreditsTexture = 0;
     FableD3DTexture9* g_ProfilesTexture = 0;
@@ -274,6 +363,8 @@ namespace
     fable_i32 g_MenuHeight = 0;
     fable_i32 g_OptionsWidth = 0;
     fable_i32 g_OptionsHeight = 0;
+    fable_i32 g_RedefineScrollPagesWidth = 0;
+    fable_i32 g_RedefineScrollPagesHeight = 0;
     fable_i32 g_TitleSegmentWidth = 0;
     fable_i32 g_TitleSegmentHeight = 0;
     FableD3DDword g_AnimationStartTick = 0;
@@ -291,13 +382,15 @@ namespace
     fable_u32 g_DetailOptionValues[3][10] = {};
     fable_u32 g_RedefineHover = 0;
     fable_u32 g_RedefineResetHover = 0;
+    fable_u32 g_RedefineListSelection = 0;
     // Detail-screen footer/arrow hover render state (mirrors the checkpoint's
     // g_VisualDetail*Hover).  Button: 0=none,1=Cancel,2=Defaults,3=Apply.
     fable_u32 g_DetailButtonHover = 0;
+    bool g_DetailApplyEnabled = false;
     fable_u32 g_DetailArrowHoverRow = 0;
     fable_u32 g_DetailArrowHoverSide = 0;
     fable_u32 g_RedefineSelection = 0;
-    fable_u32 g_RedefineKeyValues[9] = {};
+    fable_u32 g_RedefineKeyValues[44] = {};
     fable_u32 g_QuitHover = 0;
     bool g_MainMenuActive = false;
     bool g_OptionsMenuActive = false;
@@ -305,11 +398,15 @@ namespace
     bool g_AboutMenuActive = false;
     bool g_CreditsMenuActive = false;
     bool g_ProfilesMenuActive = false;
+    fable_u32 g_ProfilesMode = FableFrontendProfilesNormal;
     const char* g_ProfileNames[32] = {};
     fable_u32 g_ProfileNameCount = 0;
     fable_u32 g_ProfileSelection = 0;
+    char g_ActiveProfileName[64] = {};
+    char g_ProfileEditText[128] = {};
     bool g_OptionsBackHovered = false;
     bool g_QuitPromptActive = false;
+    bool g_VisualFrontendAnimationStatic = false;
     bool g_Presented = false;
 
     bool Failed(FableD3DResult result)
@@ -616,6 +713,30 @@ namespace
         records[recordCount++] = first;
     }
 
+    int ProfileGlyphTextAdvance(const char* text)
+    {
+        if (text == 0)
+            return 0;
+        int advance = 0;
+        for (const unsigned char* cursor =
+                 reinterpret_cast<const unsigned char*>(text);
+             *cursor != 0;
+             ++cursor)
+        {
+            const int code = static_cast<int>(*cursor);
+            if (
+                code < kFableProfileGlyphFirst ||
+                code >= kFableProfileGlyphFirst +
+                    kFableProfileGlyphCount)
+            {
+                continue;
+            }
+            advance += kFableProfileGlyphMetrics[
+                code - kFableProfileGlyphFirst].advance;
+        }
+        return advance;
+    }
+
     void AppendProfileNameText(
         FableVisualVertex* vertices,
         fable_u32& vertexCount,
@@ -637,23 +758,7 @@ namespace
         {
             return;
         }
-        int advance = 0;
-        for (const unsigned char* cursor =
-                 reinterpret_cast<const unsigned char*>(text);
-             *cursor != 0;
-             ++cursor)
-        {
-            const int code = static_cast<int>(*cursor);
-            if (
-                code < kFableProfileGlyphFirst ||
-                code >= kFableProfileGlyphFirst +
-                    kFableProfileGlyphCount)
-            {
-                continue;
-            }
-            advance += kFableProfileGlyphMetrics[
-                code - kFableProfileGlyphFirst].advance;
-        }
+        const int advance = ProfileGlyphTextAdvance(text);
         float pen = centerX - static_cast<float>(advance) * 0.5f;
         for (const unsigned char* cursor =
                  reinterpret_cast<const unsigned char*>(text);
@@ -671,6 +776,15 @@ namespace
             const FableProfileGlyphMetric& glyph =
                 kFableProfileGlyphMetrics[
                     code - kFableProfileGlyphFirst];
+            if (code == 0x20)
+            {
+                // Space carries an advance but no visible bitmap; its packed
+                // atlas cell abuts the '!' glyph, so drawing the quad bleeds a
+                // thin vertical bar (seen between "Manual" / "Save" on the
+                // Saved Games rows).  Advance the pen only.
+                pen += static_cast<float>(glyph.advance);
+                continue;
+            }
             const float glyphLeft =
                 pen + static_cast<float>(glyph.xOffset);
             AppendVisualQuad(
@@ -702,6 +816,679 @@ namespace
         }
     }
 
+    float DetailTitleGlyphTextAdvance(
+        const char* text,
+        float glyphScale,
+        bool redefineFont = false)
+    {
+        if (text == 0)
+            return 0;
+        float advance = 0.0f;
+        for (const unsigned char* cursor =
+                 reinterpret_cast<const unsigned char*>(text);
+             *cursor != 0;
+             ++cursor)
+        {
+            const int code = static_cast<int>(*cursor);
+            if (
+                code < kFableDetailTitleGlyphFirst ||
+                code >= kFableDetailTitleGlyphFirst +
+                    kFableDetailTitleGlyphCount)
+            {
+                continue;
+            }
+            const int metricIndex = code - kFableDetailTitleGlyphFirst;
+            const int glyphAdvance = redefineFont
+                ? static_cast<int>(kFableGlyphMetrics[metricIndex].advance)
+                : static_cast<int>(
+                    kFableDetailTitleGlyphMetrics[metricIndex].advance);
+            advance += static_cast<float>(glyphAdvance) * glyphScale;
+        }
+        return advance;
+    }
+
+    void AppendDetailTitleGlyphText(
+        FableVisualVertex* vertices,
+        fable_u32& vertexCount,
+        FableRender2DPlanRecord* records,
+        fable_u32& recordCount,
+        const char* text,
+        float centerX,
+        float top,
+        float originX,
+        float originY,
+        float scaleX,
+        float scaleY,
+        float glyphScale,
+        bool centered,
+        fable_u32 diffuseColour,
+        bool outline,
+        bool redefineFont = false)
+    {
+        if (
+            text == 0 ||
+            g_OptionsTexture == 0 ||
+            g_OptionsWidth <= 0 ||
+            g_OptionsHeight <= 0)
+        {
+            return;
+        }
+        const float advance = DetailTitleGlyphTextAdvance(
+            text,
+            glyphScale,
+            redefineFont);
+        const int glyphAtlasOriginX = redefineFont
+            ? kFableRedefineGlyphAtlasOriginX
+            : kFableDetailTitleGlyphAtlasOriginX;
+        const int glyphAtlasOriginY = redefineFont
+            ? kFableRedefineGlyphAtlasOriginY
+            : kFableDetailTitleGlyphAtlasOriginY;
+        const int glyphFirst = redefineFont
+            ? kFableGlyphFirst
+            : kFableDetailTitleGlyphFirst;
+        const int glyphCount = redefineFont
+            ? kFableGlyphCount
+            : kFableDetailTitleGlyphCount;
+#define kFableDetailTitleGlyphAtlasOriginX glyphAtlasOriginX
+#define kFableDetailTitleGlyphAtlasOriginY glyphAtlasOriginY
+        float pen = centered ? centerX - advance * 0.5f : centerX;
+        for (const unsigned char* cursor =
+                 reinterpret_cast<const unsigned char*>(text);
+             *cursor != 0;
+             ++cursor)
+        {
+            const int code = static_cast<int>(*cursor);
+            if (
+                code < glyphFirst ||
+                code >= glyphFirst + glyphCount)
+            {
+                continue;
+            }
+            const int metricIndex = code - glyphFirst;
+            FableProfileGlyphMetric glyph;
+            if (redefineFont)
+            {
+                glyph.atlasX = kFableGlyphMetrics[metricIndex].atlasX;
+                glyph.atlasY = kFableGlyphMetrics[metricIndex].atlasY;
+                glyph.width = kFableGlyphMetrics[metricIndex].width;
+                glyph.height = kFableGlyphMetrics[metricIndex].height;
+                glyph.xOffset = kFableGlyphMetrics[metricIndex].xOffset;
+                glyph.advance = kFableGlyphMetrics[metricIndex].advance;
+            }
+            else
+            {
+                glyph = kFableDetailTitleGlyphMetrics[metricIndex];
+            }
+            if (code == 0x20)
+            {
+                // Space has no visible bitmap; skip the quad (and its outline)
+                // so the packed atlas neighbour never bleeds in.  Advance only.
+                pen += static_cast<float>(glyph.advance) * glyphScale;
+                continue;
+            }
+            const float glyphLeft =
+                pen + static_cast<float>(glyph.xOffset) * glyphScale;
+            if (outline && false)
+            {
+                // The retail static-font compositor applies a one-pixel
+                // MaxFilter outline before the glyph is submitted.  The live
+                // component path samples the raw atlas, so reproduce that
+                // operation with the eight neighbouring black glyph quads.
+                const float outlineStepX = 1.0f;
+                const float outlineStepY = 1.0f;
+                const fable_u32 outlineColour = 0xFF000000u;
+                AppendVisualQuad(
+                    vertices, vertexCount, records, recordCount,
+                    g_OptionsTexture,
+                    originX + (glyphLeft - outlineStepX) * scaleX,
+                    originY + (top - outlineStepY) * scaleY,
+                    originX + (glyphLeft +
+                        static_cast<float>(glyph.width) * glyphScale -
+                        outlineStepX) * scaleX,
+                    originY + (top +
+                        static_cast<float>(glyph.height) * glyphScale -
+                        outlineStepY) * scaleY,
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY) /
+                        static_cast<float>(g_OptionsHeight),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX +
+                        glyph.width) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY +
+                        glyph.height) /
+                        static_cast<float>(g_OptionsHeight),
+                    outlineColour);
+                AppendVisualQuad(
+                    vertices, vertexCount, records, recordCount,
+                    g_OptionsTexture,
+                    originX + (glyphLeft - outlineStepX) * scaleX,
+                    originY + top * scaleY,
+                    originX + (glyphLeft +
+                        static_cast<float>(glyph.width) * glyphScale -
+                        outlineStepX) * scaleX,
+                    originY + (top +
+                        static_cast<float>(glyph.height) * glyphScale) *
+                        scaleY,
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY) /
+                        static_cast<float>(g_OptionsHeight),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX +
+                        glyph.width) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY +
+                        glyph.height) /
+                        static_cast<float>(g_OptionsHeight),
+                    outlineColour);
+                AppendVisualQuad(
+                    vertices, vertexCount, records, recordCount,
+                    g_OptionsTexture,
+                    originX + (glyphLeft - outlineStepX) * scaleX,
+                    originY + (top + outlineStepY) * scaleY,
+                    originX + (glyphLeft +
+                        static_cast<float>(glyph.width) * glyphScale -
+                        outlineStepX) * scaleX,
+                    originY + (top +
+                        static_cast<float>(glyph.height) * glyphScale +
+                        outlineStepY) * scaleY,
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY) /
+                        static_cast<float>(g_OptionsHeight),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX +
+                        glyph.width) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY +
+                        glyph.height) /
+                        static_cast<float>(g_OptionsHeight),
+                    outlineColour);
+                AppendVisualQuad(
+                    vertices, vertexCount, records, recordCount,
+                    g_OptionsTexture,
+                    originX + glyphLeft * scaleX,
+                    originY + (top - outlineStepY) * scaleY,
+                    originX + (glyphLeft +
+                        static_cast<float>(glyph.width) * glyphScale) *
+                        scaleX,
+                    originY + (top +
+                        static_cast<float>(glyph.height) * glyphScale -
+                        outlineStepY) * scaleY,
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY) /
+                        static_cast<float>(g_OptionsHeight),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX +
+                        glyph.width) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY +
+                        glyph.height) /
+                        static_cast<float>(g_OptionsHeight),
+                    outlineColour);
+                AppendVisualQuad(
+                    vertices, vertexCount, records, recordCount,
+                    g_OptionsTexture,
+                    originX + glyphLeft * scaleX,
+                    originY + (top + outlineStepY) * scaleY,
+                    originX + (glyphLeft +
+                        static_cast<float>(glyph.width) * glyphScale) *
+                        scaleX,
+                    originY + (top +
+                        static_cast<float>(glyph.height) * glyphScale +
+                        outlineStepY) * scaleY,
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY) /
+                        static_cast<float>(g_OptionsHeight),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX +
+                        glyph.width) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY +
+                        glyph.height) /
+                        static_cast<float>(g_OptionsHeight),
+                    outlineColour);
+                AppendVisualQuad(
+                    vertices, vertexCount, records, recordCount,
+                    g_OptionsTexture,
+                    originX + (glyphLeft + outlineStepX) * scaleX,
+                    originY + (top - outlineStepY) * scaleY,
+                    originX + (glyphLeft +
+                        static_cast<float>(glyph.width) * glyphScale +
+                        outlineStepX) * scaleX,
+                    originY + (top +
+                        static_cast<float>(glyph.height) * glyphScale -
+                        outlineStepY) * scaleY,
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY) /
+                        static_cast<float>(g_OptionsHeight),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX +
+                        glyph.width) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY +
+                        glyph.height) /
+                        static_cast<float>(g_OptionsHeight),
+                    outlineColour);
+                AppendVisualQuad(
+                    vertices, vertexCount, records, recordCount,
+                    g_OptionsTexture,
+                    originX + (glyphLeft + outlineStepX) * scaleX,
+                    originY + top * scaleY,
+                    originX + (glyphLeft +
+                        static_cast<float>(glyph.width) * glyphScale +
+                        outlineStepX) * scaleX,
+                    originY + (top +
+                        static_cast<float>(glyph.height) * glyphScale) *
+                        scaleY,
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY) /
+                        static_cast<float>(g_OptionsHeight),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX +
+                        glyph.width) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY +
+                        glyph.height) /
+                        static_cast<float>(g_OptionsHeight),
+                    outlineColour);
+                AppendVisualQuad(
+                    vertices, vertexCount, records, recordCount,
+                    g_OptionsTexture,
+                    originX + (glyphLeft + outlineStepX) * scaleX,
+                    originY + (top + outlineStepY) * scaleY,
+                    originX + (glyphLeft +
+                        static_cast<float>(glyph.width) * glyphScale +
+                        outlineStepX) * scaleX,
+                    originY + (top +
+                        static_cast<float>(glyph.height) * glyphScale +
+                        outlineStepY) * scaleY,
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY) /
+                        static_cast<float>(g_OptionsHeight),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX +
+                        glyph.width) /
+                        static_cast<float>(g_OptionsWidth),
+                    static_cast<float>(
+                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY +
+                        glyph.height) /
+                        static_cast<float>(g_OptionsHeight),
+                    outlineColour);
+            }
+            if (outline)
+            {
+                // Retail frontend glyphs carry a 1px DROP SHADOW offset toward
+                // the bottom-right, not a symmetric outline: measuring
+                // GameplayOptions.png, the dark edge around white text is
+                // ~1.2px thick on the bottom and ~1.0px on the right but ~0 on
+                // the top and left.  A single down-right offset reproduces that
+                // exactly and removes the spurious top/left edges the earlier
+                // symmetric cardinal outline added (the residual "glyph
+                // artifacts").  One quad per glyph, capacity-guarded.
+                const float outlineStep = 1.0f;
+                const fable_u32 outlineColour = 0xFF000000u;
+                const float outlineU0 = static_cast<float>(
+                    kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX) /
+                    static_cast<float>(g_OptionsWidth);
+                const float outlineV0 = static_cast<float>(
+                    kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY) /
+                    static_cast<float>(g_OptionsHeight);
+                const float outlineU1 = static_cast<float>(
+                    kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX +
+                    glyph.width) / static_cast<float>(g_OptionsWidth);
+                const float outlineV1 = static_cast<float>(
+                    kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY +
+                    glyph.height) / static_cast<float>(g_OptionsHeight);
+                const float outlineGlyphW =
+                    static_cast<float>(glyph.width) * glyphScale;
+                const float outlineGlyphH =
+                    static_cast<float>(glyph.height) * glyphScale;
+                static const float kOutlineOffsets[1][2] = {
+                    { 1.0f, 1.0f }
+                };
+                for (int outlineIndex = 0; outlineIndex < 1; ++outlineIndex)
+                {
+                    if (vertexCount + 6u > 8192u || recordCount + 1u > 4096u)
+                    {
+                        break;
+                    }
+                    const float outlineDX =
+                        kOutlineOffsets[outlineIndex][0] * outlineStep;
+                    const float outlineDY =
+                        kOutlineOffsets[outlineIndex][1] * outlineStep;
+                    AppendVisualQuad(
+                        vertices, vertexCount, records, recordCount,
+                        g_OptionsTexture,
+                        originX + (glyphLeft + outlineDX) * scaleX,
+                        originY + (top + outlineDY) * scaleY,
+                        originX + (glyphLeft + outlineGlyphW + outlineDX) *
+                            scaleX,
+                        originY + (top + outlineGlyphH + outlineDY) * scaleY,
+                        outlineU0, outlineV0, outlineU1, outlineV1,
+                        outlineColour);
+                }
+            }
+            AppendVisualQuad(
+                vertices,
+                vertexCount,
+                records,
+                recordCount,
+                g_OptionsTexture,
+                originX + glyphLeft * scaleX,
+                originY + top * scaleY,
+                originX + (glyphLeft +
+                    static_cast<float>(glyph.width) * glyphScale) * scaleX,
+                originY + (top +
+                    static_cast<float>(glyph.height) * glyphScale) * scaleY,
+                static_cast<float>(
+                    kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX) /
+                    static_cast<float>(g_OptionsWidth),
+                static_cast<float>(
+                    kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY) /
+                    static_cast<float>(g_OptionsHeight),
+                static_cast<float>(
+                    kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX +
+                    glyph.width) /
+                    static_cast<float>(g_OptionsWidth),
+                static_cast<float>(
+                    kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY +
+                    glyph.height) /
+                    static_cast<float>(g_OptionsHeight),
+                diffuseColour);
+            pen += static_cast<float>(glyph.advance) * glyphScale;
+        }
+#undef kFableDetailTitleGlyphAtlasOriginX
+#undef kFableDetailTitleGlyphAtlasOriginY
+    }
+
+    void AppendDetailTitleText(
+        FableVisualVertex* vertices,
+        fable_u32& vertexCount,
+        FableRender2DPlanRecord* records,
+        fable_u32& recordCount,
+        fable_u32 screen,
+        float left,
+        float top,
+        float scaleX,
+        float scaleY)
+    {
+        if (
+            screen < 1 ||
+            screen > 5 ||
+            g_OptionsTexture == 0)
+        {
+            return;
+        }
+        // Gamepad-redefine patch: screen 4 is the keyboard redefine screen,
+        // screen 5 the new controller redefine screen (docs/
+        // GAMEPAD_REDEFINE_PATCH.md).  Retail's single "Redefine Keys" becomes
+        // the qualified "(Keyboard)" so the two entries read distinctly.
+        const char* baseTitle =
+            screen == 1
+                ? "Gameplay Options"
+                : (screen == 2
+                    ? "Audio Options"
+                    : (screen == 3
+                        ? "Video Options"
+                        : (screen == 4
+                            ? "Redefine Keys (Keyboard)"
+                            : "Redefine Keys (Gamepad)")));
+        char title[128] = {};
+        if (g_ActiveProfileName[0] != 0)
+        {
+            strcpy(title, g_ActiveProfileName);
+            strcat(title, " - ");
+        }
+        strcat(title, baseTitle);
+        const float titleGlyphScale = 2.0f / 3.0f;
+        const float titleWidth = DetailTitleGlyphTextAdvance(
+            title,
+            titleGlyphScale);
+        AppendDetailTitleGlyphText(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            title,
+            65.0f + titleWidth * 0.5f,
+            44.0f,
+            left,
+            top,
+            scaleX,
+            scaleY,
+            titleGlyphScale,
+            true,
+            0xFFFFFFFFu,
+            true);
+    }
+
+    void AppendDetailRowText(
+        FableVisualVertex* vertices,
+        fable_u32& vertexCount,
+        FableRender2DPlanRecord* records,
+        fable_u32& recordCount,
+        fable_u32 screen,
+        float left,
+        float top,
+        float scaleX,
+        float scaleY)
+    {
+        if (
+            screen < 1 ||
+            screen > 3 ||
+            g_OptionsTexture == 0)
+        {
+            return;
+        }
+        const fable_u32 screenIndex = screen - 1;
+        const float glyphScale = 2.0f / 3.0f;
+        for (
+            fable_u32 row = 0;
+            row != kDetailScreens[screenIndex].rowCount;
+            ++row)
+        {
+            const fable_detail_tables::DetailRowDefinition& definition =
+                kDetailScreens[screenIndex].rows[row];
+            AppendDetailTitleGlyphText(
+                vertices,
+                vertexCount,
+                records,
+                recordCount,
+                definition.label,
+                132.0f,
+                static_cast<float>(definition.y + 2),
+                left,
+                top,
+                scaleX,
+                scaleY,
+                glyphScale,
+                false,
+                0xFFFFFFFFu,
+                true);
+        }
+    }
+
+    void AppendRedefineActionText(
+        FableVisualVertex* vertices,
+        fable_u32& vertexCount,
+        FableRender2DPlanRecord* records,
+        fable_u32& recordCount,
+        float left,
+        float top,
+        float scaleX,
+        float scaleY)
+    {
+        if (
+            g_DetailScreen != 4 ||
+            g_OptionsTexture == 0 ||
+            g_OptionsWidth != 1664)
+        {
+            return;
+        }
+        const fable_detail_tables::RedefineListDefinition& list =
+            fable_detail_tables::kRedefineList;
+        const fable_u32 pageOffset =
+            g_RedefineListSelection == 0
+                ? 0
+                : RedefineScrollPageOffset(g_RedefineListSelection);
+        for (fable_u32 row = 0; row != 9; ++row)
+        {
+            const fable_u32 expandedRow = pageOffset + row;
+            if (expandedRow >= kRedefineExpandedRowCount)
+                break;
+            AppendDetailTitleGlyphText(
+                vertices,
+                vertexCount,
+                records,
+                recordCount,
+                fable_detail_tables::kRedefineExpandedLabels[expandedRow],
+                static_cast<float>(list.rootX),
+                static_cast<float>(
+                    list.rootY + row * list.rowStep + 3),
+                left,
+                top,
+                scaleX,
+                scaleY,
+                // These row children are authored as ENG_ARIAL_12.  Keep the
+                // recovered 9/8 action-text scale from the Python oracle and
+                // select the dedicated live atlas below.
+                1.125f,
+                false,
+                0xFFFFFFFFu,
+                true,
+                true);
+        }
+    }
+
+    void AppendRedefineKeyText(
+        FableVisualVertex* vertices,
+        fable_u32& vertexCount,
+        FableRender2DPlanRecord* records,
+        fable_u32& recordCount,
+        float left,
+        float top,
+        float scaleX,
+        float scaleY)
+    {
+        if (
+            g_DetailScreen != 4 ||
+            g_OptionsTexture == 0 ||
+            g_OptionsWidth != 1664)
+        {
+            return;
+        }
+        const fable_detail_tables::RedefineListDefinition& list =
+            fable_detail_tables::kRedefineList;
+        const fable_u32 pageOffset =
+            g_RedefineListSelection == 0
+                ? 0
+                : RedefineScrollPageOffset(g_RedefineListSelection);
+        for (fable_u32 row = 0; row != 9; ++row)
+        {
+            const fable_u32 expandedRow = pageOffset + row;
+            if (expandedRow >= kRedefineExpandedRowCount)
+                break;
+            const fable_u32 keyValue =
+                g_RedefineSelection == row + 1
+                    ? 7
+                    : g_RedefineKeyValues[expandedRow];
+            if (
+                keyValue >= kRedefineKeyValueCount ||
+                keyValue == kRedefineUnresolvedKeyValue)
+            {
+                continue;
+            }
+            AppendDetailTitleGlyphText(
+                vertices,
+                vertexCount,
+                records,
+                recordCount,
+                kRedefineKeyValueLabels[keyValue],
+                static_cast<float>(list.valueX),
+                static_cast<float>(list.valueY + row * list.rowStep + 3),
+                left,
+                top,
+                scaleX,
+                scaleY,
+                1.0f,
+                false,
+                keyValue == 7 ? 0xFFFFFF00u : 0xFFFFFFFFu,
+                true,
+                true);
+        }
+    }
+
+    // TEXT_GUI_MENU_NEW_PROFILE is the label supplied by the retail text
+    // bank to the first action-0x125 profile button.  It is kept in the same
+    // ENG_ARIAL_16 glyph path as runtime profile names; this is a component
+    // label, not a precomposed screen surface.
+    const char kRetailNewProfileLabel[] = "New Profile";
+
+    fable_u32 ProfileListItemCount()
+    {
+        if (g_ProfilesMode == FableFrontendProfilesNormal)
+            return g_ProfileNameCount + 1;
+        if (g_ProfilesMode == FableFrontendProfilesDelete)
+            return g_ProfileNameCount;
+        return 0;
+    }
+
+    float ProfileListItemY(fable_u32 item)
+    {
+        if (g_ProfilesMode == FableFrontendProfilesNormal)
+        {
+            if (item == 0)
+                return 120.0f;
+            return 170.0f + static_cast<float>(
+                (item - 1) * FableFrontendProfileSpacing);
+        }
+        return 180.0f + static_cast<float>(
+            item * FableFrontendProfileSpacing);
+    }
+
+    float ProfileListVisibleItemY(
+        fable_u32 item,
+        fable_u32 firstRow)
+    {
+        const float viewportTop =
+            g_ProfilesMode == FableFrontendProfilesDelete
+                ? 180.0f
+                : 120.0f;
+        return viewportTop +
+            ProfileListItemY(item) - ProfileListItemY(firstRow);
+    }
+
     fable_u32 ChooseNextAnimationFrame(
         fable_u32 currentFrame,
         fable_u32 frameCount)
@@ -725,15 +1512,208 @@ namespace
         {
             for (
                 fable_u32 priorRow = 0;
-                priorRow != kDetailRowCounts[screen];
+                priorRow != kDetailScreens[screen].rowCount;
                 ++priorRow)
             {
-                index += kDetailValueCounts[screen][priorRow];
+                index +=
+                    kDetailScreens[screen].rows[priorRow].valueCount;
             }
         }
         for (fable_u32 priorRow = 0; priorRow != row; ++priorRow)
-            index += kDetailValueCounts[screenIndex][priorRow];
+            index +=
+                kDetailScreens[screenIndex].rows[priorRow].valueCount;
         return index + value;
+    }
+
+    const char* DetailControlValueText(
+        fable_u32 screenIndex,
+        fable_u32 row,
+        fable_u32 value)
+    {
+        if (screenIndex == 0)
+        {
+            switch (row)
+            {
+            case 0:
+            case 1:
+                return value == 0 ? "Normal" : "Inverted";
+            case 2:
+            case 4:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+                return value == 0 ? "OFF" : "ON";
+            default:
+                return 0;
+            }
+        }
+        if (screenIndex == 2)
+        {
+            switch (row)
+            {
+            case 0:
+                switch (value)
+                {
+                case 0: return "1920X1080X32";
+                case 1: return "2560X1440X32";
+                case 2: return "3840X2160X32";
+                default: return 0;
+                }
+            case 1:
+                switch (value)
+                {
+                case 0: return "100 Hz";
+                case 1: return "60 Hz";
+                case 2: return "75 Hz";
+                case 3: return "85 Hz";
+                default: return 0;
+                }
+            case 2:
+                switch (value)
+                {
+                case 0: return "8X";
+                case 1: return "OFF";
+                case 2: return "4X";
+                default: return 0;
+                }
+            case 7:
+                return value == 0 ? "OFF" : "ON";
+            case 9:
+                switch (value)
+                {
+                case 0: return "Auto";
+                case 1: return "4:3";
+                case 2: return "16:9";
+                default: return 0;
+                }
+            default:
+                return 0;
+            }
+        }
+        return 0;
+    }
+
+    void AppendDetailControlText(
+        FableVisualVertex* vertices,
+        fable_u32& vertexCount,
+        FableRender2DPlanRecord* records,
+        fable_u32& recordCount,
+        fable_u32 screen,
+        float left,
+        float top,
+        float scaleX,
+        float scaleY)
+    {
+        if (
+            screen < 1 ||
+            screen > 3 ||
+            g_OptionsTexture == 0)
+        {
+            return;
+        }
+        const fable_u32 screenIndex = screen - 1;
+        const float glyphScale = 2.0f / 3.0f;
+        for (
+            fable_u32 row = 0;
+            row != kDetailScreens[screenIndex].rowCount;
+            ++row)
+        {
+            const char* text = DetailControlValueText(
+                screenIndex,
+                row,
+                g_DetailOptionValues[screenIndex][row]);
+            if (text == 0)
+                continue;
+            AppendDetailTitleGlyphText(
+                vertices,
+                vertexCount,
+                records,
+                recordCount,
+                text,
+                500.0f,
+                static_cast<float>(kDetailScreens[screenIndex].rows[row].y),
+                left,
+                top,
+                scaleX,
+                scaleY,
+                glyphScale,
+                true,
+                0xFFFFFFFFu,
+                true);
+        }
+    }
+
+    void AppendDetailFooterText(
+        FableVisualVertex* vertices,
+        fable_u32& vertexCount,
+        FableRender2DPlanRecord* records,
+        fable_u32& recordCount,
+        fable_u32 screen,
+        float left,
+        float top,
+        float scaleX,
+        float scaleY)
+    {
+        if (
+            screen < 1 ||
+            screen > 4 ||
+            g_OptionsTexture == 0)
+        {
+            return;
+        }
+        const float glyphScale = 2.0f / 3.0f;
+        AppendDetailTitleGlyphText(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            "Cancel",
+            148.0f,
+            445.0f,
+            left,
+            top,
+            scaleX,
+            scaleY,
+            glyphScale,
+            true,
+            0xFFFFFFFFu,
+            true);
+        if (screen != 4)
+        {
+            AppendDetailTitleGlyphText(
+                vertices,
+                vertexCount,
+                records,
+                recordCount,
+                "Defaults",
+                320.0f,
+                405.0f,
+                left,
+                top,
+                scaleX,
+                scaleY,
+                glyphScale,
+                true,
+                0xFFFFFFFFu,
+                true);
+        }
+        AppendDetailTitleGlyphText(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            "Apply",
+            490.0f,
+            445.0f,
+            left,
+            top,
+            scaleX,
+            scaleY,
+            glyphScale,
+            true,
+            g_DetailApplyEnabled ? 0xFFFFFFFFu : 0xFF808080u,
+            true);
     }
 
     bool InitialiseTitleRuleComponents(
@@ -1197,6 +2177,13 @@ namespace
                 }
                 else if (
                     argument1 ==
+                    reinterpret_cast<fable_u32>(
+                        g_RedefineScrollPagesTexture))
+                {
+                    selectedTexture = g_RedefineScrollPagesTexture;
+                }
+                else if (
+                    argument1 ==
                     reinterpret_cast<fable_u32>(g_AboutTexture))
                 {
                     selectedTexture = g_AboutTexture;
@@ -1531,7 +2518,12 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     fable_i32 spookySunbeamHeight,
     fable_i32 spookySunbeamPitch,
     fable_u32 spookySunbeamBitsPerPixel,
-    const void* spookySunbeamPixels)
+    const void* spookySunbeamPixels,
+    fable_i32 redefineScrollPagesWidth,
+    fable_i32 redefineScrollPagesHeight,
+    fable_i32 redefineScrollPagesPitch,
+    fable_u32 redefineScrollPagesBitsPerPixel,
+    const void* redefineScrollPagesPixels)
 {
     FableShutdownVisualD3D9();
     g_DeviceWindow = window;
@@ -1583,7 +2575,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 titleBitsPerPixel,
                 titlePixels,
                 true,
-                true)
+                false)
         ) ||
         (
             forestPixels != 0 &&
@@ -1619,7 +2611,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 menuBitsPerPixel,
                 menuPixels,
                 true,
-                true)
+                false)
         ) ||
         (
             coastalPixels != 0 &&
@@ -1655,7 +2647,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 optionsBitsPerPixel,
                 optionsPixels,
                 true,
-                true)
+                false)
         ) ||
         (
             helpersPixels != 0 &&
@@ -1667,7 +2659,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 helpersBitsPerPixel,
                 helpersPixels,
                 true,
-                true)
+                false)
         ) ||
         (
             titleSegmentPixels != 0 &&
@@ -1679,7 +2671,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 titleSegmentBitsPerPixel,
                 titleSegmentPixels,
                 true,
-                true)
+                false)
         ) ||
         (
             buttonLeftPixels != 0 &&
@@ -1691,7 +2683,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 buttonLeftBitsPerPixel,
                 buttonLeftPixels,
                 true,
-                true)
+                false)
         ) ||
         (
             buttonMiddlePixels != 0 &&
@@ -1703,7 +2695,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 buttonMiddleBitsPerPixel,
                 buttonMiddlePixels,
                 true,
-                true)
+                false)
         ) ||
         (
             buttonRightPixels != 0 &&
@@ -1715,7 +2707,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 buttonRightBitsPerPixel,
                 buttonRightPixels,
                 true,
-                true)
+                false)
         ) ||
         (
             aboutPixels != 0 &&
@@ -1727,7 +2719,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 aboutBitsPerPixel,
                 aboutPixels,
                 true,
-                true)
+                false)
         ) ||
         (
             creditsPixels != 0 &&
@@ -1739,7 +2731,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 creditsBitsPerPixel,
                 creditsPixels,
                 true,
-                true)
+                false)
         ) ||
         (
             profilesPixels != 0 &&
@@ -1751,7 +2743,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 profilesBitsPerPixel,
                 profilesPixels,
                 true,
-                true)
+                false)
         ) ||
         (
             spookyPixels != 0 &&
@@ -1774,6 +2766,18 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 spookySunbeamPitch,
                 spookySunbeamBitsPerPixel,
                 spookySunbeamPixels,
+                true,
+                false)
+        ) ||
+        (
+            redefineScrollPagesPixels != 0 &&
+            !UploadArtwork(
+                g_RedefineScrollPagesTexture,
+                redefineScrollPagesWidth,
+                redefineScrollPagesHeight,
+                redefineScrollPagesPitch,
+                redefineScrollPagesBitsPerPixel,
+                redefineScrollPagesPixels,
                 true,
                 false)
         ))
@@ -1849,6 +2853,8 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     }
     if (
         (g_OptionsTexture == 0) != (g_HelpersTexture == 0) ||
+        (g_OptionsTexture == 0) !=
+            (g_RedefineScrollPagesTexture == 0) ||
         (g_OptionsTexture == 0) != (g_TitleSegmentTexture == 0) ||
         (g_OptionsTexture == 0) != (g_ButtonLeftTexture == 0) ||
         (g_OptionsTexture == 0) != (g_ButtonMiddleTexture == 0) ||
@@ -1860,6 +2866,9 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
                 (optionsHeight != 3840 && optionsHeight != -3840) ||
                 helpersWidth != 640 ||
                 (helpersHeight != 2880 && helpersHeight != -2880) ||
+                redefineScrollPagesWidth != 3200 ||
+                (redefineScrollPagesHeight != 3360 &&
+                 redefineScrollPagesHeight != -3360) ||
                 titleSegmentWidth != 8 ||
                 (
                     titleSegmentHeight != 64 &&
@@ -1891,6 +2900,11 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
         g_OptionsWidth = optionsWidth;
         g_OptionsHeight =
             optionsHeight < 0 ? -optionsHeight : optionsHeight;
+        g_RedefineScrollPagesWidth = redefineScrollPagesWidth;
+        g_RedefineScrollPagesHeight =
+            redefineScrollPagesHeight < 0
+                ? -redefineScrollPagesHeight
+                : redefineScrollPagesHeight;
         g_TitleSegmentWidth = titleSegmentWidth;
         g_TitleSegmentHeight =
             titleSegmentHeight < 0
@@ -1959,9 +2973,12 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     InitialiseMainMenuRowStates();
     g_OptionsSelection = 0;
     g_SaveSelection = 0;
+    g_ProfilesMode = FableFrontendProfilesNormal;
     g_ProfileSelection = 0;
     g_ProfileNameCount = 0;
     memset(g_ProfileNames, 0, sizeof(g_ProfileNames));
+    memset(g_ActiveProfileName, 0, sizeof(g_ActiveProfileName));
+    memset(g_ProfileEditText, 0, sizeof(g_ProfileEditText));
     InitialiseOptionsRowStates();
     g_DetailScreen = 0;
     memset(g_DetailOptionValues, 0, sizeof(g_DetailOptionValues));
@@ -1971,6 +2988,7 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     g_DetailArrowHoverRow = 0;
     g_DetailArrowHoverSide = 0;
     g_RedefineSelection = 0;
+    g_RedefineListSelection = 0;
     memcpy(
         g_RedefineKeyValues,
         kRedefineDefaultKeyValues,
@@ -2078,7 +3096,10 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         overlayTexture = g_MenuTexture;
         overlayWidth = 640;
         overlayHeight = 480;
-        overlayFrame = g_MainMenuSelection;
+        overlayFrame =
+            g_MainMenuSelection < FableFrontendMainMenuVisibleRows
+                ? kMainMenuAtlasFrames[g_MainMenuSelection]
+                : 0;
         overlayFrameCount = 7;
     }
     else if (g_OptionsMenuActive)
@@ -2139,13 +3160,22 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     }
     else if (g_ProfilesMenuActive)
     {
-        // Static Select Profile title surface; runtime profile names are
-        // rendered below from the enumerated profile store.
-        overlayTexture = g_ProfilesTexture;
-        overlayWidth = g_ProfilesTexture != 0 ? 640 : 0;
-        overlayHeight = g_ProfilesTexture != 0 ? 480 : 0;
-        overlayFrame = 0;
-        overlayFrameCount = 1;
+        // The normal and delete definitions share the authored Select Profile
+        // title child.  Empty/new are separate frontend definitions; their
+        // title/message/edit children are emitted by the live branch below.
+        overlayTexture =
+            g_ProfilesMode == FableFrontendProfilesNormal ||
+            g_ProfilesMode == FableFrontendProfilesDelete ||
+            g_ProfilesMode == FableFrontendProfilesDeleteConfirm
+                ? g_ProfilesTexture
+                : 0;
+        overlayWidth = overlayTexture != 0 ? 640 : 0;
+        overlayHeight = overlayTexture != 0 ? 480 : 0;
+        overlayFrame =
+            g_ProfilesMode == FableFrontendProfilesDeleteConfirm
+                ? 1
+                : 0;
+        overlayFrameCount = 2;
     }
     const bool titleUsesDesignCanvas =
         overlayWidth == g_ArtworkWidth &&
@@ -2159,16 +3189,33 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     const float titleBottom =
         titleTop + overlayHeight * designScaleY;
 
-    FableVisualVertex vertices[4096];
-    FableRender2DPlanRecord records[2048];
+    // Scrolled Redefine pages submit the authored page quad plus live action
+    // and key glyphs. Keep the staging queues comfortably above the normal
+    // detail-screen footprint so a valid page cannot make the present path
+    // fail after the backbuffer has already been cleared.
+    FableVisualVertex vertices[8192];
+    FableRender2DPlanRecord records[4096];
     fable_u32 vertexCount = 0;
     fable_u32 recordCount = 0;
     const bool coastalBackground =
-        g_MainMenuActive || g_DetailScreen == 2 || g_ProfilesMenuActive;
+        g_MainMenuActive ||
+        // The compiled frontend assigns the coastal blend only to Audio
+        // Options (detail screen 2). Gameplay, Video, and Redefine use the
+        // forest blend; this is also the scene split visible in the retail
+        // captures. Keep this keyed to the screen id rather than a range so
+        // Gameplay cannot inherit Audio's background.
+        g_DetailScreen == 2 ||
+        (g_ProfilesMenuActive &&
+            (g_ProfilesMode == FableFrontendProfilesNormal ||
+             g_ProfilesMode == FableFrontendProfilesNew));
     // UI_FRONTEND_ABOUT_MENU owns the SPOOKY graveyard background
     // (UI_BLENDING_BACKGROUNDS_SPOOKY: 4 BG frames + 3 sunbeam frames),
     // animated by the same swap/blend path as forest/coastal.
-    const bool spookyBackground = g_AboutMenuActive;
+    const bool spookyBackground =
+        g_AboutMenuActive ||
+        (g_ProfilesMenuActive &&
+            (g_ProfilesMode == FableFrontendProfilesDelete ||
+             g_ProfilesMode == FableFrontendProfilesDeleteConfirm));
     FableD3DTexture9* backgroundTexture =
         spookyBackground
             ? g_SpookyTexture
@@ -2184,6 +3231,46 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         backgroundTexture != 0 &&
         sunbeamTexture != 0)
     {
+        if (g_VisualFrontendAnimationStatic)
+        {
+            // Reference screenshots were captured at different stable points
+            // in the retail loop: Gameplay/Video align to forest frame 3,
+            // Redefine to frame 1, and Audio to coastal frame 0. Select those
+            // supplied frames only for deterministic reference captures;
+            // normal rendering retains the transition/randomized path below.
+            const fable_u32 staticForestFrame =
+                spookyBackground
+                    ? 0
+                    : (coastalBackground
+                        ? 0
+                        : (g_DetailScreen == 4 ? 1 : 3));
+            const float staticForestV0 =
+                static_cast<float>(staticForestFrame) / 4.0f;
+            const float staticForestV1 =
+                static_cast<float>(staticForestFrame + 1) / 4.0f;
+            AppendVisualQuad(
+                vertices, vertexCount, records, recordCount,
+                backgroundTexture,
+                left, top, right, bottom,
+                0.0f, staticForestV0, 1.0f, staticForestV1,
+                0xFFFFFFFFu);
+            const fable_u32 staticSunbeamFrame =
+                (coastalBackground || g_DetailScreen == 1) ? 1 : 0;
+            const fable_u32 staticSunbeamAlpha =
+                coastalBackground ? 32 : (g_DetailScreen == 1 ? 255 : 0);
+            const float staticSunbeamV0 =
+                static_cast<float>(staticSunbeamFrame) / 3.0f;
+            const float staticSunbeamV1 =
+                static_cast<float>(staticSunbeamFrame + 1) / 3.0f;
+            AppendVisualQuad(
+                vertices, vertexCount, records, recordCount,
+                sunbeamTexture,
+                left, top, right, bottom,
+                0.0f, staticSunbeamV0, 1.0f, staticSunbeamV1,
+                (staticSunbeamAlpha << 24) | 0x00FFFFFFu);
+        }
+        else
+        {
         if (g_AnimationStartTick == 0)
         {
             g_AnimationStartTick = GetTickCount();
@@ -2270,6 +3357,7 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             left, top, right, bottom,
             0.0f, nextSunbeamV0, 1.0f, nextSunbeamV1,
             (sunbeamAlpha << 24) | 0x00FFFFFFu);
+        }
     }
     else if (!g_QuitPromptActive)
     {
@@ -2281,7 +3369,10 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             0xFFFFFFFFu);
     }
     if (
-        (g_OptionsMenuActive || g_DetailScreen != 0) &&
+        (g_OptionsMenuActive || g_DetailScreen != 0 ||
+         (g_ProfilesMenuActive &&
+          (g_ProfilesMode == FableFrontendProfilesEmpty ||
+           g_ProfilesMode == FableFrontendProfilesNew))) &&
         g_TitleSegmentTexture != 0 &&
         g_TitleRuleComponents.size != 0)
     {
@@ -2323,7 +3414,9 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     const FableUiGeneratedComponentVector* selectedButtonComponents = 0;
     float selectedButtonX = 0.0f;
     float selectedButtonY = 0.0f;
-    if (g_MainMenuActive && g_MainMenuSelection < 7)
+    if (
+        g_MainMenuActive &&
+        g_MainMenuSelection < FableFrontendMainMenuVisibleRows)
     {
         selectedButtonComponents =
             g_MainMenuSelection == 0
@@ -2344,14 +3437,28 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
     }
     else if (g_SaveMenuActive && g_SaveSelection < 4)
     {
-        // Saved-games list highlight (SAVE_LIST_ORIGIN (10,90),
-        // SAVE_ROW_STEP_Y 30, -7 to align the 44px ornament on the 30px row).
-        // Emitted before the name-bearing save cell overlay so the highlight
-        // sits behind the row text, matching the baked composite order.
-        selectedButtonComponents = &g_SaveButtonComponents;
-        selectedButtonX = 10.0f;
+        // The save cell overlay below owns the row backdrop, so defer the
+        // generated highlight until after that overlay has been emitted.
+    }
+    else if (
+        g_ProfilesMenuActive &&
+        (g_ProfilesMode == FableFrontendProfilesNormal ||
+         g_ProfilesMode == FableFrontendProfilesDelete) &&
+        g_ProfileSelection < ProfileListItemCount())
+    {
+        // UI_FRONTEND_BUTTON_FOR_PROFILES_LIST is the same 280px table
+        // template used by the authored profile Type-43 rows.  Its parent
+        // list origins are (200,120) and (200,180); the runtime row y values
+        // are supplied by RefreshAvailableProfiles*.
+        selectedButtonComponents = &g_OptionsButtonComponents;
+        selectedButtonX = 180.0f;
+        const fable_u32 visibleRows =
+            g_ProfilesMode == FableFrontendProfilesDelete ? 7 : 9;
+        fable_u32 firstRow = 0;
+        if (g_ProfileSelection >= visibleRows)
+            firstRow = g_ProfileSelection - visibleRows + 1;
         selectedButtonY =
-            static_cast<float>(90 + g_SaveSelection * 30 - 7);
+            ProfileListVisibleItemY(g_ProfileSelection, firstRow) - 7.0f;
     }
     if (
         selectedButtonComponents != 0 &&
@@ -2515,6 +3622,85 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         }
     }
     if (
+        g_SaveMenuActive &&
+        g_SaveSelection < 4 &&
+        g_ButtonLeftTexture != 0 &&
+        g_ButtonMiddleTexture != 0 &&
+        g_ButtonRightTexture != 0 &&
+        g_SaveButtonComponents.size != 0)
+    {
+        // Saved-games list highlight (SAVE_LIST_ORIGIN (10,90),
+        // SAVE_ROW_STEP_Y 30, -7 to align the 44px ornament on the 30px row).
+        // Emit it after the save cell backdrop and before live row text.
+        const FableUiRender2DBinding saveButtonBindings[3] = {
+            {
+                129,
+                reinterpret_cast<fable_u32>(g_ButtonLeftTexture),
+                0.0f, 0.0f, 1.0f, 1.0f,
+                0xFFFFFFFFu
+            },
+            {
+                130,
+                reinterpret_cast<fable_u32>(g_ButtonRightTexture),
+                0.0f, 0.0f, 1.0f, 1.0f,
+                0xFFFFFFFFu
+            },
+            {
+                131,
+                reinterpret_cast<fable_u32>(g_ButtonMiddleTexture),
+                0.0f, 0.0f, 1.0f, 1.0f,
+                0xFFFFFFFFu
+            }
+        };
+        const FableUiVector2 clipMinimum = {left, top};
+        const FableUiVector2 clipMaximum = {right, bottom};
+        FableUiRender2DAppendTarget saveButtonTarget = {
+            vertices,
+            128,
+            &vertexCount,
+            records,
+            48,
+            &recordCount,
+            &clipMinimum,
+            &clipMaximum
+        };
+        if (!FableAppendUiGeneratedComponentsToRender2D(
+                &g_SaveButtonComponents,
+                saveButtonBindings,
+                3,
+                left + 10.0f * designScaleX,
+                top + static_cast<float>(90 + g_SaveSelection * 30 - 7) *
+                    designScaleY,
+                designScaleX,
+                designScaleY,
+                &saveButtonTarget))
+        {
+            return false;
+        }
+    }
+    // Detail titles are runtime text in the retail frontend: the selected
+    // profile name is supplied by CUserProfileManager before the static
+    // screen component is activated.  The component atlas intentionally
+    // leaves this text transparent; emit the recovered ENG_ARIAL_24 bank
+    // glyphs with the serialized title origin and authored destination scale.
+    if (
+        g_DetailScreen >= 1 &&
+        g_DetailScreen <= 4 &&
+        g_OptionsTexture != 0 &&
+        g_OptionsWidth == 1664)
+    {
+        AppendDetailTitleText(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            g_DetailScreen,
+            left,
+            top,
+            designScaleX,
+            designScaleY);
+    }
+    if (
         g_MainMenuActive &&
         g_MenuTexture != 0 &&
         g_MenuWidth == 1280)
@@ -2596,7 +3782,7 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         const fable_u32 screenIndex = g_DetailScreen - 1;
         for (
             fable_u32 row = 0;
-            row != kDetailRowCounts[screenIndex];
+            row != kDetailScreens[screenIndex].rowCount;
             ++row)
         {
             const fable_u32 tileIndex = DetailControlAtlasIndex(
@@ -2606,34 +3792,98 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             const fable_u32 tileColumn = 0;
             const fable_u32 tileRow = tileIndex;
             const float controlLeft =
-                left + 300.0f * designScaleX;
+                left +
+                static_cast<float>(
+                    fable_detail_tables::kArrow.controlLeft) *
+                designScaleX;
             const float controlTop =
                 top +
                 static_cast<float>(
-                    kDetailRowY[screenIndex][row] - 3) *
+                    kDetailScreens[screenIndex].rows[row].y - 3) *
                 designScaleY;
             AppendVisualQuad(
                 vertices, vertexCount, records, recordCount,
                 g_OptionsTexture,
                 controlLeft,
                 controlTop,
-                controlLeft + 200.0f * designScaleX,
-                controlTop + 30.0f * designScaleY,
-                (640.0f + tileColumn * 200.0f) /
+                controlLeft +
+                    static_cast<float>(
+                        fable_detail_tables::kArrow.controlWidth) *
+                    designScaleX,
+                controlTop +
+                    static_cast<float>(
+                        fable_detail_tables::kArrow.controlHeight) *
+                    designScaleY,
+                (640.0f + tileColumn *
+                    static_cast<float>(
+                        fable_detail_tables::kArrow.controlWidth)) /
                     static_cast<float>(g_OptionsWidth),
                 (tileRow * 30.0f) /
                     static_cast<float>(g_OptionsHeight),
-                (840.0f + tileColumn * 200.0f) /
+                (840.0f + tileColumn *
+                    static_cast<float>(
+                        fable_detail_tables::kArrow.controlWidth)) /
                     static_cast<float>(g_OptionsWidth),
                 ((tileRow + 1) * 30.0f) /
                     static_cast<float>(g_OptionsHeight),
                 0xFFFFFFFFu);
-        }
+    }
+    }
+    if (
+        g_DetailScreen >= 1 &&
+        g_DetailScreen <= 3 &&
+        g_OptionsTexture != 0 &&
+        g_OptionsWidth == 1664)
+    {
+        AppendDetailControlText(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            g_DetailScreen,
+            left,
+            top,
+            designScaleX,
+            designScaleY);
+    }
+    if (
+        g_DetailScreen >= 1 &&
+        g_DetailScreen <= 3 &&
+        g_OptionsTexture != 0 &&
+        g_OptionsWidth == 1664)
+    {
+        AppendDetailRowText(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            g_DetailScreen,
+            left,
+            top,
+            designScaleX,
+            designScaleY);
+    }
+    if (
+        g_DetailScreen >= 1 &&
+        g_DetailScreen <= 4 &&
+        g_OptionsTexture != 0 &&
+        g_OptionsWidth == 1664)
+    {
+        AppendDetailFooterText(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            g_DetailScreen,
+            left,
+            top,
+            designScaleX,
+            designScaleY);
     }
     // Detail-screen ARROW hover overlay (screens 1-3).  The HOVERED sprite is
     // baked into a full 200x30 control tile at the arrow's control-tile-local
     // offset, so drawing that tile over the SAME design rect as the control
-    // tile (x=300, width 200) pixel-aligns it with the baked OFF arrow.  Row is
+    // tile (x=400, width 200) pixel-aligns it with the baked OFF arrow.  Row is
     // bound-checked (Video phantom rows 3-9 have rowY 0) before indexing.
     if (
         g_DetailScreen >= 1 &&
@@ -2642,18 +3892,24 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         g_OptionsTexture != 0)
     {
         const fable_u32 screenIndex = g_DetailScreen - 1;
-        if (g_DetailArrowHoverRow < kDetailRowCounts[screenIndex])
+        if (
+            g_DetailArrowHoverRow <
+            kDetailScreens[screenIndex].rowCount)
         {
             const fable_i32 tileAtlasY =
                 g_DetailArrowHoverSide == 1
-                    ? kDetailArrowHoverLeftAtlasY
-                    : kDetailArrowHoverRightAtlasY;
+                ? fable_detail_tables::kArrow.leftAtlasY
+                : fable_detail_tables::kArrow.rightAtlasY;
             const float controlLeft =
-                left + 300.0f * designScaleX;
+                left +
+                static_cast<float>(
+                    fable_detail_tables::kArrow.controlLeft) *
+                designScaleX;
             const float controlTop =
                 top +
                 static_cast<float>(
-                    kDetailRowY[screenIndex][g_DetailArrowHoverRow] - 3) *
+                    kDetailScreens[screenIndex]
+                        .rows[g_DetailArrowHoverRow].y - 3) *
                 designScaleY;
             AppendVisualQuad(
                 vertices, vertexCount, records, recordCount,
@@ -2661,10 +3917,12 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
                 controlLeft,
                 controlTop,
                 controlLeft +
-                    static_cast<float>(kDetailArrowHoverTileWidth) *
+                    static_cast<float>(
+                        fable_detail_tables::kArrow.controlWidth) *
                     designScaleX,
                 controlTop +
-                    static_cast<float>(kDetailArrowHoverTileHeight) *
+                    static_cast<float>(
+                        fable_detail_tables::kArrow.controlHeight) *
                     designScaleY,
                 static_cast<float>(kDetailHoverAtlasOriginX) /
                     static_cast<float>(g_OptionsWidth),
@@ -2672,10 +3930,11 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
                     static_cast<float>(g_OptionsHeight),
                 static_cast<float>(
                     kDetailHoverAtlasOriginX +
-                    kDetailArrowHoverTileWidth) /
+                    fable_detail_tables::kArrow.controlWidth) /
                     static_cast<float>(g_OptionsWidth),
                 static_cast<float>(
-                    tileAtlasY + kDetailArrowHoverTileHeight) /
+                    tileAtlasY +
+                    fable_detail_tables::kArrow.controlHeight) /
                     static_cast<float>(g_OptionsHeight),
                 0xFFFFFFFFu);
         }
@@ -2692,21 +3951,11 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         !(g_DetailScreen == 4 && g_DetailButtonHover == 2) &&
         g_OptionsTexture != 0)
     {
-        fable_i32 footerAtlasY = kDetailFooterHoverCancelAtlasY;
-        fable_i32 footerDesignX = kDetailFooterHoverCancelDesignX;
-        fable_i32 footerDesignY = kDetailFooterHoverCancelDesignY;
-        if (g_DetailButtonHover == 2)
-        {
-            footerAtlasY = kDetailFooterHoverDefaultsAtlasY;
-            footerDesignX = kDetailFooterHoverDefaultsDesignX;
-            footerDesignY = kDetailFooterHoverDefaultsDesignY;
-        }
-        else if (g_DetailButtonHover == 3)
-        {
-            footerAtlasY = kDetailFooterHoverApplyAtlasY;
-            footerDesignX = kDetailFooterHoverApplyDesignX;
-            footerDesignY = kDetailFooterHoverApplyDesignY;
-        }
+        const fable_detail_tables::DetailFooterDefinition& footer =
+            fable_detail_tables::kFooter[g_DetailButtonHover - 1];
+        const fable_i32 footerAtlasY = footer.atlasY;
+        const fable_i32 footerDesignX = footer.designX;
+        const fable_i32 footerDesignY = footer.designY;
         const float footerLeft =
             left + static_cast<float>(footerDesignX) * designScaleX;
         const float footerTop =
@@ -2717,95 +3966,486 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             footerLeft,
             footerTop,
             footerLeft +
-                static_cast<float>(kDetailFooterHoverTileWidth) *
+                static_cast<float>(footer.tileWidth) *
                 designScaleX,
             footerTop +
-                static_cast<float>(kDetailFooterHoverTileHeight) *
+                static_cast<float>(footer.tileHeight) *
                 designScaleY,
             static_cast<float>(kDetailHoverAtlasOriginX) /
                 static_cast<float>(g_OptionsWidth),
             static_cast<float>(footerAtlasY) /
                 static_cast<float>(g_OptionsHeight),
             static_cast<float>(
-                kDetailHoverAtlasOriginX + kDetailFooterHoverTileWidth) /
+                kDetailHoverAtlasOriginX + footer.tileWidth) /
                 static_cast<float>(g_OptionsWidth),
             static_cast<float>(
-                footerAtlasY + kDetailFooterHoverTileHeight) /
+                footerAtlasY + footer.tileHeight) /
                 static_cast<float>(g_OptionsHeight),
             0xFFFFFFFFu);
     }
     if (
         g_DetailScreen == 4 &&
+        g_RedefineListSelection == 0 &&
         g_RedefineHover >= 1 &&
         g_RedefineHover <= 9 &&
         g_HelpersTexture != 0)
     {
+        const fable_detail_tables::RedefineListDefinition& list =
+            fable_detail_tables::kRedefineList;
         const fable_u32 row = g_RedefineHover - 1;
         const float rowTop =
-            top + static_cast<float>(110 + row * 26) * designScaleY;
+            top + static_cast<float>(list.hoverY + row * list.rowStep) *
+                designScaleY;
         const float stripTop =
-            static_cast<float>(5 * 480 + row * 35);
+            static_cast<float>(
+                list.helperFrame * list.helperFrameHeight +
+                row * list.hoverHeight);
         AppendVisualQuad(
             vertices, vertexCount, records, recordCount,
             g_HelpersTexture,
-            left + 8.0f * designScaleX,
+            left + static_cast<float>(list.hoverX) * designScaleX,
             rowTop,
-            left + 596.0f * designScaleX,
-            rowTop + 35.0f * designScaleY,
+            left + static_cast<float>(list.hoverX + list.hoverWidth) *
+                designScaleX,
+            rowTop + static_cast<float>(list.hoverHeight) * designScaleY,
             0.0f,
             stripTop / 2880.0f,
-            588.0f / 640.0f,
-            (stripTop + 35.0f) / 2880.0f,
+            static_cast<float>(list.hoverWidth) / 640.0f,
+            (stripTop + list.hoverHeight) / 2880.0f,
             0xFFFFFFFFu);
     }
     if (
         g_DetailScreen == 4 &&
-        g_OptionsTexture != 0)
-    {
-        for (fable_u32 row = 0; row != 9; ++row)
-        {
-            const fable_u32 keyValue =
-                g_RedefineSelection == row + 1
-                    ? 7
-                    : g_RedefineKeyValues[row];
-            const float keyTop =
-                static_cast<float>(keyValue * 26);
-            const float rowTop =
-                top + static_cast<float>(115 + row * 26) * designScaleY;
-            AppendVisualQuad(
-                vertices, vertexCount, records, recordCount,
-                g_OptionsTexture,
-                left + 420.0f * designScaleX,
-                rowTop,
-                left + 596.0f * designScaleX,
-                rowTop + 26.0f * designScaleY,
-                840.0f / static_cast<float>(g_OptionsWidth),
-                keyTop / static_cast<float>(g_OptionsHeight),
-                1016.0f / static_cast<float>(g_OptionsWidth),
-                (keyTop + 26.0f) /
-                    static_cast<float>(g_OptionsHeight),
-                0xFFFFFFFFu);
-        }
-    }
-    if (
-        g_DetailScreen == 4 &&
+        g_RedefineListSelection == 0 &&
         g_RedefineResetHover >= 1 &&
         g_RedefineResetHover <= 2 &&
         g_HelpersTexture != 0)
     {
         const fable_u32 column = g_RedefineResetHover - 1;
-        const float atlasTop = static_cast<float>(5 * 480 + 320);
+        const fable_detail_tables::RedefineResetDefinition& reset =
+            fable_detail_tables::kRedefineReset[column];
         AppendVisualQuad(
             vertices, vertexCount, records, recordCount,
             g_HelpersTexture,
-            left + static_cast<float>(column * 320) * designScaleX,
-            top + 389.0f * designScaleY,
-            left + static_cast<float>((column + 1) * 320) * designScaleX,
-            top + 453.0f * designScaleY,
-            static_cast<float>(column * 320) / 640.0f,
-            atlasTop / 2880.0f,
-            static_cast<float>((column + 1) * 320) / 640.0f,
-            (atlasTop + 64.0f) / 2880.0f,
+            left + static_cast<float>(reset.designX) * designScaleX,
+            top + static_cast<float>(reset.designY) * designScaleY,
+            left + static_cast<float>(reset.designX + reset.width) *
+                designScaleX,
+            top + static_cast<float>(reset.designY + reset.height) *
+                designScaleY,
+            static_cast<float>(reset.designX) / 640.0f,
+            static_cast<float>(reset.atlasY) / 2880.0f,
+            static_cast<float>(reset.designX + reset.width) / 640.0f,
+            static_cast<float>(reset.atlasY + reset.height) / 2880.0f,
+            0xFFFFFFFFu);
+    }
+    if (
+        g_DetailScreen == 4 &&
+        g_RedefineListSelection > 0 &&
+        backgroundTexture != 0 &&
+        g_RedefineScrollPagesTexture != 0)
+    {
+        // The component frame carries the initial Down arrow even while the
+        // logical list is scrolled. Repaint that 32x32 footprint from the
+        // current Redefine forest frame before the page atlas is composited;
+        // non-final pages then add their own live Down arrow, while the final
+        // page remains arrow-free.
+        const fable_u32 forestFrame =
+            g_VisualFrontendAnimationStatic ? 1 : g_ForestFrame;
+        const float arrowLeft =
+            titleLeft +
+            static_cast<float>(kRedefineScrollArrowDesignX) * designScaleX;
+        const float arrowTop =
+            titleTop +
+            static_cast<float>(kRedefineScrollArrowDesignY) * designScaleY;
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            backgroundTexture,
+            arrowLeft,
+            arrowTop,
+            arrowLeft +
+                static_cast<float>(kRedefineScrollArrowWidth) * designScaleX,
+            arrowTop +
+                static_cast<float>(kRedefineScrollArrowHeight) * designScaleY,
+            static_cast<float>(kRedefineScrollArrowDesignX) / 640.0f,
+            static_cast<float>(
+                forestFrame * 480 + kRedefineScrollArrowDesignY) / 1920.0f,
+            static_cast<float>(
+                kRedefineScrollArrowDesignX +
+                kRedefineScrollArrowWidth) / 640.0f,
+            static_cast<float>(
+                forestFrame * 480 +
+                kRedefineScrollArrowDesignY +
+                kRedefineScrollArrowHeight) / 1920.0f,
+            0xFFFFFFFFu);
+        const fable_u32 pageOffset =
+            RedefineScrollPageOffset(g_RedefineListSelection);
+        const fable_u32 pageIndex = pageOffset - 1;
+        const fable_u32 pageColumn =
+            pageIndex % kRedefineScrollPageColumns;
+        const fable_u32 pageRow =
+            pageIndex / kRedefineScrollPageColumns;
+        const float atlasLeft =
+            static_cast<float>(pageColumn * kRedefineScrollPageWidth);
+        const float atlasTop =
+            static_cast<float>(pageRow * kRedefineScrollPageHeight);
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_RedefineScrollPagesTexture,
+            titleLeft,
+            titleTop,
+            titleRight,
+            titleBottom,
+            atlasLeft /
+                static_cast<float>(kRedefineScrollPageAtlasWidth),
+            atlasTop /
+                static_cast<float>(kRedefineScrollPageAtlasHeight),
+            (atlasLeft + kRedefineScrollPageWidth) /
+                static_cast<float>(kRedefineScrollPageAtlasWidth),
+            (atlasTop + kRedefineScrollPageHeight) /
+                static_cast<float>(kRedefineScrollPageAtlasHeight),
+            0xFFFFFFFFu);
+        if (
+            g_RedefineHover >= 1 &&
+            g_RedefineHover <= 9 &&
+            g_HelpersTexture != 0)
+        {
+            const fable_detail_tables::RedefineListDefinition& list =
+                fable_detail_tables::kRedefineList;
+            // The scroll atlas deliberately contains the neutral row art so
+            // the active hover strip remains live, just like page zero.
+            const fable_u32 row = g_RedefineHover - 1;
+            const float rowTop =
+                top + static_cast<float>(list.hoverY + row * list.rowStep) *
+                    designScaleY;
+            const float stripTop =
+                static_cast<float>(
+                    list.helperFrame * list.helperFrameHeight +
+                    row * list.hoverHeight);
+            AppendVisualQuad(
+                vertices, vertexCount, records, recordCount,
+                g_HelpersTexture,
+                left + static_cast<float>(list.hoverX) * designScaleX,
+                rowTop,
+                left + static_cast<float>(list.hoverX + list.hoverWidth) *
+                    designScaleX,
+                rowTop + static_cast<float>(list.hoverHeight) * designScaleY,
+                0.0f,
+                stripTop / 2880.0f,
+                static_cast<float>(list.hoverWidth) / 640.0f,
+                (stripTop + list.hoverHeight) / 2880.0f,
+            0xFFFFFFFFu);
+        }
+    }
+    AppendRedefineActionText(
+        vertices,
+        vertexCount,
+        records,
+        recordCount,
+        left,
+        top,
+        designScaleX,
+        designScaleY);
+    AppendRedefineKeyText(
+        vertices,
+        vertexCount,
+        records,
+        recordCount,
+        left,
+        top,
+        designScaleX,
+        designScaleY);
+    if (
+        g_SaveMenuActive &&
+        g_OptionsTexture != 0 &&
+        g_OptionsWidth == 1664)
+    {
+        // Save names are runtime list children.  Keep the static component
+        // cell ring-free of labels and submit the retail ENG_ARIAL_16 glyph
+        // quads after the save base/highlight, matching the oracle's order.
+        for (fable_u32 row = 0; row != 4; ++row)
+        {
+            AppendProfileNameText(
+                vertices,
+                vertexCount,
+                records,
+                recordCount,
+                kVisualSaveRowNames[row],
+                134.0f,
+                90.0f + static_cast<float>(row) * 30.0f,
+                left,
+                top,
+                designScaleX,
+                designScaleY);
+        }
+        // UI_TEXT_AREA is two asymmetric CTable horizontals.  Keep the
+        // decoded source sprites in the atlas tail and reproduce the exact
+        // authored spans: left 8 + 280 + 128 at x=0, right 128 + 40 + 8 at
+        // x=463, all at design y=254.
+        const float textAreaTop =
+            titleTop + 254.0f * designScaleY;
+        const float textAreaBottom =
+            titleTop + 318.0f * designScaleY;
+        const float textAreaInvW =
+            1.0f / static_cast<float>(g_OptionsWidth);
+        const float textAreaInvH =
+            1.0f / static_cast<float>(g_OptionsHeight);
+        // UI_TITLE_AREA uses the same authored spans at design y=35, with
+        // the recovered TL/TR corner sprites.
+        const float titleAreaTop =
+            titleTop + 35.0f * designScaleY;
+        const float titleAreaBottom =
+            titleTop + 99.0f * designScaleY;
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            titleLeft,
+            titleAreaTop,
+            titleLeft + 8.0f * designScaleX,
+            titleAreaBottom,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY) * textAreaInvH,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX + 8) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
+            0xFFFFFFFFu);
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            titleLeft + 8.0f * designScaleX,
+            titleAreaTop,
+            titleLeft + 288.0f * designScaleX,
+            titleAreaBottom,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY) * textAreaInvH,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX + 8) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
+            0xFFFFFFFFu);
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            titleLeft + 288.0f * designScaleX,
+            titleAreaTop,
+            titleLeft + 416.0f * designScaleX,
+            titleAreaBottom,
+            static_cast<float>(kSaveTitleAreaTlAtlasX) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY) * textAreaInvH,
+            static_cast<float>(kSaveTitleAreaTlAtlasX + 128) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
+            0xFFFFFFFFu);
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            titleLeft + 463.0f * designScaleX,
+            titleAreaTop,
+            titleLeft + 591.0f * designScaleX,
+            titleAreaBottom,
+            static_cast<float>(kSaveTitleAreaTrAtlasX) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY) * textAreaInvH,
+            static_cast<float>(kSaveTitleAreaTrAtlasX + 128) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
+            0xFFFFFFFFu);
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            titleLeft + 591.0f * designScaleX,
+            titleAreaTop,
+            titleLeft + 631.0f * designScaleX,
+            titleAreaBottom,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY) * textAreaInvH,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX + 8) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
+            0xFFFFFFFFu);
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            titleLeft + 631.0f * designScaleX,
+            titleAreaTop,
+            titleLeft + 639.0f * designScaleX,
+            titleAreaBottom,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY) * textAreaInvH,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX + 8) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
+            0xFFFFFFFFu);
+        // Retail titles this screen "<profile> - Load Game" (matching the
+        // "<profile> - Gameplay Options" detail titles), not "Saved Games". The
+        // prefix appears once a profile has been selected after the title screen
+        // (retail's flow); with no active profile it is just "Load Game".
+        char saveTitle[128] = {};
+        if (g_ActiveProfileName[0] != 0)
+        {
+            strcpy(saveTitle, g_ActiveProfileName);
+            strcat(saveTitle, " - ");
+        }
+        strcat(saveTitle, "Load Game");
+        AppendDetailTitleGlyphText(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            saveTitle,
+            65.0f,
+            44.0f,
+            left,
+            top,
+            designScaleX,
+            designScaleY,
+            2.0f / 3.0f,
+            false,
+            0xFFFFFFFFu,
+            true);
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            titleLeft,
+            textAreaTop,
+            titleLeft + 8.0f * designScaleX,
+            textAreaBottom,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY) * textAreaInvH,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX + 8) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
+            0xFFFFFFFFu);
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            titleLeft + 8.0f * designScaleX,
+            textAreaTop,
+            titleLeft + 288.0f * designScaleX,
+            textAreaBottom,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY) * textAreaInvH,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX + 8) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
+            0xFFFFFFFFu);
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            titleLeft + 288.0f * designScaleX,
+            textAreaTop,
+            titleLeft + 416.0f * designScaleX,
+            textAreaBottom,
+            static_cast<float>(kSaveTextAreaBlAtlasX) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY) * textAreaInvH,
+            static_cast<float>(kSaveTextAreaBlAtlasX + 128) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
+            0xFFFFFFFFu);
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            titleLeft + 463.0f * designScaleX,
+            textAreaTop,
+            titleLeft + 591.0f * designScaleX,
+            textAreaBottom,
+            static_cast<float>(kSaveTextAreaBrAtlasX) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY) * textAreaInvH,
+            static_cast<float>(kSaveTextAreaBrAtlasX + 128) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
+            0xFFFFFFFFu);
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            titleLeft + 591.0f * designScaleX,
+            textAreaTop,
+            titleLeft + 631.0f * designScaleX,
+            textAreaBottom,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY) * textAreaInvH,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX + 8) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
+            0xFFFFFFFFu);
+        AppendVisualQuad(
+            vertices, vertexCount, records, recordCount,
+            g_OptionsTexture,
+            titleLeft + 631.0f * designScaleX,
+            textAreaTop,
+            titleLeft + 639.0f * designScaleX,
+            textAreaBottom,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY) * textAreaInvH,
+            static_cast<float>(kSaveTextAreaMiddleAtlasX + 8) * textAreaInvW,
+            static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
+            0xFFFFFFFFu);
+        const char* saveProfileName =
+            g_ActiveProfileName[0] != 0
+                ? g_ActiveProfileName
+                : "Cornelio";
+        AppendDetailTitleGlyphText(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            "File Information",
+            65.0f,
+            261.0f,
+            left,
+            top,
+            designScaleX,
+            designScaleY,
+            2.0f / 3.0f,
+            false,
+            0xFFFFFFFFu,
+            true);
+        // UI_TEXT_BOTTOM is the authored 8x8 horizontal rule stretched to
+        // 160x1 at design (0,404). Its source lives beside the bottom
+        // backdrop in the component-atlas tail and is submitted with the
+        // live File Information layer, matching the retail child order.
+        AppendVisualQuad(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            g_OptionsTexture,
+            titleLeft,
+            titleTop + 404.0f * designScaleY,
+            titleLeft + 160.0f * designScaleX,
+            titleTop + 405.0f * designScaleY,
+            static_cast<float>(kSaveTextBottomAtlasX) /
+                static_cast<float>(g_OptionsWidth),
+            static_cast<float>(kSaveTextBottomAtlasY) /
+                static_cast<float>(g_OptionsHeight),
+            static_cast<float>(kSaveTextBottomAtlasX + 8) /
+                static_cast<float>(g_OptionsWidth),
+            static_cast<float>(kSaveTextBottomAtlasY + 8) /
+                static_cast<float>(g_OptionsHeight),
+            0xFFFFFFFFu);
+        AppendProfileNameText(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            saveProfileName,
+            95.0f +
+                static_cast<float>(ProfileGlyphTextAdvance(saveProfileName)) *
+                0.5f,
+            293.0f,
+            left,
+            top,
+            designScaleX,
+            designScaleY);
+        // HUD_TEXTBOX_BACK_FE is authored as a 4x4 half-alpha texture scaled
+        // to the 640x248 bottom panel.  Keep its source in the component
+        // atlas tail and submit the authored screen quad live, after runtime
+        // File Information text and before the common helper/viewport layers.
+        AppendVisualQuad(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            g_OptionsTexture,
+            titleLeft,
+            titleTop + 292.0f * designScaleY,
+            titleLeft + 640.0f * designScaleX,
+            titleTop + 540.0f * designScaleY,
+            static_cast<float>(kSaveBottomBackdropAtlasX) /
+                static_cast<float>(g_OptionsWidth),
+            static_cast<float>(kSaveBottomBackdropAtlasY) /
+                static_cast<float>(g_OptionsHeight),
+            static_cast<float>(kSaveBottomBackdropAtlasX + 4) /
+                static_cast<float>(g_OptionsWidth),
+            static_cast<float>(kSaveBottomBackdropAtlasY + 4) /
+                static_cast<float>(g_OptionsHeight),
             0xFFFFFFFFu);
     }
     if (
@@ -2813,38 +4453,76 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         g_OptionsTexture != 0 &&
         g_OptionsWidth == 1664)
     {
-        // UI_FRONTEND_LIST_FOR_PROFILES is a Type-43 runtime list. Its
-        // frontend.bin serializes PositionOffsetY=28 for this Type-43 list;
-        // names remain supplied by the profile store.
-        // The authored list viewport is 260px high, so only nine rows may be
-        // emitted. Keep the selected row in view as the list scrolls rather
-        // than appending off-screen glyph records for every stored profile.
-        const fable_u32 visibleRows = 9;
+        // The normal list is materialised by RefreshAvailableProfiles:
+        // action 0x125/New Profile at y=0, followed by profile buttons at
+        // y=50, +30.  Delete uses the separate list rooted at y=180 and its
+        // FrontEndProfileSpacing value.  Keep names as live glyph quads.
+        const fable_u32 itemCount = ProfileListItemCount();
+        const fable_u32 visibleRows =
+            g_ProfilesMode == FableFrontendProfilesDelete ? 7 : 9;
         fable_u32 firstRow = 0;
         if (g_ProfileSelection >= visibleRows)
             firstRow = g_ProfileSelection - visibleRows + 1;
         for (fable_u32 displayRow = 0; displayRow != visibleRows; ++displayRow)
         {
-            const fable_u32 row = firstRow + displayRow;
-            if (row >= g_ProfileNameCount)
+            const fable_u32 item = firstRow + displayRow;
+            if (item >= itemCount)
                 break;
+            const char* rowText = 0;
+            if (
+            g_ProfilesMode == FableFrontendProfilesNormal &&
+                item == 0)
+            {
+                rowText = kRetailNewProfileLabel;
+            }
+            else
+            {
+                const fable_u32 profileIndex =
+                    g_ProfilesMode == FableFrontendProfilesNormal
+                        ? item - 1
+                        : item;
+                rowText = g_ProfileNames[profileIndex];
+            }
             AppendProfileNameText(
                 vertices,
                 vertexCount,
                 records,
                 recordCount,
-                g_ProfileNames[row],
+                rowText,
                 320.0f,
-                120.0f + static_cast<float>(
-                    displayRow * FableFrontendProfileRowStep),
+                ProfileListVisibleItemY(item, firstRow),
                 left,
                 top,
                 designScaleX,
                 designScaleY);
         }
     }
+    if (
+        g_ProfilesMenuActive &&
+        g_OptionsTexture != 0 &&
+        g_OptionsWidth == 1664 &&
+        g_ProfilesMode == FableFrontendProfilesNew)
+    {
+        // UI_NEW_PROFILE_TEXT is the authored edit child.  The keyboard owns
+        // the string; this quad only exposes that runtime value through the
+        // retail font atlas while the virtual-keyboard route is active.
+        AppendProfileNameText(
+            vertices,
+            vertexCount,
+            records,
+            recordCount,
+            g_ProfileEditText,
+            320.0f,
+            200.0f,
+            left,
+            top,
+            designScaleX,
+            designScaleY);
+    }
     if ((g_OptionsMenuActive || g_SaveMenuActive || g_AboutMenuActive ||
-         g_CreditsMenuActive || g_ProfilesMenuActive) &&
+         g_CreditsMenuActive ||
+         (g_ProfilesMenuActive &&
+          g_ProfilesMode != FableFrontendProfilesDeleteConfirm)) &&
         g_HelpersTexture != 0)
     {
         const fable_u32 helperFrame =
@@ -2910,10 +4588,10 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
                 0xFFFFFFFFu);
         }
     }
-    FableRender2DPlanEvent planEvents[2048];
+    FableRender2DPlanEvent planEvents[4096];
     FableRender2DPlanOutput plan = {
         planEvents,
-        2048,
+        4096,
         0,
         false
     };
@@ -2948,7 +4626,25 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         return false;
     }
 
-    Render2DAdapterFlush flushes[8];
+    // The retail frontend maps its 640x480-class artwork onto the full display
+    // (designScaleX/Y are non-uniform and non-integer at 1280x720). D3D9's
+    // default POINT sampler duplicates texel columns/rows under that stretch,
+    // which shows up as a doubled/ghosted echo on every glyph. Retail samples
+    // the frontend bilinearly, so force LINEAR min/mag filtering on stage 0 to
+    // reproduce its smooth scale and kill the text ghosting.
+    // D3DSAMP_MAGFILTER=5, D3DSAMP_MINFILTER=6, D3DTEXF_LINEAR=2.
+    {
+        FableD3DSetStageState setSamplerState =
+            reinterpret_cast<FableD3DSetStageState>(
+                g_Device->vtable[69]);
+        setSamplerState(g_Device, 0, 5, 2);
+        setSamplerState(g_Device, 0, 6, 2);
+    }
+
+    // Redefine's scrolled page atlas introduces an additional texture between
+    // helper and live-text batches. Keep enough flush slots for that page
+    // path instead of aborting after the target has already been cleared.
+    Render2DAdapterFlush flushes[16];
     fable_u32 flushCount = 0;
     fable_u32 currentTexture = 0;
     for (fable_u32 eventIndex = 0;
@@ -2963,7 +4659,7 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         }
         else if (event.kind == FABLE_RENDER2D_PLAN_FLUSH)
         {
-            if (flushCount >= 8)
+            if (flushCount >= 16)
             {
                 endScene(g_Device);
                 return false;
@@ -3105,6 +4801,7 @@ void FABLE_FASTCALL FableShutdownVisualD3D9()
     ReleaseObject(g_AboutTexture);
     ReleaseObject(g_CreditsTexture);
     ReleaseObject(g_ProfilesTexture);
+    ReleaseObject(g_RedefineScrollPagesTexture);
     ReleaseObject(g_HelpersTexture);
     ReleaseObject(g_OptionsTexture);
     ReleaseObject(g_CoastalSunbeamTexture);
@@ -3135,6 +4832,8 @@ void FABLE_FASTCALL FableShutdownVisualD3D9()
     g_MenuHeight = 0;
     g_OptionsWidth = 0;
     g_OptionsHeight = 0;
+    g_RedefineScrollPagesWidth = 0;
+    g_RedefineScrollPagesHeight = 0;
     g_TitleSegmentWidth = 0;
     g_TitleSegmentHeight = 0;
     g_AnimationStartTick = 0;
@@ -3159,7 +4858,13 @@ void FABLE_FASTCALL FableShutdownVisualD3D9()
     g_SaveMenuActive = false;
     g_OptionsBackHovered = false;
     g_QuitPromptActive = false;
+    g_VisualFrontendAnimationStatic = false;
     g_Presented = false;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendAnimationStatic(bool active)
+{
+    g_VisualFrontendAnimationStatic = active;
 }
 
 void FABLE_FASTCALL FableSetVisualFrontendMainMenu(bool active)
@@ -3199,12 +4904,12 @@ void FABLE_FASTCALL FableSetVisualFrontendMainMenu(bool active)
 void FABLE_FASTCALL FableSetVisualFrontendMainMenuSelection(
     fable_u32 selection)
 {
-    if (!g_MainMenuActive || selection >= 7)
+    if (!g_MainMenuActive || selection >= FableFrontendMainMenuVisibleRows)
         return;
     if (selection == g_MainMenuSelection)
         return;
-    ApplyMainMenuRowState(g_MainMenuSelection, 4);
-    ApplyMainMenuRowState(selection, 3);
+    ApplyMainMenuRowState(MainMenuRetailChild(g_MainMenuSelection), 4);
+    ApplyMainMenuRowState(MainMenuRetailChild(selection), 3);
     g_MainMenuSelection = selection;
 }
 
@@ -3221,14 +4926,14 @@ bool FABLE_FASTCALL FableScrollVisualFrontendMainMenu(
         g_MainMenuSelection;
     FableUiFrontEndListScrollPlan plan = {};
     const bool moved = FableApplyUiFrontEndListScroll(
-            scrollDown,
-            true,
-            0,
-            g_MainMenuRowChildren,
-            7,
-            7,
-            static_cast<long>(g_MainMenuSelection),
-            &plan);
+        scrollDown,
+        true,
+        0,
+        g_MainMenuRowChildren,
+        FableFrontendMainMenuVisibleRows,
+        FableFrontendMainMenuVisibleRows,
+        static_cast<long>(g_MainMenuSelection),
+        &plan);
     if (soundRequest != 0)
         *soundRequest = static_cast<fable_u32>(plan.soundRequest);
     if (!moved)
@@ -3237,8 +4942,10 @@ bool FABLE_FASTCALL FableScrollVisualFrontendMainMenu(
     }
     g_MainMenuSelection =
         static_cast<fable_u32>(plan.selectedChild);
-    ApplyMainMenuRowState(previousSelection, 4);
-    ApplyMainMenuRowState(g_MainMenuSelection, 3);
+    ApplyMainMenuRowState(MainMenuRetailChild(previousSelection), 4);
+    ApplyMainMenuRowState(
+        MainMenuRetailChild(g_MainMenuSelection),
+        3);
     *selected = g_MainMenuSelection;
     return true;
 }
@@ -3339,9 +5046,11 @@ void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen)
     g_RedefineHover = 0;
     g_RedefineResetHover = 0;
     g_DetailButtonHover = 0;
+    g_DetailApplyEnabled = false;
     g_DetailArrowHoverRow = 0;
     g_DetailArrowHoverSide = 0;
     g_RedefineSelection = 0;
+    g_RedefineListSelection = 0;
     if (screen != 0)
     {
         g_MainMenuActive = false;
@@ -3361,8 +5070,8 @@ void FABLE_FASTCALL FableSetVisualFrontendDetailOptionValue(
         return;
     const fable_u32 screenIndex = screen - 1;
     if (
-        row >= kDetailRowCounts[screenIndex] ||
-        value >= kDetailValueCounts[screenIndex][row])
+        row >= kDetailScreens[screenIndex].rowCount ||
+        value >= kDetailScreens[screenIndex].rows[row].valueCount)
     {
         return;
     }
@@ -3396,6 +5105,12 @@ void FABLE_FASTCALL FableSetVisualFrontendDetailButtonHover(
     g_DetailButtonHover = hover;
 }
 
+void FABLE_FASTCALL FableSetVisualFrontendDetailApplyEnabled(
+    bool enabled)
+{
+    g_DetailApplyEnabled = enabled;
+}
+
 void FABLE_FASTCALL FableSetVisualFrontendDetailArrowHover(
     fable_u32 row,
     fable_u32 side)
@@ -3406,7 +5121,7 @@ void FABLE_FASTCALL FableSetVisualFrontendDetailArrowHover(
     if (g_DetailScreen < 1 || g_DetailScreen > 3 || side > 2)
         return;
     const fable_u32 screenIndex = g_DetailScreen - 1;
-    if (row >= kDetailRowCounts[screenIndex])
+    if (row >= kDetailScreens[screenIndex].rowCount)
         return;
     g_DetailArrowHoverRow = row;
     g_DetailArrowHoverSide = side;
@@ -3420,14 +5135,26 @@ void FABLE_FASTCALL FableSetVisualFrontendRedefineSelection(
     g_RedefineSelection = selection;
 }
 
+void FABLE_FASTCALL FableSetVisualFrontendRedefineListSelection(
+    fable_u32 selection)
+{
+    // CRedefinerList owns 31 logical ActionOrder children.  The active
+    // capture selection remains a separate 1..9 visible-row state.
+    if (g_DetailScreen != 4 || selection >= 31)
+        return;
+    g_RedefineListSelection = selection;
+}
+
 void FABLE_FASTCALL FableSetVisualFrontendRedefineKey(
     fable_u32 row,
     fable_u32 keyValue)
 {
     if (
         g_DetailScreen != 4 ||
-        row >= 9 ||
-        keyValue >= kRedefineKeyValueCount ||
+        row >= kRedefineExpandedRowCount ||
+        (
+            keyValue >= kRedefineKeyValueCount &&
+            keyValue != kRedefineUnresolvedKeyValue) ||
         keyValue == 7)
     {
         return;
@@ -3525,21 +5252,71 @@ void FABLE_FASTCALL FableSetVisualFrontendProfilesMenu(
         for (fable_u32 i = 0; i != g_ProfileNameCount; ++i)
             g_ProfileNames[i] = names != 0 ? names[i] : 0;
         g_ProfileSelection = 0;
+        g_ProfilesMode =
+            g_ProfileNameCount == 0
+                ? FableFrontendProfilesEmpty
+                : FableFrontendProfilesNormal;
+        memset(g_ProfileEditText, 0, sizeof(g_ProfileEditText));
     }
     else
     {
         g_ProfileNameCount = 0;
         g_ProfileSelection = 0;
+        g_ProfilesMode = FableFrontendProfilesNormal;
+        memset(g_ProfileEditText, 0, sizeof(g_ProfileEditText));
     }
     g_AnimationStartTick = 0;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendActiveProfile(
+    const char* name)
+{
+    memset(g_ActiveProfileName, 0, sizeof(g_ActiveProfileName));
+    if (name == 0)
+        return;
+    for (fable_u32 i = 0;
+         i + 1 < sizeof(g_ActiveProfileName) && name[i] != 0;
+         ++i)
+    {
+        g_ActiveProfileName[i] = name[i];
+    }
 }
 
 void FABLE_FASTCALL FableSetVisualFrontendProfilesSelection(
     fable_u32 selection)
 {
-    if (!g_ProfilesMenuActive || selection >= g_ProfileNameCount)
+    if (!g_ProfilesMenuActive || selection >= ProfileListItemCount())
         return;
     g_ProfileSelection = selection;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendProfilesMode(
+    fable_u32 mode)
+{
+    if (!g_ProfilesMenuActive || mode > FableFrontendProfilesDeleteConfirm)
+        return;
+    g_ProfilesMode = mode;
+    g_ProfileSelection = 0;
+    g_AnimationStartTick = 0;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendProfileEditText(
+    const char* text)
+{
+    if (!g_ProfilesMenuActive ||
+        g_ProfilesMode != FableFrontendProfilesNew)
+    {
+        return;
+    }
+    memset(g_ProfileEditText, 0, sizeof(g_ProfileEditText));
+    if (text == 0)
+        return;
+    for (fable_u32 i = 0; i + 1 < sizeof(g_ProfileEditText) && text[i] != 0; ++i)
+    {
+        const unsigned char character =
+            static_cast<unsigned char>(text[i]);
+        g_ProfileEditText[i] = static_cast<char>(character);
+    }
 }
 
 void FABLE_FASTCALL FableSetVisualFrontendQuitHover(fable_u32 hover)

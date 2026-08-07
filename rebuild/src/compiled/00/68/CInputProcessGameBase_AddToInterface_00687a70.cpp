@@ -1,0 +1,2 @@
+struct CInputProcessManager; struct S { char pad[0x24]; void* f24; bool AddToInterface(CInputProcessManager* m); bool Helper(CInputProcessManager* m); };
+bool S::AddToInterface(CInputProcessManager* m){ this->f24 = m; return this->Helper(m); }

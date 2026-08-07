@@ -5424,11 +5424,11 @@
       "address": "0x008A9100",
       "class_name": "",
       "function_name": "?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z",
-      "success": false,
-      "rounds_used": 4,
-      "verdict": "FAIL",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
       "parity_status": "red",
-      "timestamp": "2026-08-01T09:14:07"
+      "timestamp": "2026-08-05T09:59:33"
     },
     "0089f300": {
       "address": "0x0089F300",
@@ -5498,7 +5498,7 @@
       "rounds_used": 4,
       "verdict": "FAIL",
       "parity_status": "red",
-      "timestamp": "2026-08-01T09:29:49"
+      "timestamp": "2026-08-05T10:42:23"
     },
     "008a9c40": {
       "address": "0x008A9C40",
@@ -8049,6 +8049,386 @@
       "verdict": "PASS",
       "parity_status": "yellow",
       "timestamp": "2026-07-31T15:36:28"
+    },
+    "00449960": {
+      "address": "0x00449960",
+      "class_name": "",
+      "function_name": "Catch@0040d959",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:40:45"
+    },
+    "00449970": {
+      "address": "0x00449970",
+      "class_name": "",
+      "function_name": "Catch@0040d959",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:41:23"
+    },
+    "00449980": {
+      "address": "0x00449980",
+      "class_name": "",
+      "function_name": "Catch@0042ae0a",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:42:03"
+    },
+    "0044a1a0": {
+      "address": "0x0044A1A0",
+      "class_name": "",
+      "function_name": "CPlayerManager_AddPlayerOrAI",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-03T13:44:38"
+    },
+    "0044be80": {
+      "address": "0x0044BE80",
+      "class_name": "",
+      "function_name": "Vector_InsertWithBuffer",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-03T13:45:28"
+    },
+    "004502eb": {
+      "address": "0x004502EB",
+      "class_name": "",
+      "function_name": "__EH_epilog3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-03T13:45:55"
+    },
+    "0045036f": {
+      "address": "0x0045036F",
+      "class_name": "",
+      "function_name": "__EH_epilog3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-03T13:46:25"
+    },
+    "00450ccc": {
+      "address": "0x00450CCC",
+      "class_name": "",
+      "function_name": "Buffer_InitializeWithSize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-03T13:47:05"
+    },
+    "00450d90": {
+      "address": "0x00450D90",
+      "class_name": "",
+      "function_name": "LinkedList_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:47:41"
+    },
+    "00450e3a": {
+      "address": "0x00450E3A",
+      "class_name": "",
+      "function_name": "Array_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-03T13:48:23"
+    },
+    "00450e6e": {
+      "address": "0x00450E6E",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:48:47"
+    },
+    "00450ebb": {
+      "address": "0x00450EBB",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_B",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:49:12"
+    },
+    "00450f08": {
+      "address": "0x00450F08",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_C",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:49:42"
+    },
+    "00450f2c": {
+      "address": "0x00450F2C",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_D",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:50:09"
+    },
+    "00450f79": {
+      "address": "0x00450F79",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_E",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:50:41"
+    },
+    "00450fd5": {
+      "address": "0x00450FD5",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_F",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:51:07"
+    },
+    "00451022": {
+      "address": "0x00451022",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_G",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:10:46"
+    },
+    "0045106f": {
+      "address": "0x0045106F",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_H",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:11:18"
+    },
+    "004510e8": {
+      "address": "0x004510E8",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_I",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:11:46"
+    },
+    "00451135": {
+      "address": "0x00451135",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_J",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:12:17"
+    },
+    "00451182": {
+      "address": "0x00451182",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_K",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:12:44"
+    },
+    "004511cf": {
+      "address": "0x004511CF",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_L",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:13:14"
+    },
+    "0045121c": {
+      "address": "0x0045121C",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_M",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:13:47"
+    },
+    "00451269": {
+      "address": "0x00451269",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_N",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:14:16"
+    },
+    "004512b6": {
+      "address": "0x004512B6",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_O",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:14:42"
+    },
+    "00451303": {
+      "address": "0x00451303",
+      "class_name": "",
+      "function_name": "CList_AllocateNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:15:09"
+    },
+    "00451583": {
+      "address": "0x00451583",
+      "class_name": "",
+      "function_name": "VertexListInsertVertices",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-03T14:15:49"
+    },
+    "0045170f": {
+      "address": "0x0045170F",
+      "class_name": "",
+      "function_name": "ListNode_Init",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:16:34"
+    },
+    "00451739": {
+      "address": "0x00451739",
+      "class_name": "",
+      "function_name": "ListNode_Init_B",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:17:19"
+    },
+    "0045177a": {
+      "address": "0x0045177A",
+      "class_name": "",
+      "function_name": "ListNode_Init_C",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:18:03"
+    },
+    "004517bb": {
+      "address": "0x004517BB",
+      "class_name": "",
+      "function_name": "ListNode_Init_D",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:18:44"
+    },
+    "004517e5": {
+      "address": "0x004517E5",
+      "class_name": "",
+      "function_name": "ListNode_Init_E",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:19:49"
+    },
+    "00451835": {
+      "address": "0x00451835",
+      "class_name": "",
+      "function_name": "ListNode_Init_F",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:41:19"
+    },
+    "00451876": {
+      "address": "0x00451876",
+      "class_name": "",
+      "function_name": "ListNode_Init_G",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:42:21"
+    },
+    "004518b7": {
+      "address": "0x004518B7",
+      "class_name": "",
+      "function_name": "ListNode_Init_H",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:43:37"
+    },
+    "00451916": {
+      "address": "0x00451916",
+      "class_name": "",
+      "function_name": "ListNode_Init_I",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-04T20:26:02"
+    },
+    "00451957": {
+      "address": "0x00451957",
+      "class_name": "",
+      "function_name": "ListNode_Init_J",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-04T20:41:28"
+    },
+    "00451998": {
+      "address": "0x00451998",
+      "class_name": "",
+      "function_name": "ListNode_Init_K",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-04T20:55:57"
     }
   },
   "runs": [
@@ -16881,6 +17261,456 @@
       "verdict": "FAIL",
       "parity_status": "red",
       "timestamp": "2026-08-01T09:29:49"
+    },
+    {
+      "address": "0x008A9100",
+      "class_name": "",
+      "function_name": "?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T09:34:44"
+    },
+    {
+      "address": "0x008A9100",
+      "class_name": "",
+      "function_name": "?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T09:45:23"
+    },
+    {
+      "address": "0x008A86C0",
+      "class_name": "",
+      "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T10:03:13"
+    },
+    {
+      "address": "0x008A86C0",
+      "class_name": "",
+      "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T10:10:30"
+    },
+    {
+      "address": "0x00449960",
+      "class_name": "",
+      "function_name": "Catch@0040d959",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:40:45"
+    },
+    {
+      "address": "0x00449970",
+      "class_name": "",
+      "function_name": "Catch@0040d959",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:41:23"
+    },
+    {
+      "address": "0x00449980",
+      "class_name": "",
+      "function_name": "Catch@0042ae0a",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:42:03"
+    },
+    {
+      "address": "0x0044A1A0",
+      "class_name": "",
+      "function_name": "CPlayerManager_AddPlayerOrAI",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-03T13:44:38"
+    },
+    {
+      "address": "0x0044BE80",
+      "class_name": "",
+      "function_name": "Vector_InsertWithBuffer",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-03T13:45:28"
+    },
+    {
+      "address": "0x004502EB",
+      "class_name": "",
+      "function_name": "__EH_epilog3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-03T13:45:55"
+    },
+    {
+      "address": "0x0045036F",
+      "class_name": "",
+      "function_name": "__EH_epilog3",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "yellow",
+      "timestamp": "2026-08-03T13:46:25"
+    },
+    {
+      "address": "0x00450CCC",
+      "class_name": "",
+      "function_name": "Buffer_InitializeWithSize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-03T13:47:05"
+    },
+    {
+      "address": "0x00450D90",
+      "class_name": "",
+      "function_name": "LinkedList_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:47:41"
+    },
+    {
+      "address": "0x00450E3A",
+      "class_name": "",
+      "function_name": "Array_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-03T13:48:23"
+    },
+    {
+      "address": "0x00450E6E",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:48:47"
+    },
+    {
+      "address": "0x00450EBB",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_B",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:49:12"
+    },
+    {
+      "address": "0x00450F08",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_C",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:49:42"
+    },
+    {
+      "address": "0x00450F2C",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_D",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:50:09"
+    },
+    {
+      "address": "0x00450F79",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_E",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:50:41"
+    },
+    {
+      "address": "0x00450FD5",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_F",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T13:51:07"
+    },
+    {
+      "address": "0x00451022",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_G",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:10:46"
+    },
+    {
+      "address": "0x0045106F",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_H",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:11:18"
+    },
+    {
+      "address": "0x004510E8",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_I",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:11:46"
+    },
+    {
+      "address": "0x00451135",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_J",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:12:17"
+    },
+    {
+      "address": "0x00451182",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_K",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:12:44"
+    },
+    {
+      "address": "0x004511CF",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_L",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:13:14"
+    },
+    {
+      "address": "0x0045121C",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_M",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:13:47"
+    },
+    {
+      "address": "0x00451269",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_N",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:14:16"
+    },
+    {
+      "address": "0x004512B6",
+      "class_name": "",
+      "function_name": "ListNode_AllocateNode_Variant_O",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:14:42"
+    },
+    {
+      "address": "0x00451303",
+      "class_name": "",
+      "function_name": "CList_AllocateNode",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:15:09"
+    },
+    {
+      "address": "0x00451583",
+      "class_name": "",
+      "function_name": "VertexListInsertVertices",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-03T14:15:49"
+    },
+    {
+      "address": "0x0045170F",
+      "class_name": "",
+      "function_name": "ListNode_Init",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:16:34"
+    },
+    {
+      "address": "0x00451739",
+      "class_name": "",
+      "function_name": "ListNode_Init_B",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:17:19"
+    },
+    {
+      "address": "0x0045177A",
+      "class_name": "",
+      "function_name": "ListNode_Init_C",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:18:03"
+    },
+    {
+      "address": "0x004517BB",
+      "class_name": "",
+      "function_name": "ListNode_Init_D",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:18:44"
+    },
+    {
+      "address": "0x004517E5",
+      "class_name": "",
+      "function_name": "ListNode_Init_E",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:19:49"
+    },
+    {
+      "address": "0x00451835",
+      "class_name": "",
+      "function_name": "ListNode_Init_F",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:41:19"
+    },
+    {
+      "address": "0x00451876",
+      "class_name": "",
+      "function_name": "ListNode_Init_G",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:42:21"
+    },
+    {
+      "address": "0x004518B7",
+      "class_name": "",
+      "function_name": "ListNode_Init_H",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-03T14:43:37"
+    },
+    {
+      "address": "0x00451916",
+      "class_name": "",
+      "function_name": "ListNode_Init_I",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-04T20:26:02"
+    },
+    {
+      "address": "0x00451957",
+      "class_name": "",
+      "function_name": "ListNode_Init_J",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-04T20:41:28"
+    },
+    {
+      "address": "0x00451998",
+      "class_name": "",
+      "function_name": "ListNode_Init_K",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-04T20:55:57"
+    },
+    {
+      "address": "0x008A9100",
+      "class_name": "",
+      "function_name": "?CreateCreature@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0_N@Z",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-05T09:59:33"
+    },
+    {
+      "address": "0x008A86C0",
+      "class_name": "",
+      "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-05T10:33:35"
+    },
+    {
+      "address": "0x008A86C0",
+      "class_name": "",
+      "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-05T10:42:23"
     }
   ]
 }

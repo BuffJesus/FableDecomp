@@ -16,6 +16,8 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     CONTROL_ATLAS_COLUMNS,
     CONTROL_TILE_SIZE,
     CONTROL_VALUE_GROUPS,
+    DETAIL_TITLE_GLYPH_ATLAS_ORIGIN,
+    DETAIL_TITLE_GLYPH_ATLAS_SIZE,
     DETAIL_SCREEN_COUNT,
     GAMEPLAY_CONTROL_VALUES,
     GAMEPLAY_ROWS,
@@ -28,11 +30,18 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     OPTIONS_SHEET_WIDTH,
     OPTIONS_ROWS,
     PROFILE_GLYPH_ATLAS_ORIGIN,
+    REDEFINE_GLYPH_ATLAS_ORIGIN,
+    REDEFINE_GLYPH_ATLAS_SIZE,
     REDEFINE_ACTION_ORDER,
+    REDEFINE_ACTION_ENUM_NAMES,
+    REDEFINE_ACTION_DISPLAY_TEXT,
+    REDEFINE_ACTION_DEFAULT_INPUTS,
+    REDEFINE_ACTION_DISPLAY_INPUTS,
     REDEFINE_FULL_ACTION_ORDER,
     REDEFINE_HOVER_HELPER_FRAME,
     REDEFINE_HOVER_STRIP_SIZE,
     REDEFINE_ACTION_TEXT_OFFSET,
+    REDEFINE_ACTION_TEXT_SCALE,
     REDEFINE_KEY_TEXT_OFFSET,
     REDEFINE_TEXT_RENDER_Y_BIAS,
     REDEFINE_LIST_ORIGIN,
@@ -44,6 +53,13 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     REDEFINE_RESET_HOVER_SIZE,
     REDEFINE_TABLE_OFFSET,
     REDEFINE_ROWS,
+    REDEFINE_MATERIALIZED_ROWS,
+    REDEFINE_ACTION_MATERIALIZED_OFFSETS,
+    REDEFINE_SCROLL_PAGE_ATLAS_SIZE,
+    REDEFINE_SCROLL_PAGE_COLUMNS,
+    REDEFINE_SCROLL_PAGE_OFFSETS,
+    redefine_materialized_row_offset,
+    redefine_scrolled_rows,
     SAVE_BROWSER_ROWS,
     SAVE_COMPONENT_ATLAS_ORIGIN,
     SAVE_BROWSER_FRAME_COUNT,
@@ -63,16 +79,21 @@ from render_fable_frontend_subscreens import (  # noqa: E402
     _build_table_horizontal,
     build_options_row_layers,
     build_options_sheet,
+    build_redefine_frame,
+    build_redefine_scroll_pages,
     build_save_browser_frame,
     build_save_preview_viewport,
+    build_settings_frame,
     build_about_frame,
     build_credits_frame,
     build_profiles_frame,
+    build_profiles_screen_sheet,
     extract_credits_text_stream,
     validate_compiled_about_layout,
     validate_compiled_credits_layout,
     validate_compiled_profiles_layout,
     validate_compiled_subscreen_layout,
+    _redefine_materialized_key_text,
 )
 from render_fable_static_font import (  # noqa: E402
     add_outline,
@@ -102,14 +123,14 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
             ),
             OPTIONS_ROWS)
 
-    def test_screen_headers_share_the_design_canvas_center(self):
+    def test_screen_headers_use_the_serialized_left_origin(self):
         self.assertEqual((0, 35), HEADER_RULE_POSITION)
-        self.assertEqual((320, 44), HEADER_TEXT_POSITION)
+        self.assertEqual((65, 44), HEADER_TEXT_POSITION)
 
     @unittest.skipUnless(
         os.path.isfile(FONT_BANK),
         "retail font bank is not installed")
-    def test_every_detail_header_is_pixel_centered(self):
+    def test_every_detail_header_is_pixel_left_aligned(self):
         font = load_font(self.FONT_BANK, "ENG_ARIAL_24")
         for title in (
                 "Options",
@@ -123,17 +144,16 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
                     title,
                     (640, 480),
                     HEADER_TEXT_POSITION,
-                    "center",
+                    "left",
                     2.0 / 3.0),
                 1)
             bounds = line.getchannel("A").getbbox()
             self.assertIsNotNone(bounds, title)
-            # Odd-width glyph runs necessarily land half a pixel either side
-            # of x=320; no title may be farther away than that.
-            self.assertLessEqual(
-                abs((bounds[0] + bounds[2]) - 640),
-                1,
-                title)
+            # The retail text child is serialized at x=65 and rendered from
+            # that left origin; font bearings may extend the ink a few pixels
+            # to the left, but it must not be centered on the canvas.
+            self.assertLessEqual(bounds[0], 65, title)
+            self.assertGreater(bounds[2], 65, title)
 
     def test_title_rule_tiles_middle_to_compiled_width(self):
         left = Image.new("RGBA", (128, 64), (1, 0, 0, 255))
@@ -188,11 +208,72 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         self.assertEqual(
             (
                 ("Move Forward", "W"),
-                ("Move Back", "S"),
                 ("Move Left", "A"),
+                ("Move Backward", "S"),
                 ("Move Right", "D"),
             ),
             REDEFINE_ROWS[:4])
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend.big/fonts.big are not installed")
+    def test_component_detail_frames_leave_row_labels_for_live_text(self):
+        component_sheet = build_options_sheet(
+            self.FRONTEND_BANK,
+            self.FONT_BANK,
+            include_title_rule=False,
+            include_selected_button=False,
+            include_options_text=False,
+            include_options_row_atlas=True,
+            include_detail_title_text=False)
+        component_frame = component_sheet.crop((
+            0,
+            4 * 480,
+            640,
+            5 * 480))
+        row_ys = tuple(
+            90 + row * 30 for row in range(len(GAMEPLAY_ROWS)))
+        without_rows = build_settings_frame(
+            self.FRONTEND_BANK,
+            self.FONT_BANK,
+            "Gameplay Options",
+            GAMEPLAY_ROWS,
+            row_ys,
+            include_title_rule=False,
+            include_title_text=False,
+            include_row_text=False,
+            include_helper_text=False)
+        with_rows = build_settings_frame(
+            self.FRONTEND_BANK,
+            self.FONT_BANK,
+            "Gameplay Options",
+            GAMEPLAY_ROWS,
+            row_ys,
+            include_title_rule=False,
+            include_title_text=False,
+            include_row_text=True)
+        self.assertEqual(component_frame.tobytes(), without_rows.tobytes())
+        self.assertNotEqual(with_rows.tobytes(), without_rows.tobytes())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend.big/fonts.big are not installed")
+    def test_component_control_tiles_leave_string_values_for_live_text(self):
+        baked_sheet = build_options_sheet(
+            self.FRONTEND_BANK,
+            self.FONT_BANK)
+        component_sheet = build_options_sheet(
+            self.FRONTEND_BANK,
+            self.FONT_BANK,
+            include_title_rule=False,
+            include_selected_button=False,
+            include_options_text=False,
+            include_options_row_atlas=True,
+            include_detail_title_text=False)
+        baked_tile = baked_sheet.crop((640, 0, 840, 30))
+        component_tile = component_sheet.crop((640, 0, 840, 30))
+        self.assertNotEqual(baked_tile.tobytes(), component_tile.tobytes())
+        self.assertIsNotNone(component_tile.getchannel("A").getbbox())
 
     def test_full_redefine_action_order_is_the_decoded_31_entry_list(self):
         # UI_FRONTEND_LIST_REDEFINE_KEYS_MENU.ActionOrder decodes to 31 ids;
@@ -204,6 +285,90 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
             REDEFINE_FULL_ACTION_ORDER[:len(REDEFINE_ACTION_ORDER)])
         self.assertEqual(len(set(REDEFINE_FULL_ACTION_ORDER)),
                          len(REDEFINE_FULL_ACTION_ORDER))
+        self.assertEqual(set(REDEFINE_FULL_ACTION_ORDER),
+                         set(REDEFINE_ACTION_ENUM_NAMES))
+        self.assertEqual(set(REDEFINE_FULL_ACTION_ORDER),
+                         set(REDEFINE_ACTION_DISPLAY_TEXT))
+        self.assertEqual(set(REDEFINE_FULL_ACTION_ORDER),
+                         set(REDEFINE_ACTION_DEFAULT_INPUTS))
+        self.assertEqual(
+            "LEFT MOUSE BUTTON",
+            REDEFINE_ACTION_DISPLAY_INPUTS[9])
+        self.assertEqual(
+            "MIDDLE MOUSE BUTTON",
+            REDEFINE_ACTION_DISPLAY_INPUTS[7])
+        self.assertEqual("ENTER",
+                         REDEFINE_ACTION_DISPLAY_INPUTS[72])
+        self.assertEqual("PRNT SCRN",
+                         REDEFINE_ACTION_DISPLAY_INPUTS[53])
+        self.assertEqual("GAME_ACTION_MOVEMENT",
+                         REDEFINE_ACTION_ENUM_NAMES[60])
+        self.assertEqual("GAME_ACTION_TOGGLE_FIRST_PERSON_TARGETING",
+                         REDEFINE_ACTION_ENUM_NAMES[45])
+        self.assertEqual("Flourish", REDEFINE_ACTION_DISPLAY_TEXT[8])
+        self.assertEqual("Use Hotbar Item", REDEFINE_ACTION_DISPLAY_TEXT[55])
+        self.assertEqual(
+            ("K:W<0,+1>", "K:A<-1,0>", "K:S<0,-1>", "K:D<+1,0>"),
+            REDEFINE_ACTION_DEFAULT_INPUTS[60])
+        self.assertEqual(("K:RETURN", "K:ESC"),
+                         REDEFINE_ACTION_DEFAULT_INPUTS[72])
+        self.assertEqual(("K:0x54",), REDEFINE_ACTION_DEFAULT_INPUTS[99])
+
+    def test_redefine_action_order_expands_to_the_materialized_rows(self):
+        # Movement, context-sensitive items, and hotbar items expand into the
+        # generated visual children observed in the retail keybind captures.
+        self.assertEqual(44, len(REDEFINE_MATERIALIZED_ROWS))
+        self.assertEqual(
+            (60, 60, 60, 60, 9, 7, 8, 31, 45),
+            tuple(row[0] for row in REDEFINE_MATERIALIZED_ROWS[:9]))
+        self.assertEqual(
+            (6, 13, 14, 1, 32, 26, 86, 94, 78, 4, 113, 112, 72,
+             56, 56, 56, 92, 90, 96, 91, 97, 93, 98, 99, 100,
+             55, 55, 55, 55, 55, 55, 55, 55, 55, 53),
+            tuple(row[0] for row in REDEFINE_MATERIALIZED_ROWS[9:]))
+        self.assertEqual(
+            "Cycle Spells (Alternative To Mouse Wheel)",
+            REDEFINE_MATERIALIZED_ROWS[16][1])
+        self.assertEqual(
+            "Take Photojournal Photo",
+            REDEFINE_MATERIALIZED_ROWS[-1][1])
+        self.assertEqual("2", _redefine_materialized_key_text(35, 55))
+        self.assertEqual("9", _redefine_materialized_key_text(42, 55))
+        self.assertEqual("PRNT SCRN", _redefine_materialized_key_text(43, 53))
+        self.assertEqual(
+            (0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+             19, 20, 21, 22, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 43),
+            REDEFINE_ACTION_MATERIALIZED_OFFSETS)
+        self.assertEqual(4, redefine_materialized_row_offset(1))
+        self.assertEqual(43, redefine_materialized_row_offset(30))
+        self.assertEqual(
+            ((6, "Interact"), (13, "Unsheathe Melee Weapon")),
+            redefine_scrolled_rows(9)[:2])
+        self.assertEqual(
+            ((55, "Use Hotbar Item 8"), (55, "Use Hotbar Item 9"),
+             (53, "Take Photojournal Photo")),
+            redefine_scrolled_rows(35)[-3:])
+        with self.assertRaises(ValueError):
+            redefine_scrolled_rows(36)
+
+    def test_redefine_scroll_page_atlas_contract(self):
+        self.assertEqual(35, len(REDEFINE_SCROLL_PAGE_OFFSETS))
+        self.assertEqual(5, REDEFINE_SCROLL_PAGE_COLUMNS)
+        self.assertEqual((3200, 3360), REDEFINE_SCROLL_PAGE_ATLAS_SIZE)
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_redefine_scroll_page_atlas_materializes_all_pages(self):
+        atlas = build_redefine_scroll_pages(
+            self.FRONTEND_BANK,
+            self.FONT_BANK)
+        self.assertEqual(REDEFINE_SCROLL_PAGE_ATLAS_SIZE, atlas.size)
+        self.assertIsNotNone(
+            atlas.crop((0, 0, 640, 480)).getchannel("A").getbbox())
+        self.assertIsNotNone(
+            atlas.crop((4 * 640, 4 * 480, 5 * 640, 5 * 480))
+            .getchannel("A").getbbox())
 
     def test_save_browser_geometry_and_order_match_recovered_contract(self):
         self.assertEqual((10, 90), SAVE_LIST_ORIGIN)
@@ -216,9 +381,9 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         self.assertEqual(
             (
                 "AutoSave",
-                "Manual - Save1",
-                "Manual - Save2",
-                "Manual - Save3",
+                "Save 1",
+                "Save 2",
+                "Save 3",
             ),
             SAVE_BROWSER_ROWS)
 
@@ -268,6 +433,113 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         self.assertIsNotNone(band)
         text_center = (band[0] + band[2]) / 2.0
         self.assertAlmostEqual(text_center, highlight_center, delta=3)
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_component_save_cell_leaves_names_for_live_text(self):
+        oracle = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0, include_save_text=True)
+        component = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0, include_save_text=False)
+        # The component/atlas cell is the static save base.  Its row labels
+        # are submitted by the executable's ENG_ARIAL_16 glyph path instead.
+        diff = ImageChops.difference(
+            oracle.crop((0, SAVE_LIST_ORIGIN[1], 300, SAVE_LIST_ORIGIN[1] + SAVE_LIST_HEIGHT)),
+            component.crop((0, SAVE_LIST_ORIGIN[1], 300, SAVE_LIST_ORIGIN[1] + SAVE_LIST_HEIGHT)))
+        self.assertIsNotNone(diff.getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_component_save_cell_leaves_file_info_for_live_text(self):
+        oracle = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0,
+            include_save_info_text=True)
+        component = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0,
+            include_save_info_text=False)
+        # The File Information header/profile line are runtime values in the
+        # executable; the static component cell supplies only their backdrop.
+        diff = ImageChops.difference(
+            oracle.crop((0, 250, 300, 325)),
+            component.crop((0, 250, 300, 325)))
+        self.assertIsNotNone(diff.getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_component_save_cell_leaves_bottom_backdrop_for_live_quad(self):
+        oracle = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0,
+            include_bottom_backdrop=True)
+        component = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0,
+            include_bottom_backdrop=False)
+        diff = ImageChops.difference(
+            oracle.crop((0, SAVE_BOTTOM_BACKDROP_ORIGIN[1], 640, 480)),
+            component.crop((0, SAVE_BOTTOM_BACKDROP_ORIGIN[1], 640, 480)))
+        self.assertIsNotNone(diff.getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_component_save_cell_leaves_text_bottom_for_live_quad(self):
+        oracle = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0,
+            include_text_bottom=True)
+        component = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0,
+            include_text_bottom=False)
+        diff = ImageChops.difference(
+            oracle.crop((0, SAVE_TEXT_BOTTOM_ORIGIN[1], 200, 420)),
+            component.crop((0, SAVE_TEXT_BOTTOM_ORIGIN[1], 200, 420)))
+        self.assertIsNotNone(diff.getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_component_save_cell_leaves_text_area_for_live_table(self):
+        oracle = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0,
+            include_text_area=True)
+        component = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0,
+            include_text_area=False)
+        diff = ImageChops.difference(
+            oracle.crop((0, SAVE_TEXT_AREA_ORIGIN[1], 640, 325)),
+            component.crop((0, SAVE_TEXT_AREA_ORIGIN[1], 640, 325)))
+        self.assertIsNotNone(diff.getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_component_save_cell_leaves_title_area_for_live_table(self):
+        oracle = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0,
+            include_title_area=True)
+        component = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0,
+            include_title_area=False)
+        diff = ImageChops.difference(
+            oracle.crop((0, SAVE_TITLE_AREA_ORIGIN[1], 640, 110)),
+            component.crop((0, SAVE_TITLE_AREA_ORIGIN[1], 640, 110)))
+        self.assertIsNotNone(diff.getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_component_save_cell_leaves_title_text_for_live_glyphs(self):
+        oracle = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0,
+            include_save_title_text=True)
+        component = build_save_browser_frame(
+            self.FRONTEND_BANK, self.FONT_BANK, 0,
+            include_save_title_text=False)
+        diff = ImageChops.difference(
+            oracle.crop((0, 35, 240, 80)),
+            component.crop((0, 35, 240, 80)))
+        self.assertIsNotNone(diff.getbbox())
 
     def test_save_browser_renders_preview_viewport_ring(self):
         # UI_VIEW_RING_SMALL (serialized at 314,37) frames a region minimap in
@@ -331,6 +603,29 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         self.assertEqual((0, 254), SAVE_TEXT_AREA_ORIGIN)
 
     @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK),
+        "retail frontend bank is not installed")
+    def test_detail_and_redefine_tables_use_compiled_inner_spans(self):
+        buf, parsed = load_big(self.FRONTEND_BANK)
+        slots = (
+            _decode_named(buf, parsed, "FE_SLOT_TEST_L_OFF"),
+            _decode_named(buf, parsed, "FE_SLOT_TEST_M_OFF"),
+            _decode_named(buf, parsed, "FE_SLOT_TEST_R_OFF"),
+        )
+        bar = _decode_named(
+            buf, parsed, "FE_OPTIONS_HORIZONTAL_BAR_SPRITE")
+        detail_left = _build_table_horizontal(
+            slots[0], slots[1], slots[2], 180)
+        detail_right = _build_table_horizontal(bar, bar, bar, 120)
+        redefine_left = _build_table_horizontal(
+            slots[0], slots[1], slots[2], 280)
+        redefine_right = _build_table_horizontal(bar, bar, bar, 220)
+        self.assertEqual((304, 32), detail_left.size)
+        self.assertEqual((144, 32), detail_right.size)
+        self.assertEqual((408, 32), redefine_left.size)
+        self.assertEqual((240, 32), redefine_right.size)
+
+    @unittest.skipUnless(
         os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
         "retail frontend/font banks are not installed")
     def test_save_bottom_records_are_materialized_at_decoded_positions(self):
@@ -358,6 +653,8 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         # The ring ornament reaches every tile edge.
         self.assertEqual(
             (0, 0, 256, 256), panel.getchannel("A").getbbox())
+        self.assertEqual(0, panel.getpixel((0, 0))[3])
+        self.assertEqual(0, panel.getpixel((255, 255))[3])
 
     @unittest.skipUnless(
         os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
@@ -414,9 +711,12 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
                 % save_row)
 
     def test_compiled_video_defaults_seed_first_frame(self):
-        self.assertEqual(("Resolution", "1024 x 768", 0.0), VIDEO_ROWS[0])
-        self.assertEqual(("Anti-Aliasing", "OFF", 0.0), VIDEO_ROWS[2])
-        self.assertAlmostEqual(1.0 / 3.0, VIDEO_ROWS[3][2])
+        self.assertEqual(("Resolution", "2560X1440X32", 1.0 / 3.0), VIDEO_ROWS[0])
+        self.assertEqual(
+            ("1920X1080X32", "2560X1440X32", "3840X2160X32"),
+            VIDEO_CONTROL_VALUES[0])
+        self.assertEqual(("Anti-Aliasing", "8X", 0.0), VIDEO_ROWS[2])
+        self.assertAlmostEqual(1.0, VIDEO_ROWS[3][2])
 
     def test_compiled_audio_defaults_seed_profile_values(self):
         self.assertAlmostEqual(0.6, AUDIO_ROWS[0][2])
@@ -432,6 +732,9 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         self.assertEqual(10, len(GAMEPLAY_CONTROL_VALUES))
         self.assertEqual(3, len(AUDIO_CONTROL_VALUES))
         self.assertEqual(10, len(VIDEO_CONTROL_VALUES))
+        self.assertEqual(
+            (3, 4, 3, 4, 4, 4, 18, 2, 4, 3),
+            tuple(len(values) for values in VIDEO_CONTROL_VALUES))
         self.assertEqual(
             124,
             sum(
@@ -473,9 +776,73 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         self.assertEqual((-32, -2), REDEFINE_TABLE_OFFSET)
         self.assertEqual((368, -3), REDEFINE_RIGHT_SLOT_OFFSET)
         self.assertEqual((0, 3), REDEFINE_ACTION_TEXT_OFFSET)
+        self.assertEqual(9.0 / 8.0, REDEFINE_ACTION_TEXT_SCALE)
         self.assertEqual((380, 3), REDEFINE_KEY_TEXT_OFFSET)
         self.assertEqual((-40, 0), REDEFINE_MOUSE_OFFSET)
         self.assertEqual((600, 24), REDEFINE_MOUSE_SIZE)
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_redefine_initial_viewport_suppresses_top_arrow_and_warning(self):
+        frame = build_redefine_frame(
+            self.FRONTEND_BANK,
+            self.FONT_BANK,
+            include_key_text=False,
+            include_title_rule=False,
+            include_title_text=False)
+        self.assertIsNone(
+            frame.crop((304, 80, 336, 112)).getchannel("A").getbbox())
+        self.assertIsNone(
+            frame.crop((0, 360, 304, 389)).getchannel("A").getbbox())
+        self.assertIsNone(
+            frame.crop((336, 360, 640, 389)).getchannel("A").getbbox())
+        label_pixels = frame.crop((40, 115, 220, 145)).getdata()
+        self.assertTrue(
+            any(pixel[3] != 0 and min(pixel[:3]) > 220
+                for pixel in label_pixels))
+        cancel_pixels = frame.crop((60, 435, 235, 475)).getdata()
+        apply_pixels = frame.crop((400, 435, 580, 475)).getdata()
+        self.assertGreater(
+            max(min(pixel[:3]) for pixel in cancel_pixels if pixel[3]),
+            max(min(pixel[:3]) for pixel in apply_pixels if pixel[3]))
+        self.assertLessEqual(
+            max(min(pixel[:3]) for pixel in apply_pixels if pixel[3]),
+            128)
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
+    def test_redefine_scrolled_viewport_materializes_arrows_and_labels(self):
+        frame = build_redefine_frame(
+            self.FRONTEND_BANK,
+            self.FONT_BANK,
+            include_key_text=True,
+            include_title_rule=False,
+            include_title_text=False,
+            materialized_row_offset=9)
+        self.assertIsNotNone(
+            frame.crop((304, 80, 336, 112)).getchannel("A").getbbox())
+        self.assertIsNotNone(
+            frame.crop((304, 350, 336, 382)).getchannel("A").getbbox())
+        self.assertIsNotNone(
+            frame.crop((40, 115, 220, 145)).getchannel("A").getbbox())
+        self.assertIsNotNone(
+            frame.crop((40, 115 + 7 * REDEFINE_ROW_STEP_Y,
+                        360, 145 + 7 * REDEFINE_ROW_STEP_Y
+                        )).getchannel("A").getbbox())
+
+        last = build_redefine_frame(
+            self.FRONTEND_BANK,
+            self.FONT_BANK,
+            include_key_text=True,
+            include_title_rule=False,
+            include_title_text=False,
+            materialized_row_offset=35)
+        self.assertIsNotNone(
+            last.crop((304, 80, 336, 112)).getchannel("A").getbbox())
+        self.assertIsNone(
+            last.crop((304, 350, 336, 382)).getchannel("A").getbbox())
 
     @unittest.skipUnless(
         os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
@@ -513,11 +880,11 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
                     REDEFINE_TEXT_RENDER_Y_BIAS,
                 ),
                 "left",
-                2.0 / 3.0),
+                1.0),
             1)
         text_bounds = key_line.getchannel("A").getbbox()
         text_center_twice = text_bounds[1] + text_bounds[3]
-        self.assertEqual(6, slot_center_twice - text_center_twice)
+        self.assertEqual(0, slot_center_twice - text_center_twice)
 
     @unittest.skipUnless(
         os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
@@ -608,6 +975,22 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         left, top = PROFILE_GLYPH_ATLAS_ORIGIN
         self.assertIsNotNone(
             components.crop((left, top, left + 128, top + 256)).getbbox())
+        left, top = DETAIL_TITLE_GLYPH_ATLAS_ORIGIN
+        self.assertEqual(DETAIL_TITLE_GLYPH_ATLAS_SIZE, (256, 256))
+        self.assertIsNotNone(
+            components.crop((left, top, left + 256, top + 256)).getbbox())
+        left, top = REDEFINE_GLYPH_ATLAS_ORIGIN
+        self.assertEqual(REDEFINE_GLYPH_ATLAS_SIZE, (128, 128))
+        self.assertIsNotNone(
+            components.crop((left, top, left + 128, top + 128)).getbbox())
+
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend.big/fonts.big are not installed")
+    def test_profiles_sheet_contains_delete_confirmation_surface(self):
+        sheet = build_profiles_screen_sheet(self.FRONTEND_BANK, self.FONT_BANK)
+        self.assertEqual(sheet.size, (640, 960))
+        self.assertIsNotNone(sheet.crop((0, 480, 640, 960)).getbbox())
 
     @unittest.skipUnless(
         os.path.isfile(os.path.join(

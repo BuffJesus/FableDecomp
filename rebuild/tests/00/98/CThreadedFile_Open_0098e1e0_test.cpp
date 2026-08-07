@@ -3,25 +3,48 @@
 
 #include "fable_string.h"
 
-// --- Begin embedded copy of the authored candidate ------------------------
-// Kept in sync with
-// rebuild/src/compiled/00/98/CThreadedFile_Open_0098e1e0.cpp; the pipeline
-// harness links only this test translation unit, so the candidate body is
-// embedded directly instead of relying on a relative #include that would not
-// resolve once this file is copied into an isolated work directory.
+// The behavior fixture links the actual candidate object. These declarations
+// provide only the retail seams and test doubles; the Open body is not copied
+// into the fixture.
 
 #include "fable_threaded_file.h"
+
+extern "C" void FABLE_FASTCALL
+FableThreadedCharConstruct_0098E1E0(void* self);
+extern "C" void FABLE_FASTCALL
+FableThreadedCharDestroy_0098E1E0(void* self);
 
 class CWideStringSlot
 {
 public:
     void* data_;
+
+    ~CWideStringSlot()
+    {
+        FableThreadedCharDestroy_0098E1E0(this);
+    }
 };
 
 class CCharStringSlot
 {
 public:
     void* data_;
+};
+
+class CDriveStringSlot
+{
+public:
+    void* data_;
+
+    CDriveStringSlot()
+    {
+        FableThreadedCharConstruct_0098E1E0(this);
+    }
+
+    ~CDriveStringSlot()
+    {
+        FableThreadedCharDestroy_0098E1E0(this);
+    }
 };
 
 extern "C" fable_u8 g_FableThreadedEmptyChar_0122D70E = 0;
@@ -41,11 +64,9 @@ FableThreadedConvertFullPath_0098E1E0(
     CWideStringSlot* result,
     const void* pathname);
 extern "C" void FABLE_FASTCALL
-FableThreadedCharConstruct_0098E1E0(CWideStringSlot* self);
-extern "C" void FABLE_FASTCALL
 FableThreadedSplitPath_0098E1E0(
-    CCharStringSlot* drive,
-    CCharStringSlot* directory,
+    CWideStringSlot* fullPath,
+    void* drive,
     void* filename,
     void* extension,
     void* reserved);
@@ -64,8 +85,6 @@ public:
     bool Equals(const char* literal);
 };
 
-extern "C" void FABLE_FASTCALL
-FableThreadedCharDestroy_0098E1E0(void* string);
 extern "C" const wchar_t* FABLE_FASTCALL
 FableThreadedWideConversion_0098E1E0(const void* string);
 extern "C" void FABLE_FASTCALL
@@ -73,22 +92,27 @@ FableThreadedWideAssign_0098E1E0(
     void* destination,
     const void* source);
 
+class CWideAssignShim
+{
+public:
+    void Assign(const void* source);
+};
+
 // CThreadedFile::Open(CWideString const&, bool) @ 0x0098E1E0.
+#if 0
 bool CThreadedFile::Open(const CWideString& name, bool noCaching)
 {
     CWideStringSlot fullPath;
     FableThreadedConvertFullPath_0098E1E0(&fullPath, &name);
 
-    CWideStringSlot scratch;
-    FableThreadedCharConstruct_0098E1E0(&scratch);
-
-    CCharStringSlot drive;
+    CCharStringSlot scratch;
+    CDriveStringSlot drive;
     CCharStringSlot directory;
-    FableThreadedSplitPath_0098E1E0(&drive, &directory, 0, 0, 0);
+    FableThreadedSplitPath_0098E1E0(&fullPath, &drive, 0, 0, 0);
 
     openedForWrite_ = false;
     void* upper = reinterpret_cast<CCharStringConvertShim*>(&drive)
-        ->ToCharPointer(&directory, &drive);
+        ->ToCharPointer(&scratch, &directory);
     upper = FableThreadedCharToUpper_0098E1E0(upper);
 
     bool driveIsD;
@@ -106,8 +130,8 @@ bool CThreadedFile::Open(const CWideString& name, bool noCaching)
             3) == 0;
     }
 
-    FableThreadedCharDestroy_0098E1E0(&drive);
     FableThreadedCharDestroy_0098E1E0(&directory);
+    FableThreadedCharDestroy_0098E1E0(&scratch);
 
     deviceId_ = driveIsD ? 1u : 0u;
     unsigned long flags = 0x40000001UL;
@@ -122,23 +146,19 @@ bool CThreadedFile::Open(const CWideString& name, bool noCaching)
 
     if (fileHandle_ == reinterpret_cast<void*>(-1))
     {
-        FableThreadedCharDestroy_0098E1E0(&scratch);
-        FableThreadedCharDestroy_0098E1E0(&fullPath);
         return false;
     }
 
-    FableThreadedWideAssign_0098E1E0(&filenameStorage_, &name);
+    reinterpret_cast<CWideAssignShim*>(&filenameStorage_)->Assign(&name);
 
     length_ = g_FableThreadedGetFileSize_0143FDF0(fileHandle_, 0);
 
     physicalSortKey_ = ++g_FableThreadedPhysicalSortKey_013BC9EC;
     openFlag_ = true;
 
-    FableThreadedCharDestroy_0098E1E0(&scratch);
-    FableThreadedCharDestroy_0098E1E0(&fullPath);
     return true;
 }
-// --- End embedded copy of the authored candidate --------------------------
+#endif
 
 namespace
 {
@@ -243,15 +263,15 @@ FableThreadedConvertFullPath_0098E1E0(
 }
 
 extern "C" void FABLE_FASTCALL
-FableThreadedCharConstruct_0098E1E0(CWideStringSlot* self)
+FableThreadedCharConstruct_0098E1E0(void* self)
 {
-    self->data_ = 0;
+    (void)self;
 }
 
 extern "C" void FABLE_FASTCALL
 FableThreadedSplitPath_0098E1E0(
-    CCharStringSlot*,
-    CCharStringSlot*,
+    CWideStringSlot*,
+    void*,
     void*,
     void*,
     void*)
@@ -303,6 +323,11 @@ FableThreadedWideAssign_0098E1E0(
         destination != 0 &&
         source == g_nameBytes;
     *reinterpret_cast<const void**>(destination) = source;
+}
+
+void CWideAssignShim::Assign(const void* source)
+{
+    FableThreadedWideAssign_0098E1E0(this, source);
 }
 
 extern "C" void* __stdcall

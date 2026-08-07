@@ -26,7 +26,7 @@ FableFrontEndManagerAllocate(unsigned long bytes)
 }
 
 extern "C" void* __fastcall
-FableFrontEndManagerConstructInstance(void* storage, void*)
+FableFrontEndManagerConstructInstance(void* storage)
 {
     ++g_constructorCalls;
     g_constructorStorage = storage;

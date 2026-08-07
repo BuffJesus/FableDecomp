@@ -1,0 +1,1 @@
+char OnPostDeviceReset(){ return 1; }

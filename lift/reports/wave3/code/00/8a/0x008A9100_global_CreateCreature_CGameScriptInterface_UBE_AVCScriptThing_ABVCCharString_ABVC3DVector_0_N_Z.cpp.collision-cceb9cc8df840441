@@ -1,0 +1,297 @@
+#include <cstddef>
+#include <cstdint>
+
+class C3DVector;
+class CBase;
+class CCharString;
+class CCreatureActionBase;
+class CDefinitionManager;
+class CGameScriptInterface;
+class CScriptThing;
+class CThingAICreature;
+class CThingAICreatureInit;
+class CThingCreatureBase;
+class CThingPhysicalSwitchDef;
+class CTCLightningOrb;
+class CCombatAction_Guildmaster_HealFollowersInto;
+
+enum EHeroMorphType : std::int32_t;
+
+class CParticleMorphs
+{
+public:
+    class CEntry;
+};
+
+template <typename T>
+class CDefPointer;
+
+namespace NHeroInformationScreens
+{
+class CBase
+{
+public:
+    CBase();
+};
+}
+
+namespace NScript
+{
+class CIsThingAlive;
+
+template <typename TLeft, typename TRight>
+class CPredicate_And;
+
+template <typename TPredicate, typename TResult>
+TResult* GFPredicateAnd(TPredicate*, TResult*);
+}
+
+extern void* PTR__scalar_deleting_destructor__01238c8c;
+void operator_delete(void*);
+
+struct CGameScriptInterface_Overlay
+{
+    void* vfptr;
+    std::byte pad_04[0x0C];
+    CDefinitionManager* definitionManager;
+    std::byte pad_14[0x38];
+    std::int32_t repeatCount;
+};
+static_assert(offsetof(CGameScriptInterface_Overlay, definitionManager) == 0x10);
+static_assert(offsetof(CGameScriptInterface_Overlay, repeatCount) == 0x4C);
+
+struct CThingPhysicalSwitchDef_Overlay
+{
+    std::byte pad_00[0x11C];
+    std::int32_t field_11C;
+};
+static_assert(offsetof(CThingPhysicalSwitchDef_Overlay, field_11C) == 0x11C);
+
+struct CScriptThingShared_Overlay
+{
+    std::int32_t refCount;
+    void* releaseSlot;
+};
+static_assert(offsetof(CScriptThingShared_Overlay, refCount) == 0x00);
+static_assert(offsetof(CScriptThingShared_Overlay, releaseSlot) == 0x04);
+
+struct CScriptThing_Local_Overlay
+{
+    void* vfptr;
+    std::int32_t field_04;
+    CScriptThingShared_Overlay* shared;
+};
+static_assert(offsetof(CScriptThing_Local_Overlay, vfptr) == 0x00);
+static_assert(offsetof(CScriptThing_Local_Overlay, field_04) == 0x04);
+static_assert(offsetof(CScriptThing_Local_Overlay, shared) == 0x08);
+
+struct CDefHandle_Overlay
+{
+    void* vfptr;
+    std::int32_t refCount;
+};
+static_assert(offsetof(CDefHandle_Overlay, vfptr) == 0x00);
+static_assert(offsetof(CDefHandle_Overlay, refCount) == 0x04);
+
+struct CMorphHelperOpaque;
+struct CMorphFieldOpaque
+{
+    std::byte storage[0x0C];
+};
+static_assert(sizeof(CMorphFieldOpaque) == 0x0C);
+
+extern void __thiscall MorphFieldHelperConstruct(
+    CMorphFieldOpaque* field,
+    CMorphHelperOpaque* abiStateEdx,
+    CMorphHelperOpaque* abiStateEdi);
+
+extern void __thiscall MorphFieldHelperDestroy(
+    CMorphFieldOpaque* field,
+    CMorphHelperOpaque* abiStateEdx,
+    CMorphHelperOpaque* abiStateEdi);
+
+struct CThingAICreatureInit_Overlay
+{
+    std::int32_t field_00;
+    std::int32_t field_04;
+    CCharString field_08;
+    CCharString field_18;
+    std::uint8_t field_28;
+    std::uint8_t field_29;
+    std::uint8_t field_2A;
+    std::uint8_t field_2B;
+    std::int32_t field_2C;
+    std::int32_t field_30;
+    CMorphFieldOpaque field_34;
+    CMorphFieldOpaque field_40;
+};
+static_assert(offsetof(CThingAICreatureInit_Overlay, field_00) == 0x00);
+static_assert(offsetof(CThingAICreatureInit_Overlay, field_04) == 0x04);
+static_assert(offsetof(CThingAICreatureInit_Overlay, field_08) == 0x08);
+static_assert(offsetof(CThingAICreatureInit_Overlay, field_18) == 0x18);
+static_assert(offsetof(CThingAICreatureInit_Overlay, field_28) == 0x28);
+static_assert(offsetof(CThingAICreatureInit_Overlay, field_29) == 0x29);
+static_assert(offsetof(CThingAICreatureInit_Overlay, field_2A) == 0x2A);
+static_assert(offsetof(CThingAICreatureInit_Overlay, field_2B) == 0x2B);
+static_assert(offsetof(CThingAICreatureInit_Overlay, field_2C) == 0x2C);
+static_assert(offsetof(CThingAICreatureInit_Overlay, field_30) == 0x30);
+static_assert(offsetof(CThingAICreatureInit_Overlay, field_34) == 0x34);
+static_assert(offsetof(CThingAICreatureInit_Overlay, field_40) == 0x40);
+
+CScriptThing* __thiscall CGameScriptInterface::CreateCreature(
+    CScriptThing* outResult,
+    const CCharString& definitionName,
+    const C3DVector& position,
+    const CCharString& creatureName,
+    bool startHealFollowersIntoAction) const
+{
+    using RawScriptThingReleaseFn = void(*)();
+    using RawDefReleaseMethod = void(__thiscall*)(void*);
+    using RawRepeatMethod = void(__thiscall*)(const CGameScriptInterface*);
+
+    const auto releaseScriptThingShared = [](CScriptThingShared_Overlay* shared) {
+        if (shared != nullptr)
+        {
+            --shared->refCount;
+            if (shared->refCount == 0)
+            {
+                reinterpret_cast<RawScriptThingReleaseFn>(shared->releaseSlot)();
+                operator_delete(shared);
+            }
+        }
+    };
+
+    const auto* const self = reinterpret_cast<const CGameScriptInterface_Overlay*>(this);
+    const long defGlobalIndex =
+        CDefinitionManager::GetDefGlobalIndexFromName(self->definitionManager, &definitionName);
+
+    CDefHandle_Overlay* defHandle = nullptr;
+    CScriptThing_Local_Overlay localResult;
+
+    NHeroInformationScreens::CBase::CBase(reinterpret_cast<CBase*>(&localResult));
+    localResult.vfptr = &PTR__scalar_deleting_destructor__01238c8c;
+    localResult.field_04 = 0;
+    localResult.shared = nullptr;
+
+    if (CDefinitionManager::GetDef<CThingPhysicalSwitchDef>(
+            self->definitionManager,
+            defGlobalIndex,
+            reinterpret_cast<CDefPointer<const CThingPhysicalSwitchDef>*>(&defHandle)))
+    {
+        CCharString emptyA("", -1);
+        CCharString emptyB("", -1);
+
+        alignas(CThingAICreatureInit_Overlay) std::byte initStorage[sizeof(CThingAICreatureInit_Overlay)];
+        auto* const creatureInit = reinterpret_cast<CThingAICreatureInit_Overlay*>(initStorage);
+
+        CMorphHelperOpaque* morphCtorState0;
+        CMorphHelperOpaque* morphCtorState1;
+        CMorphHelperOpaque* morphTeardownState;
+        CMorphHelperOpaque* morphTeardownState2;
+
+        creatureInit->field_00 = 0;
+        creatureInit->field_04 = 0;
+        CCharString::CCharString(&creatureInit->field_08, &emptyB);
+        CCharString::CCharString(&creatureInit->field_18, &emptyA);
+        creatureInit->field_28 = 0;
+        creatureInit->field_29 = 1;
+        creatureInit->field_2A = 1;
+        creatureInit->field_2B = 0;
+        creatureInit->field_2C = 0;
+        creatureInit->field_30 = 0;
+        MorphFieldHelperConstruct(&creatureInit->field_34, morphCtorState0, morphCtorState1);
+        MorphFieldHelperConstruct(&creatureInit->field_40, morphCtorState0, morphCtorState1);
+        creatureInit->field_08.operator=(&creatureName);
+
+        CThingAICreature* const creature = CThingAICreature::Create(
+            defGlobalIndex,
+            &position,
+            reinterpret_cast<const CThingPhysicalSwitchDef_Overlay*>(defHandle)->field_11C,
+            reinterpret_cast<CThingAICreatureInit*>(creatureInit));
+
+        CScriptThing* const predicateResult =
+            NScript::GFPredicateAnd<
+                NScript::CPredicate_And<
+                    NScript::CPredicate_And<
+                        NScript::CPredicate_And<NScript::CIsThingAlive, NScript::CIsThingAlive>,
+                        NScript::CIsThingAlive>,
+                    NScript::CIsThingAlive>,
+                NScript::CIsThingAlive>(
+                reinterpret_cast<
+                    NScript::CPredicate_And<
+                        NScript::CPredicate_And<
+                            NScript::CPredicate_And<NScript::CIsThingAlive, NScript::CIsThingAlive>,
+                            NScript::CIsThingAlive>,
+                        NScript::CIsThingAlive>*>(creature),
+                static_cast<NScript::CIsThingAlive*>(nullptr));
+
+        reinterpret_cast<CScriptThing*>(&localResult)->operator=(predicateResult);
+
+        CScriptThing_Local_Overlay predicateTemp;
+        predicateTemp.vfptr = &PTR__scalar_deleting_destructor__01238c8c;
+        releaseScriptThingShared(predicateTemp.shared);
+        predicateTemp.field_04 = 0;
+        predicateTemp.shared = nullptr;
+        NHeroInformationScreens::CBase::CBase(reinterpret_cast<CBase*>(&predicateTemp));
+
+        if (startHealFollowersIntoAction)
+        {
+            alignas(CCombatAction_Guildmaster_HealFollowersInto) std::byte actionStorage[276];
+            CCreatureActionBase* const action =
+                reinterpret_cast<CCreatureActionBase*>(
+                    CCombatAction_Guildmaster_HealFollowersInto::CCombatAction_Guildmaster_HealFollowersInto(
+                        reinterpret_cast<CCombatAction_Guildmaster_HealFollowersInto*>(actionStorage),
+                        reinterpret_cast<CThingCreatureBase*>(creature)));
+            CThingCreatureBase::SetCurrentAction(
+                reinterpret_cast<CThingCreatureBase*>(creature),
+                action);
+            CTCLightningOrb::~CTCLightningOrb(reinterpret_cast<CTCLightningOrb*>(actionStorage));
+            morphTeardownState = morphCtorState0;
+        }
+        else
+        {
+            morphTeardownState = morphCtorState0;
+        }
+
+        std::int32_t remaining = self->repeatCount;
+        if (remaining > 0)
+        {
+            do
+            {
+                reinterpret_cast<RawRepeatMethod>(
+                    (*reinterpret_cast<void***>(const_cast<CGameScriptInterface*>(this)))[7])(this);
+                --remaining;
+                morphTeardownState = morphCtorState0;
+            } while (remaining != 0);
+        }
+
+        MorphFieldHelperDestroy(&creatureInit->field_40, morphTeardownState, morphTeardownState2);
+        MorphFieldHelperDestroy(&creatureInit->field_34, morphCtorState0, morphTeardownState2);
+    }
+
+    auto* const outLocal = reinterpret_cast<CScriptThing_Local_Overlay*>(outResult);
+    outLocal->vfptr = &PTR__scalar_deleting_destructor__01238c8c;
+    outLocal->field_04 = localResult.field_04;
+    outLocal->shared = localResult.shared;
+    if (localResult.shared != nullptr)
+    {
+        ++localResult.shared->refCount;
+    }
+
+    if (defHandle != nullptr)
+    {
+        --defHandle->refCount;
+        if (defHandle->refCount == 0)
+        {
+            reinterpret_cast<RawDefReleaseMethod>((*reinterpret_cast<void***>(defHandle))[1])(defHandle);
+        }
+    }
+
+    localResult.vfptr = &PTR__scalar_deleting_destructor__01238c8c;
+    releaseScriptThingShared(localResult.shared);
+    localResult.field_04 = 0;
+    localResult.shared = nullptr;
+    NHeroInformationScreens::CBase::CBase(reinterpret_cast<CBase*>(&localResult));
+
+    return outResult;
+}

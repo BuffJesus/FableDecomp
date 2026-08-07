@@ -188,6 +188,14 @@ the value; the *name* rests on the community default layout, so these are propos
 
 ## EGameAction (value at +0x00)
 
+The authoritative enum declaration is now recoverable from the local debug symbol file
+`debug_build/FableWin.pdb`: DIA reports `GAME_ACTION_NULL = 0` through
+`GAME_ACTION_BETTING = 114` and `GAME_ACTION_COUNT = 115`. This independently confirms that the
+retail integer ids are sequential enum ordinals, not a partially recovered sparse table. The
+PDB names are enum identifiers; each Redefine `ActionOrder` entry also correlates directly to a
+shipped `TEXT_GUI_ACTION_*` symbol in English `text.big`. The exact decoded wording is recorded
+in `tools/render_fable_frontend_subscreens.py` as `REDEFINE_ACTION_DISPLAY_TEXT`.
+
 Values observed across the three schemes: **1–114** (not contiguous; ~90 distinct ids). These are
 the *action* ids; the enum is large. High-confidence names come from records whose default binding
 is unambiguous in the documented scheme:
@@ -206,17 +214,16 @@ is unambiguous in the documented scheme:
 | 21 / 44 / 70 | Cancel / Back / Menu-close | MEDIUM | key ESCAPE, pad 2 (B) |
 | 90–98 | Debug/dev quick-keys (F5–F10 block) | LOW | F-key binds only in WASD scheme; likely dev/debug actions |
 
-The remaining ~75 EGameAction ids have a *known integer and a known default binding* (see the
-decoded record table below) but **no authoritative action-name string** — the community docs don't
-name every internal action, and retail strips the enum. They are listed as `id=N → (unmapped name;
-default binding = …)` rather than inventing names.
+The remaining EGameAction ids have a *known integer, authoritative enum identifier, default binding,
+and localized display text* for the frontend's 31-entry `ActionOrder`. The community docs do not name
+every internal action, but the shipped text bank supplies the frontend labels without inference.
 
 ---
 
 ## Unmapped / low-confidence (honest gaps)
 
-- **EGameAction:** integers all recovered; ~75 of ~90 have no sourced *name* (only a default
-  binding). Full names need the stripped `EGameAction` header or a live in-game menu label probe.
+- **EGameAction:** integer, enum-identifier, and 31-entry Redefine localized-label coverage is HIGH
+  from `debug_build/FableWin.pdb` plus English `text.big`.
 - **EXboxControllerButton 0–12:** integer→action certain, name LOW/MEDIUM (face/shoulder/trigger).
   0 may be "none". Values 13–18 (dpad + sticks) are HIGH.
 - **EMouseButtonControl 6, 7:** appear only on map pan/zoom (actions 64/65); likely mouse X/Y axes,
@@ -287,5 +294,5 @@ verify EInputKey=DIK (movement on arrow scancodes) and record layout stability a
 | EInputKey | ~55 distinct DIK values in shipped schemes; full DIK_* table applies | all standard 0x01–0x53 HIGH | **DIK scancode (not VK)** — proven |
 | EMouseButtonControl | 1–7 | 1/2/3 HIGH, 4/5 MED, 6/7 LOW | button ints; 6/7 likely axes |
 | EXboxControllerButton | 0–18 (19 values) | 13–18 HIGH (dpad+sticks) | 0–12 face/shoulder LOW/MED |
-| EGameAction | ~90 distinct ids (1–114) | ~12 HIGH-named | integers certain; most names unsourced |
+| EGameAction | 0–115 (`GAME_ACTION_COUNT` sentinel) | all enum identifiers HIGH from PDB | localized display symbols still need correlation |
 | EControllerType | 1,2,3 | all | already known, reconfirmed |

@@ -7,7 +7,27 @@
 enum FableFrontendProfileLayout
 {
     FableFrontendProfileRowStep = 28,
-    FableFrontendProfileListHeight = 260
+    FableFrontendProfileListHeight = 260,
+    FableFrontendProfileSpacing = 30
+};
+
+enum FableFrontendMainMenuLayout
+{
+    // The compiled list has seven children; the offline retail route hides
+    // the optional LIVE child while retaining the authored 60px gap.
+    FableFrontendMainMenuVisibleRows = 6
+};
+
+// These are the four authored frontend profile branches.  The normal and
+// delete lists are different retail Type-43 instances; empty/new are separate
+// screen definitions, not alternate baked frames of the normal list.
+enum FableFrontendProfilesMode
+{
+    FableFrontendProfilesNormal = 0,
+    FableFrontendProfilesDelete = 1,
+    FableFrontendProfilesEmpty = 2,
+    FableFrontendProfilesNew = 3,
+    FableFrontendProfilesDeleteConfirm = 4
 };
 
 bool FABLE_FASTCALL FableInitialiseVisualD3D9(
@@ -103,9 +123,15 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     fable_i32 spookySunbeamHeight,
     fable_i32 spookySunbeamPitch,
     fable_u32 spookySunbeamBitsPerPixel,
-    const void* spookySunbeamPixels);
+    const void* spookySunbeamPixels,
+    fable_i32 redefineScrollPagesWidth,
+    fable_i32 redefineScrollPagesHeight,
+    fable_i32 redefineScrollPagesPitch,
+    fable_u32 redefineScrollPagesBitsPerPixel,
+    const void* redefineScrollPagesPixels);
 
 void FABLE_FASTCALL FableSetVisualFrontendMainMenu(bool active);
+void FABLE_FASTCALL FableSetVisualFrontendAnimationStatic(bool active);
 void FABLE_FASTCALL FableSetVisualFrontendMainMenuSelection(
     fable_u32 selection);
 bool FABLE_FASTCALL FableScrollVisualFrontendMainMenu(
@@ -125,8 +151,14 @@ void FABLE_FASTCALL FableSetVisualFrontendProfilesMenu(
     bool active,
     const char* const* names,
     fable_u32 count);
+void FABLE_FASTCALL FableSetVisualFrontendActiveProfile(
+    const char* name);
 void FABLE_FASTCALL FableSetVisualFrontendProfilesSelection(
     fable_u32 selection);
+void FABLE_FASTCALL FableSetVisualFrontendProfilesMode(
+    fable_u32 mode);
+void FABLE_FASTCALL FableSetVisualFrontendProfileEditText(
+    const char* text);
 void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen);
 void FABLE_FASTCALL FableSetVisualFrontendDetailOptionValue(
     fable_u32 screen,
@@ -137,10 +169,14 @@ void FABLE_FASTCALL FableSetVisualFrontendRedefineResetHover(
     fable_u32 hover);
 void FABLE_FASTCALL FableSetVisualFrontendDetailButtonHover(
     fable_u32 hover);
+void FABLE_FASTCALL FableSetVisualFrontendDetailApplyEnabled(
+    bool enabled);
 void FABLE_FASTCALL FableSetVisualFrontendDetailArrowHover(
     fable_u32 row,
     fable_u32 side);
 void FABLE_FASTCALL FableSetVisualFrontendRedefineSelection(
+    fable_u32 selection);
+void FABLE_FASTCALL FableSetVisualFrontendRedefineListSelection(
     fable_u32 selection);
 void FABLE_FASTCALL FableSetVisualFrontendRedefineKey(
     fable_u32 row,

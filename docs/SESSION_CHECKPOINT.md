@@ -1,5 +1,93 @@
 # Session checkpoint — 2026-07-23 (resume state if usage runs out)
 
+## Fresh-session resume - 2026-08-05
+
+Workspace: `D:\Documents\FableTLC`.
+Active lane: frontend retail visual parity, branch `agent/frontend-retail-input-parity`.
+The worktree is intentionally dirty from parallel decomp/automation work; preserve unrelated
+changes and do not reset or clean the repository.
+
+### Latest verified frontend state
+
+- Release bootstrap rebuild passes, including `VISUAL_BOOT_CHECKPOINT PASS` and
+  `FABLETLC_VISUAL_BOOT_BEHAVIOR PASS`.
+- The Release visual checkpoint and latest full
+  `smoke_visual_checkpoint.ps1 -VerifyRetailReferenceSize -VerifySubscreens`
+  run pass the complete frontend route, including Saved Games highlight delta,
+  Redefine scrolled hover/off-page remap, and detail footer/arrow proofs.
+- Full Python decomp/render discovery passes **109/109**. `py_compile` and relevant
+  `git diff --check` pass; only normal CRLF/LF conversion warnings remain.
+- Bedtime visual parity delta is recorded in `docs/HANDOFF.md` and
+  `docs/ACTIVE_TASK_LIST.md`: Redefine overlap draw order is corrected, live
+  detail text has a bounded dark halo, and Saved Games minimap alpha is clipped
+  to the retail ring footprint. Saved Games row labels and File Information
+  text now use the live ENG_ARIAL_16/24 glyph paths in the 1664-wide component
+  route. The HUD_TEXTBOX_BACK_FE bottom backdrop and UI_TABLE_TEST_H_T_FE rule
+  now follow live atlas quads as well. The focused frontend renderer suite is
+  The asymmetric UI_TEXT_AREA table family now follows six live atlas quads.
+  The UI_TITLE_AREA frame now follows six live atlas quads as well, and the
+  “Saved Games” title follows the live ENG_ARIAL_24 glyph path. The save
+  highlight is emitted after the cell backdrop, and the Render2D batch budget
+  now covers the page-atlas texture path. The focused frontend renderer suite
+  is **50/50** after these changes.
+- Redefine action and normal key-value labels now use the recovered live
+  ENG_ARIAL_12 atlas/metrics, matching the authored row-child font. The
+  title/footer remain on ENG_ARIAL_24; the initial and scrolled normal rows
+  no longer depend on baked key text.
+- The D3D9 live vertex/record staging queues were expanded for the Redefine
+  page-atlas path. Reference-size captures for logical selections 6/15/22
+  now present their UI instead of retaining only the forest backdrop.
+- Do not treat the halo as final font purity: the full eight-neighbor outline
+  exceeded the fixed Render2D queue, so the live path currently uses a bounded
+  two-diagonal approximation. Next visual work is slider placement, exact font
+  weight/filtering, and same-state capture comparison.
+
+### Redefine Keys implementation completed
+
+- The recovered 44 expanded rows are rendered through a dedicated 3200x3360 diagnostic atlas,
+  embedded as resource 125 and uploaded through its own D3D9 texture. Logical list positions
+  1..30 route to atlas pages; the first page remains the live native path.
+- The smoke sends a real `WM_MOUSEWHEEL`, walks the first and clamped final pages, verifies the
+  final Down arrow is suppressed, and proves scrolled row hover changes the frame.
+- Native hit-testing now uses the recovered ActionOrder-to-expanded-row offsets
+  `{0,4,5,6,...,33}`. Transparent rows on the final page no longer accept hover/click state.
+- Stable recovered mouse/keyboard bindings use retail-facing labels. Opaque/reserved inputs
+  retain source notation such as `K:0x54` and `K:0x55`; the recovered Photojournal binding
+  is rendered as `PRNT SCRN`.
+- A stale-hover bug was fixed: row/reset hover state is constrained while the list is scrolled,
+  and live row hover is composited above scrolled atlas pages.
+
+### Next recommended task
+
+Native off-page capture/remapping is now implemented as a separate bridge change. The current,
+entry, and saved transactions use all 44 expanded rows; logical ActionOrder children map to the
+expanded capture row; and changed supported key tiles overlay scrolled atlas pages without
+overwriting unresolved static labels. The retail coexistence groups `{8,31,45}` and `{26,86}`
+and the routed-input `IsRedefinableKey` filter are now applied. Profile persistence and
+opaque/reserved bindings remain unresolved by design.
+
+Detail-screen/helper geometry is now consolidated in shared decoded records for row
+metadata/defaults, arrows, footer helpers, Redefine reset controls, and the Redefine
+list/value/hover geometry. Runtime hit-tests and D3D9 overlays consume the same records.
+
+Useful files:
+
+- `rebuild/integration/visual_boot_checkpoint.cpp` - input, list mapping, transaction state.
+- `rebuild/integration/visual_boot_d3d9.cpp` - atlas/page and hover compositing.
+- `rebuild/integration/fable_visual_d3d9.h` - bridge API.
+- `rebuild/smoke_visual_checkpoint.ps1` - end-to-end proof.
+- `tools/render_fable_frontend_subscreens.py` - decoded 44-row metadata and atlas bake.
+- `docs/HANDOFF.md`, `docs/ACTIVE_TASK_LIST.md`, `docs/FRONTEND_FORMAT.md` - canonical status.
+
+### Validation commands
+
+```powershell
+& .\rebuild\build_bootstrap.ps1 -Configuration Release
+& .\rebuild\smoke_visual_checkpoint.ps1 -VerifyRetailReferenceSize -VerifySubscreens -ReferenceProfileName Cornelio -TimeoutSeconds 30
+python -m unittest discover -s tools/decomp_pipeline/tests -p 'test_*.py'
+python -m py_compile tools/render_fable_frontend_subscreens.py tools/decomp_pipeline/tests/test_render_fable_frontend_subscreens.py
+```
+
 Two tracks in flight: (A) background decomp/byte-match loop, (B) foreground custom quest-card work.
 `docs/HANDOFF.md` (automation-maintained) has the canonical decomp resume; this file adds the
 in-flight session state + the quest-card task the automation does NOT track.
@@ -9,12 +97,14 @@ in-flight session state + the quest-card task the automation does NOT track.
 The frontend visual checkpoint now has a sourced Credits entry path. Its
 compiled layout oracle is green, its initial frame preserves the retail scroll
 start at y=480, action 67 enters it, and the shared Back helper/Escape returns
-to the main menu. The focused frontend suite is 34/34; the complete visual
+to the main menu. The focused frontend suite is 35/35; the complete visual
 smoke includes Credits and its hover proof. Change Profile's normal runtime
-list now refreshes the user's profile directories and renders their names
-through the retail font atlas; delete-mode, the empty-profile branch, and
-new-profile editing remain separate boundaries. Full Credits text scrolling
-remains a separate live-component boundary.
+list refreshes the user's profile directories and renders their names through
+the retail font atlas. Delete mode now enters the retail-pipeline confirmation
+frame, the empty-profile branch reaches the authored New Profile route, and
+new-profile editing follows the recovered 128-byte text-input contract. Native
+delete/create/load/refresh persistence remains an explicit manager link boundary.
+Full Credits text scrolling remains a separate live-component boundary.
 
 The focused suite also extracts all six authored `TEXT_GUI_CRE_*` groups
 from `text.big` without flattening or reordering their member IDs. Geometry
@@ -179,11 +269,53 @@ The standalone OpenRetailBank runtime lane under
   1565/1565 bytes with 44 relocations, `RELOCATION_MATCH`.
 - `link_smoke.py`: 32/32 objects compile and strict DLL link has 0 unresolved
   externals.
-- `runtime_probe.py` opens installed `fonts.big`, matches 3/3 contained-bank
-  records and all five values per record, then reads all 26 oracle entry payloads
-  through the reconstructed threaded handle.
-- Payload result: 26/26 entries, 53,794,802 bytes, byte-for-byte equal.
+- `runtime_probe.py` opens installed `frontend.big`, matches its single contained-bank
+  record and all five values, then reads all 394 oracle entry payloads through the
+  reconstructed threaded handle.
+- Payload result: 394/394 entries, 13,287,366 bytes, byte-for-byte equal.
 
 The raw anchor remains untouched. Remaining OpenRetailBank work is engine-level
 entry-metadata consumption/API coverage; bank-open, contained-bank, threaded-handle,
 and payload parity are verified.
+
+### Frontend readability checkpoint — 2026-08-03
+
+The `ChangeStateFirstTime` and `GetInstance` frontend leaves now have zero
+`__asm` in their promoted sources. Typed ABI declarations reproduce retail
+exactly under VC7.1: 21 bytes/one relocation for the state transition and
+41 bytes/four relocations for the singleton getter. Both behavior fixtures and
+the canonical Release build pass. The decompiled `CreateComponent` wrapper is
+also promoted as typed C++ (`__thiscall` over the base manager factory): 21
+bytes, two relocations, behavior PASS, and canonical Release build PASS.
+`CNewFrontendGameComponent::LoadGame` is also promoted without assembly:
+31 bytes, one relocation, correct prepare/flag/assignment ordering, and
+canonical Release build PASS.
+The history deque `BlockSize` and iterator `Current` leaves are now promoted
+as typed C++ as well: exact 4-byte and 3-byte retail bodies, zero relocations,
+behavior PASS, and canonical Release build PASS.
+The adjacent `BlockEndSlot`, `NodeSlot`, `EndIterator`, and `BlockBegin` leaves
+are now promoted as typed field/address expressions and are covered by exact
+retail-byte and behavior gates.
+`Equal` and `SetNode` are promoted through typed pointer comparison and field
+assignment: exact 18-byte and 23-byte retail bodies, zero relocations, and
+behavior PASS. Ghidra confirms the retail `Run` order after the movie phase:
+frontend/text/shader bank opens, Init2, engine/frontend initialization,
+clear/swap, then `ChangeStateFirstTime`. The bank closure remains isolated in
+the standalone verified runtime lane until its complete dependency closure
+can be linked into the visual path without host substitutions.
+The duplicate `NodeSlot @ 0x0059AA0D` and `EndIterator @ 0x0059AA15` leaves are
+also promoted as typed address expressions with exact 8-byte bodies, zero
+relocations, and behavior gates.
+The deque map allocator cluster is covered too: `Deallocate @ 0x0059A9F9` is
+exact readable C++ (20 bytes, one helper relocation), while `Allocate @
+0x0059A9E0` retains only its exact 25-byte assembly control-flow shape because
+VC7.1 folds equivalent readable C++ return paths and removes retail's explicit
+`eb 02` jump. Both behavior fixtures and the full Release gate pass.
+The recovered `Init2 @ 0x00598A1C` component-definition literals are recorded
+in `work/frontend_re/manager_init2_component_manifest.tsv`; a source check
+passes for all 24 entries against the Ghidra decompilation, including the
+retail `UI_FRONTEND_SCREEN_REDEFINE_KEYS_PC` definition.
+The `CCountedPointer<NUISystem::CAction>::Release @ 0x0059A994` probe recovered
+the real `CCPPointerInfo` callback dispatch (`+4` member-function address,
+action object at `+8` in ECX), but VC7.1 emits different clear and stack-cleanup
+instructions; it remains exact assembly and is not falsely promoted.

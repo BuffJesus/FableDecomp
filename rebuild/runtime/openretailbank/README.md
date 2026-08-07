@@ -35,9 +35,11 @@ symbols in the anchor with the ordered E8 targets in the retail bytes (see
 | faithful behavior | 7 | staged under `faithful/`, behavior-PASS, DIFFER on bytes (RTM-3077 vs retail QFE-4035 codegen wall) — execute identically |
 
 `CThreadedFile::CThreadedFile` (0098dfd0) landed byte-exact; `CThreadedFile::Open`
-(0098e1e0) is faithful (307 vs 310 bytes — a 2-dword stack-slot layout gap, behavior
+(0098e1e0) now compiles to the full 310-byte retail-sized body and its behavior is
 verified across both drive branches, both caching flags, and the CreateFileW-fails
-path).
+path. The strict object gate now reports `RELOCATION_MATCH` for the full 310-byte
+body with 21 relocations; no compiler residue is masked or accepted by the canonical
+build.
 
 `CWideString::CWideString` (0099aed0),
 `CContainedBankMap::operator[]` (009ac530), and
@@ -74,9 +76,9 @@ objects plus one link-only CRT shim and performs a strict DLL link with
 **zero unresolved externals**.
 
 `runtime_probe.py` now links the same x86 ring as a console executable and runs
-the raw `OpenRetailBank` body against the installed `fonts.big`. The probe
-passes: `fable_bank::Open` reports 3 subbanks and the reconstructed
-`CRetailBank::containedBankCount_` is also 3.
+the raw `OpenRetailBank` body against the installed `frontend.big`. The probe
+passes with one contained bank, 394/394 entry records, and 13,287,366/13,287,366
+entry bytes matching the oracle.
 
 The host layer now has working disk seek/refill, buffered-stream ABI handling,
 memory-stream setup, path conversion, safe counted disk ownership, and the

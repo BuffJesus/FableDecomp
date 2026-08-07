@@ -113,6 +113,42 @@ of a clean PE32 at ImageBase `0x400000`.
   rejects it, C4234) — model this-in-ecx methods as real members or free `__fastcall(self,...)`.
 - Workflow `args` arrive in the script as a JSON **string**, not a parsed value — guard with
   `const items = typeof args === 'string' ? JSON.parse(args) : args` before `.map`/`.length`.
+- `verify_and_land.py` CANNOT auto-verify functions with an EMBEDDED JUMP TABLE (switch >~4 dense
+  cases → `jmp [eax*4+table]` with the table inline in .text). Two failure modes in `obj_text`:
+  (1) objdump `-d` splits the body at every internal `$Lxxx` local label, so the leaf-named block is
+  just the pre-`jmp` head → reports `DIFFER(37v120)`; (2) the relocated table dwords are all-zero in
+  the fresh .obj so objdump elides them as `...`, dropping 4·N bytes. Verify these by RAW COFF
+  extraction (read .text section bytes start→next-non-`$`-symbol, mask reloc slots) + behavior test,
+  NOT the harness. Proven: `CKeyRedefiner::GetSubTypeForAction` 0x557CA0 (RELOCATION_MATCH 120/120,
+  source in docs/REDEFINE_INPUT_SYSTEM.md) + `AreAllowedToCoexist` 0x5578A0 (147/147). USE
+  `tools/decomp_pipeline/verify_land_jumptable.py <land.json> <oracle.tsv> [--land]` — same interface
+  as verify_and_land, imports it and swaps ONLY obj_text for the raw-COFF extractor (shared harness
+  untouched, so a background crawl keeps using verify_and_land concurrently).
+- Manifest boundary OVER-CAPTURE: a function's oracle span is [addr, next_manifest_addr); when the
+  real next fn ISN'T in the manifest the span swallows inter-fn `0xCC` int3 padding + the next fn's
+  head, so the row is longer than the real body (e.g. 00a14e20 Clear = real 8B vs captured 19B) and
+  never reaches parity. The harness's trailing-CC strip misses INTERIOR padding. Auto-fix with
+  `tools/decomp_pipeline/trim_overcapture.py 0x<addr> ...` (prints trimmed len+bytes) or
+  `--oracle <tsv>` (rewrites over-captured rows in place); it cuts at the first standalone int3 that
+  follows a terminator (ret/tail-jmp), leaving clean rows untouched. Then author the single fn.
+  TAIL-CALL CAVEAT authoring recovered forwarders: a VALUE-returning member forwarder
+  (`return this->f4->M(this->f8);`) or cdecl-cleanup forwarder (`helper(a,b,-1);` w/ `add esp,N`)
+  keeps retail's `call;ret` and recovers byte-exact; a VOID member forwarder (`sub->M(x);` as the whole
+  body) gets tail-call-optimized to `jmp` by VC7.1 while retail kept `push;call;ret` — DIFFER(NvN)
+  same-length, not recoverable. Backlog of the 84 deferred over-captures (by shape) is
+  rebuild/backlog/overcapture-recovery-worklist.tsv; ~11 recovered so far this pass.
+- Frontend visual QA can be DRIVEN headlessly: build via `rebuild/build_bootstrap.ps1
+  -RetailFrontendBank <frontend.big>`, launch FableTLC-Reconstruction-VisualCheckpoint.exe (client
+  1280x720, asset-free, loads data/frontend/*.bmp), then synth-click with SetForegroundWindow+
+  SetCursorPos+mouse_event and screenshot with Graphics.CopyFromScreen (crop+3x NearestNeighbor to
+  inspect glyphs). `$PID` is read-only in PS — use another var. Full recipe + menu map + current
+  fixed/open state in docs/VISUAL_PARITY_STATUS.md.
+- OPEN visual bug: the profile-name font (`AppendProfileNameText`, ENG_ARIAL save rows/profile names/
+  File Information) renders DOUBLED/ghosted vs retail's smooth AA. NOT a double-draw (one quad/glyph)
+  and NOT fixed by fixed-function SetSamplerState LINEAR (no effect). Leading theory: the frontend
+  samples the atlas via a PIXEL SHADER (window title `...PixelShader...`), so API sampler state is
+  bypassed — investigate the Render2D PS sampler + ENG_ARIAL atlas cell packing (half-texel inset).
+  The detail-title font IS clean (LINEAR after BeginScene, commit 352a684). See VISUAL_PARITY_STATUS.md.
 
 ## Toolchain (see docs/TOOLCHAIN.md for commands)
 - Mario rig gotcha (2026-07-22): `work/mario_hero/stage_bindaxis4` is format-valid and looks

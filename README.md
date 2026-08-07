@@ -61,13 +61,13 @@ working memory and exact resume point are always at the top of
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Verified functional or matching reconstruction | **5,440 · 10.97%** |
-| Byte-identical reconstruction | **3,049 · 6.15%** |
+| Verified functional or matching reconstruction | **5,646 · 11.39%** |
+| Byte-identical reconstruction | **3,112 · 6.28%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
-Current functional-or-matching coverage is **10.97%** of the 49,568-function catalog.
-Of that verified set, **6.15%** is byte-identical C++.
+Current functional-or-matching coverage is **11.39%** of the 49,568-function catalog.
+Of that verified set, **6.28%** is byte-identical C++.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -84,23 +84,23 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.677% |
 | Analysis DB | Complete non-`undefined` prototype | 69.065% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **5,588** |
-| Reconstruction | Verified functional or matching C++ | **5,440** (10.97%) |
-| Reconstruction | — of which byte-**identical** C++ | 3,049 (6.15%) |
-| Reconstruction | Compiled sources still honestly `DIFFER` | 38 |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **5,798** |
+| Reconstruction | Verified functional or matching C++ | **5,646** (11.39%) |
+| Reconstruction | — of which byte-**identical** C++ | 3,112 (6.28%) |
+| Reconstruction | Compiled sources still honestly `DIFFER` | 42 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
-| Auto-RE intake | Generated candidates / structural checker PASS | 850 / 836 |
+| Auto-RE intake | Generated candidates / structural checker PASS | 888 / 875 |
 | Boot path | GFMain direct-call sites proven | **257 / 257** (100.00%) |
 | Boot path | Callable authored GFMain phases | **10 / 10** (100.00%) |
 | Boot path | Current Phase 10 direct calls proven | **21 / 21** (100.00%) |
 | Modern C++23 | GFMain phases promoted into the modern startup lane | **0 / 10** (0.00%) |
 
-Counts above are from the 2026-07-31 canonical refresh:
+Counts above are from the 2026-08-05 canonical refresh:
 `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json`,
 `rebuild/COVERAGE.md`, and the naming-quality reports.
 
 Generated agent output is tracked separately and is never counted merely
-because a structural checker accepted it. The 10.97% figure is intentionally the strict,
+because a structural checker accepted it. The 11.39% figure is intentionally the strict,
 whole-executable denominator. Boot-path figures are a separate view of
 the 3,952-byte `GFMain` coordinator, not an estimate of total engineering time.
 The C++23 startup figure is deliberately separate too: exact x86 parity and
@@ -155,10 +155,10 @@ runtime boundary, see [rebuild/RUNNABLE.md](rebuild/RUNNABLE.md).
 | Area | Verified state | Major remaining boundary |
 |---|---|---|
 | Analysis database | Nearly complete navigation-quality names with recovered prototypes and calling conventions | Resolve the remaining ambiguous types, function starts, and hard naming stragglers |
-| Function reconstruction | 5,355 VC7.1-compiled and behavior-gated sources; 5,205 verified functional/matching | Continue strict promotion without counting structural-only generated code |
+| Function reconstruction | 5,588 VC7.1-compiled and behavior-gated sources; 5,440 verified functional/matching | Continue strict promotion without counting structural-only generated code |
 | Startup | Retail-matched `WinMain`, all ten authored GFMain phases callable, connected exact `GFInitialise`, progress-display ownership | Replace the remaining GFMain dependency boundaries and pursue whole-coordinator retail parity |
-| Frontend | Boot movies, interactive menus, live generated title-rule and selection components, CUIState-driven main-menu/Save/Options rows, keyboard/mouse navigation, Continue-to-Saved-Games routing, and retail list/transition sounds | Visual sign-off is still open: measure reconstructed screens against identical retail captures before calling them presentation-parity; then connect validated save action `0x11` to the reconstructed main-game load boundary |
-| Controls | Interactive capture/cancel/apply, duplicate clearing, W/S/A/D movement expansion, arrow/WASD reset actions | Full 31-action scrolling, filtering, coexistence, and profile persistence |
+| Frontend | Boot movies, retail-data-driven interactive menus, CUIState-driven main-menu/Save/Options rows, keyboard/mouse/controller navigation, Credits routing, profile/delete/new-profile branches, Continue-to-Saved-Games routing, and retail list/transition sounds | Visual sign-off is still open: compare identical retail/reconstruction captures; link native profile persistence and validated save action `0x11` only at their recovered manager/game boundaries |
+| Controls | Interactive capture/cancel/apply, duplicate clearing, W/S/A/D movement expansion, arrow/WASD reset actions, and recovered wheel/arrow ingress for authored scrolling lists | Full 31-action Redefine materialization/filtering/coexistence, profile persistence, and remaining controller/action ownership |
 | Video | Retail movie order, end-of-stream advancement, Escape skip, and D3D9 texture publication | Replace the compatibility presentation seam with reconstructed `CTexture`/`CMovie::Draw` submission |
 | Particles and lighting | Asset reports, billboard/crossed-sprite contracts, blend state, shader assembly, environment/RSA lookup, sky inputs | Recover constant semantics, signed/special passes, shadows, and golden viewer captures |
 | Modding research | Broad readers/writers for definitions, levels, terrain, meshes, animation, audio, text, quests, and saves | Consolidate them behind safe product workflows and runtime validation |
@@ -178,6 +178,9 @@ and the subsystem documents below.
 
 - Finish live `CTable`, `CList`, and `CKeyRedefiner` ownership and state flow,
   including detail-row extraction, controller input, and remaining actions.
+- Keep recovered wheel/list/click/manager dispatch IDs at their explicit retail
+  callback boundary; do not replace them with guessed host-side state or local
+  profile/delete writers.
 - Add deterministic retail-vs-reconstruction screenshot comparisons.
 - Replace the remaining ownership-heavy GFMain dependency seams in Phases 3
   and 5, plus Phase 6 font/text/display ownership. Phase 6 definition-table

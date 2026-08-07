@@ -14,7 +14,9 @@ bool FABLE_FASTCALL FableIsRetailVisualAssetEmbedded();
 
 bool FABLE_FASTCALL FableShouldPlayBootVideos(const char* commandLine);
 
-// Decoded UI_FRONTEND_LIST_MAIN_MENU child action order.
+// Offline retail projection of UI_FRONTEND_LIST_MAIN_MENU.  The compiled
+// definition retains the optional LIVE child; this checkpoint exposes the six
+// rows present in the supplied offline retail capture.
 fable_u32 FABLE_FASTCALL FableGetVisualFrontendMainMenuAction(
     fable_u32 row);
 
@@ -46,6 +48,22 @@ fable_u32 FABLE_FASTCALL FablePlanVisualFrontendSaveRows(
     fable_u32 manualSlotCount,
     FableUiSaveBrowserRow* rows,
     fable_u32 rowCapacity);
+
+struct FableUiSaveBrowserActionPlan
+{
+    fable_u32 action;
+    bool dispatch;
+};
+
+// Resolves the selected save row to its recovered CFrontEndManager action.
+// This is deliberately only an action-boundary helper: the validated 0x11
+// load action is reported but does not cross into world loading here, while
+// invalid rows retain the 0xdc action for the frontend error path.
+void FABLE_FASTCALL FablePlanVisualFrontendSaveAction(
+    const FableUiSaveBrowserRow* rows,
+    fable_u32 rowCount,
+    fable_u32 selection,
+    FableUiSaveBrowserActionPlan* plan);
 
 // Real save enumeration: each Fable TLC save is a profile subfolder of
 // <MyDocuments>\My Games\Fable\Saves\ containing an "AutoSave" primary blob (and
@@ -81,6 +99,44 @@ fable_u32 FABLE_FASTCALL FableEnumerateVisualFrontendProfiles(
     const wchar_t* saveDirectory,
     FableUiProfileName* out,
     fable_u32 outCapacity);
+
+// CFrontEndManager::Action @ 0x0059A238 profile action vocabulary.  These
+// values are kept separate from the renderer's presentation modes so the
+// checkpoint can test/route the recovered manager actions without fabricating
+// profile storage.
+enum FableUiFrontendProfileMode
+{
+    FableUiFrontendProfileModeNormal = 0,
+    FableUiFrontendProfileModeDelete = 1,
+    FableUiFrontendProfileModeEmpty = 2,
+    FableUiFrontendProfileModeNew = 3,
+    FableUiFrontendProfileModeDeleteConfirm = 4
+};
+
+enum FableUiFrontendProfileInput
+{
+    FableUiFrontendProfileInputActivate = 0,
+    FableUiFrontendProfileInputDeleteList = 1,
+    FableUiFrontendProfileInputDeleteConfirm = 2,
+    FableUiFrontendProfileInputKeyboardCancel = 3,
+    FableUiFrontendProfileInputKeyboardConfirm = 4
+};
+
+struct FableUiFrontendProfileActionPlan
+{
+    fable_u32 action;
+    bool dispatch;
+};
+
+// Maps the authored profile controls to the exact action IDs observed in
+// CFrontEndManager::Action.  This is an action-boundary helper only: it does
+// not create, delete, load, or otherwise mutate a profile.
+void FABLE_FASTCALL FablePlanVisualFrontendProfileAction(
+    fable_u32 mode,
+    fable_u32 selection,
+    fable_u32 profileCount,
+    fable_u32 input,
+    FableUiFrontendProfileActionPlan* plan);
 
 enum FableUiControllerActionMask
 {
@@ -493,6 +549,27 @@ bool FABLE_FASTCALL FableApplyUiListRecomputedStates(
 // active, child alpha falls off with distance from the new selection.
 void FABLE_FASTCALL FablePlanUiFrontEndListScroll(
     bool scrollDown,
+    unsigned int childCount,
+    long selectedChild,
+    bool stopsAtEnds,
+    unsigned char alphaFalloff,
+    unsigned char* childAlphaOutput,
+    unsigned int childAlphaCapacity,
+    FableUiFrontEndListScrollPlan* plan);
+
+// Retail CList::ProcessEvent @ 0x0053673b dispatches semantic list events
+// 0 (up) and 1 (down) to its scroll virtuals.  Keep that event vocabulary at
+// the frontend boundary instead of making callers invent a second direction
+// protocol.  The planner remains the isolated state/layout adapter until the
+// live CList object is linked into this checkpoint.
+enum FableUiFrontEndListEvent
+{
+    FableUiFrontEndListEventUp = 0,
+    FableUiFrontEndListEventDown = 1
+};
+
+void FABLE_FASTCALL FablePlanUiFrontEndListProcessEvent(
+    unsigned int event,
     unsigned int childCount,
     long selectedChild,
     bool stopsAtEnds,

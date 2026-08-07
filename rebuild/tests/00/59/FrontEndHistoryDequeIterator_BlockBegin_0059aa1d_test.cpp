@@ -1,6 +1,14 @@
 #include <cstdio>
 
-#include "../../../src/compiled/00/59/FrontEndHistoryDequeIterator_BlockBegin_0059aa1d.cpp"
+struct FrontEndHistoryDequeIterator_0059aa1d
+{
+    void** current;
+    void** first;
+    void** last;
+    void*** node;
+
+    void** BlockBegin() const;
+};
 
 int main()
 {

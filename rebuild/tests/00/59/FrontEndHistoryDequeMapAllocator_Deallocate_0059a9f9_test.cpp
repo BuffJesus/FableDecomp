@@ -1,6 +1,10 @@
 #include <cstdio>
 
-#include "../../../src/compiled/00/59/FrontEndHistoryDequeMapAllocator_Deallocate_0059a9f9.cpp"
+class FrontEndHistoryDequeMapAllocator_0059a9f9
+{
+public:
+    void Deallocate(void** allocation, unsigned long count);
+};
 
 static int g_DeleteCalls;
 static void* g_DeletedAllocation;

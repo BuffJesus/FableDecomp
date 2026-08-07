@@ -1,0 +1,1 @@
+float __fastcall fn_0054a4f0(char* self){ if(self[0xc]) return *(float*)(self+0xe8); return *(float*)(self+0x28); }

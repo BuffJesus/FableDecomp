@@ -104,15 +104,23 @@ blockers (Mario-rig retarget, custom-NPC lipsync).**
 - Minor: EgoCore's `EControllerType` map (`DefObjects.h:112-115`) disagrees with its own header comment
   (XBOX_PAD→1 vs comment's 0). Verify against retail before trusting either.
 
-## 5. `EGameAction` name-gap — still open, but narrowed
+## 5. `EGameAction` name-gap — closed for the frontend ActionOrder
 
 EgoCore does **not** contain the `EGameAction` integer→display-name table (grep `GAME_ACTION_*` /
 `GameActionNames` = 0). Its `CActionInputControl.GameAction` reads a raw int from whatever `GAME_ACTION_*`
 symbol appears in the parsed def-header `.h` enum — i.e. it *relies on the very source we're missing*.
-So our `redefine-keys-name-gap` stands. BUT: EgoCore ships the sibling KB/MOUSE/XBOX tables as plain
+So EgoCore alone still has no display-name table. The repository's local `debug_build/FableWin.pdb`
+does, however: DIA recovers `GAME_ACTION_NULL = 0` through `GAME_ACTION_BETTING = 114` and the
+`GAME_ACTION_COUNT = 115` sentinel. This closes the authoritative integer-to-enum-identifier gap
+and covers every Redefine `ActionOrder` id. All 31 frontend ActionOrder correlations now resolve
+through `TEXT_GUI_ACTION_*`, with the enum and display layers recorded as
+`REDEFINE_ACTION_ENUM_NAMES` and `REDEFINE_ACTION_DISPLAY_TEXT`. EgoCore ships the sibling
+KB/MOUSE/XBOX tables as plain
 ordered index arrays, which confirms the missing EGameAction table is likewise a simple ordered enum —
-reinforcing that the fix is to **recover the stripped `GAME_ACTION_*` enum from a def-header source**
-(controls_def / inputkey headers), not to reverse a hash. EgoCore closes the key/button half today.
+reinforcing that the enum is an ordered table, not a hash. The remaining
+frontend work is exact localized binding/capture parity while scrolling; the
+source recovery and a native diagnostic page materialization are now closed.
+EgoCore closes the key/button half today.
 
 ## 6. Concrete follow-ups (filed / recommended)
 

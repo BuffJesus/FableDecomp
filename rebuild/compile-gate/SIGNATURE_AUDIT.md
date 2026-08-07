@@ -1,15 +1,15 @@
 # Candidate signature audit
 
-Generated: `2026-07-31T21:52:45-06:00`
+Generated: `2026-08-05T11:04:36-06:00`
 
-Clean: **541 / 850**. Review required: **309**.
+Clean: **541 / 888**. Review required: **347**.
 
 | Issue | Candidates |
 |---|---:|
-| `explicit-parameter-count-mismatch` | 277 |
-| `return-shape-mismatch` | 90 |
-| `duplicate-linkage-signature` | 42 |
-| `method-name-mismatch` | 41 |
+| `explicit-parameter-count-mismatch` | 315 |
+| `return-shape-mismatch` | 121 |
+| `duplicate-linkage-signature` | 49 |
+| `method-name-mismatch` | 44 |
 | `definition-not-parsed` | 13 |
 | `owner-mismatch` | 8 |
 
@@ -61,7 +61,7 @@ Clean: **541 / 850**. Review required: **309**.
 | `00418c3b` | `CMainGameComponent` | `CMainGameComponent::GenerateMetFilesFromLugFiles` | `` | definition-not-parsed |
 | `00419f50` | `_global` | `Vector_FromRange` | `Vector_FromRange` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `0041c090` | `_global` | `CGraphicFrameData_ReleaseReference` | `defined` | method-name-mismatch;explicit-parameter-count-mismatch |
-| `0041c780` | `_global` | `__EH_epilog3` | `__EH_epilog3` | explicit-parameter-count-mismatch |
+| `0041c780` | `_global` | `__EH_epilog3` | `__EH_epilog3` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
 | `0041ceb3` | `_global` | `CASound_PlayFromSymbol` | `CASound_PlayFromSymbol` | explicit-parameter-count-mismatch |
 | `0041cfb2` | `_global` | `GetTextBySymbol` | `GetTextBySymbol` | explicit-parameter-count-mismatch |
 | `0041d0a8` | `_global` | `CASound_PlayMessage` | `CASound_PlayMessage` | explicit-parameter-count-mismatch |
@@ -227,7 +227,7 @@ Clean: **541 / 850**. Review required: **309**.
 | `00446b40` | `_global` | `VectorMap_LookupValue` | `VectorMap_LookupValue` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
 | `00446b90` | `_global` | `VectorMap_LookupValue` | `VectorMap_LookupValue` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
 | `00446d10` | `_global` | `ProcessCombatInput_MapInputsToActions` | `ProcessCombatInput_MapInputsToActions` | explicit-parameter-count-mismatch |
-| `00447390` | `_global` | `Catch@0040d959` | `Catch_0040d959` | method-name-mismatch;explicit-parameter-count-mismatch |
+| `00447390` | `_global` | `Catch@0040d959` | `Catch_0040d959` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
 | `00448520` | `_global` | `Vector_DestroyRange` | `Vector_DestroyRange` | explicit-parameter-count-mismatch |
 | `00448ab0` | `_global` | `Heap_SiftDown_ContainmentVolume` | `Heap_SiftDown_ContainmentVolume` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `00448be0` | `_global` | `Heap_MakeHeap_NavConnector` | `Heap_MakeHeap_NavConnector` | explicit-parameter-count-mismatch |
@@ -240,6 +240,44 @@ Clean: **541 / 850**. Review required: **309**.
 | `00449440` | `_global` | `Vector_InsertElement` | `Vector_InsertElement` | explicit-parameter-count-mismatch |
 | `004494d0` | `_global` | `Heap_SiftDown` | `Heap_SiftDown` | explicit-parameter-count-mismatch |
 | `004495d0` | `_global` | `SoundPair_MakeHeap` | `SoundPair_MakeHeap` | explicit-parameter-count-mismatch |
+| `00449960` | `_global` | `Catch@0040d959` | `Catch_0040d959` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00449970` | `_global` | `Catch@0040d959` | `Catch_0040d959` | method-name-mismatch;explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00449980` | `_global` | `Catch@0042ae0a` | `Catch_0042ae0a` | method-name-mismatch;explicit-parameter-count-mismatch |
+| `0044a1a0` | `_global` | `CPlayerManager_AddPlayerOrAI` | `CPlayerManager_AddPlayerOrAI` | explicit-parameter-count-mismatch |
+| `0044be80` | `_global` | `Vector_InsertWithBuffer` | `Vector_InsertWithBuffer` | explicit-parameter-count-mismatch |
+| `004502eb` | `_global` | `__EH_epilog3` | `__EH_epilog3` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `0045036f` | `_global` | `__EH_epilog3` | `__EH_epilog3` | explicit-parameter-count-mismatch;duplicate-linkage-signature |
+| `00450ccc` | `_global` | `Buffer_InitializeWithSize` | `Buffer_InitializeWithSize` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00450d90` | `_global` | `LinkedList_Initialize` | `LinkedList_Initialize` | explicit-parameter-count-mismatch;return-shape-mismatch;duplicate-linkage-signature |
+| `00450e3a` | `_global` | `Array_Initialize` | `Array_Initialize` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00450e6e` | `_global` | `ListNode_AllocateNode` | `ListNode_AllocateNode` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00450ebb` | `_global` | `ListNode_AllocateNode_Variant_B` | `ListNode_AllocateNode_Variant_B` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00450f08` | `_global` | `ListNode_AllocateNode_Variant_C` | `ListNode_AllocateNode_Variant_C` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00450f2c` | `_global` | `ListNode_AllocateNode_Variant_D` | `ListNode_AllocateNode_Variant_D` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00450f79` | `_global` | `ListNode_AllocateNode_Variant_E` | `ListNode_AllocateNode_Variant_E` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00450fd5` | `_global` | `ListNode_AllocateNode_Variant_F` | `ListNode_AllocateNode_Variant_F` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451022` | `_global` | `ListNode_AllocateNode_Variant_G` | `ListNode_AllocateNode_Variant_G` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0045106f` | `_global` | `ListNode_AllocateNode_Variant_H` | `ListNode_AllocateNode_Variant_H` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `004510e8` | `_global` | `ListNode_AllocateNode_Variant_I` | `ListNode_AllocateNode_Variant_I` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451135` | `_global` | `ListNode_AllocateNode_Variant_J` | `ListNode_AllocateNode_Variant_J` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451182` | `_global` | `ListNode_AllocateNode_Variant_K` | `ListNode_AllocateNode_Variant_K` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `004511cf` | `_global` | `ListNode_AllocateNode_Variant_L` | `ListNode_AllocateNode_Variant_L` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0045121c` | `_global` | `ListNode_AllocateNode_Variant_M` | `ListNode_AllocateNode_Variant_M` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451269` | `_global` | `ListNode_AllocateNode_Variant_N` | `ListNode_AllocateNode_Variant_N` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `004512b6` | `_global` | `ListNode_AllocateNode_Variant_O` | `ListNode_AllocateNode_Variant_O` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451303` | `_global` | `CList_AllocateNode` | `CList_AllocateNode` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451583` | `_global` | `VertexListInsertVertices` | `VertexListInsertVertices` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0045170f` | `_global` | `ListNode_Init` | `ListNode_Init` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451739` | `_global` | `ListNode_Init_B` | `ListNode_Init_B` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `0045177a` | `_global` | `ListNode_Init_C` | `ListNode_Init_C` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `004517bb` | `_global` | `ListNode_Init_D` | `ListNode_Init_D` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `004517e5` | `_global` | `ListNode_Init_E` | `ListNode_Init_E` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451835` | `_global` | `ListNode_Init_F` | `ListNode_Init_F` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451876` | `_global` | `ListNode_Init_G` | `ListNode_Init_G` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `004518b7` | `_global` | `ListNode_Init_H` | `ListNode_Init_H` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451916` | `_global` | `ListNode_Init_I` | `ListNode_Init_I` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451957` | `_global` | `ListNode_Init_J` | `ListNode_Init_J` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451998` | `_global` | `ListNode_Init_K` | `ListNode_Init_K` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aa9e0` | `CScriptThing` | `CScriptThing::GetCurrentMapName` | `GetCurrentMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aaa10` | `CScriptThing` | `CScriptThing::GetHomeMapName` | `GetHomeMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004abe60` | `CScriptThing` | `CScriptThing::MsgWhoKilledMe` | `` | definition-not-parsed |

@@ -1,6 +1,7 @@
 #include <cstdio>
 
-#include "../../../src/compiled/00/59/FrontEndHistoryDeque_BlockSize_0059a9dc.cpp"
+extern "C" unsigned long __cdecl
+FrontEndHistoryDeque_BlockSize_0059a9dc();
 
 int main()
 {

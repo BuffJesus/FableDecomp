@@ -2,6 +2,7 @@
 
 #include "rebuild_abi.h"
 #include "fable_visual_boot.h"
+#include "fable_render2d_vertex_queue.h"
 
 struct FableRender2DVertex
 {
@@ -117,6 +118,14 @@ struct FableRender2DPlanOutput
 void FABLE_FASTCALL FableBuildRender2DBatchPlan(
     const FableRender2DPlanRecord* records,
     fable_u32 recordCount,
+    FableRender2DPlanOutput& output);
+
+// Consumes the native CQuickDrawTriInfo vector without converting it into a
+// second authored record format. The layout is proven by
+// Render2DQuickDrawInfoView's static assertions and the recovered
+// CRenderManager2D queue offsets.
+bool FABLE_FASTCALL FableBuildRender2DBatchPlanFromNativeQueue(
+    const CRenderManager2DQueueView* manager,
     FableRender2DPlanOutput& output);
 
 // Adapts live generated CTable children into the normal Render2D vertex and

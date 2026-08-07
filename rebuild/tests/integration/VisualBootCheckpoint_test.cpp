@@ -1,5 +1,8 @@
 #include "fable_visual_boot.h"
+#include "../../integration/fable_visual_d3d9.h"
+#include "../../integration/frontend_list_layout.h"
 #include "fable_video_system.h"
+#include "../../integration/frontend_input_dispatch.h"
 
 #include <stdio.h>
 #include <direct.h>
@@ -8,8 +11,295 @@
 extern "C" __declspec(dllimport)
 FableInstanceHandle FABLE_STDCALL GetModuleHandleA(const char* moduleName);
 
+struct FrontendManagerDispatchTestComponent
+{
+    bool accepts;
+    unsigned int conditionCalls;
+    unsigned int processCalls;
+    unsigned int lastEvent;
+};
+
+bool FrontendManagerDispatchTestCondition(void* component, unsigned int event)
+{
+    FrontendManagerDispatchTestComponent* target =
+        static_cast<FrontendManagerDispatchTestComponent*>(component);
+    ++target->conditionCalls;
+    target->lastEvent = event;
+    return target->accepts;
+}
+
+void FrontendManagerDispatchTestProcess(void* component, unsigned int event)
+{
+    FrontendManagerDispatchTestComponent* target =
+        static_cast<FrontendManagerDispatchTestComponent*>(component);
+    ++target->processCalls;
+    target->lastEvent = event;
+}
+
 int main()
 {
+    const float wheelTolerance = 0.000001f;
+    unsigned int action = 0;
+    unsigned int listEvent = 0;
+    if (
+        !FableRetailFrontendWheelAction(1.0f, &action) ||
+        action != FableRetailFrontendActionWheelUp ||
+        !FableRetailFrontendListEventFromAction(action, &listEvent) ||
+        listEvent != FableRetailFrontendListEventUp ||
+        !FableRetailFrontendWheelAction(-120.0f, &action) ||
+        action != FableRetailFrontendActionWheelDown ||
+        !FableRetailFrontendListEventFromAction(action, &listEvent) ||
+        listEvent != FableRetailFrontendListEventDown ||
+        FableRetailFrontendWheelAction(0.0001f, &action) ||
+        FableRetailFrontendWheelAction(-0.0001f, &action) ||
+        FableRetailFrontendListEventFromAction(0x1A, &listEvent))
+    {
+        return 119;
+    }
+
+    if (
+        (FableRetailFrontendMouseWheelMovementFromRaw(120) - 0.12f >
+             wheelTolerance) ||
+        (FableRetailFrontendMouseWheelMovementFromRaw(120) - 0.12f <
+             -wheelTolerance) ||
+        (FableRetailFrontendMouseWheelMovementFromRaw(-120) + 0.12f >
+             wheelTolerance) ||
+        (FableRetailFrontendMouseWheelMovementFromRaw(-120) + 0.12f <
+             -wheelTolerance) ||
+        (FableRetailFrontendMouseWheelMovementFromRaw(1) - 0.001f >
+             wheelTolerance) ||
+        (FableRetailFrontendMouseWheelMovementFromRaw(1) - 0.001f <
+             -wheelTolerance) ||
+        !FableRetailFrontendWheelAction(
+            FableRetailFrontendMouseWheelMovementFromRaw(1),
+            &action) ||
+        action != FableRetailFrontendActionWheelUp ||
+        !FableRetailFrontendWheelAction(
+            FableRetailFrontendMouseWheelMovementFromRaw(-1),
+            &action) ||
+        action != FableRetailFrontendActionWheelDown)
+    {
+        return 143;
+    }
+
+    FableRetailFrontendListProcessContext listProcessContext = {
+        true,
+        true,
+        true,
+        true};
+    if (!FableRetailFrontendListProcessEvent(
+            FableRetailFrontendListEventUp,
+            listProcessContext,
+            &listEvent) ||
+        listEvent != FableRetailFrontendListEventUp ||
+        !FableRetailFrontendListProcessEvent(
+            FableRetailFrontendListEventDown,
+            listProcessContext,
+            &listEvent) ||
+        listEvent != FableRetailFrontendListEventDown)
+    {
+        return 122;
+    }
+    listProcessContext.viewportConditionPasses = false;
+    if (FableRetailFrontendListProcessEvent(
+            FableRetailFrontendListEventUp,
+            listProcessContext,
+            &listEvent))
+    {
+        return 123;
+    }
+    listProcessContext.viewportConditionPasses = true;
+    listProcessContext.hoverConditionPasses = false;
+    if (FableRetailFrontendListProcessEvent(
+            FableRetailFrontendListEventUp,
+            listProcessContext,
+            &listEvent))
+    {
+        return 124;
+    }
+    listProcessContext.hoverConditionPasses = true;
+    listProcessContext.managerActionConditionPasses = false;
+    if (FableRetailFrontendListProcessEvent(
+            FableRetailFrontendListEventUp,
+            listProcessContext,
+            &listEvent))
+    {
+        return 125;
+    }
+    listProcessContext.managerActionConditionPasses = true;
+    listProcessContext.componentConditionPasses = false;
+    if (FableRetailFrontendListProcessEvent(
+            FableRetailFrontendListEventUp,
+            listProcessContext,
+            &listEvent))
+    {
+        return 126;
+    }
+    listProcessContext.componentConditionPasses = true;
+    if (FableRetailFrontendListProcessEvent(2, listProcessContext, &listEvent) ||
+        FableRetailFrontendListProcessEvent(
+            FableRetailFrontendListEventUp,
+            listProcessContext,
+            0))
+    {
+        return 127;
+    }
+
+    FrontendManagerDispatchTestComponent currentComponent = {
+        true,
+        0,
+        0,
+        0};
+    FrontendManagerDispatchTestComponent registeredComponent = {
+        true,
+        0,
+        0,
+        0};
+    const FableRetailFrontendManagerEventTarget currentTarget = {
+        &currentComponent,
+        FrontendManagerDispatchTestCondition,
+        FrontendManagerDispatchTestProcess};
+    const FableRetailFrontendManagerEventTarget registeredTargets[1] = {
+        {
+            &registeredComponent,
+            FrontendManagerDispatchTestCondition,
+            FrontendManagerDispatchTestProcess}
+    };
+    if (
+        FableRetailFrontendManagerProcessEvent(
+            &currentTarget,
+            registeredTargets,
+            1,
+            FableRetailFrontendListEventDown) != 1 ||
+        currentComponent.conditionCalls != 1 ||
+        currentComponent.processCalls != 1 ||
+        registeredComponent.conditionCalls != 0 ||
+        registeredComponent.processCalls != 0)
+    {
+        return 131;
+    }
+    currentComponent.accepts = false;
+    if (
+        FableRetailFrontendManagerProcessEvent(
+            &currentTarget,
+            registeredTargets,
+            1,
+            FableRetailFrontendListEventUp) != 0 ||
+        currentComponent.conditionCalls != 2 ||
+        currentComponent.processCalls != 1 ||
+        registeredComponent.conditionCalls != 0)
+    {
+        return 132;
+    }
+    if (
+        FableRetailFrontendManagerProcessEvent(
+            0,
+            registeredTargets,
+            1,
+            FableRetailFrontendListEventUp) != 1 ||
+        registeredComponent.conditionCalls != 1 ||
+        registeredComponent.processCalls != 1)
+    {
+        return 133;
+    }
+
+    char profileEditText[128] = {};
+    unsigned int profileEditLength = 0;
+    if (!FableRetailFrontendProcessTextInputCharacter(
+            static_cast<unsigned short>('A'),
+            profileEditText,
+            &profileEditLength) ||
+        !FableRetailFrontendProcessTextInputCharacter(
+            static_cast<unsigned short>(0x00E9),
+            profileEditText,
+            &profileEditLength) ||
+        profileEditLength != 2 ||
+        profileEditText[0] != 'A' ||
+        static_cast<unsigned char>(profileEditText[1]) != 0xE9 ||
+        !FableRetailFrontendProcessTextInputCharacter(
+            8,
+            profileEditText,
+            &profileEditLength) ||
+        profileEditLength != 1 ||
+        !FableRetailFrontendProcessTextInputCharacter(
+            8,
+            profileEditText,
+            &profileEditLength) ||
+        profileEditLength != 0 ||
+        FableRetailFrontendProcessTextInputCharacter(
+            8,
+            profileEditText,
+            &profileEditLength))
+    {
+        return 128;
+    }
+    for (unsigned int i = 0; i != 127; ++i)
+    {
+        if (!FableRetailFrontendProcessTextInputCharacter(
+                static_cast<unsigned short>('x'),
+                profileEditText,
+                &profileEditLength))
+        {
+            return 129;
+        }
+    }
+    if (profileEditLength != 127 ||
+        profileEditText[127] != '\0' ||
+        FableRetailFrontendProcessTextInputCharacter(
+            static_cast<unsigned short>('y'),
+            profileEditText,
+            &profileEditLength))
+    {
+        return 130;
+    }
+
+    bool clickablePressed = false;
+    if (!FableRetailFrontendClickableProcessEvent(
+            FableRetailFrontendClickableLeftClicked,
+            true,
+            &clickablePressed) ||
+        !clickablePressed ||
+        FableRetailFrontendClickableProcessEvent(
+            FableRetailFrontendClickableLeftClicked,
+            false,
+            &clickablePressed) ||
+        !FableRetailFrontendClickableProcessEvent(
+            FableRetailFrontendClickableLeftUnclicked,
+            true,
+            &clickablePressed) ||
+        clickablePressed ||
+        FableRetailFrontendClickableProcessEvent(
+            FableRetailFrontendClickableLeftUnclicked,
+            true,
+            &clickablePressed))
+    {
+        return 121;
+    }
+
+    if (
+        kFableFrontendProfilesListArrowLayout.upArrowDefinitionIndex != 426 ||
+        kFableFrontendProfilesListArrowLayout.downArrowDefinitionIndex != 423 ||
+        kFableFrontendProfilesListArrowLayout.arrowX != 304 ||
+        kFableFrontendProfilesListArrowLayout.upY != 80 ||
+        kFableFrontendProfilesListArrowLayout.downY != 380 ||
+        kFableFrontendProfilesListArrowLayout.arrowWidth != 32 ||
+        kFableFrontendProfilesListArrowLayout.arrowHeight != 32 ||
+        kFableFrontendDeleteListArrowLayout.upArrowDefinitionIndex != 427 ||
+        kFableFrontendDeleteListArrowLayout.downArrowDefinitionIndex != 424 ||
+        kFableFrontendDeleteListArrowLayout.arrowWidth != 32 ||
+        kFableFrontendDeleteListArrowLayout.arrowHeight != 32 ||
+        kFableFrontendSaveListArrowLayout.upArrowDefinitionIndex != 428 ||
+        kFableFrontendSaveListArrowLayout.downArrowDefinitionIndex != 425 ||
+        kFableFrontendSaveListArrowLayout.arrowWidth != 32 ||
+        kFableFrontendSaveListArrowLayout.arrowHeight != 32 ||
+        kFableFrontendRedefineListArrowLayout.upArrowDefinitionIndex != 417 ||
+        kFableFrontendRedefineListArrowLayout.downArrowDefinitionIndex != 420 ||
+        kFableFrontendRedefineListArrowLayout.arrowWidth != 32 ||
+        kFableFrontendRedefineListArrowLayout.arrowHeight != 32)
+    {
+        return 120;
+    }
+
     const fable_u8 source[] = {
         0xFF, 0x00, 0x00,
         0xFF, 0xFF, 0xFF,
@@ -774,6 +1064,131 @@ int main()
         return 21;
     }
 
+    // CList::ProcessEvent @ 0x0053673b uses event 0 for up and event 1
+    // for down.  The frontend adapter must preserve that retail vocabulary.
+    FablePlanUiFrontEndListProcessEvent(
+        FableUiFrontEndListEventDown,
+        4,
+        0,
+        true,
+        0,
+        0,
+        0,
+        &frontEndListScrollPlan);
+    if (
+        !frontEndListScrollPlan.moved ||
+        frontEndListScrollPlan.selectedChild != 1)
+    {
+        return 32;
+    }
+    FablePlanUiFrontEndListProcessEvent(
+        FableUiFrontEndListEventUp,
+        4,
+        0,
+        true,
+        0,
+        0,
+        0,
+        &frontEndListScrollPlan);
+    if (
+        frontEndListScrollPlan.moved ||
+        !frontEndListScrollPlan.blockedAtBoundary)
+    {
+        return 33;
+    }
+    FablePlanUiFrontEndListProcessEvent(
+        2,
+        4,
+        1,
+        false,
+        0,
+        0,
+        0,
+        &frontEndListScrollPlan);
+    if (
+        frontEndListScrollPlan.moved ||
+        frontEndListScrollPlan.selectedChild != 1 ||
+        frontEndListScrollPlan.soundRequest !=
+            FableUiFrontEndSoundNone)
+    {
+        return 34;
+    }
+
+    FableUiFrontendProfileActionPlan profileAction = {};
+    FablePlanVisualFrontendProfileAction(
+        FableUiFrontendProfileModeNormal,
+        0,
+        2,
+        FableUiFrontendProfileInputActivate,
+        &profileAction);
+    if (!profileAction.dispatch ||
+        profileAction.action != FableRetailFrontendManagerActionNewProfile)
+        return 35;
+    FablePlanVisualFrontendProfileAction(
+        FableUiFrontendProfileModeNormal,
+        1,
+        2,
+        FableUiFrontendProfileInputActivate,
+        &profileAction);
+    if (!profileAction.dispatch ||
+        profileAction.action != FableRetailFrontendManagerActionLoadProfile)
+        return 36;
+    FablePlanVisualFrontendProfileAction(
+        FableUiFrontendProfileModeEmpty,
+        0,
+        0,
+        FableUiFrontendProfileInputActivate,
+        &profileAction);
+    if (!profileAction.dispatch ||
+        profileAction.action != FableRetailFrontendManagerActionNewProfile)
+        return 37;
+    FablePlanVisualFrontendProfileAction(
+        FableUiFrontendProfileModeDelete,
+        1,
+        2,
+        FableUiFrontendProfileInputActivate,
+        &profileAction);
+    if (!profileAction.dispatch ||
+        profileAction.action != FableRetailFrontendManagerActionDeleteRow)
+        return 38;
+    FablePlanVisualFrontendProfileAction(
+        FableUiFrontendProfileModeNew,
+        0,
+        2,
+        FableUiFrontendProfileInputKeyboardConfirm,
+        &profileAction);
+    if (!profileAction.dispatch ||
+        profileAction.action !=
+            FableRetailFrontendManagerActionKeyboardConfirm)
+        return 39;
+    FablePlanVisualFrontendProfileAction(
+        FableUiFrontendProfileModeNew,
+        0,
+        2,
+        FableUiFrontendProfileInputKeyboardCancel,
+        &profileAction);
+    if (!profileAction.dispatch ||
+        profileAction.action != FableRetailFrontendManagerActionKeyboardCancel)
+        return 40;
+    FablePlanVisualFrontendProfileAction(
+        FableUiFrontendProfileModeDelete,
+        0,
+        2,
+        FableUiFrontendProfileInputDeleteConfirm,
+        &profileAction);
+    if (!profileAction.dispatch ||
+        profileAction.action != FableRetailFrontendManagerActionDeleteConfirm)
+        return 41;
+    FablePlanVisualFrontendProfileAction(
+        FableUiFrontendProfileModeDeleteConfirm,
+        0,
+        2,
+        FableUiFrontendProfileInputActivate,
+        &profileAction);
+    if (!profileAction.dispatch ||
+        profileAction.action != FableRetailFrontendManagerActionDeleteConfirm)
+        return 42;
+
     FableUiRuntimeListChild wrappingChildren[4] = {};
     for (unsigned int child = 0; child != 4; ++child)
     {
@@ -880,10 +1295,14 @@ int main()
         return 32;
     }
 
-    const fable_u32 mainMenuActions[7] = {
-        66, 16, 297, 10, 67, 321, 314
+    const fable_u32 mainMenuActions[
+        FableFrontendMainMenuVisibleRows] = {
+        66, 16, 297, 67, 321, 314
     };
-    for (fable_u32 row = 0; row != 7; ++row)
+    for (
+        fable_u32 row = 0;
+        row != FableFrontendMainMenuVisibleRows;
+        ++row)
     {
         if (
             FableGetVisualFrontendMainMenuAction(row) !=
@@ -944,6 +1363,41 @@ int main()
             0) != 3)
     {
         return 36;
+    }
+
+    FableUiSaveBrowserActionPlan saveAction = {};
+    FablePlanVisualFrontendSaveAction(
+        saveRows,
+        3,
+        0,
+        &saveAction);
+    if (
+        saveAction.action != FableUiSaveBrowserLoadAction ||
+        !saveAction.dispatch)
+    {
+        return 43;
+    }
+    FablePlanVisualFrontendSaveAction(
+        saveRows,
+        3,
+        2,
+        &saveAction);
+    if (
+        saveAction.action != FableUiSaveBrowserInvalidAction ||
+        saveAction.dispatch)
+    {
+        return 43;
+    }
+    FablePlanVisualFrontendSaveAction(
+        saveRows,
+        3,
+        3,
+        &saveAction);
+    if (
+        saveAction.action != FableUiSaveBrowserInvalidAction ||
+        saveAction.dispatch)
+    {
+        return 43;
     }
 
     fable_u32 previousControllerState = 0;

@@ -11,20 +11,10 @@ struct FrontEndHistoryDequeIterator_0059a9c0
     void*** node;
 };
 
-extern "C" __declspec(naked)
+extern "C"
 bool __cdecl FrontEndHistoryDequeIterator_Equal_0059a9c0(
-    const FrontEndHistoryDequeIterator_0059a9c0*,
-    const FrontEndHistoryDequeIterator_0059a9c0*)
+    const FrontEndHistoryDequeIterator_0059a9c0* left,
+    const FrontEndHistoryDequeIterator_0059a9c0* right)
 {
-    __asm
-    {
-        mov eax, dword ptr [esp + 4]
-        mov eax, dword ptr [eax]
-        mov ecx, dword ptr [esp + 8]
-        sub eax, dword ptr [ecx]
-        neg eax
-        sbb eax, eax
-        inc eax
-        ret
-    }
+    return left->current == right->current;
 }

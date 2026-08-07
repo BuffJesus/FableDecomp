@@ -55,6 +55,12 @@ function Get-InputFingerprint {
         Get-Item (Join-Path $tools 'build_reconstruction_backlog.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'build_promotion_queue.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'triage_naming_quality.py') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $root 'work\frontend_re\manager_init2_used_key_manifest.tsv') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $root 'work\frontend_re\manager_init2_resource_manifest.tsv') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $root 'work\frontend_re\manager_init2_screen_children.tsv') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $tools 'validate_frontend_init2_manifest.py') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $root 'work\frontend_re\CFrontEndManager_GetProfileNames_005955ab_contract.md') -ErrorAction SilentlyContinue
+        Get-Item (Join-Path $tools 'validate_frontend_profile_names_contract.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'write_decomp_dashboard.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'artifact_layout.py') -ErrorAction SilentlyContinue
         Get-Item (Join-Path $tools 'organize_decomp_artifacts.py') -ErrorAction SilentlyContinue
@@ -220,6 +226,12 @@ try {
     }
     Invoke-Checked 'candidate signature audit' {
         & $python (Join-Path $tools 'audit_candidate_signatures.py') --root $root
+    }
+    Invoke-Checked 'frontend Init2 manifest validation' {
+        & $python (Join-Path $tools 'validate_frontend_init2_manifest.py') --root $root
+    }
+    Invoke-Checked 'frontend profile-name contract validation' {
+        & $python (Join-Path $tools 'validate_frontend_profile_names_contract.py') --root $root
     }
     Invoke-Checked 'naming quality triage' {
         & $python (Join-Path $tools 'triage_naming_quality.py') --root $root

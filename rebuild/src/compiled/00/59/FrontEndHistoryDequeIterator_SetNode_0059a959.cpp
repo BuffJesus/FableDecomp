@@ -14,17 +14,9 @@ struct FrontEndHistoryDequeIterator_0059a959
     void SetNode(void*** new_node);
 };
 
-__declspec(naked)
-void FrontEndHistoryDequeIterator_0059a959::SetNode(void***)
+void FrontEndHistoryDequeIterator_0059a959::SetNode(void*** new_node)
 {
-    __asm
-    {
-        mov eax, dword ptr [esp + 4]
-        mov dword ptr [ecx + 0ch], eax
-        mov eax, dword ptr [eax]
-        mov dword ptr [ecx + 4], eax
-        add eax, 80h
-        mov dword ptr [ecx + 8], eax
-        ret 4
-    }
+    node = new_node;
+    first = *new_node;
+    last = first + 0x20;
 }

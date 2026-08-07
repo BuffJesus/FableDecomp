@@ -1,0 +1,8 @@
+#include <cstdio>
+struct GAN004d2ba0 { void* m(void* s, int n); };
+static void* gSelf; static void* gStr; static int gN;
+void* GAN004d2ba0::m(void* s, int n){ gSelf=this; gStr=s; gN=n; return 0; }
+void* __fastcall fn_004d2ba0(GAN004d2ba0* self){ self->m((void*)0x123a0c0, -1); return self; }
+int main(){ GAN004d2ba0 x; void* r=fn_004d2ba0(&x);
+ if(r!=&x||gSelf!=&x||gStr!=(void*)0x123a0c0||gN!=-1){ printf("004d2ba0_TEST FAIL\n"); return 1; }
+ printf("004d2ba0_TEST PASS\n"); return 0; }
