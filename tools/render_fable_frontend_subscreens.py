@@ -151,9 +151,9 @@ OPTIONS_ROWS = (
 DETAIL_SCREEN_COUNT = 4
 SAVE_BROWSER_ROWS = (
     "AutoSave",
-    "Manual - Save1",
-    "Manual - Save2",
-    "Manual - Save3",
+    "Save 1",
+    "Save 2",
+    "Save 3",
 )
 SAVE_LIST_ORIGIN = (10, 90)
 SAVE_ROW_STEP_Y = 30

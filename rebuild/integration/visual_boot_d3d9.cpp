@@ -219,9 +219,9 @@ namespace
     // labels transparent so the active save list can submit them live.
     const char* const kVisualSaveRowNames[4] = {
         "AutoSave",
-        "Manual - Save1",
-        "Manual - Save2",
-        "Manual - Save3"
+        "Save 1",
+        "Save 2",
+        "Save 3"
     };
     const fable_i32 kSaveBottomBackdropAtlasX = 1024;
     const fable_i32 kSaveBottomBackdropAtlasY = 2960;
@@ -745,6 +745,15 @@ namespace
             const FableProfileGlyphMetric& glyph =
                 kFableProfileGlyphMetrics[
                     code - kFableProfileGlyphFirst];
+            if (code == 0x20)
+            {
+                // Space carries an advance but no visible bitmap; its packed
+                // atlas cell abuts the '!' glyph, so drawing the quad bleeds a
+                // thin vertical bar (seen between "Manual" / "Save" on the
+                // Saved Games rows).  Advance the pen only.
+                pen += static_cast<float>(glyph.advance);
+                continue;
+            }
             const float glyphLeft =
                 pen + static_cast<float>(glyph.xOffset);
             AppendVisualQuad(
@@ -878,6 +887,13 @@ namespace
             else
             {
                 glyph = kFableDetailTitleGlyphMetrics[metricIndex];
+            }
+            if (code == 0x20)
+            {
+                // Space has no visible bitmap; skip the quad (and its outline)
+                // so the packed atlas neighbour never bleeds in.  Advance only.
+                pen += static_cast<float>(glyph.advance) * glyphScale;
+                continue;
             }
             const float glyphLeft =
                 pen + static_cast<float>(glyph.xOffset) * glyphScale;
@@ -4217,12 +4233,21 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
             static_cast<float>(kSaveTextAreaMiddleAtlasX + 8) * textAreaInvW,
             static_cast<float>(kSaveTextAreaAtlasY + 64) * textAreaInvH,
             0xFFFFFFFFu);
+        // Retail titles this screen "<profile> - Load Game" (matching the
+        // "<profile> - Gameplay Options" detail titles), not "Saved Games".
+        char saveTitle[128] = {};
+        if (g_ActiveProfileName[0] != 0)
+        {
+            strcpy(saveTitle, g_ActiveProfileName);
+            strcat(saveTitle, " - ");
+        }
+        strcat(saveTitle, "Load Game");
         AppendDetailTitleGlyphText(
             vertices,
             vertexCount,
             records,
             recordCount,
-            "Saved Games",
+            saveTitle,
             65.0f,
             44.0f,
             left,

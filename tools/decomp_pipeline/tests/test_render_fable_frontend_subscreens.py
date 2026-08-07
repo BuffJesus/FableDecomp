@@ -381,9 +381,9 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         self.assertEqual(
             (
                 "AutoSave",
-                "Manual - Save1",
-                "Manual - Save2",
-                "Manual - Save3",
+                "Save 1",
+                "Save 2",
+                "Save 3",
             ),
             SAVE_BROWSER_ROWS)
 
