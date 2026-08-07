@@ -47606,6 +47606,118 @@ $catalog = @(
         TestSource = '00/a0/CHandleBasedMemoryPool_GetPointerFromHandle_00a026b0_test.cpp'
         PassPattern = 'GPFH_00a026b0_OK'
     }
+    [pscustomobject]@{
+        Address = '00a3fd40'
+        Module = '_global'
+        Source = '00/a3/global_Destval_00a3fd40.cpp'
+        TestSource = '00/a3/global_Destval_00a3fd40_test.cpp'
+        PassPattern = 'DESTVAL_00a3fd40_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a9c910'
+        Module = '_global'
+        Source = '00/a9/global_Destval_00a9c910.cpp'
+        TestSource = '00/a9/global_Destval_00a9c910_test.cpp'
+        PassPattern = 'DESTVAL_00a9c910_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a9c980'
+        Module = '_global'
+        Source = '00/a9/global_Destval_00a9c980.cpp'
+        TestSource = '00/a9/global_Destval_00a9c980_test.cpp'
+        PassPattern = 'DESTVAL_00a9c980_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a9c9a0'
+        Module = '_global'
+        Source = '00/a9/global_Destval_00a9c9a0.cpp'
+        TestSource = '00/a9/global_Destval_00a9c9a0_test.cpp'
+        PassPattern = 'DESTVAL_00a9c9a0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a5c5c0'
+        Module = 'CSimpleMemoryPool'
+        Source = '00/a5/CSimpleMemoryPool_SetCapacity_00a5c5c0.cpp'
+        TestSource = '00/a5/CSimpleMemoryPool_SetCapacity_00a5c5c0_test.cpp'
+        PassPattern = 'SETCAP_OK'
+    }
+    [pscustomobject]@{
+        Address = '00af1280'
+        Module = 'CTCInventoryBase'
+        Source = '00/af/CTCInventoryBase_GetCategoryWithIndex_00af1280.cpp'
+        TestSource = '00/af/CTCInventoryBase_GetCategoryWithIndex_00af1280_test.cpp'
+        PassPattern = 'GETCAT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b23b90'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_SetEnvironmentalEffectsAlwaysUpdate_00b23b90.cpp'
+        TestSource = '00/b2/CEngine_SetEnvironmentalEffectsAlwaysUpdate_00b23b90_test.cpp'
+        PassPattern = 'SETENV_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bf6d30'
+        Module = 'CLandscapeBackgroundSubNodeSplitBranch'
+        Source = '00/bf/CLandscapeBackgroundSubNodeSplitBranch_OnPostParentRelocation_00bf6d30.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundSubNodeSplitBranch_OnPostParentRelocation_00bf6d30_test.cpp'
+        PassPattern = 'ONPOST_OK'
+    }
+    [pscustomobject]@{
+        Address = '00abfcd0'
+        Module = 'C3DMeshFileMaterialChunk'
+        Source = '00/ab/C3DMeshFileMaterialChunk_HasExtendedProperties_00abfcd0.cpp'
+        TestSource = '00/ab/C3DMeshFileMaterialChunk_HasExtendedProperties_00abfcd0_test.cpp'
+        PassPattern = 'HASEXT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b86a10'
+        Module = 'CAIStateGroup_BuyFromSeller'
+        Source = '00/b8/CAIStateGroupBuyFromSeller_BoughtSomething_00b86a10.cpp'
+        TestSource = '00/b8/CAIStateGroupBuyFromSeller_BoughtSomething_00b86a10_test.cpp'
+        PassPattern = 'BOUGHT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ab7a50'
+        Module = 'CStaticFontBank'
+        Source = '00/ab/CStaticFontBank_GetFontMaxHeight_00ab7a50.cpp'
+        TestSource = '00/ab/CStaticFontBank_GetFontMaxHeight_00ab7a50_test.cpp'
+        PassPattern = 'FONTH_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1b9e0'
+        Module = 'CGraphicFrameData'
+        Source = '00/c1/CGraphicFrameData_GetFloatTLX_00c1b9e0.cpp'
+        TestSource = '00/c1/CGraphicFrameData_GetFloatTLX_00c1b9e0_test.cpp'
+        PassPattern = 'TLX9E0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1ba00'
+        Module = 'CGenericVertex'
+        Source = '00/c1/CGenericVertex_GetU1_00c1ba00.cpp'
+        TestSource = '00/c1/CGenericVertex_GetU1_00c1ba00_test.cpp'
+        PassPattern = 'U1A00_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1bb00'
+        Module = 'CGraphicFrameData'
+        Source = '00/c1/CGraphicFrameData_GetFloatTLX_00c1bb00.cpp'
+        TestSource = '00/c1/CGraphicFrameData_GetFloatTLX_00c1bb00_test.cpp'
+        PassPattern = 'TLXBB00_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a427c0'
+        Module = 'CLipSyncDataBank'
+        Source = '00/a4/CLipSyncDataBank_IsDiskFile_00a427c0.cpp'
+        TestSource = '00/a4/CLipSyncDataBank_IsDiskFile_00a427c0_test.cpp'
+        PassPattern = 'ISDISK_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bb6de0'
+        Module = 'CEnginePrimitiveManagerParticleDecalGroup'
+        Source = '00/bb/CEnginePrimitiveManagerParticleDecalGroup_RenderPrimitive_00bb6de0.cpp'
+        TestSource = '00/bb/CEnginePrimitiveManagerParticleDecalGroup_RenderPrimitive_00bb6de0_test.cpp'
+        PassPattern = 'RENDPRIM_OK'
+    }
 )
 
 $requestedAddresses = @(
