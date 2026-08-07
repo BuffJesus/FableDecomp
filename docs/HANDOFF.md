@@ -8045,3 +8045,25 @@ CRAWL INTEGRATION (do on next relaunch): have each crawl agent run
 oracle and BEFORE verify — over-captures then verify byte-exact instead of being
 deferred. Remaining known over-capture defer needing more than a trim:
 0x5bc65c ProcessButtonAReleased (also needs a virtual at vtbl+0xb8).
+
+### 2026-08-07 addendum 2 — over-capture recovery lane + tail-call gotcha
+
+Recovered 11 previously-deferred over-captures by hand this pass (commits 4800941,
+21ce22a, bac3a41): CGameEventPackage::Clear, AddChildPrimitive, DoSizeof,
+GetAnimationTransitionInTime, 2x ~CChunkedFileChunk, InitStateGroup (empty ret 8),
+AddToInterface + Initialise (zero-fields+tail-jmp), CWADFile::GetLength (value-
+return member forwarder), _global::ConstructString (cdecl-cleanup forwarder).
+
+TAIL-CALL GOTCHA (now in CLAUDE.md): value-returning member forwarders and cdecl-
+cleanup forwarders keep retail's `call;ret` and recover byte-exact after trim; VOID
+member forwarders get tail-call-optimized by VC7.1 to `jmp` (retail kept
+`push;call;ret`) -> DIFFER same-length, NOT recoverable. Register-alloc/ebp-frame/
+`push [mem]` one-offs also stay deferred.
+
+Backlog `rebuild/backlog/overcapture-recovery-worklist.tsv` lists all 84 deferred
+over-captures by shape (call-then-ret 27, call-then-retN 13, vtable-call 8, tail-jmp
+6, other 28, ebp-frame 1, empty 1). A crawl agent is now running a PHASE-A recovery
+pass over this worklist (author recoverable shapes, skip void-tail-jmp/reg-alloc)
+then continues normal batches 77-81. The crawl also has trim_overcapture integrated
+inline now (recovered 21 auto in batches 72-76), so NEW over-captures land directly.
+gen_tried.txt at ~1406. Session decomp total ~1177 + recoveries.
