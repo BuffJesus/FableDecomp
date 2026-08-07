@@ -6687,3 +6687,15 @@ address	name	length	bytes
 00908090	CCreatureAction_TrollAngryGroundPound::GetEffectName	19	8b4c2404689ce32801e8426f0900b001c20400
 00908140	CCreatureAction_TrollProjectileAttack::GetEffectName	19	8b4c2404689ce32801e8926e0900b001c20400
 009081d0	CCreatureAction_TrollTunnel::GetEffectName	19	8b4c2404689ce32801e8026e0900b001c20400
+0098cec0	_Dest_val<std::allocator<std::pair>,std::pair>::~_Dest_val	19	568bf18d4e04e8151c01008bce5ee90d1c0100
+009e45d0	_Dest_val<std::allocator<std::pair>,std::pair>::~_Dest_val	19	568bf18d4e04e855f501008bce5ee9fd5cfbff
+009e63f0	_Dest_val<std::allocator<std::pair>,std::pair>::~_Dest_val	19	568bf18d4e04e8e586fbff8bce5ee9dd86fbff
+00a379c0	_Dest_val<std::allocator<std::pair>,std::pair>::~_Dest_val	19	568bf18d4e10e81571f6ff8bce5ee9cdfcffff
+009ea190	CGenericVar::Init	19	8b4424048b10895118c7410403000000c20400
+009ea1b0	CGenericVar::Init	19	8b4424048b1089510cc7410401000000c20400
+009ea1d0	CGenericVar::Init	19	8b4424048b10895110c7410402000000c20400
+009ea1f0	CGenericVar::Init	19	8b4424048a10885114c7410404000000c20400
+009943b0	CFileDataInputStream::NeedsBufferedRead	19	8b542404568b712033c03bd60f9cc05ec20400
+00994590	CCompressedMemoryDataInputStream::NeedsBufferedRead	19	8b542404568b711c33c03bd60f9cc05ec20400
+009fd100	CLandscapeBackgroundSubNode::OnPostParentRelocation	19	8b44240489816c02000089819c010000c20400
+00a026b0	CHandleBasedMemoryPool::GetPointerFromHandle	19	8b81380400008b4c24048b048883c020c20400

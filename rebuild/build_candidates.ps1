@@ -47522,6 +47522,90 @@ $catalog = @(
         TestSource = '00/90/CCreatureActionTrollTunnel_GetEffectName_009081d0_test.cpp'
         PassPattern = 'GETEFFECT_009081d0_OK'
     }
+    [pscustomobject]@{
+        Address = '0098cec0'
+        Module = '_global'
+        Source = '00/98/global_Destval_0098cec0.cpp'
+        TestSource = '00/98/global_Destval_0098cec0_test.cpp'
+        PassPattern = 'DESTVAL_0098cec0_OK'
+    }
+    [pscustomobject]@{
+        Address = '009e45d0'
+        Module = '_global'
+        Source = '00/9e/global_Destval_009e45d0.cpp'
+        TestSource = '00/9e/global_Destval_009e45d0_test.cpp'
+        PassPattern = 'DESTVAL_009e45d0_OK'
+    }
+    [pscustomobject]@{
+        Address = '009e63f0'
+        Module = '_global'
+        Source = '00/9e/global_Destval_009e63f0.cpp'
+        TestSource = '00/9e/global_Destval_009e63f0_test.cpp'
+        PassPattern = 'DESTVAL_009e63f0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a379c0'
+        Module = '_global'
+        Source = '00/a3/global_Destval_00a379c0.cpp'
+        TestSource = '00/a3/global_Destval_00a379c0_test.cpp'
+        PassPattern = 'DESTVAL_00a379c0_OK'
+    }
+    [pscustomobject]@{
+        Address = '009ea190'
+        Module = 'CGenericVar'
+        Source = '00/9e/CGenericVar_Init_009ea190.cpp'
+        TestSource = '00/9e/CGenericVar_Init_009ea190_test.cpp'
+        PassPattern = 'GVINIT_009ea190_OK'
+    }
+    [pscustomobject]@{
+        Address = '009ea1b0'
+        Module = 'CGenericVar'
+        Source = '00/9e/CGenericVar_Init_009ea1b0.cpp'
+        TestSource = '00/9e/CGenericVar_Init_009ea1b0_test.cpp'
+        PassPattern = 'GVINIT_009ea1b0_OK'
+    }
+    [pscustomobject]@{
+        Address = '009ea1d0'
+        Module = 'CGenericVar'
+        Source = '00/9e/CGenericVar_Init_009ea1d0.cpp'
+        TestSource = '00/9e/CGenericVar_Init_009ea1d0_test.cpp'
+        PassPattern = 'GVINIT_009ea1d0_OK'
+    }
+    [pscustomobject]@{
+        Address = '009ea1f0'
+        Module = 'CGenericVar'
+        Source = '00/9e/CGenericVar_Init_009ea1f0.cpp'
+        TestSource = '00/9e/CGenericVar_Init_009ea1f0_test.cpp'
+        PassPattern = 'GVINIT_009ea1f0_OK'
+    }
+    [pscustomobject]@{
+        Address = '009943b0'
+        Module = 'CFileDataInputStream'
+        Source = '00/99/CFileDataInputStream_NeedsBufferedRead_009943b0.cpp'
+        TestSource = '00/99/CFileDataInputStream_NeedsBufferedRead_009943b0_test.cpp'
+        PassPattern = 'NBR_009943b0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00994590'
+        Module = 'CCompressedMemoryDataInputStream'
+        Source = '00/99/CCompressedMemoryDataInputStream_NeedsBufferedRead_00994590.cpp'
+        TestSource = '00/99/CCompressedMemoryDataInputStream_NeedsBufferedRead_00994590_test.cpp'
+        PassPattern = 'NBR_00994590_OK'
+    }
+    [pscustomobject]@{
+        Address = '009fd100'
+        Module = 'CLandscapeBackgroundSubNode'
+        Source = '00/9f/CLandscapeBackgroundSubNode_OnPostParentRelocation_009fd100.cpp'
+        TestSource = '00/9f/CLandscapeBackgroundSubNode_OnPostParentRelocation_009fd100_test.cpp'
+        PassPattern = 'OPPR_009fd100_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a026b0'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_GetPointerFromHandle_00a026b0.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_GetPointerFromHandle_00a026b0_test.cpp'
+        PassPattern = 'GPFH_00a026b0_OK'
+    }
 )
 
 $requestedAddresses = @(
