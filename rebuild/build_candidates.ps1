@@ -41502,6 +41502,132 @@ $catalog = @(
         TestSource = '00/78/CTCHeroRangedAttacks_IsUsingProjectileTargetingAnalogueZoom_00789ba0_test.cpp'
         PassPattern = '00789ba0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007e73d0'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_PlayAnimation_007e73d0.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_PlayAnimation_007e73d0_test.cpp'
+        PassPattern = '007e73d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e73e0'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_PlayCombatAnimation_007e73e0.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_PlayCombatAnimation_007e73e0_test.cpp'
+        PassPattern = '007e73e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e73f0'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_PlayLoopingAnimation_007e73f0.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_PlayLoopingAnimation_007e73f0_test.cpp'
+        PassPattern = '007e73f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7420'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_MoveToAndPickUpGenericBox_007e7420.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_MoveToAndPickUpGenericBox_007e7420_test.cpp'
+        PassPattern = '007e7420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7470'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_WaitForEntityToFinishPerformingTasks_007e7470.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_WaitForEntityToFinishPerformingTasks_007e7470_test.cpp'
+        PassPattern = '007e7470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7480'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_Wait_007e7480.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_Wait_007e7480_test.cpp'
+        PassPattern = '007e7480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7450'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_IsPerformingScriptTask_007e7450.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_IsPerformingScriptTask_007e7450_test.cpp'
+        PassPattern = '007e7450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7460'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_IsFollowingThing_007e7460.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_IsFollowingThing_007e7460_test.cpp'
+        PassPattern = '007e7460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f6150'
+        Module = 'CTCUserActionPointBase'
+        Source = '00/7f/CTCUserActionPointBase_IsActionPointFree_007f6150.cpp'
+        TestSource = '00/7f/CTCUserActionPointBase_IsActionPointFree_007f6150_test.cpp'
+        PassPattern = '007f6150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00810f60'
+        Module = '_global'
+        Source = '00/81/global_Consval_00810f60.cpp'
+        TestSource = '00/81/global_Consval_00810f60_test.cpp'
+        PassPattern = '00810f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00810f70'
+        Module = '_global'
+        Source = '00/81/global_Consval_00810f70.cpp'
+        TestSource = '00/81/global_Consval_00810f70_test.cpp'
+        PassPattern = '00810f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00810f80'
+        Module = '_global'
+        Source = '00/81/global_Consval_00810f80.cpp'
+        TestSource = '00/81/global_Consval_00810f80_test.cpp'
+        PassPattern = '00810f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00856b10'
+        Module = '_global'
+        Source = '00/85/global_Destval_00856b10.cpp'
+        TestSource = '00/85/global_Destval_00856b10_test.cpp'
+        PassPattern = '00856b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00860940'
+        Module = 'CVillageTaskPatrol'
+        Source = '00/86/CVillageTaskPatrol_IsValid_00860940.cpp'
+        TestSource = '00/86/CVillageTaskPatrol_IsValid_00860940_test.cpp'
+        PassPattern = '00860940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00860c50'
+        Module = 'CVillageTaskPickCrops'
+        Source = '00/86/CVillageTaskPickCrops_IsValid_00860c50.cpp'
+        TestSource = '00/86/CVillageTaskPickCrops_IsValid_00860c50_test.cpp'
+        PassPattern = '00860c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00865b40'
+        Module = 'CCombatAction_GenericStrikeResponseKnockdownRecoverBase'
+        Source = '00/86/CCombatActionGenericStrikeResponseKnockdownRecoverBase_IsOverrideableByActionOfSamePriority_00865b40.cpp'
+        TestSource = '00/86/CCombatActionGenericStrikeResponseKnockdownRecoverBase_IsOverrideableByActionOfSamePriority_00865b40_test.cpp'
+        PassPattern = '00865b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00865e00'
+        Module = 'CCombatAction_GenericStrikeResponseBase'
+        Source = '00/86/CCombatActionGenericStrikeResponseBase_IsToCauseRecoil_00865e00.cpp'
+        TestSource = '00/86/CCombatActionGenericStrikeResponseBase_IsToCauseRecoil_00865e00_test.cpp'
+        PassPattern = '00865e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00865e10'
+        Module = 'CCombatAction_GenericStrikeResponseKnockdown'
+        Source = '00/86/CCombatActionGenericStrikeResponseKnockdown_IsToCauseRecoil_00865e10.cpp'
+        TestSource = '00/86/CCombatActionGenericStrikeResponseKnockdown_IsToCauseRecoil_00865e10_test.cpp'
+        PassPattern = '00865e10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
