@@ -113,6 +113,15 @@ of a clean PE32 at ImageBase `0x400000`.
   rejects it, C4234) — model this-in-ecx methods as real members or free `__fastcall(self,...)`.
 - Workflow `args` arrive in the script as a JSON **string**, not a parsed value — guard with
   `const items = typeof args === 'string' ? JSON.parse(args) : args` before `.map`/`.length`.
+- `verify_and_land.py` CANNOT auto-verify functions with an EMBEDDED JUMP TABLE (switch >~4 dense
+  cases → `jmp [eax*4+table]` with the table inline in .text). Two failure modes in `obj_text`:
+  (1) objdump `-d` splits the body at every internal `$Lxxx` local label, so the leaf-named block is
+  just the pre-`jmp` head → reports `DIFFER(37v120)`; (2) the relocated table dwords are all-zero in
+  the fresh .obj so objdump elides them as `...`, dropping 4·N bytes. Verify these by RAW COFF
+  extraction (read .text section bytes start→next-non-`$`-symbol, mask reloc slots) + behavior test,
+  NOT the harness. Proven example: `CKeyRedefiner::GetSubTypeForAction` 0x557CA0 (RELOCATION_MATCH
+  120/120, source in docs/REDEFINE_INPUT_SYSTEM.md). A real obj_text fix = raw-section extract, but
+  don't edit the shared harness while a background crawl is running.
 
 ## Toolchain (see docs/TOOLCHAIN.md for commands)
 - Mario rig gotcha (2026-07-22): `work/mario_hero/stage_bindaxis4` is format-valid and looks

@@ -71,6 +71,39 @@ movement. **The engine already models controller-class input records** — the
 binding store and redefiner are not keyboard-only. What's missing at retail is a
 *frontend screen* that captures gamepad input into these records.
 
+### Byte-exact reconstruction (verified RELOCATION_MATCH, 120/120 bytes)
+
+`GetSubTypeForAction` is `__stdcall` (single stack arg, `ret 0x4`). Reconstructed
+source — proven byte-identical to retail via direct COFF-section extraction +
+relocation masking (10 reloc slots; the harness's objdump path can't auto-verify
+this one, see the jump-table gotcha in CLAUDE.md):
+
+```c
+extern int g_subtypeCounterA;   // 0x13B8AD0  (type 0x37 event class)
+extern int g_subtypeCounterB;   // 0x13B8ACC  (type 0x38 event class)
+extern int __fastcall GetSubTypeAnalogDirection(void* record);   // 0x40ED10
+int __stdcall GetSubTypeForAction(int* record){
+    switch (*record) {
+    case 0x37: return ++g_subtypeCounterA;
+    case 0x38: return ++g_subtypeCounterB;
+    case 0x3c:
+        switch (GetSubTypeAnalogDirection(record)) {   // 0x40ED10, record kept in ecx
+        case 1: return 0xa;   // subtype 0x0A
+        case 2: return 0xb;   // subtype 0x0B
+        case 3: return 0xc;   // subtype 0x0C
+        case 4: return 0xd;   // subtype 0x0D
+        }
+    }
+    return 0;
+}
+```
+
+The outer `switch` compiles to the retail subtract-chain
+(`sub 0x37; je / dec; je / sub 4; jne`); the inner `switch` on the analog
+direction becomes the embedded `dec; cmp 3; ja; jmp [eax*4+table]` jump table
+(subtypes 0x0A–0x0D). This is the exact device-type dispatch a gamepad-redefine
+screen drives — see `GAMEPAD_REDEFINE_PATCH.md`.
+
 ## 4. The redefine UI
 
 - `CRedefinerList` @ **0x5566A0** (`Initialise`), **0x557000** (`Refresh`),
