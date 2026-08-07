@@ -43287,6 +43287,118 @@ $catalog = @(
         TestSource = '00/4a/CScriptThing_MsgTalkedToAnyone_004aaec0_test.cpp'
         PassPattern = '004aaec0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004aaf00'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgPerformedFlourish_004aaf00.cpp'
+        TestSource = '00/4a/CScriptThing_MsgPerformedFlourish_004aaf00_test.cpp'
+        PassPattern = '004aaf00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aaf20'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_MsgPerformedSuccessfulFlourish_004aaf20.cpp'
+        TestSource = '00/4a/CScriptThing_MsgPerformedSuccessfulFlourish_004aaf20_test.cpp'
+        PassPattern = '004aaf20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aafa0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_IsUnconscious_004aafa0.cpp'
+        TestSource = '00/4a/CScriptThing_IsUnconscious_004aafa0_test.cpp'
+        PassPattern = '004aafa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004aafc0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_IsUsable_004aafc0.cpp'
+        TestSource = '00/4a/CScriptThing_IsUsable_004aafc0_test.cpp'
+        PassPattern = '004aafc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab000'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_IsOpenDoor_004ab000.cpp'
+        TestSource = '00/4a/CScriptThing_IsOpenDoor_004ab000_test.cpp'
+        PassPattern = '004ab000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab020'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_IsSummonedCreature_004ab020.cpp'
+        TestSource = '00/4a/CScriptThing_IsSummonedCreature_004ab020_test.cpp'
+        PassPattern = '004ab020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab080'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_GetActivationTriggerStatus_004ab080.cpp'
+        TestSource = '00/4a/CScriptThing_GetActivationTriggerStatus_004ab080_test.cpp'
+        PassPattern = '004ab080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab110'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_GetScriptCounter_004ab110.cpp'
+        TestSource = '00/4a/CScriptThing_GetScriptCounter_004ab110_test.cpp'
+        PassPattern = '004ab110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab0c0'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_SetToKillOnLevelUnload_004ab0c0.cpp'
+        TestSource = '00/4a/CScriptThing_SetToKillOnLevelUnload_004ab0c0_test.cpp'
+        PassPattern = '004ab0c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fb4d0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetNextRegionOnRouteTo_004fb4d0.cpp'
+        TestSource = '00/4f/CWorldMap_GetNextRegionOnRouteTo_004fb4d0_test.cpp'
+        PassPattern = '004fb4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fcbb0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_ActivateTopology_004fcbb0.cpp'
+        TestSource = '00/4f/CWorldMap_ActivateTopology_004fcbb0_test.cpp'
+        PassPattern = '004fcbb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548590'
+        Module = 'CUserProfileManager'
+        Source = '00/54/CUserProfileManager_IsCameraResetting_00548590.cpp'
+        TestSource = '00/54/CUserProfileManager_IsCameraResetting_00548590_test.cpp'
+        PassPattern = '00548590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005485b0'
+        Module = 'CUserProfileManager'
+        Source = '00/54/CUserProfileManager_IsCameraResetting_005485b0.cpp'
+        TestSource = '00/54/CUserProfileManager_IsCameraResetting_005485b0_test.cpp'
+        PassPattern = '005485b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005485d0'
+        Module = 'CUserProfileManager'
+        Source = '00/54/CUserProfileManager_IsCameraResetting_005485d0.cpp'
+        TestSource = '00/54/CUserProfileManager_IsCameraResetting_005485d0_test.cpp'
+        PassPattern = '005485d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005485f0'
+        Module = 'CUserProfileManager'
+        Source = '00/54/CUserProfileManager_IsCameraResetting_005485f0.cpp'
+        TestSource = '00/54/CUserProfileManager_IsCameraResetting_005485f0_test.cpp'
+        PassPattern = '005485f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00548610'
+        Module = 'CUserProfileManager'
+        Source = '00/54/CUserProfileManager_IsCameraResetting_00548610.cpp'
+        TestSource = '00/54/CUserProfileManager_IsCameraResetting_00548610_test.cpp'
+        PassPattern = '00548610_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

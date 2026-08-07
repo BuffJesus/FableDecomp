@@ -1,0 +1,2 @@
+struct S { char pad[0xc]; unsigned char b0c; char pad_lo[25-0xd]; unsigned char blo; char pad_hi[217-(25+1)]; unsigned char bhi; char M(); };
+char S::M(){ if(this->b0c) return this->bhi; return this->blo; }
