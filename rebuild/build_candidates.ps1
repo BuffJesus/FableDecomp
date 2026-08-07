@@ -47431,6 +47431,97 @@ $catalog = @(
         TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe7dd_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe7dd_OK'
     }
+    [pscustomobject]@{
+        Address = '008fe805'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe805.cpp'
+        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe805_test.cpp'
+        PassPattern = 'GETACTIONNAME_008fe805_OK'
+    }
+    [pscustomobject]@{
+        Address = '008fe82a'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe82a.cpp'
+        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe82a_test.cpp'
+        PassPattern = 'GETACTIONNAME_008fe82a_OK'
+    }
+    [pscustomobject]@{
+        Address = '008fe84f'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe84f.cpp'
+        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe84f_test.cpp'
+        PassPattern = 'GETACTIONNAME_008fe84f_OK'
+    }
+    [pscustomobject]@{
+        Address = '008fe880'
+        Module = '_global'
+        Source = '00/8f/global_Destval_008fe880.cpp'
+        TestSource = '00/8f/global_Destval_008fe880_test.cpp'
+        PassPattern = 'DESTVAL_008fe880_OK'
+    }
+    [pscustomobject]@{
+        Address = '008fe893'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe893.cpp'
+        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe893_test.cpp'
+        PassPattern = 'GETACTIONNAME_008fe893_OK'
+    }
+    [pscustomobject]@{
+        Address = '008fe8b8'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe8b8.cpp'
+        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe8b8_test.cpp'
+        PassPattern = 'GETACTIONNAME_008fe8b8_OK'
+    }
+    [pscustomobject]@{
+        Address = '008fe8dd'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe8dd.cpp'
+        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe8dd_test.cpp'
+        PassPattern = 'GETACTIONNAME_008fe8dd_OK'
+    }
+    [pscustomobject]@{
+        Address = '008fe902'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe902.cpp'
+        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe902_test.cpp'
+        PassPattern = 'GETACTIONNAME_008fe902_OK'
+    }
+    [pscustomobject]@{
+        Address = '008fe915'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe915.cpp'
+        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe915_test.cpp'
+        PassPattern = 'GETACTIONNAME_008fe915_OK'
+    }
+    [pscustomobject]@{
+        Address = '008fe928'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe928.cpp'
+        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe928_test.cpp'
+        PassPattern = 'GETACTIONNAME_008fe928_OK'
+    }
+    [pscustomobject]@{
+        Address = '00908090'
+        Module = 'CCreatureAction_TrollAngryGroundPound'
+        Source = '00/90/CCreatureActionTrollAngryGroundPound_GetEffectName_00908090.cpp'
+        TestSource = '00/90/CCreatureActionTrollAngryGroundPound_GetEffectName_00908090_test.cpp'
+        PassPattern = 'GETEFFECT_00908090_OK'
+    }
+    [pscustomobject]@{
+        Address = '00908140'
+        Module = 'CCreatureAction_TrollProjectileAttack'
+        Source = '00/90/CCreatureActionTrollProjectileAttack_GetEffectName_00908140.cpp'
+        TestSource = '00/90/CCreatureActionTrollProjectileAttack_GetEffectName_00908140_test.cpp'
+        PassPattern = 'GETEFFECT_00908140_OK'
+    }
+    [pscustomobject]@{
+        Address = '009081d0'
+        Module = 'CCreatureAction_TrollTunnel'
+        Source = '00/90/CCreatureActionTrollTunnel_GetEffectName_009081d0.cpp'
+        TestSource = '00/90/CCreatureActionTrollTunnel_GetEffectName_009081d0_test.cpp'
+        PassPattern = 'GETEFFECT_009081d0_OK'
+    }
 )
 
 $requestedAddresses = @(
