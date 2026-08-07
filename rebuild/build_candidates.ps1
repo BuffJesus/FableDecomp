@@ -43784,6 +43784,132 @@ $catalog = @(
         TestSource = '00/4d/global_GetActionName_004d2ba0_test.cpp'
         PassPattern = '004d2ba0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004d2bb3'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2bb3.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2bb3_test.cpp'
+        PassPattern = '004d2bb3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2bc6'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2bc6.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2bc6_test.cpp'
+        PassPattern = '004d2bc6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2bd9'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2bd9.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2bd9_test.cpp'
+        PassPattern = '004d2bd9_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2bec'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2bec.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2bec_test.cpp'
+        PassPattern = '004d2bec_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2bff'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2bff.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2bff_test.cpp'
+        PassPattern = '004d2bff_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2c2f'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2c2f.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2c2f_test.cpp'
+        PassPattern = '004d2c2f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2c42'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2c42.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2c42_test.cpp'
+        PassPattern = '004d2c42_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2c55'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2c55.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2c55_test.cpp'
+        PassPattern = '004d2c55_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2c68'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2c68.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2c68_test.cpp'
+        PassPattern = '004d2c68_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2c7b'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2c7b.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2c7b_test.cpp'
+        PassPattern = '004d2c7b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2c8e'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2c8e.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2c8e_test.cpp'
+        PassPattern = '004d2c8e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2ca1'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2ca1.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2ca1_test.cpp'
+        PassPattern = '004d2ca1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2cb4'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2cb4.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2cb4_test.cpp'
+        PassPattern = '004d2cb4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2cc7'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2cc7.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2cc7_test.cpp'
+        PassPattern = '004d2cc7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2cda'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2cda.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2cda_test.cpp'
+        PassPattern = '004d2cda_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2ced'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2ced.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2ced_test.cpp'
+        PassPattern = '004d2ced_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2d00'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2d00.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2d00_test.cpp'
+        PassPattern = '004d2d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2d13'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2d13.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2d13_test.cpp'
+        PassPattern = '004d2d13_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
