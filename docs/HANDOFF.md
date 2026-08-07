@@ -7840,14 +7840,40 @@ structural boundary (see the two prior 2026-08-06 addenda + memory
 [[audiooptions-backdrop-not-sunbeam]]); needs native backdrop ownership, not a
 compositing tweak.
 
-## Session addendum — 2026-08-07: crawl gen_batch8..12 = 84 landed
+## Session addendum — 2026-08-07: crawl gen_batch8..15 = 136 landed
 
-Binary-wide parity crawl continued (the high-yield small-fn tail). Five full
+Binary-wide parity crawl continued (the high-yield small-fn tail). Eight full
 batches, byte-exact/RELOCATION_MATCH, all behavior-gated: batch8 16/16
 (`d1c790c`), batch9 16/16 (`fa6ff3c`), batch10 18/18 (`44bb055`), batch11
-16/18 (`38d8577`), batch12 18/18 (`1845072`). Tried ledger
-`tools/decomp_pipeline/crawl/gen_tried.txt` now **254 addrs** (incl. 2 honest
-defers, below); eligible pool still ~16.8k.
+16/18 (`38d8577`), batch12 18/18 (`1845072`), batch13 18/18 (`7fa5707`),
+batch14 18/18 (`744f64f`), batch15 16/18 (`35ed497`). Tried ledger
+`tools/decomp_pipeline/crawl/gen_tried.txt` now **308 addrs** (incl. 4 honest
+defers); eligible pool still ~16.8k.
+
+Batch13-15 highlights: two large virtual-forwarder families on the
+CScriptGameResourceObjectScriptedThingBase vtable — void (with N stack args,
+`p=this->f8; if(p) p->virt(slot)(args); ret N`) and bool
+(`if(!p) return false; return p->virt(slot)()`) — ~20 members total across
+slots 0x08..0x74. Plus: `this->Write(&param, size)` (4x WriteCBYTE, takes the
+address of the byte param, virtual slot 4); `field += arg`; `arg==const` sete
+(4x PrimTypeMatchesGroup); `*p != p` list-sentinel bool (IsActionPointFree);
+this/arg-swap tail-call to the *argument's* vtable (operator()); indirect
+`operator delete(p,0,0x8000)`; store-result-return-1 (Initialise). Additional
+defers this run: `009f3220 CanMove` (8-byte struct-by-value return, ambiguous
+retptr/edx ABI) and `009fc430 FrameEnd` (retail hybrid: memory-form `inc [mem]`
++ reused `xor eax` zero-stores — `/O2` gives register-inc, size pragma gives
+`andl $0,[mem]`; neither matches, and the harness base is `/O2` so the
+`/O1`-style hybrid is unreachable — same class as the `0044c1cd` /O1 defer).
+
+Additional patterns proven in batch10-12: real-member LEA/IMUL element
+indexing (`this + i*40 + 8`, `base + i*0x58`, `fld` float tables); global-array
+LEA index with reloc; esi-saved indirect-stdcall returning this; dtor
+vtable-store/field-set + `add ecx,N` + tail-jmp; a 7-member CScriptThing
+virtual-forwarder family (`p=this->f4; if(!p) return dflt; return p->virt(slot)`
+via N dummy virtuals, tail-called); a 6-member `_Dest_val` family
+(`h2(h1(this+8))` = add ecx,8; call; mov ecx,eax; jmp); indirect-stdcall
+notify through a global fn-ptr (`ff15`); `probe()!=0` neg;sbb;neg vs `==0`
+neg;sbb;inc; **`(unsigned)x>>n` → `shr` but signed `int` → `sar`** (match the
 
 Additional patterns proven in batch10-12: real-member LEA/IMUL element
 indexing (`this + i*40 + 8`, `base + i*0x58`, `fld` float tables); global-array
