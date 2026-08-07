@@ -48369,6 +48369,118 @@ $catalog = @(
         TestSource = '00/5c/global_ISTHINGALIVECThingBuilding_005c05c0_test.cpp'
         PassPattern = 'IA_5c05c0_OK'
     }
+    [pscustomobject]@{
+        Address = '005c281c'
+        Module = 'CTCMapwho'
+        Source = '00/5c/CTCMapwho_OnDie_005c281c.cpp'
+        TestSource = '00/5c/CTCMapwho_OnDie_005c281c_test.cpp'
+        PassPattern = 'OD_5c281c_OK'
+    }
+    [pscustomobject]@{
+        Address = '005cbdbd'
+        Module = '_global'
+        Source = '00/5c/global_ISTHINGDEADCThing_005cbdbd.cpp'
+        TestSource = '00/5c/global_ISTHINGDEADCThing_005cbdbd_test.cpp'
+        PassPattern = 'ID_5cbdbd_OK'
+    }
+    [pscustomobject]@{
+        Address = '005d9710'
+        Module = '_global'
+        Source = '00/5d/global_GetInventoryCategory_005d9710.cpp'
+        TestSource = '00/5d/global_GetInventoryCategory_005d9710_test.cpp'
+        PassPattern = 'GI_5d9710_OK'
+    }
+    [pscustomobject]@{
+        Address = '005d9790'
+        Module = '_global'
+        Source = '00/5d/global_IsBuyable_005d9790.cpp'
+        TestSource = '00/5d/global_IsBuyable_005d9790_test.cpp'
+        PassPattern = 'IB_5d9790_OK'
+    }
+    [pscustomobject]@{
+        Address = '005d99b0'
+        Module = '_global'
+        Source = '00/5d/global_GetInventoryCategory_005d99b0.cpp'
+        TestSource = '00/5d/global_GetInventoryCategory_005d99b0_test.cpp'
+        PassPattern = 'GI_5d99b0_OK'
+    }
+    [pscustomobject]@{
+        Address = '005d99d0'
+        Module = '_global'
+        Source = '00/5d/global_GetInventoryCategory_005d99d0.cpp'
+        TestSource = '00/5d/global_GetInventoryCategory_005d99d0_test.cpp'
+        PassPattern = 'GI_5d99d0_OK'
+    }
+    [pscustomobject]@{
+        Address = '005d99f0'
+        Module = '_global'
+        Source = '00/5d/global_GetInventoryCategory_005d99f0.cpp'
+        TestSource = '00/5d/global_GetInventoryCategory_005d99f0_test.cpp'
+        PassPattern = 'GI_5d99f0_OK'
+    }
+    [pscustomobject]@{
+        Address = '005d9b30'
+        Module = '_global'
+        Source = '00/5d/global_IsBuyable_005d9b30.cpp'
+        TestSource = '00/5d/global_IsBuyable_005d9b30_test.cpp'
+        PassPattern = 'IB_5d9b30_OK'
+    }
+    [pscustomobject]@{
+        Address = '005d9b50'
+        Module = '_global'
+        Source = '00/5d/global_IsBuyable_005d9b50.cpp'
+        TestSource = '00/5d/global_IsBuyable_005d9b50_test.cpp'
+        PassPattern = 'IB_5d9b50_OK'
+    }
+    [pscustomobject]@{
+        Address = '005d9b70'
+        Module = '_global'
+        Source = '00/5d/global_GetInventoryCategory_005d9b70.cpp'
+        TestSource = '00/5d/global_GetInventoryCategory_005d9b70_test.cpp'
+        PassPattern = 'GI_5d9b70_OK'
+    }
+    [pscustomobject]@{
+        Address = '0062ee60'
+        Module = '_Cons_val<std'
+        Source = '00/62/Consvalstd_allocatorCCountedPointerC3DSkeletalMorphParamete_0062ee60.cpp'
+        TestSource = '00/62/Consvalstd_allocatorCCountedPointerC3DSkeletalMorphParamete_0062ee60_test.cpp'
+        PassPattern = 'CP_62ee60_OK'
+    }
+    [pscustomobject]@{
+        Address = '0062f6d0'
+        Module = '_Cons_val<std'
+        Source = '00/62/Consvalstd_allocatorCCountedPointerC3DSkeletalMorphParamete_0062f6d0.cpp'
+        TestSource = '00/62/Consvalstd_allocatorCCountedPointerC3DSkeletalMorphParamete_0062f6d0_test.cpp'
+        PassPattern = 'CP_62f6d0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00654af5'
+        Module = '_global'
+        Source = '00/65/global_ISTHINGALIVECThingBuilding_00654af5.cpp'
+        TestSource = '00/65/global_ISTHINGALIVECThingBuilding_00654af5_test.cpp'
+        PassPattern = 'IA_654af5_OK'
+    }
+    [pscustomobject]@{
+        Address = '00656e3e'
+        Module = 'CTCMapwho'
+        Source = '00/65/CTCMapwho_OnDie_00656e3e.cpp'
+        TestSource = '00/65/CTCMapwho_OnDie_00656e3e_test.cpp'
+        PassPattern = 'OD_656e3e_OK'
+    }
+    [pscustomobject]@{
+        Address = '00657022'
+        Module = 'CTCMapwho'
+        Source = '00/65/CTCMapwho_OnDie_00657022.cpp'
+        TestSource = '00/65/CTCMapwho_OnDie_00657022_test.cpp'
+        PassPattern = 'OD_657022_OK'
+    }
+    [pscustomobject]@{
+        Address = '0065d55f'
+        Module = '_global'
+        Source = '00/65/global_ISTHINGALIVECThingBuilding_0065d55f.cpp'
+        TestSource = '00/65/global_ISTHINGALIVECThingBuilding_0065d55f_test.cpp'
+        PassPattern = 'IA_65d55f_OK'
+    }
 )
 
 $requestedAddresses = @(
