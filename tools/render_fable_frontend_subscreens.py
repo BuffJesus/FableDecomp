@@ -1629,9 +1629,14 @@ def _build_control_tile(font, assets, value, include_text=True):
         tile.alpha_composite(add_outline(line, 1))
         return tile
 
-    bar = _build_stretched(
-        assets["bar"], assets["bar"], assets["bar"], 122)
-    tile.alpha_composite(bar, (40, 0))
+    # Retail slider rows show only the round knob floating on the value-area
+    # panel: measuring GameplayOptions.png, the slider value cell reads the same
+    # dark panel brightness as the non-slider rows (e.g. CameraSensitivity
+    # (53,43,37) vs the GameCamera value panel), with no lighter horizontal
+    # band.  The FE_OPTIONS_HORIZONTAL_BAR_SPRITE is a full-row-height,
+    # half-opacity warm-brown sprite; compositing it over the value panel
+    # lightened the cell by ~15-23 and read as two stacked textures.  Draw the
+    # knob only; the panel underneath supplies the track backing.
     slider_x = 40 + int(
         max(0.0, min(1.0, value)) *
         (122 - assets["slider"].width))

@@ -1101,64 +1101,58 @@ namespace
             }
             if (outline)
             {
-                // Keep the live queue bounded while restoring the dominant
-                // retail halo direction.  The full MaxFilter equivalent is
-                // represented in the authored bake; these two diagonal
-                // samples recover its visible weight for live text.
+                // Retail frontend glyphs carry a 1px MaxFilter-style outline
+                // (matched in the authored bake via add_outline()).  The live
+                // path approximates it with four CARDINAL offsets: a symmetric
+                // outline that covers every stroke edge, unlike the previous
+                // two-diagonal samples which left the cardinal edges bare and
+                // read as a diagonal double-image ("ghosting").  The full
+                // eight-neighbour version overflows the fixed vertex scratch on
+                // text-heavy screens, so the corner samples are omitted and the
+                // append is capacity-guarded.
                 const float outlineStep = 1.0f;
                 const fable_u32 outlineColour = 0xFF000000u;
-                AppendVisualQuad(
-                    vertices, vertexCount, records, recordCount,
-                    g_OptionsTexture,
-                    originX + (glyphLeft - outlineStep) * scaleX,
-                    originY + (top - outlineStep) * scaleY,
-                    originX + (glyphLeft +
-                        static_cast<float>(glyph.width) * glyphScale -
-                        outlineStep) * scaleX,
-                    originY + (top +
-                        static_cast<float>(glyph.height) * glyphScale -
-                        outlineStep) * scaleY,
-                    static_cast<float>(
-                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX) /
-                        static_cast<float>(g_OptionsWidth),
-                    static_cast<float>(
-                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY) /
-                        static_cast<float>(g_OptionsHeight),
-                    static_cast<float>(
-                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX +
-                        glyph.width) /
-                        static_cast<float>(g_OptionsWidth),
-                    static_cast<float>(
-                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY +
-                        glyph.height) /
-                        static_cast<float>(g_OptionsHeight),
-                    outlineColour);
-                AppendVisualQuad(
-                    vertices, vertexCount, records, recordCount,
-                    g_OptionsTexture,
-                    originX + (glyphLeft + outlineStep) * scaleX,
-                    originY + (top + outlineStep) * scaleY,
-                    originX + (glyphLeft +
-                        static_cast<float>(glyph.width) * glyphScale +
-                        outlineStep) * scaleX,
-                    originY + (top +
-                        static_cast<float>(glyph.height) * glyphScale +
-                        outlineStep) * scaleY,
-                    static_cast<float>(
-                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX) /
-                        static_cast<float>(g_OptionsWidth),
-                    static_cast<float>(
-                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY) /
-                        static_cast<float>(g_OptionsHeight),
-                    static_cast<float>(
-                        kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX +
-                        glyph.width) /
-                        static_cast<float>(g_OptionsWidth),
-                    static_cast<float>(
-                        kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY +
-                        glyph.height) /
-                        static_cast<float>(g_OptionsHeight),
-                    outlineColour);
+                const float outlineU0 = static_cast<float>(
+                    kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX) /
+                    static_cast<float>(g_OptionsWidth);
+                const float outlineV0 = static_cast<float>(
+                    kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY) /
+                    static_cast<float>(g_OptionsHeight);
+                const float outlineU1 = static_cast<float>(
+                    kFableDetailTitleGlyphAtlasOriginX + glyph.atlasX +
+                    glyph.width) / static_cast<float>(g_OptionsWidth);
+                const float outlineV1 = static_cast<float>(
+                    kFableDetailTitleGlyphAtlasOriginY + glyph.atlasY +
+                    glyph.height) / static_cast<float>(g_OptionsHeight);
+                const float outlineGlyphW =
+                    static_cast<float>(glyph.width) * glyphScale;
+                const float outlineGlyphH =
+                    static_cast<float>(glyph.height) * glyphScale;
+                static const float kOutlineOffsets[4][2] = {
+                    { 0.0f, -1.0f}, { 0.0f, 1.0f},
+                    {-1.0f, 0.0f}, { 1.0f, 0.0f}
+                };
+                for (int outlineIndex = 0; outlineIndex < 4; ++outlineIndex)
+                {
+                    if (vertexCount + 6u > 8192u || recordCount + 1u > 4096u)
+                    {
+                        break;
+                    }
+                    const float outlineDX =
+                        kOutlineOffsets[outlineIndex][0] * outlineStep;
+                    const float outlineDY =
+                        kOutlineOffsets[outlineIndex][1] * outlineStep;
+                    AppendVisualQuad(
+                        vertices, vertexCount, records, recordCount,
+                        g_OptionsTexture,
+                        originX + (glyphLeft + outlineDX) * scaleX,
+                        originY + (top + outlineDY) * scaleY,
+                        originX + (glyphLeft + outlineGlyphW + outlineDX) *
+                            scaleX,
+                        originY + (top + outlineGlyphH + outlineDY) * scaleY,
+                        outlineU0, outlineV0, outlineU1, outlineV1,
+                        outlineColour);
+                }
             }
             AppendVisualQuad(
                 vertices,
