@@ -41376,6 +41376,132 @@ $catalog = @(
         TestSource = '00/69/CCreatureActionBase_OverrideFaceWithDefault_00692880_test.cpp'
         PassPattern = '00692880_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007e72d0'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_SummonerLightningOrbAttackTarget_007e72d0.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_SummonerLightningOrbAttackTarget_007e72d0_test.cpp'
+        PassPattern = '007e72d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e72e0'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_FireProjectileWeaponAtTarget_007e72e0.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_FireProjectileWeaponAtTarget_007e72e0_test.cpp'
+        PassPattern = '007e72e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e72f0'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_MoveToPosition_007e72f0.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_MoveToPosition_007e72f0_test.cpp'
+        PassPattern = '007e72f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7300'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_MoveToThing_007e7300.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_MoveToThing_007e7300_test.cpp'
+        PassPattern = '007e7300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7310'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_FollowPreCalculatedRoute_007e7310.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_FollowPreCalculatedRoute_007e7310_test.cpp'
+        PassPattern = '007e7310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7320'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_FollowThing_007e7320.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_FollowThing_007e7320_test.cpp'
+        PassPattern = '007e7320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7330'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_StopFollowingThing_007e7330.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_StopFollowingThing_007e7330_test.cpp'
+        PassPattern = '007e7330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7380'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_Speak_007e7380.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_Speak_007e7380_test.cpp'
+        PassPattern = '007e7380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e7390'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_Speak_007e7390.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_Speak_007e7390_test.cpp'
+        PassPattern = '007e7390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e73a0'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_AskHeroQuestion_007e73a0.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_AskHeroQuestion_007e73a0_test.cpp'
+        PassPattern = '007e73a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e73b0'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_Converse_007e73b0.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_Converse_007e73b0_test.cpp'
+        PassPattern = '007e73b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e73c0'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_PerformExpression_007e73c0.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_PerformExpression_007e73c0_test.cpp'
+        PassPattern = '007e73c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006afd30'
+        Module = 'CCombatSequenceBase'
+        Source = '00/6a/CCombatSequenceBase_IsInterruptable_006afd30.cpp'
+        TestSource = '00/6a/CCombatSequenceBase_IsInterruptable_006afd30_test.cpp'
+        PassPattern = '006afd30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c20a0'
+        Module = 'CTCUserActionPointBase'
+        Source = '00/6c/CTCUserActionPointBase_IsActionPointFree_006c20a0.cpp'
+        TestSource = '00/6c/CTCUserActionPointBase_IsActionPointFree_006c20a0_test.cpp'
+        PassPattern = '006c20a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006de8b0'
+        Module = 'CTCTrophy'
+        Source = '00/6d/CTCTrophy_OnShowTrophyInitialise_006de8b0.cpp'
+        TestSource = '00/6d/CTCTrophy_OnShowTrophyInitialise_006de8b0_test.cpp'
+        PassPattern = '006de8b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fecf0'
+        Module = 'CAIStateGroup_BuyFromSeller'
+        Source = '00/6f/CAIStateGroupBuyFromSeller_LogReaction_006fecf0.cpp'
+        TestSource = '00/6f/CAIStateGroupBuyFromSeller_LogReaction_006fecf0_test.cpp'
+        PassPattern = '006fecf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00746eb0'
+        Module = 'CThingPlayerCreature'
+        Source = '00/74/CThingPlayerCreature_EditWorldUpdate_00746eb0.cpp'
+        TestSource = '00/74/CThingPlayerCreature_EditWorldUpdate_00746eb0_test.cpp'
+        PassPattern = '00746eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00789ba0'
+        Module = 'CTCHeroRangedAttacks'
+        Source = '00/78/CTCHeroRangedAttacks_IsUsingProjectileTargetingAnalogueZoom_00789ba0.cpp'
+        TestSource = '00/78/CTCHeroRangedAttacks_IsUsingProjectileTargetingAnalogueZoom_00789ba0_test.cpp'
+        PassPattern = '00789ba0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
