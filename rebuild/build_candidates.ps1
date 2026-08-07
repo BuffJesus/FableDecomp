@@ -41740,6 +41740,104 @@ $catalog = @(
         TestSource = '00/a5/CCachedFile_GetLength_00a5b200_test.cpp'
         PassPattern = '00a5b200_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c16670'
+        Module = 'CTimer'
+        Source = '00/c1/CTimer_Dtor_00c16670.cpp'
+        TestSource = '00/c1/CTimer_Dtor_00c16670_test.cpp'
+        PassPattern = '00c16670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c16680'
+        Module = 'CTimer'
+        Source = '00/c1/CTimer_Dtor_00c16680.cpp'
+        TestSource = '00/c1/CTimer_Dtor_00c16680_test.cpp'
+        PassPattern = '00c16680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c31b50'
+        Module = 'CMainGameComponent'
+        Source = '00/c3/CMainGameComponent_BeginInputLoading_00c31b50.cpp'
+        TestSource = '00/c3/CMainGameComponent_BeginInputLoading_00c31b50_test.cpp'
+        PassPattern = '00c31b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c31b60'
+        Module = 'CMainGameComponent'
+        Source = '00/c3/CMainGameComponent_BeginInputLoading_00c31b60.cpp'
+        TestSource = '00/c3/CMainGameComponent_BeginInputLoading_00c31b60_test.cpp'
+        PassPattern = '00c31b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c31b70'
+        Module = 'CMainGameComponent'
+        Source = '00/c3/CMainGameComponent_BeginInputLoading_00c31b70.cpp'
+        TestSource = '00/c3/CMainGameComponent_BeginInputLoading_00c31b70_test.cpp'
+        PassPattern = '00c31b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c31b80'
+        Module = 'CMainGameComponent'
+        Source = '00/c3/CMainGameComponent_BeginInputLoading_00c31b80.cpp'
+        TestSource = '00/c3/CMainGameComponent_BeginInputLoading_00c31b80_test.cpp'
+        PassPattern = '00c31b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c38830'
+        Module = 'CAnimFilterNoGroup'
+        Source = '00/c3/CAnimFilterNoGroup_opcall_00c38830.cpp'
+        TestSource = '00/c3/CAnimFilterNoGroup_opcall_00c38830_test.cpp'
+        PassPattern = '00c38830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3f630'
+        Module = 'vector_bool'
+        Source = '00/c3/vectorbool_Dtor_00c3f630.cpp'
+        TestSource = '00/c3/vectorbool_Dtor_00c3f630_test.cpp'
+        PassPattern = '00c3f630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c62780'
+        Module = 'CEditWorld'
+        Source = '00/c6/CEditWorld_DrawGetWorldMap_00c62780.cpp'
+        TestSource = '00/c6/CEditWorld_DrawGetWorldMap_00c62780_test.cpp'
+        PassPattern = '00c62780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c75000'
+        Module = 'CQ_GuildTrainingSkillScript'
+        Source = '00/c7/CQGuildTrainingSkillScript_Init_00c75000.cpp'
+        TestSource = '00/c7/CQGuildTrainingSkillScript_Init_00c75000_test.cpp'
+        PassPattern = '00c75000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00459353'
+        Module = 'CCreatureAbilityDef'
+        Source = '00/45/CCreatureAbilityDef_Transfer_00459353.cpp'
+        TestSource = '00/45/CCreatureAbilityDef_Transfer_00459353_test.cpp'
+        PassPattern = '00459353_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0045c8c3'
+        Module = 'CSpecialEffectsDef'
+        Source = '00/45/CSpecialEffectsDef_Transfer_0045c8c3.cpp'
+        TestSource = '00/45/CSpecialEffectsDef_Transfer_0045c8c3_test.cpp'
+        PassPattern = '0045c8c3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00464b8a'
+        Module = 'CSimVoicesDef'
+        Source = '00/46/CSimVoicesDef_Transfer_00464b8a.cpp'
+        TestSource = '00/46/CSimVoicesDef_Transfer_00464b8a_test.cpp'
+        PassPattern = '00464b8a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00416258'
+        Module = 'CMainGameComponent'
+        Source = '00/41/CMainGameComponent_GetCurrentGameTime_00416258.cpp'
+        TestSource = '00/41/CMainGameComponent_GetCurrentGameTime_00416258_test.cpp'
+        PassPattern = '00416258_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
