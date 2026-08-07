@@ -48481,6 +48481,27 @@ $catalog = @(
         TestSource = '00/65/global_ISTHINGALIVECThingBuilding_0065d55f_test.cpp'
         PassPattern = 'IA_65d55f_OK'
     }
+    [pscustomobject]@{
+        Address = '00917300'
+        Module = 'CAIStateGroup_IdleAtHome'
+        Source = '00/91/CAIStateGroupIdleAtHome_InitStateGroup_00917300.cpp'
+        TestSource = '00/91/CAIStateGroupIdleAtHome_InitStateGroup_00917300_test.cpp'
+        PassPattern = '00917300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00688a60'
+        Module = 'CInputProcessTargetLockRightStickTargetSelect'
+        Source = '00/68/CInputProcessTargetLockRightStickTargetSelect_AddToInterface_00688a60.cpp'
+        TestSource = '00/68/CInputProcessTargetLockRightStickTargetSelect_AddToInterface_00688a60_test.cpp'
+        PassPattern = '00688a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096a250'
+        Module = 'CAIStateGroup_WhisperRetreat'
+        Source = '00/96/CAIStateGroupWhisperRetreat_Initialise_0096a250.cpp'
+        TestSource = '00/96/CAIStateGroupWhisperRetreat_Initialise_0096a250_test.cpp'
+        PassPattern = '0096a250_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
