@@ -40669,6 +40669,125 @@ $catalog = @(
         TestSource = '00/93/CCombatSequence_OnReplaceKidGroup_009340f0_test.cpp'
         PassPattern = '009340f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0045d175'
+        Module = 'CActiveFile'
+        Source = '00/45/CActiveFile_OnReadFinished_0045d175.cpp'
+        TestSource = '00/45/CActiveFile_OnReadFinished_0045d175_test.cpp'
+        PassPattern = '0045d175_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004774ab'
+        Module = 'CActiveFile'
+        Source = '00/47/CActiveFile_OnReadFinished_004774ab.cpp'
+        TestSource = '00/47/CActiveFile_OnReadFinished_004774ab_test.cpp'
+        PassPattern = '004774ab_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00478743'
+        Module = 'CActiveFile'
+        Source = '00/47/CActiveFile_OnReadFinished_00478743.cpp'
+        TestSource = '00/47/CActiveFile_OnReadFinished_00478743_test.cpp'
+        PassPattern = '00478743_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004df554'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004df554.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004df554_test.cpp'
+        PassPattern = '004df554_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e70c1'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e70c1.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e70c1_test.cpp'
+        PassPattern = '004e70c1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e726b'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e726b.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e726b_test.cpp'
+        PassPattern = '004e726b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e740f'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e740f.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e740f_test.cpp'
+        PassPattern = '004e740f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e787c'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e787c.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e787c_test.cpp'
+        PassPattern = '004e787c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e78e4'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e78e4.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e78e4_test.cpp'
+        PassPattern = '004e78e4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e794c'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e794c.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e794c_test.cpp'
+        PassPattern = '004e794c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ea2bb'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004ea2bb.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004ea2bb_test.cpp'
+        PassPattern = '004ea2bb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004f962f'
+        Module = 'CActiveFile'
+        Source = '00/4f/CActiveFile_OnReadFinished_004f962f.cpp'
+        TestSource = '00/4f/CActiveFile_OnReadFinished_004f962f_test.cpp'
+        PassPattern = '004f962f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c20840'
+        Module = 'CInput'
+        Source = '00/c2/CInput_GetKeyPressed_00c20840.cpp'
+        TestSource = '00/c2/CInput_GetKeyPressed_00c20840_test.cpp'
+        PassPattern = '00c20840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1d810'
+        Module = 'CAnimation'
+        Source = '00/c1/CAnimation_IsFinished_00c1d810.cpp'
+        TestSource = '00/c1/CAnimation_IsFinished_00c1d810_test.cpp'
+        PassPattern = '00c1d810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4c2c0'
+        Module = 'CAnimationPlayer'
+        Source = '00/c4/CAnimationPlayer_GetFramesRemaining_00c4c2c0.cpp'
+        TestSource = '00/c4/CAnimationPlayer_GetFramesRemaining_00c4c2c0_test.cpp'
+        PassPattern = '00c4c2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049dbd0'
+        Module = 'CRegionManager'
+        Source = '00/49/CRegionManager_PopDontPopulateNextLoadedRegion_0049dbd0.cpp'
+        TestSource = '00/49/CRegionManager_PopDontPopulateNextLoadedRegion_0049dbd0_test.cpp'
+        PassPattern = '0049dbd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00594f28'
+        Module = 'CProcess'
+        Source = '00/59/CProcess_SuspendableProcess_00594f28.cpp'
+        TestSource = '00/59/CProcess_SuspendableProcess_00594f28_test.cpp'
+        PassPattern = '00594f28_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
