@@ -43679,6 +43679,111 @@ $catalog = @(
         TestSource = '00/c1/global_GetNextRegionOnRouteTo_00c167e0_test.cpp'
         PassPattern = '00c167e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c16800'
+        Module = '_global'
+        Source = '00/c1/global_GetNextRegionOnRouteTo_00c16800.cpp'
+        TestSource = '00/c1/global_GetNextRegionOnRouteTo_00c16800_test.cpp'
+        PassPattern = '00c16800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2d2d0'
+        Module = '_global'
+        Source = '00/c2/global_OnInitialActivate_00c2d2d0.cpp'
+        TestSource = '00/c2/global_OnInitialActivate_00c2d2d0_test.cpp'
+        PassPattern = '00c2d2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c35ea0'
+        Module = '_global'
+        Source = '00/c3/global_IsOverrideableByActionOfSamePriority_00c35ea0.cpp'
+        TestSource = '00/c3/global_IsOverrideableByActionOfSamePriority_00c35ea0_test.cpp'
+        PassPattern = '00c35ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3d7b0'
+        Module = 'CRenderStateManager'
+        Source = '00/c3/CRenderStateManager_CRenderStateManager_00c3d7b0.cpp'
+        TestSource = '00/c3/CRenderStateManager_CRenderStateManager_00c3d7b0_test.cpp'
+        PassPattern = '00c3d7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4c2d0'
+        Module = '_global'
+        Source = '00/c4/global_Popheap0_00c4c2d0.cpp'
+        TestSource = '00/c4/global_Popheap0_00c4c2d0_test.cpp'
+        PassPattern = '00c4c2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8d950'
+        Module = '_global'
+        Source = '00/c8/global_Close_00c8d950.cpp'
+        TestSource = '00/c8/global_Close_00c8d950_test.cpp'
+        PassPattern = '00c8d950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbfab8'
+        Module = '_global'
+        Source = '00/cb/global_SetMiniMapRegionExitTextOffsetX_00cbfab8.cpp'
+        TestSource = '00/cb/global_SetMiniMapRegionExitTextOffsetX_00cbfab8_test.cpp'
+        PassPattern = '00cbfab8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a9140'
+        Module = '_global'
+        Source = '00/4a/global_Destvalstdallocator_004a9140.cpp'
+        TestSource = '00/4a/global_Destvalstdallocator_004a9140_test.cpp'
+        PassPattern = '004a9140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004bbfd0'
+        Module = '_global'
+        Source = '00/4b/global_SetCurrentThingManager_004bbfd0.cpp'
+        TestSource = '00/4b/global_SetCurrentThingManager_004bbfd0_test.cpp'
+        PassPattern = '004bbfd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2a91'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2a91.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2a91_test.cpp'
+        PassPattern = '004d2a91_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2b04'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2b04.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2b04_test.cpp'
+        PassPattern = '004d2b04_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2b17'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2b17.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2b17_test.cpp'
+        PassPattern = '004d2b17_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2b7a'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2b7a.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2b7a_test.cpp'
+        PassPattern = '004d2b7a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2b8d'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2b8d.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2b8d_test.cpp'
+        PassPattern = '004d2b8d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2ba0'
+        Module = '_global'
+        Source = '00/4d/global_GetActionName_004d2ba0.cpp'
+        TestSource = '00/4d/global_GetActionName_004d2ba0_test.cpp'
+        PassPattern = '004d2ba0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
