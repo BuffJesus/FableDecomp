@@ -43105,6 +43105,76 @@ $catalog = @(
         TestSource = '00/9f/CMouse_GetEventFromStore_009f1730_test.cpp'
         PassPattern = '009f1730_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009fbf50'
+        Module = 'CResource'
+        Source = '00/9f/CResource_SetAsUnloadable_009fbf50.cpp'
+        TestSource = '00/9f/CResource_SetAsUnloadable_009fbf50_test.cpp'
+        PassPattern = '009fbf50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0be10'
+        Module = 'allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry> >'
+        Source = '00/a0/allocatorstdpairlongCMusicManagerCRegisteredMusicEntry_allocatorDestval_00a0be10.cpp'
+        TestSource = '00/a0/allocatorstdpairlongCMusicManagerCRegisteredMusicEntry_allocatorDestval_00a0be10_test.cpp'
+        PassPattern = '00a0be10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5d7a0'
+        Module = 'CMemoryDataOutputStream'
+        Source = '00/a5/CMemoryDataOutputStream_Clear_00a5d7a0.cpp'
+        TestSource = '00/a5/CMemoryDataOutputStream_Clear_00a5d7a0_test.cpp'
+        PassPattern = '00a5d7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdc4f0'
+        Module = 'CMemoryDataOutputStream'
+        Source = '00/bd/CMemoryDataOutputStream_Clear_00bdc4f0.cpp'
+        TestSource = '00/bd/CMemoryDataOutputStream_Clear_00bdc4f0_test.cpp'
+        PassPattern = '00bdc4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66730'
+        Module = '_global'
+        Source = '00/a6/global_operatornew_00a66730.cpp'
+        TestSource = '00/a6/global_operatornew_00a66730_test.cpp'
+        PassPattern = '00a66730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3aaa0'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/b3/CEngineInternalPrimitiveBase_WasRendered_00b3aaa0.cpp'
+        TestSource = '00/b3/CEngineInternalPrimitiveBase_WasRendered_00b3aaa0_test.cpp'
+        PassPattern = '00b3aaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9d650'
+        Module = 'CGameScriptInterface'
+        Source = '00/b9/CGameScriptInterface_SetGuildMasterMessages_00b9d650.cpp'
+        TestSource = '00/b9/CGameScriptInterface_SetGuildMasterMessages_00b9d650_test.cpp'
+        PassPattern = '00b9d650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c442d0'
+        Module = 'CEditWorldMap'
+        Source = '00/c4/CEditWorldMap_GetEditMap_00c442d0.cpp'
+        TestSource = '00/c4/CEditWorldMap_GetEditMap_00c442d0_test.cpp'
+        PassPattern = '00c442d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c463c0'
+        Module = 'CWorldMap'
+        Source = '00/c4/CWorldMap_GetLevelScriptName_00c463c0.cpp'
+        TestSource = '00/c4/CWorldMap_GetLevelScriptName_00c463c0_test.cpp'
+        PassPattern = '00c463c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9cfd0'
+        Module = 'CPlayer'
+        Source = '00/c9/CPlayer_GetCurrentMode_00c9cfd0.cpp'
+        TestSource = '00/c9/CPlayer_GetCurrentMode_00c9cfd0_test.cpp'
+        PassPattern = '00c9cfd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
