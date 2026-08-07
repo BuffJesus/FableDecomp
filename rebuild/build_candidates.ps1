@@ -49216,6 +49216,132 @@ $catalog = @(
         TestSource = '00/95/CCreatureActionWaspQueenPrimaryAttack_IsMovementUsingPhysics_0095caa0_test.cpp'
         PassPattern = 'RB_95caa0_OK'
     }
+    [pscustomobject]@{
+        Address = '0095cb60'
+        Module = 'CCreatureAction_WaspQueenLashOutAttack'
+        Source = '00/95/CCreatureActionWaspQueenLashOutAttack_IsMovementUsingPhysics_0095cb60.cpp'
+        TestSource = '00/95/CCreatureActionWaspQueenLashOutAttack_IsMovementUsingPhysics_0095cb60_test.cpp'
+        PassPattern = 'RB_95cb60_OK'
+    }
+    [pscustomobject]@{
+        Address = '00961a30'
+        Module = 'CCreatureAction_BanditKingLunge'
+        Source = '00/96/CCreatureActionBanditKingLunge_IsToCauseRecoil_00961a30.cpp'
+        TestSource = '00/96/CCreatureActionBanditKingLunge_IsToCauseRecoil_00961a30_test.cpp'
+        PassPattern = 'RB_961a30_OK'
+    }
+    [pscustomobject]@{
+        Address = '00962970'
+        Module = 'CCreatureAction_IceTrollIcicleAttack'
+        Source = '00/96/CCreatureActionIceTrollIcicleAttack_IsToFaceTarget_00962970.cpp'
+        TestSource = '00/96/CCreatureActionIceTrollIcicleAttack_IsToFaceTarget_00962970_test.cpp'
+        PassPattern = 'RB_962970_OK'
+    }
+    [pscustomobject]@{
+        Address = '009629d0'
+        Module = 'CCreatureAction_IceTrollIcicleAssaultInto'
+        Source = '00/96/CCreatureActionIceTrollIcicleAssaultInto_IsStrikeAction_009629d0.cpp'
+        TestSource = '00/96/CCreatureActionIceTrollIcicleAssaultInto_IsStrikeAction_009629d0_test.cpp'
+        PassPattern = 'RB_9629d0_OK'
+    }
+    [pscustomobject]@{
+        Address = '0096bf70'
+        Module = 'CCreatureAction_WhisperSommersaultForward'
+        Source = '00/96/CCreatureActionWhisperSommersaultForward_IsToEvadeAllHits_0096bf70.cpp'
+        TestSource = '00/96/CCreatureActionWhisperSommersaultForward_IsToEvadeAllHits_0096bf70_test.cpp'
+        PassPattern = 'RB_96bf70_OK'
+    }
+    [pscustomobject]@{
+        Address = '0096bff0'
+        Module = 'CCreatureAction_WhisperSommersaultBackward'
+        Source = '00/96/CCreatureActionWhisperSommersaultBackward_IsToEvadeAllHits_0096bff0.cpp'
+        TestSource = '00/96/CCreatureActionWhisperSommersaultBackward_IsToEvadeAllHits_0096bff0_test.cpp'
+        PassPattern = 'RB_96bff0_OK'
+    }
+    [pscustomobject]@{
+        Address = '0096c080'
+        Module = 'CCreatureAction_WhisperJumpIntoSky'
+        Source = '00/96/CCreatureActionWhisperJumpIntoSky_IsToEvadeAllHits_0096c080.cpp'
+        TestSource = '00/96/CCreatureActionWhisperJumpIntoSky_IsToEvadeAllHits_0096c080_test.cpp'
+        PassPattern = 'RB_96c080_OK'
+    }
+    [pscustomobject]@{
+        Address = '0096c740'
+        Module = 'CCreatureAction_ThunderLightningStorm'
+        Source = '00/96/CCreatureActionThunderLightningStorm_IsToEvadeAllHits_0096c740.cpp'
+        TestSource = '00/96/CCreatureActionThunderLightningStorm_IsToEvadeAllHits_0096c740_test.cpp'
+        PassPattern = 'RB_96c740_OK'
+    }
+    [pscustomobject]@{
+        Address = '00976f10'
+        Module = 'CCreatureAction_JackFlash'
+        Source = '00/97/CCreatureActionJackFlash_IsToFaceTarget_00976f10.cpp'
+        TestSource = '00/97/CCreatureActionJackFlash_IsToFaceTarget_00976f10_test.cpp'
+        PassPattern = 'RB_976f10_OK'
+    }
+    [pscustomobject]@{
+        Address = '00976fa0'
+        Module = 'CCreatureAction_JackShotFloat'
+        Source = '00/97/CCreatureActionJackShotFloat_IsToFaceTarget_00976fa0.cpp'
+        TestSource = '00/97/CCreatureActionJackShotFloat_IsToFaceTarget_00976fa0_test.cpp'
+        PassPattern = 'RB_976fa0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00977040'
+        Module = 'CCreatureAction_JackShotNear'
+        Source = '00/97/CCreatureActionJackShotNear_IsToFaceTarget_00977040.cpp'
+        TestSource = '00/97/CCreatureActionJackShotNear_IsToFaceTarget_00977040_test.cpp'
+        PassPattern = 'RB_977040_OK'
+    }
+    [pscustomobject]@{
+        Address = '009770e0'
+        Module = 'CCreatureAction_JackShotFar'
+        Source = '00/97/CCreatureActionJackShotFar_IsToFaceTarget_009770e0.cpp'
+        TestSource = '00/97/CCreatureActionJackShotFar_IsToFaceTarget_009770e0_test.cpp'
+        PassPattern = 'RB_9770e0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00977270'
+        Module = 'CCreatureAction_JackDeathInto'
+        Source = '00/97/CCreatureActionJackDeathInto_IsToEvadeAllHits_00977270.cpp'
+        TestSource = '00/97/CCreatureActionJackDeathInto_IsToEvadeAllHits_00977270_test.cpp'
+        PassPattern = 'RB_977270_OK'
+    }
+    [pscustomobject]@{
+        Address = '00977300'
+        Module = 'CCreatureAction_JackFloatUp'
+        Source = '00/97/CCreatureActionJackFloatUp_HasFrameUpdate_00977300.cpp'
+        TestSource = '00/97/CCreatureActionJackFloatUp_HasFrameUpdate_00977300_test.cpp'
+        PassPattern = 'RB_977300_OK'
+    }
+    [pscustomobject]@{
+        Address = '009773a0'
+        Module = 'CCreatureAction_JackFall'
+        Source = '00/97/CCreatureActionJackFall_IsToEvadeAllHits_009773a0.cpp'
+        TestSource = '00/97/CCreatureActionJackFall_IsToEvadeAllHits_009773a0_test.cpp'
+        PassPattern = 'RB_9773a0_OK'
+    }
+    [pscustomobject]@{
+        Address = '0097c810'
+        Module = 'CCreatureAction_ScorpionUnblockableLeftTurnAttack'
+        Source = '00/97/CCreatureActionScorpionUnblockableLeftTurnAttack_IsStrikeAction_0097c810.cpp'
+        TestSource = '00/97/CCreatureActionScorpionUnblockableLeftTurnAttack_IsStrikeAction_0097c810_test.cpp'
+        PassPattern = 'RB_97c810_OK'
+    }
+    [pscustomobject]@{
+        Address = '0097c8e0'
+        Module = 'CCreatureAction_ScorpionUnblockableRightTurnAttack'
+        Source = '00/97/CCreatureActionScorpionUnblockableRightTurnAttack_IsStrikeAction_0097c8e0.cpp'
+        TestSource = '00/97/CCreatureActionScorpionUnblockableRightTurnAttack_IsStrikeAction_0097c8e0_test.cpp'
+        PassPattern = 'RB_97c8e0_OK'
+    }
+    [pscustomobject]@{
+        Address = '0097c9a0'
+        Module = 'CCreatureAction_ScorpionPrepareTailPlunge'
+        Source = '00/97/CCreatureActionScorpionPrepareTailPlunge_IsToEvadeAllHits_0097c9a0.cpp'
+        TestSource = '00/97/CCreatureActionScorpionPrepareTailPlunge_IsToEvadeAllHits_0097c9a0_test.cpp'
+        PassPattern = 'RB_97c9a0_OK'
+    }
 )
 
 $requestedAddresses = @(
