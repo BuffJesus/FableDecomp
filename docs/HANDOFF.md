@@ -7990,9 +7990,13 @@ offset 0 (true for single-fn objs). See CLAUDE.md gotcha.
   return 0;` per case for retail's `mov al,1`x2 (byte) not a merged `mov eax,1`
   (dword). ChangeState needed the {1,5} case body written BEFORE {0,6} to match
   retail's physical body layout (VC lays case bodies in source order).
-- `ClearList` 0x5567B0 DEFERRED — count-divide codegen finicky (8-byte element
-  `sub;sar 3` vs my earlier `void**` signed `/2`) AND the 64-virtual test struct;
-  low value, revisit later.
+- `ClearList` 0x5567B0 DEFERRED as a codegen-ALIGNMENT artifact (not a logic gap).
+  Correct source is `char* begin/end; unsigned i; while(i < (unsigned)((end-begin)>>3))
+  { if(*(int*)(begin+i*8)) self->RemoveAt(i); else ++i; } cl_tail(self);` (RemoveAt =
+  vtbl slot 64/+0x100; tail-jmp cl_tail 0x557840). Verifies behavior PASS but
+  DIFFER(82v84): retail pads the loop with a 7-byte `lea esp,[esp+0]` nop; VC7.1
+  emits a 5-byte `jmp+lea ecx,[ecx+0]` instead (2-byte loop-align variance). Not
+  reliably forceable; leave it.
 - Remaining redefine targets: UpdateKeyText 0x557A10 (219B), ClearDuplicateDefinitions
   0x5580B0 (189B), OnLeftUnclicked 0x557AF0 (222B) — these are LARGER, with
   CWideString temporaries (0x99EBF0 ctor / 0x99EAE0 dtor), stack color-struct
