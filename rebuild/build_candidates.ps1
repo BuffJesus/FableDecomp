@@ -43595,6 +43595,90 @@ $catalog = @(
         TestSource = '00/99/CDataInputStream_Close_00993c80_test.cpp'
         PassPattern = '00993c80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009baa70'
+        Module = '_global'
+        Source = '00/9b/global_InitClearMode_009baa70.cpp'
+        TestSource = '00/9b/global_InitClearMode_009baa70_test.cpp'
+        PassPattern = '009baa70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e9fb0'
+        Module = '_global'
+        Source = '00/9e/global_IsActive_009e9fb0.cpp'
+        TestSource = '00/9e/global_IsActive_009e9fb0_test.cpp'
+        PassPattern = '009e9fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fbf70'
+        Module = '_global'
+        Source = '00/9f/global_GetUnusedFrames_009fbf70.cpp'
+        TestSource = '00/9f/global_GetUnusedFrames_009fbf70_test.cpp'
+        PassPattern = '009fbf70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a26290'
+        Module = '_global'
+        Source = '00/a2/global_operator_00a26290.cpp'
+        TestSource = '00/a2/global_operator_00a26290_test.cpp'
+        PassPattern = '00a26290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a35b30'
+        Module = '_global'
+        Source = '00/a3/global_BeginInputLoading_00a35b30.cpp'
+        TestSource = '00/a3/global_BeginInputLoading_00a35b30_test.cpp'
+        PassPattern = '00a35b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2fac0'
+        Module = '_global'
+        Source = '00/b2/global_GetOccludedFrames_00b2fac0.cpp'
+        TestSource = '00/b2/global_GetOccludedFrames_00b2fac0_test.cpp'
+        PassPattern = '00b2fac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3a990'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/b3/CEngineInternalPrimitiveBase_GetFadeDistance_00b3a990.cpp'
+        TestSource = '00/b3/CEngineInternalPrimitiveBase_GetFadeDistance_00b3a990_test.cpp'
+        PassPattern = '00b3a990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b98d50'
+        Module = 'CEngineInternalPrimitiveRepeatedStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitiveRepeatedStaticMesh_GetBoundingBoxTransform_00b98d50.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitiveRepeatedStaticMesh_GetBoundingBoxTransform_00b98d50_test.cpp'
+        PassPattern = '00b98d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00baa410'
+        Module = 'CEngineInternalPrimitiveRepeatedZSprite'
+        Source = '00/ba/CEngineInternalPrimitiveRepeatedZSprite_GetBoundingBoxTransform_00baa410.cpp'
+        TestSource = '00/ba/CEngineInternalPrimitiveRepeatedZSprite_GetBoundingBoxTransform_00baa410_test.cpp'
+        PassPattern = '00baa410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf36a0'
+        Module = '_global'
+        Source = '00/bf/global_operatornew_00bf36a0.cpp'
+        TestSource = '00/bf/global_operatornew_00bf36a0_test.cpp'
+        PassPattern = '00bf36a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf36e0'
+        Module = '_global'
+        Source = '00/bf/global_operatornew_00bf36e0.cpp'
+        TestSource = '00/bf/global_operatornew_00bf36e0_test.cpp'
+        PassPattern = '00bf36e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c167e0'
+        Module = '_global'
+        Source = '00/c1/global_GetNextRegionOnRouteTo_00c167e0.cpp'
+        TestSource = '00/c1/global_GetNextRegionOnRouteTo_00c167e0_test.cpp'
+        PassPattern = '00c167e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
