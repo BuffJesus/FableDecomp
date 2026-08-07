@@ -124,6 +124,13 @@ of a clean PE32 at ImageBase `0x400000`.
   `tools/decomp_pipeline/verify_land_jumptable.py <land.json> <oracle.tsv> [--land]` — same interface
   as verify_and_land, imports it and swaps ONLY obj_text for the raw-COFF extractor (shared harness
   untouched, so a background crawl keeps using verify_and_land concurrently).
+- Manifest boundary OVER-CAPTURE: a function's oracle span is [addr, next_manifest_addr); when the
+  real next fn ISN'T in the manifest the span swallows inter-fn `0xCC` int3 padding + the next fn's
+  head, so the row is longer than the real body (e.g. 00a14e20 Clear = real 8B vs captured 19B) and
+  never reaches parity. The harness's trailing-CC strip misses INTERIOR padding. Auto-fix with
+  `tools/decomp_pipeline/trim_overcapture.py 0x<addr> ...` (prints trimmed len+bytes) or
+  `--oracle <tsv>` (rewrites over-captured rows in place); it cuts at the first standalone int3 that
+  follows a terminator (ret/tail-jmp), leaving clean rows untouched. Then author the single fn.
 
 ## Toolchain (see docs/TOOLCHAIN.md for commands)
 - Mario rig gotcha (2026-07-22): `work/mario_hero/stage_bindaxis4` is format-valid and looks
