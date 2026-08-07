@@ -5453,13 +5453,10 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         sizeof(g_BootArtworkInfo),
         &g_BootArtworkInfo);
 #if defined(FABLETLC_RETAIL_FRONTEND_ARTWORK)
-    g_BootTitleArtwork = static_cast<FableBitmap>(LoadImageA(
+    g_BootTitleArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootTitleResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
+        kBootTitleResource,
+        "visual_boot_title.bmp");
     if (g_BootTitleArtwork == 0)
     {
         DeleteObject(g_BootArtwork);
@@ -5471,20 +5468,14 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         sizeof(g_BootTitleArtworkInfo),
         &g_BootTitleArtworkInfo);
 #if defined(FABLETLC_RETAIL_FRONTEND_ANIMATION)
-    g_BootForestArtwork = static_cast<FableBitmap>(LoadImageA(
+    g_BootForestArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(103),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
-    g_BootSunbeamArtwork = static_cast<FableBitmap>(LoadImageA(
+        103,
+        "visual_boot_forest.bmp");
+    g_BootSunbeamArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(104),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
+        104,
+        "visual_boot_sunbeam.bmp");
     if (g_BootForestArtwork == 0 || g_BootSunbeamArtwork == 0)
     {
         DeleteObject(g_BootSunbeamArtwork);
@@ -5674,35 +5665,22 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     }
 
 #if defined(FABLETLC_RETAIL_FRONTEND_MENU)
-    g_BootMenuArtwork = static_cast<FableBitmap>(LoadImageA(
+    g_BootMenuArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootMenuResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
-    g_BootBuffJesusMenuArtwork = static_cast<FableBitmap>(LoadImageA(
+        kBootMenuResource,
+        "visual_boot_main_menu.bmp");
+    g_BootBuffJesusMenuArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootBuffJesusMenuResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
-    g_BootCoastalArtwork = static_cast<FableBitmap>(LoadImageA(
+        kBootBuffJesusMenuResource,
+        "visual_boot_main_menu_buff_jesus.bmp");
+    g_BootCoastalArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootCoastalResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
-    g_BootCoastalSunbeamArtwork =
-        static_cast<FableBitmap>(LoadImageA(
-            instance,
-            IntegerResource(kBootCoastalSunbeamResource),
-            kImageBitmap,
-            0,
-            0,
-            kLoadCreatedDibSection));
+        kBootCoastalResource,
+        "visual_boot_coastal.bmp");
+    g_BootCoastalSunbeamArtwork = LoadFrontendArtwork(
+        instance,
+        kBootCoastalSunbeamResource,
+        "visual_boot_coastal_sunbeam.bmp");
     if (
         g_BootMenuArtwork != 0 &&
         g_BootCoastalArtwork != 0 &&
@@ -5741,21 +5719,14 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
     }
     // SPOOKY graveyard background for UI_FRONTEND_ABOUT_MENU: a 640x1920
     // 4-frame sheet + 640x1440 3-frame sunbeam, animated like forest/coastal.
-    g_BootSpookyArtwork = static_cast<FableBitmap>(LoadImageA(
+    g_BootSpookyArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootSpookyResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
-    g_BootSpookySunbeamArtwork =
-        static_cast<FableBitmap>(LoadImageA(
-            instance,
-            IntegerResource(kBootSpookySunbeamResource),
-            kImageBitmap,
-            0,
-            0,
-            kLoadCreatedDibSection));
+        kBootSpookyResource,
+        "visual_boot_spooky.bmp");
+    g_BootSpookySunbeamArtwork = LoadFrontendArtwork(
+        instance,
+        kBootSpookySunbeamResource,
+        "visual_boot_spooky_sunbeam.bmp");
     if (
         g_BootSpookyArtwork != 0 &&
         g_BootSpookySunbeamArtwork != 0)
@@ -5785,63 +5756,38 @@ long FABLE_FASTCALL FableRunVisualBootCheckpoint(
         instance,
         kBootHelpersResource,
         "visual_boot_helpers.bmp");
-    g_BootRedefineScrollPagesArtwork =
-        static_cast<FableBitmap>(LoadImageA(
-            instance,
-            IntegerResource(kBootRedefineScrollPagesResource),
-            kImageBitmap,
-            0,
-            0,
-            kLoadCreatedDibSection));
-    g_BootTitleSegmentArtwork = static_cast<FableBitmap>(LoadImageA(
+    g_BootRedefineScrollPagesArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootTitleSegmentResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
-    g_BootButtonLeftArtwork = static_cast<FableBitmap>(LoadImageA(
+        kBootRedefineScrollPagesResource,
+        "visual_boot_redefine_scroll_pages.bmp");
+    g_BootTitleSegmentArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootButtonLeftResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
-    g_BootButtonMiddleArtwork = static_cast<FableBitmap>(LoadImageA(
+        kBootTitleSegmentResource,
+        "visual_boot_title_rule_segment.bmp");
+    g_BootButtonLeftArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootButtonMiddleResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
-    g_BootButtonRightArtwork = static_cast<FableBitmap>(LoadImageA(
+        kBootButtonLeftResource,
+        "visual_boot_options_button_left.bmp");
+    g_BootButtonMiddleArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootButtonRightResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
-    g_BootAboutArtwork = static_cast<FableBitmap>(LoadImageA(
+        kBootButtonMiddleResource,
+        "visual_boot_options_button_middle.bmp");
+    g_BootButtonRightArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootAboutResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
-    g_BootCreditsArtwork = static_cast<FableBitmap>(LoadImageA(
+        kBootButtonRightResource,
+        "visual_boot_options_button_right.bmp");
+    g_BootAboutArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootCreditsResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
-    g_BootProfilesArtwork = static_cast<FableBitmap>(LoadImageA(
+        kBootAboutResource,
+        "visual_boot_about_menu.bmp");
+    g_BootCreditsArtwork = LoadFrontendArtwork(
         instance,
-        IntegerResource(kBootProfilesResource),
-        kImageBitmap,
-        0,
-        0,
-        kLoadCreatedDibSection));
+        kBootCreditsResource,
+        "visual_boot_credits_menu.bmp");
+    g_BootProfilesArtwork = LoadFrontendArtwork(
+        instance,
+        kBootProfilesResource,
+        "visual_boot_profiles_menu.bmp");
     if (
         g_BootOptionsArtwork != 0 &&
         g_BootHelpersArtwork != 0 &&

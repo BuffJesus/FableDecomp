@@ -3945,15 +3945,34 @@ try {
     # extraction today; a finished installer would run the same decode against
     # the player's base-game directory.  The .res embedding is retained as a
     # fallback until every atlas is served from loose files.
-    if ($visualBootUsesRetailSubscreens) {
-        $looseFrontendDir = Join-Path $outDir 'data\frontend'
-        New-Item -ItemType Directory -Force $looseFrontendDir | Out-Null
-        foreach ($looseBmp in @($visualBootOptionsBitmap, $visualBootHelpersBitmap)) {
-            if (Test-Path $looseBmp) {
-                Copy-Item $looseBmp `
-                    (Join-Path $looseFrontendDir (Split-Path $looseBmp -Leaf)) `
-                    -Force
-            }
+    $looseFrontendDir = Join-Path $outDir 'data\frontend'
+    New-Item -ItemType Directory -Force $looseFrontendDir | Out-Null
+    $looseFrontendBitmaps = @(
+        $visualBootTitleBitmap,
+        $visualBootForestBitmap,
+        $visualBootSunbeamBitmap,
+        $visualBootMenuBitmap,
+        $visualBootBuffJesusMenuBitmap,
+        $visualBootCoastalBitmap,
+        $visualBootCoastalSunbeamBitmap,
+        $visualBootSpookyBitmap,
+        $visualBootSpookySunbeamBitmap,
+        $visualBootOptionsBitmap,
+        $visualBootHelpersBitmap,
+        $visualBootRedefineScrollPagesBitmap,
+        $visualBootTitleSegmentBitmap,
+        $visualBootButtonLeftBitmap,
+        $visualBootButtonMiddleBitmap,
+        $visualBootButtonRightBitmap,
+        $visualBootAboutBitmap,
+        $visualBootCreditsBitmap,
+        $visualBootProfilesBitmap
+    )
+    foreach ($looseBmp in $looseFrontendBitmaps) {
+        if ($looseBmp -and (Test-Path $looseBmp)) {
+            Copy-Item $looseBmp `
+                (Join-Path $looseFrontendDir (Split-Path $looseBmp -Leaf)) `
+                -Force
         }
     }
 
