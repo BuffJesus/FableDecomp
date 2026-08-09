@@ -88,13 +88,18 @@ The four Left-Stick directions map to the engine's existing `0x3C` analog
 subtypes `0x0A–0x0D` (§3 of the RE doc) — the movement axes are already modeled;
 this display table just gives them UE names.
 
-**Open item (needs live probe):** the exact byte encoding Fable stores in the
-`input` record for each physical controller input (the `0x3C` case stores an
-analog axis; buttons store a code under type `0x37`/`0x38`). Resolve by
-capturing one binding at runtime (x32dbg on `CKeyRedefiner::Redefine` 0x557D20
-with a controller event) and reading `this+0x1A4` candidate bytes. Until then the
-table is keyed by UE id and the record encoding is filled per-input during the
-capture-probe pass.
+**Encoding — mostly RESOLVED (2026-08-09):** the def/scheme-side record encoding
+is already recovered in `docs/CONTROLLER_ENUMS.md`: per-record layout `+0x00
+GameAction`, `+0x04 ControllerType` (1=Xbox pad), `+0x0C EXboxControllerButton`
+(A=1, B=2, …, LeftThumbstick=17, RightThumbstick=18), `+0x14/+0x18` C2DVector dir
+hint. `FABLE_XBOX_CONTROL_SCHEME` (def entry 1099, 77 records) IS the native
+gamepad default — so the §5/§7 gamepad scheme is buildable directly, no live
+probe needed, and the EGameAction ordinals come from `debug_build/FableWin.pdb`
+(see `tools/render_fable_frontend_subscreens.py`). The ONLY still-open piece is
+the *runtime* 28-byte `CUserProfileManager` binding-record encoding under
+`GetSubTypeForAction` types `0x37`/`0x38`/`0x3C` (the scheme→runtime apply in
+`ResetAssignedInputs` 0x4085F0); confirm that against `CONTROLLER_ENUMS.md` before
+assuming the runtime form matches the scheme form.
 
 ## 3. Gamepad detail screen (screen 5)
 
