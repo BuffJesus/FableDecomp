@@ -5038,7 +5038,11 @@ void FABLE_FASTCALL FableSetVisualFrontendSaveSelection(
 
 void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen)
 {
-    if (screen >= 5 || (screen != 0 && g_OptionsTexture == 0))
+    // Gamepad-redefine patch (docs/GAMEPAD_REDEFINE_PATCH.md): screen 5 is the
+    // new controller redefine screen.  Retail's guard stopped at screen 4; the
+    // "(Redefine Keys (Gamepad))" detail title authored above was unreachable
+    // dead code until this bound was raised to admit screen 5.
+    if (screen > 5 || (screen != 0 && g_OptionsTexture == 0))
         return;
     if (g_DetailScreen == screen)
         return;

@@ -142,3 +142,27 @@ advance the hotbar index. No new UI required beyond a bindable row in screen 5.
 
 Steps 1–4 are pure reconstruction-side (no live RE needed) and can land now;
 5–7 need one x32dbg capture session; 8 is the eventual base-game deliverable.
+
+## Status (2026-08-09)
+
+- **[data] DONE** (`b1621a8`): `kGamepadKeyValueLabels[24]` / `kGamepadKeyValues[24]`
+  (UE-name ↔ XInput-bit table) in `visual_boot_d3d9.cpp`.
+- **[title] DONE**: detail title splits screen 4 → "Redefine Keys (Keyboard)",
+  screen 5 → "Redefine Keys (Gamepad)"; render clamp raised to `screen<=5`.
+  The screen-5 entry point (`FableSetVisualFrontendDetailScreen`) previously
+  rejected `screen==5`, making the "(Gamepad)" title dead code — **fixed**
+  (guard `screen > 5`), so screen 5 is now reachable and shows its title over
+  the redefine backdrop. Compile-verified; visual-QA of the title pending.
+- **[menu] TODO** (step 3): the reconstruction options submenu is the retail
+  4-row list (`g_OptionsRowChildren[4]`, `g_OptionsSelection < 4`,
+  `InitialiseOptionsRowStates`). Adding the 5th "(Gamepad)" row means growing
+  that array + clamp + retail list-child layout — layout-sensitive, needs the
+  headless visual-QA cycle (build_bootstrap `-RetailFrontendBank` → screenshot).
+- **[screen] TODO** (step 4): `AppendRedefineActionText` / `AppendRedefineKeyText`
+  are hard-gated `g_DetailScreen != 4`. Screen 5 needs: (a) the same action-row
+  loop, (b) a per-action *gamepad* binding-value array (analogous to
+  `g_RedefineKeyValues`) whose value column renders `kGamepadKeyValueLabels[...]`
+  via the glyph-text path (fallback "Unbound"). Also the hover setters
+  (`FableSetVisualFrontendRedefineHover` etc., gated `!= 4`).
+- **[probe/scheme/patch] TODO** (steps 5–8): unchanged; need the x32dbg capture
+  of the per-input record encoding, then the base-game detour.
