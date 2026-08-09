@@ -49342,6 +49342,174 @@ $catalog = @(
         TestSource = '00/97/CCreatureActionScorpionPrepareTailPlunge_IsToEvadeAllHits_0097c9a0_test.cpp'
         PassPattern = 'RB_97c9a0_OK'
     }
+    [pscustomobject]@{
+        Address = '009e9f20'
+        Module = '_global'
+        Source = '00/9e/global_StopProgress_009e9f20.cpp'
+        TestSource = '00/9e/global_StopProgress_009e9f20_test.cpp'
+        PassPattern = 'OK_009e9f20'
+    }
+    [pscustomobject]@{
+        Address = '00a02170'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_EndCritical_00a02170.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_EndCritical_00a02170_test.cpp'
+        PassPattern = 'OK_00a02170'
+    }
+    [pscustomobject]@{
+        Address = '00a4c1a0'
+        Module = 'C3DAnimation2'
+        Source = '00/a4/C3DAnimation2_HasRotation_00a4c1a0.cpp'
+        TestSource = '00/a4/C3DAnimation2_HasRotation_00a4c1a0_test.cpp'
+        PassPattern = 'OK_00a4c1a0'
+    }
+    [pscustomobject]@{
+        Address = '00a755a0'
+        Module = 'CContainmentVolume'
+        Source = '00/a7/CContainmentVolume_RelocateData_00a755a0.cpp'
+        TestSource = '00/a7/CContainmentVolume_RelocateData_00a755a0_test.cpp'
+        PassPattern = 'OK_00a755a0'
+    }
+    [pscustomobject]@{
+        Address = '00a76530'
+        Module = 'CNavSwitchableLeafNode'
+        Source = '00/a7/CNavSwitchableLeafNode_HasNeighbours_00a76530.cpp'
+        TestSource = '00/a7/CNavSwitchableLeafNode_HasNeighbours_00a76530_test.cpp'
+        PassPattern = 'OK_00a76530'
+    }
+    [pscustomobject]@{
+        Address = '00b239a0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_StartNewScene_00b239a0.cpp'
+        TestSource = '00/b2/CEngine_StartNewScene_00b239a0_test.cpp'
+        PassPattern = 'OK_00b239a0'
+    }
+    [pscustomobject]@{
+        Address = '00b3b180'
+        Module = 'CEngineResourceManager'
+        Source = '00/b3/CEngineResourceManager_WorldFrameUpdate_00b3b180.cpp'
+        TestSource = '00/b3/CEngineResourceManager_WorldFrameUpdate_00b3b180_test.cpp'
+        PassPattern = 'OK_00b3b180'
+    }
+    [pscustomobject]@{
+        Address = '00b8d0b0'
+        Module = 'CEngineInternalPrimitiveBase'
+        Source = '00/b8/CEngineInternalPrimitiveBase_AddChildPrimitive_00b8d0b0.cpp'
+        TestSource = '00/b8/CEngineInternalPrimitiveBase_AddChildPrimitive_00b8d0b0_test.cpp'
+        PassPattern = 'OK_00b8d0b0'
+    }
+    [pscustomobject]@{
+        Address = '00bb1dd0'
+        Module = 'CParticleSimulationRenderData'
+        Source = '00/bb/CParticleSimulationRenderData_IsBusy_00bb1dd0.cpp'
+        TestSource = '00/bb/CParticleSimulationRenderData_IsBusy_00bb1dd0_test.cpp'
+        PassPattern = 'OK_00bb1dd0'
+    }
+    [pscustomobject]@{
+        Address = '00bf6b50'
+        Module = 'CLandscapeBackgroundTreeNode'
+        Source = '00/bf/CLandscapeBackgroundTreeNode_CanRelocateData_00bf6b50.cpp'
+        TestSource = '00/bf/CLandscapeBackgroundTreeNode_CanRelocateData_00bf6b50_test.cpp'
+        PassPattern = 'OK_00bf6b50'
+    }
+    [pscustomobject]@{
+        Address = '00bfe9f9'
+        Module = '_global'
+        Source = '00/bf/global_securitycheckcookie_00bfe9f9.cpp'
+        TestSource = '00/bf/global_securitycheckcookie_00bfe9f9_test.cpp'
+        PassPattern = 'OK_00bfe9f9'
+    }
+    [pscustomobject]@{
+        Address = '00c09be0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c09be0.cpp'
+        TestSource = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c09be0_test.cpp'
+        PassPattern = 'OK_00c09be0'
+    }
+    [pscustomobject]@{
+        Address = '00c09c00'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c09c00.cpp'
+        TestSource = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c09c00_test.cpp'
+        PassPattern = 'OK_00c09c00'
+    }
+    [pscustomobject]@{
+        Address = '00c09e60'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c09e60.cpp'
+        TestSource = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c09e60_test.cpp'
+        PassPattern = 'OK_00c09e60'
+    }
+    [pscustomobject]@{
+        Address = '00c09e80'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c09e80.cpp'
+        TestSource = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c09e80_test.cpp'
+        PassPattern = 'OK_00c09e80'
+    }
+    [pscustomobject]@{
+        Address = '00c0bcc0'
+        Module = '_Cons_val<std::allocator<std::pair<CCharString,CCharString>_>,std::pair<CCharString,CCharString>,std'
+        Source = '00/c0/ConsvalstdallocatorstdpairCCharStringCCharStringstdpairCCharStringCCharStringstd_pairclassCCharStringclassCCharString_00c0bcc0.cpp'
+        TestSource = '00/c0/ConsvalstdallocatorstdpairCCharStringCCharStringstdpairCCharStringCCharStringstd_pairclassCCharStringclassCCharString_00c0bcc0_test.cpp'
+        PassPattern = 'OK_00c0bcc0'
+    }
+    [pscustomobject]@{
+        Address = '00c0e6e0'
+        Module = 'CAIBrain'
+        Source = '00/c0/CAIBrain_GetCurrentStateGroupDebugText_00c0e6e0.cpp'
+        TestSource = '00/c0/CAIBrain_GetCurrentStateGroupDebugText_00c0e6e0_test.cpp'
+        PassPattern = 'OK_00c0e6e0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f0b0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f0b0.cpp'
+        TestSource = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f0b0_test.cpp'
+        PassPattern = 'OK_00c0f0b0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f0d0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f0d0.cpp'
+        TestSource = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f0d0_test.cpp'
+        PassPattern = 'OK_00c0f0d0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f1c0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f1c0.cpp'
+        TestSource = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f1c0_test.cpp'
+        PassPattern = 'OK_00c0f1c0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f1e0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f1e0.cpp'
+        TestSource = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f1e0_test.cpp'
+        PassPattern = 'OK_00c0f1e0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f2d0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f2d0.cpp'
+        TestSource = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f2d0_test.cpp'
+        PassPattern = 'OK_00c0f2d0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f2f0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f2f0.cpp'
+        TestSource = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f2f0_test.cpp'
+        PassPattern = 'OK_00c0f2f0'
+    }
+    [pscustomobject]@{
+        Address = '00c0f3e0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f3e0.cpp'
+        TestSource = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f3e0_test.cpp'
+        PassPattern = 'OK_00c0f3e0'
+    }
 )
 
 $requestedAddresses = @(
