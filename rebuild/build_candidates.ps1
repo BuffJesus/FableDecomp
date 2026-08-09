@@ -49510,6 +49510,174 @@ $catalog = @(
         TestSource = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f3e0_test.cpp'
         PassPattern = 'OK_00c0f3e0'
     }
+    [pscustomobject]@{
+        Address = '00c0f400'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f400.cpp'
+        TestSource = '00/c0/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f400_test.cpp'
+        PassPattern = 'OK_00c0f400'
+    }
+    [pscustomobject]@{
+        Address = '00c151c0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c1/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c151c0.cpp'
+        TestSource = '00/c1/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c151c0_test.cpp'
+        PassPattern = 'OK_00c151c0'
+    }
+    [pscustomobject]@{
+        Address = '00c151e0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c1/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c151e0.cpp'
+        TestSource = '00/c1/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c151e0_test.cpp'
+        PassPattern = 'OK_00c151e0'
+    }
+    [pscustomobject]@{
+        Address = '00c152d0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c1/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c152d0.cpp'
+        TestSource = '00/c1/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c152d0_test.cpp'
+        PassPattern = 'OK_00c152d0'
+    }
+    [pscustomobject]@{
+        Address = '00c152f0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c1/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c152f0.cpp'
+        TestSource = '00/c1/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c152f0_test.cpp'
+        PassPattern = 'OK_00c152f0'
+    }
+    [pscustomobject]@{
+        Address = '00c16690'
+        Module = 'CHoverable'
+        Source = '00/c1/CHoverable_ProcessEvent_00c16690.cpp'
+        TestSource = '00/c1/CHoverable_ProcessEvent_00c16690_test.cpp'
+        PassPattern = 'OK_00c16690'
+    }
+    [pscustomobject]@{
+        Address = '00c166b0'
+        Module = 'CHoverable'
+        Source = '00/c1/CHoverable_ProcessEvent_00c166b0.cpp'
+        TestSource = '00/c1/CHoverable_ProcessEvent_00c166b0_test.cpp'
+        PassPattern = 'OK_00c166b0'
+    }
+    [pscustomobject]@{
+        Address = '00c166d0'
+        Module = 'CHoverable'
+        Source = '00/c1/CHoverable_ProcessEvent_00c166d0.cpp'
+        TestSource = '00/c1/CHoverable_ProcessEvent_00c166d0_test.cpp'
+        PassPattern = 'OK_00c166d0'
+    }
+    [pscustomobject]@{
+        Address = '00c1bb80'
+        Module = '_Insert<std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std'
+        Source = '00/c1/InsertstdTreeconstiteratorstdTreevalstdTsettraitsCCharStringstdlessCCharStringst_allocatorCCharString0_00c1bb80.cpp'
+        TestSource = '00/c1/InsertstdTreeconstiteratorstdTreevalstdTsettraitsCCharStringstdlessCCharStringst_allocatorCCharString0_00c1bb80_test.cpp'
+        PassPattern = 'OK_00c1bb80'
+    }
+    [pscustomobject]@{
+        Address = '00c1bba0'
+        Module = '_Insert<std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std'
+        Source = '00/c1/InsertstdTreeconstiteratorstdTreevalstdTsettraitsCCharStringstdlessCCharStringst_allocatorCCharString0_00c1bba0.cpp'
+        TestSource = '00/c1/InsertstdTreeconstiteratorstdTreevalstdTsettraitsCCharStringstdlessCCharStringst_allocatorCCharString0_00c1bba0_test.cpp'
+        PassPattern = 'OK_00c1bba0'
+    }
+    [pscustomobject]@{
+        Address = '00c22f60'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c22f60.cpp'
+        TestSource = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c22f60_test.cpp'
+        PassPattern = 'OK_00c22f60'
+    }
+    [pscustomobject]@{
+        Address = '00c22f80'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c22f80.cpp'
+        TestSource = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c22f80_test.cpp'
+        PassPattern = 'OK_00c22f80'
+    }
+    [pscustomobject]@{
+        Address = '00c23570'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c23570.cpp'
+        TestSource = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c23570_test.cpp'
+        PassPattern = 'OK_00c23570'
+    }
+    [pscustomobject]@{
+        Address = '00c23590'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c23590.cpp'
+        TestSource = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c23590_test.cpp'
+        PassPattern = 'OK_00c23590'
+    }
+    [pscustomobject]@{
+        Address = '00c23680'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c23680.cpp'
+        TestSource = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c23680_test.cpp'
+        PassPattern = 'OK_00c23680'
+    }
+    [pscustomobject]@{
+        Address = '00c236a0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c236a0.cpp'
+        TestSource = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c236a0_test.cpp'
+        PassPattern = 'OK_00c236a0'
+    }
+    [pscustomobject]@{
+        Address = '00c23790'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c23790.cpp'
+        TestSource = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c23790_test.cpp'
+        PassPattern = 'OK_00c23790'
+    }
+    [pscustomobject]@{
+        Address = '00c237b0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c237b0.cpp'
+        TestSource = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c237b0_test.cpp'
+        PassPattern = 'OK_00c237b0'
+    }
+    [pscustomobject]@{
+        Address = '00c238a0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c238a0.cpp'
+        TestSource = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c238a0_test.cpp'
+        PassPattern = 'OK_00c238a0'
+    }
+    [pscustomobject]@{
+        Address = '00c238c0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c238c0.cpp'
+        TestSource = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c238c0_test.cpp'
+        PassPattern = 'OK_00c238c0'
+    }
+    [pscustomobject]@{
+        Address = '00c25e00'
+        Module = 'CBankFileAsyncData'
+        Source = '00/c2/CBankFileAsyncData_FreeBuffer_00c25e00.cpp'
+        TestSource = '00/c2/CBankFileAsyncData_FreeBuffer_00c25e00_test.cpp'
+        PassPattern = 'OK_00c25e00'
+    }
+    [pscustomobject]@{
+        Address = '00c2ad40'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2ad40.cpp'
+        TestSource = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2ad40_test.cpp'
+        PassPattern = 'OK_00c2ad40'
+    }
+    [pscustomobject]@{
+        Address = '00c2ad60'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2ad60.cpp'
+        TestSource = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2ad60_test.cpp'
+        PassPattern = 'OK_00c2ad60'
+    }
+    [pscustomobject]@{
+        Address = '00c2ae50'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2ae50.cpp'
+        TestSource = '00/c2/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c2ae50_test.cpp'
+        PassPattern = 'OK_00c2ae50'
+    }
 )
 
 $requestedAddresses = @(
