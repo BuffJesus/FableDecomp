@@ -283,6 +283,12 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 00451916	_global	ListNode_Init_I	PASS	_global	ListNode_Init_I	undefined	int* __thiscall	0	3		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
 00451957	_global	ListNode_Init_J	PASS	_global	ListNode_Init_J	undefined	ListNodeOwner_J* __thiscall	0	3		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
 00451998	_global	ListNode_Init_K	PASS	_global	ListNode_Init_K	undefined	int* __thiscall	0	3		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
+004519d9	_global	ListNode_Init_L	PASS	_global	ListNode_Init_L	undefined	ListNode_Init_Overlay* __thiscall	0	3		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
+00451a1a	_global	ListNode_Init_M	PASS	_global	ListNode_Init_M	undefined	ListNodeInitOverlay* __thiscall	0	3		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
+00451a5b	_global	ListNode_Init_N	PASS	_global	ListNode_Init_N	undefined	ListNode_Init_N_Overlay* __thiscall	0	3		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
+00451a9c	_global	ListNode_Init_O	PASS	_global	ListNode_Init_O	undefined	ListNode_Init_O_ThisOverlay* __thiscall	0	3		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
+00451add	_global	CList_Initialize	PASS	_global	CList_Initialize	undefined	std::int32_t* __thiscall	0	3		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
+004536ae	_global	CThingBuildingDef_CopyAssign_1	PASS	_global	CThingBuildingDef_CopyAssign_1	undefined	CThingBuildingDef* __thiscall	0	2		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
 004aa890	CScriptThing	CScriptThing::IsDead	PASS	CScriptThing	IsDead	bool	bool	0	0		PASS	
 004aa9e0	CScriptThing	CScriptThing::GetCurrentMapName	PASS	CScriptThing	GetCurrentMapName	CCharString	CCharString* __thiscall	0	1		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
 004aaa10	CScriptThing	CScriptThing::GetHomeMapName	PASS	CScriptThing	GetHomeMapName	CCharString	CCharString* __thiscall	0	1		REVIEW	explicit-parameter-count-mismatch;return-shape-mismatch
@@ -740,7 +746,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 008a7930	CGameScriptInterface	CGameScriptInterface::ClearIsGossipForPlayer	PASS	CGameScriptInterface	ClearIsGossipForPlayer	void	void __thiscall	0	0		PASS	
 008a7980	CGameScriptInterface	CGameScriptInterface::EntityStopFollowing	PASS	CGameScriptInterface	EntityStopFollowing	void	void __thiscall	1	1		PASS	
 008a7ec0	CGameScriptInterface	CGameScriptInterface::EntitySetThingAsAllyOfThing	PASS	CGameScriptInterface	EntitySetThingAsAllyOfThing	void	void	2	2		PASS	
-008a86c0	CGameScriptInterface	CGameScriptInterface::GetAllCreaturesInAreaWithScriptName	FAIL	CGameScriptInterface	GetAllCreaturesInAreaWithScriptName	long	long __thiscall	4	4		PASS	
+008a86c0	CGameScriptInterface	CGameScriptInterface::GetAllCreaturesInAreaWithScriptName	FAIL	CGameScriptInterface	GetAllCreaturesInAreaWithScriptName	long	long	4	4		PASS	
 008a89d0	CGameScriptInterface	CGameScriptInterface::GetAllCreaturesExcludingHero	PASS	CGameScriptInterface	GetAllCreaturesExcludingHero	long	int	1	1		PASS	
 008a8c60	CGameScriptInterface	CGameScriptInterface::EntitySetAsSittingOnFloor	PASS	CGameScriptInterface	EntitySetAsSittingOnFloor	void	void __thiscall	2	2		PASS	
 008a8e40	CGameScriptInterface	CGameScriptInterface::EntityDecapitate	PASS	CGameScriptInterface	EntityDecapitate	void	void __thiscall	1	1		PASS	

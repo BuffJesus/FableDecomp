@@ -1,13 +1,13 @@
 # Candidate signature audit
 
-Generated: `2026-08-05T11:04:36-06:00`
+Generated: `2026-08-07T14:19:11-06:00`
 
-Clean: **541 / 888**. Review required: **347**.
+Clean: **541 / 894**. Review required: **353**.
 
 | Issue | Candidates |
 |---|---:|
-| `explicit-parameter-count-mismatch` | 315 |
-| `return-shape-mismatch` | 121 |
+| `explicit-parameter-count-mismatch` | 321 |
+| `return-shape-mismatch` | 127 |
 | `duplicate-linkage-signature` | 49 |
 | `method-name-mismatch` | 44 |
 | `definition-not-parsed` | 13 |
@@ -278,6 +278,12 @@ Clean: **541 / 888**. Review required: **347**.
 | `00451916` | `_global` | `ListNode_Init_I` | `ListNode_Init_I` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `00451957` | `_global` | `ListNode_Init_J` | `ListNode_Init_J` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `00451998` | `_global` | `ListNode_Init_K` | `ListNode_Init_K` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `004519d9` | `_global` | `ListNode_Init_L` | `ListNode_Init_L` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451a1a` | `_global` | `ListNode_Init_M` | `ListNode_Init_M` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451a5b` | `_global` | `ListNode_Init_N` | `ListNode_Init_N` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451a9c` | `_global` | `ListNode_Init_O` | `ListNode_Init_O` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `00451add` | `_global` | `CList_Initialize` | `CList_Initialize` | explicit-parameter-count-mismatch;return-shape-mismatch |
+| `004536ae` | `_global` | `CThingBuildingDef_CopyAssign_1` | `CThingBuildingDef_CopyAssign_1` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aa9e0` | `CScriptThing` | `CScriptThing::GetCurrentMapName` | `GetCurrentMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004aaa10` | `CScriptThing` | `CScriptThing::GetHomeMapName` | `GetHomeMapName` | explicit-parameter-count-mismatch;return-shape-mismatch |
 | `004abe60` | `CScriptThing` | `CScriptThing::MsgWhoKilledMe` | `` | definition-not-parsed |

@@ -5498,7 +5498,7 @@
       "rounds_used": 4,
       "verdict": "FAIL",
       "parity_status": "red",
-      "timestamp": "2026-08-05T10:42:23"
+      "timestamp": "2026-08-07T11:14:16"
     },
     "008a9c40": {
       "address": "0x008A9C40",
@@ -8429,6 +8429,66 @@
       "verdict": "PASS",
       "parity_status": "red",
       "timestamp": "2026-08-04T20:55:57"
+    },
+    "004519d9": {
+      "address": "0x004519D9",
+      "class_name": "",
+      "function_name": "ListNode_Init_L",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-07T08:26:04"
+    },
+    "00451a1a": {
+      "address": "0x00451A1A",
+      "class_name": "",
+      "function_name": "ListNode_Init_M",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-07T08:56:06"
+    },
+    "00451a5b": {
+      "address": "0x00451A5B",
+      "class_name": "",
+      "function_name": "ListNode_Init_N",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-07T10:03:39"
+    },
+    "00451a9c": {
+      "address": "0x00451A9C",
+      "class_name": "",
+      "function_name": "ListNode_Init_O",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-07T10:12:49"
+    },
+    "00451add": {
+      "address": "0x00451ADD",
+      "class_name": "",
+      "function_name": "CList_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-07T12:56:04"
+    },
+    "004536ae": {
+      "address": "0x004536AE",
+      "class_name": "",
+      "function_name": "CThingBuildingDef_CopyAssign_1",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-07T12:56:54"
     }
   },
   "runs": [
@@ -17711,6 +17771,86 @@
       "verdict": "FAIL",
       "parity_status": "red",
       "timestamp": "2026-08-05T10:42:23"
+    },
+    {
+      "address": "0x004519D9",
+      "class_name": "",
+      "function_name": "ListNode_Init_L",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-07T08:26:04"
+    },
+    {
+      "address": "0x00451A1A",
+      "class_name": "",
+      "function_name": "ListNode_Init_M",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-07T08:56:06"
+    },
+    {
+      "address": "0x00451A5B",
+      "class_name": "",
+      "function_name": "ListNode_Init_N",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-07T10:03:39"
+    },
+    {
+      "address": "0x00451A9C",
+      "class_name": "",
+      "function_name": "ListNode_Init_O",
+      "success": true,
+      "rounds_used": 2,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-07T10:12:49"
+    },
+    {
+      "address": "0x008A86C0",
+      "class_name": "",
+      "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-07T11:04:39"
+    },
+    {
+      "address": "0x008A86C0",
+      "class_name": "",
+      "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
+      "success": false,
+      "rounds_used": 4,
+      "verdict": "FAIL",
+      "parity_status": "red",
+      "timestamp": "2026-08-07T11:14:16"
+    },
+    {
+      "address": "0x00451ADD",
+      "class_name": "",
+      "function_name": "CList_Initialize",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-07T12:56:04"
+    },
+    {
+      "address": "0x004536AE",
+      "class_name": "",
+      "function_name": "CThingBuildingDef_CopyAssign_1",
+      "success": true,
+      "rounds_used": 1,
+      "verdict": "PASS",
+      "parity_status": "green",
+      "timestamp": "2026-08-07T12:56:54"
     }
   ]
 }

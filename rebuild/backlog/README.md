@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-08-05T11:04:37-06:00`
+Generated: `2026-08-07T14:19:12-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 
@@ -9,7 +9,7 @@ The order favors generated candidate clusters first, then extension of proven mo
 | Rank | Track | Module | Functions | Prototype gaps | Agent candidates | Verified lifts |
 |---:|---|---|---:|---:|---:|---:|
 | 1 | candidate-cluster | `CGameScriptInterface` | 953 | 5 | 440 | 0 |
-| 2 | candidate-cluster | `_global` | 11362 | 9365 | 316 | 0 |
+| 2 | candidate-cluster | `_global` | 11362 | 9365 | 322 | 0 |
 | 3 | candidate-cluster | `CMouseDX` | 24 | 0 | 14 | 10 |
 | 4 | candidate-cluster | `CScriptThing` | 103 | 2 | 15 | 0 |
 | 5 | candidate-cluster | `CMemoryAllocatorFixedSize` | 21 | 0 | 11 | 7 |
@@ -92,11 +92,11 @@ Uncompiled auto-RE candidates ordered by authoritative retail function size, the
 | 30 | `0088fdc0` | `CGameScriptInterface` | candidate-compile |  |
 | 31 | `0088fe90` | `CGameScriptInterface` | candidate-compile |  |
 | 32 | `00890820` | `CGameScriptInterface` | candidate-compile | 'CRGBColour' was not declared in this scope |
-| 33 | `00890b90` | `CGameScriptInterface` | candidate-compile |  |
-| 34 | `00890ff0` | `CGameScriptInterface` | candidate-compile | 'field48' was not declared in this scope |
-| 35 | `00891070` | `CGameScriptInterface` | candidate-compile |  |
-| 36 | `00891170` | `CGameScriptInterface` | candidate-compile | 'reinterpret_cast' from integer to pointer |
-| 37 | `00891720` | `CGameScriptInterface` | candidate-compile |  |
-| 38 | `00891940` | `CGameScriptInterface` | candidate-compile | 'CGameScriptInterface' has not been declared |
-| 39 | `00891a00` | `CGameScriptInterface` | candidate-compile | static assertion failed |
-| 40 | `00891ca0` | `CGameScriptInterface` | candidate-compile | 'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type |
+| 33 | `00890ff0` | `CGameScriptInterface` | candidate-compile | 'field48' was not declared in this scope |
+| 34 | `00891070` | `CGameScriptInterface` | candidate-compile |  |
+| 35 | `00891170` | `CGameScriptInterface` | candidate-compile | 'reinterpret_cast' from integer to pointer |
+| 36 | `00891720` | `CGameScriptInterface` | candidate-compile |  |
+| 37 | `00891940` | `CGameScriptInterface` | candidate-compile | 'CGameScriptInterface' has not been declared |
+| 38 | `00891a00` | `CGameScriptInterface` | candidate-compile | static assertion failed |
+| 39 | `00891ca0` | `CGameScriptInterface` | candidate-compile | 'CScriptThing* NScript::operator&&(GetHeroPredicate5*, CIsThingAlive*)' must have an argument of class or enumerated type |
+| 40 | `00892850` | `CGameScriptInterface` | candidate-compile |  |
