@@ -160,11 +160,19 @@ low-confidence face/shoulder rows in CONTROLLER_ENUMS.md do NOT gate us.
   data, applied by `ResetAssignedInputs` 0x4085F0 via one `0x411B90` apply call),
   values from the UE/XInput table above.
 
-**CODE (unavoidable detours, retail VAs):**
-- **`CFrontEndManager::Action` @ 0x0059A238** — add a switch case for the new row's
-  action id → set its used-key → `GotoNextScreen(...)`.
-- **`CFrontEndManager::Init2` @ 0x00598A1C** — bind that new key → the new gamepad
-  screen def id (Init2 does per-screen named binds; add one block or detour).
+**CODE (unavoidable detours, retail VAs) — concrete values pinned (2026-08-09):**
+- New row **action = 284** (`0x11C`), **used-key = 0x17**. Verified free: `Action()`
+  assigns keys `{0x1,0x3-0xa,0xc,0xf,0x10,0x14,0x16,0x18,0x19,0x1a,0x1c}` (0x16 =
+  keyboard Redefine); **0x17 is unused** — the natural neighbour. Action 284 has no
+  `Action()` case → falls to the clean `0x59a7ff` default (inert) until detoured.
+- **`CFrontEndManager::Action` @ 0x0059A238** — detour to add: `if (action==284) {
+  usedKey = 0x17; goto dispatch; }` where dispatch = the existing `0x59a7d2` tail
+  (`lea eax,[ebp+8]; push eax; lea ecx,[esi+0x54]; jmp GotoNextScreen 0x596763`).
+  Action id is read as `**(int**)eventArg`.
+- **`CFrontEndManager::Init2` @ 0x00598A1C** — bind key `0x17` → the new
+  `UI_FRONTEND_SCREEN_REDEFINE_KEYS_GAMEPAD` def (Init2 does per-screen *named*
+  binds via a name-lookup; add one bind block, or post-hook after Init2). The
+  screen def is resolved by name so no index dependency.
 - **Capture needs NO code — CONFIRMED (disasm 2026-08-09).** `CKeyRedefiner::
   Redefine` (0x557D20) is device-agnostic: it compares `this+0x1A8` (expected
   state/type) vs `event+0x4` (incoming event type) only to pick a state branch,
