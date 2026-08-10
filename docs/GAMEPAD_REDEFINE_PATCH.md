@@ -383,3 +383,32 @@ hardcoded call, so the "show controller bindings" hook is now fully specified:
 Risk to watch: 0x4088E0 may have other callers active while the gamepad screen is open; gate
 STRICTLY on the screen-active flag so the primary vector is untouched everywhere else. Verify
 in-game with the USER driving (see memory: in-game verification is user-driven, not automated).
+
+## 9. Controller-values hook BUILT + DEPLOYED (2026-08-09) — pending live test
+
+Implemented Phase 3 as three boot-safe inline hooks in `gamepad_redefine_hook.c` (compiled
+VS2022 x86 `cl /O2 /MT /LD /Gz` → 85504-byte PE32, KERNEL32-only import; deployed to the
+retail `Mods\`, prior working single-hook DLL saved as `gamepad_redefine.dll.singlehook.bak`):
+
+1. **Action @0x59A238** (as before) — on action 284, resolve the gamepad screen, now ALSO cache
+   the resolved screen def pointer in `g_gamepadScreen`, then GotoNextScreen to it.
+2. **GotoNextScreen @0x596763** (new) — every screen transition sets
+   `g_useController = (screenArg == g_gamepadScreen)`. Single source of truth for "gamepad
+   redefine screen is showing"; auto-clears the instant the user navigates elsewhere.
+3. **GetPrimaryInputVector @0x4088E0** (new, full 5-byte-jmp replacement) — faithful reimpl of
+   the retail accessor (primary `+0x54`, empty→`EnsureDefaults 0x4085F0`), EXCEPT: when
+   `g_useController` is set AND the return address is Refresh's call site (`0x55700D`), it returns
+   the passive/controller vector `+0x60` (empty→same default-scheme loader). The retaddr guard
+   means ONLY `CRedefinerList::Refresh` is redirected — every other caller keeps the primary
+   vector, so keyboard redefine and all gameplay input are byte-unchanged.
+
+Because `CKeyRedefiner::Redefine` writes back through whichever vector the list is bound to, this
+flips both DISPLAY and CAPTURE to the controller vector on the gamepad screen only.
+
+NEEDS A LIVE USER TEST (in-game verification is user-driven — see memory): launch via
+FSE_Launcher, open Options → "Redefine Keys (Gamepad)", confirm the value column now shows the
+controller bindings (passive vector) and that "Redefine Keys (Keyboard)" is unchanged. If it
+crashes or misbehaves, revert instantly by restoring `gamepad_redefine.dll.singlehook.bak` over
+`gamepad_redefine.dll` (or removing the Mods.ini line). Open item if +0x60 shows empty/unbound:
+seed the passive vector with `FABLE_XBOX_CONTROL_SCHEME` (def 1099) via a ResetAssignedInputs-by-
+name call in the Action-284 handler before GotoNextScreen.
