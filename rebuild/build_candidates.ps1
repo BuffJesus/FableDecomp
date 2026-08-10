@@ -50007,6 +50007,125 @@ $catalog = @(
         TestSource = '00/4c/CThing_IsGameStatePersisted_004c8280_test.cpp'
         PassPattern = 'OK_004c8280'
     }
+    [pscustomobject]@{
+        Address = '004fd020'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/4f/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004fd020.cpp'
+        TestSource = '00/4f/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_004fd020_test.cpp'
+        PassPattern = 'OK_004fd020'
+    }
+    [pscustomobject]@{
+        Address = '0053c7d9'
+        Module = 'list<NUISystem::CList*'
+        Source = '00/53/listNUISystemCList_popfront_0053c7d9.cpp'
+        TestSource = '00/53/listNUISystemCList_popfront_0053c7d9_test.cpp'
+        PassPattern = 'OK_0053c7d9'
+    }
+    [pscustomobject]@{
+        Address = '0055b9d0'
+        Module = 'CHoverable'
+        Source = '00/55/CHoverable_ProcessEvent_0055b9d0.cpp'
+        TestSource = '00/55/CHoverable_ProcessEvent_0055b9d0_test.cpp'
+        PassPattern = 'OK_0055b9d0'
+    }
+    [pscustomobject]@{
+        Address = '00576c39'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_ProcessButtonBReleased_00576c39.cpp'
+        TestSource = '00/57/CTCInventoryExperience_ProcessButtonBReleased_00576c39_test.cpp'
+        PassPattern = 'OK_00576c39'
+    }
+    [pscustomobject]@{
+        Address = '005c13cd'
+        Module = '_Ucopy<std'
+        Source = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c13cd.cpp'
+        TestSource = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c13cd_test.cpp'
+        PassPattern = 'OK_005c13cd'
+    }
+    [pscustomobject]@{
+        Address = '005c13e3'
+        Module = '_Ucopy<std'
+        Source = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c13e3.cpp'
+        TestSource = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c13e3_test.cpp'
+        PassPattern = 'OK_005c13e3'
+    }
+    [pscustomobject]@{
+        Address = '005c190b'
+        Module = '_Ucopy<std'
+        Source = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c190b.cpp'
+        TestSource = '00/5c/Ucopystd_pairlongCCountedPointerCContainmentVolume_005c190b_test.cpp'
+        PassPattern = 'OK_005c190b'
+    }
+    [pscustomobject]@{
+        Address = '005d97b0'
+        Module = '_global'
+        Source = '00/5d/global_GetInventoryCategory_005d97b0.cpp'
+        TestSource = '00/5d/global_GetInventoryCategory_005d97b0_test.cpp'
+        PassPattern = 'OK_005d97b0'
+    }
+    [pscustomobject]@{
+        Address = '005dacf0'
+        Module = 'CTCWeapon'
+        Source = '00/5d/CTCWeapon_IsAbleToBeUsedToBlock_005dacf0.cpp'
+        TestSource = '00/5d/CTCWeapon_IsAbleToBeUsedToBlock_005dacf0_test.cpp'
+        PassPattern = 'OK_005dacf0'
+    }
+    [pscustomobject]@{
+        Address = '005db260'
+        Module = 'CAnimComponentCombatHandedness'
+        Source = '00/5d/CAnimComponentCombatHandedness_CloneCAnimComponentCombatHandednessUBEPAVCAnimCo_005db260.cpp'
+        TestSource = '00/5d/CAnimComponentCombatHandedness_CloneCAnimComponentCombatHandednessUBEPAVCAnimCo_005db260_test.cpp'
+        PassPattern = 'OK_005db260'
+    }
+    [pscustomobject]@{
+        Address = '005db2c0'
+        Module = 'CAnimComponentCombatComboChain'
+        Source = '00/5d/CAnimComponentCombatComboChain_CloneCAnimComponentCombatComboChainUBEPAVCAnimCo_005db2c0.cpp'
+        TestSource = '00/5d/CAnimComponentCombatComboChain_CloneCAnimComponentCombatComboChainUBEPAVCAnimCo_005db2c0_test.cpp'
+        PassPattern = 'OK_005db2c0'
+    }
+    [pscustomobject]@{
+        Address = '005db350'
+        Module = 'CAnimComponentCombatMisc'
+        Source = '00/5d/CAnimComponentCombatMisc_CloneCAnimComponentCombatMiscUBEPAVCAnimComponen_005db350.cpp'
+        TestSource = '00/5d/CAnimComponentCombatMisc_CloneCAnimComponentCombatMiscUBEPAVCAnimComponen_005db350_test.cpp'
+        PassPattern = 'OK_005db350'
+    }
+    [pscustomobject]@{
+        Address = '00646da7'
+        Module = 'CMultiStatBar'
+        Source = '00/64/CMultiStatBar_GetCurrentChange_00646da7.cpp'
+        TestSource = '00/64/CMultiStatBar_GetCurrentChange_00646da7_test.cpp'
+        PassPattern = 'OK_00646da7'
+    }
+    [pscustomobject]@{
+        Address = '0065ee50'
+        Module = 'CVillageTaskHorn'
+        Source = '00/65/CVillageTaskHorn_IsTaskAvailable_0065ee50.cpp'
+        TestSource = '00/65/CVillageTaskHorn_IsTaskAvailable_0065ee50_test.cpp'
+        PassPattern = 'OK_0065ee50'
+    }
+    [pscustomobject]@{
+        Address = '00628f10'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00628f10.cpp'
+        TestSource = '00/62/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00628f10_test.cpp'
+        PassPattern = 'OK_00628f10'
+    }
+    [pscustomobject]@{
+        Address = '0066a4f0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/66/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0066a4f0.cpp'
+        TestSource = '00/66/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0066a4f0_test.cpp'
+        PassPattern = 'OK_0066a4f0'
+    }
+    [pscustomobject]@{
+        Address = '005eaf30'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_SetStateAfterYesNo_005eaf30.cpp'
+        TestSource = '00/5e/CTCTavernGame_SetStateAfterYesNo_005eaf30_test.cpp'
+        PassPattern = 'OK_005eaf30'
+    }
 )
 
 $requestedAddresses = @(
