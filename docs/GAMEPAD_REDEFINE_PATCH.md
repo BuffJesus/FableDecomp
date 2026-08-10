@@ -262,3 +262,40 @@ Steps 1–4 are pure reconstruction-side (no live RE needed) and can land now;
   generalize to screen 5 for row highlighting once the screen is reachable.
 - **[probe/scheme/patch] TODO** (steps 5–8): unchanged; need the x32dbg capture
   of the per-input record encoding, then the base-game detour.
+
+## 6. Device-aware UI swapping (Xbox-UI reference) — feasibility (2026-08-09)
+
+Idea: show keyboard prompts when the player uses kbd/mouse and controller glyphs
+when they use a pad, swapping live. Findings:
+
+- **Engine has the device infrastructure.** `EControllerType` (proven:
+  CONTROLLER_NONE=0/XBOX_PAD=1/KEYBOARD=2/MOUSE=3) tags every input record, and a
+  polymorphic `CInputType*` hierarchy distinguishes the source event:
+  `CInputTypeKeyboardKeyEvent`, `CInputTypeMouseButtonEvent`,
+  `CInputTypeXboxPadButtonEvent`, `...XboxPadLeftStickEvent`,
+  `...XboxPadRightStickEvent`, `...MouseMovementEvent`, `...MouseWheelMovement*`
+  (each `GetType()->NControlSystem::EInputType`). So the engine KNOWS the device
+  of every event — an "active device = EControllerType of the last input event"
+  signal is trivially derivable.
+- **Retail PC almost certainly does NOT auto-swap** (Xbox build is always-pad, PC
+  build always kbd/mouse; no active-device getter or button-prompt widget surfaces
+  in the manifest). So device-aware prompts are a NEW feature, not a latent one.
+- **The Xbox build is the controller-UI answer key.** `refs/xbox/headers/
+  front_end_bank_xbox.h` names the controller glyphs (`HUD_ABXY_BIG_A/B/Y_FE`,
+  `UI_THUMB_STICK_U/D/L/R_OFF_FE`, `FRONTEND_BUTTON_L/R/M`); `Media/Fable.uix` is
+  the Xbox UI skin; glyph pixels live in `data/graphics/xbox/frontend.biz`. The
+  FableControllerSupport mod's `player_gui.def` is a *static* controller-HUD (always
+  pad glyphs while its DLL is active) — the reference for the layout.
+- **Implementation shape (a HUD/prompt feature, bigger than the redefine screen):**
+  (1) track last-input device (hook the input event pump → store EControllerType);
+  (2) HUD/frontend button-prompt widgets pick glyph-vs-key text from it; (3) supply
+  the controller glyph atlas (port Xbox `frontend.biz` ABXY/stick sprites into the
+  PC frontend bank). Data = glyph atlas + prompt defs (forge); code = the last-
+  device tracker + prompt selection (FSE plugin). Pairs naturally with the redefine
+  screen (which reads the same EControllerType) and an XInput bridge like the
+  FableControllerSupport DLL.
+
+Scope note: this is a separate, larger workstream than the gamepad-redefine screen
+(§1-5) — it touches HUD prompts game-wide, not just one menu. Recommend landing the
+redefine screen first, then device-aware prompts as a follow-on using the same
+EControllerType signal + Xbox glyph refs.
