@@ -50126,6 +50126,139 @@ $catalog = @(
         TestSource = '00/5e/CTCTavernGame_SetStateAfterYesNo_005eaf30_test.cpp'
         PassPattern = 'OK_005eaf30'
     }
+    [pscustomobject]@{
+        Address = '0066a670'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/66/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0066a670.cpp'
+        TestSource = '00/66/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0066a670_test.cpp'
+        PassPattern = 'OK_0066a670'
+    }
+    [pscustomobject]@{
+        Address = '006929c0'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_GetAnimationTransitionInTime_006929c0.cpp'
+        TestSource = '00/69/CCreatureActionBase_GetAnimationTransitionInTime_006929c0_test.cpp'
+        PassPattern = 'OK_006929c0'
+    }
+    [pscustomobject]@{
+        Address = '00692c10'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_GetWorldMap_00692c10.cpp'
+        TestSource = '00/69/CCreatureActionBase_GetWorldMap_00692c10_test.cpp'
+        PassPattern = 'OK_00692c10'
+    }
+    [pscustomobject]@{
+        Address = '006e7460'
+        Module = 'CGameScriptInterface'
+        Source = '00/6e/CGameScriptInterface_PostAddScriptedEntities_006e7460.cpp'
+        TestSource = '00/6e/CGameScriptInterface_PostAddScriptedEntities_006e7460_test.cpp'
+        PassPattern = 'OK_006e7460'
+    }
+    [pscustomobject]@{
+        Address = '00702280'
+        Module = 'CTCQuestCard'
+        Source = '00/70/CTCQuestCard_IsCore_00702280.cpp'
+        TestSource = '00/70/CTCQuestCard_IsCore_00702280_test.cpp'
+        PassPattern = 'OK_00702280'
+    }
+    [pscustomobject]@{
+        Address = '007022a0'
+        Module = 'CTCQuestCard'
+        Source = '00/70/CTCQuestCard_IsCore_007022a0.cpp'
+        TestSource = '00/70/CTCQuestCard_IsCore_007022a0_test.cpp'
+        PassPattern = 'OK_007022a0'
+    }
+    [pscustomobject]@{
+        Address = '007022c0'
+        Module = 'CTCQuestCard'
+        Source = '00/70/CTCQuestCard_IsOptional_007022c0.cpp'
+        TestSource = '00/70/CTCQuestCard_IsOptional_007022c0_test.cpp'
+        PassPattern = 'OK_007022c0'
+    }
+    [pscustomobject]@{
+        Address = '00719c30'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/71/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00719c30.cpp'
+        TestSource = '00/71/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00719c30_test.cpp'
+        PassPattern = 'OK_00719c30'
+    }
+    [pscustomobject]@{
+        Address = '00781d80'
+        Module = 'CTCBoastingPosition'
+        Source = '00/78/CTCBoastingPosition_IsPositionActivated_00781d80.cpp'
+        TestSource = '00/78/CTCBoastingPosition_IsPositionActivated_00781d80_test.cpp'
+        PassPattern = 'OK_00781d80'
+    }
+    [pscustomobject]@{
+        Address = '00784690'
+        Module = 'CTCCreatureGroupBoastingCrowd'
+        Source = '00/78/CTCCreatureGroupBoastingCrowd_OnHeroEnterBoastingArea_00784690.cpp'
+        TestSource = '00/78/CTCCreatureGroupBoastingCrowd_OnHeroEnterBoastingArea_00784690_test.cpp'
+        PassPattern = 'OK_00784690'
+    }
+    [pscustomobject]@{
+        Address = '00789cc0'
+        Module = 'CTCDivineWrath'
+        Source = '00/78/CTCDivineWrath_GetDamageMultiplier_00789cc0.cpp'
+        TestSource = '00/78/CTCDivineWrath_GetDamageMultiplier_00789cc0_test.cpp'
+        PassPattern = 'OK_00789cc0'
+    }
+    [pscustomobject]@{
+        Address = '00789fd0'
+        Module = 'CTCHeroRangedAttacks'
+        Source = '00/78/CTCHeroRangedAttacks_ContinueAimingRangedWeapon_00789fd0.cpp'
+        TestSource = '00/78/CTCHeroRangedAttacks_ContinueAimingRangedWeapon_00789fd0_test.cpp'
+        PassPattern = 'OK_00789fd0'
+    }
+    [pscustomobject]@{
+        Address = '0079c660'
+        Module = 'CTCBulletTime'
+        Source = '00/79/CTCBulletTime_CancelForCutscene_0079c660.cpp'
+        TestSource = '00/79/CTCBulletTime_CancelForCutscene_0079c660_test.cpp'
+        PassPattern = 'OK_0079c660'
+    }
+    [pscustomobject]@{
+        Address = '007ce370'
+        Module = 'CTCElectrocutedEffect'
+        Source = '00/7c/CTCElectrocutedEffect_OnInitialActivate_007ce370.cpp'
+        TestSource = '00/7c/CTCElectrocutedEffect_OnInitialActivate_007ce370_test.cpp'
+        PassPattern = 'OK_007ce370'
+    }
+    [pscustomobject]@{
+        Address = '007e2760'
+        Module = 'CInputProcessManager'
+        Source = '00/7e/CInputProcessManager_CInputProcessManager_007e2760.cpp'
+        TestSource = '00/7e/CInputProcessManager_CInputProcessManager_007e2760_test.cpp'
+        PassPattern = 'OK_007e2760'
+    }
+    [pscustomobject]@{
+        Address = '007ea2b0'
+        Module = 'CTCTargeted'
+        Source = '00/7e/CTCTargeted_ReturnToDefaultTargetingFlags_007ea2b0.cpp'
+        TestSource = '00/7e/CTCTargeted_ReturnToDefaultTargetingFlags_007ea2b0_test.cpp'
+        PassPattern = 'OK_007ea2b0'
+    }
+    [pscustomobject]@{
+        Address = '008389e0'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/83/C3DAnimationBlendState_AddCombinationBlend_008389e0.cpp'
+        TestSource = '00/83/C3DAnimationBlendState_AddCombinationBlend_008389e0_test.cpp'
+        PassPattern = 'OK_008389e0'
+    }
+    [pscustomobject]@{
+        Address = '00826400'
+        Module = 'CCachedFile'
+        Source = '00/82/CCachedFile_GetPathnameCCachedFileUBEAVCWideStringXZ_00826400.cpp'
+        TestSource = '00/82/CCachedFile_GetPathnameCCachedFileUBEAVCWideStringXZ_00826400_test.cpp'
+        PassPattern = 'OK_00826400'
+    }
+    [pscustomobject]@{
+        Address = '007eb010'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb010.cpp'
+        TestSource = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb010_test.cpp'
+        PassPattern = 'OK_007eb010'
+    }
 )
 
 $requestedAddresses = @(
