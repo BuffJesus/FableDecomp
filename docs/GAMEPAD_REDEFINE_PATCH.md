@@ -175,6 +175,27 @@ low-confidence face/shoulder rows in CONTROLLER_ENUMS.md do NOT gate us.
   0x3C`. So a gamepad screen driven by controller events captures pad records
   unmodified.
 
+**Three opens — ALL VERIFIED (2026-08-09):** (1) frontend defs are editable data
+in `data/CompiledDefs/frontend.bin` (parser+writer: `tools/parse_frontend.py`);
+(2) `Action()` default path `0x59a7ff` is a clean `pop/leave/ret 4`, so an unused
+action id is inert-safe (dispatch tail = `0x59a7d2`); (3) `Redefine` 0x557D20 is
+device-agnostic (confirmed above).
+
+**DATA HALF — BUILT + round-trip verified (`tools/build_gamepad_redefine_data.py`).**
+Concrete frontend.bin structure: options list **#219 `UI_FRONTEND_LIST_OPTIONS_SUB_MENU`**
+Children `[347,350,273,344]` = the 4 rows (row **344 `UI_OPTIONS_BUTTON_REDEFINE_KEYS`**
+Action=283 is the clone source); redefine screen **#238 `UI_FRONTEND_SCREEN_REDEFINE_
+KEYS_PC`**. The builder appends (to a scratch out-dir, never the install):
+`UI_OPTIONS_BUTTON_REDEFINE_KEYS_GAMEPAD` (row clone, Action **284**) at gi 810,
+`UI_FRONTEND_SCREEN_REDEFINE_KEYS_GAMEPAD` (screen clone) at gi 811, and rewrites
+#219 Children → `[347,350,273,344,810]`. names.bin +2 with **crc0** (verified vs the
+contract vectors + 2000/2000 stored). Round-trip re-parse confirms all three.
+Remaining data polish: clone row 344's label child (345) to a "(Gamepad)" text tag
+(else the row shows the keyboard label); the cloned screen's sub-defs are SHARED per
+DEF_LOAD_CONTRACT (title/list stay keyboard until the code detour relabels). Still
+TODO: the gamepad control **scheme** lives in game.bin (per CONTROLLER_ENUMS.md), a
+separate append. In-game validation needs the CODE detour (below) so action 284 routes.
+
 **Net:** a mostly-DATA patch (2 frontend-def clones/edits + 1 named scheme) + a
 **small 2-site code detour** (Action case + Init2 bind). Capture/persistence reuse
 the existing 28-byte record + passive vector `+0x60` — no new storage, no
