@@ -88,6 +88,18 @@ def save_bin_append(header9, rows, payloads, out_path):
         out += blob
     open(out_path, "wb").write(bytes(out))
 
+def set_children(payload, new_list):
+    """Replace the Vector_int32 Children field with exactly new_list."""
+    tag = struct.pack("<I", pf.field_tag("Children"))
+    at = payload.find(tag)
+    assert at >= 0, "Children tag not found"
+    vstart = at + 4
+    (n,) = struct.unpack_from("<I", payload, vstart)
+    arr_end = vstart + 4 + n * 4
+    newbytes = struct.pack("<I", len(new_list)) + struct.pack(
+        "<%di" % len(new_list), *new_list)
+    return payload[:vstart] + newbytes + payload[arr_end:]
+
 def edit_children(payload, new_index):
     """Append new_index to the Vector_int32 Children field of a CUIDef payload."""
     tag = struct.pack("<I", pf.field_tag("Children"))
@@ -118,35 +130,55 @@ def main():
 
     by_idx = {e["index"]: e for e in entries}
     ROW344 = by_idx[344]; SCREEN238 = by_idx[238]; LIST219 = by_idx[219]
+    BTN345 = by_idx[345]; TXT346 = by_idx[346]   # label chain: row->#345->#346(text)
     dno_ui = rows[344][0]           # "UI" class name offset (shared)
     ui_indices = [r[2] for r in rows if r[0] == dno_ui]
     next_ui_idx = max(ui_indices) + 1
+    stype = resolve_type("UI", schema)
+    gamepad_label = os.environ.get("GAMEPAD_LABEL", "Redefine Keys (Gamepad)")
 
-    # 1. new names
+    # 1. new names (row + screen get names; label-chain clones are anonymous sub-defs)
     off_row = append_name(recs, "UI_OPTIONS_BUTTON_REDEFINE_KEYS_GAMEPAD")
     off_scr = append_name(recs, "UI_FRONTEND_SCREEN_REDEFINE_KEYS_GAMEPAD")
 
-    # 2. clone row 344, patch Action 283 -> new_action
-    stype = resolve_type("UI", schema)
+    # global indices of the 4 appended entries
+    new_row_gi = len(rows); new_scr_gi = len(rows) + 1
+    new_txt_gi = len(rows) + 2; new_btn_gi = len(rows) + 3
+
+    # 2. clone the label text child #346 -> new_txt_gi, set its CWideString TextValue
+    #    to the distinct gamepad label (retail stores the tag string inline in UTF-16).
+    txt_payload = patch_field(
+        TXT346["payload"], schema[stype]["fields"], "TextValue",
+        gamepad_label.encode("utf-16-le") + b"\x00\x00")
+    # 3. clone the redefine button #345 -> new_btn_gi, repoint its Children
+    #    [346, 73] -> [new_txt_gi, 73] (keep the shared mouse-area button #73).
+    btn_dec, _ = pf.decode_tagged(BTN345["payload"], schema[stype]["fields"])
+    btn_children = pf.fval(*btn_dec["Children"])            # [346, 73]
+    btn_children = [new_txt_gi if c == 346 else c for c in btn_children]
+    btn_payload = set_children(BTN345["payload"], btn_children)
+    # 4. clone row #344 -> new_row_gi: Action -> new_action, Children [345] -> [new_btn_gi]
     row_payload = patch_field(ROW344["payload"], schema[stype]["fields"],
                               "Action", struct.pack("<i", new_action))
-    new_row_gi = len(rows)                 # appended at end
-    new_scr_gi = len(rows) + 1
+    row_payload = set_children(row_payload, [new_btn_gi])
 
-    # 3. edit list #219 Children -> append new row global index
+    # 5. edit list #219 Children -> append the new row global index
     list_payload, old_children, new_children = edit_children(
         LIST219["payload"], new_row_gi)
 
-    # assemble new entry lists (existing + 2 appended); patch #219 in place
+    # assemble
     payloads = [e["payload"] for e in entries]
     payloads[219] = list_payload
-    payloads.append(row_payload)                 # gi = new_row_gi
-    payloads.append(SCREEN238["payload"])        # gi = new_scr_gi
+    payloads.append(row_payload)           # new_row_gi
+    payloads.append(SCREEN238["payload"])  # new_scr_gi
+    payloads.append(txt_payload)           # new_txt_gi
+    payloads.append(btn_payload)           # new_btn_gi
     new_rows = list(rows)
     new_rows.append((dno_ui, off_row, next_ui_idx))
     new_rows.append((dno_ui, off_scr, next_ui_idx + 1))
+    new_rows.append((dno_ui, -1, next_ui_idx + 2))   # anonymous text clone
+    new_rows.append((dno_ui, -1, next_ui_idx + 3))   # anonymous button clone
 
-    # write names.bin (append)
+    # write names.bin (append) + frontend.bin
     nout = bytearray(nb[:20])
     struct.pack_into("<I", nout, 8, nhdr["count"] + 2)
     struct.pack_into("<I", nout, 12, len(recs) + 4)   # tableSize convention
@@ -155,16 +187,24 @@ def main():
     save_bin_append(header9, new_rows, payloads,
                     os.path.join(out_dir, "frontend.bin"))
 
-    print("APPEND: row gi=%d (Action %d, idx_in_def %d), screen gi=%d (idx %d)"
-          % (new_row_gi, new_action, next_ui_idx, new_scr_gi, next_ui_idx + 1))
-    print("  #219 Children %s -> %s" % (old_children, new_children))
+    print("APPEND: row gi=%d (Action %d), screen gi=%d, text gi=%d (%r), button gi=%d"
+          % (new_row_gi, new_action, new_scr_gi, new_txt_gi, gamepad_label, new_btn_gi))
+    print("  #219 Children %s -> %s ; row.Children -> [%d] ; button.Children -> %s"
+          % (old_children, new_children, new_btn_gi, btn_children))
     print("  names +2 (%d -> %d)" % (nhdr["count"], nhdr["count"] + 2))
 
     # ---- round-trip verify ----
     n2, _ = read_names(os.path.join(out_dir, "names.bin"))
     e2, _ = read_bin(os.path.join(out_dir, "frontend.bin"), n2)
     b2 = {e["index"]: e for e in e2}
-    assert len(e2) == len(entries) + 2, "entry count wrong"
+    assert len(e2) == len(entries) + 4, "entry count wrong: %d" % len(e2)
+    # verify the label clone carries the gamepad text
+    tdec, _ = pf.decode_tagged(b2[new_txt_gi]["payload"], schema[stype]["fields"])
+    tv = pf.fval(*tdec["TextValue"])
+    assert tv == gamepad_label, "label mismatch: %r" % tv
+    row = b2[new_row_gi]; scr = b2[new_scr_gi]
+    assert row["name"] == "UI_OPTIONS_BUTTON_REDEFINE_KEYS_GAMEPAD", row["name"]
+    assert scr["name"] == "UI_FRONTEND_SCREEN_REDEFINE_KEYS_GAMEPAD", scr["name"]
     row = b2[new_row_gi]; scr = b2[new_scr_gi]
     assert row["name"] == "UI_OPTIONS_BUTTON_REDEFINE_KEYS_GAMEPAD", row["name"]
     assert scr["name"] == "UI_FRONTEND_SCREEN_REDEFINE_KEYS_GAMEPAD", scr["name"]
