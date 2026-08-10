@@ -50861,6 +50861,34 @@ $catalog = @(
         TestSource = '00/5b/CActiveFile_OnReadFinished_005b211f_test.cpp'
         PassPattern = 'OK_005b211f'
     }
+    [pscustomobject]@{
+        Address = '005b2160'
+        Module = 'CActiveFile'
+        Source = '00/5b/CActiveFile_OnReadFinished_005b2160.cpp'
+        TestSource = '00/5b/CActiveFile_OnReadFinished_005b2160_test.cpp'
+        PassPattern = 'OK_005b2160'
+    }
+    [pscustomobject]@{
+        Address = '005bb04f'
+        Module = 'CActiveFile'
+        Source = '00/5b/CActiveFile_OnReadFinished_005bb04f.cpp'
+        TestSource = '00/5b/CActiveFile_OnReadFinished_005bb04f_test.cpp'
+        PassPattern = 'OK_005bb04f'
+    }
+    [pscustomobject]@{
+        Address = '005bb090'
+        Module = 'CActiveFile'
+        Source = '00/5b/CActiveFile_OnReadFinished_005bb090.cpp'
+        TestSource = '00/5b/CActiveFile_OnReadFinished_005bb090_test.cpp'
+        PassPattern = 'OK_005bb090'
+    }
+    [pscustomobject]@{
+        Address = '00668ed0'
+        Module = 'CTCMapwho'
+        Source = '00/66/CTCMapwho_OnDie_00668ed0.cpp'
+        TestSource = '00/66/CTCMapwho_OnDie_00668ed0_test.cpp'
+        PassPattern = 'OK_00668ed0'
+    }
 )
 
 $requestedAddresses = @(
