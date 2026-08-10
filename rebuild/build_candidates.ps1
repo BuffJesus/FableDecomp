@@ -49846,6 +49846,167 @@ $catalog = @(
         TestSource = '00/c3/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c3b2a0_test.cpp'
         PassPattern = 'OK_00c3b2a0'
     }
+    [pscustomobject]@{
+        Address = '00c3b2c0'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c3/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c3b2c0.cpp'
+        TestSource = '00/c3/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c3b2c0_test.cpp'
+        PassPattern = 'OK_00c3b2c0'
+    }
+    [pscustomobject]@{
+        Address = '00c43370'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c43370.cpp'
+        TestSource = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c43370_test.cpp'
+        PassPattern = 'OK_00c43370'
+    }
+    [pscustomobject]@{
+        Address = '00c44a90'
+        Module = 'CMouseCursor'
+        Source = '00/c4/CMouseCursor_TurnToPointer_00c44a90.cpp'
+        TestSource = '00/c4/CMouseCursor_TurnToPointer_00c44a90_test.cpp'
+        PassPattern = 'OK_00c44a90'
+    }
+    [pscustomobject]@{
+        Address = '00c45140'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c45140.cpp'
+        TestSource = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c45140_test.cpp'
+        PassPattern = 'OK_00c45140'
+    }
+    [pscustomobject]@{
+        Address = '00c45160'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c45160.cpp'
+        TestSource = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c45160_test.cpp'
+        PassPattern = 'OK_00c45160'
+    }
+    [pscustomobject]@{
+        Address = '00c46a10'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c46a10.cpp'
+        TestSource = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c46a10_test.cpp'
+        PassPattern = 'OK_00c46a10'
+    }
+    [pscustomobject]@{
+        Address = '00c46a30'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c46a30.cpp'
+        TestSource = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c46a30_test.cpp'
+        PassPattern = 'OK_00c46a30'
+    }
+    [pscustomobject]@{
+        Address = '00c47640'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c47640.cpp'
+        TestSource = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c47640_test.cpp'
+        PassPattern = 'OK_00c47640'
+    }
+    [pscustomobject]@{
+        Address = '00c47660'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c47660.cpp'
+        TestSource = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c47660_test.cpp'
+        PassPattern = 'OK_00c47660'
+    }
+    [pscustomobject]@{
+        Address = '00c47750'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c47750.cpp'
+        TestSource = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c47750_test.cpp'
+        PassPattern = 'OK_00c47750'
+    }
+    [pscustomobject]@{
+        Address = '00c47770'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c47770.cpp'
+        TestSource = '00/c4/CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c47770_test.cpp'
+        PassPattern = 'OK_00c47770'
+    }
+    [pscustomobject]@{
+        Address = '00c61be0'
+        Module = 'CCreatureActionBase'
+        Source = '00/c6/CCreatureActionBase_GetFramesRemaining_00c61be0.cpp'
+        TestSource = '00/c6/CCreatureActionBase_GetFramesRemaining_00c61be0_test.cpp'
+        PassPattern = 'OK_00c61be0'
+    }
+    [pscustomobject]@{
+        Address = '00c62350'
+        Module = '_global'
+        Source = '00/c6/global_SetLungedThisFrame_00c62350.cpp'
+        TestSource = '00/c6/global_SetLungedThisFrame_00c62350_test.cpp'
+        PassPattern = 'OK_00c62350'
+    }
+    [pscustomobject]@{
+        Address = '00c69680'
+        Module = 'CChunkedFileChunk'
+        Source = '00/c6/CChunkedFileChunk_CChunkedFileChunk_00c69680.cpp'
+        TestSource = '00/c6/CChunkedFileChunk_CChunkedFileChunk_00c69680_test.cpp'
+        PassPattern = 'OK_00c69680'
+    }
+    [pscustomobject]@{
+        Address = '00c6ad70'
+        Module = 'CSimpleMemoryPool'
+        Source = '00/c6/CSimpleMemoryPool_SetCapacity_00c6ad70.cpp'
+        TestSource = '00/c6/CSimpleMemoryPool_SetCapacity_00c6ad70_test.cpp'
+        PassPattern = 'OK_00c6ad70'
+    }
+    [pscustomobject]@{
+        Address = '00c73770'
+        Module = 'CDefString'
+        Source = '00/c7/CDefString_SetDefaultString_00c73770.cpp'
+        TestSource = '00/c7/CDefString_SetDefaultString_00c73770_test.cpp'
+        PassPattern = 'OK_00c73770'
+    }
+    [pscustomobject]@{
+        Address = '00c91800'
+        Module = 'CWorld'
+        Source = '00/c9/CWorld_DrawGetEnvironment_00c91800.cpp'
+        TestSource = '00/c9/CWorld_DrawGetEnvironment_00c91800_test.cpp'
+        PassPattern = 'OK_00c91800'
+    }
+    [pscustomobject]@{
+        Address = '00cdd430'
+        Module = 'CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>'
+        Source = '00/cd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cdd430.cpp'
+        TestSource = '00/cd/CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cdd430_test.cpp'
+        PassPattern = 'OK_00cdd430'
+    }
+    [pscustomobject]@{
+        Address = '00487120'
+        Module = 'CHTG_Executioner'
+        Source = '00/48/CHTGExecutioner_OnPredicateFail_00487120.cpp'
+        TestSource = '00/48/CHTGExecutioner_OnPredicateFail_00487120_test.cpp'
+        PassPattern = 'OK_00487120'
+    }
+    [pscustomobject]@{
+        Address = '00487150'
+        Module = 'CHTG_Executioner'
+        Source = '00/48/CHTGExecutioner_OnPredicateFail_00487150.cpp'
+        TestSource = '00/48/CHTGExecutioner_OnPredicateFail_00487150_test.cpp'
+        PassPattern = 'OK_00487150'
+    }
+    [pscustomobject]@{
+        Address = '0048faa0'
+        Module = 'CMainGameComponent'
+        Source = '00/48/CMainGameComponent_BeginInputLoading_0048faa0.cpp'
+        TestSource = '00/48/CMainGameComponent_BeginInputLoading_0048faa0_test.cpp'
+        PassPattern = 'OK_0048faa0'
+    }
+    [pscustomobject]@{
+        Address = '004c7c40'
+        Module = 'CThing'
+        Source = '00/4c/CThing_SetAsFrameUpdated_004c7c40.cpp'
+        TestSource = '00/4c/CThing_SetAsFrameUpdated_004c7c40_test.cpp'
+        PassPattern = 'OK_004c7c40'
+    }
+    [pscustomobject]@{
+        Address = '004c8280'
+        Module = 'CThing'
+        Source = '00/4c/CThing_IsGameStatePersisted_004c8280.cpp'
+        TestSource = '00/4c/CThing_IsGameStatePersisted_004c8280_test.cpp'
+        PassPattern = 'OK_004c8280'
+    }
 )
 
 $requestedAddresses = @(
