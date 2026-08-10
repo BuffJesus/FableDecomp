@@ -50406,6 +50406,153 @@ $catalog = @(
         TestSource = '00/97/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0097c900_test.cpp'
         PassPattern = 'OK_0097c900'
     }
+    [pscustomobject]@{
+        Address = '009a5000'
+        Module = 'CTCInventoryBase'
+        Source = '00/9a/CTCInventoryBase_GetCanItemBeQuickAssigned_009a5000.cpp'
+        TestSource = '00/9a/CTCInventoryBase_GetCanItemBeQuickAssigned_009a5000_test.cpp'
+        PassPattern = 'OK_009a5000'
+    }
+    [pscustomobject]@{
+        Address = '009e3800'
+        Module = 'CPixelFormat'
+        Source = '00/9e/CPixelFormat_GetByteColourDepth_009e3800.cpp'
+        TestSource = '00/9e/CPixelFormat_GetByteColourDepth_009e3800_test.cpp'
+        PassPattern = 'OK_009e3800'
+    }
+    [pscustomobject]@{
+        Address = '00a5ef10'
+        Module = 'CStreamingFontDataBank'
+        Source = '00/a5/CStreamingFontDataBank_GetEnumerationType_00a5ef10.cpp'
+        TestSource = '00/a5/CStreamingFontDataBank_GetEnumerationType_00a5ef10_test.cpp'
+        PassPattern = 'OK_00a5ef10'
+    }
+    [pscustomobject]@{
+        Address = '00a632d0'
+        Module = 'CFontBankStateBlock'
+        Source = '00/a6/CFontBankStateBlock_GetDefault_00a632d0.cpp'
+        TestSource = '00/a6/CFontBankStateBlock_GetDefault_00a632d0_test.cpp'
+        PassPattern = 'OK_00a632d0'
+    }
+    [pscustomobject]@{
+        Address = '00a63380'
+        Module = 'CFontDataBank'
+        Source = '00/a6/CFontDataBank_GetEnumerationType_00a63380.cpp'
+        TestSource = '00/a6/CFontDataBank_GetEnumerationType_00a63380_test.cpp'
+        PassPattern = 'OK_00a63380'
+    }
+    [pscustomobject]@{
+        Address = '00af7ca0'
+        Module = 'CDecal'
+        Source = '00/af/CDecal_Delete_00af7ca0.cpp'
+        TestSource = '00/af/CDecal_Delete_00af7ca0_test.cpp'
+        PassPattern = 'OK_00af7ca0'
+    }
+    [pscustomobject]@{
+        Address = '00af89a0'
+        Module = 'CInputProcessManager'
+        Source = '00/af/CInputProcessManager_CInputProcessManager_00af89a0.cpp'
+        TestSource = '00/af/CInputProcessManager_CInputProcessManager_00af89a0_test.cpp'
+        PassPattern = 'OK_00af89a0'
+    }
+    [pscustomobject]@{
+        Address = '00af89f0'
+        Module = 'CInputProcessManager'
+        Source = '00/af/CInputProcessManager_CInputProcessManager_00af89f0.cpp'
+        TestSource = '00/af/CInputProcessManager_CInputProcessManager_00af89f0_test.cpp'
+        PassPattern = 'OK_00af89f0'
+    }
+    [pscustomobject]@{
+        Address = '00af8c50'
+        Module = 'CInputProcessManager'
+        Source = '00/af/CInputProcessManager_CInputProcessManager_00af8c50.cpp'
+        TestSource = '00/af/CInputProcessManager_CInputProcessManager_00af8c50_test.cpp'
+        PassPattern = 'OK_00af8c50'
+    }
+    [pscustomobject]@{
+        Address = '00b495a0'
+        Module = 'CInputProcessManager'
+        Source = '00/b4/CInputProcessManager_CInputProcessManager_00b495a0.cpp'
+        TestSource = '00/b4/CInputProcessManager_CInputProcessManager_00b495a0_test.cpp'
+        PassPattern = 'OK_00b495a0'
+    }
+    [pscustomobject]@{
+        Address = '00b495f0'
+        Module = 'CInputProcessManager'
+        Source = '00/b4/CInputProcessManager_CInputProcessManager_00b495f0.cpp'
+        TestSource = '00/b4/CInputProcessManager_CInputProcessManager_00b495f0_test.cpp'
+        PassPattern = 'OK_00b495f0'
+    }
+    [pscustomobject]@{
+        Address = '00b49640'
+        Module = 'CInputProcessManager'
+        Source = '00/b4/CInputProcessManager_CInputProcessManager_00b49640.cpp'
+        TestSource = '00/b4/CInputProcessManager_CInputProcessManager_00b49640_test.cpp'
+        PassPattern = 'OK_00b49640'
+    }
+    [pscustomobject]@{
+        Address = '00b564c0'
+        Module = 'CInputProcessManager'
+        Source = '00/b5/CInputProcessManager_CInputProcessManager_00b564c0.cpp'
+        TestSource = '00/b5/CInputProcessManager_CInputProcessManager_00b564c0_test.cpp'
+        PassPattern = 'OK_00b564c0'
+    }
+    [pscustomobject]@{
+        Address = '00b50c60'
+        Module = 'CShaderBankStateBlock'
+        Source = '00/b5/CShaderBankStateBlock_Set_00b50c60.cpp'
+        TestSource = '00/b5/CShaderBankStateBlock_Set_00b50c60_test.cpp'
+        PassPattern = 'OK_00b50c60'
+    }
+    [pscustomobject]@{
+        Address = '00bd9ac0'
+        Module = 'CEngineLandscapeMemoryManager'
+        Source = '00/bd/CEngineLandscapeMemoryManager_FrameStart_00bd9ac0.cpp'
+        TestSource = '00/bd/CEngineLandscapeMemoryManager_FrameStart_00bd9ac0_test.cpp'
+        PassPattern = 'OK_00bd9ac0'
+    }
+    [pscustomobject]@{
+        Address = '00be5e50'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_CanRelocateData_00be5e50.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_CanRelocateData_00be5e50_test.cpp'
+        PassPattern = 'OK_00be5e50'
+    }
+    [pscustomobject]@{
+        Address = '00bf36c0'
+        Module = '_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std'
+        Source = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf36c0.cpp'
+        TestSource = '00/bf/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_00bf36c0_test.cpp'
+        PassPattern = 'OK_00bf36c0'
+    }
+    [pscustomobject]@{
+        Address = '00c0c910'
+        Module = '~list<CMessageEvent_const*,std'
+        Source = '00/c0/listCMessageEventconststd_allocatorCMessageEventconst_00c0c910.cpp'
+        TestSource = '00/c0/listCMessageEventconststd_allocatorCMessageEventconst_00c0c910_test.cpp'
+        PassPattern = 'OK_00c0c910'
+    }
+    [pscustomobject]@{
+        Address = '00c0c930'
+        Module = '~list<CMessageEvent_const*,std'
+        Source = '00/c0/listCMessageEventconststd_allocatorCMessageEventconst_00c0c930.cpp'
+        TestSource = '00/c0/listCMessageEventconststd_allocatorCMessageEventconst_00c0c930_test.cpp'
+        PassPattern = 'OK_00c0c930'
+    }
+    [pscustomobject]@{
+        Address = '00c0c950'
+        Module = '~list<CMessageEvent_const*,std'
+        Source = '00/c0/listCMessageEventconststd_allocatorCMessageEventconst_00c0c950.cpp'
+        TestSource = '00/c0/listCMessageEventconststd_allocatorCMessageEventconst_00c0c950_test.cpp'
+        PassPattern = 'OK_00c0c950'
+    }
+    [pscustomobject]@{
+        Address = '00c1b1e0'
+        Module = 'CTexture'
+        Source = '00/c1/CTexture_GetNoLevels_00c1b1e0.cpp'
+        TestSource = '00/c1/CTexture_GetNoLevels_00c1b1e0_test.cpp'
+        PassPattern = 'OK_00c1b1e0'
+    }
 )
 
 $requestedAddresses = @(
