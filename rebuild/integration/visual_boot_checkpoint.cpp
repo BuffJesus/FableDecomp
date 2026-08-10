@@ -2559,7 +2559,9 @@ namespace
         int mouseY,
         unsigned int* rowFound)
     {
-        for (unsigned int row = 0; row != 4; ++row)
+        // Row 4 = the added "Redefine Keys (Gamepad)" entry (screen 5); the
+        // baked options menu art has 4 rows so the 5th is authored below them.
+        for (unsigned int row = 0; row != 5; ++row)
         {
             FableUiVector2 origin = {};
             ResolveVisualGeneratedChildOrigin(
@@ -3915,7 +3917,7 @@ namespace
     {
         if (
             !g_VisualOptionsMenuActive ||
-            g_VisualOptionsSelection >= 4)
+            g_VisualOptionsSelection >= 5)
         {
             return false;
         }
@@ -3923,9 +3925,11 @@ namespace
         // row 0 action 9   -> key 0x01 Gameplay
         // row 1 action 13  -> key 0x05 Video
         // row 2 action 12  -> key 0x04 Audio
-        // row 3 action 283 -> key 0x16 Redefine
-        const unsigned int detailScreens[4] = {
-            1, 3, 2, 4
+        // row 3 action 283 -> key 0x16 Redefine (Keyboard)
+        // row 4 (patch)    -> screen 5 Redefine Keys (Gamepad)
+        //                    (docs/GAMEPAD_REDEFINE_PATCH.md)
+        const unsigned int detailScreens[5] = {
+            1, 3, 2, 4, 5
         };
         g_VisualOptionsMenuActive = false;
         g_VisualDetailScreen =

@@ -129,7 +129,66 @@ dispatch it in the runtime action consumer (`CGamePlayerInterface`
 IsEventGameAction 0x445BD0 / GetControlMovementFromGameActionEvent 0x445C30) to
 advance the hotbar index. No new UI required beyond a bindable row in screen 5.
 
-## 5. Build order
+## 4b. RETAIL patch architecture (2026-08-09 — the actual deliverable)
+
+The `visual_boot_*` screen-5 work is a **reconstruction mockup / visual spec only**
+— retail does NOT bake menu screens; it builds the frontend dynamically. A patch
+that runs on retail `Fable.exe` operates on that dynamic system. RE-confirmed
+data-vs-code split:
+
+**Controller value scheme — USE MODERN XInput / UE names, NOT retail's enum.**
+The original Xbox controller (Duke/S) had Black/White buttons and **no bumpers**,
+so retail's native `EXboxControllerButton` (Black=5/White=6, no LB/RB;
+`docs/CONTROLLER_ENUMS.md`) is the WRONG scheme for modern pads. We bind/display
+via the **UE-style modern XInput values** already in `visual_boot_d3d9.cpp`
+(`kGamepadKeyValues`/`kGamepadKeyValueLabels`: Face Button Bottom/Right/Left/Top,
+Left/Right Shoulder, triggers, thumbstick clicks, stick directions → XInput bits +
+the engine's `0x3C` analog subtypes `0x0A–0x0D`). This is a design choice for
+modern controllers, not a reproduction of retail's original-Xbox defaults, so the
+low-confidence face/shoulder rows in CONTROLLER_ENUMS.md do NOT gate us.
+
+**DATA (frontend defs — forge-moddable, no binary edit):**
+- **Options list def #219** (rooted `(200,150)`, 30px pitch; rows = actions
+  9/13/12/283, per `docs/FRONTEND_FORMAT.md`): add a **5th row** referencing a new
+  action id + label text-tag. Rows come from the compiled UI def tree = data.
+- **New "Redefine Keys (Gamepad)" screen def** — clone `UI_FRONTEND_SCREEN_REDEFINE_
+  KEYS_PC`. `CRedefinerList::Initialise` (0x5566A0) builds its rows by iterating the
+  screen def's UI-component children (reads the def ptr at `this+0x1a0`, then virtual
+  child-walk) — **so the row/action set is data**. The clone's rows carry
+  controller-type expected records so capture accepts pad events.
+- **Gamepad default scheme** — a new named input scheme (RE doc §2: schemes are
+  data, applied by `ResetAssignedInputs` 0x4085F0 via one `0x411B90` apply call),
+  values from the UE/XInput table above.
+
+**CODE (unavoidable detours, retail VAs):**
+- **`CFrontEndManager::Action` @ 0x0059A238** — add a switch case for the new row's
+  action id → set its used-key → `GotoNextScreen(...)`.
+- **`CFrontEndManager::Init2` @ 0x00598A1C** — bind that new key → the new gamepad
+  screen def id (Init2 does per-screen named binds; add one block or detour).
+- **Capture needs NO code — CONFIRMED (disasm 2026-08-09).** `CKeyRedefiner::
+  Redefine` (0x557D20) is device-agnostic: it compares `this+0x1A8` (expected
+  state/type) vs `event+0x4` (incoming event type) only to pick a state branch,
+  then on the accept path copies the incoming event's **28-byte record wholesale**
+  into the candidate `this+0x1A4` via `rep movsd (7 dwords)`. No keyboard
+  hardcoding — it captures whatever event arrives, keyboard OR controller.
+  `GetSubTypeForAction` (0x557CA0) already handles controller types `0x37/0x38/
+  0x3C`. So a gamepad screen driven by controller events captures pad records
+  unmodified.
+
+**Net:** a mostly-DATA patch (2 frontend-def clones/edits + 1 named scheme) + a
+**small 2-site code detour** (Action case + Init2 bind). Capture/persistence reuse
+the existing 28-byte record + passive vector `+0x60` — no new storage, no
+redefiner code change.
+
+Open verification before building: (1) ~~`Redefine` type-driven accept~~ ✓
+CONFIRMED; (2) options list #219 def is runtime-editable via the forge frontend-def
+path; (3) the new action id is free and survives `Action()`'s default-return
+filter; (4) the frontend pumps controller input events to the active redefine
+screen (likely — the runtime already resolves controller events via
+GetSubTypeForAction; confirm the event source feeding `Redefine` when the gamepad
+screen is active).
+
+## 5. Build order (reconstruction mockup — superseded by §4b for the retail patch)
 
 1. **[data]** UE gamepad key-name table in the frontend renderer (this commit).
 2. **[title]** screen 4 title → "Redefine Keys (Keyboard)"; add screen 5 title.
