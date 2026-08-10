@@ -50553,6 +50553,97 @@ $catalog = @(
         TestSource = '00/c1/CTexture_GetNoLevels_00c1b1e0_test.cpp'
         PassPattern = 'OK_00c1b1e0'
     }
+    [pscustomobject]@{
+        Address = '00c1ea40'
+        Module = 'CParticle'
+        Source = '00/c1/CParticle_IncrementLifetimer_00c1ea40.cpp'
+        TestSource = '00/c1/CParticle_IncrementLifetimer_00c1ea40_test.cpp'
+        PassPattern = 'OK_00c1ea40'
+    }
+    [pscustomobject]@{
+        Address = '00c25de0'
+        Module = 'CTCOnHeroPush'
+        Source = '00/c2/CTCOnHeroPush_IsAngry_00c25de0.cpp'
+        TestSource = '00/c2/CTCOnHeroPush_IsAngry_00c25de0_test.cpp'
+        PassPattern = 'OK_00c25de0'
+    }
+    [pscustomobject]@{
+        Address = '00c3ca30'
+        Module = 'CGuiVarTransferFloat'
+        Source = '00/c3/CGuiVarTransferFloat_TransferFromGui_00c3ca30.cpp'
+        TestSource = '00/c3/CGuiVarTransferFloat_TransferFromGui_00c3ca30_test.cpp'
+        PassPattern = 'OK_00c3ca30'
+    }
+    [pscustomobject]@{
+        Address = '00c46da0'
+        Module = 'CQuadric'
+        Source = '00/c4/CQuadric_operator_00c46da0.cpp'
+        TestSource = '00/c4/CQuadric_operator_00c46da0_test.cpp'
+        PassPattern = 'OK_00c46da0'
+    }
+    [pscustomobject]@{
+        Address = '00c56490'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/c5/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00c56490.cpp'
+        TestSource = '00/c5/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00c56490_test.cpp'
+        PassPattern = 'OK_00c56490'
+    }
+    [pscustomobject]@{
+        Address = '00c6b240'
+        Module = '_global'
+        Source = '00/c6/global_FtoL_00c6b240.cpp'
+        TestSource = '00/c6/global_FtoL_00c6b240_test.cpp'
+        PassPattern = 'OK_00c6b240'
+    }
+    [pscustomobject]@{
+        Address = '00cb2860'
+        Module = 'CDrawMouseCursor'
+        Source = '00/cb/CDrawMouseCursor_Draw_00cb2860.cpp'
+        TestSource = '00/cb/CDrawMouseCursor_Draw_00cb2860_test.cpp'
+        PassPattern = 'OK_00cb2860'
+    }
+    [pscustomobject]@{
+        Address = '00cd3ec0'
+        Module = 'CInputProcessManager'
+        Source = '00/cd/CInputProcessManager_CInputProcessManager_00cd3ec0.cpp'
+        TestSource = '00/cd/CInputProcessManager_CInputProcessManager_00cd3ec0_test.cpp'
+        PassPattern = 'OK_00cd3ec0'
+    }
+    [pscustomobject]@{
+        Address = '00e11d80'
+        Module = 'CHornetDrone'
+        Source = '00/e1/CHornetDrone_Init_00e11d80.cpp'
+        TestSource = '00/e1/CHornetDrone_Init_00e11d80_test.cpp'
+        PassPattern = 'OK_00e11d80'
+    }
+    [pscustomobject]@{
+        Address = '0049d9b0'
+        Module = 'CPixelShader'
+        Source = '00/49/CPixelShader_CountReferences_0049d9b0.cpp'
+        TestSource = '00/49/CPixelShader_CountReferences_0049d9b0_test.cpp'
+        PassPattern = 'OK_0049d9b0'
+    }
+    [pscustomobject]@{
+        Address = '00485e45'
+        Module = 'CActiveFile'
+        Source = '00/48/CActiveFile_OnReadFinished_00485e45.cpp'
+        TestSource = '00/48/CActiveFile_OnReadFinished_00485e45_test.cpp'
+        PassPattern = 'OK_00485e45'
+    }
+    [pscustomobject]@{
+        Address = '0048d890'
+        Module = 'CTCMapwho'
+        Source = '00/48/CTCMapwho_OnDie_0048d890.cpp'
+        TestSource = '00/48/CTCMapwho_OnDie_0048d890_test.cpp'
+        PassPattern = 'OK_0048d890'
+    }
+    [pscustomobject]@{
+        Address = '004baef0'
+        Module = 'CTCMapwho'
+        Source = '00/4b/CTCMapwho_OnDie_004baef0.cpp'
+        TestSource = '00/4b/CTCMapwho_OnDie_004baef0_test.cpp'
+        PassPattern = 'OK_004baef0'
+    }
 )
 
 $requestedAddresses = @(
