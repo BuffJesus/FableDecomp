@@ -50644,6 +50644,167 @@ $catalog = @(
         TestSource = '00/4b/CTCMapwho_OnDie_004baef0_test.cpp'
         PassPattern = 'OK_004baef0'
     }
+    [pscustomobject]@{
+        Address = '004d4232'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d4232.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d4232_test.cpp'
+        PassPattern = 'OK_004d4232'
+    }
+    [pscustomobject]@{
+        Address = '004d4249'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d4249.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d4249_test.cpp'
+        PassPattern = 'OK_004d4249'
+    }
+    [pscustomobject]@{
+        Address = '004d429b'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d429b.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d429b_test.cpp'
+        PassPattern = 'OK_004d429b'
+    }
+    [pscustomobject]@{
+        Address = '004d430f'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d430f.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d430f_test.cpp'
+        PassPattern = 'OK_004d430f'
+    }
+    [pscustomobject]@{
+        Address = '004d4369'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d4369.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d4369_test.cpp'
+        PassPattern = 'OK_004d4369'
+    }
+    [pscustomobject]@{
+        Address = '004d5ce6'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d5ce6.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d5ce6_test.cpp'
+        PassPattern = 'OK_004d5ce6'
+    }
+    [pscustomobject]@{
+        Address = '004d5fdb'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d5fdb.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d5fdb_test.cpp'
+        PassPattern = 'OK_004d5fdb'
+    }
+    [pscustomobject]@{
+        Address = '004d5ff2'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d5ff2.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d5ff2_test.cpp'
+        PassPattern = 'OK_004d5ff2'
+    }
+    [pscustomobject]@{
+        Address = '004d66c3'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d66c3.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d66c3_test.cpp'
+        PassPattern = 'OK_004d66c3'
+    }
+    [pscustomobject]@{
+        Address = '004dd118'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd118.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd118_test.cpp'
+        PassPattern = 'OK_004dd118'
+    }
+    [pscustomobject]@{
+        Address = '004dd159'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd159.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd159_test.cpp'
+        PassPattern = 'OK_004dd159'
+    }
+    [pscustomobject]@{
+        Address = '004dd1c4'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd1c4.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd1c4_test.cpp'
+        PassPattern = 'OK_004dd1c4'
+    }
+    [pscustomobject]@{
+        Address = '004dd1db'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd1db.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd1db_test.cpp'
+        PassPattern = 'OK_004dd1db'
+    }
+    [pscustomobject]@{
+        Address = '004dd21c'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd21c.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd21c_test.cpp'
+        PassPattern = 'OK_004dd21c'
+    }
+    [pscustomobject]@{
+        Address = '004dd32b'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd32b.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd32b_test.cpp'
+        PassPattern = 'OK_004dd32b'
+    }
+    [pscustomobject]@{
+        Address = '004dd36c'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd36c.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd36c_test.cpp'
+        PassPattern = 'OK_004dd36c'
+    }
+    [pscustomobject]@{
+        Address = '004dd3ad'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd3ad.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd3ad_test.cpp'
+        PassPattern = 'OK_004dd3ad'
+    }
+    [pscustomobject]@{
+        Address = '004dd3ee'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd3ee.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd3ee_test.cpp'
+        PassPattern = 'OK_004dd3ee'
+    }
+    [pscustomobject]@{
+        Address = '004dd42f'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd42f.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd42f_test.cpp'
+        PassPattern = 'OK_004dd42f'
+    }
+    [pscustomobject]@{
+        Address = '004dd470'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd470.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd470_test.cpp'
+        PassPattern = 'OK_004dd470'
+    }
+    [pscustomobject]@{
+        Address = '004dd52b'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd52b.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd52b_test.cpp'
+        PassPattern = 'OK_004dd52b'
+    }
+    [pscustomobject]@{
+        Address = '004dd56c'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dd56c.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dd56c_test.cpp'
+        PassPattern = 'OK_004dd56c'
+    }
+    [pscustomobject]@{
+        Address = '004dfb47'
+        Module = 'CActiveFile'
+        Source = '00/4d/CActiveFile_OnReadFinished_004dfb47.cpp'
+        TestSource = '00/4d/CActiveFile_OnReadFinished_004dfb47_test.cpp'
+        PassPattern = 'OK_004dfb47'
+    }
 )
 
 $requestedAddresses = @(
