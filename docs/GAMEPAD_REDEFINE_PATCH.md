@@ -472,3 +472,46 @@ path in one session instead of blind rebuild/redeploy cycles.
 **Install state:** reverted to CLEAN RETAIL (frontend.bin/names.bin restored from *.gamepadbak,
 Mods.ini `gamepad_redefine.dll=0`). All patch artifacts remain in the repo; redeploy per §4b/README
 to resume.
+
+---
+
+## 2026-08-10 — SHELVED: redefine + gamepad/menu work REVERTED from rebuild & install
+
+Per user direction, the entire redefine-keys / gamepad-menu line was reverted out of the
+**rebuild** and the **live install**, to refocus on the binary-wide byte-parity crawl
+("byte purity and parity... no hacks, no guesses"). This doc + git history are the record;
+nothing below is lost, only un-landed.
+
+**Removed from the rebuild (working tree):**
+- `rebuild/integration/gamepad_patch/` (whole dir: hook `.c`, `.dll`, `.obj`, README) — deleted.
+- `tools/build_gamepad_redefine_data.py` (frontend.bin/names.bin data-patch builder) — deleted.
+- Gamepad blocks in `rebuild/integration/visual_boot_d3d9.cpp`: `kGamepadKeyValueLabels`/
+  `kGamepadKeyValues`, the "(Keyboard)/(Gamepad)" title split (reverted to plain "Redefine Keys"),
+  `AppendRedefineGamepadValueText` + its call, screen-5 backdrop reuse, and the screen>4→>5 guard
+  raises. All reverted to the pre-gamepad state (screens capped at 4).
+- Gamepad rows in `rebuild/integration/visual_boot_checkpoint.cpp`: options-row loop `!=5`→`!=4`,
+  `detailScreens[5]{1,3,2,4,5}`→`[4]{1,3,2,4}`, selection guard `>=5`→`>=4`.
+- The 8 landed byte-pure `CKeyRedefiner`/`CRedefinerList` functions un-landed: catalog blocks
+  (`build_candidates.ps1`), src+test files (`rebuild/{src/compiled,tests}/00/55/`), and rows in
+  `retail-parity.tsv`, `vc71-compiled.tsv`, `auto-re-candidates.tsv`, `ARTIFACT_INDEX.tsv`.
+  Addrs: 00556580, 00557850, 00557860, 00557880, 005578a0, 00557bd0, 00557c10, 00557ca0.
+  Their manifest reconstruction columns (compiled_status/behavior_test/retail_parity/
+  compiled_source) were blanked; the 8 addrs were appended to the durable crawl ledger
+  `tools/decomp_pipeline/crawl/gen_tried.txt` so the crawl won't immediately re-suggest them.
+
+**KEPT (intentionally):**
+- All findings docs (this file, `docs/REDEFINE_INPUT_SYSTEM.md`).
+- The faithful **keyboard** Redefine-Keys screen rendering (`AppendRedefineKeyText`,
+  `AppendRedefineActionText`, `kRedefine*` constants) — retail has that screen; it is real parity.
+- The PDB-backed **naming** identities for the 8 functions in `manifest/functions.tsv` and
+  `rebuild/corrections/function_overrides.tsv` (RE-DB naming facts, independent of reconstruction).
+
+**Live install:** stock. `Mods.ini` = FSE-only (gamepad line removed), `Mods/gamepad_redefine.dll`
+(+`.singlehook.bak`) deleted, `frontend.bin`/`names.bin` confirmed byte-identical to stock (SHA-1),
+all `*.gamepadbak`/`*.preclickfix` backups removed.
+
+**To resume this feature later:** the byte-exact function sources are recoverable from git history
+(commits before 2026-08-10); the patch package is at commit `07c1037`. Re-land the 8 functions via
+the normal crawl, then re-apply the menu/gamepad integration from git. Open blockers unchanged:
+#811 gamepad screen renders black (needs retail 283-handler setup), and the redefine value read
+path (candidate `GetAssignedInputForAction` @0x408C90) — pin both via live `debugger_trace_function`.

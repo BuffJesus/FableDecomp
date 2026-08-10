@@ -214,37 +214,6 @@ namespace
         "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9",
         "F10", "F11", "F12", "PRNT SCRN"
     };
-    // Gamepad-redefine patch (docs/GAMEPAD_REDEFINE_PATCH.md): Unreal-Engine
-    // key names for the controller binding screen (detail screen 5).  These are
-    // the DISPLAY layer; the stored record keeps the engine's native
-    // 0x37/0x38 (button) and 0x3C (analog, subtypes 0x0A-0x0D) types.  Index
-    // order matches kGamepadKeyValues so a captured input code maps to a label.
-    const char* const kGamepadKeyValueLabels[24] = {
-        "Face Button Bottom", "Face Button Right",
-        "Face Button Left", "Face Button Top",
-        "D-Pad Up", "D-Pad Down", "D-Pad Left", "D-Pad Right",
-        "Left Shoulder", "Right Shoulder",
-        "Left Trigger", "Right Trigger",
-        "Left Thumbstick Button", "Right Thumbstick Button",
-        "Special Left", "Special Right",
-        "Left Stick Up", "Left Stick Down",
-        "Left Stick Left", "Left Stick Right",
-        "Right Stick Up", "Right Stick Down",
-        "Right Stick Left", "Right Stick Right"
-    };
-    // XInput bitmask / axis id per label (see design doc table).  The four
-    // Left-Stick directions carry the engine analog subtypes 0x0A-0x0D so the
-    // capture path can write a native 0x3C record; buttons use their XInput bit.
-    const fable_u32 kGamepadKeyValues[24] = {
-        0x1000, 0x2000, 0x4000, 0x8000,          // A B X Y
-        0x0001, 0x0002, 0x0004, 0x0008,          // D-Pad U D L R
-        0x0100, 0x0200,                          // LB RB
-        0x00010000, 0x00020000,                  // LT RT (axis, high bits)
-        0x0040, 0x0080,                          // L3 R3
-        0x0020, 0x0010,                          // Back Start
-        0x0000000A, 0x0000000B, 0x0000000C, 0x0000000D,  // LS U D L R (0x3C subtypes)
-        0x0004000A, 0x0004000B, 0x0004000C, 0x0004000D   // RS U D L R
-    };
     // Saved-game slot names use the same ENG_ARIAL_16 runtime glyph path as
     // profile names.  The component sheet deliberately leaves these four
     // labels transparent so the active save list can submit them live.
@@ -1245,15 +1214,11 @@ namespace
     {
         if (
             screen < 1 ||
-            screen > 5 ||
+            screen > 4 ||
             g_OptionsTexture == 0)
         {
             return;
         }
-        // Gamepad-redefine patch: screen 4 is the keyboard redefine screen,
-        // screen 5 the new controller redefine screen (docs/
-        // GAMEPAD_REDEFINE_PATCH.md).  Retail's single "Redefine Keys" becomes
-        // the qualified "(Keyboard)" so the two entries read distinctly.
         const char* baseTitle =
             screen == 1
                 ? "Gameplay Options"
@@ -1261,9 +1226,7 @@ namespace
                     ? "Audio Options"
                     : (screen == 3
                         ? "Video Options"
-                        : (screen == 4
-                            ? "Redefine Keys (Keyboard)"
-                            : "Redefine Keys (Gamepad)")));
+                        : "Redefine Keys"));
         char title[128] = {};
         if (g_ActiveProfileName[0] != 0)
         {
@@ -1349,10 +1312,8 @@ namespace
         float scaleX,
         float scaleY)
     {
-        // Screen 4 (keyboard) and 5 (gamepad) share the same action-label
-        // column (same EGameAction rows); only the value column differs.
         if (
-            (g_DetailScreen != 4 && g_DetailScreen != 5) ||
+            g_DetailScreen != 4 ||
             g_OptionsTexture == 0 ||
             g_OptionsWidth != 1664)
         {
@@ -1446,60 +1407,6 @@ namespace
                 1.0f,
                 false,
                 keyValue == 7 ? 0xFFFFFF00u : 0xFFFFFFFFu,
-                true,
-                true);
-        }
-    }
-
-    // Screen 5 (gamepad) value column. Mirrors AppendRedefineKeyText's layout
-    // but renders the controller binding per row via the glyph-text path (the
-    // UE-style labels in kGamepadKeyValueLabels are long strings, not compact
-    // atlas cells). The per-row action->EXboxControllerButton default is NOT
-    // yet wired: only movement/DPad bindings are HIGH-confidence in
-    // docs/CONTROLLER_ENUMS.md; the face/shoulder/trigger cluster is LOW, so
-    // asserting them here would violate the evidence-not-assumption rule.
-    // Until a higher-confidence per-row map (or a runtime capture) lands, the
-    // column shows a neutral "Unbound" placeholder. See
-    // docs/GAMEPAD_REDEFINE_PATCH.md step 4/5.
-    void AppendRedefineGamepadValueText(
-        FableVisualVertex* vertices,
-        fable_u32& vertexCount,
-        FableRender2DPlanRecord* records,
-        fable_u32& recordCount,
-        float left,
-        float top,
-        float scaleX,
-        float scaleY)
-    {
-        if (
-            g_DetailScreen != 5 ||
-            g_OptionsTexture == 0 ||
-            g_OptionsWidth != 1664)
-        {
-            return;
-        }
-        const fable_detail_tables::RedefineListDefinition& list =
-            fable_detail_tables::kRedefineList;
-        for (fable_u32 row = 0; row != 9; ++row)
-        {
-            const fable_u32 expandedRow = row;
-            if (expandedRow >= kRedefineExpandedRowCount)
-                break;
-            AppendDetailTitleGlyphText(
-                vertices,
-                vertexCount,
-                records,
-                recordCount,
-                "Unbound",
-                static_cast<float>(list.valueX),
-                static_cast<float>(list.valueY + row * list.rowStep + 3),
-                left,
-                top,
-                scaleX,
-                scaleY,
-                1.0f,
-                false,
-                0xFFFFFFFFu,
                 true,
                 true);
         }
@@ -3180,11 +3087,8 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         overlayTexture = g_OptionsTexture;
         overlayWidth = 640;
         overlayHeight = 480;
-        // Frames 4..7 = detail screens 1..4; only 0..7 are baked. The new
-        // gamepad screen (5) has no baked art, so it reuses screen 4's Redefine
-        // Keys backdrop (frame 7) — the gamepad list is authored over it
-        // (docs/GAMEPAD_REDEFINE_PATCH.md).
-        overlayFrame = 3 + (g_DetailScreen == 5 ? 4 : g_DetailScreen);
+        // Frames 4..7 = detail screens 1..4; only 0..7 are baked.
+        overlayFrame = 3 + g_DetailScreen;
         overlayFrameCount = 8;
     }
     else if (g_QuitPromptActive)
@@ -4215,15 +4119,6 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         top,
         designScaleX,
         designScaleY);
-    AppendRedefineGamepadValueText(
-        vertices,
-        vertexCount,
-        records,
-        recordCount,
-        left,
-        top,
-        designScaleX,
-        designScaleY);
     if (
         g_SaveMenuActive &&
         g_OptionsTexture != 0 &&
@@ -5107,11 +5002,7 @@ void FABLE_FASTCALL FableSetVisualFrontendSaveSelection(
 
 void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen)
 {
-    // Gamepad-redefine patch (docs/GAMEPAD_REDEFINE_PATCH.md): screen 5 is the
-    // new controller redefine screen.  Retail's guard stopped at screen 4; the
-    // "(Redefine Keys (Gamepad))" detail title authored above was unreachable
-    // dead code until this bound was raised to admit screen 5.
-    if (screen > 5 || (screen != 0 && g_OptionsTexture == 0))
+    if (screen > 4 || (screen != 0 && g_OptionsTexture == 0))
         return;
     if (g_DetailScreen == screen)
         return;

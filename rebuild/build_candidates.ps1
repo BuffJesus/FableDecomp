@@ -44919,27 +44919,6 @@ $catalog = @(
         PassPattern = 'GETACTIONNAME_004d4e40_OK'
     }
     [pscustomobject]@{
-        Address = '00557850'
-        Module = 'CKeyRedefiner'
-        Source = '00/55/CKeyRedefiner_OnLeftClicked_00557850.cpp'
-        TestSource = '00/55/CKeyRedefiner_OnLeftClicked_00557850_test.cpp'
-        PassPattern = '00557850_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00557860'
-        Module = 'CKeyRedefiner'
-        Source = '00/55/CKeyRedefiner_OnHovered_00557860.cpp'
-        TestSource = '00/55/CKeyRedefiner_OnHovered_00557860_test.cpp'
-        PassPattern = '00557860_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00557880'
-        Module = 'CKeyRedefiner'
-        Source = '00/55/CKeyRedefiner_OnUnhovered_00557880.cpp'
-        TestSource = '00/55/CKeyRedefiner_OnUnhovered_00557880_test.cpp'
-        PassPattern = '00557880_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '004d4e53'
         Module = 'CActionDoCreatureAction'
         Source = '00/4d/CActionDoCreatureAction_GetActionName_004d4e53.cpp'
@@ -45815,20 +45794,6 @@ $catalog = @(
         PassPattern = 'GETACTIONNAME_004d673a_OK'
     }
     [pscustomobject]@{
-        Address = '00556580'
-        Module = 'CRedefinerList'
-        Source = '00/55/CRedefinerList_OnDeactivate_00556580.cpp'
-        TestSource = '00/55/CRedefinerList_OnDeactivate_00556580_test.cpp'
-        PassPattern = '00556580_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00557bd0'
-        Module = 'CKeyRedefiner'
-        Source = '00/55/CKeyRedefiner_CancelSelection_00557bd0.cpp'
-        TestSource = '00/55/CKeyRedefiner_CancelSelection_00557bd0_test.cpp'
-        PassPattern = '00557bd0_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '004d674d'
         Module = 'CActionDoCreatureAction'
         Source = '00/4d/CActionDoCreatureAction_GetActionName_004d674d.cpp'
@@ -46401,20 +46366,6 @@ $catalog = @(
         Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd7b4.cpp'
         TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd7b4_test.cpp'
         PassPattern = 'GETACTIONNAME_008fd7b4_OK'
-    }
-    [pscustomobject]@{
-        Address = '00557ca0'
-        Module = 'CKeyRedefiner'
-        Source = '00/55/CKeyRedefiner_GetSubTypeForAction_00557ca0.cpp'
-        TestSource = '00/55/CKeyRedefiner_GetSubTypeForAction_00557ca0_test.cpp'
-        PassPattern = '00557ca0_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '005578a0'
-        Module = 'CKeyRedefiner'
-        Source = '00/55/CKeyRedefiner_AreAllowedToCoexist_005578a0.cpp'
-        TestSource = '00/55/CKeyRedefiner_AreAllowedToCoexist_005578a0_test.cpp'
-        PassPattern = '005578a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008fd7f1'
@@ -47297,13 +47248,6 @@ $catalog = @(
         Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe56d.cpp'
         TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe56d_test.cpp'
         PassPattern = 'GETACTIONNAME_008fe56d_OK'
-    }
-    [pscustomobject]@{
-        Address = '00557c10'
-        Module = 'CKeyRedefiner'
-        Source = '00/55/CKeyRedefiner_ChangeState_00557c10.cpp'
-        TestSource = '00/55/CKeyRedefiner_ChangeState_00557c10_test.cpp'
-        PassPattern = '00557c10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '008fe580'
