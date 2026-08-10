@@ -170,9 +170,17 @@ low-confidence face/shoulder rows in CONTROLLER_ENUMS.md do NOT gate us.
   (`lea eax,[ebp+8]; push eax; lea ecx,[esi+0x54]; jmp GotoNextScreen 0x596763`).
   Action id is read as `**(int**)eventArg`.
 - **`CFrontEndManager::Init2` @ 0x00598A1C** — bind key `0x17` → the new
-  `UI_FRONTEND_SCREEN_REDEFINE_KEYS_GAMEPAD` def (Init2 does per-screen *named*
-  binds via a name-lookup; add one bind block, or post-hook after Init2). The
-  screen def is resolved by name so no index dependency.
+  `UI_FRONTEND_SCREEN_REDEFINE_KEYS_GAMEPAD` def. **Bind mechanism decoded**
+  (@0x598F4D, the redefine block): Init2 is a sequence of ~30-byte bind blocks,
+  each: build `CWideString`(screenName,-1) via **0x99EBF0**; `mov [slot], KEY`
+  (numeric key inline — `0x16`=keyboard redefine); `call 0x59B5D7` (ecx=this,
+  arg=&slot → get-or-create bind slot for KEY); get FE singleton **0x41E5F2**;
+  `call 0x41DB1D` (resolve screen def by name); store `[slot]=screen`; dtor
+  **0x99EAE0**. So the "detour" is just **replaying ONE bind block post-Init2**
+  for (key=0x17, name="UI_FRONTEND_SCREEN_REDEFINE_KEYS_GAMEPAD") with ecx=the
+  CFrontEndManager `this` — a self-contained call sequence using those 5 named
+  helpers, callable straight from an FSE plugin. No mid-function patch needed;
+  the screen resolves by name (no index dependency).
 - **Capture needs NO code — CONFIRMED (disasm 2026-08-09).** `CKeyRedefiner::
   Redefine` (0x557D20) is device-agnostic: it compares `this+0x1A8` (expected
   state/type) vs `event+0x4` (incoming event type) only to pick a state branch,
