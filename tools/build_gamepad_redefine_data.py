@@ -157,8 +157,13 @@ def main():
     btn_children = [new_txt_gi if c == 346 else c for c in btn_children]
     btn_payload = set_children(BTN345["payload"], btn_children)
     # 4. clone row #344 -> new_row_gi: Action -> new_action, Children [345] -> [new_btn_gi]
+    #    CRITICAL: a MOUSE click fires ActionOnLeftUnclicked, not Action. #344 sets BOTH to 283,
+    #    so we must retarget ActionOnLeftUnclicked to new_action too or clicking the row routes to
+    #    the keyboard screen (283). Live-test 2026-08-09, docs section 10 blocker (1).
     row_payload = patch_field(ROW344["payload"], schema[stype]["fields"],
                               "Action", struct.pack("<i", new_action))
+    row_payload = patch_field(row_payload, schema[stype]["fields"],
+                              "ActionOnLeftUnclicked", struct.pack("<i", new_action))
     row_payload = set_children(row_payload, [new_btn_gi])
 
     # 5. edit list #219 Children -> append the new row global index

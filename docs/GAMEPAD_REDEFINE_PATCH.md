@@ -412,3 +412,63 @@ crashes or misbehaves, revert instantly by restoring `gamepad_redefine.dll.singl
 `gamepad_redefine.dll` (or removing the Mods.ini line). Open item if +0x60 shows empty/unbound:
 seed the passive vector with `FABLE_XBOX_CONTROL_SCHEME` (def 1099) via a ResetAssignedInputs-by-
 name call in the Action-284 handler before GotoNextScreen.
+
+## 10. Live-test session 2026-08-09 (evening) — findings, and the two real blockers
+
+Drove the patch live in retail with a diagnostic/logging DLL. Net: the routing infrastructure
+is solid, but TWO real blockers remain, and the earlier "it opened the gamepad screen" belief was
+wrong. Chronology + hard facts:
+
+1. **Why it kept showing keyboard values (SOLVED, data bug).** The gamepad options row #810 had
+   `Action=284` BUT `ActionOnLeftUnclicked=283` — copied verbatim from the keyboard row #344. A
+   mouse click fires `ActionOnLeftUnclicked`, so clicking "Redefine Keys (Gamepad)" fired **283**
+   (the keyboard action) and opened the KEYBOARD screen #238. We were never actually seeing #811.
+   FIX: set #810.`ActionOnLeftUnclicked = 284` (0x1C010000). Verified in the deployed bin
+   (`Action=284, ActionOnLeftUnclicked=284`). The builder must set this — see §11.
+
+2. **The gamepad screen #811 renders BLACK when correctly routed (OPEN BLOCKER #1).** Once the
+   click-fix routes clicks to 284 -> #811, the screen is black. #811 is a BYTE-IDENTICAL clone of
+   the working keyboard screen #238 (both `Type=10`, `Children=[217,342,632,120,585]`,
+   `NonScrollingChildren=[0,1]`, identical States) — so the screen DEF is fine. The black means
+   opening it via a bare `GotoNextScreen(this, screen, 0)` is INSUFFICIENT: retail's real
+   redefine-screen activation (the action-283 path inside `CFrontEndManager::Action` @0x59A238)
+   must do additional setup — most likely initialising the redefine list #217 / `CRedefinerList`
+   / redefiner context for the screen. NEXT: RE the 283 case in the Action dispatcher (0x59A238;
+   its body reads the event action id at `[[ebp+8]]` ~0x59A281 then dispatches) and replicate the
+   WHOLE handler for 284, not just the navigation call.
+
+3. **The controller vector IS populated (good news).** Instrumented the profile-manager singleton
+   (`*(void**)0x13B7D4C`): primary vector `+0x54` and passive vector `+0x60` BOTH hold **123**
+   28-byte records (`COUNTS a=0x7B b=0x7B`). So controller bindings already exist in `+0x60`;
+   the feature only needs the gamepad screen to READ/format them.
+
+4. **Raw vector pointer-swap is too invasive (REJECTED approach).** Swapping the `+0x54`<->`+0x60`
+   {begin,end,cap} triples while on the gamepad screen blacked the redefine render AND corrupted
+   the profile-select screen (text only drew on hover). Reverted. Do NOT swap the vectors.
+
+5. **`GetPrimaryInputVector` @0x4088E0 is NOT the row-value source.** A screen-gated redirect of
+   0x4088E0 -> `+0x60` had ZERO effect on the displayed values (§8/§9 hypothesis disproved). The
+   redefine row KeyText comes through a different function — candidates: `GetAssignedInputForAction`
+   @0x408C90 (has the `usePassive` param: `!=0`->keyboard `+0x54`, `==0`->controller `+0x60`),
+   called from big functions at 0x48CAF0 / 0x642A60 (HUD/redefine builders). This is OPEN BLOCKER
+   #2 (identify the exact read site).
+
+6. **Hook infrastructure that DOES work** (keep): Action@0x59A238 catches 284, resolves+caches the
+   gamepad screen ptr, `GotoNextScreen`s to it (routing confirmed via logs: `gp` set, screen match).
+   GotoNextScreen@0x596763 screen-tracking flag toggles correctly. `%TEMP%\gamepad_hook.log`
+   diagnostics + a buffered caller-address recorder are wired in the v3 source.
+
+**v3 DLL (authored, NOT deployed):** non-invasive — hooks `GetAssignedInputForAction` @0x408C90 to
+force `usePassive=0` while on the gamepad screen (reads controller vector) and logs every caller's
+return address so, on the next test, we see whether the redefine rows actually flow through 0x408C90
+(and if not, exactly which function to target). It cannot corrupt vectors/other screens. It's gated
+behind BLOCKER #1: it's pointless until #811 opens non-black.
+
+**Definitive next tool:** live tracing. Start the debugger server (`python -m debugger`) so
+`mcp__ghidra__debugger_trace_function` can non-invasively log calls+args on 0x408C90 / the redefine
+builders while the screen is shown — this pins BOTH the screen-activation gap and the value read
+path in one session instead of blind rebuild/redeploy cycles.
+
+**Install state:** reverted to CLEAN RETAIL (frontend.bin/names.bin restored from *.gamepadbak,
+Mods.ini `gamepad_redefine.dll=0`). All patch artifacts remain in the repo; redeploy per §4b/README
+to resume.

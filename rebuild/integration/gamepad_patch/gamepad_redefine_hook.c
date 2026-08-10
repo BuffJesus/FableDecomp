@@ -2,30 +2,19 @@
  * no MinHook). Injected by FSE_Launcher (place in Mods\, list in Mods.ini). Pairs with
  * the DATA half (tools/build_gamepad_redefine_data.py). Design: docs/GAMEPAD_REDEFINE_PATCH.md.
  *
- * THREE hooks (all boot-safe — Init2 is NOT patched):
- *   1. CFrontEndManager::Action @0x59A238 — when the 5th options row fires action 284,
- *      resolve UI_FRONTEND_SCREEN_REDEFINE_KEYS_GAMEPAD by name, cache the resolved screen
- *      pointer in g_gamepadScreen, and GotoNextScreen to it. Retail leaves 284 inert.
- *   2. CFrontEndManager::GotoNextScreen @0x596763 — track the active screen: set
- *      g_useController = (screenArg == g_gamepadScreen). This is the single source of truth
- *      for "the gamepad redefine screen is showing"; it flips back to 0 the instant the user
- *      navigates anywhere else (every screen transition passes through here).
- *   3. CUserProfileManager::GetPrimaryInputVector @0x4088E0 — the redefine row builder
- *      (CRedefinerList::Refresh @0x557000, call site 0x557008 -> retaddr 0x55700D) reads the
- *      binding vector to display through this accessor, which retail HARDCODES to the primary
- *      (keyboard) vector +0x54. When g_useController is set AND we were called from Refresh,
- *      return the PASSIVE (controller) vector +0x60 instead — flipping BOTH the displayed
- *      values and, because CKeyRedefiner::Redefine writes back through the same vector the list
- *      is bound to, the capture side too. The retaddr guard keeps every OTHER caller of
- *      0x4088E0 on the primary vector, so nothing outside the gamepad screen is affected.
+ * Approach v3 (targeted, non-invasive — v2's raw vector-swap blacked the screen even though
+ * the passive/controller vector holds 123 records):
+ *   1. Action @0x59A238 — on action 284 resolve+cache the gamepad screen ptr, GotoNextScreen.
+ *   2. GotoNextScreen @0x596763 — g_useController = (screen == gamepad screen). No swap.
+ *   3. GetAssignedInputForAction @0x408C90 — this accessor already branches keyboard(+0x54,
+ *      usePassive!=0) vs controller(+0x60, usePassive==0). While the gamepad screen is showing,
+ *      FORCE its usePassive arg to 0 so callers read the controller vector. This touches nothing
+ *      but the per-call arg, so it can't corrupt the vectors or other screens. It also records
+ *      each caller's return address into a small buffer (flushed to %TEMP%\gamepad_hook.log when
+ *      leaving the screen) so if the redefine rows DON'T come through 0x408C90 we see who to
+ *      target instead.
  *
- * Controller records live in the passive vector +0x60/+0x64 (28-byte records, same layout as
- * primary). If it is empty we call the engine's default-scheme loader (0x4085F0), exactly like
- * the retail accessor does for an empty primary; the default control scheme populates both
- * vectors, so +0x60 ends up holding the native Xbox-pad bindings.
- *
- * Revert = remove the Mods.ini line. Conventions from the retail disasm at 0x4088E0 / 0x557000 /
- * 0x596763 / 0x598F4D.
+ * Revert = remove the Mods.ini line (or restore gamepad_redefine.dll.singlehook.bak).
  */
 #include <windows.h>
 
@@ -33,124 +22,152 @@
 static unsigned int g_delta = 0;
 #define A(va) ((unsigned int)(va) + g_delta)
 
-static unsigned int a_GotoNext, a_WCtor, a_Lookup, a_Resolve, a_WDtor, a_EnsureDefaults;
-static unsigned int a_RefreshRet;                     /* Refresh's call-site return addr 0x55700D */
-static unsigned char* g_tramp_Action;                 /* saved-prologue trampolines */
+static unsigned int a_GotoNext, a_WCtor, a_Lookup, a_Resolve, a_WDtor;
+static unsigned char* g_tramp_Action;
 static unsigned char* g_tramp_Goto;
-static void* g_gamepadScreen = 0;                     /* resolved gamepad screen def ptr */
-static volatile int g_useController = 0;              /* 1 while the gamepad redefine screen shows */
+static unsigned char* g_tramp_GetInput;
+static void* g_gamepadScreen = 0;
+static int   g_useController = 0;
 static const char g_scr[] = "UI_FRONTEND_SCREEN_REDEFINE_KEYS_GAMEPAD";
 
-/* ---- Action detour: action 284 -> resolve gamepad screen (cache ptr) + GotoNextScreen ---- */
+/* caller-address ring buffer for the GetAssignedInputForAction diagnostic */
+#define CAP 64
+static unsigned int g_ret[CAP];
+static unsigned int g_act[CAP];
+static unsigned int g_pass[CAP];
+static volatile int g_n = 0;
+
+static void flush_log(void)
+{
+    char path[MAX_PATH]; DWORD n; char line[128]; HANDLE h; int i, cnt = g_n;
+    n = GetTempPathA(MAX_PATH, path);
+    if (n == 0 || n > MAX_PATH - 20) return;
+    lstrcatA(path, "gamepad_hook.log");
+    h = CreateFileA(path, FILE_APPEND_DATA, FILE_SHARE_READ | FILE_SHARE_WRITE, 0,
+                    OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
+    if (h == INVALID_HANDLE_VALUE) return;
+    SetFilePointer(h, 0, 0, FILE_END);
+    n = (DWORD)wsprintfA(line, "FLUSH getinput_calls=%d gp=%08X\r\n", cnt, (unsigned)g_gamepadScreen);
+    WriteFile(h, line, n, &n, 0);
+    if (cnt > CAP) cnt = CAP;
+    for (i = 0; i < cnt; i++) {
+        n = (DWORD)wsprintfA(line, "  call ret=%08X action=%u usePassive=%u\r\n",
+                             g_ret[i], g_act[i], g_pass[i]);
+        WriteFile(h, line, n, &n, 0);
+    }
+    CloseHandle(h);
+    g_n = 0;
+}
+
+/* called from hk_GetInput (regs saved): record the caller, return forced-usePassive (0/keep) */
+static int __cdecl on_getinput(unsigned int retaddr, unsigned int action, unsigned int usePassive)
+{
+    if (g_useController) {
+        int i = g_n;
+        if (i < CAP) { g_ret[i] = retaddr; g_act[i] = action; g_pass[i] = usePassive; }
+        g_n = i + 1;
+        return 0;                 /* force controller/passive vector */
+    }
+    return (int)usePassive;        /* unchanged */
+}
+
+/* called from hk_Goto: manage the flag; flush the diagnostic when leaving the screen */
+static void __cdecl on_goto(void* screen)
+{
+    int now = (screen == g_gamepadScreen && g_gamepadScreen != 0) ? 1 : 0;
+    if (!now && g_useController) { g_useController = 0; flush_log(); }
+    else g_useController = now;
+}
+
+/* ---- Action detour: action 284 -> resolve+cache gamepad screen + GotoNextScreen ---- */
 __declspec(naked) static void hk_Action(void)
 {
     __asm {
-        mov  eax, [esp+4]        /* eventArg */
-        mov  eax, [eax]          /* event*   */
-        mov  eax, [eax]          /* action id (first dword) */
-        cmp  eax, 0x0000011C     /* 284 ? */
+        mov  eax, [esp+4]
+        mov  eax, [eax]
+        mov  eax, [eax]
+        cmp  eax, 0x0000011C
         jne  run_original
-        /* --- handle 284 (ecx = this = CFrontEndManager) --- */
         push ebp
         mov  ebp, esp
-        sub  esp, 0x40           /* wstr @ ebp-0x20 */
+        sub  esp, 0x40
         push esi
         push ebx
-        mov  esi, ecx            /* this */
-        /* CWideString wstr(g_scr, -1) */
+        mov  esi, ecx
         push 0xFFFFFFFF
         lea  eax, g_scr
         push eax
         lea  ecx, [ebp-0x20]
         mov  eax, a_WCtor
-        call eax                 /* ctor cleans its 2 args (ret 8) */
-        /* obj = Lookup(0, &wstr) ; screen = Resolve(obj) */
+        call eax
         push 0
         lea  eax, [ebp-0x20]
         push eax
         mov  eax, a_Lookup
-        call eax                 /* cleans 2 args (ret 8) -> eax=obj */
+        call eax
         mov  ecx, eax
         mov  eax, a_Resolve
-        call eax                 /* thiscall, no stack args -> eax=screen */
-        mov  ebx, eax            /* save screen */
-        mov  g_gamepadScreen, eax /* cache resolved gamepad screen ptr */
-        /* ~CWideString(&wstr) */
+        call eax
+        mov  ebx, eax
+        mov  g_gamepadScreen, eax
         lea  ecx, [ebp-0x20]
         mov  eax, a_WDtor
         call eax
-        /* GotoNextScreen(this, screen, 0) -- routes through hk_Goto, which sets g_useController */
         push 0
         push ebx
         mov  ecx, esi
         mov  eax, a_GotoNext
-        call eax                 /* cleans 2 args (ret 8) */
+        call eax
         pop  ebx
         pop  esi
         mov  esp, ebp
         pop  ebp
-        ret  4                   /* Action is thiscall w/ 1 stack arg */
+        ret  4
     run_original:
-        jmp  dword ptr [g_tramp_Action]   /* [saved prologue] + jmp Action+6 */
+        jmp  dword ptr [g_tramp_Action]
     }
 }
 
-/* ---- GotoNextScreen detour: track whether the active screen is the gamepad screen ---- */
+/* ---- GotoNextScreen detour: toggle g_useController based on the target screen ---- */
 __declspec(naked) static void hk_Goto(void)
 {
     __asm {
-        mov  eax, [esp+4]              /* screen def ptr (thiscall stack arg 1) */
-        cmp  eax, g_gamepadScreen
-        jne  not_gamepad
-        mov  byte ptr g_useController, 1
-        jmp  go_orig
-    not_gamepad:
-        mov  byte ptr g_useController, 0
-    go_orig:
-        jmp  dword ptr [g_tramp_Goto]  /* [saved 6-byte prologue] + jmp GotoNextScreen+6 */
+        pushad
+        pushfd
+        mov  eax, [esp+0x28]           /* screen arg */
+        push eax
+        call on_goto
+        add  esp, 4
+        popfd
+        popad
+        jmp  dword ptr [g_tramp_Goto]
     }
 }
 
-/* ---- GetPrimaryInputVector full detour: primary +0x54, or controller +0x60 on the gamepad screen.
- * Faithful reimplementation of retail 0x4088E0 (ecx=this profile mgr; empty vector -> load
- * defaults via 0x4085F0; returns &vector). The controller path is gated on BOTH g_useController
- * and the Refresh call site, so no other consumer of 0x4088E0 is redirected. ---- */
-__declspec(naked) static void hk_GetPrimaryInputVector(void)
+/* ---- GetAssignedInputForAction detour: force usePassive=0 on the gamepad screen ----
+ * On entry: [esp]=retaddr, [esp+4]=action (arg1), [esp+8]=usePassive (arg2), ecx=this. */
+__declspec(naked) static void hk_GetInput(void)
 {
     __asm {
-        /* controller path only when on the gamepad screen AND called from Refresh (0x55700D) */
-        mov  eax, [esp]                 /* return address of the caller */
-        cmp  eax, a_RefreshRet
-        jne  primary
-        cmp  byte ptr g_useController, 0
-        je   primary
-        /* --- controller / passive vector +0x60 --- */
-        mov  eax, [ecx+0x60]
-        cmp  eax, [ecx+0x64]
-        jne  ret60
-        push ecx                        /* preserve this across EnsureDefaults */
-        mov  eax, a_EnsureDefaults
-        call eax                        /* 0x4085F0 thiscall(ecx=this), no stack args */
-        pop  ecx
-    ret60:
-        lea  eax, [ecx+0x60]
-        ret
-    primary:
-        /* --- retail default: primary vector +0x54 --- */
-        mov  eax, [ecx+0x54]
-        cmp  eax, [ecx+0x58]
-        jne  ret54
-        push ecx
-        mov  eax, a_EnsureDefaults
-        call eax
-        pop  ecx
-    ret54:
-        lea  eax, [ecx+0x54]
-        ret
+        pushad
+        pushfd
+        mov  eax, [esp+0x2c]           /* usePassive (arg2): pushad32+pushfd4+ret4+arg1_4 = +0x2c */
+        push eax
+        mov  eax, [esp+0x2c]           /* action (arg1): shifted by the one push above -> +0x2c */
+        push eax
+        mov  eax, [esp+0x2c]           /* retaddr: shifted by two pushes -> +0x2c */
+        push eax
+        call on_getinput              /* __cdecl(retaddr, action, usePassive) -> forced usePassive */
+        add  esp, 0x0c
+        mov  [esp+0x20], eax          /* stash forced usePassive into saved-EAX slot (popad restores) */
+        popfd
+        popad
+        mov  [esp+8], eax             /* overwrite the real arg2 with the forced value */
+        jmp  dword ptr [g_tramp_GetInput]
     }
 }
 
-/* ---- inline hook installers -------------------------------------------- */
+/* ---- inline hook installer (trampoline) -------------------------------- */
 static unsigned char* install_tramp(unsigned int target_va, void* detour, int savelen)
 {
     unsigned char* t = (unsigned char*)A(target_va);
@@ -169,34 +186,20 @@ static unsigned char* install_tramp(unsigned int target_va, void* detour, int sa
     return tr;
 }
 
-/* full-replacement detour (no trampoline; the detour reimplements the target and RETs) */
-static void install_replace(unsigned int target_va, void* detour)
-{
-    unsigned char* t = (unsigned char*)A(target_va);
-    DWORD old;
-    VirtualProtect(t, 5, PAGE_EXECUTE_READWRITE, &old);
-    t[0] = 0xE9;
-    *(int*)(t + 1) = (int)detour - (int)(t + 5);
-    VirtualProtect(t, 5, old, &old);
-    FlushInstructionCache(GetCurrentProcess(), t, 5);
-}
-
 static void install_all(void)
 {
-    g_delta          = (unsigned int)GetModuleHandleW(NULL) - BASE_DEFAULT;
-    a_GotoNext       = A(0x00596763);
-    a_WCtor          = A(0x0099EBF0);
-    a_Lookup         = A(0x0041E5F2);
-    a_Resolve        = A(0x0041DB1D);
-    a_WDtor          = A(0x0099EAE0);
-    a_EnsureDefaults = A(0x004085F0);
-    a_RefreshRet     = A(0x0055700D);          /* CRedefinerList::Refresh call site + 5 */
+    g_delta    = (unsigned int)GetModuleHandleW(NULL) - BASE_DEFAULT;
+    a_GotoNext = A(0x00596763);
+    a_WCtor    = A(0x0099EBF0);
+    a_Lookup   = A(0x0041E5F2);
+    a_Resolve  = A(0x0041DB1D);
+    a_WDtor    = A(0x0099EAE0);
     /* Action @0x59A238 prologue = 55 8bec 83ec14 (6 bytes) */
-    g_tramp_Action = install_tramp(0x0059A238, hk_Action, 6);
+    g_tramp_Action   = install_tramp(0x0059A238, hk_Action, 6);
     /* GotoNextScreen @0x596763 prologue = 55 8bec 51 53 56 (6 bytes) */
-    g_tramp_Goto   = install_tramp(0x00596763, hk_Goto, 6);
-    /* GetPrimaryInputVector @0x4088E0 — full replacement (5-byte jmp) */
-    install_replace(0x004088E0, hk_GetPrimaryInputVector);
+    g_tramp_Goto     = install_tramp(0x00596763, hk_Goto, 6);
+    /* GetAssignedInputForAction @0x408C90 prologue = 8a442408 84c0 (6 bytes) */
+    g_tramp_GetInput = install_tramp(0x00408C90, hk_GetInput, 6);
 }
 
 BOOL WINAPI DllMain(HINSTANCE h, DWORD reason, LPVOID r)
