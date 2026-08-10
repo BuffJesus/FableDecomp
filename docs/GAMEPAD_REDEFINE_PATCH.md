@@ -315,3 +315,29 @@ Scope note: this is a separate, larger workstream than the gamepad-redefine scre
 (§1-5) — it touches HUD prompts game-wide, not just one menu. Recommend landing the
 redefine screen first, then device-aware prompts as a follow-on using the same
 EControllerType signal + Xbox glyph refs.
+
+## 7. LIVE-TESTED in retail (2026-08-09) — both halves work end-to-end
+
+Deployed to the real install (backups: `*.gamepadbak`) and driven in-game:
+- **DATA half VERIFIED:** the Options submenu shows a 5th row **"Redefine Keys
+  (Gamepad)"** (distinct label — the engine renders the literal CWideString, no
+  text.big edit needed). The DEF_LOAD_CONTRACT append loads with no crash.
+- **CODE half VERIFIED:** clicking the gamepad row opens a redefine screen (action
+  284, inert without the hook, now routes) — proving the Action @0x59A238 detour
+  fires and `GotoNextScreen`s to the resolved gamepad screen #811. Boot-safe (Init2
+  is NOT hooked; the earlier 2-hook build crashed at frontend init, redesigned to a
+  single on-demand resolve in the Action hook). DLL: `rebuild/integration/
+  gamepad_patch/gamepad_redefine_hook.c`; inject via FSE_Launcher (Mods\ + Mods.ini).
+
+**Remaining — show CONTROLLER values (not keyboard) on the gamepad screen.** #811 is
+a byte-clone of the keyboard screen #238, so it displays keyboard bindings. The
+screen is data-driven (list #217: `ActionOrder` = the 31 EGameAction ordinals,
+`ActionMap` = action→text tags, `Redefiner`=#412 UI_KEY_REDEFINER_BASE). But the
+redefiner has NO keyboard-vs-controller def field — the vector choice
+(`GetAssignedInputForAction(action, usePassive)`: primary `+0x54` keyboard vs
+passive `+0x60` controller) is CODE. So displaying controller bindings needs a code
+change: when the active screen is the gamepad clone, make CRedefinerList/CKeyRedefiner
+read the passive vector (usePassive=1) and label values via the gamepad table
+(`rebuild/integration/gamepad_binding_table.md`, proven XBOX_PAD_* values). That is
+the next code hook (on CRedefinerList::Refresh 0x557000 / the redefiner), plus a
+gamepad default scheme applied to the passive vector.
