@@ -341,3 +341,45 @@ read the passive vector (usePassive=1) and label values via the gamepad table
 (`rebuild/integration/gamepad_binding_table.md`, proven XBOX_PAD_* values). That is
 the next code hook (on CRedefinerList::Refresh 0x557000 / the redefiner), plus a
 gamepad default scheme applied to the passive vector.
+
+## 8. Controller-values step — EXACT decision point found (2026-08-09)
+
+RE'd the redefine display path end-to-end. The keyboard-vs-controller choice is a SINGLE
+hardcoded call, so the "show controller bindings" hook is now fully specified:
+
+- `CRedefinerList::Refresh` @ **0x557000** rebuilds the visible rows. At **0x557008** it calls
+  `GetPrimaryInputVector` @ **0x4088E0** on the `CUserProfileManager` singleton (from
+  `0x40D2A0`, global `[0x13B7D4C]`), then feeds the returned vector to the row builder
+  (`0x556A40`).
+- `GetPrimaryInputVector` @0x4088E0 is dead simple and **hardcoded to the primary vector**:
+    ```
+    mov eax,[ecx+0x54]      ; primary begin
+    mov edx,[ecx+0x58]      ; primary end
+    cmp eax,edx
+    lea esi,[ecx+0x54]      ; return &primary
+    jne +           ; if empty -> EnsureDefaults (0x4085F0)
+    call 0x4085F0
+    mov eax,esi ; ret        ; returns &this[0x54]
+    ```
+  There is NO device/usePassive parameter — the redefine screen therefore ALWAYS shows the
+  keyboard (primary `+0x54`) vector. (Contrast `GetAssignedInputForAction` @0x408C90, which
+  DOES branch: `usePassive!=0` → `+0x54` keyboard, `usePassive==0` → `+0x60` controller. That
+  one is used by other consumers, e.g. HUD prompts at 0x64F/0x652, not by the redefine list.)
+- The controller records live in the **passive vector `+0x60/+0x64`** (28-byte records, same
+  layout). `FABLE_XBOX_CONTROL_SCHEME` (def 1099) is the native gamepad default to seed it.
+
+**Ready-to-build hook (Phase 3 of the patch — NOT yet shipped, needs live USER test):**
+1. In the existing Action-284 detour (`gamepad_redefine_hook.c`), set a module global
+   `g_gamepadRedefine = 1` right before `GotoNextScreen`, and clear it when leaving the
+   screen (hook the screen-exit / back action, or the next non-284 Action).
+2. Add a second inline hook on **0x4088E0**: if `g_gamepadRedefine`, return `&this[0x60]`
+   (mirror the empty→EnsureDefaults guard against `+0x60/+0x64`, seeding from
+   `FABLE_XBOX_CONTROL_SCHEME` if empty); else tail to the saved original. This flips BOTH
+   the display (Refresh reads it) — and, because `CKeyRedefiner::Redefine` is device-agnostic
+   and writes back through the same vector the list is bound to, the CAPTURE side too.
+3. Label the value column via the proven `gamepad_binding_table.md` (`EXboxControllerButton`
+   → UE-style names). This is display-only; stored records stay the engine's native form.
+
+Risk to watch: 0x4088E0 may have other callers active while the gamepad screen is open; gate
+STRICTLY on the screen-active flag so the primary vector is untouched everywhere else. Verify
+in-game with the USER driving (see memory: in-game verification is user-driven, not automated).
