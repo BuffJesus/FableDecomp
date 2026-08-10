@@ -1349,8 +1349,10 @@ namespace
         float scaleX,
         float scaleY)
     {
+        // Screen 4 (keyboard) and 5 (gamepad) share the same action-label
+        // column (same EGameAction rows); only the value column differs.
         if (
-            g_DetailScreen != 4 ||
+            (g_DetailScreen != 4 && g_DetailScreen != 5) ||
             g_OptionsTexture == 0 ||
             g_OptionsWidth != 1664)
         {
@@ -1444,6 +1446,60 @@ namespace
                 1.0f,
                 false,
                 keyValue == 7 ? 0xFFFFFF00u : 0xFFFFFFFFu,
+                true,
+                true);
+        }
+    }
+
+    // Screen 5 (gamepad) value column. Mirrors AppendRedefineKeyText's layout
+    // but renders the controller binding per row via the glyph-text path (the
+    // UE-style labels in kGamepadKeyValueLabels are long strings, not compact
+    // atlas cells). The per-row action->EXboxControllerButton default is NOT
+    // yet wired: only movement/DPad bindings are HIGH-confidence in
+    // docs/CONTROLLER_ENUMS.md; the face/shoulder/trigger cluster is LOW, so
+    // asserting them here would violate the evidence-not-assumption rule.
+    // Until a higher-confidence per-row map (or a runtime capture) lands, the
+    // column shows a neutral "Unbound" placeholder. See
+    // docs/GAMEPAD_REDEFINE_PATCH.md step 4/5.
+    void AppendRedefineGamepadValueText(
+        FableVisualVertex* vertices,
+        fable_u32& vertexCount,
+        FableRender2DPlanRecord* records,
+        fable_u32& recordCount,
+        float left,
+        float top,
+        float scaleX,
+        float scaleY)
+    {
+        if (
+            g_DetailScreen != 5 ||
+            g_OptionsTexture == 0 ||
+            g_OptionsWidth != 1664)
+        {
+            return;
+        }
+        const fable_detail_tables::RedefineListDefinition& list =
+            fable_detail_tables::kRedefineList;
+        for (fable_u32 row = 0; row != 9; ++row)
+        {
+            const fable_u32 expandedRow = row;
+            if (expandedRow >= kRedefineExpandedRowCount)
+                break;
+            AppendDetailTitleGlyphText(
+                vertices,
+                vertexCount,
+                records,
+                recordCount,
+                "Unbound",
+                static_cast<float>(list.valueX),
+                static_cast<float>(list.valueY + row * list.rowStep + 3),
+                left,
+                top,
+                scaleX,
+                scaleY,
+                1.0f,
+                false,
+                0xFFFFFFFFu,
                 true,
                 true);
         }
@@ -3124,7 +3180,11 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         overlayTexture = g_OptionsTexture;
         overlayWidth = 640;
         overlayHeight = 480;
-        overlayFrame = 3 + g_DetailScreen;
+        // Frames 4..7 = detail screens 1..4; only 0..7 are baked. The new
+        // gamepad screen (5) has no baked art, so it reuses screen 4's Redefine
+        // Keys backdrop (frame 7) — the gamepad list is authored over it
+        // (docs/GAMEPAD_REDEFINE_PATCH.md).
+        overlayFrame = 3 + (g_DetailScreen == 5 ? 4 : g_DetailScreen);
         overlayFrameCount = 8;
     }
     else if (g_QuitPromptActive)
@@ -4147,6 +4207,15 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         designScaleX,
         designScaleY);
     AppendRedefineKeyText(
+        vertices,
+        vertexCount,
+        records,
+        recordCount,
+        left,
+        top,
+        designScaleX,
+        designScaleY);
+    AppendRedefineGamepadValueText(
         vertices,
         vertexCount,
         records,
