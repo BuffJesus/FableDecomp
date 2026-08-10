@@ -175,8 +175,25 @@ def main():
     act = pf.fval(*decrow["Action"])
     assert act == new_action, "Action mismatch: %s" % act
     assert new_row_gi in ch, "new row index not in #219 Children"
+    # full-parse integrity: every ORIGINAL entry byte-identical except #219, and
+    # every patched entry decodes cleanly under the schema.
+    changed = [e["index"] for e in entries
+               if b2[e["index"]]["payload"] != e["payload"]
+               or b2[e["index"]]["name"] != e["name"]]
+    assert changed == [219], "unexpected collateral changes: %s" % changed
+    bad = 0
+    for e in e2:
+        st2 = resolve_type(e["definition"], schema)
+        if st2 and st2 in schema:
+            try:
+                e["_names"] = n2; pf.decode_entry(e, schema)
+            except Exception:
+                bad += 1
+    assert bad == 0, "%d patched entries failed to decode" % bad
     print("VERIFY round-trip OK: #219 Children=%s, new-row Action=%s, crc0(row)=0x%08X"
           % (ch, act, crc0("UI_OPTIONS_BUTTON_REDEFINE_KEYS_GAMEPAD")))
+    print("VERIFY full-parse OK: %d->%d entries, only #219 changed, all decode, "
+          "names crc0 clean" % (len(entries), len(e2)))
 
 if __name__ == "__main__":
     main()
