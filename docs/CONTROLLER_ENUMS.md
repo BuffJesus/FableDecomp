@@ -1,5 +1,15 @@
 # Controller enum integer→name tables (empirical recovery)
 
+> **SUPERSEDED for the button/action/device enums (2026-08-09):** the debug
+> `debug_build/FableWin.pdb` yields these enums *directly* via DIA
+> (`llvm-pdbutil pretty --enums`) — see `ghidra_out/controller_enums_proven.md`.
+> The empirical inferences below were RIGHT about `EControllerType`
+> (NONE=0/XBOX_PAD=1/KEYBOARD=2/MOUSE=3) and the analog/DPad rows, but **WRONG
+> about the face buttons**: proven `EXboxControllerButton` is `X=1, Y=2, BLACK=3,
+> A=4, B=5, WHITE=6` (the doc guessed A=1/B=2/X=3/Y=4). Trust the PDB values.
+> The FableControllerSupport mod's `controls.def` confirms the *names*
+> (`XBOX_PAD_A_BUTTON` … `XBOX_PAD_WHITE_BUTTON`, no bumpers — original-Xbox pad).
+
 **Date:** 2026-07-19
 **Task:** Recover the integer→name mapping for `EGameAction`, `EXboxControllerButton`,
 `EInputKey`, and `EMouseButtonControl` — the last gap blocking a turnkey remap UI over the
