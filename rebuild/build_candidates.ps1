@@ -50805,6 +50805,62 @@ $catalog = @(
         TestSource = '00/4d/CActiveFile_OnReadFinished_004dfb47_test.cpp'
         PassPattern = 'OK_004dfb47'
     }
+    [pscustomobject]@{
+        Address = '004e1bbb'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e1bbb.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e1bbb_test.cpp'
+        PassPattern = 'OK_004e1bbb'
+    }
+    [pscustomobject]@{
+        Address = '004e350f'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e350f.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e350f_test.cpp'
+        PassPattern = 'OK_004e350f'
+    }
+    [pscustomobject]@{
+        Address = '004e6df5'
+        Module = 'CActiveFile'
+        Source = '00/4e/CActiveFile_OnReadFinished_004e6df5.cpp'
+        TestSource = '00/4e/CActiveFile_OnReadFinished_004e6df5_test.cpp'
+        PassPattern = 'OK_004e6df5'
+    }
+    [pscustomobject]@{
+        Address = '0051af00'
+        Module = 'CTCMapwho'
+        Source = '00/51/CTCMapwho_OnDie_0051af00.cpp'
+        TestSource = '00/51/CTCMapwho_OnDie_0051af00_test.cpp'
+        PassPattern = 'OK_0051af00'
+    }
+    [pscustomobject]@{
+        Address = '00580a64'
+        Module = 'CActiveFile'
+        Source = '00/58/CActiveFile_OnReadFinished_00580a64.cpp'
+        TestSource = '00/58/CActiveFile_OnReadFinished_00580a64_test.cpp'
+        PassPattern = 'OK_00580a64'
+    }
+    [pscustomobject]@{
+        Address = '00593ac7'
+        Module = 'CActiveFile'
+        Source = '00/59/CActiveFile_OnReadFinished_00593ac7.cpp'
+        TestSource = '00/59/CActiveFile_OnReadFinished_00593ac7_test.cpp'
+        PassPattern = 'OK_00593ac7'
+    }
+    [pscustomobject]@{
+        Address = '005940d5'
+        Module = 'CActiveFile'
+        Source = '00/59/CActiveFile_OnReadFinished_005940d5.cpp'
+        TestSource = '00/59/CActiveFile_OnReadFinished_005940d5_test.cpp'
+        PassPattern = 'OK_005940d5'
+    }
+    [pscustomobject]@{
+        Address = '005b211f'
+        Module = 'CActiveFile'
+        Source = '00/5b/CActiveFile_OnReadFinished_005b211f.cpp'
+        TestSource = '00/5b/CActiveFile_OnReadFinished_005b211f_test.cpp'
+        PassPattern = 'OK_005b211f'
+    }
 )
 
 $requestedAddresses = @(
