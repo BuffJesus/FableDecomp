@@ -50889,6 +50889,146 @@ $catalog = @(
         TestSource = '00/66/CTCMapwho_OnDie_00668ed0_test.cpp'
         PassPattern = 'OK_00668ed0'
     }
+    [pscustomobject]@{
+        Address = '006a7530'
+        Module = 'CThingFilter_HasScriptSupervision'
+        Source = '00/6a/CThingFilterHasScriptSupervision_operator_006a7530.cpp'
+        TestSource = '00/6a/CThingFilterHasScriptSupervision_operator_006a7530_test.cpp'
+        PassPattern = 'OK_006a7530'
+    }
+    [pscustomobject]@{
+        Address = '005b21f4'
+        Module = 'CActiveFile'
+        Source = '00/5b/CActiveFile_OnReadFinished_005b21f4.cpp'
+        TestSource = '00/5b/CActiveFile_OnReadFinished_005b21f4_test.cpp'
+        PassPattern = 'OK_005b21f4'
+    }
+    [pscustomobject]@{
+        Address = '005bb5ae'
+        Module = 'CActiveFile'
+        Source = '00/5b/CActiveFile_OnReadFinished_005bb5ae.cpp'
+        TestSource = '00/5b/CActiveFile_OnReadFinished_005bb5ae_test.cpp'
+        PassPattern = 'OK_005bb5ae'
+    }
+    [pscustomobject]@{
+        Address = '005f8908'
+        Module = 'CActiveFile'
+        Source = '00/5f/CActiveFile_OnReadFinished_005f8908.cpp'
+        TestSource = '00/5f/CActiveFile_OnReadFinished_005f8908_test.cpp'
+        PassPattern = 'OK_005f8908'
+    }
+    [pscustomobject]@{
+        Address = '0065f1c8'
+        Module = 'CActiveFile'
+        Source = '00/65/CActiveFile_OnReadFinished_0065f1c8.cpp'
+        TestSource = '00/65/CActiveFile_OnReadFinished_0065f1c8_test.cpp'
+        PassPattern = 'OK_0065f1c8'
+    }
+    [pscustomobject]@{
+        Address = '0065f1fa'
+        Module = 'CActiveFile'
+        Source = '00/65/CActiveFile_OnReadFinished_0065f1fa.cpp'
+        TestSource = '00/65/CActiveFile_OnReadFinished_0065f1fa_test.cpp'
+        PassPattern = 'OK_0065f1fa'
+    }
+    [pscustomobject]@{
+        Address = '0065f22c'
+        Module = 'CActiveFile'
+        Source = '00/65/CActiveFile_OnReadFinished_0065f22c.cpp'
+        TestSource = '00/65/CActiveFile_OnReadFinished_0065f22c_test.cpp'
+        PassPattern = 'OK_0065f22c'
+    }
+    [pscustomobject]@{
+        Address = '0065f300'
+        Module = 'CActiveFile'
+        Source = '00/65/CActiveFile_OnReadFinished_0065f300.cpp'
+        TestSource = '00/65/CActiveFile_OnReadFinished_0065f300_test.cpp'
+        PassPattern = 'OK_0065f300'
+    }
+    [pscustomobject]@{
+        Address = '006605fa'
+        Module = 'CActiveFile'
+        Source = '00/66/CActiveFile_OnReadFinished_006605fa.cpp'
+        TestSource = '00/66/CActiveFile_OnReadFinished_006605fa_test.cpp'
+        PassPattern = 'OK_006605fa'
+    }
+    [pscustomobject]@{
+        Address = '00660611'
+        Module = 'CActiveFile'
+        Source = '00/66/CActiveFile_OnReadFinished_00660611.cpp'
+        TestSource = '00/66/CActiveFile_OnReadFinished_00660611_test.cpp'
+        PassPattern = 'OK_00660611'
+    }
+    [pscustomobject]@{
+        Address = '00660628'
+        Module = 'CActiveFile'
+        Source = '00/66/CActiveFile_OnReadFinished_00660628.cpp'
+        TestSource = '00/66/CActiveFile_OnReadFinished_00660628_test.cpp'
+        PassPattern = 'OK_00660628'
+    }
+    [pscustomobject]@{
+        Address = '0066063f'
+        Module = 'CActiveFile'
+        Source = '00/66/CActiveFile_OnReadFinished_0066063f.cpp'
+        TestSource = '00/66/CActiveFile_OnReadFinished_0066063f_test.cpp'
+        PassPattern = 'OK_0066063f'
+    }
+    [pscustomobject]@{
+        Address = '00660656'
+        Module = 'CActiveFile'
+        Source = '00/66/CActiveFile_OnReadFinished_00660656.cpp'
+        TestSource = '00/66/CActiveFile_OnReadFinished_00660656_test.cpp'
+        PassPattern = 'OK_00660656'
+    }
+    [pscustomobject]@{
+        Address = '0066066d'
+        Module = 'CActiveFile'
+        Source = '00/66/CActiveFile_OnReadFinished_0066066d.cpp'
+        TestSource = '00/66/CActiveFile_OnReadFinished_0066066d_test.cpp'
+        PassPattern = 'OK_0066066d'
+    }
+    [pscustomobject]@{
+        Address = '00676720'
+        Module = 'CTCMapwho'
+        Source = '00/67/CTCMapwho_OnDie_00676720.cpp'
+        TestSource = '00/67/CTCMapwho_OnDie_00676720_test.cpp'
+        PassPattern = 'OK_00676720'
+    }
+    [pscustomobject]@{
+        Address = '0067d7b0'
+        Module = 'CPlayerGui'
+        Source = '00/67/CPlayerGui_ForceOpen_0067d7b0.cpp'
+        TestSource = '00/67/CPlayerGui_ForceOpen_0067d7b0_test.cpp'
+        PassPattern = 'OK_0067d7b0'
+    }
+    [pscustomobject]@{
+        Address = '00697ac0'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_HasCameraMode_00697ac0.cpp'
+        TestSource = '00/69/CGameCameraManager_HasCameraMode_00697ac0_test.cpp'
+        PassPattern = 'OK_00697ac0'
+    }
+    [pscustomobject]@{
+        Address = '006a40b0'
+        Module = 'CInputProcessJumpingAndRolling'
+        Source = '00/6a/CInputProcessJumpingAndRolling_Update_006a40b0.cpp'
+        TestSource = '00/6a/CInputProcessJumpingAndRolling_Update_006a40b0_test.cpp'
+        PassPattern = 'OK_006a40b0'
+    }
+    [pscustomobject]@{
+        Address = '006baa70'
+        Module = 'CTCMapwho'
+        Source = '00/6b/CTCMapwho_OnDie_006baa70.cpp'
+        TestSource = '00/6b/CTCMapwho_OnDie_006baa70_test.cpp'
+        PassPattern = 'OK_006baa70'
+    }
+    [pscustomobject]@{
+        Address = '006c04b0'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6c/CTCBuyableHouse_IncrementDressLevel_006c04b0.cpp'
+        TestSource = '00/6c/CTCBuyableHouse_IncrementDressLevel_006c04b0_test.cpp'
+        PassPattern = 'OK_006c04b0'
+    }
 )
 
 $requestedAddresses = @(
