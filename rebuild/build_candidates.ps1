@@ -50259,6 +50259,153 @@ $catalog = @(
         TestSource = '00/7e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_007eb010_test.cpp'
         PassPattern = 'OK_007eb010'
     }
+    [pscustomobject]@{
+        Address = '00851e50'
+        Module = 'CScriptModuleSelfTerminateBase'
+        Source = '00/85/CScriptModuleSelfTerminateBase_IsFinished_00851e50.cpp'
+        TestSource = '00/85/CScriptModuleSelfTerminateBase_IsFinished_00851e50_test.cpp'
+        PassPattern = 'OK_00851e50'
+    }
+    [pscustomobject]@{
+        Address = '0088e520'
+        Module = 'CGameScriptInterface'
+        Source = '00/88/CGameScriptInterface_EndCutFadeCGameScriptInterfaceUAEXXZ_0088e520.cpp'
+        TestSource = '00/88/CGameScriptInterface_EndCutFadeCGameScriptInterfaceUAEXXZ_0088e520_test.cpp'
+        PassPattern = 'OK_0088e520'
+    }
+    [pscustomobject]@{
+        Address = '008cfe00'
+        Module = 'CGameScriptThing'
+        Source = '00/8c/CGameScriptThing_GetDataStringCGameScriptThingUBEAVCCharStringXZ_008cfe00.cpp'
+        TestSource = '00/8c/CGameScriptThing_GetDataStringCGameScriptThingUBEAVCCharStringXZ_008cfe00_test.cpp'
+        PassPattern = 'OK_008cfe00'
+    }
+    [pscustomobject]@{
+        Address = '00987f10'
+        Module = 'CInputProcessManager'
+        Source = '00/98/CInputProcessManager_CInputProcessManager_00987f10.cpp'
+        TestSource = '00/98/CInputProcessManager_CInputProcessManager_00987f10_test.cpp'
+        PassPattern = 'OK_00987f10'
+    }
+    [pscustomobject]@{
+        Address = '0085edf0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/85/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0085edf0.cpp'
+        TestSource = '00/85/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0085edf0_test.cpp'
+        PassPattern = 'OK_0085edf0'
+    }
+    [pscustomobject]@{
+        Address = '008c3a50'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/8c/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_008c3a50.cpp'
+        TestSource = '00/8c/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_008c3a50_test.cpp'
+        PassPattern = 'OK_008c3a50'
+    }
+    [pscustomobject]@{
+        Address = '008e8cb0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/8e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_008e8cb0.cpp'
+        TestSource = '00/8e/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_008e8cb0_test.cpp'
+        PassPattern = 'OK_008e8cb0'
+    }
+    [pscustomobject]@{
+        Address = '009157f0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/91/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009157f0.cpp'
+        TestSource = '00/91/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009157f0_test.cpp'
+        PassPattern = 'OK_009157f0'
+    }
+    [pscustomobject]@{
+        Address = '00922f30'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/92/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00922f30.cpp'
+        TestSource = '00/92/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00922f30_test.cpp'
+        PassPattern = 'OK_00922f30'
+    }
+    [pscustomobject]@{
+        Address = '00927dd0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/92/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00927dd0.cpp'
+        TestSource = '00/92/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00927dd0_test.cpp'
+        PassPattern = 'OK_00927dd0'
+    }
+    [pscustomobject]@{
+        Address = '00929e60'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/92/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00929e60.cpp'
+        TestSource = '00/92/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00929e60_test.cpp'
+        PassPattern = 'OK_00929e60'
+    }
+    [pscustomobject]@{
+        Address = '00933d80'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/93/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00933d80.cpp'
+        TestSource = '00/93/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00933d80_test.cpp'
+        PassPattern = 'OK_00933d80'
+    }
+    [pscustomobject]@{
+        Address = '009400f0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/94/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009400f0.cpp'
+        TestSource = '00/94/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009400f0_test.cpp'
+        PassPattern = 'OK_009400f0'
+    }
+    [pscustomobject]@{
+        Address = '00947bc0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/94/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00947bc0.cpp'
+        TestSource = '00/94/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00947bc0_test.cpp'
+        PassPattern = 'OK_00947bc0'
+    }
+    [pscustomobject]@{
+        Address = '0094e5d0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/94/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0094e5d0.cpp'
+        TestSource = '00/94/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0094e5d0_test.cpp'
+        PassPattern = 'OK_0094e5d0'
+    }
+    [pscustomobject]@{
+        Address = '009531a0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/95/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009531a0.cpp'
+        TestSource = '00/95/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009531a0_test.cpp'
+        PassPattern = 'OK_009531a0'
+    }
+    [pscustomobject]@{
+        Address = '00957280'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/95/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00957280.cpp'
+        TestSource = '00/95/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00957280_test.cpp'
+        PassPattern = 'OK_00957280'
+    }
+    [pscustomobject]@{
+        Address = '0095e080'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/95/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0095e080.cpp'
+        TestSource = '00/95/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0095e080_test.cpp'
+        PassPattern = 'OK_0095e080'
+    }
+    [pscustomobject]@{
+        Address = '009612c0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/96/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009612c0.cpp'
+        TestSource = '00/96/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009612c0_test.cpp'
+        PassPattern = 'OK_009612c0'
+    }
+    [pscustomobject]@{
+        Address = '0096c800'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/96/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0096c800.cpp'
+        TestSource = '00/96/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0096c800_test.cpp'
+        PassPattern = 'OK_0096c800'
+    }
+    [pscustomobject]@{
+        Address = '0097c900'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/97/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0097c900.cpp'
+        TestSource = '00/97/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0097c900_test.cpp'
+        PassPattern = 'OK_0097c900'
+    }
 )
 
 $requestedAddresses = @(
