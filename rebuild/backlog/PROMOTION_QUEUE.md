@@ -1,6 +1,6 @@
 # Curated C++ promotion queue
 
-Generated: `2026-08-07T14:19:12-06:00`
+Generated: `2026-08-09T21:04:31-06:00`
 
 Uncompiled auto-RE candidates: **466**. Showing: **100**. Semantic-review quarantine: **89**.
 
@@ -80,34 +80,34 @@ Ranking favors checker/integrity/signature PASS and candidates without known sou
 | 70 | `0x006700F0` | `CTCCoopSpirit::OnCreate` | `manual-lift` | `PASS` |  | 18 | 39 | 4196 | 'CDefClassBase' does not name a type |
 | 71 | `0x00A79B30` | `CNavQuadTreeNode::Initialise` | `manual-lift` | `PASS` |  | 18 | 78 | 15716 | 'CANavQuadTreeNode' does not name a type |
 | 72 | `0x0066FF20` | `CTCCoopSpirit::SwapToHero` | `manual-lift` | `PASS` |  | 20 | 40 | 5478 | 'CVertexBufferWin32' does not name a type |
-| 73 | `0x008A9C40` | `CGameScriptInterface::CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom` | `manual-lift` | `PASS` |  | 23 | 33 | 6214 | 'CGameScriptInterface' has not been declared |
-| 74 | `0x0050A650` | `CWorldMap::GetMapNavigationAreaInit` | `manual-lift` | `PASS` |  | 26 | 93 | 25507 | use of enum 'EHeroMorphType' without previous declaration |
-| 75 | `0x00897150` | `CGameScriptInterface::CGameScriptInterface::UnSetThingAndCarriedItemsNotAffectedByScreenFilter` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 17 | 2298 |  |
-| 76 | `0x00896060` | `CGameScriptInterface::CGameScriptInterface::SetVillageLimbo` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 17 | 2540 | incomplete type 'CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >' used in nested name specifier |
-| 77 | `0x00897B10` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasCurrentMarriage` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 22 | 3511 | 'reinterpret_cast' from integer to pointer |
-| 78 | `0x00897BD0` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasChildren` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 3699 |  |
-| 79 | `0x0089B4D0` | `CGameScriptInterface::CGameScriptInterface::RemoveHeroHairstyle` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 3883 |  |
-| 80 | `0x008A1590` | `CGameScriptInterface::CGameScriptInterface::GetBestTimePairs` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 2907 | 'reinterpret_cast' from integer to pointer |
-| 81 | `0x008A15F0` | `CGameScriptInterface::CGameScriptInterface::GetBestTimeSorting` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 2923 | 'reinterpret_cast' from integer to pointer |
-| 82 | `0x008A17D0` | `CGameScriptInterface::CGameScriptInterface::GetBestTimeGuessTheAddition` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 2925 | 'reinterpret_cast' from integer to pointer |
-| 83 | `0x00897C30` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasMurderedWife` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 25 | 3866 |  |
-| 84 | `0x00897B70` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasDivorcedMarriage` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 25 | 3958 |  |
-| 85 | `0x00897C90` | `CGameScriptInterface::CGameScriptInterface::GetNumberOfTimesHeroHasHadSex` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 25 | 4150 | 'reinterpret_cast' from integer to pointer |
-| 86 | `0x008A16B0` | `CGameScriptInterface::CGameScriptInterface::GetBestScoreCoinGolfOakVale` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 25 | 3055 | 'reinterpret_cast' from integer to pointer |
-| 87 | `0x00897030` | `CGameScriptInterface::CGameScriptInterface::IsToFailQuestOnDeath` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 3608 | 'reinterpret_cast' from integer to pointer |
-| 88 | `0x00897480` | `CGameScriptInterface::CGameScriptInterface::IsPlayerWieldingWeapon` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 3816 | 'reinterpret_cast' from integer to pointer |
-| 89 | `0x00897AA0` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasMarried` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 4053 | 'reinterpret_cast' from integer to pointer |
-| 90 | `0x0089EF30` | `CGameScriptInterface::CGameScriptInterface::SetMoralityChangingAsEnabled` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 4105 | 'reinterpret_cast' from integer to pointer |
-| 91 | `0x00897CF0` | `CGameScriptInterface::CGameScriptInterface::SetNumberOfTimesHeroHasHadSex` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 4233 | 'reinterpret_cast' from integer to pointer |
-| 92 | `0x0089B450` | `CGameScriptInterface::CGameScriptInterface::ChangeHeroHairstyle` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 4577 | 'reinterpret_cast' from integer to pointer |
-| 93 | `0x00898540` | `CGameScriptInterface::CGameScriptInterface::SetGuardsIgnoreCrimes` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 3851 | 'reinterpret_cast' from integer to pointer |
-| 94 | `0x00897D50` | `CGameScriptInterface::CGameScriptInterface::SetHeroAsHavingHadSex` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 4045 | 'reinterpret_cast' from integer to pointer |
-| 95 | `0x00897DB0` | `CGameScriptInterface::CGameScriptInterface::SetHeroAsHavingHadGaySex` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 4116 | 'reinterpret_cast' from integer to pointer |
-| 96 | `0x008A12A0` | `CGameScriptInterface::CGameScriptInterface::GetNumHousesOwned` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 4167 | 'reinterpret_cast' from integer to pointer |
-| 97 | `0x00896E60` | `CGameScriptInterface::CGameScriptInterface::SetPreferredQuickAccessItem` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 4497 | 'reinterpret_cast' from integer to pointer |
-| 98 | `0x00897090` | `CGameScriptInterface::CGameScriptInterface::SetWhetherToFailQuestOnDeath` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 28 | 3143 |  |
-| 99 | `0x00898DB0` | `CGameScriptInterface::CGameScriptInterface::TakeObjectFromHero` | `semantic-review` | `PASS` | possible-end-sentinel-dereference;process-termination | 0 | 28 | 4845 |  |
-| 100 | `0x00898EC0` | `CGameScriptInterface::CGameScriptInterface::SetHeroHandLampAsLit` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 28 | 3960 | 'reinterpret_cast' from integer to pointer |
+| 73 | `0x008A86C0` | `CGameScriptInterface::CGameScriptInterface::GetAllCreaturesInAreaWithScriptName` | `manual-lift` | `PASS` |  | 21 | 32 | 7865 | 'CThingSearchTools' does not name a type |
+| 74 | `0x008A9C40` | `CGameScriptInterface::CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom` | `manual-lift` | `PASS` |  | 23 | 33 | 6214 | 'CGameScriptInterface' has not been declared |
+| 75 | `0x0050A650` | `CWorldMap::GetMapNavigationAreaInit` | `manual-lift` | `PASS` |  | 26 | 93 | 25507 | use of enum 'EHeroMorphType' without previous declaration |
+| 76 | `0x00897150` | `CGameScriptInterface::CGameScriptInterface::UnSetThingAndCarriedItemsNotAffectedByScreenFilter` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 17 | 2298 |  |
+| 77 | `0x00896060` | `CGameScriptInterface::CGameScriptInterface::SetVillageLimbo` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 17 | 2540 | incomplete type 'CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >' used in nested name specifier |
+| 78 | `0x00897B10` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasCurrentMarriage` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 22 | 3511 | 'reinterpret_cast' from integer to pointer |
+| 79 | `0x00897BD0` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasChildren` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 3699 |  |
+| 80 | `0x0089B4D0` | `CGameScriptInterface::CGameScriptInterface::RemoveHeroHairstyle` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 3883 |  |
+| 81 | `0x008A1590` | `CGameScriptInterface::CGameScriptInterface::GetBestTimePairs` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 2907 | 'reinterpret_cast' from integer to pointer |
+| 82 | `0x008A15F0` | `CGameScriptInterface::CGameScriptInterface::GetBestTimeSorting` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 2923 | 'reinterpret_cast' from integer to pointer |
+| 83 | `0x008A17D0` | `CGameScriptInterface::CGameScriptInterface::GetBestTimeGuessTheAddition` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 24 | 2925 | 'reinterpret_cast' from integer to pointer |
+| 84 | `0x00897C30` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasMurderedWife` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 25 | 3866 |  |
+| 85 | `0x00897B70` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasDivorcedMarriage` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 25 | 3958 |  |
+| 86 | `0x00897C90` | `CGameScriptInterface::CGameScriptInterface::GetNumberOfTimesHeroHasHadSex` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 25 | 4150 | 'reinterpret_cast' from integer to pointer |
+| 87 | `0x008A16B0` | `CGameScriptInterface::CGameScriptInterface::GetBestScoreCoinGolfOakVale` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 25 | 3055 | 'reinterpret_cast' from integer to pointer |
+| 88 | `0x00897030` | `CGameScriptInterface::CGameScriptInterface::IsToFailQuestOnDeath` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 3608 | 'reinterpret_cast' from integer to pointer |
+| 89 | `0x00897480` | `CGameScriptInterface::CGameScriptInterface::IsPlayerWieldingWeapon` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 3816 | 'reinterpret_cast' from integer to pointer |
+| 90 | `0x00897AA0` | `CGameScriptInterface::CGameScriptInterface::GetHeroHasMarried` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 4053 | 'reinterpret_cast' from integer to pointer |
+| 91 | `0x0089EF30` | `CGameScriptInterface::CGameScriptInterface::SetMoralityChangingAsEnabled` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 4105 | 'reinterpret_cast' from integer to pointer |
+| 92 | `0x00897CF0` | `CGameScriptInterface::CGameScriptInterface::SetNumberOfTimesHeroHasHadSex` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 4233 | 'reinterpret_cast' from integer to pointer |
+| 93 | `0x0089B450` | `CGameScriptInterface::CGameScriptInterface::ChangeHeroHairstyle` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 26 | 4577 | 'reinterpret_cast' from integer to pointer |
+| 94 | `0x00898540` | `CGameScriptInterface::CGameScriptInterface::SetGuardsIgnoreCrimes` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 3851 | 'reinterpret_cast' from integer to pointer |
+| 95 | `0x00897D50` | `CGameScriptInterface::CGameScriptInterface::SetHeroAsHavingHadSex` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 4045 | 'reinterpret_cast' from integer to pointer |
+| 96 | `0x00897DB0` | `CGameScriptInterface::CGameScriptInterface::SetHeroAsHavingHadGaySex` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 4116 | 'reinterpret_cast' from integer to pointer |
+| 97 | `0x008A12A0` | `CGameScriptInterface::CGameScriptInterface::GetNumHousesOwned` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 4167 | 'reinterpret_cast' from integer to pointer |
+| 98 | `0x00896E60` | `CGameScriptInterface::CGameScriptInterface::SetPreferredQuickAccessItem` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 27 | 4497 | 'reinterpret_cast' from integer to pointer |
+| 99 | `0x00897090` | `CGameScriptInterface::CGameScriptInterface::SetWhetherToFailQuestOnDeath` | `semantic-review` | `PASS` | possible-end-sentinel-dereference | 0 | 28 | 3143 |  |
+| 100 | `0x00898DB0` | `CGameScriptInterface::CGameScriptInterface::TakeObjectFromHero` | `semantic-review` | `PASS` | possible-end-sentinel-dereference;process-termination | 0 | 28 | 4845 |  |
 
 ## Semantic-review quarantine
 

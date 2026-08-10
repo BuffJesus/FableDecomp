@@ -5494,11 +5494,11 @@
       "address": "0x008A86C0",
       "class_name": "",
       "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
-      "success": false,
+      "success": true,
       "rounds_used": 4,
-      "verdict": "FAIL",
+      "verdict": "PASS",
       "parity_status": "red",
-      "timestamp": "2026-08-07T11:14:16"
+      "timestamp": "2026-08-09T17:30:51"
     },
     "008a9c40": {
       "address": "0x008A9C40",
@@ -17851,6 +17851,16 @@
       "verdict": "PASS",
       "parity_status": "green",
       "timestamp": "2026-08-07T12:56:54"
+    },
+    {
+      "address": "0x008A86C0",
+      "class_name": "",
+      "function_name": "?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z",
+      "success": true,
+      "rounds_used": 4,
+      "verdict": "PASS",
+      "parity_status": "red",
+      "timestamp": "2026-08-09T17:30:51"
     }
   ]
 }

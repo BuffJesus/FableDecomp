@@ -746,7 +746,7 @@ address	module	manifest_name	checker_verdict	generated_owner	generated_method	ma
 008a7930	CGameScriptInterface	CGameScriptInterface::ClearIsGossipForPlayer	PASS	CGameScriptInterface	ClearIsGossipForPlayer	void	void __thiscall	0	0		PASS	
 008a7980	CGameScriptInterface	CGameScriptInterface::EntityStopFollowing	PASS	CGameScriptInterface	EntityStopFollowing	void	void __thiscall	1	1		PASS	
 008a7ec0	CGameScriptInterface	CGameScriptInterface::EntitySetThingAsAllyOfThing	PASS	CGameScriptInterface	EntitySetThingAsAllyOfThing	void	void	2	2		PASS	
-008a86c0	CGameScriptInterface	CGameScriptInterface::GetAllCreaturesInAreaWithScriptName	FAIL	CGameScriptInterface	GetAllCreaturesInAreaWithScriptName	long	long	4	4		PASS	
+008a86c0	CGameScriptInterface	CGameScriptInterface::GetAllCreaturesInAreaWithScriptName	PASS	CGameScriptInterface	GetAllCreaturesInAreaWithScriptName	long	int32_t	4	4		PASS	
 008a89d0	CGameScriptInterface	CGameScriptInterface::GetAllCreaturesExcludingHero	PASS	CGameScriptInterface	GetAllCreaturesExcludingHero	long	int	1	1		PASS	
 008a8c60	CGameScriptInterface	CGameScriptInterface::EntitySetAsSittingOnFloor	PASS	CGameScriptInterface	EntitySetAsSittingOnFloor	void	void __thiscall	2	2		PASS	
 008a8e40	CGameScriptInterface	CGameScriptInterface::EntityDecapitate	PASS	CGameScriptInterface	EntityDecapitate	void	void __thiscall	1	1		PASS	

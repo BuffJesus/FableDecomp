@@ -437,16 +437,16 @@ rank	address	module	name	retail_bytes	candidate_source_bytes	checker_verdict	fir
 436	00898410	CGameScriptInterface	CGameScriptInterface::SetHeroWeaponsAsUsable	0	7742	PASS	'reinterpret_cast' from integer to pointer
 437	00681cd0	CGameScriptInterface	CGameScriptInterface::SetOpinionReactionMask	0	7763	PASS	invalid use of incomplete type 'class CGameScriptInterface'
 438	00898340	CGameScriptInterface	CGameScriptInterface::SetHeroWillAsUsable	0	7792	PASS	'reinterpret_cast' from integer to pointer
-439	00892850	CGameScriptInterface	CGameScriptInterface::AddScreenMessage	0	8341	PASS	
-440	008a9ae0	CGameScriptInterface	CGameScriptInterface::MsgOnBoastsMade	0	8369	PASS	field 'boastText' has incomplete type 'CCharString'
-441	00896b60	CGameScriptInterface	CGameScriptInterface::KickOffQuestStartScreen	0	8379	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-442	008a0260	CGameScriptInterface	CGameScriptInterface::GiveThingBestEnemyTarget	0	8469	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-443	008a0cb0	CGameScriptInterface	CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing	0	8729	PASS	invalid use of incomplete type 'class CGameScriptInterface'
-444	00895190	CGameScriptInterface	CGameScriptInterface::GiveThingItemInSlot	0	8843	PASS	
-445	008981c0	CGameScriptInterface	CGameScriptInterface::AddTattooToHero	0	9170	PASS	static assertion failed
-446	0089f300	CGameScriptInterface	CGameScriptInterface::CreateCreatureNearby	0	9223	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
-447	00401c00	_global	GFHandleSystemInitError	0	9567	PASS	
-448	008a86c0	CGameScriptInterface	CGameScriptInterface::GetAllCreaturesInAreaWithScriptName	0	9753	FAIL	'CThingSearchTools' does not name a type
+439	008a86c0	CGameScriptInterface	CGameScriptInterface::GetAllCreaturesInAreaWithScriptName	0	7865	PASS	'CThingSearchTools' does not name a type
+440	00892850	CGameScriptInterface	CGameScriptInterface::AddScreenMessage	0	8341	PASS	
+441	008a9ae0	CGameScriptInterface	CGameScriptInterface::MsgOnBoastsMade	0	8369	PASS	field 'boastText' has incomplete type 'CCharString'
+442	00896b60	CGameScriptInterface	CGameScriptInterface::KickOffQuestStartScreen	0	8379	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+443	008a0260	CGameScriptInterface	CGameScriptInterface::GiveThingBestEnemyTarget	0	8469	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+444	008a0cb0	CGameScriptInterface	CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing	0	8729	PASS	invalid use of incomplete type 'class CGameScriptInterface'
+445	00895190	CGameScriptInterface	CGameScriptInterface::GiveThingItemInSlot	0	8843	PASS	
+446	008981c0	CGameScriptInterface	CGameScriptInterface::AddTattooToHero	0	9170	PASS	static assertion failed
+447	0089f300	CGameScriptInterface	CGameScriptInterface::CreateCreatureNearby	0	9223	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
+448	00401c00	_global	GFHandleSystemInitError	0	9567	PASS	
 449	008a8c60	CGameScriptInterface	CGameScriptInterface::EntitySetAsSittingOnFloor	0	9898	PASS	macro 'offsetof' passed 3 arguments, but takes just 2
 450	004fe7f0	_global	CollectSoundThemeSwitchDefs	0	10096	PASS	static assertion failed
 451	00ee91e0	_global	Script_MakeThingsSpeakNumbered	0	10832	PASS	variable or field 'Script_MakeThingsSpeakNumbered' declared void
