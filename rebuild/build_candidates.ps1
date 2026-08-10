@@ -51471,6 +51471,83 @@ $catalog = @(
         TestSource = '00/c3/CDisplayViewManager_Render_00c31b30_test.cpp'
         PassPattern = '00c31b30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004ae890'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_DrawGetProceduralTexture_004ae890.cpp'
+        TestSource = '00/4a/CWorld_DrawGetProceduralTexture_004ae890_test.cpp'
+        PassPattern = '004ae890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051cde0'
+        Module = 'CWorldMap'
+        Source = '00/51/CWorldMap_GetDimensions_0051cde0.cpp'
+        TestSource = '00/51/CWorldMap_GetDimensions_0051cde0_test.cpp'
+        PassPattern = '0051cde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c73b0'
+        Module = '_global'
+        Source = '00/4c/global_operatornew_004c73b0.cpp'
+        TestSource = '00/4c/global_operatornew_004c73b0_test.cpp'
+        PassPattern = '004c73b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3a780'
+        Module = 'CThingNoiseDef'
+        Source = '00/c3/CThingNoiseDef_Transfer_00c3a780.cpp'
+        TestSource = '00/c3/CThingNoiseDef_Transfer_00c3a780_test.cpp'
+        PassPattern = '00c3a780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c3c980'
+        Module = 'CTCTavernGame'
+        Source = '00/c3/CTCTavernGame_IsBetting_00c3c980.cpp'
+        TestSource = '00/c3/CTCTavernGame_IsBetting_00c3c980_test.cpp'
+        PassPattern = '00c3c980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c46f20'
+        Module = 'C2DVector'
+        Source = '00/c4/C2DVector_operator_00c46f20.cpp'
+        TestSource = '00/c4/C2DVector_operator_00c46f20_test.cpp'
+        PassPattern = '00c46f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c52a80'
+        Module = '_global'
+        Source = '00/c5/global_CPUAheadCounterCallback_00c52a80.cpp'
+        TestSource = '00/c5/global_CPUAheadCounterCallback_00c52a80_test.cpp'
+        PassPattern = '00c52a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd3211'
+        Module = 'CActiveFile'
+        Source = '00/cd/CActiveFile_OnReadFinished_00cd3211.cpp'
+        TestSource = '00/cd/CActiveFile_OnReadFinished_00cd3211_test.cpp'
+        PassPattern = '00cd3211_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d96f0'
+        Module = '_global'
+        Source = '00/5d/global_GetInventoryCategory_005d96f0.cpp'
+        TestSource = '00/5d/global_GetInventoryCategory_005d96f0_test.cpp'
+        PassPattern = '005d96f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dc000'
+        Module = '_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std'
+        Source = '00/5d/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_005dc000.cpp'
+        TestSource = '00/5d/ConsvalstdallocatorstdpairunsignedlongCAnimationEntrystdpairunsignedlongCAnimati_pairunsignedlongclassCAnimationEntry_005dc000_test.cpp'
+        PassPattern = '005dc000_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006404b0'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/64/CTCInventoryAbilities_AddLearnedExpression_006404b0.cpp'
+        TestSource = '00/64/CTCInventoryAbilities_AddLearnedExpression_006404b0_test.cpp'
+        PassPattern = '006404b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
