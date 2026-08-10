@@ -51134,6 +51134,175 @@ $catalog = @(
         TestSource = '00/96/CAIStateGroupTavernServer_WanderWithinTavern_00966ad0_test.cpp'
         PassPattern = 'OK_00966ad0'
     }
+    [pscustomobject]@{
+        Address = '00aeaab0'
+        Module = '_global'
+        Source = '00/ae/global_GFGetPreMainMemoryUsed_00aeaab0.cpp'
+        TestSource = '00/ae/global_GFGetPreMainMemoryUsed_00aeaab0_test.cpp'
+        PassPattern = '00aeaab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a76320'
+        Module = 'CAIStateGroup_EnemyCreatureBase'
+        Source = '00/a7/CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00a76320.cpp'
+        TestSource = '00/a7/CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00a76320_test.cpp'
+        PassPattern = '00a76320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeaa00'
+        Module = '_global'
+        Source = '00/ae/global_GetMaxDrawDistance_00aeaa00.cpp'
+        TestSource = '00/ae/global_GetMaxDrawDistance_00aeaa00_test.cpp'
+        PassPattern = '00aeaa00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeaa60'
+        Module = '_global'
+        Source = '00/ae/global_GetMaxDrawDistance_00aeaa60.cpp'
+        TestSource = '00/ae/global_GetMaxDrawDistance_00aeaa60_test.cpp'
+        PassPattern = '00aeaa60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00994480'
+        Module = 'CFileDataOutputStream'
+        Source = '00/99/CFileDataOutputStream_WriteCFileDataOutputStreamUAEXPBXJZ_00994480.cpp'
+        TestSource = '00/99/CFileDataOutputStream_WriteCFileDataOutputStreamUAEXPBXJZ_00994480_test.cpp'
+        PassPattern = '00994480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099b2a0'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_Sizeof_0099b2a0.cpp'
+        TestSource = '00/99/CWideString_Sizeof_0099b2a0_test.cpp'
+        PassPattern = '0099b2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099e500'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_Sizeof_0099e500.cpp'
+        TestSource = '00/99/CCharString_Sizeof_0099e500_test.cpp'
+        PassPattern = '0099e500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a73b0'
+        Module = 'CTCMapwho'
+        Source = '00/9a/CTCMapwho_OnDie_009a73b0.cpp'
+        TestSource = '00/9a/CTCMapwho_OnDie_009a73b0_test.cpp'
+        PassPattern = '009a73b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ad390'
+        Module = 'COptimisedPrimitive'
+        Source = '00/9a/COptimisedPrimitive_ActualToUniqueIndex_009ad390.cpp'
+        TestSource = '00/9a/COptimisedPrimitive_ActualToUniqueIndex_009ad390_test.cpp'
+        PassPattern = '009ad390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f26b0'
+        Module = 'CMemoryAllocator'
+        Source = '00/9f/CMemoryAllocator_ClearPerformanceStats_009f26b0.cpp'
+        TestSource = '00/9f/CMemoryAllocator_ClearPerformanceStats_009f26b0_test.cpp'
+        PassPattern = '009f26b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f9e60'
+        Module = 'CTexture'
+        Source = '00/9f/CTexture_GenerateMipmaps_009f9e60.cpp'
+        TestSource = '00/9f/CTexture_GenerateMipmaps_009f9e60_test.cpp'
+        PassPattern = '009f9e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fd640'
+        Module = 'CEngine'
+        Source = '00/9f/CEngine_ChangeCameraAngle_009fd640.cpp'
+        TestSource = '00/9f/CEngine_ChangeCameraAngle_009fd640_test.cpp'
+        PassPattern = '009fd640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0b6c0'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/a0/CEnginePrimitiveRenderer_ClearAllChildPrimitives_00a0b6c0.cpp'
+        TestSource = '00/a0/CEnginePrimitiveRenderer_ClearAllChildPrimitives_00a0b6c0_test.cpp'
+        PassPattern = '00a0b6c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a19ae0'
+        Module = 'CNavigatorBase'
+        Source = '00/a1/CNavigatorBase_CalculateNavigableWidthOfLine_00a19ae0.cpp'
+        TestSource = '00/a1/CNavigatorBase_CalculateNavigableWidthOfLine_00a19ae0_test.cpp'
+        PassPattern = '00a19ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a35b50'
+        Module = '_global'
+        Source = '00/a3/global_ConstructString_00a35b50.cpp'
+        TestSource = '00/a3/global_ConstructString_00a35b50_test.cpp'
+        PassPattern = '00a35b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a47040'
+        Module = 'CTCMapwho'
+        Source = '00/a4/CTCMapwho_OnDie_00a47040.cpp'
+        TestSource = '00/a4/CTCMapwho_OnDie_00a47040_test.cpp'
+        PassPattern = '00a47040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aba370'
+        Module = 'CWorldMap'
+        Source = '00/ab/CWorldMap_DrawGetNoMaps_00aba370.cpp'
+        TestSource = '00/ab/CWorldMap_DrawGetNoMaps_00aba370_test.cpp'
+        PassPattern = '00aba370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aecbf0'
+        Module = 'CTCMapwho'
+        Source = '00/ae/CTCMapwho_OnDie_00aecbf0.cpp'
+        TestSource = '00/ae/CTCMapwho_OnDie_00aecbf0_test.cpp'
+        PassPattern = '00aecbf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aecca0'
+        Module = 'CTCMapwho'
+        Source = '00/ae/CTCMapwho_OnDie_00aecca0.cpp'
+        TestSource = '00/ae/CTCMapwho_OnDie_00aecca0_test.cpp'
+        PassPattern = '00aecca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b28b40'
+        Module = 'CIEngine'
+        Source = '00/b2/CIEngine_PeekGlobalDiffuseColour_00b28b40.cpp'
+        TestSource = '00/b2/CIEngine_PeekGlobalDiffuseColour_00b28b40_test.cpp'
+        PassPattern = '00b28b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b84290'
+        Module = 'CEngineSubPrimitiveRenderer'
+        Source = '00/b8/CEngineSubPrimitiveRenderer_SetMaxSortDistance_00b84290.cpp'
+        TestSource = '00/b8/CEngineSubPrimitiveRenderer_SetMaxSortDistance_00b84290_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Oa'
+        PassPattern = '00b84290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9cfa0'
+        Module = 'CEngineInternalPrimitiveStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitiveStaticMesh_SetPosition_00b9cfa0.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitiveStaticMesh_SetPosition_00b9cfa0_test.cpp'
+        PassPattern = '00b9cfa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9cfc0'
+        Module = 'CEngineInternalPrimitiveStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitiveStaticMesh_GetObjectTransform_00b9cfc0.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitiveStaticMesh_GetObjectTransform_00b9cfc0_test.cpp'
+        PassPattern = '00b9cfc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3b8c0'
+        Module = 'CEngineResourceManager'
+        Source = '00/b3/CEngineResourceManager_ProcessLoading_00b3b8c0.cpp'
+        TestSource = '00/b3/CEngineResourceManager_ProcessLoading_00b3b8c0_test.cpp'
+        PassPattern = '00b3b8c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
