@@ -158,16 +158,27 @@ Steps 1–4 are pure reconstruction-side (no live RE needed) and can land now;
   rejected `screen==5`, making the "(Gamepad)" title dead code — **fixed**
   (guard `screen > 5`), so screen 5 is now reachable and shows its title over
   the redefine backdrop. Compile-verified; visual-QA of the title pending.
-- **[menu] TODO** (step 3): the reconstruction options submenu is the retail
-  4-row list (`g_OptionsRowChildren[4]`, `g_OptionsSelection < 4`,
-  `InitialiseOptionsRowStates`). Adding the 5th "(Gamepad)" row means growing
-  that array + clamp + retail list-child layout — layout-sensitive, needs the
-  headless visual-QA cycle (build_bootstrap `-RetailFrontendBank` → screenshot).
-- **[screen] TODO** (step 4): `AppendRedefineActionText` / `AppendRedefineKeyText`
-  are hard-gated `g_DetailScreen != 4`. Screen 5 needs: (a) the same action-row
-  loop, (b) a per-action *gamepad* binding-value array (analogous to
-  `g_RedefineKeyValues`) whose value column renders `kGamepadKeyValueLabels[...]`
-  via the glyph-text path (fallback "Unbound"). Also the hover setters
-  (`FableSetVisualFrontendRedefineHover` etc., gated `!= 4`).
+- **[screen] DONE (scaffold, compile-verified)**: screen 5 renders over screen
+  4's Redefine Keys backdrop (`overlayFrame = 3 + (screen==5?4:screen)` since 5
+  has no baked art) with the shared action-label column (`AppendRedefineActionText`
+  now gated `screen==4||5`) and a new `AppendRedefineGamepadValueText` value
+  column. Value column shows neutral "Unbound" — the per-row action→
+  `EXboxControllerButton` default is NOT wired because only movement/DPad are
+  HIGH-confidence in CONTROLLER_ENUMS.md (face/shoulder/trigger = LOW). Not yet
+  visually verified (screen 5 is unreachable in-game until the menu row lands).
+- **[menu] TODO** (step 3): the interactive host's options submenu is the retail
+  4-row list — `ActivateVisualOptionsSelection` (guard `g_VisualOptionsSelection
+  >= 4`, `detailScreens[4] = {1,3,2,4}`) + `FindVisualOptionsMenuRow` geometry +
+  `g_OptionsRowChildren[4]` (all in visual_boot_checkpoint.cpp). A 5th
+  "(Gamepad)" row needs: guard→5, `detailScreens[5]={1,3,2,4,5}`, extended
+  hit-test rows, AND a 5th *visible* row (authored label/art over the baked
+  4-row menu). Layout-sensitive → needs the headless visual-QA cycle
+  (`build_bootstrap.ps1 -RetailFrontendBank …/data/graphics/pc/frontend.big` →
+  synth-click → screenshot); do NOT do blind (risks regressing the 4-row menu).
+- **[bindings] TODO** (step 4/5): per-row gamepad value column needs a
+  higher-confidence action→button map than CONTROLLER_ENUMS.md's LOW cluster
+  (movement/DPad are usable now; rest need a runtime capture or a 2nd source).
+- **[hover] TODO**: `FableSetVisualFrontendRedefineHover` etc. are gated `!= 4`;
+  generalize to screen 5 for row highlighting once the screen is reachable.
 - **[probe/scheme/patch] TODO** (steps 5–8): unchanged; need the x32dbg capture
   of the per-input record encoding, then the base-game detour.
