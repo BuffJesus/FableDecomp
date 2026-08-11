@@ -55519,6 +55519,160 @@ $catalog = @(
         TestSource = '00/4d/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_004dfc27_test.cpp'
         PassPattern = 'DESTROY_RANGE_OK'
     }
+    [pscustomobject]@{
+        Address = '004e74f8'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/4e/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_004e74f8.cpp'
+        TestSource = '00/4e/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_004e74f8_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e8bff'
+        Module = '_global'
+        Source = '00/4e/global_Fillnunsignedlongunsignedintunsignedlong_004e8bff.cpp'
+        TestSource = '00/4e/global_Fillnunsignedlongunsignedintunsignedlong_004e8bff_test.cpp'
+        PassPattern = 'FILLN_OK'
+    }
+    [pscustomobject]@{
+        Address = '00529cc0'
+        Module = 'CTCInventoryItem'
+        Source = '00/52/CTCInventoryItem_OnDie_00529cc0.cpp'
+        TestSource = '00/52/CTCInventoryItem_OnDie_00529cc0_test.cpp'
+        PassPattern = 'ONDIE_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00529f30'
+        Module = 'CTCInventoryItem'
+        Source = '00/52/CTCInventoryItem_OnDie_00529f30.cpp'
+        TestSource = '00/52/CTCInventoryItem_OnDie_00529f30_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00564870'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/56/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00564870.cpp'
+        TestSource = '00/56/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00564870_test.cpp'
+        PassPattern = 'DESTVAL_ORDER_OK'
+    }
+    [pscustomobject]@{
+        Address = '00566530'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/56/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00566530.cpp'
+        TestSource = '00/56/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00566530_test.cpp'
+        PassPattern = 'DESTVAL_PAIR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00578c0f'
+        Module = '_Fill<std::pair<unsigned_long,CSoundPair>*,std'
+        Source = '00/57/FillstdpairunsignedlongCSoundPairstd_pairunsignedlongclassCSoundPair_00578c0f.cpp'
+        TestSource = '00/57/FillstdpairunsignedlongCSoundPairstd_pairunsignedlongclassCSoundPair_00578c0f_test.cpp'
+        PassPattern = 'FILL_PASS_OK'
+    }
+    [pscustomobject]@{
+        Address = '0057ed0b'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/57/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0057ed0b.cpp'
+        TestSource = '00/57/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0057ed0b_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '0057ed26'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/57/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0057ed26.cpp'
+        TestSource = '00/57/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0057ed26_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '005806c4'
+        Module = 'CPersistContext'
+        Source = '00/58/CPersistContext_Transferlong_005806c4.cpp'
+        TestSource = '00/58/CPersistContext_Transferlong_005806c4_test.cpp'
+        PassPattern = 'TRANSFER_LONG_OK'
+    }
+    [pscustomobject]@{
+        Address = '005813bc'
+        Module = 'vector<EWeaponClass'
+        Source = '00/58/vectorEWeaponClass_UmoveEWeaponClass_005813bc.cpp'
+        TestSource = '00/58/vectorEWeaponClass_UmoveEWeaponClass_005813bc_test.cpp'
+        PassPattern = 'UMOVE_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00594697'
+        Module = '_Destroy_range<std::allocator<std'
+        Source = '00/59/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_00594697.cpp'
+        TestSource = '00/59/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_00594697_test.cpp'
+        PassPattern = 'DESTROY_RANGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '005bcae3'
+        Module = 'CTCInventoryBase'
+        Source = '00/5b/CTCInventoryBase_GetHighlightedItem_005bcae3.cpp'
+        TestSource = '00/5b/CTCInventoryBase_GetHighlightedItem_005bcae3_test.cpp'
+        PassPattern = 'GETHIGHLIGHTEDITEM_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c2a8e'
+        Module = '_Destroy_range<std::allocator<std'
+        Source = '00/5c/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_005c2a8e.cpp'
+        TestSource = '00/5c/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_005c2a8e_test.cpp'
+        PassPattern = 'DESTROYRANGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '005cc300'
+        Module = 'CPersistContext'
+        Source = '00/5c/CPersistContext_Transferlong_005cc300.cpp'
+        TestSource = '00/5c/CPersistContext_Transferlong_005cc300_test.cpp'
+        PassPattern = 'TRANSFER_LONG_OK'
+    }
+    [pscustomobject]@{
+        Address = '005d8c6a'
+        Module = 'CPersistContext'
+        Source = '00/5d/CPersistContext_Transferlong_005d8c6a.cpp'
+        TestSource = '00/5d/CPersistContext_Transferlong_005d8c6a_test.cpp'
+        PassPattern = 'TRANSFER_LONG_OK'
+    }
+    [pscustomobject]@{
+        Address = '005f8220'
+        Module = '_global'
+        Source = '00/5f/global_Fillnunsignedlongunsignedintunsignedlong_005f8220.cpp'
+        TestSource = '00/5f/global_Fillnunsignedlongunsignedintunsignedlong_005f8220_test.cpp'
+        PassPattern = 'FILLN_OK'
+    }
+    [pscustomobject]@{
+        Address = '005f9a7d'
+        Module = '_Destroy_range<std::allocator<std'
+        Source = '00/5f/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_005f9a7d.cpp'
+        TestSource = '00/5f/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_005f9a7d_test.cpp'
+        PassPattern = 'DESTROY_RANGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '005f9bb2'
+        Module = 'CTavernTableDef'
+        Source = '00/5f/CTavernTableDef_operator_005f9bb2.cpp'
+        TestSource = '00/5f/CTavernTableDef_operator_005f9bb2_test.cpp'
+        PassPattern = 'TAVERN_ASSIGN_OK'
+    }
+    [pscustomobject]@{
+        Address = '0062ea80'
+        Module = 'CCombatActionBase'
+        Source = '00/62/CCombatActionBase_GetActionMovementVector_0062ea80.cpp'
+        TestSource = '00/62/CCombatActionBase_GetActionMovementVector_0062ea80_test.cpp'
+        PassPattern = 'MOVEVEC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00659085'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_InitialiseSecuritySweeps_00659085.cpp'
+        TestSource = '00/65/CTCVillage_InitialiseSecuritySweeps_00659085_test.cpp'
+        PassPattern = 'SWEEPS_INIT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00661ea0'
+        Module = 'CThing'
+        Source = '00/66/CThing_SetAsGameStatePersisted_00661ea0.cpp'
+        TestSource = '00/66/CThing_SetAsGameStatePersisted_00661ea0_test.cpp'
+        PassPattern = 'PERSIST_OK'
+    }
 )
 
 $requestedAddresses = @(
