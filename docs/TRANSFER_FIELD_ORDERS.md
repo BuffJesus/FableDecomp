@@ -1,9 +1,10 @@
 # Transfer<T> field orders — extraction for `jamen/fable-defs`
 
-**Artifact:** `refs/transfer_field_orders.json` — 262 def classes, **4,465** named+typed+ordered field
-controls. Generated 2026-08-10; sub-component collection pass + base-class flatten landed same day.
+**Artifact:** `refs/transfer_field_orders.json` — **268** def classes, **5,133** named+typed+ordered
+field controls. Generated 2026-08-10; sub-component collection + base-class flatten + namespaced-def
+recovery landed by 2026-08-11.
 
-**Status: complete.** **261/262** classes exact-match fable-defs field order. The single remainder
+**Status: complete.** **267/268** classes exact-match fable-defs field order. The single remainder
 (`COpinionSourceDef`) is an array-unroll artifact, not a data gap — see the residual section below.
 
 ## Why this exists
@@ -36,7 +37,7 @@ See docs/EGOCORE_ASSESSMENT_20260731.md §B5 for the relationship.
   `OpenerObject` at field offset `0x34`**, which we had independently RE-verified (CLAUDE.md chest
   facts). The offset falling out of a totally separate derivation cross-checks the extractor.
 - **`CAbilityDef`** → `Ability : enum EHeroAbility` = fable-defs `ability.rs` (`ability: HeroAbility`).
-- **261 / 262 classes** are an exact order-preserving supersequence of fable-defs' `#[def("…")]`
+- **267 / 268 classes** are an exact order-preserving supersequence of fable-defs' `#[def("…")]`
   order. Each class carries `"fable_defs_order_match": "exact" | "partial(...)"`.
 
 ## Sub-component collection fields — DONE (2026-08-10)
@@ -69,24 +70,35 @@ whereas our linear disasm sees the single `CPersistContext::Transfer` call insid
 `partial(array-unrolled:BinaryReactionx79,BinaryOpinionx5)`. Unrolling would require recovering the
 loop trip count from the struct; the compressed single entry is the faithful Transfer-order record.
 
-6 fable-defs classes have no matching `*Def::Transfer` symbol (UI/frontend: `CUiDef`, `CUiIconsDef`,
-`CUiMiscThingsDef`, `CUiStateDef`, `CUILocaleGraphicsDef`, `CDialogueLayerDef`) — different transfer
-signature; not yet located.
+## Namespaced UI/dialogue defs — RECOVERED (2026-08-11)
+
+The 6 defs previously "not located" were simply **namespaced** — the extractor's discovery regex
+required `@@` immediately after the `Def` name, so it skipped symbols carrying `@N<Namespace>@@`:
+- `NUISystem`: `CUIDef` (@0x6758f0, 109 fields), `CUIIconsDef`, `CUIMiscThingsDef` (133),
+  `CUIStateDef`, `CUILocaleGraphicsDef`.
+- `NSpeechGainManager`: `CDialogueLayerDef` (@0x473179).
+
+`tx_extract.py`'s regex now accepts an optional namespace (`_CLS_RE`), and `tx_ui_merge.py` merges
+these 6 into the JSON keyed by the **binary** class name with a `"namespace"` field. Where the binary
+casing differs from fable-defs' struct (`CUIDef` vs fable-defs `CUiDef`), the entry carries a
+`"fable_defs_class"` alias so consumers/`tx_flatten` join correctly. All 6 score **exact**.
 
 ## Resume / next steps (core deliverable is DONE — these are optional polish)
 
 1. ~~**Base-chain flatten:**~~ **DONE 2026-08-11** (`tx_flatten.py`; 251→261 exact). See the
    "Base-class flatten" section above.
-2. **6 UI defs:** grep `ghidra_out/egor_pdb_names.tsv` for `Transfer.*CUiDef` etc.; they likely use a
-   non-`UAEXAAVCPersistContext` signature. Low value (frontend-only).
+2. ~~**6 UI defs:**~~ **DONE 2026-08-11** (`tx_ui_merge.py`; they were namespaced, not missing). See
+   "Namespaced UI/dialogue defs" above.
 3. **Ship it (session option (b), not yet done):** attach `refs/transfer_field_orders.json` to jamen or
    open an issue on `jamen/fable-defs` referencing the per-class `fable_defs_order_match` flags. The
-   pitch is now stronger: 261/262 exact, single remainder is a documented array-unroll.
+   pitch is now stronger: **267/268 exact**, single remainder is a documented array-unroll.
 
 ## How to regenerate
 
-`python tools/transfer_extract/tx_extract.py --all` (writes `scratchpad_out.json`) → move to the
-scratchpad as `transfer_orders.json` → `python tools/transfer_extract/tx_finalize.py` (writes
-`refs/transfer_field_orders.json`). `tx_compare.py` prints the fable-defs agreement report. Needs
-`debug_build/ego_r.exe` + `ghidra_out/egor_pdb_names.tsv` + the `fable-defs` clone at
-`C:\Users\Cornelio\Documents\EgoCoreInspect\fable-defs`. `pip install capstone`.
+`python tools/transfer_extract/tx_extract.py --all` (writes `scratchpad_out.json`; regex now also
+captures namespaced defs) → move to the scratchpad as `transfer_orders.json` →
+`python tools/transfer_extract/tx_finalize.py` (writes `refs/transfer_field_orders.json`) →
+`python tools/transfer_extract/tx_ui_merge.py --write` (merges the 6 namespaced UI/dialogue defs) →
+`python tools/transfer_extract/tx_flatten.py --write` (inlines base markers + re-scores). `tx_compare.py`
+prints the fable-defs agreement report. Needs `debug_build/ego_r.exe` + `ghidra_out/egor_pdb_names.tsv`
++ the `fable-defs` clone at `C:\Users\Cornelio\Documents\EgoCoreInspect\fable-defs`. `pip install capstone`.

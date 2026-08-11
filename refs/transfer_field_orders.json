@@ -21,10 +21,11 @@
    "W4X": "enum X (i32 wire)",
    "TransferVector<T>": "Vec<T>"
   },
-  "validation": "CChestDef 6/6 vs fable-defs chest.rs incl. OpenerObject off=0x34 (independently RE-verified). 251/262 classes are an exact order-preserving supersequence of fable-defs #[def] order.",
-  "known_gap": "Sub-component COLLECTION fields (Vec of sub-def: Abilities/Waves/Creatures/Meshes/...) ARE captured (inline TransferVectorOfSubComponents<T>, name+order+element-type recovered). Residual 11 'partial' classes are NOT a data gap: they are base-class FLATTENING differences - fable-defs inlines base fields (e.g. CThingBaseDef's Components/PersistenceFlags/Health) into each concrete C*Def, while our extraction chains via a 'base:<Class>' marker entry, so the fields live under that base class's own record. 6 UI/frontend defs (CUiDef/CUiIconsDef/CUiMiscThingsDef/CUiStateDef/CUILocaleGraphicsDef/CDialogueLayerDef) have no matching *Def::Transfer symbol (different transfer signature) - TODO if wanted.",
+  "validation": "CChestDef 6/6 vs fable-defs chest.rs incl. OpenerObject off=0x34 (independently RE-verified). 267/268 classes are an exact order-preserving supersequence of fable-defs #[def] order; the single remainder COpinionSourceDef is an array-unroll (see known_gap).",
+  "known_gap": "Sub-component COLLECTION fields (Vec of sub-def: Abilities/Waves/Creatures/Meshes/...) ARE captured (inline TransferVectorOfSubComponents<T>). Base-class fields are inlined (see base_fields_inlined). The lone partial COpinionSourceDef is NOT a data gap: fable-defs unrolls two array fields (BinaryReaction x79, BinaryOpinion x5 - one #[def] per element) while our linear disasm sees the single Transfer-in-loop once; every field NAME is present.",
   "license": "Derived from our own RE of a freely-distributed debug build; shareable. fable-defs is Zlib.",
-  "base_fields_inlined": "base:<Class> markers expanded inline; inlined fields tagged from_base"
+  "base_fields_inlined": "base:<Class> markers expanded inline; inlined fields tagged from_base",
+  "namespaced_classes": "6 defs live in a namespace and were merged via tx_ui_merge.py: NUISystem CUIDef/CUIIconsDef/CUIMiscThingsDef/CUIStateDef/CUILocaleGraphicsDef and NSpeechGainManager CDialogueLayerDef. Where binary casing differs from fable-defs (CUIDef vs CUiDef) the entry carries a fable_defs_class alias."
  },
  "defs": {
   "CAICreatureWillPowerIndicatorDef": {
@@ -25887,6 +25888,2131 @@
      "off": 11
     }
    ],
+   "fable_defs_order_match": "exact"
+  },
+  "CDialogueLayerDef": {
+   "addr": "0x473179",
+   "namespace": "NSpeechGainManager",
+   "fields": [
+    {
+     "name": "ResponseTimeSecsAttack",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 40
+    },
+    {
+     "name": "ResponseTimeSecsRelease",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 44
+    },
+    {
+     "name": "GainLevelHigh",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 48
+    },
+    {
+     "name": "GainLevelMid",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 52
+    },
+    {
+     "name": "GainLevelLow",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 56
+    },
+    {
+     "name": "FocusShiftDistanceThreshold",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": null
+    }
+   ],
+   "fable_defs_order_match": "exact"
+  },
+  "CUIDef": {
+   "addr": "0x6758f0",
+   "namespace": "NUISystem",
+   "fields": [
+    {
+     "name": "Type",
+     "type": "enum EType",
+     "kind": "Transfer",
+     "targ": "W4EType@NUISystem@@",
+     "off": 64
+    },
+    {
+     "name": "Children",
+     "type": "vector<i32(long)>",
+     "kind": "TransferVector",
+     "targ": "J",
+     "off": null
+    },
+    {
+     "name": "MeshIndex",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 84
+    },
+    {
+     "name": "TextValue",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": null
+    },
+    {
+     "name": "Font",
+     "type": "struct CDefString",
+     "kind": "Transfer",
+     "targ": "VCDefString@@",
+     "off": 88
+    },
+    {
+     "name": "Height",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 96
+    },
+    {
+     "name": "Width",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 100
+    },
+    {
+     "name": "ExpansionType",
+     "type": "enum ETableExpansionTypes",
+     "kind": "Transfer",
+     "targ": "W4ETableExpansionTypes@NUISystem@@",
+     "off": 20
+    },
+    {
+     "name": "Sprites",
+     "type": "TransferMap<JW4ETableSprites@NUISystem@@>",
+     "kind": "TransferMap",
+     "targ": "JW4ETableSprites@NUISystem@@",
+     "off": 108
+    },
+    {
+     "name": "HorizontalSeparations",
+     "type": "vector<u32(ulong)>",
+     "kind": "TransferVector",
+     "targ": "K",
+     "off": null
+    },
+    {
+     "name": "VerticalSeparations",
+     "type": "vector<u32(ulong)>",
+     "kind": "TransferVector",
+     "targ": "K",
+     "off": 156
+    },
+    {
+     "name": "States",
+     "type": "vector<subdef struct CUIStateDef>",
+     "kind": "TransferVectorOfSubComponents",
+     "targ": "VCUIStateDef@NUISystem@@",
+     "off": 68
+    },
+    {
+     "name": "TextLineBreak",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 217
+    },
+    {
+     "name": "ScaleText",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 20
+    },
+    {
+     "name": "Independant",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 219
+    },
+    {
+     "name": "MeshType",
+     "type": "enum EEngineGraphicType",
+     "kind": "Transfer",
+     "targ": "W4EEngineGraphicType@@",
+     "off": 188
+    },
+    {
+     "name": "NonScrollingChildren",
+     "type": "vector<u32(ulong)>",
+     "kind": "TransferVector",
+     "targ": "K",
+     "off": 172
+    },
+    {
+     "name": "TextWindowTLX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 192
+    },
+    {
+     "name": "TextWindowTLY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 20
+    },
+    {
+     "name": "TextWindowBRX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 200
+    },
+    {
+     "name": "TextWindowBRY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 204
+    },
+    {
+     "name": "Layer",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 20
+    },
+    {
+     "name": "Angle",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 212
+    },
+    {
+     "name": "PositionIsCenter",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 216
+    },
+    {
+     "name": "ScrollingSpeed",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 20
+    },
+    {
+     "name": "Wrapping",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 348
+    },
+    {
+     "name": "Inverted",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 349
+    },
+    {
+     "name": "PositionOffsetX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 20
+    },
+    {
+     "name": "PositionOffsetY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 354
+    },
+    {
+     "name": "AlphaOffset",
+     "type": "u8(uchar)",
+     "kind": "Transfer",
+     "targ": "E",
+     "off": 358
+    },
+    {
+     "name": "UpX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 20
+    },
+    {
+     "name": "UpY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 292
+    },
+    {
+     "name": "UpZ",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 296
+    },
+    {
+     "name": "ForwardX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 20
+    },
+    {
+     "name": "ForwardY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 304
+    },
+    {
+     "name": "ForwardZ",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 308
+    },
+    {
+     "name": "RotationAxisX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 20
+    },
+    {
+     "name": "RotationAxisY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 316
+    },
+    {
+     "name": "RotationAxisZ",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 320
+    },
+    {
+     "name": "RotationSpeed",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 20
+    },
+    {
+     "name": "AnimationIndex",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 328
+    },
+    {
+     "name": "DownArrow",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 332
+    },
+    {
+     "name": "UpArrow",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 20
+    },
+    {
+     "name": "UpLimit",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 340
+    },
+    {
+     "name": "DownLimit",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 344
+    },
+    {
+     "name": "Scrolling",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 20
+    },
+    {
+     "name": "ComputeOffsetsOnActivate",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 376
+    },
+    {
+     "name": "MinX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 392
+    },
+    {
+     "name": "MinY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 20
+    },
+    {
+     "name": "MaxX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 400
+    },
+    {
+     "name": "MaxY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 404
+    },
+    {
+     "name": "StepX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 20
+    },
+    {
+     "name": "StepY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 412
+    },
+    {
+     "name": "DimensionsX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 384
+    },
+    {
+     "name": "DimensionsY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 20
+    },
+    {
+     "name": "SliderLeft",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 424
+    },
+    {
+     "name": "SliderRight",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 428
+    },
+    {
+     "name": "Action",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 20
+    },
+    {
+     "name": "ActionOnBack",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 228
+    },
+    {
+     "name": "ActionOnSelected",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 232
+    },
+    {
+     "name": "ActionOnUnselected",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 20
+    },
+    {
+     "name": "ActionOnDestruction",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 240
+    },
+    {
+     "name": "ActionOnLeftClicked",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 252
+    },
+    {
+     "name": "ActionOnLeftUnclicked",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 20
+    },
+    {
+     "name": "ActionOnLeftHeld",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 260
+    },
+    {
+     "name": "ActionOnRightClicked",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 264
+    },
+    {
+     "name": "ActionOnDropped",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 20
+    },
+    {
+     "name": "ActionOnDroppedNowhere",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 248
+    },
+    {
+     "name": "PreAction",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 244
+    },
+    {
+     "name": "ActionOnDraggedUp",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 20
+    },
+    {
+     "name": "ActionOnDraggedDown",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 276
+    },
+    {
+     "name": "ActionOnLeftClickedAbove",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 284
+    },
+    {
+     "name": "ActionOnLeftClickedUnder",
+     "type": "enum EActionType",
+     "kind": "Transfer",
+     "targ": "W4EActionType@NUISystem@@",
+     "off": 20
+    },
+    {
+     "name": "InputDelay",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 416
+    },
+    {
+     "name": "DrawFromViewport",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 420
+    },
+    {
+     "name": "TextBankIndex",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 20
+    },
+    {
+     "name": "ActionText",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 436
+    },
+    {
+     "name": "KeyText",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 440
+    },
+    {
+     "name": "Redefiner",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 20
+    },
+    {
+     "name": "UndefinedWarning",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 444
+    },
+    {
+     "name": "ActionMap",
+     "type": "TransferMap<String(CCharString)>",
+     "kind": "TransferMap",
+     "targ": "VCCharString@@K",
+     "off": 452
+    },
+    {
+     "name": "ActionMapAliases",
+     "type": "TransferMap<KK>",
+     "kind": "TransferMap",
+     "targ": "KK",
+     "off": 468
+    },
+    {
+     "name": "ActionOrder",
+     "type": "vector<u32(ulong)>",
+     "kind": "TransferVector",
+     "targ": "K",
+     "off": 484
+    },
+    {
+     "name": "EditBoxParentIsButton",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 500
+    },
+    {
+     "name": "PasswordBox",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 20
+    },
+    {
+     "name": "EditBoxCharLimit",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 504
+    },
+    {
+     "name": "EditBoxUsesIME",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 508
+    },
+    {
+     "name": "MovieFilename",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 512
+    },
+    {
+     "name": "DisallowSpaceAsFirstChar",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 20
+    },
+    {
+     "name": "LayerIndependant",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 516
+    },
+    {
+     "name": "SwappingStates",
+     "type": "vector<u32(ulong)>",
+     "kind": "TransferVector",
+     "targ": "K",
+     "off": null
+    },
+    {
+     "name": "SwappingTimes",
+     "type": "vector<f32>",
+     "kind": "TransferVector",
+     "targ": "M",
+     "off": 536
+    },
+    {
+     "name": "BastardChild",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 20
+    },
+    {
+     "name": "Alignement",
+     "type": "enum ETextAlignement",
+     "kind": "Transfer",
+     "targ": "W4ETextAlignement@NUISystem@@",
+     "off": 556
+    },
+    {
+     "name": "RandomSwap",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 560
+    },
+    {
+     "name": "UseRelativeZoom",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 20
+    },
+    {
+     "name": "UseRelativePosition",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 569
+    },
+    {
+     "name": "HoveredState",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 564
+    },
+    {
+     "name": "LeftClickedState",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 20
+    },
+    {
+     "name": "RightClickedState",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 576
+    },
+    {
+     "name": "ShapeChildren",
+     "type": "vector<u32(ulong)>",
+     "kind": "TransferVector",
+     "targ": "K",
+     "off": null
+    },
+    {
+     "name": "ViewAreaTLX",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 360
+    },
+    {
+     "name": "ViewAreaTLY",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 364
+    },
+    {
+     "name": "ViewAreaBRX",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 20
+    },
+    {
+     "name": "ViewAreaBRY",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 372
+    },
+    {
+     "name": "UseViewArea",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 596
+    },
+    {
+     "name": "PartOfListTree",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 20
+    },
+    {
+     "name": "PCStyle",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 597
+    },
+    {
+     "name": "Sprite2DFlag",
+     "type": "enum EEngineSprite2DFlag",
+     "kind": "Transfer",
+     "targ": "W4EEngineSprite2DFlag@@",
+     "off": null
+    }
+   ],
+   "fable_defs_class": "CUiDef",
+   "fable_defs_order_match": "exact"
+  },
+  "CUIIconsDef": {
+   "addr": "0x43d0e0",
+   "namespace": "NUISystem",
+   "fields": [
+    {
+     "name": "IconFriendRequestReceived",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 64
+    },
+    {
+     "name": "IconFriendRequestReceivedOn",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 68
+    },
+    {
+     "name": "IconFriendRequestSent",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 20
+    },
+    {
+     "name": "IconFriendRequestSentOn",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 76
+    },
+    {
+     "name": "IconGameInviteReceived",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 80
+    },
+    {
+     "name": "IconGameInviteReceivedOn",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 20
+    },
+    {
+     "name": "IconGameInviteSent",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 88
+    },
+    {
+     "name": "IconGameInviteSentOn",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 92
+    },
+    {
+     "name": "IconMute",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 20
+    },
+    {
+     "name": "IconMuteOn",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 100
+    },
+    {
+     "name": "IconOnline",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 104
+    },
+    {
+     "name": "IconOnlineOn",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 20
+    },
+    {
+     "name": "IconPasscodeBlank",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 112
+    },
+    {
+     "name": "IconPasscodeFilled",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 116
+    },
+    {
+     "name": "IconTV",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 20
+    },
+    {
+     "name": "IconTVOn",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 124
+    },
+    {
+     "name": "IconVoice",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 128
+    },
+    {
+     "name": "IconVoiceOn",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 20
+    },
+    {
+     "name": "IconWait1",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 136
+    },
+    {
+     "name": "IconWait2",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 140
+    },
+    {
+     "name": "IconWait3",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 20
+    },
+    {
+     "name": "IconWait4",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 148
+    },
+    {
+     "name": "IconProgress",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 152
+    },
+    {
+     "name": "IconProgressOn",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 20
+    },
+    {
+     "name": "IconA",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 160
+    },
+    {
+     "name": "IconB",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 164
+    },
+    {
+     "name": "IconX",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 20
+    },
+    {
+     "name": "IconY",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 172
+    },
+    {
+     "name": "IconBlank",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 176
+    },
+    {
+     "name": "IconUpArrow",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 20
+    },
+    {
+     "name": "IconDownArrow",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 184
+    },
+    {
+     "name": "IconListHighlight",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": null
+    }
+   ],
+   "fable_defs_class": "CUiIconsDef",
+   "fable_defs_order_match": "exact"
+  },
+  "CUILocaleGraphicsDef": {
+   "addr": "0x4759e9",
+   "namespace": "NUISystem",
+   "fields": [
+    {
+     "name": "WorldMapRegionName",
+     "type": "TransferMap<KW4EWorldMapNameGraphic@@>",
+     "kind": "TransferMap",
+     "targ": "KW4EWorldMapNameGraphic@@",
+     "off": 64
+    },
+    {
+     "name": "HelpScreenGraphics",
+     "type": "vector<u32(ulong)>",
+     "kind": "TransferVector",
+     "targ": "K",
+     "off": 80
+    },
+    {
+     "name": "HelpRingPic",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": null
+    }
+   ],
+   "fable_defs_order_match": "exact"
+  },
+  "CUIMiscThingsDef": {
+   "addr": "0x43f230",
+   "namespace": "NUISystem",
+   "fields": [
+    {
+     "name": "SpaceSeparator",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 16
+    },
+    {
+     "name": "CommaSeparator",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "NewLineSeparator",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "OpenBracket",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "CloseBracket",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "Positive",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "WeaponValueString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "WeaponAugString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "WeaponAugNone",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "WeaponWeightString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "WeaponLightString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "WeaponHeavyString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "WeaponKillsString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "WeaponCatMeleeString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "WeaponCatRangedString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "WeaponDamageString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TradeCostString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "ColonSeparator",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TradeProfitString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TradeLossString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TradeAlreadyOwnsString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TradeNumberInStockString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TradeDeliveryString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TradeNoDeliveryString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TradeDaysString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TradeBuyString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TradeSellString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TradeWantedString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "QuestFailedString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "FailedString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "SucceededString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "Plus",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "Minus",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "CoreGraphic",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 196
+    },
+    {
+     "name": "VignetteGraphic",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 200
+    },
+    {
+     "name": "OptionalGraphic",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 16
+    },
+    {
+     "name": "FeatGraphic",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 208
+    },
+    {
+     "name": "ObjectsRewardString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 212
+    },
+    {
+     "name": "NoneString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 216
+    },
+    {
+     "name": "CheckGuildString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 220
+    },
+    {
+     "name": "QuestStartingString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 224
+    },
+    {
+     "name": "RingCenterX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 228
+    },
+    {
+     "name": "RingCenterY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 16
+    },
+    {
+     "name": "PCRingCenterX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 236
+    },
+    {
+     "name": "PCRingCenterY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 240
+    },
+    {
+     "name": "WorldMapOffsetX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 16
+    },
+    {
+     "name": "WorldMapOffsetY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 248
+    },
+    {
+     "name": "WorldMapWidth",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 252
+    },
+    {
+     "name": "WorldMapHeight",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 16
+    },
+    {
+     "name": "YouString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "OwnString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "NoString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "HousesString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "HouseString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "InString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "ShopsString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "ShopString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "ThereString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "AreString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "IsString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "ForString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "SaleString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "GeneralString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TatooString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "BarberString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TitleString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "LevelString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "TotalSpellsInPalettes",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 332
+    },
+    {
+     "name": "TotalSpellsInContainer",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 336
+    },
+    {
+     "name": "TotalAssignableThings",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 16
+    },
+    {
+     "name": "LogBookBasicsCategoryString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "LogBookObjectsCategoryString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 12
+    },
+    {
+     "name": "LogBookTownsCategoryString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 16
+    },
+    {
+     "name": "LogBookHeroCategoryString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 20
+    },
+    {
+     "name": "LogBookCombatCategoryString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 24
+    },
+    {
+     "name": "LogBookQuestCategoryString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 28
+    },
+    {
+     "name": "LogBookStoryCategoryString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 32
+    },
+    {
+     "name": "LogBookBasicsCategoryNameString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 36
+    },
+    {
+     "name": "LogBookObjectsCategoryNameString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 40
+    },
+    {
+     "name": "LogBookTownsCategoryNameString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 44
+    },
+    {
+     "name": "LogBookHeroCategoryNameString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 48
+    },
+    {
+     "name": "LogBookCombatCategoryNameString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 52
+    },
+    {
+     "name": "LogBookQuestCategoryNameString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 56
+    },
+    {
+     "name": "LogBookStoryCategoryNameString",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 60
+    },
+    {
+     "name": "MapPaths",
+     "type": "TransferMap<KK>",
+     "kind": "TransferMap",
+     "targ": "KK",
+     "off": 396
+    },
+    {
+     "name": "SoundUpDown",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 412
+    },
+    {
+     "name": "SoundSlider",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 416
+    },
+    {
+     "name": "SoundBack",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 420
+    },
+    {
+     "name": "SoundForward",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 424
+    },
+    {
+     "name": "SoundError",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 428
+    },
+    {
+     "name": "SoundExit",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 432
+    },
+    {
+     "name": "HeroDollTLX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 472
+    },
+    {
+     "name": "HeroDollTLY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 88
+    },
+    {
+     "name": "HeroDollBRX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 480
+    },
+    {
+     "name": "HeroDollBRY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 484
+    },
+    {
+     "name": "HeroDollSphereRadius",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 88
+    },
+    {
+     "name": "HeroDollTLX_PC",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 492
+    },
+    {
+     "name": "HeroDollTLY_PC",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 496
+    },
+    {
+     "name": "HeroDollBRX_PC",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 88
+    },
+    {
+     "name": "HeroDollBRY_PC",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 504
+    },
+    {
+     "name": "HeroDollSphereRadius_PC",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 508
+    },
+    {
+     "name": "HeroDollFrameTLX_PC",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 88
+    },
+    {
+     "name": "HeroDollFrameTLY_PC",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 516
+    },
+    {
+     "name": "HeroDollFrameEmulateListOffset",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 520
+    },
+    {
+     "name": "QuestStartScreenMusic",
+     "type": "enum EMusicSetType",
+     "kind": "Transfer",
+     "targ": "W4EMusicSetType@@",
+     "off": 88
+    },
+    {
+     "name": "QuestCompleteScreenMusic",
+     "type": "enum EMusicSetType",
+     "kind": "Transfer",
+     "targ": "W4EMusicSetType@@",
+     "off": 528
+    },
+    {
+     "name": "QuestFailureScreenMusic",
+     "type": "enum EMusicSetType",
+     "kind": "Transfer",
+     "targ": "W4EMusicSetType@@",
+     "off": 532
+    },
+    {
+     "name": "DeathScreenMusic",
+     "type": "enum EMusicSetType",
+     "kind": "Transfer",
+     "targ": "W4EMusicSetType@@",
+     "off": 88
+    },
+    {
+     "name": "CountUpSound",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 88
+    },
+    {
+     "name": "DigitCountTime",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 540
+    },
+    {
+     "name": "SaveHeroGraphicIndex",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 544
+    },
+    {
+     "name": "MiniMapGraphics",
+     "type": "TransferMap<JVCCharString@@>",
+     "kind": "TransferMap",
+     "targ": "JVCCharString@@",
+     "off": 92
+    },
+    {
+     "name": "SoundKeyboardUp",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 92
+    },
+    {
+     "name": "SoundKeyboardDown",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 96
+    },
+    {
+     "name": "SoundKeyboardLeft",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 100
+    },
+    {
+     "name": "SoundKeyboardRight",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 104
+    },
+    {
+     "name": "SoundKeyboardEnterCharacter",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 108
+    },
+    {
+     "name": "SoundKeyboardDeleteCharacter",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 112
+    },
+    {
+     "name": "SoundKeyboardDone",
+     "type": "String(CCharString)",
+     "kind": "Transfer",
+     "targ": "VCCharString@@",
+     "off": 116
+    },
+    {
+     "name": "FrontEndMusic",
+     "type": "struct CWideString",
+     "kind": "Transfer",
+     "targ": "VCWideString@@",
+     "off": 120
+    },
+    {
+     "name": "KeyboardSmallKeyGraphic",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 564
+    },
+    {
+     "name": "KeyboardLargeKeyGraphic",
+     "type": "i32(long)",
+     "kind": "Transfer",
+     "targ": "J",
+     "off": 568
+    },
+    {
+     "name": "TimeInSecsForFade",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 124
+    },
+    {
+     "name": "BackBufferFilterSaturation",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 580
+    },
+    {
+     "name": "BackBufferFilterContrast",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 584
+    },
+    {
+     "name": "BackBufferFilterBrightness",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 124
+    },
+    {
+     "name": "BackBufferFilterTintR",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 592
+    },
+    {
+     "name": "BackBufferFilterTintG",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 596
+    },
+    {
+     "name": "BackBufferFilterTintB",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 124
+    },
+    {
+     "name": "BackBufferFilterTintScale",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 604
+    },
+    {
+     "name": "BackBufferDiffuseScale",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 608
+    },
+    {
+     "name": "BackBufferAmbientScale",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 124
+    },
+    {
+     "name": "MinimumFilterColor",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 124
+    }
+   ],
+   "fable_defs_class": "CUiMiscThingsDef",
+   "fable_defs_order_match": "exact"
+  },
+  "CUIStateDef": {
+   "addr": "0x5a26e0",
+   "namespace": "NUISystem",
+   "fields": [
+    {
+     "name": "GraphicIndex",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 64
+    },
+    {
+     "name": "PositionX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 76
+    },
+    {
+     "name": "PositionY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 16
+    },
+    {
+     "name": "ZoomX",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 84
+    },
+    {
+     "name": "ZoomY",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 88
+    },
+    {
+     "name": "ColourR",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 16
+    },
+    {
+     "name": "ColourG",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 96
+    },
+    {
+     "name": "ColourB",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 100
+    },
+    {
+     "name": "ColourA",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 16
+    },
+    {
+     "name": "UpdateTime",
+     "type": "f32",
+     "kind": "Transfer",
+     "targ": "M",
+     "off": 108
+    },
+    {
+     "name": "StateChangeType",
+     "type": "enum EStateChangeType",
+     "kind": "Transfer",
+     "targ": "W4EStateChangeType@NUISystem@@",
+     "off": 72
+    },
+    {
+     "name": "LinearChange",
+     "type": "bool",
+     "kind": "Transfer",
+     "targ": "_N",
+     "off": 16
+    },
+    {
+     "name": "StateChangeFlag",
+     "type": "u32(ulong)",
+     "kind": "Transfer",
+     "targ": "K",
+     "off": 68
+    },
+    {
+     "name": "ChildrenNotAffected",
+     "type": "vector<u32(ulong)>",
+     "kind": "TransferVector",
+     "targ": "K",
+     "off": null
+    }
+   ],
+   "fable_defs_class": "CUiStateDef",
    "fable_defs_order_match": "exact"
   }
  }

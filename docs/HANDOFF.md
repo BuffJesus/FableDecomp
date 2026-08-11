@@ -8175,6 +8175,10 @@ oracle for `jamen/fable-defs` (whose AGENTS.md marks its decomp field-order orac
 (`tools/transfer_extract/tx_flatten.py`): 251→**261/262 exact**. The lone remainder
 `COpinionSourceDef` is an array-unroll (fable-defs emits `BinaryReaction`x79/`BinaryOpinion`x5 per
 element; our disasm sees one Transfer-in-loop), flag `partial(array-unrolled:...)` — not a data gap.
-(2) locate the 6 UI defs' transfer entry; (3) **NOT DONE — ship it:** attach the JSON to jamen / open
-a `jamen/fable-defs` issue using the per-class `fable_defs_order_match` flags (session option (b)).
-Context: EGOCORE_ASSESSMENT addenda + memory `fable-defs-oracle`.
+(2) ~~locate the 6 UI defs~~ **DONE 2026-08-11** (`tools/transfer_extract/tx_ui_merge.py`): they were
+**namespaced** (`NUISystem` CUIDef/CUIIconsDef/CUIMiscThingsDef/CUIStateDef/CUILocaleGraphicsDef +
+`NSpeechGainManager` CDialogueLayerDef), not missing — the discovery regex required `@@` right after
+`Def`. Merged with `namespace` + `fable_defs_class` alias (CUIDef↔CUiDef). Now **268 defs / 267 exact**.
+(3) **NOT DONE — ship it:** attach the JSON to jamen / open a `jamen/fable-defs` issue using the
+per-class `fable_defs_order_match` flags (session option (b)). Context: EGOCORE_ASSESSMENT addenda +
+memory `fable-defs-oracle`.

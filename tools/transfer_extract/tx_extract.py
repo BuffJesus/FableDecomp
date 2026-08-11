@@ -98,16 +98,24 @@ def extract(addr):
             pending_name=None; last_field=None
     return fields
 
+# Class name + optional namespace from a ?Transfer@<Class>[@<NS>]@@... symbol.
+# Global classes are @@ right after the Def; namespaced ones (e.g. NUISystem UI
+# defs, NSpeechGainManager CDialogueLayerDef) carry @N<Namespace>@@ in between.
+_CLS_RE=re.compile(r"\?Transfer@(C[A-Za-z0-9_]+Def)(?:@(N[A-Za-z0-9_]+))?@@UAEXAAVCPersistContext@@@Z$")
 def demangled_class(sym):
-    m=re.match(r"\?Transfer@(C[A-Za-z0-9_]+Def)@@",sym); return m.group(1) if m else None
+    m=_CLS_RE.match(sym); return m.group(1) if m else None
+def demangled_ns(sym):
+    m=_CLS_RE.match(sym); return m.group(2) if m else None
 
 if __name__=="__main__":
     if len(sys.argv)>1 and sys.argv[1]=="--all":
         out={}
         for a,sym in names.items():
-            if re.match(r"\?Transfer@C[A-Za-z0-9_]+Def@@UAEXAAVCPersistContext@@@Z$",sym):
-                cls=demangled_class(sym)
-                out[cls]={"addr":"%#x"%a,"fields":extract(a)}
+            if _CLS_RE.match(sym):
+                cls=demangled_class(sym); ns=demangled_ns(sym)
+                e={"addr":"%#x"%a,"fields":extract(a)}
+                if ns: e["namespace"]=ns
+                out[cls]=e
         json.dump(out,open("scratchpad_out.json","w"),indent=1)
         nf=sum(len(v["fields"]) for v in out.values())
         print("classes",len(out),"total field-controls",nf)

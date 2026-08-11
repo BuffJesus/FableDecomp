@@ -74,7 +74,8 @@ def main():
     fd = load_fable_defs()
     changed, still_partial = [], []
     for cls in defs:
-        order = fd.get(cls)
+        # namespaced UI defs carry a fable_defs_class alias (CUIDef -> CUiDef)
+        order = fd.get(cls) or fd.get(defs[cls].get("fable_defs_class", ""))
         prev = defs[cls].get("fable_defs_order_match", "?")
         if order is None:
             continue
@@ -104,7 +105,9 @@ def main():
     )
 
     exact = sum(1 for v in defs.values() if v.get("fable_defs_order_match") == "exact")
-    scored = sum(1 for cls in defs if cls in fd)
+    scored = sum(
+        1 for cls in defs if cls in fd or defs[cls].get("fable_defs_class") in fd
+    )
     print("base markers inlined:", n_markers)
     print("classes re-scored vs fable-defs:", scored)
     print("exact matches now:", exact, "/", scored)
