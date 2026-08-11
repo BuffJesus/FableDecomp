@@ -8155,3 +8155,24 @@ Landed (all builds clean; forgecore tests green):
 Resume (toolchain): Phase 3b live pickers (gamedata→node combos), 3c quest-setup panel,
 3d entity placement (Thing = Def+Transform+Script); Blueprint QoL (reroute/functions/comments).
 See `docs/GUI_CANVAS_PHASE3.md`. RE crawl resume is unchanged (crawl-relaunch procedure).
+
+---
+## Resume 2026-08-10 — Transfer<T> field-order oracle for fable-defs (DONE; optional polish left)
+
+Extracted our debug-build (`debug_build/ego_r.exe` + PDB) `C*Def::Transfer` bodies into a shareable
+oracle for `jamen/fable-defs` (whose AGENTS.md marks its decomp field-order oracle "Absent").
+- **Artifact:** `refs/transfer_field_orders.json` — 262 classes, 4,465 named+typed+ordered field
+  controls. Method/validation/resume in `docs/TRANSFER_FIELD_ORDERS.md`; scripts in
+  `tools/transfer_extract/` (tx_extract → tx_finalize; tx_compare = agreement report).
+- **Validated:** CChestDef 6/6 vs fable-defs chest.rs incl. OpenerObject off=0x34 (our own RE);
+  **251/262** classes exact vs fable-defs `#[def]` order. Sub-component `Vec` fields (Waves/Abilities/
+  Meshes…) captured inline via `TransferVectorOfSubComponents<T>` (no ctor pass needed).
+- **Residual 11 "partial" = NOT a data gap:** base-class flattening (9× CThing*Def carry a leading
+  `base:CThingBaseDef` marker; fields live under the base record) + COpinionSourceDef minor order.
+  6 UI defs (CUi*/CDialogueLayerDef) have no `*Def::Transfer` symbol yet.
+
+**NEXT (pick up here):** (1) optional JSON post-process to flatten `base:<Class>` markers inline →
+takes 11 partials to exact (pure transform, no disasm); (2) locate the 6 UI defs' transfer entry;
+(3) **NOT DONE — ship it:** attach the JSON to jamen / open a `jamen/fable-defs` issue using the
+per-class `fable_defs_order_match` flags (this was session option (b)). Context: EGOCORE_ASSESSMENT
+addenda + memory `fable-defs-oracle`.

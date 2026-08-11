@@ -138,3 +138,92 @@ EgoCore closes the key/button half today.
 
 Source references throughout are to the local EgoCore copy; EgoCore is free/open-source (see its LICENSE).
 This assessment is our own synthesis of behavior + file:line pointers, not a copy of EgoCore source.
+
+---
+
+# ADDENDUM — repull 2026-08-10 (EgoCore HEAD `e68e54f`, 2026-08-09)
+
+Fresh clone at `C:\Users\Cornelio\Documents\EgoCoreInspect\EgoCore-git` (git checkout now, not the
+July zip at `EgoCore-master` — future diffs are `git`-cheap). Also pulled the newly-surfaced
+dependency `jamen/fable-defs` v0.5.0 (`fc6598a`) to `C:\Users\Cornelio\Documents\EgoCoreInspect\fable-defs`.
+Most of the July→August churn is UI (imgui, texture/audio/mesh preview overhauls). Two RE-relevant
+structural changes:
+
+## A1. The def toolchain was completely rewritten — §4 caveats are now MOOT
+
+- **`FableDefCompiler/` (whole standalone C++ sub-project) DELETED.** That is the exact code §4 above
+  was written against — `DefinitionManager.cpp:513-517` (`classIndex = 0`) and `CDefStringTable::GetCRC`
+  (standard CRC + `tolower`). It no longer exists, so both "don't copy" caveats are retired, not live
+  disagreements. Our `egocore-crc-issue-resolved` memory is fully vindicated (dead code physically gone).
+- **The "stealth"/engine-as-compiler path in `CompilerBackend.h` is also abandoned.** New
+  `Definitions/NativeDefCompiler.h` says so verbatim: it *"replaces the stealth compile… which patched
+  dbugst.ini, launched ego_r.exe twice… and ran a watchdog to close error dialogs."* The parity-oracle
+  technique we flagged as a July follow-up is no longer *their* approach (still valid for us if wanted).
+- **Live path = `jamen/fable-defs`** — git submodule `extern/fable-defs`, consumed via a C ABI
+  (`defc_build` in `def_compiler.h`, crate `def-compiler-sys`). Reads `Data\Defs` → writes
+  `game.bin`/`frontend.bin`/`script.bin`/`names.bin` natively, with real `file:line:col` diagnostics.
+
+## A2. New subsystem: `Banks/AnimationEventCompiler.h` (418 lines, new)
+
+The engine's `AnimToExtraEventsMap` — footstep/sound/effect triggers keyed by AnimID; a format not in
+our `BIG_ANIM_FORMAT.md`.
+- `CEvent{ u32 EventID, bool Flag1, bool Flag2, float Time }`; records keyed by `AnimID` (`0xFFFFFFFF`
+  sentinel); duplicate AnimID blocks merge.
+- `Flag2` = the `0x80000000` bit: **START→false, STOP→true**.
+- Text grammar: `BEGIN_ANIMATION_EVENTS` / `BEGIN_EVENTS:<anim>` / `END_EVENTS`, with `#define NAME 0x..`
+  enum-symbol resolution. (New capability for us if we want anim-driven events.)
+
+---
+
+# ADDENDUM — `jamen/fable-defs` v0.5.0 as a byte-exact def oracle (2026-08-10)
+
+`jamen/fable-defs` (Zlib license) is a serious, from-scratch **Rust** def compiler. Per its own
+`AGENTS.md`: all four bins compile **entirely from text, reading no retail binary at build time**, the
+retail engine loads+runs the output (save-load verified), and golden byte-determinism holds. This is a
+**second fully-independent byte-exact reference** beside our retail proof — better than diffing a
+headless-driven engine. Highlights, mapped to our open questions:
+
+## B1. Confirms crc0 a THIRD time
+`packages/defs/src/crc32.rs` `crc()` = reflected CRC-32, poly `0xEDB88320`, **seed 0, NO final
+inversion** — byte-for-byte our crc0 (`CCharString::ComputeCRC32 @0x00404310`). Three independent impls
+now agree (ours, EgoCore's `CalculateFableCRC32`, jamen's).
+
+## B2. SETTLES the dense-index contradiction in OUR favor
+`examples/probe_counter.rs`: the `NameRef` **third word IS the engine's `ClassIndex`** (`nr.counter`),
+dumped per entry and reproduced byte-identically from retail. Confirms our byte-proven "third main-table
+dword = per-class dense index" and validates **keeping FableForge `bin.cpp:243 perDefinition[def]++`**.
+(EgoCore's old `classIndex=0` was the now-deleted standalone writer; the live jamen path gets it right.)
+
+## B3. Field-DEFAULT facts we should capture in `DEF_LOAD_CONTRACT.md`
+`AGENTS.md §6` documents two systematic retail defaults its ledger recovered (~4,900 entries), each a
+real wire fact, NOT text-derivable:
+- UI `Font` default = **`ENG_ARIAL_16`** (a def-string), not null.
+- THING `PersistenceFlags` default = **`EPF_STATIC`**, not 0.
+Plus the authority ranking for resolving field type/order disputes: **retail binary > NULLDEF defaults >
+decomp `Transfer<T>` call order > text source** (text is meaning-only, never layout).
+
+## B4. Positional-parse gotchas (retail quirks) worth knowing for append/edit tools
+- `CScriptDef::Transfer` emits **two consecutive controls with the `TemplePrayerFactorHighest` crc** on
+  purpose — the field is declared twice; "deduping" it breaks positional parse of retail `script.bin`.
+- `CONTROL_SCHEME` appears **twice** in the leading NULLDEF run of `frontend.bin`.
+- 16 KB chunk envelope: their output is ~1.17 MB larger than retail but **content byte-identical** — the
+  size gap is expected framing, not a diff.
+- `manifest.rs` (~10.6k lines) is their ONLY retail-derived input: encodes membership (which defs ship
+  per binary) + NULLDEF lists/order/duplicates. No regeneration tool exists.
+
+## B5. WHERE OUR PROJECT HAS VALUE TO THEM
+fable-defs' field-order/wire-type oracle is the decomp `Transfer<T>` functions — jamen references a
+private `~/git/fable-decomp` (noted "**Absent at time of writing**"). **We have these in Ghidra**
+(e.g. `CChestDef::Transfer @0x004DE204` with `OpenerObject@+0x34`/`OpenersRequired@+0x38`, per CLAUDE.md).
+Our `Transfer<T>` field orders/wire types are exactly the input their `defs-derive` schemas encode by
+hand — a concrete, high-value contribution back to fable-defs (and thus EgoCore).
+
+## B6. Verification methodology worth borrowing for FableForge
+- `defc/tests/golden.rs` — FNV hash of all 4 outputs = deterministic-build regression gate.
+- `examples/verify.rs` — decodes both sides to reference-resolved `SemVal` and classifies each entry
+  `Reproduced`/`AcceptSort`/`OpaqueOnly`/`Bug`/`Missing`; `DiffPolicy::unordered()` treats containers as
+  multisets to separate MSVC sort-tie-break noise from real diffs. This "compare by resolved meaning
+  across two independent index spaces" is a pattern FableForge's validate could adopt directly.
+
+Clones are Zlib (fable-defs) / EgoCore-LICENSE — free to study and cite. This addendum is our synthesis
+of behavior + file:line pointers, not a copy of their source.
