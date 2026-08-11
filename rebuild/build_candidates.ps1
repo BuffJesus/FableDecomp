@@ -54209,6 +54209,174 @@ $catalog = @(
         TestSource = '00/a5/CStreamingFontBankStateBlock_GetDefault_00a5ee20_test.cpp'
         PassPattern = 'GETDEFAULT_OK'
     }
+    [pscustomobject]@{
+        Address = '00a62960'
+        Module = 'CCriticalSectionLock'
+        Source = '00/a6/CCriticalSectionLock_CCriticalSectionLock_00a62960.cpp'
+        TestSource = '00/a6/CCriticalSectionLock_CCriticalSectionLock_00a62960_test.cpp'
+        PassPattern = 'DTOR_CS_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a62980'
+        Module = 'CCriticalSectionLock'
+        Source = '00/a6/CCriticalSectionLock_Lock_00a62980.cpp'
+        TestSource = '00/a6/CCriticalSectionLock_Lock_00a62980_test.cpp'
+        PassPattern = 'LOCK_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a629a0'
+        Module = 'CCriticalSectionLock'
+        Source = '00/a6/CCriticalSectionLock_CCriticalSectionLock_00a629a0.cpp'
+        TestSource = '00/a6/CCriticalSectionLock_CCriticalSectionLock_00a629a0_test.cpp'
+        PassPattern = 'DTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a67420'
+        Module = 'CVolume'
+        Source = '00/a6/CVolume_ReleaseVolume_00a67420.cpp'
+        TestSource = '00/a6/CVolume_ReleaseVolume_00a67420_test.cpp'
+        PassPattern = 'VOLRELEASE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a73770'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/a7/CGuiVarTransferBool_TransferToGui_00a73770.cpp'
+        TestSource = '00/a7/CGuiVarTransferBool_TransferToGui_00a73770_test.cpp'
+        PassPattern = 'TRANSFERBOOL_TOGUI_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a73790'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/a7/CGuiVarTransferBool_TransferToGui_00a73790.cpp'
+        TestSource = '00/a7/CGuiVarTransferBool_TransferToGui_00a73790_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a73c40'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/a7/CGuiVarTransferBool_TransferToGui_00a73c40.cpp'
+        TestSource = '00/a7/CGuiVarTransferBool_TransferToGui_00a73c40_test.cpp'
+        PassPattern = 'TRANSFERTOGUI_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a73c60'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/a7/CGuiVarTransferBool_TransferToGui_00a73c60.cpp'
+        TestSource = '00/a7/CGuiVarTransferBool_TransferToGui_00a73c60_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a73cf0'
+        Module = 'CWorldMap'
+        Source = '00/a7/CWorldMap_DrawGetNoMaps_00a73cf0.cpp'
+        TestSource = '00/a7/CWorldMap_DrawGetNoMaps_00a73cf0_test.cpp'
+        PassPattern = 'MAPCOUNT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a84ff0'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/a8/CGuiVarTransferBool_TransferToGui_00a84ff0.cpp'
+        TestSource = '00/a8/CGuiVarTransferBool_TransferToGui_00a84ff0_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a9d310'
+        Module = 'CMirroredTextureHighlightsChunk'
+        Source = '00/a9/CMirroredTextureHighlightsChunk_GetChunkDescriptionCMirroredTextureHighlightsChu_00a9d310.cpp'
+        TestSource = '00/a9/CMirroredTextureHighlightsChunk_GetChunkDescriptionCMirroredTextureHighlightsChu_00a9d310_test.cpp'
+        PassPattern = 'MIRRTEXHIGHLIGHTS_GETDESC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa4970'
+        Module = 'C3DAnimFileXAllocationSizeChunk'
+        Source = '00/aa/C3DAnimFileXAllocationSizeChunk_GetChunkDescriptionC3DAnimFileXAllocationSizeChu_00aa4970.cpp'
+        TestSource = '00/aa/C3DAnimFileXAllocationSizeChunk_GetChunkDescriptionC3DAnimFileXAllocationSizeChu_00aa4970_test.cpp'
+        PassPattern = 'CHUNKDESC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa49d0'
+        Module = 'C3DAnimFileXSequenceChunk'
+        Source = '00/aa/C3DAnimFileXSequenceChunk_GetChunkDescriptionC3DAnimFileXSequenceChunkUBEB_00aa49d0.cpp'
+        TestSource = '00/aa/C3DAnimFileXSequenceChunk_GetChunkDescriptionC3DAnimFileXSequenceChunkUBEB_00aa49d0_test.cpp'
+        PassPattern = 'GETCHUNKDESC_00aa49d0_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa7010'
+        Module = 'C3DMeshFileXTextureIndexChunk'
+        Source = '00/aa/C3DMeshFileXTextureIndexChunk_GetChunkDescriptionC3DMeshFileXTextureIndexChunk_00aa7010.cpp'
+        TestSource = '00/aa/C3DMeshFileXTextureIndexChunk_GetChunkDescriptionC3DMeshFileXTextureIndexChunk_00aa7010_test.cpp'
+        PassPattern = 'PASS_XTEXIDX_CHUNKDESC'
+    }
+    [pscustomobject]@{
+        Address = '00aa7050'
+        Module = 'C3DMeshFileXMappingInfoChunk'
+        Source = '00/aa/C3DMeshFileXMappingInfoChunk_GetChunkDescriptionC3DMeshFileXMappingInfoChunkU_00aa7050.cpp'
+        TestSource = '00/aa/C3DMeshFileXMappingInfoChunk_GetChunkDescriptionC3DMeshFileXMappingInfoChunkU_00aa7050_test.cpp'
+        PassPattern = 'CHUNKDESC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa7090'
+        Module = 'C3DMeshFileXAnimatedPrimitiveChunk'
+        Source = '00/aa/C3DMeshFileXAnimatedPrimitiveChunk_GetChunkDescriptionC3DMeshFileXAnimatedPrimitive_00aa7090.cpp'
+        TestSource = '00/aa/C3DMeshFileXAnimatedPrimitiveChunk_GetChunkDescriptionC3DMeshFileXAnimatedPrimitive_00aa7090_test.cpp'
+        PassPattern = 'GETCHUNKDESC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa7100'
+        Module = 'C3DMeshFileXBoundingSphereChunk'
+        Source = '00/aa/C3DMeshFileXBoundingSphereChunk_GetChunkDescriptionC3DMeshFileXBoundingSphereChu_00aa7100.cpp'
+        TestSource = '00/aa/C3DMeshFileXBoundingSphereChunk_GetChunkDescriptionC3DMeshFileXBoundingSphereChu_00aa7100_test.cpp'
+        PassPattern = 'BOUNDSPHERE_GETCHUNKDESC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa7140'
+        Module = 'C3DMeshFileXBoundingBoxChunk'
+        Source = '00/aa/C3DMeshFileXBoundingBoxChunk_GetChunkDescriptionC3DMeshFileXBoundingBoxChunkU_00aa7140.cpp'
+        TestSource = '00/aa/C3DMeshFileXBoundingBoxChunk_GetChunkDescriptionC3DMeshFileXBoundingBoxChunkU_00aa7140_test.cpp'
+        PassPattern = 'CHUNKDESC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa7230'
+        Module = 'C3DMeshFileXVertexDataChunk'
+        Source = '00/aa/C3DMeshFileXVertexDataChunk_GetChunkDescriptionC3DMeshFileXVertexDataChunkUB_00aa7230.cpp'
+        TestSource = '00/aa/C3DMeshFileXVertexDataChunk_GetChunkDescriptionC3DMeshFileXVertexDataChunkUB_00aa7230_test.cpp'
+        PassPattern = 'GETCHUNKDESC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa7280'
+        Module = 'C3DMeshFileXTriangleStripChunk'
+        Source = '00/aa/C3DMeshFileXTriangleStripChunk_GetChunkDescriptionC3DMeshFileXTriangleStripChun_00aa7280.cpp'
+        TestSource = '00/aa/C3DMeshFileXTriangleStripChunk_GetChunkDescriptionC3DMeshFileXTriangleStripChun_00aa7280_test.cpp'
+        PassPattern = 'STRIPCHUNK_DESC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa7350'
+        Module = 'C3DMeshFileXUVTangentChunk'
+        Source = '00/aa/C3DMeshFileXUVTangentChunk_GetChunkDescriptionC3DMeshFileXUVTangentChunkUBE_00aa7350.cpp'
+        TestSource = '00/aa/C3DMeshFileXUVTangentChunk_GetChunkDescriptionC3DMeshFileXUVTangentChunkUBE_00aa7350_test.cpp'
+        PassPattern = 'CHUNKDESC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa75d0'
+        Module = 'CChunkedFileChunk'
+        Source = '00/aa/CChunkedFileChunk_GetChunkDescriptionCChunkedFileChunkUBEBVCCharSt_00aa75d0.cpp'
+        TestSource = '00/aa/CChunkedFileChunk_GetChunkDescriptionCChunkedFileChunkUBEBVCCharSt_00aa75d0_test.cpp'
+        PassPattern = 'GETCHUNKDESC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa75f0'
+        Module = 'CChunkedFileChunk'
+        Source = '00/aa/CChunkedFileChunk_GetChunkInfoCChunkedFileChunkUBEBVCCharStringXZ_00aa75f0.cpp'
+        TestSource = '00/aa/CChunkedFileChunk_GetChunkInfoCChunkedFileChunkUBEBVCCharStringXZ_00aa75f0_test.cpp'
+        PassPattern = 'CHUNKINFO_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aab130'
+        Module = 'C3DMeshFileHelperPointChunk'
+        Source = '00/aa/C3DMeshFileHelperPointChunk_GetChunkDescriptionC3DMeshFileHelperPointChunkUB_00aab130.cpp'
+        TestSource = '00/aa/C3DMeshFileHelperPointChunk_GetChunkDescriptionC3DMeshFileHelperPointChunkUB_00aab130_test.cpp'
+        PassPattern = 'GETCHUNKDESC_OK'
+    }
 )
 
 $requestedAddresses = @(
