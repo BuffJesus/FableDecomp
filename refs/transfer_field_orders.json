@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "artifact": "Fable: The Lost Chapters \u2014 CDefBase::Transfer field orders",
+  "artifact": "Fable: The Lost Chapters — CDefBase::Transfer field orders",
   "source_binary": "debug_build/ego_r.exe (Anniversary 2013-02-25 debug build, ImageBase 0x400000)",
   "symbols": "ghidra_out/egor_pdb_names.tsv (FableWin/ego_r PDB, demangled)",
   "method": "linear disasm of each ?Transfer@C*Def@@UAEXAAVCPersistContext@@@Z; each CPersistContext::Transfer<T>(const char* name, T& field, ...) call = one game.bin field control, in call order. name=1st arg string literal, wire type T from the template arg of the call target symbol.",
@@ -23,7 +23,8 @@
   },
   "validation": "CChestDef 6/6 vs fable-defs chest.rs incl. OpenerObject off=0x34 (independently RE-verified). 251/262 classes are an exact order-preserving supersequence of fable-defs #[def] order.",
   "known_gap": "Sub-component COLLECTION fields (Vec of sub-def: Abilities/Waves/Creatures/Meshes/...) ARE captured (inline TransferVectorOfSubComponents<T>, name+order+element-type recovered). Residual 11 'partial' classes are NOT a data gap: they are base-class FLATTENING differences - fable-defs inlines base fields (e.g. CThingBaseDef's Components/PersistenceFlags/Health) into each concrete C*Def, while our extraction chains via a 'base:<Class>' marker entry, so the fields live under that base class's own record. 6 UI/frontend defs (CUiDef/CUiIconsDef/CUiMiscThingsDef/CUiStateDef/CUILocaleGraphicsDef/CDialogueLayerDef) have no matching *Def::Transfer symbol (different transfer signature) - TODO if wanted.",
-  "license": "Derived from our own RE of a freely-distributed debug build; shareable. fable-defs is Zlib."
+  "license": "Derived from our own RE of a freely-distributed debug build; shareable. fable-defs is Zlib.",
+  "base_fields_inlined": "base:<Class> markers expanded inline; inlined fields tagged from_base"
  },
  "defs": {
   "CAICreatureWillPowerIndicatorDef": {
@@ -9682,7 +9683,7 @@
      "off": 120
     }
    ],
-   "fable_defs_order_match": "partial(base-class fields under base:* marker / minor order)"
+   "fable_defs_order_match": "partial(array-unrolled:BinaryReactionx79,BinaryOpinionx5)"
   },
   "COracleMinigameDef": {
    "addr": "0x4f98d8",
@@ -21368,7 +21369,561 @@
    "addr": "0x7cf150",
    "fields": [
     {
-     "type": "base:CTavernGameDef"
+     "name": "Banter",
+     "type": "u32(ulong)",
+     "off": 40,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "Greeting",
+     "type": "u32(ulong)",
+     "off": 44,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "OptionsInitial",
+     "type": "u32(ulong)",
+     "off": 48,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "OptionsSubsequent",
+     "type": "u32(ulong)",
+     "off": 52,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "Instructions",
+     "type": "u32(ulong)",
+     "off": 56,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "InstructionsPC",
+     "type": "u32(ulong)",
+     "off": 60,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "Betting",
+     "type": "u32(ulong)",
+     "off": 64,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "Play",
+     "type": "u32(ulong)",
+     "off": 68,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "ReactionWin",
+     "type": "u32(ulong)",
+     "off": 72,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "ReactionLose",
+     "type": "u32(ulong)",
+     "off": 76,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "ReactionDraw",
+     "type": "u32(ulong)",
+     "off": 80,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "ReactionWinNewBestScore",
+     "type": "u32(ulong)",
+     "off": 84,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "FarewellInitial",
+     "type": "u32(ulong)",
+     "off": 88,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "FarewellSubsequent",
+     "type": "u32(ulong)",
+     "off": 92,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "WinRoundPhrase",
+     "type": "u32(ulong)",
+     "off": 96,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "OutOfTimePhrase",
+     "type": "u32(ulong)",
+     "off": 100,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "NoMoney",
+     "type": "u32(ulong)",
+     "off": 104,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "GreetingForward",
+     "type": "u32(ulong)",
+     "off": 108,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "OptionsForward",
+     "type": "u32(ulong)",
+     "off": 112,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "OptionsBack",
+     "type": "u32(ulong)",
+     "off": 116,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "OptionsAlternative",
+     "type": "u32(ulong)",
+     "off": 120,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "InstructionsBack",
+     "type": "u32(ulong)",
+     "off": 124,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BettingForward",
+     "type": "u32(ulong)",
+     "off": 128,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BettingBack",
+     "type": "u32(ulong)",
+     "off": 132,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "ReactionForward",
+     "type": "u32(ulong)",
+     "off": 136,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "FarewellForward",
+     "type": "u32(ulong)",
+     "off": 140,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "CameraName",
+     "type": "struct CDefString",
+     "off": 144,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BoxGraphicL",
+     "type": "u32(ulong)",
+     "off": 148,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BoxGraphicC",
+     "type": "u32(ulong)",
+     "off": 152,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BoxGraphicR",
+     "type": "u32(ulong)",
+     "off": 156,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "ClickToContinue",
+     "type": "u32(ulong)",
+     "off": 160,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "WinPhrase",
+     "type": "u32(ulong)",
+     "off": 164,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "LosePhrase",
+     "type": "u32(ulong)",
+     "off": 168,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "DrawPhrase",
+     "type": "u32(ulong)",
+     "off": 172,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "NewGame",
+     "type": "u32(ulong)",
+     "off": 176,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BestScore",
+     "type": "u32(ulong)",
+     "off": 180,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "CurrentScore",
+     "type": "u32(ulong)",
+     "off": 184,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "RequiredScore",
+     "type": "u32(ulong)",
+     "off": 188,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "AdditionalInfo",
+     "type": "u32(ulong)",
+     "off": 192,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BlackjackBusted",
+     "type": "u32(ulong)",
+     "off": 196,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BlackjackSplit",
+     "type": "u32(ulong)",
+     "off": 200,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BlackjackDouble",
+     "type": "u32(ulong)",
+     "off": 204,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BlackjackHit",
+     "type": "u32(ulong)",
+     "off": 208,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BlackjackStand",
+     "type": "u32(ulong)",
+     "off": 212,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BlackjackDealerTakesCard",
+     "type": "u32(ulong)",
+     "off": 216,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BlackjackSplitGUI",
+     "type": "u32(ulong)",
+     "off": 220,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BlackjackDoubleGUI",
+     "type": "u32(ulong)",
+     "off": 224,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BlackjackHitGUI",
+     "type": "u32(ulong)",
+     "off": 228,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BlackjackStandGUI",
+     "type": "u32(ulong)",
+     "off": 232,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "Bet",
+     "type": "u32(ulong)",
+     "off": 236,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "PlayersMoney",
+     "type": "u32(ulong)",
+     "off": 240,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "TotalWinnings",
+     "type": "u32(ulong)",
+     "off": 244,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "Continue",
+     "type": "u32(ulong)",
+     "off": 248,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "Quit",
+     "type": "u32(ulong)",
+     "off": 252,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "Yes",
+     "type": "u32(ulong)",
+     "off": 256,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "No",
+     "type": "u32(ulong)",
+     "off": 260,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "PrizeGiven",
+     "type": "u32(ulong)",
+     "off": 264,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MoneyBagGraphic",
+     "type": "u32(ulong)",
+     "off": 268,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MinBet",
+     "type": "i32(long)",
+     "off": 272,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MaxBet",
+     "type": "i32(long)",
+     "off": 276,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BetIncrement",
+     "type": "i32(long)",
+     "off": 280,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "ScoreFont",
+     "type": "struct CDefString",
+     "off": 284,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "TargetFont",
+     "type": "struct CDefString",
+     "off": 288,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "StatsFont",
+     "type": "struct CDefString",
+     "off": 292,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "ScoreX",
+     "type": "f32",
+     "off": 296,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "ScoreY",
+     "type": "f32",
+     "off": 300,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "TargetX",
+     "type": "f32",
+     "off": 304,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "TargetY",
+     "type": "f32",
+     "off": 308,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BestX",
+     "type": "f32",
+     "off": 312,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BestY",
+     "type": "f32",
+     "off": 316,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "AdditionalX",
+     "type": "f32",
+     "off": 320,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "AdditionalY",
+     "type": "f32",
+     "off": 324,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BetX",
+     "type": "f32",
+     "off": 328,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BetY",
+     "type": "f32",
+     "off": 332,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MoneyX",
+     "type": "f32",
+     "off": 336,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MoneyY",
+     "type": "f32",
+     "off": 340,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "WinningsX",
+     "type": "f32",
+     "off": 344,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "WinningsY",
+     "type": "f32",
+     "off": 348,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MainBetX",
+     "type": "f32",
+     "off": 352,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MainBetY",
+     "type": "f32",
+     "off": 356,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MainMoneyX",
+     "type": "f32",
+     "off": 360,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MainMoneyY",
+     "type": "f32",
+     "off": 364,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "BestScoreHigh",
+     "type": "bool",
+     "off": 368,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "PrizeScores",
+     "type": "vector<subdef struct CPrizeScoreDef>",
+     "off": 372,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "Prize",
+     "type": "i32(long)",
+     "off": 388,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "PrizeRenown",
+     "type": "i32(long)",
+     "off": 392,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MainGameScoreBoxX",
+     "type": "f32",
+     "off": 396,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MainGameScoreBoxY",
+     "type": "f32",
+     "off": 400,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MainGameScoreBoxWidthXbox",
+     "type": "f32",
+     "off": 404,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MainGameScoreBoxWidthPC",
+     "type": "f32",
+     "off": 408,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "MainGameScoreBoxHeight",
+     "type": "f32",
+     "off": 412,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "DisplayErrata",
+     "type": "bool",
+     "off": 416,
+     "from_base": "CTavernGameDef"
+    },
+    {
+     "name": "PointerPhaseSpeed",
+     "type": "f32",
+     "from_base": "CTavernGameDef"
     },
     {
      "name": "Regions",
@@ -21476,7 +22031,7 @@
      "off": 12
     }
    ],
-   "fable_defs_order_match": "partial(base-class fields under base:* marker / minor order)"
+   "fable_defs_order_match": "exact"
   },
   "CTavernGameSpotTheAdditionDef": {
    "addr": "0x4fc41f",
@@ -21808,7 +22363,196 @@
    "addr": "0x45a014",
    "fields": [
     {
-     "type": "base:CThingBaseDef"
+     "name": "Components",
+     "type": "struct CThingComponentSet",
+     "off": 16,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AvailableInEditor",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GameStatePersisted",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "LevelLess",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsDrawable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysFrameUpdate",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "InMapSearches",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "StartKillLocked",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsLoadableGlobal",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "CanComeBetweenCameraAndObservedThing",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsVulnerableToMelee",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Damageable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceNoSerialise",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawProjectileWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysIncludeInObjectStrikeScans",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DisableOcclusionTesting",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawAfterWater",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceRenderedLastFrameOverride",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AddToComboMultiplierOnHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GiveHeroStatChangesOnBeingHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GroupDef",
+     "type": "i32(long)",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "RenderFadeDistance",
+     "type": "f32",
+     "off": 76,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "PersistenceFlags",
+     "type": "i32(long)",
+     "off": 80,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Health",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MinHealth",
+     "type": "f32",
+     "off": 88,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeightOffset",
+     "type": "f32",
+     "off": 92,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeight",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshRadius",
+     "type": "f32",
+     "off": 100,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ApproxMaxMeshHeight",
+     "type": "f32",
+     "off": 104,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptName",
+     "type": "struct CDefString",
+     "off": 108,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptData",
+     "type": "struct CDefString",
+     "off": 36,
+     "from_base": "CThingBaseDef"
     },
     {
      "name": "DieOffTimer",
@@ -21876,13 +22620,202 @@
      "off": 11
     }
    ],
-   "fable_defs_order_match": "partial(base-class fields under base:* marker / minor order)"
+   "fable_defs_order_match": "exact"
   },
   "CThingCreatureDef": {
    "addr": "0x6a39c0",
    "fields": [
     {
-     "type": "base:CThingBaseDef"
+     "name": "Components",
+     "type": "struct CThingComponentSet",
+     "off": 16,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AvailableInEditor",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GameStatePersisted",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "LevelLess",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsDrawable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysFrameUpdate",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "InMapSearches",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "StartKillLocked",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsLoadableGlobal",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "CanComeBetweenCameraAndObservedThing",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsVulnerableToMelee",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Damageable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceNoSerialise",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawProjectileWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysIncludeInObjectStrikeScans",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DisableOcclusionTesting",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawAfterWater",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceRenderedLastFrameOverride",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AddToComboMultiplierOnHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GiveHeroStatChangesOnBeingHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GroupDef",
+     "type": "i32(long)",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "RenderFadeDistance",
+     "type": "f32",
+     "off": 76,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "PersistenceFlags",
+     "type": "i32(long)",
+     "off": 80,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Health",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MinHealth",
+     "type": "f32",
+     "off": 88,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeightOffset",
+     "type": "f32",
+     "off": 92,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeight",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshRadius",
+     "type": "f32",
+     "off": 100,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ApproxMaxMeshHeight",
+     "type": "f32",
+     "off": 104,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptName",
+     "type": "struct CDefString",
+     "off": 108,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptData",
+     "type": "struct CDefString",
+     "off": 36,
+     "from_base": "CThingBaseDef"
     },
     {
      "name": "StunTimeMin",
@@ -22172,7 +23105,7 @@
      "off": 19
     }
    ],
-   "fable_defs_order_match": "partial(base-class fields under base:* marker / minor order)"
+   "fable_defs_order_match": "exact"
   },
   "CThingDrainLifeShotDef": {
    "addr": "0x4f6b54",
@@ -22208,7 +23141,196 @@
    "addr": "0x45a221",
    "fields": [
     {
-     "type": "base:CThingBaseDef"
+     "name": "Components",
+     "type": "struct CThingComponentSet",
+     "off": 16,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AvailableInEditor",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GameStatePersisted",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "LevelLess",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsDrawable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysFrameUpdate",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "InMapSearches",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "StartKillLocked",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsLoadableGlobal",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "CanComeBetweenCameraAndObservedThing",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsVulnerableToMelee",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Damageable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceNoSerialise",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawProjectileWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysIncludeInObjectStrikeScans",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DisableOcclusionTesting",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawAfterWater",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceRenderedLastFrameOverride",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AddToComboMultiplierOnHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GiveHeroStatChangesOnBeingHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GroupDef",
+     "type": "i32(long)",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "RenderFadeDistance",
+     "type": "f32",
+     "off": 76,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "PersistenceFlags",
+     "type": "i32(long)",
+     "off": 80,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Health",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MinHealth",
+     "type": "f32",
+     "off": 88,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeightOffset",
+     "type": "f32",
+     "off": 92,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeight",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshRadius",
+     "type": "f32",
+     "off": 100,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ApproxMaxMeshHeight",
+     "type": "f32",
+     "off": 104,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptName",
+     "type": "struct CDefString",
+     "off": 108,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptData",
+     "type": "struct CDefString",
+     "off": 36,
+     "from_base": "CThingBaseDef"
     },
     {
      "name": "Graphic",
@@ -22220,13 +23342,202 @@
      "type": "bool"
     }
    ],
-   "fable_defs_order_match": "partial(base-class fields under base:* marker / minor order)"
+   "fable_defs_order_match": "exact"
   },
   "CThingMarkerDef": {
    "addr": "0x45a32f",
    "fields": [
     {
-     "type": "base:CThingBaseDef"
+     "name": "Components",
+     "type": "struct CThingComponentSet",
+     "off": 16,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AvailableInEditor",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GameStatePersisted",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "LevelLess",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsDrawable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysFrameUpdate",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "InMapSearches",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "StartKillLocked",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsLoadableGlobal",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "CanComeBetweenCameraAndObservedThing",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsVulnerableToMelee",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Damageable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceNoSerialise",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawProjectileWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysIncludeInObjectStrikeScans",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DisableOcclusionTesting",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawAfterWater",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceRenderedLastFrameOverride",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AddToComboMultiplierOnHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GiveHeroStatChangesOnBeingHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GroupDef",
+     "type": "i32(long)",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "RenderFadeDistance",
+     "type": "f32",
+     "off": 76,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "PersistenceFlags",
+     "type": "i32(long)",
+     "off": 80,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Health",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MinHealth",
+     "type": "f32",
+     "off": 88,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeightOffset",
+     "type": "f32",
+     "off": 92,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeight",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshRadius",
+     "type": "f32",
+     "off": 100,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ApproxMaxMeshHeight",
+     "type": "f32",
+     "off": 104,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptName",
+     "type": "struct CDefString",
+     "off": 108,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptData",
+     "type": "struct CDefString",
+     "off": 36,
+     "from_base": "CThingBaseDef"
     },
     {
      "name": "Graphic",
@@ -22243,7 +23554,7 @@
      "type": "u32(ulong)"
     }
    ],
-   "fable_defs_order_match": "partial(base-class fields under base:* marker / minor order)"
+   "fable_defs_order_match": "exact"
   },
   "CThingMultiArrowShotDef": {
    "addr": "0x4565a2",
@@ -22309,20 +23620,398 @@
    "addr": "0x45a670",
    "fields": [
     {
-     "type": "base:CThingBaseDef"
+     "name": "Components",
+     "type": "struct CThingComponentSet",
+     "off": 16,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AvailableInEditor",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GameStatePersisted",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "LevelLess",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsDrawable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysFrameUpdate",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "InMapSearches",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "StartKillLocked",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsLoadableGlobal",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "CanComeBetweenCameraAndObservedThing",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsVulnerableToMelee",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Damageable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceNoSerialise",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawProjectileWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysIncludeInObjectStrikeScans",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DisableOcclusionTesting",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawAfterWater",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceRenderedLastFrameOverride",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AddToComboMultiplierOnHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GiveHeroStatChangesOnBeingHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GroupDef",
+     "type": "i32(long)",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "RenderFadeDistance",
+     "type": "f32",
+     "off": 76,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "PersistenceFlags",
+     "type": "i32(long)",
+     "off": 80,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Health",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MinHealth",
+     "type": "f32",
+     "off": 88,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeightOffset",
+     "type": "f32",
+     "off": 92,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeight",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshRadius",
+     "type": "f32",
+     "off": 100,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ApproxMaxMeshHeight",
+     "type": "f32",
+     "off": 104,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptName",
+     "type": "struct CDefString",
+     "off": 108,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptData",
+     "type": "struct CDefString",
+     "off": 36,
+     "from_base": "CThingBaseDef"
     },
     {
      "name": "Noise",
      "type": "subdef struct CTCNoiseDef"
     }
    ],
-   "fable_defs_order_match": "partial(base-class fields under base:* marker / minor order)"
+   "fable_defs_order_match": "exact"
   },
   "CThingObjectDef": {
    "addr": "0x468ae7",
    "fields": [
     {
-     "type": "base:CThingBaseDef"
+     "name": "Components",
+     "type": "struct CThingComponentSet",
+     "off": 16,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AvailableInEditor",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GameStatePersisted",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "LevelLess",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsDrawable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysFrameUpdate",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "InMapSearches",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "StartKillLocked",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsLoadableGlobal",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "CanComeBetweenCameraAndObservedThing",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsVulnerableToMelee",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Damageable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceNoSerialise",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawProjectileWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysIncludeInObjectStrikeScans",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DisableOcclusionTesting",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawAfterWater",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceRenderedLastFrameOverride",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AddToComboMultiplierOnHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GiveHeroStatChangesOnBeingHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GroupDef",
+     "type": "i32(long)",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "RenderFadeDistance",
+     "type": "f32",
+     "off": 76,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "PersistenceFlags",
+     "type": "i32(long)",
+     "off": 80,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Health",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MinHealth",
+     "type": "f32",
+     "off": 88,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeightOffset",
+     "type": "f32",
+     "off": 92,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeight",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshRadius",
+     "type": "f32",
+     "off": 100,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ApproxMaxMeshHeight",
+     "type": "f32",
+     "off": 104,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptName",
+     "type": "struct CDefString",
+     "off": 108,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptData",
+     "type": "struct CDefString",
+     "off": 36,
+     "from_base": "CThingBaseDef"
     },
     {
      "name": "Graphic",
@@ -22385,13 +24074,202 @@
      "off": 11
     }
    ],
-   "fable_defs_order_match": "partial(base-class fields under base:* marker / minor order)"
+   "fable_defs_order_match": "exact"
   },
   "CThingPhysicalSwitchDef": {
    "addr": "0x45a4f8",
    "fields": [
     {
-     "type": "base:CThingBaseDef"
+     "name": "Components",
+     "type": "struct CThingComponentSet",
+     "off": 16,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AvailableInEditor",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GameStatePersisted",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "LevelLess",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsDrawable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysFrameUpdate",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "InMapSearches",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "StartKillLocked",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsLoadableGlobal",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "CanComeBetweenCameraAndObservedThing",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsVulnerableToMelee",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Damageable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceNoSerialise",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawProjectileWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysIncludeInObjectStrikeScans",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DisableOcclusionTesting",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawAfterWater",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceRenderedLastFrameOverride",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AddToComboMultiplierOnHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GiveHeroStatChangesOnBeingHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GroupDef",
+     "type": "i32(long)",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "RenderFadeDistance",
+     "type": "f32",
+     "off": 76,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "PersistenceFlags",
+     "type": "i32(long)",
+     "off": 80,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Health",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MinHealth",
+     "type": "f32",
+     "off": 88,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeightOffset",
+     "type": "f32",
+     "off": 92,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeight",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshRadius",
+     "type": "f32",
+     "off": 100,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ApproxMaxMeshHeight",
+     "type": "f32",
+     "off": 104,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptName",
+     "type": "struct CDefString",
+     "off": 108,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptData",
+     "type": "struct CDefString",
+     "off": 36,
+     "from_base": "CThingBaseDef"
     },
     {
      "name": "TriggerType",
@@ -22413,7 +24291,7 @@
      "type": "i32(long)"
     }
    ],
-   "fable_defs_order_match": "partial(base-class fields under base:* marker / minor order)"
+   "fable_defs_order_match": "exact"
   },
   "CThingShotDef": {
    "addr": "0x46874e",
@@ -22595,27 +24473,405 @@
    "addr": "0x45a397",
    "fields": [
     {
-     "type": "base:CThingBaseDef"
+     "name": "Components",
+     "type": "struct CThingComponentSet",
+     "off": 16,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AvailableInEditor",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GameStatePersisted",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "LevelLess",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsDrawable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysFrameUpdate",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "InMapSearches",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "StartKillLocked",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsLoadableGlobal",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "CanComeBetweenCameraAndObservedThing",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsVulnerableToMelee",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Damageable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceNoSerialise",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawProjectileWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysIncludeInObjectStrikeScans",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DisableOcclusionTesting",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawAfterWater",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceRenderedLastFrameOverride",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AddToComboMultiplierOnHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GiveHeroStatChangesOnBeingHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GroupDef",
+     "type": "i32(long)",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "RenderFadeDistance",
+     "type": "f32",
+     "off": 76,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "PersistenceFlags",
+     "type": "i32(long)",
+     "off": 80,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Health",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MinHealth",
+     "type": "f32",
+     "off": 88,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeightOffset",
+     "type": "f32",
+     "off": 92,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeight",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshRadius",
+     "type": "f32",
+     "off": 100,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ApproxMaxMeshHeight",
+     "type": "f32",
+     "off": 104,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptName",
+     "type": "struct CDefString",
+     "off": 108,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptData",
+     "type": "struct CDefString",
+     "off": 36,
+     "from_base": "CThingBaseDef"
     },
     {
      "name": "TriggerType",
      "type": "enum ESwitchTriggerType"
     }
    ],
-   "fable_defs_order_match": "partial(base-class fields under base:* marker / minor order)"
+   "fable_defs_order_match": "exact"
   },
   "CThingVillageDef": {
    "addr": "0x45a3ea",
    "fields": [
     {
-     "type": "base:CThingBaseDef"
+     "name": "Components",
+     "type": "struct CThingComponentSet",
+     "off": 16,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AvailableInEditor",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GameStatePersisted",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "LevelLess",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsDrawable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysFrameUpdate",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "InMapSearches",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "StartKillLocked",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsLoadableGlobal",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "CanComeBetweenCameraAndObservedThing",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "IsVulnerableToMelee",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Damageable",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceNoSerialise",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawProjectileWeaponTrails",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AlwaysIncludeInObjectStrikeScans",
+     "type": "bool",
+     "off": 40,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DisableOcclusionTesting",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DrawAfterWater",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ForceRenderedLastFrameOverride",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "AddToComboMultiplierOnHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GiveHeroStatChangesOnBeingHit",
+     "type": "bool",
+     "off": 15,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "GroupDef",
+     "type": "i32(long)",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "RenderFadeDistance",
+     "type": "f32",
+     "off": 76,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "PersistenceFlags",
+     "type": "i32(long)",
+     "off": 80,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "Health",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MinHealth",
+     "type": "f32",
+     "off": 88,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeightOffset",
+     "type": "f32",
+     "off": 92,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshHeight",
+     "type": "f32",
+     "off": 36,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "MeshRadius",
+     "type": "f32",
+     "off": 100,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "ApproxMaxMeshHeight",
+     "type": "f32",
+     "off": 104,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptName",
+     "type": "struct CDefString",
+     "off": 108,
+     "from_base": "CThingBaseDef"
+    },
+    {
+     "name": "DefaultScriptData",
+     "type": "struct CDefString",
+     "off": 36,
+     "from_base": "CThingBaseDef"
     },
     {
      "name": "Graphic",
      "type": "struct CEngineGraphic"
     }
    ],
-   "fable_defs_order_match": "partial(base-class fields under base:* marker / minor order)"
+   "fable_defs_order_match": "exact"
   },
   "CThunderBattleDef": {
    "addr": "0x500569",

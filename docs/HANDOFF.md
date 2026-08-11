@@ -8171,8 +8171,10 @@ oracle for `jamen/fable-defs` (whose AGENTS.md marks its decomp field-order orac
   `base:CThingBaseDef` marker; fields live under the base record) + COpinionSourceDef minor order.
   6 UI defs (CUi*/CDialogueLayerDef) have no `*Def::Transfer` symbol yet.
 
-**NEXT (pick up here):** (1) optional JSON post-process to flatten `base:<Class>` markers inline →
-takes 11 partials to exact (pure transform, no disasm); (2) locate the 6 UI defs' transfer entry;
-(3) **NOT DONE — ship it:** attach the JSON to jamen / open a `jamen/fable-defs` issue using the
-per-class `fable_defs_order_match` flags (this was session option (b)). Context: EGOCORE_ASSESSMENT
-addenda + memory `fable-defs-oracle`.
+**NEXT (pick up here):** (1) ~~flatten `base:<Class>` markers~~ **DONE 2026-08-11**
+(`tools/transfer_extract/tx_flatten.py`): 251→**261/262 exact**. The lone remainder
+`COpinionSourceDef` is an array-unroll (fable-defs emits `BinaryReaction`x79/`BinaryOpinion`x5 per
+element; our disasm sees one Transfer-in-loop), flag `partial(array-unrolled:...)` — not a data gap.
+(2) locate the 6 UI defs' transfer entry; (3) **NOT DONE — ship it:** attach the JSON to jamen / open
+a `jamen/fable-defs` issue using the per-class `fable_defs_order_match` flags (session option (b)).
+Context: EGOCORE_ASSESSMENT addenda + memory `fable-defs-oracle`.

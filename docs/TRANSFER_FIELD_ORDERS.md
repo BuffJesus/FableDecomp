@@ -1,10 +1,10 @@
 # Transfer<T> field orders — extraction for `jamen/fable-defs`
 
 **Artifact:** `refs/transfer_field_orders.json` — 262 def classes, **4,465** named+typed+ordered field
-controls. Generated 2026-08-10; sub-component collection pass landed same day.
+controls. Generated 2026-08-10; sub-component collection pass + base-class flatten landed same day.
 
-**Status: essentially complete.** 251/262 classes exact-match fable-defs field order. See
-"Resume / next steps" at the bottom for the small optional remainder.
+**Status: complete.** **261/262** classes exact-match fable-defs field order. The single remainder
+(`COpinionSourceDef`) is an array-unroll artifact, not a data gap — see the residual section below.
 
 ## Why this exists
 
@@ -36,7 +36,7 @@ See docs/EGOCORE_ASSESSMENT_20260731.md §B5 for the relationship.
   `OpenerObject` at field offset `0x34`**, which we had independently RE-verified (CLAUDE.md chest
   facts). The offset falling out of a totally separate derivation cross-checks the extractor.
 - **`CAbilityDef`** → `Ability : enum EHeroAbility` = fable-defs `ability.rs` (`ability: HeroAbility`).
-- **211 / 262 classes** are an exact order-preserving supersequence of fable-defs' `#[def("…")]`
+- **261 / 262 classes** are an exact order-preserving supersequence of fable-defs' `#[def("…")]`
   order. Each class carries `"fable_defs_order_match": "exact" | "partial(...)"`.
 
 ## Sub-component collection fields — DONE (2026-08-10)
@@ -50,15 +50,24 @@ Fix widened the family regex to `\?\?\$(Transfer\w*)@...@CPersistContext@@` (see
 `tools/transfer_extract/tx_extract.py`). Result: exact matches **211 -> 251**, +92 collection fields
 recovered. **No constructor pass was needed.**
 
-## Residual 11 "partial" classes — NOT a data gap
+## Base-class flatten — DONE (2026-08-11)
 
-They differ only by **base-class flattening**: fable-defs inlines base fields into each concrete class,
-while we chain via a `base:<Class>` marker so those fields live under that base's own record.
-- 9x `CThing*Def` (`CThingObjectDef`, `CThingCreatureDef`, ...) — the missing list
-  (`Components`/`PersistenceFlags`/`Health`/...) is the `CThingBaseDef` base; each carries a leading
-  `base:CThingBaseDef` entry.
-- `CTavernGameShoveHaPennyDef` — same, base tavern-game class.
-- `COpinionSourceDef` — all fields present, only a minor order tie-break.
+The 10 base-marker classes (9x `CThing*Def` + `CTavernGameShoveHaPennyDef`) are now **exact**.
+`tools/transfer_extract/tx_flatten.py` (pure JSON transform, no disasm) recursively expands each
+`{"type": "base:<Class>"}` marker in place into that base's field list, tagging every inlined field
+with `"from_base": "<Class>"` for provenance. The base classes (`CThingBaseDef` @ 32 fields,
+`CTavernGameDef`) remain as their own top-level entries. `_meta.base_fields_inlined` records this.
+Re-run: `python tools/transfer_extract/tx_flatten.py [--write]` (dry-run report by default).
+
+## Residual: `COpinionSourceDef` — array-unroll, NOT a data gap
+
+The one class still `partial`. All field **names** are present in our order; the subsequence check
+fails only because fable-defs' `opinion_source.rs` unrolls two array fields — it emits
+`#[def("BinaryReaction")]` ~79x and `#[def("BinaryOpinion")]` 5x, one `#[def]` per array element —
+whereas our linear disasm sees the single `CPersistContext::Transfer` call inside the emitting loop
+**once** (`BinaryReaction`:bool@off11 loop-temp, `BinaryOpinion`:f32). The flag reads
+`partial(array-unrolled:BinaryReactionx79,BinaryOpinionx5)`. Unrolling would require recovering the
+loop trip count from the struct; the compressed single entry is the faithful Transfer-order record.
 
 6 fable-defs classes have no matching `*Def::Transfer` symbol (UI/frontend: `CUiDef`, `CUiIconsDef`,
 `CUiMiscThingsDef`, `CUiStateDef`, `CUILocaleGraphicsDef`, `CDialogueLayerDef`) — different transfer
@@ -66,14 +75,13 @@ signature; not yet located.
 
 ## Resume / next steps (core deliverable is DONE — these are optional polish)
 
-1. **Base-chain flatten (nice-to-have):** post-process `refs/transfer_field_orders.json` to expand each
-   `base:<Class>` marker inline (recursively) so consumers get a fully-flattened list matching
-   fable-defs 1:1. All base classes are already in the JSON — pure JSON transform, no new disasm. Takes
-   the 11 partials to exact.
+1. ~~**Base-chain flatten:**~~ **DONE 2026-08-11** (`tx_flatten.py`; 251→261 exact). See the
+   "Base-class flatten" section above.
 2. **6 UI defs:** grep `ghidra_out/egor_pdb_names.tsv` for `Transfer.*CUiDef` etc.; they likely use a
    non-`UAEXAAVCPersistContext` signature. Low value (frontend-only).
 3. **Ship it (session option (b), not yet done):** attach `refs/transfer_field_orders.json` to jamen or
-   open an issue on `jamen/fable-defs` referencing the per-class `fable_defs_order_match` flags.
+   open an issue on `jamen/fable-defs` referencing the per-class `fable_defs_order_match` flags. The
+   pitch is now stronger: 261/262 exact, single remainder is a documented array-unroll.
 
 ## How to regenerate
 
