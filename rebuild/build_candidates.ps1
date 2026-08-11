@@ -55379,6 +55379,146 @@ $catalog = @(
         TestSource = '00/c3/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00c33670_test.cpp'
         PassPattern = 'CONS_VAL_FWD_OK'
     }
+    [pscustomobject]@{
+        Address = '004dbe73'
+        Module = '_Destroy_range<std::allocator<std'
+        Source = '00/4d/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_004dbe73.cpp'
+        TestSource = '00/4d/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_004dbe73_test.cpp'
+        PassPattern = 'DESTROY_RANGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e366b'
+        Module = '_Destroy_range<std::allocator<std'
+        Source = '00/4e/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_004e366b.cpp'
+        TestSource = '00/4e/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_004e366b_test.cpp'
+        PassPattern = 'DESTROY_RANGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c38360'
+        Module = 'CTCInventoryBase'
+        Source = '00/c3/CTCInventoryBase_GetSelectedCategory_00c38360.cpp'
+        TestSource = '00/c3/CTCInventoryBase_GetSelectedCategory_00c38360_test.cpp'
+        PassPattern = 'GETSELCAT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c3b650'
+        Module = 'CActiveFile'
+        Source = '00/c3/CActiveFile_OnReadFinished_00c3b650.cpp'
+        TestSource = '00/c3/CActiveFile_OnReadFinished_00c3b650_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c426c0'
+        Module = 'CCompressorZlib'
+        Source = '00/c4/CCompressorZlib_SetStreamInput_00c426c0.cpp'
+        TestSource = '00/c4/CCompressorZlib_SetStreamInput_00c426c0_test.cpp'
+        PassPattern = 'SETSTREAMINPUT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c73800'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c7/CLandscapeBackgroundPatch_ClearTextures_00c73800.cpp'
+        TestSource = '00/c7/CLandscapeBackgroundPatch_ClearTextures_00c73800_test.cpp'
+        PassPattern = 'CLEARTEX_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c8ced0'
+        Module = 'CTCMapwho'
+        Source = '00/c8/CTCMapwho_OnDie_00c8ced0.cpp'
+        TestSource = '00/c8/CTCMapwho_OnDie_00c8ced0_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c8d450'
+        Module = 'CTCMapwho'
+        Source = '00/c8/CTCMapwho_OnDie_00c8d450.cpp'
+        TestSource = '00/c8/CTCMapwho_OnDie_00c8d450_test.cpp'
+        PassPattern = 'MAPWHO_ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cb1900'
+        Module = 'CPersistTraits<CReactionFrequencyTraitsArray>'
+        Source = '00/cb/CPersistTraitsCReactionFrequencyTraitsArray_CPersistTraitsCReactionFrequencyTraitsArray_00cb1900.cpp'
+        TestSource = '00/cb/CPersistTraitsCReactionFrequencyTraitsArray_CPersistTraitsCReactionFrequencyTraitsArray_00cb1900_test.cpp'
+        PassPattern = 'PERSISTTRAITS_DTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cdfdf0'
+        Module = 'CMansLover'
+        Source = '00/cd/CMansLover_Init_00cdfdf0.cpp'
+        TestSource = '00/cd/CMansLover_Init_00cdfdf0_test.cpp'
+        PassPattern = 'MANSLOVER_INIT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00e32fe0'
+        Module = 'CChunkCollectionIndicator'
+        Source = '00/e3/CChunkCollectionIndicator_OnPredicateFail_00e32fe0.cpp'
+        TestSource = '00/e3/CChunkCollectionIndicator_OnPredicateFail_00e32fe0_test.cpp'
+        PassPattern = 'PREDFAIL_OK'
+    }
+    [pscustomobject]@{
+        Address = '0046420b'
+        Module = '_global'
+        Source = '00/46/global_Fillnunsignedlongunsignedintunsignedlong_0046420b.cpp'
+        TestSource = '00/46/global_Fillnunsignedlongunsignedintunsignedlong_0046420b_test.cpp'
+        PassPattern = 'FILLN_OK'
+    }
+    [pscustomobject]@{
+        Address = '004699c9'
+        Module = '_global'
+        Source = '00/46/global_Fillnunsignedlongunsignedintunsignedlong_004699c9.cpp'
+        TestSource = '00/46/global_Fillnunsignedlongunsignedintunsignedlong_004699c9_test.cpp'
+        PassPattern = 'FILLN_OK'
+    }
+    [pscustomobject]@{
+        Address = '0047232b'
+        Module = '_global'
+        Source = '00/47/global_Fillnunsignedlongunsignedintunsignedlong_0047232b.cpp'
+        TestSource = '00/47/global_Fillnunsignedlongunsignedintunsignedlong_0047232b_test.cpp'
+        PassPattern = 'FILLN_OK_47232b'
+    }
+    [pscustomobject]@{
+        Address = '0047cfd3'
+        Module = 'CUserProfileManager'
+        Source = '00/47/CUserProfileManager_GetCameraSensitivity_0047cfd3.cpp'
+        TestSource = '00/47/CUserProfileManager_GetCameraSensitivity_0047cfd3_test.cpp'
+        PassPattern = 'SENS_OK'
+    }
+    [pscustomobject]@{
+        Address = '004853bd'
+        Module = 'CTavernTableDef'
+        Source = '00/48/CTavernTableDef_operator_004853bd.cpp'
+        TestSource = '00/48/CTavernTableDef_operator_004853bd_test.cpp'
+        PassPattern = 'TAVERN_ASSIGN_OK'
+    }
+    [pscustomobject]@{
+        Address = '004b02f0'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_RemoveAvailableQuestCardType_004b02f0.cpp'
+        TestSource = '00/4b/CQuestManager_RemoveAvailableQuestCardType_004b02f0_test.cpp'
+        PassPattern = 'QCARD_REMOVE_OK'
+    }
+    [pscustomobject]@{
+        Address = '004c3360'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/4c/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_004c3360.cpp'
+        TestSource = '00/4c/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_004c3360_test.cpp'
+        PassPattern = 'DESTVAL_ORDER_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dbe58'
+        Module = '_Destroy_range<std::allocator<std'
+        Source = '00/4d/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_004dbe58.cpp'
+        TestSource = '00/4d/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_004dbe58_test.cpp'
+        PassPattern = 'DESTROY_RANGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dfc27'
+        Module = '_Destroy_range<std::allocator<std'
+        Source = '00/4d/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_004dfc27.cpp'
+        TestSource = '00/4d/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_004dfc27_test.cpp'
+        PassPattern = 'DESTROY_RANGE_OK'
+    }
 )
 
 $requestedAddresses = @(
