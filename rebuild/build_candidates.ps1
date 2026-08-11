@@ -56128,6 +56128,160 @@ $catalog = @(
         TestSource = '00/c1/C3DAnimationSequenceData_SetupIdentityFlag_00c1bc50_test.cpp'
         PassPattern = 'SETUPIDENTITY_OK'
     }
+    [pscustomobject]@{
+        Address = '00c1e970'
+        Module = 'CCombatSequenceBase'
+        Source = '00/c1/CCombatSequenceBase_IsBoastSequence_00c1e970.cpp'
+        TestSource = '00/c1/CCombatSequenceBase_IsBoastSequence_00c1e970_test.cpp'
+        PassPattern = 'BOAST_MODULO_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c22040'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/c2/CTCInventoryAbilities_AddLearnedExpression_00c22040.cpp'
+        TestSource = '00/c2/CTCInventoryAbilities_AddLearnedExpression_00c22040_test.cpp'
+        PassPattern = 'EXPR_FWD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c222b0'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/c2/CTCInventoryAbilities_AddLearnedExpression_00c222b0.cpp'
+        TestSource = '00/c2/CTCInventoryAbilities_AddLearnedExpression_00c222b0_test.cpp'
+        PassPattern = 'PASS_ALE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c26280'
+        Module = 'CWorld'
+        Source = '00/c2/CWorld_DrawGetEnvironment_00c26280.cpp'
+        TestSource = '00/c2/CWorld_DrawGetEnvironment_00c26280_test.cpp'
+        PassPattern = 'TEST_PASS_C26280'
+    }
+    [pscustomobject]@{
+        Address = '00c2ed50'
+        Module = 'CIsThingAlive'
+        Source = '00/c2/CIsThingAlive_operator_00c2ed50.cpp'
+        TestSource = '00/c2/CIsThingAlive_operator_00c2ed50_test.cpp'
+        PassPattern = 'CIsThingAlive_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2ed70'
+        Module = 'CIsThingAlive'
+        Source = '00/c2/CIsThingAlive_operator_00c2ed70.cpp'
+        TestSource = '00/c2/CIsThingAlive_operator_00c2ed70_test.cpp'
+        PassPattern = 'ISALIVE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c36150'
+        Module = 'StrPtr'
+        Source = '00/c3/StrPtr_operator_00c36150.cpp'
+        TestSource = '00/c3/StrPtr_operator_00c36150_test.cpp'
+        PassPattern = 'STRPTR_NE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c5e3d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/c5/CLandscapeBackgroundPatch_ClearTextures_00c5e3d0.cpp'
+        TestSource = '00/c5/CLandscapeBackgroundPatch_ClearTextures_00c5e3d0_test.cpp'
+        PassPattern = 'CLEARTEX_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c95420'
+        Module = 'CEngineResourceManager'
+        Source = '00/c9/CEngineResourceManager_WorldFrameUpdate_00c95420.cpp'
+        TestSource = '00/c9/CEngineResourceManager_WorldFrameUpdate_00c95420_test.cpp'
+        PassPattern = 'WORLDFRAMEUPDATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cd2ae2'
+        Module = 'CTavernTableDef'
+        Source = '00/cd/CTavernTableDef_operator_00cd2ae2.cpp'
+        TestSource = '00/cd/CTavernTableDef_operator_00cd2ae2_test.cpp'
+        PassPattern = 'TAVERN_ASSIGN_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cd3625'
+        Module = '_Destroy_range<std::allocator<std'
+        Source = '00/cd/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_00cd3625.cpp'
+        TestSource = '00/cd/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_00cd3625_test.cpp'
+        PassPattern = 'DESTROY_RANGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cd4600'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/cd/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00cd4600.cpp'
+        TestSource = '00/cd/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00cd4600_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00453210'
+        Module = 'CTCCameraPointScripted'
+        Source = '00/45/CTCCameraPointScripted_GetLookDirection_00453210.cpp'
+        TestSource = '00/45/CTCCameraPointScripted_GetLookDirection_00453210_test.cpp'
+        PassPattern = 'LOOKDIR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00477bfc'
+        Module = 'CActiveFile'
+        Source = '00/47/CActiveFile_OnReadFinished_00477bfc.cpp'
+        TestSource = '00/47/CActiveFile_OnReadFinished_00477bfc_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '00478a02'
+        Module = 'CActiveFile'
+        Source = '00/47/CActiveFile_OnReadFinished_00478a02.cpp'
+        TestSource = '00/47/CActiveFile_OnReadFinished_00478a02_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '004ab130'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_IsAliveCScriptThingUBENXZ_004ab130.cpp'
+        TestSource = '00/4a/CScriptThing_IsAliveCScriptThingUBENXZ_004ab130_test.cpp'
+        PassPattern = 'ISALIVE_OK'
+    }
+    [pscustomobject]@{
+        Address = '004ab150'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_IsNullCScriptThingUBENXZ_004ab150.cpp'
+        TestSource = '00/4a/CScriptThing_IsNullCScriptThingUBENXZ_004ab150_test.cpp'
+        PassPattern = 'ISNULL_OK'
+    }
+    [pscustomobject]@{
+        Address = '004af220'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/4a/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_004af220.cpp'
+        TestSource = '00/4a/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_004af220_test.cpp'
+        PassPattern = 'DEST_VAL_ORDER_OK'
+    }
+    [pscustomobject]@{
+        Address = '004b8110'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/4b/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_004b8110.cpp'
+        TestSource = '00/4b/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_004b8110_test.cpp'
+        PassPattern = 'DESTVAL_ORDER_OK'
+    }
+    [pscustomobject]@{
+        Address = '004c7880'
+        Module = 'CThing'
+        Source = '00/4c/CThing_SetAsGameStatePersisted_004c7880.cpp'
+        TestSource = '00/4c/CThing_SetAsGameStatePersisted_004c7880_test.cpp'
+        PassPattern = 'PERSIST_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d39cf'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d39cf.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d39cf_test.cpp'
+        PassPattern = 'GETACTIONNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '004da5a1'
+        Module = 'vector<CIntelligentPointer<CThing_const_>'
+        Source = '00/4d/vectorCIntelligentPointerCThingconst_Destroy_004da5a1.cpp'
+        TestSource = '00/4d/vectorCIntelligentPointerCThingconst_Destroy_004da5a1_test.cpp'
+        PassPattern = 'DESTROY_PASS'
+    }
 )
 
 $requestedAddresses = @(
