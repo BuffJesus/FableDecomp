@@ -54881,6 +54881,167 @@ $catalog = @(
         TestSource = '00/4a/CIntelligentPointerCThingCreatureBase_operator_004a9760_test.cpp'
         PassPattern = 'INTPTR_ASSIGN_OK'
     }
+    [pscustomobject]@{
+        Address = '004bfac0'
+        Module = 'CTCGraphicAppearance'
+        Source = '00/4b/CTCGraphicAppearance_SetAlpha_004bfac0.cpp'
+        TestSource = '00/4b/CTCGraphicAppearance_SetAlpha_004bfac0_test.cpp'
+        PassPattern = 'SETALPHA_OK'
+    }
+    [pscustomobject]@{
+        Address = '004c7ac0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_AddToRenderList_004c7ac0.cpp'
+        TestSource = '00/4c/CThing_AddToRenderList_004c7ac0_test.cpp'
+        PassPattern = 'RENDERLIST_OK'
+    }
+    [pscustomobject]@{
+        Address = '004c7e50'
+        Module = 'GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript'
+        Source = '00/4c/GFPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScrip_CIsThingAlive_004c7e50.cpp'
+        TestSource = '00/4c/GFPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScrip_CIsThingAlive_004c7e50_test.cpp'
+        PassPattern = 'PARITY_OK_004c7e50'
+    }
+    [pscustomobject]@{
+        Address = '004dc83e'
+        Module = 'CTCActionUseBuyHouse'
+        Source = '00/4d/CTCActionUseBuyHouse_OnCreate_004dc83e.cpp'
+        TestSource = '00/4d/CTCActionUseBuyHouse_OnCreate_004dc83e_test.cpp'
+        PassPattern = 'ONCREATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '004fb470'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_DrawGetNoMaps_004fb470.cpp'
+        TestSource = '00/4f/CWorldMap_DrawGetNoMaps_004fb470_test.cpp'
+        PassPattern = 'DRAWGETNOMAPS_OK'
+    }
+    [pscustomobject]@{
+        Address = '004fb4b0'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_DrawGetNoMaps_004fb4b0.cpp'
+        TestSource = '00/4f/CWorldMap_DrawGetNoMaps_004fb4b0_test.cpp'
+        PassPattern = 'NOMAPS_OK'
+    }
+    [pscustomobject]@{
+        Address = '0050f3d0'
+        Module = 'CIntelligentPointer<CThingCreatureBase>'
+        Source = '00/50/CIntelligentPointerCThingCreatureBase_operator_0050f3d0.cpp'
+        TestSource = '00/50/CIntelligentPointerCThingCreatureBase_operator_0050f3d0_test.cpp'
+        PassPattern = 'IPTR_ASSIGN_OK'
+    }
+    [pscustomobject]@{
+        Address = '005930f3'
+        Module = '_Dest_val<std::allocator<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_>,std'
+        Source = '00/59/DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_005930f3.cpp'
+        TestSource = '00/59/DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_005930f3_test.cpp'
+        PassPattern = 'DEST_VAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '0059b310'
+        Module = 'CGameEvent'
+        Source = '00/59/CGameEvent_AddUBYTE_0059b310.cpp'
+        TestSource = '00/59/CGameEvent_AddUBYTE_0059b310_test.cpp'
+        PassPattern = 'ADDUBYTE_OK'
+    }
+    [pscustomobject]@{
+        Address = '005b1876'
+        Module = 'CRegion'
+        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b1876.cpp'
+        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b1876_test.cpp'
+        PassPattern = 'SETX_SWAP_OK'
+    }
+    [pscustomobject]@{
+        Address = '005b1890'
+        Module = 'CRegion'
+        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b1890.cpp'
+        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005b1890_test.cpp'
+        PassPattern = 'OFFSETX_SWAP_OK'
+    }
+    [pscustomobject]@{
+        Address = '005ba51f'
+        Module = 'CRegion'
+        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005ba51f.cpp'
+        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005ba51f_test.cpp'
+        PassPattern = 'OFFSETX_SWAP_OK'
+    }
+    [pscustomobject]@{
+        Address = '005cbf58'
+        Module = 'CRegion'
+        Source = '00/5c/CRegion_SetMiniMapRegionExitTextOffsetX_005cbf58.cpp'
+        TestSource = '00/5c/CRegion_SetMiniMapRegionExitTextOffsetX_005cbf58_test.cpp'
+        PassPattern = 'PASS_SETMINIMAPREGIONEXITTEXTOFFSETX'
+    }
+    [pscustomobject]@{
+        Address = '005f8736'
+        Module = '_Dest_val<std::allocator<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_>,std'
+        Source = '00/5f/DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_005f8736.cpp'
+        TestSource = '00/5f/DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_005f8736_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '0061b5f0'
+        Module = 'CTCInventoryQuests'
+        Source = '00/61/CTCInventoryQuests_ProcessButtonBReleased_0061b5f0.cpp'
+        TestSource = '00/61/CTCInventoryQuests_ProcessButtonBReleased_0061b5f0_test.cpp'
+        PassPattern = 'PROCESSB_OK'
+    }
+    [pscustomobject]@{
+        Address = '0064ae66'
+        Module = 'CQuestInfoElement'
+        Source = '00/64/CQuestInfoElement_Clear_0064ae66.cpp'
+        TestSource = '00/64/CQuestInfoElement_Clear_0064ae66_test.cpp'
+        PassPattern = 'CQuestInfoElement_Clear_PASS'
+    }
+    [pscustomobject]@{
+        Address = '006622a0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_IsPerformingAnyAction_006622a0.cpp'
+        TestSource = '00/66/CThingCreatureBase_IsPerformingAnyAction_006622a0_test.cpp'
+        PassPattern = 'ACTION_OK'
+    }
+    [pscustomobject]@{
+        Address = '00668b80'
+        Module = 'CIntelligentPointer<CThingCreatureBase>'
+        Source = '00/66/CIntelligentPointerCThingCreatureBase_operator_00668b80.cpp'
+        TestSource = '00/66/CIntelligentPointerCThingCreatureBase_operator_00668b80_test.cpp'
+        PassPattern = 'OPEQ_OK'
+    }
+    [pscustomobject]@{
+        Address = '006893b0'
+        Module = 'CInputProcessInventoryBase'
+        Source = '00/68/CInputProcessInventoryBase_Init_006893b0.cpp'
+        TestSource = '00/68/CInputProcessInventoryBase_Init_006893b0_test.cpp'
+        PassPattern = 'INIT_ZERO_OK'
+    }
+    [pscustomobject]@{
+        Address = '006a7ab0'
+        Module = 'CThingFilter_CanBeUsedAsCover'
+        Source = '00/6a/CThingFilterCanBeUsedAsCover_operator_006a7ab0.cpp'
+        TestSource = '00/6a/CThingFilterCanBeUsedAsCover_operator_006a7ab0_test.cpp'
+        PassPattern = 'COVER_FILTER_OK'
+    }
+    [pscustomobject]@{
+        Address = '006d6850'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_GetCategoryTrainableStatIsIn_006d6850.cpp'
+        TestSource = '00/6d/CTCHeroExperience_GetCategoryTrainableStatIsIn_006d6850_test.cpp'
+        PassPattern = 'CATEGORY_LOOKUP_OK'
+    }
+    [pscustomobject]@{
+        Address = '006e0fa0'
+        Module = 'CTCDParticleEmitter'
+        Source = '00/6e/CTCDParticleEmitter_OnDie_006e0fa0.cpp'
+        TestSource = '00/6e/CTCDParticleEmitter_OnDie_006e0fa0_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '006e26f0'
+        Module = 'CTCMapwho'
+        Source = '00/6e/CTCMapwho_OnDie_006e26f0.cpp'
+        TestSource = '00/6e/CTCMapwho_OnDie_006e26f0_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
 )
 
 $requestedAddresses = @(
