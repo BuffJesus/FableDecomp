@@ -55673,6 +55673,153 @@ $catalog = @(
         TestSource = '00/66/CThing_SetAsGameStatePersisted_00661ea0_test.cpp'
         PassPattern = 'PERSIST_OK'
     }
+    [pscustomobject]@{
+        Address = '0066c610'
+        Module = 'C3DMeshInfo'
+        Source = '00/66/C3DMeshInfo_HasPhysicsMesh_0066c610.cpp'
+        TestSource = '00/66/C3DMeshInfo_HasPhysicsMesh_0066c610_test.cpp'
+        PassPattern = 'HASPHYSICSMESH_OK'
+    }
+    [pscustomobject]@{
+        Address = '0067c350'
+        Module = 'CSystemRegistry'
+        Source = '00/67/CSystemRegistry_CSystemRegistry_0067c350.cpp'
+        TestSource = '00/67/CSystemRegistry_CSystemRegistry_0067c350_test.cpp'
+        PassPattern = 'DTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00692850'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_IsPlayingAnimationCCreatureActionBaseUBENXZ_00692850.cpp'
+        TestSource = '00/69/CCreatureActionBase_IsPlayingAnimationCCreatureActionBaseUBENXZ_00692850_test.cpp'
+        PassPattern = 'ISPLAYANIM_OK'
+    }
+    [pscustomobject]@{
+        Address = '006a7590'
+        Module = 'CThingFilter_MarkerHasProperty'
+        Source = '00/6a/CThingFilterMarkerHasProperty_operator_006a7590.cpp'
+        TestSource = '00/6a/CThingFilterMarkerHasProperty_operator_006a7590_test.cpp'
+        PassPattern = 'PARITY_OK_MARKERHASPROP'
+    }
+    [pscustomobject]@{
+        Address = '006a75b0'
+        Module = 'CThingFilter_MarkerHasProperty'
+        Source = '00/6a/CThingFilterMarkerHasProperty_operator_006a75b0.cpp'
+        TestSource = '00/6a/CThingFilterMarkerHasProperty_operator_006a75b0_test.cpp'
+        PassPattern = 'MARKERHASPROPERTY_OK'
+    }
+    [pscustomobject]@{
+        Address = '006bf7f0'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6b/CTCBuyableHouse_HasMultipleDressLevels_006bf7f0.cpp'
+        TestSource = '00/6b/CTCBuyableHouse_HasMultipleDressLevels_006bf7f0_test.cpp'
+        PassPattern = 'PASS_HASMULTIPLEDRESSLEVELS'
+    }
+    [pscustomobject]@{
+        Address = '006cda90'
+        Module = 'CGroundNavigatorExternalInterface'
+        Source = '00/6c/CGroundNavigatorExternalInterface_PeekNavigatorPosition2D_006cda90.cpp'
+        TestSource = '00/6c/CGroundNavigatorExternalInterface_PeekNavigatorPosition2D_006cda90_test.cpp'
+        PassPattern = 'PEEK_NAV2D_OK'
+    }
+    [pscustomobject]@{
+        Address = '006d7490'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_AddSuccessfulBlockParry_006d7490.cpp'
+        TestSource = '00/6d/CTCHeroExperience_AddSuccessfulBlockParry_006d7490_test.cpp'
+        PassPattern = 'BLOCKPARRY_OK'
+    }
+    [pscustomobject]@{
+        Address = '006d7550'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_AddSuccessfulBlockParry_006d7550.cpp'
+        TestSource = '00/6d/CTCHeroExperience_AddSuccessfulBlockParry_006d7550_test.cpp'
+        PassPattern = 'BLOCKPARRY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0070b470'
+        Module = 'CWorld'
+        Source = '00/70/CWorld_DrawGetEnvironment_0070b470.cpp'
+        TestSource = '00/70/CWorld_DrawGetEnvironment_0070b470_test.cpp'
+        PassPattern = 'ENV_GETTER_OK'
+    }
+    [pscustomobject]@{
+        Address = '00739dd0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/73/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00739dd0.cpp'
+        TestSource = '00/73/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00739dd0_test.cpp'
+        PassPattern = 'PASS_DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '007699c0'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/76/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_007699c0.cpp'
+        TestSource = '00/76/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_007699c0_test.cpp'
+        PassPattern = 'DESTVAL_ORDER_OK'
+    }
+    [pscustomobject]@{
+        Address = '00788aef'
+        Module = 'CTCMeleeTrap'
+        Source = '00/78/CTCMeleeTrap_UpdateTrap_00788aef.cpp'
+        TestSource = '00/78/CTCMeleeTrap_UpdateTrap_00788aef_test.cpp'
+        PassPattern = 'MELEETRAP_OK'
+    }
+    [pscustomobject]@{
+        Address = '0082e8f0'
+        Module = 'CTCLook'
+        Source = '00/82/CTCLook_IsTurningBody_0082e8f0.cpp'
+        TestSource = '00/82/CTCLook_IsTurningBody_0082e8f0_test.cpp'
+        PassPattern = 'ISTURNINGBODY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0082e9a0'
+        Module = 'CTCLook'
+        Source = '00/82/CTCLook_IsTurningBody_0082e9a0.cpp'
+        TestSource = '00/82/CTCLook_IsTurningBody_0082e9a0_test.cpp'
+        PassPattern = 'TURNBODY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00838ba0'
+        Module = 'CThingCreatureBase'
+        Source = '00/83/CThingCreatureBase_EditWorldUpdate_00838ba0.cpp'
+        TestSource = '00/83/CThingCreatureBase_EditWorldUpdate_00838ba0_test.cpp'
+        PassPattern = 'EDITWORLDUPDATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '0088b8f0'
+        Module = 'CQuestManager'
+        Source = '00/88/CQuestManager_RemoveAvailableQuestCardType_0088b8f0.cpp'
+        TestSource = '00/88/CQuestManager_RemoveAvailableQuestCardType_0088b8f0_test.cpp'
+        PassPattern = 'REMOVEQCT_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b69d0'
+        Module = 'CCreatureAction_UnsheatheWeapons'
+        Source = '00/8b/CCreatureActionUnsheatheWeapons_FinishActionCCreatureActionUnsheatheWeaponsUAEXX_008b69d0.cpp'
+        TestSource = '00/8b/CCreatureActionUnsheatheWeapons_FinishActionCCreatureActionUnsheatheWeaponsUAEXX_008b69d0_test.cpp'
+        PassPattern = 'UNSHEATHE_FINISH_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b93b0'
+        Module = 'CCreatureAction_ForcePushOutOf'
+        Source = '00/8b/CCreatureActionForcePushOutOf_FinishActionCCreatureActionForcePushOutOfUAEXXZ_008b93b0.cpp'
+        TestSource = '00/8b/CCreatureActionForcePushOutOf_FinishActionCCreatureActionForcePushOutOfUAEXXZ_008b93b0_test.cpp'
+        PassPattern = 'FORCEPUSH_FINISH_OK'
+    }
+    [pscustomobject]@{
+        Address = '008c2d60'
+        Module = '_global'
+        Source = '00/8c/global_DeleteData_008c2d60.cpp'
+        TestSource = '00/8c/global_DeleteData_008c2d60_test.cpp'
+        PassPattern = 'DELETEDATA_OK'
+    }
+    [pscustomobject]@{
+        Address = '008c3ee0'
+        Module = 'CCreatureAction_ScorpionRecover'
+        Source = '00/8c/CCreatureActionScorpionRecover_InitialiseCCreatureActionScorpionRecoverUAEXXZ_008c3ee0.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionRecover_InitialiseCCreatureActionScorpionRecoverUAEXXZ_008c3ee0_test.cpp'
+        PassPattern = 'SCORPIONRECOVER_INIT_OK'
+    }
 )
 
 $requestedAddresses = @(
