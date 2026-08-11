@@ -56429,6 +56429,167 @@ $catalog = @(
         TestSource = '00/5d/CAnimComponentStrikeResponseAnim_CloneCAnimComponentStrikeResponseAnimUBEPAVCAnim_005db4a0_test.cpp'
         PassPattern = 'CLONE_STRIKE_OK'
     }
+    [pscustomobject]@{
+        Address = '0065d639'
+        Module = '_global'
+        Source = '00/65/global_ISTHINGDEADCThing_0065d639.cpp'
+        TestSource = '00/65/global_ISTHINGDEADCThing_0065d639_test.cpp'
+        PassPattern = 'THING_DEAD_OK'
+    }
+    [pscustomobject]@{
+        Address = '0065f0fa'
+        Module = 'CTCActionUseBuyHouse'
+        Source = '00/65/CTCActionUseBuyHouse_OnCreate_0065f0fa.cpp'
+        TestSource = '00/65/CTCActionUseBuyHouse_OnCreate_0065f0fa_test.cpp'
+        PassPattern = 'ONCREATE_BUYHOUSE_OK'
+    }
+    [pscustomobject]@{
+        Address = '0066a6f0'
+        Module = 'CEngineSubPrimitiveGameMesh'
+        Source = '00/66/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_0066a6f0.cpp'
+        TestSource = '00/66/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_0066a6f0_test.cpp'
+        PassPattern = 'VECDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '006b8350'
+        Module = 'GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript'
+        Source = '00/6b/GFPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScrip_CIsThingAlive_006b8350.cpp'
+        TestSource = '00/6b/GFPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScrip_CIsThingAlive_006b8350_test.cpp'
+        PassPattern = 'AND_FWD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00704280'
+        Module = 'CEngineSubPrimitiveGameMesh'
+        Source = '00/70/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00704280.cpp'
+        TestSource = '00/70/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00704280_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0077cde0'
+        Module = 'CTCHighlightItem'
+        Source = '00/77/CTCHighlightItem_HandleMessage_0077cde0.cpp'
+        TestSource = '00/77/CTCHighlightItem_HandleMessage_0077cde0_test.cpp'
+        PassPattern = 'HIGHLIGHT_HANDLEMSG_OK'
+    }
+    [pscustomobject]@{
+        Address = '007e5d00'
+        Module = 'CTCOracleMinigame'
+        Source = '00/7e/CTCOracleMinigame_OutputsFiring_007e5d00.cpp'
+        TestSource = '00/7e/CTCOracleMinigame_OutputsFiring_007e5d00_test.cpp'
+        PassPattern = 'OUTPUTSFIRING_OK'
+    }
+    [pscustomobject]@{
+        Address = '00835af0'
+        Module = 'CModeSitBase'
+        Source = '00/83/CModeSitBase_RemoveModeWithAction_00835af0.cpp'
+        TestSource = '00/83/CModeSitBase_RemoveModeWithAction_00835af0_test.cpp'
+        PassPattern = 'REMOVEMODE_OK'
+    }
+    [pscustomobject]@{
+        Address = '008389a0'
+        Module = 'CThingGameObject'
+        Source = '00/83/CThingGameObject_SetAddToComboMultiplierOnHit_008389a0.cpp'
+        TestSource = '00/83/CThingGameObject_SetAddToComboMultiplierOnHit_008389a0_test.cpp'
+        PassPattern = 'COMBO_MULT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00844720'
+        Module = 'CCreatureAction_PickCrop'
+        Source = '00/84/CCreatureActionPickCrop_PerformAction_00844720.cpp'
+        TestSource = '00/84/CCreatureActionPickCrop_PerformAction_00844720_test.cpp'
+        PassPattern = 'PICKCROP_OK'
+    }
+    [pscustomobject]@{
+        Address = '00863260'
+        Module = 'CTCPhysicsNavigator'
+        Source = '00/86/CTCPhysicsNavigator_EnableNavigator_00863260.cpp'
+        TestSource = '00/86/CTCPhysicsNavigator_EnableNavigator_00863260_test.cpp'
+        PassPattern = 'NAV_ENABLE_OK'
+    }
+    [pscustomobject]@{
+        Address = '008d68e0'
+        Module = 'CModeChargeForcePush'
+        Source = '00/8d/CModeChargeForcePush_OnActivate_008d68e0.cpp'
+        TestSource = '00/8d/CModeChargeForcePush_OnActivate_008d68e0_test.cpp'
+        PassPattern = 'FORCEPUSH_ONACTIVATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '008d6900'
+        Module = 'CModeChargeForcePush'
+        Source = '00/8d/CModeChargeForcePush_OnActivate_008d6900.cpp'
+        TestSource = '00/8d/CModeChargeForcePush_OnActivate_008d6900_test.cpp'
+        PassPattern = 'OFP_OK'
+    }
+    [pscustomobject]@{
+        Address = '008d6980'
+        Module = 'CModeChargeForcePush'
+        Source = '00/8d/CModeChargeForcePush_OnActivate_008d6980.cpp'
+        TestSource = '00/8d/CModeChargeForcePush_OnActivate_008d6980_test.cpp'
+        PassPattern = 'FORCEPUSH_ONACTIVATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '008d6a10'
+        Module = 'CModeDragonRearUp'
+        Source = '00/8d/CModeDragonRearUp_OnDeactivate_008d6a10.cpp'
+        TestSource = '00/8d/CModeDragonRearUp_OnDeactivate_008d6a10_test.cpp'
+        PassPattern = 'REARUP_DEACT_OK'
+    }
+    [pscustomobject]@{
+        Address = '0094f9e0'
+        Module = 'CAIStateGroup_JackDragon'
+        Source = '00/94/CAIStateGroupJackDragon_ResetTimers_0094f9e0.cpp'
+        TestSource = '00/94/CAIStateGroupJackDragon_ResetTimers_0094f9e0_test.cpp'
+        PassPattern = 'RESETTIMERS_OK'
+    }
+    [pscustomobject]@{
+        Address = '0096f240'
+        Module = 'CAIStateGroup_MinionBehaviourSad'
+        Source = '00/96/CAIStateGroupMinionBehaviourSad_IsRunnableLeafCAIStateGroupMinionBehaviourSadUAE_0096f240.cpp'
+        TestSource = '00/96/CAIStateGroupMinionBehaviourSad_IsRunnableLeafCAIStateGroupMinionBehaviourSadUAE_0096f240_test.cpp'
+        PassPattern = 'IsRunnableLeaf_OK'
+    }
+    [pscustomobject]@{
+        Address = '00993e30'
+        Module = 'CDataOutputStream'
+        Source = '00/99/CDataOutputStream_WriteEBOOL_00993e30.cpp'
+        TestSource = '00/99/CDataOutputStream_WriteEBOOL_00993e30_test.cpp'
+        PassPattern = 'WriteEBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00996bc0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/99/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00996bc0.cpp'
+        TestSource = '00/99/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00996bc0_test.cpp'
+        PassPattern = 'CONS_VAL_FWD_OK'
+    }
+    [pscustomobject]@{
+        Address = '009a0ae0'
+        Module = 'CEngineSubPrimitiveGameMesh'
+        Source = '00/9a/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_009a0ae0.cpp'
+        TestSource = '00/9a/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_009a0ae0_test.cpp'
+        PassPattern = 'VDTOR_OK_009a0ae0'
+    }
+    [pscustomobject]@{
+        Address = '009f77f0'
+        Module = 'operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript'
+        Source = '00/9f/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_009f77f0.cpp'
+        TestSource = '00/9f/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_009f77f0_test.cpp'
+        PassPattern = 'PRED_ANDAND_OK'
+    }
+    [pscustomobject]@{
+        Address = '009f7810'
+        Module = 'operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript'
+        Source = '00/9f/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_009f7810.cpp'
+        TestSource = '00/9f/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_009f7810_test.cpp'
+        PassPattern = 'PREDICATE_AND_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a0aaa0'
+        Module = 'CVertexBufferWin32'
+        Source = '00/a0/CVertexBufferWin32_DoSizeof_00a0aaa0.cpp'
+        TestSource = '00/a0/CVertexBufferWin32_DoSizeof_00a0aaa0_test.cpp'
+        PassPattern = 'DOSIZEOF_OK'
+    }
 )
 
 $requestedAddresses = @(
