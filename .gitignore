@@ -61,6 +61,8 @@ imgui.ini
 /lift/state/*.pid
 /lift/state/*.stop
 /lift/state/*.tmp
+/lift/state/*.complete
+/lift/reports/**/*.collision-*
 /lift/proofs/build/
 
 # Blender proof products generated from game assets.
