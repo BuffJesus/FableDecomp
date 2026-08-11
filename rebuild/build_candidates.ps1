@@ -53060,6 +53060,35 @@ $catalog = @(
         TestSource = '00/40/CUserProfileManager_GetAutoSaveFileName_004065d0_test.cpp'
         PassPattern = '004065d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004069e0'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_GetAutoSaveDisplayName_004069e0.cpp'
+        TestSource = '00/40/CUserProfileManager_GetAutoSaveDisplayName_004069e0_test.cpp'
+        PassPattern = '004069e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00406c20'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_GetAutoSaveDisplayName_00406c20.cpp'
+        TestSource = '00/40/CUserProfileManager_GetAutoSaveDisplayName_00406c20_test.cpp'
+        PassPattern = '00406c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00406610'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_GetManualSaveFileName_00406610.cpp'
+        TestSource = '00/40/CUserProfileManager_GetManualSaveFileName_00406610_test.cpp'
+        PassPattern = '00406610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00406f70'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_GetAutoSavePathName_00406f70.cpp'
+        TestSource = '00/40/CUserProfileManager_GetAutoSavePathName_00406f70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00406f70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

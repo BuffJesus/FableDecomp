@@ -88,3 +88,23 @@ call 0x9c95e0 + dtor 0x99eae0, else the 0x99b6b0 factory), GetManualSaveDisplayN
 0x406ae0 (320B), GetAutoSavePathName 0x406f70 (192B), GetSaveDisplayNameFromFileName
 0x407e10 (448B), LoadFileList 0x4091c0 (544B). The DISPLAY-name getters are what the
 frontend save list shows ("AutoSave"/"Save 1/2/3"); LoadFileList enumerates the slots.
+
+### 2026-08-10 — display-name tier: 4 more landed (6 total in the seam)
+
+Landed byte-exact (RELOCATION_MATCH): GetAutoSaveDisplayName 0x4069e0 + 0x406c20
+(the frontend "AutoSave" display strings — two-branch: format from save-manager
+singleton g_13b86a0->f14 / g_13b871c->f60 via 0x9c95e0, else literal factory
+0x99b6b0), GetManualSaveFileName 0x406610 (multi-temp CWideString concat: default
+ctor 0x99aed0 + format 0x99ba70 + concat 0x99b720/0x99be70 + dtors), and
+GetAutoSavePathName 0x406f70 (with __security_cookie + /GS + a 0x104 path buffer
+via 0x406e30 + WConcat 0x595080). Save seam now has 6 byte-exact fns.
+
+Deferred (semantics recovered, byte-blocked — see agent notes):
+- GetEmptySlotName 0x406a80 DIFFER(94v88): correct behaviour, +6B codegen; near-miss,
+  retryable. (if(mgr) format(mgr->f14, temp) else literal factory.)
+- GetManualSaveDisplayName 0x406ae0 DIFFER(393v314): 2-branch multi-temp concat +
+  tail to GetManualSaveFileName; VC temp/dtor scheduling won't match.
+- GetSaveDisplayNameFromFileName 0x407e10: SEH-unwind cleanup bitmask (test bl,0x10/8/4/2/1
+  -> conditional dtors) not reproducible from C++; dispatches to GetAutoSave/ManualDisplayName.
+- LoadFileList 0x4091c0: __security_cookie + STL vector<save-entry> iteration (rep movsd of
+  0x1c-byte entries, begin/next 0x999760/0x999850); enumerates slots into the caller's vector.
