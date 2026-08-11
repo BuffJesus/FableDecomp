@@ -53719,6 +53719,174 @@ $catalog = @(
         TestSource = '00/8b/CCombatSequenceWhisperLunge_GetNameCCombatSequenceWhisperLungeUBEAVCCharStri_008b4920_test.cpp'
         PassPattern = 'WHISPERLUNGE_GETNAME_OK'
     }
+    [pscustomobject]@{
+        Address = '008b49a0'
+        Module = 'CCombatSequenceWhisperAdvance'
+        Source = '00/8b/CCombatSequenceWhisperAdvance_GetNameCCombatSequenceWhisperAdvanceUBEAVCCharSt_008b49a0.cpp'
+        TestSource = '00/8b/CCombatSequenceWhisperAdvance_GetNameCCombatSequenceWhisperAdvanceUBEAVCCharSt_008b49a0_test.cpp'
+        PassPattern = 'GETNAME_WHISPER_ADVANCE_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b4a20'
+        Module = 'CCombatSequenceWhisperAttackCombo'
+        Source = '00/8b/CCombatSequenceWhisperAttackCombo_GetNameCCombatSequenceWhisperAttackComboUBEAVCCh_008b4a20.cpp'
+        TestSource = '00/8b/CCombatSequenceWhisperAttackCombo_GetNameCCombatSequenceWhisperAttackComboUBEAVCCh_008b4a20_test.cpp'
+        PassPattern = 'GETNAME_WHISPERATTACKCOMBO_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b4aa0'
+        Module = 'CCombatSequenceWhisperAttackBigCombo'
+        Source = '00/8b/CCombatSequenceWhisperAttackBigCombo_GetNameCCombatSequenceWhisperAttackBigComboUBEAV_008b4aa0.cpp'
+        TestSource = '00/8b/CCombatSequenceWhisperAttackBigCombo_GetNameCCombatSequenceWhisperAttackBigComboUBEAV_008b4aa0_test.cpp'
+        PassPattern = 'GETNAME_BIGCOMBO_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b4b20'
+        Module = 'CCombatSequenceWhisperAttack360'
+        Source = '00/8b/CCombatSequenceWhisperAttack360_GetNameCCombatSequenceWhisperAttack360UBEAVCChar_008b4b20.cpp'
+        TestSource = '00/8b/CCombatSequenceWhisperAttack360_GetNameCCombatSequenceWhisperAttack360UBEAVCChar_008b4b20_test.cpp'
+        PassPattern = 'GETNAME_WHISPERATTACK360_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b4ba0'
+        Module = 'CCombatSequenceWhisperStrikeStrafeBack'
+        Source = '00/8b/CCombatSequenceWhisperStrikeStrafeBack_GetNameCCombatSequenceWhisperStrikeStrafeBackUBE_008b4ba0.cpp'
+        TestSource = '00/8b/CCombatSequenceWhisperStrikeStrafeBack_GetNameCCombatSequenceWhisperStrikeStrafeBackUBE_008b4ba0_test.cpp'
+        PassPattern = 'WHISPERSTRAFEBACK_GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b4c20'
+        Module = 'CCombatSequenceWhisperTooCloseLeapBack'
+        Source = '00/8b/CCombatSequenceWhisperTooCloseLeapBack_GetNameCCombatSequenceWhisperTooCloseLeapBackUBE_008b4c20.cpp'
+        TestSource = '00/8b/CCombatSequenceWhisperTooCloseLeapBack_GetNameCCombatSequenceWhisperTooCloseLeapBackUBE_008b4c20_test.cpp'
+        PassPattern = 'LEAPBACK_GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b4ca0'
+        Module = 'CCombatSequenceWhisperBoast'
+        Source = '00/8b/CCombatSequenceWhisperBoast_GetNameCCombatSequenceWhisperBoastUBEAVCCharStri_008b4ca0.cpp'
+        TestSource = '00/8b/CCombatSequenceWhisperBoast_GetNameCCombatSequenceWhisperBoastUBEAVCCharStri_008b4ca0_test.cpp'
+        PassPattern = 'WHISPERBOAST_GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b4d20'
+        Module = 'CCombatSequenceWhisperSortYourselfOut'
+        Source = '00/8b/CCombatSequenceWhisperSortYourselfOut_GetNameCCombatSequenceWhisperSortYourselfOutUBEA_008b4d20.cpp'
+        TestSource = '00/8b/CCombatSequenceWhisperSortYourselfOut_GetNameCCombatSequenceWhisperSortYourselfOutUBEA_008b4d20_test.cpp'
+        PassPattern = 'WHISPER_GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b4d90'
+        Module = 'CCombatSequenceWhisperStrafeAround'
+        Source = '00/8b/CCombatSequenceWhisperStrafeAround_GetNameCCombatSequenceWhisperStrafeAroundUBEAVCC_008b4d90.cpp'
+        TestSource = '00/8b/CCombatSequenceWhisperStrafeAround_GetNameCCombatSequenceWhisperStrafeAroundUBEAVCC_008b4d90_test.cpp'
+        PassPattern = 'GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b4e10'
+        Module = 'CCombatSequenceWhisperIdles'
+        Source = '00/8b/CCombatSequenceWhisperIdles_GetNameCCombatSequenceWhisperIdlesUBEAVCCharStri_008b4e10.cpp'
+        TestSource = '00/8b/CCombatSequenceWhisperIdles_GetNameCCombatSequenceWhisperIdlesUBEAVCCharStri_008b4e10_test.cpp'
+        PassPattern = 'WHISPERIDLES_GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b4e90'
+        Module = 'CCombatSequenceJacksCombo'
+        Source = '00/8b/CCombatSequenceJacksCombo_GetNameCCombatSequenceJacksComboUBEAVCCharString_008b4e90.cpp'
+        TestSource = '00/8b/CCombatSequenceJacksCombo_GetNameCCombatSequenceJacksComboUBEAVCCharString_008b4e90_test.cpp'
+        PassPattern = 'GETNAME_JACKSCOMBO_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b4f10'
+        Module = 'CCombatSequence2StrikeCombo'
+        Source = '00/8b/CCombatSequence2StrikeCombo_GetNameCCombatSequence2StrikeComboUBEAVCCharStri_008b4f10.cpp'
+        TestSource = '00/8b/CCombatSequence2StrikeCombo_GetNameCCombatSequence2StrikeComboUBEAVCCharStri_008b4f10_test.cpp'
+        PassPattern = 'STRIKECOMBO_GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b4f90'
+        Module = 'CCombatSequenceUnblockableFacing'
+        Source = '00/8b/CCombatSequenceUnblockableFacing_GetNameCCombatSequenceUnblockableFacingUBEAVCCha_008b4f90.cpp'
+        TestSource = '00/8b/CCombatSequenceUnblockableFacing_GetNameCCombatSequenceUnblockableFacingUBEAVCCha_008b4f90_test.cpp'
+        PassPattern = 'UNBLOCKABLEFACING_GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b5010'
+        Module = 'CCombatSequenceNonInterruptable2StrikeCombo'
+        Source = '00/8b/CCombatSequenceNonInterruptable2StrikeCombo_GetNameCCombatSequenceNonInterruptable2StrikeCom_008b5010.cpp'
+        TestSource = '00/8b/CCombatSequenceNonInterruptable2StrikeCombo_GetNameCCombatSequenceNonInterruptable2StrikeCom_008b5010_test.cpp'
+        PassPattern = 'GETNAME_2STRIKECOMBO_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b5090'
+        Module = 'CCombatSequence_BattleCharge'
+        Source = '00/8b/CCombatSequenceBattleCharge_GetNameCCombatSequenceBattleChargeUBEAVCCharStri_008b5090.cpp'
+        TestSource = '00/8b/CCombatSequenceBattleCharge_GetNameCCombatSequenceBattleChargeUBEAVCCharStri_008b5090_test.cpp'
+        PassPattern = 'GETNAME_BATTLECHARGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b5120'
+        Module = 'CCombatSequence_WillLightning'
+        Source = '00/8b/CCombatSequenceWillLightning_GetNameCCombatSequenceWillLightningUBEAVCCharStr_008b5120.cpp'
+        TestSource = '00/8b/CCombatSequenceWillLightning_GetNameCCombatSequenceWillLightningUBEAVCCharStr_008b5120_test.cpp'
+        PassPattern = 'GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b51d0'
+        Module = 'CCombatSequence_WillEnflame'
+        Source = '00/8b/CCombatSequenceWillEnflame_GetNameCCombatSequenceWillEnflameUBEAVCCharStrin_008b51d0.cpp'
+        TestSource = '00/8b/CCombatSequenceWillEnflame_GetNameCCombatSequenceWillEnflameUBEAVCCharStrin_008b51d0_test.cpp'
+        PassPattern = 'PASS_WILLENFLAME_GETNAME'
+    }
+    [pscustomobject]@{
+        Address = '008b5290'
+        Module = 'CCombatSequence_WillForcePush'
+        Source = '00/8b/CCombatSequenceWillForcePush_GetNameCCombatSequenceWillForcePushUBEAVCCharStr_008b5290.cpp'
+        TestSource = '00/8b/CCombatSequenceWillForcePush_GetNameCCombatSequenceWillForcePushUBEAVCCharStr_008b5290_test.cpp'
+        PassPattern = 'GETNAME_PASS_WILLFORCEPUSH'
+    }
+    [pscustomobject]@{
+        Address = '008b5350'
+        Module = 'CCombatSequence_WillForcePushLongRange'
+        Source = '00/8b/CCombatSequenceWillForcePushLongRange_GetNameCCombatSequenceWillForcePushLongRangeUBEA_008b5350.cpp'
+        TestSource = '00/8b/CCombatSequenceWillForcePushLongRange_GetNameCCombatSequenceWillForcePushLongRangeUBEA_008b5350_test.cpp'
+        PassPattern = 'GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b5410'
+        Module = 'CCombatSequence_WillPhysicalShield'
+        Source = '00/8b/CCombatSequenceWillPhysicalShield_GetNameCCombatSequenceWillPhysicalShieldUBEAVCCh_008b5410.cpp'
+        TestSource = '00/8b/CCombatSequenceWillPhysicalShield_GetNameCCombatSequenceWillPhysicalShieldUBEAVCCh_008b5410_test.cpp'
+        PassPattern = 'WILLPHYSSHIELD_GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '008b54c0'
+        Module = 'CCombatSequence_WillPhysicalShieldNonMelee'
+        Source = '00/8b/CCombatSequenceWillPhysicalShieldNonMelee_GetNameCCombatSequenceWillPhysicalShieldNonMelee_008b54c0.cpp'
+        TestSource = '00/8b/CCombatSequenceWillPhysicalShieldNonMelee_GetNameCCombatSequenceWillPhysicalShieldNonMelee_008b54c0_test.cpp'
+        PassPattern = 'WILLPHYSSHIELD_GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '008c63a0'
+        Module = 'CCreatureAction_TrollAngryGroundPound'
+        Source = '00/8c/CCreatureActionTrollAngryGroundPound_PerformActionCCreatureActionTrollAngryGroundPoun_008c63a0.cpp'
+        TestSource = '00/8c/CCreatureActionTrollAngryGroundPound_PerformActionCCreatureActionTrollAngryGroundPoun_008c63a0_test.cpp'
+        PassPattern = 'GROUNDPOUND_OK'
+    }
+    [pscustomobject]@{
+        Address = '008d7230'
+        Module = 'CModeSitBase'
+        Source = '00/8d/CModeSitBase_RemoveModeWithAction_008d7230.cpp'
+        TestSource = '00/8d/CModeSitBase_RemoveModeWithAction_008d7230_test.cpp'
+        PassPattern = 'REMOVEMODE_OK'
+    }
+    [pscustomobject]@{
+        Address = '008d7250'
+        Module = 'CModeSitBase'
+        Source = '00/8d/CModeSitBase_RemoveModeWithAction_008d7250.cpp'
+        TestSource = '00/8d/CModeSitBase_RemoveModeWithAction_008d7250_test.cpp'
+        PassPattern = 'REMOVEMODE_OK'
+    }
 )
 
 $requestedAddresses = @(
