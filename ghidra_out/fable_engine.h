@@ -2426,7 +2426,7 @@ namespace fable {
     constexpr std::uintptr_t CAIStateGroup_WhisperPotionCombat__004583bd = 0x004583bd; // __thiscall undefined CAIStateGroup_WhisperPotionCombat(CAIStateGroup_WhisperPotionCombat *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CSpecialAbilitiesCreatureTintDef_GetSizeofClass = 0x004583da; // __thiscall ulong CSpecialAbilitiesCreatureTintDef::GetSizeofClass(CSpecialAbilitiesCreatureTintDef *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t vector_deleting_destructor__004583de = 0x004583de; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t OnDie__004583fa = 0x004583fa; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnDie__004583fa = 0x004583fa; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CSoundDef__00458413 = 0x00458413; // __thiscall undefined CSoundDef(CSoundDef *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CSoundDef_GetSizeofClass = 0x00458454; // __thiscall ulong CSoundDef::GetSizeofClass(CSoundDef *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t vector_deleting_destructor__0045845a = 0x0045845a; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
@@ -2434,7 +2434,7 @@ namespace fable {
     constexpr std::uintptr_t CAIStateGroup_WhisperPotionCombat__004584c7 = 0x004584c7; // __thiscall undefined CAIStateGroup_WhisperPotionCombat(CAIStateGroup_WhisperPotionCombat *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CAttackPatternDef_GetSizeofClass = 0x004584e4; // __thiscall ulong CAttackPatternDef::GetSizeofClass(CAttackPatternDef *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t vector_deleting_destructor__004584e8 = 0x004584e8; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t OnDie__00458504 = 0x00458504; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnDie__00458504 = 0x00458504; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CAIStateGroup_WhisperPotionCombat__0045851d = 0x0045851d; // __thiscall undefined CAIStateGroup_WhisperPotionCombat(CAIStateGroup_WhisperPotionCombat *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CObjectFamilyDef_GetSizeofClass = 0x0045853a; // __thiscall ulong CObjectFamilyDef::GetSizeofClass(CObjectFamilyDef *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t vector_deleting_destructor__0045853e = 0x0045853e; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
@@ -2574,7 +2574,7 @@ namespace fable {
     constexpr std::uintptr_t CSoundThemeDef_Copy = 0x0045c549; // __thiscall void CSoundThemeDef::Copy(CSoundThemeDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CParentDefClassBase_op_assign__0045c54e = 0x0045c54e; // unknown undefined CParentDefClassBase::operator=() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__0045c5da = 0x0045c5da; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t EndAttackBeam = 0x0045c5f6; // __thiscall void EndAttackBeam(CTCKraken *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t EndAttackBeam = 0x0045c5f6; // __thiscall void EndAttackBeam(CTCKraken *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CCreatureGenerationFamilyDef_Copy = 0x0045c60f; // __thiscall void CCreatureGenerationFamilyDef::Copy(CCreatureGenerationFamilyDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CParentDefClassBase_op_assign__0045c614 = 0x0045c614; // unknown undefined CParentDefClassBase::operator=() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CActiveFile_AssignUndefinedVector4 = 0x0045c64d; // unknown undefined CActiveFile_AssignUndefinedVector4() | prototype=incomplete; decompile=yes
@@ -2886,7 +2886,7 @@ namespace fable {
     constexpr std::uintptr_t CThingBaseDef_op_assign__004643cf = 0x004643cf; // unknown undefined CThingBaseDef::operator=() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CThingHolySiteDef_Copy = 0x00464498; // __thiscall void CThingHolySiteDef::Copy(CThingHolySiteDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingMarkerDef_Copy = 0x004644c0; // __thiscall void CThingMarkerDef::Copy(CThingMarkerDef *,CDefClassBase const *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CThingSwitchDef_Copy = 0x004644fa; // __thiscall void CThingSwitchDef::Copy(CThingSwitchDef *,CDefClassBase const *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CThingSwitchDef_Copy = 0x004644fa; // __thiscall void CThingSwitchDef::Copy(CThingSwitchDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Copy_CThingVillageDef_UAEXPBVCDefClassBase_Z = 0x00464513; // __thiscall CThingVillageDef * ?Copy@CThingVillageDef@@UAEXPBVCDefClassBase@@@Z(CThingVillageDef *,CThingVillageDef *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingPhysicalSwitchDef_Copy = 0x00464531; // __thiscall void CThingPhysicalSwitchDef::Copy(CThingPhysicalSwitchDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CThingBaseDef_op_assign__00464536 = 0x00464536; // unknown undefined CThingBaseDef::operator=() | prototype=incomplete; decompile=yes
@@ -3223,7 +3223,7 @@ namespace fable {
     constexpr std::uintptr_t Heap_AdjustDown = 0x00471055; // unknown undefined Heap_AdjustDown() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t std_make_heap_init_12byte = 0x004710f0; // unknown undefined std::make_heap_init_12byte() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Pop_heap_0_std_pair_CKeyPairCompareLess = 0x00471150; // __fastcall void _Pop_heap_0<std::pair<float,CSubtitledMessage::CCameraTag>*,std::pair<float,class_CSubtitledMessage::CCameraTag>,CKeyPairCompareLess<float,CSubtitledMessage::CCameraTag>_>(pair<float,CSubtitledMessage::CCameraTag> *,pair<float,CSubtitledMessage::CCameraTag> *,CKeyPairCompareLess<float,CSubtitledMessage::CCameraTag>,pair<float,CSubtitledMessage::CCameraTag> *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__0047119a = 0x0047119a; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__0047119a = 0x0047119a; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t std_sort_introsort_init_8byte = 0x004711b3; // unknown undefined std::sort_introsort_init_8byte() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t make_heap__004711f5 = 0x004711f5; // __fastcall void make_heap<CThing**,CThingCompare_BestForTargeting2>(CThing * *,CThing * *,CThingCompare_BestForTargeting2) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Copy_impl_std_pair__00471239 = 0x00471239; // __fastcall pair<EHeroMorphType,CParticleMorphs::CEntry> * _Copy_impl<std::pair<EHeroMorphType,CParticleMorphs::CEntry>*,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>*>(pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *,_Nonscalar_ptr_iterator_tag) | prototype=complete; decompile=yes
@@ -3452,7 +3452,7 @@ namespace fable {
     constexpr std::uintptr_t TransferBinaryIn__004793f8 = 0x004793f8; // __thiscall void TransferBinaryIn(COpinionTransientOffset *,CMemoryDataInputStream *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t LinkedList_Insert_CDanyalTestScriptsData = 0x00479449; // unknown undefined LinkedList_Insert_CDanyalTestScriptsData() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t TransferVectorOfSubComponents__00479466 = 0x00479466; // __thiscall void TransferVectorOfSubComponents<CAbilityButtonGuiDef>(CPersistContext *,char *,vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_> *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnDie__0047955b = 0x0047955b; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnDie__0047955b = 0x0047955b; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CBedDef__00479574 = 0x00479574; // __thiscall undefined CBedDef(CBedDef *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t push_back__00479595 = 0x00479595; // __thiscall void push_back(CArray<std::pair<unsigned_long,CSoundPair>_> *,pair<unsigned_long,CSoundPair> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t std_vector_erase__004795e0 = 0x004795e0; // unknown undefined std::vector::erase() | prototype=incomplete; decompile=yes
@@ -3633,7 +3633,7 @@ namespace fable {
     constexpr std::uintptr_t Std_Vector_Insert_Copies = 0x0048608c; // unknown undefined Std_Vector_Insert_Copies() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t resize__00486189 = 0x00486189; // __thiscall void resize(vector<unsigned_char,std::allocator<unsigned_char>_> *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__004861c3 = 0x004861c3; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t Umove__004861df = 0x004861df; // __thiscall EWeaponClass * _Umove<EWeaponClass*>(vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Umove__004861df = 0x004861df; // __thiscall EWeaponClass * _Umove<EWeaponClass*>(vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t push_back__004861f7 = 0x004861f7; // __thiscall void push_back(CArray<std::pair<unsigned_long,CSoundPair>_> *,pair<unsigned_long,CSoundPair> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IsOtherQuickAccessItemButtonHeld__0048623f = 0x0048623f; // __thiscall bool IsOtherQuickAccessItemButtonHeld(CInputProcessGameBase *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CAInputProcess_Init = 0x00486360; // __thiscall void CAInputProcess::Init(CAInputProcess *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -4044,7 +4044,7 @@ namespace fable {
     constexpr std::uintptr_t E2__0049d820 = 0x0049d820; // unknown undefined $E2() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t E2__0049d830 = 0x0049d830; // unknown undefined $E2() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t E2__0049d840 = 0x0049d840; // unknown undefined $E2() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__0049d850 = 0x0049d850; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__0049d850 = 0x0049d850; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GFGetPreMainMemoryUsed__0049d870 = 0x0049d870; // __fastcall long GFGetPreMainMemoryUsed() | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t list__0049d880 = 0x0049d880; // __thiscall undefined list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t AddExclusiveObserver__0049d8b0 = 0x0049d8b0; // __thiscall void AddExclusiveObserver(CObservable *,CObserver *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -4323,7 +4323,7 @@ namespace fable {
     constexpr std::uintptr_t OnKill__004ac190 = 0x004ac190; // __thiscall void OnKill(CTCCarryable *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_vector__004ac1d0 = 0x004ac1d0; // __thiscall void ~vector<CConversation,std::allocator<CConversation>_>(vector<CConversation,std::allocator<CConversation>_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t std_map_Initialize__004ac210 = 0x004ac210; // unknown undefined std::map_Initialize() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__004ac250 = 0x004ac250; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__004ac250 = 0x004ac250; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t SortTreeRecursively__004ac270 = 0x004ac270; // __thiscall void SortTreeRecursively(CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetPBestThing_CThingFilter_HasTC_CThingFilter_HasTC_CThingFilter_In2DRange_CThingCompare_Nearest_CThing = 0x004ac2c0; // __thiscall bool GetPBestThing<CFilter_Bind2<std::binary_compose<std::logical_or<bool>,CThingFilter_HasTC,CThingFilter_HasTC>,CThingFilter_In2DRange>,CThingCompare_Nearest,CThing>(CThingSearchTools *,CFilter_Bind2<std::binary_compose<std::logical_or<bool>,CThingFilter_HasTC,CThingFilter_HasTC>,CThingFilter_In2DRange> *,CThingCompare_Nearest *,CThing * *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t StdSet_Insert = 0x004ac380; // unknown undefined StdSet_Insert() | prototype=incomplete; decompile=yes
@@ -4338,7 +4338,7 @@ namespace fable {
     constexpr std::uintptr_t LTextTreeWalkThrough_Destroy__004ac8a0 = 0x004ac8a0; // unknown undefined LTextTreeWalkThrough::Destroy() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t LTextTreeWalkThrough_Cleanup = 0x004ac8f0; // unknown undefined LTextTreeWalkThrough_Cleanup() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Std_Vector_Insert_Range_SmartPtr = 0x004ac940; // unknown undefined Std_Vector_Insert_Range_SmartPtr() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__004aca50 = 0x004aca50; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__004aca50 = 0x004aca50; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__004aca70 = 0x004aca70; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetTCDriver = 0x004acb50; // __thiscall bool GetTCDriver<CTCDExperienceOrb>(CThing *,CTCDExperienceOrb * *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetAllThings_CThingFilter_HasTCOfLeafType = 0x004acd70; // __thiscall void GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>_>(CThingSearchTools *,CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook> *,vector<CThing*,std::allocator<CThing*>_> *) | prototype=complete; decompile=yes
@@ -4393,7 +4393,7 @@ namespace fable {
     constexpr std::uintptr_t LTextTreeWalkThrough_Destructor__004ae760 = 0x004ae760; // unknown undefined LTextTreeWalkThrough_Destructor() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t scalar_deleting_destructor__004ae7b0 = 0x004ae7b0; // __thiscall void * `scalar_deleting_destructor'(CLandscapeBackgroundLoadTask *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t LTextTreeWalkThrough_Destroy__004ae810 = 0x004ae810; // unknown undefined LTextTreeWalkThrough::Destroy() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t CWorld_DrawGetProceduralTexture = 0x004ae890; // __thiscall CProceduralTexture const * CWorld::DrawGetProceduralTexture(CWorld *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CWorld_DrawGetProceduralTexture = 0x004ae890; // __thiscall CProceduralTexture const * CWorld::DrawGetProceduralTexture(CWorld *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CWorld_GetWorldMap = 0x004ae8b0; // __thiscall CWorldMap & CWorld::GetWorldMap(CWorld *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CWorld_PeekWorldMap = 0x004ae8c0; // __thiscall CWorldMap const & CWorld::PeekWorldMap(CWorld *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__004ae8d0 = 0x004ae8d0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
@@ -4575,7 +4575,7 @@ namespace fable {
     constexpr std::uintptr_t StdList_Initialize__004b88e0 = 0x004b88e0; // unknown undefined StdList_Initialize() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t StdList_Initialize__004b8900 = 0x004b8900; // unknown undefined StdList_Initialize() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t std_list_Construct = 0x004b8920; // unknown undefined std::list_Construct() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__004b8940 = 0x004b8940; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__004b8940 = 0x004b8940; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t StdList_Initialize__004b8960 = 0x004b8960; // unknown undefined StdList_Initialize() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t StdList_Initialize__004b8980 = 0x004b8980; // unknown undefined StdList_Initialize() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t StdMap_Erase = 0x004b8b10; // unknown undefined StdMap_Erase() | prototype=incomplete; decompile=yes
@@ -4601,7 +4601,7 @@ namespace fable {
     constexpr std::uintptr_t LowerBound__004b9750 = 0x004b9750; // __thiscall _Vector_iterator<std::_Vector_val<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>,std::allocator<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>_>_>_> LowerBound(CVectorMap<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo,CKeyPairCompareLess<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>_> *,CCharString *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t LowerBound__004b97d0 = 0x004b97d0; // __thiscall _Vector_iterator<std::_Vector_val<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>,std::allocator<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>_>_>_> LowerBound(CVectorMap<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo,CKeyPairCompareLess<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>_> *,CCharString *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t UpperBound__004b9850 = 0x004b9850; // __thiscall _Vector_iterator<std::_Vector_val<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>,std::allocator<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>_>_>_> UpperBound(CVectorMap<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo,CKeyPairCompareLess<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>_> *,CCharString *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__004b99c0 = 0x004b99c0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__004b99c0 = 0x004b99c0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Clone__004b99e0 = 0x004b99e0; // __thiscall CCreatureActionBase * Clone(CCreatureAction_TentacleStrikeLoop *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnReadFinished__004b9a40 = 0x004b9a40; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnReadFinished__004b9af0 = 0x004b9af0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
@@ -4621,17 +4621,17 @@ namespace fable {
     constexpr std::uintptr_t remove_if__004ba390 = 0x004ba390; // __thiscall void remove_if<NEntityEvents::CConvFilterToCP<NEntityEvents::CIsEventOfType>_>(list<CCountedPointer<NEntityEvents::CEventBase>,std::allocator<CCountedPointer<NEntityEvents::CEventBase>_>_> *,CConvFilterToCP<NEntityEvents::CIsEventOfType>) | prototype=complete; decompile=yes
     constexpr std::uintptr_t StdList_Initialize__004ba400 = 0x004ba400; // unknown undefined StdList_Initialize() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t StdList_PushBack = 0x004ba420; // unknown undefined StdList_PushBack() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__004ba460 = 0x004ba460; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__004ba460 = 0x004ba460; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t StdList_Initialize__004ba480 = 0x004ba480; // unknown undefined StdList_Initialize() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__004ba4c0 = 0x004ba4c0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__004ba4c0 = 0x004ba4c0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Std_Vector_Push_Back_SmartPtr = 0x004ba4e0; // unknown undefined Std_Vector_Push_Back_SmartPtr() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t StdList_Initialize__004ba530 = 0x004ba530; // unknown undefined StdList_Initialize() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t QuestManager_AddBoastToList = 0x004ba550; // unknown undefined QuestManager_AddBoastToList() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__004ba590 = 0x004ba590; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__004ba590 = 0x004ba590; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t StdList_Initialize__004ba5b0 = 0x004ba5b0; // unknown undefined StdList_Initialize() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__004ba620 = 0x004ba620; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__004ba620 = 0x004ba620; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Vector_InsertRange_Reallocate = 0x004ba640; // unknown undefined Vector_InsertRange_Reallocate() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__004ba720 = 0x004ba720; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__004ba720 = 0x004ba720; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__004ba740 = 0x004ba740; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CCombatWheel_Resize = 0x004ba7a0; // unknown undefined CCombatWheel_Resize() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t remove_if__004ba810 = 0x004ba810; // __thiscall void remove_if<NEntityEvents::CConvFilterToCP<NEntityEvents::CIsEventOfType>_>(list<CCountedPointer<NEntityEvents::CEventBase>,std::allocator<CCountedPointer<NEntityEvents::CEventBase>_>_> *,CConvFilterToCP<NEntityEvents::CIsEventOfType>) | prototype=complete; decompile=yes
@@ -4665,7 +4665,7 @@ namespace fable {
     constexpr std::uintptr_t std_introsort_Recursive = 0x004bba40; // unknown undefined std::introsort_Recursive() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Heap_BuildFromRange = 0x004bbb40; // unknown undefined Heap_BuildFromRange() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__004bbba0 = 0x004bbba0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__004bbbc0 = 0x004bbbc0; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__004bbbc0 = 0x004bbbc0; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnInitialActivate__004bbbe0 = 0x004bbbe0; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t E2__004bbc00 = 0x004bbc00; // unknown undefined $E2() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CRightHandedSet__004bbe10 = 0x004bbe10; // __thiscall undefined CRightHandedSet(CRightHandedSet *,C3DVector *,C3DVector *) | prototype=incomplete; decompile=yes
@@ -4840,12 +4840,12 @@ namespace fable {
     constexpr std::uintptr_t BinaryTree_Initialize__004c5800 = 0x004c5800; // unknown undefined BinaryTree_Initialize() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t BinaryTree_Destroy__004c5840 = 0x004c5840; // unknown undefined BinaryTree_Destroy() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CombatAnimationList_FindOrInsert = 0x004c5890; // unknown undefined CombatAnimationList::FindOrInsert() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__004c5990 = 0x004c5990; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__004c5990 = 0x004c5990; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t std_introsort_Partition_Quicksort = 0x004c59b0; // unknown undefined std::introsort_Partition_Quicksort() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t std_introsort_Partition_Quicksort_Inverse = 0x004c5aa0; // unknown undefined std::introsort_Partition_Quicksort_Inverse() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t op_index__004c5b90 = 0x004c5b90; // __thiscall CMeshEffectPriorityEntry * operator[](map<void*,NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry,std::less<void*>,std::allocator<std::pair<void*_const,NGraphicAppearance::CTCGraphicAppearance::CMeshEffectPriorityEntry>_>_> *,void * *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t StdList_Construct_004c5c40 = 0x004c5c40; // unknown undefined StdList_Construct_004c5c40() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__004c5c60 = 0x004c5c60; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__004c5c60 = 0x004c5c60; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Heap_BuildFromArray = 0x004c5c80; // unknown undefined Heap_BuildFromArray() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Heap_BuildFromArray__004c5ce0 = 0x004c5ce0; // unknown undefined Heap_BuildFromArray() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetActionName__004c5d50 = 0x004c5d50; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
@@ -4882,7 +4882,7 @@ namespace fable {
     constexpr std::uintptr_t Stub_ReturnVoid_004c72a0 = 0x004c72a0; // unknown undefined Stub_ReturnVoid_004c72a0() | prototype=incomplete; decompile=unmeasured
     constexpr std::uintptr_t SaveSerialiseCreatableTCs = 0x004c72d0; // __thiscall void SaveSerialiseCreatableTCs(CThing *,CCharString *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t op_new__004c7380 = 0x004c7380; // __fastcall void * operator_new(uint,bool) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t op_new__004c73b0 = 0x004c73b0; // __fastcall void * operator_new(uint) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t op_new__004c73b0 = 0x004c73b0; // __fastcall void * operator_new(uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t DoSizeof__004c73d0 = 0x004c73d0; // __thiscall ulong DoSizeof(CVertexBufferWin32 *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t InitTC = 0x004c73e0; // __thiscall void InitTC(CThing *,CTCBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t EnableNavigator__004c7440 = 0x004c7440; // __thiscall void EnableNavigator(CTCPhysicsNavigator *,bool) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -5022,7 +5022,7 @@ namespace fable {
     constexpr std::uintptr_t std_vector_push_back_pair_64bit = 0x004cd400; // unknown undefined std_vector_push_back_pair_64bit() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t std_heapsort_Recursive = 0x004cd500; // unknown undefined std::heapsort_Recursive() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CNavigationPosition_HeapSort = 0x004cd5d0; // unknown undefined CNavigationPosition_HeapSort() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__004cd650 = 0x004cd650; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__004cd650 = 0x004cd650; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Init__004cd670 = 0x004cd670; // __fastcall void Init() | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetAnimGroupName = 0x004cd9b0; // __fastcall CCharString * GetAnimGroupName(EConversationAttitude) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetAnimGroupName__004cd9c0 = 0x004cd9c0; // __fastcall CCharString * GetAnimGroupName(EConversationAttitude) | prototype=complete; decompile=yes
@@ -5117,8 +5117,8 @@ namespace fable {
     constexpr std::uintptr_t Heap_BuildFromArray__004d2470 = 0x004d2470; // unknown undefined Heap_BuildFromArray() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Heap_BuildFromArray__004d24f0 = 0x004d24f0; // unknown undefined Heap_BuildFromArray() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Heap_BuildFromArray__004d2570 = 0x004d2570; // unknown undefined Heap_BuildFromArray() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__004d2600 = 0x004d2600; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__004d2620 = 0x004d2620; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__004d2600 = 0x004d2600; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t TransferToGui__004d2620 = 0x004d2620; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t TransferToGui__004d2640 = 0x004d2640; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnInitialActivate__004d2690 = 0x004d2690; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnInitialActivate__004d26b0 = 0x004d26b0; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
@@ -5200,7 +5200,7 @@ namespace fable {
     constexpr std::uintptr_t CEnginePrimitiveGroupManager__004d3161 = 0x004d3161; // __thiscall undefined CEnginePrimitiveGroupManager(CEnginePrimitiveGroupManager *,CArray<CEngineScene*> *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetActionName__004d318d = 0x004d318d; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CTCVillage_Create__004d31a0 = 0x004d31a0; // unknown undefined CTCVillage::Create() | prototype=incomplete; decompile=unmeasured
-    constexpr std::uintptr_t GetActionName__004d31c0 = 0x004d31c0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__004d31c0 = 0x004d31c0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__004d31d8 = 0x004d31d8; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CTCBuyableHouse_Create = 0x004d31eb; // unknown undefined CTCBuyableHouse::Create() | prototype=incomplete; decompile=unmeasured
     constexpr std::uintptr_t GetActionName__004d3208 = 0x004d3208; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
@@ -5297,7 +5297,7 @@ namespace fable {
     constexpr std::uintptr_t CTCPhysicsRigidBody_Create = 0x004d399c; // unknown undefined CTCPhysicsRigidBody::Create() | prototype=incomplete; decompile=unmeasured
     constexpr std::uintptr_t GetActionName__004d39bc = 0x004d39bc; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__004d39cf = 0x004d39cf; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__004d39eb = 0x004d39eb; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__004d39eb = 0x004d39eb; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CEnginePrimitiveGroupManager__004d3a03 = 0x004d3a03; // __thiscall undefined CEnginePrimitiveGroupManager(CEnginePrimitiveGroupManager *,CArray<CEngineScene*> *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__004d3a3e = 0x004d3a3e; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__004d3a60 = 0x004d3a60; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
@@ -6442,7 +6442,7 @@ namespace fable {
     constexpr std::uintptr_t Transfer_CGiftDef_UAEXAAVCPersistContext_Z = 0x004de545; // __thiscall bool ?Transfer@CGiftDef@@UAEXAAVCPersistContext@@@Z(CEngine *,C3DBoundingBox *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t UpdateShadowScene__004de566 = 0x004de566; // __thiscall void UpdateShadowScene(CEngineLightingManager *,CEngineCamera *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t TransferBinaryIn__004de5a7 = 0x004de5a7; // __thiscall CDefIndex TransferBinaryIn(CPersistTraits<CDefIndex> *,CMemoryDataInputStream *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnDie__004de60a = 0x004de60a; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnDie__004de60a = 0x004de60a; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CTCShotDefinitionNymphFun__004de623 = 0x004de623; // __thiscall undefined CTCShotDefinitionNymphFun(CTCShotDefinitionNymphFun *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CEnginePrimitiveGroupManager__004de660 = 0x004de660; // __thiscall undefined CEnginePrimitiveGroupManager(CEnginePrimitiveGroupManager *,CArray<CEngineScene*> *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CEnginePrimitiveGroupManager__004de68b = 0x004de68b; // __thiscall undefined CEnginePrimitiveGroupManager(CEnginePrimitiveGroupManager *,CArray<CEngineScene*> *) | prototype=incomplete; decompile=yes
@@ -6588,7 +6588,7 @@ namespace fable {
     constexpr std::uintptr_t CThingBuildingDef_op_assign__004dfeb8 = 0x004dfeb8; // unknown undefined CThingBuildingDef::operator=() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CVillageDef = 0x004dff04; // __thiscall undefined CVillageDef(CVillageDef *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CVillageDef_GetSizeofClass = 0x004dff9f; // __thiscall ulong CVillageDef::GetSizeofClass(CVillageDef *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
-    constexpr std::uintptr_t CVillageMemberDef_Copy = 0x004dffa5; // __thiscall void CVillageMemberDef::Copy(CVillageMemberDef *,CDefClassBase const *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CVillageMemberDef_Copy = 0x004dffa5; // __thiscall void CVillageMemberDef::Copy(CVillageMemberDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CBedDef_Copy = 0x004dffbe; // __thiscall void CBedDef::Copy(CBedDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingBuildingDef_op_assign__004dffc3 = 0x004dffc3; // unknown undefined CThingBuildingDef::operator=() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CSmokeGeneratorDef_Copy = 0x004dfff6; // __thiscall void CSmokeGeneratorDef::Copy(CSmokeGeneratorDef *,CDefClassBase const *) | prototype=complete; decompile=yes
@@ -6597,15 +6597,15 @@ namespace fable {
     constexpr std::uintptr_t CTCAvoidRegionExit_new = 0x004e0047; // unknown undefined CTCAvoidRegionExit_new() | prototype=incomplete; decompile=unmeasured
     constexpr std::uintptr_t vector_deleting_destructor__004e0064 = 0x004e0064; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Dest_val_CMacro__004e0080 = 0x004e0080; // __fastcall void _Dest_val<std::allocator<CMacro>,CMacro>(allocator<CMacro> *,CMacro *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CReadableDef_Copy = 0x004e00a3; // __thiscall void CReadableDef::Copy(CReadableDef *,CDefClassBase const *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CReadableDef_Copy = 0x004e00a3; // __thiscall void CReadableDef::Copy(CReadableDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CSpecialAbilitiesSummonSpellDef__004e00bc = 0x004e00bc; // __thiscall undefined CSpecialAbilitiesSummonSpellDef(CSpecialAbilitiesSummonSpellDef *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CQuestCardDef_GetSizeofClass = 0x004e00e9; // __thiscall ulong CQuestCardDef::GetSizeofClass(CQuestCardDef *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CCardPositionsDef_new = 0x004e0105; // unknown undefined CCardPositionsDef_new() | prototype=incomplete; decompile=unmeasured
     constexpr std::uintptr_t scalar_deleting_destructor__004e0122 = 0x004e0122; // __thiscall void * `scalar_deleting_destructor'(CEngineSubPrimitiveText *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__004e015e = 0x004e015e; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t dtor_CCompressedMemoryDataInputStream__004e017a = 0x004e017a; // __thiscall void ~CCompressedMemoryDataInputStream(CCompressedMemoryDataInputStream *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CBuyHouseDef_Copy = 0x004e01a7; // __thiscall void CBuyHouseDef::Copy(CBuyHouseDef *,CDefClassBase const *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CWifeDef_Copy = 0x004e01c0; // __thiscall void CWifeDef::Copy(CWifeDef *,CDefClassBase const *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CBuyHouseDef_Copy = 0x004e01a7; // __thiscall void CBuyHouseDef::Copy(CBuyHouseDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t CWifeDef_Copy = 0x004e01c0; // __thiscall void CWifeDef::Copy(CWifeDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CDoorDef_Copy = 0x004e01d9; // __thiscall void CDoorDef::Copy(CDoorDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingBuildingDef_op_assign__004e01de = 0x004e01de; // unknown undefined CThingBuildingDef::operator=() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CKickableDef_Copy = 0x004e021d; // __thiscall void CKickableDef::Copy(CKickableDef *,CDefClassBase const *) | prototype=complete; decompile=yes
@@ -6632,7 +6632,7 @@ namespace fable {
     constexpr std::uintptr_t CThingBuildingDef_op_assign__004e05ad = 0x004e05ad; // unknown undefined CThingBuildingDef::operator=() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CLookDef_Copy = 0x004e05da; // __thiscall void CLookDef::Copy(CLookDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingBuildingDef_op_assign__004e05df = 0x004e05df; // unknown undefined CThingBuildingDef::operator=() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t CEnemyDef_Copy = 0x004e064e; // __thiscall void CEnemyDef::Copy(CEnemyDef *,CDefClassBase const *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CEnemyDef_Copy = 0x004e064e; // __thiscall void CEnemyDef::Copy(CEnemyDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t COpinionOfHeroDef_Copy = 0x004e0667; // __thiscall void COpinionOfHeroDef::Copy(COpinionOfHeroDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingBuildingDef_op_assign__004e066c = 0x004e066c; // unknown undefined CThingBuildingDef::operator=() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Copy_CShopItemDef_UAEXPBVCDefClassBase_Z = 0x004e069f; // __thiscall CShopItemDef * ?Copy@CShopItemDef@@UAEXPBVCDefClassBase@@@Z(CShopItemDef *,CShopItemDef *) | prototype=complete; decompile=yes
@@ -6667,7 +6667,7 @@ namespace fable {
     constexpr std::uintptr_t CAIStateGroupBase__004e0a05 = 0x004e0a05; // __thiscall undefined CAIStateGroupBase(CAIStateGroupBase *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Dest_val_std_pair__004e0a1f = 0x004e0a1f; // __fastcall void _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>(allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t scalar_deleting_destructor__004e0a32 = 0x004e0a32; // __thiscall void * `scalar_deleting_destructor'(CAssoc *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t CBoastingPodiumDef_Copy = 0x004e0a4e; // __thiscall void CBoastingPodiumDef::Copy(CBoastingPodiumDef *,CDefClassBase const *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CBoastingPodiumDef_Copy = 0x004e0a4e; // __thiscall void CBoastingPodiumDef::Copy(CBoastingPodiumDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CShipDef_Copy = 0x004e0a67; // __thiscall void CShipDef::Copy(CShipDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingBuildingDef_op_assign__004e0a6c = 0x004e0a6c; // unknown undefined CThingBuildingDef::operator=() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CTCDHeroSuit__004e0aab = 0x004e0aab; // __thiscall undefined CTCDHeroSuit(CTCDHeroSuit *,CThing *) | prototype=incomplete; decompile=yes
@@ -6684,7 +6684,7 @@ namespace fable {
     constexpr std::uintptr_t CTCGraphicAppearanceAnimatedMesh_new = 0x004e0c1e; // unknown undefined CTCGraphicAppearanceAnimatedMesh_new() | prototype=incomplete; decompile=unmeasured
     constexpr std::uintptr_t scalar_deleting_destructor__004e0c3b = 0x004e0c3b; // __thiscall void * `scalar_deleting_destructor'(CEngineSubPrimitiveText *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CScrollingViewport = 0x004e0c61; // __thiscall undefined CScrollingViewport(CScrollingViewport *,long) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t CExpressionSubDef_Copy = 0x004e0ca7; // __thiscall void CExpressionSubDef::Copy(CExpressionSubDef *,CDefClassBase const *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CExpressionSubDef_Copy = 0x004e0ca7; // __thiscall void CExpressionSubDef::Copy(CExpressionSubDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CSummonableCreatureDef_Copy = 0x004e0cc0; // __thiscall void CSummonableCreatureDef::Copy(CSummonableCreatureDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCPreCalculatedNavigationRoute = 0x004e0cdf; // __thiscall undefined CTCPreCalculatedNavigationRoute(CTCPreCalculatedNavigationRoute *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t COccupiableDef_Copy = 0x004e0d33; // __thiscall void COccupiableDef::Copy(COccupiableDef *,CDefClassBase const *) | prototype=complete; decompile=yes
@@ -6692,7 +6692,7 @@ namespace fable {
     constexpr std::uintptr_t dtor_CPatchTesselationEdgeStrip__004e0d7e = 0x004e0d7e; // __thiscall void ~CPatchTesselationEdgeStrip(CPatchTesselationEdgeStrip *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__004e0dcf = 0x004e0dcf; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnDie__004e0deb = 0x004e0deb; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CInterestingToVillagersDef_Copy = 0x004e0e0a; // __thiscall void CInterestingToVillagersDef::Copy(CInterestingToVillagersDef *,CDefClassBase const *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CInterestingToVillagersDef_Copy = 0x004e0e0a; // __thiscall void CInterestingToVillagersDef::Copy(CInterestingToVillagersDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CGuardDef_Copy = 0x004e0e23; // __thiscall void CGuardDef::Copy(CGuardDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingBuildingDef_op_assign__004e0e28 = 0x004e0e28; // unknown undefined CThingBuildingDef::operator=() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CActivateQuestDef_Copy = 0x004e0e79; // __thiscall void CActivateQuestDef::Copy(CActivateQuestDef *,CDefClassBase const *) | prototype=complete; decompile=yes
@@ -6700,20 +6700,20 @@ namespace fable {
     constexpr std::uintptr_t COverheadDisplayDef_Copy = 0x004e0eb7; // __thiscall void COverheadDisplayDef::Copy(COverheadDisplayDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingBuildingDef_op_assign__004e0ebc = 0x004e0ebc; // unknown undefined CThingBuildingDef::operator=() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CTavernTableDef_Copy = 0x004e0ee3; // __thiscall void CTavernTableDef::Copy(CTavernTableDef *,CDefClassBase const *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CTavernDef_Copy = 0x004e0f02; // __thiscall void CTavernDef::Copy(CTavernDef *,CDefClassBase const *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CDrunkennessDef_Copy = 0x004e0f1b; // __thiscall void CDrunkennessDef::Copy(CDrunkennessDef *,CDefClassBase const *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CFireballSpellLevelDef_Copy = 0x004e0f34; // __thiscall void CFireballSpellLevelDef::Copy(CFireballSpellLevelDef *,CDefClassBase const *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CTavernDef_Copy = 0x004e0f02; // __thiscall void CTavernDef::Copy(CTavernDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t CDrunkennessDef_Copy = 0x004e0f1b; // __thiscall void CDrunkennessDef::Copy(CDrunkennessDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t CFireballSpellLevelDef_Copy = 0x004e0f34; // __thiscall void CFireballSpellLevelDef::Copy(CFireballSpellLevelDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CThingDrainLifeShotDef_Copy = 0x004e0f4d; // __thiscall void CThingDrainLifeShotDef::Copy(CThingDrainLifeShotDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingBuildingDef_op_assign__004e0f52 = 0x004e0f52; // unknown undefined CThingBuildingDef::operator=() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__004e0fb2 = 0x004e0fb2; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnDie__004e0fce = 0x004e0fce; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CGoldDef_Copy = 0x004e0fed; // __thiscall void CGoldDef::Copy(CGoldDef *,CDefClassBase const *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CGoldDef_Copy = 0x004e0fed; // __thiscall void CGoldDef::Copy(CGoldDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CTCBed_new = 0x004e1006; // unknown undefined CTCBed_new() | prototype=incomplete; decompile=unmeasured
     constexpr std::uintptr_t scalar_deleting_destructor__004e1023 = 0x004e1023; // __thiscall void * `scalar_deleting_destructor'(CEngineSubPrimitiveText *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CCombatAbilityStrafeDef__004e1049 = 0x004e1049; // __thiscall undefined CCombatAbilityStrafeDef(CCombatAbilityStrafeDef *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CTavernGameDef_GetSizeofClass = 0x004e1086; // __thiscall ulong CTavernGameDef::GetSizeofClass(CTavernGameDef *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t dtor_CAIStateGroup_HoverWanderAroundThing__004e108c = 0x004e108c; // __thiscall void ~CAIStateGroup_HoverWanderAroundThing(CAIStateGroup_HoverWanderAroundThing *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CCoinGameObstacleDef_Copy = 0x004e10a8; // __thiscall void CCoinGameObstacleDef::Copy(CCoinGameObstacleDef *,CDefClassBase const *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CCoinGameObstacleDef_Copy = 0x004e10a8; // __thiscall void CCoinGameObstacleDef::Copy(CCoinGameObstacleDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CTavernGameCoinBaseDef_Copy = 0x004e10c1; // __thiscall void CTavernGameCoinBaseDef::Copy(CTavernGameCoinBaseDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingBuildingDef_op_assign__004e10c6 = 0x004e10c6; // unknown undefined CThingBuildingDef::operator=() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CAIStateGroup_WhisperPotionCombat__004e1105 = 0x004e1105; // __thiscall undefined CAIStateGroup_WhisperPotionCombat(CAIStateGroup_WhisperPotionCombat *) | prototype=incomplete; decompile=yes
@@ -6745,7 +6745,7 @@ namespace fable {
     constexpr std::uintptr_t dtor_CTCDExplosion__004e1437 = 0x004e1437; // __thiscall void ~CTCDExplosion(CTCDExplosion *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CKrakenTentacleDef_Copy = 0x004e148f; // __thiscall void CKrakenTentacleDef::Copy(CKrakenTentacleDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingBuildingDef_op_assign__004e1494 = 0x004e1494; // unknown undefined CThingBuildingDef::operator=() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t CAICreatureWillPowerIndicatorDef_Copy = 0x004e14fd; // __thiscall void CAICreatureWillPowerIndicatorDef::Copy(CAICreatureWillPowerIndicatorDef *,CDefClassBase const *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CAICreatureWillPowerIndicatorDef_Copy = 0x004e14fd; // __thiscall void CAICreatureWillPowerIndicatorDef::Copy(CAICreatureWillPowerIndicatorDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CAIStateGroup_WhisperPotionCombat__004e1516 = 0x004e1516; // __thiscall undefined CAIStateGroup_WhisperPotionCombat(CAIStateGroup_WhisperPotionCombat *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CMultiStaticMeshDef_GetSizeofClass = 0x004e1533; // __thiscall ulong CMultiStaticMeshDef::GetSizeofClass(CMultiStaticMeshDef *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CTattooDef__004e1537 = 0x004e1537; // __thiscall undefined CTattooDef(CTattooDef *) | prototype=incomplete; decompile=yes
@@ -6766,7 +6766,7 @@ namespace fable {
     constexpr std::uintptr_t CTCFishingRod_create = 0x004e181d; // unknown undefined CTCFishingRod_create() | prototype=incomplete; decompile=unmeasured
     constexpr std::uintptr_t vector_deleting_destructor__004e183a = 0x004e183a; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t dtor_CCreatureAction_PerformExpressionExtended__004e1856 = 0x004e1856; // __thiscall void ~CCreatureAction_PerformExpressionExtended(CCreatureAction_PerformExpressionExtended *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CCameraCollisionDef_Copy = 0x004e187e; // __thiscall void CCameraCollisionDef::Copy(CCameraCollisionDef *,CDefClassBase const *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CCameraCollisionDef_Copy = 0x004e187e; // __thiscall void CCameraCollisionDef::Copy(CCameraCollisionDef *,CDefClassBase const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CTCVolumeContainmentTrackerDef_Copy = 0x004e1897; // __thiscall void CTCVolumeContainmentTrackerDef::Copy(CTCVolumeContainmentTrackerDef *,CDefClassBase const *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingBuildingDef_op_assign_building_flags = 0x004e189c; // unknown undefined CThingBuildingDef::operator=_building_flags() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CWillResponseDef_Copy = 0x004e18c9; // __thiscall void CWillResponseDef::Copy(CWillResponseDef *,CDefClassBase const *) | prototype=complete; decompile=yes
@@ -7380,7 +7380,7 @@ namespace fable {
     constexpr std::uintptr_t Copy_backward_std_pair__004ed2f1 = 0x004ed2f1; // __fastcall pair<unsigned_long,C3DDummyObject> * _Copy_backward<std::pair<unsigned_long,C3DDummyObject>*,std::pair<unsigned_long,class_C3DDummyObject>*>(pair<unsigned_long,class_C3DDummyObject> *,pair<unsigned_long,class_C3DDummyObject> *,pair<unsigned_long,class_C3DDummyObject> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Vector_ReallocateInsert_0x48 = 0x004ed353; // unknown undefined Vector_ReallocateInsert_0x48() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Fill_n__004ed437 = 0x004ed437; // __fastcall void _Fill_n<unsigned_long*,unsigned_int,unsigned_long>(ulong *,uint,ulong *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CAnimatingObjectDef_Transfer = 0x004ed459; // __thiscall void CAnimatingObjectDef::Transfer(CAnimatingObjectDef *,CPersistContext &) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CAnimatingObjectDef_Transfer = 0x004ed459; // __thiscall void CAnimatingObjectDef::Transfer(CAnimatingObjectDef *,CPersistContext &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Transfer_CTavernGameDef_UAEXAAVCPersistContext_Z = 0x004ed472; // __fastcall void ?Transfer@CTavernGameDef@@UAEXAAVCPersistContext@@@Z() | prototype=complete; decompile=yes
     constexpr std::uintptr_t TransferVectorOfSubComponents__004ed953 = 0x004ed953; // __thiscall void TransferVectorOfSubComponents<CAbilityButtonGuiDef>(CPersistContext *,char *,vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_WaypointData__004eda32 = 0x004eda32; // __thiscall void ~WaypointData(WaypointData *) | prototype=complete; decompile=yes
@@ -7430,7 +7430,7 @@ namespace fable {
     constexpr std::uintptr_t UpdateShadowScene__004f9b63 = 0x004f9b63; // __thiscall void UpdateShadowScene(CEngineLightingManager *,CEngineCamera *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t TransferBinaryIn__004f9ba4 = 0x004f9ba4; // __thiscall CDefIndex TransferBinaryIn(CPersistTraits<CDefIndex> *,CMemoryDataInputStream *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t TransferVectorOfSubComponents__004f9c07 = 0x004f9c07; // __thiscall void TransferVectorOfSubComponents<CAbilityButtonGuiDef>(CPersistContext *,char *,vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_> *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnDie__004f9cfc = 0x004f9cfc; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnDie__004f9cfc = 0x004f9cfc; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CAIStateGroup_WhisperPotionCombat__004f9d15 = 0x004f9d15; // __thiscall undefined CAIStateGroup_WhisperPotionCombat(CAIStateGroup_WhisperPotionCombat *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t push_back__004f9d32 = 0x004f9d32; // __thiscall void push_back(CArray<std::pair<unsigned_long,CSoundPair>_> *,pair<unsigned_long,CSoundPair> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Vector_Insert_Element = 0x004f9d7b; // unknown undefined Vector_Insert_Element() | prototype=incomplete; decompile=yes
@@ -7746,7 +7746,7 @@ namespace fable {
     constexpr std::uintptr_t DList_Init_0x18 = 0x00512780; // unknown undefined DList_Init_0x18() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t SortTreeRecursively__005127a0 = 0x005127a0; // __thiscall void SortTreeRecursively(CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCVillage_MallocHelper = 0x00512870; // unknown undefined CTCVillage_MallocHelper() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__00512890 = 0x00512890; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__00512890 = 0x00512890; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Vector_UninitializedCopy_Allocator = 0x005128b0; // unknown undefined Vector_UninitializedCopy_Allocator() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t DList_Init_0xc = 0x005128f0; // unknown undefined DList_Init_0xc() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t SortTreeRecursively__00512910 = 0x00512910; // __thiscall void SortTreeRecursively(CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *) | prototype=complete; decompile=yes
@@ -7795,7 +7795,7 @@ namespace fable {
     constexpr std::uintptr_t Std_Vector_Construct_Copy = 0x00514160; // unknown undefined Std_Vector_Construct_Copy() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Umove__00514230 = 0x00514230; // __thiscall EWeaponClass * _Umove<EWeaponClass*>(vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t DList_Init_0x18__00514260 = 0x00514260; // unknown undefined DList_Init_0x18() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__005142e0 = 0x005142e0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__005142e0 = 0x005142e0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t DList_Init_0xc__00514300 = 0x00514300; // unknown undefined DList_Init_0xc() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t PopulateVillagers_ArrayResize = 0x00514350; // unknown undefined PopulateVillagers_ArrayResize() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t SortTreeRecursively__005143e0 = 0x005143e0; // __thiscall void SortTreeRecursively(CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -7990,7 +7990,7 @@ namespace fable {
     constexpr std::uintptr_t Vector_Erase_Range = 0x0051cc80; // unknown undefined Vector_Erase_Range() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Uninit_copy_unsigned_int_std_allocator__0051cd80 = 0x0051cd80; // __fastcall uint * _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>(_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CWorldMap_GetGranularity = 0x0051cdd0; // __thiscall long CWorldMap::GetGranularity(CWorldMap *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
-    constexpr std::uintptr_t CWorldMap_GetDimensions = 0x0051cde0; // __thiscall C2DBoxI const & CWorldMap::GetDimensions(CWorldMap *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CWorldMap_GetDimensions = 0x0051cde0; // __thiscall C2DBoxI const & CWorldMap::GetDimensions(CWorldMap *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CWorldMap_IsMapUsed = 0x0051ce00; // __thiscall bool CWorldMap::IsMapUsed(CWorldMap *,long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CWorldMap_GetMap = 0x0051ce20; // __thiscall CMap & CWorldMap::GetMap(CWorldMap *,long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CWorldMap_PeekMap = 0x0051ce40; // __thiscall CMap const & CWorldMap::PeekMap(CWorldMap *,long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -8386,7 +8386,7 @@ namespace fable {
     constexpr std::uintptr_t Buynode__00535710 = 0x00535710; // __thiscall _Node * _Buynode<CCountedPointer<CSpawnedFuncBase>_>(_List_val<CCountedPointer<CSpawnedFuncBase>,std::allocator<CCountedPointer<CSpawnedFuncBase>_>_> *,_Node *,_Node *,CCountedPointer<CSpawnedFuncBase> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t LTextBinTree_Constructor__00535750 = 0x00535750; // unknown undefined LTextBinTree_Constructor() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t LTextTreeWalkThrough_Destructor__00535790 = 0x00535790; // unknown undefined LTextTreeWalkThrough_Destructor() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__005357e0 = 0x005357e0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__005357e0 = 0x005357e0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t std_list_splice = 0x00535800; // unknown undefined std::list::splice() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnReadFinished__00535900 = 0x00535900; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t StdList_Initialize__00535930 = 0x00535930; // unknown undefined StdList_Initialize() | prototype=incomplete; decompile=yes
@@ -8757,7 +8757,7 @@ namespace fable {
     constexpr std::uintptr_t IsRedefinerListActive = 0x00556520; // __fastcall bool IsRedefinerListActive() | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CanAcceptChanges = 0x00556540; // __fastcall bool CanAcceptChanges() | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t AddExclusiveObserver__00556570 = 0x00556570; // __thiscall void AddExclusiveObserver(CObservable *,CObserver *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
-    constexpr std::uintptr_t OnDeactivate = 0x00556580; // __thiscall void OnDeactivate(CRedefinerList *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t OnDeactivate = 0x00556580; // __thiscall void OnDeactivate(CRedefinerList *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ResetKeysToDefaults = 0x005565c0; // __fastcall void ResetKeysToDefaults(bool) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Initialise__005566a0 = 0x005566a0; // __thiscall void Initialise(CRedefinerList *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ClearList = 0x005567b0; // __thiscall void ClearList(CRedefinerList *) | prototype=complete; decompile=yes
@@ -8774,17 +8774,17 @@ namespace fable {
     constexpr std::uintptr_t CircularLinkedList_InitializeSmall__00557740 = 0x00557740; // unknown undefined CircularLinkedList_InitializeSmall() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CRedBlackTree_FindPredecessor = 0x005577a0; // unknown undefined CRedBlackTree::FindPredecessor() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ResetButtonCounts = 0x00557840; // __fastcall void ResetButtonCounts() | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t NUISystem_CKeyRedefiner_OnLeftClicked = 0x00557850; // __thiscall void NUISystem::CKeyRedefiner::OnLeftClicked(NUISystem::CKeyRedefiner *) | prototype=complete; decompile=unmeasured; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t NUISystem_CKeyRedefiner_OnHovered = 0x00557860; // __thiscall void NUISystem::CKeyRedefiner::OnHovered(NUISystem::CKeyRedefiner *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t NUISystem_CKeyRedefiner_OnUnhovered = 0x00557880; // __thiscall void NUISystem::CKeyRedefiner::OnUnhovered(NUISystem::CKeyRedefiner *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t AreAllowedToCoexist = 0x005578a0; // __fastcall bool AreAllowedToCoexist(EGameAction,EGameAction) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t NUISystem_CKeyRedefiner_OnLeftClicked = 0x00557850; // __thiscall void NUISystem::CKeyRedefiner::OnLeftClicked(NUISystem::CKeyRedefiner *) | prototype=complete; decompile=unmeasured
+    constexpr std::uintptr_t NUISystem_CKeyRedefiner_OnHovered = 0x00557860; // __thiscall void NUISystem::CKeyRedefiner::OnHovered(NUISystem::CKeyRedefiner *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t NUISystem_CKeyRedefiner_OnUnhovered = 0x00557880; // __thiscall void NUISystem::CKeyRedefiner::OnUnhovered(NUISystem::CKeyRedefiner *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t AreAllowedToCoexist = 0x005578a0; // __fastcall bool AreAllowedToCoexist(EGameAction,EGameAction) | prototype=complete; decompile=yes
     constexpr std::uintptr_t HaveAllTentaclesBeenHit = 0x00557940; // __thiscall bool HaveAllTentaclesBeenHit(CTCKraken *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t GetCategory = 0x00557960; // __thiscall EUISpellCategory GetCategory(CTCInventoryAbilities *,EHeroAbility) | prototype=complete; decompile=yes
     constexpr std::uintptr_t UpdateKeyText = 0x00557a10; // __thiscall void UpdateKeyText(CKeyRedefiner *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t NUISystem_CKeyRedefiner_OnLeftUnclicked = 0x00557af0; // __thiscall void NUISystem::CKeyRedefiner::OnLeftUnclicked(NUISystem::CKeyRedefiner *) | prototype=complete; decompile=unmeasured
-    constexpr std::uintptr_t CancelSelection = 0x00557bd0; // __thiscall void CancelSelection(CKeyRedefiner *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t NUISystem_CKeyRedefiner_ChangeState = 0x00557c10; // __thiscall void NUISystem::CKeyRedefiner::ChangeState(NUISystem::CKeyRedefiner *,ulong) | prototype=complete; decompile=unmeasured; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t GetSubTypeForAction = 0x00557ca0; // __thiscall EGameActionSubType GetSubTypeForAction(CKeyRedefiner *,CActionInputControl *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t CancelSelection = 0x00557bd0; // __thiscall void CancelSelection(CKeyRedefiner *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t NUISystem_CKeyRedefiner_ChangeState = 0x00557c10; // __thiscall void NUISystem::CKeyRedefiner::ChangeState(NUISystem::CKeyRedefiner *,ulong) | prototype=complete; decompile=unmeasured
+    constexpr std::uintptr_t GetSubTypeForAction = 0x00557ca0; // __thiscall EGameActionSubType GetSubTypeForAction(CKeyRedefiner *,CActionInputControl *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Redefine = 0x00557d20; // __thiscall void Redefine(CKeyRedefiner *,CActionInputControl *,bool) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ProcessEvent__00557eb0 = 0x00557eb0; // __thiscall void ProcessEvent(CKeyRedefiner *,EEvent) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ClearDuplicateDefinitions = 0x005580b0; // __thiscall void ClearDuplicateDefinitions(CKeyRedefiner *,CActionInputControl *) | prototype=complete; decompile=yes
@@ -8994,7 +8994,7 @@ namespace fable {
     constexpr std::uintptr_t LTextTreeWalkThrough_Destructor__00567740 = 0x00567740; // unknown undefined LTextTreeWalkThrough_Destructor() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ClanMember_CreateNode = 0x00567790; // unknown undefined ClanMember_CreateNode() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnReadFinished__00567800 = 0x00567800; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__00567880 = 0x00567880; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__00567880 = 0x00567880; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t DoublyLinkedListNode_Initialize__005678a0 = 0x005678a0; // unknown undefined DoublyLinkedListNode_Initialize() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t TreeNode_DestructWithSmartPtr = 0x00567980; // unknown undefined TreeNode_DestructWithSmartPtr() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetLookDirection__00567a40 = 0x00567a40; // __thiscall C3DVector GetLookDirection(CTCCameraPointScripted *,CRightHandedSet *) | prototype=complete; decompile=yes
@@ -9007,7 +9007,7 @@ namespace fable {
     constexpr std::uintptr_t DoublyLinkedListNode_Initialize__00567eb0 = 0x00567eb0; // unknown undefined DoublyLinkedListNode_Initialize() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t LTextTreeWalkThrough_Destructor__00567ef0 = 0x00567ef0; // unknown undefined LTextTreeWalkThrough_Destructor() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CircularLinkedList_Initialize__00567f40 = 0x00567f40; // unknown undefined CircularLinkedList_Initialize() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__00567f80 = 0x00567f80; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__00567f80 = 0x00567f80; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CircularLinkedList_InitializeSmall__00567fa0 = 0x00567fa0; // unknown undefined CircularLinkedList_InitializeSmall() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ClanLogo_CreateNode = 0x00567fc0; // unknown undefined ClanLogo_CreateNode() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnReadFinished__00568010 = 0x00568010; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
@@ -9248,7 +9248,7 @@ namespace fable {
     constexpr std::uintptr_t RBTree_GetMaxNode_Variant = 0x005790ab; // unknown undefined RBTree_GetMaxNode_Variant() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Uninit_copy_unsigned_int_std_allocator__005790c3 = 0x005790c3; // __fastcall uint * _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>(_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CCombatAction_GenericResponseToDecapitation__005790e7 = 0x005790e7; // __thiscall undefined CCombatAction_GenericResponseToDecapitation(CCombatAction_GenericResponseToDecapitation *,CThingCreatureBase *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Umove__005790fc = 0x005790fc; // __thiscall EWeaponClass * _Umove<EWeaponClass*>(vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Umove__005790fc = 0x005790fc; // __thiscall EWeaponClass * _Umove<EWeaponClass*>(vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t BinaryTree_FindLowerBound = 0x00579114; // unknown undefined BinaryTree_FindLowerBound() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t BinaryTree_FindLowerBound_Ability = 0x0057914c; // unknown undefined BinaryTree_FindLowerBound_Ability() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t pop_back = 0x005791b5; // __thiscall void pop_back(list<CVsyncCallbackTimer::CPendingQuery,std::allocator<CVsyncCallbackTimer::CPendingQuery>_> *) | prototype=complete; decompile=yes
@@ -10005,7 +10005,7 @@ namespace fable {
     constexpr std::uintptr_t RBTree_FindNode_Uint2 = 0x005b18d7; // unknown undefined RBTree_FindNode_Uint2() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t BuildTreeArray__005b1904 = 0x005b1904; // __thiscall void BuildTreeArray(LTextTreeWalkThrough *,LTextBinNode *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t BuildTreeArray__005b1931 = 0x005b1931; // __thiscall void BuildTreeArray(LTextTreeWalkThrough *,LTextBinNode *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t GetCellBoundingBox__005b1975 = 0x005b1975; // __thiscall bool GetCellBoundingBox(CEngineSceneGrid *,C3DBoundingBox *,ulong,ulong) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetCellBoundingBox__005b1975 = 0x005b1975; // __thiscall bool GetCellBoundingBox(CEngineSceneGrid *,C3DBoundingBox *,ulong,ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t RBTree_Iterator_SetToMaxNode_005b198d = 0x005b198d; // unknown undefined RBTree_Iterator_SetToMaxNode_005b198d() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t RBTree_Iterator_SetToMaxNode_005b199e = 0x005b199e; // unknown undefined RBTree_Iterator_SetToMaxNode_005b199e() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t RBTree_Iterator_SetToMaxNode_005b19af = 0x005b19af; // unknown undefined RBTree_Iterator_SetToMaxNode_005b19af() | prototype=incomplete; decompile=yes
@@ -10035,7 +10035,7 @@ namespace fable {
     constexpr std::uintptr_t GetSubDef__005b1e5a = 0x005b1e5a; // __thiscall bool GetSubDef<CAbilityDef>(CDefClassBase *,CDefPointer<CAbilityDef_const_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetSubDef__005b1efc = 0x005b1efc; // __thiscall bool GetSubDef<CAbilityDef>(CDefClassBase *,CDefPointer<CAbilityDef_const_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t PerEffectInfo__005b1fbc = 0x005b1fbc; // __thiscall undefined PerEffectInfo(PerEffectInfo *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetCellBoundingBox__005b1ff4 = 0x005b1ff4; // __thiscall bool GetCellBoundingBox(CEngineSceneGrid *,C3DBoundingBox *,ulong,ulong) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetCellBoundingBox__005b1ff4 = 0x005b1ff4; // __thiscall bool GetCellBoundingBox(CEngineSceneGrid *,C3DBoundingBox *,ulong,ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetTreeHandleFromMapIndex = 0x005b200c; // __thiscall long GetTreeHandleFromMapIndex(CRegionDialog *,long,CGuiControlTree *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AllocPair_Generic__005b2029 = 0x005b2029; // unknown undefined AllocPair_Generic() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Alloc__005b204b = 0x005b204b; // __fastcall CScriptDataBase * Alloc() | prototype=complete; decompile=yes
@@ -10141,7 +10141,7 @@ namespace fable {
     constexpr std::uintptr_t CCountedPointer__005ba124 = 0x005ba124; // __thiscall undefined CCountedPointer<CBankFileAsyncEntry>(CCountedPointer<CBankFileAsyncEntry> *,CCountedPointer<class_CBankFileAsyncEntry> *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Uninit_copy_unsigned_int_std_allocator__005ba146 = 0x005ba146; // __fastcall uint * _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>(_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetMiniMapRegionExitTextOffsetX__005ba1cc = 0x005ba1cc; // __thiscall void SetMiniMapRegionExitTextOffsetX(CRegion *,CCharString *,float) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t SetMiniMapRegionExitTextOffsetX__005ba222 = 0x005ba222; // __thiscall void SetMiniMapRegionExitTextOffsetX(CRegion *,CCharString *,float) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t SetMiniMapRegionExitTextOffsetX__005ba222 = 0x005ba222; // __thiscall void SetMiniMapRegionExitTextOffsetX(CRegion *,CCharString *,float) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t LinearSearch_12ByteStride = 0x005ba23a; // unknown undefined LinearSearch_12ByteStride() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t LinearSearch_24ByteStride = 0x005ba2a3; // unknown undefined LinearSearch_24ByteStride() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t LinearSearch_16ByteStride = 0x005ba30d; // unknown undefined LinearSearch_16ByteStride() | prototype=incomplete; decompile=yes
@@ -10191,7 +10191,7 @@ namespace fable {
     constexpr std::uintptr_t RBTree_FindLT_Reverse = 0x005bad36; // unknown undefined RBTree_FindLT_Reverse() | prototype=incomplete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t RBTree_InsertUpperBound_Rebalance = 0x005bad5b; // unknown undefined RBTree_InsertUpperBound_Rebalance() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetSubDef__005bade1 = 0x005bade1; // __thiscall bool GetSubDef<CAbilityDef>(CDefClassBase *,CDefPointer<CAbilityDef_const_> *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetCellBoundingBox__005baeac = 0x005baeac; // __thiscall bool GetCellBoundingBox(CEngineSceneGrid *,C3DBoundingBox *,ulong,ulong) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetCellBoundingBox__005baeac = 0x005baeac; // __thiscall bool GetCellBoundingBox(CEngineSceneGrid *,C3DBoundingBox *,ulong,ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Vector_UninitializedCopy = 0x005baec4; // unknown undefined Vector_UninitializedCopy() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t TreeNode_AllocateWithTag = 0x005baf06; // unknown undefined TreeNode_AllocateWithTag() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Uninit_copy_CArray_std_allocator__005baf28 = 0x005baf28; // __fastcall CArray<CRandomAppearanceMorph::CBodyPartMesh> * _Uninit_copy<CArray<CRandomAppearanceMorph::CBodyPartMesh>*,CArray<class_CRandomAppearanceMorph::CBodyPartMesh>*,std::allocator<CArray<CRandomAppearanceMorph::CBodyPartMesh>_>_>(CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,allocator<CArray<CRandomAppearanceMorph::CBodyPartMesh>_> *,_Nonscalar_ptr_iterator_tag) | prototype=complete; decompile=yes
@@ -10697,7 +10697,7 @@ namespace fable {
     constexpr std::uintptr_t GetDescription__005d95c0 = 0x005d95c0; // __fastcall CWideString GetDescription(long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetDescription__005d9630 = 0x005d9630; // __fastcall CWideString GetDescription(long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetEngineGraphic__005d96a0 = 0x005d96a0; // __fastcall CEngineGraphic GetEngineGraphic(long) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetInventoryCategory = 0x005d96f0; // __fastcall long GetInventoryCategory(long) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetInventoryCategory = 0x005d96f0; // __fastcall long GetInventoryCategory(long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetInventoryCategory__005d9710 = 0x005d9710; // __fastcall long GetInventoryCategory(long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetStartingRightHandedSet__005d9730 = 0x005d9730; // __fastcall CRightHandedSet GetStartingRightHandedSet(long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IsBuyable = 0x005d9790; // __fastcall bool IsBuyable(long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
@@ -10822,7 +10822,7 @@ namespace fable {
     constexpr std::uintptr_t CAnimComponentStrikeSpeedMultiplier_TransferBinaryIn = 0x005dbee0; // __thiscall void CAnimComponentStrikeSpeedMultiplier::TransferBinaryIn(CAnimComponentStrikeSpeedMultiplier *,CMemoryDataInputStream &) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CAnimComponentStrikeResponseAnim_TransferBinaryIn = 0x005dbf50; // __thiscall void CAnimComponentStrikeResponseAnim::TransferBinaryIn(CAnimComponentStrikeResponseAnim *,CMemoryDataInputStream &) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetRotationInAnimation = 0x005dbfd0; // __thiscall void GetRotationInAnimation(CAnimationEntry *,float *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Cons_val_std_pair_std_pair__005dc000 = 0x005dc000; // __fastcall void _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>(allocator<std::pair<unsigned_long,CAnimationEntry>_> *,pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,class_CAnimationEntry> *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Cons_val_std_pair_std_pair__005dc000 = 0x005dc000; // __fastcall void _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>(allocator<std::pair<unsigned_long,CAnimationEntry>_> *,pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,class_CAnimationEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CVectorMap_LookupOrGetEnd = 0x005dc020; // unknown undefined CVectorMap_LookupOrGetEnd() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t TransferBinaryOut__005dc070 = 0x005dc070; // __thiscall void TransferBinaryOut(CAnimationSet *,CDataOutputStream *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetAnimationTransitionInTime = 0x005dc1d0; // __thiscall long GetAnimationTransitionInTime(CCombatActionBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
@@ -10989,10 +10989,10 @@ namespace fable {
     constexpr std::uintptr_t std_sort_introsort_dispatcher = 0x005e3ad0; // unknown undefined std::sort_introsort_dispatcher() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t std_sort_IntrosortPartition20Byte = 0x005e3b50; // unknown undefined std_sort_IntrosortPartition20Byte() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t AddMeleeFlourishAbility = 0x005e3c60; // __thiscall void AddMeleeFlourishAbility(CTCCombat *,long) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__005e3cb0 = 0x005e3cb0; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__005e3cb0 = 0x005e3cb0; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Heap_BuildHeap = 0x005e3cd0; // unknown undefined Heap_BuildHeap() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnInitialActivate__005e3d30 = 0x005e3d30; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__005e3d50 = 0x005e3d50; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__005e3d50 = 0x005e3d50; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnInitialActivate__005e3d70 = 0x005e3d70; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Deactivate__005e3df0 = 0x005e3df0; // __thiscall void Deactivate(CTCQuestCompletionUI *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IsOverridingScreenFade = 0x005e3e70; // __thiscall bool IsOverridingScreenFade(CTCQuestCompletionUI *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -11344,7 +11344,7 @@ namespace fable {
     constexpr std::uintptr_t std_make_heap_with_depth_adjust = 0x005fa3dd; // unknown undefined std_make_heap_with_depth_adjust() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t std_make_heap_with_depth_adjust__005fa41f = 0x005fa41f; // unknown undefined std_make_heap_with_depth_adjust() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__005fa461 = 0x005fa461; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t TransferToGui__005fa47d = 0x005fa47d; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__005fa47d = 0x005fa47d; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t TransferToGui__005fa496 = 0x005fa496; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CUIMiniMapMarker__005fa530 = 0x005fa530; // __thiscall undefined CUIMiniMapMarker(CUIMiniMapMarker *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t TransferBinaryOut__005fa610 = 0x005fa610; // __thiscall void TransferBinaryOut(CPersistTraits<CTCInventoryMap::CUIRegionInfo> *,CDataOutputStream *,CUIRegionInfo *) | prototype=complete; decompile=yes
@@ -11523,7 +11523,7 @@ namespace fable {
     constexpr std::uintptr_t GetAllThings_std_const_mem_fun_ref_t = 0x00617b20; // __thiscall void GetAllThings<CThingCreatureBase,std::list<CThingCreatureBase_const*,std::allocator<CThingCreatureBase_const*>_>,std::const_mem_fun_ref_t<bool,CThingCreatureBase>_>(CThingSearchTools *,const_mem_fun_ref_t<bool,CThingCreatureBase> *,list<CThingCreatureBase_const*,std::allocator<CThingCreatureBase_const*>_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetAllThings_CFilter_Bind2__00617bb0 = 0x00617bb0; // __thiscall void GetAllThings<CThingPhysical_const_,std::vector<CThingPhysical_const*,std::allocator<CThingPhysical_const*>_>,CFilter_Bind2<CThingFilter_BoundingBoxOverlapsMap,CThingFilter_HasNavigationInformation>_>(CThingSearchTools *,CFilter_Bind2<CThingFilter_BoundingBoxOverlapsMap,CThingFilter_HasNavigationInformation> *,vector<CThingPhysical_const*,std::allocator<CThingPhysical_const*>_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetAllThings_CThingFilter_HasTCOfLeafType__00617ca0 = 0x00617ca0; // __thiscall void GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook>_>(CThingSearchTools *,CThingFilter_HasTCOfLeafType<CTCActionUseScriptedHook> *,vector<CThing*,std::allocator<CThing*>_> *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetTCDriver__00617d30 = 0x00617d30; // __thiscall bool GetTCDriver<CTCDExperienceOrb>(CThing *,CTCDExperienceOrb * *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetTCDriver__00617d30 = 0x00617d30; // __thiscall bool GetTCDriver<CTCDExperienceOrb>(CThing *,CTCDExperienceOrb * *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t RBTree_Insert_WithSuccessor_Variant = 0x00617d50; // unknown undefined RBTree_Insert_WithSuccessor_Variant() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Vector_InsertRange = 0x00617fd0; // unknown undefined Vector_InsertRange() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Campfire_InsertRegionNode = 0x00618100; // unknown undefined Campfire_InsertRegionNode() | prototype=incomplete; decompile=yes
@@ -11673,7 +11673,7 @@ namespace fable {
     constexpr std::uintptr_t GetItemsListUI = 0x006276f0; // __thiscall CComponent * GetItemsListUI(CTCQuickAccessMenu *,long *,CComponent *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetExpressionsListUI = 0x00627be0; // __thiscall CComponent * GetExpressionsListUI(CTCQuickAccessMenu *,long *,CComponent *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Activate__00628000 = 0x00628000; // __thiscall void Activate(CTCQuickAccessMenu *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__006285f0 = 0x006285f0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__006285f0 = 0x006285f0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00628610 = 0x00628610; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GFPlayFullScreenXBoxMovie = 0x006286f0; // __fastcall bool GFPlayFullScreenXBoxMovie(CCharString *,ulong,ulong,ulong,ulong,CDataBank *,CIEngine *,bool,float,_func_bool *,CXMVPlayerBuffers *,CWideString *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AddUBYTE__00628e80 = 0x00628e80; // __thiscall void AddUBYTE(CGameEvent *,uchar) | prototype=complete; decompile=yes
@@ -11756,9 +11756,9 @@ namespace fable {
     constexpr std::uintptr_t Dest_val_CCountedPointer__0062e270 = 0x0062e270; // __fastcall void _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>(allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t remove_if__0062e2b0 = 0x0062e2b0; // __thiscall void remove_if<NEntityEvents::CConvFilterToCP<NEntityEvents::CIsEventOfType>_>(list<CCountedPointer<NEntityEvents::CEventBase>,std::allocator<CCountedPointer<NEntityEvents::CEventBase>_>_> *,CConvFilterToCP<NEntityEvents::CIsEventOfType>) | prototype=complete; decompile=yes
     constexpr std::uintptr_t std_vector_push_back_or_expand = 0x0062e7e0; // unknown undefined std::vector_push_back_or_expand() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__0062e820 = 0x0062e820; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__0062e820 = 0x0062e820; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetAllThings_CThingFilter_HasScriptName = 0x0062e840; // __thiscall void GetAllThings<CThingMarker,std::vector<CThing*,std::allocator<CThing*>_>,CThingFilter_HasScriptName>(CThingSearchTools *,CThingFilter_HasScriptName *,vector<CThing*,std::allocator<CThing*>_> *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__0062e8e0 = 0x0062e8e0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__0062e8e0 = 0x0062e8e0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t dtor_CTCLightningOrb__0062e900 = 0x0062e900; // __thiscall void ~CTCLightningOrb(CTCLightningOrb *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CCombatAction_GenericResponseToDecapitation__0062e9b0 = 0x0062e9b0; // __thiscall undefined CCombatAction_GenericResponseToDecapitation(CCombatAction_GenericResponseToDecapitation *,CThingCreatureBase *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CCombatActionBase_PerformAction = 0x0062e9f0; // __thiscall void CCombatActionBase::PerformAction(CCombatActionBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -12052,7 +12052,7 @@ namespace fable {
     constexpr std::uintptr_t RemoveMap__00640430 = 0x00640430; // __thiscall void RemoveMap(CEngineManager *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t InterruptAllNavigators = 0x00640460; // __thiscall void InterruptAllNavigators(CNavigatorManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Cleanup__00640490 = 0x00640490; // __thiscall void Cleanup(CEngineManager *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t AddLearnedExpression__006404b0 = 0x006404b0; // __thiscall void AddLearnedExpression(CTCInventoryAbilities *,long) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t AddLearnedExpression__006404b0 = 0x006404b0; // __thiscall void AddLearnedExpression(CTCInventoryAbilities *,long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t std_list_insert_node = 0x006404d0; // unknown undefined std_list_insert_node() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnRender = 0x00640500; // __thiscall void OnRender(CEngineManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t std_vector_push_back__00640560 = 0x00640560; // unknown undefined std_vector_push_back() | prototype=incomplete; decompile=yes
@@ -12162,7 +12162,7 @@ namespace fable {
     constexpr std::uintptr_t OnKillCrowd__0064639c = 0x0064639c; // __thiscall void OnKillCrowd(CTCBoastingCrowdControl *,CThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t DetachTarget__006463f0 = 0x006463f0; // __thiscall void DetachTarget(CRenderTarget *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Update__006463ff = 0x006463ff; // __thiscall bool Update(CQuestInfoElementBar *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t ClearPrimitivesIfNecessary__00646567 = 0x00646567; // __thiscall void ClearPrimitivesIfNecessary(CDraw2DText *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t ClearPrimitivesIfNecessary__00646567 = 0x00646567; // __thiscall void ClearPrimitivesIfNecessary(CDraw2DText *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Draw__00646580 = 0x00646580; // __thiscall void Draw(CDrawMeleeActionButtonEffects *,CEnginePrimitivePrepareInfo *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Clear__00646709 = 0x00646709; // __thiscall void Clear(CDrawHighlightingTargetingCursor *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t DrawStatBarOnLeft__00646762 = 0x00646762; // __thiscall void DrawStatBarOnLeft(CStatBar *,CEnginePrimitivePrepareInfo *,CGraphicDataBank *,C2DVector *,C2DVector *,CRGBColour *,uchar,bool) | prototype=complete; decompile=yes
@@ -12514,7 +12514,7 @@ namespace fable {
     constexpr std::uintptr_t Umove__006590e4 = 0x006590e4; // __thiscall EWeaponClass * _Umove<EWeaponClass*>(vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Umove__006590f4 = 0x006590f4; // __thiscall EWeaponClass * _Umove<EWeaponClass*>(vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IsVillagerPerformingVillageTask = 0x00659104; // __thiscall bool IsVillagerPerformingVillageTask(CTCVillage *,CThingAICreature *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t StartRead__0065914b = 0x0065914b; // __thiscall void StartRead(CBankFileAsyncData *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t StartRead__0065914b = 0x0065914b; // __thiscall void StartRead(CBankFileAsyncData *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnCreate__00659164 = 0x00659164; // __thiscall void OnCreate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t InitialiseToggleTorchTypes = 0x00659295; // __thiscall void InitialiseToggleTorchTypes(CTCVillage *,CThingObject *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AddTorchToVillage = 0x006592e2; // __thiscall void AddTorchToVillage(CTCVillage *,CThing *) | prototype=complete; decompile=yes
@@ -12752,7 +12752,7 @@ namespace fable {
     constexpr std::uintptr_t GetSubDef__0065f7b4 = 0x0065f7b4; // __thiscall bool GetSubDef<CAbilityDef>(CDefClassBase *,CDefPointer<CAbilityDef_const_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetBestCarryCrateTask = 0x0065f856; // unknown undefined GetBestCarryCrateTask() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetBestCrateTaskForThing__0065f884 = 0x0065f884; // unknown undefined GetBestCrateTaskForThing() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetCellBoundingBox__0065f8b2 = 0x0065f8b2; // __thiscall bool GetCellBoundingBox(CEngineSceneGrid *,C3DBoundingBox *,ulong,ulong) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetCellBoundingBox__0065f8b2 = 0x0065f8b2; // __thiscall bool GetCellBoundingBox(CEngineSceneGrid *,C3DBoundingBox *,ulong,ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t IS_THING_ALIVE__0065f8ca = 0x0065f8ca; // __fastcall bool IS_THING_ALIVE<CIntelligentPointer<CThingPhysical_const_>_>(CIntelligentPointer<CThingPhysical_const_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t TransferIn__0065f943 = 0x0065f943; // __thiscall C2DVector TransferIn(CPersistTraits<C2DVector> *,CPersistContext *,CStringParser *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Find_if_std_allocator_HasGuardProperty = 0x0065f96d; // __fastcall _List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>_> _Find_if<std::_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>_>,HasGuardProperty>(_List_unchecked_iterator<class_std::_List_val<class_CIntelligentPointer<class_CThingAICreature>,class_std::allocator<class_CIntelligentPointer<class_CThingAICreature>_>_>_>,_List_unchecked_iterator<class_std::_List_val<class_CIntelligentPointer<class_CThingAICreature>,class_std::allocator<class_CIntelligentPointer<class_CThingAICreature>_>_>_>,HasGuardProperty) | prototype=complete; decompile=yes
@@ -13051,7 +13051,7 @@ namespace fable {
     constexpr std::uintptr_t CCRC_CalcAndLookup = 0x00669d30; // unknown undefined CCRC::CalcAndLookup() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnReadFinished__00669df0 = 0x00669df0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t StdList_InitEmpty_0066a1a0 = 0x0066a1a0; // unknown undefined StdList_InitEmpty_0066a1a0() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__0066a1c0 = 0x0066a1c0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__0066a1c0 = 0x0066a1c0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t ForEachInRoughArea_anon_EFF05290_CThingFindHeightZBelowAt__0066a1e0 = 0x0066a1e0; // __thiscall bool ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_SolidToThing,CThingFilter_PhysicsFlagsSolidToThing,CThingFilter_OverlappingCircle>,_anon_EFF05290::CThingFindHeightZBelowAt>(CThingSearchTools *,C2DBoxI *,CFilter_Bind3<CThingFilter_SolidToThing,CThingFilter_PhysicsFlagsSolidToThing,CThingFilter_OverlappingCircle> *,CThingFindHeightZBelowAt *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Dest_val_std_pair__0066a4f0 = 0x0066a4f0; // __fastcall void _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>(allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Dest_val_std_pair__0066a510 = 0x0066a510; // __fastcall void _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>(allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *) | prototype=complete; decompile=yes
@@ -13530,7 +13530,7 @@ namespace fable {
     constexpr std::uintptr_t std_IntroSort__00681270 = 0x00681270; // unknown undefined std::IntroSort() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t resize__00681340 = 0x00681340; // __thiscall void resize(vector<std::pair<CCharString,long>,std::allocator<std::pair<CCharString,long>_>_> *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CNavigationMesh_SortAndHeapify = 0x006813a0; // unknown undefined CNavigationMesh_SortAndHeapify() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__00681420 = 0x00681420; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__00681420 = 0x00681420; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnInitialActivate__00681440 = 0x00681440; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetAttitudeType = 0x00681500; // __thiscall EOpinionAttitudeType GetAttitudeType(COpinionReactionManager *,CThing *,CTCOpinionSource *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetHeroOpinionEnemy = 0x006815d0; // __thiscall void SetHeroOpinionEnemy(CTCCreatureOpinionOfHero *,bool) | prototype=complete; decompile=yes
@@ -13634,7 +13634,7 @@ namespace fable {
     constexpr std::uintptr_t GetDisplayEngine__00686da0 = 0x00686da0; // __thiscall CDisplayEngine * GetDisplayEngine(CViewBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetPLocalSeed = 0x00686db0; // __thiscall ulong * GetPLocalSeed(CTCBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t UpdateGlobalTCs = 0x00686dc0; // __fastcall void UpdateGlobalTCs(bool) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t RemoveFromGlobalTCs = 0x00686df0; // __thiscall void RemoveFromGlobalTCs(CTCBase *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t RemoveFromGlobalTCs = 0x00686df0; // __thiscall void RemoveFromGlobalTCs(CTCBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t SerialiseLevelState = 0x00686e10; // __thiscall void SerialiseLevelState(CTCBase *,bool,CCharString *,bool) | prototype=complete; decompile=yes
     constexpr std::uintptr_t std_list_push_back__00686ed0 = 0x00686ed0; // unknown undefined std::list::push_back() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CMeshVolumeMap_Find = 0x00686f10; // unknown undefined CMeshVolumeMap::Find() | prototype=incomplete; decompile=yes
@@ -13669,7 +13669,7 @@ namespace fable {
     constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__00687cf0 = 0x00687cf0; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__00687d00 = 0x00687d00; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t op_new__00687d10 = 0x00687d10; // __fastcall void * operator_new(uint) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GFPredicateAnd_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive__00687d20 = 0x00687d20; // __fastcall CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>(CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GFPredicateAnd_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive__00687d20 = 0x00687d20; // __fastcall CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>(CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t op_new__00687d40 = 0x00687d40; // __fastcall void * operator_new(uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Transfer__00687d50 = 0x00687d50; // __thiscall void Transfer<CEngineGraphic>(CPersistContext *,char *,CEngineGraphic *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IsGameActionEventInQueue__00687d80 = 0x00687d80; // __thiscall bool IsGameActionEventInQueue(CInputProcessGameBase *,EGameAction,EInputButtonEventType,float *) | prototype=complete; decompile=yes
@@ -13813,17 +13813,17 @@ namespace fable {
     constexpr std::uintptr_t Init__00691fe0 = 0x00691fe0; // __thiscall void Init(CInputProcessControlSpirit *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CAIStateGroup_MoveGoodsBase = 0x006920f0; // __thiscall undefined CAIStateGroup_MoveGoodsBase(CAIStateGroup_MoveGoodsBase *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CFireheartMinigameDef__00692120 = 0x00692120; // __thiscall undefined CFireheartMinigameDef(CFireheartMinigameDef *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00692150 = 0x00692150; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00692150 = 0x00692150; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CGameJoystickManager__00692170 = 0x00692170; // __thiscall undefined CGameJoystickManager(CGameJoystickManager *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00692190 = 0x00692190; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00692190 = 0x00692190; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CGameJoystickManager__006921b0 = 0x006921b0; // __thiscall undefined CGameJoystickManager(CGameJoystickManager *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__006921d0 = 0x006921d0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__006921d0 = 0x006921d0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CGameJoystickManager__006921f0 = 0x006921f0; // __thiscall undefined CGameJoystickManager(CGameJoystickManager *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetActionName__00692210 = 0x00692210; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CAIStateGroupBase__00692230 = 0x00692230; // __thiscall undefined CAIStateGroupBase(CAIStateGroupBase *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00692250 = 0x00692250; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00692250 = 0x00692250; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CFireheartMinigameDef__00692270 = 0x00692270; // __thiscall undefined CFireheartMinigameDef(CFireheartMinigameDef *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__006922a0 = 0x006922a0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__006922a0 = 0x006922a0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CAIStateGroupBase__006922c0 = 0x006922c0; // __thiscall undefined CAIStateGroupBase(CAIStateGroupBase *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetActionName__006922e0 = 0x006922e0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t InitialiseActionPause = 0x00692380; // __thiscall void InitialiseActionPause(CCreatureActionBase *) | prototype=complete; decompile=yes
@@ -13866,7 +13866,7 @@ namespace fable {
     constexpr std::uintptr_t CCreatureActionBase_IsBlockCounter = 0x006926c0; // __thiscall bool CCreatureActionBase::IsBlockCounter(CCreatureActionBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CCreatureActionBase_IsMeleeFlourish = 0x006926d0; // __thiscall bool CCreatureActionBase::IsMeleeFlourish(CCreatureActionBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CCreatureActionBase_IsActionWithStrikeEventHelperName = 0x006926e0; // __thiscall bool CCreatureActionBase::IsActionWithStrikeEventHelperName(CCreatureActionBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
-    constexpr std::uintptr_t GetStrikeEventHelperName_CCreatureActionBase_UBE_AVCCharString_XZ = 0x006926f0; // __thiscall CCharString ?GetStrikeEventHelperName@CCreatureActionBase@@UBE?AVCCharString@@XZ(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetStrikeEventHelperName_CCreatureActionBase_UBE_AVCCharString_XZ = 0x006926f0; // __thiscall CCharString ?GetStrikeEventHelperName@CCreatureActionBase@@UBE?AVCCharString@@XZ(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CCreatureActionBase_IsActionReadyForInterruptionByMovement = 0x00692710; // __thiscall bool CCreatureActionBase::IsActionReadyForInterruptionByMovement(CCreatureActionBase *,C3DVector const &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CCreatureActionBase_IsAffectedByHaste = 0x00692720; // __thiscall bool CCreatureActionBase::IsAffectedByHaste(CCreatureActionBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CCreatureActionBase_IsAffectedByHeroStats = 0x00692730; // __thiscall bool CCreatureActionBase::IsAffectedByHeroStats(CCreatureActionBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -14306,7 +14306,7 @@ namespace fable {
     constexpr std::uintptr_t ClearLocked = 0x006a3da0; // __thiscall void ClearLocked(CTCScriptedControl *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Heap_SiftDown__006a3e00 = 0x006a3e00; // unknown undefined Heap_SiftDown() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Sound_MakePriorityHeap = 0x006a3f20; // unknown undefined Sound_MakePriorityHeap() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__006a3f80 = 0x006a3f80; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__006a3f80 = 0x006a3f80; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnInitialActivate__006a3fa0 = 0x006a3fa0; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Init_CInputProcessJumpingAndRolling_UAEXXZ = 0x006a4010; // __thiscall void ?Init@CInputProcessJumpingAndRolling@@UAEXXZ(CInputProcessJumpingAndRolling *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ProcessJumping = 0x006a4040; // __thiscall void ProcessJumping(CInputProcessJumpingAndRolling *,CInputEvent *,CProcessedInput *) | prototype=complete; decompile=yes
@@ -14317,7 +14317,7 @@ namespace fable {
     constexpr std::uintptr_t CTCRolling_InsertEventAlt = 0x006a4ab0; // unknown undefined CTCRolling_InsertEventAlt() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CRegister__006a4b30 = 0x006a4b30; // __thiscall undefined CRegister(CRegister *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Stub_ReturnVoid_004c72a0__006a4b70 = 0x006a4b70; // unknown undefined Stub_ReturnVoid_004c72a0() | prototype=incomplete; decompile=unmeasured
-    constexpr std::uintptr_t SetScale__006a4b80 = 0x006a4b80; // __thiscall void SetScale(CThingPhysical *,float) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t SetScale__006a4b80 = 0x006a4b80; // __thiscall void SetScale(CThingPhysical *,float) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Save__006a4ba0 = 0x006a4ba0; // __thiscall void Save(CThingPhysical *,CCharString *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Kill__006a4cf0 = 0x006a4cf0; // __thiscall void Kill(CParticleSystem *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t DoSizeof__006a4d00 = 0x006a4d00; // __thiscall ulong DoSizeof(CVertexBufferWin32 *) | prototype=complete; decompile=yes
@@ -14393,7 +14393,7 @@ namespace fable {
     constexpr std::uintptr_t op__006a7ad0 = 0x006a7ad0; // __thiscall bool operator()(CThingFilter_MakesLineWithPosInDirectionOfLine *,CThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t op__006a7b20 = 0x006a7b20; // __thiscall bool operator()(CThingFilter_PosInContainmentVolume *,CThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t op__006a7b90 = 0x006a7b90; // __thiscall bool operator()(CThingFilter_IsHuman *,CThingCreatureBase *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t op__006a7be0 = 0x006a7be0; // __thiscall bool operator()(CThingFilter_HasDefName *,CThing *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t op__006a7be0 = 0x006a7be0; // __thiscall bool operator()(CThingFilter_HasDefName *,CThing *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t op__006a7c00 = 0x006a7c00; // __thiscall bool operator()(CThingFilter_HasInstantiationName *,CThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t op__006a7c20 = 0x006a7c20; // __thiscall bool operator()(CThingFilter_HasScriptData *,CThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CThingFilter_MatchesScriptName = 0x006a7c60; // unknown undefined CThingFilter_MatchesScriptName() | prototype=incomplete; decompile=yes
@@ -14423,7 +14423,7 @@ namespace fable {
     constexpr std::uintptr_t op__006a8a80 = 0x006a8a80; // __thiscall bool operator()(CThingFilter_HasFreeActionPoint *,CThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCInterface_FindInterface__006a8af0 = 0x006a8af0; // unknown undefined CTCInterface_FindInterface() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t op__006a8b40 = 0x006a8b40; // __thiscall bool operator()(CThingFilter_HasFreeActionPoint *,CThing *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t IsActiveThreadTerminating__006a8be0 = 0x006a8be0; // __thiscall bool IsActiveThreadTerminating(CScriptBase *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t IsActiveThreadTerminating__006a8be0 = 0x006a8be0; // __thiscall bool IsActiveThreadTerminating(CScriptBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CThingFilter_IsInSameVolumeContextAsThing = 0x006a8c00; // __thiscall undefined CThingFilter_IsInSameVolumeContextAsThing(CThingFilter_IsInSameVolumeContextAsThing *,CThing *,bool) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t op__006a8c60 = 0x006a8c60; // __thiscall bool operator()(CThingFilter_IsInSameVolumeContextAsThing *,CThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t op__006a8d30 = 0x006a8d30; // __thiscall bool operator()(CThingFilter_CanBeHitByEpicSpell *,CThing *) | prototype=complete; decompile=yes
@@ -14492,7 +14492,7 @@ namespace fable {
     constexpr std::uintptr_t InsertIntelligentPointerInList = 0x006aedc0; // unknown undefined InsertIntelligentPointerInList() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ClearAllDecals__006aee40 = 0x006aee40; // __thiscall void ClearAllDecals(CParticleSystem *,CEnginePrimitiveHandle *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IsCreatureFollowingHeroAcrossRegions = 0x006aeea0; // __thiscall bool IsCreatureFollowingHeroAcrossRegions(CTCRegionFollower *,CThingAICreature *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__006af060 = 0x006af060; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__006af060 = 0x006af060; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t scalar_deleting_destructor__006af080 = 0x006af080; // __thiscall void * `scalar_deleting_destructor'(CEngineSubPrimitiveText *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t op__006af180 = 0x006af180; // __thiscall bool operator()(CMessageEventFilter_OccuredBetween *,CMessageEvent *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t op__006af1a0 = 0x006af1a0; // __thiscall bool operator()(CMessageEventFilter_HasExtraData *,CMessageEvent *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -14522,7 +14522,7 @@ namespace fable {
     constexpr std::uintptr_t ImpulseRespondToCollisonWithImpassableObject = 0x006afaf0; // __thiscall void ImpulseRespondToCollisonWithImpassableObject(CTCPhysicsBase *,CPhysicsCollideResponse *,CTCPhysicsBase *,C3DVector *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetMapwhoPosition__006afcb0 = 0x006afcb0; // __thiscall C3DVector GetMapwhoPosition(CTCPhysicsBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IsInterruptable = 0x006afd30; // __thiscall bool IsInterruptable(CCombatSequenceBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
-    constexpr std::uintptr_t GetCombatManager__006afd40 = 0x006afd40; // __thiscall CCombatManager * GetCombatManager(CThingCreatureBase *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetCombatManager__006afd40 = 0x006afd40; // __thiscall CCombatManager * GetCombatManager(CThingCreatureBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t FrameUpdate__006afd60 = 0x006afd60; // __thiscall void FrameUpdate(CTCPhysicsBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetAirResistance__006afde0 = 0x006afde0; // __thiscall float GetAirResistance(CTCPhysicsBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetAirResistance__006afe00 = 0x006afe00; // __thiscall float GetAirResistance(CTCPhysicsBase *) | prototype=complete; decompile=yes
@@ -14669,14 +14669,14 @@ namespace fable {
     constexpr std::uintptr_t Vector_InsertAndFill = 0x006b8050; // unknown undefined Vector_InsertAndFill() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t scalar_deleting_destructor__006b81a0 = 0x006b81a0; // __thiscall void * `scalar_deleting_destructor'(CAInputProcess *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t resize__006b81f0 = 0x006b81f0; // __thiscall void resize(vector<CBrainBehaviour,std::allocator<CBrainBehaviour>_> *,uint,CBrainBehaviour) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Cons_val_std_pair_std_pair__006b82e0 = 0x006b82e0; // __fastcall void _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>(allocator<std::pair<unsigned_long,CAnimationEntry>_> *,pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,class_CAnimationEntry> *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Cons_val_std_pair_std_pair__006b82e0 = 0x006b82e0; // __fastcall void _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>(allocator<std::pair<unsigned_long,CAnimationEntry>_> *,pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,class_CAnimationEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CXMVPlaybackInfo__006b8300 = 0x006b8300; // __thiscall undefined CXMVPlaybackInfo(CXMVPlaybackInfo *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t RadialBlurSetCenterWorldPos = 0x006b8310; // __thiscall void RadialBlurSetCenterWorldPos(CEnvironmentSpellEffectInterpolator *,void *,C3DVector *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GFPredicateAnd_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive__006b8350 = 0x006b8350; // __fastcall CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>(CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Ucopy_std_allocator_0 = 0x006b8370; // __thiscall CCharString * _Ucopy<std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std::allocator<CCharString>,0>_>_>_>(vector<CCharString,std::allocator<CCharString>_> *,_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std::allocator<CCharString>,0>_>_>,_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std::allocator<CCharString>,0>_>_>,CCharString *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Cons_val_std_pair_std_pair__006b8390 = 0x006b8390; // __fastcall void _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>(allocator<std::pair<unsigned_long,CAnimationEntry>_> *,pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,class_CAnimationEntry> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__006b83e0 = 0x006b83e0; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Cons_val_std_pair_std_pair__006b83f0 = 0x006b83f0; // __fastcall void _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>(allocator<std::pair<unsigned_long,CAnimationEntry>_> *,pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,class_CAnimationEntry> *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Cons_val_std_pair_std_pair__006b83f0 = 0x006b83f0; // __fastcall void _Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>(allocator<std::pair<unsigned_long,CAnimationEntry>_> *,pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,class_CAnimationEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__006b8410 = 0x006b8410; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AddToInterface__006b84b0 = 0x006b84b0; // __thiscall bool AddToInterface(CInputProcessGameBase *,CInputProcessManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t RadialBlurFadeTo = 0x006b84e0; // __thiscall void * RadialBlurFadeTo(CEnvironmentSpellEffectInterpolator *,float,ScreenEffectPriority,CRadialBlurParams *) | prototype=complete; decompile=yes
@@ -14737,7 +14737,7 @@ namespace fable {
     constexpr std::uintptr_t std_vector_emplace_back__006bafb0 = 0x006bafb0; // unknown undefined std::vector<CCountedPtr>::emplace_back() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Heap_PopRecursive = 0x006bb040; // unknown undefined Heap_PopRecursive() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t std_make_heap_container_presort = 0x006bb140; // unknown undefined std::make_heap_container_presort() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__006bb1a0 = 0x006bb1a0; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__006bb1a0 = 0x006bb1a0; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnInitialActivate__006bb1c0 = 0x006bb1c0; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IsDay = 0x006bb1e0; // __thiscall bool IsDay(CGameTimeManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IsNightTime = 0x006bb210; // __thiscall bool IsNightTime(CGameTimeManager *) | prototype=complete; decompile=yes
@@ -14826,7 +14826,7 @@ namespace fable {
     constexpr std::uintptr_t AddSkeletalMorph = 0x006bf500; // __thiscall void AddSkeletalMorph(CTCSkeletalMorph *,long,CCharString *,float) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Heap_SortWideStringElements = 0x006bf570; // unknown undefined Heap_SortWideStringElements() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t std_make_heap_0x18_presort = 0x006bf6a0; // unknown undefined std::make_heap_0x18_presort() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__006bf700 = 0x006bf700; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__006bf700 = 0x006bf700; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnInitialActivate__006bf720 = 0x006bf720; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t BoughtSomething__006bf7b0 = 0x006bf7b0; // __thiscall void BoughtSomething(CAIStateGroup_BuyFromSeller *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t HasMultipleDressLevels = 0x006bf7f0; // __thiscall bool HasMultipleDressLevels(CTCBuyableHouse *) | prototype=complete; decompile=yes
@@ -14858,7 +14858,7 @@ namespace fable {
     constexpr std::uintptr_t SetRented = 0x006c1150; // __thiscall void SetRented(CTCBuyableHouse *,bool) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnInitialActivate__006c14d0 = 0x006c14d0; // __thiscall void OnInitialActivate(CTCBuyableHouse *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetOwnedByPlayer = 0x006c17b0; // __thiscall void SetOwnedByPlayer(CTCBuyableHouse *,bool) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__006c1ae0 = 0x006c1ae0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__006c1ae0 = 0x006c1ae0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetSubDef__006c1b00 = 0x006c1b00; // __thiscall bool GetSubDef<CAICreatureWillPowerIndicatorDef>(CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__006c1bc0 = 0x006c1bc0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_CTCDExplosion__006c1be0 = 0x006c1be0; // __thiscall void ~CTCDExplosion(CTCDExplosion *) | prototype=complete; decompile=yes
@@ -14882,9 +14882,9 @@ namespace fable {
     constexpr std::uintptr_t Copy_impl_std_pair__006c2b10 = 0x006c2b10; // __fastcall pair<CCharString,CCharString> * _Copy_impl<std::pair<CCharString,CCharString>*,std::pair<class_CCharString,class_CCharString>*>(pair<class_CCharString,class_CCharString> *,pair<class_CCharString,class_CCharString> *,pair<class_CCharString,class_CCharString> *,_Nonscalar_ptr_iterator_tag) | prototype=complete; decompile=yes
     constexpr std::uintptr_t erase__006c2ba0 = 0x006c2ba0; // __thiscall _List_iterator<std::_List_val<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>,std::allocator<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>_>_>_> erase(list<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>,std::allocator<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>_>_> *,_List_const_iterator<std::_List_val<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>,std::allocator<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>_>_>_>) | prototype=complete; decompile=yes
     constexpr std::uintptr_t remove_if__006c2c00 = 0x006c2c00; // __thiscall void remove_if<NEntityEvents::CConvFilterToCP<NEntityEvents::CIsEventOfType>_>(list<CCountedPointer<NEntityEvents::CEventBase>,std::allocator<CCountedPointer<NEntityEvents::CEventBase>_>_> *,CConvFilterToCP<NEntityEvents::CIsEventOfType>) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__006c2ce0 = 0x006c2ce0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__006c2ce0 = 0x006c2ce0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t LinkedList_Init__006c2d00 = 0x006c2d00; // unknown undefined LinkedList_Init() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__006c2d20 = 0x006c2d20; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__006c2d20 = 0x006c2d20; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CCombatWheel_CopyAssign = 0x006c2d40; // unknown undefined CCombatWheel_CopyAssign() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t scalar_deleting_destructor__006c2e90 = 0x006c2e90; // __thiscall void * `scalar_deleting_destructor'(CEngineSubPrimitiveText *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Dest_val_CCountedPointer__006c2fb0 = 0x006c2fb0; // __fastcall void _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>(allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *) | prototype=complete; decompile=yes
@@ -14972,7 +14972,7 @@ namespace fable {
     constexpr std::uintptr_t std_map_erase__006c7ca0 = 0x006c7ca0; // unknown undefined std::map<long,?>::erase() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ComplexList_Init__006c7d30 = 0x006c7d30; // unknown undefined ComplexList_Init() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t LTextBinTree_LTextTreeWalkThrough_dtor_LTextTreeWalkThrough = 0x006c7d70; // unknown undefined LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::~LTextTreeWalkThrough() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__006c7dc0 = 0x006c7dc0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__006c7dc0 = 0x006c7dc0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t LTextTreeWalkThrough_EraseRange = 0x006c7de0; // unknown undefined LTextTreeWalkThrough_EraseRange() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetEvent__006c7f30 = 0x006c7f30; // __thiscall bool GetEvent<NEntityEvents::CEventChildHurtGoToMother,NEntityEvents::CIsEventOfType>(CTCEntityEvents *,CEventChildHurtGoToMother * *,CIsEventOfType *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Vector_CopyElements8Byte = 0x006c7fe0; // unknown undefined Vector_CopyElements8Byte() | prototype=incomplete; decompile=yes
@@ -15218,7 +15218,7 @@ namespace fable {
     constexpr std::uintptr_t GetActionName__006d58c0 = 0x006d58c0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__006d58f0 = 0x006d58f0; // __thiscall void * `vector_deleting_destructor'(CThingSwitch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Dest_val_CCountedPointer__006d5a50 = 0x006d5a50; // __fastcall void _Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>(allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t UpdateBrain = 0x006d5a90; // __thiscall bool UpdateBrain(CThingAICreature *,long,CBrainOutput *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t UpdateBrain = 0x006d5a90; // __thiscall bool UpdateBrain(CThingAICreature *,long,CBrainOutput *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__006d5ab0 = 0x006d5ab0; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__006d5ac0 = 0x006d5ac0; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__006d5ad0 = 0x006d5ad0; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes
@@ -15287,7 +15287,7 @@ namespace fable {
     constexpr std::uintptr_t AddTrainableStatExperience = 0x006d8300; // __thiscall void AddTrainableStatExperience(CTCHeroExperience *,EHeroExperienceStatCategory,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnStatLevelChange = 0x006d83b0; // __thiscall void OnStatLevelChange(CTCHeroExperience *,bool) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Flourish_UpdateMultiplier = 0x006d86d0; // unknown undefined Flourish_UpdateMultiplier() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnInitialActivate__006d8770 = 0x006d8770; // __thiscall void OnInitialActivate(CTCElectrocutedEffect *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnInitialActivate__006d8770 = 0x006d8770; // __thiscall void OnInitialActivate(CTCElectrocutedEffect *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CTCHeroExperience_ApplyDamageMultiplier = 0x006d8790; // unknown undefined CTCHeroExperience_ApplyDamageMultiplier() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Experience_ProcessMultiHitCombo = 0x006d8830; // unknown undefined Experience_ProcessMultiHitCombo() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t UpgradeTrainableStat = 0x006d8980; // __thiscall void UpgradeTrainableStat(CTCHeroExperience *,EHeroTrainableStatType) | prototype=complete; decompile=yes
@@ -16004,7 +16004,7 @@ namespace fable {
     constexpr std::uintptr_t erase__006fad50 = 0x006fad50; // __thiscall CEvent * erase(CSmallVector<NAnimationEvents::CEvent,32> *,CEvent *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t resize__006fade0 = 0x006fade0; // __thiscall void resize(CSmallVector<NAnimationEvents::CEvent,32> *,long,CEvent *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t push_back__006faec0 = 0x006faec0; // __thiscall void push_back(CSmallVector<NAnimationEvents::CEvent,32> *,CEvent *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Dest_val_std_pair__006faf00 = 0x006faf00; // __fastcall void _Dest_val<std::allocator<std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>_>,std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>_>(allocator<std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>_> *,pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_> *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Dest_val_std_pair__006faf00 = 0x006faf00; // __fastcall void _Dest_val<std::allocator<std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>_>,std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>_>(allocator<std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>_> *,pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t LowerBound__006faf20 = 0x006faf20; // __thiscall _Vector_iterator<std::_Vector_val<std::pair<unsigned_long,CCountedPointer<CFaction>_>,std::allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_>_>_> LowerBound(CVectorMap<unsigned_long,CCountedPointer<CFaction>,CKeyPairCompareLess<unsigned_long,CCountedPointer<CFaction>_>_> *,ulong *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t LowerBound__006faf80 = 0x006faf80; // __thiscall _Vector_iterator<std::_Vector_val<std::pair<unsigned_long,CCountedPointer<CFaction>_>,std::allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_>_>_> LowerBound(CVectorMap<unsigned_long,CCountedPointer<CFaction>,CKeyPairCompareLess<unsigned_long,CCountedPointer<CFaction>_>_> *,ulong *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AnimEventArray_Reallocate = 0x006fafe0; // unknown undefined AnimEventArray_Reallocate() | prototype=incomplete; decompile=yes
@@ -16016,7 +16016,7 @@ namespace fable {
     constexpr std::uintptr_t Dest_val_std_pair__006fb460 = 0x006fb460; // __fastcall void _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>(allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Copy__006fb5c0 = 0x006fb5c0; // __thiscall void Copy(CSmallVector<NAnimationEvents::CEvent,32> *,CSmallVector<class_NAnimationEvents::CEvent,32> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t For_each__006fb640 = 0x006fb640; // __fastcall CGetEventsFilteredByTime _For_each<NAnimationEvents::CEvent_const*,NAnimationEvents::CGetEventsFilteredByTime>(CEvent *,CEvent *,CGetEventsFilteredByTime) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Dest_val_std_pair__006fb710 = 0x006fb710; // __fastcall void _Dest_val<std::allocator<std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>_>,std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>_>(allocator<std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>_> *,pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_> *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Dest_val_std_pair__006fb710 = 0x006fb710; // __fastcall void _Dest_val<std::allocator<std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>_>,std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>_>(allocator<std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>_> *,pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__006fb730 = 0x006fb730; // __thiscall void * `vector_deleting_destructor'(CThingSwitch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Move_backward_std_pair__006fb830 = 0x006fb830; // __fastcall pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_> * _Move_backward<std::pair<unsigned_long,CSmallVector<NAnimationEvents::CEvent,32>_>*,std::pair<unsigned_long,class_CSmallVector<class_NAnimationEvents::CEvent,32>_>*>(pair<unsigned_long,class_CSmallVector<class_NAnimationEvents::CEvent,32>_> *,pair<unsigned_long,class_CSmallVector<class_NAnimationEvents::CEvent,32>_> *,pair<unsigned_long,class_CSmallVector<class_NAnimationEvents::CEvent,32>_> *,_Nonscalar_ptr_iterator_tag) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Copy_backward__006fb8a0 = 0x006fb8a0; // __fastcall CPixelFormat * _Copy_backward<CPixelFormat*,CPixelFormat*>(CPixelFormat *,CPixelFormat *,CPixelFormat *) | prototype=complete; decompile=yes
@@ -16155,7 +16155,7 @@ namespace fable {
     constexpr std::uintptr_t dtor_CTCDExplosion__00702a50 = 0x00702a50; // __thiscall void ~CTCDExplosion(CTCDExplosion *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCCameraCollision__00702aa0 = 0x00702aa0; // __thiscall undefined CTCCameraCollision(CTCCameraCollision *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetSectionNameSuffix = 0x00702ac0; // __thiscall CCharString GetSectionNameSuffix(CTCDayOrNightOnlySupport *,CCharString *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00702bd0 = 0x00702bd0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00702bd0 = 0x00702bd0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00702bf0 = 0x00702bf0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t DrawIsDrawable__00702c60 = 0x00702c60; // __thiscall bool DrawIsDrawable(CThingObject *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ResetDieOffTimer = 0x00702ce0; // __thiscall void ResetDieOffTimer(CThingObject *) | prototype=complete; decompile=yes
@@ -16195,7 +16195,7 @@ namespace fable {
     constexpr std::uintptr_t GetBanter__00705cc0 = 0x00705cc0; // __thiscall long GetBanter(CTCTavernGame *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetBanter__00705d00 = 0x00705d00; // __thiscall long GetBanter(CTCTavernGame *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetAsCarriedBy = 0x00705d40; // __thiscall void SetAsCarriedBy(CTCCarryable *,CTCCarrying *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t HandleMessage = 0x00705fe0; // __thiscall void HandleMessage(CTCHeroAttachableAppearanceModifiers *,CMessageBase *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t HandleMessage = 0x00705fe0; // __thiscall void HandleMessage(CTCHeroAttachableAppearanceModifiers *,CMessageBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t IsWearingAppearanceModifier = 0x00706000; // __thiscall bool IsWearingAppearanceModifier(CTCHeroAttachableAppearanceModifiers *,long,EHeroAttachableAppearanceModifierType) | prototype=complete; decompile=yes
     constexpr std::uintptr_t UpdateHiddenModifiers = 0x00706040; // __thiscall void UpdateHiddenModifiers(CTCHeroAttachableAppearanceModifiers *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetName__00706290 = 0x00706290; // __thiscall ulong GetName(CTCShop *) | prototype=complete; decompile=yes
@@ -16306,15 +16306,15 @@ namespace fable {
     constexpr std::uintptr_t FinishWithDynamicTextures__0070b830 = 0x0070b830; // __thiscall void FinishWithDynamicTextures(CEngineScreenEffectOutlineGlow *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t FinishWithDynamicTextures__0070b870 = 0x0070b870; // __thiscall void FinishWithDynamicTextures(CEngineScreenEffectDisplacementRenderer *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t FrameUpdate__0070b8a0 = 0x0070b8a0; // __thiscall void FrameUpdate(CNavigatorQueueManager *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__0070b8f0 = 0x0070b8f0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__0070b910 = 0x0070b910; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__0070b8f0 = 0x0070b8f0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t OnReadFinished__0070b910 = 0x0070b910; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Kill__0070b930 = 0x0070b930; // __thiscall void Kill(CWound *,CTCTextureDecal *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__0070b990 = 0x0070b990; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__0070b990 = 0x0070b990; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CNavigatorQueueManager_dtor = 0x0070b9b0; // unknown undefined CNavigatorQueueManager_dtor() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__0070b9e0 = 0x0070b9e0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__0070b9e0 = 0x0070b9e0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t SortTreeRecursively__0070ba00 = 0x0070ba00; // __thiscall void SortTreeRecursively(CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__0070ba50 = 0x0070ba50; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__0070ba70 = 0x0070ba70; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__0070ba50 = 0x0070ba50; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t OnReadFinished__0070ba70 = 0x0070ba70; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t dtor_CAnimateThing = 0x0070ba90; // __thiscall void ~CAnimateThing(CAnimateThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__0070bb60 = 0x0070bb60; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t scalar_deleting_destructor__0070bb80 = 0x0070bb80; // __thiscall void * `scalar_deleting_destructor'(CAInputProcess *,uint) | prototype=complete; decompile=yes
@@ -16486,7 +16486,7 @@ namespace fable {
     constexpr std::uintptr_t Copy_impl__00718530 = 0x00718530; // __fastcall CActionInputControl * _Copy_impl<CActionInputControl*,CActionInputControl*>(CActionInputControl *,CActionInputControl *,CActionInputControl *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__007185b0 = 0x007185b0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CActionTurnToFacePosition = 0x007185d0; // __thiscall undefined CActionTurnToFacePosition(CActionTurnToFacePosition *,C3DVector *,float) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00718610 = 0x00718610; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00718610 = 0x00718610; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00718630 = 0x00718630; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CCreatureAction_AimMissileWeapon = 0x00718650; // __thiscall undefined CCreatureAction_AimMissileWeapon(CCreatureAction_AimMissileWeapon *,CThingCreatureBase *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CCreatureAction_AimMissileWeapon_PerformAction = 0x007186d0; // __thiscall void CCreatureAction_AimMissileWeapon::PerformAction(CCreatureAction_AimMissileWeapon *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -16510,9 +16510,9 @@ namespace fable {
     constexpr std::uintptr_t Copy_impl_std_pair__00718cc0 = 0x00718cc0; // __fastcall pair<float,EConversationAttitude> * _Copy_impl<std::pair<float,EConversationAttitude>*,std::pair<float,enum_EConversationAttitude>*>(pair<float,enum_EConversationAttitude> *,pair<float,enum_EConversationAttitude> *,pair<float,enum_EConversationAttitude> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Copy_impl__00718d10 = 0x00718d10; // __fastcall CSkeletalMorph * _Copy_impl<CTCSkeletalMorph::CSkeletalMorph*,CTCSkeletalMorph::CSkeletalMorph*>(CSkeletalMorph *,CSkeletalMorph *,CSkeletalMorph *,_Nonscalar_ptr_iterator_tag) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_CCreatureAction_PerformExpressionExtended__00718d50 = 0x00718d50; // __thiscall void ~CCreatureAction_PerformExpressionExtended(CCreatureAction_PerformExpressionExtended *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00718d90 = 0x00718d90; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00718db0 = 0x00718db0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00718dd0 = 0x00718dd0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00718d90 = 0x00718d90; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t GetActionName__00718db0 = 0x00718db0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t GetActionName__00718dd0 = 0x00718dd0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__00718df0 = 0x00718df0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ListHead_InitCircular_0x10_00718e80 = 0x00718e80; // unknown undefined ListHead_InitCircular_0x10_00718e80() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ListHead_InitCircular_0x10_00718ea0 = 0x00718ea0; // unknown undefined ListHead_InitCircular_0x10_00718ea0() | prototype=incomplete; decompile=yes
@@ -16531,10 +16531,10 @@ namespace fable {
     constexpr std::uintptr_t CSubtitledMessage_Assign_Pairs = 0x00719470; // unknown undefined CSubtitledMessage::Assign_Pairs() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CSubtitledMessage_Assign_CActionInputControl = 0x00719540; // unknown undefined CSubtitledMessage::Assign_CActionInputControl() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ListHead_InitCircular_0x10_00719690 = 0x00719690; // unknown undefined ListHead_InitCircular_0x10_00719690() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__007196b0 = 0x007196b0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__007196b0 = 0x007196b0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Vector_ReallocateAndCopyMorphs = 0x007196d0; // unknown undefined Vector_ReallocateAndCopyMorphs() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetPBestThingInRoughArea__007197c0 = 0x007197c0; // __thiscall bool GetPBestThingInRoughArea<CThingFilter_IsPotentialCustomer,CThingCompare_Nearest,CThingCreatureBase>(CThingSearchTools *,C2DBoxI *,CThingFilter_IsPotentialCustomer *,CThingCompare_Nearest *,CThingCreatureBase * *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00719a50 = 0x00719a50; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00719a50 = 0x00719a50; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__00719a70 = 0x00719a70; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CCombatWheel_Assign = 0x00719b30; // unknown undefined CCombatWheel::Assign() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Dest_val_std_pair__00719c30 = 0x00719c30; // __fastcall void _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>(allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
@@ -16557,7 +16557,7 @@ namespace fable {
     constexpr std::uintptr_t CCombatWheel_CopyAssign__0071a160 = 0x0071a160; // unknown undefined CCombatWheel::CopyAssign() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Vector_InsertOrFill_Range = 0x0071a2f0; // unknown undefined Vector_InsertOrFill_Range() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t dtor_C3DMeshStripifier__0071a430 = 0x0071a430; // __thiscall void ~C3DMeshStripifier(C3DMeshStripifier *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__0071a4e0 = 0x0071a4e0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__0071a4e0 = 0x0071a4e0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__0071a500 = 0x0071a500; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__0071a530 = 0x0071a530; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__0071a550 = 0x0071a550; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
@@ -16568,11 +16568,11 @@ namespace fable {
     constexpr std::uintptr_t CTCMapwho = 0x0071a670; // __thiscall undefined CTCMapwho(CTCMapwho *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t IsToBePlacedInMapwho = 0x0071a6d0; // __thiscall bool IsToBePlacedInMapwho(CTCMapwho *,C3DVector *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t PlaceInMapwho = 0x0071a710; // __thiscall void PlaceInMapwho(CTCMapwho *,C3DVector *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnDie__0071a730 = 0x0071a730; // __thiscall void OnDie(CTCMapwho *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnDie__0071a730 = 0x0071a730; // __thiscall void OnDie(CTCMapwho *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t MoveInMapwho = 0x0071a750; // __thiscall void MoveInMapwho(CTCMapwho *,C3DVector *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_CTCMapwho = 0x0071a790; // __thiscall void ~CTCMapwho(CTCMapwho *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnDie__0071a7c0 = 0x0071a7c0; // __thiscall void OnDie(CTCMapwho *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__0071a7f0 = 0x0071a7f0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__0071a7f0 = 0x0071a7f0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__0071a810 = 0x0071a810; // __thiscall void * `vector_deleting_destructor'(CTCMapwho *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetAsDrawable__0071a8a0 = 0x0071a8a0; // __thiscall void SetAsDrawable(CTCParticleAttachmentTracker *,bool) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AddDependentThing__0071a8f0 = 0x0071a8f0; // __thiscall void AddDependentThing(CCreatureActionBase *,CThing *) | prototype=complete; decompile=yes
@@ -16587,7 +16587,7 @@ namespace fable {
     constexpr std::uintptr_t DrawPreparePrimitivesForRendering__0071ae90 = 0x0071ae90; // __thiscall void DrawPreparePrimitivesForRendering(CTCEmoteIcon *,CEnginePrimitivePrepareInfo *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCHero__0071afe0 = 0x0071afe0; // __thiscall undefined CTCHero(CTCHero *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t HandleMessage__0071b040 = 0x0071b040; // __thiscall void HandleMessage(CTCEmoteIcon *,CMessageBase *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__0071b0e0 = 0x0071b0e0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__0071b0e0 = 0x0071b0e0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__0071b100 = 0x0071b100; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_CCreatureAction_DragonFireBlastBase = 0x0071b120; // __thiscall void ~CCreatureAction_DragonFireBlastBase(CCreatureAction_DragonFireBlastBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AddDependentThing__0071b1b0 = 0x0071b1b0; // __thiscall void AddDependentThing(CCreatureActionBase *,CThing *) | prototype=complete; decompile=yes
@@ -16806,7 +16806,7 @@ namespace fable {
     constexpr std::uintptr_t For_each__00727500 = 0x00727500; // __fastcall CApplyAdditionalImpulseIfInCombatAndTooClose _For_each<CThingCreatureBase**,CApplyAdditionalImpulseIfInCombatAndTooClose>(CThingCreatureBase * *,CThingCreatureBase * *,CApplyAdditionalImpulseIfInCombatAndTooClose) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CComponentContainer__00727580 = 0x00727580; // __thiscall undefined CComponentContainer(CComponentContainer *,long) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnCreate__007275c0 = 0x007275c0; // __thiscall void OnCreate(CTCSimpleAppearanceMorph *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__007276b0 = 0x007276b0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__007276b0 = 0x007276b0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t scalar_deleting_destructor__007276d0 = 0x007276d0; // __thiscall void * `scalar_deleting_destructor'(CEngineSubPrimitiveText *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00727a10 = 0x00727a10; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_CTCRandomAppearanceMorph = 0x00727b40; // __thiscall void ~CTCRandomAppearanceMorph(CTCRandomAppearanceMorph *) | prototype=complete; decompile=yes
@@ -16865,7 +16865,7 @@ namespace fable {
     constexpr std::uintptr_t FrameUpdate__0072a570 = 0x0072a570; // __thiscall void FrameUpdate(CTCRotate *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCActionUseBuyOrSteal = 0x0072a630; // __thiscall undefined CTCActionUseBuyOrSteal(CTCActionUseBuyOrSteal *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t dtor_CTCActionUseBuyOrSteal__0072a680 = 0x0072a680; // __thiscall void ~CTCActionUseBuyOrSteal(CTCActionUseBuyOrSteal *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__0072a710 = 0x0072a710; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__0072a710 = 0x0072a710; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__0072a730 = 0x0072a730; // __thiscall void * `vector_deleting_destructor'(CTCActionUseBuyOrSteal *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t E2__0072a840 = 0x0072a840; // unknown undefined $E2() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CheckTermination = 0x0072a860; // __thiscall bool CheckTermination(CASuspendableProcess *) | prototype=complete; decompile=yes
@@ -16944,7 +16944,7 @@ namespace fable {
     constexpr std::uintptr_t OnActionUseMain = 0x0072e940; // __thiscall void OnActionUseMain(CTCActionUseBuyHouse *,CTCBuyableHouse *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ReceivedConfirmation__0072eb40 = 0x0072eb40; // __thiscall void ReceivedConfirmation(CTCActionUseBuyHouse *,CTCBuyableHouse *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GlobalUpdate__0072ee30 = 0x0072ee30; // __thiscall void GlobalUpdate(CTCActionUseBuyHouse *,bool) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__0072ef40 = 0x0072ef40; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__0072ef40 = 0x0072ef40; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetSubDef__0072ef60 = 0x0072ef60; // __thiscall bool GetSubDef<CAICreatureWillPowerIndicatorDef>(CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t scalar_deleting_destructor__0072f040 = 0x0072f040; // __thiscall void * `scalar_deleting_destructor'(CTCActionUseBuyHouse *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t EnableNavigator__0072f0e0 = 0x0072f0e0; // __thiscall void EnableNavigator(CTCPhysicsNavigator *,bool) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -16957,7 +16957,7 @@ namespace fable {
     constexpr std::uintptr_t FrameUpdate__0072fb70 = 0x0072fb70; // __thiscall void FrameUpdate(CTCDummyVillager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnInitialActivate__00730070 = 0x00730070; // __thiscall void OnInitialActivate(CTCDummyVillager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t C3DAnimationUtil__00730360 = 0x00730360; // __thiscall undefined C3DAnimationUtil(C3DAnimationUtil *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00730400 = 0x00730400; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00730400 = 0x00730400; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00730420 = 0x00730420; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Dest_val_CMacro__00730440 = 0x00730440; // __fastcall void _Dest_val<std::allocator<CMacro>,CMacro>(allocator<CMacro> *,CMacro *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IS_THING_ALIVE__007304c0 = 0x007304c0; // __fastcall bool IS_THING_ALIVE<CIntelligentPointer<CThingPhysical_const_>_>(CIntelligentPointer<CThingPhysical_const_> *) | prototype=complete; decompile=yes
@@ -16986,7 +16986,7 @@ namespace fable {
     constexpr std::uintptr_t OnInitialActivate__007319a0 = 0x007319a0; // __thiscall void OnInitialActivate(CTCJackPillar *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetActionName__007319d0 = 0x007319d0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00731a00 = 0x00731a00; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00731a30 = 0x00731a30; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00731a30 = 0x00731a30; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t scalar_deleting_destructor__00731a50 = 0x00731a50; // __thiscall void * `scalar_deleting_destructor'(CEngineSubPrimitiveText *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CTCSpotLight_OnAppearanceClear = 0x00731aa0; // __thiscall void CTCSpotLight::OnAppearanceClear(CTCSpotLight *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetAngle = 0x00731be0; // __thiscall void SetAngle(CTCSpotLight *,float) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -17388,7 +17388,7 @@ namespace fable {
     constexpr std::uintptr_t dtor_CModeBriarRoseConcentrate = 0x00743120; // __thiscall void ~CModeBriarRoseConcentrate(CModeBriarRoseConcentrate *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ListHead_InitCircular_0x10_00743200 = 0x00743200; // unknown undefined ListHead_InitCircular_0x10_00743200() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnReadFinished__00743220 = 0x00743220; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__00743250 = 0x00743250; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__00743250 = 0x00743250; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t std_vector_InsertMultipleAndGrow__00743270 = 0x00743270; // unknown undefined std::vector::InsertMultipleAndGrow() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Insertion_sort1_CKeyPairCompareLess_std_pair__00743430 = 0x00743430; // __fastcall void _Insertion_sort1<std::pair<long,long>*,CKeyPairCompareLess<long,long>,std::pair<long,long>_>(pair<long,long> *,pair<long,long> *,CKeyPairCompareLess<long,long>,pair<long,long> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t PriorityQueue_Heap_Insert = 0x00743470; // unknown undefined PriorityQueue_Heap_Insert() | prototype=incomplete; decompile=yes
@@ -17406,11 +17406,11 @@ namespace fable {
     constexpr std::uintptr_t CModeDragonStrafeBurninate = 0x00743990; // __thiscall undefined CModeDragonStrafeBurninate(CModeDragonStrafeBurninate *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t scalar_deleting_destructor__00743a40 = 0x00743a40; // __thiscall void * `scalar_deleting_destructor'(CEngineSubPrimitiveText *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ResetRings__00743a90 = 0x00743a90; // __thiscall void ResetRings(CCombatWheel *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__00743b10 = 0x00743b10; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__00743b10 = 0x00743b10; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t std_deque_PushBack = 0x00743b30; // unknown undefined std::deque_PushBack() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CModeIceTrollGroundSmashIcicleAssault = 0x00743be0; // __thiscall undefined CModeIceTrollGroundSmashIcicleAssault(CModeIceTrollGroundSmashIcicleAssault *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t NEntityEvents_CEventContainer_Destructor = 0x00743d40; // unknown undefined NEntityEvents_CEventContainer_Destructor() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00743dd0 = 0x00743dd0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00743dd0 = 0x00743dd0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__00743df0 = 0x00743df0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetActionName__00743e30 = 0x00743e30; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Vector_Insert_Pair = 0x00743e60; // unknown undefined Vector_Insert_Pair() | prototype=incomplete; decompile=yes
@@ -17419,13 +17419,13 @@ namespace fable {
     constexpr std::uintptr_t dtor_CNewFrontendGameComponent__00743fe0 = 0x00743fe0; // __thiscall void ~CNewFrontendGameComponent(CNewFrontendGameComponent *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCKrakenTentacle_CTCKrakenTentacle_HOVER = 0x00744040; // unknown undefined CTCKrakenTentacle::CTCKrakenTentacle_HOVER() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetActionName__007440e0 = 0x007440e0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00744110 = 0x00744110; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00744110 = 0x00744110; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t scalar_deleting_destructor__00744130 = 0x00744130; // __thiscall void * `scalar_deleting_destructor'(CEngineSubPrimitiveText *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__007441a0 = 0x007441a0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Vector_InsertionSort_Range = 0x007441d0; // unknown undefined Vector_InsertionSort_Range() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetActionName__00744280 = 0x00744280; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__007442b0 = 0x007442b0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__007442d0 = 0x007442d0; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__007442d0 = 0x007442d0; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnInitialActivate__007442f0 = 0x007442f0; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IsUpdatingThisFrame = 0x007443f0; // __thiscall bool IsUpdatingThisFrame(CTCPerceiveThing *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetCanItemBeQuickAssigned__00744430 = 0x00744430; // __thiscall bool GetCanItemBeQuickAssigned(CTCInventoryBase *) | prototype=complete; decompile=yes
@@ -17462,7 +17462,7 @@ namespace fable {
     constexpr std::uintptr_t OnHit__00744e80 = 0x00744e80; // __thiscall void OnHit(CTCPerceiveThing *,CThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Dest_val_std_pair__00744f70 = 0x00744f70; // __fastcall void _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>(allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__00744f80 = 0x00744f80; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=DIFFER
-    constexpr std::uintptr_t AddCombinationBlend__00744f90 = 0x00744f90; // __thiscall void AddCombinationBlend(C3DAnimationBlendState *,C3DAnimationStateAlpha *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t AddCombinationBlend__00744f90 = 0x00744f90; // __thiscall void AddCombinationBlend(C3DAnimationBlendState *,C3DAnimationStateAlpha *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t UpdateHearing = 0x00744fb0; // __thiscall void UpdateHearing(CTCPerceiveThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t UpdateLineOfSight = 0x00745120; // __thiscall void UpdateLineOfSight(CTCPerceiveThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t UpdatePerception = 0x00745730; // __thiscall void UpdatePerception(CTCPerceiveThing *) | prototype=complete; decompile=yes
@@ -17690,7 +17690,7 @@ namespace fable {
     constexpr std::uintptr_t vector_deleting_destructor__00750980 = 0x00750980; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCDiscovery = 0x007509a0; // __thiscall undefined CTCDiscovery(CTCDiscovery *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t SetDiscovered = 0x007509d0; // __thiscall void SetDiscovered(CTCDiscovery *,bool,CThing *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00750a40 = 0x00750a40; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00750a40 = 0x00750a40; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t scalar_deleting_destructor__00750a60 = 0x00750a60; // __thiscall void * `scalar_deleting_destructor'(CEngineSubPrimitiveText *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Dest_val_CIVCountedPointer__00750b40 = 0x00750b40; // __fastcall void _Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>(allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetCountdownTimer = 0x00750ba0; // __thiscall void SetCountdownTimer(CTCExplodingObject *,long) | prototype=complete; decompile=yes
@@ -17703,7 +17703,7 @@ namespace fable {
     constexpr std::uintptr_t GetSubDef__00751190 = 0x00751190; // __thiscall bool GetSubDef<CAICreatureWillPowerIndicatorDef>(CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetActionName__00751260 = 0x00751260; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__007512a0 = 0x007512a0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetTCDriver__007512c0 = 0x007512c0; // __thiscall bool GetTCDriver<CTCDExperienceOrb>(CThing *,CTCDExperienceOrb * *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetTCDriver__007512c0 = 0x007512c0; // __thiscall bool GetTCDriver<CTCDExperienceOrb>(CThing *,CTCDExperienceOrb * *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t GetPFirstThingInRoughArea = 0x007512e0; // __thiscall bool GetPFirstThingInRoughArea<CThingFilter_OverlappingCircle,CThingCreatureBase>(CThingSearchTools *,C2DBoxI *,CThingFilter_OverlappingCircle *,CThingCreatureBase * *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_CInputProcessManager__00751590 = 0x00751590; // __thiscall void ~CInputProcessManager(CInputProcessManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CGetBestTurningAnim = 0x00751610; // __thiscall undefined CGetBestTurningAnim(CGetBestTurningAnim *,C3DVector *,C3DVector *) | prototype=incomplete; decompile=yes
@@ -17857,7 +17857,7 @@ namespace fable {
     constexpr std::uintptr_t Sort_HeapsortPhase = 0x00759660; // unknown undefined Sort_HeapsortPhase() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Umove__00759770 = 0x00759770; // __thiscall EWeaponClass * _Umove<EWeaponClass*>(vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CSoundPairHeap_MakeHeap = 0x007597c0; // unknown undefined CSoundPairHeap_MakeHeap() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__00759820 = 0x00759820; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__00759820 = 0x00759820; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnInitialActivate__00759840 = 0x00759840; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetPossibleCollidedWithArea__00759870 = 0x00759870; // __thiscall C2DBoxI GetPossibleCollidedWithArea(CTCPhysicsRigidBody *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetRHSet__00759b40 = 0x00759b40; // __thiscall CRightHandedSet GetRHSet(CTCPhysicsRigidBody *,float) | prototype=complete; decompile=yes
@@ -17941,7 +17941,7 @@ namespace fable {
     constexpr std::uintptr_t DoublyLinkedList_InsertBack = 0x0075f660; // unknown undefined DoublyLinkedList_InsertBack() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnReadFinished__0075f6c0 = 0x0075f6c0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ListHead_InitCircular_0xc_0075f780 = 0x0075f780; // unknown undefined ListHead_InitCircular_0xc_0075f780() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__0075f7a0 = 0x0075f7a0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__0075f7a0 = 0x0075f7a0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t scalar_deleting_destructor__0075f7c0 = 0x0075f7c0; // __thiscall void * `scalar_deleting_destructor'(CLandscapeBackgroundLoadTask *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ObjHolder_FreeAndDelete_0075f830 = 0x0075f830; // unknown undefined ObjHolder_FreeAndDelete_0075f830() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Vector_InsertRange_CopyFill = 0x0075f860; // unknown undefined Vector_InsertRange_CopyFill() | prototype=incomplete; decompile=yes
@@ -18177,7 +18177,7 @@ namespace fable {
     constexpr std::uintptr_t resize__0076bf80 = 0x0076bf80; // __thiscall void resize(vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t std_vector_Relocate = 0x0076c000; // unknown undefined std::vector_Relocate() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Sort_IntrosortPhase_Sorted_4Uint = 0x0076c080; // unknown undefined Sort_IntrosortPhase_Sorted_4Uint() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__0076c180 = 0x0076c180; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__0076c180 = 0x0076c180; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t std_vector_Relocate_Sorted = 0x0076c1a0; // unknown undefined std::vector_Relocate_Sorted() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnInitialActivate__0076c360 = 0x0076c360; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t TransferToGui__0076c380 = 0x0076c380; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
@@ -18192,7 +18192,7 @@ namespace fable {
     constexpr std::uintptr_t IsAlliedWithFaction = 0x0076c7d0; // __thiscall bool IsAlliedWithFaction(CTCEnemy *,CFaction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IsAlliedWithFaction__0076c7f0 = 0x0076c7f0; // __thiscall bool IsAlliedWithFaction(CTCEnemy *,CFaction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetFaction__0076c810 = 0x0076c810; // __thiscall void SetFaction(CTCEnemy *,CCharString *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnInitialActivate__0076c830 = 0x0076c830; // __thiscall void OnInitialActivate(CTCElectrocutedEffect *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnInitialActivate__0076c830 = 0x0076c830; // __thiscall void OnInitialActivate(CTCElectrocutedEffect *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t AddDependentThing__0076c850 = 0x0076c850; // __thiscall void AddDependentThing(CCreatureActionBase *,CThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCEnemy = 0x0076c8a0; // __thiscall undefined CTCEnemy(CTCEnemy *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnSerialise__0076c9a0 = 0x0076c9a0; // __thiscall void OnSerialise(CTCEnemy *,CPersistContext *,bool) | prototype=complete; decompile=yes
@@ -18214,7 +18214,7 @@ namespace fable {
     constexpr std::uintptr_t GetActionName__0076d880 = 0x0076d880; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__0076d900 = 0x0076d900; // __thiscall void * `vector_deleting_destructor'(CThingSwitch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CEnginePrimitiveGroupManager__0076d930 = 0x0076d930; // __thiscall undefined CEnginePrimitiveGroupManager(CEnginePrimitiveGroupManager *,CArray<CEngineScene*> *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__0076d960 = 0x0076d960; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__0076d960 = 0x0076d960; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__0076d980 = 0x0076d980; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t pair__0076dd40 = 0x0076dd40; // __thiscall undefined pair<CCharString,CTCBase::CRegisteredTCInfo>(pair<CCharString,CTCBase::CRegisteredTCInfo> *,CCharString *,CRegisteredTCInfo *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CWeaponTrailEntry = 0x0076de20; // __thiscall undefined CWeaponTrailEntry(CWeaponTrailEntry *,C3DVector *,C3DVector *,float) | prototype=incomplete; decompile=yes
@@ -18265,7 +18265,7 @@ namespace fable {
     constexpr std::uintptr_t Vector_PushBack_String = 0x007706a0; // unknown undefined Vector_PushBack_String() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t LinkedList_RemoveAll_WithShift = 0x00770790; // unknown undefined LinkedList_RemoveAll_WithShift() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Vector_Insert_LinkedList_MoveAndRealloc = 0x00770810; // unknown undefined Vector_Insert_LinkedList_MoveAndRealloc() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00770930 = 0x00770930; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00770930 = 0x00770930; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Vector_Destroy_uint6Array = 0x00770950; // unknown undefined Vector_Destroy_uint6Array() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Vector_Insert_LinkedList_Conditional = 0x00770990; // unknown undefined Vector_Insert_LinkedList_Conditional() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00770aa0 = 0x00770aa0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
@@ -18284,10 +18284,10 @@ namespace fable {
     constexpr std::uintptr_t Dest_val_CIVCountedPointer__00771080 = 0x00771080; // __fastcall void _Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>(allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t dtor_C3DAnimationBlendState__007710a0 = 0x007710a0; // __thiscall void ~C3DAnimationBlendState(C3DAnimationBlendState *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CEnginePrimitiveGroupManager__007710d0 = 0x007710d0; // __thiscall undefined CEnginePrimitiveGroupManager(CEnginePrimitiveGroupManager *,CArray<CEngineScene*> *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00771100 = 0x00771100; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00771100 = 0x00771100; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00771120 = 0x00771120; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCAtmosPlayer__00771140 = 0x00771140; // __thiscall undefined CTCAtmosPlayer(CTCAtmosPlayer *,CThing *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__007711c0 = 0x007711c0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__007711c0 = 0x007711c0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__007711e0 = 0x007711e0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCDriverBase = 0x00771200; // __thiscall undefined CTCDriverBase(CTCDriverBase *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00771250 = 0x00771250; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
@@ -18420,7 +18420,7 @@ namespace fable {
     constexpr std::uintptr_t IsDivineWrathStrike__00778ab0 = 0x00778ab0; // __thiscall bool IsDivineWrathStrike(CHitParameters *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCBed__00778ae0 = 0x00778ae0; // __thiscall undefined CTCBed(CTCBed *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t EditCyclePreviousKeyCamera__00778b30 = 0x00778b30; // __thiscall void EditCyclePreviousKeyCamera(CTCCameraPointScriptedSpline *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__00778be0 = 0x00778be0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00778be0 = 0x00778be0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Vector_Assign__00778c00 = 0x00778c00; // unknown undefined Vector_Assign() | prototype=incomplete; decompile=unmeasured
     constexpr std::uintptr_t vector_deleting_destructor__00778d00 = 0x00778d00; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnDie__00778d20 = 0x00778d20; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes
@@ -18458,7 +18458,7 @@ namespace fable {
     constexpr std::uintptr_t vector_deleting_destructor__0077ace0 = 0x0077ace0; // __thiscall void * `vector_deleting_destructor'(CTCDExperienceOrb *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetPBestThingInRoughArea_CThingCompare_Nearest_CThingAICreature__0077adf0 = 0x0077adf0; // __thiscall bool GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>(CThingSearchTools *,C2DBoxI *,CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_> *,CThingCompare_Nearest *,CThingAICreature * *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AddExclusiveObserver__0077b070 = 0x0077b070; // __thiscall void AddExclusiveObserver(CObservable *,CObserver *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnKill__0077b0b0 = 0x0077b0b0; // __thiscall void OnKill(CTCActivationTrigger *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnKill__0077b0b0 = 0x0077b0b0; // __thiscall void OnKill(CTCActivationTrigger *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnSerialise__0077b0d0 = 0x0077b0d0; // __thiscall void OnSerialise(CTCActivationTrigger *,CPersistContext *,bool) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCGraphicAppearanceAnimatedMesh__0077b250 = 0x0077b250; // __thiscall undefined CTCGraphicAppearanceAnimatedMesh(CTCGraphicAppearanceAnimatedMesh *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t dtor_CTCGraphicAppearanceAnimatedMesh = 0x0077b290; // __thiscall void ~CTCGraphicAppearanceAnimatedMesh(CTCGraphicAppearanceAnimatedMesh *) | prototype=complete; decompile=yes
@@ -18471,7 +18471,7 @@ namespace fable {
     constexpr std::uintptr_t CTCGraphicAppearanceAnimatedMesh__0077b9b0 = 0x0077b9b0; // __thiscall undefined CTCGraphicAppearanceAnimatedMesh(CTCGraphicAppearanceAnimatedMesh *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t dtor_CTCGraphicAppearanceAnimatedMesh__0077b9f0 = 0x0077b9f0; // __thiscall void ~CTCGraphicAppearanceAnimatedMesh(CTCGraphicAppearanceAnimatedMesh *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Vector_PushBackOrInsertWithProperties__0077bc80 = 0x0077bc80; // unknown undefined Vector_PushBackOrInsertWithProperties() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__0077bd00 = 0x0077bd00; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__0077bd00 = 0x0077bd00; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__0077bd20 = 0x0077bd20; // __thiscall void * `vector_deleting_destructor'(CTCGraphicAppearanceStaticMesh *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CEnginePrimitiveStaticMesh = 0x0077bd70; // __thiscall undefined CEnginePrimitiveStaticMesh(CEnginePrimitiveStaticMesh *,__uint64,ulong,C3DVector *,CRightHandedSet *,float,bool,uchar,CRGBColour,float,EEngineInterpolationSet,CEnginePrimitiveThemeChannelDesc *,bool) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CTCGraphicAppearanceAnimatedMesh__0077be40 = 0x0077be40; // __thiscall undefined CTCGraphicAppearanceAnimatedMesh(CTCGraphicAppearanceAnimatedMesh *,CThing *) | prototype=incomplete; decompile=yes
@@ -18501,7 +18501,7 @@ namespace fable {
     constexpr std::uintptr_t UpdateAnimation__0077d190 = 0x0077d190; // __thiscall void UpdateAnimation(CTCCreatureHive *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Open__0077d230 = 0x0077d230; // __thiscall void Open(CTCCreatureHive *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CHeroCentreDef_Transfer = 0x0077d3a0; // __thiscall void CHeroCentreDef::Transfer(CHeroCentreDef *,CPersistContext &) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnHeroCloseDoor = 0x0077d3e0; // __thiscall void OnHeroCloseDoor(CTCHeroCentre *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnHeroCloseDoor = 0x0077d3e0; // __thiscall void OnHeroCloseDoor(CTCHeroCentre *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t RemoveQuestCard = 0x0077d400; // __thiscall void RemoveQuestCard(CTCHeroCentre *,CThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCHeroCentre__0077d470 = 0x0077d470; // __thiscall undefined CTCHeroCentre(CTCHeroCentre *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OpenTrainingScreen = 0x0077d4b0; // __thiscall void OpenTrainingScreen(CTCHeroCentre *) | prototype=complete; decompile=yes
@@ -18540,7 +18540,7 @@ namespace fable {
     constexpr std::uintptr_t Find__0077f2c0 = 0x0077f2c0; // __fastcall CCharString * _Find<CCharString*,CCharString>(CCharString *,CCharString *,CCharString *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Sort_QuicksortPhase_CCharString = 0x0077f370; // unknown undefined Sort_QuicksortPhase_CCharString() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Vector_InsertionSort_16byte = 0x0077f440; // unknown undefined Vector_InsertionSort_16byte() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t TransferToGui__0077f4c0 = 0x0077f4c0; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferToGui__0077f4c0 = 0x0077f4c0; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnInitialActivate__0077f4e0 = 0x0077f4e0; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetDoorTypeSymbolMap = 0x0077f510; // __fastcall CSymbolMap * GetDoorTypeSymbolMap() | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCHero__0077f570 = 0x0077f570; // __thiscall undefined CTCHero(CTCHero *,CThing *) | prototype=incomplete; decompile=yes
@@ -18704,7 +18704,7 @@ namespace fable {
     constexpr std::uintptr_t CCombatWheel_Assign__007871d0 = 0x007871d0; // unknown undefined CCombatWheel_Assign() | prototype=incomplete; decompile=unmeasured
     constexpr std::uintptr_t ResetRings__00787340 = 0x00787340; // __thiscall void ResetRings(CCombatWheel *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t StdVector_ReallocateWithCopy = 0x00787380; // unknown undefined StdVector_ReallocateWithCopy() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__007874a0 = 0x007874a0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__007874a0 = 0x007874a0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__007874c0 = 0x007874c0; // __thiscall void * `vector_deleting_destructor'(CThingTrackNode *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Vector_Insert_CCharString = 0x00787500; // unknown undefined Vector_Insert_CCharString() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnCreate__00787550 = 0x00787550; // __thiscall void OnCreate(CTCSwitchableNavigation *) | prototype=complete; decompile=yes
@@ -18975,7 +18975,7 @@ namespace fable {
     constexpr std::uintptr_t vector_deleting_destructor__00798cc0 = 0x00798cc0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AddChildPrimitive__00798d10 = 0x00798d10; // __thiscall ulong AddChildPrimitive(CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t AddChildPrimitive__00798d20 = 0x00798d20; // __thiscall ulong AddChildPrimitive(CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
-    constexpr std::uintptr_t GetActionName__00798d30 = 0x00798d30; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__00798d30 = 0x00798d30; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetItemDescription__00798d50 = 0x00798d50; // __thiscall void GetItemDescription(CTCInventoryBase *,CWideString *,long,bool) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__00798d80 = 0x00798d80; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AddNewCustomer = 0x00798d90; // __thiscall void AddNewCustomer(CTCShopKeeper *,CIntelligentPointer<CThingCreatureBase>) | prototype=complete; decompile=yes
@@ -19141,7 +19141,7 @@ namespace fable {
     constexpr std::uintptr_t Sort_heap__007a3b60 = 0x007a3b60; // __fastcall void _Sort_heap<long*>(long *,long *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CWound_Constructor = 0x007a3bc0; // unknown undefined CWound_Constructor() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ListHead_InitCircular_0x10_007a3c60 = 0x007a3c60; // unknown undefined ListHead_InitCircular_0x10_007a3c60() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__007a3c80 = 0x007a3c80; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__007a3c80 = 0x007a3c80; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetPBestThingInRoughArea_CThingCompare_Nearest_CThingCreatureBase__007a3ca0 = 0x007a3ca0; // __thiscall bool GetPBestThingInRoughArea<CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std::unary_negate<CThingFilter_HasBeenDiscovered>_>,CThingCompare_Nearest,CThingCreatureBase>(CThingSearchTools *,C2DBoxI *,CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std::unary_negate<CThingFilter_HasBeenDiscovered>_> *,CThingCompare_Nearest *,CThingCreatureBase * *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t make_heap__007a3f30 = 0x007a3f30; // __fastcall void make_heap<CThing**,CThingCompare_BestForTargeting2>(CThing * *,CThing * *,CThingCompare_BestForTargeting2) | prototype=complete; decompile=yes
     constexpr std::uintptr_t PartialSort_Top_CThingAICreature = 0x007a3fa0; // unknown undefined PartialSort_Top_CThingAICreature() | prototype=incomplete; decompile=yes
@@ -19186,7 +19186,7 @@ namespace fable {
     constexpr std::uintptr_t Dest_val_CIVCountedPointer__007a6c10 = 0x007a6c10; // __fastcall void _Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>(allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t Dest_val_CIVCountedPointer__007a6c80 = 0x007a6c80; // __fastcall void _Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>(allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t GetSubDef__007a6ca0 = 0x007a6ca0; // __thiscall bool GetSubDef<CAICreatureWillPowerIndicatorDef>(CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__007a6db0 = 0x007a6db0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__007a6db0 = 0x007a6db0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Dest_val_std_pair__007a6dd0 = 0x007a6dd0; // __fastcall void _Dest_val<std::allocator<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_>,std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_>(allocator<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_> *,pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__007a6df0 = 0x007a6df0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetupFacingDirection = 0x007a6e20; // __thiscall void SetupFacingDirection(CTCAssassinRush *,C3DVector *) | prototype=complete; decompile=yes
@@ -19432,7 +19432,7 @@ namespace fable {
     constexpr std::uintptr_t RemoveNextCrate = 0x007b6790; // __thiscall CThing * RemoveNextCrate(CTCCrateStack *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t FillStack = 0x007b6810; // __thiscall void FillStack(CTCCrateStack *,long,C3DVector *,C3DVector *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t FillStacks = 0x007b6b10; // __fastcall void FillStacks(CTCVillage *,long) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__007b6c70 = 0x007b6c70; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__007b6c70 = 0x007b6c70; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__007b6c90 = 0x007b6c90; // __thiscall void * `vector_deleting_destructor'(CThingSwitch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Uninit_copy_unsigned_int_std_allocator__007b6d20 = 0x007b6d20; // __fastcall uint * _Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>(_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Fill_n__007b6d70 = 0x007b6d70; // __fastcall void _Fill_n<unsigned_long*,unsigned_int,unsigned_long>(ulong *,uint,ulong *) | prototype=complete; decompile=yes
@@ -19499,10 +19499,10 @@ namespace fable {
     constexpr std::uintptr_t CBaseIntelligentPointer_InsertAt__007bab60 = 0x007bab60; // unknown undefined CBaseIntelligentPointer_InsertAt() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CEnginePrimitiveGroupManager__007babc0 = 0x007babc0; // __thiscall undefined CEnginePrimitiveGroupManager(CEnginePrimitiveGroupManager *,CArray<CEngineScene*> *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetFreeSeat = 0x007babe0; // __thiscall CThingObject * GetFreeSeat(CTCTavern *,CThingAICreature *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__007bace0 = 0x007bace0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__007bace0 = 0x007bace0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__007bad00 = 0x007bad00; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCEditor__007bad20 = 0x007bad20; // __thiscall undefined CTCEditor(CTCEditor *,CThing *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__007bad60 = 0x007bad60; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__007bad60 = 0x007bad60; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__007bad80 = 0x007bad80; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetDeedType = 0x007badd0; // __thiscall EOpinionDeedType GetDeedType(CTCTrespasser *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCHeroCentre__007bae00 = 0x007bae00; // __thiscall undefined CTCHeroCentre(CTCHeroCentre *,CThing *) | prototype=incomplete; decompile=yes
@@ -19511,7 +19511,7 @@ namespace fable {
     constexpr std::uintptr_t ForceTrespass = 0x007bb070; // __thiscall void ForceTrespass(CTCTrespasser *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SeeIfAnyOccupantsKnowAboutDeed = 0x007bb150; // __thiscall bool SeeIfAnyOccupantsKnowAboutDeed(CTCTrespasser *,long,EOpinionDeedType) | prototype=complete; decompile=yes
     constexpr std::uintptr_t FrameUpdate__007bb1f0 = 0x007bb1f0; // __thiscall void FrameUpdate(CTCTrespasser *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__007bb610 = 0x007bb610; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__007bb610 = 0x007bb610; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__007bb630 = 0x007bb630; // __thiscall void * `vector_deleting_destructor'(CThingSwitch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetAllThings_std_allocator_CThingFilter_HasBuildingAsHomeOrWork = 0x007bb660; // __thiscall void GetAllThings<CThingAICreature,std::list<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>,CThingFilter_HasBuildingAsHomeOrWork>(CThingSearchTools *,CThingFilter_HasBuildingAsHomeOrWork *,list<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCDrunkenness = 0x007bb800; // __thiscall undefined CTCDrunkenness(CTCDrunkenness *,CThing *) | prototype=incomplete; decompile=yes
@@ -19692,7 +19692,7 @@ namespace fable {
     constexpr std::uintptr_t vector_find_Value = 0x007c8130; // unknown undefined vector_find_Value() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CTCCreatureFlyOnSpline__007c81b0 = 0x007c81b0; // __thiscall undefined CTCCreatureFlyOnSpline(CTCCreatureFlyOnSpline *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnCollision__007c81f0 = 0x007c81f0; // __thiscall void OnCollision(CTCHitOnCollision *,C3DVector *,C3DVector *,CThing *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetActionName__007c8520 = 0x007c8520; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__007c8520 = 0x007c8520; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__007c8540 = 0x007c8540; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnDie__007c8560 = 0x007c8560; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetReleaseAnimName__007c85f0 = 0x007c85f0; // __thiscall CCharString GetReleaseAnimName(CTCFireballSpell *) | prototype=complete; decompile=yes
@@ -19739,7 +19739,7 @@ namespace fable {
     constexpr std::uintptr_t std_list_InitEmpty__007cbb10 = 0x007cbb10; // unknown undefined std_list_InitEmpty() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t SortTreeRecursively__007cbb80 = 0x007cbb80; // __thiscall void SortTreeRecursively(CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Inventory_AddItemNode = 0x007cbbc0; // unknown undefined Inventory_AddItemNode() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__007cbc20 = 0x007cbc20; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__007cbc20 = 0x007cbc20; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t std_list_InitEmpty__007cbc40 = 0x007cbc40; // unknown undefined std_list_InitEmpty() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnReadFinished__007cbc80 = 0x007cbc80; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetActionName__007cbd50 = 0x007cbd50; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
@@ -20283,7 +20283,7 @@ namespace fable {
     constexpr std::uintptr_t AddTargetingFlag = 0x007ea240; // __thiscall void AddTargetingFlag(CTCTargeted *,ETargetingType) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AddExclusiveObserver__007ea270 = 0x007ea270; // __thiscall void AddExclusiveObserver(CObservable *,CObserver *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IsActiveThreadTerminating__007ea280 = 0x007ea280; // __thiscall bool IsActiveThreadTerminating(CScriptBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
-    constexpr std::uintptr_t IsZTargetable = 0x007ea290; // __thiscall bool IsZTargetable(CTCTargeted *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t IsZTargetable = 0x007ea290; // __thiscall bool IsZTargetable(CTCTargeted *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t ReturnToDefaultTargetingFlags = 0x007ea2b0; // __thiscall void ReturnToDefaultTargetingFlags(CTCTargeted *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t GetNumTargetPoints = 0x007ea2d0; // __thiscall long GetNumTargetPoints(CTCTargeted *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Creature_GetTargetFirePoint = 0x007ea2f0; // unknown undefined Creature::GetTargetFirePoint() | prototype=incomplete; decompile=yes
@@ -20484,7 +20484,7 @@ namespace fable {
     constexpr std::uintptr_t GetPBestLeafThing_CThingCompare_BestCreatureToAttack_CThingAICreature = 0x007f7040; // __thiscall bool GetPBestLeafThing<CFilter_Bind2<CThingFilter_In2DRange,_anon_CA0D66CB::CThingFilter_IsValidAttackTargetForCreature>,CThingCompare_BestCreatureToAttack,CThingAICreature>(CThingSearchTools *,CFilter_Bind2<CThingFilter_In2DRange,_anon_CA0D66CB::CThingFilter_IsValidAttackTargetForCreature> *,CThingCompare_BestCreatureToAttack *,CThingAICreature * *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetPBestThingInRoughArea_CThingCompare_Nearest_CThingCreatureBase__007f70d0 = 0x007f70d0; // __thiscall bool GetPBestThingInRoughArea<CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std::unary_negate<CThingFilter_HasBeenDiscovered>_>,CThingCompare_Nearest,CThingCreatureBase>(CThingSearchTools *,C2DBoxI *,CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std::unary_negate<CThingFilter_HasBeenDiscovered>_> *,CThingCompare_Nearest *,CThingCreatureBase * *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetPBestThingInRoughArea_CThingCompare_Nearest_CThingAICreature__007f7340 = 0x007f7340; // __thiscall bool GetPBestThingInRoughArea<CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_>,CThingCompare_Nearest,CThingAICreature>(CThingSearchTools *,C2DBoxI *,CFilter_Bind3<CThingFilter_IsAvailableForCreatureInteraction,CThingFilter_IsAICreatureAwareOf,std::unary_negate<CThingFilter_IsIncapacitated>_> *,CThingCompare_Nearest *,CThingAICreature * *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Activate__007f76e0 = 0x007f76e0; // __thiscall void Activate(CTCActivationReceptorBase *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Activate__007f76e0 = 0x007f76e0; // __thiscall void Activate(CTCActivationReceptorBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CXMVPlaybackInfo__007f7700 = 0x007f7700; // __thiscall undefined CXMVPlaybackInfo(CXMVPlaybackInfo *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CTCActivationReceptorBase = 0x007f7710; // __thiscall undefined CTCActivationReceptorBase(CTCActivationReceptorBase *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_Erase_RemoveElement = 0x007f7750; // unknown undefined vector_Erase_RemoveElement() | prototype=incomplete; decompile=yes
@@ -20663,7 +20663,7 @@ namespace fable {
     constexpr std::uintptr_t BinaryTree_Insert__00802190 = 0x00802190; // unknown undefined BinaryTree_Insert() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t E2__00802370 = 0x00802370; // unknown undefined $E2() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t DrawGetSeaLevel__00802390 = 0x00802390; // __thiscall float DrawGetSeaLevel(CMap *,float) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t SetAsPickUpNewLockTarget = 0x008023a0; // __thiscall void SetAsPickUpNewLockTarget(CTCTargetingPlayer *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t SetAsPickUpNewLockTarget = 0x008023a0; // __thiscall void SetAsPickUpNewLockTarget(CTCTargetingPlayer *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t SetAsTargetNextThingInDirection = 0x008023c0; // __thiscall void SetAsTargetNextThingInDirection(CTCTargetingPlayer *,ETargetNextThingMethod) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetTargetedPos__00802420 = 0x00802420; // __thiscall bool GetTargetedPos(CTCTargetingPlayer *,C3DVector *,float) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetAsTargetNextThing = 0x00802590; // __thiscall void SetAsTargetNextThing(CTCTargetingPlayer *) | prototype=complete; decompile=yes
@@ -20870,7 +20870,7 @@ namespace fable {
     constexpr std::uintptr_t HasMode__00811340 = 0x00811340; // __thiscall bool HasMode(CPlayer *,EPlayerMode) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetPActiveStrikeEvent = 0x00811380; // __thiscall CStrikeEvent * GetPActiveStrikeEvent(CCombatActionBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AddEvent = 0x008113c0; // __thiscall void AddEvent(CTCEntityEvents *,CEventBase *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t FrameUpdate__00811450 = 0x00811450; // __thiscall void FrameUpdate(CTCEntityEvents *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t FrameUpdate__00811450 = 0x00811450; // __thiscall void FrameUpdate(CTCEntityEvents *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t OnAdd__00811470 = 0x00811470; // __thiscall void OnAdd(CEventDied *,CTCEntityEvents *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnAdd__008115a0 = 0x008115a0; // __thiscall void OnAdd(CEventDied *,CTCEntityEvents *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_CEventShownItem = 0x008116d0; // __thiscall void ~CEventShownItem(CEventShownItem *) | prototype=complete; decompile=yes
@@ -21316,8 +21316,8 @@ namespace fable {
     constexpr std::uintptr_t TransferToGui__00827830 = 0x00827830; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CMap_DrawGetHeightMapSizeX = 0x00827850; // __thiscall long CMap::DrawGetHeightMapSizeX(CMap *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CMap_DrawGetHeightMapSizeY = 0x00827860; // __thiscall long CMap::DrawGetHeightMapSizeY(CMap *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
-    constexpr std::uintptr_t CMap_DrawGetSeaLevel = 0x00827870; // __thiscall float CMap::DrawGetSeaLevel(CMap *,float) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CMap_DrawGetHeightMapExtents = 0x00827890; // __thiscall C2DExtentsI CMap::DrawGetHeightMapExtents(CMap *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CMap_DrawGetSeaLevel = 0x00827870; // __thiscall float CMap::DrawGetSeaLevel(CMap *,float) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
+    constexpr std::uintptr_t CMap_DrawGetHeightMapExtents = 0x00827890; // __thiscall C2DExtentsI CMap::DrawGetHeightMapExtents(CMap *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t vector_deleting_destructor__008278b0 = 0x008278b0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ShareData__00827a60 = 0x00827a60; // __thiscall void ShareData(CCountedPointer<CScriptThing> *,CScriptThing *,CCPPointerInfo *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t LowerBound__00827b00 = 0x00827b00; // __thiscall _Vector_const_iterator<std::_Vector_val<std::pair<long,CIntelligentPointer<CThing>_>,std::allocator<std::pair<long,CIntelligentPointer<CThing>_>_>_>_> LowerBound(CVectorMap<long,CIntelligentPointer<CThing>,CKeyPairCompareLess<long,CIntelligentPointer<CThing>_>_> *,long *) | prototype=complete; decompile=yes
@@ -21992,8 +21992,8 @@ namespace fable {
     constexpr std::uintptr_t GetNewCameraPosFromOcclusionParams = 0x0084ccc0; // __fastcall C3DVector GetNewCameraPosFromOcclusionParams(C3DVector *,C3DVector *,float,C3DVector *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetCameraRoll = 0x0084cd10; // __fastcall void SetCameraRoll(CCamera *,float) | prototype=complete; decompile=yes
     constexpr std::uintptr_t UpdateFixLookDirection = 0x0084cdf0; // __thiscall void UpdateFixLookDirection(CBase *,C3DVector *,C3DVector *,C3DVector *,float) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnEngineSurveyLMBHeld__0084cf40 = 0x0084cf40; // __thiscall void OnEngineSurveyLMBHeld(CEditControlCentre *,C3DVector *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnEngineSurveyLMBHeld__0084cf60 = 0x0084cf60; // __thiscall void OnEngineSurveyLMBHeld(CEditControlCentre *,C3DVector *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnEngineSurveyLMBHeld__0084cf40 = 0x0084cf40; // __thiscall void OnEngineSurveyLMBHeld(CEditControlCentre *,C3DVector *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
+    constexpr std::uintptr_t OnEngineSurveyLMBHeld__0084cf60 = 0x0084cf60; // __thiscall void OnEngineSurveyLMBHeld(CEditControlCentre *,C3DVector *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t TransferPersistantBaseData = 0x0084cf80; // __thiscall void TransferPersistantBaseData(CBase *,CBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CountReferences__0084d050 = 0x0084d050; // __thiscall ulong CountReferences(CPixelShader *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t DoSizeof__0084d070 = 0x0084d070; // __thiscall ulong DoSizeof(CVertexBufferWin32 *) | prototype=complete; decompile=yes
@@ -23129,7 +23129,7 @@ namespace fable {
     constexpr std::uintptr_t CXMVPlaybackInfo__0088b6e0 = 0x0088b6e0; // __thiscall undefined CXMVPlaybackInfo(CXMVPlaybackInfo *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnKill__0088b6f0 = 0x0088b6f0; // __thiscall void OnKill(CAIBrain *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetCurrentStateGroupScriptPriority = 0x0088b760; // __thiscall EScriptAIPriority GetCurrentStateGroupScriptPriority(CAIBrain *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
-    constexpr std::uintptr_t GetCurrentStateGroupType__0088b780 = 0x0088b780; // __thiscall EAIStateGroupType GetCurrentStateGroupType(CAIBrain *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetCurrentStateGroupType__0088b780 = 0x0088b780; // __thiscall EAIStateGroupType GetCurrentStateGroupType(CAIBrain *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t SuspendableProcess_CAIBrain_EAEXXZ = 0x0088b7a0; // __thiscall void ?SuspendableProcess@CAIBrain@@EAEXXZ(CAIBrain *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t DrawGetWorldMap = 0x0088b7d0; // __thiscall CIDrawWorldMap * DrawGetWorldMap(CEditWorld *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t GetCurrentScriptPriority = 0x0088b7e0; // __thiscall EScriptAIPriority GetCurrentScriptPriority(CScriptThing *) | prototype=complete; decompile=yes
@@ -23385,7 +23385,7 @@ namespace fable {
     constexpr std::uintptr_t EntityUnsetAsOpinionSource_CGameScriptInterface_UBEXABVCScriptThing_N_Z = 0x00890a80; // __thiscall void ?EntityUnsetAsOpinionSource@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z(CGameScriptInterface *,CScriptThing *,bool) | prototype=complete; decompile=yes
     constexpr std::uintptr_t PauseAllNonScriptedEntities_CGameScriptInterface_UAEX_N_Z = 0x00890ab0; // __thiscall void ?PauseAllNonScriptedEntities@CGameScriptInterface@@UAEX_N@Z(CGameScriptInterface *,bool) | prototype=complete; decompile=yes
     constexpr std::uintptr_t PauseAllEntities_CGameScriptInterface_UAEX_N_Z = 0x00890b00; // __thiscall void ?PauseAllEntities@CGameScriptInterface@@UAEX_N@Z(CGameScriptInterface *,bool) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes = 0x00890b50; // __thiscall void CGameScriptInterface::SetToKeepHeroAbilitiesDuringCutscenes(CGameScriptInterface *,bool) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes = 0x00890b50; // __thiscall void CGameScriptInterface::SetToKeepHeroAbilitiesDuringCutscenes(CGameScriptInterface *,bool) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CGameScriptInterface_PreloadNewScene = 0x00890b70; // __thiscall void CGameScriptInterface::PreloadNewScene(CGameScriptInterface *,float) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CGameScriptInterface_SetEnvironmentalEffectsAlwaysUpdate = 0x00890b90; // __thiscall void CGameScriptInterface::SetEnvironmentalEffectsAlwaysUpdate(CGameScriptInterface *,bool) | prototype=complete; decompile=yes; agent=PASS; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t EntitySheatheWeapons_CGameScriptInterface_UBEXABVCScriptThing_N_Z = 0x00890ba0; // __thiscall void ?EntitySheatheWeapons@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z(CGameScriptInterface *,CScriptThing *,bool) | prototype=complete; decompile=yes
@@ -26423,11 +26423,11 @@ namespace fable {
     constexpr std::uintptr_t GetActionName__008fd433 = 0x008fd433; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd446 = 0x008fd446; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t C3DAnimationUtil__008fd459 = 0x008fd459; // __thiscall undefined C3DAnimationUtil(C3DAnimationUtil *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__008fd46b = 0x008fd46b; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__008fd46b = 0x008fd46b; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd483 = 0x008fd483; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd496 = 0x008fd496; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd4a9 = 0x008fd4a9; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t GetActionName__008fd4bc = 0x008fd4bc; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__008fd4bc = 0x008fd4bc; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd4d4 = 0x008fd4d4; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd4e7 = 0x008fd4e7; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd4fa = 0x008fd4fa; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
@@ -26436,7 +26436,7 @@ namespace fable {
     constexpr std::uintptr_t C3DAnimationUtil__008fd532 = 0x008fd532; // __thiscall undefined C3DAnimationUtil(C3DAnimationUtil *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Dest_val_std_pair__008fd544 = 0x008fd544; // __fastcall void _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>(allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd557 = 0x008fd557; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t Dest_val_std_pair__008fd56a = 0x008fd56a; // __fastcall void _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>(allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Dest_val_std_pair__008fd56a = 0x008fd56a; // __fastcall void _Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>(allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd582 = 0x008fd582; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd595 = 0x008fd595; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd5a8 = 0x008fd5a8; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
@@ -26469,7 +26469,7 @@ namespace fable {
     constexpr std::uintptr_t C3DAnimationUtil__008fd7a2 = 0x008fd7a2; // __thiscall undefined C3DAnimationUtil(C3DAnimationUtil *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetActionName__008fd7b4 = 0x008fd7b4; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t C3DAnimationUtil__008fd7c7 = 0x008fd7c7; // __thiscall undefined C3DAnimationUtil(C3DAnimationUtil *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetActionName__008fd7d9 = 0x008fd7d9; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__008fd7d9 = 0x008fd7d9; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd7f1 = 0x008fd7f1; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t C3DAnimationUtil__008fd804 = 0x008fd804; // __thiscall undefined C3DAnimationUtil(C3DAnimationUtil *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetActionName__008fd816 = 0x008fd816; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
@@ -26487,9 +26487,9 @@ namespace fable {
     constexpr std::uintptr_t GetActionName__008fd8ea = 0x008fd8ea; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd8fd = 0x008fd8fd; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd910 = 0x008fd910; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t GetActionName__008fd923 = 0x008fd923; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__008fd923 = 0x008fd923; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd93b = 0x008fd93b; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t GetActionName__008fd94e = 0x008fd94e; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetActionName__008fd94e = 0x008fd94e; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd966 = 0x008fd966; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetActionName__008fd979 = 0x008fd979; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t C3DAnimationUtil__008fd98c = 0x008fd98c; // __thiscall undefined C3DAnimationUtil(C3DAnimationUtil *) | prototype=incomplete; decompile=yes
@@ -27735,7 +27735,7 @@ namespace fable {
     constexpr std::uintptr_t remove__0091ad70 = 0x0091ad70; // __thiscall void remove(list<CTCBase*,std::allocator<CTCBase*>_> *,CTCBase * *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetPBestThingInRoughArea_CThingCompare_Nearest_CThingCreatureBase__0091adb0 = 0x0091adb0; // __thiscall bool GetPBestThingInRoughArea<CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature>,CThingCompare_Nearest,CThingCreatureBase>(CThingSearchTools *,C2DBoxI *,CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature> *,CThingCompare_Nearest *,CThingCreatureBase * *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CAIStateGroup_HandyMan_FindClosestThing = 0x0091b010; // unknown undefined CAIStateGroup_HandyMan_FindClosestThing() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t IsRunnable_CAIStateGroup_HandyMan_UAE_NXZ = 0x0091b170; // __thiscall bool ?IsRunnable@CAIStateGroup_HandyMan@@UAE_NXZ(CAIStateGroup_HandyMan *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t IsRunnable_CAIStateGroup_HandyMan_UAE_NXZ = 0x0091b170; // __thiscall bool ?IsRunnable@CAIStateGroup_HandyMan@@UAE_NXZ(CAIStateGroup_HandyMan *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CAIStateGroup_HandyMan_Update = 0x0091b190; // __thiscall void CAIStateGroup_HandyMan::Update(CAIStateGroup_HandyMan *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnActivate_CAIStateGroup_SeekPerceivedThing_UAEXXZ = 0x0091b2f0; // __thiscall void ?OnActivate@CAIStateGroup_SeekPerceivedThing@@UAEXXZ(CAIStateGroup_SeekPerceivedThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CAIStateGroup_SeekPerceivedThing_Cleanup = 0x0091b330; // __thiscall void CAIStateGroup_SeekPerceivedThing::Cleanup(CAIStateGroup_SeekPerceivedThing *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -28051,7 +28051,7 @@ namespace fable {
     constexpr std::uintptr_t Sort_IntroSort_Buildings = 0x00932770; // unknown undefined Sort_IntroSort_Buildings() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t std_sort_QuickSort__009327f0 = 0x009327f0; // unknown undefined std_sort_QuickSort() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Sort_QuickSort_Main_Particles = 0x009328d0; // unknown undefined Sort_QuickSort_Main_Particles() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t CAIStateGroup_MinionGuardReactToCriminal_InitStateGroup = 0x00932960; // __thiscall void CAIStateGroup_MinionGuardReactToCriminal::InitStateGroup(CAIStateGroup_MinionGuardReactToCriminal *,CWorld const &,CThingAICreature &) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CAIStateGroup_MinionGuardReactToCriminal_InitStateGroup = 0x00932960; // __thiscall void CAIStateGroup_MinionGuardReactToCriminal::InitStateGroup(CAIStateGroup_MinionGuardReactToCriminal *,CWorld const &,CThingAICreature &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CAIStateGroup_MinionGuardReactToCriminal_IsStillValid = 0x00932980; // __thiscall bool CAIStateGroup_MinionGuardReactToCriminal::IsStillValid(CAIStateGroup_MinionGuardReactToCriminal *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t IsRunnable_CAIStateGroup_MinionGuardReactToCriminal_UAE_NXZ = 0x00932990; // __thiscall bool ?IsRunnable@CAIStateGroup_MinionGuardReactToCriminal@@UAE_NXZ(CAIStateGroup_MinionGuardReactToCriminal *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Update_CAIStateGroup_MinionGuardReactToCriminal_UAEXXZ = 0x00932b50; // __thiscall void ?Update@CAIStateGroup_MinionGuardReactToCriminal@@UAEXXZ(CAIStateGroup_MinionGuardReactToCriminal *) | prototype=complete; decompile=yes
@@ -29584,7 +29584,7 @@ namespace fable {
     constexpr std::uintptr_t CParticleMorphs_HashFilename = 0x009914e0; // unknown undefined CParticleMorphs_HashFilename() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetAnimStartFrame__009915c0 = 0x009915c0; // __thiscall long GetAnimStartFrame(CCreatureActionBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t SetMiniMapEnabled__009915e0 = 0x009915e0; // __thiscall void SetMiniMapEnabled(CWorld *,bool) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t SetMiniMapEnabled__00991600 = 0x00991600; // __thiscall void SetMiniMapEnabled(CWorld *,bool) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t SetMiniMapEnabled__00991600 = 0x00991600; // __thiscall void SetMiniMapEnabled(CWorld *,bool) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t EditFrameUpdate__00991620 = 0x00991620; // __thiscall void EditFrameUpdate(CTCDParticleEmitter *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Catch_0040dc8c__00991670 = 0x00991670; // unknown undefined Catch@0040dc8c() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t FindFirstSymbolWithVal = 0x00991690; // __thiscall CSymbolInfo * FindFirstSymbolWithVal(CSymbolMap *,long) | prototype=complete; decompile=yes
@@ -29677,7 +29677,7 @@ namespace fable {
     constexpr std::uintptr_t SetPosition_CFileDataOutputStream_UAEXK_Z = 0x00994450; // __thiscall bool ?SetPosition@CFileDataOutputStream@@UAEXK@Z(CScriptThing *,CScriptThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetPosition_CFileDataOutputStream_UBEKXZ = 0x00994460; // __thiscall bool ?GetPosition@CFileDataOutputStream@@UBEKXZ(CScriptThing *,CScriptThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CFileDataOutputStream_Close = 0x00994470; // __thiscall void CFileDataOutputStream::Close(CFileDataOutputStream *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
-    constexpr std::uintptr_t Write_CFileDataOutputStream_UAEXPBXJ_Z = 0x00994480; // __thiscall void ?Write@CFileDataOutputStream@@UAEXPBXJ@Z(CFileDataOutputStream *,void *,long) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Write_CFileDataOutputStream_UAEXPBXJ_Z = 0x00994480; // __thiscall void ?Write@CFileDataOutputStream@@UAEXPBXJ@Z(CFileDataOutputStream *,void *,long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CBufferedFileDataOutputStream = 0x009944a0; // __thiscall undefined CBufferedFileDataOutputStream(CBufferedFileDataOutputStream *,CAFile *,long) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CBufferedFileDataOutputStream_SetPosition = 0x00994500; // __thiscall void CBufferedFileDataOutputStream::SetPosition(CBufferedFileDataOutputStream *,ulong) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CBufferedFileDataOutputStream_GetPosition = 0x00994510; // __thiscall ulong CBufferedFileDataOutputStream::GetPosition(CBufferedFileDataOutputStream *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -29825,7 +29825,7 @@ namespace fable {
     constexpr std::uintptr_t Close_CDiskFileWin32_UAEXXZ = 0x0099a920; // __thiscall void ?Close@CDiskFileWin32@@UAEXXZ(CDiskFileWin32 *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Read_CDiskFileWin32_UAEXPAXJPAVCASuspendableProcess_Z = 0x0099a960; // __thiscall void ?Read@CDiskFileWin32@@UAEXPAXJPAVCASuspendableProcess@@@Z(CDiskFileWin32 *,void *,long,CASuspendableProcess *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Write_CDiskFileWin32_UAEXPBXJPAVCASuspendableProcess_Z = 0x0099aa90; // __thiscall void ?Write@CDiskFileWin32@@UAEXPBXJPAVCASuspendableProcess@@@Z(CDiskFileWin32 *,void *,long,CASuspendableProcess *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CDiskFileWin32_GetPosition = 0x0099abd0; // __thiscall long CDiskFileWin32::GetPosition(CDiskFileWin32 *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CDiskFileWin32_GetPosition = 0x0099abd0; // __thiscall long CDiskFileWin32::GetPosition(CDiskFileWin32 *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t SetPosition_CDiskFileWin32_UAEXJ_Z = 0x0099abf0; // __thiscall void ?SetPosition@CDiskFileWin32@@UAEXJ@Z(CDiskFileWin32 *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CDiskFileWin32_MovePosition = 0x0099ac90; // __thiscall void CDiskFileWin32::MovePosition(CDiskFileWin32 *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CDiskFileWin32__0099ad80 = 0x0099ad80; // __thiscall undefined CDiskFileWin32(CDiskFileWin32 *,CWideString *,FileAccessType,ulong) | prototype=incomplete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
@@ -29842,7 +29842,7 @@ namespace fable {
     constexpr std::uintptr_t CWideString_op_ne = 0x0099b150; // __thiscall bool CWideString::operator!=(CWideString const *,wchar_t const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetLength__0099b220 = 0x0099b220; // __thiscall long GetLength(CCharString *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t GetLength__0099b240 = 0x0099b240; // __thiscall long GetLength(CCharString *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Sizeof = 0x0099b2a0; // __thiscall ulong Sizeof(CWideString *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Sizeof = 0x0099b2a0; // __thiscall ulong Sizeof(CWideString *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CWideString_ConvertToCharString = 0x0099b2c0; // unknown undefined CWideString::ConvertToCharString() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t AllocStringData = 0x0099b3c0; // __thiscall CCharStringData * AllocStringData(CCharString *,char *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CWideString_CWideString = 0x0099b440; // __thiscall CWideString * CWideString::CWideString(CWideString *,CCharString const &) | prototype=complete; decompile=yes
@@ -29902,7 +29902,7 @@ namespace fable {
     constexpr std::uintptr_t CCharString_ToWideString = 0x0099e480; // __thiscall CWideString CCharString::ToWideString(CCharString const *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CCharString__0099e4b0 = 0x0099e4b0; // __thiscall undefined CCharString(CCharString *) | prototype=incomplete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t op_char_const__0099e4c0 = 0x0099e4c0; // __thiscall char * operator_char_const*(CCharString *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t Sizeof__0099e500 = 0x0099e500; // __thiscall ulong Sizeof(CCharString *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Sizeof__0099e500 = 0x0099e500; // __thiscall ulong Sizeof(CCharString *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t op_ne__0099e520 = 0x0099e520; // __thiscall bool operator!=(CCharString *,char) | prototype=complete; decompile=yes
     constexpr std::uintptr_t FindCharPos__0099e5a0 = 0x0099e5a0; // __thiscall long FindCharPos(CCharString *,char) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SaveToFile = 0x0099e5f0; // __thiscall void SaveToFile(CCharString *,CAFile *) | prototype=complete; decompile=yes
@@ -29924,7 +29924,7 @@ namespace fable {
     constexpr std::uintptr_t CCharString_ToUpper = 0x0099ee20; // unknown undefined CCharString::ToUpper() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t SetAsSubString = 0x0099ef40; // __thiscall void SetAsSubString(CCharString *,char *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetUseFastExtend = 0x0099ef70; // __thiscall void SetUseFastExtend(CCharString *,bool) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t AddCombinationBlend__0099ef90 = 0x0099ef90; // __thiscall void AddCombinationBlend(C3DAnimationBlendState *,C3DAnimationStateAlpha *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t AddCombinationBlend__0099ef90 = 0x0099ef90; // __thiscall void AddCombinationBlend(C3DAnimationBlendState *,C3DAnimationStateAlpha *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t op_assign__0099efb0 = 0x0099efb0; // __thiscall CCharString * operator=(CCharString *,CCharString *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t op_assign__0099efe0 = 0x0099efe0; // __thiscall CCharString * operator=(CCharString *,char *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t op_assign__0099f040 = 0x0099f040; // __thiscall CCharString * operator=(CCharString *,char) | prototype=complete; decompile=yes
@@ -30057,7 +30057,7 @@ namespace fable {
     constexpr std::uintptr_t Reset__009a7260 = 0x009a7260; // __thiscall void Reset(CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Reset__009a72d0 = 0x009a72d0; // __thiscall void Reset(CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Reset__009a7340 = 0x009a7340; // __thiscall void Reset(CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnDie__009a73b0 = 0x009a73b0; // __thiscall void OnDie(CTCMapwho *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnDie__009a73b0 = 0x009a73b0; // __thiscall void OnDie(CTCMapwho *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Reset__009a73d0 = 0x009a73d0; // __thiscall void Reset(CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CSystemManager__009a7440 = 0x009a7440; // __thiscall undefined CSystemManager(CSystemManager *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Reset__009a7510 = 0x009a7510; // __thiscall void Reset(CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *) | prototype=complete; decompile=yes
@@ -30193,7 +30193,7 @@ namespace fable {
     constexpr std::uintptr_t ParseEnumForSymbols = 0x009acee0; // __thiscall void ParseEnumForSymbols(CDefinitionManager *,CStringParser *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CFactionDatabase_FindFactionBySymbolName = 0x009ad2e0; // unknown undefined CFactionDatabase::FindFactionBySymbolName() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t HasDummyObject__009ad350 = 0x009ad350; // __thiscall bool HasDummyObject(C3DMeshStats *,ulong) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t ActualToUniqueIndex = 0x009ad390; // __thiscall long ActualToUniqueIndex(COptimisedPrimitive *,ulong) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t ActualToUniqueIndex = 0x009ad390; // __thiscall long ActualToUniqueIndex(COptimisedPrimitive *,ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetIDFromSymbol__009ad3b0 = 0x009ad3b0; // __thiscall long GetIDFromSymbol(LTextSystem *,char *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetDefGlobalIndexFromName = 0x009ad410; // __thiscall long GetDefGlobalIndexFromName(CDefinitionManager *,CCharString *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CParentDefClassBase_GetPSubDefInfo = 0x009ad4a0; // __thiscall CDefClassBase::CSubDefInfo const * CParentDefClassBase::GetPSubDefInfo(CParentDefClassBase *,CCharString const &) | prototype=complete; decompile=yes
@@ -30944,7 +30944,7 @@ namespace fable {
     constexpr std::uintptr_t LTextTreeWalkThrough_Destructor__009d4e90 = 0x009d4e90; // unknown undefined LTextTreeWalkThrough_Destructor() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Unlock = 0x009d4f10; // __thiscall void Unlock(CDefStringTable *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AddString = 0x009d4f90; // __thiscall long AddString(CDefStringTable *,CCharString *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t SetMiniMapRegionExitTextOffsetX__009d5060 = 0x009d5060; // __thiscall void SetMiniMapRegionExitTextOffsetX(CRegion *,CCharString *,float) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t SetMiniMapRegionExitTextOffsetX__009d5060 = 0x009d5060; // __thiscall void SetMiniMapRegionExitTextOffsetX(CRegion *,CCharString *,float) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t SetDefaultString = 0x009d5080; // __thiscall void SetDefaultString(CDefString *,CCharString *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CMovableResource_CanRelocateData = 0x009d50f0; // __thiscall bool CMovableResource::CanRelocateData(CMovableResource *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CMovableResource_Verify = 0x009d5100; // __thiscall ulong CMovableResource::Verify(CMovableResource *) | prototype=complete; decompile=yes
@@ -31495,7 +31495,7 @@ namespace fable {
     constexpr std::uintptr_t GetHeaderOverhead__009f2550 = 0x009f2550; // __thiscall ulong GetHeaderOverhead(CMemoryAllocator *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetHeaderOverhead__009f2610 = 0x009f2610; // __thiscall ulong GetHeaderOverhead(CMemoryAllocator *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ConsolidateFreeAreas = 0x009f2660; // __thiscall void ConsolidateFreeAreas(CMemoryAllocator *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t ClearPerformanceStats__009f26b0 = 0x009f26b0; // __thiscall void ClearPerformanceStats(CMemoryAllocator *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t ClearPerformanceStats__009f26b0 = 0x009f26b0; // __thiscall void ClearPerformanceStats(CMemoryAllocator *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t ClearPerformanceStats__009f26d0 = 0x009f26d0; // __thiscall void ClearPerformanceStats(CMemoryAllocator *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Create__009f2870 = 0x009f2870; // __fastcall void Create() | prototype=complete; decompile=yes
     constexpr std::uintptr_t InitDebugInfo = 0x009f28d0; // __thiscall void InitDebugInfo(CMemoryAllocator *,void *,bool,long) | prototype=complete; decompile=yes
@@ -31704,7 +31704,7 @@ namespace fable {
     constexpr std::uintptr_t Unlock__009f9de0 = 0x009f9de0; // __thiscall void Unlock(CTexture *,ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t GetNoLevels = 0x009f9df0; // __thiscall long GetNoLevels(CTexture *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetNoLevels__009f9e00 = 0x009f9e00; // __thiscall long GetNoLevels(CTexture *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GenerateMipmaps = 0x009f9e60; // __thiscall void GenerateMipmaps(CTexture *,ulong,ulong) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GenerateMipmaps = 0x009f9e60; // __thiscall void GenerateMipmaps(CTexture *,ulong,ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetLevelByteLength = 0x009f9e80; // __thiscall long GetLevelByteLength(CTexture *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CalcByteLength = 0x009f9ee0; // __thiscall void CalcByteLength(CTexture *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=DIFFER
     constexpr std::uintptr_t Uninitialise__009f9f70 = 0x009f9f70; // __thiscall void Uninitialise(CTexture *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -31784,7 +31784,7 @@ namespace fable {
     constexpr std::uintptr_t UpdateAvailableMemory = 0x009fd3a0; // __thiscall void UpdateAvailableMemory(CGraphicDataBank *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetBlankTexture__009fd3f0 = 0x009fd3f0; // __thiscall CTexture * GetBlankTexture(CGraphicInfoFrame *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Initialise__009fd4e0 = 0x009fd4e0; // __thiscall void Initialise(CGraphicDataBank *,CGraphicDataBankInit *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t ChangeCameraAngle__009fd640 = 0x009fd640; // __thiscall void ChangeCameraAngle(CEngine *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t ChangeCameraAngle__009fd640 = 0x009fd640; // __thiscall void ChangeCameraAngle(CEngine *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t FrameEnd__009fd660 = 0x009fd660; // __thiscall void FrameEnd(CGraphicDataBank *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t C3DAnimationSequenceData = 0x009fd6c0; // __thiscall undefined C3DAnimationSequenceData(C3DAnimationSequenceData *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CGraphicInfo = 0x009fd700; // __thiscall undefined CGraphicInfo(CGraphicInfo *,ulong,CGraphicDataBank *,CGraphicHeader *) | prototype=incomplete; decompile=yes
@@ -31792,7 +31792,7 @@ namespace fable {
     constexpr std::uintptr_t AddActionOnLeftClicked__009fd870 = 0x009fd870; // __thiscall void AddActionOnLeftClicked(CFrontEndScreen *,CCountedPointer<NUISystem::CAction> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Sizeof__009fd8d0 = 0x009fd8d0; // __thiscall ulong Sizeof(CGraphicDataBank *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t NotifyEntryUpdated_CGraphicDataBank_MAEXKKABV_CArray_D_Z = 0x009fd910; // __thiscall void ?NotifyEntryUpdated@CGraphicDataBank@@MAEXKKABV?$CArray@D@@@Z(CGraphicDataBank *,ulong,ulong,CArray<char> *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CGraphicDataBank_NotifyEntryRemoved = 0x009fd970; // __thiscall void CGraphicDataBank::NotifyEntryRemoved(CGraphicDataBank *,ulong) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CGraphicDataBank_NotifyEntryRemoved = 0x009fd970; // __thiscall void CGraphicDataBank::NotifyEntryRemoved(CGraphicDataBank *,ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t PrepareDataForInclusion_CGraphicDataBank_MAEXKABV_CArray_VCCharString_KV_CCountedPointer_VCBankStateBlock_AAVCDataOutputStream_2_Z = 0x009fd990; // __thiscall void ?PrepareDataForInclusion@CGraphicDataBank@@MAEXKABV?$CArray@VCCharString@@@@KV?$CCountedPointer@VCBankStateBlock@@@@AAVCDataOutputStream@@2@Z(CWorldMap *,long,CCountedPointer<CAFile>) | prototype=complete; decompile=yes
     constexpr std::uintptr_t LoadVolumeGraphic = 0x009fd9b0; // __thiscall bool LoadVolumeGraphic(CGraphicDataBank *,CManagedTexture *,CBankFileAsyncData *,CGraphicHeader *,bool,ulong,bool) | prototype=complete; decompile=yes
     constexpr std::uintptr_t C3DAnimationBlendState__009fdb80 = 0x009fdb80; // __thiscall undefined C3DAnimationBlendState(C3DAnimationBlendState *) | prototype=incomplete; decompile=yes
@@ -32038,7 +32038,7 @@ namespace fable {
     constexpr std::uintptr_t SetViewportFloat = 0x00a0b560; // __thiscall void SetViewportFloat(CTCInventoryBase *,C2DBoxF const &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t scalar_deleting_destructor__00a0b590 = 0x00a0b590; // __thiscall void * `scalar_deleting_destructor'(CRenderManagerCore *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t PathConversion_InitializeTemp = 0x00a0b630; // unknown undefined PathConversion_InitializeTemp() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t ClearAllChildPrimitives__00a0b6c0 = 0x00a0b6c0; // __thiscall void ClearAllChildPrimitives(CEnginePrimitiveRenderer *,CEnginePrimitiveHandle *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t ClearAllChildPrimitives__00a0b6c0 = 0x00a0b6c0; // __thiscall void ClearAllChildPrimitives(CEnginePrimitiveRenderer *,CEnginePrimitiveHandle *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t ClearAllChildPrimitives__00a0b6e0 = 0x00a0b6e0; // __thiscall void ClearAllChildPrimitives(CEnginePrimitiveRenderer *,CEnginePrimitiveHandle *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t UpdateLightGlobals__00a0b710 = 0x00a0b710; // __thiscall void UpdateLightGlobals(CShaderRenderManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t QuadTree_QueryBounds = 0x00a0b790; // unknown undefined QuadTree_QueryBounds() | prototype=incomplete; decompile=yes
@@ -32317,7 +32317,7 @@ namespace fable {
     constexpr std::uintptr_t CClass_Save = 0x00a19ab0; // __thiscall void CClass::Save(CClass *,CCharString &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CNavigatorBase_CreateLineList = 0x00a19ac0; // __thiscall void CNavigatorBase::CreateLineList(CNavigatorBase *,std::vector<C3DVector,std::allocator<C3DVector> > &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CNavigatorBase_Interrupt = 0x00a19ad0; // __thiscall void CNavigatorBase::Interrupt(CNavigatorBase *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CNavigatorBase_CalculateNavigableWidthOfLine = 0x00a19ae0; // __thiscall void CNavigatorBase::CalculateNavigableWidthOfLine(CNavigatorBase *,C3DVector const &,C3DVector const &,float &,float &) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CNavigatorBase_CalculateNavigableWidthOfLine = 0x00a19ae0; // __thiscall void CNavigatorBase::CalculateNavigableWidthOfLine(CNavigatorBase *,C3DVector const &,C3DVector const &,float &,float &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CNavigatorFlyer_GetCurrentDestination = 0x00a19b00; // __thiscall C3DVector const & CNavigatorFlyer::GetCurrentDestination(CNavigatorFlyer *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CNavigatorFlyer_UpdateLastPosition = 0x00a19b10; // __thiscall void CNavigatorFlyer::UpdateLastPosition(CNavigatorFlyer *,C3DVector const &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00a19b20 = 0x00a19b20; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
@@ -32708,7 +32708,7 @@ namespace fable {
     constexpr std::uintptr_t C3DDummyObject__00a2e4b0 = 0x00a2e4b0; // __thiscall undefined C3DDummyObject(C3DDummyObject *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t LoadBinary__00a2e5b0 = 0x00a2e5b0; // __thiscall void LoadBinary(C3DGeneratorObject *,CMemoryDataInputStream *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__00a2e700 = 0x00a2e700; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__00a2e710 = 0x00a2e710; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__00a2e710 = 0x00a2e710; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__00a2e730 = 0x00a2e730; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AllocateBuffers = 0x00a2e760; // __thiscall bool AllocateBuffers(C3DMeshStats *,ulong,ulong,ulong) | prototype=complete; decompile=yes
     constexpr std::uintptr_t RelocateData_C3DMeshStats_UAEXJPAX0J_Z = 0x00a2e820; // __thiscall void ?RelocateData@C3DMeshStats@@UAEXJPAX0J@Z(C3DMeshStats *,long,void *,void *,long) | prototype=complete; decompile=yes
@@ -32855,7 +32855,7 @@ namespace fable {
     constexpr std::uintptr_t GetPositionMatrixFromRHSet = 0x00a358f0; // __fastcall CMatrix3x4 GetPositionMatrixFromRHSet(CRightHandedSet *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t BeginInputLoading__00a35af0 = 0x00a35af0; // __thiscall void BeginInputLoading(CMainGameComponent *,CWideString *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t BeginInputLoading__00a35b30 = 0x00a35b30; // __thiscall void BeginInputLoading(CMainGameComponent *,CWideString *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t ConstructString__00a35b50 = 0x00a35b50; // __fastcall bool ConstructString(CWideString *,long) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t ConstructString__00a35b50 = 0x00a35b50; // __fastcall bool ConstructString(CWideString *,long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetRotationMatrixForTransformFromTo = 0x00a35b70; // __fastcall CMatrix3x4 GetRotationMatrixForTransformFromTo(CRightHandedSet *,CRightHandedSet *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetBoundingCentre = 0x00a35f80; // __thiscall C3DVector GetBoundingCentre(C3DMeshObject *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetMesh = 0x00a36010; // __thiscall void SetMesh(C3DMeshObject *,C3DMeshInfo *) | prototype=complete; decompile=yes
@@ -33267,7 +33267,7 @@ namespace fable {
     constexpr std::uintptr_t CShaderResource = 0x00a46f30; // __thiscall undefined CShaderResource(CShaderResource *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00a46fa0 = 0x00a46fa0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00a47020 = 0x00a47020; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnDie__00a47040 = 0x00a47040; // __thiscall void OnDie(CTCMapwho *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnDie__00a47040 = 0x00a47040; // __thiscall void OnDie(CTCMapwho *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Reset__00a47060 = 0x00a47060; // __thiscall void Reset(CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00a470e0 = 0x00a470e0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CountReferences__00a47100 = 0x00a47100; // __thiscall ulong CountReferences(CPixelShader *) | prototype=complete; decompile=yes
@@ -34184,7 +34184,7 @@ namespace fable {
     constexpr std::uintptr_t GFProcessBreath = 0x00a762a0; // __fastcall void GFProcessBreath(CASuspendableProcess *,double *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CXMVPlaybackInfo__00a762e0 = 0x00a762e0; // __thiscall undefined CXMVPlaybackInfo(CXMVPlaybackInfo *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t SetUpMapStructure = 0x00a762f0; // __thiscall void SetUpMapStructure(CNavQuadTree *,C2DVector *,float,float,long) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetCombatMinDistance__00a76320 = 0x00a76320; // __thiscall float GetCombatMinDistance(CAIStateGroup_EnemyCreatureBase *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetCombatMinDistance__00a76320 = 0x00a76320; // __thiscall float GetCombatMinDistance(CAIStateGroup_EnemyCreatureBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t SetBlockedNode = 0x00a76340; // __fastcall void SetBlockedNode(float,float,long,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CANavQuadTreeNode = 0x00a76370; // __thiscall undefined CANavQuadTreeNode(CANavQuadTreeNode *,C2DVector *,uchar,uchar) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetAreaCovering = 0x00a763b0; // __thiscall C2DBoxF GetAreaCovering(CANavQuadTreeNode *) | prototype=complete; decompile=yes
@@ -35007,7 +35007,7 @@ namespace fable {
     constexpr std::uintptr_t CChunkedFileRawDataChunk_IsUnknownType = 0x00aa7740; // __thiscall int CChunkedFileRawDataChunk::IsUnknownType(CChunkedFileRawDataChunk *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t Buffer_Reallocate_And_Copy = 0x00aa7760; // unknown undefined Buffer_Reallocate_And_Copy() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ReadFromFile_CChunkedFileRawDataChunk_UAEXAAVCDataInputStream_KAAVCChunkedFileLoader_Z = 0x00aa77a0; // __thiscall void ?ReadFromFile@CChunkedFileRawDataChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z(CChunkedFileRawDataChunk *,CDataInputStream *,ulong,CChunkedFileLoader *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CChunkedFileRawDataChunk_WriteToFile = 0x00aa7830; // __thiscall void CChunkedFileRawDataChunk::WriteToFile(CChunkedFileRawDataChunk *,CDataOutputStream &,CChunkedFileSaver &) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CChunkedFileRawDataChunk_WriteToFile = 0x00aa7830; // __thiscall void CChunkedFileRawDataChunk::WriteToFile(CChunkedFileRawDataChunk *,CDataOutputStream &,CChunkedFileSaver &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CChunkedFileRawDataChunk_CreateNewInstance = 0x00aa7850; // __thiscall CChunkedFileChunk * CChunkedFileRawDataChunk::CreateNewInstance(CChunkedFileRawDataChunk *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t WriteToFile_CChunkedFileSuperChunk_UBEXAAVCDataOutputStream_AAVCChunkedFileSaver_Z = 0x00aa78c0; // __thiscall void ?WriteToFile@CChunkedFileSuperChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z(CChunkedFileSuperChunk *,CDataOutputStream *,CChunkedFileSaver *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CountSubChunksOfType = 0x00aa7950; // __thiscall ulong CountSubChunksOfType(CChunkedFileSuperChunk *,char *) | prototype=complete; decompile=yes
@@ -35339,7 +35339,7 @@ namespace fable {
     constexpr std::uintptr_t UpdateEvents = 0x00ab6e40; // __thiscall bool UpdateEvents(CJoystickDX *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CJoystickDX = 0x00ab7850; // __thiscall undefined CJoystickDX(CJoystickDX *,CInputManagerDX *,bool) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Update_CJoystickDX_UAEXXZ = 0x00ab78d0; // __fastcall void ?Update@CJoystickDX@@UAEXXZ(allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t CJoystickDX_SetAxes = 0x00ab78e0; // __thiscall void CJoystickDX::SetAxes(CJoystickDX *,C2DVector const &) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CJoystickDX_SetAxes = 0x00ab78e0; // __thiscall void CJoystickDX::SetAxes(CJoystickDX *,C2DVector const &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CJoystickDX_GetJoystickDeviceNumber = 0x00ab7900; // __thiscall long CJoystickDX::GetJoystickDeviceNumber(CJoystickDX *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CJoystickDX_GetRumbleWithID = 0x00ab7910; // __thiscall CJoystick::CActiveRumble * CJoystickDX::GetRumbleWithID(CJoystickDX *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CJoystickDX_PeekRumbleWithID = 0x00ab7920; // __thiscall CJoystick::CActiveRumble const * CJoystickDX::PeekRumbleWithID(CJoystickDX *,long) | prototype=complete; decompile=yes
@@ -35377,7 +35377,7 @@ namespace fable {
     constexpr std::uintptr_t ReadFromFile_C3DMeshFileBoneChunk_UAEXAAVCDataInputStream_KAAVCChunkedFileLoader_Z = 0x00aba170; // __thiscall void ?ReadFromFile@C3DMeshFileBoneChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z(C3DMeshFileBoneChunk *,CDataInputStream *,ulong,CChunkedFileLoader *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetConstantCount__00aba350 = 0x00aba350; // __thiscall ulong GetConstantCount(CShaderPreParser *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetConstantCount__00aba360 = 0x00aba360; // __thiscall ulong GetConstantCount(CShaderPreParser *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t DrawGetNoMaps__00aba370 = 0x00aba370; // __thiscall long DrawGetNoMaps(CWorldMap *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t DrawGetNoMaps__00aba370 = 0x00aba370; // __thiscall long DrawGetNoMaps(CWorldMap *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t C3DMeshFileSubMeshChunk_GetChunkInfo = 0x00aba390; // __thiscall CCharString const C3DMeshFileSubMeshChunk::GetChunkInfo(C3DMeshFileSubMeshChunk *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t FindFirstBone__00aba410 = 0x00aba410; // __thiscall CCountedPointer<C3DMeshFileBoneChunk_const_> FindFirstBone(C3DMeshFileSubMeshChunk *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t FindFirstBone__00aba4a0 = 0x00aba4a0; // __thiscall CCountedPointer<C3DMeshFileBoneChunk_const_> FindFirstBone(C3DMeshFileSubMeshChunk *) | prototype=complete; decompile=yes
@@ -35594,7 +35594,7 @@ namespace fable {
     constexpr std::uintptr_t CIndexBuffer__00ac1ec0 = 0x00ac1ec0; // __thiscall undefined CIndexBuffer(CIndexBuffer *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ReleaseVolume__00ac1ee0 = 0x00ac1ee0; // __thiscall void ReleaseVolume(CVolume *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t DoUnlock__00ac1f00 = 0x00ac1f00; // __thiscall void DoUnlock(CVertexBufferWin32 *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetSize__00ac1f10 = 0x00ac1f10; // __thiscall long GetSize(CIndexBuffer *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetSize__00ac1f10 = 0x00ac1f10; // __thiscall long GetSize(CIndexBuffer *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t Sizeof__00ac1f30 = 0x00ac1f30; // __thiscall ulong Sizeof(CIndexBuffer *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CIndexBuffer_RelocateData = 0x00ac1f50; // __thiscall void CIndexBuffer::RelocateData(CIndexBuffer *,long,void *,void *,long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t E2__00ac1f60 = 0x00ac1f60; // unknown undefined $E2() | prototype=incomplete; decompile=yes
@@ -36200,16 +36200,16 @@ namespace fable {
     constexpr std::uintptr_t TransferToGui__00aea8e0 = 0x00aea8e0; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnInitialActivate__00aea900 = 0x00aea900; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GFGetPreMainMemoryUsed__00aea9f0 = 0x00aea9f0; // __fastcall long GFGetPreMainMemoryUsed() | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetMaxDrawDistance = 0x00aeaa00; // __fastcall float GetMaxDrawDistance() | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetMaxDrawDistance = 0x00aeaa00; // __fastcall float GetMaxDrawDistance() | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetCombatMinDistance__00aeaa20 = 0x00aeaa20; // __thiscall float GetCombatMinDistance(CAIStateGroup_EnemyCreatureBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetCombatMinDistance__00aeaa30 = 0x00aeaa30; // __thiscall float GetCombatMinDistance(CAIStateGroup_EnemyCreatureBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetCombatMinDistance__00aeaa40 = 0x00aeaa40; // __thiscall float GetCombatMinDistance(CAIStateGroup_EnemyCreatureBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetMaxDrawDistance__00aeaa50 = 0x00aeaa50; // __fastcall float GetMaxDrawDistance() | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetMaxDrawDistance__00aeaa60 = 0x00aeaa60; // __fastcall float GetMaxDrawDistance() | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetMaxDrawDistance__00aeaa60 = 0x00aeaa60; // __fastcall float GetMaxDrawDistance() | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t SetCurrentThingManager__00aeaa80 = 0x00aeaa80; // __fastcall void SetCurrentThingManager(CThingManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetCurrentThingManager__00aeaa90 = 0x00aeaa90; // __fastcall void SetCurrentThingManager(CThingManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GFGetPreMainMemoryUsed__00aeaaa0 = 0x00aeaaa0; // __fastcall long GFGetPreMainMemoryUsed() | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GFGetPreMainMemoryUsed__00aeaab0 = 0x00aeaab0; // __fastcall long GFGetPreMainMemoryUsed() | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GFGetPreMainMemoryUsed__00aeaab0 = 0x00aeaab0; // __fastcall long GFGetPreMainMemoryUsed() | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t AddChildPrimitive__00aeaad0 = 0x00aeaad0; // __thiscall ulong AddChildPrimitive(CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t GFGetPreMainMemoryUsed__00aeaae0 = 0x00aeaae0; // __fastcall long GFGetPreMainMemoryUsed() | prototype=complete; decompile=yes
     constexpr std::uintptr_t GFGetPreMainMemoryUsed__00aeaaf0 = 0x00aeaaf0; // __fastcall long GFGetPreMainMemoryUsed() | prototype=complete; decompile=yes
@@ -36267,10 +36267,10 @@ namespace fable {
     constexpr std::uintptr_t Reset__00aecac0 = 0x00aecac0; // __thiscall void Reset(CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00aecb60 = 0x00aecb60; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Dest_val_CMapInfo__00aecb80 = 0x00aecb80; // __fastcall void _Dest_val<std::allocator<CMapInfo>,CMapInfo>(allocator<CMapInfo> *,CMapInfo *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnDie__00aecbf0 = 0x00aecbf0; // __thiscall void OnDie(CTCMapwho *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnDie__00aecbf0 = 0x00aecbf0; // __thiscall void OnDie(CTCMapwho *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00aecc10 = 0x00aecc10; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Reset__00aecc30 = 0x00aecc30; // __thiscall void Reset(CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnDie__00aecca0 = 0x00aecca0; // __thiscall void OnDie(CTCMapwho *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnDie__00aecca0 = 0x00aecca0; // __thiscall void OnDie(CTCMapwho *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Reset__00aeccc0 = 0x00aeccc0; // __thiscall void Reset(CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IsVisible_CalcFadeAlpha = 0x00aecd70; // unknown undefined IsVisible_CalcFadeAlpha() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ShouldSpawn = 0x00aecf90; // __thiscall bool ShouldSpawn(CParticleEmitter *,C3DVector *) | prototype=complete; decompile=yes
@@ -36533,7 +36533,7 @@ namespace fable {
     constexpr std::uintptr_t GetActionName__00afe480 = 0x00afe480; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Vector_AllocateFromTemplate = 0x00afe4b0; // unknown undefined Vector_AllocateFromTemplate() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Copy_backward__00afe530 = 0x00afe530; // __fastcall CSeaBodyDesc * _Copy_backward<CStaticMapGenerationVisibiilityInfo::CSeaBodyDesc*,CStaticMapGenerationVisibiilityInfo::CSeaBodyDesc*>(CSeaBodyDesc *,CSeaBodyDesc *,CSeaBodyDesc *,_Nonscalar_ptr_iterator_tag) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t DrawIsDrawable__00afe580 = 0x00afe580; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t DrawIsDrawable__00afe580 = 0x00afe580; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00afe5a0 = 0x00afe5a0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Vector_CopyVectors = 0x00afe5c0; // unknown undefined Vector_CopyVectors() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t fill_CArray__00afe660 = 0x00afe660; // __fastcall void fill<CArray<unsigned_short>*,CArray<unsigned_short>_>(CArray<unsigned_short> *,CArray<unsigned_short> *,CArray<unsigned_short> *) | prototype=complete; decompile=yes
@@ -36559,7 +36559,7 @@ namespace fable {
     constexpr std::uintptr_t CVectorMap_LookupAndCopyVolume = 0x00b059f0; // unknown undefined CVectorMap_LookupAndCopyVolume() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetActionName__00b05a50 = 0x00b05a50; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetActionName__00b05a90 = 0x00b05a90; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t DrawIsDrawable__00b05ab0 = 0x00b05ab0; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t DrawIsDrawable__00b05ab0 = 0x00b05ab0; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00b05ad0 = 0x00b05ad0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetInverseSystemTransform__00b05b10 = 0x00b05b10; // __thiscall void GetInverseSystemTransform(CParticleSystem *,CMatrix3x4 *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ScaleParticleDimensions__00b05b80 = 0x00b05b80; // __thiscall void ScaleParticleDimensions(CParticleSystem *,float *) | prototype=complete; decompile=yes
@@ -36618,7 +36618,7 @@ namespace fable {
     constexpr std::uintptr_t GetActionName__00b0f880 = 0x00b0f880; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetActionName__00b0f8c0 = 0x00b0f8c0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t IntelligentPointerList_Insert = 0x00b0f920; // unknown undefined IntelligentPointerList_Insert() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t DrawIsDrawable__00b0f970 = 0x00b0f970; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t DrawIsDrawable__00b0f970 = 0x00b0f970; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00b0f990 = 0x00b0f990; // __thiscall void * `vector_deleting_destructor'(CThingTrackNode *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Vector_ReallocateWithNew = 0x00b0f9f0; // unknown undefined Vector_ReallocateWithNew() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t NParticleEngine_CParticle_InsertEffect = 0x00b0fb40; // unknown undefined NParticleEngine_CParticle_InsertEffect() | prototype=incomplete; decompile=yes
@@ -36636,7 +36636,7 @@ namespace fable {
     constexpr std::uintptr_t C3DAnimationBlendState__00b15950 = 0x00b15950; // __thiscall undefined C3DAnimationBlendState(C3DAnimationBlendState *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetActionName__00b15a90 = 0x00b15a90; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetActionName__00b15ad0 = 0x00b15ad0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t DrawIsDrawable__00b15b00 = 0x00b15b00; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t DrawIsDrawable__00b15b00 = 0x00b15b00; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00b15b20 = 0x00b15b20; // __thiscall void * `vector_deleting_destructor'(CThingSwitch *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CVectorMap_FindByKey__00b15b50 = 0x00b15b50; // unknown undefined CVectorMap_FindByKey() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t InterpolateAnimationSequence = 0x00b15bd0; // unknown undefined InterpolateAnimationSequence() | prototype=incomplete; decompile=yes
@@ -36662,7 +36662,7 @@ namespace fable {
     constexpr std::uintptr_t ReadBinary__00b18390 = 0x00b18390; // __thiscall void ReadBinary(CPSCAttractor *,CDataInputStream *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetActionName__00b186e0 = 0x00b186e0; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetActionName__00b18720 = 0x00b18720; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t DrawIsDrawable__00b18740 = 0x00b18740; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t DrawIsDrawable__00b18740 = 0x00b18740; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00b18760 = 0x00b18760; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnDie__00b18780 = 0x00b18780; // __thiscall void OnDie(CTCInventoryItem *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Update__00b18820 = 0x00b18820; // __thiscall void Update(CPSCLight *,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *,bool *) | prototype=complete; decompile=yes
@@ -36674,7 +36674,7 @@ namespace fable {
     constexpr std::uintptr_t SmoothFadeValue__00b1ad90 = 0x00b1ad90; // __thiscall float SmoothFadeValue(CPSCLight *,float) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetActionName__00b1ae00 = 0x00b1ae00; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetActionName__00b1ae40 = 0x00b1ae40; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t DrawIsDrawable__00b1ae70 = 0x00b1ae70; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t DrawIsDrawable__00b1ae70 = 0x00b1ae70; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00b1ae90 = 0x00b1ae90; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_CEngineInternalAttachedPrimitiveInfo__00b1aeb0 = 0x00b1aeb0; // __thiscall void ~CEngineInternalAttachedPrimitiveInfo(CEngineInternalAttachedPrimitiveInfo *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t WriteBinary__00b1aff0 = 0x00b1aff0; // __thiscall void WriteBinary(CPSCSpline *,CDataOutputStream *) | prototype=complete; decompile=yes
@@ -36684,7 +36684,7 @@ namespace fable {
     constexpr std::uintptr_t GetActionName__00b1b430 = 0x00b1b430; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetActionName__00b1b470 = 0x00b1b470; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00b1b490 = 0x00b1b490; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t DrawIsDrawable__00b1b4b0 = 0x00b1b4b0; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t DrawIsDrawable__00b1b4b0 = 0x00b1b4b0; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Init__00b1b4d0 = 0x00b1b4d0; // __thiscall void Init(CPersistContext *,CStringParser *,_func_void_CCharString_ptr *,bool,CDefinitionManager *,CSymbolMap *,CCharString *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetHeight__00b1b5e0 = 0x00b1b5e0; // __thiscall ulong GetHeight(CSprite *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t DatabaseCopy__00b1b810 = 0x00b1b810; // __thiscall void DatabaseCopy(CPSCDecalRenderer *,CPSCBase *) | prototype=complete; decompile=yes
@@ -36700,7 +36700,7 @@ namespace fable {
     constexpr std::uintptr_t CEnginePrimitiveParticleDecal = 0x00b1fe80; // __thiscall undefined CEnginePrimitiveParticleDecal(CEnginePrimitiveParticleDecal *,long,C3DVector *,C2DVector *,CRGBColour *,CRightHandedSet *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetActionName__00b1ff10 = 0x00b1ff10; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetActionName__00b1ff50 = 0x00b1ff50; // __thiscall CCharString GetActionName(CActionDoCreatureAction *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t DrawIsDrawable__00b1ff80 = 0x00b1ff80; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t DrawIsDrawable__00b1ff80 = 0x00b1ff80; // __thiscall bool DrawIsDrawable(CThingTrackNode *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00b1ffa0 = 0x00b1ffa0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_CPSCDecalRenderer__00b1ffc0 = 0x00b1ffc0; // __thiscall void ~CPSCDecalRenderer(CPSCDecalRenderer *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetInverseSystemTransformWithTranslate = 0x00b201d0; // __thiscall void GetInverseSystemTransformWithTranslate(CParticleSystem *,CMatrix3x4 *) | prototype=complete; decompile=yes
@@ -36914,7 +36914,7 @@ namespace fable {
     constexpr std::uintptr_t DeleteMap = 0x00b282b0; // __thiscall void DeleteMap(CEngineLandscapeRenderer *,CEngineMap *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t fill__00b283b0 = 0x00b283b0; // __fastcall void fill<ENavigatorType*,ENavigatorType>(ENavigatorType *,ENavigatorType *,ENavigatorType *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t list__00b288c0 = 0x00b288c0; // __thiscall undefined list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t CIEngine_PeekGlobalDiffuseColour = 0x00b28b40; // __thiscall CRGBFloatColour const CIEngine::PeekGlobalDiffuseColour(CIEngine *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CIEngine_PeekGlobalDiffuseColour = 0x00b28b40; // __thiscall CRGBFloatColour const CIEngine::PeekGlobalDiffuseColour(CIEngine *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=DIFFER
     constexpr std::uintptr_t CIEngine_PeekGlobalAmbientColour = 0x00b28b60; // __thiscall CRGBFloatColour const CIEngine::PeekGlobalAmbientColour(CIEngine *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CEngineStateBlocks__00b28bc0 = 0x00b28bc0; // __thiscall undefined CEngineStateBlocks(CEngineStateBlocks *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CEngineComponent_FrameStart = 0x00b28c20; // __thiscall void CEngineComponent::FrameStart(CEngineComponent *,CEngineComponentParams const &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -37042,7 +37042,7 @@ namespace fable {
     constexpr std::uintptr_t RBTree_InsertOrFind__00b2f240 = 0x00b2f240; // unknown undefined RBTree_InsertOrFind() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t List_InitializeNode_44Bytes_Alt = 0x00b2f4e0; // unknown undefined List_InitializeNode_44Bytes_Alt() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t LTextBinTree_TreeWalkThrough_Destructor_Alt = 0x00b2f520; // unknown undefined LTextBinTree_TreeWalkThrough_Destructor_Alt() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t CEngineSurfaceCompositionManager_PeekSceneFilterFlags = 0x00b2f5c0; // __thiscall ulong CEngineSurfaceCompositionManager::PeekSceneFilterFlags(CEngineSurfaceCompositionManager *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CEngineSurfaceCompositionManager_PeekSceneFilterFlags = 0x00b2f5c0; // __thiscall ulong CEngineSurfaceCompositionManager::PeekSceneFilterFlags(CEngineSurfaceCompositionManager *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t op_index__00b2f5e0 = 0x00b2f5e0; // __thiscall CEngineTextureMorph * operator[](map<std::pair<long,long>,CEngineTextureMorph,std::less<std::pair<long,long>_>,std::allocator<std::pair<std::pair<long,long>_const_,CEngineTextureMorph>_>_> *,pair<long,long> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00b2f6e0 = 0x00b2f6e0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CEnginePrimitiveOcclusionManager_FrameEnd = 0x00b2f730; // __thiscall void CEnginePrimitiveOcclusionManager::FrameEnd(CEnginePrimitiveOcclusionManager *,CEngineComponentParams const &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -37251,7 +37251,7 @@ namespace fable {
     constexpr std::uintptr_t CEngineInternalPrimitiveBase_GetAsOcclusionPrimitive = 0x00b3aa80; // __thiscall CEngineInternalPrimitiveOcclusionBase * CEngineInternalPrimitiveBase::GetAsOcclusionPrimitive(CEngineInternalPrimitiveBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CEngineInternalPrimitiveBase_CollectStats = 0x00b3aa90; // __thiscall void CEngineInternalPrimitiveBase::CollectStats(CEngineInternalPrimitiveBase *,std::map<ulong,ulong,std::less<ulong>,std::allocator<std::pair<ulong const ,ulong> > > &,EEnginePrimitiveStatIndex,ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CEngineInternalPrimitiveBase_WasRendered = 0x00b3aaa0; // __thiscall bool CEngineInternalPrimitiveBase::WasRendered(CEngineInternalPrimitiveBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t CEnginePrimitiveAttachmentManager_PeekSceneFilterFlags = 0x00b3aac0; // __thiscall ulong CEnginePrimitiveAttachmentManager::PeekSceneFilterFlags(CEnginePrimitiveAttachmentManager *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CEnginePrimitiveAttachmentManager_PeekSceneFilterFlags = 0x00b3aac0; // __thiscall ulong CEnginePrimitiveAttachmentManager::PeekSceneFilterFlags(CEnginePrimitiveAttachmentManager *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CAIStateGroup_SummonerCharge__00b3aae0 = 0x00b3aae0; // __thiscall undefined CAIStateGroup_SummonerCharge(CAIStateGroup_SummonerCharge *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t dtor_CEngineInternalAttachedPrimitiveInfo__00b3ab10 = 0x00b3ab10; // __thiscall void ~CEngineInternalAttachedPrimitiveInfo(CEngineInternalAttachedPrimitiveInfo *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00b3ab80 = 0x00b3ab80; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
@@ -37278,7 +37278,7 @@ namespace fable {
     constexpr std::uintptr_t CEngineResourceManager_Render = 0x00b3b7c0; // __thiscall void CEngineResourceManager::Render(CEngineResourceManager *,CEngineComponentRenderParams const &) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ProcessLoading__00b3b7f0 = 0x00b3b7f0; // __thiscall void ProcessLoading(CEngineResourceManager *,bool,double) | prototype=complete; decompile=yes
     constexpr std::uintptr_t FrameEnd__00b3b870 = 0x00b3b870; // __thiscall void FrameEnd(CEngineResourceManager *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CEngineResourceManager_ProcessLoading = 0x00b3b8c0; // __thiscall void CEngineResourceManager::ProcessLoading(CEngineResourceManager *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CEngineResourceManager_ProcessLoading = 0x00b3b8c0; // __thiscall void CEngineResourceManager::ProcessLoading(CEngineResourceManager *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CEngineResourceManager_Destructor = 0x00b3b8e0; // unknown undefined CEngineResourceManager_Destructor() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CEngine_GetEditorAnimation__00b3bc90 = 0x00b3bc90; // unknown undefined CEngine::GetEditorAnimation() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Image_GenerateAlphaStipplePattern = 0x00b3be10; // unknown undefined Image_GenerateAlphaStipplePattern() | prototype=incomplete; decompile=yes
@@ -37869,7 +37869,7 @@ namespace fable {
     constexpr std::uintptr_t Vector_InsertWithCount_8Byte_v2 = 0x00b83970; // unknown undefined Vector_InsertWithCount_8Byte_v2() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Vector_Insert_8Byte = 0x00b83b00; // unknown undefined Vector_Insert_8Byte() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Vector_Reallocate_8Byte = 0x00b83c30; // unknown undefined Vector_Reallocate_8Byte() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t CEngineSimulationManager_PeekSceneFilterFlags = 0x00b83d10; // __thiscall ulong CEngineSimulationManager::PeekSceneFilterFlags(CEngineSimulationManager *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CEngineSimulationManager_PeekSceneFilterFlags = 0x00b83d10; // __thiscall ulong CEngineSimulationManager::PeekSceneFilterFlags(CEngineSimulationManager *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t Vector_Clear__00b83d30 = 0x00b83d30; // unknown undefined Vector_Clear() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnReadFinished__00b83df0 = 0x00b83df0; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Vector_InsertWithCount_8Byte__00b83e70 = 0x00b83e70; // unknown undefined Vector_InsertWithCount_8Byte() | prototype=incomplete; decompile=yes
@@ -37884,7 +37884,7 @@ namespace fable {
     constexpr std::uintptr_t CEngineClothSimulationMeshBase_dtor_CEngineClothSimulationMeshBase_Alt = 0x00b84190; // unknown undefined CEngineClothSimulationMeshBase::~CEngineClothSimulationMeshBase_Alt() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00b841e0 = 0x00b841e0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Umove__00b84200 = 0x00b84200; // __thiscall EWeaponClass * _Umove<EWeaponClass*>(vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t SetMaxSortDistance = 0x00b84290; // __thiscall void SetMaxSortDistance(CEngineSubPrimitiveRenderer *,float) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t SetMaxSortDistance = 0x00b84290; // __thiscall void SetMaxSortDistance(CEngineSubPrimitiveRenderer *,float) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CEnginePrimitiveRenderer_GetIndexCount = 0x00b842b0; // unknown undefined CEnginePrimitiveRenderer_GetIndexCount() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t RenderList = 0x00b842d0; // __thiscall void RenderList(CEngineSubPrimitiveRenderer *,CArray<CEngineSubPrimitiveRenderer::CSortElement> *,ERenderPassType) | prototype=complete; decompile=yes
     constexpr std::uintptr_t RenderListTwoPass = 0x00b84320; // __thiscall void RenderListTwoPass(CEngineSubPrimitiveRenderer *,CArray<CEngineSubPrimitiveRenderer::CSortElement> *,ERenderPassType,ERenderPassType) | prototype=complete; decompile=yes
@@ -37970,7 +37970,7 @@ namespace fable {
     constexpr std::uintptr_t vector_deleting_destructor__00b8b600 = 0x00b8b600; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CEngineBillboardGenerator__00b8b630 = 0x00b8b630; // __thiscall undefined CEngineBillboardGenerator(CEngineBillboardGenerator *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t RenderBillboard = 0x00b8b780; // __thiscall void RenderBillboard(CEngineBillboardGenerator *,C3DMesh2 *,CEngineBillboard *,float,float,long) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CEngineBillboardGenerator_PeekSceneFilterFlags = 0x00b8c780; // __thiscall ulong CEngineBillboardGenerator::PeekSceneFilterFlags(CEngineBillboardGenerator *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CEngineBillboardGenerator_PeekSceneFilterFlags = 0x00b8c780; // __thiscall ulong CEngineBillboardGenerator::PeekSceneFilterFlags(CEngineBillboardGenerator *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00b8c7a0 = 0x00b8c7a0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_CEngineBillboardGenerator = 0x00b8c7c0; // __thiscall void ~CEngineBillboardGenerator(CEngineBillboardGenerator *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CEngineEnvironment_FrameStart = 0x00b8c830; // __thiscall void CEngineEnvironment::FrameStart(CEngineEnvironment *,CEngineComponentParams const &) | prototype=complete; decompile=yes
@@ -38022,7 +38022,7 @@ namespace fable {
     constexpr std::uintptr_t Vector_InsertWithMove_Element = 0x00b8f950; // unknown undefined Vector_InsertWithMove_Element() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CEnginePrimitiveTypeInfo__00b8faa0 = 0x00b8faa0; // __thiscall undefined CEnginePrimitiveTypeInfo(CEnginePrimitiveTypeInfo *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t RegisterPrimitiveManager = 0x00b8fad0; // __thiscall void RegisterPrimitiveManager(CEnginePrimitiveTypeInfo *,CEnginePrimitiveManager *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CEnginePrimitiveTypeInfo_PeekSceneFilterFlags = 0x00b8fb40; // __thiscall ulong CEnginePrimitiveTypeInfo::PeekSceneFilterFlags(CEnginePrimitiveTypeInfo *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CEnginePrimitiveTypeInfo_PeekSceneFilterFlags = 0x00b8fb40; // __thiscall ulong CEnginePrimitiveTypeInfo::PeekSceneFilterFlags(CEnginePrimitiveTypeInfo *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t scalar_deleting_destructor__00b8fb60 = 0x00b8fb60; // __thiscall void * `scalar_deleting_destructor'(CEngineSubPrimitiveText *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t pair__00b8fbf0 = 0x00b8fbf0; // __thiscall undefined pair<EHeroMorphType,CParticleMorphs::CEntry>(pair<EHeroMorphType,CParticleMorphs::CEntry> *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ApplyCustomSettings = 0x00b8fc40; // __thiscall void ApplyCustomSettings(CDefaultEngineMemoryInit *,CEngineMemoryInit *) | prototype=complete; decompile=yes
@@ -38230,17 +38230,17 @@ namespace fable {
     constexpr std::uintptr_t vector_deleting_destructor__00b9c710 = 0x00b9c710; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CEngineSubPrimitiveAnimatedMesh__00b9cb10 = 0x00b9cb10; // __thiscall undefined CEngineSubPrimitiveAnimatedMesh(CEngineSubPrimitiveAnimatedMesh *,CEngineInternalPrimitiveAnimatedMesh *,C3DPrimitive2 *,ERenderMode,bool) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t UpdateCurrentAction__00b9ce10 = 0x00b9ce10; // __thiscall void UpdateCurrentAction(CAIStateGroup_MeleeCombatNearbyBase *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CEngineInternalPrimitiveStaticMesh_SetPosition = 0x00b9cfa0; // __thiscall void CEngineInternalPrimitiveStaticMesh::SetPosition(CEngineInternalPrimitiveStaticMesh *,CEnginePrimitivePosition const &) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CEngineInternalPrimitiveStaticMesh_GetObjectTransform = 0x00b9cfc0; // __thiscall bool CEngineInternalPrimitiveStaticMesh::GetObjectTransform(CEngineInternalPrimitiveStaticMesh *,CMatrix3x4 &) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t SetObjectTransform_CEngineInternalPrimitiveStaticMesh_UAE_NABVCMatrix3x4_Z = 0x00b9cfe0; // __thiscall bool ?SetObjectTransform@CEngineInternalPrimitiveStaticMesh@@UAE_NABVCMatrix3x4@@@Z(CEngineInternalPrimitive2DStaticMesh *,CMatrix3x4 *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CEngineInternalPrimitiveStaticMesh_GetTransformFrameStart = 0x00b9d000; // __thiscall bool CEngineInternalPrimitiveStaticMesh::GetTransformFrameStart(CEngineInternalPrimitiveStaticMesh *,CMatrix3x4 &) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CEngineInternalPrimitiveStaticMesh_GetTransformFrameEnd = 0x00b9d020; // __thiscall bool CEngineInternalPrimitiveStaticMesh::GetTransformFrameEnd(CEngineInternalPrimitiveStaticMesh *,CMatrix3x4 &) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CEngineInternalPrimitiveStaticMesh_SetPosition = 0x00b9cfa0; // __thiscall void CEngineInternalPrimitiveStaticMesh::SetPosition(CEngineInternalPrimitiveStaticMesh *,CEnginePrimitivePosition const &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t CEngineInternalPrimitiveStaticMesh_GetObjectTransform = 0x00b9cfc0; // __thiscall bool CEngineInternalPrimitiveStaticMesh::GetObjectTransform(CEngineInternalPrimitiveStaticMesh *,CMatrix3x4 &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
+    constexpr std::uintptr_t SetObjectTransform_CEngineInternalPrimitiveStaticMesh_UAE_NABVCMatrix3x4_Z = 0x00b9cfe0; // __thiscall bool ?SetObjectTransform@CEngineInternalPrimitiveStaticMesh@@UAE_NABVCMatrix3x4@@@Z(CEngineInternalPrimitive2DStaticMesh *,CMatrix3x4 *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
+    constexpr std::uintptr_t CEngineInternalPrimitiveStaticMesh_GetTransformFrameStart = 0x00b9d000; // __thiscall bool CEngineInternalPrimitiveStaticMesh::GetTransformFrameStart(CEngineInternalPrimitiveStaticMesh *,CMatrix3x4 &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
+    constexpr std::uintptr_t CEngineInternalPrimitiveStaticMesh_GetTransformFrameEnd = 0x00b9d020; // __thiscall bool CEngineInternalPrimitiveStaticMesh::GetTransformFrameEnd(CEngineInternalPrimitiveStaticMesh *,CMatrix3x4 &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CEngineInternalPrimitive2DStaticMesh_GetWorldPosition = 0x00b9d040; // __thiscall bool CEngineInternalPrimitive2DStaticMesh::GetWorldPosition(CEngineInternalPrimitive2DStaticMesh *,C3DVector &) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CEngineInternalPrimitive2DStaticMesh_IsInsideFrustum = 0x00b9d060; // __thiscall bool CEngineInternalPrimitive2DStaticMesh::IsInsideFrustum(CEngineInternalPrimitive2DStaticMesh *,CEngineCamera const &,bool) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CEngineInternalPrimitive2DStaticMesh_GetObjectTransform = 0x00b9d070; // __thiscall bool CEngineInternalPrimitive2DStaticMesh::GetObjectTransform(CEngineInternalPrimitive2DStaticMesh *,CMatrix3x4 &) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t SetObjectTransform_CEngineInternalPrimitive2DStaticMesh_UAE_NABVCMatrix3x4_Z = 0x00b9d090; // __thiscall bool ?SetObjectTransform@CEngineInternalPrimitive2DStaticMesh@@UAE_NABVCMatrix3x4@@@Z(CEngineInternalPrimitive2DStaticMesh *,CMatrix3x4 *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CEngineInternalPrimitive2DStaticMesh_GetTransformFrameStart = 0x00b9d0b0; // __thiscall bool CEngineInternalPrimitive2DStaticMesh::GetTransformFrameStart(CEngineInternalPrimitive2DStaticMesh *,CMatrix3x4 &) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CEngineInternalPrimitive2DStaticMesh_GetTransformFrameEnd = 0x00b9d0d0; // __thiscall bool CEngineInternalPrimitive2DStaticMesh::GetTransformFrameEnd(CEngineInternalPrimitive2DStaticMesh *,CMatrix3x4 &) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CEngineInternalPrimitive2DStaticMesh_GetObjectTransform = 0x00b9d070; // __thiscall bool CEngineInternalPrimitive2DStaticMesh::GetObjectTransform(CEngineInternalPrimitive2DStaticMesh *,CMatrix3x4 &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
+    constexpr std::uintptr_t SetObjectTransform_CEngineInternalPrimitive2DStaticMesh_UAE_NABVCMatrix3x4_Z = 0x00b9d090; // __thiscall bool ?SetObjectTransform@CEngineInternalPrimitive2DStaticMesh@@UAE_NABVCMatrix3x4@@@Z(CEngineInternalPrimitive2DStaticMesh *,CMatrix3x4 *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
+    constexpr std::uintptr_t CEngineInternalPrimitive2DStaticMesh_GetTransformFrameStart = 0x00b9d0b0; // __thiscall bool CEngineInternalPrimitive2DStaticMesh::GetTransformFrameStart(CEngineInternalPrimitive2DStaticMesh *,CMatrix3x4 &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
+    constexpr std::uintptr_t CEngineInternalPrimitive2DStaticMesh_GetTransformFrameEnd = 0x00b9d0d0; // __thiscall bool CEngineInternalPrimitive2DStaticMesh::GetTransformFrameEnd(CEngineInternalPrimitive2DStaticMesh *,CMatrix3x4 &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CEngineInternalPrimitiveStaticMeshFromFile_Update = 0x00b9d0f0; // __thiscall void CEngineInternalPrimitiveStaticMeshFromFile::Update(CEngineInternalPrimitiveStaticMeshFromFile *,CEnginePrimitive const &,ulong) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CEnginePrimitiveManagerStaticMeshesBase_FrameStart = 0x00b9d100; // __thiscall void CEnginePrimitiveManagerStaticMeshesBase::FrameStart(CEnginePrimitiveManagerStaticMeshesBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CEnginePrimitiveManagerStaticMeshesBase_AddStaticShadowData = 0x00b9d1d0; // __thiscall void CEnginePrimitiveManagerStaticMeshesBase::AddStaticShadowData(CEnginePrimitiveManagerStaticMeshesBase *,CEngineInternalPrimitiveBase &,NEngineShadowRenderer::CShadowSceneContext &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
@@ -38346,7 +38346,7 @@ namespace fable {
     constexpr std::uintptr_t CEngineScenePrimitiveStatsEnumerator__00baca20 = 0x00baca20; // __thiscall undefined CEngineScenePrimitiveStatsEnumerator(CEngineScenePrimitiveStatsEnumerator *,map<unsigned_long,unsigned_long,std::less<unsigned_long>,std::allocator<std::pair<unsigned_long_const_,unsigned_long>_>_> *,C2DBoxF *,EEnginePrimitiveStatIndex,ulong) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ProcessPrimitive_CEngineScenePrimitiveStatsEnumerator_UAEXAAVCEngineInternalPrimitiveBase_Z = 0x00baca70; // __thiscall void ?ProcessPrimitive@CEngineScenePrimitiveStatsEnumerator@@UAEXAAVCEngineInternalPrimitiveBase@@@Z(CEngineScenePrimitiveStatsEnumerator *,CEngineInternalPrimitiveBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00bacb80 = 0x00bacb80; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CEngineInternalPrimitiveOcclusionGroup_GetBoundingBoxWorldSpace = 0x00bacba0; // __thiscall bool CEngineInternalPrimitiveOcclusionGroup::GetBoundingBoxWorldSpace(CEngineInternalPrimitiveOcclusionGroup *,C3DBoundingBox &) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CEngineInternalPrimitiveOcclusionGroup_GetBoundingBoxWorldSpace = 0x00bacba0; // __thiscall bool CEngineInternalPrimitiveOcclusionGroup::GetBoundingBoxWorldSpace(CEngineInternalPrimitiveOcclusionGroup *,C3DBoundingBox &) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CEnginePrimitiveOcclusionGroupManager_CreateInternalPrimitive = 0x00bacbc0; // __thiscall CEngineInternalPrimitiveBase * CEnginePrimitiveOcclusionGroupManager::CreateInternalPrimitive(CEnginePrimitiveOcclusionGroupManager *,EEnginePrimitiveType) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CEngineInternalPrimitiveOcclusionGroup_GetBoundingBoxTransform = 0x00bacbd0; // __thiscall bool CEngineInternalPrimitiveOcclusionGroup::GetBoundingBoxTransform(CEngineInternalPrimitiveOcclusionGroup *,CMatrix3x4 &) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CEngineInternalPrimitiveOcclusionGroup = 0x00bacc00; // __thiscall undefined CEngineInternalPrimitiveOcclusionGroup(CEngineInternalPrimitiveOcclusionGroup *,CEngineSceneGridCell *,CEngineSceneGrid *,ulong,ulong) | prototype=incomplete; decompile=yes
@@ -38487,7 +38487,7 @@ namespace fable {
     constexpr std::uintptr_t LinkedList_AddN = 0x00bbdc60; // unknown undefined LinkedList_AddN() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t AddPrimitive__00bbdcb0 = 0x00bbdcb0; // __thiscall void AddPrimitive(CEnginePrimitiveRenderer *,CEnginePrimitive *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t resize__00bbdd40 = 0x00bbdd40; // __thiscall void resize(vector<std::pair<CCharString,long>,std::allocator<std::pair<CCharString,long>_>_> *,uint) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CEngineInternalPrimitiveParticleSpriteTrailGroup_Update = 0x00bbdd90; // __thiscall void CEngineInternalPrimitiveParticleSpriteTrailGroup::Update(CEngineInternalPrimitiveParticleSpriteTrailGroup *,CEnginePrimitive const &,ulong) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CEngineInternalPrimitiveParticleSpriteTrailGroup_Update = 0x00bbdd90; // __thiscall void CEngineInternalPrimitiveParticleSpriteTrailGroup::Update(CEngineInternalPrimitiveParticleSpriteTrailGroup *,CEnginePrimitive const &,ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CEngineInternalPrimitiveParticleSpriteTrailGroup_PrimTypeMatchesGroup = 0x00bbddb0; // __thiscall bool CEngineInternalPrimitiveParticleSpriteTrailGroup::PrimTypeMatchesGroup(CEngineInternalPrimitiveParticleSpriteTrailGroup *,long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CEnginePrimitiveManagerParticleSpriteTrailGroup_RenderSubPrimitive = 0x00bbddc0; // __thiscall void CEnginePrimitiveManagerParticleSpriteTrailGroup::RenderSubPrimitive(CEnginePrimitiveManagerParticleSpriteTrailGroup *,CEngineSubPrimitiveBase &,ERenderPassType) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t RenderPrimitive_CEnginePrimitiveManagerParticleSpriteTrailGroup_UAE_AW4ERendered_AAVCEngineInternalPrimitiveBase_W4EEngineRenderLayer_AAVCEngineSubPrimitiveChain_Z = 0x00bbddd0; // __thiscall ERendered ?RenderPrimitive@CEnginePrimitiveManagerParticleSpriteTrailGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z(CEnginePrimitiveManagerParticleSpriteTrailGroup *,CEngineInternalPrimitiveBase *,EEngineRenderLayer,CEngineSubPrimitiveChain *) | prototype=complete; decompile=yes
@@ -38858,7 +38858,7 @@ namespace fable {
     constexpr std::uintptr_t ClearCache = 0x00bddb90; // __thiscall void ClearCache(CQuadTreeElement *,CEngineStaticMapFileBlockManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ClearCache__00bddc00 = 0x00bddc00; // __thiscall void ClearCache(CQuadTreeElement *,CEngineStaticMapFileBlockManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnPostRelocation__00bddcb0 = 0x00bddcb0; // __thiscall void OnPostRelocation(CQuadTreeElement *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t CloseStaticMap__00bddd50 = 0x00bddd50; // __thiscall void CloseStaticMap(CLocalDetailCacheMap *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CloseStaticMap__00bddd50 = 0x00bddd50; // __thiscall void CloseStaticMap(CLocalDetailCacheMap *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Render__00bddd70 = 0x00bddd70; // __thiscall void Render(CLocalDetailCacheMap *,CEngineCamera *,float) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_CObjectTypeCollection = 0x00bddda0; // __thiscall void ~CObjectTypeCollection(CObjectTypeCollection *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_CObjectCacheGroupCollection = 0x00bdde80; // __thiscall void ~CObjectCacheGroupCollection(CObjectCacheGroupCollection *) | prototype=complete; decompile=yes
@@ -39112,8 +39112,8 @@ namespace fable {
     constexpr std::uintptr_t ConvertListToTree = 0x00bf2b50; // __thiscall CNodeHeader * ConvertListToTree(CEngineTreeFilerBase *,CNodeHeader *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AddNodeAutoExpandTree = 0x00bf2e50; // __thiscall CNodeHeader * AddNodeAutoExpandTree(CEngineTreeFilerBase *,CNodeHeader *,CNodeHeader *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t AddNewKey = 0x00bf3030; // __thiscall ulong AddNewKey(CEngineTreeFilerBase *,ulong *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__00bf3140 = 0x00bf3140; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__00bf3160 = 0x00bf3160; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__00bf3140 = 0x00bf3140; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t OnReadFinished__00bf3160 = 0x00bf3160; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Initialise__00bf3180 = 0x00bf3180; // __thiscall void Initialise(CEngineTreeFilerBase *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CDataInputStream__00bf3250 = 0x00bf3250; // __thiscall undefined CDataInputStream(CDataInputStream *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t C3DAnimationBlendState__00bf3290 = 0x00bf3290; // __thiscall undefined C3DAnimationBlendState(C3DAnimationBlendState *) | prototype=incomplete; decompile=yes
@@ -39173,7 +39173,7 @@ namespace fable {
     constexpr std::uintptr_t TreeHasLoadTasks = 0x00bf6bf0; // __thiscall bool TreeHasLoadTasks(CLandscapeBackgroundTreeNode *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t UpdateTesselation_CLandscapeBackgroundSubNodeSplitBranch_UAEXXZ = 0x00bf6c80; // __thiscall void ?UpdateTesselation@CLandscapeBackgroundSubNodeSplitBranch@@UAEXXZ(CLandscapeBackgroundSubNodeSplitBranch *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CLandscapeBackgroundSubNodeSplitBranch_InvalidateEdge = 0x00bf6cd0; // __thiscall void CLandscapeBackgroundSubNodeSplitBranch::InvalidateEdge(CLandscapeBackgroundSubNodeSplitBranch *,long,long,long,LANDSCAPE_EDGE_STRIP_SIDE) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnPostRelocation_CLandscapeBackgroundSubNodeSplitBranch_UAEXXZ = 0x00bf6d10; // __fastcall void ?OnPostRelocation@CLandscapeBackgroundSubNodeSplitBranch@@UAEXXZ(allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnPostRelocation_CLandscapeBackgroundSubNodeSplitBranch_UAEXXZ = 0x00bf6d10; // __fastcall void ?OnPostRelocation@CLandscapeBackgroundSubNodeSplitBranch@@UAEXXZ(allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CLandscapeBackgroundSubNodeSplitBranch_OnPostParentRelocation = 0x00bf6d30; // __thiscall void CLandscapeBackgroundSubNodeSplitBranch::OnPostParentRelocation(CLandscapeBackgroundSubNodeSplitBranch *,CLandscapeBackgroundTreeNode *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t IsBackgroundAtFullDetailInArea__00bf6d50 = 0x00bf6d50; // __thiscall bool IsBackgroundAtFullDetailInArea(CLandscapeBackgroundTreeNode *,long,long,long,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CLandscapeBackgroundTreeNode_CLandscapeBackgroundTreeNode = 0x00bf6e20; // __thiscall void CLandscapeBackgroundTreeNode::CLandscapeBackgroundTreeNode(CLandscapeBackgroundTreeNode *,CEngineLandscapeMap *,CLandscapeBackgroundTreeNode *,long) | prototype=complete; decompile=yes
@@ -39533,7 +39533,7 @@ namespace fable {
     constexpr std::uintptr_t CEngineWaterBackgroundSubPatch = 0x00c0a790; // __thiscall undefined CEngineWaterBackgroundSubPatch(CEngineWaterBackgroundSubPatch *,CEngineLandscapeMap *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t SetAsFinished__00c0a860 = 0x00c0a860; // __thiscall void SetAsFinished(CAnimateThing *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetAsFinished__00c0a880 = 0x00c0a880; // __thiscall void SetAsFinished(CAnimateThing *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t IsTurningBody__00c0a8a0 = 0x00c0a8a0; // __thiscall bool IsTurningBody(CTCLook *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t IsTurningBody__00c0a8a0 = 0x00c0a8a0; // __thiscall bool IsTurningBody(CTCLook *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t IsTurningBody__00c0a8c0 = 0x00c0a8c0; // __thiscall bool IsTurningBody(CTCLook *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t dtor_CJoystick = 0x00c0a9a0; // __thiscall void ~CJoystick(CJoystick *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnInitialActivate__00c0aa10 = 0x00c0aa10; // __thiscall void OnInitialActivate(CTCElectrocutedEffect *) | prototype=complete; decompile=yes
@@ -39599,7 +39599,7 @@ namespace fable {
     constexpr std::uintptr_t ClipBox__00c0de50 = 0x00c0de50; // __thiscall bool ClipBox(CEngine *,C3DBoundingBox *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t op_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive__00c0dea0 = 0x00c0dea0; // __fastcall CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>(CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t op_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive__00c0dec0 = 0x00c0dec0; // __fastcall CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>(CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
-    constexpr std::uintptr_t op_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive__00c0ded0 = 0x00c0ded0; // __fastcall CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>(CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t op_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive__00c0ded0 = 0x00c0ded0; // __fastcall CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>(CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t op_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive__00c0def0 = 0x00c0def0; // __fastcall CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>(CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t op_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive__00c0df00 = 0x00c0df00; // __fastcall CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>(CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t op_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive_NScript_CIsThingAlive__00c0df10 = 0x00c0df10; // __fastcall CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>(CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
@@ -40018,7 +40018,7 @@ namespace fable {
     constexpr std::uintptr_t ResizeGameMap__00c1b6d0 = 0x00c1b6d0; // __thiscall void ResizeGameMap(CThingMapManager *,long,C2DBoxI *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t BTree_InsertNode = 0x00c1b720; // unknown undefined BTree_InsertNode() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CGameMap_RemoveByKey = 0x00c1b7d0; // unknown undefined CGameMap_RemoveByKey() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t EditFrameUpdate__00c1b930 = 0x00c1b930; // __thiscall void EditFrameUpdate(CTCDParticleEmitter *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t EditFrameUpdate__00c1b930 = 0x00c1b930; // __thiscall void EditFrameUpdate(CTCDParticleEmitter *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CSBAgents__00c1b950 = 0x00c1b950; // __thiscall undefined CSBAgents(CSBAgents *,vector<CSteeringAgent_const*,std::allocator<CSteeringAgent_const*>_> *,CSteeringAgent *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00c1b970 = 0x00c1b970; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CBase__00c1b990 = 0x00c1b990; // __thiscall undefined CBase(CBase *) | prototype=incomplete; decompile=yes
@@ -40212,16 +40212,16 @@ namespace fable {
     constexpr std::uintptr_t IsActive__00c20370 = 0x00c20370; // __thiscall bool IsActive(CTCScriptedControl *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CNavigationLayer__00c20390 = 0x00c20390; // __thiscall undefined CNavigationLayer(CNavigationLayer *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CAtmosProcess = 0x00c203a0; // __thiscall undefined CAtmosProcess(CAtmosProcess *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t TransferOut__00c203c0 = 0x00c203c0; // __thiscall void TransferOut(CPersistTraits<long> *,CPersistContext *,CCharString *,long *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t SetAsPumpCombatActions = 0x00c203e0; // __thiscall void SetAsPumpCombatActions(CBrainOutput *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t TransferOut__00c203c0 = 0x00c203c0; // __thiscall void TransferOut(CPersistTraits<long> *,CPersistContext *,CCharString *,long *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t SetAsPumpCombatActions = 0x00c203e0; // __thiscall void SetAsPumpCombatActions(CBrainOutput *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t TransferOut__00c20400 = 0x00c20400; // __thiscall void TransferOut(CPersistTraits<long> *,CPersistContext *,CCharString *,long *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetAsPumpCombatActions__00c20420 = 0x00c20420; // __thiscall void SetAsPumpCombatActions(CBrainOutput *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t bind2nd_long = 0x00c20440; // __fastcall binder2nd<std::greater<long>_> bind2nd<std::greater<long>,long>(greater<long> *,long *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t bind2nd_long = 0x00c20440; // __fastcall binder2nd<std::greater<long>_> bind2nd<std::greater<long>,long>(greater<long> *,long *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t SetAsPumpCombatActions__00c20460 = 0x00c20460; // __thiscall void SetAsPumpCombatActions(CBrainOutput *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t SetAsPumpCombatActions__00c20480 = 0x00c20480; // __thiscall void SetAsPumpCombatActions(CBrainOutput *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t SetAsPumpCombatActions__00c204a0 = 0x00c204a0; // __thiscall void SetAsPumpCombatActions(CBrainOutput *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t SetAsPumpCombatActions__00c20480 = 0x00c20480; // __thiscall void SetAsPumpCombatActions(CBrainOutput *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t SetAsPumpCombatActions__00c204a0 = 0x00c204a0; // __thiscall void SetAsPumpCombatActions(CBrainOutput *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t bind2nd_long__00c204c0 = 0x00c204c0; // __fastcall binder2nd<std::greater<long>_> bind2nd<std::greater<long>,long>(greater<long> *,long *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t bind2nd_long__00c20560 = 0x00c20560; // __fastcall binder2nd<std::greater<long>_> bind2nd<std::greater<long>,long>(greater<long> *,long *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t bind2nd_long__00c20560 = 0x00c20560; // __fastcall binder2nd<std::greater<long>_> bind2nd<std::greater<long>,long>(greater<long> *,long *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CTCHero_ProcessInventoryFlagMask = 0x00c20580; // unknown undefined CTCHero_ProcessInventoryFlagMask() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Creature_GetWeaponSlotFromState = 0x00c206e0; // unknown undefined Creature_GetWeaponSlotFromState() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t EmptyStub = 0x00c20720; // unknown undefined EmptyStub() | prototype=incomplete; decompile=yes
@@ -40280,7 +40280,7 @@ namespace fable {
     constexpr std::uintptr_t CTCInventoryBase_GetFirstAvailableIndex = 0x00c21eb0; // unknown undefined CTCInventoryBase_GetFirstAvailableIndex() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t op__00c21ee0 = 0x00c21ee0; // __thiscall bool operator()(CIsThingAlive *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t op__00c21f20 = 0x00c21f20; // __thiscall bool operator()(CIsThingAlive *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t AddLearnedExpression__00c21f30 = 0x00c21f30; // __thiscall void AddLearnedExpression(CTCInventoryAbilities *,long) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t AddLearnedExpression__00c21f30 = 0x00c21f30; // __thiscall void AddLearnedExpression(CTCInventoryAbilities *,long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t WriteToFile__00c21f50 = 0x00c21f50; // __thiscall void WriteToFile(CChunkedFileRawDataChunk *,CDataOutputStream *,CChunkedFileSaver *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t WriteToFile__00c21fa0 = 0x00c21fa0; // __thiscall void WriteToFile(CChunkedFileRawDataChunk *,CDataOutputStream *,CChunkedFileSaver *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t WriteToFile__00c21ff0 = 0x00c21ff0; // __thiscall void WriteToFile(CChunkedFileRawDataChunk *,CDataOutputStream *,CChunkedFileSaver *) | prototype=complete; decompile=yes
@@ -40466,7 +40466,7 @@ namespace fable {
     constexpr std::uintptr_t C3DMeshFileTransformationChunk_UpdateAngle = 0x00c25ea0; // unknown undefined C3DMeshFileTransformationChunk_UpdateAngle() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Radius_ApplyModifiers = 0x00c25f00; // unknown undefined Radius_ApplyModifiers() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t HeroWorksInBrothel_UpdateAnim = 0x00c25f40; // unknown undefined HeroWorksInBrothel_UpdateAnim() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t ConstructString__00c25ff0 = 0x00c25ff0; // __fastcall bool ConstructString(CWideString *,long) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t ConstructString__00c25ff0 = 0x00c25ff0; // __fastcall bool ConstructString(CWideString *,long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CWideString_ConstructFromResourceId = 0x00c26010; // unknown undefined CWideString_ConstructFromResourceId() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t C3DAnimationUtil__00c26060 = 0x00c26060; // __thiscall undefined C3DAnimationUtil(C3DAnimationUtil *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CTCInventory_EquipItem = 0x00c26090; // unknown undefined CTCInventory_EquipItem() | prototype=incomplete; decompile=yes
@@ -40482,8 +40482,8 @@ namespace fable {
     constexpr std::uintptr_t SetDebugCameraType = 0x00c26500; // __thiscall void SetDebugCameraType(CGameScriptInterface *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SetShadowFadeTransform__00c26520 = 0x00c26520; // __thiscall void SetShadowFadeTransform(CShaderRenderManager *,C4DVector *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CBase__00c26550 = 0x00c26550; // __thiscall undefined CBase(CBase *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t op__00c26560 = 0x00c26560; // __thiscall bool operator()(CIsThingAlive *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t op__00c26580 = 0x00c26580; // __thiscall bool operator()(CIsThingAlive *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t op__00c26560 = 0x00c26560; // __thiscall bool operator()(CIsThingAlive *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
+    constexpr std::uintptr_t op__00c26580 = 0x00c26580; // __thiscall bool operator()(CIsThingAlive *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t GetKeyPressed__00c265a0 = 0x00c265a0; // __thiscall wchar_t GetKeyPressed(CManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ReturnAllConfiscatedItems__00c265b0 = 0x00c265b0; // __thiscall void ReturnAllConfiscatedItems(CTCInventoryWeapons *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CScriptModuleBase__00c266e0 = 0x00c266e0; // __thiscall undefined CScriptModuleBase(CScriptModuleBase *) | prototype=incomplete; decompile=yes
@@ -40769,7 +40769,7 @@ namespace fable {
     constexpr std::uintptr_t AddSuccessfulBlockParry__00c2d820 = 0x00c2d820; // __thiscall void AddSuccessfulBlockParry(CTCHeroExperience *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CWeaponDrawState_CalcBlockDamageReduction = 0x00c2d840; // unknown undefined CWeaponDrawState::CalcBlockDamageReduction() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Traits_CalcBlockDamageReduction = 0x00c2d890; // unknown undefined Traits_CalcBlockDamageReduction() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t IsBetting__00c2d8e0 = 0x00c2d8e0; // __thiscall bool IsBetting(CTCTavernGame *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t IsBetting__00c2d8e0 = 0x00c2d8e0; // __thiscall bool IsBetting(CTCTavernGame *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t DrawGetEnvironment__00c2d900 = 0x00c2d900; // __thiscall CIDrawEnvironment * DrawGetEnvironment(CWorld *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t SetAiming__00c2d910 = 0x00c2d910; // __thiscall void SetAiming(CTCWeapon *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Copy__00c2d920 = 0x00c2d920; // __thiscall void Copy(CTCInventory *,CTCBase *) | prototype=complete; decompile=yes
@@ -40936,7 +40936,7 @@ namespace fable {
     constexpr std::uintptr_t CThingFilter_SolidToThing__00c31970 = 0x00c31970; // __thiscall undefined CThingFilter_SolidToThing(CThingFilter_SolidToThing *,CThing *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CSBAgents__00c31990 = 0x00c31990; // __thiscall undefined CSBAgents(CSBAgents *,vector<CSteeringAgent_const*,std::allocator<CSteeringAgent_const*>_> *,CSteeringAgent *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t PKSerialiseCParser_ValidateWriter = 0x00c31a70; // unknown undefined PKSerialiseCParser::ValidateWriter() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Render__00c31b30 = 0x00c31b30; // __thiscall void Render(CDisplayViewManager *,CInterpolationInfo *,bool) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Render__00c31b30 = 0x00c31b30; // __thiscall void Render(CDisplayViewManager *,CInterpolationInfo *,bool) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t BeginInputLoading__00c31b50 = 0x00c31b50; // __thiscall void BeginInputLoading(CMainGameComponent *,CWideString *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t BeginInputLoading__00c31b60 = 0x00c31b60; // __thiscall void BeginInputLoading(CMainGameComponent *,CWideString *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t BeginInputLoading__00c31b70 = 0x00c31b70; // __thiscall void BeginInputLoading(CMainGameComponent *,CWideString *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
@@ -41238,11 +41238,11 @@ namespace fable {
     constexpr std::uintptr_t CVsyncCallbackTimerInfo__00c3a110 = 0x00c3a110; // __thiscall undefined CVsyncCallbackTimerInfo(CVsyncCallbackTimerInfo *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CVsyncCallbackTimerInfo__00c3a310 = 0x00c3a310; // __thiscall undefined CVsyncCallbackTimerInfo(CVsyncCallbackTimerInfo *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CIndexBuffer__00c3a520 = 0x00c3a520; // __thiscall undefined CIndexBuffer(CIndexBuffer *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Transfer__00c3a700 = 0x00c3a700; // __thiscall void Transfer(CThingNoiseDef *,CPersistContext *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Transfer__00c3a720 = 0x00c3a720; // __thiscall void Transfer(CThingNoiseDef *,CPersistContext *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Transfer__00c3a740 = 0x00c3a740; // __thiscall void Transfer(CThingNoiseDef *,CPersistContext *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Transfer__00c3a760 = 0x00c3a760; // __thiscall void Transfer(CThingNoiseDef *,CPersistContext *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Transfer__00c3a780 = 0x00c3a780; // __thiscall void Transfer(CThingNoiseDef *,CPersistContext *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Transfer__00c3a700 = 0x00c3a700; // __thiscall void Transfer(CThingNoiseDef *,CPersistContext *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t Transfer__00c3a720 = 0x00c3a720; // __thiscall void Transfer(CThingNoiseDef *,CPersistContext *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t Transfer__00c3a740 = 0x00c3a740; // __thiscall void Transfer(CThingNoiseDef *,CPersistContext *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t Transfer__00c3a760 = 0x00c3a760; // __thiscall void Transfer(CThingNoiseDef *,CPersistContext *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t Transfer__00c3a780 = 0x00c3a780; // __thiscall void Transfer(CThingNoiseDef *,CPersistContext *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t E2__00c3a7a0 = 0x00c3a7a0; // unknown undefined $E2() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CWorld_AnimationCurve_ApplyTiming = 0x00c3a7d0; // unknown undefined CWorld::AnimationCurve_ApplyTiming() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t AnimationCurve_CheckBoundaryTransition = 0x00c3a8f0; // unknown undefined AnimationCurve_CheckBoundaryTransition() | prototype=incomplete; decompile=yes
@@ -41339,7 +41339,7 @@ namespace fable {
     constexpr std::uintptr_t CVsyncCallbackTimerInfo__00c3c8a0 = 0x00c3c8a0; // __thiscall undefined CVsyncCallbackTimerInfo(CVsyncCallbackTimerInfo *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t WordWrap_SetupCallbacks = 0x00c3c8c0; // unknown undefined WordWrap_SetupCallbacks() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t LinkedList_ClearAndDestructor = 0x00c3c930; // unknown undefined LinkedList_ClearAndDestructor() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t IsBetting__00c3c980 = 0x00c3c980; // __thiscall bool IsBetting(CTCTavernGame *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t IsBetting__00c3c980 = 0x00c3c980; // __thiscall bool IsBetting(CTCTavernGame *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t DrawGetEnvironment__00c3c9a0 = 0x00c3c9a0; // __thiscall CIDrawEnvironment * DrawGetEnvironment(CWorld *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t PushAction = 0x00c3c9b0; // __thiscall void PushAction(CCombatSequenceBase *,CCombatAction *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ScreenEffect_RemoveFromList = 0x00c3c9e0; // unknown undefined ScreenEffect_RemoveFromList() | prototype=incomplete; decompile=yes
@@ -41627,11 +41627,11 @@ namespace fable {
     constexpr std::uintptr_t op_addeq__00c46da0 = 0x00c46da0; // __thiscall void operator+=(CQuadric *,CQuadric *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t IsBetting__00c46dc0 = 0x00c46dc0; // __thiscall bool IsBetting(CTCTavernGame *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ComparisonSort_FloatPairComparator = 0x00c46e20; // unknown undefined ComparisonSort_FloatPairComparator() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t op_addeq__00c46e70 = 0x00c46e70; // __thiscall void operator+=(CQuadric *,CQuadric *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t op_addeq__00c46e70 = 0x00c46e70; // __thiscall void operator+=(CQuadric *,CQuadric *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t Math_VectorMagnitude = 0x00c46e90; // unknown undefined Math_VectorMagnitude() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Init__00c46eb0 = 0x00c46eb0; // __thiscall void Init(CTCGatherPointBuilding *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Init__00c46eb0 = 0x00c46eb0; // __thiscall void Init(CTCGatherPointBuilding *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t op_addeq__00c46ed0 = 0x00c46ed0; // __thiscall C2DCoordI * operator+=(C2DCoordI *,C2DVector *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t op__00c46f20 = 0x00c46f20; // __thiscall C2DVector * operator*=(C2DVector *,float) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t op__00c46f20 = 0x00c46f20; // __thiscall C2DVector * operator*=(C2DVector *,float) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t TurnToPointer__00c46f40 = 0x00c46f40; // __thiscall void TurnToPointer(CMouseCursor *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CGame_ProcessMovementLoop = 0x00c46f90; // unknown undefined CGame_ProcessMovementLoop() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CSBAgents__00c46ff0 = 0x00c46ff0; // __thiscall undefined CSBAgents(CSBAgents *,vector<CSteeringAgent_const*,std::allocator<CSteeringAgent_const*>_> *,CSteeringAgent *) | prototype=incomplete; decompile=yes
@@ -41723,7 +41723,7 @@ namespace fable {
     constexpr std::uintptr_t CScriptDefinitionManager_AllocateElementArray = 0x00c48f80; // unknown undefined CScriptDefinitionManager_AllocateElementArray() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t op_assign__00c49100 = 0x00c49100; // __thiscall CEnginePrimitive2DText * operator=(CEnginePrimitive2DText *,CEnginePrimitive2DText *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTCActivationReceptor_ClearMemory = 0x00c49180; // unknown undefined CTCActivationReceptor_ClearMemory() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t CloseStaticMap__00c491b0 = 0x00c491b0; // __thiscall void CloseStaticMap(CLocalDetailCacheMap *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CloseStaticMap__00c491b0 = 0x00c491b0; // __thiscall void CloseStaticMap(CLocalDetailCacheMap *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t DrawGetEnvironment__00c491d0 = 0x00c491d0; // __thiscall CIDrawEnvironment * DrawGetEnvironment(CWorld *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CFrame_ctor = 0x00c491e0; // unknown undefined CFrame_ctor() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CBase__00c493e0 = 0x00c493e0; // __thiscall undefined CBase(CBase *) | prototype=incomplete; decompile=yes
@@ -41757,7 +41757,7 @@ namespace fable {
     constexpr std::uintptr_t PKCBufferedReader_PrimeBuffer__00c4aeb0 = 0x00c4aeb0; // unknown undefined PKCBufferedReader_PrimeBuffer() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t PKCBufferedReader_ConvertOffsetToAbsolute = 0x00c4afd0; // unknown undefined PKCBufferedReader::ConvertOffsetToAbsolute() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t ClearMessages__00c4b010 = 0x00c4b010; // __thiscall void ClearMessages(CDrawGuildSeal *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Dest_val_std_pair__00c4b040 = 0x00c4b040; // __fastcall void _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>(allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Dest_val_std_pair__00c4b040 = 0x00c4b040; // __fastcall void _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>(allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t PKCBufferedReader_FillBuffer = 0x00c4b060; // unknown undefined PKCBufferedReader_FillBuffer() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Dest_val_NScript_CQ_BountyHuntScript_TeleportData__00c4b270 = 0x00c4b270; // __fastcall void _Dest_val<std::allocator<NScript::CQ_BountyHuntScript::TeleportData>,NScript::CQ_BountyHuntScript::TeleportData>(allocator<NScript::CQ_BountyHuntScript::TeleportData> *,TeleportData *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t PKCBufferedReader_Initialize = 0x00c4b300; // unknown undefined PKCBufferedReader_Initialize() | prototype=incomplete; decompile=yes
@@ -41836,7 +41836,7 @@ namespace fable {
     constexpr std::uintptr_t CDrawGuildSeal_SetProperty = 0x00c51f50; // unknown undefined CDrawGuildSeal_SetProperty() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Resize__00c52840 = 0x00c52840; // __thiscall void Resize(CPersistContext_TransferableVector<CSoundBankEntry> *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t NormalizeProjectionAndSerialize = 0x00c52980; // unknown undefined NormalizeProjectionAndSerialize() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t CPUAheadCounterCallback__00c52a80 = 0x00c52a80; // __cdecl void CPUAheadCounterCallback(ulong) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t CPUAheadCounterCallback__00c52a80 = 0x00c52a80; // __cdecl void CPUAheadCounterCallback(ulong) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CPU_IsCpuidSupported = 0x00c52aa0; // unknown undefined CPU_IsCpuidSupported() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CPU_GetIntelBrandName = 0x00c52ad0; // unknown undefined CPU_GetIntelBrandName() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CPU_GetAMDBrandName = 0x00c52bb0; // unknown undefined CPU_GetAMDBrandName() | prototype=incomplete; decompile=yes
@@ -42055,7 +42055,7 @@ namespace fable {
     constexpr std::uintptr_t Direction_MapBitmaskToIndex = 0x00c5c980; // unknown undefined Direction_MapBitmaskToIndex() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CTCHeroStats_UpdateSoundAndVisuals = 0x00c5ca60; // unknown undefined CTCHeroStats_UpdateSoundAndVisuals() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CReactionMatch_SecondaryAxisCentredMRShifted__00c5ce00 = 0x00c5ce00; // __thiscall undefined CReactionMatch_SecondaryAxisCentredMRShifted(CReactionMatch_SecondaryAxisCentredMRShifted *,EOpinionReactionType,EOpinion,float,float,float,float,float,float) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Init__00c5ce40 = 0x00c5ce40; // __thiscall void Init(CGameflowAssistanceScript *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Init__00c5ce40 = 0x00c5ce40; // __thiscall void Init(CGameflowAssistanceScript *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t Audio_ComputeTimeOffset = 0x00c5ce60; // unknown undefined Audio_ComputeTimeOffset() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t Init__00c5cea0 = 0x00c5cea0; // __thiscall void Init(CV_MurderTwistScript *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CThingSearchTools__00c5ceb0 = 0x00c5ceb0; // __thiscall undefined CThingSearchTools(CThingSearchTools *,CThingManager *,CWorldMap *) | prototype=incomplete; decompile=yes
@@ -43098,7 +43098,7 @@ namespace fable {
     constexpr std::uintptr_t DestroyProceduralTextureVertexBuffers__00cb1210 = 0x00cb1210; // __thiscall void DestroyProceduralTextureVertexBuffers(CEngineLandscapePatch *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CVsyncCallbackTimerInfo__00cb12e0 = 0x00cb12e0; // __thiscall undefined CVsyncCallbackTimerInfo(CVsyncCallbackTimerInfo *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t LinkedList_DestroyAll = 0x00cb1340; // unknown undefined LinkedList_DestroyAll() | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t GetLength__00cb1380 = 0x00cb1380; // __thiscall long GetLength(CCharString *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetLength__00cb1380 = 0x00cb1380; // __thiscall long GetLength(CCharString *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t PeekConnectedToTrackNode__00cb13a0 = 0x00cb13a0; // __thiscall CThingTrackNode * PeekConnectedToTrackNode(CEditControlCentre *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t List_SearchByFieldValue = 0x00cb13c0; // unknown undefined List_SearchByFieldValue() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t CPersistTraits_RemoveNodeAndRecycle = 0x00cb13f0; // unknown undefined CPersistTraits::RemoveNodeAndRecycle() | prototype=incomplete; decompile=yes
@@ -43208,8 +43208,8 @@ namespace fable {
     constexpr std::uintptr_t TransferToGui__00cb77e0 = 0x00cb77e0; // __thiscall void TransferToGui(CGuiVarTransferBool *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnInitialActivate__00cb7800 = 0x00cb7800; // __thiscall void OnInitialActivate(CTCVillage *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t list__00cb7840 = 0x00cb7840; // __thiscall undefined list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Activate__00cb7900 = 0x00cb7900; // __thiscall void Activate(CScriptBase *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__00cb7920 = 0x00cb7920; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Activate__00cb7900 = 0x00cb7900; // __thiscall void Activate(CScriptBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
+    constexpr std::uintptr_t Cons_val_std_pair_std_pair_const__00cb7920 = 0x00cb7920; // __fastcall void _Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>(allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t IsActiveThreadTerminating__00cb7940 = 0x00cb7940; // __thiscall bool IsActiveThreadTerminating(CScriptBase *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t UpdateSpawnedFunction = 0x00cb7950; // __thiscall bool UpdateSpawnedFunction(CScriptBase *,CSpawnedFuncBase *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SaveToGameStateScript__00cb7a00 = 0x00cb7a00; // __thiscall void SaveToGameStateScript(CRuntimeScriptedEntityPersist *,CCharString *) | prototype=complete; decompile=yes
@@ -43415,7 +43415,7 @@ namespace fable {
     constexpr std::uintptr_t HasPhysicsMesh__00cd23b9 = 0x00cd23b9; // __thiscall bool HasPhysicsMesh(C3DMeshInfo *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Dest_val_CIVCountedPointer__00cd23c2 = 0x00cd23c2; // __fastcall void _Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>(allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t Dest_val_CIVCountedPointer__00cd23da = 0x00cd23da; // __fastcall void _Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>(allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t SetMiniMapRegionExitTextOffsetX__00cd2410 = 0x00cd2410; // __thiscall void SetMiniMapRegionExitTextOffsetX(CRegion *,CCharString *,float) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t SetMiniMapRegionExitTextOffsetX__00cd2410 = 0x00cd2410; // __thiscall void SetMiniMapRegionExitTextOffsetX(CRegion *,CCharString *,float) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Dest_val_CIVCountedPointer__00cd2427 = 0x00cd2427; // __fastcall void _Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>(allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Uninit_copy_CArray_std_allocator__00cd25e8 = 0x00cd25e8; // __fastcall CArray<CRandomAppearanceMorph::CBodyPartMesh> * _Uninit_copy<CArray<CRandomAppearanceMorph::CBodyPartMesh>*,CArray<class_CRandomAppearanceMorph::CBodyPartMesh>*,std::allocator<CArray<CRandomAppearanceMorph::CBodyPartMesh>_>_>(CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,allocator<CArray<CRandomAppearanceMorph::CBodyPartMesh>_> *,_Nonscalar_ptr_iterator_tag) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Fill_n__00cd2613 = 0x00cd2613; // __fastcall void _Fill_n<unsigned_long*,unsigned_int,unsigned_long>(ulong *,uint,ulong *) | prototype=complete; decompile=yes
@@ -43472,7 +43472,7 @@ namespace fable {
     constexpr std::uintptr_t SetMiniMapRegionExitTextOffsetX__00cd3187 = 0x00cd3187; // __thiscall void SetMiniMapRegionExitTextOffsetX(CRegion *,CCharString *,float) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnReadFinished__00cd319b = 0x00cd319b; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t OnReadFinished__00cd31d2 = 0x00cd31d2; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t OnReadFinished__00cd3211 = 0x00cd3211; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t OnReadFinished__00cd3211 = 0x00cd3211; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t std_vector_CopyElement = 0x00cd3228; // unknown undefined std_vector_CopyElement() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t OnReadFinished__00cd325f = 0x00cd325f; // __thiscall void OnReadFinished(CActiveFile *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t RBTree_TransferAllocateString = 0x00cd3282; // unknown undefined RBTree_TransferAllocateString() | prototype=incomplete; decompile=yes
@@ -43593,7 +43593,7 @@ namespace fable {
     constexpr std::uintptr_t CEngineSubPrimitive2DClockSprite__00cdd2f0 = 0x00cdd2f0; // __thiscall undefined CEngineSubPrimitive2DClockSprite(CEngineSubPrimitive2DClockSprite *,CEngineInternalPrimitive2DClockSprite *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00cdd310 = 0x00cdd310; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CEngineSubPrimitiveAnimatedMesh__00cdd330 = 0x00cdd330; // __thiscall undefined CEngineSubPrimitiveAnimatedMesh(CEngineSubPrimitiveAnimatedMesh *,CEngineInternalPrimitiveAnimatedMesh *,C3DPrimitive2 *,ERenderMode,bool) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Main__00cdd360 = 0x00cdd360; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Main__00cdd360 = 0x00cdd360; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t Main__00cdd380 = 0x00cdd380; // __thiscall void Main(CGlobal_WatchForHeroDeathScript *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SuspendableProcess__00cdd430 = 0x00cdd430; // __thiscall void SuspendableProcess(CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CSpawnedFunc = 0x00cdd450; // __thiscall undefined CSpawnedFunc<NScript::CExpression_FollowScript>(CSpawnedFunc<NScript::CExpression_FollowScript> *,CCharString *,ulong,CExpression_FollowScript *,_func_void *) | prototype=incomplete; decompile=yes
@@ -43660,7 +43660,7 @@ namespace fable {
     constexpr std::uintptr_t Main__00ce0150 = 0x00ce0150; // __thiscall void Main(CLadyGreysBed *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00ce0260 = 0x00ce0260; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00ce0280 = 0x00ce0280; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Main__00ce0350 = 0x00ce0350; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Main__00ce0350 = 0x00ce0350; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00ce0370 = 0x00ce0370; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00ce0390 = 0x00ce0390; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00ce0440 = 0x00ce0440; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
@@ -44689,7 +44689,7 @@ namespace fable {
     constexpr std::uintptr_t vector_deleting_destructor__00d91300 = 0x00d91300; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Main__00d91320 = 0x00d91320; // __thiscall void Main(CCheckTheSilverKeyChest *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00d91470 = 0x00d91470; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Main__00d91540 = 0x00d91540; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Main__00d91540 = 0x00d91540; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00d91560 = 0x00d91560; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t scalar_deleting_destructor__00d91580 = 0x00d91580; // __thiscall void * `scalar_deleting_destructor'(CEngineSubPrimitiveText *,uint) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CActiveEntityScriptBase_Factory_Type7 = 0x00d915b0; // unknown undefined CActiveEntityScriptBase_Factory_Type7() | prototype=incomplete; decompile=yes
@@ -44823,7 +44823,7 @@ namespace fable {
     constexpr std::uintptr_t vector_deleting_destructor__00da5470 = 0x00da5470; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Main__00da5490 = 0x00da5490; // __thiscall void Main(CMagicBarrierGraveyard *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00da57a0 = 0x00da57a0; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Main__00da5870 = 0x00da5870; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Main__00da5870 = 0x00da5870; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00da5890 = 0x00da5890; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00da58b0 = 0x00da58b0; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00da5960 = 0x00da5960; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
@@ -44979,7 +44979,7 @@ namespace fable {
     constexpr std::uintptr_t vector_deleting_destructor__00dc3fa0 = 0x00dc3fa0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Main__00dc3fc0 = 0x00dc3fc0; // __thiscall void Main(CGraveyardDemon *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00dc4420 = 0x00dc4420; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Main__00dc44e0 = 0x00dc44e0; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Main__00dc44e0 = 0x00dc44e0; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00dc4500 = 0x00dc4500; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00dc4520 = 0x00dc4520; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00dc45e0 = 0x00dc45e0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
@@ -45003,12 +45003,12 @@ namespace fable {
     constexpr std::uintptr_t vector_deleting_destructor__00dc8010 = 0x00dc8010; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Main__00dc8030 = 0x00dc8030; // __thiscall void Main(CSecretPassageFirstGate *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00dc83e0 = 0x00dc83e0; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Main__00dc84a0 = 0x00dc84a0; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Main__00dc84a0 = 0x00dc84a0; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00dc84c0 = 0x00dc84c0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00dc84e0 = 0x00dc84e0; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00dc85a0 = 0x00dc85a0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00dc85c0 = 0x00dc85c0; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Main__00dc86c0 = 0x00dc86c0; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Main__00dc86c0 = 0x00dc86c0; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00dc86e0 = 0x00dc86e0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CActiveEntityScriptBase_Create_dc8700 = 0x00dc8700; // unknown undefined CActiveEntityScriptBase_Create_dc8700() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t SuspendableProcess__00dc8810 = 0x00dc8810; // __thiscall void SuspendableProcess(CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *) | prototype=complete; decompile=yes
@@ -45222,7 +45222,7 @@ namespace fable {
     constexpr std::uintptr_t Main__00debe50 = 0x00debe50; // __thiscall void Main(CGlobal_WatchForHeroDeathScript *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t SuspendableProcess__00debee0 = 0x00debee0; // __thiscall void SuspendableProcess(CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t CTriangleList__00dec4c0 = 0x00dec4c0; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Main__00dec570 = 0x00dec570; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Main__00dec570 = 0x00dec570; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00dec590 = 0x00dec590; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CActiveEntityScriptBase_Create_dec5b0 = 0x00dec5b0; // unknown undefined CActiveEntityScriptBase_Create_dec5b0() | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t SuspendableProcess__00dec6c0 = 0x00dec6c0; // __thiscall void SuspendableProcess(CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *) | prototype=complete; decompile=yes
@@ -45235,7 +45235,7 @@ namespace fable {
     constexpr std::uintptr_t SuspendableProcess__00decaa0 = 0x00decaa0; // __thiscall void SuspendableProcess(CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00decab0 = 0x00decab0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Main__00decad0 = 0x00decad0; // __thiscall undefined Main(CV_TravellingHeroesScript *) | prototype=incomplete; decompile=no
-    constexpr std::uintptr_t Init__00ded0a0 = 0x00ded0a0; // __thiscall void Init(CMeleeApprentice *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Init__00ded0a0 = 0x00ded0a0; // __thiscall void Init(CMeleeApprentice *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t BanditYells__00ded0c0 = 0x00ded0c0; // __thiscall void BanditYells(CQ_HangingTreeEvilScript *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00ded1a0 = 0x00ded1a0; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00ded270 = 0x00ded270; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
@@ -45577,10 +45577,10 @@ namespace fable {
     constexpr std::uintptr_t Main__00e18630 = 0x00e18630; // __thiscall void Main(CQ_WhiteBalverineWWScript *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t MonitorBalverine = 0x00e18eb0; // __thiscall void MonitorBalverine(CQ_WhiteBalverineWWScript *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00e190a0 = 0x00e190a0; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Main__00e191a0 = 0x00e191a0; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Main__00e191a0 = 0x00e191a0; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00e191c0 = 0x00e191c0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00e191e0 = 0x00e191e0; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Main__00e192a0 = 0x00e192a0; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Main__00e192a0 = 0x00e192a0; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00e192c0 = 0x00e192c0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00e192e0 = 0x00e192e0; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00e193b0 = 0x00e193b0; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
@@ -45607,7 +45607,7 @@ namespace fable {
     constexpr std::uintptr_t vector_deleting_destructor__00e1b730 = 0x00e1b730; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Main__00e1b750 = 0x00e1b750; // __thiscall void Main(CHKC_ScreamerPoint *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00e1b950 = 0x00e1b950; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
-    constexpr std::uintptr_t Main__00e1ba20 = 0x00e1ba20; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t Main__00e1ba20 = 0x00e1ba20; // __thiscall void Main(CQ_SunnyvaleMasterScript *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t vector_deleting_destructor__00e1ba40 = 0x00e1ba40; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
     constexpr std::uintptr_t CTriangleList__00e1ba60 = 0x00e1ba60; // __thiscall undefined CTriangleList(CTriangleList *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t vector_deleting_destructor__00e1bb60 = 0x00e1bb60; // __thiscall void * `vector_deleting_destructor'(CLandscapeBackgroundPatch *,uint) | prototype=complete; decompile=yes
