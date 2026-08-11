@@ -52248,6 +52248,167 @@ $catalog = @(
         TestSource = '00/4a/CActiveFile_OnReadFinished_004ac250_test.cpp'
         PassPattern = '004ac250_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004bbbc0'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/4b/CGuiVarTransferBool_TransferToGui_004bbbc0.cpp'
+        TestSource = '00/4b/CGuiVarTransferBool_TransferToGui_004bbbc0_test.cpp'
+        PassPattern = '004bbbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c5990'
+        Module = 'CActiveFile'
+        Source = '00/4c/CActiveFile_OnReadFinished_004c5990.cpp'
+        TestSource = '00/4c/CActiveFile_OnReadFinished_004c5990_test.cpp'
+        PassPattern = '004c5990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c5c60'
+        Module = 'CActiveFile'
+        Source = '00/4c/CActiveFile_OnReadFinished_004c5c60.cpp'
+        TestSource = '00/4c/CActiveFile_OnReadFinished_004c5c60_test.cpp'
+        PassPattern = '004c5c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004cd650'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/4c/CGuiVarTransferBool_TransferToGui_004cd650.cpp'
+        TestSource = '00/4c/CGuiVarTransferBool_TransferToGui_004cd650_test.cpp'
+        PassPattern = '004cd650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2620'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/4d/CGuiVarTransferBool_TransferToGui_004d2620.cpp'
+        TestSource = '00/4d/CGuiVarTransferBool_TransferToGui_004d2620_test.cpp'
+        PassPattern = '004d2620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004de60a'
+        Module = 'CTCInventoryItem'
+        Source = '00/4d/CTCInventoryItem_OnDie_004de60a.cpp'
+        TestSource = '00/4d/CTCInventoryItem_OnDie_004de60a_test.cpp'
+        PassPattern = '004de60a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004dffa5'
+        Module = 'CVillageMemberDef'
+        Source = '00/4d/CVillageMemberDef_Copy_004dffa5.cpp'
+        TestSource = '00/4d/CVillageMemberDef_Copy_004dffa5_test.cpp'
+        PassPattern = '004dffa5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e00a3'
+        Module = 'CReadableDef'
+        Source = '00/4e/CReadableDef_Copy_004e00a3.cpp'
+        TestSource = '00/4e/CReadableDef_Copy_004e00a3_test.cpp'
+        PassPattern = '004e00a3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e01a7'
+        Module = 'CBuyHouseDef'
+        Source = '00/4e/CBuyHouseDef_Copy_004e01a7.cpp'
+        TestSource = '00/4e/CBuyHouseDef_Copy_004e01a7_test.cpp'
+        PassPattern = '004e01a7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e01c0'
+        Module = 'CWifeDef'
+        Source = '00/4e/CWifeDef_Copy_004e01c0.cpp'
+        TestSource = '00/4e/CWifeDef_Copy_004e01c0_test.cpp'
+        PassPattern = '004e01c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e064e'
+        Module = 'CEnemyDef'
+        Source = '00/4e/CEnemyDef_Copy_004e064e.cpp'
+        TestSource = '00/4e/CEnemyDef_Copy_004e064e_test.cpp'
+        PassPattern = '004e064e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e0a4e'
+        Module = 'CBoastingPodiumDef'
+        Source = '00/4e/CBoastingPodiumDef_Copy_004e0a4e.cpp'
+        TestSource = '00/4e/CBoastingPodiumDef_Copy_004e0a4e_test.cpp'
+        PassPattern = '004e0a4e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e0ca7'
+        Module = 'CExpressionSubDef'
+        Source = '00/4e/CExpressionSubDef_Copy_004e0ca7.cpp'
+        TestSource = '00/4e/CExpressionSubDef_Copy_004e0ca7_test.cpp'
+        PassPattern = '004e0ca7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e0e0a'
+        Module = 'CInterestingToVillagersDef'
+        Source = '00/4e/CInterestingToVillagersDef_Copy_004e0e0a.cpp'
+        TestSource = '00/4e/CInterestingToVillagersDef_Copy_004e0e0a_test.cpp'
+        PassPattern = '004e0e0a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e0f02'
+        Module = 'CTavernDef'
+        Source = '00/4e/CTavernDef_Copy_004e0f02.cpp'
+        TestSource = '00/4e/CTavernDef_Copy_004e0f02_test.cpp'
+        PassPattern = '004e0f02_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e0f1b'
+        Module = 'CDrunkennessDef'
+        Source = '00/4e/CDrunkennessDef_Copy_004e0f1b.cpp'
+        TestSource = '00/4e/CDrunkennessDef_Copy_004e0f1b_test.cpp'
+        PassPattern = '004e0f1b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e0fed'
+        Module = 'CGoldDef'
+        Source = '00/4e/CGoldDef_Copy_004e0fed.cpp'
+        TestSource = '00/4e/CGoldDef_Copy_004e0fed_test.cpp'
+        PassPattern = '004e0fed_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e10a8'
+        Module = 'CCoinGameObstacleDef'
+        Source = '00/4e/CCoinGameObstacleDef_Copy_004e10a8.cpp'
+        TestSource = '00/4e/CCoinGameObstacleDef_Copy_004e10a8_test.cpp'
+        PassPattern = '004e10a8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e14fd'
+        Module = 'CAICreatureWillPowerIndicatorDef'
+        Source = '00/4e/CAICreatureWillPowerIndicatorDef_Copy_004e14fd.cpp'
+        TestSource = '00/4e/CAICreatureWillPowerIndicatorDef_Copy_004e14fd_test.cpp'
+        PassPattern = '004e14fd_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e187e'
+        Module = 'CCameraCollisionDef'
+        Source = '00/4e/CCameraCollisionDef_Copy_004e187e.cpp'
+        TestSource = '00/4e/CCameraCollisionDef_Copy_004e187e_test.cpp'
+        PassPattern = '004e187e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ed459'
+        Module = 'CAnimatingObjectDef'
+        Source = '00/4e/CAnimatingObjectDef_Transfer_004ed459.cpp'
+        TestSource = '00/4e/CAnimatingObjectDef_Transfer_004ed459_test.cpp'
+        PassPattern = '004ed459_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004e0f34'
+        Module = 'CFireballSpellLevelDef'
+        Source = '00/4e/CFireballSpellLevelDef_Copy_004e0f34.cpp'
+        TestSource = '00/4e/CFireballSpellLevelDef_Copy_004e0f34_test.cpp'
+        PassPattern = '004e0f34_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d2600'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/4d/CGuiVarTransferBool_TransferToGui_004d2600.cpp'
+        TestSource = '00/4d/CGuiVarTransferBool_TransferToGui_004d2600_test.cpp'
+        PassPattern = '004d2600_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
