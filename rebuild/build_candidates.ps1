@@ -54713,6 +54713,174 @@ $catalog = @(
         TestSource = '00/bd/CEngineVSConstantLayoutBasic_PeekName_00bdbf00_test.cpp'
         PassPattern = 'PEEKNAME_OK'
     }
+    [pscustomobject]@{
+        Address = '00bdc020'
+        Module = 'CEngineLandscapeMap'
+        Source = '00/bd/CEngineLandscapeMap_UpdateBackgroundTesselation_00bdc020.cpp'
+        TestSource = '00/bd/CEngineLandscapeMap_UpdateBackgroundTesselation_00bdc020_test.cpp'
+        PassPattern = 'TESSELATION_GUARD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bec8b0'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/be/CEngineInternalPrimitiveMeshBase_CollectStats_00bec8b0.cpp'
+        TestSource = '00/be/CEngineInternalPrimitiveMeshBase_CollectStats_00bec8b0_test.cpp'
+        PassPattern = 'COLLECTSTATS_FWD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bef810'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/be/CGuiVarTransferBool_TransferToGui_00bef810.cpp'
+        TestSource = '00/be/CGuiVarTransferBool_TransferToGui_00bef810_test.cpp'
+        PassPattern = 'TRANSFERTOGUI_OK'
+    }
+    [pscustomobject]@{
+        Address = '00befc80'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/be/CGuiVarTransferBool_TransferToGui_00befc80.cpp'
+        TestSource = '00/be/CGuiVarTransferBool_TransferToGui_00befc80_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1bb60'
+        Module = 'CTCVillage'
+        Source = '00/c1/CTCVillage_ResetCrier_00c1bb60.cpp'
+        TestSource = '00/c1/CTCVillage_ResetCrier_00c1bb60_test.cpp'
+        PassPattern = 'RESETCRIER_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1e260'
+        Module = 'CAIStateGroupBase'
+        Source = '00/c1/CAIStateGroupBase_PeekThingSearchTools_00c1e260.cpp'
+        TestSource = '00/c1/CAIStateGroupBase_PeekThingSearchTools_00c1e260_test.cpp'
+        PassPattern = 'PEEKTST_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c27ba0'
+        Module = 'vector<EWeaponClass'
+        Source = '00/c2/vectorEWeaponClass_UmoveEWeaponClass_00c27ba0.cpp'
+        TestSource = '00/c2/vectorEWeaponClass_UmoveEWeaponClass_00c27ba0_test.cpp'
+        PassPattern = 'UMOVE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c32b80'
+        Module = 'CUserProfileManager'
+        Source = '00/c3/CUserProfileManager_CaptureBackBufferForUIBackgroundIfNonExistant_00c32b80.cpp'
+        TestSource = '00/c3/CUserProfileManager_CaptureBackBufferForUIBackgroundIfNonExistant_00c32b80_test.cpp'
+        PassPattern = 'PROFILE_CAPTURE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c59860'
+        Module = 'CDataInputStream'
+        Source = '00/c5/CDataInputStream_Close_00c59860.cpp'
+        TestSource = '00/c5/CDataInputStream_Close_00c59860_test.cpp'
+        PassPattern = 'CLOSE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ca7f70'
+        Module = 'CGameCameraManager'
+        Source = '00/ca/CGameCameraManager_HasCameraMode_00ca7f70.cpp'
+        TestSource = '00/ca/CGameCameraManager_HasCameraMode_00ca7f70_test.cpp'
+        PassPattern = 'HASCAMERAMODE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ca7f90'
+        Module = 'CGameCameraManager'
+        Source = '00/ca/CGameCameraManager_HasCameraMode_00ca7f90.cpp'
+        TestSource = '00/ca/CGameCameraManager_HasCameraMode_00ca7f90_test.cpp'
+        PassPattern = 'HASCAMERAMODE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cb77e0'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/cb/CGuiVarTransferBool_TransferToGui_00cb77e0.cpp'
+        TestSource = '00/cb/CGuiVarTransferBool_TransferToGui_00cb77e0_test.cpp'
+        PassPattern = 'TRANSFERTOGUI_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cb80f0'
+        Module = 'SetStaticCast<NUISystem'
+        Source = '00/cb/SetStaticCastNUISystem_CComponent_00cb80f0.cpp'
+        TestSource = '00/cb/SetStaticCastNUISystem_CComponent_00cb80f0_test.cpp'
+        PassPattern = 'SETSTATICCAST_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cbd5b0'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/cb/CGuiVarTransferBool_TransferToGui_00cbd5b0.cpp'
+        TestSource = '00/cb/CGuiVarTransferBool_TransferToGui_00cbd5b0_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cbdfd0'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/cb/CGuiVarTransferBool_TransferToGui_00cbdfd0.cpp'
+        TestSource = '00/cb/CGuiVarTransferBool_TransferToGui_00cbdfd0_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cbdff0'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/cb/CGuiVarTransferBool_TransferToGui_00cbdff0.cpp'
+        TestSource = '00/cb/CGuiVarTransferBool_TransferToGui_00cbdff0_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cdb530'
+        Module = 'CActiveFile'
+        Source = '00/cd/CActiveFile_OnReadFinished_00cdb530.cpp'
+        TestSource = '00/cd/CActiveFile_OnReadFinished_00cdb530_test.cpp'
+        PassPattern = 'PASS_OnReadFinished_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cdb730'
+        Module = 'CActiveFile'
+        Source = '00/cd/CActiveFile_OnReadFinished_00cdb730.cpp'
+        TestSource = '00/cd/CActiveFile_OnReadFinished_00cdb730_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '00f35a10'
+        Module = 'CModeSitBase'
+        Source = '00/f3/CModeSitBase_RemoveModeWithAction_00f35a10.cpp'
+        TestSource = '00/f3/CModeSitBase_RemoveModeWithAction_00f35a10_test.cpp'
+        PassPattern = 'SIT_REMOVE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00478751'
+        Module = 'vector<CIntelligentPointer<CThing_const_>'
+        Source = '00/47/vectorCIntelligentPointerCThingconst_Destroy_00478751.cpp'
+        TestSource = '00/47/vectorCIntelligentPointerCThingconst_Destroy_00478751_test.cpp'
+        PassPattern = 'DESTROY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0047cfee'
+        Module = 'CAIStateGroup_BuyFromSeller'
+        Source = '00/47/CAIStateGroupBuyFromSeller_BoughtSomething_0047cfee.cpp'
+        TestSource = '00/47/CAIStateGroupBuyFromSeller_BoughtSomething_0047cfee_test.cpp'
+        PassPattern = 'BUYFROMSELLER_OK'
+    }
+    [pscustomobject]@{
+        Address = '004874f0'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_IsUsingJoystickDeviceNumber_004874f0.cpp'
+        TestSource = '00/48/CPlayer_IsUsingJoystickDeviceNumber_004874f0_test.cpp'
+        PassPattern = 'JOYDEV_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049e350'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_DrawGetEnvironment_0049e350.cpp'
+        TestSource = '00/49/CWorld_DrawGetEnvironment_0049e350_test.cpp'
+        PassPattern = 'DRAWENV_OK'
+    }
+    [pscustomobject]@{
+        Address = '004a9760'
+        Module = 'CIntelligentPointer<CThingCreatureBase>'
+        Source = '00/4a/CIntelligentPointerCThingCreatureBase_operator_004a9760.cpp'
+        TestSource = '00/4a/CIntelligentPointerCThingCreatureBase_operator_004a9760_test.cpp'
+        PassPattern = 'INTPTR_ASSIGN_OK'
+    }
 )
 
 $requestedAddresses = @(
