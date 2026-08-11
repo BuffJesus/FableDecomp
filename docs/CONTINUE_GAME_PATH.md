@@ -72,3 +72,19 @@ CWorld::LoadGameState                  0x004a3200  (752B)   world-level load coo
 Start byte-parity work at tractability tier 1-2 through the normal crawl
 (`verify_and_land`, trim over-captures first). The large deserializers and the save
 enumeration seam are the multi-session core; the map above is the dependency order.
+
+## 2026-08-10 — save-enumeration seam opened
+
+The seam lives in **CUserProfileManager** (not a separate CSaveGameManager): it owns
+save filename/display-name generation + file-list enumeration. First byte-exact
+landings (RELOCATION_MATCH): `GetAutoSaveFileName` 0x00406690 and 0x004065d0 — both
+are the stack-hidden-return CWideString factory shape (`return CWideString(literal)`
+via ctor 0x99b6b0), same family as the GetActionName factories. So the filename
+getters are directly landable; the manifest over-captures them (int3-padded 32/64B
+spans = 21B real fns — trim first). Remaining cluster (un-landed, sizes in the doc
+above): GetManualSaveFileName 0x406610 (128B), GetAutoSaveDisplayName 0x4069e0/0x406c20
+(160B), GetEmptySlotName 0x406a80 (86B: g_13b86a0 check -> CWideString ctor 0x99ebf0 +
+call 0x9c95e0 + dtor 0x99eae0, else the 0x99b6b0 factory), GetManualSaveDisplayName
+0x406ae0 (320B), GetAutoSavePathName 0x406f70 (192B), GetSaveDisplayNameFromFileName
+0x407e10 (448B), LoadFileList 0x4091c0 (544B). The DISPLAY-name getters are what the
+frontend save list shows ("AutoSave"/"Save 1/2/3"); LoadFileList enumerates the slots.
