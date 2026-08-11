@@ -55820,6 +55820,167 @@ $catalog = @(
         TestSource = '00/8c/CCreatureActionScorpionRecover_InitialiseCCreatureActionScorpionRecoverUAEXXZ_008c3ee0_test.cpp'
         PassPattern = 'SCORPIONRECOVER_INIT_OK'
     }
+    [pscustomobject]@{
+        Address = '008cabe0'
+        Module = 'CCreatureAction_SummonerLightningOrbInto'
+        Source = '00/8c/CCreatureActionSummonerLightningOrbInto_FinishActionCCreatureActionSummonerLightningOrbI_008cabe0.cpp'
+        TestSource = '00/8c/CCreatureActionSummonerLightningOrbInto_FinishActionCCreatureActionSummonerLightningOrbI_008cabe0_test.cpp'
+        PassPattern = 'FINISHACTION_ORB_OK'
+    }
+    [pscustomobject]@{
+        Address = '008d69d0'
+        Module = 'CModeDragonRearUp'
+        Source = '00/8d/CModeDragonRearUp_OnActivate_008d69d0.cpp'
+        TestSource = '00/8d/CModeDragonRearUp_OnActivate_008d69d0_test.cpp'
+        PassPattern = 'DRAGONREARUP_OK'
+    }
+    [pscustomobject]@{
+        Address = '008d69f0'
+        Module = 'CModeDragonRearUp'
+        Source = '00/8d/CModeDragonRearUp_OnActivate_008d69f0.cpp'
+        TestSource = '00/8d/CModeDragonRearUp_OnActivate_008d69f0_test.cpp'
+        PassPattern = 'REARUP_OK'
+    }
+    [pscustomobject]@{
+        Address = '008d6a80'
+        Module = 'CModeDragonRearUp'
+        Source = '00/8d/CModeDragonRearUp_OnActivate_008d6a80.cpp'
+        TestSource = '00/8d/CModeDragonRearUp_OnActivate_008d6a80_test.cpp'
+        PassPattern = 'REARUP_ACTIVATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '008e7290'
+        Module = 'CModeDragonBase'
+        Source = '00/8e/CModeDragonBase_OnActivate_008e7290.cpp'
+        TestSource = '00/8e/CModeDragonBase_OnActivate_008e7290_test.cpp'
+        PassPattern = 'DRAGON_ONACTIVATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '008ed830'
+        Module = 'CCreatureAction_Die'
+        Source = '00/8e/CCreatureActionDie_FinishActionCCreatureActionDieUAEXXZ_008ed830.cpp'
+        TestSource = '00/8e/CCreatureActionDie_FinishActionCCreatureActionDieUAEXXZ_008ed830_test.cpp'
+        PassPattern = 'DIE_FINISH_OK'
+    }
+    [pscustomobject]@{
+        Address = '008f2ae0'
+        Module = 'CCreatureAction_DragonFlight'
+        Source = '00/8f/CCreatureActionDragonFlight_InitialiseCCreatureActionDragonFlightUAEXXZ_008f2ae0.cpp'
+        TestSource = '00/8f/CCreatureActionDragonFlight_InitialiseCCreatureActionDragonFlightUAEXXZ_008f2ae0_test.cpp'
+        PassPattern = 'DRAGONFLIGHT_INIT_OK'
+    }
+    [pscustomobject]@{
+        Address = '008fd2ca'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/8f/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_008fd2ca.cpp'
+        TestSource = '00/8f/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_008fd2ca_test.cpp'
+        PassPattern = 'DESTVAL_PAIR_OK'
+    }
+    [pscustomobject]@{
+        Address = '008fecec'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/8f/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_008fecec.cpp'
+        TestSource = '00/8f/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_008fecec_test.cpp'
+        PassPattern = 'DESTVAL_ORDER_OK'
+    }
+    [pscustomobject]@{
+        Address = '0090010e'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/90/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_0090010e.cpp'
+        TestSource = '00/90/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_0090010e_test.cpp'
+        PassPattern = 'DESTROY_ORDER_OK 1c 14 00'
+    }
+    [pscustomobject]@{
+        Address = '00900533'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/90/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00900533.cpp'
+        TestSource = '00/90/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00900533_test.cpp'
+        PassPattern = 'DEST_VAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00900f43'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/90/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00900f43.cpp'
+        TestSource = '00/90/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00900f43_test.cpp'
+        PassPattern = 'DESTVAL_ORDER_OK'
+    }
+    [pscustomobject]@{
+        Address = '00918150'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/91/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00918150.cpp'
+        TestSource = '00/91/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00918150_test.cpp'
+        PassPattern = 'DESTVAL_ORDER_OK'
+    }
+    [pscustomobject]@{
+        Address = '0091e480'
+        Module = 'CAIStateGroup_HoverAttackUnlessTargetIsFleeing'
+        Source = '00/91/CAIStateGroupHoverAttackUnlessTargetIsFleeing_IsRunnableLeaf_0091e480.cpp'
+        TestSource = '00/91/CAIStateGroupHoverAttackUnlessTargetIsFleeing_IsRunnableLeaf_0091e480_test.cpp'
+        PassPattern = 'RUNNABLE_LEAF_OK'
+    }
+    [pscustomobject]@{
+        Address = '0091e970'
+        Module = 'CAIStateGroup_CreatureRangedCombat2'
+        Source = '00/91/CAIStateGroupCreatureRangedCombat2_InitStateGroup_0091e970.cpp'
+        TestSource = '00/91/CAIStateGroupCreatureRangedCombat2_InitStateGroup_0091e970_test.cpp'
+        PassPattern = 'INITSTATEGROUP_OK'
+    }
+    [pscustomobject]@{
+        Address = '00927be0'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/92/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00927be0.cpp'
+        TestSource = '00/92/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00927be0_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '009baa10'
+        Module = 'CPersistContext'
+        Source = '00/9b/CPersistContext_Init_009baa10.cpp'
+        TestSource = '00/9b/CPersistContext_Init_009baa10_test.cpp'
+        PassPattern = 'PERSISTINIT_OK'
+    }
+    [pscustomobject]@{
+        Address = '009cb910'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/9c/C3DAnimationBlendState_AddCombinationBlend_009cb910.cpp'
+        TestSource = '00/9c/C3DAnimationBlendState_AddCombinationBlend_009cb910_test.cpp'
+        PassPattern = 'COMBBLEND_OK'
+    }
+    [pscustomobject]@{
+        Address = '009d3b70'
+        Module = 'CTCInventoryItem'
+        Source = '00/9d/CTCInventoryItem_OnDie_009d3b70.cpp'
+        TestSource = '00/9d/CTCInventoryItem_OnDie_009d3b70_test.cpp'
+        PassPattern = 'ONDIE_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009e2540'
+        Module = '_global'
+        Source = '00/9e/global_CPUAheadCounterCallback_009e2540.cpp'
+        TestSource = '00/9e/global_CPUAheadCounterCallback_009e2540_test.cpp'
+        PassPattern = 'RDTSC_OK'
+    }
+    [pscustomobject]@{
+        Address = '009ea210'
+        Module = 'CGenericVar'
+        Source = '00/9e/CGenericVar_Init_009ea210.cpp'
+        TestSource = '00/9e/CGenericVar_Init_009ea210_test.cpp'
+        PassPattern = 'GENERICVAR_INIT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a013c0'
+        Module = 'CGraphicDataBank'
+        Source = '00/a0/CGraphicDataBank_IsUsingSurfaces_00a013c0.cpp'
+        TestSource = '00/a0/CGraphicDataBank_IsUsingSurfaces_00a013c0_test.cpp'
+        PassPattern = 'PASS_IsUsingSurfaces'
+    }
+    [pscustomobject]@{
+        Address = '00a1a150'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_Interrupt_00a1a150.cpp'
+        TestSource = '00/a1/CNavigatorAStar_Interrupt_00a1a150_test.cpp'
+        PassPattern = 'INTERRUPT_OK'
+    }
 )
 
 $requestedAddresses = @(
