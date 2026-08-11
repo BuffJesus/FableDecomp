@@ -8179,6 +8179,7 @@ element; our disasm sees one Transfer-in-loop), flag `partial(array-unrolled:...
 **namespaced** (`NUISystem` CUIDef/CUIIconsDef/CUIMiscThingsDef/CUIStateDef/CUILocaleGraphicsDef +
 `NSpeechGainManager` CDialogueLayerDef), not missing — the discovery regex required `@@` right after
 `Def`. Merged with `namespace` + `fable_defs_class` alias (CUIDef↔CUiDef). Now **268 defs / 267 exact**.
-(3) **NOT DONE — ship it:** attach the JSON to jamen / open a `jamen/fable-defs` issue using the
-per-class `fable_defs_order_match` flags (session option (b)). Context: EGOCORE_ASSESSMENT addenda +
-memory `fable-defs-oracle`.
+(3) ~~ship it~~ **DONE 2026-08-11** — issue opened https://github.com/jamen/fable-defs/issues/1
+(offers the JSON; awaiting jamen's preferred form). The actual 456KB file was NOT sent — a bulk gist
+upload was blocked by the harness data-exfil guard; deliver only with explicit user sign-off after
+the maintainer replies. Context: EGOCORE_ASSESSMENT addenda + memory `fable-defs-oracle`.
