@@ -51702,6 +51702,90 @@ $catalog = @(
         TestSource = '00/8f/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_008fd56a_test.cpp'
         PassPattern = '008fd56a_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0049d850'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/49/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0049d850.cpp'
+        TestSource = '00/49/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_0049d850_test.cpp'
+        PassPattern = '0049d850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb7900'
+        Module = 'CScriptBase'
+        Source = '00/cb/CScriptBase_Activate_00cb7900.cpp'
+        TestSource = '00/cb/CScriptBase_Activate_00cb7900_test.cpp'
+        PassPattern = '00cb7900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ba222'
+        Module = 'CRegion'
+        Source = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005ba222.cpp'
+        TestSource = '00/5b/CRegion_SetMiniMapRegionExitTextOffsetX_005ba222_test.cpp'
+        PassPattern = '005ba222_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd2410'
+        Module = 'CRegion'
+        Source = '00/cd/CRegion_SetMiniMapRegionExitTextOffsetX_00cd2410.cpp'
+        TestSource = '00/cd/CRegion_SetMiniMapRegionExitTextOffsetX_00cd2410_test.cpp'
+        PassPattern = '00cd2410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d31c0'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d31c0.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d31c0_test.cpp'
+        PassPattern = '004d31c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d39eb'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d39eb.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d39eb_test.cpp'
+        PassPattern = '004d39eb_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005790fc'
+        Module = 'vector<EWeaponClass'
+        Source = '00/57/vectorEWeaponClass_UmoveEWeaponClass_005790fc.cpp'
+        TestSource = '00/57/vectorEWeaponClass_UmoveEWeaponClass_005790fc_test.cpp'
+        PassPattern = '005790fc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4b040'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/c4/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00c4b040.cpp'
+        TestSource = '00/c4/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00c4b040_test.cpp'
+        PassPattern = '00c4b040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004861df'
+        Module = 'vector<EWeaponClass'
+        Source = '00/48/vectorEWeaponClass_UmoveEWeaponClass_004861df.cpp'
+        TestSource = '00/48/vectorEWeaponClass_UmoveEWeaponClass_004861df_test.cpp'
+        PassPattern = '004861df_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b1975'
+        Module = 'CEngineSceneGrid'
+        Source = '00/5b/CEngineSceneGrid_GetCellBoundingBox_005b1975.cpp'
+        TestSource = '00/5b/CEngineSceneGrid_GetCellBoundingBox_005b1975_test.cpp'
+        PassPattern = '005b1975_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b1ff4'
+        Module = 'CEngineSceneGrid'
+        Source = '00/5b/CEngineSceneGrid_GetCellBoundingBox_005b1ff4.cpp'
+        TestSource = '00/5b/CEngineSceneGrid_GetCellBoundingBox_005b1ff4_test.cpp'
+        PassPattern = '005b1ff4_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005baeac'
+        Module = 'CEngineSceneGrid'
+        Source = '00/5b/CEngineSceneGrid_GetCellBoundingBox_005baeac.cpp'
+        TestSource = '00/5b/CEngineSceneGrid_GetCellBoundingBox_005baeac_test.cpp'
+        PassPattern = '005baeac_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
