@@ -1,6 +1,6 @@
 # Reconstruction backlog
 
-Generated: `2026-08-10T20:40:21-06:00`
+Generated: `2026-08-11T17:35:25-06:00`
 
 The order favors generated candidate clusters first, then extension of proven modules, small prototype closures, and finally bulk signature work.
 

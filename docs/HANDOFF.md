@@ -8183,3 +8183,32 @@ element; our disasm sees one Transfer-in-loop), flag `partial(array-unrolled:...
 (offers the JSON; awaiting jamen's preferred form). The actual 456KB file was NOT sent — a bulk gist
 upload was blocked by the harness data-exfil guard; deliver only with explicit user sign-off after
 the maintainer replies. Context: EGOCORE_ASSESSMENT addenda + memory `fable-defs-oracle`.
+
+---
+## 2026-08-11 addendum — parity-crawl surge session wrap (resume: crawl @ gen_batch126)
+
+Ran the binary-wide parity crawl continuously via the Workflow lane (24 agents/batch,
+each self-verifies through verify_and_land dry-run; merge from on-disk lv_<addr> files;
+land_batch --land; lean commit). **Batches 105→126 = 500 functions landed byte-exact**
+(~96% hit rate; ~25 deferred, all known compiler-artifact classes: void-member-forwarder
+TCO `jmp`-vs-`call;ret`, STL checked-iterator `_Fill_n`, eax-vs-ecx reg-alloc, `_Construct_n`).
+Durable `gen_tried` ledger 2048→**2576** (deferrals shelved there so they aren't re-suggested).
+Landed veins of note: CCombatSequence/CCreatureAction `GetName`, `GetChunkDescription`/`GetChunkInfo`,
+`GetConsoleEnableFunctionName`, `PeekName` string factories; then varied C++ (vtable-slot predicates,
+`vector deleting destructor` ??_E thunks, `_Dest_val`/`_Destroy` range helpers, `OnDie`/`OnActivate`,
+`OnReadFinished`). One transient server rate-limit hiccup (batch 119) recovered by re-dispatching the
+stalled agents — no recoverable function lost.
+
+**Dashboards refreshed** (canonical `tools/run_rebuild_refresh.ps1`, 2026-08-11T17:35):
+VC7.1-compiled **7,611→8,111** (+500); Verified functional-or-matching **7,457→7,947**
+(15.04%→**16.03%**); Byte-identical **3,645→3,739** (7.35%→**7.54%**); relocation-masked
+**3,810→4,206** (7.69%→**8.49%**). See rebuild/COVERAGE.md.
+
+RESUME the crawl: crawl-relaunch procedure unchanged (repoint next_smallest SCR → seed gen_tried from
+durable → next_smallest 24 gen_batch127 → trim_overcapture → trim_tailjmp → build targets.json w/
+capstone → Workflow(script parity-crawl-batch106-*.js, args {scr,batch,addrs}) → merge from lv_ dirs →
+land_batch --land → lean commit). Helper scripts live in this session's scratchpad (land_batch.py).
+
+**fable-defs oracle: CLOSED.** Issue jamen/fable-defs#1 was posted AND closed by the user; the "absent
+oracle" premise was a stale AGENTS.md line (jamen's agent). Do not reopen/post; don't ship the 456KB JSON
+unless jamen asks after a real layout bug. Our extraction independently agrees on 267/268 `#[def]` orders.
