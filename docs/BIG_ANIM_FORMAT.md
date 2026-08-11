@@ -61,12 +61,18 @@ This doc is the animation companion to `docs/BIG_MESH_FORMAT.md` / `docs/BIG_MES
 | 7 | 56 | 24 | 3DAF anim | |
 | 9 | 107 | 24 | 3DAF anim | |
 
-- **TOC `Info` (24 B) = 6 × f32.** `Info[0]` = the animation playback **duration** (validated ==
-  the ANRT duration on 95.6 %; the two can differ by a few % — see §3). `Info[1]` is a second
-  time/scale float (often ≈ duration, e.g. `1.15 / 1.10`). `Info[2..4]` are small signed floats
-  — **[hypothesis: a root-motion / movement-vector triple]** (they echo the `MVEC` chunk values,
-  §5). `Info[5]` observed 0. Many entries have all-zero `Info` (static/looping props like
-  `ANIM_FOCAL_SITE_*`, `ANIM_*_DOOR_*`).
+- **TOC `Info` (24 B) = 6 × f32 — layout now CONFIRMED** against EgoCore's `C3DAnimationInfo`
+  (`Animations/AnimParser.h`, `Deserialize` reads +0/+4/+8/+20):
+  - `Info[0]` = **Duration** (playback duration; validated == the ANRT duration on 95.6 %, the two
+    can differ by a few % — see §3).
+  - `Info[1]` = **NonLoopingDuration** — the "second time float" (often ≈ duration, e.g. `1.15/1.10`);
+    it's the non-looping clip length, not a scale.
+  - `Info[2..4]` = **MovementVector** — root-motion translation `f32[3]`; matches the `MVEC` chunk
+    values (§5). *(Was a hypothesis; EgoCore names it as a first-class field.)*
+  - `Info[5]` = **Rotation** — root-motion yaw `f32`; 0 on non-turning anims, which is why it read
+    as "observed 0".
+
+  Many entries have all-zero `Info` (static/looping props like `ANIM_FOCAL_SITE_*`, `ANIM_*_DOOR_*`).
 - **CRC classes:** `0x73ab9c0d` (3,347) + `0x827199a7` (88). Per `BIG_ROUNDTRIP.md` §7 the TOC
   CRC is a **format-class fingerprint**; the two anim CRCs are the two 3DAF serialization classes
   (the minority class correlates with the `AMSK` bone-mask variant, §5). **[hypothesis]**
@@ -88,6 +94,7 @@ u16   ??                            # top of the first chunk's CBYTE framing (va
 'XSEQ'  <CBYTE framing>  <magic 0x000d7ada> ...     # sequence chunk (C3DAnimFileXSequenceChunk) — PACKED
 'HLPR'  ...                                         # helpers   (C3DAnimFileHelpersChunk)
 'MVEC'  ...  f32[3]                                 # movement/root-motion vector (C3DAnimFileMovementVectorChunk)
+                                                    #   SUPERCHUNK: also nests a hidden collision track (EgoCore AnimParser)
 ['TMEV' ...]  (624 entries)                         # timing events (C3DAnimFileTimingEventChunk)
 ['AMSK' ...]  (34 entries)                          # bone mask (C3DAnimFileBoneMaskChunk)
 ['XALO' ...]  (914 entries)                         # X-allocation-size helper (C3DAnimFileXAllocationSizeChunk)
@@ -153,9 +160,9 @@ value — a real content fact, e.g. `ANIM_BIPED_GENERIC_MAN_TALK_IDLE_02`: ANRT 
 | `AOBJ` | `C3DAnimFileObjectChunk` | 3286 | animated-object: target rig name (§4) |
 | `XSEQ` | `C3DAnimFileXSequenceChunk` | 3419 | **packed keyframe sequence** (magic `0x000d7ada`) |
 | `HLPR` | `C3DAnimFileHelpersChunk` | 3352 | helper/dummy tracks (`Movement_dummy`, `Sub_m`) |
-| `MVEC` | `C3DAnimFileMovementVectorChunk` | 3316 | root-motion vector: **f32[3]** after `0c` framing (values echo `Info[2..4]`) — **[hypothesis]** |
+| `MVEC` | `C3DAnimFileMovementVectorChunk` | 3316 | root-motion vector **f32[3]** after `0c` framing (== `Info[2..4]`, ✅ confirmed via EgoCore `C3DAnimationInfo.MovementVector`); **superchunk** — nests a hidden collision track |
 | `TMEV` | `C3DAnimFileTimingEventChunk` | 624 | timed animation events (footstep / hit windows) — **[hypothesis]** |
-| `AMSK` | `C3DAnimFileBoneMaskChunk` | 34 | partial-body bone mask (upper/lower-body blends) |
+| `AMSK` | `C3DAnimFileBoneMaskChunk` | 34 | partial-body bone mask (upper/lower-body blends); payload = **`uint32[]` bitfield, one bit per bone** (EgoCore `BoneMaskBits`) |
 | `XALO` | `C3DAnimFileXAllocationSizeChunk` | 914 | runtime allocation-size hint for the packed image |
 
 (Loader/saver classes also present in the binary: `C3DAnimFileLoader`, `C3DAnimFileXLoader`,

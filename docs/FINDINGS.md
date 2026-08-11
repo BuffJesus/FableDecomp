@@ -1067,13 +1067,35 @@ Per-record persist order (from `CPersistTraits<CActionInputControl>::TransferOut
 | +0x08 | (keyboard key) | `EInputKey` (LONG) | used when ControllerType==2 |
 | +0x0C | (pad button) | `EXboxControllerButton` (LONG) | used when ControllerType==1 |
 | +0x10 | (mouse button) | `EMouseButtonControl` (LONG) | used when ControllerType==3 |
-| +0x14 | C2DVector.x | float | analog/direction (runtime-derived, not persisted) |
+| +0x14 | C2DVector.x | float | analog/direction |
 | +0x18 | C2DVector.y | float | analog/direction |
 
-It is a tagged union: `TransferOut` switches on `ControllerType` (+0x04) and writes ONLY the
-matching device field (Xbox->+0x0C, key->+0x08, mouse->+0x10). `IsSameButton` (donor `01848591`)
-confirms the same dispatch (type 1->cmp +0x0C, 2->+0x08, 3->+0x10). All three button/key values
-are stored as plain 4-byte integers (`CPersistTraits<enum>` transfers via the SLONG path).
+In MEMORY the accessor path is a tagged union: `IsSameButton` (donor `01848591`) switches on
+`ControllerType` (+0x04) and compares ONLY the matching device field (type 1->+0x0C, 2->+0x08,
+3->+0x10). All button/key values are plain 4-byte integers (`CPersistTraits<enum>` SLONG path).
+
+**★ ON-DISK ENCODING — empirically resolved (2026-08-10, retail game.bin).** Earlier notes here
+implied the game.bin persist was tagged/partial and that the C2DVector was "not persisted." That is
+WRONG for the on-disk form. Probing a real retail `game.bin` (`CControlsDef.Controls` vector, found
+by the `crc0("Controls")=0x66b93100` field tag) shows each element is a **FLAT fixed 28-byte record —
+all 7 dwords written**: `[i32 GameAction][i32 ControllerType][i32 key][i32 xbox][i32 mouse]
+[f32 dirX][f32 dirY]`. The device slot NOT matching `ControllerType` is 0; the C2DVector IS persisted
+and can be non-zero (e.g. a KEY binding with `dir=(0.0,1.0)`). Stride-28 is the only stride at which
+`ControllerType` is ∈{1,2,3} for every element across both shipped schemes (a PAD scheme, count 70;
+a KEY/MOUSE scheme, count 75). So `Vector<CActionInputControl>` = `[u32 count][count × 28B]`, a
+plain fixed-stride array — decodable/editable without type-awareness. Probe:
+`scratchpad/probe_controls3.py`.
+
+**★ game.bin payloads are zlib-compressed.** Per-def payloads are individual **zlib deflate level-1**
+streams (`78 01` header; 234 decompress cleanly in retail game.bin, matching EgoCore's note). Field
+tags/values live INSIDE the decompressed stream — a raw byte search of game.bin will NOT find a
+`crc0(fieldName)` tag. Decompress per-stream first.
+
+**★ crc0 tag byte-order caveat.** `crc0` here is the reflected CRC-32 (poly `0xEDB88320`, seed 0, no
+final invert) and is correct as-is (verified: `crc0("Money")=0xb03ccbfd`, `crc0("Morality")=
+0x79a2d479` match). Some tag literals elsewhere in the docs (e.g. `DEF_LOAD_CONTRACT`'s
+`crc0("OpenerObject")=0xd48f85e2`) are written **byte-reversed** (that is the stored LE byte order,
+`e2 85 8f d4`, read as a big-endian value). Compute the integer, then store little-endian.
 
 ### Rumble path
 
