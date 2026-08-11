@@ -51786,6 +51786,160 @@ $catalog = @(
         TestSource = '00/5b/CEngineSceneGrid_GetCellBoundingBox_005baeac_test.cpp'
         PassPattern = '005baeac_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b2f5c0'
+        Module = 'CEngineSurfaceCompositionManager'
+        Source = '00/b2/CEngineSurfaceCompositionManager_PeekSceneFilterFlags_00b2f5c0.cpp'
+        TestSource = '00/b2/CEngineSurfaceCompositionManager_PeekSceneFilterFlags_00b2f5c0_test.cpp'
+        PassPattern = '00b2f5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3aac0'
+        Module = 'CEnginePrimitiveAttachmentManager'
+        Source = '00/b3/CEnginePrimitiveAttachmentManager_PeekSceneFilterFlags_00b3aac0.cpp'
+        TestSource = '00/b3/CEnginePrimitiveAttachmentManager_PeekSceneFilterFlags_00b3aac0_test.cpp'
+        PassPattern = '00b3aac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2e710'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/a2/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00a2e710.cpp'
+        TestSource = '00/a2/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00a2e710_test.cpp'
+        PassPattern = '00a2e710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008fd94e'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fd94e.cpp'
+        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fd94e_test.cpp'
+        PassPattern = '008fd94e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091b170'
+        Module = 'CAIStateGroup_HandyMan'
+        Source = '00/91/CAIStateGroupHandyMan_IsRunnableCAIStateGroupHandyManUAENXZ_0091b170.cpp'
+        TestSource = '00/91/CAIStateGroupHandyMan_IsRunnableCAIStateGroupHandyManUAENXZ_0091b170_test.cpp'
+        PassPattern = '0091b170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00932960'
+        Module = 'CAIStateGroup_MinionGuardReactToCriminal'
+        Source = '00/93/CAIStateGroupMinionGuardReactToCriminal_InitStateGroup_00932960.cpp'
+        TestSource = '00/93/CAIStateGroupMinionGuardReactToCriminal_InitStateGroup_00932960_test.cpp'
+        PassPattern = '00932960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00991600'
+        Module = 'CWorld'
+        Source = '00/99/CWorld_SetMiniMapEnabled_00991600.cpp'
+        TestSource = '00/99/CWorld_SetMiniMapEnabled_00991600_test.cpp'
+        PassPattern = '00991600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099abd0'
+        Module = 'CDiskFileWin32'
+        Source = '00/99/CDiskFileWin32_GetPosition_0099abd0.cpp'
+        TestSource = '00/99/CDiskFileWin32_GetPosition_0099abd0_test.cpp'
+        PassPattern = '0099abd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099ef90'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/99/C3DAnimationBlendState_AddCombinationBlend_0099ef90.cpp'
+        TestSource = '00/99/C3DAnimationBlendState_AddCombinationBlend_0099ef90_test.cpp'
+        PassPattern = '0099ef90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d5060'
+        Module = 'CRegion'
+        Source = '00/9d/CRegion_SetMiniMapRegionExitTextOffsetX_009d5060.cpp'
+        TestSource = '00/9d/CRegion_SetMiniMapRegionExitTextOffsetX_009d5060_test.cpp'
+        PassPattern = '009d5060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fd970'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_NotifyEntryRemoved_009fd970.cpp'
+        TestSource = '00/9f/CGraphicDataBank_NotifyEntryRemoved_009fd970_test.cpp'
+        PassPattern = '009fd970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa7830'
+        Module = 'CChunkedFileRawDataChunk'
+        Source = '00/aa/CChunkedFileRawDataChunk_WriteToFile_00aa7830.cpp'
+        TestSource = '00/aa/CChunkedFileRawDataChunk_WriteToFile_00aa7830_test.cpp'
+        PassPattern = '00aa7830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab78e0'
+        Module = 'CJoystickDX'
+        Source = '00/ab/CJoystickDX_SetAxes_00ab78e0.cpp'
+        TestSource = '00/ab/CJoystickDX_SetAxes_00ab78e0_test.cpp'
+        PassPattern = '00ab78e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac1f10'
+        Module = 'CIndexBuffer'
+        Source = '00/ac/CIndexBuffer_GetSize_00ac1f10.cpp'
+        TestSource = '00/ac/CIndexBuffer_GetSize_00ac1f10_test.cpp'
+        PassPattern = '00ac1f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00afe580'
+        Module = 'CThingTrackNode'
+        Source = '00/af/CThingTrackNode_DrawIsDrawable_00afe580.cpp'
+        TestSource = '00/af/CThingTrackNode_DrawIsDrawable_00afe580_test.cpp'
+        PassPattern = '00afe580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b05ab0'
+        Module = 'CThingTrackNode'
+        Source = '00/b0/CThingTrackNode_DrawIsDrawable_00b05ab0.cpp'
+        TestSource = '00/b0/CThingTrackNode_DrawIsDrawable_00b05ab0_test.cpp'
+        PassPattern = '00b05ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b15b00'
+        Module = 'CThingTrackNode'
+        Source = '00/b1/CThingTrackNode_DrawIsDrawable_00b15b00.cpp'
+        TestSource = '00/b1/CThingTrackNode_DrawIsDrawable_00b15b00_test.cpp'
+        PassPattern = '00b15b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b18740'
+        Module = 'CThingTrackNode'
+        Source = '00/b1/CThingTrackNode_DrawIsDrawable_00b18740.cpp'
+        TestSource = '00/b1/CThingTrackNode_DrawIsDrawable_00b18740_test.cpp'
+        PassPattern = '00b18740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1ae70'
+        Module = 'CThingTrackNode'
+        Source = '00/b1/CThingTrackNode_DrawIsDrawable_00b1ae70.cpp'
+        TestSource = '00/b1/CThingTrackNode_DrawIsDrawable_00b1ae70_test.cpp'
+        PassPattern = '00b1ae70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1b4b0'
+        Module = 'CThingTrackNode'
+        Source = '00/b1/CThingTrackNode_DrawIsDrawable_00b1b4b0.cpp'
+        TestSource = '00/b1/CThingTrackNode_DrawIsDrawable_00b1b4b0_test.cpp'
+        PassPattern = '00b1b4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b1ff80'
+        Module = 'CThingTrackNode'
+        Source = '00/b1/CThingTrackNode_DrawIsDrawable_00b1ff80.cpp'
+        TestSource = '00/b1/CThingTrackNode_DrawIsDrawable_00b1ff80_test.cpp'
+        PassPattern = '00b1ff80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0f970'
+        Module = 'CThingTrackNode'
+        Source = '00/b0/CThingTrackNode_DrawIsDrawable_00b0f970.cpp'
+        TestSource = '00/b0/CThingTrackNode_DrawIsDrawable_00b0f970_test.cpp'
+        PassPattern = '00b0f970_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
