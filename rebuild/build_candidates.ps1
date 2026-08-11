@@ -55981,6 +55981,153 @@ $catalog = @(
         TestSource = '00/a1/CNavigatorAStar_Interrupt_00a1a150_test.cpp'
         PassPattern = 'INTERRUPT_OK'
     }
+    [pscustomobject]@{
+        Address = '00a3a2e0'
+        Module = 'CWADBankStateBlock'
+        Source = '00/a3/CWADBankStateBlock_Set_00a3a2e0.cpp'
+        TestSource = '00/a3/CWADBankStateBlock_Set_00a3a2e0_test.cpp'
+        PassPattern = 'SET_NOOP_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a5e650'
+        Module = 'CTCInventoryItem'
+        Source = '00/a5/CTCInventoryItem_OnDie_00a5e650.cpp'
+        TestSource = '00/a5/CTCInventoryItem_OnDie_00a5e650_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a63560'
+        Module = 'CFontDataBankEntry'
+        Source = '00/a6/CFontDataBankEntry_CanUnload_00a63560.cpp'
+        TestSource = '00/a6/CFontDataBankEntry_CanUnload_00a63560_test.cpp'
+        PassPattern = 'CANUNLOAD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a67460'
+        Module = 'CVolume'
+        Source = '00/a6/CVolume_ReleaseVolume_00a67460.cpp'
+        TestSource = '00/a6/CVolume_ReleaseVolume_00a67460_test.cpp'
+        PassPattern = 'RELEASEVOLUME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a778b0'
+        Module = 'CFrameData'
+        Source = '00/a7/CFrameData_ReleaseTexture_00a778b0.cpp'
+        TestSource = '00/a7/CFrameData_ReleaseTexture_00a778b0_test.cpp'
+        PassPattern = 'RELEASETEX_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a85fd0'
+        Module = 'CPhysicsFacesSegmentBranch'
+        Source = '00/a8/CPhysicsFacesSegmentBranch_GetNoFaces_00a85fd0.cpp'
+        TestSource = '00/a8/CPhysicsFacesSegmentBranch_GetNoFaces_00a85fd0_test.cpp'
+        PassPattern = 'GETNOFACES_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a9c960'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/a9/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00a9c960.cpp'
+        TestSource = '00/a9/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00a9c960_test.cpp'
+        PassPattern = 'DESTVAL_ORDER_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a9d3a0'
+        Module = 'CTCInventoryItem'
+        Source = '00/a9/CTCInventoryItem_OnDie_00a9d3a0.cpp'
+        TestSource = '00/a9/CTCInventoryItem_OnDie_00a9d3a0_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa49b0'
+        Module = 'CTCInventoryItem'
+        Source = '00/aa/CTCInventoryItem_OnDie_00aa49b0.cpp'
+        TestSource = '00/aa/CTCInventoryItem_OnDie_00aa49b0_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa71f0'
+        Module = 'CTCInventoryItem'
+        Source = '00/aa/CTCInventoryItem_OnDie_00aa71f0.cpp'
+        TestSource = '00/aa/CTCInventoryItem_OnDie_00aa71f0_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00aa7210'
+        Module = 'CTCInventoryItem'
+        Source = '00/aa/CTCInventoryItem_OnDie_00aa7210.cpp'
+        TestSource = '00/aa/CTCInventoryItem_OnDie_00aa7210_test.cpp'
+        PassPattern = 'OnDie_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ab6220'
+        Module = 'CKeyboardDX'
+        Source = '00/ab/CKeyboardDX_IsKeyPressed_00ab6220.cpp'
+        TestSource = '00/ab/CKeyboardDX_IsKeyPressed_00ab6220_test.cpp'
+        PassPattern = 'ISKEYPRESSED_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ac1f30'
+        Module = 'CIndexBuffer'
+        Source = '00/ac/CIndexBuffer_Sizeof_00ac1f30.cpp'
+        TestSource = '00/ac/CIndexBuffer_Sizeof_00ac1f30_test.cpp'
+        PassPattern = 'SIZEOF_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ae04c0'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_RelocateData_00ae04c0.cpp'
+        TestSource = '00/ae/CParticleProgram_RelocateData_00ae04c0_test.cpp'
+        PassPattern = 'RELOC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00af5870'
+        Module = 'CParticleSystem'
+        Source = '00/af/CParticleSystem_Kill_00af5870.cpp'
+        TestSource = '00/af/CParticleSystem_Kill_00af5870_test.cpp'
+        PassPattern = 'KILL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b23c00'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_SetSpotlightShadowMode_00b23c00.cpp'
+        TestSource = '00/b2/CEngine_SetSpotlightShadowMode_00b23c00_test.cpp'
+        PassPattern = 'SPOTLIGHT_SHADOW_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b26340'
+        Module = 'CEnginePrimitive2DViewportManager'
+        Source = '00/b2/CEnginePrimitive2DViewportManager_CreateInternalPrimitive_00b26340.cpp'
+        TestSource = '00/b2/CEnginePrimitive2DViewportManager_CreateInternalPrimitive_00b26340_test.cpp'
+        PassPattern = 'CREATEINTERNALPRIMITIVE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b67180'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/b6/CEngineLandscapeRenderer_DeleteMap_00b67180.cpp'
+        TestSource = '00/b6/CEngineLandscapeRenderer_DeleteMap_00b67180_test.cpp'
+        PassPattern = 'DELETEMAP_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1bc10'
+        Module = 'C3DAnimationSequenceData'
+        Source = '00/c1/C3DAnimationSequenceData_SetupIdentityFlag_00c1bc10.cpp'
+        TestSource = '00/c1/C3DAnimationSequenceData_SetupIdentityFlag_00c1bc10_test.cpp'
+        PassPattern = 'IDENTITYFLAG_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1bc30'
+        Module = 'C3DAnimationSequenceData'
+        Source = '00/c1/C3DAnimationSequenceData_SetupIdentityFlag_00c1bc30.cpp'
+        TestSource = '00/c1/C3DAnimationSequenceData_SetupIdentityFlag_00c1bc30_test.cpp'
+        PassPattern = 'IDENTITY_FLAG_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1bc50'
+        Module = 'C3DAnimationSequenceData'
+        Source = '00/c1/C3DAnimationSequenceData_SetupIdentityFlag_00c1bc50.cpp'
+        TestSource = '00/c1/C3DAnimationSequenceData_SetupIdentityFlag_00c1bc50_test.cpp'
+        PassPattern = 'SETUPIDENTITY_OK'
+    }
 )
 
 $requestedAddresses = @(
