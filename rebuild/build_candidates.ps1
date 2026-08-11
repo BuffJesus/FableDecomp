@@ -55211,6 +55211,174 @@ $catalog = @(
         TestSource = '00/a6/CMemoryDataOutputStream_Clear_00a66c00_test.cpp'
         PassPattern = 'CLEAR_OK'
     }
+    [pscustomobject]@{
+        Address = '00a69810'
+        Module = 'CManagedTextureData'
+        Source = '00/a6/CManagedTextureData_IsBusy_00a69810.cpp'
+        TestSource = '00/a6/CManagedTextureData_IsBusy_00a69810_test.cpp'
+        PassPattern = 'ISBUSY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a75b50'
+        Module = 'CNavNavigableLeafNode'
+        Source = '00/a7/CNavNavigableLeafNode_RemoveRegionZero_00a75b50.cpp'
+        TestSource = '00/a7/CNavNavigableLeafNode_RemoveRegionZero_00a75b50_test.cpp'
+        PassPattern = 'REMOVEREGIONZERO_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a76500'
+        Module = 'CNavNavigableLeafNode'
+        Source = '00/a7/CNavNavigableLeafNode_GetMemoryUsage_00a76500.cpp'
+        TestSource = '00/a7/CNavNavigableLeafNode_GetMemoryUsage_00a76500_test.cpp'
+        PassPattern = 'NAVLEAF_MEMUSAGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a7dad0'
+        Module = 'CThingComponentSet'
+        Source = '00/a7/CThingComponentSet_CThingComponentSet_00a7dad0.cpp'
+        TestSource = '00/a7/CThingComponentSet_CThingComponentSet_00a7dad0_test.cpp'
+        PassPattern = 'DTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a7daf0'
+        Module = 'CThingComponentSet'
+        Source = '00/a7/CThingComponentSet_CThingComponentSet_00a7daf0.cpp'
+        TestSource = '00/a7/CThingComponentSet_CThingComponentSet_00a7daf0_test.cpp'
+        PassPattern = 'DTOR_OK_A7DAF0'
+    }
+    [pscustomobject]@{
+        Address = '00aaf590'
+        Module = 'CObservable'
+        Source = '00/aa/CObservable_AddExclusiveObserver_00aaf590.cpp'
+        TestSource = '00/aa/CObservable_AddExclusiveObserver_00aaf590_test.cpp'
+        PassPattern = 'EXCLUSIVE_OBS_OK'
+    }
+    [pscustomobject]@{
+        Address = '00abfdc0'
+        Module = 'CWorld'
+        Source = '00/ab/CWorld_DrawGetEnvironment_00abfdc0.cpp'
+        TestSource = '00/ab/CWorld_DrawGetEnvironment_00abfdc0_test.cpp'
+        PassPattern = 'DRAWENV_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ac7030'
+        Module = 'CTCTargeted'
+        Source = '00/ac/CTCTargeted_IsZTargetable_00ac7030.cpp'
+        TestSource = '00/ac/CTCTargeted_IsZTargetable_00ac7030_test.cpp'
+        PassPattern = 'ZTARGET_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ae0050'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_SetupSimulation_00ae0050.cpp'
+        TestSource = '00/ae/CParticleProgram_SetupSimulation_00ae0050_test.cpp'
+        PassPattern = 'SETUPSIM_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b6c990'
+        Module = 'CLandscapePatchTesselator'
+        Source = '00/b6/CLandscapePatchTesselator_GetBridgeVertexBufferSize_00b6c990.cpp'
+        TestSource = '00/b6/CLandscapePatchTesselator_GetBridgeVertexBufferSize_00b6c990_test.cpp'
+        PassPattern = 'BRIDGEVBSIZE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b6ccf0'
+        Module = 'CLandscapePatchTesselator'
+        Source = '00/b6/CLandscapePatchTesselator_SetBridgeVertexBufferSize_00b6ccf0.cpp'
+        TestSource = '00/b6/CLandscapePatchTesselator_SetBridgeVertexBufferSize_00b6ccf0_test.cpp'
+        PassPattern = 'SETBRIDGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bc64d0'
+        Module = 'CEngineInternalPrimitiveGroup'
+        Source = '00/bc/CEngineInternalPrimitiveGroup_Update_00bc64d0.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveGroup_Update_00bc64d0_test.cpp'
+        PassPattern = 'PARITY_OK_00bc64d0'
+    }
+    [pscustomobject]@{
+        Address = '00bda070'
+        Module = 'CEngineLandscapeMemoryManager'
+        Source = '00/bd/CEngineLandscapeMemoryManager_EnablePoolAllocation_00bda070.cpp'
+        TestSource = '00/bd/CEngineLandscapeMemoryManager_EnablePoolAllocation_00bda070_test.cpp'
+        PassPattern = 'POOLALLOC_OK'
+    }
+    [pscustomobject]@{
+        Address = '00beaa30'
+        Module = 'CBankFileAsyncData'
+        Source = '00/be/CBankFileAsyncData_ChangeLoadingPriority_00beaa30.cpp'
+        TestSource = '00/be/CBankFileAsyncData_ChangeLoadingPriority_00beaa30_test.cpp'
+        PassPattern = 'CHANGELOADINGPRIORITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c0dd40'
+        Module = 'CWorldMap'
+        Source = '00/c0/CWorldMap_ApplyScriptedMapBrush_00c0dd40.cpp'
+        TestSource = '00/c0/CWorldMap_ApplyScriptedMapBrush_00c0dd40_test.cpp'
+        PassPattern = 'APPLYBRUSH_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c167c0'
+        Module = 'CActiveFile'
+        Source = '00/c1/CActiveFile_OnReadFinished_00c167c0.cpp'
+        TestSource = '00/c1/CActiveFile_OnReadFinished_00c167c0_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c16950'
+        Module = 'CIntelligentPointer<CThingCreatureBase>'
+        Source = '00/c1/CIntelligentPointerCThingCreatureBase_operator_00c16950.cpp'
+        TestSource = '00/c1/CIntelligentPointerCThingCreatureBase_operator_00c16950_test.cpp'
+        PassPattern = 'IPTR_ASSIGN_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1bb40'
+        Module = 'C3DAnimationSequence'
+        Source = '00/c1/C3DAnimationSequence_InitialiseFromFileData_00c1bb40.cpp'
+        TestSource = '00/c1/C3DAnimationSequence_InitialiseFromFileData_00c1bb40_test.cpp'
+        PassPattern = 'INITFROMFILEDATA_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1bc70'
+        Module = 'C3DAnimationSequence'
+        Source = '00/c1/C3DAnimationSequence_InitialiseFromFileData_00c1bc70.cpp'
+        TestSource = '00/c1/C3DAnimationSequence_InitialiseFromFileData_00c1bc70_test.cpp'
+        PassPattern = 'INITFILEDATA_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c20370'
+        Module = 'CTCScriptedControl'
+        Source = '00/c2/CTCScriptedControl_IsActive_00c20370.cpp'
+        TestSource = '00/c2/CTCScriptedControl_IsActive_00c20370_test.cpp'
+        PassPattern = 'ISACTIVE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c20400'
+        Module = 'CPersistTraits<long>'
+        Source = '00/c2/CPersistTraitslong_TransferOut_00c20400.cpp'
+        TestSource = '00/c2/CPersistTraitslong_TransferOut_00c20400_test.cpp'
+        PassPattern = 'TRANSFEROUT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c20420'
+        Module = 'CBrainOutput'
+        Source = '00/c2/CBrainOutput_SetAsPumpCombatActions_00c20420.cpp'
+        TestSource = '00/c2/CBrainOutput_SetAsPumpCombatActions_00c20420_test.cpp'
+        PassPattern = 'PUMP_COMBAT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c20460'
+        Module = 'CBrainOutput'
+        Source = '00/c2/CBrainOutput_SetAsPumpCombatActions_00c20460.cpp'
+        TestSource = '00/c2/CBrainOutput_SetAsPumpCombatActions_00c20460_test.cpp'
+        PassPattern = 'PUMP_COMBAT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c33670'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/c3/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00c33670.cpp'
+        TestSource = '00/c3/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00c33670_test.cpp'
+        PassPattern = 'CONS_VAL_FWD_OK'
+    }
 )
 
 $requestedAddresses = @(
