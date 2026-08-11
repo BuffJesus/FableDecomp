@@ -56590,6 +56590,13 @@ $catalog = @(
         TestSource = '00/a0/CVertexBufferWin32_DoSizeof_00a0aaa0_test.cpp'
         PassPattern = 'DOSIZEOF_OK'
     }
+    [pscustomobject]@{
+        Address = '00406a80'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_GetEmptySlotName_00406a80.cpp'
+        TestSource = '00/40/CUserProfileManager_GetEmptySlotName_00406a80_test.cpp'
+        PassPattern = 'EMPTYSLOT_OK'
+    }
 )
 
 $requestedAddresses = @(

@@ -100,8 +100,10 @@ GetAutoSavePathName 0x406f70 (with __security_cookie + /GS + a 0x104 path buffer
 via 0x406e30 + WConcat 0x595080). Save seam now has 6 byte-exact fns.
 
 Deferred (semantics recovered, byte-blocked — see agent notes):
-- GetEmptySlotName 0x406a80 DIFFER(94v88): correct behaviour, +6B codegen; near-miss,
-  retryable. (if(mgr) format(mgr->f14, temp) else literal factory.)
+- ~~GetEmptySlotName 0x406a80 DIFFER(94v88)~~ **LANDED 2026-08-11 (RELOCATION_MATCH 88/88).**
+  Prior +6B was NRVO shape: modeled as `return mgr->f14->Format(&temp);` (struct-return method
+  NRV-elides into the outer return slot) with `temp = CWideString(lit 0x122df80, -1)` in the
+  if-branch and `return CWideString(lit 0x122df5c)` in the else. Seam now 7 byte-exact fns.
 - GetManualSaveDisplayName 0x406ae0 DIFFER(393v314): 2-branch multi-temp concat +
   tail to GetManualSaveFileName; VC temp/dtor scheduling won't match.
 - GetSaveDisplayNameFromFileName 0x407e10: SEH-unwind cleanup bitmask (test bl,0x10/8/4/2/1
