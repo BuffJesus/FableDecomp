@@ -91,3 +91,43 @@ own sampler/`tex2D` controls filtering. Investigate:
   Initialise — Refresh RE'd in REDEFINE_INPUT_SYSTEM.md work).
 - Gamepad "Redefine Keys (Keyboard)/(Gamepad)" menu-row split not wired yet (only
   the detail-screen title split is in); see GAMEPAD_REDEFINE_PATCH.md.
+
+## 2026-08-10 — profile-name font-doubling: static root-cause narrowing (build-light)
+
+Narrowed the OPEN doubling bug via static analysis (no build; canonical refresh had
+VC7.1 busy). Findings:
+- A GLOBAL half-texel screen offset IS already applied (`left=top=-0.5f`, visual_boot_d3d9.cpp ~L3041),
+  so it is NOT a missing global -0.5.
+- `AppendProfileNameText` (L757-783) emits glyph UVs spanning the cell EXACTLY
+  `[atlasX, atlasX+width]/OptionsWidth` with **no half-texel inset**, and the screen quad is
+  `glyph.width * scaleX` (design->screen ~2x magnify) — so LINEAR magnification samples past the
+  cell edge into the tightly-packed neighbour glyph => ghost/double. This is why the sampler-mode
+  toggle had no effect (UVs reach the neighbour texel regardless of filter).
+- BUT the clean detail-title path (`AppendDetailTitleGlyphText`) uses the SAME non-inset UV formula,
+  so packing/UV alone is not the whole story. The distinguishing factor: detail-title scales the
+  quad by `glyph.width * glyphScale` (glyphScale ~2/3, net ~1:1 or minified), while profile-name
+  uses raw `glyph.width` (net magnified). => the doubling correlates with net MAGNIFICATION ratio.
+
+CANDIDATE FIX (apply + screenshot-verify once VC7.1 frees): inset the profile-name glyph UVs by
+half a source texel — `u0 += 0.5/OptionsWidth; u1 -= 0.5/OptionsWidth; v0 += 0.5/OptionsHeight;
+v1 -= 0.5/OptionsHeight` (and mirror in the detail-title outline path if it regresses). If that
+doesn't fully clear it, confirm the ENG_ARIAL atlas has zero inter-cell gutter and add a 1px gutter
+to the atlas bake instead. Verify against resources/UIScreenshots(Retail)/ContinueGameScreen.png.
+
+### RESOLVED 2026-08-10 (visual-QA verified)
+
+FIXED via the half-texel UV inset in `AppendProfileNameText` (sample from texel
+CENTRES: `(atlasX+0.5)/W` .. `(atlasX+width-0.5)/W`, same for V). Root cause
+confirmed by evidence, not guess:
+- The ENG_ARIAL atlas region (origin 1024,2704 in visual_boot_options_menu.bmp) is
+  CLEAN — crisp single glyphs, so the doubling was NOT baked content.
+- The live Load Game save rows showed a hard ~1px horizontal double-column echo on
+  every glyph (classic half-texel signature: edge-sampled UVs straddle two source
+  texels under the 2x design->screen LINEAR magnify). The detail-title path escaped
+  it because it draws at ~1:1 (glyphScale ~2/3), not 2x.
+- After the inset, rebuilt + re-captured the same Continue->Load Game screen: the
+  double-columns are gone and `AutoSave`/`Save 1/2/3` render as clean single strokes
+  matching resources/UIScreenshots(Retail)/ContinueGameScreen.png.
+Screenshots: scratchpad qa_loadgame_baseline.png / qa_loadgame_fixed.png /
+qa_compare_beforeafter.png / qa_retail_saverows.png. This is a reconstruction-side
+D3D9 draw correctness fix (visual match to retail), not a byte-parity function.

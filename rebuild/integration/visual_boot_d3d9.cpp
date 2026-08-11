@@ -766,19 +766,22 @@ namespace
                 originY + top * scaleY,
                 originX + (glyphLeft + glyph.width) * scaleX,
                 originY + (top + glyph.height) * scaleY,
-                static_cast<float>(
-                    kFableProfileGlyphAtlasOriginX + glyph.atlasX) /
+                // Half-texel inset: sample from texel CENTRES so the 2x LINEAR
+                // magnify never straddles into the tightly-packed neighbour cell
+                // (fixes the doubled/torn ENG_ARIAL echo; atlas bitmap is clean).
+                (static_cast<float>(
+                    kFableProfileGlyphAtlasOriginX + glyph.atlasX) + 0.5f) /
                     static_cast<float>(g_OptionsWidth),
-                static_cast<float>(
-                    kFableProfileGlyphAtlasOriginY + glyph.atlasY) /
+                (static_cast<float>(
+                    kFableProfileGlyphAtlasOriginY + glyph.atlasY) + 0.5f) /
                     static_cast<float>(g_OptionsHeight),
-                static_cast<float>(
+                (static_cast<float>(
                     kFableProfileGlyphAtlasOriginX + glyph.atlasX +
-                    glyph.width) /
+                    glyph.width) - 0.5f) /
                     static_cast<float>(g_OptionsWidth),
-                static_cast<float>(
+                (static_cast<float>(
                     kFableProfileGlyphAtlasOriginY + glyph.atlasY +
-                    glyph.height) /
+                    glyph.height) - 0.5f) /
                     static_cast<float>(g_OptionsHeight),
                 0xFFFFFFFFu);
             pen += static_cast<float>(glyph.advance);
