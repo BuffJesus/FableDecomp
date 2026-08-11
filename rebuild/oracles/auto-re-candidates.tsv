@@ -7284,3 +7284,15 @@ address	name	length	bytes
 0084cf60	OnEngineSurveyLMBHeld	24	8b4424048b108991980000008b400489819c000000c20400
 0088b780	GetCurrentStateGroupType	24	8b413885c0740e8a501084d275078bc88b01ff602033c0c3
 00890b50	CGameScriptInterface::SetToKeepHeroAbilitiesDuringCutscenes	24	8b41088b481ce8158ebbff8a4c2404888824020000c20400
+0049d850	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	8	8b490ce968c0faff
+00cb7900	Activate	16	568bf18b06ff500c8b168bce5eff6204
+005ba222	SetMiniMapRegionExitTextOffsetX	17	568bf1ff36e894f0e6ff8906598bc65ec3
+00cd2410	SetMiniMapRegionExitTextOffsetX	17	568bf1ff36e8a66e75ff8906598bc65ec3
+004d31c0	GetActionName	19	566aff68cca523018bf1e821ba4c008bc65ec3
+004d39eb	GetActionName	19	566aff68c0ae23018bf1e8f6b14c008bc65ec3
+005790fc	_Umove<EWeaponClass*>	19	558bec8d450b50ff7508e882fbffff5dc20400
+00c4b040	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	23	568bf1e8c8ffffff8bcee861f3ffff8bce5ee9b9ffffff
+004861df	_Umove<EWeaponClass*>	24	558bec518d45ff50ff7508c645ff00e896ffffffc9c20400
+005b1975	GetCellBoundingBox	24	558bec518d45ff50ff750cff7508e8d2fbffff83c40cc9c3
+005b1ff4	GetCellBoundingBox	24	558bec518d45ff50ff750cff7508e8f6faffff83c40cc9c3
+005baeac	GetCellBoundingBox	24	558bec518d45ff50ff750cff7508e83afbffff83c40cc9c3
