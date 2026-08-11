@@ -61,12 +61,12 @@ working memory and exact resume point are always at the top of
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Verified functional or matching reconstruction | **7,451 · 15.03%** |
+| Verified functional or matching reconstruction | **7,457 · 15.04%** |
 | Byte-identical reconstruction | **3,645 · 7.35%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
-Current functional-or-matching coverage is **15.03%** of the 49,568-function catalog.
+Current functional-or-matching coverage is **15.04%** of the 49,568-function catalog.
 Of that verified set, **7.35%** is byte-identical C++.
 The first 5% byte-match milestone has been passed.
 
@@ -84,8 +84,8 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.677% |
 | Analysis DB | Complete non-`undefined` prototype | 69.065% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **7,605** |
-| Reconstruction | Verified functional or matching C++ | **7,451** (15.03%) |
+| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **7,611** |
+| Reconstruction | Verified functional or matching C++ | **7,457** (15.04%) |
 | Reconstruction | — of which byte-**identical** C++ | 3,645 (7.35%) |
 | Reconstruction | Compiled sources still honestly `DIFFER` | 44 |
 | Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 128 |
@@ -100,7 +100,7 @@ Counts above are from the 2026-08-10 canonical refresh:
 `rebuild/COVERAGE.md`, and the naming-quality reports.
 
 Generated agent output is tracked separately and is never counted merely
-because a structural checker accepted it. The 15.03% figure is intentionally the strict,
+because a structural checker accepted it. The 15.04% figure is intentionally the strict,
 whole-executable denominator. Boot-path figures are a separate view of
 the 3,952-byte `GFMain` coordinator, not an estimate of total engineering time.
 The C++23 startup figure is deliberately separate too: exact x86 parity and

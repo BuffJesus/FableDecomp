@@ -111,9 +111,9 @@ namespace fable {
     constexpr std::uintptr_t list = 0x00406070; // __thiscall undefined list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t list__004060e0 = 0x004060e0; // __thiscall undefined list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>(list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *) | prototype=incomplete; decompile=yes
     constexpr std::uintptr_t GetValidProfileName = 0x00406350; // __fastcall CWideString GetValidProfileName(CWideString *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetAutoSaveFileName = 0x004065d0; // __thiscall CWideString GetAutoSaveFileName(CUserProfileManager *) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetManualSaveFileName = 0x00406610; // __thiscall CWideString GetManualSaveFileName(CUserProfileManager *,long) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetAutoSaveFileName__00406690 = 0x00406690; // __thiscall CWideString GetAutoSaveFileName(CUserProfileManager *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetAutoSaveFileName = 0x004065d0; // __thiscall CWideString GetAutoSaveFileName(CUserProfileManager *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t GetManualSaveFileName = 0x00406610; // __thiscall CWideString GetManualSaveFileName(CUserProfileManager *,long) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
+    constexpr std::uintptr_t GetAutoSaveFileName__00406690 = 0x00406690; // __thiscall CWideString GetAutoSaveFileName(CUserProfileManager *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetAutoSaveCheckPointFileName = 0x004066b0; // __thiscall CWideString GetAutoSaveCheckPointFileName(CUserProfileManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetAutoSaveCheckPointFileName__004066f0 = 0x004066f0; // __thiscall CWideString GetAutoSaveCheckPointFileName(CUserProfileManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetAutoSaveCheckPointFileName__00406730 = 0x00406730; // __thiscall CWideString GetAutoSaveCheckPointFileName(CUserProfileManager *) | prototype=complete; decompile=yes
@@ -127,15 +127,15 @@ namespace fable {
     constexpr std::uintptr_t GetAnimFilter = 0x00406880; // __thiscall CAnimFilterBase * GetAnimFilter(CModeBlock *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t GetMaxRefreshRate = 0x00406890; // __thiscall ulong GetMaxRefreshRate(CUserProfileManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ClampVideoOption = 0x004068d0; // __thiscall void ClampVideoOption(CUserProfileManager *,float *,float,float,float,float) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetAutoSaveDisplayName = 0x004069e0; // __thiscall CWideString GetAutoSaveDisplayName(CUserProfileManager *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetAutoSaveDisplayName = 0x004069e0; // __thiscall CWideString GetAutoSaveDisplayName(CUserProfileManager *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t GetEmptySlotName = 0x00406a80; // __thiscall CWideString GetEmptySlotName(CUserProfileManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetManualSaveDisplayName = 0x00406ae0; // __thiscall CWideString GetManualSaveDisplayName(CUserProfileManager *,long) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetAutoSaveDisplayName__00406c20 = 0x00406c20; // __thiscall CWideString GetAutoSaveDisplayName(CUserProfileManager *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetAutoSaveDisplayName__00406c20 = 0x00406c20; // __thiscall CWideString GetAutoSaveDisplayName(CUserProfileManager *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t CaptureBackBufferForUIBackground = 0x00406cc0; // __thiscall void CaptureBackBufferForUIBackground(CUserProfileManager *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t ClampResolution = 0x00406d90; // __thiscall void ClampResolution(CUserProfileManager *,ulong *,long) | prototype=complete; decompile=yes
     constexpr std::uintptr_t Release__00406df0 = 0x00406df0; // __fastcall void Release() | prototype=complete; decompile=yes
     constexpr std::uintptr_t CreateSaveGame = 0x00406e30; // __fastcall long CreateSaveGame(CCharString *,CWideString *,long,long,wchar_t *,long) | prototype=complete; decompile=yes
-    constexpr std::uintptr_t GetAutoSavePathName = 0x00406f70; // __thiscall CWideString GetAutoSavePathName(CUserProfileManager *) | prototype=complete; decompile=yes
+    constexpr std::uintptr_t GetAutoSavePathName = 0x00406f70; // __thiscall CWideString GetAutoSavePathName(CUserProfileManager *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=RELOCATION_MATCH
     constexpr std::uintptr_t op = 0x00407030; // __thiscall bool operator()(CThingFilter_IsUnconscious *,CThing *) | prototype=complete; decompile=yes; compiled=PASS; behavior=PASS; parity=MATCH
     constexpr std::uintptr_t DeleteProfile = 0x00407040; // __thiscall void DeleteProfile(CUserProfileManager *,CWideString *) | prototype=complete; decompile=yes
     constexpr std::uintptr_t GetDirectoryNameFromProfileName = 0x004071c0; // __thiscall CWideString GetDirectoryNameFromProfileName(CUserProfileManager *) | prototype=complete; decompile=yes

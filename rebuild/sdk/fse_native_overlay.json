@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.1.0",
-  "generatedAt": "2026-08-10T19:34:21-06:00",
-  "sourceDigest": "97a4e55a23a1632826578b954d3ad2b8523740955a9e90c503b4d40031c78c8b",
+  "generatedAt": "2026-08-10T20:38:29-06:00",
+  "sourceDigest": "8ed0188848cd859f71786c645d106b7dbdbb28f8135db2dd1c9964f8a838394f",
   "target": {
     "executable": "Fable.exe",
     "imageBase": "0x00400000",
@@ -18,7 +18,7 @@
     "unmatched": 413,
     "ownerAlignedRecommendations": 479,
     "verifiedRecommendedBindings": 337,
-    "verifiedEngineFunctions": 7461,
+    "verifiedEngineFunctions": 7467,
     "hookApprovedBindings": 0
   },
   "policy": {
@@ -35810,6 +35810,81 @@
       ]
     },
     {
+      "address": "0x004065D0",
+      "rva": "0x000065D0",
+      "qualifiedName": "GetAutoSaveFileName",
+      "module": "CUserProfileManager",
+      "callingConvention": "__thiscall",
+      "returnType": "CWideString",
+      "parameterCount": 1,
+      "parameterTypesText": "CUserProfileManager *",
+      "prototypeComplete": true,
+      "cleanDecompile": "yes",
+      "agentVerdict": "",
+      "compiledStatus": "PASS",
+      "behaviorTest": "PASS",
+      "retailParity": "RELOCATION_MATCH",
+      "liftGrade": "",
+      "ownerRelevance": "none",
+      "engineImplementationVerified": true,
+      "score": 135,
+      "evidence": [
+        "exact-leaf-name",
+        "complete-prototype",
+        "retail-relocation-match"
+      ]
+    },
+    {
+      "address": "0x00406610",
+      "rva": "0x00006610",
+      "qualifiedName": "GetManualSaveFileName",
+      "module": "CUserProfileManager",
+      "callingConvention": "__thiscall",
+      "returnType": "CWideString",
+      "parameterCount": 2,
+      "parameterTypesText": "CUserProfileManager *,long",
+      "prototypeComplete": true,
+      "cleanDecompile": "yes",
+      "agentVerdict": "",
+      "compiledStatus": "PASS",
+      "behaviorTest": "PASS",
+      "retailParity": "RELOCATION_MATCH",
+      "liftGrade": "",
+      "ownerRelevance": "none",
+      "engineImplementationVerified": true,
+      "score": 135,
+      "evidence": [
+        "exact-leaf-name",
+        "complete-prototype",
+        "retail-relocation-match"
+      ]
+    },
+    {
+      "address": "0x00406690",
+      "rva": "0x00006690",
+      "qualifiedName": "GetAutoSaveFileName",
+      "module": "CUserProfileManager",
+      "callingConvention": "__thiscall",
+      "returnType": "CWideString",
+      "parameterCount": 1,
+      "parameterTypesText": "CUserProfileManager *",
+      "prototypeComplete": true,
+      "cleanDecompile": "yes",
+      "agentVerdict": "",
+      "compiledStatus": "PASS",
+      "behaviorTest": "PASS",
+      "retailParity": "RELOCATION_MATCH",
+      "liftGrade": "",
+      "ownerRelevance": "none",
+      "engineImplementationVerified": true,
+      "score": 135,
+      "evidence": [
+        "exact-leaf-name",
+        "complete-prototype",
+        "retail-relocation-match"
+      ]
+    },
+    {
       "address": "0x00406770",
       "rva": "0x00006770",
       "qualifiedName": "$E2",
@@ -35957,6 +36032,81 @@
         "exact-leaf-name",
         "complete-prototype",
         "retail-byte-match"
+      ]
+    },
+    {
+      "address": "0x004069E0",
+      "rva": "0x000069E0",
+      "qualifiedName": "GetAutoSaveDisplayName",
+      "module": "CUserProfileManager",
+      "callingConvention": "__thiscall",
+      "returnType": "CWideString",
+      "parameterCount": 1,
+      "parameterTypesText": "CUserProfileManager *",
+      "prototypeComplete": true,
+      "cleanDecompile": "yes",
+      "agentVerdict": "",
+      "compiledStatus": "PASS",
+      "behaviorTest": "PASS",
+      "retailParity": "RELOCATION_MATCH",
+      "liftGrade": "",
+      "ownerRelevance": "none",
+      "engineImplementationVerified": true,
+      "score": 135,
+      "evidence": [
+        "exact-leaf-name",
+        "complete-prototype",
+        "retail-relocation-match"
+      ]
+    },
+    {
+      "address": "0x00406C20",
+      "rva": "0x00006C20",
+      "qualifiedName": "GetAutoSaveDisplayName",
+      "module": "CUserProfileManager",
+      "callingConvention": "__thiscall",
+      "returnType": "CWideString",
+      "parameterCount": 1,
+      "parameterTypesText": "CUserProfileManager *",
+      "prototypeComplete": true,
+      "cleanDecompile": "yes",
+      "agentVerdict": "",
+      "compiledStatus": "PASS",
+      "behaviorTest": "PASS",
+      "retailParity": "RELOCATION_MATCH",
+      "liftGrade": "",
+      "ownerRelevance": "none",
+      "engineImplementationVerified": true,
+      "score": 135,
+      "evidence": [
+        "exact-leaf-name",
+        "complete-prototype",
+        "retail-relocation-match"
+      ]
+    },
+    {
+      "address": "0x00406F70",
+      "rva": "0x00006F70",
+      "qualifiedName": "GetAutoSavePathName",
+      "module": "CUserProfileManager",
+      "callingConvention": "__thiscall",
+      "returnType": "CWideString",
+      "parameterCount": 1,
+      "parameterTypesText": "CUserProfileManager *",
+      "prototypeComplete": true,
+      "cleanDecompile": "yes",
+      "agentVerdict": "",
+      "compiledStatus": "PASS",
+      "behaviorTest": "PASS",
+      "retailParity": "RELOCATION_MATCH",
+      "liftGrade": "",
+      "ownerRelevance": "none",
+      "engineImplementationVerified": true,
+      "score": 135,
+      "evidence": [
+        "exact-leaf-name",
+        "complete-prototype",
+        "retail-relocation-match"
       ]
     },
     {

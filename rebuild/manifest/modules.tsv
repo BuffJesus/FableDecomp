@@ -3776,7 +3776,7 @@ CUndeadSoldier	2	1	1	0	0	0	0	0	0	0	0
 CUndeadSpawnCutscene	2	0	0	0	0	0	0	0	0	0	0
 CUndoBufferBase	3	0	0	0	0	0	0	0	0	0	0
 CUniqueVertex	1	0	0	0	0	0	0	0	0	0	0
-CUserProfileManager	123	140	138	0	0	61	61	19	42	0	0
+CUserProfileManager	123	140	138	0	0	67	67	19	48	0	0
 CVO_OracleMarker	4	3	3	0	0	0	0	0	0	0	0
 CVO_Woman	2	1	1	0	0	0	0	0	0	0	0
 CV_AmbushScamScript	19	31	20	0	0	0	0	0	0	0	0

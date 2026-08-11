@@ -8097,3 +8097,61 @@ diagnosis + next steps in VISUAL_PARITY_STATUS.md "OPEN" section.
 Crawl note: a background recovery+crawl agent (Phase A over
 rebuild/backlog/overcapture-recovery-worklist.tsv, then batches 77-81) was running
 at session end — check its commits and relaunch from the next gen_batch.
+
+### 2026-08-10 addendum — parity crawl surge + frontend + save-enumeration seam (resume here)
+
+Branch: **agent/frontend-retail-input-parity** (this session's work was cherry-picked
+here off docs/cut-coop-multiplayer, which a concurrent co-op session had switched the
+tree onto; the 2 co-op commits stayed there — see git log).
+
+Landed this session (all byte-parity, committed lean):
+- **Redefine/gamepad reverted** from rebuild + live install (findings kept in
+  docs/GAMEPAD_REDEFINE_PATCH.md "SHELVED" section). Install is stock.
+- **273 functions** via the binary-wide crawl (gen_batch93-104 + tail-jmp
+  over-capture recovery). New tool `tools/decomp_pipeline/trim_tailjmp.py` cracks the
+  tail-jmp over-capture class (run it AFTER trim_overcapture in the crawl flow).
+- **Frontend font doubling FIXED + visual-verified** (half-texel UV inset in
+  AppendProfileNameText; commit note in VISUAL_PARITY_STATUS.md "RESOLVED 2026-08-10").
+  Frontend render+nav+fonts now match retail.
+- **Save-enumeration seam opened** (remake #2): 6 byte-exact fns in CUserProfileManager
+  — GetAutoSaveFileName x2, GetAutoSaveDisplayName x2 (the frontend "AutoSave" string),
+  GetManualSaveFileName, GetAutoSavePathName. Map + worklist: **docs/CONTINUE_GAME_PATH.md**.
+
+RESUME NEXT TIME (priority order):
+1. Save-enumeration remainder (docs/CONTINUE_GAME_PATH.md "deferred"): retry
+   GetEmptySlotName 0x406a80 (near-miss DIFFER 94v88); GetManualSaveDisplayName 0x406ae0,
+   GetSaveDisplayNameFromFileName 0x407e10 (SEH cleanup), LoadFileList 0x4091c0
+   (security-cookie + STL vector) are codegen-artifact defers — semantics documented.
+2. Save LOAD path (the other half of Continue): CWorld::LoadGameState 0x4a3200 ->
+   subsystem deserializers (CThingManager/CScriptBase/CUserProfileManager::LoadGameState,
+   2-3KB each) -> level stream (CWorldMap::LoadLevel 0x502620). See CONTINUE_GAME_PATH.md.
+3. Resume the binary-wide crawl (crawl-relaunch: next_smallest -> trim_overcapture ->
+   trim_tailjmp -> workflow -> land_batch --land). Durable gen_tried ledger at ~2048.
+4. LoadGame 0x00594f36 is a push-[mem] codegen DEFER (correct DIFFER, don't grind).
+
+---
+
+## 2026-08-11 addendum — FableForge Creation-Kit toolchain (cross-repo)
+
+Session focus shifted from RE to the **modding toolchain** consuming the RE outputs
+(FableForge + ForgeFSE). Full log: `D:\Code\FableForge\docs\TOOLCHAIN_SESSION_2026-08-11.md`.
+The binary-wide parity crawl kept running in the background (gen_batch95 -> 104+; healthy).
+
+Landed (all builds clean; forgecore tests green):
+- **ForgeFSE** (`D:\Code\ForgeFSE`, committed `43ecd61`): B2 LuaQuestHost VM-leak fix + B1
+  entity-control acquisition for ClearCommands/DropGenericBox/UnsheatheWeapons
+  (Wait/MoveToAndPickUpGenericBox DEFERRED — need a live-game pass).
+- **FableTLC** (committed `1acd341`): FINDINGS.md — on-disk CActionInputControl encoding
+  empirically resolved (flat 28-byte, C2DVector persisted, cross-checked 2 retail builds);
+  game.bin per-def zlib level-1; crc0 tag byte-order caveat.
+- **FableForge** (UNCOMMITTED — interleaved with the user's GUI WIP; commit yourself):
+  `forge::questproject` whole-quest compiler (byte-exact vs FQT: minimal/container/manual/
+  delivery) + FSE_Master global-state automation (+ `forge quest master` CLI); `forge::gamedata`
+  live data spine (516 creatures live vs FQT's 27; `forge gamedata` CLI); `forge controls`
+  list/set-binding (PDB-proven enum names); `questnodes` node positions + saveGraphText;
+  **Phase 3a imgui canvas** on ax::NodeEditor (Graph Editor tab; compiles+links, NOT runtime-
+  verified — needs a Windows display).
+
+Resume (toolchain): Phase 3b live pickers (gamedata→node combos), 3c quest-setup panel,
+3d entity placement (Thing = Def+Transform+Script); Blueprint QoL (reroute/functions/comments).
+See `docs/GUI_CANVAS_PHASE3.md`. RE crawl resume is unchanged (crawl-relaunch procedure).
