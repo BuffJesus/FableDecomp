@@ -54048,6 +54048,167 @@ $catalog = @(
         TestSource = '00/9c/CActiveFile_OnReadFinished_009c6ec0_test.cpp'
         PassPattern = 'ONREADFIN_OK'
     }
+    [pscustomobject]@{
+        Address = '009c7580'
+        Module = 'CActiveFile'
+        Source = '00/9c/CActiveFile_OnReadFinished_009c7580.cpp'
+        TestSource = '00/9c/CActiveFile_OnReadFinished_009c7580_test.cpp'
+        PassPattern = 'OnReadFinished_OK'
+    }
+    [pscustomobject]@{
+        Address = '009cbd10'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_GetBankHandle_009cbd10.cpp'
+        TestSource = '00/9c/CBankFile_GetBankHandle_009cbd10_test.cpp'
+        PassPattern = 'GETBANKHANDLE_OK'
+    }
+    [pscustomobject]@{
+        Address = '009d7fa0'
+        Module = 'CActiveFile'
+        Source = '00/9d/CActiveFile_OnReadFinished_009d7fa0.cpp'
+        TestSource = '00/9d/CActiveFile_OnReadFinished_009d7fa0_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '009e4830'
+        Module = 'CActiveFile'
+        Source = '00/9e/CActiveFile_OnReadFinished_009e4830.cpp'
+        TestSource = '00/9e/CActiveFile_OnReadFinished_009e4830_test.cpp'
+        PassPattern = 'READFIN_OK'
+    }
+    [pscustomobject]@{
+        Address = '009e7ec0'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/9e/CGuiVarTransferBool_TransferToGui_009e7ec0.cpp'
+        TestSource = '00/9e/CGuiVarTransferBool_TransferToGui_009e7ec0_test.cpp'
+        PassPattern = 'TRANSFERTOGUI_OK'
+    }
+    [pscustomobject]@{
+        Address = '009f8a90'
+        Module = 'CActiveFile'
+        Source = '00/9f/CActiveFile_OnReadFinished_009f8a90.cpp'
+        TestSource = '00/9f/CActiveFile_OnReadFinished_009f8a90_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '009f8ad0'
+        Module = 'CActiveFile'
+        Source = '00/9f/CActiveFile_OnReadFinished_009f8ad0.cpp'
+        TestSource = '00/9f/CActiveFile_OnReadFinished_009f8ad0_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '009f9b80'
+        Module = 'CActiveFile'
+        Source = '00/9f/CActiveFile_OnReadFinished_009f9b80.cpp'
+        TestSource = '00/9f/CActiveFile_OnReadFinished_009f9b80_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '009f9c20'
+        Module = 'CActiveFile'
+        Source = '00/9f/CActiveFile_OnReadFinished_009f9c20.cpp'
+        TestSource = '00/9f/CActiveFile_OnReadFinished_009f9c20_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a0a840'
+        Module = 'CActiveFile'
+        Source = '00/a0/CActiveFile_OnReadFinished_00a0a840.cpp'
+        TestSource = '00/a0/CActiveFile_OnReadFinished_00a0a840_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a0a880'
+        Module = 'CActiveFile'
+        Source = '00/a0/CActiveFile_OnReadFinished_00a0a880.cpp'
+        TestSource = '00/a0/CActiveFile_OnReadFinished_00a0a880_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a17510'
+        Module = 'CActiveFile'
+        Source = '00/a1/CActiveFile_OnReadFinished_00a17510.cpp'
+        TestSource = '00/a1/CActiveFile_OnReadFinished_00a17510_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a17570'
+        Module = 'CActiveFile'
+        Source = '00/a1/CActiveFile_OnReadFinished_00a17570.cpp'
+        TestSource = '00/a1/CActiveFile_OnReadFinished_00a17570_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a2a330'
+        Module = '_Cons_val<std::allocator<std::pair<CWideString_const_,float>_>,std::pair<CWideString_const_,float>,std'
+        Source = '00/a2/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_00a2a330.cpp'
+        TestSource = '00/a2/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_00a2a330_test.cpp'
+        PassPattern = 'CONS_VAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a35670'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/a3/CGuiVarTransferBool_TransferToGui_00a35670.cpp'
+        TestSource = '00/a3/CGuiVarTransferBool_TransferToGui_00a35670_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a3ab90'
+        Module = 'CCompressorZlib'
+        Source = '00/a3/CCompressorZlib_SetStreamInput_00a3ab90.cpp'
+        TestSource = '00/a3/CCompressorZlib_SetStreamInput_00a3ab90_test.cpp'
+        PassPattern = 'SETSTREAMINPUT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a42040'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/a4/CGuiVarTransferBool_TransferToGui_00a42040.cpp'
+        TestSource = '00/a4/CGuiVarTransferBool_TransferToGui_00a42040_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a420e0'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/a4/CGuiVarTransferBool_TransferToGui_00a420e0.cpp'
+        TestSource = '00/a4/CGuiVarTransferBool_TransferToGui_00a420e0_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a537d0'
+        Module = '_Cons_val<std::allocator<std::pair<CWideString_const_,float>_>,std::pair<CWideString_const_,float>,std'
+        Source = '00/a5/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_00a537d0.cpp'
+        TestSource = '00/a5/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_00a537d0_test.cpp'
+        PassPattern = 'CONS_VAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a544c0'
+        Module = 'CActiveFile'
+        Source = '00/a5/CActiveFile_OnReadFinished_00a544c0.cpp'
+        TestSource = '00/a5/CActiveFile_OnReadFinished_00a544c0_test.cpp'
+        PassPattern = 'READFIN_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a5aca0'
+        Module = 'CBuyHouseDef'
+        Source = '00/a5/CBuyHouseDef_Copy_00a5aca0.cpp'
+        TestSource = '00/a5/CBuyHouseDef_Copy_00a5aca0_test.cpp'
+        PassPattern = 'COPY_OK_5A'
+    }
+    [pscustomobject]@{
+        Address = '00a5b850'
+        Module = '_global'
+        Source = '00/a5/global_GFInitVectorMath_00a5b850.cpp'
+        TestSource = '00/a5/global_GFInitVectorMath_00a5b850_test.cpp'
+        PassPattern = 'VECTORMATH_SSE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a5ee20'
+        Module = 'CStreamingFontBankStateBlock'
+        Source = '00/a5/CStreamingFontBankStateBlock_GetDefault_00a5ee20.cpp'
+        TestSource = '00/a5/CStreamingFontBankStateBlock_GetDefault_00a5ee20_test.cpp'
+        PassPattern = 'GETDEFAULT_OK'
+    }
 )
 
 $requestedAddresses = @(
