@@ -53089,6 +53089,146 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00406f70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e80cd0'
+        Module = 'CGuiWindow'
+        Source = '00/e8/CGuiWindow_OnResize_00e80cd0.cpp'
+        TestSource = '00/e8/CGuiWindow_OnResize_00e80cd0_test.cpp'
+        PassPattern = 'RESIZE_OK'
+    }
+    [pscustomobject]@{
+        Address = '007bedd0'
+        Module = 'CTCPhysicsRigidBody'
+        Source = '00/7b/CTCPhysicsRigidBody_GetFacingVector_007bedd0.cpp'
+        TestSource = '00/7b/CTCPhysicsRigidBody_GetFacingVector_007bedd0_test.cpp'
+        PassPattern = 'OK x=1.50 y=-2.25 z=3.75'
+    }
+    [pscustomobject]@{
+        Address = '009fccf0'
+        Module = 'CVolume'
+        Source = '00/9f/CVolume_CVolume_009fccf0.cpp'
+        TestSource = '00/9f/CVolume_CVolume_009fccf0_test.cpp'
+        PassPattern = 'OK dtor released=1'
+    }
+    [pscustomobject]@{
+        Address = '00ad3940'
+        Module = 'CTCLook'
+        Source = '00/ad/CTCLook_IsTurningBody_00ad3940.cpp'
+        TestSource = '00/ad/CTCLook_IsTurningBody_00ad3940_test.cpp'
+        PassPattern = 'OK_TURN'
+    }
+    [pscustomobject]@{
+        Address = '00c1bb20'
+        Module = 'CAIStateGroup_CreatureGoUnderground'
+        Source = '00/c1/CAIStateGroupCreatureGoUnderground_IsRunnable_00c1bb20.cpp'
+        TestSource = '00/c1/CAIStateGroupCreatureGoUnderground_IsRunnable_00c1bb20_test.cpp'
+        PassPattern = 'VERIFY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004b82d0'
+        Module = '_Cons_val<std::allocator<std::pair<CWideString_const_,float>_>,std::pair<CWideString_const_,float>,std'
+        Source = '00/4b/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_004b82d0.cpp'
+        TestSource = '00/4b/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_004b82d0_test.cpp'
+        PassPattern = 'CONS_VAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00511f10'
+        Module = '_Cons_val<std::allocator<std::pair<CWideString_const_,float>_>,std::pair<CWideString_const_,float>,std'
+        Source = '00/51/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_00511f10.cpp'
+        TestSource = '00/51/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_00511f10_test.cpp'
+        PassPattern = 'CONS_OK'
+    }
+    [pscustomobject]@{
+        Address = '00674a80'
+        Module = '_Cons_val<std::allocator<std::pair<CCharString_const_,bool>_>,std::pair<CCharString_const_,bool>,std'
+        Source = '00/67/ConsvalstdallocatorstdpairCCharStringconstboolstdpairCCharStringconstboolstd_pairclassCCharStringconstbool_00674a80.cpp'
+        TestSource = '00/67/ConsvalstdallocatorstdpairCCharStringconstboolstdpairCCharStringconstboolstd_pairclassCCharStringconstbool_00674a80_test.cpp'
+        PassPattern = 'CONSVAL_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692210'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/69/CActionDoCreatureAction_GetActionName_00692210.cpp'
+        TestSource = '00/69/CActionDoCreatureAction_GetActionName_00692210_test.cpp'
+        PassPattern = 'PASS_GETACTIONNAME'
+    }
+    [pscustomobject]@{
+        Address = '006dba30'
+        Module = '_Cons_val<std::allocator<std::pair<CWideString_const_,float>_>,std::pair<CWideString_const_,float>,std'
+        Source = '00/6d/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_006dba30.cpp'
+        TestSource = '00/6d/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_006dba30_test.cpp'
+        PassPattern = 'CONSVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '006fb1a0'
+        Module = '_Cons_val<std::allocator<std::pair<CWideString_const_,float>_>,std::pair<CWideString_const_,float>,std'
+        Source = '00/6f/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_006fb1a0.cpp'
+        TestSource = '00/6f/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_006fb1a0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '007cbe80'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/7c/CActionDoCreatureAction_GetActionName_007cbe80.cpp'
+        TestSource = '00/7c/CActionDoCreatureAction_GetActionName_007cbe80_test.cpp'
+        PassPattern = 'GetActionName len=-1 str=DoCreatureAction OK'
+    }
+    [pscustomobject]@{
+        Address = '007d2220'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/7d/CActionDoCreatureAction_GetActionName_007d2220.cpp'
+        TestSource = '00/7d/CActionDoCreatureAction_GetActionName_007d2220_test.cpp'
+        PassPattern = '007d2220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d4d70'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/7d/CActionDoCreatureAction_GetActionName_007d4d70.cpp'
+        TestSource = '00/7d/CActionDoCreatureAction_GetActionName_007d4d70_test.cpp'
+        PassPattern = '007d4d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d5ef0'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/7d/CActionDoCreatureAction_GetActionName_007d5ef0.cpp'
+        TestSource = '00/7d/CActionDoCreatureAction_GetActionName_007d5ef0_test.cpp'
+        PassPattern = 'OK name='
+    }
+    [pscustomobject]@{
+        Address = '007d7980'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/7d/CActionDoCreatureAction_GetActionName_007d7980.cpp'
+        TestSource = '00/7d/CActionDoCreatureAction_GetActionName_007d7980_test.cpp'
+        PassPattern = 'OK data='
+    }
+    [pscustomobject]@{
+        Address = '007d9eb0'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/7d/CActionDoCreatureAction_GetActionName_007d9eb0.cpp'
+        TestSource = '00/7d/CActionDoCreatureAction_GetActionName_007d9eb0_test.cpp'
+        PassPattern = 'OK ptr='
+    }
+    [pscustomobject]@{
+        Address = '007df2c0'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/7d/CActionDoCreatureAction_GetActionName_007df2c0.cpp'
+        TestSource = '00/7d/CActionDoCreatureAction_GetActionName_007df2c0_test.cpp'
+        PassPattern = 'OK name=DoCreatureAction'
+    }
+    [pscustomobject]@{
+        Address = '007dfab0'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/7d/CActionDoCreatureAction_GetActionName_007dfab0.cpp'
+        TestSource = '00/7d/CActionDoCreatureAction_GetActionName_007dfab0_test.cpp'
+        PassPattern = '007dfab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007dfc60'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/7d/CActionDoCreatureAction_GetActionName_007dfc60.cpp'
+        TestSource = '00/7d/CActionDoCreatureAction_GetActionName_007dfc60_test.cpp'
+        PassPattern = 'OK str='
+    }
 )
 
 $requestedAddresses = @(
