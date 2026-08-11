@@ -53887,6 +53887,167 @@ $catalog = @(
         TestSource = '00/8d/CModeSitBase_RemoveModeWithAction_008d7250_test.cpp'
         PassPattern = 'REMOVEMODE_OK'
     }
+    [pscustomobject]@{
+        Address = '008e72b0'
+        Module = 'CModeDragonBase'
+        Source = '00/8e/CModeDragonBase_OnDeactivate_008e72b0.cpp'
+        TestSource = '00/8e/CModeDragonBase_OnDeactivate_008e72b0_test.cpp'
+        PassPattern = 'DRAGON_DEACTIVATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00903570'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/90/CActionDoCreatureAction_GetActionName_00903570.cpp'
+        TestSource = '00/90/CActionDoCreatureAction_GetActionName_00903570_test.cpp'
+        PassPattern = 'GETACTIONNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '009035f0'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/90/CActionDoCreatureAction_GetActionName_009035f0.cpp'
+        TestSource = '00/90/CActionDoCreatureAction_GetActionName_009035f0_test.cpp'
+        PassPattern = 'GETACTIONNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00903640'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/90/CActionDoCreatureAction_GetActionName_00903640.cpp'
+        TestSource = '00/90/CActionDoCreatureAction_GetActionName_00903640_test.cpp'
+        PassPattern = 'GETACTIONNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00903680'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/90/CActionDoCreatureAction_GetActionName_00903680.cpp'
+        TestSource = '00/90/CActionDoCreatureAction_GetActionName_00903680_test.cpp'
+        PassPattern = 'DOCREATUREACTION_GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00905160'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/90/CActionDoCreatureAction_GetActionName_00905160.cpp'
+        TestSource = '00/90/CActionDoCreatureAction_GetActionName_00905160_test.cpp'
+        PassPattern = 'PASS_GETACTIONNAME_DoCreatureAction'
+    }
+    [pscustomobject]@{
+        Address = '009051d0'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/90/CActionDoCreatureAction_GetActionName_009051d0.cpp'
+        TestSource = '00/90/CActionDoCreatureAction_GetActionName_009051d0_test.cpp'
+        PassPattern = 'GETACTIONNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00905420'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/90/CActionDoCreatureAction_GetActionName_00905420.cpp'
+        TestSource = '00/90/CActionDoCreatureAction_GetActionName_00905420_test.cpp'
+        PassPattern = 'GETACTIONNAME_00905420_OK'
+    }
+    [pscustomobject]@{
+        Address = '00934100'
+        Module = 'CAIStateGroup_MinionKidGroupTag'
+        Source = '00/93/CAIStateGroupMinionKidGroupTag_IsStillValid_00934100.cpp'
+        TestSource = '00/93/CAIStateGroupMinionKidGroupTag_IsStillValid_00934100_test.cpp'
+        PassPattern = 'ISVALID_OK'
+    }
+    [pscustomobject]@{
+        Address = '0098d6f0'
+        Module = 'CVertexShaderConstantLayout'
+        Source = '00/98/CVertexShaderConstantLayout_PeekName_0098d6f0.cpp'
+        TestSource = '00/98/CVertexShaderConstantLayout_PeekName_0098d6f0_test.cpp'
+        PassPattern = 'PEEKNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '0098ec70'
+        Module = 'CThreadedFile'
+        Source = '00/98/CThreadedFile_FinishAndGetFileHandle_0098ec70.cpp'
+        TestSource = '00/98/CThreadedFile_FinishAndGetFileHandle_0098ec70_test.cpp'
+        PassPattern = 'VERIFY_OK_0098ec70'
+    }
+    [pscustomobject]@{
+        Address = '00993a10'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/99/CGuiVarTransferBool_TransferToGui_00993a10.cpp'
+        TestSource = '00/99/CGuiVarTransferBool_TransferToGui_00993a10_test.cpp'
+        PassPattern = 'TRANSFERTOGUI_OK'
+    }
+    [pscustomobject]@{
+        Address = '009a0b00'
+        Module = 'CInputProcessManager'
+        Source = '00/9a/CInputProcessManager_CInputProcessManager_009a0b00.cpp'
+        TestSource = '00/9a/CInputProcessManager_CInputProcessManager_009a0b00_test.cpp'
+        PassPattern = 'DTOR_SEQUENCE_OK'
+    }
+    [pscustomobject]@{
+        Address = '009ab750'
+        Module = 'CActiveFile'
+        Source = '00/9a/CActiveFile_OnReadFinished_009ab750.cpp'
+        TestSource = '00/9a/CActiveFile_OnReadFinished_009ab750_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '009ac2b0'
+        Module = 'CActiveFile'
+        Source = '00/9a/CActiveFile_OnReadFinished_009ac2b0.cpp'
+        TestSource = '00/9a/CActiveFile_OnReadFinished_009ac2b0_test.cpp'
+        PassPattern = 'ORF_PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b8970'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/9b/CGuiVarTransferBool_TransferToGui_009b8970.cpp'
+        TestSource = '00/9b/CGuiVarTransferBool_TransferToGui_009b8970_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '009b8990'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/9b/CGuiVarTransferBool_TransferToGui_009b8990.cpp'
+        TestSource = '00/9b/CGuiVarTransferBool_TransferToGui_009b8990_test.cpp'
+        PassPattern = 'TRANSFERTOGUI_OK'
+    }
+    [pscustomobject]@{
+        Address = '009b91d0'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/9b/CGuiVarTransferBool_TransferToGui_009b91d0.cpp'
+        TestSource = '00/9b/CGuiVarTransferBool_TransferToGui_009b91d0_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '009b94f0'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/9b/CGuiVarTransferBool_TransferToGui_009b94f0.cpp'
+        TestSource = '00/9b/CGuiVarTransferBool_TransferToGui_009b94f0_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '009be150'
+        Module = 'CActiveFile'
+        Source = '00/9b/CActiveFile_OnReadFinished_009be150.cpp'
+        TestSource = '00/9b/CActiveFile_OnReadFinished_009be150_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '009be190'
+        Module = 'CActiveFile'
+        Source = '00/9b/CActiveFile_OnReadFinished_009be190.cpp'
+        TestSource = '00/9b/CActiveFile_OnReadFinished_009be190_test.cpp'
+        PassPattern = 'OARF_OK'
+    }
+    [pscustomobject]@{
+        Address = '009c3510'
+        Module = 'CActiveFile'
+        Source = '00/9c/CActiveFile_OnReadFinished_009c3510.cpp'
+        TestSource = '00/9c/CActiveFile_OnReadFinished_009c3510_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '009c6ec0'
+        Module = 'CActiveFile'
+        Source = '00/9c/CActiveFile_OnReadFinished_009c6ec0.cpp'
+        TestSource = '00/9c/CActiveFile_OnReadFinished_009c6ec0_test.cpp'
+        PassPattern = 'ONREADFIN_OK'
+    }
 )
 
 $requestedAddresses = @(
