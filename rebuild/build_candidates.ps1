@@ -54545,6 +54545,174 @@ $catalog = @(
         TestSource = '00/ae/CActiveFile_OnReadFinished_00aeb970_test.cpp'
         PassPattern = 'ONREADFINISHED_OK'
     }
+    [pscustomobject]@{
+        Address = '00aec9d0'
+        Module = 'CActiveFile'
+        Source = '00/ae/CActiveFile_OnReadFinished_00aec9d0.cpp'
+        TestSource = '00/ae/CActiveFile_OnReadFinished_00aec9d0_test.cpp'
+        PassPattern = 'OnReadFinished_OK'
+    }
+    [pscustomobject]@{
+        Address = '00af3bf0'
+        Module = 'CGuiVarTransferBool'
+        Source = '00/af/CGuiVarTransferBool_TransferToGui_00af3bf0.cpp'
+        TestSource = '00/af/CGuiVarTransferBool_TransferToGui_00af3bf0_test.cpp'
+        PassPattern = 'TRANSFERBOOL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b05a90'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/b0/CActionDoCreatureAction_GetActionName_00b05a90.cpp'
+        TestSource = '00/b0/CActionDoCreatureAction_GetActionName_00b05a90_test.cpp'
+        PassPattern = 'GETACTIONNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b17910'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/b1/CActionDoCreatureAction_GetActionName_00b17910.cpp'
+        TestSource = '00/b1/CActionDoCreatureAction_GetActionName_00b17910_test.cpp'
+        PassPattern = 'ACTIONNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b18720'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/b1/CActionDoCreatureAction_GetActionName_00b18720.cpp'
+        TestSource = '00/b1/CActionDoCreatureAction_GetActionName_00b18720_test.cpp'
+        PassPattern = 'DOCREATUREACTION_GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b1b470'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/b1/CActionDoCreatureAction_GetActionName_00b1b470.cpp'
+        TestSource = '00/b1/CActionDoCreatureAction_GetActionName_00b1b470_test.cpp'
+        PassPattern = 'GETACTIONNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b28ca0'
+        Module = 'CEngineComponent'
+        Source = '00/b2/CEngineComponent_GetConsoleEnableFunctionNameCEngineComponentUAEA_00b28ca0.cpp'
+        TestSource = '00/b2/CEngineComponent_GetConsoleEnableFunctionNameCEngineComponentUAEA_00b28ca0_test.cpp'
+        PassPattern = 'GETCONSOLEENABLE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b38c90'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_GetConsoleEnableFunctionNameCEnginePrimitiveRend_00b38c90.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_GetConsoleEnableFunctionNameCEnginePrimitiveRend_00b38c90_test.cpp'
+        PassPattern = 'PRIMRENDERER_CONSOLEFN_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b4b6f0'
+        Module = 'CEnginePrimitiveRenderer2D'
+        Source = '00/b4/CEnginePrimitiveRenderer2D_GetConsoleEnableFunctionNameCEnginePrimitiveRend_00b4b6f0.cpp'
+        TestSource = '00/b4/CEnginePrimitiveRenderer2D_GetConsoleEnableFunctionNameCEnginePrimitiveRend_00b4b6f0_test.cpp'
+        PassPattern = 'GETCONSOLEENABLE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b50b50'
+        Module = 'CEngineShadowRenderer'
+        Source = '00/b5/CEngineShadowRenderer_GetConsoleEnableFunctionNameCEngineShadowRendere_00b50b50.cpp'
+        TestSource = '00/b5/CEngineShadowRenderer_GetConsoleEnableFunctionNameCEngineShadowRendere_00b50b50_test.cpp'
+        PassPattern = 'SHADOW_CONSOLE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b56650'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_GetConsoleEnableFunctionNameCEngineWeatherRender_00b56650.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_GetConsoleEnableFunctionNameCEngineWeatherRender_00b56650_test.cpp'
+        PassPattern = 'GETCONSOLEENABLE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b5bad0'
+        Module = 'CEngineScreenEffectColourFilter'
+        Source = '00/b5/CEngineScreenEffectColourFilter_GetConsoleEnableFunctionNameCEngineScreenEffectC_00b5bad0.cpp'
+        TestSource = '00/b5/CEngineScreenEffectColourFilter_GetConsoleEnableFunctionNameCEngineScreenEffectC_00b5bad0_test.cpp'
+        PassPattern = 'COLOURFILTER_CONSOLEENABLE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b5ead0'
+        Module = 'CEngineScreenEffectRadialBlurRenderer'
+        Source = '00/b5/CEngineScreenEffectRadialBlurRenderer_GetConsoleEnableFunctionNameCEngineScreenEffectR_00b5ead0.cpp'
+        TestSource = '00/b5/CEngineScreenEffectRadialBlurRenderer_GetConsoleEnableFunctionNameCEngineScreenEffectR_00b5ead0_test.cpp'
+        PassPattern = 'RADIALBLUR_GETNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b619f0'
+        Module = 'CEngineScreenEffectGlowRenderer'
+        Source = '00/b6/CEngineScreenEffectGlowRenderer_GetConsoleEnableFunctionNameCEngineScreenEffectG_00b619f0.cpp'
+        TestSource = '00/b6/CEngineScreenEffectGlowRenderer_GetConsoleEnableFunctionNameCEngineScreenEffectG_00b619f0_test.cpp'
+        PassPattern = 'GLOW_CONSOLE_ENABLE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b66dc0'
+        Module = 'CEngineSkyRenderer'
+        Source = '00/b6/CEngineSkyRenderer_GetConsoleEnableFunctionNameCEngineSkyRendererUA_00b66dc0.cpp'
+        TestSource = '00/b6/CEngineSkyRenderer_GetConsoleEnableFunctionNameCEngineSkyRendererUA_00b66dc0_test.cpp'
+        PassPattern = 'PASS_SKYRENDER_NAME'
+    }
+    [pscustomobject]@{
+        Address = '00b83950'
+        Module = 'CActiveFile'
+        Source = '00/b8/CActiveFile_OnReadFinished_00b83950.cpp'
+        TestSource = '00/b8/CActiveFile_OnReadFinished_00b83950_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b88f80'
+        Module = 'CEngineScreenEffectDisplacementRenderer'
+        Source = '00/b8/CEngineScreenEffectDisplacementRenderer_GetConsoleEnableFunctionNameCEngineScreenEffectD_00b88f80.cpp'
+        TestSource = '00/b8/CEngineScreenEffectDisplacementRenderer_GetConsoleEnableFunctionNameCEngineScreenEffectD_00b88f80_test.cpp'
+        PassPattern = 'CONSOLE_ENABLE_NAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b8b580'
+        Module = 'CEngineScreenEffectOutlineGlow'
+        Source = '00/b8/CEngineScreenEffectOutlineGlow_GetConsoleEnableFunctionNameCEngineScreenEffectO_00b8b580.cpp'
+        TestSource = '00/b8/CEngineScreenEffectOutlineGlow_GetConsoleEnableFunctionNameCEngineScreenEffectO_00b8b580_test.cpp'
+        PassPattern = 'OUTLINEGLOW_CONSOLE_NAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b98de0'
+        Module = 'CEngineInternalPrimitiveRepeatedStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitiveRepeatedStaticMesh_CollectStats_00b98de0.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitiveRepeatedStaticMesh_CollectStats_00b98de0_test.cpp'
+        PassPattern = 'COLLECTSTATS_FWD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bdb040'
+        Module = 'CEngineVSConstantLayoutParticles'
+        Source = '00/bd/CEngineVSConstantLayoutParticles_PeekName_00bdb040.cpp'
+        TestSource = '00/bd/CEngineVSConstantLayoutParticles_PeekName_00bdb040_test.cpp'
+        PassPattern = 'PEEKNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bdb200'
+        Module = 'CEngineVSConstantLayoutRepeatedMesh'
+        Source = '00/bd/CEngineVSConstantLayoutRepeatedMesh_PeekNameCEngineVSConstantLayoutRepeatedMeshUBEAV_00bdb200.cpp'
+        TestSource = '00/bd/CEngineVSConstantLayoutRepeatedMesh_PeekNameCEngineVSConstantLayoutRepeatedMeshUBEAV_00bdb200_test.cpp'
+        PassPattern = 'PEEKNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bdb2f0'
+        Module = 'CEngineVSConstantLayoutLightsBones'
+        Source = '00/bd/CEngineVSConstantLayoutLightsBones_PeekName_00bdb2f0.cpp'
+        TestSource = '00/bd/CEngineVSConstantLayoutLightsBones_PeekName_00bdb2f0_test.cpp'
+        PassPattern = '00bdb2f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdb580'
+        Module = 'CEngineVSConstantLayoutLights'
+        Source = '00/bd/CEngineVSConstantLayoutLights_PeekName_00bdb580.cpp'
+        TestSource = '00/bd/CEngineVSConstantLayoutLights_PeekName_00bdb580_test.cpp'
+        PassPattern = 'PEEKNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bdbf00'
+        Module = 'CEngineVSConstantLayoutBasic'
+        Source = '00/bd/CEngineVSConstantLayoutBasic_PeekName_00bdbf00.cpp'
+        TestSource = '00/bd/CEngineVSConstantLayoutBasic_PeekName_00bdbf00_test.cpp'
+        PassPattern = 'PEEKNAME_OK'
+    }
 )
 
 $requestedAddresses = @(
