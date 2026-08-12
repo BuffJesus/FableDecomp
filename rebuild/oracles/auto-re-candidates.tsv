@@ -8038,6 +8038,7 @@ address	name	length	bytes
 00c162a0	std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	8	83c104e918050000
 00c16580	CEnginePrimitiveRenderer::ClearAllChildPrimitives	29	568bf18b4e0885c9c706b02a2b01740b8b01ff10c74608000000005ec3
 00c26240	CAnimFilterOfGroup::operator()	29	568bf18b46048b4c24085081c160030000e82a2100000346085ec20400
+0049e220	CEditWorld::?LoadWorldFromFile@CWorld@@UAEXAAVCAFile@@J@Z	67	5356578bf9e896395400ddd88b7424108b068bceff501c8b4f148b118bd88b4424145056ff520c8b16538bceff52148b078bcfff5004e865395400ddd85f5e5bc20800
 00494410	DispatchFrontendInputAction	25	8b4424088b4c24045051e8818ef7ff8bc8e8da8ff7ffc20800
 00494430	FrontendInputActionNoOp	1	c3
 00494440	CFrontendGameComponent::SetActiveInputSlot	17	8b4424048d5481288991ec010000c20400

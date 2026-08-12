@@ -57521,6 +57521,13 @@ $catalog = @(
         TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b6c0_test.cpp'
         PassPattern = 'VDD_PARITY_OK'
     }
+    [pscustomobject]@{
+        Address = '0049e220'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_LoadWorldFromFile_0049e220.cpp'
+        TestSource = '00/49/CWorld_LoadWorldFromFile_0049e220_test.cpp'
+        PassPattern = 'FABLE_CWORLD_LOAD_WORLD_FROM_FILE_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
