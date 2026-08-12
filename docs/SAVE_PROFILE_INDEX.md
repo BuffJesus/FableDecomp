@@ -142,6 +142,24 @@ python tools/save_install.py install  <edited.sav> <profileDir> <slotName> [--ou
   **unregistered** files in the dir (the ones that won't show in-game).
 - Every build recomputes + self-verifies the trailer and re-parses the result before writing.
 
+## 4.1 Tool — `tools/save_metadata.py`
+
+The frontend-facing read path is now available as a reusable, read-only join:
+
+```text
+python tools/save_metadata.py <profileDir>
+python tools/save_metadata.py <profileDir> --json
+```
+
+It emits autosave-first rows, then only the non-empty `SaveGameNames1..50`
+registry entries. Each referenced `FableSave!` is trailer-checked and its
+confirmed 23-field `HEADER` is decoded (`WorldName`, `WorldFrame`, region and
+minimap names, marker data, and play time). Missing or malformed files remain
+visible as diagnostic rows with frontend action `0xDC`; fully validated files
+carry action `0x11`. Unregistered directory files are intentionally ignored,
+matching retail enumeration. The native C++ runtime still needs to consume this
+row data before the live game load ownership boundary is connected.
+
 ---
 
 ## 5. Staged corrected install (ready to deploy)

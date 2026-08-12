@@ -79,11 +79,13 @@ CUserProfileManager fns incl. GetEmptySlotName).
   — the documented `push [mem]` one-off reject class. Semantics ARE recovered:
   `self->vtbl[4](); self->f29 = 1; (self+0x84).Assign(name);` (helper 0x99b7d0 is a
   thiscall taking one stack arg). Its DIFFER catalog state is correct; leave it.
-- **Save metadata layer is stubbed** (`save_metadata_runtime_boundary.cpp`:
-  `FableMetGetAutoSaveName` returns null, `StoreNull`). Real save enumeration/load
-  (the `CMet*` / `CSaveGameManager` path) is unreconstructed — this is the seam
-  between "frontend stages a load" and "CWorld::LoadGameState runs." SAVE_*.md docs
-  cover the on-disk format; `save_edit.py` reads/writes saves.
+- **Native save metadata/load ownership is still stubbed** (`save_metadata_runtime_boundary.cpp`:
+  `FableMetGetAutoSaveName` returns null, `StoreNull`). The on-disk enumeration
+  and metadata read contract is no longer a data gap: `tools/save_metadata.py`
+  joins the `Profile.bin` registry to validated `.sav` `HEADER` fields and
+  emits the recovered row actions (`0x11` valid / `0xDC` missing or corrupt).
+  The remaining seam is wiring those rows into the native C++ frontend and then
+  into `CWorld::LoadGameState`.
 - World load bottoms out at the level/region streaming (`CWorldMap::LoadLevel`,
   `FinalAlbion.wad`); registration requires the FinalAlbion_RT.stb common-header
   chunk (see NEW_LEVEL_ASSEMBLY.md / OpenRetailStaticMap 0xB41E50 gotcha).

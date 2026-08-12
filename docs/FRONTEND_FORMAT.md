@@ -400,7 +400,9 @@ through the recovered ENG_ARIAL_16 glyph atlas, centered at `(134,90 + row*30)`;
 the 1024-wide fallback sheet retains the baked labels for compatibility.
 The same component cell leaves the File Information header and active-profile
 line transparent; those strings are submitted live from the ENG_ARIAL_24 and
-ENG_ARIAL_16 atlases, while native save-description metadata remains deferred.
+ENG_ARIAL_16 atlases. The confirmed save-description read path is now exposed
+by `tools/save_metadata.py` (registry join plus validated `HEADER` decode),
+while native runtime injection remains an explicit ownership boundary.
 The authored 4x4 `HUD_TEXTBOX_BACK_FE` source is likewise retained in the
 component-atlas tail and emitted live at `(0,292)` with its 640x248 scale.
 The `UI_TABLE_TEST_H_T_FE` 8x8 rule is likewise retained in the tail and emitted

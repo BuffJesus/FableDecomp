@@ -8230,3 +8230,20 @@ land_batch --land → lean commit). Helper scripts live in this session's scratc
 **fable-defs oracle: CLOSED.** Issue jamen/fable-defs#1 was posted AND closed by the user; the "absent
 oracle" premise was a stale AGENTS.md line (jamen's agent). Do not reopen/post; don't ship the 456KB JSON
 unless jamen asks after a real layout bug. Our extraction independently agrees on 267/268 `#[def]` orders.
+
+### 2026-08-11 continuation — save metadata read path
+
+The next frontend task was narrowed from the broad native `CMet*`/load seam to
+the tractable read contract. Added `tools/save_metadata.py` and focused tests in
+`tools/tests/test_save_metadata.py`. The module enumerates autosave-first rows,
+uses only non-empty `Profile.bin` `SaveGameNames1..50` entries for manual rows,
+validates each `FableSave!` trailer, decodes all 23 confirmed `HEADER` fields,
+and preserves missing/corrupt rows as action `0xDC` while valid rows carry
+`0x11`. Three synthetic tests pass, and a read-only run against the local
+Cornelio profile reported CRC-OK plus five loadable rows (two autosaves and
+three manual saves). Unregistered files are ignored as retail does.
+
+The native C++ boundary is intentionally still separate: the remaining work is
+to feed these rows into the live `ConstructFileDescription`/load ownership path,
+then connect action `0x11` to the documented world-load boundary. No profile or
+save files were modified.
