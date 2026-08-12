@@ -33,6 +33,27 @@ CWorld::LoadGameState                  0x004a3200  (752B)   world-level load coo
 (*) real body length after trimming manifest over-capture; all rows currently
 `retail_parity = -` except LoadGame which is `DIFFER`.
 
+## 2026-08-11 — tier-1 byte-parity PROBE result (important scoping finding)
+
+`CPlayerManager::LoadGameState` 0x449e60 (smallest coordinator, 297B, 13 calls) was
+probed for byte-exact recovery. Result: **DIFFER(287v297), behaviour PASS — NOT
+byte-matchable with RTM 3077.** ~97% reproduced exactly (frame, LoopA, the Transfer
+field-tag calls + CCharString temp ctor/dtor scheduling, LoopC out-of-line found-block).
+The entire 10-byte gap is one **register-allocator artifact in LoopB**: retail keeps
+`begin` in ebp with two base copies (edi=result base, edx=walk) so the found-deref goes
+OUT-OF-LINE (the 0x449f7f block) + reload bytes; VC7.1 keeps `begin` in a single live reg
+and FOLDS both derefs into one shared `mov ecx,[reg+ecx*4]`. Behaviorally identical; not
+flippable from C++ source shape (≥4 shapes tried) nor the /GS,/Oa×pragma sweep. Only lever
+left is a QFE-4035 cl.exe (retail built ~11 objs with it). Faithful 287B source +
+passing test preserved in scratchpad t2_probe/.
+
+**Implication:** the load-path coordinators/deserializers are largely a byte-parity DEFER
+class (reg-alloc/temp-scheduling artifacts scale with call count → the 300–740B fns will
+miss more, not less). Pursue this lane as **documented-semantics + behavior-verified**
+reconstruction, NOT byte-exact catalog landings, unless a QFE-4035 compiler is wired into
+the harness sweep. The tractable byte-exact wins here are the small seam leaves (done: 7
+CUserProfileManager fns incl. GetEmptySlotName).
+
 ## Tractability (order to reconstruct)
 
 1. **Small / near-term** (byte-parity feasible now):
