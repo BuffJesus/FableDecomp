@@ -56597,6 +56597,146 @@ $catalog = @(
         TestSource = '00/40/CUserProfileManager_GetEmptySlotName_00406a80_test.cpp'
         PassPattern = 'EMPTYSLOT_OK'
     }
+    [pscustomobject]@{
+        Address = '00a16d50'
+        Module = '_global'
+        Source = '00/a1/global_GetDefaultValCPhysicalPrimitiveInit_00a16d50.cpp'
+        TestSource = '00/a1/global_GetDefaultValCPhysicalPrimitiveInit_00a16d50_test.cpp'
+        PassPattern = 'GETDEFAULTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a3a930'
+        Module = 'CCompressorZlib'
+        Source = '00/a3/CCompressorZlib_FinishCompressStream_00a3a930.cpp'
+        TestSource = '00/a3/CCompressorZlib_FinishCompressStream_00a3a930_test.cpp'
+        PassPattern = 'FINISH_STREAM_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a3c310'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/a3/C3DAnimationBlendState_AddCombinationBlend_00a3c310.cpp'
+        TestSource = '00/a3/C3DAnimationBlendState_AddCombinationBlend_00a3c310_test.cpp'
+        PassPattern = 'BLENDSTATE_ADDCOMB_OK'
+    }
+    [pscustomobject]@{
+        Address = '00af7b40'
+        Module = 'CEngineSubPrimitiveGameMesh'
+        Source = '00/af/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00af7b40.cpp'
+        TestSource = '00/af/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00af7b40_test.cpp'
+        PassPattern = 'VDD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00af7c80'
+        Module = 'CEngineSubPrimitiveGameMesh'
+        Source = '00/af/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00af7c80.cpp'
+        TestSource = '00/af/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00af7c80_test.cpp'
+        PassPattern = 'VDD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b32ff0'
+        Module = 'GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript'
+        Source = '00/b3/GFPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScrip_CIsThingAlive_00b32ff0.cpp'
+        TestSource = '00/b3/GFPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScrip_CIsThingAlive_00b32ff0_test.cpp'
+        PassPattern = 'PARITY_OK_B32FF0'
+    }
+    [pscustomobject]@{
+        Address = '00b6d4b0'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/b6/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00b6d4b0.cpp'
+        TestSource = '00/b6/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00b6d4b0_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b92d10'
+        Module = 'CEngineSceneGrid'
+        Source = '00/b9/CEngineSceneGrid_GetCellBoundingBox_00b92d10.cpp'
+        TestSource = '00/b9/CEngineSceneGrid_GetCellBoundingBox_00b92d10_test.cpp'
+        PassPattern = 'GETCELLBBOX_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b9c110'
+        Module = 'CEngineSubPrimitiveGameMesh'
+        Source = '00/b9/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00b9c110.cpp'
+        TestSource = '00/b9/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00b9c110_test.cpp'
+        PassPattern = 'VECDELDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b9c130'
+        Module = 'CEngineSubPrimitiveGameMesh'
+        Source = '00/b9/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00b9c130.cpp'
+        TestSource = '00/b9/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00b9c130_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b9c150'
+        Module = 'CEngineSubPrimitiveGameMesh'
+        Source = '00/b9/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00b9c150.cpp'
+        TestSource = '00/b9/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00b9c150_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bb1740'
+        Module = 'CEngineSubPrimitiveGameMesh'
+        Source = '00/bb/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00bb1740.cpp'
+        TestSource = '00/bb/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00bb1740_test.cpp'
+        PassPattern = 'VDD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bb1760'
+        Module = 'CEngineSubPrimitiveGameMesh'
+        Source = '00/bb/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00bb1760.cpp'
+        TestSource = '00/bb/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00bb1760_test.cpp'
+        PassPattern = 'VDD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bb17b0'
+        Module = 'CEngineSubPrimitiveGameMesh'
+        Source = '00/bb/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00bb17b0.cpp'
+        TestSource = '00/bb/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00bb17b0_test.cpp'
+        PassPattern = 'VDD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bb6d50'
+        Module = 'CEngineInternalPrimitiveParticleDecal'
+        Source = '00/bb/CEngineInternalPrimitiveParticleDecal_GetWorldPosition_00bb6d50.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleDecal_GetWorldPosition_00bb6d50_test.cpp'
+        PassPattern = 'GETWORLDPOS_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bbbb40'
+        Module = 'CEngineInternalPrimitiveDecal'
+        Source = '00/bb/CEngineInternalPrimitiveDecal_GetWorldPosition_00bbbb40.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveDecal_GetWorldPosition_00bbbb40_test.cpp'
+        PassPattern = 'DECAL_WORLDPOS_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bbbe40'
+        Module = 'CEngineInternalPrimitiveParticleGroup'
+        Source = '00/bb/CEngineInternalPrimitiveParticleGroup_GetWorldPosition_00bbbe40.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleGroup_GetWorldPosition_00bbbe40_test.cpp'
+        PassPattern = 'GETWORLDPOS_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bdc000'
+        Module = 'CLandscapeBackgroundLoadTask'
+        Source = '00/bd/CLandscapeBackgroundLoadTask_ReleaseFileBlockLoad_00bdc000.cpp'
+        TestSource = '00/bd/CLandscapeBackgroundLoadTask_ReleaseFileBlockLoad_00bdc000_test.cpp'
+        PassPattern = 'RELEASE_FBL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00be2520'
+        Module = 'CEngineSubPrimitiveGameMesh'
+        Source = '00/be/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00be2520.cpp'
+        TestSource = '00/be/CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00be2520_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c0c200'
+        Module = 'CShaderResource'
+        Source = '00/c0/CShaderResource_GetPixelShader_00c0c200.cpp'
+        TestSource = '00/c0/CShaderResource_GetPixelShader_00c0c200_test.cpp'
+        PassPattern = 'PASS_GETPIXELSHADER'
+    }
 )
 
 $requestedAddresses = @(
