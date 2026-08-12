@@ -145,6 +145,12 @@ void FABLE_FASTCALL FableSetVisualFrontendOptionsBackHovered(bool hovered);
 void FABLE_FASTCALL FableSetVisualFrontendSaveMenu(bool active);
 void FABLE_FASTCALL FableSetVisualFrontendSaveSelection(
     fable_u32 selection);
+// Replace the four live save-row labels and their recovered frontend actions.
+// Passing null names restores the authored visual-checkpoint defaults.
+void FABLE_FASTCALL FableSetVisualFrontendSaveRows(
+    const char* const* names,
+    const fable_u32* actions,
+    fable_u32 count);
 void FABLE_FASTCALL FableSetVisualFrontendAboutMenu(bool active);
 void FABLE_FASTCALL FableSetVisualFrontendCreditsMenu(bool active);
 void FABLE_FASTCALL FableSetVisualFrontendProfilesMenu(

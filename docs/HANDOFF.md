@@ -8247,3 +8247,15 @@ The native C++ boundary is intentionally still separate: the remaining work is
 to feed these rows into the live `ConstructFileDescription`/load ownership path,
 then connect action `0x11` to the documented world-load boundary. No profile or
 save files were modified.
+
+### 2026-08-11 continuation — renderer-side save-row injection
+
+The renderer-side half is now exposed as `FableSetVisualFrontendSaveRows` in
+`rebuild/integration/fable_visual_d3d9.h`: it copies up to four live labels and
+their `0x11`/`0xDC` actions, resets to the authored checkpoint defaults when
+passed null, and dims invalid rows. The changed VC7.1 translation unit compiles
+cleanly with the production frontend defines. The full Release bootstrap was
+also attempted, but stopped earlier at the pre-existing
+`FABLETLC_WINMAIN_BEHAVIOR FAIL code=2` gate before the visual link; no claim is
+made that the full executable build passed. The native world-load ownership
+boundary remains open.

@@ -403,6 +403,11 @@ line transparent; those strings are submitted live from the ENG_ARIAL_24 and
 ENG_ARIAL_16 atlases. The confirmed save-description read path is now exposed
 by `tools/save_metadata.py` (registry join plus validated `HEADER` decode),
 while native runtime injection remains an explicit ownership boundary.
+The D3D9 frontend now exposes that narrow renderer-side boundary through
+`FableSetVisualFrontendSaveRows`: it accepts up to four Profile.bin-derived
+labels plus their recovered `0x11`/`0xDC` actions, resets safely to the authored
+checkpoint defaults when passed null, and dims invalid rows. This does not yet
+connect Enter to the native world-load owner.
 The authored 4x4 `HUD_TEXTBOX_BACK_FE` source is likewise retained in the
 component-atlas tail and emitted live at `(0,292)` with its 640x248 scale.
 The `UI_TABLE_TEST_H_T_FE` 8x8 rule is likewise retained in the tail and emitted

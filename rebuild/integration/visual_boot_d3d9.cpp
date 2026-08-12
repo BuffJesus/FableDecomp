@@ -216,8 +216,10 @@ namespace
     };
     // Saved-game slot names use the same ENG_ARIAL_16 runtime glyph path as
     // profile names.  The component sheet deliberately leaves these four
-    // labels transparent so the active save list can submit them live.
-    const char* const kVisualSaveRowNames[4] = {
+    // labels transparent so the active save list can submit them live.  These
+    // defaults preserve the authored visual checkpoint; the public setter
+    // below replaces them with Profile.bin-derived rows at runtime.
+    const char* const kDefaultVisualSaveRowNames[4] = {
         "AutoSave",
         "Save 1",
         "Save 2",
@@ -364,6 +366,10 @@ namespace
     bool g_MainMenuActive = false;
     bool g_OptionsMenuActive = false;
     bool g_SaveMenuActive = false;
+    char g_VisualSaveRowNames[4][128] = {};
+    fable_u32 g_VisualSaveRowActions[4] = {
+        0x11, 0x11, 0x11, 0x11
+    };
     bool g_AboutMenuActive = false;
     bool g_CreditsMenuActive = false;
     bool g_ProfilesMenuActive = false;
@@ -717,7 +723,8 @@ namespace
         float originX,
         float originY,
         float scaleX,
-        float scaleY)
+        float scaleY,
+        fable_u32 diffuseColour = 0xFFFFFFFFu)
     {
         if (
             text == 0 ||
@@ -783,7 +790,7 @@ namespace
                     kFableProfileGlyphAtlasOriginY + glyph.atlasY +
                     glyph.height) - 0.5f) /
                     static_cast<float>(g_OptionsHeight),
-                0xFFFFFFFFu);
+                diffuseColour);
             pen += static_cast<float>(glyph.advance);
         }
     }
@@ -2939,6 +2946,16 @@ bool FABLE_FASTCALL FableInitialiseVisualD3D9(
     InitialiseMainMenuRowStates();
     g_OptionsSelection = 0;
     g_SaveSelection = 0;
+    for (fable_u32 row = 0; row < 4; ++row)
+    {
+        strncpy(
+            g_VisualSaveRowNames[row],
+            kDefaultVisualSaveRowNames[row],
+            sizeof(g_VisualSaveRowNames[row]) - 1);
+        g_VisualSaveRowNames[row][
+            sizeof(g_VisualSaveRowNames[row]) - 1] = '\0';
+        g_VisualSaveRowActions[row] = 0x11;
+    }
     g_ProfilesMode = FableFrontendProfilesNormal;
     g_ProfileSelection = 0;
     g_ProfileNameCount = 0;
@@ -4137,13 +4154,16 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
                 vertexCount,
                 records,
                 recordCount,
-                kVisualSaveRowNames[row],
+                g_VisualSaveRowNames[row],
                 134.0f,
                 90.0f + static_cast<float>(row) * 30.0f,
                 left,
                 top,
                 designScaleX,
-                designScaleY);
+                designScaleY,
+                g_VisualSaveRowActions[row] == 0x11
+                    ? 0xFFFFFFFFu
+                    : 0xFF808080u);
         }
         // UI_TEXT_AREA is two asymmetric CTable horizontals.  Keep the
         // decoded source sprites in the atlas tail and reproduce the exact
@@ -5001,6 +5021,41 @@ void FABLE_FASTCALL FableSetVisualFrontendSaveSelection(
     if (!g_SaveMenuActive || selection >= 4)
         return;
     g_SaveSelection = selection;
+}
+
+void FABLE_FASTCALL FableSetVisualFrontendSaveRows(
+    const char* const* names,
+    const fable_u32* actions,
+    fable_u32 count)
+{
+    for (fable_u32 row = 0; row < 4; ++row)
+    {
+        strncpy(
+            g_VisualSaveRowNames[row],
+            kDefaultVisualSaveRowNames[row],
+            sizeof(g_VisualSaveRowNames[row]) - 1);
+        g_VisualSaveRowNames[row][
+            sizeof(g_VisualSaveRowNames[row]) - 1] = '\0';
+        g_VisualSaveRowActions[row] = 0x11;
+    }
+    if (names == 0)
+        return;
+    if (count > 4)
+        count = 4;
+    for (fable_u32 row = 0; row < count; ++row)
+    {
+        if (names[row] != 0)
+        {
+            strncpy(
+                g_VisualSaveRowNames[row],
+                names[row],
+                sizeof(g_VisualSaveRowNames[row]) - 1);
+            g_VisualSaveRowNames[row][
+                sizeof(g_VisualSaveRowNames[row]) - 1] = '\0';
+        }
+        if (actions != 0)
+            g_VisualSaveRowActions[row] = actions[row];
+    }
 }
 
 void FABLE_FASTCALL FableSetVisualFrontendDetailScreen(fable_u32 screen)
