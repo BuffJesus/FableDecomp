@@ -56737,6 +56737,118 @@ $catalog = @(
         TestSource = '00/c0/CShaderResource_GetPixelShader_00c0c200_test.cpp'
         PassPattern = 'PASS_GETPIXELSHADER'
     }
+    [pscustomobject]@{
+        Address = '00c1bae0'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/c1/CTCPhysicsStandard_CanCollideWithLandscape_00c1bae0.cpp'
+        TestSource = '00/c1/CTCPhysicsStandard_CanCollideWithLandscape_00c1bae0_test.cpp'
+        PassPattern = 'CANCOLLIDE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1d7f0'
+        Module = 'CMap'
+        Source = '00/c1/CMap_GetMemoryFootprint_00c1d7f0.cpp'
+        TestSource = '00/c1/CMap_GetMemoryFootprint_00c1d7f0_test.cpp'
+        PassPattern = 'FOOTPRINT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1ea80'
+        Module = 'CMap'
+        Source = '00/c1/CMap_GetMemoryFootprint_00c1ea80.cpp'
+        TestSource = '00/c1/CMap_GetMemoryFootprint_00c1ea80_test.cpp'
+        PassPattern = 'FOOTPRINT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c44860'
+        Module = 'CTCLook'
+        Source = '00/c4/CTCLook_SetHeadTurnState_00c44860.cpp'
+        TestSource = '00/c4/CTCLook_SetHeadTurnState_00c44860_test.cpp'
+        PassPattern = 'HEADTURN_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cb2ec0'
+        Module = '_global'
+        Source = '00/cb/global_IsMeleeWeaponClass_00cb2ec0.cpp'
+        TestSource = '00/cb/global_IsMeleeWeaponClass_00cb2ec0_test.cpp'
+        PassPattern = 'MELEEWEAPONCLASS_OK'
+    }
+    [pscustomobject]@{
+        Address = '0045017d'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/45/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0045017d.cpp'
+        TestSource = '00/45/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0045017d_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '004774b9'
+        Module = 'vector<CIntelligentPointer<CThing_const_>'
+        Source = '00/47/vectorCIntelligentPointerCThingconst_Destroy_004774b9.cpp'
+        TestSource = '00/47/vectorCIntelligentPointerCThingconst_Destroy_004774b9_test.cpp'
+        PassPattern = 'DESTROY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004aff80'
+        Module = 'CQuestManager'
+        Source = '00/4a/CQuestManager_RemoveAllBoasts_004aff80.cpp'
+        TestSource = '00/4a/CQuestManager_RemoveAllBoasts_004aff80_test.cpp'
+        PassPattern = 'BOASTS_CLEARED_OK'
+    }
+    [pscustomobject]@{
+        Address = '004c7ca0'
+        Module = 'CThing'
+        Source = '00/4c/CThing_GetJoystickDeviceNumber_004c7ca0.cpp'
+        TestSource = '00/4c/CThing_GetJoystickDeviceNumber_004c7ca0_test.cpp'
+        PassPattern = 'JOYDEV_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d2a74'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d2a74.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d2a74_test.cpp'
+        PassPattern = 'GETACTIONNAME_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d3cde'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/4d/CActionDoCreatureAction_GetActionName_004d3cde.cpp'
+        TestSource = '00/4d/CActionDoCreatureAction_GetActionName_004d3cde_test.cpp'
+        PassPattern = 'GETACTIONNAME_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d9b9f'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/4d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004d9b9f.cpp'
+        TestSource = '00/4d/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004d9b9f_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dd782'
+        Module = '_Destroy_range<std::allocator<NCreatureHitNotification'
+        Source = '00/4d/DestroyrangestdallocatorNCreatureHitNotification_CFlash_004dd782.cpp'
+        TestSource = '00/4d/DestroyrangestdallocatorNCreatureHitNotification_CFlash_004dd782_test.cpp'
+        PassPattern = 'DESTROY_RANGE_FLASH_OK'
+    }
+    [pscustomobject]@{
+        Address = '004df4ca'
+        Module = 'CObstacleNavigatorExternalInterface'
+        Source = '00/4d/CObstacleNavigatorExternalInterface_Clone_004df4ca.cpp'
+        TestSource = '00/4d/CObstacleNavigatorExternalInterface_Clone_004df4ca_test.cpp'
+        PassPattern = 'CLONE_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e41c0'
+        Module = '_Destroy_range<std::allocator<NCreatureHitNotification'
+        Source = '00/4e/DestroyrangestdallocatorNCreatureHitNotification_CFlash_004e41c0.cpp'
+        TestSource = '00/4e/DestroyrangestdallocatorNCreatureHitNotification_CFlash_004e41c0_test.cpp'
+        PassPattern = 'DESTROY_RANGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '004fc130'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetMapAtCWorldMapUAEAAVCMapABVC2DCoordIZ_004fc130.cpp'
+        TestSource = '00/4f/CWorldMap_GetMapAtCWorldMapUAEAAVCMapABVC2DCoordIZ_004fc130_test.cpp'
+        PassPattern = 'GETMAPAT_OK'
+    }
 )
 
 $requestedAddresses = @(
