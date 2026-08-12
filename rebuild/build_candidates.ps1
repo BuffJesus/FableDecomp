@@ -57108,6 +57108,160 @@ $catalog = @(
         TestSource = '00/99/CThingMapManager_ResizeGameMap_0099f3b0_test.cpp'
         PassPattern = 'RESIZE_OK'
     }
+    [pscustomobject]@{
+        Address = '009b20b0'
+        Module = '_Dest_val<std::allocator<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_>,std'
+        Source = '00/9b/DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_009b20b0.cpp'
+        TestSource = '00/9b/DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_009b20b0_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '009bde70'
+        Module = 'CInputProcessManager'
+        Source = '00/9b/CInputProcessManager_CInputProcessManager_009bde70.cpp'
+        TestSource = '00/9b/CInputProcessManager_CInputProcessManager_009bde70_test.cpp'
+        PassPattern = 'DTOR_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009ea620'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_CopyBackBufferToFrontBuffer_009ea620.cpp'
+        TestSource = '00/9e/CConsole_CopyBackBufferToFrontBuffer_009ea620_test.cpp'
+        PassPattern = 'COPYBACK_OK'
+    }
+    [pscustomobject]@{
+        Address = '009ea640'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_CopyBackBufferToFrontBuffer_009ea640.cpp'
+        TestSource = '00/9e/CConsole_CopyBackBufferToFrontBuffer_009ea640_test.cpp'
+        PassPattern = 'COPYBB_OK'
+    }
+    [pscustomobject]@{
+        Address = '009f4980'
+        Module = 'CNavSwitchableLeafNode'
+        Source = '00/9f/CNavSwitchableLeafNode_GetRegion_009f4980.cpp'
+        TestSource = '00/9f/CNavSwitchableLeafNode_GetRegion_009f4980_test.cpp'
+        PassPattern = 'GETREGION_OK'
+    }
+    [pscustomobject]@{
+        Address = '009f9d60'
+        Module = 'CTexture'
+        Source = '00/9f/CTexture_GetRefCount_009f9d60.cpp'
+        TestSource = '00/9f/CTexture_GetRefCount_009f9d60_test.cpp'
+        PassPattern = 'GETREFCOUNT_OK'
+    }
+    [pscustomobject]@{
+        Address = '009fe440'
+        Module = 'CFrameData'
+        Source = '00/9f/CFrameData_ResetTexture_009fe440.cpp'
+        TestSource = '00/9f/CFrameData_ResetTexture_009fe440_test.cpp'
+        PassPattern = 'RESETTEXTURE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a0d2b0'
+        Module = 'CAInputProcess'
+        Source = '00/a0/CAInputProcess_AddToInterfaceCAInputProcessUAENAAVCInputProcess_00a0d2b0.cpp'
+        TestSource = '00/a0/CAInputProcess_AddToInterfaceCAInputProcessUAENAAVCInputProcess_00a0d2b0_test.cpp'
+        PassPattern = 'ADDTOINTERFACE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a427a0'
+        Module = 'CLipSyncDataBank'
+        Source = '00/a4/CLipSyncDataBank_Update_00a427a0.cpp'
+        TestSource = '00/a4/CLipSyncDataBank_Update_00a427a0_test.cpp'
+        PassPattern = 'LIPSYNC_UPDATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a5c5e0'
+        Module = 'CSimpleMemoryPool'
+        Source = '00/a5/CSimpleMemoryPool_CalculateMemoryAllocatedByPool_00a5c5e0.cpp'
+        TestSource = '00/a5/CSimpleMemoryPool_CalculateMemoryAllocatedByPool_00a5c5e0_test.cpp'
+        PassPattern = 'POOLSUM_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a5ef30'
+        Module = '_Ucopy<std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std'
+        Source = '00/a5/UcopystdTreeconstiteratorstdTreevalstdTsettraitsCCharStringstdlessCCharStringstd_allocatorCCharString0_00a5ef30.cpp'
+        TestSource = '00/a5/UcopystdTreeconstiteratorstdTreevalstdTsettraitsCCharStringstdlessCCharStringstd_allocatorCCharString0_00a5ef30_test.cpp'
+        PassPattern = 'UCOPY_FWD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a629d0'
+        Module = 'CPackedUIntArray'
+        Source = '00/a6/CPackedUIntArray_CPackedUIntArray_00a629d0.cpp'
+        TestSource = '00/a6/CPackedUIntArray_CPackedUIntArray_00a629d0_test.cpp'
+        PassPattern = 'DTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a62ac0'
+        Module = 'CPackedUIntArray'
+        Source = '00/a6/CPackedUIntArray_CPackedUIntArray_00a62ac0.cpp'
+        TestSource = '00/a6/CPackedUIntArray_CPackedUIntArray_00a62ac0_test.cpp'
+        PassPattern = 'DTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a85fb0'
+        Module = 'CPhysicsFacesSegmentBranch'
+        Source = '00/a8/CPhysicsFacesSegmentBranch_Sizeof_00a85fb0.cpp'
+        TestSource = '00/a8/CPhysicsFacesSegmentBranch_Sizeof_00a85fb0_test.cpp'
+        PassPattern = 'SIZEOF_PASS_135'
+    }
+    [pscustomobject]@{
+        Address = '00a8ee70'
+        Module = '_Dest_val<std::allocator<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_>,std'
+        Source = '00/a8/DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_00a8ee70.cpp'
+        TestSource = '00/a8/DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_00a8ee70_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c0dea0'
+        Module = 'operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript'
+        Source = '00/c0/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_00c0dea0.cpp'
+        TestSource = '00/c0/operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_00c0dea0_test.cpp'
+        PassPattern = 'PASS_OPERATOR_AND_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c0ead0'
+        Module = 'CTCMapwho'
+        Source = '00/c0/CTCMapwho_OnDie_00c0ead0.cpp'
+        TestSource = '00/c0/CTCMapwho_OnDie_00c0ead0_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c0eb20'
+        Module = 'CTCMapwho'
+        Source = '00/c0/CTCMapwho_OnDie_00c0eb20.cpp'
+        TestSource = '00/c0/CTCMapwho_OnDie_00c0eb20_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c0ffc0'
+        Module = 'CTCHeroExperience'
+        Source = '00/c0/CTCHeroExperience_AddSuccessfulBlockParry_00c0ffc0.cpp'
+        TestSource = '00/c0/CTCHeroExperience_AddSuccessfulBlockParry_00c0ffc0_test.cpp'
+        PassPattern = 'PARRY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c162a0'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/c1/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00c162a0.cpp'
+        TestSource = '00/c1/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00c162a0_test.cpp'
+        PassPattern = 'CONS_VAL_FWD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c16580'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/c1/CEnginePrimitiveRenderer_ClearAllChildPrimitives_00c16580.cpp'
+        TestSource = '00/c1/CEnginePrimitiveRenderer_ClearAllChildPrimitives_00c16580_test.cpp'
+        PassPattern = 'CLEARCHILD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c26240'
+        Module = 'CAnimFilterOfGroup'
+        Source = '00/c2/CAnimFilterOfGroup_operator_00c26240.cpp'
+        TestSource = '00/c2/CAnimFilterOfGroup_operator_00c26240_test.cpp'
+        PassPattern = 'FILTEROFGROUP_OP_OK'
+    }
 )
 
 $requestedAddresses = @(
