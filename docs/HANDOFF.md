@@ -8185,7 +8185,7 @@ upload was blocked by the harness data-exfil guard; deliver only with explicit u
 the maintainer replies. Context: EGOCORE_ASSESSMENT addenda + memory `fable-defs-oracle`.
 
 ---
-## 2026-08-11 addendum — parity-crawl surge session wrap (resume: crawl @ gen_batch126)
+## 2026-08-11 addendum — parity-crawl surge session wrap (resume: crawl @ gen_batch134)
 
 Ran the binary-wide parity crawl continuously via the Workflow lane (24 agents/batch,
 each self-verifies through verify_and_land dry-run; merge from on-disk lv_<addr> files;
@@ -8204,8 +8204,26 @@ VC7.1-compiled **7,611→8,111** (+500); Verified functional-or-matching **7,457
 (15.04%→**16.03%**); Byte-identical **3,645→3,739** (7.35%→**7.54%**); relocation-masked
 **3,810→4,206** (7.69%→**8.49%**). See rebuild/COVERAGE.md.
 
+### continuation — batches 127→133 (same session, 2026-08-11)
+
+Continued the crawl: **batches 127→133 = +116 landed** (127:20, 128:16, 129:13, 130:24, 131:22,
+132:13, 133:24). Session crawl total **105→133 = ~616 byte-exact across 28 batches**; durable
+`gen_tried` **2576→2745**. Yield now OSCILLATES by address region (24 on homogeneous families like the
+0x0048b*** vector-deleting-destructor block; low-teens in varied `CPersistTraits` struct-return
+forwarder veins where misses are RTM-3077-vs-QFE-4035 reg-alloc, NOT shape errors). NOTE: committed
+dashboards (COVERAGE) were last refreshed at batch 126 (8,111 catalog) — they are ~116 fns stale;
+the next `land_batch --land` will auto-trigger `run_rebuild_refresh.ps1` to bring them current
+(or run it manually + commit as "Refresh dashboards").
+
+**Front-end lane this session:** landed CUserProfileManager::GetEmptySlotName (seam=7 fns); PROBED the
+Continue-Game load path (CPlayerManager::LoadGameState) → **byte-parity DEFER class** (reg-alloc
+artifacts scale with call count; see docs/CONTINUE_GAME_PATH.md 2026-08-11 note). QFE-4035 lever
+re-confirmed a dead-end per memory `retail-compiler-build` (SP1 tested-negative, ~0.8% of objects).
+Open front-end tasks NOT started: un-stub save-metadata layer (CMet*/save enumeration), visual polish
+(redefine live-scroll native path + Continue-Game screen flash) — both in the session task list.
+
 RESUME the crawl: crawl-relaunch procedure unchanged (repoint next_smallest SCR → seed gen_tried from
-durable → next_smallest 24 gen_batch127 → trim_overcapture → trim_tailjmp → build targets.json w/
+durable → next_smallest 24 gen_batch134 → trim_overcapture → trim_tailjmp → build targets.json w/
 capstone → Workflow(script parity-crawl-batch106-*.js, args {scr,batch,addrs}) → merge from lv_ dirs →
 land_batch --land → lean commit). Helper scripts live in this session's scratchpad (land_batch.py).
 
