@@ -57262,6 +57262,97 @@ $catalog = @(
         TestSource = '00/c2/CAnimFilterOfGroup_operator_00c26240_test.cpp'
         PassPattern = 'FILTEROFGROUP_OP_OK'
     }
+    [pscustomobject]@{
+        Address = '00c2baf0'
+        Module = 'CTCMapwho'
+        Source = '00/c2/CTCMapwho_OnDie_00c2baf0.cpp'
+        TestSource = '00/c2/CTCMapwho_OnDie_00c2baf0_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c438f0'
+        Module = 'CBankFile'
+        Source = '00/c4/CBankFile_SetBankUpdateStatus_00c438f0.cpp'
+        TestSource = '00/c4/CBankFile_SetBankUpdateStatus_00c438f0_test.cpp'
+        PassPattern = 'SETBANKUPDATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c5a1d0'
+        Module = 'CTCStealth'
+        Source = '00/c5/CTCStealth_OnCreate_00c5a1d0.cpp'
+        TestSource = '00/c5/CTCStealth_OnCreate_00c5a1d0_test.cpp'
+        PassPattern = 'STEALTH_ONCREATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c889f0'
+        Module = 'CQuadric'
+        Source = '00/c8/CQuadric_operator_00c889f0.cpp'
+        TestSource = '00/c8/CQuadric_operator_00c889f0_test.cpp'
+        PassPattern = 'QUADRIC_ADD_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c88a10'
+        Module = 'CMovie'
+        Source = '00/c8/CMovie_GetSize_00c88a10.cpp'
+        TestSource = '00/c8/CMovie_GetSize_00c88a10_test.cpp'
+        PassPattern = 'GETSIZE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c8cdc0'
+        Module = '_global'
+        Source = '00/c8/global_SetDebugBoxColour1_00c8cdc0.cpp'
+        TestSource = '00/c8/global_SetDebugBoxColour1_00c8cdc0_test.cpp'
+        PassPattern = 'COLOUR1_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ca7c60'
+        Module = 'CTestPos'
+        Source = '00/ca/CTestPos_Init_00ca7c60.cpp'
+        TestSource = '00/ca/CTestPos_Init_00ca7c60_test.cpp'
+        PassPattern = 'INIT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cd2d0b'
+        Module = 'CActiveFile'
+        Source = '00/cd/CActiveFile_OnReadFinished_00cd2d0b.cpp'
+        TestSource = '00/cd/CActiveFile_OnReadFinished_00cd2d0b_test.cpp'
+        PassPattern = 'ONREADFINISHED_OK'
+    }
+    [pscustomobject]@{
+        Address = '00dcec50'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/dc/CHandleBasedMemoryPool_GetPointerFromHandle_00dcec50.cpp'
+        TestSource = '00/dc/CHandleBasedMemoryPool_GetPointerFromHandle_00dcec50_test.cpp'
+        PassPattern = 'PARITY_OK_dcec50'
+    }
+    [pscustomobject]@{
+        Address = '00464513'
+        Module = 'CThingVillageDef'
+        Source = '00/46/CThingVillageDef_CopyCThingVillageDefUAEXPBVCDefClassBaseZ_00464513.cpp'
+        TestSource = '00/46/CThingVillageDef_CopyCThingVillageDefUAEXPBVCDefClassBaseZ_00464513_test.cpp'
+        PassPattern = 'VILLAGE_COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00485015'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/48/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00485015.cpp'
+        TestSource = '00/48/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00485015_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00485aa7'
+        Module = 'CGuiControlListBox'
+        Source = '00/48/CGuiControlListBox_SelectEntryFromData_00485aa7.cpp'
+        TestSource = '00/48/CGuiControlListBox_SelectEntryFromData_00485aa7_test.cpp'
+        PassPattern = 'LISTBOX_SELECT_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048a4d0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048a4d0.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048a4d0_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
 )
 
 $requestedAddresses = @(
