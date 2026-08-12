@@ -56940,6 +56940,174 @@ $catalog = @(
         TestSource = '00/68/CInputProcessGameBase_IsOtherQuickAccessItemButtonHeld_00687c90_test.cpp'
         PassPattern = 'QUICKACCESS_OK'
     }
+    [pscustomobject]@{
+        Address = '00697080'
+        Module = 'CAIGameCameraBase'
+        Source = '00/69/CAIGameCameraBase_GetControlAngleXY_00697080.cpp'
+        TestSource = '00/69/CAIGameCameraBase_GetControlAngleXY_00697080_test.cpp'
+        PassPattern = 'GETCTRLANGLE_OK'
+    }
+    [pscustomobject]@{
+        Address = '006a7f70'
+        Module = 'CThingFilter_HasBuildingAsHome'
+        Source = '00/6a/CThingFilterHasBuildingAsHome_operator_006a7f70.cpp'
+        TestSource = '00/6a/CThingFilterHasBuildingAsHome_operator_006a7f70_test.cpp'
+        PassPattern = 'HASBUILDINGHOME_OK'
+    }
+    [pscustomobject]@{
+        Address = '006a7f90'
+        Module = 'CThingFilter_HasBuildingAsHome'
+        Source = '00/6a/CThingFilterHasBuildingAsHome_operator_006a7f90.cpp'
+        TestSource = '00/6a/CThingFilterHasBuildingAsHome_operator_006a7f90_test.cpp'
+        PassPattern = 'FILTER_HASBUILDING_OK'
+    }
+    [pscustomobject]@{
+        Address = '006af180'
+        Module = 'CMessageEventFilter_OccuredBetween'
+        Source = '00/6a/CMessageEventFilterOccuredBetween_operator_006af180.cpp'
+        TestSource = '00/6a/CMessageEventFilterOccuredBetween_operator_006af180_test.cpp'
+        PassPattern = 'OCCURED_BETWEEN_OK'
+    }
+    [pscustomobject]@{
+        Address = '006b5870'
+        Module = 'CTCMapwho'
+        Source = '00/6b/CTCMapwho_OnDie_006b5870.cpp'
+        TestSource = '00/6b/CTCMapwho_OnDie_006b5870_test.cpp'
+        PassPattern = 'MAPWHO_ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '006b8370'
+        Module = '_Ucopy<std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std'
+        Source = '00/6b/UcopystdTreeconstiteratorstdTreevalstdTsettraitsCCharStringstdlessCCharStringstd_allocatorCCharString0_006b8370.cpp'
+        TestSource = '00/6b/UcopystdTreeconstiteratorstdTreevalstdTsettraitsCCharStringstdlessCCharStringstd_allocatorCCharString0_006b8370_test.cpp'
+        PassPattern = 'UCOPY_FWD_OK'
+    }
+    [pscustomobject]@{
+        Address = '006cf900'
+        Module = 'CTCWife'
+        Source = '00/6c/CTCWife_IsInLoveWithHero_006cf900.cpp'
+        TestSource = '00/6c/CTCWife_IsInLoveWithHero_006cf900_test.cpp'
+        PassPattern = 'WIFE_LOVE_OK'
+    }
+    [pscustomobject]@{
+        Address = '006e2840'
+        Module = 'CTCTalk'
+        Source = '00/6e/CTCTalk_GetCurrentSpeechDuration_006e2840.cpp'
+        TestSource = '00/6e/CTCTalk_GetCurrentSpeechDuration_006e2840_test.cpp'
+        PassPattern = 'DURATION2_OK 1.5'
+    }
+    [pscustomobject]@{
+        Address = '006f56c0'
+        Module = 'CCombatAction_GenericStrikeResponseBase'
+        Source = '00/6f/CCombatActionGenericStrikeResponseBase_SetHitDirection_006f56c0.cpp'
+        TestSource = '00/6f/CCombatActionGenericStrikeResponseBase_SetHitDirection_006f56c0_test.cpp'
+        PassPattern = 'HITDIR_OK'
+    }
+    [pscustomobject]@{
+        Address = '006f56e0'
+        Module = 'CCombatAction_GenericStrikeResponseBase'
+        Source = '00/6f/CCombatActionGenericStrikeResponseBase_SetHitPosition_006f56e0.cpp'
+        TestSource = '00/6f/CCombatActionGenericStrikeResponseBase_SetHitPosition_006f56e0_test.cpp'
+        PassPattern = 'SETHITPOS_OK'
+    }
+    [pscustomobject]@{
+        Address = '007305d0'
+        Module = 'CTCDoor'
+        Source = '00/73/CTCDoor_ScriptTriggerOpen_007305d0.cpp'
+        TestSource = '00/73/CTCDoor_ScriptTriggerOpen_007305d0_test.cpp'
+        PassPattern = 'SCRIPTTRIGGEROPEN_OK'
+    }
+    [pscustomobject]@{
+        Address = '0076c7d0'
+        Module = 'CTCEnemy'
+        Source = '00/76/CTCEnemy_IsAlliedWithFaction_0076c7d0.cpp'
+        TestSource = '00/76/CTCEnemy_IsAlliedWithFaction_0076c7d0_test.cpp'
+        PassPattern = 'PASS_ISALLIED_OK'
+    }
+    [pscustomobject]@{
+        Address = '0076c7f0'
+        Module = 'CTCEnemy'
+        Source = '00/76/CTCEnemy_IsAlliedWithFaction_0076c7f0.cpp'
+        TestSource = '00/76/CTCEnemy_IsAlliedWithFaction_0076c7f0_test.cpp'
+        PassPattern = 'ALLIED_FWD_OK'
+    }
+    [pscustomobject]@{
+        Address = '0079f5f0'
+        Module = 'CTCWillLightning'
+        Source = '00/79/CTCWillLightning_SetTimeToCastLightning_0079f5f0.cpp'
+        TestSource = '00/79/CTCWillLightning_SetTimeToCastLightning_0079f5f0_test.cpp'
+        PassPattern = 'LIGHTNING_OK'
+    }
+    [pscustomobject]@{
+        Address = '007a6dd0'
+        Module = '_Dest_val<std::allocator<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_>,std'
+        Source = '00/7a/DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_007a6dd0.cpp'
+        TestSource = '00/7a/DestvalstdallocatorstdpairEAnimComponentCIVCountedPointerCAnimComponentBasestd_pairEAnimComponentCIVCountedPointerCAnimComponen_007a6dd0_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '007ea2d0'
+        Module = 'CTCTargeted'
+        Source = '00/7e/CTCTargeted_GetNumTargetPoints_007ea2d0.cpp'
+        TestSource = '00/7e/CTCTargeted_GetNumTargetPoints_007ea2d0_test.cpp'
+        PassPattern = 'PASS_GNTP_OK'
+    }
+    [pscustomobject]@{
+        Address = '00890b70'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_PreloadNewScene_00890b70.cpp'
+        TestSource = '00/89/CGameScriptInterface_PreloadNewScene_00890b70_test.cpp'
+        PassPattern = 'PRELOAD_SCENE_OK'
+    }
+    [pscustomobject]@{
+        Address = '008ac120'
+        Module = '_Cons_val<std'
+        Source = '00/8a/Consvalstd_allocatorCScriptThingCScriptThingCScriptThing_008ac120.cpp'
+        TestSource = '00/8a/Consvalstd_allocatorCScriptThingCScriptThingCScriptThing_008ac120_test.cpp'
+        PassPattern = 'CONS_VAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '008e6390'
+        Module = 'CCreatureAction_CastStrengthMultiStrike'
+        Source = '00/8e/CCreatureActionCastStrengthMultiStrike_FrameUpdateCCreatureActionCastStrengthMultiStrik_008e6390.cpp'
+        TestSource = '00/8e/CCreatureActionCastStrengthMultiStrike_FrameUpdateCCreatureActionCastStrengthMultiStrik_008e6390_test.cpp'
+        PassPattern = 'MULTISTRIKE_FRAMEUPDATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '008fe019'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe019.cpp'
+        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe019_test.cpp'
+        PassPattern = 'GETACTIONNAME_PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090e590'
+        Module = 'CAIStateGroup_BanditGossip'
+        Source = '00/90/CAIStateGroupBanditGossip_OnReplaceCAIStateGroupBanditGossipMAEXXZ_0090e590.cpp'
+        TestSource = '00/90/CAIStateGroupBanditGossip_OnReplaceCAIStateGroupBanditGossipMAEXXZ_0090e590_test.cpp'
+        PassPattern = 'BANDITGOSSIP_ONREPLACE_OK'
+    }
+    [pscustomobject]@{
+        Address = '0092eca0'
+        Module = 'CAIStateGroup_MinionReactToPlayerInteraction'
+        Source = '00/92/CAIStateGroupMinionReactToPlayerInteraction_InitStateGroup_0092eca0.cpp'
+        TestSource = '00/92/CAIStateGroupMinionReactToPlayerInteraction_InitStateGroup_0092eca0_test.cpp'
+        PassPattern = 'INITSG_OK'
+    }
+    [pscustomobject]@{
+        Address = '0099a410'
+        Module = 'CInitBaseClass'
+        Source = '00/99/CInitBaseClass_CInitBaseClass_0099a410.cpp'
+        TestSource = '00/99/CInitBaseClass_CInitBaseClass_0099a410_test.cpp'
+        PassPattern = 'PASS_INITBASE_DTOR'
+    }
+    [pscustomobject]@{
+        Address = '0099f3b0'
+        Module = 'CThingMapManager'
+        Source = '00/99/CThingMapManager_ResizeGameMap_0099f3b0.cpp'
+        TestSource = '00/99/CThingMapManager_ResizeGameMap_0099f3b0_test.cpp'
+        PassPattern = 'RESIZE_OK'
+    }
 )
 
 $requestedAddresses = @(
