@@ -57353,6 +57353,174 @@ $catalog = @(
         TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048a4d0_test.cpp'
         PassPattern = 'VDD_PARITY_OK'
     }
+    [pscustomobject]@{
+        Address = '0048b3b0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b3b0.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b3b0_test.cpp'
+        PassPattern = 'VDD_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b400'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b400.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b400_test.cpp'
+        PassPattern = 'VECDELDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b420'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b420.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b420_test.cpp'
+        PassPattern = 'VDD_PASS_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b440'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b440.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b440_test.cpp'
+        PassPattern = 'VDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b460'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b460.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b460_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b480'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b480.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b480_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b4a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b4a0.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b4a0_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b4c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b4c0.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b4c0_test.cpp'
+        PassPattern = 'VECDELDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b4e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b4e0.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b4e0_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b500'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b500.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b500_test.cpp'
+        PassPattern = 'VDD_PASS_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b520'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b520.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b520_test.cpp'
+        PassPattern = 'VDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b540'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b540.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b540_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b560'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b560.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b560_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b580'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b580.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b580_test.cpp'
+        PassPattern = 'VDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b5a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b5a0.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b5a0_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b5c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b5c0.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b5c0_test.cpp'
+        PassPattern = 'VDD_PASS_0048b5c0'
+    }
+    [pscustomobject]@{
+        Address = '0048b5e0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b5e0.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b5e0_test.cpp'
+        PassPattern = 'VDD_PASS_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b600'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b600.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b600_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b620'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b620.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b620_test.cpp'
+        PassPattern = 'VECDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b640'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b640.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b640_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b660'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b660.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b660_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b680'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b680.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b680_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048b6a0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b6a0.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b6a0_test.cpp'
+        PassPattern = 'VDD_OK_0048b6a0'
+    }
+    [pscustomobject]@{
+        Address = '0048b6c0'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b6c0.cpp'
+        TestSource = '00/48/CLandscapeBackgroundPatch_vectordeletingdestructor_0048b6c0_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
 )
 
 $requestedAddresses = @(
