@@ -56849,6 +56849,97 @@ $catalog = @(
         TestSource = '00/4f/CWorldMap_GetMapAtCWorldMapUAEAAVCMapABVC2DCoordIZ_004fc130_test.cpp'
         PassPattern = 'GETMAPAT_OK'
     }
+    [pscustomobject]@{
+        Address = '0059ab5f'
+        Module = 'CRegion'
+        Source = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_0059ab5f.cpp'
+        TestSource = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_0059ab5f_test.cpp'
+        PassPattern = 'OFFSETX_OK'
+    }
+    [pscustomobject]@{
+        Address = '005b200c'
+        Module = 'CRegionDialog'
+        Source = '00/5b/CRegionDialog_GetTreeHandleFromMapIndex_005b200c.cpp'
+        TestSource = '00/5b/CRegionDialog_GetTreeHandleFromMapIndex_005b200c_test.cpp'
+        PassPattern = 'PASS_TREEHANDLE_2A'
+    }
+    [pscustomobject]@{
+        Address = '005b26e9'
+        Module = '_Destroy_range<std::allocator<NCreatureHitNotification'
+        Source = '00/5b/DestroyrangestdallocatorNCreatureHitNotification_CFlash_005b26e9.cpp'
+        TestSource = '00/5b/DestroyrangestdallocatorNCreatureHitNotification_CFlash_005b26e9_test.cpp'
+        PassPattern = 'DESTROY_RANGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '005ba4f1'
+        Module = '_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals'
+        Source = '00/5b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005ba4f1.cpp'
+        TestSource = '00/5b/DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005ba4f1_test.cpp'
+        PassPattern = 'DESTVAL_FWD_OK'
+    }
+    [pscustomobject]@{
+        Address = '005bbf80'
+        Module = '_Destroy_range<std::allocator<NCreatureHitNotification'
+        Source = '00/5b/DestroyrangestdallocatorNCreatureHitNotification_CFlash_005bbf80.cpp'
+        TestSource = '00/5b/DestroyrangestdallocatorNCreatureHitNotification_CFlash_005bbf80_test.cpp'
+        PassPattern = 'DESTROY_RANGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '005cbe9d'
+        Module = 'CPersistContext_TransferableComponent<float>'
+        Source = '00/5c/CPersistContextTransferableComponentfloat_TransferIn_005cbe9d.cpp'
+        TestSource = '00/5c/CPersistContextTransferableComponentfloat_TransferIn_005cbe9d_test.cpp'
+        PassPattern = 'TRANSFERIN_OK'
+    }
+    [pscustomobject]@{
+        Address = '006334f0'
+        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
+        Source = '00/63/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_006334f0.cpp'
+        TestSource = '00/63/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_006334f0_test.cpp'
+        PassPattern = 'DEST_VAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00644627'
+        Module = 'CSystemManager'
+        Source = '00/64/CSystemManager_UninitWindow_00644627.cpp'
+        TestSource = '00/64/CSystemManager_UninitWindow_00644627_test.cpp'
+        PassPattern = 'UNINITWINDOW_OK'
+    }
+    [pscustomobject]@{
+        Address = '00658e73'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_ResetCrier_00658e73.cpp'
+        TestSource = '00/65/CTCVillage_ResetCrier_00658e73_test.cpp'
+        PassPattern = 'RESETCRIER_OK'
+    }
+    [pscustomobject]@{
+        Address = '00662170'
+        Module = 'CPixelShader'
+        Source = '00/66/CPixelShader_CountReferences_00662170.cpp'
+        TestSource = '00/66/CPixelShader_CountReferences_00662170_test.cpp'
+        PassPattern = 'COUNTREF_OK'
+    }
+    [pscustomobject]@{
+        Address = '00662860'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_GetDefaultWeaponDef_00662860.cpp'
+        TestSource = '00/66/CThingCreatureBase_GetDefaultWeaponDef_00662860_test.cpp'
+        PassPattern = 'WEAPONDEF_OK'
+    }
+    [pscustomobject]@{
+        Address = '006815d0'
+        Module = 'CTCCreatureOpinionOfHero'
+        Source = '00/68/CTCCreatureOpinionOfHero_SetHeroOpinionEnemy_006815d0.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_SetHeroOpinionEnemy_006815d0_test.cpp'
+        PassPattern = 'OPINION_ENEMY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00687c90'
+        Module = 'CInputProcessGameBase'
+        Source = '00/68/CInputProcessGameBase_IsOtherQuickAccessItemButtonHeld_00687c90.cpp'
+        TestSource = '00/68/CInputProcessGameBase_IsOtherQuickAccessItemButtonHeld_00687c90_test.cpp'
+        PassPattern = 'QUICKACCESS_OK'
+    }
 )
 
 $requestedAddresses = @(
