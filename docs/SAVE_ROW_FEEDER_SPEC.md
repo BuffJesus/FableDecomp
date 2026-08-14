@@ -184,3 +184,39 @@ Open questions:
   - Whether retail loader enforces .sav signature check on load (UseSaveGameSignatures flag). If enforced, all edited saves require signature recompute or config override.
   - Hero live stats (Gold/Morality/Experience/Renown) field names: not in HEADER as tagged fields; they live in SAVED_ENTITIES entity graph as hero CThing's component blob. Requires decompile of CThingManager::SaveGameState -> hero entity Transfer to recover field names and tags.
   - Exact meaning of .sav signature dword: CRC seed, input range, whether it gates load acceptance.
+---
+
+## 2026-08-13 addendum — save-preview circle investigation + field enrichment
+
+**Retail display facts (from resources/UIScreenshots(Retail)/ContinueGameScreen.png):**
+the Load Game list shows a single `AutoSave` row then manual saves as `Save 1`,
+`Save 2`, `Save 3` (slot-index labels, NOT the raw registry filename; the
+`AutoSave.qs` quicksave is not listed). The feeder now emits exactly this
+(retail-faithful labels, commit history).
+
+**The circular preview image is a REGION MINIMAP, not a per-save screenshot.**
+The frontend element is `UI_VIEW_RING_SMALL` (fable_visual_d3d9.h:197,
+visual_boot_d3d9.cpp:4540): a ring ornament + region-minimap panel, design
+(314,37), 256x256. The current reconstruction bakes a STATIC ring per save-cell
+index via `FableComputeSaveViewportAtlasRect(g_SaveSelection,...)` sampling
+`g_OptionsTexture` — i.e. it is keyed on the selection index, not the actual
+save's region. Retail keys the inner minimap on the selected save's
+`CurrentRegionMinimapGraphicName` HEADER field (e.g. `MINIMAP_GREATWOOD`), which
+`SAVE_PROFILE_INDEX.md` lists among the LOAD-screen metadata (hero name,
+chapter/region, playtime, thumbnail). No per-save screenshot is stored in the
+.sav; the "thumbnail" is the region minimap graphic.
+
+**Enrichment landed (this commit):** the feeder's existing chunk0 HEADER decode
+now also captures `CurrentRegionName`, `CurrentRegionMinimapGraphicName`, and
+`TotalTimePlayed` into `FableSaveHeaderInfo` per row (verified 19/19 vs the
+save_metadata.py golden). This is the data layer the retail-faithful preview
+needs — no extra inflation (chunk0 was already decoded for validity).
+
+**Remaining to make the preview retail-faithful (follow-up):**
+1. Map `MINIMAP_*` graphic name -> a texture/atlas rect. Open question: where the
+   MINIMAP_* graphics live (frontend .big vs a dedicated minimap atlas) — needs an
+   asset dig.
+2. Wire selection -> the selected row's `info.minimapName` -> draw that minimap
+   inside the ring, replacing the static per-index bake in visual_boot_d3d9.cpp
+   (~L4540). The renderer sink (FableSetVisualFrontendSaveRows) would need to also
+   carry the per-row minimap name (sink extension), or a parallel setter.

@@ -42,7 +42,9 @@ int wmain(int argc, wchar_t** argv)
 
     n = FableBuildSaveRowsForTest(argv[1], rows, 4);
     for (i = 0; i < n; ++i)
-        printf("ROW\t%s\t0x%02x\n", rows[i].name, (unsigned)rows[i].action);
+        printf("ROW\t%s\t0x%02x\t%s\t%s\t%.3f\n", rows[i].name, (unsigned)rows[i].action,
+               rows[i].info.regionName, rows[i].info.minimapName,
+               (double)rows[i].info.totalTimePlayed);
     printf("COUNT\t%u\n", n);
 
     /* also drive the production entry point through the recording stub */

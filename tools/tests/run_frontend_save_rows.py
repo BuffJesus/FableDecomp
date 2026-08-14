@@ -17,18 +17,22 @@ CAP = 4
 def golden_rows(profile_dir):
     """Derive the retail-faithful expected rows from the enumeration golden:
     single AutoSave (label "AutoSave"), manual slots labeled "Save <index>";
-    AutoSave.qs quicksave is not listed. Order/action come from the golden."""
+    AutoSave.qs quicksave is not listed. Order/action/fields come from the golden."""
     data = save_metadata.enumerate_profile(profile_dir)
     out = []
     for r in data.rows:
         if not r.exists:
             continue
+        md = r.metadata or {}
+        region = md.get("CurrentRegionName", "") or ""
+        minimap = md.get("CurrentRegionMinimapGraphicName", "") or ""
+        time = round(float(md.get("TotalTimePlayed", 0.0) or 0.0), 3)
         if r.kind == "autosave":
             if r.filename == "AutoSave":
-                out.append(("AutoSave", r.action))
+                out.append(("AutoSave", r.action, region, minimap, time))
             # AutoSave.qs intentionally excluded
         else:
-            out.append(("Save %d" % r.slot_index, r.action))
+            out.append(("Save %d" % r.slot_index, r.action, region, minimap, time))
     return out[:CAP]
 
 
@@ -39,7 +43,10 @@ def native_rows(exe, profile_dir):
     for line in r.stdout.splitlines():
         p = line.split("\t")
         if p[0] == "ROW":
-            rows.append((p[1], int(p[2], 16)))
+            region = p[3] if len(p) > 3 else ""
+            minimap = p[4] if len(p) > 4 else ""
+            time = float(p[5]) if len(p) > 5 else 0.0
+            rows.append((p[1], int(p[2], 16), region, minimap, time))
         elif p[0] == "SINK_OK":
             sink_ok = True
         elif p[0] in ("SINK_MISMATCH", "SINK_ROW_MISMATCH"):

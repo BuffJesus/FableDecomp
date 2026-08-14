@@ -30,12 +30,21 @@ typedef struct FableSaveSlot {
     char name[128];
 } FableSaveSlot;
 
+/* Decoded HEADER fields the Load screen can surface (region minimap drives the
+ * UI_VIEW_RING_SMALL preview circle; playtime/region feed a File-Information panel). */
+typedef struct FableSaveHeaderInfo {
+    char  regionName[128];   /* CurrentRegionName, e.g. "TXT_REGION_GREATWOOD_TELEPORT" */
+    char  minimapName[128];  /* CurrentRegionMinimapGraphicName, e.g. "MINIMAP_GREATWOOD" */
+    float totalTimePlayed;   /* TotalTimePlayed (seconds) */
+} FableSaveHeaderInfo;
+
 /* One assembled row for the frontend. `name` is the retail-faithful display label
  * ("AutoSave" / "Save N"); `filename` is the on-disk .sav it maps to. */
 typedef struct FableSaveRowOut {
     char      name[128];
     char      filename[128];
     fable_u32 action;
+    FableSaveHeaderInfo info;   /* valid only when action == FABLE_SAVE_ACTION_LOADABLE */
 } FableSaveRowOut;
 
 /* Production entry point: enumerate the profile dir and push <=4 rows to the
@@ -58,6 +67,11 @@ unsigned int FableParseProfileRegistryForTest(
  * per-field seed-0 CRC tags and no trailing bytes). Returns 0 if the row would be
  * LOADABLE, a negative code otherwise. */
 int FableValidateSaveForTest(const unsigned char* fileBytes, unsigned int fileLen);
+
+/* Like FableValidateSaveForTest but also captures the region/minimap/playtime
+ * HEADER fields into *out on success. out may be null. Returns 0 if LOADABLE. */
+int FableDecodeSaveHeaderForTest(const unsigned char* fileBytes, unsigned int fileLen,
+                                 FableSaveHeaderInfo* out);
 
 /* Assemble the ordered rows for a profile dir (autosave-first then ascending
  * manual slots, dedup, cap). Returns the row count written (<=cap). */

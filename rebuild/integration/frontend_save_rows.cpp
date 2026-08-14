@@ -90,10 +90,20 @@ static const struct HField HEADER_SCHEMA[23] = {
     { "TotalTimePlayed", K_FLOAT }
 };
 
-/* Decode + validate the inflated HEADER chunk. Returns 0 if valid. */
-static int decode_header(const unsigned char* d, unsigned int n)
+static void copy_ascii(char* dst, unsigned int cap, const unsigned char* src, unsigned int len)
+{
+    unsigned int i;
+    if (len >= cap) len = cap - 1;
+    for (i = 0; i < len; ++i) dst[i] = (char)src[i];
+    dst[len] = 0;
+}
+
+/* Decode + validate the inflated HEADER chunk. Returns 0 if valid. When out is
+ * non-null, captures the region/minimap/playtime fields for the frontend. */
+static int decode_header(const unsigned char* d, unsigned int n, FableSaveHeaderInfo* out)
 {
     unsigned int off, end, seclen, i;
+    if (out) { out->regionName[0] = 0; out->minimapName[0] = 0; out->totalTimePlayed = 0.0f; }
     /* magic "HEADER\0" */
     if (n < 7 || memcmp(d, "HEADER", 6) != 0 || d[6] != 0) return -1;
     if (7 + 4 > n) return -2;
@@ -113,8 +123,13 @@ static int decode_header(const unsigned char* d, unsigned int n)
             unsigned int s = off;
             while (off < end && d[off] != 0) ++off;
             if (off >= end) return -12;   /* unterminated */
+            if (out) {
+                if (strcmp(HEADER_SCHEMA[i].name, "CurrentRegionName") == 0)
+                    copy_ascii(out->regionName, sizeof(out->regionName), d + s, off - s);
+                else if (strcmp(HEADER_SCHEMA[i].name, "CurrentRegionMinimapGraphicName") == 0)
+                    copy_ascii(out->minimapName, sizeof(out->minimapName), d + s, off - s);
+            }
             ++off;                        /* consume NUL */
-            (void)s;
             break;
         }
         case K_WIDE: {
@@ -125,7 +140,13 @@ static int decode_header(const unsigned char* d, unsigned int n)
         }
         case K_U32:    if (off + 4 > end) return -14; off += 4;  break;
         case K_BOOL:   if (off + 1 > end) return -15; off += 1;  break;
-        case K_FLOAT:  if (off + 4 > end) return -16; off += 4;  break;
+        case K_FLOAT:
+            if (off + 4 > end) return -16;
+            if (out && strcmp(HEADER_SCHEMA[i].name, "TotalTimePlayed") == 0) {
+                fable_u32 bits = rd_u32(d + off);
+                memcpy(&out->totalTimePlayed, &bits, 4);
+            }
+            off += 4;  break;
         case K_FLOAT3: if (off + 12 > end) return -17; off += 12; break;
         default: return -18;
         }
@@ -134,10 +155,11 @@ static int decode_header(const unsigned char* d, unsigned int n)
     return 0;
 }
 
-int FableValidateSaveForTest(const unsigned char* f, unsigned int n)
+int FableDecodeSaveHeaderForTest(const unsigned char* f, unsigned int n, FableSaveHeaderInfo* out)
 {
     fable_u32 sig, c0u, c0c, c1c, trailer_pos, trailer, want;
     unsigned int hdr_cap; unsigned char* hdr; unsigned int got = 0; int rc;
+    if (out) { out->regionName[0] = 0; out->minimapName[0] = 0; out->totalTimePlayed = 0.0f; }
     if (n < 0x20 || memcmp(f, "FableSave!", 10) != 0) return -1;
     sig = rd_u32(f + 0x0C);
     c0u = rd_u32(f + 0x10);
@@ -159,9 +181,14 @@ int FableValidateSaveForTest(const unsigned char* f, unsigned int n)
     if (!hdr) return -7;
     rc = FableZlibInflate(f + 0x1C, c0c, hdr, hdr_cap, &got);
     if (rc != 0 || got != c0u) { free(hdr); return -8; }
-    rc = decode_header(hdr, got);
+    rc = decode_header(hdr, got, out);
     free(hdr);
     return rc == 0 ? 0 : -20;
+}
+
+int FableValidateSaveForTest(const unsigned char* f, unsigned int n)
+{
+    return FableDecodeSaveHeaderForTest(f, n, 0);
 }
 
 /* ---- Profile.bin registry parse ---- */
@@ -269,15 +296,18 @@ static void join_wide(const wchar_t* dir, const char* name, wchar_t* out, unsign
     out[j] = 0;
 }
 
-/* Validate a save file on disk; returns the row action code. */
-static fable_u32 action_for_file(const wchar_t* profileDir, const char* filename)
+/* Validate a save file on disk; returns the row action code and, on success,
+ * captures the HEADER fields into *info. */
+static fable_u32 action_for_file(const wchar_t* profileDir, const char* filename,
+                                 FableSaveHeaderInfo* info)
 {
     wchar_t path[1024];
     unsigned char* buf; unsigned int len; int rc;
+    if (info) { info->regionName[0] = 0; info->minimapName[0] = 0; info->totalTimePlayed = 0.0f; }
     join_wide(profileDir, filename, path, 1024);
     if (!file_exists(path)) return FABLE_SAVE_ACTION_INVALID;
     if (read_whole_file(path, &buf, &len) != 0) return FABLE_SAVE_ACTION_INVALID;
-    rc = FableValidateSaveForTest(buf, len);
+    rc = FableDecodeSaveHeaderForTest(buf, len, info);
     free(buf);
     return rc == 0 ? FABLE_SAVE_ACTION_LOADABLE : FABLE_SAVE_ACTION_INVALID;
 }
@@ -299,7 +329,7 @@ static void push_row(FableSaveRowOut* rows, unsigned int* n, unsigned int cap,
     rows[*n].name[sizeof(rows[0].name) - 1] = 0;
     strncpy(rows[*n].filename, filename, sizeof(rows[0].filename) - 1);
     rows[*n].filename[sizeof(rows[0].filename) - 1] = 0;
-    rows[*n].action = action_for_file(profileDir, filename);
+    rows[*n].action = action_for_file(profileDir, filename, &rows[*n].info);
     ++(*n);
 }
 
