@@ -71685,6 +71685,160 @@ $catalog = @(
         TestSource = '00/85/CCreatureActionHeroJump_FrameUpdateCCreatureActionHeroJumpUAEXXZ_0085bad0_test.cpp'
         PassPattern = 'BEHAVIOR_OK'
     }
+    [pscustomobject]@{
+        Address = '0085ee90'
+        Module = '_global'
+        Source = '00/85/global_IsPlayHitResponse_0085ee90.cpp'
+        TestSource = '00/85/global_IsPlayHitResponse_0085ee90_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00860130'
+        Module = 'CModeSitBase'
+        Source = '00/86/CModeSitBase_RemoveModeWithAction_00860130.cpp'
+        TestSource = '00/86/CModeSitBase_RemoveModeWithAction_00860130_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0086e070'
+        Module = 'CTCVillage'
+        Source = '00/86/CTCVillage_OnInitialActivate_0086e070.cpp'
+        TestSource = '00/86/CTCVillage_OnInitialActivate_0086e070_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0086e090'
+        Module = 'CTCVillage'
+        Source = '00/86/CTCVillage_OnInitialActivate_0086e090.cpp'
+        TestSource = '00/86/CTCVillage_OnInitialActivate_0086e090_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '008c9e40'
+        Module = 'CCreatureAction_NymphSummonOutOf'
+        Source = '00/8c/CCreatureActionNymphSummonOutOf_FinishActionCCreatureActionNymphSummonOutOfUAEXX_008c9e40.cpp'
+        TestSource = '00/8c/CCreatureActionNymphSummonOutOf_FinishActionCCreatureActionNymphSummonOutOfUAEXX_008c9e40_test.cpp'
+        PassPattern = 'NYMPH_FINISH_OK'
+    }
+    [pscustomobject]@{
+        Address = '00972590'
+        Module = 'CAIStateGroup_JackOfBladesStage2'
+        Source = '00/97/CAIStateGroupJackOfBladesStage2_Cleanup_00972590.cpp'
+        TestSource = '00/97/CAIStateGroupJackOfBladesStage2_Cleanup_00972590_test.cpp'
+        PassPattern = 'CLEANUP_OK'
+    }
+    [pscustomobject]@{
+        Address = '009915e0'
+        Module = 'CWorld'
+        Source = '00/99/CWorld_SetMiniMapEnabled_009915e0.cpp'
+        TestSource = '00/99/CWorld_SetMiniMapEnabled_009915e0_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0099ef70'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_SetUseFastExtend_0099ef70.cpp'
+        TestSource = '00/99/CCharString_SetUseFastExtend_0099ef70_test.cpp'
+        PassPattern = 'BEHAVIOUR_PASS_099ef70'
+    }
+    [pscustomobject]@{
+        Address = '0099f390'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_SetChar_0099f390.cpp'
+        TestSource = '00/99/CCharString_SetChar_0099f390_test.cpp'
+        PassPattern = 'SETCHAR_OK'
+    }
+    [pscustomobject]@{
+        Address = '009b8a90'
+        Module = 'CTCVillage'
+        Source = '00/9b/CTCVillage_OnInitialActivate_009b8a90.cpp'
+        TestSource = '00/9b/CTCVillage_OnInitialActivate_009b8a90_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009b8ab0'
+        Module = 'CTCVillage'
+        Source = '00/9b/CTCVillage_OnInitialActivate_009b8ab0.cpp'
+        TestSource = '00/9b/CTCVillage_OnInitialActivate_009b8ab0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009b9300'
+        Module = 'CTCVillage'
+        Source = '00/9b/CTCVillage_OnInitialActivate_009b9300.cpp'
+        TestSource = '00/9b/CTCVillage_OnInitialActivate_009b9300_test.cpp'
+        PassPattern = 'BEHAVIOR_OK_009b9300'
+    }
+    [pscustomobject]@{
+        Address = '009b9510'
+        Module = 'CTCVillage'
+        Source = '00/9b/CTCVillage_OnInitialActivate_009b9510.cpp'
+        TestSource = '00/9b/CTCVillage_OnInitialActivate_009b9510_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009fd990'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_PrepareDataForInclusionCGraphicDataBankMAEXKABVC_009fd990.cpp'
+        TestSource = '00/9f/CGraphicDataBank_PrepareDataForInclusionCGraphicDataBankMAEXKABVC_009fd990_test.cpp'
+        PassPattern = 'PARITY_OK_009fd990'
+    }
+    [pscustomobject]@{
+        Address = '00a24410'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_PrepareDataForInclusionCMeshDataBankMAEXKABVCArr_00a24410.cpp'
+        TestSource = '00/a2/CMeshDataBank_PrepareDataForInclusionCMeshDataBankMAEXKABVCArr_00a24410_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a420c0'
+        Module = 'CTCVillage'
+        Source = '00/a4/CTCVillage_OnInitialActivate_00a420c0.cpp'
+        TestSource = '00/a4/CTCVillage_OnInitialActivate_00a420c0_test.cpp'
+        PassPattern = 'PARITY_OK_a420c0'
+    }
+    [pscustomobject]@{
+        Address = '00a42940'
+        Module = 'CLipSyncDataBank'
+        Source = '00/a4/CLipSyncDataBank_PrepareDataForInclusionCLipSyncDataBankMAEXKABVC_00a42940.cpp'
+        TestSource = '00/a4/CLipSyncDataBank_PrepareDataForInclusionCLipSyncDataBankMAEXKABVC_00a42940_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a4b200'
+        Module = 'CASuspendableProcess'
+        Source = '00/a4/CASuspendableProcess_TerminateProcess_00a4b200.cpp'
+        TestSource = '00/a4/CASuspendableProcess_TerminateProcess_00a4b200_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a5f0f0'
+        Module = 'CStreamingFontDataBank'
+        Source = '00/a5/CStreamingFontDataBank_PrepareDataForInclusionCStreamingFontDataBankMAE_00a5f0f0.cpp'
+        TestSource = '00/a5/CStreamingFontDataBank_PrepareDataForInclusionCStreamingFontDataBankMAE_00a5f0f0_test.cpp'
+        PassPattern = 'PREPINCL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a62000'
+        Module = 'CShaderDataBank'
+        Source = '00/a6/CShaderDataBank_PrepareDataForInclusionCShaderDataBankMAEXKABVCA_00a62000.cpp'
+        TestSource = '00/a6/CShaderDataBank_PrepareDataForInclusionCShaderDataBankMAEXKABVCA_00a62000_test.cpp'
+        PassPattern = 'PDFI_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a63420'
+        Module = 'CFontDataBank'
+        Source = '00/a6/CFontDataBank_PrepareDataForInclusionCFontDataBankMAEXKABVCArr_00a63420.cpp'
+        TestSource = '00/a6/CFontDataBank_PrepareDataForInclusionCFontDataBankMAEXKABVCArr_00a63420_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a6ed60'
+        Module = '_Cons_val<std::allocator<std::pair<CWideString_const_,CChecksumCacheFile::CEntry>_>,std::pair<CWideString_const_,CChecksumCacheFile::CEntry>,std::pair<class_CWideString_const_,struct_CChecksumCacheFile'
+        Source = '00/a6/ConsvalstdallocatorstdpairCWideStringconstCChecksumCacheFileCEntrystdpairCWideSt_CEntry_00a6ed60.cpp'
+        TestSource = '00/a6/ConsvalstdallocatorstdpairCWideStringconstCChecksumCacheFileCEntrystdpairCWideSt_CEntry_00a6ed60_test.cpp'
+        PassPattern = 'CONS_VAL_OK'
+    }
 )
 
 $requestedAddresses = @(
