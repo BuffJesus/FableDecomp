@@ -69043,6 +69043,734 @@ $catalog = @(
         TestSource = '00/f2/CLandscapeBackgroundPatch_vectordeletingdestructor_00f29da0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00442980_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004ac190'
+        Module = 'CTCCarryable'
+        Source = '00/4a/CTCCarryable_OnKill_004ac190.cpp'
+        TestSource = '00/4a/CTCCarryable_OnKill_004ac190_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004adc70'
+        Module = 'CTCCarryable'
+        Source = '00/4a/CTCCarryable_OnKill_004adc70.cpp'
+        TestSource = '00/4a/CTCCarryable_OnKill_004adc70_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c3620'
+        Module = 'CTCCarryable'
+        Source = '00/4c/CTCCarryable_OnKill_004c3620.cpp'
+        TestSource = '00/4c/CTCCarryable_OnKill_004c3620_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c6790'
+        Module = 'CTCCarryable'
+        Source = '00/4c/CTCCarryable_OnKill_004c6790.cpp'
+        TestSource = '00/4c/CTCCarryable_OnKill_004c6790_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004cff70'
+        Module = 'CTCCarryable'
+        Source = '00/4c/CTCCarryable_OnKill_004cff70.cpp'
+        TestSource = '00/4c/CTCCarryable_OnKill_004cff70_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00512aa0'
+        Module = 'CTCCarryable'
+        Source = '00/51/CTCCarryable_OnKill_00512aa0.cpp'
+        TestSource = '00/51/CTCCarryable_OnKill_00512aa0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051a560'
+        Module = 'CTCCarryable'
+        Source = '00/51/CTCCarryable_OnKill_0051a560.cpp'
+        TestSource = '00/51/CTCCarryable_OnKill_0051a560_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00528440'
+        Module = 'CTCCarryable'
+        Source = '00/52/CTCCarryable_OnKill_00528440.cpp'
+        TestSource = '00/52/CTCCarryable_OnKill_00528440_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005284e0'
+        Module = 'CTCCarryable'
+        Source = '00/52/CTCCarryable_OnKill_005284e0.cpp'
+        TestSource = '00/52/CTCCarryable_OnKill_005284e0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00528550'
+        Module = 'CTCCarryable'
+        Source = '00/52/CTCCarryable_OnKill_00528550.cpp'
+        TestSource = '00/52/CTCCarryable_OnKill_00528550_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052de50'
+        Module = 'CTCCarryable'
+        Source = '00/52/CTCCarryable_OnKill_0052de50.cpp'
+        TestSource = '00/52/CTCCarryable_OnKill_0052de50_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052dfd0'
+        Module = 'CTCCarryable'
+        Source = '00/52/CTCCarryable_OnKill_0052dfd0.cpp'
+        TestSource = '00/52/CTCCarryable_OnKill_0052dfd0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005351d0'
+        Module = 'CTCCarryable'
+        Source = '00/53/CTCCarryable_OnKill_005351d0.cpp'
+        TestSource = '00/53/CTCCarryable_OnKill_005351d0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005537b0'
+        Module = 'CTCCarryable'
+        Source = '00/55/CTCCarryable_OnKill_005537b0.cpp'
+        TestSource = '00/55/CTCCarryable_OnKill_005537b0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00566ba0'
+        Module = 'CTCCarryable'
+        Source = '00/56/CTCCarryable_OnKill_00566ba0.cpp'
+        TestSource = '00/56/CTCCarryable_OnKill_00566ba0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00569df0'
+        Module = 'CTCCarryable'
+        Source = '00/56/CTCCarryable_OnKill_00569df0.cpp'
+        TestSource = '00/56/CTCCarryable_OnKill_00569df0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056a290'
+        Module = 'CTCCarryable'
+        Source = '00/56/CTCCarryable_OnKill_0056a290.cpp'
+        TestSource = '00/56/CTCCarryable_OnKill_0056a290_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056cfd0'
+        Module = 'CTCCarryable'
+        Source = '00/56/CTCCarryable_OnKill_0056cfd0.cpp'
+        TestSource = '00/56/CTCCarryable_OnKill_0056cfd0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056d810'
+        Module = 'CTCCarryable'
+        Source = '00/56/CTCCarryable_OnKill_0056d810.cpp'
+        TestSource = '00/56/CTCCarryable_OnKill_0056d810_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056dfe0'
+        Module = 'CTCCarryable'
+        Source = '00/56/CTCCarryable_OnKill_0056dfe0.cpp'
+        TestSource = '00/56/CTCCarryable_OnKill_0056dfe0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e8e10'
+        Module = 'CTCCarryable'
+        Source = '00/5e/CTCCarryable_OnKill_005e8e10.cpp'
+        TestSource = '00/5e/CTCCarryable_OnKill_005e8e10_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00615610'
+        Module = 'CTCCarryable'
+        Source = '00/61/CTCCarryable_OnKill_00615610.cpp'
+        TestSource = '00/61/CTCCarryable_OnKill_00615610_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006199d0'
+        Module = 'CTCCarryable'
+        Source = '00/61/CTCCarryable_OnKill_006199d0.cpp'
+        TestSource = '00/61/CTCCarryable_OnKill_006199d0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00619c10'
+        Module = 'CTCCarryable'
+        Source = '00/61/CTCCarryable_OnKill_00619c10.cpp'
+        TestSource = '00/61/CTCCarryable_OnKill_00619c10_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00623a40'
+        Module = 'CTCCarryable'
+        Source = '00/62/CTCCarryable_OnKill_00623a40.cpp'
+        TestSource = '00/62/CTCCarryable_OnKill_00623a40_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00630b20'
+        Module = 'CTCCarryable'
+        Source = '00/63/CTCCarryable_OnKill_00630b20.cpp'
+        TestSource = '00/63/CTCCarryable_OnKill_00630b20_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00630fe0'
+        Module = 'CTCCarryable'
+        Source = '00/63/CTCCarryable_OnKill_00630fe0.cpp'
+        TestSource = '00/63/CTCCarryable_OnKill_00630fe0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00673dd0'
+        Module = 'CTCCarryable'
+        Source = '00/67/CTCCarryable_OnKill_00673dd0.cpp'
+        TestSource = '00/67/CTCCarryable_OnKill_00673dd0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067af20'
+        Module = 'CTCCarryable'
+        Source = '00/67/CTCCarryable_OnKill_0067af20.cpp'
+        TestSource = '00/67/CTCCarryable_OnKill_0067af20_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067af90'
+        Module = 'CTCCarryable'
+        Source = '00/67/CTCCarryable_OnKill_0067af90.cpp'
+        TestSource = '00/67/CTCCarryable_OnKill_0067af90_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067b000'
+        Module = 'CTCCarryable'
+        Source = '00/67/CTCCarryable_OnKill_0067b000.cpp'
+        TestSource = '00/67/CTCCarryable_OnKill_0067b000_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067b2e0'
+        Module = 'CTCCarryable'
+        Source = '00/67/CTCCarryable_OnKill_0067b2e0.cpp'
+        TestSource = '00/67/CTCCarryable_OnKill_0067b2e0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00696af0'
+        Module = 'CTCCarryable'
+        Source = '00/69/CTCCarryable_OnKill_00696af0.cpp'
+        TestSource = '00/69/CTCCarryable_OnKill_00696af0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00696b30'
+        Module = 'CTCCarryable'
+        Source = '00/69/CTCCarryable_OnKill_00696b30.cpp'
+        TestSource = '00/69/CTCCarryable_OnKill_00696b30_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0069d8c0'
+        Module = 'CTCCarryable'
+        Source = '00/69/CTCCarryable_OnKill_0069d8c0.cpp'
+        TestSource = '00/69/CTCCarryable_OnKill_0069d8c0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c75a0'
+        Module = 'CTCCarryable'
+        Source = '00/6c/CTCCarryable_OnKill_006c75a0.cpp'
+        TestSource = '00/6c/CTCCarryable_OnKill_006c75a0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006dc970'
+        Module = 'CTCCarryable'
+        Source = '00/6d/CTCCarryable_OnKill_006dc970.cpp'
+        TestSource = '00/6d/CTCCarryable_OnKill_006dc970_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006dc9b0'
+        Module = 'CTCCarryable'
+        Source = '00/6d/CTCCarryable_OnKill_006dc9b0.cpp'
+        TestSource = '00/6d/CTCCarryable_OnKill_006dc9b0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f0ab0'
+        Module = 'CTCCarryable'
+        Source = '00/6f/CTCCarryable_OnKill_006f0ab0.cpp'
+        TestSource = '00/6f/CTCCarryable_OnKill_006f0ab0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f0bc0'
+        Module = 'CTCCarryable'
+        Source = '00/6f/CTCCarryable_OnKill_006f0bc0.cpp'
+        TestSource = '00/6f/CTCCarryable_OnKill_006f0bc0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f1cb0'
+        Module = 'CTCCarryable'
+        Source = '00/6f/CTCCarryable_OnKill_006f1cb0.cpp'
+        TestSource = '00/6f/CTCCarryable_OnKill_006f1cb0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f4cc0'
+        Module = 'CTCCarryable'
+        Source = '00/6f/CTCCarryable_OnKill_006f4cc0.cpp'
+        TestSource = '00/6f/CTCCarryable_OnKill_006f4cc0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070ae60'
+        Module = 'CTCCarryable'
+        Source = '00/70/CTCCarryable_OnKill_0070ae60.cpp'
+        TestSource = '00/70/CTCCarryable_OnKill_0070ae60_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00739510'
+        Module = 'CTCCarryable'
+        Source = '00/73/CTCCarryable_OnKill_00739510.cpp'
+        TestSource = '00/73/CTCCarryable_OnKill_00739510_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007560c0'
+        Module = 'CTCCarryable'
+        Source = '00/75/CTCCarryable_OnKill_007560c0.cpp'
+        TestSource = '00/75/CTCCarryable_OnKill_007560c0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007563e0'
+        Module = 'CTCCarryable'
+        Source = '00/75/CTCCarryable_OnKill_007563e0.cpp'
+        TestSource = '00/75/CTCCarryable_OnKill_007563e0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00776ef0'
+        Module = 'CTCCarryable'
+        Source = '00/77/CTCCarryable_OnKill_00776ef0.cpp'
+        TestSource = '00/77/CTCCarryable_OnKill_00776ef0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00783d90'
+        Module = 'CTCCarryable'
+        Source = '00/78/CTCCarryable_OnKill_00783d90.cpp'
+        TestSource = '00/78/CTCCarryable_OnKill_00783d90_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00783e20'
+        Module = 'CTCCarryable'
+        Source = '00/78/CTCCarryable_OnKill_00783e20.cpp'
+        TestSource = '00/78/CTCCarryable_OnKill_00783e20_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079f070'
+        Module = 'CTCCarryable'
+        Source = '00/79/CTCCarryable_OnKill_0079f070.cpp'
+        TestSource = '00/79/CTCCarryable_OnKill_0079f070_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ace20'
+        Module = 'CTCCarryable'
+        Source = '00/7a/CTCCarryable_OnKill_007ace20.cpp'
+        TestSource = '00/7a/CTCCarryable_OnKill_007ace20_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007adaf0'
+        Module = 'CTCCarryable'
+        Source = '00/7a/CTCCarryable_OnKill_007adaf0.cpp'
+        TestSource = '00/7a/CTCCarryable_OnKill_007adaf0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ae190'
+        Module = 'CTCCarryable'
+        Source = '00/7a/CTCCarryable_OnKill_007ae190.cpp'
+        TestSource = '00/7a/CTCCarryable_OnKill_007ae190_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e90f0'
+        Module = 'CTCCarryable'
+        Source = '00/7e/CTCCarryable_OnKill_007e90f0.cpp'
+        TestSource = '00/7e/CTCCarryable_OnKill_007e90f0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00801570'
+        Module = 'CTCCarryable'
+        Source = '00/80/CTCCarryable_OnKill_00801570.cpp'
+        TestSource = '00/80/CTCCarryable_OnKill_00801570_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008176d0'
+        Module = 'CTCCarryable'
+        Source = '00/81/CTCCarryable_OnKill_008176d0.cpp'
+        TestSource = '00/81/CTCCarryable_OnKill_008176d0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00824e40'
+        Module = 'CTCCarryable'
+        Source = '00/82/CTCCarryable_OnKill_00824e40.cpp'
+        TestSource = '00/82/CTCCarryable_OnKill_00824e40_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00824eb0'
+        Module = 'CTCCarryable'
+        Source = '00/82/CTCCarryable_OnKill_00824eb0.cpp'
+        TestSource = '00/82/CTCCarryable_OnKill_00824eb0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0082f310'
+        Module = 'CTCCarryable'
+        Source = '00/82/CTCCarryable_OnKill_0082f310.cpp'
+        TestSource = '00/82/CTCCarryable_OnKill_0082f310_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00835140'
+        Module = 'CTCCarryable'
+        Source = '00/83/CTCCarryable_OnKill_00835140.cpp'
+        TestSource = '00/83/CTCCarryable_OnKill_00835140_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00869900'
+        Module = 'CTCCarryable'
+        Source = '00/86/CTCCarryable_OnKill_00869900.cpp'
+        TestSource = '00/86/CTCCarryable_OnKill_00869900_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008832c0'
+        Module = 'CTCCarryable'
+        Source = '00/88/CTCCarryable_OnKill_008832c0.cpp'
+        TestSource = '00/88/CTCCarryable_OnKill_008832c0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00883c20'
+        Module = 'CTCCarryable'
+        Source = '00/88/CTCCarryable_OnKill_00883c20.cpp'
+        TestSource = '00/88/CTCCarryable_OnKill_00883c20_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ac500'
+        Module = 'CTCCarryable'
+        Source = '00/8a/CTCCarryable_OnKill_008ac500.cpp'
+        TestSource = '00/8a/CTCCarryable_OnKill_008ac500_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b2290'
+        Module = 'CTCCarryable'
+        Source = '00/8b/CTCCarryable_OnKill_008b2290.cpp'
+        TestSource = '00/8b/CTCCarryable_OnKill_008b2290_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b2300'
+        Module = 'CTCCarryable'
+        Source = '00/8b/CTCCarryable_OnKill_008b2300.cpp'
+        TestSource = '00/8b/CTCCarryable_OnKill_008b2300_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b2370'
+        Module = 'CTCCarryable'
+        Source = '00/8b/CTCCarryable_OnKill_008b2370.cpp'
+        TestSource = '00/8b/CTCCarryable_OnKill_008b2370_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098d320'
+        Module = 'CTCCarryable'
+        Source = '00/98/CTCCarryable_OnKill_0098d320.cpp'
+        TestSource = '00/98/CTCCarryable_OnKill_0098d320_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009900b0'
+        Module = 'CTCCarryable'
+        Source = '00/99/CTCCarryable_OnKill_009900b0.cpp'
+        TestSource = '00/99/CTCCarryable_OnKill_009900b0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00990120'
+        Module = 'CTCCarryable'
+        Source = '00/99/CTCCarryable_OnKill_00990120.cpp'
+        TestSource = '00/99/CTCCarryable_OnKill_00990120_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00999f50'
+        Module = 'CTCCarryable'
+        Source = '00/99/CTCCarryable_OnKill_00999f50.cpp'
+        TestSource = '00/99/CTCCarryable_OnKill_00999f50_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009aabe0'
+        Module = 'CTCCarryable'
+        Source = '00/9a/CTCCarryable_OnKill_009aabe0.cpp'
+        TestSource = '00/9a/CTCCarryable_OnKill_009aabe0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009aaca0'
+        Module = 'CTCCarryable'
+        Source = '00/9a/CTCCarryable_OnKill_009aaca0.cpp'
+        TestSource = '00/9a/CTCCarryable_OnKill_009aaca0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009aace0'
+        Module = 'CTCCarryable'
+        Source = '00/9a/CTCCarryable_OnKill_009aace0.cpp'
+        TestSource = '00/9a/CTCCarryable_OnKill_009aace0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009aad20'
+        Module = 'CTCCarryable'
+        Source = '00/9a/CTCCarryable_OnKill_009aad20.cpp'
+        TestSource = '00/9a/CTCCarryable_OnKill_009aad20_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c2270'
+        Module = 'CTCCarryable'
+        Source = '00/9c/CTCCarryable_OnKill_009c2270.cpp'
+        TestSource = '00/9c/CTCCarryable_OnKill_009c2270_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c22e0'
+        Module = 'CTCCarryable'
+        Source = '00/9c/CTCCarryable_OnKill_009c22e0.cpp'
+        TestSource = '00/9c/CTCCarryable_OnKill_009c22e0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d4070'
+        Module = 'CTCCarryable'
+        Source = '00/9d/CTCCarryable_OnKill_009d4070.cpp'
+        TestSource = '00/9d/CTCCarryable_OnKill_009d4070_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d84a0'
+        Module = 'CTCCarryable'
+        Source = '00/9d/CTCCarryable_OnKill_009d84a0.cpp'
+        TestSource = '00/9d/CTCCarryable_OnKill_009d84a0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eef90'
+        Module = 'CTCCarryable'
+        Source = '00/9e/CTCCarryable_OnKill_009eef90.cpp'
+        TestSource = '00/9e/CTCCarryable_OnKill_009eef90_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ef2e0'
+        Module = 'CTCCarryable'
+        Source = '00/9e/CTCCarryable_OnKill_009ef2e0.cpp'
+        TestSource = '00/9e/CTCCarryable_OnKill_009ef2e0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ef320'
+        Module = 'CTCCarryable'
+        Source = '00/9e/CTCCarryable_OnKill_009ef320.cpp'
+        TestSource = '00/9e/CTCCarryable_OnKill_009ef320_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009efa10'
+        Module = 'CTCCarryable'
+        Source = '00/9e/CTCCarryable_OnKill_009efa10.cpp'
+        TestSource = '00/9e/CTCCarryable_OnKill_009efa10_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009efdb0'
+        Module = 'CTCCarryable'
+        Source = '00/9e/CTCCarryable_OnKill_009efdb0.cpp'
+        TestSource = '00/9e/CTCCarryable_OnKill_009efdb0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f9a50'
+        Module = 'CTCCarryable'
+        Source = '00/9f/CTCCarryable_OnKill_009f9a50.cpp'
+        TestSource = '00/9f/CTCCarryable_OnKill_009f9a50_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a215d0'
+        Module = 'CTCCarryable'
+        Source = '00/a2/CTCCarryable_OnKill_00a215d0.cpp'
+        TestSource = '00/a2/CTCCarryable_OnKill_00a215d0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a21b20'
+        Module = 'CTCCarryable'
+        Source = '00/a2/CTCCarryable_OnKill_00a21b20.cpp'
+        TestSource = '00/a2/CTCCarryable_OnKill_00a21b20_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a22060'
+        Module = 'CTCCarryable'
+        Source = '00/a2/CTCCarryable_OnKill_00a22060.cpp'
+        TestSource = '00/a2/CTCCarryable_OnKill_00a22060_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2c0b0'
+        Module = 'CTCCarryable'
+        Source = '00/a2/CTCCarryable_OnKill_00a2c0b0.cpp'
+        TestSource = '00/a2/CTCCarryable_OnKill_00a2c0b0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2deb0'
+        Module = 'CTCCarryable'
+        Source = '00/a2/CTCCarryable_OnKill_00a2deb0.cpp'
+        TestSource = '00/a2/CTCCarryable_OnKill_00a2deb0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7f640'
+        Module = 'CTCCarryable'
+        Source = '00/a7/CTCCarryable_OnKill_00a7f640.cpp'
+        TestSource = '00/a7/CTCCarryable_OnKill_00a7f640_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a7f6b0'
+        Module = 'CTCCarryable'
+        Source = '00/a7/CTCCarryable_OnKill_00a7f6b0.cpp'
+        TestSource = '00/a7/CTCCarryable_OnKill_00a7f6b0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad3900'
+        Module = 'CTCCarryable'
+        Source = '00/ad/CTCCarryable_OnKill_00ad3900.cpp'
+        TestSource = '00/ad/CTCCarryable_OnKill_00ad3900_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad3df0'
+        Module = 'CTCCarryable'
+        Source = '00/ad/CTCCarryable_OnKill_00ad3df0.cpp'
+        TestSource = '00/ad/CTCCarryable_OnKill_00ad3df0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad5e90'
+        Module = 'CTCCarryable'
+        Source = '00/ad/CTCCarryable_OnKill_00ad5e90.cpp'
+        TestSource = '00/ad/CTCCarryable_OnKill_00ad5e90_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad6560'
+        Module = 'CTCCarryable'
+        Source = '00/ad/CTCCarryable_OnKill_00ad6560.cpp'
+        TestSource = '00/ad/CTCCarryable_OnKill_00ad6560_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adb200'
+        Module = 'CTCCarryable'
+        Source = '00/ad/CTCCarryable_OnKill_00adb200.cpp'
+        TestSource = '00/ad/CTCCarryable_OnKill_00adb200_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2f020'
+        Module = 'CTCCarryable'
+        Source = '00/b2/CTCCarryable_OnKill_00b2f020.cpp'
+        TestSource = '00/b2/CTCCarryable_OnKill_00b2f020_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3e750'
+        Module = 'CTCCarryable'
+        Source = '00/b3/CTCCarryable_OnKill_00b3e750.cpp'
+        TestSource = '00/b3/CTCCarryable_OnKill_00b3e750_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b44250'
+        Module = 'CTCCarryable'
+        Source = '00/b4/CTCCarryable_OnKill_00b44250.cpp'
+        TestSource = '00/b4/CTCCarryable_OnKill_00b44250_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b97940'
+        Module = 'CTCCarryable'
+        Source = '00/b9/CTCCarryable_OnKill_00b97940.cpp'
+        TestSource = '00/b9/CTCCarryable_OnKill_00b97940_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b98590'
+        Module = 'CTCCarryable'
+        Source = '00/b9/CTCCarryable_OnKill_00b98590.cpp'
+        TestSource = '00/b9/CTCCarryable_OnKill_00b98590_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bce510'
+        Module = 'CTCCarryable'
+        Source = '00/bc/CTCCarryable_OnKill_00bce510.cpp'
+        TestSource = '00/bc/CTCCarryable_OnKill_00bce510_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd8cc0'
+        Module = 'CTCCarryable'
+        Source = '00/bd/CTCCarryable_OnKill_00bd8cc0.cpp'
+        TestSource = '00/bd/CTCCarryable_OnKill_00bd8cc0_test.cpp'
+        PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
