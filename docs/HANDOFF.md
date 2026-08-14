@@ -1,5 +1,19 @@
 # HANDOFF — resume here
 
+## 2026-08-14 — parity crawl surge (batch136–149, ledger 4518 -> 4839, +289 byte-exact) RESUME HERE
+- batch148 (bca31d4) 22, batch149 (0ad8d00) **PARTIAL 8/24** — the workflow hit the ACCOUNT session
+  limit mid-run (resets 10:30am America/Edmonton); 15 agents never executed. Only the 9 ATTEMPTED
+  addrs were appended to durable gen_tried, so the 15 unattempted batch149 targets are STILL ELIGIBLE
+  and the crawl will re-suggest them next relaunch. No manual replay needed — just run the normal
+  relaunch (reseed SCR/gen_tried from durable, next_smallest 24 gen_batch150, etc.).
+- RESUME: continue the crawl at gen_batch150 once the session limit resets. Reusable helpers are all
+  in the session scratchpad (build_targets.py, land_batch.py, extract_wins.py, patch_wins.py, bpcNN.js
+  generator). Recipe unchanged: next_smallest -> trim_overcapture/trim_tailjmp --oracle -> build_targets
+  -> Workflow(bpcNN.js, args=targets) -> extract/patch/land_batch --land -> lean commit.
+- LEDGER-SAFETY NOTE (new): when a workflow is cut short (session limit / kill), DO NOT land with the
+  full targets.json — land_batch appends ALL target addrs to durable gen_tried. Filter targets to only
+  the ATTEMPTED addrs (from result.all[]) so unattempted fns stay eligible. Did this for batch149.
+
 ## 2026-08-14 — parity crawl surge (batch136–147, ledger 4518 -> 4806, +259 byte-exact)
 - Continued clean: batch143 (e4ee116) 22, batch144 (94b8087) 22, batch145 (0f38f81) 22,
   batch146 (585a460) 18, batch147 (1eee429) 21. Big veins drained this stretch:
