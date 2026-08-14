@@ -1,5 +1,15 @@
 # HANDOFF — resume here
 
+## 2026-08-14 — parity crawl surge (batch136–139, ledger 4518 -> 4614)
+- batch138 LANDED (5500606): 21/24. batch139 LANDED (7f536e2): 23/24.
+- **CopyBackBufferToTexture twin-`lea [ebp-1]` class CRACKED** (00cd365e, batch139): pass the 2nd
+  arg as a syntactically-distinct but identical expression `&local + 1 - 1` to defeat VC7.1 CSE
+  (plain `&local,&local` folds to one `lea`), AND stack `#pragma optimize("s",on)` +
+  `#pragma optimize("y",off)` in-source to restore retail's ebp frame + `c9 leave` epilogue under
+  the harness's /O2 /Oy. This unblocks the batch136 deferrals (00594803/005b2706/005b2e6c/005bb3b3/
+  005bb3d1) and 00cd3640 — they're in gen_tried so the crawl won't re-suggest; re-target manually if
+  desired (author with the trick, land solo).
+
 ## 2026-08-14 — parity crawl surge (batch136 + batch137, ledger 4518 -> 4566)
 - **gen_batch136** LANDED (commit 4024574): 19/24 (3 MATCH + 16 RELOCATION_MATCH). 5 deferred =
   `CDisplayManager::CopyBackBufferToTexture` twin-`lea [ebp-1]` CSE class.
