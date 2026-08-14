@@ -8313,10 +8313,18 @@ renderer sink FableSetVisualFrontendSaveRows (was fed authored defaults only).
   adversarial corruption cross-check (bad magic/trunc/bad-clen/sig!=trailer_pos/CRC-covered flips)
   all reject in agreement with python. Spec + build-plan: `docs/SAVE_ROW_FEEDER_SPEC.md`.
 
-**NOT yet wired (next step, plan in SAVE_ROW_FEEDER_SPEC.md):** (1) register the two TUs in
-`rebuild/build_bootstrap.ps1` (compile steps + append objects to $visualRuntimeObjects);
-(2) call `FableFeedVisualFrontendSaveRows(selectedProfileDir)` at the `action==66` Load-Game
-handler in `visual_boot_checkpoint.cpp` (~L3669). Deferred because the full visual build can't be
-verified here (pre-existing WINMAIN gate + no display). (3) Retail-faithful **preview circle** =
-region minimap keyed by info.minimapName (currently a static per-index bake); follow-up needs the
-MINIMAP_* asset source + renderer wiring.
+**Build + call-site wiring LANDED (commit 2a0c257, compile-verified):**
+`rebuild/build_bootstrap.ps1` registers both TUs (source/object vars + $required gate + cl
+compile steps + appended to $visualRuntimeObjects only); `visual_boot_checkpoint.cpp` retains
+the activated profile (g_VisualActiveProfileName), adds BuildVisualSavesRoot()/
+ResolveActiveProfileSaveDir(), and calls FableFeedVisualFrontendSaveRows(Saves\<activeProfile>)
+at the action==66 Load-Game handler (falls back to authored defaults when unresolved). All three
+TUs compile clean under the exact build flags; the script parses clean; feeder<->checkpoint
+extern-"C" fastcall linkage proven via the standalone test link.
+
+**REMAINING:** (1) a full `build_bootstrap.ps1` run + on-screen QA (synth-click Main Menu ->
+Load Game, screenshot per VISUAL_PARITY_STATUS.md) — needs a display and the pre-existing
+FABLETLC_WINMAIN_BEHAVIOR gate resolved (blocks the visual link; unrelated to this work).
+(2) Retail-faithful **preview circle** = region minimap keyed by info.minimapName (currently a
+static per-index bake); follow-up needs the MINIMAP_* asset source + renderer wiring. The feeder
+already decodes info.minimapName per row, so the data side is ready.
