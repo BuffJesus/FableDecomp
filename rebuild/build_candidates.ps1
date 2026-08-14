@@ -70618,6 +70618,174 @@ $catalog = @(
         TestSource = '00/4e/CIdleSchedulerDef_Copy_004e60ee_test.cpp'
         PassPattern = 'IDLESCHED_COPY_OK'
     }
+    [pscustomobject]@{
+        Address = '004eac9c'
+        Module = 'CPrizeScoreDef'
+        Source = '00/4e/CPrizeScoreDef_Copy_004eac9c.cpp'
+        TestSource = '00/4e/CPrizeScoreDef_Copy_004eac9c_test.cpp'
+        PassPattern = 'PRIZECOPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004eafc9'
+        Module = 'CShoveHaPennyRegionDef'
+        Source = '00/4e/CShoveHaPennyRegionDef_Copy_004eafc9.cpp'
+        TestSource = '00/4e/CShoveHaPennyRegionDef_Copy_004eafc9_test.cpp'
+        PassPattern = 'COPYOK_4eafc9'
+    }
+    [pscustomobject]@{
+        Address = '004eb6c8'
+        Module = 'CMultiStaticMeshDef'
+        Source = '00/4e/CMultiStaticMeshDef_Copy_004eb6c8.cpp'
+        TestSource = '00/4e/CMultiStaticMeshDef_Copy_004eb6c8_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004ebbf2'
+        Module = 'CAnimatingObjectDef'
+        Source = '00/4e/CAnimatingObjectDef_Copy_004ebbf2.cpp'
+        TestSource = '00/4e/CAnimatingObjectDef_Copy_004ebbf2_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004ebebc'
+        Module = 'CCardPositionsDef'
+        Source = '00/4e/CCardPositionsDef_Copy_004ebebc.cpp'
+        TestSource = '00/4e/CCardPositionsDef_Copy_004ebebc_test.cpp'
+        PassPattern = 'BEHAVIOR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ec0f0'
+        Module = 'CCardDef'
+        Source = '00/4e/CCardDef_Copy_004ec0f0.cpp'
+        TestSource = '00/4e/CCardDef_Copy_004ec0f0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004fc690'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_GetMapPos_004fc690.cpp'
+        TestSource = '00/4f/CWorldMap_GetMapPos_004fc690_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004ff900'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_RegisterScriptedMapBrush_004ff900.cpp'
+        TestSource = '00/4f/CWorldMap_RegisterScriptedMapBrush_004ff900_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00511f30'
+        Module = '_Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,long>_>_>,std::pair<CCharString_const_,std::pair<long,long>_>,std::pair<class_CCharString_const_,struct_std'
+        Source = '00/51/ConsvalstdallocatorstdpairCCharStringconststdpairlonglongstdpairCCharStringconst_pairlonglong_00511f30.cpp'
+        TestSource = '00/51/ConsvalstdallocatorstdpairCCharStringconststdpairlonglongstdpairCCharStringconst_pairlonglong_00511f30_test.cpp'
+        PassPattern = 'CONS_VAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00518b60'
+        Module = '_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std'
+        Source = '00/51/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_00518b60.cpp'
+        TestSource = '00/51/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_00518b60_test.cpp'
+        PassPattern = 'CONSVAL_PAIR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0051bb80'
+        Module = '_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std'
+        Source = '00/51/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_0051bb80.cpp'
+        TestSource = '00/51/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_0051bb80_test.cpp'
+        PassPattern = 'CONSVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00565a70'
+        Module = '_global'
+        Source = '00/56/global_fillENavigatorTypeENavigatorType_00565a70.cpp'
+        TestSource = '00/56/global_fillENavigatorTypeENavigatorType_00565a70_test.cpp'
+        PassPattern = 'FILL_OK'
+    }
+    [pscustomobject]@{
+        Address = '0056e5ab'
+        Module = 'CTCInventoryExperience'
+        Source = '00/56/CTCInventoryExperience_ResetStatIndicatorValues_0056e5ab.cpp'
+        TestSource = '00/56/CTCInventoryExperience_ResetStatIndicatorValues_0056e5ab_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '005799de'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/57/CLandscapeBackgroundPatch_vectordeletingdestructor_005799de.cpp'
+        TestSource = '00/57/CLandscapeBackgroundPatch_vectordeletingdestructor_005799de_test.cpp'
+        PassPattern = 'VDD_OK'
+    }
+    [pscustomobject]@{
+        Address = '005799fd'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/57/CLandscapeBackgroundPatch_vectordeletingdestructor_005799fd.cpp'
+        TestSource = '00/57/CLandscapeBackgroundPatch_vectordeletingdestructor_005799fd_test.cpp'
+        PassPattern = 'VECDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0057a5be'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_SoberUp_0057a5be.cpp'
+        TestSource = '00/57/CTCHeroStats_SoberUp_0057a5be_test.cpp'
+        PassPattern = 'SOBERUP_OK'
+    }
+    [pscustomobject]@{
+        Address = '0057f95e'
+        Module = 'CPersistContext_TransferableComponent<NUISystem::ETextAlignement>'
+        Source = '00/57/CPersistContextTransferableComponentNUISystemETextAlignement_TransferOut_0057f95e.cpp'
+        TestSource = '00/57/CPersistContextTransferableComponentNUISystemETextAlignement_TransferOut_0057f95e_test.cpp'
+        PassPattern = 'TRANSFEROUT_OK'
+    }
+    [pscustomobject]@{
+        Address = '005937e1'
+        Module = 'CRegion'
+        Source = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_005937e1.cpp'
+        TestSource = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_005937e1_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '005bc66f'
+        Module = 'CTCInventoryBase'
+        Source = '00/5b/CTCInventoryBase_ProcessButtonBReleased_005bc66f.cpp'
+        TestSource = '00/5b/CTCInventoryBase_ProcessButtonBReleased_005bc66f_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '005c1121'
+        Module = '_Destroy_range<std::allocator<std'
+        Source = '00/5c/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_005c1121.cpp'
+        TestSource = '00/5c/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_005c1121_test.cpp'
+        PassPattern = 'DESTROY_RANGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '005df8e0'
+        Module = 'CAnimComponentStrikeSpeedMultiplier'
+        Source = '00/5d/CAnimComponentStrikeSpeedMultiplier_Alloc_005df8e0.cpp'
+        TestSource = '00/5d/CAnimComponentStrikeSpeedMultiplier_Alloc_005df8e0_test.cpp'
+        PassPattern = 'BEHAVIOR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00613290'
+        Module = '_global'
+        Source = '00/61/global_fillENavigatorTypeENavigatorType_00613290.cpp'
+        TestSource = '00/61/global_fillENavigatorTypeENavigatorType_00613290_test.cpp'
+        PassPattern = 'FILL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00643d5d'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/64/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00643d5d.cpp'
+        TestSource = '00/64/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00643d5d_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '006556d3'
+        Module = '_Destroy_range<std::allocator<std'
+        Source = '00/65/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_006556d3.cpp'
+        TestSource = '00/65/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_006556d3_test.cpp'
+        PassPattern = 'PARITY_OK_006556d3'
+    }
 )
 
 $requestedAddresses = @(
