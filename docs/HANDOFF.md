@@ -8328,3 +8328,63 @@ FABLETLC_WINMAIN_BEHAVIOR gate resolved (blocks the visual link; unrelated to th
 (2) Retail-faithful **preview circle** = region minimap keyed by info.minimapName (currently a
 static per-index bake); follow-up needs the MINIMAP_* asset source + renderer wiring. The feeder
 already decodes info.minimapName per row, so the data side is ready.
+
+---
+## 2026-08-13 (late) — byte-purity reframe + crawl surge + frontend save/minimap (RESUME HERE)
+
+Session steered hard toward the north star (user, verbatim): **byte purity — recreate the
+game faithfully from the decompiled code; read assets from the game containers; no baking.**
+This applies to BOTH the save system and the minimap. Functional ports are ORACLES, not the
+shipped reconstruction.
+
+### Byte-pure crawl (the lane the user endorsed) — +1,763 byte-exact this session
+- Mechanical clone veins: gen_batch134 (24) + `CLandscapeBackgroundPatch::vector_deleting_destructor`
+  vein fully drained (1,621) + `OnKill` (104), via `tools/decomp_pipeline/crawl/harvest_vecdel.py`
+  and the new **`harvest_skeleton.py`** (clones any landed byte-exact template across its
+  length+call-masked-skeleton family; verify_and_land re-verifies each). See memory
+  [[skeleton-clone-harvester]].
+- Authored via Workflow: **gen_batch135 = 14** byte-exact (CopyBackBufferToTexture forwarder
+  family, IsTimeForFullUpdate, _Umove, _Dest_val). Durable `gen_tried` 2745 -> **4518**.
+- **gen_batch136 = IN FLIGHT** (workflow task w5ndii377, 24 targets). LAND WHEN IT RETURNS:
+  read `tasks/w5ndii377.output` result.results; merge WINs (status=='WIN') into a land.json +
+  land_oracle (join name/length/bytes from `scratchpad/gen_batch136_oracle.tsv`), run
+  `verify_and_land.py <land.json> <oracle.tsv> --land`, append all 24 addrs to durable
+  gen_tried, lean commit "Binary-wide parity crawl gen_batch136: N functions landed".
+  (Merge recipe = same python I used for batch135; see this session's scratchpad.)
+- CRAWL AUTHORING GOTCHA (new): retail's two identical `lea eax,[ebp-1]` call args need TWO
+  1-byte temps in DISJOINT `{}` scopes (VC7.1 overlays them on one slot but keeps a separate
+  lea each); `&flag,&flag` gets CSE'd to `push eax;push eax` (DIFFER). In-source
+  `#pragma optimize("y",off)/("s",on)` are honored by the fixed sweep.
+- RELAUNCH the crawl: reseed `SCR/gen_tried.txt` from durable; `next_smallest.py 24 gen_batchNN`;
+  `trim_overcapture --oracle` then `trim_tailjmp --oracle`; build items json (capstone disasm);
+  generate the embedded-targets workflow (see `scratchpad/bpc136.js` generator — pre-join disasm
+  and JSON-embed to avoid control chars); Workflow(scriptPath); merge+land+commit.
+
+### `lzo1x_decompress @ 0x00c06b90` — byte-parity DEFER (hard)
+The pure minimap-decode primitive. Faithful C compiles to 593B (right class) but the prologue
+register allocation diverges from retail; the permuter (`tools/permuter/autopermute.py --mutate
+--random 200`, 4690 evals) bottomed at 593v578 prefix-4. Needs the upstream-style full-regalloc
+permuter (README "Next") or hand regalloc-matching. Best source: `scratchpad/lzo1x.best.cpp`.
+Details in docs/CONTINUE_GAME_PATH.md.
+
+### Frontend save + minimap (functional layer = ORACLES for the byte-exact reconstruction)
+All committed, all offline-verified, none visually verified (no display + pre-existing WINMAIN gate):
+- **Save-row feeder** (`frontend_save_rows.cpp/.h` + `fable_inflate.c/.h`): native port of
+  save_metadata.py -> renderer sink; retail-faithful labels (AutoSave / Save N); per-row
+  region/minimap/playtime decoded; 19/19 profiles match golden + corruption cross-check; build+
+  call-site wired (build_bootstrap.ps1 + visual_boot_checkpoint action==66). Spec:
+  docs/SAVE_ROW_FEEDER_SPEC.md.
+- **Runtime container-read minimap path** (PURE, no baking): `fable_texture_decode.c/.h`
+  (LZO1X+DXT3+Info), `fable_bank_reader.h` (Info exposure), `frontend_minimap.cpp/.h`
+  (FableLoadRegionMinimap). Full pipeline Open frontend.big -> FindEntry(GBANK_FRONT_END_PC,
+  MINIMAP_<region>_FRONT_END) -> decode -> RGBA verified byte-identical to Python on 95/95
+  minimaps. These are the DIFFERENTIAL ORACLE for the byte-exact engine reconstruction
+  (lzo1x_decompress + the DXT/surface loader). Remaining (display-gated): D3D9 upload/attach +
+  ring render split + feeder->sink minimap-name plumbing; retail likely uploads DXT3 to the GPU
+  (no software decode) — reconstruct that path byte-exact rather than shipping the hand-port.
+
+BYTE-PURITY POLICY going forward: reconstruct + call the engine's own functions byte-exact
+(crc0 0x00404310, the zlib decompressors, lzo1x 0x00c06b90, the CUserProfileManager enumeration +
+AddRegionAndTimeInfo 0x00597228 + ConstructFileDescription 0x00595CC1 + HEADER deserialize).
+The big 2-3KB LoadGameState deserializers stay the documented compiler-gated DEFER class
+(QFE-4035) per memory retail-compiler-build. Functional modules are scaffolding/oracles only.
