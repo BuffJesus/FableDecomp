@@ -1,5 +1,16 @@
 # HANDOFF — resume here
 
+## 2026-08-14 — parity crawl surge (batch136–147, ledger 4518 -> 4806, +259 byte-exact)
+- Continued clean: batch143 (e4ee116) 22, batch144 (94b8087) 22, batch145 (0f38f81) 22,
+  batch146 (585a460) 18, batch147 (1eee429) 21. Big veins drained this stretch:
+  `~C3DAnimationBlendState` refcount-dtor x13, filter `operator()` predicates (int-return
+  compare-branch, NOT bool — retail returns full-width eax), `GetCategoryIdentifier`/
+  `GetAnimationSpeedValue` refcount-temp accessors, `_Fill_n<ulong*>` (movsd*3 via optimize s),
+  `CTCVillage::OnInitialActivate` (~12 across batches), `fill<ENavigatorType>`, `_Cons_val`.
+- Recurrent DEFER class: refcount AddRef/Release-temp accessors + same-length 32v32 forwarders that
+  VC7.1 RTM-3077 won't reproduce (documented per memory retail-compiler-build); and head-under-
+  capture mis-bounded manifest fragments (not real fn starts).
+
 ## 2026-08-14 — parity crawl surge (batch136–142, ledger 4518 -> 4686, +154 byte-exact)
 - batch138 (5500606) 21, batch139 (7f536e2) 23, batch140 (43160a1) 24 CLEAN, batch141 (ddcbefa) 24
   CLEAN, batch142 (9461a9e) 23. Highest-yield veins: `CDefClassBase::Copy` forwarder family (model
