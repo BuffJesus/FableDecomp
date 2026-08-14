@@ -30,9 +30,11 @@ typedef struct FableSaveSlot {
     char name[128];
 } FableSaveSlot;
 
-/* One assembled row for the frontend. */
+/* One assembled row for the frontend. `name` is the retail-faithful display label
+ * ("AutoSave" / "Save N"); `filename` is the on-disk .sav it maps to. */
 typedef struct FableSaveRowOut {
-    char     name[128];
+    char      name[128];
+    char      filename[128];
     fable_u32 action;
 } FableSaveRowOut;
 

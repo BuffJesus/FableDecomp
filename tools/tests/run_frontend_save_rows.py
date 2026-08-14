@@ -15,10 +15,21 @@ CAP = 4
 
 
 def golden_rows(profile_dir):
+    """Derive the retail-faithful expected rows from the enumeration golden:
+    single AutoSave (label "AutoSave"), manual slots labeled "Save <index>";
+    AutoSave.qs quicksave is not listed. Order/action come from the golden."""
     data = save_metadata.enumerate_profile(profile_dir)
-    # native feeder only emits rows whose file is present on disk
-    rows = [(r.filename, r.action) for r in data.rows if r.exists]
-    return rows[:CAP]
+    out = []
+    for r in data.rows:
+        if not r.exists:
+            continue
+        if r.kind == "autosave":
+            if r.filename == "AutoSave":
+                out.append(("AutoSave", r.action))
+            # AutoSave.qs intentionally excluded
+        else:
+            out.append(("Save %d" % r.slot_index, r.action))
+    return out[:CAP]
 
 
 def native_rows(exe, profile_dir):

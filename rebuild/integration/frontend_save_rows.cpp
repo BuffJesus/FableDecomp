@@ -282,23 +282,37 @@ static fable_u32 action_for_file(const wchar_t* profileDir, const char* filename
     return rc == 0 ? FABLE_SAVE_ACTION_LOADABLE : FABLE_SAVE_ACTION_INVALID;
 }
 
+/* Append one row: `label` is what the frontend shows (retail-faithful "AutoSave" /
+ * "Save N"); `filename` is the on-disk .sav referenced by the registry. Only rows
+ * whose file is present are emitted; dedup is by on-disk filename. */
 static void push_row(FableSaveRowOut* rows, unsigned int* n, unsigned int cap,
-                     const char* name, const wchar_t* profileDir)
+                     const char* label, const char* filename, const wchar_t* profileDir)
 {
     unsigned int k;
+    wchar_t path[1024];
     if (*n >= cap) return;
-    /* dedup by filename */
-    for (k = 0; k < *n; ++k)
-        if (strcmp(rows[k].name, name) == 0) return;
-    {
-        wchar_t path[1024];
-        join_wide(profileDir, name, path, 1024);
-        if (!file_exists(path)) return;   /* only rows whose file is present */
-    }
-    strncpy(rows[*n].name, name, sizeof(rows[0].name) - 1);
+    join_wide(profileDir, filename, path, 1024);
+    if (!file_exists(path)) return;         /* only rows whose file is present */
+    for (k = 0; k < *n; ++k)                /* dedup by on-disk filename */
+        if (strcmp(rows[k].filename, filename) == 0) return;
+    strncpy(rows[*n].name, label, sizeof(rows[0].name) - 1);
     rows[*n].name[sizeof(rows[0].name) - 1] = 0;
-    rows[*n].action = action_for_file(profileDir, name);
+    strncpy(rows[*n].filename, filename, sizeof(rows[0].filename) - 1);
+    rows[*n].filename[sizeof(rows[0].filename) - 1] = 0;
+    rows[*n].action = action_for_file(profileDir, filename);
     ++(*n);
+}
+
+/* Format "Save <n>" into buf without <stdio.h> in the hot path. */
+static void save_label(char* buf, unsigned int cap, int index)
+{
+    char digits[12]; int d = 0, i, j = 0;
+    const char* pfx = "Save ";
+    while (pfx[j] && (unsigned)j + 1 < cap) { buf[j] = pfx[j]; ++j; }
+    if (index <= 0) index = 1;
+    while (index > 0 && d < 12) { digits[d++] = (char)('0' + index % 10); index /= 10; }
+    for (i = d - 1; i >= 0 && (unsigned)j + 1 < cap; --i) buf[j++] = digits[i];
+    buf[j] = 0;
 }
 
 unsigned int FableBuildSaveRowsForTest(
@@ -309,23 +323,24 @@ unsigned int FableBuildSaveRowsForTest(
     wchar_t pbpath[1024];
     unsigned char* pb; unsigned int pblen;
 
-    /* autosaves first (only if the file is present) */
-    push_row(rows, &n, cap, "AutoSave", profileDir);
-    push_row(rows, &n, cap, "AutoSave.qs", profileDir);
+    /* single AutoSave row (retail shows one; AutoSave.qs quicksave is not listed) */
+    push_row(rows, &n, cap, "AutoSave", "AutoSave", profileDir);
 
-    /* manual slots from Profile.bin, ascending registry index */
+    /* manual slots from Profile.bin, ascending registry index, labeled "Save N" */
     join_wide(profileDir, "Profile.bin", pbpath, 1024);
     if (read_whole_file(pbpath, &pb, &pblen) == 0) {
         nslots = FableParseProfileRegistryForTest(pb, pblen, slots, 50);
         free(pb);
-        /* selection sort by index (<=50 entries) */
-        for (i = 0; i < nslots; ++i)
+        for (i = 0; i < nslots; ++i)        /* selection sort by registry index */
             for (s = i + 1; s < nslots; ++s)
                 if (slots[s].index < slots[i].index) {
                     FableSaveSlot t = slots[i]; slots[i] = slots[s]; slots[s] = t;
                 }
-        for (i = 0; i < nslots && n < cap; ++i)
-            push_row(rows, &n, cap, slots[i].name, profileDir);
+        for (i = 0; i < nslots && n < cap; ++i) {
+            char label[32];
+            save_label(label, sizeof(label), slots[i].index);
+            push_row(rows, &n, cap, label, slots[i].name, profileDir);
+        }
     }
     return n;
 }
