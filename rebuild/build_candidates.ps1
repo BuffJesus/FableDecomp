@@ -71256,6 +71256,160 @@ $catalog = @(
         TestSource = '00/46/global_Fillnunsignedlongunsignedintunsignedlong_00466f54_test.cpp'
         PassPattern = 'FILLN_OK'
     }
+    [pscustomobject]@{
+        Address = '00467445'
+        Module = '_global'
+        Source = '00/46/global_Fillnunsignedlongunsignedintunsignedlong_00467445.cpp'
+        TestSource = '00/46/global_Fillnunsignedlongunsignedintunsignedlong_00467445_test.cpp'
+        PassPattern = 'FILLN_OK'
+    }
+    [pscustomobject]@{
+        Address = '0046bd11'
+        Module = '_global'
+        Source = '00/46/global_Fillnunsignedlongunsignedintunsignedlong_0046bd11.cpp'
+        TestSource = '00/46/global_Fillnunsignedlongunsignedintunsignedlong_0046bd11_test.cpp'
+        PassPattern = 'FILLN12_OK'
+    }
+    [pscustomobject]@{
+        Address = '004bbbe0'
+        Module = 'CTCVillage'
+        Source = '00/4b/CTCVillage_OnInitialActivate_004bbbe0.cpp'
+        TestSource = '00/4b/CTCVillage_OnInitialActivate_004bbbe0_test.cpp'
+        PassPattern = 'BEHAVE_OK_004bbbe0'
+    }
+    [pscustomobject]@{
+        Address = '004bfae0'
+        Module = 'CParticleSystem'
+        Source = '00/4b/CParticleSystem_Kill_004bfae0.cpp'
+        TestSource = '00/4b/CParticleSystem_Kill_004bfae0_test.cpp'
+        PassPattern = 'KILL_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d2690'
+        Module = 'CTCVillage'
+        Source = '00/4d/CTCVillage_OnInitialActivate_004d2690.cpp'
+        TestSource = '00/4d/CTCVillage_OnInitialActivate_004d2690_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d26b0'
+        Module = 'CTCVillage'
+        Source = '00/4d/CTCVillage_OnInitialActivate_004d26b0.cpp'
+        TestSource = '00/4d/CTCVillage_OnInitialActivate_004d26b0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004d26d0'
+        Module = 'CTCVillage'
+        Source = '00/4d/CTCVillage_OnInitialActivate_004d26d0.cpp'
+        TestSource = '00/4d/CTCVillage_OnInitialActivate_004d26d0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004da967'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004da967.cpp'
+        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004da967_test.cpp'
+        PassPattern = 'BLENDSTATE_DTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004db004'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004db004.cpp'
+        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004db004_test.cpp'
+        PassPattern = 'BLENDSTATE_DTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004db47d'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004db47d.cpp'
+        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004db47d_test.cpp'
+        PassPattern = 'BLENDSTATE_DTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dbf56'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dbf56.cpp'
+        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dbf56_test.cpp'
+        PassPattern = 'BLENDSTATE_DTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dc600'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dc600.cpp'
+        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dc600_test.cpp'
+        PassPattern = 'BLENDDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dc7c8'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dc7c8.cpp'
+        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dc7c8_test.cpp'
+        PassPattern = 'BLENDDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dc916'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dc916.cpp'
+        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dc916_test.cpp'
+        PassPattern = 'PARITY_OK_004dc916'
+    }
+    [pscustomobject]@{
+        Address = '004dcbce'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcbce.cpp'
+        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcbce_test.cpp'
+        PassPattern = 'PARITY_OK_004dcbce'
+    }
+    [pscustomobject]@{
+        Address = '004dccd2'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dccd2.cpp'
+        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dccd2_test.cpp'
+        PassPattern = 'BLENDSTATE_DTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dcda4'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcda4.cpp'
+        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcda4_test.cpp'
+        PassPattern = 'BLENDSTATE_DTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dcdfd'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcdfd.cpp'
+        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcdfd_test.cpp'
+        PassPattern = 'DTOR_BLEND_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dcf4e'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcf4e.cpp'
+        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcf4e_test.cpp'
+        PassPattern = 'BLENDSTATE_DTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004df4aa'
+        Module = 'CObstacleNavigatorExternalInterface'
+        Source = '00/4d/CObstacleNavigatorExternalInterface_IsDead_004df4aa.cpp'
+        TestSource = '00/4d/CObstacleNavigatorExternalInterface_IsDead_004df4aa_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0051ed60'
+        Module = 'CStopWatch'
+        Source = '00/51/CStopWatch_GetTicks_0051ed60.cpp'
+        TestSource = '00/51/CStopWatch_GetTicks_0051ed60_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0051ed80'
+        Module = 'CStopWatch'
+        Source = '00/51/CStopWatch_GetTicks_0051ed80.cpp'
+        TestSource = '00/51/CStopWatch_GetTicks_0051ed80_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
 )
 
 $requestedAddresses = @(
