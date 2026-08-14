@@ -70002,6 +70002,146 @@ $catalog = @(
         TestSource = '00/74/vectorEWeaponClass_UmoveEWeaponClass_0074ddb0_test.cpp'
         PassPattern = 'PARITY_OK'
     }
+    [pscustomobject]@{
+        Address = '0075dcf0'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_IsTurningBody_0075dcf0.cpp'
+        TestSource = '00/75/CTCLook_IsTurningBody_0075dcf0_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0076c810'
+        Module = 'CTCEnemy'
+        Source = '00/76/CTCEnemy_SetFaction_0076c810.cpp'
+        TestSource = '00/76/CTCEnemy_SetFaction_0076c810_test.cpp'
+        PassPattern = 'FACTION_OK'
+    }
+    [pscustomobject]@{
+        Address = '007b8570'
+        Module = 'CTCInventoryBase'
+        Source = '00/7b/CTCInventoryBase_GetSelectedCategory_007b8570.cpp'
+        TestSource = '00/7b/CTCInventoryBase_GetSelectedCategory_007b8570_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '007bbc47'
+        Module = 'CTCShotDefinitionProjectile'
+        Source = '00/7b/CTCShotDefinitionProjectile_UpdateMovement_007bbc47.cpp'
+        TestSource = '00/7b/CTCShotDefinitionProjectile_UpdateMovement_007bbc47_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '007d9ef0'
+        Module = 'CTCInventoryItem'
+        Source = '00/7d/CTCInventoryItem_OnDie_007d9ef0.cpp'
+        TestSource = '00/7d/CTCInventoryItem_OnDie_007d9ef0_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '0083ea50'
+        Module = 'LHHttp2'
+        Source = '00/83/LHHttp2_IsDataAvailable_0083ea50.cpp'
+        TestSource = '00/83/LHHttp2_IsDataAvailable_0083ea50_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '008545f0'
+        Module = 'CCreatureAction_SpiritAttack'
+        Source = '00/85/CCreatureActionSpiritAttack_InitialiseCCreatureActionSpiritAttackUAEXXZ_008545f0.cpp'
+        TestSource = '00/85/CCreatureActionSpiritAttack_InitialiseCCreatureActionSpiritAttackUAEXXZ_008545f0_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '008aa0d0'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_AddGossip_008aa0d0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_AddGossip_008aa0d0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '008aa330'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_AddGossipVillages_008aa330.cpp'
+        TestSource = '00/8a/CGameScriptInterface_AddGossipVillages_008aa330_test.cpp'
+        PassPattern = 'GOSSIP_ORDER_OK'
+    }
+    [pscustomobject]@{
+        Address = '008fe14d'
+        Module = 'CActionDoCreatureAction'
+        Source = '00/8f/CActionDoCreatureAction_GetActionName_008fe14d.cpp'
+        TestSource = '00/8f/CActionDoCreatureAction_GetActionName_008fe14d_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00911f00'
+        Module = 'CAIStateGroup_ChickenBeg'
+        Source = '00/91/CAIStateGroupChickenBeg_UpdateCAIStateGroupChickenBegUAEXXZ_00911f00.cpp'
+        TestSource = '00/91/CAIStateGroupChickenBeg_UpdateCAIStateGroupChickenBegUAEXXZ_00911f00_test.cpp'
+        PassPattern = 'CHICKENBEG_UPDATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00953890'
+        Module = 'CTCInventoryItem'
+        Source = '00/95/CTCInventoryItem_OnDie_00953890.cpp'
+        TestSource = '00/95/CTCInventoryItem_OnDie_00953890_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '0095ed60'
+        Module = 'CAIStateGroup_OpinionReactionRoot'
+        Source = '00/95/CAIStateGroupOpinionReactionRoot_InitStateGroup_0095ed60.cpp'
+        TestSource = '00/95/CAIStateGroupOpinionReactionRoot_InitStateGroup_0095ed60_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009d52b0'
+        Module = 'CEditTransactionBase'
+        Source = '00/9d/CEditTransactionBase_ActionSetEngineTheme_009d52b0.cpp'
+        TestSource = '00/9d/CEditTransactionBase_ActionSetEngineTheme_009d52b0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009d5630'
+        Module = 'CBankFileAsyncData'
+        Source = '00/9d/CBankFileAsyncData_ChangeLoadingPriority_009d5630.cpp'
+        TestSource = '00/9d/CBankFileAsyncData_ChangeLoadingPriority_009d5630_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009e3620'
+        Module = '_global'
+        Source = '00/9e/global_FindFormatInfoIndexFromD3DFormat_009e3620.cpp'
+        TestSource = '00/9e/global_FindFormatInfoIndexFromD3DFormat_009e3620_test.cpp'
+        PassPattern = 'BEHAVIOR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e90a0'
+        Module = 'CMemoryFile'
+        Source = '00/9e/CMemoryFile_Open_009e90a0.cpp'
+        TestSource = '00/9e/CMemoryFile_Open_009e90a0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009f7760'
+        Module = 'CPersistTraits<CReactionFrequencyTraitsArray>'
+        Source = '00/9f/CPersistTraitsCReactionFrequencyTraitsArray_CPersistTraitsCReactionFrequencyTraitsArray_009f7760.cpp'
+        TestSource = '00/9f/CPersistTraitsCReactionFrequencyTraitsArray_CPersistTraitsCReactionFrequencyTraitsArray_009f7760_test.cpp'
+        PassPattern = 'PARITY_OK_009f7760'
+    }
+    [pscustomobject]@{
+        Address = '009fc550'
+        Module = 'CMemoryBlock'
+        Source = '00/9f/CMemoryBlock_CMemoryBlock_009fc550.cpp'
+        TestSource = '00/9f/CMemoryBlock_CMemoryBlock_009fc550_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a026f0'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_Lock_00a026f0.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_Lock_00a026f0_test.cpp'
+        PassPattern = 'LOCK_OK'
+    }
 )
 
 $requestedAddresses = @(
