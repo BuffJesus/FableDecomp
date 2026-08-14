@@ -69869,6 +69869,139 @@ $catalog = @(
         TestSource = '00/58/global_CopyBackBufferToTexture_00581114_test.cpp'
         PassPattern = 'PASS_CopyBackBufferToTexture'
     }
+    [pscustomobject]@{
+        Address = '00581266'
+        Module = '_Umove<std'
+        Source = '00/58/Umovestd_pairunsignedshortunsignedshort_00581266.cpp'
+        TestSource = '00/58/Umovestd_pairunsignedshortunsignedshort_00581266_test.cpp'
+        PassPattern = 'UMOVE_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '005850df'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_SetHighlightedItemAsQuickAccessItem_005850df.cpp'
+        TestSource = '00/58/CTCInventory_SetHighlightedItemAsQuickAccessItem_005850df_test.cpp'
+        PassPattern = 'BEHAVIOR_PASS_5850df'
+    }
+    [pscustomobject]@{
+        Address = '005920e1'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/59/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005920e1.cpp'
+        TestSource = '00/59/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005920e1_test.cpp'
+        PassPattern = 'PARITY_OK_005920e1'
+    }
+    [pscustomobject]@{
+        Address = '0059297f'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/59/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0059297f.cpp'
+        TestSource = '00/59/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0059297f_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '005949a5'
+        Module = '_global'
+        Source = '00/59/global_operatordelete_005949a5.cpp'
+        TestSource = '00/59/global_operatordelete_005949a5_test.cpp'
+        PassPattern = 'DELETE_FORWARD_OK'
+    }
+    [pscustomobject]@{
+        Address = '005b1710'
+        Module = '_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive'
+        Source = '00/5b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005b1710.cpp'
+        TestSource = '00/5b/DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_005b1710_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '005b4753'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_AddClothing_005b4753.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_AddClothing_005b4753_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '005d8167'
+        Module = 'CPersistTraits<EInputKey>'
+        Source = '00/5d/CPersistTraitsEInputKey_TransferIn_005d8167.cpp'
+        TestSource = '00/5d/CPersistTraitsEInputKey_TransferIn_005d8167_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '005e9820'
+        Module = 'vector<EWeaponClass'
+        Source = '00/5e/vectorEWeaponClass_UmoveEWeaponClass_005e9820.cpp'
+        TestSource = '00/5e/vectorEWeaponClass_UmoveEWeaponClass_005e9820_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00655a86'
+        Module = 'list<NUISystem::CList*'
+        Source = '00/65/listNUISystemCList_popfront_00655a86.cpp'
+        TestSource = '00/65/listNUISystemCList_popfront_00655a86_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0065d655'
+        Module = '_global'
+        Source = '00/65/global_operatorCThingBuilding_0065d655.cpp'
+        TestSource = '00/65/global_operatorCThingBuilding_0065d655_test.cpp'
+        PassPattern = 'EQ_OK'
+    }
+    [pscustomobject]@{
+        Address = '0065d673'
+        Module = '_global'
+        Source = '00/65/global_operatorCThingBuilding_0065d673.cpp'
+        TestSource = '00/65/global_operatorCThingBuilding_0065d673_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '006929a0'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_Update_006929a0.cpp'
+        TestSource = '00/69/CCreatureActionBase_Update_006929a0_test.cpp'
+        PassPattern = 'UPDATE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00697f30'
+        Module = 'CGameCameraManager'
+        Source = '00/69/CGameCameraManager_GetRenderCameraCGameCameraManagerUBEAVCCameraMZ_00697f30.cpp'
+        TestSource = '00/69/CGameCameraManager_GetRenderCameraCGameCameraManagerUBEAVCCameraMZ_00697f30_test.cpp'
+        PassPattern = 'PARITY_OK_697f30'
+    }
+    [pscustomobject]@{
+        Address = '006a7550'
+        Module = '_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs'
+        Source = '00/6a/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006a7550.cpp'
+        TestSource = '00/6a/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_006a7550_test.cpp'
+        PassPattern = 'LV_OK_006a7550'
+    }
+    [pscustomobject]@{
+        Address = '00706860'
+        Module = 'CTCActivationReceptorBase'
+        Source = '00/70/CTCActivationReceptorBase_AddTrigger_00706860.cpp'
+        TestSource = '00/70/CTCActivationReceptorBase_AddTrigger_00706860_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0070e680'
+        Module = 'CAnimateThing'
+        Source = '00/70/CAnimateThing_GetPMeshAnims_0070e680.cpp'
+        TestSource = '00/70/CAnimateThing_GetPMeshAnims_0070e680_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00734320'
+        Module = '_Dest_val<std'
+        Source = '00/73/Destvalstd_allocatorCMacroCMacro_00734320.cpp'
+        TestSource = '00/73/Destvalstd_allocatorCMacroCMacro_00734320_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '0074ddb0'
+        Module = 'vector<EWeaponClass'
+        Source = '00/74/vectorEWeaponClass_UmoveEWeaponClass_0074ddb0.cpp'
+        TestSource = '00/74/vectorEWeaponClass_UmoveEWeaponClass_0074ddb0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
 )
 
 $requestedAddresses = @(
