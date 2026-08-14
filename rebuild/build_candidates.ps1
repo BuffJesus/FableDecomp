@@ -69771,6 +69771,104 @@ $catalog = @(
         TestSource = '00/bd/CTCCarryable_OnKill_00bd8cc0_test.cpp'
         PassPattern = 'CTCCARRYABLE_ONKILL_0047C880_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004c6060'
+        Module = '_global'
+        Source = '00/4c/global_IsTimeForFullUpdate_004c6060.cpp'
+        TestSource = '00/4c/global_IsTimeForFullUpdate_004c6060_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004df7ff'
+        Module = '_global'
+        Source = '00/4d/global_CopyBackBufferToTexture_004df7ff.cpp'
+        TestSource = '00/4d/global_CopyBackBufferToTexture_004df7ff_test.cpp'
+        PassPattern = 'PARITY_OK_004df7ff'
+    }
+    [pscustomobject]@{
+        Address = '004df84e'
+        Module = '_global'
+        Source = '00/4d/global_CopyBackBufferToTexture_004df84e.cpp'
+        TestSource = '00/4d/global_CopyBackBufferToTexture_004df84e_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004df8cb'
+        Module = '_global'
+        Source = '00/4d/global_CopyBackBufferToTexture_004df8cb.cpp'
+        TestSource = '00/4d/global_CopyBackBufferToTexture_004df8cb_test.cpp'
+        PassPattern = 'PARITY_OK_004df8cb'
+    }
+    [pscustomobject]@{
+        Address = '004df8e9'
+        Module = '_global'
+        Source = '00/4d/global_CopyBackBufferToTexture_004df8e9.cpp'
+        TestSource = '00/4d/global_CopyBackBufferToTexture_004df8e9_test.cpp'
+        PassPattern = 'LAND_OK_004df8e9'
+    }
+    [pscustomobject]@{
+        Address = '004df956'
+        Module = '_global'
+        Source = '00/4d/global_CopyBackBufferToTexture_004df956.cpp'
+        TestSource = '00/4d/global_CopyBackBufferToTexture_004df956_test.cpp'
+        PassPattern = 'PASS_CopyBackBufferToTexture'
+    }
+    [pscustomobject]@{
+        Address = '004e4082'
+        Module = '_global'
+        Source = '00/4e/global_CopyBackBufferToTexture_004e4082.cpp'
+        TestSource = '00/4e/global_CopyBackBufferToTexture_004e4082_test.cpp'
+        PassPattern = 'PARITY_OK_004e4082'
+    }
+    [pscustomobject]@{
+        Address = '004e76df'
+        Module = '_global'
+        Source = '00/4e/global_CopyBackBufferToTexture_004e76df.cpp'
+        TestSource = '00/4e/global_CopyBackBufferToTexture_004e76df_test.cpp'
+        PassPattern = 'PASS_004e76df'
+    }
+    [pscustomobject]@{
+        Address = '00569af0'
+        Module = '_global'
+        Source = '00/56/global_UmoveEWeaponClass_00569af0.cpp'
+        TestSource = '00/56/global_UmoveEWeaponClass_00569af0_test.cpp'
+        PassPattern = 'UMOVE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00569b10'
+        Module = '_global'
+        Source = '00/56/global_UmoveEWeaponClass_00569b10.cpp'
+        TestSource = '00/56/global_UmoveEWeaponClass_00569b10_test.cpp'
+        PassPattern = 'UMOVE_EWC_OK'
+    }
+    [pscustomobject]@{
+        Address = '0057986e'
+        Module = '_global'
+        Source = '00/57/global_CopyBackBufferToTexture_0057986e.cpp'
+        TestSource = '00/57/global_CopyBackBufferToTexture_0057986e_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0057a106'
+        Module = '_global'
+        Source = '00/57/global_CopyBackBufferToTexture_0057a106.cpp'
+        TestSource = '00/57/global_CopyBackBufferToTexture_0057a106_test.cpp'
+        PassPattern = 'CDisplayManager_0057a106_CopyBackBufferToTexture_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057f407'
+        Module = '_global'
+        Source = '00/57/global_CTriangleList_0057f407.cpp'
+        TestSource = '00/57/global_CTriangleList_0057f407_test.cpp'
+        PassPattern = 'PASS freed=1 ptr=1'
+    }
+    [pscustomobject]@{
+        Address = '00581114'
+        Module = '_global'
+        Source = '00/58/global_CopyBackBufferToTexture_00581114.cpp'
+        TestSource = '00/58/global_CopyBackBufferToTexture_00581114_test.cpp'
+        PassPattern = 'PASS_CopyBackBufferToTexture'
+    }
 )
 
 $requestedAddresses = @(
