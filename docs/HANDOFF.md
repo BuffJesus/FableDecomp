@@ -1,5 +1,22 @@
 # HANDOFF — resume here
 
+## ForgeFSE checkpoint — 2026-08-12
+
+The companion ForgeFSE worktree at `D:\Code\ForgeFSE` has an intentional dirty
+native-binding pass. It now builds a Release Win32 DLL with wrappers for
+region-definition readiness, cutscene/progress controls, UID liveness, generic
+inventory possession, and movie-sequence state. Overlay validation remains
+green: 931 manifest functions, 479 recommendations, 337 verified
+recommendations, and zero approved hooks.
+
+The local rebuilt artifact was `D:\Code\ForgeFSE\Release\FableScriptExtender.dll`
+with SHA-256
+`19CE13A47EF569251076E96F9156A60E7C9A906176AD3CA0583177456CF21E78`.
+It was not deployed. Preserve both repositories' dirty changes; do not reset
+or copy the DLL into a game installation without a separate runtime probe plan.
+The ForgeFSE-specific handoff is
+`D:\Code\ForgeFSE\docs\FORGEFSE_SESSION_HANDOFF_2026-08-12.md`.
+
 ## Resume checkpoint — retail frontend visual pass (2026-08-05)
 
 This is the exact state to resume from tomorrow. The retail reference set is
@@ -8259,3 +8276,47 @@ also attempted, but stopped earlier at the pre-existing
 `FABLETLC_WINMAIN_BEHAVIOR FAIL code=2` gate before the visual link; no claim is
 made that the full executable build passed. The native world-load ownership
 boundary remains open.
+
+---
+## 2026-08-13 — parity-crawl vein sweeps + live save-row feeder (resume here)
+
+Two lanes this session (crawl chained in the background while the frontend was built).
+
+### Crawl (background) — 1,749 byte-exact fns landed
+- **gen_batch134** (24) + **vector_deleting_destructor vein fully drained (1,621)**: a
+  homogeneous 30B ??_E family (CLandscapeBackgroundPatch), all RELOCATION_MATCH by cloning
+  the proven 0x00442980 template. New reusable tool `tools/decomp_pipeline/crawl/harvest_vecdel.py`.
+- **OnKill vtable-slot family (104)** via the generalized
+  `tools/decomp_pipeline/crawl/harvest_skeleton.py` (clones ANY landed byte-exact template
+  across all eligible fns sharing its length + call-masked skeleton; backstopped by
+  verify_and_land re-verification). `_Dest_val` (378) was probed but is a DEFER class
+  (reloc-mask misalign despite call-mask clustering) — left to the authoring lane.
+- Durable `gen_tried` ledger 2745 -> **4494**. Next homogeneous clusters with landed
+  templates are one-liners via harvest_skeleton.py; clusters WITHOUT a template
+  (OnInitialActivate 26, SortTreeRecursively, FrameUpdate 24, UpdateShadowScene 24) need
+  one authored head first, then clone-sweep.
+
+### Frontend — live save-row feeder (save-enumeration seam CLOSED, verified)
+Closes the gap between tools/save_metadata.py (python read-contract, not in build) and the
+renderer sink FableSetVisualFrontendSaveRows (was fed authored defaults only).
+- **New TUs** (VC7.1, no STL, hand-declared Win32): `rebuild/integration/fable_inflate.c/.h`
+  (self-contained RFC-1950/DEFLATE — the visual build links no zlib; **verified byte-identical
+  to python zlib on 66/66 real .sav chunk0**) and `rebuild/integration/frontend_save_rows.cpp/.h`
+  (FablePro registry parse + FableSave! walk + trailer crc0 + chunk0 inflate + 23-field HEADER
+  decode + retail-faithful row assembly). crc0 inlined (proven == FableCRC_Calc_004014A0).
+- **Retail-faithful labels** (per ContinueGameScreen.png): single `AutoSave` + `Save N` by slot
+  index; AutoSave.qs not listed. Cornelio -> AutoSave/Save 1/Save 2/Save 3 all 0x11.
+- **Per-row fields** decoded: CurrentRegionName, CurrentRegionMinimapGraphicName, TotalTimePlayed
+  (FableSaveHeaderInfo).
+- **Verified**: `tools/tests/run_frontend_save_rows.py` + `rebuild/tests/integration/FrontendSaveRows_test.cpp`
+  — 19/19 local profiles match the save_metadata.py golden (labels/order/action/fields);
+  adversarial corruption cross-check (bad magic/trunc/bad-clen/sig!=trailer_pos/CRC-covered flips)
+  all reject in agreement with python. Spec + build-plan: `docs/SAVE_ROW_FEEDER_SPEC.md`.
+
+**NOT yet wired (next step, plan in SAVE_ROW_FEEDER_SPEC.md):** (1) register the two TUs in
+`rebuild/build_bootstrap.ps1` (compile steps + append objects to $visualRuntimeObjects);
+(2) call `FableFeedVisualFrontendSaveRows(selectedProfileDir)` at the `action==66` Load-Game
+handler in `visual_boot_checkpoint.cpp` (~L3669). Deferred because the full visual build can't be
+verified here (pre-existing WINMAIN gate + no display). (3) Retail-faithful **preview circle** =
+region minimap keyed by info.minimapName (currently a static per-index bake); follow-up needs the
+MINIMAP_* asset source + renderer wiring.
