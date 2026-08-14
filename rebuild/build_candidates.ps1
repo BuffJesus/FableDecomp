@@ -71537,6 +71537,154 @@ $catalog = @(
         TestSource = '00/69/CCreatureActionBase_GetTotalTimeSecondsCCreatureActionBaseUBEMXZ_00692960_test.cpp'
         PassPattern = 'PARITY_OK'
     }
+    [pscustomobject]@{
+        Address = '006a7120'
+        Module = 'CThingFilter_IsInterestingToCreature'
+        Source = '00/6a/CThingFilterIsInterestingToCreature_operator_006a7120.cpp'
+        TestSource = '00/6a/CThingFilterIsInterestingToCreature_operator_006a7120_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '006a7410'
+        Module = 'CThingFilter_MinAllowedRadius'
+        Source = '00/6a/CThingFilterMinAllowedRadius_operator_006a7410.cpp'
+        TestSource = '00/6a/CThingFilterMinAllowedRadius_operator_006a7410_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '006a7c00'
+        Module = 'CThingFilter_HasInstantiationName'
+        Source = '00/6a/CThingFilterHasInstantiationName_operator_006a7c00.cpp'
+        TestSource = '00/6a/CThingFilterHasInstantiationName_operator_006a7c00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Oa'
+        PassPattern = 'PARITY_OK_6a7c00'
+    }
+    [pscustomobject]@{
+        Address = '006af1e0'
+        Module = 'CMessageEventFilter_IsOriginatedByThing'
+        Source = '00/6a/CMessageEventFilterIsOriginatedByThing_operator_006af1e0.cpp'
+        TestSource = '00/6a/CMessageEventFilterIsOriginatedByThing_operator_006af1e0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '006af200'
+        Module = 'CMessageEventFilter_IsOriginatedByThing'
+        Source = '00/6a/CMessageEventFilterIsOriginatedByThing_operator_006af200.cpp'
+        TestSource = '00/6a/CMessageEventFilterIsOriginatedByThing_operator_006af200_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '006b0170'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_IsPhysicsMeshTypeCylinder_006b0170.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_IsPhysicsMeshTypeCylinder_006b0170_test.cpp'
+        PassPattern = 'PARITY_OK_006b0170'
+    }
+    [pscustomobject]@{
+        Address = '006bb1c0'
+        Module = 'CTCVillage'
+        Source = '00/6b/CTCVillage_OnInitialActivate_006bb1c0.cpp'
+        TestSource = '00/6b/CTCVillage_OnInitialActivate_006bb1c0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '006e7510'
+        Module = 'CGameScriptInterface'
+        Source = '00/6e/CGameScriptInterface_GetMaxWorldFrameForMessages_006e7510.cpp'
+        TestSource = '00/6e/CGameScriptInterface_GetMaxWorldFrameForMessages_006e7510_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '006e7530'
+        Module = 'CGameScriptInterface'
+        Source = '00/6e/CGameScriptInterface_GetMaxWorldFrameForMessages_006e7530.cpp'
+        TestSource = '00/6e/CGameScriptInterface_GetMaxWorldFrameForMessages_006e7530_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '006ea430'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_DeregisterCombatant_006ea430.cpp'
+        TestSource = '00/6e/CCombatManager_DeregisterCombatant_006ea430_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '006ed9c0'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_DeregisterCombatant_006ed9c0.cpp'
+        TestSource = '00/6e/CCombatManager_DeregisterCombatant_006ed9c0_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00710540'
+        Module = 'C3DAnimationTransitionState'
+        Source = '00/71/C3DAnimationTransitionState_FindDominantAnimation_00710540.cpp'
+        TestSource = '00/71/C3DAnimationTransitionState_FindDominantAnimation_00710540_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0071a710'
+        Module = 'CTCMapwho'
+        Source = '00/71/CTCMapwho_PlaceInMapwho_0071a710.cpp'
+        TestSource = '00/71/CTCMapwho_PlaceInMapwho_0071a710_test.cpp'
+        PassPattern = 'PLACEMAPWHO_OK'
+    }
+    [pscustomobject]@{
+        Address = '007449e0'
+        Module = 'CTCPerceiveThing'
+        Source = '00/74/CTCPerceiveThing_SetAsIndirectlyAwareOfPerceivedThing_007449e0.cpp'
+        TestSource = '00/74/CTCPerceiveThing_SetAsIndirectlyAwareOfPerceivedThing_007449e0_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0076c360'
+        Module = 'CTCVillage'
+        Source = '00/76/CTCVillage_OnInitialActivate_0076c360.cpp'
+        TestSource = '00/76/CTCVillage_OnInitialActivate_0076c360_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0076c6b0'
+        Module = 'CTCVillage'
+        Source = '00/76/CTCVillage_OnInitialActivate_0076c6b0.cpp'
+        TestSource = '00/76/CTCVillage_OnInitialActivate_0076c6b0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '007fc6f0'
+        Module = 'CTCKraken'
+        Source = '00/7f/CTCKraken_InitTentaclesAndHead_007fc6f0.cpp'
+        TestSource = '00/7f/CTCKraken_InitTentaclesAndHead_007fc6f0_test.cpp'
+        PassPattern = 'KRAKEN_INIT_OK'
+    }
+    [pscustomobject]@{
+        Address = '007fc710'
+        Module = 'CTCKraken'
+        Source = '00/7f/CTCKraken_InitTentaclesAndHead_007fc710.cpp'
+        TestSource = '00/7f/CTCKraken_InitTentaclesAndHead_007fc710_test.cpp'
+        PassPattern = 'KRAKEN_INIT_OK'
+    }
+    [pscustomobject]@{
+        Address = '0081e1b0'
+        Module = 'CTCVillage'
+        Source = '00/81/CTCVillage_OnInitialActivate_0081e1b0.cpp'
+        TestSource = '00/81/CTCVillage_OnInitialActivate_0081e1b0_test.cpp'
+        PassPattern = 'PARITY_OK_0081e1b0'
+    }
+    [pscustomobject]@{
+        Address = '0081e1d0'
+        Module = 'CTCVillage'
+        Source = '00/81/CTCVillage_OnInitialActivate_0081e1d0.cpp'
+        TestSource = '00/81/CTCVillage_OnInitialActivate_0081e1d0_test.cpp'
+        PassPattern = 'PARITY_OK_0081e1d0'
+    }
+    [pscustomobject]@{
+        Address = '0085bad0'
+        Module = 'CCreatureActionHeroJump'
+        Source = '00/85/CCreatureActionHeroJump_FrameUpdateCCreatureActionHeroJumpUAEXXZ_0085bad0.cpp'
+        TestSource = '00/85/CCreatureActionHeroJump_FrameUpdateCCreatureActionHeroJumpUAEXXZ_0085bad0_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
 )
 
 $requestedAddresses = @(
