@@ -71410,6 +71410,133 @@ $catalog = @(
         TestSource = '00/51/CStopWatch_GetTicks_0051ed80_test.cpp'
         PassPattern = 'PARITY_OK'
     }
+    [pscustomobject]@{
+        Address = '00578e02'
+        Module = 'CRegion'
+        Source = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_00578e02.cpp'
+        TestSource = '00/57/CRegion_SetMiniMapRegionExitTextOffsetX_00578e02_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00579f8a'
+        Module = 'vector<EWeaponClass'
+        Source = '00/57/vectorEWeaponClass_UmoveEWeaponClass_00579f8a.cpp'
+        TestSource = '00/57/vectorEWeaponClass_UmoveEWeaponClass_00579f8a_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0057f93e'
+        Module = 'CPersistContext_TransferableComponent<EHeroAbility>'
+        Source = '00/57/CPersistContextTransferableComponentEHeroAbility_TransferIn_0057f93e.cpp'
+        TestSource = '00/57/CPersistContextTransferableComponentEHeroAbility_TransferIn_0057f93e_test.cpp'
+        PassPattern = 'PARITY_OK_0057f93e'
+    }
+    [pscustomobject]@{
+        Address = '00581bfe'
+        Module = '_global'
+        Source = '00/58/global_GetContextSensitivePreferredItemButtonIndex_00581bfe.cpp'
+        TestSource = '00/58/global_GetContextSensitivePreferredItemButtonIndex_00581bfe_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '005bc479'
+        Module = 'CCategory'
+        Source = '00/5b/CCategory_SetSelectedItemIndex_005bc479.cpp'
+        TestSource = '00/5b/CCategory_SetSelectedItemIndex_005bc479_test.cpp'
+        PassPattern = 'BEHAVIOR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '005bead5'
+        Module = 'CTCInventoryBase'
+        Source = '00/5b/CTCInventoryBase_GetItemDescription_005bead5.cpp'
+        TestSource = '00/5b/CTCInventoryBase_GetItemDescription_005bead5_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '005bf2ed'
+        Module = 'CTCInventoryBase'
+        Source = '00/5b/CTCInventoryBase_GetItemDescription_005bf2ed.cpp'
+        TestSource = '00/5b/CTCInventoryBase_GetItemDescription_005bf2ed_test.cpp'
+        PassPattern = 'PARITY_OK_005bf2ed'
+    }
+    [pscustomobject]@{
+        Address = '005bf30d'
+        Module = 'CTCInventoryBase'
+        Source = '00/5b/CTCInventoryBase_GetItemDescription_005bf30d.cpp'
+        TestSource = '00/5b/CTCInventoryBase_GetItemDescription_005bf30d_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '005d9050'
+        Module = 'CCategory'
+        Source = '00/5d/CCategory_GetCategoryIdentifier_005d9050.cpp'
+        TestSource = '00/5d/CCategory_GetCategoryIdentifier_005d9050_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Oa'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '005da7f0'
+        Module = 'CCategory'
+        Source = '00/5d/CCategory_GetCategoryIdentifier_005da7f0.cpp'
+        TestSource = '00/5d/CCategory_GetCategoryIdentifier_005da7f0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '005e0f40'
+        Module = '_Cons_val<std::allocator<std::pair<CCharString_const_,CIVCountedPointer<CAnimComponentBase>_>_>,std::pair<CCharString_const_,CIVCountedPointer<CAnimComponentBase>_>,std'
+        Source = '00/5e/ConsvalstdallocatorstdpairCCharStringconstCIVCountedPointerCAnimComponentBasestd_pairCCharStringCIVCountedPointerCAnimComponentBa_005e0f40.cpp'
+        TestSource = '00/5e/ConsvalstdallocatorstdpairCCharStringconstCIVCountedPointerCAnimComponentBasestd_pairCCharStringCIVCountedPointerCAnimComponentBa_005e0f40_test.cpp'
+        PassPattern = 'CONS_VAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '0061a120'
+        Module = 'CTCInventoryQuests'
+        Source = '00/61/CTCInventoryQuests_ProcessInventoryInputLeft_0061a120.cpp'
+        TestSource = '00/61/CTCInventoryQuests_ProcessInventoryInputLeft_0061a120_test.cpp'
+        PassPattern = 'PARITY_OK_0061a120'
+    }
+    [pscustomobject]@{
+        Address = '0066124b'
+        Module = '_global'
+        Source = '00/66/global_ConstructString_0066124b.cpp'
+        TestSource = '00/66/global_ConstructString_0066124b_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '006625c0'
+        Module = 'CTCWeapon'
+        Source = '00/66/CTCWeapon_GetAnimationSpeedValue_006625c0.cpp'
+        TestSource = '00/66/CTCWeapon_GetAnimationSpeedValue_006625c0_test.cpp'
+        PassPattern = 'PARITY_OK_006625c0'
+    }
+    [pscustomobject]@{
+        Address = '006625e0'
+        Module = 'CTCWeapon'
+        Source = '00/66/CTCWeapon_GetAnimationSpeedValue_006625e0.cpp'
+        TestSource = '00/66/CTCWeapon_GetAnimationSpeedValue_006625e0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00662600'
+        Module = 'CTCWeapon'
+        Source = '00/66/CTCWeapon_GetAnimationSpeedValue_00662600.cpp'
+        TestSource = '00/66/CTCWeapon_GetAnimationSpeedValue_00662600_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00692380'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_InitialiseActionPause_00692380.cpp'
+        TestSource = '00/69/CCreatureActionBase_InitialiseActionPause_00692380_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00692960'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_GetTotalTimeSecondsCCreatureActionBaseUBEMXZ_00692960.cpp'
+        TestSource = '00/69/CCreatureActionBase_GetTotalTimeSecondsCCreatureActionBaseUBEMXZ_00692960_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
 )
 
 $requestedAddresses = @(
