@@ -71102,6 +71102,160 @@ $catalog = @(
         TestSource = '00/ae/global_fillENavigatorTypeENavigatorType_00ae4fc0_test.cpp'
         PassPattern = 'FILL_OK'
     }
+    [pscustomobject]@{
+        Address = '00b23bc0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_SetPersistentPrimitive_00b23bc0.cpp'
+        TestSource = '00/b2/CEngine_SetPersistentPrimitive_00b23bc0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b5af60'
+        Module = 'CEngineScreenEffectColourFilter'
+        Source = '00/b5/CEngineScreenEffectColourFilter_Render_00b5af60.cpp'
+        TestSource = '00/b5/CEngineScreenEffectColourFilter_Render_00b5af60_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b8fee0'
+        Module = '_global'
+        Source = '00/b8/global_ClearPrimitiveList_00b8fee0.cpp'
+        TestSource = '00/b8/global_ClearPrimitiveList_00b8fee0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00b9d040'
+        Module = 'CEngineInternalPrimitive2DStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitive2DStaticMesh_GetWorldPosition_00b9d040.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitive2DStaticMesh_GetWorldPosition_00b9d040_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bce9f0'
+        Module = 'CEngineInternalPrimitiveAnimatedMesh'
+        Source = '00/bc/CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameStart_00bce9f0.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameStart_00bce9f0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bcea10'
+        Module = 'CEngineInternalPrimitiveAnimatedMesh'
+        Source = '00/bc/CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameEnd_00bcea10.cpp'
+        TestSource = '00/bc/CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameEnd_00bcea10_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c13a80'
+        Module = '_global'
+        Source = '00/c1/global_fillENavigatorTypeENavigatorType_00c13a80.cpp'
+        TestSource = '00/c1/global_fillENavigatorTypeENavigatorType_00c13a80_test.cpp'
+        PassPattern = 'FILL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1ea60'
+        Module = 'CTCCreatureNavigation'
+        Source = '00/c1/CTCCreatureNavigation_IsPosNavLineOfSightTo_00c1ea60.cpp'
+        TestSource = '00/c1/CTCCreatureNavigation_IsPosNavLineOfSightTo_00c1ea60_test.cpp'
+        PassPattern = 'LOS_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c28fa0'
+        Module = '_global'
+        Source = '00/c2/global_fillENavigatorTypeENavigatorType_00c28fa0.cpp'
+        TestSource = '00/c2/global_fillENavigatorTypeENavigatorType_00c28fa0_test.cpp'
+        PassPattern = 'FILL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c361f0'
+        Module = 'CPersistContext_TransferableVector<CHeroMarriageInfo>'
+        Source = '00/c3/CPersistContextTransferableVectorCHeroMarriageInfo_Resize_00c361f0.cpp'
+        TestSource = '00/c3/CPersistContextTransferableVectorCHeroMarriageInfo_Resize_00c361f0_test.cpp'
+        PassPattern = 'RESIZE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c38550'
+        Module = 'CAIStateGroupBase'
+        Source = '00/c3/CAIStateGroupBase_PeekThingSearchTools_00c38550.cpp'
+        TestSource = '00/c3/CAIStateGroupBase_PeekThingSearchTools_00c38550_test.cpp'
+        PassPattern = 'PEEK_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c41530'
+        Module = 'CTCLook'
+        Source = '00/c4/CTCLook_SetHeadTurnState_00c41530.cpp'
+        TestSource = '00/c4/CTCLook_SetHeadTurnState_00c41530_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c415a0'
+        Module = 'CTCLook'
+        Source = '00/c4/CTCLook_SetHeadTurnState_00c415a0.cpp'
+        TestSource = '00/c4/CTCLook_SetHeadTurnState_00c415a0_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c4ced0'
+        Module = '_global'
+        Source = '00/c4/global_WordWrapSetCallback_00c4ced0.cpp'
+        TestSource = '00/c4/global_WordWrapSetCallback_00c4ced0_test.cpp'
+        PassPattern = 'WORDWRAP_LINK_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c4e2d0'
+        Module = 'CGuiWindow'
+        Source = '00/c4/CGuiWindow_OnResize_00c4e2d0.cpp'
+        TestSource = '00/c4/CGuiWindow_OnResize_00c4e2d0_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00cbe2e0'
+        Module = '_global'
+        Source = '00/cb/global_IsThingAwareOfHero_00cbe2e0.cpp'
+        TestSource = '00/cb/global_IsThingAwareOfHero_00cbe2e0_test.cpp'
+        PassPattern = 'BEHAVIOUR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd2afd'
+        Module = '_Destroy_range<std::allocator<std'
+        Source = '00/cd/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_00cd2afd.cpp'
+        TestSource = '00/cd/Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_00cd2afd_test.cpp'
+        PassPattern = 'DESTROY_RANGE_OK'
+    }
+    [pscustomobject]@{
+        Address = '00d732a0'
+        Module = 'CHTG_Executioner'
+        Source = '00/d7/CHTGExecutioner_OnPredicateFail_00d732a0.cpp'
+        TestSource = '00/d7/CHTGExecutioner_OnPredicateFail_00d732a0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004107e0'
+        Module = 'CPersistContext'
+        Source = '00/41/CPersistContext_Transferlong_004107e0.cpp'
+        TestSource = '00/41/CPersistContext_Transferlong_004107e0_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004110b0'
+        Module = 'CPersistContext'
+        Source = '00/41/CPersistContext_Transferlong_004110b0.cpp'
+        TestSource = '00/41/CPersistContext_Transferlong_004110b0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0044c45b'
+        Module = 'CCombatAbilityData'
+        Source = '00/44/CCombatAbilityData_GetCombatAbilityDataType_0044c45b.cpp'
+        TestSource = '00/44/CCombatAbilityData_GetCombatAbilityDataType_0044c45b_test.cpp'
+        PassPattern = 'BEHAVIOUR_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00466f54'
+        Module = '_global'
+        Source = '00/46/global_Fillnunsignedlongunsignedintunsignedlong_00466f54.cpp'
+        TestSource = '00/46/global_Fillnunsignedlongunsignedintunsignedlong_00466f54_test.cpp'
+        PassPattern = 'FILLN_OK'
+    }
 )
 
 $requestedAddresses = @(
