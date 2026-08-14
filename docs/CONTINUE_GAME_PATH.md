@@ -133,3 +133,23 @@ Deferred (semantics recovered, byte-blocked — see agent notes):
   -> conditional dtors) not reproducible from C++; dispatches to GetAutoSave/ManualDisplayName.
 - LoadFileList 0x4091c0: __security_cookie + STL vector<save-entry> iteration (rep movsd of
   0x1c-byte entries, begin/next 0x999760/0x999850); enumerates slots into the caller's vector.
+
+## 2026-08-13 — byte-pure minimap-decode targets (lzo1x_decompress is a hard defer)
+
+Pursuing the saved-games region-minimap preview as PURE container reads (no baking),
+the byte-pure primitive is the engine's own `lzo1x_decompress @ 0x00c06b90` (578B,
+__cdecl(src, src_len, dst, out_len*)). Reconstruction status: **hard byte-parity DEFER.**
+A faithful C reconstruction compiles to 593B (right length class) but diverges from
+retail at the prologue register allocation (ebp=in_end/ebx=out_len/esi=in/eax=op/edi=match),
+cascading to ~540/578 differing bytes. The permuter (tools/permuter/autopermute.py,
+--mutate --random 200, 4690 evals) bottomed at score 101574 (593v578, prefix 4) — its
+temp-intro/reassoc mutations don't reach retail's allocation. Needs the upstream-style
+full-regalloc/statement-reorder permuter (README "Next") or hand regalloc-matching.
+Best source: scratchpad lzo1x.best.cpp; oracle bytes in the crawl.
+
+The functional decoders built this session (rebuild/integration/fable_texture_decode.c
+LZO1X+DXT3, frontend_minimap.cpp) are byte-verified vs the Python reference on 95/95
+real MINIMAP_*_FRONT_END entries — they serve as the DIFFERENTIAL ORACLE for the
+byte-exact reconstruction, and as functional scaffolding until 0x00c06b90 lands.
+Other byte-pure targets for the pure texture path: the chunk-decompress caller and the
+engine DXT3/surface upload (retail likely uploads DXT3 to the GPU, no software decode).
