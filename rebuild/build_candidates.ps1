@@ -70289,6 +70289,167 @@ $catalog = @(
         TestSource = '00/ca/Consvalstd_allocatorC3DGeneratorObjectC3DGeneratorObjectC3D_00ca3580_test.cpp'
         PassPattern = 'CONSVAL_OK'
     }
+    [pscustomobject]@{
+        Address = '00cd365e'
+        Module = 'CDisplayManager'
+        Source = '00/cd/CDisplayManager_CopyBackBufferToTexture_00cd365e.cpp'
+        TestSource = '00/cd/CDisplayManager_CopyBackBufferToTexture_00cd365e_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00f334c0'
+        Module = 'vector<EWeaponClass'
+        Source = '00/f3/vectorEWeaponClass_UmoveEWeaponClass_00f334c0.cpp'
+        TestSource = '00/f3/vectorEWeaponClass_UmoveEWeaponClass_00f334c0_test.cpp'
+        PassPattern = 'UMOVE_OK'
+    }
+    [pscustomobject]@{
+        Address = '0045c77f'
+        Module = 'CSpecialEffectsDef'
+        Source = '00/45/CSpecialEffectsDef_Copy_0045c77f.cpp'
+        TestSource = '00/45/CSpecialEffectsDef_Copy_0045c77f_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004611d6'
+        Module = 'CObjectFamilyDef'
+        Source = '00/46/CObjectFamilyDef_Copy_004611d6.cpp'
+        TestSource = '00/46/CObjectFamilyDef_Copy_004611d6_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00461b98'
+        Module = 'CCombatAbilityBlockLightWeaponAttackDef'
+        Source = '00/46/CCombatAbilityBlockLightWeaponAttackDef_Copy_00461b98.cpp'
+        TestSource = '00/46/CCombatAbilityBlockLightWeaponAttackDef_Copy_00461b98_test.cpp'
+        PassPattern = 'PARITY_OK_461b98'
+    }
+    [pscustomobject]@{
+        Address = '00461d0d'
+        Module = 'CCombatAbilityBlockHeavyWeaponAttackDef'
+        Source = '00/46/CCombatAbilityBlockHeavyWeaponAttackDef_Copy_00461d0d.cpp'
+        TestSource = '00/46/CCombatAbilityBlockHeavyWeaponAttackDef_Copy_00461d0d_test.cpp'
+        PassPattern = 'CCombatAbilityBlockHeavyWeaponAttackDef_00461d0d_TEST_PASS'
+    }
+    [pscustomobject]@{
+        Address = '00461d2c'
+        Module = 'CCombatAbilityBlockProjectileWeaponAttackDef'
+        Source = '00/46/CCombatAbilityBlockProjectileWeaponAttackDef_Copy_00461d2c.cpp'
+        TestSource = '00/46/CCombatAbilityBlockProjectileWeaponAttackDef_Copy_00461d2c_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0046311f'
+        Module = 'CSimVoicesDef'
+        Source = '00/46/CSimVoicesDef_Copy_0046311f.cpp'
+        TestSource = '00/46/CSimVoicesDef_Copy_0046311f_test.cpp'
+        PassPattern = 'COPY_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00463923'
+        Module = 'CThingNoiseDef'
+        Source = '00/46/CThingNoiseDef_Copy_00463923.cpp'
+        TestSource = '00/46/CThingNoiseDef_Copy_00463923_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00477288'
+        Module = 'CEngineLocalDetailGeneratorDef'
+        Source = '00/47/CEngineLocalDetailGeneratorDef_Copy_00477288.cpp'
+        TestSource = '00/47/CEngineLocalDetailGeneratorDef_Copy_00477288_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0048521a'
+        Module = '_global'
+        Source = '00/48/global_FillCHeroMarriageInfoCHeroMarriageInfo_0048521a.cpp'
+        TestSource = '00/48/global_FillCHeroMarriageInfoCHeroMarriageInfo_0048521a_test.cpp'
+        PassPattern = 'FILL_OK'
+    }
+    [pscustomobject]@{
+        Address = '0049369b'
+        Module = '_global'
+        Source = '00/49/global_Fill_0049369b.cpp'
+        TestSource = '00/49/global_Fill_0049369b_test.cpp'
+        PassPattern = 'FILL_OK'
+    }
+    [pscustomobject]@{
+        Address = '004b8330'
+        Module = '_Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,long>_>_>,std::pair<CCharString_const_,std::pair<long,long>_>,std::pair<class_CCharString_const_,struct_std'
+        Source = '00/4b/ConsvalstdallocatorstdpairCCharStringconststdpairlonglongstdpairCCharStringconst_pairlonglong_004b8330.cpp'
+        TestSource = '00/4b/ConsvalstdallocatorstdpairCCharStringconststdpairlonglongstdpairCCharStringconst_pairlonglong_004b8330_test.cpp'
+        PassPattern = 'CONSVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '004da636'
+        Module = 'vector<CIntelligentPointer<CThing_const_>'
+        Source = '00/4d/vectorCIntelligentPointerCThingconst_Destroy_004da636.cpp'
+        TestSource = '00/4d/vectorCIntelligentPointerCThingconst_Destroy_004da636_test.cpp'
+        PassPattern = 'DESTROY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004da68a'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004da68a.cpp'
+        TestSource = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004da68a_test.cpp'
+        PassPattern = 'VDTOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004da6a9'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004da6a9.cpp'
+        TestSource = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004da6a9_test.cpp'
+        PassPattern = 'VDD_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dbe39'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004dbe39.cpp'
+        TestSource = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004dbe39_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK_004dbe39'
+    }
+    [pscustomobject]@{
+        Address = '004dfe94'
+        Module = 'CTCInventoryItem'
+        Source = '00/4d/CTCInventoryItem_OnDie_004dfe94.cpp'
+        TestSource = '00/4d/CTCInventoryItem_OnDie_004dfe94_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004dfff6'
+        Module = 'CSmokeGeneratorDef'
+        Source = '00/4d/CSmokeGeneratorDef_Copy_004dfff6.cpp'
+        TestSource = '00/4d/CSmokeGeneratorDef_Copy_004dfff6_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e0331'
+        Module = 'CHeroDef'
+        Source = '00/4e/CHeroDef_Copy_004e0331.cpp'
+        TestSource = '00/4e/CHeroDef_Copy_004e0331_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e0545'
+        Module = 'CTCInventoryItem'
+        Source = '00/4e/CTCInventoryItem_OnDie_004e0545.cpp'
+        TestSource = '00/4e/CTCInventoryItem_OnDie_004e0545_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e077d'
+        Module = 'CGiftDef'
+        Source = '00/4e/CGiftDef_Copy_004e077d.cpp'
+        TestSource = '00/4e/CGiftDef_Copy_004e077d_test.cpp'
+        PassPattern = 'GIFTCOPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e0b7d'
+        Module = 'CTCInventoryItem'
+        Source = '00/4e/CTCInventoryItem_OnDie_004e0b7d.cpp'
+        TestSource = '00/4e/CTCInventoryItem_OnDie_004e0b7d_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
 )
 
 $requestedAddresses = @(
