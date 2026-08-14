@@ -70948,6 +70948,160 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = 'PARITY_OK'
     }
+    [pscustomobject]@{
+        Address = '0085d6c0'
+        Module = '_global'
+        Source = '00/85/global_fillENavigatorTypeENavigatorType_0085d6c0.cpp'
+        TestSource = '00/85/global_fillENavigatorTypeENavigatorType_0085d6c0_test.cpp'
+        PassPattern = 'FILL_OK'
+    }
+    [pscustomobject]@{
+        Address = '008913a0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_GetTextString_008913a0.cpp'
+        TestSource = '00/89/CGameScriptInterface_GetTextString_008913a0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00906fa0'
+        Module = 'CCombatSequence_ScorpionLungeAttack'
+        Source = '00/90/CCombatSequenceScorpionLungeAttack_IsValid_00906fa0.cpp'
+        TestSource = '00/90/CCombatSequenceScorpionLungeAttack_IsValid_00906fa0_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00917110'
+        Module = 'CAIStateGroup_ThrowLogsOnFire'
+        Source = '00/91/CAIStateGroupThrowLogsOnFire_IsRunnableCAIStateGroupThrowLogsOnFireUAENXZ_00917110.cpp'
+        TestSource = '00/91/CAIStateGroupThrowLogsOnFire_IsRunnableCAIStateGroupThrowLogsOnFireUAENXZ_00917110_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00919a10'
+        Module = 'CAIStateGroup_BuyFromSeller'
+        Source = '00/91/CAIStateGroupBuyFromSeller_ShouldBuyFromSeller_00919a10.cpp'
+        TestSource = '00/91/CAIStateGroupBuyFromSeller_ShouldBuyFromSeller_00919a10_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00923cb0'
+        Module = 'CTCShotDefinitionBase'
+        Source = '00/92/CTCShotDefinitionBase_IsToDie_00923cb0.cpp'
+        TestSource = '00/92/CTCShotDefinitionBase_IsToDie_00923cb0_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '0094ef70'
+        Module = 'CAIStateGroup_FollowPlayer'
+        Source = '00/94/CAIStateGroupFollowPlayer_OnActivateCAIStateGroupFollowPlayerUAEXXZ_0094ef70.cpp'
+        TestSource = '00/94/CAIStateGroupFollowPlayer_OnActivateCAIStateGroupFollowPlayerUAEXXZ_0094ef70_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '0098c120'
+        Module = '_global'
+        Source = '00/98/global_fillENavigatorTypeENavigatorType_0098c120.cpp'
+        TestSource = '00/98/global_fillENavigatorTypeENavigatorType_0098c120_test.cpp'
+        PassPattern = 'FILL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00993ec0'
+        Module = 'CDataOutputStream'
+        Source = '00/99/CDataOutputStream_WriteCBYTE_00993ec0.cpp'
+        TestSource = '00/99/CDataOutputStream_WriteCBYTE_00993ec0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00993ee0'
+        Module = 'CDataOutputStream'
+        Source = '00/99/CDataOutputStream_WriteCBYTE_00993ee0.cpp'
+        TestSource = '00/99/CDataOutputStream_WriteCBYTE_00993ee0_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '00994430'
+        Module = 'CFileDataInputStream'
+        Source = '00/99/CFileDataInputStream_CFileDataInputStream_00994430.cpp'
+        TestSource = '00/99/CFileDataInputStream_CFileDataInputStream_00994430_test.cpp'
+        PassPattern = 'DTOR_PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009a8090'
+        Module = 'CTCInventoryExperience'
+        Source = '00/9a/CTCInventoryExperience_IsTutorialPlayed_009a8090.cpp'
+        TestSource = '00/9a/CTCInventoryExperience_IsTutorialPlayed_009a8090_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009d1c10'
+        Module = '_global'
+        Source = '00/9d/global_fillENavigatorTypeENavigatorType_009d1c10.cpp'
+        TestSource = '00/9d/global_fillENavigatorTypeENavigatorType_009d1c10_test.cpp'
+        PassPattern = 'FILL_OK'
+    }
+    [pscustomobject]@{
+        Address = '009e9080'
+        Module = 'CPersistTraits<unsigned_char>'
+        Source = '00/9e/CPersistTraitsunsignedchar_TransferIn_009e9080.cpp'
+        TestSource = '00/9e/CPersistTraitsunsignedchar_TransferIn_009e9080_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009f2da0'
+        Module = 'CSurface'
+        Source = '00/9f/CSurface_GetRefCount_009f2da0.cpp'
+        TestSource = '00/9f/CSurface_GetRefCount_009f2da0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '009f77d0'
+        Module = '_Cons_val<std::allocator<std::pair<CWideString_const_,float>_>,std::pair<CWideString_const_,float>,std'
+        Source = '00/9f/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_009f77d0.cpp'
+        TestSource = '00/9f/ConsvalstdallocatorstdpairCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_009f77d0_test.cpp'
+        PassPattern = 'CONSVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a2daf0'
+        Module = '_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std'
+        Source = '00/a2/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_00a2daf0.cpp'
+        TestSource = '00/a2/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_00a2daf0_test.cpp'
+        PassPattern = 'CONS_VAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a35310'
+        Module = 'CSetIllustratorAsDrawing'
+        Source = '00/a3/CSetIllustratorAsDrawing_operator_00a35310.cpp'
+        TestSource = '00/a3/CSetIllustratorAsDrawing_operator_00a35310_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a48650'
+        Module = '_Cons_val<std::allocator<std::pair<CCharString_const_,std::pair<long,long>_>_>,std::pair<CCharString_const_,std::pair<long,long>_>,std::pair<class_CCharString_const_,struct_std'
+        Source = '00/a4/ConsvalstdallocatorstdpairCCharStringconststdpairlonglongstdpairCCharStringconst_pairlonglong_00a48650.cpp'
+        TestSource = '00/a4/ConsvalstdallocatorstdpairCCharStringconststdpairlonglongstdpairCCharStringconst_pairlonglong_00a48650_test.cpp'
+        PassPattern = 'CONSVAL_LL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ad75d0'
+        Module = '_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std'
+        Source = '00/ad/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_00ad75d0.cpp'
+        TestSource = '00/ad/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_00ad75d0_test.cpp'
+        PassPattern = 'CONSVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00adc310'
+        Module = '_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std'
+        Source = '00/ad/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_00adc310.cpp'
+        TestSource = '00/ad/ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_00adc310_test.cpp'
+        PassPattern = 'CONSVAL_OK'
+    }
+    [pscustomobject]@{
+        Address = '00ae4fc0'
+        Module = '_global'
+        Source = '00/ae/global_fillENavigatorTypeENavigatorType_00ae4fc0.cpp'
+        TestSource = '00/ae/global_fillENavigatorTypeENavigatorType_00ae4fc0_test.cpp'
+        PassPattern = 'FILL_OK'
+    }
 )
 
 $requestedAddresses = @(
