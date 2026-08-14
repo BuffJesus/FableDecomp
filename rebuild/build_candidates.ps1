@@ -70450,6 +70450,174 @@ $catalog = @(
         TestSource = '00/4e/CTCInventoryItem_OnDie_004e0b7d_test.cpp'
         PassPattern = 'BEHAVIOR_OK'
     }
+    [pscustomobject]@{
+        Address = '004e0cc0'
+        Module = 'CSummonableCreatureDef'
+        Source = '00/4e/CSummonableCreatureDef_Copy_004e0cc0.cpp'
+        TestSource = '00/4e/CSummonableCreatureDef_Copy_004e0cc0_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e0deb'
+        Module = 'CTCInventoryItem'
+        Source = '00/4e/CTCInventoryItem_OnDie_004e0deb.cpp'
+        TestSource = '00/4e/CTCInventoryItem_OnDie_004e0deb_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e0e79'
+        Module = 'CActivateQuestDef'
+        Source = '00/4e/CActivateQuestDef_Copy_004e0e79.cpp'
+        TestSource = '00/4e/CActivateQuestDef_Copy_004e0e79_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e0e98'
+        Module = 'CCrateStackDef'
+        Source = '00/4e/CCrateStackDef_Copy_004e0e98.cpp'
+        TestSource = '00/4e/CCrateStackDef_Copy_004e0e98_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e0ee3'
+        Module = 'CTavernTableDef'
+        Source = '00/4e/CTavernTableDef_Copy_004e0ee3.cpp'
+        TestSource = '00/4e/CTavernTableDef_Copy_004e0ee3_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e0fce'
+        Module = 'CTCInventoryItem'
+        Source = '00/4e/CTCInventoryItem_OnDie_004e0fce.cpp'
+        TestSource = '00/4e/CTCInventoryItem_OnDie_004e0fce_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e11bd'
+        Module = 'CTavernGameCardBaseDef'
+        Source = '00/4e/CTavernGameCardBaseDef_GetSizeofClass_004e11bd.cpp'
+        TestSource = '00/4e/CTavernGameCardBaseDef_GetSizeofClass_004e11bd_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e1225'
+        Module = 'CDecapitationDef'
+        Source = '00/4e/CDecapitationDef_Copy_004e1225.cpp'
+        TestSource = '00/4e/CDecapitationDef_Copy_004e1225_test.cpp'
+        PassPattern = 'PARITY_OK_004e1225'
+    }
+    [pscustomobject]@{
+        Address = '004e13df'
+        Module = 'CTCInventoryItem'
+        Source = '00/4e/CTCInventoryItem_OnDie_004e13df.cpp'
+        TestSource = '00/4e/CTCInventoryItem_OnDie_004e13df_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e157c'
+        Module = 'CCarriedReadableDef'
+        Source = '00/4e/CCarriedReadableDef_Copy_004e157c.cpp'
+        TestSource = '00/4e/CCarriedReadableDef_Copy_004e157c_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e249b'
+        Module = 'CContainerRewardHeroDef'
+        Source = '00/4e/CContainerRewardHeroDef_Copy_004e249b.cpp'
+        TestSource = '00/4e/CContainerRewardHeroDef_Copy_004e249b_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e26b6'
+        Module = 'CWeaponDef'
+        Source = '00/4e/CWeaponDef_GetSizeofClass_004e26b6.cpp'
+        TestSource = '00/4e/CWeaponDef_GetSizeofClass_004e26b6_test.cpp'
+        PassPattern = 'BEHAVIOR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e28b6'
+        Module = 'CSkeletalMorphDef'
+        Source = '00/4e/CSkeletalMorphDef_Copy_004e28b6.cpp'
+        TestSource = '00/4e/CSkeletalMorphDef_Copy_004e28b6_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e299b'
+        Module = 'CParticleAttacherDef'
+        Source = '00/4e/CParticleAttacherDef_Copy_004e299b.cpp'
+        TestSource = '00/4e/CParticleAttacherDef_Copy_004e299b_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e2b2c'
+        Module = 'CTCInventoryItem'
+        Source = '00/4e/CTCInventoryItem_OnDie_004e2b2c.cpp'
+        TestSource = '00/4e/CTCInventoryItem_OnDie_004e2b2c_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e30c8'
+        Module = 'CTCInventoryItem'
+        Source = '00/4e/CTCInventoryItem_OnDie_004e30c8.cpp'
+        TestSource = '00/4e/CTCInventoryItem_OnDie_004e30c8_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e3625'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e3625.cpp'
+        TestSource = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e3625_test.cpp'
+        PassPattern = 'VDD_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e3e0b'
+        Module = 'CTCInventoryItem'
+        Source = '00/4e/CTCInventoryItem_OnDie_004e3e0b.cpp'
+        TestSource = '00/4e/CTCInventoryItem_OnDie_004e3e0b_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e3e89'
+        Module = 'CTCInventoryItem'
+        Source = '00/4e/CTCInventoryItem_OnDie_004e3e89.cpp'
+        TestSource = '00/4e/CTCInventoryItem_OnDie_004e3e89_test.cpp'
+        PassPattern = 'ONDIE_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e3fd0'
+        Module = 'CSoundAtmospheresDef'
+        Source = '00/4e/CSoundAtmospheresDef_Copy_004e3fd0.cpp'
+        TestSource = '00/4e/CSoundAtmospheresDef_Copy_004e3fd0_test.cpp'
+        PassPattern = 'COPY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e41a1'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e41a1.cpp'
+        TestSource = '00/4e/CLandscapeBackgroundPatch_vectordeletingdestructor_004e41a1_test.cpp'
+        PassPattern = 'VDD_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e54ad'
+        Module = 'CHeroSuitDef'
+        Source = '00/4e/CHeroSuitDef_Copy_004e54ad.cpp'
+        TestSource = '00/4e/CHeroSuitDef_Copy_004e54ad_test.cpp'
+        PassPattern = 'BEHAVIOUR_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e5f51'
+        Module = 'CReplaceableMeshDef'
+        Source = '00/4e/CReplaceableMeshDef_Copy_004e5f51.cpp'
+        TestSource = '00/4e/CReplaceableMeshDef_Copy_004e5f51_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '004e60ee'
+        Module = 'CIdleSchedulerDef'
+        Source = '00/4e/CIdleSchedulerDef_Copy_004e60ee.cpp'
+        TestSource = '00/4e/CIdleSchedulerDef_Copy_004e60ee_test.cpp'
+        PassPattern = 'IDLESCHED_COPY_OK'
+    }
 )
 
 $requestedAddresses = @(
