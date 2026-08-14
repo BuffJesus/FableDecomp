@@ -1,5 +1,23 @@
 # HANDOFF — resume here
 
+## 2026-08-14 — parity crawl surge (batch136 + batch137, ledger 4518 -> 4566)
+- **gen_batch136** LANDED (commit 4024574): 19/24 (3 MATCH + 16 RELOCATION_MATCH). 5 deferred =
+  `CDisplayManager::CopyBackBufferToTexture` twin-`lea [ebp-1]` CSE class.
+- **gen_batch137** LANDED (commit 1db17ce): 20/24 (3 MATCH + 17 RELOCATION_MATCH). 4 deferred:
+  007fa26c (head-under-capture — the 30B span starts mid-fn), 008c4020/008c40d0 WaspQueen
+  `FinishAction` DIFFER(29v30) same-shape, 008fa7e0 `DoVelocityDamping` C3DVector-by-value return
+  DIFFER(33v30).
+- **RELAUNCH is fully reproducible now** — reusable helpers live in the session scratchpad and are
+  regenerated per batch: `build_targets.py` (capstone disasm), `land_batch.py` (merge -> central
+  verify_and_land -> durable gen_tried union), `extract_wins.py` + `patch_wins.py` (recover the
+  `// see above` placeholder source_cpp AND placeholder test_cpp from each agent's
+  `scratchpad/lv_<addr>/{s,t}.cpp`). Workflow generator = `bpc<NN>.js` (one general-purpose agent
+  per target, schema-forced, self-verifies via verify_and_land dry-run). Flow: reseed
+  SCR/gen_tried.txt from durable -> next_smallest.py 24 gen_batchNN -> trim_overcapture --oracle ->
+  trim_tailjmp --oracle -> build_targets.py -> Workflow(bpcNN.js, args=targets) -> extract/patch/
+  land_batch --land -> lean commit (src/compiled + tests + build_candidates.ps1 + auto-re-candidates
+  + gen_tried.txt ONLY). Note next_smallest.py `SCR=` is hardcoded per-session; repoint it first.
+
 ## ForgeFSE checkpoint — 2026-08-12
 
 The companion ForgeFSE worktree at `D:\Code\ForgeFSE` has an intentional dirty
