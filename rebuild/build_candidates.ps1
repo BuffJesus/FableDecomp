@@ -71839,6 +71839,62 @@ $catalog = @(
         TestSource = '00/a6/ConsvalstdallocatorstdpairCWideStringconstCChecksumCacheFileCEntrystdpairCWideSt_CEntry_00a6ed60_test.cpp'
         PassPattern = 'CONS_VAL_OK'
     }
+    [pscustomobject]@{
+        Address = '00a85340'
+        Module = 'CTCVillage'
+        Source = '00/a8/CTCVillage_OnInitialActivate_00a85340.cpp'
+        TestSource = '00/a8/CTCVillage_OnInitialActivate_00a85340_test.cpp'
+        PassPattern = 'VILLAGE_INIT_OK'
+    }
+    [pscustomobject]@{
+        Address = '00a98600'
+        Module = 'vector<EWeaponClass'
+        Source = '00/a9/vectorEWeaponClass_UmoveEWeaponClass_00a98600.cpp'
+        TestSource = '00/a9/vectorEWeaponClass_UmoveEWeaponClass_00a98600_test.cpp'
+        PassPattern = 'PARITY_OK_a98600'
+    }
+    [pscustomobject]@{
+        Address = '00b5a0b0'
+        Module = 'CEngineScreenEffectColourFilter'
+        Source = '00/b5/CEngineScreenEffectColourFilter_SetEffectQuality_00b5a0b0.cpp'
+        TestSource = '00/b5/CEngineScreenEffectColourFilter_SetEffectQuality_00b5a0b0_test.cpp'
+        PassPattern = 'QUALITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bbbdf0'
+        Module = 'CEngineInternalPrimitiveParticleGroup'
+        Source = '00/bb/CEngineInternalPrimitiveParticleGroup_GetRenderLayerMask_00bbbdf0.cpp'
+        TestSource = '00/bb/CEngineInternalPrimitiveParticleGroup_GetRenderLayerMask_00bbbdf0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bdc040'
+        Module = 'CEngineLandscapeMap'
+        Source = '00/bd/CEngineLandscapeMap_ReleaseDefaultPoolSurfaces_00bdc040.cpp'
+        TestSource = '00/bd/CEngineLandscapeMap_ReleaseDefaultPoolSurfaces_00bdc040_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00be2260'
+        Module = 'CEnginePrimitive2DViewportManager'
+        Source = '00/be/CEnginePrimitive2DViewportManager_CreateInternalPrimitive_00be2260.cpp'
+        TestSource = '00/be/CEnginePrimitive2DViewportManager_CreateInternalPrimitive_00be2260_test.cpp'
+        PassPattern = 'PRIM_FACTORY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00bef9a0'
+        Module = 'CTCVillage'
+        Source = '00/be/CTCVillage_OnInitialActivate_00bef9a0.cpp'
+        TestSource = '00/be/CTCVillage_OnInitialActivate_00bef9a0_test.cpp'
+        PassPattern = 'PARITY_OK'
+    }
+    [pscustomobject]@{
+        Address = '00c1d4e0'
+        Module = '_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap'
+        Source = '00/c1/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00c1d4e0.cpp'
+        TestSource = '00/c1/DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00c1d4e0_test.cpp'
+        PassPattern = 'DESTVAL_OK'
+    }
 )
 
 $requestedAddresses = @(
