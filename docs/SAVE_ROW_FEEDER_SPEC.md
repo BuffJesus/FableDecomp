@@ -220,3 +220,31 @@ needs — no extra inflation (chunk0 was already decoded for validity).
    inside the ring, replacing the static per-index bake in visual_boot_d3d9.cpp
    (~L4540). The renderer sink (FableSetVisualFrontendSaveRows) would need to also
    carry the per-row minimap name (sink extension), or a parallel setter.
+
+---
+
+## 2026-08-13 — build + call-site wiring LANDED (compile-verified)
+
+Both new TUs are now wired into the visual checkpoint:
+- **build_bootstrap.ps1**: declared `$frontendSaveRowsSource`/`$fableInflateSource` +
+  `$frontendSaveRowsObject`/`$fableInflateObject`, added both to the `$required`
+  existence gate, added cl.exe compile steps (mirroring the save-metadata boundary),
+  and appended both objects to `$visualRuntimeObjects` (after `$visualBootD3D9Object`).
+  Feeder is linked ONLY into the visual checkpoint exe (not the staged-phase exes).
+- **visual_boot_checkpoint.cpp**: `#include "frontend_save_rows.h"`; retain the
+  activated profile in `g_VisualActiveProfileName` (set at the 0x124 LoadProfile
+  activation); extracted `BuildVisualSavesRoot()` from `RefreshVisualProfileNames`
+  and added `ResolveActiveProfileSaveDir()`; at the `action==66` Load-Game handler
+  call `FableFeedVisualFrontendSaveRows(Saves\<activeProfile>)` (falls back to
+  `FableFeedVisualFrontendSaveRows(0)` = authored defaults when unresolved).
+
+Verified: all three TUs (fable_inflate.c, frontend_save_rows.cpp, visual_boot_checkpoint.cpp)
+compile clean under the exact build flags (/W3 /MT /GS /O2 /Oy); build_bootstrap.ps1
+parses clean; the feeder<->checkpoint fastcall extern-"C" linkage was proven by the
+standalone test link. kernel32 file APIs resolve implicitly (the checkpoint already
+uses FindFirstFileW/GetFileAttributesExW without listing kernel32.lib).
+
+NOT done here: the full `build_bootstrap.ps1` run + on-screen confirmation — the full
+bootstrap stops at the pre-existing FABLETLC_WINMAIN_BEHAVIOR gate before the visual
+link, and there is no display in this environment. Visual QA (synth-click Main Menu ->
+Load Game, screenshot) is the remaining check, per docs/VISUAL_PARITY_STATUS.md.

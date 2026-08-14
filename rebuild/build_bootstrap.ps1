@@ -286,6 +286,10 @@ $systemManagerRuntimeBoundarySource =
     Join-Path $rebuildRoot 'integration\system_manager_runtime_boundary.cpp'
 $saveMetadataRuntimeBoundarySource =
     Join-Path $rebuildRoot 'integration\save_metadata_runtime_boundary.cpp'
+$frontendSaveRowsSource =
+    Join-Path $rebuildRoot 'integration\frontend_save_rows.cpp'
+$fableInflateSource =
+    Join-Path $rebuildRoot 'integration\fable_inflate.c'
 $phase8RuntimeBoundarySource =
     Join-Path $rebuildRoot 'integration\phase8_runtime_boundary.cpp'
 $phase7WindowTitleRuntimeBoundarySource =
@@ -447,6 +451,10 @@ $systemManagerRuntimeBoundaryObject =
     Join-Path $outDir 'system_manager_runtime_boundary.obj'
 $saveMetadataRuntimeBoundaryObject =
     Join-Path $outDir 'save_metadata_runtime_boundary.obj'
+$frontendSaveRowsObject =
+    Join-Path $outDir 'frontend_save_rows.obj'
+$fableInflateObject =
+    Join-Path $outDir 'fable_inflate.obj'
 $generateMetFilesObject = Join-Path $outDir 'generate-met-files.obj'
 $phase8RuntimeBoundaryObject =
     Join-Path $outDir 'phase8_runtime_boundary.obj'
@@ -975,6 +983,8 @@ $required = @(
     $phase6RuntimeBoundarySource,
     $systemManagerRuntimeBoundarySource,
     $saveMetadataRuntimeBoundarySource,
+    $frontendSaveRowsSource,
+    $fableInflateSource,
     $phase8RuntimeBoundarySource,
     $phase7WindowTitleRuntimeBoundarySource,
     $progressDisplayStringBoundarySource,
@@ -3100,6 +3110,26 @@ try {
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$fableInflateObject" `
+        $fableInflateSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $fableInflateObject)
+    ) {
+        throw 'Failed to compile the self-contained inflate (fable_inflate.c).'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$frontendSaveRowsObject" `
+        $frontendSaveRowsSource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $frontendSaveRowsObject)
+    ) {
+        throw 'Failed to compile the live save-row feeder (frontend_save_rows.cpp).'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
         "/Fo$phase8RuntimeBoundaryObject" `
         $phase8RuntimeBoundarySource
     if (
@@ -4491,6 +4521,8 @@ try {
         $visualBoundaryObject,
         $visualBootObject,
         $visualBootD3D9Object,
+        $fableInflateObject,
+        $frontendSaveRowsObject,
         $retailVideoBridgeObject,
         $videoFrameConversionObject,
         $videoFramePublicationObject,

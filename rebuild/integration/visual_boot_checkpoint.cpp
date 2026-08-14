@@ -5,6 +5,7 @@
 #include "detail_screen_tables.h"
 #include "frontend_list_layout.h"
 #include "frontend_input_dispatch.h"
+#include "frontend_save_rows.h"
 
 #include <string.h>
 
@@ -2358,6 +2359,9 @@ namespace
     const char* g_VisualProfileNamePointers[32] = {};
     unsigned int g_VisualProfileNameCount = 0;
     unsigned int g_VisualProfileSelection = 0;
+    // The profile whose Saves\<name> dir the live save-row feeder reads on
+    // Load-Game entry (set when a profile is activated at action 0x124).
+    char g_VisualActiveProfileName[64] = {};
     char g_VisualProfileEditText[128] = {};
     unsigned int g_VisualProfileEditLength = 0;
     unsigned int g_VisualDetailScreen = 0;
@@ -2731,7 +2735,8 @@ namespace
             PlayVisualFrontendResourceSound(kBootSoundErrorResource);
     }
 
-    bool RefreshVisualProfileNames()
+    // Build "%USERPROFILE%\Documents\My Games\Fable\Saves" into `saves`.
+    bool BuildVisualSavesRoot(wchar_t* saves, size_t capacity)
     {
         wchar_t userProfile[260] = {};
         if (
@@ -2743,29 +2748,42 @@ namespace
             return false;
         }
         wchar_t documents[520];
-        JoinSavePath(
-            documents,
-            sizeof(documents) / sizeof(documents[0]),
-            userProfile,
-            L"Documents");
+        JoinSavePath(documents, sizeof(documents) / sizeof(documents[0]),
+            userProfile, L"Documents");
         wchar_t games[520];
-        JoinSavePath(
-            games,
-            sizeof(games) / sizeof(games[0]),
-            documents,
-            L"My Games");
+        JoinSavePath(games, sizeof(games) / sizeof(games[0]),
+            documents, L"My Games");
         wchar_t fable[520];
-        JoinSavePath(
-            fable,
-            sizeof(fable) / sizeof(fable[0]),
-            games,
-            L"Fable");
+        JoinSavePath(fable, sizeof(fable) / sizeof(fable[0]),
+            games, L"Fable");
+        JoinSavePath(saves, capacity, fable, L"Saves");
+        return true;
+    }
+
+    // Resolve Saves\<active profile> for the live save-row feeder. Returns false
+    // when no profile has been activated or the Saves root can't be built.
+    bool ResolveActiveProfileSaveDir(wchar_t* out, size_t capacity)
+    {
+        if (g_VisualActiveProfileName[0] == '\0')
+            return false;
         wchar_t saves[520];
-        JoinSavePath(
-            saves,
-            sizeof(saves) / sizeof(saves[0]),
-            fable,
-            L"Saves");
+        if (!BuildVisualSavesRoot(saves, sizeof(saves) / sizeof(saves[0])))
+            return false;
+        wchar_t wname[64];
+        unsigned int i = 0;
+        for (; g_VisualActiveProfileName[i] != '\0' && i < 63; ++i)
+            wname[i] = static_cast<wchar_t>(
+                static_cast<unsigned char>(g_VisualActiveProfileName[i]));
+        wname[i] = L'\0';
+        JoinSavePath(out, capacity, saves, wname);
+        return true;
+    }
+
+    bool RefreshVisualProfileNames()
+    {
+        wchar_t saves[520];
+        if (!BuildVisualSavesRoot(saves, sizeof(saves) / sizeof(saves[0])))
+            return false;
 
         memset(g_VisualProfileNames, 0, sizeof(g_VisualProfileNames));
         g_VisualProfileNameCount = FableEnumerateVisualFrontendProfiles(
@@ -3676,6 +3694,17 @@ namespace
             g_VisualSaveSelection = 0;
             g_VisualOptionsBackHovered = false;
             FableSetVisualFrontendSaveMenu(true);
+            // Feed live rows from the active profile's Saves dir (retail-faithful
+            // AutoSave / Save N labels + recovered actions); fall back to the
+            // authored defaults when no profile/dir is resolvable.
+            {
+                wchar_t saveDir[600];
+                if (ResolveActiveProfileSaveDir(
+                        saveDir, sizeof(saveDir) / sizeof(saveDir[0])))
+                    FableFeedVisualFrontendSaveRows(saveDir);
+                else
+                    FableFeedVisualFrontendSaveRows(0);
+            }
             PlayVisualFrontendResourceSound(kBootSoundForwardResource);
             RevealVisualFrontend(window);
             return true;
@@ -3842,6 +3871,13 @@ namespace
                 return true;
             FableSetVisualFrontendActiveProfile(
                 g_VisualProfileNames[g_VisualProfileSelection - 1].name);
+            // Retain the activated profile so the Load-Game feeder reads the
+            // right Saves\<name> directory.
+            strncpy(
+                g_VisualActiveProfileName,
+                g_VisualProfileNames[g_VisualProfileSelection - 1].name,
+                sizeof(g_VisualActiveProfileName) - 1);
+            g_VisualActiveProfileName[sizeof(g_VisualActiveProfileName) - 1] = '\0';
             // Action 0x124 is LoadProfile.  Until the exact CUserProfileManager
             // instance is connected to this checkpoint, preserve the route
             // boundary and return to the main frontend without fabricating a
