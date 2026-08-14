@@ -1,7 +1,16 @@
 # HANDOFF — resume here
 
-## 2026-08-14 — parity crawl surge (batch136–139, ledger 4518 -> 4614)
-- batch138 LANDED (5500606): 21/24. batch139 LANDED (7f536e2): 23/24.
+## 2026-08-14 — parity crawl surge (batch136–142, ledger 4518 -> 4686, +154 byte-exact)
+- batch138 (5500606) 21, batch139 (7f536e2) 23, batch140 (43160a1) 24 CLEAN, batch141 (ddcbefa) 24
+  CLEAN, batch142 (9461a9e) 23. Highest-yield veins: `CDefClassBase::Copy` forwarder family (model
+  base+sub Copy as REAL thiscall members, not __fastcall+edx-dummy, else spurious `xor edx,edx`),
+  `CTCInventoryItem::OnDie`, `CLandscapeBackgroundPatch::vector_deleting_destructor`, `AddChild`,
+  `_Cons_val`/`_Destroy_range`/`fill` STL. Most need in-source `#pragma optimize("s",on)`.
+- PLACEHOLDER RECOVERY is routine: agents sometimes return `// see above` / short-stub source_cpp
+  or test_cpp in the schema fields while the REAL verified files sit in `scratchpad/lv_<addr>/{s,t}.cpp`.
+  extract_wins flags src<40 chars but a 46-char stub slipped once (caught by central OBJDUMP_ERR).
+  ALWAYS run a central `land_batch.py` DRY-RUN before `--land` and patch any TCC_FAIL/OBJDUMP_ERR/
+  DIFFER rows from their lv_ dir, re-verify, then land.
 - **CopyBackBufferToTexture twin-`lea [ebp-1]` class CRACKED** (00cd365e, batch139): pass the 2nd
   arg as a syntactically-distinct but identical expression `&local + 1 - 1` to defeat VC7.1 CSE
   (plain `&local,&local` folds to one `lea`), AND stack `#pragma optimize("s",on)` +
