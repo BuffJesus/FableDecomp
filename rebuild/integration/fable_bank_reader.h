@@ -112,7 +112,9 @@ namespace fable_bank
     inline unsigned int WalkToc(const Bank* bank, const SubBank& s,
                                 const char* wantName,
                                 unsigned int* outOffset, unsigned int* outSize,
-                                bool* found)
+                                bool* found,
+                                const unsigned char** outInfo = 0,
+                                unsigned int* outInfoLen = 0)
     {
         Cursor r; r.b = bank->buf; r.size = bank->size; r.p = s.tocOffset;
         unsigned int save = r.p;
@@ -132,24 +134,31 @@ namespace fable_bank
             r.u32v();               // timestamp
             unsigned int depc = r.u32v();
             for (unsigned int d = 0; d < depc; ++d) { unsigned int dl; r.lpstr(&dl); }
-            unsigned int infoSize = r.u32v(); r.p += infoSize;
+            unsigned int infoSize = r.u32v();
+            const unsigned char* infoPtr = bank->buf + r.p;
+            r.p += infoSize;
             if (wantName && found && !*found &&
                 nlen == (unsigned int)strlen(wantName) && memcmp(nm, wantName, nlen) == 0)
             {
                 *found = true; if (outOffset) *outOffset = off; if (outSize) *outSize = size;
+                if (outInfo) *outInfo = infoPtr; if (outInfoLen) *outInfoLen = infoSize;
             }
         }
         return r.p;
     }
 
-    // Convenience: locate an entry's payload by sub-bank + entry name.
+    // Convenience: locate an entry's payload by sub-bank + entry name. When
+    // outInfo/outInfoLen are supplied they receive the entry's Info header (the
+    // 34-byte CGraphicHeader+CPixelFormatInit needed by fable_texture_decode).
     inline const unsigned char* FindEntry(const Bank* bank, const char* subBank,
-                                          const char* name, unsigned int* outSize)
+                                          const char* name, unsigned int* outSize,
+                                          const unsigned char** outInfo = 0,
+                                          unsigned int* outInfoLen = 0)
     {
         int si = FindSubBank(bank, subBank);
         if (si < 0) return 0;
         unsigned int off = 0, size = 0; bool found = false;
-        WalkToc(bank, bank->subs[si], name, &off, &size, &found);
+        WalkToc(bank, bank->subs[si], name, &off, &size, &found, outInfo, outInfoLen);
         if (!found) return 0;
         if (outSize) *outSize = size;
         return bank->buf + off;
